@@ -109,32 +109,32 @@ function paint(a,data){
  const section=document.createElement("section");section.id="classics-tally";section.className="classics-tally";
  section.setAttribute("aria-label","Estado académico del corpus de textos clásicos");
  const wrap=document.createElement("div");wrap.className="classics-tally-inner";
- const head=document.createElement("h2");head.textContent="Bibliotheca Graeca et Latina · corpus en cifras";wrap.append(head);
- const intro=document.createElement("p");intro.textContent="Obras catalogadas, textos buscables y traducciones son magnitudes distintas. Las fichas pendientes incluyen versiones editoriales de una misma obra; no equivalen a obras antiguas distintas.";wrap.append(intro);
+ const bar=document.createElement("div");bar.className="tally-line";
+ const name=document.createElement("strong");name.className="tally-line-name";name.textContent="Corpus en cifras";bar.append(name);
  const dl=document.createElement("dl");
  [a.catalogued,a.indexed,a.translated,a.versions,a.pending].forEach((val,i)=>{
   const group=document.createElement("div"),dd=document.createElement("dd"),dt=document.createElement("dt");
   dd.textContent=new Intl.NumberFormat("es-AR").format(val);dt.textContent=metricLabels[i];
   group.append(dd,dt);
-  const catalogue=document.createElement("a");
-  catalogue.className="tally-catalogue-link";
-  catalogue.href=i===3?"bibliotheca-ampliada.html":i===4?"estado-indexacion-bibliotheca.html":"index-auctorum-operum.html";
-  catalogue.textContent=i===3?"Ver ediciones":i===4?"Ver pendientes":"Ver catálogo";
-  catalogue.title="Abrir listado en una página dedicada, sin desplegar libros aquí";
-  group.append(catalogue);dl.append(group);
- });wrap.append(dl);
- // The title finder reuses the already audited catalogue and version registry.
- window.BibliothecaWorkSearch?.mount?.(wrap,data);
+  dl.append(group);
+ });bar.append(dl);
+ const details=document.createElement("details");details.className="tally-line-details";
+ const summary=document.createElement("summary");summary.textContent="Detalle";summary.setAttribute("aria-label","Ver explicación y fuentes de las cifras");
+ details.append(summary);bar.append(details);wrap.append(bar);
  const foot=document.createElement("p");foot.textContent=a.complete?
   "Datos desde los registros locales y manifiestos externos verificados. Se cuentan por separado las versiones; las traducciones externas solo enlazadas no se suman. Las fichas editoriales de Vitruvio pueden corresponder a versiones de la misma obra.":
   "Cobertura parcial: algún índice externo no fue verificable en esta carga; los originales no accesibles no se presentan como indexados.";
- wrap.append(foot);
+ details.append(foot);
  const link=document.createElement("a");
  link.href=document.querySelector(".stats-band")?"bibliotheca-graeca-latina.html":"cobertura-traducciones-clasicas.html";
- link.textContent=document.querySelector(".stats-band")?"Consultar obras y tratados clásicos":"Ver desglose de traducciones";wrap.append(link);
+ link.textContent=document.querySelector(".stats-band")?"Consultar obras y tratados clásicos":"Ver desglose de traducciones";details.append(link);
  section.append(wrap);
  const anchor=document.querySelector(".stats-band")||document.querySelector(".hero");
  if(anchor)anchor.insertAdjacentElement("afterend",section);
+ // Catalogue search is a separate instrument, never nested in the metric bar.
+ const catalogueRegion=document.createElement("div");catalogueRegion.id="bibliotheca-catalogue-region";
+ section.insertAdjacentElement("afterend",catalogueRegion);
+ window.BibliothecaWorkSearch?.mount?.(catalogueRegion,data);
 }
 async function begin(){
  try{
@@ -183,9 +183,9 @@ async function ampliar(fichas){
   const first=dl.querySelector("div");
   if(first){
    first.querySelector("dd").textContent=fmt(c.obrasTotales);
-   const note=document.createElement("small");note.className="tally-r2-note";note.style.cssText="display:block;font-size:12px;line-height:1.4;opacity:.75;margin-top:4px";
+   const note=document.createElement("small");note.className="tally-r2-note";
    note.textContent=fmt(c.fichasRepertorio)+" con ficha académica + "+fmt(c.obrasNuevas)+" nuevas en facsímil";
-   first.querySelector("dt").after(note);
+   const detail=document.querySelector("#classics-tally .tally-line-details");if(detail)detail.append(note);
 
   }
   const g=document.createElement("div"),dd=document.createElement("dd"),dt=document.createElement("dt");
