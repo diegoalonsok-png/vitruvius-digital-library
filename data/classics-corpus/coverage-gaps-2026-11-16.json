@@ -1,0 +1,689 @@
+{
+  "schema": "vdl-bibliotheca-coverage-gaps-v1",
+  "asOf": "2026-11-16",
+  "method": "Inventario de GitHub por identificador exacto. Los URL y SHA declarados NO equivalen a validación HTTP ni integridad de obra completa.",
+  "scope": {
+    "catalogued": 271,
+    "r2Registered": 44,
+    "sourceMissingFromTextIndex": 29,
+    "r2PendingEffectiveIndex": 32,
+    "combinedPending": 61,
+    "missingWithRegisteredPdf": 25,
+    "modernEditionRecords": 3,
+    "unmatchedNoPdf": 1
+  },
+  "missingIndexedOriginal": [
+    {
+      "id": "apollodorus-poliorcetics",
+      "author": "Apolodoro de Damasco (atribución tradicional)",
+      "title": "Πολιορκητικά · Poliorketika",
+      "language": "grc",
+      "classification": "pdf-registered-no-indexed-original",
+      "pdf": {
+        "url": "https://libros.vitruvius-digital-library.org/clasicos/pdf/apollodorus-poliorcetics.pdf",
+        "sha256": "cea9ced8736203b9003970fcc58bdb41bc51c87d9463aeb1615bcab94c6f3457",
+        "edition": "Poliorktika kai poliorkiai diaphorn polen = Poliorcétique des Grecs : traités thoriques, récits historiques ; ouvrage publié par l'Imprimerie impériale ;",
+        "pages": 446,
+        "scopeNote": "PDF colectivo de poliorcética (446 páginas) compartido con Ateneo Mecánico, Bitón y Filón; la presencia de la obra concreta y su intervalo de páginas requieren cotejo del índice y del impreso. No equivale a un volumen exclusivo."
+      }
+    },
+    {
+      "id": "athenaeus-mechanicus",
+      "author": "Ateneo Mecánico",
+      "title": "Περὶ μηχανημάτων · De machinis",
+      "language": "grc",
+      "classification": "pdf-registered-no-indexed-original",
+      "pdf": {
+        "url": "https://libros.vitruvius-digital-library.org/clasicos/pdf/athenaeus-mechanicus.pdf",
+        "sha256": "cea9ced8736203b9003970fcc58bdb41bc51c87d9463aeb1615bcab94c6f3457",
+        "edition": "Poliorktika kai poliorkiai diaphorn polen = Poliorcétique des Grecs : traités thoriques, récits historiques ; ouvrage publié par l'Imprimerie impériale ;",
+        "pages": 446,
+        "scopeNote": "PDF colectivo de poliorcética (446 páginas) compartido con Apolodoro, Bitón y Filón; cotejar el tramo propio del tratado antes de afirmar cobertura completa."
+      }
+    },
+    {
+      "id": "vitruvio-v514-pdf",
+      "author": "Vitruvio · edición de Diego A. Kurilo",
+      "title": "De architectura · Recensio V514 (latín–castellano)",
+      "language": "la",
+      "classification": "modern-editorial-edition-needs-source-crosslink",
+      "pdf": null
+    },
+    {
+      "id": "vitruvio-v554-pdf",
+      "author": "Vitruvio · edición de Diego A. Kurilo",
+      "title": "De architectura · Recensio V554 (latín–francés)",
+      "language": "la",
+      "classification": "modern-editorial-edition-needs-source-crosslink",
+      "pdf": null
+    },
+    {
+      "id": "theory-v297-pdf",
+      "author": "Diego A. Kurilo · sobre Vitruvio",
+      "title": "The Architect of Theory · V297 (inglés)",
+      "language": "la",
+      "classification": "modern-editorial-edition-needs-source-crosslink",
+      "pdf": null
+    },
+    {
+      "id": "ptolemy-geographia",
+      "author": "Claudio Ptolomeo",
+      "title": "Γεωγραφικὴ ὑφήγησις",
+      "language": "grc",
+      "classification": "pdf-registered-no-indexed-original",
+      "pdf": {
+        "url": "https://libros.vitruvius-digital-library.org/clasicos/pdf/ptolemy-geographia.pdf",
+        "sha256": "e11aeb07ac9065430ff4f64b3a78a636b16650851929ee76a591aa5147de4758",
+        "edition": "Geographia uniuersalis : uetus et noua, complectens Claudii Ptoloemaei Alexandrini enarrationis libros VIII",
+        "pages": 456,
+        "scopeNote": null
+      }
+    },
+    {
+      "id": "accius-fragmenta",
+      "author": "Accio",
+      "title": "Tragoediae (fragmenta)",
+      "language": "la",
+      "classification": "pdf-registered-no-indexed-original",
+      "pdf": {
+        "url": "https://libros.vitruvius-digital-library.org/clasicos/pdf/accius-fragmenta.pdf",
+        "sha256": "da46cbcfba01bd8beab0b9f7024aef90feb294fa5a2b695531b8022158f8660d",
+        "edition": "Tragicorum Romanorum fragmenta",
+        "pages": 456,
+        "scopeNote": null
+      }
+    },
+    {
+      "id": "procopius-aedificiis",
+      "author": "Procopio de Cesarea",
+      "title": "Περὶ κτισμάτων",
+      "language": "grc",
+      "classification": "source-not-registered-by-exact-id",
+      "pdf": null
+    },
+    {
+      "id": "philo-belopoeica",
+      "author": "Filón de Bizancio",
+      "title": "Βελοποιικά · Belopoeica (Mechanike syntaxis IV)",
+      "language": "grc",
+      "classification": "pdf-registered-no-indexed-original",
+      "pdf": {
+        "url": "https://libros.vitruvius-digital-library.org/clasicos/pdf/philo-belopoeica.pdf",
+        "sha256": "cea9ced8736203b9003970fcc58bdb41bc51c87d9463aeb1615bcab94c6f3457",
+        "edition": "Poliorktika kai poliorkiai diaphorn polen = Poliorcétique des Grecs : traités thoriques, récits historiques ; ouvrage publié par l'Imprimerie impériale ;",
+        "pages": 446,
+        "scopeNote": "PDF colectivo de poliorcética (446 páginas) compartido con Apolodoro, Ateneo Mecánico y Bitón; cotejar el tramo propio del tratado antes de afirmar cobertura completa."
+      }
+    },
+    {
+      "id": "biton-kataskeuai",
+      "author": "Bitón",
+      "title": "Κατασκευαὶ πολεμικῶν ὀργάνων καὶ καταπαλτικῶν",
+      "language": "grc",
+      "classification": "pdf-registered-no-indexed-original",
+      "pdf": {
+        "url": "https://libros.vitruvius-digital-library.org/clasicos/pdf/biton-kataskeuai.pdf",
+        "sha256": "cea9ced8736203b9003970fcc58bdb41bc51c87d9463aeb1615bcab94c6f3457",
+        "edition": "Poliorktika kai poliorkiai diaphorn polen = Poliorcétique des Grecs : traités thoriques, récits historiques ; ouvrage publié par l'Imprimerie impériale ;",
+        "pages": 446,
+        "scopeNote": "PDF colectivo de poliorcética (446 páginas) compartido con Apolodoro, Ateneo Mecánico y Filón; cotejar el tramo propio del tratado antes de afirmar cobertura completa."
+      }
+    },
+    {
+      "id": "hyginus-gromaticus",
+      "author": "Higino Gromático",
+      "title": "Constitutio limitum",
+      "language": "la",
+      "classification": "pdf-registered-no-indexed-original",
+      "pdf": {
+        "url": "https://libros.vitruvius-digital-library.org/clasicos/pdf/hyginus-gromaticus.pdf",
+        "sha256": "a6f2340323d68b8e15838f4cae6db872782f91856b51b8bb386918c9475e1b50",
+        "edition": "Gromatici veteres ex recensione Caroli Lachmanni. Diagrammata edidit A. Rudorffius. (Die Schriften der römischen Feldmesser",
+        "pages": 552,
+        "scopeNote": null
+      }
+    },
+    {
+      "id": "lyra-graeca",
+      "author": "Poetas líricos griegos",
+      "title": "Lyra Graeca · Líricos monódicos (Safo, Alceo, Anacreonte y otros)",
+      "language": "grc",
+      "classification": "pdf-registered-no-indexed-original",
+      "pdf": {
+        "url": "https://libros.vitruvius-digital-library.org/clasicos/pdf/lyra-graeca.pdf",
+        "sha256": "accae2cc3a9c44c22d99def8cae05c55f50b4592e001d38453326f7fab210ffe",
+        "edition": "Lyra Graeca; being the remains of all the Greek lyrik poets from Eumelus to Timotheus excepting Pindar",
+        "pages": 744,
+        "scopeNote": null
+      }
+    },
+    {
+      "id": "higino-fabulas",
+      "author": "Higino",
+      "title": "Fabulae · Astronomica poetica",
+      "language": "la",
+      "classification": "pdf-registered-no-indexed-original",
+      "pdf": {
+        "url": "https://libros.vitruvius-digital-library.org/clasicos/pdf/higino-fabulas.pdf",
+        "sha256": "105726b54dc2a1a069365b0101e9d7e28772e8c07f1356db24436c61073f8a83",
+        "edition": "Hygini Fabulae",
+        "pages": 233,
+        "scopeNote": null
+      }
+    },
+    {
+      "id": "manilio-astronomica",
+      "author": "Manilio",
+      "title": "Astronomica",
+      "language": "la",
+      "classification": "pdf-registered-no-indexed-original",
+      "pdf": {
+        "url": "https://libros.vitruvius-digital-library.org/clasicos/pdf/manilio-astronomica.pdf",
+        "sha256": "71d60921f701e9ab7d95c64abca253e4585cdf77f39e900304babef748df5842",
+        "edition": "Astronomica. Hrsg. von Theodorus Breiter",
+        "pages": 394,
+        "scopeNote": null
+      }
+    },
+    {
+      "id": "aristoteles-meteorologica",
+      "author": "Aristóteles",
+      "title": "Μετεωρολογικά · Meteorologica",
+      "language": "grc",
+      "classification": "pdf-registered-no-indexed-original",
+      "pdf": {
+        "url": "https://libros.vitruvius-digital-library.org/clasicos/pdf/aristoteles-meteorologica.pdf",
+        "sha256": "62e10515b65e2bafda70676dc53aa7bbc4024df4f2cc78721dcc2af16cfb58aa",
+        "edition": "Meteorologica",
+        "pages": 474,
+        "scopeNote": null
+      }
+    },
+    {
+      "id": "galeno-opera-kuhn",
+      "author": "Galeno",
+      "title": "Claudii Galeni opera omnia · Tomus XIV (ed. Kühn, Leipzig 1827)",
+      "language": "grc",
+      "classification": "pdf-registered-no-indexed-original",
+      "pdf": {
+        "url": "https://libros.vitruvius-digital-library.org/clasicos/pdf/galeno-opera-kuhn.pdf",
+        "sha256": "11e93b0bd7a3afcdf772b925e121734a2b0032de79f29df7d9864eb813c03942",
+        "edition": "Galeni opera omnia / vol. 14",
+        "pages": 801,
+        "scopeNote": "El documento digital se identifica en el título del registro como volumen XIV; confirmar contra la portada."
+      }
+    },
+    {
+      "id": "galeno-kuhn-vol01",
+      "author": "Galeno",
+      "title": "Claudii Galeni opera omnia · Tomus XIV (ed. Kühn; identificador legado vol01, portada por cotejar)",
+      "language": "grc",
+      "classification": "pdf-registered-no-indexed-original",
+      "pdf": {
+        "url": "https://libros.vitruvius-digital-library.org/clasicos/pdf/galeno-kuhn-vol01.pdf",
+        "sha256": "11e93b0bd7a3afcdf772b925e121734a2b0032de79f29df7d9864eb813c03942",
+        "edition": "Galeni opera omnia / vol. 14",
+        "pages": 801,
+        "scopeNote": "Identificador legado vol01: el archivo compartido coincide por SHA-256 con galeno-opera-kuhn y se identifica como tomo XIV, no I. Verificar portada de la edición antes de cualquier cambio de identificador."
+      }
+    },
+    {
+      "id": "galeno-kuhn-vol19",
+      "author": "Galeno",
+      "title": "Opera omnia, vol. XIX (ed. Kühn, Leipzig 1830)",
+      "language": "grc",
+      "classification": "pdf-registered-no-indexed-original",
+      "pdf": {
+        "url": "https://libros.vitruvius-digital-library.org/clasicos/pdf/galeno-kuhn-vol19.pdf",
+        "sha256": "6a0900dd5592eeda90acd260e8f55c475acfa96e1c38491d328e4704971d9461",
+        "edition": "Opera omnia, vol. XIX (ed. Kühn, Leipzig 1830)",
+        "pages": 802,
+        "scopeNote": null
+      }
+    },
+    {
+      "id": "galeno-scripta-minora",
+      "author": "Galeno",
+      "title": "Scripta minora (ed. Marquardt, Müller y Helmreich, Leipzig 1884–1893)",
+      "language": "grc",
+      "classification": "pdf-registered-no-indexed-original",
+      "pdf": {
+        "url": "https://libros.vitruvius-digital-library.org/clasicos/pdf/galeno-scripta-minora.pdf",
+        "sha256": "5ed136b94094f135026eadb7c4cfd4348be662eda90ab710c606c0d4e93fcf48",
+        "edition": "Claudii Galeni Pergameni Scripta Minora, VoL III",
+        "pages": 271,
+        "scopeNote": null
+      }
+    },
+    {
+      "id": "jamblico-vida-pitagorica",
+      "author": "Jámblico",
+      "title": "Περὶ τοῦ Πυθαγορείου βίου · De vita pythagorica",
+      "language": "grc",
+      "classification": "pdf-registered-no-indexed-original",
+      "pdf": {
+        "url": "https://libros.vitruvius-digital-library.org/clasicos/pdf/jamblico-vida-pitagorica.pdf",
+        "sha256": "ac9da3085b675b2fcd0a303e5fdd9be1f07b7b694644d26693b27b3923097f9b",
+        "edition": "Περί βίου πυθαγορικού λόγος : De vita Pythagorica liber",
+        "pages": 423,
+        "scopeNote": null
+      }
+    },
+    {
+      "id": "proclo-comentario-euclides",
+      "author": "Proclo",
+      "title": "Εἰς τὸ πρῶτον τῶν Εὐκλείδου Στοιχείων · In primum Euclidis Elementorum librum commentarii",
+      "language": "grc",
+      "classification": "pdf-registered-no-indexed-original",
+      "pdf": {
+        "url": "https://libros.vitruvius-digital-library.org/clasicos/pdf/proclo-comentario-euclides.pdf",
+        "sha256": "8c8c9822f349e499fbd072f3764b827791047563781b1051a3a5fbf028523d97",
+        "edition": "Procli Diadochi in primum Euclidis Elementorum librum commentarii",
+        "pages": 528,
+        "scopeNote": null
+      }
+    },
+    {
+      "id": "sexto-empirico-obras",
+      "author": "Sexto Empírico",
+      "title": "Πρὸς μαθηματικούς · Adversus mathematicos y Esbozos pirrónicos",
+      "language": "grc",
+      "classification": "pdf-registered-no-indexed-original",
+      "pdf": {
+        "url": "https://libros.vitruvius-digital-library.org/clasicos/pdf/sexto-empirico-obras.pdf",
+        "sha256": "c88e587da2442237df0c6f56639ca9b5d242550096114df4a33593d029b8cec7",
+        "edition": "Sextus Empiricus",
+        "pages": 834,
+        "scopeNote": null
+      }
+    },
+    {
+      "id": "teon-esmirna-expositio",
+      "author": "Teón de Esmirna",
+      "title": "Τὰ κατὰ μαθηματικὴν χρήσιμα εἰς τὴν Πλάτωνος ἀνάγνωσιν · Expositio rerum mathematicarum",
+      "language": "grc",
+      "classification": "pdf-registered-no-indexed-original",
+      "pdf": {
+        "url": "https://libros.vitruvius-digital-library.org/clasicos/pdf/teon-esmirna-expositio.pdf",
+        "sha256": "b1e415ec730414d383404e97561a86fe7e2d36c2257fd7eea323e784b343fa75",
+        "edition": "Specimen academicum inaugurale, exhibens Theonis Smyrnaei Arithmeticam, Bullialdi versione, lectionis diversitate et annotatione auctam, quod ... submittet Janus Jacobus de Gelder",
+        "pages": 294,
+        "scopeNote": null
+      }
+    },
+    {
+      "id": "anthologia-latina",
+      "author": "Antología latina",
+      "title": "Anthologia Latina",
+      "language": "la",
+      "classification": "pdf-registered-no-indexed-original",
+      "pdf": {
+        "url": "https://libros.vitruvius-digital-library.org/clasicos/pdf/anthologia-latina.pdf",
+        "sha256": "e0f994b10b08af3c2973c03cde42e82e6a451069a72d8dfc7fc16e915d67bc79",
+        "edition": "Anthologia latina sive poesis latinae supplementum, ediderunt Franciscus Buecheler et Alexander Riese",
+        "pages": 840,
+        "scopeNote": null
+      }
+    },
+    {
+      "id": "casiodoro-variae",
+      "author": "Casiodoro",
+      "title": "Variae",
+      "language": "la",
+      "classification": "pdf-registered-no-indexed-original",
+      "pdf": {
+        "url": "https://libros.vitruvius-digital-library.org/clasicos/pdf/casiodoro-variae.pdf",
+        "sha256": "f5876a7035f72121d4c553b42c671467f027f1ab16bd3ea497d2ad40fb3b776f",
+        "edition": "Cassiodori Senatoris Variae",
+        "pages": 798,
+        "scopeNote": null
+      }
+    },
+    {
+      "id": "festo-verborum-significatu",
+      "author": "Festo (y Verrio Flaco)",
+      "title": "De verborum significatu",
+      "language": "la",
+      "classification": "pdf-registered-no-indexed-original",
+      "pdf": {
+        "url": "https://libros.vitruvius-digital-library.org/clasicos/pdf/festo-verborum-significatu.pdf",
+        "sha256": "00e01ad423a5c3c68d3c17a4f48200a27816b5c31e380a299a75bf41865e4701",
+        "edition": "De verborum significatu quae supersunt com Pauli epitome. Edidit Aemilius Thewrewk de Ponor. Pars 1",
+        "pages": 652,
+        "scopeNote": null
+      }
+    },
+    {
+      "id": "marciano-capela-nuptiis",
+      "author": "Marciano Capela",
+      "title": "De nuptiis Philologiae et Mercurii",
+      "language": "la",
+      "classification": "pdf-registered-no-indexed-original",
+      "pdf": {
+        "url": "https://libros.vitruvius-digital-library.org/clasicos/pdf/marciano-capela-nuptiis.pdf",
+        "sha256": "35e477c3698672bc1a124b5dee5c2ce21c61eed9cce1cdfa2eb5bd890b8d6551",
+        "edition": "De nuptiis philologiae, et Mercurii, et de septem artibus liberalibus libri novem. Ad codicum manuscriptorum fidem cum notis Bon. Vulcanii, Hug. Grotii, Casp. Barthii, Cl. Salmasii, H.J. Arntzenii, Corn. Vonckii, P. Bondami, L. Walthardi, Jo. Ad. Goezii, Henr. Susii, Marc Meibonii aliorumque. Partim integris partim selectis et commentario perpetuo edidit Ulricus Fridericus Martianus Capella. De nuptiis philologiae, et Mercurii, et de septem artibus liberalibus libri novem Kopp",
+        "pages": 876,
+        "scopeNote": null
+      }
+    },
+    {
+      "id": "nonio-marcelo-doctrina",
+      "author": "Nonio Marcelo",
+      "title": "De compendiosa doctrina",
+      "language": "la",
+      "classification": "pdf-registered-no-indexed-original",
+      "pdf": {
+        "url": "https://libros.vitruvius-digital-library.org/clasicos/pdf/nonio-marcelo-doctrina.pdf",
+        "sha256": "a367027861ff209fc53b820cbdeccffb052dfca3bc8925b494227efd0d30c71c",
+        "edition": "Compendiosa doctrina;",
+        "pages": 724,
+        "scopeNote": null
+      }
+    },
+    {
+      "id": "paladio-opus-agriculturae",
+      "author": "Paladio",
+      "title": "Opus agriculturae",
+      "language": "la",
+      "classification": "pdf-registered-no-indexed-original",
+      "pdf": {
+        "url": "https://libros.vitruvius-digital-library.org/clasicos/pdf/paladio-opus-agriculturae.pdf",
+        "sha256": "e43a5a93b6a499500311c95d5cb63353e8deb9abbe17f30c448a655800e85a84",
+        "edition": "The Middle-English translation of Palladius De re rustica. Pt. 1. Text",
+        "pages": 308,
+        "scopeNote": null
+      }
+    }
+  ],
+  "r2AwaitingVerifiedIndex": [
+    {
+      "id": "origenes",
+      "title": "Περὶ ἀρχῶν · De principiis",
+      "language": "grc",
+      "url": "https://libros.vitruvius-digital-library.org/corpus/origenes-grc.json",
+      "sha256": "b310dfa8f281576ad70710b0f6f9d6578078e35f3939a850305864623dfc57d8",
+      "declaredPassages": 628,
+      "status": "registered-pending-verified-lexical-index"
+    },
+    {
+      "id": "apolonio-argonauticas",
+      "title": "Ἀργοναυτικά · Argonautica",
+      "language": "grc",
+      "url": "https://libros.vitruvius-digital-library.org/corpus/apolonio-argonauticas-grc.json",
+      "sha256": "26ba26f2b8e0fb16106a1aa51a12c0459479e4ee5ad8399f6434bdfa86d44e08",
+      "declaredPassages": 585,
+      "status": "registered-pending-verified-lexical-index"
+    },
+    {
+      "id": "isocrates-discursos",
+      "title": "Λόγοι · Discursos (Πρὸς Δημόνικον, Πανηγυρικός)",
+      "language": "grc",
+      "url": "https://libros.vitruvius-digital-library.org/corpus/isocrates-discursos-grc.json",
+      "sha256": "d028aa92d1a40435c87428a96af601b9ec52f9d928cc6f108ded94a39ea9ee75",
+      "declaredPassages": 2116,
+      "status": "registered-pending-verified-lexical-index"
+    },
+    {
+      "id": "lisias-discursos",
+      "title": "Λόγοι · Discursos",
+      "language": "grc",
+      "url": "https://libros.vitruvius-digital-library.org/corpus/lisias-discursos-grc.json",
+      "sha256": "c3fc7f915fec42c21ea51b2c923856ccde18e27d9c3dadc5cad2dcb1f4583830",
+      "declaredPassages": 1116,
+      "status": "registered-pending-verified-lexical-index"
+    },
+    {
+      "id": "longino-sublime",
+      "title": "Περὶ ὕψους · De sublimitate",
+      "language": "grc",
+      "url": "https://libros.vitruvius-digital-library.org/corpus/longino-sublime-grc.json",
+      "sha256": "0c85d3dcee21c3bf26b2bf35dba1ef73854f3f1a7731a2f9d1cca1d305e58a3d",
+      "declaredPassages": 186,
+      "status": "registered-pending-verified-lexical-index"
+    },
+    {
+      "id": "teocrito-bucolicos",
+      "title": "Εἰδύλλια · Idilios",
+      "language": "grc",
+      "url": "https://libros.vitruvius-digital-library.org/corpus/teocrito-bucolicos-grc.json",
+      "sha256": "754db2ae258073a99548baaa1c65d997fed043aef3b48e71e316a84c5e7925ee",
+      "declaredPassages": 324,
+      "status": "registered-pending-verified-lexical-index"
+    },
+    {
+      "id": "antologia-griega",
+      "title": "Ἀνθολογία Ἑλληνική · Anthologia Graeca (Palatina)",
+      "language": "grc",
+      "url": "https://libros.vitruvius-digital-library.org/corpus/antologia-griega-grc.json",
+      "sha256": "1afb5efd413feea0ca8558cb01a9ea466cd067e27ae0fe43e3cd6c2cd8260777",
+      "declaredPassages": 835,
+      "status": "registered-pending-verified-lexical-index"
+    },
+    {
+      "id": "aquiles-tacio-leucipa",
+      "title": "Τὰ κατὰ Λευκίππην καὶ Κλειτοφῶντα · Leucipa y Clitofonte",
+      "language": "grc",
+      "url": "https://libros.vitruvius-digital-library.org/corpus/aquiles-tacio-leucipa-grc.json",
+      "sha256": "fae5e2ae389e4d42f2201bbefd0d3feed5cd026faba7986a079c5f9fdd0ebd27",
+      "declaredPassages": 1035,
+      "status": "registered-pending-verified-lexical-index"
+    },
+    {
+      "id": "aristoteles-del-cielo",
+      "title": "Περὶ οὐρανοῦ · De caelo",
+      "language": "grc",
+      "url": "https://libros.vitruvius-digital-library.org/corpus/aristoteles-del-cielo-grc.json",
+      "sha256": "7b493fc32ee4cd814c128fc7f3d40506e11dd2e2e640400abcddc6e19df5adc3",
+      "declaredPassages": 39,
+      "status": "registered-pending-verified-lexical-index"
+    },
+    {
+      "id": "aristoteles-historia-animales",
+      "title": "Περὶ τὰ ζῷα ἱστορίαι · Historia animalium",
+      "language": "grc",
+      "url": "https://libros.vitruvius-digital-library.org/corpus/aristoteles-historia-animales-grc.json",
+      "sha256": "0ef0a5202145da826c1a2ffe9af66a224168d4b12f44795b95fb88ddf9831d71",
+      "declaredPassages": 238,
+      "status": "registered-pending-verified-lexical-index"
+    },
+    {
+      "id": "baquilides-poemas",
+      "title": "Ἐπίνικοι καὶ διθύραμβοι · Epinicios y ditirambos",
+      "language": "grc",
+      "url": "https://libros.vitruvius-digital-library.org/corpus/baquilides-poemas-grc.json",
+      "sha256": "6f048887fb1adf8a5d70f11c7f8ab5b4055838df71325bfd5f8ebddf08a97085",
+      "declaredPassages": 140,
+      "status": "registered-pending-verified-lexical-index"
+    },
+    {
+      "id": "calimaco-himnos",
+      "title": "Ὕμνοι καὶ ἐπιγράμματα · Himnos y epigramas (con la Ἀλεξάνδρα de Licofrón)",
+      "language": "grc",
+      "url": "https://libros.vitruvius-digital-library.org/corpus/calimaco-himnos-grc.json",
+      "sha256": "e2e68dc66e6949f8d7fbfbcc52f47570395d64f1c83fb94665f984f86b4083af",
+      "declaredPassages": 341,
+      "status": "registered-pending-verified-lexical-index"
+    },
+    {
+      "id": "epicuro-restos",
+      "title": "Ἐπιστολαὶ καὶ Κύριαι δόξαι · Cartas y Máximas capitales",
+      "language": "grc",
+      "url": "https://libros.vitruvius-digital-library.org/corpus/epicuro-restos-grc.json",
+      "sha256": "8b8393d18c62dbdf15e90ea537d5b50e9302b15a278504cdbaab74d05e34c31e",
+      "declaredPassages": 193,
+      "status": "registered-pending-verified-lexical-index"
+    },
+    {
+      "id": "esquines-discursos",
+      "title": "Λόγοι · Discursos",
+      "language": "grc",
+      "url": "https://libros.vitruvius-digital-library.org/corpus/esquines-discursos-grc.json",
+      "sha256": "00c95e79f0ef75b1a4c2678e91906906844985a83d4d764f0c0364661ba83cbb",
+      "declaredPassages": 717,
+      "status": "registered-pending-verified-lexical-index"
+    },
+    {
+      "id": "filostrato-apolonio",
+      "title": "Τὰ ἐς τὸν Τυανέα Ἀπολλώνιον · Vida de Apolonio de Tiana",
+      "language": "grc",
+      "url": "https://libros.vitruvius-digital-library.org/corpus/filostrato-apolonio-grc.json",
+      "sha256": "65884f0112a0d79ccb638c7dab6fc75a5cf65d34ee01651d5ab2432857cdc9d3",
+      "declaredPassages": 348,
+      "status": "registered-pending-verified-lexical-index"
+    },
+    {
+      "id": "galeno-facultades-naturales",
+      "title": "Περὶ φυσικῶν δυνάμεων · De naturalibus facultatibus",
+      "language": "grc",
+      "url": "https://libros.vitruvius-digital-library.org/corpus/galeno-facultades-naturales-grc.json",
+      "sha256": "5921c6ec6653caccc57abadae5ce2411259fa66c06df961b034bfb840be3915e",
+      "declaredPassages": 41,
+      "status": "registered-pending-verified-lexical-index"
+    },
+    {
+      "id": "hipocrates-obras",
+      "title": "Corpus Hippocraticum (selección)",
+      "language": "grc",
+      "url": "https://libros.vitruvius-digital-library.org/corpus/hipocrates-obras-grc.json",
+      "sha256": "317a71ff6fb35b4c4c142cf3bc0e565954472a260466a823ee868e55effec225",
+      "declaredPassages": 2406,
+      "status": "registered-pending-verified-lexical-index"
+    },
+    {
+      "id": "iseo-discursos",
+      "title": "Λόγοι · Discursos",
+      "language": "grc",
+      "url": "https://libros.vitruvius-digital-library.org/corpus/iseo-discursos-grc.json",
+      "sha256": "36f5eacb6bf93b051bffb427d58ab3e7e02ce466ac3124bca5fb77c26cea6714",
+      "declaredPassages": 549,
+      "status": "registered-pending-verified-lexical-index"
+    },
+    {
+      "id": "jenofonte-ciropedia",
+      "title": "Κύρου παιδεία · Cyropaedia",
+      "language": "grc",
+      "url": "https://libros.vitruvius-digital-library.org/corpus/jenofonte-ciropedia-grc.json",
+      "sha256": "4755b72df597192eb15f0b797838d00a4d210e722d600751096bdc94d42ae77e",
+      "declaredPassages": 1409,
+      "status": "registered-pending-verified-lexical-index"
+    },
+    {
+      "id": "jenofonte-economico",
+      "title": "Οἰκονομικός · Oeconomicus",
+      "language": "grc",
+      "url": "https://libros.vitruvius-digital-library.org/corpus/jenofonte-economico-grc.json",
+      "sha256": "d90f587dd338021e4e920e813f4f721f75119901175b2cb8fba84206ea6c5f61",
+      "declaredPassages": 397,
+      "status": "registered-pending-verified-lexical-index"
+    },
+    {
+      "id": "longo-dafnis-cloe",
+      "title": "Δάφνις καὶ Χλόη · Poimeniká",
+      "language": "grc",
+      "url": "https://libros.vitruvius-digital-library.org/corpus/longo-dafnis-cloe-grc.json",
+      "sha256": "4a0453089b01a44d148674b82a42a528c895642ad267978451bd32c891db74af",
+      "declaredPassages": 538,
+      "status": "registered-pending-verified-lexical-index"
+    },
+    {
+      "id": "menandro-comedias",
+      "title": "Κωμῳδίαι · Comedias (fragmentos papiráceos)",
+      "language": "grc",
+      "url": "https://libros.vitruvius-digital-library.org/corpus/menandro-comedias-grc.json",
+      "sha256": "aca0c9140853184cd7919a7f8379ef9ab3841c38eb507a22f69301c7f6894fd0",
+      "declaredPassages": 305,
+      "status": "registered-pending-verified-lexical-index"
+    },
+    {
+      "id": "platon-cratilo-parmenides",
+      "title": "Κρατύλος · Παρμενίδης · Crátilo y Parménides (con Fedón y Timeo, trad. de Th. Taylor)",
+      "language": "grc",
+      "url": "https://libros.vitruvius-digital-library.org/corpus/platon-cratilo-parmenides-grc.json",
+      "sha256": "03fadb6a7b40ca155274f3924461ed4b2452a069147bcaec67c618817590165d",
+      "declaredPassages": 99,
+      "status": "registered-pending-verified-lexical-index"
+    },
+    {
+      "id": "platon-protagoras",
+      "title": "Λάχης · Πρωταγόρας · Μένων · Εὐθύδημος",
+      "language": "grc",
+      "url": "https://libros.vitruvius-digital-library.org/corpus/platon-protagoras-grc.json",
+      "sha256": "d1dae142f1263e738645fd6c04619e1f3ac567c3d1f8c1935b17c9fc4a5f9f41",
+      "declaredPassages": 146,
+      "status": "registered-pending-verified-lexical-index"
+    },
+    {
+      "id": "platon-teeteto-sofista",
+      "title": "Θεαίτητος · Σοφιστής · Teeteto y Sofista",
+      "language": "grc",
+      "url": "https://libros.vitruvius-digital-library.org/corpus/platon-teeteto-sofista-grc.json",
+      "sha256": "4d25cf7e01c4df61f62973802c3a5f4c6b62e1b9ce9c08888cf094f8b8c2649c",
+      "declaredPassages": 122,
+      "status": "registered-pending-verified-lexical-index"
+    },
+    {
+      "id": "plotino-eneadas",
+      "title": "Ἐννεάδες · Enneades",
+      "language": "grc",
+      "url": "https://libros.vitruvius-digital-library.org/corpus/plotino-eneadas-grc.json",
+      "sha256": "016d133e5e245ceece15eeb222ca1a3e556fbd3bc08ceaa523bc47c1f1d2a7cb",
+      "declaredPassages": 653,
+      "status": "registered-pending-verified-lexical-index"
+    },
+    {
+      "id": "quinto-esmirna-posthomericas",
+      "title": "Τὰ μεθ' Ὅμηρον · Posthomerica",
+      "language": "grc",
+      "url": "https://libros.vitruvius-digital-library.org/corpus/quinto-esmirna-posthomericas-grc.json",
+      "sha256": "5794bf90ce2af75bdec59b0bed84760d682c6038610b41346c29c8b96e0252de",
+      "declaredPassages": 889,
+      "status": "registered-pending-verified-lexical-index"
+    },
+    {
+      "id": "amiano-marcelino-es",
+      "title": "Res gestae",
+      "language": "la",
+      "url": "https://libros.vitruvius-digital-library.org/corpus/amiano-marcelino-es-la.json",
+      "sha256": "7e2e8e1fbe21411f551bdf41c812f455b2771f1359c52c8a88af50ef5fdbe00a",
+      "declaredPassages": 2883,
+      "status": "registered-pending-verified-lexical-index"
+    },
+    {
+      "id": "ausonio-obras",
+      "title": "Opuscula · Obras",
+      "language": "la",
+      "url": "https://libros.vitruvius-digital-library.org/corpus/ausonio-obras-la.json",
+      "sha256": "4afe8f2ca2e7a882532be701c29766b769df7cb96f5bb7a558700e1c304be1ad",
+      "declaredPassages": 789,
+      "status": "registered-pending-verified-lexical-index"
+    },
+    {
+      "id": "claudiano-poemas",
+      "title": "Carmina · Poemas",
+      "language": "la",
+      "url": "https://libros.vitruvius-digital-library.org/corpus/claudiano-poemas-la.json",
+      "sha256": "c1756af0299c4019b8de63dc6ae64fdc2503022039fc018eb212dfc8d2bc1e0c",
+      "declaredPassages": 1009,
+      "status": "registered-pending-verified-lexical-index"
+    },
+    {
+      "id": "minucio-felix-octavio",
+      "title": "Octavius",
+      "language": "la",
+      "url": "https://libros.vitruvius-digital-library.org/corpus/minucio-felix-octavio-la.json",
+      "sha256": "59cb758e3ad483c4b9bfd7748cbdaad962de957cf0573ad99a4eaeff3feb17f9",
+      "declaredPassages": 306,
+      "status": "registered-pending-verified-lexical-index"
+    },
+    {
+      "id": "valerio-flaco-argonautica",
+      "title": "Argonautica",
+      "language": "la",
+      "url": "https://libros.vitruvius-digital-library.org/corpus/valerio-flaco-argonautica-la.json",
+      "sha256": "bf511398b770913ef5288a73a7e7eaf4485446c494add9d015308d7dcd3db7cf",
+      "declaredPassages": 564,
+      "status": "registered-pending-verified-lexical-index"
+    }
+  ]
+}
