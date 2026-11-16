@@ -301,9 +301,22 @@ function switchLanguage(k){
  try{localStorage.setItem("vitruvius-ui-lang",locale)}catch{}
  document.dispatchEvent(new CustomEvent("vitruvius:language-changed",{detail:{language:locale,origin:"bibliotheca"}}));
 }
+/* Bibliotheca owns chronological/genre filters. Lexicon receives the
+ * original query and a return itinerary, not a false claim that its lexical
+ * engine applied the catalogue facets. No extra search index is created. */
+function appendBibliothecaScope(url){
+ url.searchParams.set("source","bibliotheca");
+ if(era.value)url.searchParams.set("bib_era",era.value);
+ if(genre.value)url.searchParams.set("bib_genre",genre.value);
+ if(order.value)url.searchParams.set("bib_order",order.value);
+ if(work.value)url.searchParams.set("bib_work",work.value);
+ const locus=advancedLocus?.value.trim();
+ if(locus)url.searchParams.set("bib_locus",locus);
+ return url;
+}
 function updateLexicon(){
  const q=input.value.trim();bar.hidden=!q;
- if(q){const u=new URL("vitruvia-lexicon.html",location.href);u.searchParams.set("q",q);u.searchParams.set("mode",q.trim().split(/\\s+/).length>1?"frase":"palabra");if(work.value)u.searchParams.set("work",editionAliases[work.value]?.workId||work.value);lex.href=u.href;lex.textContent=dict[locale].lexicon+" · "+q;lex.setAttribute("aria-label",dict[locale].lexicon+": "+q);}
+ if(q){const u=new URL("vitruvia-lexicon.html",location.href);u.searchParams.set("q",q);u.searchParams.set("mode",q.trim().split(/\\s+/).length>1?"frase":"palabra");if(work.value)u.searchParams.set("work",editionAliases[work.value]?.workId||work.value);appendBibliothecaScope(u);lex.href=u.href;lex.textContent=dict[locale].lexicon+" · "+q;lex.setAttribute("aria-label",dict[locale].lexicon+": "+q);}
 }
 const metadata=Promise.all([
  fetch(CATALOG).then(r=>{if(!r.ok)throw Error("catalogue");return r.json()}),
@@ -396,6 +409,7 @@ function passageActions(record,workInfo,passageNode){
  if(["la","grc"].includes(record.language))lexUrl.searchParams.set("lang",record.language);
  if(record.workId)lexUrl.searchParams.set("work",record.workId);
  if(record.locus)lexUrl.searchParams.set("locus",record.locus);
+ appendBibliothecaScope(lexUrl);
  const continueLex=el("a","passage-action",isPhrase?"Continuar frase en Lexicon":"Continuar en Lexicon");
  continueLex.href=lexUrl.href;
  continueLex.title="Continúa la consulta con lemas, morfología, concordancias y paralelos de la cobertura Lexicon disponible";
@@ -414,7 +428,7 @@ dictionaryPanel.setAttribute("aria-modal","false");
 dictionaryPanel.setAttribute("aria-label","Diccionario contextual");
 dictionaryPanel.tabIndex=-1;
 document.body.append(dictionaryPanel);
-const dictLink=(term)=>{const u=new URL("vitruvia-lexicon.html",location.href);u.searchParams.set("q",term);u.searchParams.set("mode","palabra");return u.href};
+const dictLink=(term)=>{const u=new URL("vitruvia-lexicon.html",location.href);u.searchParams.set("q",term);u.searchParams.set("mode","palabra");appendBibliothecaScope(u);return u.href};
 async function openDictionary(term,language){
  dictionaryPanel.replaceChildren();
  const head=el("div","dictionary-heading");
@@ -592,6 +606,7 @@ function render(rows,q,details){
    const toLexicon=new URL("vitruvia-lexicon.html",location.href);
    toLexicon.searchParams.set("q",term);
    toLexicon.searchParams.set("mode","palabra");
+   appendBibliothecaScope(toLexicon);
    const lexicon=el("a","passage-link",locale==="en"?"Study term in Lexicon":locale==="fr"?"Étudier dans Lexicon":"Estudiar término en Lexicon");
    lexicon.href=toLexicon.href;
    cross.append(vitruvia,document.createTextNode(" · "),lexicon);
@@ -895,13 +910,13 @@ function openInLexicon(){
  if(target)url.searchParams.set("work",editionAliases[target]?.workId||target);
  const locus=advancedLocus?.value.trim();
  if(locus)url.searchParams.set("locus",locus);
- url.searchParams.set("source","bibliotheca");
+ appendBibliothecaScope(url);
  location.assign(url.href);
 }
 $("search-form").addEventListener("submit",ev=>{ev.preventDefault();openInLexicon()});
 work.addEventListener("change",()=>{drawRemote();updateLexicon()});
 for(const facet of [era,genre])facet.addEventListener("change",()=>{refresh();updateLexicon()});
- order.addEventListener("change",()=>{refresh();window.dispatchEvent(new Event("bibliotheca:order-changed"))});
+ order.addEventListener("change",()=>{refresh();updateLexicon();window.dispatchEvent(new Event("bibliotheca:order-changed"))});
 input.addEventListener("input",()=>{
  // Editing a new term cancels the visual authority of the preceding search.
  // The old asynchronous scan may finish, but its serial can no longer paint.
@@ -926,10 +941,13 @@ document.addEventListener("vitruvius:language-changed",event=>{
 });
 const params=new URLSearchParams(location.search),initial=(params.get("q")||params.get("term")||"").trim();
 if(initial)input.value=initial;
+if(advancedLocus&&params.get("locus"))advancedLocus.value=params.get("locus").slice(0,140);
 const initialEra=params.get("era")||"",initialGenre=params.get("genre")||"";
+const initialOrder=params.get("order")||"";
 let stored="es";try{stored=localStorage.getItem("vitruvius-ui-lang")||"es"}catch{}
 switchLanguage(params.get("ui")||stored);updateLexicon();
 metadata.then(()=>{
+ if(["author","title","date"].includes(initialOrder))order.value=initialOrder;
  if(initialEra&&[...era.options].some(x=>x.value===initialEra))era.value=initialEra;
  if(initialGenre&&[...genre.options].some(x=>x.value===initialGenre))genre.value=initialGenre;
  refresh();window.dispatchEvent(new Event("bibliotheca:filters-ready"));
@@ -949,6 +967,9 @@ window.addEventListener("popstate",()=>{
  metadata.then(()=>{
   if(restore!==serial)return;
   const eraValue=params.get("era")||"",genreValue=params.get("genre")||"";
+  const orderValue=params.get("order")||"";
+  if(["author","title","date"].includes(orderValue))order.value=orderValue;
+  if(advancedLocus)advancedLocus.value=(params.get("locus")||"").slice(0,140);
   if(params.get("ui"))switchLanguage(params.get("ui"));
   if([...era.options].some(x=>x.value===eraValue))era.value=eraValue;
   if([...genre.options].some(x=>x.value===genreValue))genre.value=genreValue;
