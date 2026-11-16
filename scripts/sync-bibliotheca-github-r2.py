@@ -11,6 +11,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 CAT = ROOT / "data/bibliotheca-graeca-latina-I-bce-I-ce.json"
+SUPPLEMENT = ROOT / "data/bibliotheca-expansion-publicada-2026-11-16.json"
 R2 = ROOT / "data/r2/catalogo-clasicos-r2.json"
 LINKS = ROOT / "data/r2/vinculos-repertorio.json"
 REGISTRY = ROOT / "data/classics-corpus/search-registry.json"
@@ -21,11 +22,16 @@ def read(p):
 
 def main():
     catalog = read(CAT)["works"]
+    supplement = read(SUPPLEMENT)["works"]
     r2 = read(R2)["items"]
     links = read(LINKS)
     registry = read(REGISTRY)["entries"]
     catalog_by_id = {x["id"]: x for x in catalog}
     assert len(catalog_by_id) == len(catalog), "Repeated work ID in catalogue"
+    supplement_by_id = {x["id"]: x for x in supplement}
+    assert len(supplement_by_id) == len(supplement), "Repeated supplementary work ID"
+    assert not (set(supplement_by_id) & set(catalog_by_id)), "Supplementary work duplicates master catalogue"
+    all_catalogued = {**catalog_by_id, **supplement_by_id}
     r2_by_id = {x["id"]: x for x in r2}
     assert len(r2_by_id) == len(r2), "Repeated R2 edition ID"
     mapping = links.get("mapa", {})
@@ -41,7 +47,7 @@ def main():
     local_by_work = {}
     remote_by_work = {}
     for e in registry:
-        if e["workId"] not in catalog_by_id:
+        if e["workId"] not in all_catalogued:
             raise ValueError(f"Uncatalogued indexed work: {e['workId']}")
         if str(e["path"]).startswith(("http://", "https://")):
             remote_by_work.setdefault(e["workId"], []).append({"language":e["language"],"url":e["path"]})
@@ -87,8 +93,9 @@ def main():
         "method":"Master works and additional R2 works counted separately; edition relations can be many-to-many. Remote text URLs are declared, not live-verified. Unresolved editions are never merged automatically.",
         "counts":{
             "cataloguedWorks":len(catalog),
+            "supplementaryWorks":len(supplement),
             "additionalWorks":len(additional),
-            "totalDeclaredWorks":len(catalog)+len(additional),
+            "totalDeclaredWorks":len(catalog)+len(supplement)+len(additional),
             "r2EditionRecords":len(r2),
             "r2LinkedEditionRecords":len(linked_edition_ids),
             "r2WorkEditionRelations":sum(len(v) for v in by_work.values()),
@@ -111,6 +118,13 @@ def main():
                 "objectStatus":"declared-in-r2-catalogue-not-live-probed"
             }]
         } for row in additional],
+        "supplementaryWorks":[{
+            "id":w["id"],"author":w.get("author"),"title":w.get("title"),
+            "catalogue":"github-supplementary",
+            "locallyIndexedText":local_by_work.get(w["id"],[]),
+            "declaredRemoteIndexedText":remote_by_work.get(w["id"],[]),
+            "r2FacsimileEditions":[]
+        } for w in supplement],
         "works":[{
             "id":w["id"],"author":w.get("author"),"title":w.get("title"),
             "catalogue":"github",
