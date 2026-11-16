@@ -1,10 +1,10 @@
 {
   "schema": "vdl-bibliotheca-unindexed-backlog-v1",
-  "generated": "2026-11-15T22:12:47.420Z",
+  "generated": "2026-11-16T04:00:08.818Z",
   "method": "Cruce de 271 fichas y versiones efectivamente declaradas en search-registry; ninguna ausencia se presenta como texto indexado. Ediciones modernas distinguidas de obras antiguas.",
   "summary": {
-    "missingRegistryEntries": 45,
-    "ancientWorksWithoutRegisteredText": 42,
+    "missingRegistryEntries": 44,
+    "ancientWorksWithoutRegisteredText": 41,
     "modernEditionManifestationsWithoutOwnRegistry": 3,
     "highPriorityAncient": 13
   },
@@ -537,18 +537,6 @@
       ],
       "sourceStatus": "No hay versión indexada con este ID en search-registry.json",
       "nextStep": "Comprobar el PDF/OCR existente, el título de portada, edición y derechos; producir texto por locus si la fuente lo permite.",
-      "indexed": false
-    },
-    {
-      "id": "vegetius-epitoma",
-      "author": "Vegecio",
-      "title": "Epitoma rei militaris",
-      "language": "la",
-      "classification": "ancient_work",
-      "priority": "normal",
-      "r2EditionsDeclared": [],
-      "sourceStatus": "No hay versión indexada con este ID en search-registry.json",
-      "nextStep": "Identificar edición grecolatina acreditada y lícita; importar texto verificable antes de indexar.",
       "indexed": false
     },
     {

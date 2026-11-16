@@ -1,29 +1,29 @@
 {
   "schema": "vdl-bibliotheca-indexation-control-v1",
-  "generated": "2026-11-15T22:12:47.422Z",
+  "generated": "2026-11-16T04:00:08.820Z",
   "methodology": "Auditoría documental reproducible de GitHub. Los índices del catálogo y los registros remotos son declaraciones; no sustituyen GET/HEAD de R2, cotejo del interior del PDF ni recensio manuscrita. Una obra sin índice NO se marca indexada automáticamente.",
   "counts": {
     "catalogueWorks": 271,
     "additionalR2Works": 10,
     "combinedCataloguedWorks": 281,
     "r2EditionRecords": 117,
-    "registeredTextVersions": 291,
-    "registeredDistinctWorks": 226,
-    "verifiedLocalSourceWorkIds": 182,
+    "registeredTextVersions": 292,
+    "registeredDistinctWorks": 227,
+    "verifiedLocalSourceWorkIds": 183,
     "declaredRemoteSourceWorkIds": 44,
     "r2TextManifestVersions": 44,
     "r2ExpansionIndexedEditions": 12,
     "r2ExpansionIndexedPassages": 24904,
     "r2InvertedIndexDeclaredEditions": 119,
-    "unindexedCatalogueWorks": 45,
-    "unindexedAncientWorks": 42,
+    "unindexedCatalogueWorks": 44,
+    "unindexedAncientWorks": 41,
     "unindexedEditorialManifestations": 3,
     "worksMissingRegisteredOriginal": 0,
     "greekTitleNeedsIndividualReview": 7,
     "r2UnlinkedEditions": 0,
     "duplicateR2BinaryGroups": 2,
     "structuralErrors": 0,
-    "editorialReviewItems": 55
+    "editorialReviewItems": 54
   },
   "scope": {
     "r2Expansion": {
@@ -141,12 +141,6 @@
         "id": "apuleius-de-deo-socratis",
         "author": "Apuleyo",
         "title": "De deo Socratis",
-        "language": "la"
-      },
-      {
-        "id": "vegetius-epitoma",
-        "author": "Vegecio",
-        "title": "Epitoma rei militaris",
         "language": "la"
       },
       {
@@ -471,12 +465,6 @@
       "severity": "review",
       "code": "work_not_text_indexed",
       "id": "apuleius-de-deo-socratis",
-      "description": "Ficha presente sin versión textual en registry"
-    },
-    {
-      "severity": "review",
-      "code": "work_not_text_indexed",
-      "id": "vegetius-epitoma",
       "description": "Ficha presente sin versión textual en registry"
     },
     {
