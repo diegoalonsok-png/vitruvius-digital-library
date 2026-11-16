@@ -12,8 +12,11 @@ const local=read("data/index/classics/manifest.json");
 const keys=new Set(),all=new Map(),localPaths=new Set(),localAlternates=[];
 for(const doc of local.index){
  const key=doc.id+"|"+doc.lang;
- assert(doc.file&&!localPaths.has(doc.file),"Duplicate lexical source file: "+doc.file);
- localPaths.add(doc.file);
+ // One structured edition may legitimately index two DIFFERENT fields (latin / translation).
+ // Only an exact source+field+language duplicate is invalid; preserve both versions.
+ const sourceKey=String(doc.file||"")+"|"+String(doc.field||"text")+"|"+doc.lang;
+ assert(doc.file&&!localPaths.has(sourceKey),"Duplicate lexical source/field/language: "+sourceKey);
+ localPaths.add(sourceKey);
  // Two legitimately different editorial representations may have one work ID,
  // e.g. Didache grc (whole chapters) and a derived verse-locus index.
  // Retain both files, but the combined search counts that ID only once.
