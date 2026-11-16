@@ -72,3 +72,11 @@ bibliográfica | responsable | estado (pendiente/corregido/verificado)
 ## F. No regresión
 
 Esta propuesta es documental. No modifica el catálogo, los datos, el sitio visible, las referencias DOI/ISBN, las rutas del lector, el índice ni los objetos de R2. Toda implementación posterior debe introducirse como cambio pequeño, con prueba reproducible y revisión antes de fusionar a `main`.
+
+## G. Unidad de evaluación: ecosistema completo, no cuatro productos aislados
+
+La evaluación académica debe medir conjuntamente **Vitruvius + Vitruvia (buscador) + Bibliotheca Graeca et Latina + Lexicon**. El valor diferencial reside en las transiciones verificables entre estos instrumentos, no en el simple recuento de páginas o funciones.
+
+**Pruebas de integración propuestas:** (a) consulta transversal por palabra o frase; (b) resultado identificado por autor, obra, edición, idioma y locus; (c) apertura del lector correcto; (d) selección del término y salto a Lexicon; (e) regreso al pasaje y comparación de ediciones y traducciones; (f) acceso al aparato crítico y, cuando existe una concordancia comprobada, al folio; (g) cita y exportación del resultado sin perder identificadores ni procedencia.
+
+La nota del proyecto debe mostrar dos ejes distintos: **capacidad e integración funcional** y **validación académica y editorial**. Una buena nota en el primer eje no demuestra automáticamente el segundo. No comparar la especialización de una biblioteca temática con el volumen total de colecciones mucho más grandes sin normalizar por objetivo y recursos.
