@@ -469,7 +469,7 @@ function bibliographicSummary(data,query){
 }
 
 function render(){const data=filters(),t=terms(),q="";const total=works.length,local=works.filter(isLocal).length,withSource=works.filter(w=>hasSource(w)&&!isLocal(w)).length;
- $("classic-count").textContent=data.length+" / "+total+" "+t.search+" · "+local+" "+additionalInterfaceWords[language()]["count-local"]+" · "+withSource+" "+additionalInterfaceWords[language()]["count-source"];const target=$("classic-list"),fragment=document.createDocumentFragment();for(const w of data){const b=document.createElement("button");b.className="classic-item";b.type="button";b.dataset.id=w.id;b.setAttribute("aria-current",String(w.id===selected));b.innerHTML="<span>"+safe(w.author)+" · "+safe(w.dating)+"</span><strong lang='"+safe(w.language)+"'>"+safe(w.title)+"</strong><span>"+safe(w.genre)+"</span>";const availabilityMarker=document.createElement("small");availabilityMarker.className="classic-item-status "+(isLocal(w)?"is-local":hasSource(w)?"is-external":"is-catalog");availabilityMarker.textContent=statusLabel(w);b.append(availabilityMarker);const origin=sourceType(w),type=document.createElement("small");type.className="classic-origin-kind";type.textContent=origin.label;type.title=origin.title;b.append(type);const hit=q?matchingWitness(w,q):null;if(hit){const provenance=document.createElement("small");provenance.className="classic-witness-match";provenance.textContent=(language()==="en"?"Manuscript match: ":"Coincidencia en códice: ")+[hit.shelfmark,hit.library,hit.date].filter(Boolean).join(" · ");b.append(provenance)}b.addEventListener("click",()=>choose(w.id));fragment.append(b)}target.replaceChildren(fragment);if(selected&&!data.some(x=>x.id===selected))selected="";target.querySelectorAll("button").forEach(b=>b.setAttribute("aria-current",String(b.dataset.id===selected)));if(!selected){const pane=$("classic-detail");pane.replaceChildren();const intro=document.createElement("p");intro.textContent="Selecciona una obra del catálogo para consultar su ficha, manuscritos y visores. No se carga ningún libro sin tu elección.";pane.append(intro);document.querySelector(".classic-layout")?.classList.remove("classic-study-wide");}else detail();}
+ $("classic-count").textContent=data.length+" / "+total+" "+t.search+" · "+local+" "+additionalInterfaceWords[language()]["count-local"]+" · "+withSource+" "+additionalInterfaceWords[language()]["count-source"];const target=$("classic-list"),fragment=document.createDocumentFragment();for(const w of data){const b=document.createElement("button");b.className="classic-item";b.type="button";b.dataset.id=w.id;b.setAttribute("aria-current",String(w.id===selected));b.innerHTML="<span>"+safe(w.author)+" · "+safe(w.dating)+"</span><strong lang='"+safe(w.language)+"'>"+safe(w.title)+"</strong><span>"+safe(w.genre)+"</span>";const availabilityMarker=document.createElement("small");availabilityMarker.className="classic-item-status "+(isLocal(w)?"is-local":hasSource(w)?"is-external":"is-catalog");availabilityMarker.textContent=statusLabel(w);b.append(availabilityMarker);if(window.BibliothecaCoverMiniatures){b.classList.add("vdl-classic-item-with-cover");b.prepend(window.BibliothecaCoverMiniatures.create(w));}const origin=sourceType(w),type=document.createElement("small");type.className="classic-origin-kind";type.textContent=origin.label;type.title=origin.title;b.append(type);const hit=q?matchingWitness(w,q):null;if(hit){const provenance=document.createElement("small");provenance.className="classic-witness-match";provenance.textContent=(language()==="en"?"Manuscript match: ":"Coincidencia en códice: ")+[hit.shelfmark,hit.library,hit.date].filter(Boolean).join(" · ");b.append(provenance)}b.addEventListener("click",()=>choose(w.id));fragment.append(b)}target.replaceChildren(fragment);if(selected&&!data.some(x=>x.id===selected))selected="";target.querySelectorAll("button").forEach(b=>b.setAttribute("aria-current",String(b.dataset.id===selected)));if(!selected){const pane=$("classic-detail");pane.replaceChildren();const intro=document.createElement("p");intro.textContent="Selecciona una obra del catálogo para consultar su ficha, manuscritos y visores. No se carga ningún libro sin tu elección.";pane.append(intro);document.querySelector(".classic-layout")?.classList.remove("classic-study-wide");}else detail();}
 /* The two study readers are editions of the text, not historical PDF facsimiles.
    A codex and its material history remain accessible under Manuscrito / PDF. */
 function hasStudyPair(w){
@@ -599,6 +599,32 @@ function detail(){const w=works.find(x=>x.id===selected),box=$("classic-detail")
 const origin=sourceType(w);
 const tabs=labels.map(([id,label])=>'<button type="button" data-tab="'+id+'" aria-pressed="'+(id===tab)+'">'+safe(label)+'</button>').join("");
 box.innerHTML='<div class="classic-tag" title="'+safe(origin.title)+'">'+safe(origin.label)+'</div><div class="classic-tag">'+safe(w.language==="la"?"LATINE · LATÍN":"ΕΛΛΗΝΙΚΑ · GRIEGO")+'</div><div class="classic-tag">'+safe(w.genre)+'</div><h2 lang="'+w.language+'">'+safe(w.title)+'</h2><p><strong>'+safe(w.author)+'</strong> · '+safe(w.dating)+'</p><p class="classic-detail-status '+(isLocal(w)?"is-local":hasSource(w)?"is-external":"is-catalog")+'">'+statusLabel(w)+'</p><div class="classic-tabstrip" role="group" aria-label="Modos de lectura">'+tabs+'</div><div id="classic-panel" class="classic-viewer" role="region" aria-live="polite"></div><div class="classic-linkline">'+navLink(w.links.scaife,t.scaife)+navLink(w.links.gallica,t.gallica)+navLink(w.links.archive,t.archive)+'</div><p class="classic-ref"><strong>Nota editorial:</strong> '+safe(w.translation?.status||"No se consigna una traducción concreta para esta ficha.")+' '+safe(w.manuscript?.status||"Sin facsímil identificado.")+'</p>';
+if(window.BibliothecaCoverMiniatures)box.prepend(window.BibliothecaCoverMiniatures.create(w,{size:"detail"}));
+// Bibliographic facts are edition-level evidence. Never manufacture an ISBN, DOI,
+// collation or manuscript reference from a generic work title.
+const fields=[
+ ["Título uniforme",w.bibliography?.uniformTitle],
+ ["Edición / editor",w.bibliography?.editor||w.source],
+ ["Referencia canónica / CTS",w.bibliography?.canonicalReference],
+ ["Derechos del texto",w.bibliography?.license],
+ ["Fuente digital",w.sourceUrl],
+ ["Estado de indexación",w.textStatus==="lexically-indexed"?"Índice léxico local registrado":w.textStatus==="registered-pending-lexical-index"?"Pendiente de confirmación en el índice":w.textStatus==="not-indexed"?"Ficha sin transcripción indexada":null]
+].filter(([,value])=>typeof value==="string"&&value.trim());
+if(fields.length){
+ const note=document.createElement("section");note.className="vdl-fiche-meta";
+ const h=document.createElement("h3");h.textContent="Ficha editorial y procedencia";note.append(h);
+ const dl=document.createElement("dl");
+ for(const [label,value] of fields){
+  const dt=document.createElement("dt");dt.textContent=label;
+  const dd=document.createElement("dd");
+  if(label==="Fuente digital"&&/^https:\/\/(github\.com\/|catalog\.perseus\.org\/|www\.perseus\.tufts\.edu\/|dracor\.org\/)/.test(value)){
+   const a=document.createElement("a");a.href=value;a.target="_blank";a.rel="noopener noreferrer";a.textContent="Consultar fuente";dd.append(a);
+  }else dd.textContent=value;
+  dl.append(dt,dd);
+ }
+ note.append(dl);
+ box.querySelector(".classic-tabstrip")?.before(note);
+}
 showExternalTranslations(w,box);
 if(w.corpusFiles&&Object.keys(w.corpusFiles).some(l=>["la","grc"].includes(l))&&Object.keys(w.corpusFiles).some(l=>["es","en","fr","it","pt","de"].includes(l))){
  const bar=document.createElement("p");bar.className="classic-linkline";
