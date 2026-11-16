@@ -21,6 +21,9 @@ on:
       - "data/r2/corpus-manifest.json"
       - "data/classics-corpus/search-registry.json"
       - "data/bibliotheca-graeca-latina-I-bce-I-ce.json"
+      - "data/bibliotheca-expansion-publicada-2026-11-16.json"
+      - "scripts/test-bibliotheca-expansion-2026-11.mjs"
+      - "data/index/classics/manifest.json"
   schedule:
     - cron: "35 10 * * *"
   workflow_dispatch:
@@ -55,6 +58,7 @@ jobs:
         run: python -m pip install --quiet "boto3>=1.36"
       - name: Identidad catalográfica y sincronización de obras y versiones
         run: |
+          node scripts/test-bibliotheca-expansion-2026-11.mjs
           node scripts/audit-bibliotheca-federada.mjs --strict
           python scripts/sync-bibliotheca-github-r2.py
           python scripts/cifras-corpus.py
