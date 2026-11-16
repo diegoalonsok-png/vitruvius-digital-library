@@ -294,6 +294,7 @@ function el(tag,attrs={},...kids){const e=document.createElement(tag);for(const 
 
 /* ---------- Idioma de la interfaz (ES · EN · FR), compartido con el sitio ---------- */
 const I18N={
+ "Reportar errata · pasaje":["Report an issue · passage","Signaler une erreur · passage"],
  "Lema por contexto":["Lemma by context","Lemme selon le contexte"],"descartados":["ruled out","écartés"],
  "Elegido por el analizador Stanza según el contexto, entre los lemas posibles de la forma. Análisis automático: verifíquese en el pasaje.":["Chosen by the Stanza analyser from the context, among the possible lemmas of the form. Automatic analysis: check it in the passage.","Choisi par l'analyseur Stanza selon le contexte, parmi les lemmes possibles de la forme. Analyse automatique : à vérifier dans le passage."],
  "coincidencias descartadas: el análisis contextual (Stanza) asigna allí otro lema.":["matches ruled out: the contextual analysis (Stanza) assigns another lemma there.","occurrences écartées : l'analyse contextuelle (Stanza) y attribue un autre lemme."],
@@ -625,7 +626,7 @@ function hitCard(D,h){
  });
  actions.append(el("a",{href:reportURL,target:"_blank",rel:"noopener noreferrer",
   title:"Notificar una posible errata con obra, locus, edición y enlace de consulta"},
-  "Reportar errata · pasaje"));
+  T("Reportar errata · pasaje")));
  actions.append(citeMenu(D,p,cite,text.slice(k.a,k.b)));
  card.append(coins(D,p));
  card.append(actions);
