@@ -73,6 +73,15 @@ function catalogues(){
     }
    }
   }catch{/* The original index remains usable if the optional expansion is offline. */}
+  // A complete R2 lexical index is added only after SHA256 verification.
+  // Earlier GitHub and R2 expansion editions take precedence on duplicates.
+  try{
+   const r2=await load("data/index/classics-r2/manifest.json");
+   if(r2?.schema==="vitruvia-classics-lexical-index-v1"&&
+      r2.works===r2.index?.length&&r2.r2VerifiedEditions===r2.works&&
+      r2.r2ManifestPath==="data/r2/corpus-manifest.json")
+    out.push({base:"data/index/classics-r2/",info:r2});
+  }catch{/* The other indices work before the complete R2 index is generated. */}
   return out;
  })();
  return cataloguesTask;
