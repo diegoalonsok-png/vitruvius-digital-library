@@ -14,6 +14,11 @@ on:
       - 'data/classics-corpus/search-registry.json'
       - 'data/classics-alignment/manifest.json'
       - 'scripts/test-academic-cross-site.mjs'
+      - 'scripts/test-academic-ecosystem-navigation.mjs'
+      - 'assets/classics-study-actions.js'
+      - 'scripts/test-classics-study-actions.mjs'
+      - 'scripts/test-lexicon-continuation.mjs'
+      - 'assets/vitruvia-lexicon.js'
   pull_request:
     paths:
       - 'index.html'
@@ -25,6 +30,9 @@ on:
       - 'auditoria-academica.html'
       - 'metodologia-filologica.html'
       - 'scripts/test-academic-cross-site.mjs'
+      - 'scripts/test-academic-ecosystem-navigation.mjs'
+      - 'assets/classics-study-actions.js'
+      - 'scripts/test-classics-study-actions.mjs'
       - '.github/workflows/academic-cross-site.yml'
 permissions:
   contents: read
@@ -38,3 +46,6 @@ jobs:
         with:
           node-version: '22'
       - run: node scripts/test-academic-cross-site.mjs
+      - run: node scripts/test-academic-ecosystem-navigation.mjs
+      - run: node scripts/test-classics-study-actions.mjs
+      - run: node scripts/test-lexicon-continuation.mjs
