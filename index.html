@@ -503,7 +503,27 @@ html[data-theme="dark"].front-color-light .research-nav-controls>.research-print
 @media(max-width:760px){.research-nav .research-nav-links.research-nav-categories{grid-template-columns:repeat(2,minmax(0,1fr))!important}.research-nav .research-nav-group:nth-child(3n) .research-nav-group-items{left:0;right:auto}.research-nav .research-nav-group:nth-child(2n) .research-nav-group-items{left:auto;right:0}}
 @media(max-width:480px){.research-nav .research-nav-links.research-nav-categories{grid-template-columns:1fr!important}.research-nav .research-nav-group>summary{white-space:normal}.research-nav .research-nav-group-items{position:static;width:auto;max-width:none;max-height:none;box-shadow:none}}
 </style>
-<script defer src="assets/vdl-edition-identity-strip.js?v=20261115-citation-audit-v4"></script></head>
+<script defer src="assets/vdl-edition-identity-strip.js?v=20261115-citation-audit-v4"></script><style id="corpus-compact-v1">
+#estado-corpus{margin:10px auto 15px!important}
+.corpus-compact-shell{border:1px solid #7777;border-radius:8px;padding:11px 15px;background:rgba(135,122,95,.06);font:12px/1.45 system-ui,sans-serif}
+.corpus-compact-heading{display:flex;flex-wrap:wrap;gap:4px 16px;align-items:baseline;justify-content:space-between}
+.corpus-compact-heading h2{font:400 clamp(18px,1.7vw,23px)/1.2 Georgia,serif;margin:0}
+.corpus-compact-status{margin-right:auto}
+.corpus-compact-date{font-size:11px;opacity:.86}
+.corpus-compact-main{display:flex;align-items:baseline;gap:5px 16px;flex-wrap:wrap;margin:6px 0 5px}
+.corpus-compact-main>span{opacity:.88}
+.corpus-compact-main a{font-size:11px}
+.corpus-compact-biblio{border-top:1px solid #8885;margin-top:7px;padding-top:7px}
+.corpus-compact-biblio>summary{cursor:pointer;font-weight:600;font-size:12px;list-style:revert}
+.corpus-compact-biblio[open]>summary{margin-bottom:11px}
+.corpus-compact-editions{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:15px}
+.corpus-compact-editions article{min-width:0}
+.corpus-compact-editions h3{font:700 12px/1.4 system-ui,sans-serif;margin:0 0 5px}
+.corpus-compact-editions p{font:11px/1.5 system-ui,sans-serif;margin:4px 0;overflow-wrap:anywhere}
+.corpus-compact-qualification,.corpus-compact-example{font:11px/1.5 system-ui,sans-serif;margin:9px 0 3px;border-top:1px solid #8884;padding-top:7px}
+#estado-corpus a{color:inherit;text-underline-offset:2px}
+@media(max-width:760px){.corpus-compact-editions{grid-template-columns:1fr}.corpus-compact-heading{gap:5px 12px}.corpus-compact-date{width:100%}}
+</style></head>
 <body>
   <a class="skip" href="#contenido">Saltar al contenido</a>
   <div class="institution-bar"><div class="wrap"><span>DE ARCHITECTURA · TEXTOS Y TRADICIÓN</span><span>Una biblioteca de acceso abierto</span></div></div>
@@ -658,31 +678,44 @@ html[data-theme="dark"].front-color-light .research-nav-controls>.research-print
         <a class="principal-catalog-link" href="#coleccion">Todas las versiones y traducciones <span aria-hidden="true">→</span></a>
       </aside>
     </section>
-    <section class="wrap" id="estado-corpus" aria-labelledby="estado-corpus-title" style="margin:18px auto 26px">
-      <div style="border:1px solid #7777;border-radius:9px;padding:clamp(17px,2.4vw,25px);background:rgba(135,122,95,.07)">
-        <header style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:6px 24px;align-items:baseline">
-          <h2 id="estado-corpus-title" style="font:400 clamp(20px,2.2vw,27px)/1.3 Georgia,serif;margin:0">Estado del corpus · consulta documentada</h2>
-          <p style="font:12px/1.5 system-ui,sans-serif;margin:0">Inventario: <time data-cifra-fecha datetime="2026-11-13">13 de noviembre de 2026</time> · <a href="auditoria-academica.html">ver auditoría</a></p>
+    <section class="wrap" id="estado-corpus" aria-labelledby="estado-corpus-title">
+      <div class="corpus-compact-shell">
+        <header class="corpus-compact-heading">
+          <h2 id="estado-corpus-title">Estado del corpus</h2>
+          <span class="corpus-compact-status"><strong>731 loci</strong> · 3 ediciones · <a href="status-textus.html">Alcance documental</a></span>
+          <span class="corpus-compact-date">Inventario: <time data-cifra-fecha datetime="2026-11-13">13 de noviembre de 2026</time> · <a href="auditoria-academica.html">Auditoría</a></span>
         </header>
-        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin:16px 0;font:13px/1.65 system-ui,sans-serif">
-          <div><strong>Bibliotheca Graeca et Latina</strong><p style="margin:4px 0">Catálogo de autores y obras griegas y latinas, con consulta textual, facsímiles y fichas académicas. Los registros, los originales efectivamente indexados y las traducciones tienen estados separados: <a href="estado-ediciones-clasicas.html">consultar la cobertura documental</a>. El total de obras figura una sola vez en el resumen inferior.</p></div>
-          <div><strong>De architectura · tres ediciones</strong><p style="margin:4px 0"><strong>731 loci</strong> cubiertos por la estructura de V514, V554 y V297. V297 conserva agrupaciones de pasajes; la coincidencia de locus no certifica cotejo manuscrito independiente.</p></div>
-          <div><strong>Fuentes y labor editorial</strong><p style="margin:4px 0">Las tres ediciones son trabajos editoriales de Diego Alonso Kurilo; los códices y facsímiles son testimonios conservados por sus respectivas bibliotecas. <a href="status-textus.html">Alcance de la verificación</a> · <a href="data/corpus-snapshot-2026-11-15.json">versión documental fechada</a>.</p></div>
+        <div class="corpus-compact-main">
+          <strong>Diego Kurilo · Arquitecto</strong>
+          <span>Ediciones y traducciones de <i>De architectura</i> · Sophia Lux · 2026</span>
+          <a href="lector-bilingue.html?edition=recensio-es&amp;locus=1.1.1">Abrir lector</a>
+          <a href="estado-ediciones-clasicas.html">Cobertura de Bibliotheca</a>
         </div>
-        <div aria-labelledby="corpus-obras-title" style="border-top:1px solid #7775;padding-top:16px;margin-top:8px">
-          <h3 id="corpus-obras-title" style="font:400 clamp(18px,1.8vw,23px)/1.35 Georgia,serif;margin:0 0 10px">Obras de Diego Alonso Kurilo · referencias bibliográficas</h3>
-          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;font:13px/1.6 system-ui,sans-serif">
-            <article><strong>V514 · Latín y castellano</strong><p style="margin:5px 0"><cite>Vitruvio. De architectura. Nueva recensio académica bilingüe: El arquitecto de la teoría.</cite></p><p style="margin:4px 0">Autor y editor: <strong>Diego Alonso Kurilo</strong><br>Editorial: Sophia Lux Ediciones Académicas · 2026<br>ISBN: 978-631-01-6651-3 <small>(declarado; asignación por verificar)</small><br>DOI: <a href="https://doi.org/10.5281/zenodo.23884757">10.5281/zenodo.23884757</a></p><a href="documents/edicion-v514">Ficha y documento V514 →</a></article>
-            <article><strong>V554 · Latín y francés</strong><p style="margin:5px 0"><cite>Vitruve. De architectura. Nouvelle recensio académique bilingue: L’architecte de la théorie.</cite></p><p style="margin:4px 0">Autor y editor: <strong>Diego Alonso Kurilo</strong><br>Editorial: Sophia Lux Ediciones Académicas · 2026<br>ISBN: 978-631-01-6651-3 <small>(declarado; asignación por verificar)</small><br>DOI: <a href="https://doi.org/10.5281/zenodo.23885110">10.5281/zenodo.23885110</a></p><a href="documents/edicion-v554">Ficha y documento V554 →</a></article>
-            <article><strong>V297 · Edición inglesa</strong><p style="margin:5px 0"><cite>The Architect of Theory: Vitruvius and the Intellectual World of Roman Antiquity.</cite></p><p style="margin:4px 0">Autor y editor: <strong>Diego Alonso Kurilo</strong><br>Editorial: Sophia Lux Ediciones Académicas · 2026<br>ISBN: 978-631-01-6651-3 <small>(declarado; asignación por verificar)</small><br>DOI: <a href="https://doi.org/10.5281/zenodo.23885404">10.5281/zenodo.23885404</a></p><a href="documents/edicion-v297">Ficha y documento V297 →</a></article>
+        <details class="corpus-compact-biblio">
+          <summary>Ver títulos completos, DOI, ISBN y fichas de V514 · V554 · V297</summary>
+          <div class="corpus-compact-editions">
+            <article>
+              <h3>V514 · Latín y castellano</h3>
+              <p><cite>Vitruvio. De architectura. Nueva recensio académica bilingüe: El arquitecto de la teoría</cite>.</p>
+              <p>Diego Kurilo, arquitecto y editor. Buenos Aires: Sophia Lux Ediciones Académicas, 2026.</p>
+              <p>DOI: <a href="https://doi.org/10.5281/zenodo.23884757">10.5281/zenodo.23884757</a> · <a href="documents/edicion-v514">Ficha y documento</a></p>
+            </article>
+            <article>
+              <h3>V554 · Latín y francés</h3>
+              <p><cite>Vitruve. De architectura. Nouvelle recensio académique bilingue: L’architecte de la théorie</cite>.</p>
+              <p>Diego Kurilo, arquitecto y editor. Buenos Aires: Sophia Lux Ediciones Académicas, 2026.</p>
+              <p>DOI: <a href="https://doi.org/10.5281/zenodo.23885110">10.5281/zenodo.23885110</a> · <a href="documents/edicion-v554">Ficha y documento</a></p>
+            </article>
+            <article>
+              <h3>V297 · Edición inglesa</h3>
+              <p><cite>The Architect of Theory: Vitruvius and the Intellectual World of Roman Antiquity</cite>.</p>
+              <p>Diego Kurilo, arquitecto y editor. Buenos Aires: Sophia Lux Publishing, 2026.</p>
+              <p>DOI: <a href="https://doi.org/10.5281/zenodo.23885404">10.5281/zenodo.23885404</a> · <a href="documents/edicion-v297">Ficha y documento</a></p>
+            </article>
           </div>
-          <p style="font:12px/1.55 system-ui,sans-serif;margin:12px 0 0">El ISBN aparece declarado para las tres ediciones; debe comprobarse su asignación registral individual. <a href="descargas.html">Consultar las fichas bibliográficas y descargas</a>.</p>
-        <nav aria-label="Ejemplo de investigación en cuatro pasos" style="font:13px/1.65 system-ui,sans-serif;border-top:1px solid #7775;padding-top:12px"><strong>Ejemplo de consulta:</strong>
-          <a href="vitruvia.html?q=symmetria&amp;mode=all">1. Buscar symmetria</a> →
-          <a href="lector-bilingue.html?edition=recensio-es&amp;locus=3.1.2">2. Leer III.1.2 en V514</a> →
-          <a href="concordancia-folios.html">3. Examinar la concordancia con folios (cuando esté documentada)</a> →
-          <a href="como-citar.html#corpus-version">4. Preparar una cita verificable</a>.
-        </nav>
+          <p class="corpus-compact-qualification">ISBN editorial declarado: <strong>978-631-01-6651-3</strong> (compartido entre las tres ediciones; asignación registral individual pendiente de verificación). Los 731 loci son unidades de navegación, no 731 colaciones manuscritas comprobadas. Los facsímiles pertenecen a sus instituciones custodias. <a href="data/corpus-snapshot-2026-11-15.json">Inventario fechado</a> · <a href="como-citar.html">Cómo citar</a>.</p>
+          <nav class="corpus-compact-example" aria-label="Ejemplo de investigación">Ejemplo de consulta: <a href="vitruvia.html?q=symmetria&amp;mode=all">Buscar symmetria</a> → <a href="lector-bilingue.html?edition=recensio-es&amp;locus=3.1.2">Leer III.1.2</a> → <a href="concordancia-folios.html">Concordancia de folios</a> → <a href="como-citar.html#corpus-version">Preparar cita</a>.</nav>
+        </details>
       </div>
     </section>
     <section class="editorial-reading" id="lecturas-destacadas" aria-labelledby="ed-readings-title">
