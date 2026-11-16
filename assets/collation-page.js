@@ -112,6 +112,7 @@ function addReadTools(card,readable,locus,id){
 }
 
 let corpus=[],coll=null,idx=-1,translations=[];
+const historicalLatin={"rose-1899":new Map(),"krohn-1912":new Map()};
 async function show(locus){
  idx=corpus.findIndex(p=>p.locus===locus);if(idx<0)idx=0;const P=corpus[idx];locus=P.locus;
  const u=new URL(location.href);u.searchParams.set("locus",locus);history.replaceState(null,"",u);
@@ -140,9 +141,10 @@ async function show(locus){
  const baseFlags=new Set();const rows=[];
  for(const w of coll.witnesses){
   const rec=coll.loci[locus]?.[w.id];if(!rec)continue;
-  const wt=words(rec.text),ops=diff(base,wt);
+  const independent=historicalLatin[w.id]?.get(locus)||null;
+  const wt=words(independent?.latin||rec.text),ops=independent?diff(base,wt):[];
   const flagW=new Set(ops.filter(o=>o.t==="+").map(o=>o.b));ops.filter(o=>o.t==="-").forEach(o=>baseFlags.add(o.a));
-  rows.push({w,rec,wt,ops,flagW});
+  rows.push({w,rec,wt,ops,flagW,independent});
  }
  const baseText=marked(P.latin,base,baseFlags);baseBox.append(baseText);addReadTools(baseBox,baseText,locus,"recensio-es-latin");
  const links=el("p","coll-links");
@@ -185,7 +187,7 @@ async function show(locus){
   "rose-1899":"rose-1899.html",
   "krohn-1912":"krohn-1912.html"
  };
- for(const {w,rec} of rows){
+ for(const {w,rec,independent} of rows){
   const box=el("section","coll-row");
   box.append(el("h3",null,w.label+" · imagen digital "+rec.page+(rec.pageEnd?"–"+rec.pageEnd:"")+" · facsímil"));
   box.append(el("p","coll-cite",w.citation));
@@ -194,7 +196,11 @@ async function show(locus){
   // as provisional reading; no automatic textual variants are asserted.
   const readablePreface=locus==="1.praef.1"&&Number(rec.score)>=0.9&&
    !/[|{}\\]/.test(rec.text)&&String(rec.text||"").length>200;
-  if(readablePreface){
+  if(independent?.latin){
+   const verified=independent.status!=="alignment_needs_editorial_review";
+   box.append(el("p","coll-warning",w.id==="rose-1899"?"Texto latino independiente: Project Gutenberg, edición Rose 1899. "+(verified?"Cotejo con imagen impresa aún pendiente.":"Alineación del locus pendiente de comprobación editorial."):"Texto latino TEI: Perseus, edición Krohn 1912. Cotejo con imagen impresa aún pendiente."));
+   const passage=el("p","coll-text",independent.latin);passage.lang="la";box.append(passage);addReadTools(box,passage,locus,w.id+"-digital");
+  }else if(readablePreface){
    box.append(el("p","coll-warning","Pasaje del prefacio I localizado en la edición histórica; la transcripción OCR es auxiliar y puede contener erratas. Para citar una lectura textual, contrástala con el facsímil."));
    const passage=el("p","coll-text",rec.text);passage.lang="la";box.append(passage);
    addReadTools(box,passage,locus,w.id);
@@ -244,6 +250,7 @@ function parse(v){
 async function boot(){
  const [c,d]=await Promise.all([fetch("data/structured/recensio-es.json").then(r=>r.json()),fetch("data/collation-loci.json").then(r=>r.json())]);
  corpus=c.passages;coll=d;
+  await Promise.all([["rose-1899","data/critical-editions/rose-1899-transcribed-loci.json"],["krohn-1912","data/critical-editions/krohn-1912-tei-loci.json"]].map(async ([id,url])=>{try{const r=await fetch(url);if(!r.ok)throw Error("HTTP "+r.status);const data=await r.json();if(!Array.isArray(data.passages)||data.passages.length!==731)throw Error("Índice incompleto");historicalLatin[id]=new Map(data.passages.map(p=>[p.locus,p]));}catch(error){console.warn("Texto digital "+id+" no disponible:",error);}}));
  const editions=[
   {id:"recensio-es",lang:"es",label:"Castellano · V514",data:c},
   {id:"recensio-fr",lang:"fr",label:"Français · V554"},
