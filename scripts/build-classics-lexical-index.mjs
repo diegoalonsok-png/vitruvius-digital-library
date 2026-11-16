@@ -31,8 +31,10 @@ import {createRequire} from "node:module";
 const require=createRequire(import.meta.url);
 const P=require("../assets/vitruvia-philology.js");
 
-const SOURCE="data/classics-corpus";
-const OUT="data/index/classics";
+const cliValue=(flag,fallback)=>{const i=process.argv.indexOf(flag);return i<0?fallback:process.argv[i+1]||fallback};
+const SOURCE=cliValue("--source-dir","data/classics-corpus");
+const OUT=cliValue("--out-dir","data/index/classics");
+const NO_STRUCTURED=process.argv.includes("--no-structured");
 const CHECK=process.argv.includes("--check");
 const LIMIT=(()=>{const i=process.argv.indexOf("--limit");return i>0?Number(process.argv[i+1])||0:0})();
 const SHARD_BUDGET=160*1024;      // un fragmento no debería pasar de esto sin comprimir
@@ -156,7 +158,7 @@ for(const name of chosen){
 }
 
 /* Ediciones propias, con su campo y su lengua declarados. */
-for(const extra of EXTRA){
+for(const extra of (NO_STRUCTURED?[]:EXTRA)){
  if(!existsSync(extra.file))continue;
  const raw=JSON.parse(readFileSync(extra.file,"utf8"));
  const passages=raw.passages||[];
