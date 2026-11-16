@@ -30,6 +30,15 @@ const FICHA={
  en:"Kurilo, D. A. The Architect of Theory, V297. Buenos Aires: Sophia Lux, 2026"
 };
 const cache=new Map(),grid=root.querySelector(".script-triple-grid"),fold=v=>String(v||"").normalize("NFD").replace(/\p{M}/gu,"").toLowerCase();
+let pdfMapPromise=null;
+function pdfLocusIndex(){
+ if(!pdfMapPromise)pdfMapPromise=fetch("data/pdf-locus-index-three-editions.json")
+  .then(r=>{if(!r.ok)throw Error("HTTP "+r.status);return r.json()})
+  .then(j=>{if(j.schema!=="vdl-triple-pdf-locus-navigation-v1"||j.loci?.length!==731)throw Error("Índice PDF incompleto");return new Map(j.loci.map(p=>[p.locus,p]))})
+  .catch(err=>{pdfMapPromise=null;throw err});
+ return pdfMapPromise;
+}
+
 /* Testigo de collation-loci.json que corresponde a cada visor. */
 const TESTIGO={krohn:"krohn-1912",rose:"rose-1899"};
 /* Coincidencia léxica por locus: Dice de frecuencias de palabras latinas;
@@ -94,12 +103,12 @@ async function loadEdition(id){
   const ed=editions[id];
   cache.set(id,fetch(ed.file).then(r=>{if(!r.ok)throw Error("HTTP "+r.status);return r.json()}).then(async d=>{
    const raw=ed.format==="ocr"?d:d.passages;
-   const concord=ed.critical?await concordanciaLoci():null;
+   const [concord,pdfMap]=await Promise.all([ed.critical?concordanciaLoci():Promise.resolve(null),pdfLocusIndex()]);
    const witness=TESTIGO[id];
    if(!Array.isArray(raw)||!raw.length)throw Error("Sin contenido de lectura");
    const pages=raw.map((p,i)=>ed.format==="ocr"?
     {locus:String(p.page||i+1),page:Number(p.page)||i+1,text:String(p.text||""),translation:""}:
-    {locus:String(p.locus||i+1),page:Number(p.pdf_pages?.latin||p.pdf_pages?.translation||concord?.loci?.[p.locus]?.[witness]?.page||0),latinPage:Number(p.pdf_pages?.latin||concord?.loci?.[p.locus]?.[witness]?.page||0),translationPage:Number(p.pdf_pages?.translation||0),text:String(p.latin||p.text||""),translation:String(p.translation||"")});
+    {locus:String(p.locus||i+1),page:Number(pdfMap.get(p.locus)?.[id==="krohn"?"krohn":id==="rose"?"rose":"kurilo"]?.pdfPage||p.pdf_pages?.latin||concord?.loci?.[p.locus]?.[witness]?.page||0),latinPage:Number(pdfMap.get(p.locus)?.[id==="krohn"?"krohn":id==="rose"?"rose":"kurilo"]?.pdfPage||p.pdf_pages?.latin||concord?.loci?.[p.locus]?.[witness]?.page||0),translationPage:Number(pdfMap.get(p.locus)?.kurilo?.translationPdfPage||p.pdf_pages?.translation||0),pdfEvidence:pdfMap.get(p.locus)?.[id==="krohn"?"krohn":id==="rose"?"rose":"kurilo"]?.status||"unmapped",pdfConfidence:pdfMap.get(p.locus)?.[id==="krohn"?"krohn":id==="rose"?"rose":"kurilo"]?.confidence??null,text:String(p.latin||p.text||""),translation:String(p.translation||"")});
    return {ed,pages};
   }).catch(err=>{cache.delete(id);throw err}));
  }
@@ -660,7 +669,7 @@ function underlineTerm(){
   underlineTerm();
   if(view==="pdf"&&highlightTerm)void renderPdfHighlight();
   message.textContent=(data.ed.format==="ocr"?"Página digital ":"Locus ")+item.locus+" · "+(index+1)+" / "+data.pages.length+
-   (data.ed.format==="ocr"?" · OCR no corregido"+(resalte?.index===index&&resalte.pageEnd?" · pasaje candidato continúa hasta página digital "+resalte.pageEnd:""):" · Edición indexada por loci"+(pageFor(item)?" · página digital "+pageFor(item):" · sin página PDF vinculada a este texto"));
+   (data.ed.format==="ocr"?" · OCR no corregido"+(resalte?.index===index&&resalte.pageEnd?" · pasaje candidato continúa hasta página digital "+resalte.pageEnd:""):" · Texto indexado por locus"+(pageFor(item)?" · página PDF propuesta "+pageFor(item)+(item.pdfConfidence!==null?" (índice OCR: "+Math.round(100*item.pdfConfidence)+" % de similitud; no verificado)":" (referencia editorial no cotejada)"):" · página PDF latina sin asignar; se conserva el texto sincronizado"));
   showFacsimile.textContent=pageFor(item)?"Ver esta página en PDF":"Ver PDF completo";
   pdf.textContent=pageFor(item)?"Abrir esta página del PDF ↗":"Abrir PDF completo · página del texto sin verificar ↗";
   prev.disabled=index===0;next.disabled=index===data.pages.length-1;
