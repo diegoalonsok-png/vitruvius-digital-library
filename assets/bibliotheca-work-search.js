@@ -155,6 +155,12 @@ function addLink(parent,text,href){
 function render(){
  if(!model)return;
  const {input,list,count,more,limit}=model,q=input.value.trim();
+ const hasFacets=Boolean(model.authorFilter.value.trim()||model.genreFilter.value||model.centuryFilter.value||model.periodFilter.value||model.languageFilter.value||model.letter);
+ const hasQuery=normal(q).length>=2;
+ if(!hasQuery&&!hasFacets){
+  model.region.hidden=true;list.replaceChildren();more.hidden=true;
+  return;
+ }
  const items=model.items.filter(w=>{
   const author=fold(model.authorFilter.value.trim());
   const genre=model.genreFilter.value,century=model.centuryFilter.value,period=model.periodFilter.value,language=model.languageFilter.value,letter=model.letter;
@@ -164,7 +170,7 @@ function render(){
  });
  list.replaceChildren();more.hidden=true;
  if(!q){
-  if(model.compactFront){model.region.hidden=true;return}
+  if(model.compactFront&&!hasFacets){model.region.hidden=true;return}
   model.region.hidden=false;
   count.textContent="Catálogo completo · "+items.length+" obras. Escriba para filtrar por título o autor.";
   const all=[...items].sort((a,b)=>model.sortFilter.value==="title"?a.title.localeCompare(b.title,"es",{sensitivity:"base"}):a.author.localeCompare(b.author,"es",{sensitivity:"base"})||a.title.localeCompare(b.title,"es",{sensitivity:"base"}));
@@ -244,8 +250,8 @@ function mount(parent,data){
  }
  const section=make("section",null,"bws");section.id="bibliotheca-work-search";
  section.setAttribute("aria-labelledby","bws-title");
- const title=make("h3","Buscar obras clásicas");title.id="bws-title";
- const subtitle=make("p","Busque autores, títulos y ediciones históricas en latín, griego o lenguas modernas. Las fechas de composición se distinguen de las ediciones.","bws-intro");
+ const title=make("h3","Catálogo de obras");title.id="bws-title";
+ const subtitle=make("p","Localizá autores, títulos y ediciones. Los resultados aparecen al buscar; los filtros históricos son opcionales.","bws-intro");
  const form=make("form");form.setAttribute("role","search");form.setAttribute("aria-label","Búsqueda de obras clásicas");
  const label=make("label","Obra o autor");label.htmlFor="bws-query";
  const row=make("div",null,"bws-row");
@@ -288,7 +294,7 @@ function mount(parent,data){
  const alphabet=make("nav",null,"bws-alphabet");alphabet.setAttribute("aria-label","Índice alfabético por autor o título");
  for(const l of ["Todos",..."ABCDEFGHIJKLMNOPQRSTUVWXYZ",..."ΑΒΓΔΕΖΗΘΙΚΛΜΝΞΟΠΡΣΤΥΦΧΨΩ"]){
   const b=make("button",l);b.type="button";b.setAttribute("aria-pressed",l==="Todos"?"true":"false");
-  b.addEventListener("click",()=>{model.letter=l==="Todos"?"":l;model.limit=40;alphabet.querySelectorAll("button").forEach(x=>x.setAttribute("aria-pressed",String(x===b)));render()});alphabet.append(b);
+  b.addEventListener("click",()=>{model.letter=l==="Todos"?"":l;model.limit=6;alphabet.querySelectorAll("button").forEach(x=>x.setAttribute("aria-pressed",String(x===b)));render()});alphabet.append(b);
  }
  const historicalHint=make("p",null,"bws-help");
  historicalHint.append("Sistemas de datación de las fuentes: en Roma, magistraturas consulares y, en algunas cronografías, ab urbe condita (AUC); en Grecia, arcontes, éforos, Olimpiadas y eras locales. Son referencias históricas distintas de la cronología moderna y no se convierten automáticamente sin testimonio documental. ");
@@ -301,14 +307,12 @@ function mount(parent,data){
  standards.append("Criterios editoriales: datación de composición documentada; género descriptivo y revisable; título original y variantes identificados; referencias Chicago 18 (notas y bibliografía). ");
  addLink(standards,"Metodología académica del índice","metodologia-catalogo-clasico.html");
  const advanced=make("details");advanced.className="bws-advanced";
-  // Keep scholarly period/century/language controls visible in the Bibliotheca catalogue.
-  if(parent.classList.contains("searcharea")||parent.id==="front-classical-works")advanced.open=true;
  const summary=make("summary","Filtros avanzados · género, siglo, período, idioma y alfabeto");
  advanced.append(summary,filters,alphabet,historicalHint,originalHint,dateClarifier,standards);
  section.append(title,subtitle,form,advanced,region,help);
  const metric=parent.querySelector(":scope > dl");
  if(metric)metric.insertAdjacentElement("beforebegin",section);else parent.prepend(section);
- model={items:[...index.values()],index,input,list,count,more,region,authorFilter,genreFilter,centuryFilter,periodFilter,languageFilter,sortFilter,letter:"",limit:40,compactFront:parent.id==="front-classical-works"};
+ model={items:[...index.values()],index,input,list,count,more,region,authorFilter,genreFilter,centuryFilter,periodFilter,languageFilter,sortFilter,letter:"",limit:6,compactFront:parent.id==="front-classical-works"};
  for(const el of [authorFilter,genreFilter,centuryFilter,periodFilter,languageFilter,sortFilter])el.addEventListener("input",()=>{model.limit=40;render()});
  list.tabIndex=0;list.setAttribute("aria-label","Obras: use las flechas arriba y abajo, Intro para abrir el enlace");
  list.addEventListener("keydown",e=>{
@@ -325,7 +329,7 @@ function mount(parent,data){
  });
  form.addEventListener("submit",e=>{e.preventDefault();model.limit=40;render()});
  input.addEventListener("input",()=>{model.limit=40;render()});
- more.addEventListener("click",()=>{model.limit+=20;render()});
+ more.addEventListener("click",()=>{model.limit+=10;render()});
  render();
  fetch(path,{cache:"no-cache"}).then(r=>{if(!r.ok)throw Error("aliases unavailable");return r.json()}).then(j=>{
   loadedAliases=j.aliases||{};
