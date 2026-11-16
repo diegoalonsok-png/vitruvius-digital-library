@@ -1,0 +1,100 @@
+{
+  "schema": "vitruvius-bibliotheca-expansion-candidates/1",
+  "date": "2026-11-16",
+  "description": "Primer lote de ampliación documental grecolatina. Propuestas independientes del catálogo maestro: NO implica alta en el lector, indexación ni copia en R2. Confirmar ausencia antes de integrar.",
+  "integrationStatus": "staged-not-in-master-catalogue",
+  "safety": {
+    "noOverwrite": true,
+    "retainExistingRecords": true,
+    "requireDeduplicationByAuthorWorkAndCTS": true,
+    "requireRightsCheckBeforeTextIngestion": true
+  },
+  "works": [
+    {
+      "id": "sappho-fragmenta",
+      "author": "Safo de Lesbos",
+      "authorLatin": "Sappho",
+      "titleOriginal": "Fragmenta",
+      "titleEs": "Fragmentos poéticos",
+      "language": "grc",
+      "period": "siglos VII–VI a. C.",
+      "genre": "poesía lírica",
+      "preservation": "fragmentaria",
+      "textStatus": "external-bibliographic-reference-only",
+      "catalogueVerification": "pending-master-catalogue-crosscheck",
+      "source": {
+        "institution": "Perseus Catalog",
+        "url": "https://catalog.perseus.org/catalog/urn%3Acts%3AgreekLit%3Atlg0009.tlg001.opp-grc1",
+        "cts": "urn:cts:greekLit:tlg0009.tlg001.opp-grc1",
+        "editor": "J. M. Edmonds",
+        "publication": "Lyra Graeca I (1922)",
+        "note": "Testimonio editorial histórico; cotejar numeración de fragmentos con ediciones críticas modernas"
+      },
+      "modernTranslations": "Agregar bibliografía moderna tras verificación de ISBN y derechos"
+    },
+    {
+      "id": "callimachus-hymni",
+      "author": "Calímaco",
+      "authorLatin": "Callimachus",
+      "titleOriginal": "Ὕμνοι",
+      "titleEs": "Himnos",
+      "language": "grc",
+      "period": "siglo III a. C.",
+      "genre": "poesía helenística",
+      "preservation": "seis himnos conservados",
+      "textStatus": "external-text-identified-not-ingested",
+      "catalogueVerification": "pending-master-catalogue-crosscheck",
+      "source": {
+        "institution": "Perseus Digital Library (referido por sitio de consulta)",
+        "url": "https://www.greekmythology.com/sources/callimachus/hymns",
+        "ctsGroup": "tlg0533.tlg015-tlg020",
+        "editor": "A. W. Mair",
+        "publication": "Loeb Classical Library (1921)",
+        "note": "Reconfirmar TEI original y licencia antes de importar"
+      },
+      "modernTranslations": "Pendiente de comprobación bibliográfica"
+    },
+    {
+      "id": "theocritus-idyllia",
+      "author": "Teócrito",
+      "authorLatin": "Theocritus",
+      "titleOriginal": "Εἰδύλλια",
+      "titleEs": "Idilios",
+      "language": "grc",
+      "period": "siglo III a. C.",
+      "genre": "poesía bucólica",
+      "preservation": "colección transmitida con problemas de atribución",
+      "textStatus": "external-text-identified-not-ingested",
+      "catalogueVerification": "pending-master-catalogue-crosscheck",
+      "source": {
+        "institution": "Perseus Digital Library (reutilización declarada)",
+        "url": "https://reader.humanitext.ai/en/library/tlg0005.tlg001.humanitext-grc2",
+        "cts": "urn:cts:greekLit:tlg0005.tlg001.perseus-grc2",
+        "editor": "R. J. Cholmeley",
+        "note": "Verificar corpus exacto, atribuciones y condiciones de reutilización"
+      },
+      "modernTranslations": "Pendiente de comprobación bibliográfica"
+    },
+    {
+      "id": "menander-dyskolos",
+      "author": "Menandro",
+      "authorLatin": "Menander",
+      "titleOriginal": "Δύσκολος",
+      "titleEs": "El misántropo",
+      "language": "grc",
+      "period": "siglos IV–III a. C.",
+      "genre": "comedia nueva",
+      "preservation": "texto sustancialmente conservado en papiro",
+      "textStatus": "source-selection-pending",
+      "catalogueVerification": "pending-master-catalogue-crosscheck",
+      "source": null,
+      "modernTranslations": "Pendiente de selección y verificación"
+    }
+  ],
+  "validation": {
+    "masterCatalogueCompared": false,
+    "r2ObjectsVerified": false,
+    "lexicalIndexed": false,
+    "readerVerified": false
+  }
+}
