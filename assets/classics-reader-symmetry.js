@@ -84,14 +84,31 @@ function init(){
   try{localStorage.setItem(STORE,String(height))}catch{}
   align();
  }
+ // Align the FIRST LINE OF TEXT, not the outer passage boxes. The source
+ // has an additional locus label and annotation controls which otherwise leave
+ // one or two lines of visual offset against the translated paragraph.
  let frame=0;
+ function textFirstLineTop(element){
+  if(!element)return null;
+  const range=document.createRange();
+  range.selectNodeContents(element);
+  const rects=range.getClientRects();
+  if(rects.length){
+   for(const rect of rects)if(rect.height>0&&rect.width>0)return rect.top;
+  }
+  return element.getBoundingClientRect().top;
+ }
  function align(){
   if(frame)cancelAnimationFrame(frame);
   frame=requestAnimationFrame(()=>{
    frame=0;
    source.style.marginTop="0px";target.style.marginTop="0px";
    if(root.classList.contains("single-source")||window.matchMedia("(max-width:900px)").matches||target.closest("[hidden]"))return;
-   const a=source.getBoundingClientRect().top,b=target.getBoundingClientRect().top;
+   const sourceText=source.querySelector("p > span:not(.locus)")||source.querySelector("p");
+   const translatedText=target.querySelector("p:not(.cl-caution)")||target;
+   const a=textFirstLineTop(sourceText),b=textFirstLineTop(translatedText);
+   if(a===null||b===null)return;
+   // Only positive spacing: we never pull either passage under its controls.
    const common=Math.max(a,b);
    source.style.marginTop=Math.max(0,Math.round(common-a))+"px";
    target.style.marginTop=Math.max(0,Math.round(common-b))+"px";
@@ -111,6 +128,11 @@ function init(){
  const mutation=new MutationObserver(register);
  mutation.observe(sourceContainer,{childList:true});
  mutation.observe(translationContainer,{childList:true});
+ // Translation often arrives asynchronously. Re-align after its actual first
+ // paragraph is rendered, and when the Latin original changes locus.
+ const readingMutation=new MutationObserver(align);
+ readingMutation.observe(source,{childList:true,subtree:true,characterData:true});
+ readingMutation.observe(target,{childList:true,subtree:true,characterData:true});
  root.addEventListener("click",event=>{if(event.target.closest("button,summary,select"))requestAnimationFrame(align)});
  window.addEventListener("resize",align,{passive:true});
  document.addEventListener("vitruvia:classics-passage",align);
