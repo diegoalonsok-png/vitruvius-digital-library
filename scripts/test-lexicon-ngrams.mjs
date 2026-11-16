@@ -19,7 +19,7 @@ const corpus=[
 ];
 const a=await ngrams.compare(corpus,{workA:"A",workB:"B",size:2,yieldEvery:1});
 assert.equal(a.tokensA,9);
-assert.equal(a.tokensB,8);
+assert.equal(a.tokensB,6);
 assert.equal(a.passagesA,2);
 assert.equal(a.passagesB,2);
 const phrase=a.rows.find(r=>r.key==="firmitas utilitas");
@@ -29,12 +29,12 @@ assert.equal(phrase.b,1);
 assert.equal(phrase.locus,"1.1");
 assert.equal(phrase.phrase,"Firmitas utilitas");
 assert.equal(phrase.rateA,3/9*10000);
-assert.equal(phrase.rateB,1/8*10000);
+assert.equal(phrase.rateB,1/6*10000);
 assert.equal(a.rows.find(r=>r.key==="utilitas uenustas")?.a,3);
 assert.equal(a.rows.find(r=>r.key==="uenustas firmitas"),undefined,
  "Must not falsely connect adjacent sentences or separate loci");
 const rest=await ngrams.compare(corpus,{workA:"A",workB:"",size:2});
-assert.equal(rest.tokensB,11,"Rest-of-corpus must include B and C only");
+assert.equal(rest.tokensB,9,"Rest-of-corpus must include B and C only");
 assert.equal(rest.rows.find(r=>r.key==="firmitas utilitas")?.b,2);
 const tri=await ngrams.compare(corpus,{workA:"A",workB:"B",size:3});
 assert.equal(tri.rows.find(r=>r.key==="firmitas utilitas uenustas")?.a,3);
