@@ -47,6 +47,13 @@ function redraw(v){
   const extra=elt("section");extra.className="vdl-traductological-apparatus";extra.style.cssText="margin-top:12px;border-top:1px solid #9b958a80;padding-top:10px";
   extra.append(elt("strong","Collatio interpretationum · V514 / V554 / V297"));
   extra.append(elt("p",t.analysis));
+  if(t.quality_flag==="translation_index_incomplete_for_variant"){
+    const warning=elt("p","Control documental: la traducción inglesa indexada no contiene aquí el segmento objeto de la variante; no inferir una elección textual de V297.");
+    warning.style.fontWeight="600";extra.append(warning);
+  }else if(t.quality_flag==="indexed_english_commentary_not_continuous_translation"){
+    const warning=elt("p","Control documental: el campo inglés contiene comentario arqueológico, no traducción continua. No utilizarlo como testimonio de traducción literal.");
+    warning.style.fontWeight="600";extra.append(warning);
+  }
   extra.append(elt("small","Objeto: tres traducciones de Kurilo, cotejadas entre sí y con sus latines. No son traducciones de Rose o Krohn ni demuestran por sí solas su motivo editorial."));
   body.append(extra);
  }
