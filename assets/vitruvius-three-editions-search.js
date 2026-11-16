@@ -67,7 +67,16 @@ function lexical(text,query,mode){
  return groups.every(group=>group.some(root=>{const re=new RegExp("(^| )"+root.replace(/[.*+?^${}()|[\]\\]/g,"\\$&")+"[a-z]*($| )");return re.test(h)}));
 }
 function findExcerpt(text,q){const tokens=searchableForms(q).flat(),source=fold(text);let pos=-1;for(const t of tokens){const x=source.indexOf(t);if(x>=0&&(pos<0||x<pos))pos=x}const before=Math.max(0,pos<0?0:pos-95);return (before?"…":"")+text.slice(before,Math.min(text.length,before+360))+(before+360<text.length?"…":"")}
-function romanLocus(q){let t=q.trim().replace(/^vitr\\.?\\s*/i,"").toLowerCase();const m=t.match(/^([ivx]+)\\.(.+)$/);if(m){let number=0,prev=0;for(const ch of m[1].toUpperCase().split("").reverse()){const val=ch==="I"?1:ch==="V"?5:10;number+=val<prev?-val:val;prev=val}t=number+"."+m[2]}return /^(?:[1-9]|10)\\.(?:praef|[0-9]+)(?:\\.[0-9]+)?$/.test(t)?t:null}
+function romanLocus(q){
+ let t=q.trim().toLowerCase().replace(/^vitr[.]?[ ]*/i,"");
+ const m=t.match(/^([ivx]+)[.](.+)$/);
+ if(m){
+  const values={i:1,v:5,x:10};let number=0,previous=0;
+  for(const ch of [...m[1]].reverse()){const val=values[ch];number+=val<previous?-val:val;previous=val;}
+  t=number+"."+m[2];
+ }
+ return /^(?:[1-9]|10)[.](?:praef|[0-9]+)(?:[.][0-9]+)?$/.test(t)?t:null;
+}
 async function getData(){if(datasets)return datasets;const values=await Promise.all(editions.map(async ed=>{const r=await fetch(ed.path,{headers:{Accept:"application/json"}});if(!r.ok)throw Error(ed.label+" HTTP "+r.status);const j=await r.json();if(!Array.isArray(j.passages)||j.passages.length!==731)throw Error(ed.label+" índice incompleto");return {ed,passages:j.passages}}));datasets=values;return values}
 function link(label,url){const a=create("a",label);a.href=url;return a}
 function paint(){
