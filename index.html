@@ -580,6 +580,19 @@ html[data-theme="dark"].front-color-light .research-nav-controls>.research-print
     </nav>
   </header>
 
+<style id="historic-top-rose-alignment">
+/* Match the first facsimile row to the Rose/Krohn column below. */
+@media(min-width:851px){
+ .historic-top-inner{grid-template-columns:300px minmax(0,1fr)!important;column-gap:20px!important}
+ .historic-top-inner>.historic-top-links{grid-column:2;min-width:0}
+ .historic-top-collections{grid-column:1/-1;grid-template-columns:300px minmax(0,1fr)!important;column-gap:20px!important}
+ .historic-top-collection{min-width:0}
+}
+@media(max-width:850px){
+ .historic-top-inner>.historic-top-links{grid-column:1}
+ .historic-top-collections{grid-template-columns:minmax(0,1fr)!important}
+}
+</style>
   <section class="historic-top-access" aria-labelledby="historic-top-heading">
     <div class="historic-top-inner">
       <div class="historic-top-heading" id="historic-top-heading"><strong>EXPLORAR Y LEER</strong><span>Buscador cultural, códices y ediciones históricas</span></div>
