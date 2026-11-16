@@ -31,13 +31,27 @@ try{
    if(seen.has(original.archivo))throw Error("Duplicated R2 object: "+original.archivo);
    seen.add(original.archivo);
    const url=manifest.base+original.archivo;
-   const controller=new AbortController();
-   const timeout=setTimeout(()=>controller.abort(),45000);
-   let response;
-   try{response=await fetch(url,{signal:controller.signal,headers:{Accept:"application/json"},cache:"no-store"})}
-   finally{clearTimeout(timeout)}
-   if(!response.ok)throw Error("R2 HTTP "+response.status+": "+url);
-   const bytes=Buffer.from(await response.arrayBuffer());
+   // Retry transient R2/CDN failures, but never retry checksum mismatches.
+   let bytes=null,lastError=null;
+   for(let attempt=1;attempt<=3;attempt++){
+    const controller=new AbortController();
+    const timeout=setTimeout(()=>controller.abort(),45000);
+    try{
+     const response=await fetch(url,{signal:controller.signal,headers:{Accept:"application/json"},cache:"no-store"});
+     if(!response.ok){
+      if(![408,425,429,500,502,503,504].includes(response.status))throw Object.assign(
+       new Error("R2 HTTP "+response.status+": "+url),{permanent:true});
+      throw new Error("R2 HTTP "+response.status+": "+url);
+     }
+     bytes=Buffer.from(await response.arrayBuffer());
+     break;
+    }catch(error){
+     lastError=error;
+     if(error.permanent||attempt===3)break;
+     await new Promise(done=>setTimeout(done,attempt*1500));
+    }finally{clearTimeout(timeout)}
+   }
+   if(!bytes)throw new Error("R2 unavailable after bounded attempts: "+original.archivo+"; "+lastError?.message);
    const hash=createHash("sha256").update(bytes).digest("hex");
    if(hash!==original.sha256)throw Error("R2 SHA256 conflict: "+original.archivo);
    const doc=JSON.parse(bytes.toString("utf8"));
