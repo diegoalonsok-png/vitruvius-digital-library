@@ -663,45 +663,11 @@ html[data-theme="dark"].front-color-light .research-nav-controls>.research-print
         </aside>
       </div>
     </section>
-    <section class="stats-band" aria-label="Bibliotheca Graeca et Latina · colección en cifras">
-      <div class="wrap" style="padding-bottom:10px">
-        <p class="eyebrow" style="margin:0 0 8px">BIBLIOTHECA GRAECA ET LATINA · REGISTRO DOCUMENTAL</p>
-      </div>
-      <div class="wrap stats-inner">
-        <p><strong id="stat-bibliotheca-total" data-cifra="obrasTotalesDeclaradas">281</strong><span>obras declaradas en la biblioteca</span></p>
-        <p><strong id="stat-bibliotheca-main" data-cifra="obras">271</strong><span>obras del repertorio principal</span></p>
-        <p><strong id="stat-bibliotheca-additional" data-cifra="obrasAdicionales">10</strong><span>obras adicionales incorporadas</span></p>
-        <p><strong id="stat-bibliotheca-indexed" data-cifra="obrasConTextoIndexado">214</strong><span>obras con alguna versión textual registrada</span></p>
-        <p><strong id="stat-bibliotheca-r2" data-cifra="edicionesPdfR2">117</strong><span>ediciones PDF catalogadas en R2</span></p>
-        <p><strong id="stat-bibliotheca-versions" data-cifra="versionesTextuales">279</strong><span>registros de versiones textuales en el índice</span></p>
-      </div>
-      <div class="wrap stat-audit-detail">
-        <p class="stat-audit-caveat">Inventario del <time data-cifra-fecha datetime="2026-11-15">15 de noviembre de 2026</time>. Total: 271 fichas principales + 10 obras adicionales, sin sumar las ediciones o traducciones como nuevas obras. Los recuentos de 226 obras y 291 versiones proceden del registro de búsqueda y no equivalen a los 210 originales con cobertura efectiva de otro inventario. Los 117 PDF son ediciones de R2, no otras 117 obras. Una entrada registrada no garantiza que el texto esté completo ni accesible en este momento. <a href="bibliotheca-graeca-latina.html">Abrir Bibliotheca</a> · <a href="data/r2/bibliotheca-inventario-unificado.json">Inventario federado</a>.</p>
-        <details class="stats-academic-breakdown">
-          <summary>Ver por separado las cifras documentales y las tres ediciones de Vitruvio</summary>
-          <p><strong id="stat-records">175</strong> fichas en tres repertorios documentales de Vitruvio (con posibles referencias repetidas): <strong id="stat-main-records">28</strong> fichas del <a href="#coleccion">catálogo principal vitruviano</a> · <strong id="stat-inventory-records">78</strong> referencias del <a href="index-codicum.html">inventario de códices y ediciones</a> · <strong id="stat-studies-records">69</strong> <a href="estudios.html">estudios académicos</a>.</p>
-          <div class="stats-academic-breakdown-grid">
-            <section><strong id="stat-indexed-editions">3</strong> ediciones de Diego Kurilo con índice textual: <a href="lector-bilingue.html?edition=recensio-es">V514</a>, <a href="lector-bilingue.html?edition=recensio-fr">V554</a> y <a href="lector-bilingue.html?edition=theory-en">V297</a>.</section>
-            <section><strong id="stat-pages">3.379</strong> páginas declaradas en esas tres ediciones, no páginas OCR de toda Bibliotheca.</section>
-            <section><strong id="stat-languages">4</strong> idiomas en esas ediciones; <strong id="stat-passages">2.190</strong> pasajes estructurados indexados por locus.</section>
-          </div>
-          <p class="stat-audit-caveat">Inventario vitruviano: corte documental <span id="stat-audit-date">2 de noviembre de 2026</span>. Sus fichas y páginas no deben confundirse con las obras del repertorio grecolatino.</p>
-        </details>
-      </div>
-    </section>
-    <div class="wrap"><section id="classics-audit-coverage" aria-label="Cobertura verificable de la Bibliotheca Graeca et Latina" style="padding:20px 0;border-top:1px solid #6664;border-bottom:1px solid #6664;margin:14px 0">
- <h2 style="font:400 clamp(19px,2.1vw,26px)/1.3 Georgia,serif;margin:0 0 12px">Bibliotheca · cobertura de textos clásicos</h2>
- <div style="display:flex;gap:12px 25px;flex-wrap:wrap;font:13px/1.6 system-ui,sans-serif">
-  <span><strong data-classics="catalog">—</strong> con ficha académica completa</span>
-  <span><strong data-classics="local">—</strong> originales locales</span>
-  <span><strong data-classics="remote">—</strong> originales externos verificados</span>
-  <span><strong data-classics="searchable">—</strong> originales con texto buscable</span>
-  <span><strong data-classics="pending">—</strong> pendientes</span>
-  <span><strong data-classics="translations">—</strong> obras con traducción alojada</span>
-  <span><strong data-classics="versions">—</strong> versiones textuales locales</span>
- </div>
- <p style="font:12px/1.6 system-ui,sans-serif;margin:9px 0 0;opacity:.76"><span data-classics="method">Verificando registros académicos…</span> <a href="auditoria-textos-clasicos.html">Método y auditoría</a> · <a href="index-auctorum-operum.html">Índice de autores y obras griegas y latinas (A–Z)</a> · <a href="classics-manuscript-coverage.html">Testimonios manuscritos y fuentes</a> · Inventario <time data-classics="updated">—</time>.</p>
-</section></div>
+    <div class="wrap bibliotheca-single-count" role="group" aria-label="Total de obras de Bibliotheca Graeca et Latina" style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;padding:9px 0;margin:6px auto;border-block:1px solid rgba(160,160,160,.28);font:13px/1.4 system-ui,sans-serif">
+      <strong data-cifra="obrasTotalesDeclaradas" style="font:600 21px/1.1 Georgia,serif">281</strong>
+      <span>obras catalogadas en Bibliotheca Graeca et Latina</span>
+      <a href="bibliotheca-graeca-latina.html" style="margin-left:auto">Abrir Bibliotheca</a>
+    </div>
     <section class="search-section wrap" id="buscar" aria-labelledby="search-title">
       <div class="section-heading"><div><p class="eyebrow">LECTURA E INVESTIGACIÓN</p><h2 id="search-title">Buscar en los textos vitruvianos</h2></div><p>Consulta <em>De architectura</em>: sus diez libros y ediciones.<br>Para otros autores, utiliza la <a href="bibliotheca-graeca-latina.html">Bibliotheca Graeca et Latina</a>.</p></div>
 
