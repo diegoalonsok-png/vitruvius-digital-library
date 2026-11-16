@@ -1,5 +1,12 @@
 name: Publicación · equivalencia GitHub Pages y Cloudflare
 on:
+  push:
+    branches: [main]
+    paths:
+      - 'assets/classics-study-actions.js'
+      - 'assets/vitruvia-lexicon.js'
+      - 'scripts/check-cross-deployment.py'
+      - '.github/workflows/check-cross-deployment.yml'
   workflow_dispatch:
   schedule:
     - cron: '51 9 * * *'

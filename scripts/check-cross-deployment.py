@@ -19,6 +19,8 @@ ORIGINS = {
 # These source files are not supposed to be rewritten by the hosting platform.
 ASSETS = (
     "assets/site-bar.js",
+    "assets/classics-study-actions.js",
+    "assets/vitruvia-lexicon.js",
     "assets/secondary-reader-controls.js",
     "assets/secondary-reader-controls.css",
     "assets/ui-idioma.js",
