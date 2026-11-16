@@ -321,7 +321,15 @@ function startSearch(){
   if(privateQuery){const clean=new URL(location.href);clean.search='';clean.hash='buscar';history.replaceState(null,'',clean.href);}
   else history.replaceState(null,'',shared.href);
  }catch{}
- try{ensureWorker().postMessage({type:'search',requestId,query:canonicalQuery,kind:parsedReference?'locus':kind,mode:$('#search-mode').value,countMode:$('#count-mode').value,scope:$('#scope').value,book:$('#filter-book').value,chapter:$('#filter-chapter').value,language:$('#text-language').value,baseURL:new URL('./',location.href).href,editions:records.filter(e=>authorIds.includes(e.id)&&e.searchable)});}catch(error){$('#search-button').disabled=false;$('#search-button').textContent='Buscar →';$('#search-status').textContent=error.message;}
+ try{ensureWorker().postMessage({type:'search',requestId,query:canonicalQuery,kind:parsedReference?'locus':kind,mode:$('#search-mode').value,countMode:$('#count-mode').value,scope:$('#scope').value,book:$('#filter-book').value,chapter:$('#filter-chapter').value,language:$('#text-language').value,baseURL:new URL('./',location.href).href,editions:records.filter(e=>authorIds.includes(e.id)&&e.searchable)});}catch(error){$('#search-button').disabled=false;$('#search-button').textContent='Buscar →';$('#search-status').textContent=error.message;if(lastQuery&&window.__vdlHomeSearchRescue)void window.__vdlHomeSearchRescue(lastQuery);}
+ const awaited=requestId;
+ setTimeout(()=>{
+  if(awaited!==requestId||!$('#search-button')?.disabled)return;
+  $('#search-button').disabled=false;
+  $('#search-button').textContent='Buscar →';
+  $('#search-status').textContent='El índice completo no respondió; activando recuperación V514…';
+  if(lastQuery&&window.__vdlHomeSearchRescue)void window.__vdlHomeSearchRescue(lastQuery);
+ },10000);
 }
 
 function locusLabel(r){
