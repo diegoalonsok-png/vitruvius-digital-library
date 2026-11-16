@@ -292,11 +292,7 @@ function switchLanguage(k){
  const chapters=$("capitula-nav");if(chapters)chapters.textContent=({es:"Lectura por capítulos",en:"Chapter reading",fr:"Lecture par chapitres"})[locale];
  input.placeholder=t.placeholder;$("intro").textContent=t.intro;$("work-label").textContent=t.work;
  $("results-heading").textContent=t.label;$("method-note").textContent=t.method;lex.textContent=t.lexicon;
- const button=$("language-toggle");if(button){
-  button.textContent=({es:"Idioma · ES",en:"Language · EN",fr:"Langue · FR"})[locale];
-  button.setAttribute("aria-label",({es:"Cambiar idioma: español, inglés o francés",en:"Switch language: English, French or Spanish",fr:"Changer de langue : français, espagnol ou anglais"})[locale]);
-  button.title=({es:"Cambiar idioma: ES → EN → FR",en:"Switch language: ES → EN → FR",fr:"Changer de langue : ES → EN → FR"})[locale];
- }
+ const selector=$("language-toggle");if(selector&&selector.tagName==="SELECT")selector.value=locale;
  if(works.length)refresh();else coverage.textContent=t.wait;
  drawRemote();
  if(current)render(previous,current,diag);
@@ -922,9 +918,11 @@ input.addEventListener("input",()=>{
  updateLexicon();
 });
 morphCheckbox.addEventListener("change",()=>{updateLexicon()});
-$("language-toggle").addEventListener("click",()=>{
- const next=({es:"en",en:"fr",fr:"es"})[locale]||"es";
- switchLanguage(next);
+const languageSelector=$("language-toggle");
+if(languageSelector)languageSelector.addEventListener("change",()=>switchLanguage(languageSelector.value));
+document.addEventListener("vitruvius:language-changed",event=>{
+ const next=event.detail?.language;
+ if(["es","en","fr"].includes(next)&&next!==locale)switchLanguage(next);
 });
 const params=new URLSearchParams(location.search),initial=(params.get("q")||params.get("term")||"").trim();
 if(initial)input.value=initial;
