@@ -203,7 +203,7 @@ async function render(query){
   }
  }
  if(ext.children.length===1)ext.append(E("p","Sin entrada crítica registrada en Rose/Krohn/Kurilo para este locus; la consulta y colación de testimonios queda abierta."));
- const verified=section("Apparatus criticus selectivus · forma Budé, testimonios y ediciones");
+ const verified=section("Aparato crítico comparativo · testimonios y ediciones");
  verified.append(E("p","Convención: ‖ locus lectio recepta + sigla : varia lectio + sigla ‖. H = codex Harleianus; Kr. = Krohn; Rose = Rose; Kur. = ediciones Kurilo. «sec. Kur.» indica atribución editorial y «ex imagine» lectura directa de la fotografía. Las demás entradas conservan su carácter documental.","bude-note"));
  const selected=data.curated.entries.filter(x=>x.locus===locus);
  for(const e of selected){
