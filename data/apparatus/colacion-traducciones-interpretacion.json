@@ -1,27 +1,9 @@
 {
   "schema": "vdl-translation-apparatus-comparative-v1",
   "updated": "2026-11-16",
-  "method": "Interpretación contrastiva de traducciones castellana, francesa e inglesa alineadas por locus con el latín Kurilo, Krohn y Rose. Distinción explícita entre variante textual y opción de traducción.",
-  "count": 11,
+  "method": "Interpretación contrastiva de traducciones castellana, francesa e inglesa alineadas por locus con el latín Kurilo, Krohn y Rose. Distinción explícita entre variante textual y opción de traducción. Se distingue una entrada inglesa de comentario frente a la traducción continua y se señala cualquier segmento inglés incompleto.",
+  "count": 23,
   "records": [
-    {
-      "locus": "1.praef.3",
-      "criticalLine": "traderentur Kur. Kr. ] tradantur Rose",
-      "focus": "matiz temporal y equivalencia entre lenguas",
-      "analysis": "La traducción castellana «se transmitieran» mantiene el matiz temporal retrospectivo de traderentur; el francés «soient transmis» y el inglés «might be handed down» expresan finalidad, sin reproducir necesariamente la misma oposición temporal del latín. No se han indexado traducciones históricas de Rose y Krohn en este cotejo.",
-      "evidence_level": "interpretation_based_on_indexed_author_translations",
-      "source_editions": [
-        "Kurilo V514 (es)",
-        "Kurilo V554 (fr)",
-        "Kurilo V297 (en)"
-      ],
-      "sources": [
-        "data/structured/recensio-es.json",
-        "data/structured/recensio-fr.json",
-        "data/structured/theory-en.json"
-      ],
-      "warning": "Las traducciones cotejadas son las tres del autor; Rose y Krohn son referencias latinas, no traducciones históricas cotejadas aquí."
-    },
     {
       "locus": "1.1.2",
       "criticalLine": "fuerunt Kur. Kr. ] fuerant Rose",
@@ -41,6 +23,25 @@
       "warning": "Las traducciones cotejadas son las tres del autor; Rose y Krohn son referencias latinas, no traducciones históricas cotejadas aquí."
     },
     {
+      "locus": "1.1.5",
+      "criticalLine": "deflagrata Kur. Kr. ] desacrata Rose",
+      "focus": "participio histórico y cobertura incompleta de la traducción inglesa",
+      "analysis": "Castellano «incendiada la ciudad» y francés «la cité incendiée» expresan deflagrata. En la entrada inglesa indexada para este locus solo aparece la introducción de las cariátides, sin la continuación narrativa donde se esperaría la traducción del participio; no puede clasificarse la opción inglesa para esta variante.",
+      "evidence_level": "interpretation_based_on_indexed_author_translations",
+      "quality_flag": "translation_index_incomplete_for_variant",
+      "source_editions": [
+        "Kurilo V514 (es)",
+        "Kurilo V554 (fr)",
+        "Kurilo V297 (en)"
+      ],
+      "sources": [
+        "data/structured/recensio-es.json",
+        "data/structured/recensio-fr.json",
+        "data/structured/theory-en.json"
+      ],
+      "warning": "Las traducciones pertenecen a Kurilo. No constituyen testigos textuales de Rose o Krohn ni identifican automáticamente decisiones del latín."
+    },
+    {
       "locus": "1.1.6",
       "criticalLine": "Agesilae Kur. Kr. ] Agesipolidos Rose",
       "focus": "identificación histórica preservada",
@@ -57,6 +58,63 @@
         "data/structured/theory-en.json"
       ],
       "warning": "Las traducciones cotejadas son las tres del autor; Rose y Krohn son referencias latinas, no traducciones históricas cotejadas aquí."
+    },
+    {
+      "locus": "1.1.9",
+      "criticalLine": "sonitûm ex discrimine Kur. Kr. ] sonituum ad discrimina Rose",
+      "focus": "resonancia acústica y paráfrasis técnica",
+      "analysis": "Castellano «conforme a la diferencia de los sonidos» y francés «d’après la différence des sons» verbalizan la relación acústica de ex discrimine. Inglés «tuned to musical intervals» transmite la función técnica sin reproducir la construcción preposicional; esta paráfrasis no certifica una adopción del latín de Rose.",
+      "evidence_level": "interpretation_based_on_indexed_author_translations",
+      "quality_flag": "interpreted_from_index",
+      "source_editions": [
+        "Kurilo V514 (es)",
+        "Kurilo V554 (fr)",
+        "Kurilo V297 (en)"
+      ],
+      "sources": [
+        "data/structured/recensio-es.json",
+        "data/structured/recensio-fr.json",
+        "data/structured/theory-en.json"
+      ],
+      "warning": "Las traducciones pertenecen a Kurilo. No constituyen testigos textuales de Rose o Krohn ni identifican automáticamente decisiones del latín."
+    },
+    {
+      "locus": "1.1.10",
+      "criticalLine": "inclinationem; cavere Kur. Kr. ] inclinationes; caveri Rose",
+      "focus": "número y voz verbal; traducción no literal",
+      "analysis": "Las traducciones castellana, francesa e inglesa usan respectivamente «inclinaciones», «inclinaisons» e «inclinations», aunque el latín Kurilo/Krohn indexado tiene inclinationem singular: una pluralización semántica de traducción no prueba que se adoptara inclinationes de Rose. La distinción cavere/caveri se expresa en formulaciones jurídicas distintas; el inglés resume el pasaje como protección contractual.",
+      "evidence_level": "interpretation_based_on_indexed_author_translations",
+      "quality_flag": "interpreted_from_index",
+      "source_editions": [
+        "Kurilo V514 (es)",
+        "Kurilo V554 (fr)",
+        "Kurilo V297 (en)"
+      ],
+      "sources": [
+        "data/structured/recensio-es.json",
+        "data/structured/recensio-fr.json",
+        "data/structured/theory-en.json"
+      ],
+      "warning": "Las traducciones pertenecen a Kurilo. No constituyen testigos textuales de Rose o Krohn ni identifican automáticamente decisiones del latín."
+    },
+    {
+      "locus": "1.1.15",
+      "criticalLine": "rationem Kur. Kr. ] ratiocinatio Rose",
+      "focus": "equivalencia conceptual con distinta sintaxis latina",
+      "analysis": "Castellano «el razonamiento», francés «le raisonnement» e inglés «reasoning» comparten la equivalencia léxica principal, sin reproducir en sus gramáticas el contraste de caso entre rationem y ratiocinatio. La traducción no resuelve por sí misma la variante sintáctica latina.",
+      "evidence_level": "interpretation_based_on_indexed_author_translations",
+      "quality_flag": "interpreted_from_index",
+      "source_editions": [
+        "Kurilo V514 (es)",
+        "Kurilo V554 (fr)",
+        "Kurilo V297 (en)"
+      ],
+      "sources": [
+        "data/structured/recensio-es.json",
+        "data/structured/recensio-fr.json",
+        "data/structured/theory-en.json"
+      ],
+      "warning": "Las traducciones pertenecen a Kurilo. No constituyen testigos textuales de Rose o Krohn ni identifican automáticamente decisiones del latín."
     },
     {
       "locus": "1.1.16",
@@ -95,6 +153,25 @@
       "warning": "Las traducciones cotejadas son las tres del autor; Rose y Krohn son referencias latinas, no traducciones históricas cotejadas aquí."
     },
     {
+      "locus": "1.2.4",
+      "criticalLine": "embatere; capituli Kur. Kr. ] embate; et Rose",
+      "focus": "nomenclatura modular de arquitectura y maquinaria",
+      "analysis": "Las tres traducciones conservan el término técnico émbater/embatêr/embater y describen en la balista el orificio del capitel («orificio del capitel», «trou du chapiteau», «opening of its capital»). Esta coincidencia interpretativa corresponde a la lectura capituli de Krohn/Kurilo; no demuestra que Rose usara esa misma expresión.",
+      "evidence_level": "interpretation_based_on_indexed_author_translations",
+      "quality_flag": "interpreted_from_index",
+      "source_editions": [
+        "Kurilo V514 (es)",
+        "Kurilo V554 (fr)",
+        "Kurilo V297 (en)"
+      ],
+      "sources": [
+        "data/structured/recensio-es.json",
+        "data/structured/recensio-fr.json",
+        "data/structured/theory-en.json"
+      ],
+      "warning": "Las traducciones pertenecen a Kurilo. No constituyen testigos textuales de Rose o Krohn ni identifican automáticamente decisiones del latín."
+    },
+    {
       "locus": "1.2.5",
       "criticalLine": "fontium nymphis Kur. Kr. ] Fonti Lumphis Rose",
       "focus": "divergencia interpretativa entre traducciones",
@@ -111,6 +188,25 @@
         "data/structured/theory-en.json"
       ],
       "warning": "Las traducciones cotejadas son las tres del autor; Rose y Krohn son referencias latinas, no traducciones históricas cotejadas aquí."
+    },
+    {
+      "locus": "1.2.6",
+      "criticalLine": "sculpentur Kur. Kr. ] scalpentur Rose; capitulis Kur. Kr. ] om. Rose",
+      "focus": "traducción de terminología de órdenes arquitectónicos",
+      "analysis": "Las tres traducciones describen los dentículos de cornisas dóricas y los triglifos en elementos jónicos. Español «se esculpen», francés «on sculpte» e inglés «are carved» conservan el sentido técnico, pero no distinguen inequívocamente sculpentur de scalpentur. El inglés hace explícitos los capitales almohadillados en su reordenación.",
+      "evidence_level": "interpretation_based_on_indexed_author_translations",
+      "quality_flag": "interpreted_from_index",
+      "source_editions": [
+        "Kurilo V514 (es)",
+        "Kurilo V554 (fr)",
+        "Kurilo V297 (en)"
+      ],
+      "sources": [
+        "data/structured/recensio-es.json",
+        "data/structured/recensio-fr.json",
+        "data/structured/theory-en.json"
+      ],
+      "warning": "Las traducciones pertenecen a Kurilo. No constituyen testigos textuales de Rose o Krohn ni identifican automáticamente decisiones del latín."
     },
     {
       "locus": "1.2.9",
@@ -131,6 +227,63 @@
       "warning": "Las traducciones cotejadas son las tres del autor; Rose y Krohn son referencias latinas, no traducciones históricas cotejadas aquí."
     },
     {
+      "locus": "1.4.3",
+      "criticalLine": "exsugendo Rose Kr. Kur. ] exugendo H S Gᶜ (sec. Rose)",
+      "focus": "equivalencia semántica de un lema con variante manuscrita indirecta",
+      "analysis": "Castellano «les arrebata absorbiéndolas», francés «leur arrache en les épuisant» e inglés «snatching it away in rising vapors» expresan pérdida de fuerza natural por acción del calor. Las tres traducciones no constituyen testigos independientes de la grafía exsugendo/exugendo; las lecturas manuscritas citadas proceden del aparato histórico.",
+      "evidence_level": "interpretation_based_on_indexed_author_translations",
+      "quality_flag": "interpreted_from_index",
+      "source_editions": [
+        "Kurilo V514 (es)",
+        "Kurilo V554 (fr)",
+        "Kurilo V297 (en)"
+      ],
+      "sources": [
+        "data/structured/recensio-es.json",
+        "data/structured/recensio-fr.json",
+        "data/structured/theory-en.json"
+      ],
+      "warning": "Las traducciones pertenecen a Kurilo. No constituyen testigos textuales de Rose o Krohn ni identifican automáticamente decisiones del latín."
+    },
+    {
+      "locus": "1.4.4",
+      "criticalLine": "valetudinibus Rose Kr. Kur. ] valitudinibus x (sec. Rose et Kr.)",
+      "focus": "variante ortográfica sin divergencia de concepto",
+      "analysis": "Español y francés explicitan «enfermedades / maladies»; el inglés lo generaliza como «do not suffer from the change of place». Las dos grafías latinas se refieren a la salud/enfermedad, de modo que esta variante ortográfica no exige una diferencia semántica en la traducción.",
+      "evidence_level": "interpretation_based_on_indexed_author_translations",
+      "quality_flag": "interpreted_from_index",
+      "source_editions": [
+        "Kurilo V514 (es)",
+        "Kurilo V554 (fr)",
+        "Kurilo V297 (en)"
+      ],
+      "sources": [
+        "data/structured/recensio-es.json",
+        "data/structured/recensio-fr.json",
+        "data/structured/theory-en.json"
+      ],
+      "warning": "Las traducciones pertenecen a Kurilo. No constituyen testigos textuales de Rose o Krohn ni identifican automáticamente decisiones del latín."
+    },
+    {
+      "locus": "1.4.5",
+      "criticalLine": "e Rose Kr. Kur. ] om. x (sec. Rose et Kr.); add. rec. (sec. Kr.)",
+      "focus": "suplemento preposicional y equivalencia idiomática",
+      "analysis": "Español «compuestos de principios», francés «composés de principes» e inglés «composed of the principles» expresan la misma relación de composición elemental. La presencia de e como suplemento editorial en el latín puede ser absorbida idiomáticamente por las tres lenguas y no produce una variante de traducción necesaria.",
+      "evidence_level": "interpretation_based_on_indexed_author_translations",
+      "quality_flag": "interpreted_from_index",
+      "source_editions": [
+        "Kurilo V514 (es)",
+        "Kurilo V554 (fr)",
+        "Kurilo V297 (en)"
+      ],
+      "sources": [
+        "data/structured/recensio-es.json",
+        "data/structured/recensio-fr.json",
+        "data/structured/theory-en.json"
+      ],
+      "warning": "Las traducciones pertenecen a Kurilo. No constituyen testigos textuales de Rose o Krohn ni identifican automáticamente decisiones del latín."
+    },
+    {
       "locus": "1.4.6",
       "criticalLine": "quibus⟨vis⟩ ... liquido Kur. Kr. ] quibus ... cumque ... ut a liquido Rose",
       "focus": "literalidad relativa de la explicación humoral",
@@ -149,6 +302,25 @@
       "warning": "Las traducciones cotejadas son las tres del autor; Rose y Krohn son referencias latinas, no traducciones históricas cotejadas aquí."
     },
     {
+      "locus": "1.4.11",
+      "criticalLine": "actum Kur. Kr. ] auctum Rose; marisque Kur. Kr. ] amarique Rose",
+      "focus": "lectura divergente reflejada en inglés; edición latina sin cambio demostrado",
+      "analysis": "Castellano «el mar, empujado por las tempestades» y francés «la mer, poussée par les tempêtes» traducen actum; inglés «the sea, increased by storms» expresa auctum de Rose, aunque su texto latino indexado y el de Kurilo coincidan sustancialmente con Krohn. Es una divergencia traductológica sustancial; no prueba un cambio en el latín de V297. Los tres explican el efecto de la salinidad en pantanos costeros.",
+      "evidence_level": "interpretation_based_on_indexed_author_translations",
+      "quality_flag": "interpreted_from_index",
+      "source_editions": [
+        "Kurilo V514 (es)",
+        "Kurilo V554 (fr)",
+        "Kurilo V297 (en)"
+      ],
+      "sources": [
+        "data/structured/recensio-es.json",
+        "data/structured/recensio-fr.json",
+        "data/structured/theory-en.json"
+      ],
+      "warning": "Las traducciones pertenecen a Kurilo. No constituyen testigos textuales de Rose o Krohn ni identifican automáticamente decisiones del latín."
+    },
+    {
       "locus": "1.5.2",
       "criticalLine": "vulnerentur; circinationibus Kur. Kr. ] vulneretur; circumitionibus Rose",
       "focus": "concordancia gramatical y geometría militar",
@@ -165,6 +337,44 @@
         "data/structured/theory-en.json"
       ],
       "warning": "Las traducciones cotejadas son las tres del autor; Rose y Krohn son referencias latinas, no traducciones históricas cotejadas aquí."
+    },
+    {
+      "locus": "1.6.4",
+      "criticalLine": "septentrionali Kur. Kr. ] septentrionibus Rose; cuiusque Kur. Kr. ] quosque Rose",
+      "focus": "desajuste de tipo documental en índice inglés",
+      "analysis": "Castellano y francés traducen la descripción de la torre de los vientos con sus figuras y direcciones, coherente en conjunto con Kurilo/Krohn. La entrada inglesa asociada a I.6.4 comienza como «Archaeological note — Bk. 1.6» y es una explicación arqueológica, no una traducción continua del pasaje. Debe clasificarse como comentario y no usarse para cotejar literalmente las formas latinas.",
+      "evidence_level": "interpretation_based_on_indexed_author_translations",
+      "quality_flag": "indexed_english_commentary_not_continuous_translation",
+      "source_editions": [
+        "Kurilo V514 (es)",
+        "Kurilo V554 (fr)",
+        "Kurilo V297 (en)"
+      ],
+      "sources": [
+        "data/structured/recensio-es.json",
+        "data/structured/recensio-fr.json",
+        "data/structured/theory-en.json"
+      ],
+      "warning": "Las traducciones pertenecen a Kurilo. No constituyen testigos textuales de Rose o Krohn ni identifican automáticamente decisiones del latín."
+    },
+    {
+      "locus": "1.6.5",
+      "criticalLine": "pateat numerus Kur. Kr. ] capiat numeros Rose",
+      "focus": "claridad de enumeración y paráfrasis inglesa",
+      "analysis": "Castellano «se vea claro el número» y francés «apparaissent clairement le nombre» reflejan pateat numerus. Inglés «This defines the number and names» parafrasea la finalidad de la enumeración sin adoptar explícitamente capiat numeros de Rose. La grafía corum del texto digital Rose requiere cotejo impreso antes de tratarla como variante.",
+      "evidence_level": "interpretation_based_on_indexed_author_translations",
+      "quality_flag": "interpreted_from_index",
+      "source_editions": [
+        "Kurilo V514 (es)",
+        "Kurilo V554 (fr)",
+        "Kurilo V297 (en)"
+      ],
+      "sources": [
+        "data/structured/recensio-es.json",
+        "data/structured/recensio-fr.json",
+        "data/structured/theory-en.json"
+      ],
+      "warning": "Las traducciones pertenecen a Kurilo. No constituyen testigos textuales de Rose o Krohn ni identifican automáticamente decisiones del latín."
     },
     {
       "locus": "1.6.11",
@@ -189,6 +399,24 @@
       "criticalLine": "non quolibet nomine; cum religione; debet Kur. Kr. ] non omnes; cum religiose; debeat Rose",
       "focus": "restricción cultual y paráfrasis inglesa",
       "analysis": "Castellano y francés expresan la restricción de acceso al santuario de Ceres por cualquier motivo; inglés la reformula «for any ordinary reason, but only for sacrifice». Las traducciones reflejan el sentido de non quolibet ... excepto los sacrificios y no constituyen pruebas independientes del texto latino de Rose.",
+      "evidence_level": "interpretation_based_on_indexed_author_translations",
+      "source_editions": [
+        "Kurilo V514 (es)",
+        "Kurilo V554 (fr)",
+        "Kurilo V297 (en)"
+      ],
+      "sources": [
+        "data/structured/recensio-es.json",
+        "data/structured/recensio-fr.json",
+        "data/structured/theory-en.json"
+      ],
+      "warning": "Las traducciones cotejadas son las tres del autor; Rose y Krohn son referencias latinas, no traducciones históricas cotejadas aquí."
+    },
+    {
+      "locus": "1.praef.3",
+      "criticalLine": "traderentur Kur. Kr. ] tradantur Rose",
+      "focus": "matiz temporal y equivalencia entre lenguas",
+      "analysis": "La traducción castellana «se transmitieran» mantiene el matiz temporal retrospectivo de traderentur; el francés «soient transmis» y el inglés «might be handed down» expresan finalidad, sin reproducir necesariamente la misma oposición temporal del latín. No se han indexado traducciones históricas de Rose y Krohn en este cotejo.",
       "evidence_level": "interpretation_based_on_indexed_author_translations",
       "source_editions": [
         "Kurilo V514 (es)",
