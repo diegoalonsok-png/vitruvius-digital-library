@@ -52,6 +52,7 @@ async function rescue(query){
   status.textContent="El buscador principal no se inició y el índice de recuperación tampoco pudo cargarse: "+e.message+". Consultá el lector bilingüe o volvé a intentar.";
  }finally{running=false;}
 }
+window.__vdlHomeSearchRescue=rescue;
 function ready(){
  const form=$("search-form"),input=$("query");if(!form||!input)return;
  // Siempre frenar la navegación clásica del formulario; el buscador principal
