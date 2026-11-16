@@ -8,6 +8,10 @@ on:
       - 'scripts/test-lexicon-continuation.mjs'
       - 'scripts/test-lexicon-source-language.mjs'
       - 'scripts/test-lexicon-passage-issues.mjs'
+      - 'scripts/test-notebook-bibliotheca-itinerary.mjs'
+      - 'assets/bibliotheca-simple.js'
+      - 'vitruvia-lexicon.html'
+      - 'bibliotheca-graeca-latina.html'
       - '.github/workflows/reader-lexicon-roundtrip.yml'
   pull_request:
     paths:
@@ -17,6 +21,10 @@ on:
       - 'scripts/test-lexicon-continuation.mjs'
       - 'scripts/test-lexicon-source-language.mjs'
       - 'scripts/test-lexicon-passage-issues.mjs'
+      - 'scripts/test-notebook-bibliotheca-itinerary.mjs'
+      - 'assets/bibliotheca-simple.js'
+      - 'vitruvia-lexicon.html'
+      - 'bibliotheca-graeca-latina.html'
       - '.github/workflows/reader-lexicon-roundtrip.yml'
   workflow_dispatch:
 permissions:
@@ -34,3 +42,4 @@ jobs:
       - run: node scripts/test-lexicon-continuation.mjs
       - run: node scripts/test-lexicon-source-language.mjs
       - run: node scripts/test-lexicon-passage-issues.mjs
+      - run: node scripts/test-notebook-bibliotheca-itinerary.mjs
