@@ -1,0 +1,63 @@
+{
+  "schema": "vdl-public-synchronization-check-v1",
+  "checked_at": "2026-11-16",
+  "title": "Comprobación de publicación y sincronía GitHub Pages / Cloudflare R2",
+  "publication": {
+    "home_publicly_readable": true,
+    "bibliotheca_publicly_readable": true,
+    "compact_classics_strip_observed_in_open_browser_tab": true,
+    "compact_strip_count_values": {
+      "catalogued": 281,
+      "indexed_in_main_repertory": 227,
+      "without_own_registered_text": 44
+    },
+    "latin_edition_details_observed_in_open_browser_tab": true,
+    "latin_search_runtime_executed": false,
+    "bibliotheca_javascript_interactions_tested": false,
+    "note": "El navegador conectado permitió inspeccionar el texto renderizado de la portada; no hubo control interactivo de sus formularios ni captura de pantalla."
+  },
+  "public_requests": {
+    "https://vitruvius-digital-library.org/data/r2/bibliotheca-panel-sync.json": "accessible",
+    "https://vitruvius-digital-library.org/data/r2/r2-object-status.json": "accessible",
+    "https://vitruvius-digital-library.org/data/r2/catalogo-clasicos-r2.json": "accessible",
+    "https://vitruvius-digital-library.org/data/r2/indice-semantico-manifest.json": "accessible",
+    "https://libros.vitruvius-digital-library.org/clasicos/texto/antologia-griega.json": "accessible; OCR page JSON",
+    "https://vitruvius-digital-library.org/assets/vitruvius-three-editions-search.js?v=20261116-compact-editions-v4": "accessible"
+  },
+  "catalogue_cross_check": {
+    "master_works": 271,
+    "additional_works": 10,
+    "total_works": 281,
+    "github_r2_pdf_edition_records": 117,
+    "unique_catalogue_ids": 117,
+    "unique_pdf_urls": 117,
+    "matched_to_master_by_work_mapping": 107,
+    "separate_additional_edition_records": 10,
+    "all_117_accounted_for_in_mapping_or_additional_section": true,
+    "indexed_r2_edition_ids_reported": 119,
+    "index_only_ids": [
+      "boecio-institutione-musica",
+      "historia-augusta"
+    ],
+    "index_only_records_pending": 2
+  },
+  "prior_r2_audit": {
+    "generated": "2026-11-16T04:01:08.407208+00:00",
+    "checked_objects": 234,
+    "present": 234,
+    "missing": 0,
+    "hash_mismatches": 0,
+    "qualification": "Datos de la auditoría anterior, no nuevo barrido HEAD de los 234 objetos."
+  },
+  "limits": [
+    "No se realizó un test end-to-end de búsqueda ni una captura visual automatizada: TinyFish no pudo iniciar debido a saldo insuficiente.",
+    "No existe acceso autenticado de escritura R2 en esta sesión.",
+    "No se certifica la inexistencia de errores en las 2510 partes del índice solo por la muestra o auditoría anterior.",
+    "El texto OCR de Internet Archive no representa una transcripción filológica verificada."
+  ],
+  "safe_next_steps": [
+    "Verificar las fichas y derechos de los dos ID extra; conservar objetos.",
+    "Ejecutar las búsquedas end-to-end en un navegador disponible y revisar paneles y enlaces.",
+    "Actualizar el informe de sincronización solamente con evidencia de nueva auditoría R2."
+  ]
+}
