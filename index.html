@@ -480,6 +480,15 @@ html[data-theme="dark"].front-color-light .research-nav-controls>.research-print
 
 
 <link rel="stylesheet" href="assets/unified-books-discovery.css?v=20261115-v1">
+<style id="home-stats-alignment">
+/* Uniform metric tiles: numbers share a fixed column and labels share a baseline. */
+.stats-band .stats-inner{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px 20px;align-items:stretch}
+.stats-band .stats-inner>p{display:grid;grid-template-columns:minmax(80px,110px) minmax(0,1fr);gap:14px;align-items:center;min-width:0;margin:0;padding:9px 14px!important;border-right:0!important;border-bottom:1px solid rgba(180,180,180,.22);box-sizing:border-box}
+.stats-band .stats-inner>p>strong{display:block;min-width:0;margin:0;text-align:right;font-variant-numeric:tabular-nums;line-height:1.1;font-size:clamp(32px,3vw,55px)}
+.stats-band .stats-inner>p>span{display:block;min-width:0;max-width:none;font-size:clamp(12px,1.1vw,16px);line-height:1.45;text-align:left;overflow-wrap:break-word}
+@media(max-width:1000px){.stats-band .stats-inner{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:620px){.stats-band .stats-inner{grid-template-columns:1fr;gap:6px}.stats-band .stats-inner>p{grid-template-columns:90px minmax(0,1fr);padding:8px 0!important}.stats-band .stats-inner>p>strong{font-size:38px}.stats-band .stats-inner>p>span{font-size:14px}}
+</style>
 </head>
 <body>
   <a class="skip" href="#contenido">Saltar al contenido</a>
