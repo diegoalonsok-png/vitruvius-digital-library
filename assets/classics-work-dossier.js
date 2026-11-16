@@ -3,7 +3,7 @@
    "Earliest in local register" does not mean "oldest manuscript in existence".
    Publication details are never invented to force a Chicago 18 citation. */
 (()=>{"use strict";
-const PATHS={catalog:"data/bibliotheca-graeca-latina-I-bce-I-ce.json?v=20261114-codicology-v2",witness:"data/bibliotheca-testimonia-verified.json?v=20261114-three-records-v2",text:"data/classics-corpus/search-registry.json",authority:"data/perseus-provenance-audit.json",critical:"data/classics-corpus/critical-authorities-222.json?v=20261110-100witnesses-v24",standard:"data/classics-corpus/vitruvius-standard-222.json?v=20261110-100witnesses-v24",trees:"data/classics-corpus/codicological-trees-222.json?v=20261110-100witnesses-v24"};
+const PATHS={catalog:"data/bibliotheca-graeca-latina-I-bce-I-ce.json?v=20261114-codicology-v2",witness:"data/bibliotheca-testimonia-verified.json?v=20261114-three-records-v2",text:"data/classics-corpus/search-registry.json",authority:"data/perseus-provenance-audit.json",critical:"data/classics-corpus/critical-authorities-222.json?v=20261110-100witnesses-v24",standard:"data/classics-corpus/vitruvius-standard-222.json?v=20261110-100witnesses-v24",trees:"data/classics-corpus/codicological-trees-222.json?v=20261110-100witnesses-v24",academicAudit:"data/classics-corpus/bibliotheca-academic-audit-281.json"};
 const P={};const N=s=>String(s==null?"":s).trim();
 const html=(tag,cls,value)=>{const e=document.createElement(tag);if(cls)e.className=cls;if(value!==undefined)e.textContent=N(value);return e};
 const norm=s=>N(s).normalize("NFD").replace(/\p{M}/gu,"").toLowerCase();
@@ -101,13 +101,14 @@ function store(){if(P.ready)return P.ready;
  fetch(PATHS.authority).then(x=>x.ok?x.json():{records:[]}).catch(()=>({records:[]})),
   fetch(PATHS.critical).then(x=>x.ok?x.json():{records:[]}).catch(()=>({records:[]})),
   fetch(PATHS.standard).then(x=>x.ok?x.json():{records:[]}).catch(()=>({records:[]})),
-  fetch(PATHS.trees).then(x=>x.ok?x.json():{records:[]}).catch(()=>({records:[]}))
- ]).then(([c,t,r,audit,critical,standard,trees])=>{
+  fetch(PATHS.trees).then(x=>x.ok?x.json():{records:[]}).catch(()=>({records:[]})),
+  fetch(PATHS.academicAudit).then(x=>x.ok?x.json():{records:[]}).catch(()=>({records:[]}))
+ ]).then(([c,t,r,audit,critical,standard,trees,academicAudit])=>{
  if(!Array.isArray(c.works))throw Error("Catálogo sin registros");
  const docs=new Map(c.works.map(w=>[w.id,w]));
  const witness=new Map();for(const rec of t.records||[])for(const id of rec.workIds||[]){if(!witness.has(id))witness.set(id,[]);witness.get(id).push(rec)}
  const texts=new Map();for(const rec of r.entries||[]){if(!texts.has(rec.workId))texts.set(rec.workId,[]);texts.get(rec.workId).push(rec)}
- return {docs,witness,texts,audit:new Map((audit.records||[]).map(e=>[e.workId,e])),critical:new Map((critical.schema==="vitruvius-critical-authority-222-v1"&&Array.isArray(critical.records)&&critical.records.length>0?critical.records:[]).map(e=>[e.workId,e])),standard:new Map((standard.records||[]).map(e=>[e.workId,e])),trees:new Map((trees.records||[]).map(e=>[e.workId,e])),count:c.works.length,witnessCount:(t.records||[]).length};
+ return {docs,witness,texts,audit:new Map((audit.records||[]).map(e=>[e.workId,e])),critical:new Map((critical.schema==="vitruvius-critical-authority-222-v1"&&Array.isArray(critical.records)&&critical.records.length>0?critical.records:[]).map(e=>[e.workId,e])),standard:new Map((standard.records||[]).map(e=>[e.workId,e])),trees:new Map((trees.records||[]).map(e=>[e.workId,e])),academicAudit:new Map((academicAudit.records||[]).map(e=>[e.id,e])),count:c.works.length,witnessCount:(t.records||[]).length};
  });
  return P.ready;
 }
@@ -655,6 +656,27 @@ function renderAuthorityIdentifiers(dest,w,d){
  sec.append(links);
  dest.append(sec);
 }
+function renderAcademicAudit(root,w,d){
+ const a=d.academicAudit.get(w.id);if(!a)return;
+ const sec=html("section","cwd-academic-audit");
+ sec.append(html("h3",null,"Control académico consolidado · cobertura e integridad"));
+ row(sec,"Título uniforme registrado",a.uniformTitle);
+ row(sec,"Lengua original",langLabel[a.originalLanguage]||a.originalLanguage);
+ row(sec,"Fuente original",a.originalLanguageSourceStatus==="r2_sha256_lexically_certified"?"Índice R2 certificado por SHA-256, no colación manuscrita":a.originalLanguageSourceStatus==="source_registered_in_index"?"Texto registrado en el índice":"Texto original no indexado en el registro actual");
+ row(sec,"Integridad editorial",a.integrityExplanation);
+ row(sec,"Estado de conservación/indexación",a.editorialIntegrityStatus);
+ row(sec,"Reserva académica",a.academicCaveat);
+ row(sec,"URN CTS de edición",a.ctsEditionUrn||"Sin URN de edición acreditada");
+ for(const e of a.pdfEditions||[]){
+  const p=html("p","cwd-row");p.append(html("strong",null,"Edición documentada: "),document.createTextNode(e.editionTitle||e.id));
+  if(e.pages)p.append(document.createTextNode(" · "+e.pages+" páginas digitales"));
+  if(e.scopeNote)p.append(document.createTextNode(" · Alcance: "+e.scopeNote));
+  addA(p," · Consultar PDF",e.href);sec.append(p);
+ }
+ row(sec,"Testimonios individualizados",a.manuscriptWitnessCount+" en el registro; no equivale al número de testigos existentes");
+ sec.append(html("p","cwd-muted","El inventario distingue texto, edición impresa y códice. No se certifica obra íntegra ni cotejo crítico sin contrastar la edición y sus límites."));
+ root.append(sec);
+}
 function renderInto(target,id,opts={}){
  if(!target)return Promise.resolve(null);
  if(window.EditorialWorkRecords?.has(id))return window.EditorialWorkRecords.render(target,id);
@@ -697,6 +719,7 @@ function renderInto(target,id,opts={}){
   // documentary/ecdotic audit accessible without displaying numerous unresolved
   // fields as if they were independent, validated catalogue facts.
   renderAcademicSummary(target,w,d);
+  renderAcademicAudit(target,w,d);
   renderIndexedEdition(target,w);
   renderWitness(target,w,d);
   renderEditions(target,w,d);
