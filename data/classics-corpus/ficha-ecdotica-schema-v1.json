@@ -1,0 +1,118 @@
+{
+  "schema": "vdl-ficha-ecdotica-v1",
+  "description": "Campos editoriales por obra y edición. No inventar testimonios, atribuciones ni lecturas; null significa no verificado, no ausencia histórica.",
+  "required": [
+    "workId",
+    "author",
+    "titles",
+    "composition",
+    "language",
+    "transmission",
+    "edition",
+    "editorialStatus"
+  ],
+  "fields": {
+    "workId": "Identificador estable sin reutilización; relacionar con CTS/TLG/PHI cuando existe.",
+    "author": {
+      "name": "Nombre normalizado",
+      "original": "Forma en lengua original",
+      "authorityIds": "VIAF/Wikidata/TLG/PHI si verificados",
+      "attribution": "segura|tradicional|disputada|pseudepigrafica|anonima",
+      "evidence": "Fuente bibliográfica y justificación"
+    },
+    "titles": {
+      "original": "Título transmitido o editorial, especificando cuál",
+      "latin": "Título latino tradicional",
+      "spanish": "Traducción del título",
+      "variants": "Títulos alternativos y testimonios"
+    },
+    "composition": {
+      "dateFrom": "año aproximado (a. C. negativo)",
+      "dateTo": "año aproximado",
+      "period": "Periodo literario o histórico",
+      "region": "Lugar probable, solo con fuente",
+      "genre": "Género y subgénero",
+      "authenticity": "Datos y debates de atribución"
+    },
+    "language": {
+      "code": "grc|la",
+      "stage": "Griego: micénico/homérico/arcaico/ático/jónico/eólico/dórico/coiné/imperial/ático literario/bizantino/etc.; latín: arcaico/clásico/tardío/medieval/etc. No forzar una sola etiqueta.",
+      "dialect": "Dialectos y mezcla documentados",
+      "register": "Prosa, épica, técnica, administrativa, litúrgica...",
+      "orthography": "Política de acentos, espíritus, grafías, iota y normalización",
+      "evidence": "Fuente para clasificación lingüística"
+    },
+    "transmission": {
+      "earliestWitness": {
+        "shelfmark": "Signatura vigente",
+        "repository": "Institución",
+        "location": "Ciudad, país",
+        "type": "papiro|codice|inscripcion|palimpsesto|cita_indirecta|impreso|otro",
+        "material": "Papiro/pergamino/papel/piedra...",
+        "dating": "Datación paleográfica/codicológica y rango",
+        "extent": "Folios, columnas o fragmento exacto conservado",
+        "contains": "Loci exactos atestiguados",
+        "directOrIndirect": "directo|indirecto",
+        "digitalFacsimile": "URL IIIF o digitalización verificada",
+        "source": "Catálogo científico y consulta",
+        "certainty": "verificado|probable|por_verificar"
+      },
+      "otherWitnesses": "Lista, cada uno con signatura, loci, fecha y evidencia",
+      "archetype": "Hipótesis, nunca confundir con manuscrito conservado",
+      "stemma": "Hipótesis sobre parentesco de testimonios, atribución y bibliografía",
+      "firstCompleteWitness": "Diferente del testimonio más antiguo, si se conoce",
+      "editioPrinceps": "Edición príncipe identificada y verificada",
+      "lacunae": "Lagunas de transmisión"
+    },
+    "edition": {
+      "urn": "CTS URN, cuando disponible",
+      "editor": "Responsable de la edición",
+      "title": "Título de edición",
+      "publisher": "Editorial",
+      "place": "Lugar",
+      "year": "Año",
+      "pages": "Páginas",
+      "isbn": "Identificador si corresponde",
+      "doi": "DOI solo si existe",
+      "sourceUrl": "Fuente original",
+      "license": "Licencia de la transcripción digital, no asumir dominio público del XML",
+      "sourceSha256": "SHA-256 del archivo utilizado",
+      "encoding": "TEI/XML o transcripción y criterios",
+      "locusSystem": "Sistema de referencia",
+      "isDiplomatic": "diplomática|semidiplomática|crítica|lectura|OCR",
+      "translation": "Traducción vinculada y traductor, con alineación verificada"
+    },
+    "editorialStatus": {
+      "bibliographic": "verificado|parcial|pendiente",
+      "sourceText": "verificado|parcial|sin_texto",
+      "witness": "autopsia|facsímil|edicion_secundaria|no_comprobado",
+      "collation": "completa|parcial|no_realizada",
+      "apparatus": "con_fuentes|parcial|no_disponible",
+      "readable": "confirmado|no_confirmado",
+      "indexed": "confirmado|no_confirmado",
+      "notes": "Revisión, responsable, fecha"
+    },
+    "ecdotics": {
+      "sigla": "Usar siglas de edición y su conspectus, sin crear siglas contradictorias",
+      "variantReadings": "Por locus: lecturas, testigos, fuente, confianza",
+      "apparatusCriticus": "Aparato positivo/negativo explícitamente declarado",
+      "apparatusFontium": "Fuentes, citas y paralelos",
+      "apparatusTestimoniorum": "Testimonia, citas indirectas y recepción",
+      "conjectures": "Conjeturas con atribución y fecha",
+      "interventions": "Emendaciones, transposiciones, cruces, cruces †, cruces de laguna, omisiones",
+      "orthographicPolicy": "Distinción lección / normalización / error OCR",
+      "collationScope": "Loci cotejados y testigos realmente vistos",
+      "teIEncoding": "TEI P5: msDesc, listWit, app, lem, rdg, wit, locus cuando proceda",
+      "bibliography": "Referencias críticas verificadas",
+      "confidence": "certeza y límites explícitos"
+    }
+  },
+  "rules": [
+    "Un testimonio más antiguo puede ser fragmentario y no permitir leer la obra entera.",
+    "No rellenar manuscrito más antiguo con una conjetura ni copiar el códice citado por una edición sin verificarlo.",
+    "No afirmar autopsia ni cotejo diplomático cuando solo se consultó OCR o edición impresa.",
+    "Conservar las convenciones ecdóticas ya utilizadas en el aparato crítico del sitio, según modelo Budé, sin inventar nuevas siglas.",
+    "Distinguir época de composición, fecha del testimonio y fecha de la edición moderna.",
+    "Nunca contar como indexada una obra sin texto efectivamente recuperable en el lector y buscador."
+  ]
+}
