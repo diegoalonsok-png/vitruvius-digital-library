@@ -12,7 +12,7 @@ async function init(){
   if(editions.length!==3)throw Error("Metadatos incompletos en data/catalog.json");
   root.replaceChildren();root.classList.add("vdl-editions");
   create("h2","Editiones Kurilo · referencias bibliográficas",root);
-  create("p","Sistema de notas y bibliografía Chicago 18. Cada edición tiene un DOI propio; el ISBN editorial vigente es compartido entre las tres versiones.",root,"vdl-preface");
+  create("p","Referencias bibliográficas por edición. Cada versión tiene su DOI propio. El ISBN común es una declaración editorial pendiente de comprobación registral independiente; no constituye asignación verificada para cada edición.",root,"vdl-preface");
   const list=create("ol",null,root);
   for(const b of editions){
    const li=create("li",null,list);
@@ -20,8 +20,13 @@ async function init(){
    li.append(document.createTextNode((b.bibliographic_author||"Kurilo, Diego")+". "));
    create("em",b.bibliographic_title||b.title,li);
    li.append(document.createTextNode(". "+b.edition_statement+". "+b.publication_place+": "+b.publisher+", "+b.year+". "));
-   const doi=create("a","https://doi.org/"+b.doi,li);doi.href="https://doi.org/"+b.doi;doi.rel="noopener noreferrer";
-   const meta=create("span","ISBN: "+b.isbn+(b.isbn_status==="publisher-declared-shared"?" (declarado como compartido)":"")+".",li,"vdl-edition-identifiers");
+   const doi=create("a","DOI: "+b.doi,li);doi.href="https://doi.org/"+b.doi;doi.rel="noopener noreferrer";
+   const ref=(b.bibliographic_author||"Kurilo, Diego")+". "+(b.bibliographic_title||b.title)+". "+b.edition_statement+". "+b.publication_place+": "+b.publisher+", "+b.year+". DOI: https://doi.org/"+b.doi+". ISBN editorial declarado: "+b.isbn+" (asignación por edición pendiente de verificación registral).";
+   const citeButton=create("button","Citar · copiar referencia",li,"vdl-cite-button");
+   citeButton.type="button";citeButton.setAttribute("aria-label","Copiar cita de "+b.version);
+   citeButton.addEventListener("click",async()=>{try{if(!navigator.clipboard?.writeText)throw Error("Clipboard unavailable");await navigator.clipboard.writeText(ref);citeButton.textContent="Cita copiada";}catch{const field=create("textarea",ref,li);field.value=ref;field.select();citeButton.textContent="Selecciona y copia la cita";}});
+
+   const meta=create("span","ISBN: "+b.isbn+(b.isbn_status==="publisher-declared-shared"?" (declarado compartido; asignación registral por verificar)":"")+".",li,"vdl-edition-identifiers");
    const original=create("a","Consultar edición original",meta);original.href=b.read_url||b.pdf_url||b.source_url||"#";
    original.style.marginLeft="1em";
   }
