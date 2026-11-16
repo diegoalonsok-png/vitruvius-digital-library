@@ -1,0 +1,72 @@
+{
+  "schema": "vdl-github-r2-reconciliation-v1",
+  "generated": "2026-11-16",
+  "scope": "Reconciliación documental, no sincronización física ni nueva lectura en el bucket R2",
+  "sources": [
+    {
+      "path": "data/r2/catalogo-clasicos-r2.json",
+      "github_blob_sha": "a9adce6ea0347513963180862685679e482da7f7"
+    },
+    {
+      "path": "data/r2/vinculos-repertorio.json",
+      "github_blob_sha": "a62705d634ade5c52cecf4feba287f97042c1761"
+    },
+    {
+      "path": "data/r2/bibliotheca-lexical-live-audit.json",
+      "github_blob_sha": "f155e6b1c78bb79430a0c2ce0baa3a4ef9bf662a"
+    },
+    {
+      "path": "data/r2/r2-object-status.json",
+      "github_blob_sha": "c2ab53228fbfab41d986751d445b2a38a7272ce9"
+    },
+    {
+      "path": "data/r2/bibliotheca-panel-sync.json",
+      "github_blob_sha": "48b68a1f3de027c6ec23c9d8e5112a8e8f9d7181"
+    }
+  ],
+  "counts": {
+    "cataloguedPdfRecords": 117,
+    "uniqueCatalogIds": 117,
+    "uniqueCatalogPdfUrls": 117,
+    "indexEntriesReported": 119,
+    "unmatchedIndexIds": 2,
+    "objectChecksReported": 234,
+    "objectsPresentReported": 234,
+    "metadataHashMismatchesReported": 0
+  },
+  "indexOnly": [
+    {
+      "id": "boecio-institutione-musica",
+      "cataloguedInGithub": false,
+      "status": "requires_provenance_and_full_object_validation",
+      "action": "Conservar en índice remoto; comprobar PDF, OCR, edición, procedencia, derechos y obra canónica antes de generar ficha",
+      "doNotDelete": true
+    },
+    {
+      "id": "historia-augusta",
+      "cataloguedInGithub": false,
+      "status": "requires_provenance_and_full_object_validation",
+      "action": "Conservar en índice remoto; comprobar PDF, OCR, edición, procedencia, derechos y obra canónica antes de generar ficha",
+      "doNotDelete": true
+    }
+  ],
+  "crossChecks": {
+    "allGithubPdfIdsUnique": true,
+    "allGithubPdfUrlsUnique": true,
+    "remoteIndexIncludesAllCataloguedAccordingToSavedAudit": true,
+    "matchingR2ObjectsBasedOnStoredAuditOnly": true,
+    "remoteWritePerformed": false
+  },
+  "separateBacklog": {
+    "unindexedCatalogueWorks": 44,
+    "candidateEditionsNotInR2": 44,
+    "comment": "Estos 44 pendientes no son los 2 IDs huérfanos del índice facsimilar"
+  },
+  "safeguards": [
+    "No suprimir entradas del índice o de R2 sin cotejar su fuente.",
+    "No confundir obra, edición, PDF, texto OCR y fragmento del índice.",
+    "No declarar comprobación HTTP/HEAD en vivo durante esta reconciliación.",
+    "No alterar los contadores publicados hasta recuperar la evidencia bibliográfica de los 2 ID adicionales."
+  ],
+  "next": "Comprobar las dos entradas con credenciales R2 y reconstruir únicamente el manifiesto de ediciones a partir de metadatos confirmados; publicar una ficha por edición o marcar explícitamente duplicado respaldado por checksum."
+}
