@@ -97,7 +97,7 @@ html::-webkit-scrollbar-corner,body::-webkit-scrollbar-corner{background:#242427
 <body>
 <header><h1>Bibliotheca · lectura lado a lado</h1><nav><a href="bibliotheca-graeca-latina.html">Volver al catálogo</a><a id="single" href="classics-text-reader.html">Lector individual</a><a href="classics-document-parallel.html">PDF enfrentados</a><a href="metodologia-filologica.html">Método filológico</a><a href="auditoria-academica.html">Auditoría</a></nav></header>
 <main>
-<p class="note">Lectura secuencial enfrentada de originales y traducciones disponibles, en griego, latín, castellano, francés o inglés. Cuando no hay una traducción local, el segundo visor ofrece una versión automática orientativa, solo a petición del lector. Las versiones alojadas permiten búsquedas independientes. Un locus común no acredita equivalencia de traducción ni colación filológica.</p>
+<p class="note">Lectura secuencial enfrentada de originales y traducciones documentadas: se prefieren traducciones humanas indexadas en inglés o francés; si no existen, se ofrecen otras versiones alojadas y, finalmente, traducción automática opcional. Cuando no hay una traducción local, el segundo visor ofrece una versión automática orientativa, solo a petición del lector. Las versiones alojadas permiten búsquedas independientes. Un locus común no acredita equivalencia de traducción ni colación filológica.</p>
 <div class="controls"><label>Visor 1 · elegir versión <select id="left" aria-label="Versión para el primer visor"></select></label><label>Visor 2 · elegir versión <select id="right" aria-label="Versión para el segundo visor"></select></label></div>
 <div class="parallel-search" role="search" aria-label="Búsqueda literal independiente por versión"><label>Buscar en visor 1 <input id="left-query" type="search" placeholder="domus / λόγος / casa" maxlength="120"></label><label>Buscar en visor 2 <input id="right-query" type="search" placeholder="casa / maison / house" maxlength="120"></label><button type="button" id="parallel-find">Buscar y subrayar en ámbar</button><button type="button" id="parallel-clear">Limpiar búsqueda</button></div>
 <div class="syncbar" aria-label="Navegación conjunta">
@@ -549,7 +549,8 @@ Promise.all([
  const first=ordered.find(x=>["la","grc"].includes(x))||ordered[0];
  left.value=langs.includes(params.get("left"))?params.get("left"):first;
  const requestedRight=params.get("right");
- const hostedTranslation=ordered.find(x=>x!==left.value&&!["la","grc"].includes(x));
+ // Prefer source-attributed human English/French translations already indexed; then Spanish or other documented versions.
+ const hostedTranslation=["en","fr","es","it","de","pt"].find(x=>x!==left.value&&langs.includes(x));
  const autoPreference=["es","en","fr"].includes(requestedRight)?"auto-"+requestedRight:"auto-es";
  right.value=isAuto(requestedRight)?requestedRight:
   (langs.includes(requestedRight)&&requestedRight!==left.value?requestedRight:
