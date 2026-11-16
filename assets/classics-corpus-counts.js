@@ -18,6 +18,9 @@ function style(){
  ".classics-tally p{font:11px/1.55 Arial,sans-serif;margin:4px 0;opacity:.9}",
  ".classics-tally dl{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px 16px;margin:8px 0;align-items:stretch}",
  ".classics-tally dl>div{display:grid;grid-template-columns:auto minmax(0,1fr);grid-template-rows:auto auto;column-gap:9px;align-items:baseline;min-width:0}",
+ ".classics-tally .tally-catalogue-link{grid-column:1/-1;display:inline-block;font:500 11px/1.3 system-ui;margin-top:3px;text-decoration:underline;color:inherit}",
+ ".classics-tally .tally-r2-note{grid-column:1/-1;font-size:10px!important;margin-top:2px!important}",
+
  ".classics-tally dl>div dd{grid-column:1;grid-row:1;font-size:clamp(21px,2vw,28px);margin:0}",
  ".classics-tally dl>div dt{grid-column:2;grid-row:1;font-size:11px;line-height:1.3}",
  ".classics-tally dl>div .tally-details{grid-column:1/-1;grid-row:2;margin-top:2px;border-top:0;padding-top:0}",
@@ -113,61 +116,12 @@ function paint(a,data){
   const group=document.createElement("div"),dd=document.createElement("dd"),dt=document.createElement("dt");
   dd.textContent=new Intl.NumberFormat("es-AR").format(val);dt.textContent=metricLabels[i];
   group.append(dd,dt);
-  const details=document.createElement("details");details.className="tally-details";
-  const summary=document.createElement("summary");summary.textContent="Ver listado académico";details.append(summary);
-  const ol=document.createElement("ol");
-  ol.tabIndex=0;
-  ol.setAttribute("aria-label","Lista académica desplazable; utilice las flechas del teclado o la rueda del ratón");
-  const records=detailGroup(i,data);
-  records.sort((a,b)=>a.title.localeCompare(b.title,"es",{sensitivity:"base"}));
-  for(const rec of records){
-   const li=document.createElement("li");
-   // Cada registro abre su ficha crítica (autoría, datación, tradición manuscrita,
-   // ediciones y estado documental), también los pendientes de original indexado.
-   // A selected work opens its hosted text first, whenever it exists.
-   // Bibliographic records remain accessible through a separate link.
-   const preferred=rec.versions?.pair?.url||
-     rec.versions?.links?.find(v=>!["la","grc"].includes(v.language))?.url||
-     rec.versions?.links?.find(v=>["la","grc"].includes(v.language))?.url||
-     rec.url;
-   const strong=(preferred||rec.id)?document.createElement("a"):document.createElement("span");
-   strong.textContent=rec.title;
-   if(preferred){strong.href=preferred;strong.className="tally-record";strong.title="Leer la obra en el visor disponible";}
-   else if(rec.id){strong.href="classics-work-record.html?work="+encodeURIComponent(rec.id);strong.className="tally-record";strong.title="Solo ficha crítica: texto no alojado";}
-   li.append(strong);
-   if(rec.id && i!==3){
-    const record=document.createElement("a");record.className="tally-record-link";
-    record.href="classics-work-record.html?work="+encodeURIComponent(rec.id);
-    record.textContent="Ficha crítica";record.title="Autoría, fuentes, ediciones y estado de la obra";
-    li.append(" · ",record);
-   }
-   if(rec.meta){const meta=document.createElement("small");meta.textContent=" · "+rec.meta;li.append(meta);}
-   if(rec.versions?.links.length){
-    const versions=document.createElement("div");versions.className="tally-editions";
-    const readLabel=document.createElement("small");readLabel.textContent="Lectura disponible:";versions.append(readLabel);
-    for(const edition of rec.versions.links){
-     const a=document.createElement("a");a.href=edition.url;
-     a.textContent=edition.label;versions.append(a);
-    }
-    if(rec.versions.pair){
-     const together=document.createElement("a");
-     together.href=rec.versions.pair.url;
-     together.className="tally-parallel";
-     together.textContent=rec.versions.pair.label;versions.append(together);
-    }
-    li.append(versions);
-   }else if(rec.url){
-    // The title above already opens this hosted reading.
-    const link=document.createElement("a");link.href=rec.url;link.textContent="Leer texto";li.append(" · ",link);
-   }else if(!preferred&&rec.id){
-    const notice=document.createElement("small");notice.className="tally-unavailable";
-    notice.textContent=" · Texto no disponible para lectura en el sitio";
-    li.append(notice);
-   }
-   ol.append(li);
-  }
-  const note=document.createElement("p");note.textContent=records.length+" registros listados (según inventarios consultados).";details.append(note,ol);
-  group.append(details);dl.append(group);
+  const catalogue=document.createElement("a");
+  catalogue.className="tally-catalogue-link";
+  catalogue.href=i===3?"bibliotheca-ampliada.html":i===4?"estado-indexacion-bibliotheca.html":"index-auctorum-operum.html";
+  catalogue.textContent=i===3?"Ver ediciones":i===4?"Ver pendientes":"Ver catálogo";
+  catalogue.title="Abrir listado en una página dedicada, sin desplegar libros aquí";
+  group.append(catalogue);dl.append(group);
  });wrap.append(dl);
  // The title finder reuses the already audited catalogue and version registry.
  window.BibliothecaWorkSearch?.mount?.(wrap,data);
@@ -232,33 +186,12 @@ async function ampliar(fichas){
    const note=document.createElement("small");note.className="tally-r2-note";note.style.cssText="display:block;font-size:12px;line-height:1.4;opacity:.75;margin-top:4px";
    note.textContent=fmt(c.fichasRepertorio)+" con ficha académica + "+fmt(c.obrasNuevas)+" nuevas en facsímil";
    first.querySelector("dt").after(note);
-   const ol=first.querySelector("ol");
-   for(const n of v.obrasNuevas||[]){
-    const li=document.createElement("li");const a=document.createElement("a");a.href="buscador-facsimiles-clasicos.html?obra="+encodeURIComponent(n.r2||"");a.title="Leer la obra en el visor de facsímiles";
-    a.textContent=n.autor+" — "+n.obra;a.className="tally-record";li.append(a);
-    const m=document.createElement("small");m.textContent=" · obra nueva · ";li.append(m);
-    const leer=document.createElement("a");leer.href="buscador-facsimiles-clasicos.html?obra="+encodeURIComponent(n.r2||"");
-    leer.textContent="Leer en el visor";li.append(leer);
-    const pdf=document.createElement("a");pdf.href=n.pdf;pdf.textContent="PDF";li.append(document.createTextNode(" · "),pdf);ol.prepend(li);
-   }
-   const p=first.querySelector("details p");if(p)p.textContent=fmt(c.obrasTotales)+" registros listados ("+fmt(c.fichasRepertorio)+" fichas y "+fmt(c.obrasNuevas)+" obras nuevas).";
+
   }
   const g=document.createElement("div"),dd=document.createElement("dd"),dt=document.createElement("dt");
   dd.textContent=fmt(cat.items.length);dt.textContent="facsímiles PDF de dominio público";g.append(dd,dt);
-  const det=document.createElement("details");det.className="tally-details";
-  const sum=document.createElement("summary");sum.textContent="Ver listado académico";det.append(sum);
-  const p=document.createElement("p");p.textContent=fmt(cat.items.length)+" ediciones en libros.vitruvius-digital-library.org; texto por página con OCR sin revisar.";
-  const ol=document.createElement("ol");ol.tabIndex=0;
-  [...cat.items].sort((x,y)=>x.autor.localeCompare(y.autor,"es")).forEach(x=>{
-   const li=document.createElement("li");const a=document.createElement("a");
-   a.href="buscador-facsimiles-clasicos.html?obra="+encodeURIComponent(x.id);a.className="tally-record";
-   a.title="Leer la edición página a página en el visor del sitio";
-   a.textContent=x.autor+" — "+x.obra;li.append(a);
-   const m=document.createElement("small");m.textContent=" · "+x.anio+(x.bilingueLoeb?" · Loeb bilingüe":"")+(x.alcance?" · "+x.alcance:"")+" · ";li.append(m);
-   const pdf=document.createElement("a");pdf.href=x.pdf;pdf.textContent="PDF";li.append(pdf);ol.append(li);
-  });
-  const all=document.createElement("a");all.href="bibliotheca-ampliada.html";all.textContent="Abrir Bibliotheca ampliada";
-  det.append(p,ol,all);g.append(det);dl.append(g);
+  const all=document.createElement("a");all.href="bibliotheca-ampliada.html";all.className="tally-catalogue-link";all.textContent="Ver facsímiles";
+  g.append(all);dl.append(g);
   // Supplement catalogue matches with real R2 titles and identified facsimile editions.
   window.BibliothecaWorkSearch?.addFacsimiles?.(v,cat);
  }catch(e){console.warn("Capa R2 no disponible:",e.message)}
