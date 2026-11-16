@@ -1442,6 +1442,15 @@ async function openLocus(workId,locus,q){
  const p=D.corpus.passages[i];const spans=[];if(q){const ks=new Set(fold(q).split(/\s+/));for(const m of p[2].matchAll(TOKEN))if(ks.has(fold(m[0])))spans.push([m.index,m.index+m[0].length])}
  const card=hitCard(D,{i,spans:spans.length?spans:[[0,0]],tok:0});card.classList.add("lx-locus-direct");const full=card.querySelector(".lx-full");full.hidden=false;
  const t=el("p",{class:"lx-passage",lang:D.l});t.append(linkWords(p[2],spans));full.append(t);if(p[4])full.append(el("p",{class:"lx-tr"},el("b",{},"Traducción (Kurilo, V514): "),p[4]));
+ // Perseus-style round trip: a cited locus must lead back to its reader.
+ // This is a navigation link, NOT a claim that the source has been collated.
+ const reader=new URL(workId==="vitruvius"?"lector-bilingue.html":"classics-text-reader.html",location.href);
+ if(workId==="vitruvius")reader.searchParams.set("edition","recensio-es");
+ else {reader.searchParams.set("work",workId);reader.searchParams.set("lang",l)}
+ reader.searchParams.set("locus",p[1]);
+ const back=el("a",{href:reader.href,class:"lx-reader-return"},"Volver al pasaje en el lector");
+ back.setAttribute("aria-label","Abrir "+workId+" en locus "+p[1]);
+ full.append(el("p",{class:"lx-src"},back));
  $("#lx-results").prepend(el("h3",{class:"lx-group-h"},"Locus citado"),card);card.scrollIntoView({behavior:"smooth",block:"center"});
 }
 
