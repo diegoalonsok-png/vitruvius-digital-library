@@ -178,6 +178,7 @@ def main():
                 "source": w["sourceXml"],
                 "sourceSha256": hashlib.sha256(xml).hexdigest(),
                 "sourceRevision": inventory["sourceRevision"],
+                "editionReference": description,
                 "attribution": w["author"] + " \u00b7 " + description + " \u00b7 Perseus Digital Library",
                 "license": "CC BY-SA 4.0 (Perseus Digital Library)",
                 "editorialStatus": "Greek TEI edited text, not independently collated, local-pNNNNN are editorial digital segments rather than canonical citations",
