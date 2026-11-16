@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="index,follow">
+<meta name="description" content="Obras selectas de Bibliotheca Graeca et Latina: cincuenta textos griegos documentados con edición, identificador CTS, estado de indexación y lectura por pasajes.">
+<link rel="canonical" href="https://vitruvius-digital-library.org/obras-selectas">
+<title>Obras selectas · Bibliotheca Graeca et Latina</title>
+<link rel="stylesheet" href="assets/bibliotheca-cover-miniatures.css?v=20261116-library-covers-v1">
+<style>
+:root{color-scheme:light;--ink:#192940;--muted:#526273;--line:#dcd7c9;--paper:#fbfaf6;--card:#fff;--gold:#b18b53}
+*{box-sizing:border-box}body{margin:0;font:15px/1.55 system-ui,-apple-system,"Segoe UI",sans-serif;color:var(--ink);background:var(--paper)}
+a{color:#244e77}a:hover{text-decoration-thickness:2px}header{padding:17px max(18px,calc((100vw - 1180px)/2));background:#1c2b3d;color:#fff}
+header a{color:#f0dfb8;text-decoration:none;margin-right:18px;font-size:13px}header a:hover{text-decoration:underline}
+main{max-width:1180px;padding:30px 20px 70px;margin:auto}h1{font:400 clamp(30px,4vw,48px)/1.16 Georgia,serif;margin:6px 0 12px}
+h2{font:400 23px/1.2 Georgia,serif;margin:0 0 8px}.intro{max-width:840px;color:var(--muted)}
+.kicker{font:700 11px/1.2 system-ui;letter-spacing:.15em;color:#846534;text-transform:uppercase}
+.toolbar{display:grid;grid-template-columns:minmax(200px,2fr) repeat(2,minmax(150px,1fr));gap:12px;margin:24px 0}
+.toolbar label{display:grid;gap:6px;font-size:12px;font-weight:650;color:var(--muted)}
+.toolbar input,.toolbar select{border:1px solid #aeb9c2;background:#fff;border-radius:8px;padding:11px 12px;font:inherit;width:100%;color:var(--ink)}
+.stats{margin:12px 0 16px;font-size:13px;color:var(--muted)}.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:13px}
+.work{border:1px solid var(--line);background:var(--card);border-radius:10px;padding:15px;display:grid;grid-template-columns:52px minmax(0,1fr);gap:4px 14px}
+.work>.vdl-cover{grid-row:1/span 3;grid-column:1}.work h2{font-size:18px;overflow-wrap:anywhere}.work .data{grid-column:2;font-size:12px;color:var(--muted)}
+.work .state{grid-column:2;font-size:12px;font-weight:600;color:#6d5025}.work .state.is-indexed{color:#1f704b}
+.work .links{grid-column:1/-1;padding-top:10px;border-top:1px solid var(--line);margin-top:11px;display:flex;flex-wrap:wrap;gap:11px;font-size:12px}
+.work .cite{grid-column:1/-1;margin:5px 0 0;font-size:11px;color:#607080;overflow-wrap:anywhere}
+footer{margin-top:32px;border-top:1px solid var(--line);padding-top:17px;color:var(--muted);font-size:13px}
+.error{padding:15px;border:1px solid #c09d75;background:#fff8ee;border-radius:8px}
+@media(max-width:650px){.toolbar{grid-template-columns:1fr}.grid{grid-template-columns:1fr}main{padding:23px 14px 50px}}
+</style>
+<script defer src="assets/bibliotheca-cover-miniatures.js?v=20261116-library-covers-v1"></script>
+<script defer src="assets/obras-selectas.js?v=20261116-first-batch-v1"></script>
+</head>
+<body>
+<header><nav aria-label="Bibliotheca"><a href="/">Vitruvius Digital Library</a><a href="bibliotheca-graeca-latina.html">Bibliotheca</a><a href="obras-notables.html">Obras notables · facsímiles</a></nav></header>
+<main>
+<div class="kicker">Bibliotheca Graeca et Latina · repertorio académico</div>
+<h1>Obras selectas</h1>
+<p class="intro">Cincuenta obras griegas seleccionadas de ediciones TEI identificadas en Perseus Digital Library. Cada ficha distingue la existencia de la fuente bibliográfica, la incorporación de un texto original y su indexación léxica real. Las tapas son cubiertas institucionales ilustrativas, no portadas históricas.</p>
+<div class="toolbar" role="search" aria-label="Buscar obras selectas">
+<label>Autor, título o título griego<input type="search" id="select-query" placeholder="Platón, Lisias, Εὐθύφρων…" autocomplete="off"></label>
+<label>Autor<select id="select-author"><option value="">Todos los autores</option></select></label>
+<label>Disponibilidad<select id="select-status"><option value="">Todos los estados</option><option value="indexed">Texto indexado</option><option value="registered">Texto cargado, índice pendiente</option><option value="source">Fuente catalogada</option></select></label>
+</div>
+<p class="stats" id="select-status-text" role="status" aria-live="polite">Cargando obras y comprobando índices…</p>
+<div class="grid" id="select-list" aria-label="Fichas de obras selectas"></div>
+<footer>Las referencias CTS pertenecen a las ediciones identificadas. Los segmentos digitales locales de los textos incorporados no se presentan como paginación crítica ni folios manuscritos. La presencia en Perseus no implica una traducción local ni cotejo paleográfico propio. <a href="bibliotheca-graeca-latina.html">Consultar el catálogo general</a>.</footer>
+</main>
+</body>
+</html>
