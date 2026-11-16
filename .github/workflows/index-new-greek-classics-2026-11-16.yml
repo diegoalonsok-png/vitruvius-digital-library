@@ -7,6 +7,10 @@ on:
       - 'data/classics-corpus/callimachus-hymni-grc.json'
       - 'data/classics-corpus/theocritus-idyllia-grc.json'
       - 'data/classics-corpus/menander-dyskolos-grc.json'
+      - 'data/classics-corpus/aristophanes-knights-grc.json'
+      - 'data/classics-corpus/aristophanes-thesmophoriazusae-grc.json'
+      - 'data/classics-corpus/aristophanes-ecclesiazusae-grc.json'
+      - 'data/classics-corpus/aristophanes-plutus-grc.json'
   workflow_dispatch:
 permissions:
   contents: write
@@ -28,7 +32,7 @@ jobs:
         run: |
           node --input-type=module <<'JS'
           import fs from 'node:fs';
-          const names=['callimachus-hymni','theocritus-idyllia','menander-dyskolos'];
+          const names=['callimachus-hymni','theocritus-idyllia','menander-dyskolos','aristophanes-knights','aristophanes-thesmophoriazusae','aristophanes-ecclesiazusae','aristophanes-plutus'];
           const registry=JSON.parse(fs.readFileSync('data/classics-corpus/search-registry.json','utf8'));
           for(const id of names){
             const f='data/classics-corpus/'+id+'-grc.json';
@@ -47,7 +51,7 @@ jobs:
           import fs from 'node:fs';
           const m=JSON.parse(fs.readFileSync('data/index/classics/manifest.json','utf8'));
           const entries=Array.isArray(m.index)?m.index:(Array.isArray(m.editions)?m.editions:[]);
-          for(const id of ['callimachus-hymni','theocritus-idyllia','menander-dyskolos'])
+          for(const id of ['callimachus-hymni','theocritus-idyllia','menander-dyskolos','aristophanes-knights','aristophanes-thesmophoriazusae','aristophanes-ecclesiazusae','aristophanes-plutus'])
             if(!entries.some(x=>x.id===id&&x.lang==='grc'))throw Error('Falta en índice '+id);
           JS
       - name: Publicar sólo índice regenerado
