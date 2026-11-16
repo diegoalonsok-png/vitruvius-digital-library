@@ -1,15 +1,15 @@
 {
   "schema": "vdl-bibliotheca-ocr-coverage-v1",
-  "generated": "2026-11-16T00:31:59.224481+00:00",
+  "generated": "2026-11-16T04:01:18.949644+00:00",
   "source": "Catálogo maestro, registro de versiones, inventario federado e índice S3 auditado",
   "limits": "Índice por raíces sobre OCR no revisado, no traducción, no lematización morfológica, ni correspondencia certificada con loci. La presencia en el listado no prueba que cada palabra tenga una localización correcta; consultar auditoría léxica en vivo.",
   "counts": {
     "masterWorks": 271,
-    "withRegisteredText": 226,
-    "withoutRegisteredText": 45,
+    "withRegisteredText": 227,
+    "withoutRegisteredText": 44,
     "withoutTextButWithR2OcrIndex": 25,
     "withoutOwnRegistryButWithLinkedStructuredEdition": 3,
-    "withoutTextOrLinkedR2OcrIndex": 17
+    "withoutTextOrLinkedR2OcrIndex": 16
   },
   "ocrSearchableWithoutTranscription": [
     {
@@ -487,14 +487,6 @@
       "ocrSearchStatus": "sin facsímil con índice R2 vinculado"
     },
     {
-      "id": "vegetius-epitoma",
-      "author": "Vegecio",
-      "title": "Epitoma rei militaris",
-      "originalLanguage": "la",
-      "editionSearchStatus": "sin transcripción textual registrada",
-      "ocrSearchStatus": "sin facsímil con índice R2 vinculado"
-    },
-    {
       "id": "macrobius-saturnalia",
       "author": "Macrobio",
       "title": "Saturnalia",
@@ -583,6 +575,6 @@
       "ocrSearchStatus": "sin facsímil con índice R2 vinculado"
     }
   ],
-  "r2IndexAuditTimestamp": "2026-11-16T00:31:32.974491+00:00",
+  "r2IndexAuditTimestamp": "2026-11-16T04:00:47.851026+00:00",
   "r2IndexDeclared": true
 }

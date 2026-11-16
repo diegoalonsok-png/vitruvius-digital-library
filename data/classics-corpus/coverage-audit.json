@@ -13,8 +13,8 @@
       "pendiente-de-incorporar": 2
     },
     "locallyReadableClaims": 196,
-    "indexedTextVersions": 291,
-    "indexedDistinctWorks": 226,
+    "indexedTextVersions": 292,
+    "indexedDistinctWorks": 227,
     "manuscriptWitnesses": 106
   },
   "works": [
@@ -4268,8 +4268,12 @@
       "genre": "Ingeniería y arte militar",
       "dating": "siglo IV–V d. C.",
       "catalogueStatus": "repertoriado-busqueda-externa",
-      "indexedTextLanguages": [],
-      "indexedTextFiles": [],
+      "indexedTextLanguages": [
+        "la"
+      ],
+      "indexedTextFiles": [
+        "data/classics-corpus/vegetius-epitoma-la.json"
+      ],
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": false,

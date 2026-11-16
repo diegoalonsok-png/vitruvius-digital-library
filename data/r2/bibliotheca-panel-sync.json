@@ -1,6 +1,6 @@
 {
   "schema": "vdl-bibliotheca-federated-status-v1",
-  "generated": "2026-11-16T00:31:32.830Z",
+  "generated": "2026-11-16T04:00:47.653Z",
   "methodology": "Cruce de archivos GitHub y manifiestos R2. No acredita disponibilidad HTTP ni cotejo autóptico. El índice es léxico por raíces/conceptos, no semántica editorial validada.",
   "summary": {
     "masterWorks": 271,
@@ -9,13 +9,13 @@
     "r2PdfEditions": 117,
     "r2IndexWorksDeclared": 119,
     "r2IndexPagesDeclared": 56241,
-    "textVersions": 291,
-    "localTextFiles": 246,
+    "textVersions": 292,
+    "localTextFiles": 247,
     "remoteTextFilesDeclared": 44,
-    "indexedWorks": 226,
-    "indexedOriginalWorks": 226,
-    "worksWithoutAnyText": 45,
-    "worksWithoutOriginal": 45,
+    "indexedWorks": 227,
+    "indexedOriginalWorks": 227,
+    "worksWithoutAnyText": 44,
+    "worksWithoutOriginal": 44,
     "uncataloguedLocalTexts": 0,
     "r2AdditionalEditionRecords": 10,
     "r2PendingEditionRecords": 0,
@@ -101,12 +101,6 @@
         "id": "apuleius-de-deo-socratis",
         "author": "Apuleyo",
         "title": "De deo Socratis",
-        "language": "la"
-      },
-      {
-        "id": "vegetius-epitoma",
-        "author": "Vegecio",
-        "title": "Epitoma rei militaris",
         "language": "la"
       },
       {
@@ -373,12 +367,6 @@
         "id": "apuleius-de-deo-socratis",
         "author": "Apuleyo",
         "title": "De deo Socratis",
-        "language": "la"
-      },
-      {
-        "id": "vegetius-epitoma",
-        "author": "Vegecio",
-        "title": "Epitoma rei militaris",
         "language": "la"
       },
       {
@@ -804,7 +792,7 @@
     ]
   },
   "r2LiveEvidence": {
-    "generated": "2026-11-16T00:31:32.974491+00:00",
+    "generated": "2026-11-16T04:00:47.851026+00:00",
     "status": "checked-with-discrepancies",
     "indexExtraIds": [
       "boecio-institutione-musica",

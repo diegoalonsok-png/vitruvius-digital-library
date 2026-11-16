@@ -5,7 +5,7 @@
   "scope": "271 obras del repertorio grecolatino; originales locales, índices remotos declarados y traducciones alojadas ES/EN/FR",
   "totals": {
     "cataloguedWorks": 271,
-    "locallyIndexedWorks": 226,
+    "locallyIndexedWorks": 227,
     "translatedWorksLocal": 59,
     "worksWithoutHostedTranslation": 212,
     "localTranslationLanguages": {
@@ -13,15 +13,15 @@
       "en": 58,
       "fr": 2
     },
-    "originalTextIndexed": 182,
-    "originalTextNotIndexed": 89,
-    "verifiedLocalFileWorks": 182,
+    "originalTextIndexed": 183,
+    "originalTextNotIndexed": 88,
+    "verifiedLocalFileWorks": 183,
     "declaredRemoteOnlyWorks": 44,
     "declaredR2OriginalWorks": 44,
-    "registeredOriginalWorks": 226,
-    "registeredTextVersions": 291,
-    "verifiedLocalTextVersions": 247,
-    "verifiedLocalOriginalTextIndexed": 182
+    "registeredOriginalWorks": 227,
+    "registeredTextVersions": 292,
+    "verifiedLocalTextVersions": 248,
+    "verifiedLocalOriginalTextIndexed": 183
   },
   "works": [
     {
@@ -5018,19 +5018,25 @@
       "author": "Vegecio",
       "title": "Epitoma rei militaris",
       "originalLanguage": "la",
-      "originalIndexed": false,
+      "originalIndexed": true,
       "translationLanguages": [],
-      "localEditionLanguages": [],
+      "localEditionLanguages": [
+        "la"
+      ],
       "externalTranslationUnverified": [],
       "readingStatus": "repertoriado-busqueda-externa",
       "translationSourceDescription": "Traducción no incorporada ni alineada con una edición identificada.",
       "translationRegisteredButNotHosted": true,
       "indexed": false,
       "originalR2Registered": false,
-      "registeredOriginal": false,
-      "registeredEditionLanguages": [],
+      "registeredOriginal": true,
+      "registeredEditionLanguages": [
+        "la"
+      ],
       "remoteEditionLanguages": [],
-      "verifiedLocalEditionLanguages": []
+      "verifiedLocalEditionLanguages": [
+        "la"
+      ]
     },
     {
       "id": "augustine-confessiones",
