@@ -2,7 +2,7 @@
   "schema": "vdl-translation-apparatus-comparative-v1",
   "updated": "2026-11-16",
   "method": "Interpretación contrastiva de traducciones castellana, francesa e inglesa alineadas por locus con el latín Kurilo, Krohn y Rose. Distinción explícita entre variante textual y opción de traducción. Se distingue una entrada inglesa de comentario frente a la traducción continua y se señala cualquier segmento inglés incompleto.",
-  "count": 23,
+  "count": 31,
   "records": [
     {
       "locus": "1.1.2",
@@ -21,6 +21,24 @@
         "data/structured/theory-en.json"
       ],
       "warning": "Las traducciones cotejadas son las tres del autor; Rose y Krohn son referencias latinas, no traducciones históricas cotejadas aquí."
+    },
+    {
+      "locus": "1.1.4",
+      "criticalLine": "graphidis Kur. Kr. ] graphidos Rose; regulaeque Kur. Kr. ] om. Rose",
+      "focus": "términos instrumentales: regla y compás",
+      "analysis": "Castellano «ciencia del dibujo» y francés «science du dessin» para graphidis, e inglés «drawing», evitan reproducir la flexión griega. Las tres incluyen el uso de compás y regla: «compás y de la regla», «compas et de la règle», «straightedge and compasses», coherente con regulaeque en Kurilo/Krohn. No indica que el latín de Rose tenga la misma palabra.",
+      "evidence_level": "interpretation_based_on_indexed_author_translations",
+      "source_editions": [
+        "Kurilo V514 (es)",
+        "Kurilo V554 (fr)",
+        "Kurilo V297 (en)"
+      ],
+      "sources": [
+        "data/structured/recensio-es.json",
+        "data/structured/recensio-fr.json",
+        "data/structured/theory-en.json"
+      ],
+      "warning": "Los textos comparados son las traducciones de Kurilo; Rose/Krohn se citan solo como textos latinos y los candidatos necesitan verificación impresa."
     },
     {
       "locus": "1.1.5",
@@ -96,6 +114,42 @@
         "data/structured/theory-en.json"
       ],
       "warning": "Las traducciones pertenecen a Kurilo. No constituyen testigos textuales de Rose o Krohn ni identifican automáticamente decisiones del latín."
+    },
+    {
+      "locus": "1.1.12",
+      "criticalLine": "Prieni Kur. Kr. ] Priene Rose",
+      "focus": "topónimo normalizado en traducción",
+      "analysis": "Las tres versiones llaman a la localidad Priene / Priène / Priene, usando nombres modernos compatibles con las dos formas latinas. La diferencia gráfica del topónimo no altera la identificación del templo de Minerva ni la argumentación sobre la formación del arquitecto.",
+      "evidence_level": "interpretation_based_on_indexed_author_translations",
+      "source_editions": [
+        "Kurilo V514 (es)",
+        "Kurilo V554 (fr)",
+        "Kurilo V297 (en)"
+      ],
+      "sources": [
+        "data/structured/recensio-es.json",
+        "data/structured/recensio-fr.json",
+        "data/structured/theory-en.json"
+      ],
+      "warning": "Los textos comparados son las traducciones de Kurilo; Rose/Krohn se citan solo como textos latinos y los candidatos necesitan verificación impresa."
+    },
+    {
+      "locus": "1.1.13",
+      "criticalLine": "agrammatus Kur. Kr. ] agrammatos Rose; aniatrologetus Kur. Kr. ] aniatrologetos Rose",
+      "focus": "voces griegas: equivalencia semántica",
+      "analysis": "Español «no iletrado» y «no ajeno a la medicina», francés «ne doit pas être illettré» y «ne doit pas être étranger à la médecine», e inglés «must not be illiterate» y «must not be ignorant of medicine» interpretan el sentido sin conservar las formas griegas latinizadas. Las alternativas agrammatus/agrammatos y aniatrologetus/aniatrologetos no generan traducciones conceptualmente distintas.",
+      "evidence_level": "interpretation_based_on_indexed_author_translations",
+      "source_editions": [
+        "Kurilo V514 (es)",
+        "Kurilo V554 (fr)",
+        "Kurilo V297 (en)"
+      ],
+      "sources": [
+        "data/structured/recensio-es.json",
+        "data/structured/recensio-fr.json",
+        "data/structured/theory-en.json"
+      ],
+      "warning": "Los textos comparados son las traducciones de Kurilo; Rose/Krohn se citan solo como textos latinos y los candidatos necesitan verificación impresa."
     },
     {
       "locus": "1.1.15",
@@ -209,6 +263,42 @@
       "warning": "Las traducciones pertenecen a Kurilo. No constituyen testigos textuales de Rose o Krohn ni identifican automáticamente decisiones del latín."
     },
     {
+      "locus": "1.2.7",
+      "criticalLine": "ut eorum ... quorum Kur. Kr. ] quorum Rose; balneis Kur. Kr. ] balineis Rose",
+      "focus": "santuarios curativos y baños",
+      "analysis": "Las tres traducciones explican que los santuarios de Esculapio y Salus deben asentarse en lugares salubres, asociando el agua a la curación. Castellano «baños», francés «bains» e inglés «baths» neutralizan la grafía balneis/balineis. Las diferencias de enlace relativo tampoco provocan interpretaciones incompatibles en estas traducciones.",
+      "evidence_level": "interpretation_based_on_indexed_author_translations",
+      "source_editions": [
+        "Kurilo V514 (es)",
+        "Kurilo V554 (fr)",
+        "Kurilo V297 (en)"
+      ],
+      "sources": [
+        "data/structured/recensio-es.json",
+        "data/structured/recensio-fr.json",
+        "data/structured/theory-en.json"
+      ],
+      "warning": "Los textos comparados son las traducciones de Kurilo; Rose/Krohn se citan solo como textos latinos y los candidatos necesitan verificación impresa."
+    },
+    {
+      "locus": "1.2.8",
+      "criticalLine": "vitabuntur Kur. Kr. ] vitabuntar Rose (lectio digitalis dubia)",
+      "focus": "distributio: evitar escasez con sustitución",
+      "analysis": "Castellano «la escasez ... se evitará», francés «on évitera le manque» e inglés «A shortage ... can be met» expresan el mecanismo de sustituir materiales inaccesibles. La forma vitabuntar del índice Rose es sospechosa y no se utiliza como prueba de variante histórica ni de interpretación inglesa.",
+      "evidence_level": "interpretation_based_on_indexed_author_translations",
+      "source_editions": [
+        "Kurilo V514 (es)",
+        "Kurilo V554 (fr)",
+        "Kurilo V297 (en)"
+      ],
+      "sources": [
+        "data/structured/recensio-es.json",
+        "data/structured/recensio-fr.json",
+        "data/structured/theory-en.json"
+      ],
+      "warning": "Los textos comparados son las traducciones de Kurilo; Rose/Krohn se citan solo como textos latinos y los candidatos necesitan verificación impresa."
+    },
+    {
       "locus": "1.2.9",
       "criticalLine": "et; apte Kur. Kr. ] aut; aliter Rose",
       "focus": "matiz distributivo y coordinación",
@@ -225,6 +315,42 @@
         "data/structured/theory-en.json"
       ],
       "warning": "Las traducciones cotejadas son las tres del autor; Rose y Krohn son referencias latinas, no traducciones históricas cotejadas aquí."
+    },
+    {
+      "locus": "1.3.1",
+      "criticalLine": "balinea Kur. Kr. ] balineae Rose; ambulationes Kur. Kr. ] inambulationes Rose",
+      "focus": "inventario de espacios públicos",
+      "analysis": "Las tres traducciones enumeran baños y paseos como obras públicas: «baños ... paseos», «bains ... promenades», «baths ... promenades». Reproducen la categoría funcional y no codifican diferencias relevantes entre balinea/balineae o ambulationes/inambulationes.",
+      "evidence_level": "interpretation_based_on_indexed_author_translations",
+      "source_editions": [
+        "Kurilo V514 (es)",
+        "Kurilo V554 (fr)",
+        "Kurilo V297 (en)"
+      ],
+      "sources": [
+        "data/structured/recensio-es.json",
+        "data/structured/recensio-fr.json",
+        "data/structured/theory-en.json"
+      ],
+      "warning": "Los textos comparados son las traducciones de Kurilo; Rose/Krohn se citan solo como textos latinos y los candidatos necesitan verificación impresa."
+    },
+    {
+      "locus": "1.3.2",
+      "criticalLine": "copiarum Kur. Kr. ] copiaram Rose (lectio digitalis dubia); ⟨cum fuerit⟩ Kur. / cum fuerit Kr. ] om. fuerit Rose",
+      "focus": "tríada vitruviana y suplemento",
+      "analysis": "Las tres traducciones mantienen explícitas las condiciones de firmitas, utilitas y venustas. El castellano usa «cuando la disposición», el francés «lorsque la disposition» y el inglés «when the arrangement» en la sección de utilidad: la subordinación se interpreta de manera paralela aunque Rose presente una ausencia verbal en el índice. La grafía copiaram no constituye una lectura impresa verificada.",
+      "evidence_level": "interpretation_based_on_indexed_author_translations",
+      "source_editions": [
+        "Kurilo V514 (es)",
+        "Kurilo V554 (fr)",
+        "Kurilo V297 (en)"
+      ],
+      "sources": [
+        "data/structured/recensio-es.json",
+        "data/structured/recensio-fr.json",
+        "data/structured/theory-en.json"
+      ],
+      "warning": "Los textos comparados son las traducciones de Kurilo; Rose/Krohn se citan solo como textos latinos y los candidatos necesitan verificación impresa."
     },
     {
       "locus": "1.4.3",
@@ -300,6 +426,24 @@
         "data/structured/theory-en.json"
       ],
       "warning": "Las traducciones cotejadas son las tres del autor; Rose y Krohn son referencias latinas, no traducciones históricas cotejadas aquí."
+    },
+    {
+      "locus": "1.4.7",
+      "criticalLine": "plurimumque ex Kur. Kr. ] plurimoque et Rose; principiis Kur. Kr. ] om. Rose",
+      "focus": "teoría elemental y explicitación de principios",
+      "analysis": "Castellano, francés e inglés atribuyen a cada grupo de animales proporciones distintas de los elementos; los dos primeros explicitan «principios» para los peces y el inglés expone «elemental composition». La opción ex/et y la presencia de principiis no permiten inferir por sí solas una teoría natural distinta entre traductores. Se requiere verificación del impreso Rose.",
+      "evidence_level": "interpretation_based_on_indexed_author_translations",
+      "source_editions": [
+        "Kurilo V514 (es)",
+        "Kurilo V554 (fr)",
+        "Kurilo V297 (en)"
+      ],
+      "sources": [
+        "data/structured/recensio-es.json",
+        "data/structured/recensio-fr.json",
+        "data/structured/theory-en.json"
+      ],
+      "warning": "Los textos comparados son las traducciones de Kurilo; Rose/Krohn se citan solo como textos latinos y los candidatos necesitan verificación impresa."
     },
     {
       "locus": "1.4.11",
