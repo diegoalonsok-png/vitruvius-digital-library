@@ -1,0 +1,97 @@
+/* Classical Bibliotheca reading symmetry, based on Concordancia/Scriptorium.
+   Layout only: preserves textual data, loci, the translator and highlights. */
+html:not([data-parallel-view="true"]):not([data-reading-mode="simple"]) .cl-dual-reader{
+ --cl-study-height:760px;
+ min-height:0;
+ align-items:stretch;
+ border:1px solid #b7ac99;
+ border-radius:5px;
+ background:#efe9df;
+}
+html:not([data-parallel-view="true"]):not([data-reading-mode="simple"]) .cl-dual-reader>.cl-source-column,
+html:not([data-parallel-view="true"]):not([data-reading-mode="simple"]) .cl-dual-reader>.cl-translation-column{
+ height:var(--cl-study-height,760px)!important;
+ max-height:none!important;
+ min-height:340px;
+ overflow-y:auto;
+ overscroll-behavior:contain;
+ scrollbar-gutter:stable;
+ padding:14px 18px 22px;
+}
+html:not([data-parallel-view="true"]):not([data-reading-mode="simple"]) .cl-dual-reader .cl-pane-title{
+ min-height:43px;
+ display:flex;
+ align-items:center;
+ padding:9px 12px;
+ margin:-14px -18px 14px;
+ background:#e5e4e0;
+ color:#232b31;
+ border-bottom:1px solid #cbbfae;
+ font:650 13px/1.35 system-ui,sans-serif;
+ letter-spacing:.065em;
+}
+html:not([data-parallel-view="true"]):not([data-reading-mode="simple"]) .cl-dual-reader .cl-translation-tools{
+ display:flex;
+ flex-wrap:wrap;
+ gap:6px;
+ align-items:center;
+ padding:8px;
+ background:#efe8db;
+ border:1px solid #cfc3ae;
+ border-radius:4px;
+ margin-bottom:10px;
+}
+html:not([data-parallel-view="true"]):not([data-reading-mode="simple"]) .cl-dual-reader .cl-pane-options{
+ display:flex;align-items:center;flex-wrap:wrap;gap:9px;
+ margin:0 0 8px;
+ font:12px/1.4 system-ui,sans-serif;
+}
+html:not([data-parallel-view="true"]):not([data-reading-mode="simple"]) .cl-dual-reader .cl-translation-tools :is(button,select),
+html:not([data-parallel-view="true"]):not([data-reading-mode="simple"]) .cl-dual-reader .cl-pane-options select{
+ min-height:34px;
+ background:#fff;
+ color:#263642;
+ border:1px solid #ad9f8a;
+ border-radius:5px;
+ padding:6px 9px;
+ font:600 12px/1.35 system-ui,sans-serif;
+}
+html:not([data-parallel-view="true"]):not([data-reading-mode="simple"]) .cl-dual-reader .cl-translation-label{
+ margin:8px 0;
+ padding:2px 0;
+ font:650 12px/1.45 system-ui,sans-serif;
+}
+html:not([data-parallel-view="true"]):not([data-reading-mode="simple"]) .cl-dual-reader #passages,
+html:not([data-parallel-view="true"]):not([data-reading-mode="simple"]) .cl-dual-reader .cl-translation-output{
+ scroll-margin-top:20px;
+ transition:none;
+}
+html:not([data-parallel-view="true"]):not([data-reading-mode="simple"]) .cl-dual-reader .cl-translation-output{
+ font-size:var(--cl-translation-size,20px);
+ line-height:1.8;
+}
+html:not([data-parallel-view="true"]):not([data-reading-mode="simple"]) .cl-edition-layout{
+ display:flex;align-items:center;flex-wrap:wrap;gap:9px;
+ padding:8px 0 12px;
+}
+.cl-reading-height-control{
+ display:flex;align-items:center;gap:9px;flex-wrap:wrap;flex:1 1 100%;
+ background:#f0e9dc;color:#283b49;
+ padding:9px 12px;border:1px solid #b4a48c;border-radius:6px;
+ font:600 12px/1.4 system-ui,sans-serif;
+}
+.cl-reading-height-control label{white-space:nowrap}
+.cl-reading-height-control input[type="range"]{flex:1 1 170px;min-width:100px;accent-color:#315872}
+.cl-reading-height-control output{min-width:51px;font-variant-numeric:tabular-nums}
+.cl-reading-height-control button{background:#fff!important;color:#243746!important;border:1px solid #a9a096!important;border-radius:5px;padding:6px 9px;cursor:pointer;font:600 12px system-ui}
+html[data-theme="dark"] .cl-reading-height-control{background:#232d35;color:#f0e5d4}
+@media(max-width:900px){
+ html:not([data-parallel-view="true"]) .cl-dual-reader>.cl-source-column,
+ html:not([data-parallel-view="true"]) .cl-dual-reader>.cl-translation-column{height:auto!important;max-height:620px!important}
+ html:not([data-parallel-view="true"]) .cl-dual-reader .cl-translation-output{margin-top:0!important}
+}
+@media print{
+ .cl-reading-height-control{display:none!important}
+ .cl-dual-reader>.cl-source-column,.cl-dual-reader>.cl-translation-column{height:auto!important;max-height:none!important;overflow:visible!important}
+ .cl-dual-reader #passages,.cl-dual-reader .cl-translation-output{margin-top:0!important}
+}
