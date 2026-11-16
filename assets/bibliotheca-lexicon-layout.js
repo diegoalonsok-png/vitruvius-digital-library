@@ -22,7 +22,7 @@ function init(){
   if(mode!=="works")return;
   event.preventDefault();event.stopImmediatePropagation();
   const input=$("bws-query"),region=$("bibliotheca-catalogue-region");
-  if(!input||!region){const status=$("catalogue-status");if(status)status.textContent="El índice bibliográfico todavía no está disponible. Consultá el índice alfabético.";return;}
+  if(!input||!region){const status=$("catalogue-status");if(status)status.textContent="El índice bibliográfico todavía no está disponible. Consulta el índice alfabético.";return;}
   input.value=query.value.trim();
   input.dispatchEvent(new Event("input",{bubbles:true}));
   if(query.value.trim().length>=2)region.scrollIntoView({behavior:"smooth",block:"nearest"});
