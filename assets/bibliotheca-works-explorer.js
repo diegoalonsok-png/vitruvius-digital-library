@@ -8,9 +8,21 @@ const categories=["local","remote","r2","pending"];
 let dataPromise=null;
 const classify=x=>x.originalIndexed?"local":x.offsiteOriginalIndexed?"remote":x.originalR2Registered?"r2":"pending";
 function catalog(){
- if(!dataPromise)dataPromise=fetch(URL).then(r=>{if(!r.ok)throw Error("Inventario: HTTP "+r.status);return r.json()}).then(j=>{
+ if(!dataPromise)dataPromise=Promise.all([
+  fetch(URL).then(r=>{if(!r.ok)throw Error("Inventario: HTTP "+r.status);return r.json()}),
+  fetch("data/classics-corpus/search-registry.json").then(r=>{if(!r.ok)throw Error("Registro editorial: HTTP "+r.status);return r.json()})
+ ]).then(([j,registry])=>{
   if(!Array.isArray(j.items)||j.items.length!==j.targetWorks)throw Error("Inventario de obras inconsistente");
-  return j.items.map(x=>({id:x.id,author:x.author||"Autor no indicado",title:x.title||x.id,kind:classify(x),language:x.originalLanguage||"",originalIndexed:Boolean(x.originalIndexed),indexedLanguages:Array.isArray(x.indexedLanguages)?x.indexedLanguages:[]}));
+  const sources=new Map();
+  for(const entry of registry.entries||[]){
+   if(!entry.workId||!["json-passages","structured-bilingual","html-text"].includes(entry.format))continue;
+   const valid=entry.format==="html-text"
+    ? /^corpus\/[a-z0-9/_-]+\.html$/.test(entry.reader||entry.path||"")
+    : /^data\/(?:classics-corpus|structured|lexicon\/fontes)\/[a-z0-9/_-]+\.json$/.test(entry.path||"")||
+      /^https:\/\/libros\.vitruvius-digital-library\.org\/corpus\/[a-z0-9_-]+\.json$/.test(entry.path||"");
+   if(valid){if(!sources.has(entry.workId))sources.set(entry.workId,[]);sources.get(entry.workId).push(entry)}
+  }
+  return j.items.map(x=>({id:x.id,author:x.author||"Autor no indicado",title:x.title||x.id,kind:classify(x),language:x.originalLanguage||"",originalIndexed:Boolean(x.originalIndexed),indexedLanguages:Array.isArray(x.indexedLanguages)?x.indexedLanguages:[],readers:sources.get(x.id)||[]}));
  }).catch(e=>{dataPromise=null;throw e});
  return dataPromise;
 }
@@ -45,13 +57,17 @@ function mount(host){
    const title=add("a","vdl-works-name",item.author+" — "+item.title,line);
    // Open actual reading content when a local original has a documented indexed language.
 // External/registered sources retain an academic dossier with source and facsimile links.
-   const readable=item.originalIndexed&&item.indexedLanguages.includes(item.language);
-   const language=readable?item.language:(item.indexedLanguages.includes("la")?"la":item.indexedLanguages.includes("grc")?"grc":null);
-   const canRead=item.originalIndexed&&Boolean(language);
-   title.href=canRead
-    ?"classics-text-reader.html?"+new URLSearchParams({work:item.id,lang:language})
+   const readers=item.readers||[];
+   const source=readers.find(x=>x.language===item.language)||
+    readers.find(x=>x.language==="la"||x.language==="grc")||readers[0];
+   const path=source?.reader||source?.path;
+   const htmlSource=source?.format==="html-text"&&/^corpus\/[a-z0-9/_-]+\.html$/.test(path||"");
+   const jsonSource=source&&["json-passages","structured-bilingual"].includes(source.format);
+   title.href=htmlSource?path:jsonSource
+    ?"classics-text-reader.html?"+new URLSearchParams({work:item.id,lang:source.language})
     :"classics-work-record.html?"+new URLSearchParams({work:item.id});
-   title.title=canRead?"Leer el texto original de esta obra por loci":"Abrir la ficha académica y sus enlaces a los textos o facsímiles disponibles";
+   title.title=htmlSource?"Leer el texto íntegro en su edición HTML":jsonSource
+    ?"Abrir el lector académico por loci":"Consultar la ficha, fuentes y facsímiles disponibles";
    const meta=add("span","vdl-works-state",labels[item.kind],line);
    meta.dataset.kind=item.kind;
   }
