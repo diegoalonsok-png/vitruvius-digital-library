@@ -4,6 +4,9 @@ on:
     paths:
       - 'assets/classics-study-actions.js'
       - 'assets/classics-lexical-popup.js'
+      - 'assets/classics-academic-reader.js'
+      - 'assets/classics-text-reader.js'
+      - 'scripts/test-classics-source-note-navigator.mjs'
       - 'scripts/test-classics-lexical-context.mjs'
       - 'classics-text-reader.html'
       - 'assets/vitruvia-lexicon.js'
@@ -22,6 +25,9 @@ on:
     paths:
       - 'assets/classics-study-actions.js'
       - 'assets/classics-lexical-popup.js'
+      - 'assets/classics-academic-reader.js'
+      - 'assets/classics-text-reader.js'
+      - 'scripts/test-classics-source-note-navigator.mjs'
       - 'scripts/test-classics-lexical-context.mjs'
       - 'classics-text-reader.html'
       - 'assets/vitruvia-lexicon.js'
@@ -54,4 +60,5 @@ jobs:
       - run: node scripts/test-lexicon-passage-issues.mjs
       - run: node scripts/test-notebook-bibliotheca-itinerary.mjs
       - run: node scripts/test-classics-lexical-context.mjs
+      - run: node scripts/test-classics-source-note-navigator.mjs
       - run: node scripts/test-lexicon-ngrams.mjs
