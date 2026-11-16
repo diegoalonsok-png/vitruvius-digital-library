@@ -1,6 +1,6 @@
 {
   "schema": "vdl-bibliotheca-federated-status-v1",
-  "generated": "2026-11-15T20:54:51.186Z",
+  "generated": "2026-11-16T00:31:32.830Z",
   "methodology": "Cruce de archivos GitHub y manifiestos R2. No acredita disponibilidad HTTP ni cotejo autóptico. El índice es léxico por raíces/conceptos, no semántica editorial validada.",
   "summary": {
     "masterWorks": 271,
@@ -9,13 +9,13 @@
     "r2PdfEditions": 117,
     "r2IndexWorksDeclared": 119,
     "r2IndexPagesDeclared": 56241,
-    "textVersions": 279,
+    "textVersions": 291,
     "localTextFiles": 246,
-    "remoteTextFilesDeclared": 32,
-    "indexedWorks": 214,
-    "indexedOriginalWorks": 214,
-    "worksWithoutAnyText": 57,
-    "worksWithoutOriginal": 57,
+    "remoteTextFilesDeclared": 44,
+    "indexedWorks": 226,
+    "indexedOriginalWorks": 226,
+    "worksWithoutAnyText": 45,
+    "worksWithoutOriginal": 45,
     "uncataloguedLocalTexts": 0,
     "r2AdditionalEditionRecords": 10,
     "r2PendingEditionRecords": 0,
@@ -23,9 +23,9 @@
     "candidateEditionsNotInR2": 44,
     "externalMetadataPending": 49,
     "liveR2ObjectCheck": true,
-    "r2ObjectsScanned": 22244,
+    "r2ObjectsScanned": 25791,
     "r2PdfObjectsPresent": 117,
-    "r2CorpusTextsPresent": 32
+    "r2CorpusTextsPresent": 44
   },
   "critical": [],
   "issues": [
@@ -42,12 +42,6 @@
         "author": "Séneca",
         "title": "Naturales quaestiones",
         "language": "la"
-      },
-      {
-        "id": "plutarch-lives",
-        "author": "Plutarco",
-        "title": "Βίοι Παράλληλοι · Vidas paralelas",
-        "language": "grc"
       },
       {
         "id": "apollodorus-poliorcetics",
@@ -86,39 +80,9 @@
         "language": "la"
       },
       {
-        "id": "plutarch-moralia",
-        "author": "Plutarco",
-        "title": "Ἠθικά (Moralia)",
-        "language": "grc"
-      },
-      {
         "id": "ptolemy-geographia",
         "author": "Claudio Ptolomeo",
         "title": "Γεωγραφικὴ ὑφήγησις",
-        "language": "grc"
-      },
-      {
-        "id": "thucydides-war",
-        "author": "Tucídides",
-        "title": "Ἱστορία τοῦ Πελοποννησιακοῦ πολέμου",
-        "language": "grc"
-      },
-      {
-        "id": "cassius-dio-historia",
-        "author": "Dión Casio",
-        "title": "Ῥωμαϊκὴ ἱστορία",
-        "language": "grc"
-      },
-      {
-        "id": "athenaeus-deipnosophistae",
-        "author": "Ateneo de Náucratis",
-        "title": "Δειπνοσοφισταί",
-        "language": "grc"
-      },
-      {
-        "id": "theophrastus-historia-plantarum",
-        "author": "Teofrasto",
-        "title": "Περὶ φυτῶν ἱστορίας",
         "language": "grc"
       },
       {
@@ -152,12 +116,6 @@
         "language": "la"
       },
       {
-        "id": "archimedes-fluitantibus",
-        "author": "Arquímedes",
-        "title": "Περὶ τῶν ὀχουμένων",
-        "language": "grc"
-      },
-      {
         "id": "ennius-annales",
         "author": "Ennio",
         "title": "Annales (fragmenta)",
@@ -168,12 +126,6 @@
         "author": "Accio",
         "title": "Tragoediae (fragmenta)",
         "language": "la"
-      },
-      {
-        "id": "ps-aristotle-mechanica",
-        "author": "Pseudo-Aristóteles (escuela peripatética)",
-        "title": "Μηχανικὰ προβλήματα",
-        "language": "grc"
       },
       {
         "id": "procopius-aedificiis",
@@ -192,30 +144,6 @@
         "author": "Censorino",
         "title": "De die natali",
         "language": "la"
-      },
-      {
-        "id": "euclid-optica",
-        "author": "Euclides",
-        "title": "Ὀπτικά · Optica",
-        "language": "grc"
-      },
-      {
-        "id": "euclid-phaenomena",
-        "author": "Euclides",
-        "title": "Φαινόμενα · Phaenomena y escritos musicales",
-        "language": "grc"
-      },
-      {
-        "id": "cleonides-harmonica",
-        "author": "Cleónides (transmitido bajo el nombre de Euclides)",
-        "title": "Εἰσαγωγὴ ἁρμονική · Introductio harmonica",
-        "language": "grc"
-      },
-      {
-        "id": "hero-belopoeica",
-        "author": "Herón de Alejandría",
-        "title": "Βελοποιικά · Belopoeica",
-        "language": "grc"
       },
       {
         "id": "philo-belopoeica",
@@ -388,12 +316,6 @@
         "language": "la"
       },
       {
-        "id": "plutarch-lives",
-        "author": "Plutarco",
-        "title": "Βίοι Παράλληλοι · Vidas paralelas",
-        "language": "grc"
-      },
-      {
         "id": "apollodorus-poliorcetics",
         "author": "Apolodoro de Damasco (atribución tradicional)",
         "title": "Πολιορκητικά · Poliorketika",
@@ -430,39 +352,9 @@
         "language": "la"
       },
       {
-        "id": "plutarch-moralia",
-        "author": "Plutarco",
-        "title": "Ἠθικά (Moralia)",
-        "language": "grc"
-      },
-      {
         "id": "ptolemy-geographia",
         "author": "Claudio Ptolomeo",
         "title": "Γεωγραφικὴ ὑφήγησις",
-        "language": "grc"
-      },
-      {
-        "id": "thucydides-war",
-        "author": "Tucídides",
-        "title": "Ἱστορία τοῦ Πελοποννησιακοῦ πολέμου",
-        "language": "grc"
-      },
-      {
-        "id": "cassius-dio-historia",
-        "author": "Dión Casio",
-        "title": "Ῥωμαϊκὴ ἱστορία",
-        "language": "grc"
-      },
-      {
-        "id": "athenaeus-deipnosophistae",
-        "author": "Ateneo de Náucratis",
-        "title": "Δειπνοσοφισταί",
-        "language": "grc"
-      },
-      {
-        "id": "theophrastus-historia-plantarum",
-        "author": "Teofrasto",
-        "title": "Περὶ φυτῶν ἱστορίας",
         "language": "grc"
       },
       {
@@ -496,12 +388,6 @@
         "language": "la"
       },
       {
-        "id": "archimedes-fluitantibus",
-        "author": "Arquímedes",
-        "title": "Περὶ τῶν ὀχουμένων",
-        "language": "grc"
-      },
-      {
         "id": "ennius-annales",
         "author": "Ennio",
         "title": "Annales (fragmenta)",
@@ -512,12 +398,6 @@
         "author": "Accio",
         "title": "Tragoediae (fragmenta)",
         "language": "la"
-      },
-      {
-        "id": "ps-aristotle-mechanica",
-        "author": "Pseudo-Aristóteles (escuela peripatética)",
-        "title": "Μηχανικὰ προβλήματα",
-        "language": "grc"
       },
       {
         "id": "procopius-aedificiis",
@@ -536,30 +416,6 @@
         "author": "Censorino",
         "title": "De die natali",
         "language": "la"
-      },
-      {
-        "id": "euclid-optica",
-        "author": "Euclides",
-        "title": "Ὀπτικά · Optica",
-        "language": "grc"
-      },
-      {
-        "id": "euclid-phaenomena",
-        "author": "Euclides",
-        "title": "Φαινόμενα · Phaenomena y escritos musicales",
-        "language": "grc"
-      },
-      {
-        "id": "cleonides-harmonica",
-        "author": "Cleónides (transmitido bajo el nombre de Euclides)",
-        "title": "Εἰσαγωγὴ ἁρμονική · Introductio harmonica",
-        "language": "grc"
-      },
-      {
-        "id": "hero-belopoeica",
-        "author": "Herón de Alejandría",
-        "title": "Βελοποιικά · Belopoeica",
-        "language": "grc"
       },
       {
         "id": "philo-belopoeica",
@@ -948,7 +804,7 @@
     ]
   },
   "r2LiveEvidence": {
-    "generated": "2026-11-15T20:54:51.399957+00:00",
+    "generated": "2026-11-16T00:31:32.974491+00:00",
     "status": "checked-with-discrepancies",
     "indexExtraIds": [
       "boecio-institutione-musica",

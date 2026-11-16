@@ -1,33 +1,17 @@
 {
   "schema": "vdl-bibliotheca-ocr-coverage-v1",
-  "generated": "2026-11-15T20:55:16.696092+00:00",
+  "generated": "2026-11-16T00:31:59.224481+00:00",
   "source": "Catálogo maestro, registro de versiones, inventario federado e índice S3 auditado",
   "limits": "Índice por raíces sobre OCR no revisado, no traducción, no lematización morfológica, ni correspondencia certificada con loci. La presencia en el listado no prueba que cada palabra tenga una localización correcta; consultar auditoría léxica en vivo.",
   "counts": {
     "masterWorks": 271,
-    "withRegisteredText": 214,
-    "withoutRegisteredText": 57,
-    "withoutTextButWithR2OcrIndex": 29,
+    "withRegisteredText": 226,
+    "withoutRegisteredText": 45,
+    "withoutTextButWithR2OcrIndex": 25,
     "withoutOwnRegistryButWithLinkedStructuredEdition": 3,
-    "withoutTextOrLinkedR2OcrIndex": 25
+    "withoutTextOrLinkedR2OcrIndex": 17
   },
   "ocrSearchableWithoutTranscription": [
-    {
-      "id": "plutarch-lives",
-      "author": "Plutarco",
-      "title": "Βίοι Παράλληλοι · Vidas paralelas",
-      "originalLanguage": "grc",
-      "editionSearchStatus": "sin transcripción textual registrada",
-      "ocrSearchStatus": "índice invertido R2 declarado; OCR no revisado",
-      "facsimileReaders": [
-        {
-          "editionId": "plutarco-vidas",
-          "reader": "buscador-facsimiles-clasicos.html?obra=plutarco-vidas",
-          "textKind": "OCR por página, sin cotejo filológico",
-          "bibliographicIdentity": "metadatos del catálogo de ediciones R2"
-        }
-      ]
-    },
     {
       "id": "apollodorus-poliorcetics",
       "author": "Apolodoro de Damasco (atribución tradicional)",
@@ -71,54 +55,6 @@
         {
           "editionId": "ptolemy-geographia",
           "reader": "buscador-facsimiles-clasicos.html?obra=ptolemy-geographia",
-          "textKind": "OCR por página, sin cotejo filológico",
-          "bibliographicIdentity": "metadatos del catálogo de ediciones R2"
-        }
-      ]
-    },
-    {
-      "id": "thucydides-war",
-      "author": "Tucídides",
-      "title": "Ἱστορία τοῦ Πελοποννησιακοῦ πολέμου",
-      "originalLanguage": "grc",
-      "editionSearchStatus": "sin transcripción textual registrada",
-      "ocrSearchStatus": "índice invertido R2 declarado; OCR no revisado",
-      "facsimileReaders": [
-        {
-          "editionId": "tucidides-historia",
-          "reader": "buscador-facsimiles-clasicos.html?obra=tucidides-historia",
-          "textKind": "OCR por página, sin cotejo filológico",
-          "bibliographicIdentity": "metadatos del catálogo de ediciones R2"
-        }
-      ]
-    },
-    {
-      "id": "theophrastus-historia-plantarum",
-      "author": "Teofrasto",
-      "title": "Περὶ φυτῶν ἱστορίας",
-      "originalLanguage": "grc",
-      "editionSearchStatus": "sin transcripción textual registrada",
-      "ocrSearchStatus": "índice invertido R2 declarado; OCR no revisado",
-      "facsimileReaders": [
-        {
-          "editionId": "teofrasto-historia-plantas",
-          "reader": "buscador-facsimiles-clasicos.html?obra=teofrasto-historia-plantas",
-          "textKind": "OCR por página, sin cotejo filológico",
-          "bibliographicIdentity": "metadatos del catálogo de ediciones R2"
-        }
-      ]
-    },
-    {
-      "id": "archimedes-fluitantibus",
-      "author": "Arquímedes",
-      "title": "Περὶ τῶν ὀχουμένων",
-      "originalLanguage": "grc",
-      "editionSearchStatus": "sin transcripción textual registrada",
-      "ocrSearchStatus": "índice invertido R2 declarado; OCR no revisado",
-      "facsimileReaders": [
-        {
-          "editionId": "arquimedes-obras",
-          "reader": "buscador-facsimiles-clasicos.html?obra=arquimedes-obras",
           "textKind": "OCR por página, sin cotejo filológico",
           "bibliographicIdentity": "metadatos del catálogo de ediciones R2"
         }
@@ -527,30 +463,6 @@
       "ocrSearchStatus": "sin facsímil con índice R2 vinculado"
     },
     {
-      "id": "plutarch-moralia",
-      "author": "Plutarco",
-      "title": "Ἠθικά (Moralia)",
-      "originalLanguage": "grc",
-      "editionSearchStatus": "sin transcripción textual registrada",
-      "ocrSearchStatus": "sin facsímil con índice R2 vinculado"
-    },
-    {
-      "id": "cassius-dio-historia",
-      "author": "Dión Casio",
-      "title": "Ῥωμαϊκὴ ἱστορία",
-      "originalLanguage": "grc",
-      "editionSearchStatus": "sin transcripción textual registrada",
-      "ocrSearchStatus": "sin facsímil con índice R2 vinculado"
-    },
-    {
-      "id": "athenaeus-deipnosophistae",
-      "author": "Ateneo de Náucratis",
-      "title": "Δειπνοσοφισταί",
-      "originalLanguage": "grc",
-      "editionSearchStatus": "sin transcripción textual registrada",
-      "ocrSearchStatus": "sin facsímil con índice R2 vinculado"
-    },
-    {
       "id": "seneca-de-ira",
       "author": "Séneca",
       "title": "De ira",
@@ -599,14 +511,6 @@
       "ocrSearchStatus": "sin facsímil con índice R2 vinculado"
     },
     {
-      "id": "ps-aristotle-mechanica",
-      "author": "Pseudo-Aristóteles (escuela peripatética)",
-      "title": "Μηχανικὰ προβλήματα",
-      "originalLanguage": "grc",
-      "editionSearchStatus": "sin transcripción textual registrada",
-      "ocrSearchStatus": "sin facsímil con índice R2 vinculado"
-    },
-    {
       "id": "procopius-aedificiis",
       "author": "Procopio de Cesarea",
       "title": "Περὶ κτισμάτων",
@@ -627,38 +531,6 @@
       "author": "Censorino",
       "title": "De die natali",
       "originalLanguage": "la",
-      "editionSearchStatus": "sin transcripción textual registrada",
-      "ocrSearchStatus": "sin facsímil con índice R2 vinculado"
-    },
-    {
-      "id": "euclid-optica",
-      "author": "Euclides",
-      "title": "Ὀπτικά · Optica",
-      "originalLanguage": "grc",
-      "editionSearchStatus": "sin transcripción textual registrada",
-      "ocrSearchStatus": "sin facsímil con índice R2 vinculado"
-    },
-    {
-      "id": "euclid-phaenomena",
-      "author": "Euclides",
-      "title": "Φαινόμενα · Phaenomena y escritos musicales",
-      "originalLanguage": "grc",
-      "editionSearchStatus": "sin transcripción textual registrada",
-      "ocrSearchStatus": "sin facsímil con índice R2 vinculado"
-    },
-    {
-      "id": "cleonides-harmonica",
-      "author": "Cleónides (transmitido bajo el nombre de Euclides)",
-      "title": "Εἰσαγωγὴ ἁρμονική · Introductio harmonica",
-      "originalLanguage": "grc",
-      "editionSearchStatus": "sin transcripción textual registrada",
-      "ocrSearchStatus": "sin facsímil con índice R2 vinculado"
-    },
-    {
-      "id": "hero-belopoeica",
-      "author": "Herón de Alejandría",
-      "title": "Βελοποιικά · Belopoeica",
-      "originalLanguage": "grc",
       "editionSearchStatus": "sin transcripción textual registrada",
       "ocrSearchStatus": "sin facsímil con índice R2 vinculado"
     },
@@ -711,6 +583,6 @@
       "ocrSearchStatus": "sin facsímil con índice R2 vinculado"
     }
   ],
-  "r2IndexAuditTimestamp": "2026-11-15T20:54:51.399957+00:00",
+  "r2IndexAuditTimestamp": "2026-11-16T00:31:32.974491+00:00",
   "r2IndexDeclared": true
 }
