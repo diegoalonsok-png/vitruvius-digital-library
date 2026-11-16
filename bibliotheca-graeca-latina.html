@@ -128,6 +128,31 @@ html[data-bibliotheca-color=sepia] :is(.top a,.toplinks a,header.hero h1,.biblio
 html[data-bibliotheca-color=sepia] .bibliotheca-color-palette>summary{background:#fff6e5;color:#302921}
 html[data-bibliotheca-color=sepia] .searchform input{color:#302921!important;background:#fff8ee!important}
 @media(max-width:700px){.bibliotheca-color-options{left:0;right:auto}}
+</style><style id="bibliotheca-header-palette-fix">
+/* Single row of nav links, one grouped set of utility controls. */
+nav.top{display:grid!important;grid-template-columns:auto minmax(0,1fr) auto;align-items:center!important;column-gap:16px!important;row-gap:12px!important;width:100%;flex-wrap:nowrap!important}
+nav.top>.brand{white-space:nowrap}
+nav.top>.toplinks{display:flex!important;min-width:0;flex:1 1 auto;gap:3px!important;justify-content:flex-start!important;align-items:center;flex-wrap:wrap!important}
+nav.top>.toplinks a{white-space:nowrap;padding:6px 7px!important;font-size:11px!important}
+.bibliotheca-top-tools{display:flex;align-items:center;justify-content:flex-end;gap:8px;flex-wrap:nowrap;white-space:nowrap}
+.bibliotheca-top-tools #bibliotheca-theme{min-width:38px;width:40px;height:39px;padding:6px}
+.bibliotheca-top-tools .bibliotheca-language-field{display:flex;align-items:center;gap:6px}
+.bibliotheca-top-tools #language-toggle{min-width:67px!important;width:70px}
+.bibliotheca-top-tools .bibliotheca-color-palette>summary{display:flex!important;align-items:center;justify-content:center;min-width:96px;min-height:39px;padding:7px 11px}
+.bibliotheca-color-palette:not([open]) .bibliotheca-color-options{display:none!important}
+.bibliotheca-color-palette[open] .bibliotheca-color-options{display:grid!important}
+@media(max-width:1180px){nav.top{grid-template-columns:1fr auto!important}nav.top>.brand{grid-column:1}nav.top>.toplinks{grid-column:1/-1;grid-row:2;justify-content:flex-start!important}nav.top>.bibliotheca-top-tools{grid-column:2;grid-row:1}}
+@media(max-width:620px){nav.top{grid-template-columns:1fr!important}nav.top>.brand,nav.top>.bibliotheca-top-tools,nav.top>.toplinks{grid-column:1!important;grid-row:auto!important}.bibliotheca-top-tools{justify-content:flex-start;flex-wrap:wrap}}
+/* Base stylesheet marks .library dark !important, so all three surfaces need explicit overrides. */
+html[data-bibliotheca-color="graphite"] :is(body,main.library){background:#24272b!important;color:#f2f2f2!important}
+html[data-bibliotheca-color="navy"] :is(body,main.library){background:#182a3a!important;color:#f2f4f5!important}
+html[data-bibliotheca-color="slate"] :is(body,main.library){background:#394650!important;color:#f5f4f1!important}
+html[data-bibliotheca-color="sepia"] :is(body,main.library){background:#f2e8d4!important;color:#302921!important}
+html[data-bibliotheca-color="graphite"] :is(.top,.bibliotheca-suite,header.hero,.searcharea){background:#24272b!important}
+html[data-bibliotheca-color="navy"] :is(.top,.bibliotheca-suite,header.hero,.searcharea){background:#182a3a!important}
+html[data-bibliotheca-color="slate"] :is(.top,.bibliotheca-suite,header.hero,.searcharea){background:#394650!important}
+html[data-bibliotheca-color="sepia"] :is(.top,.bibliotheca-suite,header.hero,.searcharea){background:#f2e8d4!important}
+html[data-bibliotheca-color="sepia"] :is(.top,.bibliotheca-suite,header.hero,.searcharea,footer,.intro,.eyebrow,h1,h2,h3,.toplinks a,.brand){color:#302921!important}
 </style></head>
 <body><a class="vdl-skip-link" href="#main-content">Saltar al contenido principal</a>
 <main class="library" id="main-content">
@@ -138,12 +163,15 @@ html[data-bibliotheca-color=sepia] .searchform input{color:#302921!important;bac
 <a id="lexicon-nav" href="vitruvia-lexicon.html">Lexicon</a>
 <a id="capitula-nav" href="bibliotheca-capitula.html">Lectura por capítulos</a>
 <a href="vitruvia.html">Vitruvia</a><a href="laboratorio-humanidades.html">Laboratorium</a><a href="index-locorum.html">Index locorum</a><a href="metodologia-catalogo-clasico.html">Método y fuentes</a>
-<button type="button" id="bibliotheca-theme" class="language-toggle" aria-label="Activar fondo claro" title="Activar fondo claro" aria-pressed="true">☀</button>
+<a href="estado-indexacion-bibliotheca.html">Estado de indexación</a><a href="codices-clasicos-prioritarios.html">Códices tempranos</a>
+</div>
+<div class="bibliotheca-top-tools" role="group" aria-label="Idioma y apariencia">
 <label class="bibliotheca-language-field" for="language-toggle"><span>Idioma</span><select id="language-toggle" class="language-toggle" aria-label="Idioma de la interfaz"><option value="es">ES</option><option value="en">EN</option><option value="fr">FR</option></select></label>
-<details class="bibliotheca-color-palette" id="bibliotheca-color-palette"><summary title="Elegir color de fondo" aria-label="Elegir color de fondo">◉ <span>Fondo</span></summary><div class="bibliotheca-color-options" role="group" aria-label="Color de la página">
+<button type="button" id="bibliotheca-theme" class="language-toggle" aria-label="Activar fondo claro" title="Activar fondo claro" aria-pressed="true">☀</button>
+<details class="bibliotheca-color-palette" id="bibliotheca-color-palette"><summary title="Elegir color de fondo" aria-label="Elegir color de fondo"><span aria-hidden="true">◉</span> <span>Fondo</span></summary><div class="bibliotheca-color-options" role="group" aria-label="Color de la página">
 <button type="button" data-biblio-color="original">Original</button><button type="button" data-biblio-color="graphite">Grafito</button><button type="button" data-biblio-color="navy">Azul oscuro</button><button type="button" data-biblio-color="slate">Gris pizarra</button><button type="button" data-biblio-color="sepia">Sepia</button></div></details>
 </div>
-<a href="estado-indexacion-bibliotheca.html" title="Cobertura, índices y verificación de Cloudflare R2">Estado de indexación</a> <a href="codices-clasicos-prioritarios.html">Códices tempranos</a></nav>
+</nav>
 <section class="bibliotheca-suite" aria-label="Herramientas de Vitruvius Digital Library">
 
  <nav class="bibliotheca-suite-links" aria-label="Navegación académica">
@@ -229,6 +257,6 @@ html[data-bibliotheca-color=sepia] .searchform input{color:#302921!important;bac
 <nav aria-label="Estudios textuales rastreables" style="max-width:1100px;margin:16px auto;padding:12px 15px;border-top:1px solid #5556;border-bottom:1px solid #5556;font:13px/1.65 system-ui,sans-serif"><strong>Concordancias académicas:</strong> <a href="indice-busquedas-academicas.html">índice de búsquedas verificadas</a> · <a href="domus-en-vitruvio.html" lang="la">domus</a> · <a href="aedes-en-vitruvio.html" lang="la">aedes</a> · <a href="symmetria-en-vitruvio.html" lang="la">symmetria</a> · <a href="locus-en-vitruvio.html" lang="la">locus</a> · <a href="architectura-en-vitruvio.html" lang="la">architectura</a></nav>
 <noscript><aside role="note" style="max-width:960px;margin:22px auto;padding:15px;border:1px solid #777;border-radius:10px;background:#191a1e;color:#f1f1f1;font:14px/1.65 system-ui,sans-serif">Este buscador avanzado requiere JavaScript. Para investigar sin scripts, consulta la <a href="guia-investigacion-universitaria.html">guía universitaria</a>, las <a href="domus-en-vitruvio.html">concordancias estáticas de Vitruvio</a> y la <a href="como-citar.html">guía de citación y DOI</a>. No se presentan resultados vacíos como ausencia del término.</aside></noscript>
 </main>
-<script defer src="assets/bibliotheca-palette.js?v=20261115-1"></script><script defer src="assets/bibliotheca-search-shortcuts.js?v=20261115-restore-v1"></script><script defer src="assets/classics-audited-coverage.js?v=20261110-manifest-28-wikisource-v4"></script><script defer src="assets/scholarly-query-tools.js?v=20261109-university-v1"></script><script defer src="assets/bibliotheca-theme.js?v=20261110-light-v1"></script><script defer src="assets/bibliotheca-ui-i18n.js?v=20261112-ui-i18n"></script><script defer src="assets/button-press-feedback.js?v=20261111-pulsacion-v1"></script><script defer src="assets/ui-idioma.js?v=20261112-sitio3"></script><script defer src="assets/bibliotheca-r2-facsimiles.js?v=20261113-r2-1"></script><script defer src="assets/r2-clasicos-busqueda.js?v=20261113-r2-busqueda-1"></script><script defer src="assets/cifra-obras.js?v=20261113-cifra-1"></script><script defer src="assets/bibliotheca-federated-status.js?v=20261115-1"></script><script defer src="assets/unified-books-discovery.js?v=20261115-unified-all-books-v3"></script><script defer src="assets/bibliotheca-advanced-search.js?v=20261115-advanced-1"></script>
+<script defer src="assets/bibliotheca-palette.js?v=20261115-navfix-v2"></script><script defer src="assets/bibliotheca-search-shortcuts.js?v=20261115-restore-v1"></script><script defer src="assets/classics-audited-coverage.js?v=20261110-manifest-28-wikisource-v4"></script><script defer src="assets/scholarly-query-tools.js?v=20261109-university-v1"></script><script defer src="assets/bibliotheca-theme.js?v=20261110-light-v1"></script><script defer src="assets/bibliotheca-ui-i18n.js?v=20261112-ui-i18n"></script><script defer src="assets/button-press-feedback.js?v=20261111-pulsacion-v1"></script><script defer src="assets/ui-idioma.js?v=20261112-sitio3"></script><script defer src="assets/bibliotheca-r2-facsimiles.js?v=20261113-r2-1"></script><script defer src="assets/r2-clasicos-busqueda.js?v=20261113-r2-busqueda-1"></script><script defer src="assets/cifra-obras.js?v=20261113-cifra-1"></script><script defer src="assets/bibliotheca-federated-status.js?v=20261115-1"></script><script defer src="assets/unified-books-discovery.js?v=20261115-unified-all-books-v3"></script><script defer src="assets/bibliotheca-advanced-search.js?v=20261115-advanced-1"></script>
 </body>
 </html>
