@@ -680,19 +680,19 @@ async function initialize(){
   const studiesCount=Number(metrics?.academic_studies?.records??$('#stat-studies-records')?.textContent??0);
   const indexedEditions=catalog.editions.filter(e=>e.searchable&&e.text_index);
   const declaredPages=indexedEditions.reduce((sum,e)=>sum+(Number(e.pages)||0),0);
-  $('#stat-main-records').textContent=primaryCount.toLocaleString('es-AR');
-  $('#stat-inventory-records').textContent=inventoryCount.toLocaleString('es-AR');
-  $('#stat-studies-records').textContent=studiesCount.toLocaleString('es-AR');
-  $('#stat-records').textContent=(primaryCount+inventoryCount+studiesCount).toLocaleString('es-AR');
-  $('#stat-indexed-editions').textContent=indexedEditions.length.toLocaleString('es-AR');
-  $('#stat-pages').textContent=declaredPages.toLocaleString('es-AR');
-  $('#stat-languages').textContent=(catalog.languages||[]).length.toLocaleString('es-AR');
+  $('#stat-main-records')&&($('#stat-main-records').textContent=primaryCount.toLocaleString('es-AR'));
+  $('#stat-inventory-records')&&($('#stat-inventory-records').textContent=inventoryCount.toLocaleString('es-AR'));
+  $('#stat-studies-records')&&($('#stat-studies-records').textContent=studiesCount.toLocaleString('es-AR'));
+  $('#stat-records')&&($('#stat-records').textContent=(primaryCount+inventoryCount+studiesCount).toLocaleString('es-AR'));
+  $('#stat-indexed-editions')&&($('#stat-indexed-editions').textContent=indexedEditions.length.toLocaleString('es-AR'));
+  $('#stat-pages')&&($('#stat-pages').textContent=declaredPages.toLocaleString('es-AR'));
+  $('#stat-languages')&&($('#stat-languages').textContent=(catalog.languages||[]).length.toLocaleString('es-AR'));
   if(metrics?.indexed_editions?.sum_structured_passages){
-    $('#stat-passages').textContent=Number(metrics.indexed_editions.sum_structured_passages).toLocaleString('es-AR');
+    $('#stat-passages')&&($('#stat-passages').textContent=Number(metrics.indexed_editions.sum_structured_passages).toLocaleString('es-AR'));
   }
   if(metrics?.audited_at){
     const [year,month,day]=metrics.audited_at.split('-');
-    $('#stat-audit-date').textContent=day+' de '+({1:'enero',2:'febrero',3:'marzo',4:'abril',5:'mayo',6:'junio',7:'julio',8:'agosto',9:'septiembre',10:'octubre',11:'noviembre',12:'diciembre'}[Number(month)]||month)+' de '+year;
+    $('#stat-audit-date')&&($('#stat-audit-date').textContent=day+' de '+({1:'enero',2:'febrero',3:'marzo',4:'abril',5:'mayo',6:'junio',7:'julio',8:'agosto',9:'septiembre',10:'octubre',11:'noviembre',12:'diciembre'}[Number(month)]||month)+' de '+year);
   }
   $('#historic-count').textContent=records.filter(e=>e.category==='historical').length;$('#manuscript-count').textContent=records.filter(e=>e.category==='manuscripts').length;
   renderCatalog();
