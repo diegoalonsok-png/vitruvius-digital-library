@@ -9,11 +9,16 @@ const read=p=>JSON.parse(readFileSync(p,"utf8"));
 const origin=read("data/r2/corpus-manifest.json");
 const registry=read("data/classics-corpus/search-registry.json");
 const local=read("data/index/classics/manifest.json");
-const keys=new Set(),all=new Map();
+const keys=new Set(),all=new Map(),localPaths=new Set(),localAlternates=[];
 for(const doc of local.index){
  const key=doc.id+"|"+doc.lang;
- assert(!keys.has(key),"Duplicate local lexical ID: "+key);
- keys.add(key);all.set(key,doc);
+ assert(doc.file&&!localPaths.has(doc.file),"Duplicate lexical source file: "+doc.file);
+ localPaths.add(doc.file);
+ // Two legitimately different editorial representations may have one work ID,
+ // e.g. Didache grc (whole chapters) and a derived verse-locus index.
+ // Retain both files, but the combined search counts that ID only once.
+ if(keys.has(key))localAlternates.push({workId:doc.id,language:doc.lang,file:doc.file});
+ else {keys.add(key);all.set(key,doc)}
 }
 for(const original of origin.obras){
  const path=origin.base+original.archivo;
@@ -38,7 +43,7 @@ if(existsSync(r2path)){
   assert.equal(work.passages,sourceEntry.pasajes);
   all.set(work.id+"|"+work.lang,all.get(work.id+"|"+work.lang)||work);
  }
- console.log("PASS: full R2 index, "+origin.obras.length+" originals, "+all.size+" distinct lexical editions");
+ console.log("PASS: full R2 index, "+origin.obras.length+" originals, "+all.size+" distinct lexical work-language IDs; "+localAlternates.length+" preserved local alternate representations");
 }else{
- console.log("PENDING: full R2 lexical index not yet published. Verified 44 registry declarations; existing "+local.works+" lexical versions preserved.");
+ console.log("PENDING: full R2 lexical index not yet published. Verified 44 registry declarations; existing "+local.works+" lexical versions preserved ("+localAlternates.length+" valid alternate representations).");
 }
