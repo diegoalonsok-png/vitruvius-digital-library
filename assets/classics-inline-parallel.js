@@ -66,7 +66,14 @@ orderButton.addEventListener("click",()=>{
 });
 const modeRow=el("label","cl-pane-options","Lectura enfrentada "),mode=el("select");mode.setAttribute("aria-label","Contenido de la lectura enfrentada");
 for(const [value,name] of [["translation","Traducción automática"],["pdf","PDF de lectura enfrentada"]]){const o=el("option",null,name);o.value=value;mode.append(o)}
-modeRow.append(mode);translationHeading.after(modeRow);
+modeRow.append(mode);
+// Keep all reading and translation controls together above BOTH columns.
+// Moving the existing nodes preserves their listeners and translation state.
+const upperActions=el("div","cl-unified-reading-actions");
+upperActions.setAttribute("role","group");
+upperActions.setAttribute("aria-label","Intercambio de columnas, lectura enfrentada e idioma de traducción");
+upperActions.append(orderButton,published,modeRow,controls);
+layout.append(upperActions);
 let pdfPane=null;
 mode.addEventListener("change",()=>{
  const showPdf=mode.value==="pdf";translation.classList.toggle("cl-pdf-mode",showPdf);
