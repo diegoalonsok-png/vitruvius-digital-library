@@ -716,7 +716,25 @@ $("prev").addEventListener("click",()=>select(active-1));$("next").addEventListe
    ["grc","la","es","en","fr","it","de","pt"].includes(e.language)&&
    (/^data\/(?:classics-corpus|structured|lexicon\/fontes)\/[a-z0-9/_-]+\.json$/.test(e.path||"")||
     /^https:\/\/libros\.vitruvius-digital-library\.org\/corpus\/[a-z0-9_-]+\.json$/.test(e.path||"")));
-  if(!hosted.length)throw Error("Esta obra no tiene una edición JSON disponible para este lector.");
+  if(!hosted.length){
+   // Some older, fully readable classics are hosted as edition-specific HTML
+   // (e.g. Cicero De officiis). A JSON-only viewer cannot render their pages.
+   // Open the documented edition directly instead of showing an empty reader.
+   const html=(registry.entries||[]).filter(e=>e.workId===work&&e.format==="html-text"&&
+    ["grc","la","es","en","fr","it","de","pt"].includes(e.language)&&
+    /^corpus\/[a-z0-9/_-]+\.html$/.test(e.path||""));
+   const requested=p.get("lang");
+   const chosen=html.find(e=>e.language===requested)||
+    html.find(e=>e.language==="la")||html.find(e=>e.language==="grc")||html[0];
+   if(chosen){
+    $("source-title").textContent="Abriendo la edición de "+chosen.language.toUpperCase()+" en su lector textual…";
+    const url=new URL(chosen.reader&&/^corpus\/[a-z0-9/_-]+\.html$/.test(chosen.reader)?chosen.reader:chosen.path,location.href);
+    if(p.get("q"))url.searchParams.set("q",p.get("q"));
+    location.replace(url.href);
+    return;
+   }
+   throw Error("Esta obra no tiene una edición textual compatible registrada. Consulte la ficha académica.");
+  }
    hostedEditions=hosted;
   if(!allowed[work])setTitle((record?.author||hosted[0].author)+" · "+(record?.title||hosted[0].title));
   const available=new Set(hosted.map(e=>e.language));
