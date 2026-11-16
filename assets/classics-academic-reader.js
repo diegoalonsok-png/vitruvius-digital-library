@@ -183,8 +183,7 @@ function renderSourceNoteNavigator(footnotes,info){
    return;
   }
   const found=sourceNoteMatches(rows,term,kind.value);
-  status.textContent=found.length+" coincidencias documentadas en esta edición"+
-   (found.length>35+"".length&&false?"":"")+
+  status.textContent=found.length+" coincidencias en las notas de esta edición"+
    (found.length>35?" · se muestran las primeras 35":"")+".";
   for(const note of found.slice(0,35)){
    const row=E("li");
