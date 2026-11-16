@@ -215,7 +215,7 @@ const FONTES=[
  {file:"data/lexicon/fontes/varro-rustica-la.json",id:"varro-rustica",lang:"la",
   title:"Varrón · Rerum rusticarum libri tres"}
 ];
-for(const fonte of FONTES){
+for(const fonte of (NO_STRUCTURED?[]:FONTES)){
  if(!existsSync(fonte.file))continue;
  const raw=JSON.parse(readFileSync(fonte.file,"utf8"));
  const passages=raw.passages||[];
@@ -266,7 +266,7 @@ const HTML_EDITIONS=[
  {file:"corpus/lucretius-de-rerum-natura-es.html",id:"lucretius",lang:"es",title:"Lucrecio · De rerum natura (castellano)"},
  {file:"corpus/lucretius-de-rerum-natura-en.html",id:"lucretius",lang:"en",title:"Lucretius · On the Nature of Things"}
 ];
-for(const edition of HTML_EDITIONS){
+for(const edition of (NO_STRUCTURED?[]:HTML_EDITIONS)){
  if(!existsSync(edition.file))continue;
  const html=readFileSync(edition.file,"utf8");
  const text=html.replace(/<script[\s\S]*?<\/script>/gi," ").replace(/<style[\s\S]*?<\/style>/gi," ")
