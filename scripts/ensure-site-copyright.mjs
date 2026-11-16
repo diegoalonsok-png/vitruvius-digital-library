@@ -10,19 +10,26 @@ const footer=`<footer ${marker} role="contentinfo" aria-label="Derechos editoria
 <span style="opacity:.8">Los derechos sobre los materiales originales, el diseño y los aportes editoriales pertenecen a sus respectivos titulares. Los textos antiguos, facsímiles, imágenes y recursos de terceros conservan su situación jurídica y licencias propias.</span>
 </footer>`;
 const files=execFileSync("git",["ls-files","-z","--","*.html"],{encoding:"utf8"}).split("\0").filter(Boolean);
+// Keep exactly one notice in the actual page, after all scripts and before final </body>.
+// A string literal containing HTML must never count as a rendered page footer.
+const noticePattern=/<footer\b[^>]*data-vdl-legal-notice="2026"[^>]*>[\s\S]*?<\/footer\s*>/gi;
+function normalizePage(source){
+ const stripped=source.replace(noticePattern,"");
+ const closes=[...stripped.matchAll(/<\/body\s*>/gi)];
+ const close=closes.at(-1);
+ if(!close)return null;
+ return stripped.slice(0,close.index).trimEnd()+"\n"+footer+"\n"+stripped.slice(close.index);
+}
 let changed=0,missing=[],already=0;
 for(const file of files){
- // Google Search Console verification token is not a webpage; never alter it.
  if(/^google[a-f0-9]+\.html$/i.test(file))continue;
  const source=readFileSync(file,"utf8");
- if(source.includes(marker)){already++;continue}
- if(!/<\/body\s*>/i.test(source)){missing.push(file);continue}
+ const next=normalizePage(source);
+ if(next===null){missing.push(file);continue}
+ if(source===next){already++;continue}
  if(process.argv.includes("--write")){
-  const closes=[...source.matchAll(/<\/body\s*>/gi)];
-  const last=closes.at(-1);
-  const updated=last?source.slice(0,last.index)+footer+"\n"+source.slice(last.index):source;
-  writeFileSync(file,updated,"utf8");changed++;
+  writeFileSync(file,next,"utf8");changed++;
  }else missing.push(file);
 }
-console.log(JSON.stringify({checked:files.length,already,changed,missing:missing.length,examples:missing.slice(0,15)},null,2));
+console.log(JSON.stringify({checked:files.length,already,changed,missing:missing.length,examples:missing.slice(0,20)},null,2));
 if(missing.length)process.exitCode=1;
