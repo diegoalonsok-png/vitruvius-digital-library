@@ -127,10 +127,10 @@ body.ab-custom-type main :is(p,li,blockquote,dd,dt,td,th,.ab-autor-body):not([la
 <label>Visualización<select id="mode"><option value="all">Texto y aparato</option><option value="v514">Solo decisiones V514</option><option value="source">Comparación documental</option></select></label>
 </form>
 <section class="ab-latin-search" aria-labelledby="ab-search-heading">
-<h2 id="ab-search-heading">Buscar palabras y conceptos en Vitruvio</h2>
+<h2 id="ab-search-heading">Buscar por palabra o lema en Vitruvio</h2>
 <form id="ab-search-form" role="search">
-<label>Palabra o concepto, en latín, español o inglés<input id="ab-search-query" type="search" maxlength="180" placeholder="arquitecto · architect · architectus · symmetria · decor" autocomplete="off"></label>
-<label>Tipo de búsqueda<select id="ab-search-mode"><option value="concept">Conceptos y formas latinas</option><option value="phrase">Frase literal</option><option value="all">Todas las palabras</option></select></label>
+<label>Palabra, lema o concepto (latín, español o inglés)<input id="ab-search-query" type="search" maxlength="180" placeholder="arquitecto · architect · architectus · symmetria · decor" autocomplete="off"></label>
+<label>Tipo de búsqueda<select id="ab-search-mode"><option value="concept">Lema y formas latinas</option><option value="phrase">Frase literal</option><option value="all">Todas las palabras</option></select></label>
 <button type="submit">Buscar loci</button>
 <button type="button" id="ab-search-reset">Limpiar</button>
 </form>
@@ -248,7 +248,7 @@ body.ab-custom-type main :is(p,li,blockquote,dd,dt,td,th,.ab-autor-body):not([la
 </section>
 </main>
 <script defer src="assets/apparatus-reading-order.js?v=20261115-latin-first-v1"></script>
-<script src="assets/apparatus-locus-search.js?v=20261115-latin-v7"></script>
+<script src="assets/apparatus-locus-search.js?v=20261116-lemmas-v8"></script>
 <script>
 
 // Top-right Lexicon toolbar: page-wide background, locale, day/night and typography.
@@ -473,9 +473,9 @@ function load(locus){
   // Editorial warnings belong under the Krohn reader, not inside a witness reading.
   // Divergence is NOT evidence of OCR error or an emendation.
   const note=supplied
-   ?"Nota editorial · "+locus+": falta transcripción digital independiente de Krohn 1912 para este locus. Se reproduce provisionalmente el texto latino de Kurilo V514, sin atribuirlo a Krohn. Pendiente de cotejo con el impreso."
+   ?"Nota editorial · "+locus+": no consta transcripción digital independiente de Krohn 1912 para este locus. Se reproduce provisionalmente el texto latino de Kurilo V514, sin atribuirlo a Krohn. Pendiente de cotejo con el impreso."
    :roseSupplement
-    ?"Nota editorial · "+locus+": falta transcripción digital de Krohn y texto V514 utilizable. Se ofrece provisionalmente OCR de Rose 1899, que NO representa la lectura de Krohn. Pendiente de cotejo con ambos impresos."
+    ?"Nota editorial · "+locus+": no consta transcripción digital de Krohn ni texto V514 utilizable. Se ofrece provisionalmente OCR de Rose 1899, que NO representa la lectura de Krohn. Pendiente de cotejo con ambos impresos."
     :greekLoci.has(locus)
      ?"Advertencia de cotejo · "+locus+": la transcripción digital de Krohn contiene versos griegos, mientras V514 ofrece un pasaje latino explicativo. La similitud léxica automática entre lenguas no es interpretable como errata OCR ni como variante; revisar segmentación y facsímil antes de emitir juicio."
      :segmentationLoci.has(locus)
@@ -626,6 +626,7 @@ apply();
  if(params.get("edition")==="rose")$("#edition").value="rose";
  if(["es","fr","en"].includes(params.get("translation")))$("#translation-edition").value=params.get("translation");
  load(params.get("locus")||"1.1.1");
+  window.addEventListener("popstate",()=>{const requested=new URLSearchParams(location.search);const locus=requested.get("locus")||"1.1.1";if(["es","fr","en"].includes(requested.get("translation")))$("#translation-edition").value=requested.get("translation");$("#edition").value=requested.get("edition")==="rose"?"rose":"v514";load(locus)});
  }catch(e){set("#status","No se pudo cargar el aparato: "+e.message+". El lector no sustituye los datos que faltan por lecturas supuestas.")}
 })();
 })();
