@@ -16,7 +16,23 @@
       "guardar original fuente, edición, traductor, fecha, derechos, fuente URL, SHA256, URN si existe",
       "evitar duplicar traductor o texto ya indexado; no reemplazar archivos previos"
     ],
-    "quarantine": "Si no es posible verificar procedencia, licencia, integridad o correspondencia, registrar candidato sin publicarlo ni contarlo como indexado."
+    "quarantine": "Si no es posible verificar procedencia, licencia, integridad o correspondencia, registrar candidato sin publicarlo ni contarlo como indexado.",
+    "acceptedSourceFormats": [
+      "pdf-text-layer",
+      "pdf-scanned-ocr-reviewed",
+      "docx"
+    ],
+    "documentIngestion": {
+      "pdf": "Extraer capa de texto cuando exista; si es escaneado, OCR por páginas con localizador y estado de revisión explícitos. Verificar integridad y orden de lectura.",
+      "docx": "Extraer párrafos, encabezados, notas y marcas de capítulos sin perder su ubicación documental; registrar identificadores y huella SHA256.",
+      "language": "Identificar en/es/fr con verificación humana de la edición y del contenido; no deducir lengua por el nombre del archivo.",
+      "provenance": "Identificar traductor, edición, año, licencia del archivo y del texto, obra exacta y extensión conservada.",
+      "store": "Conservar el archivo fuente intacto en Cloudflare R2 junto al texto derivado y su manifiesto; la publicación debe verificarse mediante HTTP y checksum.",
+      "indexing": "Crear índice buscable por obra, idioma, pasaje, página/párrafo y versión; indexar en lector doble solo cuando haya extracción íntegra y legible.",
+      "alignment": "La coincidencia de capítulos no justifica alineación por locus; usar correspondencias verificadas y separar segmentos no alineados.",
+      "fallbacks": "Si no hay traducción humana indexada y compatible, permitir traducción automática a petición del lector y declararla explícitamente.",
+      "existing": "Reutilizar data/classics-documents/manifest.json y el índice de 30 DOCX existentes. Su lengua y alineación constan sin verificar: no clasificarlos automáticamente como traducciones humanas paralelas."
+    }
   },
   "reading": {
     "doubleViewer": "classics-parallel-reader.html",
@@ -42,5 +58,5 @@
     "alignmentEvidence",
     "verificationStatus"
   ],
-  "status": "Regla editorial incorporada; no implica que se hayan descargado nuevas traducciones ni ejecutado R2."
+  "status": "Protocolo de PDF/DOCX registrado; no certifica ingestión de nuevas traducciones ni alineación de los 30 documentos históricos."
 }
