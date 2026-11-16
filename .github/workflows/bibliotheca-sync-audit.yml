@@ -18,6 +18,11 @@ on:
       - "scripts/test-early-witness-reading.mjs"
       - "assets/classics-early-witness-links.js"
       - "data/r2/catalogo-clasicos-r2.json"
+      - "data/r2/r2-orphan-reconciliation.json"
+      - "data/r2/clasicos-candidatos.json"
+      - "data/r2/indice-semantico-manifest.json"
+      - "data/index/classics-r2/manifest.json"
+      - "scripts/test-r2-reconciliation-integrity.mjs"
       - "data/r2/corpus-manifest.json"
       - "data/classics-corpus/search-registry.json"
       - "data/bibliotheca-graeca-latina-I-bce-I-ce.json"
@@ -59,6 +64,7 @@ jobs:
       - name: Identidad catalográfica y sincronización de obras y versiones
         run: |
           node scripts/test-bibliotheca-expansion-2026-11.mjs
+          node scripts/test-r2-reconciliation-integrity.mjs
           node scripts/audit-bibliotheca-federada.mjs --strict
           python scripts/sync-bibliotheca-github-r2.py
           python scripts/cifras-corpus.py
