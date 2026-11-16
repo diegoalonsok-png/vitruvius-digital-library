@@ -2,8 +2,8 @@
  "schema": "vitruvia-classics-search-registry-v1",
  "updated": "2026-11-16",
  "description": "Registro verificable de transcripciones HTML y textos JSON existentes que admiten búsqueda literal de contenido. No incluye automáticamente PDF escaneados, facsímiles ni fichas sin texto. Los índices auxiliares por locus y el aparato crítico se declaran por separado; no se suman a versiones textuales originales ni implican colación autóptica.",
- "count": 292,
- "works": 227,
+ "count": 293,
+ "works": 228,
  "entries": [
   {
    "workId": "aeneas-tacticus-poliorketika",
@@ -596,6 +596,16 @@
    "sourceDescription": "Perseus/First1KGreek TEI · edición atribuida en el archivo · sin cotejo ni alineación automática",
    "sha256": "e2e68dc66e6949f8d7fbfbcc52f47570395d64f1c83fb94665f984f86b4083af",
    "passages": 341
+  },
+  {
+   "workId": "callimachus-hymni",
+   "author": "Calímaco",
+   "title": "Ὕμνοι",
+   "language": "grc",
+   "format": "json-passages",
+   "path": "data/classics-corpus/callimachus-hymni-grc.json",
+   "reader": "classics-text-reader.html?work=callimachus-hymni&lang=grc",
+   "sourceDescription": "Perseus TEI · A. W. Mair (1921) · seis himnos · CC BY-SA 4.0; sin cotejo crítico independiente"
   },
   {
    "workId": "cassius-dio-historia",
