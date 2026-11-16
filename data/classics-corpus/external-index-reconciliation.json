@@ -1,21 +1,21 @@
 {
   "schema": "vitruvius-classics-external-index-reconciliation-v1",
-  "updated": "2026-11-15",
-  "scope": "Metadatos de índices remotos existentes, no textos alojados en GitHub Pages. Verifica solo la existencia de los manifiestos y su integridad estructural declarada, no cotejo filológico ni prueba de lectura en navegador. Tres fichas pendientes son versiones editoriales de Vitruvio ya indexado en otras ediciones; requieren enlace de procedencia pero no son obras antiguas independientes. El índice añadido de Sículo Flaco deriva de 31 párrafos de Wikisource (edición de base no identificada): se documenta como transcripción accesible, no como edición crítica cotejada. El índice remoto de Ennio, Annales, corresponde a 31 fragmentos en transcripción CLTK/Latin Library; no se confunde con edición crítica ni obra íntegra. Plutarco (Vidas y Moralia) se cuenta exclusivamente con la cobertura de tratados parcial documentada, no como obra integral.",
+  "updated": "2026-11-16",
+  "scope": "Metadatos de índices remotos existentes, no textos alojados en GitHub Pages. Verifica solo la existencia de los manifiestos y su integridad estructural declarada, no cotejo filológico ni prueba de lectura en navegador. Tres fichas pendientes son versiones editoriales de Vitruvio ya indexado en otras ediciones; requieren enlace de procedencia pero no son obras antiguas independientes. El índice añadido de Sículo Flaco deriva de 31 párrafos de Wikisource (edición de base no identificada): se documenta como transcripción accesible, no como edición crítica cotejada. El índice remoto de Ennio, Annales, corresponde a 31 fragmentos en transcripción CLTK/Latin Library; no se confunde con edición crítica ni obra íntegra. Plutarco (Vidas y Moralia) se cuenta exclusivamente con la cobertura de tratados parcial documentada, no como obra integral. Actualización: Vegecio dispone ahora de índice local; su entrada en el manifiesto remoto se conserva como procedencia alternativa, pero se deduplica para el recuento de cobertura efectiva (28 manifiestos externos, 27 incorporaciones adicionales).",
   "sourceManifests": [
     "https://raw.githubusercontent.com/diegoalonsok-png/vitruvius-digital-library/corpus-originales-griegos-20261108/data/offsite-originals/manifest.json",
     "https://raw.githubusercontent.com/diegoalonsok-png/vitruvius-digital-library/corpus-originales-latinos-20261108/data/offsite-latin/manifest.json"
   ],
   "counts": {
     "worksCatalogued": 271,
-    "hostedOriginalsIndexed": 182,
-    "remoteOriginalsIndexed": 28,
+    "hostedOriginalsIndexed": 183,
+    "remoteOriginalsIndexed": 27,
     "combinedOriginalsIndexed": 210,
     "originalsStillWithoutIndex": 61,
     "remoteGreek": 16,
     "remoteLatin": 12,
     "hostedTranslations": 59,
-    "hostedTextVersions": 247,
+    "hostedTextVersions": 248,
     "unindexedEditionRecordsOfExistingVitruviusWork": 3,
     "distinctAncientWorksStillMissingOriginalIndex": 58
   },
