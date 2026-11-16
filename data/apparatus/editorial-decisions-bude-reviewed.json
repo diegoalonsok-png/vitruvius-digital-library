@@ -26,6 +26,28 @@
       "status": "digital_unverified_print"
     },
     {
+      "locus": "1.1.4",
+      "lemma": "graphidis; regulaeque",
+      "readings": [
+        {
+          "edition": "Kur. V514",
+          "text": "graphidis; ⟨regulaeque⟩"
+        },
+        {
+          "edition": "Kr. 1912",
+          "text": "graphidis; regulaeque"
+        },
+        {
+          "edition": "Rose 1899",
+          "text": "graphidos; om. regulaeque"
+        }
+      ],
+      "criticalLine": "graphidis Kur. Kr. ] graphidos Rose; regulaeque Kur. Kr. ] om. Rose",
+      "change": "«graphidis/graphidos» presenta distinta flexión del préstamo griego referido al dibujo; «regulaeque», señalado entre signos de suplemento por Kurilo, añade explícitamente la regla junto al compás. Las transcripciones difieren además en la secuencia sobre líneas rectas.",
+      "decision": "La adopción textual de Krohn por Kurilo consta digitalmente, pero la motivación de la adición y el estado impreso en Rose requieren comprobación.",
+      "status": "digital_unverified_print"
+    },
+    {
       "locus": "1.1.5",
       "lemma": "deflagrata",
       "readings": [
@@ -111,6 +133,50 @@
       "criticalLine": "inclinationem Kur. Kr. ] inclinationes Rose; cavere Kur. Kr. ] caveri Rose",
       "change": "«inclinationem» singular frente a «inclinationes» plural modifica el número del objeto de conocimiento climático; «cavere» activo frente a «caveri» pasivo cambia la forma verbal en la sección jurídica.",
       "decision": "Kurilo coincide con Krohn en las formas digitalizadas. No se supone cuál testimonio manuscrito o razonamiento gramatical determinó la opción de Rose.",
+      "status": "digital_unverified_print"
+    },
+    {
+      "locus": "1.1.12",
+      "lemma": "Prieni",
+      "readings": [
+        {
+          "edition": "Kur. V514",
+          "text": "Prieni"
+        },
+        {
+          "edition": "Kr. 1912",
+          "text": "Prieni"
+        },
+        {
+          "edition": "Rose 1899",
+          "text": "Priene"
+        }
+      ],
+      "criticalLine": "Prieni Kur. Kr. ] Priene Rose",
+      "change": "Dos formas del topónimo de la ciudad vinculada a Piteo; la identificación de Priene es la misma, sin cambio histórico sustancial.",
+      "decision": "Coincidencia de Kurilo con Krohn en la forma latina; grafía Rose registrada en el índice digital, sin motivo editorial verificado.",
+      "status": "digital_unverified_print"
+    },
+    {
+      "locus": "1.1.13",
+      "lemma": "agrammatus; aniatrologetus",
+      "readings": [
+        {
+          "edition": "Kur. V514",
+          "text": "agrammatus; aniatrologetus"
+        },
+        {
+          "edition": "Kr. 1912",
+          "text": "agrammatus; aniatrologetus"
+        },
+        {
+          "edition": "Rose 1899",
+          "text": "agrammatos; aniatrologetos"
+        }
+      ],
+      "criticalLine": "agrammatus Kur. Kr. ] agrammatos Rose; aniatrologetus Kur. Kr. ] aniatrologetos Rose",
+      "change": "Distintas adaptaciones flexivas de voces griegas incorporadas al latín. El argumento de Vitruvio —no exigir especialización absoluta al arquitecto— permanece reconocible.",
+      "decision": "Diferencia formal entre las ediciones digitales, pendiente de cotejo de las grafías en los impresos.",
       "status": "digital_unverified_print"
     },
     {
@@ -246,6 +312,50 @@
       "status": "digital_unverified_print"
     },
     {
+      "locus": "1.2.7",
+      "lemma": "ut eorum; balneis",
+      "readings": [
+        {
+          "edition": "Kur. V514",
+          "text": "ut eorum; balneis"
+        },
+        {
+          "edition": "Kr. 1912",
+          "text": "ut eorum; balneis"
+        },
+        {
+          "edition": "Rose 1899",
+          "text": "quorum; balineis"
+        }
+      ],
+      "criticalLine": "ut eorum ... quorum Kur. Kr. ] quorum Rose; balneis Kur. Kr. ] balineis Rose",
+      "change": "La expresión relativa a Esculapio y Salus cambia en el enlace pronominal; «balneis/balineis» es variación de forma sin modificación sustancial de la función de los baños.",
+      "decision": "Los índices atribuyen una construcción distinta a Rose; no consta causa manuscrita verificada. La segunda lectura puede ser puramente gráfica.",
+      "status": "digital_unverified_print"
+    },
+    {
+      "locus": "1.2.8",
+      "lemma": "vitabuntur",
+      "readings": [
+        {
+          "edition": "Kur. V514",
+          "text": "vitabuntur"
+        },
+        {
+          "edition": "Kr. 1912",
+          "text": "vitabuntur"
+        },
+        {
+          "edition": "Rose 1899",
+          "text": "vitabuntar"
+        }
+      ],
+      "criticalLine": "vitabuntur Kur. Kr. ] vitabuntar Rose (lectio digitalis dubia)",
+      "change": "La forma «vitabuntur» corresponde a futuro pasivo plural; «vitabuntar» resulta anómala y debe tratarse como grafía sospechosa de la transcripción Rose, no como elección confirmada.",
+      "decision": "No adjudicar una enmienda histórica a Rose hasta examinar su impreso. El pasaje describe sustitución de materiales por economía.",
+      "status": "digital_unverified_print"
+    },
+    {
       "locus": "1.2.9",
       "lemma": "et; apte",
       "readings": [
@@ -265,6 +375,50 @@
       "criticalLine": "et Kur. Kr. ] aut Rose; apte Kur. Kr. ] aliter Rose",
       "change": "En la formulación sobre la distribución arquitectónica, «et» frente a «aut» modifica la coordinación; «apte» (adecuadamente) frente a «aliter» (de otra manera) cambia el adverbio y el matiz argumental.",
       "decision": "El texto digital de Kurilo sigue a Krohn en ambas lecturas y Rose presenta la otra solución. No hay fundamento declarado del editor confirmado aún contra el impreso.",
+      "status": "digital_unverified_print"
+    },
+    {
+      "locus": "1.3.1",
+      "lemma": "balinea; ambulationes",
+      "readings": [
+        {
+          "edition": "Kur. V514",
+          "text": "balinea; ambulationes"
+        },
+        {
+          "edition": "Kr. 1912",
+          "text": "balinea; ambulationes"
+        },
+        {
+          "edition": "Rose 1899",
+          "text": "balineae; inambulationes"
+        }
+      ],
+      "criticalLine": "balinea Kur. Kr. ] balineae Rose; ambulationes Kur. Kr. ] inambulationes Rose",
+      "change": "Se modifican la forma del término baños y la forma de las galerías/paseos públicos; la enumeración de obras de utilidad común sigue siendo identificable.",
+      "decision": "Diferencias documentadas solo en los índices digitales, pendientes de comprobación impresa y de su relevancia morfológica.",
+      "status": "digital_unverified_print"
+    },
+    {
+      "locus": "1.3.2",
+      "lemma": "copiarum; ⟨cum fuerit⟩",
+      "readings": [
+        {
+          "edition": "Kur. V514",
+          "text": "copiarum; ⟨cum fuerit⟩"
+        },
+        {
+          "edition": "Kr. 1912",
+          "text": "copiarum; cum fuerit"
+        },
+        {
+          "edition": "Rose 1899",
+          "text": "copiaram; om. fuerit"
+        }
+      ],
+      "criticalLine": "copiarum Kur. Kr. ] copiaram Rose (lectio digitalis dubia); ⟨cum fuerit⟩ Kur. / cum fuerit Kr. ] om. fuerit Rose",
+      "change": "En la tríada firmitas–utilitas–venustas, Kurilo marca «cum fuerit» como suplemento y Krohn lo imprime sin la misma marca; Rose omite al menos la forma verbal en la transcripción. «copiaram» requiere cotejo tipográfico antes de admitirse como lectura.",
+      "decision": "El complemento verbal favorece una estructura paralela entre firmitas, utilitas y venustas, pero el motivo editorial histórico todavía no está probado.",
       "status": "digital_unverified_print"
     },
     {
@@ -371,6 +525,28 @@
         "Krohn1912-print-I-4-3-20261115",
         "Krohn1912-print-p15-20261115"
       ]
+    },
+    {
+      "locus": "1.4.7",
+      "lemma": "plurimumque ex; principiis",
+      "readings": [
+        {
+          "edition": "Kur. V514",
+          "text": "plurimumque ex; principiis"
+        },
+        {
+          "edition": "Kr. 1912",
+          "text": "plurimumque ex; principiis"
+        },
+        {
+          "edition": "Rose 1899",
+          "text": "plurimoque et; om. principiis"
+        }
+      ],
+      "criticalLine": "plurimumque ex Kur. Kr. ] plurimoque et Rose; principiis Kur. Kr. ] om. Rose",
+      "change": "La descripción de la mezcla de elementos de peces y otros animales alterna construcciones distintas con el cuantificador y la preposición; la ausencia de principiis puede afectar la explicitación de la teoría elemental.",
+      "decision": "Diferencia de los índices digitales; no afirmar el origen manuscrito ni el sentido exacto hasta revisar el contexto del impreso Rose.",
+      "status": "digital_unverified_print"
     },
     {
       "locus": "1.4.11",
