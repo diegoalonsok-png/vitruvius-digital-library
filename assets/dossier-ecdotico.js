@@ -11,7 +11,8 @@ const required=[
  "data/structured/theory-en.json","data/collation-loci.json",
  "data/apparatus/aparato-comparativo.json",
  "data/codex-h/folio-locus-map.json","data/codex-h/observaciones-h.json","data/catalog.json",
- "data/apparatus/collatio-autoptica-h.json"
+ "data/apparatus/collatio-autoptica-h.json",
+ "data/critical-editions/krohn-1912-tei-loci.json"
 ];
 let cached=null,token=0,lastLocus=null;
 function el(tag,text,cls){const x=document.createElement(tag);if(text!==undefined&&text!==null)x.textContent=String(text);if(cls)x.className=cls;return x}
@@ -99,10 +100,20 @@ function latinComparatio(root,es,fr,en,locus,ocr){
  root.append(s)
 }
 
-function ocrPanel(root,locus,ocr,list){
+function ocrPanel(root,locus,ocr,list,krohnIndex){
  const s=box("II · Editiones historicae · Rose 1899 / Kr. 1912",
   "Sin texto latino de Rose o Krohn verificado para este locus en este módulo. Los alineamientos OCR son pistas de localización de páginas, no variantes ni una colación crítica; compruebe el facsímil antes de citar.");
  const item=ocr?.loci?.[locus];
+ const krohnText=krohnIndex?.passages?.find(entry=>entry.locus===locus);
+ if(krohnText?.latin){
+  const digital=el("article",null,"dl-source");
+  digital.append(el("h4","Kr. 1912 · transcripción digital Perseus (TEI)"));
+  digital.append(el("p",krohnText.latin,"dl-latin"));
+  digital.append(el("p","Texto digital alineado por locus CTS; no procede del OCR del facsímil. La extracción de etiquetas TEI normaliza la presentación; las variantes y notas críticas del impreso requieren cotejo independiente.","dl-muted"));
+  link(digital,"Fuente TEI original","https://github.com/PerseusDL/canonical-latinLit/blob/master/data/phi1056/phi001/phi1056.phi001.perseus-lat2.xml");
+  s.append(digital);
+  list.push(["Kr. 1912 · texto TEI (no colación paleográfica)",krohnText.latin]);
+ }
  const grid=el("div",null,"dl-grid dl-grid-two");
  for(const [id,name,filename] of [["rose-1899","Valentin Rose · 1899","https://archive.org/download/vitruviidearchit00vitr_0/vitruviidearchit00vitr_0.pdf"],["krohn-1912","F. Krohn · 1912","documents/krohn-1912.pdf"]]){
   const record=item?.[id],card=el("article",null,"dl-source");
@@ -252,7 +263,7 @@ async function openLocus(locus,scroll=true){
  lastLocus=id;wrap.hidden=false;wrap.replaceChildren(el("p","Reuniendo los testimonios y el comentario del locus "+id+"…","dl-muted"));
  if(scroll)wrap.scrollIntoView({behavior:"smooth",block:"start"});
  try{
-  const [es,fr,en,ocr,historical,folioMap,hobs,catalog,autoptic]=await getData();
+  const [es,fr,en,ocr,historical,folioMap,hobs,catalog,autoptic,krohnIndex]=await getData();
   if(request!==token)return;
   const r=last.find(x=>x.locus===id),sources=[];
   const header=el("header",null,"dl-head");
@@ -266,7 +277,7 @@ async function openLocus(locus,scroll=true){
   const core=el("div",null,"dl-body");
   passagePanel(core,[es,fr,en],catalog,id,sources);
   latinComparatio(core,es,fr,en,id,ocr);
-  ocrPanel(core,id,ocr,sources);
+  ocrPanel(core,id,ocr,sources,krohnIndex);
   collationPanel(core,r);
   historicalPanel(core,id,historical,sources);
   witnessPanel(core,id,folioMap,hobs,autoptic);
