@@ -14,6 +14,9 @@ on:
       - 'data/classics-corpus/euripides-cyclops-grc.json'
       - 'data/classics-corpus/euripides-ion-grc.json'
       - 'data/classics-corpus/euripides-helena-grc.json'
+      - 'data/classics-corpus/*-grc.json'
+      - 'data/classics-corpus/*-la.json'
+      - 'data/classics-corpus/search-registry.json'
       - 'data/bibliotheca-expansion-publicada-2026-11-16.json'
       - 'scripts/test-bibliotheca-expansion-2026-11.mjs'
   workflow_dispatch:
