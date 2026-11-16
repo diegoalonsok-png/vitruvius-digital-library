@@ -1,0 +1,39 @@
+{
+  "schema": "vdl-latin-page-transcription-v1",
+  "edition": "krohn-1912",
+  "image_number": 19,
+  "latin_txt": "data/critical-editions/plaintext/krohn-1912/latin-0019.txt",
+  "source_ocr": "data/r2/folios/krohn-1912-ocr.json",
+  "status": "tei-compared-not-facsimile-verified",
+  "method": "OCR corrected by comparison with independently sourced Krohn 1912 TEI text; no visual printed-page inspection",
+  "source": "PerseusDL TEI Krohn 1912 and repository OCR",
+  "modifications": [
+    [
+      "im- i perio",
+      "imperio"
+    ],
+    [
+      "off ensionem",
+      "offensionem"
+    ],
+    [
+      "ijnperii",
+      "imperii"
+    ],
+    [
+      "per- manens",
+      "permanens"
+    ],
+    [
+      "populus- 6 que",
+      "populusque"
+    ],
+    [
+      "1 cum HS:",
+      "apparatus excluded"
+    ]
+  ],
+  "facsimile_checked": false,
+  "exclusions": "Page header, running numbers, margin numerals and printed critical apparatus excluded. Only Latin base text retained. Physical visual collation remains pending.",
+  "note": "Text ends at the printed page break; does not represent a complete locus."
+}
