@@ -1,0 +1,5145 @@
+{
+ "workId": "euripides-andromache",
+ "language": "grc",
+ "title": "Εὐριπίδης · Ἀνδρομάχη",
+ "sourceType": "edited-greek-tei",
+ "editorialStatus": "Edición griega histórica digitalizada; sin cotejo crítico independiente del facsímil.",
+ "sourceUrn": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2",
+ "source": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0006/tlg006/tlg0006.tlg006.perseus-grc2.xml",
+ "attribution": "Perseus Digital Library, Tufts University; Gilbert Murray",
+ "license": "CC BY-SA 4.0",
+ "passages": [
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:2",
+   "text": "ὅθεν ποθ’ ἕδνων σὺν πολυχρύσῳ χλιδῇ"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:3",
+   "text": "Πριάμου τύραννον ἑστίαν ἀφικόμην"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:4",
+   "text": "δάμαρ δοθεῖσα παιδοποιὸς Ἕκτορι,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:5",
+   "text": "ζηλωτὸς ἔν γε τῷ πρὶν Ἀνδρομάχη χρόνῳ,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:6",
+   "text": "νῦν δ’, εἴ τις ἄλλη, δυστυχεστάτη γυνή·"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:7",
+   "text": "ἐμοῦ πέφυκεν ἢ γενήσεταί ποτε"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:8",
+   "text": "ἥτις πόσιν μὲν Ἕκτορ’ ἐξ Ἀχιλλέως"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:9",
+   "text": "θανόντ’ ἐσεῖδον, παῖδά θ’ ὃν τίκτω πόσει"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:10",
+   "text": "ῥιφθέντα πύργων Ἀστυάνακτ’ ἀπ’ ὀρθίων,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:11",
+   "text": "ἐπεὶ τὸ Τροίας εἷλον Ἕλληνες πέδον·"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:12",
+   "text": "αὐτὴ δὲ δούλη τῶν ἐλευθερωτάτων"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:13",
+   "text": "οἴκων νομισθεῖσ’ Ἑλλάδ’ εἰσαφικόμην"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:14",
+   "text": "τῷ νησιώτῃ Νεοπτολέμῳ δορὸς γέρας"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:15",
+   "text": "δοθεῖσα λείας Τρωικῆς ἐξαίρετον."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:16",
+   "text": "Φθίας δὲ τῆσδε καὶ πόλεως Φαρσαλίας"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:17",
+   "text": "σύγχορτα ναίω πεδί’, ἵν’ ἡ θαλασσία"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:18",
+   "text": "Πηλεῖ ξυνῴκει χωρὶς ἀνθρώπων Θέτις"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:19",
+   "text": "φεύγουσ’ ὅμιλον· Θεσσαλὸς δέ νιν λεὼς"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:20",
+   "text": "Θετίδειον αὐδᾷ θεᾶς χάριν νυμφευμάτων."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:21",
+   "text": "ἔνθ’ οἶκον ἔσχε τόνδε παῖς Ἀχιλλέως,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:22",
+   "text": "Πηλέα δ’ ἀνάσσειν γῆς ἐᾷ Φαρσαλίας,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:23",
+   "text": "ζῶντος γέροντος σκῆπτρον οὐ θέλων λαβεῖν."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:24",
+   "text": "κἀγὼ δόμοις τοῖσδ’ ἄρσεν’ ἐντίκτω κόρον,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:25",
+   "text": "πλαθεῖσ’ Ἀχιλλέως παιδί, δεσπότῃ γ’ ἐμῷ."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:26",
+   "text": "καὶ πρὶν μὲν ἐν κακοῖσι κειμένην ὅμως"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:27",
+   "text": "ἐλπίς μ’ ἀεὶ προσῆγε σωθέντος τέκνου"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:28",
+   "text": "ἀλκήν τιν’ εὑρεῖν κἀπικούρησιν κακῶν·"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:29",
+   "text": "ἐπεὶ δὲ τὴν Λάκαιναν Ἑρμιόνην γαμεῖ"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:30",
+   "text": "τοὐμὸν παρώσας δεσπότης δοῦλον λέχος,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:31",
+   "text": "κακοῖς πρὸς αὐτῆς σχετλίοις ἐλαύνομαι."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:32",
+   "text": "λέγει γὰρ ὥς νιν φαρμάκοις κεκρυμμένοις"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:33",
+   "text": "τίθημ’ ἄπαιδα καὶ πόσει μισουμένην,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:34",
+   "text": "αὐτὴ δὲ ναίειν οἶκον ἀντ’ αὐτῆς θέλω"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:35",
+   "text": "τόνδ’, ἐκβαλοῦσα λέκτρα τἀκείνης βίᾳ·"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:36",
+   "text": "ἁγὼ τὸ πρῶτον οὐχ ἑκοῦσ’ ἐδεξάμην,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:37",
+   "text": "νῦν δ’ ἐκλέλοιπα· Ζεὺς τάδ’ εἰδείη μέγας,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:38",
+   "text": "ὡς οὐχ ἑκοῦσα τῷδ’ ἐκοινώθην λέχει."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:39",
+   "text": "ἀλλ’ οὔ σφε πείθω, βούλεται δέ με κτανεῖν,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:40",
+   "text": "πατήρ τε θυγατρὶ Μενέλεως συνδρᾷ τάδε."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:41",
+   "text": "καὶ νῦν κατ’ οἴκους ἔστ’, ἀπὸ Σπάρτης μολὼν"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:42",
+   "text": "ἐπ’ αὐτὸ τοῦτο· δειματουμένη δ’ ἐγὼ"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:43",
+   "text": "δόμων πάροικον Θέτιδος εἰς ἀνάκτορον"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:44",
+   "text": "θάσσω τόδ’ ἐλθοῦσ’, ἤν με κωλύσῃ θανεῖν."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:45",
+   "text": "Πηλεύς τε γάρ νιν ἔκγονοί τε Πηλέως"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:46",
+   "text": "σέβουσιν, ἑρμήνευμα Νηρῇδος γάμων."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:47",
+   "text": "ὃς δ’ ἔστι παῖς μοι μόνος, ὑπεκπέμπω λάθρᾳ"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:48",
+   "text": "ἄλλους ἐς οἴκους, μὴ θάνῃ φοβουμένη."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:49",
+   "text": "ὁ γὰρ φυτεύσας αὐτὸν οὔτ’ ἐμοὶ πάρα"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:50",
+   "text": "προσωφελῆσαι, παιδί τ’ οὐδέν ἐστ’, ἀπὼν"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:51",
+   "text": "Δελφῶν κατ’ αἶαν, ἔνθα Λοξίᾳ δίκην"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:52",
+   "text": "δίδωσι μανίας, ᾗ ποτ’ εἰς Πυθὼ μολὼν"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:53",
+   "text": "ᾔτησε Φοῖβον πατρὸς οὗ κτείνει δίκην,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:54",
+   "text": "εἴ πως τὰ πρόσθε σφάλματ’ ἐξαιτούμενος"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:55",
+   "text": "θεὸν παράσχοιτ’ εἰς τὸ λοιπὸν εὐμενῆ."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:56",
+   "text": "δέσποιν’—ἐγώ τοι τοὔνομ’ οὐ φεύγω τόδε"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:57",
+   "text": "καλεῖν σ’, ἐπείπερ καὶ κατ’ οἶκον ἠξίουν"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:58",
+   "text": "τὸν σόν, τὸ Τροίας ἡνίκ’ ᾠκοῦμεν πέδον,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:59",
+   "text": "εὔνους δὲ καὶ σοὶ ζῶντί τ’ ἦ τῷ σῷ πόσει,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:60",
+   "text": "καὶ νῦν φέρουσά σοι νέους ἥκω λόγους,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:61",
+   "text": "φόβῳ μέν, εἴ τις δεσποτῶν αἰσθήσεται,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:62",
+   "text": "οἴκτῳ δὲ τῷ σῷ· δεινὰ γὰρ βουλεύεται"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:63",
+   "text": "Μενέλαος εἰς σὲ παῖς θ’, ἅ σοι φυλακτέα."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:64",
+   "text": "ὦ φιλτάτη σύνδουλε—σύνδουλος γὰρ εἶ"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:65",
+   "text": "τῇ πρόσθ’ ἀνάσσῃ τῇδε, νῦν δὲ δυστυχεῖ—"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:66",
+   "text": "τί δρῶσι; ποίας μηχανὰς πλέκουσιν αὖ,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:67",
+   "text": "κτεῖναι θέλοντες τὴν παναθλίαν ἐμέ;"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:68",
+   "text": "τὸν παῖδά σου μέλλουσιν, ὦ δύστηνε σύ,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:69",
+   "text": "κτείνειν, ὃν ἔξω δωμάτων ὑπεξέθου."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:70",
+   "text": "οἴμοι· πέπυσται τὸν ἐμὸν ἔκθετον γόνον;"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:71",
+   "text": "πόθεν ποτ’; ὦ δύστηνος, ὡς ἀπωλόμην."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:72",
+   "text": "οὐκ οἶδ’, ἐκείνων δ’ ᾐσθόμην ἐγὼ τάδε·"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:73",
+   "text": "φροῦδος δ’ ἐπ’ αὐτὸν Μενέλεως δόμων ἄπο."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:74",
+   "text": "ἀπωλόμην ἄρ’. ὦ τέκνον, κτενοῦσί σε"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:75",
+   "text": "δισσοὶ λαβόντες γῦπες· ὁ δὲ κεκλημένος"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:76",
+   "text": "πατὴρ ἔτ’ ἐν Δελφοῖσι τυγχάνει μένων."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:77",
+   "text": "δοκῶ γὰρ οὐκ ἂν ὧδέ σ’ ἂν πράσσειν κακῶς"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:78",
+   "text": "κείνου παρόντος· νῦν δ’ ἔρημος εἶ φίλων."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:79",
+   "text": "οὐδ’ ἀμφὶ Πηλέως ἦλθεν, ὡς ἥξοι, φάτις;"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:80",
+   "text": "γέρων ἐκεῖνος ὥστε σ’ ὠφελεῖν παρών."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:81",
+   "text": "καὶ μὴν ἔπεμψ’ ἐπ’ αὐτὸν οὐχ ἅπαξ μόνον."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:82",
+   "text": "μῶν οὖν δοκεῖς σου φροντίσαι τιν’ ἀγγέλων;"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:83",
+   "text": "πόθεν; θέλεις οὖν ἄγγελος σύ μοι μολεῖν;"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:84",
+   "text": "τί δῆτα φήσω χρόνιος οὖσ’ ἐκ δωμάτων;"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:85",
+   "text": "πολλὰς ἂν εὕροις μηχανάς· γυνὴ γὰρ εἶ."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:86",
+   "text": "κίνδυνος· Ἑρμιόνη γὰρ οὐ σμικρὸν φύλαξ."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:87",
+   "text": "ὁρᾷς; ἀπαυδᾷς ἐν κακοῖς φίλοισι σοῖς."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:88",
+   "text": "οὐ δῆτα· μηδὲν τοῦτ’ ὀνειδίσῃς ἐμοί."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:89",
+   "text": "ἀλλ’ εἶμ’, ἐπεί τοι κοὐ περίβλεπτος βίος"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:90",
+   "text": "δούλης γυναικός, ἤν τι καὶ πάθω κακόν."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:91",
+   "text": "χώρει νυν· ἡμεῖς δ’, οἷσπερ ἐγκείμεσθ’ ἀεὶ"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:92",
+   "text": "θρήνοισι καὶ γόοισι καὶ δακρύμασι,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:93",
+   "text": "πρὸς αἰθέρ’ ἐκτενοῦμεν· ἐμπέφυκε γὰρ"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:94",
+   "text": "γυναιξὶ τέρψις τῶν παρεστώτων κακῶν"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:95",
+   "text": "ἀνὰ στόμ’ ἀεὶ καὶ διὰ γλώσσης ἔχειν."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:96",
+   "text": "πάρεστι δ’ οὐχ ἓν ἀλλὰ πολλά μοι στένειν,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:97",
+   "text": "πόλιν πατρῴαν τὸν θανόντα θ’ Ἕκτορα"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:98",
+   "text": "στερρόν τε τὸν ἐμὸν δαίμον’ ᾧ συνεζύγην"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:99",
+   "text": "δούλειον ἦμαρ εἰσπεσοῦσ’ ἀναξίως."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:100",
+   "text": "χρὴ δ’ οὔποτ’ εἰπεῖν οὐδέν’ ὄλβιον βροτῶν,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:101",
+   "text": "πρὶν ἂν θανόντος τὴν τελευταίαν ἴδῃς"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:102",
+   "text": "ὅπως περάσας ἡμέραν ἥξει κάτω."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:103",
+   "text": "Ἰλίῳ αἰπεινᾷ Πάρις οὐ γάμον ἀλλά τιν’ ἄταν"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:104",
+   "text": "ἠγάγετ’ εὐναίαν εἰς θαλάμους Ἑλέναν."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:105",
+   "text": "ἇς ἕνεκ’, ὦ Τροία, δορὶ καὶ πυρὶ δηιάλωτον"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:106",
+   "text": "εἷλέ σ’ ὁ χιλιόναυς Ἑλλάδος ὠκὺς Ἄρης"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:107",
+   "text": "καὶ τὸν ἐμὸν μελέας πόσιν Ἕκτορα, τὸν περὶ τείχη"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:108",
+   "text": "εἵλκυσε διφρεύων παῖς ἁλίας Θέτιδος·"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:109",
+   "text": "αὐτὰ δ’ ἐκ θαλάμων ἀγόμαν ἐπὶ θῖνα θαλάσσας,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:110",
+   "text": "δουλοσύναν στυγερὰν ἀμφιβαλοῦσα κάρᾳ."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:111",
+   "text": "πολλὰ δὲ δάκρυά μοι κατέβα χροός, ἁνίκ’ ἔλειπον"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:112",
+   "text": "ἄστυ τε καὶ θαλάμους καὶ πόσιν ἐν κονίαις."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:113",
+   "text": "ὤμοι ἐγὼ μελέα, τί μ’ ἐχρῆν ἔτι φέγγος ὁρᾶσθαι"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:114",
+   "text": "Ἑρμιόνας δούλαν; ἇς ὕπο τειρομένα"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:115",
+   "text": "πρὸς τόδ’ ἄγαλμα θεᾶς ἱκέτις περὶ χεῖρε βαλοῦσα"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:116",
+   "text": "τάκομαι ὡς πετρίνα πιδακόεσσα λιβάς."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:117",
+   "text": "ὦ γύναι, ἃ Θέτιδος δάπεδον καὶ ἀνάκτορα θάσσεις"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:118",
+   "text": "δαρὸν οὐδὲ λείπεις,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:119",
+   "text": "Φθιὰς ὅμως ἔμολον ποτὶ σὰν Ἀσιήτιδα γένναν,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:120",
+   "text": "εἴ τί σοι δυναίμαν"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:121",
+   "text": "ἄκος τῶν δυσλύτων πόνων τεμεῖν,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:122",
+   "text": "οἳ σὲ καὶ Ἑρμιόναν ἔριδι στυγερᾷ συνέκλῃσαν,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:123",
+   "text": "τλάμον’ ἀμφὶ λέκτρων"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:124",
+   "text": "διδύμων ἐπίκοινον ἐοῦσαν"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:125",
+   "text": "ἀμφὶ παῖδ’ Ἀχιλλέως."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:126",
+   "text": "γνῶθι τύχαν, λόγισαι τὸ παρὸν κακὸν εἰς ὅπερ ἥκεις."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:127",
+   "text": "δεσπόταις ἁμιλλᾷ"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:128",
+   "text": "Ἰλιὰς οὖσα κόρα Λακεδαίμονος ἐγγενέτῃσιν;"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:129",
+   "text": "λεῖπε δεξίμηλον"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:130",
+   "text": "δόμον τᾶς ποντίας θεοῦ. τί σοι"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:131",
+   "text": "καιρὸς ἀτυζομένᾳ δέμας αἰκέλιον καταλείβειν"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:132",
+   "text": "δεσποτῶν ἀνάγκαις;"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:133",
+   "text": "τὸ κρατοῦν δέ σ’ ἔπεισι. τί μόχθον"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:134",
+   "text": "οὐδὲν οὖσα μοχθεῖς;"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:135",
+   "text": "ἀλλ’ ἴθι λεῖπε θεᾶς Νηρηίδος ἀγλαὸν ἕδραν,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:136",
+   "text": "γνῶθι δ’ οὖσ’ ἐπὶ ξένας"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:137",
+   "text": "δμωὶς ἐπ’ ἀλλοτρίας"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:138",
+   "text": "πόλεος, ἔνθ’ οὐ φίλων τιν’ εἰσορᾷς"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:139",
+   "text": "σῶν, ὦ δυστυχεστάτα,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:140",
+   "text": "παντάλαινα νύμφα."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:141",
+   "text": "οἰκτροτάτα γὰρ ἔμοιγ’ ἔμολες, γύναι Ἰλιάς, οἴκους"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:142",
+   "text": "δεσποτῶν ἐμῶν· φόβῳ δ’"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:143",
+   "text": "ἡσυχίαν ἄγομεν—"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:144",
+   "text": "τὸ δὲ σὸν οἴκτῳ φέρουσα τυγχάνω—"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:145",
+   "text": "μὴ παῖς τᾶς Διὸς κόρας"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:146",
+   "text": "σοί μ’ εὖ φρονοῦσαν εἰδῇ."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:147",
+   "text": "κόσμον μὲν ἀμφὶ κρατὶ χρυσέας χλιδῆς"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:148",
+   "text": "στολμόν τε χρωτὸς τόνδε ποικίλων πέπλων"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:149",
+   "text": "οὐ τῶν Ἀχιλλέως οὐδὲ Πηλέως ἄπο"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:150",
+   "text": "δόμων ἀπαρχὰς δεῦρ’ ἔχουσ’ ἀφικόμην,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:151",
+   "text": "ἀλλ’ ἐκ Λακαίνης Σπαρτιάτιδος χθονὸς"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:152",
+   "text": "Μενέλαος ἡμῖν ταῦτα δωρεῖται πατὴρ"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:153",
+   "text": "πολλοῖς σὺν ἕδνοις, ὥστ’ ἐλευθεροστομεῖν."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:154",
+   "text": "ὑμᾶς μὲν οὖν τοῖσδ’ ἀνταμείβομαι λόγοις·"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:155",
+   "text": "σὺ δ’ οὖσα δούλη καὶ δορίκτητος γυνὴ"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:156",
+   "text": "δόμους κατασχεῖν ἐκβαλοῦσ’ ἡμᾶς θέλεις"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:157",
+   "text": "τούσδε, στυγοῦμαι δ’ ἀνδρὶ φαρμάκοισι σοῖς,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:158",
+   "text": "νηδὺς δ’ ἀκύμων διὰ σέ μοι διόλλυται·"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:159",
+   "text": "δεινὴ γὰρ ἠπειρῶτις εἰς τὰ τοιάδε"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:160",
+   "text": "ψυχὴ γυναικῶν· ὧν ἐπισχήσω σ’ ἐγώ,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:161",
+   "text": "κοὐδέν σ’ ὀνήσει δῶμα Νηρῇδος τόδε,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:162",
+   "text": "οὐ βωμὸς οὐδὲ ναός, ἀλλὰ κατθανῇ."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:163",
+   "text": "ἢν δ’ οὖν βροτῶν τίς σ’ ἢ θεῶν σῷσαι θέλῃ,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:164",
+   "text": "δεῖ σ’ ἀντὶ τῶν πρὶν ὀλβίων φρονημάτων"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:165",
+   "text": "πτῆξαι ταπεινὴν προσπεσεῖν τ’ ἐμὸν γόνυ,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:166",
+   "text": "σαίρειν τε δῶμα τοὐμὸν ἐκ χρυσηλάτων"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:167",
+   "text": "τευχέων χερὶ σπείρουσαν Ἀχελῴου δρόσον,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:168",
+   "text": "γνῶναί θ’ ἵν’ εἶ γῆς. οὐ γάρ ἐσθ’ Ἕκτωρ τάδε,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:169",
+   "text": "οὐ Πρίαμος οὐδὲ χρυσός, ἀλλ’ Ἑλλὰς πόλις."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:170",
+   "text": "εἰς τοῦτο δ’ ἥκεις ἀμαθίας, δύστηνε σύ,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:171",
+   "text": "ἣ παιδὶ πατρός, ὃς σὸν ὤλεσεν πόσιν,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:172",
+   "text": "τολμᾷς ξυνεύδειν καὶ τέκν’ αὐθέντου πάρα"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:173",
+   "text": "τίκτειν. τοιοῦτον πᾶν τὸ βάρβαρον γένος·"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:174",
+   "text": "πατήρ τε θυγατρὶ παῖς τε μητρὶ μίγνυται"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:175",
+   "text": "κόρη τ’ ἀδελφῷ, διὰ φόνου δ’ οἱ φίλτατοι"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:176",
+   "text": "χωροῦσι, καὶ τῶνδ’ οὐδὲν ἐξείργει νόμος."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:177",
+   "text": "ἃ μὴ παρ’ ἡμᾶς εἴσφερ’· οὐδὲ γὰρ καλὸν"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:178",
+   "text": "δυοῖν γυναικοῖν ἄνδρ’ ἕν’ ἡνίας ἔχειν,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:179",
+   "text": "ἀλλ’ εἰς μίαν βλέποντες εὐναίαν Κύπριν"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:180",
+   "text": "στέργουσιν, ὅστις μὴ κακῶς οἰκεῖν θέλει."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:181",
+   "text": "ἐπίφθονόν τοι χρῆμα θηλείας φρενὸς"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:182",
+   "text": "καὶ ξυγγάμοισι δυσμενὲς μάλιστ’ ἀεί."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:183",
+   "text": "φεῦ φεῦ·"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:184",
+   "text": "κακόν γε θνητοῖς τὸ νέον ἔν τε τῷ νέῳ"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:185",
+   "text": "τὸ μὴ δίκαιον ὅστις ἀνθρώπων ἔχει."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:186",
+   "text": "ἐγὼ δὲ ταρβῶ μὴ τὸ δουλεύειν μέ σοι"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:187",
+   "text": "λόγων ἀπώσῃ πόλλ’ ἔχουσαν ἔνδικα,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:188",
+   "text": "ἢν δ’ αὖ κρατήσω, μὴ ’πὶ τῷδ’ ὄφλω βλάβην·"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:189",
+   "text": "οἱ γὰρ πνέοντες μεγάλα τοὺς κρείσσους λόγους"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:190",
+   "text": "πικρῶς φέρουσι τῶν ἐλασσόνων ὕπο·"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:191",
+   "text": "ὅμως δ’ ἐμαυτὴν οὐ προδοῦσ’ ἁλώσομαι."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:192",
+   "text": "εἴπ’, ὦ νεᾶνι, τῷ σ’ ἐχεγγύῳ λόγῳ"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:193",
+   "text": "πεισθεῖσ’ ἀπωθῶ γνησίων νυμφευμάτων;"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:194",
+   "text": "ὡς ἡ Λάκαινα τῶν Φρυγῶν μείων πόλις,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:195",
+   "text": "τύχῃ θ’ ὑπερθεῖ, κἄμ’ ἐλευθέραν ὁρᾷς;"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:196",
+   "text": "ἢ τῷ νέῳ τε καὶ σφριγῶντι σώματι"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:197",
+   "text": "πόλεως τε μεγέθει καὶ φίλοις ἐπηρμένη"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:198",
+   "text": "οἶκον κατασχεῖν τὸν σὸν ἀντὶ σοῦ θέλω;"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:199",
+   "text": "πότερον ἵν’ αὐτὴ παῖδας ἀντὶ σοῦ τέκω"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:200",
+   "text": "δούλους ἐμαυτῇ τ’ ἀθλίαν ἐφολκίδα;"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:201",
+   "text": "ἢ τοὺς ἐμούς τις παῖδας ἐξανέξεται"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:202",
+   "text": "Φθίας τυράννους ὄντας, ἢν σὺ μὴ τέκῃς;"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:203",
+   "text": "φιλοῦσι γάρ μ’ Ἕλληνες Ἕκτορός τ’ ἄπο;"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:204",
+   "text": "αὐτή τ’ ἀμαυρὰ κοὐ τύραννος ἦ Φρυγῶν;"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:205",
+   "text": "οὐκ ἐξ ἐμῶν σε φαρμάκων στυγεῖ πόσις,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:206",
+   "text": "ἀλλ’ εἰ ξυνεῖναι μὴ ’πιτηδεία κυρεῖς."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:207",
+   "text": "φίλτρον δὲ καὶ τόδ’· οὐ τὸ κάλλος, ὦ γύναι,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:208",
+   "text": "ἀλλ’ ἁρεταὶ τέρπουσι τοὺς ξυνευνέτας."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:209",
+   "text": "σὺ δ’ ἤν τι κνισθῇς, ἡ Λάκαινα μὲν πόλις"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:210",
+   "text": "μέγ’ ἐστί, τὴν δὲ Σκῦρον οὐδαμοῦ τίθης·"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:211",
+   "text": "πλουτεῖς δ’ ἐν οὐ πλουτοῦσι· Μενέλεως δέ σοι"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:212",
+   "text": "μείζων Ἀχιλλέως. ταῦτά τοί σ’ ἔχθει πόσις."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:213",
+   "text": "χρὴ γὰρ γυναῖκα, κἂν κακῷ πόσει δοθῇ,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:214",
+   "text": "στέργειν, ἅμιλλάν τ’ οὐκ ἔχειν φρονήματος."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:215",
+   "text": "εἰ δ’ ἀμφὶ Θρῄκην χιόνι τὴν κατάρρυτον"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:216",
+   "text": "τύραννον ἔσχες ἄνδρ’, ἵν’ ἐν μέρει λέχος"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:217",
+   "text": "δίδωσι πολλαῖς εἷς ἀνὴρ κοινούμενος,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:218",
+   "text": "ἔκτεινας ἂν τάσδ’; εἶτ’ ἀπληστίαν λέχους"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:219",
+   "text": "πάσαις γυναιξὶ προστιθεῖσ’ ἂν ηὑρέθης."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:220",
+   "text": "αἰσχρόν γε· καίτοι χείρον’ ἀρσένων νόσον"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:221",
+   "text": "ταύτην νοσοῦμεν, ἀλλὰ προύστημεν καλῶς."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:222",
+   "text": "ὦ φίλταθ’ Ἕκτορ, ἀλλ’ ἐγὼ τὴν σὴν χάριν"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:223",
+   "text": "σοὶ καὶ ξυνήρων, εἴ τί σε σφάλλοι Κύπρις,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:224",
+   "text": "καὶ μαστὸν ἤδη πολλάκις νόθοισι σοῖς"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:225",
+   "text": "ἐπέσχον, ἵνα σοι μηδὲν ἐνδοίην πικρόν."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:226",
+   "text": "καὶ ταῦτα δρῶσα τῇ ἀρετῇ προσηγόμην"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:227",
+   "text": "πόσιν· σὺ δ’ οὐδὲ ῥανίδ’ ὑπαιθρίας δρόσου"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:228",
+   "text": "τῷ σῷ προσίζειν ἀνδρὶ δειμαίνουσ’ ἐᾷς."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:229",
+   "text": "μὴ τὴν τεκοῦσαν τῇ φιλανδρίᾳ, γύναι,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:230",
+   "text": "ζήτει παρελθεῖν· τῶν κακῶν γὰρ μητέρων"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:231",
+   "text": "φεύγειν τρόπους χρὴ τέκν’, ὅςοις ἔνεστι νοῦς."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:232",
+   "text": "δέσποιν’, ὅσον σοι ῥᾳδίως προσίσταται,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:233",
+   "text": "τοσόνδε πείθου τῇδε συμβῆναι λόγοις."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:234",
+   "text": "τί σεμνομυθεῖς κεἰς ἀγῶν’ ἔρχῃ λόγων,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:235",
+   "text": "ὡς δὴ σὺ σώφρων, τἀμὰ δ’ οὐχὶ σώφρονα;"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:236",
+   "text": "οὔκουν ἐφ’ οἷς γε νῦν καθέστηκας λόγοις."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:237",
+   "text": "ὁ νοῦς ὁ σός μοι μὴ ξυνοικοίη, γύναι."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:238",
+   "text": "νέα πέφυκας καὶ λέγεις αἰσχρῶν πέρι."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:239",
+   "text": "σὺ δ’ οὐ λέγεις γε, δρᾷς δέ μ’ εἰς ὅσον δύνῃ."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:240",
+   "text": "οὐκ αὖ σιωπῇ Κύπριδος ἀλγήσεις πέρι;"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:241",
+   "text": "τί δ’; οὐ γυναιξὶ ταῦτα πρῶτα πανταχοῦ;"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:242",
+   "text": "ναί,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:242a",
+   "text": "καλῶς γε χρωμέναισιν· εἰ δὲ μή, οὐ καλά."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:243",
+   "text": "οὐ βαρβάρων νόμοισιν οἰκοῦμεν πόλιν."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:244",
+   "text": "κἀκεῖ τά γ’ αἰσχρὰ κἀνθάδ’ αἰσχύνην ἔχει."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:245",
+   "text": "σοφὴ σοφὴ σύ· κατθανεῖν δ’ ὅμως σε δεῖ."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:246",
+   "text": "ὁρᾷς ἄγαλμα Θέτιδος εἰς σ’ ἀποβλέπον;"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:247",
+   "text": "μισοῦν γε πατρίδα σὴν Ἀχιλλέως φόνῳ."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:248",
+   "text": "Ἑλένη νιν ὤλεσ’, οὐκ ἐγώ, μήτηρ δὲ σή."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:249",
+   "text": "ἦ καὶ πρόσω γὰρ τῶν ἐμῶν ψαύσεις κακῶν;"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:250",
+   "text": "ἰδοὺ σιωπῶ κἀπιλάζυμαι στόμα."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:251",
+   "text": "ἐκεῖνο λέξον, οὗπερ εἵνεκ’ ἐστάλην."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:252",
+   "text": "λέγω σ’ ἐγὼ νοῦν οὐκ ἔχειν ὅσον σε δεῖ."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:253",
+   "text": "λείψεις τόδ’ ἁγνὸν τέμενος ἐναλίας θεοῦ;"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:254",
+   "text": "εἰ μὴ θανοῦμαί γ’· εἰ δὲ μή, οὐ λείψω ποτέ."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:255",
+   "text": "ὡς τοῦτ’ ἄραρε, κοὐ μενῶ πόσιν μολεῖν."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:256",
+   "text": "ἀλλ’ οὐδ’ ἐγὼ μὴν πρόσθεν ἐκδώσω μέ σοι."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:257",
+   "text": "πῦρ σοι προσοίσω, κοὐ τὸ σὸν προσκέψομαι—"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:258",
+   "text": "σὺ δ’ οὖν κάταιθε· θεοὶ γὰρ εἴσονται τάδε."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:259",
+   "text": "καὶ χρωτὶ δεινῶν τραυμάτων ἀλγηδόνας."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:260",
+   "text": "σφάζ’, αἱμάτου θεᾶς βωμόν, ἣ μέτεισί σε."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:261",
+   "text": "ὦ βάρβαρον σὺ θρέμμα καὶ σκληρὸν θράσος,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:262",
+   "text": "ἐγκαρτερεῖς δὴ θάνατον; ἀλλ’ ἐγώ σ’ ἕδρας"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:263",
+   "text": "ἐκ τῆσδ’ ἑκοῦσαν ἐξαναστήσω τάχα·"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:264",
+   "text": "τοιόνδ’ ἔχω σου δέλεαρ. ἀλλὰ γὰρ λόγους"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:265",
+   "text": "κρύψω, τὸ δ’ ἔργον αὐτὸ σημανεῖ τάχα."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:266",
+   "text": "κάθησ’ ἑδραία· καὶ γὰρ εἰ πέριξ σ’ ἔχοι"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:267",
+   "text": "τηκτὸς μόλυβδος, ἐξαναστήσω σ’ ἐγὼ"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:268",
+   "text": "πρὶν ᾧ πέποιθας παῖδ’ Ἀχιλλέως μολεῖν."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:269",
+   "text": "πέποιθα. δεινὸν δ’ ἑρπετῶν μὲν ἀγρίων"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:270",
+   "text": "ἄκη βροτοῖσι θεῶν καταστῆσαί τινα·"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:271",
+   "text": "ὃ δ’ ἔστ’ ἐχίδνης καὶ πυρὸς περαιτέρω,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:272",
+   "text": "οὐδεὶς γυναικὸς φάρμακ’ ἐξηύρηκέ πω"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:273",
+   "text": "κακῆς· τοσοῦτόν ἐσμεν ἀνθρώποις κακόν."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:274",
+   "text": "Ἦ μεγάλων ἀχέων ἄρ’ ὑπῆρξεν, ὅτ’ Ἰδαίαν"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:275",
+   "text": "ἐς νάπαν ἦλθ’ ὁ Μαί-"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:276",
+   "text": "ας τε καὶ Διὸς τόκος,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:277",
+   "text": "τρίπωλον ἅρμα δαιμόνων"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:278",
+   "text": "ἄγων τὸ καλλιζυγές,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:279",
+   "text": "ἔριδι στυγερᾷ κεκορυθμένον εὐμορφίας"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:280",
+   "text": "σταθμοὺς ἐπὶ βούτα,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:281",
+   "text": "βοτῆρά τ’ ἀμφὶ μονότροπον νεανίαν"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:282",
+   "text": "ἔρημόν θ’"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:283",
+   "text": "ἑστιοῦχον αὐλάν."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:284",
+   "text": "ταὶ δ’ ἐπεὶ ὑλόκομον νάπος ἤλυθον οὐρειᾶν"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:285",
+   "text": "πιδάκων νίψαν αἰ-"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:286",
+   "text": "γλᾶντα σώματα ῥοαῖς,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:287",
+   "text": "ἔβαν δὲ Πριαμίδαν ὑπερ-"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:288",
+   "text": "βολαῖς λόγων δυσφρόνων"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:289",
+   "text": "παραβαλλόμεναι, δολίοις δ’ ἕλε Κύπρις λόγοις,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:290",
+   "text": "τερπνοῖς μὲν ἀκοῦσαι,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:291",
+   "text": "πικρὰν δὲ σύγχυσιν βίου Φρυγῶν πόλει"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:292",
+   "text": "ταλαίνᾳ"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:292a",
+   "text": "περγάμοις τε Τροίας."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:293",
+   "text": "ἀλλ’ εἴθ’ ὑπὲρ κεφαλὰν ἔβαλεν κακὸν"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:294",
+   "text": "ἁ τεκοῦσά νιν Πάριν"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:294a",
+   "text": "πρὶν Ἰδαῖ-"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:295",
+   "text": "ον κατοικίσαι λέπας·"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:296",
+   "text": "ὅτε νιν παρὰ θεσπεσίῳ δάφνᾳ"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:297",
+   "text": "βόασε Κασάνδρα κτανεῖν,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:298",
+   "text": "μεγάλαν Πριάμου πόλεως λώβαν."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:299",
+   "text": "τίν’ οὐκ ἐπῆλθε, ποῖον οὐκ ἐλίσσετο"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:299a",
+   "text": "δαμογερόν-"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:300",
+   "text": "των βρέφος φονεύειν;"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:301",
+   "text": "οὔτ’ ἂν ἐπ’ Ἰλιάσι ζυγὸν ἤλυθε"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:302",
+   "text": "δούλιον, σύ τ’ ἂν γύναι,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:303",
+   "text": "τυράννων"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:303a",
+   "text": "ἔσχες ἂν δόμων ἕδρας·"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:304",
+   "text": "παρέλυσε δ’ ἂν Ἑλλάδος ἀλγεινοὺς"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:305",
+   "text": "μόχθους οὓς ἀμφὶ Τροίαν"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:306",
+   "text": "δεκέτεις ἀλάληντο νέοι λόγχαις."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:307",
+   "text": "λέχη τ’ ἔρημ’ ἂν οὔποτ’ ἐξελείπετο,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:308",
+   "text": "καὶ τεκέων"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:308a",
+   "text": "ὀρφανοὶ γέροντες."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:309",
+   "text": "ἥκω λαβὼν σὸν παῖδ’, ὃν εἰς ἄλλους δόμους"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:310",
+   "text": "λάθρᾳ θυγατρὸς τῆς ἐμῆς ὑπεξέθου."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:311",
+   "text": "σὲ μὲν γὰρ ηὔχεις θεᾶς βρέτας σῴσειν τόδε,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:312",
+   "text": "τοῦτον δὲ τοὺς κρύψαντας· ἀλλ’ ἐφηυρέθης"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:313",
+   "text": "ἧσσον φρονοῦσα τοῦδε Μενέλεω, γύναι."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:314",
+   "text": "κεἰ μὴ τόδ’ ἐκλιποῦσ’ ἐρημώσεις πέδον,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:315",
+   "text": "ὅδ’ ἀντὶ τοῦ σοῦ σώματος σφαγήσεται."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:316",
+   "text": "ταῦτ’ οὖν λογίζου, πότερα κατθανεῖν θέλεις"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:317",
+   "text": "ἢ τόνδ’ ὀλέσθαι σῆς ἁμαρτίας ὕπερ,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:318",
+   "text": "ἣν εἰς ἔμ’ εἴς τε παῖδ’ ἐμὴν ἁμαρτάνεις."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:319",
+   "text": "ὦ δόξα δόξα, μυρίοισι δὴ βροτῶν"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:320",
+   "text": "οὐδὲν γεγῶσι βίοτον ὤγκωσας μέγαν."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:321",
+   "text": "εὔκλεια δ’ οἷς μὲν ἔστ’ ἀληθείας ὕπο,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:322",
+   "text": "εὐδαιμονίζω· τοὺς δ’ ὑπὸ ψευδῶν, ἔχειν"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:323",
+   "text": "οὐκ ἀξιώσω, πλὴν τύχῃ φρονεῖν δοκεῖν."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:324",
+   "text": "σὺ δὴ στρατηγῶν λογάσιν Ἑλλήνων ποτὲ"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:325",
+   "text": "Τροίαν ἀφείλου Πρίαμον, ὧδε φαῦλος ὤν;"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:326",
+   "text": "ὅστις θυγατρὸς ἀντίπαιδος ἐκ λόγων"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:327",
+   "text": "τοσόνδ’ ἔπνευσας, καὶ γυναικὶ δυστυχεῖ"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:328",
+   "text": "δούλῃ κατέστης εἰς ἀγῶν’; οὐκ ἀξιῶ"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:329",
+   "text": "οὔτ’ οὖν σὲ Τροίας οὔτε σοῦ Τροίαν ἔτι."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:330",
+   "text": "ἔξωθέν εἰσιν οἱ δοκοῦντες εὖ φρονεῖν"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:331",
+   "text": "λαμπροί, τὰ δ’ ἔνδον πᾶσιν ἀνθρώποις ἴσοι,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:332",
+   "text": "πλὴν εἴ τι πλούτῳ· τοῦτο δ’ ἰσχύει μέγα."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:333",
+   "text": "Μενέλαε, φέρε δὴ διαπεράνωμεν λόγους·"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:334",
+   "text": "τέθνηκα τῇ σῇ θυγατρὶ καί μ’ ἀπώλεσε·"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:335",
+   "text": "μιαιφόνον μὲν οὐκέτ’ ἂν φύγοι μύσος."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:336",
+   "text": "ἐν τοῖς δὲ πολλοῖς καὶ σὺ τόνδ’ ἀγωνιῇ"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:337",
+   "text": "φόνον· τὸ συνδρῶν γάρ σ’ ἀναγκάσει χρέος."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:338",
+   "text": "ἢν δ’ οὖν ἐγὼ μὲν μὴ θανεῖν ὑπεκδράμω,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:339",
+   "text": "τὸν παῖδά μου κτενεῖτε; κᾆτα πῶς πατὴρ"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:340",
+   "text": "τέκνου θανόντος ῥᾳδίως ἀνέξεται;"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:341",
+   "text": "οὐχ ὧδ’ ἄνανδρον αὐτὸν ἡ Τροία καλεῖ·"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:342",
+   "text": "ἀλλ’ εἶσιν οἷ χρή—Πηλέως γὰρ ἄξια"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:343",
+   "text": "πατρός τ’ Ἀχιλλέως ἔργα δρῶν φανήσεται—"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:344",
+   "text": "ὤσει δὲ σὴν παῖδ’ ἐκ δόμων· σὺ δ’ ἐκδιδοὺς"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:345",
+   "text": "ἄλλῳ τί λέξεις; πότερον ὡς κακὸν πόσιν"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:346",
+   "text": "φεύγει τὸ ταύτης σῶφρον; ἀλλὰ πεύσεται."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:347",
+   "text": "γαμεῖ δὲ τίς νιν; ἤ σφ’ ἄνανδρον ἐν δόμοις"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:348",
+   "text": "χήραν καθέξεις πολιόν; ὦ τλήμων ἀνήρ,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:349",
+   "text": "κακῶν τοσούτων οὐχ ὁρᾷς ἐπιρροάς;"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:350",
+   "text": "πόσας ἂν εὐνὰς θυγατέρ’ ἠδικημένην"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:351",
+   "text": "βούλοι’ ἂν εὑρεῖν ἢ παθεῖν ἁγὼ λέγω;"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:352",
+   "text": "οὐ χρὴ ’πὶ μικροῖς μεγάλα πορσύνειν κακὰ"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:353",
+   "text": "οὐδ’, εἰ γυναῖκές ἐσμεν ἀτηρὸν κακόν,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:354",
+   "text": "ἄνδρας γυναιξὶν ἐξομοιοῦσθαι φύσιν."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:355",
+   "text": "ἡμεῖς γὰρ εἰ σὴν παῖδα φαρμακεύομεν"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:356",
+   "text": "καὶ νηδὺν ἐξαμβλοῦμεν, ὡς αὐτὴ λέγει,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:357",
+   "text": "ἑκόντες οὐκ ἄκοντες, οὐδὲ βώμιοι"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:358",
+   "text": "πίτνοντες, αὐτοὶ τὴν δίκην ὑφέξομεν"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:359",
+   "text": "ἐν σοῖσι γαμβροῖς, οἷσιν οὐκ ἐλάσσονα"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:360",
+   "text": "βλάβην ὀφείλω προστιθεῖσ’ ἀπαιδίαν."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:361",
+   "text": "ἡμεῖς μὲν οὖν τοιοίδε· τῆς δὲ σῆς φρενὸς—"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:362",
+   "text": "ἕν σου δέδοικα· διὰ γυναικείαν ἔριν"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:363",
+   "text": "καὶ τὴν τάλαιναν ὤλεσας Φρυγῶν πόλιν."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:364",
+   "text": "ἄγαν ἔλεξας ὡς γυνὴ πρὸς ἄρσενας,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:365",
+   "text": "καί σου τὸ σῶφρον ἐξετόξευσεν φρενός."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:366",
+   "text": "γύναι, τάδ’ ἐστὶ σμικρὰ καὶ μοναρχίας"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:367",
+   "text": "οὐκ ἄξι’, ὡς φῄς, τῆς ἐμῆς οὐδ’ Ἑλλάδος."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:368",
+   "text": "εὖ δ’ ἴσθ’, ὅτου τις τυγχάνει χρείαν ἔχων,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:369",
+   "text": "τοῦτ’ ἔσθ’ ἑκάστῳ μεῖζον ἢ Τροίαν ἑλεῖν."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:370",
+   "text": "κἀγὼ θυγατρί—μεγάλα γὰρ κρίνω τάδε,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:371",
+   "text": "λέχους στέρεσθαι—σύμμαχος καθίσταμαι."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:372",
+   "text": "τὰ μὲν γὰρ ἄλλα δεύτερ’ ἂν πάσχοι γυνή,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:373",
+   "text": "ἀνδρὸς δ’ ἁμαρτάνουσ’ ἁμαρτάνει βίου."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:374",
+   "text": "δούλων δ’ ἐκεῖνον τῶν ἐμῶν ἄρχειν χρεὼν"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:375",
+   "text": "καὶ τῶν ἐκείνου τοὺς ἐμούς, ἡμᾶς τε πρός·"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:376",
+   "text": "φίλων γὰρ οὐδὲν ἴδιον, οἵτινες φίλοι"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:377",
+   "text": "ὀρθῶς πεφύκασ’, ἀλλὰ κοινὰ χρήματα."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:378",
+   "text": "μένων δὲ τοὺς ἀπόντας, εἰ μὴ θήσομαι"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:379",
+   "text": "τἄμ’ ὡς ἄριστα, φαῦλός εἰμι κοὐ σοφός."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:380",
+   "text": "ἀλλ’ ἐξανίστω τῶνδ’ ἀνακτόρων θεᾶς·"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:381",
+   "text": "ὡς, ἢν θάνῃς σύ, παῖς ὅδ’ ἐκφεύγει μόρον,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:382",
+   "text": "σοῦ δ’ οὐ θελούσης κατθανεῖν, τόνδε κτενῶ."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:383",
+   "text": "δυοῖν δ’ ἀνάγκη θατέρῳ λιπεῖν βίον."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:384",
+   "text": "οἴμοι, πικρὰν κλήρωσιν αἵρεσίν τέ μοι"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:385",
+   "text": "βίου καθίστης· καὶ λαχοῦσά γ’ ἀθλία"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:386",
+   "text": "καὶ μὴ λαχοῦσα δυστυχὴς καθίσταμαι."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:387",
+   "text": "ὦ μεγάλα πράσσων αἰτίας μικρᾶς πέρι,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:388",
+   "text": "πιθοῦ· τί καίνεις μ’; ἀντὶ τοῦ; ποίαν πόλιν"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:389",
+   "text": "προύδωκα; τίνα σῶν ἔκτανον παίδων ἐγώ;"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:390",
+   "text": "ποῖον δ’ ἔπρησα δῶμ’; ἐκοιμήθην βίᾳ"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:391",
+   "text": "σὺν δεσπόταισι· κᾆτ’ ἔμ’, οὐ κεῖνον κτενεῖς,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:392",
+   "text": "τὸν αἴτιον τῶνδ’, ἀλλὰ τὴν ἀρχὴν ἀφεὶς"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:393",
+   "text": "πρὸς τὴν τελευτὴν ὑστέραν οὖσαν φέρῃ;"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:394",
+   "text": "οἴμοι κακῶν τῶνδ’, ὦ τάλαιν’ ἐμὴ πατρίς,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:395",
+   "text": "ὡς δεινὰ πάσχω. τί δέ με καὶ τεκεῖν ἐχρῆν"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:396",
+   "text": "ἄχθος τ’ ἐπ’ ἄχθει τῷδε προσθέσθαι διπλοῦν;"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:397",
+   "text": "ἀτὰρ τί ταῦτα δύρομαι, τὰ δ’ ἐν ποσὶν"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:398",
+   "text": "οὐκ ἐξικμάζω καὶ λογίζομαι κακά;"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:399",
+   "text": "ἥτις σφαγὰς μὲν Ἕκτορος τροχηλάτους"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:400",
+   "text": "κατεῖδον οἰκτρῶς τ’ Ἴλιον πυρούμενον,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:401",
+   "text": "αὐτὴ δὲ δούλη ναῦς ἐπ’ Ἀργείων ἔβην"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:402",
+   "text": "κόμης ἐπισπασθεῖσ’· ἐπεὶ δ’ ἀφικόμην"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:403",
+   "text": "Φθίαν, φονεῦσιν Ἕκτορος νυμφεύομαι."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:404",
+   "text": "τί δῆτ’ ἐμοὶ ζῆν ἡδύ; πρὸς τί χρὴ βλέπειν;"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:405",
+   "text": "πρὸς τὰς παρούσας ἢ παρελθούσας τύχας;"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:406",
+   "text": "εἷς παῖς ὅδ’ ἦν μοι λοιπὸς ὀφθαλμὸς βίου·"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:407",
+   "text": "τοῦτον κτενεῖν μέλλουσιν οἷς δοκεῖ τάδε."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:408",
+   "text": "οὐ δῆτα τοὐμοῦ γ’ εἵνεκ’ ἀθλίου βίου·"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:409",
+   "text": "ἐν τῷδε μὲν γὰρ ἐλπίς, εἰ σωθήσεται,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:410",
+   "text": "ἐμοὶ δ’ ὄνειδος μὴ θανεῖν ὑπὲρ τέκνου."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:411",
+   "text": "ἰδοὺ προλείπω βωμὸν ἥδε χειρία"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:412",
+   "text": "σφάζειν φονεύειν, δεῖν, ἀπαρτῆσαι δέρην."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:413",
+   "text": "ὦ τέκνον, ἡ τεκοῦσά σ’, ὡς σὺ μὴ θάνῃς,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:414",
+   "text": "στείχω πρὸς Ἅιδην· ἢν δ’ ὑπεκδράμῃς μόρον,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:415",
+   "text": "μέμνησο μητρός, οἷα τλᾶσ’ ἀπωλόμην,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:416",
+   "text": "καὶ πατρὶ τῷ σῷ διὰ φιλημάτων ἰὼν"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:417",
+   "text": "δάκρυά τε λείβων καὶ περιπτύσσων χέρας"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:418",
+   "text": "λέγ’ οἷ’ ἔπραξα. πᾶσι δ’ ἀνθρώποις ἄρ’ ἦν"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:419",
+   "text": "ψυχὴ τέκν’· ὅστις δ’ αὔτ’ ἄπειρος ὢν ψέγει,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:420",
+   "text": "ἧσσον μὲν ἀλγεῖ, δυστυχῶν δ’ εὐδαιμονεῖ."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:421",
+   "text": "ᾤκτιρ’ ἀκούσασ’· οἰκτρὰ γὰρ τὰ δυστυχῆ"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:422",
+   "text": "βροτοῖς ἅπασι, κἂν θυραῖος ὢν κυρῇ."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:423",
+   "text": "εἰς ξύμβασιν δὲ χρῆν σε παῖδα σὴν ἄγειν,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:424",
+   "text": "Μενέλαε, καὶ τήνδ’, ὡς ἀπαλλαχθῇ πόνων."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:425",
+   "text": "λάβεσθέ μοι τῆσδ’, ἀμφελίξαντες χέρας,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:426",
+   "text": "δμῶες· λόγους γὰρ οὐ φίλους ἀκούσεται"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:427",
+   "text": "ἐγώ σ’, ἵν’ ἁγνὸν βωμὸν ἐκλίποις θεᾶς,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:428",
+   "text": "προύτεινα παιδὸς θάνατον, ᾧ σ’ ὑπήγαγον"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:429",
+   "text": "εἰς χεῖρας ἐλθεῖν τὰς ἐμὰς ἐπὶ σφαγήν."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:430",
+   "text": "καὶ τἀμφὶ σοῦ μὲν ὧδ’ ἔχοντ’ ἐπίστασο·"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:431",
+   "text": "τὰ δ’ ἀμφὶ παιδὸς τοῦδε παῖς ἐμὴ κρινεῖ,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:432",
+   "text": "ἤν τε κτανεῖν νιν ἤν τε μὴ κτανεῖν θέλῃ."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:433",
+   "text": "ἀλλ’ ἕρπ’ ἐς οἴκους τούσδ’, ἵν’ εἰς ἐλευθέρους"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:434",
+   "text": "δούλη γεγῶσα μήποθ’ ὑβρίζειν μάθῃς."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:435",
+   "text": "οἴμοι· δόλῳ μ’ ὑπῆλθες, ἠπατήμεθα."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:436",
+   "text": "κήρυσσ’ ἅπασιν· οὐ γὰρ ἐξαρνούμεθα."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:437",
+   "text": "ἦ ταῦτ’ ἐν ὑμῖν τοῖς παρ’ Εὐρώτᾳ σοφά;"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:438",
+   "text": "καὶ τοῖς γε Τροίᾳ, τοὺς παθόντας ἀντιδρᾶν."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:439",
+   "text": "τὰ θεῖα δ’ οὐ θεῖ’ οὐδ’ ἔχειν ἡγῇ δίκην;"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:440",
+   "text": "ὅταν τάδ’ ᾖ, τότ’ οἴσομεν· σὲ δὲ κτενῶ."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:441",
+   "text": "ἦ καὶ νεοσσὸν τόνδ’, ὑπὸ πτερῶν σπάσας;"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:442",
+   "text": "οὐ δῆτα· θυγατρὶ δ’, ἢν θέλῃ, δώσω κτανεῖν."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:443",
+   "text": "οἴμοι· τί δῆτά σ’ οὐ καταστένω, τέκνον;"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:444",
+   "text": "οὔκουν θρασεῖά γ’ αὐτὸν ἐλπὶς ἀναμένει."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:445",
+   "text": "ὦ πᾶσιν ἀνθρώποισιν ἔχθιστοι βροτῶν"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:446",
+   "text": "Σπάρτης ἔνοικοι, δόλια βουλευτήρια,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:447",
+   "text": "ψευδῶν ἄνακτες, μηχανορράφοι κακῶν,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:448",
+   "text": "ἑλικτὰ κοὐδὲν ὑγιές, ἀλλὰ πᾶν πέριξ"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:449",
+   "text": "φρονοῦντες, ἀδίκως εὐτυχεῖτ’ ἀν’ Ἑλλάδα."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:450",
+   "text": "τί δ’ οὐκ ἐν ὑμῖν ἐστιν; οὐ πλεῖστοι φόνοι;"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:451",
+   "text": "οὐκ αἰσχροκερδεῖς; οὐ λέγοντες ἄλλα μὲν"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:452",
+   "text": "γλώσσῃ, φρονοῦντες δ’ ἄλλ’ ἐφευρίσκεσθ’ ἀεί;"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:453",
+   "text": "ὄλοισθ’. ἐμοὶ μὲν θάνατος οὐχ οὕτω βαρὺς"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:454",
+   "text": "ὡς σοὶ δέδοκται· κεῖνα γάρ μ’ ἀπώλεσεν,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:455",
+   "text": "ὅθ’ ἡ τάλαινα πόλις ἀνηλώθη Φρυγῶν"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:456",
+   "text": "πόσις θ’ ὁ κλεινός, ὅς σε πολλάκις δορὶ"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:457",
+   "text": "ναύτην ἔθηκεν ἀντὶ χερσαίου κακόν."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:458",
+   "text": "νῦν δ’ εἰς γυναῖκα γοργὸς ὁπλίτης φανεὶς"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:459",
+   "text": "κτείνεις μ’. ἀπόκτειν’· ὡς ἀθώπευτόν γέ σε"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:460",
+   "text": "γλώσσης ἀφήσω τῆς ἐμῆς καὶ παῖδα σήν."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:461",
+   "text": "ἐπεὶ σὺ μὲν πέφυκας ἐν Σπάρτῃ μέγας,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:462",
+   "text": "ἡμεῖς δὲ Τροίᾳ γ’. εἰ δ’ ἐγὼ πράσσω κακῶς,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:463",
+   "text": "μηδὲν τόδ’ αὔχει· καὶ σὺ γὰρ πράξειας ἄν."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:464",
+   "text": "οὐδέποτε δίδυμα λέκτρ’ ἐπαινέσω βροτῶν"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:466",
+   "text": "οὐδ’ ἀμφιμάτορας κόρους,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:467",
+   "text": "ἔριδας οἴκων δυσμενεῖς τε λύπας."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:468",
+   "text": "μίαν μοι στεργέτω πόσις γάμοις"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:469",
+   "text": "ἀκοινώ-"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:470",
+   "text": "νητον ἀνδρὸς εὐνάν."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:471",
+   "text": "οὐδέ γ’ ἐνὶ πόλεσι δίπτυχοι τυραννίδες"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:472",
+   "text": "μιᾶς ἀμείνονες φέρειν,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:475",
+   "text": "ἄχθος ἐπ’ ἄχθει καὶ στάσις πολίταις·"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:476",
+   "text": "τεκόντοιν θ’ ὕμνον ἐργάταιν δυοῖν"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:477",
+   "text": "ἔριν Mοῦ-"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:478",
+   "text": "σαι φιλοῦσι κραίνειν."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:479",
+   "text": "πνοαὶ δ’ ὅταν φέρωσι ναυτίλους θοαί,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:480",
+   "text": "κατὰ πηδαλίων δίδυμαι πραπίδων γνῶμαι,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:481",
+   "text": "σοφῶν τε πλῆθος ἀθρόον ἀσθενέστερον"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:482",
+   "text": "φαυλοτέρας φρενὸς αὐτοκρατοῦς."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:483",
+   "text": "ἑνὸς ἁ δύνασις ἀνά τε μέλαθρα"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:484",
+   "text": "κατά τε πόλιας, ὁπόταν εὑ-"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:485",
+   "text": "ρεῖν θέλωσι καιρόν."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:486",
+   "text": "ἔδειξεν ἡ Λάκαινα τοῦ στρατηλάτα"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:487",
+   "text": "Μενέλα· διὰ γὰρ πυρὸς ἦλθ’ ἑτέρῳ λέχεϊ,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:489",
+   "text": "κτείνει δὲ τὴν τάλαιναν Ἰλιάδα κόραν"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:490",
+   "text": "παῖδά τε δύσφρονος ἔριδος ὕπερ."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:491",
+   "text": "ἄθεος ἄνομος ἄχαρις ὁ φόνος·"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:492",
+   "text": "ἔτι σε, πότνια, μετατροπὰ"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:493",
+   "text": "τῶνδ’ ἔπεισιν ἔργων."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:494",
+   "text": "καὶ μὴν ἐσορῶ"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:495",
+   "text": "τόδε σύγκρατον ζεῦγος πρὸ δόμων"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:496",
+   "text": "ψήφῳ θανάτου κατακεκριμένον."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:497",
+   "text": "δύστηνε γύναι, τλῆμον δὲ σὺ παῖ,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:498",
+   "text": "μητρὸς λεχέων ὃς ὑπερθνῄσκεις"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:499",
+   "text": "οὐδὲν μετέχων"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:500",
+   "text": "οὐδ’ αἴτιος ὢν βασιλεῦσιν."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:501",
+   "text": "ἅδ’ ἐγὼ χέρας αἱματη-"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:502",
+   "text": "ρὰς βρόχοισι κεκλῃμένα"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:503",
+   "text": "πέμπομαι κατὰ γαίας."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:504",
+   "text": "μᾶτερ μᾶτερ, ἐγὼ δὲ σᾷ"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:505",
+   "text": "πτέρυγι συγκαταβαίνω."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:506",
+   "text": "θῦμα δάιον, ὦ χθονὸς"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:507",
+   "text": "Φθίας κράντορες."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:507b",
+   "text": "ὦ πάτερ,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:508",
+   "text": "μόλε φίλοις ἐπίκουρος."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:510",
+   "text": "κείσῃ δή, τέκνον ὦ φίλος,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:511",
+   "text": "μαστοῖς ματέρος ἀμφὶ σᾶς"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:512",
+   "text": "νεκρὸς ὑπὸ χθονί, σὺν νεκρῷ τ’"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:513",
+   "text": "ὤμοι μοι, τί πάθω; τάλας"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:514",
+   "text": "δῆτ’ ἐγὼ σύ τε, μᾶτερ."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:515",
+   "text": "ἴθ’ ὑποχθόνιοι· καὶ γὰρ ἀπ’ ἐχθρῶν"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:516",
+   "text": "ἥκετε πύργων· δύο δ’ ἐκ δισσαῖν"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:517",
+   "text": "θνῄσκετ’ ἀνάγκαιν· σὲ μὲν ἡμετέρα"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:518",
+   "text": "ψῆφος ἀναιρεῖ, παῖδα δ’ ἐμὴ παῖς"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:519",
+   "text": "τόνδ’ Ἑρμιόνη· καὶ γὰρ ἀνοία"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:520",
+   "text": "μεγάλη λείπειν ἐχθροὺς ἐχθρῶν,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:521",
+   "text": "ἐξὸν κτείνειν"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:522",
+   "text": "καὶ φόβον οἴκων ἀφελέσθαι."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:523",
+   "text": "ὦ πόσις πόσις, εἴθε σὰν"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:524",
+   "text": "χεῖρα καὶ δόρυ σύμμαχον"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:525",
+   "text": "κτησαίμαν, Πριάμου παῖ."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:526",
+   "text": "δύστανος, τί δ’ ἐγὼ μόρου"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:527",
+   "text": "παράτροπον μέλος εὕρω;"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:529",
+   "text": "λίσσου, γούνασι δεσπότου"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:530",
+   "text": "χρίμπτων, ὦ τέκνον."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:530b",
+   "text": "ὦ φίλος,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:531",
+   "text": "φίλος, ἄνες θάνατόν μοι."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:532",
+   "text": "λείβομαι δάκρυσιν κόρας,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:533",
+   "text": "στάζω λισσάδος ὡς πέτρας"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:534",
+   "text": "λιβὰς ἀνήλιος, ἁ τάλαιν’"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:535",
+   "text": "ὤμοι μοι, τί δ’ ἐγὼ κακῶν"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:536",
+   "text": "μῆχος ἐξανύσωμαι;"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:537",
+   "text": "τί με προσπίτνεις, ἁλίαν πέτραν"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:538",
+   "text": "ἢ κῦμα λιταῖς ὣς ἱκετεύων;"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:539",
+   "text": "τοῖς γὰρ ἐμοῖσιν γέγον’ ὠφελία,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:540",
+   "text": "σοὶ δ’ οὐδὲν ἔχω φίλτρον, ἐπεί τοι"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:541",
+   "text": "μέγ’ ἀναλώσας ψυχῆς μόριον"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:542",
+   "text": "Τροίαν εἷλον καὶ μητέρα σήν·"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:543",
+   "text": "ἧς ἀπολαύων"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:544",
+   "text": "Ἅιδην χθόνιον καταβήσῃ."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:545",
+   "text": "καὶ μὴν δέδορκα τόνδε Πηλέα πέλας,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:546",
+   "text": "σπουδῇ τιθέντα δεῦρο γηραιὸν πόδα."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:547",
+   "text": "ὑμᾶς ἐρωτῶ τόν τ’ ἐφεστῶτα σφαγῇ,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:548",
+   "text": "τί ταῦτα; πῶς ταῦτ’; ἐκ τίνος λόγου νοσεῖ"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:549",
+   "text": "δόμος; τί πράσσετ’ ἄκριτα μηχανώμενοι;"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:550",
+   "text": "Μενέλα’, ἐπίσχες· μὴ τάχυν’ ἄνευ δίκης"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:551",
+   "text": "ἡγοῦ σὺ θᾶσσον, οὐ γὰρ ὡς ἔοικέ μοι"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:552",
+   "text": "σχολῆς τόδ’ ἔργον· ἀλλ’ ἀνηβητηρίαν"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:553",
+   "text": "ῥώμην μ’ ἐπαινῶ λαμβάνειν, εἴπερ ποτέ"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:554",
+   "text": "πρῶτον μὲν οὖν κατ’ οὖρον ὥσπερ ἱστίοις"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:555",
+   "text": "ἐμπνεύσομαι τῇδ’· εἰπέ, τίνι δίκῃ χέρας"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:556",
+   "text": "βρόχοισιν ἐκδήσαντες οἵδ’ ἄγουσί σε"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:557",
+   "text": "καὶ παῖδ’; ὕπαρνος γάρ τις οἶς ἀπόλλυσαι,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:558",
+   "text": "ἡμῶν ἀπόντων τοῦ τε κυρίου σέθεν."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:559",
+   "text": "οἵδ’, ὦ γεραιέ, σὺν τέκνῳ θανουμένην"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:560",
+   "text": "ἄγουσί μ’ οὕτως ὡς ὁρᾷς. τί σοι λέγω;"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:561",
+   "text": "οὐ γὰρ μιᾶς σε κληδόνος προθυμίᾳ"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:562",
+   "text": "μετῆλθον, ἀλλὰ μυρίων ὑπ’ ἀγγέλων."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:563",
+   "text": "ἔριν δὲ τὴν κατ’ οἶκον οἶσθά που κλύων"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:564",
+   "text": "τῆς τοῦδε θυγατρός, ὧν τ’ ἀπόλλυμαι χάριν."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:565",
+   "text": "καὶ νῦν με βωμοῦ Θέτιδος, ἣ τὸν εὐγενῆ"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:566",
+   "text": "ἔτικτέ σοι παῖδ’, ἣν σὺ θαυμαστὴν σέβεις,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:567",
+   "text": "ἄγουσ’ ἀποσπάσαντες, οὔτε τῳ δίκῃ"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:568",
+   "text": "κρίναντες οὔτε τοὺς ἀπόντας ἐκ δόμων"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:569",
+   "text": "μείναντες, ἀλλὰ τὴν ἐμὴν ἐρημίαν"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:570",
+   "text": "γνόντες τέκνου τε τοῦδ’, ὃν οὐδὲν αἴτιον"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:571",
+   "text": "μέλλουσι σὺν ἐμοὶ τῇ ταλαιπώρῳ κτενεῖν."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:572",
+   "text": "ἀλλ’ ἀντιάζω σ’, ὦ γέρον, τῶν σῶν πάρος"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:573",
+   "text": "πίτνουσα γονάτων—χειρὶ δ’ οὐκ ἔξεστί μοι"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:574",
+   "text": "τῆς σῆς λαβέσθαι φιλτάτης γενειάδος—"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:575",
+   "text": "ῥῦσαί με πρὸς θεῶν· εἰ δὲ μή, θανούμεθα"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:576",
+   "text": "αἰσχρῶς μὲν ὑμῖν, δυστυχῶς δ’ ἐμοί, γέρον."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:577",
+   "text": "χαλᾶν κελεύω δεσμὰ πρὶν κλαίειν τινά,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:578",
+   "text": "καὶ τῆσδε χεῖρας διπτύχους ἀνιέναι."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:579",
+   "text": "ἐγὼ δ’ ἀπαυδῶ γ’ ἄλλος οὐχ ἥσσων σέθεν"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:580",
+   "text": "καὶ τῆσδε πολλῷ κυριώτερος γεγώς."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:581",
+   "text": "πῶς; ἦ τὸν ἀμὸν οἶκον οἰκήσεις μολὼν"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:582",
+   "text": "δεῦρ’; οὐχ ἅλις σοι τῶν κατὰ Σπάρτην κρατεῖν;"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:583",
+   "text": "εἷλόν νιν αἰχμάλωτον ἐκ Τροίας ἐγώ."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:584",
+   "text": "οὑμὸς δέ γ’ αὐτὴν ἔλαβε παῖς παιδὸς γέρας."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:585",
+   "text": "οὔκουν ἐκείνου τἀμὰ τἀκείνου τ’ ἐμά;"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:586",
+   "text": "ναί,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:586a",
+   "text": "δρᾶν εὖ, κακῶς δ’ οὔ, μηδ’ ἀποκτείνειν βίᾳ."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:587",
+   "text": "ὡς τήνδ’ ἀπάξεις οὔποτ’ ἐξ ἐμῆς χερός."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:588",
+   "text": "σκήπτρῳ δὲ τῷδε σὸν καθαιμάξω κάρα;"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:589",
+   "text": "ψαῦσόν γ’, ἵν’ εἰδῇς, καὶ πέλας πρόσελθέ μου."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:590",
+   "text": "σὺ γὰρ μετ’ ἀνδρῶν, ὦ κάκιστε κἀκ κακῶν;"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:591",
+   "text": "σοὶ ποῦ μέτεστιν ὡς ἐν ἀνδράσιν λόγου;"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:592",
+   "text": "ὅστις πρὸς ἀνδρὸς Φρυγὸς ἀπηλλάγης λέχος,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:593",
+   "text": "ἄκλῃστ’ ἄδουλα δώμαθ’ ἑστίας λιπών,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:594",
+   "text": "ὡς δὴ γυναῖκα σώφρον’ ἐν δόμοις ἔχων"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:595",
+   "text": "πασῶν κακίστην. οὐδ’ ἂν εἰ βούλοιτό τις"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:596",
+   "text": "σώφρων γένοιτο Σπαρτιατίδων κόρη,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:597",
+   "text": "αἳ ξὺν νέοισιν ἐξερημοῦσαι δόμους"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:598",
+   "text": "γυμνοῖσι μηροῖς καὶ πέπλοις ἀνειμένοις"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:599",
+   "text": "δρόμους παλαίστρας τ’ οὐκ ἀνασχετοὺς ἐμοὶ"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:600",
+   "text": "κοινὰς ἔχουσι. κᾆτα θαυμάζειν χρεὼν"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:601",
+   "text": "εἰ μὴ γυναῖκας σώφρονας παιδεύετε;"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:602",
+   "text": "Ἑλένην ἐρέσθαι χρῆν τάδ’, ἥτις ἐκ δόμων"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:603",
+   "text": "τὸν σὸν λιποῦσα Φίλιον ἐξεκώμασε"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:604",
+   "text": "νεανίου μετ’ ἀνδρὸς εἰς ἄλλην χθόνα."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:605",
+   "text": "κἄπειτ’ ἐκείνης οὕνεχ’ Ἑλλήνων ὄχλον"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:606",
+   "text": "τοσόνδ’ ἀθροίσας ἤγαγες πρὸς Ἴλιον;"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:607",
+   "text": "ἣν χρῆν σ’ ἀποπτύσαντα μὴ κινεῖν δόρυ,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:608",
+   "text": "κακὴν ἐφευρόντ’, ἀλλ’ ἐᾶν αὐτοῦ μένειν"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:609",
+   "text": "μισθόν τε δόντα μήποτ’ εἰς οἴκους λαβεῖν."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:610",
+   "text": "ἀλλ’ οὔτι ταύτῃ σὸν φρόνημ’ ἐπούρισας,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:611",
+   "text": "ψυχὰς δὲ πολλὰς κἀγαθὰς ἀπώλεσας,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:612",
+   "text": "παίδων τ’ ἄπαιδας γραῦς ἔθηκας ἐν δόμοις,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:613",
+   "text": "πολιούς τ’ ἀφείλου πατέρας εὐγενῆ τέκνα."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:614",
+   "text": "ὧν εἷς ἐγὼ δύστηνος· αὐθέντην δὲ σὲ"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:615",
+   "text": "μιάστορ’ ὥς τιν’ εἰσδέδορκ’ Ἀχιλλέως."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:616",
+   "text": "ὃς οὐδὲ τρωθεὶς ἦλθες ἐκ Τροίας μόνος,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:617",
+   "text": "κάλλιστα τεύχη δ’ ἐν καλοῖσι σάγμασιν"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:618",
+   "text": "ὅμοι’ ἐκεῖσε δεῦρό τ’ ἤγαγες πάλιν."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:619",
+   "text": "κἀγὼ μὲν ηὔδων τῷ γαμοῦντι μήτε σοὶ"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:620",
+   "text": "κῆδος ξυνάψαι μήτε δώμασιν λαβεῖν"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:621",
+   "text": "κακῆς γυναικὸς πῶλον· ἐκφέρουσι γὰρ"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:622",
+   "text": "μητρῷ’ ὀνείδη. τοῦτο καὶ σκοπεῖτέ μοι,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:623",
+   "text": "μνηστῆρες, ἐσθλῆς θυγατέρ’ ἐκ μητρὸς λαβεῖν."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:624",
+   "text": "πρὸς τοῖσδε δ’ εἰς ἀδελφὸν οἷ’ ἐφύβρισας,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:625",
+   "text": "σφάξαι κελεύσας θυγατέρ’ εὐηθέστατα;"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:626",
+   "text": "οὕτως ἔδεισας μὴ οὐ κακὴν δάμαρτ’ ἔχῃς."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:627",
+   "text": "ἑλὼν δὲ Τροίαν—εἶμι γὰρ κἀνταῦθά σοι—"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:628",
+   "text": "οὐκ ἔκτανες γυναῖκα χειρίαν λαβών,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:629",
+   "text": "ἀλλ’, ὡς ἐσεῖδες μαστόν, ἐκβαλὼν ξίφος"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:630",
+   "text": "φίλημ’ ἐδέξω, προδότιν αἰκάλλων κύνα,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:631",
+   "text": "ἥσσων πεφυκὼς Κύπριδος, ὦ κάκιστε σύ."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:632",
+   "text": "κἄπειτ’ ἐς οἴκους τῶν ἐμῶν ἐλθὼν τέκνων"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:633",
+   "text": "πορθεῖς ἀπόντων, καὶ γυναῖκα δυστυχῆ"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:634",
+   "text": "κτείνεις ἀτίμως παῖδά θ’, ὃς κλαίοντά σε"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:635",
+   "text": "καὶ τὴν ἐν οἴκοις σὴν καταστήσει κόρην,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:636",
+   "text": "κεἰ τρὶς νόθος πέφυκε. πολλάκις δέ τοι"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:637",
+   "text": "ξηρὰ βαθεῖαν γῆν ἐνίκησε σπορᾷ,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:638",
+   "text": "νόθοι τε πολλοὶ γνησίων ἀμείνονες."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:639",
+   "text": "ἀλλ’ ἐκκομίζου παῖδα. κύδιον βροτοῖς"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:640",
+   "text": "πένητα χρηστὸν ἢ κακὸν καὶ πλούσιον"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:641",
+   "text": "γαμβρὸν πεπᾶσθαι καὶ φίλον· σὺ δ’ οὐδὲν εἶ."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:642",
+   "text": "σμικρᾶς ἀπ’ ἀρχῆς νεῖκος ἀνθρώποις μέγα"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:643",
+   "text": "γλῶσσ’ ἐκπορίζει· τοῦτο δ’ οἱ σοφοὶ βροτῶν"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:644",
+   "text": "ἐξευλαβοῦνται, μὴ φίλοις τεύχειν ἔριν."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:645",
+   "text": "τί δῆτ’ ἂν εἴποις τοὺς γέροντας, ὡς σοφοί,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:646",
+   "text": "καὶ τοὺς φρονεῖν δοκοῦντας Ἕλλησίν ποτε;"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:647",
+   "text": "ὅτ’ ὢν σὺ Πηλεὺς καὶ πατρὸς κλεινοῦ γεγώς,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:648",
+   "text": "κῆδος συνάψας, αἰσχρὰ μὲν σαυτῷ λέγεις"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:649",
+   "text": "ἡμῖν δ’ ὀνείδη διὰ γυναῖκα βάρβαρον,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:650",
+   "text": "ἣν χρῆν σ’ ἐλαύνειν τήνδ’ ὑπὲρ Νείλου ῥοὰς"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:651",
+   "text": "ὑπέρ τε Φᾶσιν, κἀμὲ παρακαλεῖν ἀεί"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:652",
+   "text": "οὖσαν μὲν ἠπειρῶτιν, οὗ πεσήματα"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:653",
+   "text": "πλεῖσθ’ Ἑλλάδος πέπτωκε δοριπετῆ νεκρῶν,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:654",
+   "text": "τοῦ σοῦ δὲ παιδὸς αἵματος κοινουμένην."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:655",
+   "text": "Πάρις γάρ, ὃς σὸν παῖδ’ ἔπεφν’ Ἀχιλλέα,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:656",
+   "text": "Ἕκτορος ἀδελφὸς ἦν, δάμαρ δ’ ἥδ’ Ἕκτορος."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:657",
+   "text": "καὶ τῇδέ γ’ εἰσέρχῃ σὺ ταὐτὸν εἰς στέγος"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:658",
+   "text": "καὶ ξυντράπεζον ἀξιοῖς ἔχειν βίον,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:659",
+   "text": "τίκτειν δ’ ἐν οἴκοις παῖδας ἐχθίστους ἐᾷς."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:660",
+   "text": "ἁγὼ προνοίᾳ τῇ τε σῇ κἀμῇ, γέρον,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:661",
+   "text": "κτανεῖν θέλων τήνδ’ ἐκ χερῶν ἁρπάζομαι."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:662",
+   "text": "καίτοι φέρ’· ἅψασθαι γὰρ οὐκ αἰσχρὸν λόγου·"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:663",
+   "text": "ἢν παῖς μὲν ἡμὴ μὴ τέκῃ, ταύτης δ’ ἄπο"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:664",
+   "text": "βλάστωσι παῖδες, τῆσδε γῆς Φθιώτιδος"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:665",
+   "text": "στήσεις τυράννους, βάρβαροι δ’ ὄντες γένος"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:666",
+   "text": "Ἕλλησιν ἄρξουσ’; εἶτ’ ἐγὼ μὲν οὐ φρονῶ"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:667",
+   "text": "μισῶν τὰ μὴ δίκαια, σοὶ δ’ ἔνεστι νοῦς;"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:668",
+   "text": "κἀκεῖνο νῦν ἄθρησον· εἰ σὺ παῖδα σὴν"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:669",
+   "text": "δούς τῳ πολιτῶν, εἶτ’ ἔπασχε τοιάδε,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:670",
+   "text": "σιγῇ καθῆσ’ ἄν; οὐ δοκῶ· ξένης δ’ ὕπερ"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:671",
+   "text": "τοιαῦτα λάσκεις τοὺς ἀναγκαίους φίλους;"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:672",
+   "text": "καὶ μὴν ἴσον γ’ ἀνήρ τε καὶ γυνὴ στένει"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:673",
+   "text": "ἀδικουμένη πρὸς ἀνδρός· ὡς δ’ αὔτως ἀνὴρ"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:674",
+   "text": "γυναῖκα μωραίνουσαν ἐν δόμοις ἔχων."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:675",
+   "text": "καὶ τῷ μὲν ἔστιν ἐν χεροῖν μέγα σθένος,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:676",
+   "text": "τῇ δ’ ἐν γονεῦσι καὶ φίλοις τὰ πράγματα."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:677",
+   "text": "οὔκουν δίκαιον τοῖς γ’ ἐμοῖς ἐπωφελεῖν;"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:678",
+   "text": "γέρων γέρων εἶ. τὴν δ’ ἐμὴν στρατηγίαν"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:679",
+   "text": "λέγων ἔμ’ ὠφελοῖς ἂν ἢ σιγῶν πλέον."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:680",
+   "text": "Ἑλένη δ’ ἐμόχθησ’ οὐχ ἑκοῦσ’, ἀλλ’ ἐκ θεῶν,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:681",
+   "text": "καὶ τοῦτο πλεῖστον ὠφέλησεν Ἑλλάδα·"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:682",
+   "text": "ὅπλων γὰρ ὄντες καὶ μάχης ἀίστορες"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:683",
+   "text": "ἔβησαν εἰς τἀνδρεῖον· ἡ δ’ ὁμιλία"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:684",
+   "text": "πάντων βροτοῖσι γίγνεται διδάσκαλος."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:685",
+   "text": "εἰ δ’ εἰς πρόσοψιν τῆς ἐμῆς ἐλθὼν ἐγὼ"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:686",
+   "text": "γυναικὸς ἔσχον μὴ κτανεῖν, ἐσωφρόνουν."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:687",
+   "text": "οὐδ’ ἂν σὲ Φῶκον ἤθελον κατακτανεῖν."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:688",
+   "text": "ταῦτ’ εὖ φρονῶν σ’ ἐπῆλθον, οὐκ ὀργῆς χάριν·"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:689",
+   "text": "ἢν δ’ ὀξυθυμῇς, σοὶ μὲν ἡ γλωσσαλγία"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:690",
+   "text": "μείζων, ἐμοὶ δὲ κέρδος ἡ προμηθία."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:691",
+   "text": "παύσασθον ἤδη· λῷστα γὰρ μακρῷ τάδε·"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:692",
+   "text": "λόγων ματαίων, μὴ δύο σφαλῆθ’ ἅμα."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:693",
+   "text": "οἴμοι, καθ’ Ἑλλάδ’ ὡς κακῶς νομίζεται·"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:694",
+   "text": "ὅταν τροπαῖα πολεμίων στήσῃ στρατός,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:695",
+   "text": "οὐ τῶν πονούντων τοὔργον ἡγοῦνται τόδε,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:696",
+   "text": "ἀλλ’ ὁ στρατηγὸς τὴν δόκησιν ἄρνυται,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:697",
+   "text": "ὃς εἷς μετ’ ἄλλων μυρίων πάλλων δόρυ,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:698",
+   "text": "οὐδὲν πλέον δρῶν ἑνὸς ἔχει πλείω λόγον."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:699",
+   "text": "σεμνοὶ δ’ ἐν ἀρχαῖς ἥμενοι κατὰ πτόλιν"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:700",
+   "text": "φρονοῦσι δήμου μεῖζον, ὄντες οὐδένες·"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:701",
+   "text": "οἱ δ’ εἰσὶν αὐτῶν μυρίῳ σοφώτεροι,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:702",
+   "text": "εἰ τόλμα προσγένοιτο βούλησίς θ’ ἅμα."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:703",
+   "text": "ὡς καὶ σὺ σός τ’ ἀδελφὸς ἐξωγκωμένοι"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:704",
+   "text": "Τροίᾳ κάθησθε τῇ τ’ ἐκεῖ στρατηγίᾳ,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:705",
+   "text": "μόχθοισιν ἄλλων καὶ πόνοις ἐπηρμένοι."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:706",
+   "text": "δείξω δ’ ἐγώ σοι μὴ τὸν Ἰδαῖον Πάριν"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:707",
+   "text": "ἥσσω νομίζειν Πηλέως ἐχθρόν ποτε,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:708",
+   "text": "εἰ μὴ φθερῇ τῆσδ’ ὡς τάχιστ’ ἀπὸ στέγης"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:709",
+   "text": "καὶ παῖς ἄτεκνος, ἣν ὅ γ’ ἐξ ἡμῶν γεγὼς"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:710",
+   "text": "ἐλᾷ δι’ οἴκων τῶνδ’ ἐπισπάσας κόμης·"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:711",
+   "text": "ἣ στερρὸς οὖσα μόσχος οὐκ ἀνέξεται"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:712",
+   "text": "τίκτοντας ἄλλους, οὐκ ἔχουσ’ αὐτὴ τέκνα."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:713",
+   "text": "ἀλλ’, εἰ τὸ κείνης δυστυχεῖ παίδων πέρι,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:714",
+   "text": "ἄπαιδας ἡμᾶς δεῖ καταστῆναι τέκνων;"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:715",
+   "text": "φθείρεσθε τῆσδε, δμῶες, ὡς ἂν ἐκμάθω"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:716",
+   "text": "εἴ τίς με λύειν τῆσδε κωλύσει χέρας."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:717",
+   "text": "ἔπαιρε σαυτήν· ὡς ἐγὼ καίπερ τρέμων"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:718",
+   "text": "πλεκτὰς ἱμάντων στροφίδας ἐξανήσομαι."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:719",
+   "text": "ὧδ’, ὦ κάκιστε, τῆσδ’ ἐλυμήνω χέρας;"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:720",
+   "text": "βοῦν ἢ λέοντ’ ἤλπιζες ἐντείνειν βρόχοις;"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:721",
+   "text": "ἢ μὴ ξίφος λαβοῦσ’ ἀμυνάθοιτό σε"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:722",
+   "text": "ἔδεισας; ἕρπε δεῦρ’ ὑπ’ ἀγκάλας, βρέφος,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:723",
+   "text": "ξύλλυε μητρὸς δεσμόν· ἐν Φθίᾳ σ’ ἐγὼ"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:724",
+   "text": "θρέψω μέγαν τοῖσδ’ ἐχθρόν. εἰ δ’ ἀπῆν δορὸς"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:725",
+   "text": "τοῖς Σπαρτιάταις δόξα καὶ μάχης ἀγών,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:726",
+   "text": "τἄλλ’ ὄντες ἴστε μηδενὸς βελτίονες."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:727",
+   "text": "ἀνειμένον τι χρῆμα πρεσβυτῶν γένος"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:728",
+   "text": "καὶ δυσφύλακτον ὀξυθυμίας ὕπο."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:729",
+   "text": "ἄγαν προνωπὴς εἰς τὸ λοιδορεῖν φέρῃ·"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:730",
+   "text": "ἐγὼ δὲ πρὸς βίαν μὲν εἰς Φθίαν μολὼν"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:731",
+   "text": "οὔτ’ οὖν τι δράσω φλαῦρον οὔτε πείσομαι."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:732",
+   "text": "καὶ νῦν μέν—οὐ γὰρ ἄφθονον σχολὴν ἔχω—"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:733",
+   "text": "ἄπειμ’ ἐς οἴκους· ἔστι γάρ τις οὐ πρόσω"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:734",
+   "text": "Σπάρτης πόλις τις, ἣ πρὸ τοῦ μὲν ἦν φίλη,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:735",
+   "text": "νῦν δ’ ἐχθρὰ ποιεῖ· τήνδ’ ἐπεξελθεῖν θέλω"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:736",
+   "text": "στρατηλατήσας χὑποχείριον λαβεῖν."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:737",
+   "text": "ὅταν δὲ τἀκεῖ θῶ κατὰ γνώμην ἐμήν,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:738",
+   "text": "ἥξω· παρὼν δὲ πρὸς παρόντας ἐμφανῶς"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:739",
+   "text": "γαμβροὺς διδάξω καὶ διδάξομαι λόγους."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:740",
+   "text": "κἂν μὲν κολάζῃ τήνδε καὶ τὸ λοιπὸν ᾖ"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:741",
+   "text": "σώφρων καθ’ ἡμᾶς, σώφρον’ ἀντιλήψεται·"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:742",
+   "text": "θυμούμενος δὲ τεύξεται θυμουμένων,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:743",
+   "text": "ἔργοισι δ’ ἔργα διάδοχ’ ἀντιλήψεται."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:744",
+   "text": "τοὺς σοὺς δὲ μύθους ῥᾳδίως ἐγὼ φέρω·"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:745",
+   "text": "σκιὰ γὰρ ἀντίστοιχος ὣς φωνὴν ἔχεις,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:746",
+   "text": "ἀδύνατος, οὐδὲν ἄλλο πλὴν λέγειν μόνον."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:747",
+   "text": "ἡγοῦ, τέκνον μοι, δεῦρ’ ὑπ’ ἀγκάλαις σταθείς,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:748",
+   "text": "σύ τ’, ὦ τάλαινα· χείματος γὰρ ἀγρίου"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:749",
+   "text": "τυχοῦσα λιμένας ἦλθες εἰς εὐηνέμους."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:750",
+   "text": "ὦ πρέσβυ, θεοί σοι δοῖεν εὖ καὶ τοῖσι σοῖς,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:751",
+   "text": "σῴσαντι παῖδα κἀμὲ τὴν δυσδαίμονα."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:752",
+   "text": "ὅρα δὲ μὴ νῷν εἰς ἐρημίαν ὁδοῦ"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:753",
+   "text": "πτήξαντες οἵδε πρὸς βίαν ἄγωσί με,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:754",
+   "text": "γέροντα μὲν σ’ ὁρῶντες, ἀσθενῆ δ’ ἐμὲ"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:755",
+   "text": "καὶ παῖδα τόνδε νήπιον· σκόπει τάδε,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:756",
+   "text": "μὴ νῦν φυγόντες εἶθ’ ἁλῶμεν ὕστερον."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:757",
+   "text": "οὐ μὴ γυναικῶν δειλὸν εἰσοίσεις λόγον·"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:758",
+   "text": "χώρει· τίς ὑμῶν ἅψεται; κλαίων ἄρα"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:759",
+   "text": "ψαύσει. θεῶν γὰρ οὕνεχ’ ἱππικοῦ τ’ ὄχλου"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:760",
+   "text": "πολλῶν θ’ ὁπλιτῶν ἄρχομεν Φθίαν κάτα·"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:761",
+   "text": "ἡμεῖς δ’ ἔτ’ ὀρθοὶ κοὐ γέροντες, ὡς δοκεῖς,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:762",
+   "text": "ἀλλ’ εἴς γε τοιόνδ’ ἄνδρ’ ἀποβλέψας μόνον"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:763",
+   "text": "τροπαῖον αὐτοῦ στήσομαι, πρέσβυς περ ὤν."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:764",
+   "text": "πολλῶν νέων γὰρ κἂν γέρων εὔψυχος ᾖ"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:765",
+   "text": "κρείσσων· τί γὰρ δεῖ δειλὸν ὄντ’ εὐσωματεῖν;"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:766",
+   "text": "μὴ γενοίμαν ἢ πατέρων ἀγαθῶν"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:767",
+   "text": "εἴην πολυκτήτων τε δόμων μέτοχος."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:770",
+   "text": "εἴ τι γὰρ πάσχοι τις ἀμήχανον, ἀλκᾶς"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:771",
+   "text": "οὐ σπάνις εὐγενέταις,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:772",
+   "text": "κηρυσσομένοισι δ’ ἀπ’ ἐσθλῶν δωμάτων"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:773",
+   "text": "τιμὰ καὶ κλέος· οὔτοι λείψανα τῶν ἀγαθῶν"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:775",
+   "text": "ἀνδρῶν ἀφαιρεῖται χρόνος· ἁ δ’ ἀρετὰ"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:776",
+   "text": "καὶ θανοῦσι λάμπει."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:778",
+   "text": "κρεῖσσον δὲ νίκαν μὴ κακόδοξον ἔχειν"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:780",
+   "text": "ἢ ξὺν φθόνῳ σφάλλειν δυνάμει τε δίκαν."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:781",
+   "text": "ἡδὺ μὲν γὰρ αὐτίκα τοῦτο βροτοῖσιν,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:782",
+   "text": "ἐν δὲ χρόνῳ τελέθει"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:784",
+   "text": "ξηρὸν καὶ ὀνείδεσιν ἔγκειται δόμων."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:785",
+   "text": "ταύταν ᾔνεσα ταύταν καὶ φέρομαι βιοτάν,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:787",
+   "text": "μηδὲν δίκας ἔξω κράτος ἐν θαλάμοις"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:788",
+   "text": "καὶ πόλει δύνασθαι."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:789",
+   "text": "ὦ γέρον Αἰακίδα,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:790",
+   "text": "πείθομαι καὶ σὺν Λαπίθαισί σε Κενταύ-"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:791",
+   "text": "ρων ὁμιλῆσαι δορὶ"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:792",
+   "text": "κλεινοτάτῳ· καὶ ἐπ’ Ἀργῴου δορὸς ἄξενον ὑγρὰν"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:794",
+   "text": "ἐκπερᾶσαι ποντιᾶν Ξυμπληγάδων"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:795",
+   "text": "κλεινὰν ἐπὶ ναυστολίαν,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:796",
+   "text": "Ἰλιάδα τε πόλιν ὅτε πάρος"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:798",
+   "text": "εὐδόκιμον ὁ Διὸς ἶνις ἀμφέβαλε φόνῳ,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:800",
+   "text": "κοινὰν τὰν εὔκλειαν ἔχοντ’"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:801",
+   "text": "Εὐρώπαν ἀφικέσθαι."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:802",
+   "text": "ὦ φίλταται γυναῖκες, ὡς κακὸν κακῷ"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:803",
+   "text": "διάδοχον ἐν τῇδ’ ἡμέρᾳ πορσύνεται."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:804",
+   "text": "δέσποινα γὰρ κατ’ οἶκον, Ἑρμιόνην λέγω,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:805",
+   "text": "πατρός τ’ ἐρημωθεῖσα συννοίᾳ θ’ ἅμα,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:806",
+   "text": "οἷον δέδρακεν ἔργον Ἀνδρομάχην κτανεῖν"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:807",
+   "text": "καὶ παῖδα βουλεύσασα, κατθανεῖν θέλει,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:808",
+   "text": "πόσιν τρέμουσα, μὴ ἀντὶ τῶν δεδραμένων"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:809",
+   "text": "ἐκ τῶνδ’ ἀτίμως δωμάτων ἀποσταλῇ,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:810",
+   "text": "ἢ κατθάνῃ κτείνουσα τοὺς οὐ χρὴ κτανεῖν."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:811",
+   "text": "μόλις δέ νιν θέλουσαν ἀρτῆσαι δέρην"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:812",
+   "text": "εἴργουσι φύλακες δμῶες ἔκ τε δεξιᾶς"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:813",
+   "text": "ξίφη καθαρπάζουσιν ἐξαιρούμενοι."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:814",
+   "text": "οὕτω μεταλγεῖ καὶ τὰ πρὶν δεδραμένα"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:815",
+   "text": "ἔγνωκε πράξασ’ οὐ καλῶς. ἐγὼ μὲν οὖν"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:816",
+   "text": "δέσποιναν εἴργουσ’ ἀγχόνης κάμνω, φίλαι·"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:817",
+   "text": "ὑμεῖς δὲ βᾶσαι τῶνδε δωμάτων ἔσω"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:818",
+   "text": "θανάτου νιν ἐκλύσασθε· τῶν γὰρ ἠθάδων"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:819",
+   "text": "φίλων νέοι μολόντες εὐπιθέστεροι."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:820",
+   "text": "καὶ μὴν ἐν οἴκοις προσπόλων ἀκούομεν"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:821",
+   "text": "βοὴν ἐφ’ οἷσιν ἦλθες ἀγγέλλουσα σύ."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:822",
+   "text": "δείξειν δ’ ἔοικεν ἡ τάλαιν’ ὅσον στένει"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:823",
+   "text": "πράξασα δεινά· δωμάτων γὰρ ἐκπερᾷ"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:824",
+   "text": "φεύγουσα χεῖρας προσπόλων πόθῳ θανεῖν."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:825",
+   "text": "ἰώ μοί μοι·"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:826",
+   "text": "σπάραγμα κόμας ὀνύχων τε δάι’ ἀ-"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:827",
+   "text": "μύγματα θήσομαι."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:828",
+   "text": "ὦ παῖ, τί δράσεις; σῶμα σὸν καταικιῇ;"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:829",
+   "text": "αἰαῖ αἰαῖ·"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:830",
+   "text": "ἔρρ’ αἰθέριον πλοκάμων ἐμῶν ἄπο,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:831",
+   "text": "λεπτόμιτον φάρος."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:832",
+   "text": "τέκνον, κάλυπτε στέρνα, σύνδησαι πέπλους."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:833",
+   "text": "τί δέ με δεῖ στέρνα"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:834",
+   "text": "καλύπτειν πέπλοις; δῆλα καὶ"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:835",
+   "text": "ἀμφιφανῆ καὶ ἄκρυπτα δε-"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:835a",
+   "text": "δράκαμεν πόσιν."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:836",
+   "text": "ἀλγεῖς, φόνον ῥάψασα συγγάμῳ σέθεν;"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:837",
+   "text": "κατὰ μὲν οὖν στένω"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:838",
+   "text": "δαΐας τόλμας, ἂν ἔρεξ’·"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:839",
+   "text": "ὦ κατάρατος ἐγὼ κατά-"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:839a",
+   "text": "ρατος ἀνθρώποις."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:840",
+   "text": "συγγνώσεταί σοι τήνδ’ ἁμαρτίαν πόσις."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:841",
+   "text": "τί μοι ξίφος"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:842",
+   "text": "ἐκ χερὸς ἠγρεύσω;"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:843",
+   "text": "ἀπόδος, ὦ φίλα, ’πόδος, ἵν’ ἀνταίαν"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:844",
+   "text": "ἐρείσω πλαγάν· τί με βρόχων εἴργεις;"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:845",
+   "text": "ἀλλ’ εἴ σ’ ἀφείην μὴ φρονοῦσαν, ὡς θάνῃς;"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:846",
+   "text": "οἴμοι πότμου."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:847",
+   "text": "ποῦ μοι πυρὸς φίλα φλόξ;"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:848",
+   "text": "ποῦ δ’ εἰς πέτρας ἀερθῶ,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:849",
+   "text": "ἢ κατὰ πόντον ἢ καθ’ ὕλαν ὀρέων,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:850",
+   "text": "ἵνα θανοῦσα νερτέροισιν μέλω;"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:851",
+   "text": "τί ταῦτα μοχθεῖς; συμφοραὶ θεήλατοι"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:852",
+   "text": "πᾶσιν βροτοῖσιν ἢ τότ’ ἦλθον ἢ τότε."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:854",
+   "text": "ἔλιπες ἔλιπες, ὦ πάτερ, ἐπακτίαν"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:855",
+   "text": "ὡσεὶ μονάδ’ ἔρημον οὖσαν ἐνάλου κώπας."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:856",
+   "text": "—ὀλεῖ ὀλεῖ με· τᾷδ’ οὐκέτ’ ἐνοικήσω"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:858",
+   "text": "νυμφιδίῳ στέγᾳ."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:859",
+   "text": "τίνος ἀγαλμάτων ἱκέτις ὁρμαθῶ;"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:860",
+   "text": "ἢ δούλα δούλας γόνασι προσπέσω;"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:861",
+   "text": "Φθιάδος ἐκ γᾶς"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:862",
+   "text": "κυανόπτερος ὄρνις εἴθ’ εἴην,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:863",
+   "text": "ἢ πευκᾶεν"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:864",
+   "text": "σκάφος, ἃ διὰ Κυανέας ἐπέρασεν ἀκτὰς"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:865",
+   "text": "πρωτόπλοος πλάτα."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:866",
+   "text": "ὦ παῖ, τὸ λίαν οὔτ’ ἐκεῖν’ ἐπῄνεσα,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:867",
+   "text": "ὅτ’ εἰς γυναῖκα Τρῳάδ’ ἐξημάρτανες,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:868",
+   "text": "οὔτ’ αὖ τὸ νῦν σου δεῖμ’ ὃ δειμαίνεις ἄγαν."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:869",
+   "text": "οὐχ ὧδε κῆδος σὸν διώσεται πόσις"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:870",
+   "text": "φαύλοις γυναικὸς βαρβάρου πεισθεὶς λόγοις."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:871",
+   "text": "οὐ γάρ τί σ’ αἰχμάλωτον ἐκ Τροίας ἔχει,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:872",
+   "text": "ἀλλ’ ἀνδρὸς ἐσθλοῦ παῖδα σὺν πολλοῖς λαβὼν"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:873",
+   "text": "ἕδνοισι, πόλεώς τ’ οὐ μέσως εὐδαίμονος."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:874",
+   "text": "πατὴρ δέ σ’ οὐχ ὧδ’ ὡς σὺ δειμαίνεις, τέκνον,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:875",
+   "text": "προδοὺς ἐάσει δωμάτων τῶνδ’ ἐκπεσεῖν."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:876",
+   "text": "ἀλλ’ εἴσιθ’ εἴσω μηδὲ φαντάζου δόμων"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:877",
+   "text": "πάροιθε τῶνδε, μή τιν’ αἰσχύνην λάβῃς,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:878",
+   "text": "πρόσθεν μελάθρων τῶνδ’ ὁρωμένη, τέκνον."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:879",
+   "text": "καὶ μὴν ὅδ’ ἀλλόχρως τις ἔκδημος ξένος"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:880",
+   "text": "σπουδῇ πρὸς ἡμᾶς βημάτων πορεύεται."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:881",
+   "text": "ξέναι γυναῖκες, ἦ τάδ’ ἔστ’ Ἀχιλλέως"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:882",
+   "text": "παιδὸς μέλαθρα καὶ τυραννικαὶ στέγαι;"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:883",
+   "text": "ἔγνως· ἀτὰρ δὴ τίς σὺ πυνθάνῃ τάδε;"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:884",
+   "text": "Ἀγαμέμνονός τε καὶ Κλυταιμήστρας τόκος,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:885",
+   "text": "ὄνομα δ’ Ὀρέστης· ἔρχομαι δὲ πρὸς Διὸς"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:886",
+   "text": "μαντεῖα Δωδωναῖ’. ἐπεὶ δ’ ἀφικόμην"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:887",
+   "text": "Φθίαν, δοκεῖ μοι ξυγγενοῦς μαθεῖν πέρι"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:888",
+   "text": "γυναικός, εἰ ζῇ κεὐτυχοῦσα τυγχάνει"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:889",
+   "text": "ἡ Σπαρτιᾶτις Ἑρμιόνη· τηλουρὰ γὰρ"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:890",
+   "text": "ναίουσ’ ἀφ’ ἡμῶν πεδί’ ὅμως ἐστὶν φίλη."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:891",
+   "text": "ὦ ναυτίλοισι χείματος λιμὴν φανεὶς"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:892",
+   "text": "Ἀγαμέμνονος παῖ, πρός σε τῶνδε γουνάτων,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:893",
+   "text": "οἴκτιρον ἡμᾶς ὧν ἐπισκοπεῖς τύχας,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:894",
+   "text": "πράσσοντας οὐκ εὖ. στεμμάτων δ’ οὐχ ἥσσονας"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:895",
+   "text": "σοῖς προστίθημι γόνασιν ὠλένας ἐμάς."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:896",
+   "text": "ἔα·"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:896a",
+   "text": "τί χρῆμα; μῶν ἐσφάλμεθ’ ἢ σαφῶς ὁρῶ"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:897",
+   "text": "δόμων ἄνασσαν τήνδε Μενέλεω κόρην;"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:898",
+   "text": "ἥνπερ μόνην γε Τυνδαρὶς τίκτει γυνὴ"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:899",
+   "text": "Ἑλένη κατ’ οἴκους πατρί· μηδὲν ἀγνόει."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:900",
+   "text": "ὦ Φοῖβ’ ἀκέστορ, πημάτων δοίης λύσιν."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:901",
+   "text": "τί χρῆμα; πρὸς θεῶν ἢ βροτῶν πάσχεις κακά;"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:902",
+   "text": "τὰ μὲν πρὸς ἡμῶν, τὰ δὲ πρὸς ἀνδρὸς ὅς μ’ ἔχει,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:903",
+   "text": "τὰ δ’ ἐκ θεῶν του· πανταχῇ δ’ ὀλώλαμεν."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:904",
+   "text": "τίς οὖν ἂν εἴη μὴ πεφυκότων γέ πω"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:905",
+   "text": "παίδων γυναικὶ συμφορὰ πλὴν εἰς λέχος;"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:906",
+   "text": "τοῦτ’ αὐτὸ καὶ νοσοῦμεν· εὖ μ’ ὑπηγάγου."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:907",
+   "text": "ἄλλην τιν’ εὐνὴν ἀντὶ σοῦ στέργει πόσις;"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:908",
+   "text": "τὴν αἰχμάλωτον Ἕκτορος ξυνευνέτιν."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:909",
+   "text": "κακόν γ’ ἔλεξας, ἄνδρα δίσσ’ ἔχειν λέχη."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:910",
+   "text": "τοιαῦτα ταῦτα. κᾆτ’ ἔγωγ’ ἠμυνάμην."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:911",
+   "text": "μῶν εἰς γυναῖκ’ ἔρραψας οἷα δὴ γυνή;"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:912",
+   "text": "φόνον γ’ ἐκείνῃ καὶ τέκνῳ νοθαγενεῖ."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:913",
+   "text": "κἄκτεινας, ἤ τις συμφορά σ’ ἀφείλετο;"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:914",
+   "text": "γέρων γε Πηλεύς, τοὺς κακίονας σέβων."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:915",
+   "text": "σοὶ δ’ ἦν τις ὅστις τοῦδ’ ἐκοινώνει φόνου;"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:916",
+   "text": "πατήρ γ’ ἐπ’ αὐτὸ τοῦτ’ ἀπὸ Σπάρτης μολών."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:917",
+   "text": "κἄπειτα τοῦ γέροντος ἡσσήθη χερί;"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:918",
+   "text": "αἰδοῖ γε· καί μ’ ἔρημον οἴχεται λιπών."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:919",
+   "text": "συνῆκα· ταρβεῖς τοῖς δεδραμένοις πόσιν."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:920",
+   "text": "ἔγνως· ὀλεῖ γάρ μ’ ἐνδίκως. τί δεῖ λέγειν;"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:921",
+   "text": "ἀλλ’ ἄντομαί σε Δία καλοῦσ’ ὁμόγνιον,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:922",
+   "text": "πέμψον με χώρας τῆσδ’ ὅποι προσωτάτω"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:923",
+   "text": "ἢ πρὸς πατρῷον μέλαθρον· ὡς δοκοῦσί γε"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:924",
+   "text": "δόμοι τ’ ἐλαύνειν φθέγμ’ ἔχοντες οἵδε με,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:925",
+   "text": "μισεῖ τε γαῖα Φθιάς. εἰ δ’ ἥξει πάρος"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:926",
+   "text": "Φοίβου λιπὼν μαντεῖον εἰς δόμους πόσις,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:927",
+   "text": "κτενεῖ μ’ ἐπ’ αἰσχίστοισιν· ἢ δουλεύσομεν"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:928",
+   "text": "νόθοισι λέκτροις ὧν ἐδέσποζον πρὸ τοῦ."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:929",
+   "text": "πῶς οὖν τάδ’, ὡς εἴποι τις, ἐξημάρτανες;"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:930",
+   "text": "κακῶν γυναικῶν εἴσοδοί μ’ ἀπώλεσαν,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:931",
+   "text": "αἵ μοι λέγουσαι τούσδ’ ἐχαύνωσαν λόγους·"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:932",
+   "text": "Σὺ τὴν κακίστην αἰχμάλωτον ἐν δόμοις"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:933",
+   "text": "δούλην ἀνέξῃ σοὶ λέχους κοινουμένην;"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:934",
+   "text": "μὰ τὴν ἄνασσαν, οὐκ ἂν ἔν γ’ ἐμοῖς δόμοις"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:935",
+   "text": "βλέπουσ’ ἂν αὐγὰς τἄμ’ ἐκαρποῦτ’ ἂν λέχη."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:936",
+   "text": "κἀγὼ κλύουσα τούσδε Σειρήνων λόγους,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:937",
+   "text": "σοφῶν πανούργων ποικίλων λαλημάτων,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:938",
+   "text": "ἐξηνεμώθην μωρίᾳ. τί γάρ μ’ ἐχρῆν"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:939",
+   "text": "πόσιν φυλάσσειν, ᾗ παρῆν ὅσων ἔδει;"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:940",
+   "text": "πολὺς μὲν ὄλβος· δωμάτων δ’ ἠνάσσομεν·"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:941",
+   "text": "παῖδας δ’ ἐγὼ μὲν γνησίους ἔτικτον ἄν,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:942",
+   "text": "ἡ δ’ ἡμιδούλους τοῖς ἐμοῖς νοθαγενεῖς."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:943",
+   "text": "ἀλλ’ οὔποτ’ οὔποτ’—οὐ γὰρ εἰσάπαξ ἐρῶ—"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:944",
+   "text": "χρὴ τούς γε νοῦν ἔχοντας, οἷς ἔστιν γυνή,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:945",
+   "text": "πρὸς τὴν ἐν οἴκοις ἄλοχον ἐσφοιτᾶν ἐᾶν"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:946",
+   "text": "γυναῖκας· αὗται γὰρ διδάσκαλοι κακῶν·"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:947",
+   "text": "ἣ μέν τι κερδαίνουσα συμφθείρει λέχος,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:948",
+   "text": "ἣ δ’ ἀμπλακοῦσα συννοσεῖν αὑτῇ θέλει,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:949",
+   "text": "πολλαὶ δὲ μαργότητι κἀντεῦθεν δόμοι"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:950",
+   "text": "νοσοῦσιν ἀνδρῶν. πρὸς τάδ’ εὖ φυλάσσετε"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:951",
+   "text": "κλῄθροισι καὶ μοχλοῖσι δωμάτων πύλας·"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:952",
+   "text": "ὑγιὲς γὰρ οὐδὲν αἱ θύραθεν εἴσοδοι"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:953",
+   "text": "δρῶσιν γυναικῶν, ἀλλὰ πολλὰ καὶ κακά."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:954",
+   "text": "ἄγαν ἐφῆκας γλῶσσαν εἰς τὸ σύμφυτον."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:955",
+   "text": "συγγνωστὰ μέν νυν σοὶ τάδ’, ἀλλ’ ὅμως χρεὼν"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:956",
+   "text": "κοσμεῖν γυναῖκας τὰς γυναικείας νόσους."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:957",
+   "text": "σοφόν τι χρῆμα τοῦ διδάξαντος βροτοὺς"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:958",
+   "text": "λόγους ἀκούειν τῶν ἐναντίων πάρα."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:959",
+   "text": "ἐγὼ γὰρ εἰδὼς τῶνδε σύγχυσιν δόμων"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:960",
+   "text": "ἔριν τε τὴν σὴν καὶ γυναικὸς Ἕκτορος,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:961",
+   "text": "φυλακὰς ἔχων ἔμιμνον, εἴτ’ αὐτοῦ μενεῖς"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:962",
+   "text": "εἴτ’ ἐκφοβηθεῖσ’ αἰχμαλωτίδος φόνῳ"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:963",
+   "text": "γυναικὸς οἴκων τῶνδ’ ἀπηλλάχθαι θέλεις."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:964",
+   "text": "ἦλθον δὲ σὰς μὲν οὐ σέβων ἐπιστολάς,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:965",
+   "text": "εἰ δ’ ἐνδιδοίης, ὥσπερ ἐνδίδως, λόγον,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:966",
+   "text": "πέμψων σ’ ἀπ’ οἴκων τῶνδ’. ἐμὴ γὰρ οὖσα πρὶν"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:967",
+   "text": "σὺν τῷδε ναίεις ἀνδρὶ σοῦ πατρὸς κάκῃ,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:968",
+   "text": "ὃς πρὶν τὰ Τροίας εἰσβαλεῖν ὁρίσματα"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:969",
+   "text": "γυναῖκ’ ἐμοί σε δοὺς ὑπέσχεθ’ ὕστερον"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:970",
+   "text": "τῷ νῦν σ’ ἔχοντι, Τρῳάδ’ εἰ πέρσοι πόλιν."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:971",
+   "text": "ἐπεὶ δ’ Ἀχιλλέως δεῦρ’ ἐνόστησεν γόνος,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:972",
+   "text": "σῷ μὲν συνέγνων πατρί, τὸν δ’ ἐλισσόμην"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:973",
+   "text": "γάμους ἀφεῖναι σούς, ἐμὰς λέγων τύχας"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:974",
+   "text": "καὶ τὸν παρόντα δαίμον’, ὡς φίλων μὲν ἂν"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:975",
+   "text": "γήμαιμ’ ἀπ’ ἀνδρῶν, ἔκτοθεν δ’ οὐ ῥᾳδίως,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:976",
+   "text": "φεύγων ἀπ’ οἴκων ἃς ἐγὼ φεύγω φυγάς."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:977",
+   "text": "ὃ δ’ ἦν ὑβριστὴς εἴς τ’ ἐμῆς μητρὸς φόνον"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:978",
+   "text": "τάς θ’ αἱματωποὺς θεὰς ὀνειδίζων ἐμοί."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:979",
+   "text": "κἀγὼ ταπεινὸς ὢν τύχαις ταῖς οἴκοθεν"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:980",
+   "text": "ἤλγουν μὲν ἤλγουν, συμφοραῖς δ’ ἠνειχόμην,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:981",
+   "text": "σῶν δὲ στερηθεὶς ᾠχόμην ἄκων γάμων."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:982",
+   "text": "νῦν οὖν, ἐπειδὴ περιπετεῖς ἔχεις τύχας"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:983",
+   "text": "καὶ ξυμφορὰν τήνδ’ εἰσπεσοῦσ’ ἀμηχανεῖς,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:984",
+   "text": "ἄξω σ’ ἀπ’ οἴκων καὶ πατρὸς δώσω χερί."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:985",
+   "text": "τὸ συγγενὲς γὰρ δεινόν, ἔν τε τοῖς κακοῖς"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:986",
+   "text": "οὐκ ἔστιν οὐδὲν κρεῖσσον οἰκείου φίλου."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:987",
+   "text": "νυμφευμάτων μὲν τῶν ἐμῶν πατὴρ ἐμὸς"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:988",
+   "text": "μέριμναν ἕξει, κοὐκ ἐμὸν κρίνειν τόδε."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:989",
+   "text": "ἀλλ’ ὡς τάχιστα τῶνδέ μ’ ἔκπεμψον δόμων,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:990",
+   "text": "μὴ φθῇ με προσβὰς δῶμα καὶ μολὼν πόσις,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:991",
+   "text": "ἢ πρέσβυς οἴκους μ’ ἐξερημοῦσαν μαθὼν"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:992",
+   "text": "Πηλεὺς μετέλθῃ πωλικοῖς διώγμασιν."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:993",
+   "text": "θάρσει γέροντος χεῖρα· τὸν δ’ Ἀχιλλέως"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:994",
+   "text": "μηδὲν φοβηθῇς παῖδ’, ὅσ’ εἰς ἔμ’ ὕβρισε."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:995",
+   "text": "τοία γὰρ αὐτῷ μηχανὴ πεπλεγμένη"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:996",
+   "text": "βρόχοις ἀκινήτοισιν ἕστηκεν φόνου"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:997",
+   "text": "πρὸς τῆσδε χειρός· ἣν πάρος μὲν οὐκ ἐρῶ,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:998",
+   "text": "τελουμένων δὲ Δελφὶς εἴσεται πέτρα."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:999",
+   "text": "ὁ μητροφόντης δ’, ἢν δορυξένων ἐμῶν"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1000",
+   "text": "μείνωσιν ὅρκοι Πυθικὴν ἀνὰ χθόνα,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1001",
+   "text": "δείξει γαμεῖν σφε μηδέν’ ὧν ἐχρῆν ἐμέ."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1002",
+   "text": "πικρῶς δὲ πατρὸς φόνιον αἰτήσει δίκην"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1003",
+   "text": "ἄνακτα Φοῖβον· οὐδέ νιν μετάστασις"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1004",
+   "text": "γνώμης ὀνήσει θεῷ διδόντα νῦν δίκας,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1005",
+   "text": "ἀλλ’ ἔκ τ’ ἐκείνου διαβολαῖς τε ταῖς ἐμαῖς"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1006",
+   "text": "κακῶς ὀλεῖται· γνώσεται δ’ ἔχθραν ἐμήν."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1007",
+   "text": "ἐχθρῶν γὰρ ἀνδρῶν μοῖραν εἰς ἀναστροφὴν"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1008",
+   "text": "δαίμων δίδωσι κοὐκ ἐᾷ φρονεῖν μέγα."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1009",
+   "text": "ὦ Φοῖβε πυργώσας τὸν ἐν Ἰλίῳ εὐτειχῆ πάγον"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1010",
+   "text": "καὶ πόντιε κυανέαις ἵπποις διφρεύ-"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1011",
+   "text": "ων ἅλιον πέλαγος,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1012",
+   "text": "τίνος οὕνεκ’ ἄτιμον ὀργᾶς"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1015",
+   "text": "ἃν χέρα τεκτοσύνας Ἐ-"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1016",
+   "text": "νυαλίῳ δοριμήστορι προσθέν-"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1017",
+   "text": "τες τάλαιναν τάλαι-"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1018",
+   "text": "ναν μεθεῖτε Τροίαν;"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1019",
+   "text": "πλείστους δ’ ἐπ’ ἀκταῖσιν Σιμοεντίσιν εὐίππους"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1019a",
+   "text": "ὄχους"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1020",
+   "text": "ἐζεύξατε καὶ φονίους ἀνδρῶν ἁμίλ-"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1021",
+   "text": "λας ἔθετ’ ἀστεφάνους·"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1022",
+   "text": "ἀπὸ δὲ φθίμενοι βεβᾶσιν"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1023",
+   "text": "Ἰλιάδαι βασιλῆες,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1024",
+   "text": "οὐδ’ ἔτι πῦρ ἐπιβώμιον ἐν Τροί-"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1025",
+   "text": "ᾳ θεοῖσιν λέλαμ-"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1026",
+   "text": "πεν καπνῷ θυώδει."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1027",
+   "text": "βέβακε δ’ Ἀτρείδας ἀλόχου παλάμαις,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1028",
+   "text": "αὐτά τ’ ἐναλλάξασα φόνον θανάτῳ"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1030",
+   "text": "πρὸς τέκνων ἀπηύρα"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1031",
+   "text": "θεοῦ. θεοῦ νιν κέλευμ’ ἐπεστράφη"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1032",
+   "text": "μαντόσυνον, ὅτε νιν Ἀργόθεν πορευθεὶς"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1033",
+   "text": "Ἀγαμεμνόνιος κέλωρ, ἀδύτων ἐπιβὰς"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1035",
+   "text": "κτεάνων, ματρὸς φονεὺς"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1036",
+   "text": "ὦ δαῖμον, ὦ Φοῖβε, πῶς πείθομαι;"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1037",
+   "text": "πολλαὶ δ’ ἀν’ Ἑλλάνων ἀγόρους στοναχὰς"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1039",
+   "text": "μέλποντο δυστάνων τεκέων, ἄλοχοι δ’"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1040",
+   "text": "ἐξέλειπον οἴκους"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1041",
+   "text": "πρὸς ἄλλον εὐνάτορ’. οὐχὶ σοὶ μόνᾳ"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1042",
+   "text": "δύσφρονες ἐπέπεσον, οὐ φίλοισι, λῦπαι·"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1044",
+   "text": "νόσον Ἑλλὰς ἔτλα, νόσον· διέβα δὲ Φρυγῶν"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1045",
+   "text": "καὶ πρὸς εὐκάρπους γύας"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1046",
+   "text": "σκηπτὸς σταλάσσων τὸν Ἅιδα φόνον."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1047",
+   "text": "Φθιώτιδες γυναῖκες, ἱστοροῦντί μοι"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1048",
+   "text": "σημήνατ’· ᾐσθόμην γὰρ οὐ σαφῆ λόγον"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1049",
+   "text": "ὡς δώματ’ ἐκλιποῦσα Μενέλεω κόρη"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1050",
+   "text": "φρούδη τάδ’· ἥκω δ’ ἐκμαθεῖν σπουδὴν ἔχων"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1051",
+   "text": "εἰ ταῦτ’ ἀληθῆ· τῶν γὰρ ἐκδήμων φίλων"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1052",
+   "text": "δεῖ τοὺς κατ’ οἶκον ὄντας ἐκπονεῖν τύχας."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1053",
+   "text": "Πηλεῦ, σαφῶς ἤκουσας· οὐδ’ ἐμοὶ καλὸν"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1054",
+   "text": "κρύπτειν ἐν οἷς παροῦσα τυγχάνω κακοῖς·"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1055",
+   "text": "βασίλεια γὰρ τῶνδ’ οἴχεται φυγὰς δόμων."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1056",
+   "text": "τίνος φόβου τυχοῦσα; διαπέραινέ μοι."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1057",
+   "text": "πόσιν τρέμουσα, μὴ δόμων νιν ἐκβάλῃ."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1058",
+   "text": "μῶν ἀντὶ παιδὸς θανασίμων βουλευμάτων;"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1059",
+   "text": "ναί, καὶ γυναικὸς αἰχμαλωτίδος φόβῳ."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1060",
+   "text": "σὺν πατρὶ δ’ οἴκους ἢ τίνος λείπει μέτα;"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1061",
+   "text": "Ἀγαμέμνονός νιν παῖς βέβηκ’ ἄγων χθονός."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1062",
+   "text": "ποίαν περαίνων ἐλπίδ’; ἦ γῆμαι θέλων;"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1063",
+   "text": "καὶ σῷ γε παιδὸς παιδὶ πορσύνων μόρον."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1064",
+   "text": "κρυπτὸς καταστὰς ἢ κατ’ ὄμμ’ ἐλθὼν μάχῃ;"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1065",
+   "text": "ἁγνοῖς ἐν ἱεροῖς Λοξίου Δελφῶν μέτα."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1066",
+   "text": "οἴμοι· τόδ’ ἤδη δεινόν. οὐχ ὅσον τάχος"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1067",
+   "text": "χωρήσεταί τις Πυθικὴν πρὸς ἑστίαν"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1068",
+   "text": "καὶ τἀνθάδ’ ὄντα τοῖς ἐκεῖ λέξει φίλοις,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1069",
+   "text": "πρὶν παῖδ’ Ἀχιλλέως κατθανεῖν ἐχθρῶν ὕπο;"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1070",
+   "text": "ὤμοι μοι·"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1070a",
+   "text": "οἵας ὁ τλήμων ἀγγελῶν ἥκω τύχας"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1071",
+   "text": "σοί τ’, ὦ γεραιέ, καὶ φίλοισι δεσπότου."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1072",
+   "text": "αἰαῖ· πρόμαντις θυμὸς ὥς τι προσδοκᾷ."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1073",
+   "text": "οὐκ ἔστι σοι παῖς παιδός, ὡς μάθῃς, γέρον"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1074",
+   "text": "Πηλεῦ· τοιάσδε φασγάνων πληγὰς ἔχει"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1075",
+   "text": "Δελφῶν ὑπ’ ἀνδρῶν καὶ Μυκηναίου ξένου."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1076",
+   "text": "ἆ ἆ, τί δράσεις, ὦ γεραιέ; μὴ πέσῃς·"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1077",
+   "text": "ἔπαιρε σαυτόν."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1077b",
+   "text": "οὐδέν εἰμ’· ἀπωλόμην."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1078",
+   "text": "φρούδη μὲν αὐδή, φροῦδα δ’ ἄρθρα μου κάτω."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1079",
+   "text": "ἄκουσον, εἰ καὶ σοῖς φίλοις ἀμυναθεῖν"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1080",
+   "text": "χρῄζεις, τὸ πραχθέν, σὸν κατορθώσας δέμας."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1081",
+   "text": "ὦ μοῖρα, γήρως ἐσχάτοις πρὸς τέρμασιν"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1082",
+   "text": "οἵα με τὸν δύστηνον ἀμφιβᾶσ’ ἔχεις."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1083",
+   "text": "πῶς δ’ οἴχεταί μοι παῖς μόνου παιδὸς μόνος;"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1084",
+   "text": "σήμαιν’· ἀκοῦσαι δ’ οὐκ ἀκούσθ’ ὅμως θέλω."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1085",
+   "text": "ἐπεὶ τὸ κλεινὸν ἤλθομεν Φοίβου πέδον,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1086",
+   "text": "τρεῖς μὲν φαεννὰς ἡλίου διεξόδους"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1087",
+   "text": "θέᾳ διδόντες ὄμματ’ ἐξεπίμπλαμεν."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1088",
+   "text": "καὶ τοῦθ’ ὕποπτον ἦν ἄρ’· εἰς δὲ συστάσεις"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1089",
+   "text": "κύκλους τ’ ἐχώρει λαὸς οἰκήτωρ θεοῦ."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1090",
+   "text": "Ἀγαμέμνονος δὲ παῖς διαστείχων πόλιν"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1091",
+   "text": "ἐς οὖς ἑκάστῳ δυσμενεῖς ηὔδα λόγους·"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1092",
+   "text": "Ὁρᾶτε τοῦτον, ὃς διαστείχει θεοῦ"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1093",
+   "text": "χρυσοῦ γέμοντα γύαλα, θησαυροὺς βροτῶν,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1094",
+   "text": "τὸ δεύτερον παρόντ’ ἐφ’ οἷσι καὶ πάρος"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1095",
+   "text": "δεῦρ’ ἦλθε, Φοίβου ναὸν ἐκπέρσαι θέλων;"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1096",
+   "text": "κἀκ τοῦδ’ ἐχώρει ῥόθιον ἐν πόλει κακόν·"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1097",
+   "text": "ἀρχαί τε, πληροῦντές τε βουλευτήρια,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1098",
+   "text": "ἰδίᾳ θ’ ὅσοι θεοῦ χρημάτων ἐφέστασαν,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1099",
+   "text": "φρουρὰν ἐτάξαντ’ ἐν περιστύλοις δόμοις."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1100",
+   "text": "ἡμεῖς δὲ μῆλα, φυλλάδος Παρνασίας"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1101",
+   "text": "παιδεύματ’, οὐδὲν τῶνδέ πω πεπυσμένοι,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1102",
+   "text": "λαβόντες ᾖμεν ἐσχάραις τ’ ἐφέσταμεν"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1103",
+   "text": "σὺν προξένοισι μάντεσίν τε Πυθικοῖς."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1104",
+   "text": "καί τις τόδ’ εἶπεν· Ὦ νεανία, τί σοι"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1105",
+   "text": "θεῷ κατευξώμεσθα; τίνος ἥκεις χάριν;"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1106",
+   "text": "ὃ δ’ εἶπε· Φοίβῳ τῆς πάροιθ’ ἁμαρτίας"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1107",
+   "text": "δίκας παρασχεῖν βουλόμεσθ’· ᾔτησα γὰρ"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1108",
+   "text": "πατρός ποτ’ αὐτὸν αἵματος δοῦναι δίκην."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1109",
+   "text": "κἀνταῦθ’ Ὀρέστου μῦθος ἰσχύων μέγα"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1110",
+   "text": "ἐφαίνεθ’, ὡς ψεύδοιτο δεσπότης ἐμός,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1111",
+   "text": "ἥκων ἐπ’ αἰσχροῖς. ἔρχεται δ’ ἀνακτόρων"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1112",
+   "text": "κρηπῖδος ἐντός, ὡς πάρος χρηστηρίων"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1113",
+   "text": "εὔξαιτο Φοίβῳ· τυγχάνει δ’ ἐν ἐμπύροις·"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1114",
+   "text": "τῷ δὲ ξιφήρης ἆρ’ ὑφειστήκει λόχος"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1115",
+   "text": "δάφνῃ σκιασθείς· ὧν Κλυταιμήστρας τόκος"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1116",
+   "text": "εἷς ἦν ἁπάντων τῶνδε μηχανορράφος."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1117",
+   "text": "χὣ μὲν κατ’ ὄμμα στὰς προσεύχεται θεῷ·"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1118",
+   "text": "οἳ δ’ ὀξυθήκτοις φασγάνοις ὡπλισμένοι"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1119",
+   "text": "κεντοῦσ’ ἀτευχῆ παῖδ’ Ἀχιλλέως λάθρᾳ."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1120",
+   "text": "χωρεῖ δὲ πρύμναν· οὐ γὰρ εἰς καιρὸν τυπεὶς"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1121",
+   "text": "ἐτύγχαν’· ἐξέλκει δὲ καὶ παραστάδος"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1122",
+   "text": "κρεμαστὰ τεύχη πασσάλων καθαρπάσας"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1123",
+   "text": "ἔστη ’πὶ βωμοῦ γοργὸς ὁπλίτης ἰδεῖν,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1124",
+   "text": "βοᾷ δὲ Δελφῶν παῖδας ἱστορῶν τάδε·"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1125",
+   "text": "Τίνος μ’ ἕκατι κτείνετ’ εὐσεβεῖς ὁδοὺς"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1126",
+   "text": "ἥκοντα; ποίας ὄλλυμαι πρὸς αἰτίας;—"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1127",
+   "text": "τῶν δ’ οὐδὲν οὐδεὶς μυρίων ὄντων πέλας"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1128",
+   "text": "ἐφθέγξατ’, ἀλλ’ ἔβαλλον ἐκ χερῶν πέτροις."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1129",
+   "text": "πυκνῇ δὲ νιφάδι πάντοθεν σποδούμενος"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1130",
+   "text": "προὔτεινε τεύχη κἀφυλάσσετ’ ἐμβολὰς"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1131",
+   "text": "ἐκεῖσε κἀκεῖσ’ ἀσπίδ’ ἐκτείνων χερί."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1132",
+   "text": "ἀλλ’ οὐδὲν ἦνεν· ἀλλὰ πόλλ’ ὁμοῦ βέλη,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1133",
+   "text": "οἰστοί, μεσάγκυλ’ ἔκλυτοί τ’ ἀμφώβολοι,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1134",
+   "text": "σφαγῆς ἐχώρουν βουπόροι ποδῶν πάρος."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1135",
+   "text": "δεινὰς δ’ ἂν εἶδες πυρρίχας φρουρουμένου"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1136",
+   "text": "βέλεμνα παιδός. ὡς δέ νιν περισταδὸν"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1137",
+   "text": "κύκλῳ κατεῖχον οὐ διδόντες ἀμπνοάς,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1138",
+   "text": "βωμοῦ κενώσας δεξίμηλον ἐσχάραν,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1139",
+   "text": "τὸ Τρωικὸν πήδημα πηδήσας ποδοῖν"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1140",
+   "text": "χωρεῖ πρὸς αὐτούς· οἳ δ’ ὅπως πελειάδες"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1141",
+   "text": "ἱέρακ’ ἰδοῦσαι πρὸς φυγὴν ἐνώτισαν."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1142",
+   "text": "πολλοὶ δ’ ἔπιπτον μιγάδες ἔκ τε τραυμάτων"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1143",
+   "text": "αὐτοί θ’ ὑπ’ αὐτῶν στενοπόρους κατ’ ἐξόδους,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1144",
+   "text": "κραυγὴ δ’ ἐν εὐφήμοισι δύσφημος δόμοις"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1145",
+   "text": "πέτραισιν ἀντέκλαγξ’· ἐν εὐδίᾳ δέ πως"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1146",
+   "text": "ἔστη φαεννοῖς δεσπότης στίλβων ὅπλοις·"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1147",
+   "text": "πρὶν δή τις ἀδύτων ἐκ μέσων ἐφθέγξατο"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1148",
+   "text": "δεινόν τι καὶ φρικῶδες, ὦρσε δὲ στρατὸν"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1149",
+   "text": "στρέψας πρὸς ἀλκήν. ἔνθ’ Ἀχιλλέως πίτνει"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1150",
+   "text": "παῖς ὀξυθήκτῳ πλευρὰ φασγάνῳ τυπεὶς"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1151",
+   "text": "Δελφοῦ πρὸς ἀνδρός, ὅσπερ αὐτὸν ὤλεσε,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1152",
+   "text": "πολλῶν μετ’ ἄλλων· ὡς δὲ πρὸς γαῖαν πίτνει,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1153",
+   "text": "τίς οὐ σίδηρον προσφέρει, τίς οὐ πέτρον,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1154",
+   "text": "βάλλων ἀράσσων; πᾶν δ’ ἀνήλωται δέμας"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1155",
+   "text": "τὸ καλλίμορφον τραυμάτων ὑπ’ ἀγρίων."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1156",
+   "text": "νεκρὸν δὲ δή νιν κείμενον βωμοῦ πέλας"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1157",
+   "text": "ἐξέβαλον ἐκτὸς θυοδόκων ἀνακτόρων."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1158",
+   "text": "ἡμεῖς δ’ ἀναρπάσαντες ὡς τάχος χεροῖν"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1159",
+   "text": "κομίζομέν νιν σοὶ κατοιμῶξαι γόοις"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1160",
+   "text": "κλαῦσαί τε, πρέσβυ, γῆς τε κοσμῆσαι τάφῳ."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1161",
+   "text": "τοιαῦθ’ ὁ τοῖς ἄλλοισι θεσπίζων ἄναξ,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1162",
+   "text": "ὁ τῶν δικαίων πᾶσιν ἀνθρώποις κριτής,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1163",
+   "text": "δίκας διδόντα παῖδ’ ἔδρασ’ Ἀχιλλέως."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1164",
+   "text": "ἐμνημόνευσε δ’, ὥσπερ ἄνθρωπος κακός,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1165",
+   "text": "παλαιὰ νείκη· πῶς ἂν οὖν εἴη σοφός;"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1166",
+   "text": "καὶ μὴν ὅδ’ ἄναξ ἤδη φοράδην"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1167",
+   "text": "Δελφίδος ἐκ γῆς δῶμα πελάζει."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1168",
+   "text": "τλήμων ὁ παθών, τλήμων δέ, γέρον,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1169",
+   "text": "καὶ σύ· δέχῃ γὰρ τὸν Ἀχίλλειον"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1170",
+   "text": "σκύμνον ἐς οἴκους οὐχ ὡς σὺ θέλεις·"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1171",
+   "text": "αὐτός τε κακοῖς πήμασι κύρσας"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1172",
+   "text": "εἰς ἓν μοίρας συνέκυρσας."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1173",
+   "text": "ὤμοι ἐγώ, κακὸν οἷον ὁρῶ τόδε"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1174",
+   "text": "καὶ δέχομαι χερὶ δώμασί τ’ ἀμοῖς."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1175",
+   "text": "ἰώ μοί μοι, αἰαῖ,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1176",
+   "text": "ὦ πόλι Θεσσαλία, διολώλαμεν,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1177",
+   "text": "οἰχόμεθ’· οὐκέτι μοι γένος, οὐκέτι μοι τέκνα"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1178",
+   "text": "λείπεται οἴκοις·"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1179",
+   "text": "ὦ σχέτλιος παθέων ἐγώ· εἰς τίνα"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1180",
+   "text": "δὴ φίλον αὐγὰς βάλλων τέρψομαι;"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1181",
+   "text": "ὦ φίλιον στόμα καὶ γένυ καὶ χέρες,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1182",
+   "text": "εἴθε σ’ ὑπ’ Ἰλίῳ ἤναρε δαίμων"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1183",
+   "text": "Σιμοεντίδα παρ’ ἀκτάν."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1184",
+   "text": "οὗτός τ’ ἂν ὡς ἐκ τῶνδ’ ἐτιμᾶτ’ ἄν, γέρον,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1185",
+   "text": "θανών, τὸ σὸν δ’ ἦν ὧδ’ ἂν εὐτυχέστερον."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1186",
+   "text": "ὦ γάμος, ὦ γάμος, ὃς τάδε δώματα"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1187",
+   "text": "καὶ πόλιν ἀμὰν ὤλεσας· αἰαῖ,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1188",
+   "text": "ἒ ἔ· ὦ παῖ,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1189",
+   "text": "μήποτε σῶν λεχέων τὸ δυσώνυμον"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1190",
+   "text": "ὤφελ’ ἐμὸν γένος εἰς τέκνα καὶ δόμον"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1191",
+   "text": "ἀμφιβαλέσθαι"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1192",
+   "text": "Ἑρμιόνας Ἀίδαν ἐπὶ σοί, τέκνον,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1193",
+   "text": "ἀλλὰ κεραυνῷ πρόσθεν ὀλέσθαι·"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1194",
+   "text": "μηδ’ ἐπὶ τοξοσύνᾳ φονίῳ πατρὸς"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1195",
+   "text": "αἷμα τὸ διογενές ποτε Φοίβου"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1196",
+   "text": "βροτὸς εἰς θεὸν ἀνάψαι."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1197",
+   "text": "ὀττοτοτοτοῖ, θανόντα δεσπόταν γόοις"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1198",
+   "text": "νόμῳ τῷ"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1199",
+   "text": "νερτέρων κατάρξω."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1200",
+   "text": "ὀττοτοτοτοῖ, διάδοχα δ’ ὦ τάλας ἐγὼ"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1201",
+   "text": "γέρων καὶ"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1202",
+   "text": "δυστυχὴς δακρύω."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1203",
+   "text": "θεοῦ γὰρ αἶσα, θεὸς ἔκρανε συμφοράν."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1204",
+   "text": "ὦ φίλος,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1205",
+   "text": "δόμον ἔλιπες ἔρημον,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1206",
+   "text": "ὤμοι μοι, ταλαίπωρον ἐμὲ"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1207",
+   "text": "γέροντ’ ἄπαιδα νοσφίσας."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1208",
+   "text": "θανεῖν θανεῖν σε, πρέσβυ, χρῆν πάρος τέκνων."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1209",
+   "text": "οὐ σπαράξομαι κόμαν,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1210",
+   "text": "οὐκ ἐμῷ ’πιθήσομαι"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1211",
+   "text": "κάρᾳ κτύπημα χειρὸς ὀλοόν; ὦ πόλις,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1212",
+   "text": "διπλῶν τέκνων"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1213",
+   "text": "μ’ ἐστέρησ’ ὁ Φοῖβος."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1214",
+   "text": "ὦ κακὰ παθὼν ἰδών τε δυστυχὴς γέρον,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1214a",
+   "text": "τίν’ αἰῶν’"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1215",
+   "text": "εἰς τὸ λοιπὸν ἕξεις;"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1216",
+   "text": "ἄτεκνος ἔρημος, οὐκ ἔχων πέρας κακῶν"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1216a",
+   "text": "διαντλή-"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1217",
+   "text": "σω πόνους ἐς Ἅιδαν."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1218",
+   "text": "μάτην δέ σ’ ἐν γάμοισιν ὤλβισαν θεοί."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1219",
+   "text": "ἀμπτάμενα"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1219a",
+   "text": "φροῦδα πάντα, κεῖται"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1220",
+   "text": "κόμπων μεταρσίων πρόσω."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1221",
+   "text": "μόνος μόνοισιν ἐν δόμοις ἀναστρέφῃ."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1222",
+   "text": "οὐκέτ’ εἶ, πόλις, πόλις,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1223",
+   "text": "σκῆπτρά τ’ ἐρρέτω τάδε ἐπὶ γαῖαν,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1224",
+   "text": "σύ τ’, ὦ κατ’ ἄντρα νύχια Νηρέως κόρη,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1224a",
+   "text": "πανώλεθρόν"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1225",
+   "text": "μ’ ὄψεαι πίτνοντα πρὸς γᾶν."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1226",
+   "text": "ἰὼ ἰώ·"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1226a",
+   "text": "τί κεκίνηται; τίνος αἰσθάνομαι"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1227",
+   "text": "θείου; κοῦραι, λεύσσετ’ ἀθρήσατε·"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1228",
+   "text": "δαίμων ὅδε τις λευκὴν αἰθέρα"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1229",
+   "text": "πορθμευόμενος τῶν ἱπποβότων"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1230",
+   "text": "Φθίας πεδίων ἐπιβαίνει."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1231",
+   "text": "Πηλεῦ, χάριν σοι τῶν πάρος νυμφευμάτων"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1232",
+   "text": "ἥκω Θέτις λιποῦσα Νηρέως δόμους."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1233",
+   "text": "καὶ πρῶτα μέν δὴ τοῖς παρεστῶσιν κακοῖς"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1234",
+   "text": "μηδέν τι λίαν δυσφορεῖν παρῄνεσα·"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1235",
+   "text": "κἀγὼ γάρ, ἣν ἄκλαυτα χρῆν τίκτειν τέκνα,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1236",
+   "text": "ἀπώλεσ’ ἐκ σοῦ παῖδα τὸν ταχὺν πόδας"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1237",
+   "text": "Ἀχιλλέα τεκοῦσα πρῶτον Ἑλλάδος."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1238",
+   "text": "ὧν δ’ οὕνεκ’ ἦλθον σημανῶ, σὺ δ’ ἐνδέχου."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1239",
+   "text": "τὸν μὲν θανόντα τόνδ’ Ἀχιλλέως γόνον"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1240",
+   "text": "θάψον πορεύσας Πυθικὴν πρὸς ἐσχάραν,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1241",
+   "text": "Δελφοῖς ὄνειδος, ὡς ἀπαγγέλλῃ τάφος"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1242",
+   "text": "φόνον βίαιον τῆς Ὀρεστείας χερός·"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1243",
+   "text": "γυναῖκα δ’ αἰχμάλωτον, Ἀνδρομάχην λέγω,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1244",
+   "text": "Μολοσσίαν γῆν χρὴ κατοικῆσαι, γέρον,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1245",
+   "text": "Ἑλένῳ συναλλαχθεῖσαν εὐναίοις γάμοις,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1246",
+   "text": "καὶ παῖδα τόνδε, τῶν ἀπ’ Αἰακοῦ μόνον"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1247",
+   "text": "λελειμμένον δή. βασιλέα δ’ ἐκ τοῦδε χρὴ"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1248",
+   "text": "ἄλλον δι’ ἄλλου διαπερᾶν Μολοσσίας"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1249",
+   "text": "εὐδαιμονοῦντας· οὐ γὰρ ὧδ’ ἀνάστατον"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1250",
+   "text": "γένος γενέσθαι δεῖ τὸ σὸν κἀμόν, γέρον,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1251",
+   "text": "Τροίας τε· καὶ γὰρ θεοῖσι κἀκείνης μέλει,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1252",
+   "text": "καίπερ πεσούσης Παλλάδος προθυμίᾳ."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1253",
+   "text": "σὲ δ’, ὡς ἂν εἰδῇς τῆς ἐμῆς εὐνῆς χάριν,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1254",
+   "text": "θεὰ γεγῶσα καὶ θεοῦ πατρὸς τέκος,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1255",
+   "text": "κακῶν ἀπαλλάξασα τῶν βροτησίων"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1256",
+   "text": "ἀθάνατον ἄφθιτόν τε ποιήσω θεόν."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1257",
+   "text": "κἄπειτα Νηρέως ἐν δόμοις ἐμοῦ μέτα"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1258",
+   "text": "τὸ λοιπὸν ἤδη θεὸς συνοικήσεις θεᾷ·"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1259",
+   "text": "ἔνθεν κομίζων ξηρὸν ἐκ πόντου πόδα"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1260",
+   "text": "τὸν φίλτατον σοὶ παῖδ’ ἐμοί τ’ Ἀχιλλέα"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1261",
+   "text": "ὄψῃ δόμους ναίοντα νησιωτικοὺς"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1262",
+   "text": "Λευκὴν κατ’ ἀκτὴν ἐντὸς Εὐξείνου πόρου."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1263",
+   "text": "ἀλλ’ ἕρπε Δελφῶν εἰς θεόδμητον πόλιν"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1264",
+   "text": "νεκρὸν κομίζων τόνδε, καὶ κρύψας χθονὶ"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1265",
+   "text": "ἐλθὼν παλαιᾶς χοιράδος κοῖλον μυχὸν"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1266",
+   "text": "Σηπιάδος ἵζου· μίμνε δ’, ἔστ’ ἂν ἐξ ἁλὸς"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1267",
+   "text": "λαβοῦσα πεντήκοντα Νηρῄδων χορὸν"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1268",
+   "text": "ἔλθω κομιστήν σου· τὸ γὰρ πεπρωμένον"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1269",
+   "text": "δεῖ σ’ ἐκκομίζειν· Ζηνὶ γὰρ δοκεῖ τάδε."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1270",
+   "text": "παῦσαι δὲ λύπης τῶν τεθνηκότων ὕπερ·"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1271",
+   "text": "πᾶσιν γὰρ ἀνθρώποισιν ἥδε πρὸς θεῶν"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1272",
+   "text": "ψῆφος κέκρανται κατθανεῖν τ’ ὀφείλεται."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1273",
+   "text": "ὦ πότνι’, ὦ γενναῖα συγκοιμήματα,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1274",
+   "text": "Νηρέως γένεθλον, χαῖρε· ταῦτα δ’ ἀξίως"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1275",
+   "text": "σαυτῆς τε ποιεῖς καὶ τέκνων τῶν ἐκ σέθεν."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1276",
+   "text": "παύω δὲ λύπην σοῦ κελευούσης, θεά,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1277",
+   "text": "καὶ τόνδε θάψας εἶμι Πηλίου πτυχάς,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1278",
+   "text": "οὗπερ σὸν εἷλον χερσὶ κάλλιστον δέμας."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1279",
+   "text": "κᾆτ’ οὐ γαμεῖν δῆτ’ ἔκ τε γενναίων χρεὼν"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1280",
+   "text": "δοῦναί τ’ ἐς ἐσθλούς, ὅστις εὖ βουλεύεται,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1281",
+   "text": "κακῶν δὲ λέκτρων μὴ ’πιθυμίαν ἔχειν,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1282",
+   "text": "μηδ’ εἰ ζαπλούτους οἴσεται φερνὰς δόμοις;"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1283",
+   "text": "οὐ γάρ ποτ’ ἂν πράξειαν ἐκ θεῶν κακῶς."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1284",
+   "text": "πολλαὶ μορφαὶ τῶν δαιμονίων,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1285",
+   "text": "πολλὰ δ’ ἀέλπτως κραίνουσι θεοί·"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1286",
+   "text": "καὶ τὰ δοκηθέντ’ οὐκ ἐτελέσθη,"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1287",
+   "text": "τῶν δ’ ἀδοκήτων πόρον ηὗρε θεός."
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2:1288",
+   "text": "τοιόνδ’ ἀπέβη τόδε πρᾶγμα."
+  }
+ ]
+}
