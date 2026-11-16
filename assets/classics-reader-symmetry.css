@@ -141,3 +141,73 @@ html[data-theme="dark"] .cl-unified-reading-actions :is(button,a,select){
  html:not([data-parallel-view="true"]) .cl-unified-reading-actions>.cl-translation-tools{flex:1 1 100%}
 }
 @media print{.cl-unified-reading-actions{display:none!important}}
+
+/* Shared reader palette, independently of the site-wide dark UI skin. */
+html:not([data-parallel-view="true"]):not([data-reading-mode="simple"]) body .cl-dual-reader:not(.cl-pdf-mode)>.cl-source-column,
+html:not([data-parallel-view="true"]):not([data-reading-mode="simple"]) body .cl-dual-reader:not(.cl-pdf-mode)>.cl-translation-column{
+ background:var(--cl-shared-bg,#fffdf7)!important;
+ color:var(--cl-shared-fg,#202b35)!important;
+}
+html:not([data-parallel-view="true"]):not([data-reading-mode="simple"]) body .cl-dual-reader .cl-translation-output,
+html:not([data-parallel-view="true"]):not([data-reading-mode="simple"]) body .cl-dual-reader .cl-translation-output>p:not(.cl-caution),
+html:not([data-parallel-view="true"]):not([data-reading-mode="simple"]) body .cl-dual-reader .cl-translation-label,
+html:not([data-parallel-view="true"]):not([data-reading-mode="simple"]) body .cl-dual-reader .cl-translation-meta{
+ background:transparent!important;
+ color:var(--cl-shared-fg,#202b35)!important;
+}
+html:not([data-parallel-view="true"]):not([data-reading-mode="simple"]) body .cl-dual-reader .cl-pane-title{
+ background:#e5e4e0!important;color:#263440!important;
+}
+html:not([data-parallel-view="true"]):not([data-reading-mode="simple"]) body .cl-dual-reader{
+ background:var(--cl-shared-bg,#fffdf7)!important;
+}
+/* True viewport-filling study mode without losing navigation, copy or controls. */
+html.cl-biblio-expanded:not([data-parallel-view="true"]):not([data-reading-mode="simple"]) .reader-grid{
+ position:fixed!important;inset:0!important;z-index:99990!important;
+ display:block!important;margin:0!important;padding:0!important;
+ width:100vw!important;height:100dvh!important;max-width:none!important;
+ background:#18202a!important;overflow:hidden!important;
+}
+html.cl-biblio-expanded:not([data-parallel-view="true"]):not([data-reading-mode="simple"]) .reader-grid>aside{
+ display:none!important;
+}
+html.cl-biblio-expanded:not([data-parallel-view="true"]):not([data-reading-mode="simple"]) .reader-grid>.reader{
+ display:flex!important;flex-direction:column!important;
+ width:100%!important;height:100%!important;max-width:none!important;
+ min-height:0!important;box-sizing:border-box!important;
+ padding:8px 12px!important;overflow:hidden!important;
+ background:#20262e!important;
+}
+html.cl-biblio-expanded:not([data-parallel-view="true"]):not([data-reading-mode="simple"]) .reader-grid>.reader>.reader-toolbar{
+ flex:0 0 auto!important;padding:7px 9px!important;
+ margin:0 0 5px!important;
+}
+html.cl-biblio-expanded:not([data-parallel-view="true"]):not([data-reading-mode="simple"]) .reader-grid>.reader>#reading-reference{
+ flex:0 0 auto!important;margin:3px 0 5px!important;max-height:36px;overflow:auto;
+}
+html.cl-biblio-expanded:not([data-parallel-view="true"]):not([data-reading-mode="simple"]) .reader-grid>.reader>.cl-edition-layout{
+ flex:0 0 auto!important;padding:3px 0 7px!important;gap:5px!important;
+}
+html.cl-biblio-expanded:not([data-parallel-view="true"]):not([data-reading-mode="simple"]) .reader-grid>.reader>.cl-dual-reader{
+ flex:1 1 auto!important;height:auto!important;min-height:0!important;max-height:none!important;
+ overflow:hidden!important;
+}
+html.cl-biblio-expanded:not([data-parallel-view="true"]):not([data-reading-mode="simple"]) body .cl-dual-reader>.cl-source-column,
+html.cl-biblio-expanded:not([data-parallel-view="true"]):not([data-reading-mode="simple"]) body .cl-dual-reader>.cl-translation-column{
+ height:100%!important;max-height:none!important;min-height:0!important;
+}
+html.cl-biblio-expanded:not([data-parallel-view="true"]):not([data-reading-mode="simple"]) .reader-grid>.reader>#lexicon{
+ max-height:18vh;overflow:auto
+}
+.cl-reading-height-control button[aria-pressed=true]{
+ border-color:#b68f4e!important;box-shadow:inset 0 -2px 0 #b68f4e;
+}
+@media(max-width:900px){
+ html.cl-biblio-expanded:not([data-parallel-view="true"]) body .cl-dual-reader>.cl-source-column,
+ html.cl-biblio-expanded:not([data-parallel-view="true"]) body .cl-dual-reader>.cl-translation-column{
+  height:100%!important;max-height:none!important;min-height:0!important
+ }
+}
+@media print{
+ html.cl-biblio-expanded .reader-grid{position:static!important;height:auto!important;overflow:visible!important}
+}
