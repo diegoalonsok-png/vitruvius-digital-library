@@ -290,7 +290,7 @@ function ensureWorker(){
   const data=event.data;if(data.requestId!==requestId)return;
   if(data.type==='progress'){$('#search-status').textContent=data.message;return;}
   $('#search-button').disabled=false;$('#search-button').textContent='Buscar →';
-  if(data.type==='error'){$('#search-status').textContent=data.message;return;}
+  if(data.type==='error'){$('#search-status').textContent=data.message;if(lastQuery&&window.__vdlHomeSearchRescue)void window.__vdlHomeSearchRescue(lastQuery);return;}
   if(data.type==='results'){
    results=data.results;alignedGroups=groupMatchesByLocus(results);countSummary=data.countSummary||null;shown=0;translationRevision++;$('#search-results').replaceChildren();renderCountSummary(countSummary);
    $('#search-status').textContent=(countSummary?countSummary.total.toLocaleString('es-AR')+' apariciones en '+countSummary.passages+' pasajes de las ediciones seleccionadas.':results.length?results.length.toLocaleString('es-AR')+(results.length===1?' coincidencia':' coincidencias')+' con libro, capítulo y sección para «'+lastQuery+'».':'Palabra, frase o locus no encontrado: «'+lastQuery+'» en esta selección. Revisa los filtros o la grafía. Algunas secciones inglesas se conservan agrupadas como en el original.')+(data.warnings?.length?' '+data.warnings.join('. '):'');
@@ -301,7 +301,7 @@ function ensureWorker(){
    }renderMore();$('#export-tools').hidden=!results.length;
   }
  };
- worker.onerror=()=>{$('#search-status').textContent='No se pudo iniciar el buscador. Vuelve a buscar para reintentarlo.';$('#search-button').disabled=false;$('#search-button').textContent='Buscar →';worker.terminate();worker=null;};
+ worker.onerror=()=>{$('#search-status').textContent='No se pudo iniciar el buscador principal. Consultando el índice de respaldo…';$('#search-button').disabled=false;$('#search-button').textContent='Buscar →';worker.terminate();worker=null;if(lastQuery&&window.__vdlHomeSearchRescue)void window.__vdlHomeSearchRescue(lastQuery);};
  return worker;
 }
 function startSearch(){
@@ -667,6 +667,7 @@ async function initialize(){
   // Bind the primary search immediately: catalog rendering or optional metadata
   // must never leave the front-page search form without a submit handler.
   $('#search-form').addEventListener('submit',event=>{event.preventDefault();startSearch();});
+   window.__vdlMainSearchReady=true;
   $('#internet-form').addEventListener('submit',event=>{
     event.preventDefault();
     searchInternet($('#internet-query').value,$('#internet-provider').value,$('#internet-vitruvio').checked);
@@ -766,5 +767,5 @@ async function initialize(){
     startSearch();
   }
 }
-initialize().catch(()=>showError($('#catalog-status'),'No se pudo iniciar el catálogo. Recarga la página.'));
+initialize().catch(error=>{console.error('Vitruvius search startup:',error);showError($('#catalog-status'),'No se pudo iniciar el catálogo.');if($('#search-status'))$('#search-status').textContent='No se pudo iniciar el buscador completo; disponible el índice de recuperación.';});
 
