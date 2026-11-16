@@ -9,14 +9,30 @@
       "language": "grc",
       "genre": "Poesía helenística",
       "dating": "siglo III a. C.",
-      "status": "texto griego indexado por versos",
-      "textStatus": "indexed",
+      "status": "Texto griego incorporado, registrado e indexado léxicamente; sin traducción local ni cotejo crítico independiente",
+      "textStatus": "lexically-indexed",
       "source": "Perseus Digital Library · A. W. Mair (1921)",
       "sourceUrl": "https://github.com/PerseusDL/canonical-greekLit/tree/master/data/tlg0533",
-      "corpusFiles": [
-        "data/classics-corpus/callimachus-hymni-grc.json"
+      "corpusFiles": {
+        "grc": "data/classics-corpus/callimachus-hymni-grc.json"
+      },
+      "description": "Seis himnos griegos transmitidos bajo el nombre de Calímaco; texto de edición moderna histórica, no transcripción diplomática.",
+      "links": {
+        "scaife": "https://scaife.perseus.org/",
+        "gallica": "https://gallica.bnf.fr/",
+        "archive": "https://archive.org/"
+      },
+      "publicStatus": "lectura-local-completa",
+      "localVersions": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/callimachus-hymni-grc.json"
+        }
       ],
-      "description": "Seis himnos griegos transmitidos bajo el nombre de Calímaco; texto de edición moderna histórica, no transcripción diplomática."
+      "reading": {
+        "url": "classics-text-reader.html?work=callimachus-hymni&lang=grc",
+        "status": "Texto griego digital indexado; verificar loci contra la edición citada."
+      }
     },
     {
       "id": "theocritus-idyllia",
@@ -25,14 +41,30 @@
       "language": "grc",
       "genre": "Poesía bucólica",
       "dating": "siglo III a. C.",
-      "status": "texto griego indexado por versos",
-      "textStatus": "indexed",
+      "status": "Texto griego incorporado, registrado e indexado léxicamente; sin traducción local ni cotejo crítico independiente",
+      "textStatus": "lexically-indexed",
       "source": "Perseus Digital Library · R. J. Cholmeley",
       "sourceUrl": "https://github.com/PerseusDL/canonical-greekLit/tree/master/data/tlg0005/tlg001",
-      "corpusFiles": [
-        "data/classics-corpus/theocritus-idyllia-grc.json"
+      "corpusFiles": {
+        "grc": "data/classics-corpus/theocritus-idyllia-grc.json"
+      },
+      "description": "Conjunto editorial de Idilios; algunas atribuciones requieren cautela crítica.",
+      "links": {
+        "scaife": "https://scaife.perseus.org/",
+        "gallica": "https://gallica.bnf.fr/",
+        "archive": "https://archive.org/"
+      },
+      "publicStatus": "lectura-local-completa",
+      "localVersions": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/theocritus-idyllia-grc.json"
+        }
       ],
-      "description": "Conjunto editorial de Idilios; algunas atribuciones requieren cautela crítica."
+      "reading": {
+        "url": "classics-text-reader.html?work=theocritus-idyllia&lang=grc",
+        "status": "Texto griego digital indexado; verificar loci contra la edición citada."
+      }
     },
     {
       "id": "sappho-fragmenta",
@@ -45,7 +77,17 @@
       "textStatus": "not-indexed",
       "source": "Perseus Catalog · J. M. Edmonds, Lyra Graeca (1922)",
       "sourceUrl": "https://catalog.perseus.org/catalog/urn%3Acts%3AgreekLit%3Atlg0009.tlg001.opp-grc1",
-      "description": "Poesía conservada de modo fragmentario; no describir como obra íntegra."
+      "description": "Poesía conservada de modo fragmentario; no describir como obra íntegra.",
+      "links": {
+        "scaife": "https://scaife.perseus.org/",
+        "gallica": "https://gallica.bnf.fr/",
+        "archive": "https://archive.org/"
+      },
+      "publicStatus": "ficha-bibliografica",
+      "reading": {
+        "url": "https://catalog.perseus.org/catalog/urn%3Acts%3AgreekLit%3Atlg0009.tlg001.opp-grc1",
+        "status": "Fuente bibliográfica externa: aún no se incorpora transcripción local verificada."
+      }
     },
     {
       "id": "menander-dyskolos",
@@ -54,14 +96,30 @@
       "language": "grc",
       "genre": "Comedia nueva",
       "dating": "siglos IV–III a. C.",
-      "status": "texto griego indexado por líneas editoriales",
-      "textStatus": "indexed",
+      "status": "Texto griego incorporado, registrado e indexado léxicamente; sin traducción local ni cotejo crítico independiente",
+      "textStatus": "lexically-indexed",
       "description": "Comedia transmitida sustancialmente en papiros; edición digital griega pendiente de identificación y derechos.",
       "source": "GreekDraCor · F. H. Sandbach · Wikisource",
       "sourceUrl": "https://github.com/dracor-org/greekdracor/blob/main/tei/menander-dyskolos.xml",
-      "corpusFiles": [
-        "data/classics-corpus/menander-dyskolos-grc.json"
-      ]
+      "corpusFiles": {
+        "grc": "data/classics-corpus/menander-dyskolos-grc.json"
+      },
+      "links": {
+        "scaife": "https://scaife.perseus.org/",
+        "gallica": "https://gallica.bnf.fr/",
+        "archive": "https://archive.org/"
+      },
+      "publicStatus": "lectura-local-completa",
+      "localVersions": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/menander-dyskolos-grc.json"
+        }
+      ],
+      "reading": {
+        "url": "classics-text-reader.html?work=menander-dyskolos&lang=grc",
+        "status": "Texto griego digital indexado; verificar loci contra la edición citada."
+      }
     },
     {
       "id": "aristophanes-knights",
@@ -72,12 +130,28 @@
       "dating": "424 a. C.",
       "source": "Perseus Digital Library · F. W. Hall y W. M. Geldart (1906)",
       "sourceUrl": "https://github.com/PerseusDL/canonical-greekLit/tree/master/data/tlg0019/tlg002",
-      "textStatus": "registered-not-yet-lexically-indexed",
-      "status": "texto griego incorporado; indexación léxica en proceso",
-      "corpusFiles": [
-        "data/classics-corpus/aristophanes-knights-grc.json"
+      "textStatus": "lexically-indexed",
+      "status": "Texto griego incorporado, registrado e indexado léxicamente; sin traducción local ni cotejo crítico independiente",
+      "corpusFiles": {
+        "grc": "data/classics-corpus/aristophanes-knights-grc.json"
+      },
+      "description": "Texto griego en TEI de Perseus; no es nueva recensio ni cotejo diplomático.",
+      "links": {
+        "scaife": "https://scaife.perseus.org/",
+        "gallica": "https://gallica.bnf.fr/",
+        "archive": "https://archive.org/"
+      },
+      "publicStatus": "lectura-local-completa",
+      "localVersions": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/aristophanes-knights-grc.json"
+        }
       ],
-      "description": "Texto griego en TEI de Perseus; no es nueva recensio ni cotejo diplomático."
+      "reading": {
+        "url": "classics-text-reader.html?work=aristophanes-knights&lang=grc",
+        "status": "Texto griego digital indexado; verificar loci contra la edición citada."
+      }
     },
     {
       "id": "aristophanes-thesmophoriazusae",
@@ -88,12 +162,28 @@
       "dating": "411 a. C.",
       "source": "Perseus Digital Library · F. W. Hall y W. M. Geldart (1907)",
       "sourceUrl": "https://github.com/PerseusDL/canonical-greekLit/tree/master/data/tlg0019/tlg008",
-      "textStatus": "registered-not-yet-lexically-indexed",
-      "status": "texto griego incorporado; indexación léxica en proceso",
-      "corpusFiles": [
-        "data/classics-corpus/aristophanes-thesmophoriazusae-grc.json"
+      "textStatus": "lexically-indexed",
+      "status": "Texto griego incorporado, registrado e indexado léxicamente; sin traducción local ni cotejo crítico independiente",
+      "corpusFiles": {
+        "grc": "data/classics-corpus/aristophanes-thesmophoriazusae-grc.json"
+      },
+      "description": "Texto griego en TEI de Perseus; no es nueva recensio ni cotejo diplomático.",
+      "links": {
+        "scaife": "https://scaife.perseus.org/",
+        "gallica": "https://gallica.bnf.fr/",
+        "archive": "https://archive.org/"
+      },
+      "publicStatus": "lectura-local-completa",
+      "localVersions": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/aristophanes-thesmophoriazusae-grc.json"
+        }
       ],
-      "description": "Texto griego en TEI de Perseus; no es nueva recensio ni cotejo diplomático."
+      "reading": {
+        "url": "classics-text-reader.html?work=aristophanes-thesmophoriazusae&lang=grc",
+        "status": "Texto griego digital indexado; verificar loci contra la edición citada."
+      }
     },
     {
       "id": "aristophanes-ecclesiazusae",
@@ -104,12 +194,28 @@
       "dating": "c. 392 a. C.",
       "source": "Perseus Digital Library · F. W. Hall y W. M. Geldart (1907)",
       "sourceUrl": "https://github.com/PerseusDL/canonical-greekLit/tree/master/data/tlg0019/tlg010",
-      "textStatus": "registered-not-yet-lexically-indexed",
-      "status": "texto griego incorporado; indexación léxica en proceso",
-      "corpusFiles": [
-        "data/classics-corpus/aristophanes-ecclesiazusae-grc.json"
+      "textStatus": "lexically-indexed",
+      "status": "Texto griego incorporado, registrado e indexado léxicamente; sin traducción local ni cotejo crítico independiente",
+      "corpusFiles": {
+        "grc": "data/classics-corpus/aristophanes-ecclesiazusae-grc.json"
+      },
+      "description": "Texto griego en TEI de Perseus; no es nueva recensio ni cotejo diplomático.",
+      "links": {
+        "scaife": "https://scaife.perseus.org/",
+        "gallica": "https://gallica.bnf.fr/",
+        "archive": "https://archive.org/"
+      },
+      "publicStatus": "lectura-local-completa",
+      "localVersions": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/aristophanes-ecclesiazusae-grc.json"
+        }
       ],
-      "description": "Texto griego en TEI de Perseus; no es nueva recensio ni cotejo diplomático."
+      "reading": {
+        "url": "classics-text-reader.html?work=aristophanes-ecclesiazusae&lang=grc",
+        "status": "Texto griego digital indexado; verificar loci contra la edición citada."
+      }
     },
     {
       "id": "aristophanes-plutus",
@@ -120,12 +226,28 @@
       "dating": "388 a. C.",
       "source": "Perseus Digital Library · F. W. Hall y W. M. Geldart (1907)",
       "sourceUrl": "https://github.com/PerseusDL/canonical-greekLit/tree/master/data/tlg0019/tlg011",
-      "textStatus": "registered-not-yet-lexically-indexed",
-      "status": "texto griego incorporado; indexación léxica en proceso",
-      "corpusFiles": [
-        "data/classics-corpus/aristophanes-plutus-grc.json"
+      "textStatus": "lexically-indexed",
+      "status": "Texto griego incorporado, registrado e indexado léxicamente; sin traducción local ni cotejo crítico independiente",
+      "corpusFiles": {
+        "grc": "data/classics-corpus/aristophanes-plutus-grc.json"
+      },
+      "description": "Texto griego en TEI de Perseus; no es nueva recensio ni cotejo diplomático.",
+      "links": {
+        "scaife": "https://scaife.perseus.org/",
+        "gallica": "https://gallica.bnf.fr/",
+        "archive": "https://archive.org/"
+      },
+      "publicStatus": "lectura-local-completa",
+      "localVersions": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/aristophanes-plutus-grc.json"
+        }
       ],
-      "description": "Texto griego en TEI de Perseus; no es nueva recensio ni cotejo diplomático."
+      "reading": {
+        "url": "classics-text-reader.html?work=aristophanes-plutus&lang=grc",
+        "status": "Texto griego digital indexado; verificar loci contra la edición citada."
+      }
     }
   ]
 }
