@@ -37,7 +37,7 @@ const fastModule=html.indexOf('src="assets/bibliotheca-fast-index.js');
 const reader=html.indexOf('src="assets/bibliotheca-simple.js');
 assert.ok(philology>=0&&lexical>philology&&fastModule>lexical&&reader>fastModule,
  "Modules must load in dependency order before Bibliotheca search");
-assert.ok(source.includes("if(!workId&&!options.exhaustive)"),"Global searches must use fast index");
+assert.ok(source.includes('if(!workId&&!options.exhaustive&&mode==="literal"&&!locusCriterion)'),"Global searches must use fast index");
 assert.ok(source.includes("await showFastIndex(q,id,allowedWorkIds)"),"Global searches must avoid corpus fetches");
 assert.ok(source.includes('allMatches:false,maxPerEdition:workId?200:70,limit:600'),
  "Explicit text verification must have bounded memory and render budget");
