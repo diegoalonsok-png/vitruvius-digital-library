@@ -1,0 +1,30 @@
+name: Reader Lexicon interoperability
+on:
+  push:
+    paths:
+      - 'assets/classics-study-actions.js'
+      - 'assets/vitruvia-lexicon.js'
+      - 'scripts/test-classics-study-actions.mjs'
+      - 'scripts/test-lexicon-continuation.mjs'
+      - '.github/workflows/reader-lexicon-roundtrip.yml'
+  pull_request:
+    paths:
+      - 'assets/classics-study-actions.js'
+      - 'assets/vitruvia-lexicon.js'
+      - 'scripts/test-classics-study-actions.mjs'
+      - 'scripts/test-lexicon-continuation.mjs'
+      - '.github/workflows/reader-lexicon-roundtrip.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: node scripts/test-classics-study-actions.mjs
+      - run: node scripts/test-lexicon-continuation.mjs
