@@ -4,28 +4,6 @@
   "disclaimer": "Notas de comparación lingüística y decisiones editoriales sólo en el grado autorizado por la fuente. Cuando se desconoce por qué un editor eligió una lectura se indica expresamente. No son lecturas autópticas del códice H.",
   "records": [
     {
-      "locus": "1.praef.3",
-      "lemma": "traderentur",
-      "readings": [
-        {
-          "edition": "Kur. V514",
-          "text": "traderentur"
-        },
-        {
-          "edition": "Kr. 1912",
-          "text": "traderentur"
-        },
-        {
-          "edition": "Rose 1899",
-          "text": "tradantur"
-        }
-      ],
-      "criticalLine": "traderentur Kur. Kr. ] tradantur Rose",
-      "change": "Imperfecto de subjuntivo pasivo frente a presente de subjuntivo: cambia el valor temporal de la finalidad en «ut posteris memoriae ...».",
-      "decision": "Los textos digitales muestran que Krohn y Kurilo mantienen traderentur y Rose imprime tradantur. La razón de la preferencia de Rose no consta todavía en las fuentes verificadas.",
-      "status": "digital_unverified_print"
-    },
-    {
       "locus": "1.1.2",
       "lemma": "fuerunt",
       "readings": [
@@ -180,6 +158,72 @@
       "status": "digital_unverified_print"
     },
     {
+      "locus": "1.2.2",
+      "lemma": "effectui",
+      "criticalLine": "effectui Kur. Kr. ] effectus Rose; universeque Kur. Kr. ] universaeque Rose",
+      "readings": [
+        {
+          "edition": "Kur. V514",
+          "text": "effectui; universeque"
+        },
+        {
+          "edition": "Kr. 1912",
+          "text": "effectui; universeque"
+        },
+        {
+          "edition": "Rose 1899",
+          "text": "effectus; universaeque"
+        }
+      ],
+      "change": "En la definición de ordinatio y quantitas, «effectui» (dativo) frente a «effectus» (nominativo o genitivo según el análisis) cambia la relación sintáctica de «conveniens». La variación «universeque»/«universaeque» también exige revisar la concordancia.",
+      "decision": "Kurilo y Krohn coinciden en las transcripciones indexadas; Rose registra otra solución. No consta todavía la explicación editorial en el aparato impreso.",
+      "status": "digital_unverified_print"
+    },
+    {
+      "locus": "1.2.4",
+      "lemma": "embatere; capituli",
+      "criticalLine": "embatere Kur. Kr. ] embate Rose; capituli Kur. Kr. ] et Rose; navibus Kur. Kr. ] navis Rose",
+      "readings": [
+        {
+          "edition": "Kur. V514",
+          "text": "embatere; ⟨capituli⟩; navibus"
+        },
+        {
+          "edition": "Kr. 1912",
+          "text": "embatere; capituli; navibus"
+        },
+        {
+          "edition": "Rose 1899",
+          "text": "embate; ⟨et⟩; navis"
+        }
+      ],
+      "change": "La enumeración de módulos de symmetria cambia en «embatere/embate», en el suplemento después de «foramine» y en la referencia a las naves. «Capituli» en Kurilo aparece identificado tipográficamente como suplemento.",
+      "decision": "Dos soluciones editoriales diferentes en la secuencia de medidas y términos técnicos. No está acreditada aún la razón textual de los suplementos de Rose y Krohn.",
+      "status": "digital_unverified_print"
+    },
+    {
+      "locus": "1.2.5",
+      "lemma": "fontium nymphis",
+      "criticalLine": "fontium nymphis Kur. Kr. ] Fonti Lumphis Rose; sub divo Kur. Kr. ] subdiu Rose",
+      "readings": [
+        {
+          "edition": "Kur. V514",
+          "text": "fontium nymphis; sub divo"
+        },
+        {
+          "edition": "Kr. 1912",
+          "text": "fontium nymphis; sub divo"
+        },
+        {
+          "edition": "Rose 1899",
+          "text": "Fonti Lumphis; subdiu"
+        }
+      ],
+      "change": "En la enumeración de deidades relacionadas con la arquitectura religiosa, «fontium nymphis» frente a «Fonti Lumphis» modifica la identificación o formulación de los destinatarios cultuales. «sub divo»/«subdiu» es una segmentación formal que no debe tratarse por sí sola como cambio de significado.",
+      "decision": "La lectura de Rose difiere de la de Krohn y Kurilo en los nombres cultuales. El fundamento histórico o manuscrito requiere consulta del aparato impreso.",
+      "status": "digital_unverified_print"
+    },
+    {
       "locus": "1.2.6",
       "lemma": "sculpentur; capitulis",
       "readings": [
@@ -329,6 +373,94 @@
       ]
     },
     {
+      "locus": "1.4.11",
+      "lemma": "actum; marisque",
+      "criticalLine": "actum Kur. Kr. ] auctum Rose; marisque Kur. Kr. ] amarique Rose; circum⟨cingunt⟩ Kur. / circum cingunt Kr. ] circum Rose",
+      "readings": [
+        {
+          "edition": "Kur. V514",
+          "text": "actum; marisque; circum⟨cingunt⟩"
+        },
+        {
+          "edition": "Kr. 1912",
+          "text": "actum; marisque; circum cingunt"
+        },
+        {
+          "edition": "Rose 1899",
+          "text": "auctum; amarique; circum"
+        }
+      ],
+      "change": "En la explicación de la salubridad de los pantanos costeros, «actum» frente a «auctum» cambia el participio relacionado con el mar; «marisque» frente a «amarique» afecta la interpretación de la mezcla de aguas. El suplemento «cingunt» modifica la construcción de la frase sobre Altino, Rávena y Aquilea.",
+      "decision": "Kurilo reproduce sustancialmente la lectura de Krohn y declara gráficamente «cingunt» como suplemento. Las lecturas digitales de Rose deben cotejarse en el impreso para distinguir elección editorial de posible corrupción de transcripción.",
+      "status": "digital_unverified_print"
+    },
+    {
+      "locus": "1.5.2",
+      "lemma": "vulnerentur; circinationibus",
+      "criticalLine": "vulnerentur Kur. Kr. ] vulneretur Rose; circinationibus Kur. Kr. ] circumitionibus Rose",
+      "readings": [
+        {
+          "edition": "Kur. V514",
+          "text": "vulnerentur; circinationibus"
+        },
+        {
+          "edition": "Kr. 1912",
+          "text": "vulnerentur; circinationibus"
+        },
+        {
+          "edition": "Rose 1899",
+          "text": "vulneretur; circumitionibus"
+        }
+      ],
+      "change": "«vulnerentur» es plural y «vulneretur» singular; la concordancia del sujeto cambia. «circinationibus» se relaciona con trazados circulares, mientras «circumitionibus» evoca recorridos o rodeos y puede modificar la interpretación del diseño defensivo.",
+      "decision": "Krohn y Kurilo coinciden frente a Rose en ambas lecturas digitales. No está comprobado el razonamiento de los respectivos editores.",
+      "status": "digital_unverified_print"
+    },
+    {
+      "locus": "1.6.4",
+      "lemma": "septentrionali; cuiusque",
+      "criticalLine": "septentrionali Kur. Kr. ] septentrionibus Rose; cuiusque Kur. Kr. ] quosque Rose; turrem Kur. Kr. ] turrim Rose",
+      "readings": [
+        {
+          "edition": "Kur. V514",
+          "text": "septentrionali; cuiusque; turrem"
+        },
+        {
+          "edition": "Kr. 1912",
+          "text": "septentrionali; cuiusque; turrem"
+        },
+        {
+          "edition": "Rose 1899",
+          "text": "septentrionibus; quosque; turrim"
+        }
+      ],
+      "change": "En la descripción de la torre de los vientos de Andrónico, «septentrionali» frente a «septentrionibus» cambia la forma nominal; «cuiusque» frente a «quosque» modifica la referencia pronominal. «turrem»/«turrim» puede ser variación morfológica sin cambio sustancial de referente.",
+      "decision": "Las transcripciones reflejan soluciones distintas; sin atribución paleográfica verificada, la explicación se limita a sus consecuencias sintácticas.",
+      "status": "digital_unverified_print"
+    },
+    {
+      "locus": "1.6.5",
+      "lemma": "pateat numerus",
+      "criticalLine": "pateat numerus Kur. Kr. ] capiat numeros Rose; eorum Kur. Kr. ] corum Rose (lectio digitalis dubia)",
+      "readings": [
+        {
+          "edition": "Kur. V514",
+          "text": "pateat numerus; eorum"
+        },
+        {
+          "edition": "Kr. 1912",
+          "text": "pateat numerus; eorum"
+        },
+        {
+          "edition": "Rose 1899",
+          "text": "capiat numeros; corum"
+        }
+      ],
+      "change": "«pateat numerus» expresa que el número sea manifiesto; «capiat numeros» construye una relación distinta entre verbo y número. La grafía «corum» requiere comprobar el impreso antes de atribuirla como lectura auténtica.",
+      "decision": "Diferencia sintáctica sustancial en los índices, con un posible error de transcripción en «corum». Ninguna causa manuscrita está documentada por esta comparación.",
+      "status": "digital_unverified_print"
+    },
+    {
       "locus": "1.6.11",
       "lemma": "praeurens; impetu",
       "readings": [
@@ -348,6 +480,50 @@
       "criticalLine": "praeurens Kur. Kr. ] profundens Rose; impetu Kur. Kr. ] spiritu Rose",
       "change": "«praeurens» (ardiendo o abrasando previamente) frente a «profundens» (vertiendo/derramando) modifica la imagen verbal del viento; «impetu» y «spiritu» son sustantivos distintos, con diferente sentido causal o instrumental.",
       "decision": "Coincidencia digital de Kurilo con Krohn; Rose da otra lectura en dos puntos. Las motivaciones textuales y manuscritas están pendientes de verificación.",
+      "status": "digital_unverified_print"
+    },
+    {
+      "locus": "1.7.2",
+      "lemma": "non quolibet; religione",
+      "criticalLine": "non quolibet nomine Kur. Kr. ] non omnes Rose; cum religione Kur. Kr. ] cum religiose Rose; debet Kur. Kr. ] debeat Rose",
+      "readings": [
+        {
+          "edition": "Kur. V514",
+          "text": "⟨non quolibet⟩ nomine; cum religione; debet"
+        },
+        {
+          "edition": "Kr. 1912",
+          "text": "non quolibet nomine; cum religione; debet"
+        },
+        {
+          "edition": "Rose 1899",
+          "text": "non omnes; cum religiose; debeat"
+        }
+      ],
+      "change": "En el pasaje del santuario de Ceres, «non quolibet nomine» y «non omnes» producen formulaciones distintas sobre el acceso al lugar; «religione»/«religiose» y «debet»/«debeat» alteran la sintaxis de la prescripción.",
+      "decision": "Kurilo sigue de cerca a Krohn y señala gráficamente parte de la expresión como suplemento. Las razones de la elección de cada editor no se afirman sin consulta de sus aparatos.",
+      "status": "digital_unverified_print"
+    },
+    {
+      "locus": "1.praef.3",
+      "lemma": "traderentur",
+      "readings": [
+        {
+          "edition": "Kur. V514",
+          "text": "traderentur"
+        },
+        {
+          "edition": "Kr. 1912",
+          "text": "traderentur"
+        },
+        {
+          "edition": "Rose 1899",
+          "text": "tradantur"
+        }
+      ],
+      "criticalLine": "traderentur Kur. Kr. ] tradantur Rose",
+      "change": "Imperfecto de subjuntivo pasivo frente a presente de subjuntivo: cambia el valor temporal de la finalidad en «ut posteris memoriae ...».",
+      "decision": "Los textos digitales muestran que Krohn y Kurilo mantienen traderentur y Rose imprime tradantur. La razón de la preferencia de Rose no consta todavía en las fuentes verificadas.",
       "status": "digital_unverified_print"
     }
   ]
