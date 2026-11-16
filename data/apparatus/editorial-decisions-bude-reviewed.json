@@ -1,0 +1,222 @@
+{
+  "schema": "vdl-editorial-decisions-bude-v1",
+  "date": "2026-11-16",
+  "disclaimer": "Notas de comparación lingüística y decisiones editoriales sólo en el grado autorizado por la fuente. Cuando se desconoce por qué un editor eligió una lectura se indica expresamente. No son lecturas autópticas del códice H.",
+  "records": [
+    {
+      "locus": "1.praef.3",
+      "lemma": "traderentur",
+      "readings": [
+        {
+          "edition": "Kur. V514",
+          "text": "traderentur"
+        },
+        {
+          "edition": "Kr. 1912",
+          "text": "traderentur"
+        },
+        {
+          "edition": "Rose 1899",
+          "text": "tradantur"
+        }
+      ],
+      "criticalLine": "traderentur Kur. Kr. ] tradantur Rose",
+      "change": "Imperfecto de subjuntivo pasivo frente a presente de subjuntivo: cambia el valor temporal de la finalidad en «ut posteris memoriae ...».",
+      "decision": "Los textos digitales muestran que Krohn y Kurilo mantienen traderentur y Rose imprime tradantur. La razón de la preferencia de Rose no consta todavía en las fuentes verificadas.",
+      "status": "digital_unverified_print"
+    },
+    {
+      "locus": "1.1.2",
+      "lemma": "fuerunt",
+      "readings": [
+        {
+          "edition": "Kur. V514",
+          "text": "fuerunt"
+        },
+        {
+          "edition": "Kr. 1912",
+          "text": "fuerunt"
+        },
+        {
+          "edition": "Rose 1899",
+          "text": "fuerant"
+        }
+      ],
+      "criticalLine": "fuerunt Kur. Kr. ] fuerant Rose",
+      "change": "Perfecto frente a pluscuamperfecto de esse; cambia la relación temporal con «persecuti videntur».",
+      "decision": "Kurilo reproduce la lectura digital de Krohn; Rose ofrece otro tiempo verbal. Motivo histórico de la elección: no documentado aún.",
+      "status": "digital_unverified_print"
+    },
+    {
+      "locus": "1.1.5",
+      "lemma": "deflagrata",
+      "readings": [
+        {
+          "edition": "Kur. V514",
+          "text": "deflagrata"
+        },
+        {
+          "edition": "Kr. 1912",
+          "text": "deflagrata"
+        },
+        {
+          "edition": "Rose 1899",
+          "text": "desacrata"
+        }
+      ],
+      "criticalLine": "deflagrata Kur. Kr. ] desacrata Rose",
+      "change": "En el ablativo absoluto «civitate ...», cambia el participio y potencialmente la descripción del destino de la ciudad. La lectura desacrata necesita cotejo tipográfico directo.",
+      "decision": "El archivo digital de Rose registra desacrata; Krohn y Kurilo, deflagrata. No se presume si la divergencia procede de un grafema del manuscrito o de una elección conjetural.",
+      "status": "digital_unverified_print"
+    },
+    {
+      "locus": "1.1.9",
+      "lemma": "sonitûm ex discrimine",
+      "readings": [
+        {
+          "edition": "Kur. V514",
+          "text": "sonitûm ex discrimine"
+        },
+        {
+          "edition": "Kr. 1912",
+          "text": "sonitûm ex discrimine"
+        },
+        {
+          "edition": "Rose 1899",
+          "text": "sonituum ad discrimina"
+        }
+      ],
+      "criticalLine": "sonitûm ex discrimine Kur. Kr. ] sonituum ad discrimina Rose",
+      "change": "Contraste de construcciones: ex + ablativo singular frente a ad + acusativo plural. El sentido de la relación acústica puede matizarse.",
+      "decision": "Constan distintas construcciones en los textos digitalizados; el fundamento explícito de cada editor no se ha corroborado.",
+      "status": "digital_unverified_print"
+    },
+    {
+      "locus": "1.1.15",
+      "lemma": "rationem",
+      "readings": [
+        {
+          "edition": "Kur. V514",
+          "text": "rationem"
+        },
+        {
+          "edition": "Kr. 1912",
+          "text": "rationem"
+        },
+        {
+          "edition": "Rose 1899",
+          "text": "ratiocinatio"
+        }
+      ],
+      "criticalLine": "rationem Kur. Kr. ] ratiocinatio Rose",
+      "change": "Cambio de caso y construcción: acusativo rationem frente a nominativo ratiocinatio, en el contexto de «id est».",
+      "decision": "Las transcripciones exhiben dos soluciones sintácticas. La motivación específica de Rose y Krohn exige examen de sus aparatos.",
+      "status": "digital_unverified_print"
+    },
+    {
+      "locus": "1.4.3",
+      "lemma": "exsugendo",
+      "readings": [
+        {
+          "edition": "Kur. V514",
+          "text": "exsugendo"
+        },
+        {
+          "edition": "Kr. 1912",
+          "text": "exsugendo"
+        },
+        {
+          "edition": "Rose 1899",
+          "text": "exsugendo"
+        }
+      ],
+      "criticalLine": "exsugendo Rose Kr. Kur. ] exugendo H S Gᶜ (sec. Rose)",
+      "change": "Las tres ediciones coinciden en el texto adoptado; la variante manuscrita exugendo consta indirectamente en el aparato de Rose.",
+      "decision": "Coincidencia editorial documentada. No atribuir lectura directa de H al editor digital. La forma exsurgendo en una nota de V297 figura registrada como errata explicativa, no como variante latina.",
+      "status": "print_checked",
+      "printCheckIds": [
+        "Rose1899-print-p15-20261115",
+        "Krohn1912-print-I-4-3-20261115"
+      ]
+    },
+    {
+      "locus": "1.4.4",
+      "lemma": "valetudinibus",
+      "readings": [
+        {
+          "edition": "Kur. V514",
+          "text": "valetudinibus"
+        },
+        {
+          "edition": "Kr. 1912",
+          "text": "valetudinibus"
+        },
+        {
+          "edition": "Rose 1899",
+          "text": "valetudinibus"
+        }
+      ],
+      "criticalLine": "valetudinibus Rose Kr. Kur. ] valitudinibus x (sec. Rose et Kr.)",
+      "change": "No hay cambio de lectura adoptada entre los tres editores; la tradición recoge otra grafía, registrada como ortográfica.",
+      "decision": "Lectura coincidente de los tres textos establecidos; variante transmitida indirectamente, sin propuesta de nuevo sentido.",
+      "status": "print_checked",
+      "printCheckIds": [
+        "Rose1899-print-p15-20261115",
+        "Krohn1912-print-I-4-3-20261115"
+      ]
+    },
+    {
+      "locus": "1.4.5",
+      "lemma": "e principiis",
+      "readings": [
+        {
+          "edition": "Kur. V514",
+          "text": "⟨e⟩ principiis"
+        },
+        {
+          "edition": "Kr. 1912",
+          "text": "e principiis"
+        },
+        {
+          "edition": "Rose 1899",
+          "text": "e principiis"
+        }
+      ],
+      "criticalLine": "e Rose Kr. Kur. ] om. x (sec. Rose et Kr.); add. rec. (sec. Kr.)",
+      "change": "Las palabras del texto corriente coinciden; los corchetes angulares de Kurilo explicitan un suplemento editorial. La omisión está documentada indirectamente en la tradición.",
+      "decision": "Kurilo señala gráficamente la intervención; Krohn y Rose imprimen e. No inventar una divergencia léxica entre las tres ediciones.",
+      "status": "print_checked",
+      "printCheckIds": [
+        "Rose1899-print-p15-20261115",
+        "Krohn1912-print-I-4-3-20261115"
+      ]
+    },
+    {
+      "locus": "1.4.6",
+      "lemma": "quibusvis; liquido",
+      "readings": [
+        {
+          "edition": "Kur. V514",
+          "text": "quibus⟨vis⟩ corporibus cum ... liquido"
+        },
+        {
+          "edition": "Kr. 1912",
+          "text": "quibus vis corporibus cum ... liquido"
+        },
+        {
+          "edition": "Rose 1899",
+          "text": "quibus corporibus cumque ... ut a liquido"
+        }
+      ],
+      "criticalLine": "quibus⟨vis⟩ corporibus cum Kur. Kr. ] quibus corporibus cumque Rose (cumque coni. Nohl, sec. Rose); liquido Kur. Kr. ] ut a liquido Rose",
+      "change": "Reorganización y suplemento vis/cumque; cambia la articulación de la oración. También divergen liquido y ut a liquido, con consecuencias para el análisis sintáctico.",
+      "decision": "El registro del impreso atribuye la conjetura cumque a Nohl, citada por Rose. Kurilo coincide sustancialmente con Krohn y explicita vis entre corchetes de suplemento. Testimonios manuscritos sec. Rose/Kr., sin autopsia propia.",
+      "status": "print_checked",
+      "printCheckIds": [
+        "Rose1899-print-p16-20261115",
+        "Krohn1912-print-I-4-3-20261115",
+        "Krohn1912-print-p15-20261115"
+      ]
+    }
+  ]
+}
