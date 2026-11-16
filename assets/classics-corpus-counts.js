@@ -5,8 +5,8 @@
 const ROOT="data/classics-corpus/";
 const read=async path=>{const r=await fetch(path,{cache:"no-cache"});if(!r.ok)throw Error(path+" HTTP "+r.status);return r.json();};
 const metricLabels=[
- "obras y tratados catalogados","originales indexados","obras con traducción alojada",
- "versiones textuales indexadas","fichas sin índice original propio"
+ "obras y tratados catalogados","originales con índice efectivo en repertorio principal","obras con traducción local",
+ "registros textuales combinados (incluye fuentes externas)","fichas principales sin original indexado"
 ];
 function style(){
  if(document.getElementById("classics-corpus-counts-style"))return;
@@ -122,7 +122,7 @@ function paint(a,data){
  const summary=document.createElement("summary");summary.textContent="Detalle";summary.setAttribute("aria-label","Ver explicación y fuentes de las cifras");
  details.append(summary);bar.append(details);wrap.append(bar);
  const foot=document.createElement("p");foot.textContent=a.complete?
-  "Datos desde los registros locales y manifiestos externos verificados. Se cuentan por separado las versiones; las traducciones externas solo enlazadas no se suman. Las fichas editoriales de Vitruvio pueden corresponder a versiones de la misma obra.":
+  "Base: 271 obras principales; las 10 incorporaciones en facsímil se añaden solo al total de obras. Los originales efectivos se calculan como 182 locales + índices externos clasificados aparte. Los registros de versiones suman el registro textual y las fuentes remotas adicionales; NO equivalen a obras distintas ni a textos completos cotejados. El inventario federado utiliza otra cobertura (226 obras con texto registrado, 291 versiones del registro) y no debe confundirse con esta métrica.":
   "Cobertura parcial: algún índice externo no fue verificable en esta carga; los originales no accesibles no se presentan como indexados.";
  details.append(foot);
  const link=document.createElement("a");
