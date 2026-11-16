@@ -5,8 +5,8 @@ const sources = [
  {id:'recensio-es',label:'V514 · Latín / Español',kind:'edition',file:'data/structured/recensio-es.json',pdf:'own:recensio-es'},
  {id:'recensio-fr',label:'V554 · Latín / Francés',kind:'edition',file:'data/structured/recensio-fr.json',pdf:'own:recensio-fr'},
  {id:'theory-en',label:'V297 · Latín / Inglés',kind:'edition',file:'data/structured/theory-en.json',pdf:'own:theory-en'},
- {id:'krohn-1912',label:'Krohn 1912 · OCR latino',kind:'ocr',file:'data/text/krohn-1912.json',pdf:'pdf:krohn'},
- {id:'rose-1899',label:'Rose 1899 · OCR latino',kind:'ocr',file:'data/text/rose-1899.json',pdf:'pdf:rose-1899'}
+ {id:'krohn-1912',label:'Krohn 1912 · latín TEI (cotejo pendiente)',kind:'edition',critical:true,file:'data/critical-editions/krohn-1912-tei-loci.json',pdf:'pdf:krohn'},
+ {id:'rose-1899',label:'Rose 1899 · latín transcrito (alineación pendiente)',kind:'edition',critical:true,file:'data/critical-editions/rose-1899-transcribed-loci.json',pdf:'pdf:rose-1899'}
 ];
 const searchSourceMap = {
  'own:recensio-es':'recensio-es','own:recensio-fr':'recensio-fr','own:theory-en':'theory-en',
@@ -65,9 +65,11 @@ function locusQuery(query){
  if(!Number.isInteger(book)||book<1||book>10||!(chapter==='praef'||Number.isInteger(chapter))||section!==null&&(!Number.isInteger(section)||section<1))return null;
  return {book,chapter,section};
 }
+let pdfConcordance=null;
+const getConcordance=async()=>{if(!pdfConcordance)pdfConcordance=fetch('data/collation-loci.json').then(r=>{if(!r.ok)throw Error('Concordancia HTTP '+r.status);return r.json()}).catch(e=>{pdfConcordance=null;throw e});return pdfConcordance};
 const load = async src => {
  if(!cache.has(src.id)){
-  cache.set(src.id,fetch(src.file).then(response=>{if(!response.ok)throw Error('HTTP '+response.status);return response.json();}).catch(error=>{cache.delete(src.id);throw error;}));
+  cache.set(src.id,fetch(src.file).then(response=>{if(!response.ok)throw Error('HTTP '+response.status);return response.json();}).then(async data=>{if(src.critical){const col=await getConcordance();for(const p of data.passages||[]){const lc=p.locus?.match(/^(\d+)\.(praef|\d+)\.(\d+)$/);if(lc){p.book=Number(lc[1]);p.chapter=lc[2]==='praef'?'praef':Number(lc[2]);p.section=Number(lc[3])}p.pdf_pages={latin:Number(col.loci?.[p.locus]?.[src.id]?.page)||0}}}return data}).catch(error=>{cache.delete(src.id);throw error;}));
  }
  return cache.get(src.id);
 };
@@ -213,7 +215,7 @@ function render(){
   }else{
    const p=document.createElement('small');p.textContent='No hay página PDF verificada para este resultado; no se inventa un salto de página.';card.append(p);
   }
-  if(r.p&&r.kind!=='ocr'&&r.p.latin){
+  if(r.p&&r.kind!=='ocr'&&!r.source.critical&&r.p.latin){
    const box=document.createElement('p');box.className='script-ocr-pages';box.textContent='Buscando la página en Krohn 1912 y Rose 1899…';card.append(box);
    const ocrs=sources.filter(x=>x.kind==='ocr'&&(!ocrFocus||ocrFocus===x.id));
    Promise.all(ocrs.map(async src=>[src,await ocrPageFor(src,r.p.latin,r.term).catch(()=>null)])).then(found=>{
