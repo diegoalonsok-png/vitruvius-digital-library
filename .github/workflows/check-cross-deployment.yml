@@ -8,6 +8,9 @@ on:
       - 'assets/lexicon-ngram-engine.js'
       - 'vitruvia-lexicon.html'
       - 'assets/classics-lexical-popup.js'
+      - 'assets/classics-academic-reader.js'
+      - 'assets/classics-text-reader.js'
+      - 'classics-text-reader.html'
       - 'scripts/check-cross-deployment.py'
       - '.github/workflows/check-cross-deployment.yml'
   workflow_dispatch:

@@ -28,6 +28,7 @@ jobs:
       - run: sudo apt-get update -qq && sudo apt-get install -y tesseract-ocr tesseract-ocr-eng
       - name: Lectores, notas de las fuentes, búsquedas, loci y PDF enfrentados
         run: |
+          node scripts/test-classics-source-note-navigator.mjs
           node scripts/test-classics-academic-reader.mjs
           node scripts/test-facsimile-facing-reader.mjs
           node scripts/test-classics-reader-search.mjs

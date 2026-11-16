@@ -23,6 +23,8 @@ ASSETS = (
     "assets/vitruvia-lexicon.js",
     "assets/lexicon-ngram-engine.js",
     "assets/classics-lexical-popup.js",
+    "assets/classics-academic-reader.js",
+    "assets/classics-text-reader.js",
     "assets/secondary-reader-controls.js",
     "assets/secondary-reader-controls.css",
     "assets/ui-idioma.js",

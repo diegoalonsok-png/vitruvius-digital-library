@@ -152,7 +152,7 @@ function select(i){
  document.dispatchEvent(new CustomEvent("vitruvia:classics-passage",{
   detail:{work,language:data.language,locus:rec.locus,title:rec.title||"",text:rec.text,
    importedText:rec.importedText||"",notes:rec.readingNotes||[],locusKind:rec.locusKind||"",
-   source:data.source,metadata:data.readingMetadata||{},editions:hostedEditions,
+   source:data.source,sourceSha256:data.sourceSha256||"",metadata:data.readingMetadata||{},editions:hostedEditions,
    number:active+1,total:data.passages.length}
  }));
  if(rec.readingNotes?.length){

@@ -46,13 +46,51 @@ function findLocus(passages,value){
  });
  return matches.length===1?matches[0]:-1;
 }
+/* Source-note navigator: reuses notes already attached to the edition after
+ * manifest, source hash and passage checks. No new text or critical variant is
+ * created; all rows point to the original, citable passage. */
+const sourceNotesByEdition=new Map();
+function sourceNoteScope(work,language,sourceSha256){
+ return [String(work||""),String(language||""),String(sourceSha256||"")].join("|");
+}
+function sourceNoteIndex(corpus){
+ const rows=[];
+ for(const p of corpus.passages||[]){
+  if(!Array.isArray(p.readingNotes))continue;
+  for(const n of p.readingNotes){
+   if(!n||typeof n.text!=="string"||!n.text.trim())continue;
+   rows.push({work:corpus.workId,lang:corpus.language,locus:String(p.locus),
+    kind:typeof n.kind==="string"?n.kind:"editorial",number:String(n.number||""),
+    text:n.text,edition:corpus.readingMetadata?.title||"",
+    sourceSha256:corpus.sourceSha256});
+  }
+ }
+ return rows;
+}
+function sourceNoteMatches(rows,term="",kind=""){
+ const query=String(term).normalize("NFD").replace(/\p{M}/gu,"").toLocaleLowerCase().trim().slice(0,100);
+ return rows.filter(n=>{
+  if(kind&&n.kind!==kind)return false;
+  const haystack=(n.text+" "+n.number).normalize("NFD").replace(/\p{M}/gu,"").toLocaleLowerCase();
+  return !query||haystack.includes(query);
+ });
+}
+function sourceNoteURL(work,language,locus){
+ const url=new URL("classics-text-reader.html",location.href);
+ url.searchParams.set("work",work);
+ url.searchParams.set("lang",language);
+ url.searchParams.set("locus",locus);
+ return url.href;
+}
 async function prepare(corpus){
+ const noteKey=sourceNoteScope(corpus.workId,corpus.language,corpus.sourceSha256);
+ sourceNotesByEdition.delete(noteKey);
  const manifest=await json("data/classics-corpus/reading-notes/manifest.json?v=20261114-bude-1");
  const entry=manifest?.entries?.find(e=>e.workId===corpus.workId&&e.language===corpus.language&&e.sourceSha256===corpus.sourceSha256);
  if(!entry||!/^data\/classics-corpus\/reading-notes\/[a-z0-9-]+\.json$/.test(entry.path))return corpus;
  const notes=await json(entry.path);
  if(notes?.sourceSha256!==corpus.sourceSha256||notes?.workId!==corpus.workId||notes?.language!==corpus.language)return corpus;
- return {...corpus,readingMetadata:notes.metadata,passages:await Promise.all(corpus.passages.map(async p=>{
+ const prepared={...corpus,readingMetadata:notes.metadata,passages:await Promise.all(corpus.passages.map(async p=>{
   const n=notes.passages?.[p.locus];
   if(n?.importedText===p.text&&typeof n.text==="string"&&Array.isArray(n.notes))return {...p,text:n.text,importedText:p.text,readingNotes:n.notes};
   if(n?.sourceLength!==p.text.length||!Array.isArray(n.notes)||!n.notes.length)return p;
@@ -69,6 +107,8 @@ async function prepare(corpus){
   pieces.push(p.text.slice(cursor));
   return {...p,text:pieces.join("").replace(/\s+/g," ").trim(),importedText:p.text,readingNotes:n.notes};
  }))};
+ sourceNotesByEdition.set(noteKey,sourceNoteIndex(prepared));
+ return prepared;
 }
 function safePdf(value){
  try{const u=new URL(value,location.href);return u.protocol==="https:"&&!u.username&&!u.password?u.href:null}catch{return null}
@@ -113,6 +153,54 @@ function pdfPanel(work){
  window.addEventListener("pagehide",()=>{if(objectUrl)URL.revokeObjectURL(objectUrl)},{once:true});
  return root;
 }
+/* The same edition notes panel gains a compact, source-scoped cross-locus
+ * locator. It is NOT a substitute for Lexicon or a manuscript collation. */
+function renderSourceNoteNavigator(footnotes,info){
+ const rows=sourceNotesByEdition.get(sourceNoteScope(info.work,info.language,info.sourceSha256))||[];
+ if(!rows.length)return;
+ const details=E("details","cl-source-note-index"),summary=E("summary",null,
+  "Explorar notas de esta edición · "+rows.length+" notas vinculadas a loci");
+ const intro=E("p","cl-note-source",
+  "Índice de notas importadas desde la fuente editorial asociada al texto. "+
+  "Las coincidencias son literales (sin lematización); no constituyen nuevas variantes cotejadas.");
+ const controls=E("div","cl-pdf-tools");
+ const query=E("input");query.type="search";query.maxLength=100;
+ query.placeholder="Buscar en estas notas…";query.setAttribute("aria-label","Buscar en las notas de esta edición");
+ const kind=E("select");kind.setAttribute("aria-label","Tipo de nota");
+ for(const [value,label] of [
+  ["","Todos los tipos"],["reference","Referencias de fuente"],
+  ["textual","Notas textuales"],["editorial","Notas editoriales"]
+ ]){
+  const opt=E("option",null,label);opt.value=value;kind.append(opt);
+ }
+ const status=E("p","cl-note-source"),results=E("ol");
+ results.setAttribute("aria-label","Notas con referencias a loci");
+ const redraw=()=>{
+  results.replaceChildren();
+  const term=query.value.trim();
+  if(!term&&!kind.value){
+   status.textContent="Introducí una expresión o elegí un tipo de nota para consultar este índice.";
+   return;
+  }
+  const found=sourceNoteMatches(rows,term,kind.value);
+  status.textContent=found.length+" coincidencias en las notas de esta edición"+
+   (found.length>35?" · se muestran las primeras 35":"")+".";
+  for(const note of found.slice(0,35)){
+   const row=E("li");
+   const link=E("a",null,"Locus "+shortLocus(note.locus));
+   link.href=sourceNoteURL(note.work,note.lang,note.locus);
+   row.append(link,document.createTextNode(" · "+(note.kind==="reference"?"Referencia":
+    note.kind==="textual"?"Nota textual":"Nota editorial")+
+    (note.number?" ["+note.number+"]":"")+": "+note.text));
+   results.append(row);
+  }
+ };
+ query.addEventListener("input",redraw);
+ kind.addEventListener("change",redraw);
+ controls.append(query,kind);
+ details.append(summary,intro,controls,status,results);
+ footnotes.append(details);redraw();
+}
 let footnotes=null;
 function renderNotes(info){
  const host=document.querySelector(".cl-source-column")||document.querySelector("article.reader");if(!host)return;
@@ -130,6 +218,7 @@ function renderNotes(info){
  if(info.source){const a=E("a",null,"Consultar la fuente de esta edición ↗");if(/^https:\/\//.test(info.source)){a.href=info.source;a.target="_blank";a.rel="noopener noreferrer";refs.append(a)}}
  const record=E("a",null,"Ficha filológica y testimonios");record.href="classics-work-record.html?work="+encodeURIComponent(info.work);refs.append(document.createTextNode(" · "),record);footnotes.append(refs);
  if(info.importedText){const detail=E("details","cl-imported-source"),summary=E("summary",null,"Ver texto importado íntegro, antes de separar las notas");detail.append(summary,E("p",null,info.importedText));footnotes.append(detail)}
+ renderSourceNoteNavigator(footnotes,info);
  const reference=document.getElementById("reading-reference");
  if(reference)reference.textContent=[info.metadata?.editor?"Ed. "+info.metadata.editor:null,info.metadata?.title,info.metadata?.volume?"vol. "+info.metadata.volume:null,info.metadata?.date,"Unidad "+shortLocus(info.locus)].filter(Boolean).join(" · ");
 }
