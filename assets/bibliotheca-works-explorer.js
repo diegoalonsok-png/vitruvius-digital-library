@@ -10,7 +10,7 @@ const classify=x=>x.originalIndexed?"local":x.offsiteOriginalIndexed?"remote":x.
 function catalog(){
  if(!dataPromise)dataPromise=fetch(URL).then(r=>{if(!r.ok)throw Error("Inventario: HTTP "+r.status);return r.json()}).then(j=>{
   if(!Array.isArray(j.items)||j.items.length!==j.targetWorks)throw Error("Inventario de obras inconsistente");
-  return j.items.map(x=>({id:x.id,author:x.author||"Autor no indicado",title:x.title||x.id,kind:classify(x),language:x.originalLanguage||""}));
+  return j.items.map(x=>({id:x.id,author:x.author||"Autor no indicado",title:x.title||x.id,kind:classify(x),language:x.originalLanguage||"",originalIndexed:Boolean(x.originalIndexed),indexedLanguages:Array.isArray(x.indexedLanguages)?x.indexedLanguages:[]}));
  }).catch(e=>{dataPromise=null;throw e});
  return dataPromise;
 }
@@ -43,8 +43,15 @@ function mount(host){
   for(const item of matched){
    const line=add("div","vdl-works-row",null,listing);line.setAttribute("role","listitem");
    const title=add("a","vdl-works-name",item.author+" — "+item.title,line);
-   title.href="bibliotheca-graeca-latina.html?"+new URLSearchParams({work:item.id,mode:"works"});
-   title.title="Abrir ficha y herramientas para esta obra en Bibliotheca";
+   // Open actual reading content when a local original has a documented indexed language.
+// External/registered sources retain an academic dossier with source and facsimile links.
+   const readable=item.originalIndexed&&item.indexedLanguages.includes(item.language);
+   const language=readable?item.language:(item.indexedLanguages.includes("la")?"la":item.indexedLanguages.includes("grc")?"grc":null);
+   const canRead=item.originalIndexed&&Boolean(language);
+   title.href=canRead
+    ?"classics-text-reader.html?"+new URLSearchParams({work:item.id,lang:language})
+    :"classics-work-record.html?"+new URLSearchParams({work:item.id});
+   title.title=canRead?"Leer el texto original de esta obra por loci":"Abrir la ficha académica y sus enlaces a los textos o facsímiles disponibles";
    const meta=add("span","vdl-works-state",labels[item.kind],line);
    meta.dataset.kind=item.kind;
   }
