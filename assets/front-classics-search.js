@@ -26,7 +26,7 @@ function init(){
  const locus=mk("input");locus.id="front-classics-locus";locus.type="search";locus.maxLength=150;locus.placeholder="Locus (opcional)";locus.setAttribute("aria-label","Referencia de locus para filtrar");
  const launch=mk("button","Buscar en la Bibliotheca");launch.type="button";
  row.append(lang,work,mode,locus,launch);
- const status=mk("p","Buscador independiente de obras griegas y latinas: escribí un término y pulsá Buscar en la Bibliotheca.","front-classics-status");
+ const status=mk("p","Buscador independiente de obras griegas y latinas: escribe un término y pulsa Buscar en la Bibliotheca.","front-classics-status");
  status.setAttribute("role","status");status.setAttribute("aria-live","polite");
  const titles=mk("div",null,"front-classics-titles");
  const result=mk("ol",null,"front-classics-results");
