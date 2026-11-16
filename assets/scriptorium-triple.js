@@ -32,6 +32,46 @@ const FICHA={
 const cache=new Map(),grid=root.querySelector(".script-triple-grid"),fold=v=>String(v||"").normalize("NFD").replace(/\p{M}/gu,"").toLowerCase();
 /* Testigo de collation-loci.json que corresponde a cada visor. */
 const TESTIGO={krohn:"krohn-1912",rose:"rose-1899"};
+/* Coincidencia léxica por locus: Dice de frecuencias de palabras latinas;
+   no representa exactitud filológica, OCR corregido ni cotejo manuscrito. */
+const symmetryTokens=text=>String(text||"").normalize("NFD").replace(/\p{M}/gu,"").toLowerCase()
+ .replace(/v/g,"u").replace(/j/g,"i").match(/[a-z]+/g)||[];
+function symmetryPercent(a,b){
+ const A=symmetryTokens(a),B=symmetryTokens(b);
+ if(!A.length||!B.length)return null;
+ const counts=new Map();
+ for(const w of A)counts.set(w,(counts.get(w)||0)+1);
+ let shared=0;
+ for(const w of B){const n=counts.get(w)||0;if(n){shared++;counts.set(w,n-1)}}
+ return Math.round((200*shared/(A.length+B.length))*10)/10;
+}
+let similarityFrame=0;
+function updateSymmetryFooters(){
+ if(similarityFrame)cancelAnimationFrame(similarityFrame);
+ similarityFrame=requestAnimationFrame(()=>{
+  similarityFrame=0;
+  for(const st of states){
+   const badge=st.element.querySelector(".script-triple-symmetry");
+   if(!badge)continue;
+   const locus=st.context()?.locus;
+   if(!locus||!st.data||st.data.ed.format!=="structured"){
+    badge.textContent="Coincidencia léxica: requiere texto latino por locus";continue;
+   }
+   const current=st.data.pages.find(p=>p.locus===locus);
+   const others=states.filter(x=>x!==st&&x.data?.ed.format==="structured");
+   const results=others.map(other=>{
+    const target=other.data.pages.find(p=>p.locus===locus);
+    const percent=target?symmetryPercent(current?.text,target?.text):null;
+    return percent===null?null:{name:editions[other.editionId()].name.split(" · ").slice(0,2).join(" "),percent};
+   }).filter(Boolean);
+   badge.textContent=results.length
+    ?"Coincidencia léxica · "+results.map(x=>x.name+": "+x.percent.toLocaleString("es-AR")+" %").join(" · ")
+    :"Coincidencia léxica: esperando textos de las otras ediciones";
+   badge.title="Semejanza léxica normalizada (coeficiente Dice de palabras latinas, u/v e i/j) para el mismo locus. No es una medida de fidelidad filológica ni corrección de OCR.";
+  }
+ });
+}
+
 /* Grado de la concordancia según el índice de semejanza del cotejo por trigramas. */
 function gradoConcordancia(score){
  if(!(score>0))return null;
@@ -447,7 +487,10 @@ ocrCompanion.append(ocrHeading,ocrNote,ocrText);panel.append(ocrCompanion);
  const foot=document.createElement("div");foot.className="script-triple-footer";
  const translation=document.createElement("button");translation.type="button";translation.textContent="Mostrar traducción";translation.hidden=true;
  const pdf=document.createElement("a");pdf.target="_blank";pdf.rel="noopener noreferrer";pdf.textContent="Abrir PDF de esta edición ↗";
- foot.append(translation,pdf);panel.append(foot);
+ foot.append(translation,pdf);
+ const symmetryBadge=document.createElement("div");symmetryBadge.className="script-triple-symmetry";
+ symmetryBadge.setAttribute("role","status");symmetryBadge.textContent="Coincidencia léxica: calculando…";
+ foot.append(symmetryBadge);panel.append(foot);
  let data=null,index=0,token=0,translated=false,size=18,view="text",resalte=null,pdfZoom=100,pdfRenderSerial=0;
 let pdfjsPromise=null;const pdfDocumentCache=new Map();
 function getPdfjs(){if(!pdfjsPromise)pdfjsPromise=import("https://cdn.jsdelivr.net/npm/pdfjs-dist@4.10.38/build/pdf.mjs").then(lib=>{lib.GlobalWorkerOptions.workerSrc="https://cdn.jsdelivr.net/npm/pdfjs-dist@4.10.38/build/pdf.worker.mjs";return lib});return pdfjsPromise;}
@@ -628,7 +671,7 @@ function underlineTerm(){
   if(marca)requestAnimationFrame(()=>{body.scrollTop=Math.max(0,marca.offsetTop-body.offsetTop-40)});
   updatePdf();updateCriticalNavigation();
   recount();
-  referenceUI?.refresh();referenceUI?.updateLink();savePosition();
+  referenceUI?.refresh();referenceUI?.updateLink();savePosition();updateSymmetryFooters();
  }
  async function load(){
   const firstLoad=token===0,previousLocus=data?.ed.format==="structured"?data.pages[index]?.locus:null;const current=++token;data=null;index=0;translated=false;title.textContent=["I","II","III"][slot]+" · "+editions[edition.value].name.split(" · ").slice(0,2).join(" · ");facsimile.removeAttribute("src");delete facsimile.dataset.currentPdf;
@@ -680,7 +723,7 @@ function underlineTerm(){
  };
  search.addEventListener("keydown",runReaderSearch);searchNext.addEventListener("click",runReaderSearch);
  if(window.ScriptoriumScholar)referenceUI=window.ScriptoriumScholar.mount(reference,()=>state.context(),{compact:true});
- states.push(state);load();
+ states.push(state);load();updateSymmetryFooters();
 }
 syncToggle.addEventListener("change",()=>{if(syncToggle.checked){const base=states.find(s=>s.data?.ed.format==="structured");if(base)synchronize(base)}savePosition()});
 /* Vincula selección superior de PDF con los visores OCR por página. */
