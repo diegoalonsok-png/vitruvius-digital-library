@@ -98,12 +98,13 @@ async function render(query){
  const tgrid=E("div",null,"bude-grid");
  const krohn=data.krohn?.passages?.find(x=>x.locus===locus);
  const rose=data.ocr?.loci?.[locus]?.["rose-1899"];
+ const roseTranscription=data.roseDigital?.passages?.find(x=>x.locus===locus);
  const krohnOcr=data.ocr?.loci?.[locus]?.["krohn-1912"];
  const k=card("Kr. 1912 · "+fmt(locus),krohn?.latin||"No hay transcripción digital independiente de Krohn alineada a este locus.","la");
  k.append(E("small",krohn?"Transcripción Perseus, cotejo con el impreso pendiente.":"Sin transcripción de Krohn: no se sustituye por Kurilo."));
  if(krohnOcr?.page){const p=E("p",null,"bude-note");p.append(A("Ver página OCR histórica de Krohn · imagen "+krohnOcr.page,"krohn-1912.html"));k.append(p)}
- const ro=card("Rose 1899 · "+fmt(locus),rose?.text||"Sin segmento OCR identificado para este locus.","la");
- ro.append(E("small",rose?"OCR histórico de la edición impresa; contiene posibles notas, números y segmentación automática; no equivale a lectura crítica verificada.":"Sin segmentación documental disponible."));
+ const ro=card("Rose 1899 · "+fmt(locus),roseTranscription?.latin||"Transcripción digital no disponible; revisar el facsímil.","la");
+ ro.append(E("small",roseTranscription?(roseTranscription.status==="alignment_needs_editorial_review"?"Transcripción Project Gutenberg · división por locus pendiente de revisión; cotejar impreso.":"Transcripción independiente Project Gutenberg · aún no verificada exhaustivamente contra el impreso."):"Transcripción Rose no disponible; el OCR histórico es solo auxiliar."));
  if(rose?.page){const p=E("p",null,"bude-note");p.append(A("Consultar facsímil de Rose · imagen digital "+rose.page,"https://archive.org/download/vitruviidearchit00vitr_0/vitruviidearchit00vitr_0.pdf#page="+rose.page));ro.append(p)}
  const ku=card("Kur. V514 · "+fmt(locus),p?.latin||"Sin texto estructurado.","la");
  ku.append(E("small","Texto autoral V514; las elecciones editoriales de latín y griego se conservan."));
@@ -283,8 +284,8 @@ async function render(query){
 }
 (async()=>{try{
  const paths=["data/structured/recensio-es.json","data/structured/recensio-fr.json","data/structured/theory-en.json","data/apparatus/aparato-comparativo.json","data/apparatus/collatio-validada.json","data/apparatus/aparato-autoral.json"];
- const [es,fr,en,comparison,appendix,author,curated,hmap,krohn,ocr,variants,coverage,pendingH,kuriloBooks]=await Promise.all([...paths,"data/apparatus/cotejo-selectivo-v514-v554-h.json","data/codex-h/folio-locus-map.json","data/text/krohn-1912-perseus-loci-candidate.json","data/collation-loci.json","data/apparatus/krohn-kurilo-variantes-candidatas.json","data/apparatus/cobertura-testimonial-731.json","data/apparatus/cotejo-h-pendientes-24.json","data/apparatus/cotejo-ediciones-kurilo-731.json"].map((url)=>url==="data/structured/recensio-fr.json"?json(url).catch(()=>({passages:[]})):json(url)));
- data={es,fr,en,comparison,appendix,author,curated,hmap,krohn,ocr,variants,coverage,pendingH,kuriloBooks};loci=es.passages.map(p=>p.locus);
+ const [es,fr,en,comparison,appendix,author,curated,hmap,krohn,roseDigital,ocr,variants,coverage,pendingH,kuriloBooks]=await Promise.all([...paths,"data/apparatus/cotejo-selectivo-v514-v554-h.json","data/codex-h/folio-locus-map.json","data/critical-editions/krohn-1912-tei-loci.json","data/critical-editions/rose-1899-transcribed-loci.json","data/collation-loci.json","data/apparatus/krohn-kurilo-variantes-candidatas.json","data/apparatus/cobertura-testimonial-731.json","data/apparatus/cotejo-h-pendientes-24.json","data/apparatus/cotejo-ediciones-kurilo-731.json"].map((url)=>url==="data/structured/recensio-fr.json"?json(url).catch(()=>({passages:[]})):json(url)));
+ data={es,fr,en,comparison,appendix,author,curated,hmap,krohn,roseDigital,ocr,variants,coverage,pendingH,kuriloBooks};loci=es.passages.map(p=>p.locus);
  syncNavigator=setupNavigator();
  const q=new URLSearchParams(location.search).get("locus")||"1.1.1";render(q);
  $("bude-form").addEventListener("submit",e=>{e.preventDefault();render($("bude-locus").value)});
