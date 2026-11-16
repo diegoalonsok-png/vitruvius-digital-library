@@ -2437,6 +2437,62 @@ async function loadCollationExample(){
 const NB_KEY="vitruvia-lexicon-notebook-v1";
 function nbLoad(){try{return JSON.parse(localStorage.getItem(NB_KEY)||"[]")}catch{return[]}}
 function nbSave(a){try{localStorage.setItem(NB_KEY,JSON.stringify(a))}catch{}}
+
+/* Portable academic notebook. Legacy JSON exports are raw arrays; newer
+ * bundles may use {schema,items}. Import never replaces local research notes.
+ * Files are read in this browser only, not sent to GitHub, Cloudflare or R2. */
+function nbValidateImport(payload){
+ const items=Array.isArray(payload)?payload:payload?.schema==="vdl-lexicon-notebook-v1"?payload.items:null;
+ if(!Array.isArray(items))throw new Error("El archivo no es un cuaderno JSON de Vitruvia Lexicon.");
+ if(items.length>1000)throw new Error("El archivo contiene demasiados pasajes (máximo 1000).");
+ return items.map((r,i)=>{
+  if(!r||typeof r!=="object"||Array.isArray(r)||typeof r.text!=="string"||!r.text.trim()||r.text.length>50000)
+   throw new Error("Pasaje inválido o demasiado extenso en la entrada "+(i+1)+".");
+  if(typeof r.cite!=="string"||r.cite.length>350||typeof r.lang!=="string"||r.lang.length>12)
+   throw new Error("Referencia o idioma inválidos en la entrada "+(i+1)+".");
+  const notes=Object.create(null);
+  if(r.notes!=null){
+   if(typeof r.notes!=="object"||Array.isArray(r.notes))throw new Error("Notas inválidas en la entrada "+(i+1)+".");
+   for(const [k,v] of Object.entries(r.notes)){
+    if(!/^[a-zA-Z0-9_-]{1,60}$/.test(k)||typeof v!=="string"||v.length>16000)
+     throw new Error("Campo de comentario inválido en la entrada "+(i+1)+".");
+    notes[k]=v;
+   }
+  }
+  if(r.tr!=null&&(typeof r.tr!=="string"||r.tr.length>50000))
+   throw new Error("Traducción inválida en la entrada "+(i+1)+".");
+  return {cite:r.cite.trim()||"Pasaje",text:r.text,lang:r.lang||"la",tr:r.tr||"",notes};
+ });
+}
+function nbMergeImported(existing,incoming){
+ const key=x=>[x.lang,x.cite,x.text].join("\u0000");
+ const seen=new Set(existing.map(key));
+ const merged=existing.slice();
+ let added=0,skipped=0;
+ let nextId=Math.max(Date.now(),...existing.map(x=>Number(x.id)||0))+1;
+ for(const entry of incoming){
+  const k=key(entry);
+  if(seen.has(k)){skipped++;continue}
+  seen.add(k);merged.push({...entry,id:nextId++});added++;
+ }
+ return {items:merged,added,skipped};
+}
+async function nbImportFile(file){
+ const status=$("#nb-import-status");
+ if(!file)return;
+ try{
+  if(file.size>4*1024*1024)throw new Error("Archivo mayor de 4 MB. Importá un cuaderno más pequeño.");
+  const incoming=nbValidateImport(JSON.parse(await file.text()));
+  const result=nbMergeImported(nbLoad(),incoming);
+  // Import either saves everything or changes nothing; no existing item is deleted.
+  if(result.added)localStorage.setItem(NB_KEY,JSON.stringify(result.items));
+  renderNotebook();
+  if(status)status.textContent="Importación local: "+result.added+" pasajes añadidos, "+result.skipped+" duplicados conservados sin cambios.";
+ }catch(err){
+  if(status)status.textContent="No se importó el archivo: "+(err?.message||String(err))+". Las notas existentes siguen intactas.";
+ }
+}
+
 function addToNotebook(item){const a=nbLoad();a.unshift({id:Date.now(),...item,notes:{}});nbSave(a);renderNotebook();$("#exegesis").scrollIntoView({behavior:"smooth"})}
 function renderNotebook(){
  const box=$("#nb-list");if(!box)return;box.replaceChildren();const a=nbLoad();const tpl=S.phil?.exegesis_template||[];
@@ -2716,7 +2772,10 @@ async function init(){
  $("#col-run").addEventListener("click",collate);$("#col-example").addEventListener("click",loadCollationExample);
  $("#col-add").addEventListener("click",()=>{const n=$$(".col-wit").length;if(n>=6)return;const t=$(".col-wit").cloneNode(true);t.querySelector(".col-sig").value=String.fromCharCode(66+n);t.querySelector("textarea").value="";$("#col-wits").append(t)});
  $("#nb-add").addEventListener("click",()=>{const text=prompt("Texto del pasaje (latín, griego o hebreo):");if(!text)return;const cite=prompt("Referencia (p. ej. Vitr. 1.1.1):")||"Pasaje";addToNotebook({cite,text,lang:detectLang(text)})});
- $$("[data-nb-export]").forEach(b=>b.addEventListener("click",()=>nbExport(b.dataset.nbExport)));
+ $("[data-nb-export]").forEach(b=>b.addEventListener("click",()=>nbExport(b.dataset.nbExport)));
+ const nbFile=$("#nb-import-file"),nbTrigger=$("#nb-import-trigger");
+ nbTrigger?.addEventListener("click",()=>nbFile?.click());
+ nbFile?.addEventListener("change",()=>{const file=nbFile.files?.[0];void nbImportFile(file).finally(()=>{nbFile.value=""})});
  $("#site-cite")?.append(citeBox("Vitruvia Lexicon",PAGE));
  // Auxiliary editorial metadata must not hold up the initial search form or
  // a deep-linked literal lookup. It fills in asynchronously after first paint.
