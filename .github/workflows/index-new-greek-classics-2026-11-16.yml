@@ -61,11 +61,27 @@ jobs:
           JS
       - name: Probar fichas, lectores, índices y alias editoriales de R2
         run: node scripts/test-bibliotheca-expansion-2026-11.mjs
-      - name: Publicar sólo índice regenerado
+      - name: Marcar fichas como indexadas sólo tras completar las pruebas
+        run: |
+          node --input-type=module <<'JS'
+          import fs from 'node:fs';
+          const path='data/bibliotheca-expansion-publicada-2026-11-16.json';
+          const d=JSON.parse(fs.readFileSync(path,'utf8'));
+          const index=JSON.parse(fs.readFileSync('data/index/classics/manifest.json','utf8')).index;
+          const indexed=new Set(index.filter(x=>x.lang==='grc').map(x=>x.id));
+          for(const w of d.works){
+            if(!w.corpusFiles?.grc)continue;
+            if(!indexed.has(w.id))throw Error('Cannot certify unindexed text: '+w.id);
+            w.textStatus='lexically-indexed';
+            w.status='Texto griego incorporado, registrado e indexado léxicamente; sin cotejo crítico independiente';
+          }
+          fs.writeFileSync(path,JSON.stringify(d,null,2)+'\\n');
+          JS
+      - name: Publicar índice y fichas certificadas
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add data/index/classics/
+          git add data/index/classics/ data/bibliotheca-expansion-publicada-2026-11-16.json
           if git diff --cached --quiet; then exit 0; fi
           git commit -m 'index: update Greek classics lexical shards'
           git pull --rebase origin main
