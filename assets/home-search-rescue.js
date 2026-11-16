@@ -46,10 +46,10 @@ async function rescue(query){
    textNode("p",String(p.latin||"").slice(0,550),article).lang="la";
    if(p.translation)textNode("p",String(p.translation).slice(0,300),article).lang="es";
   }
-  status.textContent=hits.length+" pasajes de V514 con «"+query+"»."+(hits.length>50?" Se muestran los primeros 50.":"")+(hits.length===0?" Probá otra grafía o el Lexicon.":"");
+  status.textContent=hits.length+" pasajes de V514 con «"+query+"»."+(hits.length>50?" Se muestran los primeros 50.":"")+(hits.length===0?" Pruebe otra grafía o el Lexicon.":"");
   done=true;
  }catch(e){
-  status.textContent="El buscador principal no se inició y el índice de recuperación tampoco pudo cargarse: "+e.message+". Consultá el lector bilingüe o volvé a intentar.";
+  status.textContent="El buscador principal no se inició y el índice de recuperación tampoco pudo cargarse: "+e.message+". Consulte el lector bilingüe o vuelva a intentarlo.";
  }finally{running=false;}
 }
 window.__vdlHomeSearchRescue=rescue;
@@ -68,7 +68,7 @@ function ready(){
  if(initial){
   setTimeout(()=>{if(!window.__vdlMainSearchReady&&!done)void rescue(initial)},3500);
  }
- const signal=setTimeout(()=>{if(!window.__vdlMainSearchReady&&$("search-status")&&!initial)$("search-status").textContent="Buscador principal aún no disponible. Podés buscar en el índice de recuperación V514."},4500);
+ const signal=setTimeout(()=>{if(!window.__vdlMainSearchReady&&$("search-status")&&!initial)$("search-status").textContent="Buscador principal aún no disponible. Puede buscar en el índice de recuperación V514."},4500);
  window.addEventListener("pagehide",()=>clearTimeout(signal),{once:true});
 }
 if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",ready,{once:true});else ready();
