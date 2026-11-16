@@ -59,10 +59,10 @@
 <script defer src="assets/academic-inline-translation.js?v=20261114-machine-pivot-v3"></script><script defer src="assets/scholarly-passage-citation.js?v=20261113-citable-1"></script>
 <script defer src="assets/bibliotheca-simple.js?v=20261115-lang-fix-v3"></script>
 <script defer src="assets/bibliotheca-genre-work-list.js?v=20261114-academic-order-v1"></script>
-<link rel="stylesheet" href="assets/bibliotheca-work-search.css?v=20261115-compact-v8"><script defer src="assets/bibliotheca-work-search.js?v=20261115-iliada-search-fix-v9"></script>
+<link rel="stylesheet" href="assets/bibliotheca-work-search.css?v=20261115-compact-v8"><script defer src="assets/bibliotheca-work-search.js?v=20261115-results-only-v11"></script>
 <script defer src="assets/bibliotheca-entity-search.js?v=20261115-onomastics-v1"></script>
 <script defer src="assets/bibliotheca-concordance.js?v=20261115-loci-provenance-v2"></script>
-<script defer src="assets/classics-corpus-counts.js?v=20261115-one-line-v4"></script>
+<script defer src="assets/classics-corpus-counts.js?v=20261115-one-line-v5"></script>
 <script defer src="assets/bibliotheca-academic-provenance.js?v=20261114-witnesses-v2"></script>
 <script defer src="assets/editorial-work-records.js?v=20261111-identifiers-v1"></script><script defer src="assets/classics-work-dossier.js?v=20261115-r2-expansion-v1"></script>
 <script defer src="assets/vitruvia-selection-speech.js?v=20261108-bibliotheca-v1"></script>
@@ -176,7 +176,7 @@ html[data-bibliotheca-color="sepia"] :is(.top,.bibliotheca-suite,header.hero,.se
  .bibliotheca-advanced-controls>label{min-width:0;flex:1 1 0}
  .bibliotheca-advanced-controls>small{flex:1 1 230px;min-width:180px}
 }
-</style><link rel="stylesheet" href="assets/bibliotheca-tally-line.css?v=20261115-lexicon-1"></head>
+</style><link rel="stylesheet" href="assets/bibliotheca-tally-line.css?v=20261115-lexicon-1"><link rel="stylesheet" href="assets/bibliotheca-lexicon-layout.css?v=20261115-2"></head>
 <body><a class="vdl-skip-link" href="#main-content">Saltar al contenido principal</a>
 <main class="library" id="main-content">
 <nav class="top" aria-label="Navegación de Bibliotheca">
@@ -264,6 +264,7 @@ html[data-bibliotheca-color="sepia"] :is(.top,.bibliotheca-suite,header.hero,.se
  <ol id="genre-work-items" class="genre-work-items"></ol>
  <p id="genre-work-note" class="genre-work-note"></p>
 </section>
+</details>
 <p class="bibliotheca-static-index" style="margin:12px 0;font-size:13px"><a href="index-auctorum-operum.html">Index auctorum et operum · catálogo alfabético permanente de obras clásicas</a> <span style="color:#999">· consultable sin JavaScript · fichas por autor y obra</span></p>
 <p class="filter-method" id="filter-method">Catálogo por autor y título; orden cronológico opcional por fecha aproximada de composición, nunca por datación del manuscrito ni de la edición.</p>
 <p class="coverage" id="catalogue-status" role="status" aria-live="polite">Cargando el registro de obras indexadas…</p>
@@ -283,6 +284,6 @@ html[data-bibliotheca-color="sepia"] :is(.top,.bibliotheca-suite,header.hero,.se
 <nav aria-label="Estudios textuales rastreables" style="max-width:1100px;margin:16px auto;padding:12px 15px;border-top:1px solid #5556;border-bottom:1px solid #5556;font:13px/1.65 system-ui,sans-serif"><strong>Concordancias académicas:</strong> <a href="indice-busquedas-academicas.html">índice de búsquedas verificadas</a> · <a href="domus-en-vitruvio.html" lang="la">domus</a> · <a href="aedes-en-vitruvio.html" lang="la">aedes</a> · <a href="symmetria-en-vitruvio.html" lang="la">symmetria</a> · <a href="locus-en-vitruvio.html" lang="la">locus</a> · <a href="architectura-en-vitruvio.html" lang="la">architectura</a></nav>
 <noscript><aside role="note" style="max-width:960px;margin:22px auto;padding:15px;border:1px solid #777;border-radius:10px;background:#191a1e;color:#f1f1f1;font:14px/1.65 system-ui,sans-serif">Este buscador avanzado requiere JavaScript. Para investigar sin scripts, consulta la <a href="guia-investigacion-universitaria.html">guía universitaria</a>, las <a href="domus-en-vitruvio.html">concordancias estáticas de Vitruvio</a> y la <a href="como-citar.html">guía de citación y DOI</a>. No se presentan resultados vacíos como ausencia del término.</aside></noscript>
 </main>
-<script defer src="assets/bibliotheca-unified-search.js?v=20261115-lexicon-1"></script><script defer src="assets/bibliotheca-palette.js?v=20261115-navfix-v2"></script><script defer src="assets/bibliotheca-search-shortcuts.js?v=20261115-restore-v1"></script><script defer src="assets/classics-audited-coverage.js?v=20261110-manifest-28-wikisource-v4"></script><script defer src="assets/scholarly-query-tools.js?v=20261109-university-v1"></script><script defer src="assets/bibliotheca-theme.js?v=20261110-light-v1"></script><script defer src="assets/bibliotheca-ui-i18n.js?v=20261112-ui-i18n"></script><script defer src="assets/button-press-feedback.js?v=20261111-pulsacion-v1"></script><script defer src="assets/ui-idioma.js?v=20261112-sitio3"></script><script defer src="assets/bibliotheca-r2-facsimiles.js?v=20261113-r2-1"></script><script defer src="assets/r2-clasicos-busqueda.js?v=20261113-r2-busqueda-1"></script><script defer src="assets/cifra-obras.js?v=20261113-cifra-1"></script><script defer src="assets/bibliotheca-federated-status.js?v=20261115-1"></script><script defer src="assets/unified-books-discovery.js?v=20261115-unified-all-books-v3"></script><script defer src="assets/bibliotheca-advanced-search.js?v=20261115-advanced-1"></script>
+<script defer src="assets/bibliotheca-lexicon-layout.js?v=20261115-2"></script><script defer src="assets/bibliotheca-palette.js?v=20261115-navfix-v2"></script><script defer src="assets/bibliotheca-search-shortcuts.js?v=20261115-restore-v1"></script><script defer src="assets/classics-audited-coverage.js?v=20261110-manifest-28-wikisource-v4"></script><script defer src="assets/scholarly-query-tools.js?v=20261109-university-v1"></script><script defer src="assets/bibliotheca-theme.js?v=20261110-light-v1"></script><script defer src="assets/bibliotheca-ui-i18n.js?v=20261112-ui-i18n"></script><script defer src="assets/button-press-feedback.js?v=20261111-pulsacion-v1"></script><script defer src="assets/ui-idioma.js?v=20261112-sitio3"></script><script defer src="assets/bibliotheca-r2-facsimiles.js?v=20261113-r2-1"></script><script defer src="assets/r2-clasicos-busqueda.js?v=20261113-r2-busqueda-1"></script><script defer src="assets/cifra-obras.js?v=20261113-cifra-1"></script><script defer src="assets/bibliotheca-federated-status.js?v=20261115-1"></script><script defer src="assets/unified-books-discovery.js?v=20261115-unified-all-books-v3"></script><script defer src="assets/bibliotheca-advanced-search.js?v=20261115-advanced-1"></script>
 </body>
 </html>
