@@ -4,9 +4,10 @@
   "method": {
     "scope": "Only indexed 'latin' fields in passage order; excludes translations, editorial commentary outside Latin fields, notes outside Latin fields, indices, HTML, apparatus.",
     "tokenization": "Unicode /\\p{L}[\\p{L}\\p{M}]*/gu, counts alphabetic strings including Greek; editorial signs and numerals do not count. Tokens are lowercased. A word split by editorial symbols may count as 2; Latin source streams remain unchanged.",
-    "term_policy": "Exact normalized inflected forms from conservative regular-expression families, NOT semantic lemmatization. Remove diacritics, unify j/i and v/u. Do not count derivatives such as decorare as decor.",
+    "term_policy": "Conservative explicit word-form lists and inflection patterns, NOT automatic lemmatization. Includes venustatis, firmitatis and utilitatis; reports exact_surface_token_count separately. Enclitics and unusual spellings may require manual audit.",
     "middle_policy": "If an odd number, the central token; if even, both tokens at N/2 and N/2+1. Locator reports the locus of the token in that edition. Book-level metrics respect source passage order.",
-    "warning": "Different segmentation of V297 loci can alter locations, even when content is present. This is not a count of a hypothetical archetype or a physical book's marginalia."
+    "warning": "Different segmentation of V297 loci can alter locations, even when content is present. This is not a count of a hypothetical archetype or a physical book's marginalia.",
+    "correction_note": "Corrected original venustas=0 bug caused by an incorrect inflection pattern; amended derivational term patterns consistently."
   },
   "sources": [
     {
@@ -113,18 +114,22 @@
       },
       "terms": {
         "symmetria": {
-          "count": 82,
+          "count": 84,
+          "exact_surface_token_count": 10,
           "forms": {
             "symmetriis": 25,
             "symmetriarum": 18,
             "symmetriae": 13,
             "symmetrias": 11,
             "symmetria": 10,
-            "symmetriam": 5
+            "symmetriam": 5,
+            "symmetriaque": 1,
+            "symmetriasque": 1
           }
         },
         "decor": {
           "count": 15,
+          "exact_surface_token_count": 4,
           "forms": {
             "decorem": 5,
             "decore": 4,
@@ -134,6 +139,7 @@
         },
         "firmitas": {
           "count": 19,
+          "exact_surface_token_count": 0,
           "forms": {
             "firmitatem": 14,
             "firmitatis": 2,
@@ -142,19 +148,23 @@
           }
         },
         "utilitas": {
-          "count": 37,
+          "count": 38,
+          "exact_surface_token_count": 0,
           "forms": {
             "utilitates": 22,
             "utilitatem": 11,
-            "utilitatis": 4
+            "utilitatis": 4,
+            "utilitati": 1
           }
         },
         "venustas": {
           "count": 0,
+          "exact_surface_token_count": 0,
           "forms": {}
         },
         "ordinatio": {
           "count": 5,
+          "exact_surface_token_count": 1,
           "forms": {
             "ordinationes": 2,
             "ordinatione": 1,
@@ -163,7 +173,8 @@
           }
         },
         "dispositio": {
-          "count": 31,
+          "count": 32,
+          "exact_surface_token_count": 8,
           "forms": {
             "dispositiones": 9,
             "dispositio": 8,
@@ -171,11 +182,13 @@
             "dispositione": 5,
             "dispositionum": 2,
             "dispositionis": 1,
+            "dispositioni": 1,
             "dispositionem": 1
           }
         },
         "distributio": {
           "count": 22,
+          "exact_surface_token_count": 4,
           "forms": {
             "distributiones": 11,
             "distributione": 4,
@@ -187,6 +200,7 @@
         },
         "eurythmia": {
           "count": 4,
+          "exact_surface_token_count": 2,
           "forms": {
             "eurythmia": 2,
             "eurythmiae": 2
@@ -194,6 +208,7 @@
         },
         "proportio": {
           "count": 31,
+          "exact_surface_token_count": 1,
           "forms": {
             "proportionibus": 13,
             "proportiones": 10,
@@ -205,6 +220,7 @@
         },
         "architectura": {
           "count": 21,
+          "exact_surface_token_count": 7,
           "forms": {
             "architecturae": 11,
             "architectura": 7,
@@ -213,6 +229,7 @@
         },
         "architectus": {
           "count": 49,
+          "exact_surface_token_count": 12,
           "forms": {
             "architecti": 19,
             "architectus": 12,
@@ -225,6 +242,7 @@
         },
         "columna": {
           "count": 193,
+          "exact_surface_token_count": 16,
           "forms": {
             "columnae": 68,
             "columnarum": 55,
@@ -236,6 +254,7 @@
         },
         "templum": {
           "count": 16,
+          "exact_surface_token_count": 3,
           "forms": {
             "templis": 5,
             "templa": 4,
@@ -245,7 +264,8 @@
           }
         },
         "ratio": {
-          "count": 332,
+          "count": 330,
+          "exact_surface_token_count": 55,
           "forms": {
             "rationibus": 82,
             "ratione": 78,
@@ -253,12 +273,12 @@
             "ratio": 55,
             "rationem": 48,
             "rationis": 3,
-            "rationesque": 2,
             "rationum": 1
           }
         },
         "modulus": {
           "count": 42,
+          "exact_surface_token_count": 4,
           "forms": {
             "moduli": 19,
             "modulorum": 14,
@@ -270,30 +290,35 @@
         },
         "commensus": {
           "count": 9,
+          "exact_surface_token_count": 9,
           "forms": {
             "commensus": 9
           }
         },
         "ichnographia": {
           "count": 2,
+          "exact_surface_token_count": 2,
           "forms": {
             "ichnographia": 2
           }
         },
         "orthographia": {
           "count": 2,
+          "exact_surface_token_count": 2,
           "forms": {
             "orthographia": 2
           }
         },
         "scaenographia": {
           "count": 2,
+          "exact_surface_token_count": 2,
           "forms": {
             "scaenographia": 2
           }
         },
         "machina": {
           "count": 59,
+          "exact_surface_token_count": 13,
           "forms": {
             "machinae": 18,
             "machina": 13,
@@ -305,6 +330,7 @@
         },
         "materia": {
           "count": 55,
+          "exact_surface_token_count": 34,
           "forms": {
             "materia": 34,
             "materiae": 15,
@@ -429,18 +455,22 @@
       },
       "terms": {
         "symmetria": {
-          "count": 82,
+          "count": 84,
+          "exact_surface_token_count": 10,
           "forms": {
             "symmetriis": 25,
             "symmetriarum": 18,
             "symmetriae": 13,
             "symmetrias": 11,
             "symmetria": 10,
-            "symmetriam": 5
+            "symmetriam": 5,
+            "symmetriaque": 1,
+            "symmetriasque": 1
           }
         },
         "decor": {
           "count": 15,
+          "exact_surface_token_count": 4,
           "forms": {
             "decorem": 5,
             "decore": 4,
@@ -450,6 +480,7 @@
         },
         "firmitas": {
           "count": 19,
+          "exact_surface_token_count": 0,
           "forms": {
             "firmitatem": 14,
             "firmitatis": 2,
@@ -458,19 +489,23 @@
           }
         },
         "utilitas": {
-          "count": 37,
+          "count": 38,
+          "exact_surface_token_count": 0,
           "forms": {
             "utilitates": 22,
             "utilitatem": 11,
-            "utilitatis": 4
+            "utilitatis": 4,
+            "utilitati": 1
           }
         },
         "venustas": {
           "count": 0,
+          "exact_surface_token_count": 0,
           "forms": {}
         },
         "ordinatio": {
           "count": 5,
+          "exact_surface_token_count": 1,
           "forms": {
             "ordinationes": 2,
             "ordinatione": 1,
@@ -479,7 +514,8 @@
           }
         },
         "dispositio": {
-          "count": 31,
+          "count": 32,
+          "exact_surface_token_count": 8,
           "forms": {
             "dispositiones": 9,
             "dispositio": 8,
@@ -487,11 +523,13 @@
             "dispositione": 5,
             "dispositionum": 2,
             "dispositionis": 1,
+            "dispositioni": 1,
             "dispositionem": 1
           }
         },
         "distributio": {
           "count": 22,
+          "exact_surface_token_count": 4,
           "forms": {
             "distributiones": 11,
             "distributione": 4,
@@ -503,6 +541,7 @@
         },
         "eurythmia": {
           "count": 4,
+          "exact_surface_token_count": 2,
           "forms": {
             "eurythmia": 2,
             "eurythmiae": 2
@@ -510,6 +549,7 @@
         },
         "proportio": {
           "count": 31,
+          "exact_surface_token_count": 1,
           "forms": {
             "proportionibus": 13,
             "proportiones": 10,
@@ -521,6 +561,7 @@
         },
         "architectura": {
           "count": 21,
+          "exact_surface_token_count": 7,
           "forms": {
             "architecturae": 11,
             "architectura": 7,
@@ -529,6 +570,7 @@
         },
         "architectus": {
           "count": 49,
+          "exact_surface_token_count": 12,
           "forms": {
             "architecti": 19,
             "architectus": 12,
@@ -541,6 +583,7 @@
         },
         "columna": {
           "count": 193,
+          "exact_surface_token_count": 16,
           "forms": {
             "columnae": 68,
             "columnarum": 55,
@@ -552,6 +595,7 @@
         },
         "templum": {
           "count": 16,
+          "exact_surface_token_count": 3,
           "forms": {
             "templis": 5,
             "templa": 4,
@@ -561,7 +605,8 @@
           }
         },
         "ratio": {
-          "count": 332,
+          "count": 330,
+          "exact_surface_token_count": 55,
           "forms": {
             "rationibus": 82,
             "ratione": 78,
@@ -569,12 +614,12 @@
             "ratio": 55,
             "rationem": 48,
             "rationis": 3,
-            "rationesque": 2,
             "rationum": 1
           }
         },
         "modulus": {
           "count": 42,
+          "exact_surface_token_count": 4,
           "forms": {
             "moduli": 19,
             "modulorum": 14,
@@ -586,30 +631,35 @@
         },
         "commensus": {
           "count": 9,
+          "exact_surface_token_count": 9,
           "forms": {
             "commensus": 9
           }
         },
         "ichnographia": {
           "count": 2,
+          "exact_surface_token_count": 2,
           "forms": {
             "ichnographia": 2
           }
         },
         "orthographia": {
           "count": 2,
+          "exact_surface_token_count": 2,
           "forms": {
             "orthographia": 2
           }
         },
         "scaenographia": {
           "count": 2,
+          "exact_surface_token_count": 2,
           "forms": {
             "scaenographia": 2
           }
         },
         "machina": {
           "count": 59,
+          "exact_surface_token_count": 13,
           "forms": {
             "machinae": 18,
             "machina": 13,
@@ -621,6 +671,7 @@
         },
         "materia": {
           "count": 55,
+          "exact_surface_token_count": 34,
           "forms": {
             "materia": 34,
             "materiae": 15,
@@ -745,18 +796,22 @@
       },
       "terms": {
         "symmetria": {
-          "count": 81,
+          "count": 83,
+          "exact_surface_token_count": 10,
           "forms": {
             "symmetriis": 25,
             "symmetriarum": 18,
             "symmetriae": 13,
             "symmetria": 10,
             "symmetrias": 10,
-            "symmetriam": 5
+            "symmetriam": 5,
+            "symmetriaque": 1,
+            "symmetriasque": 1
           }
         },
         "decor": {
           "count": 15,
+          "exact_surface_token_count": 4,
           "forms": {
             "decorem": 5,
             "decore": 4,
@@ -766,6 +821,7 @@
         },
         "firmitas": {
           "count": 19,
+          "exact_surface_token_count": 0,
           "forms": {
             "firmitatem": 14,
             "firmitatis": 2,
@@ -774,19 +830,23 @@
           }
         },
         "utilitas": {
-          "count": 34,
+          "count": 35,
+          "exact_surface_token_count": 0,
           "forms": {
             "utilitates": 20,
             "utilitatem": 10,
-            "utilitatis": 4
+            "utilitatis": 4,
+            "utilitati": 1
           }
         },
         "venustas": {
           "count": 0,
+          "exact_surface_token_count": 0,
           "forms": {}
         },
         "ordinatio": {
           "count": 5,
+          "exact_surface_token_count": 1,
           "forms": {
             "ordinationes": 2,
             "ordinatione": 1,
@@ -795,7 +855,8 @@
           }
         },
         "dispositio": {
-          "count": 31,
+          "count": 32,
+          "exact_surface_token_count": 8,
           "forms": {
             "dispositiones": 9,
             "dispositio": 8,
@@ -803,11 +864,13 @@
             "dispositione": 5,
             "dispositionum": 2,
             "dispositionis": 1,
+            "dispositioni": 1,
             "dispositionem": 1
           }
         },
         "distributio": {
           "count": 22,
+          "exact_surface_token_count": 4,
           "forms": {
             "distributiones": 11,
             "distributione": 4,
@@ -819,6 +882,7 @@
         },
         "eurythmia": {
           "count": 4,
+          "exact_surface_token_count": 2,
           "forms": {
             "eurythmia": 2,
             "eurythmiae": 2
@@ -826,6 +890,7 @@
         },
         "proportio": {
           "count": 30,
+          "exact_surface_token_count": 1,
           "forms": {
             "proportionibus": 13,
             "proportiones": 9,
@@ -837,6 +902,7 @@
         },
         "architectura": {
           "count": 19,
+          "exact_surface_token_count": 7,
           "forms": {
             "architecturae": 9,
             "architectura": 7,
@@ -845,6 +911,7 @@
         },
         "architectus": {
           "count": 48,
+          "exact_surface_token_count": 12,
           "forms": {
             "architecti": 18,
             "architectus": 12,
@@ -857,6 +924,7 @@
         },
         "columna": {
           "count": 193,
+          "exact_surface_token_count": 16,
           "forms": {
             "columnae": 68,
             "columnarum": 55,
@@ -868,6 +936,7 @@
         },
         "templum": {
           "count": 16,
+          "exact_surface_token_count": 3,
           "forms": {
             "templis": 5,
             "templa": 4,
@@ -877,7 +946,8 @@
           }
         },
         "ratio": {
-          "count": 315,
+          "count": 313,
+          "exact_surface_token_count": 51,
           "forms": {
             "ratione": 77,
             "rationibus": 76,
@@ -885,12 +955,12 @@
             "ratio": 51,
             "rationem": 47,
             "rationis": 3,
-            "rationesque": 2,
             "rationum": 1
           }
         },
         "modulus": {
           "count": 42,
+          "exact_surface_token_count": 4,
           "forms": {
             "moduli": 19,
             "modulorum": 14,
@@ -902,30 +972,35 @@
         },
         "commensus": {
           "count": 9,
+          "exact_surface_token_count": 9,
           "forms": {
             "commensus": 9
           }
         },
         "ichnographia": {
           "count": 2,
+          "exact_surface_token_count": 2,
           "forms": {
             "ichnographia": 2
           }
         },
         "orthographia": {
           "count": 2,
+          "exact_surface_token_count": 2,
           "forms": {
             "orthographia": 2
           }
         },
         "scaenographia": {
           "count": 2,
+          "exact_surface_token_count": 2,
           "forms": {
             "scaenographia": 2
           }
         },
         "machina": {
           "count": 57,
+          "exact_surface_token_count": 13,
           "forms": {
             "machinae": 18,
             "machina": 13,
@@ -937,6 +1012,7 @@
         },
         "materia": {
           "count": 53,
+          "exact_surface_token_count": 33,
           "forms": {
             "materia": 33,
             "materiae": 14,
