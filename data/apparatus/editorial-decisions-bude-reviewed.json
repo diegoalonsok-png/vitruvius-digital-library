@@ -70,6 +70,28 @@
       "status": "digital_unverified_print"
     },
     {
+      "locus": "1.1.6",
+      "lemma": "Agesilae; oporteat",
+      "readings": [
+        {
+          "edition": "Kur. V514",
+          "text": "Agesilae ... oporteat"
+        },
+        {
+          "edition": "Kr. 1912",
+          "text": "Agesilae ... oporteat"
+        },
+        {
+          "edition": "Rose 1899",
+          "text": "Agesipolidos ... oportet"
+        }
+      ],
+      "criticalLine": "Agesilae Kur. Kr. ] Agesipolidos Rose; oporteat Kur. Kr. ] oportet Rose",
+      "change": "El nombre propio «Agesilae» frente a «Agesipolidos» cambia la identificación genealógica atribuida a Pausanias; «oporteat» es subjuntivo y «oportet» indicativo.",
+      "decision": "Se registra una divergencia textual de carácter histórico además de la verbal. No atribuir una identificación historiográfica segura sin estudiar los argumentos del aparato de Rose y Krohn.",
+      "status": "digital_unverified_print"
+    },
+    {
       "locus": "1.1.9",
       "lemma": "sonitûm ex discrimine",
       "readings": [
@@ -92,6 +114,28 @@
       "status": "digital_unverified_print"
     },
     {
+      "locus": "1.1.10",
+      "lemma": "inclinationem; cavere",
+      "readings": [
+        {
+          "edition": "Kur. V514",
+          "text": "inclinationem ... cavere"
+        },
+        {
+          "edition": "Kr. 1912",
+          "text": "inclinationem ... cavere"
+        },
+        {
+          "edition": "Rose 1899",
+          "text": "inclinationes ... caveri"
+        }
+      ],
+      "criticalLine": "inclinationem Kur. Kr. ] inclinationes Rose; cavere Kur. Kr. ] caveri Rose",
+      "change": "«inclinationem» singular frente a «inclinationes» plural modifica el número del objeto de conocimiento climático; «cavere» activo frente a «caveri» pasivo cambia la forma verbal en la sección jurídica.",
+      "decision": "Kurilo coincide con Krohn en las formas digitalizadas. No se supone cuál testimonio manuscrito o razonamiento gramatical determinó la opción de Rose.",
+      "status": "digital_unverified_print"
+    },
+    {
       "locus": "1.1.15",
       "lemma": "rationem",
       "readings": [
@@ -111,6 +155,72 @@
       "criticalLine": "rationem Kur. Kr. ] ratiocinatio Rose",
       "change": "Cambio de caso y construcción: acusativo rationem frente a nominativo ratiocinatio, en el contexto de «id est».",
       "decision": "Las transcripciones exhiben dos soluciones sintácticas. La motivación específica de Rose y Krohn exige examen de sus aparatos.",
+      "status": "digital_unverified_print"
+    },
+    {
+      "locus": "1.1.16",
+      "lemma": "[divisus]",
+      "readings": [
+        {
+          "edition": "Kur. V514",
+          "text": "[divisus]"
+        },
+        {
+          "edition": "Kr. 1912",
+          "text": "divisus"
+        },
+        {
+          "edition": "Rose 1899",
+          "text": "de visu"
+        }
+      ],
+      "criticalLine": "[divisus] Kur. / divisus Kr. ] de visu Rose (antecedit a geometris Kur. Kr. ] et geometris Rose)",
+      "change": "La transcripción Rose forma la locución «de visu» vinculada a la óptica; Krohn imprime «divisus» y Kurilo marca la palabra entre corchetes cuadrados. Se transforma la articulación sintáctica y la interpretación del pasaje.",
+      "decision": "La decisión de Rose y la adopción de Krohn por Kurilo se constatan sólo en los índices digitales. La lectura de «divisus» es sintácticamente difícil: requiere consultar ambos impresos y sus aparatos, no corregirla automáticamente.",
+      "status": "digital_unverified_print"
+    },
+    {
+      "locus": "1.2.6",
+      "lemma": "sculpentur; capitulis",
+      "readings": [
+        {
+          "edition": "Kur. V514",
+          "text": "sculpentur ... ex ionicis epistyliis [capitulis]"
+        },
+        {
+          "edition": "Kr. 1912",
+          "text": "sculpentur ... ex ionicis epistyliis capitulis"
+        },
+        {
+          "edition": "Rose 1899",
+          "text": "scalpentur ... ionicis epistyliis"
+        }
+      ],
+      "criticalLine": "sculpentur Kur. Kr. ] scalpentur Rose; ex ionicis epistyliis [capitulis] Kur. / ex ionicis epistyliis capitulis Kr. ] ionicis epistyliis Rose",
+      "change": "Cambia la grafía verbal sculpentur/scalpentur y la presencia de «ex» y «capitulis». Estas diferencias afectan la interpretación de elementos dóricos y jónicos descritos por Vitruvio.",
+      "decision": "Kurilo refleja la solución de Krohn y señala «capitulis» con corchetes cuadrados. Las motivaciones de las supresiones o añadidos en los impresos están aún sin revisar.",
+      "status": "digital_unverified_print"
+    },
+    {
+      "locus": "1.2.9",
+      "lemma": "et; apte",
+      "readings": [
+        {
+          "edition": "Kur. V514",
+          "text": "et ... apte"
+        },
+        {
+          "edition": "Kr. 1912",
+          "text": "et ... apte"
+        },
+        {
+          "edition": "Rose 1899",
+          "text": "aut ... aliter"
+        }
+      ],
+      "criticalLine": "et Kur. Kr. ] aut Rose; apte Kur. Kr. ] aliter Rose",
+      "change": "En la formulación sobre la distribución arquitectónica, «et» frente a «aut» modifica la coordinación; «apte» (adecuadamente) frente a «aliter» (de otra manera) cambia el adverbio y el matiz argumental.",
+      "decision": "El texto digital de Kurilo sigue a Krohn en ambas lecturas y Rose presenta la otra solución. No hay fundamento declarado del editor confirmado aún contra el impreso.",
       "status": "digital_unverified_print"
     },
     {
@@ -217,6 +327,28 @@
         "Krohn1912-print-I-4-3-20261115",
         "Krohn1912-print-p15-20261115"
       ]
+    },
+    {
+      "locus": "1.6.11",
+      "lemma": "praeurens; impetu",
+      "readings": [
+        {
+          "edition": "Kur. V514",
+          "text": "praeurens ... impetu"
+        },
+        {
+          "edition": "Kr. 1912",
+          "text": "praeurens ... impetu"
+        },
+        {
+          "edition": "Rose 1899",
+          "text": "profundens ... spiritu"
+        }
+      ],
+      "criticalLine": "praeurens Kur. Kr. ] profundens Rose; impetu Kur. Kr. ] spiritu Rose",
+      "change": "«praeurens» (ardiendo o abrasando previamente) frente a «profundens» (vertiendo/derramando) modifica la imagen verbal del viento; «impetu» y «spiritu» son sustantivos distintos, con diferente sentido causal o instrumental.",
+      "decision": "Coincidencia digital de Kurilo con Krohn; Rose da otra lectura en dos puntos. Las motivaciones textuales y manuscritas están pendientes de verificación.",
+      "status": "digital_unverified_print"
     }
   ]
 }
