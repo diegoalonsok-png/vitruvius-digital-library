@@ -5,11 +5,11 @@ import vm from "node:vm";
 const page=fs.readFileSync("index.html","utf8");
 const bib=fs.readFileSync("bibliotheca-graeca-latina.html","utf8");
 for(const doc of [page,bib]){
- assert(doc.includes('assets/classics-corpus-counts.js'));
  assert(doc.includes('assets/bibliotheca-offsite-greek.js'));
  assert(doc.includes('assets/bibliotheca-offsite-latin.js'));
  assert(/bibliotheca-graeca-latina(\.html)?\b/.test(doc));
 }
+assert(bib.includes("assets/classics-corpus-counts.js"),"Bibliotheca must provide the catalogue counters");
 assert(bib.includes("assets/bibliotheca-academic-provenance.js"));
 assert(page.includes('id="stat-records"'),"Las cifras vitruvianas anteriores permanecen");
 assert(page.includes("CODEX_H_HARLEY_2767_ARCHIVO_MAESTRO_NO_BORRAR"));
