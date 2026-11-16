@@ -741,6 +741,15 @@ html[data-theme=light] .featured a#featured-link{background:#232326;color:#fff}
   <button type="button" id="comp-go" class="lx-primary" data-i18n>Comparar</button>
  </div>
  <div id="comp-out"></div>
+ <div class="lx-ngrams" style="margin:18px 0 4px;padding-top:14px;border-top:1px solid #8885" aria-labelledby="ng-title">
+  <h3 id="ng-title">N-gramas históricos · expresiones de 2 a 5 palabras</h3>
+  <p class="lx-small">Utiliza las dos obras seleccionadas arriba (o una frente al resto del corpus). Recuenta secuencias de <strong>formas textuales normalizadas</strong>, no lemas ni equivalencias entre traducciones. Nunca une dos loci ni atraviesa límites de oración. La cronología es aproximada y no representa toda la producción antigua.</p>
+  <div class="actions" role="group" aria-label="Comparación de expresiones">
+   <label for="ng-size">Longitud <select id="ng-size" class="lx-select" aria-label="Número de palabras por expresión"><option value="2">2 palabras</option><option value="3">3 palabras</option><option value="4">4 palabras</option><option value="5">5 palabras</option></select></label>
+   <button type="button" id="ng-go" class="lx-primary">Comparar expresiones</button>
+  </div>
+  <div id="ng-out" aria-live="polite"><p class="lx-small">Elegí lengua y obra arriba y pulsá «Comparar expresiones» para analizar el corpus indexado.</p></div>
+ </div>
 </section>
 
 <section class="tool" id="instrumenta" aria-labelledby="inst-h">
@@ -885,7 +894,8 @@ html[data-theme=light] .lx-attestations .lx-attestation-row{border-bottom-color:
 <script src="assets/bibliotheca-offsite-greek.js?v=20261110-plutarch-greek-v1" defer></script>
 <script defer src="assets/bibliotheca-offsite-latin.js?v=20261110-macrobius-7books-v4"></script>
 <script defer src="assets/vitruvia-philology.js?v=20261111-filologia-v1"></script><script defer src="assets/classics-lexical-index.js?v=20261115-r2-expansion-v1"></script><script src="assets/classics-corpus-search.js?v=20261115-r2-expansion-v1" defer></script>
-<script src="assets/hiero-render.js?v=20261109-quadrats-v1" defer></script><script src="assets/lexicon-hiero-enhance.js?v=20261109-v1" defer></script><script src="assets/academic-inline-translation.js?v=20261111-hebrew-passage-v1" defer></script><script src="assets/vitruvia-lexicon.js?v=20261116-notebook-scope-v1" defer></script>
+<script src="assets/hiero-render.js?v=20261109-quadrats-v1" defer></script><script src="assets/lexicon-hiero-enhance.js?v=20261109-v1" defer></script><script src="assets/academic-inline-translation.js?v=20261111-hebrew-passage-v1" defer></script><script src="assets/lexicon-ngram-engine.js?v=20261116-comparatio-ngrams-v1" defer></script>
+<script src="assets/vitruvia-lexicon.js?v=20261116-comparatio-ngrams-v1" defer></script>
 <script src="assets/lexicon-free-selection.js?v=20261113-seleccion-libre-v1" defer></script>
 <script src="assets/scholarly-query-tools.js?v=20261111-lexicon-citation-controls-v1" defer></script>
 <script src="assets/classical-lexicon.js?v=20261112-externo" defer></script><script defer src="assets/dictionary-everywhere.js?v=20261111-diccionario-v1"></script>
