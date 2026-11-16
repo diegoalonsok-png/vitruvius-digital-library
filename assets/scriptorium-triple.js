@@ -533,7 +533,7 @@ function underlineTerm(){
   const frag=document.createDocumentFragment();
   while(index>=0&&total<100){
    frag.append(document.createTextNode(value.slice(cursor,index)));
-   const mark=document.createElement("mark");mark.className="script-triple-search-hit";mark.textContent=value.slice(index,index+term.length);mark.title="Coincidencia literal de búsqueda; no equivale a cotejo ecdótico";
+   const mark=document.createElement("mark");mark.className="script-triple-search-hit";mark.textContent=value.slice(index,index+term.length);mark.title="Clic para abrir la ficha léxica. Coincidencia textual, no cotejo ecdótico.";
    frag.append(mark);cursor=index+term.length;total++;found=true;index=normalized.indexOf(term,cursor);
   }
   if(found){frag.append(document.createTextNode(value.slice(cursor)));node.replaceWith(frag)}
