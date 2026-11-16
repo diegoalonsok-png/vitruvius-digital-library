@@ -12,6 +12,8 @@ const footer=`<footer ${marker} role="contentinfo" aria-label="Derechos editoria
 const files=execFileSync("git",["ls-files","-z","--","*.html"],{encoding:"utf8"}).split("\0").filter(Boolean);
 let changed=0,missing=[],already=0;
 for(const file of files){
+ // Google Search Console verification token is not a webpage; never alter it.
+ if(/^google[a-f0-9]+\.html$/i.test(file))continue;
  const source=readFileSync(file,"utf8");
  if(source.includes(marker)){already++;continue}
  if(!/<\/body\s*>/i.test(source)){missing.push(file);continue}
