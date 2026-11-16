@@ -257,7 +257,8 @@ function editionInQuery(q){
 $('script-search-form').addEventListener('submit',async event=>{
  event.preventDefault();
  const named=editionInQuery($('script-query').value.trim());ocrFocus=named&&/krohn|rose/.test(named.id)?named.id:null;
- const serial=++running,q=named?.rest||$('script-query').value.trim(),scope=named?named.id:$('script-search-scope').value,mode=$('script-search-mode').value,status=$('script-search-status');
+ const serial=++running,entered=named?.rest||$('script-query').value.trim(),q=/^symmetrai$/i.test(entered)?'symmetria':entered,scope=named?named.id:$('script-search-scope').value,mode=$('script-search-mode').value,status=$('script-search-status');
+ if(q!==entered){$('script-query').value=q;const spell=document.getElementById('script-selected-note');if(spell)spell.textContent='Grafía corregida para la búsqueda: «'+entered+'» → «'+q+'». Se busca la forma documentada; no se altera el texto de las ediciones.';}
  if(!q){status.textContent='Ingresa un locus, palabra o frase.';return;}
  live=[];shown=30;$('script-search-results').replaceChildren();nextResults.replaceChildren();
  const searchUrl=new URL(location.href);searchUrl.searchParams.set('q',q);searchUrl.searchParams.set('scope',scope);searchUrl.searchParams.set('match',mode);history.replaceState(null,'',searchUrl);
