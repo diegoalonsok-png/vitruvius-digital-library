@@ -23,6 +23,12 @@ if(!document.querySelector('script[data-research-crosslinks]')){
  * The module skips embedded readers, folios, the main apps and other bespoke
  * manuscript views on its own; never insert two copies.
  */
+// Shared complete bibliographic identity only on relevant edition pages.
+if(!document.querySelector('script[data-vdl-edition-identity]')){
+ const identity=document.createElement("script");
+ identity.src=root+"assets/vdl-edition-identity-strip.js?v=20261115-v1";
+ identity.defer=true;identity.dataset.vdlEditionIdentity="";document.head.append(identity);
+}
 const secondaryPageRaw=(location.pathname.split("/").pop()||"index.html").toLowerCase();
 const secondaryPage=secondaryPageRaw.endsWith(".html")?secondaryPageRaw:secondaryPageRaw+".html";
 const secondarySkip=new Set([
