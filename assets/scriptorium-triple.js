@@ -15,16 +15,16 @@ const requestedEditions=(initialParams.get("readers")||"").split(",");
 const primaryKey=keyFor(initialParams.get("edition"));
 let stateReady=false,urlTimer=0;
 const editions={
- krohn:{name:"Krohn · 1912 · OCR latín",file:"data/text/krohn-1912.json",format:"ocr",pdf:"https://archive.org/download/vitruviidearchit00vitr_1/vitruviidearchit00vitr_1.pdf"},
+ krohn:{name:"Krohn · 1912 · texto latino TEI",file:"data/critical-editions/krohn-1912-tei-loci.json",format:"structured",critical:true,pdf:"https://archive.org/download/vitruviidearchit00vitr_1/vitruviidearchit00vitr_1.pdf"},
  kurilo:{name:"Kurilo · V514 · Latín y castellano",file:"data/structured/recensio-es.json",format:"structured",pdf:"documents/kurilo-recensio-es.pdf"},
- rose:{name:"Rose · 1899 · OCR latín",file:"data/text/rose-1899.json",format:"ocr",pdf:"https://archive.org/download/vitruviidearchit00vitr_0/vitruviidearchit00vitr_0.pdf"},
+ rose:{name:"Rose · 1899 · texto latino",file:"data/critical-editions/rose-1899-transcribed-loci.json",format:"structured",critical:true,pdf:"https://archive.org/download/vitruviidearchit00vitr_0/vitruviidearchit00vitr_0.pdf"},
  fr:{name:"Kurilo · V554 · Latín y francés",file:"data/structured/recensio-fr.json",format:"structured",pdf:"documents/kurilo-recensio-fr.pdf"},
  en:{name:"Kurilo · V297 · Latín e inglés",file:"data/structured/theory-en.json",format:"structured",pdf:"documents/kurilo-theory-en.pdf"}
 };
 /* Ficha bibliográfica de cada testigo, visible bajo el título del visor. */
 const FICHA={
- krohn:"Vitruvii De architectura libri decem, ed. F. Krohn. Leipzig: Teubner, 1912 · OCR del ejemplar digitalizado",
- rose:"Vitruvii De architectura libri decem, ed. V. Rose, 2.ª ed. Leipzig: Teubner, 1899 · OCR del ejemplar de Internet Archive",
+ krohn:"Vitruvii De architectura libri decem, ed. F. Krohn. Leipzig: Teubner, 1912 · TEI Perseus, pendiente de cotejo exhaustivo",
+ rose:"Vitruvii De architectura libri decem, ed. V. Rose, 2.ª ed. Leipzig: Teubner, 1899 · transcripción Gutenberg, 26 alineaciones inciertas",
  kurilo:"Kurilo, D. A. De architectura. Recensio V514 (latín–castellano). Buenos Aires: Sophia Lux, 2026",
  fr:"Kurilo, D. A. De architectura. Recensio V554 (latin–français). Buenos Aires: Sophia Lux, 2026",
  en:"Kurilo, D. A. The Architect of Theory, V297. Buenos Aires: Sophia Lux, 2026"
@@ -52,12 +52,14 @@ function concordanciaLoci(){
 async function loadEdition(id){
  if(!cache.has(id)){
   const ed=editions[id];
-  cache.set(id,fetch(ed.file).then(r=>{if(!r.ok)throw Error("HTTP "+r.status);return r.json()}).then(d=>{
+  cache.set(id,fetch(ed.file).then(r=>{if(!r.ok)throw Error("HTTP "+r.status);return r.json()}).then(async d=>{
    const raw=ed.format==="ocr"?d:d.passages;
+   const concord=ed.critical?await concordanciaLoci():null;
+   const witness=TESTIGO[id];
    if(!Array.isArray(raw)||!raw.length)throw Error("Sin contenido de lectura");
    const pages=raw.map((p,i)=>ed.format==="ocr"?
     {locus:String(p.page||i+1),page:Number(p.page)||i+1,text:String(p.text||""),translation:""}:
-    {locus:String(p.locus||i+1),page:Number(p.pdf_pages?.latin||p.pdf_pages?.translation||0),latinPage:Number(p.pdf_pages?.latin||0),translationPage:Number(p.pdf_pages?.translation||0),text:String(p.latin||p.text||""),translation:String(p.translation||"")});
+    {locus:String(p.locus||i+1),page:Number(p.pdf_pages?.latin||p.pdf_pages?.translation||concord?.loci?.[p.locus]?.[witness]?.page||0),latinPage:Number(p.pdf_pages?.latin||concord?.loci?.[p.locus]?.[witness]?.page||0),translationPage:Number(p.pdf_pages?.translation||0),text:String(p.latin||p.text||""),translation:String(p.translation||"")});
    return {ed,pages};
   }).catch(err=>{cache.delete(id);throw err}));
  }
@@ -114,9 +116,10 @@ function sincronizarAlAbrir(){
  const base=states.find(st=>st.data.ed.format==="structured");
  if(!base){sincronizadoAlAbrir=true;stateReady=true;savePosition();return}
  sincronizadoAlAbrir=true;
- const wanted=initialParams.get("locus");if(wanted&&!initialParams.has("p2"))base.seekLocus(wanted);
+ const wanted=initialParams.get("locus");if(wanted)base.seekLocus(wanted);
  stateReady=true;
- if(!initialParams.has("p1"))synchronize(base);
+ if(wanted||!initialParams.has("p1"))synchronize(base);
+ const query=(initialParams.get("q")||"").trim();if(wanted&&query){highlightTerm=query;irPalabra.value=query;irLocus.value=wanted;states.forEach(st=>st.refreshHighlight?.());}
  savePosition();
 }
 let candidatePromise=null;
@@ -182,7 +185,7 @@ irBox.append(irLabel,irLocus,irPalabra,irBoton);
 loadEdition("kurilo").then(d=>{for(const p of d.pages)irLocus.append(new Option(p.locus,p.locus))}).catch(()=>{});
 let ultimaPalabra={q:"",i:-1};
 function irA(){
- const base=states.find(st=>st.data?.ed.format==="structured");
+ const base=states.find(st=>st.editionId()==="kurilo"&&st.data)||states.find(st=>st.data?.ed.format==="structured");
  if(!base){syncStatus.textContent="Ningún visor tiene cargada una edición por loci (Kurilo V514, V554 o V297).";return}
  const q=irPalabra.value.trim();
  highlightTerm=q;
@@ -201,7 +204,8 @@ function irA(){
  irLocus.value=locus;
  if(!base.seekLocus(locus)){syncStatus.textContent="Locus "+locus+" no figura en "+editions[base.editionId()].name+".";return}
  const prev=syncToggle.checked;syncToggle.checked=true;synchronize(base);syncToggle.checked=prev;
- if(q)void synchronizeKeyword(q,locus);
+ states.forEach(st=>st.refreshHighlight?.());if(q)void synchronizeKeyword(q,locus);
+ void moveLowerPdfToLocus(locus,q);
 }
 irBoton.addEventListener("click",irA);
 irLocus.addEventListener("change",()=>{irPalabra.value="";irBoton.textContent="Sincronizar los tres visores";irA()});
@@ -259,6 +263,23 @@ async function synchronizeKeyword(term,locus){
  }catch(error){if(run===keywordRun)syncStatus.textContent="Búsqueda OCR parcial: "+error.message}
 }
 
+async function moveLowerPdfToLocus(locus,term,prefer){
+ try{
+  const d=await concordanciaLoci(),row=d.loci[locus];if(!row)return;
+  const selected=prefer==="rose-1899"?"rose-1899":document.getElementById("source")?.value==="pdf:rose-1899"?"rose-1899":"krohn-1912";
+  const witness=row[selected]?.page?selected:row["krohn-1912"]?.page?"krohn-1912":"rose-1899";
+  const page=Number(row[witness]?.page)||0;if(!page)return;
+  document.dispatchEvent(new CustomEvent("scriptorium:open-search-result",{detail:{source:witness==="krohn-1912"?"pdf:krohn":"pdf:rose-1899",page,term,locus,fromTriple:true}}));
+ }catch(err){syncStatus.textContent="La localización PDF requiere cotejo: "+err.message}
+}
+document.addEventListener("scriptorium:open-search-result",event=>{
+ const d=event.detail||{};if(!d.locus||d.fromTriple)return;
+ if(d.term)highlightTerm=String(d.term).trim();
+ const base=states.find(st=>st.editionId()==="kurilo"&&st.data)||states.find(st=>st.data?.ed.format==="structured");
+ if(!base||!base.seekLocus(d.locus))return;
+ const was=syncToggle.checked;syncToggle.checked=true;synchronize(base);syncToggle.checked=was;
+ states.forEach(st=>st.refreshHighlight?.());irLocus.value=d.locus;if(d.term)irPalabra.value=d.term;
+});
 /* Desde una página de Krohn o Rose: el primer locus que el cotejo sitúa en esa
    página lleva a Kurilo a ese locus y al otro OCR a su página concordante. */
 function desdeOCR(source,current){
@@ -566,7 +587,8 @@ function underlineTerm(){
   marcarEn(i,t,score,pageEnd){resalte={index:i,t,score,pageEnd}},
   seekLocus(locus){if(!data||data.ed.format!=="structured")return false;const i=data.pages.findIndex(p=>p.locus===locus);if(i<0)return false;index=i;show();return true},
   seekChapter(locus){const prefix=String(locus).split('.').slice(0,2).join('.')+'.';const i=data?.pages.findIndex(p=>p.locus.startsWith(prefix))??-1;if(i<0)return false;index=i;show();return true},
-  explain(text){message.textContent=text}
+  explain(text){message.textContent=text},
+  refreshHighlight(){show()}
  };
  function content(p){return translated?p.translation:p.text}
  function recount(){
@@ -651,7 +673,7 @@ function underlineTerm(){
   searchCursor=hits.length?(searchCursor+1)%hits.length:-1;
   const found=hits[searchCursor]??-1;
   if(found<0){message.textContent="Sin coincidencias en esta edición y lengua. "+(mode.value==="semantic"?"La búsqueda semántica usa equivalencias editoriales, no IA vectorial.":"");return}
-  index=found;highlightTerm=q;show();synchronize(state);
+  index=found;highlightTerm=q;show();synchronize(state);states.forEach(st=>st.refreshHighlight?.());if(data.ed.format==="structured")void moveLowerPdfToLocus(data.pages[index].locus,q);
   const passages=counts.filter(n=>n>0).length;
   message.textContent+=" · Pasaje "+(searchCursor+1)+" de "+passages+" con coincidencias; "+total+" coincidencia(s) en total. "+
     (concept?"Conceptus: "+concept.id+" · términos "+terms.join(", ")+" (equivalencia editorial, no lematización certificada).":"");
