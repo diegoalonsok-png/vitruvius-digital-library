@@ -506,10 +506,10 @@ function getPdfjs(){if(!pdfjsPromise)pdfjsPromise=import("https://cdn.jsdelivr.n
 async function renderPdfHighlight(){
  const my=++pdfRenderSerial;
  const q=(highlightTerm||search.value||"").trim();
- if(view!=="pdf"||!data||!q||q.length<3){pdfOverlay.hidden=true;facsimile.hidden=view!=="pdf";pdfEvidence.hidden=true;return;}
+ if(view!=="pdf"||!data){pdfOverlay.hidden=true;facsimile.hidden=view!=="pdf";pdfEvidence.hidden=true;return;}
  const pageIndex=Number(pageFor(data.pages[index]));
- if(!Number.isInteger(pageIndex)||pageIndex<1){pdfOverlay.hidden=true;facsimile.hidden=false;pdfEvidence.hidden=false;pdfEvidence.textContent="El locus no tiene una página PDF asociada. El OCR textual sigue disponible cuando existe.";return}
- pdfStatus.textContent="Buscando «"+q+"» en la capa textual del PDF…";
+ if(!Number.isInteger(pageIndex)||pageIndex<1){pdfOverlay.hidden=true;facsimile.hidden=true;pdfEvidence.hidden=false;pdfEvidence.textContent="No existe una página PDF latina identificada para este locus. Se mantiene la transcripción indexada, sin saltar a una página arbitraria.";return}
+ pdfStatus.textContent="Abriendo página física "+pageIndex+" del PDF…"+(q?" Buscando «"+q+"».":"");
  pdfEvidence.hidden=false;pdfEvidence.textContent="La transcripción OCR se resalta por separado. Las marcas sobre la imagen requieren coordenadas textuales del PDF.";
  try{
   const lib=await getPdfjs();if(my!==pdfRenderSerial)return;
@@ -528,10 +528,8 @@ async function renderPdfHighlight(){
     matches.push({item,start:word.index,end:word.index+word[0].length});
    }
   }
-  if(!matches.length){pdfOverlay.hidden=true;facsimile.hidden=false;
-   pdfEvidence.textContent=words.items.some(x=>x.str?.trim())?"El texto digital del PDF no contiene «"+q+"» en esta página. Verifica la forma buscada en el OCR adjunto.":"Este PDF es una imagen sin capa textual posicionada. El OCR amarillo aparece debajo del facsímil; no se inventan coordenadas sobre el impreso.";
-   return;
-  }
+  /* Draw the physical PDF page even without a search term or a PDF text layer.
+     A missing OCR match must never reset the viewer to a different page. */
   const base=page.getViewport({scale:1});const width=Math.max(220,panel.clientWidth-30);
   const viewport=page.getViewport({scale:width/base.width*pdfZoom/100});const ratio=Math.min(window.devicePixelRatio||1,2);
   pdfCanvas.width=Math.ceil(viewport.width*ratio);pdfCanvas.height=Math.ceil(viewport.height*ratio);
@@ -550,8 +548,8 @@ async function renderPdfHighlight(){
    rect.title="Coincidencia localizable en la capa textual del PDF";
    pdfMarks.append(rect);
   }
-  pdfStatus.textContent=matches.length+" marca(s) amarillas localizadas en la capa de texto PDF (coordenadas aproximadas de caracteres).";
-  pdfEvidence.textContent="Resaltado visual calculado desde la capa PDF. Comprobar la correspondencia con la letra impresa: no constituye una lectura ecdótica.";
+  pdfStatus.textContent="Página física "+pageIndex+" de "+doc.numPages+" · "+(matches.length?matches.length+" marca(s) amarillas en la capa PDF":q?"sin marca textual verificable para «"+q+"»":"lectura de facsímil por locus");
+  pdfEvidence.textContent=matches.length?"Resaltado calculado desde la capa PDF; verificar la correspondencia con el impreso.":q?"La página candidata se muestra exactamente en su posición física, pero la capa textual no permite confirmar el término. No se dibujan marcas inventadas.":"Página candidata de la concordancia. El número físico del PDF aún requiere cotejo documental.";
   pdfOverlay.hidden=false;facsimile.hidden=true;
  }catch(error){
   if(my!==pdfRenderSerial)return;
@@ -608,11 +606,16 @@ function underlineTerm(){
  let referenceUI=null;
  const pageFor=item=>data?.ed.format==="ocr"?item.page:translated?(item.translationPage||null):(item.latinPage||null);
  function setView(next){
+  if(next==="pdf"&&data&&!pageFor(data.pages[index])){
+   message.textContent="Locus "+data.pages[index].locus+": página física latina de este PDF todavía sin identificar. Se mantiene el texto indexado; no se abre una página arbitraria.";
+   pdfEvidence.hidden=false;pdfEvidence.textContent="Falta verificar o registrar la correspondencia locus ↔ página física del PDF.";
+   return;
+  }
   view=next;body.hidden=next==="pdf";facsimile.hidden=next!=="pdf";pdfOverlay.hidden=true;pdfEvidence.hidden=next!=="pdf";if(next!=="pdf")++pdfRenderSerial;
  ocrCompanion.hidden=next!=="pdf"||data?.ed.format!=="ocr";
   showText.setAttribute("aria-pressed",String(next==="text"));
   showFacsimile.setAttribute("aria-pressed",String(next==="pdf"));
-  if(next==="pdf"){updatePdf();if(highlightTerm)void renderPdfHighlight()}savePosition();
+  if(next==="pdf"){updatePdf()}savePosition();
  }
  function updatePdf(){
   if(!data||view!=="pdf")return;
@@ -620,7 +623,7 @@ function underlineTerm(){
   const page=Number(pageFor(item))||null;
   const source=new URL(data.ed.pdf,location.href).href;
   const url=source+"#"+(page?"page="+page+"&":"")+"zoom="+pdfZoom;
-  if(facsimile.dataset.currentPdf!==url){facsimile.src=url;facsimile.dataset.currentPdf=url;pdfOverlay.hidden=true;facsimile.hidden=false;if(highlightTerm)void renderPdfHighlight();}
+  if(facsimile.dataset.currentPdf!==url){facsimile.src=url;facsimile.dataset.currentPdf=url;pdfOverlay.hidden=true;facsimile.hidden=true;pdfEvidence.hidden=false;pdfEvidence.textContent="Localizando página "+(page||"sin asignar")+" en el facsímil digital…";void renderPdfHighlight();}
  }
  showText.addEventListener("click",()=>setView("text"));
  showFacsimile.addEventListener("click",()=>setView("pdf"));
@@ -667,7 +670,7 @@ function underlineTerm(){
    if(r){body.innerHTML=esc(item.text.slice(0,r.a))+'<mark class="st-pasaje" title="Tramo que el cotejo atribuye al locus · '+esc(gradoConcordancia(resalte.score).texto)+'">'+esc(item.text.slice(r.a,r.b))+'</mark>'+esc(item.text.slice(r.b));marca=body.querySelector(".st-pasaje")}
   }
   underlineTerm();
-  if(view==="pdf"&&highlightTerm)void renderPdfHighlight();
+  
   message.textContent=(data.ed.format==="ocr"?"Página digital ":"Locus ")+item.locus+" · "+(index+1)+" / "+data.pages.length+
    (data.ed.format==="ocr"?" · OCR no corregido"+(resalte?.index===index&&resalte.pageEnd?" · pasaje candidato continúa hasta página digital "+resalte.pageEnd:""):" · Texto indexado por locus"+(pageFor(item)?" · página PDF propuesta "+pageFor(item)+(item.pdfConfidence!==null?" (índice OCR: "+Math.round(100*item.pdfConfidence)+" % de similitud; no verificado)":" (referencia editorial no cotejada)"):" · página PDF latina sin asignar; se conserva el texto sincronizado"));
   showFacsimile.textContent=pageFor(item)?"Ver esta página en PDF":"Ver PDF completo";
