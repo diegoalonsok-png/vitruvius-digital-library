@@ -1,7 +1,7 @@
 {
   "schema": "vitruvius-classics-indexation-roadmap-v1",
   "updated": "2026-11-16",
-  "method": "Counts from hosted edition paths only. A catalogue entry or external Perseus mapping never counts as indexed text or a hosted translation. No AI-supplied passages, unverified OCR, or assumed cross-language alignment. Offsite JSON indexes are counted separately from hosted texts using an evidence snapshot. Registered R2 originals are separate declarations; HTTP availability is not verified here.",
+  "method": "Counts from hosted edition paths only. A catalogue entry or external Perseus mapping never counts as indexed text or a hosted translation. No AI-supplied passages, unverified OCR, or assumed cross-language alignment. Offsite JSON indexes are counted separately from hosted texts using an evidence snapshot. Registered R2 originals are separate declarations; HTTP availability is not verified here. Diferenciar originales indexados efectivos de originales registrados: 32 obras R2 tienen ruta, texto declarado y SHA256 en el manifiesto pero no certificación HTTP vigente. La falta de índice efectivo (61) no equivale a falta de original registrado (29).",
   "targetWorks": 271,
   "counts": {
     "originalsIndexed": 183,
@@ -29,7 +29,12 @@
       "requiere_fuente_no_canonica_o_edicion_especifica": 6,
       "sin_fuente_en_mapa_perseus": 64,
       "tei_perseus_candidato_por_verificar": 15
-    }
+    },
+    "originalWorksWithRegisteredSource": 242,
+    "originalWorksWithoutRegisteredSource": 29,
+    "r2RegisteredNotEffective": 32,
+    "pendingEffectiveIndexOrVerification": 61,
+    "r2RegisteredWithSourceManifestSha256": 44
   },
   "externalIndexProvenance": "data/classics-corpus/external-index-reconciliation.json",
   "items": [
