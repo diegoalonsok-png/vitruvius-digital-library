@@ -20,7 +20,11 @@ def main():
     index = read("data/r2/bibliotheca-r2-live-audit.json")
     master = read("data/bibliotheca-graeca-latina-I-bce-I-ce.json")["works"]
     registry = read("data/classics-corpus/search-registry.json")["entries"]
-    indexed = {x["workId"] for x in registry}
+    # Only compare registered editions that belong to the master catalogue.
+    # The same global registry also contains supplementary works, which must
+    # never be subtracted from the number of master catalogue works.
+    master_ids = {x["id"] for x in master}
+    indexed = {x["workId"] for x in registry} & master_ids
     linked = {x["id"]: x for x in inventory["works"]}
     catalogued = {x["id"] for x in catalog["items"]}
     index_missing = set(index.get("missingIndexIds", []))
