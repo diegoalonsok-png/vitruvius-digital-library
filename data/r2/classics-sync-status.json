@@ -1,0 +1,13 @@
+{
+  "schema": "vdl-r2-classics-sync-v1",
+  "verifiedAt": "2026-11-16T16:55:05.673Z",
+  "status": "all-registered-r2-originals-verified-and-lexically-indexed",
+  "scope": "R2 original JSON files listed in the source manifest only; not unregistered catalogue works or manuscript collation",
+  "sourceManifest": "data/r2/corpus-manifest.json",
+  "sourceManifestSha256": "d08b32c6f1ede9b61f314db92db6edf3b3b6b001b915cce4b1e03f17d68e3d51",
+  "indexManifest": "data/index/classics-r2/manifest.json",
+  "indexManifestSha256": "6734504d5758575de81e386adc5c9e8d39f4f05e1f8793ef4b7c133c470aeefd",
+  "verifiedOriginals": 44,
+  "verifiedPassages": 46850,
+  "note": "Source bytes SHA256-checked during index build; indexed text candidates must still be verified against their edition when citing loci."
+}
