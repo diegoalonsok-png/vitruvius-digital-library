@@ -46,9 +46,9 @@ jobs:
           node --input-type=module <<'JS'
           import fs from 'node:fs';
           const m=JSON.parse(fs.readFileSync('data/index/classics/manifest.json','utf8'));
-          const entries=m.works||m.editions||[];
+          const entries=Array.isArray(m.index)?m.index:(Array.isArray(m.editions)?m.editions:[]);
           for(const id of ['callimachus-hymni','theocritus-idyllia','menander-dyskolos'])
-            if(!entries.some(x=>x.id===id))throw Error('Falta en índice '+id);
+            if(!entries.some(x=>x.id===id&&x.lang==='grc'))throw Error('Falta en índice '+id);
           JS
       - name: Publicar sólo índice regenerado
         run: |
