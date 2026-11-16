@@ -10,8 +10,10 @@ const classify=x=>x.originalIndexed?"local":x.offsiteOriginalIndexed?"remote":x.
 function catalog(){
  if(!dataPromise)dataPromise=Promise.all([
   fetch(URL).then(r=>{if(!r.ok)throw Error("Inventario: HTTP "+r.status);return r.json()}),
-  fetch("data/classics-corpus/search-registry.json").then(r=>{if(!r.ok)throw Error("Registro editorial: HTTP "+r.status);return r.json()})
- ]).then(([j,registry])=>{
+  fetch("data/classics-corpus/search-registry.json").then(r=>{if(!r.ok)throw Error("Registro editorial: HTTP "+r.status);return r.json()}),
+  fetch("data/bibliotheca-expansion-publicada-2026-11-16.json").then(r=>{if(!r.ok)throw Error("Catálogo complementario: HTTP "+r.status);return r.json()}),
+  fetch("data/index/classics/manifest.json").then(r=>{if(!r.ok)throw Error("Índice léxico: HTTP "+r.status);return r.json()})
+ ]).then(([j,registry,supplement,lexical])=>{
   if(!Array.isArray(j.items)||j.items.length!==j.targetWorks)throw Error("Inventario de obras inconsistente");
   const sources=new Map();
   for(const entry of registry.entries||[]){
@@ -22,7 +24,28 @@ function catalog(){
       /^https:\/\/libros\.vitruvius-digital-library\.org\/corpus\/[a-z0-9_-]+\.json$/.test(entry.path||"");
    if(valid){if(!sources.has(entry.workId))sources.set(entry.workId,[]);sources.get(entry.workId).push(entry)}
   }
-  return j.items.map(x=>({id:x.id,author:x.author||"Autor no indicado",title:x.title||x.id,kind:classify(x),language:x.originalLanguage||"",originalIndexed:Boolean(x.originalIndexed),indexedLanguages:Array.isArray(x.indexedLanguages)?x.indexedLanguages:[],readers:sources.get(x.id)||[]}));
+  const lexicalIds=new Set((lexical.index||[]).filter(e=>e.lang==="grc"||e.lang==="la").map(e=>e.id+"|"+e.lang));
+  const merged=new Map(j.items.map(x=>[x.id,{id:x.id,author:x.author||"Autor no indicado",title:x.title||x.id,kind:classify(x),language:x.originalLanguage||"",originalIndexed:Boolean(x.originalIndexed),indexedLanguages:Array.isArray(x.indexedLanguages)?x.indexedLanguages:[],readers:sources.get(x.id)||[]}]));
+  // Supplementary works are fully catalogued, not anonymous "registry-only" rows.
+  // Search results are labelled indexed only when the actual lexical manifest agrees.
+  for(const w of supplement.works||[]){
+   if(!w?.id||merged.has(w.id))continue;
+   const lang=w.language;
+   const originalIndexed=lexicalIds.has(w.id+"|"+lang);
+   merged.set(w.id,{id:w.id,author:w.author||"Autor no indicado",title:w.title||w.id,
+    kind:originalIndexed?"local":"pending",language:lang,originalIndexed,
+    indexedLanguages:originalIndexed?[lang]:[],readers:sources.get(w.id)||[]});
+  }
+  // An uncatalogued text must remain discoverable, but is never passed off as
+  // having an authenticated scholarly fiche or a verified lexical index.
+  for(const [id,versions] of sources){
+   if(merged.has(id))continue;
+   const ancient=versions.find(e=>["la","grc"].includes(e.language));
+   const first=ancient||versions[0];
+   merged.set(id,{id,author:first.author||"Autor no indicado",title:first.title||id,
+    kind:"pending",language:ancient?.language||"",originalIndexed:false,indexedLanguages:[],readers:versions});
+  }
+  return [...merged.values()];
  }).catch(e=>{dataPromise=null;throw e});
  return dataPromise;
 }
@@ -39,7 +62,7 @@ function mount(host){
  const toolbar=add("div","vdl-works-filterbar",null,content);
  const search=add("input",null,null,toolbar);search.type="search";search.placeholder="Filtrar por autor o título…";search.setAttribute("aria-label","Filtrar las obras por autor o título");
  const filter=add("select",null,null,toolbar);filter.setAttribute("aria-label","Filtrar por estado de indexación");
- filter.add(new Option("Todas las obras del repertorio principal","all"));
+ filter.add(new Option("Todas las obras del repertorio y nuevas incorporaciones","all"));
  for(const category of categories)filter.add(new Option(labels[category],category));
  const count=add("p","vdl-works-result-count","Abre el catálogo para cargar el inventario.",content);count.setAttribute("role","status");
  const listing=add("div","vdl-works-list",null,content);listing.setAttribute("role","list");
@@ -72,7 +95,7 @@ function mount(host){
    meta.dataset.kind=item.kind;
   }
   const states=categories.map(k=>labels[k]+": "+items.filter(x=>x.kind===k).length).join(" · ");
-  count.textContent=matched.length+" de "+items.length+" obras del repertorio principal · "+states;
+  count.textContent=matched.length+" de "+items.length+" obras del repertorio y ampliaciones · "+states;
  }
  details.addEventListener("toggle",async()=>{
   if(!details.open||items)return;
