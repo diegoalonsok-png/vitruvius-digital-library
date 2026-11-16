@@ -20,9 +20,12 @@ const metrics=JSON.parse(fs.readFileSync(new URL('../data/site-metrics.json',imp
 const onomasticon=JSON.parse(fs.readFileSync(new URL('../data/onomasticon-vitruvianum.json',import.meta.url),'utf8'));
 assert.equal(metrics.primary_catalog.records,cat.editions.length+hist.length,'El catálogo primario debe conservar sus 28 registros');
 assert.equal(metrics.total_records_across_repertories,metrics.primary_catalog.records+metrics.expanded_historical_inventory.records+metrics.academic_studies.records);
-assert.ok(html.includes('id="stat-records">'+metrics.total_records_across_repertories),'La portada debe contar los tres repertorios');
-assert.ok(html.includes('id="stat-pages">'+metrics.indexed_editions.sum_declared_pages.toLocaleString('es-AR')),'La extensión editorial declarada debe estar actualizada');
-assert.ok(html.includes('páginas declaradas en esas tres ediciones'),'Las páginas declaradas no deben presentarse como páginas individualmente indexadas');
+// The home now uses a compact Bibliotheca strip. The historical three-repertory
+// total remains in the dated audit, not as the public work count (different units).
+const corpusCounts=JSON.parse(fs.readFileSync(new URL('../data/cifras-corpus.json',import.meta.url),'utf8'));
+assert.ok(html.includes('data-cifra="obrasTotalesDeclaradas"')&&html.includes('data-cifra="obrasConTextoIndexado"'),'La portada debe mostrar obras catalogadas y textos indexados');
+assert.equal(corpusCounts.obrasTotalesDeclaradas,corpusCounts.obras+corpusCounts.obrasAdicionales,'No duplicar obras en el total público');
+assert.ok(html.includes('páginas declaradas en esas tres ediciones')||html.includes('Los 731 loci son unidades de navegación'),'La portada debe distinguir páginas declaradas de loci o cotejos manuscritos');
 assert.ok(onomasticon.totals.latinWords>50000&&onomasticon.totals.greekWords>0,'El nuevo índice debe contener estadísticas latinas y griegas');
 assert.ok(onomasticon.entities.some(x=>x.id==='archimedes'&&x.loci.includes('9.praef.9')),'Arquímedes debe tener una mención real identificada por locus');
 assert.ok(onomasticon.entities.some(x=>x.kind==='place'&&x.loci.length>0),'Los lugares deben tener loci documentales');
