@@ -35,6 +35,10 @@ async function load(path){
  if(cache.has(path))return cache.get(path);
  const promise=(async()=>{
   if(reader)return reader(path);
+  // Canonical cross-origin original text: reuse the existing guarded R2 loader.
+  if(/^https:\/\/libros\.vitruvius-digital-library\.org\/corpus\/[a-z0-9-]+\.json$/.test(path)&&
+     typeof globalThis.VitruviaData?.remoteJSON==="function")
+   return globalThis.VitruviaData.remoteJSON(path);
   const response=await fetch(path,{headers:{Accept:"application/json"}});
   if(!response.ok)throw Error("HTTP "+response.status+" · "+path);
   return response.json();
