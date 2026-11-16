@@ -1,0 +1,62 @@
+{
+  "schema": "bibliotheca-classical-additions/1",
+  "date": "2026-11-16",
+  "works": [
+    {
+      "id": "callimachus-hymni",
+      "author": "Calímaco",
+      "title": "Ὕμνοι · Himnos",
+      "language": "grc",
+      "genre": "Poesía helenística",
+      "dating": "siglo III a. C.",
+      "status": "texto griego indexado por versos",
+      "textStatus": "indexed",
+      "source": "Perseus Digital Library · A. W. Mair (1921)",
+      "sourceUrl": "https://github.com/PerseusDL/canonical-greekLit/tree/master/data/tlg0533",
+      "corpusFiles": [
+        "data/classics-corpus/callimachus-hymni-grc.json"
+      ],
+      "description": "Seis himnos griegos transmitidos bajo el nombre de Calímaco; texto de edición moderna histórica, no transcripción diplomática."
+    },
+    {
+      "id": "theocritus-idyllia",
+      "author": "Teócrito",
+      "title": "Εἰδύλλια · Idilios",
+      "language": "grc",
+      "genre": "Poesía bucólica",
+      "dating": "siglo III a. C.",
+      "status": "texto griego indexado por versos",
+      "textStatus": "indexed",
+      "source": "Perseus Digital Library · R. J. Cholmeley",
+      "sourceUrl": "https://github.com/PerseusDL/canonical-greekLit/tree/master/data/tlg0005/tlg001",
+      "corpusFiles": [
+        "data/classics-corpus/theocritus-idyllia-grc.json"
+      ],
+      "description": "Conjunto editorial de Idilios; algunas atribuciones requieren cautela crítica."
+    },
+    {
+      "id": "sappho-fragmenta",
+      "author": "Safo",
+      "title": "Fragmenta · Fragmentos",
+      "language": "grc",
+      "genre": "Lírica griega",
+      "dating": "siglos VII–VI a. C.",
+      "status": "fuente bibliográfica",
+      "textStatus": "not-indexed",
+      "source": "Perseus Catalog · J. M. Edmonds, Lyra Graeca (1922)",
+      "sourceUrl": "https://catalog.perseus.org/catalog/urn%3Acts%3AgreekLit%3Atlg0009.tlg001.opp-grc1",
+      "description": "Poesía conservada de modo fragmentario; no describir como obra íntegra."
+    },
+    {
+      "id": "menander-dyskolos",
+      "author": "Menandro",
+      "title": "Δύσκολος · El misántropo",
+      "language": "grc",
+      "genre": "Comedia nueva",
+      "dating": "siglos IV–III a. C.",
+      "status": "fuente textual pendiente",
+      "textStatus": "not-indexed",
+      "description": "Comedia transmitida sustancialmente en papiros; edición digital griega pendiente de identificación y derechos."
+    }
+  ]
+}
