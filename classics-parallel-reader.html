@@ -86,11 +86,16 @@ html::-webkit-scrollbar-corner,body::-webkit-scrollbar-corner{background:#242427
 @media(prefers-reduced-motion:reduce){html body button{transition:none!important;transform:none!important}}
 
 .appearance[hidden]{display:none!important}
+
+.viewer-bottom-links{display:flex;justify-content:flex-end;align-items:center;gap:12px;margin:14px 0 8px;padding:12px 2px;border-top:1px solid var(--line)}
+.viewer-bottom-links a{display:inline-flex;justify-content:center;align-items:center;min-height:42px;padding:9px 18px;border:1px solid #c4ad84;border-radius:6px;background:#203b50;color:#fff;text-decoration:none;font:600 14px system-ui,sans-serif}
+.viewer-bottom-links a:hover,.viewer-bottom-links a:focus-visible{background:#324f67;outline:2px solid #dfc18c;outline-offset:2px}
+@media(max-width:480px){.viewer-bottom-links{justify-content:center}.viewer-bottom-links a{width:100%}}
 </style><script defer src="assets/analytics-config.js?v=20261106-ga4-1"></script>
 <script defer src="assets/analytics.js?v=20261106-ga4-1"></script>
 <link rel="stylesheet" href="assets/fonts-ancient.css?v=20261111-griego-politonico-v1"></head>
 <body>
-<header><h1>Bibliotheca · lectura lado a lado</h1><nav><a href="bibliotheca-graeca-latina.html">Volver al catálogo</a><a id="single" href="classics-text-reader.html">Lector individual</a><a id="simple" href="classics-text-reader.html?view=simple">Lector individual</a><a id="simple-pair" href="classics-simple-parallel.html">Visor simplificado</a><a href="classics-document-parallel.html">PDF enfrentados</a><a href="metodologia-filologica.html">Método filológico</a><a href="auditoria-academica.html">Auditoría</a></nav></header>
+<header><h1>Bibliotheca · lectura lado a lado</h1><nav><a href="bibliotheca-graeca-latina.html">Volver al catálogo</a><a id="single" href="classics-text-reader.html">Lector individual</a><a href="classics-document-parallel.html">PDF enfrentados</a><a href="metodologia-filologica.html">Método filológico</a><a href="auditoria-academica.html">Auditoría</a></nav></header>
 <main>
 <p class="note">Lectura secuencial enfrentada de originales y traducciones disponibles, en griego, latín, castellano, francés o inglés. Cuando no hay una traducción local, el segundo visor ofrece una versión automática orientativa, solo a petición del lector. Las versiones alojadas permiten búsquedas independientes. Un locus común no acredita equivalencia de traducción ni colación filológica.</p>
 <div class="controls"><label>Visor 1 · elegir versión <select id="left" aria-label="Versión para el primer visor"></select></label><label>Visor 2 · elegir versión <select id="right" aria-label="Versión para el segundo visor"></select></label></div>
@@ -126,6 +131,7 @@ html::-webkit-scrollbar-corner,body::-webkit-scrollbar-corner{background:#242427
 <button type="button" id="right-larger" aria-label="Aumentar texto del visor right" title="Lupa más">⌕+</button>
 <button type="button" id="right-reset" aria-label="Restablecer colores y tipografía del visor right">↺</button>
 </div><iframe id="pane-right" title="Traducción o segunda edición"></iframe><div id="auto-translation" class="auto-translation" hidden role="region" aria-label="Traducción automática opcional"><p id="auto-title" class="auto-title"></p><div id="auto-content"></div></div></section></div>
+<div class="viewer-bottom-links" aria-label="Accesos a modos de lectura"><a id="simple-pair" href="classics-simple-parallel.html">Visor simplificado</a></div>
 </main>
 <script defer src="assets/academic-inline-translation.js?v=20261114-machine-pivot-v3"></script>
 <script>
@@ -334,7 +340,6 @@ function goto(originSide=null){
  const currentLocus=a.passages[target.left]?.locus;
  if(currentLocus){params.set("locus",currentLocus);history.replaceState(null,"",location.pathname+"?"+params.toString());
   const cardLink=$("simple-pair");if(cardLink){const u=new URL(cardLink.href);u.searchParams.set("locus",currentLocus);u.searchParams.set("left",left.value);u.searchParams.set("right",right.value);cardLink.href=u.href;}
-  const simple=$("simple");if(simple){const u=new URL(simple.href);u.searchParams.set("locus",currentLocus);u.searchParams.set("lang",left.value);simple.href=u.href;}
  }
  if(isAuto(right.value))renderAuto();
  else if(originSide!=="right"&&target.quality!=="unmatched")navigatePane("right",target.right);
@@ -573,7 +578,6 @@ Promise.all([
  if(query)single.searchParams.set("q",query);
  $("single").href=single.href;
  const simplePair=new URL("classics-simple-parallel.html",location.href);simplePair.searchParams.set("work",work);simplePair.searchParams.set("left",left.value);simplePair.searchParams.set("right",right.value);if(locus)simplePair.searchParams.set("locus",locus);$("simple-pair").href=simplePair.href;
- const simple=new URL(single.href);simple.searchParams.set("view","simple");$("simple").href=simple.href;
  const alternativeLanguage=requestedRight&&requestedRight!==right.value&&!isAuto(requestedRight)&&
   !langs.includes(requestedRight)&&!isAuto(right.value);
  status.textContent=(rec?.author||rows[0]?.author||"")+" · "+(rec?.title||rows[0]?.title||work)+
