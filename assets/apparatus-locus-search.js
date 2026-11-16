@@ -11,7 +11,26 @@ const concepts={
  venustas:["venustas","venustatis","venustatem","venustate"],
  eurythmia:["eurythmia","eurythmiae","eurythmiam","eurhythmia","eurhythmiae"],
  ordinatio:["ordinatio","ordinationis","ordinationem","ordinatione"],
- dispositio:["dispositio","dispositionis","dispositionem","dispositione"]
+ dispositio:["dispositio","dispositionis","dispositionem","dispositione"],
+ proportio:["proportio","proportionis","proportionem","proportione","proportiones"],
+ templum:["templum","templi","templo","templa","templorum","templis"],
+ columna:["columna","columnae","columnam","columnas","columnarum","columnis"],
+ opus:["opus","operis","opera","operum","operibus","opere"],
+ materia:["materia","materiae","materiam","materias","materiis"],
+ fabrica:["fabrica","fabricae","fabricam","fabricarum","fabricis"],
+ ratio:["ratio","rationis","rationem","ratione","rationes","rationum"],
+ scientia:["scientia","scientiae","scientiam","scientias","scientiis"],
+ natura:["natura","naturae","naturam","naturarum","naturis"],
+ locus:["locus","loci","locum","loco","loca","locorum","locis"],
+ corpus:["corpus","corporis","corpore","corpora","corporum","corporibus"],
+ aqua:["aqua","aquae","aquam","aquas","aquarum","aquis"],
+ machina:["machina","machinae","machinam","machinas","machinarum","machinis"],
+ geometria:["geometria","geometriae","geometriam"],
+ musica:["musica","musicae","musicam"],
+ harmonia:["harmonia","harmoniae","harmoniam"],
+ species:["species","speciei","speciem","specie","specierum"],
+ figura:["figura","figurae","figuram","figuras","figurarum","figuris"],
+ mensura:["mensura","mensurae","mensuram","mensuras","mensurarum","mensuris"]
 };
 const aliases={
  arquitecto:"architectus",arquitectos:"architectus",architect:"architectus",architects:"architectus",
@@ -24,7 +43,14 @@ const aliases={
  belleza:"venustas",beauty:"venustas",
  euritmia:"eurythmia",eurythmy:"eurythmia",
  ordenacion:"ordinatio",ordering:"ordinatio",
- disposicion:"dispositio",arrangement:"dispositio"
+ disposicion:"dispositio",arrangement:"dispositio",
+ proporcion:"proportio",proportion:"proportio",templo:"templum",temple:"templum",
+ columna:"columna",column:"columna",obra:"opus",work:"opus",material:"materia",
+ razon:"ratio",reason:"ratio",ciencia:"scientia",science:"scientia",
+ naturaleza:"natura",nature:"natura",lugar:"locus",place:"locus",
+ cuerpo:"corpus",body:"corpus",agua:"aqua",water:"aqua",maquina:"machina",machine:"machina",
+ geometria:"geometria",geometry:"geometria",musica:"musica",music:"musica",
+ armonia:"harmonia",harmony:"harmonia",figura:"figura",figure:"figura",medida:"mensura",measurement:"mensura"
 };
 const fold=s=>String(s||"").normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase().replace(/j/g,"i").replace(/v/g,"u");
 // Query tokens are folded too: retain the canonical lemma for display and
@@ -32,6 +58,8 @@ const fold=s=>String(s||"").normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLo
 const conceptKeys=new Map(Object.keys(concepts).map(lemma=>[fold(lemma),lemma]));
 const aliasKeys=new Map(Object.entries(aliases).map(([alias,lemma])=>[fold(alias),lemma]));
 const words=s=>fold(s).match(/[a-z]+/g)||[];
+const lemmaLookup=new Map();
+for(const [lemma,forms] of Object.entries(concepts))for(const form of forms)lemmaLookup.set(fold(form),lemma);
 const $=s=>document.querySelector(s);
 function init(rows,openLocus,syncTerm){
  const query=$("#ab-search-query"),mode=$("#ab-search-mode"),status=$("#ab-search-status"),list=$("#ab-search-results"),more=$("#ab-search-more"),synchronized=$("#ab-synchronized-locus");
@@ -75,10 +103,10 @@ function init(rows,openLocus,syncTerm){
   list.replaceChildren();found=[];shown=0;more.hidden=true;
   if(!original){status.textContent="Escribe una palabra, frase o concepto.";return}
   const tokens=words(original);
-  const canonical=aliasKeys.get(tokens.join(" "))||aliasKeys.get(tokens[0])||conceptKeys.get(tokens[0])||tokens[0];
+  const canonical=aliasKeys.get(tokens.join(" "))||aliasKeys.get(tokens[0])||conceptKeys.get(tokens[0])||lemmaLookup.get(tokens[0])||tokens[0];
   const variants=mode.value==="concept"?(concepts[canonical]||[canonical]):tokens;
   needle=[...new Set(variants.map(fold))];
-  const exact=mode.value==="phrase"?fold(original).replace(/\s+/g," "):"";
+  const exact=mode.value==="phrase"?tokens.join(" "):"";
   found=corpus.filter(p=>{
    if(exact)return p.normalizedWords.join(" ").includes(exact);
    const present=new Set(p.normalizedWords);
@@ -86,7 +114,7 @@ function init(rows,openLocus,syncTerm){
   });
   syncTerm?.(needle);
   if(found.length){openLocus(found[0].locus);if(synchronized)synchronized.textContent="Locus sincronizado: "+display(found[0].locus)+" · Rose, Krohn y Kurilo";}else if(synchronized)synchronized.textContent="Sin locus encontrado para sincronizar.";
-  status.textContent=found.length+" loci encontrados en el latín V514"+(canonical!==tokens[0]?" · concepto latino: "+canonical:"")+". Ordenados por libro y pasaje. No se incluyen coincidencias OCR.";
+  status.textContent=found.length+" loci encontrados en el latín V514"+(canonical!==tokens[0]?" · lema latino: "+canonical:"")+". Ordenados por libro y pasaje. No se incluyen coincidencias OCR.";
   draw();
  }
  $("#ab-search-form").addEventListener("submit",e=>{e.preventDefault();run()});
