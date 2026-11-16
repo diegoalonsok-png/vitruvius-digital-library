@@ -11,6 +11,8 @@ on:
       - 'data/classics-corpus/aristophanes-thesmophoriazusae-grc.json'
       - 'data/classics-corpus/aristophanes-ecclesiazusae-grc.json'
       - 'data/classics-corpus/aristophanes-plutus-grc.json'
+      - 'data/bibliotheca-expansion-publicada-2026-11-16.json'
+      - 'scripts/test-bibliotheca-expansion-2026-11.mjs'
   workflow_dispatch:
 permissions:
   contents: write
@@ -45,7 +47,7 @@ jobs:
         env:
           NODE_OPTIONS: --max-old-space-size=6144
         run: node scripts/build-classics-lexical-index.mjs
-      - name: Comprobar tres obras en el manifiesto
+      - name: Comprobar siete obras en el manifiesto
         run: |
           node --input-type=module <<'JS'
           import fs from 'node:fs';
@@ -54,6 +56,8 @@ jobs:
           for(const id of ['callimachus-hymni','theocritus-idyllia','menander-dyskolos','aristophanes-knights','aristophanes-thesmophoriazusae','aristophanes-ecclesiazusae','aristophanes-plutus'])
             if(!entries.some(x=>x.id===id&&x.lang==='grc'))throw Error('Falta en índice '+id);
           JS
+      - name: Probar fichas, lectores, índices y alias editoriales de R2
+        run: node scripts/test-bibliotheca-expansion-2026-11.mjs
       - name: Publicar sólo índice regenerado
         run: |
           git config user.name 'github-actions[bot]'
