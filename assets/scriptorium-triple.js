@@ -103,7 +103,7 @@ async function loadEdition(id){
   const ed=editions[id];
   cache.set(id,fetch(ed.file).then(r=>{if(!r.ok)throw Error("HTTP "+r.status);return r.json()}).then(async d=>{
    const raw=ed.format==="ocr"?d:d.passages;
-   const [concord,pdfMap]=await Promise.all([ed.critical?concordanciaLoci():Promise.resolve(null),pdfLocusIndex()]);
+   const [concord,pdfMap]=await Promise.all([ed.critical?concordanciaLoci().catch(()=>null):Promise.resolve(null),pdfLocusIndex().catch(()=>new Map())]);
    const witness=TESTIGO[id];
    if(!Array.isArray(raw)||!raw.length)throw Error("Sin contenido de lectura");
    const pages=raw.map((p,i)=>ed.format==="ocr"?
