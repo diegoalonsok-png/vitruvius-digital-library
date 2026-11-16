@@ -51,10 +51,12 @@ function init(){
   if(sourceHeader){
    const base=sourceHeader.dataset.baseHeading||sourceHeader.textContent.split(" · Locus ")[0];
    sourceHeader.dataset.baseHeading=base;
-   sourceHeader.textContent=base+(originalLocus?" · "+originalLocus:"");
+   const headingText=base+(originalLocus?" · "+originalLocus:"");
+   if(sourceHeader.textContent!==headingText)sourceHeader.textContent=headingText;
   }
   if(translationHeader){
-   translationHeader.textContent="Traducción"+(translatedLocus&&/Locus\s/i.test(translatedLocus)?" · "+translatedLocus:"");
+   const headingText="Traducción"+(translatedLocus&&/Locus\s/i.test(translatedLocus)?" · "+translatedLocus:"");
+   if(translationHeader.textContent!==headingText)translationHeader.textContent=headingText;
   }
  }
  // Called only when passage content or the original annotation component changes.
