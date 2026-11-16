@@ -162,8 +162,9 @@ html[data-reading-mode="simple"] #passages p{text-align:left;hyphens:none;margin
 html[data-reading-mode="simple"] h1{font-size:clamp(25px,3vw,38px);margin-top:12px}
 html[data-reading-mode="simple"] .reader-appearance{max-width:78ch;margin:14px auto 0}
 html[data-reading-mode="simple"] .reader-toolbar{max-width:78ch;margin:auto;border-bottom:1px solid var(--line)}
-.simple-reading-actions{display:flex;gap:10px;align-items:center;justify-content:flex-end;margin:12px 0 4px;flex-wrap:wrap}
+.reader-appearance .simple-reading-actions{display:flex;gap:8px;align-items:center;justify-content:flex-end;margin:0 0 0 auto;flex-wrap:wrap;flex:0 0 auto}
 .simple-reading-actions a{border:1px solid #55555a;border-radius:6px;padding:7px 12px;font:600 13px/1.4 system-ui;color:#e3e3e4;background:#242426;text-decoration:none}
+.reader-appearance .simple-reading-actions a{display:inline-flex;align-items:center;min-height:35px;box-sizing:border-box;white-space:nowrap}
 .simple-reading-actions a:hover{background:#38383c}
 html[data-parallel-view="true"] .simple-reading-actions{display:none!important}
 @media print{.simple-reading-actions{display:none!important}}
@@ -186,7 +187,7 @@ html[data-parallel-view="true"] #simple-pair-inline{display:none!important}
 <body class="academic-reader">
 <header><span class="brand">Vitruvius Digital Library · Bibliotheca Graeca et Latina</span><nav><a href="bibliotheca-graeca-latina.html">Bibliotheca</a><a href="vitruvia.html">Buscar en Vitruvia</a><a id="index-locorum-link" href="index-locorum.html">Index locorum</a><a href="vitruvia-lexicon.html">Lexicon</a><a id="codex-link" href="bibliotheca-graeca-latina.html">Catálogo y testimonios</a><a id="parallel-link" href="classics-parallel-reader.html">Lectura lado a lado</a><a href="metodologia-filologica.html">Método filológico</a><a href="auditoria-academica.html">Auditoría</a></nav></header>
 <main>
-<div class="simple-reading-actions"><a id="simple-reading-link" href="?view=simple">◫ Visor simplificado</a><a id="full-reading-link" href="?">Visor académico</a></div>
+
 <p class="academic-kicker">Bibliotheca · texto, traducción y aparato</p>
 <h1 id="work-title">Edición filológica</h1>
 <p class="sub" id="source-title">Cargando texto y procedencia…</p>
@@ -227,6 +228,7 @@ html[data-parallel-view="true"] #simple-pair-inline{display:none!important}
   <button type="button" id="reader-italic" aria-pressed="false" title="Alternar cursiva">Cursiva</button>
   <button type="button" id="reader-align" aria-pressed="true" title="Alternar texto justificado y alineación izquierda">Justificado</button>
   <button type="button" id="reader-reset" title="Restablecer la apariencia de lectura">↺ Restablecer</button>
+  <div class="simple-reading-actions"><a id="simple-reading-link" href="?view=simple">◫ Visor simplificado</a><a id="full-reading-link" href="?">Visor académico</a></div>
 </div>
 <section id="search-results-section" class="search-results-section" aria-labelledby="search-results-title" hidden>
  <div class="search-results-head"><div><h2 id="search-results-title">Pasajes encontrados en toda la obra</h2><p>Seleccione cualquier resultado para abrir el texto original en su locus. La búsqueda recorre la edición completa, no solo la página visible.</p></div><a href="#passages">Ir al lector</a></div>
