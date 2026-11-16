@@ -77,6 +77,7 @@ function mount(host){
   listing.replaceChildren();
   for(const item of matched){
    const line=add("div","vdl-works-row",null,listing);line.setAttribute("role","listitem");
+   if(window.BibliothecaCoverMiniatures)line.append(window.BibliothecaCoverMiniatures.create(item));
    const title=add("a","vdl-works-name",item.author+" — "+item.title,line);
    // Open actual reading content when a local original has a documented indexed language.
 // External/registered sources retain an academic dossier with source and facsimile links.
