@@ -1,0 +1,364 @@
+{
+  "schema": "vdl-perseus-50-source-validation-v1",
+  "verifiedAt": "2026-11-16T20:43:01.945423+00:00",
+  "sourceRevision": "dacb04909e43dc47738828d33cc3d2b0635bc54c",
+  "batchCount": 50,
+  "corpusCreated": 45,
+  "status": "source-verified-50-indexed-and-catalogued",
+  "limits": "No independiente collation, authorship verification or verified translation.",
+  "editions": [
+    {
+      "id": "plato-euthyphro",
+      "sourceUrn": "urn:cts:greekLit:tlg0059.tlg001.perseus-grc1",
+      "sha256": "45ea0a0f2951ebdd4fb841dea02db341dc205da5001e4ff50bc20898a31955e1",
+      "passages": 233,
+      "characters": 30306
+    },
+    {
+      "id": "plato-statesman",
+      "sourceUrn": "urn:cts:greekLit:tlg0059.tlg008.perseus-grc2",
+      "sha256": "87c46a79067e0edc552136cc12650f95f4893c8295201b21d4971117c20e8484",
+      "passages": 898,
+      "characters": 110305
+    },
+    {
+      "id": "plato-philebus",
+      "sourceUrn": "urn:cts:greekLit:tlg0059.tlg010.perseus-grc2",
+      "sha256": "aa9914ccd1d3c013b0948fd150730a9beb902971ae27a95b47e19cdaf3009ea2",
+      "passages": 1142,
+      "characters": 108787
+    },
+    {
+      "id": "plato-charmides",
+      "sourceUrn": "urn:cts:greekLit:tlg0059.tlg018.perseus-grc2",
+      "sha256": "3cb4c59674f6783977cc53848250086079c0c08af02dba3dec43ca5ab6512732",
+      "passages": 24,
+      "characters": 48106
+    },
+    {
+      "id": "plato-laches",
+      "sourceUrn": "urn:cts:greekLit:tlg0059.tlg019.perseus-grc2",
+      "sha256": "4dedb283a47ca729fedbbe65336e3262df78e32fa1b5f7b6d9446c89567c92fd",
+      "passages": 265,
+      "characters": 45975
+    },
+    {
+      "id": "plato-lysis",
+      "sourceUrn": "urn:cts:greekLit:tlg0059.tlg020.perseus-grc2",
+      "sha256": "1656d85c1d69fad896958a77db2ddf47d7ea867b2944f336bfc8a71c578aa50c",
+      "passages": 21,
+      "characters": 39712
+    },
+    {
+      "id": "plato-euthydemus",
+      "sourceUrn": "urn:cts:greekLit:tlg0059.tlg021.perseus-grc2",
+      "sha256": "68c220dc8184fe94ce5447d7aaa5affc57ee5ca9b97680edbaa46d99d98a3f01",
+      "passages": 95,
+      "characters": 73720
+    },
+    {
+      "id": "plato-hippias-minor",
+      "sourceUrn": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2",
+      "sha256": "faf42c199c8e5e141689cfed2b301bad000eadf5d1e9ce173d63d4f28044ded4",
+      "passages": 231,
+      "characters": 25382
+    },
+    {
+      "id": "plato-ion",
+      "sourceUrn": "urn:cts:greekLit:tlg0059.tlg027.perseus-grc2",
+      "sha256": "4af6f85d8384164e10fa3f6b82fb848c5ab911d35940b8992bbfa6eceedec1b6",
+      "passages": 174,
+      "characters": 23088
+    },
+    {
+      "id": "plato-menexenus",
+      "sourceUrn": "urn:cts:greekLit:tlg0059.tlg028.perseus-grc2",
+      "sha256": "b4d889afab469947fb6dde661b5c7dea9f71faa688ef7827a2fe908116b05579",
+      "passages": 46,
+      "characters": 30428
+    },
+    {
+      "id": "xenophon-oeconomicus",
+      "sourceUrn": "urn:cts:greekLit:tlg0032.tlg003.perseus-grc2",
+      "sha256": "730a24656dd03bbfd3c5c5e3f28a813aeedee85c18ec89e732a5477e70ef2f59",
+      "passages": 397,
+      "characters": 107568
+    },
+    {
+      "id": "xenophon-symposium",
+      "sourceUrn": "urn:cts:greekLit:tlg0032.tlg004.perseus-grc2",
+      "sha256": "2d2e0c55fb42793fdf1c9013909e0017fe746eaaa82f42d12c138c9fca7085da",
+      "passages": 196,
+      "characters": 56682
+    },
+    {
+      "id": "xenophon-apology",
+      "sourceUrn": "urn:cts:greekLit:tlg0032.tlg005.perseus-grc2",
+      "sha256": "f806649ec629aed02bad9f86e0024d50ce085ef4fb4712d018905ed29b829178",
+      "passages": 34,
+      "characters": 12447
+    },
+    {
+      "id": "xenophon-hiero",
+      "sourceUrn": "urn:cts:greekLit:tlg0032.tlg008.perseus-grc2",
+      "sha256": "c7a8e2cb855b262c2943dbd5e2a3a15b9a51dbab9593fafa58b4489546410c68",
+      "passages": 153,
+      "characters": 36852
+    },
+    {
+      "id": "xenophon-agesilaus",
+      "sourceUrn": "urn:cts:greekLit:tlg0032.tlg009.perseus-grc2",
+      "sha256": "91c75bfc98f3eb4551e6483afa02685cea73fc993a2e56b48315da30235f5a28",
+      "passages": 137,
+      "characters": 46845
+    },
+    {
+      "id": "xenophon-lacedaemonian-constitution",
+      "sourceUrn": "urn:cts:greekLit:tlg0032.tlg010.perseus-grc2",
+      "sha256": "b4dd7878617a6b9f2f3db70b398c446a2120f928dcddeaa6d30b1621b4e8d5ca",
+      "passages": 120,
+      "characters": 31104
+    },
+    {
+      "id": "xenophon-ways-means",
+      "sourceUrn": "urn:cts:greekLit:tlg0032.tlg011.perseus-grc2",
+      "sha256": "031797d4e1a8f49e17583f0b8828969c142ce5ed11b378e6484073c112a749a7",
+      "passages": 97,
+      "characters": 23955
+    },
+    {
+      "id": "xenophon-hipparchicus",
+      "sourceUrn": "urn:cts:greekLit:tlg0032.tlg012.perseus-grc2",
+      "sha256": "85eb10fde61519574247c01024f343a90f06ff54395a4ce26dcfb10fdf7bb8a8",
+      "passages": 140,
+      "characters": 35933
+    },
+    {
+      "id": "xenophon-horsemanship",
+      "sourceUrn": "urn:cts:greekLit:tlg0032.tlg013.perseus-grc2",
+      "sha256": "c0856cb46f710a63c9270b4c7b8a4b521d7a4e7f05a6dc5b808c82b759637dc4",
+      "passages": 155,
+      "characters": 41588
+    },
+    {
+      "id": "xenophon-hunting",
+      "sourceUrn": "urn:cts:greekLit:tlg0032.tlg014.perseus-grc2",
+      "sha256": "443980b2112fa891da14de6a4016cde44a592a0e53acb7c124eff19655af093f",
+      "passages": 217,
+      "characters": 55392
+    },
+    {
+      "id": "lucian-phalaris",
+      "sourceUrn": "urn:cts:greekLit:tlg0062.tlg001.perseus-grc2",
+      "sha256": "92cd254311b1f77941ccd17c04f364146460aa89f184654c7cb914c6164e9d3a",
+      "passages": 28,
+      "characters": 18200
+    },
+    {
+      "id": "lucian-hippias",
+      "sourceUrn": "urn:cts:greekLit:tlg0062.tlg002.perseus-grc2",
+      "sha256": "3644f9b11c6fd4e51f66443b08437ade6027ec3322d425cf61140e03301a601b",
+      "passages": 11,
+      "characters": 6302
+    },
+    {
+      "id": "lucian-bacchus",
+      "sourceUrn": "urn:cts:greekLit:tlg0062.tlg003.perseus-grc2",
+      "sha256": "d1f45b3bc344ccdc301af009bc8d7a7c88d3c9a905884262bbbe961c82940db4",
+      "passages": 9,
+      "characters": 6555
+    },
+    {
+      "id": "lucian-hercules",
+      "sourceUrn": "urn:cts:greekLit:tlg0062.tlg004.perseus-grc2",
+      "sha256": "2853cc360ac62ecde53d20bc411bf6b9f96ed7510983c4a892d899178ee46a32",
+      "passages": 9,
+      "characters": 4690
+    },
+    {
+      "id": "lucian-electrum",
+      "sourceUrn": "urn:cts:greekLit:tlg0062.tlg005.perseus-grc2",
+      "sha256": "5b03f6e7850b5f3865ccf216bee60c673a3fc271cd0f3be6c91b227d58d160bc",
+      "passages": 7,
+      "characters": 3815
+    },
+    {
+      "id": "lucian-encomium-fly",
+      "sourceUrn": "urn:cts:greekLit:tlg0062.tlg006.perseus-grc2",
+      "sha256": "078d56032ca259b3986b254d529a6a122a56e9431f0381c884870143c793a374",
+      "passages": 12,
+      "characters": 7294
+    },
+    {
+      "id": "lucian-nigrinus",
+      "sourceUrn": "urn:cts:greekLit:tlg0062.tlg007.perseus-grc2",
+      "sha256": "16a69e68b8857cc130e839b85fc4373c66b9650a3956b631aeb8bdb3c73c51e0",
+      "passages": 65,
+      "characters": 25736
+    },
+    {
+      "id": "lucian-demonax",
+      "sourceUrn": "urn:cts:greekLit:tlg0062.tlg008.perseus-grc2",
+      "sha256": "64f5ba271372ea1f21d56367a2d239753b9920f2eb49e305a5c888150f4eb2a7",
+      "passages": 70,
+      "characters": 19647
+    },
+    {
+      "id": "lucian-de-domo",
+      "sourceUrn": "urn:cts:greekLit:tlg0062.tlg009.perseus-grc2",
+      "sha256": "5dc7503415c8a7d9fed39a3223a651e06caed73824f4dd0a2b4a6305c066c847",
+      "passages": 37,
+      "characters": 19319
+    },
+    {
+      "id": "lucian-encomium-fatherland",
+      "sourceUrn": "urn:cts:greekLit:tlg0062.tlg010.perseus-grc2",
+      "sha256": "83aa5d63192eac7486755b817636413798e0c4437375f2d17ff493653303a0cd",
+      "passages": 12,
+      "characters": 6068
+    },
+    {
+      "id": "lysias-eratosthenes",
+      "sourceUrn": "urn:cts:greekLit:tlg0540.tlg001.perseus-grc2",
+      "sha256": "d730eca2f85401bf962ccb38ac60bf1b1471e5452d4f115ec7abc61e6b565eb2",
+      "passages": 56,
+      "characters": 15077
+    },
+    {
+      "id": "lysias-funeral-oration",
+      "sourceUrn": "urn:cts:greekLit:tlg0540.tlg002.perseus-grc2",
+      "sha256": "9b37450645451954f36025fb1298fa2c88ddc93f13aa26527709cca506db8a66",
+      "passages": 81,
+      "characters": 26845
+    },
+    {
+      "id": "lysias-against-simon",
+      "sourceUrn": "urn:cts:greekLit:tlg0540.tlg003.perseus-grc2",
+      "sha256": "a111b82a7a5973cee8729f3746c05a5571942925de5431304cedb585ece6cde8",
+      "passages": 50,
+      "characters": 14089
+    },
+    {
+      "id": "lysias-wound",
+      "sourceUrn": "urn:cts:greekLit:tlg0540.tlg004.perseus-grc2",
+      "sha256": "1c4a45ea5e838c024839ff9ed81953a66853a2dedcd539d2a8e9dafe1c339c5c",
+      "passages": 20,
+      "characters": 5916
+    },
+    {
+      "id": "lysias-for-callias",
+      "sourceUrn": "urn:cts:greekLit:tlg0540.tlg005.perseus-grc2",
+      "sha256": "ead144cd978558577ed6bbbafd6c1b100d55b570c1738706eab66d028173d64f",
+      "passages": 5,
+      "characters": 1770
+    },
+    {
+      "id": "lysias-against-andocides",
+      "sourceUrn": "urn:cts:greekLit:tlg0540.tlg006.perseus-grc2",
+      "sha256": "9beb0ba20a0567e2b1c617bc553ab50dcae10f4f5258cfb5b0e77cbf4d1bbdde",
+      "passages": 56,
+      "characters": 16493
+    },
+    {
+      "id": "lysias-olive-stump",
+      "sourceUrn": "urn:cts:greekLit:tlg0540.tlg007.perseus-grc2",
+      "sha256": "4cb413d935ec52dd3f0e09463527a96252e08107be7acacace6b53acc626ce33",
+      "passages": 44,
+      "characters": 12785
+    },
+    {
+      "id": "lysias-calumny",
+      "sourceUrn": "urn:cts:greekLit:tlg0540.tlg008.perseus-grc2",
+      "sha256": "c2a3756408c7a932bab706480a47c5e5185bcc7ebae3ce8704c0d5818e4d1306",
+      "passages": 21,
+      "characters": 6533
+    },
+    {
+      "id": "lysias-soldier",
+      "sourceUrn": "urn:cts:greekLit:tlg0540.tlg009.perseus-grc2",
+      "sha256": "874f4d796bd5718454faba052528fd814338cbe92691dff72fd27938b937d844",
+      "passages": 23,
+      "characters": 5839
+    },
+    {
+      "id": "lysias-theomnestus-1",
+      "sourceUrn": "urn:cts:greekLit:tlg0540.tlg010.perseus-grc2",
+      "sha256": "dd676d74a2f8204e658ea8d10381b9deb1637554fe7645c2ec746cc903a02cc0",
+      "passages": 44,
+      "characters": 9167
+    },
+    {
+      "id": "isocrates-euthynus",
+      "sourceUrn": "urn:cts:greekLit:tlg0010.tlg001.perseus-grc2",
+      "sha256": "c114e4219bbb13a0b9a8a27818c9724f76066ea8d7ca70c8dbeb3511c15f6660",
+      "passages": 21,
+      "characters": 6894
+    },
+    {
+      "id": "isocrates-callimachus",
+      "sourceUrn": "urn:cts:greekLit:tlg0010.tlg002.perseus-grc2",
+      "sha256": "c72e6199d083e4b09f34109bc459f6fb90d15795179b1c14944038b9fabb5b5d",
+      "passages": 73,
+      "characters": 23284
+    },
+    {
+      "id": "isocrates-lochites",
+      "sourceUrn": "urn:cts:greekLit:tlg0010.tlg003.perseus-grc2",
+      "sha256": "0e6ab09ebaa346b4f3b85dceaf3eb0dd3b5b45f3cf0d7b6cf2fe52470ffb71ff",
+      "passages": 22,
+      "characters": 7256
+    },
+    {
+      "id": "isocrates-team-horses",
+      "sourceUrn": "urn:cts:greekLit:tlg0010.tlg004.perseus-grc2",
+      "sha256": "8d102a577df70de50b88f675ec47e783d329548f70a3b180397d36722e66a852",
+      "passages": 50,
+      "characters": 18820
+    },
+    {
+      "id": "isocrates-trapeziticus",
+      "sourceUrn": "urn:cts:greekLit:tlg0010.tlg005.perseus-grc2",
+      "sha256": "adabbf233d502c553422861b9fc29f216751fc5f09b58f806cb74ea514e2643d",
+      "passages": 65,
+      "characters": 22024
+    },
+    {
+      "id": "isocrates-aegineticus",
+      "sourceUrn": "urn:cts:greekLit:tlg0010.tlg006.perseus-grc2",
+      "sha256": "201256c72164727e24f56657cc5eceb848b80d905e70071e300e4e7600fff527",
+      "passages": 56,
+      "characters": 18850
+    },
+    {
+      "id": "isocrates-sophists",
+      "sourceUrn": "urn:cts:greekLit:tlg0010.tlg008.perseus-grc2",
+      "sha256": "5211a39f9190a16768ceffb78a5148913b81694e52431fe89363990fd6fb9732",
+      "passages": 22,
+      "characters": 8850
+    },
+    {
+      "id": "isocrates-helen",
+      "sourceUrn": "urn:cts:greekLit:tlg0010.tlg009.perseus-grc2",
+      "sha256": "be14f8b216a7b45df53f85b5d5cef72448a2b6fceebf5f93f45c600029b001b3",
+      "passages": 69,
+      "characters": 24137
+    },
+    {
+      "id": "isocrates-busiris",
+      "sourceUrn": "urn:cts:greekLit:tlg0010.tlg010.perseus-grc2",
+      "sha256": "3a76d4ec7b3ec020a0b1453aec6ac7b79746fd322f9ac24fc818503f1d8798f3",
+      "passages": 50,
+      "characters": 17887
+    },
+    {
+      "id": "isocrates-plataicus",
+      "sourceUrn": "urn:cts:greekLit:tlg0010.tlg012.perseus-grc2",
+      "sha256": "392fe3a2a5c39399979ee7e606fa3c8e100ec4dbee55b15889e7a69436a1c1cc",
+      "passages": 63,
+      "characters": 21448
+    }
+  ],
+  "lexicalManifest": "data/index/classics/manifest.json",
+  "indexedCount": 50,
+  "indexGenerated": "2026-11-16"
+}

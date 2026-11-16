@@ -2,8 +2,8 @@
   "schema": "vitruvia-classics-search-registry-v1",
   "updated": "2026-11-16",
   "description": "Registro verificable de transcripciones HTML y textos JSON existentes que admiten búsqueda literal de contenido. No incluye automáticamente PDF escaneados, facsímiles ni fichas sin texto. Los índices auxiliares por locus y el aparato crítico se declaran por separado; no se suman a versiones textuales originales ni implican colación autóptica.",
-  "count": 312,
-  "works": 247,
+  "count": 357,
+  "works": 292,
   "entries": [
     {
       "workId": "aeneas-tacticus-poliorketika",
@@ -1663,6 +1663,42 @@
       "passages": 549
     },
     {
+      "workId": "isocrates-aegineticus",
+      "author": "Isócrates",
+      "title": "Αἰγητικὸς",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/isocrates-aegineticus-grc.json",
+      "reader": "classics-text-reader.html?work=isocrates-aegineticus&lang=grc",
+      "sourceUrn": "urn:cts:greekLit:tlg0010.tlg006.perseus-grc2",
+      "sourceSha256": "201256c72164727e24f56657cc5eceb848b80d905e70071e300e4e7600fff527",
+      "sourceDescription": "Perseus DL TEI · Isocrates, Vol. 3. Van Hook, Larue, editor. Cambridge, MA, Harvard University Press; London, William Heinemann Ltd., 1945 (printing). · CC BY-SA 4.0; original sin cotejo independiente"
+    },
+    {
+      "workId": "isocrates-busiris",
+      "author": "Isócrates",
+      "title": "Βούσιρις",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/isocrates-busiris-grc.json",
+      "reader": "classics-text-reader.html?work=isocrates-busiris&lang=grc",
+      "sourceUrn": "urn:cts:greekLit:tlg0010.tlg010.perseus-grc2",
+      "sourceSha256": "3a76d4ec7b3ec020a0b1453aec6ac7b79746fd322f9ac24fc818503f1d8798f3",
+      "sourceDescription": "Perseus DL TEI · Isocrates, Vol. 3. Van Hook, Larue, editor. Cambridge, MA, Harvard University Press; London, William Heinemann Ltd., 1945 (printing). · CC BY-SA 4.0; original sin cotejo independiente"
+    },
+    {
+      "workId": "isocrates-callimachus",
+      "author": "Isócrates",
+      "title": "Παραγραφή πρὸς Καλλίμαχον",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/isocrates-callimachus-grc.json",
+      "reader": "classics-text-reader.html?work=isocrates-callimachus&lang=grc",
+      "sourceUrn": "urn:cts:greekLit:tlg0010.tlg002.perseus-grc2",
+      "sourceSha256": "c72e6199d083e4b09f34109bc459f6fb90d15795179b1c14944038b9fabb5b5d",
+      "sourceDescription": "Perseus DL TEI · Isocrates, Vol. 3. Van Hook, Larue, editor. Cambridge, MA, Harvard University Press; London, William Heinemann Ltd., 1945 (printing). · CC BY-SA 4.0; original sin cotejo independiente"
+    },
+    {
       "workId": "isocrates-discursos",
       "language": "grc",
       "title": "Λόγοι · Discursos (Πρὸς Δημόνικον, Πανηγυρικός)",
@@ -1673,6 +1709,90 @@
       "sourceDescription": "Perseus/First1KGreek TEI · edición atribuida en el archivo · sin cotejo ni alineación automática",
       "sha256": "d028aa92d1a40435c87428a96af601b9ec52f9d928cc6f108ded94a39ea9ee75",
       "passages": 2116
+    },
+    {
+      "workId": "isocrates-euthynus",
+      "author": "Isócrates",
+      "title": "Πρὸς Εὐθύνους ἀμάρτυρος",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/isocrates-euthynus-grc.json",
+      "reader": "classics-text-reader.html?work=isocrates-euthynus&lang=grc",
+      "sourceUrn": "urn:cts:greekLit:tlg0010.tlg001.perseus-grc2",
+      "sourceSha256": "c114e4219bbb13a0b9a8a27818c9724f76066ea8d7ca70c8dbeb3511c15f6660",
+      "sourceDescription": "Perseus DL TEI · Isocrates, Vol. 3. Van Hook, Larue, editor. Cambridge, MA, Harvard University Press; London, William Heinemann Ltd., 1945 (printing). · CC BY-SA 4.0; original sin cotejo independiente"
+    },
+    {
+      "workId": "isocrates-helen",
+      "author": "Isócrates",
+      "title": "Ἑλένη",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/isocrates-helen-grc.json",
+      "reader": "classics-text-reader.html?work=isocrates-helen&lang=grc",
+      "sourceUrn": "urn:cts:greekLit:tlg0010.tlg009.perseus-grc2",
+      "sourceSha256": "be14f8b216a7b45df53f85b5d5cef72448a2b6fceebf5f93f45c600029b001b3",
+      "sourceDescription": "Perseus DL TEI · Isocrates, Vol. 3. Van Hook, Larue, editor. Cambridge, MA, Harvard University Press; London, William Heinemann Ltd., 1945 (printing). · CC BY-SA 4.0; original sin cotejo independiente"
+    },
+    {
+      "workId": "isocrates-lochites",
+      "author": "Isócrates",
+      "title": "Κατὰ Λοχίτου",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/isocrates-lochites-grc.json",
+      "reader": "classics-text-reader.html?work=isocrates-lochites&lang=grc",
+      "sourceUrn": "urn:cts:greekLit:tlg0010.tlg003.perseus-grc2",
+      "sourceSha256": "0e6ab09ebaa346b4f3b85dceaf3eb0dd3b5b45f3cf0d7b6cf2fe52470ffb71ff",
+      "sourceDescription": "Perseus DL TEI · Isocrates, Vol. 3. Van Hook, Larue, editor. Cambridge, MA, Harvard University Press; London, William Heinemann Ltd., 1945 (printing). · CC BY-SA 4.0; original sin cotejo independiente"
+    },
+    {
+      "workId": "isocrates-plataicus",
+      "author": "Isócrates",
+      "title": "Πλαταικός",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/isocrates-plataicus-grc.json",
+      "reader": "classics-text-reader.html?work=isocrates-plataicus&lang=grc",
+      "sourceUrn": "urn:cts:greekLit:tlg0010.tlg012.perseus-grc2",
+      "sourceSha256": "392fe3a2a5c39399979ee7e606fa3c8e100ec4dbee55b15889e7a69436a1c1cc",
+      "sourceDescription": "Perseus DL TEI · Isocrates, Vol. 3. Van Hook, Larue, editor. Cambridge, MA, Harvard University Press; London, William Heinemann Ltd., 1945 (printing). · CC BY-SA 4.0; original sin cotejo independiente"
+    },
+    {
+      "workId": "isocrates-sophists",
+      "author": "Isócrates",
+      "title": "Κατὰ τῶν σοφιστῶν",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/isocrates-sophists-grc.json",
+      "reader": "classics-text-reader.html?work=isocrates-sophists&lang=grc",
+      "sourceUrn": "urn:cts:greekLit:tlg0010.tlg008.perseus-grc2",
+      "sourceSha256": "5211a39f9190a16768ceffb78a5148913b81694e52431fe89363990fd6fb9732",
+      "sourceDescription": "Perseus DL TEI · Isocrates, Vol 2. Norlin, George, editor. Cambridge, MA, Harvard University Press; London, William Heinemann Ltd. 1929 (printing). · CC BY-SA 4.0; original sin cotejo independiente"
+    },
+    {
+      "workId": "isocrates-team-horses",
+      "author": "Isócrates",
+      "title": "Περὶ τοῦ ζεύγους",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/isocrates-team-horses-grc.json",
+      "reader": "classics-text-reader.html?work=isocrates-team-horses&lang=grc",
+      "sourceUrn": "urn:cts:greekLit:tlg0010.tlg004.perseus-grc2",
+      "sourceSha256": "8d102a577df70de50b88f675ec47e783d329548f70a3b180397d36722e66a852",
+      "sourceDescription": "Perseus DL TEI · Isocrates, Vol. 3. Van Hook, Larue, editor. Cambridge, MA, Harvard University Press; London, William Heinemann Ltd., 1945 (printing). · CC BY-SA 4.0; original sin cotejo independiente"
+    },
+    {
+      "workId": "isocrates-trapeziticus",
+      "author": "Isócrates",
+      "title": "Τραπεζιτικός",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/isocrates-trapeziticus-grc.json",
+      "reader": "classics-text-reader.html?work=isocrates-trapeziticus&lang=grc",
+      "sourceUrn": "urn:cts:greekLit:tlg0010.tlg005.perseus-grc2",
+      "sourceSha256": "adabbf233d502c553422861b9fc29f216751fc5f09b58f806cb74ea514e2643d",
+      "sourceDescription": "Perseus DL TEI · Isocrates, Vol. 3. Van Hook, Larue, editor. Cambridge, MA, Harvard University Press; London, William Heinemann Ltd., 1945 (printing). · CC BY-SA 4.0; original sin cotejo independiente"
     },
     {
       "workId": "jenofonte-ciropedia",
@@ -1805,6 +1925,42 @@
       "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
     },
     {
+      "workId": "lucian-bacchus",
+      "author": "Luciano de Samósata",
+      "title": "Προλαλιά. Διόνυσος",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/lucian-bacchus-grc.json",
+      "reader": "classics-text-reader.html?work=lucian-bacchus&lang=grc",
+      "sourceUrn": "urn:cts:greekLit:tlg0062.tlg003.perseus-grc2",
+      "sourceSha256": "d1f45b3bc344ccdc301af009bc8d7a7c88d3c9a905884262bbbe961c82940db4",
+      "sourceDescription": "Perseus DL TEI · Lucian, Vol. 1. Harmon, Austin Morris, editor. London: William Heinemann, Ltd.; Cambridge, MA: Harvard University Press, 1913. · CC BY-SA 4.0; original sin cotejo independiente"
+    },
+    {
+      "workId": "lucian-de-domo",
+      "author": "Luciano de Samósata",
+      "title": "Περὶ τοῦ Οἴκου",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/lucian-de-domo-grc.json",
+      "reader": "classics-text-reader.html?work=lucian-de-domo&lang=grc",
+      "sourceUrn": "urn:cts:greekLit:tlg0062.tlg009.perseus-grc2",
+      "sourceSha256": "5dc7503415c8a7d9fed39a3223a651e06caed73824f4dd0a2b4a6305c066c847",
+      "sourceDescription": "Perseus DL TEI · Lucian, Vol. 1. Harmon, Austin Morris, editor. London: William Heinemann, Ltd.; Cambridge, MA: Harvard University Press, 1913. · CC BY-SA 4.0; original sin cotejo independiente"
+    },
+    {
+      "workId": "lucian-demonax",
+      "author": "Luciano de Samósata",
+      "title": "Δημώνακτος Βίος",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/lucian-demonax-grc.json",
+      "reader": "classics-text-reader.html?work=lucian-demonax&lang=grc",
+      "sourceUrn": "urn:cts:greekLit:tlg0062.tlg008.perseus-grc2",
+      "sourceSha256": "64f5ba271372ea1f21d56367a2d239753b9920f2eb49e305a5c888150f4eb2a7",
+      "sourceDescription": "Perseus DL TEI · Lucian, Vol. 1. Harmon, Austin Morris, editor. London: William Heinemann, Ltd.; Cambridge, MA: Harvard University Press, 1913. · CC BY-SA 4.0; original sin cotejo independiente"
+    },
+    {
       "workId": "lucian-dialogi-mortuorum",
       "author": "Luciano de Samósata",
       "title": "Νεκρικοὶ διάλογοι",
@@ -1813,6 +1969,90 @@
       "path": "data/classics-corpus/lucian-dialogi-mortuorum-grc.json",
       "reader": "classics-text-reader.html?work=lucian-dialogi-mortuorum&lang=grc",
       "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
+      "workId": "lucian-electrum",
+      "author": "Luciano de Samósata",
+      "title": "Περὶ τοῦ Ἡλέκτρου ἢ Κύκνων",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/lucian-electrum-grc.json",
+      "reader": "classics-text-reader.html?work=lucian-electrum&lang=grc",
+      "sourceUrn": "urn:cts:greekLit:tlg0062.tlg005.perseus-grc2",
+      "sourceSha256": "5b03f6e7850b5f3865ccf216bee60c673a3fc271cd0f3be6c91b227d58d160bc",
+      "sourceDescription": "Perseus DL TEI · Lucian, Vol. 1. Harmon, Austin Morris, editor. London: William Heinemann, Ltd.; Cambridge, MA: Harvard University Press, 1913. · CC BY-SA 4.0; original sin cotejo independiente"
+    },
+    {
+      "workId": "lucian-encomium-fatherland",
+      "author": "Luciano de Samósata",
+      "title": "Πατρίδος Ἐγκώμιον",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/lucian-encomium-fatherland-grc.json",
+      "reader": "classics-text-reader.html?work=lucian-encomium-fatherland&lang=grc",
+      "sourceUrn": "urn:cts:greekLit:tlg0062.tlg010.perseus-grc2",
+      "sourceSha256": "83aa5d63192eac7486755b817636413798e0c4437375f2d17ff493653303a0cd",
+      "sourceDescription": "Perseus DL TEI · Lucian, Vol. 1. Harmon, Austin Morris, editor. London: William Heinemann, Ltd.; Cambridge, MA: Harvard University Press, 1913. · CC BY-SA 4.0; original sin cotejo independiente"
+    },
+    {
+      "workId": "lucian-encomium-fly",
+      "author": "Luciano de Samósata",
+      "title": "Μυίας Ἐγκώμιον",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/lucian-encomium-fly-grc.json",
+      "reader": "classics-text-reader.html?work=lucian-encomium-fly&lang=grc",
+      "sourceUrn": "urn:cts:greekLit:tlg0062.tlg006.perseus-grc2",
+      "sourceSha256": "078d56032ca259b3986b254d529a6a122a56e9431f0381c884870143c793a374",
+      "sourceDescription": "Perseus DL TEI · Lucian, Vol. 1. Harmon, Austin Morris, editor. London: William Heinemann, Ltd.; Cambridge, MA: Harvard University Press, 1913. · CC BY-SA 4.0; original sin cotejo independiente"
+    },
+    {
+      "workId": "lucian-hercules",
+      "author": "Luciano de Samósata",
+      "title": "Προλαλιά. Ἡρακλῆς",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/lucian-hercules-grc.json",
+      "reader": "classics-text-reader.html?work=lucian-hercules&lang=grc",
+      "sourceUrn": "urn:cts:greekLit:tlg0062.tlg004.perseus-grc2",
+      "sourceSha256": "2853cc360ac62ecde53d20bc411bf6b9f96ed7510983c4a892d899178ee46a32",
+      "sourceDescription": "Perseus DL TEI · Lucian, Vol. 1. Harmon, Austin Morris, editor. London: William Heinemann, Ltd.; Cambridge, MA: Harvard University Press, 1913. · CC BY-SA 4.0; original sin cotejo independiente"
+    },
+    {
+      "workId": "lucian-hippias",
+      "author": "Luciano de Samósata",
+      "title": "Ἱππίας ἢ Βαλανεῖον",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/lucian-hippias-grc.json",
+      "reader": "classics-text-reader.html?work=lucian-hippias&lang=grc",
+      "sourceUrn": "urn:cts:greekLit:tlg0062.tlg002.perseus-grc2",
+      "sourceSha256": "3644f9b11c6fd4e51f66443b08437ade6027ec3322d425cf61140e03301a601b",
+      "sourceDescription": "Perseus DL TEI · Lucian, Vol. 1. Harmon, Austin Morris, editor. London: William Heinemann, Ltd.; Cambridge, MA: Harvard University Press, 1913. · CC BY-SA 4.0; original sin cotejo independiente"
+    },
+    {
+      "workId": "lucian-nigrinus",
+      "author": "Luciano de Samósata",
+      "title": "Νιγρίνου Φιλοσοφία",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/lucian-nigrinus-grc.json",
+      "reader": "classics-text-reader.html?work=lucian-nigrinus&lang=grc",
+      "sourceUrn": "urn:cts:greekLit:tlg0062.tlg007.perseus-grc2",
+      "sourceSha256": "16a69e68b8857cc130e839b85fc4373c66b9650a3956b631aeb8bdb3c73c51e0",
+      "sourceDescription": "Perseus DL TEI · Lucian, Vol. 1. Harmon, Austin Morris, editor. London: William Heinemann, Ltd.; Cambridge, MA: Harvard University Press, 1913. · CC BY-SA 4.0; original sin cotejo independiente"
+    },
+    {
+      "workId": "lucian-phalaris",
+      "author": "Luciano de Samósata",
+      "title": "Φάλαρις",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/lucian-phalaris-grc.json",
+      "reader": "classics-text-reader.html?work=lucian-phalaris&lang=grc",
+      "sourceUrn": "urn:cts:greekLit:tlg0062.tlg001.perseus-grc2",
+      "sourceSha256": "92cd254311b1f77941ccd17c04f364146460aa89f184654c7cb914c6164e9d3a",
+      "sourceDescription": "Perseus DL TEI · Lucian, Vol. 1. Harmon, Austin Morris, editor. London: William Heinemann, Ltd.; Cambridge, MA: Harvard University Press, 1913. · CC BY-SA 4.0; original sin cotejo independiente"
     },
     {
       "workId": "lucian-verae-historiae",
@@ -1863,6 +2103,126 @@
       "path": "corpus/lucretius-de-rerum-natura-la.html",
       "reader": "corpus/lucretius-de-rerum-natura-la.html",
       "sourceDescription": "Procedencia bibliográfica indicada en la página de lectura; no equivale a un facsímil."
+    },
+    {
+      "workId": "lysias-against-andocides",
+      "author": "Lisias",
+      "title": "κατ᾽ Ἀνδοκίδου ἀσεβείας",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/lysias-against-andocides-grc.json",
+      "reader": "classics-text-reader.html?work=lysias-against-andocides&lang=grc",
+      "sourceUrn": "urn:cts:greekLit:tlg0540.tlg006.perseus-grc2",
+      "sourceSha256": "9beb0ba20a0567e2b1c617bc553ab50dcae10f4f5258cfb5b0e77cbf4d1bbdde",
+      "sourceDescription": "Perseus DL TEI · Lysias. Lamb, W.R.M., editor. Cambridge, MA: Harvard University Press; London: William Heinemann Ltd., 1930. · CC BY-SA 4.0; original sin cotejo independiente"
+    },
+    {
+      "workId": "lysias-against-simon",
+      "author": "Lisias",
+      "title": "πρὸς Σίμωνα ἀπολογία",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/lysias-against-simon-grc.json",
+      "reader": "classics-text-reader.html?work=lysias-against-simon&lang=grc",
+      "sourceUrn": "urn:cts:greekLit:tlg0540.tlg003.perseus-grc2",
+      "sourceSha256": "a111b82a7a5973cee8729f3746c05a5571942925de5431304cedb585ece6cde8",
+      "sourceDescription": "Perseus DL TEI · Lysias. Lamb, W.R.M., editor. Cambridge, MA: Harvard University Press; London: William Heinemann Ltd., 1930. · CC BY-SA 4.0; original sin cotejo independiente"
+    },
+    {
+      "workId": "lysias-calumny",
+      "author": "Lisias",
+      "title": "κατηγορία πρὸς τοὺς συνουσιαστὰς κακολογιῶν",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/lysias-calumny-grc.json",
+      "reader": "classics-text-reader.html?work=lysias-calumny&lang=grc",
+      "sourceUrn": "urn:cts:greekLit:tlg0540.tlg008.perseus-grc2",
+      "sourceSha256": "c2a3756408c7a932bab706480a47c5e5185bcc7ebae3ce8704c0d5818e4d1306",
+      "sourceDescription": "Perseus DL TEI · Lysias. Lamb, W.R.M., editor. Cambridge, MA: Harvard University Press; London: William Heinemann Ltd., 1930. · CC BY-SA 4.0; original sin cotejo independiente"
+    },
+    {
+      "workId": "lysias-eratosthenes",
+      "author": "Lisias",
+      "title": "ὑπὲρ τοῦ Ἐρατοσθένους φόνου ἀπολογία",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/lysias-eratosthenes-grc.json",
+      "reader": "classics-text-reader.html?work=lysias-eratosthenes&lang=grc",
+      "sourceUrn": "urn:cts:greekLit:tlg0540.tlg001.perseus-grc2",
+      "sourceSha256": "d730eca2f85401bf962ccb38ac60bf1b1471e5452d4f115ec7abc61e6b565eb2",
+      "sourceDescription": "Perseus DL TEI · Lysias. Lamb, W.R.M., editor. Cambridge, MA: Harvard University Press; London: William Heinemann Ltd., 1930. · CC BY-SA 4.0; original sin cotejo independiente"
+    },
+    {
+      "workId": "lysias-for-callias",
+      "author": "Lisias",
+      "title": "ὑπὲρ Καλλίου ἱεροσυλίας ἀπολογία",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/lysias-for-callias-grc.json",
+      "reader": "classics-text-reader.html?work=lysias-for-callias&lang=grc",
+      "sourceUrn": "urn:cts:greekLit:tlg0540.tlg005.perseus-grc2",
+      "sourceSha256": "ead144cd978558577ed6bbbafd6c1b100d55b570c1738706eab66d028173d64f",
+      "sourceDescription": "Perseus DL TEI · Lysias. Lamb, W.R.M., editor. Cambridge, MA: Harvard University Press; London: William Heinemann Ltd., 1930. · CC BY-SA 4.0; original sin cotejo independiente"
+    },
+    {
+      "workId": "lysias-funeral-oration",
+      "author": "Lisias",
+      "title": "Ἐπιτάφιος τοῖς Κορινθίων βοηθοῖς",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/lysias-funeral-oration-grc.json",
+      "reader": "classics-text-reader.html?work=lysias-funeral-oration&lang=grc",
+      "sourceUrn": "urn:cts:greekLit:tlg0540.tlg002.perseus-grc2",
+      "sourceSha256": "9b37450645451954f36025fb1298fa2c88ddc93f13aa26527709cca506db8a66",
+      "sourceDescription": "Perseus DL TEI · Lysias. Lamb, W.R.M., editor. Cambridge, MA: Harvard University Press; London: William Heinemann Ltd., 1930. · CC BY-SA 4.0; original sin cotejo independiente"
+    },
+    {
+      "workId": "lysias-olive-stump",
+      "author": "Lisias",
+      "title": "Ἀρεοπαγιτικὸς περὶ τοῦ σηκοῦ ἀπολογία",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/lysias-olive-stump-grc.json",
+      "reader": "classics-text-reader.html?work=lysias-olive-stump&lang=grc",
+      "sourceUrn": "urn:cts:greekLit:tlg0540.tlg007.perseus-grc2",
+      "sourceSha256": "4cb413d935ec52dd3f0e09463527a96252e08107be7acacace6b53acc626ce33",
+      "sourceDescription": "Perseus DL TEI · Lysias. Lamb, W.R.M., editor. Cambridge, MA: Harvard University Press; London: William Heinemann Ltd., 1930. · CC BY-SA 4.0; original sin cotejo independiente"
+    },
+    {
+      "workId": "lysias-soldier",
+      "author": "Lisias",
+      "title": "ὑπὲρ τοῦ στρατιωτοῦ",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/lysias-soldier-grc.json",
+      "reader": "classics-text-reader.html?work=lysias-soldier&lang=grc",
+      "sourceUrn": "urn:cts:greekLit:tlg0540.tlg009.perseus-grc2",
+      "sourceSha256": "874f4d796bd5718454faba052528fd814338cbe92691dff72fd27938b937d844",
+      "sourceDescription": "Perseus DL TEI · Lysias. Lamb, W.R.M., editor. Cambridge, MA: Harvard University Press; London: William Heinemann Ltd., 1930. · CC BY-SA 4.0; original sin cotejo independiente"
+    },
+    {
+      "workId": "lysias-theomnestus-1",
+      "author": "Lisias",
+      "title": "κατὰ θεομνήστου, Α",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/lysias-theomnestus-1-grc.json",
+      "reader": "classics-text-reader.html?work=lysias-theomnestus-1&lang=grc",
+      "sourceUrn": "urn:cts:greekLit:tlg0540.tlg010.perseus-grc2",
+      "sourceSha256": "dd676d74a2f8204e658ea8d10381b9deb1637554fe7645c2ec746cc903a02cc0",
+      "sourceDescription": "Perseus DL TEI · Lysias. Lamb, W.R.M., editor. Cambridge, MA: Harvard University Press; London: William Heinemann Ltd., 1930. · CC BY-SA 4.0; original sin cotejo independiente"
+    },
+    {
+      "workId": "lysias-wound",
+      "author": "Lisias",
+      "title": "περὶ τραύματος ἐκ προνοίας",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/lysias-wound-grc.json",
+      "reader": "classics-text-reader.html?work=lysias-wound&lang=grc",
+      "sourceUrn": "urn:cts:greekLit:tlg0540.tlg004.perseus-grc2",
+      "sourceSha256": "1c4a45ea5e838c024839ff9ed81953a66853a2dedcd539d2a8e9dafe1c339c5c",
+      "sourceDescription": "Perseus DL TEI · Lysias. Lamb, W.R.M., editor. Cambridge, MA: Harvard University Press; London: William Heinemann Ltd., 1930. · CC BY-SA 4.0; original sin cotejo independiente"
     },
     {
       "workId": "marcus-aurelius-meditations",
@@ -2198,7 +2558,9 @@
       "format": "json-passages",
       "path": "data/classics-corpus/plato-charmides-grc.json",
       "reader": "classics-text-reader.html?work=plato-charmides&lang=grc",
-      "sourceDescription": "Perseus original Greek edited TEI | urn:cts:greekLit:tlg0059.tlg018.perseus-grc2 | CC BY-SA 4.0 | local digital paragraph segments, not canonical loci"
+      "sourceDescription": "Perseus original Greek edited TEI | urn:cts:greekLit:tlg0059.tlg018.perseus-grc2 | CC BY-SA 4.0 | local digital paragraph segments, not canonical loci",
+      "sourceUrn": "urn:cts:greekLit:tlg0059.tlg018.perseus-grc2",
+      "sourceSha256": "3cb4c59674f6783977cc53848250086079c0c08af02dba3dec43ca5ab6512732"
     },
     {
       "workId": "plato-crito",
@@ -2221,6 +2583,18 @@
       "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
     },
     {
+      "workId": "plato-euthydemus",
+      "author": "Platón",
+      "title": "Εὐθύδημος",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/plato-euthydemus-grc.json",
+      "reader": "classics-text-reader.html?work=plato-euthydemus&lang=grc",
+      "sourceUrn": "urn:cts:greekLit:tlg0059.tlg021.perseus-grc2",
+      "sourceSha256": "68c220dc8184fe94ce5447d7aaa5affc57ee5ca9b97680edbaa46d99d98a3f01",
+      "sourceDescription": "Perseus DL TEI · Platonis Opera, Tomus III: Tetralogia V-VII. Burnet, John, editor. Oxford: Clarendon Press, 1903. · CC BY-SA 4.0; original sin cotejo independiente"
+    },
+    {
       "workId": "plato-euthyphro",
       "author": "Platón",
       "title": "Εὐθύφρων",
@@ -2228,7 +2602,9 @@
       "format": "json-passages",
       "path": "data/classics-corpus/plato-euthyphro-grc.json",
       "reader": "classics-text-reader.html?work=plato-euthyphro&lang=grc",
-      "sourceDescription": "Perseus original Greek edited TEI | urn:cts:greekLit:tlg0059.tlg001.perseus-grc1 | CC BY-SA 4.0 | local digital paragraph segments, not canonical loci"
+      "sourceDescription": "Perseus original Greek edited TEI | urn:cts:greekLit:tlg0059.tlg001.perseus-grc1 | CC BY-SA 4.0 | local digital paragraph segments, not canonical loci",
+      "sourceUrn": "urn:cts:greekLit:tlg0059.tlg001.perseus-grc1",
+      "sourceSha256": "45ea0a0f2951ebdd4fb841dea02db341dc205da5001e4ff50bc20898a31955e1"
     },
     {
       "workId": "plato-gorgias",
@@ -2251,6 +2627,30 @@
       "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
     },
     {
+      "workId": "plato-hippias-minor",
+      "author": "Platón",
+      "title": "Ἱππίας ἐλάττων",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/plato-hippias-minor-grc.json",
+      "reader": "classics-text-reader.html?work=plato-hippias-minor&lang=grc",
+      "sourceUrn": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2",
+      "sourceSha256": "faf42c199c8e5e141689cfed2b301bad000eadf5d1e9ce173d63d4f28044ded4",
+      "sourceDescription": "Perseus DL TEI · Platonis Opera, Tomus III: Tetralogia V-VII. Burnet, John, editor. Oxford: Clarendon Press, 1903. · CC BY-SA 4.0; original sin cotejo independiente"
+    },
+    {
+      "workId": "plato-ion",
+      "author": "Platón",
+      "title": "Ἴων",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/plato-ion-grc.json",
+      "reader": "classics-text-reader.html?work=plato-ion&lang=grc",
+      "sourceUrn": "urn:cts:greekLit:tlg0059.tlg027.perseus-grc2",
+      "sourceSha256": "4af6f85d8384164e10fa3f6b82fb848c5ab911d35940b8992bbfa6eceedec1b6",
+      "sourceDescription": "Perseus DL TEI · Platonis Opera, Tomus III: Tetralogia V-VII. Burnet, John, editor. Oxford: Clarendon Press, 1903. · CC BY-SA 4.0; original sin cotejo independiente"
+    },
+    {
       "workId": "plato-laches",
       "author": "Platón",
       "title": "Λάχης",
@@ -2258,7 +2658,9 @@
       "format": "json-passages",
       "path": "data/classics-corpus/plato-laches-grc.json",
       "reader": "classics-text-reader.html?work=plato-laches&lang=grc",
-      "sourceDescription": "Perseus original Greek edited TEI | urn:cts:greekLit:tlg0059.tlg019.perseus-grc2 | CC BY-SA 4.0 | local digital paragraph segments, not canonical loci"
+      "sourceDescription": "Perseus original Greek edited TEI | urn:cts:greekLit:tlg0059.tlg019.perseus-grc2 | CC BY-SA 4.0 | local digital paragraph segments, not canonical loci",
+      "sourceUrn": "urn:cts:greekLit:tlg0059.tlg019.perseus-grc2",
+      "sourceSha256": "4dedb283a47ca729fedbbe65336e3262df78e32fa1b5f7b6d9446c89567c92fd"
     },
     {
       "workId": "plato-laws",
@@ -2269,6 +2671,30 @@
       "path": "data/classics-corpus/plato-laws-grc.json",
       "reader": "classics-text-reader.html?work=plato-laws&lang=grc",
       "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
+      "workId": "plato-lysis",
+      "author": "Platón",
+      "title": "Λύσις",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/plato-lysis-grc.json",
+      "reader": "classics-text-reader.html?work=plato-lysis&lang=grc",
+      "sourceUrn": "urn:cts:greekLit:tlg0059.tlg020.perseus-grc2",
+      "sourceSha256": "1656d85c1d69fad896958a77db2ddf47d7ea867b2944f336bfc8a71c578aa50c",
+      "sourceDescription": "Perseus DL TEI · Platonis Opera, Tomus III: Tetralogia V-VII. Burnet, John, editor. Oxford: Clarendon Press, 1903. · CC BY-SA 4.0; original sin cotejo independiente"
+    },
+    {
+      "workId": "plato-menexenus",
+      "author": "Platón",
+      "title": "Μενέξενος",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/plato-menexenus-grc.json",
+      "reader": "classics-text-reader.html?work=plato-menexenus&lang=grc",
+      "sourceUrn": "urn:cts:greekLit:tlg0059.tlg028.perseus-grc2",
+      "sourceSha256": "b4d889afab469947fb6dde661b5c7dea9f71faa688ef7827a2fe908116b05579",
+      "sourceDescription": "Perseus DL TEI · Platonis Opera, Tomus III: Tetralogia V-VII. Burnet, John, editor. Oxford: Clarendon Press, 1903. · CC BY-SA 4.0; original sin cotejo independiente"
     },
     {
       "workId": "plato-meno",
@@ -2338,7 +2764,9 @@
       "format": "json-passages",
       "path": "data/classics-corpus/plato-philebus-grc.json",
       "reader": "classics-text-reader.html?work=plato-philebus&lang=grc",
-      "sourceDescription": "Perseus original Greek edited TEI | urn:cts:greekLit:tlg0059.tlg010.perseus-grc2 | CC BY-SA 4.0 | local digital paragraph segments, not canonical loci"
+      "sourceDescription": "Perseus original Greek edited TEI | urn:cts:greekLit:tlg0059.tlg010.perseus-grc2 | CC BY-SA 4.0 | local digital paragraph segments, not canonical loci",
+      "sourceUrn": "urn:cts:greekLit:tlg0059.tlg010.perseus-grc2",
+      "sourceSha256": "aa9914ccd1d3c013b0948fd150730a9beb902971ae27a95b47e19cdaf3009ea2"
     },
     {
       "workId": "plato-republic",
@@ -2358,7 +2786,9 @@
       "format": "json-passages",
       "path": "data/classics-corpus/plato-statesman-grc.json",
       "reader": "classics-text-reader.html?work=plato-statesman&lang=grc",
-      "sourceDescription": "Perseus original Greek edited TEI | urn:cts:greekLit:tlg0059.tlg008.perseus-grc2 | CC BY-SA 4.0 | local digital paragraph segments, not canonical loci"
+      "sourceDescription": "Perseus original Greek edited TEI | urn:cts:greekLit:tlg0059.tlg008.perseus-grc2 | CC BY-SA 4.0 | local digital paragraph segments, not canonical loci",
+      "sourceUrn": "urn:cts:greekLit:tlg0059.tlg008.perseus-grc2",
+      "sourceSha256": "87c46a79067e0edc552136cc12650f95f4893c8295201b21d4971117c20e8484"
     },
     {
       "workId": "plato-symposium",
@@ -3191,6 +3621,18 @@
       "sourceDescription": "Texto estructurado con loci declarados; las versiones editoriales V514/V554/V297 conservan DOCX y huella de procedencia. Comparación no equivale a identidad literal entre recensiones."
     },
     {
+      "workId": "xenophon-agesilaus",
+      "author": "Jenofonte",
+      "title": "Ἀγησίλαος",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/xenophon-agesilaus-grc.json",
+      "reader": "classics-text-reader.html?work=xenophon-agesilaus&lang=grc",
+      "sourceUrn": "urn:cts:greekLit:tlg0032.tlg009.perseus-grc2",
+      "sourceSha256": "91c75bfc98f3eb4551e6483afa02685cea73fc993a2e56b48315da30235f5a28",
+      "sourceDescription": "Perseus DL TEI · Xenophon. Opera omnia, Vol. 5. Marchant, Edgar Cardew, editor. Oxford: Clarendon Press, 1920. · CC BY-SA 4.0; original sin cotejo independiente"
+    },
+    {
       "workId": "xenophon-anabasis",
       "author": "Jenofonte",
       "title": "Ἀνάβασις",
@@ -3199,6 +3641,18 @@
       "path": "data/classics-corpus/xenophon-anabasis-grc.json",
       "reader": "classics-text-reader.html?work=xenophon-anabasis&lang=grc",
       "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
+      "workId": "xenophon-apology",
+      "author": "Jenofonte",
+      "title": "Ἀπολογία Σωκράτους",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/xenophon-apology-grc.json",
+      "reader": "classics-text-reader.html?work=xenophon-apology&lang=grc",
+      "sourceUrn": "urn:cts:greekLit:tlg0032.tlg005.perseus-grc2",
+      "sourceSha256": "f806649ec629aed02bad9f86e0024d50ce085ef4fb4712d018905ed29b829178",
+      "sourceDescription": "Perseus DL TEI · Xenophon. Opera omnia, Vol. 2. Marchant, Edgar Cardew, editor. Oxford: Clarendon Press, 1921. · CC BY-SA 4.0; original sin cotejo independiente"
     },
     {
       "workId": "xenophon-hellenica",
@@ -3211,6 +3665,66 @@
       "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
     },
     {
+      "workId": "xenophon-hiero",
+      "author": "Jenofonte",
+      "title": "Ἱέρων",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/xenophon-hiero-grc.json",
+      "reader": "classics-text-reader.html?work=xenophon-hiero&lang=grc",
+      "sourceUrn": "urn:cts:greekLit:tlg0032.tlg008.perseus-grc2",
+      "sourceSha256": "c7a8e2cb855b262c2943dbd5e2a3a15b9a51dbab9593fafa58b4489546410c68",
+      "sourceDescription": "Perseus DL TEI · Xenophon. Opera omnia, Vol. 5. Marchant, Edgar Cardew, editor. Oxford: Clarendon Press, 1920. · CC BY-SA 4.0; original sin cotejo independiente"
+    },
+    {
+      "workId": "xenophon-hipparchicus",
+      "author": "Jenofonte",
+      "title": "Ἱππαρχικός",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/xenophon-hipparchicus-grc.json",
+      "reader": "classics-text-reader.html?work=xenophon-hipparchicus&lang=grc",
+      "sourceUrn": "urn:cts:greekLit:tlg0032.tlg012.perseus-grc2",
+      "sourceSha256": "85eb10fde61519574247c01024f343a90f06ff54395a4ce26dcfb10fdf7bb8a8",
+      "sourceDescription": "Perseus DL TEI · Xenophon. Opera omnia, Vol. 5. Marchant, Edgar Cardew, editor. Oxford: Clarendon Press, 1920. · CC BY-SA 4.0; original sin cotejo independiente"
+    },
+    {
+      "workId": "xenophon-horsemanship",
+      "author": "Jenofonte",
+      "title": "Περὶ ἱππικῆς",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/xenophon-horsemanship-grc.json",
+      "reader": "classics-text-reader.html?work=xenophon-horsemanship&lang=grc",
+      "sourceUrn": "urn:cts:greekLit:tlg0032.tlg013.perseus-grc2",
+      "sourceSha256": "c0856cb46f710a63c9270b4c7b8a4b521d7a4e7f05a6dc5b808c82b759637dc4",
+      "sourceDescription": "Perseus DL TEI · Xenophon. Opera omnia, Vol. 5. Marchant, Edgar Cardew, editor. Oxford: Clarendon Press, 1920. · CC BY-SA 4.0; original sin cotejo independiente"
+    },
+    {
+      "workId": "xenophon-hunting",
+      "author": "Jenofonte",
+      "title": "Κυνηγετικός",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/xenophon-hunting-grc.json",
+      "reader": "classics-text-reader.html?work=xenophon-hunting&lang=grc",
+      "sourceUrn": "urn:cts:greekLit:tlg0032.tlg014.perseus-grc2",
+      "sourceSha256": "443980b2112fa891da14de6a4016cde44a592a0e53acb7c124eff19655af093f",
+      "sourceDescription": "Perseus DL TEI · Xenophon. Opera omnia, Vol. 5. Marchant, Edgar Cardew, editor. Oxford: Clarendon Press, 1920. · CC BY-SA 4.0; original sin cotejo independiente"
+    },
+    {
+      "workId": "xenophon-lacedaemonian-constitution",
+      "author": "Jenofonte",
+      "title": "Λακεδαιμονίων Πολιτεία",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/xenophon-lacedaemonian-constitution-grc.json",
+      "reader": "classics-text-reader.html?work=xenophon-lacedaemonian-constitution&lang=grc",
+      "sourceUrn": "urn:cts:greekLit:tlg0032.tlg010.perseus-grc2",
+      "sourceSha256": "b4dd7878617a6b9f2f3db70b398c446a2120f928dcddeaa6d30b1621b4e8d5ca",
+      "sourceDescription": "Perseus DL TEI · Xenophon. Opera omnia, Vol. 5. Marchant, Edgar Cardew, editor. Oxford: Clarendon Press, 1920. · CC BY-SA 4.0; original sin cotejo independiente"
+    },
+    {
       "workId": "xenophon-memorabilia",
       "author": "Jenofonte",
       "title": "Ἀπομνημονεύματα",
@@ -3219,6 +3733,42 @@
       "path": "data/classics-corpus/xenophon-memorabilia-grc.json",
       "reader": "classics-text-reader.html?work=xenophon-memorabilia&lang=grc",
       "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
+      "workId": "xenophon-oeconomicus",
+      "author": "Jenofonte",
+      "title": "Οἰκονομικός",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/xenophon-oeconomicus-grc.json",
+      "reader": "classics-text-reader.html?work=xenophon-oeconomicus&lang=grc",
+      "sourceUrn": "urn:cts:greekLit:tlg0032.tlg003.perseus-grc2",
+      "sourceSha256": "730a24656dd03bbfd3c5c5e3f28a813aeedee85c18ec89e732a5477e70ef2f59",
+      "sourceDescription": "Perseus DL TEI · Xenophon. Opera omnia, Vol. 2. Marchant, Edgar Cardew, editor. Oxford: Clarendon Press, 1921. · CC BY-SA 4.0; original sin cotejo independiente"
+    },
+    {
+      "workId": "xenophon-symposium",
+      "author": "Jenofonte",
+      "title": "Συμπόσιον",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/xenophon-symposium-grc.json",
+      "reader": "classics-text-reader.html?work=xenophon-symposium&lang=grc",
+      "sourceUrn": "urn:cts:greekLit:tlg0032.tlg004.perseus-grc2",
+      "sourceSha256": "2d2e0c55fb42793fdf1c9013909e0017fe746eaaa82f42d12c138c9fca7085da",
+      "sourceDescription": "Perseus DL TEI · Xenophon. Opera omnia, Vol. 2. Marchant, Edgar Cardew, editor. Oxford: Clarendon Press, 1921. · CC BY-SA 4.0; original sin cotejo independiente"
+    },
+    {
+      "workId": "xenophon-ways-means",
+      "author": "Jenofonte",
+      "title": "Πόροι ἢ περὶ προσόδων",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/xenophon-ways-means-grc.json",
+      "reader": "classics-text-reader.html?work=xenophon-ways-means&lang=grc",
+      "sourceUrn": "urn:cts:greekLit:tlg0032.tlg011.perseus-grc2",
+      "sourceSha256": "031797d4e1a8f49e17583f0b8828969c142ce5ed11b378e6484073c112a749a7",
+      "sourceDescription": "Perseus DL TEI · Xenophon. Opera omnia, Vol. 5. Marchant, Edgar Cardew, editor. Oxford: Clarendon Press, 1920. · CC BY-SA 4.0; original sin cotejo independiente"
     }
   ],
   "auxiliaryIndexes": [

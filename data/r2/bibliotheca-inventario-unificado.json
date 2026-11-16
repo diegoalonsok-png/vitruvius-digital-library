@@ -1,18 +1,19 @@
 {
   "schema": "vdl-federated-bibliotheca-inventory-v1",
-  "generated": "2026-11-16T18:17:13.970530+00:00",
+  "generated": "2026-11-16T20:43:22.238650+00:00",
   "method": "Master works and additional R2 works counted separately; edition relations can be many-to-many. Remote text URLs are declared, not live-verified. Unresolved editions are never merged automatically.",
   "counts": {
     "cataloguedWorks": 271,
+    "supplementaryWorks": 66,
     "additionalWorks": 10,
-    "totalDeclaredWorks": 281,
+    "totalDeclaredWorks": 347,
     "r2EditionRecords": 117,
     "r2LinkedEditionRecords": 107,
     "r2WorkEditionRelations": 115,
     "r2AdditionalEditionRecords": 10,
     "r2UnlinkedEditionRecords": 0,
     "worksWithR2Edition": 114,
-    "worksWithLocalIndexedText": 183,
+    "worksWithLocalIndexedText": 248,
     "worksWithDeclaredRemoteIndex": 44
   },
   "unlinkedR2EditionIds": [],
@@ -186,6 +187,927 @@
           "objectStatus": "declared-in-r2-catalogue-not-live-probed"
         }
       ]
+    }
+  ],
+  "supplementaryWorks": [
+    {
+      "id": "callimachus-hymni",
+      "author": "Calímaco",
+      "title": "Ὕμνοι · Himnos",
+      "catalogue": "github-supplementary",
+      "locallyIndexedText": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/callimachus-hymni-grc.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "theocritus-idyllia",
+      "author": "Teócrito",
+      "title": "Εἰδύλλια · Idilios",
+      "catalogue": "github-supplementary",
+      "locallyIndexedText": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/theocritus-idyllia-grc.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "sappho-fragmenta",
+      "author": "Safo",
+      "title": "Fragmenta · Fragmentos",
+      "catalogue": "github-supplementary",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "menander-dyskolos",
+      "author": "Menandro",
+      "title": "Δύσκολος · El misántropo",
+      "catalogue": "github-supplementary",
+      "locallyIndexedText": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/menander-dyskolos-grc.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "aristophanes-knights",
+      "author": "Aristófanes",
+      "title": "Ἱππῆς · Los caballeros",
+      "catalogue": "github-supplementary",
+      "locallyIndexedText": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/aristophanes-knights-grc.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "aristophanes-thesmophoriazusae",
+      "author": "Aristófanes",
+      "title": "Θεσμοφοριάζουσαι · Las tesmoforiantes",
+      "catalogue": "github-supplementary",
+      "locallyIndexedText": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/aristophanes-thesmophoriazusae-grc.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "aristophanes-ecclesiazusae",
+      "author": "Aristófanes",
+      "title": "Ἐκκλησιάζουσαι · Las asambleístas",
+      "catalogue": "github-supplementary",
+      "locallyIndexedText": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/aristophanes-ecclesiazusae-grc.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "aristophanes-plutus",
+      "author": "Aristófanes",
+      "title": "Πλοῦτος · Pluto",
+      "catalogue": "github-supplementary",
+      "locallyIndexedText": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/aristophanes-plutus-grc.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "euripides-cyclops",
+      "author": "Eurípides",
+      "title": "Κύκλωψ · El cíclope",
+      "catalogue": "github-supplementary",
+      "locallyIndexedText": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/euripides-cyclops-grc.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "euripides-ion",
+      "author": "Eurípides",
+      "title": "Ἴων · Ion",
+      "catalogue": "github-supplementary",
+      "locallyIndexedText": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/euripides-ion-grc.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "euripides-helena",
+      "author": "Eurípides",
+      "title": "Ἑλένη · Helena",
+      "catalogue": "github-supplementary",
+      "locallyIndexedText": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/euripides-helena-grc.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "euripides-heracleidae",
+      "author": "Eurípides",
+      "title": "Ἡρακλεῖδαι · Los Heráclidas",
+      "catalogue": "github-supplementary",
+      "locallyIndexedText": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/euripides-heracleidae-grc.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "euripides-andromache",
+      "author": "Eurípides",
+      "title": "Ἀνδρομάχη · Andrómaca",
+      "catalogue": "github-supplementary",
+      "locallyIndexedText": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/euripides-andromache-grc.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "euripides-suppliants",
+      "author": "Eurípides",
+      "title": "Ἱκέτιδες · Las suplicantes",
+      "catalogue": "github-supplementary",
+      "locallyIndexedText": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/euripides-suppliants-grc.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "euripides-heracles",
+      "author": "Eurípides",
+      "title": "Ἡρακλῆς · Heracles",
+      "catalogue": "github-supplementary",
+      "locallyIndexedText": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/euripides-heracles-grc.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "euripides-orestes",
+      "author": "Eurípides",
+      "title": "Ὀρέστης · Orestes",
+      "catalogue": "github-supplementary",
+      "locallyIndexedText": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/euripides-orestes-grc.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "plato-euthyphro",
+      "author": "Platón",
+      "title": "Εὐθύφρων · Eutifrón",
+      "catalogue": "github-supplementary",
+      "locallyIndexedText": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/plato-euthyphro-grc.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "plato-statesman",
+      "author": "Platón",
+      "title": "Πολιτικός · El político",
+      "catalogue": "github-supplementary",
+      "locallyIndexedText": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/plato-statesman-grc.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "plato-philebus",
+      "author": "Platón",
+      "title": "Φίληβος · Filebo",
+      "catalogue": "github-supplementary",
+      "locallyIndexedText": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/plato-philebus-grc.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "plato-charmides",
+      "author": "Platón",
+      "title": "Χαρμίδης · Cármides",
+      "catalogue": "github-supplementary",
+      "locallyIndexedText": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/plato-charmides-grc.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "plato-laches",
+      "author": "Platón",
+      "title": "Λάχης · Laques",
+      "catalogue": "github-supplementary",
+      "locallyIndexedText": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/plato-laches-grc.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "plato-lysis",
+      "author": "Platón",
+      "title": "Λύσις · Lisis",
+      "catalogue": "github-supplementary",
+      "locallyIndexedText": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/plato-lysis-grc.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "plato-euthydemus",
+      "author": "Platón",
+      "title": "Εὐθύδημος · Eutidemo",
+      "catalogue": "github-supplementary",
+      "locallyIndexedText": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/plato-euthydemus-grc.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "plato-hippias-minor",
+      "author": "Platón",
+      "title": "Ἱππίας ἐλάττων · Hipias menor",
+      "catalogue": "github-supplementary",
+      "locallyIndexedText": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/plato-hippias-minor-grc.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "plato-ion",
+      "author": "Platón",
+      "title": "Ἴων · Ion",
+      "catalogue": "github-supplementary",
+      "locallyIndexedText": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/plato-ion-grc.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "plato-menexenus",
+      "author": "Platón",
+      "title": "Μενέξενος · Menéxeno",
+      "catalogue": "github-supplementary",
+      "locallyIndexedText": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/plato-menexenus-grc.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "xenophon-oeconomicus",
+      "author": "Jenofonte",
+      "title": "Οἰκονομικός · Económico",
+      "catalogue": "github-supplementary",
+      "locallyIndexedText": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/xenophon-oeconomicus-grc.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "xenophon-symposium",
+      "author": "Jenofonte",
+      "title": "Συμπόσιον · Banquete",
+      "catalogue": "github-supplementary",
+      "locallyIndexedText": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/xenophon-symposium-grc.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "xenophon-apology",
+      "author": "Jenofonte",
+      "title": "Ἀπολογία Σωκράτους · Apología de Sócrates",
+      "catalogue": "github-supplementary",
+      "locallyIndexedText": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/xenophon-apology-grc.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "xenophon-hiero",
+      "author": "Jenofonte",
+      "title": "Ἱέρων · Hierón",
+      "catalogue": "github-supplementary",
+      "locallyIndexedText": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/xenophon-hiero-grc.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "xenophon-agesilaus",
+      "author": "Jenofonte",
+      "title": "Ἀγησίλαος · Agesilao",
+      "catalogue": "github-supplementary",
+      "locallyIndexedText": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/xenophon-agesilaus-grc.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "xenophon-lacedaemonian-constitution",
+      "author": "Jenofonte",
+      "title": "Λακεδαιμονίων Πολιτεία · Constitución de los lacedemonios",
+      "catalogue": "github-supplementary",
+      "locallyIndexedText": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/xenophon-lacedaemonian-constitution-grc.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "xenophon-ways-means",
+      "author": "Jenofonte",
+      "title": "Πόροι ἢ περὶ προσόδων · Sobre los ingresos públicos",
+      "catalogue": "github-supplementary",
+      "locallyIndexedText": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/xenophon-ways-means-grc.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "xenophon-hipparchicus",
+      "author": "Jenofonte",
+      "title": "Ἱππαρχικός · El jefe de caballería",
+      "catalogue": "github-supplementary",
+      "locallyIndexedText": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/xenophon-hipparchicus-grc.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "xenophon-horsemanship",
+      "author": "Jenofonte",
+      "title": "Περὶ ἱππικῆς · Sobre la equitación",
+      "catalogue": "github-supplementary",
+      "locallyIndexedText": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/xenophon-horsemanship-grc.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "xenophon-hunting",
+      "author": "Jenofonte",
+      "title": "Κυνηγετικός · Sobre la caza",
+      "catalogue": "github-supplementary",
+      "locallyIndexedText": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/xenophon-hunting-grc.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "lucian-phalaris",
+      "author": "Luciano de Samósata",
+      "title": "Φάλαρις · Fálaris",
+      "catalogue": "github-supplementary",
+      "locallyIndexedText": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/lucian-phalaris-grc.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "lucian-hippias",
+      "author": "Luciano de Samósata",
+      "title": "Ἱππίας ἢ Βαλανεῖον · Hipias o el baño",
+      "catalogue": "github-supplementary",
+      "locallyIndexedText": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/lucian-hippias-grc.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "lucian-bacchus",
+      "author": "Luciano de Samósata",
+      "title": "Προλαλιά. Διόνυσος · Dioniso",
+      "catalogue": "github-supplementary",
+      "locallyIndexedText": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/lucian-bacchus-grc.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "lucian-hercules",
+      "author": "Luciano de Samósata",
+      "title": "Προλαλιά. Ἡρακλῆς · Heracles",
+      "catalogue": "github-supplementary",
+      "locallyIndexedText": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/lucian-hercules-grc.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "lucian-electrum",
+      "author": "Luciano de Samósata",
+      "title": "Περὶ τοῦ Ἡλέκτρου ἢ Κύκνων · El ámbar o los cisnes",
+      "catalogue": "github-supplementary",
+      "locallyIndexedText": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/lucian-electrum-grc.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "lucian-encomium-fly",
+      "author": "Luciano de Samósata",
+      "title": "Μυίας Ἐγκώμιον · Elogio de la mosca",
+      "catalogue": "github-supplementary",
+      "locallyIndexedText": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/lucian-encomium-fly-grc.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "lucian-nigrinus",
+      "author": "Luciano de Samósata",
+      "title": "Νιγρίνου Φιλοσοφία · Nigrino",
+      "catalogue": "github-supplementary",
+      "locallyIndexedText": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/lucian-nigrinus-grc.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "lucian-demonax",
+      "author": "Luciano de Samósata",
+      "title": "Δημώνακτος Βίος · Vida de Demonacte",
+      "catalogue": "github-supplementary",
+      "locallyIndexedText": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/lucian-demonax-grc.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "lucian-de-domo",
+      "author": "Luciano de Samósata",
+      "title": "Περὶ τοῦ Οἴκου · Sobre la sala",
+      "catalogue": "github-supplementary",
+      "locallyIndexedText": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/lucian-de-domo-grc.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "lucian-encomium-fatherland",
+      "author": "Luciano de Samósata",
+      "title": "Πατρίδος Ἐγκώμιον · Elogio de la patria",
+      "catalogue": "github-supplementary",
+      "locallyIndexedText": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/lucian-encomium-fatherland-grc.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "lysias-eratosthenes",
+      "author": "Lisias",
+      "title": "ὑπὲρ τοῦ Ἐρατοσθένους φόνου ἀπολογία · Sobre el asesinato de Eratóstenes",
+      "catalogue": "github-supplementary",
+      "locallyIndexedText": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/lysias-eratosthenes-grc.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "lysias-funeral-oration",
+      "author": "Lisias",
+      "title": "Ἐπιτάφιος τοῖς Κορινθίων βοηθοῖς · Discurso fúnebre",
+      "catalogue": "github-supplementary",
+      "locallyIndexedText": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/lysias-funeral-oration-grc.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "lysias-against-simon",
+      "author": "Lisias",
+      "title": "πρὸς Σίμωνα ἀπολογία · Contra Simón",
+      "catalogue": "github-supplementary",
+      "locallyIndexedText": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/lysias-against-simon-grc.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "lysias-wound",
+      "author": "Lisias",
+      "title": "περὶ τραύματος ἐκ προνοίας · Sobre una herida premeditada",
+      "catalogue": "github-supplementary",
+      "locallyIndexedText": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/lysias-wound-grc.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "lysias-for-callias",
+      "author": "Lisias",
+      "title": "ὑπὲρ Καλλίου ἱεροσυλίας ἀπολογία · En defensa de Calias",
+      "catalogue": "github-supplementary",
+      "locallyIndexedText": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/lysias-for-callias-grc.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "lysias-against-andocides",
+      "author": "Lisias",
+      "title": "κατ᾽ Ἀνδοκίδου ἀσεβείας · Contra Andócides",
+      "catalogue": "github-supplementary",
+      "locallyIndexedText": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/lysias-against-andocides-grc.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "lysias-olive-stump",
+      "author": "Lisias",
+      "title": "Ἀρεοπαγιτικὸς περὶ τοῦ σηκοῦ ἀπολογία · Sobre el olivo sagrado",
+      "catalogue": "github-supplementary",
+      "locallyIndexedText": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/lysias-olive-stump-grc.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "lysias-calumny",
+      "author": "Lisias",
+      "title": "κατηγορία πρὸς τοὺς συνουσιαστὰς κακολογιῶν · Acusación por difamación",
+      "catalogue": "github-supplementary",
+      "locallyIndexedText": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/lysias-calumny-grc.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "lysias-soldier",
+      "author": "Lisias",
+      "title": "ὑπὲρ τοῦ στρατιωτοῦ · En defensa del soldado",
+      "catalogue": "github-supplementary",
+      "locallyIndexedText": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/lysias-soldier-grc.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "lysias-theomnestus-1",
+      "author": "Lisias",
+      "title": "κατὰ θεομνήστου, Α · Contra Teomnesto I",
+      "catalogue": "github-supplementary",
+      "locallyIndexedText": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/lysias-theomnestus-1-grc.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "isocrates-euthynus",
+      "author": "Isócrates",
+      "title": "Πρὸς Εὐθύνους ἀμάρτυρος · Contra Eutino",
+      "catalogue": "github-supplementary",
+      "locallyIndexedText": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/isocrates-euthynus-grc.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "isocrates-callimachus",
+      "author": "Isócrates",
+      "title": "Παραγραφή πρὸς Καλλίμαχον · Contra Calímaco",
+      "catalogue": "github-supplementary",
+      "locallyIndexedText": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/isocrates-callimachus-grc.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "isocrates-lochites",
+      "author": "Isócrates",
+      "title": "Κατὰ Λοχίτου · Contra Loquites",
+      "catalogue": "github-supplementary",
+      "locallyIndexedText": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/isocrates-lochites-grc.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "isocrates-team-horses",
+      "author": "Isócrates",
+      "title": "Περὶ τοῦ ζεύγους · Sobre el par de caballos",
+      "catalogue": "github-supplementary",
+      "locallyIndexedText": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/isocrates-team-horses-grc.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "isocrates-trapeziticus",
+      "author": "Isócrates",
+      "title": "Τραπεζιτικός · Discurso del banquero",
+      "catalogue": "github-supplementary",
+      "locallyIndexedText": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/isocrates-trapeziticus-grc.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "isocrates-aegineticus",
+      "author": "Isócrates",
+      "title": "Αἰγητικὸς · Discurso de Egina",
+      "catalogue": "github-supplementary",
+      "locallyIndexedText": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/isocrates-aegineticus-grc.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "isocrates-sophists",
+      "author": "Isócrates",
+      "title": "Κατὰ τῶν σοφιστῶν · Contra los sofistas",
+      "catalogue": "github-supplementary",
+      "locallyIndexedText": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/isocrates-sophists-grc.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "isocrates-helen",
+      "author": "Isócrates",
+      "title": "Ἑλένη · Elogio de Helena",
+      "catalogue": "github-supplementary",
+      "locallyIndexedText": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/isocrates-helen-grc.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "isocrates-busiris",
+      "author": "Isócrates",
+      "title": "Βούσιρις · Busiris",
+      "catalogue": "github-supplementary",
+      "locallyIndexedText": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/isocrates-busiris-grc.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "isocrates-plataicus",
+      "author": "Isócrates",
+      "title": "Πλαταικός · Discurso plateense",
+      "catalogue": "github-supplementary",
+      "locallyIndexedText": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/isocrates-plataicus-grc.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
     }
   ],
   "works": [

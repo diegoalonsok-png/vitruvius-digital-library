@@ -1,0 +1,1407 @@
+{
+  "workId": "plato-hippias-minor",
+  "language": "grc",
+  "title": "Ἱππίας ἐλάττων",
+  "sourceType": "edited-greek-tei",
+  "editorialStatus": "Transcripción TEI de una edición histórica: no se realizó cotejo paleográfico propio ni evaluación exhaustiva de variantes.",
+  "sourceUrn": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2",
+  "source": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/dacb04909e43dc47738828d33cc3d2b0635bc54c/data/tlg0059/tlg026/tlg0059.tlg026.perseus-grc2.xml",
+  "sourceCts": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/dacb04909e43dc47738828d33cc3d2b0635bc54c/data/tlg0059/tlg026/__cts__.xml",
+  "sourceRevision": "dacb04909e43dc47738828d33cc3d2b0635bc54c",
+  "sourceSha256": "faf42c199c8e5e141689cfed2b301bad000eadf5d1e9ce173d63d4f28044ded4",
+  "attribution": "Perseus Digital Library · Tufts University",
+  "editionReference": "Platonis Opera, Tomus III: Tetralogia V-VII. Burnet, John, editor. Oxford: Clarendon Press, 1903.",
+  "editionGreekTitle": "Ἱππίας ἐλάττων",
+  "editors": [
+    "John Burnet"
+  ],
+  "license": "CC BY-SA 4.0",
+  "passages": [
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:363.1",
+      "text": "ΕΥ. σὺ δὲ δὴ τί σιγᾷς, ὦ Σώκρατες, Ἱππίου τοσαῦτα ἐπιδειξαμένου, καὶ οὐχὶ ἢ συνεπαινεῖς τι τῶν εἰρημένων ἢ καὶ ἐλέγχεις, εἴ τί σοι μὴ καλῶς δοκεῖ εἰρηκέναι; ἄλλως τε ἐπειδὴ καὶ αὐτοὶ λελείμμεθα, οἳ μάλιστʼ ἂν ἀντιποιησαίμεθα μετεῖναι ἡμῖν τῆς ἐν φιλοσοφίᾳ διατριβῆς.",
+      "sourceLocus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:363",
+      "localParagraph": 1
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:363.2",
+      "text": "ΣΩ. καὶ μήν, ὦ Εὔδικε, ἔστι γε ἃ ἡδέως ἂν πυθοίμην Ἱππίου ὧν νυνδὴ ἔλεγεν περὶ Ὁμήρου. καὶ γὰρ τοῦ σοῦ πατρὸς Ἀπημάντου ἤκουον ὅτι ἡ Ἰλιὰς κάλλιον εἴη ποίημα τῷ Ὁμήρῳ ἢ ἡ Ὀδύσσεια, τοσούτῳ δὲ κάλλιον, ὅσῳ ἀμείνων Ἀχιλλεὺς Ὀδυσσέως εἴη· ἑκάτερον γὰρ τούτων τὸ μὲν εἰς Ὀδυσσέα ἔφη πεποιῆσθαι, τὸ δʼ εἰς Ἀχιλλέα. περὶ ἐκείνου οὖν ἡδέως ἄν, εἰ βουλομένῳ ἐστὶν Ἱππίᾳ, ἀναπυθοίμην ὅπως αὐτῷ δοκεῖ περὶ τοῖν ἀνδροῖν τούτοιν, πότερον ἀμείνω φησὶν εἶναι, ἐπειδὴ καὶ ἄλλα πολλὰ καὶ παντοδαπὰ ἡμῖν ἐπιδέδεικται καὶ περὶ ποιητῶν τε ἄλλων καὶ περὶ Ὁμήρου.",
+      "sourceLocus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:363",
+      "localParagraph": 2
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:363.3",
+      "text": "ΕΥ. ἀλλὰ δῆλον ὅτι οὐ φθονήσει Ἱππίας, ἐάν τι αὐτὸν ἐρωτᾷς, ἀποκρίνεσθαι. ἦ γάρ, ὦ Ἱππία, ἐάν τι ἐρωτᾷ σε Σωκράτης, ἀποκρινῇ; ἢ πῶς ποιήσεις;",
+      "sourceLocus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:363",
+      "localParagraph": 3
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:363.4",
+      "text": "ΙΠ. καὶ γὰρ ἂν δεινὰ ποιοίην, ὦ Εὔδικε, εἰ Ὀλυμπίαζε μὲν εἰς τὴν τῶν Ἑλλήνων πανήγυριν, ὅταν τὰ Ὀλύμπια ᾖ, ἀεὶ ἐπανιὼν οἴκοθεν ἐξ Ἤλιδος εἰς τὸ ἱερὸν παρέχω ἐμαυτὸν καὶ λέγοντα ὅτι ἄν τις βούληται ὧν ἄν μοι εἰς ἐπίδειξιν παρεσκευασμένον ᾖ, καὶ ἀποκρινόμενον τῷ βουλομένῳ ὅτι ἄν τις ἐρωτᾷ, νῦν δὲ τὴν Σωκράτους ἐρώτησιν φύγοιμι.",
+      "sourceLocus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:363",
+      "localParagraph": 4
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:364.1",
+      "text": "ΣΩ. μακάριόν γε, ὦ Ἱππία, πάθος πέπονθας, εἰ ἑκάστης Ὀλυμπιάδος οὕτως εὔελπις ὢν περὶ τῆς ψυχῆς εἰς σοφίαν ἀφικνῇ εἰς τὸ ἱερόν· καὶ θαυμάσαιμʼ ἂν εἴ τις τῶν περὶ τὸ σῶμα ἀθλητῶν οὕτως ἀφόβως τε καὶ πιστευτικῶς ἔχων τῷ σώματι ἔρχεται αὐτόσε ἀγωνιούμενος, ὥσπερ σὺ φῂς τῇ διανοίᾳ.",
+      "sourceLocus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:364",
+      "localParagraph": 1
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:364.2",
+      "text": "ΙΠ. εἰκότως, ὦ Σώκρατες, ἐγὼ τοῦτο πέπονθα· ἐξ οὗ γὰρ ἦργμαι Ὀλυμπίασιν ἀγωνίζεσθαι, οὐδενὶ πώποτε κρείττονι εἰς οὐδὲν ἐμαυτοῦ ἐνέτυχον.",
+      "sourceLocus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:364",
+      "localParagraph": 2
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:364.3",
+      "text": "ΣΩ. καλόν γε λέγεις, ὦ Ἱππία, καὶ τῇ Ἠλείων πόλει τῆς σοφίας ἀνάθημα τὴν δόξαν εἶναι τὴν σὴν καὶ τοῖς γονεῦσι τοῖς σοῖς. ἀτὰρ τί δὴ λέγεις ἡμῖν περὶ τοῦ Ἀχιλλέως τε καὶ τοῦ Ὀδυσσέως; πότερον ἀμείνω καὶ κατὰ τί φῂς εἶναι; ἡνίκα μὲν γὰρ πολλοὶ ἔνδον ἦμεν καὶ σὺ τὴν ἐπίδειξιν ἐποιοῦ, ἀπελείφθην σου τῶν λεγομένων—ὤκνουν γὰρ ἐπανερέσθαι, διότι ὄχλος τε πολὺς ἔνδον ἦν, καὶ μή σοι ἐμποδὼν εἴην ἐρωτῶν τῇ ἐπιδείξει—νυνὶ δὲ ἐπειδὴ ἐλάττους τέ ἐσμεν καὶ Εὔδικος ὅδε κελεύει ἐρέσθαι, εἰπέ τε καὶ δίδαξον ἡμᾶς σαφῶς, τί ἔλεγες περὶ τούτοιν τοῖν ἀνδροῖν; πῶς διέκρινες αὐτούς;",
+      "sourceLocus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:364",
+      "localParagraph": 3
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:364.4",
+      "text": "ΙΠ. ἀλλʼ ἐγώ σοι, ὦ Σώκρατες, ἐθέλω ἔτι σαφέστερον ἢ τότε διελθεῖν ἃ λέγω καὶ περὶ τούτων καὶ ἄλλων. φημὶ γὰρ Ὅμηρον πεποιηκέναι ἄριστον μὲν ἄνδρα Ἀχιλλέα τῶν εἰς Τροίαν ἀφικομένων, σοφώτατον δὲ Νέστορα, πολυτροπώτατον δὲ Ὀδυσσέα.",
+      "sourceLocus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:364",
+      "localParagraph": 4
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:364.5",
+      "text": "ΣΩ. βαβαῖ, ὦ Ἱππία· ἆρʼ ἄν τί μοι χαρίσαιο τοιόνδε, μή μου καταγελᾶν, ἐὰν μόγις μανθάνω τὰ λεγόμενα καὶ πολλάκις ἀνερωτῶ; ἀλλά μοι πειρῶ πρᾴως τε καὶ εὐκόλως ἀποκρίνεσθαι.",
+      "sourceLocus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:364",
+      "localParagraph": 5
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:364.6",
+      "text": "ΙΠ. αἰσχρὸν γὰρ ἂν εἴη, ὦ Σώκρατες, εἰ ἄλλους μὲν αὐτὰ ταῦτα παιδεύω καὶ ἀξιῶ διὰ ταῦτα χρήματα λαμβάνειν, αὐτὸς δὲ ὑπὸ σοῦ ἐρωτώμενος μὴ συγγνώμην τʼ ἔχοιμι καὶ πρᾴως ἀποκρινοίμην.",
+      "sourceLocus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:364",
+      "localParagraph": 6
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:364.7",
+      "text": "ΣΩ. πάνυ καλῶς λέγεις. ἐγὼ γάρ τοι, ἡνίκα μὲν ἄριστον τὸν Ἀχιλλέα ἔφησθα πεποιῆσθαι, ἐδόκουν σου μανθάνειν ὅτι ἔλεγες, καὶ ἡνίκα τὸν Νέστορα σοφώτατον· ἐπειδὴ δὲ τὸν Ὀδυσσέα εἶπες ὅτι πεποιηκὼς εἴη ὁ ποιητὴς πολυτροπώτατον, τοῦτο δʼ, ὥς γε πρὸς σὲ τἀληθῆ εἰρῆσθαι, παντάπασιν οὐκ οἶδʼ ὅτι λέγεις. καί μοι εἰπέ, ἄν τι ἐνθένδε μᾶλλον μάθω· ὁ Ἀχιλλεὺς οὐ πολύτροπος τῷ Ὁμήρῳ πεποίηται;",
+      "sourceLocus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:364",
+      "localParagraph": 7
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:365.1",
+      "text": "ΙΠ. ἥκιστά γε, ὦ Σώκρατες, ἀλλʼ ἁπλούστατος καὶ ἀληθέστατος, ἐπεὶ καὶ ἐν Λιταῖς, ἡνίκα πρὸς ἀλλήλους ποιεῖ αὐτοὺς διαλεγομένους, λέγει αὐτῷ ὁ Ἀχιλλεὺς πρὸς τὸν Ὀδυσσέα— διογενὲς Λαερτιάδη, πολυμήχανʼ Ὀδυσσεῦ, χρὴ μὲν δὴ τὸν μῦθον ἀπηλεγέως ἀποειπεῖν, ὥσπερ δὴ κρανέω τε καὶ ὡς τελέεσθαι ὀίω·ἐχθρὸς γάρ μοι κεῖνος ὁμῶς Ἀΐδαο πύλῃσιν, ὅς χʼ ἕτερον μὲν κεύθῃ ἐνὶ φρεσίν, ἄλλο δὲ εἴπῃ. αὐτὰρ ἐγὼν ἐρέω, ὡς καὶ τετελεσμένον ἔσται. ἐν τούτοις δηλοῖ τοῖς ἔπεσιν τὸν πρότον ἑκατέρου τοῦ ἀνδρός, ὡς ὁ μὲν Ἀχιλλεὺς εἴη ἀληθής τε καὶ ἁπλοῦς, ὁ δὲ Ὀδυσσεὺς πολύτροπός τε καὶ ψευδής· ποιεῖ γὰρ τὸν Ἀχιλλέα εἰς τὸν Ὀδυσσέα λέγοντα ταῦτα τὰ ἔπη.",
+      "sourceLocus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:365",
+      "localParagraph": 1
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:365.2",
+      "text": "ΣΩ. νῦν ἤδη, ὦ Ἱππία, κινδυνεύω μανθάνειν ὃ λέγεις· τὸν πολύτροπον ψευδῆ λέγεις, ὥς γε φαίνεται.",
+      "sourceLocus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:365",
+      "localParagraph": 2
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:365.3",
+      "text": "ΙΠ. μάλιστα, ὦ Σώκρατες· τοιοῦτον γὰρ πεποίηκεν τὸν Ὀδυσσέα Ὅμηρος πολλαχοῦ καὶ ἐν Ἰλιάδι καὶ ἐν Ὀδυσσείᾳ.",
+      "sourceLocus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:365",
+      "localParagraph": 3
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:365.4",
+      "text": "ΣΩ. ἐδόκει ἄρα, ὡς ἔοικεν, Ὁμήρῳ ἕτερος μὲν εἶναι ἀνὴρ ἀληθής, ἕτερος δὲ ψευδής, ἀλλʼ οὐχ ὁ αὐτός.",
+      "sourceLocus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:365",
+      "localParagraph": 4
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:365.5",
+      "text": "ΙΠ. πῶς γὰρ οὐ μέλλει, ὦ Σώκρατες;",
+      "sourceLocus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:365",
+      "localParagraph": 5
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:365.6",
+      "text": "ΣΩ. ἦ καὶ σοὶ δοκεῖ αὐτῷ, ὦ Ἱππία;",
+      "sourceLocus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:365",
+      "localParagraph": 6
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:365.7",
+      "text": "ΙΠ. πάντων μάλιστα· καὶ γὰρ ἂν δεινὸν εἴη εἰ μή.",
+      "sourceLocus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:365",
+      "localParagraph": 7
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:365.8",
+      "text": "ΣΩ. τὸν μὲν Ὅμηρον τοίνυν ἐάσωμεν, ἐπειδὴ καὶ ἀδύνατον ἐπανερέσθαι τί ποτε νοῶν ταῦτα ἐποίησεν τὰ ἔπη· σὺ δʼ ἐπειδὴ φαίνῃ ἀναδεχόμενος τὴν αἰτίαν, καὶ σοὶ συνδοκεῖ ταῦτα ἅπερ φῂς Ὅμηρον λέγειν, ἀπόκριναι κοινῇ ὑπὲρ Ὁμήρου τε καὶ σαυτοῦ.",
+      "sourceLocus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:365",
+      "localParagraph": 8
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:365.9",
+      "text": "ΙΠ. ἔσται ταῦτα· ἀλλʼ ἐρώτα ἔμβραχυ ὅτι βούλει.",
+      "sourceLocus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:365",
+      "localParagraph": 9
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:365.10",
+      "text": "ΣΩ. τοὺς ψευδεῖς λέγεις οἷον ἀδυνάτους τι ποιεῖν, ὥσπερ τοὺς κάμνοντας, ἢ δυνατούς τι ποιεῖν;",
+      "sourceLocus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:365",
+      "localParagraph": 10
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:365.11",
+      "text": "ΙΠ. δυνατοὺς ἔγωγε καὶ μάλα σφόδρα ἄλλα τε πολλὰ καὶ ἐξαπατᾶν ἀνθρώπους.",
+      "sourceLocus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:365",
+      "localParagraph": 11
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:365.12",
+      "text": "ΣΩ. δυνατοὶ μὲν δή, ὡς ἔοικεν, εἰσὶ κατὰ τὸν σὸν λόγον καὶ πολύτροποι· ἦ γάρ;",
+      "sourceLocus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:365",
+      "localParagraph": 12
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:365.13",
+      "text": "ΙΠ. ναί.",
+      "sourceLocus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:365",
+      "localParagraph": 13
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:365.14",
+      "text": "ΣΩ. πολύτροποι δʼ εἰσὶ καὶ ἀπατεῶνες ὑπὸ ἠλιθιότητος καὶ ἀφροσύνης, ἢ ὑπὸ πανουργίας καὶ φρονήσεώς τινος;",
+      "sourceLocus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:365",
+      "localParagraph": 14
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:365.15",
+      "text": "ΙΠ. ὑπὸ πανουργίας πάντων μάλιστα καὶ φρονήσεως.",
+      "sourceLocus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:365",
+      "localParagraph": 15
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:365.16",
+      "text": "ΣΩ. φρόνιμοι μὲν ἄρα εἰσίν, ὡς ἔοικεν.",
+      "sourceLocus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:365",
+      "localParagraph": 16
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:365.17",
+      "text": "ΙΠ. ναὶ μὰ Δία, λίαν γε.",
+      "sourceLocus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:365",
+      "localParagraph": 17
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:365.18",
+      "text": "ΣΩ. φρόνιμοι δὲ ὄντες οὐκ ἐπίστανται ὅτι ποιοῦσιν, ἢ ἐπίστανται;",
+      "sourceLocus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:365",
+      "localParagraph": 18
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:365.19",
+      "text": "ΙΠ. καὶ μάλα σφόδρα ἐπίστανται· διὰ ταῦτα καὶ κακουργοῦσιν.",
+      "sourceLocus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:365",
+      "localParagraph": 19
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:365.20",
+      "text": "ΣΩ. ἐπιστάμενοι δὲ ταῦτα ἃ ἐπίστανται πότερον ἀμαθεῖς εἰσιν ἢ σοφοί;",
+      "sourceLocus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:365",
+      "localParagraph": 20
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:366.1",
+      "text": "ΙΠ. σοφοὶ μὲν οὖν αὐτά γε ταῦτα, ἐξαπατᾶν.",
+      "sourceLocus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:366",
+      "localParagraph": 1
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:366.2",
+      "text": "ΣΩ. ἔχε δή· ἀναμνησθῶμεν τί ἐστιν ὃ λέγεις. τοὺς ψευδεῖς φῂς εἶναι δυνατοὺς καὶ φρονίμους καὶ ἐπιστήμονας καὶ σοφοὺς εἰς ἅπερ ψευδεῖς;",
+      "sourceLocus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:366",
+      "localParagraph": 2
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:366.3",
+      "text": "ΙΠ. φημὶ γὰρ οὖν.",
+      "sourceLocus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:366",
+      "localParagraph": 3
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:366.4",
+      "text": "ΣΩ. ἄλλους δὲ τοὺς ἀληθεῖς τε καὶ ψευδεῖς, καὶ ἐναντιωτάτους ἀλλήλοις;",
+      "sourceLocus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:366",
+      "localParagraph": 4
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:366.5",
+      "text": "ΙΠ. λέγω ταῦτα.",
+      "sourceLocus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:366",
+      "localParagraph": 5
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:366.6",
+      "text": "ΣΩ. φέρε δή· τῶν μὲν δυνατῶν τινες καὶ σοφῶν, ὡς ἔοικεν, εἰσὶν οἱ ψευδεῖς κατὰ τὸν σὸν λόγον.",
+      "sourceLocus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:366",
+      "localParagraph": 6
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:366.7",
+      "text": "ΙΠ. μάλιστά γε.",
+      "sourceLocus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:366",
+      "localParagraph": 7
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:366.8",
+      "text": "ΣΩ. ὅταν δὲ λέγῃς δυνατοὺς καὶ σοφοὺς εἶναι τοὺς ψευδεῖς εἰς αὐτὰ ταῦτα, πότερον λέγεις δυνατοὺς εἶναι ψεύδεσθαι ἐὰν βούλωνται, ἢ ἀδυνάτους εἰς ταῦτα ἅπερ ψεύδονται;",
+      "sourceLocus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:366",
+      "localParagraph": 8
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:366.9",
+      "text": "ΙΠ. δυνατοὺς ἔγωγε.",
+      "sourceLocus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:366",
+      "localParagraph": 9
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:366.10",
+      "text": "ΣΩ. ὡς ἐν κεφαλαίῳ ἄρα εἰρῆσθαι, οἱ ψευδεῖς εἰσιν οἱ σοφοί τε καὶ δυνατοὶ ψεύδεσθαι.",
+      "sourceLocus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:366",
+      "localParagraph": 10
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:366.11",
+      "text": "ΙΠ. ναί.",
+      "sourceLocus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:366",
+      "localParagraph": 11
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:366.12",
+      "text": "ΣΩ. ἀδύνατος ἄρα ψεύδεσθαι ἀνὴρ καὶ ἀμαθὴς οὐκ ἂν εἴη ψευδής.",
+      "sourceLocus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:366",
+      "localParagraph": 12
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:366.13",
+      "text": "ΙΠ. ἔχει οὕτως.",
+      "sourceLocus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:366",
+      "localParagraph": 13
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:366.14",
+      "text": "ΣΩ. δυνατὸς δέ γʼ ἐστὶν ἕκαστος ἄρα, ὃς ἂν ποιῇ τότε ὃ ἂν βούληται, ὅταν βούληται· οὐχ ὑπὸ νόσου λέγω ἐξειργόμενον οὐδὲ τῶν τοιούτων, ἀλλὰ ὥσπερ σὺ δυνατὸς εἶ γράψαι τοὐμὸν ὄνομα ὅταν βούλῃ, οὕτω λέγω. ἢ οὐχ, ὃς ἂν οὕτως ἔχῃ, καλεῖς σὺ δυνατόν;",
+      "sourceLocus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:366",
+      "localParagraph": 14
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:366.15",
+      "text": "ΙΠ. ναί.",
+      "sourceLocus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:366",
+      "localParagraph": 15
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:366.16",
+      "text": "ΣΩ. λέγε δή μοι, ὦ Ἱππία, οὐ σὺ μέντοι ἔμπειρος εἶ λογισμῶν καὶ λογιστικῆς;",
+      "sourceLocus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:366",
+      "localParagraph": 16
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:366.17",
+      "text": "ΙΠ. πάντων μάλιστα, ὦ Σώκρατες.",
+      "sourceLocus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:366",
+      "localParagraph": 17
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:366.18",
+      "text": "ΣΩ. οὐκοῦν εἰ καί τίς σε ἔροιτο τὰ τρὶς ἑπτακόσια ὁπόσος ἐστὶν ἀριθμός, εἰ βούλοιο, πάντων τάχιστα καὶ μάλιστʼ ἂν εἴποις τἀληθῆ περὶ τούτου;",
+      "sourceLocus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:366",
+      "localParagraph": 18
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:366.19",
+      "text": "ΙΠ. πάνυ γε.",
+      "sourceLocus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:366",
+      "localParagraph": 19
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:366.20",
+      "text": "ΣΩ. ἆρα ὅτι δυνατώτατός τε εἶ καὶ σοφώτατος κατὰ ταῦτα;",
+      "sourceLocus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:366",
+      "localParagraph": 20
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:366.21",
+      "text": "ΙΠ. ναί.",
+      "sourceLocus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:366",
+      "localParagraph": 21
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:366.22",
+      "text": "ΣΩ. πότερον οὖν σοφώτατός τε εἶ καὶ δυνατώτατος μόνον, ἢ καὶ ἄριστος ταῦτα ἅπερ δυνατώτατός τε καὶ σοφώτατος, τὰ λογιστικά;",
+      "sourceLocus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:366",
+      "localParagraph": 22
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:366.23",
+      "text": "ΙΠ. καὶ ἄριστος δήπου, ὦ Σώκρατες.",
+      "sourceLocus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:366",
+      "localParagraph": 23
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:366.24",
+      "text": "ΣΩ. τὰ μὲν δὴ ἀληθῆ σὺ ἂν δυνατώτατα εἴποις περὶ τούτων· ἦ γάρ;",
+      "sourceLocus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:366",
+      "localParagraph": 24
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:366.25",
+      "text": "ΙΠ. οἶμαι ἔγωγε.",
+      "sourceLocus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:366",
+      "localParagraph": 25
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:367.1",
+      "text": "ΣΩ. τί δὲ τὰ ψευδῆ περὶ τῶν αὐτῶν τούτων; καί μοι, ὥσπερ τὰ πρότερα, γενναίως καὶ μεγαλοπρεπῶς ἀπόκριναι, ὦ Ἱππία· εἴ τίς σε ἔροιτο τὰ τρὶς ἑπτακόσια πόσα ἐστί, πότερον σὺ ἂν μάλιστα ψεύδοιο καὶ ἀεὶ κατὰ ταὐτὰ ψευδῆ λέγοις περὶ τούτων, βουλόμενος ψεύδεσθαι καὶ μηδέποτε ἀληθῆ ἀποκρίνεσθαι, ἢ ὁ ἀμαθὴς εἰς λογισμοὺς δύναιτʼ ἂν σοῦ μᾶλλον ψεύδεσθαι βουλομένου; ἢ ὁ μὲν ἀμαθὴς πολλάκις ἂν βουλόμενος ψευδῆ λέγειν τἀληθῆ ἂν εἴποι ἄκων, εἰ τύχοι, διὰ τὸ μὴ εἰδέναι, σὺ δὲ ὁ σοφός, εἴπερ βούλοιο ψεύδεσθαι, ἀεὶ ἂν κατὰ τὰ αὐτὰ ψεύδοιο;",
+      "sourceLocus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:367",
+      "localParagraph": 1
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:367.2",
+      "text": "ΙΠ. ναί, οὕτως ἔχει ὡς σὺ λέγεις.",
+      "sourceLocus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:367",
+      "localParagraph": 2
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:367.3",
+      "text": "ΣΩ. ὁ ψευδὴς οὖν πότερον περὶ μὲν τἆλλα ψευδής ἐστιν, οὐ μέντοι περὶ ἀριθμόν, οὐδὲ ἀριθμῶν ἂν ψεύσαιτο;",
+      "sourceLocus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:367",
+      "localParagraph": 3
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:367.4",
+      "text": "ΙΠ. καὶ ναὶ μὰ Δία περὶ ἀριθμόν.",
+      "sourceLocus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:367",
+      "localParagraph": 4
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:367.5",
+      "text": "ΣΩ. θῶμεν ἄρα καὶ τοῦτο, ὦ Ἱππία, περὶ λογισμόν τε καὶ ἀριθμὸν εἶναί τινα ἄνθρωπον ψευδῆ;",
+      "sourceLocus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:367",
+      "localParagraph": 5
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:367.6",
+      "text": "ΙΠ. ναί.",
+      "sourceLocus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:367",
+      "localParagraph": 6
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:367.7",
+      "text": "ΣΩ. τίς οὖν ἂν εἴη οὗτος; οὐχὶ δεῖ ὑπάρχειν αὐτῷ, εἴπερ μέλλει ψευδὴς ἔσεσθαι, ὡς σὺ ἄρτι ὡμολόγεις, δυνατὸν εἶναι ψεύδεσθαι; ὁ γὰρ ἀδύνατος ψεύδεσθαι, εἰ μέμνησαι, ὑπὸ σοῦ ἐλέγετο ὅτι οὐκ ἄν ποτε ψευδὴς γένοιτο.",
+      "sourceLocus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:367",
+      "localParagraph": 7
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:367.8",
+      "text": "ΙΠ. ἀλλὰ μέμνημαι καὶ ἐλέχθη οὕτως.",
+      "sourceLocus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:367",
+      "localParagraph": 8
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:367.9",
+      "text": "ΣΩ. οὐκοῦν ἄρτι ἐφάνης σὺ δυνατώτατος ὢν ψεύδεσθαι περὶ λογισμῶν;",
+      "sourceLocus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:367",
+      "localParagraph": 9
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:367.10",
+      "text": "ΙΠ. ναί, ἐλέχθη γέ τοι καὶ τοῦτο.",
+      "sourceLocus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:367",
+      "localParagraph": 10
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:367.11",
+      "text": "ΣΩ. ἆρʼ οὖν καὶ δυνατώτατος εἶ ἀληθῆ λέγειν περὶ λογισμῶν;",
+      "sourceLocus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:367",
+      "localParagraph": 11
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:367.12",
+      "text": "ΙΠ. πάνυ γε.",
+      "sourceLocus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:367",
+      "localParagraph": 12
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:367.13",
+      "text": "ΣΩ. οὐκοῦν ὁ αὐτὸς ψευδῆ καὶ ἀληθῆ λέγειν περὶ λογισμῶν δυνατώτατος· οὗτος δʼ ἐστὶν ὁ ἀγαθὸς περὶ τούτων, ὁ λογιστικός.",
+      "sourceLocus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:367",
+      "localParagraph": 13
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:367.14",
+      "text": "ΙΠ. ναί.",
+      "sourceLocus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:367",
+      "localParagraph": 14
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:367.15",
+      "text": "ΣΩ. τίς οὖν ψευδὴς περὶ λογισμὸν γίγνεται, ὦ Ἱππία, ἄλλος ἢ ὁ ἀγαθός; ὁ αὐτὸς γὰρ καὶ δυνατός· οὗτος δὲ καὶ ἀληθής.",
+      "sourceLocus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:367",
+      "localParagraph": 15
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:367.16",
+      "text": "ΙΠ. φαίνεται.",
+      "sourceLocus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:367",
+      "localParagraph": 16
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:367.17",
+      "text": "ΣΩ. ὁρᾷς οὖν ὅτι ὁ αὐτὸς ψευδής τε καὶ ἀληθὴς περὶ τούτων, καὶ οὐδὲν ἀμείνων ὁ ἀληθὴς τοῦ ψευδοῦς; ὁ αὐτὸς γὰρ δήπου ἐστὶ καὶ οὐκ ἐναντιώτατα ἔχει, ὥσπερ σὺ ᾤου ἄρτι.",
+      "sourceLocus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:367",
+      "localParagraph": 17
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:367.18",
+      "text": "ΙΠ. οὐ φαίνεται ἐνταῦθά γε.",
+      "sourceLocus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:367",
+      "localParagraph": 18
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:367.19",
+      "text": "ΣΩ. βούλει οὖν σκεψώμεθα καὶ ἄλλοθι;",
+      "sourceLocus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:367",
+      "localParagraph": 19
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:367.20",
+      "text": "ΙΠ. εἰ γε σὺ βούλει.",
+      "sourceLocus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:367",
+      "localParagraph": 20
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:367.21",
+      "text": "ΣΩ. οὐκοῦν καὶ γεωμετρίας ἔμπειρος εἶ;",
+      "sourceLocus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:367",
+      "localParagraph": 21
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:367.22",
+      "text": "ΙΠ. ἔγωγε.",
+      "sourceLocus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:367",
+      "localParagraph": 22
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:367.23",
+      "text": "ΣΩ. τί οὖν; οὐ καὶ ἐν γεωμετρίᾳ οὕτως ἔχει· ὁ αὐτὸς δυνατώτατος ψεύδεσθαι καὶ ἀληθῆ λέγειν περὶ τῶν διαγραμμάτων, ὁ γεωμετρικός;",
+      "sourceLocus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:367",
+      "localParagraph": 23
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:367.24",
+      "text": "ΙΠ. ναί.",
+      "sourceLocus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:367",
+      "localParagraph": 24
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:367.25",
+      "text": "ΣΩ. περὶ ταῦτα οὖν ἀγαθὸς ἄλλος τις ἢ οὗτος;",
+      "sourceLocus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:367",
+      "localParagraph": 25
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:367.26",
+      "text": "ΙΠ. οὐκ ἄλλος.",
+      "sourceLocus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:367",
+      "localParagraph": 26
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:367.27",
+      "text": "ΣΩ. οὐκοῦν ὁ ἀγαθὸς καὶ σοφὸς γεωμέτρης δυνατώτατός γε ἀμφότερα; καὶ εἴπερ τις ἄλλος ψευδὴς περὶ διαγράμματα, οὗτος ἂν εἴη, ὁ ἀγαθός; οὗτος γὰρ δυνατός, ὁ δὲ κακὸς ἀδύνατος ἦν ψεύδεσθαι· ὥστε οὐκ ἂν γένοιτο ψευδὴς ὁ μὴ δυνάμενος ψεύδεσθαι, ὡς ὡμολόγηται.",
+      "sourceLocus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:367",
+      "localParagraph": 27
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:367.28",
+      "text": "ΙΠ. ἔστι ταῦτα.",
+      "sourceLocus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:367",
+      "localParagraph": 28
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:368.1",
+      "text": "ΣΩ. ἔτι τοίνυν καὶ τὸν τρίτον ἐπισκεψώμεθα, τὸν ἀστρονόμον, ἧς αὖ σὺ τέχνης ἔτι μᾶλλον ἐπιστήμων οἴει εἶναι ἢ τῶν ἔμπροσθεν. ἦ γάρ, ὦ Ἱππία;",
+      "sourceLocus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:368",
+      "localParagraph": 1
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:368.2",
+      "text": "ΙΠ. ναί.",
+      "sourceLocus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:368",
+      "localParagraph": 2
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:368.3",
+      "text": "ΣΩ. οὐκοῦν καὶ ἐν ἀστρονομίᾳ ταὐτὰ ταῦτά ἐστιν;",
+      "sourceLocus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:368",
+      "localParagraph": 3
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:368.4",
+      "text": "ΙΠ. εἰκός γε, ὦ Σώκρατες.",
+      "sourceLocus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:368",
+      "localParagraph": 4
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:368.5",
+      "text": "ΣΩ. καὶ ἐν ἀστρονομίᾳ ἄρα εἴπερ τις καὶ ἄλλος ψευδής, ὁ ἀγαθὸς ἀστρονόμος ψευδὴς ἔσται, ὁ δυνατὸς ψεύδεσθαι. οὐ γὰρ ὅ γε ἀδύνατος· ἀμαθὴς γάρ.",
+      "sourceLocus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:368",
+      "localParagraph": 5
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:368.6",
+      "text": "ΙΠ. φαίνεται οὕτως.",
+      "sourceLocus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:368",
+      "localParagraph": 6
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:368.7",
+      "text": "ΣΩ. ὁ αὐτὸς ἄρα καὶ ἐν ἀστρονομίᾳ ἀληθής τε καὶ ψευδὴς ἔσται.",
+      "sourceLocus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:368",
+      "localParagraph": 7
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:368.8",
+      "text": "ΙΠ. ἔοικεν.",
+      "sourceLocus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:368",
+      "localParagraph": 8
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:368.9",
+      "text": "ΣΩ. ἴθι δή, ὦ Ἱππία, ἀνέδην οὑτωσὶ ἐπίσκεψαι κατὰ πασῶν τῶν ἐπιστημῶν, εἴ που ἔστιν ἄλλως ἔχον ἢ οὕτως. πάντως δὲ πλείστας τέχνας πάντων σοφώτατος εἶ ἀνθρώπων, ὡς ἐγώ ποτέ σου ἤκουον μεγαλαυχουμένου, πολλὴν σοφίαν καὶ ζηλωτὴν σαυτοῦ διεξιόντος ἐν ἀγορᾷ ἐπὶ ταῖς τραπέζαις. ἔφησθα δὲ ἀφικέσθαι ποτὲ εἰς Ὀλυμπίαν ἃ εἶχες περὶ τὸ σῶμα ἅπαντα σαυτοῦ ἔργα ἔχων· πρῶτον μὲν δακτύλιον—ἐντεῦθεν γὰρ ἤρχου—ὃν εἶχες σαυτοῦ ἔχειν ἔργον, ὡς ἐπιστάμενος δακτυλίους γλύφειν, καὶ ἄλλην σφραγῖδα σὸν ἔργον, καὶ στλεγγίδα καὶ λήκυθον ἃ αὐτὸς ἠργάσω· ἔπειτα ὑποδήματα ἃ εἶχες ἔφησθα αὐτὸς σκυτοτομῆσαι, καὶ τὸ ἱμάτιον ὑφῆναι καὶ τὸν χιτωνίσκον· καὶ ὅ γε πᾶσιν ἔδοξεν ἀτοπώτατον καὶ σοφίας πλείστης ἐπίδειγμα, ἐπειδὴ τὴν ζώνην ἔφησθα τοῦ χιτωνίσκου, ἣν εἶχες, εἶναι μὲν οἷαι αἱ Περσικαὶ τῶν πολυτελῶν, ταύτην δὲ αὐτὸς πλέξαι· πρὸς δὲ τούτοις ποιήματα ἔχων ἐλθεῖν, καὶ ἔπη καὶ τραγῳδίας καὶ διθυράμβους, καὶ καταλογάδην πολλοὺς λόγους καὶ παντοδαποὺς συγκειμένους· καὶ περὶ τῶν τεχνῶν δὴ ὧν ἄρτι ἐγὼ ἔλεγον ἐπιστήμων ἀφικέσθαι διαφερόντως τῶν ἄλλων, καὶ περὶ ῥυθμῶν καὶ ἁρμονιῶν καὶ γραμμάτων ὀρθότητος, καὶ ἄλλα ἔτι πρὸς τούτοις πάνυ πολλά, ὡς ἐγὼ δοκῶ μνημονεύειν· καίτοι τό γε μνημονικὸν ἐπελαθόμην σου, ὡς ἔοικε, τέχνημα, ἐν ᾧ σὺ οἴει λαμπρότατος εἶναι· οἶμαι δὲ καὶ ἄλλα πάμπολλα ἐπιλελῆσθαι. ἀλλʼ ὅπερ ἐγὼ λέγω, καὶ εἰς τὰς σαυτοῦ τέχνας βλέψας—ἱκαναὶ δέ—καὶ εἰς τὰς τῶν ἄλλων εἰπέ μοι, ἐάν που εὕρῃς ἐκ τῶν ὡμολογημένων ἐμοί τε καὶ σοί, ὅπου ἐστὶν ὁ μὲν ἀληθής, ὁ δὲ ψευδής, χωρὶς καὶ οὐχ ὁ αὐτός; ἐν ᾗτινι βούλει σοφίᾳ τοῦτο σκέψαι ἢ πανουργίᾳ ἢ ὁτιοῦν χαίρεις ὀνομάζων· ἀλλʼ οὐχ εὑρήσεις, ὦ ἑταῖρε— οὐ γὰρ ἔστιν—ἐπεὶ σὺ εἰπέ.",
+      "sourceLocus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:368",
+      "localParagraph": 9
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:369.1",
+      "text": "ΙΠ. ἀλλʼ οὐκ ἔχω, ὦ Σώκρατες, νῦν γε οὕτως.",
+      "sourceLocus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:369",
+      "localParagraph": 1
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:369.2",
+      "text": "ΣΩ. οὐδέ γε ἕξεις, ὡς ἐγὼ οἶμαι· εἰ δʼ ἐγὼ ἀληθῆ λέγω, μέμνησαι ὃ ἡμῖν συμβαίνει ἐκ τοῦ λόγου, ὦ Ἱππία.",
+      "sourceLocus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:369",
+      "localParagraph": 2
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:369.3",
+      "text": "ΙΠ. οὐ πάνυ τι ἐννοῶ, ὦ Σώκρατες, ὃ λέγεις.",
+      "sourceLocus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:369",
+      "localParagraph": 3
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:369.4",
+      "text": "ΣΩ. νυνὶ γὰρ ἴσως οὐ χρῇ τῷ μνημονικῷ τεχνήματι— δῆλον γὰρ ὅτι οὐκ οἴει δεῖν—ἀλλὰ ἐγώ σε ὑπομνήσω. οἶσθα ὅτι τὸν μὲν Ἀχιλλέα ἔφησθα ἀληθῆ εἶναι, τὸν δὲ Ὀδυσσέα ψευδῆ καὶ πολύτροπον;",
+      "sourceLocus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:369",
+      "localParagraph": 4
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:369.5",
+      "text": "ΙΠ. ναί.",
+      "sourceLocus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:369",
+      "localParagraph": 5
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:369.6",
+      "text": "ΣΩ. νῦν οὖν αἰσθάνῃ ὅτι ἀναπέφανται ὁ αὐτὸς ὢν ψευδής τε καὶ ἀληθής, ὥστε εἰ ψευδὴς ὁ Ὀδυσσεὺς ἦν, καὶ ἀληθὴς γίγνεται, καὶ εἰ ἀληθὴς ὁ Ἀχιλλεύς, καὶ ψευδής, καὶ οὐ διάφοροι ἀλλήλων οἱ ἄνδρες οὐδʼ ἐναντίοι, ἀλλʼ ὅμοιοι;",
+      "sourceLocus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:369",
+      "localParagraph": 6
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:369.7",
+      "text": "ΙΠ. ὦ Σώκρατες, ἀεὶ σύ τινας τοιούτους πλέκεις λόγους, καὶ ἀπολαμβάνων ὃ ἂν ᾖ δυσχερέστατον τοῦ λόγου, τούτου ἔχῃ κατὰ σμικρὸν ἐφαπτόμενος, καὶ οὐχ ὅλῳ ἀγωνίζῃ τῷ πράγματι περὶ ὅτου ἂν ὁ λόγος ᾖ· ἐπεὶ καὶ νῦν, ἐὰν βούλῃ, ἐπὶ πολλῶν τεκμηρίων ἀποδείξω σοι ἱκανῷ λόγῳ Ὅμηρον Ἀχιλλέα πεποιηκέναι ἀμείνω Ὀδυσσέως καὶ ἀψευδῆ, τὸν δὲ δολερόν τε καὶ πολλὰ ψευδόμενον καὶ χείρω Ἀχιλλέως. εἰ δὲ βούλει, σὺ αὖ ἀντιπαράβαλλε λόγον παρὰ λόγον, ὡς ὁ ἕτερος ἀμείνων ἐστί· καὶ μᾶλλον εἴσονται οὗτοι ὁπότερος ἄμεινον λέγει.",
+      "sourceLocus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:369",
+      "localParagraph": 7
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:369.8",
+      "text": "ΣΩ. ὦ Ἱππία, ἐγώ τοι οὐκ ἀμφισβητῶ μὴ οὐχὶ σὲ εἶναι σοφώτερον ἢ ἐμέ· ἀλλʼ ἀεὶ εἴωθα, ἐπειδάν τις λέγῃ τι, προσέχειν τὸν νοῦν, ἄλλως τε καὶ ἐπειδάν μοι δοκῇ σοφὸς εἶναι ὁ λέγων, καὶ ἐπιθυμῶν μαθεῖν ὅτι λέγει διαπυνθάνομαι καὶ ἐπανασκοπῶ καὶ συμβιβάζω τὰ λεγόμενα, ἵνα μάθω· ἐὰν δὲ φαῦλος δοκῇ μοι εἶναι ὁ λέγων, οὔτε ἐπανερωτῶ οὔτε μοι μέλει ὧν λέγει. καὶ γνώσῃ τούτῳ οὓς ἂν ἐγὼ ἡγῶμαι σοφοὺς εἶναι· εὑρήσεις γάρ με λιπαρῆ ὄντα περὶ τὰ λεγόμενα ὑπὸ τούτου καὶ πυνθανόμενον παρʼ αὐτοῦ, ἵνα μαθών τι ὠφεληθῶ.",
+      "sourceLocus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:369",
+      "localParagraph": 8
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:370.1",
+      "text": "ΣΩ. ἐπεὶ καὶ νῦν ἐννενόηκα σοῦ λέγοντος, ὅτι ἐν τοῖς ἔπεσιν οἷς σὺ ἄρτι ἔλεγες, ἐνδεικνύμενος τὸν Ἀχιλλέα εἰς τὸν Ὀδυσσέα λέγειν ὡς ἀλαζόνα ὄντα, ἄτοπόν μοι δοκεῖ εἶναι, εἰ σὺ ἀληθῆ λέγεις, ὅτι ὁ μὲν Ὀδυσσεὺς οὐδαμοῦ φαίνεται ψευσάμενος, ὁ πολύτροπος, ὁ δὲ Ἀχιλλεὺς πολύτροπός τις φαίνεται κατὰ τὸν σὸν λόγον· ψεύδεται γοῦν. προειπὼν γὰρ ταῦτα τὰ ἔπη, ἅπερ καὶ σὺ εἶπες ἄρτι—ἐχθρὸς γάρ μοι κεῖνος ὁμῶς Ἀίδαο πύλῃσιν,ὅς χʼ ἕτερον μὲν κεύθῃ ἐνὶ φρεσίν, ἄλλο δὲ εἴπῃ, ὀλίγον ὕστερον λέγει ὡς οὔτʼ ἂν ἀναπεισθείη ὑπὸ τοῦ Ὀδυσσέως τε καὶ τοῦ Ἀγαμέμνονος οὔτε μένοι τὸ παράπαν ἐν τῇ Τροίᾳ, ἀλλʼ—αὔριον ἱρὰ Διὶ ῥέξας, φησί, καὶ πᾶσι θεοῖσιν,νηήσας εὖ νῆας, ἐπὴν ἅλαδε προερύσσω,ὄψεαι, αἴ κʼ ἐθέλῃσθα καὶ αἴ κέν τοι τὰ μεμήλῃ,ἦρι μάλʼ Ἑλλήσποντον ἐπʼ ἰχθυόεντα πλεούσας νῆας ἐμάς, ἐν δʼ ἄνδρας ἐρεσσέμεναι μεμαῶτας·εἰ δέ κεν εὐπλοΐην δώῃ κλυτὸς Ἐννοσίγαιος,ἤματί κεν τριτάτῳ Φθίην ἐρίβωλον ἱκοίμην.ἔτι δὲ πρότερον τούτων πρὸς τὸν Ἀγαμέμνονα λοιδορούμενος εἶπεν—νῦν δʼ εἶμι Φθίηνδʼ, ἐπεὶ ἦ πολὺ λώϊόν ἐστινοἴκαδʼ ἴμεν σὺν νηυσὶ κορωνίσιν, οὐδέ σʼ ὀίω ἐνθάδʼ ἄτιμος ἐὼν ἄφενος καὶ πλοῦτον ἀφύξειν.ταῦτα εἰπὼν τοτὲ μὲν ἐναντίον τῆς στρατιᾶς ἁπάσης, τοτὲ δὲ πρὸς τοὺς ἑαυτοῦ ἑταίρους, οὐδαμοῦ φαίνεται οὔτε παρασκευασάμενος οὔτʼ ἐπιχειρήσας καθέλκειν τὰς ναῦς ὡς ἀποπλευσούμενος οἴκαδε, ἀλλὰ πάνυ γενναίως ὀλιγωρῶν τοῦ τἀληθῆ λέγειν. ἐγὼ μὲν οὖν, ὦ Ἱππία, καὶ ἐξ ἀρχῆς σε ἠρόμην ἀπορῶν ὁπότερος τούτοιν τοῖν ἀνδροῖν ἀμείνων πεποίηται τῷ ποιητῇ, καὶ ἡγούμενος ἀμφοτέρω ἀρίστω εἶναι καὶ δύσκριτον ὁπότερος ἀμείνων εἴη καὶ περὶ ψεύδους καὶ ἀληθείας καὶ τῆς ἄλλης ἀρετῆς· ἀμφοτέρω γὰρ καὶ κατὰ τοῦτο παραπλησίω ἐστόν.",
+      "sourceLocus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:370",
+      "localParagraph": 1
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:370.2",
+      "text": "ΙΠ. οὐ γὰρ καλῶς σκοπεῖς, ὦ Σώκρατες. ἃ μὲν γὰρ ὁ Ἀχιλλεὺς ψεύδεται, οὐκ ἐξ ἐπιβουλῆς φαίνεται ψευδόμενος ἀλλʼ ἄκων, διὰ τὴν συμφορὰν τὴν τοῦ στρατοπέδου ἀναγκασθεὶς καταμεῖναι καὶ βοηθῆσαι· ἃ δὲ ὁ Ὀδυσσεύς, ἑκών τε καὶ ἐξ ἐπιβουλῆς.",
+      "sourceLocus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:370",
+      "localParagraph": 2
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:370.3",
+      "text": "ΣΩ. ἐξαπατᾷς με, ὦ φίλτατε Ἱππία, καὶ αὐτὸς τὸν Ὀδυσσέα μιμῇ.",
+      "sourceLocus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:370",
+      "localParagraph": 3
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:371.1",
+      "text": "ΙΠ. οὐδαμῶς, ὦ Σώκρατες· λέγεις δὴ τί καὶ πρὸς τί;",
+      "sourceLocus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:371",
+      "localParagraph": 1
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:371.2",
+      "text": "ΣΩ. ὅτι οὐκ ἐξ ἐπιβουλῆς φῂς τὸν Ἀχιλλέα ψεύδεσθαι, ὃς ἦν οὕτω γόης καὶ ἐπίβουλος πρὸς τῇ ἀλαζονείᾳ, ὡς πεποίηκεν Ὅμηρος, ὥστε καὶ τοῦ Ὀδυσσέως τοσοῦτον φαίνεται φρονεῖν πλέον πρὸς τὸ ῥᾳδίως λανθάνειν αὐτὸν ἀλαζονευόμενος, ὥστε ἐναντίον αὐτοῦ αὐτὸς ἑαυτῷ ἐτόλμα ἐναντία λέγειν καὶ ἐλάνθανεν τὸν Ὀδυσσέα· οὐδὲν γοῦν φαίνεται εἰπὼν πρὸς αὐτὸν ὡς αἰσθανόμενος αὐτοῦ ψευδομένου ὁ Ὀδυσσεύς.",
+      "sourceLocus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:371",
+      "localParagraph": 2
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:371.3",
+      "text": "ΙΠ. ποῖα δὴ ταῦτα λέγεις, ὦ Σώκρατες;",
+      "sourceLocus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:371",
+      "localParagraph": 3
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:371.4",
+      "text": "ΣΩ. οὐκ οἶσθα ὅτι λέγων ὕστερον ἢ ὡς πρὸς τὸν Ὀδυσσέα ἔφη ἅμα τῇ ἠοῖ ἀποπλευσεῖσθαι, πρὸς τὸν Αἴαντα οὐκ αὖ φησιν ἀποπλευσεῖσθαι, ἀλλὰ ἄλλα λέγει;",
+      "sourceLocus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:371",
+      "localParagraph": 4
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:371.5",
+      "text": "ΙΠ. ποῦ δή;",
+      "sourceLocus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:371",
+      "localParagraph": 5
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:371.6",
+      "text": "ΣΩ. ἐν οἷς λέγει—οὐ γὰρ πρὶν πολέμοιο μεδήσομαι αἱματόεντος, πρίν γʼ υἱὸν Πριάμοιο δαΐφρονος, Ἕκτορα δῖον,Μυρμιδόνων ἐπί τε κλισίας καὶ νῆας ἱκέσθαικτείνοντʼ Ἀργείους, κατά τε φλέξαι πυρὶ νῆας·ἀμφὶ δέ μιν τῇ ʼμῇ κλισίῃ καὶ νηῒ μελαίνῃἝκτορα καὶ μεμαῶτα μάχης σχήσεσθαι ὀίω.σὺ δὴ οὖν, ὦ Ἱππία, πότερον οὕτως ἐπιλήσμονα οἴει εἶναι τὸν τῆς Θέτιδός τε καὶ ὑπὸ τοῦ σοφωτάτου Χείρωνος πεπαιδευμένον, ὥστε ὀλίγον πρότερον λοιδοροῦντα τοὺς ἀλαζόνας τῇ ἐσχάτῃ λοιδορίᾳ αὐτὸν παραχρῆμα πρὸς μὲν τὸν Ὀδυσσέα φάναι ἀποπλευσεῖσθαι, πρὸς δὲ τὸν Αἴαντα μενεῖν, ἀλλʼ οὐκ ἐπιβουλεύοντά τε καὶ ἡγούμενον ἀρχαῖον εἶναι τὸν Ὀδυσσέα καὶ αὐτοῦ αὐτῷ τούτῳ τῷ τεχνάζειν τε καὶ ψεύδεσθαι περιέσεσθαι;",
+      "sourceLocus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:371",
+      "localParagraph": 6
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:371.7",
+      "text": "ΙΠ. οὔκουν ἔμοιγε δοκεῖ, ὦ Σώκρατες· ἀλλὰ καὶ αὐτὰ ταῦτα ὑπὸ εὐνοίας ἀναπεισθεὶς πρὸς τὸν Αἴαντα ἄλλα εἶπεν ἢ πρὸς τὸν Ὀδυσσέα· ὁ δὲ Ὀδυσσεὺς ἅ τε ἀληθῆ λέγει, ἐπιβουλεύσας ἀεὶ λέγει, καὶ ὅσα ψεύδεται, ὡσαύτως.",
+      "sourceLocus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:371",
+      "localParagraph": 7
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:371.8",
+      "text": "ΣΩ. ἀμείνων ἄρʼ ἐστίν, ὡς ἔοικεν, ὁ Ὀδυσσεὺς Ἀχιλλέως.",
+      "sourceLocus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:371",
+      "localParagraph": 8
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:371.9",
+      "text": "ΙΠ. ἥκιστά γε δήπου, ὦ Σώκρατες.",
+      "sourceLocus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:371",
+      "localParagraph": 9
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:371.10",
+      "text": "ΣΩ. τί δέ; οὐκ ἄρτι ἐφάνησαν οἱ ἑκόντες ψευδόμενοι βελτίους ἢ οἱ ἄκοντες;",
+      "sourceLocus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:371",
+      "localParagraph": 10
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:372.1",
+      "text": "ΙΠ. καὶ πῶς ἄν, ὦ Σώκρατες, οἱ ἑκόντες ἀδικοῦντες καὶ ἑκόντες ἐπιβουλεύσαντες καὶ κακὰ ἐργασάμενοι βελτίους ἂν εἶεν τῶν ἀκόντων, οἷς πολλὴ δοκεῖ συγγνώμη εἶναι, ἐὰν μὴ εἰδώς τις ἀδικήσῃ ἢ ψεύσηται ἢ ἄλλο τι κακὸν ποιήσῃ; καὶ οἱ νόμοι δήπου πολὺ χαλεπώτεροί εἰσι τοῖς ἑκοῦσι κακὰ ἐργαζομένοις καὶ ψευδομένοις ἢ τοῖς ἄκουσιν.",
+      "sourceLocus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:372",
+      "localParagraph": 1
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:372.2",
+      "text": "ΣΩ. ὁρᾷς, ὦ Ἱππία, ὅτι ἐγὼ ἀληθῆ λέγω, λέγων ὡς λιπαρής εἰμι πρὸς τὰς ἐρωτήσεις τῶν σοφῶν; καὶ κινδυνεύω ἓν μόνον ἔχειν τοῦτο ἀγαθόν, τἆλλα ἔχων πάνυ φαῦλα· τῶν μὲν γὰρ πραγμάτων ᾗ ἔχει ἔσφαλμαι, καὶ οὐκ οἶδʼ ὅπῃ ἐστί. τεκμήριον δέ μοι τούτου ἱκανόν, ὅτι ἐπειδὰν συγγένωμαί τῳ ὑμῶν τῶν εὐδοκιμούντων ἐπὶ σοφίᾳ καὶ οἷς οἱ Ἕλληνες πάντες μάρτυρές εἰσι τῆς σοφίας, φαίνομαι οὐδὲν εἰδώς· οὐδὲν γάρ μοι δοκεῖ τῶν αὐτῶν καὶ ὑμῖν, ὡς ἔπος εἰπεῖν. καίτοι τί μεῖζον ἀμαθίας τεκμήριον ἢ ἐπειδάν τις σοφοῖς ἀνδράσι διαφέρηται; ἓν δὲ τοῦτο θαυμάσιον ἔχω ἀγαθόν, ὅ με σῴζει· οὐ γὰρ αἰσχύνομαι μανθάνων, ἀλλὰ πυνθάνομαι καὶ ἐρωτῶ καὶ χάριν πολλὴν ἔχω τῷ ἀποκρινομένῳ, καὶ οὐδένα πώποτε ἀπεστέρησα χάριτος. οὐ γὰρ πώποτε ἔξαρνος ἐγενόμην μαθών τι, ἐμαυτοῦ ποιούμενος τὸ μάθημα εἶναι ὡς εὕρημα· ἀλλʼ ἐγκωμιάζω τὸν διδάξαντά με ὡς σοφὸν ὄντα, ἀποφαίνων ἃ ἔμαθον παρʼ αὐτοῦ. καὶ δὴ καὶ νῦν ἃ σὺ λέγεις οὐχ ὁμολογῶ σοι, ἀλλὰ διαφέρομαι πάνυ σφόδρα· καὶ τοῦτʼ εὖ οἶδα ὅτι διʼ ἐμὲ γίγνεται, ὅτι τοιοῦτός εἰμι οἷόσπερ εἰμί, ἵνα μηδὲν ἐμαυτὸν μεῖζον εἴπω. ἐμοὶ γὰρ φαίνεται, ὦ Ἱππία, πᾶν τοὐναντίον ἢ ὃ σὺ λέγεις· οἱ βλάπτοντες τοὺς ἀνθρώπους καὶ ἀδικοῦντες καὶ ψευδόμενοι καὶ ἐξαπατῶντες καὶ ἁμαρτάνοντες ἑκόντες ἀλλὰ μὴ ἄκοντες, βελτίους εἶναι ἢ οἱ ἄκοντες. ἐνίοτε μέντοι καὶ τοὐναντίον δοκεῖ μοι τούτων καὶ πλανῶμαι περὶ ταῦτα, δῆλον ὅτι διὰ τὸ μὴ εἰδέναι· νυνὶ δὲ ἐν τῷ παρόντι μοι ὥσπερ κατηβολὴ περιελήλυθεν, καὶ δοκοῦσί μοι οἱ ἑκόντες ἐξαμαρτάνοντες περί τι βελτίους εἶναι τῶν ἀκόντων. αἰτιῶμαι δὲ τοῦ νῦν παρόντος παθήματος τοὺς ἔμπροσθεν λόγους αἰτίους εἶναι, ὥστε φαίνεσθαι νῦν ἐν τῷ παρόντι τοὺς ἄκοντας τούτων ἕκαστα ποιοῦντας πονηροτέρους ἢ τοὺς ἑκόντας.",
+      "sourceLocus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:372",
+      "localParagraph": 2
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:373.1",
+      "text": "ΣΩ. σὺ οὖν χάρισαι καὶ μὴ φθονήσῃς ἰάσασθαι τὴν ψυχήν μου· πολὺ γάρ τοι μεῖζόν με ἀγαθὸν ἐργάσῃ ἀμαθίας παύσας τὴν ψυχὴν ἢ νόσου τὸ σῶμα. μακρὸν μὲν οὖν λόγον εἰ ʼθέλεις λέγειν, προλέγω σοι ὅτι οὐκ ἄν με ἰάσαιο—οὐ γὰρ ἂν ἀκολουθήσαιμι —ὥσπερ δὲ ἄρτι εἰ ʼθέλεις μοι ἀποκρίνεσθαι, πάνυ ὀνήσεις, οἶμαι δὲ οὐδʼ αὐτὸν σὲ βλαβήσεσθαι. δικαίως δʼ ἂν καὶ σὲ παρακαλοίην, ὦ παῖ Ἀπημάντου· σὺ γάρ με ἐπῆρας Ἱππίᾳ διαλέγεσθαι, καὶ νῦν, ἐὰν μή μοι ἐθέλῃ Ἱππίας ἀποκρίνεσθαι, δέου αὐτοῦ ὑπὲρ ἐμοῦ.",
+      "sourceLocus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:373",
+      "localParagraph": 1
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:373.2",
+      "text": "ΕΥ. ἀλλʼ, ὦ Σώκρατες, οἶμαι οὐδὲν δεήσεσθαι Ἱππίαν τῆς ἡμετέρας δεήσεως· οὐ γὰρ τοιαῦτα αὐτῷ ἐστι τὰ προειρημένα, ἀλλʼ ὅτι οὐδενὸς ἂν φύγοι ἀνδρὸς ἐρώτησιν. ἦ γάρ, ὦ Ἱππία; οὐ ταῦτα ἦν ἃ ἔλεγες;",
+      "sourceLocus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:373",
+      "localParagraph": 2
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:373.3",
+      "text": "ΙΠ. ἔγωγε· ἀλλὰ Σωκράτης, ὦ Εὔδικε, ἀεὶ ταράττει ἐν τοῖς λόγοις καὶ ἔοικεν ὥσπερ κακουργοῦντι.",
+      "sourceLocus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:373",
+      "localParagraph": 3
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:373.4",
+      "text": "ΣΩ. ὦ βέλτιστε Ἱππία, οὔτι ἑκών γε ταῦτα ἐγὼ ποιῶ— σοφὸς γὰρ ἂν ἦ καὶ δεινὸς κατὰ τὸν σὸν λόγον—ἀλλὰ ἄκων, ὥστε μοι συγγνώμην ἔχε· φῂς γὰρ αὖ δεῖν, ὃς ἂν κακουργῇ ἄκων, συγγνώμην ἔχειν.",
+      "sourceLocus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:373",
+      "localParagraph": 4
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:373.5",
+      "text": "ΕΥ. καὶ μηδαμῶς γε, ὦ Ἱππία, ἄλλως ποίει, ἀλλὰ καὶ ἡμῶν ἕνεκα καὶ τῶν προειρημένων σοι λόγων ἀποκρίνου ἃ ἄν σε ἐρωτᾷ Σωκράτης.",
+      "sourceLocus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:373",
+      "localParagraph": 5
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:373.6",
+      "text": "ΙΠ. ἀλλʼ ἀποκρινοῦμαι, σοῦ γε δεομένου. ἀλλʼ ἐρώτα ὅτι βούλει.",
+      "sourceLocus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:373",
+      "localParagraph": 6
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:373.7",
+      "text": "ΣΩ. καὶ μὴν σφόδρα γε ἐπιθυμῶ, ὦ Ἱππία, διασκέψασθαι τὸ νυνδὴ λεγόμενον, πότεροί ποτε ἀμείνους, οἱ ἑκόντες ἢ οἱ ἄκοντες ἁμαρτάνοντες. οἶμαι οὖν ἐπὶ τὴν σκέψιν ὀρθότατʼ ἂν ὧδε ἐλθεῖν. ἀλλʼ ἀπόκριναι· καλεῖς τινα δρομέα ἀγαθόν;",
+      "sourceLocus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:373",
+      "localParagraph": 7
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:373.8",
+      "text": "ΙΠ. ἔγωγε.",
+      "sourceLocus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:373",
+      "localParagraph": 8
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:373.9",
+      "text": "ΣΩ. καὶ κακόν;",
+      "sourceLocus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:373",
+      "localParagraph": 9
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:373.10",
+      "text": "ΙΠ. ναί.",
+      "sourceLocus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:373",
+      "localParagraph": 10
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:373.11",
+      "text": "ΣΩ. οὐκοῦν ἀγαθὸς μὲν ὁ εὖ θέων, κακὸς δὲ ὁ κακῶς;",
+      "sourceLocus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:373",
+      "localParagraph": 11
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:373.12",
+      "text": "ΙΠ. ναί.",
+      "sourceLocus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:373",
+      "localParagraph": 12
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:373.13",
+      "text": "ΣΩ. οὐκοῦν ὁ βραδέως θέων κακῶς θεῖ, ὁ δὲ ταχέως εὖ;",
+      "sourceLocus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:373",
+      "localParagraph": 13
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:373.14",
+      "text": "ΙΠ. ναί.",
+      "sourceLocus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:373",
+      "localParagraph": 14
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:373.15",
+      "text": "ΣΩ. ἐν δρόμῳ μὲν ἄρα καὶ τῷ θεῖν τάχος μὲν ἀγαθόν, βραδυτὴς δὲ κακόν;",
+      "sourceLocus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:373",
+      "localParagraph": 15
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:373.16",
+      "text": "ΙΠ. ἀλλὰ τί μέλλει;",
+      "sourceLocus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:373",
+      "localParagraph": 16
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:373.17",
+      "text": "ΣΩ. πότερος οὖν ἀμείνων δρομεύς, ὁ ἑκὼν βραδέως θέων ἢ ὁ ἄκων;",
+      "sourceLocus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:373",
+      "localParagraph": 17
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:373.18",
+      "text": "ΙΠ. ὁ ἑκών.",
+      "sourceLocus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:373",
+      "localParagraph": 18
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:373.19",
+      "text": "ΣΩ. ἆρʼ οὖν οὐ ποιεῖν τί ἐστι τὸ θεῖν;",
+      "sourceLocus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:373",
+      "localParagraph": 19
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:373.20",
+      "text": "ΙΠ. ποιεῖν μὲν οὖν.",
+      "sourceLocus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:373",
+      "localParagraph": 20
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:373.21",
+      "text": "ΣΩ. εἰ δὲ ποιεῖν, οὐ καὶ ἐργάζεσθαί τι;",
+      "sourceLocus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:373",
+      "localParagraph": 21
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:373.22",
+      "text": "ΙΠ. ναί.",
+      "sourceLocus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:373",
+      "localParagraph": 22
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:373.23",
+      "text": "ΣΩ. ὁ κακῶς ἄρα θέων κακὸν καὶ αἰσχρὸν ἐν δρόμῳ τοῦτο ἐργάζεται;",
+      "sourceLocus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:373",
+      "localParagraph": 23
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:373.24",
+      "text": "ΙΠ. κακόν· πῶς γὰρ οὔ;",
+      "sourceLocus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:373",
+      "localParagraph": 24
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:373.25",
+      "text": "ΣΩ. κακῶς δὲ θεῖ ὁ βραδέως θέων;",
+      "sourceLocus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:373",
+      "localParagraph": 25
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:373.26",
+      "text": "ΙΠ. ναί.",
+      "sourceLocus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:373",
+      "localParagraph": 26
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:373.27",
+      "text": "ΣΩ. οὐκοῦν ὁ μὲν ἀγαθὸς δρομεὺς ἑκὼν τὸ κακὸν τοῦτο ἐργάζεται καὶ τὸ αἰσχρόν, ὁ δὲ κακὸς ἄκων;",
+      "sourceLocus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:373",
+      "localParagraph": 27
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:373.28",
+      "text": "ΙΠ. ἔοικέν γε.",
+      "sourceLocus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:373",
+      "localParagraph": 28
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:374.1",
+      "text": "ΣΩ. ἐν δρόμῳ μὲν ἄρα πονηρότερος ὁ ἄκων κακὰ ἐργαζόμενος ἢ ὁ ἑκών;",
+      "sourceLocus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:374",
+      "localParagraph": 1
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:374.2",
+      "text": "ΙΠ. ἐν δρόμῳ γε.",
+      "sourceLocus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:374",
+      "localParagraph": 2
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:374.3",
+      "text": "ΣΩ. τί δʼ ἐν πάλῃ; πότερος παλαιστὴς ἀμείνων, ὁ ἑκὼν πίπτων ἢ ὁ ἄκων;",
+      "sourceLocus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:374",
+      "localParagraph": 3
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:374.4",
+      "text": "ΙΠ. ὁ ἑκών, ὡς ἔοικεν.",
+      "sourceLocus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:374",
+      "localParagraph": 4
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:374.5",
+      "text": "ΣΩ. πονηρότερον δὲ καὶ αἴσχιον ἐν πάλῃ τὸ πίπτειν ἢ τὸ καταβάλλειν;",
+      "sourceLocus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:374",
+      "localParagraph": 5
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:374.6",
+      "text": "ΙΠ. τὸ πίπτειν.",
+      "sourceLocus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:374",
+      "localParagraph": 6
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:374.7",
+      "text": "ΣΩ. καὶ ἐν πάλῃ ἄρα ὁ ἑκὼν τὰ πονηρὰ καὶ αἰσχρὰ ἐργαζόμενος βελτίων παλαιστὴς ἢ ὁ ἄκων.",
+      "sourceLocus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:374",
+      "localParagraph": 7
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:374.8",
+      "text": "ΙΠ. ἔοικεν.",
+      "sourceLocus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:374",
+      "localParagraph": 8
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:374.9",
+      "text": "ΣΩ. τί δὲ ἐν τῇ ἄλλῃ πάσῃ τῇ τοῦ σώματος χρείᾳ; οὐχ ὁ βελτίων τὸ σῶμα δύναται ἀμφότερα ἐργάζεσθαι, καὶ τὰ ἰσχυρὰ καὶ τὰ ἀσθενῆ, καὶ τὰ αἰσχρὰ καὶ τὰ καλά· ὥστε ὅταν κατὰ τὸ σῶμα πονηρὰ ἐργάζηται, ἑκὼν ἐργάζεται ὁ βελτίων τὸ σῶμα, ὁ δὲ πονηρότερος ἄκων;",
+      "sourceLocus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:374",
+      "localParagraph": 9
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:374.10",
+      "text": "ΙΠ. ἔοικεν καὶ τὰ κατὰ τὴν ἰσχὺν οὕτως ἔχειν.",
+      "sourceLocus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:374",
+      "localParagraph": 10
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:374.11",
+      "text": "ΣΩ. τί δὲ κατʼ εὐσχημοσύνην, ὦ Ἱππία; οὐ τοῦ βελτίονος σώματός ἐστιν ἑκόντος τὰ αἰσχρὰ καὶ πονηρὰ σχήματα σχηματίζειν, τοῦ δὲ πονηροτέρου ἄκοντος; ἢ πῶς σοι δοκεῖ;",
+      "sourceLocus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:374",
+      "localParagraph": 11
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:374.12",
+      "text": "ΙΠ. οὕτως.",
+      "sourceLocus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:374",
+      "localParagraph": 12
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:374.13",
+      "text": "ΣΩ. καὶ ἀσχημοσύνη ἄρα ἡ μὲν ἑκούσιος πρὸς ἀρετῆς ἐστιν, ἡ δὲ ἀκούσιος πρὸς πονηρίας σώματος.",
+      "sourceLocus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:374",
+      "localParagraph": 13
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:374.14",
+      "text": "ΙΠ. φαίνεται.",
+      "sourceLocus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:374",
+      "localParagraph": 14
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:374.15",
+      "text": "ΣΩ. τί δὲ φωνῆς πέρι λέγεις; ποτέραν φῂς εἶναι βελτίω, τὴν ἑκουσίως ἀπᾴδουσαν ἢ τὴν ἀκουσίως;",
+      "sourceLocus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:374",
+      "localParagraph": 15
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:374.16",
+      "text": "ΙΠ. τὴν ἑκουσίως.",
+      "sourceLocus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:374",
+      "localParagraph": 16
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:374.17",
+      "text": "ΣΩ. μοχθηροτέραν δὲ τὴν ἀκουσίως;",
+      "sourceLocus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:374",
+      "localParagraph": 17
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:374.18",
+      "text": "ΙΠ. ναί.",
+      "sourceLocus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:374",
+      "localParagraph": 18
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:374.19",
+      "text": "ΣΩ. δέξαιο δʼ ἂν πότερον τἀγαθὰ κεκτῆσθαι ἢ τὰ κακά;",
+      "sourceLocus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:374",
+      "localParagraph": 19
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:374.20",
+      "text": "ΙΠ. τἀγαθά.",
+      "sourceLocus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:374",
+      "localParagraph": 20
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:374.21",
+      "text": "ΣΩ. πότερον οὖν ἂν δέξαιο πόδας κεκτῆσθαι ἑκουσίως χωλαίνοντας ἢ ἀκουσίως;",
+      "sourceLocus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:374",
+      "localParagraph": 21
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:374.22",
+      "text": "ΙΠ. ἑκουσίως.",
+      "sourceLocus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:374",
+      "localParagraph": 22
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:374.23",
+      "text": "ΣΩ. χωλεία δὲ ποδῶν οὐχὶ πονηρία καὶ ἀσχημοσύνη ἐστίν;",
+      "sourceLocus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:374",
+      "localParagraph": 23
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:374.24",
+      "text": "ΙΠ. ναί.",
+      "sourceLocus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:374",
+      "localParagraph": 24
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:374.25",
+      "text": "ΣΩ. τί δέ; ἀμβλυωπία οὐ πονηρία ὀφθαλμῶν;",
+      "sourceLocus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:374",
+      "localParagraph": 25
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:374.26",
+      "text": "ΙΠ. ναί.",
+      "sourceLocus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:374",
+      "localParagraph": 26
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:374.27",
+      "text": "ΣΩ. ποτέρους οὖν ἂν βούλοιο ὀφθαλμοὺς κεκτῆσθαι καὶ ποτέροις συνεῖναι; οἷς ἑκὼν ἄν τις ἀμβλυώττοι καὶ παρορῴη ἢ οἷς ἄκων;",
+      "sourceLocus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:374",
+      "localParagraph": 27
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:374.28",
+      "text": "ΙΠ. οἷς ἑκών.",
+      "sourceLocus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:374",
+      "localParagraph": 28
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:374.29",
+      "text": "ΣΩ. βελτίω ἄρα ἥγησαι τῶν σαυτοῦ τὰ ἑκουσίως πονηρὰ ἐργαζόμενα ἢ τὰ ἀκουσίως;",
+      "sourceLocus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:374",
+      "localParagraph": 29
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:374.30",
+      "text": "ΙΠ. τὰ γοῦν τοιαῦτα.",
+      "sourceLocus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:374",
+      "localParagraph": 30
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:374.31",
+      "text": "ΣΩ. οὐκοῦν πάντα, οἷον καὶ ὦτα καὶ ῥῖνας καὶ στόμα καὶ πάσας τὰς αἰσθήσεις, εἷς λόγος συνέχει, τὰς μὲν ἀκόντως κακὰ ἐργαζομένας ἀκτήτους εἶναι ὡς πονηρὰς οὔσας, τὰς δὲ ἑκουσίως κτητὰς ὡς ἀγαθὰς οὔσας.",
+      "sourceLocus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:374",
+      "localParagraph": 31
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:374.32",
+      "text": "ΙΠ. ἔμοιγε δοκεῖ.",
+      "sourceLocus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:374",
+      "localParagraph": 32
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:374.33",
+      "text": "ΣΩ. τί δέ; ὀργάνων ποτέρων βελτίων ἡ κοινωνία, οἷς ἑκών τις κακὰ ἐργάζεται ἢ οἷς ἄκων; οἷον πηδάλιον ᾧ ἄκων κακῶς τις κυβερνήσει βέλτιον ἢ ᾧ ἑκών;",
+      "sourceLocus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:374",
+      "localParagraph": 33
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:374.34",
+      "text": "ΙΠ. ὧι ἑκών.",
+      "sourceLocus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:374",
+      "localParagraph": 34
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:374.35",
+      "text": "ΣΩ. οὐ καὶ τόξον ὡσαύτως καὶ λύρα καὶ αὐλοὶ καὶ τἆλλα σύμπαντα;",
+      "sourceLocus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:374",
+      "localParagraph": 35
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:375.1",
+      "text": "ΙΠ. ἀληθῆ λέγεις.",
+      "sourceLocus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:375",
+      "localParagraph": 1
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:375.2",
+      "text": "ΣΩ. τί δέ; ψυχὴν κεκτῆσθαι ἵππου, ᾗ ἑκών τις κακῶς ἱππεύσει, ἄμεινον ἢ ᾗ ἄκων;",
+      "sourceLocus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:375",
+      "localParagraph": 2
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:375.3",
+      "text": "ΙΠ. ἧι ἑκών.",
+      "sourceLocus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:375",
+      "localParagraph": 3
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:375.4",
+      "text": "ΣΩ. ἀμείνων ἄρα ἐστίν.",
+      "sourceLocus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:375",
+      "localParagraph": 4
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:375.5",
+      "text": "ΙΠ. ναί.",
+      "sourceLocus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:375",
+      "localParagraph": 5
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:375.6",
+      "text": "ΣΩ. τῇ ἀμείνονι ἄρα ψυχῇ ἵππου τὰ τῆς ψυχῆς ἔργα ταύτης τὰ πονηρὰ ἑκουσίως ἂν ποιοῖ, τῇ δὲ τῆς πονηρᾶς ἀκουσίως;",
+      "sourceLocus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:375",
+      "localParagraph": 6
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:375.7",
+      "text": "ΙΠ. πάνυ γε.",
+      "sourceLocus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:375",
+      "localParagraph": 7
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:375.8",
+      "text": "ΣΩ. οὐκοῦν καὶ κυνὸς καὶ τῶν ἄλλων ζῴων πάντων;",
+      "sourceLocus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:375",
+      "localParagraph": 8
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:375.9",
+      "text": "ΙΠ. ναί.",
+      "sourceLocus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:375",
+      "localParagraph": 9
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:375.10",
+      "text": "ΣΩ. τί δὲ δή; ἀνθρώπου ψυχὴν ἐκτῆσθαι τοξότου ἄμεινόν ἐστιν, ἥτις ἑκουσίως ἁμαρτάνει τοῦ σκοποῦ, ἢ ἥτις ἀκουσίως;",
+      "sourceLocus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:375",
+      "localParagraph": 10
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:375.11",
+      "text": "ΙΠ. ἥτις ἑκουσίως.",
+      "sourceLocus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:375",
+      "localParagraph": 11
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:375.12",
+      "text": "ΣΩ. οὐκοῦν καὶ αὕτη ἀμείνων εἰς τοξικήν ἐστιν;",
+      "sourceLocus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:375",
+      "localParagraph": 12
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:375.13",
+      "text": "ΙΠ. ναί.",
+      "sourceLocus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:375",
+      "localParagraph": 13
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:375.14",
+      "text": "ΣΩ. καὶ ψυχὴ ἄρα ἀκουσίως ἁμαρτάνουσα πονηροτέρα ἢ ἑκουσίως;",
+      "sourceLocus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:375",
+      "localParagraph": 14
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:375.15",
+      "text": "ΙΠ. ἐν τοξικῇ γε.",
+      "sourceLocus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:375",
+      "localParagraph": 15
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:375.16",
+      "text": "ΣΩ. τί δʼ ἐν ἰατρικῇ; οὐχὶ ἡ ἑκοῦσα κακὰ ἐργαζομένη περὶ τὰ σώματα ἰατρικωτέρα;",
+      "sourceLocus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:375",
+      "localParagraph": 16
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:375.17",
+      "text": "ΙΠ. ναί.",
+      "sourceLocus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:375",
+      "localParagraph": 17
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:375.18",
+      "text": "ΣΩ. ἀμείνων ἄρα αὕτη ἐν ταύτῃ τῇ τέχνῃ τῆς μὴ .",
+      "sourceLocus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:375",
+      "localParagraph": 18
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:375.19",
+      "text": "ΙΠ. ἀμείνων.",
+      "sourceLocus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:375",
+      "localParagraph": 19
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:375.20",
+      "text": "ΣΩ. τί δέ; ἡ κιθαριστικωτέρα καὶ αὐλητικωτέρα καὶ τἆλλα πάντα τὰ κατὰ τὰς τέχνας τε καὶ τὰς ἐπιστήμας, οὐχὶ ἡ ἀμείνων ἑκοῦσα τὰ κακὰ ἐργάζεται καὶ τὰ αἰσχρὰ καὶ ἐξαμαρτάνει, ἡ δὲ πονηροτέρα ἄκουσα;",
+      "sourceLocus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:375",
+      "localParagraph": 20
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:375.21",
+      "text": "ΙΠ. φαίνεται.",
+      "sourceLocus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:375",
+      "localParagraph": 21
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:375.22",
+      "text": "ΣΩ. ἀλλὰ μήν που τάς γε τῶν δούλων ψυχὰς κεκτῆσθαι δεξαίμεθʼ ἂν μᾶλλον τὰς ἑκουσίως ἢ τὰς ἀκουσίως ἁμαρτανούσας τε καὶ κακουργούσας, ὡς ἀμείνους οὔσας εἰς ταῦτα.",
+      "sourceLocus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:375",
+      "localParagraph": 22
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:375.23",
+      "text": "ΙΠ. ναί.",
+      "sourceLocus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:375",
+      "localParagraph": 23
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:375.24",
+      "text": "ΣΩ. τί δέ; τὴν ἡμετέραν αὐτῶν οὐ βουλοίμεθʼ ἂν ὡς βελτίστην ἐκτῆσθαι;",
+      "sourceLocus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:375",
+      "localParagraph": 24
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:375.25",
+      "text": "ΙΠ. ναί.",
+      "sourceLocus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:375",
+      "localParagraph": 25
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:375.26",
+      "text": "ΣΩ. οὐκοῦν βελτίων ἔσται, ἐὰν ἑκοῦσα κακουργῇ τε καὶ ἐξαμαρτάνῃ, ἢ ἐὰν ἄκουσα;",
+      "sourceLocus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:375",
+      "localParagraph": 26
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:375.27",
+      "text": "ΙΠ. δεινὸν μεντἂν εἴη, ὦ Σώκρατες, εἰ οἱ ἑκόντες ἀδικοῦντες βελτίους ἔσονται ἢ οἱ ἄκοντες.",
+      "sourceLocus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:375",
+      "localParagraph": 27
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:375.28",
+      "text": "ΣΩ. ἀλλὰ μὴν φαίνονταί γε ἐκ τῶν εἰρημένων.",
+      "sourceLocus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:375",
+      "localParagraph": 28
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:375.29",
+      "text": "ΙΠ. οὔκουν ἔμοιγε.",
+      "sourceLocus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:375",
+      "localParagraph": 29
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:375.30",
+      "text": "ΣΩ. ἐγὼ δʼ ᾤμην, ὦ Ἱππία, καὶ σοὶ φανῆναι. πάλιν δʼ ἀπόκριναι· ἡ δικαιοσύνη οὐχὶ ἢ δύναμίς τίς ἐστιν ἢ ἐπιστήμη ἢ ἀμφότερα; ἢ οὐκ ἀνάγκη ἕν γέ τι τούτων εἶναι τὴν δικαιοσύνην;",
+      "sourceLocus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:375",
+      "localParagraph": 30
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:375.31",
+      "text": "ΙΠ. ναί.",
+      "sourceLocus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:375",
+      "localParagraph": 31
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:375.32",
+      "text": "ΣΩ. οὐκοῦν εἰ μὲν δύναμίς ἐστι τῆς ψυχῆς ἡ δικαιοσύνη, ἡ δυνατωτέρα ψυχὴ δικαιοτέρα ἐστί; βελτίων γάρ που ἡμῖν ἐφάνη, ὦ ἄριστε, ἡ τοιαύτη.",
+      "sourceLocus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:375",
+      "localParagraph": 32
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:375.33",
+      "text": "ΙΠ. ἐφάνη γάρ.",
+      "sourceLocus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:375",
+      "localParagraph": 33
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:375.34",
+      "text": "ΣΩ. τί δʼ εἰ ἐπιστήμη; οὐχ ἡ σοφωτέρα ψυχὴ δικαιοτέρα, ἡ δὲ ἀμαθεστέρα ἀδικωτέρα;",
+      "sourceLocus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:375",
+      "localParagraph": 34
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:375.35",
+      "text": "ΙΠ. ναί.",
+      "sourceLocus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:375",
+      "localParagraph": 35
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:375.36",
+      "text": "ΣΩ. τί δʼ εἰ ἀμφότερα; οὐχ ἡ ἀμφοτέρας ἔχουσα, ἐπιστήμην καὶ δύναμιν, δικαιοτέρα, ἡ δʼ ἀμαθεστέρα ἀδικωτέρα; οὐχ οὕτως ἀνάγκη ἔχειν;",
+      "sourceLocus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:375",
+      "localParagraph": 36
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:375.37",
+      "text": "ΙΠ. φαίνεται.",
+      "sourceLocus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:375",
+      "localParagraph": 37
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:376.1",
+      "text": "ΣΩ. οὐκοῦν ἡ δυνατωτέρα καὶ σοφωτέρα αὕτη ἀμείνων οὖσα ἐφάνη καὶ ἀμφότερα μᾶλλον δυναμένη ποιεῖν, καὶ τὰ καλὰ καὶ τὰ αἰσχρά, περὶ πᾶσαν ἐργασίαν;",
+      "sourceLocus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:376",
+      "localParagraph": 1
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:376.2",
+      "text": "ΙΠ. ναί.",
+      "sourceLocus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:376",
+      "localParagraph": 2
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:376.3",
+      "text": "ΣΩ. ὅταν ἄρα τὰ αἰσχρὰ ἐργάζηται, ἑκοῦσα ἐργάζεται διὰ δύναμιν καὶ τέχνην· ταῦτα δὲ δικαιοσύνης φαίνεται, ἤτοι ἀμφότερα ἢ τὸ ἕτερον.",
+      "sourceLocus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:376",
+      "localParagraph": 3
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:376.4",
+      "text": "ΙΠ. ἔοικεν.",
+      "sourceLocus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:376",
+      "localParagraph": 4
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:376.5",
+      "text": "ΣΩ. καὶ τὸ μέν γε ἀδικεῖν κακὰ ποιεῖν ἐστιν, τὸ δὲ μὴ ἀδικεῖν καλά.",
+      "sourceLocus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:376",
+      "localParagraph": 5
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:376.6",
+      "text": "ΙΠ. ναί.",
+      "sourceLocus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:376",
+      "localParagraph": 6
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:376.7",
+      "text": "ΣΩ. οὐκοῦν ἡ δυνατωτέρα καὶ ἀμείνων ψυχή, ὅτανπερ ἀδικῇ, ἑκοῦσα ἀδικήσει, ἡ δὲ πονηρὰ ἄκουσα;",
+      "sourceLocus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:376",
+      "localParagraph": 7
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:376.8",
+      "text": "ΙΠ. φαίνεται.",
+      "sourceLocus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:376",
+      "localParagraph": 8
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:376.9",
+      "text": "ΣΩ. οὐκοῦν ἀγαθὸς ἀνὴρ ὁ τὴν ἀγαθὴν ψυχὴν ἔχων, κακὸς δὲ ὁ τὴν κακήν;",
+      "sourceLocus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:376",
+      "localParagraph": 9
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:376.10",
+      "text": "ΙΠ. ναί.",
+      "sourceLocus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:376",
+      "localParagraph": 10
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:376.11",
+      "text": "ΣΩ. ἀγαθοῦ μὲν ἄρα ἀνδρός ἐστιν ἑκόντα ἀδικεῖν, κακοῦ δὲ ἄκοντα, εἴπερ ὁ ἀγαθὸς ἀγαθὴν ψυχὴν ἔχει.",
+      "sourceLocus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:376",
+      "localParagraph": 11
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:376.12",
+      "text": "ΙΠ. ἀλλὰ μὴν ἔχει γε.",
+      "sourceLocus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:376",
+      "localParagraph": 12
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:376.13",
+      "text": "ΣΩ. ὁ ἄρα ἑκὼν ἁμαρτάνων καὶ αἰσχρὰ καὶ ἄδικα ποιῶν, ὦ Ἱππία, εἴπερ τίς ἐστιν οὗτος, οὐκ ἂν ἄλλος εἴη ἢ ὁ ἀγαθός.",
+      "sourceLocus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:376",
+      "localParagraph": 13
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:376.14",
+      "text": "ΙΠ. οὐκ ἔχω ὅπως σοι συγχωρήσω, ὦ Σώκρατες, ταῦτα.",
+      "sourceLocus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:376",
+      "localParagraph": 14
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:376.15",
+      "text": "ΣΩ. οὐδὲ γὰρ ἐγὼ ἐμοί, ὦ Ἱππία· ἀλλʼ ἀναγκαῖον οὕτω φαίνεσθαι νῦν γε ἡμῖν ἐκ τοῦ λόγου. ὅπερ μέντοι πάλαι ἔλεγον, ἐγὼ περὶ ταῦτα ἄνω καὶ κάτω πλανῶμαι καὶ οὐδέποτε ταὐτά μοι δοκεῖ. καὶ ἐμὲ μὲν οὐδὲν θαυμαστὸν πλανᾶσθαι οὐδὲ ἄλλον ἰδιώτην· εἰ δὲ καὶ ὑμεῖς πλανήσεσθε οἱ σοφοί, τοῦτο ἤδη καὶ ἡμῖν δεινὸν εἰ μηδὲ παρʼ ὑμᾶς ἀφικόμενοι παυσόμεθα τῆς πλάνης.",
+      "sourceLocus": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2:376",
+      "localParagraph": 15
+    }
+  ]
+}
