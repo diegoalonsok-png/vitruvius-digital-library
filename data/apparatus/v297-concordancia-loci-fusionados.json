@@ -1,0 +1,24 @@
+{
+  "schema": "vdl-v297-merged-loci-map-v1",
+  "date": "2026-11-16",
+  "method": "Exact normalized opening-phrase search of V514 loci against complete V297 Latin passage bodies; no invented Latin.",
+  "source": "data/structured/theory-en.json",
+  "mapping": [
+    {
+      "canonical_locus": "7.7.2",
+      "contained_in_v297_locus": "7.7.1",
+      "status": "text_present_merged_index_segment"
+    },
+    {
+      "canonical_locus": "7.7.3",
+      "contained_in_v297_locus": "7.7.1",
+      "status": "text_present_merged_index_segment"
+    },
+    {
+      "canonical_locus": "7.7.5",
+      "contained_in_v297_locus": "7.7.4",
+      "status": "text_present_merged_index_segment"
+    }
+  ],
+  "warning": "Segmented locus correspondence is proven by the text index, but does not assert that punctuation/paragraph breaks in V297 match those of V514."
+}
