@@ -26,6 +26,44 @@ function init(){
  const article=root.closest(".reader");
  const sourceContainer=root.querySelector(".cl-source-column");
  const translationContainer=root.querySelector(".cl-translation-column");
+ // Editorial tools belong in a collapsible strip above BOTH texts, never
+ // inside only the Latin column where they offset its first line.
+ const sourceHeader=sourceContainer.querySelector(".cl-pane-title");
+ const translationHeader=translationContainer.querySelector(".cl-pane-title");
+ const toolsFold=document.createElement("details");
+ toolsFold.className="cl-annotation-tools-fold";
+ const toolsSummary=document.createElement("summary");
+ toolsSummary.textContent="Marcas, lupa y colores · herramientas de ambos textos";
+ const toolsContent=document.createElement("div");toolsContent.className="cl-annotation-tools-content";
+ toolsFold.append(toolsSummary,toolsContent);
+ layout.append(toolsFold);
+ function relocateReadingControls(){
+  const sourceBar=sourceContainer.querySelector(".vdl-annotation-bar");
+  if(sourceBar)toolsContent.append(sourceBar);
+  const hitNav=sourceContainer.querySelector("#hit-nav");
+  if(hitNav)toolsContent.append(hitNav);
+  const translationBar=translationContainer.querySelector(".cl-translation-annotations");
+  if(translationBar)toolsContent.append(translationBar);
+  // The inline locus is preserved for references, selection and screen readers,
+  // but the repeated visible label must not add a line above the Latin text.
+  const originalLocus=source.querySelector(".locus")?.textContent?.trim();
+  const translatedLocus=translationContainer.querySelector(".cl-translation-label")?.textContent?.trim();
+  if(sourceHeader){
+   const base=sourceHeader.dataset.baseHeading||sourceHeader.textContent.split(" · Locus ")[0];
+   sourceHeader.dataset.baseHeading=base;
+   sourceHeader.textContent=base+(originalLocus?" · "+originalLocus:"");
+  }
+  if(translationHeader){
+   translationHeader.textContent="Traducción"+(translatedLocus&&/Locus\s/i.test(translatedLocus)?" · "+translatedLocus:"");
+  }
+ }
+ // Called only when passage content or the original annotation component changes.
+ // Moving nodes out of their source panel causes at most one extra observation.
+ const toolWatcher=new MutationObserver(relocateReadingControls);
+ toolWatcher.observe(sourceContainer,{childList:true,subtree:true});
+ toolWatcher.observe(translationContainer,{childList:true,subtree:true});
+ relocateReadingControls();
+
  function updateSharedPalette(){
   const styles=article?.style;
   const bg=styles?.getPropertyValue("--reader-bg")?.trim()||"#fffdf7";
@@ -84,34 +122,17 @@ function init(){
   try{localStorage.setItem(STORE,String(height))}catch{}
   align();
  }
- // Align the FIRST LINE OF TEXT, not the outer passage boxes. The source
- // has an additional locus label and annotation controls which otherwise leave
- // one or two lines of visual offset against the translated paragraph.
+ // Both first paragraphs now occupy the same vertical position because the
+ // original-only controls and duplicate locus are outside the reading panes.
+ // Keep this lightweight update for asynchronous source/translation changes.
  let frame=0;
- function textFirstLineTop(element){
-  if(!element)return null;
-  const range=document.createRange();
-  range.selectNodeContents(element);
-  const rects=range.getClientRects();
-  if(rects.length){
-   for(const rect of rects)if(rect.height>0&&rect.width>0)return rect.top;
-  }
-  return element.getBoundingClientRect().top;
- }
  function align(){
   if(frame)cancelAnimationFrame(frame);
   frame=requestAnimationFrame(()=>{
    frame=0;
-   source.style.marginTop="0px";target.style.marginTop="0px";
-   if(root.classList.contains("single-source")||window.matchMedia("(max-width:900px)").matches||target.closest("[hidden]"))return;
-   const sourceText=source.querySelector("p > span:not(.locus)")||source.querySelector("p");
-   const translatedText=target.querySelector("p:not(.cl-caution)")||target;
-   const a=textFirstLineTop(sourceText),b=textFirstLineTop(translatedText);
-   if(a===null||b===null)return;
-   // Only positive spacing: we never pull either passage under its controls.
-   const common=Math.max(a,b);
-   source.style.marginTop=Math.max(0,Math.round(common-a))+"px";
-   target.style.marginTop=Math.max(0,Math.round(common-b))+"px";
+   source.style.marginTop="0px";
+   target.style.marginTop="0px";
+   relocateReadingControls();
   });
  }
  slider.addEventListener("input",()=>applyHeight(Number(slider.value)));
