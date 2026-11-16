@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="es" translate="no">
+<head>
+<meta charset="utf-8"><meta name="google" content="notranslate">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Estadística léxica de Vitruvio · Kurilo, Krohn y Rose · Vitruvius Digital Library</title>
+<meta name="description" content="Frecuencias de vocabulario latino de los diez libros de De architectura, por edición, libro, capítulo y locus, con gráficos y concordancias textuales independientes.">
+<link rel="canonical" href="https://vitruvius-digital-library.org/estadisticas-lexicas">
+<link rel="stylesheet" href="assets/style.css"><link rel="stylesheet" href="assets/academic.css">
+<style>
+:root{color-scheme:light}body{background:#f8f6f0;color:#28241f;font-family:system-ui,sans-serif;margin:0}main{max-width:1180px;margin:auto;padding:24px clamp(15px,3vw,35px) 75px}
+nav{display:flex;gap:15px;flex-wrap:wrap;font:13px/1.5 system-ui;margin-bottom:24px}nav a{color:inherit}
+h1,h2{font-family:Georgia,serif;font-weight:400}h1{font-size:clamp(29px,4vw,45px);margin:8px 0}h2{font-size:25px;margin:22px 0 12px}.eyebrow{font:600 11px system-ui;letter-spacing:.15em;color:#746555}
+.lead{font:15px/1.7 Georgia,serif;max-width:94ch}.controls{display:flex;flex-wrap:wrap;gap:12px;align-items:end;border-block:1px solid #bdb4a6;padding:14px 0;margin:22px 0}
+.controls label{font:600 12px system-ui;display:grid;gap:5px}.controls select,.controls input,.controls button,button{font:14px system-ui;min-height:38px;padding:7px 10px;border:1px solid #a99f8d;border-radius:4px;background:#fffdfa;color:#29251f}
+button{cursor:pointer}.controls input{min-width:158px;max-width:250px}.controls .action{background:#253e50;color:#fff}
+.metrics{display:flex;flex-wrap:wrap;gap:26px;border-bottom:1px solid #c4baad;padding-bottom:14px}.metrics div{min-width:160px}.metrics strong{font:600 25px Georgia,serif;display:block}.metrics small{font:12px system-ui;color:#615b52}
+.grid{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(300px,.8fr);gap:25px}@media(max-width:850px){.grid{grid-template-columns:1fr}}
+.chart{border-top:1px solid #baaf9e;margin-top:8px;padding-top:9px}.bar-row{display:grid;grid-template-columns:125px minmax(100px,1fr) 80px;gap:8px;align-items:center;margin:8px 0;font:13px system-ui}.bar-row a{color:inherit;overflow-wrap:anywhere}
+.bar-track{height:16px;border:1px solid #bcb1a0;border-radius:3px;overflow:hidden;background:#f3efe7}.bar-fill{height:100%;min-width:1px;background:#647988}
+.bar-row small{font:12px system-ui;text-align:right;white-space:nowrap;font-variant-numeric:tabular-nums}
+.book-row{padding:11px 0;border-bottom:1px solid #e0d8ca}.book-row>strong{font:600 13px system-ui}.mini-bars{display:grid;gap:6px;margin-top:7px}.mini-row{display:grid;grid-template-columns:67px minmax(100px,1fr) 75px;gap:8px;align-items:center;font:12px system-ui}
+.mini-fill{height:10px;background:#657a87}.mini-row[data-edition="krohn-1912"] .mini-fill{background:#8d795b}.mini-row[data-edition="rose-1899"] .mini-fill{background:#a28b82}
+.notice{font:12px/1.65 system-ui;color:#5e574e;margin:13px 0}.note{border-left:3px solid #b59c68;padding:10px 14px;background:#eee9df;font:13px/1.65 system-ui}
+#status{font:13px/1.5 system-ui;min-height:19px}.toolbar{display:flex;gap:9px;flex-wrap:wrap;margin:9px 0}footer{font:12px/1.65 system-ui;border-top:1px solid #bdb4a6;padding:15px 0;margin-top:25px}
+html[data-theme="dark"] body{background:#131d25;color:#eee7db}html[data-theme="dark"] .note,html[data-theme="dark"] .controls select,html[data-theme="dark"] .controls input,html[data-theme="dark"] button{background:#283844;color:#eee9db;border-color:#71818c}html[data-theme="dark"] a{color:#f0d49c}html[data-theme="dark"] .notice,html[data-theme="dark"] .metrics small{color:#d0c4b7}
+@media print{.controls,.toolbar,nav{display:none}.grid{display:block}.bar-fill,.mini-fill{print-color-adjust:exact}}
+</style>
+<script defer src="assets/site-bar.js"></script>
+<script defer src="assets/analytics-config.js"></script><script defer src="assets/analytics.js"></script>
+<script defer src="assets/lexical-statistics.js?v=20261116-1"></script>
+</head>
+<body>
+<main>
+<nav aria-label="Navegación"><a href="index.html">Inicio</a><a href="aparato-comparativo.html?locus=1.1.1">Aparato comparativo</a><a href="apparatus-bude.html?locus=1.1.1&edition=v514&translation=es">Tres visores</a><a href="cobertura-aparato-critico.html">Cobertura crítica</a><a href="lexicon.html">Lexicon</a></nav>
+<header><p class="eyebrow">VITRVVIVS · LEXICOGRAPHIA · CONCORDANTIA</p><h1>Estadística léxica de <i>De architectura</i></h1>
+<p class="lead">Frecuencias de palabras latinas en los diez libros de Vitruvio: texto Kurilo V514, transcripción TEI de Krohn (1912) y transcripción de Rose (1899). Explore el conjunto, cada libro o sus capítulos. Cada resultado permite volver al locus y cotejar las lecturas editoriales.</p></header>
+<section class="controls" aria-label="Filtros de la estadística">
+<label>Edición para el ranking<select id="edition"><option value="recensio-es">Kurilo V514</option><option value="krohn-1912">Krohn 1912</option><option value="rose-1899">Rose 1899</option></select></label>
+<label>Alcance<select id="scope"><option value="all">Diez libros completos</option><option value="book">Un libro</option><option value="chapter">Un capítulo</option></select></label>
+<label>Libro<select id="book"></select></label><label>Capítulo<select id="chapter"></select></label>
+<label>Tipo de recuento<select id="type"><option value="technical">Conceptos arquitectónicos (grupos controlados)</option><option value="content">Vocabulario frecuente (sin palabras funcionales)</option><option value="all">Todas las palabras, incluidas las gramaticales</option></select></label>
+<label>Término para evolución por libro<input id="term" type="search" value="firmitas" placeholder="firmitas, symmetria, domus…" maxlength="80"></label>
+<button id="apply" class="action" type="button">Actualizar gráficos</button>
+</section>
+<p id="status" role="status" aria-live="polite">Cargando los tres corpus latinos…</p>
+<section class="metrics" id="metrics" aria-label="Estadísticas agregadas"></section>
+<div class="grid">
+<section aria-labelledby="rank-title"><h2 id="rank-title">Palabras más frecuentes</h2><p class="notice" id="rank-method"></p><div id="rank" class="chart" role="figure" aria-label="Gráfico de barras: términos más frecuentes en la selección"></div><div class="toolbar"><button id="csv-rank" type="button">Exportar ranking CSV</button></div></section>
+<section aria-labelledby="trend-title"><h2 id="trend-title">Distribución por libros</h2><p class="notice" id="trend-method">Recuento por cada 1.000 palabras, comparando las tres ediciones independientes.</p><div id="trend" class="chart" role="figure" aria-label="Gráfico de barras: frecuencia de una palabra por libro y edición"></div><div class="toolbar"><button id="csv-trend" type="button">Exportar distribución CSV</button></div></section>
+</div>
+<p class="note"><strong>Criterio filológico:</strong> las frecuencias se calculan sobre las transcripciones digitales, no sobre las fotografías. Las grafías u/v e i/j se normalizan para la búsqueda, pero no se altera ninguna edición. Los grupos de flexiones latinas son selectivos y explícitos, no una lematización automática completa. El texto de Rose conserva 26 loci cuya división automática está pendiente de cotejo; Krohn requiere también verificación final con el impreso. Las diferencias entre ediciones son evidencia para el estudio crítico, no errores presumidos.</p>
+<footer><strong>Editiones adhibitae.</strong> Kurilo, V514 (latín); Fritz Krohn, <i>Vitruvii De architectura libri decem</i>, Leipzig: Teubner, 1912, transcripción TEI de PerseusDL (CC BY-SA 4.0); Valentin Rose, <i>Vitruvii De architectura libri decem</i>, Leipzig: Teubner, 1899, transcripción Project Gutenberg n.º 51812. Las cifras se recalculan en su navegador a partir de los índices por locus publicados en esta biblioteca.</footer>
+</main>
+</body></html>
