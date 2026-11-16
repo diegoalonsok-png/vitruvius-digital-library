@@ -2,8 +2,8 @@
  "schema": "vitruvia-classics-search-registry-v1",
  "updated": "2026-11-16",
  "description": "Registro verificable de transcripciones HTML y textos JSON existentes que admiten búsqueda literal de contenido. No incluye automáticamente PDF escaneados, facsímiles ni fichas sin texto. Los índices auxiliares por locus y el aparato crítico se declaran por separado; no se suman a versiones textuales originales ni implican colación autóptica.",
- "count": 293,
- "works": 228,
+ "count": 294,
+ "works": 229,
  "entries": [
   {
    "workId": "aeneas-tacticus-poliorketika",
@@ -2808,6 +2808,16 @@
    "path": "data/classics-corpus/tertullian-la.json",
    "reader": "classics-text-reader.html?work=tertullian&lang=la",
    "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+  },
+  {
+   "workId": "theocritus-idyllia",
+   "author": "Teócrito",
+   "title": "Εἰδύλλια",
+   "language": "grc",
+   "format": "json-passages",
+   "path": "data/classics-corpus/theocritus-idyllia-grc.json",
+   "reader": "classics-text-reader.html?work=theocritus-idyllia&lang=grc",
+   "sourceDescription": "Perseus TEI · R. J. Cholmeley · CC BY-SA 4.0 · atribuciones por revisar"
   },
   {
    "workId": "theophrastus-characters",
