@@ -40,7 +40,7 @@ jobs:
         run: |
           node --input-type=module <<'JS'
           import fs from 'node:fs';
-          const names=['callimachus-hymni','theocritus-idyllia','menander-dyskolos','aristophanes-knights','aristophanes-thesmophoriazusae','aristophanes-ecclesiazusae','aristophanes-plutus','euripides-cyclops','euripides-ion','euripides-helena'];
+          const names=JSON.parse(fs.readFileSync('data/bibliotheca-expansion-publicada-2026-11-16.json','utf8')).works.filter(w=>w.corpusFiles?.grc).map(w=>w.id);
           const registry=JSON.parse(fs.readFileSync('data/classics-corpus/search-registry.json','utf8'));
           for(const id of names){
             const f='data/classics-corpus/'+id+'-grc.json';
@@ -53,13 +53,13 @@ jobs:
         env:
           NODE_OPTIONS: --max-old-space-size=6144
         run: node scripts/build-classics-lexical-index.mjs
-      - name: Comprobar diez obras en el manifiesto
+      - name: Comprobar todas las incorporaciones griegas del catálogo en el manifiesto
         run: |
           node --input-type=module <<'JS'
           import fs from 'node:fs';
           const m=JSON.parse(fs.readFileSync('data/index/classics/manifest.json','utf8'));
           const entries=Array.isArray(m.index)?m.index:(Array.isArray(m.editions)?m.editions:[]);
-          for(const id of ['callimachus-hymni','theocritus-idyllia','menander-dyskolos','aristophanes-knights','aristophanes-thesmophoriazusae','aristophanes-ecclesiazusae','aristophanes-plutus','euripides-cyclops','euripides-ion','euripides-helena'])
+          for(const id of JSON.parse(fs.readFileSync('data/bibliotheca-expansion-publicada-2026-11-16.json','utf8')).works.filter(w=>w.corpusFiles?.grc).map(w=>w.id))
             if(!entries.some(x=>x.id===id&&x.lang==='grc'))throw Error('Falta en índice '+id);
           JS
       - name: Probar fichas, lectores, índices y alias editoriales de R2
