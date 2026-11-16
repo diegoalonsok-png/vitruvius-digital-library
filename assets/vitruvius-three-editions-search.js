@@ -9,10 +9,10 @@ const create=(tag,text,cls)=>{const n=document.createElement(tag);if(text!=null)
 const panel=create("section",null,"vdl-three-editions");
 panel.id="vdl-three-editions-search";panel.setAttribute("aria-label","Búsqueda latina conjunta en Kurilo Krohn y Rose");
 const css=create("style");css.textContent=`
-.vdl-three-editions{margin:20px 0 28px;padding:17px 18px;background:transparent;color:inherit;border:1px solid #b6aa93;border-radius:8px;max-width:100%;box-sizing:border-box}
-.vdl-three-editions h2{font:500 clamp(20px,2vw,26px)/1.3 Georgia,serif;margin:0 0 10px}
-.vdl-three-editions p{font:13px/1.6 system-ui;margin:5px 0 10px}
-.vdl-three-editions .vdl-tabs{display:flex;flex-wrap:wrap;gap:7px;margin:12px 0}
+.vdl-three-editions{margin:8px 0 12px;padding:7px 12px;background:transparent;color:inherit;border:1px solid #b6aa93;border-radius:7px;max-width:100%;box-sizing:border-box}
+.vdl-three-editions h2{font:500 16px/1.25 Georgia,serif;margin:0}
+.vdl-three-editions p{font:11px/1.45 system-ui;margin:4px 0 6px}
+.vdl-three-editions .vdl-tabs{display:flex;flex-wrap:wrap;gap:6px;margin:5px 0}
 .vdl-three-editions .vdl-tabs button{border:1px solid #a99e8e;border-radius:5px;padding:7px 10px;font:12px/1.4 system-ui;cursor:pointer;color:inherit;background:transparent}
 .vdl-three-editions .vdl-tabs button[aria-pressed="true"]{font-weight:700;outline:1px solid currentColor}
 .vdl-three-editions .vdl-entry{padding:12px 0;border-top:1px solid #bbb2a3;font:13px/1.65 system-ui}
@@ -21,9 +21,28 @@ const css=create("style");css.textContent=`
 .vdl-three-editions .vdl-links{display:flex;flex-wrap:wrap;gap:8px 16px;font:12px system-ui}
 .vdl-three-editions a{color:inherit;text-decoration:underline;text-underline-offset:2px}
 .vdl-three-editions .vdl-status{font:12px/1.55 system-ui;opacity:.8}
+.vdl-three-editions details summary{cursor:pointer;font:600 12px/1.4 system-ui;list-style:revert}
+.vdl-three-editions .vdl-biblio{font:11px/1.55 system-ui;padding:6px 0 2px}
+.vdl-three-editions .vdl-biblio div{margin:3px 0}
+.vdl-three-editions .vdl-biblio a{white-space:nowrap}
+.vdl-three-editions:has(.vdl-entry) {padding:11px 12px}
 `;document.head.append(css);
-panel.append(create("h2","Resultados latinos por edición"),create("p","Kurilo V514 / V554 / V297 · Krohn 1912 · Rose 1899. Búsqueda en textos latinos por locus, con equivalencias léxicas controladas; se respetan las lecturas de cada edición."));
-const status=create("p","", "vdl-status");status.setAttribute("role","status");
+const heading=create("details");
+const summary=create("summary","Resultados latinos por edición · cinco textos");
+heading.append(summary);
+const biblio=create("div",null,"vdl-biblio");
+const references=[
+ ["Vitruvio, De architectura. Nueva recensio académica bilingüe: El arquitecto de la teoría — Diego A. Kurilo, V514, latín–castellano (Sophia Lux, 2026)","10.5281/zenodo.23884757"],
+ ["Vitruve, De architectura. Nouvelle recensio académique bilingue: L’architecte de la théorie — Diego A. Kurilo, V554, latín–francés (Sophia Lux, 2026)","10.5281/zenodo.23885110"],
+ ["The Architect of Theory: Vitruvius and the Intellectual World of Roman Antiquity — Diego A. Kurilo, V297 (Sophia Lux, 2026)","10.5281/zenodo.23885404"],
+ ["Marcus Vitruvius Pollio, De architectura libri decem — edición de Fritz Krohn (1912)",null],
+ ["Marcus Vitruvius Pollio, De architectura libri decem — edición de Valentin Rose (1899)",null]
+];
+for(const [full,doi] of references){const line=create("div",full+" · ");if(doi){const link=create("a","DOI "+doi);link.href="https://doi.org/"+doi;link.target="_blank";link.rel="noopener noreferrer";line.append(link)}else line.append(document.createTextNode("DOI e ISBN no documentados para esta edición histórica"));biblio.append(line)}
+biblio.append(create("div","ISBN editorial declarado para las ediciones Kurilo: 978-631-01-6651-3 (asignación individual todavía pendiente de verificación)."));
+heading.append(biblio);
+panel.append(heading);
+const status=create("p","", "vdl-status");status.setAttribute("role","status");status.hidden=true;
 const tabs=create("nav",null,"vdl-tabs"),list=create("div");
 panel.append(status,tabs,list);
 if(home){const anchor=document.getElementById("more-results")||document.getElementById("search-results");if(anchor)anchor.after(panel);else home.append(panel)}
@@ -103,8 +122,8 @@ function paint(){
  if(filtered.length>ordered.length)list.append(create("p","Se muestran "+ordered.length+" resultados; refine la búsqueda o seleccione una edición.","vdl-status"));
 }
 async function search(q){
- const n=++sequence,q0=String(q||"").trim();if(!q0){status.textContent="";list.replaceChildren();tabs.replaceChildren();lastHits=[];return}
- status.textContent="Consultando textos latinos de Kurilo, Krohn y Rose por locus…";let data;
+ const n=++sequence,q0=String(q||"").trim();if(!q0){status.textContent="";status.hidden=true;list.replaceChildren();tabs.replaceChildren();lastHits=[];heading.open=false;return}
+ status.hidden=false;heading.open=true;status.textContent="Consultando textos latinos de Kurilo, Krohn y Rose por locus…";let data;
  try{data=await getData()}catch(error){if(n===sequence)status.textContent="Los índices no están disponibles: "+error.message;return}
  if(n!==sequence)return;
  const ref=romanLocus(q0),mode=document.getElementById("search-mode")?.value||"words";
