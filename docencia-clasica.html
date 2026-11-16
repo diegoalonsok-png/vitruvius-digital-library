@@ -54,7 +54,8 @@ html[data-theme="dark"] .classroom .subject,html[data-theme="dark"] .classroom .
 </main>
 <script>
 (async()=>{try{const r=await fetch('data/bibliotheca-graeca-latina-I-bce-I-ce.json');if(!r.ok)return;const j=await r.json(),w=j.works||[];const complete=w.filter(x=>x.publicStatus==='lectura-local-completa').length,partial=w.filter(x=>x.publicStatus==='lectura-local-parcial').length;document.getElementById('aula-catalog-status').textContent='Inventario actual: '+w.length+' fichas, '+complete+' con lectura local completa y '+partial+' parcial (estado declarado por el catálogo; la prueba de archivos se realiza aparte).';}catch(e){}})();
-</script><script defer src="assets/ui-idioma.js?v=20261112-sitio3"></script><footer data-vdl-legal-notice="2026" role="contentinfo" aria-label="Derechos editoriales" style="box-sizing:border-box;display:block;clear:both;grid-column:1/-1;width:100%;margin:28px 0 0;padding:16px 18px;border-top:1px solid currentColor;text-align:center;font:12px/1.65 system-ui,sans-serif;color:inherit;background:transparent">
+</script><script defer src="assets/ui-idioma.js?v=20261112-sitio3"></script>
+<footer data-vdl-legal-notice="2026" role="contentinfo" aria-label="Derechos editoriales" style="box-sizing:border-box;display:block;clear:both;grid-column:1/-1;width:100%;margin:28px 0 0;padding:16px 18px;border-top:1px solid currentColor;text-align:center;font:12px/1.65 system-ui,sans-serif;color:inherit;background:transparent">
 <strong>© 2026 Editorial Sophia Lux · Arq. Diego Kurilo. Derechos reservados.</strong>
 <span style="opacity:.8">Los derechos sobre los materiales originales, el diseño y los aportes editoriales pertenecen a sus respectivos titulares. Los textos antiguos, facsímiles, imágenes y recursos de terceros conservan su situación jurídica y licencias propias.</span>
 </footer>
