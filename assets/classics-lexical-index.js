@@ -80,11 +80,24 @@ function catalogues(){
   // A complete R2 lexical index is added only after SHA256 verification.
   // Earlier GitHub and R2 expansion editions take precedence on duplicates.
   try{
-   const r2=await load("data/index/classics-r2/manifest.json");
-   if(r2?.schema==="vitruvia-classics-lexical-index-v1"&&
-      r2.works===r2.index?.length&&r2.r2VerifiedEditions===r2.works&&
-      r2.r2ManifestPath==="data/r2/corpus-manifest.json")
-    out.push({base:"data/index/classics-r2/",info:r2});
+   const [r2,source]=await Promise.all([
+    load("data/index/classics-r2/manifest.json"),
+    load("data/r2/corpus-manifest.json")
+   ]);
+   const sourceDocs=Array.isArray(source?.obras)?new Map(source.obras.map(e=>[source.base+e.archivo,e])):new Map();
+   const matches=source?.schema==="vdl-corpus-r2-1"&&
+    source.base==="https://libros.vitruvius-digital-library.org/corpus/"&&
+    r2?.schema==="vitruvia-classics-lexical-index-v1"&&
+    Array.isArray(r2.index)&&r2.works===r2.index.length&&
+    r2.r2VerifiedEditions===sourceDocs.size&&r2.works===sourceDocs.size&&
+    r2.r2ManifestPath==="data/r2/corpus-manifest.json"&&
+    new Set(r2.index.map(w=>w.file)).size===sourceDocs.size&&
+    r2.index.every(w=>{
+     const original=sourceDocs.get(w.file);
+     return original&&w.id===original.workId&&w.lang===original.language&&
+      w.sha256===original.sha256&&w.passages===original.pasajes;
+    });
+   if(matches)out.push({base:"data/index/classics-r2/",info:r2});
   }catch{/* The other indices work before the complete R2 index is generated. */}
   return out;
  })();
