@@ -1,0 +1,20 @@
+/* Bibliotheca statistics: one compact, non-expanding line, Lexicon visual model. */
+main.library #classics-tally{padding:4px 0!important;margin:4px 0!important;border-top:1px solid #5556;border-bottom:1px solid #5556;background:transparent!important}
+main.library #classics-tally .classics-tally-inner{width:100%!important;max-width:none!important}
+main.library #classics-tally .tally-line{display:flex;align-items:center;gap:12px;min-height:34px;min-width:0}
+main.library #classics-tally .tally-line-name{font:600 11px/1.3 system-ui;white-space:nowrap;color:inherit}
+main.library #classics-tally dl{display:flex!important;flex:1 1 auto;justify-content:space-between;align-items:center;gap:6px 13px;margin:0!important;min-width:0;overflow-x:auto;scrollbar-width:thin}
+main.library #classics-tally dl>div{display:inline-flex!important;flex:0 0 auto;align-items:baseline;gap:5px;padding:3px 0!important;margin:0!important;border:0!important;background:transparent!important;border-radius:0!important;min-height:0!important}
+main.library #classics-tally dl dd{font:700 15px/1.1 system-ui!important;margin:0!important;color:inherit!important;white-space:nowrap}
+main.library #classics-tally dl dt{font:400 10px/1.2 system-ui!important;margin:0!important;opacity:.85;white-space:nowrap;color:inherit!important}
+main.library #classics-tally dl .tally-catalogue-link{display:none!important}
+main.library #classics-tally .tally-line-details{position:relative;flex:0 0 auto;margin:0;min-width:0;z-index:15}
+main.library #classics-tally .tally-line-details>summary{cursor:pointer;padding:4px 7px;border:1px solid #7777;border-radius:4px;font:500 10px/1.3 system-ui;white-space:nowrap;color:inherit}
+main.library #classics-tally .tally-line-details[open]{background:transparent!important}
+main.library #classics-tally .tally-line-details>p,
+main.library #classics-tally .tally-line-details>a,
+main.library #classics-tally .tally-line-details>small{display:block;margin:8px 0 0;font:11px/1.45 system-ui}
+main.library #classics-tally .tally-line-details[open]>:not(summary){max-width:670px}
+main.library #classics-tally .tally-line-details p:first-of-type{margin-top:8px}
+@media(max-width:1000px){main.library #classics-tally .tally-line{gap:7px}main.library #classics-tally dl{justify-content:flex-start}main.library #classics-tally dl dt{font-size:9px!important}}
+@media(max-width:600px){main.library #classics-tally .tally-line-name{display:none}main.library #classics-tally dl dd{font-size:13px!important}main.library #classics-tally .tally-line-details>summary{font-size:9px}}
