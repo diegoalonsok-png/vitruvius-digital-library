@@ -34,3 +34,13 @@ En R2 ya figura `calimaco-himnos|grc`, mientras la nueva colección local es `ca
 6. Mantener separados «texto original», «traducción», «PDF/OCR», «edición crítica» y «ficha bibliográfica».
 
 **Conclusión:** simetría comprobada para los 44 originales R2; sin prueba suficiente para certificar simetría integral del catálogo y los índices locales de GitHub.
+
+
+## Actualización verificada del lote griego — 16 de noviembre
+- `data/classics-corpus/search-registry.json`: **299 versiones registradas y 234 identificadores de obra**.
+- `data/index/classics/manifest.json`: **255 entradas** e inclusión comprobada de las siete nuevas obras: `callimachus-hymni`, `theocritus-idyllia`, `menander-dyskolos`, `aristophanes-knights`, `aristophanes-thesmophoriazusae`, `aristophanes-ecclesiazusae` y `aristophanes-plutus`.
+- `data/bibliotheca-expansion-publicada-2026-11-16.json` contiene ocho fichas suplementarias. Siete con texto e índice local; `sappho-fragmenta` permanece exclusivamente bibliográfica.
+- Se corrigió el contrato de las fichas: `corpusFiles` debe ser un objeto `{\"grc\":\"data/classics-corpus/archivo-grc.json\"}`, no una lista. Las fichas incorporan enlaces de lectura y estado explícito.
+- El lector `assets/classics-text-reader.js` admite las siete versiones mediante el registro JSON dinámico, sin necesitar una lista fija de obras.
+- Prueba añadida: `scripts/test-bibliotheca-expansion-2026-11.mjs`, integrada en `index-new-greek-classics-2026-11-16.yml`.
+- **Pendiente de comprobación externa:** HTTP de las páginas públicas y resultado de GitHub Actions tras esta última actualización; no se ha verificado nuevo espejo R2 para estas siete ediciones, ni corresponde sobrescribir las ediciones preexistentes `calimaco-himnos` y `teocrito-bucolicos`.
