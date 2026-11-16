@@ -4,10 +4,10 @@
   "method": {
     "scope": "Only indexed 'latin' fields in passage order; excludes translations, editorial commentary outside Latin fields, notes outside Latin fields, indices, HTML, apparatus.",
     "tokenization": "Unicode /\\p{L}[\\p{L}\\p{M}]*/gu, counts alphabetic strings including Greek; editorial signs and numerals do not count. Tokens are lowercased. A word split by editorial symbols may count as 2; Latin source streams remain unchanged.",
-    "term_policy": "Conservative explicit word-form lists and inflection patterns, NOT automatic lemmatization. Includes venustatis, firmitatis and utilitatis; reports exact_surface_token_count separately. Enclitics and unusual spellings may require manual audit.",
+    "term_policy": "Conservative regular-expression inflection families, casefolded preserving u/v, i/j, excludes derivative forms; frequencies count only indexed Latin passage fields, not notes. Surface-count separately available.",
     "middle_policy": "If an odd number, the central token; if even, both tokens at N/2 and N/2+1. Locator reports the locus of the token in that edition. Book-level metrics respect source passage order.",
     "warning": "Different segmentation of V297 loci can alter locations, even when content is present. This is not a count of a hypothetical archetype or a physical book's marginalia.",
-    "correction_note": "Corrected original venustas=0 bug caused by an incorrect inflection pattern; amended derivational term patterns consistently."
+    "correction_note": "The venustas family is counted correctly including venustatis/venustatem; prior zero was a normalization error."
   },
   "sources": [
     {
@@ -158,9 +158,14 @@
           }
         },
         "venustas": {
-          "count": 0,
+          "count": 11,
           "exact_surface_token_count": 0,
-          "forms": {}
+          "forms": {
+            "venustatem": 4,
+            "venustatis": 3,
+            "venustates": 2,
+            "venustate": 2
+          }
         },
         "ordinatio": {
           "count": 5,
@@ -499,9 +504,14 @@
           }
         },
         "venustas": {
-          "count": 0,
+          "count": 11,
           "exact_surface_token_count": 0,
-          "forms": {}
+          "forms": {
+            "venustatem": 4,
+            "venustatis": 3,
+            "venustates": 2,
+            "venustate": 2
+          }
         },
         "ordinatio": {
           "count": 5,
@@ -840,9 +850,14 @@
           }
         },
         "venustas": {
-          "count": 0,
+          "count": 11,
           "exact_surface_token_count": 0,
-          "forms": {}
+          "forms": {
+            "venustatem": 4,
+            "venustatis": 3,
+            "venustates": 2,
+            "venustate": 2
+          }
         },
         "ordinatio": {
           "count": 5,
