@@ -9,7 +9,7 @@ const registry=load("data/classics-corpus/search-registry.json").entries;
 const pdfs=load("data/r2/catalogo-clasicos-r2.json").items;
 const report=load("data/r2/bibliotheca-ocr-coverage.json");
 const records=new Set(master.map(w=>w.id));
-const textWorks=new Set(registry.map(e=>e.workId));
+const textWorks=new Set(registry.map(e=>e.workId).filter(id=>records.has(id))); // count only works from the master catalogue
 const r2=new Map(pdfs.map(e=>[e.id,e]));
 const ocr=report.ocrSearchableWithoutTranscription,aliases=report.alreadyIndexedAsStructuredEdition,missing=report.needsTextOrVerifiableFacsimile;
 const uniq=new Set([...ocr,...aliases,...missing].map(e=>e.id));
