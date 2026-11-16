@@ -54,9 +54,14 @@
       "language": "grc",
       "genre": "Comedia nueva",
       "dating": "siglos IV–III a. C.",
-      "status": "fuente textual pendiente",
-      "textStatus": "not-indexed",
-      "description": "Comedia transmitida sustancialmente en papiros; edición digital griega pendiente de identificación y derechos."
+      "status": "texto griego indexado por líneas editoriales",
+      "textStatus": "indexed",
+      "description": "Comedia transmitida sustancialmente en papiros; edición digital griega pendiente de identificación y derechos.",
+      "source": "GreekDraCor · F. H. Sandbach · Wikisource",
+      "sourceUrl": "https://github.com/dracor-org/greekdracor/blob/main/tei/menander-dyskolos.xml",
+      "corpusFiles": [
+        "data/classics-corpus/menander-dyskolos-grc.json"
+      ]
     }
   ]
 }
