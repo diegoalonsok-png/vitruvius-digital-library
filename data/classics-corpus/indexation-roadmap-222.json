@@ -1,32 +1,32 @@
 {
   "schema": "vitruvius-classics-indexation-roadmap-v1",
-  "updated": "2026-11-15",
+  "updated": "2026-11-16",
   "method": "Counts from hosted edition paths only. A catalogue entry or external Perseus mapping never counts as indexed text or a hosted translation. No AI-supplied passages, unverified OCR, or assumed cross-language alignment. Offsite JSON indexes are counted separately from hosted texts using an evidence snapshot. Registered R2 originals are separate declarations; HTTP availability is not verified here.",
   "targetWorks": 271,
   "counts": {
-    "originalsIndexed": 182,
-    "originalsMissing": 89,
+    "originalsIndexed": 183,
+    "originalsMissing": 88,
     "worksWithHostedTranslation": 59,
     "worksMissingTranslation": 212,
-    "textVersions": 247,
-    "registeredTextVersions": 279,
-    "declaredR2OriginalWorks": 32,
-    "registeredProjectOriginalWorks": 214,
+    "textVersions": 248,
+    "registeredTextVersions": 292,
+    "declaredR2OriginalWorks": 44,
+    "registeredProjectOriginalWorks": 227,
     "registeredOriginalsWithExternal": 242,
-    "offsiteOriginalsIndexed": 28,
+    "offsiteOriginalsIndexed": 27,
     "effectiveOriginalsIndexed": 210,
     "effectiveOriginalsMissing": 61,
     "unindexedEditionRecordsOfExistingVitruviusWork": 3,
     "distinctAncientWorksStillMissingOriginalIndex": 58,
     "offsiteTextVersionsOutsidePages": 28,
     "states": {
-      "original_pendiente": 89,
-      "original_sin_traduccion_local": 123,
+      "original_pendiente": 88,
+      "original_sin_traduccion_local": 124,
       "original_y_traduccion_local": 59
     },
     "sourceReadinessForMissingOriginals": {
       "correspondencia_bibliografica_ambigua": 3,
-      "requiere_fuente_no_canonica_o_edicion_especifica": 7,
+      "requiere_fuente_no_canonica_o_edicion_especifica": 6,
       "sin_fuente_en_mapa_perseus": 64,
       "tei_perseus_candidato_por_verificar": 15
     }
@@ -1269,7 +1269,7 @@
         "tlg0007.tlg066"
       ],
       "translationSourceClaim": true,
-      "originalR2Registered": false,
+      "originalR2Registered": true,
       "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": true,
       "effectiveOriginalIndexed": true,
@@ -2240,7 +2240,7 @@
         "tlg0007.tlg147"
       ],
       "translationSourceClaim": true,
-      "originalR2Registered": false,
+      "originalR2Registered": true,
       "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": true,
       "effectiveOriginalIndexed": true,
@@ -2681,7 +2681,7 @@
         "tlg0003.tlg001"
       ],
       "translationSourceClaim": true,
-      "originalR2Registered": false,
+      "originalR2Registered": true,
       "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": true,
       "effectiveOriginalIndexed": true,
@@ -2886,7 +2886,7 @@
         "tlg0385.tlg001"
       ],
       "translationSourceClaim": false,
-      "originalR2Registered": false,
+      "originalR2Registered": true,
       "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": true,
       "effectiveOriginalIndexed": true,
@@ -2911,7 +2911,7 @@
         "tlg0008.tlg001"
       ],
       "translationSourceClaim": true,
-      "originalR2Registered": false,
+      "originalR2Registered": true,
       "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": true,
       "effectiveOriginalIndexed": true,
@@ -3963,7 +3963,7 @@
         "tlg0093.tlg001"
       ],
       "translationSourceClaim": false,
-      "originalR2Registered": false,
+      "originalR2Registered": true,
       "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": true,
       "effectiveOriginalIndexed": true,
@@ -4497,11 +4497,13 @@
       "title": "Epitoma rei militaris",
       "originalLanguage": "la",
       "dating": "siglo IV–V d. C.",
-      "indexedLanguages": [],
-      "originalIndexed": false,
+      "indexedLanguages": [
+        "la"
+      ],
+      "originalIndexed": true,
       "translationHosted": false,
-      "state": "original_pendiente",
-      "sourceReadiness": "requiere_fuente_no_canonica_o_edicion_especifica",
+      "state": "original_sin_traduccion_local",
+      "sourceReadiness": "original_local_documentado",
       "bibliographyCandidateUrns": [
         "ll.vegetius-epitoma"
       ],
@@ -4687,7 +4689,7 @@
         "tlg0552.tlg008"
       ],
       "translationSourceClaim": false,
-      "originalR2Registered": false,
+      "originalR2Registered": true,
       "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": true,
       "effectiveOriginalIndexed": true,
@@ -4775,7 +4777,7 @@
         "tlg0086.tlg023"
       ],
       "translationSourceClaim": false,
-      "originalR2Registered": false,
+      "originalR2Registered": true,
       "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": true,
       "effectiveOriginalIndexed": true,
@@ -4934,7 +4936,7 @@
         "tlg1799.tlg009"
       ],
       "translationSourceClaim": false,
-      "originalR2Registered": false,
+      "originalR2Registered": true,
       "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": true,
       "effectiveOriginalIndexed": true,
@@ -4960,7 +4962,7 @@
         "tlg1799.tlg015"
       ],
       "translationSourceClaim": false,
-      "originalR2Registered": false,
+      "originalR2Registered": true,
       "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": true,
       "effectiveOriginalIndexed": true,
@@ -4985,7 +4987,7 @@
         "tlg0361.tlg001"
       ],
       "translationSourceClaim": false,
-      "originalR2Registered": false,
+      "originalR2Registered": true,
       "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": true,
       "effectiveOriginalIndexed": true,
@@ -5010,7 +5012,7 @@
         "tlg0559.tlg012"
       ],
       "translationSourceClaim": false,
-      "originalR2Registered": false,
+      "originalR2Registered": true,
       "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": true,
       "effectiveOriginalIndexed": true,
