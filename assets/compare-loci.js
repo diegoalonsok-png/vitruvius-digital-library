@@ -20,8 +20,9 @@ function formats(id,locus){
  const chicago=author+'. '+title+'. '+edition+'. '+place+': '+publisher+', '+year+'. '+(doi?'https://doi.org/'+doi+'. ':'')+cited+'. '+url.href+(isbn?' ISBN editorial declarado: '+isbn+'.':'')+(note?' '+note:'');
  const mla=author+'. '+title+'. '+edition+', '+publisher+', '+year+'. '+cited+'. '+(doi?'doi:'+doi+'. ':'')+(isbn?'ISBN editorial declarado: '+isbn+'.':'');
  const key='Kurilo'+String(year)+String(b.version||id).replace(/[^a-z0-9]/gi,'');
- const bibtex='@book{'+key+',\n  author = {'+author+'},\n  title = {'+title+'},\n  publisher = {'+publisher+'},\n  address = {'+place+'},\n  year = {'+year+'},\n  doi = {'+doi+'},\n  isbn = {'+isbn+'},\n  note = {'+cited+(note?'; '+note:'')+'}\n}';
- const ris='TY  - BOOK\nAU  - '+author+'\nTI  - '+title+'\nCY  - '+place+'\nPB  - '+publisher+'\nPY  - '+year+'\nDO  - '+doi+'\nSN  - '+isbn+'\nN1  - '+cited+(note?'; '+note:'')+'\nER  - ';
+ const verifiedIsbn=isbn&&b.isbn_status!=='publisher-declared-shared'?isbn:'';
+ const bibtex='@book{'+key+',\n  author = {'+author+'},\n  title = {'+title+'},\n  publisher = {'+publisher+'},\n  address = {'+place+'},\n  year = {'+year+'},\n  doi = {'+doi+'},'+(verifiedIsbn?'\n  isbn = {'+verifiedIsbn+'},':'')+'\n  note = {'+cited+(isbn?'; ISBN editorial declarado: '+isbn:'')+(note?'; '+note:'')+'}\n}';
+ const ris='TY  - BOOK\nAU  - '+author+'\nTI  - '+title+'\nCY  - '+place+'\nPB  - '+publisher+'\nPY  - '+year+'\nDO  - '+doi+(verifiedIsbn?'\nSN  - '+verifiedIsbn:'')+'\nN1  - '+cited+(isbn?'; ISBN editorial declarado: '+isbn:'')+(note?'; '+note:'')+'\nER  - ';
  return {chicago,mla,bibtex,ris};
 }
 function citationTools(section,id,locus){
