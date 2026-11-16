@@ -123,6 +123,7 @@ const heritageLink=raw=>{
 const periodLabel=w=>historicalPeriods.find(([id])=>id===periodOfWork(w))?.[1]||"";
 let model=null,loadedAliases={};
 const ROADMAP="data/classics-corpus/indexation-roadmap-222.json";
+const R2_BASE="https://libros.vitruvius-digital-library.org/corpus/";
 const optionalArticles=/^(?:el|la|los|las|le|les|l|the|a|an|der|die|das|il|lo|gli|i|un|una|uno)\s+/;
 const titleKey=value=>normal(value).replace(optionalArticles,"");
 const dedupQuery=query=>[...new Set([normal(query),titleKey(query),roman(query),titleKey(roman(query))].filter(Boolean))];
@@ -158,7 +159,7 @@ function render(){
  const {input,list,count,more,limit}=model,q=input.value.trim();
  const hasFacets=Boolean(model.authorFilter.value.trim()||model.genreFilter.value||model.centuryFilter.value||model.periodFilter.value||model.languageFilter.value||model.letter);
  const hasQuery=normal(q).length>=2;
- if(!hasQuery&&!hasFacets&&!model.showAll){
+ if(!hasQuery&&!hasFacets&&!model.showAll&&!model.r2Only){
   model.region.hidden=true;list.replaceChildren();more.hidden=true;
   return;
  }
@@ -167,19 +168,19 @@ function render(){
   const genre=model.genreFilter.value,century=model.centuryFilter.value,period=model.periodFilter.value,language=model.languageFilter.value,letter=model.letter;
   const group=ancientGenre(w.genre);
   const key=norm(model.sortFilter.value==="title"?w.title:w.author).trim();
-  return (!author||[w.author,...w.forms].some(x=>fold(x).includes(author)))&&(!genre||group===genre)&&(!century||centuryOf(w.dating)===century)&&(!period||periodOfWork(w)===period)&&(!language||w.versions.some(v=>v.language===language))&&(!letter||key.startsWith(norm(letter)));
+  return (!model.r2Only||w.r2Original)&&(!author||[w.author,...w.forms].some(x=>fold(x).includes(author)))&&(!genre||group===genre)&&(!century||centuryOf(w.dating)===century)&&(!period||periodOfWork(w)===period)&&(!language||w.versions.some(v=>v.language===language))&&(!letter||key.startsWith(norm(letter)));
  });
  list.replaceChildren();more.hidden=true;
  if(!q){
-  if(model.compactFront&&!hasFacets){model.region.hidden=true;return}
+  if(model.compactFront&&!hasFacets&&!model.r2Only&&!model.showAll){model.region.hidden=true;return}
   model.region.hidden=false;
-  count.textContent="Catálogo completo · "+items.length+" obras. Escriba para filtrar por título o autor.";
+  count.textContent=(model.r2Only?"Originales registrados en Cloudflare R2 · ":"Catálogo completo · ")+items.length+" obras. El registro documental no acredita por sí solo disponibilidad HTTP.";
   const all=[...items].sort((a,b)=>model.sortFilter.value==="title"?a.title.localeCompare(b.title,"es",{sensitivity:"base"}):a.author.localeCompare(b.author,"es",{sensitivity:"base"})||a.title.localeCompare(b.title,"es",{sensitivity:"base"}));
   for(const w of all.slice(0,limit)){
    const li=make("li",null,"bws-item"),heading=make("div",null,"bws-heading");
    heading.append(make("strong",w.title),make("span"," · "+w.author));li.append(heading);
    const meta=make("p",null,"bws-meta"),languages=[...new Set(w.versions.filter(v=>safeReader(v.reader)).map(v=>lang[v.language]||v.language))];
-   meta.textContent=[w.genre||"",w.dating||"",periodLabel(w),languages.length?"Textos con acceso: "+languages.join(", "):w.heritageReader?"Edición histórica · visor de facsímiles":w.facsimile?"Facsímil disponible · OCR por comprobar":"Ficha catalográfica; texto no alojado"].filter(Boolean).join(" · ");li.append(meta);
+   meta.textContent=[w.genre||"",w.dating||"",periodLabel(w),languages.length?(w.r2Original?"Original R2 registrado · ":"Ediciones registradas · ")+languages.join(", "):w.heritageReader?"Edición histórica · visor de facsímiles":w.facsimile?"Facsímil disponible · OCR por comprobar":"Ficha catalográfica; texto no alojado"].filter(Boolean).join(" · ");li.append(meta);
    const actions=make("nav",null,"bws-actions");
    const o=w.versions.find(v=>["la","grc"].includes(v.language)&&safeReader(v.reader)),t=w.versions.find(v=>!["la","grc"].includes(v.language)&&safeReader(v.reader));
    if(o)addLink(actions,"Leer original",safeReader(o.reader));
@@ -208,7 +209,7 @@ function render(){
   const langs=w.versions.filter(v=>safeReader(v.reader)).map(v=>lang[v.language]||v.language);
   const avail=[...new Set(langs)];
   meta.textContent=[w.genre||"",w.dating||"",periodLabel(w)].filter(Boolean).join(" · ")+(w.genre||w.dating?" · ":"")+
-   (avail.length?"Textos con acceso: "+avail.join(", "):w.heritageReader?"Edición histórica · visor disponible":w.facsimile?"Facsímil localizado; OCR no cotejado":"Ficha catalográfica; texto no disponible en este índice");
+   (avail.length?(w.r2Original?"Original R2 registrado · ":"Ediciones registradas · ")+avail.join(", "):w.heritageReader?"Edición histórica · visor disponible":w.facsimile?"Facsímil localizado; OCR no cotejado":"Ficha catalográfica; texto no disponible en este índice");
   item.append(meta);
   const actions=make("nav",null,"bws-actions");actions.setAttribute("aria-label","Acciones de "+w.title);
   const original=w.versions.find(v=>["la","grc"].includes(v.language)&&safeReader(v.reader));
@@ -247,7 +248,8 @@ function mount(parent,data){
    "caesar-gallico":["Guerra de las Galias","La guerra de las Galias"],
    "caesar-civili":["Guerra civil","La guerra civil"]};
   if(essentials[e.workId])w.forms.push(...essentials[e.workId]);
-  if(safeReader(e.reader)&&!w.versions.some(v=>v.language===e.language&&v.reader===e.reader))w.versions.push(e);
+  if(e.path?.startsWith(R2_BASE)&&["la","grc"].includes(e.language))w.r2Original=true;
+   if(safeReader(e.reader)&&!w.versions.some(v=>v.language===e.language&&v.reader===e.reader))w.versions.push(e);
  }
  const section=make("section",null,"bws");section.id="bibliotheca-work-search";
  section.setAttribute("aria-labelledby","bws-title");
@@ -261,7 +263,8 @@ function mount(parent,data){
  input.setAttribute("aria-controls","bws-results");
  const submit=make("button","Buscar obra");submit.type="submit";
   const browse=make("button","Ver catálogo completo");browse.type="button";browse.className="bws-browse";
- row.append(input,submit,browse);form.append(label,row);
+ const r2Browse=make("button","Ver 44 originales R2");r2Browse.type="button";r2Browse.className="bws-browse";
+ row.append(input,submit,browse,r2Browse);form.append(label,row);
  const region=make("div");region.hidden=true;
  const count=make("p",null,"bws-count");count.id="bws-count";count.setAttribute("role","status");count.setAttribute("aria-live","polite");
  const list=make("ol",null,"bws-results");list.id="bws-results";
@@ -314,7 +317,7 @@ function mount(parent,data){
  section.append(title,subtitle,form,advanced,region,help);
  const metric=parent.querySelector(":scope > dl");
  if(metric)metric.insertAdjacentElement("beforebegin",section);else parent.prepend(section);
- model={items:[...index.values()],index,input,list,count,more,region,authorFilter,genreFilter,centuryFilter,periodFilter,languageFilter,sortFilter,letter:"",limit:6,showAll:false,compactFront:parent.id==="front-classical-works"};
+ model={items:[...index.values()],index,input,list,count,more,region,authorFilter,genreFilter,centuryFilter,periodFilter,languageFilter,sortFilter,letter:"",limit:6,showAll:false,r2Only:false,compactFront:parent.id==="front-classical-works"};
  for(const el of [authorFilter,genreFilter,centuryFilter,periodFilter,languageFilter,sortFilter])el.addEventListener("input",()=>{model.limit=40;render()});
  list.tabIndex=0;list.setAttribute("aria-label","Obras: use las flechas arriba y abajo, Intro para abrir el enlace");
  list.addEventListener("keydown",e=>{
@@ -330,8 +333,9 @@ function mount(parent,data){
   if(ix<0)return;e.preventDefault();anchors[Math.max(0,Math.min(anchors.length-1,ix+(e.key==="ArrowDown"?1:-1)))].focus();
  });
  form.addEventListener("submit",e=>{e.preventDefault();model.limit=40;render()});
-  browse.addEventListener("click",()=>{model.showAll=!model.showAll;model.limit=40;input.value="";browse.textContent=model.showAll?"Ocultar catálogo completo":"Ver catálogo completo";render()});
- input.addEventListener("input",()=>{model.limit=40;render()});
+  browse.addEventListener("click",()=>{model.r2Only=false;model.showAll=!model.showAll;model.limit=40;input.value="";r2Browse.textContent="Ver 44 originales R2";browse.textContent=model.showAll?"Ocultar catálogo completo":"Ver catálogo completo";render()});
+ r2Browse.addEventListener("click",()=>{model.r2Only=!model.r2Only;model.showAll=model.r2Only;model.limit=50;input.value="";for(const filter of [model.authorFilter,model.genreFilter,model.centuryFilter,model.periodFilter,model.languageFilter])filter.value="";model.letter="";r2Browse.textContent=model.r2Only?"Ocultar originales R2":"Ver 44 originales R2";browse.textContent="Ver catálogo completo";render()});
+ input.addEventListener("input",()=>{if(input.value.trim()){model.r2Only=false;r2Browse.textContent="Ver 44 originales R2"}model.limit=40;render()});
  more.addEventListener("click",()=>{model.limit+=10;render()});
  render();
  fetch(path,{cache:"no-cache"}).then(r=>{if(!r.ok)throw Error("aliases unavailable");return r.json()}).then(j=>{
