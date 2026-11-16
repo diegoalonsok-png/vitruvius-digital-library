@@ -24,6 +24,9 @@ FUENTES = {
     "indice": ROOT / "data/r2/indice-semantico-manifest.json",
     "registro": ROOT / "data/classics-corpus/search-registry.json",
     "vinculos": ROOT / "data/r2/vinculos-repertorio.json",
+    "suplemento": ROOT / "data/bibliotheca-expansion-publicada-2026-11-16.json",
+    "lexicoLocal": ROOT / "data/index/classics/manifest.json",
+    "lexicoR2": ROOT / "data/index/classics-r2/manifest.json",
 }
 
 
@@ -37,6 +40,9 @@ def main():
     indice = leer(FUENTES["indice"])
     registro = leer(FUENTES["registro"])
     vinculos = leer(FUENTES["vinculos"])
+    suplemento = leer(FUENTES["suplemento"])
+    lexico_local = leer(FUENTES["lexicoLocal"])
+    lexico_r2 = leer(FUENTES["lexicoR2"])
     if not repertorio:
         raise SystemExit("Falta el catálogo maestro")
 
@@ -46,6 +52,12 @@ def main():
         "obras": len(repertorio["works"]),
         "nota": "Obras del repertorio grecolatino. Facsímiles y páginas indexadas se alojan en Cloudflare R2.",
     }
+    suplementarias = (suplemento or {}).get("works") or []
+    master_ids = {w["id"] for w in repertorio["works"]}
+    extra_ids = {w["id"] for w in suplementarias}
+    if len(extra_ids) != len(suplementarias) or master_ids & extra_ids:
+        raise SystemExit("Fichas suplementarias duplicadas o repetidas en el repertorio principal")
+    cifras["obrasSuplementarias"] = len(extra_ids)
     if vinculos:
         adicionales = vinculos.get("obrasNuevas") or []
         ids = [row["r2"] for row in adicionales]
@@ -56,9 +68,11 @@ def main():
         if set(ids) & {row["id"] for row in repertorio["works"]}:
             raise SystemExit("Obra adicional ya contada en el repertorio principal")
         cifras["obrasAdicionales"] = len(ids)
-        cifras["obrasTotalesDeclaradas"] = cifras["obras"] + len(ids)
-        cifras["notaTotal"] = ("Obras declaradas: repertorio principal más incorporaciones "
-            "adicionales documentadas; no contar ediciones ni traducciones como nuevas obras.")
+        if set(ids) & extra_ids:
+            raise SystemExit("Obra R2 adicional también incorporada en el suplemento")
+        cifras["obrasTotalesDeclaradas"] = cifras["obras"] + len(extra_ids) + len(ids)
+        cifras["notaTotal"] = ("Total de fichas por identificador no duplicado: repertorio principal, "
+            "obras suplementarias y obras adicionales con facsímil R2. Las versiones y ediciones se cuentan aparte.")
     if r2:
         cifras["edicionesPdfR2"] = len(r2["items"])
         propios = [x for x in r2["items"] if not x.get("coleccion")]
@@ -74,7 +88,18 @@ def main():
         # no quedaba contado y la página anunciaba obras sin texto que ya lo tienen.
         entradas = registro.get("entries") or []
         cifras["versionesTextuales"] = len(entradas) or registro.get("count")
-        cifras["obrasConTextoIndexado"] = len({e.get("workId") for e in entradas}) or registro.get("works")
+        cifras["obrasConTextoRegistrado"] = len({e.get("workId") for e in entradas}) or registro.get("works")
+
+    # No llamar "indexado" a un texto solamente registrado. El índice local
+    # y el de R2 son sistemas distintos; contabilizar originales por ID único
+    # sin sumar versiones griegas/latinas ni contar fichas sin texto.
+    local_entries = (lexico_local or {}).get("index") or []
+    r2_entries = (lexico_r2 or {}).get("index") or []
+    cifras["edicionesLexicasLocales"] = len(local_entries)
+    cifras["edicionesLexicasR2"] = len(r2_entries)
+    originals = {e["id"] for e in [*local_entries, *r2_entries]
+                 if e.get("lang") in {"la", "grc"}}
+    cifras["obrasConTextoIndexado"] = len(originals)
 
     SALIDA.write_text(json.dumps(cifras, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
     print(json.dumps(cifras, ensure_ascii=False))
