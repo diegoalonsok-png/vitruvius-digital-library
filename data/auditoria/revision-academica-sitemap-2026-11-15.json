@@ -1,0 +1,141 @@
+{
+  "schema": "vdl-academic-site-audit-v1",
+  "date": "2026-11-15",
+  "method": "Static GitHub repository file checks based on sitemap.xml URLs: fetch file, inspect title, h1 in initial HTML, description, canonical, and copyright markers. No browser control testing, no HTTP status of deployed Cloudflare routes, no linguistic/philological verification. JS-rendered headings can yield false positives.",
+  "snapshot": {
+    "sitemap_urls_before": 156,
+    "repository_html_files_resolved": 156,
+    "reported_missing_files": 0,
+    "initial_flags": 7,
+    "canonical_urls_after_legacy_redirect_removal": 155
+  },
+  "findings": [
+    {
+      "page": "laboratorio-h.html",
+      "type": "legacy_redirect",
+      "initial": "No static h1; noindex redirect present in sitemap",
+      "resolution": "Added accessible fallback h1; removed noindex redirect from sitemap; keep historic URL and canonical to concordancia-folios.html",
+      "state": "fixed_in_github_not_live_verified"
+    },
+    {
+      "page": "termino.html",
+      "type": "dynamic_h1",
+      "initial": "No literal h1 in HTML source",
+      "resolution": "Not a failure: assets/term-page.js renders h1 for terms and index; no content modification",
+      "state": "documented_dynamic"
+    },
+    {
+      "page": "evaluacion-buscadores.html",
+      "type": "missing_canonical",
+      "resolution": "Canonical link added",
+      "state": "fixed_in_github_not_live_verified"
+    },
+    {
+      "page": "obras-notables.html",
+      "type": "missing_canonical",
+      "resolution": "Canonical link added",
+      "state": "fixed_in_github_not_live_verified"
+    },
+    {
+      "page": "estado-ediciones-clasicas.html",
+      "type": "missing_description",
+      "resolution": "Description added with source-scope qualification",
+      "state": "fixed_in_github_not_live_verified"
+    },
+    {
+      "page": "buscador-documental-clasicos.html",
+      "type": "missing_description",
+      "resolution": "Description added, no manuscript collation claim",
+      "state": "fixed_in_github_not_live_verified"
+    },
+    {
+      "page": "buscador-facsimiles-clasicos.html",
+      "type": "missing_description",
+      "resolution": "Description added with OCR limitations",
+      "state": "fixed_in_github_not_live_verified"
+    },
+    {
+      "page": "index.html",
+      "type": "inconsistent_corpus_counts",
+      "resolution": "Removed second group of catalog totals from homepage intro; single works total remains",
+      "state": "fixed_in_github_not_live_verified"
+    },
+    {
+      "page": "aparato-comparativo.html",
+      "type": "misleading_philological_claim",
+      "resolution": "Clarified Rose/Krohn OCR as page locators, manuscript sigla as witnesses, verified readings only from individually checked facsimiles/print editions",
+      "state": "fixed_in_github_not_live_verified"
+    }
+  ],
+  "academic_priorities": [
+    {
+      "priority": "P1",
+      "subject": "Critical apparatus",
+      "work": "Individually verify Rose/Krohn readings against printed images and manuscript H where appropriate; no OCR-only apparatus claims",
+      "status": "incomplete"
+    },
+    {
+      "priority": "P1",
+      "subject": "Editorial translation accuracy",
+      "work": "Compare V514, V554 and V297 by locus, document actual correction evidence",
+      "status": "incomplete"
+    },
+    {
+      "priority": "P2",
+      "subject": "Corpus coverage reconciliation",
+      "work": "Unify registry, original-index, remote-index and PDF metrics with distinct denominators; test external R2 status",
+      "status": "partial"
+    },
+    {
+      "priority": "P2",
+      "subject": "Bibliographic identity",
+      "work": "Verify publisher-declared shared ISBN against official assignment and DOI publication metadata; use full titles with source provenance",
+      "status": "partial"
+    },
+    {
+      "priority": "P3",
+      "subject": "Deployment and interactive accessibility",
+      "work": "Run browser interaction tests, broken outbound links, keyboard controls, contrast and Cloudflare/GitHub Pages consistency",
+      "status": "not_tested"
+    }
+  ],
+  "sources": [
+    {
+      "type": "project",
+      "path": "sitemap.xml"
+    },
+    {
+      "type": "project",
+      "path": "data/catalog.json"
+    },
+    {
+      "type": "project",
+      "path": "data/classics-corpus/indexation-roadmap-222.json"
+    },
+    {
+      "type": "project",
+      "path": "data/r2/bibliotheca-panel-sync.json"
+    },
+    {
+      "type": "external_guideline",
+      "url": "https://yalelibrary.atlassian.net/wiki/spaces/YMD/overview",
+      "purpose": "metadata management"
+    },
+    {
+      "type": "external_guideline",
+      "url": "https://www.library.yale.edu/about-us/directory-departments-and-libraries/digital-collections-access",
+      "purpose": "accessibility and digitization"
+    },
+    {
+      "type": "external_guideline",
+      "url": "https://guides.library.yale.edu/digitalpreservation",
+      "purpose": "digital preservation"
+    }
+  ],
+  "limitations": [
+    "This is not Yale certification or university peer review",
+    "Site-level static checks do not prove all links or user interactions work",
+    "No exhaustive manuscript collation or translation fidelity review completed",
+    "GitHub changes are not confirmed deployed to Cloudflare"
+  ]
+}
