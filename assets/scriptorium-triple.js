@@ -105,10 +105,12 @@ async function loadEdition(id){
    const raw=ed.format==="ocr"?d:d.passages;
    const [concord,pdfMap]=await Promise.all([ed.critical?concordanciaLoci().catch(()=>null):Promise.resolve(null),pdfLocusIndex().catch(()=>new Map())]);
    const witness=TESTIGO[id];
+   const pdfKey=({krohn:"krohn",kurilo:"kurilo",rose:"rose"})[id];
+   const mapped=loc=>pdfKey?pdfMap.get(loc)?.[pdfKey]:null;
    if(!Array.isArray(raw)||!raw.length)throw Error("Sin contenido de lectura");
    const pages=raw.map((p,i)=>ed.format==="ocr"?
     {locus:String(p.page||i+1),page:Number(p.page)||i+1,text:String(p.text||""),translation:""}:
-    {locus:String(p.locus||i+1),page:Number(pdfMap.get(p.locus)?.[id==="krohn"?"krohn":id==="rose"?"rose":"kurilo"]?.pdfPage||p.pdf_pages?.latin||concord?.loci?.[p.locus]?.[witness]?.page||0),latinPage:Number(pdfMap.get(p.locus)?.[id==="krohn"?"krohn":id==="rose"?"rose":"kurilo"]?.pdfPage||p.pdf_pages?.latin||concord?.loci?.[p.locus]?.[witness]?.page||0),translationPage:Number(pdfMap.get(p.locus)?.kurilo?.translationPdfPage||p.pdf_pages?.translation||0),pdfEvidence:pdfMap.get(p.locus)?.[id==="krohn"?"krohn":id==="rose"?"rose":"kurilo"]?.status||"unmapped",pdfConfidence:pdfMap.get(p.locus)?.[id==="krohn"?"krohn":id==="rose"?"rose":"kurilo"]?.confidence??null,text:String(p.latin||p.text||""),translation:String(p.translation||"")});
+    {locus:String(p.locus||i+1),page:Number(mapped(p.locus)?.pdfPage||p.pdf_pages?.latin||concord?.loci?.[p.locus]?.[witness]?.page||0),latinPage:Number(mapped(p.locus)?.pdfPage||p.pdf_pages?.latin||concord?.loci?.[p.locus]?.[witness]?.page||0),translationPage:Number((id==="kurilo"?mapped(p.locus)?.translationPdfPage:null)||p.pdf_pages?.translation||0),pdfEvidence:mapped(p.locus)?.status||"unmapped",pdfConfidence:mapped(p.locus)?.confidence??null,text:String(p.latin||p.text||""),translation:String(p.translation||"")});
    return {ed,pages};
   }).catch(err=>{cache.delete(id);throw err}));
  }
