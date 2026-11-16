@@ -14,4 +14,9 @@ for(const path of ["classics-simple-parallel.html","buscador-facsimiles-clasicos
 const source=readFileSync(script,"utf8");
 for(const label of ["Citar","Copiar textos","Descargar TXT","Analizar palabra"])
  assert.ok(source.includes(label),"Missing "+label);
-console.log("PASS: module syntax and required actions on both readers");
+// The lexical jump must not lose the identity of the source passage.
+for(const field of ['u.searchParams.set("work",ctx.work)','u.searchParams.set("locus",locus)','u.searchParams.set("lang",lang)']){
+ assert.ok(source.includes(field),"Lexicon navigation missing context: "+field);
+}
+assert.ok(source.includes('if(isSimple){'),"Do not imply a canonical locus from PDF page numbers");
+console.log("PASS: reader actions and contextual Lexicon navigation (work/locus/lang)");
