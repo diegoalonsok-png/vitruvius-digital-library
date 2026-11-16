@@ -132,13 +132,56 @@ function historicalMedia(word){
  section.append(search);
  return section;
 }
-function linksFor(word,lang){
+/* A single contextual toolbar reuses Lexicon and Bibliotheca rather than
+ * implementing another dictionary/search engine. The exact locus is taken
+ * from the reader's passage event, never inferred from an OCR page number. */
+let readingContext=null;
+document.addEventListener("vitruvia:classics-passage",event=>{
+ if(!passages)return;
+ const d=event.detail||{};
+ readingContext=/^[a-z0-9-]{3,90}$/.test(d.work||"")&&
+  ["la","grc"].includes(d.language)&&typeof d.locus==="string"&&d.locus.length<=180
+  ?{work:d.work,locus:d.locus,language:d.language}:null;
+});
+function contextForWord(mark,lang){
+ const params=new URLSearchParams(location.search);
+ const declaredWork=mark?.closest?.("[data-work]")?.getAttribute("data-work")||"";
+ const passage=passages&&readingContext?.language===lang?readingContext:null;
+ const readerWork=inClassicalReader?params.get("work")||"":"";
+ const legacyWork=params.get("obra")?classicalWorkIds[params.get("obra")]||"":"";
+ const work=declaredWork||passage?.work||readerWork||legacyWork;
+ // For non-reader hits, a global ?locus= may belong to another result card.
+ const locus=mark?.closest?.("[data-locus]")?.getAttribute("data-locus")||
+  (passage?.work===work?passage.locus:"")||
+  (inClassicalReader?params.get("locus")||"":"");
+ return {work:/^[a-z0-9-]{3,90}$/.test(work)?work:"",locus:typeof locus==="string"&&locus.length<=180?locus:"",language:lang};
+}
+function academicContextLinks(word,lang,context={}){
+ const q=String(word||"").trim();
+ const links=[];
+ const lexical=new URL("vitruvia-lexicon.html",location.href);
+ lexical.searchParams.set("q",q);lexical.searchParams.set("mode","palabra");lexical.searchParams.set("lang",lang);
+ if(context.work)lexical.searchParams.set("work",context.work);
+ if(context.work&&context.locus)lexical.searchParams.set("locus",context.locus);
+ links.push(["Análisis completo en Lexicon",lexical.href]);
+ const concordance=new URL("bibliotheca-graeca-latina.html",location.href);
+ concordance.searchParams.set("q",q);
+ links.push(["Comparar en otras obras · Bibliotheca",concordance.href]);
+ if(context.work){
+  const dossier=new URL("classics-work-record.html",location.href);
+  dossier.searchParams.set("work",context.work);
+  links.push(["Ficha académica de la obra",dossier.href]);
+ }
+ return links;
+}
+function linksFor(word,lang,mark){
  const nav=el("nav",null,"cl-popup-navigation");
- nav.setAttribute("aria-label","Herramientas filológicas");
- const reference=el("a","Abrir análisis completo en Vitruvia Lexicon ↗");
- reference.href="vitruvia-lexicon.html?q="+encodeURIComponent(word)+"&mode=palabra&lang="+encodeURIComponent(lang);
- reference.target="_blank";reference.rel="noopener noreferrer";
- nav.append(reference);
+ nav.setAttribute("aria-label","Herramientas filológicas y fuentes");
+ const context=contextForWord(mark,lang);
+ for(const [label,url] of academicContextLinks(word,lang,context)){
+  const a=el("a",label+" ↗");a.href=url;a.target="_blank";a.rel="noopener noreferrer";nav.append(a);
+ }
+ if(context.work&&context.locus)nav.append(el("p","Locus del lector: "+context.locus+" · "+context.work,"cl-popup-note"));
  return nav;
 }
 async function openMark(mark,explicitWord){
@@ -165,7 +208,7 @@ async function openMark(mark,explicitWord){
  const frequency=el("p","Forma «"+word+"»: "+occurrences+
   (occurrences===1?" aparición":" apariciones")+
   " en el fragmento visible. Frecuencia literal, no recuento lematizado del corpus.","cl-popup-note");
- contents.replaceChildren(slot,status,frequency,historicalMedia(word),linksFor(word,lang));
+ contents.replaceChildren(slot,status,frequency,historicalMedia(word),linksFor(word,lang,mark));
  if(!root.open)root.showModal();
  close.focus();
  try{
