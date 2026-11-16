@@ -67,7 +67,7 @@ function init(){
  window.addEventListener("popstate",()=>redraw(locus()));
  ["bude-go","bude-prev","bude-next","coll-prev","coll-next"].forEach(id=>document.getElementById(id)?.addEventListener("click",()=>setTimeout(()=>redraw(locus()),80)));
  redraw(locus());
- fetch("data/apparatus/editorial-decisions-bude-reviewed.json").then(r=>{if(!r.ok)throw Error("HTTP "+r.status);return r.json()}).then(d=>{
+ fetch("data/apparatus/editorial-decisions-bude-reviewed.json",{cache:"no-cache"}).then(r=>{if(!r.ok)throw Error("HTTP "+r.status);return r.json()}).then(d=>{
  records=new Map((d.records||[]).map(v=>[v.locus,v]));redraw(locus());
  }).catch(e=>{note.textContent="No se recuperaron las notas: "+e.message;});
 }
