@@ -118,7 +118,8 @@ jobs:
           }
           fs.writeFileSync(file,JSON.stringify(d,null,2)+'\n');
           JS
-            git add data/index/classics/ data/bibliotheca-expansion-publicada-2026-11-16.json
+            python scripts/cifras-corpus.py
+            git add data/index/classics/ data/bibliotheca-expansion-publicada-2026-11-16.json data/cifras-corpus.json
             if git diff --cached --quiet; then
               echo "Sin cambios: índice y fichas ya coinciden."
               exit 0
