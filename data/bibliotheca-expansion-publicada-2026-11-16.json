@@ -476,6 +476,92 @@
         "archive": "https://archive.org/"
       },
       "description": "Texto en griego antiguo procedente de TEI abierto. Conservar atribución, editor, identificador CTS, alcance y estatus crítico."
+    },
+    {
+      "id": "euripides-heracles",
+      "author": "Eurípides",
+      "title": "Ἡρακλῆς · Heracles",
+      "language": "grc",
+      "genre": "Tragedia griega",
+      "dating": "c. 416 a. C.",
+      "source": "Perseus Digital Library · Gilbert Murray",
+      "sourceUrl": "https://github.com/PerseusDL/canonical-greekLit/tree/master/data/tlg0006/tlg009",
+      "bibliography": {
+        "uniformTitle": "Ἡρακλῆς",
+        "canonicalReference": "urn:cts:greekLit:tlg0006.tlg009.perseus-grc2",
+        "editor": "Gilbert Murray",
+        "sourceCollection": "Perseus Digital Library · TEI",
+        "license": "CC BY-SA 4.0",
+        "textualNote": "Edición griega histórica digitalizada, sin nueva colación crítica independiente."
+      },
+      "textStatus": "registered-pending-lexical-index",
+      "status": "Fuente griega conservada y catalogada; indexación léxica a verificar",
+      "publicStatus": "lectura-local-completa",
+      "corpusFiles": {
+        "grc": "data/classics-corpus/euripides-heracles-grc.json"
+      },
+      "localVersions": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/euripides-heracles-grc.json"
+        }
+      ],
+      "reading": {
+        "url": "classics-text-reader.html?work=euripides-heracles&lang=grc",
+        "status": "Original griego; no se declara traducción editorial local cotejada."
+      },
+      "translation": {
+        "status": "Traducción local acreditada no disponible en este registro."
+      },
+      "links": {
+        "scaife": "https://scaife.perseus.org/",
+        "gallica": "https://gallica.bnf.fr/",
+        "archive": "https://archive.org/"
+      },
+      "description": "Tragedia conservada en TEI de Perseus con loci CTS; texto apto para lectura y búsqueda, sin pretensión de nueva recensio."
+    },
+    {
+      "id": "euripides-orestes",
+      "author": "Eurípides",
+      "title": "Ὀρέστης · Orestes",
+      "language": "grc",
+      "genre": "Tragedia griega",
+      "dating": "408 a. C.",
+      "source": "Perseus Digital Library · Gilbert Murray",
+      "sourceUrl": "https://github.com/PerseusDL/canonical-greekLit/tree/master/data/tlg0006/tlg016",
+      "bibliography": {
+        "uniformTitle": "Ὀρέστης",
+        "canonicalReference": "urn:cts:greekLit:tlg0006.tlg016.perseus-grc2",
+        "editor": "Gilbert Murray",
+        "sourceCollection": "Perseus Digital Library · TEI",
+        "license": "CC BY-SA 4.0",
+        "textualNote": "Edición griega histórica digitalizada, sin nueva colación crítica independiente."
+      },
+      "textStatus": "registered-pending-lexical-index",
+      "status": "Fuente griega conservada y catalogada; indexación léxica a verificar",
+      "publicStatus": "lectura-local-completa",
+      "corpusFiles": {
+        "grc": "data/classics-corpus/euripides-orestes-grc.json"
+      },
+      "localVersions": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/euripides-orestes-grc.json"
+        }
+      ],
+      "reading": {
+        "url": "classics-text-reader.html?work=euripides-orestes&lang=grc",
+        "status": "Original griego; no se declara traducción editorial local cotejada."
+      },
+      "translation": {
+        "status": "Traducción local acreditada no disponible en este registro."
+      },
+      "links": {
+        "scaife": "https://scaife.perseus.org/",
+        "gallica": "https://gallica.bnf.fr/",
+        "archive": "https://archive.org/"
+      },
+      "description": "Tragedia conservada en TEI de Perseus con loci CTS; texto apto para lectura y búsqueda, sin pretensión de nueva recensio."
     }
   ]
 }
