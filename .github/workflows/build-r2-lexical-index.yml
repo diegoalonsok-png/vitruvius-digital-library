@@ -31,6 +31,8 @@ jobs:
       - name: Check generated manifest and counts
         run: |
           node --input-type=module -e 'import fs from "node:fs"; import assert from "node:assert/strict"; const m=JSON.parse(fs.readFileSync("data/r2/corpus-manifest.json")); const i=JSON.parse(fs.readFileSync("data/index/classics-r2/manifest.json")); assert.equal(i.works,m.obras.length); assert.equal(i.r2VerifiedEditions,m.obras.length); assert.equal(i.passages,m.obras.reduce((n,x)=>n+x.pasajes,0)); console.log("R2 original editions indexed:",i.works,"passages:",i.passages)'
+      - name: Validate index identity and deduplication
+        run: node scripts/test-r2-classics-lexical-coverage.mjs
       - name: Commit generated index only
         run: |
           git config user.name "github-actions[bot]"
