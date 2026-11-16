@@ -68,7 +68,7 @@ for(const work of catalogue.works){
   const canonical=new RegExp("^data/classics-corpus/[a-z0-9-]+-"+language+"\\.json$").test(path);
   const entry=registry.entries.find(e=>e.workId===work.id&&e.language===language&&e.path===path);
   const shared=entry&&isSharedLatin(work.id,language,path,entry.sourceWorkId);
-  const remote=entry&&/^https:\\/\\/libros\\.vitruvius-digital-library\\.org\\/corpus\\/[a-z0-9-]+\\.json$/.test(path)&&
+  const remote=entry&&path.startsWith("https://libros.vitruvius-digital-library.org/corpus/")&& /^[a-z0-9-]+\.json$/.test(path.split("/").pop())&&
    manifiestoR2.some(o=>path.endsWith(o.archivo)&&o.workId===work.id&&o.language===language&&o.pasajes>0);
   assert(canonical||shared||remote,"Unexpected work text path "+path);
   assert(registry.entries.some(e=>e.workId===work.id&&e.language===language&&e.path===path),
