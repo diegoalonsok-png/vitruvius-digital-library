@@ -1,16 +1,19 @@
 {
   "schema": "vdl-bibliotheca-coverage-gaps-v1",
   "asOf": "2026-11-16",
-  "method": "Inventario de GitHub por identificador exacto. Los URL y SHA declarados NO equivalen a validación HTTP ni integridad de obra completa.",
+  "method": "Inventario de GitHub por identificador exacto. Los URL y SHA declarados NO equivalen a validación HTTP ni integridad de obra completa. Actualizado tras la publicación y verificación cruzada del manifiesto léxico R2 y certificado de sincronización.",
   "scope": {
     "catalogued": 271,
     "r2Registered": 44,
     "sourceMissingFromTextIndex": 29,
-    "r2PendingEffectiveIndex": 32,
-    "combinedPending": 61,
+    "r2PendingEffectiveIndex": 0,
+    "combinedPending": 29,
     "missingWithRegisteredPdf": 25,
     "modernEditionRecords": 3,
-    "unmatchedNoPdf": 1
+    "unmatchedNoPdf": 1,
+    "r2LexicalIndexedAndCertified": 44,
+    "r2VerifiedPassages": 46850,
+    "previousR2PendingNowIndexed": 32
   },
   "missingIndexedOriginal": [
     {
@@ -396,7 +399,13 @@
       }
     }
   ],
-  "r2AwaitingVerifiedIndex": [
+  "r2IndexCertification": {
+    "certificate": "data/r2/classics-sync-status.json",
+    "manifest": "data/index/classics-r2/manifest.json",
+    "verifiedAt": "2026-11-16T16:55:05.673Z",
+    "note": "Las 44 fuentes R2 figuran como indexadas léxicamente tras la certificación; la integridad editorial y la colación manuscrita siguen siendo evaluaciones diferentes."
+  },
+  "r2IndexedAndCertified": [
     {
       "id": "origenes",
       "title": "Περὶ ἀρχῶν · De principiis",
@@ -404,7 +413,8 @@
       "url": "https://libros.vitruvius-digital-library.org/corpus/origenes-grc.json",
       "sha256": "b310dfa8f281576ad70710b0f6f9d6578078e35f3939a850305864623dfc57d8",
       "declaredPassages": 628,
-      "status": "registered-pending-verified-lexical-index"
+      "status": "verified-lexical-index-certificate",
+      "indexManifest": "data/index/classics-r2/manifest.json"
     },
     {
       "id": "apolonio-argonauticas",
@@ -413,7 +423,8 @@
       "url": "https://libros.vitruvius-digital-library.org/corpus/apolonio-argonauticas-grc.json",
       "sha256": "26ba26f2b8e0fb16106a1aa51a12c0459479e4ee5ad8399f6434bdfa86d44e08",
       "declaredPassages": 585,
-      "status": "registered-pending-verified-lexical-index"
+      "status": "verified-lexical-index-certificate",
+      "indexManifest": "data/index/classics-r2/manifest.json"
     },
     {
       "id": "isocrates-discursos",
@@ -422,7 +433,8 @@
       "url": "https://libros.vitruvius-digital-library.org/corpus/isocrates-discursos-grc.json",
       "sha256": "d028aa92d1a40435c87428a96af601b9ec52f9d928cc6f108ded94a39ea9ee75",
       "declaredPassages": 2116,
-      "status": "registered-pending-verified-lexical-index"
+      "status": "verified-lexical-index-certificate",
+      "indexManifest": "data/index/classics-r2/manifest.json"
     },
     {
       "id": "lisias-discursos",
@@ -431,7 +443,8 @@
       "url": "https://libros.vitruvius-digital-library.org/corpus/lisias-discursos-grc.json",
       "sha256": "c3fc7f915fec42c21ea51b2c923856ccde18e27d9c3dadc5cad2dcb1f4583830",
       "declaredPassages": 1116,
-      "status": "registered-pending-verified-lexical-index"
+      "status": "verified-lexical-index-certificate",
+      "indexManifest": "data/index/classics-r2/manifest.json"
     },
     {
       "id": "longino-sublime",
@@ -440,7 +453,8 @@
       "url": "https://libros.vitruvius-digital-library.org/corpus/longino-sublime-grc.json",
       "sha256": "0c85d3dcee21c3bf26b2bf35dba1ef73854f3f1a7731a2f9d1cca1d305e58a3d",
       "declaredPassages": 186,
-      "status": "registered-pending-verified-lexical-index"
+      "status": "verified-lexical-index-certificate",
+      "indexManifest": "data/index/classics-r2/manifest.json"
     },
     {
       "id": "teocrito-bucolicos",
@@ -449,7 +463,8 @@
       "url": "https://libros.vitruvius-digital-library.org/corpus/teocrito-bucolicos-grc.json",
       "sha256": "754db2ae258073a99548baaa1c65d997fed043aef3b48e71e316a84c5e7925ee",
       "declaredPassages": 324,
-      "status": "registered-pending-verified-lexical-index"
+      "status": "verified-lexical-index-certificate",
+      "indexManifest": "data/index/classics-r2/manifest.json"
     },
     {
       "id": "antologia-griega",
@@ -458,7 +473,8 @@
       "url": "https://libros.vitruvius-digital-library.org/corpus/antologia-griega-grc.json",
       "sha256": "1afb5efd413feea0ca8558cb01a9ea466cd067e27ae0fe43e3cd6c2cd8260777",
       "declaredPassages": 835,
-      "status": "registered-pending-verified-lexical-index"
+      "status": "verified-lexical-index-certificate",
+      "indexManifest": "data/index/classics-r2/manifest.json"
     },
     {
       "id": "aquiles-tacio-leucipa",
@@ -467,7 +483,8 @@
       "url": "https://libros.vitruvius-digital-library.org/corpus/aquiles-tacio-leucipa-grc.json",
       "sha256": "fae5e2ae389e4d42f2201bbefd0d3feed5cd026faba7986a079c5f9fdd0ebd27",
       "declaredPassages": 1035,
-      "status": "registered-pending-verified-lexical-index"
+      "status": "verified-lexical-index-certificate",
+      "indexManifest": "data/index/classics-r2/manifest.json"
     },
     {
       "id": "aristoteles-del-cielo",
@@ -476,7 +493,8 @@
       "url": "https://libros.vitruvius-digital-library.org/corpus/aristoteles-del-cielo-grc.json",
       "sha256": "7b493fc32ee4cd814c128fc7f3d40506e11dd2e2e640400abcddc6e19df5adc3",
       "declaredPassages": 39,
-      "status": "registered-pending-verified-lexical-index"
+      "status": "verified-lexical-index-certificate",
+      "indexManifest": "data/index/classics-r2/manifest.json"
     },
     {
       "id": "aristoteles-historia-animales",
@@ -485,7 +503,8 @@
       "url": "https://libros.vitruvius-digital-library.org/corpus/aristoteles-historia-animales-grc.json",
       "sha256": "0ef0a5202145da826c1a2ffe9af66a224168d4b12f44795b95fb88ddf9831d71",
       "declaredPassages": 238,
-      "status": "registered-pending-verified-lexical-index"
+      "status": "verified-lexical-index-certificate",
+      "indexManifest": "data/index/classics-r2/manifest.json"
     },
     {
       "id": "baquilides-poemas",
@@ -494,7 +513,8 @@
       "url": "https://libros.vitruvius-digital-library.org/corpus/baquilides-poemas-grc.json",
       "sha256": "6f048887fb1adf8a5d70f11c7f8ab5b4055838df71325bfd5f8ebddf08a97085",
       "declaredPassages": 140,
-      "status": "registered-pending-verified-lexical-index"
+      "status": "verified-lexical-index-certificate",
+      "indexManifest": "data/index/classics-r2/manifest.json"
     },
     {
       "id": "calimaco-himnos",
@@ -503,7 +523,8 @@
       "url": "https://libros.vitruvius-digital-library.org/corpus/calimaco-himnos-grc.json",
       "sha256": "e2e68dc66e6949f8d7fbfbcc52f47570395d64f1c83fb94665f984f86b4083af",
       "declaredPassages": 341,
-      "status": "registered-pending-verified-lexical-index"
+      "status": "verified-lexical-index-certificate",
+      "indexManifest": "data/index/classics-r2/manifest.json"
     },
     {
       "id": "epicuro-restos",
@@ -512,7 +533,8 @@
       "url": "https://libros.vitruvius-digital-library.org/corpus/epicuro-restos-grc.json",
       "sha256": "8b8393d18c62dbdf15e90ea537d5b50e9302b15a278504cdbaab74d05e34c31e",
       "declaredPassages": 193,
-      "status": "registered-pending-verified-lexical-index"
+      "status": "verified-lexical-index-certificate",
+      "indexManifest": "data/index/classics-r2/manifest.json"
     },
     {
       "id": "esquines-discursos",
@@ -521,7 +543,8 @@
       "url": "https://libros.vitruvius-digital-library.org/corpus/esquines-discursos-grc.json",
       "sha256": "00c95e79f0ef75b1a4c2678e91906906844985a83d4d764f0c0364661ba83cbb",
       "declaredPassages": 717,
-      "status": "registered-pending-verified-lexical-index"
+      "status": "verified-lexical-index-certificate",
+      "indexManifest": "data/index/classics-r2/manifest.json"
     },
     {
       "id": "filostrato-apolonio",
@@ -530,7 +553,8 @@
       "url": "https://libros.vitruvius-digital-library.org/corpus/filostrato-apolonio-grc.json",
       "sha256": "65884f0112a0d79ccb638c7dab6fc75a5cf65d34ee01651d5ab2432857cdc9d3",
       "declaredPassages": 348,
-      "status": "registered-pending-verified-lexical-index"
+      "status": "verified-lexical-index-certificate",
+      "indexManifest": "data/index/classics-r2/manifest.json"
     },
     {
       "id": "galeno-facultades-naturales",
@@ -539,7 +563,8 @@
       "url": "https://libros.vitruvius-digital-library.org/corpus/galeno-facultades-naturales-grc.json",
       "sha256": "5921c6ec6653caccc57abadae5ce2411259fa66c06df961b034bfb840be3915e",
       "declaredPassages": 41,
-      "status": "registered-pending-verified-lexical-index"
+      "status": "verified-lexical-index-certificate",
+      "indexManifest": "data/index/classics-r2/manifest.json"
     },
     {
       "id": "hipocrates-obras",
@@ -548,7 +573,8 @@
       "url": "https://libros.vitruvius-digital-library.org/corpus/hipocrates-obras-grc.json",
       "sha256": "317a71ff6fb35b4c4c142cf3bc0e565954472a260466a823ee868e55effec225",
       "declaredPassages": 2406,
-      "status": "registered-pending-verified-lexical-index"
+      "status": "verified-lexical-index-certificate",
+      "indexManifest": "data/index/classics-r2/manifest.json"
     },
     {
       "id": "iseo-discursos",
@@ -557,7 +583,8 @@
       "url": "https://libros.vitruvius-digital-library.org/corpus/iseo-discursos-grc.json",
       "sha256": "36f5eacb6bf93b051bffb427d58ab3e7e02ce466ac3124bca5fb77c26cea6714",
       "declaredPassages": 549,
-      "status": "registered-pending-verified-lexical-index"
+      "status": "verified-lexical-index-certificate",
+      "indexManifest": "data/index/classics-r2/manifest.json"
     },
     {
       "id": "jenofonte-ciropedia",
@@ -566,7 +593,8 @@
       "url": "https://libros.vitruvius-digital-library.org/corpus/jenofonte-ciropedia-grc.json",
       "sha256": "4755b72df597192eb15f0b797838d00a4d210e722d600751096bdc94d42ae77e",
       "declaredPassages": 1409,
-      "status": "registered-pending-verified-lexical-index"
+      "status": "verified-lexical-index-certificate",
+      "indexManifest": "data/index/classics-r2/manifest.json"
     },
     {
       "id": "jenofonte-economico",
@@ -575,7 +603,8 @@
       "url": "https://libros.vitruvius-digital-library.org/corpus/jenofonte-economico-grc.json",
       "sha256": "d90f587dd338021e4e920e813f4f721f75119901175b2cb8fba84206ea6c5f61",
       "declaredPassages": 397,
-      "status": "registered-pending-verified-lexical-index"
+      "status": "verified-lexical-index-certificate",
+      "indexManifest": "data/index/classics-r2/manifest.json"
     },
     {
       "id": "longo-dafnis-cloe",
@@ -584,7 +613,8 @@
       "url": "https://libros.vitruvius-digital-library.org/corpus/longo-dafnis-cloe-grc.json",
       "sha256": "4a0453089b01a44d148674b82a42a528c895642ad267978451bd32c891db74af",
       "declaredPassages": 538,
-      "status": "registered-pending-verified-lexical-index"
+      "status": "verified-lexical-index-certificate",
+      "indexManifest": "data/index/classics-r2/manifest.json"
     },
     {
       "id": "menandro-comedias",
@@ -593,7 +623,8 @@
       "url": "https://libros.vitruvius-digital-library.org/corpus/menandro-comedias-grc.json",
       "sha256": "aca0c9140853184cd7919a7f8379ef9ab3841c38eb507a22f69301c7f6894fd0",
       "declaredPassages": 305,
-      "status": "registered-pending-verified-lexical-index"
+      "status": "verified-lexical-index-certificate",
+      "indexManifest": "data/index/classics-r2/manifest.json"
     },
     {
       "id": "platon-cratilo-parmenides",
@@ -602,7 +633,8 @@
       "url": "https://libros.vitruvius-digital-library.org/corpus/platon-cratilo-parmenides-grc.json",
       "sha256": "03fadb6a7b40ca155274f3924461ed4b2452a069147bcaec67c618817590165d",
       "declaredPassages": 99,
-      "status": "registered-pending-verified-lexical-index"
+      "status": "verified-lexical-index-certificate",
+      "indexManifest": "data/index/classics-r2/manifest.json"
     },
     {
       "id": "platon-protagoras",
@@ -611,7 +643,8 @@
       "url": "https://libros.vitruvius-digital-library.org/corpus/platon-protagoras-grc.json",
       "sha256": "d1dae142f1263e738645fd6c04619e1f3ac567c3d1f8c1935b17c9fc4a5f9f41",
       "declaredPassages": 146,
-      "status": "registered-pending-verified-lexical-index"
+      "status": "verified-lexical-index-certificate",
+      "indexManifest": "data/index/classics-r2/manifest.json"
     },
     {
       "id": "platon-teeteto-sofista",
@@ -620,7 +653,8 @@
       "url": "https://libros.vitruvius-digital-library.org/corpus/platon-teeteto-sofista-grc.json",
       "sha256": "4d25cf7e01c4df61f62973802c3a5f4c6b62e1b9ce9c08888cf094f8b8c2649c",
       "declaredPassages": 122,
-      "status": "registered-pending-verified-lexical-index"
+      "status": "verified-lexical-index-certificate",
+      "indexManifest": "data/index/classics-r2/manifest.json"
     },
     {
       "id": "plotino-eneadas",
@@ -629,7 +663,8 @@
       "url": "https://libros.vitruvius-digital-library.org/corpus/plotino-eneadas-grc.json",
       "sha256": "016d133e5e245ceece15eeb222ca1a3e556fbd3bc08ceaa523bc47c1f1d2a7cb",
       "declaredPassages": 653,
-      "status": "registered-pending-verified-lexical-index"
+      "status": "verified-lexical-index-certificate",
+      "indexManifest": "data/index/classics-r2/manifest.json"
     },
     {
       "id": "quinto-esmirna-posthomericas",
@@ -638,7 +673,8 @@
       "url": "https://libros.vitruvius-digital-library.org/corpus/quinto-esmirna-posthomericas-grc.json",
       "sha256": "5794bf90ce2af75bdec59b0bed84760d682c6038610b41346c29c8b96e0252de",
       "declaredPassages": 889,
-      "status": "registered-pending-verified-lexical-index"
+      "status": "verified-lexical-index-certificate",
+      "indexManifest": "data/index/classics-r2/manifest.json"
     },
     {
       "id": "amiano-marcelino-es",
@@ -647,7 +683,8 @@
       "url": "https://libros.vitruvius-digital-library.org/corpus/amiano-marcelino-es-la.json",
       "sha256": "7e2e8e1fbe21411f551bdf41c812f455b2771f1359c52c8a88af50ef5fdbe00a",
       "declaredPassages": 2883,
-      "status": "registered-pending-verified-lexical-index"
+      "status": "verified-lexical-index-certificate",
+      "indexManifest": "data/index/classics-r2/manifest.json"
     },
     {
       "id": "ausonio-obras",
@@ -656,7 +693,8 @@
       "url": "https://libros.vitruvius-digital-library.org/corpus/ausonio-obras-la.json",
       "sha256": "4afe8f2ca2e7a882532be701c29766b769df7cb96f5bb7a558700e1c304be1ad",
       "declaredPassages": 789,
-      "status": "registered-pending-verified-lexical-index"
+      "status": "verified-lexical-index-certificate",
+      "indexManifest": "data/index/classics-r2/manifest.json"
     },
     {
       "id": "claudiano-poemas",
@@ -665,7 +703,8 @@
       "url": "https://libros.vitruvius-digital-library.org/corpus/claudiano-poemas-la.json",
       "sha256": "c1756af0299c4019b8de63dc6ae64fdc2503022039fc018eb212dfc8d2bc1e0c",
       "declaredPassages": 1009,
-      "status": "registered-pending-verified-lexical-index"
+      "status": "verified-lexical-index-certificate",
+      "indexManifest": "data/index/classics-r2/manifest.json"
     },
     {
       "id": "minucio-felix-octavio",
@@ -674,7 +713,8 @@
       "url": "https://libros.vitruvius-digital-library.org/corpus/minucio-felix-octavio-la.json",
       "sha256": "59cb758e3ad483c4b9bfd7748cbdaad962de957cf0573ad99a4eaeff3feb17f9",
       "declaredPassages": 306,
-      "status": "registered-pending-verified-lexical-index"
+      "status": "verified-lexical-index-certificate",
+      "indexManifest": "data/index/classics-r2/manifest.json"
     },
     {
       "id": "valerio-flaco-argonautica",
@@ -683,7 +723,8 @@
       "url": "https://libros.vitruvius-digital-library.org/corpus/valerio-flaco-argonautica-la.json",
       "sha256": "bf511398b770913ef5288a73a7e7eaf4485446c494add9d015308d7dcd3db7cf",
       "declaredPassages": 564,
-      "status": "registered-pending-verified-lexical-index"
+      "status": "verified-lexical-index-certificate",
+      "indexManifest": "data/index/classics-r2/manifest.json"
     }
   ]
 }
