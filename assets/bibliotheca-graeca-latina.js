@@ -1045,7 +1045,11 @@ async function boot(){
  ]);
  if(!res.ok)throw Error("HTTP "+res.status);
  witnessData=reference;
- works=((await res.json()).works||[]).filter(w=>w&&w.id&&w.title&&(w.language==="la"||w.language==="grc"));
+ const masterWorks=((await res.json()).works||[]).filter(w=>w&&w.id&&w.title&&(w.language==="la"||w.language==="grc"));
+ const additions=await getJson("data/bibliotheca-expansion-publicada-2026-11-16.json?v=20261116",{works:[]});
+ const merged=new Map(masterWorks.map(w=>[w.id,w]));
+ for(const entry of additions.works||[]){if(entry?.id&&!merged.has(entry.id))merged.set(entry.id,entry)}
+ works=[...merged.values()];
  const map=new Map(works.map(w=>[w.id,w]));
  for(const record of (witnessData.records||[]))for(const id of record.workIds||[]){
   const w=map.get(id);if(w)(w.witnessRecords??=[]).push(record);
