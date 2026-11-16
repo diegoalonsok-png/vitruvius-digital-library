@@ -22,7 +22,7 @@ const css=create("style");css.textContent=`
 .vdl-three-editions a{color:inherit;text-decoration:underline;text-underline-offset:2px}
 .vdl-three-editions .vdl-status{font:12px/1.55 system-ui;opacity:.8}
 `;document.head.append(css);
-panel.append(create("h2","Resultados latinos por edición"),create("p","Kurilo V514 · Krohn 1912 · Rose 1899. Coincidencias por locus y equivalencias léxicas controladas; cada lectura mantiene su filiación editorial."));
+panel.append(create("h2","Resultados latinos por edición"),create("p","Kurilo V514 / V554 / V297 · Krohn 1912 · Rose 1899. Búsqueda en textos latinos por locus, con equivalencias léxicas controladas; se respetan las lecturas de cada edición."));
 const status=create("p","", "vdl-status");status.setAttribute("role","status");
 const tabs=create("nav",null,"vdl-tabs"),list=create("div");
 panel.append(status,tabs,list);
@@ -30,6 +30,8 @@ if(home){const anchor=document.getElementById("more-results")||document.getEleme
 else vitruvia.after(panel);
 const editions=[
  {id:"recensio-es",label:"Kurilo · V514",path:"data/structured/recensio-es.json",reader:"lector-bilingue.html?edition=recensio-es&locus="},
+ {id:"recensio-fr",label:"Kurilo · V554",path:"data/structured/recensio-fr.json",reader:"lector-bilingue.html?edition=recensio-fr&locus="},
+ {id:"theory-en",label:"Kurilo · V297",path:"data/structured/theory-en.json",reader:"lector-bilingue.html?edition=theory-en&locus="},
  {id:"krohn-1912",label:"Krohn · 1912",path:"data/critical-editions/krohn-1912-tei-loci.json",reader:"krohn-1912.html?locus="},
  {id:"rose-1899",label:"Rose · 1899",path:"data/critical-editions/rose-1899-transcribed-loci.json",reader:"rose-1899.html?locus="}
 ];
@@ -77,7 +79,7 @@ function romanLocus(q){
  }
  return /^(?:[1-9]|10)[.](?:praef|[0-9]+)(?:[.][0-9]+)?$/.test(t)?t:null;
 }
-async function getData(){if(datasets)return datasets;const values=await Promise.all(editions.map(async ed=>{const r=await fetch(ed.path,{headers:{Accept:"application/json"}});if(!r.ok)throw Error(ed.label+" HTTP "+r.status);const j=await r.json();if(!Array.isArray(j.passages)||j.passages.length!==731)throw Error(ed.label+" índice incompleto");return {ed,passages:j.passages}}));datasets=values;return values}
+async function getData(){if(datasets)return datasets;const values=await Promise.all(editions.map(async ed=>{try{const r=await fetch(ed.path,{headers:{Accept:"application/json"}});if(!r.ok)throw Error("HTTP "+r.status);const j=await r.json();if(!Array.isArray(j.passages)||!j.passages.length)throw Error("Índice vacío");return {ed,passages:j.passages.filter(p=>p.locus&&p.latin?.trim())}}catch(error){console.warn("Índice no disponible: "+ed.label,error);return null}}));datasets=values.filter(Boolean);if(!datasets.length)throw Error("Ningún índice digital disponible");return datasets}
 function link(label,url){const a=create("a",label);a.href=url;return a}
 function paint(){
  tabs.replaceChildren();list.replaceChildren();
@@ -99,7 +101,7 @@ function paint(){
 }
 async function search(q){
  const n=++sequence,q0=String(q||"").trim();if(!q0){status.textContent="";list.replaceChildren();tabs.replaceChildren();lastHits=[];return}
- status.textContent="Consultando los 731 loci de cada edición…";let data;
+ status.textContent="Consultando textos latinos de Kurilo, Krohn y Rose por locus…";let data;
  try{data=await getData()}catch(error){if(n===sequence)status.textContent="Los índices no están disponibles: "+error.message;return}
  if(n!==sequence)return;
  const ref=romanLocus(q0),mode=document.getElementById("search-mode")?.value||"words";
@@ -111,7 +113,7 @@ async function search(q){
  }
  if(n!==sequence)return;currentFilter="all";
  const counts=editions.map(ed=>ed.label+" "+lastHits.filter(h=>h.ed.id===ed.id).length).join(" · ");
- status.textContent=lastHits.length?counts+" · búsqueda por texto latino, con equivalencias léxicas explícitas y sin alterar los originales.":"Sin coincidencias en los textos digitales de Kurilo, Rose y Krohn. El buscador principal puede ofrecer resultados en traducciones y notas.";
+ status.textContent=lastHits.length?counts+" · búsqueda léxica y conceptual multiedición; sin alterar los originales.":"Sin coincidencias en los textos latinos digitales disponibles. El buscador principal puede ofrecer resultados en traducciones y notas.";
  paint();
 }
 form.addEventListener("submit",()=>{void search(input.value)},false);
