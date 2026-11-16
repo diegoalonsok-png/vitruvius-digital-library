@@ -122,6 +122,7 @@ const heritageLink=raw=>{
 };
 const periodLabel=w=>historicalPeriods.find(([id])=>id===periodOfWork(w))?.[1]||"";
 let model=null,loadedAliases={};
+const ROADMAP="data/classics-corpus/indexation-roadmap-222.json";
 const optionalArticles=/^(?:el|la|los|las|le|les|l|the|a|an|der|die|das|il|lo|gli|i|un|una|uno)\s+/;
 const titleKey=value=>normal(value).replace(optionalArticles,"");
 const dedupQuery=query=>[...new Set([normal(query),titleKey(query),roman(query),titleKey(roman(query))].filter(Boolean))];
@@ -157,7 +158,7 @@ function render(){
  const {input,list,count,more,limit}=model,q=input.value.trim();
  const hasFacets=Boolean(model.authorFilter.value.trim()||model.genreFilter.value||model.centuryFilter.value||model.periodFilter.value||model.languageFilter.value||model.letter);
  const hasQuery=normal(q).length>=2;
- if(!hasQuery&&!hasFacets){
+ if(!hasQuery&&!hasFacets&&!model.showAll){
   model.region.hidden=true;list.replaceChildren();more.hidden=true;
   return;
  }
@@ -259,7 +260,8 @@ function mount(parent,data){
  input.placeholder="De architectura · Περὶ ποιητικῆς · Ἰλιάς · Iliad · La République";
  input.setAttribute("aria-controls","bws-results");
  const submit=make("button","Buscar obra");submit.type="submit";
- row.append(input,submit);form.append(label,row);
+  const browse=make("button","Ver catálogo completo");browse.type="button";browse.className="bws-browse";
+ row.append(input,submit,browse);form.append(label,row);
  const region=make("div");region.hidden=true;
  const count=make("p",null,"bws-count");count.id="bws-count";count.setAttribute("role","status");count.setAttribute("aria-live","polite");
  const list=make("ol",null,"bws-results");list.id="bws-results";
@@ -312,7 +314,7 @@ function mount(parent,data){
  section.append(title,subtitle,form,advanced,region,help);
  const metric=parent.querySelector(":scope > dl");
  if(metric)metric.insertAdjacentElement("beforebegin",section);else parent.prepend(section);
- model={items:[...index.values()],index,input,list,count,more,region,authorFilter,genreFilter,centuryFilter,periodFilter,languageFilter,sortFilter,letter:"",limit:6,compactFront:parent.id==="front-classical-works"};
+ model={items:[...index.values()],index,input,list,count,more,region,authorFilter,genreFilter,centuryFilter,periodFilter,languageFilter,sortFilter,letter:"",limit:6,showAll:false,compactFront:parent.id==="front-classical-works"};
  for(const el of [authorFilter,genreFilter,centuryFilter,periodFilter,languageFilter,sortFilter])el.addEventListener("input",()=>{model.limit=40;render()});
  list.tabIndex=0;list.setAttribute("aria-label","Obras: use las flechas arriba y abajo, Intro para abrir el enlace");
  list.addEventListener("keydown",e=>{
@@ -328,6 +330,7 @@ function mount(parent,data){
   if(ix<0)return;e.preventDefault();anchors[Math.max(0,Math.min(anchors.length-1,ix+(e.key==="ArrowDown"?1:-1)))].focus();
  });
  form.addEventListener("submit",e=>{e.preventDefault();model.limit=40;render()});
+  browse.addEventListener("click",()=>{model.showAll=!model.showAll;model.limit=40;input.value="";browse.textContent=model.showAll?"Ocultar catálogo completo":"Ver catálogo completo";render()});
  input.addEventListener("input",()=>{model.limit=40;render()});
  more.addEventListener("click",()=>{model.limit+=10;render()});
  render();
@@ -338,6 +341,22 @@ function mount(parent,data){
   }
   render();
  }).catch(()=>{/* Original-language catalogue remains searchable. */});
+}
+function addRoadmap(roadmap){
+ if(!model||!Array.isArray(roadmap?.items)||roadmap.items.length!==roadmap.targetWorks)return;
+ for(const entry of roadmap.items){
+  if(!/^[a-z0-9-]+$/.test(entry.id||"")||!entry.title||!entry.author)continue;
+  let work=model.index.get(entry.id);
+  if(!work){
+   work={id:entry.id,title:entry.title,author:entry.author,genre:"",dating:entry.dating||"",
+    forms:[entry.title,entry.author,entry.id.replaceAll("-"," ")],versions:[],facsimile:null,newWork:false};
+   model.index.set(entry.id,work);model.items.push(work);
+  }else{
+   work.forms.push(entry.title,entry.author);
+   if(!work.dating&&entry.dating)work.dating=entry.dating;
+  }
+ }
+ render();
 }
 function addHistoricalViewers(records){
  if(!model||!Array.isArray(records))return;
@@ -392,14 +411,19 @@ async function bootstrap(){
  }
  if(!parent||document.getElementById("bibliotheca-work-search"))return;
  try{
-  const [catalogRes,registryRes]=await Promise.all([
-   fetch("data/bibliotheca-graeca-latina-I-bce-I-ce.json"),
-   fetch("data/classics-corpus/search-registry.json")
+  const [catalogResult,registryResult,roadmapResult]=await Promise.allSettled([
+   fetch("data/bibliotheca-graeca-latina-I-bce-I-ce.json").then(r=>{if(!r.ok)throw Error("catalog HTTP "+r.status);return r.json()}),
+   fetch("data/classics-corpus/search-registry.json").then(r=>{if(!r.ok)throw Error("registry HTTP "+r.status);return r.json()}),
+   fetch(ROADMAP).then(r=>{if(!r.ok)throw Error("roadmap HTTP "+r.status);return r.json()})
   ]);
-  if(!catalogRes.ok||!registryRes.ok)throw Error("Catalog or registry unavailable");
-  const [catalog,registry]=await Promise.all([catalogRes.json(),registryRes.json()]);
+  const roadmap=roadmapResult.status==="fulfilled"?roadmapResult.value:null;
+  const catalog=catalogResult.status==="fulfilled"?catalogResult.value:null;
+  const registry=registryResult.status==="fulfilled"?registryResult.value:null;
+  if(!Array.isArray(registry?.entries)||(!Array.isArray(catalog?.works)&&!Array.isArray(roadmap?.items)))throw Error("Catalog and registry unavailable");
+  const baseCatalog=Array.isArray(catalog?.works)?catalog:{works:roadmap.items.map(w=>({id:w.id,title:w.title,author:w.author,dating:w.dating||""}))};
   if(parent.id==="front-classical-works")parent.replaceChildren();
-   mount(parent,{catalog,registry});
+  mount(parent,{catalog:baseCatalog,registry});
+  addRoadmap(roadmap);
   fetch("data/architecture-heritage-search.json",{cache:"no-cache"})
    .then(r=>{if(!r.ok)throw Error("HTTP "+r.status);return r.json()})
    .then(j=>addHistoricalViewers(j.records))
