@@ -7,7 +7,7 @@ const choices={
   count:new Set(['exact','prefix'])
 };
 export function readSearchState(params){
-  const query=String(params.get('q')||'').trim().slice(0,2000);
+  const query=String(params.get('q')||params.get('query')||'').trim().slice(0,2000);
   if(!query)return null;
   const state={query};
   for(const [key,allowed] of Object.entries(choices)){
