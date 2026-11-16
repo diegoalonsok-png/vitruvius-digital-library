@@ -428,6 +428,14 @@ async function bootstrap(){
   if(parent.id==="front-classical-works")parent.replaceChildren();
   mount(parent,{catalog:baseCatalog,registry});
   addRoadmap(roadmap);
+  // Join verified bibliographic R2 facsimile associations into work cards.
+  // PDF presence is not the same as a collated or indexed transcription.
+  Promise.all([
+   fetch("data/r2/vinculos-repertorio.json",{cache:"no-cache"}).then(r=>{if(!r.ok)throw Error("R2 links HTTP "+r.status);return r.json()}),
+   fetch("data/r2/catalogo-clasicos-r2.json",{cache:"no-cache"}).then(r=>{if(!r.ok)throw Error("R2 catalogue HTTP "+r.status);return r.json()})
+  ]).then(([links,editions])=>{
+   if(links?.schema==="vdl-r2-vinculos-repertorio-1"&&Array.isArray(editions?.items))addFacsimiles(links,editions);
+  }).catch(error=>console.warn("Enlaces de los facsímiles R2 no disponibles:",error));
   fetch("data/architecture-heritage-search.json",{cache:"no-cache"})
    .then(r=>{if(!r.ok)throw Error("HTTP "+r.status);return r.json()})
    .then(j=>addHistoricalViewers(j.records))
