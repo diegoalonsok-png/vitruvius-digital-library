@@ -91,26 +91,40 @@
 @media print{.bibliotheca-suite{display:none!important}}
 </style><script defer src="assets/bibliotheca-export-xlsx.js?v=20261110-xlsx-codices-v4"></script>
 <link rel="stylesheet" href="assets/fonts-ancient.css?v=20261111-griego-politonico-v1"><style id="vdl-keyboard-a11y">.vdl-skip-link{position:absolute;left:14px;top:-90px;z-index:99999;padding:10px 15px;border:2px solid #d9af6b;border-radius:6px;background:#1b1b1d;color:#fff;font:600 14px system-ui,sans-serif}.vdl-skip-link:focus{top:12px}.vdl-skip-link:focus-visible{outline:3px solid #ead7b6;outline-offset:2px}</style><link rel="stylesheet" href="assets/unified-books-discovery.css?v=20261115-v1">
-</head>
+<style id="bibliotheca-navigation-lexicon-style">
+/* Lexicon-aligned compact navigation and one, nonduplicated documentary dashboard. */
+.library{width:min(1480px,calc(100% - 40px))}
+.top{display:flex;align-items:center;gap:14px 22px;padding:12px 0;border-bottom:1px solid #454648}
+.top .brand{white-space:nowrap;font-size:21px}
+.toplinks{display:flex;align-items:center;justify-content:flex-end;gap:8px;flex:1 1 600px}
+.toplinks a{display:inline-flex;align-items:center;min-height:35px;padding:6px 9px;border:1px solid transparent;border-radius:6px;font:500 12px/1.3 system-ui;color:inherit;text-decoration:none}
+.toplinks a:hover,.toplinks a:focus-visible{border-color:#6e6f72;background:rgba(140,140,145,.1)}
+.toplinks .language-toggle{min-height:36px;min-width:auto;padding:7px 11px}
+.bibliotheca-suite{padding:6px 0 10px;border-bottom:1px solid #414141}
+.bibliotheca-suite-links{display:flex;gap:6px;flex-wrap:wrap;margin-top:0}
+.bibliotheca-suite-links>a,.bibliotheca-suite-links>.bibliotheca-suite-export{min-height:31px;padding:5px 10px;font-size:11px;border-radius:5px;background:transparent}
+header.hero{padding:25px 0 18px}
+.bibliotheca-documentary-status{margin:25px 0;border-top:1px solid #6666;padding:12px 0}
+.bibliotheca-documentary-status>summary{cursor:pointer;font:600 13px/1.5 system-ui}
+.bibliotheca-documentary-status #bibliotheca-federated-status{padding:14px 0}
+@media(max-width:850px){.toplinks{justify-content:flex-start}.top .brand{width:100%}}
+@media print{.bibliotheca-documentary-status:not([open]){display:none}}
+</style></head>
 <body><a class="vdl-skip-link" href="#main-content">Saltar al contenido principal</a>
 <main class="library" id="main-content">
-<section id="bibliotheca-federated-status" aria-label="Estado sincronizado del catálogo e índices"></section>
 <nav class="top" aria-label="Navegación de Bibliotheca">
 <a class="brand" href="index.html">VITRVVIVS <span style="color:#888">/ Bibliotheca</span></a>
 <div class="toplinks">
 <a id="home" href="index.html">Inicio</a>
 <a id="lexicon-nav" href="vitruvia-lexicon.html">Lexicon</a>
 <a id="capitula-nav" href="bibliotheca-capitula.html">Lectura por capítulos</a>
+<a href="vitruvia.html">Vitruvia</a><a href="laboratorio-humanidades.html">Laboratorium</a><a href="index-locorum.html">Index locorum</a><a href="metodologia-catalogo-clasico.html">Método y fuentes</a>
 <button type="button" id="bibliotheca-theme" class="language-toggle" aria-label="Activar fondo claro" title="Activar fondo claro" aria-pressed="true">☀</button>
 <button type="button" id="language-toggle" class="language-toggle" aria-label="Cambiar idioma de la interfaz: español, inglés y francés" title="Cambiar idioma: ES → EN → FR">Idioma · ES</button>
 </div>
 <a href="estado-indexacion-bibliotheca.html" title="Cobertura, índices y verificación de Cloudflare R2">Estado de indexación</a> <a href="codices-clasicos-prioritarios.html">Códices tempranos</a></nav>
 <section class="bibliotheca-suite" aria-label="Herramientas de Vitruvius Digital Library">
- <div class="bibliotheca-suite-heading">
-  <span>VITRVVIVS DIGITAL LIBRARY</span>
-  <strong>Bibliotheca Graeca et Latina</strong>
-  <p>Corpus clásico · concordancias documentadas · lectura de originales y traducciones</p>
- </div>
+
  <nav class="bibliotheca-suite-links" aria-label="Navegación académica">
   <a href="index.html">Biblioteca Vitruvius</a>
   <a href="vitruvia.html">Vitruvia · Buscador</a>
@@ -134,19 +148,7 @@
 <h1>Bibliotheca</h1>
 <p id="intro" class="intro">Busca una palabra o frase en todos los libros indexados, o selecciona una obra. Consulta cuántas veces aparece en cada libro y dónde se encuentra.</p>
 </header>
-<section id="classics-audit-coverage" aria-label="Cobertura verificable de la Bibliotheca Graeca et Latina" style="padding:20px 0;border-top:1px solid #6664;border-bottom:1px solid #6664;margin:14px 0">
- <h2 style="font:400 clamp(19px,2.1vw,26px)/1.3 Georgia,serif;margin:0 0 12px">Bibliotheca · cobertura de textos clásicos</h2>
- <div style="display:flex;gap:12px 25px;flex-wrap:wrap;font:13px/1.6 system-ui,sans-serif">
-  <span><strong data-classics="catalog">—</strong> obras registradas en catálogo (no todas con datos completos)</span>
-  <span><strong data-classics="local">—</strong> originales locales</span>
-  <span><strong data-classics="remote">—</strong> originales externos verificados</span>
-  <span><strong data-classics="searchable">—</strong> originales con texto buscable</span>
-  <span><strong data-classics="pending">—</strong> pendientes</span>
-  <span><strong data-classics="translations">—</strong> obras con traducción alojada</span>
-  <span><strong data-classics="versions">—</strong> versiones textuales locales</span>
- </div>
- <p style="font:12px/1.6 system-ui,sans-serif;margin:9px 0 0;opacity:.76"><span data-classics="method">Verificando registros académicos…</span> <a href="auditoria-textos-clasicos.html">Método y auditoría</a> · <a href="metodologia-filologica.html">Metodología filológica</a> · Inventario <time data-classics="updated">—</time>.</p>
-</section>
+
 <section class="searcharea" aria-label="Buscar palabras y frases en libros clásicos">
 <form id="search-form" class="searchform" role="search">
 <input id="classic-query" name="q" type="search" autocomplete="off" enterkeyhint="search" placeholder="Una palabra o frase, por ejemplo: domus" aria-label="Palabra o frase">
@@ -201,6 +203,7 @@
 <div id="classic-results"></div>
 <p id="unindexed" class="footnote"></p>
 </section>
+<details class="bibliotheca-documentary-status" id="bibliotheca-documentary-status"><summary>Estado detallado del catálogo y de la sincronización GitHub / R2</summary><section id="bibliotheca-federated-status" aria-label="Estado sincronizado del catálogo e índices"></section><p class="filter-method">Estadísticas de obras, textos y PDF, sin duplicar el resumen de cobertura en el área de búsqueda.</p></details>
 <footer><p><a href="perseus-procedencia-textual.html">Perseus / Scaife · auditoría de fuentes, códigos PHI/TLG y citas CTS</a> · <a href="control-calidad-corpus.html">Estado documental de las <span data-cifra="obras">271</span> obras</a> · <a href="data/perseus-provenance-audit.json">Registro auditable de las <span data-cifra="obras">271</span> obras (JSON)</a> · <a href="data/audits/bibliotheca-source-gaps-2026-11-14.json">Inventario de cobertura documental · 271 obras, 14 noviembre 2026 (JSON)</a> · <a href="data/audits/classics-integrity-review-2026-11-10.json">Auditoría de textos y códices · 10 noviembre 2026 (JSON)</a> · <a href="data/classics-corpus/philological-corrigenda.json">Erratas filológicas cotejadas</a></p><span id="method-note">Concordancias documentadas. Las traducciones cuentan como versiones separadas. Citas Chicago 18 cuando los datos editoriales están verificados; se indican las referencias incompletas.</span></footer>
 <nav aria-label="Estudios textuales rastreables" style="max-width:1100px;margin:16px auto;padding:12px 15px;border-top:1px solid #5556;border-bottom:1px solid #5556;font:13px/1.65 system-ui,sans-serif"><strong>Concordancias académicas:</strong> <a href="indice-busquedas-academicas.html">índice de búsquedas verificadas</a> · <a href="domus-en-vitruvio.html" lang="la">domus</a> · <a href="aedes-en-vitruvio.html" lang="la">aedes</a> · <a href="symmetria-en-vitruvio.html" lang="la">symmetria</a> · <a href="locus-en-vitruvio.html" lang="la">locus</a> · <a href="architectura-en-vitruvio.html" lang="la">architectura</a></nav>
 <noscript><aside role="note" style="max-width:960px;margin:22px auto;padding:15px;border:1px solid #777;border-radius:10px;background:#191a1e;color:#f1f1f1;font:14px/1.65 system-ui,sans-serif">Este buscador avanzado requiere JavaScript. Para investigar sin scripts, consulta la <a href="guia-investigacion-universitaria.html">guía universitaria</a>, las <a href="domus-en-vitruvio.html">concordancias estáticas de Vitruvio</a> y la <a href="como-citar.html">guía de citación y DOI</a>. No se presentan resultados vacíos como ausencia del término.</aside></noscript>
