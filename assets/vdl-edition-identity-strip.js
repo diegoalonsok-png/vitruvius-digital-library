@@ -6,13 +6,13 @@ if(window.__vdlEditionIdentityLoaded)return;
 window.__vdlEditionIdentityLoaded=true;
 if(window.top!==window.self||new URLSearchParams(location.search).get("embed")==="1")return;
 const page=(location.pathname.split("/").pop()||"index.html").replace(/\.html$/i,"");
-const targets=new Set([
+const detailedPages=new Set([
  "lector-bilingue","comparador-loci","aparato-critico","apparatus-bude",
  "aparato-comparativo","colacion","registro-ecdotico","cobertura-aparato-critico",
  "lector-critico","loci","indices-locorum","index-locorum","commentarius-perpetuus",
- "conspectus-testimoniorum","quaestio-philologica","commentarius-perpetuus","vitruvia"
+ "conspectus-testimoniorum","quaestio-philologica","vitruvia"
 ]);
-if(!targets.has(page))return;
+const fullDetail=detailedPages.has(page);
 const make=(tag,text,parent,cls)=>{const n=document.createElement(tag);if(text!==undefined&&text!==null)n.textContent=text;if(cls)n.className=cls;if(parent)parent.append(n);return n;};
 async function init(){
  const main=document.querySelector("main");if(!main||document.getElementById("vdl-identity-strip"))return;
@@ -28,6 +28,8 @@ async function init(){
  const css=document.createElement("style");css.id="vdl-identity-strip-style";css.textContent=[
  ".vdl-identity-strip{margin:9px auto 13px;padding:8px 10px;border:1px solid #9a947d88;border-radius:6px;background:rgba(140,130,110,.045);font:11px/1.4 system-ui,sans-serif;color:inherit;max-width:1200px;overflow-wrap:anywhere}",
  ".vdl-identity-heading{display:block;margin-bottom:4px;font-size:11px}",
+ ".vdl-identity-footer{max-width:1200px;margin:16px auto;padding:8px 12px}",
+ ".vdl-identity-footer .vdl-identity-items{gap:6px 14px}",
  ".vdl-identity-heading span{font-weight:400;opacity:.72}",
  ".vdl-identity-items{display:flex;flex-wrap:wrap;gap:5px 15px;align-items:baseline}",
  ".vdl-identity-item{display:inline-block;flex:1 1 270px;min-width:230px}",
@@ -40,9 +42,16 @@ async function init(){
  ".vdl-identity-method p{margin:5px 0}",
  "@media(max-width:700px){.vdl-identity-items{display:block}.vdl-identity-item{display:block;padding:3px 0}}"
  ].join("\n");document.head.append(css);
- const insertion=main.querySelector("h1")||main.firstElementChild;
- if(insertion&&insertion.parentElement===main)insertion.insertAdjacentElement("afterend",strip);
- else main.insertAdjacentElement("afterbegin",strip);
+ if(fullDetail){
+  const insertion=main.querySelector("h1")||main.firstElementChild;
+  if(insertion&&insertion.parentElement===main)insertion.insertAdjacentElement("afterend",strip);
+  else main.insertAdjacentElement("afterbegin",strip);
+ }else{
+  strip.classList.add("vdl-identity-footer");
+  const footer=document.querySelector("footer");
+  if(footer)footer.insertAdjacentElement("beforebegin",strip);
+  else main.insertAdjacentElement("beforeend",strip);
+ }
  try{
   const response=await fetch("data/catalog.json",{cache:"no-cache"});
   if(!response.ok)throw Error("HTTP "+response.status);
