@@ -114,6 +114,18 @@ const safeReader=s=>typeof s==="string"&&(
  /^corpus\/[a-z0-9/_-]+\.html$/i.test(s))?s:null;
 const workLink=id=>"classics-work-record.html?work="+encodeURIComponent(id);
 const facLink=id=>"buscador-facsimiles-clasicos.html?obra="+encodeURIComponent(id);
+// Align only registered, distinct textual languages. An OCR/PDF alone is not a collated edition.
+const compareLink=w=>{
+ const originals=w.versions.filter(v=>["la","grc"].includes(v.language)&&safeReader(v.reader));
+ const translations=w.versions.filter(v=>!["la","grc"].includes(v.language)&&safeReader(v.reader));
+ const left=originals[0]?.language;
+ const right=translations.find(v=>v.language!==left)?.language||
+   originals.find(v=>v.language!==left)?.language;
+ if(!left||!right)return "";
+ const u=new URL("classics-parallel-reader.html",location.href);
+ u.searchParams.set("work",w.id);u.searchParams.set("left",left);u.searchParams.set("right",right);
+ return u.pathname+u.search;
+};
 const heritageLink=raw=>{
  try{
   const u=new URL(String(raw||""),location.href);
@@ -187,6 +199,7 @@ function render(){
    if(o){const u=new URL("classics-simple-parallel.html",location.href);u.searchParams.set("work",w.id);u.searchParams.set("left",o.language);u.searchParams.set("right","auto-es");addLink(actions,"Lectura simplificada",u.pathname+u.search);}
    if(t)addLink(actions,"Leer traducción · "+(lang[t.language]||t.language),safeReader(t.reader));
    if(w.heritageReader)addLink(actions,"Abrir edición histórica · "+w.heritageYear,heritageLink(w.heritageReader));
+   const parallel=compareLink(w);if(parallel)addLink(actions,"Cotejar versiones registradas",parallel);
    if(w.facsimile)addLink(actions,"Ver facsímil",facLink(w.facsimile));
    if(!w.newWork&&!w.registryOnly)addLink(actions,"Ficha académica",workLink(w.id));
    li.append(actions);list.append(li);
@@ -218,7 +231,8 @@ function render(){
   if(original){const u=new URL("classics-simple-parallel.html",location.href);u.searchParams.set("work",w.id);u.searchParams.set("left",original.language);u.searchParams.set("right","auto-es");addLink(actions,"Lectura simplificada",u.pathname+u.search);}
   if(translation)addLink(actions,"Leer traducción · "+(lang[translation.language]||translation.language),safeReader(translation.reader));
   if(w.heritageReader)addLink(actions,"Abrir edición histórica · "+w.heritageYear,heritageLink(w.heritageReader));
-  if(w.facsimile)addLink(actions,"Ver facsímil",facLink(w.facsimile));
+  const parallel=compareLink(w);if(parallel)addLink(actions,"Cotejar versiones registradas",parallel);
+   if(w.facsimile)addLink(actions,"Ver facsímil",facLink(w.facsimile));
   if(!w.newWork&&!w.registryOnly)addLink(actions,"Ficha académica",workLink(w.id));
   item.append(actions);list.append(item);
  }
