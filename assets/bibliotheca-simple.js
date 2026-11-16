@@ -288,7 +288,7 @@ function refresh(){
 function switchLanguage(k){
  locale=Object.hasOwn(dict,k)?k:"es";
  const t=dict[locale];document.documentElement.lang=locale;
- $("home").textContent=t.home;$("search-submit").textContent=t.search;
+ $("home").textContent=t.home;$("search-submit").textContent=locale==="en"?"Search in Lexicon":locale==="fr"?"Chercher dans Lexicon":"Buscar en Lexicon";
  const chapters=$("capitula-nav");if(chapters)chapters.textContent=({es:"Lectura por capítulos",en:"Chapter reading",fr:"Lecture par chapitres"})[locale];
  input.placeholder=t.placeholder;$("intro").textContent=t.intro;$("work-label").textContent=t.work;
  $("results-heading").textContent=t.label;$("method-note").textContent=t.method;lex.textContent=t.lexicon;
@@ -889,9 +889,22 @@ async function search(updateHistory=true,options={}){
  }catch{if(id===serial)status.textContent=dict[locale].unavailable}
  finally{if(id===serial)$("search-submit").disabled=false}
 }
-$("search-form").addEventListener("submit",ev=>{ev.preventDefault();void search()});
-work.addEventListener("change",()=>{drawRemote();if(input.value.trim())void search()});
-for(const facet of [era,genre])facet.addEventListener("change",()=>{refresh();if(input.value.trim())void search()});
+/* A single philological endpoint: Bibliotheca selects, Lexicon investigates. */
+function openInLexicon(){
+ const q=input.value.trim();if(!q){input.focus();return}
+ const url=new URL("vitruvia-lexicon.html",location.href);
+ url.searchParams.set("q",q);
+ url.searchParams.set("mode",q.split(/\s+/u).filter(Boolean).length>1?"frase":"palabra");
+ const target=work.value||new URLSearchParams(location.search).get("work")||"";
+ if(target)url.searchParams.set("work",editionAliases[target]?.workId||target);
+ const locus=advancedLocus?.value.trim();
+ if(locus)url.searchParams.set("locus",locus);
+ url.searchParams.set("source","bibliotheca");
+ location.assign(url.href);
+}
+$("search-form").addEventListener("submit",ev=>{ev.preventDefault();openInLexicon()});
+work.addEventListener("change",()=>{drawRemote();updateLexicon()});
+for(const facet of [era,genre])facet.addEventListener("change",()=>{refresh();updateLexicon()});
  order.addEventListener("change",()=>{refresh();window.dispatchEvent(new Event("bibliotheca:order-changed"))});
 input.addEventListener("input",()=>{
  // Editing a new term cancels the visual authority of the preceding search.
@@ -908,7 +921,7 @@ input.addEventListener("input",()=>{
  window.ClassicsUploadedDocuments?.clear();
  updateLexicon();
 });
-morphCheckbox.addEventListener("change",()=>{if(input.value.trim())void search()});
+morphCheckbox.addEventListener("change",()=>{updateLexicon()});
 $("language-toggle").addEventListener("click",()=>{
  const next=({es:"en",en:"fr",fr:"es"})[locale]||"es";
  switchLanguage(next);
