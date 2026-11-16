@@ -3,9 +3,11 @@ on:
   push:
     paths:
       - 'scripts/audit-apparatus-provenance.mjs'
+      - 'scripts/audit-apparatus-critical-review.mjs'
       - 'data/apparatus-index.json'
       - 'data/critical-notes.json'
       - 'data/ecdotic-decisions.json'
+      - 'data/apparatus/aparato-comparativo.json'
       - '.github/workflows/apparatus-provenance.yml'
   pull_request:
     paths:
@@ -28,10 +30,14 @@ jobs:
           node-version: '22'
       - name: Validate origins of notes and loci
         run: node scripts/audit-apparatus-provenance.mjs
+      - name: Flag OCR and collatio candidates without changing texts
+        run: node scripts/audit-apparatus-critical-review.mjs
       - name: Preserve audit for editorial review
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: apparatus-provenance
-          path: reports/apparatus-provenance.json
+          path: |
+            reports/apparatus-provenance.json
+            reports/apparatus-critical-review-queue.json
           if-no-files-found: warn
