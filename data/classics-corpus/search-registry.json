@@ -2,8 +2,8 @@
  "schema": "vitruvia-classics-search-registry-v1",
  "updated": "2026-11-16",
  "description": "Registro verificable de transcripciones HTML y textos JSON existentes que admiten búsqueda literal de contenido. No incluye automáticamente PDF escaneados, facsímiles ni fichas sin texto. Los índices auxiliares por locus y el aparato crítico se declaran por separado; no se suman a versiones textuales originales ni implican colación autóptica.",
- "count": 294,
- "works": 229,
+ "count": 295,
+ "works": 230,
  "entries": [
   {
    "workId": "aeneas-tacticus-poliorketika",
@@ -1783,6 +1783,16 @@
    "path": "data/classics-corpus/martial-la.json",
    "reader": "classics-text-reader.html?work=martial&lang=la",
    "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+  },
+  {
+   "workId": "menander-dyskolos",
+   "author": "Menandro",
+   "title": "Δύσκολος",
+   "language": "grc",
+   "format": "json-passages",
+   "path": "data/classics-corpus/menander-dyskolos-grc.json",
+   "reader": "classics-text-reader.html?work=menander-dyskolos&lang=grc",
+   "sourceDescription": "GreekDraCor · F. H. Sandbach · versión procedente de Wikisource · CC BY-SA 3.0 · numeración editorial pendiente"
   },
   {
    "workId": "menandro-comedias",
