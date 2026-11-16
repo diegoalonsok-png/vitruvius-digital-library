@@ -78,8 +78,10 @@ const counts=JSON.parse(fs.readFileSync("data/cifras-corpus.json","utf8"));
 const snapshot=JSON.parse(fs.readFileSync("data/corpus-snapshot-2026-11-14.json","utf8"));
 assert(counts.schema==="vdl-cifras-corpus-1"&&counts.obrasConTextoIndexado<=counts.obras,
   "Corpus counters must remain self-consistent");
-assert(home.includes('id="estado-corpus"')&&home.includes('data-cifra="obrasConTextoIndexado"')&&home.includes('data-cifra="obras"'),
-  "Home must expose real indexed-versus-catalogued work coverage");
+assert(home.includes('id="estado-corpus"')&&home.includes('data-cifra="obrasConTextoIndexado"')&&home.includes('data-cifra="obrasTotalesDeclaradas"'),
+  "Home must expose indexed works and total catalogued works in the compact Bibliotheca strip");
+assert.equal(counts.obrasTotalesDeclaradas,counts.obras+counts.obrasAdicionales,
+  "Published total must equal main repertoire plus documented additional works");
 assert(home.includes('data-cifra-fecha')&&home.includes('assets/cifra-obras.js'),
   "Corpus date and totals must update from the shared published JSON");
 assert(home.includes('href="concordancia-folios.html"')&&home.includes('href="como-citar.html#corpus-version"'),
