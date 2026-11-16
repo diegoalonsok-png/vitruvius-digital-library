@@ -466,10 +466,21 @@ function renderCodicologicalTree(dest,w,d){
    li.append(strong);
    const meta=html("p","cwd-muted",[x.repository,x.dating,x.folioRange].filter(Boolean).join(" · "));
    li.append(meta);
-   const linked=html("p","cwd-links");addA(linked,"Consultar fuente de la signatura ↗",x.sourceUrl);if(linked.childNodes.length)li.append(linked);
+   if(x.coverage)row(li,"Contenido conservado",x.coverage);
+   if(x.siglum)row(li,"Siglum documentado",x.siglum);
+   const linked=html("p","cwd-links");
+   // Keep institutional catalogue, digitized folios and IIIF manifest distinct:
+   // a catalogue landing page is not evidence that readable folios exist.
+   const facsimile=x.digitalFacsimile||x.officialDigitization||x.viewer||x.localViewer;
+   if(facsimile)addA(linked,"Leer folios digitalizados ↗",facsimile);
+   if(x.iiifManifest||x.manifest)addA(linked,"Manifiesto IIIF ↗",x.iiifManifest||x.manifest);
+   if(x.sourceUrl)addA(linked,"Ficha del manuscrito / fuente ↗",x.sourceUrl);
+   if(linked.childNodes.length)li.append(linked);
+   else li.append(html("p","cwd-muted","Sin acceso digital verificado para este testimonio."));
    list.append(li);
   }
   box.append(list);
+  box.append(html("p","cwd-muted","El manuscrito más antiguo solo puede identificarse tras contrastar la cronología y extensión de la tradición conocida. Una ficha catalográfica no garantiza imágenes legibles; los enlaces de lectura se muestran por separado."));
  }
  dest.append(box);
  dest.append(html("p","cwd-muted","Las conexiones de la obra a los códices significan 'transmite esta obra', NO copia directa ni familia genealógica. El orden de los testigos no representa su fiabilidad ecdótica."));
