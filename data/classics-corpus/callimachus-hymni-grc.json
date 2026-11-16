@@ -1,0 +1,5459 @@
+{
+ "workId": "callimachus-hymni",
+ "language": "grc",
+ "title": "Καλλίμαχος · Ὕμνοι (seis himnos)",
+ "sourceType": "edited-greek-tei",
+ "editorialStatus": "Versos extraídos de Perseus TEI; no cotejo diplomático; numeración editorial original",
+ "attribution": "Perseus Digital Library, Tufts University; A. W. Mair (1921)",
+ "license": "CC BY-SA 4.0",
+ "sources": [
+  {
+   "urn": "urn:cts:greekLit:tlg0533.tlg015.perseus-grc3",
+   "url": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0533/tlg015/tlg0533.tlg015.perseus-grc3.xml",
+   "verses": 96,
+   "license": "CC BY-SA 4.0"
+  },
+  {
+   "urn": "urn:cts:greekLit:tlg0533.tlg016.perseus-grc3",
+   "url": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0533/tlg016/tlg0533.tlg016.perseus-grc3.xml",
+   "verses": 113,
+   "license": "CC BY-SA 4.0"
+  },
+  {
+   "urn": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3",
+   "url": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0533/tlg017/tlg0533.tlg017.perseus-grc3.xml",
+   "verses": 268,
+   "license": "CC BY-SA 4.0"
+  },
+  {
+   "urn": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3",
+   "url": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0533/tlg018/tlg0533.tlg018.perseus-grc3.xml",
+   "verses": 325,
+   "license": "CC BY-SA 4.0"
+  },
+  {
+   "urn": "urn:cts:greekLit:tlg0533.tlg019.perseus-grc3",
+   "url": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0533/tlg019/tlg0533.tlg019.perseus-grc3.xml",
+   "verses": 142,
+   "license": "CC BY-SA 4.0"
+  },
+  {
+   "urn": "urn:cts:greekLit:tlg0533.tlg020.perseus-grc3",
+   "url": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0533/tlg020/tlg0533.tlg020.perseus-grc3.xml",
+   "verses": 138,
+   "license": "CC BY-SA 4.0"
+  }
+ ],
+ "passages": [
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg015.perseus-grc3:1",
+   "text": "Ζηνὸς ἔοι τί κεν ἄλλο παρὰ σπονδῇσιν ἀείδειν",
+   "title": "Himno 1"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg015.perseus-grc3:2",
+   "text": "λώιον ἢ θεὸν αὐτόν, ἀεὶ μέγαν, αἰὲν ἄνακτα,",
+   "title": "Himno 1"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg015.perseus-grc3:3",
+   "text": "Πηλαγόνων ἐλατῆρα, δικασπόλον οὐρανίδῃσι;",
+   "title": "Himno 1"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg015.perseus-grc3:4",
+   "text": "πῶς καί μιν, Δικταῖον ἀείσομεν ἠὲ Λυκαῖον;",
+   "title": "Himno 1"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg015.perseus-grc3:5",
+   "text": "ἐν δοιῇ μάλα θυμός, ἐπεὶ γένος ἀμφήριστον.",
+   "title": "Himno 1"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg015.perseus-grc3:6",
+   "text": "Ζεῦ, σὲ μὲν Ἰδαίοισιν ἐν οὔρεσί φασι γενέσθαι,",
+   "title": "Himno 1"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg015.perseus-grc3:7",
+   "text": "Ζεῦ, σὲ δʼ ἐν Ἀρκαδίῃ· πότεροι, πάτερ, ἐψεύσαντο;",
+   "title": "Himno 1"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg015.perseus-grc3:8",
+   "text": "Κρῆτες ἀεὶ ψεῦσται· καὶ γὰρ τάφον, ὦ ἄνα, σεῖο",
+   "title": "Himno 1"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg015.perseus-grc3:9",
+   "text": "Κρῆτες ἐτεκτήναντο· σὺ δʼ οὐ θάνες, ἐσσὶ γὰρ αἰεί.",
+   "title": "Himno 1"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg015.perseus-grc3:10",
+   "text": "ἐν δέ σε Παρρασίῃ Ῥείη τέκεν, ἧχι μάλιστα",
+   "title": "Himno 1"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg015.perseus-grc3:11",
+   "text": "ἔσκεν ὄρος θάμνοισι περισκεπές· ἔνθεν ὁ χῶρος",
+   "title": "Himno 1"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg015.perseus-grc3:12",
+   "text": "ἱερός, οὐδέ τί μιν κεχρημένον Εἰλειθυίης",
+   "title": "Himno 1"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg015.perseus-grc3:13",
+   "text": "ἑρπετὸν οὐδὲ γυνὴ ἐπιμίσγεται, ἀλλά ἑ Ῥείης",
+   "title": "Himno 1"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg015.perseus-grc3:14",
+   "text": "ὠγύγιον καλέουσι λεχώιον Ἀπιδανῆες.",
+   "title": "Himno 1"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg015.perseus-grc3:15",
+   "text": "ἔνθα σʼ ἐπεὶ μήτηρ μεγάλων ἀπεθήκατο κόλπων",
+   "title": "Himno 1"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg015.perseus-grc3:16",
+   "text": "αὐτίκα δίζητο ῥόον ὕδατος, ᾧ κε τόκοιο",
+   "title": "Himno 1"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg015.perseus-grc3:17",
+   "text": "λύματα χυτλώσαιτο, τεὸν δʼ ἐνὶ χρῶτα λοέσσαι.",
+   "title": "Himno 1"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg015.perseus-grc3:18",
+   "text": "Λάδων ἀλλʼ οὔπω μέγας ἔρρεεν οὐδʼ Ἐρύμανθος,",
+   "title": "Himno 1"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg015.perseus-grc3:19",
+   "text": "λευκότατος ποταμῶν, ἔτι δʼ ἄβροχος ἦεν ἅπασα",
+   "title": "Himno 1"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg015.perseus-grc3:20",
+   "text": "Ἀρκαδίη· μέλλεν δὲ μάλʼ εὔυδρος καλέεσθαι",
+   "title": "Himno 1"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg015.perseus-grc3:21",
+   "text": "αὖτις· ἐπεὶ τημόσδε, Ῥέη ὅτʼ ἐλύσατο μίτρην,",
+   "title": "Himno 1"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg015.perseus-grc3:22",
+   "text": "ἦ πολλὰς ἐφύπερθε σαρωνίδας ὑγρὸς Ἰάων",
+   "title": "Himno 1"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg015.perseus-grc3:23",
+   "text": "ἤειρεν, πολλὰς δὲ Μέλας ὤκχησεν ἁμάξας,",
+   "title": "Himno 1"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg015.perseus-grc3:24",
+   "text": "πολλὰ δὲ Καρνίωνος ἄνω διεροῦ περ ἐόντος",
+   "title": "Himno 1"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg015.perseus-grc3:25",
+   "text": "ἰλυοὺς ἐβάλοντο κινώπετα, νίσσετο δʼ ἀνὴρ",
+   "title": "Himno 1"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg015.perseus-grc3:26",
+   "text": "πεζὸς ὑπὲρ Κρᾶθίν τε πολύστιόν τε Μετώπην",
+   "title": "Himno 1"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg015.perseus-grc3:27",
+   "text": "διψαλέος· τὸ δὲ πολλὸν ὕδωρ ὑπὸ ποσσὶν ἔκειτο.",
+   "title": "Himno 1"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg015.perseus-grc3:28",
+   "text": "καί ῥʼ ὑπʼ ἀμηχανίης σχομένη φάτο πότνια Ῥείη·",
+   "title": "Himno 1"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg015.perseus-grc3:29",
+   "text": "Γαῖα φίλη, τέκε καὶ σύ· τεαὶ δʼ ὠδῖνες ἐλαφραί.",
+   "title": "Himno 1"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg015.perseus-grc3:30",
+   "text": "εἶπε καὶ ἀντανύσασα θεὴ μέγαν ὑψόθι πῆχυν",
+   "title": "Himno 1"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg015.perseus-grc3:31",
+   "text": "πλῆξεν ὄρος σκήπτρῳ· τὸ δέ οἱ δίχα πουλὺ διέστη,",
+   "title": "Himno 1"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg015.perseus-grc3:32",
+   "text": "ἐκ δʼ ἔχεεν μέγα χεῦμα· τόθι χρόα φαιδρύνασα,",
+   "title": "Himno 1"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg015.perseus-grc3:33",
+   "text": "ὦνα, τεὸν σπείρωσε, Νέδῃ δέ σε δῶκε κομίζειν",
+   "title": "Himno 1"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg015.perseus-grc3:34",
+   "text": "κευθμὸν ἔσω Κρηταῖον, ἵνα κρύφα παιδεύοιο,",
+   "title": "Himno 1"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg015.perseus-grc3:35",
+   "text": "πρεσβυτάτῃ Νυμφέων αἵ μιν τότε μαιώσαντο,",
+   "title": "Himno 1"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg015.perseus-grc3:36",
+   "text": "πρωτίστῃ γενεῇ μετά γε Στύγα τε Φιλύρην τε.",
+   "title": "Himno 1"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg015.perseus-grc3:37",
+   "text": "οὐδʼ ἁλίην ἀπέτεισε θεὴ χάριν, ἀλλὰ τὸ χεῦμα",
+   "title": "Himno 1"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg015.perseus-grc3:38",
+   "text": "κεῖνο Νέδην ὀνόμηνε· τὸ μέν ποθι πουλὺ κατʼ αὐτὸ",
+   "title": "Himno 1"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg015.perseus-grc3:39",
+   "text": "Καυκώνων πτολίεθρον, ὃ Λέπρειον πεφάτισται,",
+   "title": "Himno 1"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg015.perseus-grc3:40",
+   "text": "συμφέρεται Νηρῆι, παλαιότατον δέ μιν ὕδωρ",
+   "title": "Himno 1"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg015.perseus-grc3:41",
+   "text": "υἱωνοὶ πίνουσι Λυκαονίης ἄρκτοιο.",
+   "title": "Himno 1"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg015.perseus-grc3:42",
+   "text": "εὖτε Θενὰς ἀπέλειπεν ἐπὶ Κνωσοῖο φέρουσα,",
+   "title": "Himno 1"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg015.perseus-grc3:43",
+   "text": "Ζεῦ πάτερ, ἡ Νύμφη σε (Θεναὶ δʼ ἔσαν ἐγγύθι Κνωσοῦ),",
+   "title": "Himno 1"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg015.perseus-grc3:44",
+   "text": "τουτάκι τοι πέσε, δαῖμον, ἄπʼ ὀμφαλός· ἔνθεν ἐκεῖνο",
+   "title": "Himno 1"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg015.perseus-grc3:45",
+   "text": "ὀμφάλιον μετέπειτα πέδον καλέουσι Κύδωνες.",
+   "title": "Himno 1"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg015.perseus-grc3:46",
+   "text": "Ζεῦ, σὲ δὲ Κυρβάντων ἑτάραι προσεπηχύναντο",
+   "title": "Himno 1"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg015.perseus-grc3:47",
+   "text": "Δικταῖαι Μελίαι, σὲ δʼ ἐκοίμισεν Ἀδρήστεια",
+   "title": "Himno 1"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg015.perseus-grc3:48",
+   "text": "λίκνῳ ἐνὶ χρυσέῳ, δὺ δʼ ἐθήσαο πίονα μαζὸν",
+   "title": "Himno 1"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg015.perseus-grc3:49",
+   "text": "αἰγὸς Ἀμαλθείης, ἐπὶ σὲ γλυκὺ κηρίον ἔβρως.",
+   "title": "Himno 1"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg015.perseus-grc3:50",
+   "text": "γέντο γὰρ ἐξαπιναῖα Πανακρίδος ἔργα μελίσσης",
+   "title": "Himno 1"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg015.perseus-grc3:51",
+   "text": "Ἰδαίοις ἐν ὄρεσσι, τά τε κλείουσι Πάνακρα.",
+   "title": "Himno 1"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg015.perseus-grc3:52",
+   "text": "οὖλα δὲ Κούρητές σε περὶ πρύλιν ὠρχήσαντο",
+   "title": "Himno 1"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg015.perseus-grc3:53",
+   "text": "τεύχεα πεπηήγοντες, ἵνα Κρόνος οὔασιν ἠχὴν",
+   "title": "Himno 1"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg015.perseus-grc3:54",
+   "text": "ἀσπίδος εἰσαΐοι καὶ μή σεο κουρίζοντος.",
+   "title": "Himno 1"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg015.perseus-grc3:55",
+   "text": "καλὰ μὲν ἠέξευ, καλὰ δʼ ἔτραφες, οὐράνιε Ζεῦ,",
+   "title": "Himno 1"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg015.perseus-grc3:56",
+   "text": "ὀξὺ δʼ ἀνήβησας, ταχινοὶ δέ τοι ἦλθον ἴουλοι.",
+   "title": "Himno 1"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg015.perseus-grc3:57",
+   "text": "ἀλλʼ ἔτι παιδνὸς ἐὼν ἐφράσσαο πάντα τέλεια·",
+   "title": "Himno 1"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg015.perseus-grc3:58",
+   "text": "τῶ τοι καὶ γνωτοὶ προτερηγενέες περ ἐόντες",
+   "title": "Himno 1"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg015.perseus-grc3:59",
+   "text": "οὐρανὸν οὐκ ἐμέγηραν ἔχειν ἐπιδαίσιον οἶκον.",
+   "title": "Himno 1"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg015.perseus-grc3:60",
+   "text": "δηναιοὶ δʼ οὐ πάμπαν ἀληθέες ἦσαν ἀοιδοί.",
+   "title": "Himno 1"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg015.perseus-grc3:61",
+   "text": "φάντο πάλον Κρονίδῃσι διάτριχα δώματα νεῖμαι·",
+   "title": "Himno 1"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg015.perseus-grc3:62",
+   "text": "τίς δέ κʼ ἐπʼ Οὐλύμπῳ τε καὶ Ἄιδι κλῆρον ἐρύσσαι,",
+   "title": "Himno 1"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg015.perseus-grc3:63",
+   "text": "ὃς μάλα μὴ νενίηλος; ἐπʼ ἰσαίῃ γὰρ ἔοικε",
+   "title": "Himno 1"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg015.perseus-grc3:64",
+   "text": "πήλασθαι· τὰ δὲ τόσσον ὅσον διὰ πλεῖστον ἔχουσι.",
+   "title": "Himno 1"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg015.perseus-grc3:65",
+   "text": "ψευδοίμην ἀίοντος ἅ κεν πεπίθοιεν ἀκουήν.",
+   "title": "Himno 1"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg015.perseus-grc3:66",
+   "text": "οὔ σε θεῶν ἐσσῆνα πάλοι θέσαν, ἔργα δὲ χειρῶν,",
+   "title": "Himno 1"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg015.perseus-grc3:67",
+   "text": "σή τε βίη τό τε κάρτος, ὃ καὶ πέλας εἵσαο δίφρου.",
+   "title": "Himno 1"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg015.perseus-grc3:68",
+   "text": "θήκαο δʼ οἰωνῶν μέγʼ ὑπείροχον ἀγγελιώτην",
+   "title": "Himno 1"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg015.perseus-grc3:69",
+   "text": "σῶν τεράων· ἅ τʼ ἐμοῖσι φίλοις ἐνδέξια φαίνοις.",
+   "title": "Himno 1"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg015.perseus-grc3:70",
+   "text": "εἵλεο δʼ αἰζηῶν ὅ τι φέρτατον· οὐ σύ γε νηῶν",
+   "title": "Himno 1"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg015.perseus-grc3:71",
+   "text": "ἐμπεράμους, οὐκ ἄνδρα σακέσπαλον, οὐ μὲν ἀοιδόν·",
+   "title": "Himno 1"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg015.perseus-grc3:72",
+   "text": "ἀλλὰ τὰ μὲν μακάρεσσιν ὀλίζοσιν αὖθι παρῆκας",
+   "title": "Himno 1"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg015.perseus-grc3:73",
+   "text": "ἄλλα μέλειν ἑτέροισι, σὺ δʼ ἐξέλεο πτολιάρχους",
+   "title": "Himno 1"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg015.perseus-grc3:74",
+   "text": "αὐτούς, ὧν ὑπὸ χεῖρα γεωμόρος, ὧν ἴδρις αἰχμῆς,",
+   "title": "Himno 1"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg015.perseus-grc3:75",
+   "text": "ὧν ἐρέτης, ὧν πάντα· τί δʼ οὐ κρατέοντος ὑπʼ ἰοχύν;",
+   "title": "Himno 1"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg015.perseus-grc3:76",
+   "text": "αὐτίκα χαλκῆας μὲν ὑδείομεν Ἡφαίστοιο,",
+   "title": "Himno 1"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg015.perseus-grc3:77",
+   "text": "τευχηστὰς δʼ Ἄρηος, ἐπακτῆρας δὲ Χιτώνης",
+   "title": "Himno 1"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg015.perseus-grc3:78",
+   "text": "Ἀρτέμιδος, Φοίβου δὲ λύρης εὖ εἰδότας οἴμους·",
+   "title": "Himno 1"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg015.perseus-grc3:79",
+   "text": "ἐκ δὲ Διὸς βασιλῆες, ἐπεὶ Διὸς οὐδὲν ἀνάκτων",
+   "title": "Himno 1"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg015.perseus-grc3:80",
+   "text": "θειότερον· τῶ καί σφε τεὴν ἐκρίναο λάξιν.",
+   "title": "Himno 1"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg015.perseus-grc3:81",
+   "text": "δῶκας δὲ πτολίεθρα φυλασσέμεν, ἵζεο δʼ αὐτὸς",
+   "title": "Himno 1"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg015.perseus-grc3:82",
+   "text": "ἄκρῃσʼ ἐν πολίεσσιν, ἐπόψιος οἵ τε δίκῃσι",
+   "title": "Himno 1"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg015.perseus-grc3:83",
+   "text": "λαὸν ὑπὸ σκολιῇσʼ οἵ τʼ ἔμπαλιν ἰθύνουσιν·",
+   "title": "Himno 1"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg015.perseus-grc3:84",
+   "text": "ἐν δὲ ῥυηφενίην ἔβαλές σφισιν, ἐν δʼ ἅλις ὄλβον·",
+   "title": "Himno 1"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg015.perseus-grc3:85",
+   "text": "πᾶσι μέν, οὐ μάλα δʼ ἶσον. ἔοικε δὲ τεκμήρασθαι",
+   "title": "Himno 1"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg015.perseus-grc3:86",
+   "text": "ἡμετέρῳ μεδέοντι· περιπρὸ γὰρ εὐρὺ βέβηκεν.",
+   "title": "Himno 1"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg015.perseus-grc3:87",
+   "text": "ἑσπέριος κεῖνός γε τελεῖ τά κεν ἦρι νοήσῃ·",
+   "title": "Himno 1"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg015.perseus-grc3:88",
+   "text": "ἑσπέριος τὰ μέγιστα, τὰ μείονα δʼ, εὖτε νοήσῃ.",
+   "title": "Himno 1"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg015.perseus-grc3:89",
+   "text": "οἱ δὲ τὰ μὲν πλειῶνι, τὰ δʼ οὐχ ἑνί, τῶν δʼ ἀπὸ πάμπαν",
+   "title": "Himno 1"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg015.perseus-grc3:90",
+   "text": "αὐτὸς ἄνην ἐκόλουσας, ἐνέκλασσας δὲ μενοινήν.",
+   "title": "Himno 1"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg015.perseus-grc3:91",
+   "text": "χαῖρε μέγα, Κρονίδη πανυπέρτατε, δῶτορ ἐάων,",
+   "title": "Himno 1"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg015.perseus-grc3:92",
+   "text": "δῶτορ ἀπημονίης. τεὰ δʼ ἔργματα τίς κεν ἀείδοι;",
+   "title": "Himno 1"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg015.perseus-grc3:93",
+   "text": "οὐ γένετʼ, οὐκ ἔσται, τίς κεν Διὸς ἔργματʼ ἀείσαι.",
+   "title": "Himno 1"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg015.perseus-grc3:94",
+   "text": "χαῖρε πάτερ, χαῖρʼ αὖθι· δίδου δʼ ἀρετήν τʼ ἄφενός τε.",
+   "title": "Himno 1"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg015.perseus-grc3:95",
+   "text": "οὔτʼ ἀρετῆς ἄτερ ὄλβος ἐπίσταται ἄνδρας ἀέξειν",
+   "title": "Himno 1"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg015.perseus-grc3:96",
+   "text": "οὔτʼ ἀρετὴ ἀφένοιο· δίδου δʼ ἀρετήν τε καὶ ὄλβον.",
+   "title": "Himno 1"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg016.perseus-grc3:1",
+   "text": "οἷον ὁ τὠπόλλωνος ἐσείσατο δάφνινος ὅρπηξ,",
+   "title": "Himno 2"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg016.perseus-grc3:2",
+   "text": "οἷα δʼ ὅλον τὸ μέλαθρον· ἑκάς, ἑκὰς ὅστις ἀλιτρός.",
+   "title": "Himno 2"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg016.perseus-grc3:3",
+   "text": "καὶ δή που τὰ θύρετρα καλῷ ποδὶ Φοῖβος ἀράσσει·",
+   "title": "Himno 2"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg016.perseus-grc3:4",
+   "text": "οὐχ ὁράᾳς; ἐπένευσεν ὁ Δήλιος ἡδύ τι φοῖνιξ",
+   "title": "Himno 2"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg016.perseus-grc3:5",
+   "text": "ἐξαπίνης, ὁ δὲ κύκνος ἐν ἠέρι καλὸν ἀείδει.",
+   "title": "Himno 2"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg016.perseus-grc3:6",
+   "text": "αὐτοὶ νῦν κατοχῆες ἀνακλίνεσθε πυλάων,",
+   "title": "Himno 2"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg016.perseus-grc3:7",
+   "text": "αὐταὶ δὲ κληῖδες· ὁ γὰρ θεὸς οὐκέτι μακρήν·",
+   "title": "Himno 2"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg016.perseus-grc3:8",
+   "text": "οἱ δὲ νέοι μολπήν τε καὶ ἐς χορὸν ἐντύνεσθε.",
+   "title": "Himno 2"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg016.perseus-grc3:9",
+   "text": "ὡπόλλων οὐ παντὶ φαείνεται, ἀλλʼ ὅ τις ἐσθλός·",
+   "title": "Himno 2"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg016.perseus-grc3:10",
+   "text": "ὅς μιν ἴδῃ, μέγας οὗτος, ὃς οὐκ ἴδε, λιτὸς ἐκεῖνος.",
+   "title": "Himno 2"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg016.perseus-grc3:11",
+   "text": "ὀψόμεθʼ, ὦ Ἑκάεργε, καὶ ἐσσόμεθʼ οὔποτε λιτοί.",
+   "title": "Himno 2"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg016.perseus-grc3:12",
+   "text": "μήτε σιωπηλὴν κίθαριν μήτʼ ἄψοφον ἴχνος",
+   "title": "Himno 2"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg016.perseus-grc3:13",
+   "text": "τοῦ Φοίβου τοὺς παῖδας ἔχειν ἐπιδημήσαντος,",
+   "title": "Himno 2"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg016.perseus-grc3:14",
+   "text": "εἰ τελέειν μέλλουσι γάμον πολιήν τε κερεῖσθαι,",
+   "title": "Himno 2"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg016.perseus-grc3:15",
+   "text": "ἑστήξειν δὲ τὸ τεῖχος ἐπʼ ἀρχαίοισι θεμέθλοις.",
+   "title": "Himno 2"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg016.perseus-grc3:16",
+   "text": "ἠγασάμην τοὺς παῖδας, ἐπεὶ χέλυς οὐκέτʼ ἀεργός.",
+   "title": "Himno 2"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg016.perseus-grc3:17",
+   "text": "εὐφημεῖτʼ ἀίοντες ἐπʼ Ἀπόλλωνος ἀοιδῇ.",
+   "title": "Himno 2"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg016.perseus-grc3:18",
+   "text": "εὐφημεῖ καὶ πόντος, ὅτε κλείουσιν ἀοιδοὶ",
+   "title": "Himno 2"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg016.perseus-grc3:19",
+   "text": "ἢ κίθαριν ἢ τόξα, Λυκωρέος ἔντεα Φοίβου.",
+   "title": "Himno 2"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg016.perseus-grc3:20",
+   "text": "οὐδὲ Θέτις Ἀχιλῆα κινύρεται αἴλινα μήτηρ,",
+   "title": "Himno 2"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg016.perseus-grc3:21",
+   "text": "ὁππόθʼ ἱὴ παιῆον ἱὴ παιῆον ἀκούσῃ.",
+   "title": "Himno 2"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg016.perseus-grc3:22",
+   "text": "καὶ μὲν ὁ δακρυόεις ἀναβάλλεται ἄλγεα πέτρος,",
+   "title": "Himno 2"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg016.perseus-grc3:23",
+   "text": "ὅστις ἐνὶ Φρυγίῃ διερὸς λίθος ἐστήρικται,",
+   "title": "Himno 2"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg016.perseus-grc3:24",
+   "text": "μάρμαρον ἀντὶ γυναικὸς ὀιζυρόν τι χανούσης.",
+   "title": "Himno 2"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg016.perseus-grc3:25",
+   "text": "ἱὴ ἱὴ φθέγγεσθε· κακὸν μακάρεσσιν ἐρίζειν.",
+   "title": "Himno 2"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg016.perseus-grc3:26",
+   "text": "ὃς μάχεται μακάρεσσιν, ἐμῷ βασιλῆι μάχοιτο·",
+   "title": "Himno 2"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg016.perseus-grc3:27",
+   "text": "ὅστις ἐμῷ βασιλῆι, καὶ Ἀπόλλωνι μάχοιτο.",
+   "title": "Himno 2"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg016.perseus-grc3:28",
+   "text": "τὸν χορὸν ὡπόλλων, ὅ τι οἱ κατὰ θυμὸν ἀείδει,",
+   "title": "Himno 2"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg016.perseus-grc3:29",
+   "text": "τιμήσει· δύναται γάρ, ἐπεὶ Διὶ δεξιὸς ἧσται.",
+   "title": "Himno 2"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg016.perseus-grc3:30",
+   "text": "οὐδʼ ὁ χορὸς τὸν Φοῖβον ἐφʼ ἓν μόνον ἦμαρ ἀείσει,",
+   "title": "Himno 2"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg016.perseus-grc3:31",
+   "text": "ἔστι γὰρ εὔυμνος· τίς ἂν οὐ ῥέα Φοῖβον ἀείδοι;",
+   "title": "Himno 2"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg016.perseus-grc3:32",
+   "text": "χρύσεα τὠπόλλωνι τό τʼ. ἐνδυτὸν ἥ τʼ ἐπιπορπὶς",
+   "title": "Himno 2"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg016.perseus-grc3:33",
+   "text": "ἥ τε λύρη τό τʼ ἄεμμα τὸ Λύκτιον ἥ τε φαρέτρη,",
+   "title": "Himno 2"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg016.perseus-grc3:34",
+   "text": "χρύσεα καὶ τὰ πέδιλα· πολύχρυσος γὰρ Ἀπόλλων.",
+   "title": "Himno 2"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg016.perseus-grc3:35",
+   "text": "καὶ δὲ πολυκτέανος· Πυθῶνί κε τεκμήραιο.",
+   "title": "Himno 2"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg016.perseus-grc3:36",
+   "text": "καὶ μὲν ἀεὶ καλὸς καὶ ἀεὶ νέος· οὔποτε Θοίβου",
+   "title": "Himno 2"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg016.perseus-grc3:37",
+   "text": "θηλείῃσʼ οὐδʼ ὅσσον ἐπὶ χνόος ἦλθε παρειαῖς.",
+   "title": "Himno 2"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg016.perseus-grc3:38",
+   "text": "αἱ δὲ κόμαι θυόεντα πέδῳ λείβουσιν ἔλαια·",
+   "title": "Himno 2"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg016.perseus-grc3:39",
+   "text": "οὐ λίπος Ἀπόλλωνος ἀποστάζουσιν ἔθειραι,",
+   "title": "Himno 2"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg016.perseus-grc3:40",
+   "text": "ἀλλʼ αὐτὴν πανάκειαν· ἐν ἄστεϊ δʼ ᾧ κεν ἐκεῖναι",
+   "title": "Himno 2"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg016.perseus-grc3:41",
+   "text": "πρῶκες ἔραζε πέσωσιν ἀκήρια πάντʼ ἐγένοντο.",
+   "title": "Himno 2"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg016.perseus-grc3:42",
+   "text": "τέχνῃ δʼ ἀμφιλαφὴς οὔ τις τόσον ὅσσον Ἀπόλλων·",
+   "title": "Himno 2"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg016.perseus-grc3:43",
+   "text": "κεῖνος ὀιστευτὴν ἔλαχʼ ἀνέρα, κεῖνος ἀοιδὸν",
+   "title": "Himno 2"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg016.perseus-grc3:44",
+   "text": "(Φοίβῳ γὰρ καὶ τόξον ἐπιτρέπεται καὶ ἀοιδή),",
+   "title": "Himno 2"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg016.perseus-grc3:45",
+   "text": "κείνου δὲ θριαὶ καὶ μάντιες· ἐκ δέ νυ Φοίβου",
+   "title": "Himno 2"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg016.perseus-grc3:46",
+   "text": "ἰητροὶ δεδάασιν ἀνάβλησιν θανάτοιο.",
+   "title": "Himno 2"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg016.perseus-grc3:47",
+   "text": "Φοῖβον καὶ Νόμιον κικλήσκομεν ἐξέτι κείνου,",
+   "title": "Himno 2"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg016.perseus-grc3:48",
+   "text": "ἐξότʼ ἐπʼ Ἀμφρυσσῷ ζευγίτιδας ἔτρεφεν ἵππους",
+   "title": "Himno 2"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg016.perseus-grc3:49",
+   "text": "ἠιθέου ὑπʼ ἔρωτι κεκαυμένος Ἀδμήτοιο.",
+   "title": "Himno 2"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg016.perseus-grc3:50",
+   "text": "ῥεῖά κε βουβόσιον τελέθοι πλέον, οὐδέ κεν αἶγες",
+   "title": "Himno 2"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg016.perseus-grc3:51",
+   "text": "δεύοιντο βρεφέων ἐπιμηλάδες ᾗδιν Ἀπόλλων",
+   "title": "Himno 2"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg016.perseus-grc3:52",
+   "text": "βοσκομένῃσʼ ὀφθαλμὸν ἐπήγαγεν· οὐδʼ ἀγάλακτες",
+   "title": "Himno 2"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg016.perseus-grc3:53",
+   "text": "οἴιες οὐδʼ ἄκυθοι, πᾶσαι δέ κεν εἶεν ὕπαρνοι,",
+   "title": "Himno 2"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg016.perseus-grc3:54",
+   "text": "ἡ δέ κε μουνοτόκος διδυμητόκος αἶψα γένοιτο.",
+   "title": "Himno 2"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg016.perseus-grc3:55",
+   "text": "Φοίβῳ δʼ ἑσπόμενοι πόλιας διεμετρήσαντο",
+   "title": "Himno 2"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg016.perseus-grc3:56",
+   "text": "ἄνθρωποι· Φοῖβος γὰρ ἀεὶ πολίεσσι φιληδεῖ",
+   "title": "Himno 2"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg016.perseus-grc3:57",
+   "text": "κτιζομένῃσʼ, αὐτὸς δὲ θεμείλια Φοῖβος ὑφαίνει.",
+   "title": "Himno 2"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg016.perseus-grc3:58",
+   "text": "τετραέτης τὰ πρῶτα θεμείλια Φοῖβος ἔπηξε",
+   "title": "Himno 2"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg016.perseus-grc3:59",
+   "text": "καλῇ ἐν Ὀρτυγίῃ περιηγέος ἐγγύθι λίμνης.",
+   "title": "Himno 2"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg016.perseus-grc3:60",
+   "text": "Ἄρτεμις ἀγρώσσουσα καρήατα συνεχὲς αἰγῶν",
+   "title": "Himno 2"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg016.perseus-grc3:61",
+   "text": "Κυνθιάδων φορέεσκεν, ὁ δʼ ἔπλεκε βωμὸν Ἀπόλλων.",
+   "title": "Himno 2"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg016.perseus-grc3:62",
+   "text": "δείματο μὲν κεράεσσιν ἐδέθλια, πῆξε δὲ βωμὸν",
+   "title": "Himno 2"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg016.perseus-grc3:63",
+   "text": "ἐκ κεράων, κεραοὺς δὲ πέριξ ὑπεβάλλετο τοίχους.",
+   "title": "Himno 2"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg016.perseus-grc3:64",
+   "text": "ὧδʼ ἔμαθεν τὰ πρῶτα θεμείλια Φοῖβος ἐγείρειν.",
+   "title": "Himno 2"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg016.perseus-grc3:65",
+   "text": "Φοῖβος καὶ βαθύγειον ἐμὴν πόλιν ἔφρασε Βάττῳ",
+   "title": "Himno 2"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg016.perseus-grc3:66",
+   "text": "καὶ Λιβύην ἐσιόντι κόραξ ἡγήσατο λαῷ",
+   "title": "Himno 2"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg016.perseus-grc3:67",
+   "text": "δεξιὸς οἰκιστῆρι καὶ ὤμοσε τείχεα δώσειν",
+   "title": "Himno 2"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg016.perseus-grc3:68",
+   "text": "ἡμετέροις βασιλεῦσιν· ἀεὶ δʼ εὔορκος Ἀπόλλων.",
+   "title": "Himno 2"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg016.perseus-grc3:69",
+   "text": "ὤπολλον, πολλοί σε Βοηδρόμιον καλέουσι,",
+   "title": "Himno 2"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg016.perseus-grc3:70",
+   "text": "πολλοὶ δὲ Κλάριον, πάντη δέ τοι οὔνομα πογλύ·",
+   "title": "Himno 2"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg016.perseus-grc3:71",
+   "text": "αὐτὰρ ἐγὼ Καρνεῖον· ἐμοὶ πατρώιον οὕτω.",
+   "title": "Himno 2"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg016.perseus-grc3:72",
+   "text": "Σπάρτη τοι, Καρνεῖε, τὸ δὴ πρώτιστον ἔδεθλον,",
+   "title": "Himno 2"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg016.perseus-grc3:73",
+   "text": "δεύτερον αὖ Θήρη, τρίτατόν γε μὲν ἄστυ Κυρήνης.",
+   "title": "Himno 2"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg016.perseus-grc3:74",
+   "text": "ἐκ μέν σε Σπάρτης ἕκτον γένος Οἰδιπόδαο",
+   "title": "Himno 2"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg016.perseus-grc3:75",
+   "text": "ἤγαγε Θηραίην ἐς ἀπόκτισιν· ἐκ δέ σε Θήρης",
+   "title": "Himno 2"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg016.perseus-grc3:76",
+   "text": "οὖλος Ἀριστοτέλης Ἀσβυστίδι πάρθετο γαίῃ,",
+   "title": "Himno 2"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg016.perseus-grc3:77",
+   "text": "δεῖμε δέ τοι μάλα καλὸν ἀνάκτορον, ἐν δὲ πόληι",
+   "title": "Himno 2"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg016.perseus-grc3:78",
+   "text": "θῆκε τελεσφορίην ἐπετήσιον, ᾗ ἐνὶ πολλοὶ",
+   "title": "Himno 2"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg016.perseus-grc3:79",
+   "text": "ὑστάτιον πίπτουσιν ἐπʼ ἰσχίον, ὦ ἄνα, ταῦροι.",
+   "title": "Himno 2"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg016.perseus-grc3:80",
+   "text": "ἱὴ ἱὴ Καρνεῖε πολύλλιτε, σεῖο δὲ βωμοὶ",
+   "title": "Himno 2"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg016.perseus-grc3:81",
+   "text": "ἄνθεα μὲν φορέουσιν ἐν εἴαρι τόσσα περ Ὧραι",
+   "title": "Himno 2"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg016.perseus-grc3:82",
+   "text": "ποικίλʼ ἀγινεῦσι ζεφύρου πνείοντος ἐέρσην,",
+   "title": "Himno 2"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg016.perseus-grc3:83",
+   "text": "χείματι δὲ κρόκον ἡδύν· ἀεὶ δέ τοι ἀέναον πῦρ,",
+   "title": "Himno 2"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg016.perseus-grc3:84",
+   "text": "οὐδέ ποτε χθιζὸν περιβόσκεται ἄνθρακα τέφρη.",
+   "title": "Himno 2"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg016.perseus-grc3:85",
+   "text": "ἦ ῥʼ ἐχάρη μέγα Φοῖβος, ὅτε ζωστῆρες Ἐνυοῦς",
+   "title": "Himno 2"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg016.perseus-grc3:86",
+   "text": "ἀνέρες ὠρχήσαντο μετὰ ξανθῇσι Λιβύσσαις,",
+   "title": "Himno 2"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg016.perseus-grc3:87",
+   "text": "τέθμιαι εὖτέ σφιν Καρνειάδες ἤλυθον ὧραι.",
+   "title": "Himno 2"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg016.perseus-grc3:88",
+   "text": "οἱ δʼ οὔπω πηγῇσι Καρνειάδες ἤλυθον ὧραι.",
+   "title": "Himno 2"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg016.perseus-grc3:89",
+   "text": "Δωριέες, πυκινὴν δὲ νάπαις Ἄζιλιν ἔναιον.",
+   "title": "Himno 2"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg016.perseus-grc3:90",
+   "text": "τοὺς μὲν ἄναξ ἴδεν αὐτός, ἑῇ δʼ ἐπεδείξατο νύμφῃ",
+   "title": "Himno 2"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg016.perseus-grc3:91",
+   "text": "στὰς ἐπὶ Μυρτούσσης κερατώδεος, ἧχι λέοντα",
+   "title": "Himno 2"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg016.perseus-grc3:92",
+   "text": "Ὑψηὶς κατέπεφνε βοῶν σίνιν Εὐρυπύλοιο.",
+   "title": "Himno 2"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg016.perseus-grc3:93",
+   "text": "οὐ κείνου χορὸν εἶδε θεώτερον ἄλλον Ἀπόλλων,",
+   "title": "Himno 2"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg016.perseus-grc3:94",
+   "text": "οὐδὲ πόλει τόσʼ ἔνειμεν ὀφέλσιμα, τόσσα Κυρήνῃ,",
+   "title": "Himno 2"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg016.perseus-grc3:95",
+   "text": "μνωόμενος προτέρης ἁρπακτύος. οὐδὲ μὲν αὐτοὶ",
+   "title": "Himno 2"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg016.perseus-grc3:96",
+   "text": "Βαττιάδαι Φοίβοιο πλέον θεὸν ἄλλον ἔτεισαν.",
+   "title": "Himno 2"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg016.perseus-grc3:97",
+   "text": "ἱὴ ἱὴ παιῆον ἀκούομεν, οὕνεκα τοῦτο",
+   "title": "Himno 2"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg016.perseus-grc3:98",
+   "text": "Δελφός τοι πρώτιστον ἐφύμνιον εὕρετο λαός,",
+   "title": "Himno 2"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg016.perseus-grc3:99",
+   "text": "ἦμος ἑκηβολίην χρυσέων ἐπεδείκνυσο τόξων.",
+   "title": "Himno 2"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg016.perseus-grc3:100",
+   "text": "Πυθώ τοι κατιόντι συνήντετο δαιμόνιος θήρ,",
+   "title": "Himno 2"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg016.perseus-grc3:101",
+   "text": "αἰνὸς ὄφις. τὸν μὲν σὺ κατήναρες ἄλλον ἐπʼ ἄλλῳ",
+   "title": "Himno 2"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg016.perseus-grc3:102",
+   "text": "βάλλων ὠκὺν ὀιστόν, ἐπηύτησε δὲ λαός,",
+   "title": "Himno 2"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg016.perseus-grc3:103",
+   "text": "ἱὴ ἱὴ παιῆον, ἵει βέλος. εὐθύ σε μήτηρ",
+   "title": "Himno 2"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg016.perseus-grc3:104",
+   "text": "γείνατʼ ἀοσσητῦρα, τὸ δʼ ἐξέτι κεῖθεν ἀείδῃ.",
+   "title": "Himno 2"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg016.perseus-grc3:105",
+   "text": "ὁ Φθόνος Ἀπόλλωνος ἐπʼ οὔατα λάθριος εἶπεν",
+   "title": "Himno 2"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg016.perseus-grc3:106",
+   "text": "οὐκ ἄγαμαι τὸν ἀοιδὸν ὃς οὐδʼ ὅσα πόντος ἀείδει.",
+   "title": "Himno 2"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg016.perseus-grc3:107",
+   "text": "τὸν Φθόνον ὡπόλλων ποδί τʼ ἤλασεν ὧδέ τʼ ἔειπεν·",
+   "title": "Himno 2"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg016.perseus-grc3:108",
+   "text": "Ἀσσυρίου ποταμοῖο μέγας ῥόος, ἀλλὰ τὰ πολλὰ",
+   "title": "Himno 2"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg016.perseus-grc3:109",
+   "text": "λύματα γῆς καὶ πολλὸν ἐφʼ ὕδατι συρφετὸν ἕλκει.",
+   "title": "Himno 2"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg016.perseus-grc3:110",
+   "text": "Δηοῖ δʼ οὐκ ἀπὸ παντὸς ὕδωρ φορέουσι Μέλισσαι,",
+   "title": "Himno 2"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg016.perseus-grc3:111",
+   "text": "ἀλλʼ ἥτις καθαρή τε καὶ ἀχράαντος ἀνέρπει",
+   "title": "Himno 2"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg016.perseus-grc3:112",
+   "text": "πίδακος ἐξ ἱερῆς ὀλίγη λιβὰς ἄκρον ἄωτον.",
+   "title": "Himno 2"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg016.perseus-grc3:113",
+   "text": "χαῖρε ἄναξ· ὁ δὲ Μῶμος, ἵνʼ ὁ Φθόνος, ἔνθα νέοιτο.",
+   "title": "Himno 2"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:1",
+   "text": "Ἄρτεμιν (οὐ γὰρ ἐλαφρὸν ἀειδόντεσσι λαθέσθαι)",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:2",
+   "text": "ὑμνέομεν, τῇ τόξα λαγωβολίαι τε μέλονται",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:3",
+   "text": "καὶ χορὸς ἀμφιλαφὴς καὶ ἐν οὔρεσιν ἑψιάασθαι,",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:4",
+   "text": "ἄρχμενοι, ὡς ὅτε πατρὸς ἐφεζομένη γονάτεσσι",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:5",
+   "text": "παῖς ἔτι κουρίζουσα τάδε προσέειπε γονῆα",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:6",
+   "text": "δός μοι παρθενίην αἰώνιον, ἄππα, φυλάσσειν,",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:7",
+   "text": "καὶ πολυωνυμίην, ἵνα μή μοι Φοῖβος ἐρίζῃ.",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:8",
+   "text": "δὸς δʼ ἰοὺς καὶ τόξα—ἔα, πάτερ, οὔ σε Φαρέτρην",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:9",
+   "text": "οὐδʼ αἰτέω μέγα τόξον· ἐμοὶ Κύκλωπες ὀιστοὺς",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:10",
+   "text": "αὐτίκα τεχνήσονται, ἐμοὶ δʼ εὐκαμπὲς ἄεμμα·",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:11",
+   "text": "ἀλλὰ φαεσφορίην τε καὶ ἐς γόνυ μέχρι χιτῶνα",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:12",
+   "text": "ζώννυσθαι λεγνωτόν, ἵνʼ ἄγρια θηρία καίνω.",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:13",
+   "text": "δὸς δέ μοι ἑξήκοντα χορίτιδας Ὠκεανίνας,",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:14",
+   "text": "πάσας εἰνέτεας, πάσας ἔτι παῖδας ἀμίτρους.",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:15",
+   "text": "δὸς δέ μοι ἀμφιπόλους Ἀμνισίδας εἴκοσι νύμφας,",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:16",
+   "text": "αἵ τέ μοι ἐνδρομίδας τε καὶ ὁππότε μηκέτι λύγκας",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:17",
+   "text": "μήτʼ ἐλάφους βάλλοιμι, θοοὺς κύνας εὖ κομέοιεν,",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:18",
+   "text": "δὸς δέ μοι οὔρεα πάντα· πόλιν δέ μοι ἥντινα νεῖμον",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:19",
+   "text": "ἥντινα λῇς· σπαρνὸν γὰρ ὅτʼ Ἄρτεμις ἄστυ κάτεισιν·",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:20",
+   "text": "οὔρεσιν οἰκήσω, πόλεσιν δʼ ἐπιμείξομαι ἀνδρῶν",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:21",
+   "text": "μοῦνον ὅτʼ ἐξείῃσιν ὑπʼ ὠδίνεσσι γυναῖκες",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:22",
+   "text": "τειρόμεναι καλέουσι βοηθόον, ᾗσί με Μοῖραι",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:23",
+   "text": "γεινομένην τὸ πρῶτον ἐπεκλήρωσαν ἀρήγειν,",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:24",
+   "text": "ὅττι με καὶ τίκτουσα καὶ οὐκ ἤλγησε φέρουσα",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:25",
+   "text": "μήτηρ, ἀλλʼ ἀμογητὶ φίλων ἀπεθήκατο γυίων.",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:26",
+   "text": "ὣς ἡ παῖς εἰποῦσα γενειάδος ἤθελε πατρὸς",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:27",
+   "text": "ἅψασθαι, πολλὰς δὲ μάτην ἐτανὐσσατο χεῖρας,",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:28",
+   "text": "μέχρις ἵνα ψαύσειε. πατὴρ δʼ ἐπένευσε γελάσσας,",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:29",
+   "text": "φῆ δὲ καταρρέζων ὅτε μοι τοιαῦτα θέαιναι",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:30",
+   "text": "τίκτοιεν, τυτθόν κεν ἐγὼ ζηλήμονος Ἥρης",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:31",
+   "text": "χωομένης ἀλέγοιμι. φέρευ, τέκος, ὅσσʼ ἐθελημὸς",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:32",
+   "text": "αἰτίζεις, καὶ δʼ ἄλλα πατὴρ ἔτι μείζονα δώσει.",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:33",
+   "text": "τρὶς δέκα τοι πτολίεθρα καὶ οὐχ ἕνα πύργον ὀπάσσω,",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:34",
+   "text": "τρὶς δέκα τοι πτολίεθρα, τὰ μὴ θεὸν ἄλλον ἀέξειν",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:35",
+   "text": "εἴσεται, ἀλλὰ μόνην σὲ καὶ Ἀρτέμιδος καλέεσθαι·",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:36",
+   "text": "πολλὰς δὲ ξυνῇ πόλιας διαμετρήσασθαι",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:37",
+   "text": "μεσσόγεως νήσους τε· καὶ ἐν πάσῃσιν ἔσονται",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:38",
+   "text": "Ἀρτέμιδος βωμοί τε καὶ ἄλσεα. καὶ μὲν ἀγυιαῖς",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:39",
+   "text": "ἔσσῃ καὶ λιμένεσσιν ἐπίσκοπος. ὣς ὁ μὲν εἰπὼν",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:40",
+   "text": "μῦθον ἐπεκρήηνε καρήατι. βαῖνε δὲ κούρη",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:41",
+   "text": "λευκὸν ἐπὶ Κρηταῖον ὄρος κεκομημένον ὕλῃ·",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:42",
+   "text": "ἔνθεν ἐπʼ Ὠκεανόν· πολέας δʼ ἐπελέξατο νύμφας,",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:43",
+   "text": "πάσας εἰνέτεας, πάσας ἔτι παῖδας ἀμίτρους.",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:44",
+   "text": "χαῖρε δὲ Καίρατος ποταμὸς μέγα, χαῖρε δὲ Τηθύς,",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:45",
+   "text": "οὕνεκα θυγατέρας Λητωίδι πέμπον ἀμορβούς.",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:46",
+   "text": "αὖθι δὲ Κύκλωπας μετεκίαθε· τοὺς μὲν ἔτετμε",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:47",
+   "text": "νήσῳ ἐνὶ Λιπάρῃ (Λιπάρη νέον, ἀλλὰ τότʼ ἔσκεν",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:48",
+   "text": "οὔνομά οἱ Μελιγουνίς) ἐπʼ ἄκμοσιν Ἡφαίστοιο",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:49",
+   "text": "ἑσταότας περὶ μύδρον· ἐπείγετο γὰρ μέγα ἔργον·",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:50",
+   "text": "ἱππείην τετύκοντο Ποσειδάωνι ποτίστρην.",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:51",
+   "text": "αἱ νύμφαι δʼ ἔδδεισαν, ὅπως ἴδον αἰνὰ πέλωρα",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:52",
+   "text": "πρηόσιν Ὀσσαίοισιν ἐοικότα, πᾶσι δʼ ὑπʼ ὀφρὺν",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:53",
+   "text": "φάεα μουνόγληνα σάκει ἴσα τετραβοείῳ",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:54",
+   "text": "δεινὸν ὑπογλαύσσοντα, καὶ ὁππότε δοῦπον ἄκουσαν",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:55",
+   "text": "ἄκμονος ἠχήσαντος ἐπὶ μέγα πουλύ τʼ ἄημα",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:56",
+   "text": "φυσάων αὐτῶν τε βαρὺν στόνον· αὖε γὰρ Αἴτνη,",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:57",
+   "text": "αὖε δὲ Τρινακίη, Σικανῶν ἕδος, αὖε δὲ γείτων",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:58",
+   "text": "Ἰταλίη, μεγάλην δὲ βοὴν ἐπὶ Κύρνος ἀύτει,",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:59",
+   "text": "εὖθʼ οἵ γε ῥαιστῆρας ἀειράμενοι ὑπὲρ ὤμων",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:60",
+   "text": "ἢ χαλκὸν ζείοντα καμινόθεν ἠὲ σίδηρον",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:61",
+   "text": "ἀμβολαδὶς τετυπόντες ἐπὶ μέγα μοχθήσειαν.",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:62",
+   "text": "τῶ σφέας οὐκ ἐτάλασσαν ἀκηδέες Ὠκεανῖναι",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:63",
+   "text": "οὔτʼ ἄωτην ἰδέειν οὔτε κτύπον οὔασι δέχθαι.",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:64",
+   "text": "οὐ νέμεσις· κείνους γε καὶ αἱ μάλα μηκέτι τυτθαὶ",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:65",
+   "text": "οὐδέποτʼ ἀφρικτὶ μακάρων ὁρόωσι θύγατρες.",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:66",
+   "text": "ἀλλʼ ὅτε κουράων τις ἀπειθέα μητέρι τεύχοι,",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:67",
+   "text": "μήτηρ μὲν Κύκλωπας ἑῇ ἐπὶ παιδὶ καλιστρεῖ,",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:68",
+   "text": "Ἄργην ἢ Στερόπην· ὁ δὲ δώματος ἐκ μυχάτοιο",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:69",
+   "text": "ἔρχεται Ἑρμείης σποδιῇ κεχρημένος αἰθῇ·",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:70",
+   "text": "αὐτίκα τὴν κούρην μορμύσσεται, ἡ δὲ τεκούσης",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:71",
+   "text": "δύνει ἔσω κόλπους θεμένη ἐπὶ φάεσι χεῖρας.",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:72",
+   "text": "κοῦρα, σὺ δὲ προτέπω περ, ἔτι τριέτηρος ἐοῦσα,",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:73",
+   "text": "εὖτʼ ἔμολεν Λητώ σε μετʼ ἀγκαλίδεσσι φέρουσα,",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:74",
+   "text": "Ἡφαίστου καλέοντος ὅπως ὀπτήρια δοίη,",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:75",
+   "text": "Βρόντεώ σε στιβαροῖσιν ἐφεσσαμένου γονάτεσσι,",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:76",
+   "text": "στήθεος ἐκ μεγάλου λασίης ἐδράξαο χαίτης,",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:77",
+   "text": "ὤλοψας δὲ βίηφι· τὸ δʼ ἄτριχον εἰσέτι καὶ νῦν",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:78",
+   "text": "μεσσάτιον στέρνοιο μένει μέρος, ὡς ὅτε κόρσην",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:79",
+   "text": "φωτὸς ἐνιδρυθεῖσα κόμην ἐπενείματʼ ἀλώπηξ.",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:80",
+   "text": "τῶ μάλα θαρσαλέη σφε τάδε προσελέξαο τῆμος",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:81",
+   "text": "Κύκλωπες, κἠμοί τι Κυδώνιον εἰ δʼ ἄγε τόξον",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:82",
+   "text": "ἠδʼ ἰοὺς κοίλην τε κατακληῖδα βελέμνων",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:83",
+   "text": "τεύξατε· καὶ γὰρ ἐγὼ Λητωιὰς ὥσπερ Ἀπόλλων.",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:84",
+   "text": "αἰ δέ κʼ ἐγὼ τόξοις μονιὸν δάκος ἤ τι πέλωρον",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:85",
+   "text": "θηρίον ἀγρεύσω, τὸ δέ κεν Κύκλωπες ἔδοιεν.",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:86",
+   "text": "ἔννεπες· οἱ δʼ ἐτέλεσσαν· ἄφαρ δʼ ὡπλίσσαο, δαῖμον,",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:87",
+   "text": "αἶψα δʼ ἐπὶ σκύλακας πάλιν ἤιες· ἵκεο δʼ αὖλιν",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:88",
+   "text": "Ἀρκαδικὴν ἔπι Πανός. ὁ δὲ κρέα λυγκὸς ἔταμνε",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:89",
+   "text": "Μαιναλίης, ἵνα οἱ τοκάδες κύνες εἶδαρ ἔδοιεν.",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:90",
+   "text": "τὶν δʼ ὁ γενειήτης δύο μὲν κύνας ἥμισυ πηγοὺς",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:91",
+   "text": "τρεῖς δὲ παρουαίους ἕνα δʼ αἰόλον, οἵ ῥα λέοντας",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:92",
+   "text": "αὐτοὺς αὖ ἐρύοντες, ὅτε δράξαιντο δεράων,",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:93",
+   "text": "εἷλκον ἔτι ζώοντας ἐπʼ αὐλίον, ἑπτὰ δʼ ἔδωκε",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:94",
+   "text": "θάσσονας αὐράων Κυνοσουρίδας, αἵ ῥα διῶξαι",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:95",
+   "text": "ὤκισται νεβρούς τε καὶ οὐ μύοντα λαγωόν,",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:96",
+   "text": "καὶ κοίτην ἐλάφοιο καὶ ὕστριχος ἔνθα καλιαὶ",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:97",
+   "text": "σημῆναι, καὶ ζορκὸς ἐπʼ ἴχνιον ἡγήσασθαι.",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:98",
+   "text": "ἔνθεν ἀπερχομένη (μετὰ καὶ κύνες ἐσσεύοντο)",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:99",
+   "text": "εὗρες ἐτί προμολῇσʼ ὄρεος τοῦ Παρρασίοιο",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:100",
+   "text": "σκαιρούσας ἐλάφους, μέγα τι χρέος· αἱ μὲν ἑπʼ ὄχθῃς",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:101",
+   "text": "αἰὲν ἐβουκολέοντο μελαμψήφιδος Ἀναύρου,",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:102",
+   "text": "μάσσονες ἢ ταῦροι, κεράων δʼ ἀπελάμπετο χρυσός·",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:103",
+   "text": "ἐξαπίνης δʼ ἔταφές τε καὶ ὃν ποτὶ θυμὸν ἔειπες",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:104",
+   "text": "τοῦτό κεν Ἀρτέμιδος πρωτάγριον ἄξιον εἴη.",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:105",
+   "text": "πέντʼ ἔσαν αἱ πᾶσαι· πίσυρας δʼ ἕλες ὦκα θέουσα",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:106",
+   "text": "νόσφι κυνοδρομίης, ἵνα τοι θοὸν ἅρμα φέρωσι.",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:107",
+   "text": "τὴν δὲ μίαν Κελάδοντος ὑπὲρ ποταμοῖο φυγοῦσαν",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:108",
+   "text": "Ἡρης ἐννεσίῃσιν, ἀέθλιον Ἡρακλῆι",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:109",
+   "text": "ὕστερον ὄφρα γένοιτο, πάγος Κερύνειος ἔδεκτο.",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:110",
+   "text": "Ἄρτεμι Παρθενίη Τιτυοκτόνε, χρύσεα μέν τοι",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:111",
+   "text": "ἔντεα καὶ ζώνη, χρύσεον δʼ ἐζεύξαο δίφρον,",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:112",
+   "text": "ἐν δʼ ἐβάλευ χρύσεια, θεή, κεμάδεσσι χαλινά.",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:113",
+   "text": "ποῦ δέ σε τὸ πρῶτον κερόεις ὄχος ἤρξατʼ ἀείρειν;",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:114",
+   "text": "Αἵμῳ ἐπὶ Θρήικι, τόθεν βορέαο κατᾶιξ",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:115",
+   "text": "ἔρχεται ἀχλαίνοισι δυσαέα κρυμὸν ἄγουσα.",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:116",
+   "text": "ποῦ δʼ ἔταμες πεύκην, ἀπὸ δὲ φλογὸς ἥψαο ποίης;",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:117",
+   "text": "Μυσῷ ἐν Οὐλύμπῳ, φάεος δʼ ἐνέηκας ἀυτμὴν",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:118",
+   "text": "ἀσβέστου, τό ῥα πατρὸς ἀποστάζουσι κεραυνοί.",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:119",
+   "text": "ποσσάκι δʼ ἀργυρέοιο, θεή, πειρήσαο τόξου;",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:120",
+   "text": "πρῶτον ἐπὶ πτελέην, τὸ δὲ δεύτερον ἧκας ἐπὶ δρῦν,",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:121",
+   "text": "τὸ τρίτον αὖτʼ ἐπὶ θῆρα. τὸ τέτρατον οὐκέτʼ ἐπὶ δὴν",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:122",
+   "text": "ἀλλά μιν εἰς ἀδίκων ἔβαλες πόλιν, οἵ τε περὶ σφέας",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:123",
+   "text": "οἵ τε περὶ ξείνους ἀλιτήμονα πολλά τέλεσκον,",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:124",
+   "text": "σχέτλιοι· οἷς τύνη χαλεπὴν ἐμμάξεαι ὀργήν·",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:125",
+   "text": "κτήνεά φιν λοιμὸς καταβόσκεται, ἔργα δὲ πάχνη,",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:126",
+   "text": "κείρονται δὲ γέροντες ἐφʼ υἱάσιν, αἱ δὲ γυναῖκες",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:127",
+   "text": "ἢ βληταὶ θνῄσκουσι λεχωίδες ἠὲ φυγοῦσαι",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:128",
+   "text": "τίκτουσιν τῶν οὐδὲν ἐπὶ σφυρὸν ὀρθὸν ἀνέστη.",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:129",
+   "text": "οἷς δέ κεν εὐμειδής τε καὶ ἵλαος αὐγάσσηαι,",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:130",
+   "text": "κείνοις εὖ μὲν ἄρουρα φέρει στάχυν, εὖ δὲ γενέθλη",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:131",
+   "text": "τετραπόδων, εὖ δʼ ὄλβος ἀέξεται· οὐδʼ ἐπὶ σῆμα",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:132",
+   "text": "ἔρχονται πλὴν εὖτε πολυχρόνιόν τι φέρωσιν·",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:133",
+   "text": "οὐδὲ διχοστασίη τρώει γένος, ἥ τε καὶ εὖ περ",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:134",
+   "text": "οἴκους ἑστηῶτας ἐσίνατο· ταὶ δὲ θυωρὸν",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:135",
+   "text": "εἰνάτερες γαλόῳ τε μίαν περὶ δίφρα τίθενται.",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:136",
+   "text": "πότνια, τῶν εἴη μὲν ἐμοὶ φίλος ὅστις ἀληθής,",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:137",
+   "text": "εἴην δʼ αὐτός, ἄνασσα, μέλοι δέ μοι αἰὲν ἀοιδή·",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:138",
+   "text": "τῇ ἔνι μὲν Λητοῦς γάμος ἔσσεται, ἐν δὲ σὺ πολλή,",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:139",
+   "text": "ἐν δὲ καὶ Ἀπόλλων, ἐν δʼ οἵ σεο πάντες ἄεθλοι,",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:140",
+   "text": "ἐν δὲ κύνες καὶ τόξα καὶ ἄντυγες, αἵ τέ σε ῥεῖα",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:141",
+   "text": "θηητὴν φορέουσιν, ὅτʼ ἐς Διὸς οἶκον ἐλαύνεις.",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:142",
+   "text": "ἔνθα τοι ἀντιόωντες ἐνὶ προμολῇσι δέχονται",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:143",
+   "text": "ὅπλα μὲν Ἑρμείης Ἀκακήσιος, αὐτὰρ Ἀπόλλων",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:144",
+   "text": "θηρίον ὅττι φέρῃσθα· πάροιθέ γέ, πρίν περ ἱκέσθαι",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:145",
+   "text": "καρτερὸν Ἀλκεΐδην· νῦν δʼ οὐκέτι τοῦτον ἄεθλον",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:146",
+   "text": "Φοῖβος ἔχει, τοῖος γὰρ ἀεὶ Τιρύνθιος ἄκμων",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:147",
+   "text": "ἕστηκε πρὸ πυλέων ποτιδέγμενος, εἴ τι φέρουσα",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:148",
+   "text": "νεῖαι πῖον ἔδεσμα· θεοὶ δʼ ἐπὶ πάντες ἐκείνῳ",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:149",
+   "text": "ἄλληκτον γελόωσι, μάλιστα δὲ πενθερὴ αὐτή,",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:150",
+   "text": "ταῦρον ὅτʼ ἐκ δίφροιο μάλα μέγαν ἢ ὅ γε χλούνην",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:151",
+   "text": "κάπρον ὀπισθιδίοιο φέροι ποδὸς ἀσπαίροντα·",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:152",
+   "text": "κερδαλέῳ μύθῳ σε, θεή, μάλα τῷδε πινύσκει",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:153",
+   "text": "βάλλε κακοὺς ἐπὶ θῆρας, ἵνα θνητοί σε βοηθὸν",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:154",
+   "text": "ὡς ἐμὲ κικλήσκωσιν. ἔα πρόκας ἠδὲ λαγωοὺς",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:155",
+   "text": "οὔρεα βόσκεσθαι· τί δέ κεν πρόκες ἠδὲ λαγωοὶ",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:156",
+   "text": "ῥέξειαν; σύες ἔργα, σύες φυτὰ λυμαίνονται.",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:157",
+   "text": "καὶ βόες ἀνθρώποισι κακὸν μέγα· βάλλʼ ἐπὶ καὶ τούς.",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:158",
+   "text": "ὣς ἔνεπεν, ταχινὸς δὲ μέγαν περὶ θῆρα πονεῖτο.",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:159",
+   "text": "οὐ γὰρ ὅ γε Φρυγίῃ περ ὑπὸ δρυὶ γυῖα θεωθεὶς",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:160",
+   "text": "παύσατʼ ἀδηφαγίης· ἔτι οἱ πάρα νηδὺς ἐκείνη,",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:161",
+   "text": "τῇ ποτʼ ἀροτριόωντι συνήντετο Θειοδάμαντι.",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:162",
+   "text": "σοὶ δʼ Ἀμνισιάδες μὲν ὑπὸ ζεύγληφι λυθείσας",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:163",
+   "text": "ψήχουσιν κεμάδας, παρὰ δέ σφισι πουλὺ νέμεσθαι",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:164",
+   "text": "Ἥρης ἐκ λειμῶνος ἀμησάμεναι φορέουσιν",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:165",
+   "text": "ὠκύθοον τριπέτηλον, ὃ καὶ Διὸς ἵπποι ἔδονσιν·",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:166",
+   "text": "ἐν καὶ χρυσείας ὑποληνίδας ἐπλήσαντο",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:167",
+   "text": "ὕδατος, ὄφρʼ ἐλάφοισι ποτὸν θυμάρμενον εἴη.",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:168",
+   "text": "αὐτὴ δʼ ἐς πατρὸς δόμον ἔρχεαι· οἱ δέ σʼ ἐφʼ ἕδρην",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:169",
+   "text": "πάντες ὁμῶς καλέουσι· σὺ δʼ Ἀπόλλωνι παρίζεις.",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:170",
+   "text": "ἡνίκα δʼ αἱ νύμφαι σε χορῷ ἔνι κυκλώσονται",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:171",
+   "text": "ἀγχόθι πηγάων Αἰγυπτίου Ἰνωποῖο",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:172",
+   "text": "ἢ Πιτάνης (καὶ γὰρ Πιτάνη σέθεν) ἢ ἐνὶ Λίμναις,",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:173",
+   "text": "ἢ ἵνα, δαῖμον, Ἀλὰς Ἀραφηνίδας οἰκήσονσα",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:174",
+   "text": "ἦλθες ἀπὸ Σκυθίης, ἀπὸ δʼ εἴπαο τέθμια Ταύρων,",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:175",
+   "text": "μὴ νειὸν τημοῦτος ἐμαὶ βόες εἵνεκα μισθοῦ",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:176",
+   "text": "τετράγυον τέμνοιεν ὑπʼ ἀλλοτρίῳ ἀροτῆρι·",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:177",
+   "text": "ἦ γάρ κεν γυιαί τε καὶ αὐχένα κεκμηυῖαι",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:178",
+   "text": "κόπρον ἔπι προγένοιντο, καὶ εἰ Στυμφαιίδες εἶεν",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:179",
+   "text": "εἰναετιζόμεναι κεραελκέες, αἳ μέγʼ ἄρισται",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:180",
+   "text": "τέμνειν ὦλκα βαθεῖαν· ἐπεὶ θεὸς οὔποτʼ ἐκεῖνον",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:181",
+   "text": "ἦλθε παρʼ Ἠέλιος καλὸν χορόν, ἀλλὰ θεῆται",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:182",
+   "text": "δίφρον ἐπιστήσας, τὰ δὲ φάεα μηκύνονται.",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:183",
+   "text": "τίς δέ νύ τοι νήσων, ποῖον δʼ ὄρος εὔαδε πλεῖστον,",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:184",
+   "text": "τίς δὲ λιμήν, ποίη δὲ πόλις ; τίνα δʼ ἔξοχα νυμφέων",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:185",
+   "text": "φίλαο, καὶ ποίας ἡρωίδας ἔσχες ἑταίρας ;",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:186",
+   "text": "εἰπέ, θεή, σὺ μὲν ἄμμιν, ἐγὼ δʼ ἑτέροισιν ἀείσω.",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:187",
+   "text": "νήσων μὲν Δολίχη, πολίων δέ τοι εὔαδε Πέργη,",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:188",
+   "text": "Τηύγετον δʼ ὀρέων, λιμένες γε μὲν Εὐρίποιο.",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:189",
+   "text": "ἔξοχα δʼ ἀλλάων Γορτυνίδα φίλαο νύμφην,",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:190",
+   "text": "ἐλλοφόνον Βριτόμαρτιν ἐύσκοπον· ἧς ποτε Μίνως",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:191",
+   "text": "πτοιηθεὶς ὑπʼ ἔρωτι κατέδραμεν οὔρεα Κρήτης.",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:192",
+   "text": "ἡ δʼ ὁτὲ μὲν λασίῃσιν ὑπὸ δρυσὶ κρύπτετο νύμφη,",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:193",
+   "text": "ἄλλοτε δʼ εἱαμενῇσιν· ὁ δʼ ἐννέα μῆνας ἐφοίτα",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:194",
+   "text": "παίπαλά τε κρημνούς τε καὶ οὐκ ἀνέπαυσε διωκτύν,",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:195",
+   "text": "μέσφʼ ὅτε μαρπτομένη καὶ δὴ σχεδὸν ἥλατο πόντον",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:196",
+   "text": "πρηόνος ἐξ ὑπάτοιο καὶ ἔνθορεν εἰς ἁλιήων",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:197",
+   "text": "δίκτυα, τά σφʼ ἐσάωσαν· ὅθεν μετέπειτα Κύδωνες",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:198",
+   "text": "νύμφην μὲν Δίκτυναν, ὄρος δʼ ὅθεν ἥλατο νύμφη",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:199",
+   "text": "Δικταῖον καλέουσιν, ἀνεστήσαντο δὲ βωμοὺς",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:200",
+   "text": "ἱερά τε ῥέζουσι· τὸ δὲ στέφος ἤματι κείνῳ",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:201",
+   "text": "ἢ πίτυς ἢ σχῖνος, μύρτοιο δὲ χεῖρες ἄθικτοι·",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:202",
+   "text": "δὴ τότε γὰρ πέπλοισιν ἐνέσχετο μύρσινος ὄζος",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:203",
+   "text": "τῆς κούρης, ὅτʼ ἔφευγεν· ὅθεν μέγα χώσατο μύρτῳ.",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:204",
+   "text": "Οὖπι ἄνασσʼ εὐῶπι φαεσφόρε, καὶ δὲ σὲ κείνγς",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:205",
+   "text": "Κρηταέες καλέουσιν ἐπωνυμίην ἀπὸ νύμφης.",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:206",
+   "text": "καὶ μὴν Κυρήνην ἑταρίσσαο, τῇ ποτʼ ἔδωκας",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:207",
+   "text": "αὐτὴ θηρητῆρε δύω κύνε, τοῖς ἔνι κούρη",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:208",
+   "text": "Ὑψηὶς παρὰ τύμβον Ἰώλκιον ἔμμορʼ ἀέθλου.",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:209",
+   "text": "καὶ Κεφάλου ξανθὴν ἄλοχον Δηιονίδαο,",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:210",
+   "text": "πότνια, σὴν ὁμόθηρον ἐθήκαο· καὶ δὲ σὲ φασὶ",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:211",
+   "text": "καλὴν Ἀντίκλειαν ἴσον φαέεσσι φιλῆσαι",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:212",
+   "text": "αἳ πρῶται θοὰ τόξα καὶ ἀμφʼ ὤμοισι φαρέτρας",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:213",
+   "text": "ἰοδόκους ἐφόρησαν· ἀσίλλωτοι δέ φιν ὦμοι",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:214",
+   "text": "δεξιτεροὶ καὶ γυμνὸς ἀεὶ παρεφαίνετο μαζός.",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:215",
+   "text": "ᾔνησας δʼ ἔτι πάγχυ ποδορρώρην Ἀταλάντην,",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:216",
+   "text": "κούρην Ἰασίοιο συοκτόνον Ἀρκασίδαο,",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:217",
+   "text": "καί ἑ κυνηλασίην τε καὶ εὐστοχίην ἐδίδαξας.",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:218",
+   "text": "οὔ μιν ἐπίκλητοι Καλυδωνίου ἀγρευτῆρες",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:219",
+   "text": "μέμφονται κάπροιο· τὰ γὰρ σημήια νίκης",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:220",
+   "text": "Ἀρκαδίην εἰσῆλθεν, ἔχει δʼ ἔτι θηρὸς ὀδόντας·",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:221",
+   "text": "οὐδὲ μὲν Ὑλαῖόν τε καὶ ἄφρονα Ῥοῖκον ἔολπα",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:222",
+   "text": "οὐδέ περ ἐχθαίροντας ἐν Ἄιδι μωμήσασθαι",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:223",
+   "text": "τοξότιν· οὐ γάρ σφιν λαγόνες συνεπιψεύσονται,",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:224",
+   "text": "τάων Μαιναλίη νᾶεν φόνῳ ἀκρώρεια.",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:225",
+   "text": "πότνια πουλυμέλαθρε, πολύπτολι, χαῖρε Χιτώνη",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:226",
+   "text": "Μιλήτῳ ἐπίδημε· σὲ γὰρ ποιήσατο Νηλεὺς",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:227",
+   "text": "ἡγεμόνην, ὅτε νηυσὶν ἀνήγετο Κεκροπίηθεν.",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:228",
+   "text": "Χησιὰς Ἰμβρασίη πρωτόθρονε, σοὶ δʼ Ἀγαμέμνων",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:229",
+   "text": "πηδάλιον νηὸς σφετέρης ἐγκάτθετο νηῷ",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:230",
+   "text": "μείλιον ἀπλοΐης, ὅτε οἱ κατέδησας ἀήτας,",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:231",
+   "text": "Τευκρῶν ἡνίκα νῆες Ἀχαιίδες ἄστεα κήδειν",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:232",
+   "text": "ἔπλεον ἀμφʼ Ἑλένῃ Ῥαμνουσίδι θυμωθεῖσαι.",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:233",
+   "text": "ἦ μέν τοι Προῖτός γε δύω ἐκαθίσσατο νηούς,",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:234",
+   "text": "ἄλλον μὲν Κορίης, ὅτι οἱ συνελέξαο κούρας",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:235",
+   "text": "οὔρεα πλαζομένας Ἀζήνια, τὸν δʼ ἐνὶ Λούσοις",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:236",
+   "text": "ἡμέρῃ, οὕνεκα θυμὸν ἀπʼ ἄγριον εἵλεο παίδων.",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:237",
+   "text": "σοὶ καὶ Ἀμαζονίδες πολέμου ἐπιθυμήτειραι",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:238",
+   "text": "ἔν ποτε παρραλίῃ Ἐφέσῳ βρέτας ἱδρύσαντο",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:239",
+   "text": "φηγῷ ὑπὸ πρέμεῳ, τέλεσεν δέ τοι ἱερὸν Ἱππώ·",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:240",
+   "text": "αὐταὶ δʼ, Οὖπι ἄνασσα, περὶ πρύλιν ὠρχήσαντο",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:241",
+   "text": "πρῶτα μὲν ἐν σακέεσσιν ἐνόπλιον, αὖθι δὲ κύκλῳ",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:242",
+   "text": "στησάμεναι χορὸν εὐρύν· ὑπήεισαν δὲ λίγειαι",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:243",
+   "text": "λεπταλέον σύριγγες, ἵνα ῥήσσωσιν ὁμαρτῇ·",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:244",
+   "text": "οὐ γάρ πω νέβρεια διʼ ὀστέα τετρήναντο,",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:245",
+   "text": "ἔργονʼ Ἀθηναίης ἐλάφῳ κακόν· ἔδραμε δʼ ἠχὼ",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:246",
+   "text": "Σάρδιας ἔς τε νομὸν Βερεκύνθιον. αἱ δὲ πόδεσσιν",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:247",
+   "text": "οὖλα κατεκροτάλιζον, ἐπεψόφεον δὲ φαρέτραι.",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:248",
+   "text": "κεῖνο δέ τοι μετέπειτα περὶ βρέτας εὐρὺ θέμειλον",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:249",
+   "text": "δωμήθη, τοῦ δʼ οὔτε θεώτερον ὄψεται ἠὼς",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:250",
+   "text": "οὐδʼ ἀφνειότερον· ῥέα κεν Πυθῶνα παρέλθοι.",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:251",
+   "text": "τῶ ῥα καὶ ἠλαίνων ἀλαπαξέμεν ἠπείλησε",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:252",
+   "text": "Λύγδαμις ὑβριστής· ἐπὶ δὲ στρατὸν ἱππημολγῶν",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:253",
+   "text": "ἤγαγε Κιμμερίων ψαμάθῳ ἴσον, οἵ ῥα παρʼ αὐτὸν",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:254",
+   "text": "κεκλιμένοι ναίουσι βοὸς πόρον Ἰναχιώνης.",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:255",
+   "text": "ἆ δειλὸς βασιλέων, ὅσον ἤλιτεν· οὐ γὰρ ἔμελλεν",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:256",
+   "text": "οὔτʼ αὐτὸς Σκυθίηνδε παλιμπετὲς οὔτε τις ἄλλος",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:257",
+   "text": "ὅσσων ἐν λειμῶνι Καϋστρίῳ ἔσταν ἅμαξαι",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:258",
+   "text": "νοστήσειν· Ἐφέσου γὰρ ἀεὶ τεὰ τόξα πρόκειται.",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:259",
+   "text": "πότνια Μουνιχίη λιμενοσκόπε, χαῖρε Φεραίη.",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:260",
+   "text": "μή τις ἀτιμήσῃ τὴν Ἄρτεμιν· οὐδὲ γὰρ Οἰνεῖ",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:261",
+   "text": "βωμὸν ἀτιμήσαντι καλοὶ πόλιν ἦλθον ἀγῶνες·",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:262",
+   "text": "μηδʼ ἐλαφηβολίην μηδʼ εὐστοχίην ἐριδαίνειν·",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:263",
+   "text": "οὐδὲ γὰρ Ἀτρεΐδης ὀλίγῳ ἔπι κόμπασε μισθῷ·",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:264",
+   "text": "μηδέ τινα μνᾶσθαι τὴν παρθένον· οὐδὲ γὰρ Ὦτος,",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:265",
+   "text": "οὐδὲ μὲν Ὠαρίων ἀγαθὸν γάμον ἐμνήστευσαν·",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:266",
+   "text": "μηδὲ χορὸν φεύγειν ἐνιαύσιον· οὐδὲ γὰρ Ἱππὼ",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:267",
+   "text": "ἀκλαυτεὶ περὶ βωμὸν ἀπείπατο κυκλώσασθαι·",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc3:268",
+   "text": "χαῖρε μέγα κρείουσα καὶ εὐάντησον ἀοιδῇ.",
+   "title": "Himno 3"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:1",
+   "text": "τὴν ἱερήν, ὦ θυμέ, τίνα χρόνον ἢ πότʼ ἀείσεις",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:2",
+   "text": "δῆλον, Ἀπόλλωνος κουροτρόφον ; ἦ μὲν ἅπασαι",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:3",
+   "text": "Κυκλάδες, αἳ νήσων ἱερώταται εἰν ἁλὶ κεῖνται,",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:4",
+   "text": "εὔυμνοι· δῆλος δʼ ἐθέλει τὰ πρῶτα φέρεσθαι",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:5",
+   "text": "ἐκ Μουσέων, ὅτι Φοῖβον ἀοιδάων μεδέοντα",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:6",
+   "text": "λοῦσέ τε καὶ σπείρωσε καὶ ὡς θεὸν ᾔνεσε πρώτη.",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:7",
+   "text": "ὡς Μοῦσαι τὸν ἀοιδὸν ὃ μὴ Πίμπλειαν ἀείσῃ",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:8",
+   "text": "ἔχθουσιν, τὼς Φοῖβος ὅτις Δήλοιο λάθηται.",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:9",
+   "text": "Δήλῳ νῦν οἴμης ἀποδάσσομαι, ὡς ἂν Ἀπόλλων",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:10",
+   "text": "Κύνθιος αἰνήσῃ με φίλης ἀλέγοντα τιθήνης.",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:11",
+   "text": "κείνγ δʼ ἠνεμόεσσα καὶ ἄτροπος οἷά θʼ ἁλιπλὴξ",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:12",
+   "text": "αἰθυίῃς καὶ μᾶλλον ἐπίδρομος ἠέπερ ἵπποις",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:13",
+   "text": "πόντῳ ἐνεστήρικται· ὁ δʼ ἀμφί ἑ πουλύς ἑλίσσων",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:14",
+   "text": "Ἰκαρίου πολλὴν ἀπομάσσεται ὕδατος ἄχνην·",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:15",
+   "text": "τῶ σφε καὶ ἰχθυβολῆες ἁλίπλοοι ἐννάσσαντο.",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:16",
+   "text": "ἀλλά οἱ οὐ νεμεσητὸν ἐνὶ πρώτῃσι λέγεσθαι,",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:17",
+   "text": "ὀππότʼ ἐς Ὠκεανόν τε καὶ ἐς Τιτηνίδα Τηθὺν",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:18",
+   "text": "νῆσοι ἀολλίζονται, ἀεὶ δʼ ἔξαρχος ὁδεύει.",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:19",
+   "text": "ἡ δʼ ὄπιθεν Φοίνισσα μετʼ ἴχνια Κύρνος ὀπηδεῖ",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:20",
+   "text": "οὐκ ὀνοτὴ καὶ Μάκρις Ἀβαντιὰς Ἐλλοπιήων",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:21",
+   "text": "Σαρδώ θʼ ἱμερόεσσα καὶ ἣν ἐπενήξατο Κύπρις",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:22",
+   "text": "ἐξ ὕδατος τὰ πρῶτα, σαοῖ δέ μιν ἀντʼ ἐπιβάθρων.",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:23",
+   "text": "κεῖναι μὲν πύργοισι περισκεπέεσσιν ἐρυμναί,",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:24",
+   "text": "δῆλος δʼ Ἀπόλλωνι· τί δὲ στιβαρώτερον ἕρκος;",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:25",
+   "text": "τείχεα μὲν καὶ λᾶες ὑπαὶ ῥιπῆς κε πέσοιεν",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:26",
+   "text": "Στρυμονίου βορέαο· θεὸς δʼ ἀεὶ ἀστυφέλικτος·",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:27",
+   "text": "Δῆλε φίλη, τοῖός σε βοηθόος ἀμφιβέβηκεν.",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:28",
+   "text": "εἰ δὲ λίην πολέες σε περιτροχόωσιν ἀοιδαί,",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:29",
+   "text": "ποίῃ ἐνιπλέξω σε; τί τοι θυμῆρες ἀκοῦσαι;",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:30",
+   "text": "ἢ ὡς τὰ πρώτιστα μέγας θεὸς οὔρεα θείνων",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:31",
+   "text": "ἄορι τριγλώχινι, τό οἱ Τελχῖνες ἔτευξαν,",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:32",
+   "text": "νήσους εἰναλίας εἰργάζετο, νέρθε δὲ πάσας",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:33",
+   "text": "ἐκ νεάτων ὤχλισσε καὶ εἰσεκύλισε θαλάσσῃ;",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:34",
+   "text": "καὶ τὰς μὲν κατὰ βυσσόν, ἵνʼ ἠπείροιο λάθωνται,",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:35",
+   "text": "πρυμνόθεν ἐρρίζωσε· δὲ δʼ οὐκ ἔθλιψεν ἀνάγκη,",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:36",
+   "text": "ἀλλʼ ἄφετος πελάγεσσιν ἐπέπλεες, οὔνομα δʼ ἦν σοι",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:37",
+   "text": "Ἀστερίη τὸ παλαιόν, ἐπεὶ βαθὺν ἥλαο τάφρον",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:38",
+   "text": "οὐρανόθεν φεύγουσα Διὸς γάμον ἀστέρι ἴση.",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:39",
+   "text": "τόφρα μὲν οὔπω σοι χρυσέη ἐπεμίσγετο Λητώ,",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:40",
+   "text": "τόφρα δʼ ἔτʼ Ἀστερίη σὺ καὶ οὐδέπω ἔκλεο Δῆλος·",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:41",
+   "text": "πολλάκι σε Τροιζῆνος ἀπὸ ξανθοῖο πολίχνης",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:42",
+   "text": "ἐρχόμενοι Ἐφύρηνδε Σαρωνικοῦ ἔνδοθι κόλπου",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:43",
+   "text": "ναῦται ἐπεσκέψαντο, καὶ ἐξ Ἐφύρης ἀνιόωτες",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:44",
+   "text": "οἱ μὲν ἔτʼ οὐκ ἴδον αὖθι, σὺ δὲ στεινοῖο παρʼ ὀξὺν",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:45",
+   "text": "ἔδραμες Εὐρίποιο πόρον καναχηδὰ ῥέοντος,",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:46",
+   "text": "Χαλκιδικῆς δʼ αὐτῆμαρ ἀνηναμένη ἁλὸς ὕδωρ",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:47",
+   "text": "μέσφʼ ἐς Ἀθηναίων προσενήξαο Σούνιον ἄκρον",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:48",
+   "text": "ἢ Χίον ἢ νήσοιο διάβροχον ὕδατι μαστὸν",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:49",
+   "text": "παρθενίης (οὔπω γὰρ ἔην Σάμος), ἧχι σε νύμφαι",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:50",
+   "text": "γείτονες Ἀγκαίου Μυκαλησσίδες ἐξείνισσαν.",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:51",
+   "text": "ἡνίκα δʼ Ἀπόλλωνι γενέθλιον οὖδας ὑπέσχες,",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:52",
+   "text": "τοῦτό τοι ἀντημοιβὸν ἁλίπλοοι οὔνομʼ ἔθεντο,",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:53",
+   "text": "οὕνεκεν οὐκέτʼ ἄδηλος ἐπέπλεες, ἀλλʼ ἐνὶ πόντου",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:54",
+   "text": "κύμασιν Αἰγαίοιο ποδῶν ἐνεθήκαο ῥίζας.",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:55",
+   "text": "οὐδʼ Ἥρην κοτέουσαν ὑπέτρεσας· ἡ μὲν ἁπάσαις",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:56",
+   "text": "δεινὸν ἐπεβρωμᾶτο λεχωίσιν αἳ Διὶ παῖδας",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:57",
+   "text": "ἐξέφερον, Λητοῖ δὲ διακριδόν, οὕνεκα μούνη",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:58",
+   "text": "Ζηνὶ τεκεῖν ἤμελλε φιλαίτερον Ἄρεος υἷα.",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:59",
+   "text": "τῶ ῥα καὶ αὐτὴ μὲν σκοπιὴν ἔχεν αἰθέρος εἴσω",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:60",
+   "text": "σπερχομένη μέγα δή τι καὶ οὐ φατόν, εἶργε δὲ Λητὼ",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:61",
+   "text": "τειρομένην ὠδῖσι· δύω δέ οἱ εἵατο φρουροὶ",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:62",
+   "text": "γαῖαν ἐποπτεύοντες, ὁ μὲν πέδον ἠπείροιο",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:63",
+   "text": "ἥμενος ὑψηλῆς κορυφῆς ἔπι Θρήικος Αἵμου",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:64",
+   "text": "θοῦρος Ἄρης ἐφύλασσε σὺν ἔντεσι, τὼ δέ οἱ ἵππω",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:65",
+   "text": "ἑπτάμυχον βορέαο παρὰ σπέος ηὐλίζοντο·",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:66",
+   "text": "ἡ δʼ ἐπὶ νησάων ἑτέρη σκοπὸς εὐρειάων",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:67",
+   "text": "ἧστο κόρη Θαύμαντος ἐπαΐξασα Μίμαντι.",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:68",
+   "text": "ἔνθʼ οἱ μὲν πολίεσσιν ὅσαις ἐπεβάλλετο Λητὼ",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:69",
+   "text": "μίμνον ἀπειλητῆρες, ἀπετρώπων δὲ δέχεσθαι.",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:70",
+   "text": "φεῦγε μὲν Ἀρκαδίη, φεῦγεν δʼ ὄρος ἱερὸν Αὔγης",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:71",
+   "text": "Παρθένιον, φεῦγεν δʼ ὁ γέρων μετόπισθε Φενειός.",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:72",
+   "text": "φεῦγε δʼ ὅλη Πελοπηὶς ὅση παρακέκλιται Ἰσθμῷ,",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:73",
+   "text": "ἔμπλην Αἰγιαλοῦ τε καὶ Ἄργεος· οὐ γὰρ ἐκείνας",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:74",
+   "text": "ἀτραπιτοὺς ἐπάτησεν, ἐπεὶ λάχεν Ἴναχον Ἥρη.",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:75",
+   "text": "φεῦγε καὶ Ἀονίη τὸν ἕνα δρόμον, αἱ δʼ ἐφέποντο",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:76",
+   "text": "Δίρκη τε Στροφίη τε μελαμψήφιδος ἔχουσαι",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:77",
+   "text": "Ἰσμηνοῦ χέρα πατρός, ὁ δʼ εἵπετο πολλὸν ὄπισθεν",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:78",
+   "text": "Ἀσωπὸς βαρύγουνος, ἐπεὶ πεπάλακτο κεραυνῷ.",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:79",
+   "text": "ἡ δʼ ὑποδινηθεῖσα χοροῦ ἀπεπαύσατο νύμφη",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:80",
+   "text": "αὐτόχθων Μελίη καὶ ὑπόχλοον ἔσχε παρειὴν",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:81",
+   "text": "ἥλικος ἀσθμαίνουσα περὶ δρυός, ὡς ἴδε χαίτην",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:82",
+   "text": "σειομένην Ἑλικῶνος. ἐμαὶ θεαί, εἴπατε Μοῦσαι,",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:83",
+   "text": "ἦ ῥʼ ἐτεὸν ἐγένοντο τότε δρύες ἡνίκα Νύμφαι;",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:84",
+   "text": "νύμφαι μὲν χαίρουσιν, ὅτε δρύας ὄμβρος ἀέξει,",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:85",
+   "text": "νύμφαι δʼ αὖ κλαίουσιν, ὅτε δρυσὶν οὐκέτι φύλλα.",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:86",
+   "text": "ταῖς μὲν ἔτʼ Ἀπόλλων ὑποκόλπιος αἰνὰ χολώθη,",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:87",
+   "text": "φθέγξατο δʼ οὐκ ἀτέλεστον ἀπειλήσας ἐπὶ Θήβῃ·",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:88",
+   "text": "Θήβη, τίπτε τάλαινα τὸν αὐτίκα πότμον ἐλέγχεις;",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:89",
+   "text": "μήπω μή μʼ ἀέκοντα βιάζεο μαντεύεσθαι.",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:90",
+   "text": "οὔπω μοι Πυθῶνι μέλει τριποδήιος ἕδρη,",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:91",
+   "text": "οὐδέ τί πω τέθνηκεν ὄφις μέγας, ἀλλʼ ἔτι κεῖνο",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:92",
+   "text": "θηρίον αἰνογένειον ἀπὸ Πλειστοῖο καθέρπον",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:93",
+   "text": "Παρνησὸν νιφόεντα περιστέφει ἐννέα κύκλοις·",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:94",
+   "text": "ἀλλʼ ἔμπης ἐρέω τι τομώτερον ἢ ἀπὸ δάφνης.",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:95",
+   "text": "φεῦγε πρόσω· ταχινός σε κιχήσομαι αἵματι λούσων",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:96",
+   "text": "τόξον ἐμόν· σὺ δὲ τέκνα κακογλώσσοιο γυναικὸς",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:97",
+   "text": "ἔλλαχεσ. οὐ σύ γʼ ἐμεῖο φίλη τροφὸς οὐδὲ Κιθαιρὼν",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:98",
+   "text": "ἔσσεται· εὐαγέων δὲ καὶ εὐαγέεσσι μελοίμην.",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:99",
+   "text": "ὣς ἄρʼ ἔφη. Λητὼ δὲ μετάτροπος αὖτις ἐχώρει.",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:100",
+   "text": "ἀλλʼ ὅτʼ Ἀχαιιάδες μιν ἀπηρνήσαντο πόληες",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:101",
+   "text": "ἐρχομένην, Ἑλίκη τε Ποσειδάωνος ἑταίρη",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:102",
+   "text": "Βοῦρά τε Δεξαμενοῖο βοόστασις Οἰκιάδαο,",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:103",
+   "text": "ἂψ δʼ ἐπὶ Θεσσαλίην πόδας ἔτρεπε, φεῦγε δʼ Ἄναυρος",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:104",
+   "text": "καὶ μεγάλη Λάρισα καὶ αἱ Χειρωνίδες ἄκραι,",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:105",
+   "text": "φεῦγε δὲ καὶ Πηνειὸς ἑλισσόμενος διὰ Τεμπέων.",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:106",
+   "text": "Ἥρη, σοὶ δʼ ἔτι τῆμος ἀνηλεὲς ἦτορ ἔκειτο",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:107",
+   "text": "οὐδὲ κατεκλάσθης τε καὶ ᾤκτισας, ἡνίκα πήχεις",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:108",
+   "text": "ἀμφοτέρους ὀρέγουσα μάτην ἐφθέγξατο τοῖα",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:109",
+   "text": "Νύμφαι Θεσσαλίδες, ποταμοῦ γένος, εἴπατε πατρὶ",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:110",
+   "text": "κοιμῆσαι μέγα χεῦμα· περιπλέξασθε γενείῳ",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:111",
+   "text": "λισσόμεναι τὰ Ζηνὸς ἐν ὕδατι τέκνα τεκέσθαι.",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:112",
+   "text": "Πηνειὲ Φθιῶτα, τί νῦν ἀνέμοισιν ἐρίζεις;",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:113",
+   "text": "ὦ πάτερ, οὐ μὴν ἵππον ἀέθλιον ἀμφιβέβηκας.",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:114",
+   "text": "ἦ ῥά τοι ὧδʼ αἰεὶ ταχινοὶ πόδες, ἢ ἐπʼ ἐμεῖο",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:115",
+   "text": "μοῦνοι ἐλαφρίζουσι, πεποίησαι δὲ πέτεσθαι",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:116",
+   "text": "σήμερον ἐξαπίνης;\" ὁ δʼ ἀνήκοος. \"ὦ ἐμὸν ἄχθος,",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:117",
+   "text": "ποῖ σε φέρω; μέλεοι γὰρ ἀπειρήκασι τένοντες.",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:118",
+   "text": "Πήλιον ὦ Φιλύρης νυμφήιον, ἀλλὰ σὺ μεῖνον,",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:119",
+   "text": "μεῖνον, ἐπεὶ καὶ θῆρες ἐν οὔρεσι πολλάκι σεῖο",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:120",
+   "text": "ὠμοτόκους ὠδῖνας ἀπηρείσαντο λέαιναι.",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:121",
+   "text": "τὴν δʼ ἄρα καὶ Πηνειὸς ἀμείβετο δάκρυα λείβων",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:122",
+   "text": "Λητοῖ, Ἀναγκαίη μεγάλη θεός. οὐ γὰρ ἔγωγε",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:123",
+   "text": "πότνια σὰς ὠδῖνας ἀναίνομαι· οἶδα καὶ ἄλλας",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:124",
+   "text": "λουσαμένας ἀπʼ ἐμεῖο λεχωίδας· ἀλλά μοι Ἥρη",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:125",
+   "text": "δαψιλὲς ἠπείλησεν. ἀπαύγασαι, οἷος ἔφεδρος",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:126",
+   "text": "οὔρεος ἐξ ὑπάτου σκοπιὴν ἔχει, ὅς κέ με ῥεῖα",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:127",
+   "text": "βυσσόθεν ἐξερύσειε. τί μήσομαι; ἢ ἀπολέσθαι",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:128",
+   "text": "ἡδύ τί τοι Πηνειόν; ἴτω πεπρωμένον ἦμαρ·",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:129",
+   "text": "τλήσομαι εἵνεκα σεῖο καὶ εἰ μέλλοιμι ῥοάων",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:130",
+   "text": "διψαλέην ἄμπωτιν ἔχων αἰώνιον ἔρρειν",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:131",
+   "text": "καὶ μόνος ἐν ποταμοῖσιν ἀτιμότατος καλέεσθαι.",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:132",
+   "text": "ἠνίδʼ ἐγώ· τί περισσά; κάλει μόνον Εἰλήθυιαν.",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:133",
+   "text": "εἶπε καὶ ἠρώησε μέμαν ῥόον. ἀλλά οἱ Ἄρης",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:134",
+   "text": "Παγγαίου προθέλυμνα καρήατα μέλλεν ἀείρας",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:135",
+   "text": "ἐμβαλέειν δίνῃσιν, ἀποκρύψαι δὲ ῥέεθρα·",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:136",
+   "text": "ὑψόθε δʼ ἐσμαράγησε καὶ ἀσπίδα τύψεν ἀκωκῇ",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:137",
+   "text": "δούρατος· ἡ δʼ ἐλέλιξεν ἐνόπλιον· ἔτρεμε δʼ Ὄσσης",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:138",
+   "text": "οὔρεα καὶ πεδίον Κραννώνιον αἵ τε δυσαεῖς",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:139",
+   "text": "ἐσχατιαὶ Πίνδοιο, φόβῳ δʼ ὠρχήσατο πᾶσα",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:140",
+   "text": "Θεσσαλίη· τοῖος γὰρ ἀπʼ ἀσπίδος ἔβρεμεν ἦχος.",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:141",
+   "text": "ὡς δʼ ὁπότʼ Αἰτναίου ὄρεος πυρὶ τυφομένοιο",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:142",
+   "text": "σείονται μυχὰ πάντα κατουδαίοιο γίγαντος",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:143",
+   "text": "εἰς ἑτέρην Βριαρῆος ἐπωμίδα κινυμένοιο,",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:144",
+   "text": "θερμάστραι τε βρέμουσιν ὑφʼ Ἡφαίστοιο πυράγρης",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:145",
+   "text": "ἔργα θʼ ὁμοῦ, δεινὸν δὲ πυρίκμητοί τε λέβητες",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:146",
+   "text": "καὶ τρίποδες πίπτοντες ἐπʼ ἀλλήλοις ἰαχεῦσι·",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:147",
+   "text": "τῆμος ἔγεντʼ ἄραβος σάκεος τόσος εὐκύκλοιο.",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:148",
+   "text": "Πηνειὸς δʼ οὐκ αὖτις ἐχάζετο, μίμνε δʼ ὁμοίως",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:149",
+   "text": "καρτερὸς ὡς τὰ πρῶτα, θοὰς δʼ ἐστήσατο δίνας,",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:150",
+   "text": "εἰσόκε οἱ Κοιηὶς ἐκέκλετο σῴζεο χαίρων,",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:151",
+   "text": "σῴζεο· μὴ σύ γʼ ἐμεῖο πάθῃς κακὸν εἵνεκα τῆσδε",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:152",
+   "text": "ἀντʼ ἐλεημοσύνης, χάριτος δέ τοι ἔσσετʼ ἀμοιβή.",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:153",
+   "text": "ἦ καὶ πολλὰ πάροιθεν ἐπεὶ κάμεν ἔστιχε νήσους",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:154",
+   "text": "εἰναλίας· αἱ δʼ οὔ μιν ἐπερχομένην ἐδέχοντο,",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:155",
+   "text": "οὐ λιπαρὸν νήεσσιν Ἐχινάδες ὅρμον ἔχουσαι,",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:156",
+   "text": "οὐδʼ ἥτις Κέρκυρα φιλοξεινωτάτη ἄλλων,",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:157",
+   "text": "Ἶρις ἐπεὶ πάσῃσιν ἐφʼ ὑψηλοῖο Μίμαντος",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:158",
+   "text": "σπερχομένη μάλα πολλὸν ἀπέτραπεν· αἱ δʼ ὑπʼ ὁμοκλῆς",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:159",
+   "text": "πανσυδίῃ φοβέοντο κατὰ ῥόον ἥντινα τέτμοι.",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:160",
+   "text": "ὠγυγίην δἤπειτα Κόων, Μεροπηίδα νῆσον,",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:161",
+   "text": "ἵκετο, Χαλκιόπης ἱερὸν μυχὸν ἡρωίνης.",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:162",
+   "text": "ἀλλά ἑ παιδὸς ἔρυκεν ἔπος τόδε μὴ σύ γε, μῆτερ,",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:163",
+   "text": "τῇ με τέκοις. οὔτʼ οὖν ἐπιμέμφομαι οὐδὲ μεγαίρω",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:164",
+   "text": "νῆσον, ἐπεὶ λιπαρή τε καὶ εὔβοτος, εἴ νύ τις ἄλλη·",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:165",
+   "text": "ἀλλά οἱ ἐκ Μοιρέων τις ὀφειλόμενος θεὸς ἄλλος",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:166",
+   "text": "ἐστί, Σαωτήρων ὕπατον γένος· ᾧ ὑπὸ μίτρην",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:167",
+   "text": "ἵξεται οὐκ ἀέκουσα Μακηδόνι κοιρανέεσθαι",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:168",
+   "text": "ἀμφοτέρη μεσόγεια καὶ αἳ πελάγεσσι κάθηνται,",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:169",
+   "text": "μέχρις ὅπου περάτη τε καὶ ὁππόθεν ὠκέες ἵπποι",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:170",
+   "text": "ἠέλιον φορέουσιν· ὁ δʼ εἴσεται ἤθεα πατρός.",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:171",
+   "text": "καί νύ ποτε ξυνός τις ἐλεύσεται ἄμμιν ἄεθλος",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:172",
+   "text": "ὕστερον, ὁππότʼ ἂν οἱ μὲν ἐφʼ Ἑλλήνεσσι μάχαιραν",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:173",
+   "text": "βαρβαρικὴν καὶ Κελτὸν ἀναστήσαντες Ἄρηα",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:174",
+   "text": "ὀψίγονοι Τιτῆνες ἀφʼ ἑσπέρου ἐσχατόωντος",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:175",
+   "text": "ῥώσωνται νιφάδεσσιν ἐοικότες ἢ ἰσάριθμοι",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:176",
+   "text": "τείρεσιν, ἡνίκα πλεῖστα κατʼ ἠέρα βουκολέονται,",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:177",
+   "text": "φρούρια καὶ κῶμαι Λοκρῶν καὶ Δελφίδες ἄκραι",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:178",
+   "text": "καὶ πεδία Κρισσαῖα καὶ ἠπείροιο φάραγγες",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:179",
+   "text": "ἀμφιπεριστείνωνται, ἴδωσι δὲ πίονα καπνὸν",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:180",
+   "text": "γείτονος αἰθομένοιο, καὶ οὐκέτι μοῦνον ἀκουῇ,",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:181",
+   "text": "ἀλλʼ ἤδη παρὰ νηὸν ἀπαυγάζοιντο φάλαγγας",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:182",
+   "text": "δυσμενέων, ἤδη δὲ παρὰ τριπόδεσσιν ἐμεῖο",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:183",
+   "text": "φάσγανα καὶ ζωστῆρας ἀναιδέας ἐχθομένας τε",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:184",
+   "text": "ἀσπίδας, αἳ Γαλάτῃσι κακὴν ὁδὸν ἄφρονι φύλῳ",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:185",
+   "text": "στήσονται· τέων αἱ μὲν ἐμοὶ γέρας, αἱ δʼ ἐπὶ Νείλῳ",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:186",
+   "text": "ἐν πυρὶ τοὺς φορέοντας ἀποπνεύσαντας ἰδοῦσαι",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:187",
+   "text": "κείσονται βασιλῆος ἀέθλια πολλὰ καμόντος.",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:188",
+   "text": "ἐσσόμενε Πτολεμαῖε, τά τοι μαντήια φαίνω.",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:189",
+   "text": "αἰνήσεις μέγα δή τι τὸν εἰσέτι γαστέρι μάντιν",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:190",
+   "text": "ὕστερον ἤματα πάντα. σὺ δὲ ξυμβάλλεο, μῆτερ·",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:191",
+   "text": "ἔστι διειδομένη τις ἐν ὕδατι νήσος ἀραιή,",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:192",
+   "text": "πλαζομένη πελάγεσσι· πόδες δέ οἱ οὐχ ἑνὶ χώρῳ,",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:193",
+   "text": "ἀλλὰ παλιρροίῃ ἐπινήχεται ἀνθέρικος ὥς,",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:194",
+   "text": "ἔνθα νότος, ἔνθʼ εὖρος, ὅπη φορέῃσι θάλασσα.",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:195",
+   "text": "τῇ με φέροις· κείνην γὰρ ἐλεύσεαι εἰς ἐθέλουσαν.",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:196",
+   "text": "αἱ μὲν τόσσα λέγοντος ἀπέτρεχον εἰν ἁλὶ νῆσοι·",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:197",
+   "text": "Ἀστερίη φιλόμολπε, σὺ δʼ Εὐβοίηθε κατῄεις,",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:198",
+   "text": "Κυκλάδας ὀψομένη περιηγέας, οὔ τι παλαιόν,",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:199",
+   "text": "ἀλλʼ ἔτι τοι μετόπισθε Γεραίστιον εἵπετο φῦκος·",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:201",
+   "text": ". φλεξας ἐπεὶ περικαίεο πυρί,",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:202",
+   "text": "τλήμονʼ ὑπʼ ὠδίνεσσι βαρυνομένην ὁρόωσα·",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:203",
+   "text": "Ἥρη, τοῦτό με ῥέξον ὅ τοι φίλον· οὐ γὰρ ἀπειλὰς",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:204",
+   "text": "ὑμετέρας ἐφύλαξα· πέρα, πέρα εἰς ἐμὲ Λητοῖ.",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:205",
+   "text": "ἔννεπες· ἡ δʼ ἀρητὸν ἄλης ἀπεπαύσατο λυγρῆς,",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:206",
+   "text": "ἕζετο δʼ Ἰνωποῖο παρὰ ῥόον, ὅντε βάθιστον",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:207",
+   "text": "γαῖα τότʼ ἐξανίησιν, ὅτε πλήθοντι ῥεέθρῳ",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:208",
+   "text": "Νεῖλος ἀπὸ κρημνοῖο κατέρχεται Αἰθιοπῆος·",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:209",
+   "text": "λύσατο δὲ ζώνην, ἀπὸ δʼ ἐκλίθη ἔμπαλιν ὤμοις",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:210",
+   "text": "φοίνικος ποτὶ πρέμνον ἀμηχανίης ὑπὸ λυγρῆς",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:211",
+   "text": "τειρομένη· νότιος δὲ διὰ χροὸς ἔρρεεν ἱδρώς.",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:212",
+   "text": "εἶπε δʼ ἀλυσθμαίνουσα τί μητέρα, κοῦρε, βαρύνεις;",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:213",
+   "text": "αὕτη τοι, φίλε, νῆσος ἐπιπλώουσα θαλάσσῃ.",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:214",
+   "text": "γείνεο, γείνεο, κοῦρε, καὶ ἤπιος ἔξιθι κόλπου.",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:215",
+   "text": "νύμφα Διὸς βαρύθυμε, σὺ δʼ οὐκ ἄρʼ ἔμελλες ἄπυστος",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:216",
+   "text": "δὴν ἔμεναι· τοίη σε προσέδραμεν ἀγγελιῶτις,",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:217",
+   "text": "εἶπε δʼ ἔτʼ ἀσθμαίνουσα, φόβῳ δʼ ἀνεμίσγετο μῦθος,",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:218",
+   "text": "Ἥρη τιμηέσσα, πολὺ προὔχουσα θεάων",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:219",
+   "text": "σὴ μὲν ἐγώ, σὰ δὲ πάντα, σὺ δὲ κρείουσα κάθησαι",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:220",
+   "text": "γνησίη Οὐλύμποιο, καὶ οὐ χέρα δείδιμεν ἄλλην",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:221",
+   "text": "θηλυτέρην, σὺ δʼ, ἄνασσα, τὸν αἴτιον εἴσεαι ὀργῆς.",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:222",
+   "text": "Λητώ τοι μίτρην ἀναλύεται ἔνδοθι νήσου.",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:223",
+   "text": "ἄλλαι μὲν πᾶσαί μιν ἀπέστυγον οὐδʼ ἐδέχοντο·",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:224",
+   "text": "Ἀστερίη δʼ ὀνομαστὶ παρερχομένην ἐκάλεσσεν,",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:225",
+   "text": "Ἀστερίη, πόντοιο κακὸν σάρον· οἶσθα καὶ αὐτή.",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:226",
+   "text": "ἀλλά, φίλη, δύνασαι γάρ, ἀμύνειν, πότνια, δούλοις",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:227",
+   "text": "ὑμετέροις, οἳ σεῖο πέδον πατέουσιν ἐφετμῇ.",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:228",
+   "text": "ἦ καὶ ὑπὸ χρύσειον ἐδέθλιον ἷζε κύων ὥς,",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:229",
+   "text": "Ἀρτέμιδος ἥτις τε, θοῆς ὅτε παύσεται ἄγρης,",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:230",
+   "text": "ἵζει θηρήτειρα παρʼ ἴχνεσιν, οὔατα δʼ αὐτῆς",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:231",
+   "text": "ὀρθὰ μάλʼ, αἰὲν ἑτοῖμα θεῆς ὑποδέχθαι ὀμοκλήν·",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:232",
+   "text": "τῇ ἰκέλη Θαύμαντος ὑπὸ θρόνον ἵζετο κούρη.",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:233",
+   "text": "κείνη δʼ οὐδέποτε σφετέρης ἐπιλήθεται ἕδρης,",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:234",
+   "text": "οὐδʼ ὅτε οἱ ληθαῖον ἐπὶ πτερὸν ὕπνος ἐρείσῃ,",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:235",
+   "text": "ἀλλʼ αὐτοῦ μεγάλοιο ποτὶ γλωχῖνα θρόνοιο",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:236",
+   "text": "τυτθὸν ἀποκλίνασα καρήατα λέχριος εὕδει.",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:237",
+   "text": "οὐδέ ποτε ζώνην ἀναλύεται οὐδὲ ταχείας",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:238",
+   "text": "ἐνδρομίδας, μή οἵ τι καὶ αἰφνίδιον ἔπος εἴπῃ",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:239",
+   "text": "δεσπότις. ἡ δʼ ἀλεγεινὸν ἀλαστήσασα προσηύδα",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:240",
+   "text": "οὕτω νῦν, ὦ Ζηνὸς ὀνείδεα, καὶ γαμέοισθε",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:241",
+   "text": "λάθρια καὶ τίκτοιτε κεκρυμμένα, μηδʼ ὅθι δειλαὶ",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:242",
+   "text": "δυστοκέες μογέουσιν ἀλετρίδες, ἀλλʼ ὅθι φῶκαι",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:243",
+   "text": "εἰνάλιαι τίκτουσιν, ἐνὶ σπιλάδεσσιν ἐρήμοις.",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:244",
+   "text": "Ἀστερίῃ δʼ οὐδέν τι βαρύνομαι εἵνεκα τῆσδε",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:245",
+   "text": "ἀμπλακίης, οὐδʼ ἔστιν ὅπως ἀποθύμια ῥέξω,",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:246",
+   "text": "τόσσα δέοι μάλα γάρ τε κακῶς ἐχαρίσσατο Λητοῖ·",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:247",
+   "text": "ἀλλά μιν ἔκπαγλόν τι σεβίζομαι, οὕνεκʼ ἐμεῖο",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:248",
+   "text": "δέμνιον οὐκ ἐπάτησε, Διὸς δʼ ἀνθείλετο πόντον.",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:249",
+   "text": "ἡ μὲν ἔφη· κύκνοι δὲ θεοῦ μέλποντες ἀοιδοὶ",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:250",
+   "text": "Μῃόνιον Πακτωλὸν ἐκυκλώσαντο λιπόντες",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:251",
+   "text": "ἑβδομάκις περὶ Δῆλον, ἐπήεισαν δὲ λοχείῃ",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:252",
+   "text": "Μουσάων ὄρνιθες, ἀοιδότατοι πετεηνῶν·",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:253",
+   "text": "ἔνθεν ὁ παῖς τοσσάσδε λύρῃ ἐνεδήσατο χορδὰς",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:254",
+   "text": "ὕστερον, ὁσσάκι κύκνοι ἐπʼ ὠδίνεσσιν ἄεισαν.",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:255",
+   "text": "ὄγδοον οὐκέτʼ ἄεισαν, ὁ δʼ ἔκθορεν, αἱ δʼ ἐπὶ μακρὸν",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:256",
+   "text": "νύμφαι Δηλιάδες, ποταμοῦ γένος ἀρχαίοιο,",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:257",
+   "text": "εἶπαν Ἐλειθυίης ἱερὸν μέλος, αὐτίκα δʼ αἰθὴρ",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:258",
+   "text": "χάλκεος ἀντήχησε διαπρυσίην ὀλολυγήν,",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:259",
+   "text": "οὐδʼ Ἥρη νεμέσησεν, ἐπεὶ χόλον ἐξέλετο Ζεύς.",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:260",
+   "text": "χρύσεά τοι τότε πάντα θεμείλια γείνετο, Δῆλε,",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:261",
+   "text": "χρυσῷ δὲ τροχόεσσα πανήμερος ἔρρεε λίμνη,",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:262",
+   "text": "χρύσειον δʼ ἐκόμησε γενέθλιον ἔρνος ἐλαίης,",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:263",
+   "text": "χρυσῷ δὲ πλήμυρε βαθὺς Ἰνωπὸς ἑλιχθείς.",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:264",
+   "text": "αὐτὴ δὲ χρυσέοιο ἀπʼ οὔδεος εἵλεο παῖδα,",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:265",
+   "text": "ἐν δʼ ἐβάλευ κόλποισιν, ἔπος δʼ ἐφθέγξαο τοῖον·",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:266",
+   "text": "ᾦ μεγάλη πολύβωμε πολύπτολι πολλὰ φέρουσα,",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:267",
+   "text": "πίονες ἤπειροί τε καὶ αἳ περιναίετε νῆσοι·",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:268",
+   "text": "αὐτὴ ἐγὼ τοιήδε, δυσήροτος, ἀλλʼ ἀπʼ ἐμεῖο",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:269",
+   "text": "Δήλιος Απόλλων κεκλήσεται, οὐδέ τις ἄλλη",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:270",
+   "text": "γαιάων τοσσόνδε θεῷ πεφιλήσεται ἄλλῳ,",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:271",
+   "text": "οὐ Κερχνὶς κρείοντι Ποσειδάωνι Λεχαίῳ,",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:272",
+   "text": "οὐ πάγος Ἑρμείῃ Κυλλήνιος, οὐ Διὶ Κρήτη,",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:273",
+   "text": "ὡς ἐγὼ Ἀπόλλωνι· καὶ ἔσσομαι οὐκέτι πλαγκτή.",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:274",
+   "text": "ὧδε σὺ μὲν κατέλεξας· ὁ δὲ γλυκὺν ἔσπασε μαζόν.",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:275",
+   "text": "τῶ καὶ νησάων ἁγιωτάτη ἐξέτι κεἰνου",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:276",
+   "text": "κλἠζῃ, Ἀπόλλωνος κουροτρόφος· οὐδέ σʼ Ἐνυὼ",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:277",
+   "text": "οὐδʼ Ἀίδης οὐδʼ ἵπποι ἐπιστείβουσιν Ἄρηος·",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:278",
+   "text": "ἀλλά τοι ἀμφιετεῖς δεκατηφόροι αἰὲν ἀπαρχαὶ",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:279",
+   "text": "πέμπονται, πᾶσαι δὲ χοροὺς ἀνάγουσι πόληες,",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:280",
+   "text": "αἵ τε πρὸς ἠοίην αἵ θʼ ἕσπερον αἵ τʼ ἀνὰ μέσσην",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:281",
+   "text": "κλήρονς ἐστήσαντο, καὶ οἳ καθύπερθε βορείης",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:282",
+   "text": "οἰκία θινὸς ἔχουσι, πολυχρνιώτατον αἷμα.",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:283",
+   "text": "οἱ μέν τοι καλάμην τε καὶ ἱερὰ δράγματα πρῶτοι",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:284",
+   "text": "ἀσταχύων φορέουσιν· ἃ Δωδώνηθι Πελασγοὶ",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:285",
+   "text": "τηλόθεν ἐκβαίνοντα πολὺ πρώτιστα δέχονται,",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:286",
+   "text": "γηλεχέες θεράποντες ἀσιγήτοιο λέβητος·",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:287",
+   "text": "δεύτερον Ἱερὸν ἄστυ καὶ οὔτεα Μηλίδος αἴης",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:288",
+   "text": "ἔρχονται· κεῖθεν δὲ διαπλώουσιν Ἀβάντων",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:289",
+   "text": "εἰς ἀγαθὸν πεδίον Ληλάντιον· οὐδʼ ἔτι μακρὸς",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:290",
+   "text": "ὁ πλόος Εὐβοίηθεν, ἐπεὶ σέο γείτονες ὅρμοι.",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:291",
+   "text": "πρῶταί τοι τάδʼ ἔνεικαν ἀπὸ ξανθῶν Ἀριμασπῶν",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:292",
+   "text": "Οὖπίς τε Λοξώ τε καὶ εὐαίων Ἑκαέργη,",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:293",
+   "text": "θυγατέρες Βορέαο, καὶ ἄρσενες οἱ τότʼ ἄριστοι",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:294",
+   "text": "ἠιθέων· οὐδʼ οἵ γε παλιμπετὲς οἴκαδʼ ἵκοντο,",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:295",
+   "text": "εὔμοιροι δʼ ἐγένοντο, καὶ ἀκλέες οὔποτʼ ἐκεῖνοι.",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:296",
+   "text": "ἦ τοι Δηλιάδες μέν, ὅτʼ εὐήχης ὑμέναιος",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:297",
+   "text": "ἤθεα κουράων μορμύσσεται, ἥλικα χαίτην",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:298",
+   "text": "παρθενικαῖς, παῖδες δὲ θέρος τὸ πρῶτον ἰούλων",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:299",
+   "text": "ἄρσενες ἠιθέοισιν ἀπαρχόμενοι φορέουσιν.",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:300",
+   "text": "Ἀστερίη θυόεσσα, σὲ μὲν περί τʼ ἀμφί τε νῆσοι",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:301",
+   "text": "κύκλον ἐποιήσαντο καὶ ὡς χορὸν ἀμφεβάλοντο·",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:302",
+   "text": "οὔτε σιωπηλὴν οὔτʼ ἄψοφον οὖλος ἐθείραις",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:303",
+   "text": "ἕσπερος, ἀλλʼ αἰεί σε καταβλέπει ἀμφιβόητον.",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:304",
+   "text": "οἱ μὲν ὑπαείδουσι νόμον Λυκίοιο γέροντος,",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:305",
+   "text": "ὅν τοι ἀπὸ Ξάνθοιο θεοπρόπος ἤγαγεν Ὠλήν·",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:306",
+   "text": "αἱ δὲ ποδὶ πλήσσουσι χορίτιδες ἀσφαλἐς οὖδας.",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:307",
+   "text": "δὴ τότε καὶ στεφάνοισι βαρύνεται ἱρὸν ἄγαλμα",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:308",
+   "text": "Κύπριδος ἀρχαίης ἀριήκοον, ἥν ποτε Θησεὺς",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:309",
+   "text": "εἵσατο σὺν παίδεσσιν, ὅτε Κρήτηθεν ἀνέπλει.",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:310",
+   "text": "οἳ χαλεπὸν μύκημα καὶ ἄγριον υἷα φυγόντες",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:311",
+   "text": "Πασιφάης καὶ γναμπτὸν ἕδος σκολιοῦ λαβυρίνθου,",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:312",
+   "text": "πότνια, σὸν περὶ βωμὸν ἐγειρομένου κιθαρισμοῦ",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:313",
+   "text": "κύκλιον ὠρχήσαντο, χοροῦ δʼ ἡγήσατο Θησεύς.",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:314",
+   "text": "ἔνθεν ἀειζώοντα θεωρίδος ἱερὰ Φοίβῳ",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:315",
+   "text": "Κεκροπίδαι πέμπουσι, τοπήια νηὸς ἐκείνης.",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:316",
+   "text": "Ἀστερίη πολύβωμε πολύλλιτε, τίς δέ σε ναύτης",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:317",
+   "text": "ἔμπορος Αἰγαίοιο παρήλυθε νηὶ θεούσῃ;",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:318",
+   "text": "οὐχ οὕτω μεγάλοι μιν ἐπιπνείουσιν ἀῆται,",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:319",
+   "text": "χρειὼ δʼ ὅττι τάχιστον ἄγει πλόον, ἀλλὰ τὰ λαίφη",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:320",
+   "text": "ὠκέες ἐστείλαντο καὶ οὐ πάλιν αὖτις ἔβησαν,",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:321",
+   "text": "πρὶν μέγαν ἢ σέο βωμὸν ὑπὸ πληγῇσιν ἑλίξαι",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:322",
+   "text": "ῥησσόμενον καὶ πρέμνον ὀδακτάσαι ἁγνὸν ἐλαίης",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:323",
+   "text": "χεῖρας ἀποστρέψαντας· ἃ Δηλιὰς εὕρετο νύμφη",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:324",
+   "text": "παίγνια κουρίζοντι καὶ Ἀπόλλωνι γελαστύν.",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:325",
+   "text": "ἱστίη ὦ νήσων εὐέστιε, χαῖρε μὲν αὐτή,",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc3:326",
+   "text": "χαίροι δʼ Ἀπόλλων τε καὶ ἣν ἐλοχεύσατο Λητώ.",
+   "title": "Himno 4"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg019.perseus-grc3:1",
+   "text": "ὅσσαι λωτροχόοι τᾶς Παλλάδος ἔξιτε πᾶσαι,",
+   "title": "Himno 5"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg019.perseus-grc3:2",
+   "text": "ἔξιτε· τᾶν ἵππων ἄρτι φρυασσομενᾶν",
+   "title": "Himno 5"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg019.perseus-grc3:3",
+   "text": "τᾶν ἱερᾶν ἐσάκουσα, καὶ ἁ θεὸς εὔτυκος ἕρπειν",
+   "title": "Himno 5"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg019.perseus-grc3:4",
+   "text": "σοῦσθέ νυν, ὦ ξανθαί, σοῦσθε Πελασγιάδες.",
+   "title": "Himno 5"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg019.perseus-grc3:5",
+   "text": "οὔποκʼ Ἀθαναία μεγάλως ἀπενίψατο πάχεις",
+   "title": "Himno 5"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg019.perseus-grc3:6",
+   "text": "πρὶν κόνιν ἱππειᾶν ἐξελάσαι λαγόνων,",
+   "title": "Himno 5"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg019.perseus-grc3:7",
+   "text": "οὐδʼ ὅκα δὴ λύθρῳ πεπαλαγμένα πάντα φέροισα",
+   "title": "Himno 5"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg019.perseus-grc3:8",
+   "text": "τεύχεα τῶν ἀδίκων ἦνθʼ ἀπὸ γηγενέων,",
+   "title": "Himno 5"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg019.perseus-grc3:9",
+   "text": "ἀλλὰ πολὺ πράτιστον ὑφʼ ἅρματος αὐχένας ἵππων",
+   "title": "Himno 5"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg019.perseus-grc3:10",
+   "text": "λυσαμένα παγαῖς ἔκλυσεν Ὠκεανῶ",
+   "title": "Himno 5"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg019.perseus-grc3:11",
+   "text": "ἱδρῶ καὶ ῥαθάμιγγας, ἐφοίβασεν δὲ παγέντα",
+   "title": "Himno 5"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg019.perseus-grc3:12",
+   "text": "πάντα χαλινοφάγων ἀφρὸν ἀπὸ στομάτων.",
+   "title": "Himno 5"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg019.perseus-grc3:13",
+   "text": "ὦ ἴτʼ Ἀχαιιάδες, καὶ μὴ μύρα μηδʼ ἀλαβάστρως",
+   "title": "Himno 5"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg019.perseus-grc3:14",
+   "text": "συρίγγων ἀίω φθόγγον ὑπαξονίων ,",
+   "title": "Himno 5"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg019.perseus-grc3:15",
+   "text": "μὴ μύρα λωτροχόοι τᾷ Παλλάδι μηδʼ ἀλαβάστρως",
+   "title": "Himno 5"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg019.perseus-grc3:16",
+   "text": "(οὐ γὰρ Ἀθαναία χρίματα μεικτὰ φιλεῖ)",
+   "title": "Himno 5"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg019.perseus-grc3:17",
+   "text": "οἴσετε μηδὲ κάτοπτρον· ἀεὶ καλὸν ὄμμα τὸ τήνας",
+   "title": "Himno 5"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg019.perseus-grc3:18",
+   "text": "οὐδʼ ὅκα τὰν Ἴδᾳ Φρὺξ ἐδίκαζεν ἔριν,",
+   "title": "Himno 5"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg019.perseus-grc3:19",
+   "text": "οὔτʼ ἐς ὀρείχαλκον μεγάλα θεὸς οὔτε Σιμοῦντος",
+   "title": "Himno 5"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg019.perseus-grc3:20",
+   "text": "ἔβλεψεν δίναν ἐς διαφαινομέναν·",
+   "title": "Himno 5"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg019.perseus-grc3:21",
+   "text": "οὐδʼ Ἥρα· Κύπρις δὲ διαυγέα χαλκὸν ἑλοῖσα",
+   "title": "Himno 5"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg019.perseus-grc3:22",
+   "text": "πολλάκι τὰν αὐτὰν δὶς μετέθηκε κόμαν·",
+   "title": "Himno 5"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg019.perseus-grc3:23",
+   "text": "ἁ δέ, δὶς ἑξήκοντα διαθρέξασα διαύλως,",
+   "title": "Himno 5"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg019.perseus-grc3:24",
+   "text": "οἷα παρʼ Εὐρώτᾳ τοὶ Λακεδαιμόνιοι",
+   "title": "Himno 5"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg019.perseus-grc3:25",
+   "text": "ἀστέρες, ἐμπεράμως ἐνετρίψατο λιτὰ λαβοῖσα",
+   "title": "Himno 5"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg019.perseus-grc3:26",
+   "text": "χρίματα, τᾶς ἰδίας ἔκγονα φυταλιᾶς·",
+   "title": "Himno 5"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg019.perseus-grc3:27",
+   "text": "ὦ κῶραι, τὸ δʼ ἔρευθος ἀνέδραμε, πρώιον οἵαν",
+   "title": "Himno 5"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg019.perseus-grc3:28",
+   "text": "ἢ ῥόδον ἢ σίβδας κόκκος ἔχει χροΐαν.",
+   "title": "Himno 5"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg019.perseus-grc3:29",
+   "text": "τῶ καὶ νῦν ἄρσεν τι κομίξατε μῶνον ἔλαιον,",
+   "title": "Himno 5"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg019.perseus-grc3:30",
+   "text": "ᾧ Κάστωρ, ᾧ καὶ χρίεται Ἡρακλέης·",
+   "title": "Himno 5"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg019.perseus-grc3:31",
+   "text": "οἴσετε καὶ κτένα οἱ παγχρύσεον, ὡς ἀπὸ χαίταν",
+   "title": "Himno 5"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg019.perseus-grc3:32",
+   "text": "πέξηται, λιπαρὸν σμασαμένα πλόκαμον.",
+   "title": "Himno 5"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg019.perseus-grc3:33",
+   "text": "ἔξιθʼ Ἀθαναία· πάρα τοι καταθύμιος ἴλα,",
+   "title": "Himno 5"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg019.perseus-grc3:34",
+   "text": "παρθενικαὶ μεγάλων παῖδες Ἀκεστοριδᾶν",
+   "title": "Himno 5"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg019.perseus-grc3:35",
+   "text": "ὠθάνα, φέρεται δὲ καὶ ἁ Διομήδεος ἀσπίς,",
+   "title": "Himno 5"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg019.perseus-grc3:36",
+   "text": "ὡς ἔθος Ἀργείων τοῦτο παλαιότερον",
+   "title": "Himno 5"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg019.perseus-grc3:37",
+   "text": "Εὐμήδης ἐδίδαξε, τεὶν κεχαρισμένος ἱρεύς·",
+   "title": "Himno 5"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg019.perseus-grc3:38",
+   "text": "ὅς ποκα βωλευτὸν γνοὺς ἐπί οἱ θάνατον",
+   "title": "Himno 5"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg019.perseus-grc3:39",
+   "text": "δᾶμον ἑτοιμάζοντα φυγᾷ τεὸν ἱρὸν ἄγαλμα",
+   "title": "Himno 5"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg019.perseus-grc3:40",
+   "text": "ᾤχετʼ ἔχων, Κρεῖον δʼ εἰς ὄρος ᾠκίσατο·",
+   "title": "Himno 5"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg019.perseus-grc3:41",
+   "text": "κρεῖον ὄρος· σὲ δέ, δαῖμον, ἀπορρώγεσσιν ἔθηκεν",
+   "title": "Himno 5"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg019.perseus-grc3:42",
+   "text": "ἐν πέτραις, αἷς νῦν οὔνομα Παλλατίδες·",
+   "title": "Himno 5"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg019.perseus-grc3:43",
+   "text": "ἔξιθʼ Ἀθαναία περσέπτολι, χρυσεοπήληξ,",
+   "title": "Himno 5"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg019.perseus-grc3:44",
+   "text": "ἵππων καὶ σακέων ἁδομένα πατάγῳ.",
+   "title": "Himno 5"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg019.perseus-grc3:45",
+   "text": "σάμερον ὑδροφόροι μὴ βάπτετε—σάμερον Ἄργος",
+   "title": "Himno 5"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg019.perseus-grc3:46",
+   "text": "πίνετʼ ἀπὸ κρανᾶν μηδʼ ἀπὸ τῶ ποταμῶ,",
+   "title": "Himno 5"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg019.perseus-grc3:47",
+   "text": "σάμερον αἱ δῶλαι τὰς κάλπιδας ἢ ᾽ς Φυσάδειαν",
+   "title": "Himno 5"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg019.perseus-grc3:48",
+   "text": "ἢ ἐς Ἀμυμώναν οἴσετε τὰν Δαναῶ.",
+   "title": "Himno 5"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg019.perseus-grc3:49",
+   "text": "καὶ γὰρ δὴ χρυδῷ τε καὶ ἄνθεσιν ὕδατα μίξας",
+   "title": "Himno 5"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg019.perseus-grc3:50",
+   "text": "ἡξεῖ φορβαίων Ἴναχος ἐξ ὀρέων",
+   "title": "Himno 5"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg019.perseus-grc3:51",
+   "text": "τἀθάνᾳ τὸ λοετρὸν ἄγων καλόν. ἀλλά, Πελασγέ,",
+   "title": "Himno 5"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg019.perseus-grc3:52",
+   "text": "φράζεο μὴ οὐκ ἐθέλων τὰν βασίλειαν ἴδῃς.",
+   "title": "Himno 5"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg019.perseus-grc3:53",
+   "text": "ὅς κεν ἴδῃ γυμνὰν τὰν Παλλάδα τὰν πολιοῦχον,",
+   "title": "Himno 5"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg019.perseus-grc3:54",
+   "text": "τὦργος ἐσοψεῖται τοῦτο πανυστάτιον.",
+   "title": "Himno 5"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg019.perseus-grc3:55",
+   "text": "πότνἰ Ἀθαναία τὺ μὲν ἔξιθι· μέσφα δʼ ἐγώ τι",
+   "title": "Himno 5"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg019.perseus-grc3:56",
+   "text": "ταῖσδʼ ἐρέω. μῦθος δʼ οὐκ ἐμός, ἀλλʼ ἑτέρων.",
+   "title": "Himno 5"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg019.perseus-grc3:57",
+   "text": "παῖδες, Ἀθαναία νύμφαν μίαν ἔν ποκα Θήβαις",
+   "title": "Himno 5"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg019.perseus-grc3:58",
+   "text": "πουλύ τι καὶ περὶ δὴ φίλατο τᾶν ἑταρᾶν,",
+   "title": "Himno 5"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg019.perseus-grc3:59",
+   "text": "ματέρα Τειρεσίαο, καὶ οὔποκα χωρὶς ἔγεντο·",
+   "title": "Himno 5"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg019.perseus-grc3:60",
+   "text": "ἀλλὰ καὶ ἀρχαίων εὖτʼ ἐπὶ Θεσπιέων",
+   "title": "Himno 5"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg019.perseus-grc3:61",
+   "text": "ἢ ʼπὶ Κορωνείας ἢ εἰς Ἁλίαρτον ἐλαύνοι",
+   "title": "Himno 5"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg019.perseus-grc3:62",
+   "text": "ἵππως, Βοιωτῶν ἔργα διερχομένα,",
+   "title": "Himno 5"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg019.perseus-grc3:63",
+   "text": "ἢ ʼπὶ Κορωνείας, ἵνα οἱ τεθυωμένον ἄλσος",
+   "title": "Himno 5"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg019.perseus-grc3:64",
+   "text": "καὶ βωμοὶ ποταμῷ κεῖντʼ ἐπὶ Κωραλίῳ·",
+   "title": "Himno 5"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg019.perseus-grc3:65",
+   "text": "πολλάκις ἁ δαίμων νιν ἑῶ ἐπεβάσατο δίφρω,",
+   "title": "Himno 5"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg019.perseus-grc3:66",
+   "text": "οὐδʼ ὄαροι νυμφᾶν οὐδὲ χοροστασίαι",
+   "title": "Himno 5"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg019.perseus-grc3:67",
+   "text": "ἁδεῖαι τελέθεσκον, ὅκʼ οὐχ ἁγεῖτο Χαρικλώ·",
+   "title": "Himno 5"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg019.perseus-grc3:68",
+   "text": "ἀλλʼ ἔτι καὶ τήναν δάκρυα πόλλʼ ἔμενεν,",
+   "title": "Himno 5"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg019.perseus-grc3:69",
+   "text": "καίπερ Ἀθαναίᾳ καταθύμιον ἔσσαν ἑταίραν.",
+   "title": "Himno 5"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg019.perseus-grc3:70",
+   "text": "δή ποκα γὰρ πέπλων λυσαμένα περόνας",
+   "title": "Himno 5"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg019.perseus-grc3:71",
+   "text": "ἵππω ἐπὶ κράνᾳ Ἑλικωνίδι καλὰ ῥεοίσᾳ",
+   "title": "Himno 5"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg019.perseus-grc3:72",
+   "text": "λῶντο· μεσαμβρινὰ δʼ εἶχʼ ὄρος ἁσυχία.",
+   "title": "Himno 5"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg019.perseus-grc3:73",
+   "text": "ἀμφότεραι λώοντο, μεσαμβριναὶ δʼ ἔσαν ὧραι,",
+   "title": "Himno 5"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg019.perseus-grc3:74",
+   "text": "πολλὰ δʼ ἁσυχία τῆνο κατεῖχεν ὄρος.",
+   "title": "Himno 5"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg019.perseus-grc3:75",
+   "text": "Τειρεσίας δʼ ἔτι μῶνος ἁμᾶ κυσὶν ἄρτι γένεια",
+   "title": "Himno 5"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg019.perseus-grc3:76",
+   "text": "περκάζων ἱερὸν χῶρον ἀνεστρέφετο·",
+   "title": "Himno 5"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg019.perseus-grc3:77",
+   "text": "διψάσας δʼ ἄφατόν τι ποτὶ ῥόον ἤλυθε κράνας,",
+   "title": "Himno 5"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg019.perseus-grc3:78",
+   "text": "σχέτλιος· οὐκ ἐθέλων δʼ εἶδε τὰ μὴ θεμιτά·",
+   "title": "Himno 5"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg019.perseus-grc3:79",
+   "text": "τὸν δὲ χολωσαμένα περ ὅμως προσέφασεν Ἀθάνα",
+   "title": "Himno 5"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg019.perseus-grc3:80",
+   "text": "τίς σε, τὸν ὀφθαλμὼς οὐκέτʼ ἀποισόμενον,",
+   "title": "Himno 5"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg019.perseus-grc3:81",
+   "text": "ὦ Εὐηρείδα, χαλεπὰν ὁδὸν ἄγαγε δαίμων;",
+   "title": "Himno 5"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg019.perseus-grc3:82",
+   "text": "ἁ μὲν ἔφα, παιδὸς δʼ ὄμματα νὺξ ἔλαβεν.",
+   "title": "Himno 5"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg019.perseus-grc3:83",
+   "text": "ἑστάκη δʼ ἄφθογγος, ἐκόλλασαν γὰρ ἀνῖαι",
+   "title": "Himno 5"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg019.perseus-grc3:84",
+   "text": "γώνατα καὶ φωνὰν ἔσχεν ἀμηχανία.",
+   "title": "Himno 5"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg019.perseus-grc3:85",
+   "text": "ἁ νύμφα δʼ ἐβόασε τί μοι τὸν κῶρον ἔρεξας,",
+   "title": "Himno 5"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg019.perseus-grc3:86",
+   "text": "πότνια; τοιαῦται δαίμονες ἐστὲ φίλαι;",
+   "title": "Himno 5"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg019.perseus-grc3:87",
+   "text": "ὄμματά μοι τῶ παιδὸς ἀφείλεο. τέκνον ἄλαστε,",
+   "title": "Himno 5"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg019.perseus-grc3:88",
+   "text": "εἶδες Ἀθαναίας στήθεα καὶ λαγόνας,",
+   "title": "Himno 5"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg019.perseus-grc3:89",
+   "text": "ἀλλʼ οὐκ ἀέλιον πάλιν ὄψεαι. ὦ ἐμὲ δειλάν,",
+   "title": "Himno 5"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg019.perseus-grc3:90",
+   "text": "ὦ ὄρος, ὦ Ἑλικὼν οὐκέτι μοι παριτέ,",
+   "title": "Himno 5"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg019.perseus-grc3:91",
+   "text": "ἦ μεγάλʼ ἀντʼ ὀλίγων ἐπράξαο· δόρκας ὀλέσσας",
+   "title": "Himno 5"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg019.perseus-grc3:92",
+   "text": "καὶ πρόκας οὐ πολλὰς φάεα παιδὸς ἔχεις.",
+   "title": "Himno 5"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg019.perseus-grc3:93",
+   "text": "ἆ καὶ ἅμʼ ἀμφοτέραισι φίλον περὶ παῖδα λαβοῖσα",
+   "title": "Himno 5"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg019.perseus-grc3:94",
+   "text": "μάτηρ μὲν γοερᾶν οἶτον ἀηδονίδων",
+   "title": "Himno 5"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg019.perseus-grc3:95",
+   "text": "ἆγε βαρὺ κλαίοισα, θεὰ δʼ ἐλέησεν ἑταίραν",
+   "title": "Himno 5"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg019.perseus-grc3:96",
+   "text": "καί νιν Ἀθαναία πρὸς τόδʼ ἔλεξεν ἔπος",
+   "title": "Himno 5"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg019.perseus-grc3:97",
+   "text": "δῖα γύναι, μετὰ πάντα βαλεῦ πάλιν ὅσσα διʼ ὀργὰν",
+   "title": "Himno 5"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg019.perseus-grc3:98",
+   "text": "εἶπας· ἐγὼ δʼ οὔ τοι τέκνον ἔθηκʼ ἀλαόν.",
+   "title": "Himno 5"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg019.perseus-grc3:99",
+   "text": "οὐ γὰρ Ἀθαναίᾳ γλυκερὸν πέλει ὄμματα παίδων",
+   "title": "Himno 5"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg019.perseus-grc3:100",
+   "text": "ἁρπάζειν· Κρόνιοι δʼ ὧδε λέγοντι νόμοι·",
+   "title": "Himno 5"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg019.perseus-grc3:101",
+   "text": "ὅς κε τινʼ ἀθανάτων, ὅκα μὴ θεὸς αὐτὸς ἕληται,",
+   "title": "Himno 5"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg019.perseus-grc3:102",
+   "text": "ἀθρήσῃ, μισθῶ τοῦτον ἰδεῖν μεγάλω.",
+   "title": "Himno 5"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg019.perseus-grc3:103",
+   "text": "δῖα γύναι, τὸ μὲν οὐ παλινάγρετον αὖθι γένοιτο",
+   "title": "Himno 5"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg019.perseus-grc3:104",
+   "text": "ἔργον· ἐπεὶ μοιρᾶν ὧδʼ ἐπένησε λίνα,",
+   "title": "Himno 5"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg019.perseus-grc3:105",
+   "text": "ἁνίκα τὸ πρᾶτόν νιν ἐγείναο· νῦν δὲ κομίζευ,",
+   "title": "Himno 5"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg019.perseus-grc3:106",
+   "text": "ὦ Εὐηρείδα, τέλθος ὀφειλόμενον.",
+   "title": "Himno 5"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg019.perseus-grc3:107",
+   "text": "πόσσα μὲν ἁ Καδμηὶς ἐς ὕστερον ἔμπυρα καυσεῖ,",
+   "title": "Himno 5"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg019.perseus-grc3:108",
+   "text": "τόσσα δʼ Ἀρισταῖος, τὸν μόνον εὐχόμενοι",
+   "title": "Himno 5"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg019.perseus-grc3:109",
+   "text": "παῖδα, τὸν ἁβατὰν Ἀκταίονα, τυφλὸν ἰδέσθαι.",
+   "title": "Himno 5"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg019.perseus-grc3:110",
+   "text": "καὶ τῆνος μεγάλας σύνδρομος Ἀρτέμιδος",
+   "title": "Himno 5"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg019.perseus-grc3:111",
+   "text": "ἐσσεῖτʼ· ἀλλʼ οὐκ αὐτὸν ὅ τε δρόμος αἵ τʼ ἐν ὄρεσσι",
+   "title": "Himno 5"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg019.perseus-grc3:112",
+   "text": "ῥυσεῦνται ξυναὶ τᾶμος ἑκαβολίαι,",
+   "title": "Himno 5"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg019.perseus-grc3:113",
+   "text": "ὁππόκʼ ἂν οὐκ ἐθέλων περ ἴδῃ χαρίεντα λοετρὰ",
+   "title": "Himno 5"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg019.perseus-grc3:114",
+   "text": "δαίμονος· ἀλλʼ αὐταὶ τὸν πρὶν ἄνακτα κύνες",
+   "title": "Himno 5"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg019.perseus-grc3:115",
+   "text": "τουτάκι δειπνησεῦντι· τὰ δʼ υἱέος ὀστέα μάτηρ",
+   "title": "Himno 5"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg019.perseus-grc3:116",
+   "text": "λεξεῖται δρυμὼς πάωτας ἐπερχομένα·",
+   "title": "Himno 5"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg019.perseus-grc3:117",
+   "text": "ὀλβίσταν ἐρέει σε καὶ εὐαίωνα γενέσθαι,",
+   "title": "Himno 5"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg019.perseus-grc3:118",
+   "text": "ἐξ ὀρέων ἀλαὸν παῖδʼ ὑποδεξαμέναν.",
+   "title": "Himno 5"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg019.perseus-grc3:119",
+   "text": "ὦ ἑτάρα, τῶ μή τι μινύρεο· τῷδε γὰρ ἄλλα",
+   "title": "Himno 5"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg019.perseus-grc3:120",
+   "text": "τεῦ χάριν ἐξ ἐμέθεν πολλὰ μενεῦντι γέρα.",
+   "title": "Himno 5"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg019.perseus-grc3:121",
+   "text": "μάντιν ἐπεὶ θησῶ νιν ἀοίδιμον ἐσσομένοισιν,",
+   "title": "Himno 5"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg019.perseus-grc3:122",
+   "text": "ἦ μέγα τῶν ἄλλων δή τι περισσότερον.",
+   "title": "Himno 5"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg019.perseus-grc3:123",
+   "text": "γνωσεῖται δʼ ὄρνιχας, ὅς αἴσιος οἵ τε πέτονται",
+   "title": "Himno 5"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg019.perseus-grc3:124",
+   "text": "ἤλιθα καὶ ποίων οὐκ ἀγαθαὶ πτέρυγες.",
+   "title": "Himno 5"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg019.perseus-grc3:125",
+   "text": "πολλὰ δὲ Βοιωτοῖσι θεοπρόπα, πολλὰ δὲ Κάδμῳ",
+   "title": "Himno 5"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg019.perseus-grc3:126",
+   "text": "χρησεῖ, καὶ μεγάλοις ὕστερα Λαβδακίδαις.",
+   "title": "Himno 5"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg019.perseus-grc3:127",
+   "text": "δωσῶ καὶ μέγα βάκτρον, ὅ οἱ πόδας ἐς δέον ἀξεῖ,",
+   "title": "Himno 5"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg019.perseus-grc3:128",
+   "text": "δωσῶ καὶ βιότω τέρμα πολυχρόνιον.",
+   "title": "Himno 5"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg019.perseus-grc3:129",
+   "text": "καὶ μόνος, εὖτε θάνῃ, πεπνυμένος ἐν νεκύεσσι",
+   "title": "Himno 5"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg019.perseus-grc3:130",
+   "text": "φοιτασεῖ, μεγάλωι τίμιος Ἁγεσίλᾳ.",
+   "title": "Himno 5"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg019.perseus-grc3:131",
+   "text": "ὥς φαμένα κατένευσε· τὸ δʼ ἐντελὲς ᾧ κʼ ἔπι νεύσῃ",
+   "title": "Himno 5"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg019.perseus-grc3:132",
+   "text": "Παλλάς, ἐπεὶ μώνᾳ Ζεὺς τό γε θυγατέρων",
+   "title": "Himno 5"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg019.perseus-grc3:133",
+   "text": "δῶκεν Ἀθαναίᾳ, πατρώια πάντα φέρεσθαι,",
+   "title": "Himno 5"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg019.perseus-grc3:134",
+   "text": "λωτροχόοι, μάτηρ δʼ οὔτις ἔτικτε θεάν,",
+   "title": "Himno 5"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg019.perseus-grc3:135",
+   "text": "ἀλλὰ Διὸς κορυφά. κορυφὰ Διὸς οὐκ ἐπινεύει",
+   "title": "Himno 5"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg019.perseus-grc3:136",
+   "text": "ψεύδεα κοὐδὲ Διὸς ψεύδετ αι ἁ θυγάτηρ.",
+   "title": "Himno 5"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg019.perseus-grc3:137",
+   "text": "ἔρχετʼ Ἀθαναία νῦν ἀτρεκές· ἀλλὰ δέχεσθε",
+   "title": "Himno 5"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg019.perseus-grc3:138",
+   "text": "τὰν θεόν, ὦ κῶραι τὦργον ὅσαις μέλεται,",
+   "title": "Himno 5"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg019.perseus-grc3:139",
+   "text": "σύν τʼ εὐαγορίᾳ σύν τʼ εὔγμασι σύν τʼ ὀλολυγαῖς.",
+   "title": "Himno 5"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg019.perseus-grc3:140",
+   "text": "χαῖρε θεά, κάδευ δʼ Ἄργεος Ἰναχίω.",
+   "title": "Himno 5"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg019.perseus-grc3:141",
+   "text": "χαῖρε καὶ ἐξελάοισα, καὶ ἐς πάλιν αὖτις ἐλάσσαις",
+   "title": "Himno 5"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg019.perseus-grc3:142",
+   "text": "ἵππως, καὶ Δαναῶν κλᾶρον ἅπαντα σάω.",
+   "title": "Himno 5"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg020.perseus-grc3:1",
+   "text": "τῶ καλάθω κατιόντος ἐπιφθέγξασθε, γυναῖκες,",
+   "title": "Himno 6"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg020.perseus-grc3:2",
+   "text": "Δάματερ μέγα χαῖρε πολυτρόφε πουλυμέδιμνε.",
+   "title": "Himno 6"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg020.perseus-grc3:3",
+   "text": "τὸν κάλαθον κατιόντα χαμαὶ θασεῖσθε βέβαλοι,",
+   "title": "Himno 6"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg020.perseus-grc3:4",
+   "text": "μηδʼ ἀπὸ τῶ τέγεος μηδʼ ὑψόθεν αὐγάσσησθε",
+   "title": "Himno 6"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg020.perseus-grc3:5",
+   "text": "μὴ παῖς μηδὲ γυνὰ μηδʼ ἃ κατεχεύατο χαίταν,",
+   "title": "Himno 6"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg020.perseus-grc3:6",
+   "text": "μηδʼ ὅκʼ ἀφʼ αὑαλέων στομάτων πτύωμες ἄπαστοι.",
+   "title": "Himno 6"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg020.perseus-grc3:7",
+   "text": "ἕσπερος ἐκ νεφέων ἐσκέψατο πανίκα νεῖται,",
+   "title": "Himno 6"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg020.perseus-grc3:8",
+   "text": "ἕσπερος, ὅστε πιεῖν Δαμάτερα μῶνος ἔπεισεν,",
+   "title": "Himno 6"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg020.perseus-grc3:9",
+   "text": "ἁρπαγίμας ὅκʼ ἄπυστα μετέστιχεν ἴχνια κώρας.",
+   "title": "Himno 6"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg020.perseus-grc3:10",
+   "text": "πότνια, πῶς σε δύναντο πόδες φέρεν ἔστʼ ἐπὶ δυθμάς,",
+   "title": "Himno 6"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg020.perseus-grc3:11",
+   "text": "ἔστʼ ἐπὶ τὼς μέλανας καὶ ὅπα τὰ χρύσεα μᾶλα;",
+   "title": "Himno 6"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg020.perseus-grc3:12",
+   "text": "οὐ πίες οὔτʼ ἄρʼ ἔδες τῆνον χρόνον οὐδὲ λοέσσα.",
+   "title": "Himno 6"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg020.perseus-grc3:13",
+   "text": "τρὶς μὲν δὴ διέβας Ἀχελώιον ἀργυροδίναν,",
+   "title": "Himno 6"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg020.perseus-grc3:14",
+   "text": "τοσσάκι δʼ ἀενάων ποταμῶν ἐπέρασας ἕκαστον,",
+   "title": "Himno 6"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg020.perseus-grc3:15",
+   "text": "τρὶς δʼ ἐπὶ Καλλιχόρῳ χαμάδις ἐκαθίσσαο φρητί",
+   "title": "Himno 6"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg020.perseus-grc3:16",
+   "text": "αὐσταλέα ἄποτός τε καὶ οὐ φάγες οὐδὲ λοέσσα.",
+   "title": "Himno 6"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg020.perseus-grc3:17",
+   "text": "μὴ μὴ ταῦτα λέγωμες ἃ δάκρυον ἄγαγε Δηοῖ·",
+   "title": "Himno 6"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg020.perseus-grc3:18",
+   "text": "κάλλιον, ὡς πολίεσσιν ἑαδότα τέθμια δῶκε·",
+   "title": "Himno 6"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg020.perseus-grc3:19",
+   "text": "κάλλιον, ὡς καλάμαν τε καὶ ἱερὰ δράγματα πράτα",
+   "title": "Himno 6"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg020.perseus-grc3:20",
+   "text": "ἀσταχύων ἀπέκοψε καὶ ἐν βόας ἧκε πατῆσαι,",
+   "title": "Himno 6"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg020.perseus-grc3:21",
+   "text": "ἁνίκα Τριπτόλεμος ἀγαθὰν ἐδιδάσκετο τέχναν·",
+   "title": "Himno 6"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg020.perseus-grc3:22",
+   "text": "κάλλιον, ὡς, ἵνα καί τις ὑπερβασίας ἀλέηται,",
+   "title": "Himno 6"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg020.perseus-grc3:23",
+   "text": "π ἰδέσθαι",
+   "title": "Himno 6"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg020.perseus-grc3:24",
+   "text": "οὔπω τὰν Κνιδίαν, ἔτι Δώτιον ἱρὸν ἔναιον,",
+   "title": "Himno 6"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg020.perseus-grc3:25",
+   "text": "τὶν δʼ αὐτᾷ καλὸν ἄλσος ἐποιήσαντο Πελασγοὶ",
+   "title": "Himno 6"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg020.perseus-grc3:26",
+   "text": "δένδρεσιν ἀμφιλαές· διά κεν μόλις ἦνθεν ὀιστός·",
+   "title": "Himno 6"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg020.perseus-grc3:27",
+   "text": "ἐν πίτυς, ἐν μεγάλαι πτελέαι ἔσαν, ἐν δὲ καὶ ὄχναι,",
+   "title": "Himno 6"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg020.perseus-grc3:28",
+   "text": "ἐν δὲ καλὰ γλυκύμαλα· τὸ δʼ ὥστʼ ἀλέκτρινον ὕδωρ",
+   "title": "Himno 6"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg020.perseus-grc3:29",
+   "text": "ἐξ ἀμαρᾶν ἀνέθυε. θεὰ δʼ ἐπεμαίνετο χώρῳ",
+   "title": "Himno 6"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg020.perseus-grc3:30",
+   "text": "ὅσσον Ἐλευσῖνι, Τριόπῳ θʼ ὅσον, ὁκκόσον Ἔννᾳ.",
+   "title": "Himno 6"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg020.perseus-grc3:31",
+   "text": "ἀλλʼ ὅκα Τριοπίδαισιν ὁ δεξιὸς ἄχθετο δαίμων,",
+   "title": "Himno 6"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg020.perseus-grc3:32",
+   "text": "τουτάκις ἁ χείρων Ἐρυσίχθονος ἅψατο βωλά·",
+   "title": "Himno 6"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg020.perseus-grc3:33",
+   "text": "σεύατʼ ἔχων θεράποντας ἐείκοσι, πάντας ἐν ἀκμᾷ,",
+   "title": "Himno 6"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg020.perseus-grc3:34",
+   "text": "πάντας δʼ ἀνδρογίγαντας ὅλαν πόλιν ἀρκίος ἆραι,",
+   "title": "Himno 6"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg020.perseus-grc3:35",
+   "text": "ἀμφότερον πελέκεσσι καὶ ἀξίναισιν ὁπλίσσας,",
+   "title": "Himno 6"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg020.perseus-grc3:36",
+   "text": "ἐς δὲ τὸ Δάματρος ἀναιδέες ἔδραμον ἄλσος.",
+   "title": "Himno 6"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg020.perseus-grc3:37",
+   "text": "ἦς δέ τις αἴγειρος, μέγα δένδρεον αἰθέρι κῦρον,",
+   "title": "Himno 6"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg020.perseus-grc3:38",
+   "text": "τῷ δʼ ἔπι ταὶ νύμφαι ποτὶ τὤνδιον ἑψιόωντο,",
+   "title": "Himno 6"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg020.perseus-grc3:39",
+   "text": "ἃ πράτα πλαγεῖσα κακὸν μέλος ἴαχεν ἄλλαις.",
+   "title": "Himno 6"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg020.perseus-grc3:40",
+   "text": "ᾄσθετο Δαμάτηρ, ὅτι οἱ ξύλον ἱερὸν ἄλγει,",
+   "title": "Himno 6"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg020.perseus-grc3:41",
+   "text": "εἶπε δὲ χωσαμένα \"τίς μοι καλὰ δένδρεα κόπτει;\"",
+   "title": "Himno 6"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg020.perseus-grc3:42",
+   "text": "αὐτίκα Νικίππᾳ, τάν οἱ πόλις ἀράτειραν",
+   "title": "Himno 6"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg020.perseus-grc3:43",
+   "text": "δαμοσίαν ἔστασαν, ἐείσατο, γέντο δὲ χειρὶ",
+   "title": "Himno 6"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg020.perseus-grc3:44",
+   "text": "στέμματα καὶ μάκωνα, κατωμαδίαν δʼ ἔχε κλᾷδα.",
+   "title": "Himno 6"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg020.perseus-grc3:45",
+   "text": "φᾶ δὲ παραψύχοισα κακὸν καὶ ἀναιδέα φῶτα",
+   "title": "Himno 6"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg020.perseus-grc3:46",
+   "text": "τέκνον, ὅτις τὰ θεοῖσιν ἀνειμένα δένδρεα κόπτεις,",
+   "title": "Himno 6"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg020.perseus-grc3:47",
+   "text": "τέκνον ἐλίνυσον, τέκνον πολύθεστε τοκεῦσι,",
+   "title": "Himno 6"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg020.perseus-grc3:48",
+   "text": "παύεο καὶ θεράποντας ἀπότρεπε, μή τι χαλεφθῇ",
+   "title": "Himno 6"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg020.perseus-grc3:49",
+   "text": "πότνια Δαμάτηρ, τᾶς ἱερὸν ἐκκεραΐζεις.",
+   "title": "Himno 6"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg020.perseus-grc3:50",
+   "text": "τὰν δʼ ἄρʼ ὑποβλέψας χαλεπώτερον ἠὲ κυναγὸν",
+   "title": "Himno 6"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg020.perseus-grc3:51",
+   "text": "ὤρεσιν ἐν Τμαρίοισιν ὑποβλέπει ἄνδρα λέαινα",
+   "title": "Himno 6"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg020.perseus-grc3:52",
+   "text": "ὠμοτόκος, τᾶς φαντὶ πέλειν βλοσυρώτατον ὄμμα,",
+   "title": "Himno 6"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg020.perseus-grc3:53",
+   "text": "χάζευ, ἔφα, μή τοι πέλεκυν μέγαν ἐν χροΐ πάξω.",
+   "title": "Himno 6"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg020.perseus-grc3:54",
+   "text": "ταῦτα δʼ ἐμὸν θησεῖ στεγανὸν δόμον, ᾧ ἔνι δαῖτας",
+   "title": "Himno 6"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg020.perseus-grc3:55",
+   "text": "αἰὲν ἐμοῖς ἑτάροισιν ἄδην θυμαρέας ἀξῶ.",
+   "title": "Himno 6"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg020.perseus-grc3:56",
+   "text": "εἶπεν ὁ παῖς, Νέμεσις δὲ κακὰν ἐγράψατο φωνάν.",
+   "title": "Himno 6"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg020.perseus-grc3:57",
+   "text": "Δαμάτηρ δʼ ἄφατόν τι κοτέσσατο, γείνατο δʼ ἁ θεύς·",
+   "title": "Himno 6"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg020.perseus-grc3:58",
+   "text": "ἴθματα μὲν χέρσω, κεφαλὰ δέ οἱ ἅψατʼ Ὀλύμπω.",
+   "title": "Himno 6"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg020.perseus-grc3:59",
+   "text": "οἱ μὲν ἄρʼ ἡμιθνῆτες, ἐπεὶ τὰν πότνιαν εἶδον,",
+   "title": "Himno 6"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg020.perseus-grc3:60",
+   "text": "ἐξαπίνας ἀπόρουσαν ἐνὶ δρυσὶ χαλκὸν ἀφέντες·",
+   "title": "Himno 6"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg020.perseus-grc3:61",
+   "text": "ἁ δʼ ἄλλως μὲν ἔασεν, ἀναγκαίᾳ γὰρ ἕποντο",
+   "title": "Himno 6"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg020.perseus-grc3:62",
+   "text": "δεσποτικὰν ὑπὸ χεῖρα, βαρὺν δʼ ἀπαμείψατʼ ἄνακτα",
+   "title": "Himno 6"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg020.perseus-grc3:63",
+   "text": "ναὶ ναί, τεύχεο δῶμα, κύον, κύον, ᾧ ἔνι δαῖτας",
+   "title": "Himno 6"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg020.perseus-grc3:64",
+   "text": "ποιησεῖς· θαμιναὶ γάρ ἐς ὕστερον εἰλαπίναι τοι.",
+   "title": "Himno 6"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg020.perseus-grc3:65",
+   "text": "ἁ μὲν τόσσʼ εἰποῖσʼ Ἐρυσίχθονι τεῦχε πονηρά.",
+   "title": "Himno 6"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg020.perseus-grc3:66",
+   "text": "αὐτίκα οἱ χαλεπόν τε καὶ ἄγριον ἔμβαλε λιμὸν",
+   "title": "Himno 6"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg020.perseus-grc3:67",
+   "text": "αἴθωνα κρατερόν, μεγάλᾳ δʼ ἐστρεύγετο νούσῳ.",
+   "title": "Himno 6"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg020.perseus-grc3:68",
+   "text": "σχέτλιος, ὅσσα πάσαιτο τόσων ἔχεν ἵμερος αὖτις.",
+   "title": "Himno 6"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg020.perseus-grc3:69",
+   "text": "εἴκατι δαῖτα πένοντο, δυώδεκα δʼ οἶνον ἄφυσσον·",
+   "title": "Himno 6"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg020.perseus-grc3:70",
+   "text": "τόσσα Διώνυσον γὰρ ἃ καὶ Δάματρα χαλέπτελ·",
+   "title": "Himno 6"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg020.perseus-grc3:71",
+   "text": "καὶ γὰρ τᾷ Δάματρι συνωργίσθη Διόνυσος.",
+   "title": "Himno 6"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg020.perseus-grc3:72",
+   "text": "οὔτε νιν εἰς ἐράνως οὔτε ξυνδείπνια πέμπον",
+   "title": "Himno 6"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg020.perseus-grc3:73",
+   "text": "αἰδόμενοι γονέες, προχανὰ δʼ εὑρίσκετο πᾶσα.",
+   "title": "Himno 6"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg020.perseus-grc3:74",
+   "text": "ἦνθον Ἰτωνιάδος νιν Ἀθαναίας ἐπʼ ἄεθλα",
+   "title": "Himno 6"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg020.perseus-grc3:75",
+   "text": "Ὀρμενίδαι καλέοντες· ἀπʼ ὦν ἀρνήσατο μάτηρ",
+   "title": "Himno 6"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg020.perseus-grc3:76",
+   "text": "οὐκ ἔνδοι, χθιζὸς γὰρ ἐπὶ Κραννῶνα βέβακε",
+   "title": "Himno 6"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg020.perseus-grc3:77",
+   "text": "τέλθος ἀπαιτησῶν ἑκατὸν βόας. ἦνθε Πολυξώ,",
+   "title": "Himno 6"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg020.perseus-grc3:78",
+   "text": "μάτηρ Ἀκτορίωνος, ἐπεὶ γάμον ἄρτυε παιδί,",
+   "title": "Himno 6"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg020.perseus-grc3:79",
+   "text": "ἀμφότερον Τριόπαν τε καὶ υἱέα κικλήσκοισα.",
+   "title": "Himno 6"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg020.perseus-grc3:80",
+   "text": "τὰν δὲ γυνὰ βαρύθυμος ἀμείβετο δάκρυ χέοισα",
+   "title": "Himno 6"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg020.perseus-grc3:81",
+   "text": "νεῖταί τοι Τριόπας, Ἐρυσίχθονα δʼ ἤλασε κάπρος",
+   "title": "Himno 6"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg020.perseus-grc3:82",
+   "text": "Πίνδον ἀνʼ εὐάγκειαν, ὁ δʼ ἐννέα φάεα κεῖται.",
+   "title": "Himno 6"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg020.perseus-grc3:83",
+   "text": "δειλαία φιλότεκνε, τί δʼ οὐκ ἐψεύσαο, μᾶτερ;",
+   "title": "Himno 6"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg020.perseus-grc3:84",
+   "text": "δαίνυεν εἰλαπίναν τις· ἐν ἀλλοτρίοις Ἐρυσίχθων.",
+   "title": "Himno 6"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg020.perseus-grc3:85",
+   "text": "ἄγετό τις νύμφαν· Ἐρυσίχθονα δίσκος ἔτυψεν,",
+   "title": "Himno 6"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg020.perseus-grc3:86",
+   "text": "ἢ ἔπεσʼ ἐξ ἵππων, ἢ ἐν Ὄθρυϊποίμνἰ ἀμιθρεῖ.",
+   "title": "Himno 6"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg020.perseus-grc3:87",
+   "text": "ἐνδόμυχος δἤπειτα πανάμερος εἰλαπιναστὰς",
+   "title": "Himno 6"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg020.perseus-grc3:88",
+   "text": "ἤσθιε μυρία πάντα· κακὰ δʼ ἐξάλλετο γαστὴρ",
+   "title": "Himno 6"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg020.perseus-grc3:89",
+   "text": "αἰεὶ μᾶλλον ἔδοντι, τὰ δʼ ἐς βυθὸν οἷα θαλάσσας",
+   "title": "Himno 6"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg020.perseus-grc3:90",
+   "text": "ἀλεμάτως ἀχάριστα κατέρρεεν εἴδατα πάντα.",
+   "title": "Himno 6"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg020.perseus-grc3:91",
+   "text": "ὡς δὲ Μίμαντι χιών, ὡς ἀελίῳ ἔνι πλαγγών,",
+   "title": "Himno 6"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg020.perseus-grc3:92",
+   "text": "καὶ τούτων ἔτι μεῖζον ἐτάκετο μέσφʼ ἐπὶ νευράς·",
+   "title": "Himno 6"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg020.perseus-grc3:93",
+   "text": "δειλαίῳ ἶνές τε καὶ ὀστέα μῶνον ἔλειφθεν.",
+   "title": "Himno 6"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg020.perseus-grc3:94",
+   "text": "κλαῖε μὲν ἁ μάτηρ, βαρὺ δʼ ἔστενον αἱ δύʼ ἀδελφαὶ",
+   "title": "Himno 6"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg020.perseus-grc3:95",
+   "text": "χὡ μαστὸς τὸν ἔπωνε καὶ αἱ δέκα πολλάκι δῶλαι.",
+   "title": "Himno 6"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg020.perseus-grc3:96",
+   "text": "καὶ δʼ αὐτὸς Τριόπας πολιαῖς ἐπὶ χεῖρας ἔβαλλε,",
+   "title": "Himno 6"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg020.perseus-grc3:97",
+   "text": "τοῖα τὸν οὐκ ἀίοντα Ποσειδάωνα καλιστρέων·",
+   "title": "Himno 6"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg020.perseus-grc3:98",
+   "text": "ψευδοπάτωρ ἰδὲ τόνδε τεοῦ τρίτον, εἴπερ ἐγὼ μὲν",
+   "title": "Himno 6"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg020.perseus-grc3:99",
+   "text": "σεῦ τε καὶ Αἰολίδος Κανάκας γένος, αὐτὰρ ἐμεῖο",
+   "title": "Himno 6"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg020.perseus-grc3:100",
+   "text": "τοῦτο τὸ δείλαιον γένετο βρέφος· αἴθε γὰρ αὐτὸν",
+   "title": "Himno 6"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg020.perseus-grc3:101",
+   "text": "βλητὸν ὑπʼ Ἀπόλλωνος ἐμαὶ χέρες ἐκτερέιξαν·",
+   "title": "Himno 6"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg020.perseus-grc3:102",
+   "text": "νῦν δὲ κακὰ βούβρωστις ἐν ὀφθαλμοῖσι κάθηται.",
+   "title": "Himno 6"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg020.perseus-grc3:103",
+   "text": "ἤ οἱ ἀπόστασον χαλεπὰν νόσον ἠέ νιν αὐτὸς",
+   "title": "Himno 6"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg020.perseus-grc3:104",
+   "text": "βόσκε λαβών· ἁμαὶ γὰρ ἀπειρήκαντι τράπεζαι.",
+   "title": "Himno 6"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg020.perseus-grc3:105",
+   "text": "χῆραι μὲν μάνδραι, κενεαὶ δέ μοι αὔλιες ἤδη",
+   "title": "Himno 6"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg020.perseus-grc3:106",
+   "text": "τετραπόδων, ἤδη γὰρ ἀπαρνήσαντο μάγειροι.",
+   "title": "Himno 6"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg020.perseus-grc3:107",
+   "text": "ἀλλὰ καὶ οὐρῆας μεγαλᾶν ὑπέλυσαν ἁμαξᾶν,",
+   "title": "Himno 6"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg020.perseus-grc3:108",
+   "text": "καὶ τὰν βῶν ἔφαγεν, τὰν Ἑστίᾳ ἔτρεφε μάτηρ,",
+   "title": "Himno 6"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg020.perseus-grc3:109",
+   "text": "καὶ τὰν ἀεθλοφόρον καὶ τὸν πολεμήιον ἵππον,",
+   "title": "Himno 6"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg020.perseus-grc3:110",
+   "text": "καὶ τὰν αἴλουρον, τὰν ἔτρεμε θηρία μικκά.",
+   "title": "Himno 6"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg020.perseus-grc3:111",
+   "text": "μέσφʼ ὅκα μὲν Τριόπαο δόμοις ἔνι χρήματα κεῖτο,",
+   "title": "Himno 6"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg020.perseus-grc3:112",
+   "text": "μῶνοι ἄρʼ οἰκεῖοι θάλαμοι κακὸν ἠπίσταντο.",
+   "title": "Himno 6"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg020.perseus-grc3:113",
+   "text": "ἀλλʼ ὅκα τὸν βαθὺν οἶκον ἀνεξήραναν ὀδόντες,",
+   "title": "Himno 6"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg020.perseus-grc3:114",
+   "text": "καὶ τόχʼ ὁ τῶ βασιλῆος ἐνὶ τριόδοισι καθῆστο",
+   "title": "Himno 6"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg020.perseus-grc3:115",
+   "text": "αἰτίζων ἀκόλως τε καὶ ἔκβολα λύματα δαιτός.",
+   "title": "Himno 6"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg020.perseus-grc3:116",
+   "text": "Δάματερ, μὴ τῆνος ἐμὶν φίλος, ὅς τοι ἀπεχθής,",
+   "title": "Himno 6"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg020.perseus-grc3:117",
+   "text": "εἴη μηδʼ ὁμότοιχος· ἐμοὶ κακογείτονες ἐχθροί.",
+   "title": "Himno 6"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg020.perseus-grc3:118",
+   "text": "ᾄσατε παρθενικαί, καὶ ἐπιφθέγξασθε τεκοῖσαι",
+   "title": "Himno 6"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg020.perseus-grc3:119",
+   "text": "Δάματερ μέγα χαῖρε πολυτρόφε πουλυμέδιμνε.",
+   "title": "Himno 6"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg020.perseus-grc3:120",
+   "text": "χὠς αἱ τὸν κάλαθον λευκότριχες ἵπποι ἄγοντι",
+   "title": "Himno 6"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg020.perseus-grc3:121",
+   "text": "τέσσαρες, ὣς ἁμὶν μεγάλα θεὸς εὐρυάνασσα",
+   "title": "Himno 6"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg020.perseus-grc3:122",
+   "text": "λευκὸν ἔαρ, λευκὸν δὲ θέρος καὶ χεῖμα φέροισα",
+   "title": "Himno 6"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg020.perseus-grc3:123",
+   "text": "ἡξεῖ καὶ φθινόπωρον, ἔτος δʼ εἰς ἄλλο φυλαξεῖ.",
+   "title": "Himno 6"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg020.perseus-grc3:124",
+   "text": "ὡς δʼ ἀπεδίλωτοι καὶ ἀνάμπυκες ἄστυ πατεῦμες,",
+   "title": "Himno 6"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg020.perseus-grc3:125",
+   "text": "ὣς πόδας, ὣς κεφαλὰς παναπηρέας ἕξομες αἰεί.",
+   "title": "Himno 6"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg020.perseus-grc3:126",
+   "text": "ὡς δʼ αἱ λικνοφόροι χρυσῶ πλέα λίκνα φέροντι,",
+   "title": "Himno 6"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg020.perseus-grc3:127",
+   "text": "ὣς ἁμὲς τὸν χρυσὸν ἀφειδέα πασαίμεσθα.",
+   "title": "Himno 6"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg020.perseus-grc3:128",
+   "text": "μέσφα τὰ τᾶς πόλιος πρυτανήια τὰς ἀτελέστως,",
+   "title": "Himno 6"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg020.perseus-grc3:129",
+   "text": "τὰς δὲ τελεσφορέας ποτὶ τὰν θεὸν ἄχρις ὁμαρτεῖν,",
+   "title": "Himno 6"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg020.perseus-grc3:130",
+   "text": "αἵτινες ἑξήκοντα κατώτεραι· αἱ δὲ βαρεῖαι",
+   "title": "Himno 6"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg020.perseus-grc3:131",
+   "text": "χἄτις Ἐλειθυίᾳ τείνει χέρα χἄτις ἐν ἄλγει.",
+   "title": "Himno 6"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg020.perseus-grc3:132",
+   "text": "ὣς ἅλις, ὡς αὐτᾶν ἱκανὸν γόνυ· ταῖσι δὲ Δηὼ",
+   "title": "Himno 6"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg020.perseus-grc3:133",
+   "text": "δωσεῖ πάντʼ ἐπίμεστα καὶ ὡς ποτὶ ναὸν ἵκωνται.",
+   "title": "Himno 6"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg020.perseus-grc3:134",
+   "text": "χαῖρε θεὰ καὶ τάνδε σάω πόλιν ἔν θʼ ὁμονοίᾳ",
+   "title": "Himno 6"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg020.perseus-grc3:135",
+   "text": "ἔν τʼ εὐηπελίᾳ, φέρε δʼ ἀγρόθι νόστιμα πάντα·",
+   "title": "Himno 6"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg020.perseus-grc3:136",
+   "text": "φέρβε βόας, φέρε μᾶλα, φέρε στάχυν, οἶσε θερισμόν,",
+   "title": "Himno 6"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg020.perseus-grc3:137",
+   "text": "φέρβε καὶ εἰράναν, ἵνʼ ὃς ἄροσε τῆνος ἀμάσῃ.",
+   "title": "Himno 6"
+  },
+  {
+   "locus": "urn:cts:greekLit:tlg0533.tlg020.perseus-grc3:138",
+   "text": "ἵλαθί μοι τρίλλιστε μέγα κρείοισα θεάων.",
+   "title": "Himno 6"
+  }
+ ]
+}
