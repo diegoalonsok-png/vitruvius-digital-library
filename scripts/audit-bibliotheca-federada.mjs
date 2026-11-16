@@ -3,6 +3,7 @@
 import {readFileSync,writeFileSync,readdirSync,existsSync} from "node:fs";
 const read=p=>JSON.parse(readFileSync(p,"utf8"));
 const cat=read("data/bibliotheca-graeca-latina-I-bce-I-ce.json").works;
+const overlay=read("data/bibliotheca-expansion-publicada-2026-11-16.json").works;
 const pdf=read("data/r2/catalogo-clasicos-r2.json").items;
 const links=read("data/r2/vinculos-repertorio.json");
 const reg=read("data/classics-corpus/search-registry.json").entries;
@@ -16,14 +17,16 @@ function ids(rows,key,label){
  for(const row of rows){const id=key(row);if(!id||seen.has(id))critical.push(label+" duplicado: "+id);seen.add(id)}
  return seen;
 }
-const works=ids(cat,w=>w.id,"Obra"),pdfIds=ids(pdf,e=>e.id,"PDF R2");
+const works=ids(cat,w=>w.id,"Obra"),overlayIds=ids(overlay,w=>w.id,"Obra suplementaria"),pdfIds=ids(pdf,e=>e.id,"PDF R2");
+for(const id of overlayIds)if(works.has(id))critical.push("Obra suplementaria duplicada en catálogo principal: "+id);
+const allWorks=new Set([...works,...overlayIds]);
 ids(reg,e=>[e.workId,e.language,e.path,e.edition||""].join("|"),"Registro textual");
 const availableR2=new Set(corpusR2.obras.map(e=>corpusR2.base+e.archivo));
 const indexedWorks=new Set(),indexedOriginals=new Set(),indexedLocalFiles=new Set(),indexedRemoteFiles=new Set();
 for(const e of reg){
- if(!works.has(e.workId))critical.push("Edición textual sin ficha: "+e.workId);
+ if(!allWorks.has(e.workId))critical.push("Edición textual sin ficha: "+e.workId);
  indexedWorks.add(e.workId);
- const master=cat.find(w=>w.id===e.workId);
+ const master=cat.find(w=>w.id===e.workId)||overlay.find(w=>w.id===e.workId);
  if(master&&master.language===e.language&&["grc","la"].includes(e.language))indexedOriginals.add(e.workId);
  if(/^https?:\/\//.test(e.path)){
   indexedRemoteFiles.add(e.path);
@@ -57,10 +60,10 @@ const unlinked=pdf.filter(x=>{
 if(semantic.obras!==pdf.length)issues.push("Índice facsimilar declara "+semantic.obras+" obras frente a "+pdf.length+" registros PDF; identificar la diferencia en fragmentos.json");
 if(orphans.length)issues.push(orphans.length+" transcripciones locales sin indexar");
 if(unlinked.length)issues.push(unlinked.length+" ediciones R2 con vínculo pendiente");
-const missing=cat.filter(w=>!indexedWorks.has(w.id)).map(w=>({id:w.id,author:w.author,title:w.title,language:w.language}));
-const missingOriginal=cat.filter(w=>!indexedOriginals.has(w.id)).map(w=>({id:w.id,author:w.author,title:w.title,language:w.language}));
+const missing=[...cat,...overlay].filter(w=>!indexedWorks.has(w.id)).map(w=>({id:w.id,author:w.author,title:w.title,language:w.language}));
+const missingOriginal=[...cat,...overlay].filter(w=>!indexedOriginals.has(w.id)).map(w=>({id:w.id,author:w.author,title:w.title,language:w.language}));
 const pending=candidates.filter(x=>!pdfIds.has(x.id)).map(x=>({id:x.id,title:x.obra,language:x.lengua}));
-const summary={masterWorks:cat.length,additionalWorks:newWorks.length,totalWorksDeclared:cat.length+newWorks.length,
+const summary={masterWorks:cat.length,supplementaryGreekWorks:overlay.length,additionalWorks:newWorks.length,totalWorksDeclared:cat.length+overlay.length+newWorks.length,
  r2PdfEditions:pdf.length,r2IndexWorksDeclared:semantic.obras,r2IndexPagesDeclared:semantic.paginasIndexadas,
  textVersions:reg.length,localTextFiles:indexedLocalFiles.size,remoteTextFilesDeclared:indexedRemoteFiles.size,
  indexedWorks:indexedWorks.size,indexedOriginalWorks:indexedOriginals.size,
