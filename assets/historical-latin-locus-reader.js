@@ -60,7 +60,7 @@ function show(i){
 }
 function move(i){if(i<0||i>=passages.length)return;location.assign(targetHref(passages[i].locus,query.value.trim()))}
 function findLatin(){
- const term=query.value.trim();results.replaceChildren();if(!term){status.textContent="Ingresá un término o frase en latín.";return}
+ const term=query.value.trim();results.replaceChildren();if(!term){status.textContent="Introduce un término o frase en latín.";return}
  let hits=0;for(const p of passages){
   if(!fold(p.latin).includes(fold(term)))continue;
   hits++;
