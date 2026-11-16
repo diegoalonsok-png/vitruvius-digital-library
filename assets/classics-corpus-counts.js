@@ -6,7 +6,7 @@ const ROOT="data/classics-corpus/";
 const read=async path=>{const r=await fetch(path,{cache:"no-cache"});if(!r.ok)throw Error(path+" HTTP "+r.status);return r.json();};
 const metricLabels=[
  "obras y tratados catalogados","originales con índice efectivo en repertorio principal","obras con traducción local",
- "registros textuales combinados (incluye fuentes externas)","fichas principales sin original indexado"
+ "registros textuales combinados (incluye fuentes externas)","obras sin original textual registrado"
 ];
 function style(){
  if(document.getElementById("classics-corpus-counts-style"))return;
@@ -122,7 +122,7 @@ function paint(a,data){
  const summary=document.createElement("summary");summary.textContent="Detalle";summary.setAttribute("aria-label","Ver explicación y fuentes de las cifras");
  details.append(summary);bar.append(details);wrap.append(bar);
  const foot=document.createElement("p");foot.textContent=a.complete?
-  "Base: 271 obras principales; las 10 incorporaciones en facsímil se añaden solo al total de obras. Los originales efectivos se calculan como 182 locales + índices externos clasificados aparte. Los registros de versiones suman el registro textual y las fuentes remotas adicionales; NO equivalen a obras distintas ni a textos completos cotejados. El inventario federado utiliza otra cobertura (226 obras con texto registrado, 291 versiones del registro) y no debe confundirse con esta métrica.":
+  "Base: 271 fichas principales. 242 tienen al menos una fuente original registrada (GitHub, R2 o índice externo), sin duplicar obras. Las otras 29 no tienen original textual registrado. Dentro de las 242, 32 originales R2 aún requieren comprobación de disponibilidad e indexación efectiva. Las 61 pendientes anteriores incluyen esas 32 y no deben presentarse como 61 originales ausentes. Registro documental, no cotejo filológico ni garantía de acceso HTTP.":
   "Cobertura parcial: algún índice externo no fue verificable en esta carga; los originales no accesibles no se presentan como indexados.";
  details.append(foot);
  const link=document.createElement("a");
@@ -156,7 +156,7 @@ async function begin(){
    seen.add(e.workId);remote.add(e.workId+"|"+e.language);
   }
   const local=road.counts.originalsIndexed,extra=seen.size;
-  const counts={catalogued:road.targetWorks,indexed:local+extra,pending:road.targetWorks-local-extra,
+  const counts={catalogued:road.targetWorks,indexed:local+extra,pending:road.counts.originalWorksWithoutRegisteredSource ?? road.targetWorks-local-extra,
     translated:translations.totals.translatedWorksLocal,
     versions:registry.count+remote.size,
     complete:greek.length===(window.ClassicsOffsiteGreek?.allowedWorkIds?.length||0)&&
