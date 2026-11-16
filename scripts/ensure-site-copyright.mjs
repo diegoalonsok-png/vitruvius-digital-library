@@ -18,7 +18,9 @@ for(const file of files){
  if(source.includes(marker)){already++;continue}
  if(!/<\/body\s*>/i.test(source)){missing.push(file);continue}
  if(process.argv.includes("--write")){
-  const updated=source.replace(/<\/body\s*>/i,footer+"\n</body>");
+  const closes=[...source.matchAll(/<\/body\s*>/gi)];
+  const last=closes.at(-1);
+  const updated=last?source.slice(0,last.index)+footer+"\n"+source.slice(last.index):source;
   writeFileSync(file,updated,"utf8");changed++;
  }else missing.push(file);
 }
