@@ -100,23 +100,21 @@ function latinComparatio(root,es,fr,en,locus,ocr){
 }
 
 function ocrPanel(root,locus,ocr,list){
- const s=box("II · Collatio editorum · Rose y Krohn","Pasajes latinos localizados mediante OCR y alineación automática: la semejanza numérica es una medida computacional, no certeza paleográfica. Consulte el impreso antes de adoptar una variante.");
- const item=ocr.loci?.[locus];
- if(!item){s.append(el("p","Ningún pasaje alineado en este índice.","dl-muted"));root.append(s);return}
+ const s=box("II · Editiones historicae · Rose 1899 / Kr. 1912",
+  "Sin texto latino de Rose o Krohn verificado para este locus en este módulo. Los alineamientos OCR son pistas de localización de páginas, no variantes ni una colación crítica; compruebe el facsímil antes de citar.");
+ const item=ocr?.loci?.[locus];
  const grid=el("div",null,"dl-grid dl-grid-two");
  for(const [id,name,filename] of [["rose-1899","Valentin Rose · 1899","https://archive.org/download/vitruviidearchit00vitr_0/vitruviidearchit00vitr_0.pdf"],["krohn-1912","F. Krohn · 1912","documents/krohn-1912.pdf"]]){
-  const a=item[id],card=el("article",null,"dl-source");card.append(el("h4",name));
-  if(!a){card.append(el("p","Pasaje no alineado.","dl-muted"))}
-  else{
-   field(card,"Página(s) OCR",String(a.page??"sin página")+(a.pageEnd?"–"+a.pageEnd:""));
-   if(typeof a.score==="number")field(card,"Semejanza con el texto base",a.score.toFixed(3));
-   const p=el("p",a.text||"OCR sin texto","dl-latin dl-ocr");p.lang="la";card.append(p);
-   if(a.text)list.push([name+" · OCR latino",a.text]);
-   link(card,"Ver página original",filename+(a.page?"#page="+encodeURIComponent(a.page):""));
-  }
+  const record=item?.[id],card=el("article",null,"dl-source");
+  card.append(el("h4",name));
+  card.append(el("p",record?"Referencia de página sugerida por alineación OCR automática. Texto y variantes NO verificados.":"Sin localización OCR para este locus.","dl-muted"));
+  if(record?.page)field(card,"Página candidata OCR",String(record.page)+(record.pageEnd?"–"+record.pageEnd:""));
+  link(card,"Consultar facsímil de la edición",filename+(record?.page?"#page="+encodeURIComponent(record.page):""));
   grid.append(card);
  }
- s.append(grid);root.append(s)
+ s.append(grid);
+ const explanation=el("p","Las cifras de semejanza y las cadenas OCR con errores tipográficos se han retirado de esta visualización: no sirven como evidencia ecdótica. Las notas y decisiones comprobadas se presentan separadamente, con su atribución documental.","dl-muted");
+ s.append(explanation);root.append(s);
 }
 function collationPanel(root,r){
  const s=box("III · Apparatus auctoris · Apéndice T","Cada entrada conserva la transcripción de lo impreso y su grado de revisión. Coincidencias V514/V554 son controles de dos publicaciones del mismo autor, no dos testimonios independientes.");
