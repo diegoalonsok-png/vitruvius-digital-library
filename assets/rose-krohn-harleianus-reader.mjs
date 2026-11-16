@@ -6,6 +6,7 @@ const work=works[id],base='https://libros.vitruvius-digital-library.org/folios/'
 const img=$('folio'),sheet=$('page-sheet'),stage=$('stage'),overlay=$('image-highlights'),loupe=$('loupe'),mag=$('magnified');
 let manifest=null,folios=[],pages=[],locusIndex={loci:{}},selected=5,serial=0,visible=0,matched=[],hits=[],shown=0;
 let activeTerms=[],wordPage=null,searchSerial=0,ready=false,drawing=null,fitWhole=false;
+let editorialCorrigendaCount=0;
 const wordCache=new Map(),clamp=(n,a,b)=>Math.max(a,Math.min(b,n));
 const node=(tag,text,cls)=>{const el=document.createElement(tag);if(text!==undefined)el.textContent=text;if(cls)el.className=cls;return el;};
 async function json(url){const r=await fetch(url,{cache:'no-cache',signal:AbortSignal.timeout(20000)});if(!r.ok)throw Error('HTTP '+r.status);return r.json();}
@@ -36,14 +37,33 @@ function paint(){
  if(wordPage?.page===selected){
   const ranges=findRanges(wordPage.text,activeTerms.length?activeTerms:$('key-highlights').checked?KEY_TERMS:[]);
   for(const word of wordBoxes(wordPage.words||[],ranges)){overlay.append(boxMark(word));count++;}
-  $('ocr-text').replaceChildren(markedText(wordPage.text,ranges));
-  $('ocr-status').textContent='OCR de esta misma imagen; lectura automática sin revisión crítica.';
+  const current=pages.find(p=>p.page===selected);
+  const reading=current?.text||wordPage.text;
+  $('ocr-text').replaceChildren(markedText(reading,findRanges(reading,activeTerms.length?activeTerms:$('key-highlights').checked?KEY_TERMS:[])));
+  $('ocr-status').textContent=current?.editorialCorrigenda?.length
+    ?'Lectura con '+current.editorialCorrigenda.length+' corrección(es) bibliográfica(s) propuestas (sin cotejo de imagen). OCR original conservado debajo.'
+    :'OCR de esta misma imagen; lectura automática sin revisión crítica.';
   $('highlight-status').textContent=count+' palabras subrayadas sobre esta hoja mediante coordenadas OCR. Los trazos propios se guardan en este navegador.';
  }else{
   const text=pages.find(p=>p.page===selected)?.text||'';
   $('ocr-text').replaceChildren(markedText(text,findRanges(text,activeTerms.length?activeTerms:$('key-highlights').checked?KEY_TERMS:[])));
-  $('ocr-status').textContent=text?'Texto OCR sin coordenadas disponibles para esta imagen.':'Esta página no tiene texto OCR disponible.';
+  const current=pages.find(p=>p.page===selected);
+  $('ocr-status').textContent=current?.editorialCorrigenda?.length
+    ?'Lectura con correcciones bibliográficas propuestas, NO verificadas sobre facsímil; OCR original conservado debajo.'
+    :text?'Texto OCR sin coordenadas disponibles para esta imagen.':'Esta página no tiene texto OCR disponible.';
   $('highlight-status').textContent='Coordenadas OCR aún no disponibles para esta hoja. El subrayado manual está disponible.';
+ }
+ const current=pages.find(p=>p.page===selected);
+ let original=document.getElementById('ocr-original-source');
+ if(!original){original=node('details',undefined,'ocr-original-source');original.id='ocr-original-source';
+  original.append(node('summary','Mostrar OCR original sin correcciones'));
+  original.append(node('pre',undefined,'ocr-original-pre'));
+  $('ocr-panel').append(original);
+ }
+ original.hidden=!current?.editorialCorrigenda?.length;
+ if(current?.editorialCorrigenda?.length){
+  original.querySelector('pre').textContent=current.rawOCR||'';
+  original.querySelector('pre').style.cssText='white-space:pre-wrap;overflow-wrap:anywhere;font:12px/1.6 monospace';
  }
  for(const mark of savedMarks())overlay.append(boxMark(mark,true));
  document.dispatchEvent(new CustomEvent('vdl:edition-text',{detail:{edition:id,image:selected,total:folios.length,
@@ -134,14 +154,33 @@ async function load(){
   if(data.sha256_pdf&&manifest.sha256_pdf&&data.sha256_pdf!==manifest.sha256_pdf)throw Error('El OCR pertenece a otro PDF');
   const rows=Array.isArray(data)?data:data.edition===id?data.pages:null;
   if(!Array.isArray(rows)||rows.length!==folios.length||rows.some((p,i)=>p.page!==i+1))throw Error('El texto OCR no corresponde a la secuencia de imágenes de esta edición');
-  pages=rows;
+  // Apply only exact, single-occurrence bibliographic corrections on a
+  // separate, reversible display/search layer; never modify the source JSON.
+  let corrections=[];
+  try{
+   const c=await json('data/critical-editions/ocr-editorial-corrigenda.json?v=20261115-v1');
+   if(c.schema==='vdl-ocr-editorial-corrigenda-v1')corrections=c.editions?.[id]||[];
+  }catch{/* Original OCR remains fully usable when corrigenda are offline. */}
+  pages=rows.map(page=>{
+   const own=corrections.filter(c=>c.page===page.page),used=[];
+   let text=page.text||'';
+   for(const c of own){
+    if(c.facsimile_checked===true||c.status!=='editorial-bibliography-proposal')continue;
+    if(typeof c.from!=='string'||!c.from||typeof c.to!=='string')continue;
+    if(text.split(c.from).length!==2)continue;
+    text=text.replace(c.from,c.to);
+    used.push({from:c.from,to:c.to,basis:c.basis});
+   }
+   editorialCorrigendaCount+=used.length;
+   return used.length?{...page,rawOCR:page.text,text,editorialCorrigenda:used}:page;
+  });
   try{locusIndex=await either('data/r2/folios/'+id+'-loci.json',manifest.lociIndice);}catch{
    try{
     if(id==='krohn-1912')locusIndex=await json('data/structured/krohn-1912-ocr-locus-candidates.json');
     else{const old=await json('data/text/krohn-rose-locus-candidates.json');locusIndex={loci:Object.fromEntries(old.entries.filter(r=>r.edition==='rose'&&r.anchorsMatched>=2).map(r=>[r.locus,{...r,status:'ambiguous_textual_candidate'}]))};}
    }catch{locusIndex={loci:{}};}
   }
-  ready=true;paint();$('search-status').textContent=pages.length+' páginas OCR disponibles · '+Object.keys(locusIndex.loci||{}).length+' loci con propuestas de localización.';
+  ready=true;paint();$('search-status').textContent=pages.length+' páginas OCR disponibles · '+editorialCorrigendaCount+' correcciones bibliográficas propuestas y reversibles (sin cotejo de facsímil) · '+Object.keys(locusIndex.loci||{}).length+' loci candidatos por OCR.';
   // Restore an explicit shared search without waiting on this same promise.
   const q=params.get('q')||params.get('locus');if(q){$('edition-query').value=q;$('edition-search-mode').value=['concept','phrase','words'].includes(params.get('match'))?params.get('match'):'concept';queueMicrotask(search);}
  }catch(error){$('search-status').textContent='No se pudo preparar el índice de búsqueda: '+error.message;if(!folios.length){$('status').textContent='No se pudo cargar el índice de imágenes: '+error.message+'. Puede consultar el PDF completo al pie.';$('h-gallery-status').textContent='No se ha recibido el índice de esta edición.';}}
