@@ -25,7 +25,7 @@ assert(!html.includes('classic-view-colorbar')&&!html.includes('classics-study-t
  'The minimal Bibliotheca must not embed readers, palettes or extra tools');
 assert(html.includes('assets/bibliotheca-simple.js'),'Single concordance script must be mounted');
 assert(html.includes('assets/bibliotheca-corpus-search.js')&&html.includes('assets/bibliotheca-simple.css'),'Lexicon-style monochrome design must be mounted');
-assert(engine.includes('if(!workId&&!options.exhaustive')&&
+assert(engine.includes('if(!workId&&!options.exhaustive&&mode==="literal"&&!locusCriterion')&&
  engine.includes('maxPerEdition:workId?200:70,limit:600')&&
  engine.includes('includeFullText:true,includeOCR:false'),
  'Default global search must be index-first; selected-work and explicitly expanded passages must be documented and bounded, with OCR excluded');
@@ -39,8 +39,9 @@ assert(engine.includes('dateRank(')||engine.includes('dating('),
  'Every result must sort by the ancient work dating');
 assert(html.includes('id="language-toggle"')&&!html.includes('data-lang='),
  'Bibliotheca must expose one language switch, not three separate selectors');
-assert(engine.includes('es:"en",en:"fr",fr:"es"'),
- 'The single language switch must cycle only ES EN FR');
+assert(engine.includes('Object.hasOwn(dict,k)?k:"es"')&&engine.includes('selector.value=locale')&&
+ engine.includes('languageSelector.addEventListener("change",()=>switchLanguage(languageSelector.value))'),
+ 'The single language selector must accept ES EN FR and synchronize its selected value');
 /* Uploaded bilingual classical DOCX are independently searchable, but never
  * counted as collated original-language editions or aligned manuscripts. */
 const docxBridge=read('assets/bibliotheca-uploaded-docx.js');
