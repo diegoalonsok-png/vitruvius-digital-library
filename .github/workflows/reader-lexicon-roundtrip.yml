@@ -7,6 +7,7 @@ on:
       - 'scripts/test-classics-study-actions.mjs'
       - 'scripts/test-lexicon-continuation.mjs'
       - 'scripts/test-lexicon-source-language.mjs'
+      - 'scripts/test-lexicon-passage-issues.mjs'
       - '.github/workflows/reader-lexicon-roundtrip.yml'
   pull_request:
     paths:
@@ -15,6 +16,7 @@ on:
       - 'scripts/test-classics-study-actions.mjs'
       - 'scripts/test-lexicon-continuation.mjs'
       - 'scripts/test-lexicon-source-language.mjs'
+      - 'scripts/test-lexicon-passage-issues.mjs'
       - '.github/workflows/reader-lexicon-roundtrip.yml'
   workflow_dispatch:
 permissions:
@@ -31,3 +33,4 @@ jobs:
       - run: node scripts/test-classics-study-actions.mjs
       - run: node scripts/test-lexicon-continuation.mjs
       - run: node scripts/test-lexicon-source-language.mjs
+      - run: node scripts/test-lexicon-passage-issues.mjs
