@@ -1,0 +1,106 @@
+/* Bibliotheca · unified legacy edition shell.
+   Applies only to the six registered HTML-text editions, not the TEI/JSON reader.
+   Preserves source orthography, notes, book anchors and editorial references. */
+html{scroll-behavior:smooth;scroll-padding-top:86px}
+body.vdl-html-edition-modern{
+ --vdl-legacy-ink:#233342;--vdl-legacy-paper:#fcfaf4;--vdl-legacy-border:#c7bba7;
+ --vdl-legacy-dark:#171c22;
+ box-sizing:border-box;
+ width:min(1600px,97vw)!important;max-width:1600px!important;
+ margin:0 auto!important;padding:20px clamp(12px,2.5vw,32px) 38px!important;
+ background:#f2eee5!important;color:var(--vdl-legacy-ink)!important;
+ font:18px/1.8 Georgia,"Times New Roman",serif!important;
+ overflow-wrap:anywhere;
+}
+body.vdl-html-edition-modern :is(main,section,article){min-width:0}
+body.vdl-html-edition-modern :is(main,section,article) :is(p,pre){
+ font-size:var(--vdl-legacy-text-size,20px)!important;
+ line-height:1.84!important;color:inherit!important;
+}
+body.vdl-html-edition-modern main{max-width:none!important;margin-inline:auto}
+body.vdl-html-edition-modern pre{
+ white-space:pre-wrap!important;overflow-wrap:anywhere!important;
+ font-family:Georgia,"Times New Roman",serif!important;
+}
+body.vdl-html-edition-modern h1{
+ font:400 clamp(31px,4vw,54px)/1.15 Georgia,serif!important;
+ margin:20px 0 15px!important;color:#263744!important;
+}
+body.vdl-html-edition-modern :is(h2,h3){scroll-margin-top:110px}
+body.vdl-html-edition-modern :is(header,.provenance,.details){
+ border:1px solid var(--vdl-legacy-border)!important;border-left:4px solid #ad9267!important;
+ border-radius:5px!important;background:#e8dfce!important;color:#354250!important;
+ padding:12px 16px!important;line-height:1.55!important;
+}
+body.vdl-html-edition-modern .topbar{
+ border:1px solid var(--vdl-legacy-border)!important;border-radius:5px!important;
+ padding:10px 14px!important;background:#e8dfce!important;
+}
+body.vdl-html-edition-modern nav:not(.vdl-legacy-nav){
+ display:flex;flex-wrap:wrap;align-items:center;gap:9px;
+ padding:12px 14px!important;border:1px solid var(--vdl-legacy-border)!important;
+ background:#efe9df!important;border-radius:5px!important;
+ position:static!important;
+}
+body.vdl-html-edition-modern nav:not(.vdl-legacy-nav) a{
+ font:600 13px/1.4 system-ui,sans-serif!important;
+ color:#2b5069!important;border-bottom:1px solid #8b795b;text-decoration:none;
+}
+body.vdl-html-edition-modern .vdl-legacy-top{
+ display:flex;flex-wrap:wrap;gap:8px 12px;align-items:center;
+ position:sticky;top:0;z-index:30;margin:0 0 15px;
+ background:#20262d;color:#f0ece4;border:1px solid #a4947b;
+ border-radius:6px;padding:10px 12px;
+ box-shadow:0 5px 14px #0002;font:600 13px/1.4 system-ui,sans-serif;
+}
+body.vdl-html-edition-modern .vdl-legacy-top .vdl-legacy-label{
+ letter-spacing:.08em;text-transform:uppercase;font-size:11px;opacity:.78;
+ flex:0 0 auto;
+}
+body.vdl-html-edition-modern .vdl-legacy-top :is(a,button,select){
+ display:inline-flex;align-items:center;justify-content:center;gap:5px;
+ min-height:36px;padding:7px 10px;border:1px solid #8a8278;
+ border-radius:4px;color:#f4eee4;background:#303944;
+ font:600 12px/1.35 system-ui,sans-serif;cursor:pointer;text-decoration:none;
+}
+body.vdl-html-edition-modern .vdl-legacy-top label{
+ display:inline-flex;align-items:center;gap:7px;font:600 12px system-ui,sans-serif;
+}
+body.vdl-html-edition-modern .vdl-legacy-top button[aria-pressed=true]{
+ background:#a88a58;border-color:#d1ae78;color:#15191d;
+}
+body.vdl-html-edition-modern .vdl-legacy-top :is(a,button,select):focus-visible{
+ outline:3px solid #e3bd71;outline-offset:2px;
+}
+body.vdl-html-edition-modern .vdl-legacy-reading-region{
+ background:var(--vdl-legacy-paper);color:var(--vdl-legacy-ink);
+ border:1px solid var(--vdl-legacy-border);
+ border-radius:5px;padding:20px clamp(18px,3.2vw,50px);
+ max-width:none;min-width:0;overflow-x:auto;
+}
+body.vdl-html-edition-modern .vdl-legacy-reading-region :is(p,pre,.poem){
+ color:var(--vdl-legacy-ink)!important;
+}
+body.vdl-html-edition-modern.vdl-legacy-night{
+ --vdl-legacy-paper:#1c222a;--vdl-legacy-ink:#f1ece1;
+ background:#12171c!important;color:#f1ece1!important;
+}
+body.vdl-html-edition-modern.vdl-legacy-night h1{color:#f0e5d6!important}
+body.vdl-html-edition-modern.vdl-legacy-night :is(header,.provenance,.details,.topbar,nav:not(.vdl-legacy-nav)){
+ background:#283039!important;color:#f2eadc!important;border-color:#555d65!important;
+}
+body.vdl-html-edition-modern.vdl-legacy-night nav:not(.vdl-legacy-nav) a{color:#e2c18d!important}
+body.vdl-html-edition-modern :is(.highlight,mark){background:#ffe16a;color:#231c10}
+body.vdl-html-edition-modern .vdl-legacy-note{
+ font:12px/1.55 system-ui,sans-serif;opacity:.83;margin:5px 0 12px;
+}
+@media(max-width:850px){
+ body.vdl-html-edition-modern{width:100%!important;padding:11px!important;font-size:17px!important}
+ body.vdl-html-edition-modern .vdl-legacy-top{position:static}
+ body.vdl-html-edition-modern .vdl-legacy-reading-region{padding:14px}
+}
+@media print{
+ body.vdl-html-edition-modern{background:white!important;color:black!important;width:100%!important}
+ .vdl-legacy-top{display:none!important}
+ body.vdl-html-edition-modern .vdl-legacy-reading-region{border:0!important;padding:0!important}
+}
