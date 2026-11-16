@@ -456,16 +456,20 @@ async function bootstrap(){
  }
  if(!parent||document.getElementById("bibliotheca-work-search"))return;
  try{
-  const [catalogResult,registryResult,roadmapResult]=await Promise.allSettled([
+  const [catalogResult,registryResult,roadmapResult,supplementResult]=await Promise.allSettled([
    fetch("data/bibliotheca-graeca-latina-I-bce-I-ce.json").then(r=>{if(!r.ok)throw Error("catalog HTTP "+r.status);return r.json()}),
    fetch("data/classics-corpus/search-registry.json").then(r=>{if(!r.ok)throw Error("registry HTTP "+r.status);return r.json()}),
-   fetch(ROADMAP).then(r=>{if(!r.ok)throw Error("roadmap HTTP "+r.status);return r.json()})
+   fetch(ROADMAP).then(r=>{if(!r.ok)throw Error("roadmap HTTP "+r.status);return r.json()}),
+   fetch("data/bibliotheca-expansion-publicada-2026-11-16.json").then(r=>{if(!r.ok)throw Error("supplement HTTP "+r.status);return r.json()})
   ]);
   const roadmap=roadmapResult.status==="fulfilled"?roadmapResult.value:null;
   const catalog=catalogResult.status==="fulfilled"?catalogResult.value:null;
   const registry=registryResult.status==="fulfilled"?registryResult.value:null;
   if(!Array.isArray(registry?.entries)||(!Array.isArray(catalog?.works)&&!Array.isArray(roadmap?.items)))throw Error("Catalog and registry unavailable");
-  const baseCatalog=Array.isArray(catalog?.works)?catalog:{works:roadmap.items.map(w=>({id:w.id,title:w.title,author:w.author,dating:w.dating||""}))};
+  const base=Array.isArray(catalog?.works)?catalog.works:roadmap.items.map(w=>({id:w.id,title:w.title,author:w.author,dating:w.dating||""}));
+  const merged=new Map(base.filter(w=>w?.id).map(w=>[w.id,w]));
+  if(supplementResult.status==="fulfilled")for(const w of supplementResult.value.works||[])if(w?.id&&!merged.has(w.id))merged.set(w.id,w);
+  const baseCatalog={works:[...merged.values()]};
   if(parent.id==="front-classical-works")parent.replaceChildren();
   mount(parent,{catalog:baseCatalog,registry});
   addRoadmap(roadmap);
