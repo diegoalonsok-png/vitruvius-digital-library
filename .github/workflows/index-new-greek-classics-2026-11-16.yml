@@ -75,7 +75,7 @@ jobs:
             w.textStatus='lexically-indexed';
             w.status='Texto griego incorporado, registrado e indexado léxicamente; sin cotejo crítico independiente';
           }
-          fs.writeFileSync(path,JSON.stringify(d,null,2)+'\\n');
+          fs.writeFileSync(path,JSON.stringify(d,null,2)+'\n');
           JS
       - name: Publicar índice y fichas certificadas
         run: |
