@@ -562,6 +562,2356 @@
         "archive": "https://archive.org/"
       },
       "description": "Tragedia conservada en TEI de Perseus con loci CTS; texto apto para lectura y búsqueda, sin pretensión de nueva recensio."
+    },
+    {
+      "id": "plato-euthyphro",
+      "author": "Platón",
+      "title": "Εὐθύφρων · Eutifrón",
+      "titleOriginal": "Εὐθύφρων",
+      "aliases": [
+        "Eutifrón",
+        "Εὐθύφρων"
+      ],
+      "language": "grc",
+      "genre": "Diálogo filosófico",
+      "dating": "siglo IV a. C.",
+      "collection": "obras-selectas",
+      "selectedCollection": "Obras selectas · repertorio académico",
+      "source": "Perseus Digital Library · edición TEI tlg0059.tlg001",
+      "sourceUrl": "https://github.com/PerseusDL/canonical-greekLit/blob/dacb04909e43dc47738828d33cc3d2b0635bc54c/data/tlg0059/tlg001/tlg0059.tlg001.perseus-grc1.xml",
+      "bibliography": {
+        "uniformTitle": "Εὐθύφρων",
+        "canonicalReference": "urn:cts:greekLit:tlg0059.tlg001.perseus-grc1",
+        "workIdentifier": "tlg0059.tlg001",
+        "sourceCollection": "Perseus Digital Library · canonical-greekLit",
+        "sourceRevision": "dacb04909e43dc47738828d33cc3d2b0635bc54c",
+        "sourceCTS": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/dacb04909e43dc47738828d33cc3d2b0635bc54c/data/tlg0059/tlg001/__cts__.xml",
+        "licensing": "CC BY-SA 4.0 · Perseus Digital Library; mantener atribución y compartir adaptaciones bajo la misma licencia",
+        "editorialNote": "Texto TEI de una edición histórica de Perseus, no facsímil ni nueva transcripción diplomática. Autenticidad y atribución de algunas obras transmitidas bajo el nombre del autor pueden ser debatidas.",
+        "indexedEditionClaim": false,
+        "manuscriptCollationClaim": false
+      },
+      "status": "Fuente TEI catalogada; transcripción original e indexación léxica local pendientes de incorporación y control",
+      "textStatus": "source-verified-not-indexed",
+      "publicStatus": "ficha-bibliografica",
+      "reading": {
+        "url": "https://github.com/PerseusDL/canonical-greekLit/blob/dacb04909e43dc47738828d33cc3d2b0635bc54c/data/tlg0059/tlg001/tlg0059.tlg001.perseus-grc1.xml",
+        "status": "Fuente TEI en Perseus; todavía no se incorpora como texto indexado en la biblioteca. No se declara traducción cotejada."
+      },
+      "translation": {
+        "status": "Sin versión traducida cotejada alojada para esta ficha; consultar las fuentes editoriales."
+      },
+      "links": {
+        "scaife": "https://scaife.perseus.org/",
+        "gallica": "https://gallica.bnf.fr/",
+        "archive": "https://archive.org/"
+      },
+      "description": "Ficha de obra selecta (Diálogo filosófico). Texto original identificado en TEI; el locus CTS documenta la edición de origen. Texto TEI de una edición histórica de Perseus, no facsímil ni nueva transcripción diplomática. Autenticidad y atribución de algunas obras transmitidas bajo el nombre del autor pueden ser debatidas.",
+      "coverType": "typographic-institutional",
+      "selectionOrder": 1
+    },
+    {
+      "id": "plato-statesman",
+      "author": "Platón",
+      "title": "Πολιτικός · El político",
+      "titleOriginal": "Πολιτικός",
+      "aliases": [
+        "El político",
+        "Πολιτικός"
+      ],
+      "language": "grc",
+      "genre": "Diálogo filosófico",
+      "dating": "siglo IV a. C.",
+      "collection": "obras-selectas",
+      "selectedCollection": "Obras selectas · repertorio académico",
+      "source": "Perseus Digital Library · edición TEI tlg0059.tlg008",
+      "sourceUrl": "https://github.com/PerseusDL/canonical-greekLit/blob/dacb04909e43dc47738828d33cc3d2b0635bc54c/data/tlg0059/tlg008/tlg0059.tlg008.perseus-grc2.xml",
+      "bibliography": {
+        "uniformTitle": "Πολιτικός",
+        "canonicalReference": "urn:cts:greekLit:tlg0059.tlg008.perseus-grc2",
+        "workIdentifier": "tlg0059.tlg008",
+        "sourceCollection": "Perseus Digital Library · canonical-greekLit",
+        "sourceRevision": "dacb04909e43dc47738828d33cc3d2b0635bc54c",
+        "sourceCTS": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/dacb04909e43dc47738828d33cc3d2b0635bc54c/data/tlg0059/tlg008/__cts__.xml",
+        "licensing": "CC BY-SA 4.0 · Perseus Digital Library; mantener atribución y compartir adaptaciones bajo la misma licencia",
+        "editorialNote": "Texto TEI de una edición histórica de Perseus, no facsímil ni nueva transcripción diplomática. Autenticidad y atribución de algunas obras transmitidas bajo el nombre del autor pueden ser debatidas.",
+        "indexedEditionClaim": false,
+        "manuscriptCollationClaim": false
+      },
+      "status": "Fuente TEI catalogada; transcripción original e indexación léxica local pendientes de incorporación y control",
+      "textStatus": "source-verified-not-indexed",
+      "publicStatus": "ficha-bibliografica",
+      "reading": {
+        "url": "https://github.com/PerseusDL/canonical-greekLit/blob/dacb04909e43dc47738828d33cc3d2b0635bc54c/data/tlg0059/tlg008/tlg0059.tlg008.perseus-grc2.xml",
+        "status": "Fuente TEI en Perseus; todavía no se incorpora como texto indexado en la biblioteca. No se declara traducción cotejada."
+      },
+      "translation": {
+        "status": "Sin versión traducida cotejada alojada para esta ficha; consultar las fuentes editoriales."
+      },
+      "links": {
+        "scaife": "https://scaife.perseus.org/",
+        "gallica": "https://gallica.bnf.fr/",
+        "archive": "https://archive.org/"
+      },
+      "description": "Ficha de obra selecta (Diálogo filosófico). Texto original identificado en TEI; el locus CTS documenta la edición de origen. Texto TEI de una edición histórica de Perseus, no facsímil ni nueva transcripción diplomática. Autenticidad y atribución de algunas obras transmitidas bajo el nombre del autor pueden ser debatidas.",
+      "coverType": "typographic-institutional",
+      "selectionOrder": 2
+    },
+    {
+      "id": "plato-philebus",
+      "author": "Platón",
+      "title": "Φίληβος · Filebo",
+      "titleOriginal": "Φίληβος",
+      "aliases": [
+        "Filebo",
+        "Φίληβος"
+      ],
+      "language": "grc",
+      "genre": "Diálogo filosófico",
+      "dating": "siglo IV a. C.",
+      "collection": "obras-selectas",
+      "selectedCollection": "Obras selectas · repertorio académico",
+      "source": "Perseus Digital Library · edición TEI tlg0059.tlg010",
+      "sourceUrl": "https://github.com/PerseusDL/canonical-greekLit/blob/dacb04909e43dc47738828d33cc3d2b0635bc54c/data/tlg0059/tlg010/tlg0059.tlg010.perseus-grc2.xml",
+      "bibliography": {
+        "uniformTitle": "Φίληβος",
+        "canonicalReference": "urn:cts:greekLit:tlg0059.tlg010.perseus-grc2",
+        "workIdentifier": "tlg0059.tlg010",
+        "sourceCollection": "Perseus Digital Library · canonical-greekLit",
+        "sourceRevision": "dacb04909e43dc47738828d33cc3d2b0635bc54c",
+        "sourceCTS": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/dacb04909e43dc47738828d33cc3d2b0635bc54c/data/tlg0059/tlg010/__cts__.xml",
+        "licensing": "CC BY-SA 4.0 · Perseus Digital Library; mantener atribución y compartir adaptaciones bajo la misma licencia",
+        "editorialNote": "Texto TEI de una edición histórica de Perseus, no facsímil ni nueva transcripción diplomática. Autenticidad y atribución de algunas obras transmitidas bajo el nombre del autor pueden ser debatidas.",
+        "indexedEditionClaim": false,
+        "manuscriptCollationClaim": false
+      },
+      "status": "Fuente TEI catalogada; transcripción original e indexación léxica local pendientes de incorporación y control",
+      "textStatus": "source-verified-not-indexed",
+      "publicStatus": "ficha-bibliografica",
+      "reading": {
+        "url": "https://github.com/PerseusDL/canonical-greekLit/blob/dacb04909e43dc47738828d33cc3d2b0635bc54c/data/tlg0059/tlg010/tlg0059.tlg010.perseus-grc2.xml",
+        "status": "Fuente TEI en Perseus; todavía no se incorpora como texto indexado en la biblioteca. No se declara traducción cotejada."
+      },
+      "translation": {
+        "status": "Sin versión traducida cotejada alojada para esta ficha; consultar las fuentes editoriales."
+      },
+      "links": {
+        "scaife": "https://scaife.perseus.org/",
+        "gallica": "https://gallica.bnf.fr/",
+        "archive": "https://archive.org/"
+      },
+      "description": "Ficha de obra selecta (Diálogo filosófico). Texto original identificado en TEI; el locus CTS documenta la edición de origen. Texto TEI de una edición histórica de Perseus, no facsímil ni nueva transcripción diplomática. Autenticidad y atribución de algunas obras transmitidas bajo el nombre del autor pueden ser debatidas.",
+      "coverType": "typographic-institutional",
+      "selectionOrder": 3
+    },
+    {
+      "id": "plato-charmides",
+      "author": "Platón",
+      "title": "Χαρμίδης · Cármides",
+      "titleOriginal": "Χαρμίδης",
+      "aliases": [
+        "Cármides",
+        "Χαρμίδης"
+      ],
+      "language": "grc",
+      "genre": "Diálogo filosófico",
+      "dating": "siglo IV a. C.",
+      "collection": "obras-selectas",
+      "selectedCollection": "Obras selectas · repertorio académico",
+      "source": "Perseus Digital Library · edición TEI tlg0059.tlg018",
+      "sourceUrl": "https://github.com/PerseusDL/canonical-greekLit/blob/dacb04909e43dc47738828d33cc3d2b0635bc54c/data/tlg0059/tlg018/tlg0059.tlg018.perseus-grc2.xml",
+      "bibliography": {
+        "uniformTitle": "Χαρμίδης",
+        "canonicalReference": "urn:cts:greekLit:tlg0059.tlg018.perseus-grc2",
+        "workIdentifier": "tlg0059.tlg018",
+        "sourceCollection": "Perseus Digital Library · canonical-greekLit",
+        "sourceRevision": "dacb04909e43dc47738828d33cc3d2b0635bc54c",
+        "sourceCTS": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/dacb04909e43dc47738828d33cc3d2b0635bc54c/data/tlg0059/tlg018/__cts__.xml",
+        "licensing": "CC BY-SA 4.0 · Perseus Digital Library; mantener atribución y compartir adaptaciones bajo la misma licencia",
+        "editorialNote": "Texto TEI de una edición histórica de Perseus, no facsímil ni nueva transcripción diplomática. Autenticidad y atribución de algunas obras transmitidas bajo el nombre del autor pueden ser debatidas.",
+        "indexedEditionClaim": false,
+        "manuscriptCollationClaim": false
+      },
+      "status": "Fuente TEI catalogada; transcripción original e indexación léxica local pendientes de incorporación y control",
+      "textStatus": "source-verified-not-indexed",
+      "publicStatus": "ficha-bibliografica",
+      "reading": {
+        "url": "https://github.com/PerseusDL/canonical-greekLit/blob/dacb04909e43dc47738828d33cc3d2b0635bc54c/data/tlg0059/tlg018/tlg0059.tlg018.perseus-grc2.xml",
+        "status": "Fuente TEI en Perseus; todavía no se incorpora como texto indexado en la biblioteca. No se declara traducción cotejada."
+      },
+      "translation": {
+        "status": "Sin versión traducida cotejada alojada para esta ficha; consultar las fuentes editoriales."
+      },
+      "links": {
+        "scaife": "https://scaife.perseus.org/",
+        "gallica": "https://gallica.bnf.fr/",
+        "archive": "https://archive.org/"
+      },
+      "description": "Ficha de obra selecta (Diálogo filosófico). Texto original identificado en TEI; el locus CTS documenta la edición de origen. Texto TEI de una edición histórica de Perseus, no facsímil ni nueva transcripción diplomática. Autenticidad y atribución de algunas obras transmitidas bajo el nombre del autor pueden ser debatidas.",
+      "coverType": "typographic-institutional",
+      "selectionOrder": 4
+    },
+    {
+      "id": "plato-laches",
+      "author": "Platón",
+      "title": "Λάχης · Laques",
+      "titleOriginal": "Λάχης",
+      "aliases": [
+        "Laques",
+        "Λάχης"
+      ],
+      "language": "grc",
+      "genre": "Diálogo filosófico",
+      "dating": "siglo IV a. C.",
+      "collection": "obras-selectas",
+      "selectedCollection": "Obras selectas · repertorio académico",
+      "source": "Perseus Digital Library · edición TEI tlg0059.tlg019",
+      "sourceUrl": "https://github.com/PerseusDL/canonical-greekLit/blob/dacb04909e43dc47738828d33cc3d2b0635bc54c/data/tlg0059/tlg019/tlg0059.tlg019.perseus-grc2.xml",
+      "bibliography": {
+        "uniformTitle": "Λάχης",
+        "canonicalReference": "urn:cts:greekLit:tlg0059.tlg019.perseus-grc2",
+        "workIdentifier": "tlg0059.tlg019",
+        "sourceCollection": "Perseus Digital Library · canonical-greekLit",
+        "sourceRevision": "dacb04909e43dc47738828d33cc3d2b0635bc54c",
+        "sourceCTS": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/dacb04909e43dc47738828d33cc3d2b0635bc54c/data/tlg0059/tlg019/__cts__.xml",
+        "licensing": "CC BY-SA 4.0 · Perseus Digital Library; mantener atribución y compartir adaptaciones bajo la misma licencia",
+        "editorialNote": "Texto TEI de una edición histórica de Perseus, no facsímil ni nueva transcripción diplomática. Autenticidad y atribución de algunas obras transmitidas bajo el nombre del autor pueden ser debatidas.",
+        "indexedEditionClaim": false,
+        "manuscriptCollationClaim": false
+      },
+      "status": "Fuente TEI catalogada; transcripción original e indexación léxica local pendientes de incorporación y control",
+      "textStatus": "source-verified-not-indexed",
+      "publicStatus": "ficha-bibliografica",
+      "reading": {
+        "url": "https://github.com/PerseusDL/canonical-greekLit/blob/dacb04909e43dc47738828d33cc3d2b0635bc54c/data/tlg0059/tlg019/tlg0059.tlg019.perseus-grc2.xml",
+        "status": "Fuente TEI en Perseus; todavía no se incorpora como texto indexado en la biblioteca. No se declara traducción cotejada."
+      },
+      "translation": {
+        "status": "Sin versión traducida cotejada alojada para esta ficha; consultar las fuentes editoriales."
+      },
+      "links": {
+        "scaife": "https://scaife.perseus.org/",
+        "gallica": "https://gallica.bnf.fr/",
+        "archive": "https://archive.org/"
+      },
+      "description": "Ficha de obra selecta (Diálogo filosófico). Texto original identificado en TEI; el locus CTS documenta la edición de origen. Texto TEI de una edición histórica de Perseus, no facsímil ni nueva transcripción diplomática. Autenticidad y atribución de algunas obras transmitidas bajo el nombre del autor pueden ser debatidas.",
+      "coverType": "typographic-institutional",
+      "selectionOrder": 5
+    },
+    {
+      "id": "plato-lysis",
+      "author": "Platón",
+      "title": "Λύσις · Lisis",
+      "titleOriginal": "Λύσις",
+      "aliases": [
+        "Lisis",
+        "Λύσις"
+      ],
+      "language": "grc",
+      "genre": "Diálogo filosófico",
+      "dating": "siglo IV a. C.",
+      "collection": "obras-selectas",
+      "selectedCollection": "Obras selectas · repertorio académico",
+      "source": "Perseus Digital Library · edición TEI tlg0059.tlg020",
+      "sourceUrl": "https://github.com/PerseusDL/canonical-greekLit/blob/dacb04909e43dc47738828d33cc3d2b0635bc54c/data/tlg0059/tlg020/tlg0059.tlg020.perseus-grc2.xml",
+      "bibliography": {
+        "uniformTitle": "Λύσις",
+        "canonicalReference": "urn:cts:greekLit:tlg0059.tlg020.perseus-grc2",
+        "workIdentifier": "tlg0059.tlg020",
+        "sourceCollection": "Perseus Digital Library · canonical-greekLit",
+        "sourceRevision": "dacb04909e43dc47738828d33cc3d2b0635bc54c",
+        "sourceCTS": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/dacb04909e43dc47738828d33cc3d2b0635bc54c/data/tlg0059/tlg020/__cts__.xml",
+        "licensing": "CC BY-SA 4.0 · Perseus Digital Library; mantener atribución y compartir adaptaciones bajo la misma licencia",
+        "editorialNote": "Texto TEI de una edición histórica de Perseus, no facsímil ni nueva transcripción diplomática. Autenticidad y atribución de algunas obras transmitidas bajo el nombre del autor pueden ser debatidas.",
+        "indexedEditionClaim": false,
+        "manuscriptCollationClaim": false
+      },
+      "status": "Fuente TEI catalogada; transcripción original e indexación léxica local pendientes de incorporación y control",
+      "textStatus": "source-verified-not-indexed",
+      "publicStatus": "ficha-bibliografica",
+      "reading": {
+        "url": "https://github.com/PerseusDL/canonical-greekLit/blob/dacb04909e43dc47738828d33cc3d2b0635bc54c/data/tlg0059/tlg020/tlg0059.tlg020.perseus-grc2.xml",
+        "status": "Fuente TEI en Perseus; todavía no se incorpora como texto indexado en la biblioteca. No se declara traducción cotejada."
+      },
+      "translation": {
+        "status": "Sin versión traducida cotejada alojada para esta ficha; consultar las fuentes editoriales."
+      },
+      "links": {
+        "scaife": "https://scaife.perseus.org/",
+        "gallica": "https://gallica.bnf.fr/",
+        "archive": "https://archive.org/"
+      },
+      "description": "Ficha de obra selecta (Diálogo filosófico). Texto original identificado en TEI; el locus CTS documenta la edición de origen. Texto TEI de una edición histórica de Perseus, no facsímil ni nueva transcripción diplomática. Autenticidad y atribución de algunas obras transmitidas bajo el nombre del autor pueden ser debatidas.",
+      "coverType": "typographic-institutional",
+      "selectionOrder": 6
+    },
+    {
+      "id": "plato-euthydemus",
+      "author": "Platón",
+      "title": "Εὐθύδημος · Eutidemo",
+      "titleOriginal": "Εὐθύδημος",
+      "aliases": [
+        "Eutidemo",
+        "Εὐθύδημος"
+      ],
+      "language": "grc",
+      "genre": "Diálogo filosófico",
+      "dating": "siglo IV a. C.",
+      "collection": "obras-selectas",
+      "selectedCollection": "Obras selectas · repertorio académico",
+      "source": "Perseus Digital Library · edición TEI tlg0059.tlg021",
+      "sourceUrl": "https://github.com/PerseusDL/canonical-greekLit/blob/dacb04909e43dc47738828d33cc3d2b0635bc54c/data/tlg0059/tlg021/tlg0059.tlg021.perseus-grc2.xml",
+      "bibliography": {
+        "uniformTitle": "Εὐθύδημος",
+        "canonicalReference": "urn:cts:greekLit:tlg0059.tlg021.perseus-grc2",
+        "workIdentifier": "tlg0059.tlg021",
+        "sourceCollection": "Perseus Digital Library · canonical-greekLit",
+        "sourceRevision": "dacb04909e43dc47738828d33cc3d2b0635bc54c",
+        "sourceCTS": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/dacb04909e43dc47738828d33cc3d2b0635bc54c/data/tlg0059/tlg021/__cts__.xml",
+        "licensing": "CC BY-SA 4.0 · Perseus Digital Library; mantener atribución y compartir adaptaciones bajo la misma licencia",
+        "editorialNote": "Texto TEI de una edición histórica de Perseus, no facsímil ni nueva transcripción diplomática. Autenticidad y atribución de algunas obras transmitidas bajo el nombre del autor pueden ser debatidas.",
+        "indexedEditionClaim": false,
+        "manuscriptCollationClaim": false
+      },
+      "status": "Fuente TEI catalogada; transcripción original e indexación léxica local pendientes de incorporación y control",
+      "textStatus": "source-verified-not-indexed",
+      "publicStatus": "ficha-bibliografica",
+      "reading": {
+        "url": "https://github.com/PerseusDL/canonical-greekLit/blob/dacb04909e43dc47738828d33cc3d2b0635bc54c/data/tlg0059/tlg021/tlg0059.tlg021.perseus-grc2.xml",
+        "status": "Fuente TEI en Perseus; todavía no se incorpora como texto indexado en la biblioteca. No se declara traducción cotejada."
+      },
+      "translation": {
+        "status": "Sin versión traducida cotejada alojada para esta ficha; consultar las fuentes editoriales."
+      },
+      "links": {
+        "scaife": "https://scaife.perseus.org/",
+        "gallica": "https://gallica.bnf.fr/",
+        "archive": "https://archive.org/"
+      },
+      "description": "Ficha de obra selecta (Diálogo filosófico). Texto original identificado en TEI; el locus CTS documenta la edición de origen. Texto TEI de una edición histórica de Perseus, no facsímil ni nueva transcripción diplomática. Autenticidad y atribución de algunas obras transmitidas bajo el nombre del autor pueden ser debatidas.",
+      "coverType": "typographic-institutional",
+      "selectionOrder": 7
+    },
+    {
+      "id": "plato-hippias-minor",
+      "author": "Platón",
+      "title": "Ἱππίας ἐλάττων · Hipias menor",
+      "titleOriginal": "Ἱππίας ἐλάττων",
+      "aliases": [
+        "Hipias menor",
+        "Ἱππίας ἐλάττων"
+      ],
+      "language": "grc",
+      "genre": "Diálogo filosófico",
+      "dating": "siglo IV a. C.",
+      "collection": "obras-selectas",
+      "selectedCollection": "Obras selectas · repertorio académico",
+      "source": "Perseus Digital Library · edición TEI tlg0059.tlg026",
+      "sourceUrl": "https://github.com/PerseusDL/canonical-greekLit/blob/dacb04909e43dc47738828d33cc3d2b0635bc54c/data/tlg0059/tlg026/tlg0059.tlg026.perseus-grc2.xml",
+      "bibliography": {
+        "uniformTitle": "Ἱππίας ἐλάττων",
+        "canonicalReference": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2",
+        "workIdentifier": "tlg0059.tlg026",
+        "sourceCollection": "Perseus Digital Library · canonical-greekLit",
+        "sourceRevision": "dacb04909e43dc47738828d33cc3d2b0635bc54c",
+        "sourceCTS": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/dacb04909e43dc47738828d33cc3d2b0635bc54c/data/tlg0059/tlg026/__cts__.xml",
+        "licensing": "CC BY-SA 4.0 · Perseus Digital Library; mantener atribución y compartir adaptaciones bajo la misma licencia",
+        "editorialNote": "Texto TEI de una edición histórica de Perseus, no facsímil ni nueva transcripción diplomática. Autenticidad y atribución de algunas obras transmitidas bajo el nombre del autor pueden ser debatidas.",
+        "indexedEditionClaim": false,
+        "manuscriptCollationClaim": false
+      },
+      "status": "Fuente TEI catalogada; transcripción original e indexación léxica local pendientes de incorporación y control",
+      "textStatus": "source-verified-not-indexed",
+      "publicStatus": "ficha-bibliografica",
+      "reading": {
+        "url": "https://github.com/PerseusDL/canonical-greekLit/blob/dacb04909e43dc47738828d33cc3d2b0635bc54c/data/tlg0059/tlg026/tlg0059.tlg026.perseus-grc2.xml",
+        "status": "Fuente TEI en Perseus; todavía no se incorpora como texto indexado en la biblioteca. No se declara traducción cotejada."
+      },
+      "translation": {
+        "status": "Sin versión traducida cotejada alojada para esta ficha; consultar las fuentes editoriales."
+      },
+      "links": {
+        "scaife": "https://scaife.perseus.org/",
+        "gallica": "https://gallica.bnf.fr/",
+        "archive": "https://archive.org/"
+      },
+      "description": "Ficha de obra selecta (Diálogo filosófico). Texto original identificado en TEI; el locus CTS documenta la edición de origen. Texto TEI de una edición histórica de Perseus, no facsímil ni nueva transcripción diplomática. Autenticidad y atribución de algunas obras transmitidas bajo el nombre del autor pueden ser debatidas.",
+      "coverType": "typographic-institutional",
+      "selectionOrder": 8
+    },
+    {
+      "id": "plato-ion",
+      "author": "Platón",
+      "title": "Ἴων · Ion",
+      "titleOriginal": "Ἴων",
+      "aliases": [
+        "Ion",
+        "Ἴων"
+      ],
+      "language": "grc",
+      "genre": "Diálogo filosófico",
+      "dating": "siglo IV a. C.",
+      "collection": "obras-selectas",
+      "selectedCollection": "Obras selectas · repertorio académico",
+      "source": "Perseus Digital Library · edición TEI tlg0059.tlg027",
+      "sourceUrl": "https://github.com/PerseusDL/canonical-greekLit/blob/dacb04909e43dc47738828d33cc3d2b0635bc54c/data/tlg0059/tlg027/tlg0059.tlg027.perseus-grc2.xml",
+      "bibliography": {
+        "uniformTitle": "Ἴων",
+        "canonicalReference": "urn:cts:greekLit:tlg0059.tlg027.perseus-grc2",
+        "workIdentifier": "tlg0059.tlg027",
+        "sourceCollection": "Perseus Digital Library · canonical-greekLit",
+        "sourceRevision": "dacb04909e43dc47738828d33cc3d2b0635bc54c",
+        "sourceCTS": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/dacb04909e43dc47738828d33cc3d2b0635bc54c/data/tlg0059/tlg027/__cts__.xml",
+        "licensing": "CC BY-SA 4.0 · Perseus Digital Library; mantener atribución y compartir adaptaciones bajo la misma licencia",
+        "editorialNote": "Texto TEI de una edición histórica de Perseus, no facsímil ni nueva transcripción diplomática. Autenticidad y atribución de algunas obras transmitidas bajo el nombre del autor pueden ser debatidas.",
+        "indexedEditionClaim": false,
+        "manuscriptCollationClaim": false
+      },
+      "status": "Fuente TEI catalogada; transcripción original e indexación léxica local pendientes de incorporación y control",
+      "textStatus": "source-verified-not-indexed",
+      "publicStatus": "ficha-bibliografica",
+      "reading": {
+        "url": "https://github.com/PerseusDL/canonical-greekLit/blob/dacb04909e43dc47738828d33cc3d2b0635bc54c/data/tlg0059/tlg027/tlg0059.tlg027.perseus-grc2.xml",
+        "status": "Fuente TEI en Perseus; todavía no se incorpora como texto indexado en la biblioteca. No se declara traducción cotejada."
+      },
+      "translation": {
+        "status": "Sin versión traducida cotejada alojada para esta ficha; consultar las fuentes editoriales."
+      },
+      "links": {
+        "scaife": "https://scaife.perseus.org/",
+        "gallica": "https://gallica.bnf.fr/",
+        "archive": "https://archive.org/"
+      },
+      "description": "Ficha de obra selecta (Diálogo filosófico). Texto original identificado en TEI; el locus CTS documenta la edición de origen. Texto TEI de una edición histórica de Perseus, no facsímil ni nueva transcripción diplomática. Autenticidad y atribución de algunas obras transmitidas bajo el nombre del autor pueden ser debatidas.",
+      "coverType": "typographic-institutional",
+      "selectionOrder": 9
+    },
+    {
+      "id": "plato-menexenus",
+      "author": "Platón",
+      "title": "Μενέξενος · Menéxeno",
+      "titleOriginal": "Μενέξενος",
+      "aliases": [
+        "Menéxeno",
+        "Μενέξενος"
+      ],
+      "language": "grc",
+      "genre": "Diálogo filosófico",
+      "dating": "siglo IV a. C.",
+      "collection": "obras-selectas",
+      "selectedCollection": "Obras selectas · repertorio académico",
+      "source": "Perseus Digital Library · edición TEI tlg0059.tlg028",
+      "sourceUrl": "https://github.com/PerseusDL/canonical-greekLit/blob/dacb04909e43dc47738828d33cc3d2b0635bc54c/data/tlg0059/tlg028/tlg0059.tlg028.perseus-grc2.xml",
+      "bibliography": {
+        "uniformTitle": "Μενέξενος",
+        "canonicalReference": "urn:cts:greekLit:tlg0059.tlg028.perseus-grc2",
+        "workIdentifier": "tlg0059.tlg028",
+        "sourceCollection": "Perseus Digital Library · canonical-greekLit",
+        "sourceRevision": "dacb04909e43dc47738828d33cc3d2b0635bc54c",
+        "sourceCTS": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/dacb04909e43dc47738828d33cc3d2b0635bc54c/data/tlg0059/tlg028/__cts__.xml",
+        "licensing": "CC BY-SA 4.0 · Perseus Digital Library; mantener atribución y compartir adaptaciones bajo la misma licencia",
+        "editorialNote": "Texto TEI de una edición histórica de Perseus, no facsímil ni nueva transcripción diplomática. Autenticidad y atribución de algunas obras transmitidas bajo el nombre del autor pueden ser debatidas.",
+        "indexedEditionClaim": false,
+        "manuscriptCollationClaim": false
+      },
+      "status": "Fuente TEI catalogada; transcripción original e indexación léxica local pendientes de incorporación y control",
+      "textStatus": "source-verified-not-indexed",
+      "publicStatus": "ficha-bibliografica",
+      "reading": {
+        "url": "https://github.com/PerseusDL/canonical-greekLit/blob/dacb04909e43dc47738828d33cc3d2b0635bc54c/data/tlg0059/tlg028/tlg0059.tlg028.perseus-grc2.xml",
+        "status": "Fuente TEI en Perseus; todavía no se incorpora como texto indexado en la biblioteca. No se declara traducción cotejada."
+      },
+      "translation": {
+        "status": "Sin versión traducida cotejada alojada para esta ficha; consultar las fuentes editoriales."
+      },
+      "links": {
+        "scaife": "https://scaife.perseus.org/",
+        "gallica": "https://gallica.bnf.fr/",
+        "archive": "https://archive.org/"
+      },
+      "description": "Ficha de obra selecta (Diálogo filosófico). Texto original identificado en TEI; el locus CTS documenta la edición de origen. Texto TEI de una edición histórica de Perseus, no facsímil ni nueva transcripción diplomática. Autenticidad y atribución de algunas obras transmitidas bajo el nombre del autor pueden ser debatidas.",
+      "coverType": "typographic-institutional",
+      "selectionOrder": 10
+    },
+    {
+      "id": "xenophon-oeconomicus",
+      "author": "Jenofonte",
+      "title": "Οἰκονομικός · Económico",
+      "titleOriginal": "Οἰκονομικός",
+      "aliases": [
+        "Económico",
+        "Οἰκονομικός"
+      ],
+      "language": "grc",
+      "genre": "Prosa griega: filosofía, historia y técnica",
+      "dating": "siglo IV a. C.",
+      "collection": "obras-selectas",
+      "selectedCollection": "Obras selectas · repertorio académico",
+      "source": "Perseus Digital Library · edición TEI tlg0032.tlg003",
+      "sourceUrl": "https://github.com/PerseusDL/canonical-greekLit/blob/dacb04909e43dc47738828d33cc3d2b0635bc54c/data/tlg0032/tlg003/tlg0032.tlg003.perseus-grc2.xml",
+      "bibliography": {
+        "uniformTitle": "Οἰκονομικός",
+        "canonicalReference": "urn:cts:greekLit:tlg0032.tlg003.perseus-grc2",
+        "workIdentifier": "tlg0032.tlg003",
+        "sourceCollection": "Perseus Digital Library · canonical-greekLit",
+        "sourceRevision": "dacb04909e43dc47738828d33cc3d2b0635bc54c",
+        "sourceCTS": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/dacb04909e43dc47738828d33cc3d2b0635bc54c/data/tlg0032/tlg003/__cts__.xml",
+        "licensing": "CC BY-SA 4.0 · Perseus Digital Library; mantener atribución y compartir adaptaciones bajo la misma licencia",
+        "editorialNote": "Texto TEI de una edición histórica de Perseus, no facsímil ni nueva transcripción diplomática. Autenticidad y atribución de algunas obras transmitidas bajo el nombre del autor pueden ser debatidas.",
+        "indexedEditionClaim": false,
+        "manuscriptCollationClaim": false
+      },
+      "status": "Fuente TEI catalogada; transcripción original e indexación léxica local pendientes de incorporación y control",
+      "textStatus": "source-verified-not-indexed",
+      "publicStatus": "ficha-bibliografica",
+      "reading": {
+        "url": "https://github.com/PerseusDL/canonical-greekLit/blob/dacb04909e43dc47738828d33cc3d2b0635bc54c/data/tlg0032/tlg003/tlg0032.tlg003.perseus-grc2.xml",
+        "status": "Fuente TEI en Perseus; todavía no se incorpora como texto indexado en la biblioteca. No se declara traducción cotejada."
+      },
+      "translation": {
+        "status": "Sin versión traducida cotejada alojada para esta ficha; consultar las fuentes editoriales."
+      },
+      "links": {
+        "scaife": "https://scaife.perseus.org/",
+        "gallica": "https://gallica.bnf.fr/",
+        "archive": "https://archive.org/"
+      },
+      "description": "Ficha de obra selecta (Prosa griega: filosofía, historia y técnica). Texto original identificado en TEI; el locus CTS documenta la edición de origen. Texto TEI de una edición histórica de Perseus, no facsímil ni nueva transcripción diplomática. Autenticidad y atribución de algunas obras transmitidas bajo el nombre del autor pueden ser debatidas.",
+      "coverType": "typographic-institutional",
+      "selectionOrder": 11
+    },
+    {
+      "id": "xenophon-symposium",
+      "author": "Jenofonte",
+      "title": "Συμπόσιον · Banquete",
+      "titleOriginal": "Συμπόσιον",
+      "aliases": [
+        "Banquete",
+        "Συμπόσιον"
+      ],
+      "language": "grc",
+      "genre": "Prosa griega: filosofía, historia y técnica",
+      "dating": "siglo IV a. C.",
+      "collection": "obras-selectas",
+      "selectedCollection": "Obras selectas · repertorio académico",
+      "source": "Perseus Digital Library · edición TEI tlg0032.tlg004",
+      "sourceUrl": "https://github.com/PerseusDL/canonical-greekLit/blob/dacb04909e43dc47738828d33cc3d2b0635bc54c/data/tlg0032/tlg004/tlg0032.tlg004.perseus-grc2.xml",
+      "bibliography": {
+        "uniformTitle": "Συμπόσιον",
+        "canonicalReference": "urn:cts:greekLit:tlg0032.tlg004.perseus-grc2",
+        "workIdentifier": "tlg0032.tlg004",
+        "sourceCollection": "Perseus Digital Library · canonical-greekLit",
+        "sourceRevision": "dacb04909e43dc47738828d33cc3d2b0635bc54c",
+        "sourceCTS": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/dacb04909e43dc47738828d33cc3d2b0635bc54c/data/tlg0032/tlg004/__cts__.xml",
+        "licensing": "CC BY-SA 4.0 · Perseus Digital Library; mantener atribución y compartir adaptaciones bajo la misma licencia",
+        "editorialNote": "Texto TEI de una edición histórica de Perseus, no facsímil ni nueva transcripción diplomática. Autenticidad y atribución de algunas obras transmitidas bajo el nombre del autor pueden ser debatidas.",
+        "indexedEditionClaim": false,
+        "manuscriptCollationClaim": false
+      },
+      "status": "Fuente TEI catalogada; transcripción original e indexación léxica local pendientes de incorporación y control",
+      "textStatus": "source-verified-not-indexed",
+      "publicStatus": "ficha-bibliografica",
+      "reading": {
+        "url": "https://github.com/PerseusDL/canonical-greekLit/blob/dacb04909e43dc47738828d33cc3d2b0635bc54c/data/tlg0032/tlg004/tlg0032.tlg004.perseus-grc2.xml",
+        "status": "Fuente TEI en Perseus; todavía no se incorpora como texto indexado en la biblioteca. No se declara traducción cotejada."
+      },
+      "translation": {
+        "status": "Sin versión traducida cotejada alojada para esta ficha; consultar las fuentes editoriales."
+      },
+      "links": {
+        "scaife": "https://scaife.perseus.org/",
+        "gallica": "https://gallica.bnf.fr/",
+        "archive": "https://archive.org/"
+      },
+      "description": "Ficha de obra selecta (Prosa griega: filosofía, historia y técnica). Texto original identificado en TEI; el locus CTS documenta la edición de origen. Texto TEI de una edición histórica de Perseus, no facsímil ni nueva transcripción diplomática. Autenticidad y atribución de algunas obras transmitidas bajo el nombre del autor pueden ser debatidas.",
+      "coverType": "typographic-institutional",
+      "selectionOrder": 12
+    },
+    {
+      "id": "xenophon-apology",
+      "author": "Jenofonte",
+      "title": "Ἀπολογία Σωκράτους · Apología de Sócrates",
+      "titleOriginal": "Ἀπολογία Σωκράτους",
+      "aliases": [
+        "Apología de Sócrates",
+        "Ἀπολογία Σωκράτους"
+      ],
+      "language": "grc",
+      "genre": "Prosa griega: filosofía, historia y técnica",
+      "dating": "siglo IV a. C.",
+      "collection": "obras-selectas",
+      "selectedCollection": "Obras selectas · repertorio académico",
+      "source": "Perseus Digital Library · edición TEI tlg0032.tlg005",
+      "sourceUrl": "https://github.com/PerseusDL/canonical-greekLit/blob/dacb04909e43dc47738828d33cc3d2b0635bc54c/data/tlg0032/tlg005/tlg0032.tlg005.perseus-grc2.xml",
+      "bibliography": {
+        "uniformTitle": "Ἀπολογία Σωκράτους",
+        "canonicalReference": "urn:cts:greekLit:tlg0032.tlg005.perseus-grc2",
+        "workIdentifier": "tlg0032.tlg005",
+        "sourceCollection": "Perseus Digital Library · canonical-greekLit",
+        "sourceRevision": "dacb04909e43dc47738828d33cc3d2b0635bc54c",
+        "sourceCTS": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/dacb04909e43dc47738828d33cc3d2b0635bc54c/data/tlg0032/tlg005/__cts__.xml",
+        "licensing": "CC BY-SA 4.0 · Perseus Digital Library; mantener atribución y compartir adaptaciones bajo la misma licencia",
+        "editorialNote": "Texto TEI de una edición histórica de Perseus, no facsímil ni nueva transcripción diplomática. Autenticidad y atribución de algunas obras transmitidas bajo el nombre del autor pueden ser debatidas.",
+        "indexedEditionClaim": false,
+        "manuscriptCollationClaim": false
+      },
+      "status": "Fuente TEI catalogada; transcripción original e indexación léxica local pendientes de incorporación y control",
+      "textStatus": "source-verified-not-indexed",
+      "publicStatus": "ficha-bibliografica",
+      "reading": {
+        "url": "https://github.com/PerseusDL/canonical-greekLit/blob/dacb04909e43dc47738828d33cc3d2b0635bc54c/data/tlg0032/tlg005/tlg0032.tlg005.perseus-grc2.xml",
+        "status": "Fuente TEI en Perseus; todavía no se incorpora como texto indexado en la biblioteca. No se declara traducción cotejada."
+      },
+      "translation": {
+        "status": "Sin versión traducida cotejada alojada para esta ficha; consultar las fuentes editoriales."
+      },
+      "links": {
+        "scaife": "https://scaife.perseus.org/",
+        "gallica": "https://gallica.bnf.fr/",
+        "archive": "https://archive.org/"
+      },
+      "description": "Ficha de obra selecta (Prosa griega: filosofía, historia y técnica). Texto original identificado en TEI; el locus CTS documenta la edición de origen. Texto TEI de una edición histórica de Perseus, no facsímil ni nueva transcripción diplomática. Autenticidad y atribución de algunas obras transmitidas bajo el nombre del autor pueden ser debatidas.",
+      "coverType": "typographic-institutional",
+      "selectionOrder": 13
+    },
+    {
+      "id": "xenophon-hiero",
+      "author": "Jenofonte",
+      "title": "Ἱέρων · Hierón",
+      "titleOriginal": "Ἱέρων",
+      "aliases": [
+        "Hierón",
+        "Ἱέρων"
+      ],
+      "language": "grc",
+      "genre": "Prosa griega: filosofía, historia y técnica",
+      "dating": "siglo IV a. C.",
+      "collection": "obras-selectas",
+      "selectedCollection": "Obras selectas · repertorio académico",
+      "source": "Perseus Digital Library · edición TEI tlg0032.tlg008",
+      "sourceUrl": "https://github.com/PerseusDL/canonical-greekLit/blob/dacb04909e43dc47738828d33cc3d2b0635bc54c/data/tlg0032/tlg008/tlg0032.tlg008.perseus-grc2.xml",
+      "bibliography": {
+        "uniformTitle": "Ἱέρων",
+        "canonicalReference": "urn:cts:greekLit:tlg0032.tlg008.perseus-grc2",
+        "workIdentifier": "tlg0032.tlg008",
+        "sourceCollection": "Perseus Digital Library · canonical-greekLit",
+        "sourceRevision": "dacb04909e43dc47738828d33cc3d2b0635bc54c",
+        "sourceCTS": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/dacb04909e43dc47738828d33cc3d2b0635bc54c/data/tlg0032/tlg008/__cts__.xml",
+        "licensing": "CC BY-SA 4.0 · Perseus Digital Library; mantener atribución y compartir adaptaciones bajo la misma licencia",
+        "editorialNote": "Texto TEI de una edición histórica de Perseus, no facsímil ni nueva transcripción diplomática. Autenticidad y atribución de algunas obras transmitidas bajo el nombre del autor pueden ser debatidas.",
+        "indexedEditionClaim": false,
+        "manuscriptCollationClaim": false
+      },
+      "status": "Fuente TEI catalogada; transcripción original e indexación léxica local pendientes de incorporación y control",
+      "textStatus": "source-verified-not-indexed",
+      "publicStatus": "ficha-bibliografica",
+      "reading": {
+        "url": "https://github.com/PerseusDL/canonical-greekLit/blob/dacb04909e43dc47738828d33cc3d2b0635bc54c/data/tlg0032/tlg008/tlg0032.tlg008.perseus-grc2.xml",
+        "status": "Fuente TEI en Perseus; todavía no se incorpora como texto indexado en la biblioteca. No se declara traducción cotejada."
+      },
+      "translation": {
+        "status": "Sin versión traducida cotejada alojada para esta ficha; consultar las fuentes editoriales."
+      },
+      "links": {
+        "scaife": "https://scaife.perseus.org/",
+        "gallica": "https://gallica.bnf.fr/",
+        "archive": "https://archive.org/"
+      },
+      "description": "Ficha de obra selecta (Prosa griega: filosofía, historia y técnica). Texto original identificado en TEI; el locus CTS documenta la edición de origen. Texto TEI de una edición histórica de Perseus, no facsímil ni nueva transcripción diplomática. Autenticidad y atribución de algunas obras transmitidas bajo el nombre del autor pueden ser debatidas.",
+      "coverType": "typographic-institutional",
+      "selectionOrder": 14
+    },
+    {
+      "id": "xenophon-agesilaus",
+      "author": "Jenofonte",
+      "title": "Ἀγησίλαος · Agesilao",
+      "titleOriginal": "Ἀγησίλαος",
+      "aliases": [
+        "Agesilao",
+        "Ἀγησίλαος"
+      ],
+      "language": "grc",
+      "genre": "Prosa griega: filosofía, historia y técnica",
+      "dating": "siglo IV a. C.",
+      "collection": "obras-selectas",
+      "selectedCollection": "Obras selectas · repertorio académico",
+      "source": "Perseus Digital Library · edición TEI tlg0032.tlg009",
+      "sourceUrl": "https://github.com/PerseusDL/canonical-greekLit/blob/dacb04909e43dc47738828d33cc3d2b0635bc54c/data/tlg0032/tlg009/tlg0032.tlg009.perseus-grc2.xml",
+      "bibliography": {
+        "uniformTitle": "Ἀγησίλαος",
+        "canonicalReference": "urn:cts:greekLit:tlg0032.tlg009.perseus-grc2",
+        "workIdentifier": "tlg0032.tlg009",
+        "sourceCollection": "Perseus Digital Library · canonical-greekLit",
+        "sourceRevision": "dacb04909e43dc47738828d33cc3d2b0635bc54c",
+        "sourceCTS": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/dacb04909e43dc47738828d33cc3d2b0635bc54c/data/tlg0032/tlg009/__cts__.xml",
+        "licensing": "CC BY-SA 4.0 · Perseus Digital Library; mantener atribución y compartir adaptaciones bajo la misma licencia",
+        "editorialNote": "Texto TEI de una edición histórica de Perseus, no facsímil ni nueva transcripción diplomática. Autenticidad y atribución de algunas obras transmitidas bajo el nombre del autor pueden ser debatidas.",
+        "indexedEditionClaim": false,
+        "manuscriptCollationClaim": false
+      },
+      "status": "Fuente TEI catalogada; transcripción original e indexación léxica local pendientes de incorporación y control",
+      "textStatus": "source-verified-not-indexed",
+      "publicStatus": "ficha-bibliografica",
+      "reading": {
+        "url": "https://github.com/PerseusDL/canonical-greekLit/blob/dacb04909e43dc47738828d33cc3d2b0635bc54c/data/tlg0032/tlg009/tlg0032.tlg009.perseus-grc2.xml",
+        "status": "Fuente TEI en Perseus; todavía no se incorpora como texto indexado en la biblioteca. No se declara traducción cotejada."
+      },
+      "translation": {
+        "status": "Sin versión traducida cotejada alojada para esta ficha; consultar las fuentes editoriales."
+      },
+      "links": {
+        "scaife": "https://scaife.perseus.org/",
+        "gallica": "https://gallica.bnf.fr/",
+        "archive": "https://archive.org/"
+      },
+      "description": "Ficha de obra selecta (Prosa griega: filosofía, historia y técnica). Texto original identificado en TEI; el locus CTS documenta la edición de origen. Texto TEI de una edición histórica de Perseus, no facsímil ni nueva transcripción diplomática. Autenticidad y atribución de algunas obras transmitidas bajo el nombre del autor pueden ser debatidas.",
+      "coverType": "typographic-institutional",
+      "selectionOrder": 15
+    },
+    {
+      "id": "xenophon-lacedaemonian-constitution",
+      "author": "Jenofonte",
+      "title": "Λακεδαιμονίων Πολιτεία · Constitución de los lacedemonios",
+      "titleOriginal": "Λακεδαιμονίων Πολιτεία",
+      "aliases": [
+        "Constitución de los lacedemonios",
+        "Λακεδαιμονίων Πολιτεία"
+      ],
+      "language": "grc",
+      "genre": "Prosa griega: filosofía, historia y técnica",
+      "dating": "siglo IV a. C.",
+      "collection": "obras-selectas",
+      "selectedCollection": "Obras selectas · repertorio académico",
+      "source": "Perseus Digital Library · edición TEI tlg0032.tlg010",
+      "sourceUrl": "https://github.com/PerseusDL/canonical-greekLit/blob/dacb04909e43dc47738828d33cc3d2b0635bc54c/data/tlg0032/tlg010/tlg0032.tlg010.perseus-grc2.xml",
+      "bibliography": {
+        "uniformTitle": "Λακεδαιμονίων Πολιτεία",
+        "canonicalReference": "urn:cts:greekLit:tlg0032.tlg010.perseus-grc2",
+        "workIdentifier": "tlg0032.tlg010",
+        "sourceCollection": "Perseus Digital Library · canonical-greekLit",
+        "sourceRevision": "dacb04909e43dc47738828d33cc3d2b0635bc54c",
+        "sourceCTS": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/dacb04909e43dc47738828d33cc3d2b0635bc54c/data/tlg0032/tlg010/__cts__.xml",
+        "licensing": "CC BY-SA 4.0 · Perseus Digital Library; mantener atribución y compartir adaptaciones bajo la misma licencia",
+        "editorialNote": "Texto TEI de una edición histórica de Perseus, no facsímil ni nueva transcripción diplomática. Autenticidad y atribución de algunas obras transmitidas bajo el nombre del autor pueden ser debatidas.",
+        "indexedEditionClaim": false,
+        "manuscriptCollationClaim": false
+      },
+      "status": "Fuente TEI catalogada; transcripción original e indexación léxica local pendientes de incorporación y control",
+      "textStatus": "source-verified-not-indexed",
+      "publicStatus": "ficha-bibliografica",
+      "reading": {
+        "url": "https://github.com/PerseusDL/canonical-greekLit/blob/dacb04909e43dc47738828d33cc3d2b0635bc54c/data/tlg0032/tlg010/tlg0032.tlg010.perseus-grc2.xml",
+        "status": "Fuente TEI en Perseus; todavía no se incorpora como texto indexado en la biblioteca. No se declara traducción cotejada."
+      },
+      "translation": {
+        "status": "Sin versión traducida cotejada alojada para esta ficha; consultar las fuentes editoriales."
+      },
+      "links": {
+        "scaife": "https://scaife.perseus.org/",
+        "gallica": "https://gallica.bnf.fr/",
+        "archive": "https://archive.org/"
+      },
+      "description": "Ficha de obra selecta (Prosa griega: filosofía, historia y técnica). Texto original identificado en TEI; el locus CTS documenta la edición de origen. Texto TEI de una edición histórica de Perseus, no facsímil ni nueva transcripción diplomática. Autenticidad y atribución de algunas obras transmitidas bajo el nombre del autor pueden ser debatidas.",
+      "coverType": "typographic-institutional",
+      "selectionOrder": 16
+    },
+    {
+      "id": "xenophon-ways-means",
+      "author": "Jenofonte",
+      "title": "Πόροι ἢ περὶ προσόδων · Sobre los ingresos públicos",
+      "titleOriginal": "Πόροι ἢ περὶ προσόδων",
+      "aliases": [
+        "Sobre los ingresos públicos",
+        "Πόροι ἢ περὶ προσόδων"
+      ],
+      "language": "grc",
+      "genre": "Prosa griega: filosofía, historia y técnica",
+      "dating": "siglo IV a. C.",
+      "collection": "obras-selectas",
+      "selectedCollection": "Obras selectas · repertorio académico",
+      "source": "Perseus Digital Library · edición TEI tlg0032.tlg011",
+      "sourceUrl": "https://github.com/PerseusDL/canonical-greekLit/blob/dacb04909e43dc47738828d33cc3d2b0635bc54c/data/tlg0032/tlg011/tlg0032.tlg011.perseus-grc2.xml",
+      "bibliography": {
+        "uniformTitle": "Πόροι ἢ περὶ προσόδων",
+        "canonicalReference": "urn:cts:greekLit:tlg0032.tlg011.perseus-grc2",
+        "workIdentifier": "tlg0032.tlg011",
+        "sourceCollection": "Perseus Digital Library · canonical-greekLit",
+        "sourceRevision": "dacb04909e43dc47738828d33cc3d2b0635bc54c",
+        "sourceCTS": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/dacb04909e43dc47738828d33cc3d2b0635bc54c/data/tlg0032/tlg011/__cts__.xml",
+        "licensing": "CC BY-SA 4.0 · Perseus Digital Library; mantener atribución y compartir adaptaciones bajo la misma licencia",
+        "editorialNote": "Texto TEI de una edición histórica de Perseus, no facsímil ni nueva transcripción diplomática. Autenticidad y atribución de algunas obras transmitidas bajo el nombre del autor pueden ser debatidas.",
+        "indexedEditionClaim": false,
+        "manuscriptCollationClaim": false
+      },
+      "status": "Fuente TEI catalogada; transcripción original e indexación léxica local pendientes de incorporación y control",
+      "textStatus": "source-verified-not-indexed",
+      "publicStatus": "ficha-bibliografica",
+      "reading": {
+        "url": "https://github.com/PerseusDL/canonical-greekLit/blob/dacb04909e43dc47738828d33cc3d2b0635bc54c/data/tlg0032/tlg011/tlg0032.tlg011.perseus-grc2.xml",
+        "status": "Fuente TEI en Perseus; todavía no se incorpora como texto indexado en la biblioteca. No se declara traducción cotejada."
+      },
+      "translation": {
+        "status": "Sin versión traducida cotejada alojada para esta ficha; consultar las fuentes editoriales."
+      },
+      "links": {
+        "scaife": "https://scaife.perseus.org/",
+        "gallica": "https://gallica.bnf.fr/",
+        "archive": "https://archive.org/"
+      },
+      "description": "Ficha de obra selecta (Prosa griega: filosofía, historia y técnica). Texto original identificado en TEI; el locus CTS documenta la edición de origen. Texto TEI de una edición histórica de Perseus, no facsímil ni nueva transcripción diplomática. Autenticidad y atribución de algunas obras transmitidas bajo el nombre del autor pueden ser debatidas.",
+      "coverType": "typographic-institutional",
+      "selectionOrder": 17
+    },
+    {
+      "id": "xenophon-hipparchicus",
+      "author": "Jenofonte",
+      "title": "Ἱππαρχικός · El jefe de caballería",
+      "titleOriginal": "Ἱππαρχικός",
+      "aliases": [
+        "El jefe de caballería",
+        "Ἱππαρχικός"
+      ],
+      "language": "grc",
+      "genre": "Prosa griega: filosofía, historia y técnica",
+      "dating": "siglo IV a. C.",
+      "collection": "obras-selectas",
+      "selectedCollection": "Obras selectas · repertorio académico",
+      "source": "Perseus Digital Library · edición TEI tlg0032.tlg012",
+      "sourceUrl": "https://github.com/PerseusDL/canonical-greekLit/blob/dacb04909e43dc47738828d33cc3d2b0635bc54c/data/tlg0032/tlg012/tlg0032.tlg012.perseus-grc2.xml",
+      "bibliography": {
+        "uniformTitle": "Ἱππαρχικός",
+        "canonicalReference": "urn:cts:greekLit:tlg0032.tlg012.perseus-grc2",
+        "workIdentifier": "tlg0032.tlg012",
+        "sourceCollection": "Perseus Digital Library · canonical-greekLit",
+        "sourceRevision": "dacb04909e43dc47738828d33cc3d2b0635bc54c",
+        "sourceCTS": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/dacb04909e43dc47738828d33cc3d2b0635bc54c/data/tlg0032/tlg012/__cts__.xml",
+        "licensing": "CC BY-SA 4.0 · Perseus Digital Library; mantener atribución y compartir adaptaciones bajo la misma licencia",
+        "editorialNote": "Texto TEI de una edición histórica de Perseus, no facsímil ni nueva transcripción diplomática. Autenticidad y atribución de algunas obras transmitidas bajo el nombre del autor pueden ser debatidas.",
+        "indexedEditionClaim": false,
+        "manuscriptCollationClaim": false
+      },
+      "status": "Fuente TEI catalogada; transcripción original e indexación léxica local pendientes de incorporación y control",
+      "textStatus": "source-verified-not-indexed",
+      "publicStatus": "ficha-bibliografica",
+      "reading": {
+        "url": "https://github.com/PerseusDL/canonical-greekLit/blob/dacb04909e43dc47738828d33cc3d2b0635bc54c/data/tlg0032/tlg012/tlg0032.tlg012.perseus-grc2.xml",
+        "status": "Fuente TEI en Perseus; todavía no se incorpora como texto indexado en la biblioteca. No se declara traducción cotejada."
+      },
+      "translation": {
+        "status": "Sin versión traducida cotejada alojada para esta ficha; consultar las fuentes editoriales."
+      },
+      "links": {
+        "scaife": "https://scaife.perseus.org/",
+        "gallica": "https://gallica.bnf.fr/",
+        "archive": "https://archive.org/"
+      },
+      "description": "Ficha de obra selecta (Prosa griega: filosofía, historia y técnica). Texto original identificado en TEI; el locus CTS documenta la edición de origen. Texto TEI de una edición histórica de Perseus, no facsímil ni nueva transcripción diplomática. Autenticidad y atribución de algunas obras transmitidas bajo el nombre del autor pueden ser debatidas.",
+      "coverType": "typographic-institutional",
+      "selectionOrder": 18
+    },
+    {
+      "id": "xenophon-horsemanship",
+      "author": "Jenofonte",
+      "title": "Περὶ ἱππικῆς · Sobre la equitación",
+      "titleOriginal": "Περὶ ἱππικῆς",
+      "aliases": [
+        "Sobre la equitación",
+        "Περὶ ἱππικῆς"
+      ],
+      "language": "grc",
+      "genre": "Prosa griega: filosofía, historia y técnica",
+      "dating": "siglo IV a. C.",
+      "collection": "obras-selectas",
+      "selectedCollection": "Obras selectas · repertorio académico",
+      "source": "Perseus Digital Library · edición TEI tlg0032.tlg013",
+      "sourceUrl": "https://github.com/PerseusDL/canonical-greekLit/blob/dacb04909e43dc47738828d33cc3d2b0635bc54c/data/tlg0032/tlg013/tlg0032.tlg013.perseus-grc2.xml",
+      "bibliography": {
+        "uniformTitle": "Περὶ ἱππικῆς",
+        "canonicalReference": "urn:cts:greekLit:tlg0032.tlg013.perseus-grc2",
+        "workIdentifier": "tlg0032.tlg013",
+        "sourceCollection": "Perseus Digital Library · canonical-greekLit",
+        "sourceRevision": "dacb04909e43dc47738828d33cc3d2b0635bc54c",
+        "sourceCTS": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/dacb04909e43dc47738828d33cc3d2b0635bc54c/data/tlg0032/tlg013/__cts__.xml",
+        "licensing": "CC BY-SA 4.0 · Perseus Digital Library; mantener atribución y compartir adaptaciones bajo la misma licencia",
+        "editorialNote": "Texto TEI de una edición histórica de Perseus, no facsímil ni nueva transcripción diplomática. Autenticidad y atribución de algunas obras transmitidas bajo el nombre del autor pueden ser debatidas.",
+        "indexedEditionClaim": false,
+        "manuscriptCollationClaim": false
+      },
+      "status": "Fuente TEI catalogada; transcripción original e indexación léxica local pendientes de incorporación y control",
+      "textStatus": "source-verified-not-indexed",
+      "publicStatus": "ficha-bibliografica",
+      "reading": {
+        "url": "https://github.com/PerseusDL/canonical-greekLit/blob/dacb04909e43dc47738828d33cc3d2b0635bc54c/data/tlg0032/tlg013/tlg0032.tlg013.perseus-grc2.xml",
+        "status": "Fuente TEI en Perseus; todavía no se incorpora como texto indexado en la biblioteca. No se declara traducción cotejada."
+      },
+      "translation": {
+        "status": "Sin versión traducida cotejada alojada para esta ficha; consultar las fuentes editoriales."
+      },
+      "links": {
+        "scaife": "https://scaife.perseus.org/",
+        "gallica": "https://gallica.bnf.fr/",
+        "archive": "https://archive.org/"
+      },
+      "description": "Ficha de obra selecta (Prosa griega: filosofía, historia y técnica). Texto original identificado en TEI; el locus CTS documenta la edición de origen. Texto TEI de una edición histórica de Perseus, no facsímil ni nueva transcripción diplomática. Autenticidad y atribución de algunas obras transmitidas bajo el nombre del autor pueden ser debatidas.",
+      "coverType": "typographic-institutional",
+      "selectionOrder": 19
+    },
+    {
+      "id": "xenophon-hunting",
+      "author": "Jenofonte",
+      "title": "Κυνηγετικός · Sobre la caza",
+      "titleOriginal": "Κυνηγετικός",
+      "aliases": [
+        "Sobre la caza",
+        "Κυνηγετικός"
+      ],
+      "language": "grc",
+      "genre": "Prosa griega: filosofía, historia y técnica",
+      "dating": "siglo IV a. C.",
+      "collection": "obras-selectas",
+      "selectedCollection": "Obras selectas · repertorio académico",
+      "source": "Perseus Digital Library · edición TEI tlg0032.tlg014",
+      "sourceUrl": "https://github.com/PerseusDL/canonical-greekLit/blob/dacb04909e43dc47738828d33cc3d2b0635bc54c/data/tlg0032/tlg014/tlg0032.tlg014.perseus-grc2.xml",
+      "bibliography": {
+        "uniformTitle": "Κυνηγετικός",
+        "canonicalReference": "urn:cts:greekLit:tlg0032.tlg014.perseus-grc2",
+        "workIdentifier": "tlg0032.tlg014",
+        "sourceCollection": "Perseus Digital Library · canonical-greekLit",
+        "sourceRevision": "dacb04909e43dc47738828d33cc3d2b0635bc54c",
+        "sourceCTS": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/dacb04909e43dc47738828d33cc3d2b0635bc54c/data/tlg0032/tlg014/__cts__.xml",
+        "licensing": "CC BY-SA 4.0 · Perseus Digital Library; mantener atribución y compartir adaptaciones bajo la misma licencia",
+        "editorialNote": "Texto TEI de una edición histórica de Perseus, no facsímil ni nueva transcripción diplomática. Autenticidad y atribución de algunas obras transmitidas bajo el nombre del autor pueden ser debatidas.",
+        "indexedEditionClaim": false,
+        "manuscriptCollationClaim": false
+      },
+      "status": "Fuente TEI catalogada; transcripción original e indexación léxica local pendientes de incorporación y control",
+      "textStatus": "source-verified-not-indexed",
+      "publicStatus": "ficha-bibliografica",
+      "reading": {
+        "url": "https://github.com/PerseusDL/canonical-greekLit/blob/dacb04909e43dc47738828d33cc3d2b0635bc54c/data/tlg0032/tlg014/tlg0032.tlg014.perseus-grc2.xml",
+        "status": "Fuente TEI en Perseus; todavía no se incorpora como texto indexado en la biblioteca. No se declara traducción cotejada."
+      },
+      "translation": {
+        "status": "Sin versión traducida cotejada alojada para esta ficha; consultar las fuentes editoriales."
+      },
+      "links": {
+        "scaife": "https://scaife.perseus.org/",
+        "gallica": "https://gallica.bnf.fr/",
+        "archive": "https://archive.org/"
+      },
+      "description": "Ficha de obra selecta (Prosa griega: filosofía, historia y técnica). Texto original identificado en TEI; el locus CTS documenta la edición de origen. Texto TEI de una edición histórica de Perseus, no facsímil ni nueva transcripción diplomática. Autenticidad y atribución de algunas obras transmitidas bajo el nombre del autor pueden ser debatidas.",
+      "coverType": "typographic-institutional",
+      "selectionOrder": 20
+    },
+    {
+      "id": "lucian-phalaris",
+      "author": "Luciano de Samósata",
+      "title": "Φάλαρις · Fálaris",
+      "titleOriginal": "Φάλαρις",
+      "aliases": [
+        "Fálaris",
+        "Φάλαρις"
+      ],
+      "language": "grc",
+      "genre": "Prosa satírica y diálogo",
+      "dating": "siglo II d. C.",
+      "collection": "obras-selectas",
+      "selectedCollection": "Obras selectas · repertorio académico",
+      "source": "Perseus Digital Library · edición TEI tlg0062.tlg001",
+      "sourceUrl": "https://github.com/PerseusDL/canonical-greekLit/blob/dacb04909e43dc47738828d33cc3d2b0635bc54c/data/tlg0062/tlg001/tlg0062.tlg001.perseus-grc2.xml",
+      "bibliography": {
+        "uniformTitle": "Φάλαρις",
+        "canonicalReference": "urn:cts:greekLit:tlg0062.tlg001.perseus-grc2",
+        "workIdentifier": "tlg0062.tlg001",
+        "sourceCollection": "Perseus Digital Library · canonical-greekLit",
+        "sourceRevision": "dacb04909e43dc47738828d33cc3d2b0635bc54c",
+        "sourceCTS": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/dacb04909e43dc47738828d33cc3d2b0635bc54c/data/tlg0062/tlg001/__cts__.xml",
+        "licensing": "CC BY-SA 4.0 · Perseus Digital Library; mantener atribución y compartir adaptaciones bajo la misma licencia",
+        "editorialNote": "Texto TEI de una edición histórica de Perseus, no facsímil ni nueva transcripción diplomática. Autenticidad y atribución de algunas obras transmitidas bajo el nombre del autor pueden ser debatidas.",
+        "indexedEditionClaim": false,
+        "manuscriptCollationClaim": false
+      },
+      "status": "Fuente TEI catalogada; transcripción original e indexación léxica local pendientes de incorporación y control",
+      "textStatus": "source-verified-not-indexed",
+      "publicStatus": "ficha-bibliografica",
+      "reading": {
+        "url": "https://github.com/PerseusDL/canonical-greekLit/blob/dacb04909e43dc47738828d33cc3d2b0635bc54c/data/tlg0062/tlg001/tlg0062.tlg001.perseus-grc2.xml",
+        "status": "Fuente TEI en Perseus; todavía no se incorpora como texto indexado en la biblioteca. No se declara traducción cotejada."
+      },
+      "translation": {
+        "status": "Sin versión traducida cotejada alojada para esta ficha; consultar las fuentes editoriales."
+      },
+      "links": {
+        "scaife": "https://scaife.perseus.org/",
+        "gallica": "https://gallica.bnf.fr/",
+        "archive": "https://archive.org/"
+      },
+      "description": "Ficha de obra selecta (Prosa satírica y diálogo). Texto original identificado en TEI; el locus CTS documenta la edición de origen. Texto TEI de una edición histórica de Perseus, no facsímil ni nueva transcripción diplomática. Autenticidad y atribución de algunas obras transmitidas bajo el nombre del autor pueden ser debatidas.",
+      "coverType": "typographic-institutional",
+      "selectionOrder": 21
+    },
+    {
+      "id": "lucian-hippias",
+      "author": "Luciano de Samósata",
+      "title": "Ἱππίας ἢ Βαλανεῖον · Hipias o el baño",
+      "titleOriginal": "Ἱππίας ἢ Βαλανεῖον",
+      "aliases": [
+        "Hipias o el baño",
+        "Ἱππίας ἢ Βαλανεῖον"
+      ],
+      "language": "grc",
+      "genre": "Prosa satírica y diálogo",
+      "dating": "siglo II d. C.",
+      "collection": "obras-selectas",
+      "selectedCollection": "Obras selectas · repertorio académico",
+      "source": "Perseus Digital Library · edición TEI tlg0062.tlg002",
+      "sourceUrl": "https://github.com/PerseusDL/canonical-greekLit/blob/dacb04909e43dc47738828d33cc3d2b0635bc54c/data/tlg0062/tlg002/tlg0062.tlg002.perseus-grc2.xml",
+      "bibliography": {
+        "uniformTitle": "Ἱππίας ἢ Βαλανεῖον",
+        "canonicalReference": "urn:cts:greekLit:tlg0062.tlg002.perseus-grc2",
+        "workIdentifier": "tlg0062.tlg002",
+        "sourceCollection": "Perseus Digital Library · canonical-greekLit",
+        "sourceRevision": "dacb04909e43dc47738828d33cc3d2b0635bc54c",
+        "sourceCTS": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/dacb04909e43dc47738828d33cc3d2b0635bc54c/data/tlg0062/tlg002/__cts__.xml",
+        "licensing": "CC BY-SA 4.0 · Perseus Digital Library; mantener atribución y compartir adaptaciones bajo la misma licencia",
+        "editorialNote": "Texto TEI de una edición histórica de Perseus, no facsímil ni nueva transcripción diplomática. Autenticidad y atribución de algunas obras transmitidas bajo el nombre del autor pueden ser debatidas.",
+        "indexedEditionClaim": false,
+        "manuscriptCollationClaim": false
+      },
+      "status": "Fuente TEI catalogada; transcripción original e indexación léxica local pendientes de incorporación y control",
+      "textStatus": "source-verified-not-indexed",
+      "publicStatus": "ficha-bibliografica",
+      "reading": {
+        "url": "https://github.com/PerseusDL/canonical-greekLit/blob/dacb04909e43dc47738828d33cc3d2b0635bc54c/data/tlg0062/tlg002/tlg0062.tlg002.perseus-grc2.xml",
+        "status": "Fuente TEI en Perseus; todavía no se incorpora como texto indexado en la biblioteca. No se declara traducción cotejada."
+      },
+      "translation": {
+        "status": "Sin versión traducida cotejada alojada para esta ficha; consultar las fuentes editoriales."
+      },
+      "links": {
+        "scaife": "https://scaife.perseus.org/",
+        "gallica": "https://gallica.bnf.fr/",
+        "archive": "https://archive.org/"
+      },
+      "description": "Ficha de obra selecta (Prosa satírica y diálogo). Texto original identificado en TEI; el locus CTS documenta la edición de origen. Texto TEI de una edición histórica de Perseus, no facsímil ni nueva transcripción diplomática. Autenticidad y atribución de algunas obras transmitidas bajo el nombre del autor pueden ser debatidas.",
+      "coverType": "typographic-institutional",
+      "selectionOrder": 22
+    },
+    {
+      "id": "lucian-bacchus",
+      "author": "Luciano de Samósata",
+      "title": "Προλαλιά. Διόνυσος · Dioniso",
+      "titleOriginal": "Προλαλιά. Διόνυσος",
+      "aliases": [
+        "Dioniso",
+        "Προλαλιά. Διόνυσος"
+      ],
+      "language": "grc",
+      "genre": "Prosa satírica y diálogo",
+      "dating": "siglo II d. C.",
+      "collection": "obras-selectas",
+      "selectedCollection": "Obras selectas · repertorio académico",
+      "source": "Perseus Digital Library · edición TEI tlg0062.tlg003",
+      "sourceUrl": "https://github.com/PerseusDL/canonical-greekLit/blob/dacb04909e43dc47738828d33cc3d2b0635bc54c/data/tlg0062/tlg003/tlg0062.tlg003.perseus-grc2.xml",
+      "bibliography": {
+        "uniformTitle": "Προλαλιά. Διόνυσος",
+        "canonicalReference": "urn:cts:greekLit:tlg0062.tlg003.perseus-grc2",
+        "workIdentifier": "tlg0062.tlg003",
+        "sourceCollection": "Perseus Digital Library · canonical-greekLit",
+        "sourceRevision": "dacb04909e43dc47738828d33cc3d2b0635bc54c",
+        "sourceCTS": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/dacb04909e43dc47738828d33cc3d2b0635bc54c/data/tlg0062/tlg003/__cts__.xml",
+        "licensing": "CC BY-SA 4.0 · Perseus Digital Library; mantener atribución y compartir adaptaciones bajo la misma licencia",
+        "editorialNote": "Texto TEI de una edición histórica de Perseus, no facsímil ni nueva transcripción diplomática. Autenticidad y atribución de algunas obras transmitidas bajo el nombre del autor pueden ser debatidas.",
+        "indexedEditionClaim": false,
+        "manuscriptCollationClaim": false
+      },
+      "status": "Fuente TEI catalogada; transcripción original e indexación léxica local pendientes de incorporación y control",
+      "textStatus": "source-verified-not-indexed",
+      "publicStatus": "ficha-bibliografica",
+      "reading": {
+        "url": "https://github.com/PerseusDL/canonical-greekLit/blob/dacb04909e43dc47738828d33cc3d2b0635bc54c/data/tlg0062/tlg003/tlg0062.tlg003.perseus-grc2.xml",
+        "status": "Fuente TEI en Perseus; todavía no se incorpora como texto indexado en la biblioteca. No se declara traducción cotejada."
+      },
+      "translation": {
+        "status": "Sin versión traducida cotejada alojada para esta ficha; consultar las fuentes editoriales."
+      },
+      "links": {
+        "scaife": "https://scaife.perseus.org/",
+        "gallica": "https://gallica.bnf.fr/",
+        "archive": "https://archive.org/"
+      },
+      "description": "Ficha de obra selecta (Prosa satírica y diálogo). Texto original identificado en TEI; el locus CTS documenta la edición de origen. Texto TEI de una edición histórica de Perseus, no facsímil ni nueva transcripción diplomática. Autenticidad y atribución de algunas obras transmitidas bajo el nombre del autor pueden ser debatidas.",
+      "coverType": "typographic-institutional",
+      "selectionOrder": 23
+    },
+    {
+      "id": "lucian-hercules",
+      "author": "Luciano de Samósata",
+      "title": "Προλαλιά. Ἡρακλῆς · Heracles",
+      "titleOriginal": "Προλαλιά. Ἡρακλῆς",
+      "aliases": [
+        "Heracles",
+        "Προλαλιά. Ἡρακλῆς"
+      ],
+      "language": "grc",
+      "genre": "Prosa satírica y diálogo",
+      "dating": "siglo II d. C.",
+      "collection": "obras-selectas",
+      "selectedCollection": "Obras selectas · repertorio académico",
+      "source": "Perseus Digital Library · edición TEI tlg0062.tlg004",
+      "sourceUrl": "https://github.com/PerseusDL/canonical-greekLit/blob/dacb04909e43dc47738828d33cc3d2b0635bc54c/data/tlg0062/tlg004/tlg0062.tlg004.perseus-grc2.xml",
+      "bibliography": {
+        "uniformTitle": "Προλαλιά. Ἡρακλῆς",
+        "canonicalReference": "urn:cts:greekLit:tlg0062.tlg004.perseus-grc2",
+        "workIdentifier": "tlg0062.tlg004",
+        "sourceCollection": "Perseus Digital Library · canonical-greekLit",
+        "sourceRevision": "dacb04909e43dc47738828d33cc3d2b0635bc54c",
+        "sourceCTS": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/dacb04909e43dc47738828d33cc3d2b0635bc54c/data/tlg0062/tlg004/__cts__.xml",
+        "licensing": "CC BY-SA 4.0 · Perseus Digital Library; mantener atribución y compartir adaptaciones bajo la misma licencia",
+        "editorialNote": "Texto TEI de una edición histórica de Perseus, no facsímil ni nueva transcripción diplomática. Autenticidad y atribución de algunas obras transmitidas bajo el nombre del autor pueden ser debatidas.",
+        "indexedEditionClaim": false,
+        "manuscriptCollationClaim": false
+      },
+      "status": "Fuente TEI catalogada; transcripción original e indexación léxica local pendientes de incorporación y control",
+      "textStatus": "source-verified-not-indexed",
+      "publicStatus": "ficha-bibliografica",
+      "reading": {
+        "url": "https://github.com/PerseusDL/canonical-greekLit/blob/dacb04909e43dc47738828d33cc3d2b0635bc54c/data/tlg0062/tlg004/tlg0062.tlg004.perseus-grc2.xml",
+        "status": "Fuente TEI en Perseus; todavía no se incorpora como texto indexado en la biblioteca. No se declara traducción cotejada."
+      },
+      "translation": {
+        "status": "Sin versión traducida cotejada alojada para esta ficha; consultar las fuentes editoriales."
+      },
+      "links": {
+        "scaife": "https://scaife.perseus.org/",
+        "gallica": "https://gallica.bnf.fr/",
+        "archive": "https://archive.org/"
+      },
+      "description": "Ficha de obra selecta (Prosa satírica y diálogo). Texto original identificado en TEI; el locus CTS documenta la edición de origen. Texto TEI de una edición histórica de Perseus, no facsímil ni nueva transcripción diplomática. Autenticidad y atribución de algunas obras transmitidas bajo el nombre del autor pueden ser debatidas.",
+      "coverType": "typographic-institutional",
+      "selectionOrder": 24
+    },
+    {
+      "id": "lucian-electrum",
+      "author": "Luciano de Samósata",
+      "title": "Περὶ τοῦ Ἡλέκτρου ἢ Κύκνων · El ámbar o los cisnes",
+      "titleOriginal": "Περὶ τοῦ Ἡλέκτρου ἢ Κύκνων",
+      "aliases": [
+        "El ámbar o los cisnes",
+        "Περὶ τοῦ Ἡλέκτρου ἢ Κύκνων"
+      ],
+      "language": "grc",
+      "genre": "Prosa satírica y diálogo",
+      "dating": "siglo II d. C.",
+      "collection": "obras-selectas",
+      "selectedCollection": "Obras selectas · repertorio académico",
+      "source": "Perseus Digital Library · edición TEI tlg0062.tlg005",
+      "sourceUrl": "https://github.com/PerseusDL/canonical-greekLit/blob/dacb04909e43dc47738828d33cc3d2b0635bc54c/data/tlg0062/tlg005/tlg0062.tlg005.perseus-grc2.xml",
+      "bibliography": {
+        "uniformTitle": "Περὶ τοῦ Ἡλέκτρου ἢ Κύκνων",
+        "canonicalReference": "urn:cts:greekLit:tlg0062.tlg005.perseus-grc2",
+        "workIdentifier": "tlg0062.tlg005",
+        "sourceCollection": "Perseus Digital Library · canonical-greekLit",
+        "sourceRevision": "dacb04909e43dc47738828d33cc3d2b0635bc54c",
+        "sourceCTS": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/dacb04909e43dc47738828d33cc3d2b0635bc54c/data/tlg0062/tlg005/__cts__.xml",
+        "licensing": "CC BY-SA 4.0 · Perseus Digital Library; mantener atribución y compartir adaptaciones bajo la misma licencia",
+        "editorialNote": "Texto TEI de una edición histórica de Perseus, no facsímil ni nueva transcripción diplomática. Autenticidad y atribución de algunas obras transmitidas bajo el nombre del autor pueden ser debatidas.",
+        "indexedEditionClaim": false,
+        "manuscriptCollationClaim": false
+      },
+      "status": "Fuente TEI catalogada; transcripción original e indexación léxica local pendientes de incorporación y control",
+      "textStatus": "source-verified-not-indexed",
+      "publicStatus": "ficha-bibliografica",
+      "reading": {
+        "url": "https://github.com/PerseusDL/canonical-greekLit/blob/dacb04909e43dc47738828d33cc3d2b0635bc54c/data/tlg0062/tlg005/tlg0062.tlg005.perseus-grc2.xml",
+        "status": "Fuente TEI en Perseus; todavía no se incorpora como texto indexado en la biblioteca. No se declara traducción cotejada."
+      },
+      "translation": {
+        "status": "Sin versión traducida cotejada alojada para esta ficha; consultar las fuentes editoriales."
+      },
+      "links": {
+        "scaife": "https://scaife.perseus.org/",
+        "gallica": "https://gallica.bnf.fr/",
+        "archive": "https://archive.org/"
+      },
+      "description": "Ficha de obra selecta (Prosa satírica y diálogo). Texto original identificado en TEI; el locus CTS documenta la edición de origen. Texto TEI de una edición histórica de Perseus, no facsímil ni nueva transcripción diplomática. Autenticidad y atribución de algunas obras transmitidas bajo el nombre del autor pueden ser debatidas.",
+      "coverType": "typographic-institutional",
+      "selectionOrder": 25
+    },
+    {
+      "id": "lucian-encomium-fly",
+      "author": "Luciano de Samósata",
+      "title": "Μυίας Ἐγκώμιον · Elogio de la mosca",
+      "titleOriginal": "Μυίας Ἐγκώμιον",
+      "aliases": [
+        "Elogio de la mosca",
+        "Μυίας Ἐγκώμιον"
+      ],
+      "language": "grc",
+      "genre": "Prosa satírica y diálogo",
+      "dating": "siglo II d. C.",
+      "collection": "obras-selectas",
+      "selectedCollection": "Obras selectas · repertorio académico",
+      "source": "Perseus Digital Library · edición TEI tlg0062.tlg006",
+      "sourceUrl": "https://github.com/PerseusDL/canonical-greekLit/blob/dacb04909e43dc47738828d33cc3d2b0635bc54c/data/tlg0062/tlg006/tlg0062.tlg006.perseus-grc2.xml",
+      "bibliography": {
+        "uniformTitle": "Μυίας Ἐγκώμιον",
+        "canonicalReference": "urn:cts:greekLit:tlg0062.tlg006.perseus-grc2",
+        "workIdentifier": "tlg0062.tlg006",
+        "sourceCollection": "Perseus Digital Library · canonical-greekLit",
+        "sourceRevision": "dacb04909e43dc47738828d33cc3d2b0635bc54c",
+        "sourceCTS": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/dacb04909e43dc47738828d33cc3d2b0635bc54c/data/tlg0062/tlg006/__cts__.xml",
+        "licensing": "CC BY-SA 4.0 · Perseus Digital Library; mantener atribución y compartir adaptaciones bajo la misma licencia",
+        "editorialNote": "Texto TEI de una edición histórica de Perseus, no facsímil ni nueva transcripción diplomática. Autenticidad y atribución de algunas obras transmitidas bajo el nombre del autor pueden ser debatidas.",
+        "indexedEditionClaim": false,
+        "manuscriptCollationClaim": false
+      },
+      "status": "Fuente TEI catalogada; transcripción original e indexación léxica local pendientes de incorporación y control",
+      "textStatus": "source-verified-not-indexed",
+      "publicStatus": "ficha-bibliografica",
+      "reading": {
+        "url": "https://github.com/PerseusDL/canonical-greekLit/blob/dacb04909e43dc47738828d33cc3d2b0635bc54c/data/tlg0062/tlg006/tlg0062.tlg006.perseus-grc2.xml",
+        "status": "Fuente TEI en Perseus; todavía no se incorpora como texto indexado en la biblioteca. No se declara traducción cotejada."
+      },
+      "translation": {
+        "status": "Sin versión traducida cotejada alojada para esta ficha; consultar las fuentes editoriales."
+      },
+      "links": {
+        "scaife": "https://scaife.perseus.org/",
+        "gallica": "https://gallica.bnf.fr/",
+        "archive": "https://archive.org/"
+      },
+      "description": "Ficha de obra selecta (Prosa satírica y diálogo). Texto original identificado en TEI; el locus CTS documenta la edición de origen. Texto TEI de una edición histórica de Perseus, no facsímil ni nueva transcripción diplomática. Autenticidad y atribución de algunas obras transmitidas bajo el nombre del autor pueden ser debatidas.",
+      "coverType": "typographic-institutional",
+      "selectionOrder": 26
+    },
+    {
+      "id": "lucian-nigrinus",
+      "author": "Luciano de Samósata",
+      "title": "Νιγρίνου Φιλοσοφία · Nigrino",
+      "titleOriginal": "Νιγρίνου Φιλοσοφία",
+      "aliases": [
+        "Nigrino",
+        "Νιγρίνου Φιλοσοφία"
+      ],
+      "language": "grc",
+      "genre": "Prosa satírica y diálogo",
+      "dating": "siglo II d. C.",
+      "collection": "obras-selectas",
+      "selectedCollection": "Obras selectas · repertorio académico",
+      "source": "Perseus Digital Library · edición TEI tlg0062.tlg007",
+      "sourceUrl": "https://github.com/PerseusDL/canonical-greekLit/blob/dacb04909e43dc47738828d33cc3d2b0635bc54c/data/tlg0062/tlg007/tlg0062.tlg007.perseus-grc2.xml",
+      "bibliography": {
+        "uniformTitle": "Νιγρίνου Φιλοσοφία",
+        "canonicalReference": "urn:cts:greekLit:tlg0062.tlg007.perseus-grc2",
+        "workIdentifier": "tlg0062.tlg007",
+        "sourceCollection": "Perseus Digital Library · canonical-greekLit",
+        "sourceRevision": "dacb04909e43dc47738828d33cc3d2b0635bc54c",
+        "sourceCTS": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/dacb04909e43dc47738828d33cc3d2b0635bc54c/data/tlg0062/tlg007/__cts__.xml",
+        "licensing": "CC BY-SA 4.0 · Perseus Digital Library; mantener atribución y compartir adaptaciones bajo la misma licencia",
+        "editorialNote": "Texto TEI de una edición histórica de Perseus, no facsímil ni nueva transcripción diplomática. Autenticidad y atribución de algunas obras transmitidas bajo el nombre del autor pueden ser debatidas.",
+        "indexedEditionClaim": false,
+        "manuscriptCollationClaim": false
+      },
+      "status": "Fuente TEI catalogada; transcripción original e indexación léxica local pendientes de incorporación y control",
+      "textStatus": "source-verified-not-indexed",
+      "publicStatus": "ficha-bibliografica",
+      "reading": {
+        "url": "https://github.com/PerseusDL/canonical-greekLit/blob/dacb04909e43dc47738828d33cc3d2b0635bc54c/data/tlg0062/tlg007/tlg0062.tlg007.perseus-grc2.xml",
+        "status": "Fuente TEI en Perseus; todavía no se incorpora como texto indexado en la biblioteca. No se declara traducción cotejada."
+      },
+      "translation": {
+        "status": "Sin versión traducida cotejada alojada para esta ficha; consultar las fuentes editoriales."
+      },
+      "links": {
+        "scaife": "https://scaife.perseus.org/",
+        "gallica": "https://gallica.bnf.fr/",
+        "archive": "https://archive.org/"
+      },
+      "description": "Ficha de obra selecta (Prosa satírica y diálogo). Texto original identificado en TEI; el locus CTS documenta la edición de origen. Texto TEI de una edición histórica de Perseus, no facsímil ni nueva transcripción diplomática. Autenticidad y atribución de algunas obras transmitidas bajo el nombre del autor pueden ser debatidas.",
+      "coverType": "typographic-institutional",
+      "selectionOrder": 27
+    },
+    {
+      "id": "lucian-demonax",
+      "author": "Luciano de Samósata",
+      "title": "Δημώνακτος Βίος · Vida de Demonacte",
+      "titleOriginal": "Δημώνακτος Βίος",
+      "aliases": [
+        "Vida de Demonacte",
+        "Δημώνακτος Βίος"
+      ],
+      "language": "grc",
+      "genre": "Prosa satírica y diálogo",
+      "dating": "siglo II d. C.",
+      "collection": "obras-selectas",
+      "selectedCollection": "Obras selectas · repertorio académico",
+      "source": "Perseus Digital Library · edición TEI tlg0062.tlg008",
+      "sourceUrl": "https://github.com/PerseusDL/canonical-greekLit/blob/dacb04909e43dc47738828d33cc3d2b0635bc54c/data/tlg0062/tlg008/tlg0062.tlg008.perseus-grc2.xml",
+      "bibliography": {
+        "uniformTitle": "Δημώνακτος Βίος",
+        "canonicalReference": "urn:cts:greekLit:tlg0062.tlg008.perseus-grc2",
+        "workIdentifier": "tlg0062.tlg008",
+        "sourceCollection": "Perseus Digital Library · canonical-greekLit",
+        "sourceRevision": "dacb04909e43dc47738828d33cc3d2b0635bc54c",
+        "sourceCTS": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/dacb04909e43dc47738828d33cc3d2b0635bc54c/data/tlg0062/tlg008/__cts__.xml",
+        "licensing": "CC BY-SA 4.0 · Perseus Digital Library; mantener atribución y compartir adaptaciones bajo la misma licencia",
+        "editorialNote": "Texto TEI de una edición histórica de Perseus, no facsímil ni nueva transcripción diplomática. Autenticidad y atribución de algunas obras transmitidas bajo el nombre del autor pueden ser debatidas.",
+        "indexedEditionClaim": false,
+        "manuscriptCollationClaim": false
+      },
+      "status": "Fuente TEI catalogada; transcripción original e indexación léxica local pendientes de incorporación y control",
+      "textStatus": "source-verified-not-indexed",
+      "publicStatus": "ficha-bibliografica",
+      "reading": {
+        "url": "https://github.com/PerseusDL/canonical-greekLit/blob/dacb04909e43dc47738828d33cc3d2b0635bc54c/data/tlg0062/tlg008/tlg0062.tlg008.perseus-grc2.xml",
+        "status": "Fuente TEI en Perseus; todavía no se incorpora como texto indexado en la biblioteca. No se declara traducción cotejada."
+      },
+      "translation": {
+        "status": "Sin versión traducida cotejada alojada para esta ficha; consultar las fuentes editoriales."
+      },
+      "links": {
+        "scaife": "https://scaife.perseus.org/",
+        "gallica": "https://gallica.bnf.fr/",
+        "archive": "https://archive.org/"
+      },
+      "description": "Ficha de obra selecta (Prosa satírica y diálogo). Texto original identificado en TEI; el locus CTS documenta la edición de origen. Texto TEI de una edición histórica de Perseus, no facsímil ni nueva transcripción diplomática. Autenticidad y atribución de algunas obras transmitidas bajo el nombre del autor pueden ser debatidas.",
+      "coverType": "typographic-institutional",
+      "selectionOrder": 28
+    },
+    {
+      "id": "lucian-de-domo",
+      "author": "Luciano de Samósata",
+      "title": "Περὶ τοῦ Οἴκου · Sobre la sala",
+      "titleOriginal": "Περὶ τοῦ Οἴκου",
+      "aliases": [
+        "Sobre la sala",
+        "Περὶ τοῦ Οἴκου"
+      ],
+      "language": "grc",
+      "genre": "Prosa satírica y diálogo",
+      "dating": "siglo II d. C.",
+      "collection": "obras-selectas",
+      "selectedCollection": "Obras selectas · repertorio académico",
+      "source": "Perseus Digital Library · edición TEI tlg0062.tlg009",
+      "sourceUrl": "https://github.com/PerseusDL/canonical-greekLit/blob/dacb04909e43dc47738828d33cc3d2b0635bc54c/data/tlg0062/tlg009/tlg0062.tlg009.perseus-grc2.xml",
+      "bibliography": {
+        "uniformTitle": "Περὶ τοῦ Οἴκου",
+        "canonicalReference": "urn:cts:greekLit:tlg0062.tlg009.perseus-grc2",
+        "workIdentifier": "tlg0062.tlg009",
+        "sourceCollection": "Perseus Digital Library · canonical-greekLit",
+        "sourceRevision": "dacb04909e43dc47738828d33cc3d2b0635bc54c",
+        "sourceCTS": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/dacb04909e43dc47738828d33cc3d2b0635bc54c/data/tlg0062/tlg009/__cts__.xml",
+        "licensing": "CC BY-SA 4.0 · Perseus Digital Library; mantener atribución y compartir adaptaciones bajo la misma licencia",
+        "editorialNote": "Texto TEI de una edición histórica de Perseus, no facsímil ni nueva transcripción diplomática. Autenticidad y atribución de algunas obras transmitidas bajo el nombre del autor pueden ser debatidas.",
+        "indexedEditionClaim": false,
+        "manuscriptCollationClaim": false
+      },
+      "status": "Fuente TEI catalogada; transcripción original e indexación léxica local pendientes de incorporación y control",
+      "textStatus": "source-verified-not-indexed",
+      "publicStatus": "ficha-bibliografica",
+      "reading": {
+        "url": "https://github.com/PerseusDL/canonical-greekLit/blob/dacb04909e43dc47738828d33cc3d2b0635bc54c/data/tlg0062/tlg009/tlg0062.tlg009.perseus-grc2.xml",
+        "status": "Fuente TEI en Perseus; todavía no se incorpora como texto indexado en la biblioteca. No se declara traducción cotejada."
+      },
+      "translation": {
+        "status": "Sin versión traducida cotejada alojada para esta ficha; consultar las fuentes editoriales."
+      },
+      "links": {
+        "scaife": "https://scaife.perseus.org/",
+        "gallica": "https://gallica.bnf.fr/",
+        "archive": "https://archive.org/"
+      },
+      "description": "Ficha de obra selecta (Prosa satírica y diálogo). Texto original identificado en TEI; el locus CTS documenta la edición de origen. Texto TEI de una edición histórica de Perseus, no facsímil ni nueva transcripción diplomática. Autenticidad y atribución de algunas obras transmitidas bajo el nombre del autor pueden ser debatidas.",
+      "coverType": "typographic-institutional",
+      "selectionOrder": 29
+    },
+    {
+      "id": "lucian-encomium-fatherland",
+      "author": "Luciano de Samósata",
+      "title": "Πατρίδος Ἐγκώμιον · Elogio de la patria",
+      "titleOriginal": "Πατρίδος Ἐγκώμιον",
+      "aliases": [
+        "Elogio de la patria",
+        "Πατρίδος Ἐγκώμιον"
+      ],
+      "language": "grc",
+      "genre": "Prosa satírica y diálogo",
+      "dating": "siglo II d. C.",
+      "collection": "obras-selectas",
+      "selectedCollection": "Obras selectas · repertorio académico",
+      "source": "Perseus Digital Library · edición TEI tlg0062.tlg010",
+      "sourceUrl": "https://github.com/PerseusDL/canonical-greekLit/blob/dacb04909e43dc47738828d33cc3d2b0635bc54c/data/tlg0062/tlg010/tlg0062.tlg010.perseus-grc2.xml",
+      "bibliography": {
+        "uniformTitle": "Πατρίδος Ἐγκώμιον",
+        "canonicalReference": "urn:cts:greekLit:tlg0062.tlg010.perseus-grc2",
+        "workIdentifier": "tlg0062.tlg010",
+        "sourceCollection": "Perseus Digital Library · canonical-greekLit",
+        "sourceRevision": "dacb04909e43dc47738828d33cc3d2b0635bc54c",
+        "sourceCTS": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/dacb04909e43dc47738828d33cc3d2b0635bc54c/data/tlg0062/tlg010/__cts__.xml",
+        "licensing": "CC BY-SA 4.0 · Perseus Digital Library; mantener atribución y compartir adaptaciones bajo la misma licencia",
+        "editorialNote": "Texto TEI de una edición histórica de Perseus, no facsímil ni nueva transcripción diplomática. Autenticidad y atribución de algunas obras transmitidas bajo el nombre del autor pueden ser debatidas.",
+        "indexedEditionClaim": false,
+        "manuscriptCollationClaim": false
+      },
+      "status": "Fuente TEI catalogada; transcripción original e indexación léxica local pendientes de incorporación y control",
+      "textStatus": "source-verified-not-indexed",
+      "publicStatus": "ficha-bibliografica",
+      "reading": {
+        "url": "https://github.com/PerseusDL/canonical-greekLit/blob/dacb04909e43dc47738828d33cc3d2b0635bc54c/data/tlg0062/tlg010/tlg0062.tlg010.perseus-grc2.xml",
+        "status": "Fuente TEI en Perseus; todavía no se incorpora como texto indexado en la biblioteca. No se declara traducción cotejada."
+      },
+      "translation": {
+        "status": "Sin versión traducida cotejada alojada para esta ficha; consultar las fuentes editoriales."
+      },
+      "links": {
+        "scaife": "https://scaife.perseus.org/",
+        "gallica": "https://gallica.bnf.fr/",
+        "archive": "https://archive.org/"
+      },
+      "description": "Ficha de obra selecta (Prosa satírica y diálogo). Texto original identificado en TEI; el locus CTS documenta la edición de origen. Texto TEI de una edición histórica de Perseus, no facsímil ni nueva transcripción diplomática. Autenticidad y atribución de algunas obras transmitidas bajo el nombre del autor pueden ser debatidas.",
+      "coverType": "typographic-institutional",
+      "selectionOrder": 30
+    },
+    {
+      "id": "lysias-eratosthenes",
+      "author": "Lisias",
+      "title": "ὑπὲρ τοῦ Ἐρατοσθένους φόνου ἀπολογία · Sobre el asesinato de Eratóstenes",
+      "titleOriginal": "ὑπὲρ τοῦ Ἐρατοσθένους φόνου ἀπολογία",
+      "aliases": [
+        "Sobre el asesinato de Eratóstenes",
+        "ὑπὲρ τοῦ Ἐρατοσθένους φόνου ἀπολογία"
+      ],
+      "language": "grc",
+      "genre": "Oratoria judicial y política ática",
+      "dating": "siglos V–IV a. C.",
+      "collection": "obras-selectas",
+      "selectedCollection": "Obras selectas · repertorio académico",
+      "source": "Perseus Digital Library · edición TEI tlg0540.tlg001",
+      "sourceUrl": "https://github.com/PerseusDL/canonical-greekLit/blob/dacb04909e43dc47738828d33cc3d2b0635bc54c/data/tlg0540/tlg001/tlg0540.tlg001.perseus-grc2.xml",
+      "bibliography": {
+        "uniformTitle": "ὑπὲρ τοῦ Ἐρατοσθένους φόνου ἀπολογία",
+        "canonicalReference": "urn:cts:greekLit:tlg0540.tlg001.perseus-grc2",
+        "workIdentifier": "tlg0540.tlg001",
+        "sourceCollection": "Perseus Digital Library · canonical-greekLit",
+        "sourceRevision": "dacb04909e43dc47738828d33cc3d2b0635bc54c",
+        "sourceCTS": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/dacb04909e43dc47738828d33cc3d2b0635bc54c/data/tlg0540/tlg001/__cts__.xml",
+        "licensing": "CC BY-SA 4.0 · Perseus Digital Library; mantener atribución y compartir adaptaciones bajo la misma licencia",
+        "editorialNote": "Texto TEI de una edición histórica de Perseus, no facsímil ni nueva transcripción diplomática. Autenticidad y atribución de algunas obras transmitidas bajo el nombre del autor pueden ser debatidas.",
+        "indexedEditionClaim": false,
+        "manuscriptCollationClaim": false
+      },
+      "status": "Fuente TEI catalogada; transcripción original e indexación léxica local pendientes de incorporación y control",
+      "textStatus": "source-verified-not-indexed",
+      "publicStatus": "ficha-bibliografica",
+      "reading": {
+        "url": "https://github.com/PerseusDL/canonical-greekLit/blob/dacb04909e43dc47738828d33cc3d2b0635bc54c/data/tlg0540/tlg001/tlg0540.tlg001.perseus-grc2.xml",
+        "status": "Fuente TEI en Perseus; todavía no se incorpora como texto indexado en la biblioteca. No se declara traducción cotejada."
+      },
+      "translation": {
+        "status": "Sin versión traducida cotejada alojada para esta ficha; consultar las fuentes editoriales."
+      },
+      "links": {
+        "scaife": "https://scaife.perseus.org/",
+        "gallica": "https://gallica.bnf.fr/",
+        "archive": "https://archive.org/"
+      },
+      "description": "Ficha de obra selecta (Oratoria judicial y política ática). Texto original identificado en TEI; el locus CTS documenta la edición de origen. Texto TEI de una edición histórica de Perseus, no facsímil ni nueva transcripción diplomática. Autenticidad y atribución de algunas obras transmitidas bajo el nombre del autor pueden ser debatidas.",
+      "coverType": "typographic-institutional",
+      "selectionOrder": 31
+    },
+    {
+      "id": "lysias-funeral-oration",
+      "author": "Lisias",
+      "title": "Ἐπιτάφιος τοῖς Κορινθίων βοηθοῖς · Discurso fúnebre",
+      "titleOriginal": "Ἐπιτάφιος τοῖς Κορινθίων βοηθοῖς",
+      "aliases": [
+        "Discurso fúnebre",
+        "Ἐπιτάφιος τοῖς Κορινθίων βοηθοῖς"
+      ],
+      "language": "grc",
+      "genre": "Oratoria judicial y política ática",
+      "dating": "siglos V–IV a. C.",
+      "collection": "obras-selectas",
+      "selectedCollection": "Obras selectas · repertorio académico",
+      "source": "Perseus Digital Library · edición TEI tlg0540.tlg002",
+      "sourceUrl": "https://github.com/PerseusDL/canonical-greekLit/blob/dacb04909e43dc47738828d33cc3d2b0635bc54c/data/tlg0540/tlg002/tlg0540.tlg002.perseus-grc2.xml",
+      "bibliography": {
+        "uniformTitle": "Ἐπιτάφιος τοῖς Κορινθίων βοηθοῖς",
+        "canonicalReference": "urn:cts:greekLit:tlg0540.tlg002.perseus-grc2",
+        "workIdentifier": "tlg0540.tlg002",
+        "sourceCollection": "Perseus Digital Library · canonical-greekLit",
+        "sourceRevision": "dacb04909e43dc47738828d33cc3d2b0635bc54c",
+        "sourceCTS": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/dacb04909e43dc47738828d33cc3d2b0635bc54c/data/tlg0540/tlg002/__cts__.xml",
+        "licensing": "CC BY-SA 4.0 · Perseus Digital Library; mantener atribución y compartir adaptaciones bajo la misma licencia",
+        "editorialNote": "Texto TEI de una edición histórica de Perseus, no facsímil ni nueva transcripción diplomática. Autenticidad y atribución de algunas obras transmitidas bajo el nombre del autor pueden ser debatidas.",
+        "indexedEditionClaim": false,
+        "manuscriptCollationClaim": false
+      },
+      "status": "Fuente TEI catalogada; transcripción original e indexación léxica local pendientes de incorporación y control",
+      "textStatus": "source-verified-not-indexed",
+      "publicStatus": "ficha-bibliografica",
+      "reading": {
+        "url": "https://github.com/PerseusDL/canonical-greekLit/blob/dacb04909e43dc47738828d33cc3d2b0635bc54c/data/tlg0540/tlg002/tlg0540.tlg002.perseus-grc2.xml",
+        "status": "Fuente TEI en Perseus; todavía no se incorpora como texto indexado en la biblioteca. No se declara traducción cotejada."
+      },
+      "translation": {
+        "status": "Sin versión traducida cotejada alojada para esta ficha; consultar las fuentes editoriales."
+      },
+      "links": {
+        "scaife": "https://scaife.perseus.org/",
+        "gallica": "https://gallica.bnf.fr/",
+        "archive": "https://archive.org/"
+      },
+      "description": "Ficha de obra selecta (Oratoria judicial y política ática). Texto original identificado en TEI; el locus CTS documenta la edición de origen. Texto TEI de una edición histórica de Perseus, no facsímil ni nueva transcripción diplomática. Autenticidad y atribución de algunas obras transmitidas bajo el nombre del autor pueden ser debatidas.",
+      "coverType": "typographic-institutional",
+      "selectionOrder": 32
+    },
+    {
+      "id": "lysias-against-simon",
+      "author": "Lisias",
+      "title": "πρὸς Σίμωνα ἀπολογία · Contra Simón",
+      "titleOriginal": "πρὸς Σίμωνα ἀπολογία",
+      "aliases": [
+        "Contra Simón",
+        "πρὸς Σίμωνα ἀπολογία"
+      ],
+      "language": "grc",
+      "genre": "Oratoria judicial y política ática",
+      "dating": "siglos V–IV a. C.",
+      "collection": "obras-selectas",
+      "selectedCollection": "Obras selectas · repertorio académico",
+      "source": "Perseus Digital Library · edición TEI tlg0540.tlg003",
+      "sourceUrl": "https://github.com/PerseusDL/canonical-greekLit/blob/dacb04909e43dc47738828d33cc3d2b0635bc54c/data/tlg0540/tlg003/tlg0540.tlg003.perseus-grc2.xml",
+      "bibliography": {
+        "uniformTitle": "πρὸς Σίμωνα ἀπολογία",
+        "canonicalReference": "urn:cts:greekLit:tlg0540.tlg003.perseus-grc2",
+        "workIdentifier": "tlg0540.tlg003",
+        "sourceCollection": "Perseus Digital Library · canonical-greekLit",
+        "sourceRevision": "dacb04909e43dc47738828d33cc3d2b0635bc54c",
+        "sourceCTS": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/dacb04909e43dc47738828d33cc3d2b0635bc54c/data/tlg0540/tlg003/__cts__.xml",
+        "licensing": "CC BY-SA 4.0 · Perseus Digital Library; mantener atribución y compartir adaptaciones bajo la misma licencia",
+        "editorialNote": "Texto TEI de una edición histórica de Perseus, no facsímil ni nueva transcripción diplomática. Autenticidad y atribución de algunas obras transmitidas bajo el nombre del autor pueden ser debatidas.",
+        "indexedEditionClaim": false,
+        "manuscriptCollationClaim": false
+      },
+      "status": "Fuente TEI catalogada; transcripción original e indexación léxica local pendientes de incorporación y control",
+      "textStatus": "source-verified-not-indexed",
+      "publicStatus": "ficha-bibliografica",
+      "reading": {
+        "url": "https://github.com/PerseusDL/canonical-greekLit/blob/dacb04909e43dc47738828d33cc3d2b0635bc54c/data/tlg0540/tlg003/tlg0540.tlg003.perseus-grc2.xml",
+        "status": "Fuente TEI en Perseus; todavía no se incorpora como texto indexado en la biblioteca. No se declara traducción cotejada."
+      },
+      "translation": {
+        "status": "Sin versión traducida cotejada alojada para esta ficha; consultar las fuentes editoriales."
+      },
+      "links": {
+        "scaife": "https://scaife.perseus.org/",
+        "gallica": "https://gallica.bnf.fr/",
+        "archive": "https://archive.org/"
+      },
+      "description": "Ficha de obra selecta (Oratoria judicial y política ática). Texto original identificado en TEI; el locus CTS documenta la edición de origen. Texto TEI de una edición histórica de Perseus, no facsímil ni nueva transcripción diplomática. Autenticidad y atribución de algunas obras transmitidas bajo el nombre del autor pueden ser debatidas.",
+      "coverType": "typographic-institutional",
+      "selectionOrder": 33
+    },
+    {
+      "id": "lysias-wound",
+      "author": "Lisias",
+      "title": "περὶ τραύματος ἐκ προνοίας · Sobre una herida premeditada",
+      "titleOriginal": "περὶ τραύματος ἐκ προνοίας",
+      "aliases": [
+        "Sobre una herida premeditada",
+        "περὶ τραύματος ἐκ προνοίας"
+      ],
+      "language": "grc",
+      "genre": "Oratoria judicial y política ática",
+      "dating": "siglos V–IV a. C.",
+      "collection": "obras-selectas",
+      "selectedCollection": "Obras selectas · repertorio académico",
+      "source": "Perseus Digital Library · edición TEI tlg0540.tlg004",
+      "sourceUrl": "https://github.com/PerseusDL/canonical-greekLit/blob/dacb04909e43dc47738828d33cc3d2b0635bc54c/data/tlg0540/tlg004/tlg0540.tlg004.perseus-grc2.xml",
+      "bibliography": {
+        "uniformTitle": "περὶ τραύματος ἐκ προνοίας",
+        "canonicalReference": "urn:cts:greekLit:tlg0540.tlg004.perseus-grc2",
+        "workIdentifier": "tlg0540.tlg004",
+        "sourceCollection": "Perseus Digital Library · canonical-greekLit",
+        "sourceRevision": "dacb04909e43dc47738828d33cc3d2b0635bc54c",
+        "sourceCTS": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/dacb04909e43dc47738828d33cc3d2b0635bc54c/data/tlg0540/tlg004/__cts__.xml",
+        "licensing": "CC BY-SA 4.0 · Perseus Digital Library; mantener atribución y compartir adaptaciones bajo la misma licencia",
+        "editorialNote": "Texto TEI de una edición histórica de Perseus, no facsímil ni nueva transcripción diplomática. Autenticidad y atribución de algunas obras transmitidas bajo el nombre del autor pueden ser debatidas.",
+        "indexedEditionClaim": false,
+        "manuscriptCollationClaim": false
+      },
+      "status": "Fuente TEI catalogada; transcripción original e indexación léxica local pendientes de incorporación y control",
+      "textStatus": "source-verified-not-indexed",
+      "publicStatus": "ficha-bibliografica",
+      "reading": {
+        "url": "https://github.com/PerseusDL/canonical-greekLit/blob/dacb04909e43dc47738828d33cc3d2b0635bc54c/data/tlg0540/tlg004/tlg0540.tlg004.perseus-grc2.xml",
+        "status": "Fuente TEI en Perseus; todavía no se incorpora como texto indexado en la biblioteca. No se declara traducción cotejada."
+      },
+      "translation": {
+        "status": "Sin versión traducida cotejada alojada para esta ficha; consultar las fuentes editoriales."
+      },
+      "links": {
+        "scaife": "https://scaife.perseus.org/",
+        "gallica": "https://gallica.bnf.fr/",
+        "archive": "https://archive.org/"
+      },
+      "description": "Ficha de obra selecta (Oratoria judicial y política ática). Texto original identificado en TEI; el locus CTS documenta la edición de origen. Texto TEI de una edición histórica de Perseus, no facsímil ni nueva transcripción diplomática. Autenticidad y atribución de algunas obras transmitidas bajo el nombre del autor pueden ser debatidas.",
+      "coverType": "typographic-institutional",
+      "selectionOrder": 34
+    },
+    {
+      "id": "lysias-for-callias",
+      "author": "Lisias",
+      "title": "ὑπὲρ Καλλίου ἱεροσυλίας ἀπολογία · En defensa de Calias",
+      "titleOriginal": "ὑπὲρ Καλλίου ἱεροσυλίας ἀπολογία",
+      "aliases": [
+        "En defensa de Calias",
+        "ὑπὲρ Καλλίου ἱεροσυλίας ἀπολογία"
+      ],
+      "language": "grc",
+      "genre": "Oratoria judicial y política ática",
+      "dating": "siglos V–IV a. C.",
+      "collection": "obras-selectas",
+      "selectedCollection": "Obras selectas · repertorio académico",
+      "source": "Perseus Digital Library · edición TEI tlg0540.tlg005",
+      "sourceUrl": "https://github.com/PerseusDL/canonical-greekLit/blob/dacb04909e43dc47738828d33cc3d2b0635bc54c/data/tlg0540/tlg005/tlg0540.tlg005.perseus-grc2.xml",
+      "bibliography": {
+        "uniformTitle": "ὑπὲρ Καλλίου ἱεροσυλίας ἀπολογία",
+        "canonicalReference": "urn:cts:greekLit:tlg0540.tlg005.perseus-grc2",
+        "workIdentifier": "tlg0540.tlg005",
+        "sourceCollection": "Perseus Digital Library · canonical-greekLit",
+        "sourceRevision": "dacb04909e43dc47738828d33cc3d2b0635bc54c",
+        "sourceCTS": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/dacb04909e43dc47738828d33cc3d2b0635bc54c/data/tlg0540/tlg005/__cts__.xml",
+        "licensing": "CC BY-SA 4.0 · Perseus Digital Library; mantener atribución y compartir adaptaciones bajo la misma licencia",
+        "editorialNote": "Texto TEI de una edición histórica de Perseus, no facsímil ni nueva transcripción diplomática. Autenticidad y atribución de algunas obras transmitidas bajo el nombre del autor pueden ser debatidas.",
+        "indexedEditionClaim": false,
+        "manuscriptCollationClaim": false
+      },
+      "status": "Fuente TEI catalogada; transcripción original e indexación léxica local pendientes de incorporación y control",
+      "textStatus": "source-verified-not-indexed",
+      "publicStatus": "ficha-bibliografica",
+      "reading": {
+        "url": "https://github.com/PerseusDL/canonical-greekLit/blob/dacb04909e43dc47738828d33cc3d2b0635bc54c/data/tlg0540/tlg005/tlg0540.tlg005.perseus-grc2.xml",
+        "status": "Fuente TEI en Perseus; todavía no se incorpora como texto indexado en la biblioteca. No se declara traducción cotejada."
+      },
+      "translation": {
+        "status": "Sin versión traducida cotejada alojada para esta ficha; consultar las fuentes editoriales."
+      },
+      "links": {
+        "scaife": "https://scaife.perseus.org/",
+        "gallica": "https://gallica.bnf.fr/",
+        "archive": "https://archive.org/"
+      },
+      "description": "Ficha de obra selecta (Oratoria judicial y política ática). Texto original identificado en TEI; el locus CTS documenta la edición de origen. Texto TEI de una edición histórica de Perseus, no facsímil ni nueva transcripción diplomática. Autenticidad y atribución de algunas obras transmitidas bajo el nombre del autor pueden ser debatidas.",
+      "coverType": "typographic-institutional",
+      "selectionOrder": 35
+    },
+    {
+      "id": "lysias-against-andocides",
+      "author": "Lisias",
+      "title": "κατ᾽ Ἀνδοκίδου ἀσεβείας · Contra Andócides",
+      "titleOriginal": "κατ᾽ Ἀνδοκίδου ἀσεβείας",
+      "aliases": [
+        "Contra Andócides",
+        "κατ᾽ Ἀνδοκίδου ἀσεβείας"
+      ],
+      "language": "grc",
+      "genre": "Oratoria judicial y política ática",
+      "dating": "siglos V–IV a. C.",
+      "collection": "obras-selectas",
+      "selectedCollection": "Obras selectas · repertorio académico",
+      "source": "Perseus Digital Library · edición TEI tlg0540.tlg006",
+      "sourceUrl": "https://github.com/PerseusDL/canonical-greekLit/blob/dacb04909e43dc47738828d33cc3d2b0635bc54c/data/tlg0540/tlg006/tlg0540.tlg006.perseus-grc2.xml",
+      "bibliography": {
+        "uniformTitle": "κατ᾽ Ἀνδοκίδου ἀσεβείας",
+        "canonicalReference": "urn:cts:greekLit:tlg0540.tlg006.perseus-grc2",
+        "workIdentifier": "tlg0540.tlg006",
+        "sourceCollection": "Perseus Digital Library · canonical-greekLit",
+        "sourceRevision": "dacb04909e43dc47738828d33cc3d2b0635bc54c",
+        "sourceCTS": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/dacb04909e43dc47738828d33cc3d2b0635bc54c/data/tlg0540/tlg006/__cts__.xml",
+        "licensing": "CC BY-SA 4.0 · Perseus Digital Library; mantener atribución y compartir adaptaciones bajo la misma licencia",
+        "editorialNote": "Texto TEI de una edición histórica de Perseus, no facsímil ni nueva transcripción diplomática. Autenticidad y atribución de algunas obras transmitidas bajo el nombre del autor pueden ser debatidas.",
+        "indexedEditionClaim": false,
+        "manuscriptCollationClaim": false
+      },
+      "status": "Fuente TEI catalogada; transcripción original e indexación léxica local pendientes de incorporación y control",
+      "textStatus": "source-verified-not-indexed",
+      "publicStatus": "ficha-bibliografica",
+      "reading": {
+        "url": "https://github.com/PerseusDL/canonical-greekLit/blob/dacb04909e43dc47738828d33cc3d2b0635bc54c/data/tlg0540/tlg006/tlg0540.tlg006.perseus-grc2.xml",
+        "status": "Fuente TEI en Perseus; todavía no se incorpora como texto indexado en la biblioteca. No se declara traducción cotejada."
+      },
+      "translation": {
+        "status": "Sin versión traducida cotejada alojada para esta ficha; consultar las fuentes editoriales."
+      },
+      "links": {
+        "scaife": "https://scaife.perseus.org/",
+        "gallica": "https://gallica.bnf.fr/",
+        "archive": "https://archive.org/"
+      },
+      "description": "Ficha de obra selecta (Oratoria judicial y política ática). Texto original identificado en TEI; el locus CTS documenta la edición de origen. Texto TEI de una edición histórica de Perseus, no facsímil ni nueva transcripción diplomática. Autenticidad y atribución de algunas obras transmitidas bajo el nombre del autor pueden ser debatidas.",
+      "coverType": "typographic-institutional",
+      "selectionOrder": 36
+    },
+    {
+      "id": "lysias-olive-stump",
+      "author": "Lisias",
+      "title": "Ἀρεοπαγιτικὸς περὶ τοῦ σηκοῦ ἀπολογία · Sobre el olivo sagrado",
+      "titleOriginal": "Ἀρεοπαγιτικὸς περὶ τοῦ σηκοῦ ἀπολογία",
+      "aliases": [
+        "Sobre el olivo sagrado",
+        "Ἀρεοπαγιτικὸς περὶ τοῦ σηκοῦ ἀπολογία"
+      ],
+      "language": "grc",
+      "genre": "Oratoria judicial y política ática",
+      "dating": "siglos V–IV a. C.",
+      "collection": "obras-selectas",
+      "selectedCollection": "Obras selectas · repertorio académico",
+      "source": "Perseus Digital Library · edición TEI tlg0540.tlg007",
+      "sourceUrl": "https://github.com/PerseusDL/canonical-greekLit/blob/dacb04909e43dc47738828d33cc3d2b0635bc54c/data/tlg0540/tlg007/tlg0540.tlg007.perseus-grc2.xml",
+      "bibliography": {
+        "uniformTitle": "Ἀρεοπαγιτικὸς περὶ τοῦ σηκοῦ ἀπολογία",
+        "canonicalReference": "urn:cts:greekLit:tlg0540.tlg007.perseus-grc2",
+        "workIdentifier": "tlg0540.tlg007",
+        "sourceCollection": "Perseus Digital Library · canonical-greekLit",
+        "sourceRevision": "dacb04909e43dc47738828d33cc3d2b0635bc54c",
+        "sourceCTS": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/dacb04909e43dc47738828d33cc3d2b0635bc54c/data/tlg0540/tlg007/__cts__.xml",
+        "licensing": "CC BY-SA 4.0 · Perseus Digital Library; mantener atribución y compartir adaptaciones bajo la misma licencia",
+        "editorialNote": "Texto TEI de una edición histórica de Perseus, no facsímil ni nueva transcripción diplomática. Autenticidad y atribución de algunas obras transmitidas bajo el nombre del autor pueden ser debatidas.",
+        "indexedEditionClaim": false,
+        "manuscriptCollationClaim": false
+      },
+      "status": "Fuente TEI catalogada; transcripción original e indexación léxica local pendientes de incorporación y control",
+      "textStatus": "source-verified-not-indexed",
+      "publicStatus": "ficha-bibliografica",
+      "reading": {
+        "url": "https://github.com/PerseusDL/canonical-greekLit/blob/dacb04909e43dc47738828d33cc3d2b0635bc54c/data/tlg0540/tlg007/tlg0540.tlg007.perseus-grc2.xml",
+        "status": "Fuente TEI en Perseus; todavía no se incorpora como texto indexado en la biblioteca. No se declara traducción cotejada."
+      },
+      "translation": {
+        "status": "Sin versión traducida cotejada alojada para esta ficha; consultar las fuentes editoriales."
+      },
+      "links": {
+        "scaife": "https://scaife.perseus.org/",
+        "gallica": "https://gallica.bnf.fr/",
+        "archive": "https://archive.org/"
+      },
+      "description": "Ficha de obra selecta (Oratoria judicial y política ática). Texto original identificado en TEI; el locus CTS documenta la edición de origen. Texto TEI de una edición histórica de Perseus, no facsímil ni nueva transcripción diplomática. Autenticidad y atribución de algunas obras transmitidas bajo el nombre del autor pueden ser debatidas.",
+      "coverType": "typographic-institutional",
+      "selectionOrder": 37
+    },
+    {
+      "id": "lysias-calumny",
+      "author": "Lisias",
+      "title": "κατηγορία πρὸς τοὺς συνουσιαστὰς κακολογιῶν · Acusación por difamación",
+      "titleOriginal": "κατηγορία πρὸς τοὺς συνουσιαστὰς κακολογιῶν",
+      "aliases": [
+        "Acusación por difamación",
+        "κατηγορία πρὸς τοὺς συνουσιαστὰς κακολογιῶν"
+      ],
+      "language": "grc",
+      "genre": "Oratoria judicial y política ática",
+      "dating": "siglos V–IV a. C.",
+      "collection": "obras-selectas",
+      "selectedCollection": "Obras selectas · repertorio académico",
+      "source": "Perseus Digital Library · edición TEI tlg0540.tlg008",
+      "sourceUrl": "https://github.com/PerseusDL/canonical-greekLit/blob/dacb04909e43dc47738828d33cc3d2b0635bc54c/data/tlg0540/tlg008/tlg0540.tlg008.perseus-grc2.xml",
+      "bibliography": {
+        "uniformTitle": "κατηγορία πρὸς τοὺς συνουσιαστὰς κακολογιῶν",
+        "canonicalReference": "urn:cts:greekLit:tlg0540.tlg008.perseus-grc2",
+        "workIdentifier": "tlg0540.tlg008",
+        "sourceCollection": "Perseus Digital Library · canonical-greekLit",
+        "sourceRevision": "dacb04909e43dc47738828d33cc3d2b0635bc54c",
+        "sourceCTS": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/dacb04909e43dc47738828d33cc3d2b0635bc54c/data/tlg0540/tlg008/__cts__.xml",
+        "licensing": "CC BY-SA 4.0 · Perseus Digital Library; mantener atribución y compartir adaptaciones bajo la misma licencia",
+        "editorialNote": "Texto TEI de una edición histórica de Perseus, no facsímil ni nueva transcripción diplomática. Autenticidad y atribución de algunas obras transmitidas bajo el nombre del autor pueden ser debatidas.",
+        "indexedEditionClaim": false,
+        "manuscriptCollationClaim": false
+      },
+      "status": "Fuente TEI catalogada; transcripción original e indexación léxica local pendientes de incorporación y control",
+      "textStatus": "source-verified-not-indexed",
+      "publicStatus": "ficha-bibliografica",
+      "reading": {
+        "url": "https://github.com/PerseusDL/canonical-greekLit/blob/dacb04909e43dc47738828d33cc3d2b0635bc54c/data/tlg0540/tlg008/tlg0540.tlg008.perseus-grc2.xml",
+        "status": "Fuente TEI en Perseus; todavía no se incorpora como texto indexado en la biblioteca. No se declara traducción cotejada."
+      },
+      "translation": {
+        "status": "Sin versión traducida cotejada alojada para esta ficha; consultar las fuentes editoriales."
+      },
+      "links": {
+        "scaife": "https://scaife.perseus.org/",
+        "gallica": "https://gallica.bnf.fr/",
+        "archive": "https://archive.org/"
+      },
+      "description": "Ficha de obra selecta (Oratoria judicial y política ática). Texto original identificado en TEI; el locus CTS documenta la edición de origen. Texto TEI de una edición histórica de Perseus, no facsímil ni nueva transcripción diplomática. Autenticidad y atribución de algunas obras transmitidas bajo el nombre del autor pueden ser debatidas.",
+      "coverType": "typographic-institutional",
+      "selectionOrder": 38
+    },
+    {
+      "id": "lysias-soldier",
+      "author": "Lisias",
+      "title": "ὑπὲρ τοῦ στρατιωτοῦ · En defensa del soldado",
+      "titleOriginal": "ὑπὲρ τοῦ στρατιωτοῦ",
+      "aliases": [
+        "En defensa del soldado",
+        "ὑπὲρ τοῦ στρατιωτοῦ"
+      ],
+      "language": "grc",
+      "genre": "Oratoria judicial y política ática",
+      "dating": "siglos V–IV a. C.",
+      "collection": "obras-selectas",
+      "selectedCollection": "Obras selectas · repertorio académico",
+      "source": "Perseus Digital Library · edición TEI tlg0540.tlg009",
+      "sourceUrl": "https://github.com/PerseusDL/canonical-greekLit/blob/dacb04909e43dc47738828d33cc3d2b0635bc54c/data/tlg0540/tlg009/tlg0540.tlg009.perseus-grc2.xml",
+      "bibliography": {
+        "uniformTitle": "ὑπὲρ τοῦ στρατιωτοῦ",
+        "canonicalReference": "urn:cts:greekLit:tlg0540.tlg009.perseus-grc2",
+        "workIdentifier": "tlg0540.tlg009",
+        "sourceCollection": "Perseus Digital Library · canonical-greekLit",
+        "sourceRevision": "dacb04909e43dc47738828d33cc3d2b0635bc54c",
+        "sourceCTS": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/dacb04909e43dc47738828d33cc3d2b0635bc54c/data/tlg0540/tlg009/__cts__.xml",
+        "licensing": "CC BY-SA 4.0 · Perseus Digital Library; mantener atribución y compartir adaptaciones bajo la misma licencia",
+        "editorialNote": "Texto TEI de una edición histórica de Perseus, no facsímil ni nueva transcripción diplomática. Autenticidad y atribución de algunas obras transmitidas bajo el nombre del autor pueden ser debatidas.",
+        "indexedEditionClaim": false,
+        "manuscriptCollationClaim": false
+      },
+      "status": "Fuente TEI catalogada; transcripción original e indexación léxica local pendientes de incorporación y control",
+      "textStatus": "source-verified-not-indexed",
+      "publicStatus": "ficha-bibliografica",
+      "reading": {
+        "url": "https://github.com/PerseusDL/canonical-greekLit/blob/dacb04909e43dc47738828d33cc3d2b0635bc54c/data/tlg0540/tlg009/tlg0540.tlg009.perseus-grc2.xml",
+        "status": "Fuente TEI en Perseus; todavía no se incorpora como texto indexado en la biblioteca. No se declara traducción cotejada."
+      },
+      "translation": {
+        "status": "Sin versión traducida cotejada alojada para esta ficha; consultar las fuentes editoriales."
+      },
+      "links": {
+        "scaife": "https://scaife.perseus.org/",
+        "gallica": "https://gallica.bnf.fr/",
+        "archive": "https://archive.org/"
+      },
+      "description": "Ficha de obra selecta (Oratoria judicial y política ática). Texto original identificado en TEI; el locus CTS documenta la edición de origen. Texto TEI de una edición histórica de Perseus, no facsímil ni nueva transcripción diplomática. Autenticidad y atribución de algunas obras transmitidas bajo el nombre del autor pueden ser debatidas.",
+      "coverType": "typographic-institutional",
+      "selectionOrder": 39
+    },
+    {
+      "id": "lysias-theomnestus-1",
+      "author": "Lisias",
+      "title": "κατὰ θεομνήστου, Α · Contra Teomnesto I",
+      "titleOriginal": "κατὰ θεομνήστου, Α",
+      "aliases": [
+        "Contra Teomnesto I",
+        "κατὰ θεομνήστου, Α"
+      ],
+      "language": "grc",
+      "genre": "Oratoria judicial y política ática",
+      "dating": "siglos V–IV a. C.",
+      "collection": "obras-selectas",
+      "selectedCollection": "Obras selectas · repertorio académico",
+      "source": "Perseus Digital Library · edición TEI tlg0540.tlg010",
+      "sourceUrl": "https://github.com/PerseusDL/canonical-greekLit/blob/dacb04909e43dc47738828d33cc3d2b0635bc54c/data/tlg0540/tlg010/tlg0540.tlg010.perseus-grc2.xml",
+      "bibliography": {
+        "uniformTitle": "κατὰ θεομνήστου, Α",
+        "canonicalReference": "urn:cts:greekLit:tlg0540.tlg010.perseus-grc2",
+        "workIdentifier": "tlg0540.tlg010",
+        "sourceCollection": "Perseus Digital Library · canonical-greekLit",
+        "sourceRevision": "dacb04909e43dc47738828d33cc3d2b0635bc54c",
+        "sourceCTS": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/dacb04909e43dc47738828d33cc3d2b0635bc54c/data/tlg0540/tlg010/__cts__.xml",
+        "licensing": "CC BY-SA 4.0 · Perseus Digital Library; mantener atribución y compartir adaptaciones bajo la misma licencia",
+        "editorialNote": "Texto TEI de una edición histórica de Perseus, no facsímil ni nueva transcripción diplomática. Autenticidad y atribución de algunas obras transmitidas bajo el nombre del autor pueden ser debatidas.",
+        "indexedEditionClaim": false,
+        "manuscriptCollationClaim": false
+      },
+      "status": "Fuente TEI catalogada; transcripción original e indexación léxica local pendientes de incorporación y control",
+      "textStatus": "source-verified-not-indexed",
+      "publicStatus": "ficha-bibliografica",
+      "reading": {
+        "url": "https://github.com/PerseusDL/canonical-greekLit/blob/dacb04909e43dc47738828d33cc3d2b0635bc54c/data/tlg0540/tlg010/tlg0540.tlg010.perseus-grc2.xml",
+        "status": "Fuente TEI en Perseus; todavía no se incorpora como texto indexado en la biblioteca. No se declara traducción cotejada."
+      },
+      "translation": {
+        "status": "Sin versión traducida cotejada alojada para esta ficha; consultar las fuentes editoriales."
+      },
+      "links": {
+        "scaife": "https://scaife.perseus.org/",
+        "gallica": "https://gallica.bnf.fr/",
+        "archive": "https://archive.org/"
+      },
+      "description": "Ficha de obra selecta (Oratoria judicial y política ática). Texto original identificado en TEI; el locus CTS documenta la edición de origen. Texto TEI de una edición histórica de Perseus, no facsímil ni nueva transcripción diplomática. Autenticidad y atribución de algunas obras transmitidas bajo el nombre del autor pueden ser debatidas.",
+      "coverType": "typographic-institutional",
+      "selectionOrder": 40
+    },
+    {
+      "id": "isocrates-euthynus",
+      "author": "Isócrates",
+      "title": "Πρὸς Εὐθύνους ἀμάρτυρος · Contra Eutino",
+      "titleOriginal": "Πρὸς Εὐθύνους ἀμάρτυρος",
+      "aliases": [
+        "Contra Eutino",
+        "Πρὸς Εὐθύνους ἀμάρτυρος"
+      ],
+      "language": "grc",
+      "genre": "Oratoria política y retórica",
+      "dating": "siglo IV a. C.",
+      "collection": "obras-selectas",
+      "selectedCollection": "Obras selectas · repertorio académico",
+      "source": "Perseus Digital Library · edición TEI tlg0010.tlg001",
+      "sourceUrl": "https://github.com/PerseusDL/canonical-greekLit/blob/dacb04909e43dc47738828d33cc3d2b0635bc54c/data/tlg0010/tlg001/tlg0010.tlg001.perseus-grc2.xml",
+      "bibliography": {
+        "uniformTitle": "Πρὸς Εὐθύνους ἀμάρτυρος",
+        "canonicalReference": "urn:cts:greekLit:tlg0010.tlg001.perseus-grc2",
+        "workIdentifier": "tlg0010.tlg001",
+        "sourceCollection": "Perseus Digital Library · canonical-greekLit",
+        "sourceRevision": "dacb04909e43dc47738828d33cc3d2b0635bc54c",
+        "sourceCTS": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/dacb04909e43dc47738828d33cc3d2b0635bc54c/data/tlg0010/tlg001/__cts__.xml",
+        "licensing": "CC BY-SA 4.0 · Perseus Digital Library; mantener atribución y compartir adaptaciones bajo la misma licencia",
+        "editorialNote": "Texto TEI de una edición histórica de Perseus, no facsímil ni nueva transcripción diplomática. Autenticidad y atribución de algunas obras transmitidas bajo el nombre del autor pueden ser debatidas.",
+        "indexedEditionClaim": false,
+        "manuscriptCollationClaim": false
+      },
+      "status": "Fuente TEI catalogada; transcripción original e indexación léxica local pendientes de incorporación y control",
+      "textStatus": "source-verified-not-indexed",
+      "publicStatus": "ficha-bibliografica",
+      "reading": {
+        "url": "https://github.com/PerseusDL/canonical-greekLit/blob/dacb04909e43dc47738828d33cc3d2b0635bc54c/data/tlg0010/tlg001/tlg0010.tlg001.perseus-grc2.xml",
+        "status": "Fuente TEI en Perseus; todavía no se incorpora como texto indexado en la biblioteca. No se declara traducción cotejada."
+      },
+      "translation": {
+        "status": "Sin versión traducida cotejada alojada para esta ficha; consultar las fuentes editoriales."
+      },
+      "links": {
+        "scaife": "https://scaife.perseus.org/",
+        "gallica": "https://gallica.bnf.fr/",
+        "archive": "https://archive.org/"
+      },
+      "description": "Ficha de obra selecta (Oratoria política y retórica). Texto original identificado en TEI; el locus CTS documenta la edición de origen. Texto TEI de una edición histórica de Perseus, no facsímil ni nueva transcripción diplomática. Autenticidad y atribución de algunas obras transmitidas bajo el nombre del autor pueden ser debatidas.",
+      "coverType": "typographic-institutional",
+      "selectionOrder": 41
+    },
+    {
+      "id": "isocrates-callimachus",
+      "author": "Isócrates",
+      "title": "Παραγραφή πρὸς Καλλίμαχον · Contra Calímaco",
+      "titleOriginal": "Παραγραφή πρὸς Καλλίμαχον",
+      "aliases": [
+        "Contra Calímaco",
+        "Παραγραφή πρὸς Καλλίμαχον"
+      ],
+      "language": "grc",
+      "genre": "Oratoria política y retórica",
+      "dating": "siglo IV a. C.",
+      "collection": "obras-selectas",
+      "selectedCollection": "Obras selectas · repertorio académico",
+      "source": "Perseus Digital Library · edición TEI tlg0010.tlg002",
+      "sourceUrl": "https://github.com/PerseusDL/canonical-greekLit/blob/dacb04909e43dc47738828d33cc3d2b0635bc54c/data/tlg0010/tlg002/tlg0010.tlg002.perseus-grc2.xml",
+      "bibliography": {
+        "uniformTitle": "Παραγραφή πρὸς Καλλίμαχον",
+        "canonicalReference": "urn:cts:greekLit:tlg0010.tlg002.perseus-grc2",
+        "workIdentifier": "tlg0010.tlg002",
+        "sourceCollection": "Perseus Digital Library · canonical-greekLit",
+        "sourceRevision": "dacb04909e43dc47738828d33cc3d2b0635bc54c",
+        "sourceCTS": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/dacb04909e43dc47738828d33cc3d2b0635bc54c/data/tlg0010/tlg002/__cts__.xml",
+        "licensing": "CC BY-SA 4.0 · Perseus Digital Library; mantener atribución y compartir adaptaciones bajo la misma licencia",
+        "editorialNote": "Texto TEI de una edición histórica de Perseus, no facsímil ni nueva transcripción diplomática. Autenticidad y atribución de algunas obras transmitidas bajo el nombre del autor pueden ser debatidas.",
+        "indexedEditionClaim": false,
+        "manuscriptCollationClaim": false
+      },
+      "status": "Fuente TEI catalogada; transcripción original e indexación léxica local pendientes de incorporación y control",
+      "textStatus": "source-verified-not-indexed",
+      "publicStatus": "ficha-bibliografica",
+      "reading": {
+        "url": "https://github.com/PerseusDL/canonical-greekLit/blob/dacb04909e43dc47738828d33cc3d2b0635bc54c/data/tlg0010/tlg002/tlg0010.tlg002.perseus-grc2.xml",
+        "status": "Fuente TEI en Perseus; todavía no se incorpora como texto indexado en la biblioteca. No se declara traducción cotejada."
+      },
+      "translation": {
+        "status": "Sin versión traducida cotejada alojada para esta ficha; consultar las fuentes editoriales."
+      },
+      "links": {
+        "scaife": "https://scaife.perseus.org/",
+        "gallica": "https://gallica.bnf.fr/",
+        "archive": "https://archive.org/"
+      },
+      "description": "Ficha de obra selecta (Oratoria política y retórica). Texto original identificado en TEI; el locus CTS documenta la edición de origen. Texto TEI de una edición histórica de Perseus, no facsímil ni nueva transcripción diplomática. Autenticidad y atribución de algunas obras transmitidas bajo el nombre del autor pueden ser debatidas.",
+      "coverType": "typographic-institutional",
+      "selectionOrder": 42
+    },
+    {
+      "id": "isocrates-lochites",
+      "author": "Isócrates",
+      "title": "Κατὰ Λοχίτου · Contra Loquites",
+      "titleOriginal": "Κατὰ Λοχίτου",
+      "aliases": [
+        "Contra Loquites",
+        "Κατὰ Λοχίτου"
+      ],
+      "language": "grc",
+      "genre": "Oratoria política y retórica",
+      "dating": "siglo IV a. C.",
+      "collection": "obras-selectas",
+      "selectedCollection": "Obras selectas · repertorio académico",
+      "source": "Perseus Digital Library · edición TEI tlg0010.tlg003",
+      "sourceUrl": "https://github.com/PerseusDL/canonical-greekLit/blob/dacb04909e43dc47738828d33cc3d2b0635bc54c/data/tlg0010/tlg003/tlg0010.tlg003.perseus-grc2.xml",
+      "bibliography": {
+        "uniformTitle": "Κατὰ Λοχίτου",
+        "canonicalReference": "urn:cts:greekLit:tlg0010.tlg003.perseus-grc2",
+        "workIdentifier": "tlg0010.tlg003",
+        "sourceCollection": "Perseus Digital Library · canonical-greekLit",
+        "sourceRevision": "dacb04909e43dc47738828d33cc3d2b0635bc54c",
+        "sourceCTS": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/dacb04909e43dc47738828d33cc3d2b0635bc54c/data/tlg0010/tlg003/__cts__.xml",
+        "licensing": "CC BY-SA 4.0 · Perseus Digital Library; mantener atribución y compartir adaptaciones bajo la misma licencia",
+        "editorialNote": "Texto TEI de una edición histórica de Perseus, no facsímil ni nueva transcripción diplomática. Autenticidad y atribución de algunas obras transmitidas bajo el nombre del autor pueden ser debatidas.",
+        "indexedEditionClaim": false,
+        "manuscriptCollationClaim": false
+      },
+      "status": "Fuente TEI catalogada; transcripción original e indexación léxica local pendientes de incorporación y control",
+      "textStatus": "source-verified-not-indexed",
+      "publicStatus": "ficha-bibliografica",
+      "reading": {
+        "url": "https://github.com/PerseusDL/canonical-greekLit/blob/dacb04909e43dc47738828d33cc3d2b0635bc54c/data/tlg0010/tlg003/tlg0010.tlg003.perseus-grc2.xml",
+        "status": "Fuente TEI en Perseus; todavía no se incorpora como texto indexado en la biblioteca. No se declara traducción cotejada."
+      },
+      "translation": {
+        "status": "Sin versión traducida cotejada alojada para esta ficha; consultar las fuentes editoriales."
+      },
+      "links": {
+        "scaife": "https://scaife.perseus.org/",
+        "gallica": "https://gallica.bnf.fr/",
+        "archive": "https://archive.org/"
+      },
+      "description": "Ficha de obra selecta (Oratoria política y retórica). Texto original identificado en TEI; el locus CTS documenta la edición de origen. Texto TEI de una edición histórica de Perseus, no facsímil ni nueva transcripción diplomática. Autenticidad y atribución de algunas obras transmitidas bajo el nombre del autor pueden ser debatidas.",
+      "coverType": "typographic-institutional",
+      "selectionOrder": 43
+    },
+    {
+      "id": "isocrates-team-horses",
+      "author": "Isócrates",
+      "title": "Περὶ τοῦ ζεύγους · Sobre el par de caballos",
+      "titleOriginal": "Περὶ τοῦ ζεύγους",
+      "aliases": [
+        "Sobre el par de caballos",
+        "Περὶ τοῦ ζεύγους"
+      ],
+      "language": "grc",
+      "genre": "Oratoria política y retórica",
+      "dating": "siglo IV a. C.",
+      "collection": "obras-selectas",
+      "selectedCollection": "Obras selectas · repertorio académico",
+      "source": "Perseus Digital Library · edición TEI tlg0010.tlg004",
+      "sourceUrl": "https://github.com/PerseusDL/canonical-greekLit/blob/dacb04909e43dc47738828d33cc3d2b0635bc54c/data/tlg0010/tlg004/tlg0010.tlg004.perseus-grc2.xml",
+      "bibliography": {
+        "uniformTitle": "Περὶ τοῦ ζεύγους",
+        "canonicalReference": "urn:cts:greekLit:tlg0010.tlg004.perseus-grc2",
+        "workIdentifier": "tlg0010.tlg004",
+        "sourceCollection": "Perseus Digital Library · canonical-greekLit",
+        "sourceRevision": "dacb04909e43dc47738828d33cc3d2b0635bc54c",
+        "sourceCTS": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/dacb04909e43dc47738828d33cc3d2b0635bc54c/data/tlg0010/tlg004/__cts__.xml",
+        "licensing": "CC BY-SA 4.0 · Perseus Digital Library; mantener atribución y compartir adaptaciones bajo la misma licencia",
+        "editorialNote": "Texto TEI de una edición histórica de Perseus, no facsímil ni nueva transcripción diplomática. Autenticidad y atribución de algunas obras transmitidas bajo el nombre del autor pueden ser debatidas.",
+        "indexedEditionClaim": false,
+        "manuscriptCollationClaim": false
+      },
+      "status": "Fuente TEI catalogada; transcripción original e indexación léxica local pendientes de incorporación y control",
+      "textStatus": "source-verified-not-indexed",
+      "publicStatus": "ficha-bibliografica",
+      "reading": {
+        "url": "https://github.com/PerseusDL/canonical-greekLit/blob/dacb04909e43dc47738828d33cc3d2b0635bc54c/data/tlg0010/tlg004/tlg0010.tlg004.perseus-grc2.xml",
+        "status": "Fuente TEI en Perseus; todavía no se incorpora como texto indexado en la biblioteca. No se declara traducción cotejada."
+      },
+      "translation": {
+        "status": "Sin versión traducida cotejada alojada para esta ficha; consultar las fuentes editoriales."
+      },
+      "links": {
+        "scaife": "https://scaife.perseus.org/",
+        "gallica": "https://gallica.bnf.fr/",
+        "archive": "https://archive.org/"
+      },
+      "description": "Ficha de obra selecta (Oratoria política y retórica). Texto original identificado en TEI; el locus CTS documenta la edición de origen. Texto TEI de una edición histórica de Perseus, no facsímil ni nueva transcripción diplomática. Autenticidad y atribución de algunas obras transmitidas bajo el nombre del autor pueden ser debatidas.",
+      "coverType": "typographic-institutional",
+      "selectionOrder": 44
+    },
+    {
+      "id": "isocrates-trapeziticus",
+      "author": "Isócrates",
+      "title": "Τραπεζιτικός · Discurso del banquero",
+      "titleOriginal": "Τραπεζιτικός",
+      "aliases": [
+        "Discurso del banquero",
+        "Τραπεζιτικός"
+      ],
+      "language": "grc",
+      "genre": "Oratoria política y retórica",
+      "dating": "siglo IV a. C.",
+      "collection": "obras-selectas",
+      "selectedCollection": "Obras selectas · repertorio académico",
+      "source": "Perseus Digital Library · edición TEI tlg0010.tlg005",
+      "sourceUrl": "https://github.com/PerseusDL/canonical-greekLit/blob/dacb04909e43dc47738828d33cc3d2b0635bc54c/data/tlg0010/tlg005/tlg0010.tlg005.perseus-grc2.xml",
+      "bibliography": {
+        "uniformTitle": "Τραπεζιτικός",
+        "canonicalReference": "urn:cts:greekLit:tlg0010.tlg005.perseus-grc2",
+        "workIdentifier": "tlg0010.tlg005",
+        "sourceCollection": "Perseus Digital Library · canonical-greekLit",
+        "sourceRevision": "dacb04909e43dc47738828d33cc3d2b0635bc54c",
+        "sourceCTS": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/dacb04909e43dc47738828d33cc3d2b0635bc54c/data/tlg0010/tlg005/__cts__.xml",
+        "licensing": "CC BY-SA 4.0 · Perseus Digital Library; mantener atribución y compartir adaptaciones bajo la misma licencia",
+        "editorialNote": "Texto TEI de una edición histórica de Perseus, no facsímil ni nueva transcripción diplomática. Autenticidad y atribución de algunas obras transmitidas bajo el nombre del autor pueden ser debatidas.",
+        "indexedEditionClaim": false,
+        "manuscriptCollationClaim": false
+      },
+      "status": "Fuente TEI catalogada; transcripción original e indexación léxica local pendientes de incorporación y control",
+      "textStatus": "source-verified-not-indexed",
+      "publicStatus": "ficha-bibliografica",
+      "reading": {
+        "url": "https://github.com/PerseusDL/canonical-greekLit/blob/dacb04909e43dc47738828d33cc3d2b0635bc54c/data/tlg0010/tlg005/tlg0010.tlg005.perseus-grc2.xml",
+        "status": "Fuente TEI en Perseus; todavía no se incorpora como texto indexado en la biblioteca. No se declara traducción cotejada."
+      },
+      "translation": {
+        "status": "Sin versión traducida cotejada alojada para esta ficha; consultar las fuentes editoriales."
+      },
+      "links": {
+        "scaife": "https://scaife.perseus.org/",
+        "gallica": "https://gallica.bnf.fr/",
+        "archive": "https://archive.org/"
+      },
+      "description": "Ficha de obra selecta (Oratoria política y retórica). Texto original identificado en TEI; el locus CTS documenta la edición de origen. Texto TEI de una edición histórica de Perseus, no facsímil ni nueva transcripción diplomática. Autenticidad y atribución de algunas obras transmitidas bajo el nombre del autor pueden ser debatidas.",
+      "coverType": "typographic-institutional",
+      "selectionOrder": 45
+    },
+    {
+      "id": "isocrates-aegineticus",
+      "author": "Isócrates",
+      "title": "Αἰγητικὸς · Discurso de Egina",
+      "titleOriginal": "Αἰγητικὸς",
+      "aliases": [
+        "Discurso de Egina",
+        "Αἰγητικὸς"
+      ],
+      "language": "grc",
+      "genre": "Oratoria política y retórica",
+      "dating": "siglo IV a. C.",
+      "collection": "obras-selectas",
+      "selectedCollection": "Obras selectas · repertorio académico",
+      "source": "Perseus Digital Library · edición TEI tlg0010.tlg006",
+      "sourceUrl": "https://github.com/PerseusDL/canonical-greekLit/blob/dacb04909e43dc47738828d33cc3d2b0635bc54c/data/tlg0010/tlg006/tlg0010.tlg006.perseus-grc2.xml",
+      "bibliography": {
+        "uniformTitle": "Αἰγητικὸς",
+        "canonicalReference": "urn:cts:greekLit:tlg0010.tlg006.perseus-grc2",
+        "workIdentifier": "tlg0010.tlg006",
+        "sourceCollection": "Perseus Digital Library · canonical-greekLit",
+        "sourceRevision": "dacb04909e43dc47738828d33cc3d2b0635bc54c",
+        "sourceCTS": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/dacb04909e43dc47738828d33cc3d2b0635bc54c/data/tlg0010/tlg006/__cts__.xml",
+        "licensing": "CC BY-SA 4.0 · Perseus Digital Library; mantener atribución y compartir adaptaciones bajo la misma licencia",
+        "editorialNote": "Texto TEI de una edición histórica de Perseus, no facsímil ni nueva transcripción diplomática. Autenticidad y atribución de algunas obras transmitidas bajo el nombre del autor pueden ser debatidas.",
+        "indexedEditionClaim": false,
+        "manuscriptCollationClaim": false
+      },
+      "status": "Fuente TEI catalogada; transcripción original e indexación léxica local pendientes de incorporación y control",
+      "textStatus": "source-verified-not-indexed",
+      "publicStatus": "ficha-bibliografica",
+      "reading": {
+        "url": "https://github.com/PerseusDL/canonical-greekLit/blob/dacb04909e43dc47738828d33cc3d2b0635bc54c/data/tlg0010/tlg006/tlg0010.tlg006.perseus-grc2.xml",
+        "status": "Fuente TEI en Perseus; todavía no se incorpora como texto indexado en la biblioteca. No se declara traducción cotejada."
+      },
+      "translation": {
+        "status": "Sin versión traducida cotejada alojada para esta ficha; consultar las fuentes editoriales."
+      },
+      "links": {
+        "scaife": "https://scaife.perseus.org/",
+        "gallica": "https://gallica.bnf.fr/",
+        "archive": "https://archive.org/"
+      },
+      "description": "Ficha de obra selecta (Oratoria política y retórica). Texto original identificado en TEI; el locus CTS documenta la edición de origen. Texto TEI de una edición histórica de Perseus, no facsímil ni nueva transcripción diplomática. Autenticidad y atribución de algunas obras transmitidas bajo el nombre del autor pueden ser debatidas.",
+      "coverType": "typographic-institutional",
+      "selectionOrder": 46
+    },
+    {
+      "id": "isocrates-sophists",
+      "author": "Isócrates",
+      "title": "Κατὰ τῶν σοφιστῶν · Contra los sofistas",
+      "titleOriginal": "Κατὰ τῶν σοφιστῶν",
+      "aliases": [
+        "Contra los sofistas",
+        "Κατὰ τῶν σοφιστῶν"
+      ],
+      "language": "grc",
+      "genre": "Oratoria política y retórica",
+      "dating": "siglo IV a. C.",
+      "collection": "obras-selectas",
+      "selectedCollection": "Obras selectas · repertorio académico",
+      "source": "Perseus Digital Library · edición TEI tlg0010.tlg008",
+      "sourceUrl": "https://github.com/PerseusDL/canonical-greekLit/blob/dacb04909e43dc47738828d33cc3d2b0635bc54c/data/tlg0010/tlg008/tlg0010.tlg008.perseus-grc2.xml",
+      "bibliography": {
+        "uniformTitle": "Κατὰ τῶν σοφιστῶν",
+        "canonicalReference": "urn:cts:greekLit:tlg0010.tlg008.perseus-grc2",
+        "workIdentifier": "tlg0010.tlg008",
+        "sourceCollection": "Perseus Digital Library · canonical-greekLit",
+        "sourceRevision": "dacb04909e43dc47738828d33cc3d2b0635bc54c",
+        "sourceCTS": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/dacb04909e43dc47738828d33cc3d2b0635bc54c/data/tlg0010/tlg008/__cts__.xml",
+        "licensing": "CC BY-SA 4.0 · Perseus Digital Library; mantener atribución y compartir adaptaciones bajo la misma licencia",
+        "editorialNote": "Texto TEI de una edición histórica de Perseus, no facsímil ni nueva transcripción diplomática. Autenticidad y atribución de algunas obras transmitidas bajo el nombre del autor pueden ser debatidas.",
+        "indexedEditionClaim": false,
+        "manuscriptCollationClaim": false
+      },
+      "status": "Fuente TEI catalogada; transcripción original e indexación léxica local pendientes de incorporación y control",
+      "textStatus": "source-verified-not-indexed",
+      "publicStatus": "ficha-bibliografica",
+      "reading": {
+        "url": "https://github.com/PerseusDL/canonical-greekLit/blob/dacb04909e43dc47738828d33cc3d2b0635bc54c/data/tlg0010/tlg008/tlg0010.tlg008.perseus-grc2.xml",
+        "status": "Fuente TEI en Perseus; todavía no se incorpora como texto indexado en la biblioteca. No se declara traducción cotejada."
+      },
+      "translation": {
+        "status": "Sin versión traducida cotejada alojada para esta ficha; consultar las fuentes editoriales."
+      },
+      "links": {
+        "scaife": "https://scaife.perseus.org/",
+        "gallica": "https://gallica.bnf.fr/",
+        "archive": "https://archive.org/"
+      },
+      "description": "Ficha de obra selecta (Oratoria política y retórica). Texto original identificado en TEI; el locus CTS documenta la edición de origen. Texto TEI de una edición histórica de Perseus, no facsímil ni nueva transcripción diplomática. Autenticidad y atribución de algunas obras transmitidas bajo el nombre del autor pueden ser debatidas.",
+      "coverType": "typographic-institutional",
+      "selectionOrder": 47
+    },
+    {
+      "id": "isocrates-helen",
+      "author": "Isócrates",
+      "title": "Ἑλένη · Elogio de Helena",
+      "titleOriginal": "Ἑλένη",
+      "aliases": [
+        "Elogio de Helena",
+        "Ἑλένη"
+      ],
+      "language": "grc",
+      "genre": "Oratoria política y retórica",
+      "dating": "siglo IV a. C.",
+      "collection": "obras-selectas",
+      "selectedCollection": "Obras selectas · repertorio académico",
+      "source": "Perseus Digital Library · edición TEI tlg0010.tlg009",
+      "sourceUrl": "https://github.com/PerseusDL/canonical-greekLit/blob/dacb04909e43dc47738828d33cc3d2b0635bc54c/data/tlg0010/tlg009/tlg0010.tlg009.perseus-grc2.xml",
+      "bibliography": {
+        "uniformTitle": "Ἑλένη",
+        "canonicalReference": "urn:cts:greekLit:tlg0010.tlg009.perseus-grc2",
+        "workIdentifier": "tlg0010.tlg009",
+        "sourceCollection": "Perseus Digital Library · canonical-greekLit",
+        "sourceRevision": "dacb04909e43dc47738828d33cc3d2b0635bc54c",
+        "sourceCTS": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/dacb04909e43dc47738828d33cc3d2b0635bc54c/data/tlg0010/tlg009/__cts__.xml",
+        "licensing": "CC BY-SA 4.0 · Perseus Digital Library; mantener atribución y compartir adaptaciones bajo la misma licencia",
+        "editorialNote": "Texto TEI de una edición histórica de Perseus, no facsímil ni nueva transcripción diplomática. Autenticidad y atribución de algunas obras transmitidas bajo el nombre del autor pueden ser debatidas.",
+        "indexedEditionClaim": false,
+        "manuscriptCollationClaim": false
+      },
+      "status": "Fuente TEI catalogada; transcripción original e indexación léxica local pendientes de incorporación y control",
+      "textStatus": "source-verified-not-indexed",
+      "publicStatus": "ficha-bibliografica",
+      "reading": {
+        "url": "https://github.com/PerseusDL/canonical-greekLit/blob/dacb04909e43dc47738828d33cc3d2b0635bc54c/data/tlg0010/tlg009/tlg0010.tlg009.perseus-grc2.xml",
+        "status": "Fuente TEI en Perseus; todavía no se incorpora como texto indexado en la biblioteca. No se declara traducción cotejada."
+      },
+      "translation": {
+        "status": "Sin versión traducida cotejada alojada para esta ficha; consultar las fuentes editoriales."
+      },
+      "links": {
+        "scaife": "https://scaife.perseus.org/",
+        "gallica": "https://gallica.bnf.fr/",
+        "archive": "https://archive.org/"
+      },
+      "description": "Ficha de obra selecta (Oratoria política y retórica). Texto original identificado en TEI; el locus CTS documenta la edición de origen. Texto TEI de una edición histórica de Perseus, no facsímil ni nueva transcripción diplomática. Autenticidad y atribución de algunas obras transmitidas bajo el nombre del autor pueden ser debatidas.",
+      "coverType": "typographic-institutional",
+      "selectionOrder": 48
+    },
+    {
+      "id": "isocrates-busiris",
+      "author": "Isócrates",
+      "title": "Βούσιρις · Busiris",
+      "titleOriginal": "Βούσιρις",
+      "aliases": [
+        "Busiris",
+        "Βούσιρις"
+      ],
+      "language": "grc",
+      "genre": "Oratoria política y retórica",
+      "dating": "siglo IV a. C.",
+      "collection": "obras-selectas",
+      "selectedCollection": "Obras selectas · repertorio académico",
+      "source": "Perseus Digital Library · edición TEI tlg0010.tlg010",
+      "sourceUrl": "https://github.com/PerseusDL/canonical-greekLit/blob/dacb04909e43dc47738828d33cc3d2b0635bc54c/data/tlg0010/tlg010/tlg0010.tlg010.perseus-grc2.xml",
+      "bibliography": {
+        "uniformTitle": "Βούσιρις",
+        "canonicalReference": "urn:cts:greekLit:tlg0010.tlg010.perseus-grc2",
+        "workIdentifier": "tlg0010.tlg010",
+        "sourceCollection": "Perseus Digital Library · canonical-greekLit",
+        "sourceRevision": "dacb04909e43dc47738828d33cc3d2b0635bc54c",
+        "sourceCTS": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/dacb04909e43dc47738828d33cc3d2b0635bc54c/data/tlg0010/tlg010/__cts__.xml",
+        "licensing": "CC BY-SA 4.0 · Perseus Digital Library; mantener atribución y compartir adaptaciones bajo la misma licencia",
+        "editorialNote": "Texto TEI de una edición histórica de Perseus, no facsímil ni nueva transcripción diplomática. Autenticidad y atribución de algunas obras transmitidas bajo el nombre del autor pueden ser debatidas.",
+        "indexedEditionClaim": false,
+        "manuscriptCollationClaim": false
+      },
+      "status": "Fuente TEI catalogada; transcripción original e indexación léxica local pendientes de incorporación y control",
+      "textStatus": "source-verified-not-indexed",
+      "publicStatus": "ficha-bibliografica",
+      "reading": {
+        "url": "https://github.com/PerseusDL/canonical-greekLit/blob/dacb04909e43dc47738828d33cc3d2b0635bc54c/data/tlg0010/tlg010/tlg0010.tlg010.perseus-grc2.xml",
+        "status": "Fuente TEI en Perseus; todavía no se incorpora como texto indexado en la biblioteca. No se declara traducción cotejada."
+      },
+      "translation": {
+        "status": "Sin versión traducida cotejada alojada para esta ficha; consultar las fuentes editoriales."
+      },
+      "links": {
+        "scaife": "https://scaife.perseus.org/",
+        "gallica": "https://gallica.bnf.fr/",
+        "archive": "https://archive.org/"
+      },
+      "description": "Ficha de obra selecta (Oratoria política y retórica). Texto original identificado en TEI; el locus CTS documenta la edición de origen. Texto TEI de una edición histórica de Perseus, no facsímil ni nueva transcripción diplomática. Autenticidad y atribución de algunas obras transmitidas bajo el nombre del autor pueden ser debatidas.",
+      "coverType": "typographic-institutional",
+      "selectionOrder": 49
+    },
+    {
+      "id": "isocrates-plataicus",
+      "author": "Isócrates",
+      "title": "Πλαταικός · Discurso plateense",
+      "titleOriginal": "Πλαταικός",
+      "aliases": [
+        "Discurso plateense",
+        "Πλαταικός"
+      ],
+      "language": "grc",
+      "genre": "Oratoria política y retórica",
+      "dating": "siglo IV a. C.",
+      "collection": "obras-selectas",
+      "selectedCollection": "Obras selectas · repertorio académico",
+      "source": "Perseus Digital Library · edición TEI tlg0010.tlg012",
+      "sourceUrl": "https://github.com/PerseusDL/canonical-greekLit/blob/dacb04909e43dc47738828d33cc3d2b0635bc54c/data/tlg0010/tlg012/tlg0010.tlg012.perseus-grc2.xml",
+      "bibliography": {
+        "uniformTitle": "Πλαταικός",
+        "canonicalReference": "urn:cts:greekLit:tlg0010.tlg012.perseus-grc2",
+        "workIdentifier": "tlg0010.tlg012",
+        "sourceCollection": "Perseus Digital Library · canonical-greekLit",
+        "sourceRevision": "dacb04909e43dc47738828d33cc3d2b0635bc54c",
+        "sourceCTS": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/dacb04909e43dc47738828d33cc3d2b0635bc54c/data/tlg0010/tlg012/__cts__.xml",
+        "licensing": "CC BY-SA 4.0 · Perseus Digital Library; mantener atribución y compartir adaptaciones bajo la misma licencia",
+        "editorialNote": "Texto TEI de una edición histórica de Perseus, no facsímil ni nueva transcripción diplomática. Autenticidad y atribución de algunas obras transmitidas bajo el nombre del autor pueden ser debatidas.",
+        "indexedEditionClaim": false,
+        "manuscriptCollationClaim": false
+      },
+      "status": "Fuente TEI catalogada; transcripción original e indexación léxica local pendientes de incorporación y control",
+      "textStatus": "source-verified-not-indexed",
+      "publicStatus": "ficha-bibliografica",
+      "reading": {
+        "url": "https://github.com/PerseusDL/canonical-greekLit/blob/dacb04909e43dc47738828d33cc3d2b0635bc54c/data/tlg0010/tlg012/tlg0010.tlg012.perseus-grc2.xml",
+        "status": "Fuente TEI en Perseus; todavía no se incorpora como texto indexado en la biblioteca. No se declara traducción cotejada."
+      },
+      "translation": {
+        "status": "Sin versión traducida cotejada alojada para esta ficha; consultar las fuentes editoriales."
+      },
+      "links": {
+        "scaife": "https://scaife.perseus.org/",
+        "gallica": "https://gallica.bnf.fr/",
+        "archive": "https://archive.org/"
+      },
+      "description": "Ficha de obra selecta (Oratoria política y retórica). Texto original identificado en TEI; el locus CTS documenta la edición de origen. Texto TEI de una edición histórica de Perseus, no facsímil ni nueva transcripción diplomática. Autenticidad y atribución de algunas obras transmitidas bajo el nombre del autor pueden ser debatidas.",
+      "coverType": "typographic-institutional",
+      "selectionOrder": 50
     }
   ]
 }
