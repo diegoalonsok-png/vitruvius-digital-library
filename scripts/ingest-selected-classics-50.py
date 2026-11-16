@@ -113,7 +113,7 @@ def extract(xml: bytes, expected_urn: str) -> tuple[list[dict], int]:
             "sourceDivisionHint": "/".join(reversed(source_parts)) or "no textual division",
         })
     greek_chars = sum(len(GREEK.findall(row["text"])) for row in chunks)
-    if len(chunks) < 4 or greek_chars < 500:
+    if len(chunks) < 5 or greek_chars < 500:
         raise ValueError(f"Incomplete or insufficient Greek text: {len(chunks)} segments, {greek_chars} characters")
     if len(chunks) < max(4, len(eligible) * .75):
         raise ValueError("Low passage coverage; nonempty TEI elements were omitted")
