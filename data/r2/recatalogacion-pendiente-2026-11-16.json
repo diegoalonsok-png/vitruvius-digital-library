@@ -1,0 +1,111 @@
+{
+  "schema": "vdl-r2-recataloguing-quarantine-v1",
+  "date": "2026-11-16",
+  "scope": "Inventario editorial de seis pares PDF/OCR detectados fuera del catálogo principal. Este documento NO mueve ni elimina objetos R2.",
+  "method": "Triangulación de candidatos y último informe S3/HEAD; sin autopsia de los PDF ni verificación completa SHA",
+  "verifiedTextIndexStatus": "separate-44-of-44",
+  "facsimileCatalogueCount": 117,
+  "facsimileIndexCount": 119,
+  "facsimileUnreconciledIds": [
+    "boecio-institutione-musica",
+    "historia-augusta"
+  ],
+  "records": [
+    {
+      "candidateId": "boecio-institutione-musica",
+      "sourceIdentifier": "DeInstitutioneArithmeticaLibriDuoDeInstitutioneMusicaLibriQuinque",
+      "status": "review-edition-scope",
+      "reason": "El identificador parece incluir De institutione arithmetica y De institutione musica; no catalogar automáticamente como solo De institutione musica.",
+      "heldObjects": [
+        "clasicos/pdf/boecio-institutione-musica.pdf",
+        "clasicos/texto/boecio-institutione-musica.json"
+      ],
+      "preserveObjects": true,
+      "publiclyVerifiedEdition": false,
+      "includeInVerifiedCatalogue": false,
+      "includeInVerifiedFacsimileCount": false,
+      "includeInSearchAsVerifiedWork": false,
+      "remediation": "Conservar el objeto en R2; identificar el volumen a partir de portada, metadata y texto original; cotejar derechos e idioma; asignar a una edición real mediante revisión humana, nunca renombrar automáticamente."
+    },
+    {
+      "candidateId": "estacio-obras",
+      "sourceIdentifier": "cu31924026519334",
+      "status": "source-excluded",
+      "reason": "Identificador excluido explícitamente del candidato; requiere comprobar título, autor y alcance del volumen.",
+      "heldObjects": [
+        "clasicos/pdf/estacio-obras.pdf",
+        "clasicos/texto/estacio-obras.json"
+      ],
+      "preserveObjects": true,
+      "publiclyVerifiedEdition": false,
+      "includeInVerifiedCatalogue": false,
+      "includeInVerifiedFacsimileCount": false,
+      "includeInSearchAsVerifiedWork": false,
+      "remediation": "Conservar el objeto en R2; identificar el volumen a partir de portada, metadata y texto original; cotejar derechos e idioma; asignar a una edición real mediante revisión humana, nunca renombrar automáticamente."
+    },
+    {
+      "candidateId": "historia-augusta",
+      "sourceIdentifier": "exercitationescr00pete",
+      "status": "review-edition-identity",
+      "reason": "El identificador de origen no acredita automáticamente una edición de Scriptores Historiae Augustae; cotejar portada y texto.",
+      "heldObjects": [
+        "clasicos/pdf/historia-augusta.pdf",
+        "clasicos/texto/historia-augusta.json"
+      ],
+      "preserveObjects": true,
+      "publiclyVerifiedEdition": false,
+      "includeInVerifiedCatalogue": false,
+      "includeInVerifiedFacsimileCount": false,
+      "includeInSearchAsVerifiedWork": false,
+      "remediation": "Conservar el objeto en R2; identificar el volumen a partir de portada, metadata y texto original; cotejar derechos e idioma; asignar a una edición real mediante revisión humana, nunca renombrar automáticamente."
+    },
+    {
+      "candidateId": "juliano-obras",
+      "sourceIdentifier": "fourthinternatio01inteuoft",
+      "status": "source-excluded",
+      "reason": "Identificador ajeno a la selección admitida y excluido explícitamente; no ofrecer como obras de Juliano.",
+      "heldObjects": [
+        "clasicos/pdf/juliano-obras.pdf",
+        "clasicos/texto/juliano-obras.json"
+      ],
+      "preserveObjects": true,
+      "publiclyVerifiedEdition": false,
+      "includeInVerifiedCatalogue": false,
+      "includeInVerifiedFacsimileCount": false,
+      "includeInSearchAsVerifiedWork": false,
+      "remediation": "Conservar el objeto en R2; identificar el volumen a partir de portada, metadata y texto original; cotejar derechos e idioma; asignar a una edición real mediante revisión humana, nunca renombrar automáticamente."
+    },
+    {
+      "candidateId": "justino-trogo-es",
+      "sourceIdentifier": "apologia-i-de-san-justino",
+      "status": "wrong-work-identified",
+      "reason": "Procedencia identificada como Apología I de san Justino, distinta de las Historias filípicas de Justino/Trogo; no atribuir a Trogo.",
+      "heldObjects": [
+        "clasicos/pdf/justino-trogo-es.pdf",
+        "clasicos/texto/justino-trogo-es.json"
+      ],
+      "preserveObjects": true,
+      "publiclyVerifiedEdition": false,
+      "includeInVerifiedCatalogue": false,
+      "includeInVerifiedFacsimileCount": false,
+      "includeInSearchAsVerifiedWork": false,
+      "remediation": "Conservar el objeto en R2; identificar el volumen a partir de portada, metadata y texto original; cotejar derechos e idioma; asignar a una edición real mediante revisión humana, nunca renombrar automáticamente."
+    },
+    {
+      "candidateId": "prudencio-poemas",
+      "sourceIdentifier": "aureliusprudenti00brocuoft",
+      "status": "source-excluded",
+      "reason": "La fuente está excluida en el candidato; requiere verificar edición concreta y motivo de exclusión.",
+      "heldObjects": [
+        "clasicos/pdf/prudencio-poemas.pdf",
+        "clasicos/texto/prudencio-poemas.json"
+      ],
+      "preserveObjects": true,
+      "publiclyVerifiedEdition": false,
+      "includeInVerifiedCatalogue": false,
+      "includeInVerifiedFacsimileCount": false,
+      "includeInSearchAsVerifiedWork": false,
+      "remediation": "Conservar el objeto en R2; identificar el volumen a partir de portada, metadata y texto original; cotejar derechos e idioma; asignar a una edición real mediante revisión humana, nunca renombrar automáticamente."
+    }
+  ]
+}
