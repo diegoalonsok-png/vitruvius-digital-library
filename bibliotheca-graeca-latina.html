@@ -153,6 +153,20 @@ html[data-bibliotheca-color="navy"] :is(.top,.bibliotheca-suite,header.hero,.sea
 html[data-bibliotheca-color="slate"] :is(.top,.bibliotheca-suite,header.hero,.searcharea){background:#394650!important}
 html[data-bibliotheca-color="sepia"] :is(.top,.bibliotheca-suite,header.hero,.searcharea){background:#f2e8d4!important}
 html[data-bibliotheca-color="sepia"] :is(.top,.bibliotheca-suite,header.hero,.searcharea,footer,.intro,.eyebrow,h1,h2,h3,.toplinks a,.brand){color:#302921!important}
+</style><style id="bibliotheca-one-line-navigation">
+/* Una línea real en escritorio; menú horizontal desplazable en pantallas intermedias. */
+@media(min-width:1100px){
+ nav.top{display:flex!important;align-items:center!important;gap:12px!important;flex-wrap:nowrap!important;max-width:100%;min-width:0}
+ nav.top>.brand{flex:0 0 auto;font-size:clamp(15px,1.15vw,20px)!important}
+ nav.top>.toplinks{display:flex!important;flex:1 1 auto!important;flex-wrap:nowrap!important;justify-content:flex-end!important;gap:2px!important;min-width:0;overflow-x:auto;scrollbar-width:thin;white-space:nowrap}
+ nav.top>.toplinks a{flex:0 0 auto;padding:5px 6px!important;font-size:clamp(10px,.73vw,12px)!important;white-space:nowrap}
+ nav.top>.bibliotheca-top-tools{display:flex!important;flex:0 0 auto;gap:5px!important;align-items:center}
+ nav.top .bibliotheca-language-field{gap:4px!important;font-size:11px!important}
+ nav.top #language-toggle{width:64px!important;min-width:64px!important;padding:6px!important}
+ nav.top #bibliotheca-theme{width:36px!important;min-width:36px!important;height:36px!important}
+ nav.top .bibliotheca-color-palette>summary{min-height:36px!important;min-width:80px!important;padding:5px 8px!important}
+}
+@media(min-width:1100px) and (max-width:1480px){nav.top>.toplinks{justify-content:flex-start!important}}
 </style></head>
 <body><a class="vdl-skip-link" href="#main-content">Saltar al contenido principal</a>
 <main class="library" id="main-content">
