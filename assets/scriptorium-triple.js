@@ -554,7 +554,7 @@ async function renderPdfHighlight(){
  }catch(error){
   if(my!==pdfRenderSerial)return;
   pdfOverlay.hidden=true;facsimile.hidden=false;pdfEvidence.hidden=false;
-  pdfEvidence.textContent="No se pudo examinar la capa textual del PDF ("+(error.message||"restricción de acceso")+"). El facsímil permanece disponible y la coincidencia OCR se muestra debajo.";
+  pdfEvidence.textContent="El visor exacto de PDF.js no pudo abrir la página física "+pageIndex+" ("+(error.message||"restricción de acceso")+"). Se ofrece el PDF externo con salto propuesto, pero su posición no queda verificada; comprobar con el texto latino indexado.";
  }
 }
 searchInPdf.addEventListener("click",()=>{if(view!=="pdf")setView("pdf");void renderPdfHighlight();});
@@ -621,6 +621,7 @@ function underlineTerm(){
   if(!data||view!=="pdf")return;
   const item=data.pages[index];
   const page=Number(pageFor(item))||null;
+  if(!page){view="text";body.hidden=false;facsimile.hidden=true;pdfOverlay.hidden=true;showText.setAttribute("aria-pressed","true");showFacsimile.setAttribute("aria-pressed","false");pdfEvidence.hidden=false;pdfEvidence.textContent="No se puede desplazar el PDF: la página física de este locus todavía no está indexada. El texto latino continúa sincronizado.";return;}
   const source=new URL(data.ed.pdf,location.href).href;
   const url=source+"#"+(page?"page="+page+"&":"")+"zoom="+pdfZoom;
   if(facsimile.dataset.currentPdf!==url){facsimile.src=url;facsimile.dataset.currentPdf=url;pdfOverlay.hidden=true;facsimile.hidden=true;pdfEvidence.hidden=false;pdfEvidence.textContent="Localizando página "+(page||"sin asignar")+" en el facsímil digital…";void renderPdfHighlight();}
