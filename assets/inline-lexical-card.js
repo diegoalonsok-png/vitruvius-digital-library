@@ -78,13 +78,32 @@ function position(rect){
  const spaceBelow=window.innerHeight-rect.bottom;
  popup.style.top=(spaceBelow>=320?rect.bottom+9:Math.max(10,rect.top-350))+"px";
 }
-function links(term){
+function links(term,sourceElement){
+ // A clicked, attested corpus hit should lead to the same locus in the
+ // bilingual reader. Preserve its edition and pass the selected word for highlighting.
+ const article=sourceElement?.closest?.("#search-results .result-parallel");
+ const reader=article?.querySelector?.(".result-actions a[href*='lector-bilingue']");
+ const bar=document.createElement("nav");bar.className="vlc-links";
+ if(reader){
+  try{
+   const url=new URL(reader.getAttribute("href"),location.href);
+   url.searchParams.set("q",term);
+   const a=document.createElement("a");
+   a.href=url.href;a.textContent="Abrir este locus en visor bilingüe";
+   bar.append(a);
+  }catch{}
+ }
+ for(const [label,href] of [["Estudiar en Lexicon","vitruvia-lexicon.html?q="+encodeURIComponent(term)+"&mode=palabra"],["Concordancias","index-locorum.html?q="+encodeURIComponent(term)]]){
+  const a=document.createElement("a");a.href=href;a.textContent=label;bar.append(a);
+ }content.append(bar);
+}
+
  const bar=document.createElement("nav");bar.className="vlc-links";
  for(const [label,href] of [["Estudiar en Lexicon","vitruvia-lexicon.html?q="+encodeURIComponent(term)+"&mode=palabra"],["Concordancias","index-locorum.html?q="+encodeURIComponent(term)]]){
   const a=document.createElement("a");a.href=href;a.textContent=label;bar.append(a);
  }content.append(bar);
 }
-async function show(term,rect){
+async function show(term,rect,sourceElement=null){
  const id=++serial;h.textContent=term;popup.hidden=false;position(rect);
  content.replaceChildren();
  const token=normalize(term);
@@ -107,7 +126,7 @@ async function show(term,rect){
    a.rel="noopener noreferrer";a.textContent="Fuente y licencia";
    cap.append(a);fig.append(pic,cap);content.append(fig);
   }
-  links(term);
+  links(term,sourceElement);
   return;
  }
  content.textContent="Consultando repertorio…";
@@ -147,14 +166,14 @@ async function show(term,rect){
   pic.src=im.src;pic.alt="Atrio e impluvio de una casa romana de Pompeya";pic.loading="lazy";pic.addEventListener("error",()=>pic.remove(),{once:true});
   const cap=document.createElement("figcaption");cap.textContent=im.caption+" ";const a=document.createElement("a");a.href=im.url;a.target="_blank";a.rel="noopener noreferrer";a.textContent="Fuente y licencia";cap.append(a);fig.append(pic,cap);content.append(fig);
  }
- links(term);
+ links(term,sourceElement);
 }
 // Public scoped entrypoint for direct click handlers in the main edition
 // concordance. The dictionary is still fetched only after user interaction.
 window.VitruviusLexicalCard=Object.freeze({
  open:(term,element)=>{
   const rect=element?.getBoundingClientRect?.()||{left:12,top:80,bottom:120};
-  return show(term,rect);
+  return show(term,rect,element);
  },
  close
 });
@@ -176,7 +195,7 @@ document.addEventListener("click",event=>{
  if(!/^[\p{L}\p{M}'ʼ’-]{2,70}$/u.test(term))return;
  event.preventDefault();
  event.stopPropagation();
- void show(term,mark.getBoundingClientRect());
+ void show(term,mark.getBoundingClientRect(),mark);
 },true);
 document.addEventListener("dblclick",e=>{
  if(e.button!==0||!e.target.closest(selector)||e.target.closest("a,button,input,textarea,select,[contenteditable],#vitruvius-lexical-card"))return;
@@ -184,6 +203,6 @@ document.addEventListener("dblclick",e=>{
  const word=sel.toString().trim();
  if(!/^[\p{L}\p{M}'ʼ’-]{2,70}$/u.test(word))return;
  const rect=sel.getRangeAt(0).getBoundingClientRect();
- show(word,rect);
+ show(word,rect,e.target);
 });
 })();
