@@ -1,0 +1,42 @@
+name: Bibliotheca - completar indice lexico R2
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - ".github/workflows/build-r2-lexical-index.yml"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: bibliotheca-r2-lexical-index
+  cancel-in-progress: false
+
+jobs:
+  verify-and-index:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Verify all R2 originals and compile lexical shards
+        run: node scripts/build-r2-classics-lexical-index.mjs
+      - name: Check generated manifest and counts
+        run: |
+          node --input-type=module -e 'import fs from "node:fs"; import assert from "node:assert/strict"; const m=JSON.parse(fs.readFileSync("data/r2/corpus-manifest.json")); const i=JSON.parse(fs.readFileSync("data/index/classics-r2/manifest.json")); assert.equal(i.works,m.obras.length); assert.equal(i.r2VerifiedEditions,m.obras.length); assert.equal(i.passages,m.obras.reduce((n,x)=>n+x.pasajes,0)); console.log("R2 original editions indexed:",i.works,"passages:",i.passages)'
+      - name: Commit generated index only
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/index/classics-r2/
+          if git diff --cached --quiet; then
+            echo "Index unchanged."
+          else
+            git commit -m "index: publish SHA256 verified R2 lexical shards"
+            git pull --rebase origin main
+            git push origin HEAD:main
+          fi
