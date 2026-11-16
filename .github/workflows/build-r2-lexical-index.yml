@@ -7,6 +7,7 @@ on:
       - "scripts/build-r2-classics-lexical-index.mjs"
       - "scripts/write-r2-sync-status.mjs"
       - "scripts/test-r2-classics-lexical-coverage.mjs"
+      - "scripts/test-r2-index-isolation.mjs"
       - "scripts/audit-bibliotheca-original-coverage.mjs"
       - "scripts/build-classics-lexical-index.mjs"
       - "data/r2/corpus-manifest.json"
@@ -33,6 +34,7 @@ jobs:
         run: |
           node --check scripts/build-r2-classics-lexical-index.mjs
           node --check scripts/build-classics-lexical-index.mjs
+          node scripts/test-r2-index-isolation.mjs
           node scripts/audit-bibliotheca-original-coverage.mjs
       - name: Verify all 44 R2 originals and compile lexical shards
         env:
