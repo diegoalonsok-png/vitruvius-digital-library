@@ -1,0 +1,52 @@
+/* Bibliotheca: structural compact redesign based on Lexicon's horizontal rhythm. */
+main.library{width:min(1500px,calc(100% - 32px));line-height:1.45}
+main.library .bibliotheca-suite{padding:4px 0!important}
+main.library .bibliotheca-suite-links{display:flex!important;flex-wrap:nowrap!important;overflow-x:auto;white-space:nowrap;gap:5px!important;scrollbar-width:thin}
+main.library .bibliotheca-suite-links>a,main.library .bibliotheca-suite-links>button{flex:0 0 auto;min-height:29px!important;padding:4px 8px!important;font-size:11px!important}
+main.library header.hero{padding:10px 0 6px!important}
+main.library header.hero h1{font-size:clamp(24px,2.2vw,32px)!important;margin:0}
+main.library header.hero .intro{font-size:12px;margin:3px 0}
+main.library .searcharea{padding:7px 0!important}
+main.library .bibliotheca-search-modes{display:flex;gap:6px;margin:7px 0 5px}
+main.library .bibliotheca-search-modes button{cursor:pointer;background:transparent;color:inherit;border:1px solid #777;border-radius:6px;padding:5px 12px;min-height:30px;font:600 12px system-ui}
+main.library .bibliotheca-search-modes button[aria-pressed=true]{background:#d3b780;color:#17202a;border-color:#d3b780}
+main.library #search-form{display:flex!important;flex-wrap:nowrap!important;align-items:center;gap:6px;min-height:44px!important;padding:4px 6px 4px 12px!important}
+main.library #search-form input{flex:1 1 auto;min-width:0;font-size:15px!important}
+main.library #search-form button{flex:0 0 auto;min-height:34px!important;padding:5px 12px!important;font-size:12px!important;white-space:nowrap}
+main.library .bibliotheca-search-shortcuts{display:none!important}
+main.library #bibliotheca-shortcut-note{font-size:11px!important;margin:5px 0!important}
+main.library .biblio-extra-filters{border:1px solid #7776;border-radius:6px;margin:5px 0}
+main.library .biblio-extra-filters>summary{cursor:pointer;padding:6px 10px;font:600 11px system-ui}
+main.library .biblio-extra-filters .bibliotheca-advanced-controls{padding:6px 10px!important;gap:8px!important}
+main.library .biblio-extra-filters :is(input,select){min-height:34px!important;padding:5px 8px!important;font-size:12px!important}
+main.library .biblio-extra-filters .workrow.bibliotheca-filters{display:grid!important;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px!important;margin:5px 10px!important}
+main.library .biblio-extra-filters .filter-field{min-width:0}
+main.library .biblio-extra-filters .filter-field select{width:100%;min-width:0!important;min-height:34px!important;padding:5px 8px!important}
+main.library :is(.filter-method,.bibliotheca-static-index,.coverage,.search-status){font-size:11px!important;line-height:1.4!important;margin:5px 0!important}
+main.library #bibliotheca-catalogue-region{margin:6px 0}
+main.library #bibliotheca-work-search{margin:4px 0!important;padding:7px 10px!important;border-radius:6px!important}
+main.library #bibliotheca-work-search>h3,main.library #bibliotheca-work-search>.bws-intro,main.library #bibliotheca-work-search>form,main.library #bibliotheca-work-search>.bws-help{display:none!important}
+main.library #bibliotheca-work-search .bws-advanced{margin:4px 0!important}
+main.library #bibliotheca-work-search .bws-advanced>summary{padding:6px 9px!important;font-size:11px!important}
+main.library #bibliotheca-work-search .bws-library-filters{grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:6px!important;margin:7px!important}
+main.library #bibliotheca-work-search .bws-library-filters :is(input,select){min-height:34px!important;padding:5px 8px!important;font-size:12px!important}
+main.library #bibliotheca-work-search .bws-alphabet{max-height:75px;overflow:auto;gap:3px!important;margin:6px!important}
+main.library #bibliotheca-work-search .bws-alphabet button{min-height:27px!important;min-width:27px!important;padding:3px 5px!important;font-size:12px!important}
+main.library #bibliotheca-work-search .bws-results{max-height:390px!important}
+main.library #bibliotheca-work-search .bws-item{display:grid;grid-template-columns:minmax(170px,1.15fr) minmax(150px,1fr) minmax(210px,1.4fr);align-items:center;gap:7px;padding:7px 4px!important}
+main.library #bibliotheca-work-search .bws-heading{font-size:13px!important;line-height:1.3!important}
+main.library #bibliotheca-work-search .bws-heading strong{font-size:13px!important}
+main.library #bibliotheca-work-search .bws-heading span,main.library #bibliotheca-work-search .bws-meta{font-size:11px!important;margin:0!important;line-height:1.35!important}
+main.library #bibliotheca-work-search .bws-actions{gap:4px 10px!important;line-height:1.3!important}
+main.library #bibliotheca-work-search .bws-actions a{font-size:11px!important;padding:0!important}
+main.library #bibliotheca-work-search .bws-count{font-size:11px!important;margin:4px 0!important}
+main.library #bibliotheca-entity-search,main.library #bibliotheca-concordance{padding:8px 10px!important;margin:7px 0!important;border-radius:6px!important}
+main.library #bibliotheca-entity-search h3,main.library #bibliotheca-concordance h3{font-size:17px!important;margin:0 0 5px!important}
+main.library #bibliotheca-entity-search .bws-entity-controls,main.library #bibliotheca-concordance .bws-concordance-controls{gap:6px!important;margin:5px 0!important}
+main.library #bibliotheca-entity-search :is(input,select,button),main.library #bibliotheca-concordance :is(input,select,button){min-height:35px!important;padding:5px 8px!important;font-size:12px!important}
+main.library #bibliotheca-entity-search p,main.library #bibliotheca-concordance p{font-size:11px!important;line-height:1.4!important;margin:4px 0!important}
+main.library #bibliotheca-concordance .bws-concordance-hit{padding:7px 3px!important}
+main.library #classics-tally{margin:4px 0!important}
+main.library #bibliotheca-documentary-status{margin:10px 0;padding:6px 0}
+@media(max-width:850px){main.library .biblio-extra-filters .workrow.bibliotheca-filters{grid-template-columns:repeat(2,minmax(0,1fr))}main.library #bibliotheca-work-search .bws-item{grid-template-columns:1fr 1fr}main.library #bibliotheca-work-search .bws-actions{grid-column:1/-1}}
+@media(max-width:600px){main.library #search-form{flex-wrap:wrap!important}main.library #search-form input{flex:1 1 100%}main.library #bibliotheca-work-search .bws-item{grid-template-columns:1fr}main.library #bibliotheca-work-search .bws-actions{grid-column:auto}main.library #bibliotheca-work-search .bws-library-filters{grid-template-columns:1fr!important}}
