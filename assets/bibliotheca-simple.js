@@ -661,7 +661,7 @@ function render(rows,q,details){
    simpleUrl.searchParams.set("left",r.language);
    simpleUrl.searchParams.set("right","auto-es");
    simpleUrl.searchParams.set("locus",String(r.locus));
-   const simpleLink=el("a","passage-link","Visor simple");
+   const simpleLink=el("a","passage-link","Visor simplificado");
    simpleLink.href=simpleUrl.href;li.append(simpleLink);
   }
   li.append(passageActions(r,byId.get(r.workId)||{},p));
