@@ -16,8 +16,14 @@ function style(){
  ".classics-tally-inner{width:min(1240px,calc(100% - 112px));margin:auto}",
  ".classics-tally h2{font:400 clamp(20px,2.1vw,27px)/1.2 \"Gentium Book Plus\",\"Cardo\",Georgia,serif;letter-spacing:-.025em;margin:0 0 5px}",
  ".classics-tally p{font:11px/1.55 Arial,sans-serif;margin:4px 0;opacity:.9}",
- ".classics-tally dl{display:grid;grid-template-columns:repeat(auto-fit,minmax(145px,1fr));gap:9px;margin:12px 0}",
- ".classics-tally dl>div{padding:11px 12px 10px;border:1px solid #62636a;border-radius:9px;min-width:0;background:rgba(255,255,255,.018);transition:border-color .2s ease,background .2s ease}",
+ ".classics-tally dl{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px 16px;margin:8px 0;align-items:stretch}",
+ ".classics-tally dl>div{display:grid;grid-template-columns:auto minmax(0,1fr);grid-template-rows:auto auto;column-gap:9px;align-items:baseline;min-width:0}",
+ ".classics-tally dl>div dd{grid-column:1;grid-row:1;font-size:clamp(21px,2vw,28px);margin:0}",
+ ".classics-tally dl>div dt{grid-column:2;grid-row:1;font-size:11px;line-height:1.3}",
+ ".classics-tally dl>div .tally-details{grid-column:1/-1;grid-row:2;margin-top:2px;border-top:0;padding-top:0}",
+ ".classics-tally dl>div .tally-details summary{font-size:10px;opacity:.8}",
+
+ ".classics-tally dl>div{padding:9px 8px;border:0;border-bottom:1px solid #62636a;border-radius:0;min-width:0;background:transparent;transition:border-color .2s ease,background .2s ease}",
  ".classics-tally dd{margin:0 0 4px;font:400 clamp(25px,2.8vw,35px)/1.07 \"Gentium Book Plus\",\"Cardo\",Georgia,serif;letter-spacing:-.035em;font-variant-numeric:lining-nums tabular-nums}",
  ".classics-tally dt{font:400 clamp(10px,.86vw,12px)/1.35 Arial,Helvetica,sans-serif;letter-spacing:.005em;opacity:.85}",
  ".classics-tally a{color:inherit;text-underline-offset:3px}",
@@ -37,10 +43,10 @@ function style(){
  ".classics-tally .tally-editions small{opacity:.75}",
  ".classics-tally .tally-details a{color:inherit;text-decoration:underline;text-underline-offset:2px}",
   "body:has(.bibliotheca-suite) .classics-tally{background:#121214;color:#e9e9ea}",
- "body:has(.bibliotheca-suite) .classics-tally dl>div{border-color:#45454a;background:#19191b}",
- "@media(hover:hover){.classics-tally dl>div:hover{border-color:#8b8b90;background:rgba(255,255,255,.04)}}",
+ "body:has(.bibliotheca-suite) .classics-tally dl>div{border-color:#45454a;background:transparent}",
+ "@media(hover:hover){.classics-tally dl>div:hover{border-color:#8b8b90;background:rgba(255,255,255,.025)}}",
  "@media(max-width:800px){.classics-tally-inner{width:calc(100% - 36px)}.classics-tally dl{grid-template-columns:repeat(2,minmax(0,1fr))}}",
- "@media(max-width:480px){.classics-tally dl{gap:9px}.classics-tally dl>div{padding:10px 9px}.classics-tally dd{font-size:29px}}",
+ "@media(max-width:480px){.classics-tally dl{grid-template-columns:1fr;gap:4px}.classics-tally dl>div{padding:6px 5px}.classics-tally dd{font-size:23px}}",
  "@media print{.classics-tally{break-inside:avoid}}"
  ].join("\n");document.head.append(el);
 }
