@@ -47,6 +47,16 @@ jobs:
         run: node scripts/test-r2-classics-lexical-coverage.mjs
       - name: Publish source-index synchronization certificate
         run: node scripts/write-r2-sync-status.mjs
+      - name: Upload R2 build diagnostics
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: r2-lexical-build-diagnostics
+          if-no-files-found: warn
+          retention-days: 14
+          path: |
+            data/index/classics-r2/manifest.json
+            data/r2/classics-sync-status.json
       - name: Commit generated index and verified certificate only
         run: |
           git config user.name "github-actions[bot]"
