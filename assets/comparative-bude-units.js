@@ -68,6 +68,7 @@ async function render(query){
  $("bude-open-reader").href="apparatus-bude.html?locus="+encodeURIComponent(locus);
  $("bude-open-h").href="concordancia-folios.html?locus="+encodeURIComponent(locus);
  const u=new URL(location.href);u.searchParams.set("locus",locus);history.replaceState(null,"",u);
+ window.dispatchEvent(new CustomEvent("vdl:comparative-locus-render",{detail:{locus}}));
  root.replaceChildren();status.textContent="Consultando "+fmt(locus)+"…";
  const evidence=data.coverage?.loci?.find(x=>x.locus===locus);
  const indicator=$("bude-cobertura");
