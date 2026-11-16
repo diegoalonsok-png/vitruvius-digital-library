@@ -13,7 +13,7 @@ for(const file of pages){
  const html=read(file);
  assert.match(html,/<title>[^<]+<\/title>/i,file+" missing title");
  assert(!/<a\s+[^>]*href="javascript:/i.test(html),file+" unsafe href");
- assert(/metodologia-filologica\.html|auditoria-textos-clasicos\.html/.test(html),
+ assert(/metodologia-filologica\.html|metodologia-catalogo-clasico\.html|auditoria-textos-clasicos\.html/.test(html),
   file+" lacks academic method access");
  assert(/auditoria-academica(\.html)?\b/.test(html),file+" lacks audit access");
 }
