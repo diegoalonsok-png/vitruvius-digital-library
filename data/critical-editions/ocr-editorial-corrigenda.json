@@ -1,0 +1,44 @@
+{
+  "schema": "vdl-ocr-editorial-corrigenda-v1",
+  "generated": "2026-11-15",
+  "policy": "Non-destructive reading layer. Original OCR preserved in data/r2/folios/{edition}-ocr.json and per-page word boxes. Proposals based on independently stated bibliographic title, imprint and publication year; NOT verified against page images. Do not treat as evidence of manuscript readings or textual variants.",
+  "editions": {
+    "rose-1899": [
+      {
+        "page": 5,
+        "from": "LIBJEtl",
+        "to": "LIBRI",
+        "basis": "Bibliographic title: Vitruvii De architectura libri decem",
+        "status": "editorial-bibliography-proposal",
+        "facsimile_checked": false
+      },
+      {
+        "page": 6,
+        "from": "IilPSIAE",
+        "to": "LIPSIAE",
+        "basis": "Place of publication on the edition title page: Lipsiae",
+        "status": "editorial-bibliography-proposal",
+        "facsimile_checked": false
+      }
+    ],
+    "krohn-1912": [
+      {
+        "page": 5,
+        "from": "MCMXD",
+        "to": "MCMXII",
+        "basis": "Publication year 1912 in Roman numerals (edition imprint)",
+        "status": "editorial-bibliography-proposal",
+        "facsimile_checked": false
+      },
+      {
+        "page": 6,
+        "from": "TEUBNEKI",
+        "to": "TEUBNERI",
+        "basis": "Publisher name B. G. Teubner from edition bibliographic record",
+        "status": "editorial-bibliography-proposal",
+        "facsimile_checked": false
+      }
+    ]
+  },
+  "method": "Apply exact whole-string fragments only if they occur exactly once in the indexed OCR page. Display the raw source and proposed corrected reading together. Corrections apply only to page text searching, never manuscript apparatus sigla or coordinate extraction. Any uncertain case must remain unchanged until page-image verification."
+}
