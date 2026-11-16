@@ -248,6 +248,102 @@
         "url": "classics-text-reader.html?work=aristophanes-plutus&lang=grc",
         "status": "Texto griego digital indexado; verificar loci contra la edición citada."
       }
+    },
+    {
+      "id": "euripides-cyclops",
+      "author": "Eurípides",
+      "title": "Κύκλωψ · El cíclope",
+      "language": "grc",
+      "genre": "Tragedia / drama griego",
+      "dating": "siglo V a. C.",
+      "source": "Perseus Digital Library · Gilbert Murray",
+      "sourceUrl": "https://github.com/PerseusDL/canonical-greekLit/tree/master/data/tlg0006/tlg001",
+      "textStatus": "registered-pending-lexical-index",
+      "status": "Texto griego incorporado y registrado; comprobación del índice léxico pendiente",
+      "publicStatus": "lectura-local-completa",
+      "corpusFiles": {
+        "grc": "data/classics-corpus/euripides-cyclops-grc.json"
+      },
+      "localVersions": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/euripides-cyclops-grc.json"
+        }
+      ],
+      "reading": {
+        "url": "classics-text-reader.html?work=euripides-cyclops&lang=grc",
+        "status": "Texto griego de edición histórica; cotejo crítico independiente pendiente"
+      },
+      "links": {
+        "scaife": "https://scaife.perseus.org/",
+        "gallica": "https://gallica.bnf.fr/",
+        "archive": "https://archive.org/"
+      },
+      "description": "Texto original en griego extraído de TEI de Perseus; edición crítica histórica, no colación paleográfica propia."
+    },
+    {
+      "id": "euripides-ion",
+      "author": "Eurípides",
+      "title": "Ἴων · Ion",
+      "language": "grc",
+      "genre": "Tragedia / drama griego",
+      "dating": "siglo V a. C.",
+      "source": "Perseus Digital Library · Gilbert Murray",
+      "sourceUrl": "https://github.com/PerseusDL/canonical-greekLit/tree/master/data/tlg0006/tlg010",
+      "textStatus": "registered-pending-lexical-index",
+      "status": "Texto griego incorporado y registrado; comprobación del índice léxico pendiente",
+      "publicStatus": "lectura-local-completa",
+      "corpusFiles": {
+        "grc": "data/classics-corpus/euripides-ion-grc.json"
+      },
+      "localVersions": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/euripides-ion-grc.json"
+        }
+      ],
+      "reading": {
+        "url": "classics-text-reader.html?work=euripides-ion&lang=grc",
+        "status": "Texto griego de edición histórica; cotejo crítico independiente pendiente"
+      },
+      "links": {
+        "scaife": "https://scaife.perseus.org/",
+        "gallica": "https://gallica.bnf.fr/",
+        "archive": "https://archive.org/"
+      },
+      "description": "Texto original en griego extraído de TEI de Perseus; edición crítica histórica, no colación paleográfica propia."
+    },
+    {
+      "id": "euripides-helena",
+      "author": "Eurípides",
+      "title": "Ἑλένη · Helena",
+      "language": "grc",
+      "genre": "Tragedia / drama griego",
+      "dating": "siglo V a. C.",
+      "source": "Perseus Digital Library · Gilbert Murray",
+      "sourceUrl": "https://github.com/PerseusDL/canonical-greekLit/tree/master/data/tlg0006/tlg014",
+      "textStatus": "registered-pending-lexical-index",
+      "status": "Texto griego incorporado y registrado; comprobación del índice léxico pendiente",
+      "publicStatus": "lectura-local-completa",
+      "corpusFiles": {
+        "grc": "data/classics-corpus/euripides-helena-grc.json"
+      },
+      "localVersions": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/euripides-helena-grc.json"
+        }
+      ],
+      "reading": {
+        "url": "classics-text-reader.html?work=euripides-helena&lang=grc",
+        "status": "Texto griego de edición histórica; cotejo crítico independiente pendiente"
+      },
+      "links": {
+        "scaife": "https://scaife.perseus.org/",
+        "gallica": "https://gallica.bnf.fr/",
+        "archive": "https://archive.org/"
+      },
+      "description": "Texto original en griego extraído de TEI de Perseus; edición crítica histórica, no colación paleográfica propia."
     }
   ]
 }
