@@ -21,10 +21,26 @@ const refs=FULL?[...rows.keys()]:WANTED.filter(id=>rows.has(id));
 const greek=/[\u0370-\u03ff\u1f00-\u1fff]/u;
 const codepoints=s=>[...s].map(c=>c.codePointAt(0).toString(16)).join("-");
 const stem=word=>P.stem(word,greek.test(word)?"greek":"latin");
+// Remote R2 GETs are eventually reliable but an occasional CDN/network
+// interruption must not be classified as an absent or corrupted edition.
+// Retry only temporary transport/server failures; never retry missing files.
+const pause=ms=>new Promise(resolve=>setTimeout(resolve,ms));
 const read=async(url)=>{
- const resp=await fetch(url,{signal:AbortSignal.timeout(35000),headers:{"Accept":"application/json, text/html"}});
- if(!resp.ok)throw Error("HTTP "+resp.status+" en "+url);
- return resp;
+ let last=null;
+ for(let attempt=0;attempt<4;attempt++){
+  try{
+   const resp=await fetch(url,{signal:AbortSignal.timeout(35000),headers:{"Accept":"application/json, text/html"}});
+   if(resp.ok)return resp;
+   const e=new Error("HTTP "+resp.status+" en "+url);
+   if(![408,425,429,500,502,503,504].includes(resp.status))throw e;
+   last=e;
+  }catch(e){
+   if(/^HTTP (?!408|425|429|500|502|503|504)/.test(e.message))throw e;
+   last=e;
+  }
+  if(attempt<3)await pause(500*(attempt+1)*(attempt+1));
+ }
+ throw Error("Fallo de conexión temporal después de 4 intentos: "+url+" · "+(last?.message||"sin respuesta"));
 };
 const report={schema:"vdl-bibliotheca-lexical-live-v1",generated:new Date().toISOString(),
  method:"GET de OCR en R2, GET de fragmentos invertidos R2; comparación de palabras atestiguadas y páginas digitales con el mismo normalizador del visor",
@@ -47,7 +63,7 @@ try{
 const cachedFragments=new Map();
 async function fragment(root){
  const key="s-"+codepoints([...root].slice(0,2).join(""))+".json";
- if(!cachedFragments.has(key))cachedFragments.set(key,read(BASE+key).then(r=>r.json()));
+ if(!cachedFragments.has(key))cachedFragments.set(key,read(BASE+key).then(r=>r.json()).catch(e=>{cachedFragments.delete(key);throw e}));
  return cachedFragments.get(key);
 }
 if(index){
