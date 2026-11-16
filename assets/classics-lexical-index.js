@@ -94,7 +94,7 @@ function manifest(){
    if(seen.has(key))continue;seen.add(key);
    index.push({...work,i:index.length,indexSource:base,indexSourceIndex:sourceIndex});
   }
-  return {...first,index,works:index.length,passages:sources.reduce((n,s)=>n+(s.info.passages||0),0),tokens:sources.reduce((n,s)=>n+(s.info.tokens||0),0),
+  return {...first,index,works:index.length,passages:index.reduce((n,w)=>n+(w.passages||0),0),tokens:index.reduce((n,w)=>n+(w.tokens||0),0),
    sourceCount:sources.length,generated:sources.map(s=>s.info.generated).sort().at(-1),
    method:first.method+" La ampliación R2 se consulta por fragmentos y conserva la procedencia de cada edición."};
  });
