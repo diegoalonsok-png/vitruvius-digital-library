@@ -22,15 +22,30 @@ def load(path):
 def main():
     registry = load(REGISTRY)
     catalog = load(CATALOG)["works"]
+    supplement = load(ROOT / "data/bibliotheca-expansion-publicada-2026-11-16.json")["works"]
+    master_ids = {w["id"] for w in catalog}
+    supplement_ids = {w["id"] for w in supplement}
+    if master_ids & supplement_ids:
+        raise SystemExit("Master and supplementary catalogues share work identifiers")
+    all_editions = registry["entries"]
+    master_editions = [e for e in all_editions if e["workId"] in master_ids]
+    unknown = {e["workId"] for e in all_editions} - master_ids - supplement_ids
+    if unknown:
+        raise SystemExit("Uncatalogued work editions: " + ", ".join(sorted(unknown)[:8]))
     coverage = load(COVERAGE)
     indexed = {}
     verified_local = {}
     declared_remote = {}
-    for edition in registry["entries"]:
+    for edition in all_editions:
         path = edition["path"]
         remote = path.startswith(("https://", "http://"))
         if not remote and not (ROOT / path).is_file():
             raise SystemExit("Missing locally registered text: " + path)
+        # Legacy coverage represents only the 271-work main repertory.
+        # Additional Greek works belong to the supplementary catalog and
+        # are counted in the unified inventory, not duplicated here.
+        if edition["workId"] not in master_ids:
+            continue
         indexed.setdefault(edition["workId"], set()).add(edition["language"])
         if not remote:
             verified_local.setdefault(edition["workId"], set()).add(edition["language"])
@@ -78,8 +93,10 @@ def main():
     totals["originalTextNotIndexed"] = len(catalog) - totals["originalTextIndexed"]
     totals["declaredR2OriginalWorks"] = sum(w["originalR2Registered"] for w in coverage["works"])
     totals["registeredOriginalWorks"] = sum(w["registeredOriginal"] for w in coverage["works"])
-    totals["registeredTextVersions"] = len(registry["entries"])
-    totals["verifiedLocalTextVersions"] = sum(not e["path"].startswith(("https://", "http://")) for e in registry["entries"])
+    totals["registeredTextVersions"] = len(master_editions)
+    totals["supplementaryTextVersions"] = len(all_editions) - len(master_editions)
+    totals["allRegisteredTextVersions"] = len(all_editions)
+    totals["verifiedLocalTextVersions"] = sum(not e["path"].startswith(("https://", "http://")) for e in master_editions)
     totals["verifiedLocalOriginalTextIndexed"] = sum(
         by_id[wid]["language"] in languages for wid, languages in verified_local.items()
     )
@@ -116,13 +133,13 @@ def main():
         row["author"] = by_id[work_id]["author"]
         row["originalLanguage"] = by_id[work_id]["language"]
         row["indexedTextLanguages"] = sorted(indexed.get(work_id, set()))
-        row["indexedTextFiles"] = sorted({e["path"] for e in registry["entries"] if e["workId"] == work_id})
+        row["indexedTextFiles"] = sorted({e["path"] for e in master_editions if e["workId"] == work_id})
         row["manuscriptRecords"] = sum(work_id in r.get("workIds", []) for r in witnesses)
         row["hasManuscriptRecord"] = bool(row["manuscriptRecords"])
     audit["counts"].update(cataloguedWorks=len(catalog),
         catalogueStatuses=dict(Counter(w["publicStatus"] for w in catalog)),
         locallyReadableClaims=sum(w["publicStatus"].startswith("lectura-local-") for w in catalog),
-        indexedTextVersions=len(registry["entries"]), indexedDistinctWorks=len(indexed),
+        indexedTextVersions=len(master_editions), indexedDistinctWorks=len(indexed),
         manuscriptWitnesses=len(witnesses))
     audit["date"] = coverage["generated"]
     audit_path.write_text(json.dumps(audit, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
