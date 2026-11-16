@@ -87,8 +87,8 @@ assert.ok(works.length>=190,"Unexpected classical catalogue shrinkage");
 const classical=sourceFile("assets/bibliotheca-simple.js");
 const corpus=sourceFile("assets/bibliotheca-corpus-search.js");
 new Script(classical,{filename:"assets/bibliotheca-simple.js"});
-assert.ok(classical.includes("searchPassages([q,...transliterations,")&&
- classical.includes("if(!workId&&!options.exhaustive)")&&
+assert.ok(classical.includes("searchPassages(terms,")&&
+ classical.includes('if(!workId&&!options.exhaustive&&mode==="literal"&&!locusCriterion)')&&
   classical.includes("maxPerEdition:workId?200:70,limit:600")&&
   classical.includes("includeFullText:true,includeOCR:false")&&
   classical.includes("attestedGreekForms(q)"),
