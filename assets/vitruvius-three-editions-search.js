@@ -36,6 +36,9 @@ const editions=[
  {id:"rose-1899",label:"Rose · 1899",path:"data/critical-editions/rose-1899-transcribed-loci.json",reader:"rose-1899.html?locus="}
 ];
 let datasets=null,lastHits=[],currentFilter="all",sequence=0;
+const scopeSelect=document.getElementById("scope");
+function allowedEdition(id){const scope=scopeSelect?.value||"all";return scope==="all"||scope==="principal"&&["recensio-es","recensio-fr","theory-en"].includes(id)||scope===id;}
+function textFor(p,ed){return ed.id.startsWith("recensio-")||ed.id==="theory-en"?(p.latin||"")+" "+(p.translation||""):p.latin||"";}
 const fold=s=>String(s||"").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"").replace(/j/g,"i").replace(/v/g,"u").replace(/[^a-z\u0370-\u03ff\u1f00-\u1fff0-9]+/g," ").replace(/\s+/g," ").trim();
 const concepts=[
  {terms:["simetria","simetría","symmetria","symmetry","symmetrie"],roots:["symmetr"]},
@@ -84,13 +87,13 @@ function link(label,url){const a=create("a",label);a.href=url;return a}
 function paint(){
  tabs.replaceChildren();list.replaceChildren();
  const counts=new Map(editions.map(ed=>[ed.id,lastHits.filter(h=>h.ed.id===ed.id).length]));
- const variants=[["all","Todas ("+lastHits.length+")"],...editions.map(ed=>[ed.id,ed.label+" ("+counts.get(ed.id)+")"])];
+ const variants=[["all","Todas ("+lastHits.length+")"],...editions.filter(ed=>allowedEdition(ed.id)).map(ed=>[ed.id,ed.label+" ("+counts.get(ed.id)+")"])];
  for(const [id,label] of variants){const b=create("button",label);b.type="button";b.setAttribute("aria-pressed",String(currentFilter===id));b.addEventListener("click",()=>{currentFilter=id;paint()});tabs.append(b)}
  const filtered=lastHits.filter(h=>currentFilter==="all"||h.ed.id===currentFilter);
- const ordered=currentFilter==="all"?editions.flatMap(ed=>filtered.filter(h=>h.ed.id===ed.id).slice(0,30)):filtered.slice(0,110);
+ const ordered=currentFilter==="all"?editions.filter(ed=>allowedEdition(ed.id)).flatMap(ed=>filtered.filter(h=>h.ed.id===ed.id).slice(0,30)):filtered.slice(0,110);
  for(const hit of ordered){
    const box=create("article",null,"vdl-entry");box.append(create("strong",hit.ed.label+" · Vitr., De arch. "+hit.p.locus));
-   box.append(create("p",findExcerpt(hit.p.latin,document.getElementById("query").value)));
+   box.append(create("p",findExcerpt(lexical(hit.p.latin,document.getElementById("query").value,document.getElementById("search-mode")?.value||"words")?hit.p.latin:textFor(hit.p,hit.ed),document.getElementById("query").value)));
    const actions=create("div",null,"vdl-links");const ap="apparatus-bude.html?locus="+encodeURIComponent(hit.p.locus)+"&edition=v514&translation=es";
    actions.append(link("Comparar Kurilo · Krohn · Rose",ap),link("Leer "+hit.ed.label,hit.ed.reader+encodeURIComponent(hit.p.locus)));
    box.append(actions);
@@ -106,14 +109,15 @@ async function search(q){
  if(n!==sequence)return;
  const ref=romanLocus(q0),mode=document.getElementById("search-mode")?.value||"words";
  lastHits=[];for(const {ed,passages} of data){
+   if(!allowedEdition(ed.id))continue;
    for(const p of passages){
-     if(ref?(p.locus===ref||ref.split(".").length===2&&p.locus.startsWith(ref+".")):lexical(p.latin,q0,mode))
+     if(ref?(p.locus===ref||ref.split(".").length===2&&p.locus.startsWith(ref+".")):lexical(textFor(p,ed),q0,mode))
        lastHits.push({ed,p});
    }
  }
  if(n!==sequence)return;currentFilter="all";
- const counts=editions.map(ed=>ed.label+" "+lastHits.filter(h=>h.ed.id===ed.id).length).join(" · ");
- status.textContent=lastHits.length?counts+" · búsqueda léxica y conceptual multiedición; sin alterar los originales.":"Sin coincidencias en los textos latinos digitales disponibles. El buscador principal puede ofrecer resultados en traducciones y notas.";
+ const counts=editions.filter(ed=>allowedEdition(ed.id)).map(ed=>ed.label+" "+lastHits.filter(h=>h.ed.id===ed.id).length).join(" · ");
+ status.textContent=lastHits.length?counts+" · coincidencias en los índices de las ediciones seleccionadas, sin alterar los textos.":"Sin coincidencias en los índices disponibles para la edición seleccionada. Pruebe otra grafía o un ámbito más amplio.";
  paint();
 }
 form.addEventListener("submit",()=>{void search(input.value)},false);
