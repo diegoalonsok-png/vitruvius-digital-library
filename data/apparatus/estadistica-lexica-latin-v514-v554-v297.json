@@ -1,0 +1,978 @@
+{
+  "schema": "vdl-latin-lexicometry-three-editions-v1",
+  "date": "2026-11-16",
+  "method": {
+    "scope": "Only indexed 'latin' fields in passage order; excludes translations, editorial commentary outside Latin fields, notes outside Latin fields, indices, HTML, apparatus.",
+    "tokenization": "Unicode /\\p{L}[\\p{L}\\p{M}]*/gu, counts alphabetic strings including Greek; editorial signs and numerals do not count. Tokens are lowercased. A word split by editorial symbols may count as 2; Latin source streams remain unchanged.",
+    "term_policy": "Exact normalized inflected forms from conservative regular-expression families, NOT semantic lemmatization. Remove diacritics, unify j/i and v/u. Do not count derivatives such as decorare as decor.",
+    "middle_policy": "If an odd number, the central token; if even, both tokens at N/2 and N/2+1. Locator reports the locus of the token in that edition. Book-level metrics respect source passage order.",
+    "warning": "Different segmentation of V297 loci can alter locations, even when content is present. This is not a count of a hypothetical archetype or a physical book's marginalia."
+  },
+  "sources": [
+    {
+      "edition": "V514",
+      "path": "data/structured/recensio-es.json",
+      "sha": "c343187fbadc0ce4c29f357cb16f38e11d4d68e4"
+    },
+    {
+      "edition": "V554",
+      "path": "data/structured/recensio-fr.json",
+      "sha": "1b49a8da0cdc18f5a45dd07bf5e0f25a5a7acaf3"
+    },
+    {
+      "edition": "V297",
+      "path": "data/structured/theory-en.json",
+      "sha": "171986ec4b2134384dbafbb84a4baf34a10bc386"
+    }
+  ],
+  "editions": {
+    "V514": {
+      "indexed_loci": 731,
+      "total_words": 57920,
+      "first": {
+        "word": "cum",
+        "locus": "1.praef.1"
+      },
+      "last": {
+        "word": "explicata",
+        "locus": "10.16.12"
+      },
+      "middle": [
+        {
+          "position": 28960,
+          "word": "non",
+          "locus": "6.3.2"
+        },
+        {
+          "position": 28961,
+          "word": "obstant",
+          "locus": "6.3.2"
+        }
+      ],
+      "books": {
+        "1": {
+          "tokens": 6028,
+          "loci": 67,
+          "first": "1.praef.1",
+          "last": "1.7.2"
+        },
+        "2": {
+          "tokens": 6924,
+          "loci": 77,
+          "first": "2.praef.1",
+          "last": "2.10.3"
+        },
+        "3": {
+          "tokens": 4047,
+          "loci": 54,
+          "first": "3.praef.1",
+          "last": "3.5.15"
+        },
+        "4": {
+          "tokens": 4043,
+          "loci": 55,
+          "first": "4.praef.1",
+          "last": "4.9.1"
+        },
+        "5": {
+          "tokens": 5913,
+          "loci": 80,
+          "first": "5.praef.1",
+          "last": "5.12.7"
+        },
+        "6": {
+          "tokens": 5034,
+          "loci": 64,
+          "first": "6.praef.1",
+          "last": "6.8.10"
+        },
+        "7": {
+          "tokens": 5657,
+          "loci": 81,
+          "first": "7.praef.1",
+          "last": "7.14.3"
+        },
+        "8": {
+          "tokens": 5800,
+          "loci": 68,
+          "first": "8.praef.1",
+          "last": "8.6.15"
+        },
+        "9": {
+          "tokens": 6078,
+          "loci": 76,
+          "first": "9.praef.1",
+          "last": "9.8.15"
+        },
+        "10": {
+          "tokens": 8396,
+          "loci": 109,
+          "first": "10.praef.1",
+          "last": "10.16.12"
+        }
+      },
+      "terms": {
+        "symmetria": {
+          "count": 82,
+          "forms": {
+            "symmetriis": 25,
+            "symmetriarum": 18,
+            "symmetriae": 13,
+            "symmetrias": 11,
+            "symmetria": 10,
+            "symmetriam": 5
+          }
+        },
+        "decor": {
+          "count": 15,
+          "forms": {
+            "decorem": 5,
+            "decore": 4,
+            "decor": 4,
+            "decoris": 2
+          }
+        },
+        "firmitas": {
+          "count": 19,
+          "forms": {
+            "firmitatem": 14,
+            "firmitatis": 2,
+            "firmitates": 2,
+            "firmitate": 1
+          }
+        },
+        "utilitas": {
+          "count": 37,
+          "forms": {
+            "utilitates": 22,
+            "utilitatem": 11,
+            "utilitatis": 4
+          }
+        },
+        "venustas": {
+          "count": 0,
+          "forms": {}
+        },
+        "ordinatio": {
+          "count": 5,
+          "forms": {
+            "ordinationes": 2,
+            "ordinatione": 1,
+            "ordinatio": 1,
+            "ordinationem": 1
+          }
+        },
+        "dispositio": {
+          "count": 31,
+          "forms": {
+            "dispositiones": 9,
+            "dispositio": 8,
+            "dispositionibus": 5,
+            "dispositione": 5,
+            "dispositionum": 2,
+            "dispositionis": 1,
+            "dispositionem": 1
+          }
+        },
+        "distributio": {
+          "count": 22,
+          "forms": {
+            "distributiones": 11,
+            "distributione": 4,
+            "distributio": 4,
+            "distributionis": 1,
+            "distributionibus": 1,
+            "distributionem": 1
+          }
+        },
+        "eurythmia": {
+          "count": 4,
+          "forms": {
+            "eurythmia": 2,
+            "eurythmiae": 2
+          }
+        },
+        "proportio": {
+          "count": 31,
+          "forms": {
+            "proportionibus": 13,
+            "proportiones": 10,
+            "proportione": 3,
+            "proportionis": 2,
+            "proportionem": 2,
+            "proportio": 1
+          }
+        },
+        "architectura": {
+          "count": 21,
+          "forms": {
+            "architecturae": 11,
+            "architectura": 7,
+            "architecturam": 3
+          }
+        },
+        "architectus": {
+          "count": 49,
+          "forms": {
+            "architecti": 19,
+            "architectus": 12,
+            "architectum": 8,
+            "architectos": 3,
+            "architectis": 3,
+            "architectorum": 2,
+            "architecto": 2
+          }
+        },
+        "columna": {
+          "count": 193,
+          "forms": {
+            "columnae": 68,
+            "columnarum": 55,
+            "columnas": 33,
+            "columnis": 19,
+            "columna": 16,
+            "columnam": 2
+          }
+        },
+        "templum": {
+          "count": 16,
+          "forms": {
+            "templis": 5,
+            "templa": 4,
+            "templum": 3,
+            "templo": 3,
+            "templi": 1
+          }
+        },
+        "ratio": {
+          "count": 332,
+          "forms": {
+            "rationibus": 82,
+            "ratione": 78,
+            "rationes": 63,
+            "ratio": 55,
+            "rationem": 48,
+            "rationis": 3,
+            "rationesque": 2,
+            "rationum": 1
+          }
+        },
+        "modulus": {
+          "count": 42,
+          "forms": {
+            "moduli": 19,
+            "modulorum": 14,
+            "modulus": 4,
+            "modulis": 2,
+            "modulos": 2,
+            "modulum": 1
+          }
+        },
+        "commensus": {
+          "count": 9,
+          "forms": {
+            "commensus": 9
+          }
+        },
+        "ichnographia": {
+          "count": 2,
+          "forms": {
+            "ichnographia": 2
+          }
+        },
+        "orthographia": {
+          "count": 2,
+          "forms": {
+            "orthographia": 2
+          }
+        },
+        "scaenographia": {
+          "count": 2,
+          "forms": {
+            "scaenographia": 2
+          }
+        },
+        "machina": {
+          "count": 59,
+          "forms": {
+            "machinae": 18,
+            "machina": 13,
+            "machinam": 10,
+            "machinis": 9,
+            "machinas": 6,
+            "machinarum": 3
+          }
+        },
+        "materia": {
+          "count": 55,
+          "forms": {
+            "materia": 34,
+            "materiae": 15,
+            "materiam": 5,
+            "materiarum": 1
+          }
+        }
+      },
+      "first_twelve_words": [
+        "cum",
+        "divina",
+        "tua",
+        "mens",
+        "et",
+        "numen",
+        "imperator",
+        "caesar",
+        "imperio",
+        "potiretur",
+        "orbis",
+        "terrarum"
+      ],
+      "last_twelve_words": [
+        "comparavi",
+        "uti",
+        "totum",
+        "corpus",
+        "omnia",
+        "architecturae",
+        "membra",
+        "in",
+        "decem",
+        "voluminibus",
+        "haberet",
+        "explicata"
+      ]
+    },
+    "V554": {
+      "indexed_loci": 731,
+      "total_words": 57920,
+      "first": {
+        "word": "cum",
+        "locus": "1.praef.1"
+      },
+      "last": {
+        "word": "explicata",
+        "locus": "10.16.12"
+      },
+      "middle": [
+        {
+          "position": 28960,
+          "word": "non",
+          "locus": "6.3.2"
+        },
+        {
+          "position": 28961,
+          "word": "obstant",
+          "locus": "6.3.2"
+        }
+      ],
+      "books": {
+        "1": {
+          "tokens": 6028,
+          "loci": 67,
+          "first": "1.praef.1",
+          "last": "1.7.2"
+        },
+        "2": {
+          "tokens": 6924,
+          "loci": 77,
+          "first": "2.praef.1",
+          "last": "2.10.3"
+        },
+        "3": {
+          "tokens": 4047,
+          "loci": 54,
+          "first": "3.praef.1",
+          "last": "3.5.15"
+        },
+        "4": {
+          "tokens": 4043,
+          "loci": 55,
+          "first": "4.praef.1",
+          "last": "4.9.1"
+        },
+        "5": {
+          "tokens": 5913,
+          "loci": 80,
+          "first": "5.praef.1",
+          "last": "5.12.7"
+        },
+        "6": {
+          "tokens": 5034,
+          "loci": 64,
+          "first": "6.praef.1",
+          "last": "6.8.10"
+        },
+        "7": {
+          "tokens": 5657,
+          "loci": 81,
+          "first": "7.praef.1",
+          "last": "7.14.3"
+        },
+        "8": {
+          "tokens": 5800,
+          "loci": 68,
+          "first": "8.praef.1",
+          "last": "8.6.15"
+        },
+        "9": {
+          "tokens": 6078,
+          "loci": 76,
+          "first": "9.praef.1",
+          "last": "9.8.15"
+        },
+        "10": {
+          "tokens": 8396,
+          "loci": 109,
+          "first": "10.praef.1",
+          "last": "10.16.12"
+        }
+      },
+      "terms": {
+        "symmetria": {
+          "count": 82,
+          "forms": {
+            "symmetriis": 25,
+            "symmetriarum": 18,
+            "symmetriae": 13,
+            "symmetrias": 11,
+            "symmetria": 10,
+            "symmetriam": 5
+          }
+        },
+        "decor": {
+          "count": 15,
+          "forms": {
+            "decorem": 5,
+            "decore": 4,
+            "decor": 4,
+            "decoris": 2
+          }
+        },
+        "firmitas": {
+          "count": 19,
+          "forms": {
+            "firmitatem": 14,
+            "firmitatis": 2,
+            "firmitates": 2,
+            "firmitate": 1
+          }
+        },
+        "utilitas": {
+          "count": 37,
+          "forms": {
+            "utilitates": 22,
+            "utilitatem": 11,
+            "utilitatis": 4
+          }
+        },
+        "venustas": {
+          "count": 0,
+          "forms": {}
+        },
+        "ordinatio": {
+          "count": 5,
+          "forms": {
+            "ordinationes": 2,
+            "ordinatione": 1,
+            "ordinatio": 1,
+            "ordinationem": 1
+          }
+        },
+        "dispositio": {
+          "count": 31,
+          "forms": {
+            "dispositiones": 9,
+            "dispositio": 8,
+            "dispositionibus": 5,
+            "dispositione": 5,
+            "dispositionum": 2,
+            "dispositionis": 1,
+            "dispositionem": 1
+          }
+        },
+        "distributio": {
+          "count": 22,
+          "forms": {
+            "distributiones": 11,
+            "distributione": 4,
+            "distributio": 4,
+            "distributionis": 1,
+            "distributionibus": 1,
+            "distributionem": 1
+          }
+        },
+        "eurythmia": {
+          "count": 4,
+          "forms": {
+            "eurythmia": 2,
+            "eurythmiae": 2
+          }
+        },
+        "proportio": {
+          "count": 31,
+          "forms": {
+            "proportionibus": 13,
+            "proportiones": 10,
+            "proportione": 3,
+            "proportionis": 2,
+            "proportionem": 2,
+            "proportio": 1
+          }
+        },
+        "architectura": {
+          "count": 21,
+          "forms": {
+            "architecturae": 11,
+            "architectura": 7,
+            "architecturam": 3
+          }
+        },
+        "architectus": {
+          "count": 49,
+          "forms": {
+            "architecti": 19,
+            "architectus": 12,
+            "architectum": 8,
+            "architectos": 3,
+            "architectis": 3,
+            "architectorum": 2,
+            "architecto": 2
+          }
+        },
+        "columna": {
+          "count": 193,
+          "forms": {
+            "columnae": 68,
+            "columnarum": 55,
+            "columnas": 33,
+            "columnis": 19,
+            "columna": 16,
+            "columnam": 2
+          }
+        },
+        "templum": {
+          "count": 16,
+          "forms": {
+            "templis": 5,
+            "templa": 4,
+            "templum": 3,
+            "templo": 3,
+            "templi": 1
+          }
+        },
+        "ratio": {
+          "count": 332,
+          "forms": {
+            "rationibus": 82,
+            "ratione": 78,
+            "rationes": 63,
+            "ratio": 55,
+            "rationem": 48,
+            "rationis": 3,
+            "rationesque": 2,
+            "rationum": 1
+          }
+        },
+        "modulus": {
+          "count": 42,
+          "forms": {
+            "moduli": 19,
+            "modulorum": 14,
+            "modulus": 4,
+            "modulis": 2,
+            "modulos": 2,
+            "modulum": 1
+          }
+        },
+        "commensus": {
+          "count": 9,
+          "forms": {
+            "commensus": 9
+          }
+        },
+        "ichnographia": {
+          "count": 2,
+          "forms": {
+            "ichnographia": 2
+          }
+        },
+        "orthographia": {
+          "count": 2,
+          "forms": {
+            "orthographia": 2
+          }
+        },
+        "scaenographia": {
+          "count": 2,
+          "forms": {
+            "scaenographia": 2
+          }
+        },
+        "machina": {
+          "count": 59,
+          "forms": {
+            "machinae": 18,
+            "machina": 13,
+            "machinam": 10,
+            "machinis": 9,
+            "machinas": 6,
+            "machinarum": 3
+          }
+        },
+        "materia": {
+          "count": 55,
+          "forms": {
+            "materia": 34,
+            "materiae": 15,
+            "materiam": 5,
+            "materiarum": 1
+          }
+        }
+      },
+      "first_twelve_words": [
+        "cum",
+        "divina",
+        "tua",
+        "mens",
+        "et",
+        "numen",
+        "imperator",
+        "caesar",
+        "imperio",
+        "potiretur",
+        "orbis",
+        "terrarum"
+      ],
+      "last_twelve_words": [
+        "comparavi",
+        "uti",
+        "totum",
+        "corpus",
+        "omnia",
+        "architecturae",
+        "membra",
+        "in",
+        "decem",
+        "voluminibus",
+        "haberet",
+        "explicata"
+      ]
+    },
+    "V297": {
+      "indexed_loci": 728,
+      "total_words": 56790,
+      "first": {
+        "word": "cum",
+        "locus": "1.praef.1"
+      },
+      "last": {
+        "word": "liberatae",
+        "locus": "10.16.12"
+      },
+      "middle": [
+        {
+          "position": 28395,
+          "word": "in",
+          "locus": "6.2.2"
+        },
+        {
+          "position": 28396,
+          "word": "concluso",
+          "locus": "6.2.2"
+        }
+      ],
+      "books": {
+        "1": {
+          "tokens": 5816,
+          "loci": 67,
+          "first": "1.praef.1",
+          "last": "1.7.2"
+        },
+        "2": {
+          "tokens": 6923,
+          "loci": 77,
+          "first": "2.praef.1",
+          "last": "2.10.3"
+        },
+        "3": {
+          "tokens": 4047,
+          "loci": 54,
+          "first": "3.praef.1",
+          "last": "3.5.15"
+        },
+        "4": {
+          "tokens": 4043,
+          "loci": 55,
+          "first": "4.praef.1",
+          "last": "4.9.1"
+        },
+        "5": {
+          "tokens": 5900,
+          "loci": 80,
+          "first": "5.praef.1",
+          "last": "5.12.7"
+        },
+        "6": {
+          "tokens": 5034,
+          "loci": 64,
+          "first": "6.praef.1",
+          "last": "6.8.10"
+        },
+        "7": {
+          "tokens": 5629,
+          "loci": 78,
+          "first": "7.praef.1",
+          "last": "7.14.3"
+        },
+        "8": {
+          "tokens": 5527,
+          "loci": 68,
+          "first": "8.praef.1",
+          "last": "8.6.15"
+        },
+        "9": {
+          "tokens": 5870,
+          "loci": 76,
+          "first": "9.praef.1",
+          "last": "9.8.15"
+        },
+        "10": {
+          "tokens": 8001,
+          "loci": 109,
+          "first": "10.praef.1",
+          "last": "10.16.12"
+        }
+      },
+      "terms": {
+        "symmetria": {
+          "count": 81,
+          "forms": {
+            "symmetriis": 25,
+            "symmetriarum": 18,
+            "symmetriae": 13,
+            "symmetria": 10,
+            "symmetrias": 10,
+            "symmetriam": 5
+          }
+        },
+        "decor": {
+          "count": 15,
+          "forms": {
+            "decorem": 5,
+            "decore": 4,
+            "decor": 4,
+            "decoris": 2
+          }
+        },
+        "firmitas": {
+          "count": 19,
+          "forms": {
+            "firmitatem": 14,
+            "firmitatis": 2,
+            "firmitates": 2,
+            "firmitate": 1
+          }
+        },
+        "utilitas": {
+          "count": 34,
+          "forms": {
+            "utilitates": 20,
+            "utilitatem": 10,
+            "utilitatis": 4
+          }
+        },
+        "venustas": {
+          "count": 0,
+          "forms": {}
+        },
+        "ordinatio": {
+          "count": 5,
+          "forms": {
+            "ordinationes": 2,
+            "ordinatione": 1,
+            "ordinatio": 1,
+            "ordinationem": 1
+          }
+        },
+        "dispositio": {
+          "count": 31,
+          "forms": {
+            "dispositiones": 9,
+            "dispositio": 8,
+            "dispositionibus": 5,
+            "dispositione": 5,
+            "dispositionum": 2,
+            "dispositionis": 1,
+            "dispositionem": 1
+          }
+        },
+        "distributio": {
+          "count": 22,
+          "forms": {
+            "distributiones": 11,
+            "distributione": 4,
+            "distributio": 4,
+            "distributionis": 1,
+            "distributionibus": 1,
+            "distributionem": 1
+          }
+        },
+        "eurythmia": {
+          "count": 4,
+          "forms": {
+            "eurythmia": 2,
+            "eurythmiae": 2
+          }
+        },
+        "proportio": {
+          "count": 30,
+          "forms": {
+            "proportionibus": 13,
+            "proportiones": 9,
+            "proportione": 3,
+            "proportionis": 2,
+            "proportionem": 2,
+            "proportio": 1
+          }
+        },
+        "architectura": {
+          "count": 19,
+          "forms": {
+            "architecturae": 9,
+            "architectura": 7,
+            "architecturam": 3
+          }
+        },
+        "architectus": {
+          "count": 48,
+          "forms": {
+            "architecti": 18,
+            "architectus": 12,
+            "architectum": 8,
+            "architectos": 3,
+            "architectis": 3,
+            "architectorum": 2,
+            "architecto": 2
+          }
+        },
+        "columna": {
+          "count": 193,
+          "forms": {
+            "columnae": 68,
+            "columnarum": 55,
+            "columnas": 33,
+            "columnis": 19,
+            "columna": 16,
+            "columnam": 2
+          }
+        },
+        "templum": {
+          "count": 16,
+          "forms": {
+            "templis": 5,
+            "templa": 4,
+            "templum": 3,
+            "templo": 3,
+            "templi": 1
+          }
+        },
+        "ratio": {
+          "count": 315,
+          "forms": {
+            "ratione": 77,
+            "rationibus": 76,
+            "rationes": 58,
+            "ratio": 51,
+            "rationem": 47,
+            "rationis": 3,
+            "rationesque": 2,
+            "rationum": 1
+          }
+        },
+        "modulus": {
+          "count": 42,
+          "forms": {
+            "moduli": 19,
+            "modulorum": 14,
+            "modulus": 4,
+            "modulis": 2,
+            "modulos": 2,
+            "modulum": 1
+          }
+        },
+        "commensus": {
+          "count": 9,
+          "forms": {
+            "commensus": 9
+          }
+        },
+        "ichnographia": {
+          "count": 2,
+          "forms": {
+            "ichnographia": 2
+          }
+        },
+        "orthographia": {
+          "count": 2,
+          "forms": {
+            "orthographia": 2
+          }
+        },
+        "scaenographia": {
+          "count": 2,
+          "forms": {
+            "scaenographia": 2
+          }
+        },
+        "machina": {
+          "count": 57,
+          "forms": {
+            "machinae": 18,
+            "machina": 13,
+            "machinam": 9,
+            "machinis": 8,
+            "machinas": 6,
+            "machinarum": 3
+          }
+        },
+        "materia": {
+          "count": 53,
+          "forms": {
+            "materia": 33,
+            "materiae": 14,
+            "materiam": 5,
+            "materiarum": 1
+          }
+        }
+      },
+      "first_twelve_words": [
+        "cum",
+        "divina",
+        "tua",
+        "mens",
+        "et",
+        "numen",
+        "imperator",
+        "caesar",
+        "imperio",
+        "potiretur",
+        "orbis",
+        "terrarum"
+      ],
+      "last_twelve_words": [
+        "civitatum",
+        "civitates",
+        "non",
+        "machinis",
+        "sed",
+        "contra",
+        "machinarum",
+        "rationem",
+        "architectorum",
+        "sollertia",
+        "sunt",
+        "liberatae"
+      ]
+    }
+  }
+}
