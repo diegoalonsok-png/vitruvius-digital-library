@@ -589,14 +589,17 @@
         "licensing": "CC BY-SA 4.0 · Perseus Digital Library; mantener atribución y compartir adaptaciones bajo la misma licencia",
         "editorialNote": "Texto TEI de una edición histórica de Perseus, no facsímil ni nueva transcripción diplomática. Autenticidad y atribución de algunas obras transmitidas bajo el nombre del autor pueden ser debatidas.",
         "indexedEditionClaim": false,
-        "manuscriptCollationClaim": false
+        "manuscriptCollationClaim": false,
+        "editionDescription": "Platonis Opera, Tomus I: Tetralogia I-II. Burnet, John, 1863-1928, editor. Oxford: Clarendon Press, 1905.",
+        "sourceSha256": "45ea0a0f2951ebdd4fb841dea02db341dc205da5001e4ff50bc20898a31955e1",
+        "localSegmentation": "Each local-pNNNNN denotes an ordered local textual unit, never a verified canonical CTS locus or Stephanus reference"
       },
-      "status": "Fuente TEI catalogada; transcripción original e indexación léxica local pendientes de incorporación y control",
-      "textStatus": "source-verified-not-indexed",
-      "publicStatus": "ficha-bibliografica",
+      "status": "Original griego registrado, lector disponible; indexación léxica pendiente de verificación",
+      "textStatus": "registered-pending-lexical-index",
+      "publicStatus": "lectura-local-completa",
       "reading": {
-        "url": "https://github.com/PerseusDL/canonical-greekLit/blob/dacb04909e43dc47738828d33cc3d2b0635bc54c/data/tlg0059/tlg001/tlg0059.tlg001.perseus-grc1.xml",
-        "status": "Fuente TEI en Perseus; todavía no se incorpora como texto indexado en la biblioteca. No se declara traducción cotejada."
+        "url": "classics-text-reader.html?work=plato-euthyphro&lang=grc",
+        "status": "Transcripción de edición TEI con segmentos digitales locales; sin cotejo crítico independiente."
       },
       "translation": {
         "status": "Sin versión traducida cotejada alojada para esta ficha; consultar las fuentes editoriales."
@@ -608,7 +611,16 @@
       },
       "description": "Ficha de obra selecta (Diálogo filosófico). Texto original identificado en TEI; el locus CTS documenta la edición de origen. Texto TEI de una edición histórica de Perseus, no facsímil ni nueva transcripción diplomática. Autenticidad y atribución de algunas obras transmitidas bajo el nombre del autor pueden ser debatidas.",
       "coverType": "typographic-institutional",
-      "selectionOrder": 1
+      "selectionOrder": 1,
+      "corpusFiles": {
+        "grc": "data/classics-corpus/plato-euthyphro-grc.json"
+      },
+      "localVersions": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/plato-euthyphro-grc.json"
+        }
+      ]
     },
     {
       "id": "plato-statesman",
@@ -636,14 +648,17 @@
         "licensing": "CC BY-SA 4.0 · Perseus Digital Library; mantener atribución y compartir adaptaciones bajo la misma licencia",
         "editorialNote": "Texto TEI de una edición histórica de Perseus, no facsímil ni nueva transcripción diplomática. Autenticidad y atribución de algunas obras transmitidas bajo el nombre del autor pueden ser debatidas.",
         "indexedEditionClaim": false,
-        "manuscriptCollationClaim": false
+        "manuscriptCollationClaim": false,
+        "editionDescription": "Platonis Opera, Tomus I: Tetralogia I-II. Burnet, John, 1863-1928, editor. Oxford: Clarendon Press, 1905.",
+        "sourceSha256": "87c46a79067e0edc552136cc12650f95f4893c8295201b21d4971117c20e8484",
+        "localSegmentation": "Each local-pNNNNN denotes an ordered local textual unit, never a verified canonical CTS locus or Stephanus reference"
       },
-      "status": "Fuente TEI catalogada; transcripción original e indexación léxica local pendientes de incorporación y control",
-      "textStatus": "source-verified-not-indexed",
-      "publicStatus": "ficha-bibliografica",
+      "status": "Original griego registrado, lector disponible; indexación léxica pendiente de verificación",
+      "textStatus": "registered-pending-lexical-index",
+      "publicStatus": "lectura-local-completa",
       "reading": {
-        "url": "https://github.com/PerseusDL/canonical-greekLit/blob/dacb04909e43dc47738828d33cc3d2b0635bc54c/data/tlg0059/tlg008/tlg0059.tlg008.perseus-grc2.xml",
-        "status": "Fuente TEI en Perseus; todavía no se incorpora como texto indexado en la biblioteca. No se declara traducción cotejada."
+        "url": "classics-text-reader.html?work=plato-statesman&lang=grc",
+        "status": "Transcripción de edición TEI con segmentos digitales locales; sin cotejo crítico independiente."
       },
       "translation": {
         "status": "Sin versión traducida cotejada alojada para esta ficha; consultar las fuentes editoriales."
@@ -655,7 +670,16 @@
       },
       "description": "Ficha de obra selecta (Diálogo filosófico). Texto original identificado en TEI; el locus CTS documenta la edición de origen. Texto TEI de una edición histórica de Perseus, no facsímil ni nueva transcripción diplomática. Autenticidad y atribución de algunas obras transmitidas bajo el nombre del autor pueden ser debatidas.",
       "coverType": "typographic-institutional",
-      "selectionOrder": 2
+      "selectionOrder": 2,
+      "corpusFiles": {
+        "grc": "data/classics-corpus/plato-statesman-grc.json"
+      },
+      "localVersions": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/plato-statesman-grc.json"
+        }
+      ]
     },
     {
       "id": "plato-philebus",
@@ -683,14 +707,17 @@
         "licensing": "CC BY-SA 4.0 · Perseus Digital Library; mantener atribución y compartir adaptaciones bajo la misma licencia",
         "editorialNote": "Texto TEI de una edición histórica de Perseus, no facsímil ni nueva transcripción diplomática. Autenticidad y atribución de algunas obras transmitidas bajo el nombre del autor pueden ser debatidas.",
         "indexedEditionClaim": false,
-        "manuscriptCollationClaim": false
+        "manuscriptCollationClaim": false,
+        "editionDescription": "Platonis Opera, Tomus II: Tetralogia III-IV. Burnet, John, editor. Oxford: Clarendon Press, 1910.",
+        "sourceSha256": "aa9914ccd1d3c013b0948fd150730a9beb902971ae27a95b47e19cdaf3009ea2",
+        "localSegmentation": "Each local-pNNNNN denotes an ordered local textual unit, never a verified canonical CTS locus or Stephanus reference"
       },
-      "status": "Fuente TEI catalogada; transcripción original e indexación léxica local pendientes de incorporación y control",
-      "textStatus": "source-verified-not-indexed",
-      "publicStatus": "ficha-bibliografica",
+      "status": "Original griego registrado, lector disponible; indexación léxica pendiente de verificación",
+      "textStatus": "registered-pending-lexical-index",
+      "publicStatus": "lectura-local-completa",
       "reading": {
-        "url": "https://github.com/PerseusDL/canonical-greekLit/blob/dacb04909e43dc47738828d33cc3d2b0635bc54c/data/tlg0059/tlg010/tlg0059.tlg010.perseus-grc2.xml",
-        "status": "Fuente TEI en Perseus; todavía no se incorpora como texto indexado en la biblioteca. No se declara traducción cotejada."
+        "url": "classics-text-reader.html?work=plato-philebus&lang=grc",
+        "status": "Transcripción de edición TEI con segmentos digitales locales; sin cotejo crítico independiente."
       },
       "translation": {
         "status": "Sin versión traducida cotejada alojada para esta ficha; consultar las fuentes editoriales."
@@ -702,7 +729,16 @@
       },
       "description": "Ficha de obra selecta (Diálogo filosófico). Texto original identificado en TEI; el locus CTS documenta la edición de origen. Texto TEI de una edición histórica de Perseus, no facsímil ni nueva transcripción diplomática. Autenticidad y atribución de algunas obras transmitidas bajo el nombre del autor pueden ser debatidas.",
       "coverType": "typographic-institutional",
-      "selectionOrder": 3
+      "selectionOrder": 3,
+      "corpusFiles": {
+        "grc": "data/classics-corpus/plato-philebus-grc.json"
+      },
+      "localVersions": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/plato-philebus-grc.json"
+        }
+      ]
     },
     {
       "id": "plato-charmides",
@@ -730,14 +766,17 @@
         "licensing": "CC BY-SA 4.0 · Perseus Digital Library; mantener atribución y compartir adaptaciones bajo la misma licencia",
         "editorialNote": "Texto TEI de una edición histórica de Perseus, no facsímil ni nueva transcripción diplomática. Autenticidad y atribución de algunas obras transmitidas bajo el nombre del autor pueden ser debatidas.",
         "indexedEditionClaim": false,
-        "manuscriptCollationClaim": false
+        "manuscriptCollationClaim": false,
+        "editionDescription": "Platonis Opera, Tomus III: Tetralogia V-VII. Burnet, John, editor. Oxford: Clarendon Press, 1913.",
+        "sourceSha256": "3cb4c59674f6783977cc53848250086079c0c08af02dba3dec43ca5ab6512732",
+        "localSegmentation": "Each local-pNNNNN denotes an ordered local textual unit, never a verified canonical CTS locus or Stephanus reference"
       },
-      "status": "Fuente TEI catalogada; transcripción original e indexación léxica local pendientes de incorporación y control",
-      "textStatus": "source-verified-not-indexed",
-      "publicStatus": "ficha-bibliografica",
+      "status": "Original griego registrado, lector disponible; indexación léxica pendiente de verificación",
+      "textStatus": "registered-pending-lexical-index",
+      "publicStatus": "lectura-local-completa",
       "reading": {
-        "url": "https://github.com/PerseusDL/canonical-greekLit/blob/dacb04909e43dc47738828d33cc3d2b0635bc54c/data/tlg0059/tlg018/tlg0059.tlg018.perseus-grc2.xml",
-        "status": "Fuente TEI en Perseus; todavía no se incorpora como texto indexado en la biblioteca. No se declara traducción cotejada."
+        "url": "classics-text-reader.html?work=plato-charmides&lang=grc",
+        "status": "Transcripción de edición TEI con segmentos digitales locales; sin cotejo crítico independiente."
       },
       "translation": {
         "status": "Sin versión traducida cotejada alojada para esta ficha; consultar las fuentes editoriales."
@@ -749,7 +788,16 @@
       },
       "description": "Ficha de obra selecta (Diálogo filosófico). Texto original identificado en TEI; el locus CTS documenta la edición de origen. Texto TEI de una edición histórica de Perseus, no facsímil ni nueva transcripción diplomática. Autenticidad y atribución de algunas obras transmitidas bajo el nombre del autor pueden ser debatidas.",
       "coverType": "typographic-institutional",
-      "selectionOrder": 4
+      "selectionOrder": 4,
+      "corpusFiles": {
+        "grc": "data/classics-corpus/plato-charmides-grc.json"
+      },
+      "localVersions": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/plato-charmides-grc.json"
+        }
+      ]
     },
     {
       "id": "plato-laches",
@@ -777,14 +825,17 @@
         "licensing": "CC BY-SA 4.0 · Perseus Digital Library; mantener atribución y compartir adaptaciones bajo la misma licencia",
         "editorialNote": "Texto TEI de una edición histórica de Perseus, no facsímil ni nueva transcripción diplomática. Autenticidad y atribución de algunas obras transmitidas bajo el nombre del autor pueden ser debatidas.",
         "indexedEditionClaim": false,
-        "manuscriptCollationClaim": false
+        "manuscriptCollationClaim": false,
+        "editionDescription": "Platonis Opera, Tomus III: Tetralogia V-VII. Burnet, John, editor. Oxford: Clarendon Press, 1903.",
+        "sourceSha256": "4dedb283a47ca729fedbbe65336e3262df78e32fa1b5f7b6d9446c89567c92fd",
+        "localSegmentation": "Each local-pNNNNN denotes an ordered local textual unit, never a verified canonical CTS locus or Stephanus reference"
       },
-      "status": "Fuente TEI catalogada; transcripción original e indexación léxica local pendientes de incorporación y control",
-      "textStatus": "source-verified-not-indexed",
-      "publicStatus": "ficha-bibliografica",
+      "status": "Original griego registrado, lector disponible; indexación léxica pendiente de verificación",
+      "textStatus": "registered-pending-lexical-index",
+      "publicStatus": "lectura-local-completa",
       "reading": {
-        "url": "https://github.com/PerseusDL/canonical-greekLit/blob/dacb04909e43dc47738828d33cc3d2b0635bc54c/data/tlg0059/tlg019/tlg0059.tlg019.perseus-grc2.xml",
-        "status": "Fuente TEI en Perseus; todavía no se incorpora como texto indexado en la biblioteca. No se declara traducción cotejada."
+        "url": "classics-text-reader.html?work=plato-laches&lang=grc",
+        "status": "Transcripción de edición TEI con segmentos digitales locales; sin cotejo crítico independiente."
       },
       "translation": {
         "status": "Sin versión traducida cotejada alojada para esta ficha; consultar las fuentes editoriales."
@@ -796,7 +847,16 @@
       },
       "description": "Ficha de obra selecta (Diálogo filosófico). Texto original identificado en TEI; el locus CTS documenta la edición de origen. Texto TEI de una edición histórica de Perseus, no facsímil ni nueva transcripción diplomática. Autenticidad y atribución de algunas obras transmitidas bajo el nombre del autor pueden ser debatidas.",
       "coverType": "typographic-institutional",
-      "selectionOrder": 5
+      "selectionOrder": 5,
+      "corpusFiles": {
+        "grc": "data/classics-corpus/plato-laches-grc.json"
+      },
+      "localVersions": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/plato-laches-grc.json"
+        }
+      ]
     },
     {
       "id": "plato-lysis",

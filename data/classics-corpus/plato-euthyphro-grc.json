@@ -1,0 +1,1182 @@
+{
+  "workId": "plato-euthyphro",
+  "language": "grc",
+  "title": "Platón · Εὐθύφρων",
+  "sourceType": "edited-greek-tei",
+  "sourceUrn": "urn:cts:greekLit:tlg0059.tlg001.perseus-grc1",
+  "source": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/dacb04909e43dc47738828d33cc3d2b0635bc54c/data/tlg0059/tlg001/tlg0059.tlg001.perseus-grc1.xml",
+  "sourceSha256": "45ea0a0f2951ebdd4fb841dea02db341dc205da5001e4ff50bc20898a31955e1",
+  "sourceRevision": "dacb04909e43dc47738828d33cc3d2b0635bc54c",
+  "editionReference": "Platonis Opera, Tomus I: Tetralogia I-II. Burnet, John, 1863-1928, editor. Oxford: Clarendon Press, 1905.",
+  "attribution": "Platón · Platonis Opera, Tomus I: Tetralogia I-II. Burnet, John, 1863-1928, editor. Oxford: Clarendon Press, 1905. · Perseus Digital Library",
+  "license": "CC BY-SA 4.0 (Perseus Digital Library)",
+  "editorialStatus": "Greek TEI edited text, not independently collated, local-pNNNNN are editorial digital segments rather than canonical citations",
+  "localSegmentation": "Each local-pNNNNN denotes an ordered local textual unit, never a verified canonical CTS locus or Stephanus reference",
+  "passages": [
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg001.perseus-grc1:local-p00001",
+      "text": "ΕΥΘ. τί νεώτερον, ὦ Σώκρατες, γέγονεν, ὅτι σὺ τὰς ἐν Λυκείῳ καταλιπὼν διατριβὰς ἐνθάδε νῦν διατρίβεις περὶ τὴν τοῦ βασιλέως στοάν; οὐ γάρ που καὶ σοί γε δίκη τις οὖσα τυγχάνει πρὸς τὸν βασιλέα ὥσπερ ἐμοί.",
+      "sourceDivisionHint": "section=2"
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg001.perseus-grc1:local-p00002",
+      "text": "ΣΩ. οὔτοι δὴ Ἀθηναῖοί γε, ὦ Εὐθύφρων, δίκην αὐτὴν καλοῦσιν ἀλλὰ γραφήν.",
+      "sourceDivisionHint": "section=2"
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg001.perseus-grc1:local-p00003",
+      "text": "ΕΥΘ. τί φῄς; γραφὴν σέ τις, ὡς ἔοικε, γέγραπται· οὐ γὰρ ἐκεῖνό γε καταγνώσομαι, ὡς σὺ ἕτερον.",
+      "sourceDivisionHint": "section=2"
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg001.perseus-grc1:local-p00004",
+      "text": "ΣΩ. οὐ γὰρ οὖν.",
+      "sourceDivisionHint": "section=2"
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg001.perseus-grc1:local-p00005",
+      "text": "ΕΥΘ. ἀλλὰ σὲ ἄλλος;",
+      "sourceDivisionHint": "section=2"
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg001.perseus-grc1:local-p00006",
+      "text": "ΣΩ. πάνυ γε.",
+      "sourceDivisionHint": "section=2"
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg001.perseus-grc1:local-p00007",
+      "text": "ΕΥΘ. τίς οὗτος;",
+      "sourceDivisionHint": "section=2"
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg001.perseus-grc1:local-p00008",
+      "text": "ΣΩ. οὐδʼ αὐτὸς πάνυ τι γιγνώσκω, ὦ Εὐθύφρων, τὸν ἄνδρα, νέος γάρ τίς μοι φαίνεται καὶ ἀγνώς· ὀνομάζουσι μέντοι αὐτόν, ὡς ἐγᾦμαι, Μέλητον. ἔστι δὲ τῶν δήμων Πιτθεύς, εἴ τινα νῷ ἔχεις Πιτθέα Μέλητον οἷον τετανότριχα καὶ οὐ πάνυ εὐγένειον, ἐπίγρυπον δέ.",
+      "sourceDivisionHint": "section=2"
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg001.perseus-grc1:local-p00009",
+      "text": "ΕΥΘ. οὐκ ἐννοῶ, ὦ Σώκρατες· ἀλλὰ δὴ τίνα γραφήν σε γέγραπται;",
+      "sourceDivisionHint": "section=2"
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg001.perseus-grc1:local-p00010",
+      "text": "ΣΩ. ἥντινα; οὐκ ἀγεννῆ, ἔμοιγε δοκεῖ· τὸ γὰρ νέον ὄντα τοσοῦτον πρᾶγμα ἐγνωκέναι οὐ φαῦλόν ἐστιν. ἐκεῖνος γάρ, ὥς φησιν, οἶδε τίνα τρόπον οἱ νέοι διαφθείρονται καὶ τίνες οἱ διαφθείροντες αὐτούς. καὶ κινδυνεύει σοφός τις εἶναι, καὶ τὴν ἐμὴν ἀμαθίαν κατιδὼν ὡς διαφθείροντος τοὺς ἡλικιώτας αὐτοῦ, ἔρχεται κατηγορήσων μου ὥσπερ πρὸς μητέρα πρὸς τὴν πόλιν. καὶ φαίνεταί μοι τῶν πολιτικῶν μόνος ἄρχεσθαι ὀρθῶς· ὀρθῶς γάρ ἐστι τῶν νέων πρῶτον ἐπιμεληθῆναι ὅπως ἔσονται ὅτι ἄριστοι, ὥσπερ γεωργὸν ἀγαθὸν τῶν νέων φυτῶν εἰκὸς πρῶτον ἐπιμεληθῆναι, μετὰ δὲ τοῦτο καὶ τῶν ἄλλων.",
+      "sourceDivisionHint": "section=2"
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg001.perseus-grc1:local-p00011",
+      "text": "ΣΩ. καὶ δὴ καὶ Μέλητος ἴσως πρῶτον μὲν ἡμᾶς ἐκκαθαίρει τοὺς τῶν νέων τὰς βλάστας διαφθείροντας, ὥς φησιν· ἔπειτα μετὰ τοῦτο δῆλον ὅτι τῶν πρεσβυτέρων ἐπιμεληθεὶς πλείστων καὶ μεγίστων ἀγαθῶν αἴτιος τῇ πόλει γενήσεται, ὥς γε τὸ εἰκὸς συμβῆναι ἐκ τοιαύτης ἀρχῆς ἀρξαμένῳ.",
+      "sourceDivisionHint": "section=3"
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg001.perseus-grc1:local-p00012",
+      "text": "ΕΥΘ. βουλοίμην ἄν, ὦ Σώκρατες, ἀλλʼ ὀρρωδῶ μὴ τοὐναντίον γένηται· ἀτεχνῶς γάρ μοι δοκεῖ ἀφʼ ἑστίας ἄρχεσθαι κακουργεῖν τὴν πόλιν, ἐπιχειρῶν ἀδικεῖν σέ. καί μοι λέγε, τί καὶ ποιοῦντά σέ φησι διαφθείρειν τοὺς νέους;",
+      "sourceDivisionHint": "section=3"
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg001.perseus-grc1:local-p00013",
+      "text": "ΣΩ. ἄτοπα, ὦ θαυμάσιε, ὡς οὕτω γʼ ἀκοῦσαι. φησὶ γάρ με ποιητὴν εἶναι θεῶν, καὶ ὡς καινοὺς ποιοῦντα θεοὺς τοὺς δʼ ἀρχαίους οὐ νομίζοντα ἐγράψατο τούτων αὐτῶν ἕνεκα, ὥς φησιν.",
+      "sourceDivisionHint": "section=3"
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg001.perseus-grc1:local-p00014",
+      "text": "ΕΥΘ. μανθάνω, ὦ Σώκρατες· ὅτι δὴ σὺ τὸ δαιμόνιον φῂς σαυτῷ ἑκάστοτε γίγνεσθαι. ὡς οὖν καινοτομοῦντός σου περὶ τὰ θεῖα γέγραπται ταύτην τὴν γραφήν, καὶ ὡς διαβαλῶν δὴ ἔρχεται εἰς τὸ δικαστήριον, εἰδὼς ὅτι εὐδιάβολα τὰ τοιαῦτα πρὸς τοὺς πολλούς. καὶ ἐμοῦ γάρ τοι, ὅταν τι λέγω ἐν τῇ ἐκκλησίᾳ περὶ τῶν θείων, προλέγων αὐτοῖς τὰ μέλλοντα, καταγελῶσιν ὡς μαινομένου· καίτοι οὐδὲν ὅτι οὐκ ἀληθὲς εἴρηκα ὧν προεῖπον, ἀλλʼ ὅμως φθονοῦσιν ἡμῖν πᾶσι τοῖς τοιούτοις. ἀλλʼ οὐδὲν αὐτῶν χρὴ φροντίζειν, ἀλλʼ ὁμόσε ἰέναι.",
+      "sourceDivisionHint": "section=3"
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg001.perseus-grc1:local-p00015",
+      "text": "ΣΩ. ὦ φίλε Εὐθύφρων, ἀλλὰ τὸ μὲν καταγελασθῆναι ἴσως οὐδὲν πρᾶγμα. Ἀθηναίοις γάρ τοι, ὡς ἐμοὶ δοκεῖ, οὐ σφόδρα μέλει ἄν τινα δεινὸν οἴωνται εἶναι, μὴ μέντοι διδασκαλικὸν τῆς αὑτοῦ σοφίας· ὃν δʼ ἂν καὶ ἄλλους οἴωνται ποιεῖν τοιούτους, θυμοῦνται, εἴτʼ οὖν φθόνῳ ὡς σὺ λέγεις, εἴτε διʼ ἄλλο τι.",
+      "sourceDivisionHint": "section=3"
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg001.perseus-grc1:local-p00016",
+      "text": "ΕΥΘ. τούτου οὖν πέρι ὅπως ποτὲ πρὸς ἐμὲ ἔχουσιν, οὐ πάνυ ἐπιθυμῶ πειραθῆναι.",
+      "sourceDivisionHint": "section=3"
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg001.perseus-grc1:local-p00017",
+      "text": "ΣΩ. ἴσως γὰρ σὺ μὲν δοκεῖς σπάνιον σεαυτὸν παρέχειν καὶ διδάσκειν οὐκ ἐθέλειν τὴν σεαυτοῦ σοφίαν· ἐγὼ δὲ φοβοῦμαι μὴ ὑπὸ φιλανθρωπίας δοκῶ αὐτοῖς ὅτιπερ ἔχω ἐκκεχυμένως παντὶ ἀνδρὶ λέγειν, οὐ μόνον ἄνευ μισθοῦ, ἀλλὰ καὶ προστιθεὶς ἂν ἡδέως εἴ τίς μου ἐθέλει ἀκούειν. εἰ μὲν οὖν, ὃ νυνδὴ ἔλεγον, μέλλοιέν μου καταγελᾶν ὥσπερ σὺ φῂς σαυτοῦ, οὐδὲν ἂν εἴη ἀηδὲς παίζοντας καὶ γελῶντας ἐν τῷ δικαστηρίῳ διαγαγεῖν· εἰ δὲ σπουδάσονται, τοῦτʼ ἤδη ὅπῃ ἀποβήσεται ἄδηλον πλὴν ὑμῖν τοῖς μάντεσιν.",
+      "sourceDivisionHint": "section=3"
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg001.perseus-grc1:local-p00018",
+      "text": "ΕΥΘ. ἀλλʼ ἴσως οὐδὲν ἔσται, ὦ Σώκρατες, πρᾶγμα, ἀλλὰ σύ τε κατὰ νοῦν ἀγωνιῇ τὴν δίκην, οἶμαι δὲ καὶ ἐμὲ τὴν ἐμήν.",
+      "sourceDivisionHint": "section=3"
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg001.perseus-grc1:local-p00019",
+      "text": "ΣΩ. ἔστιν δὲ δὴ σοί, ὦ Εὐθύφρων, τίς ἡ δίκη; φεύγεις αὐτὴν ἢ διώκεις;",
+      "sourceDivisionHint": "section=3"
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg001.perseus-grc1:local-p00020",
+      "text": "ΕΥΘ. διώκω.",
+      "sourceDivisionHint": "section=3"
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg001.perseus-grc1:local-p00021",
+      "text": "ΣΩ. τίνα;",
+      "sourceDivisionHint": "section=3"
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg001.perseus-grc1:local-p00022",
+      "text": "ΕΥΘ. ὃν διώκων αὖ δοκῶ μαίνεσθαι.",
+      "sourceDivisionHint": "section=4"
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg001.perseus-grc1:local-p00023",
+      "text": "ΣΩ. τί δέ; πετόμενόν τινα διώκεις;",
+      "sourceDivisionHint": "section=4"
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg001.perseus-grc1:local-p00024",
+      "text": "ΕΥΘ. πολλοῦ γε δεῖ πέτεσθαι, ὅς γε τυγχάνει ὢν εὖ μάλα πρεσβύτης.",
+      "sourceDivisionHint": "section=4"
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg001.perseus-grc1:local-p00025",
+      "text": "ΣΩ. τίς οὗτος;",
+      "sourceDivisionHint": "section=4"
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg001.perseus-grc1:local-p00026",
+      "text": "ΕΥΘ. ὁ ἐμὸς πατήρ.",
+      "sourceDivisionHint": "section=4"
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg001.perseus-grc1:local-p00027",
+      "text": "ΣΩ. ὁ σός, ὦ βέλτιστε;",
+      "sourceDivisionHint": "section=4"
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg001.perseus-grc1:local-p00028",
+      "text": "ΕΥΘ. πάνυ μὲν οὖν.",
+      "sourceDivisionHint": "section=4"
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg001.perseus-grc1:local-p00029",
+      "text": "ΣΩ. ἔστιν δὲ τί τὸ ἔγκλημα καὶ τίνος ἡ δίκη;",
+      "sourceDivisionHint": "section=4"
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg001.perseus-grc1:local-p00030",
+      "text": "ΕΥΘ. φόνου, ὦ Σώκρατες.",
+      "sourceDivisionHint": "section=4"
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg001.perseus-grc1:local-p00031",
+      "text": "ΣΩ. Ἡράκλεις. ἦ που, ὦ Εὐθύφρων, ἀγνοεῖται ὑπὸ τῶν πολλῶν ὅπῃ ποτὲ ὀρθῶς ἔχει· οὐ γὰρ οἶμαί γε τοῦ ἐπιτυχόντος ὀρθῶς αὐτὸ πρᾶξαι ἀλλὰ πόρρω που ἤδη σοφίας ἐλαύνοντος.",
+      "sourceDivisionHint": "section=4"
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg001.perseus-grc1:local-p00032",
+      "text": "ΕΥΘ. πόρρω μέντοι νὴ Δία, ὦ Σώκρατες.",
+      "sourceDivisionHint": "section=4"
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg001.perseus-grc1:local-p00033",
+      "text": "ΣΩ. ἔστιν δὲ δὴ τῶν οἰκείων τις ὁ τεθνεὼς ὑπὸ τοῦ σοῦ πατρός; ἢ δῆλα δή; οὐ γὰρ ἄν που ὑπέρ γε ἀλλοτρίου ἐπεξῇσθα φόνου αὐτῷ.",
+      "sourceDivisionHint": "section=4"
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg001.perseus-grc1:local-p00034",
+      "text": "ΕΥΘ. γελοῖον, ὦ Σώκρατες, ὅτι οἴει τι διαφέρειν εἴτε ἀλλότριος εἴτε οἰκεῖος ὁ τεθνεώς, ἀλλʼ οὐ τοῦτο μόνον δεῖν φυλάττειν, εἴτε ἐν δίκῃ ἔκτεινεν ὁ κτείνας εἴτε μή, καὶ εἰ μὲν ἐν δίκῃ, ἐᾶν, εἰ δὲ μή, ἐπεξιέναι, ἐάνπερ ὁ κτείνας συνέστιός σοι καὶ ὁμοτράπεζος ᾖ· ἴσον γὰρ τὸ μίασμα γίγνεται ἐὰν συνῇς τῷ τοιούτῳ συνειδὼς καὶ μὴ ἀφοσιοῖς σεαυτόν τε καὶ ἐκεῖνον τῇ δίκῃ ἐπεξιών. ἐπεὶ ὅ γε ἀποθανὼν πελάτης τις ἦν ἐμός, καὶ ὡς ἐγεωργοῦμεν ἐν τῇ Νάξῳ, ἐθήτευεν ἐκεῖ παρʼ ἡμῖν. παροινήσας οὖν καὶ ὀργισθεὶς τῶν οἰκετῶν τινι τῶν ἡμετέρων ἀποσφάττει αὐτόν. ὁ οὖν πατὴρ συνδήσας τοὺς πόδας καὶ τὰς χεῖρας αὐτοῦ, καταβαλὼν εἰς τάφρον τινά, πέμπει δεῦρο ἄνδρα πευσόμενον τοῦ ἐξηγητοῦ ὅτι χρείη ποιεῖν. ἐν δὲ τούτῳ τῷ χρόνῳ τοῦ δεδεμένου ὠλιγώρει τε καὶ ἠμέλει ὡς ἀνδροφόνου καὶ οὐδὲν ὂν πρᾶγμα εἰ καὶ ἀποθάνοι, ὅπερ οὖν καὶ ἔπαθεν· ὑπὸ γὰρ λιμοῦ καὶ ῥίγους καὶ τῶν δεσμῶν ἀποθνῄσκει πρὶν τὸν ἄγγελον παρὰ τοῦ ἐξηγητοῦ ἀφικέσθαι. ταῦτα δὴ οὖν καὶ ἀγανακτεῖ ὅ τε πατὴρ καὶ οἱ ἄλλοι οἰκεῖοι, ὅτι ἐγὼ ὑπὲρ τοῦ ἀνδροφόνου τῷ πατρὶ φόνου ἐπεξέρχομαι οὔτε ἀποκτείναντι, ὥς φασιν ἐκεῖνοι, οὔτʼ εἰ ὅτι μάλιστα ἀπέκτεινεν, ἀνδροφόνου γε ὄντος τοῦ ἀποθανόντος, οὐ δεῖν φροντίζειν ὑπὲρ τοῦ τοιούτου—ἀνόσιον γὰρ εἶναι τὸ ὑὸν πατρὶ φόνου ἐπεξιέναι—κακῶς εἰδότες, ὦ Σώκρατες, τὸ θεῖον ὡς ἔχει τοῦ ὁσίου τε πέρι καὶ τοῦ ἀνοσίου.",
+      "sourceDivisionHint": "section=4"
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg001.perseus-grc1:local-p00035",
+      "text": "ΣΩ. σὺ δὲ δὴ πρὸς Διός, ὦ Εὐθύφρων, οὑτωσὶ ἀκριβῶς οἴει ἐπίστασθαι περὶ τῶν θείων ὅπῃ ἔχει, καὶ τῶν ὁσίων τε καὶ ἀνοσίων, ὥστε τούτων οὕτω πραχθέντων ὡς σὺ λέγεις, οὐ φοβῇ δικαζόμενος τῷ πατρὶ ὅπως μὴ αὖ σὺ ἀνόσιον πρᾶγμα τυγχάνῃς πράττων;",
+      "sourceDivisionHint": "section=4"
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg001.perseus-grc1:local-p00036",
+      "text": "ΕΥΘ. οὐδὲν γὰρ ἄν μου ὄφελος εἴη, ὦ Σώκρατες, οὐδέ τῳ ἂν διαφέροι Εὐθύφρων τῶν πολλῶν ἀνθρώπων, εἰ μὴ τὰ τοιαῦτα πάντα ἀκριβῶς εἰδείην.",
+      "sourceDivisionHint": "section=5"
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg001.perseus-grc1:local-p00037",
+      "text": "ΣΩ. ἆρʼ οὖν μοι, ὦ θαυμάσιε Εὐθύφρων, κράτιστόν ἐστι μαθητῇ σῷ γενέσθαι, καὶ πρὸ τῆς γραφῆς τῆς πρὸς Μέλητον αὐτὰ ταῦτα προκαλεῖσθαι αὐτόν, λέγοντα ὅτι ἔγωγε καὶ ἐν τῷ ἔμπροσθεν χρόνῳ τὰ θεῖα περὶ πολλοῦ ἐποιούμην εἰδέναι, καὶ νῦν ἐπειδή με ἐκεῖνος αὐτοσχεδιάζοντά φησι καὶ καινοτομοῦντα περὶ τῶν θείων ἐξαμαρτάνειν, μαθητὴς δὴ γέγονα σός — καὶ εἰ μέν, ὦ Μέλητε, φαίην ἄν, Εὐθύφρονα ὁμολογεῖς σοφὸν εἶναι τὰ τοιαῦτα, καὶ ὀρθῶς νομίζειν καὶ ἐμὲ ἡγοῦ καὶ μὴ δικάζου· εἰ δὲ μή, ἐκείνῳ τῷ διδασκάλῳ λάχε δίκην πρότερον ἢ ἐμοί, ὡς τοὺς πρεσβυτέρους διαφθείροντι ἐμέ τε καὶ τὸν αὑτοῦ πατέρα, ἐμὲ μὲν διδάσκοντι, ἐκεῖνον δὲ νουθετοῦντί τε καὶ κολάζοντι —καὶ ἂν μή μοι πείθηται μηδὲ ἀφίῃ τῆς δίκης ἢ ἀντʼ ἐμοῦ γράφηται σέ, αὐτὰ ταῦτα λέγειν ἐν τῷ δικαστηρίῳ ἃ προυκαλούμην αὐτόν;",
+      "sourceDivisionHint": "section=5"
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg001.perseus-grc1:local-p00038",
+      "text": "ΕΥΘ. ναὶ μὰ Δία, ὦ Σώκρατες, εἰ ἄρα ἐμὲ ἐπιχειρήσειε γράφεσθαι, εὕροιμʼ ἄν, ὡς οἶμαι, ὅπῃ σαθρός ἐστιν, καὶ πολὺ ἂν ἡμῖν πρότερον περὶ ἐκείνου λόγος ἐγένετο ἐν τῷ δικαστηρίῳ ἢ περὶ ἐμοῦ.",
+      "sourceDivisionHint": "section=5"
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg001.perseus-grc1:local-p00039",
+      "text": "ΣΩ. καὶ ἐγώ τοι, ὦ φίλε ἑταῖρε, ταῦτα γιγνώσκων μαθητὴς ἐπιθυμῶ γενέσθαι σός, εἰδὼς ὅτι καὶ ἄλλος πού τις καὶ ὁ Μέλητος οὗτος σὲ μὲν οὐδὲ δοκεῖ ὁρᾶν, ἐμὲ δὲ οὕτως ὀξέως ἀτεχνῶς καὶ ῥᾳδίως κατεῖδεν ὥστε ἀσεβείας ἐγράψατο. νῦν οὖν πρὸς Διὸς λέγε μοι ὃ νυνδὴ σαφῶς εἰδέναι διισχυρίζου, ποῖόν τι τὸ εὐσεβὲς φῂς εἶναι καὶ τὸ ἀσεβὲς καὶ περὶ φόνου καὶ περὶ τῶν ἄλλων; ἢ οὐ ταὐτόν ἐστιν ἐν πάσῃ πράξει τὸ ὅσιον αὐτὸ αὑτῷ, καὶ τὸ ἀνόσιον αὖ τοῦ μὲν ὁσίου παντὸς ἐναντίον, αὐτὸ δὲ αὑτῷ ὅμοιον καὶ ἔχον μίαν τινὰ ἰδέαν κατὰ τὴν ἀνοσιότητα πᾶν ὅτιπερ ἂν μέλλῃ ἀνόσιον εἶναι;",
+      "sourceDivisionHint": "section=5"
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg001.perseus-grc1:local-p00040",
+      "text": "ΕΥΘ. πάντως δήπου, ὦ Σώκρατες.",
+      "sourceDivisionHint": "section=5"
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg001.perseus-grc1:local-p00041",
+      "text": "ΣΩ. λέγε δή, τί φῂς εἶναι τὸ ὅσιον καὶ τί τὸ ἀνόσιον;",
+      "sourceDivisionHint": "section=5"
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg001.perseus-grc1:local-p00042",
+      "text": "ΕΥΘ. λέγω τοίνυν ὅτι τὸ μὲν ὅσιόν ἐστιν ὅπερ ἐγὼ νῦν ποιῶ, τῷ ἀδικοῦντι ἢ περὶ φόνους ἢ περὶ ἱερῶν κλοπὰς ἤ τι ἄλλο τῶν τοιούτων ἐξαμαρτάνοντι ἐπεξιέναι, ἐάντε πατὴρ ὢν τυγχάνῃ ἐάντε μήτηρ ἐάντε ἄλλος ὁστισοῦν, τὸ δὲ μὴ ἐπεξιέναι ἀνόσιον· ἐπεί, ὦ Σώκρατες, θέασαι ὡς μέγα σοι ἐρῶ τεκμήριον τοῦ νόμου ὅτι οὕτως ἔχει—ὃ καὶ ἄλλοις ἤδη εἶπον, ὅτι ταῦτα ὀρθῶς ἂν εἴη οὕτω γιγνόμενα—μὴ ἐπιτρέπειν τῷ ἀσεβοῦντι μηδʼ ἂν ὁστισοῦν τυγχάνῃ ὤν. αὐτοὶ γὰρ οἱ ἄνθρωποι τυγχάνουσι νομίζοντες τὸν Δία τῶν θεῶν ἄριστον καὶ δικαιότατον, καὶ τοῦτον ὁμολογοῦσι τὸν αὑτοῦ πατέρα δῆσαι ὅτι τοὺς ὑεῖς κατέπινεν οὐκ ἐν δίκῃ, κἀκεῖνόν γε αὖ τὸν αὑτοῦ πατέρα ἐκτεμεῖν διʼ ἕτερα τοιαῦτα· ἐμοὶ δὲ χαλεπαίνουσιν ὅτι τῷ πατρὶ ἐπεξέρχομαι ἀδικοῦντι, καὶ οὕτως αὐτοὶ αὑτοῖς τὰ ἐναντία λέγουσι περί τε τῶν θεῶν καὶ περὶ ἐμοῦ.",
+      "sourceDivisionHint": "section=6"
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg001.perseus-grc1:local-p00043",
+      "text": "ΣΩ. ἆρά γε, ὦ Εὐθύφρων, τοῦτʼ ἔστιν οὗ οὕνεκα τὴν γραφὴν φεύγω, ὅτι τὰ τοιαῦτα ἐπειδάν τις περὶ τῶν θεῶν λέγῃ, δυσχερῶς πως ἀποδέχομαι; διὸ δή, ὡς ἔοικε, φήσει τίς με ἐξαμαρτάνειν. νῦν οὖν εἰ καὶ σοὶ ταῦτα συνδοκεῖ τῷ εὖ εἰδότι περὶ τῶν τοιούτων, ἀνάγκη δή, ὡς ἔοικε, καὶ ἡμῖν συγχωρεῖν. τί γὰρ καὶ φήσομεν, οἵ γε καὶ αὐτοὶ ὁμολογοῦμεν περὶ αὐτῶν μηδὲν εἰδέναι; ἀλλά μοι εἰπὲ πρὸς Φιλίου, σὺ ὡς ἀληθῶς ἡγῇ ταῦτα οὕτως γεγονέναι;",
+      "sourceDivisionHint": "section=6"
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg001.perseus-grc1:local-p00044",
+      "text": "ΕΥΘ. καὶ ἔτι γε τούτων θαυμασιώτερα, ὦ Σώκρατες, ἃ οἱ πολλοὶ οὐκ ἴσασιν.",
+      "sourceDivisionHint": "section=6"
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg001.perseus-grc1:local-p00045",
+      "text": "ΣΩ. καὶ πόλεμον ἆρα ἡγῇ σὺ εἶναι τῷ ὄντι ἐν τοῖς θεοῖς πρὸς ἀλλήλους, καὶ ἔχθρας γε δεινὰς καὶ μάχας καὶ ἄλλα τοιαῦτα πολλά, οἷα λέγεταί τε ὑπὸ τῶν ποιητῶν, καὶ ὑπὸ τῶν ἀγαθῶν γραφέων τά τε ἄλλα ἱερὰ ἡμῖν καταπεποίκιλται, καὶ δὴ καὶ τοῖς μεγάλοις Παναθηναίοις ὁ πέπλος μεστὸς τῶν τοιούτων ποικιλμάτων ἀνάγεται εἰς τὴν ἀκρόπολιν; ταῦτα ἀληθῆ φῶμεν εἶναι, ὦ Εὐθύφρων;",
+      "sourceDivisionHint": "section=6"
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg001.perseus-grc1:local-p00046",
+      "text": "ΕΥΘ. μὴ μόνον γε, ὦ Σώκρατες, ἀλλʼ ὅπερ ἄρτι εἶπον, καὶ ἄλλα σοι ἐγὼ πολλά, ἐάνπερ βούλῃ, περὶ τῶν θείων διηγήσομαι, ἃ σὺ ἀκούων εὖ οἶδʼ ὅτι ἐκπλαγήσῃ.",
+      "sourceDivisionHint": "section=6"
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg001.perseus-grc1:local-p00047",
+      "text": "ΣΩ. οὐκ ἂν θαυμάζοιμι. ἀλλὰ ταῦτα μέν μοι εἰς αὖθις ἐπὶ σχολῆς διηγήσῃ· νυνὶ δὲ ὅπερ ἄρτι σε ἠρόμην πειρῶ σαφέστερον εἰπεῖν. οὐ γάρ με, ὦ ἑταῖρε, τὸ πρότερον ἱκανῶς ἐδίδαξας ἐρωτήσαντα τὸ ὅσιον ὅτι ποτʼ εἴη, ἀλλά μοι εἶπες ὅτι τοῦτο τυγχάνει ὅσιον ὂν ὃ σὺ νῦν ποιεῖς, φόνου ἐπεξιὼν τῷ πατρί.",
+      "sourceDivisionHint": "section=6"
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg001.perseus-grc1:local-p00048",
+      "text": "ΕΥΘ. καὶ ἀληθῆ γε ἔλεγον, ὦ Σώκρατες.",
+      "sourceDivisionHint": "section=6"
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg001.perseus-grc1:local-p00049",
+      "text": "ΣΩ. ἴσως. ἀλλὰ γάρ, ὦ Εὐθύφρων, καὶ ἄλλα πολλὰ φῂς εἶναι ὅσια.",
+      "sourceDivisionHint": "section=6"
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg001.perseus-grc1:local-p00050",
+      "text": "ΕΥΘ. καὶ γὰρ ἔστιν.",
+      "sourceDivisionHint": "section=6"
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg001.perseus-grc1:local-p00051",
+      "text": "ΣΩ. μέμνησαι οὖν ὅτι οὐ τοῦτό σοι διεκελευόμην, ἕν τι ἢ δύο με διδάξαι τῶν πολλῶν ὁσίων, ἀλλʼ ἐκεῖνο αὐτὸ τὸ εἶδος ᾧ πάντα τὰ ὅσια ὅσιά ἐστιν; ἔφησθα γάρ που μιᾷ ἰδέᾳ τά τε ἀνόσια ἀνόσια εἶναι καὶ τὰ ὅσια ὅσια· ἢ οὐ μνημονεύεις;",
+      "sourceDivisionHint": "section=6"
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg001.perseus-grc1:local-p00052",
+      "text": "ΕΥΘ. ἔγωγε.",
+      "sourceDivisionHint": "section=6"
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg001.perseus-grc1:local-p00053",
+      "text": "ΣΩ. ταύτην τοίνυν με αὐτὴν δίδαξον τὴν ἰδέαν τίς ποτέ ἐστιν, ἵνα εἰς ἐκείνην ἀποβλέπων καὶ χρώμενος αὐτῇ παραδείγματι, ὃ μὲν ἂν τοιοῦτον ᾖ ὧν ἂν ἢ σὺ ἢ ἄλλος τις πράττῃ φῶ ὅσιον εἶναι, ὃ δʼ ἂν μὴ τοιοῦτον, μὴ φῶ.",
+      "sourceDivisionHint": "section=6"
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg001.perseus-grc1:local-p00054",
+      "text": "ΕΥΘ. ἀλλʼ εἰ οὕτω βούλει, ὦ Σώκρατες, καὶ οὕτω σοι φράσω.",
+      "sourceDivisionHint": "section=6"
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg001.perseus-grc1:local-p00055",
+      "text": "ΣΩ. ἀλλὰ μὴν βούλομαί γε.",
+      "sourceDivisionHint": "section=6"
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg001.perseus-grc1:local-p00056",
+      "text": "ΕΥΘ. ἔστι τοίνυν τὸ μὲν τοῖς θεοῖς προσφιλὲς ὅσιον, τὸ δὲ μὴ προσφιλὲς ἀνόσιον.",
+      "sourceDivisionHint": "section=7"
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg001.perseus-grc1:local-p00057",
+      "text": "ΣΩ. παγκάλως, ὦ Εὐθύφρων, καὶ ὡς ἐγὼ ἐζήτουν ἀποκρίνασθαί σε, οὕτω νῦν ἀπεκρίνω. εἰ μέντοι ἀληθῶς, τοῦτο οὔπω οἶδα, ἀλλὰ σὺ δῆλον ὅτι ἐπεκδιδάξεις ὡς ἔστιν ἀληθῆ ἃ λέγεις.",
+      "sourceDivisionHint": "section=7"
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg001.perseus-grc1:local-p00058",
+      "text": "ΕΥΘ. πάνυ μὲν οὖν.",
+      "sourceDivisionHint": "section=7"
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg001.perseus-grc1:local-p00059",
+      "text": "ΣΩ. φέρε δή, ἐπισκεψώμεθα τί λέγομεν. τὸ μὲν θεοφιλές τε καὶ θεοφιλὴς ἄνθρωπος ὅσιος, τὸ δὲ θεομισὲς καὶ ὁ θεομισὴς ἀνόσιος· οὐ ταὐτὸν δʼ ἐστίν, ἀλλὰ τὸ ἐναντιώτατον, τὸ ὅσιον τῷ ἀνοσίῳ· οὐχ οὕτως;",
+      "sourceDivisionHint": "section=7"
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg001.perseus-grc1:local-p00060",
+      "text": "ΕΥΘ. οὕτω μὲν οὖν.",
+      "sourceDivisionHint": "section=7"
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg001.perseus-grc1:local-p00061",
+      "text": "ΣΩ. καὶ εὖ γε φαίνεται εἰρῆσθαι;",
+      "sourceDivisionHint": "section=7"
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg001.perseus-grc1:local-p00062",
+      "text": "ΕΥΘ. δοκῶ, ὦ Σώκρατες. εἴρηται γάρ.γ",
+      "sourceDivisionHint": "section=7"
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg001.perseus-grc1:local-p00063",
+      "text": "ΣΩ. οὐκοῦν καὶ ὅτι στασιάζουσιν οἱ θεοί, ὦ Εὐθύφρων, καὶ διαφέρονται ἀλλήλοις καὶ ἔχθρα ἐστὶν ἐν αὐτοῖς πρὸς ἀλλήλους, καὶ τοῦτο εἴρηται;",
+      "sourceDivisionHint": "section=7"
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg001.perseus-grc1:local-p00064",
+      "text": "ΕΥΘ. εἴρηται γάρ.",
+      "sourceDivisionHint": "section=7"
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg001.perseus-grc1:local-p00065",
+      "text": "ΣΩ. ἔχθραν δὲ καὶ ὀργάς, ὦ ἄριστε, ἡ περὶ τίνων διαφορὰ ποιεῖ; ὧδε δὲ σκοπῶμεν. ἆρʼ ἂν εἰ διαφεροίμεθα ἐγώ τε καὶ σὺ περὶ ἀριθμοῦ ὁπότερα πλείω, ἡ περὶ τούτων διαφορὰ ἐχθροὺς ἂν ἡμᾶς ποιοῖ καὶ ὀργίζεσθαι ἀλλήλοις, ἢ ἐπὶ λογισμὸν ἐλθόντες περί γε τῶν τοιούτων ταχὺ ἂν ἀπαλλαγεῖμεν;",
+      "sourceDivisionHint": "section=7"
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg001.perseus-grc1:local-p00066",
+      "text": "ΕΥΘ. πάνυ γε.",
+      "sourceDivisionHint": "section=7"
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg001.perseus-grc1:local-p00067",
+      "text": "ΣΩ. οὐκοῦν καὶ περὶ τοῦ μείζονος καὶ ἐλάττονος εἰ διαφεροίμεθα, ἐπὶ τὸ μετρεῖν ἐλθόντες ταχὺ παυσαίμεθʼ ἂν τῆς διαφορᾶς;",
+      "sourceDivisionHint": "section=7"
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg001.perseus-grc1:local-p00068",
+      "text": "ΕΥΘ. ἔστι ταῦτα.",
+      "sourceDivisionHint": "section=7"
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg001.perseus-grc1:local-p00069",
+      "text": "ΣΩ. καὶ ἐπί γε τὸ ἱστάναι ἐλθόντες, ὡς ἐγᾦμαι, περὶ τοῦ βαρυτέρου τε καὶ κουφοτέρου διακριθεῖμεν ἄν;",
+      "sourceDivisionHint": "section=7"
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg001.perseus-grc1:local-p00070",
+      "text": "ΕΥΘ. πῶς γὰρ οὔ;",
+      "sourceDivisionHint": "section=7"
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg001.perseus-grc1:local-p00071",
+      "text": "ΣΩ. περὶ τίνος δὲ δὴ διενεχθέντες καὶ ἐπὶ τίνα κρίσιν οὐ δυνάμενοι ἀφικέσθαι ἐχθροί γε ἂν ἀλλήλοις εἶμεν καὶ ὀργιζοίμεθα; ἴσως οὐ πρόχειρόν σοί ἐστιν, ἀλλʼ ἐμοῦ λέγοντος σκόπει εἰ τάδε ἐστὶ τό τε δίκαιον καὶ τὸ ἄδικον καὶ καλὸν καὶ αἰσχρὸν καὶ ἀγαθὸν καὶ κακόν. ἆρα οὐ ταῦτά ἐστιν περὶ ὧν διενεχθέντες καὶ οὐ δυνάμενοι ἐπὶ ἱκανὴν κρίσιν αὐτῶν ἐλθεῖν ἐχθροὶ ἀλλήλοις γιγνόμεθα, ὅταν γιγνώμεθα, καὶ ἐγὼ καὶ σὺ καὶ οἱ ἄλλοι ἄνθρωποι πάντες;",
+      "sourceDivisionHint": "section=7"
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg001.perseus-grc1:local-p00072",
+      "text": "ΕΥΘ. ἀλλʼ ἔστιν αὕτη ἡ διαφορά, ὦ Σώκρατες, καὶ περὶ τούτων.",
+      "sourceDivisionHint": "section=7"
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg001.perseus-grc1:local-p00073",
+      "text": "ΣΩ. τί δὲ οἱ θεοί, ὦ Εὐθύφρων; οὐκ εἴπερ τι διαφέρονται, διʼ αὐτὰ ταῦτα διαφέροιντʼ ἄν;",
+      "sourceDivisionHint": "section=7"
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg001.perseus-grc1:local-p00074",
+      "text": "ΕΥΘ. πολλὴ ἀνάγκη.",
+      "sourceDivisionHint": "section=7"
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg001.perseus-grc1:local-p00075",
+      "text": "ΣΩ. καὶ τῶν θεῶν ἄρα, ὦ γενναῖε Εὐθύφρων, ἄλλοι ἄλλα δίκαια ἡγοῦνται κατὰ τὸν σὸν λόγον, καὶ καλὰ καὶ αἰσχρὰ καὶ ἀγαθὰ καὶ κακά· οὐ γὰρ ἄν που ἐστασίαζον ἀλλήλοις εἰ μὴ περὶ τούτων διεφέροντο· ἦ γάρ;γ",
+      "sourceDivisionHint": "section=7"
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg001.perseus-grc1:local-p00076",
+      "text": "ΕΥΘ. ὀρθῶς λέγεις.",
+      "sourceDivisionHint": "section=7"
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg001.perseus-grc1:local-p00077",
+      "text": "ΣΩ. οὐκοῦν ἅπερ καλὰ ἡγοῦνται ἕκαστοι καὶ ἀγαθὰ καὶ δίκαια, ταῦτα καὶ φιλοῦσιν, τὰ δὲ ἐναντία τούτων μισοῦσιν;",
+      "sourceDivisionHint": "section=7"
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg001.perseus-grc1:local-p00078",
+      "text": "ΕΥΘ. πάνυ γε.",
+      "sourceDivisionHint": "section=7"
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg001.perseus-grc1:local-p00079",
+      "text": "ΣΩ. ταὐτὰ δέ γε, ὡς σὺ φῄς, οἱ μὲν δίκαια ἡγοῦνται, οἱ δὲ ἄδικα, περὶ ἃ καὶ ἀμφισβητοῦντες στασιάζουσί τε καὶ πολεμοῦσιν ἀλλήλοις· ἆρα οὐχ οὕτω;",
+      "sourceDivisionHint": "section=8"
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg001.perseus-grc1:local-p00080",
+      "text": "ΕΥΘ. οὕτω.",
+      "sourceDivisionHint": "section=8"
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg001.perseus-grc1:local-p00081",
+      "text": "ΣΩ. ταὔτʼ ἄρα, ὡς ἔοικεν, μισεῖταί τε ὑπὸ τῶν θεῶν καὶ φιλεῖται, καὶ θεομισῆ τε καὶ θεοφιλῆ ταὔτʼ ἂν εἴη.",
+      "sourceDivisionHint": "section=8"
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg001.perseus-grc1:local-p00082",
+      "text": "ΕΥΘ. ἔοικεν.",
+      "sourceDivisionHint": "section=8"
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg001.perseus-grc1:local-p00083",
+      "text": "ΣΩ. καὶ ὅσια ἄρα καὶ ἀνόσια τὰ αὐτὰ ἂν εἴη, ὦ Εὐθύφρων, τούτῳ τῷ λόγῳ.",
+      "sourceDivisionHint": "section=8"
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg001.perseus-grc1:local-p00084",
+      "text": "ΕΥΘ. κινδυνεύει.",
+      "sourceDivisionHint": "section=8"
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg001.perseus-grc1:local-p00085",
+      "text": "ΣΩ. οὐκ ἄρα ὃ ἠρόμην ἀπεκρίνω, ὦ θαυμάσιε. οὐ γὰρ τοῦτό γε ἠρώτων, ὃ τυγχάνει ταὐτὸν ὂν ὅσιόν τε καὶ ἀνόσιον· ὃ δʼ ἂν θεοφιλὲς ᾖ καὶ θεομισές ἐστιν, ὡς ἔοικεν. ὥστε, ὦ Εὐθύφρων, ὃ σὺ νῦν ποιεῖς τὸν πατέρα κολάζων, οὐδὲν θαυμαστὸν εἰ τοῦτο δρῶν τῷ μὲν Διὶ προσφιλὲς ποιεῖς, τῷ δὲ Κρόνῳ καὶ τῷ Οὐρανῷ ἐχθρόν, καὶ τῷ μὲν Ἡφαίστῳ φίλον, τῇ δὲ Ἥρᾳ ἐχθρόν, καὶ εἴ τις ἄλλος τῶν θεῶν ἕτερος ἑτέρῳ διαφέρεται περὶ αὐτοῦ, καὶ ἐκείνοις κατὰ τὰ αὐτά.",
+      "sourceDivisionHint": "section=8"
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg001.perseus-grc1:local-p00086",
+      "text": "ΕΥΘ. ἀλλʼ οἶμαι, ὦ Σώκρατες, περί γε τούτου τῶν θεῶν οὐδένα ἕτερον ἑτέρῳ διαφέρεσθαι, ὡς οὐ δεῖ δίκην διδόναι ἐκεῖνον ὃς ἂν ἀδίκως τινὰ ἀποκτείνῃ.",
+      "sourceDivisionHint": "section=8"
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg001.perseus-grc1:local-p00087",
+      "text": "ΣΩ. τί δέ; ἀνθρώπων, ὦ Εὐθύφρων, ἤδη τινὸς ἤκουσας ἀμφισβητοῦντος ὡς τὸν ἀδίκως ἀποκτείναντα ἢ ἄλλο ἀδίκως ποιοῦντα ὁτιοῦν οὐ δεῖ δίκην διδόναι;",
+      "sourceDivisionHint": "section=8"
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg001.perseus-grc1:local-p00088",
+      "text": "ΕΥΘ. οὐδὲν μὲν οὖν παύονται ταῦτα ἀμφισβητοῦντες καὶ ἄλλοθι καὶ ἐν τοῖς δικαστηρίοις· ἀδικοῦντες γὰρ πάμπολλα, πάντα ποιοῦσι καὶ λέγουσι φεύγοντες τὴν δίκην.",
+      "sourceDivisionHint": "section=8"
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg001.perseus-grc1:local-p00089",
+      "text": "ΣΩ. ἦ καὶ ὁμολογοῦσιν, ὦ Εὐθύφρων, ἀδικεῖν, καὶ ὁμολογοῦντες ὅμως οὐ δεῖν φασὶ σφᾶς διδόναι δίκην;",
+      "sourceDivisionHint": "section=8"
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg001.perseus-grc1:local-p00090",
+      "text": "ΕΥΘ. οὐδαμῶς τοῦτό γε.",
+      "sourceDivisionHint": "section=8"
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg001.perseus-grc1:local-p00091",
+      "text": "ΣΩ. οὐκ ἄρα πᾶν γε ποιοῦσι καὶ λέγουσι· τοῦτο γὰρ οἶμαι οὐ τολμῶσι λέγειν οὐδʼ ἀμφισβητεῖν, ὡς οὐχὶ εἴπερ ἀδικοῦσί γε δοτέον δίκην, ἀλλʼ οἶμαι οὔ φασιν ἀδικεῖν· ἦ γάρ;",
+      "sourceDivisionHint": "section=8"
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg001.perseus-grc1:local-p00092",
+      "text": "ΕΥΘ. ἀληθῆ λέγεις.",
+      "sourceDivisionHint": "section=8"
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg001.perseus-grc1:local-p00093",
+      "text": "ΣΩ. οὐκ ἄρα ἐκεῖνό γε ἀμφισβητοῦσιν, ὡς οὐ τὸν ἀδικοῦντα δεῖ διδόναι δίκην, ἀλλʼ ἐκεῖνο ἴσως ἀμφισβητοῦσιν, τὸ τίς ἐστιν ὁ ἀδικῶν καὶ τί δρῶν καὶ πότε.",
+      "sourceDivisionHint": "section=8"
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg001.perseus-grc1:local-p00094",
+      "text": "ΕΥΘ. ἀληθῆ λέγεις.",
+      "sourceDivisionHint": "section=8"
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg001.perseus-grc1:local-p00095",
+      "text": "ΣΩ. οὐκοῦν αὐτά γε ταῦτα καὶ οἱ θεοὶ πεπόνθασιν, εἴπερ στασιάζουσι περὶ τῶν δικαίων καὶ ἀδίκων ὡς ὁ σὸς λόγος, καὶ οἱ μέν φασιν ἀλλήλους ἀδικεῖν, οἱ δὲ οὔ φασιν; ἐπεὶ ἐκεῖνό γε δήπου, ὦ θαυμάσιε, οὐδεὶς οὔτε θεῶν οὔτε ἀνθρώπων τολμᾷ λέγειν, ὡς οὐ τῷ γε ἀδικοῦντι δοτέον δίκην.",
+      "sourceDivisionHint": "section=8"
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg001.perseus-grc1:local-p00096",
+      "text": "ΕΥΘ. ναί, τοῦτο μὲν ἀληθὲς λέγεις, ὦ Σώκρατες, τό γε κεφάλαιον.",
+      "sourceDivisionHint": "section=8"
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg001.perseus-grc1:local-p00097",
+      "text": "ΣΩ. ἀλλʼ ἕκαστόν γε οἶμαι, ὦ Εὐθύφρων, τῶν πραχθέντων ἀμφισβητοῦσιν οἱ ἀμφισβητοῦντες, καὶ ἄνθρωποι καὶ θεοί, εἴπερ ἀμφισβητοῦσιν θεοί· πράξεώς τινος πέρι διαφερόμενοι οἱ μὲν δικαίως φασὶν αὐτὴν πεπρᾶχθαι, οἱ δὲ ἀδίκως· ἆρʼ οὐχ οὕτω;",
+      "sourceDivisionHint": "section=8"
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg001.perseus-grc1:local-p00098",
+      "text": "ΕΥΘ. πάνυ γε.",
+      "sourceDivisionHint": "section=8"
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg001.perseus-grc1:local-p00099",
+      "text": "ΣΩ. ἴθι νυν, ὦ φίλε Εὐθύφρων, δίδαξον καὶ ἐμέ, ἵνα σοφώτερος γένωμαι, τί σοι τεκμήριόν ἐστιν ὡς πάντες θεοὶ ἡγοῦνται ἐκεῖνον ἀδίκως τεθνάναι, ὃς ἂν θητεύων ἀνδροφόνος γενόμενος, συνδεθεὶς ὑπὸ τοῦ δεσπότου τοῦ ἀποθανόντος, φθάσῃ τελευτήσας διὰ τὰ δεσμὰ πρὶν τὸν συνδήσαντα παρὰ τῶν ἐξηγητῶν περὶ αὐτοῦ πυθέσθαι τί χρὴ ποιεῖν, καὶ ὑπὲρ τοῦ τοιούτου δὴ ὀρθῶς ἔχει ἐπεξιέναι καὶ ἐπισκήπτεσθαι φόνου τὸν ὑὸν τῷ πατρί; ἴθι, περὶ τούτων πειρῶ τί μοι σαφὲς ἐνδείξασθαι ὡς παντὸς μᾶλλον πάντες θεοὶ ἡγοῦνται ὀρθῶς ἔχειν ταύτην τὴν πρᾶξιν· κἄν μοι ἱκανῶς ἐνδείξῃ, ἐγκωμιάζων σε ἐπὶ σοφίᾳ οὐδέποτε παύσομαι.",
+      "sourceDivisionHint": "section=9"
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg001.perseus-grc1:local-p00100",
+      "text": "ΕΥΘ. ἀλλʼ ἴσως οὐκ ὀλίγον ἔργον ἐστίν, ὦ Σώκρατες, ἐπεὶ πάνυ γε σαφῶς ἔχοιμι ἂν ἐπιδεῖξαί σοι.",
+      "sourceDivisionHint": "section=9"
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg001.perseus-grc1:local-p00101",
+      "text": "ΣΩ. μανθάνω· ὅτι σοι δοκῶ τῶν δικαστῶν δυσμαθέστερος εἶναι, ἐπεὶ ἐκείνοις γε ἐνδείξῃ δῆλον ὅτι ὡς ἄδικά τέ ἐστιν καὶ οἱ θεοὶ ἅπαντες τὰ τοιαῦτα μισοῦσιν.",
+      "sourceDivisionHint": "section=9"
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg001.perseus-grc1:local-p00102",
+      "text": "ΕΥΘ. πάνυ γε σαφῶς, ὦ Σώκρατες, ἐάνπερ ἀκούωσί γέ μου λέγοντος.",
+      "sourceDivisionHint": "section=9"
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg001.perseus-grc1:local-p00103",
+      "text": "ΣΩ. ἀλλʼ ἀκούσονται. ἐάνπερ εὖ δοκῇς λέγειν. τόδε δέ σου ἐνενόησα ἅμα λέγοντος καὶ πρὸς ἐμαυτὸν σκοπῶ· εἰ ὅτι μάλιστά με Εὐθύφρων διδάξειεν ὡς οἱ θεοὶ ἅπαντες τὸν τοιοῦτον θάνατον ἡγοῦνται ἄδικον εἶναι, τί μᾶλλον ἐγὼ μεμάθηκα παρʼ Εὐθύφρονος τί ποτʼ ἐστὶν τὸ ὅσιόν τε καὶ τὸ ἀνόσιον; θεομισὲς μὲν γὰρ τοῦτο τὸ ἔργον, ὡς ἔοικεν, εἴη ἄν. ἀλλὰ γὰρ οὐ τούτῳ ἐφάνη ἄρτι ὡρισμένα τὸ ὅσιον καὶ μή· τὸ γὰρ θεομισὲς ὂν καὶ θεοφιλὲς ἐφάνη. ὥστε τούτου μὲν ἀφίημί σε, ὦ Εὐθύφρων· εἰ βούλει, πάντες αὐτὸ ἡγείσθων θεοὶ ἄδικον καὶ πάντες μισούντων. ἀλλʼ ἆρα τοῦτο ὃ νῦν ἐπανορθούμεθα ἐν τῷ λόγῳ—ὡς ὃ μὲν ἂν πάντες οἱ θεοὶ μισῶσιν ἀνόσιόν ἐστιν, ὃ δʼ ἂν φιλῶσιν, ὅσιον· ὃ δʼ ἂν οἱ μὲν φιλῶσιν οἱ δὲ μισῶσιν, οὐδέτερα ἢ ἀμφότερα—ἆρʼ οὕτω βούλει ἡμῖν ὡρίσθαι νῦν περὶ τοῦ ὁσίου καὶ τοῦ ἀνοσίου;",
+      "sourceDivisionHint": "section=9"
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg001.perseus-grc1:local-p00104",
+      "text": "ΕΥΘ. τί γὰρ κωλύει, ὦ Σώκρατες;γ",
+      "sourceDivisionHint": "section=9"
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg001.perseus-grc1:local-p00105",
+      "text": "ΣΩ. οὐδὲν ἐμέ γε, ὦ Εὐθύφρων, ἀλλὰ σὺ δὴ τὸ σὸν σκόπει, εἰ τοῦτο ὑποθέμενος οὕτω ῥᾷστά με διδάξεις ὃ ὑπέσχου.",
+      "sourceDivisionHint": "section=9"
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg001.perseus-grc1:local-p00106",
+      "text": "ΕΥΘ. ἀλλʼ ἔγωγε φαίην ἂν τοῦτο εἶναι τὸ ὅσιον ὃ ἂν πάντες οἱ θεοὶ φιλῶσιν, καὶ τὸ ἐναντίον, ὃ ἂν πάντες θεοὶ μισῶσιν, ἀνόσιον.",
+      "sourceDivisionHint": "section=9"
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg001.perseus-grc1:local-p00107",
+      "text": "ΣΩ. οὐκοῦν ἐπισκοπῶμεν αὖ τοῦτο, ὦ Εὐθύφρων, εἰ καλῶς λέγεται, ἢ ἐῶμεν καὶ οὕτω ἡμῶν τε αὐτῶν ἀποδεχώμεθα καὶ τῶν ἄλλων, ἐὰν μόνον φῇ τίς τι ἔχειν οὕτω συγχωροῦντες ἔχειν; ἢ σκεπτέον τί λέγει ὁ λέγων;",
+      "sourceDivisionHint": "section=9"
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg001.perseus-grc1:local-p00108",
+      "text": "ΕΥΘ. σκεπτέον· οἶμαι μέντοι ἔγωγε τοῦτο νυνὶ καλῶς λέγεσθαι.",
+      "sourceDivisionHint": "section=9"
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg001.perseus-grc1:local-p00109",
+      "text": "ΣΩ. τάχʼ, ὠγαθέ, βέλτιον εἰσόμεθα. ἐννόησον γὰρ τὸ τοιόνδε· ἆρα τὸ ὅσιον ὅτι ὅσιόν ἐστιν φιλεῖται ὑπὸ τῶν θεῶν, ἢ ὅτι φιλεῖται ὅσιόν ἐστιν;",
+      "sourceDivisionHint": "section=10"
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg001.perseus-grc1:local-p00110",
+      "text": "ΕΥΘ. οὐκ οἶδʼ ὅτι λέγεις, ὦ Σώκρατες.",
+      "sourceDivisionHint": "section=10"
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg001.perseus-grc1:local-p00111",
+      "text": "ΣΩ. ἀλλʼ ἐγὼ πειράσομαι σαφέστερον φράσαι. λέγομέν τι φερόμενον καὶ φέρον καὶ ἀγόμενον καὶ ἄγον καὶ ὁρώμενον καὶ ὁρῶν καὶ πάντα τὰ τοιαῦτα μανθάνεις ὅτι ἕτερα ἀλλήλων ἐστὶ καὶ ᾗ ἕτερα;",
+      "sourceDivisionHint": "section=10"
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg001.perseus-grc1:local-p00112",
+      "text": "ΕΥΘ. ἔγωγέ μοι δοκῶ μανθάνειν.",
+      "sourceDivisionHint": "section=10"
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg001.perseus-grc1:local-p00113",
+      "text": "ΣΩ. οὐκοῦν καὶ φιλούμενόν τί ἐστιν καὶ τούτου ἕτερον τὸ φιλοῦν;",
+      "sourceDivisionHint": "section=10"
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg001.perseus-grc1:local-p00114",
+      "text": "ΕΥΘ. πῶς γὰρ οὔ;",
+      "sourceDivisionHint": "section=10"
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg001.perseus-grc1:local-p00115",
+      "text": "ΣΩ. λέγε δή μοι, πότερον τὸ φερόμενον διότι φέρεται φερόμενόν ἐστιν, ἢ διʼ ἄλλο τι;γ",
+      "sourceDivisionHint": "section=10"
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg001.perseus-grc1:local-p00116",
+      "text": "ΕΥΘ. οὔκ, ἀλλὰ διὰ τοῦτο.",
+      "sourceDivisionHint": "section=10"
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg001.perseus-grc1:local-p00117",
+      "text": "ΣΩ. καὶ τὸ ἀγόμενον δὴ διότι ἄγεται, καὶ τὸ ὁρώμενον διότι ὁρᾶται;",
+      "sourceDivisionHint": "section=10"
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg001.perseus-grc1:local-p00118",
+      "text": "ΕΥΘ. πάνυ γε.",
+      "sourceDivisionHint": "section=10"
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg001.perseus-grc1:local-p00119",
+      "text": "ΣΩ. οὐκ ἄρα διότι ὁρώμενόν γέ ἐστιν, διὰ τοῦτο ὁρᾶται, ἀλλὰ τὸ ἐναντίον διότι ὁρᾶται, διὰ τοῦτο ὁρώμενον· οὐδὲ διότι ἀγόμενόν ἐστιν, διὰ τοῦτο ἄγεται, ἀλλὰ διότι ἄγεται, διὰ τοῦτο ἀγόμενον· οὐδὲ διότι φερόμενον φέρεται, ἀλλὰ διότι φέρεται φερόμενον. ἆρα κατάδηλον, ὦ Εὐθύφρων, ὃ βούλομαι λέγειν; βούλομαι δὲ τόδε, ὅτι εἴ τι γίγνεται ἤ τι πάσχει, οὐχ ὅτι γιγνόμενόν ἐστι γίγνεται, ἀλλʼ ὅτι γίγνεται γιγνόμενόν ἐστιν· οὐδʼ ὅτι πάσχον ἐστὶ πάσχει, ἀλλʼ ὅτι πάσχει πάσχον ἐστίν· ἢ οὐ συγχωρεῖς οὕτω;",
+      "sourceDivisionHint": "section=10"
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg001.perseus-grc1:local-p00120",
+      "text": "ΕΥΘ. ἔγωγε.",
+      "sourceDivisionHint": "section=10"
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg001.perseus-grc1:local-p00121",
+      "text": "ΣΩ. οὐκοῦν καὶ τὸ φιλούμενον ἢ γιγνόμενόν τί ἐστιν ἢ πάσχον τι ὑπό του;",
+      "sourceDivisionHint": "section=10"
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg001.perseus-grc1:local-p00122",
+      "text": "ΕΥΘ. πάνυ γε.",
+      "sourceDivisionHint": "section=10"
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg001.perseus-grc1:local-p00123",
+      "text": "ΣΩ. καὶ τοῦτο ἄρα οὕτως ἔχει ὥσπερ τὰ πρότερα· οὐχ ὅτι φιλούμενόν ἐστιν φιλεῖται ὑπὸ ὧν φιλεῖται, ἀλλʼ ὅτι φιλεῖται φιλούμενον;",
+      "sourceDivisionHint": "section=10"
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg001.perseus-grc1:local-p00124",
+      "text": "ΕΥΘ. ἀνάγκη.",
+      "sourceDivisionHint": "section=10"
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg001.perseus-grc1:local-p00125",
+      "text": "ΣΩ. τί δὴ οὖν λέγομεν περὶ τοῦ ὁσίου, ὦ Εὐθύφρων; ἄλλο τι φιλεῖται ὑπὸ θεῶν πάντων, ὡς ὁ σὸς λόγος;γ",
+      "sourceDivisionHint": "section=10"
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg001.perseus-grc1:local-p00126",
+      "text": "ΕΥΘ. ναί.",
+      "sourceDivisionHint": "section=10"
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg001.perseus-grc1:local-p00127",
+      "text": "ΣΩ. ἆρα διὰ τοῦτο, ὅτι ὅσιόν ἐστιν, ἢ διʼ ἄλλο τι;",
+      "sourceDivisionHint": "section=10"
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg001.perseus-grc1:local-p00128",
+      "text": "ΕΥΘ. οὔκ, ἀλλὰ διὰ τοῦτο.",
+      "sourceDivisionHint": "section=10"
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg001.perseus-grc1:local-p00129",
+      "text": "ΣΩ. διότι ἄρα ὅσιόν ἐστιν φιλεῖται, ἀλλʼ οὐχ ὅτι φιλεῖται, διὰ τοῦτο ὅσιόν ἐστιν;",
+      "sourceDivisionHint": "section=10"
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg001.perseus-grc1:local-p00130",
+      "text": "ΕΥΘ. ἔοικεν.",
+      "sourceDivisionHint": "section=10"
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg001.perseus-grc1:local-p00131",
+      "text": "ΣΩ. ἀλλὰ μὲν δὴ διότι γε φιλεῖται ὑπὸ θεῶν φιλούμενόν ἐστι καὶ θεοφιλές.",
+      "sourceDivisionHint": "section=10"
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg001.perseus-grc1:local-p00132",
+      "text": "ΕΥΘ. πῶς γὰρ οὔ;",
+      "sourceDivisionHint": "section=10"
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg001.perseus-grc1:local-p00133",
+      "text": "ΣΩ. οὐκ ἄρα τὸ θεοφιλὲς ὅσιόν ἐστιν, ὦ Εὐθύφρων, οὐδὲ τὸ ὅσιον θεοφιλές, ὡς σὺ λέγεις, ἀλλʼ ἕτερον τοῦτο τούτου.",
+      "sourceDivisionHint": "section=10"
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg001.perseus-grc1:local-p00134",
+      "text": "ΕΥΘ. πῶς δή, ὦ Σώκρατες;γ",
+      "sourceDivisionHint": "section=10"
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg001.perseus-grc1:local-p00135",
+      "text": "ΣΩ. ὅτι ὁμολογοῦμεν τὸ μὲν ὅσιον διὰ τοῦτο φιλεῖσθαι, ὅτι ὅσιόν ἐστιν, ἀλλʼ οὐ διότι φιλεῖται ὅσιον εἶναι· ἦ γάρ;",
+      "sourceDivisionHint": "section=10"
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg001.perseus-grc1:local-p00136",
+      "text": "ΕΥΘ. ναί.",
+      "sourceDivisionHint": "section=10"
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg001.perseus-grc1:local-p00137",
+      "text": "ΣΩ. τὸ δέ γε θεοφιλὲς ὅτι φιλεῖται ὑπὸ θεῶν, αὐτῷ τούτῳ τῷ φιλεῖσθαι θεοφιλὲς εἶναι, ἀλλʼ οὐχ ὅτι θεοφιλές, διὰ τοῦτο φιλεῖσθαι.",
+      "sourceDivisionHint": "section=10"
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg001.perseus-grc1:local-p00138",
+      "text": "ΕΥΘ. ἀληθῆ λέγεις.",
+      "sourceDivisionHint": "section=10"
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg001.perseus-grc1:local-p00139",
+      "text": "ΣΩ. ἀλλʼ εἴ γε ταὐτὸν ἦν, ὦ φίλε Εὐθύφρων, τὸ θεοφιλὲς καὶ τὸ ὅσιον, εἰ μὲν διὰ τὸ ὅσιον εἶναι ἐφιλεῖτο τὸ ὅσιον, καὶ διὰ τὸ θεοφιλὲς εἶναι ἐφιλεῖτο ἂν τὸ θεοφιλές, εἰ δὲ διὰ τὸ φιλεῖσθαι ὑπὸ θεῶν τὸ θεοφιλὲς θεοφιλὲς ἦν, καὶ τὸ ὅσιον ἂν διὰ τὸ φιλεῖσθαι ὅσιον ἦν· νῦν δὲ ὁρᾷς ὅτι ἐναντίως ἔχετον, ὡς παντάπασιν ἑτέρω ὄντε ἀλλήλων. τὸ μὲν γάρ, ὅτι φιλεῖται, ἐστὶν οἷον φιλεῖσθαι· τὸ δʼ ὅτι ἐστὶν οἷον φιλεῖσθαι, διὰ τοῦτο φιλεῖται. καὶ κινδυνεύεις, ὦ Εὐθύφρων, ἐρωτώμενος τὸ ὅσιον ὅτι ποτʼ ἐστίν, τὴν μὲν οὐσίαν μοι αὐτοῦ οὐ βούλεσθαι δηλῶσαι, πάθος δέ τι περὶ αὐτοῦ λέγειν, ὅτι πέπονθε τοῦτο τὸ ὅσιον, φιλεῖσθαι ὑπὸ πάντων θεῶν· ὅτι δὲ ὄν, οὔπω εἶπες. εἰ οὖν σοι φίλον, μή με ἀποκρύψῃ ἀλλὰ πάλιν εἰπὲ ἐξ ἀρχῆς τί ποτε ὂν τὸ ὅσιον εἴτε φιλεῖται ὑπὸ θεῶν εἴτε ὁτιδὴ πάσχει—οὐ γὰρ περὶ τούτου διοισόμεθα—ἀλλʼ εἰπὲ προθύμως τί ἐστιν τό τε ὅσιον καὶ τὸ ἀνόσιον;",
+      "sourceDivisionHint": "section=11"
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg001.perseus-grc1:local-p00140",
+      "text": "ΕΥΘ. ἀλλʼ, ὦ Σώκρατες, οὐκ ἔχω ἔγωγε ὅπως σοι εἴπω ὃ νοῶ· περιέρχεται γάρ πως ἡμῖν ἀεὶ ὃ ἂν προθώμεθα καὶ οὐκ ἐθέλει μένειν ὅπου ἂν ἱδρυσώμεθα αὐτό.",
+      "sourceDivisionHint": "section=11"
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg001.perseus-grc1:local-p00141",
+      "text": "ΣΩ. τοῦ ἡμετέρου προγόνου, ὦ Εὐθύφρων, ἔοικεν εἶναι Δαιδάλου τὰ ὑπὸ σοῦ λεγόμενα. καὶ εἰ μὲν αὐτὰ ἐγὼ ἔλεγον καὶ ἐτιθέμην, ἴσως ἄν με ἐπέσκωπτες ὡς ἄρα καὶ ἐμοὶ κατὰ τὴν ἐκείνου συγγένειαν τὰ ἐν τοῖς λόγοις ἔργα ἀποδιδράσκει καὶ οὐκ ἐθέλει μένειν ὅπου ἄν τις αὐτὰ θῇ· νῦν δὲ σαὶ γὰρ αἱ ὑποθέσεις εἰσίν. ἄλλου δή τινος δεῖ σκώμματος· οὐ γὰρ ἐθέλουσι σοὶ μένειν, ὡς καὶ αὐτῷ σοι δοκεῖ.",
+      "sourceDivisionHint": "section=11"
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg001.perseus-grc1:local-p00142",
+      "text": "ΕΥΘ. ἐμοὶ δὲ δοκεῖ σχεδόν τι τοῦ αὐτοῦ σκώμματος, ὦ Σώκρατες, δεῖσθαι τὰ λεγόμενα· τὸ γὰρ περιιέναι αὐτοῖς τοῦτο καὶ μὴ μένειν ἐν τῷ αὐτῷ οὐκ ἐγώ εἰμι ὁ ἐντιθείς, ἀλλὰ σύ μοι δοκεῖς ὁ Δαίδαλος, ἐπεὶ ἐμοῦ γε ἕνεκα ἔμενεν ἂν ταῦτα οὕτως.",
+      "sourceDivisionHint": "section=11"
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg001.perseus-grc1:local-p00143",
+      "text": "ΣΩ. κινδυνεύω ἄρα, ὦ ἑταῖρε, ἐκείνου τοῦ ἀνδρὸς δεινότερος γεγονέναι τὴν τέχνην τοσούτῳ, ὅσῳ ὁ μὲν τὰ αὑτοῦ μόνα ἐποίει οὐ μένοντα, ἐγὼ δὲ πρὸς τοῖς ἐμαυτοῦ, ὡς ἔοικε, καὶ τὰ ἀλλότρια. καὶ δῆτα τοῦτό μοι τῆς τέχνης ἐστὶ κομψότατον, ὅτι ἄκων εἰμὶ σοφός· ἐβουλόμην γὰρ ἄν μοι τοὺς λόγους μένειν καὶ ἀκινήτως ἱδρῦσθαι μᾶλλον ἢ πρὸς τῇ Δαιδάλου σοφίᾳ τὰ Ταντάλου χρήματα γενέσθαι. καὶ τούτων μὲν ἅδην· ἐπειδὴ δέ μοι δοκεῖς σὺ τρυφᾶν, αὐτός σοι συμπροθυμήσομαι δεῖξαι ὅπως ἄν με διδάξῃς περὶ τοῦ ὁσίου. καὶ μὴ προαποκάμῃς· ἰδὲ γὰρ εἰ οὐκ ἀναγκαῖόν σοι δοκεῖ δίκαιον εἶναι πᾶν τὸ ὅσιον.",
+      "sourceDivisionHint": "section=11"
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg001.perseus-grc1:local-p00144",
+      "text": "ΕΥΘ. ἔμοιγε.",
+      "sourceDivisionHint": "section=11"
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg001.perseus-grc1:local-p00145",
+      "text": "ΣΩ. ἆρʼ οὖν καὶ πᾶν τὸ δίκαιον ὅσιον; ἢ τὸ μὲν ὅσιον πᾶν δίκαιον, τὸ δὲ δίκαιον οὐ πᾶν ὅσιον, ἀλλὰ τὸ μὲν αὐτοῦ ὅσιον, τὸ δέ τι καὶ ἄλλο;",
+      "sourceDivisionHint": "section=12"
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg001.perseus-grc1:local-p00146",
+      "text": "ΕΥΘ. οὐχ ἕπομαι, ὦ Σώκρατες, τοῖς λεγομένοις.",
+      "sourceDivisionHint": "section=12"
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg001.perseus-grc1:local-p00147",
+      "text": "ΣΩ. καὶ μὴν νεώτερός γέ μου εἶ οὐκ ἔλαττον ἢ ὅσῳ σοφώτερος· ἀλλʼ, ὃ λέγω, τρυφᾷς ὑπὸ πλούτου τῆς σοφίας. ἀλλʼ, ὦ μακάριε, σύντεινε σαυτόν· καὶ γὰρ οὐδὲ χαλεπὸν κατανοῆσαι ὃ λέγω. λέγω γὰρ δὴ τὸ ἐναντίον ἢ ὁ ποιητὴς ἐποίησεν ὁ ποιήσας—Ζῆνα δὲ τὸν θʼ ἔρξαντα καὶ ὃς τάδε πάντʼ ἐφύτευσεν οὐκ ἐθέλει νεικεῖν· ἵνα γὰρ δέος ἔνθα καὶ αἰδώς.ἐγὼ οὖν τούτῳ διαφέρομαι τῷ ποιητῇ. εἴπω σοι ὅπῃ;",
+      "sourceDivisionHint": "section=12"
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg001.perseus-grc1:local-p00148",
+      "text": "ΕΥΘ. πάνυ γε.",
+      "sourceDivisionHint": "section=12"
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg001.perseus-grc1:local-p00149",
+      "text": "ΣΩ. οὐ δοκεῖ μοι εἶναι ἵνα δέος ἔνθα καὶ αἰδώς πολλοὶ γάρ μοι δοκοῦσι καὶ νόσους καὶ πενίας καὶ ἄλλα πολλὰ τοιαῦτα δεδιότες δεδιέναι μέν, αἰδεῖσθαι δὲ μηδὲν ταῦτα ἃ δεδίασιν· οὐ καὶ σοὶ δοκεῖ;",
+      "sourceDivisionHint": "section=12"
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg001.perseus-grc1:local-p00150",
+      "text": "ΕΥΘ. πάνυ γε.",
+      "sourceDivisionHint": "section=12"
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg001.perseus-grc1:local-p00151",
+      "text": "ΣΩ. ἀλλʼ ἵνα γε αἰδὼς ἔνθα καὶ δέος εἶναι· ἐπεὶ ἔστιν ὅστις αἰδούμενός τι πρᾶγμα καὶ αἰσχυνόμενος οὐ πεφόβηταί τε καὶ δέδοικεν ἅμα δόξαν πονηρίας;",
+      "sourceDivisionHint": "section=12"
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg001.perseus-grc1:local-p00152",
+      "text": "ΕΥΘ. δέδοικε μὲν οὖν.",
+      "sourceDivisionHint": "section=12"
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg001.perseus-grc1:local-p00153",
+      "text": "ΣΩ. οὐκ ἄρʼ ὀρθῶς ἔχει λέγειν· ἵνα γὰρ δέος ἔνθα καὶ αἰδώς, ἀλλʼ ἵνα μὲν αἰδὼς ἔνθα καὶ δέος, οὐ μέντοι ἵνα γε δέος πανταχοῦ αἰδώς· ἐπὶ πλέον γὰρ οἶμαι δέος αἰδοῦς. μόριον γὰρ αἰδὼς δέους ὥσπερ ἀριθμοῦ περιττόν, ὥστε οὐχ ἵναπερ ἀριθμὸς ἔνθα καὶ περιττόν, ἵνα δὲ περιττὸν ἔνθα καὶ ἀριθμός. ἕπῃ γάρ που νῦν γε;",
+      "sourceDivisionHint": "section=12"
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg001.perseus-grc1:local-p00154",
+      "text": "ΕΥΘ. πάνυ γε.",
+      "sourceDivisionHint": "section=12"
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg001.perseus-grc1:local-p00155",
+      "text": "ΣΩ. τὸ τοιοῦτον τοίνυν καὶ ἐκεῖ λέγων ἠρώτων· ἆρα ἵνα δίκαιον ἔνθα καὶ ὅσιον; ἢ ἵνα μὲν ὅσιον ἔνθα καὶ δίκαιον, ἵνα δὲ δίκαιον οὐ πανταχοῦ ὅσιον· μόριον γὰρ τοῦ δικαίου τὸ ὅσιον; οὕτω φῶμεν ἢ ἄλλως σοι δοκεῖ;",
+      "sourceDivisionHint": "section=12"
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg001.perseus-grc1:local-p00156",
+      "text": "ΕΥΘ. οὔκ, ἀλλʼ οὕτω. φαίνῃ γάρ μοι ὀρθῶς λέγειν.",
+      "sourceDivisionHint": "section=12"
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg001.perseus-grc1:local-p00157",
+      "text": "ΣΩ. ὅρα δὴ τὸ μετὰ τοῦτο. εἰ γὰρ μέρος τὸ ὅσιον τοῦ δικαίου, δεῖ δὴ ἡμᾶς, ὡς ἔοικεν, ἐξευρεῖν τὸ ποῖον μέρος ἂν εἴη τοῦ δικαίου τὸ ὅσιον. εἰ μὲν οὖν σύ με ἠρώτας τι τῶν νυνδή, οἷον ποῖον μέρος ἐστὶν ἀριθμοῦ τὸ ἄρτιον καὶ τίς ὢν τυγχάνει οὗτος ὁ ἀριθμός, εἶπον ἂν ὅτι ὃς ἂν μὴ σκαληνὸς ᾖ ἀλλʼ ἰσοσκελής· ἢ οὐ δοκεῖ σοι;",
+      "sourceDivisionHint": "section=12"
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg001.perseus-grc1:local-p00158",
+      "text": "ΕΥΘ. ἔμοιγε.",
+      "sourceDivisionHint": "section=12"
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg001.perseus-grc1:local-p00159",
+      "text": "ΣΩ. πειρῶ δὴ καὶ σὺ ἐμὲ οὕτω διδάξαι τὸ ποῖον μέρος τοῦ δικαίου ὅσιόν ἐστιν, ἵνα καὶ Μελήτῳ λέγωμεν μηκέθʼ ἡμᾶς ἀδικεῖν μηδὲ ἀσεβείας γράφεσθαι, ὡς ἱκανῶς ἤδη παρὰ σοῦ μεμαθηκότας τά τε εὐσεβῆ καὶ ὅσια καὶ τὰ μή.",
+      "sourceDivisionHint": "section=12"
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg001.perseus-grc1:local-p00160",
+      "text": "ΕΥΘ. τοῦτο τοίνυν ἔμοιγε δοκεῖ, ὦ Σώκρατες, τὸ μέρος τοῦ δικαίου εἶναι εὐσεβές τε καὶ ὅσιον, τὸ περὶ τὴν τῶν θεῶν θεραπείαν, τὸ δὲ περὶ τὴν τῶν ἀνθρώπων τὸ λοιπὸν εἶναι τοῦ δικαίου μέρος.",
+      "sourceDivisionHint": "section=12"
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg001.perseus-grc1:local-p00161",
+      "text": "ΣΩ. καὶ καλῶς γέ μοι, ὦ Εὐθύφρων, φαίνῃ λέγειν, ἀλλὰ σμικροῦ τινος ἔτι ἐνδεής εἰμι· τὴν γὰρ θεραπείαν οὔπω συνίημι ἥντινα ὀνομάζεις. οὐ γάρ που λέγεις γε, οἷαίπερ καὶ αἱ περὶ τὰ ἄλλα θεραπεῖαί εἰσιν, τοιαύτην καὶ περὶ θεούς— λέγομεν γάρ που—οἷόν φαμεν ἵππους οὐ πᾶς ἐπίσταται θεραπεύειν ἀλλὰ ὁ ἱππικός· ἦ γάρ;",
+      "sourceDivisionHint": "section=13"
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg001.perseus-grc1:local-p00162",
+      "text": "ΕΥΘ. πάνυ γε.",
+      "sourceDivisionHint": "section=13"
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg001.perseus-grc1:local-p00163",
+      "text": "ΣΩ. ἡ γάρ που ἱππικὴ ἵππων θεραπεία.",
+      "sourceDivisionHint": "section=13"
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg001.perseus-grc1:local-p00164",
+      "text": "ΕΥΘ. ναί.",
+      "sourceDivisionHint": "section=13"
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg001.perseus-grc1:local-p00165",
+      "text": "ΣΩ. οὐδέ γε κύνας πᾶς ἐπίσταται θεραπεύειν ἀλλὰ ὁ κυνηγετικός.",
+      "sourceDivisionHint": "section=13"
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg001.perseus-grc1:local-p00166",
+      "text": "ΕΥΘ. οὕτω.",
+      "sourceDivisionHint": "section=13"
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg001.perseus-grc1:local-p00167",
+      "text": "ΣΩ. ἡ γάρ που κυνηγετικὴ κυνῶν θεραπεία.",
+      "sourceDivisionHint": "section=13"
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg001.perseus-grc1:local-p00168",
+      "text": "ΕΥΘ. ναί.",
+      "sourceDivisionHint": "section=13"
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg001.perseus-grc1:local-p00169",
+      "text": "ΣΩ. ἡ δέ γε βοηλατικὴ βοῶν.",
+      "sourceDivisionHint": "section=13"
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg001.perseus-grc1:local-p00170",
+      "text": "ΕΥΘ. πάνυ γε.",
+      "sourceDivisionHint": "section=13"
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg001.perseus-grc1:local-p00171",
+      "text": "ΣΩ. ἡ δὲ δὴ ὁσιότης τε καὶ εὐσέβεια θεῶν, ὦ Εὐθύφρων; οὕτω λέγεις;",
+      "sourceDivisionHint": "section=13"
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg001.perseus-grc1:local-p00172",
+      "text": "ΕΥΘ. ἔγωγε.",
+      "sourceDivisionHint": "section=13"
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg001.perseus-grc1:local-p00173",
+      "text": "ΣΩ. οὐκοῦν θεραπεία γε πᾶσα ταὐτὸν διαπράττεται; οἷον τοιόνδε· ἐπʼ ἀγαθῷ τινί ἐστι καὶ ὠφελίᾳ τοῦ θεραπευομένου, ὥσπερ ὁρᾷς δὴ ὅτι οἱ ἵπποι ὑπὸ τῆς ἱππικῆς θεραπευόμενοι ὠφελοῦνται καὶ βελτίους γίγνονται· ἢ οὐ δοκοῦσί σοι;",
+      "sourceDivisionHint": "section=13"
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg001.perseus-grc1:local-p00174",
+      "text": "ΕΥΘ. ἔμοιγε.",
+      "sourceDivisionHint": "section=13"
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg001.perseus-grc1:local-p00175",
+      "text": "ΣΩ. καὶ οἱ κύνες γέ που ὑπὸ τῆς κυνηγετικῆς, καὶ οἱ βόες ὑπὸ τῆς βοηλατικῆς, καὶ τἆλλα πάντα ὡσαύτως· ἢ ἐπὶ βλάβῃ οἴει τοῦ θεραπευομένου τὴν θεραπείαν εἶναι;",
+      "sourceDivisionHint": "section=13"
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg001.perseus-grc1:local-p00176",
+      "text": "ΕΥΘ. μὰ Δίʼ οὐκ ἔγωγε.",
+      "sourceDivisionHint": "section=13"
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg001.perseus-grc1:local-p00177",
+      "text": "ΣΩ. ἀλλʼ ἐπʼ ὠφελίᾳ;",
+      "sourceDivisionHint": "section=13"
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg001.perseus-grc1:local-p00178",
+      "text": "ΕΥΘ. πῶς δʼ οὔ;",
+      "sourceDivisionHint": "section=13"
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg001.perseus-grc1:local-p00179",
+      "text": "ΣΩ. ἦ οὖν καὶ ἡ ὁσιότης θεραπεία οὖσα θεῶν ὠφελία τέ ἐστι θεῶν καὶ βελτίους τοὺς θεοὺς ποιεῖ; καὶ σὺ τοῦτο συγχωρήσαις ἄν, ὡς ἐπειδάν τι ὅσιον ποιῇς, βελτίω τινὰ τῶν θεῶν ἀπεργάζῃ;",
+      "sourceDivisionHint": "section=13"
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg001.perseus-grc1:local-p00180",
+      "text": "ΕΥΘ. μὰ Δίʼ οὐκ ἔγωγε.",
+      "sourceDivisionHint": "section=13"
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg001.perseus-grc1:local-p00181",
+      "text": "ΣΩ. οὐδὲ γὰρ ἐγώ, ὦ Εὐθύφρων, οἶμαί σε τοῦτο λέγειν —πολλοῦ καὶ δέω—ἀλλὰ τούτου δὴ ἕνεκα καὶ ἀνηρόμην τίνα ποτὲ λέγοις τὴν θεραπείαν τῶν θεῶν, οὐχ ἡγούμενός σε τοιαύτην λέγειν.",
+      "sourceDivisionHint": "section=13"
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg001.perseus-grc1:local-p00182",
+      "text": "ΕΥΘ. καὶ ὀρθῶς γε, ὦ Σώκρατες· οὐ γὰρ τοιαύτην λέγω.",
+      "sourceDivisionHint": "section=13"
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg001.perseus-grc1:local-p00183",
+      "text": "ΣΩ. εἶεν· ἀλλὰ τίς δὴ θεῶν θεραπεία εἴη ἂν ἡ ὁσιότης;",
+      "sourceDivisionHint": "section=13"
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg001.perseus-grc1:local-p00184",
+      "text": "ΕΥΘ. ἥνπερ, ὦ Σώκρατες, οἱ δοῦλοι τοὺς δεσπότας θεραπεύουσιν.",
+      "sourceDivisionHint": "section=13"
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg001.perseus-grc1:local-p00185",
+      "text": "ΣΩ. μανθάνω· ὑπηρετική τις ἄν, ὡς ἔοικεν, εἴη θεοῖς.",
+      "sourceDivisionHint": "section=13"
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg001.perseus-grc1:local-p00186",
+      "text": "ΕΥΘ. πάνυ μὲν οὖν.",
+      "sourceDivisionHint": "section=13"
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg001.perseus-grc1:local-p00187",
+      "text": "ΣΩ. ἔχοις ἂν οὖν εἰπεῖν ἡ ἰατροῖς ὑπηρετικὴ εἰς τίνος ἔργου ἀπεργασίαν τυγχάνει οὖσα ὑπηρετική; οὐκ εἰς ὑγιείας οἴει;",
+      "sourceDivisionHint": "section=13"
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg001.perseus-grc1:local-p00188",
+      "text": "ΕΥΘ. ἔγωγε.",
+      "sourceDivisionHint": "section=13"
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg001.perseus-grc1:local-p00189",
+      "text": "ΣΩ. τί δὲ ἡ ναυπηγοῖς ὑπηρετική; εἰς τίνος ἔργου ἀπεργασίαν ὑπηρετική ἐστιν;",
+      "sourceDivisionHint": "section=13"
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg001.perseus-grc1:local-p00190",
+      "text": "ΕΥΘ. δῆλον ὅτι, ὦ Σώκρατες, εἰς πλοίου.",
+      "sourceDivisionHint": "section=13"
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg001.perseus-grc1:local-p00191",
+      "text": "ΣΩ. καὶ ἡ οἰκοδόμοις γέ που εἰς οἰκίας;",
+      "sourceDivisionHint": "section=13"
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg001.perseus-grc1:local-p00192",
+      "text": "ΕΥΘ. ναί.",
+      "sourceDivisionHint": "section=13"
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg001.perseus-grc1:local-p00193",
+      "text": "ΣΩ. εἰπὲ δή, ὦ ἄριστε· ἡ δὲ θεοῖς ὑπηρετικὴ εἰς τίνος ἔργου ἀπεργασίαν ὑπηρετικὴ ἂν εἴη; δῆλον γὰρ ὅτι σὺ οἶσθα, ἐπειδήπερ τά γε θεῖα κάλλιστα φῂς εἰδέναι ἀνθρώπων.",
+      "sourceDivisionHint": "section=13"
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg001.perseus-grc1:local-p00194",
+      "text": "ΕΥΘ. καὶ ἀληθῆ γε λέγω, ὦ Σώκρατες.",
+      "sourceDivisionHint": "section=13"
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg001.perseus-grc1:local-p00195",
+      "text": "ΣΩ. εἰπὲ δὴ πρὸς Διὸς τί ποτέ ἐστιν ἐκεῖνο τὸ πάγκαλον ἔργον ὃ οἱ θεοὶ ἀπεργάζονται ἡμῖν ὑπηρέταις χρώμενοι;",
+      "sourceDivisionHint": "section=13"
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg001.perseus-grc1:local-p00196",
+      "text": "ΕΥΘ. πολλὰ καὶ καλά, ὦ Σώκρατες.",
+      "sourceDivisionHint": "section=14"
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg001.perseus-grc1:local-p00197",
+      "text": "ΣΩ. καὶ γὰρ οἱ στρατηγοί, ὦ φίλε· ἀλλʼ ὅμως τὸ κεφάλαιον αὐτῶν ῥᾳδίως ἂν εἴποις, ὅτι νίκην ἐν τῷ πολέμῳ ἀπεργάζονται· ἢ οὔ;γ",
+      "sourceDivisionHint": "section=14"
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg001.perseus-grc1:local-p00198",
+      "text": "ΕΥΘ. πῶς δʼ οὔ;",
+      "sourceDivisionHint": "section=14"
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg001.perseus-grc1:local-p00199",
+      "text": "ΣΩ. πολλὰ δέ γʼ, οἶμαι, καὶ καλὰ καὶ οἱ γεωργοί· ἀλλʼ ὅμως τὸ κεφάλαιον αὐτῶν ἐστιν τῆς ἀπεργασίας ἡ ἐκ τῆς γῆς τροφή.",
+      "sourceDivisionHint": "section=14"
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg001.perseus-grc1:local-p00200",
+      "text": "ΕΥΘ. πάνυ γε.",
+      "sourceDivisionHint": "section=14"
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg001.perseus-grc1:local-p00201",
+      "text": "ΣΩ. τί δὲ δὴ τῶν πολλῶν καὶ καλῶν ἃ οἱ θεοὶ ἀπεργάζονται; τί τὸ κεφάλαιόν ἐστι τῆς ἐργασίας;",
+      "sourceDivisionHint": "section=14"
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg001.perseus-grc1:local-p00202",
+      "text": "ΕΥΘ. καὶ ὀλίγον σοι πρότερον εἶπον, ὦ Σώκρατες, ὅτι πλείονος ἔργου ἐστὶν ἀκριβῶς πάντα ταῦτα ὡς ἔχει μαθεῖν· τόδε μέντοι σοι ἁπλῶς λέγω, ὅτι ἐὰν μὲν κεχαρισμένα τις ἐπίστηται τοῖς θεοῖς λέγειν τε καὶ πράττειν εὐχόμενός τε καὶ θύων, ταῦτʼ ἔστι τὰ ὅσια, καὶ σῴζει τὰ τοιαῦτα τούς τε ἰδίους οἴκους καὶ τὰ κοινὰ τῶν πόλεων· τὰ δʼ ἐναντία τῶν κεχαρισμένων ἀσεβῆ, ἃ δὴ καὶ ἀνατρέπει ἅπαντα καὶ ἀπόλλυσιν.",
+      "sourceDivisionHint": "section=14"
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg001.perseus-grc1:local-p00203",
+      "text": "ΣΩ. ἦ πολύ μοι διὰ βραχυτέρων, ὦ Εὐθύφρων, εἰ ἐβούλου, εἶπες ἂν τὸ κεφάλαιον ὧν ἠρώτων· ἀλλὰ γὰρ οὐ πρόθυμός με εἶ διδάξαι—δῆλος εἶ. καὶ γὰρ νῦν ἐπειδὴ ἐπʼ αὐτῷ ἦσθα ἀπετράπου, ὃ εἰ ἀπεκρίνω, ἱκανῶς ἂν ἤδη παρὰ σοῦ τὴν ὁσιότητα ἐμεμαθήκη. νῦν δὲ ἀνάγκη γὰρ τὸν ἐρῶντα τῷ ἐρωμένῳ ἀκολουθεῖν ὅπῃ ἂν ἐκεῖνος ὑπάγῃ, τί δὴ αὖ λέγεις τὸ ὅσιον εἶναι καὶ τὴν ὁσιότητα; οὐχὶ ἐπιστήμην τινὰ τοῦ θύειν τε καὶ εὔχεσθαι;",
+      "sourceDivisionHint": "section=14"
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg001.perseus-grc1:local-p00204",
+      "text": "ΕΥΘ. ἔγωγε.",
+      "sourceDivisionHint": "section=14"
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg001.perseus-grc1:local-p00205",
+      "text": "ΣΩ. οὐκοῦν τὸ θύειν δωρεῖσθαί ἐστι τοῖς θεοῖς, τὸ δʼ εὔχεσθαι αἰτεῖν τοὺς θεούς;",
+      "sourceDivisionHint": "section=14"
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg001.perseus-grc1:local-p00206",
+      "text": "ΕΥΘ. καὶ μάλα, ὦ Σώκρατες.",
+      "sourceDivisionHint": "section=14"
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg001.perseus-grc1:local-p00207",
+      "text": "ΣΩ. ἐπιστήμη ἄρα αἰτήσεως καὶ δόσεως θεοῖς ὁσιότης ἂν εἴη ἐκ τούτου τοῦ λόγου.",
+      "sourceDivisionHint": "section=14"
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg001.perseus-grc1:local-p00208",
+      "text": "ΕΥΘ. πάνυ καλῶς, ὦ Σώκρατες, συνῆκας ὃ εἶπον.",
+      "sourceDivisionHint": "section=14"
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg001.perseus-grc1:local-p00209",
+      "text": "ΣΩ. ἐπιθυμητὴς γάρ εἰμι, ὦ φίλε, τῆς σῆς σοφίας καὶ προσέχω τὸν νοῦν αὐτῇ, ὥστε οὐ χαμαὶ πεσεῖται ὅτι ἂν εἴπῃς. ἀλλά μοι λέξον τίς αὕτη ἡ ὑπηρεσία ἐστὶ τοῖς θεοῖς; αἰτεῖν τε φῂς αὐτοὺς καὶ διδόναι ἐκείνοις;",
+      "sourceDivisionHint": "section=14"
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg001.perseus-grc1:local-p00210",
+      "text": "ΕΥΘ. ἔγωγε.",
+      "sourceDivisionHint": "section=14"
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg001.perseus-grc1:local-p00211",
+      "text": "ΣΩ. ἆρʼ οὖν οὐ τό γε ὀρθῶς αἰτεῖν ἂν εἴη ὧν δεόμεθα παρʼ ἐκείνων, ταῦτα αὐτοὺς αἰτεῖν;",
+      "sourceDivisionHint": "section=14"
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg001.perseus-grc1:local-p00212",
+      "text": "ΕΥΘ. ἀλλὰ τί;",
+      "sourceDivisionHint": "section=14"
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg001.perseus-grc1:local-p00213",
+      "text": "ΣΩ. καὶ αὖ τὸ διδόναι ὀρθῶς, ὧν ἐκεῖνοι τυγχάνουσιν δεόμενοι παρʼ ἡμῶν, ταῦτα ἐκείνοις αὖ ἀντιδωρεῖσθαι; οὐ γάρ που τεχνικόν γʼ ἂν εἴη δωροφορεῖν διδόντα τῳ ταῦτα ὧν οὐδὲν δεῖται.",
+      "sourceDivisionHint": "section=14"
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg001.perseus-grc1:local-p00214",
+      "text": "ΕΥΘ. ἀληθῆ λέγεις, ὦ Σώκρατες.",
+      "sourceDivisionHint": "section=14"
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg001.perseus-grc1:local-p00215",
+      "text": "ΣΩ. ἐμπορικὴ ἄρα τις ἂν εἴη, ὦ Εὐθύφρων, τέχνη ἡ ὁσιότης θεοῖς καὶ ἀνθρώποις παρʼ ἀλλήλων.",
+      "sourceDivisionHint": "section=14"
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg001.perseus-grc1:local-p00216",
+      "text": "ΕΥΘ. ἐμπορική, εἰ οὕτως ἥδιόν σοι ὀνομάζειν.",
+      "sourceDivisionHint": "section=14"
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg001.perseus-grc1:local-p00217",
+      "text": "ΣΩ. ἀλλʼ οὐδὲν ἥδιον ἔμοιγε, εἰ μὴ τυγχάνει ἀληθὲς ὄν. φράσον δέ μοι, τίς ἡ ὠφελία τοῖς θεοῖς τυγχάνει οὖσα ἀπὸ τῶν δώρων ὧν παρʼ ἡμῶν λαμβάνουσιν; ἃ μὲν γὰρ διδόασι παντὶ δῆλον· οὐδὲν γὰρ ἡμῖν ἐστιν ἀγαθὸν ὅτι ἂν μὴ ἐκεῖνοι δῶσιν. ἃ δὲ παρʼ ἡμῶν λαμβάνουσιν, τί ὠφελοῦνται; ἢ τοσοῦτον αὐτῶν πλεονεκτοῦμεν κατὰ τὴν ἐμπορίαν, ὥστε πάντα τὰ ἀγαθὰ παρʼ αὐτῶν λαμβάνομεν, ἐκεῖνοι δὲ παρʼ ἡμῶν οὐδέν;",
+      "sourceDivisionHint": "section=15"
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg001.perseus-grc1:local-p00218",
+      "text": "ΕΥΘ. ἀλλʼ οἴει, ὦ Σώκρατες, τοὺς θεοὺς ὠφελεῖσθαι ἀπὸ τούτων ἃ παρʼ ἡμῶν λαμβάνουσιν;γ",
+      "sourceDivisionHint": "section=15"
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg001.perseus-grc1:local-p00219",
+      "text": "ΣΩ. ἀλλὰ τί δήποτʼ ἂν εἴη ταῦτα, ὦ Εὐθύφρων, τὰ παρʼ ἡμῶν δῶρα τοῖς θεοῖς;",
+      "sourceDivisionHint": "section=15"
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg001.perseus-grc1:local-p00220",
+      "text": "ΕΥΘ. τί δʼ οἴει ἄλλο ἢ τιμή τε καὶ γέρα καί, ὅπερ ἐγὼ ἄρτι ἔλεγον, χάρις;",
+      "sourceDivisionHint": "section=15"
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg001.perseus-grc1:local-p00221",
+      "text": "ΣΩ. κεχαρισμένον ἄρα ἐστίν, ὦ Εὐθύφρων, τὸ ὅσιον, ἀλλʼ οὐχὶ ὠφέλιμον οὐδὲ φίλον τοῖς θεοῖς;γ",
+      "sourceDivisionHint": "section=15"
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg001.perseus-grc1:local-p00222",
+      "text": "ΕΥΘ. οἶμαι ἔγωγε πάντων γε μάλιστα φίλον.",
+      "sourceDivisionHint": "section=15"
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg001.perseus-grc1:local-p00223",
+      "text": "ΣΩ. τοῦτο ἄρʼ ἐστὶν αὖ, ὡς ἔοικε, τὸ ὅσιον, τὸ τοῖς θεοῖς φίλον.",
+      "sourceDivisionHint": "section=15"
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg001.perseus-grc1:local-p00224",
+      "text": "ΕΥΘ. μάλιστά γε.",
+      "sourceDivisionHint": "section=15"
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg001.perseus-grc1:local-p00225",
+      "text": "ΣΩ. θαυμάσῃ οὖν ταῦτα λέγων ἐάν σοι οἱ λόγοι φαίνωνται μὴ μένοντες ἀλλὰ βαδίζοντες, καὶ ἐμὲ αἰτιάσῃ τὸν Δαίδαλον βαδίζοντας αὐτοὺς ποιεῖν, αὐτὸς ὢν πολύ γε τεχνικώτερος τοῦ Δαιδάλου καὶ κύκλῳ περιιόντα ποιῶν; ἢ οὐκ αἰσθάνῃ ὅτι ὁ λόγος ἡμῖν περιελθὼν πάλιν εἰς ταὐτὸν ἥκει; μέμνησαι γάρ που ὅτι ἐν τῷ πρόσθεν τό τε ὅσιον καὶ τὸ θεοφιλὲς οὐ ταὐτὸν ἡμῖν ἐφάνη ἀλλʼ ἕτερα ἀλλήλων· ἢ οὐ μέμνησαι;",
+      "sourceDivisionHint": "section=15"
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg001.perseus-grc1:local-p00226",
+      "text": "ΕΥΘ. ἔγωγε.",
+      "sourceDivisionHint": "section=15"
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg001.perseus-grc1:local-p00227",
+      "text": "ΣΩ. νῦν οὖν οὐκ ἐννοεῖς ὅτι τὸ τοῖς θεοῖς φίλον φῂς ὅσιον εἶναι; τοῦτο δʼ ἄλλο τι ἢ θεοφιλὲς γίγνεται; ἢ οὔ;",
+      "sourceDivisionHint": "section=15"
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg001.perseus-grc1:local-p00228",
+      "text": "ΕΥΘ. πάνυ γε.",
+      "sourceDivisionHint": "section=15"
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg001.perseus-grc1:local-p00229",
+      "text": "ΣΩ. οὐκοῦν ἢ ἄρτι οὐ καλῶς ὡμολογοῦμεν, ἢ εἰ τότε καλῶς, νῦν οὐκ ὀρθῶς τιθέμεθα.",
+      "sourceDivisionHint": "section=15"
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg001.perseus-grc1:local-p00230",
+      "text": "ΕΥΘ. ἔοικεν.",
+      "sourceDivisionHint": "section=15"
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg001.perseus-grc1:local-p00231",
+      "text": "ΣΩ. ἐξ ἀρχῆς ἄρα ἡμῖν πάλιν σκεπτέον τί ἐστι τὸ ὅσιον, ὡς ἐγὼ πρὶν ἂν μάθω ἑκὼν εἶναι οὐκ ἀποδειλιάσω. ἀλλὰ μή με ἀτιμάσῃς ἀλλὰ παντὶ τρόπῳ προσσχὼν τὸν νοῦν ὅτι μάλιστα νῦν εἰπὲ τὴν ἀλήθειαν· οἶσθα γὰρ εἴπερ τις ἄλλος ἀνθρώπων, καὶ οὐκ ἀφετέος εἶ ὥσπερ ὁ Πρωτεὺς πρὶν ἂν εἴπῃς. εἰ γὰρ μὴ ᾔδησθα σαφῶς τό τε ὅσιον καὶ τὸ ἀνόσιον, οὐκ ἔστιν ὅπως ἄν ποτε ἐπεχείρησας ὑπὲρ ἀνδρὸς θητὸς ἄνδρα πρεσβύτην πατέρα διωκάθειν φόνου, ἀλλὰ καὶ τοὺς θεοὺς ἂν ἔδεισας παρακινδυνεύειν μὴ οὐκ ὀρθῶς αὐτὸ ποιήσοις, καὶ τοὺς ἀνθρώπους ᾐσχύνθης· νῦν δὲ εὖ οἶδα ὅτι σαφῶς οἴει εἰδέναι τό τε ὅσιον καὶ μή. εἰπὲ οὖν, ὦ βέλτιστε Εὐθύφρων, καὶ μὴ ἀποκρύψῃ ὅτι αὐτὸ ἡγῇ.",
+      "sourceDivisionHint": "section=15"
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg001.perseus-grc1:local-p00232",
+      "text": "ΕΥΘ. εἰς αὖθις τοίνυν, ὦ Σώκρατες· νῦν γὰρ σπεύδω ποι, καί μοι ὥρα ἀπιέναι.",
+      "sourceDivisionHint": "section=15"
+    },
+    {
+      "locus": "urn:cts:greekLit:tlg0059.tlg001.perseus-grc1:local-p00233",
+      "text": "ΣΩ. οἷα ποιεῖς, ὦ ἑταῖρε. ἀπʼ ἐλπίδος με καταβαλὼν μεγάλης ἀπέρχῃ ἣν εἶχον, ὡς παρὰ σοῦ μαθὼν τά τε ὅσια καὶ μὴ καὶ τῆς πρὸς Μέλητον γραφῆς ἀπαλλάξομαι, ἐνδειξάμενος ἐκείνῳ ὅτι σοφὸς ἤδη παρʼ Εὐθύφρονος τὰ θεῖα γέγονα καὶ ὅτι οὐκέτι ὑπʼ ἀγνοίας αὐτοσχεδιάζω οὐδὲ καινοτομῶ περὶ αὐτά, καὶ δὴ καὶ τὸν ἄλλον βίον ὅτι ἄμεινον βιωσοίμην.",
+      "sourceDivisionHint": "section=16"
+    }
+  ]
+}
