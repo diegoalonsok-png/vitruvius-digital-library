@@ -941,6 +941,7 @@ document.addEventListener("vitruvius:language-changed",event=>{
 });
 const params=new URLSearchParams(location.search),initial=(params.get("q")||params.get("term")||"").trim();
 if(initial)input.value=initial;
+if(advancedLocus&&params.get("locus"))advancedLocus.value=params.get("locus").slice(0,140);
 const initialEra=params.get("era")||"",initialGenre=params.get("genre")||"";
 const initialOrder=params.get("order")||"";
 let stored="es";try{stored=localStorage.getItem("vitruvius-ui-lang")||"es"}catch{}
@@ -968,6 +969,7 @@ window.addEventListener("popstate",()=>{
   const eraValue=params.get("era")||"",genreValue=params.get("genre")||"";
   const orderValue=params.get("order")||"";
   if(["author","title","date"].includes(orderValue))order.value=orderValue;
+  if(advancedLocus)advancedLocus.value=(params.get("locus")||"").slice(0,140);
   if(params.get("ui"))switchLanguage(params.get("ui"));
   if([...era.options].some(x=>x.value===eraValue))era.value=eraValue;
   if([...genre.options].some(x=>x.value===genreValue))genre.value=genreValue;
