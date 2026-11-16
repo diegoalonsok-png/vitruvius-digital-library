@@ -16,8 +16,66 @@ function init(){
  slider.setAttribute("aria-label","Altura común de texto original y traducción");
  const value=document.createElement("output");value.setAttribute("aria-live","off");
  const reset=document.createElement("button");reset.type="button";reset.textContent="Restablecer";
- area.append(label,slider,value,reset);layout.append(area);
- let height=760;
+ const syncButton=document.createElement("button");syncButton.type="button";syncButton.textContent="Desplazamiento vinculado";
+ syncButton.setAttribute("aria-pressed","true");syncButton.title="Al desplazarse por una columna, acompaña el texto de la otra según la posición relativa; no representa alineación filológica exacta.";
+ const expandButton=document.createElement("button");expandButton.type="button";expandButton.textContent="⛶ Ampliar lectores";
+ expandButton.setAttribute("aria-pressed","false");expandButton.setAttribute("aria-label","Ampliar lectores a toda la pantalla");
+ area.append(label,slider,value,reset,syncButton,expandButton);layout.append(area);
+ // Share the original reader's CURRENT palette; never force a second,
+ // conflicting background on an editorial translation.
+ const article=root.closest(".reader");
+ const sourceContainer=root.querySelector(".cl-source-column");
+ const translationContainer=root.querySelector(".cl-translation-column");
+ function updateSharedPalette(){
+  const styles=article?.style;
+  const bg=styles?.getPropertyValue("--reader-bg")?.trim()||"#fffdf7";
+  const fg=styles?.getPropertyValue("--reader-fg")?.trim()||"#202b35";
+  if(!/^#[0-9a-f]{6}$/i.test(bg)||!/^#[0-9a-f]{6}$/i.test(fg))return;
+  root.style.setProperty("--cl-shared-bg",bg);
+  root.style.setProperty("--cl-shared-fg",fg);
+ }
+ if(article){
+  new MutationObserver(updateSharedPalette).observe(article,{attributes:true,attributeFilter:["style"]});
+  updateSharedPalette();
+ }
+ // A relative-height synchronization is appropriate for independent automatic
+ // translation, which can be longer/shorter than the Latin or Greek original.
+ let linked=true, scrollFrame=0, moving=false;
+ const syncTo=(from,to)=>{
+  if(!linked||moving||root.classList.contains("single-source")||to.hidden||to.closest("[hidden]"))return;
+  if(scrollFrame)cancelAnimationFrame(scrollFrame);
+  scrollFrame=requestAnimationFrame(()=>{
+   scrollFrame=0;
+   const fromMax=Math.max(0,from.scrollHeight-from.clientHeight);
+   const toMax=Math.max(0,to.scrollHeight-to.clientHeight);
+   const fraction=fromMax?from.scrollTop/fromMax:0;
+   const wanted=fraction*toMax;
+   if(Math.abs(to.scrollTop-wanted)<2)return;
+   moving=true;
+   to.scrollTop=wanted;
+   requestAnimationFrame(()=>{moving=false});
+  });
+ };
+ sourceContainer.addEventListener("scroll",()=>syncTo(sourceContainer,translationContainer),{passive:true});
+ translationContainer.addEventListener("scroll",()=>syncTo(translationContainer,sourceContainer),{passive:true});
+ syncButton.addEventListener("click",()=>{
+  linked=!linked;syncButton.setAttribute("aria-pressed",String(linked));
+  syncButton.textContent=linked?"Desplazamiento vinculado":"Desplazamiento independiente";
+  if(linked)syncTo(sourceContainer,translationContainer);
+ });
+ function setExpanded(enabled){
+  document.documentElement.classList.toggle("cl-biblio-expanded",enabled);
+  expandButton.setAttribute("aria-pressed",String(enabled));
+  expandButton.setAttribute("aria-label",enabled?"Salir de lectura ampliada":"Ampliar lectores a toda la pantalla");
+  expandButton.textContent=enabled?"⤢ Salir de pantalla amplia":"⛶ Ampliar lectores";
+  document.body.style.overflow=enabled?"hidden":"";
+  requestAnimationFrame(align);
+ }
+ expandButton.addEventListener("click",()=>setExpanded(!document.documentElement.classList.contains("cl-biblio-expanded")));
+ document.addEventListener("keydown",event=>{
+  if(event.key==="Escape"&&document.documentElement.classList.contains("cl-biblio-expanded"))setExpanded(false);
+ });
+  let height=760;
  try{const stored=Number(localStorage.getItem(STORE));if(Number.isFinite(stored)&&stored>=380&&stored<=1120)height=stored}catch{}
  function applyHeight(n){
   height=Math.max(380,Math.min(1120,Math.round(n/20)*20));
@@ -49,8 +107,6 @@ function init(){
    if(ro&&!watched.has(child)){watched.add(child);ro.observe(child)}
   }
  }
- const sourceContainer=root.querySelector(".cl-source-column");
- const translationContainer=root.querySelector(".cl-translation-column");
  function register(){trackAbove(sourceContainer,source);trackAbove(translationContainer,target);align()}
  const mutation=new MutationObserver(register);
  mutation.observe(sourceContainer,{childList:true});
