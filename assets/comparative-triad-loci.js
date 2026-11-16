@@ -4,7 +4,8 @@ const jsonUrl="data/apparatus/triad-lexical-candidates-731.json";
 let records=new Map(),current=null;
 const q=id=>document.getElementById(id);
 const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
-const getLocus=()=>q("bude-locus")?.value||new URLSearchParams(location.search).get("locus")||"1.1.1";
+const normalLocus=s=>{s=String(s||"").trim().toLowerCase();const m=s.match(/^([ivx]+)\./);if(m){let n=0,p=0;for(const ch of [...m[1]].reverse()){const v={i:1,v:5,x:10}[ch];n+=v<p?-v:v;p=v}s=n+s.slice(m[1].length)}return s.replace(/\.praefatio\./g,".praef.").replace(/\.preface\./g,".praef.")};
+const getLocus=()=>normalLocus(new URLSearchParams(location.search).get("locus")||q("bude-locus")?.value||"1.1.1");
 function table(name,item){
  if(!item)return "<p>Testimonio no disponible.</p>";
  const entries=item.chunks||[];
