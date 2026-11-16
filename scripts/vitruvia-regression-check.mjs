@@ -103,8 +103,10 @@ assert.ok(!bibliothecaHTML.includes("classics-study-tools.js")&&!bibliothecaHTML
  "No reader control or embedded viewer is allowed in the simplified Bibliotheca");
 assert.equal((bibliothecaHTML.match(/id="language-toggle"/g)||[]).length,1,
  "Bibliotheca must expose exactly one working ES/EN/FR language switch");
-assert.ok(classical.includes('es:"en",en:"fr",fr:"es"'),
- "The language switch must translate the interface in the three supported languages");
+assert.ok(classical.includes('Object.hasOwn(dict,k)?k:"es"')&&
+ classical.includes('selector.value=locale')&&
+ classical.includes('languageSelector.addEventListener("change",()=>switchLanguage(languageSelector.value))'),
+ "The language selector must synchronize the three supported translations");
 const search=sourceFile("assets/vitruvia-search.js");
 assert.ok(search.includes('S={mode:"all"'),"Universal mode not default");
 assert.ok(search.includes("window.VitruviaEntityResolver?.subject(topicQuery(q))"),"Universal subject not connected");
