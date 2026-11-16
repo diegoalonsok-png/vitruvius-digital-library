@@ -286,6 +286,47 @@ def main():
                           "gallica": "https://gallica.bnf.fr/",
                           "archive": "https://archive.org/"},
             })
+    # Existing scholarly source-only fiches may have been created by another
+    # catalogue job while the ingestion was running. Upgrade them in-place by
+    # verified CTS identity; never duplicate a work or discard its other fields.
+    by_fiche = {w["id"]: w for w in supplement["works"]}
+    for id_ in ids:
+        row, data, _ = by_id[id_]
+        fiche = by_fiche[id_]
+        prior_bib = fiche.get("bibliography") or {}
+        prior_urn = prior_bib.get("canonicalReference")
+        prior_revision = prior_bib.get("sourceRevision")
+        if prior_urn and prior_urn != row["sourceUrn"]:
+            raise SystemExit(f"Conflicting existing academic CTS attribution: {id_}")
+        if prior_revision and prior_revision != revision:
+            raise SystemExit(f"Conflicting pinned source revision: {id_}")
+        corpus_path = f"data/classics-corpus/{id_}-grc.json"
+        fiche["sourceUrn"] = row["sourceUrn"]
+        fiche["sourceUrl"] = row["sourceXml"]
+        fiche["source"] = "Perseus Digital Library · edición histórica TEI"
+        fiche["corpusFiles"] = {"grc": corpus_path}
+        fiche["localVersions"] = [{"language": "grc", "path": corpus_path}]
+        fiche["reading"] = {
+            "url": f"classics-text-reader.html?work={id_}&lang=grc",
+            "status": "Texto original en griego, con referencia CTS; traducción cotejada local no acreditada.",
+        }
+        fiche["bibliography"] = {
+            **prior_bib,
+            "uniformTitle": row["titleOriginal"],
+            "canonicalReference": row["sourceUrn"],
+            "editionReference": data["editionReference"],
+            "editor": ", ".join(data["editors"]) if data["editors"] else "Consultar referencia editorial",
+            "sourceCollection": "Perseus Digital Library · canonical-greekLit · TEI",
+            "sourceSha256": data["sourceSha256"],
+            "sourceRevision": revision,
+            "license": "CC BY-SA 4.0",
+            "textualNote": "Los apartados de párrafo usados para búsqueda son segmentos locales cuando la unidad CTS reúne varios párrafos.",
+            "indexedEditionClaim": False,
+            "manuscriptCollationClaim": False,
+        }
+        fiche["textStatus"] = "registered-pending-lexical-index"
+        fiche["publicStatus"] = "registered-not-indexed"
+        fiche["status"] = "Original griego y ficha incorporados; comprobación del índice léxico pendiente"
     old["entries"].sort(key=lambda x: (x["workId"], x["language"]))
     old["count"] = len(old["entries"])
     old["works"] = len({e["workId"] for e in old["entries"]})
