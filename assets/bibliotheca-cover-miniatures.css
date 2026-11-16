@@ -1,0 +1,50 @@
+/* Miniaturas de cubiertas editoriales para fichas y buscadores.
+   Una cubierta tipográfica identifica la obra; NO es un facsímil de portada. */
+.vdl-cover {
+  --vdl-cover-accent:#c4a56c;--vdl-cover-bg:#25364a;
+  position:relative;display:flex;flex:none;box-sizing:border-box;
+  flex-direction:column;justify-content:space-between;overflow:hidden;
+  width:52px;height:76px;padding:7px 5px 6px 8px;
+  border:1px solid rgba(215,194,157,.7);border-left:4px solid var(--vdl-cover-accent);
+  border-radius:3px 6px 6px 3px;background:linear-gradient(140deg,#131f30,var(--vdl-cover-bg));
+  color:#faf7ef!important;box-shadow:2px 2px 0 rgba(29,31,37,.12);
+  text-align:center;vertical-align:middle;font:400 8px/1.18 Georgia,serif;
+  letter-spacing:0;white-space:normal;pointer-events:none;
+}
+.vdl-cover[data-family="theatre"]{--vdl-cover-bg:#623b47;--vdl-cover-accent:#e2c299}
+.vdl-cover[data-family="comedy"]{--vdl-cover-bg:#466258;--vdl-cover-accent:#e4ca94}
+.vdl-cover[data-family="philosophy"]{--vdl-cover-bg:#373f6d;--vdl-cover-accent:#b7bedc}
+.vdl-cover[data-family="history"]{--vdl-cover-bg:#634a36;--vdl-cover-accent:#e4bc85}
+.vdl-cover[data-family="poetry"]{--vdl-cover-bg:#4f4165;--vdl-cover-accent:#d5b9dc}
+.vdl-cover[data-family="science"]{--vdl-cover-bg:#254f60;--vdl-cover-accent:#add4d9}
+.vdl-cover-band{font:600 5.5px/1.1 system-ui,sans-serif;letter-spacing:.5px;color:#f1dcb7}
+.vdl-cover-ornament{font-size:9px;line-height:1;color:var(--vdl-cover-accent)}
+.vdl-cover-author{font-size:6px;line-height:1.13;font-weight:700;overflow-wrap:anywhere}
+.vdl-cover-title{font-size:8px;line-height:1.1;font-weight:700;overflow:hidden;overflow-wrap:anywhere;max-height:33px}
+.vdl-cover-foot{border-top:1px solid rgba(251,245,225,.35);padding-top:3px;
+  font:500 5.5px/1 system-ui,sans-serif;letter-spacing:.1px;color:#f1dcb7}
+.vdl-cover--detail{width:114px;height:162px;padding:14px 10px 10px 14px;border-left-width:7px;border-radius:4px 9px 9px 4px}
+.vdl-cover--detail .vdl-cover-band{font-size:8px}
+.vdl-cover--detail .vdl-cover-ornament{font-size:17px}
+.vdl-cover--detail .vdl-cover-author{font-size:9px}
+.vdl-cover--detail .vdl-cover-title{font-size:14px;max-height:78px}
+.vdl-cover--detail .vdl-cover-foot{font-size:8px;padding-top:5px}
+.classic-item.vdl-classic-item-with-cover{display:grid!important;grid-template-columns:52px minmax(0,1fr)!important;gap:4px 11px!important;align-items:start;text-align:left}
+.classic-item.vdl-classic-item-with-cover>.vdl-cover{grid-column:1;grid-row:1/span 7}
+.classic-item.vdl-classic-item-with-cover>:not(.vdl-cover){grid-column:2;min-width:0;max-width:100%}
+#classic-detail>.vdl-cover{float:left;margin:0 17px 10px 0}
+#classic-detail>.classic-tabstrip,#classic-detail>.classic-viewer{clear:both}
+#bibliotheca-work-search .bws-item{display:flow-root}
+#bibliotheca-work-search .bws-item>.vdl-cover{float:left;margin:2px 13px 9px 0}
+.vdl-works-row>.vdl-cover{align-self:center}
+.vdl-works-row>.vdl-works-name{flex:1;min-width:0}
+.vdl-works-row>.vdl-works-state{margin-left:auto}
+@media(max-width:660px){
+  .vdl-works-row:has(>.vdl-cover){display:grid;grid-template-columns:48px minmax(0,1fr);gap:4px 9px}
+  .vdl-works-row>.vdl-cover{grid-column:1;grid-row:1/span 2;width:44px;height:64px}
+  .vdl-works-row>.vdl-works-name,.vdl-works-row>.vdl-works-state{grid-column:2;margin:0}
+  .classic-item.vdl-classic-item-with-cover{grid-template-columns:44px minmax(0,1fr)!important}
+  .classic-item.vdl-classic-item-with-cover>.vdl-cover{width:44px;height:64px}
+  #classic-detail>.vdl-cover{width:86px;height:127px;margin-right:11px}
+}
+@media(prefers-reduced-motion:reduce){.vdl-cover{transition:none!important}}
