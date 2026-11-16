@@ -98,11 +98,6 @@ function links(term,sourceElement){
  }content.append(bar);
 }
 
- const bar=document.createElement("nav");bar.className="vlc-links";
- for(const [label,href] of [["Estudiar en Lexicon","vitruvia-lexicon.html?q="+encodeURIComponent(term)+"&mode=palabra"],["Concordancias","index-locorum.html?q="+encodeURIComponent(term)]]){
-  const a=document.createElement("a");a.href=href;a.textContent=label;bar.append(a);
- }content.append(bar);
-}
 async function show(term,rect,sourceElement=null){
  const id=++serial;h.textContent=term;popup.hidden=false;position(rect);
  content.replaceChildren();
