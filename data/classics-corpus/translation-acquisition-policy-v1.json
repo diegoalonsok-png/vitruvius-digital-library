@@ -1,0 +1,46 @@
+{
+  "schema": "vdl-classics-translation-acquisition-v1",
+  "date": "2026-11-16",
+  "scope": "Para incorporaciones nuevas y existentes con originales latinos o griegos: favorecer traducciones humanas documentadas en inglés y francés, y sincronizarlas en el lector doble existente.",
+  "order": [
+    "human-en-indexed",
+    "human-fr-indexed",
+    "other-human-hosted",
+    "optional-machine-on-demand"
+  ],
+  "acquisition": {
+    "eligibility": [
+      "comprobar autor/obra/edición exacta y cobertura real",
+      "comprobar licencia de la transcripción digital, no solo la antigüedad de la traducción",
+      "descargar a R2 únicamente con credenciales y permiso de publicación verificables",
+      "guardar original fuente, edición, traductor, fecha, derechos, fuente URL, SHA256, URN si existe",
+      "evitar duplicar traductor o texto ya indexado; no reemplazar archivos previos"
+    ],
+    "quarantine": "Si no es posible verificar procedencia, licencia, integridad o correspondencia, registrar candidato sin publicarlo ni contarlo como indexado."
+  },
+  "reading": {
+    "doubleViewer": "classics-parallel-reader.html",
+    "left": "Original griego o latín indexado y legible",
+    "right": "Traducción humana en inglés o francés que pertenezca al mismo workId, con fuente y edición identificadas; otras traducciones locales después.",
+    "sync": "Sincronizar por locus compartido solo como navegación documental. Si los loci no corresponden, mantener navegación independiente o marcar explícitamente la aproximación; jamás inferir alineación semántica.",
+    "indexed": "Ambos textos con pasajes legibles en el registro de búsqueda antes de contar como doble visor indexado.",
+    "machine": "Solo cuando no exista traducción humana local compatible o al elegirla expresamente; identificarla como automática, provisional, no crítica y, cuando use proveedor externo, exigir acción expresa del lector."
+  },
+  "academicFields": [
+    "sourceWorkId",
+    "sourceLanguage",
+    "targetLanguage",
+    "translator",
+    "translationYear",
+    "editionCitation",
+    "editor",
+    "sourceUrl",
+    "license",
+    "sourceSha256",
+    "coverage",
+    "locusScheme",
+    "alignmentEvidence",
+    "verificationStatus"
+  ],
+  "status": "Regla editorial incorporada; no implica que se hayan descargado nuevas traducciones ni ejecutado R2."
+}
