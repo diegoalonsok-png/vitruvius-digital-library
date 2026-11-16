@@ -77,7 +77,19 @@ action("Analizar palabra",()=>{
  const term=(selection.split(/\s+/)[0]||input?.value||"").slice(0,80);
  if(!term){status.textContent="Selecciona una palabra del texto o escribila en el buscador.";return}
  const u=new URL("vitruvia-lexicon.html",location.href);
- u.searchParams.set("q",term);u.searchParams.set("mode","palabra");location.assign(u.href);
+ u.searchParams.set("q",term);
+ u.searchParams.set("mode","palabra");
+ // Preserve the reading context for a return trip and scoped lexical analysis.
+ // A PDF facsimile page number is not a canonical locus.
+ const ctx=source();
+ if(ctx.work!=="no identificada")u.searchParams.set("work",ctx.work);
+ if(isSimple){
+  const locus=document.getElementById("go-locus")?.value||new URLSearchParams(location.search).get("locus")||"";
+  const lang=document.getElementById("original-lang")?.value||new URLSearchParams(location.search).get("left")||"";
+  if(locus&&locus!=="Locus no confirmado")u.searchParams.set("locus",locus);
+  if(lang)u.searchParams.set("lang",lang);
+ }
+ location.assign(u.href);
 });
 tools.append(status);mount.insertAdjacentElement("afterend",tools);
 })();
