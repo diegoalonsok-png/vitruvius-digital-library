@@ -32,6 +32,7 @@ ASSETS = (
     "assets/auditoria-academica-i18n.js",
     "data/r2/vinculos-repertorio.json",
     "data/r2/catalogo-clasicos-r2.json",
+    "data/classics-corpus/semantic-conceptus-postings.json",
 )
 
 def request(url):
