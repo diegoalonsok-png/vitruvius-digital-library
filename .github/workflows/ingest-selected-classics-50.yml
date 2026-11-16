@@ -1,0 +1,66 @@
+name: Bibliotheca — incorporar 50 obras selectas gradualmente
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/ingest-selected-classics-50.yml'
+      - 'scripts/ingest-selected-classics-50.py'
+      - 'data/classics-corpus/lote-50-fuentes-academicas-2026-11-16.json'
+  schedule:
+    # 04:15 UTC = 01:15 Buenos Aires. El índice se publica por su propio flujo.
+    - cron: '15 4 * * *'
+  workflow_dispatch:
+    inputs:
+      limite:
+        description: 'Nuevos originales por tanda (0 = todos los pendientes, máximo 50)'
+        required: false
+        default: '5'
+permissions:
+  contents: write
+concurrency:
+  group: bibliotheca-selected-classics-ingestion
+  cancel-in-progress: false
+jobs:
+  ingest:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    env:
+      LIMIT: ${{ github.event.inputs.limite || '5' }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Importar textos y actualizar fichas y registro sin sobrescribir R2
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          # No se hace merge ni rebase de índices generados. Cada intento
+          # parte del último main para no alterar obras incorporadas en paralelo.
+          for attempt in 1 2 3 4; do
+            echo "Tanda de obras selectas; intento $attempt"
+            git fetch --quiet origin main
+            git checkout -B vdl-selects origin/main
+            python scripts/ingest-selected-classics-50.py --limit "$LIMIT"
+            git add data/bibliotheca-expansion-publicada-2026-11-16.json
+            git add data/classics-corpus/search-registry.json
+            git add 'data/classics-corpus/*-grc.json'
+            if git diff --cached --quiet; then
+              echo 'No hay obras nuevas ni modificaciones pendientes.'
+              exit 0
+            fi
+            git commit -qm 'catalog: ingest verified select Greek classics and register local readers'
+            if git push origin HEAD:main; then
+              echo 'Originales y fichas incorporados. La publicación léxica se verifica en el flujo independiente.'
+              exit 0
+            fi
+            echo '::warning::Main avanzó durante la tanda; se recalcula sin forzar sobrescrituras.'
+            sleep 4
+          done
+          echo '::error::No fue posible publicar sin conflictos. Las obras remotas existentes permanecen intactas.'
+          exit 1
