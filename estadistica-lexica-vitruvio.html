@@ -25,4 +25,9 @@ fill("chapters",Object.entries(r.chapters).sort(([a],[b])=>{const p=a.split(".")
 $("edition").addEventListener("change",()=>{if(summary&&rank)render()});
 Promise.all(["data/apparatus/estadistica-lexica-latin-v514-v554-v297.json","data/apparatus/frecuencia-palabras-por-capitulo-v514-v554-v297.json"].map(p=>fetch(p).then(r=>{if(!r.ok)throw Error("HTTP "+r.status);return r.json()}))).then(([a,b])=>{summary=a;rank=b;render();$("status").textContent="Datos cargados de los tres índices latinos. Los conteos son reproducibles con los archivos JSON."}).catch(e=>$("status").textContent="No se pudieron cargar los datos: "+e.message);
 })();
-</script></body></html>
+</script>
+<footer data-vdl-legal-notice="2026" role="contentinfo" aria-label="Derechos editoriales" style="box-sizing:border-box;display:block;clear:both;grid-column:1/-1;width:100%;margin:28px 0 0;padding:16px 18px;border-top:1px solid currentColor;text-align:center;font:12px/1.65 system-ui,sans-serif;color:inherit;background:transparent">
+<strong>© 2026 Editorial Sophia Lux · Arq. Diego Kurilo. Derechos reservados.</strong>
+<span style="opacity:.8">Los derechos sobre los materiales originales, el diseño y los aportes editoriales pertenecen a sus respectivos titulares. Los textos antiguos, facsímiles, imágenes y recursos de terceros conservan su situación jurídica y licencias propias.</span>
+</footer>
+</body></html>
