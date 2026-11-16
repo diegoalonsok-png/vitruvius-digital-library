@@ -10,7 +10,7 @@ const targets=new Set([
  "lector-bilingue","comparador-loci","aparato-critico","apparatus-bude",
  "aparato-comparativo","colacion","registro-ecdotico","cobertura-aparato-critico",
  "lector-critico","loci","indices-locorum","index-locorum","commentarius-perpetuus",
- "conspectus-testimoniorum","quaestio-philologica","vitruvia"
+ "conspectus-testimoniorum","quaestio-philologica","commentarius-perpetuus","vitruvia"
 ]);
 if(!targets.has(page))return;
 const make=(tag,text,parent,cls)=>{const n=document.createElement(tag);if(text!==undefined&&text!==null)n.textContent=text;if(cls)n.className=cls;if(parent)parent.append(n);return n;};
@@ -32,6 +32,7 @@ async function init(){
  ".vdl-identity-items{display:flex;flex-wrap:wrap;gap:5px 15px;align-items:baseline}",
  ".vdl-identity-item{display:inline-block;flex:1 1 270px;min-width:230px}",
  ".vdl-identity-item cite{font-style:italic;font-weight:600}",
+ ".vdl-identity-selected{border-bottom:2px solid #b89558;padding-bottom:3px}",
  ".vdl-identity-item a{color:inherit;text-decoration:underline;text-underline-offset:2px}",
  ".vdl-identity-item small{font-size:10px;opacity:.85}",
  ".vdl-identity-method{margin-top:4px;font-size:10px}",
@@ -50,8 +51,23 @@ async function init(){
   const editions=ids.map(id=>(data.editions||[]).find(e=>e.id===id));
   if(editions.some(x=>!x))throw Error("Una o más fichas editoriales faltan");
   list.replaceChildren();
+  const selected=new URLSearchParams(location.search).get("edition");
+  const selectedEdition=editions.find(b=>b.id===selected);
+  if(selectedEdition){
+   const title=selectedEdition.bibliographic_title||selectedEdition.title;
+   document.title=title+" · "+selectedEdition.version+" · Vitruvius Digital Library";
+   const updateMeta=(name,value)=>{
+    let tag=document.querySelector('meta[name="'+name+'"]');
+    if(!tag){tag=document.createElement("meta");tag.setAttribute("name",name);document.head.append(tag)}
+    tag.content=value;
+   };
+   updateMeta("citation_title",title);
+   updateMeta("citation_author",selectedEdition.bibliographic_author||"Kurilo, Diego");
+   if(selectedEdition.doi)updateMeta("citation_doi",selectedEdition.doi);
+   if(selectedEdition.isbn)updateMeta("citation_isbn",selectedEdition.isbn);
+  }
   for(const b of editions){
-   const row=make("span",null,list,"vdl-identity-item");
+   const row=make("span",null,list,"vdl-identity-item");if(b.id===selected)row.classList.add("vdl-identity-selected");
    const code=make("b",b.version+": ",row);code.title=b.edition_statement||"";
    make("cite",b.bibliographic_title||b.title,row);
    row.append(" · ");
