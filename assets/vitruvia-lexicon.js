@@ -2652,10 +2652,39 @@ function setupPalette(){
 /* The same URL resolver serves direct links and browser Back/Forward.
    Query parameters are restored without assuming a server-side router. */
 let routeRevision=0;
+/* When research starts in Bibliotheca, preserve its bibliographical facets
+ * for the return trip. Lexicon does not silently claim to filter by era/genre. */
+function bibliothecaReturnURL(params){
+ if(params.get("source")!=="bibliotheca")return null;
+ const url=new URL("bibliotheca-graeca-latina.html",location.href);
+ const q=(params.get("q")||"").slice(0,180);
+ if(q)url.searchParams.set("q",q);
+ for(const [source,target] of [
+  ["bib_era","era"],["bib_genre","genre"],["bib_work","work"],["bib_order","order"],["bib_locus","locus"]
+ ]){
+  const val=params.get(source)||"";
+  if(/^[a-z0-9_.:-]{1,140}$/i.test(val))url.searchParams.set(target,val);
+ }
+ return url;
+}
+function renderBibliothecaReturn(params){
+ let bar=$("#lx-bibliotheca-return");
+ const url=bibliothecaReturnURL(params);
+ if(!url){if(bar)bar.remove();return}
+ if(!bar){
+  bar=el("div",{id:"lx-bibliotheca-return",class:"lx-person-banner",role:"navigation"});
+  $("#lx-results").before(bar);
+ }
+ bar.replaceChildren(
+  el("a",{href:url.href},"Volver a Bibliotheca con filtros"),
+  el("span",{class:"lx-small"}," · La época y el género siguen aplicándose en Bibliotheca, no en las concordancias de Lexicon.")
+ );
+}
 async function applyLexiconLocation(){
  const rev=++routeRevision;
  ++runRevision; // invalidate results from older asynchronous searches
  const p=new URLSearchParams(location.search);
+ renderBibliothecaReturn(p);
  S.mode=MODES[p.get("mode")]?p.get("mode"):"palabra";
  S.lang=["auto","la","grc","he","es","en","fr","de"].includes(p.get("lang"))?p.get("lang"):"auto";
  S.work=p.get("work")||"";
