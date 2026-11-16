@@ -89,6 +89,12 @@ jobs:
         run: python scripts/audit-r2-object-presence.py --required
       - name: Examinar la procedencia de PDF y OCR todavía no catalogados
         run: python scripts/audit-r2-orphan-ingestions.py --required
+      # Build the public panel AFTER the physical S3 audit; building it only
+      # before HEAD/GET kept yesterday's R2 figures next to today's new books.
+      - name: Reconstruir panel e inventario con el R2 recién comprobado
+        run: |
+          node scripts/audit-bibliotheca-federada.mjs --strict
+          python scripts/sync-bibliotheca-github-r2.py
       - name: Catalogar cobertura de OCR, sin confundirla con texto crítico
         run: |
           python scripts/build-bibliotheca-ocr-coverage.py
