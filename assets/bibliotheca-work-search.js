@@ -116,8 +116,15 @@ const workLink=id=>"classics-work-record.html?work="+encodeURIComponent(id);
 const facLink=id=>"buscador-facsimiles-clasicos.html?obra="+encodeURIComponent(id);
 const safeR2Pdf=url=>typeof url==="string"&&/^https:\/\/libros\.vitruvius-digital-library\.org\/clasicos\/pdf\/[a-z0-9-]+\.pdf$/.test(url)?url:"";
 function addRecordedEditions(actions,w){
- for(const ed of (w.pdfEditions||[]))addLink(actions,
-  "Leer PDF R2 · "+(ed.title||ed.id||"edición histórica").slice(0,84),ed.url);
+ for(const ed of (w.pdfEditions||[])){
+  addLink(actions,
+   "Leer PDF R2 · "+(ed.title||ed.id||"edición histórica").slice(0,84),ed.url);
+  // The source's actual scope warning stays visible at the point of access.
+  if(ed.scopeNote){
+   const note=make("span"," · Alcance de la edición: "+ed.scopeNote,"bws-meta");
+   actions.append(note);
+  }
+ }
 }
 // Align only registered, distinct textual languages. An OCR/PDF alone is not a collated edition.
 const compareLink=w=>{
