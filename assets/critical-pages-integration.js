@@ -8,7 +8,7 @@ const PAGE=[
 ];
 const self=location.pathname.split("/").pop().replace(/\.html$/,"");
 if(!PAGE.some(x=>x[0].replace(/\.html$/,"")===self))return;
-let records=new Map(),active="1.1.1",panel=null;
+let records=new Map(),translations=new Map(),active="1.1.1",panel=null;
 const elt=(tag,body)=>{const n=document.createElement(tag);if(body!==undefined)n.textContent=body;return n};
 function normal(s){
  s=String(s||"").trim().toLowerCase().replace(/\s+/g,"");
@@ -42,6 +42,14 @@ function redraw(v){
  body.append(elt("p","Qué cambia: "+r.change));
  body.append(elt("p","Atribución: "+r.decision));
  body.append(elt("small",r.status==="print_checked"?"Impresos cotejados según registro local; testimonios manuscritos citados indirectamente.":"Comparación digital provisional; causa de la elección y lectura impresa aún no comprobadas."));
+ const t=translations.get(active);
+ if(t){
+  const extra=elt("section");extra.className="vdl-traductological-apparatus";extra.style.cssText="margin-top:12px;border-top:1px solid #9b958a80;padding-top:10px";
+  extra.append(elt("strong","Collatio interpretationum · V514 / V554 / V297"));
+  extra.append(elt("p",t.analysis));
+  extra.append(elt("small","Objeto: tres traducciones de Kurilo, cotejadas entre sí y con sus latines. No son traducciones de Rose o Krohn ni demuestran por sí solas su motivo editorial."));
+  body.append(extra);
+ }
  const link=elt("a","Ver fuentes y diferencias");link.href="aparato-comparativo.html?locus="+encodeURIComponent(active);body.append(elt("p")).append(link);
 }
 function init(){
@@ -70,6 +78,10 @@ function init(){
  fetch("data/apparatus/editorial-decisions-bude-reviewed.json",{cache:"no-cache"}).then(r=>{if(!r.ok)throw Error("HTTP "+r.status);return r.json()}).then(d=>{
  records=new Map((d.records||[]).map(v=>[v.locus,v]));redraw(locus());
  }).catch(e=>{note.textContent="No se recuperaron las notas: "+e.message;});
+ fetch("data/apparatus/colacion-traducciones-interpretacion.json",{cache:"no-cache"}).then(r=>{if(!r.ok)throw Error("HTTP "+r.status);return r.json()}).then(d=>{
+  translations=new Map((d.records||[]).map(x=>[x.locus,x]));redraw(locus());
+ }).catch(e=>{const p=elt("small","La comparación de traducciones no está disponible: "+e.message);panel.append(p)});
+
 }
 if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",init);else init();
 })();
