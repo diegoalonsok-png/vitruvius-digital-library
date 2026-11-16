@@ -4,6 +4,9 @@ name: Ampliar clásicos griegos y latinos en R2 sin borrar GitHub
 # Solicitud editorial 2026-11-16: continuar lote conservador hasta 12 grupos, sin sobrescrituras.
 on:
   workflow_dispatch:
+  schedule:
+    # Nueva tanda acotada cada día, sin solapamiento con la anterior.
+    - cron: '17 5 * * *'
   push:
     branches: [main]
     paths:
