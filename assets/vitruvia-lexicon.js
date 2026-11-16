@@ -518,7 +518,7 @@ function vitruviusWitnessLine(){
  * A prefilled GitHub issue is a DRAFT until a researcher explicitly submits it.
  * The scholarly reading and corpus index are never modified by this action. */
 function passageIssueURL(details){
- const safe=(v,n=180)=>String(v||"").replace(/\\s+/g," ").trim().slice(0,n);
+ const safe=(v,n=180)=>String(v||"").replace(/\s+/g," ").trim().slice(0,n);
  const cleanInline=v=>safe(v).replace(/[`\\]/g,"");
  const work=safe(details.work,100),locus=safe(details.locus,150),language=safe(details.language,8);
  const version=safe(details.version,90);
@@ -543,7 +543,7 @@ function passageIssueURL(details){
   "",
   "## Fragmento de contexto (texto indexado; no cotejo manuscrito)",
   "",
-  "> "+excerpt.replace(/\\n/g," "),
+  "> "+excerpt.replace(/\n/g," "),
   "",
   "## Motivo de revisión (marcar lo que corresponda)",
   "",
@@ -559,7 +559,7 @@ function passageIssueURL(details){
   "(Completar aquí; indicar si se verificó una edición impresa o un manuscrito.)",
   "",
   "**Nota editorial:** un aviso no equivale a una variante manuscrita verificada. No modificar directamente el texto autoral."
- ].join("\\n");
+ ].join("\n");
  const u=new URL("https://github.com/diegoalonsok-png/vitruvius-digital-library/issues/new");
  u.searchParams.set("title",title);
  u.searchParams.set("body",body);
