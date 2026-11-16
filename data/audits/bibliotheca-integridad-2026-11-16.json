@@ -1,0 +1,114 @@
+{
+  "schema": "vdl-bibliotheca-catalog-audit-v1",
+  "date": "2026-11-16",
+  "scope": "Bibliotheca Graeca et Latina: bibliographic records, text edition registry, R2 publication declarations, partial local content sample",
+  "sources": [
+    "data/classics-corpus/indexation-roadmap-222.json",
+    "data/classics-corpus/search-registry.json",
+    "data/classics-corpus/external-index-reconciliation.json",
+    "data/r2/catalogo-clasicos-r2.json",
+    "data/r2/vinculos-repertorio.json",
+    "data/r2/bibliotheca-panel-sync.json",
+    "data/r2/r2-object-status.json"
+  ],
+  "limits": "This is a manifest-based audit with a sampled local-text inspection, not full retrieval of all 292 editions. Remote R2 objects have not been independently fetched or rehashed in this session; completeness against canonical editions and manuscript witnesses is not certified.",
+  "counts": {
+    "principalWorks": 271,
+    "additionalWorks": 10,
+    "cataloguedWorks": 281,
+    "registeredTextEditions": 292,
+    "registeredWorks": 227,
+    "localOriginalWorks": 183,
+    "remoteOriginalWorksNotLocallyDuplicated": 27,
+    "effectiveIndexedOriginalWorks": 210,
+    "originalWorksPendingEffectiveIndex": 61,
+    "registeredOriginalCoverage": 227,
+    "localRegistryEntries": 248,
+    "remoteRegistryEntries": 44,
+    "pdfRecordsR2": 117,
+    "pdfOrOcrIndexEntriesR2": 119,
+    "pdfIndexedRecordDiscrepancy": 2
+  },
+  "catalogRisks": [
+    {
+      "severity": "high",
+      "code": "coverage-definitions-disagree",
+      "details": "227 registered works versus 210 original indexed works effectively identified and 61 pending original works; a separate R2 panel lists 44 without own text. Each counter must preserve its explicit scope."
+    },
+    {
+      "severity": "medium",
+      "code": "polyorketika-shared-facsimile",
+      "ids": [
+        "apollodorus-poliorcetics",
+        "athenaeus-mechanicus",
+        "biton-kataskeuai",
+        "philo-belopoeica"
+      ],
+      "details": "Four catalog records share the identical 446-page PDF SHA-256 cea9ced8736203b9003970fcc58bdb41bc51c87d9463aeb1615bcab94c6f3457. The source explicitly identifies a collected volume; each treatise's own page range still needs collation. Do not delete or merge without confirming foliation."
+    },
+    {
+      "severity": "medium",
+      "code": "galen-volume-identity",
+      "ids": [
+        "galeno-opera-kuhn",
+        "galeno-kuhn-vol01"
+      ],
+      "details": "Both have identical PDF SHA-256 11e93b0bd7a3afcdf772b925e121734a2b0032de79f29df7d9864eb813c03942. The legacy ID vol01 is inconsistent with edition identified as volume XIV; do not rename until source provenance and inbound references are checked."
+    },
+    {
+      "severity": "medium",
+      "code": "partial-anthology",
+      "ids": [
+        "antologia-griega"
+      ],
+      "details": "The catalogued facsimile is volume V only of a five-volume edition. Do not claim all five volumes are present."
+    },
+    {
+      "severity": "medium",
+      "code": "historical-translation-partial-volume",
+      "ids": [
+        "amiano-marcelino-es"
+      ],
+      "details": "Catalog note says only volume II of a historical Spanish translation; not the entire Res gestae."
+    },
+    {
+      "severity": "medium",
+      "code": "r2-index-unmatched-records",
+      "ids": [
+        "boecio-institutione-musica",
+        "historia-augusta"
+      ],
+      "details": "Prior stored R2 lexical audit reports 119 indexed records for 117 PDF catalogue entries and two index-only IDs. Confirm source association before adding or deleting."
+    },
+    {
+      "severity": "medium",
+      "code": "foreign-index-and-r2-completeness-unknown",
+      "details": "A registered remote text, OCR or working PDF link does not establish the work is complete or text critically checked."
+    },
+    {
+      "severity": "low",
+      "code": "registry-file-overlap",
+      "details": "Structured bilingual Vitruvius Latin and Spanish registry entries intentionally point to one shared recensio-es.json; not a duplicate work."
+    }
+  ],
+  "sample": {
+    "localEditionFilesAttempted": 10,
+    "successfullyParsedFromGitHubTool": 9,
+    "oneLargeSourceNotFullyReturnedByGitHubTool": "augustine-civitate-dei",
+    "parsedSamplesHadEmptyLoci": 0,
+    "parsedSamplesHadDuplicateLoci": 0,
+    "note": "The file not fully returned in the API response is NOT called corrupt; it must be checked by the repository-local audit script."
+  },
+  "technicalAudit": {
+    "script": "scripts/audit-bibliotheca-integrity.mjs",
+    "command": "node scripts/audit-bibliotheca-integrity.mjs",
+    "executionStatus": "Committed to repository; not run in the repository environment in this session. GitHub text tool response truncation and no direct R2 credentials limit live verification."
+  },
+  "nextSteps": [
+    "Run the audit script on the full repository or CI to validate every local text, all passage IDs and reader source links.",
+    "Compare each work against its edition-specific expected book/chapter/verse coverage; preserve fragmentary-work scope.",
+    "Validate 44 remote JSON texts and 117 PDFs with HTTP status, metadata, SHA-256 and an edition title/colophon inspection.",
+    "Correct ambiguous volume IDs and treatise page ranges only after source comparison; preserve all original paths.",
+    "Separate visible counts for registered texts, effectively indexed originals, OCR facsimiles and pending complete editions."
+  ]
+}
