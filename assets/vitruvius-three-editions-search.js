@@ -61,7 +61,7 @@ const concepts=[
  {terms:["numen"],roots:["numen"]},
  {terms:["locus","loca","lugar","place","lieu"],roots:["loc"]}
 ];
-function searchableForms(q){const parts=fold(q).split(" ").filter(Boolean);return parts.map(part=>{const c=concepts.find(x=>x.terms.some(t=>fold(t)===part));return c?c.roots:[part]})}
+function searchableForms(q){const parts=fold(q).split(" ").filter(Boolean);return parts.map(part=>{const c=concepts.find(x=>x.terms.some(t=>fold(t)===part));return c?c.roots.map(fold):[part]})}
 function lexical(text,query,mode){
  const h=fold(text),needle=fold(query);if(!h||!needle)return false;
  if(mode==="phrase")return h.includes(needle);
