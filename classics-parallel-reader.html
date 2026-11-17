@@ -254,7 +254,17 @@ function count(){return versions[left.value]?.passages?.length||0;}
    Exact equality is an editorial identifier match, not proof of semantic alignment.
    For a verse range or a paragraph within a book, use only the same higher-level
    book/chapter, then disclose that this is approximate. */
-function locusKey(value){return String(value??"").trim().toLowerCase().replace(/\s+/g,"");}
+function locusKey(value){return String(value??"").trim().toLowerCase().replace(/\\s+/g,"");}
+/* Normalize CTS edition prefixes only within the same selected work.
+   An exact segment key is evidence of a shared location, not of equal wording. */
+function segmentKey(value){const key=locusKey(value);return key.includes(":")?key.slice(key.lastIndexOf(":")+1):key;}
+function findLocusIndex(passages,locus){
+ if(!locus||!Array.isArray(passages))return -1;
+ const key=locusKey(locus),exact=passages.findIndex(p=>locusKey(p.locus)===key);
+ if(exact>=0)return exact;
+ const segment=segmentKey(locus);
+ return segment?passages.findIndex(p=>segmentKey(p.locus)===segment):-1;
+}
 /* Apuleius: the Latin edition has canonical 1.1–11.30 loci, while the
    hosted Spanish translation has t1–t312 editorial chunks. Front matter
    precedes the novel (t1–t21), and unrelated prose follows it (t246+).
@@ -289,7 +299,7 @@ function destination(){
  if($("same-locus").checked)quality="unmatched";
  if($("same-locus").checked&&a?.passages?.[index]&&b?.passages?.length){
   const wanted=locusKey(a.passages[index].locus);
-  const exact=wanted?b.passages.findIndex(p=>locusKey(p.locus)===wanted):-1;
+  const exact=findLocusIndex(b.passages,a.passages[index].locus);
   if(exact>=0){second=exact;quality="locus";}
   else{
    const approx=apuleiusApprox(left.value,right.value,index);
@@ -393,7 +403,7 @@ function frame(side,lang){
  const u=new URL("classics-text-reader.html",location.href);
  u.searchParams.set("work",work);u.searchParams.set("lang",lang);
  u.searchParams.set("parallel","1");u.searchParams.set("literal","1");
- const requestedLocus=params.get("locus");if(requestedLocus)u.searchParams.set("locus",requestedLocus);
+ const requestedLocus=versions[left.value]?.passages?.[position]?.locus||params.get("locus");if(requestedLocus)u.searchParams.set("locus",requestedLocus);
  const q=$(side+"-query").value.trim();if(q)u.searchParams.set("q",q);
  ready[side]=false;pendingNavigation[side]=null;
  const pane=$("pane-"+side);
@@ -431,6 +441,9 @@ async function changed(side,lang){
    $(other).value=replacement;$(other+"-pane-language").value=replacement;
   }
  }
+ // Capture the currently visible passage BEFORE replacing either edition.
+ const priorLeft=versions[previous.left]?.passages||[];
+ const anchorLocus=priorLeft[position]?.locus||params.get("locus")||"";
  const current=++generation[side];
  $(side+"-pane-language").value=lang;
  status.textContent="Cargando "+(LANG[lang]||lang)+" en el visor "+(side==="left"?"izquierdo":"derecho")+"…";
@@ -442,11 +455,20 @@ async function changed(side,lang){
  }
  if(oldOther!==$(other).value)frame(other,$(other).value);
  previous[side]=lang;previous[other]=$(other).value;
- position=Math.min(position,Math.max(0,count()-1));
+ // Re-anchor by canonical passage locus, never by the old edition's array index.
+ const nextLeft=versions[left.value]?.passages||[];
+ const found=findLocusIndex(nextLeft,anchorLocus);
+ const noMatch=side==="left"&&Boolean(anchorLocus)&&found<0;
+ if(found>=0)position=found;
+ else if(side==="left")position=0; // no evidence for a corresponding passage
+ else position=Math.min(position,Math.max(0,count()-1));
+ if(anchorLocus&&found>=0)params.set("locus",nextLeft[position].locus);
  frame(side,lang);buttons();store();
- status.textContent=isAuto(right.value)?
-  "Texto original en "+(LANG[left.value]||left.value)+". El locus se conserva; puede solicitar una traducción automática orientativa de un fragmento en el segundo visor.":
-  "Versiones: "+(LANG[left.value]||left.value)+" / "+(LANG[right.value]||right.value)+". Navegación sincronizada orientativa; búsquedas independientes.";
+ status.textContent=noMatch?
+  "La edición seleccionada no tiene una correspondencia documentada para el locus anterior ("+anchorLocus+"). Se abre su primer pasaje; no se supone equivalencia por posición.":
+  (isAuto(right.value)?
+   "Texto original en "+(LANG[left.value]||left.value)+". Se conserva el locus "+(nextLeft[position]?.locus||"actual")+"; traducción automática opcional.":
+   "Versiones: "+(LANG[left.value]||left.value)+" / "+(LANG[right.value]||right.value)+". Locus conservado cuando existe correspondencia; búsquedas independientes.");
 }
 function sendQuery(side){
  if(!ready[side]||(side==="right"&&isAuto(right.value)))return;
