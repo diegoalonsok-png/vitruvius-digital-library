@@ -248,7 +248,7 @@ function rank(w,query){
  const authority=[w.author,w.title,w.id.replaceAll("-"," "),...(w.forms||[]),...(aliasAuthority[w.id]||[])];
  let best=0;
  for(const field of authority){
-  if(/[\\u0370-\\u03ff\\u1f00-\\u1fff]/u.test(query)&&!/[\\u0370-\\u03ff\\u1f00-\\u1fff]/u.test(field))continue;
+  if(/\p{Script=Greek}/u.test(query)&&!/\p{Script=Greek}/u.test(field))continue;
   const val=foldAuthority(field);if(!val)continue;
   const fieldTokens=tokens(val), q=foldAuthority(query);
   if(val===q)best=Math.max(best,140);
