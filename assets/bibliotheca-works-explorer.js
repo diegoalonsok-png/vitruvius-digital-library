@@ -3,10 +3,8 @@
    registration as proof of a reviewed, searchable Latin/Greek transcription. */
 (()=>{"use strict";
 const URL="data/classics-corpus/indexation-roadmap-222.json";
-const labels={local:"Texto original local",remote:"Índice externo",r2:"PDF/OCR R2 registrado",pending:"Pendiente de texto propio"};
-const categories=["local","remote","r2","pending"];
+const labels={local:"Original griego o latino indexado"};
 let dataPromise=null;
-const classify=x=>x.originalIndexed?"local":x.offsiteOriginalIndexed?"remote":x.originalR2Registered?"r2":"pending";
 function catalog(){
  if(!dataPromise)dataPromise=Promise.all([
   fetch(URL).then(r=>{if(!r.ok)throw Error("Inventario: HTTP "+r.status);return r.json()}),
@@ -25,15 +23,16 @@ function catalog(){
    if(valid){if(!sources.has(entry.workId))sources.set(entry.workId,[]);sources.get(entry.workId).push(entry)}
   }
   const lexicalIds=new Set((lexical.index||[]).filter(e=>e.lang==="grc"||e.lang==="la").map(e=>e.id+"|"+e.lang));
-  const merged=new Map(j.items.map(x=>[x.id,{id:x.id,author:x.author||"Autor no indicado",title:x.title||x.id,kind:classify(x),language:x.originalLanguage||"",originalIndexed:Boolean(x.originalIndexed),indexedLanguages:Array.isArray(x.indexedLanguages)?x.indexedLanguages:[],readers:sources.get(x.id)||[]}]));
+  const hasIndexedOriginal=(id,lang)=>["la","grc"].includes(lang)&&lexicalIds.has(id+"|"+lang)&&(sources.get(id)||[]).some(e=>e.language===lang);
+  const merged=new Map(j.items.map(x=>[x.id,{id:x.id,author:x.author||"Autor no indicado",title:x.title||x.id,kind:"local",language:x.originalLanguage||"",originalIndexed:hasIndexedOriginal(x.id,x.originalLanguage),indexedLanguages:hasIndexedOriginal(x.id,x.originalLanguage)?[x.originalLanguage]:[],readers:sources.get(x.id)||[]}]));
   // Supplementary works are fully catalogued, not anonymous "registry-only" rows.
   // Search results are labelled indexed only when the actual lexical manifest agrees.
   for(const w of supplement.works||[]){
    if(!w?.id||merged.has(w.id))continue;
    const lang=w.language;
-   const originalIndexed=lexicalIds.has(w.id+"|"+lang);
+   const originalIndexed=hasIndexedOriginal(w.id,lang);
    merged.set(w.id,{id:w.id,author:w.author||"Autor no indicado",title:w.title||w.id,
-    kind:originalIndexed?"local":"pending",language:lang,originalIndexed,
+    kind:"local",language:lang,originalIndexed,
     indexedLanguages:originalIndexed?[lang]:[],readers:sources.get(w.id)||[]});
   }
   // An uncatalogued text must remain discoverable, but is never passed off as
@@ -45,7 +44,9 @@ function catalog(){
    merged.set(id,{id,author:first.author||"Autor no indicado",title:first.title||id,
     kind:"pending",language:ancient?.language||"",originalIndexed:false,indexedLanguages:[],readers:versions});
   }
-  return [...merged.values()];
+  // Show only original Greek/Latin indexed in BOTH lexical manifest and source registry.
+  // Catalog-only, external searches, OCR facsimiles and translations are never shown as originals.
+  return [...merged.values()].filter(w=>w.originalIndexed);
  }).catch(e=>{dataPromise=null;throw e});
  return dataPromise;
 }
@@ -55,15 +56,13 @@ function mount(host){
  host.dataset.indexExplorerMounted="1";
  host.classList.add("vdl-works-explorer");
  const details=add("details","vdl-works-explorer-details",null,host);
- const summary=add("summary",null,"Ver obras y estado de indexación",details);
- summary.setAttribute("aria-label","Mostrar u ocultar catálogo de obras y estado de sus textos");
+ const summary=add("summary",null,"Ver obras con original indexado",details);
+ summary.setAttribute("aria-label","Mostrar obras con texto original griego o latino indexado");
  const content=add("div","vdl-works-explorer-content",null,details);
- const note=add("p","vdl-works-note","Abre el repertorio para consultar los títulos y distinguir textos originales locales, índices externos, facsímiles OCR y obras pendientes. Una ficha PDF no certifica una transcripción revisada.",content);
+ const note=add("p","vdl-works-note","Solo se muestran obras cuyo original griego o latino figura en el índice léxico y en el registro de texto consultable. Las fichas sin original indexado permanecen en el catálogo académico, fuera de esta lista.",content);
  const toolbar=add("div","vdl-works-filterbar",null,content);
  const search=add("input",null,null,toolbar);search.type="search";search.placeholder="Filtrar por autor o título…";search.setAttribute("aria-label","Filtrar las obras por autor o título");
- const filter=add("select",null,null,toolbar);filter.setAttribute("aria-label","Filtrar por estado de indexación");
- filter.add(new Option("Todas las obras del repertorio y nuevas incorporaciones","all"));
- for(const category of categories)filter.add(new Option(labels[category],category));
+
  const count=add("p","vdl-works-result-count","Abre el catálogo para cargar el inventario.",content);count.setAttribute("role","status");
  const listing=add("div","vdl-works-list",null,content);listing.setAttribute("role","list");
  const final=add("p","vdl-works-bottom",null,content);
@@ -72,8 +71,8 @@ function mount(host){
  const normalize=x=>String(x||"").normalize("NFD").replace(/\p{M}/gu,"").toLowerCase();
  function render(){
   if(!items)return;
-  const query=normalize(search.value),kind=filter.value;
-  const matched=items.filter(x=>(kind==="all"||kind===x.kind)&&normalize(x.author+" "+x.title).includes(query));
+  const query=normalize(search.value);
+  const matched=items.filter(x=>normalize(x.author+" "+x.title).includes(query));
   listing.replaceChildren();
   for(const item of matched){
    const line=add("div","vdl-works-row",null,listing);line.setAttribute("role","listitem");
@@ -95,8 +94,7 @@ function mount(host){
    const meta=add("span","vdl-works-state",labels[item.kind],line);
    meta.dataset.kind=item.kind;
   }
-  const states=categories.map(k=>labels[k]+": "+items.filter(x=>x.kind===k).length).join(" · ");
-  count.textContent=matched.length+" de "+items.length+" obras del repertorio y ampliaciones · "+states;
+  count.textContent=matched.length+" de "+items.length+" obras con original griego o latino indexado y fuente registrada.";
  }
  details.addEventListener("toggle",async()=>{
   if(!details.open||items)return;
@@ -104,7 +102,7 @@ function mount(host){
   try{items=await catalog();if(details.open)render()}
   catch(e){count.textContent="No fue posible cargar las obras: "+e.message+". Se conserva el acceso al catálogo completo."}
  });
- search.addEventListener("input",render);filter.addEventListener("change",render);
+ search.addEventListener("input",render);
 }
 function init(){document.querySelectorAll("[data-vdl-works-explorer]").forEach(mount)}
 if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",init,{once:true});else init();
