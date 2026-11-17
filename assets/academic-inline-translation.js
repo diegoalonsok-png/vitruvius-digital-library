@@ -58,6 +58,23 @@ async function browserTranslation(text,source,target){
  }finally{translator.destroy?.()}
 }
 /* Two network routes, bounded per passage. Neither produces a citable edition. */
+// Greek-to-Latin transliteration is not a translation; reject mixed output that
+// systematically recycles romanized Greek words (common when ancient Greek is
+// sent to a modern-Greek machine model). Proper names alone do not trigger rejection.
+const romanizeGreek=text=>{
+ const letters={α:"a",β:"b",γ:"g",δ:"d",ε:"e",ζ:"z",η:"e",θ:"th",ι:"i",κ:"k",λ:"l",μ:"m",ν:"n",ξ:"x",ο:"o",π:"p",ρ:"r",σ:"s",ς:"s",τ:"t",υ:"u",φ:"ph",χ:"ch",ψ:"ps",ω:"o"};
+ return String(text||"").normalize("NFD").replace(/[\u0300-\u036f\u1dc0-\u1dff]/g,"").toLowerCase().replace(/[α-ως]/g,c=>letters[c]||c);
+};
+function suspiciousGreekRomanization(original,translated){
+ const sourceWords=(String(original||"").match(/[\p{Script=Greek}\p{M}]+/gu)||[])
+  .map(romanizeGreek).filter(x=>x.length>=4);
+ if(sourceWords.length<7)return false;
+ const targetWords=(String(translated||"").normalize("NFD").replace(/[\u0300-\u036f\u1dc0-\u1dff]/g,"").toLowerCase().match(/[a-z]{4,}/g)||[]);
+ if(targetWords.length<7)return false;
+ const sourceSet=new Set(sourceWords);
+ const matches=targetWords.filter(w=>sourceSet.has(w));
+ return matches.length>=5&&matches.length/targetWords.length>=.13;
+}
 function translationLooksUnchanged(original,translated,source,target){
  const a=String(original||"").trim().normalize("NFKC"),b=String(translated||"").trim().normalize("NFKC");
  if(!b||a===b)return true;
@@ -65,6 +82,7 @@ function translationLooksUnchanged(original,translated,source,target){
   const greek=(b.match(/[α-ωΑ-Ωά-ώἀ-῿]/g)||[]).length;
   const letters=(b.match(/[A-Za-zÀ-ÿα-ωΑ-Ωά-ώἀ-῿]/g)||[]).length;
   if(letters>20&&greek/letters>0.22)return true;
+  if(suspiciousGreekRomanization(original,translated))return true;
  }
  return false;
 }
