@@ -18,15 +18,15 @@
   "edicionesLexicasR2": 44,
   "obrasConTextoIndexado": 291,
   "estadoIndexacion": {
-    "metodo": "Cruce de manifiestos R2 y del registro por URL, SHA256, idioma y pasajes; verificación archivada 2026-11-17, sin afirmar nuevo sondeo HTTP.",
+    "metodo": "Auditoría local y cotejo R2 con manifiesto y comprobación SHA registrada; sin nueva prueba HTTP en esta ejecución. OCR histórico separado.",
     "edicionesLocalesBuscables": 315,
     "edicionesLocalesConPasajes": 309,
     "edicionesHTMLBuscablesPorPalabra": 6,
+    "edicionesR2IndexadasConSHA": 44,
+    "ultimaVerificacionR2": "2026-11-17T12:28:30.510Z",
     "edicionesR2PendientesVerificacion": 0,
     "edicionesOCRHistorico": 1,
-    "edicionesLocalesPendientes": 0,
-    "edicionesR2IndexadasConSHA": 44,
-    "ultimaVerificacionR2": "2026-11-17T12:28:30.510Z"
+    "edicionesLocalesPendientes": 0
   },
   "objetivoObras": 500,
   "faltanParaObjetivo": 153

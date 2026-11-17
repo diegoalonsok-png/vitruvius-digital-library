@@ -1,7 +1,7 @@
 {
   "schema": "vdl-classics-public-counts-v2",
-  "generated": "2026-11-17T12:30:55.461Z",
-  "method": "Local text files and index manifest cross-checked by original work/language; HTML word gates are not passage indices; historical OCR and unverified R2 are excluded from verified source-passage totals.",
+  "generated": "2026-11-17T12:41:42.570Z",
+  "method": "Local text files and index manifest cross-checked by original work/language; HTML word gates are not passage indices; historical OCR excluded from critical-text counts; R2 indexed editions are matched to last verified SHA256 manifest, without claiming live checking.",
   "cataloguedWorks": 347,
   "registryEntries": 360,
   "registryDistinctWorks": 295,
@@ -10,11 +10,13 @@
   "htmlWordGateEditions": 6,
   "localLexicallyIndexedDistinctWorks": 250,
   "localUnindexedEditions": [],
-  "remoteR2EditionsDeclaredNotLiveVerified": 44,
+  "remoteR2EditionsIndexedLastVerified": 44,
+  "remoteR2VerifiedAt": "2026-11-17T12:28:30.510Z",
+  "remoteR2EditionsDeclaredNotLiveVerified": 0,
   "historicalOcrEditions": 1,
   "auditCounts": {
     "indexed-local": 305,
-    "remote-unverified": 44,
+    "indexed-r2-last-verified": 44,
     "indexed-html-word-gate": 6,
     "historical-ocr-separate-index": 1,
     "indexed-through-edition-alias": 4
