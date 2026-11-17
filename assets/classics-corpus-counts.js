@@ -5,7 +5,7 @@
 const ROOT="data/classics-corpus/";
 const read=async path=>{const r=await fetch(path,{cache:"no-cache"});if(!r.ok)throw Error(path+" HTTP "+r.status);return r.json();};
 const metricLabels=[
- "obras y tratados catalogados","originales con índice efectivo en repertorio principal","obras con traducción local",
+ "obras y tratados catalogados","originales efectivamente indexados en repertorio principal","obras con traducción local",
  "registros textuales combinados (incluye fuentes externas)","obras sin original textual registrado"
 ];
 function style(){
@@ -118,6 +118,10 @@ function paint(a,data){
   group.append(dd,dt);
   dl.append(group);
  });bar.append(dl);
+ const registered=document.createElement("div"),registeredValue=document.createElement("dd"),registeredLabel=document.createElement("dt");
+ registeredValue.textContent=new Intl.NumberFormat("es-AR").format(a.registered);
+ registeredLabel.textContent="obras con original registrado (incluye fuentes pendientes de verificación)";
+ registered.append(registeredValue,registeredLabel);dl.append(registered);
  const details=document.createElement("details");details.className="tally-line-details";
  const summary=document.createElement("summary");summary.textContent="Detalle";summary.setAttribute("aria-label","Ver explicación y fuentes de las cifras");
  details.append(summary);bar.append(details);wrap.append(bar);
@@ -156,7 +160,7 @@ async function begin(){
    seen.add(e.workId);remote.add(e.workId+"|"+e.language);
   }
   const local=road.counts.originalsIndexed,extra=seen.size;
-  const counts={catalogued:road.targetWorks,indexed:local+extra,pending:road.counts.originalWorksWithoutRegisteredSource ?? road.targetWorks-local-extra,
+  const counts={catalogued:road.targetWorks,indexed:local+extra,registered:road.counts.registeredOriginalsWithExternal ?? road.targetWorks-(road.counts.originalWorksWithoutRegisteredSource||0),pending:road.counts.originalWorksWithoutRegisteredSource ?? road.targetWorks-local-extra,
     translated:translations.totals.translatedWorksLocal,
     versions:registry.count+remote.size,
     complete:greek.length===(window.ClassicsOffsiteGreek?.allowedWorkIds?.length||0)&&
