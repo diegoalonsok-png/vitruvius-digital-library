@@ -82,7 +82,10 @@ for(const work of catalogue.works){
 assert.equal(registry.entries.length,registry.count,"Registry version total differs");
 assert.equal(indexed.size,registry.works,"Registry distinct work total differs");
 assert.equal(report.counts.cataloguedWorks,catalogue.works.length,"Published catalogue audit stale");
-assert.equal(report.counts.indexedTextVersions,registry.entries.length,"Published text count stale");
+const mainCatalogueIds=new Set(workIds);
+const mainCatalogueEntries=registry.entries.filter(e=>mainCatalogueIds.has(e.workId));
+assert.equal(report.counts.indexedTextVersions,mainCatalogueEntries.length,"Main-catalogue coverage report text count stale");
+assert.equal(report.counts.indexedDistinctWorks,new Set(mainCatalogueEntries.map(e=>e.workId)).size,"Main-catalogue coverage report work count stale");
 const source=read("assets/bibliotheca-graeca-latina.js");
 const begin=source.indexOf("function safePublicHref(value){");
 const end=source.indexOf("function navLink(url,txt)",begin);
