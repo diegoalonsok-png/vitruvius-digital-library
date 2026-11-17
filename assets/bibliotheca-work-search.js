@@ -227,6 +227,28 @@ function rank(w,query){
  }
  return best;
 }
+function originalTitle(w){
+ const language=w.originalLanguage||w.language||w.versions?.find(v=>["grc","la"].includes(v.language))?.language||"";
+ const choices=[...(w.originalTitle?[w.originalTitle]:[]),...(w.titleOriginal?[w.titleOriginal]:[]),...(w.tituloOriginal?[w.tituloOriginal]:[]),...(w.greekTitle?[w.greekTitle]:[]),...(w.latinTitle?[w.latinTitle]:[]),...(w.originalAliases||[]),...(loadedAliases[w.id]||[])];
+ const greekScript=x=>/[\u0370-\u03ff\u1f00-\u1fff]/u.test(x);
+ const latinScript=x=>/^[\p{Script=Latin}\p{M}\p{Zs}\p{P}0-9]+$/u.test(x);
+ let name="";
+ if(language==="grc")name=choices.find(x=>typeof x==="string"&&greekScript(x))||(greekScript(w.title)?w.title:"");
+ if(language==="la")name=[w.originalTitle,w.titleOriginal,w.latinTitle,w.title].find(x=>typeof x==="string"&&latinScript(x))||"";
+ if(!name&&greekScript(w.title))name=w.title;
+ if(!name||normal(name)===normal(w.title))return "";
+ return {name,language:language==="grc"||greekScript(name)?"grc":"la"};
+}
+function appendWorkHeading(item,w){
+ const heading=make("div",null,"bws-heading");
+ const primary=make("strong",w.title);primary.className="bws-work-title";
+ heading.append(primary,make("span"," · "+w.author));
+ item.append(heading);
+ const orig=originalTitle(w);
+ if(orig){const line=make("p",null,"bws-original-title");
+  const term=make("span",orig.language==="grc"?"Título original griego: ":"Título original latino: ");term.className="bws-original-label";
+  const title=make("i",orig.name);title.lang=orig.language;line.append(term,title);item.append(line)}
+}
 function addLink(parent,text,href){
  if(!href)return;
  const a=make("a",text);a.href=href;parent.append(a);
@@ -287,8 +309,8 @@ function render(){
   count.textContent=(model.r2Only?"Originales registrados en Cloudflare R2 · ":"Catálogo completo · ")+items.length+" obras. El registro documental no acredita por sí solo disponibilidad HTTP.";
   const all=[...items].sort((a,b)=>model.sortFilter.value==="title"?a.title.localeCompare(b.title,"es",{sensitivity:"base"}):a.author.localeCompare(b.author,"es",{sensitivity:"base"})||a.title.localeCompare(b.title,"es",{sensitivity:"base"}));
   for(const w of all.slice(0,limit)){
-   const li=make("li",null,"bws-item"),heading=make("div",null,"bws-heading");
-   heading.append(make("strong",w.title),make("span"," · "+w.author));li.append(heading);if(window.BibliothecaCoverMiniatures)li.prepend(window.BibliothecaCoverMiniatures.create(w));
+   const li=make("li",null,"bws-item");
+   appendWorkHeading(li,w);if(window.BibliothecaCoverMiniatures)li.prepend(window.BibliothecaCoverMiniatures.create(w));
    const meta=make("p",null,"bws-meta"),languages=[...new Set(w.versions.filter(v=>safeReader(v.reader)).map(v=>lang[v.language]||v.language))];
    meta.textContent=[w.genre||"",w.dating||"",periodLabel(w),languages.length?(w.r2Original?"Original R2 registrado · ":"Ediciones registradas · ")+languages.join(", "):w.heritageReader?"Edición histórica · visor de facsímiles":w.facsimile?"Facsímil disponible · OCR por comprobar":"Ficha catalográfica; texto no alojado"].filter(Boolean).join(" · ");li.append(meta);
    const actions=make("nav",null,"bws-actions");
@@ -315,8 +337,7 @@ function render(){
  if(!found.length){list.append(make("li","No se encontraron obras con ese título o autor. Pruebe otra grafía o denominación.","bws-empty"));return}
  for(const {w} of found.slice(0,limit)){
   const item=make("li",null,"bws-item");
-  const heading=make("div",null,"bws-heading");
-  heading.append(make("strong",w.title),make("span"," · "+w.author));item.append(heading);if(window.BibliothecaCoverMiniatures)item.prepend(window.BibliothecaCoverMiniatures.create(w));
+  appendWorkHeading(item,w);if(window.BibliothecaCoverMiniatures)item.prepend(window.BibliothecaCoverMiniatures.create(w));
   const meta=make("p",null,"bws-meta");
   const langs=w.versions.filter(v=>safeReader(v.reader)).map(v=>lang[v.language]||v.language);
   const avail=[...new Set(langs)];
@@ -342,7 +363,7 @@ function mount(parent,data){
  if(model||!parent||!Array.isArray(data?.catalog?.works)||!Array.isArray(data?.registry?.entries))return;
  const index=new Map();
  for(const w of data.catalog.works)index.set(w.id,{
-  id:w.id,title:w.title,author:w.author,genre:w.genre||"",dating:w.dating||"",forms:[w.title,w.id.replaceAll("-"," ")],
+  id:w.id,title:w.title,author:w.author,genre:w.genre||"",dating:w.dating||"",originalLanguage:w.language||w.originalLanguage||"",originalTitle:w.originalTitle||w.titleOriginal||w.tituloOriginal||"",latinTitle:w.latinTitle||"",greekTitle:w.greekTitle||"",originalAliases:Array.isArray(w.originalAliases)?w.originalAliases:[],forms:[w.title,w.id.replaceAll("-"," ")],
   versions:[],facsimile:null,newWork:false
  });
  for(const e of data.registry.entries){
@@ -355,7 +376,7 @@ function mount(parent,data){
      versions:[],facsimile:null,newWork:false,registryOnly:true};
    index.set(e.workId,w);
   }
-  w.forms.push(e.title||"",e.author||"");
+  w.forms.push(e.title||"",e.author||"");if(!w.originalLanguage&&["grc","la"].includes(e.language))w.originalLanguage=e.language;
   // Essential multilingual aliases must work even when the optional alias fetch is delayed.
   const essentials={"homer-iliad":["Ilíada","Iliada","La Ilíada","Iliad","The Iliad","L'Iliade","Ilias"],
    "homer-odyssey":["Odisea","La Odisea","Odyssey","The Odyssey","L'Odyssée"],
