@@ -487,8 +487,8 @@ function load(locus){
    $("#compare-"+id+"-link").href=pdf;
  }
  $("#compare-kurilo-link").href="lector-bilingue.html?edition=recensio-es&locus="+encodeURIComponent(locus);
- document.querySelector(".ab-leaf[lang=la] .ab-edition").textContent=edition==="rose"?"ROSE 1899 · OCR HISTÓRICO NO REVISADO":"RECENSIO V514 · EDITIO ACADEMICA";
- set("#minor-heading",edition==="rose"?"Apparatus criticus · Rose 1899 (OCR)":"Apparatus criticus minor · V514");
+ document.querySelector(".ab-leaf[lang=la] .ab-edition").textContent=edition==="rose"?"ROSE 1899 · EDICIÓN CRÍTICA INDEXADA":"RECENSIO V514 · EDITIO ACADEMICA";
+ set("#minor-heading",edition==="rose"?"Apparatus criticus · Rose 1899":"Apparatus criticus minor · V514");
  const pdf=comp?.loci?.find(v=>v.locus===locus)?.["rose-1899"]?.pdf||"https://archive.org/download/vitruviidearchit00vitr_0/vitruviidearchit00vitr_0.pdf";
  $("#rose-pdf-link").href=pdf;$("#rose-pdf-frame").src=pdf;
  const d=comp?.loci?.find(v=>v.locus===locus),minor=$("#minor");minor.replaceChildren();let count=0;const mode=$("#mode").value;
@@ -530,7 +530,7 @@ function load(locus){
  source("#rose",d?.["rose-1899"],"Rose 1899");source("#krohn",d?.["krohn-1912"],"Krohn 1912");
  $("#reader-link").href="lector-bilingue.html?edition=recensio-es&locus="+encodeURIComponent(locus);
  $("#notes-link").href="inventario-aparato-autoral.html?locus="+encodeURIComponent(locus);
- set("#status","Locus "+format(locus)+" · "+(edition==="rose"?"Rose 1899 (OCR histórico)":"Kurilo V514")+" · "+count+" entradas mostradas en aparato · "+((d?.["rose-1899"]?.entradas||[]).length)+" fragmentos OCR Rose · "+((d?.["krohn-1912"]?.entradas||[]).length)+" fragmentos OCR Krohn. Las lecturas editoriales se documentan por su fuente; la verificación paleográfica se registra solo para las variantes pertinentes.");
+ set("#status","Locus "+format(locus)+" · "+(edition==="rose"?"Rose 1899 · edición indexada":"Kurilo V514")+" · "+count+" entradas mostradas en aparato · "+((d?.["rose-1899"]?.entradas||[]).length)+" fragmentos OCR Rose · "+((d?.["krohn-1912"]?.entradas||[]).length)+" fragmentos OCR Krohn. Las lecturas editoriales se documentan por su fuente; la verificación paleográfica se registra solo para las variantes pertinentes.");
 markComparisonTerms();
 }
 const consultButton=$("#ab-consult-button");
