@@ -232,7 +232,7 @@ const UI_PATTERNS=[
  [/^Buscar en todos los libros o una obra$/,(m,l)=>l==="en"?"Search all books or one work":"Rechercher dans tous les livres ou dans une œuvre"]
 ];
 const UI_SCOPE="main.library";
-const UI_SKIP="script,style,code,pre,blockquote,cite,dfn,abbr,[data-no-ui-i18n],.notranslate,[translate=no],[lang=la],[lang=grc],[lang=he],[lang=arc],.scholarly-text,.passage-text,.reader-transcript,[data-original-language],#results,#classic-results,#bws-results";
+const UI_SKIP="script,style,code,pre,blockquote,cite,dfn,abbr,[data-no-ui-i18n],.notranslate,:not(html)[translate=no],[lang=la],[lang=grc],[lang=he],[lang=arc],.scholarly-text,.passage-text,.reader-transcript,[data-original-language],#results,#classic-results,#bws-results";
 const uiOriginal=new WeakMap(),uiTranslated=new WeakMap();
 function uiText(value,l){
  const valueTrim=value.trim();if(!valueTrim)return null;
