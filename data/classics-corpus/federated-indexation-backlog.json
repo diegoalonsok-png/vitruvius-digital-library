@@ -1,0 +1,999 @@
+{
+  "schema": "vdl-federated-indexation-backlog-v1",
+  "generated": "2026-11-17",
+  "sources": [
+    "data/r2/bibliotheca-inventario-unificado.json",
+    "data/classics-corpus/search-registry.json",
+    "data/classics-corpus/external-index-reconciliation.json",
+    "data/cifras-corpus.json"
+  ],
+  "method": "Diferencia por ID entre inventario federado y registro principal. No confirma disponibilidad HTTP, integridad textual, derechos ni cobertura del índice invertido. El contador de obras indexadas se presenta por separado.",
+  "counts": {
+    "federatedCatalogue": 347,
+    "registeredDistinctWorksInCatalogue": 292,
+    "registeredOutsideFederatedInventory": 3,
+    "missingMainSearchRegistry": 55,
+    "indexedPublishedCounter": 291,
+    "externalHistoricalIndexCandidates": 15,
+    "editorialManifestations": 3,
+    "facsimileSourceNeeded": 35,
+    "sourceDiscoveryNeeded": 2
+  },
+  "missing": [
+    {
+      "id": "seneca-naturales",
+      "author": "Séneca",
+      "title": "Naturales quaestiones",
+      "catalogue": "github",
+      "action": "verify-existing-external-text-and-integrate-search",
+      "evidence": {
+        "historicalExternalIndex": [
+          {
+            "language": "la",
+            "branch": "corpus-originales-latinos-20261108",
+            "textPath": "data/offsite-latin/seneca-naturales-la.json",
+            "sourceUrl": "https://raw.githubusercontent.com/cltk/lat_text_latin_library/master/sen/sen.qn1.txt",
+            "sourceSha256": "d47117f38e5e317dd06dd3d993699d8ea349ac5f61881970c153485443b9380b",
+            "passages": 898
+          }
+        ],
+        "r2FacsimileCount": 0,
+        "r2PdfUrls": []
+      },
+      "status": "not-in-main-search-registry",
+      "caveat": "La presencia de un facsímil o un registro externo histórico no verifica lectura HTTP actual ni indexación en el buscador principal."
+    },
+    {
+      "id": "apollodorus-poliorcetics",
+      "author": "Apolodoro de Damasco (atribución tradicional)",
+      "title": "Πολιορκητικά · Poliorketika",
+      "catalogue": "github",
+      "action": "verify-r2-facsimile-and-find-or-extract-licensed-text",
+      "evidence": {
+        "historicalExternalIndex": [],
+        "r2FacsimileCount": 1,
+        "r2PdfUrls": [
+          "https://libros.vitruvius-digital-library.org/clasicos/pdf/apollodorus-poliorcetics.pdf"
+        ]
+      },
+      "status": "not-in-main-search-registry",
+      "caveat": "La presencia de un facsímil o un registro externo histórico no verifica lectura HTTP actual ni indexación en el buscador principal."
+    },
+    {
+      "id": "athenaeus-mechanicus",
+      "author": "Ateneo Mecánico",
+      "title": "Περὶ μηχανημάτων · De machinis",
+      "catalogue": "github",
+      "action": "verify-r2-facsimile-and-find-or-extract-licensed-text",
+      "evidence": {
+        "historicalExternalIndex": [],
+        "r2FacsimileCount": 1,
+        "r2PdfUrls": [
+          "https://libros.vitruvius-digital-library.org/clasicos/pdf/athenaeus-mechanicus.pdf"
+        ]
+      },
+      "status": "not-in-main-search-registry",
+      "caveat": "La presencia de un facsímil o un registro externo histórico no verifica lectura HTTP actual ni indexación en el buscador principal."
+    },
+    {
+      "id": "vitruvio-v514-pdf",
+      "author": "Vitruvio · edición de Diego A. Kurilo",
+      "title": "De architectura · Recensio V514 (latín–castellano)",
+      "catalogue": "github",
+      "action": "link-existing-edition-to-parent-work-without-new-work-count",
+      "evidence": {
+        "historicalExternalIndex": [],
+        "r2FacsimileCount": 0,
+        "r2PdfUrls": []
+      },
+      "status": "not-in-main-search-registry",
+      "caveat": "La presencia de un facsímil o un registro externo histórico no verifica lectura HTTP actual ni indexación en el buscador principal."
+    },
+    {
+      "id": "vitruvio-v554-pdf",
+      "author": "Vitruvio · edición de Diego A. Kurilo",
+      "title": "De architectura · Recensio V554 (latín–francés)",
+      "catalogue": "github",
+      "action": "link-existing-edition-to-parent-work-without-new-work-count",
+      "evidence": {
+        "historicalExternalIndex": [],
+        "r2FacsimileCount": 0,
+        "r2PdfUrls": []
+      },
+      "status": "not-in-main-search-registry",
+      "caveat": "La presencia de un facsímil o un registro externo histórico no verifica lectura HTTP actual ni indexación en el buscador principal."
+    },
+    {
+      "id": "theory-v297-pdf",
+      "author": "Diego A. Kurilo · sobre Vitruvio",
+      "title": "The Architect of Theory · V297 (inglés)",
+      "catalogue": "github",
+      "action": "link-existing-edition-to-parent-work-without-new-work-count",
+      "evidence": {
+        "historicalExternalIndex": [],
+        "r2FacsimileCount": 0,
+        "r2PdfUrls": []
+      },
+      "status": "not-in-main-search-registry",
+      "caveat": "La presencia de un facsímil o un registro externo histórico no verifica lectura HTTP actual ni indexación en el buscador principal."
+    },
+    {
+      "id": "velleius-historia",
+      "author": "Veleyo Patérculo",
+      "title": "Historia Romana",
+      "catalogue": "github",
+      "action": "verify-existing-external-text-and-integrate-search",
+      "evidence": {
+        "historicalExternalIndex": [
+          {
+            "language": "la",
+            "branch": "corpus-originales-latinos-20261108",
+            "textPath": "data/offsite-latin/velleius-historia-la.json",
+            "sourceUrl": "https://raw.githubusercontent.com/cltk/lat_text_latin_library/master/vell1.txt",
+            "sourceSha256": "7246264ce0932f636a2a54de5589c9b8756abfb2f8eb75fb02cbc8b2316766d2",
+            "passages": 149
+          }
+        ],
+        "r2FacsimileCount": 0,
+        "r2PdfUrls": []
+      },
+      "status": "not-in-main-search-registry",
+      "caveat": "La presencia de un facsímil o un registro externo histórico no verifica lectura HTTP actual ni indexación en el buscador principal."
+    },
+    {
+      "id": "ptolemy-geographia",
+      "author": "Claudio Ptolomeo",
+      "title": "Γεωγραφικὴ ὑφήγησις",
+      "catalogue": "github",
+      "action": "verify-r2-facsimile-and-find-or-extract-licensed-text",
+      "evidence": {
+        "historicalExternalIndex": [],
+        "r2FacsimileCount": 1,
+        "r2PdfUrls": [
+          "https://libros.vitruvius-digital-library.org/clasicos/pdf/ptolemy-geographia.pdf"
+        ]
+      },
+      "status": "not-in-main-search-registry",
+      "caveat": "La presencia de un facsímil o un registro externo histórico no verifica lectura HTTP actual ni indexación en el buscador principal."
+    },
+    {
+      "id": "seneca-de-ira",
+      "author": "Séneca",
+      "title": "De ira",
+      "catalogue": "github",
+      "action": "verify-existing-external-text-and-integrate-search",
+      "evidence": {
+        "historicalExternalIndex": [
+          {
+            "language": "la",
+            "branch": "corpus-originales-latinos-20261108",
+            "textPath": "data/offsite-latin/seneca-de-ira-la.json",
+            "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/stoa0255/stoa010/stoa0255.stoa010.perseus-lat2.xml",
+            "sourceSha256": "56c5ae9446780f91f8f5cce78499c9e8c96f9253089ac6ebf5d131d369b15fe0",
+            "passages": 485
+          }
+        ],
+        "r2FacsimileCount": 0,
+        "r2PdfUrls": []
+      },
+      "status": "not-in-main-search-registry",
+      "caveat": "La presencia de un facsímil o un registro externo histórico no verifica lectura HTTP actual ni indexación en el buscador principal."
+    },
+    {
+      "id": "seneca-de-tranquillitate",
+      "author": "Séneca",
+      "title": "De tranquillitate animi",
+      "catalogue": "github",
+      "action": "verify-existing-external-text-and-integrate-search",
+      "evidence": {
+        "historicalExternalIndex": [
+          {
+            "language": "la",
+            "branch": "corpus-originales-latinos-20261108",
+            "textPath": "data/offsite-latin/seneca-de-tranquillitate-la.json",
+            "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/stoa0255/stoa013/stoa0255.stoa013.perseus-lat2.xml",
+            "sourceSha256": "d3485fc0651115f48fc541b459743bc7875406f3766e96861b07b416509667e0",
+            "passages": 139
+          }
+        ],
+        "r2FacsimileCount": 0,
+        "r2PdfUrls": []
+      },
+      "status": "not-in-main-search-registry",
+      "caveat": "La presencia de un facsímil o un registro externo histórico no verifica lectura HTTP actual ni indexación en el buscador principal."
+    },
+    {
+      "id": "apuleius-de-deo-socratis",
+      "author": "Apuleyo",
+      "title": "De deo Socratis",
+      "catalogue": "github",
+      "action": "verify-existing-external-text-and-integrate-search",
+      "evidence": {
+        "historicalExternalIndex": [
+          {
+            "language": "la",
+            "branch": "corpus-originales-latinos-20261108",
+            "textPath": "data/offsite-latin/apuleius-de-deo-socratis-la.json",
+            "sourceUrl": "https://raw.githubusercontent.com/cltk/lat_text_latin_library/master/apuleius/apuleius.deosocratis.txt",
+            "sourceSha256": "0978ac37a5a1f93036ebe7fa8e223df8b4dd513ba515d97a8036c5cedce9ce99",
+            "passages": 23
+          }
+        ],
+        "r2FacsimileCount": 0,
+        "r2PdfUrls": []
+      },
+      "status": "not-in-main-search-registry",
+      "caveat": "La presencia de un facsímil o un registro externo histórico no verifica lectura HTTP actual ni indexación en el buscador principal."
+    },
+    {
+      "id": "macrobius-saturnalia",
+      "author": "Macrobio",
+      "title": "Saturnalia",
+      "catalogue": "github",
+      "action": "verify-existing-external-text-and-integrate-search",
+      "evidence": {
+        "historicalExternalIndex": [
+          {
+            "language": "la",
+            "branch": "corpus-originales-latinos-20261108",
+            "textPath": "data/offsite-latin/macrobius-saturnalia-la.json",
+            "sourceUrl": "https://raw.githubusercontent.com/cltk/latin_text_lacus_curtius/master/html/Macrobius/Saturnalia/1*.html",
+            "sourceSha256": "326a6087ac22bacec4d2a4425aec68f1c57a2273a3c024fa59c3b5e036328f73",
+            "passages": 2106
+          }
+        ],
+        "r2FacsimileCount": 0,
+        "r2PdfUrls": []
+      },
+      "status": "not-in-main-search-registry",
+      "caveat": "La presencia de un facsímil o un registro externo histórico no verifica lectura HTTP actual ni indexación en el buscador principal."
+    },
+    {
+      "id": "ennius-annales",
+      "author": "Ennio",
+      "title": "Annales (fragmenta)",
+      "catalogue": "github",
+      "action": "verify-existing-external-text-and-integrate-search",
+      "evidence": {
+        "historicalExternalIndex": [
+          {
+            "language": "la",
+            "branch": "corpus-originales-latinos-20261108",
+            "textPath": "data/offsite-latin/ennius-annales-la.json",
+            "sourceUrl": "https://raw.githubusercontent.com/cltk/lat_text_latin_library/master/enn.txt",
+            "sourceSha256": "8321f3a0a2e34654750feeac679de6e5680cd8dcd16200e286ac0b1c50b58bd4",
+            "passages": 31
+          }
+        ],
+        "r2FacsimileCount": 0,
+        "r2PdfUrls": []
+      },
+      "status": "not-in-main-search-registry",
+      "caveat": "La presencia de un facsímil o un registro externo histórico no verifica lectura HTTP actual ni indexación en el buscador principal."
+    },
+    {
+      "id": "accius-fragmenta",
+      "author": "Accio",
+      "title": "Tragoediae (fragmenta)",
+      "catalogue": "github",
+      "action": "verify-r2-facsimile-and-find-or-extract-licensed-text",
+      "evidence": {
+        "historicalExternalIndex": [],
+        "r2FacsimileCount": 1,
+        "r2PdfUrls": [
+          "https://libros.vitruvius-digital-library.org/clasicos/pdf/accius-fragmenta.pdf"
+        ]
+      },
+      "status": "not-in-main-search-registry",
+      "caveat": "La presencia de un facsímil o un registro externo histórico no verifica lectura HTTP actual ni indexación en el buscador principal."
+    },
+    {
+      "id": "procopius-aedificiis",
+      "author": "Procopio de Cesarea",
+      "title": "Περὶ κτισμάτων",
+      "catalogue": "github",
+      "action": "locate-and-verify-primary-source",
+      "evidence": {
+        "historicalExternalIndex": [],
+        "r2FacsimileCount": 0,
+        "r2PdfUrls": []
+      },
+      "status": "not-in-main-search-registry",
+      "caveat": "La presencia de un facsímil o un registro externo histórico no verifica lectura HTTP actual ni indexación en el buscador principal."
+    },
+    {
+      "id": "isidore-etymologiae",
+      "author": "Isidoro de Sevilla",
+      "title": "Etymologiae",
+      "catalogue": "github",
+      "action": "verify-existing-external-text-and-integrate-search",
+      "evidence": {
+        "historicalExternalIndex": [
+          {
+            "language": "la",
+            "branch": "corpus-originales-latinos-20261108",
+            "textPath": "data/offsite-latin/isidore-etymologiae-la.json",
+            "sourceUrl": "https://raw.githubusercontent.com/cltk/lat_text_latin_library/master/isidore/1.txt",
+            "sourceSha256": "1185d5c24551196f9195708560decc1c4aea0c9a69f2716aadd90f4499e925e4",
+            "passages": 1692
+          }
+        ],
+        "r2FacsimileCount": 0,
+        "r2PdfUrls": []
+      },
+      "status": "not-in-main-search-registry",
+      "caveat": "La presencia de un facsímil o un registro externo histórico no verifica lectura HTTP actual ni indexación en el buscador principal."
+    },
+    {
+      "id": "censorinus-die-natali",
+      "author": "Censorino",
+      "title": "De die natali",
+      "catalogue": "github",
+      "action": "verify-existing-external-text-and-integrate-search",
+      "evidence": {
+        "historicalExternalIndex": [
+          {
+            "language": "la",
+            "branch": "corpus-originales-latinos-20261108",
+            "textPath": "data/offsite-latin/censorinus-die-natali-la.json",
+            "sourceUrl": "https://raw.githubusercontent.com/cltk/lat_text_latin_library/master/censorinus.txt",
+            "sourceSha256": "12609a8a223bc5201f48e9e510993bb1066b85b0bce2a70a7b8ef8b8f4247e96",
+            "passages": 26
+          }
+        ],
+        "r2FacsimileCount": 0,
+        "r2PdfUrls": []
+      },
+      "status": "not-in-main-search-registry",
+      "caveat": "La presencia de un facsímil o un registro externo histórico no verifica lectura HTTP actual ni indexación en el buscador principal."
+    },
+    {
+      "id": "philo-belopoeica",
+      "author": "Filón de Bizancio",
+      "title": "Βελοποιικά · Belopoeica (Mechanike syntaxis IV)",
+      "catalogue": "github",
+      "action": "verify-r2-facsimile-and-find-or-extract-licensed-text",
+      "evidence": {
+        "historicalExternalIndex": [],
+        "r2FacsimileCount": 1,
+        "r2PdfUrls": [
+          "https://libros.vitruvius-digital-library.org/clasicos/pdf/philo-belopoeica.pdf"
+        ]
+      },
+      "status": "not-in-main-search-registry",
+      "caveat": "La presencia de un facsímil o un registro externo histórico no verifica lectura HTTP actual ni indexación en el buscador principal."
+    },
+    {
+      "id": "biton-kataskeuai",
+      "author": "Bitón",
+      "title": "Κατασκευαὶ πολεμικῶν ὀργάνων καὶ καταπαλτικῶν",
+      "catalogue": "github",
+      "action": "verify-r2-facsimile-and-find-or-extract-licensed-text",
+      "evidence": {
+        "historicalExternalIndex": [],
+        "r2FacsimileCount": 1,
+        "r2PdfUrls": [
+          "https://libros.vitruvius-digital-library.org/clasicos/pdf/biton-kataskeuai.pdf"
+        ]
+      },
+      "status": "not-in-main-search-registry",
+      "caveat": "La presencia de un facsímil o un registro externo histórico no verifica lectura HTTP actual ni indexación en el buscador principal."
+    },
+    {
+      "id": "geminus-isagoge",
+      "author": "Gémino",
+      "title": "Εἰσαγωγὴ εἰς τὰ φαινόμενα · Elementa astronomiae",
+      "catalogue": "github",
+      "action": "verify-existing-external-text-and-integrate-search",
+      "evidence": {
+        "historicalExternalIndex": [
+          {
+            "language": "grc",
+            "branch": "corpus-originales-griegos-20261108",
+            "textPath": "data/offsite-originals/geminus-isagoge-grc.json",
+            "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg1383/tlg001/tlg1383.tlg001.1st1K-grc1.xml",
+            "sourceSha256": "4f515fbe2960e7fcd4102a6c5deb9c7e538f615909693863afc33eadc4e933dd",
+            "passages": 524
+          }
+        ],
+        "r2FacsimileCount": 0,
+        "r2PdfUrls": []
+      },
+      "status": "not-in-main-search-registry",
+      "caveat": "La presencia de un facsímil o un registro externo histórico no verifica lectura HTTP actual ni indexación en el buscador principal."
+    },
+    {
+      "id": "aristarchus-magnitudines",
+      "author": "Aristarco de Samos",
+      "title": "Περὶ μεγεθῶν καὶ ἀποστημάτων ἡλίου καὶ σελήνης",
+      "catalogue": "github",
+      "action": "verify-existing-external-text-and-integrate-search",
+      "evidence": {
+        "historicalExternalIndex": [
+          {
+            "language": "grc",
+            "branch": "corpus-originales-griegos-20261108",
+            "textPath": "data/offsite-originals/aristarchus-magnitudines-grc.json",
+            "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg1181/tlg001/tlg1181.tlg001.1st1K-grc1.xml",
+            "sourceSha256": "b313dce98868284a9265faac43c7ae326f7951a4b1e556dedd0f6731a1735eb8",
+            "passages": 57
+          }
+        ],
+        "r2FacsimileCount": 0,
+        "r2PdfUrls": []
+      },
+      "status": "not-in-main-search-registry",
+      "caveat": "La presencia de un facsímil o un registro externo histórico no verifica lectura HTTP actual ni indexación en el buscador principal."
+    },
+    {
+      "id": "apollonius-conica",
+      "author": "Apolonio de Perge",
+      "title": "Κωνικά · Conica",
+      "catalogue": "github",
+      "action": "verify-existing-external-text-and-integrate-search",
+      "evidence": {
+        "historicalExternalIndex": [
+          {
+            "language": "grc",
+            "branch": "corpus-originales-griegos-20261108",
+            "textPath": "data/offsite-originals/apollonius-conica-grc.json",
+            "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0550/tlg001/tlg0550.tlg001.1st1K-grc1.xml",
+            "sourceSha256": "6d6d5bb17dea43ec238e777fb413af56137e49dcd76e8e02dbc515ae0a5db0eb",
+            "passages": 178
+          }
+        ],
+        "r2FacsimileCount": 0,
+        "r2PdfUrls": []
+      },
+      "status": "not-in-main-search-registry",
+      "caveat": "La presencia de un facsímil o un registro externo histórico no verifica lectura HTTP actual ni indexación en el buscador principal."
+    },
+    {
+      "id": "pappus-synagoge",
+      "author": "Papo de Alejandría",
+      "title": "Συναγωγή · Collectio (libro VIII: mecánica)",
+      "catalogue": "github",
+      "action": "verify-existing-external-text-and-integrate-search",
+      "evidence": {
+        "historicalExternalIndex": [
+          {
+            "language": "grc",
+            "branch": "corpus-originales-griegos-20261108",
+            "textPath": "data/offsite-originals/pappus-synagoge-grc.json",
+            "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg2032/tlg001/tlg2032.tlg001.1st1K-grc1.xml",
+            "sourceSha256": "97c19de67ffa6f15ca01bb0f47eae655354d4e1e3bfb7d9fb8837f572d40fe78",
+            "passages": 546
+          }
+        ],
+        "r2FacsimileCount": 0,
+        "r2PdfUrls": []
+      },
+      "status": "not-in-main-search-registry",
+      "caveat": "La presencia de un facsímil o un registro externo histórico no verifica lectura HTTP actual ni indexación en el buscador principal."
+    },
+    {
+      "id": "hyginus-gromaticus",
+      "author": "Higino Gromático",
+      "title": "Constitutio limitum",
+      "catalogue": "github",
+      "action": "verify-r2-facsimile-and-find-or-extract-licensed-text",
+      "evidence": {
+        "historicalExternalIndex": [],
+        "r2FacsimileCount": 1,
+        "r2PdfUrls": [
+          "https://libros.vitruvius-digital-library.org/clasicos/pdf/hyginus-gromaticus.pdf"
+        ]
+      },
+      "status": "not-in-main-search-registry",
+      "caveat": "La presencia de un facsímil o un registro externo histórico no verifica lectura HTTP actual ni indexación en el buscador principal."
+    },
+    {
+      "id": "frontinus-gromatica",
+      "author": "Frontino",
+      "title": "Opuscula gromatica (De agrorum qualitate, De controversiis, De limitibus)",
+      "catalogue": "github",
+      "action": "verify-existing-external-text-and-integrate-search",
+      "evidence": {
+        "historicalExternalIndex": [
+          {
+            "language": "la",
+            "branch": "corpus-originales-latinos-20261108",
+            "textPath": "data/offsite-latin/frontinus-gromatica-la.json",
+            "sourceUrl": "https://raw.githubusercontent.com/cltk/lat_text_latin_library/master/frontinus/qualitate.txt",
+            "sourceSha256": "12365c822ecd1230de53d0c2cbb7c1d9142ff7b9cf01803417056a44253c8ee2",
+            "passages": 16
+          }
+        ],
+        "r2FacsimileCount": 0,
+        "r2PdfUrls": []
+      },
+      "status": "not-in-main-search-registry",
+      "caveat": "La presencia de un facsímil o un registro externo histórico no verifica lectura HTTP actual ni indexación en el buscador principal."
+    },
+    {
+      "id": "siculus-flaccus",
+      "author": "Sículo Flaco",
+      "title": "De condicionibus agrorum",
+      "catalogue": "github",
+      "action": "verify-existing-external-text-and-integrate-search",
+      "evidence": {
+        "historicalExternalIndex": [
+          {
+            "language": "la",
+            "branch": "corpus-originales-latinos-20261108",
+            "textPath": "data/offsite-latin/siculus-flaccus-la.json",
+            "sourceUrl": "https://la.wikisource.org/wiki/De_condicionibus_agrorum",
+            "sourceSha256": "47467398bd7b44b32ea84360ef23b231e2cf6f321daf6b2d0988f1beeca14e91",
+            "passages": 31
+          }
+        ],
+        "r2FacsimileCount": 0,
+        "r2PdfUrls": []
+      },
+      "status": "not-in-main-search-registry",
+      "caveat": "La presencia de un facsímil o un registro externo histórico no verifica lectura HTTP actual ni indexación en el buscador principal."
+    },
+    {
+      "id": "lyra-graeca",
+      "author": "Poetas líricos griegos",
+      "title": "Lyra Graeca · Líricos monódicos (Safo, Alceo, Anacreonte y otros)",
+      "catalogue": "github",
+      "action": "verify-r2-facsimile-and-find-or-extract-licensed-text",
+      "evidence": {
+        "historicalExternalIndex": [],
+        "r2FacsimileCount": 1,
+        "r2PdfUrls": [
+          "https://libros.vitruvius-digital-library.org/clasicos/pdf/lyra-graeca.pdf"
+        ]
+      },
+      "status": "not-in-main-search-registry",
+      "caveat": "La presencia de un facsímil o un registro externo histórico no verifica lectura HTTP actual ni indexación en el buscador principal."
+    },
+    {
+      "id": "higino-fabulas",
+      "author": "Higino",
+      "title": "Fabulae · Astronomica poetica",
+      "catalogue": "github",
+      "action": "verify-r2-facsimile-and-find-or-extract-licensed-text",
+      "evidence": {
+        "historicalExternalIndex": [],
+        "r2FacsimileCount": 1,
+        "r2PdfUrls": [
+          "https://libros.vitruvius-digital-library.org/clasicos/pdf/higino-fabulas.pdf"
+        ]
+      },
+      "status": "not-in-main-search-registry",
+      "caveat": "La presencia de un facsímil o un registro externo histórico no verifica lectura HTTP actual ni indexación en el buscador principal."
+    },
+    {
+      "id": "manilio-astronomica",
+      "author": "Manilio",
+      "title": "Astronomica",
+      "catalogue": "github",
+      "action": "verify-r2-facsimile-and-find-or-extract-licensed-text",
+      "evidence": {
+        "historicalExternalIndex": [],
+        "r2FacsimileCount": 1,
+        "r2PdfUrls": [
+          "https://libros.vitruvius-digital-library.org/clasicos/pdf/manilio-astronomica.pdf"
+        ]
+      },
+      "status": "not-in-main-search-registry",
+      "caveat": "La presencia de un facsímil o un registro externo histórico no verifica lectura HTTP actual ni indexación en el buscador principal."
+    },
+    {
+      "id": "aristoteles-meteorologica",
+      "author": "Aristóteles",
+      "title": "Μετεωρολογικά · Meteorologica",
+      "catalogue": "github",
+      "action": "verify-r2-facsimile-and-find-or-extract-licensed-text",
+      "evidence": {
+        "historicalExternalIndex": [],
+        "r2FacsimileCount": 1,
+        "r2PdfUrls": [
+          "https://libros.vitruvius-digital-library.org/clasicos/pdf/aristoteles-meteorologica.pdf"
+        ]
+      },
+      "status": "not-in-main-search-registry",
+      "caveat": "La presencia de un facsímil o un registro externo histórico no verifica lectura HTTP actual ni indexación en el buscador principal."
+    },
+    {
+      "id": "galeno-opera-kuhn",
+      "author": "Galeno",
+      "title": "Claudii Galeni opera omnia · Tomus XIV (ed. Kühn, Leipzig 1827)",
+      "catalogue": "github",
+      "action": "verify-r2-facsimile-and-find-or-extract-licensed-text",
+      "evidence": {
+        "historicalExternalIndex": [],
+        "r2FacsimileCount": 1,
+        "r2PdfUrls": [
+          "https://libros.vitruvius-digital-library.org/clasicos/pdf/galeno-opera-kuhn.pdf"
+        ]
+      },
+      "status": "not-in-main-search-registry",
+      "caveat": "La presencia de un facsímil o un registro externo histórico no verifica lectura HTTP actual ni indexación en el buscador principal."
+    },
+    {
+      "id": "galeno-kuhn-vol01",
+      "author": "Galeno",
+      "title": "Claudii Galeni opera omnia · Tomus XIV (ed. Kühn, Leipzig 1827)",
+      "catalogue": "github",
+      "action": "verify-r2-facsimile-and-find-or-extract-licensed-text",
+      "evidence": {
+        "historicalExternalIndex": [],
+        "r2FacsimileCount": 1,
+        "r2PdfUrls": [
+          "https://libros.vitruvius-digital-library.org/clasicos/pdf/galeno-kuhn-vol01.pdf"
+        ]
+      },
+      "status": "not-in-main-search-registry",
+      "caveat": "La presencia de un facsímil o un registro externo histórico no verifica lectura HTTP actual ni indexación en el buscador principal."
+    },
+    {
+      "id": "galeno-kuhn-vol19",
+      "author": "Galeno",
+      "title": "Opera omnia, vol. XIX (ed. Kühn, Leipzig 1830)",
+      "catalogue": "github",
+      "action": "verify-r2-facsimile-and-find-or-extract-licensed-text",
+      "evidence": {
+        "historicalExternalIndex": [],
+        "r2FacsimileCount": 1,
+        "r2PdfUrls": [
+          "https://libros.vitruvius-digital-library.org/clasicos/pdf/galeno-kuhn-vol19.pdf"
+        ]
+      },
+      "status": "not-in-main-search-registry",
+      "caveat": "La presencia de un facsímil o un registro externo histórico no verifica lectura HTTP actual ni indexación en el buscador principal."
+    },
+    {
+      "id": "galeno-scripta-minora",
+      "author": "Galeno",
+      "title": "Scripta minora (ed. Marquardt, Müller y Helmreich, Leipzig 1884–1893)",
+      "catalogue": "github",
+      "action": "verify-r2-facsimile-and-find-or-extract-licensed-text",
+      "evidence": {
+        "historicalExternalIndex": [],
+        "r2FacsimileCount": 1,
+        "r2PdfUrls": [
+          "https://libros.vitruvius-digital-library.org/clasicos/pdf/galeno-scripta-minora.pdf"
+        ]
+      },
+      "status": "not-in-main-search-registry",
+      "caveat": "La presencia de un facsímil o un registro externo histórico no verifica lectura HTTP actual ni indexación en el buscador principal."
+    },
+    {
+      "id": "jamblico-vida-pitagorica",
+      "author": "Jámblico",
+      "title": "Περὶ τοῦ Πυθαγορείου βίου · De vita pythagorica",
+      "catalogue": "github",
+      "action": "verify-r2-facsimile-and-find-or-extract-licensed-text",
+      "evidence": {
+        "historicalExternalIndex": [],
+        "r2FacsimileCount": 1,
+        "r2PdfUrls": [
+          "https://libros.vitruvius-digital-library.org/clasicos/pdf/jamblico-vida-pitagorica.pdf"
+        ]
+      },
+      "status": "not-in-main-search-registry",
+      "caveat": "La presencia de un facsímil o un registro externo histórico no verifica lectura HTTP actual ni indexación en el buscador principal."
+    },
+    {
+      "id": "proclo-comentario-euclides",
+      "author": "Proclo",
+      "title": "Εἰς τὸ πρῶτον τῶν Εὐκλείδου Στοιχείων · In primum Euclidis Elementorum librum commentarii",
+      "catalogue": "github",
+      "action": "verify-r2-facsimile-and-find-or-extract-licensed-text",
+      "evidence": {
+        "historicalExternalIndex": [],
+        "r2FacsimileCount": 1,
+        "r2PdfUrls": [
+          "https://libros.vitruvius-digital-library.org/clasicos/pdf/proclo-comentario-euclides.pdf"
+        ]
+      },
+      "status": "not-in-main-search-registry",
+      "caveat": "La presencia de un facsímil o un registro externo histórico no verifica lectura HTTP actual ni indexación en el buscador principal."
+    },
+    {
+      "id": "sexto-empirico-obras",
+      "author": "Sexto Empírico",
+      "title": "Πρὸς μαθηματικούς · Adversus mathematicos y Esbozos pirrónicos",
+      "catalogue": "github",
+      "action": "verify-r2-facsimile-and-find-or-extract-licensed-text",
+      "evidence": {
+        "historicalExternalIndex": [],
+        "r2FacsimileCount": 1,
+        "r2PdfUrls": [
+          "https://libros.vitruvius-digital-library.org/clasicos/pdf/sexto-empirico-obras.pdf"
+        ]
+      },
+      "status": "not-in-main-search-registry",
+      "caveat": "La presencia de un facsímil o un registro externo histórico no verifica lectura HTTP actual ni indexación en el buscador principal."
+    },
+    {
+      "id": "teon-esmirna-expositio",
+      "author": "Teón de Esmirna",
+      "title": "Τὰ κατὰ μαθηματικὴν χρήσιμα εἰς τὴν Πλάτωνος ἀνάγνωσιν · Expositio rerum mathematicarum",
+      "catalogue": "github",
+      "action": "verify-r2-facsimile-and-find-or-extract-licensed-text",
+      "evidence": {
+        "historicalExternalIndex": [],
+        "r2FacsimileCount": 1,
+        "r2PdfUrls": [
+          "https://libros.vitruvius-digital-library.org/clasicos/pdf/teon-esmirna-expositio.pdf"
+        ]
+      },
+      "status": "not-in-main-search-registry",
+      "caveat": "La presencia de un facsímil o un registro externo histórico no verifica lectura HTTP actual ni indexación en el buscador principal."
+    },
+    {
+      "id": "anthologia-latina",
+      "author": "Antología latina",
+      "title": "Anthologia Latina",
+      "catalogue": "github",
+      "action": "verify-r2-facsimile-and-find-or-extract-licensed-text",
+      "evidence": {
+        "historicalExternalIndex": [],
+        "r2FacsimileCount": 1,
+        "r2PdfUrls": [
+          "https://libros.vitruvius-digital-library.org/clasicos/pdf/anthologia-latina.pdf"
+        ]
+      },
+      "status": "not-in-main-search-registry",
+      "caveat": "La presencia de un facsímil o un registro externo histórico no verifica lectura HTTP actual ni indexación en el buscador principal."
+    },
+    {
+      "id": "casiodoro-variae",
+      "author": "Casiodoro",
+      "title": "Variae",
+      "catalogue": "github",
+      "action": "verify-r2-facsimile-and-find-or-extract-licensed-text",
+      "evidence": {
+        "historicalExternalIndex": [],
+        "r2FacsimileCount": 1,
+        "r2PdfUrls": [
+          "https://libros.vitruvius-digital-library.org/clasicos/pdf/casiodoro-variae.pdf"
+        ]
+      },
+      "status": "not-in-main-search-registry",
+      "caveat": "La presencia de un facsímil o un registro externo histórico no verifica lectura HTTP actual ni indexación en el buscador principal."
+    },
+    {
+      "id": "festo-verborum-significatu",
+      "author": "Festo (y Verrio Flaco)",
+      "title": "De verborum significatu",
+      "catalogue": "github",
+      "action": "verify-r2-facsimile-and-find-or-extract-licensed-text",
+      "evidence": {
+        "historicalExternalIndex": [],
+        "r2FacsimileCount": 1,
+        "r2PdfUrls": [
+          "https://libros.vitruvius-digital-library.org/clasicos/pdf/festo-verborum-significatu.pdf"
+        ]
+      },
+      "status": "not-in-main-search-registry",
+      "caveat": "La presencia de un facsímil o un registro externo histórico no verifica lectura HTTP actual ni indexación en el buscador principal."
+    },
+    {
+      "id": "marciano-capela-nuptiis",
+      "author": "Marciano Capela",
+      "title": "De nuptiis Philologiae et Mercurii",
+      "catalogue": "github",
+      "action": "verify-r2-facsimile-and-find-or-extract-licensed-text",
+      "evidence": {
+        "historicalExternalIndex": [],
+        "r2FacsimileCount": 1,
+        "r2PdfUrls": [
+          "https://libros.vitruvius-digital-library.org/clasicos/pdf/marciano-capela-nuptiis.pdf"
+        ]
+      },
+      "status": "not-in-main-search-registry",
+      "caveat": "La presencia de un facsímil o un registro externo histórico no verifica lectura HTTP actual ni indexación en el buscador principal."
+    },
+    {
+      "id": "nonio-marcelo-doctrina",
+      "author": "Nonio Marcelo",
+      "title": "De compendiosa doctrina",
+      "catalogue": "github",
+      "action": "verify-r2-facsimile-and-find-or-extract-licensed-text",
+      "evidence": {
+        "historicalExternalIndex": [],
+        "r2FacsimileCount": 1,
+        "r2PdfUrls": [
+          "https://libros.vitruvius-digital-library.org/clasicos/pdf/nonio-marcelo-doctrina.pdf"
+        ]
+      },
+      "status": "not-in-main-search-registry",
+      "caveat": "La presencia de un facsímil o un registro externo histórico no verifica lectura HTTP actual ni indexación en el buscador principal."
+    },
+    {
+      "id": "paladio-opus-agriculturae",
+      "author": "Paladio",
+      "title": "Opus agriculturae",
+      "catalogue": "github",
+      "action": "verify-r2-facsimile-and-find-or-extract-licensed-text",
+      "evidence": {
+        "historicalExternalIndex": [],
+        "r2FacsimileCount": 1,
+        "r2PdfUrls": [
+          "https://libros.vitruvius-digital-library.org/clasicos/pdf/paladio-opus-agriculturae.pdf"
+        ]
+      },
+      "status": "not-in-main-search-registry",
+      "caveat": "La presencia de un facsímil o un registro externo histórico no verifica lectura HTTP actual ni indexación en el buscador principal."
+    },
+    {
+      "id": "sappho-fragmenta",
+      "author": "Safo",
+      "title": "Fragmenta · Fragmentos",
+      "catalogue": "github-supplementary",
+      "action": "locate-and-verify-primary-source",
+      "evidence": {
+        "historicalExternalIndex": [],
+        "r2FacsimileCount": 0,
+        "r2PdfUrls": []
+      },
+      "status": "not-in-main-search-registry",
+      "caveat": "La presencia de un facsímil o un registro externo histórico no verifica lectura HTTP actual ni indexación en el buscador principal."
+    },
+    {
+      "id": "palladio-quattro-libri",
+      "author": "Andrea Palladio",
+      "title": "I quattro libri dell'architettura",
+      "catalogue": "r2-additional-work",
+      "action": "verify-r2-facsimile-and-find-or-extract-licensed-text",
+      "evidence": {
+        "historicalExternalIndex": [],
+        "r2FacsimileCount": 1,
+        "r2PdfUrls": [
+          "https://libros.vitruvius-digital-library.org/clasicos/pdf/palladio-quattro-libri.pdf"
+        ]
+      },
+      "status": "not-in-main-search-registry",
+      "caveat": "La presencia de un facsímil o un registro externo histórico no verifica lectura HTTP actual ni indexación en el buscador principal."
+    },
+    {
+      "id": "vignola-cinque-ordini",
+      "author": "Giacomo Barozzi da Vignola",
+      "title": "Regola delli cinque ordini d’architettura",
+      "catalogue": "r2-additional-work",
+      "action": "verify-r2-facsimile-and-find-or-extract-licensed-text",
+      "evidence": {
+        "historicalExternalIndex": [],
+        "r2FacsimileCount": 1,
+        "r2PdfUrls": [
+          "https://libros.vitruvius-digital-library.org/clasicos/pdf/vignola-cinque-ordini.pdf"
+        ]
+      },
+      "status": "not-in-main-search-registry",
+      "caveat": "La presencia de un facsímil o un registro externo histórico no verifica lectura HTTP actual ni indexación en el buscador principal."
+    },
+    {
+      "id": "vasari-vite",
+      "author": "Giorgio Vasari",
+      "title": "Le vite de’ più eccellenti pittori, scultori e architettori",
+      "catalogue": "r2-additional-work",
+      "action": "verify-r2-facsimile-and-find-or-extract-licensed-text",
+      "evidence": {
+        "historicalExternalIndex": [],
+        "r2FacsimileCount": 1,
+        "r2PdfUrls": [
+          "https://libros.vitruvius-digital-library.org/clasicos/pdf/vasari-vite.pdf"
+        ]
+      },
+      "status": "not-in-main-search-registry",
+      "caveat": "La presencia de un facsímil o un registro externo histórico no verifica lectura HTTP actual ni indexación en el buscador principal."
+    },
+    {
+      "id": "serlio-architettura",
+      "author": "Sebastiano Serlio",
+      "title": "Regole generali di architettura (Serlio) — edición individual",
+      "catalogue": "r2-additional-work",
+      "action": "verify-r2-facsimile-and-find-or-extract-licensed-text",
+      "evidence": {
+        "historicalExternalIndex": [],
+        "r2FacsimileCount": 1,
+        "r2PdfUrls": [
+          "https://libros.vitruvius-digital-library.org/clasicos/pdf/serlio-architettura.pdf"
+        ]
+      },
+      "status": "not-in-main-search-registry",
+      "caveat": "La presencia de un facsímil o un registro externo histórico no verifica lectura HTTP actual ni indexación en el buscador principal."
+    },
+    {
+      "id": "scamozzi-idea-architettura",
+      "author": "Vincenzo Scamozzi",
+      "title": "L'idea della architettura universale",
+      "catalogue": "r2-additional-work",
+      "action": "verify-r2-facsimile-and-find-or-extract-licensed-text",
+      "evidence": {
+        "historicalExternalIndex": [],
+        "r2FacsimileCount": 1,
+        "r2PdfUrls": [
+          "https://libros.vitruvius-digital-library.org/clasicos/pdf/scamozzi-idea-architettura.pdf"
+        ]
+      },
+      "status": "not-in-main-search-registry",
+      "caveat": "La presencia de un facsímil o un registro externo histórico no verifica lectura HTTP actual ni indexación en el buscador principal."
+    },
+    {
+      "id": "beda-de-temporum-ratione",
+      "author": "Beda el Venerable",
+      "title": "De temporum ratione",
+      "catalogue": "r2-additional-work",
+      "action": "verify-r2-facsimile-and-find-or-extract-licensed-text",
+      "evidence": {
+        "historicalExternalIndex": [],
+        "r2FacsimileCount": 1,
+        "r2PdfUrls": [
+          "https://libros.vitruvius-digital-library.org/clasicos/pdf/beda-de-temporum-ratione.pdf"
+        ]
+      },
+      "status": "not-in-main-search-registry",
+      "caveat": "La presencia de un facsímil o un registro externo histórico no verifica lectura HTTP actual ni indexación en el buscador principal."
+    },
+    {
+      "id": "petrarca-africa",
+      "author": "Francesco Petrarca",
+      "title": "Africa",
+      "catalogue": "r2-additional-work",
+      "action": "verify-r2-facsimile-and-find-or-extract-licensed-text",
+      "evidence": {
+        "historicalExternalIndex": [],
+        "r2FacsimileCount": 1,
+        "r2PdfUrls": [
+          "https://libros.vitruvius-digital-library.org/clasicos/pdf/petrarca-africa.pdf"
+        ]
+      },
+      "status": "not-in-main-search-registry",
+      "caveat": "La presencia de un facsímil o un registro externo histórico no verifica lectura HTTP actual ni indexación en el buscador principal."
+    },
+    {
+      "id": "petrarca-secretum",
+      "author": "Francesco Petrarca",
+      "title": "Secretum de Petrarca — texto dentro de volumen colectivo",
+      "catalogue": "r2-additional-work",
+      "action": "verify-r2-facsimile-and-find-or-extract-licensed-text",
+      "evidence": {
+        "historicalExternalIndex": [],
+        "r2FacsimileCount": 1,
+        "r2PdfUrls": [
+          "https://libros.vitruvius-digital-library.org/clasicos/pdf/petrarca-secretum.pdf"
+        ]
+      },
+      "status": "not-in-main-search-registry",
+      "caveat": "La presencia de un facsímil o un registro externo histórico no verifica lectura HTTP actual ni indexación en el buscador principal."
+    },
+    {
+      "id": "isidoro-etymologiae",
+      "author": "Isidoro de Sevilla",
+      "title": "Etymologiae / Origines de Isidoro — volumen I",
+      "catalogue": "r2-additional-work",
+      "action": "verify-r2-facsimile-and-find-or-extract-licensed-text",
+      "evidence": {
+        "historicalExternalIndex": [],
+        "r2FacsimileCount": 1,
+        "r2PdfUrls": [
+          "https://libros.vitruvius-digital-library.org/clasicos/pdf/isidoro-etymologiae.pdf"
+        ]
+      },
+      "status": "not-in-main-search-registry",
+      "caveat": "La presencia de un facsímil o un registro externo histórico no verifica lectura HTTP actual ni indexación en el buscador principal."
+    },
+    {
+      "id": "alberti-de-re-aedificatoria",
+      "author": "Leon Battista Alberti",
+      "title": "De re aedificatoria",
+      "catalogue": "r2-additional-work",
+      "action": "verify-r2-facsimile-and-find-or-extract-licensed-text",
+      "evidence": {
+        "historicalExternalIndex": [],
+        "r2FacsimileCount": 1,
+        "r2PdfUrls": [
+          "https://libros.vitruvius-digital-library.org/clasicos/pdf/alberti-de-re-aedificatoria.pdf"
+        ]
+      },
+      "status": "not-in-main-search-registry",
+      "caveat": "La presencia de un facsímil o un registro externo histórico no verifica lectura HTTP actual ni indexación en el buscador principal."
+    }
+  ]
+}
