@@ -9,6 +9,7 @@ on:
       - 'data/bibliotheca-expansion-publicada-2026-11-16.json'
       - 'scripts/build-classics-lexical-index.mjs'
       - 'scripts/refresh-classics-public-counts.mjs'
+      - 'scripts/check-classics-new-index.mjs'
       - '.github/workflows/classics-index-refresh.yml'
   workflow_dispatch:
 
@@ -34,6 +35,8 @@ jobs:
         run: node --max-old-space-size=6144 scripts/build-classics-lexical-index.mjs
       - name: Derive counters and validate new texts
         run: node scripts/refresh-classics-public-counts.mjs
+      - name: Check new works are indexed at source-locus granularity
+        run: node scripts/check-classics-new-index.mjs
       - name: Commit regenerated indexes without editing source books
         run: |
           git config user.name "github-actions[bot]"
