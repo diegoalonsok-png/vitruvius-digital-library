@@ -977,6 +977,22 @@ button.addEventListener("click",async()=>{
 <strong>© 2026 Editorial Sophia Lux · Arq. Diego Kurilo. Derechos reservados.</strong>
 <span style="opacity:.8">Los derechos sobre los materiales originales, el diseño y los aportes editoriales pertenecen a sus respectivos titulares. Los textos antiguos, facsímiles, imágenes y recursos de terceros conservan su situación jurídica y licencias propias.</span>
 </footer>
+<!-- Upright concordance passages: prevent inherited italics in bilingual search results. -->
+<style id="vdl-concordance-upright-passages">
+/* Only textual results in searches / edition concordances; no global typography reset. */
+#lexical-occurrences :is(.lexical-locus-latin,.lexical-locus-translation,.lexical-locus-translation p),
+#lexical-occurrences :is(.lexical-locus-latin,.lexical-locus-translation) :is(p,span,em,i,cite,strong,b,mark),
+#search-results :is(.parallel-passage,.parallel-latin,.parallel-translation,.result-passage,.result-snippet),
+#search-results :is(.parallel-passage,.parallel-latin,.parallel-translation,.result-passage,.result-snippet) :is(p,span,em,i,cite,strong,b,mark),
+#search-results .result-parallel .parallel-columns :is(p,em,i,span,cite),
+#lexical-occurrences .lexical-locus-translation blockquote{
+ font-style:normal!important;
+ font-synthesis:weight;
+}
+/* The query highlight remains visible and is also set upright. */
+#lexical-occurrences mark.lexical-query-hit,
+#search-results mark{font-style:normal!important}
+</style>
 </body>
 </html>
 
