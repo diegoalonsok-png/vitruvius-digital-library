@@ -3,7 +3,7 @@
  */
 (()=>{"use strict";
 const path="data/classics-corpus/title-search-aliases-multilingual.json";
-const lang={la:"latín",grc:"griego",es:"castellano",en:"inglés",fr:"francés",it:"italiano",de:"alemán",pt:"portugués"};
+const lang={la:"latín",grc:"griego",he:"hebreo",arc:"arameo",ar:"arameo",es:"castellano",en:"inglés",fr:"francés",it:"italiano",de:"alemán",pt:"portugués"};
 const greek={α:"a",β:"b",γ:"g",δ:"d",ε:"e",ζ:"z",η:"e",θ:"th",ι:"i",κ:"k",λ:"l",μ:"m",ν:"n",ξ:"x",ο:"o",π:"p",ρ:"r",σ:"s",τ:"t",υ:"y",φ:"ph",χ:"ch",ψ:"ps",ω:"o"};
 const normal=s=>String(s||"").normalize("NFKD").replace(/[\u0300-\u036f\u1dc0-\u1dff]/g,"").toLowerCase().replace(/ς/g,"σ").replace(/æ/g,"ae").replace(/œ/g,"oe").replace(/[^\p{L}\p{N}]+/gu," ").trim().replace(/\s+/g," ");
 const roman=s=>normal(s).replace(/[α-ω]/g,c=>greek[c]||c);
@@ -480,7 +480,7 @@ function mount(parent,data){
  for(const [id,label] of historicalPeriods)periodFilter.append(new Option(label,id));
  periodFilter.append(new Option("Ediciones modernas y testimonios históricos notables","modern-notable"));
  const languageFilter=make("select");languageFilter.setAttribute("aria-label","Lengua de texto disponible");
- [["","Todas las lenguas"],["grc","Griego"],["la","Latín"],["es","Castellano"],["en","Inglés"],["fr","Francés"]].forEach(([v,t])=>languageFilter.append(new Option(t,v)));
+ [["","Todas las lenguas"],["grc","Griego"],["la","Latín"],["he","Hebreo"],["arc","Arameo"],["es","Castellano"],["en","Inglés"],["fr","Francés"]].forEach(([v,t])=>languageFilter.append(new Option(t,v)));
  const sortFilter=make("select");sortFilter.setAttribute("aria-label","Orden alfabético");
  [["author","Orden por autor A–Z"],["title","Orden por título A–Z"]].forEach(([v,t])=>sortFilter.append(new Option(t,v)));
  authorLabel.append(authorFilter);
