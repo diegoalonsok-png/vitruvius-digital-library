@@ -241,7 +241,10 @@ const subjects=[
  ["agriculture","Agricultura y botánica",["agricultura","cultivos","botanica","agriculture","agri cultura","φυτα"],/agric|agron|botan|naturalis|georgic|rustic|plant|φυτ/]
 ];
 const subjectText=w=>[w.genre,w.title,...(w.subjects||[]),...(w.topics||[])].filter(Boolean).join(" ");
-const matchedSubjects=w=>subjects.filter(([id,label,aliases,pattern])=>pattern.test(normal(subjectText(w)))).map(([id])=>id);
+const matchedSubjects=w=>subjects.filter(([id,label,aliases,pattern])=>
+ pattern.test(normal(subjectText(w)))||
+ (id==="philosophy"&&/^(?:plato|aristotle|epictetus|epicurus|plotinus|proclus|porphyry)(?:-|$)/.test(w.id||""))
+).map(([id])=>id);
 const requestedSubject=query=>{const q=foldAuthority(query);return subjects.find(([id,label,aliases])=>aliases.some(x=>foldAuthority(x)===q))?.[0]||""};
 function rank(w,query){
  const queryTokens=tokens(query);if(!queryTokens.length)return 0;
@@ -490,6 +493,8 @@ function mount(parent,data){
  const historicalHint=make("p",null,"bws-help");
  historicalHint.append("Sistemas de datación de las fuentes: en Roma, magistraturas consulares y, en algunas cronografías, ab urbe condita (AUC); en Grecia, arcontes, éforos, Olimpiadas y eras locales. Son referencias históricas distintas de la cronología moderna y no se convierten automáticamente sin testimonio documental. ");
  addLink(historicalHint,"Criterios cronológicos","metodologia-catalogo-clasico.html#cronologia-antigua");
+ const semanticHint=make("p",null,"bws-help");
+ semanticHint.textContent="Materias: vocabulario controlado basado en título, género y fichas registradas. Se aceptan términos relacionados y erratas moderadas; no equivale a indexación semántica exhaustiva ni a lematización morfológica de los textos. Para buscar lemas y pasajes, utilizar Lexicon.";
  const originalHint=make("p",null,"bws-help");
  originalHint.textContent="Puede escribir el título directamente en griego politónico o en latín; también buscar por transliteraciones o equivalencias documentadas. La periodización histórica solo se asigna cuando la fecha y la tradición lingüística acreditadas lo permiten.";
  const dateClarifier=make("p",null,"bws-help");
@@ -499,7 +504,7 @@ function mount(parent,data){
  addLink(standards,"Metodología académica del índice","metodologia-catalogo-clasico.html");
  const advanced=make("details");advanced.className="bws-advanced";
  const summary=make("summary","Filtros avanzados · AUTOR, género, siglo, período, idioma y alfabeto");
- advanced.append(summary,filters,alphabet,historicalHint,originalHint,dateClarifier,standards);
+ advanced.append(summary,filters,alphabet,semanticHint,historicalHint,originalHint,dateClarifier,standards);
  const filterStyles=make("style",`.bws-library-filters .bws-author-primary{display:flex;flex-direction:column;gap:7px;min-width:min(100%,280px);grid-column:1/-1;padding:12px 14px;border:1px solid rgba(153,124,79,.55);border-radius:9px;background:rgba(160,132,85,.08)}.bws-author-primary .bws-author-heading{display:block;font:700 clamp(20px,2.5vw,28px)/1.15 system-ui,sans-serif;letter-spacing:.07em}.bws-author-primary .bws-author-caption{font:12px/1.4 system-ui,sans-serif;opacity:.82}.bws-library-filters .bws-author-primary input{width:100%;min-height:44px;font-size:16px;box-sizing:border-box}`);
  section.append(title,subtitle,form,filterStyles,advanced,region,help);
  const metric=parent.querySelector(":scope > dl");
