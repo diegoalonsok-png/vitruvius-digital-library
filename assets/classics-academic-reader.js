@@ -179,7 +179,7 @@ function renderSourceNoteNavigator(footnotes,info){
   results.replaceChildren();
   const term=query.value.trim();
   if(!term&&!kind.value){
-   status.textContent="Introducí una expresión o elegí un tipo de nota para consultar este índice.";
+   status.textContent="Introduce una expresión o elige un tipo de nota para consultar este índice.";
    return;
   }
   const found=sourceNoteMatches(rows,term,kind.value);
