@@ -396,6 +396,60 @@ function renderAuto(){
   }else content.append("Este idioma no dispone de traducción automática compatible.");
  }else content.append("Servicio de traducción automática no disponible; utilice el lector del original.");
 }
+// Locus synchronization never asserts semantic or word-by-word equivalence.
+const readerScrollHandlers={left:()=>followScroll("left"),right:()=>followScroll("right")};
+const ignoreScroll={left:null,right:null};
+let scrollFrame=0,lastShownLocus="";
+function scrollSurface(side){
+ if(side==="right"&&isAuto(right.value)){
+  const node=$("auto-translation");
+  return {get:()=>node.scrollTop,max:()=>Math.max(0,node.scrollHeight-node.clientHeight),set:y=>{node.scrollTop=y}};
+ }
+ const frame=$("pane-"+side);
+ if(!ready[side]||frame.hidden)return null;
+ try{
+  const root=frame.contentDocument?.scrollingElement||frame.contentDocument?.documentElement;
+  if(!root)return null;
+  return {get:()=>root.scrollTop,max:()=>Math.max(0,root.scrollHeight-root.clientHeight),set:y=>{root.scrollTop=y}};
+ }catch{return null}
+}
+function scrollLinkAllowed(){
+ if(!ready.left||!ready.right||!$("same-locus").checked)return false;
+ return isAuto(right.value)||destination().quality==="locus";
+}
+function followScroll(side){
+ if(!scrollLinkAllowed())return;
+ const from=scrollSurface(side);if(!from)return;
+ const expected=ignoreScroll[side],actual=from.get();
+ ignoreScroll[side]=null;
+ if(expected!==null&&Math.abs(expected-actual)<3)return;
+ if(scrollFrame)cancelAnimationFrame(scrollFrame);
+ scrollFrame=requestAnimationFrame(()=>{
+  scrollFrame=0;if(!scrollLinkAllowed())return;
+  const src=scrollSurface(side),other=side==="left"?"right":"left",dst=scrollSurface(other);
+  if(!src||!dst)return;
+  const ratio=src.max()>0?Math.min(1,Math.max(0,src.get()/src.max())):0;
+  const target=Math.round(ratio*dst.max());
+  if(Math.abs(dst.get()-target)<3)return;
+  ignoreScroll[other]=target;dst.set(target);
+ });
+}
+for(const side of ["left","right"])$("pane-"+side).addEventListener("load",()=>{
+ if(htmlComparison)return;
+ try{
+  const win=$("pane-"+side).contentWindow;
+  win.removeEventListener("scroll",readerScrollHandlers[side]);
+  win.addEventListener("scroll",readerScrollHandlers[side],{passive:true});
+ }catch{}
+});
+$("auto-translation").addEventListener("scroll",readerScrollHandlers.right,{passive:true});
+function resetReadingScroll(locus){
+ if(!locus||locus===lastShownLocus)return;
+ lastShownLocus=locus;
+ if(scrollFrame){cancelAnimationFrame(scrollFrame);scrollFrame=0}
+ ignoreScroll.left=null;ignoreScroll.right=null;
+ for(const side of ["left","right"])scrollSurface(side)?.set(0);
+}
 function navigatePane(side,index){
  if(!ready[side])return;
  pendingNavigation[side]=index;
@@ -407,6 +461,7 @@ function goto(originSide=null){
  const target=destination();
  if(originSide!=="left")navigatePane("left",target.left);
  const currentLocus=a.passages[target.left]?.locus;
+ resetReadingScroll(currentLocus);
  if(currentLocus){params.set("locus",currentLocus);history.replaceState(null,"",location.pathname+"?"+params.toString());
   const cardLink=$("simple-pair");if(cardLink){const u=new URL(cardLink.href);u.searchParams.set("locus",currentLocus);u.searchParams.set("left",left.value);u.searchParams.set("right",right.value);cardLink.href=u.href;}
  }
