@@ -3,7 +3,7 @@ const i18n={
 /* Portada: títulos y descripciones de los visores históricos. */
 'OBRAS NOTABLES':['NOTABLE WORKS','ŒUVRES REMARQUABLES'],
 'Tratados mayores de la arquitectura, folio por folio':['Major architectural treatises, folio by folio','Grands traités d’architecture, feuillet par feuillet'],
-'TRADUCCIONES MODERNAS':['MODERN EDITIONS','ÉDITIONS MODERNES'],
+'EDICIONES CRÍTICAS MODERNAS':['MODERN CRITICAL EDITIONS','ÉDITIONS CRITIQUES MODERNES'],
 'Rose y Krohn · ediciones críticas latinas modernas, miniaturas y búsqueda por loci':['Rose and Krohn · modern Latin critical editions, thumbnails and locus search','Rose et Krohn · éditions critiques latines modernes, vignettes et recherche par loci'],
 'La colección':['The collection','La collection'],
 'Buscar en los textos':['Search the texts','Rechercher dans les textes'],
