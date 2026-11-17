@@ -135,6 +135,20 @@ def main():
     }
     OUT.parent.mkdir(parents=True,exist_ok=True)
     OUT.write_text(json.dumps(inventory,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
+    # Keep headline work counts tied to actual catalogue IDs, not scheduled
+    # imports, edition variants, or OCR-only records.
+    counts_path = ROOT / "data/cifras-corpus.json"
+    if counts_path.exists():
+        headline = read(counts_path)
+        headline["obras"] = len(catalog)
+        headline["obrasSuplementarias"] = len(supplement)
+        headline["obrasAdicionales"] = len(additional)
+        headline["obrasTotalesDeclaradas"] = inventory["counts"]["totalDeclaredWorks"]
+        headline["actualizado"] = datetime.now(timezone.utc).date().isoformat()
+        headline["objetivoObras"] = 500
+        headline["faltanParaObjetivo"] = max(0, 500 - headline["obrasTotalesDeclaradas"])
+        counts_path.write_text(json.dumps(headline,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
+
     print(json.dumps(inventory["counts"],ensure_ascii=False))
     if unlinked:
         print("WARNING: R2 records needing editorial linkage: "+", ".join(sorted(unlinked)[:20]))
