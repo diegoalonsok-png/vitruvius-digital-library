@@ -32,7 +32,10 @@ const styles=document.createElement("style");
 styles.textContent=".lx-library-translation-label{display:inline-flex;align-items:center;gap:7px;flex-wrap:wrap;font:12px system-ui;color:inherit}.lx-library-translation-label select{border:1px solid #555;background:#19191b;color:#eee;border-radius:4px;padding:7px}.lx-library-parallel{border-left:2px solid #ab8648;padding:6px 12px;margin:8px 0 16px;background:rgba(80,70,50,.10)}.lx-library-parallel .lx-library-translation-text{white-space:pre-wrap;line-height:1.65;margin:6px 0;color:inherit}.lx-library-parallel .lx-library-translation-title{font:600 12px system-ui;color:#d9ae67;margin:2px 0}.lx-library-parallel .lx-library-translation-note{font:11px/1.5 system-ui;color:#aaa}.lx-library-parallel a{font-size:12px;text-decoration:underline;text-underline-offset:3px}";
 styles.textContent+="\n#lx-classics-bridge .lx-library-highlight .lx-library-word{display:inline;position:relative;vertical-align:baseline;font:inherit;color:inherit;background:transparent;border:0;border-radius:2px;padding:0;margin:0;text-align:inherit;cursor:pointer;text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px;text-decoration-color:#7b5100}\n#lx-classics-bridge .lx-library-highlight .lx-library-word:hover,#lx-classics-bridge .lx-library-highlight .lx-library-word:focus-visible{background:#f7bb31;color:#17100a;outline:2px solid #9d6a00;outline-offset:2px}\n#lx-classics-bridge .lx-library-dictionary{border:1px solid #5a5242;border-left:3px solid #e6bc61;border-radius:6px;background:#181819;padding:10px 14px;margin:11px 0 15px;color:#ededed;min-width:0}\n#lx-classics-bridge .lx-library-dictionary>summary{cursor:pointer;font:600 13px/1.5 system-ui;color:#f1d38c;overflow-wrap:anywhere}\n#lx-classics-bridge .lx-library-dictionary .cl-dict{margin-top:8px;color:inherit;--muted:#bababa;--line:#4b4b4d}\n#lx-classics-bridge .lx-library-dictionary .cl-dict .cl-entry{border-left-color:#cfa94d}\n#lx-classics-bridge .lx-library-dictionary .cl-dict .cl-gloss{line-height:1.6;overflow-wrap:anywhere}\n#lx-classics-bridge .lx-library-dictionary .lx-library-dictionary-footer{border-top:1px solid #404040;padding-top:10px;display:flex;flex-wrap:wrap;gap:9px 16px}\n#lx-classics-bridge .lx-library-dictionary a{color:#ebd29b;font-size:12px}\nhtml[data-theme=light] #lx-classics-bridge .lx-library-dictionary{background:#faf8f4;color:#222;border-color:#a49b88}\nhtml[data-theme=light] #lx-classics-bridge .lx-library-dictionary>summary,html[data-theme=light] #lx-classics-bridge .lx-library-dictionary a{color:#624713}\nhtml[data-theme=light] #lx-classics-bridge .lx-library-dictionary .cl-dict{--muted:#5c5c5c;--line:#b1a99b}\n";
 parent.append(styles);
-parent.append(title,note,controls,status,list);
+const readerEvidence=document.createElement("section");readerEvidence.className="lx-reader-attestation";readerEvidence.hidden=true;
+readerEvidence.setAttribute("aria-label","Testimonio textual del lector de origen");
+parent.append(title,note,readerEvidence,controls,status,list);
+styles.textContent+="\\n#lx-classics-bridge .lx-reader-attestation{padding:14px 16px;margin:12px 0 16px;border:1px solid #8e826b;border-left:4px solid #d6b67e;border-radius:8px;background:#242322;color:#f5f2eb}#lx-classics-bridge .lx-reader-attestation h4{margin:0 0 8px;font:600 17px/1.4 Georgia,serif}#lx-classics-bridge .lx-reader-attestation p{margin:6px 0;font:14px/1.7 Georgia,serif}#lx-classics-bridge .lx-reader-attestation mark{background:#f5d46b;color:#211900;padding:1px 3px;border-radius:3px}#lx-classics-bridge .lx-reader-attestation a{color:#f1d094;margin-right:12px;font:12px/1.6 system-ui}#lx-classics-bridge .lx-reader-attestation small{font:12px/1.6 system-ui;color:#d0c9bb}";
 const grid=results.closest(".results-grid");
 if(grid)grid.parentNode.insertBefore(parent,grid);else results.parentNode.insertBefore(parent,results);
 let serial=0;
@@ -521,6 +524,37 @@ input.addEventListener("input",()=>{serial++;selectedWorkId="";currentLiteralRow
 status.textContent="Consulta bajo demanda: no se cargan todas las ediciones al abrir Lexicon.";
 // Deep links with an actual term should produce attested corpus results automatically.
 // Delay until the parent Lexicon has populated its search control.
+
+const readerParams=new URLSearchParams(location.search);
+async function readerAttestation(){
+ const workId=readerParams.get("work"),locus=readerParams.get("locus"),term=readerParams.get("q");
+ if(!workId||!locus||!term||term.length>90||!/^[a-z0-9-]{3,60}$/.test(workId))return;
+ readerEvidence.hidden=false;readerEvidence.replaceChildren();
+ const h=document.createElement("h4");h.textContent="Testimonio contextual de Bibliotheca";readerEvidence.append(h);
+ try{
+  const response=await fetch("data/classics-corpus/search-registry.json");if(!response.ok)throw Error("Índice no disponible");
+  const registry=await response.json();
+  const edition=(registry.entries||[]).find(e=>e.workId===workId&&e.language==="grc"&&e.format==="json-passages")||(registry.entries||[]).find(e=>e.workId===workId&&e.language==="la"&&e.format==="json-passages");
+  if(!edition||!/^data\/classics-corpus\/[a-z0-9_-]+\.json$/.test(edition.path))throw Error("Edición indexada no encontrada");
+  const res=await fetch(edition.path);if(!res.ok)throw Error("Edición no disponible");
+  const doc=await res.json();
+  const item=(doc.passages||[]).find(p=>p.locus===locus&&typeof p.text==="string");if(!item)throw Error("Pasaje no encontrado");
+  const norm=x=>String(x||"").normalize("NFD").replace(/\p{M}/gu,"").toLocaleLowerCase().replace(/ς/g,"σ");
+  const words=[...item.text.matchAll(/[\p{L}\p{M}]+/gu)].filter(m=>norm(m[0])===norm(term));
+  const text=document.createElement("p");const raw=item.text;let cursor=0;
+  for(const match of words){text.append(document.createTextNode(raw.slice(cursor,match.index)));const mark=document.createElement("mark");mark.textContent=match[0];text.append(mark);cursor=match.index+match[0].length}
+  text.append(document.createTextNode(raw.slice(cursor)));text.lang=edition.language;readerEvidence.append(text);
+  const provenance=document.createElement("small");provenance.textContent=[edition.author,edition.title,"Pasaje "+locus.split(":").pop(),words.length+" coincidencia(s) exactas con normalización de diacríticos"].join(" · ");readerEvidence.append(provenance);
+  const links=document.createElement("p");
+  for(const [label,url] of [["Volver al pasaje","classics-simple-parallel.html?"+new URLSearchParams({work:workId,left:edition.language,right:"auto-en",locus}).toString()],["Consultar ficha académica","classics-work-record.html?work="+encodeURIComponent(workId)]]){
+   const a=document.createElement("a");a.href=url;a.textContent=label;links.append(a);
+  }
+  readerEvidence.append(links);
+  if(!words.length){const caution=document.createElement("p");caution.textContent="La grafía solicitada no se identifica aquí como coincidencia literal. Compruebe flexión y lectura en la edición.";readerEvidence.append(caution)}
+ }catch(error){const p=document.createElement("p");p.textContent="No se pudo consultar automáticamente el pasaje de origen: "+error.message;readerEvidence.append(p)}
+}
+void readerAttestation();
+
 const initial=new URLSearchParams(location.search).get("q");
 if(false&&initial&&/[\p{L}]/u.test(initial.trim())){
  if(!input.value.trim())input.value=initial;
