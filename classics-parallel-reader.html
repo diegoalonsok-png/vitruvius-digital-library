@@ -94,6 +94,16 @@ html::-webkit-scrollbar-corner,body::-webkit-scrollbar-corner{background:#242427
 .viewer-bottom-links a{display:inline-flex;justify-content:center;align-items:center;min-height:42px;padding:9px 18px;border:1px solid #c4ad84;border-radius:6px;background:#203b50;color:#fff;text-decoration:none;font:600 14px system-ui,sans-serif}
 .viewer-bottom-links a:hover,.viewer-bottom-links a:focus-visible{background:#324f67;outline:2px solid #dfc18c;outline-offset:2px}
 @media(max-width:480px){.viewer-bottom-links{justify-content:center}.viewer-bottom-links a{width:100%}}
+
+@media(min-width:701px){
+.panes{grid-template-columns:minmax(0,var(--parallel-left,50fr)) 18px minmax(0,var(--parallel-right,50fr))!important;gap:7px}
+.parallel-pane-divider{display:flex;align-items:center;justify-content:center;position:relative;min-height:650px;touch-action:none;cursor:col-resize;user-select:none}
+.parallel-pane-divider::before{content:"";position:absolute;top:0;bottom:0;left:8px;border-left:1px solid #8e877d}
+.parallel-pane-divider span{position:sticky;top:43vh;width:28px;height:60px;display:flex;align-items:center;justify-content:center;color:#ddd0bc;background:#29292b;border:2px solid #97928c;border-radius:15px;font:25px system-ui;pointer-events:none;z-index:2}
+.parallel-pane-divider:hover span,.parallel-pane-divider:focus-visible span{border-color:#dfc18d;background:#4b4030}
+}
+@media(max-width:700px){.parallel-pane-divider{display:none}.panes{grid-template-columns:1fr!important}}
+@media print{.parallel-pane-divider{display:none!important}.panes{grid-template-columns:1fr 1fr!important}}
 </style><script defer src="assets/analytics-config.js?v=20261106-ga4-1"></script>
 <script defer src="assets/analytics.js?v=20261106-ga4-1"></script>
 <link rel="stylesheet" href="assets/fonts-ancient.css?v=20261111-griego-politonico-v1"></head>
@@ -116,19 +126,19 @@ html::-webkit-scrollbar-corner,body::-webkit-scrollbar-corner{background:#242427
 <button type="button" id="left-night" aria-label="Tema nocturno en visor left" title="Nocturno">◼ Noche</button>
 <label title="Color del fondo">Fondo <input type="color" id="left-bg" value="#fffdf7" aria-label="Color de fondo del visor left"></label>
 <label title="Color de las letras">Texto <input type="color" id="left-fg" value="#202b35" aria-label="Color del texto del visor left"></label>
-<label>Fuente <select id="left-font" aria-label="Tipografía del visor left"><option value="serif">Georgia</option><option value="classic">Palatino</option><option value="sans">Sans</option><option value="mono">Mono</option></select></label>
+<label>Fuente <select id="left-font" aria-label="Tipografía del visor left"><option value="serif">Georgia</option><option value="classic">Palatino</option><option value="sans">Sans</option><option value="mono">Mono</option><option value="typewriter">Máquina de escribir</option><option value="courier">Courier New</option><option value="ibm">IBM Plex Mono</option></select></label>
 <button type="button" id="left-smaller" aria-label="Reducir texto del visor left" title="Lupa menos">⌕−</button>
 <span class="zoom-level" id="left-size">20 px</span>
 <button type="button" id="left-larger" aria-label="Aumentar texto del visor left" title="Lupa más">⌕+</button>
 <button type="button" id="left-reset" aria-label="Restablecer colores y tipografía del visor left">↺</button>
-</div><iframe id="pane-left" title="Original o primera edición"></iframe></section><section class="pane"><strong>02 · Traducción · navegación independiente</strong><label class="pane-version">Versión del visor derecho <select id="right-pane-language" aria-label="Cambiar versión del visor derecho"></select></label><div class="appearance" id="right-appearance" role="group" aria-label="Estilo del visor derecho">
+</div><iframe id="pane-left" title="Original o primera edición"></iframe></section><div id="parallel-divider" class="parallel-pane-divider" role="separator" tabindex="0" aria-orientation="vertical" aria-label="Arrastrar para cambiar ancho de visores" aria-valuemin="30" aria-valuemax="70" aria-valuenow="50" title="Arrastrar para ajustar · doble clic: 50/50"><span aria-hidden="true">⋮</span></div><section class="pane"><strong>02 · Traducción · navegación independiente</strong><label class="pane-version">Versión del visor derecho <select id="right-pane-language" aria-label="Cambiar versión del visor derecho"></select></label><div class="appearance" id="right-appearance" role="group" aria-label="Estilo del visor derecho">
 <button type="button" id="right-ivory" aria-label="Tema marfil en visor right" title="Marfil">◧ Marfil</button>
 <button type="button" id="right-sepia" aria-label="Tema sepia en visor right" title="Sepia">◩ Sepia</button>
 <button type="button" id="right-invert" title="Invertir colores del visor" aria-label="Invertir colores del visor right">◐ Invertir</button>
 <button type="button" id="right-night" aria-label="Tema nocturno en visor right" title="Nocturno">◼ Noche</button>
 <label title="Color del fondo">Fondo <input type="color" id="right-bg" value="#fffdf7" aria-label="Color de fondo del visor right"></label>
 <label title="Color de las letras">Texto <input type="color" id="right-fg" value="#202b35" aria-label="Color del texto del visor right"></label>
-<label>Fuente <select id="right-font" aria-label="Tipografía del visor right"><option value="serif">Georgia</option><option value="classic">Palatino</option><option value="sans">Sans</option><option value="mono">Mono</option></select></label>
+<label>Fuente <select id="right-font" aria-label="Tipografía del visor right"><option value="serif">Georgia</option><option value="classic">Palatino</option><option value="sans">Sans</option><option value="mono">Mono</option><option value="typewriter">Máquina de escribir</option><option value="courier">Courier New</option><option value="ibm">IBM Plex Mono</option></select></label>
 <button type="button" id="right-smaller" aria-label="Reducir texto del visor right" title="Lupa menos">⌕−</button>
 <span class="zoom-level" id="right-size">20 px</span>
 <button type="button" id="right-larger" aria-label="Aumentar texto del visor right" title="Lupa más">⌕+</button>
@@ -142,6 +152,17 @@ html::-webkit-scrollbar-corner,body::-webkit-scrollbar-corner{background:#242427
 (()=>{
 "use strict";
 const params=new URLSearchParams(location.search),work=params.get("work")||"didache";
+
+const divider=document.getElementById("parallel-divider"),panes=document.querySelector(".panes");
+let activePointer=null;
+function setPaneShare(value){const n=Math.min(70,Math.max(30,Math.round(Number(value)/5)*5||50));panes.style.setProperty("--parallel-left",n+"fr");panes.style.setProperty("--parallel-right",(100-n)+"fr");divider.setAttribute("aria-valuenow",String(n));divider.setAttribute("aria-valuetext",n+"% izquierda y "+(100-n)+"% derecha")}
+function pointerShare(event){const rect=panes.getBoundingClientRect();if(rect.width)setPaneShare((event.clientX-rect.left)/rect.width*100)}
+divider.addEventListener("pointerdown",e=>{if(e.pointerType==="mouse"&&e.button!==0)return;activePointer=e.pointerId;divider.setPointerCapture(e.pointerId);pointerShare(e);e.preventDefault()});
+divider.addEventListener("pointermove",e=>{if(e.pointerId===activePointer)pointerShare(e)});
+for(const event of ["pointerup","pointercancel"])divider.addEventListener(event,e=>{if(e.pointerId!==activePointer)return;activePointer=null;if(divider.hasPointerCapture(e.pointerId))divider.releasePointerCapture(e.pointerId)});
+divider.addEventListener("keydown",e=>{if(!["ArrowLeft","ArrowRight","Home","End"].includes(e.key))return;e.preventDefault();setPaneShare(e.key==="Home"?30:e.key==="End"?70:Number(divider.getAttribute("aria-valuenow"))+(e.key==="ArrowRight"?5:-5))});
+divider.addEventListener("dblclick",()=>setPaneShare(50));setPaneShare(50);
+
 const $=id=>document.getElementById(id),status=$("status"),left=$("left"),right=$("right");
 const LANG={grc:"Griego original",la:"Latín original",es:"Castellano",en:"English",fr:"Français",it:"Italiano",de:"Deutsch",pt:"Português",
  "auto-es":"Traducción automática orientativa · Español","auto-en":"Traducción automática orientativa · English","auto-fr":"Traducción automática orientativa · Français"};
@@ -165,7 +186,7 @@ try{
    const v=saved[side];if(!v||typeof v!=="object")continue;
    if(validHex(v.background))palettes[side].background=v.background;
    if(validHex(v.foreground))palettes[side].foreground=v.foreground;
-   if(["serif","classic","sans","mono"].includes(v.font))palettes[side].font=v.font;
+   if(["serif","classic","sans","mono","typewriter","courier","ibm"].includes(v.font))palettes[side].font=v.font;
    if(Number.isInteger(v.size)&&v.size>=14&&v.size<=38)palettes[side].size=v.size;
   }
   if(Number.isInteger(saved.position)&&saved.position>=0)position=saved.position;
@@ -185,7 +206,7 @@ function sendAppearance(side){
  store();
  if(side==="right"&&isAuto(right.value)){
   const panel=$("auto-translation"),p=palettes.right;
-  const families={serif:'Georgia, "Times New Roman", serif',classic:'Palatino, "Book Antiqua", serif',sans:'system-ui, sans-serif',mono:'ui-monospace, monospace'};
+  const families={serif:'Georgia, "Times New Roman", serif',classic:'Palatino, "Book Antiqua", serif',sans:'system-ui, sans-serif',mono:'ui-monospace, monospace',typewriter:'"Courier New","Liberation Mono",monospace',courier:'"Courier New",Courier,monospace',ibm:'"IBM Plex Mono",ui-monospace,monospace'};
   panel.style.setProperty("--auto-bg",p.background);
   panel.style.setProperty("--auto-fg",p.foreground);
   panel.style.setProperty("--auto-font",families[p.font]||families.serif);
