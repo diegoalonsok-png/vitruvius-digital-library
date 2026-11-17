@@ -221,8 +221,40 @@ async function exportAll(button,statusNode){
  }catch(err){if(statusNode)statusNode.textContent="No se pudo generar el Excel: "+err.message;console.error("Vitruvius XLSX",err)}
  finally{button.disabled=false;button.textContent=original}
 }
+async function exportMainCatalogue(button,statusNode){
+ const previous=button.textContent;button.disabled=true;button.textContent="Preparando listado Excel…";
+ if(statusNode)statusNode.textContent="Leyendo el repertorio principal y sus registros de indexación…";
+ try{
+  const [catalog,road,registry,X]=await Promise.all([
+   getJSON(FILES.catalog),getJSON("data/classics-corpus/indexation-roadmap-222.json"),
+   getJSON("data/classics-corpus/search-registry.json"),ensureXLSX()
+  ]);
+  if(!Array.isArray(catalog.works)||!Array.isArray(road.items)||!Array.isArray(registry.entries))throw Error("Falta un catálogo o índice");
+  const works=[...new Map(catalog.works.map(w=>[w.id,w])).values()];
+  const byId=new Map(road.items.map(x=>[x.id,x]));
+  const versions=new Map();
+  for(const x of registry.entries){if(!versions.has(x.workId))versions.set(x.workId,new Set());versions.get(x.workId).add(x.language||"")}
+  const rows=works.map((w,i)=>{const r=byId.get(w.id)||{},langs=[...(versions.get(w.id)||[])];return {
+   "N.º":i+1,"ID obra":clean(w.id||""),"Autor":clean(w.author||""),"Título completo":clean(w.title||""),
+   "Idioma original":clean(w.language||r.originalLanguage||""),"Época / fecha":clean(w.dating||r.dating||""),
+   "Género":clean(w.genre||""),"Original indexado":r.effectiveOriginalIndexed===true||r.originalIndexed===true?"Sí":"No consta",
+   "Idiomas indexados":langs.join(", "),"Versiones indexadas":registry.entries.filter(x=>x.workId===w.id).length,
+   "Estado documental":clean(r.sourceReadiness||w.publicStatus||r.state||""),
+   "Ficha académica":"https://vitruvius-digital-library.org/classics-work-record?work="+encodeURIComponent(w.id),
+   "Lector":"https://vitruvius-digital-library.org/classics-text-reader?work="+encodeURIComponent(w.id)
+  }});
+  const wb=X.utils.book_new();addSheet(X,wb,"Obras del repertorio",rows);
+  addSheet(X,wb,"Información",[{"Concepto":"Origen","Detalle":"Catálogo principal de Bibliotheca, sin incorporaciones suplementarias ni duplicación de ediciones."},{"Concepto":"Obras exportadas","Detalle":String(works.length)},{"Concepto":"Generación","Detalle":new Date().toISOString()},{"Concepto":"Criterio","Detalle":"El estado de indexación surge del inventario y registro textuales; los enlaces no garantizan disponibilidad HTTP."}]);
+  X.writeFile(wb,"Bibliotheca_repertorio_principal_"+works.length+"_obras.xlsx",{compression:true});
+  if(statusNode)statusNode.textContent="Excel del repertorio principal generado: "+works.length+" obras sin duplicados.";
+ }catch(error){if(statusNode)statusNode.textContent="No se pudo generar Excel: "+error.message;console.error("Bibliotheca catalogue XLSX",error)}
+ finally{button.disabled=false;button.textContent=previous}
+}
 function start(){
  const button=document.getElementById("bibliotheca-download-xlsx");
+ const mainButton=document.getElementById("bibliotheca-download-main-xlsx");
+ const mainStatus=document.getElementById("bibliotheca-main-xlsx-status");
+ if(mainButton)mainButton.addEventListener("click",()=>exportMainCatalogue(mainButton,mainStatus));
  if(!button)return;
  const status=document.getElementById("bibliotheca-xlsx-status")||document.getElementById("work-record-status");
  button.addEventListener("click",()=>exportAll(button,status));
