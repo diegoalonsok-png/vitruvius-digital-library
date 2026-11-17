@@ -25,7 +25,13 @@ assert.equal(counts.originalsIndexed+counts.originalsMissing,manifest.targetWork
  "La cobertura local debe sumar las fichas catalogadas");
 assert.equal(counts.effectiveOriginalsIndexed+counts.effectiveOriginalsMissing,manifest.targetWorks,
  "La cobertura con índices externos debe sumar el catálogo");
-assert.equal(counts.originalsIndexed+counts.offsiteOriginalsIndexed,counts.effectiveOriginalsIndexed,
+// Los originales locales, registrados en R2 y externos pueden solaparse.
+// Validar la unión por ID, nunca sumar categorías de procedencia.
+assert.equal(manifest.items.filter(x=>x.originalIndexed).length,counts.originalsIndexed,
+ "Los originales locales deben concordar con las fichas");
+assert.equal(manifest.items.filter(x=>x.effectiveOriginalIndexed).length,counts.effectiveOriginalsIndexed,
+ "La cobertura efectiva debe contar IDs únicos, incluidos R2 y externos");
+assert.equal(new Set(manifest.items.filter(x=>x.effectiveOriginalIndexed).map(x=>x.id)).size,counts.effectiveOriginalsIndexed,
  "No se pueden inflar los originales con registros remotos duplicados");
 assert.equal(new Set(manifest.items.map(x=>x.id)).size,manifest.targetWorks);
 assert.equal(registry.entries.length,registry.count);
