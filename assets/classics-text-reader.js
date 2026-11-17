@@ -162,6 +162,9 @@ function select(i){
   target.append(marks);
  }
  if(p.get("parallel")==="1"&&window.parent!==window){
+  // Every new section begins at the same top-of-sheet coordinate.
+  // The parent may then link proportional scrolling for matched loci.
+  window.scrollTo(0,0);
   window.parent.postMessage({type:"vitruvia-parallel-position",work,lang:data.language,index:active,locus:rec.locus},location.origin);
  }
 }
