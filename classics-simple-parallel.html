@@ -55,10 +55,39 @@ mark.simple-match{background:#d8a442;color:#161616;border-radius:2px}
 .bude-method{font:12px/1.6 system-ui,sans-serif;color:#bcb8b1;border-top:1px solid #81776666;padding-top:12px;margin:17px 0 0}
 @media(max-width:750px){.bude-editions{grid-template-columns:1fr;gap:12px}.bude-heading{flex-direction:column;align-items:flex-start}.bude-apparatus{padding:16px}}
 @media print{.bude-apparatus{background:#fff;color:#222;border-color:#444}.bude-edition h3,.bude-scholion h3{color:#333}.bude-method{color:#555}}
+
+/* Herramientas de estudio: aditivas, no sustituyen a los dos paneles de lectura. */
+.study-panel{margin:19px 0 24px;background:#171719;border:1px solid #6d685f;border-radius:11px;padding:18px 22px;color:#f0ede8}
+.study-panel h2{font:400 clamp(19px,2vw,25px)/1.4 Georgia,serif;margin:0 0 5px}
+.study-panel .study-intro{font:12px/1.6 system-ui;color:#c7c4bd;margin:0 0 13px}
+.study-tabs{display:flex;gap:6px;flex-wrap:wrap;margin:0 0 16px}
+.study-tabs button{border:1px solid #7a746a;border-radius:7px;background:#29292c;color:#eee;font:600 13px/1.4 system-ui;padding:8px 12px;cursor:pointer}
+.study-tabs button[aria-selected="true"]{background:#bda77f;color:#171614;border-color:#d9c8a8}
+.study-content{min-height:94px;font:14px/1.7 system-ui}
+.study-content p{margin:0 0 11px}.study-content ul{margin:0 0 12px;padding-left:20px}
+.study-actions{display:flex;flex-wrap:wrap;gap:9px;margin:12px 0}
+.study-actions a{border:1px solid #8f8777;border-radius:6px;color:#f1d3a3;text-decoration:none;padding:8px 11px;font:600 12px/1.4 system-ui}
+.study-panel .study-evidence{font:12px/1.6 system-ui;color:#c5c0b5;border-top:1px solid #5b554b;padding-top:10px;margin-top:14px}
+.study-panel a:focus-visible,.study-tabs button:focus-visible{outline:2px solid #fff;outline-offset:3px}
+@media(max-width:750px){.study-panel{padding:14px}.study-tabs button{flex:1 1 120px}}
+@media print{.study-panel{display:none}}
 </style><script defer src="assets/analytics-config.js?v=20261106-ga4-1"></script><script defer src="assets/analytics.js?v=20261106-ga4-1"></script></head><body><main>
 <div class="top"><h1 id="title">BIBLIOTHECA · VISOR SIMPLIFICADO</h1><nav class="actions" aria-label="Navegación de lectura"><a id="academic" href="classics-parallel-reader.html">Visor académico</a><button id="previous" type="button" aria-label="Pasaje anterior">‹</button><button id="next" type="button" aria-label="Pasaje siguiente">›</button></nav></div>
 <div class="toolbar" role="group" aria-label="Herramientas de lectura"><label>Original <select id="original-lang" aria-label="Idioma original"></select></label><label>Traducción <select id="translation-lang" aria-label="Idioma de la traducción"></select></label><label>Locus <input id="go-locus" type="search" placeholder="Ej. 2" aria-label="Locus o capítulo"></label><button id="go-button" type="button">Ir al locus</button><a id="lexicon-link" href="vitruvia-lexicon.html" style="border:1px solid #555;border-radius:7px;padding:8px 10px;color:#eee;text-decoration:none;font:13px system-ui">Diccionario · Lexicon</a><label>Palabra <input id="word-query" type="search" placeholder="Buscar palabra" aria-label="Buscar palabra"></label><button id="word-find" type="button" aria-label="Buscar próxima coincidencia">⌕</button><button id="smaller" type="button" aria-label="Reducir texto">A−</button><button id="larger" type="button" aria-label="Ampliar texto">A+</button><label>Color <select id="palette" aria-label="Colores"><option value="dark">Gris</option><option value="sepia">Sepia</option><option value="light">Marfil</option></select></label></div>
 <div class="cards"><section class="card"><h2 id="left-head">TEXTO ORIGINAL</h2><label class="panel-font-label" for="left-font">Tipografía original <select id="left-font" aria-label="Tipografía del original"><option value="gentium">Gentium Book Plus · clásica</option><option value="cardo">Cardo · filológica</option><option value="georgia">Georgia</option><option value="palatino">Palatino</option><option value="times">Times New Roman</option><option value="garamond">Garamond</option><option value="baskerville">Baskerville</option><option value="cambria">Cambria</option><option value="sans">Sans moderna</option><option value="mono">Monoespaciada</option></select></label><button type="button" id="left-italic" class="panel-italic" aria-pressed="false" aria-label="Activar cursiva en el original" title="Alternar cursiva del texto original">I <span>Itálica</span></button><div class="panel-colors" id="left-colors" aria-label="Fondo y resaltado del original"></div><div class="panel-size" role="group" aria-label="Tamaño de letra del original"><button id="left-smaller" type="button" aria-label="Reducir tamaño del original">A−</button><button id="left-larger" type="button" aria-label="Ampliar tamaño del original">A+</button></div><div class="passage" id="left-text" aria-live="polite">Cargando texto…</div></section><section class="card"><h2 id="right-head">TRADUCCIÓN</h2><label class="panel-font-label" for="right-font">Tipografía traducción <select id="right-font" aria-label="Tipografía de la traducción"><option value="gentium">Gentium Book Plus · clásica</option><option value="cardo">Cardo · filológica</option><option value="georgia">Georgia</option><option value="palatino">Palatino</option><option value="times">Times New Roman</option><option value="garamond">Garamond</option><option value="baskerville">Baskerville</option><option value="cambria">Cambria</option><option value="sans">Sans moderna</option><option value="mono">Monoespaciada</option></select></label><button type="button" id="right-italic" class="panel-italic" aria-pressed="false" aria-label="Activar cursiva en la traducción" title="Alternar cursiva del texto traducido">I <span>Itálica</span></button><div class="panel-colors" id="right-colors" aria-label="Fondo y resaltado de traducción"></div><div class="panel-size" role="group" aria-label="Tamaño de letra de la traducción"><button id="right-smaller" type="button" aria-label="Reducir tamaño de la traducción">A−</button><button id="right-larger" type="button" aria-label="Ampliar tamaño de la traducción">A+</button></div><div class="passage" id="right-text" aria-live="polite">Cargando traducción…</div><button class="translate-action" id="translate" type="button" hidden>Traducir automáticamente este pasaje</button></section></div>
+<section class="study-panel" id="study-panel" aria-labelledby="study-heading">
+<h2 id="study-heading">Instrumentos de estudio del pasaje</h2>
+<p class="study-intro">Seleccioná una palabra del original para consultar Lexicon; las referencias verificadas permanecen diferenciadas de las preguntas interpretativas.</p>
+<div class="study-tabs" role="tablist" aria-label="Disciplinas de análisis">
+<button type="button" role="tab" aria-selected="true" data-study="philology">Filología</button>
+<button type="button" role="tab" aria-selected="false" data-study="ecdotics">Ecdótica</button>
+<button type="button" role="tab" aria-selected="false" data-study="hermeneutics">Hermenéutica</button>
+<button type="button" role="tab" aria-selected="false" data-study="exegesis">Exégesis</button>
+<button type="button" role="tab" aria-selected="false" data-study="logic">Lógica</button>
+</div>
+<div class="study-content" id="study-content" role="tabpanel" aria-live="polite"></div>
+<p class="study-evidence" id="study-evidence">Las sugerencias de análisis no son variantes manuscritas ni dictámenes filológicos.</p>
+</section>
 <section id="bude-apparatus" class="bude-apparatus" aria-labelledby="bude-title">
  <div class="bude-heading"><div><span class="bude-kicker">BIBLIOTHECA GRAECA ET LATINA · APPARATVS LECTORIS</span><h2 id="bude-title">Edición, traducción y comentario</h2></div><a id="bude-dossier" href="classics-work-record.html">Ficha filológica de la obra</a></div>
  <div class="bude-editions"><section class="bude-edition"><h3>TEXTVS · Edición original</h3><dl id="bude-original-details"></dl></section><section class="bude-edition"><h3>VERSIO · Traducción enfrentada</h3><dl id="bude-translation-details"></dl></section></div>
@@ -363,6 +392,7 @@ function draw(){
  el("previous").disabled=pos<=0;el("next").disabled=pos>=source.length-1;
  if(a?.locus){q.set("locus",a.locus);el("go-locus").value=displayLocus(a.locus);history.replaceState(null,"",location.pathname+"?"+q.toString());}
  linkBack();
+ studyRender();
 }
 async function getEdition(entry,lang){
  if(!entry||!(/^data\/(?:classics-corpus|structured|lexicon\/fontes)\/[a-z0-9/_-]+\.json$/.test(entry.path||"")||/^https:\/\/libros\.vitruvius-digital-library\.org\/corpus\/[a-z0-9_-]+\.json$/.test(entry.path||"")))return [];
@@ -478,6 +508,60 @@ el("smaller").onclick=()=>{fontSize=Math.max(17,fontSize-2);appearance();};
 el("larger").onclick=()=>{fontSize=Math.min(44,fontSize+2);appearance();};
 el("palette").onchange=appearance;
 el("go-button").onclick=()=>{const wanted=el("go-locus").value;const i=findLocusIndex(source,wanted);if(i<0){status("No se encontró ese locus en esta edición.");return;}pos=i;draw();};el("go-locus").addEventListener("keydown",e=>{if(e.key==="Enter")el("go-button").click();});
+
+let studyMode="philology",selectedStudyWord="";
+const studyNames={philology:"Filología",ecdotics:"Ecdótica",hermeneutics:"Hermenéutica",exegesis:"Exégesis",logic:"Lógica"};
+function studyUrl(file,params={}){
+ const u=new URL(file,location.href);
+ for(const [k,v] of Object.entries(params))if(v)u.searchParams.set(k,v);
+ return u.href;
+}
+function studyRender(){
+ const panel=el("study-content");if(!panel)return;
+ panel.replaceChildren();
+ const p=document.createElement("p"),links=document.createElement("div");links.className="study-actions";
+ const ref=displayLocus(source[pos]?.locus||"");
+ const word=selectedStudyWord;
+ const add=(name,url)=>{const a=document.createElement("a");a.textContent=name;a.href=url;a.target="_blank";a.rel="noopener noreferrer";links.append(a)};
+ const note=(message)=>{const x=document.createElement("p");x.textContent=message;panel.append(x)};
+ const questions=(items)=>{const ul=document.createElement("ul");for(const q of items){const li=document.createElement("li");li.textContent=q;ul.append(li)}panel.append(ul)};
+ for(const tab of document.querySelectorAll("[data-study]"))tab.setAttribute("aria-selected",String(tab.dataset.study===studyMode));
+ const locus=source[pos]?.locus||"";
+ if(studyMode==="philology"){
+  note(word?"Palabra seleccionada: «"+word+"». Consultá su análisis léxico y posibles lemas en Lexicon; la selección por sí sola no determina su función morfosintáctica.":"Seleccioná una palabra en el texto original para investigarla en los diccionarios y el índice de Lexicon.");
+  add("Abrir Lexicon"+(word?" · "+word:""),studyUrl("vitruvia-lexicon.html",word?{q:word,mode:"palabra"}:{}));
+  add("Ficha bibliográfica de la obra",studyUrl("classics-work-record.html",{work}));
+ }else if(studyMode==="ecdotics"){
+  note("Pasaje "+ref+": la transcripción indexada no prueba por sí sola una lectura manuscrita. La ficha identifica la edición fuente y, cuando constan, los testigos individuales y las reproducciones disponibles.");
+  add("Testimonios y códices",studyUrl("classics-work-record.html",{work}));
+  add("Aparato y notas del lector","#bude-apparatus");
+ }else if(studyMode==="hermeneutics"){
+  note("Preguntas de interpretación para el pasaje "+ref+" (guía metodológica; no análisis automático certificado):");
+  questions(["¿Qué acepciones permite el contexto inmediato?","¿Qué presuposiciones históricas o culturales condicionan su lectura?","¿Qué cambia entre una traducción literal y una interpretación conceptual?"]);
+  add("Consultar contexto y edición",studyUrl("classics-work-record.html",{work}));
+ }else if(studyMode==="exegesis"){
+  note("Lectura contextual del pasaje "+ref+": separá explicación literal, sintaxis, contexto histórico y recepción. Las notas documentadas de esta edición se muestran en el apartado de comentarios.");
+  const record=source[pos]||{};let notes=0;
+  for(const field of ["readingNotes","notes","footnotes","commentary","comments","scholia","editorialNotes"]){
+   const value=record[field];if(typeof value==="string"&&value.trim())notes++;else if(Array.isArray(value))notes+=value.length;
+  }
+  note(notes?notes+" nota(s) asociadas registradas para esta unidad; consultá su procedencia en el aparato inferior.":"No constan notas exegéticas específicas en este registro para este pasaje.");
+  add("Notas editoriales","#bude-comments-body");
+ }else{
+  note("Esquema de análisis lógico para el pasaje "+ref+". Son preguntas de trabajo, no una inferencia automática sobre el autor.");
+  questions(["Identificar proposiciones y términos empleados.","Diferenciar premisas expresas de supuestos tácitos.","Reconstruir la conclusión y evaluar si se sigue de las premisas.","Contrastar objeciones y usos diferentes de los mismos términos."]);
+  add("Texto y referencias de la obra",studyUrl("classics-work-record.html",{work}));
+ }
+ panel.append(links);
+ el("study-evidence").textContent="Obra: "+title+" · Pasaje "+ref+" · "+studyNames[studyMode]+". Información de procedencia en la ficha y en el aparato inferior; los marcos interpretativos son orientativos.";
+}
+for(const tab of document.querySelectorAll("[data-study]"))tab.addEventListener("click",()=>{studyMode=tab.dataset.study;studyRender()});
+el("left-text").addEventListener("mouseup",()=>{
+ const selection=window.getSelection(),text=selection?.toString().trim()||"";
+ if(!text||text.length>80||/\s/.test(text)||!el("left-text").contains(selection.anchorNode))return;
+ selectedStudyWord=text;studyRender();
+});
+
 const lexiconLink=el("lexicon-link");document.addEventListener("selectionchange",()=>{
  const selection=window.getSelection(),word=selection?.toString().trim()||"";
  if(!word||word.length>80||/\\s/.test(word))return;
