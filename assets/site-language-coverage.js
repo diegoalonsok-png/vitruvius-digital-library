@@ -76,7 +76,7 @@ async function loadPageTranslations(){
   const response=await fetch(dir+'/data/i18n-pages/'+name+'.json',{cache:'no-cache'});
   if(!response.ok)return;
   const doc=await response.json();
-  if(doc.schema!=='vdl-static-page-translations-v1'||doc.source!==name||!doc.translations)return;
+  if(doc.schema!=='vdl-static-page-translations-v1'||doc.source!==name||!doc.translations||doc.complete!==true||doc.translatedSourcePhrases!==doc.eligibleSourcePhrases)return;
   pageDictionary=doc.translations;
   apply();
  }catch{/* Missing or offline dictionaries must not damage source content. */}
