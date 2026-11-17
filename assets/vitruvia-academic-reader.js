@@ -6,6 +6,8 @@
   for(let i=0;i<text.length;){
    const ch=String.fromCodePoint(text.codePointAt(i));
    const part=ch.normalize('NFD').replace(/\p{M}/gu,'').toLowerCase();
+   // Include decomposed combining marks in the preceding highlighted grapheme.
+   if(!part&&/\p{M}/u.test(ch)&&end.length)end[end.length-1]=i+ch.length;
    for(let j=0;j<part.length;j++){value+=part[j];begin.push(i);end.push(i+ch.length)}
    i+=ch.length;
   }
