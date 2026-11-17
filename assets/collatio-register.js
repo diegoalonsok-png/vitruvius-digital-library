@@ -21,7 +21,18 @@ const GRADO={
  "orden-dudoso":"Orden de folio dudoso",
  "conflicto-con-el-facsimil":"En conflicto con el facsímil",
  "aparato-en-prosa":"Aparato en prosa del Apéndice T"};
-let datos=null,filas=[],visibleCount=220;
+let datos=null,filas=[],visibleCount=220,bibliografia=new Map();
+const BIB_EDICIONES=["recensio-es","recensio-fr","theory-en"];
+function fichaEdicion(id){
+ const b=bibliografia.get(id);if(!b)return null;
+ const p=el("p","review-date");p.style.cssText="margin:8px 0 4px;line-height:1.55";
+ p.append(el("strong",null,(b.version||id)+" · "+(b.bibliographic_author||"Diego Kurilo")+". "+(b.bibliographic_title||b.title)+". "));
+ p.append(document.createTextNode((b.edition_statement||"")+" · "+[b.publication_place,b.publisher,b.year].filter(Boolean).join(", ")+". ISBN editorial declarado: "+(b.isbn||"no consignado")+(b.isbn_status==="publisher-declared-shared"?" (compartido; asignación individual pendiente de verificación)":"")+". "));
+ if(b.doi){const a=el("a",null,"DOI: "+b.doi);a.href="https://doi.org/"+b.doi;a.rel="noopener noreferrer";a.target="_blank";p.append(a)}else p.append("DOI no consignado");
+ return p;
+}
+function fichaAsociada(id){const b=bibliografia.get(id);return b?(b.bibliographic_title||b.title)+" · ISBN "+(b.isbn||"no consignado")+" · DOI "+(b.doi||"no consignado"):null;}
+
 const CONTROLES=new Set(["doble-fuente","fuente-unica"]);
 function estadoFiltro(e,estado){if(estado==="controlled")return CONTROLES.has(e.grado);
  if(estado==="review")return !CONTROLES.has(e.grado);
@@ -71,6 +82,12 @@ function fila(e){
   ? " · "+(EDITION[e.edition]||e.version)+" y "+e.bilingue
   : " · "+(EDITION[e.edition]||e.version);
  val.append(el("span","review-date",proc));
+ // Mantener las siglas ecdóticas en la lectura; desplegar abajo la identidad real.
+ if(bibliografia.size){const propia=fichaEdicion(e.edition);if(propia)val.append(propia);
+ const codes=(e.grado==="doble-fuente"?[e.bilingue]:[]).filter(Boolean);
+ for(const code of codes){const matched=BIB_EDICIONES.find(id=>id!==e.edition&&(String(code).toLowerCase().includes((bibliografia.get(id)?.version||"NO_MATCH").toLowerCase())||String(code).toLowerCase().includes(id)));
+ if(matched){const extra=fichaEdicion(matched);if(extra)val.append(extra)}}}
+
  if((e.motivosDeRevision||[]).length){
   const d=el("details");
   d.append(el("summary",null,"Por qué no alcanza el grado superior"));
@@ -156,6 +173,7 @@ async function init(){
   const r=await fetch(URL_DATA);
   if(!r.ok)throw Error("HTTP "+r.status);
   datos=await r.json();
+  try{const catalogResponse=await fetch("data/catalog.json",{cache:"no-cache"});if(!catalogResponse.ok)throw Error("HTTP "+catalogResponse.status);const catalog=await catalogResponse.json();bibliografia=new Map((catalog.editions||[]).filter(b=>BIB_EDICIONES.includes(b.id)).map(b=>[b.id,b]));}catch(error){console.warn("Referencias bibliográficas no disponibles",error)}
   if(!Array.isArray(datos.entradas)&&!Array.isArray(datos.confirmadas))throw Error("esquema inesperado");
   const fuente=datos.entradas||datos.confirmadas;
   const sig=new Set();
