@@ -234,7 +234,7 @@ html[data-parallel-view="true"] #simple-pair-inline{display:none!important}
   <label>Fondo <input id="reader-bg" type="color" value="#000000" aria-label="Elegir color del fondo del texto"></label>
   <label>Texto <input id="reader-fg" type="color" value="#e2e2e3" aria-label="Elegir color del texto"></label>
   <label>Fuente <select id="reader-font" aria-label="Fuente del texto">
-    <option value="serif">Georgia</option><option value="classic">Palatino</option><option value="sans">Sans</option><option value="mono">Monoespaciada</option><option value="typewriter">Máquina de escribir</option><option value="courier">Courier New</option><option value="ibm">IBM Plex Mono</option>
+    <option value="serif">Georgia</option><option value="classic">Palatino</option><option value="sans">Sans</option><option value="mono">Monoespaciada · como la muestra</option><option value="typewriter">Máquina de escribir</option><option value="courier">Courier New</option><option value="ibm">IBM Plex Mono</option>
   </select></label>
   <button type="button" id="reader-smaller" title="Reducir tamaño de letra" aria-label="Reducir tamaño de letra">A−</button>
   <output id="reader-size" aria-live="polite">20 px</output>
@@ -401,5 +401,30 @@ for(const type of ['pointerup','pointercancel','lostpointercapture'])aside.addEv
 <strong>© 2026 Editorial Sophia Lux · Arq. Diego Kurilo. Derechos reservados.</strong>
 <span style="opacity:.8">Los derechos sobre los materiales originales, el diseño y los aportes editoriales pertenecen a sus respectivos titulares. Los textos antiguos, facsímiles, imágenes y recursos de terceros conservan su situación jurídica y licencias propias.</span>
 </footer>
-</body>
+<style id="bibliotheca-visible-resize-grips">
+/* Loci sidebar grip: same discrete vertical three-dot handle as reading panes. */
+@media(min-width:901px){
+html:not([data-parallel-view="true"]):not([data-reading-mode="simple"]) .reader-grid>aside::after{
+content:"";position:absolute;right:-12px;top:50%;bottom:auto;transform:translateY(-50%);
+width:23px;height:94px;z-index:5;cursor:col-resize;touch-action:none;
+border:2px solid #6c6c73;border-radius:16px;background:
+radial-gradient(circle at 50% 41%,#b9b9c0 1.5px,transparent 2px),
+radial-gradient(circle at 50% 50%,#b9b9c0 1.5px,transparent 2px),
+radial-gradient(circle at 50% 59%,#b9b9c0 1.5px,transparent 2px),#232327;
+box-shadow:0 0 0 2px #111112}
+}
+.cl-dual-reader .cl-pane-splitter{position:relative;overflow:visible;touch-action:none}
+.cl-dual-reader .cl-pane-splitter::after{content:"";position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:23px;height:94px;border-radius:16px;border:2px solid #6c6c73;background:
+radial-gradient(circle at 50% 41%,#c2c2c6 1.5px,transparent 2px),
+radial-gradient(circle at 50% 50%,#c2c2c6 1.5px,transparent 2px),
+radial-gradient(circle at 50% 59%,#c2c2c6 1.5px,transparent 2px),#232327;box-shadow:0 0 0 2px #161618;pointer-events:none;z-index:5}
+.cl-dual-reader .cl-pane-splitter:hover::after,.cl-dual-reader .cl-pane-splitter:focus-visible::after{border-color:#b0b0b5;background-color:#35353b}
+@media(max-width:900px){.cl-dual-reader .cl-pane-splitter::after{width:94px;height:23px;background:
+radial-gradient(circle at 41% 50%,#c2c2c6 1.5px,transparent 2px),
+radial-gradient(circle at 50% 50%,#c2c2c6 1.5px,transparent 2px),
+radial-gradient(circle at 59% 50%,#c2c2c6 1.5px,transparent 2px),#232327}}
+@media print{.cl-dual-reader .cl-pane-splitter::after{display:none!important}}
+/* Mono text option remains selectable, preserving Latin and Greek original characters. */
+html body #passages[lang="la"],html body #passages[lang="grc"]{font-variant-ligatures:normal}
+</style></body>
 </html>
