@@ -63,6 +63,33 @@ try{
   checked++;
   await page.close();
  }
+ // Preserve one interface language while crossing different site sections.
+ {
+  const page=await browser.newPage();
+  await page.route(/^https?:\\/\\/(?!127\\.0\\.1|localhost)/,route=>route.abort());
+  const itinerary=[
+   ['index.html','.header-languages select'],
+   ['bibliotheca-graeca-latina.html','#language-toggle'],
+   ['vitruvia.html','#ui-language'],
+   ['auditoria-academica.html','#secondary-language'],
+   ['index.html','.header-languages select']
+  ];
+  for(const [lang,expected] of [['fr','fr'],['en','en'],['es','es']]){
+   await page.goto(base+itinerary[0][0],{waitUntil:'domcontentloaded'});
+   const home=page.locator(itinerary[0][1]).first();
+   await home.waitFor({state:'visible',timeout:15000});
+   await home.selectOption(lang);
+   for(const [file,selector] of itinerary.slice(1)){
+    await page.goto(base+file,{waitUntil:'domcontentloaded'});
+    const chosen=page.locator(selector).first();
+    await chosen.waitFor({state:'visible',timeout:15000});
+    await page.waitForFunction(l=>document.documentElement.lang===l,expected,{timeout:10000});
+    assert.equal(await chosen.inputValue(),expected,'Locale not retained on '+file);
+   }
+  }
+  await page.close();checked+=12;
+  console.log('PASS language persistence between home, Bibliotheca, Vitruvia and editorial pages');
+ }
  // The Bibliotheca keeps its own native Lexicon-like appearance button.
  {
   const page=await browser.newPage();
