@@ -200,6 +200,45 @@ const aliasAuthority={
  "caesar-gallico":["julio cesar","cesar julio","gaius iulius caesar","iulius caesar","julius caesar","caius julius caesar","γαϊος ιουλιος καισαρ","γαῖος ἰούλιος καῖσαρ"],
  "caesar-civili":["julio cesar","cesar julio","gaius iulius caesar","iulius caesar","julius caesar","γαῖος ἰούλιος καῖσαρ"]
 };
+// Autoridades compartidas por todas las obras: las variantes son claves de búsqueda,
+// nunca nuevos registros, traducciones ni sustituciones del nombre catalogado.
+const authorNameVariants={
+ strabo:["Estrabón","Estrabon","Strabo","Strabon","Στράβων","Strabōn"],
+ homer:["Homero","Homer","Homère","Homeros","Ὅμηρος"],
+ hesiod:["Hesíodo","Hesiodo","Hesiod","Hésiode","Ἡσίοδος"],
+ plato:["Platón","Platon","Plato","Πλάτων"],
+ aristotle:["Aristóteles","Aristoteles","Aristotle","Aristote","Ἀριστοτέλης"],
+ socrates:["Sócrates","Socrates","Socrate","Σωκράτης"],
+ xenophon:["Jenofonte","Xenophon","Xénophon","Ξενοφῶν"],
+ thucydides:["Tucídides","Tucidides","Thucydides","Thucydide","Θουκυδίδης"],
+ herodotus:["Heródoto","Herodoto","Herodotus","Hérodote","Ἡρόδοτος"],
+ plutarch:["Plutarco","Plutarch","Plutarque","Πλούταρχος"],
+ ptolemy:["Ptolomeo","Tolomeo","Ptolemy","Ptolémée","Claudius Ptolemaeus"],
+ sophocles:["Sófocles","Sofocles","Sophocles","Σοφοκλῆς"],
+ euripides:["Eurípides","Euripides","Εὐριπίδης"],
+ aeschylus:["Esquilo","Aeschylus","Eschyle","Αἰσχύλος"],
+ aristophanes:["Aristófanes","Aristofanes","Aristophanes","Aristophane"],
+ demosthenes:["Demóstenes","Demostenes","Demosthenes","Démosthène"],
+ polybius:["Polibio","Polybius","Polybe"],
+ diodorus:["Diodoro","Diodorus","Diodore","Diodoro Sículo","Diodorus Siculus"],
+ cicero:["Cicerón","Ciceron","Cicero","Cicéron","Marco Tulio Cicerón"],
+ vergil:["Virgilio","Virgil","Vergil","Virgile","Publius Vergilius Maro"],
+ virgil:["Virgilio","Virgil","Vergil","Virgile","Publius Vergilius Maro"],
+ ovid:["Ovidio","Ovid","Ovide","Publius Ovidius Naso"],
+ horace:["Horacio","Horace","Horatius","Quintus Horatius Flaccus"],
+ livy:["Tito Livio","Livio","Livy","Titus Livius","Tite-Live"],
+ tacitus:["Tácito","Tacito","Tacitus","Tacite"],
+ sallust:["Salustio","Sallust","Sallustius","Salluste"],
+ seneca:["Séneca","Seneca","Sénèque","Lucius Annaeus Seneca"],
+ lucan:["Lucano","Lucan","Lucain","Lucanus"],
+ suetonius:["Suetonio","Suetonius","Suétone"],
+ quintilian:["Quintiliano","Quintilian","Quintilianus","Quintilien"],
+ apuleius:["Apuleyo","Apuleius","Apulée"],
+ petronius:["Petronio","Petronius","Pétrone"],
+ vitruvius:["Vitruvio","Vitruvius","Vitruve","Marco Vitruvio Polión"],
+ caesar:["Julio César","Julio Cesar","Julius Caesar","Iulius Caesar","Jules César"],
+ nepos:["Cornelio Nepote","Cornelius Nepos","Nepote","Nepos"]
+};
 const greekRoman={"αι":"ai","ει":"ei","οι":"oi","ου":"ou","α":"a","β":"b","γ":"g","δ":"d","ε":"e","ζ":"z","η":"e","θ":"th","ι":"i","κ":"k","λ":"l","μ":"m","ν":"n","ξ":"x","ο":"o","π":"p","ρ":"r","σ":"s","τ":"t","υ":"y","φ":"ph","χ":"ch","ψ":"ps","ω":"o"};
 const foldAuthority=value=>normal(value).replace(/ς/g,"σ").replace(/αι|ει|οι|ου|[α-ω]/g,x=>greekRoman[x]||x)
  .replace(/\b(iulius|julius|iulio|iulios|julius|jules)\b/g,"julio")
@@ -248,7 +287,8 @@ const matchedSubjects=w=>subjects.filter(([id,label,aliases,pattern])=>
 const requestedSubject=query=>{const q=foldAuthority(query);return subjects.find(([id,label,aliases])=>aliases.some(x=>foldAuthority(x)===q))?.[0]||""};
 function rank(w,query){
  const queryTokens=tokens(query);if(!queryTokens.length)return 0;
- const authority=[w.author,w.title,w.id.replaceAll("-"," "),...(w.forms||[]),...(aliasAuthority[w.id]||[])];
+ const authorKey=String(w.id||"").split("-")[0];
+ const authority=[w.author,w.title,w.id.replaceAll("-"," "),...(w.forms||[]),...(w.originalAliases||[]),...(authorNameVariants[authorKey]||[]),...(aliasAuthority[w.id]||[])];
  let best=0;
  for(const field of authority){
   if(/\p{Script=Greek}/u.test(query)&&!/\p{Script=Greek}/u.test(field))continue;
@@ -452,7 +492,7 @@ function mount(parent,data){
  if(model||!parent||!Array.isArray(data?.catalog?.works)||!Array.isArray(data?.registry?.entries))return;
  const index=new Map();
  for(const w of data.catalog.works)index.set(w.id,{
-  id:w.id,title:w.title,author:w.author,genre:w.genre||"",subjects:Array.isArray(w.subjects)?w.subjects:[],topics:Array.isArray(w.topics)?w.topics:[],dating:w.dating||"",originalLanguage:w.language||w.originalLanguage||"",originalTitle:w.originalTitle||w.titleOriginal||w.tituloOriginal||"",latinTitle:w.latinTitle||"",greekTitle:w.greekTitle||"",originalAliases:Array.isArray(w.originalAliases)?w.originalAliases:[],forms:[w.title,w.id.replaceAll("-"," ")],
+  id:w.id,title:w.title,author:w.author,genre:w.genre||"",subjects:Array.isArray(w.subjects)?w.subjects:[],topics:Array.isArray(w.topics)?w.topics:[],dating:w.dating||"",originalLanguage:w.language||w.originalLanguage||"",originalTitle:w.originalTitle||w.titleOriginal||w.tituloOriginal||"",latinTitle:w.latinTitle||"",greekTitle:w.greekTitle||"",originalAliases:Array.isArray(w.originalAliases)?w.originalAliases:[],forms:[w.title,w.author,w.id.replaceAll("-"," ")],
   versions:[],facsimile:null,newWork:false
  });
  for(const e of data.registry.entries){
