@@ -7,6 +7,7 @@ run-name: Bibliotheca R2 · lote conservador de 12 grupos · ${{ github.event_na
 # Nueva solicitud 2026-11-17: incorporar solo grupos no existentes y verificar antes de contar obras.
 # Solicitud adicional 2026-11-17: ampliar Bibliotheca con otro lote seguro; ejecutar solo si la cola anterior ha terminado.
 # Solicitud 2026-11-17: nuevo lote de clásicos hacia la meta de 500, con indexación de los originales que superen validaciones.
+# Revisión 2026-11-17: ejecutar siguiente lote solo con fuentes no duplicadas, CTS corregidos y pruebas de extracción.
 on:
   workflow_dispatch:
   schedule:
