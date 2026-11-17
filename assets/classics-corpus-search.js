@@ -491,6 +491,33 @@ async function searchPassages(terms,{limit=600,workId="",language="",maxPerEditi
  rows.sort((a,b)=>a.ocr-b.ocr||a.author.localeCompare(b.author)||a.title.localeCompare(b.title)||a.locus.localeCompare(b.locus,undefined,{numeric:true}));
  return allMatches?rows:rows.slice(0,Math.max(1,Math.min(600,limit)));
 }
+// Return representative, documented passages from works explicitly sought by author.
+async function sampleWorkPassages(workIds,{limit=24,maxPerEdition=2}={}){
+ const ids=new Set((workIds||[]).filter(Boolean));
+ const entries=(await registry()).filter(e=>ids.has(e.workId)&&
+  e.format!=="historical-ocr-pages"&&e.format!=="remote-json-passages");
+ const rows=[];
+ for(let offset=0;offset<entries.length&&rows.length<limit;offset+=4){
+  await Promise.all(entries.slice(offset,offset+4).map(async e=>{
+   try{
+    const d=e.format==="html-text"?await loadHtml(e):
+     e.format==="structured-bilingual"?await loadStructured(e):await loadJson(e);
+    if(!d?.passages?.length)return;
+    const selection=d.passages.filter(p=>typeof p.text==="string"&&p.text.trim().length>=40).slice(0,maxPerEdition);
+    for(const p of selection){
+     let link=e.reader||(e.format==="html-text"?e.path:
+      "classics-text-reader.html?work="+encodeURIComponent(e.workId)+"&lang="+e.language);
+     if(e.format==="html-text"&&p.anchor)link+="#"+encodeURIComponent(p.anchor);
+     else if(e.format!=="html-text")link+=(link.includes("?")?"&":"?")+"locus="+encodeURIComponent(p.locus||"");
+     rows.push({workId:e.workId,author:e.author,title:e.title,language:e.language,
+      edition:e.edition||"",locus:String(p.locus||""),excerpt:p.text.slice(0,270)+(p.text.length>270?"…":""),
+      link,attribution:d.attribution||e.sourceDescription||"Texto indexado",sample:true});
+    }
+   }catch(e){console.warn("No se pudo leer una edición para muestras de autor",e)}
+  }));
+ }
+ return rows.slice(0,limit);
+}
 const literalSearch=cached("literal",search),conceptSearch=cached("semantic",semanticSearch);
 /* The main Vitruvia search must not hide attested Greek/Latin Conceptus
    correspondences merely because a literal hit exists. Keep both provenance
@@ -517,7 +544,7 @@ async function combinedSearch(q,{limit=6,semantic=false}={}){
 }
 
 window.ClassicsCorpusSearch={
- search:literalSearch,semanticSearch:conceptSearch,combinedSearch,searchPassages,indexSummary,
+ search:literalSearch,semanticSearch:conceptSearch,combinedSearch,searchPassages,sampleWorkPassages,indexSummary,
  works:LEGACY.map(e=>({id:e.workId,lang:e.language,author:e.author,title:e.title})),
  registry,diagnostics:()=>({...lastDiagnostics})
 };
