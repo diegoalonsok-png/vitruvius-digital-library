@@ -476,38 +476,29 @@ function render(){
  // linked to the actual scholarly record/reader; no covers or editorial cards.
  if(document.body.classList.contains("bibliotheca-plain-list")){
   const searched=rawQuery.trim();
-  list.replaceChildren();more.hidden=true;
-  // Do not render a 200+ line catalogue before the visitor searches.
-  if(normal(searched).length<2){
-   model.region.hidden=true;
-   count.textContent="";
-   return;
-  }
-  model.region.hidden=false;
-  const found=model.items.map(w=>({w,score:rank(w,searched)}))
+  list.replaceChildren();more.hidden=true;count.textContent="";
+  // Lexicon-style discovery: zero results until a query; at most ONE hit.
+  if(normal(searched).length<2){model.region.hidden=true;return;}
+  const top=model.items.map(w=>({w,score:rank(w,searched)}))
    .filter(x=>x.score>=55)
    .sort((a,b)=>b.score-a.score||
      a.w.author.localeCompare(b.w.author,"es",{sensitivity:"base"})||
-     a.w.title.localeCompare(b.w.title,"es",{sensitivity:"base"}));
-  count.textContent=found.length+" "+(found.length===1?"obra encontrada":"obras encontradas")+
-   " · Seleccioná un título para abrir el libro.";
-  if(!found.length){
-   list.append(make("li","No se encontraron obras. Probá con otro título, autor o grafía.","bws-empty"));
-   return;
-  }
-  for(const {w} of found.slice(0,12)){
-   const li=make("li",null,"bws-item");
-   const original=w.versions?.find(v=>["la","grc"].includes(v.language)&&safeReader(v.reader));
-   const readable=original||w.versions?.find(v=>safeReader(v.reader));
-   const destination=readable?safeReader(readable.reader):workLink(w.id);
-   const title=make("a",w.title,"bws-plain-title");
-   title.href=destination;
-   title.title=readable?"Abrir libro en el lector":"Consultar ficha académica; texto no disponible";
-   const author=make("span",w.author||"Autor no identificado","bws-plain-author");
-   li.append(title,author);
-   if(!readable)li.append(make("span"," · Ficha académica","bws-plain-status"));
-   list.append(li);
-  }
+     a.w.title.localeCompare(b.w.title,"es",{sensitivity:"base"}))[0];
+  if(!top){model.region.hidden=true;return;}
+  const w=top.w;
+  const original=w.versions?.find(v=>["la","grc"].includes(v.language)&&safeReader(v.reader));
+  const readable=original||w.versions?.find(v=>safeReader(v.reader));
+  // Only suggest a work that can actually be opened. A fiche is not a double reader.
+  if(!readable){model.region.hidden=true;return;}
+  const url=safeReader(readable.reader);
+  const destination=url?.startsWith("classics-text-reader.html?")
+   ?url+(url.includes("to=")?"":"&to=es")
+   :url;
+  const li=make("li",null,"bws-item");
+  const title=make("a",w.title+" — "+(w.author||"Autor no identificado"),"bws-plain-title");
+  title.href=destination;title.title="Abrir el libro en el visor de lectura doble";
+  li.append(title);list.append(li);
+  model.region.hidden=false;
   return;
  }
 
