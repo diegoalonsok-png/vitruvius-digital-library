@@ -339,7 +339,10 @@ def main():
         # reruns on the same day are idempotent; previously registered works
         # are still excluded by discover(). Nothing in R2 is replaced.
         slots = (len(groups) + args.limit - 1) // args.limit
-        slot = (datetime.now(timezone.utc).date().toordinal() % slots) if slots else 0
+        # A new GitHub Actions run should advance to another batch even on the same day.
+        # Local/manual runs retain deterministic daily rotation.
+        sequence = int(os.environ.get("GITHUB_RUN_NUMBER") or datetime.now(timezone.utc).date().toordinal())
+        slot = (sequence % slots) if slots else 0
         start = slot * args.limit
         groups = groups[start:start + args.limit]
         info["selectedSlot"] = slot
