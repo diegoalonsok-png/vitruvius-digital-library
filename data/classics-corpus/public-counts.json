@@ -1,221 +1,24 @@
 {
-  "schema": "vdl-classics-public-counts-v1",
-  "method": "Derived from literal search registry and built lexical index; excludes catalogue-only works. Historical HTML and remote corpora may have other search paths, not counted in indexed local editions.",
+  "schema": "vdl-classics-public-counts-v2",
+  "generated": "2026-11-17T12:30:55.461Z",
+  "method": "Local text files and index manifest cross-checked by original work/language; HTML word gates are not passage indices; historical OCR and unverified R2 are excluded from verified source-passage totals.",
+  "cataloguedWorks": 347,
   "registryEntries": 360,
   "registryDistinctWorks": 295,
-  "localRegisteredEditions": 353,
-  "localLexicallyIndexedEditions": 305,
-  "localLexicallyIndexedDistinctWorks": 247,
+  "localRegisteredEditions": 316,
+  "localIndexedEditions": 315,
+  "htmlWordGateEditions": 6,
+  "localLexicallyIndexedDistinctWorks": 250,
+  "localUnindexedEditions": [],
+  "remoteR2EditionsDeclaredNotLiveVerified": 44,
+  "historicalOcrEditions": 1,
+  "auditCounts": {
+    "indexed-local": 305,
+    "remote-unverified": 44,
+    "indexed-html-word-gate": 6,
+    "historical-ocr-separate-index": 1,
+    "indexed-through-edition-alias": 4
+  },
   "supplementaryDossiers": 69,
-  "registeredEditionsNotInLexicalIndex": [
-    {
-      "workId": "amiano-marcelino-es",
-      "language": "la"
-    },
-    {
-      "workId": "antologia-griega",
-      "language": "grc"
-    },
-    {
-      "workId": "apolonio-argonauticas",
-      "language": "grc"
-    },
-    {
-      "workId": "aquiles-tacio-leucipa",
-      "language": "grc"
-    },
-    {
-      "workId": "archimedes-fluitantibus",
-      "language": "grc"
-    },
-    {
-      "workId": "aristoteles-del-cielo",
-      "language": "grc"
-    },
-    {
-      "workId": "aristoteles-historia-animales",
-      "language": "grc"
-    },
-    {
-      "workId": "athenaeus-deipnosophistae",
-      "language": "grc"
-    },
-    {
-      "workId": "ausonio-obras",
-      "language": "la"
-    },
-    {
-      "workId": "baquilides-poemas",
-      "language": "grc"
-    },
-    {
-      "workId": "calimaco-himnos",
-      "language": "grc"
-    },
-    {
-      "workId": "cassius-dio-historia",
-      "language": "grc"
-    },
-    {
-      "workId": "claudiano-poemas",
-      "language": "la"
-    },
-    {
-      "workId": "cleonides-harmonica",
-      "language": "grc"
-    },
-    {
-      "workId": "epicuro-restos",
-      "language": "grc"
-    },
-    {
-      "workId": "esquines-discursos",
-      "language": "grc"
-    },
-    {
-      "workId": "euclid-optica",
-      "language": "grc"
-    },
-    {
-      "workId": "euclid-phaenomena",
-      "language": "grc"
-    },
-    {
-      "workId": "filostrato-apolonio",
-      "language": "grc"
-    },
-    {
-      "workId": "galeno-facultades-naturales",
-      "language": "grc"
-    },
-    {
-      "workId": "hero-belopoeica",
-      "language": "grc"
-    },
-    {
-      "workId": "hipocrates-obras",
-      "language": "grc"
-    },
-    {
-      "workId": "iseo-discursos",
-      "language": "grc"
-    },
-    {
-      "workId": "isocrates-discursos",
-      "language": "grc"
-    },
-    {
-      "workId": "jenofonte-ciropedia",
-      "language": "grc"
-    },
-    {
-      "workId": "jenofonte-economico",
-      "language": "grc"
-    },
-    {
-      "workId": "lisias-discursos",
-      "language": "grc"
-    },
-    {
-      "workId": "longino-sublime",
-      "language": "grc"
-    },
-    {
-      "workId": "longo-dafnis-cloe",
-      "language": "grc"
-    },
-    {
-      "workId": "menandro-comedias",
-      "language": "grc"
-    },
-    {
-      "workId": "minucio-felix-octavio",
-      "language": "la"
-    },
-    {
-      "workId": "origenes",
-      "language": "grc"
-    },
-    {
-      "workId": "platon-cratilo-parmenides",
-      "language": "grc"
-    },
-    {
-      "workId": "platon-protagoras",
-      "language": "grc"
-    },
-    {
-      "workId": "platon-teeteto-sofista",
-      "language": "grc"
-    },
-    {
-      "workId": "plotino-eneadas",
-      "language": "grc"
-    },
-    {
-      "workId": "plutarch-lives",
-      "language": "grc"
-    },
-    {
-      "workId": "plutarch-moralia",
-      "language": "grc"
-    },
-    {
-      "workId": "ps-aristotle-mechanica",
-      "language": "grc"
-    },
-    {
-      "workId": "quinto-esmirna-posthomericas",
-      "language": "grc"
-    },
-    {
-      "workId": "teocrito-bucolicos",
-      "language": "grc"
-    },
-    {
-      "workId": "theophrastus-historia-plantarum",
-      "language": "grc"
-    },
-    {
-      "workId": "thucydides-war",
-      "language": "grc"
-    },
-    {
-      "workId": "valerio-flaco-argonautica",
-      "language": "la"
-    },
-    {
-      "workId": "vitruvius",
-      "language": "en"
-    },
-    {
-      "workId": "vitruvius",
-      "language": "es"
-    },
-    {
-      "workId": "vitruvius",
-      "language": "fr"
-    },
-    {
-      "workId": "vitruvius",
-      "language": "la"
-    }
-  ],
-  "newGreekWorks": [
-    {
-      "id": "galen-adhortatio-artes",
-      "registered": true,
-      "lexicallyIndexed": true
-    },
-    {
-      "id": "galen-optimus-medicus-philosophus",
-      "registered": true,
-      "lexicallyIndexed": true
-    },
-    {
-      "id": "hippocrates-de-prisca-medicina",
-      "registered": true,
-      "lexicallyIndexed": true
-    }
-  ]
+  "localIndexPassageEditions": 309
 }
