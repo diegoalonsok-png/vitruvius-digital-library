@@ -30,7 +30,7 @@ function iniciar(){
   if(!tieneSelector()&&!document.getElementById("vitruvius-secondary-toolbar"))cargar("secondary-reader-controls.js?v=20261112-pastilla","secondary-reader-controls.js");
  };
  if(document.readyState==="complete")setTimeout(decidir,600);else window.addEventListener("load",()=>setTimeout(decidir,600),{once:true});
- cargar("site-language-coverage.js?v=20261117-shared-v1","site-language-coverage.js");
+ cargar("site-language-coverage.js?v=20261117-static-translations-v2","site-language-coverage.js");
  cargar("page-autotranslate.js?v=20261117-sitewide-v3","page-autotranslate.js");
  // Cualquier selector de idioma del sitio deja el idioma en <html lang>, que es lo que sigue el traductor.
  document.addEventListener("vitruvius:language-changed",e=>{const l=e.detail?.language;if(["es","en","fr"].includes(l)){document.documentElement.lang=l;try{localStorage.setItem(KEY,l)}catch{}}});
