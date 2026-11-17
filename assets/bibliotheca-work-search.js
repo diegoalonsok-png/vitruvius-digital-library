@@ -359,7 +359,8 @@ function singleLetter(value){
 }
 function letterMatch(w,letter,byTitle){
  const greek=/[\u0370-\u03ff\u1f00-\u1fff]/u.test(letter);
- const fields=byTitle?[w.title,w.originalTitle,w.latinTitle,w.greekTitle,...(w.originalAliases||[]),...(loadedAliases[w.id]||[])]:[w.author,...(aliasAuthority[w.id]||[])];
+ // Una sola letra busca por autor O por título, cualquiera sea el orden visible.
+ const fields=[w.author,w.title,w.originalTitle,w.titleOriginal,w.tituloOriginal,w.latinTitle,w.greekTitle,...(w.originalAliases||[]),...(loadedAliases[w.id]||[]),...(aliasAuthority[w.id]||[])];
  const candidates=greek?[...fields,w.title,w.originalTitle,w.greekTitle,w.titleOriginal,w.tituloOriginal,...(w.forms||[])]:fields;
  return candidates.some(value=>typeof value==="string"&&Boolean(value)&&
   (!greek||/[\u0370-\u03ff\u1f00-\u1fff]/u.test(value))&&
@@ -387,7 +388,8 @@ function render(){
   model.region.hidden=false;
   count.textContent=(typedLetter?"Inicial «"+rawQuery+"» · ":model.letter?"Inicial «"+model.letter+"» · ":model.r2Only?"Originales registrados en Cloudflare R2 · ":"Catálogo completo · ")+items.length+" obras. El registro documental no acredita por sí solo disponibilidad HTTP.";
   const all=[...items].sort((a,b)=>model.sortFilter.value==="title"?a.title.localeCompare(b.title,"es",{sensitivity:"base"}):a.author.localeCompare(b.author,"es",{sensitivity:"base"})||a.title.localeCompare(b.title,"es",{sensitivity:"base"}));
-  for(const w of all.slice(0,limit)){
+  // El filtro por inicial debe mostrar TODAS las obras, no solo las primeras 40.
+  for(const w of all.slice(0,typedLetter||model.letter?all.length:limit)){
    const li=make("li",null,"bws-item");
    appendWorkHeading(li,w);if(window.BibliothecaCoverMiniatures)li.prepend(window.BibliothecaCoverMiniatures.create(w));
    const meta=make("p",null,"bws-meta"),languages=[...new Set(w.versions.filter(v=>safeReader(v.reader)).map(v=>lang[v.language]||v.language))];
@@ -405,7 +407,7 @@ function render(){
    else if(!w.newWork&&!w.registryOnly)addLink(actions,"Ficha académica",workLink(w.id));
    li.append(actions);renderVitruvianCodices(li,w);list.append(li);
   }
-  if(all.length>limit){more.hidden=false;more.textContent="Mostrar más obras ("+(all.length-limit)+" restantes)"}
+  if(!typedLetter&&!model.letter&&all.length>limit){more.hidden=false;more.textContent="Mostrar más obras ("+(all.length-limit)+" restantes)"}
   return;
  }
  model.region.hidden=false;
