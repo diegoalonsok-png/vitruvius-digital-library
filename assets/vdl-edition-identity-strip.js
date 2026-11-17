@@ -6,11 +6,14 @@ if(window.__vdlEditionIdentityLoaded)return;
 window.__vdlEditionIdentityLoaded=true;
 if(window.top!==window.self||new URLSearchParams(location.search).get("embed")==="1")return;
 const page=(location.pathname.split("/").pop()||"index.html").replace(/\.html$/i,"");
+// Vitruvia is a universal search engine, not an editorial edition reader.
+// Never inject the three-edition bibliographic panel into its interface.
+if(page==="vitruvia")return;
 const detailedPages=new Set([
  "lector-bilingue","comparador-loci","aparato-critico","apparatus-bude",
  "aparato-comparativo","colacion","registro-ecdotico","cobertura-aparato-critico",
  "lector-critico","loci","indices-locorum","index-locorum","commentarius-perpetuus",
- "conspectus-testimoniorum","quaestio-philologica","vitruvia"
+ "conspectus-testimoniorum","quaestio-philologica"
 ]);
 // Vitruvia is a search interface, not an editorial edition dossier.
 if(page==="vitruvia")return;
