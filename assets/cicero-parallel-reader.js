@@ -7,8 +7,15 @@
  const heading=document.createElement('div');heading.className='cicero-parallel-tools';heading.setAttribute('role','group');heading.setAttribute('aria-label','Lectura bilingüe');
  const toggle=document.createElement('button');toggle.type='button';toggle.textContent=latin?'Latín + inglés':'English + Latine';toggle.setAttribute('aria-pressed','false');
  const other=document.createElement('a');other.href=peer;other.textContent=latin?'Abrir traducción inglesa ↗':'Abrir original latino ↗';other.target='_blank';other.rel='noopener noreferrer';
+ // Same side-by-side Bibliotheca reader used for other classical works.
+ // Automatic translations are explicitly distinguished from Miller's 1913 edition.
+ const reader=(right)=>'../classics-simple-parallel.html?work=cicero-officiis&left=la&right='+encodeURIComponent(right);
+ const parallel=document.createElement('a');parallel.href=reader('en');parallel.textContent='Leer enfrentado · latín / Miller (1913)';
+ const autoEs=document.createElement('a');autoEs.href=reader('auto-es');autoEs.textContent='Latín + traducción automática española';
+ const autoFr=document.createElement('a');autoFr.href=reader('auto-fr');autoFr.textContent='Latín + traducción automática francesa';
+ const autoEn=document.createElement('a');autoEn.href=reader('auto-en');autoEn.textContent='Latín + traducción automática inglesa';
  const note=document.createElement('small');note.textContent='Edición de Walter Miller (1913). Ambas versiones se leen en paralelo, sin afirmar una alineación automática de capítulos o párrafos.';
- heading.append(toggle,other,note);
+ heading.append(toggle,parallel,autoEs,autoFr,autoEn,other,note);
  const holder=document.createElement('div');holder.className='cicero-parallel-grid';
  const frame=document.createElement('iframe');frame.className='cicero-parallel-frame';frame.hidden=true;frame.loading='lazy';frame.title=latin?'De officiis · traducción inglesa Miller 1913':'De officiis · texto latino';
  main.before(heading);main.replaceWith(holder);holder.append(main,frame);
