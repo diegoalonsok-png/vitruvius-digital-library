@@ -122,9 +122,9 @@ try{
   const subtitle=page.locator('#modern-editions-heading span');
   const notable=page.locator('#obras-notables-heading strong');
   for(const [lang,title,detail,works] of [
-    ['en','MODERN EDITIONS','Rose and Krohn','NOTABLE WORKS'],
-    ['fr','ÉDITIONS MODERNES','Rose et Krohn','ŒUVRES REMARQUABLES'],
-    ['es','TRADUCCIONES MODERNAS','Rose y Krohn','OBRAS NOTABLES']
+    ['en','MODERN CRITICAL EDITIONS','Rose and Krohn','NOTABLE WORKS'],
+    ['fr','ÉDITIONS CRITIQUES MODERNES','Rose et Krohn','ŒUVRES REMARQUABLES'],
+    ['es','EDICIONES CRÍTICAS MODERNAS','Rose y Krohn','OBRAS NOTABLES']
   ]){
    await select.selectOption(lang);
    await page.waitForFunction(([expected,fragment,other])=>{
