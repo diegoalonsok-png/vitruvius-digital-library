@@ -122,7 +122,7 @@ mark.simple-match{background:#d8a442;color:#161616;border-radius:2px}
 </style><script defer src="assets/analytics-config.js?v=20261106-ga4-1"></script><script defer src="assets/analytics.js?v=20261106-ga4-1"></script></head><body><main>
 <div class="top"><h1 id="title">BIBLIOTHECA · VISOR SIMPLIFICADO</h1><nav class="actions" aria-label="Navegación de lectura"><a id="academic" href="classics-parallel-reader.html">Visor académico</a><button id="previous" type="button" aria-label="Pasaje anterior">‹</button><button id="next" type="button" aria-label="Pasaje siguiente">›</button></nav></div>
 <div class="toolbar" role="group" aria-label="Herramientas de lectura"><label>Original <select id="original-lang" aria-label="Idioma original"></select></label><label>Traducción <select id="translation-lang" aria-label="Idioma de la traducción"></select></label><label>Locus <input id="go-locus" type="search" placeholder="Ej. 2" aria-label="Locus o capítulo"></label><button id="go-button" type="button">Ir al locus</button><a id="lexicon-link" href="vitruvia-lexicon.html" style="border:1px solid #555;border-radius:7px;padding:8px 10px;color:#eee;text-decoration:none;font:13px system-ui">Diccionario · Lexicon</a><label>Palabra <input id="word-query" type="search" placeholder="Buscar palabra" aria-label="Buscar palabra"></label><button id="word-find" type="button" aria-label="Buscar próxima coincidencia">⌕</button><button id="smaller" type="button" aria-label="Reducir texto">A−</button><button id="larger" type="button" aria-label="Ampliar texto">A+</button><label>Color <select id="palette" aria-label="Colores"><option value="dark">Gris</option><option value="sepia">Sepia</option><option value="light">Marfil</option></select></label></div>
-<section class="book-search" aria-label="Búsqueda ampliada en la obra"><form id="book-search-form"><label for="book-search-input">Buscar palabra en la obra</label><input id="book-search-input" type="search" placeholder="Palabra o frase · griego o traducción" autocomplete="off"><select id="book-search-mode" aria-label="Tipo de búsqueda"><option value="exact">Exacta</option><option value="normalized">Ampliada · sin acentos ni mayúsculas</option><option value="prefix">Ampliada · inicio de palabra</option></select><select id="book-search-scope" aria-label="Texto de búsqueda"><option value="both">Original y traducción indexada</option><option value="original">Solo original</option><option value="translation">Solo traducción indexada</option></select><button type="submit">Buscar en todo el libro</button></form><div id="book-search-summary" role="status" aria-live="polite"></div><div class="search-results" id="book-search-results"></div></section><div class="share-tools" aria-label="Imprimir y compartir"><button id="print-passage" type="button">⎙ Imprimir pasaje</button><button id="share-email" type="button">✉ Correo</button><button id="share-whatsapp" type="button" aria-label="Compartir por WhatsApp">◉ WhatsApp</button><button id="save-pdf" type="button" title="Guardar el pasaje como PDF desde el diálogo de impresión" aria-label="Guardar como PDF">▤ PDF</button><span>Los enlaces compartidos conservan la obra y el locus actual.</span></div><div class="reader-utilities" aria-label="Herramientas de consulta y formato">
+<section class="book-search" aria-label="Búsqueda ampliada en la obra"><form id="book-search-form"><label for="book-search-input">Buscar palabra en la obra</label><input id="book-search-input" type="search" placeholder="Palabra o frase · griego o traducción" autocomplete="off"><select id="book-search-mode" aria-label="Tipo de búsqueda"><option value="exact">Exacta</option><option value="normalized" selected>Ampliada · acentos y transliteración griega</option><option value="prefix">Ampliada · inicio de palabra</option></select><select id="book-search-scope" aria-label="Texto de búsqueda"><option value="both">Original y traducción indexada</option><option value="original">Solo original</option><option value="translation">Solo traducción indexada</option></select><button type="submit">Buscar en todo el libro</button></form><div id="book-search-summary" role="status" aria-live="polite"></div><div class="search-results" id="book-search-results"></div></section><div class="share-tools" aria-label="Imprimir y compartir"><button id="print-passage" type="button">⎙ Imprimir pasaje</button><button id="share-email" type="button">✉ Correo</button><button id="share-whatsapp" type="button" aria-label="Compartir por WhatsApp">◉ WhatsApp</button><button id="save-pdf" type="button" title="Guardar el pasaje como PDF desde el diálogo de impresión" aria-label="Guardar como PDF">▤ PDF</button><span>Los enlaces compartidos conservan la obra y el locus actual.</span></div><div class="reader-utilities" aria-label="Herramientas de consulta y formato">
 <a id="search-lexicon" href="vitruvia-lexicon.html" target="_blank" rel="noopener noreferrer">Buscar en Lexicon</a>
 <a id="search-vitruvia" href="vitruvia.html" target="_blank" rel="noopener noreferrer">Buscar en Vitruvia</a>
 <button type="button" id="paper-switch" aria-pressed="false" title="Activar o desactivar papel suave">Fondo · papel suave</button><label class="paper-style-label">Textura <select id="paper-style" aria-label="Estilo de papel"><option value="canson">Hoja Canson tenue</option><option value="book">Libro crema</option></select></label>
@@ -795,18 +795,34 @@ const lexiconLink=el("lexicon-link");document.addEventListener("selectionchange"
 });
 // Búsqueda de la totalidad de las unidades realmente indexadas, sin atribución de lemas no comprobados.
 const searchForm=el("book-search-form"),searchResults=el("book-search-results"),searchSummary=el("book-search-summary");
-const foldSearch=t=>String(t||"").normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLocaleLowerCase();
+const foldSearch=t=>String(t||"").normalize("NFD").replace(/[\u0300-\u036f\u1dc0-\u1dff]/g,"").toLocaleLowerCase().replace(/ς/g,"σ");
+const greekToLatin={α:"a",β:"b",γ:"g",δ:"d",ε:"e",ζ:"z",η:"e",θ:"th",ι:"i",κ:"k",λ:"l",μ:"m",ν:"n",ξ:"x",ο:"o",π:"p",ρ:"r",σ:"s",τ:"t",υ:"u",φ:"ph",χ:"ch",ψ:"ps",ω:"o"};
+const latinizeGreek=t=>foldSearch(t).replace(/[α-ω]/g,c=>greekToLatin[c]||c);
+const hasGreek=t=>/[\u0370-\u03ff\u1f00-\u1fff]/u.test(t);
+
 function searchMatches(text,query,mode){
- const original=String(text||""),t=mode==="exact"?original.toLocaleLowerCase():foldSearch(original);
- const q=mode==="exact"?query.toLocaleLowerCase():foldSearch(query);
- if(!q)return [];
- const positions=[];let from=0;
+ const original=String(text||""),requested=String(query||"").trim();if(!requested)return [];
+ const crossScript=mode!=="exact"&&hasGreek(original)&&!hasGreek(requested)&&/[a-z]/i.test(requested);
+ const positions=[];
+ if(crossScript){
+  // Match full Greek words by their scholarly approximate Latin transcription.
+  // Original source offsets are preserved; this is not morphological lemmatization.
+  const target=latinizeGreek(requested);
+  for(const match of original.matchAll(/[\p{Script=Greek}\p{M}]+/gu)){
+   const transliteration=latinizeGreek(match[0]);
+   if(mode==="prefix"?transliteration.startsWith(target):transliteration===target)positions.push(match.index);
+  }
+  return positions;
+ }
+ const t=mode==="exact"?original.toLocaleLowerCase():foldSearch(original);
+ const q=mode==="exact"?requested.toLocaleLowerCase():foldSearch(requested);
+ let from=0;
  while(from<t.length){
   const at=t.indexOf(q,from);if(at<0)break;
   const prefix=mode!=="prefix"||at===0||!/[\p{L}\p{N}]/u.test(t[at-1]);
   const end=mode!=="exact"||at+q.length===t.length||!/[\p{L}\p{N}]/u.test(t[at+q.length]);
-  const start=mode!=="exact"||at===0||!/[\p{L}\p{N}]/u.test(t[at-1]);
-  if(prefix&&end&&start)positions.push(at);
+  const begin=mode!=="exact"||at===0||!/[\p{L}\p{N}]/u.test(t[at-1]);
+  if(prefix&&end&&begin)positions.push(at);
   from=at+Math.max(q.length,1);
  }
  return positions;
@@ -829,7 +845,7 @@ function renderBookSearch(){
    rows.push({item,side:set.side,lang:set.lang,count:matches.length,excerpt});
   }
  }
- searchSummary.textContent=found+" pasajes · "+occurrences+" coincidencias en "+sets.map(x=>LANG[x.lang]||x.lang).join(" y ")+(scope!=="original"&&!translation.length?" · Traducción automática de todo el libro no indexada; solo se busca el original.":"");
+ searchSummary.textContent=found+" pasajes · "+occurrences+" coincidencias en "+sets.map(x=>LANG[x.lang]||x.lang).join(" y ")+(scope!=="original"&&!translation.length?" · Traducción automática de todo el libro no indexada; solo se busca el original.":"")+(hasGreek(source[0]?.text||"")&&!hasGreek(term)&&mode!=="exact"?" · Consulta latina transliterada al griego de forma aproximada; no constituye búsqueda por lema.":"");
  if(!rows.length){const p=document.createElement("p");p.textContent="No hay coincidencias con este criterio en las versiones indexadas disponibles.";searchResults.append(p);return}
  const fragment=document.createDocumentFragment();
  for(const row of rows.slice(0,500)){
@@ -849,14 +865,14 @@ function renderBookSearch(){
  if(rows.length>500){const p=document.createElement("p");p.textContent="Se muestran las primeras 500 unidades de "+rows.length+". Refiná la búsqueda para reducir los resultados.";searchResults.append(p)}
 }
 searchForm.addEventListener("submit",e=>{e.preventDefault();renderBookSearch()});
-el("word-query").addEventListener("keydown",e=>{if(e.key==="Enter"){el("book-search-input").value=e.target.value;renderBookSearch()}});
+function openQuickWordSearch(){const word=el("word-query").value.trim();if(!word)return;el("book-search-input").value=word;el("book-search-mode").value="normalized";renderBookSearch();document.querySelector(".book-search").scrollIntoView({behavior:"smooth",block:"start"})}
 function passagePermalink(){const u=new URL(location.href);u.searchParams.delete("utm_source");u.searchParams.set("work",work);u.searchParams.set("left",leftLang);u.searchParams.set("right",el("translation-lang").value);if(source[pos]?.locus)u.searchParams.set("locus",source[pos].locus);return u.href}
 function shareMessage(){return title+" · "+locusCaption(source[pos]?.locus)+"\n"+passagePermalink()}
 el("print-passage").addEventListener("click",()=>window.print());
 el("save-pdf").addEventListener("click",()=>window.print());
 el("share-email").addEventListener("click",()=>{location.href="mailto:?subject="+encodeURIComponent(title+" · "+locusCaption(source[pos]?.locus))+"&body="+encodeURIComponent(shareMessage())});
 el("share-whatsapp").addEventListener("click",()=>{window.open("https://wa.me/?text="+encodeURIComponent(shareMessage()),"_blank","noopener,noreferrer")});
-el("word-find").onclick=()=>{searchTerm=el("word-query").value.trim().slice(0,80);if(!searchTerm){draw();return;}const low=searchTerm.toLocaleLowerCase();const matches=record=>String(record?.text||"").toLocaleLowerCase().includes(low);let next=-1;for(let n=0;n<source.length;n++){const idx=(pos+n)%source.length;if(matches(source[idx])||matches(translation.find(p=>key(p.locus)===key(source[idx].locus)))){next=idx;break;}}if(next<0){status("No se encontró esa palabra en los pasajes con locus correspondiente.");return;}pos=next;draw();};el("word-query").addEventListener("keydown",e=>{if(e.key==="Enter")el("word-find").click();});appearance();
+el("word-find").onclick=openQuickWordSearch;el("word-query").addEventListener("keydown",e=>{if(e.key==="Enter"){e.preventDefault();openQuickWordSearch()}});appearance();
 el("previous").onclick=()=>{if(pos>0){pos--;draw();}};
 el("next").onclick=()=>{if(pos<source.length-1){pos++;draw();}};
 load().catch(e=>{paragraph("left-text",e.message);paragraph("right-text","Vuelve al visor académico para consultar las ediciones disponibles.");status("No se modificó ningún texto del catálogo.");linkBack();});
