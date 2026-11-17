@@ -381,15 +381,10 @@ function translationLanguageForSelection(){
  return byEdition[scope]||(['es','fr','en'].includes(textLanguage)?textLanguage:null);
 }
 function syncTranslationWithSearchSelection(){
+ // Each visible bilingual result is anchored to its own indexed edition.
+ // Filter changes must not swap an edition's already published translation.
  const lang=translationLanguageForSelection();
- if(lang&&lang!==selectedTranslationLanguage){
-  selectedTranslationLanguage=lang;
-  for(const article of document.querySelectorAll('#search-results .result-parallel')){
-   const selector=article.querySelector('.parallel-language');
-   if(selector)selector.value=lang;
-  }
-  refreshRightTranslations();
- }
+ if(lang)selectedTranslationLanguage=lang;
 }
 function groupMatchesByLocus(hits){
  const groups=new Map();
@@ -451,12 +446,11 @@ function searchExcerpt(text,max=1700){
  return (begin?'… ':'')+text.slice(begin,end)+(end<text.length?' …':'');
 }
 async function renderRightTranslation(article,group){
- const lang=article.querySelector('.parallel-language')?.value||selectedTranslationLanguage,revision=translationRevision;
+ const lang=article.dataset.editionLanguage||'es',revision=translationRevision;
  const holder=$('.parallel-translation-text',article),
  source=$('.parallel-translation-source',article);
  const ed=edition(translationEditionIds[lang]);
  if(!holder||!source||!ed)return;
- article.querySelector('.parallel-language').value=lang;
  holder.lang=lang;
  holder.textContent='Cargando traducción '+(languages[lang]||lang)+'…';
  source.textContent='';
@@ -511,7 +505,7 @@ const VITRUVIUS_BOOK_TITLE={
  en:"The Architect of Theory: Vitruvius and the Intellectual World of Roman Antiquity (V297)"
 };
 function criticalPassageCitation(article,group){
- const lang=article.querySelector(".parallel-language")?.value||selectedTranslationLanguage||"es";
+ const lang=article.dataset.editionLanguage||"es";
  const doi=VITRUVIUS_DOI[lang];
  const locus=String(group?.locus||article.querySelector(".result-locus")?.textContent||"").trim();
  const latin=article.querySelector(".parallel-latin .parallel-passage")?.innerText?.trim()||"";
@@ -566,6 +560,7 @@ function renderMore(){
   const article=document.createElement('article');
   article.className='result result-parallel';
   article.dataset.groupIndex=String(shown+i);
+  article.dataset.editionLanguage=rowLanguage;
   const directHits=group.hits.filter(h=>!h.partial_match&&!['aligned_locus','related_concept'].includes(h.match_type));
   const resultType=directHits.length
    ?'Coincidencia en esta edición · '+directHits.length+' resultado'+(directHits.length===1?'':'s')+' textual'+(directHits.length===1?'':'es')
@@ -584,9 +579,7 @@ function renderMore(){
        '<p class="parallel-small">Este texto latino procede de la edición indicada arriba. Consultar variantes en el aparato crítico.</p>'+
      '</section>'+
      '<section class="parallel-translation" aria-label="Traducción del mismo locus">'+
-       '<div class="parallel-heading"><label>TRADUCCIÓN · IDIOMA <select class="parallel-language" aria-label="Elegir idioma de la traducción del pasaje">'+
-         '<option value="es">Castellano</option><option value="fr">Français</option><option value="en">English</option>'+
-       '</select></label></div>'+
+       '<div class="parallel-heading"><span>TRADUCCIÓN · '+escapeHTML(translationNames[rowLanguage])+' · '+escapeHTML(publicEditionName(e))+'</span></div>'+
        '<p class="parallel-passage parallel-translation-text" aria-live="polite">Cargando traducción…</p>'+
        '<div class="parallel-match-controls"><p class="parallel-match-note" hidden></p><button class="parallel-equivalent-toggle" type="button" aria-pressed="true" hidden>Ocultar equivalencias</button></div>'+
        '<div class="parallel-translation-source"></div>'+
@@ -596,12 +589,6 @@ function renderMore(){
      '<a class="parallel-open-translation" href="'+escapeHTML(readerURL(translationEditionIds[rowLanguage],group.locus))+'">Leer traducción en contexto →</a>'+
      '<a href="aparato-critico.html?locus='+encodeURIComponent(group.locus)+'">Aparato crítico →</a>'+
    '</div>';
-  const selector=$('.parallel-language',article);
-  selector.value=rowLanguage;
-  selector.addEventListener('change',()=>{
-   // One reader's language choice must not silently switch other editions.
-   translationRevision++;refreshRightTranslations();
-  });
   const toggle=$('.parallel-equivalent-toggle',article);
   toggle.addEventListener('click',()=>{
    const hidden=article.classList.toggle('hide-equivalent-marks');
