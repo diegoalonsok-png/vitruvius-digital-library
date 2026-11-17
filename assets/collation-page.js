@@ -116,7 +116,7 @@ const historicalLatin={"rose-1899":new Map(),"krohn-1912":new Map()};
 async function show(locus){
  idx=corpus.findIndex(p=>p.locus===locus);if(idx<0)idx=0;const P=corpus[idx];locus=P.locus;
  const u=new URL(location.href);u.searchParams.set("locus",locus);history.replaceState(null,"",u);
- $("#coll-locus").value=label(locus);if($("#coll-preface"))$("#coll-preface").value=locus.includes(".praef.")?locus:"";$("#coll-prev").disabled=idx===0;$("#coll-next").disabled=idx>=corpus.length-1;
+ $("#coll-locus").value=label(locus);if($("#coll-all-loci"))$("#coll-all-loci").value=locus;if($("#coll-preface"))$("#coll-preface").value=locus.includes(".praef.")?locus:"";$("#coll-prev").disabled=idx===0;$("#coll-next").disabled=idx>=corpus.length-1;
  document.title="Colación · Vitr. "+label(locus)+" · Vitruvius Digital Library";
  const root=$("#coll-body");root.replaceChildren();
  const head=el("h2",null,"Vitr., De arch. "+label(locus));root.append(head);
@@ -263,7 +263,15 @@ async function boot(){
   }catch{return {...spec,byLocus:new Map()}}
  })));
  
- const list=$("#coll-list");for(const p of corpus){const o=el("option");o.value=label(p.locus);list.append(o)}
+ const list=$("#coll-list"),all=$("#coll-all-loci");let currentGroup=null,lastBook="";
+ for(const p of corpus){
+  const o=el("option");o.value=label(p.locus);list.append(o);
+  if(all){const book=p.locus.split(".")[0];if(book!==lastBook){currentGroup=el("optgroup");currentGroup.label="Libro "+(R[Number(book)]||book)+" · "+book;all.append(currentGroup);lastBook=book}
+   const opt=el("option",null,p.locus.includes(".praef.")?"Prefacio · § "+p.locus.split(".")[2]+" · "+label(p.locus):"Capítulo "+p.locus.split(".")[1]+" · § "+p.locus.split(".")[2]+" · "+label(p.locus));
+   opt.value=p.locus;currentGroup.append(opt);
+  }
+ }
+ if(all)all.addEventListener("change",()=>{if(all.value)show(all.value)});
  // The canonical corpus includes prefatory passages for every one of the ten books.
  const preface=$("#coll-preface");
  if(preface){
