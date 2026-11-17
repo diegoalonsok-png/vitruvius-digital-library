@@ -10,6 +10,18 @@ C={"id":"tlg0001.tlg001","title":"Δοκιμή","author":"Test","language":"grc"
 def tei(body,licence=True,lang="grc",urn="urn:cts:greekLit:tlg0001.tlg001.perseus-grc1"):
     return f'''<TEI xmlns="http://www.tei-c.org/ns/1.0"><teiHeader><fileDesc><titleStmt><title xml:lang="grc">Δοκιμή</title><author>Test</author><editor>Editor</editor></titleStmt><publicationStmt><availability>{'<licence target="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</licence>' if licence else ''}</availability></publicationStmt><sourceDesc><bibl><title>Edition</title><editor>Editor</editor><imprint><date>1900</date></imprint></bibl></sourceDesc></fileDesc></teiHeader><text><body><div type="edition" n="{urn}" xml:lang="{lang}">{body}</div></body></text></TEI>'''.encode()
 
+class CtsDeduplication(unittest.TestCase):
+    def test_cts_edition_urn_exposes_underlying_work_code(self):
+        import re
+        pattern=r"urn:cts:(?:greekLit|latinLit):([A-Za-z0-9_-]+\\.[A-Za-z0-9_-]+)\\."
+        for urn,expected in [
+            ("urn:cts:greekLit:tlg0385.tlg001.perseus-grc2","tlg0385.tlg001"),
+            ("urn:cts:latinLit:phi0119.phi001.perseus-lat2","phi0119.phi001"),
+        ]:
+            match=re.search(pattern,urn)
+            self.assertIsNotNone(match)
+            self.assertEqual(match.group(1),expected)
+
 class EditorialPriority(unittest.TestCase):
     def test_foundational_before_major_before_other(self):
         samples = [
