@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "updated": "2026-11-14",
+  "updated": "2026-11-17",
   "scope": "Repertorio de testimonios manuscritos individualizados para Bibliotheca Graeca et Latina; incluye registros procedentes de catálogos institucionales o bibliografía especializada, con nivel de verificación por testimonio.",
   "method": "Cada signatura es un testimonio histórico, no un autógrafo. Texto original, manuscrito, edición impresa y traducciones son capas independientes. Se respetan derechos de reproducción institucional. Tanda Didaché: se distingue el testimonio griego fragmentario del siglo IV (P. Oxy. XV 1782), el códice griego completo de 1056 (H) y el apógrafo griego completo del siglo XVI (Elbasan 82). Un catálogo sin imágenes no se anuncia como visor. Accesos alternativos por testigo: distinguir enlace a imagen directa, visor de institución, catálogo y bibliografía; los enlaces de colección no verifican por sí solos un manuscrito concreto. Tanda latina de fuentes institucionales: los enlaces no acreditan prioridad cronológica global ni completitud textual; distinción expresa entre visor publicado y catálogo sin imágenes. Se incorpora Or. 9271 como versión copta indirecta de la Didaché: puede ser más antiguo que H, pero no se colaciona carácter por carácter como griego sin retroversión filológica. Actualización 2026-11-14: BnF Grec 1662 (Diodoro, libros XI–XV), Laurenziana Plut.73.1 (Celso, datación agregada a distinguir del catálogo descriptivo), Parisinus gr. 2722 (Pseudo-Apolodoro; referencia secundaria, visor Gallica no inspeccionado directamente). Incorporación de BnF Grec 2179, ff. 1–171v, cotejando los metadatos INHA-AGORHA con el repertorio BBAW/CMG; se citan las fuentes primarias y especializadas sin afirmar colación de variantes. Control de autoridad: se fusionaron dos identificadores internos que aludían al mismo BnF Grec 2179, preservando la clave preexistente dioscorides-paris.",
   "rights": "Las imágenes del Vaticano no se reproducen ni almacenan en GitHub; se enlaza a su visor oficial.",
@@ -3082,6 +3082,44 @@
       "verificationLevel": "institutional_catalogue_plus_research_academy_2026-11-14",
       "collationStatus": "El registro identifica códice y extensión; no se ha establecido la relación con la edición de Wellmann ni cotejado una lectura de forma autónoma.",
       "catalogueAlternative": "https://gallica.bnf.fr/ark:/12148/btv1b525002505"
+    },
+    {
+      "id": "homeric-hymns-leiden-bpg-33h",
+      "workIds": [
+        "homeric-hymns"
+      ],
+      "title": "Hymni Homerici — Codex Leidensis (M, olim Mosquensis)",
+      "library": "Leiden, Universiteitsbibliotheek",
+      "shelfmark": "BPG 33 H",
+      "date": "Primera mitad del siglo XV (datación del códice, no de los himnos)",
+      "dateStart": 1401,
+      "language": "grc",
+      "witnessKind": "direct_original_greek",
+      "siglum": "M (tradición editorial de los Himnos homéricos)",
+      "coverage": "Folios 31r–50r: himnos a Dioniso (final fragmentario), Deméter, Apolo, Hermes, Afrodita y trece himnos breves; el manuscrito es incompleto y no reproduce necesariamente los 33 himnos de la colección moderna.",
+      "folioRange": "ff. 31r–50r",
+      "material": "Papel (según descripción codicológica; comprobar folios y cuadernos en el catálogo institucional)",
+      "record": "https://pinakes.irht.cnrs.fr/notices/cote/37662/",
+      "viewer": "https://iiif.biblissima.fr/collections/manifest/95790aa1610bb55add49e4ed370142e5d7f582e7",
+      "viewerKind": "institutional_aggregator",
+      "viewerRole": "Visor interoperable IIIF de la digitalización conservada en Leiden, accesible mediante Biblissima",
+      "manifest": "https://digitalcollections.universiteitleiden.nl/iiif_manifest/item:1615207/manifest",
+      "verificationUrl": "https://iiif.biblissima.fr/collections/manifest/95790aa1610bb55add49e4ed370142e5d7f582e7",
+      "verification": "Biblissima / Digital Collections Leiden; control complementario en Pinakes (IRHT-CNRS)",
+      "cataloguingStatus": "Signatura, foliación y acceso digital documentados; NO se ha realizado colación propia de variantes ni auditoría del orden de los himnos.",
+      "accessStatus": "Digitalización publicada de Leiden, localizada en Biblissima; comprobar visor y condiciones de reutilización.",
+      "rights": "Derechos y licencia según ficha de Leiden / Biblissima; no se alojan copias en este repositorio.",
+      "citation": "Leiden, Universiteitsbibliotheek, BPG 33 H (M), ff. 31r–50r, Hymni Homerici; ficha de Leiden/Biblissima y Pinakes.",
+      "alternativeLinks": [
+        {
+          "title": "Registro Biblissima",
+          "url": "https://iiif.biblissima.fr/collections/manifest/95790aa1610bb55add49e4ed370142e5d7f582e7"
+        },
+        {
+          "title": "Ficha Pinakes",
+          "url": "https://pinakes.irht.cnrs.fr/notices/cote/37662/"
+        }
+      ]
     }
   ],
   "editions": [
