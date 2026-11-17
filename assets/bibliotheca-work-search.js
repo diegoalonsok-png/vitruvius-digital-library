@@ -475,40 +475,39 @@ function render(){
  // Bibliotheca front: permanent, simple alphabetical list. Titles remain
  // linked to the actual scholarly record/reader; no covers or editorial cards.
  if(document.body.classList.contains("bibliotheca-plain-list")){
-  const {list,count,more}=model;
-  model.region.hidden=false;
-  list.replaceChildren();
-  // Plain list must respect the typed author/title, alphabet and facet filters.
-  // Do not silently replace search results with the entire catalogue.
-  const selectedLetter=typedLetter||model.letter;
-  const searched=q.trim();
-  const works=model.items.filter(w=>
-   (!searched||rank(w,searched)>=65)&&
-   (!selectedLetter||letterMatch(w,normal(selectedLetter),model.sortFilter.value==="title"))&&
-   (!model.authorFilter.value.trim()||rank({...w,title:"",forms:[w.author,...(aliasAuthority[w.id]||[])]},model.authorFilter.value.trim())>=65)&&
-   (!model.genreFilter.value||ancientGenre(w.genre)===model.genreFilter.value)&&
-   (!model.subjectFilter.value||matchedSubjects(w).includes(model.subjectFilter.value))&&
-   (!model.centuryFilter.value||centuryOf(w.dating)===model.centuryFilter.value)&&
-   (!model.periodFilter.value||periodOfWork(w)===model.periodFilter.value)&&
-   (!model.languageFilter.value||w.versions.some(v=>v.language===model.languageFilter.value))
-  ).sort((a,b)=>
-   (searched?rank(b,searched)-rank(a,searched):0)||
-   (model.sortFilter.value==="title"
-    ?a.title.localeCompare(b.title,"es",{sensitivity:"base"})
-    :a.author.localeCompare(b.author,"es",{sensitivity:"base"})||
-     a.title.localeCompare(b.title,"es",{sensitivity:"base"})));
-  for(const w of works){
-   const li=make("li",null,"bws-item");
-   const title=make("a",w.title,"bws-plain-title");
-   const original=w.versions?.find(v=>["la","grc"].includes(v.language)&&safeReader(v.reader));
-   title.href=!w.newWork&&!w.registryOnly?workLink(w.id):
-    original?.reader&&safeReader(original.reader)?safeReader(original.reader):
-    "classics-work-record.html?work="+encodeURIComponent(w.id);
-   const author=make("span",w.author||"Autor no identificado","bws-plain-author");
-   li.append(title,author);list.append(li);
+  const searched=rawQuery.trim();
+  list.replaceChildren();more.hidden=true;
+  // Do not render a 200+ line catalogue before the visitor searches.
+  if(normal(searched).length<2){
+   model.region.hidden=true;
+   count.textContent="";
+   return;
   }
-  count.textContent=works.length+(searched?" obras encontradas para «"+searched+"»":" obras en el catálogo");
-  more.hidden=true;
+  model.region.hidden=false;
+  const found=model.items.map(w=>({w,score:rank(w,searched)}))
+   .filter(x=>x.score>=55)
+   .sort((a,b)=>b.score-a.score||
+     a.w.author.localeCompare(b.w.author,"es",{sensitivity:"base"})||
+     a.w.title.localeCompare(b.w.title,"es",{sensitivity:"base"}));
+  count.textContent=found.length+" "+(found.length===1?"obra encontrada":"obras encontradas")+
+   " · Seleccioná un título para abrir el libro.";
+  if(!found.length){
+   list.append(make("li","No se encontraron obras. Probá con otro título, autor o grafía.","bws-empty"));
+   return;
+  }
+  for(const {w} of found.slice(0,12)){
+   const li=make("li",null,"bws-item");
+   const original=w.versions?.find(v=>["la","grc"].includes(v.language)&&safeReader(v.reader));
+   const readable=original||w.versions?.find(v=>safeReader(v.reader));
+   const destination=readable?safeReader(readable.reader):workLink(w.id);
+   const title=make("a",w.title,"bws-plain-title");
+   title.href=destination;
+   title.title=readable?"Abrir libro en el lector":"Consultar ficha académica; texto no disponible";
+   const author=make("span",w.author||"Autor no identificado","bws-plain-author");
+   li.append(title,author);
+   if(!readable)li.append(make("span"," · Ficha académica","bws-plain-status"));
+   list.append(li);
+  }
   return;
  }
 
@@ -714,10 +713,19 @@ function mount(parent,data){
  if(document.body.classList.contains("bibliotheca-plain-list")){
   const visible=document.getElementById("bibliotheca-lexicon-q");
   if(visible){
-   const sync=()=>{input.value=visible.value;model.letter="";model.limit=40;render()};
+   // Move results directly below the visible search bar, as in Lexicon.
+   const visiblePanel=visible.closest(".bibliotheca-lexicon-simple");
+   if(visiblePanel)visiblePanel.insertAdjacentElement("afterend",section);
+   const sync=()=>{input.value=visible.value;model.letter="";model.limit=12;render()};
    visible.addEventListener("input",sync);
    visible.addEventListener("search",sync);
    visible.addEventListener("change",sync);
+   const searchForm=document.getElementById("bibliotheca-lexicon-form");
+   searchForm?.addEventListener("submit",event=>{
+    event.preventDefault();event.stopImmediatePropagation();sync();
+    const first=list.querySelector("a");
+    if(first)first.focus();
+   },true);
    sync();
   }
  }
