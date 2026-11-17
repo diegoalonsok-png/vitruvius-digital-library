@@ -638,7 +638,7 @@ $("print").addEventListener("click",()=>window.print());
 // Apariencia funcional: variables CSS compartidas por lector independiente y panel comparado.
 const READER_STYLE_KEY="vitruvia.classic.appearance.v3."+work;
 const OLD_COLOR_KEY="vitruvia.classic.colors."+work;
-const APPEARANCE_DEFAULTS=Object.freeze({background:"#fffdf7",foreground:"#202b35",font:"serif",size:20,italic:false,align:"justify"});
+const APPEARANCE_DEFAULTS=Object.freeze({background:"#18191b",foreground:"#e5e5e5",font:"serif",size:20,italic:false,align:"justify"});
 const appearance={...APPEARANCE_DEFAULTS};
 const validHex=x=>typeof x==="string"&&/^#[0-9a-f]{6}$/i.test(x);
 const invertHex=x=>"#"+[1,3,5].map(i=>(255-parseInt(x.slice(i,i+2),16)).toString(16).padStart(2,"0")).join("");
@@ -683,10 +683,11 @@ try{
   if(legacy)validAppearance({background:legacy.bg,foreground:legacy.fg});
  }
 }catch{}
+if(["#fffdf7","#e6d5b7"].includes(appearance.background.toLowerCase())){appearance.background="#18191b";appearance.foreground="#e5e5e5";}
 if(p.get("parallel")==="1")document.documentElement.dataset.parallelView="true";
 paintAppearance(false);
 for(const [id,bg,fg] of [
- ["reader-ivory","#fffdf7","#202b35"],["reader-sepia","#e6d5b7","#463526"],["reader-night","#000000","#e2e2e3"]
+ ["reader-ivory","#242426","#e5e5e5"],["reader-sepia","#202023","#dddde0"],["reader-night","#101011","#e5e5e5"]
 ]){
  $(id).addEventListener("click",()=>{appearance.background=bg;appearance.foreground=fg;paintAppearance()});
 }
