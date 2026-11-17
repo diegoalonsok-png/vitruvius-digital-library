@@ -249,7 +249,7 @@ html[data-parallel-view="true"] #simple-pair-inline{display:none!important}
  <div id="results" role="status" aria-live="polite"></div>
 </section>
 <div class="reader-grid">
-<aside><strong id="toc-title">Capítulos / unidades editoriales</strong><p class="sub" id="toc-help">Los loci pertenecen a esta edición; no equivalen a folios manuscritos.</p><ol id="toc" aria-label="Índice de loci y unidades textuales"></ol></aside>
+<aside><strong id="toc-title">Capítulos / unidades editoriales</strong><div class="loci-width-tools"><label for="loci-width-control">Ancho de loci <output id="loci-width-value">230 px</output></label><input id="loci-width-control" type="range" min="125" max="420" step="5" value="230" aria-label="Modificar ancho del índice de loci"></div><p class="sub" id="toc-help">Los loci pertenecen a esta edición; no equivalen a folios manuscritos.</p><ol id="toc" aria-label="Índice de loci y unidades textuales"></ol></aside>
 <article class="reader">
 <div class="reader-toolbar"><form id="locus-form" class="academic-locus-form"><label for="locus-query">Ir a locus</label><input id="locus-query" placeholder="1.1 o URN CTS" autocomplete="off"><button type="submit">Ir</button><output id="locus-status" role="status"></output></form><button id="prev" type="button">← Anterior</button><strong id="current-locus" aria-live="polite" aria-atomic="true"></strong><div class="reader-nav-actions"><a id="simple-pair-inline" href="classics-simple-parallel.html">Lectura simple</a><button id="next" type="button">Siguiente →</button></div></div>
 
@@ -372,5 +372,32 @@ html[data-parallel-view="true"] #simple-pair-inline{display:none!important}
 <strong>© 2026 Editorial Sophia Lux · Arq. Diego Kurilo. Derechos reservados.</strong>
 <span style="opacity:.8">Los derechos sobre los materiales originales, el diseño y los aportes editoriales pertenecen a sus respectivos titulares. Los textos antiguos, facsímiles, imágenes y recursos de terceros conservan su situación jurídica y licencias propias.</span>
 </footer>
-</body>
+<style id="loci-width-style">
+@media(min-width:901px){html:not([data-parallel-view="true"]):not([data-reading-mode="simple"]) .reader-grid{grid-template-columns:minmax(125px,var(--loci-width,230px)) minmax(0,1fr)!important;gap:12px}
+html:not([data-parallel-view="true"]):not([data-reading-mode="simple"]) .reader-grid>aside{position:relative;min-width:0}
+html:not([data-parallel-view="true"]):not([data-reading-mode="simple"]) .reader-grid>aside:after{content:"";position:absolute;right:-7px;top:0;bottom:0;width:12px;cursor:col-resize;z-index:2}}
+.loci-width-tools{margin:9px 0;padding:7px 0 10px;border-bottom:1px solid #48484c;color:#bcbcc0;font:12px/1.4 Arial,sans-serif}
+.loci-width-tools label{display:flex;justify-content:space-between;gap:8px;margin-bottom:6px}
+.loci-width-tools input{display:block;width:100%;accent-color:#94949a;cursor:ew-resize}
+.reader-grid>aside{background:#111112!important;color:#e5e5e5!important;border-color:#414144!important}
+.reader-grid>aside #toc li button{background:#242427!important;color:#e1e1e3!important;border:1px solid #404044!important;border-radius:6px!important}
+.reader-grid>aside #toc li button[aria-current=true]{background:#36363b!important;border-left:3px solid #a3a3a9!important}
+@media(max-width:900px){.loci-width-tools{display:none}}
+@media print{.loci-width-tools{display:none!important}}
+</style><script id="loci-width-behavior">
+(()=>{'use strict';
+const grid=document.querySelector('.reader-grid'),aside=grid?.querySelector(':scope>aside');
+const slider=document.getElementById('loci-width-control'),out=document.getElementById('loci-width-value');
+if(!grid||!aside||!slider||!out)return;
+const key='vitruvia:classics:loci-width';
+const clamp=v=>Math.max(125,Math.min(420,Math.round(v/5)*5));
+function set(v,save=true){const n=clamp(Number(v)||230);grid.style.setProperty('--loci-width',n+'px');slider.value=n;out.textContent=n+' px';if(save)try{localStorage.setItem(key,String(n))}catch{}}
+let saved=230;try{saved=Number(localStorage.getItem(key))||230}catch{}set(saved,false);
+slider.addEventListener('input',()=>set(slider.value));
+let drag=false,startX=0,startW=0;
+aside.addEventListener('pointerdown',e=>{if(innerWidth<=900||document.documentElement.classList.contains('cl-biblio-expanded'))return;const rect=aside.getBoundingClientRect();if(Math.abs(e.clientX-rect.right)>12||e.target.closest('.loci-width-tools'))return;drag=true;startX=e.clientX;startW=rect.width;aside.setPointerCapture(e.pointerId);e.preventDefault()});
+aside.addEventListener('pointermove',e=>{if(drag)set(startW+e.clientX-startX)});
+for(const type of ['pointerup','pointercancel','lostpointercapture'])aside.addEventListener(type,()=>drag=false);
+})();
+</script></body>
 </html>
