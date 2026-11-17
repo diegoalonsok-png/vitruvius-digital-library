@@ -643,13 +643,21 @@ function mount(parent,data){
  const allLetters=make("button","Todas las letras");allLetters.type="button";allLetters.setAttribute("aria-pressed","true");
  allLetters.addEventListener("click",()=>{input.value="";model.letter="";model.limit=40;clearAlphabet();allLetters.setAttribute("aria-pressed","true");render()});
  alphabet.append(allLetters);
- for(const [label,letters] of rows){
-  const group=make("div",null,"bws-alphabet-group"),head=make("p",label,"bws-alphabet-heading");group.append(head);
+ for(const [rowIndex,[label,letters]] of rows.entries()){
+  const isGreekOrHistorical=rowIndex>0;
+  const container=isGreekOrHistorical?make("details",null,"bws-alphabet-expander"):alphabet;
+  if(isGreekOrHistorical){
+   const toggle=make("summary","▼ Desplegar "+label,"bws-alphabet-toggle");
+   container.append(toggle);
+  }
+  const group=make("div",null,"bws-alphabet-group");
+  if(!isGreekOrHistorical)group.append(make("p",label,"bws-alphabet-heading"));
   for(const [name,value] of letters){
    const b=make("button",name);b.type="button";b.setAttribute("aria-pressed","false");
    b.addEventListener("click",()=>{input.value="";model.letter=value;model.limit=40;clearAlphabet();b.setAttribute("aria-pressed","true");render()});group.append(b);
   }
-  alphabet.append(group);
+  container.append(group);
+  if(isGreekOrHistorical)alphabet.append(container);else alphabet.append(group);
  }
  const advanced=make("details");advanced.className="bws-advanced";
  const summary=make("summary","Filtros avanzados · AUTOR, género, siglo, período, idioma y alfabeto");
