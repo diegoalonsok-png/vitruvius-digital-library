@@ -368,6 +368,15 @@ function scholarlyExcerpt(r,e){
 }
 // A search can find the same passage in different editions. Present one pair
 // per canonical locus while preserving all raw hits for counts, CSV and print.
+/* Scholarly title + edition identifiers for both facing-reading headers. */
+function parallelEditionIdentity(ed){
+ if(!ed)return '';
+ const title=escapeHTML(bookTitle(ed));
+ const doi=String(ed.doi||'').replace(/^https?:\/\/doi\.org\//,'').trim();
+ const doiHtml=doi?'<a href="https://doi.org/'+escapeHTML(doi)+'" target="_blank" rel="noopener noreferrer">DOI '+escapeHTML(doi)+'</a>':'DOI no registrado';
+ const isbn=ed.isbn?' · ISBN '+escapeHTML(ed.isbn)+' <span title="ISBN compartido declarado, asignación individual sin verificar">(compartido; por verificar)</span>':'';
+ return '<span class="parallel-edition-identity"><span class="parallel-edition-book-title">'+title+'</span><small class="parallel-edition-ids">'+doiHtml+isbn+'</small></span>';
+}
 const translationEditionIds={es:'recensio-es',fr:'recensio-fr',en:'theory-en'};
 const translationNames={es:'Castellano · V514',fr:'Français · V554',en:'English · V297'};
 const parallelIndexCache=new Map();
@@ -483,6 +492,8 @@ async function renderRightTranslation(article,group){
    toggle.setAttribute('aria-pressed',String(!article.classList.contains('hide-equivalent-marks')));
    toggle.textContent=article.classList.contains('hide-equivalent-marks')?'Mostrar equivalencias':'Ocultar equivalencias';
   }
+  const identity=article.querySelector('.parallel-translation-identity');
+  if(identity)identity.innerHTML=parallelEditionIdentity(ed);
   const page=p.pdf_pages?.translation;
   const ref=p.locus!==group.locus?' · bloque que abarca el locus solicitado':'';
   source.innerHTML='<span class="parallel-source-label">Fuente de la traducción: '+escapeHTML(ed.version)+' · Diego Kurilo · '+escapeHTML(languages[lang])+(page?' · PDF p. '+escapeHTML(page):' · página PDF no registrada')+escapeHTML(ref)+'</span><p class="parallel-biblio">'+bibliographyHTML(ed)+'</p>';
@@ -577,14 +588,14 @@ function renderMore(){
    '<p class="result-locus">Libro '+roman(r.book)+' · '+(r.chapter==='praef'?'Prólogo':'Capítulo '+escapeHTML(r.chapter))+' · Sección '+escapeHTML(r.section)+'</p>'+
    '<div class="parallel-columns">'+
      '<section class="parallel-latin" lang="la" aria-label="Texto latino original">'+
-       '<div class="parallel-heading"><span>LATÍN · EDICIÓN '+escapeHTML(e.version)+'</span><strong>'+escapeHTML(e.version)+' · Latín'+(pdfpage?' · PDF p. '+escapeHTML(pdfpage):' · PDF: página no identificada')+'</strong></div>'+
+       '<div class="parallel-heading"><span class="parallel-edition-language">LATÍN · TEXTO ORIGINAL</span>'+parallelEditionIdentity(e)+'<small class="parallel-page-citation">'+(pdfpage?'PDF p. '+escapeHTML(pdfpage):'PDF: página no identificada')+'</small></div>'+
        '<p class="parallel-passage">'+((parallelHighlight(latinParagraph,{query:lastQuery,lang:'la',latin:r.latin})?.equivalent||parallelHighlight(latinParagraph,{query:lastQuery,lang:'la',latin:r.latin})?.direct)?parallelHighlight(latinParagraph,{query:lastQuery,lang:'la',latin:r.latin}).html:resultSnippet({snippet:latinParagraph,form:'',context_start:null,context_length:null}))+'</p>'+
        '<div class="parallel-latin-source" aria-label="Procedencia bibliográfica de la edición latina"><span class="parallel-source-label">Fuente del latín: '+escapeHTML(e.version)+' · Diego Kurilo · Latín'+(pdfpage?' · PDF p. '+escapeHTML(pdfpage):' · página PDF no registrada')+'</span><p class="parallel-biblio">'+bibliographyHTML(e)+'</p></div>'+
        '<p class="parallel-small">Este texto latino procede de la edición indicada arriba. Consultar variantes en el aparato crítico.</p>'+
      '</section>'+
      '<section class="parallel-translation" aria-label="Traducción del mismo locus">'+
-       '<div class="parallel-heading"><label>TRADUCCIÓN · IDIOMA <select class="parallel-language" aria-label="Elegir idioma de la traducción del pasaje">'+
-         '<option value="es">Castellano · V514</option><option value="fr">Français · V554</option><option value="en">English · V297</option>'+
+       '<div class="parallel-heading"><span class="parallel-translation-identity">'+parallelEditionIdentity(edition(translationEditionIds[rowLanguage]))+'</span><label>IDIOMA <select class="parallel-language" aria-label="Elegir idioma de la traducción del pasaje">'+
+         '<option value="es">Castellano</option><option value="fr">Français</option><option value="en">English</option>'+
        '</select></label></div>'+
        '<p class="parallel-passage parallel-translation-text" aria-live="polite">Cargando traducción…</p>'+
        '<div class="parallel-match-controls"><p class="parallel-match-note" hidden></p><button class="parallel-equivalent-toggle" type="button" aria-pressed="true" hidden>Ocultar equivalencias</button></div>'+
