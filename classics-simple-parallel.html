@@ -84,6 +84,12 @@ function locusParts(value){
  const simple=raw.match(/^(\d+(?:\.\d+)*)$/);
  return {raw,work:null,ref:simple?.[1]||null};
 }
+// Presentación humana del lugar textual. La URN CTS permanece como identificador interno.
+function displayLocus(value){
+ const p=locusParts(value);
+ return p?.ref||String(value||"").trim();
+}
+function locusCaption(value){return "Pasaje "+displayLocus(value)}
 function findLocusIndex(passages,requested){
  if(!requested||!Array.isArray(passages))return -1;
  const exact=passages.findIndex(item=>item.locus===requested);
@@ -233,7 +239,7 @@ async function translateCurrent(token){
   if(token!==renderToken||!historic)return;
   if(automaticCache.has(id))return;
   paragraph("right-text",historic.text);
-  el("right-head").textContent="EDICIÓN HISTÓRICA · "+(LANG[historic.language]||historic.language.toUpperCase())+" · "+record.locus;
+  el("right-head").textContent="EDICIÓN HISTÓRICA · "+(LANG[historic.language]||historic.language.toUpperCase())+" · "+locusCaption(record.locus);
   budeUpdate("historical",historic.language);
   status("Edición histórica alojada visible mientras se solicita la traducción automática al "+(LANG[target]||target)+".");
  });
@@ -315,9 +321,9 @@ function budeUpdate(kind="pending",versionLanguage=""){
  const vers=editionMetadata.get(translationLang)||{},versEntry=availableEditions.get(translationLang)||{};
  el("bude-dossier").href="classics-work-record.html?work="+encodeURIComponent(work);
  budeRows("bude-original-details",[
-  ["Locus / identificador",passage?.locus||""],
+  ["Pasaje de la obra",displayLocus(passage?.locus)],
   ["Tipo de unidad",passage?.locusKind||""],
-  ["Identificador de la fuente",passage?.sourceUrn||(typeof orig.sourceUrn==="string"?orig.sourceUrn:"")],
+  ["Identificador CTS de procedencia (uso técnico)",passage?.sourceUrn||(typeof orig.sourceUrn==="string"?orig.sourceUrn:"")],
   ["Lengua",LANG[leftLang]||leftLang],
   ["Fuente y atribución",orig.attribution||origEntry.sourceDescription||""],
   ["Fuente editorial",orig.source||"",orig.source||""],
@@ -347,15 +353,15 @@ function budeUpdate(kind="pending",versionLanguage=""){
 function draw(){
  const token=++renderToken;el("translate").hidden=true;
  const a=source[pos],locus=a?.locus||"";
- el("title").textContent=title.toUpperCase()+" · "+locus;
- el("left-head").textContent=(LANG[leftLang]||leftLang.toUpperCase())+" · "+locus;
+ el("title").textContent=title+" · "+locusCaption(locus);
+ el("left-head").textContent=(LANG[leftLang]||leftLang.toUpperCase())+" · "+locusCaption(locus);
  paragraph("left-text",a?.text);
  const match=findLocusIndex(translation,locus);const exact=match>=0?translation[match]:null;
- el("right-head").textContent=(exact?"EDICIÓN ALOJADA · ":"TRADUCCIÓN AUTOMÁTICA · ")+(LANG[exact?rightLang:targetLang]||"TRADUCCIÓN")+" · "+locus;
+ el("right-head").textContent=(exact?"EDICIÓN ALOJADA · ":"TRADUCCIÓN AUTOMÁTICA · ")+(LANG[exact?rightLang:targetLang]||"TRADUCCIÓN")+" · "+locusCaption(locus);
  if(exact){paragraph("right-text",exact.text);status("Traducción histórica alojada; verificar procedencia editorial y equivalencia del locus.");budeUpdate("indexed",rightLang);}
  else {budeUpdate("pending");void translateCurrent(token);}
  el("previous").disabled=pos<=0;el("next").disabled=pos>=source.length-1;
- if(a?.locus){q.set("locus",a.locus);el("go-locus").value=a.locus;history.replaceState(null,"",location.pathname+"?"+q.toString());}
+ if(a?.locus){q.set("locus",a.locus);el("go-locus").value=displayLocus(a.locus);history.replaceState(null,"",location.pathname+"?"+q.toString());}
  linkBack();
 }
 async function getEdition(entry,lang){
