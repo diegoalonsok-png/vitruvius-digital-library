@@ -389,10 +389,29 @@ function originalTitle(w){
  if(!name||normal(name)===normal(w.title))return "";
  return {name,language:language==="grc"||greekScript(name)?"grc":"la"};
 }
+/* Display attested catalogue title aliases beside original forms; never suggest
+   that a translated title means a translated full-text edition is hosted. */
+function spanishAuthorName(w){
+ const key=String(w.id||"").split("-")[0];
+ const candidate=authorNameVariants[key]?.[0]||"";
+ return candidate&&normal(candidate)!==normal(w.author)?candidate:"";
+}
+function spanishWorkTitle(w){
+ const names=loadedAliases[w.id];
+ // The multilingual alias inventory records Spanish first, except the
+ // Vitruvius authority entry, whose first entries are author names.
+ const candidate=w.id==="vitruvius"?"Los diez libros de arquitectura":Array.isArray(names)?names[0]:"";
+ return candidate&&normal(candidate)!==normal(w.title)?candidate:"";
+}
+function bilingualWorkLabel(w,author=true){
+ const title=w.title+(spanishWorkTitle(w)?" — "+spanishWorkTitle(w):"");
+ const authorText=w.author+(spanishAuthorName(w)?" — "+spanishAuthorName(w):"");
+ return author?title+" · "+authorText:title;
+}
 function appendWorkHeading(item,w){
  const heading=make("div",null,"bws-heading");
- const primary=make("strong",w.title);primary.className="bws-work-title";
- heading.append(primary,make("span"," · "+w.author));
+ const primary=make("strong",bilingualWorkLabel(w,false));primary.className="bws-work-title";
+ heading.append(primary,make("span"," · "+w.author+(spanishAuthorName(w)?" — "+spanishAuthorName(w):"")));
  item.append(heading);
  const orig=originalTitle(w);
  if(orig){const line=make("p",null,"bws-original-title");
@@ -505,11 +524,12 @@ function render(){
    const books=model.items.filter(w=>String(w.id||"").split("-")[0]===foundAuthor.key&&readerFor(w))
     .sort((a,b)=>a.title.localeCompare(b.title,"es",{sensitivity:"base"}));
    if(!books.length){model.region.hidden=true;return;}
-   const heading=make("li",foundAuthor.name||"Autor","bws-author-heading");
+   const sample=model.items.find(w=>String(w.id||"").split("-")[0]===foundAuthor.key);
+   const heading=make("li",(foundAuthor.name||"Autor")+(sample&&spanishAuthorName(sample)?" — "+spanishAuthorName(sample):""),"bws-author-heading");
    list.append(heading);
    for(const w of books){
     const row=make("li",null,"bws-item");
-    const link=make("a",w.title,"bws-plain-title");
+    const link=make("a",bilingualWorkLabel(w,false),"bws-plain-title");
     link.href=readerFor(w);link.title="Abrir el libro en su lector";
     row.append(link);list.append(row);
    }
@@ -519,7 +539,7 @@ function render(){
   const match=scored.find(x=>readerFor(x.w));
   if(!match){model.region.hidden=true;return;}
   const row=make("li",null,"bws-item");
-  const link=make("a",match.w.title+" — "+(match.w.author||"Autor no identificado"),"bws-plain-title");
+  const link=make("a",bilingualWorkLabel(match.w),"bws-plain-title");
   link.href=readerFor(match.w);link.title="Abrir el libro en su lector";
   row.append(link);list.append(row);
   model.region.hidden=false;return;
