@@ -64,7 +64,7 @@ jobs:
             python scripts/sync-classics-coverage.py
             python scripts/sync-bibliotheca-github-r2.py
             node scripts/audit-classical-corpus.mjs
-            git add data/bibliotheca-graeca-latina-I-bce-I-ce.json data/classics-corpus/search-registry.json data/r2/classics-expansion-index.json data/r2/classics-expansion-manifest.json data/classics-corpus/coverage-audit.json data/classics-corpus/translation-availability-222.json data/r2/bibliotheca-inventario-unificado.json
+            git add data/bibliotheca-graeca-latina-I-bce-I-ce.json data/classics-corpus/search-registry.json data/r2/classics-expansion-index.json data/r2/classics-expansion-manifest.json data/classics-corpus/coverage-audit.json data/classics-corpus/translation-availability-222.json data/r2/bibliotheca-inventario-unificado.json data/cifras-corpus.json
             if git diff --cached --quiet; then break; fi
             git commit -m 'Incorporar originales TEI en R2 con índices, procedencia y preservación de GitHub'
             if git push origin HEAD:main; then break; fi
