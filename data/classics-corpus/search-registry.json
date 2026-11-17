@@ -2,8 +2,8 @@
   "schema": "vitruvia-classics-search-registry-v1",
   "updated": "2026-11-16",
   "description": "Registro verificable de transcripciones HTML y textos JSON existentes que admiten búsqueda literal de contenido. No incluye automáticamente PDF escaneados, facsímiles ni fichas sin texto. Los índices auxiliares por locus y el aparato crítico se declaran por separado; no se suman a versiones textuales originales ni implican colación autóptica.",
-  "count": 357,
-  "works": 292,
+  "count": 360,
+  "works": 295,
   "entries": [
     {
       "workId": "aeneas-tacticus-poliorketika",
@@ -1385,6 +1385,16 @@
       "sourceDescription": "Frontinus, Strategemata, texto latino Loeb (1925), basado en Gundermann (1887). Transcripción TEI Corpus Corporum / Universidad de Zúrich (2013), 4 libros, 50 capítulos, 595 unidades. Libro IV de atribución disputada; identificadores TEI corregidos/documentados sin pretensión de aparato crítico."
     },
     {
+      "workId": "galen-adhortatio-artes",
+      "author": "Galeno",
+      "title": "Προτρεπτικὸς ἐπὶ τὰς τέχνας · Adhortatio ad artes addiscendas",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/galen-adhortatio-artes-grc.json",
+      "reader": "classics-text-reader.html?work=galen-adhortatio-artes&lang=grc",
+      "sourceDescription": "OpenGreekAndLatin First1KGreek · TEI griego por capítulos, CC BY-SA 4.0; atribución y cotejo según fuente, no manuscrito diplomático"
+    },
+    {
       "workId": "galen-ars-medica",
       "author": "Galeno",
       "title": "Τέχνη ἰατρική",
@@ -1403,6 +1413,16 @@
       "path": "data/classics-corpus/galen-de-usu-partium-grc.json",
       "reader": "classics-text-reader.html?work=galen-de-usu-partium&lang=grc",
       "sourceDescription": "OpenGreekAndLatin First1KGreek TEI · fuente editada documentada, sin colación automática"
+    },
+    {
+      "workId": "galen-optimus-medicus-philosophus",
+      "author": "Galeno",
+      "title": "Ὅτι ἄριστος ἰατρὸς καὶ φιλόσοφος · Quod optimus medicus sit quoque philosophus",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/galen-optimus-medicus-philosophus-grc.json",
+      "reader": "classics-text-reader.html?work=galen-optimus-medicus-philosophus&lang=grc",
+      "sourceDescription": "OpenGreekAndLatin First1KGreek · TEI griego por capítulos, CC BY-SA 4.0; atribución y cotejo según fuente, no manuscrito diplomático"
     },
     {
       "workId": "galeno-facultades-naturales",
@@ -1529,6 +1549,16 @@
       "path": "data/classics-corpus/hippocrates-aphorisms-grc.json",
       "reader": "classics-text-reader.html?work=hippocrates-aphorisms&lang=grc",
       "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
+      "workId": "hippocrates-de-prisca-medicina",
+      "author": "Corpus hipocrático",
+      "title": "Περὶ ἀρχαίης ἰητρικῆς · De prisca medicina",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/hippocrates-de-prisca-medicina-grc.json",
+      "reader": "classics-text-reader.html?work=hippocrates-de-prisca-medicina&lang=grc",
+      "sourceDescription": "OpenGreekAndLatin First1KGreek · TEI griego por capítulos, CC BY-SA 4.0; atribución y cotejo según fuente, no manuscrito diplomático"
     },
     {
       "workId": "homer-iliad",
