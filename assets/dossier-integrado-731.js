@@ -48,7 +48,8 @@ function init(){
  section.append(element("h3","Collatio editionum · aparato comparativo por locus"));
  section.append(element("p","Dossier de localización y cotejo digital por locus; muestra el estado de lectura, divergencias candidatas y fragmentos de las tres traducciones. No declara cotejo autóptico de Rose, Krohn ni H."));
  const form=element("form");form.style.cssText="display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin:12px 0";
- const label=element("label","Libro y locus ");label.htmlFor="vdl-dossier-locus";const field=element("select");field.id="vdl-dossier-locus";field.style.cssText="font:inherit;min-width:240px;max-width:100%;padding:7px";label.append(field);form.append(label);
+ const bookLabel=element("label","Libro ");bookLabel.htmlFor="vdl-dossier-book";const bookField=element("select");bookField.id="vdl-dossier-book";bookField.style.cssText="font:inherit;min-width:110px;padding:7px";bookLabel.append(bookField);form.append(bookLabel);
+ const label=element("label","Locus ");label.htmlFor="vdl-dossier-locus";const field=element("select");field.id="vdl-dossier-locus";field.style.cssText="font:inherit;min-width:230px;max-width:100%;padding:7px";label.append(field);form.append(label);
  const go=element("button","Examinar locus");go.type="submit";go.style.cssText="font:inherit;padding:7px 12px";form.append(go);section.append(form);
  
  const status=element("p","Cargando dossier…");status.id="vdl-dossier-status";status.setAttribute("role","status");section.append(status);
@@ -56,12 +57,19 @@ function init(){
  const target=document.getElementById("bude-unit")||document.getElementById("bude-content");
  if(target)target.insertAdjacentElement("beforebegin",section);else main.append(section);
  form.addEventListener("submit",e=>{e.preventDefault();render(field.value)});field.addEventListener("change",()=>{render(field.value);window.dispatchEvent(new CustomEvent("vdl:comparative-locus-select",{detail:{locus:field.value}}))});
- window.addEventListener("vdl:comparative-locus-render",e=>{if(e.detail?.locus){field.value=e.detail.locus;render(e.detail.locus)}});
- window.addEventListener("popstate",()=>{field.value=new URLSearchParams(location.search).get("locus")||"1.1.1";render(field.value)});
+ window.addEventListener("vdl:comparative-locus-render",e=>{if(e.detail?.locus){bookField.value=e.detail.locus.split(".")[0];populateLoci(bookField.value,e.detail.locus);render(e.detail.locus)}});
+ window.addEventListener("popstate",()=>{const locus=new URLSearchParams(location.search).get("locus")||"1.1.1";bookField.value=locus.split(".")[0];populateLoci(bookField.value,locus);render(locus)});
  fetch(DATA).then(r=>{if(!r.ok)throw Error("HTTP "+r.status);return r.json()}).then(x=>{
  if(x.rows?.length!==731)throw Error("Loci incompletos");
  data=x;byId=new Map(x.rows.map(y=>[y.locus,y]));
- const selectedLocus=norm(new URLSearchParams(location.search).get("locus")||"1.1.1");let group=null,lastBook="";for(const row of x.rows){const book=row.locus.split(".")[0];if(book!==lastBook){group=element("optgroup");group.label="Libro "+book;field.append(group);lastBook=book}const opt=element("option",row.locus.includes(".praef.")?"Libro "+book+" · Praefatio, § "+row.locus.split(".")[2]:"Libro "+book+" · "+row.locus);opt.value=row.locus;group.append(opt)}field.value=byId.has(selectedLocus)?selectedLocus:x.rows[0].locus;
+ const ordered=x.rows.slice().sort((a,b)=>{const pa=a.locus.split("."),pb=b.locus.split(".");return Number(pa[0])-Number(pb[0])||(pa[1]==="praef"?-1:pb[1]==="praef"?1:Number(pa[1])-Number(pb[1]))||Number(pa[2])-Number(pb[2])});
+ const allBooks=[...new Set(ordered.map(row=>row.locus.split(".")[0]))];
+ const roman=["","I","II","III","IV","V","VI","VII","VIII","IX","X"];
+ for(const book of allBooks){const o=element("option","Libro "+roman[Number(book)]+" · "+book);o.value=book;bookField.append(o)}
+ const populateLoci=(book,preferred)=>{field.replaceChildren();for(const row of ordered.filter(r=>r.locus.split(".")[0]===book)){const part=row.locus.split(".");const o=element("option",part[1]==="praef"?"Prefacio § "+part[2]+" · "+row.locus:"Capítulo "+part[1]+" · § "+part[2]+" · "+row.locus);o.value=row.locus;field.append(o)}if(preferred&&byId.has(preferred)&&preferred.startsWith(book+"."))field.value=preferred};
+ const selectedLocus=norm(new URLSearchParams(location.search).get("locus")||"1.1.1");
+ const first=byId.has(selectedLocus)?selectedLocus:ordered[0].locus;bookField.value=first.split(".")[0];populateLoci(bookField.value,first);
+ bookField.addEventListener("change",()=>{populateLoci(bookField.value);if(field.value){render(field.value);window.dispatchEvent(new CustomEvent("vdl:comparative-locus-select",{detail:{locus:field.value}}))}});
  status.textContent="731 loci accesibles · 31 expedientes filológicos · 31 comentarios de traducción · 4 expedientes con comprobación impresa registrada. La colación digital es exhaustiva; la verificación filológica no.";
  render(field.value);
  }).catch(e=>{status.textContent="Error al leer el dossier: "+e.message});
