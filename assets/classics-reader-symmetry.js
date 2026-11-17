@@ -78,30 +78,74 @@ function init(){
   new MutationObserver(updateSharedPalette).observe(article,{attributes:true,attributeFilter:["style"]});
   updateSharedPalette();
  }
- // A relative-height synchronization is appropriate for independent automatic
- // translation, which can be longer/shorter than the Latin or Greek original.
- let linked=true, scrollFrame=0, moving=false;
- const syncTo=(from,to)=>{
-  if(!linked||moving||root.classList.contains("single-source")||to.hidden||to.closest("[hidden]"))return;
-  if(scrollFrame)cancelAnimationFrame(scrollFrame);
+ // Sync both physical panes, not the nested paragraphs. Their scrollable
+ // heights differ because translations and Latin/Greek text have different lengths.
+ // This is reading-position correspondence, never a claim of word-level alignment.
+ let linked=true,scrollFrame=0,pendingLeader=sourceContainer;
+ const expectedTop=new WeakMap();
+ const visible=()=>!root.classList.contains("single-source")&&
+  !translationContainer.hidden&&!translationContainer.closest("[hidden]")&&
+  !translationContainer.classList.contains("cl-pdf-mode");
+ const scrollMax=pane=>Math.max(0,pane.scrollHeight-pane.clientHeight);
+ const clamp=(value,min,max)=>Math.max(min,Math.min(max,value));
+ function syncFrom(leader){
+  if(!linked||!visible())return;
+  pendingLeader=leader;
+  if(scrollFrame)return;
   scrollFrame=requestAnimationFrame(()=>{
    scrollFrame=0;
-   const fromMax=Math.max(0,from.scrollHeight-from.clientHeight);
-   const toMax=Math.max(0,to.scrollHeight-to.clientHeight);
-   const fraction=fromMax?from.scrollTop/fromMax:0;
-   const wanted=fraction*toMax;
-   if(Math.abs(to.scrollTop-wanted)<2)return;
-   moving=true;
-   to.scrollTop=wanted;
-   requestAnimationFrame(()=>{moving=false});
+   if(!linked||!visible())return;
+   const from=pendingLeader;
+   const to=from===sourceContainer?translationContainer:sourceContainer;
+   const maxFrom=scrollMax(from),maxTo=scrollMax(to);
+   const progress=maxFrom>0?clamp(from.scrollTop/maxFrom,0,1):0;
+   const desired=Math.round(progress*maxTo);
+   if(Math.abs(to.scrollTop-desired)<2)return;
+   // Ignore the scroll event produced by this programmatic update, without
+   // blocking genuine wheel/trackpad/touch scrolling in either reader.
+   expectedTop.set(to,desired);
+   to.scrollTop=desired;
   });
- };
- sourceContainer.addEventListener("scroll",()=>syncTo(sourceContainer,translationContainer),{passive:true});
- translationContainer.addEventListener("scroll",()=>syncTo(translationContainer,sourceContainer),{passive:true});
+ }
+ function onPaneScroll(event){
+  const pane=event.currentTarget,expected=expectedTop.get(pane);
+  if(expected!==undefined){
+   expectedTop.delete(pane);
+   if(Math.abs(pane.scrollTop-expected)<2)return;
+  }
+  syncFrom(pane);
+ }
+ sourceContainer.addEventListener("scroll",onPaneScroll,{passive:true});
+ translationContainer.addEventListener("scroll",onPaneScroll,{passive:true});
+ function resetForLocus(){
+  if(!linked||!visible())return;
+  // A newly selected locus must start at the beginning on BOTH sides. Without
+  // this reset, the previous locus's scrollTop survives a render and yields
+  // different passages on screen, especially during asynchronous translation.
+  if(scrollFrame){cancelAnimationFrame(scrollFrame);scrollFrame=0}
+  expectedTop.set(sourceContainer,0);
+  expectedTop.set(translationContainer,0);
+  sourceContainer.scrollTop=0;
+  translationContainer.scrollTop=0;
+  syncFrom(sourceContainer);
+ }
+ syncButton.setAttribute("aria-pressed","true");
+ syncButton.textContent="Desplazamiento vinculado";
  syncButton.addEventListener("click",()=>{
-  linked=!linked;syncButton.setAttribute("aria-pressed",String(linked));
+  linked=!linked;
+  syncButton.setAttribute("aria-pressed",String(linked));
   syncButton.textContent=linked?"Desplazamiento vinculado":"Desplazamiento independiente";
-  if(linked)syncTo(sourceContainer,translationContainer);
+  syncButton.title=linked
+   ?"Sincronización activada: mover cualquiera de los dos visores desplaza el otro al mismo progreso de lectura."
+   :"Sincronización desactivada: cada visor se desplaza por separado.";
+  if(linked)syncFrom(sourceContainer);
+ });
+ let lastLocus=null;
+ document.addEventListener("vitruvia:classics-passage",event=>{
+  const next=event.detail?.locus;
+  if(!next||next===lastLocus)return;
+  lastLocus=next;
+  resetForLocus();
  });
  function setExpanded(enabled){
   document.documentElement.classList.toggle("cl-biblio-expanded",enabled);
@@ -156,11 +200,16 @@ function init(){
  const readingMutation=new MutationObserver(align);
  readingMutation.observe(source,{childList:true,subtree:true,characterData:true});
  readingMutation.observe(target,{childList:true,subtree:true,characterData:true});
+ // Indexed/automatic translations can arrive later than the Latin/Greek locus.
+ // Once their actual content arrives, restore the original pane's reading
+ // progress instead of leaving the second pane at its previous scroll offset.
+ const translationLoaded=new MutationObserver(()=>syncFrom(sourceContainer));
+ translationLoaded.observe(target,{childList:true,subtree:true,characterData:true});
  root.addEventListener("click",event=>{if(event.target.closest("button,summary,select"))requestAnimationFrame(align)});
  window.addEventListener("resize",align,{passive:true});
  document.addEventListener("vitruvia:classics-passage",align);
  document.addEventListener("vitruvia:language-changed",align);
- applyHeight(height);register();
+ applyHeight(height);register();syncFrom(sourceContainer);
  return true;
 }
 function boot(){
