@@ -157,7 +157,7 @@ async function presentIndexed(entry,target,stamp){
   note.textContent="Para evitar alineaciones falsas, abrí la versión textual registrada en su propio lector.";
  }
  const a=el("a",null,"Consultar traducción indexada · "+target.toUpperCase()+" ↗");
- a.href=versionLink(e,matched?entry.locus:null);a.style.cssText="display:inline-block;margin:9px 0;color:#e3c78f;text-decoration:underline";
+ a.href=versionLink(e,matched?entry.locus:null);a.style.cssText="display:inline-block;margin:9px 0;color:#d5dde4;text-decoration:underline";
  output.append(a);
  return true;
 }
@@ -241,7 +241,7 @@ async function runTranslation(){
   google.searchParams.set("text",String(entry.text||"").slice(0,1400));
   google.searchParams.set("op","translate");
   link.href=google.href;link.target="_blank";link.rel="noopener noreferrer";
-  link.style.cssText="display:inline-block;margin-top:12px;color:#e3c78f;text-decoration:underline";
+  link.style.cssText="display:inline-block;margin-top:12px;color:#d5dde4;text-decoration:underline";
   output.append(link);
   note.textContent="Servicio externo no disponible ("+(error?.message||"error de acceso")+"). Podés usar el enlace externo sin alterar el original."; translate.hidden=false;translate.textContent="Reintentar traducción";
  }finally{if(stamp===sequence)output.removeAttribute("aria-busy")}
