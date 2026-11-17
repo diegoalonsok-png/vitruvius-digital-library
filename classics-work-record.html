@@ -44,6 +44,7 @@ footer{border-top:1px solid var(--line);font-size:12px;color:#bbb;margin-top:30p
 .cwd-head{display:block!important}.cwd-head .cwd-row,.classic-work-dossier .cwd-row{display:block;font:14px/1.55 system-ui,Arial,sans-serif;margin:4px 0}
 .cwd-head h1,.cwd-head h2{display:block;margin:6px 0 12px}
 .cwd-head .cwd-row strong,.classic-work-dossier .cwd-row strong{font:600 11px/1.5 system-ui,Arial,sans-serif!important;letter-spacing:.06em;text-transform:uppercase;opacity:.72;margin-right:4px;font-style:normal!important}
+.translation-bibliography{margin:23px 0 30px;padding:22px 26px;border:1px solid var(--line,#58585b);border-radius:12px;background:var(--cwd-panel,#151517);color:var(--cwd-ink,#e8e8e9)}.translation-bibliography h2{margin:0 0 8px;font:400 24px/1.4 Georgia,serif}.translation-bibliography .tb-note{font:12px/1.65 system-ui;color:inherit;opacity:.75}.translation-bibliography .tb-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:18px 0}.translation-bibliography .tb-item{border:1px solid #8d8a8244;border-radius:8px;padding:15px;background:transparent}.translation-bibliography .tb-item h3{font:600 14px/1.5 system-ui;margin:0 0 7px}.translation-bibliography .tb-item p{font:13px/1.6 Georgia,serif;margin:4px 0 10px}.translation-bibliography .tb-item a{font:600 12px/1.4 system-ui;color:inherit;text-decoration:underline;text-underline-offset:3px}.translation-bibliography .tb-label{display:block;font:11px/1.5 system-ui;letter-spacing:.04em;opacity:.68;text-transform:uppercase}.translation-bibliography .tb-status{font:11px/1.4 system-ui;opacity:.74;margin:8px 0 0}.translation-bibliography[hidden]{display:none!important}@media(max-width:780px){.translation-bibliography .tb-grid{grid-template-columns:1fr}}@media print{.translation-bibliography{background:white!important;color:#111!important}.translation-bibliography .tb-grid{grid-template-columns:1fr 1fr}}
 </style>
 <script defer src="assets/editorial-work-records.js?v=20261111-identifiers-v1"></script>
 <script defer src="assets/r2-work-records.js?v=20261116-academic-audit-281-v1"></script>
@@ -79,7 +80,7 @@ footer{border-top:1px solid var(--line);font-size:12px;color:#bbb;margin-top:30p
 <button id="bibliotheca-download-xlsx" type="button" title="Descargar las fichas, códices, ecdótica, ediciones, fuentes y bibliografía disponibles en un libro Excel">Descargar Excel · fichas y ecdótica</button></div>
 <p id="bibliotheca-xlsx-status" role="status" aria-live="polite" class="intro"></p>
 <p id="work-record-status" role="status" aria-live="polite">Consultando el catálogo académico…</p>
-<article id="work-record"></article>
+<article id="work-record"></article><section class="translation-bibliography" id="translation-bibliography" aria-label="Traducciones y ediciones históricas documentadas" hidden></section>
 <section id="bibliotheca-federated-status" aria-label="Estado sincronizado del catálogo e índices"></section></main>
 <footer>Bibliotheca Graeca et Latina · Vitruvius Digital Library · Catálogo de ediciones y testimonios documentados · Chicago 18 (metadatos condicionados a fuentes verificadas).</footer>
 <script>
@@ -115,8 +116,41 @@ async function ready(){
    ["theory-v297-pdf","Diego Kurilo · De architectura · V297 · inglés"]
   ])if(![...selected.options].some(o=>o.value===id))selected.append(new Option(title,id));
   selected.append(new Option("Diego A. Kurilo · Vitruvius Digital Library · DOI del proyecto","vitruvius-digital-library"));
+  // Repertorio bibliográfico externo: la inclusión nunca implica alojamiento de la traducción.
+  const referenceTranslations={
+   "plato-euthydemus":[
+    {lang:"Español",name:"Francisco José Olivieri",year:"1983",title:"Platón, Diálogos II: Gorgias, Menéxeno, Eutidemo, Menón, Crátilo",publisher:"Madrid: Editorial Gredos, Biblioteca Clásica Gredos.",url:"https://www.casadellibro.com/libro-dialogos-ii/9788424939069/9622299",access:"Edición comercial / librería",source:"https://phte.upf.edu/dhte/griego-clasico/platon/"},
+    {lang:"Español",name:"Claudia Mársico y Hernán Inverso",year:"2010 (referencia bibliográfica universitaria)",title:"Platón, Eutidemo",publisher:"Buenos Aires: Editorial Losada. Introducción, traducción y notas.",url:"https://editoriallosada.com/libro/eutidemo/",access:"Ficha de la editorial / consulta comercial",source:"https://www.memoria.fahce.unlp.edu.ar/programas/pp.12624/pp.12624.pdf"},
+    {lang:"Español",name:"Ute Schmidt Osmanczik",year:"2002",title:"Platón, Eutidemo",publisher:"México: Universidad Nacional Autónoma de México, Bibliotheca Scriptorum Graecorum et Romanorum Mexicana. Introducción, traducción y notas; texto griego y español.",url:"https://iifilologicas.unam.mx/chiifl9/doku.php/eutidemo",access:"Ficha académica UNAM; consultar disponibilidad",source:"https://www.libros.unam.mx/gd-gorgias-9789703249145-libro.html"},
+    {lang:"Inglés",name:"Benjamin Jowett",year:"1892 (tercera edición)",title:"Plato, Euthydemus, en The Dialogues of Plato",publisher:"Oxford: Clarendon Press. Traducción con análisis e introducciones.",url:"https://www.gutenberg.org/ebooks/1598",access:"Texto íntegro gratuito · Project Gutenberg",source:"https://www.gutenberg.org/ebooks/1598"},
+    {lang:"Inglés",name:"Walter Rangeley Maitland Lamb (W. R. M. Lamb)",year:"1924",title:"Plato, Laches, Protagoras, Meno, Euthydemus",publisher:"Loeb Classical Library 165. Cambridge, MA: Harvard University Press; Londres: William Heinemann. Texto griego e inglés.",url:"https://catalog.perseus.org/catalog/urn:cts:greekLit:tlg0059.tlg021.perseus-eng1",access:"Registro académico Perseus; acceso según edición",source:"https://www.cca.qc.ca/fr/recherche/details/library/publication/123351972"},
+    {lang:"Inglés",name:"Rosamond Kent Sprague",year:"Edición de referencia contemporánea",title:"Plato, Euthydemus (Sprague Edition)",publisher:"Indianapolis/Cambridge: Hackett Publishing Company. Traducción.",url:"https://hackettpublishing.com/classics/euthydemus",access:"Página oficial de la editorial / comercial",source:"https://hackettpublishing.com/classics/euthydemus"},
+    {lang:"Francés",name:"Louis Méridier",year:"1931",title:"Platon, Œuvres complètes, tome V, première partie: Ion, Ménexène, Euthydème",publisher:"París: Les Belles Lettres, Collection des universités de France (Budé). Edición y traducción académica.",url:"https://www.lesbelleslettres.com/livre/9782251002187/oeuvres-completes-tome-v-1re-partie-ion-menexene-euthydeme",access:"Ficha oficial de la editorial / comercial",source:"https://www.lesbelleslettres.com/livre/9782251002187/oeuvres-completes-tome-v-1re-partie-ion-menexene-euthydeme"}
+   ]
+  };
+  function renderTranslations(id){
+   const container=$("translation-bibliography");container.replaceChildren();
+   const entries=referenceTranslations[id]||[];
+   container.hidden=!entries.length;if(!entries.length)return;
+   const h=document.createElement("h2");h.textContent="Traducciones históricas y académicas · Bibliographia versionum";container.append(h);
+   const intro=document.createElement("p");intro.className="tb-note";intro.textContent="Selección documentada de versiones y traducciones relevantes de esta obra. Las referencias externas no implican disponibilidad del texto completo en la Bibliotheca ni derechos de reproducción. Los enlaces conducen a editores, catálogos y repositorios conocidos.";container.append(intro);
+   const grid=document.createElement("div");grid.className="tb-grid";
+   for(const entry of entries){
+    const article=document.createElement("article");article.className="tb-item";
+    const name=document.createElement("h3");name.textContent=entry.name;
+    const language=document.createElement("span");language.className="tb-label";language.textContent=entry.lang+" · "+entry.year;
+    const cite=document.createElement("p");cite.textContent=entry.title+". "+entry.publisher;
+    const access=document.createElement("a");access.textContent="Consultar edición / dónde conseguir";access.href=entry.url;access.target="_blank";access.rel="noopener noreferrer";
+    const status=document.createElement("p");status.className="tb-status";status.textContent=entry.access;
+    const verify=document.createElement("a");verify.href=entry.source;verify.target="_blank";verify.rel="noopener noreferrer";verify.textContent="Ver referencia bibliográfica";
+    article.append(language,name,cite,access,status,verify);grid.append(article);
+   }
+   container.append(grid);
+   const note=document.createElement("p");note.className="tb-note";note.textContent="Criterio ecdótico: las traducciones no son testimonios manuscritos del texto griego. Su cotejo por locus requiere incorporación lícita del texto y alineación editorial verificada.";container.append(note);
+  }
   function show(){
    const id=selected.value;
+   renderTranslations(id);
    const url=new URL(location.href);
    if(id)url.searchParams.set("work",id);else url.searchParams.delete("work");
    history.replaceState(null,"",url);
