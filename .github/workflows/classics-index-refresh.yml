@@ -9,6 +9,7 @@ on:
       - 'data/bibliotheca-expansion-publicada-2026-11-16.json'
       - 'scripts/build-classics-lexical-index.mjs'
       - 'scripts/refresh-classics-public-counts.mjs'
+      - 'scripts/audit-unindexed-classics.mjs'
       - 'scripts/check-classics-new-index.mjs'
       - 'scripts/test-classical-phrase-matching.mjs'
       - '.github/workflows/classics-index-refresh.yml'
@@ -36,6 +37,8 @@ jobs:
         run: node --max-old-space-size=6144 scripts/build-classics-lexical-index.mjs
       - name: Derive counters and validate new texts
         run: node scripts/refresh-classics-public-counts.mjs
+      - name: Audit missing, local pending and remote-unverified editions
+        run: node scripts/audit-unindexed-classics.mjs
       - name: Check new works are indexed at source-locus granularity
         run: node scripts/check-classics-new-index.mjs
       - name: Check literal phrases in Latin and polytonic Greek
@@ -44,7 +47,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/index/classics data/classics-corpus/public-counts.json
+          git add data/index/classics data/classics-corpus/public-counts.json data/classics-corpus/unindexed-audit.json
           if ! git diff --cached --quiet; then
             git commit -m "Rebuild classics lexical index and measured catalogue counts"
             git push
