@@ -59,7 +59,7 @@
 <script defer src="assets/academic-inline-translation.js?v=20261117-unicode-rate-limit-v6"></script><script defer src="assets/scholarly-passage-citation.js?v=20261113-citable-1"></script>
 <script defer src="assets/bibliotheca-simple.js?v=20261116-notebook-scope-v1"></script>
 <script defer src="assets/bibliotheca-genre-work-list.js?v=20261114-academic-order-v1"></script>
-<link rel="stylesheet" href="assets/bibliotheca-work-search.css?v=20261117-lexicon-alphabets-v1"><script defer src="assets/bibliotheca-work-search.js?v=20261117-search-recovery-v3"></script>
+<link rel="stylesheet" href="assets/bibliotheca-work-search.css?v=20261117-lexicon-alphabets-v1"><script defer src="assets/bibliotheca-work-search.js?v=20261117-search-first-books-v1"></script>
 <script defer src="assets/bibliotheca-entity-search.js?v=20261115-onomastics-v1"></script>
 <script defer src="assets/bibliotheca-concordance.js?v=20261115-loci-provenance-v2"></script>
 <script defer src="assets/classics-corpus-counts.js?v=20261117-real-counts-v1"></script>
@@ -328,6 +328,30 @@ body.bibliotheca-plain-list main.library .bib-lx-modes button[aria-pressed=true]
 body.bibliotheca-plain-list main.library .bib-lx-hint{color:#aaa!important;font:13px/1.5 system-ui,sans-serif}
 @media(max-width:700px){body.bibliotheca-plain-list main.library #bibliotheca-lexicon-form{border-radius:25px;flex-wrap:wrap;padding:12px!important}body.bibliotheca-plain-list main.library #bibliotheca-lexicon-q{flex:1 1 calc(100% - 50px)}body.bibliotheca-plain-list main.library #bibliotheca-lexicon-form .bib-lx-advanced{flex:1}}
 </style>
+
+<style id="bibliotheca-search-first-v1">
+/* Work discovery uses Lexicon's search shape, not Lexicon's word-analysis modes. */
+body.bibliotheca-plain-list main.library .bibliotheca-lexicon-simple .bib-lx-lang,
+body.bibliotheca-plain-list main.library .bibliotheca-lexicon-simple .bib-lx-modes,
+body.bibliotheca-plain-list main.library .bibliotheca-lexicon-simple .bib-lx-hint,
+body.bibliotheca-plain-list main.library .bibliotheca-plain-heading,
+body.bibliotheca-plain-list main.library .searcharea {display:none!important}
+body.bibliotheca-plain-list main.library #bibliotheca-work-search{
+ display:block!important;margin:-9px 0 30px!important;padding:0 4px!important;
+}
+body.bibliotheca-plain-list main.library #bibliotheca-work-search .bws-count{
+ font-size:14px!important;margin:7px 0 10px!important
+}
+body.bibliotheca-plain-list main.library #bibliotheca-work-search .bws-plain-status{
+ font-size:12px;color:#a6a6a6
+}
+body.bibliotheca-plain-list main.library #bibliotheca-lexicon-q{
+ font-size:clamp(15px,1.3vw,19px)!important
+}
+body.bibliotheca-plain-list main.library #bibliotheca-lexicon-form .bib-lx-submit{
+ white-space:nowrap
+}
+</style>
 </head>
 <body class="bibliotheca-plain-list"><a class="vdl-skip-link" href="#main-content">Saltar al contenido principal</a>
 <main class="library" id="main-content">
@@ -385,12 +409,12 @@ body.bibliotheca-plain-list main.library .bib-lx-hint{color:#aaa!important;font:
  <option value="auto">Lengua: auto</option><option value="la">Latín</option><option value="grc">Griego</option><option value="he">Hebreo</option><option value="es">Castellano</option><option value="en">Inglés</option><option value="fr">Francés</option><option value="de">Alemán</option></select></div>
  <form id="bibliotheca-lexicon-form" action="vitruvia-lexicon.html" method="get" role="search">
   <span class="bib-lx-icon" aria-hidden="true">⌕</span>
-  <label class="sr-only" for="bibliotheca-lexicon-q">Término, palabra o frase</label>
-  <input id="bibliotheca-lexicon-q" name="q" type="search" autocomplete="off" spellcheck="false" placeholder="λόγος · symmetria · anthropos · &quot;arma virumque&quot; · @domus · aedi*" required>
+  <label class="sr-only" for="bibliotheca-lexicon-q">Buscar autor o título de una obra clásica</label>
+  <input id="bibliotheca-lexicon-q" name="q" type="search" autocomplete="off" spellcheck="false" placeholder="Buscá una obra o autor: Julio César · De bello Gallico · Homero · Platón" required>
   <input id="bibliotheca-lexicon-mode" type="hidden" name="mode" value="palabra">
   <button type="button" id="bibliotheca-lexicon-clear" aria-label="Limpiar búsqueda">✕</button>
-  <button type="submit" class="bib-lx-submit">Buscar ↗</button>
-  <a class="bib-lx-advanced" href="vitruvia-lexicon.html">Búsqueda ampliada</a>
+  <button type="submit" class="bib-lx-submit">Buscar obras</button>
+  <a class="bib-lx-advanced" href="vitruvia-lexicon.html">Buscar palabras en Lexicon ↗</a>
  </form>
  <div class="bib-lx-modes" role="group" aria-label="Tipo de búsqueda">
   <button type="button" data-lx-mode="palabra" aria-pressed="true">Palabra</button>
