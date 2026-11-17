@@ -15,6 +15,21 @@ const addOptions=(select,values,makeLabel)=>{select.replaceChildren();for(const 
 function setupNavigator(){
  for(const locus of loci){const [book,chapter,section]=locus.split(".");if(!chapters.has(book))chapters.set(book,new Map());if(!chapters.get(book).has(chapter))chapters.get(book).set(chapter,[]);chapters.get(book).get(chapter).push(section)}
  const book=$("bude-book"),chapter=$("bude-chapter"),section=$("bude-section");
+ const all=$("bude-all-loci");
+ if(all){
+  all.replaceChildren();
+  let previous="";
+  for(const id of loci){
+   const [bookNumber,part,paragraph]=id.split(".");
+   if(bookNumber!==previous){
+    const group=E("optgroup");group.label="Liber "+(romans[Number(bookNumber)]||bookNumber)+" · libro "+bookNumber;
+    all.append(group);previous=bookNumber;
+   }
+   const option=E("option",part==="praef"?"Vitr. "+romans[Number(bookNumber)]+", praef. § "+paragraph+" · "+id:"Vitr. "+romans[Number(bookNumber)]+"."+part+"."+paragraph+" · "+id);
+   option.value=id;all.lastElementChild.append(option);
+  }
+  all.addEventListener("change",()=>{if(loci.includes(all.value))render(all.value)});
+ }
  addOptions(book,[...chapters.keys()].sort((a,b)=>Number(a)-Number(b)),x=>"Libro "+(romans[Number(x)]||x)+" · "+x);
  const updateChapter=(prefer)=>{
   const cs=[...(chapters.get(book.value)||new Map()).keys()].sort(cmpParts);
@@ -29,7 +44,7 @@ function setupNavigator(){
  const sync=locus=>{
   const [b,c,n]=String(locus).split(".");
   if(!chapters.has(b))return;
-  book.value=b;updateChapter(c);updateSection(n);
+  book.value=b;updateChapter(c);updateSection(n);if(all)all.value=locus;
  };
  const go=()=>{const locus=[book.value,chapter.value,section.value].join(".");if(loci.includes(locus))render(locus)};
  book.addEventListener("change",()=>{updateChapter();updateSection();go()});
