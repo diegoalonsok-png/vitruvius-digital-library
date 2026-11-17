@@ -4,6 +4,7 @@ on:
     branches: [main]
     paths:
       - 'scripts/install-sitewide-i18n.py'
+      - 'scripts/test-sitewide-i18n.py'
       - '.github/workflows/install-sitewide-i18n.yml'
   workflow_dispatch:
 permissions:
@@ -22,6 +23,8 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
+      - name: Test installer and source preservation
+        run: python -m unittest discover -s scripts -p 'test-sitewide-i18n.py'
       - name: Install loader and audit every HTML file
         run: python scripts/install-sitewide-i18n.py
       - name: Publish coverage report
