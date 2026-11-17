@@ -660,6 +660,17 @@ function paintAppearance(persist=true){
   "--reader-italic":appearance.italic?"italic":"normal","--reader-align":appearance.align
  };
  for(const [key,value] of Object.entries(vars))reader.style.setProperty(key,value);
+ // A palette choice is a page-wide theme, not only the reading paper.
+ // Embedded parallel frames receive their own per-pane colors from the parent.
+ if(document.documentElement.dataset.parallelView!=="true"){
+  const root=document.documentElement;
+  root.style.setProperty("--reader-page-bg",appearance.background);
+  root.style.setProperty("--reader-page-fg",appearance.foreground);
+  root.style.setProperty("--cl-shared-bg",appearance.background);
+  root.style.setProperty("--cl-shared-fg",appearance.foreground);
+  root.dataset.readerPageTheme="custom";
+  root.dataset.theme=(parseInt(appearance.background.slice(1,3),16)*.299+parseInt(appearance.background.slice(3,5),16)*.587+parseInt(appearance.background.slice(5,7),16)*.114)>150?"light":"dark";
+ }
  $("reader-bg").value=appearance.background;$("reader-fg").value=appearance.foreground;
  $("reader-font").value=appearance.font;$("reader-size").textContent=appearance.size+" px";
  $("reader-italic").setAttribute("aria-pressed",String(appearance.italic));
