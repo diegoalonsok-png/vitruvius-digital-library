@@ -99,6 +99,8 @@ async function providerMyMemory(fragment,source,target){
   if(Number(data?.responseStatus)!==200||typeof value!=="string"||!value.trim()||
    /QUERY LENGTH LIMIT|MYMEMORY WARNING|DAILY LIMIT|INVALID LANGUAGE|YOU HAVE USED ALL/i.test(value))
     throw Error("Proveedor no entregó traducción");
+  if(/�|(?:Ã[\u0080-\u00bf])|(?:Â[\u0080-\u00bf])|&#(?:x[0-9a-f]+|[0-9]+);|&(?:quot|amp|apos|lt|gt);/iu.test(value))
+    throw Error("Proveedor devolvió caracteres corruptos o entidades sin procesar");
   if(translationLooksUnchanged(fragment,value,source,target))throw Error("El proveedor devolvió el original sin traducir");
   return {text:value.trim(),provider:"MyMemory / Translated"};
  }finally{clearTimeout(timer)}
@@ -115,6 +117,7 @@ async function providerAlternate(fragment,source,target){
   const data=await response.json();
   const value=Array.isArray(data?.[0])?
     data[0].map(part=>Array.isArray(part)?String(part[0]||""):"").join(""):"";
+  if(/�|(?:Ã[\u0080-\u00bf])|(?:Â[\u0080-\u00bf])|&#(?:x[0-9a-f]+|[0-9]+);/iu.test(value))throw Error("Proveedor alternativo devolvió caracteres corruptos");
   if(!value.trim()||translationLooksUnchanged(fragment,value,source,target))throw Error("Proveedor alternativo devolvió texto sin traducir");
   return {text:value.trim(),provider:"Traducción automática externa alternativa"};
  }finally{clearTimeout(timer)}
@@ -152,10 +155,10 @@ async function externalTranslation(text,source,target,fullPassage=false){
  const fragments=fullPassage?chunks(text,MAX_PART_BYTES,12,4500):chunks(text);
  if(!fragments.length)throw Error("Pasaje vacío");
  const translated=[];
- // Sequential groups bound traffic without sending hundreds of passages at once.
- for(let offset=0;offset<fragments.length;offset+=3){
-  const batch=await Promise.all(fragments.slice(offset,offset+3).map(fragment=>translateFragment(fragment,source,target)));
-  translated.push(...batch);
+ // No enviar tres consultas simultáneas a proveedores gratuitos: provoca
+ // limitaciones 429/cuota y bloquea la traducción completa por una sola falla.
+ for(const fragment of fragments){
+  translated.push(await translateFragment(fragment,source,target));
  }
  const output=translated.map(x=>x.text).join(" ");
  if(translationLooksUnchanged(text,output,source,target))throw Error("El resultado mantiene el idioma original");
