@@ -1139,6 +1139,31 @@ function associatedClassicalWorks(query){
   ]
  }];
 }
+// Accessible authority matching: allow realistic keyboard errors without treating
+// unrelated businesses as historical people. Only documented authority aliases qualify.
+function historicalAuthorityDistance(a,b,cap){
+ if(Math.abs(a.length-b.length)>cap)return cap+1;
+ let prior=Array.from({length:b.length+1},(_,i)=>i),prevPrior=null;
+ for(let i=1;i<=a.length;i++){
+  const row=[i];for(let j=1;j<=b.length;j++){
+   let cost=a[i-1]===b[j-1]?0:1;
+   let d=Math.min(prior[j]+1,row[j-1]+1,prior[j-1]+cost);
+   if(prevPrior&&i>1&&j>1&&a[i-1]===b[j-2]&&a[i-2]===b[j-1])d=Math.min(d,prevPrior[j-2]+1);
+   row.push(d);
+  }
+  prevPrior=prior;prior=row;
+ }
+ return Math.min(cap+1,prior[b.length]);
+}
+function historicalAuthorityMatch(query,alias){
+ const a=norm(query).split(" ").filter(Boolean),b=norm(alias).split(" ").filter(Boolean);
+ if(!a.length||a.length!==b.length)return false;
+ return a.every((token,i)=>{
+  const target=b[i];if(token===target)return true;
+  const allowed=Math.min(3,Math.floor(Math.max(token.length,target.length)/4));
+  return token.length>=4&&historicalAuthorityDistance(token,target,allowed)<=allowed;
+ });
+}
 function classicalSubjectRows(query){
  const q=norm(topicQuery(query));
  const subjects=[
@@ -1155,7 +1180,7 @@ function classicalSubjectRows(query){
    description:"Orador, escritor, filósofo y político romano. Están disponibles sus tres libros de De officiis, en latín y traducción inglesa.",
    url:"https://es.wikipedia.org/wiki/Cicer%C3%B3n"}
  ];
- return subjects.filter(x=>x.queries.some(n=>norm(n)===q)).map(x=>({
+ return subjects.filter(x=>x.queries.some(n=>historicalAuthorityMatch(q,n))).map(x=>({
   type:"section",title:x.title,author:"Referencia histórica · "+x.period,
   excerpt:x.description,meta:"PERSONA HISTÓRICA · DESAMBIGUACIÓN ACADÉMICA",
   rating:12000,link:x.url,source:"Wikipedia · ficha biográfica de referencia",
@@ -1266,7 +1291,11 @@ function display(rows,query,phase){
  // los textos, alias, autores y metadatos documentales también cuentan.
  const guard=window.VitruviaContextGuard;
  const contextualRows=guard?guard.filter(rows,query,S.identifiedSubject):rows;
- const relevantRows=contextualRows.filter(row=>verifiedPersonEvidence(row,query,S.identifiedSubject));
+ const historySuggestion=classicalSubjectRows(query).length>0;
+ const userAsksBusiness=/\b(?:pizzeria|pizza|restaurante|restaurant|hotel|bar|cafe|cafeteria|tienda|comercio)\b/i.test(norm(query));
+ const commercialTitle=/\b(?:pizzeria|pizzaria|pizza|restaurante|restaurant|hotel|hostal|hostel|cafeteria|cafe|bar|tienda|boutique)\b/i;
+ const relevantRows=contextualRows.filter(row=>verifiedPersonEvidence(row,query,S.identifiedSubject)&&
+  (!historySuggestion||userAsksBusiness||!commercialTitle.test(norm(row.title||""))));
  const scored=relevantRows.filter(r=>r&&r.title&&(
   !["wikipedia","wikidata"].includes(r.type)||r.preferredWiki||r.preferredAuthority||
   queryTokens(query).length<2||entityEvidence(r,query)
