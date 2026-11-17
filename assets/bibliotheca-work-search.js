@@ -66,15 +66,26 @@ function centuryOf(raw){
  * precisa ni reemplaza la ficha filológica. Solo se asigna si el intervalo de
  * composición queda completamente dentro del período. */
 const historicalPeriods=[
+ ["grc:mycenaean","Grecia · época micénica (c. 1600–1100 a. C.)",-1600,-1100,"grc"],
+ ["grc:dark","Grecia · Edad Oscura (c. 1100–800 a. C.)",-1099,-801,"grc"],
  ["grc:archaic","Grecia · época arcaica (c. 800–480 a. C.)",-800,-481,"grc"],
  ["grc:classical","Grecia · época clásica (480–323 a. C.)",-480,-324,"grc"],
  ["grc:hellenistic","Grecia · época helenística (323–31 a. C.)",-323,-31,"grc"],
- ["grc:roman","Literatura griega de época romana (30 a. C.–284 d. C.)",-30,284,"grc"],
+ ["grc:roman","Literatura griega · época romana (30 a. C.–284 d. C.)",-30,284,"grc"],
  ["grc:late","Literatura griega · Antigüedad tardía (285–700 d. C.)",285,700,"grc"],
+ ["grc:byzantine","Mundo griego · época bizantina (701–1453)",701,1453,"grc"],
+ ["grc:renaissance","Tradición griega · Renacimiento (1454–1600)",1454,1600,"grc"],
+ ["grc:modern","Estudios griegos · época moderna y contemporánea (1601–2026)",1601,2026,"grc"],
  ["la:regal","Roma · época monárquica (753–509 a. C.)",-753,-510,"la"],
  ["la:republic","Roma · República (509–27 a. C.)",-509,-28,"la"],
  ["la:principate","Roma · Principado (27 a. C.–284 d. C.)",-27,284,"la"],
- ["la:late","Literatura latina · Antigüedad tardía (285–700 d. C.)",285,700,"la"]
+ ["la:late","Literatura latina · Antigüedad tardía (285–700 d. C.)",285,700,"la"],
+ ["la:medieval-early","Latín medieval · Alta Edad Media (701–1000)",701,1000,"la"],
+ ["la:medieval-high","Latín medieval · Plena Edad Media (1001–1300)",1001,1300,"la"],
+ ["la:medieval-late","Latín medieval · Baja Edad Media (1301–1450)",1301,1450,"la"],
+ ["la:renaissance","Humanismo latino · Renacimiento (1451–1600)",1451,1600,"la"],
+ ["la:early-modern","Neolatín · Edad Moderna (1601–1800)",1601,1800,"la"],
+ ["la:contemporary","Estudios latinos · siglos XIX–XXI (1801–2026)",1801,2026,"la"]
 ];
 function compositionSpan(raw){
  const s=normal(raw);
@@ -88,11 +99,11 @@ function compositionSpan(raw){
   if(/\b(?:siglos|centuries)\b/.test(cs[0])&&/\b(?:y|and|et)\b/.test(s))return null;
   const remainder=s.slice(cs.index+cs[0].length).replace(/\b(?:a c|a e c|bce|bc|d c|ce|ad)\b/g,"").trim();
   if(/^[ivxlcdm]+\b/.test(remainder))return null;
-  const n=romanNumber(cs[1]);if(n<1||n>14)return null;
+  const n=romanNumber(cs[1]);if(n<1||n>21)return null;
   return sign<0?[-100*n,-100*(n-1)-1]:[100*(n-1)+1,100*n];
  }
  const years=[...s.matchAll(/\b(\d{1,4})\b/g)].map(x=>Number(x[1])).filter(n=>n>0);
- if(!years.length||years.length>2||years.some(n=>n>1400))return null;
+ if(!years.length||years.length>2||years.some(n=>n>2026))return null;
  const bounds=years.map(y=>sign*y);
  return [Math.min(...bounds),Math.max(...bounds)];
 }
@@ -422,10 +433,9 @@ function mount(parent,data){
   const roman=(num)=>{let out="";for(const [v,t] of [[10,"X"],[9,"IX"],[5,"V"],[4,"IV"],[1,"I"]])while(num>=v){out+=t;num-=v}return out};
   centuryFilter.append(new Option("Siglo "+roman(n)+(era==="bce"?" a. C.":" d. C."),key));
  }
- const periodFilter=make("select");periodFilter.setAttribute("aria-label","Período histórico de Grecia o Roma");
- periodFilter.append(new Option("Todos los períodos históricos",""));
- const existingPeriods=new Set([...index.values()].map(w=>periodOfWork(w)).filter(Boolean));
- for(const [id,label] of historicalPeriods)if(existingPeriods.has(id))periodFilter.append(new Option(label,id));
+ const periodFilter=make("select");periodFilter.setAttribute("aria-label","Época histórica de composición de las obras o categoría de ediciones y manuscritos");
+ periodFilter.append(new Option("Todas las épocas históricas",""));
+ for(const [id,label] of historicalPeriods)periodFilter.append(new Option(label,id));
  periodFilter.append(new Option("Ediciones modernas y testimonios históricos notables","modern-notable"));
  const languageFilter=make("select");languageFilter.setAttribute("aria-label","Lengua de texto disponible");
  [["","Todas las lenguas"],["grc","Griego"],["la","Latín"],["es","Castellano"],["en","Inglés"],["fr","Francés"]].forEach(([v,t])=>languageFilter.append(new Option(t,v)));
