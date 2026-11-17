@@ -182,26 +182,48 @@ const R2_BASE="https://libros.vitruvius-digital-library.org/corpus/";
 const optionalArticles=/^(?:el|la|los|las|le|les|l|the|a|an|der|die|das|il|lo|gli|i|un|una|uno)\s+/;
 const titleKey=value=>normal(value).replace(optionalArticles,"");
 const dedupQuery=query=>[...new Set([normal(query),titleKey(query),roman(query),titleKey(roman(query))].filter(Boolean))];
+// Recuperación de nombres y títulos: normalización, orden libre y tolerancia a erratas.
+// Es búsqueda aproximada de autoridades, NO lematización filológica del corpus.
+const aliasAuthority={
+ "vitruvius":["vitruvio","vitruvius","marcus vitruvius pollio","marco vitruvio polion","vitruvios","βιτρουβιος"],
+ "caesar-gallico":["julio cesar","cesar julio","gaius iulius caesar","iulius caesar","julius caesar","caius julius caesar","γαϊος ιουλιος καισαρ","γαῖος ἰούλιος καῖσαρ"],
+ "caesar-civili":["julio cesar","cesar julio","gaius iulius caesar","iulius caesar","julius caesar","γαῖος ἰούλιος καῖσαρ"]
+};
+const greekRoman={"αι":"ai","ει":"ei","οι":"oi","ου":"ou","α":"a","β":"b","γ":"g","δ":"d","ε":"e","ζ":"z","η":"e","θ":"th","ι":"i","κ":"k","λ":"l","μ":"m","ν":"n","ξ":"x","ο":"o","π":"p","ρ":"r","σ":"s","τ":"t","υ":"y","φ":"ph","χ":"ch","ψ":"ps","ω":"o"};
+const foldAuthority=value=>normal(value).replace(/ς/g,"σ").replace(/αι|ει|οι|ου|[α-ω]/g,x=>greekRoman[x]||x)
+ .replace(/\b(iulius|julius|iulio|iulios|julius|jules)\b/g,"julio")
+ .replace(/\b(caesar|kaisar|kaisaros|καισαρ)\b/g,"cesar")
+ .replace(/\b(gaius|caius|gayo|gaio|γαιος)\b/g,"")
+ .replace(/\b(marcus|marco)\b/g,"marco").replace(/\s+/g," ").trim();
+const tokens=s=>[...new Set(foldAuthority(s).split(" ").filter(x=>x.length>1))];
+function editDistance(a,b,cap=3){
+ if(Math.abs(a.length-b.length)>cap)return cap+1;
+ let row=Array.from({length:b.length+1},(_,j)=>j);
+ for(let i=1;i<=a.length;i++){const next=[i];for(let j=1;j<=b.length;j++)next[j]=Math.min(next[j-1]+1,row[j]+1,row[j-1]+(a[i-1]===b[j-1]?0:1));row=next;if(Math.min(...row)>cap)return cap+1}
+ return row[b.length];
+}
 function rank(w,query){
- const qs=dedupQuery(query),fields=[...(w.forms||[]),w.title||""];
+ const queryTokens=tokens(query);if(!queryTokens.length)return 0;
+ const authority=[w.author,w.title,w.id.replaceAll("-"," "),...(w.forms||[]),...(aliasAuthority[w.id]||[])];
  let best=0;
- for(const field of fields){
-  for(const txt of [normal(field),titleKey(field),roman(field),titleKey(roman(field))]){
-   if(!txt)continue;
-   for(const q of qs){
-    if(!q)continue;
-    if(txt===q)best=Math.max(best,130);
-    else if(txt.startsWith(q+" "))best=Math.max(best,112);
-    else if(txt.includes(q))best=Math.max(best,89);
-    else if(q.includes(" ")&&q.split(" ").every(token=>txt.includes(token)))best=Math.max(best,73);
+ for(const field of authority){
+  const val=foldAuthority(field);if(!val)continue;
+  const fieldTokens=tokens(val), q=foldAuthority(query);
+  if(val===q)best=Math.max(best,140);
+  if(val.startsWith(q))best=Math.max(best,115);
+  if(val.includes(q))best=Math.max(best,90);
+  const used=new Set();let total=0,matched=0;
+  for(const token of queryTokens){
+   let bestMatch=null;
+   for(let i=0;i<fieldTokens.length;i++){
+    if(used.has(i))continue;
+    const word=fieldTokens[i],allowed=token.length>=7?2:token.length>=5?1:0;
+    const distance=token===word?0:word.startsWith(token)&&token.length>=3?0.5:editDistance(token,word,allowed);
+    if(distance<=allowed||(distance===0.5)){if(!bestMatch||distance<bestMatch.distance)bestMatch={i,distance}}
    }
+   if(bestMatch){used.add(bestMatch.i);matched++;total+=bestMatch.distance}
   }
- }
- const a=normal(w.author);
- for(const q of qs){
-  if(a===q)best=Math.max(best,94);
-  else if(a.startsWith(q))best=Math.max(best,72);
-  else if(a.includes(q))best=Math.max(best,62);
+  if(matched===queryTokens.length)best=Math.max(best,Math.round(105-Math.min(30,total*9)-Math.max(0,fieldTokens.length-queryTokens.length)*2));
  }
  return best;
 }
@@ -219,11 +241,11 @@ function render(){
   return;
  }
  const items=model.items.filter(w=>{
-  const author=fold(model.authorFilter.value.trim());
+  const author=foldAuthority(model.authorFilter.value.trim());
   const genre=model.genreFilter.value,century=model.centuryFilter.value,period=model.periodFilter.value,language=model.languageFilter.value,letter=model.letter;
   const group=ancientGenre(w.genre);
   const key=norm(model.sortFilter.value==="title"?w.title:w.author).trim();
-  return (!model.r2Only||w.r2Original)&&(!author||[w.author,...w.forms].some(x=>fold(x).includes(author)))&&(!genre||group===genre)&&(!century||centuryOf(w.dating)===century)&&(!period||periodOfWork(w)===period)&&(!language||w.versions.some(v=>v.language===language))&&(!letter||key.startsWith(norm(letter)));
+  return (!model.r2Only||w.r2Original)&&(!author||rank({...w,title:"",forms:[w.author,...(aliasAuthority[w.id]||[])]},author)>=65)&&(!genre||group===genre)&&(!century||centuryOf(w.dating)===century)&&(!period||periodOfWork(w)===period)&&(!language||w.versions.some(v=>v.language===language))&&(!letter||key.startsWith(norm(letter)));
  });
  list.replaceChildren();more.hidden=true;
  if(!q){
