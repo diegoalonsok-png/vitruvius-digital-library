@@ -273,12 +273,15 @@ def discover(root=ROOT):
     groups, used, skipped = [], set(), []
     for w in cat["works"]:
         codes = [e["obra"] for e in links.get(w["id"], [])]
-        if not codes or not all(c in candidates for c in codes): continue
         if (w["id"], w["language"]) in registered:
-            # Already indexed collections are not recounted as new works.
+            # Exclude every CTS work attached to an already indexed title,
+            # even if some sources are missing from the eligible TEI pool.
+            # Otherwise a missing sibling edition gets a new cts-* title.
             used.update(codes)
             skipped.append(w["id"])
-        else:
+            continue
+        if not codes or not all(c in candidates for c in codes): continue
+        if codes:
             groups.append({"workId": w["id"], "author": w["author"], "title": w["title"], "language": w["language"], "sources": [candidates[c] for c in codes], "existing": True})
             used.update(codes)
     for code, c in sorted(candidates.items()):
