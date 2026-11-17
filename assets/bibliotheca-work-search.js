@@ -707,6 +707,21 @@ function mount(parent,data){
  const metric=parent.querySelector(":scope > dl");
  if(metric)metric.insertAdjacentElement("beforebegin",section);else parent.prepend(section);
  model={items:[...index.values()],index,input,list,count,more,region,authorFilter,genreFilter,subjectFilter,centuryFilter,periodFilter,languageFilter,sortFilter,letter:"",limit:6,showAll:false,r2Only:false,compactFront:parent.id==="front-classical-works"};
+
+ // Bibliotheca has one visible search field shared with Lexicon's reading tools.
+ // Filter the plain author/title list as the reader types, while leaving Enter
+ // and the search button to their documented Lexicon destination.
+ if(document.body.classList.contains("bibliotheca-plain-list")){
+  const visible=document.getElementById("bibliotheca-lexicon-q");
+  if(visible){
+   const sync=()=>{input.value=visible.value;model.letter="";model.limit=40;render()};
+   visible.addEventListener("input",sync);
+   visible.addEventListener("search",sync);
+   visible.addEventListener("change",sync);
+   sync();
+  }
+ }
+
  for(const el of [authorFilter,genreFilter,subjectFilter,centuryFilter,periodFilter,languageFilter,sortFilter])el.addEventListener("input",()=>{model.limit=40;render()});
  list.tabIndex=0;list.setAttribute("aria-label","Obras: use las flechas arriba y abajo, Intro para abrir el enlace");
  list.addEventListener("keydown",e=>{
