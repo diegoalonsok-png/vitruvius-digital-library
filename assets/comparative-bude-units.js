@@ -14,15 +14,15 @@ const addOptions=(select,values,makeLabel)=>{select.replaceChildren();for(const 
 function setupNavigator(){
  for(const locus of loci){const [book,chapter,section]=locus.split(".");if(!chapters.has(book))chapters.set(book,new Map());if(!chapters.get(book).has(chapter))chapters.get(book).set(chapter,[]);chapters.get(book).get(chapter).push(section)}
  const book=$("bude-book"),chapter=$("bude-chapter"),section=$("bude-section");
- addOptions(book,[...chapters.keys()],x=>"Libro "+x);
+ addOptions(book,[...chapters.keys()].sort((a,b)=>Number(a)-Number(b)),x=>"Libro "+(romans[Number(x)]||x)+" · "+x);
  const updateChapter=(prefer)=>{
   const cs=[...(chapters.get(book.value)||new Map()).keys()].sort(cmpParts);
-  addOptions(chapter,cs,x=>x==="praef"?"Prefacio":"Capítulo "+x);
+  addOptions(chapter,cs,x=>x==="praef"?"Praefatio · prefacio único del libro":"Caput "+x+" · capítulo "+x);
   chapter.value=cs.includes(prefer)?prefer:cs[0]||"";
  };
  const updateSection=(prefer)=>{
   const ss=(chapters.get(book.value)?.get(chapter.value)||[]).slice().sort((a,b)=>Number(a)-Number(b));
-  addOptions(section,ss,x=>"§ "+x);
+  addOptions(section,ss,x=>"§ "+x+(chapter.value==="praef"?" · párrafo del prefacio":" · sección"));
   section.value=ss.includes(prefer)?prefer:ss[0]||"";
  };
  const sync=locus=>{
