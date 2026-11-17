@@ -18,3 +18,16 @@
 .vdl-works-state{flex:0 0 auto;max-width:45%;font-size:11px;color:inherit;opacity:.76;text-align:right}
 .vdl-works-bottom{margin:10px 0 0}.vdl-works-bottom a{color:inherit;text-decoration:underline}
 @media(max-width:660px){.vdl-works-row{align-items:flex-start;flex-direction:column;gap:3px}.vdl-works-state{max-width:100%;text-align:left}}
+
+/* Homepage: one compact search field; results only after typing. */
+.vdl-works-explorer-panel{border:1px solid rgba(201,164,94,.48);border-radius:7px;padding:12px 14px;background:rgba(201,164,94,.035)}
+.vdl-works-explorer-heading{display:block;font:600 14px/1.5 system-ui,sans-serif;color:inherit}
+.vdl-works-search{display:block;width:100%;margin-top:7px;min-height:43px;box-sizing:border-box;border:1px solid #9c8969;border-radius:5px;padding:10px 12px;background:#f7f2e8;color:#17232e;font:normal 14px/1.3 system-ui,sans-serif;outline-offset:2px}
+.vdl-works-search:focus{outline:2px solid #c9a45e;border-color:#c9a45e}
+.vdl-works-result-count{margin:7px 0 0;font:12px/1.4 system-ui,sans-serif;opacity:.8}
+.vdl-works-list[hidden]{display:none!important}
+.vdl-works-list{margin-top:9px;max-height:330px;overflow:auto;border:1px solid rgba(166,154,130,.26);border-radius:5px}
+.vdl-works-row{padding:0;display:block}
+.vdl-works-name{display:block;padding:11px 12px;text-decoration:none;font:500 14px/1.4 system-ui,sans-serif}
+.vdl-works-name:hover,.vdl-works-name:focus-visible{background:rgba(201,164,94,.14);text-decoration:none;outline:1px solid #c9a45e;outline-offset:-1px}
+@media(max-width:660px){.vdl-works-explorer-panel{padding:10px}.vdl-works-row{display:block}}
