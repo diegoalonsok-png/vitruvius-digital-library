@@ -284,6 +284,15 @@ for(const side of ["left","right"]){
 }
 function linkBack(){const u=new URL("classics-parallel-reader.html",location.href);u.searchParams.set("work",work);u.searchParams.set("left",leftLang||"grc");u.searchParams.set("right",q.get("right")||rightLang||"auto-es");if(source[pos]?.locus)u.searchParams.set("locus",source[pos].locus);el("academic").href=u.href;}
 const automaticCache=new Map(),historicalCache=new Map();
+function suspiciousGreekRomanization(original,translated){
+ const map={α:"a",β:"b",γ:"g",δ:"d",ε:"e",ζ:"z",η:"e",θ:"th",ι:"i",κ:"k",λ:"l",μ:"m",ν:"n",ξ:"x",ο:"o",π:"p",ρ:"r",σ:"s",ς:"s",τ:"t",υ:"u",φ:"ph",χ:"ch",ψ:"ps",ω:"o"};
+ const roman=t=>String(t||"").normalize("NFD").replace(/[\u0300-\u036f\u1dc0-\u1dff]/g,"").toLowerCase().replace(/[α-ως]/g,c=>map[c]||c);
+ const source=(String(original||"").match(/[\p{Script=Greek}\p{M}]+/gu)||[]).map(roman).filter(w=>w.length>=4);
+ const target=(String(translated||"").normalize("NFD").replace(/[\u0300-\u036f\u1dc0-\u1dff]/g,"").toLowerCase().match(/[a-z]{4,}/g)||[]);
+ if(source.length<7||target.length<7)return false;
+ const words=new Set(source),hits=target.filter(w=>words.has(w)).length;
+ return hits>=5&&hits/target.length>=.13;
+}
 function translationValid(original,result,source,target){
  const text=String(result||"").trim(),raw=String(original||"").trim();
  if(!text||text.normalize("NFKC")===raw.normalize("NFKC"))return false;
@@ -291,6 +300,7 @@ function translationValid(original,result,source,target){
   const greek=(text.match(/[α-ωΑ-Ωά-ώἀ-῿]/g)||[]).length;
   const letters=(text.match(/[A-Za-zÀ-ÿα-ωΑ-Ωά-ώἀ-῿]/g)||[]).length;
   if(letters>20&&greek/letters>0.22)return false;
+  if(suspiciousGreekRomanization(raw,text))return false;
  }
  return true;
 }
