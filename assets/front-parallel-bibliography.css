@@ -1,0 +1,11 @@
+/* Bibliografía discreta en el encabezado del visor doble del buscador inicial. */
+#search-results .result-parallel .parallel-heading{align-items:flex-start;gap:8px 14px}
+#search-results .result-parallel .parallel-edition-identity,
+#search-results .result-parallel .parallel-translation-identity{display:flex;flex:1 1 260px;min-width:0;flex-direction:column;gap:5px;line-height:1.45;letter-spacing:normal;text-transform:none}
+#search-results .result-parallel .parallel-edition-book-title{font:400 clamp(12px,1vw,14px)/1.45 Georgia,serif;color:inherit;letter-spacing:0}
+#search-results .result-parallel .parallel-edition-ids{font:400 10px/1.5 system-ui,sans-serif;letter-spacing:0;color:inherit;opacity:.74;overflow-wrap:anywhere}
+#search-results .result-parallel .parallel-edition-ids a{color:inherit;text-underline-offset:2px}
+#search-results .result-parallel .parallel-edition-language{font:600 10px/1.5 system-ui,sans-serif;letter-spacing:.07em;opacity:.84}
+#search-results .result-parallel .parallel-page-citation{font:400 10px/1.5 system-ui,sans-serif;letter-spacing:0;opacity:.7;white-space:nowrap}
+#search-results .result-parallel .parallel-translation .parallel-heading label{font:500 10px/1.5 system-ui,sans-serif;letter-spacing:.02em}
+@media(max-width:700px){#search-results .result-parallel .parallel-edition-identity,#search-results .result-parallel .parallel-translation-identity{flex-basis:100%}}
