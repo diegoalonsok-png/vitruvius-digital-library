@@ -201,17 +201,60 @@ header.hero>.eyebrow{letter-spacing:.16em;font-size:11px;text-transform:uppercas
  header.hero .bibliotheca-display-subtitle{font-size:clamp(17px,4vw,23px)!important}
 }
 </style>
+<style id="bibliotheca-clean-interface-v1">
+/* Fresh presentation shell. Corpus, source readers and academic metadata remain untouched. */
+.bibliotheca-nav-2026{display:flex;align-items:center;gap:clamp(10px,2vw,24px);flex-wrap:wrap;padding:14px 0;border-bottom:1px solid #85817b55}
+.bibliotheca-nav-2026 .brand{white-space:nowrap;text-decoration:none}
+.bibliotheca-nav-2026 .brand span{opacity:.67}
+.bibliotheca-nav-2026 .toplinks{display:flex;flex-wrap:wrap;gap:9px 16px;align-items:center;flex:1}
+.bibliotheca-nav-2026 .toplinks a{text-decoration:none}
+.bibliotheca-nav-2026 .toplinks a:hover,.bibliotheca-nav-2026 .toplinks a:focus-visible{text-decoration:underline}
+.bibliotheca-nav-2026 .bibliotheca-top-tools{display:flex;align-items:center;gap:9px;flex-wrap:wrap}
+.bibliotheca-resources-2026{margin:14px 0 8px;border:1px solid #89817a55;border-radius:10px}
+.bibliotheca-resources-2026>summary{cursor:pointer;padding:12px 16px;font:600 13px/1.5 system-ui,sans-serif}
+.bibliotheca-resources-2026>.bibliotheca-suite{margin:0;padding:4px 14px 14px}
+.library .hero{padding-top:clamp(18px,5vw,54px);padding-bottom:clamp(14px,3vw,28px)}
+.library .searcharea{border-radius:12px}
+.library #language-toggle{min-height:42px;min-width:66px;cursor:pointer}
+.library #language-toggle:focus-visible{outline:2px solid #d5b478;outline-offset:3px}
+@media(max-width:760px){.bibliotheca-nav-2026{align-items:flex-start}.bibliotheca-nav-2026 .toplinks{order:3;flex-basis:100%}.bibliotheca-nav-2026 .bibliotheca-top-tools{margin-left:auto}}
+@media print{.bibliotheca-resources-2026,.bibliotheca-nav-2026 .bibliotheca-top-tools{display:none!important}}
+</style>
+<script id="bibliotheca-locale-bootstrap-v1">
+/* One source of truth for the interface locale. Never changes source-text language. */
+(()=>{'use strict';
+ const key='vitruvius-ui-lang',supported=new Set(['es','en','fr']);
+ const read=()=>{try{const x=localStorage.getItem(key);return supported.has(x)?x:'es'}catch{return 'es'}};
+ const apply=(value,notify=false)=>{
+  if(!supported.has(value))return;
+  document.documentElement.lang=value;
+  const select=document.getElementById('language-toggle');
+  if(select&&select.value!==value)select.value=value;
+  try{localStorage.setItem(key,value)}catch{}
+  if(notify)document.dispatchEvent(new CustomEvent('vitruvius:language-changed',{detail:{language:value,origin:'bibliotheca-locale-bootstrap'}}));
+ };
+ // Capture the input before the original bibliography/search UI reacts.
+ document.addEventListener('change',e=>{
+  if(e.target?.id==='language-toggle')apply(e.target.value,true);
+ },true);
+ document.addEventListener('vitruvius:language-changed',e=>{
+  if(supported.has(e.detail?.language))apply(e.detail.language);
+ });
+ window.addEventListener('storage',e=>{if(e.key===key&&supported.has(e.newValue))apply(e.newValue,true)});
+ document.addEventListener('DOMContentLoaded',()=>apply(read(),true),{once:true});
+})();
+</script>
 </head>
 <body><a class="vdl-skip-link" href="#main-content">Saltar al contenido principal</a>
 <main class="library" id="main-content">
-<nav class="top" aria-label="Navegación de Bibliotheca">
-<a class="brand" href="index.html">VITRVVIVS <span style="color:#888">/ Bibliotheca</span></a>
+<nav class="top bibliotheca-nav-2026" aria-label="Navegación de Bibliotheca">
+<a class="brand" href="index.html">VITRVVIVS <span>/ Bibliotheca</span></a>
 <div class="toplinks">
 <a id="home" href="index.html">Inicio</a>
 <a id="lexicon-nav" href="vitruvia-lexicon.html">Lexicon</a>
-<a id="capitula-nav" href="bibliotheca-capitula.html">Lectura por capítulos</a><a href="obras-selectas.html">Obras selectas</a>
-<a href="vitruvia.html">Vitruvia</a><a href="laboratorio-humanidades.html">Laboratorium</a><a href="index-locorum.html">Index locorum</a><a href="metodologia-catalogo-clasico.html">Método y fuentes</a>
-<a href="estado-indexacion-bibliotheca.html">Estado de indexación</a><a href="codices-clasicos-prioritarios.html">Códices tempranos</a>
+<a href="vitruvia.html">Vitruvia</a>
+<a id="capitula-nav" href="bibliotheca-capitula.html">Lectura por capítulos</a>
+<a href="index-auctorum-operum.html">Autores y obras</a>
 </div>
 <div class="bibliotheca-top-tools" role="group" aria-label="Idioma y apariencia">
 <label class="bibliotheca-language-field" for="language-toggle"><span>Idioma</span><select id="language-toggle" class="language-toggle" aria-label="Idioma de la interfaz"><option value="es">ES</option><option value="en">EN</option><option value="fr">FR</option></select></label>
@@ -220,32 +263,30 @@ header.hero>.eyebrow{letter-spacing:.16em;font-size:11px;text-transform:uppercas
 <button type="button" data-biblio-color="original">Original</button><button type="button" data-biblio-color="graphite">Grafito</button><button type="button" data-biblio-color="navy">Azul oscuro</button><button type="button" data-biblio-color="slate">Gris pizarra</button><button type="button" data-biblio-color="sepia">Sepia</button></div></details>
 </div>
 </nav>
-<section id="classics-audit-coverage" aria-label="Cobertura documental auditada" style="border-block:1px solid #8885;padding:8px 0;margin:8px 0;font:12px/1.5 system-ui,sans-serif">
-<span data-classics="catalog">—</span> obras · <span data-classics="local">—</span> originales locales · <span data-classics="remote">—</span> originales externos · <span data-classics="searchable">—</span> buscables · <span data-classics="pending">—</span> pendientes · <span data-classics="translations">—</span> traducciones · <span data-classics="versions">—</span> versiones
-<small style="display:block;opacity:.75"><span data-classics="method">Verificando cobertura…</span> · <a href="auditoria-textos-clasicos.html">Método</a> · <time data-classics="updated">—</time></small>
-</section>
+<details class="bibliotheca-resources-2026">
+<summary>Herramientas y recursos académicos</summary>
 <section class="bibliotheca-suite" aria-label="Herramientas de Vitruvius Digital Library">
-
- <nav class="bibliotheca-suite-links" aria-label="Navegación académica">
-  <a href="index.html">Biblioteca Vitruvius</a>
-  <a href="vitruvia.html">Vitruvia · Buscador</a>
-  <a href="vitruvia-lexicon.html">Lexicon · Etimologías</a>
-  <a href="laboratorio-humanidades.html">Laboratorium · investigación</a> <a href="mapa-general.html">Mapa general imprimible</a>
-  <a href="index-locorum.html">Index locorum</a>
-  <a href="bibliotheca-ampliada.html">Bibliotheca ampliada · PDF de dominio público</a>
-  <a href="buscador-facsimiles-clasicos.html">Lectura de facsímiles · página a página</a>
-  <a href="bibliotheca-capitula.html">Lectura por capítulos</a>
-  <a href="cobertura-traducciones-clasicas.html">Traducciones y cobertura</a>
-  <a href="auditoria-academica.html">Auditoría académica</a>
-  <a href="tablas-explicativas.html">Tablas explicativas · V297</a>
-  <a href="codices-historicos.html" title="Códices célebres, signaturas y catálogos de bibliotecas custodias">Códices históricos · bibliotecas custodias</a> ·
-  <a href="classics-manuscript-coverage.html" title="Cobertura de manuscritos por obra según el registro actual">Matriz codicológica · <span data-cifra="obras">271</span> obras</a>
-  <button type="button" id="bibliotheca-download-main-xlsx" class="bibliotheca-suite-export" title="Descargar una fila por cada obra del repertorio principal, sin duplicados">Descargar Excel · listado de obras</button>
-   <span id="bibliotheca-main-xlsx-status" class="bibliotheca-suite-export-status" role="status" aria-live="polite"></span>
-   <button type="button" id="bibliotheca-download-xlsx" class="bibliotheca-suite-export" title="Exporta obras, manuscritos, edición digital, ecdótica, filología, fuentes y citas">Descargar Excel académico · <span data-cifra="obras">271</span> obras</button>
-  <span id="bibliotheca-xlsx-status" class="bibliotheca-suite-export-status" role="status" aria-live="polite"></span>
- </nav>
-</section>
+<nav class="bibliotheca-suite-links" aria-label="Navegación académica">
+<a href="index.html">Biblioteca Vitruvius</a>
+<a href="vitruvia.html">Vitruvia · Buscador</a>
+<a href="vitruvia-lexicon.html">Lexicon · Etimologías</a>
+<a href="laboratorio-humanidades.html">Laboratorium · investigación</a>
+<a href="mapa-general.html">Mapa general imprimible</a>
+<a href="index-locorum.html">Index locorum</a>
+<a href="bibliotheca-ampliada.html">Bibliotheca ampliada · PDF de dominio público</a>
+<a href="buscador-facsimiles-clasicos.html">Lectura de facsímiles · página a página</a>
+<a href="bibliotheca-capitula.html">Lectura por capítulos</a>
+<a href="obras-selectas.html">Obras selectas</a>
+<a href="cobertura-traducciones-clasicas.html">Traducciones y cobertura</a>
+<a href="auditoria-academica.html">Auditoría académica</a>
+<a href="tablas-explicativas.html">Tablas explicativas · V297</a>
+<a href="codices-historicos.html">Códices históricos · bibliotecas custodias</a>
+<a href="classics-manuscript-coverage.html">Matriz codicológica · <span data-cifra="obras">271</span> obras</a>
+<button type="button" id="bibliotheca-download-main-xlsx" class="bibliotheca-suite-export" title="Descargar una fila por cada obra del repertorio principal, sin duplicados">Descargar Excel · listado de obras</button>
+<span id="bibliotheca-main-xlsx-status" class="bibliotheca-suite-export-status" role="status" aria-live="polite"></span>
+<button type="button" id="bibliotheca-download-xlsx" class="bibliotheca-suite-export" title="Exporta obras, manuscritos, edición digital, ecdótica, filología, fuentes y citas">Descargar Excel académico · <span data-cifra="obras">271</span> obras</button>
+<span id="bibliotheca-xlsx-status" class="bibliotheca-suite-export-status" role="status" aria-live="polite"></span>
+</nav></section></details>
 <header class="hero">
 <span class="eyebrow">BIBLIOTHECA GRAECA ET LATINA · CONCORDANTIA</span>
 <h1 class="bibliotheca-display-title" style="font-family:Georgia,'Times New Roman',serif!important;font-style:italic!important;font-weight:400!important;font-size:clamp(82px,10vw,160px)!important;line-height:.98!important;letter-spacing:-.09em!important">Bibliotheca</h1>
