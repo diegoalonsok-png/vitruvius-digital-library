@@ -3672,6 +3672,150 @@
           "path": "data/classics-corpus/isocrates-plataicus-grc.json"
         }
       ]
+    },
+    {
+      "id": "galen-adhortatio-artes",
+      "author": "Galeno",
+      "title": "Προτρεπτικὸς ἐπὶ τὰς τέχνας · Adhortatio ad artes addiscendas",
+      "language": "grc",
+      "genre": "Medicina, filosofía y artes",
+      "status": "Texto griego incorporado y registrado para búsqueda literal; índice léxico invertido pendiente de regeneración",
+      "textStatus": "registered-original-searchable",
+      "source": "OpenGreekAndLatin · First1KGreek · texto TEI (edición digital)",
+      "sourceUrl": "https://github.com/OpenGreekAndLatin/First1KGreek/blob/master/data/tlg0057/tlg001/tlg0057.tlg001.1st1K-grc1.xml",
+      "corpusFiles": {
+        "grc": "data/classics-corpus/galen-adhortatio-artes-grc.json"
+      },
+      "description": "Texto griego estructurado en 14 capítulos según la edición TEI. Lecturas editoriales; no edición diplomática. El texto no ha sido cotejado aquí con manuscritos.",
+      "manuscript": {
+        "earliestWitness": "No identificado ni verificado para esta obra",
+        "researchNote": "Identificar testigos originales, signaturas, folios, datación, material y tradición antes de proponer un stemma codicum.",
+        "isIndependentAncientWork": true
+      },
+      "codicology": {
+        "oldestCodex": "Pendiente de investigación documental",
+        "shelfmark": null,
+        "holdingInstitution": null,
+        "material": null,
+        "date": null,
+        "script": null,
+        "foliation": null,
+        "collationStatus": "No cotejado con testigos físicos o facsímiles",
+        "method": "No inferir un códice a partir de la edición TEI."
+      },
+      "edition": {
+        "ctsUrn": "urn:cts:greekLit:tlg0057.tlg001.1st1K-grc1",
+        "teiSource": "https://github.com/OpenGreekAndLatin/First1KGreek/blob/master/data/tlg0057/tlg001/tlg0057.tlg001.1st1K-grc1.xml",
+        "license": "CC BY-SA 4.0",
+        "chapterCount": 14
+      },
+      "publicStatus": "lectura-local-por-capitulos",
+      "localVersions": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/galen-adhortatio-artes-grc.json"
+        }
+      ],
+      "reading": {
+        "url": "classics-text-reader.html?work=galen-adhortatio-artes&lang=grc",
+        "status": "Texto original griego indexado en registro literal; cotejo de manuscritos y cobertura del índice invertido pendientes"
+      }
+    },
+    {
+      "id": "galen-optimus-medicus-philosophus",
+      "author": "Galeno",
+      "title": "Ὅτι ἄριστος ἰατρὸς καὶ φιλόσοφος · Quod optimus medicus sit quoque philosophus",
+      "language": "grc",
+      "genre": "Medicina y filosofía",
+      "status": "Texto griego incorporado y registrado para búsqueda literal; índice léxico invertido pendiente de regeneración",
+      "textStatus": "registered-original-searchable",
+      "source": "OpenGreekAndLatin · First1KGreek · texto TEI (edición digital)",
+      "sourceUrl": "https://github.com/OpenGreekAndLatin/First1KGreek/blob/master/data/tlg0057/tlg003/tlg0057.tlg003.1st1K-grc1.xml",
+      "corpusFiles": {
+        "grc": "data/classics-corpus/galen-optimus-medicus-philosophus-grc.json"
+      },
+      "description": "Texto griego estructurado en 4 capítulos según la edición TEI. Lecturas editoriales; no edición diplomática. El texto no ha sido cotejado aquí con manuscritos.",
+      "manuscript": {
+        "earliestWitness": "No identificado ni verificado para esta obra",
+        "researchNote": "Identificar testigos originales, signaturas, folios, datación, material y tradición antes de proponer un stemma codicum.",
+        "isIndependentAncientWork": true
+      },
+      "codicology": {
+        "oldestCodex": "Pendiente de investigación documental",
+        "shelfmark": null,
+        "holdingInstitution": null,
+        "material": null,
+        "date": null,
+        "script": null,
+        "foliation": null,
+        "collationStatus": "No cotejado con testigos físicos o facsímiles",
+        "method": "No inferir un códice a partir de la edición TEI."
+      },
+      "edition": {
+        "ctsUrn": "urn:cts:greekLit:tlg0057.tlg003.1st1K-grc1",
+        "teiSource": "https://github.com/OpenGreekAndLatin/First1KGreek/blob/master/data/tlg0057/tlg003/tlg0057.tlg003.1st1K-grc1.xml",
+        "license": "CC BY-SA 4.0",
+        "chapterCount": 4
+      },
+      "publicStatus": "lectura-local-por-capitulos",
+      "localVersions": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/galen-optimus-medicus-philosophus-grc.json"
+        }
+      ],
+      "reading": {
+        "url": "classics-text-reader.html?work=galen-optimus-medicus-philosophus&lang=grc",
+        "status": "Texto original griego indexado en registro literal; cotejo de manuscritos y cobertura del índice invertido pendientes"
+      }
+    },
+    {
+      "id": "hippocrates-de-prisca-medicina",
+      "author": "Corpus hipocrático (atribución tradicional)",
+      "title": "Περὶ ἀρχαίης ἰητρικῆς · De prisca medicina",
+      "language": "grc",
+      "genre": "Medicina griega clásica",
+      "status": "Texto griego incorporado y registrado para búsqueda literal; índice léxico invertido pendiente de regeneración",
+      "textStatus": "registered-original-searchable",
+      "source": "OpenGreekAndLatin · First1KGreek · texto TEI (edición digital)",
+      "sourceUrl": "https://github.com/OpenGreekAndLatin/First1KGreek/blob/master/data/tlg0627/tlg001/tlg0627.tlg001.1st1K-grc1.xml",
+      "corpusFiles": {
+        "grc": "data/classics-corpus/hippocrates-de-prisca-medicina-grc.json"
+      },
+      "description": "Texto griego estructurado en 24 capítulos según la edición TEI. Lecturas editoriales; no edición diplomática. El texto no ha sido cotejado aquí con manuscritos.",
+      "manuscript": {
+        "earliestWitness": "No identificado ni verificado para esta obra",
+        "researchNote": "Identificar testigos originales, signaturas, folios, datación, material y tradición antes de proponer un stemma codicum.",
+        "isIndependentAncientWork": true
+      },
+      "codicology": {
+        "oldestCodex": "Pendiente de investigación documental",
+        "shelfmark": null,
+        "holdingInstitution": null,
+        "material": null,
+        "date": null,
+        "script": null,
+        "foliation": null,
+        "collationStatus": "No cotejado con testigos físicos o facsímiles",
+        "method": "No inferir un códice a partir de la edición TEI."
+      },
+      "edition": {
+        "ctsUrn": "urn:cts:greekLit:tlg0627.tlg001.1st1K-grc1",
+        "teiSource": "https://github.com/OpenGreekAndLatin/First1KGreek/blob/master/data/tlg0627/tlg001/tlg0627.tlg001.1st1K-grc1.xml",
+        "license": "CC BY-SA 4.0",
+        "chapterCount": 24
+      },
+      "publicStatus": "lectura-local-por-capitulos",
+      "localVersions": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/hippocrates-de-prisca-medicina-grc.json"
+        }
+      ],
+      "reading": {
+        "url": "classics-text-reader.html?work=hippocrates-de-prisca-medicina&lang=grc",
+        "status": "Texto original griego indexado en registro literal; cotejo de manuscritos y cobertura del índice invertido pendientes"
+      }
     }
   ]
 }
