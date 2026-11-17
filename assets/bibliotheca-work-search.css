@@ -89,7 +89,9 @@ html[data-theme="light"] body #bibliotheca-work-search :is(input,button,a):focus
 /* Navegador académico de grandes catálogos: filas legibles y controles independientes. */
 #bibliotheca-work-search .bws-library-filters{display:grid;grid-template-columns:minmax(230px,2fr) repeat(3,minmax(140px,1fr));gap:10px;margin:14px 0}
 #bibliotheca-work-search .bws-library-filters :is(input,select){width:100%;min-width:0;min-height:45px;padding:9px 12px;border:1px solid #777;border-radius:6px;background:#202226;color:#f5f2e9;font:500 16px/1.35 system-ui,sans-serif}
-#bibliotheca-work-search .bws-alphabet{display:flex;flex-wrap:wrap;gap:5px;margin:12px 0 18px;max-height:145px;overflow:auto}
+#bibliotheca-work-search .bws-alphabet{display:block;margin:12px 0 18px;max-height:none;overflow:visible}
+#bibliotheca-work-search .bws-alphabet-group{display:block;width:100%;max-height:none;overflow:visible}
+#bibliotheca-work-search .bws-alphabet-group button{vertical-align:middle;white-space:nowrap}
 #bibliotheca-work-search .bws-alphabet button{min-width:35px;min-height:35px;padding:5px 9px;border:1px solid #777;border-radius:5px;background:#25272b;color:#f1e5ce;font:600 16px system-ui,sans-serif;cursor:pointer}
 #bibliotheca-work-search .bws-alphabet button[aria-pressed="true"]{background:#d5b072;color:#141414;border-color:#f0d4a1}
 #bibliotheca-work-search .bws-results{max-height:62vh;overflow-y:auto;scrollbar-width:auto;overscroll-behavior:contain}
