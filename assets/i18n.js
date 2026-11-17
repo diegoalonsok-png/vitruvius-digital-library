@@ -1,5 +1,6 @@
 const LANGUAGE_KEY='vitruvius-ui-lang';
 const i18n={
+'EDICIONES CRÍTICAS MODERNAS':['MODERN CRITICAL EDITIONS','ÉDITIONS CRITIQUES MODERNES'],
 /* Portada: títulos y descripciones de los visores históricos. */
 'OBRAS NOTABLES':['NOTABLE WORKS','ŒUVRES REMARQUABLES'],
 'Tratados mayores de la arquitectura, folio por folio':['Major architectural treatises, folio by folio','Grands traités d’architecture, feuillet par feuillet'],
