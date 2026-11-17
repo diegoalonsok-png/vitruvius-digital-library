@@ -478,9 +478,25 @@ function render(){
   const {list,count,more}=model;
   model.region.hidden=false;
   list.replaceChildren();
-  const works=[...model.items].sort((a,b)=>
-   a.author.localeCompare(b.author,"es",{sensitivity:"base"})||
-   a.title.localeCompare(b.title,"es",{sensitivity:"base"}));
+  // Plain list must respect the typed author/title, alphabet and facet filters.
+  // Do not silently replace search results with the entire catalogue.
+  const selectedLetter=typedLetter||model.letter;
+  const searched=q.trim();
+  const works=model.items.filter(w=>
+   (!searched||rank(w,searched)>=65)&&
+   (!selectedLetter||letterMatch(w,normal(selectedLetter),model.sortFilter.value==="title"))&&
+   (!model.authorFilter.value.trim()||rank({...w,title:"",forms:[w.author,...(aliasAuthority[w.id]||[])]},model.authorFilter.value.trim())>=65)&&
+   (!model.genreFilter.value||ancientGenre(w.genre)===model.genreFilter.value)&&
+   (!model.subjectFilter.value||matchedSubjects(w).includes(model.subjectFilter.value))&&
+   (!model.centuryFilter.value||centuryOf(w.dating)===model.centuryFilter.value)&&
+   (!model.periodFilter.value||periodOfWork(w)===model.periodFilter.value)&&
+   (!model.languageFilter.value||w.versions.some(v=>v.language===model.languageFilter.value))
+  ).sort((a,b)=>
+   (searched?rank(b,searched)-rank(a,searched):0)||
+   (model.sortFilter.value==="title"
+    ?a.title.localeCompare(b.title,"es",{sensitivity:"base"})
+    :a.author.localeCompare(b.author,"es",{sensitivity:"base"})||
+     a.title.localeCompare(b.title,"es",{sensitivity:"base"})));
   for(const w of works){
    const li=make("li",null,"bws-item");
    const title=make("a",w.title,"bws-plain-title");
@@ -491,7 +507,7 @@ function render(){
    const author=make("span",w.author||"Autor no identificado","bws-plain-author");
    li.append(title,author);list.append(li);
   }
-  count.textContent=works.length+" obras";
+  count.textContent=works.length+(searched?" obras encontradas para «"+searched+"»":" obras en el catálogo");
   more.hidden=true;
   return;
  }
