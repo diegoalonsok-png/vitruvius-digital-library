@@ -9,9 +9,13 @@
  if(window.PageAutoTranslate)return;
  const root=document.documentElement;
  // La traducción automática no debe reescribir nombres propios en páginas académicas protegidas.
- if(root.getAttribute("translate")==="no"||document.querySelector('meta[name="google"][content="notranslate"]'))return;
+ // Home page protects ancient texts from generic browser translation, but its
+ // explicit ES/EN/FR selector must still localise the ordinary Spanish UI copy.
+ // Exclude academic passages element-by-element (SKIP), not the whole document.
+ const isFront=/^(?:\/|\/index(?:\.html)?)$/.test(location.pathname);
+ if(!isFront&&(root.getAttribute("translate")==="no"||document.querySelector('meta[name="google"][content="notranslate"]')))return;
  const originals=new WeakMap(),mine=new WeakSet(),cache=new Map();
- const SKIP='script,style,noscript,textarea,input,select,option,code,pre,svg,iframe,cite,blockquote,dfn,abbr,[data-citation],[data-person],[data-author],[data-editor],[data-title],[itemscope],[contenteditable],:not(html)[translate=no],.notranslate,[lang="la"],[lang="grc"],[lang^="la-"],[lang="he"],[lang="arc"],.vtp-la,.latin,#ui-language';
+ const SKIP='script,style,noscript,textarea,input,select,option,code,pre,svg,iframe,cite,blockquote,dfn,abbr,.catalog-list,.search-results,.reader-transcript,.passage-text,.study,.biblio-table,[data-citation],[data-person],[data-author],[data-editor],[data-title],[itemscope],[contenteditable],:not(html)[translate=no],.notranslate,[lang="la"],[lang="grc"],[lang^="la-"],[lang="he"],[lang="arc"],.vtp-la,.latin,#ui-language';
  const ES=/\b(el|la|los|las|del|por|para|con|una|uno|como|más|pero|sus|este|esta|estos|desde|sobre|entre|también|según|hasta|donde|cuando|porque|sin|muy|edición|ediciones|libro|libros|página|páginas|fuente|fuentes|buscar|leer|consultar|traducción|obra|obras|siglo|destacado|biblioteca|documentación|carpeta|privacidad|borrar|sesión|búsqueda|dictar|explorar|universidades|investigación|fichas|secciones|lecturas|testimonios|imágenes|manuscrito|códice|códices|resultados|instalar|leer|ver|abrir|cerrar)\b/i;
  const ACC=/[áéíóúñ¿¡]/i;
  const looksSpanish=t=>{const s=t.trim();if(s.length<3||!/[a-záéíóúñ]/i.test(s))return false;const hits=(s.match(/\b(el|la|los|las|del|por|para|con|una|como|más|pero|sus|este|esta|desde|sobre|entre|también|según|sin|muy)\b/gi)||[]).length;return ES.test(s)&&(hits>=1||ACC.test(s)||s.split(/\s+/).length<=6)||(ACC.test(s)&&s.split(/\s+/).length<=4)};
