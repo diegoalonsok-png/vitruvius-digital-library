@@ -100,4 +100,189 @@ let t=0;const obs=new MutationObserver(()=>{if(lang()==="es")return;clearTimeout
 document.addEventListener("vitruvius:language-changed",()=>setTimeout(aplicar,50));
 const iniciar=()=>{aplicar();setTimeout(aplicar,2500)};
 if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",iniciar);else iniciar();
+/* Cobertura complementaria de controles visibles y creados dinámicamente.
+   Se traducen únicamente nodos de interfaz; títulos de obras, citas, pasajes,
+   etiquetas de autor y procedencias quedan en su idioma documental. */
+const UI_TRANSLATIONS={
+"Bibliotheca": ["Bibliotheca","Bibliotheca"],
+"Graeca et Latina":["Graeca et Latina","Graeca et Latina"],
+"Inicio":["Home","Accueil"],
+"Buscar":["Search","Rechercher"],
+"Buscar ↗":["Search ↗","Rechercher ↗"],
+"Filtros":["Filters","Filtres"],
+"Catálogo de obras":["Works catalogue","Catalogue des œuvres"],
+"Obra o autor":["Work or author","Œuvre ou auteur"],
+"Buscar obra":["Find work","Rechercher une œuvre"],
+"Ver catálogo completo":["Browse full catalogue","Voir le catalogue complet"],
+"Ocultar catálogo completo":["Hide full catalogue","Masquer le catalogue complet"],
+"Mostrar más obras":["Show more works","Afficher davantage d’œuvres"],
+"Obras · catálogo":["Works · catalogue","Œuvres · catalogue"],
+"Texto · Lexicon":["Text · Lexicon","Texte · Lexicon"],
+"Todas las materias":["All subjects","Toutes les matières"],
+"Todas las lenguas":["All languages","Toutes les langues"],
+"Todas las épocas":["All periods","Toutes les époques"],
+"Todas las épocas históricas":["All historical periods","Toutes les périodes historiques"],
+"Todos los siglos de composición":["All centuries of composition","Tous les siècles de composition"],
+"Todos los tipos de obras":["All work genres","Tous les genres d’œuvres"],
+"Todos los libros indexados":["All indexed books","Tous les livres indexés"],
+"Todas las obras":["All works","Toutes les œuvres"],
+"Toda la biblioteca":["Entire library","Bibliothèque entière"],
+"Autor · título (A–Z)":["Author · title (A–Z)","Auteur · titre (A–Z)"],
+"Orden por autor A–Z":["Sort by author A–Z","Trier par auteur A–Z"],
+"Orden por título A–Z":["Sort by title A–Z","Trier par titre A–Z"],
+"Título (A–Z)":["Title (A–Z)","Titre (A–Z)"],
+"Orden alfabético":["Alphabetical order","Ordre alphabétique"],
+"Orden del catálogo":["Catalogue order","Ordre du catalogue"],
+"Materia / género":["Subject / genre","Matière / genre"],
+"Época":["Period","Époque"],
+"Obra":["Work","Œuvre"],
+"Griego":["Greek","Grec"],
+"Latín":["Latin","Latin"],
+"Hebreo":["Hebrew","Hébreu"],
+"Arameo":["Aramaic","Araméen"],
+"Castellano":["Spanish","Espagnol"],
+"Inglés":["English","Anglais"],
+"Francés":["French","Français"],
+"Idioma":["Language","Langue"],
+"Idioma de interfaz":["Interface language","Langue de l’interface"],
+"Más filtros":["More filters","Plus de filtres"],
+"Tipo de consulta":["Search mode","Mode de recherche"],
+"Palabra o frase en los textos":["Word or phrase in texts","Mot ou expression dans les textes"],
+"Lema y formas flexionadas documentadas":["Lemma and attested inflected forms","Lemme et formes fléchies attestées"],
+"Concepto multilingüe · equivalencias documentadas":["Multilingual concept · documented equivalents","Concept multilingue · équivalents documentés"],
+"Palabra en párrafos y loci":["Word in paragraphs and loci","Mot dans les paragraphes et les loci"],
+"Restringir por locus (opcional)":["Restrict by locus (optional)","Restreindre par locus (facultatif)"],
+"Filtrar por autor en cualquier idioma":["Filter by author in any language","Filtrer par auteur dans toute langue"],
+"Buscá por nombre original, castellano o transliteración":["Search by original name, Spanish or transliteration","Rechercher par nom original, espagnol ou translittération"],
+"Filtros avanzados · AUTOR, género, siglo, período, idioma y alfabeto":["Advanced filters · AUTHOR, genre, century, period, language and alphabet","Filtres avancés · AUTEUR, genre, siècle, période, langue et alphabet"],
+"FILTROS AVANZADOS":["ADVANCED FILTERS","FILTRES AVANCÉS"],
+"AUTOR":["AUTHOR","AUTEUR"],
+"Épica":["Epic poetry","Épopée"],
+"Poesía lírica":["Lyric poetry","Poésie lyrique"],
+"Tragedia":["Tragedy","Tragédie"],
+"Comedia":["Comedy","Comédie"],
+"Historiografía":["Historiography","Historiographie"],
+"Biografía":["Biography","Biographie"],
+"Filosofía":["Philosophy","Philosophie"],
+"Retórica y oratoria":["Rhetoric and oratory","Rhétorique et art oratoire"],
+"Diálogo":["Dialogue","Dialogue"],
+"Sátira":["Satire","Satire"],
+"Novela antigua":["Ancient novel","Roman antique"],
+"Epistolografía":["Letters","Correspondance"],
+"Religión y exégesis":["Religion and exegesis","Religion et exégèse"],
+"Medicina":["Medicine","Médecine"],
+"Ciencias y matemáticas":["Science and mathematics","Sciences et mathématiques"],
+"Geografía":["Geography","Géographie"],
+"Arquitectura y técnica":["Architecture and technology","Architecture et technique"],
+"Agronomía":["Agronomy","Agronomie"],
+"Derecho":["Law","Droit"],
+"Gramática y filología":["Grammar and philology","Grammaire et philologie"],
+"Otros géneros registrados":["Other recorded genres","Autres genres répertoriés"],
+"Todas las materias":["All subjects","Toutes les matières"],
+"Lengua de texto disponible":["Available text language","Langue du texte disponible"],
+"Materia y tema de las obras":["Subject and theme of works","Matière et thème des œuvres"],
+"Siglo de composición":["Century of composition","Siècle de composition"],
+"Índice alfabético por autor o título":["Alphabetical index by author or title","Index alphabétique par auteur ou titre"],
+"Obras del género seleccionado":["Works in the selected genre","Œuvres du genre sélectionné"],
+"Consultar fuentes":["Consult sources","Consulter les sources"],
+"Palabra o lema":["Word or lemma","Mot ou lemme"],
+"Analizar en Lexicon":["Analyze in Lexicon","Analyser dans Lexicon"],
+"Diccionarios y análisis filológico de las obras":["Dictionaries and philological analysis of works","Dictionnaires et analyse philologique des œuvres"],
+"Latín clásico y medieval":["Classical and medieval Latin","Latin classique et médiéval"],
+"Griego ático y koiné":["Attic and Koine Greek","Grec attique et koinè"],
+"Hebreo bíblico":["Biblical Hebrew","Hébreu biblique"],
+"Arameo bíblico y rabínico":["Biblical and rabbinic Aramaic","Araméen biblique et rabbinique"],
+"Herramientas del corpus":["Corpus tools","Outils du corpus"],
+"Índice de autores y títulos":["Authors and titles index","Index des auteurs et des titres"],
+"Concordancias y búsqueda por obra":["Concordances and work search","Concordances et recherche par œuvre"],
+"Lemas, flexiones y etimologías":["Lemmas, inflections and etymologies","Lemmes, flexions et étymologies"],
+"Todos":["All","Tous"],
+"Buscar por período histórico":["Search by historical period","Rechercher par période historique"],
+"Frase griega · búsqueda literal":["Greek phrase · literal search","Expression grecque · recherche littérale"],
+"Lemas y flexiones":["Lemmas and inflections","Lemmes et flexions"],
+"Conceptos y equivalencias":["Concepts and equivalents","Concepts et équivalents"],
+"Autor, título, siglo e idioma":["Author, title, century and language","Auteur, titre, siècle et langue"],
+"Índice de autores":["Authors index","Index des auteurs"],
+"Todos los autores":["All authors","Tous les auteurs"],
+"Obras selectas":["Selected works","Œuvres choisies"],
+"Mostrar":["Show","Afficher"],
+"Ocultar":["Hide","Masquer"],
+"Leer original":["Read original","Lire l’original"],
+"Leer traducción":["Read translation","Lire la traduction"],
+"Ficha académica":["Academic record","Fiche académique"],
+"Lectura simplificada":["Simplified reading","Lecture simplifiée"],
+"Cotejar versiones registradas":["Compare recorded editions","Comparer les éditions répertoriées"],
+"Copiar enlace":["Copy link","Copier le lien"],
+"Descargar Excel · listado de obras":["Download Excel · works list","Télécharger Excel · liste des œuvres"],
+"Descargar Excel académico":["Download academic Excel","Télécharger l’Excel académique"],
+"Explorar obras clásicas griegas y latinas por autor y título · fichas con texto original indexado":["Browse Greek and Latin classics by author and title · indexed original-text records","Explorer les classiques grecs et latins par auteur et titre · fiches des textes originaux indexés"],
+"Índice alfabético de autores y obras":["Alphabetical index of authors and works","Index alphabétique des auteurs et des œuvres"],
+"Buscar originales griegos y latinos":["Search Greek and Latin originals","Rechercher des originaux grecs et latins"],
+"Consultar una palabra de Bibliotheca en Lexicon":["Look up a Bibliotheca word in Lexicon","Consulter un mot de Bibliotheca dans Lexicon"],
+"Secciones":["Sections","Sections"],
+"Catálogo completo":["Full catalogue","Catalogue complet"]
+};
+const UI_PATTERNS=[
+ [/^Ver (\d+) originales R2$/,(m,l)=>l==="en"?"View "+m[1]+" R2 originals":"Voir "+m[1]+" originaux R2"],
+ [/^(\d+) obras\.$/,(m,l)=>m[1]+(l==="en"?" works.":" œuvres.")],
+ [/^Siglo ([IVXLCDM]+) (a\. C\.|d\. C\.)$/,(m,l)=>l==="en"?"Century "+m[1]+" "+(m[2]==="a. C."?"BCE":"CE"):"Siècle "+m[1]+" "+(m[2]==="a. C."?"av. J.-C.":"apr. J.-C.")],
+ [/^Buscar en todos los libros o una obra$/,(m,l)=>l==="en"?"Search all books or one work":"Rechercher dans tous les livres ou dans une œuvre"]
+];
+const UI_SCOPE="nav.top,.toplinks,.bibliotheca-suite,.hero,.searcharea,.bibliotheca-search-shortcuts,.biblio-extra-filters,.bibliotheca-filters,.bws-work-search,.bibliotheca-work-search,.bws-advanced,.bws-library-filters,#bibliotheca-diccionarios-academicos,#fichas-academicas-auditadas,.bibliotheca-seo-discovery";
+const UI_SKIP="script,style,code,pre,blockquote,cite,dfn,abbr,[data-no-ui-i18n],.notranslate,[translate=no],[lang=la],[lang=grc],[lang=he],[lang=arc],#results,#classic-results,#bws-results,.bws-item,.bws-meta,.bws-help";
+const uiOriginal=new WeakMap(),uiTranslated=new WeakMap();
+function uiText(value,l){
+ const valueTrim=value.trim();if(!valueTrim)return null;
+ const pair=UI_TRANSLATIONS[valueTrim];if(pair)return pair[l==="en"?0:1];
+ for(const [re,fn] of UI_PATTERNS){const match=valueTrim.match(re);if(match)return fn(match,l)}
+ return null;
+}
+function uiPaint(){
+ const l=lang();
+ const walker=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);
+ for(let node=walker.nextNode();node;node=walker.nextNode()){
+  const parent=node.parentElement;
+  if(!parent||!parent.closest(UI_SCOPE)||parent.closest(UI_SKIP))continue;
+  if(!uiOriginal.has(node))uiOriginal.set(node,node.nodeValue);
+  const previous=uiTranslated.get(node);
+  if(previous&&node.nodeValue!==previous&&node.nodeValue!==uiOriginal.get(node)){
+   uiOriginal.set(node,node.nodeValue);uiTranslated.delete(node);
+  }
+  const original=uiOriginal.get(node);
+  if(l==="es"){if(previous&&node.nodeValue===previous){node.nodeValue=original;uiTranslated.delete(node)}continue}
+  const replacement=uiText(original,l);
+  if(replacement){
+   const output=original.replace(original.trim(),replacement);
+   if(node.nodeValue!==output)node.nodeValue=output;
+   uiTranslated.set(node,output);
+  }
+ }
+ const attributes=[["placeholder"],["title"],["aria-label"]];
+ for(const [attribute] of attributes)for(const element of document.querySelectorAll(UI_SCOPE+" ["+attribute+"],"+UI_SCOPE+"["+attribute+"]")){
+  if(element.closest(UI_SKIP))continue;
+  const key="data-bib-source-"+attribute;
+  const current=element.getAttribute(attribute);
+  if(!element.hasAttribute(key))element.setAttribute(key,current);
+  const original=element.getAttribute(key);
+  const expected=uiText(original,l);
+  if(l==="es"&&current!==original)element.setAttribute(attribute,original);
+  else if(expected&&current!==expected)element.setAttribute(attribute,expected);
+ }
+ // Options are interface controls, not historical title data; only change known labels.
+ for(const option of document.querySelectorAll(".bws-library-filters select option,#classic-era option,#classic-genre option,#classic-order option")){
+  if(!uiOriginal.has(option))uiOriginal.set(option,option.textContent);
+  const original=uiOriginal.get(option);
+  if(l==="es"){if(option.textContent!==original)option.textContent=original}
+  else {const translated=uiText(original,l);if(translated&&option.textContent!==translated)option.textContent=translated}
+ }
+}
+let uiTimer=0,uiPainting=false;
+function scheduleUiPaint(){clearTimeout(uiTimer);uiTimer=setTimeout(()=>{if(uiPainting)return;uiPainting=true;try{uiPaint()}finally{uiPainting=false}},100)}
+const uiObserver=new MutationObserver(records=>{
+ if(records.some(r=>r.type==="childList"||r.type==="characterData"))scheduleUiPaint();
+});
+document.addEventListener("vitruvius:language-changed",scheduleUiPaint);
+function initUi(){scheduleUiPaint();uiObserver.observe(document.body,{subtree:true,childList:true,characterData:true});setTimeout(scheduleUiPaint,1400)}
+if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",initUi);else initUi();
+
 })();
