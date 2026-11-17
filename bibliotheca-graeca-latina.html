@@ -380,6 +380,176 @@ body.bibliotheca-plain-list main.library #bibliotheca-work-search .bws-plain-tit
 .bibliotheca-seo-discovery a,.bibliotheca-seo-discovery a:link,.bibliotheca-seo-discovery a:visited,.bibliotheca-seo-discovery a:hover,.bibliotheca-seo-discovery a:focus{text-decoration:none!important;border-bottom:0!important;box-shadow:none!important}
 .bibliotheca-seo-discovery a strong{text-decoration:none!important;border-bottom:0!important}
 </style>
+
+<style id="bibliotheca-reversible-theme-v1">
+/* Academia / Bibliotheca: one reversible palette, without changing reader data. */
+html[data-theme="light"]{
+ --ba-page:#f5f2eb;--ba-surface:#fffdfa;--ba-field:#fff;--ba-text:#252b30;
+ --ba-muted:#58656d;--ba-line:#cfcac1;--ba-link:#284f67;--ba-hover:#e8eee9;
+ --ba-search:#faf8f2;--ba-selected:#e4ecf0;--ba-placeholder:#6d797e;
+ color-scheme:light;
+}
+html[data-theme="dark"]{
+ --ba-page:#141a20;--ba-surface:#1d252d;--ba-field:#24303a;--ba-text:#edf0f2;
+ --ba-muted:#b7c3ca;--ba-line:#52606c;--ba-link:#d5e8f6;--ba-hover:#30404c;
+ --ba-search:#202c36;--ba-selected:#344957;--ba-placeholder:#aebdc6;
+ color-scheme:dark;
+}
+/* Optional background colors stay functional; the mode toggle restores Original. */
+html[data-bibliotheca-color="graphite"]{
+ --ba-page:#25282d;--ba-surface:#30343a;--ba-field:#343940;--ba-text:#f3f4f5;
+ --ba-muted:#ccd0d5;--ba-line:#666e75;--ba-link:#d8e8ef;--ba-hover:#3f4750;
+ --ba-search:#2c3137;--ba-selected:#46525e;--ba-placeholder:#b7bdc4;
+}
+html[data-bibliotheca-color="navy"]{
+ --ba-page:#182a3a;--ba-surface:#203749;--ba-field:#2b4354;--ba-text:#f2f4f5;
+ --ba-muted:#c4d3dc;--ba-line:#5a7587;--ba-link:#e3eef5;--ba-hover:#304f64;
+ --ba-search:#20394c;--ba-selected:#375a71;--ba-placeholder:#bdcdd7;
+}
+html[data-bibliotheca-color="slate"]{
+ --ba-page:#394650;--ba-surface:#435360;--ba-field:#4b5c6b;--ba-text:#f6f6f5;
+ --ba-muted:#dde2e7;--ba-line:#8695a1;--ba-link:#f3f6f8;--ba-hover:#566a7a;
+ --ba-search:#425360;--ba-selected:#627687;--ba-placeholder:#d6dee4;
+}
+html[data-bibliotheca-color="sepia"]{
+ --ba-page:#f2e8d4;--ba-surface:#fff7e7;--ba-field:#fffaf0;--ba-text:#322a22;
+ --ba-muted:#68594a;--ba-line:#cbbba0;--ba-link:#694828;--ba-hover:#f1e1c6;
+ --ba-search:#fcf3e3;--ba-selected:#f3e1bb;--ba-placeholder:#80705b;
+}
+html[data-theme] body:has(main.library),
+html[data-theme] body main.library{
+ background:var(--ba-page)!important;color:var(--ba-text)!important;
+ color-scheme:inherit!important;
+}
+html[data-theme] body main.library :is(
+ .top,.hero,.searcharea,.bibliotheca-resources-2026,.bibliotheca-suite,
+ #bibliotheca-work-search,#bibliotheca-entity-search,.vdl-unified-books,
+ .biblio-extra-filters,.genre-work-list,.bws-item,.bws-results,.bws-alphabet,
+ .bws-library-filters,.bibliotheca-top-tools,.bibliotheca-suite-links,.bibliotheca-search-modes
+){
+ background:var(--ba-surface)!important;color:var(--ba-text)!important;
+ border-color:var(--ba-line)!important;
+}
+html[data-theme] body main.library :is(
+ h1,h2,h3,h4,strong,summary,label,.intro,.eyebrow,.brand,
+ .bws-heading,.bws-heading strong,.bws-heading span,.bws-meta,.bws-intro,.bws-count,
+ .bws-help,.genre-work-title,.genre-work-meta,.bws-empty,.bibliotheca-display-subtitle,
+ .bibliotheca-display-title,.bibliotheca-plain-heading
+){color:var(--ba-text)!important}
+html[data-theme] body main.library :is(.toplinks a,a,a:visited,.bws-actions a,.vdl-unified-books a){
+ color:var(--ba-link)!important;text-decoration-color:var(--ba-line)!important;
+}
+html[data-theme] body main.library :is(a:hover,a:focus-visible){color:var(--ba-text)!important}
+html[data-theme] body main.library :is(
+ input,select,textarea,button,.language-toggle,.bibliotheca-suite-export,
+ .bws-alphabet button,.bws-row>button,.vdl-unified-books button,#search-submit,#biblio-filter-toggle
+){
+ background:var(--ba-field)!important;color:var(--ba-text)!important;
+ border-color:var(--ba-line)!important;
+}
+html[data-theme] body main.library button[aria-pressed="true"]{
+ background:var(--ba-selected)!important;color:var(--ba-text)!important;
+}
+html[data-theme] body main.library :is(input,textarea)::placeholder{color:var(--ba-placeholder)!important}
+html[data-theme] body main.library :is(.bws-results,.genre-work-items,.vdl-unified-books ol){
+ scrollbar-color:var(--ba-line) var(--ba-surface)!important;
+}
+html[data-theme] body main.library :is(.bws-item,.genre-work-item,.vdl-unified-books li){
+ border-bottom-color:var(--ba-line)!important;
+}
+html[data-theme] body main.library :is(.genre-work-meta,.bws-plain-status,.coverage,.search-status,.intro,.eyebrow,.bib-lx-hint,.footnote){
+ color:var(--ba-muted)!important;
+}
+/* Override the older hardcoded dark styles of the simple academic search. */
+html[data-theme] body.bibliotheca-plain-list main.library .bibliotheca-lexicon-simple{
+ color:var(--ba-text)!important;background:transparent!important;border-color:var(--ba-line)!important;
+}
+html[data-theme] body.bibliotheca-plain-list main.library .bibliotheca-lexicon-simple h2,
+html[data-theme] body.bibliotheca-plain-list main.library .bibliotheca-plain-heading{
+ color:var(--ba-text)!important;
+}
+html[data-theme] body.bibliotheca-plain-list main.library .bib-lx-lang,
+html[data-theme] body.bibliotheca-plain-list main.library .bib-lx-icon,
+html[data-theme] body.bibliotheca-plain-list main.library .bib-lx-hint{
+ color:var(--ba-muted)!important;
+}
+html[data-theme] body.bibliotheca-plain-list main.library #bibliotheca-lexicon-lang,
+html[data-theme] body.bibliotheca-plain-list main.library .bibliotheca-lexicon-simple input{
+ background:var(--ba-field)!important;color:var(--ba-text)!important;
+ border-color:var(--ba-line)!important;
+}
+html[data-theme] body.bibliotheca-plain-list main.library #bibliotheca-lexicon-form{
+ background:var(--ba-search)!important;border-color:var(--ba-line)!important;
+}
+html[data-theme] body.bibliotheca-plain-list main.library #bibliotheca-lexicon-q{
+ background:transparent!important;color:var(--ba-text)!important;
+}
+html[data-theme] body.bibliotheca-plain-list main.library #bibliotheca-lexicon-q::placeholder{
+ color:var(--ba-placeholder)!important;
+}
+html[data-theme] body.bibliotheca-plain-list main.library #bibliotheca-lexicon-form button,
+html[data-theme] body.bibliotheca-plain-list main.library #bibliotheca-lexicon-form .bib-lx-advanced,
+html[data-theme] body.bibliotheca-plain-list main.library .bibliotheca-lexicon-simple button,
+html[data-theme] body.bibliotheca-plain-list main.library .bib-lx-modes button{
+ background:var(--ba-field)!important;color:var(--ba-text)!important;
+ border-color:var(--ba-line)!important;
+}
+html[data-theme] body.bibliotheca-plain-list main.library .bib-lx-modes button[aria-pressed="true"]{
+ background:var(--ba-selected)!important;color:var(--ba-text)!important;
+}
+html[data-theme] body.bibliotheca-plain-list main.library #bibliotheca-work-search .bws-item{
+ background:transparent!important;border-bottom:1px solid var(--ba-line)!important;
+}
+html[data-theme] body.bibliotheca-plain-list main.library #bibliotheca-work-search .bws-plain-title,
+html[data-theme] body.bibliotheca-plain-list main.library #bibliotheca-work-search .bws-author-heading{
+ color:var(--ba-text)!important;
+}
+html[data-theme] body.bibliotheca-plain-list main.library #bibliotheca-work-search .bws-plain-author,
+html[data-theme] body.bibliotheca-plain-list main.library #bibliotheca-work-search .bws-count{
+ color:var(--ba-muted)!important;
+}
+html[data-theme="dark"] body main.library :is(
+ #bibliotheca-work-search,
+ #bibliotheca-work-search :is(h3,.bws-intro,label,.bws-count,.bws-heading,.bws-heading strong,.bws-heading span,.bws-meta,.bws-help,.bws-empty,li,p,span,strong),
+ #bibliotheca-entity-search,.vdl-unified-books
+){background-color:var(--ba-surface)!important;color:var(--ba-text)!important}
+html[data-theme="dark"] body main.library #bibliotheca-work-search :is(input,select,button),
+html[data-theme="dark"] body main.library :is(.vdl-unified-books input,.vdl-unified-books button){
+ background:var(--ba-field)!important;color:var(--ba-text)!important;border-color:var(--ba-line)!important;
+}
+html[data-theme="dark"] body main.library :is(
+ #bibliotheca-work-search .bws-actions a,#bibliotheca-work-search .bws-help a,.vdl-unified-books a
+){color:var(--ba-link)!important}
+/* Visible, accessible switch. The two displays use the same underlying catalogue. */
+html[data-theme] body main.library #bibliotheca-theme{
+ display:inline-flex!important;align-items:center;justify-content:center;
+ width:auto!important;min-width:94px!important;height:36px!important;
+ padding:6px 11px!important;font:600 12px/1.2 system-ui,sans-serif!important;
+ background:var(--ba-field)!important;color:var(--ba-text)!important;
+ border:1px solid var(--ba-line)!important;border-radius:7px!important;white-space:nowrap;
+}
+html[data-theme] body main.library #bibliotheca-theme:hover,
+html[data-theme] body main.library #bibliotheca-theme:focus-visible{
+ background:var(--ba-hover)!important;outline-color:var(--ba-link)!important;
+}
+html[data-theme] body main.library .bibliotheca-color-palette>summary{
+ background:var(--ba-field)!important;color:var(--ba-text)!important;border-color:var(--ba-line)!important;
+}
+html[data-theme] body main.library .bibliotheca-color-options{
+ background:var(--ba-surface)!important;color:var(--ba-text)!important;border-color:var(--ba-line)!important;
+}
+html[data-theme] body main.library .bibliotheca-color-options button{
+ background:var(--ba-field)!important;color:var(--ba-text)!important;border-color:var(--ba-line)!important;
+}
+@media print{html[data-theme] body:has(main.library),html[data-theme] body main.library{background:white!important;color:#111!important}}
+</style>
+<script id="bibliotheca-theme-early-pref-v1">
+/* Avoid a flash of the wrong theme before the deferred toggle loads. */
+try{
+ const t=localStorage.getItem("vitruvius-color-theme");
+ document.documentElement.dataset.theme=(t==="dark"||t==="light")?t:"light";
+}catch{document.documentElement.dataset.theme="light"}
+</script>
 </head>
 <body class="bibliotheca-plain-list"><a class="vdl-skip-link" href="#main-content">Saltar al contenido principal</a>
 <main class="library" id="main-content">
@@ -394,7 +564,7 @@ body.bibliotheca-plain-list main.library #bibliotheca-work-search .bws-plain-tit
 </div>
 <div class="bibliotheca-top-tools" role="group" aria-label="Idioma y apariencia">
 <label class="bibliotheca-language-field" for="language-toggle"><span>Idioma</span><select id="language-toggle" class="language-toggle" aria-label="Idioma de la interfaz"><option value="es">ES</option><option value="en">EN</option><option value="fr">FR</option></select></label>
-<button type="button" id="bibliotheca-theme" class="language-toggle" aria-label="Activar fondo claro" title="Activar fondo claro" aria-pressed="true">☀</button>
+<button type="button" id="bibliotheca-theme" class="language-toggle" aria-label="Cambiar a modo oscuro" title="Cambiar a modo oscuro" aria-pressed="false">☾ Oscuro</button>
 <details class="bibliotheca-color-palette" id="bibliotheca-color-palette"><summary title="Elegir color de fondo" aria-label="Elegir color de fondo"><span aria-hidden="true">◉</span> <span>Fondo</span></summary><div class="bibliotheca-color-options" role="group" aria-label="Color de la página">
 <button type="button" data-biblio-color="original">Original</button><button type="button" data-biblio-color="graphite">Grafito</button><button type="button" data-biblio-color="navy">Azul oscuro</button><button type="button" data-biblio-color="slate">Gris pizarra</button><button type="button" data-biblio-color="sepia">Sepia</button></div></details>
 </div>
@@ -523,7 +693,7 @@ body.bibliotheca-plain-list main.library #bibliotheca-work-search .bws-plain-tit
 <span id="bibliotheca-xlsx-status" class="bibliotheca-suite-export-status" role="status" aria-live="polite"></span>
 </nav></section></details>
 </main>
-<script defer src="assets/bibliotheca-lexicon-layout.js?v=20261115-2"></script><script defer src="assets/bibliotheca-palette.js?v=20261115-navfix-v2"></script><script defer src="assets/bibliotheca-search-shortcuts.js?v=20261115-restore-v1"></script><script defer src="assets/classics-audited-coverage.js?v=20261110-manifest-28-wikisource-v4"></script><script defer src="assets/scholarly-query-tools.js?v=20261109-university-v1"></script><script defer src="assets/bibliotheca-theme.js?v=20261110-light-v1"></script><script defer src="assets/bibliotheca-ui-i18n.js?v=20261117-clean-shell-v7"></script><script defer src="assets/button-press-feedback.js?v=20261111-pulsacion-v1"></script><script defer src="assets/ui-idioma.js?v=20261117-global-sync-v7"></script><script defer src="assets/bibliotheca-r2-facsimiles.js?v=20261113-r2-1"></script><script defer src="assets/r2-clasicos-busqueda.js?v=20261113-r2-busqueda-1"></script><script defer src="assets/cifra-obras.js?v=20261116-reconciled-347"></script><script defer src="assets/bibliotheca-federated-status.js?v=20261115-1"></script><script defer src="assets/unified-books-discovery.js?v=20261115-unified-all-books-v3"></script><script defer src="assets/bibliotheca-advanced-search.js?v=20261115-advanced-1"></script>
+<script defer src="assets/bibliotheca-lexicon-layout.js?v=20261115-2"></script><script defer src="assets/bibliotheca-palette.js?v=20261115-navfix-v2"></script><script defer src="assets/bibliotheca-search-shortcuts.js?v=20261115-restore-v1"></script><script defer src="assets/classics-audited-coverage.js?v=20261110-manifest-28-wikisource-v4"></script><script defer src="assets/scholarly-query-tools.js?v=20261109-university-v1"></script><script defer src="assets/bibliotheca-theme.js?v=20261117-toggle-v2"></script><script defer src="assets/bibliotheca-ui-i18n.js?v=20261117-clean-shell-v7"></script><script defer src="assets/button-press-feedback.js?v=20261111-pulsacion-v1"></script><script defer src="assets/ui-idioma.js?v=20261117-global-sync-v7"></script><script defer src="assets/bibliotheca-r2-facsimiles.js?v=20261113-r2-1"></script><script defer src="assets/r2-clasicos-busqueda.js?v=20261113-r2-busqueda-1"></script><script defer src="assets/cifra-obras.js?v=20261116-reconciled-347"></script><script defer src="assets/bibliotheca-federated-status.js?v=20261115-1"></script><script defer src="assets/unified-books-discovery.js?v=20261115-unified-all-books-v3"></script><script defer src="assets/bibliotheca-advanced-search.js?v=20261115-advanced-1"></script>
 
 <script id="bibliotheca-lexicon-search-bind-v1">
 (()=>{'use strict';
