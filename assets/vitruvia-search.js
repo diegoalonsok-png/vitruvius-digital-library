@@ -1790,12 +1790,31 @@ async function search(){
      link:"iconografia-vitruviana.html#lamina-"+e.id,source:"Atlas iconográfico · láminas"}));
    return {name:"Láminas históricas",rows}}).catch(()=>({name:"Láminas no disponibles",rows:[]})));
  }
- if(expanded&&internal&&window.ClassicsCorpusSearch){
+ if(internal&&window.ClassicsCorpusSearch?.searchPassages){
   pending.push(later(async()=>{
-   // Return literal attestations AND documented Conceptus equivalents.
-   // A literal Latin hit must not suppress Greek parallels in indexed sources.
-   return window.ClassicsCorpusSearch.combinedSearch(generalQuery,{limit:6});
-  }).then(rows=>({name:"Textos clásicos griegos y latinos",rows})).catch(()=>({name:"Textos clásicos no disponibles",rows:[]})));
+   // Query the actual indexed loci rather than only one summary per book.
+   // Latin-script 'logos' is an explicit documented spelling lookup for
+   // Greek λόγος; it does NOT imply automatic lemmatization or translation.
+   const normalized=String(generalQuery||"").normalize("NFD")
+    .replace(/[\\u0300-\\u036f]/g,"").toLocaleLowerCase();
+   const terms=normalized==="logos"?
+    [generalQuery,"λόγος"]: [generalQuery];
+   const verified=await window.ClassicsCorpusSearch.searchPassages(terms,{
+    limit:120,maxPerEdition:5,includeOCR:false
+   });
+   const languageNames={grc:"Griego",la:"Latín",es:"Castellano",en:"Inglés",fr:"Francés"};
+   return verified.map((p,index)=>({
+    type:"section",kind:"classic-passage",
+    title:p.author+" · "+p.title+" · "+p.locus,
+    author:(languageNames[p.language]||p.language)+(p.edition?" · "+p.edition:""),
+    excerpt:p.excerpt,
+    meta:"PASAJE TEXTUAL INDEXADO · LOCUS "+p.locus+
+     " · COINCIDENCIA LITERAL"+(p.term!==generalQuery?" · grafía consultada: "+p.term:""),
+    rating:1800-index,link:p.link,
+    source:"Bibliotheca Graeca et Latina · "+(p.attribution||"texto registrado")
+   }));
+  }).then(rows=>({name:"Pasajes de Bibliotheca · original y traducciones registradas",rows}))
+   .catch(e=>({name:"Pasajes de Bibliotheca no disponibles",rows:[],warnings:[String(e.message||e)]}))));
  }
  if((expanded||/\b(aparato|apparatus|variante|lectio)\b/i.test(q))&&internal&&window.KuriloApparatus){
   const ap=window.KuriloApparatus,apLimit=/\b(aparato|apparatus|apparat|ecd[oó]tic|nota cr[ií]tica|variante|lectio|krohn|rose)\b/i.test(generalQuery)?14:6;
