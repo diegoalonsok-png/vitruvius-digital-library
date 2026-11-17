@@ -96,23 +96,46 @@ function lexicalRanking(q,data){
 }
 function diversity(lexical,limit=82){
  const selected=[],used=new Set();
- const add=entry=>{if(!used.has(entry.doc.id)){used.add(entry.doc.id);selected.push(entry)}};
- for(const entry of lexical.filter(x=>x.score>0).slice(0,64))add(entry);
- // Support conceptual searches without lexical overlap: deterministic coverage
- // across works, books and sections, not invented candidate passages.
- if(selected.length<limit){
-  const bySection=new Map();
-  for(const entry of lexical){
-   const key=entry.doc.workTitle+"|"+String(entry.doc.locus||"").split(".")[0];
-   if(!bySection.has(key))bySection.set(key,[]);
-   bySection.get(key).push(entry);
-  }
-  const groups=[...bySection.values()],maxPerGroup=4;
-  for(let round=0;round<maxPerGroup&&selected.length<limit;round++){
-   for(const group of groups){if(group[round])add(group[round]);if(selected.length>=limit)break}
+ const add=entry=>{
+  if(!entry||used.has(entry.doc.id)||selected.length>=limit)return;
+  used.add(entry.doc.id);selected.push(entry);
+ };
+ // Preserve the best lexical evidence while reserving room for other sources.
+ // E5 must not operate on only the first 64 hits from one edition.
+ const lexicalCap=Math.min(48,Math.floor(limit*.6));
+ let lexicalTaken=0;
+ for(const entry of lexical){
+  if(entry.score<=0||lexicalTaken>=lexicalCap)break;
+  add(entry);lexicalTaken++;
+ }
+ // Treat each edition separately: the same ancient work can have translations.
+ const byEdition=new Map();
+ for(const entry of lexical){
+  const key=entry.doc.workId+"|"+entry.doc.edition+"|"+entry.doc.language;
+  if(!byEdition.has(key))byEdition.set(key,[]);
+  byEdition.get(key).push(entry);
+ }
+ const groups=[...byEdition.values()];
+ // The first pass reserves at least one candidate per edition when capacity permits.
+ for(const group of groups)add(group[0]);
+ // Sample across each edition's full locus range instead of repeatedly taking its
+ // first chapter. This is only candidate generation, not a relevance guarantee.
+ const rounds=Math.max(0,Math.min(48,limit));
+ for(let round=1;round<=rounds&&selected.length<limit;round++){
+  for(const group of groups){
+   if(selected.length>=limit)break;
+   const index=Math.min(group.length-1,Math.floor(round*group.length/(rounds+1)));
+   add(group[index]);
   }
  }
- return selected.slice(0,limit);
+ // Fill remaining positions from the lexical ranking (including negative-free ties)
+ // so the candidate pool remains deterministic and bounded.
+ for(const entry of lexical){if(selected.length>=limit)break;add(entry)}
+ return selected;
+}
+function candidateCoverage(candidates){
+ return {candidateWorks:new Set(candidates.map(x=>x.doc.workId)).size,
+  candidateEditions:new Set(candidates.map(x=>x.doc.workId+"|"+x.doc.edition+"|"+x.doc.language)).size};
 }
 function sourceExcerpt(doc,query,max=420){
  const source=doc.excerptText;const lowered=normalize(source),words=terms(query);
@@ -174,13 +197,14 @@ async function search(query,{method="neural"}={}){
  const data=await corpus(),ranked=lexicalRanking(q,data);
  const coverageNotice=data.unavailable.length?"Fuentes no cargadas: "+data.unavailable.join(", ")+". Cobertura parcial.":"";
  const candidates=diversity(ranked);
+ const coverage=candidateCoverage(candidates);
  if(!candidates.length)return {rows:[],mode:"empty",stats:{chunks:data.documents.length,works:data.works}};
  const fallback=candidates.filter(x=>x.score>0).slice(0,35).map(x=>renderRow(x.doc,q,x.score*25));
  if(method==="bm25"||prefersReducedData()){
   const warning=(method==="bm25"?"Motor BM25 elegido: búsqueda textual indexada, sin descarga E5 ni similitud neuronal.":"Ahorro de datos activo: se omite la descarga del modelo E5; resultados BM25 sobre textos indexados, sin afirmar análisis neuronal.")+(coverageNotice?" "+coverageNotice:"");
   notify(warning,"fallback");
   return {rows:fallback,mode:"bm25-fallback",
-   stats:{chunks:data.documents.length,candidates:candidates.length,works:data.works,declaredSources:data.declaredSources,loadedSources:data.works.length,unavailable:data.unavailable},warning,method:"bm25"};
+   stats:{chunks:data.documents.length,candidates:candidates.length,...coverage,works:data.works,declaredSources:data.declaredSources,loadedSources:data.works.length,unavailable:data.unavailable},warning,method:"bm25"};
  }
  try{
   const model=await getModel();
@@ -198,10 +222,10 @@ async function search(query,{method="neural"}={}){
    return {...entry,score:fused*16000};
   }).sort((a,b)=>b.score-a.score).slice(0,35);
   notify("IA semántica activa · "+data.documents.length+" fragmentos disponibles; "+candidates.length+" cotejados con embeddings."+(coverageNotice?" "+coverageNotice:""),coverageNotice?"fallback":"success");
-  return {rows:combined.map(x=>renderRow(x.doc,q,x.score,true)),mode:"neural",method:"e5",stats:{chunks:data.documents.length,candidates:candidates.length,works:data.works,declaredSources:data.declaredSources,loadedSources:data.works.length,unavailable:data.unavailable},warning:coverageNotice||undefined};
+  return {rows:combined.map(x=>renderRow(x.doc,q,x.score,true)),mode:"neural",method:"e5",stats:{chunks:data.documents.length,candidates:candidates.length,...coverage,works:data.works,declaredSources:data.declaredSources,loadedSources:data.works.length,unavailable:data.unavailable},warning:coverageNotice||undefined};
  }catch(e){
   notify("No se pudo cargar el modelo ("+String(e.message||"error").slice(0,90)+"). Se muestran coincidencias BM25, sin afirmar IA semántica.","fallback");
-  return {rows:fallback,mode:"bm25-fallback",stats:{chunks:data.documents.length,candidates:candidates.length,works:data.works},warning:String(e.message||e)};
+  return {rows:fallback,mode:"bm25-fallback",stats:{chunks:data.documents.length,candidates:candidates.length,...coverage,works:data.works},warning:String(e.message||e)};
  }
 }
 /* Ordenación genérica por sentido para visores (p. ej. páginas de un PDF):
