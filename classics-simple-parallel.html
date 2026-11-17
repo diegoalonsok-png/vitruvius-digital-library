@@ -113,6 +113,12 @@ mark.simple-match{background:#d8a442;color:#161616;border-radius:2px}
 .book-search{margin:0 0 16px;padding:13px 16px;border:1px solid #777067;border-radius:10px;background:#1d1d1e;color:#eee8de;font:13px/1.5 system-ui}.book-search form{display:flex;flex-wrap:wrap;gap:8px;align-items:center}.book-search input,.book-search select,.book-search button,.share-tools button{font:13px system-ui;border:1px solid #736d63;border-radius:7px;padding:8px 10px;min-height:34px;background:#29292a;color:#f2ece2}.book-search input{flex:1 1 180px;min-width:120px}.book-search button,.share-tools button{cursor:pointer}.book-search button:hover,.share-tools button:hover{background:#443c32}.book-search .search-results{max-height:390px;overflow:auto;margin-top:10px}.search-results button{display:block;width:100%;text-align:left;margin:3px 0;background:transparent;border-color:#69635d40;line-height:1.55}.search-results button strong{color:#e8c991}.search-results button small{display:block;color:#c4b9a9;font-size:11px}.search-results p{font-size:12px;color:#c9bead}.share-tools{display:flex;flex-wrap:wrap;align-items:center;gap:7px;margin:0 0 15px}.share-tools span{color:#bdb6ad;font:12px system-ui}.share-tools button{white-space:nowrap}@media print{.book-search,.share-tools{display:none!important}.top nav,.toolbar,.reader-utilities,.speech-tools,.passage-guide,.study-panel,.bude-apparatus,.note{display:none!important}body{background:white!important;color:#222!important}.cards .card{background:#fff!important;color:#222!important;box-shadow:none!important;break-inside:auto}.cards .card .passage{font-size:17px!important;line-height:1.55!important}.cards .card .panel-colors,.cards .card .panel-size,.cards .card .panel-font-label,.cards .card .panel-italic,.translate-action{display:none!important}.cards .card :is(.passage,.passage p){color:#222!important}main{max-width:none!important}.top{margin:0 0 14px!important}}
 .speech-tools{display:inline-flex;flex-wrap:nowrap;align-items:center;gap:6px;width:auto;max-width:100%;padding:5px 9px;margin:0 0 12px;border-radius:9px}.speech-tools .speech-label{font-size:16px;margin-right:3px}.speech-tools button{display:inline-flex;align-items:center;justify-content:center;width:34px;height:32px;min-width:34px;min-height:32px;padding:0;font-size:17px;line-height:1;border-radius:6px}.speech-tools button[aria-pressed="true"]{background:#675235;border-color:#d9ba87}.speech-visually-hidden{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important}
 .panel-size{align-items:center;flex-wrap:wrap}.panel-size .inline-speech{display:inline-flex;gap:6px;margin-left:9px;align-items:center}.panel-size .inline-speech button{display:inline-flex;align-items:center;justify-content:center;min-width:41px;height:36px;padding:3px 10px;background:#343434;color:#fff7e9;border:1px solid #a69a85;font:600 19px/1 system-ui;opacity:1;border-radius:7px;cursor:pointer}.panel-size .inline-speech button:hover{background:#625640}.panel-size .inline-speech button:disabled{opacity:.5}.cards.paper-soft .panel-size .inline-speech button{background:#383632!important;color:#fff7e9!important;border-color:#897c68!important}.panel-size .inline-speech button:focus-visible{outline:2px solid #c8a777;outline-offset:2px}.share-tools #save-pdf{border-color:#b69b77;font-weight:700}@media print{.panel-size .inline-speech{display:none}}
+/* Control TTS contextual: sin barras ni botones permanentes en las hojas. */
+.selection-speech-float{position:fixed;z-index:1200;display:none;align-items:center;justify-content:center;width:37px;height:37px;padding:0;border:1px solid #9f8b6c;border-radius:50%;background:#292723;color:#fff4de;box-shadow:0 3px 12px #0005;font:600 19px/1 system-ui;cursor:pointer}
+.selection-speech-float[data-visible="true"]{display:flex}
+.selection-speech-float:hover{background:#544634}
+.selection-speech-float:focus-visible{outline:2px solid #d9ba87;outline-offset:2px}
+@media print{.selection-speech-float{display:none!important}}
 </style><script defer src="assets/analytics-config.js?v=20261106-ga4-1"></script><script defer src="assets/analytics.js?v=20261106-ga4-1"></script></head><body><main>
 <div class="top"><h1 id="title">BIBLIOTHECA · VISOR SIMPLIFICADO</h1><nav class="actions" aria-label="Navegación de lectura"><a id="academic" href="classics-parallel-reader.html">Visor académico</a><button id="previous" type="button" aria-label="Pasaje anterior">‹</button><button id="next" type="button" aria-label="Pasaje siguiente">›</button></nav></div>
 <div class="toolbar" role="group" aria-label="Herramientas de lectura"><label>Original <select id="original-lang" aria-label="Idioma original"></select></label><label>Traducción <select id="translation-lang" aria-label="Idioma de la traducción"></select></label><label>Locus <input id="go-locus" type="search" placeholder="Ej. 2" aria-label="Locus o capítulo"></label><button id="go-button" type="button">Ir al locus</button><a id="lexicon-link" href="vitruvia-lexicon.html" style="border:1px solid #555;border-radius:7px;padding:8px 10px;color:#eee;text-decoration:none;font:13px system-ui">Diccionario · Lexicon</a><label>Palabra <input id="word-query" type="search" placeholder="Buscar palabra" aria-label="Buscar palabra"></label><button id="word-find" type="button" aria-label="Buscar próxima coincidencia">⌕</button><button id="smaller" type="button" aria-label="Reducir texto">A−</button><button id="larger" type="button" aria-label="Ampliar texto">A+</button><label>Color <select id="palette" aria-label="Colores"><option value="dark">Gris</option><option value="sepia">Sepia</option><option value="light">Marfil</option></select></label></div>
@@ -481,7 +487,7 @@ function updatePassageGuide(rebuild=false){
 }
 function draw(){
   if(window.speechSynthesis)window.speechSynthesis.cancel();
-  speechSelection="";speechSelectedSide="";
+  speechSelection="";speechSelectedSide="";hideSpeechFloat();
  const token=++renderToken;el("translate").hidden=true;
  const a=source[pos],locus=a?.locus||"";
  el("title").textContent=title+" · "+locusCaption(locus);
@@ -705,65 +711,60 @@ for(const side of ["left","right"])el(side+"-text").addEventListener("mouseup",(
 const speechOK="speechSynthesis" in window&&"SpeechSynthesisUtterance" in window;
 const speechStatus=el("speech-status"),speechLocales={grc:"el-GR",la:"la",en:"en",es:"es",fr:"fr",it:"it",de:"de",pt:"pt"};
 let speechSelection="",speechSelectedSide="",speechGeneration=0,speechUtterance=null;
-const speechButtons={};
-for(const side of ["left","right"]){
- const toolbar=el(side+"-smaller").parentElement,group=document.createElement("span");
- group.className="inline-speech";group.setAttribute("role","group");
- group.setAttribute("aria-label",side==="left"?"Lectura del original":"Lectura de la traducción");
- const play=document.createElement("button"),stop=document.createElement("button");
- play.type=stop.type="button";play.textContent="▶";stop.textContent="■";
- play.setAttribute("aria-label","Reproducir "+(side==="left"?"original":"traducción")+" o selección");
- stop.setAttribute("aria-label","Detener lectura");play.title="Leer selección o pasaje";stop.title="Detener voz";
- play.className="speech-play";stop.className="speech-stop";group.append(play,stop);toolbar.append(group);
- speechButtons[side]={play,stop};
- play.addEventListener("click",()=>readSpeechSide(side));
- stop.addEventListener("click",stopSpeech);
-}
-function speechState(message){
- speechStatus.textContent=message;
- for(const side of ["left","right"]){
-  const buttons=speechButtons[side];
-  buttons.play.disabled=!speechOK;
-  buttons.stop.disabled=!speechOK||!window.speechSynthesis.speaking;
- }
-}
+const speechFloat=document.createElement("button");
+speechFloat.type="button";speechFloat.className="selection-speech-float";
+speechFloat.textContent="▶";speechFloat.setAttribute("aria-label","Escuchar texto seleccionado");
+speechFloat.title="Leer frase seleccionada";
+document.body.append(speechFloat);
+function hideSpeechFloat(){speechFloat.dataset.visible="false"}
+function speechState(message){speechStatus.textContent=message}
 function stopSpeech(){
  if(!speechOK)return;
- speechGeneration++;window.speechSynthesis.cancel();speechUtterance=null;speechState("Lectura detenida.");
+ speechGeneration++;window.speechSynthesis.cancel();speechUtterance=null;
+ speechFloat.textContent="▶";speechFloat.setAttribute("aria-label","Escuchar texto seleccionado");
+ speechState("Lectura detenida.");
 }
-function readSpeechSide(side){
- if(!speechOK){speechState("Voz no disponible en este navegador.");return}
- const text=(speechSelectedSide===side&&speechSelection?speechSelection:String(visibleText[side]||"")).trim().slice(0,8000);
- if(!text){speechState("No hay texto legible.");return}
- const lang=side==="left"?leftLang:(el("translation-lang").value.startsWith("auto-")?targetLang:rightLang);
- const locale=speechLocales[lang]||lang||"en";
- const synth=window.speechSynthesis;
+function readSelectedSpeech(){
+ if(!speechOK||!speechSelection||!speechSelectedSide)return;
+ const side=speechSelectedSide,lang=side==="left"?leftLang:(el("translation-lang").value.startsWith("auto-")?targetLang:rightLang);
+ const locale=speechLocales[lang]||lang||"en",synth=window.speechSynthesis;
  speechGeneration++;const token=speechGeneration;synth.cancel();
- const utterance=new SpeechSynthesisUtterance(text);speechUtterance=utterance;
- utterance.lang=locale;utterance.rate=.92;utterance.pitch=1;
+ const utterance=new SpeechSynthesisUtterance(speechSelection);
+ speechUtterance=utterance;utterance.lang=locale;utterance.rate=.92;utterance.pitch=1;
  const voices=synth.getVoices(),base=locale.split("-")[0].toLowerCase();
  const voice=voices.find(v=>v.lang.toLowerCase()===locale.toLowerCase())||voices.find(v=>v.lang.toLowerCase().split("-")[0]===base);
  if(voice)utterance.voice=voice;
- utterance.onstart=()=>{if(token===speechGeneration)speechState("Leyendo "+(side==="left"?"original":"traducción"))};
- utterance.onend=()=>{if(token===speechGeneration){speechUtterance=null;speechState("Lectura finalizada.")}};
- utterance.onerror=e=>{if(token===speechGeneration&&e.error!=="canceled"&&e.error!=="interrupted"){speechUtterance=null;speechState("No se pudo reproducir la voz.")}};
- synth.speak(utterance);speechState("Preparando lectura.");
+ utterance.onstart=()=>{if(token!==speechGeneration)return;speechFloat.textContent="■";speechFloat.setAttribute("aria-label","Detener lectura");speechState("Leyendo selección.");};
+ utterance.onend=()=>{if(token!==speechGeneration)return;speechUtterance=null;speechFloat.textContent="▶";speechFloat.setAttribute("aria-label","Escuchar texto seleccionado");speechState("Lectura finalizada.");};
+ utterance.onerror=e=>{if(token!==speechGeneration||e.error==="canceled"||e.error==="interrupted")return;speechUtterance=null;speechFloat.textContent="▶";speechState("No se pudo reproducir la voz.");};
+ synth.speak(utterance);speechFloat.textContent="■";speechFloat.setAttribute("aria-label","Detener lectura");speechState("Preparando lectura.");
 }
+speechFloat.addEventListener("pointerdown",e=>e.preventDefault());
+speechFloat.addEventListener("click",()=>{if(speechOK&&window.speechSynthesis.speaking)stopSpeech();else readSelectedSpeech()});
 function captureSpeechSelection(){
+ if(!speechOK){hideSpeechFloat();return}
  const selection=window.getSelection();
- if(!selection||selection.isCollapsed)return;
+ if(!selection||selection.isCollapsed){hideSpeechFloat();return}
  const side=["left","right"].find(k=>el(k+"-text").contains(selection.anchorNode)&&el(k+"-text").contains(selection.focusNode));
- if(!side)return;
- const text=selection.toString().trim();if(!text)return;
- speechSelection=text.slice(0,8000);speechSelectedSide=side;
+ if(!side){hideSpeechFloat();return}
+ const selected=selection.toString().trim();
+ if(!selected){hideSpeechFloat();return}
+ const range=selection.getRangeAt(0),rects=range.getClientRects(),rect=rects.length?rects[rects.length-1]:range.getBoundingClientRect();
+ if(!rect||!Number.isFinite(rect.right)){hideSpeechFloat();return}
+ speechSelection=selected.slice(0,8000);speechSelectedSide=side;
+ const x=Math.max(8,Math.min(window.innerWidth-45,rect.right+7));
+ const y=Math.max(8,Math.min(window.innerHeight-45,rect.bottom+5));
+ speechFloat.style.left=x+"px";speechFloat.style.top=y+"px";speechFloat.dataset.visible="true";
  speechState("Selección lista para reproducir.");
 }
 for(const side of ["left","right"]){
- el(side+"-text").addEventListener("mouseup",captureSpeechSelection);
+ el(side+"-text").addEventListener("mouseup",()=>setTimeout(captureSpeechSelection,0));
  el(side+"-text").addEventListener("keyup",captureSpeechSelection);
- el(side+"-text").addEventListener("touchend",()=>setTimeout(captureSpeechSelection,50));
+ el(side+"-text").addEventListener("touchend",()=>setTimeout(captureSpeechSelection,100));
 }
-speechState(speechOK?"Pulsá ▶ para escuchar.":"El navegador no admite lectura por voz.");
+document.addEventListener("pointerdown",e=>{if(e.target!==speechFloat&&!el("left-text").contains(e.target)&&!el("right-text").contains(e.target))hideSpeechFloat()});
+window.addEventListener("scroll",()=>{if(speechFloat.dataset.visible==="true")captureSpeechSelection()},{passive:true});
+speechState(speechOK?"Seleccioná una frase para ver ▶.":"El navegador no admite lectura por voz.");
 const lexiconLink=el("lexicon-link");document.addEventListener("selectionchange",()=>{
  const selection=window.getSelection(),word=selection?.toString().trim()||"";
  if(!word||word.length>80||/\\s/.test(word))return;
