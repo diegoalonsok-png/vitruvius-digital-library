@@ -3,7 +3,7 @@
 const id="vdl-five-latin";
 const $=x=>document.getElementById(x);
 const norm=s=>{s=String(s||"").trim().toLowerCase();const m=s.match(/^([ivx]+)\./);if(m){let n=0,p=0;for(const c of [...m[1]].reverse()){const v={i:1,v:5,x:10}[c];n+=v<p?-v:v;p=v}s=n+s.slice(m[1].length)}return s.replace(/\.praefatio\./g,".praef.").replace(/\.preface\./g,".praef.")};
-const name={"kurilo-v554":"Kurilo V554 · latín/francés","kurilo-v297":"Kurilo V297 · latín/inglés","krohn-1912":"Krohn 1912","rose-1899":"Rose 1899"};
+const name={"kurilo-v554":"Diego Kurilo, Vitruve. De architectura. Nouvelle recensio académique bilingue: L’architecte de la théorie (V554); DOI 10.5281/zenodo.23885110; ISBN 978-631-01-6651-3 (declarado, pendiente de verificación)","kurilo-v297":"Diego Kurilo, The Architect of Theory: Vitruvius and the Intellectual World of Roman Antiquity (V297); DOI 10.5281/zenodo.23885404; ISBN 978-631-01-6651-3 (declarado, pendiente de verificación)","krohn-1912":"Marco Vitruvio Polión, Vitruvii De architectura libri decem, ed. Fritz Krohn (Leipzig: Teubner, 1912; sin ISBN/DOI de edición histórica)","rose-1899":"Marco Vitruvio Polión, Vitruvii De architectura libri decem, ed. Valentin Rose (Leipzig: Teubner, 1899; sin ISBN/DOI de edición histórica)"};
 let source=null,rows=new Map(),current="";
 function findLocus(){
  const fromUrl=new URLSearchParams(location.search).get("locus");
