@@ -213,6 +213,33 @@ function editDistance(a,b,cap=3){
  for(let i=1;i<=a.length;i++){const next=[i];for(let j=1;j<=b.length;j++)next[j]=Math.min(next[j-1]+1,row[j]+1,row[j-1]+(a[i-1]===b[j-1]?0:1));row=next;if(Math.min(...row)>cap)return cap+1}
  return row[b.length];
 }
+
+/* Vocabulario temático controlado: recuperación por materias, distinta del género y
+   de la lematización morfológica del texto completo. Nunca inventa metadatos. */
+const subjects=[
+ ["architecture","Arquitectura y construcción",["arquitectura","architecture","architectura","edificios","construccion","building","οικοδομικη"],/architect|arquitect|aedific|edific|building|construction|construccion|de architectura|vitruvi/i],
+ ["hydraulics","Agua, acueductos e hidráulica",["agua","acueducto","acueductos","aqueduct","aquae ductus","hidraulica","hydraulics"],/aqueduct|acueduct|aquaeduct|aquis|aquarum|hydraul|hidraul|frontinus/i],
+ ["war","Guerra, ejército y estrategia",["guerra","batalla","militar","estrategia","war","bellum","πολεμος","polemica"],/bell[oi]|war|guerra|militar|strateg|στρατ|πολεμ|tactic|tactica|poliorc/i],
+ ["politics","Política, Estado y ciudadanía",["politica","republica","estado","gobierno","politics","res publica","πολιτεια"],/politic|πολιτ|republic|res publica|civitat|gobiern|government|estado/i],
+ ["ethics","Ética, virtud y moral",["etica","moral","virtud","felicidad","ethics","virtus","ἀρετή"],/etic|ethic|moral|virtud|virtus|sapien|εθικ|ἀρετ|officiis/i],
+ ["rhetoric","Retórica, discurso y oratoria",["retorica","discurso","oratoria","rhetoric","orator","ρητορικη"],/retoric|rhetor|ρητορ|orator|eloquen|discurso|brutus/i],
+ ["poetry","Poesía, épica y teatro",["poesia","epica","teatro","tragedia","comedia","poetry","epos","ποιησις"],/poet|ποιη|poes|epic|epop|traged|comed|oda|od[eae]|carmina|aeneid|iliad|odysse/i],
+ ["religion","Religión, dioses y mitología",["religion","dioses","mitologia","culto","religio","mythos","θεος"],/religio|theolog|θεο|deorum|divin|myth|mitolog|culto|sacr|de deo/i],
+ ["science","Matemáticas, astronomía y ciencias",["matematica","astronomia","ciencias","geometria","mathematics","astronomy","γεωμετρια"],/matem|mathem|geometr|γεωμετρ|astronom|scient|cienc|physic|φυσικ/i],
+ ["medicine","Medicina y salud",["medicina","salud","anatomia","medicine","ιατρικη"],/medic|ιατρ|salud|anatom|hippocrat|galen/i],
+ ["geography","Geografía, mapas y viajes",["geografia","mapas","viajes","geography","geographia","γεωγραφια"],/geogr|γεωγραφ|peripl|viaj|travel|mapa|cartograf/i],
+ ["history","Historia y biografías",["historia","cronica","biografia","history","historiae","ἱστορία"],/histor|ἱστορ|annal|cron|biograf|vitae|lives/i],
+ ["law","Derecho y leyes",["derecho","leyes","justicia","law","ius","lex","νομος"],/jurid|derecho|leges|justic|legal|legibus|νομ/i],
+ ["language","Lengua, gramática y filología",["gramatica","filologia","lengua","lexico","grammar","linguistics","γραμματικη"],/gramm|gramat|filol|philol|lexic|linguist|etymolog|etimolog/i],
+ ["agriculture","Agricultura, naturaleza y botánica",["agricultura","cultivos","botanica","agriculture","agri cultura","φυτα"],/agric|agron|botan|naturalis|georgic|rustic|plant|φυτ/i]
+];
+const subjectText=w=>[w.genre,w.title,...(w.subjects||[]),...(w.topics||[])].filter(Boolean).join(" ");
+const matchedSubjects=w=>subjects.filter(([id,label,aliases,pattern])=>pattern.test(normal(subjectText(w)))).map(([id])=>id);
+function requestedSubject(query){
+ const q=foldAuthority(query);
+ return subjects.find(([id,label,aliases])=>aliases.some(x=>foldAuthority(x)===q))?.[0]||"";
+}
+
 function rank(w,query){
  const queryTokens=tokens(query);if(!queryTokens.length)return 0;
  const authority=[w.author,w.title,w.id.replaceAll("-"," "),...(w.forms||[]),...(aliasAuthority[w.id]||[])];
@@ -299,7 +326,7 @@ function renderNotable(q){
 function render(){
  if(!model)return;
  const {input,list,count,more,limit}=model,q=input.value.trim();
- const hasFacets=Boolean(model.authorFilter.value.trim()||model.genreFilter.value||model.centuryFilter.value||model.periodFilter.value||model.languageFilter.value||model.letter);
+ const hasFacets=Boolean(model.authorFilter.value.trim()||model.genreFilter.value||model.subjectFilter.value||model.centuryFilter.value||model.periodFilter.value||model.languageFilter.value||model.letter);
  const hasQuery=normal(q).length>=2;
  if(model.periodFilter.value==="modern-notable"){renderNotable(q);return;}
  if(!hasQuery&&!hasFacets&&!model.showAll&&!model.r2Only){
@@ -308,10 +335,10 @@ function render(){
  }
  const items=model.items.filter(w=>{
   const author=foldAuthority(model.authorFilter.value.trim());
-  const genre=model.genreFilter.value,century=model.centuryFilter.value,period=model.periodFilter.value,language=model.languageFilter.value,letter=model.letter;
+  const genre=model.genreFilter.value,subject=model.subjectFilter.value,century=model.centuryFilter.value,period=model.periodFilter.value,language=model.languageFilter.value,letter=model.letter;
   const group=ancientGenre(w.genre);
   const key=norm(model.sortFilter.value==="title"?w.title:w.author).trim();
-  return (!model.r2Only||w.r2Original)&&(!author||rank({...w,title:"",forms:[w.author,...(aliasAuthority[w.id]||[])]},author)>=65)&&(!genre||group===genre)&&(!century||centuryOf(w.dating)===century)&&(!period||periodOfWork(w)===period)&&(!language||w.versions.some(v=>v.language===language))&&(!letter||key.startsWith(norm(letter)));
+  return (!model.r2Only||w.r2Original)&&(!author||rank({...w,title:"",forms:[w.author,...(aliasAuthority[w.id]||[])]},author)>=65)&&(!genre||group===genre)&&(!subject||matchedSubjects(w).includes(subject))&&(!century||centuryOf(w.dating)===century)&&(!period||periodOfWork(w)===period)&&(!language||w.versions.some(v=>v.language===language))&&(!letter||key.startsWith(norm(letter)));
  });
  list.replaceChildren();more.hidden=true;
  if(!q){
@@ -341,10 +368,10 @@ function render(){
  }
  model.region.hidden=false;
  if(normal(q).length<2){count.textContent="Escriba al menos dos caracteres.";return}
- const found=items.map(w=>({w,rank:rank(w,q)})).filter(r=>r.rank>0)
+ const found=items.map(w=>({w,rank:rank(w,q)})).filter(r=>r.rank>=55)
   .sort((a,b)=>b.rank-a.rank||a.w.title.localeCompare(b.w.title,"es",{sensitivity:"base"}));
  count.textContent=found.length+" "+(found.length===1?"obra encontrada":"obras encontradas")+
-  " por título o autor. Las equivalencias lingüísticas son claves de búsqueda, no traducciones alojadas.";
+  " por autor, título o materia documentada. Las equivalencias temáticas son orientativas, no lemas verificados.";
  if(!found.length){list.append(make("li","No se encontraron obras con ese título o autor. Pruebe otra grafía o denominación.","bws-empty"));return}
  for(const {w} of found.slice(0,limit)){
   const item=make("li",null,"bws-item");
@@ -374,7 +401,7 @@ function mount(parent,data){
  if(model||!parent||!Array.isArray(data?.catalog?.works)||!Array.isArray(data?.registry?.entries))return;
  const index=new Map();
  for(const w of data.catalog.works)index.set(w.id,{
-  id:w.id,title:w.title,author:w.author,genre:w.genre||"",dating:w.dating||"",originalLanguage:w.language||w.originalLanguage||"",originalTitle:w.originalTitle||w.titleOriginal||w.tituloOriginal||"",latinTitle:w.latinTitle||"",greekTitle:w.greekTitle||"",originalAliases:Array.isArray(w.originalAliases)?w.originalAliases:[],forms:[w.title,w.id.replaceAll("-"," ")],
+  id:w.id,title:w.title,author:w.author,genre:w.genre||"",subjects:Array.isArray(w.subjects)?w.subjects:[],topics:Array.isArray(w.topics)?w.topics:[],dating:w.dating||"",originalLanguage:w.language||w.originalLanguage||"",originalTitle:w.originalTitle||w.titleOriginal||w.tituloOriginal||"",latinTitle:w.latinTitle||"",greekTitle:w.greekTitle||"",originalAliases:Array.isArray(w.originalAliases)?w.originalAliases:[],forms:[w.title,w.id.replaceAll("-"," ")],
   versions:[],facsimile:null,newWork:false
  });
  for(const e of data.registry.entries){
@@ -400,7 +427,7 @@ function mount(parent,data){
  const section=make("section",null,"bws");section.id="bibliotheca-work-search";
  section.setAttribute("aria-labelledby","bws-title");
  const title=make("h3","Catálogo de obras");title.id="bws-title";
- const subtitle=make("p","Localizá autores, títulos y ediciones. Los resultados aparecen al buscar; los filtros históricos son opcionales.","bws-intro");
+ const subtitle=make("p","Buscá autores, títulos, materias y equivalencias terminológicas; las aproximaciones temáticas no sustituyen un análisis filológico de los textos. Los filtros históricos son opcionales.","bws-intro");
  const form=make("form");form.setAttribute("role","search");form.setAttribute("aria-label","Búsqueda de obras clásicas");
  const label=make("label","Obra o autor");label.htmlFor="bws-query";
  const row=make("div",null,"bws-row");
@@ -424,6 +451,9 @@ function mount(parent,data){
  const genreFilter=make("select");genreFilter.setAttribute("aria-label","Tipo de obra");genreFilter.append(new Option("Todos los tipos de obras",""));
  const presentGenres=new Set([...index.values()].map(w=>ancientGenre(w.genre)).filter(Boolean));
  ancientGenres.filter(([key])=>presentGenres.has(key)).forEach(([key,label])=>genreFilter.append(new Option(label,key)));
+ const subjectFilter=make("select");subjectFilter.setAttribute("aria-label","Materia y tema de las obras");
+ subjectFilter.append(new Option("Todas las materias",""));
+ for(const [id,title] of subjects)subjectFilter.append(new Option(title,id));
  const centuryFilter=make("select");centuryFilter.setAttribute("aria-label","Siglo de composición");
  centuryFilter.append(new Option("Todos los siglos de composición",""));
  const centuries=new Set([...index.values()].map(w=>centuryOf(w.dating)).filter(Boolean));
@@ -441,7 +471,7 @@ function mount(parent,data){
  [["","Todas las lenguas"],["grc","Griego"],["la","Latín"],["es","Castellano"],["en","Inglés"],["fr","Francés"]].forEach(([v,t])=>languageFilter.append(new Option(t,v)));
  const sortFilter=make("select");sortFilter.setAttribute("aria-label","Orden alfabético");
  [["author","Orden por autor A–Z"],["title","Orden por título A–Z"]].forEach(([v,t])=>sortFilter.append(new Option(t,v)));
- filters.append(authorFilter,genreFilter,centuryFilter,periodFilter,languageFilter,sortFilter);
+ filters.append(authorFilter,genreFilter,subjectFilter,centuryFilter,periodFilter,languageFilter,sortFilter);
  const alphabet=make("nav",null,"bws-alphabet");alphabet.setAttribute("aria-label","Índice alfabético por autor o título");
  for(const l of ["Todos",..."ABCDEFGHIJKLMNOPQRSTUVWXYZ",..."ΑΒΓΔΕΖΗΘΙΚΛΜΝΞΟΠΡΣΤΥΦΧΨΩ"]){
   const b=make("button",l);b.type="button";b.setAttribute("aria-pressed",l==="Todos"?"true":"false");
@@ -463,8 +493,8 @@ function mount(parent,data){
  section.append(title,subtitle,form,advanced,region,help);
  const metric=parent.querySelector(":scope > dl");
  if(metric)metric.insertAdjacentElement("beforebegin",section);else parent.prepend(section);
- model={items:[...index.values()],index,input,list,count,more,region,authorFilter,genreFilter,centuryFilter,periodFilter,languageFilter,sortFilter,letter:"",limit:6,showAll:false,r2Only:false,compactFront:parent.id==="front-classical-works"};
- for(const el of [authorFilter,genreFilter,centuryFilter,periodFilter,languageFilter,sortFilter])el.addEventListener("input",()=>{model.limit=40;render()});
+ model={items:[...index.values()],index,input,list,count,more,region,authorFilter,genreFilter,subjectFilter,centuryFilter,periodFilter,languageFilter,sortFilter,letter:"",limit:6,showAll:false,r2Only:false,compactFront:parent.id==="front-classical-works"};
+ for(const el of [authorFilter,genreFilter,subjectFilter,centuryFilter,periodFilter,languageFilter,sortFilter])el.addEventListener("input",()=>{model.limit=40;render()});
  list.tabIndex=0;list.setAttribute("aria-label","Obras: use las flechas arriba y abajo, Intro para abrir el enlace");
  list.addEventListener("keydown",e=>{
   if(!["ArrowDown","ArrowUp","Home","End"].includes(e.key))return;
@@ -480,7 +510,7 @@ function mount(parent,data){
  });
  form.addEventListener("submit",e=>{e.preventDefault();model.limit=40;render()});
   browse.addEventListener("click",()=>{model.r2Only=false;model.showAll=!model.showAll;model.limit=40;input.value="";r2Browse.textContent="Ver 44 originales R2";browse.textContent=model.showAll?"Ocultar catálogo completo":"Ver catálogo completo";render()});
- r2Browse.addEventListener("click",()=>{model.r2Only=!model.r2Only;model.showAll=model.r2Only;model.limit=50;input.value="";for(const filter of [model.authorFilter,model.genreFilter,model.centuryFilter,model.periodFilter,model.languageFilter])filter.value="";model.letter="";r2Browse.textContent=model.r2Only?"Ocultar originales R2":"Ver 44 originales R2";browse.textContent="Ver catálogo completo";render()});
+ r2Browse.addEventListener("click",()=>{model.r2Only=!model.r2Only;model.showAll=model.r2Only;model.limit=50;input.value="";for(const filter of [model.authorFilter,model.genreFilter,model.subjectFilter,model.centuryFilter,model.periodFilter,model.languageFilter])filter.value="";model.letter="";r2Browse.textContent=model.r2Only?"Ocultar originales R2":"Ver 44 originales R2";browse.textContent="Ver catálogo completo";render()});
  input.addEventListener("input",()=>{if(input.value.trim()){model.r2Only=false;r2Browse.textContent="Ver 44 originales R2"}model.limit=40;render()});
  more.addEventListener("click",()=>{model.limit+=10;render()});
  render();
