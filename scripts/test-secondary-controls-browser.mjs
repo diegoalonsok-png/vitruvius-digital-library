@@ -104,8 +104,14 @@ try{
   assert.notEqual(await page.evaluate(()=>getComputedStyle(document.body).backgroundColor),before);
   await button.click();
   assert.equal(await page.locator("html").getAttribute("data-theme"),initial);
-  await page.locator("#language-toggle").click();
-  await page.waitForTimeout(50);
+  const language=page.locator("#language-toggle");
+  for(const [code,home] of [["en","Home"],["fr","Accueil"],["es","Inicio"]]){
+   await language.selectOption(code);
+   await page.waitForFunction(([lang,label])=>
+    document.documentElement.lang===lang&&document.querySelector("#home")?.textContent.trim()===label,
+    [code,home],{timeout:10000});
+   assert.equal((await page.locator("#home").innerText()).trim(),home,"Bibliotheca home link not translated");
+  }
   assert.match(await button.getAttribute("aria-label"),/Switch to|Activer|Activar/);
   console.log("PASS Bibliotheca color switch, contrast and language-sensitive label");
   await page.close();checked+=3;
