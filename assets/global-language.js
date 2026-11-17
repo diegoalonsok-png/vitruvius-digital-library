@@ -3,7 +3,7 @@
 (()=>{
  'use strict';
  const KEY='vitruvius-ui-lang';
- const codes=['es','en','fr','it','de','pt'];
+ const codes=['es','en','fr']; // Only locales with verified interface dictionaries.
  const translations={
   'Inicio':['Home','Accueil'],
   'Biblioteca':['Library','Bibliothèque'],
