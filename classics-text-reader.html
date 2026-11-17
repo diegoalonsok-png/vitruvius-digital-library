@@ -194,10 +194,23 @@ html[data-parallel-view="true"] #simple-pair-inline{display:none!important}
 <link rel="stylesheet" href="assets/classics-lexical-popup.css?v=20261110-highlight-word-v3">
 <link rel="stylesheet" href="assets/classics-inline-parallel.css?v=20261115-swap-columns-v4">
 <link rel="stylesheet" href="assets/classics-reader-symmetry.css?v=20261117-lexicon-dark-loci-v2">
-<link rel="stylesheet" href="assets/classics-academic-reader.css?v=20261114-bude-1">
+<link rel="stylesheet" href="assets/classics-academic-reader.css?v=20261117-neutral-labels-v1">
 <link rel="manifest" href="manifest.webmanifest"><link rel="apple-touch-icon" href="assets/app-icons/apple-touch-icon.png"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Vitruvius"><script defer src="assets/pwa.js?v=20261105-pwa-v1"></script>
-<script defer src="assets/site-bar.js?v=20261113-aa-en-linea"></script><link rel="canonical" href="https://vitruvius-digital-library.org/classics-text-reader">
-<meta name="citation_title" content="Texto griego o latino y traducciones · Bibliotheca Graeca et Latina"><meta name="citation_author" content="Kurilo, Diego"><meta name="citation_publication_date" content="2026"><meta name="citation_publisher" content="Vitruvius Digital Library"><meta name="citation_language" content="es"><meta name="citation_public_url" content="https://vitruvius-digital-library.org/classics-text-reader"><script defer src="assets/analytics-config.js?v=20261106-ga4-1"></script><script defer src="assets/analytics.js?v=20261106-ga4-1"></script><link rel="stylesheet" href="assets/fonts-ancient.css?v=20261111-griego-politonico-v1"></head>
+<script defer src="assets/site-bar.js?v=20261117-no-duplicate-aa-reader-v1"></script><link rel="canonical" href="https://vitruvius-digital-library.org/classics-text-reader">
+<meta name="citation_title" content="Texto griego o latino y traducciones · Bibliotheca Graeca et Latina"><meta name="citation_author" content="Kurilo, Diego"><meta name="citation_publication_date" content="2026"><meta name="citation_publisher" content="Vitruvius Digital Library"><meta name="citation_language" content="es"><meta name="citation_public_url" content="https://vitruvius-digital-library.org/classics-text-reader"><script defer src="assets/analytics-config.js?v=20261106-ga4-1"></script><script defer src="assets/analytics.js?v=20261106-ga4-1"></script><link rel="stylesheet" href="assets/fonts-ancient.css?v=20261111-griego-politonico-v1"><style id="classics-neutral-controls-v1">
+/* Redundant general typography button removed; local font tools stay. */
+html body.academic-reader .site-typeface-tool,
+html body.academic-reader .site-typeface-tool.site-typeface-docked{display:none!important}
+html body.academic-reader :is(.academic-kicker,.academic-locus-form output){color:#bfc4ca!important}
+html body.academic-reader .academic-records>summary{color:#d9dce0!important}
+html body.academic-reader .cl-translation-output a[href]{color:#d5dde4!important}
+html body.academic-reader .cl-translation-output a[href]:hover{color:#fff!important}
+html[data-theme="light"] body.academic-reader :is(.academic-kicker,.academic-locus-form output){color:#525b61!important}
+html[data-theme="light"] body.academic-reader .academic-records>summary{color:#35444d!important}
+html[data-theme="light"] body.academic-reader .cl-translation-output a[href]{color:#294e67!important}
+@media print{html body.academic-reader .site-typeface-tool{display:none!important}}
+</style>
+</head>
 <body class="academic-reader">
 <header><span class="brand">Vitruvius Digital Library · Bibliotheca Graeca et Latina</span><nav><a href="bibliotheca-graeca-latina.html">Bibliotheca</a><a href="vitruvia.html">Buscar en Vitruvia</a><a id="index-locorum-link" href="index-locorum.html">Index locorum</a><a href="vitruvia-lexicon.html">Lexicon</a><a id="codex-link" href="bibliotheca-graeca-latina.html">Catálogo y testimonios</a><a id="parallel-link" href="classics-parallel-reader.html">Lectura lado a lado</a><a href="metodologia-filologica.html">Método filológico</a><a href="auditoria-academica.html">Auditoría</a></nav></header>
 <main>
@@ -288,7 +301,7 @@ html[data-parallel-view="true"] #simple-pair-inline{display:none!important}
 
 
 <script defer src="assets/classics-passage-export.js?v=20261115-text-export-v1"></script>
-<script defer src="assets/classics-inline-parallel.js?v=20261117-ancient-greek-documented-only-v1"></script>
+<script defer src="assets/classics-inline-parallel.js?v=20261117-neutral-links-v1"></script>
 <script defer src="assets/classics-reader-symmetry.js?v=20261117-sync-loci-v3"></script>
 <script defer src="assets/classics-reader-annotations.js?v=20261114-source-v3"></script>
 <script defer src="assets/classics-translation-annotations.js?v=20261114-bude-1"></script>
