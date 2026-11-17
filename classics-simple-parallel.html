@@ -503,7 +503,27 @@ function draw(){
  studyRender();
  updateReaderLookups();
 }
+/* Importador de lectura de ediciones HTML históricas, sin alterar el original.
+   La segmentación se infiere por orden visual, no constituye alineación filológica. */
+async function getHistoricalHtmlEdition(entry,lang){
+ if(!/^corpus\/[a-z0-9_-]+\.html$/.test(entry.path||""))return [];
+ const response=await fetch(entry.path);if(!response.ok)throw Error("No se pudo leer el HTML de "+lang);
+ const html=await response.text();
+ const documentHtml=new DOMParser().parseFromString(html,"text/html");
+ const main=documentHtml.querySelector("main");if(!main)return [];
+ let book=1,part=0;const paragraphs=[];
+ for(const node of main.querySelectorAll("h2[id^='book'],p")){
+  if(node.matches("h2")){const value=Number((node.id||"").replace("book",""));if(value>0){book=value;part=0;}continue}
+  const text=(node.textContent||"").replace(/\s+/g," ").trim();
+  if(!text)continue;
+  part++;
+  paragraphs.push({locus:book+"."+part,text});
+ }
+ editionMetadata.set(lang,{sourceType:"html-text",source:entry.sourceDescription||"Edición HTML histórica",editorialStatus:"segmentación de lectura; cotejo por párrafo no certificado",alignment:"not_verified"});
+ return paragraphs;
+}
 async function getEdition(entry,lang){
+ if(entry?.format==="html-text")return getHistoricalHtmlEdition(entry,lang);
  if(!entry||!(/^data\/(?:classics-corpus|structured|lexicon\/fontes)\/[a-z0-9/_-]+\.json$/.test(entry.path||"")||/^https:\/\/libros\.vitruvius-digital-library\.org\/corpus\/[a-z0-9_-]+\.json$/.test(entry.path||"")))return [];
  const r=await fetch(entry.path);if(!r.ok)throw Error("No se pudo abrir la edición "+lang);
  let data=await r.json();if(!Array.isArray(data.passages))return [];
@@ -529,8 +549,8 @@ async function load(){
  const indexed=(reg.entries||[]).find(e=>e.workId===work&&e.language==="grc")||(reg.entries||[]).find(e=>e.workId===work);workAuthor=item?.author||indexed?.author||"";workTitle=item?.title||indexed?.title||work;title=(workAuthor?workAuthor+" · ":"")+workTitle;
  const entries=new Map();
  for(const e of reg.entries||[]){
-  if(e.workId!==work||!["json-passages","structured-bilingual"].includes(e.format)||!LANG[e.language])continue;
-  if(!entries.has(e.language)||e.format==="json-passages")entries.set(e.language,e);
+  if(e.workId!==work||!["json-passages","structured-bilingual","html-text"].includes(e.format)||!LANG[e.language])continue;
+  if(!entries.has(e.language)||e.format==="json-passages"||e.format==="structured-bilingual"&&entries.get(e.language)?.format==="html-text")entries.set(e.language,e);
  }
  availableEditions=entries;
  const fillSelect=(id,options)=>{const sel=el(id);sel.replaceChildren();for(const [value,label] of options){const opt=document.createElement("option");opt.value=value;opt.textContent=label;sel.append(opt);}};
@@ -556,6 +576,7 @@ async function load(){
 
  const wanted=q.get("locus");const found=findLocusIndex(source,wanted);pos=found<0?0:found;updatePassageGuide(true);draw();
  if(wanted&&found<0)status("El locus solicitado no coincide con una unidad única de esta edición. Se muestra la primera unidad disponible; compruebe la referencia CTS.");
+ if(entries.get(leftLang)?.format==="html-text")status("Edición HTML histórica: navegación por bloques de lectura; la coincidencia entre números de párrafo y las traducciones no certifica alineación filológica.");
 }
 async function changeVersion(side,value){
  const stamp=++loadingVersion,previousLocus=source[pos]?.locus||q.get("locus")||"";
