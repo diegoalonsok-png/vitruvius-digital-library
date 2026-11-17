@@ -19,6 +19,7 @@ from pathlib import Path
 import re
 import subprocess
 import time
+import unicodedata
 from urllib.parse import urlparse
 from urllib.request import Request, urlopen
 import xml.etree.ElementTree as ET
@@ -164,6 +165,77 @@ def extract(raw, candidate):
         raise ValueError(f"Cobertura textual discordante: {len(actual)}/{len(expected)} caracteres")
     if len(actual) < 12: raise ValueError("Fragmento demasiado corto para validar identidad")
     return metadata, passages
+
+# Curatorial import priority, not a claim that literature can be ranked objectively.
+# 1: foundational authors; 2: major historical/technical/philosophical traditions;
+# 3: other eligible editions. Availability, source licence and completeness are
+# always checked separately; no work is omitted solely for lower priority.
+FOUNDATIONAL_AUTHORS = (
+    "homer", "homero", "hesiod", "hesiodo", "aeschyl", "esquilo",
+    "sophocl", "sofocles", "euripid", "aristophan", "aristofanes",
+    "herodot", "herodoto", "thucydid", "tucidid",
+    "plato", "platon", "aristotl", "aristotel",
+    "demosthen", "demosten", "xenophon", "jenofonte",
+    "cicero", "ciceron", "vergil", "virgil", "virgilio",
+    "horace", "horacio", "ovid", "ovidio", "livy", "livio",
+    "tacitus", "tacito", "caesar", "cesar", "lucreti", "lucrecio",
+    "seneca", "seneca", "plutarch", "plutarco",
+)
+MAJOR_AUTHORS = (
+    "apollonius", "apolonio", "callimachus", "calimaco",
+    "polybius", "polibio", "strabo", "estrabon", "diodorus",
+    "dio cassius", "cassius dio", "dion casio", "quintilian",
+    "quintiliano", "pliny", "plinio", "suetoni", "suetonio",
+    "sallust", "salustio", "vitruvi", "vitruvio",
+    "frontinus", "frontino", "columella", "varro", "varron",
+    "galen", "galeno", "hippocrat", "hipocrat",
+    "euclid", "euclides", "archimed", "arquimed",
+    "ptolemy", "ptolomeo", "theophrast", "teofrasto",
+    "plotin", "plotino", "epictet", "epicteto", "marcus aurelius",
+    "marco aurelio", "lucian", "luciano",
+)
+def normalize_author(value):
+    normalized = unicodedata.normalize("NFKD", str(value or "").casefold())
+    return "".join(c for c in normalized if not unicodedata.combining(c))
+
+def editorial_priority(group):
+    author = normalize_author(group.get("author"))
+    # Existing bibliographic dossiers are completed first *within* each tier.
+    tier = 1 if any(k in author for k in FOUNDATIONAL_AUTHORS) else (
+        2 if any(k in author for k in MAJOR_AUTHORS) else 3
+    )
+    return tier
+
+def choose_priority_batch(groups, limit, sequence):
+    """Reserve most slots for high-priority authors but prevent hard failures
+    on individual sources from permanently blocking other eligible editions.
+    Stable round-robin within each tier; no edition is skipped from the corpus.
+    """
+    ranked = {tier: sorted((g for g in groups if editorial_priority(g)==tier),
+                          key=lambda g: (not g.get("existing", False),g["workId"]))
+              for tier in (1,2,3)}
+    # Allocate 8/3/1 slots per twelve (remainder is filled by top priority).
+    budgets = {1: (limit*2)//3, 2: limit//4, 3: max(1,limit//12)}
+    selected = []
+    used = set()
+    for tier in (1,2,3):
+        bucket = ranked[tier]
+        if not bucket: continue
+        offset = (sequence * max(1,budgets[tier])) % len(bucket)
+        rotated = bucket[offset:] + bucket[:offset]
+        count = min(budgets[tier],len(bucket))
+        for g in rotated[:count]:
+            if g["workId"] not in used:
+                selected.append(g); used.add(g["workId"])
+    for tier in (1,2,3):
+        bucket = ranked[tier]
+        if not bucket: continue
+        offset = (sequence * max(1,budgets[tier])) % len(bucket)
+        for g in bucket[offset:]+bucket[:offset]:
+            if len(selected)>=limit: break
+            if g["workId"] not in used:
+                selected.append(g);used.add(g["workId"])
+    return selected[:limit]
 
 def discover(root=ROOT):
     cat = read(root / "data/bibliotheca-graeca-latina-I-bce-I-ce.json")
@@ -334,20 +406,11 @@ def main():
         save(folder / "discovery.json", {"counts": info, "groups": groups, "githubInventory": inventory})
         print(json.dumps(info)); return
     if args.limit:
-        # Rotate across the unresolved catalogue instead of retrying its first
-        # twelve entries indefinitely. The UTC day controls the batch, so
-        # reruns on the same day are idempotent; previously registered works
-        # are still excluded by discover(). Nothing in R2 is replaced.
-        slots = (len(groups) + args.limit - 1) // args.limit
-        # A new GitHub Actions run should advance to another batch even on the same day.
-        # Local/manual runs retain deterministic daily rotation.
         sequence = int(os.environ.get("GITHUB_RUN_NUMBER") or datetime.now(timezone.utc).date().toordinal())
-        slot = (sequence % slots) if slots else 0
-        start = slot * args.limit
-        groups = groups[start:start + args.limit]
-        info["selectedSlot"] = slot
-        info["selectedOffset"] = start
+        groups = choose_priority_batch(groups,args.limit,sequence)
+        info["selectionPolicy"] = "fundamentales > grandes tradiciones > especializados; rotación intra-grupo"
         info["selectedGroups"] = len(groups)
+        info["selectedByPriority"] = dict(Counter(str(editorial_priority(g)) for g in groups))
     report = {"generated": datetime.now(timezone.utc).isoformat(), "discovery": info, "prepared": [], "published": [], "deferred": [], "githubPreserved": []}
     s3, bucket = client() if args.publish else (None, None)
     def process(group):
