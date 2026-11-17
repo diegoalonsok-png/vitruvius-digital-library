@@ -8,12 +8,9 @@
  'use strict';
  if(window.PageAutoTranslate)return;
  const root=document.documentElement;
- // La traducción automática no debe reescribir nombres propios en páginas académicas protegidas.
- // Home page protects ancient texts from generic browser translation, but its
- // explicit ES/EN/FR selector must still localise the ordinary Spanish UI copy.
- // Exclude academic passages element-by-element (SKIP), not the whole document.
- const isFront=/^(?:\/|\/index(?:\.html)?)$/.test(location.pathname);
- if(!isFront&&(root.getAttribute("translate")==="no"||document.querySelector('meta[name="google"][content="notranslate"]')))return;
+ // Page-level "notranslate" protects source documents against external
+ // browser page translation. It must NOT disable the site's own selector.
+ // Skip original-source nodes individually rather than disabling the page.
  const originals=new WeakMap(),mine=new WeakSet(),cache=new Map();
  const SKIP='script,style,noscript,textarea,input,select,option,code,pre,svg,iframe,cite,blockquote,dfn,abbr,.catalog-list,.search-results,.reader-transcript,.passage-text,.study,.biblio-table,[data-citation],[data-person],[data-author],[data-editor],[data-title],[itemscope],[contenteditable],:not(html)[translate=no],.notranslate,[lang="la"],[lang="grc"],[lang^="la-"],[lang="he"],[lang="arc"],.vtp-la,.latin,#ui-language';
  const ES=/\b(el|la|los|las|del|por|para|con|una|uno|como|más|pero|sus|este|esta|estos|desde|sobre|entre|también|según|hasta|donde|cuando|porque|sin|muy|edición|ediciones|libro|libros|página|páginas|fuente|fuentes|buscar|leer|consultar|traducción|obra|obras|siglo|destacado|biblioteca|documentación|carpeta|privacidad|borrar|sesión|búsqueda|dictar|explorar|universidades|investigación|fichas|secciones|lecturas|testimonios|imágenes|manuscrito|códice|códices|resultados|instalar|leer|ver|abrir|cerrar)\b/i;
