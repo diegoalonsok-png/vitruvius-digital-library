@@ -184,18 +184,20 @@ html[data-bibliotheca-color="sepia"] :is(.top,.bibliotheca-suite,header.hero,.se
 /* Heading system adapted from Vitruvia Lexicon: generous italic literary display. */
 header.hero{padding:clamp(32px,5vw,64px) 0 30px}
 header.hero .bibliotheca-display-title{
- font:italic 400 clamp(72px,9vw,150px)/.93 Georgia,"Times New Roman",serif!important;
+ font:italic 400 clamp(82px,10vw,160px)/.98 Georgia,"Times New Roman",serif!important;
+ font-size:clamp(82px,10vw,160px)!important;
  letter-spacing:-.09em;overflow-wrap:normal;word-break:normal;
  margin:19px 0 4px;max-width:100%;text-wrap:balance;
 }
 header.hero .bibliotheca-display-subtitle{
- display:block;font:400 clamp(18px,2.2vw,30px)/1.2 Georgia,"Times New Roman",serif!important;
+ display:block!important;font:normal 400 clamp(22px,2.5vw,34px)/1.2 Georgia,"Times New Roman",serif!important;
+ font-size:clamp(22px,2.5vw,34px)!important;
  letter-spacing:.025em;opacity:.82;margin:0 0 22px;
 }
 header.hero>.eyebrow{letter-spacing:.16em;font-size:11px;text-transform:uppercase}
 @media(max-width:650px){
  header.hero{padding:32px 0 20px}
- header.hero .bibliotheca-display-title{font-size:clamp(58px,16vw,86px)!important;letter-spacing:-.09em}
+ header.hero .bibliotheca-display-title{font-size:clamp(82px,14vw,112px)!important;letter-spacing:-.09em}
  header.hero .bibliotheca-display-subtitle{font-size:clamp(17px,4vw,23px)!important}
 }
 </style>
@@ -253,8 +255,8 @@ header.hero>.eyebrow{letter-spacing:.16em;font-size:11px;text-transform:uppercas
 </section>
 <header class="hero">
 <span class="eyebrow">BIBLIOTHECA GRAECA ET LATINA · CONCORDANTIA</span>
-<h1 class="bibliotheca-display-title">Bibliotheca</h1>
-<span class="bibliotheca-display-subtitle">Graeca et Latina</span>
+<h1 class="bibliotheca-display-title" style="font-family:Georgia,'Times New Roman',serif!important;font-style:italic!important;font-weight:400!important;font-size:clamp(82px,10vw,160px)!important;line-height:.98!important;letter-spacing:-.09em!important">Bibliotheca</h1>
+<span class="bibliotheca-display-subtitle" style="display:block!important;font-family:Georgia,'Times New Roman',serif!important;font-style:normal!important;font-weight:400!important;font-size:clamp(22px,2.5vw,34px)!important;line-height:1.2!important;letter-spacing:.02em!important">Graeca et Latina</span>
 <p class="bibliotheca-seo-discovery" style="font:15px/1.6 system-ui;margin:12px 0 18px"><a href="obras-clasicas-indexadas.html"><strong>Explorar obras clásicas griegas y latinas por autor y título · fichas con texto original indexado</strong></a> · <a href="index-auctorum-operum.html">Índice alfabético de autores y obras</a></p>
 <p id="intro" class="intro">Busca una palabra o frase en todos los libros indexados, o selecciona una obra. Consulta cuántas veces aparece en cada libro y dónde se encuentra.</p>
 </header>
