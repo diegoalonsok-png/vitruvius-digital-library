@@ -191,6 +191,7 @@ html[data-parallel-view="true"] #simple-pair-inline{display:none!important}
 <p class="academic-kicker">Bibliotheca · texto, traducción y aparato</p>
 <h1 id="work-title">Edición filológica</h1>
 <p class="sub" id="source-title">Cargando texto y procedencia…</p>
+<section id="reader-work-profile" class="reader-work-profile" aria-label="Datos académicos del autor y de la obra"></section>
 <details class="academic-records"><summary>Edición, procedencia textual y testimonios manuscritos</summary>
 <section id="reader-source-identification" class="notice" aria-label="Identificación de la edición y traducción" style="margin:10px 0 12px" aria-live="polite"></section>
 <section id="reader-manuscripts" class="notice" aria-label="Testimonios manuscritos y bibliotecas custodias" style="margin:10px 0 12px" aria-live="polite">
@@ -269,6 +270,21 @@ html[data-parallel-view="true"] #simple-pair-inline{display:none!important}
 <script defer src="assets/classics-lexical-popup.js?v=20261116-context-provenance-v1"></script>
 <script defer src="assets/classics-academic-reader.js?v=20261116-source-notes-v1"></script>
 <script defer src="assets/classics-text-reader.js?v=20261117-editorial-monospace-v1"></script>
+<style id="reader-work-profile-style">
+.reader-work-profile{border:1px solid #55545a;background:#131315;border-radius:8px;padding:16px 20px;margin:10px 0 22px;color:#e4e2e0}
+.reader-work-profile h2{font:normal clamp(20px,2vw,27px)/1.3 Georgia,serif;margin:0 0 11px}
+.reader-work-profile h3{font:600 14px/1.4 system-ui,sans-serif;margin:12px 0 6px;color:#e3d2ae}
+.reader-work-profile .rwp-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:3px 24px}
+.reader-work-profile .rwp-row{font:13px/1.6 system-ui,sans-serif;margin:5px 0;overflow-wrap:anywhere}
+.reader-work-profile .rwp-row strong{color:#d3bb8f}
+.reader-work-profile .rwp-more{border-top:1px solid #48474a;margin-top:12px;padding-top:9px}
+.reader-work-profile .rwp-more summary{cursor:pointer;color:#e1cb9f;font:600 13px/1.5 system-ui,sans-serif}
+.reader-work-profile .rwp-links{margin:12px 0 0;font-size:13px}
+.reader-work-profile a{color:#e2c58e}
+html[data-parallel-view=true] .reader-work-profile{display:none!important}
+@media print{.reader-work-profile{background:white;color:black;border-color:#888}.reader-work-profile .rwp-row strong{color:black}}
+</style>
+<script defer src="assets/classics-reader-work-profile.js?v=20261117-academic-profile-v1"></script>
 <script defer src="assets/classics-passage-export.js?v=20261115-text-export-v1"></script>
 <script defer src="assets/classics-inline-parallel.js?v=20261116-top-controls-v5"></script>
 <script defer src="assets/classics-reader-symmetry.js?v=20261116-shared-tools-v4"></script>
