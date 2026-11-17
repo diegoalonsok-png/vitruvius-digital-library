@@ -67,17 +67,25 @@ def texts(path:Path)->list[str]:
 def pairs_install()->None:
     import argostranslate.package
     import argostranslate.translate
-    argostranslate.package.update_package_index()
-    available=argostranslate.package.get_available_packages()
     installed=argostranslate.translate.get_installed_languages()
-    for source,target in MODEL_DIRECTIONS:
+    def ready(source,target):
         a=next((x for x in installed if x.code==source),None)
         b=next((x for x in installed if x.code==target),None)
-        if a and b and a.get_translation(b):continue
+        return bool(a and b and a.get_translation(b))
+    if all(ready(source,target) for source,target in MODEL_DIRECTIONS):return
+    argostranslate.package.update_package_index()
+    available=argostranslate.package.get_available_packages()
+    for source,target in MODEL_DIRECTIONS:
+        if ready(source,target):continue
         pkg=next((x for x in available if x.from_code==source and x.to_code==target),None)
-        if pkg is None:raise RuntimeError(f"Missing translation model {source}->{target}")
+        if pkg is None and source=="es" and target=="fr":
+            # A two-hop package route can provide es -> en -> fr.
+            pkg=next((x for x in available if x.from_code=="en" and x.to_code=="fr"),None)
+        if pkg is None:raise RuntimeError(f"Missing translation model route {source}->{target}")
         argostranslate.package.install_from_path(pkg.download())
         installed=argostranslate.translate.get_installed_languages()
+    if not all(ready(source,target) for source,target in MODEL_DIRECTIONS):
+        raise RuntimeError("ES -> EN/FR translation routes are unavailable")
 
 def translate(value:str,target:str)->str:
     import argostranslate.translate
