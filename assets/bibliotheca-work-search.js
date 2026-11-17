@@ -229,8 +229,11 @@ const subjects=[
  ["rhetoric","Retórica y oratoria",["retorica","discurso","oratoria","rhetoric","orator","ρητορικη"],/retoric|rhetor|ρητορ|orator|eloquen|discurso|brutus/],
  ["poetry","Poesía, épica y teatro",["poesia","epica","teatro","tragedia","comedia","poetry","epos","ποιησις"],/poet|ποιη|poes|epic|epop|traged|comed|oda|carmina|aeneid|iliad|odysse/],
  ["religion","Religión y mitología",["religion","dioses","mitologia","culto","religio","mythos","θεος"],/religio|theolog|θεο|deorum|divin|myth|mitolog|culto|sacr/],
- ["science","Matemáticas y astronomía",["matematica","astronomia","ciencias","geometria","mathematics","astronomy","γεωμετρια"],/matem|mathem|geometr|γεωμετρ|astronom|scient|cienc|physic|φυσικ/],
- ["medicine","Medicina y salud",["medicina","salud","anatomia","medicine","ιατρικη"],/medic|ιατρ|salud|anatom|hippocrat|galen/],
+ ["mathematics","Matemáticas y geometría",["matematica","geometria","mathematics","geometry","geometria","γεωμετρια"],/matem|mathem|geometr|γεωμετρ|arithm|αριθμ|elementa|στοιχεια/],
+ ["astronomy","Astronomía y cosmología",["astronomia","astros","cosmos","astronomy","astronomia","αστρονομια"],/astronom|astrolog|αστρο|cosmolog|κοσμ|phaenomen|φαινομεν/],
+ ["physics","Física y filosofía natural",["fisica","naturaleza","ciencias naturales","physics","physica","φυσικη"],/fisic|physic|φυσικ|natural|naturae/],
+ ["philosophy","Filosofía y pensamiento",["filosofia","filosofia antigua","philosophy","philosophia","φιλοσοφια"],/filosof|philosoph|φιλοσοφ|metaphys|μεταφυσ|plat[oó]n|arist[oó]t|stoic|estoic|dialect|λογικ/],
+ ["medicine","Medicina y salud",["medicina","salud","anatomia","medicine","ιατρικη"],/medic|(?:^|\\s)ιατρ|salud|anatom|hippocrat|galen/],
  ["geography","Geografía y viajes",["geografia","mapas","viajes","geography","geographia","γεωγραφια"],/geogr|γεωγραφ|peripl|viaj|travel|mapa|cartograf/],
  ["history","Historia y biografías",["historia","cronica","biografia","history","historiae","ἱστορία"],/histor|ἱστορ|annal|cron|biograf|vitae|lives/],
  ["law","Derecho y leyes",["derecho","leyes","justicia","law","ius","lex","νομος"],/jurid|derecho|leges|justic|legal|legibus|νομ/],
@@ -245,6 +248,7 @@ function rank(w,query){
  const authority=[w.author,w.title,w.id.replaceAll("-"," "),...(w.forms||[]),...(aliasAuthority[w.id]||[])];
  let best=0;
  for(const field of authority){
+  if(/[\\u0370-\\u03ff\\u1f00-\\u1fff]/u.test(query)&&!/[\\u0370-\\u03ff\\u1f00-\\u1fff]/u.test(field))continue;
   const val=foldAuthority(field);if(!val)continue;
   const fieldTokens=tokens(val), q=foldAuthority(query);
   if(val===q)best=Math.max(best,140);
@@ -352,7 +356,7 @@ function render(){
    const li=make("li",null,"bws-item");
    appendWorkHeading(li,w);if(window.BibliothecaCoverMiniatures)li.prepend(window.BibliothecaCoverMiniatures.create(w));
    const meta=make("p",null,"bws-meta"),languages=[...new Set(w.versions.filter(v=>safeReader(v.reader)).map(v=>lang[v.language]||v.language))];
-   meta.textContent=[w.genre||"",w.dating||"",periodLabel(w),languages.length?(w.r2Original?"Original R2 registrado · ":"Ediciones registradas · ")+languages.join(", "):w.heritageReader?"Edición histórica · visor de facsímiles":w.facsimile?"Facsímil disponible · OCR por comprobar":"Ficha catalográfica; texto no alojado"].filter(Boolean).join(" · ");li.append(meta);
+   meta.textContent=[w.genre||"",w.dating||"",periodLabel(w),matchedSubjects(w).slice(0,3).map(id=>subjects.find(x=>x[0]===id)?.[1]).filter(Boolean).join(" · "),languages.length?(w.r2Original?"Original R2 registrado · ":"Ediciones registradas · ")+languages.join(", "):w.heritageReader?"Edición histórica · visor de facsímiles":w.facsimile?"Facsímil disponible · OCR por comprobar":"Ficha catalográfica; texto no alojado"].filter(Boolean).join(" · ");li.append(meta);
    const actions=make("nav",null,"bws-actions");
    const o=w.versions.find(v=>["la","grc"].includes(v.language)&&safeReader(v.reader)),t=w.versions.find(v=>!["la","grc"].includes(v.language)&&safeReader(v.reader));
    if(o)addLink(actions,"Leer original",safeReader(o.reader));
@@ -381,7 +385,7 @@ function render(){
   const meta=make("p",null,"bws-meta");
   const langs=w.versions.filter(v=>safeReader(v.reader)).map(v=>lang[v.language]||v.language);
   const avail=[...new Set(langs)];
-  meta.textContent=[w.genre||"",w.dating||"",periodLabel(w)].filter(Boolean).join(" · ")+(w.genre||w.dating?" · ":"")+
+  meta.textContent=[w.genre||"",w.dating||"",periodLabel(w),matchedSubjects(w).slice(0,3).map(id=>subjects.find(x=>x[0]===id)?.[1]).filter(Boolean).join(" · ")].filter(Boolean).join(" · ")+(w.genre||w.dating?" · ":"")+
    (avail.length?(w.r2Original?"Original R2 registrado · ":"Ediciones registradas · ")+avail.join(", "):w.heritageReader?"Edición histórica · visor disponible":w.facsimile?"Facsímil localizado; OCR no cotejado":"Ficha catalográfica; texto no disponible en este índice");
   item.append(meta);
   const actions=make("nav",null,"bws-actions");actions.setAttribute("aria-label","Acciones de "+w.title);
