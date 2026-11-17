@@ -668,6 +668,14 @@ function paintAppearance(persist=true){
   root.style.setProperty("--reader-page-fg",appearance.foreground);
   root.style.setProperty("--cl-shared-bg",appearance.background);
   root.style.setProperty("--cl-shared-fg",appearance.foreground);
+  // Also update the legacy tokens used throughout the reader chrome.
+  root.style.setProperty("--bg",appearance.background);
+  root.style.setProperty("--panel",appearance.background);
+  root.style.setProperty("--fg",appearance.foreground);
+  root.style.setProperty("--ink",appearance.foreground);
+  root.style.setProperty("--cl-translation-bg",appearance.background);
+  root.style.setProperty("--cl-translation-fg",appearance.foreground);
+  root.style.setProperty("--line",appearance.foreground+"55");
   root.dataset.readerPageTheme="custom";
   root.dataset.theme=(parseInt(appearance.background.slice(1,3),16)*.299+parseInt(appearance.background.slice(3,5),16)*.587+parseInt(appearance.background.slice(5,7),16)*.114)>150?"light":"dark";
  }
