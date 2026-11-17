@@ -94,6 +94,7 @@ async function render(query){
 
  const p=data.es.passages.find(x=>x.locus===locus);
  const grid=E("div",null,"bude-grid");grid.append(card("Textus Latinus · Kur. V514",p?.latin,"la"));
+ if(data.fr?.loadError)grid.append(E("p","El índice francés V554 no pudo cargarse en esta solicitud: "+data.fr.loadError+". La edición está catalogada en los archivos del proyecto; consultar sus fuentes documentales.","bude-note"));
  for(const [id,title,lang] of [["es","Interpretatio Hispanica · V514","es"],["fr","Interpretatio Gallica · V554","fr"],["en","Interpretatio Anglica · V297","en"]]){
   const t=data[id].passages.find(x=>x.locus===locus)?.translation||"";
   grid.append(card(title,/^\s*(apparatus criticus|critical apparatus)\s*\(/i.test(t)?"Entrada de aparato; no traducción alineada.":t,lang));
@@ -108,7 +109,7 @@ async function render(query){
  const roseTranscription=data.roseDigital?.passages?.find(x=>x.locus===locus);
  const krohnOcr=data.ocr?.loci?.[locus]?.["krohn-1912"];
  const k=card("Kr. 1912 · "+fmt(locus),krohn?.latin||"No hay transcripción digital independiente de Krohn alineada a este locus.","la");
- k.append(E("small",krohn?"Transcripción Perseus, cotejo con el impreso pendiente.":"Sin transcripción de Krohn: no se sustituye por Kurilo."));
+ k.append(E("small",krohn?"Krohn 1912 · texto digital indexado por locus (fuente Perseus); cotejo de la página impresa documentado por separado.":"Krohn 1912 · este locus no fue recuperado del índice digital en la consulta; no se sustituye por Kurilo."));
  if(krohnOcr?.page){const p=E("p",null,"bude-note");p.append(A("Ver página del impreso de Krohn · imagen "+krohnOcr.page,"krohn-1912.html"));k.append(p)}
  const ro=card("Rose 1899 · "+fmt(locus),roseTranscription?.latin||"Transcripción digital no disponible; revisar el facsímil.","la");
  ro.append(E("small",roseTranscription?(roseTranscription.status==="alignment_needs_editorial_review"?"Transcripción Project Gutenberg · división por locus pendiente de revisión; cotejar impreso.":"Transcripción independiente Project Gutenberg · aún no verificada exhaustivamente contra el impreso."):"Transcripción Rose no disponible; la extracción de página es solo auxiliar."));
@@ -184,7 +185,13 @@ async function render(query){
  if(books){
   const ed=section("Editiones Kurilo · V514 / V554 / V297");
   const similarity=books.latin.similitud_normalizada_v514_v297;
-  ed.append(E("p","V514: latín y castellano estructurados · V297: "+(books.latin.v297==="disponible"?"latín e inglés estructurados":"locus sin texto estructurado")+" · V554: lectura no comprobable en esta consulta (archivo francés no recuperable).","bude-note"));
+  const frenchRecord=data.fr?.passages?.find(x=>x.locus===locus);
+  const frenchAvailable=Boolean(frenchRecord?.translation?.trim());
+  const frenchStatus=frenchAvailable
+   ?"V554: traducción francesa recuperada del índice estructurado para este locus."
+   :"V554: la lectura francesa no se mostró en esta consulta. Revisar recuperación o correspondencia por locus, sin atribuir el problema al DOCX/PDF.";
+  ed.append(E("p","V514: latín y castellano estructurados · V297: "+(books.latin.v297==="disponible"?"latín e inglés estructurados":"locus sin texto estructurado")+" · "+frenchStatus,"bude-note"));
+  if(!frenchAvailable){const note=E("p",null,"bude-note");note.append(A("Consultar edición francesa V554","documents/edicion-v554.html")," · ",A("PDF francés","documents/kurilo-recensio-fr.pdf")," · ",A("Índice estructurado V554","data/structured/recensio-fr.json"));ed.append(note)}
   ed.append(E("p","Similitud digital V514/V297: "+(similarity==null?"no disponible":similarity+" %")+". "+(books.latin.identidad_secuencial_normalizada===true?"Secuencia normalizada coincidente.":books.latin.identidad_secuencial_normalizada===false?"Secuencia normalizada distinta; cotejo editorial pendiente.":"Comparación incompleta.")+" No atribuir a códices manuscritos.","bude-note"));
   for(const [title,entries,kind] of [["Apéndice T de las ediciones",books.apendice_t,"appendix"],["Notas y glosas de tus libros",books.notas_autorales,"notes"]]){
    if(!entries?.length)continue;
@@ -291,7 +298,10 @@ async function render(query){
 }
 (async()=>{try{
  const paths=["data/structured/recensio-es.json","data/structured/recensio-fr.json","data/structured/theory-en.json","data/apparatus/aparato-comparativo.json","data/apparatus/collatio-validada.json","data/apparatus/aparato-autoral.json"];
- const [es,fr,en,comparison,appendix,author,curated,hmap,krohn,roseDigital,ocr,variants,coverage,pendingH,kuriloBooks]=await Promise.all([...paths,"data/apparatus/cotejo-selectivo-v514-v554-h.json","data/codex-h/folio-locus-map.json","data/critical-editions/krohn-1912-tei-loci.json","data/critical-editions/rose-1899-transcribed-loci.json","data/collation-loci.json","data/apparatus/krohn-kurilo-variantes-candidatas.json","data/apparatus/cobertura-testimonial-731.json","data/apparatus/cotejo-h-pendientes-24.json","data/apparatus/cotejo-ediciones-kurilo-731.json"].map((url)=>url==="data/structured/recensio-fr.json"?json(url).catch(()=>({passages:[]})):json(url)));
+ const [es,fr,en,comparison,appendix,author,curated,hmap,krohn,roseDigital,ocr,variants,coverage,pendingH,kuriloBooks]=await Promise.all([...paths,"data/apparatus/cotejo-selectivo-v514-v554-h.json","data/codex-h/folio-locus-map.json","data/critical-editions/krohn-1912-tei-loci.json","data/critical-editions/rose-1899-transcribed-loci.json","data/collation-loci.json","data/apparatus/krohn-kurilo-variantes-candidatas.json","data/apparatus/cobertura-testimonial-731.json","data/apparatus/cotejo-h-pendientes-24.json","data/apparatus/cotejo-ediciones-kurilo-731.json"].map((url)=>url==="data/structured/recensio-fr.json"?json(url).then(doc=>{
+  if(!Array.isArray(doc?.passages))throw Error("Estructura de pasajes franceses no reconocida");
+  return doc;
+ }).catch(error=>({passages:[],loadError:String(error.message||error)})):json(url)));
  data={es,fr,en,comparison,appendix,author,curated,hmap,krohn,roseDigital,ocr,variants,coverage,pendingH,kuriloBooks};loci=es.passages.map(p=>p.locus);
  syncNavigator=setupNavigator();
  const q=new URLSearchParams(location.search).get("locus")||"1.1.1";render(q);
