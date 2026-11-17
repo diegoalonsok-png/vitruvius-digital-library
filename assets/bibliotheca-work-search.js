@@ -115,6 +115,37 @@ const safeReader=s=>typeof s==="string"&&(
 const workLink=id=>"classics-work-record.html?work="+encodeURIComponent(id);
 const facLink=id=>"buscador-facsimiles-clasicos.html?obra="+encodeURIComponent(id);
 const safeR2Pdf=url=>typeof url==="string"&&/^https:\/\/libros\.vitruvius-digital-library\.org\/clasicos\/pdf\/[a-z0-9-]+\.pdf$/.test(url)?url:"";
+// Manuscript witnesses are records linked to a work, never additional works.
+let vitruvianCodices=[];
+function renderVitruvianCodices(item,w){
+ if(w.id!=="vitruvius"||!vitruvianCodices.length)return;
+ const details=make("details",null,"bws-codices");
+ const heading=make("summary","Códices de Vitruvio · "+vitruvianCodices.length+" registros documentados");
+ details.append(heading);
+ const ul=make("ul");ul.style.cssText="padding-left:20px;margin:8px 0";
+ for(const c of vitruvianCodices){
+  const li=make("li");li.style.marginBottom="9px";
+  li.append(make("strong",c.title));
+  const facts=[c.date,c.library].filter(Boolean).join(" · ");if(facts)li.append(make("div",facts,"bws-meta"));
+  if(c.description)li.append(make("div",c.description,"bws-meta"));
+  const actions=make("nav",null,"bws-actions");
+  const local=typeof c.reader==="string"&&/^[a-z0-9-]+\.html(?:\?[a-z0-9&=._-]*)?$/i.test(c.reader)?c.reader:"";
+  const external=typeof c.source==="string"&&/^https:\/\//.test(c.source)?c.source:"";
+  if(local)addLink(actions,"Abrir visor o ficha",local);
+  if(external)addLink(actions,"Fuente institucional",external);
+  if(!local&&!external)addLink(actions,"Índice codicológico","index-codicum.html");
+  li.append(actions);ul.append(li);
+ }
+ details.append(ul);item.append(details);
+}
+function loadVitruvianCodices(){
+ fetch("data/vitruvia-codices.json",{cache:"no-cache"})
+  .then(r=>{if(!r.ok)throw Error("Códices: HTTP "+r.status);return r.json()})
+  .then(data=>{if(!Array.isArray(data.records))throw Error("Índice codicológico inválido");
+   vitruvianCodices=[...new Map(data.records.filter(c=>c.group==="vitruvian"&&c.id&&c.title).map(c=>[c.id,c])).values()];
+   render();
+  }).catch(error=>console.warn("No se pudieron cargar los códices de Vitruvio:",error));
+}
 function addRecordedEditions(actions,w){
  for(const ed of (w.pdfEditions||[])){
   addLink(actions,
@@ -215,7 +246,7 @@ function render(){
    if(w.facsimile)addLink(actions,"Ver facsímil",facLink(w.facsimile));
     addRecordedEditions(actions,w);
    if(!w.newWork&&!w.registryOnly)addLink(actions,"Ficha académica",workLink(w.id));
-   li.append(actions);list.append(li);
+   li.append(actions);renderVitruvianCodices(li,w);list.append(li);
   }
   if(all.length>limit){more.hidden=false;more.textContent="Mostrar más obras ("+(all.length-limit)+" restantes)"}
   return;
@@ -248,7 +279,7 @@ function render(){
    if(w.facsimile)addLink(actions,"Ver facsímil",facLink(w.facsimile));
     addRecordedEditions(actions,w);
   if(!w.newWork&&!w.registryOnly)addLink(actions,"Ficha académica",workLink(w.id));
-  item.append(actions);list.append(item);
+  item.append(actions);renderVitruvianCodices(item,w);list.append(item);
  }
  if(found.length>limit){more.hidden=false;more.textContent="Mostrar más ("+(found.length-limit)+" restantes)"}
 }
@@ -473,6 +504,7 @@ async function bootstrap(){
   if(parent.id==="front-classical-works")parent.replaceChildren();
   mount(parent,{catalog:baseCatalog,registry});
   addRoadmap(roadmap);
+  loadVitruvianCodices();
   // Join verified bibliographic R2 facsimile associations into work cards.
   // PDF presence is not the same as a collated or indexed transcription.
   Promise.all([
