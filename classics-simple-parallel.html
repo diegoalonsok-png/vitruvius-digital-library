@@ -255,7 +255,7 @@ async function translateCurrent(token){
   if(token!==renderToken)return;
   if(!result?.text||!translationValid(record.text,result.text,leftLang,target))throw Error("No hay traducción válida");
   paragraph("right-text",result.text);
-  el("right-head").textContent="TRADUCCIÓN AUTOMÁTICA · "+(LANG[target]||target.toUpperCase())+" · "+record.locus;
+  el("right-head").textContent="TRADUCCIÓN AUTOMÁTICA · "+(LANG[target]||target.toUpperCase())+" · "+locusCaption(record.locus);
   budeUpdate("automatic",target);
   status("Traducción automática orientativa · "+result.provider+(result.partial?" · Traducción parcial.":"")+
    (leftLang==="grc"?" · El proveedor trata el griego antiguo como moderno; requiere cotejo filológico.":""));
