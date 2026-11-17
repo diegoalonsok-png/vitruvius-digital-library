@@ -231,11 +231,44 @@ function addLink(parent,text,href){
  if(!href)return;
  const a=make("a",text);a.href=href;parent.append(a);
 }
+
+const notableEditions=[
+ {id:"rose-1899",type:"Edición crítica histórica",author:"Marcus Vitruvius Pollio · Valentinus Rose (editor)",title:"Vitruvii De architectura libri decem",date:"1899",url:"rose-1899.html",source:"https://archive.org/details/vitruviidearchit00vitr_0",forms:["Rose","Valentin Rose","Vitruvio Rose 1899"]},
+ {id:"krohn-1912",type:"Edición crítica histórica",author:"Marcus Vitruvius Pollio · Fritz Krohn (editor)",title:"Vitruvii De architectura libri decem",date:"1912",url:"krohn-1912.html",source:"documents/krohn-1912.pdf",forms:["Krohn","Fritz Krohn","Vitruvio Krohn 1912"]},
+ {id:"kurilo-v514",type:"Edición bilingüe contemporánea · latín y castellano",author:"Diego Kurilo",title:"Vitruvio. De architectura. Nueva recensio académica bilingüe: El arquitecto de la teoría",date:"2026",url:"lector-bilingue.html?edition=recensio-es&locus=1.1.1",doi:"10.5281/zenodo.23884757",isbn:"978-631-01-6651-3",forms:["V514","Kurilo español","Vitruvio castellano"]},
+ {id:"kurilo-v554",type:"Edición bilingüe contemporánea · latín y francés",author:"Diego Kurilo",title:"Vitruve. De architectura. Nouvelle recensio académique bilingue: L’architecte de la théorie",date:"2026",url:"lector-bilingue.html?edition=recensio-fr&locus=1.1.1",doi:"10.5281/zenodo.23885110",isbn:"978-631-01-6651-3",forms:["V554","Kurilo francés","Vitruvio francés"]},
+ {id:"kurilo-v297",type:"Edición bilingüe contemporánea · latín e inglés",author:"Diego Kurilo",title:"The Architect of Theory: Vitruvius and the Intellectual World of Roman Antiquity",date:"2026",url:"lector-bilingue.html?edition=theory-en&locus=1.1.1",doi:"10.5281/zenodo.23885404",isbn:"978-631-01-6651-3",forms:["V297","Kurilo inglés","Vitruvius English"]}
+];
+function renderNotable(q){
+ const {list,count,more}=model;model.region.hidden=false;list.replaceChildren();more.hidden=true;
+ const result=[...notableEditions,...vitruvianCodices.map(c=>({
+  id:c.id,type:"Testimonio manuscrito · "+(c.date||"fecha no consignada"),title:c.title,
+  author:c.library||"Tradición manuscrita de Vitruvio",date:c.date||"",url:c.reader||"index-codicum.html",
+  source:c.source||"",forms:[...(c.aliases||[]),"vitruvio","vitruvius","codex"]
+ }))];
+ const term=q.trim(),author=model.authorFilter.value.trim(),matches=result.filter(e=>{
+  const record={id:e.id,title:e.title,author:e.author,forms:e.forms||[]};
+  return (!term||rank(record,term)>0)&&(!author||rank({...record,title:"",forms:[e.author,...(e.forms||[])]},author)>60);
+ });
+ count.textContent=matches.length+" ediciones y testimonios documentados · no se suman como obras antiguas independientes.";
+ if(!matches.length){list.append(make("li","Sin coincidencias en ediciones modernas y códices documentados.","bws-empty"));return}
+ for(const e of matches){
+  const li=make("li",null,"bws-item"),heading=make("div",null,"bws-heading");heading.append(make("strong",e.title),make("span"," · "+e.author));li.append(heading);
+  li.append(make("p",e.type+(e.date?" · "+e.date:""),"bws-meta"));
+  if(e.isbn||e.doi){const p=make("p","ISBN editorial declarado: "+(e.isbn||"no consignado")+(e.doi?" · DOI: "+e.doi:""),"bws-meta");li.append(p)}
+  const links=make("nav",null,"bws-actions");addLink(links,e.id.startsWith("kurilo-")?"Leer edición":e.id==="rose-1899"||e.id==="krohn-1912"?"Consultar edición":"Consultar visor o ficha",e.url);
+  if(e.source)addLink(links,"Fuente documental",e.source);
+  if(e.doi)addLink(links,"DOI de la edición","https://doi.org/"+e.doi);
+  li.append(links);list.append(li);
+ }
+}
+
 function render(){
  if(!model)return;
  const {input,list,count,more,limit}=model,q=input.value.trim();
  const hasFacets=Boolean(model.authorFilter.value.trim()||model.genreFilter.value||model.centuryFilter.value||model.periodFilter.value||model.languageFilter.value||model.letter);
  const hasQuery=normal(q).length>=2;
+ if(model.periodFilter.value==="modern-notable"){renderNotable(q);return;}
  if(!hasQuery&&!hasFacets&&!model.showAll&&!model.r2Only){
   model.region.hidden=true;list.replaceChildren();more.hidden=true;
   return;
@@ -372,6 +405,7 @@ function mount(parent,data){
  periodFilter.append(new Option("Todos los períodos históricos",""));
  const existingPeriods=new Set([...index.values()].map(w=>periodOfWork(w)).filter(Boolean));
  for(const [id,label] of historicalPeriods)if(existingPeriods.has(id))periodFilter.append(new Option(label,id));
+ periodFilter.append(new Option("Ediciones modernas y testimonios históricos notables","modern-notable"));
  const languageFilter=make("select");languageFilter.setAttribute("aria-label","Lengua de texto disponible");
  [["","Todas las lenguas"],["grc","Griego"],["la","Latín"],["es","Castellano"],["en","Inglés"],["fr","Francés"]].forEach(([v,t])=>languageFilter.append(new Option(t,v)));
  const sortFilter=make("select");sortFilter.setAttribute("aria-label","Orden alfabético");
