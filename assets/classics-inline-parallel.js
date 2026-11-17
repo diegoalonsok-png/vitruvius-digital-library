@@ -167,12 +167,15 @@ function updateIndexedChoice(info){
  const target=select.value;
  const hasIndexed=indexedVersions.has(target);
  const greekOriginal=current?.language==="grc";
- const allowAutomatic=!hasIndexed||greekOriginal;
+ // Ancient Greek is not modern Greek: external machine outputs can contain
+ // transliteration and invented words. Do not offer them as translations.
+ const allowAutomatic=!greekOriginal&&!hasIndexed;
+ if(greekOriginal&&enabled){enabled=false;sequence++;}
  translate.hidden=!allowAutomatic||enabled;
  stop.hidden=!allowAutomatic||!enabled;
  translate.disabled=false;
- translate.textContent=hasIndexed&&greekOriginal?"Ver traducción automática (griego)":"Activar traducción automática";
- translate.title=hasIndexed&&greekOriginal?"Comparar opcionalmente con una traducción automática del griego antiguo, sin sustituir la versión publicada.":"Traducir bajo demanda cuando no existe versión indexada.";
+ translate.textContent="Activar traducción automática";
+ translate.title="Solo bajo demanda para latín sin traducción indexada.";
  translation.setAttribute("aria-label",hasIndexed&&!enabled?"Traducción indexada":"Traducción automática orientativa");
  return hasIndexed;
 }
@@ -200,14 +203,16 @@ function showState(){
   presentIndexed(current,select.value,stamp);
   return;
  }
- if(!enabled){output.textContent="No hay traducción indexada en "+({es:"castellano",en:"inglés",fr:"francés"}[select.value]||select.value)+". Podés activar una versión automática orientativa.";return}
+ if(!enabled){output.textContent=current?.language==="grc"
+  ?"No hay traducción documentada para este locus en el idioma seleccionado. Se conserva el original griego; no se ofrece transliteración automática como traducción."
+  :"No hay traducción indexada en "+({es:"castellano",en:"inglés",fr:"francés"}[select.value]||select.value)+". Podés activar una versión automática orientativa.";return}
  if(!current?.text){output.textContent="El pasaje todavía no está disponible.";return}
  runTranslation();
 }
 async function runTranslation(){
  const stamp=++sequence,entry=current,target=select.value;
  if(indexedVersions.has(target)&&entry&&!enabled){await presentIndexed(entry,target,stamp);return;}
- if(mode.value==="pdf"||!enabled||!entry||!["la","grc"].includes(entry.language))return;
+ if(mode.value==="pdf"||!enabled||!entry||entry.language!=="la")return;
  output.replaceChildren();output.setAttribute("aria-busy","true");
  output.textContent="Traduciendo automáticamente el pasaje "+entry.locus+"…";
  note.textContent="Versión generada por un servicio de traducción automática externo. No constituye traducción filológica.";
@@ -241,7 +246,7 @@ async function runTranslation(){
   note.textContent="Servicio externo no disponible ("+(error?.message||"error de acceso")+"). Podés usar el enlace externo sin alterar el original."; translate.hidden=false;translate.textContent="Reintentar traducción";
  }finally{if(stamp===sequence)output.removeAttribute("aria-busy")}
 }
-function activate(){if(indexedVersions.has(select.value)&&current?.language!=="grc"){showState();return}enabled=true;translate.hidden=true;stop.hidden=false;showState()}
+function activate(){if(current?.language==="grc"||indexedVersions.has(select.value)){showState();return}enabled=true;translate.hidden=true;stop.hidden=false;showState()}
 if(enabled){translate.hidden=true;stop.hidden=false;}
 translate.addEventListener("click",activate);
 stop.addEventListener("click",()=>{
