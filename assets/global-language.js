@@ -189,7 +189,7 @@
  function init(){
   if(!document.body)return;
   watchReader();
-  const existing=document.querySelector('#classic-ui-language,#atlas-language-select,.header-languages select,#ui-language');
+  const existing=document.querySelector('#secondary-language,#language-toggle,#classic-ui-language,#atlas-language-select,.header-languages select,#ui-language');
   if(existing){bindExisting(existing);translate();return;}
   if(document.querySelector('.site-global-language'))return;
   const label=document.createElement('label');
