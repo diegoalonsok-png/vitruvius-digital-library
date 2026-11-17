@@ -333,7 +333,18 @@ def main():
     if args.discover:
         save(folder / "discovery.json", {"counts": info, "groups": groups, "githubInventory": inventory})
         print(json.dumps(info)); return
-    if args.limit: groups = groups[:args.limit]
+    if args.limit:
+        # Rotate across the unresolved catalogue instead of retrying its first
+        # twelve entries indefinitely. The UTC day controls the batch, so
+        # reruns on the same day are idempotent; previously registered works
+        # are still excluded by discover(). Nothing in R2 is replaced.
+        slots = (len(groups) + args.limit - 1) // args.limit
+        slot = (datetime.now(timezone.utc).date().toordinal() % slots) if slots else 0
+        start = slot * args.limit
+        groups = groups[start:start + args.limit]
+        info["selectedSlot"] = slot
+        info["selectedOffset"] = start
+        info["selectedGroups"] = len(groups)
     report = {"generated": datetime.now(timezone.utc).isoformat(), "discovery": info, "prepared": [], "published": [], "deferred": [], "githubPreserved": []}
     s3, bucket = client() if args.publish else (None, None)
     def process(group):
