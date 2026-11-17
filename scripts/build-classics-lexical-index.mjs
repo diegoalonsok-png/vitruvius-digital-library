@@ -79,7 +79,7 @@ const EXTRA=[
      «vitruvius» en es, fr y en: las tres contienen el mismo texto latino.
      Se declara aquí para que la puerta del índice sepa que una coincidencia
      en latín implica a las tres, sin contar el latín tres veces. */
-  gate:["vitruvius|es","vitruvius|fr","vitruvius|en"],
+  gate:["vitruvius|la","vitruvius|es","vitruvius|fr","vitruvius|en"],
   attribution:"Vitruvio · De architectura · recensio latina de la edición Kurilo V514",
   editorialStatus:"Texto latino de la recensio propia; no es facsímil ni cotejo de testimonios",
   reader:"lector-bilingue.html?edition=recensio-es&locus={locus}"},
