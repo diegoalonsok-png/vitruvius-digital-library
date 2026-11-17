@@ -58,107 +58,61 @@ function mount(host){
  if(host.dataset.indexExplorerMounted)return;
  host.dataset.indexExplorerMounted="1";
  host.classList.add("vdl-works-explorer");
- const details=add("details","vdl-works-explorer-details",null,host);
- const summary=add("summary",null,"Ver obras con original indexado",details);
- summary.setAttribute("aria-label","Mostrar obras con texto original griego o latino indexado");
- const content=add("div","vdl-works-explorer-content",null,details);
- const note=add("p","vdl-works-note","Solo se muestran obras cuyo original griego o latino figura en el índice léxico y en el registro de texto consultable. Las fichas sin original indexado permanecen en el catálogo académico, fuera de esta lista.",content);
- const toolbar=add("div","vdl-works-filterbar",null,content);
- const search=add("input",null,null,toolbar);search.type="search";search.placeholder="Filtrar por autor o título…";search.setAttribute("aria-label","Filtrar las obras por autor o título");
-
- const count=add("p","vdl-works-result-count","Abre el catálogo para cargar el inventario.",content);count.setAttribute("role","status");
- const listing=add("div","vdl-works-list",null,content);listing.setAttribute("role","list");
- const final=add("p","vdl-works-bottom",null,content);
- const allLink=add("a",null,"Abrir el catálogo completo de Bibliotheca",final);allLink.href="bibliotheca-graeca-latina.html";
+ const panel=add("div","vdl-works-explorer-panel",null,host);
+ const heading=add("label","vdl-works-explorer-heading","Buscar un libro para leer",panel);
+ const toolbar=add("div","vdl-works-filterbar",null,panel);
+ const search=add("input","vdl-works-search",null,toolbar);
+ search.type="search";search.placeholder="Autor o título: Homero, Platón, Eneida…";
+ search.autocomplete="off";search.setAttribute("aria-label","Buscar una obra por autor o título");
+ heading.append(search);toolbar.remove();
+ const count=add("p","vdl-works-result-count","Escribí un autor o título para abrir el lector.",panel);count.setAttribute("role","status");
+ const listing=add("div","vdl-works-list",null,panel);listing.setAttribute("role","list");listing.hidden=true;
  let items=null;
- const normalize=x=>String(x||"").normalize("NFD").replace(/\p{M}/gu,"").toLowerCase();
- // Common ancient author spellings, modern-language names and obvious variants.
- // The alias is for discovery only: the academic record keeps its canonical title.
- const authorAliases={
-  vitruvius:["vitruvio","vitruve","vitruvius","marco vitruvio","marcus vitruvius","polion","pollio"],
-  caesar:["julio cesar","julio cesar","julius caesar","cesar","cesare"],
-  cicero:["ciceron","cicerone","marco tulio ciceron"],
-  plinius:["plinio","pline"],
-  vergilius:["virgilio","virgile","virgil"],
-  horatius:["horacio","horace"],
-  ovidius:["ovidio","ovide"],
-  homer:["homero","homere","homer"],
-  plato:["platon","plato"],
-  aristoteles:["aristoteles","aristotle","aristote"],
-  strabo:["estrabon","estrabo","strabon"],
-  sallust:["salustio","salluste"]
- };
- function searchable(item){
-  const author=normalize(item.author),title=normalize(item.title),id=normalize(item.id.replaceAll("-"," "));
-  const aliases=Object.entries(authorAliases).flatMap(([key,values])=>
-   [key,...values].some(name=>author.includes(normalize(name))||id.includes(normalize(name)))?values:[]);
-  return {author,title,id,aliases:aliases.map(normalize)};
- }
- function rank(item,query){
-  if(!query)return 0;
-  const f=searchable(item);
-  const names=[f.author,...f.aliases];
-  const firstNames=names.flatMap(n=>n.split(/[,;]+/).map(x=>x.trim()));
-  const words=names.flatMap(n=>n.split(/\s+/));
-  // One-letter searches mean an author's initial, not any letter anywhere in a title.
-  if(query.length===1){
-   // On the Vitruvius portal, V must surface the canonical Vitruvius work first.
-   if(query==="v"&&(f.id==="vitruvius"||f.id.startsWith("vitruvius ")))return 200;
-   if(names.some(n=>n.startsWith(query)))return 100;
-   if(words.some(w=>w.startsWith(query)))return 60;
-   return -1;
-  }
-  if(names.some(n=>n===query))return 150;
-  if(names.some(n=>n.startsWith(query)))return 120;
-  if(firstNames.some(n=>n.startsWith(query)))return 115;
-  if(words.some(w=>w.startsWith(query)))return 95;
-  if(f.title.startsWith(query))return 85;
-  if(f.title.split(/\s+/).some(w=>w.startsWith(query)))return 65;
-  if(names.some(n=>n.includes(query)))return 55;
-  if(f.title.includes(query))return 35;
-  if(f.id.includes(query))return 25;
+ const normalize=x=>String(x||"").normalize("NFD").replace(/\\p{M}/gu,"").toLowerCase().trim();
+ const aliases={vitruvius:"vitruvio vitruve",caesar:"julio cesar julius caesar",cicero:"ciceron cicerone",plinius:"plinio",vergilius:"virgilio virgil",horatius:"horacio",ovidius:"ovidio",homer:"homero homere",plato:"platon",aristoteles:"aristotle aristote",strabo:"estrabon"};
+ function score(w,q){
+  const author=normalize(w.author),title=normalize(w.title),id=normalize(w.id.replaceAll("-"," "));
+  const alias=Object.entries(aliases).filter(([key])=>author.includes(key)||id.includes(key)).map(([,v])=>v).join(" ");
+  if(author===q||title===q)return 150;
+  if(author.startsWith(q)||title.startsWith(q))return 110;
+  if(alias.split(" ").some(x=>x.startsWith(q)))return 95;
+  if(author.split(/\\s+/).some(x=>x.startsWith(q)))return 85;
+  if(title.split(/\\s+/).some(x=>x.startsWith(q)))return 75;
+  if(q.length>1&&(author.includes(q)||alias.includes(q)))return 55;
+  if(q.length>1&&(title.includes(q)||id.includes(q)))return 40;
   return -1;
  }
  function render(){
   if(!items)return;
-  const query=normalize(search.value).trim();
-  const pool=query?items.all:items.indexed;
-  const matched=query?pool.map((item,index)=>({item,index,score:rank(item,query)}))
-   .filter(x=>x.score>=0)
-   .sort((a,b)=>b.score-a.score||Number(b.item.originalIndexed)-Number(a.item.originalIndexed)||a.index-b.index)
-   .map(x=>x.item):pool;
+  const q=normalize(search.value);
   listing.replaceChildren();
-  for(const item of matched){
-   const line=add("div","vdl-works-row",null,listing);line.setAttribute("role","listitem");
-   if(window.BibliothecaCoverMiniatures)line.append(window.BibliothecaCoverMiniatures.create(item));
-   const title=add("a","vdl-works-name",item.author+" — "+item.title,line);
-   // Open actual reading content when a local original has a documented indexed language.
-// External/registered sources retain an academic dossier with source and facsimile links.
+  if(!q){listing.hidden=true;count.textContent="Escribí un autor o título para abrir el lector.";return}
+  const found=items.all.map((item,i)=>({item,i,rank:score(item,q)})).filter(x=>x.rank>=0)
+   .sort((a,b)=>b.rank-a.rank||Number(b.item.originalIndexed)-Number(a.item.originalIndexed)||a.i-b.i);
+  listing.hidden=!found.length;
+  for(const {item} of found.slice(0,12)){
    const readers=item.readers||[];
-   const source=readers.find(x=>x.language===item.language)||
-    readers.find(x=>x.language==="la"||x.language==="grc")||readers[0];
+   const source=readers.find(x=>x.language===item.language)||readers.find(x=>["la","grc"].includes(x.language))||readers[0];
    const path=source?.reader||source?.path;
-   const htmlSource=source?.format==="html-text"&&/^corpus\/[a-z0-9/_-]+\.html$/.test(path||"");
-   const jsonSource=source&&["json-passages","structured-bilingual"].includes(source.format);
-   title.href=item.originalIndexed&&(htmlSource||jsonSource)
-    ?(htmlSource?path:"classics-text-reader.html?"+new URLSearchParams({work:item.id,lang:source.language}))
+   const html=source?.format==="html-text"&&/^corpus\\/[a-z0-9/_-]+\\.html$/.test(path||"");
+   const structured=source&&["json-passages","structured-bilingual"].includes(source.format);
+   const canRead=item.originalIndexed&&(html||structured);
+   const row=add("div","vdl-works-row",null,listing);row.setAttribute("role","listitem");
+   const link=add("a","vdl-works-name",item.author+" · "+item.title,row);
+   link.href=canRead?(html?path:"classics-text-reader.html?"+new URLSearchParams({work:item.id,lang:source.language}))
     :"classics-work-record.html?"+new URLSearchParams({work:item.id});
-   title.title=htmlSource?"Leer el texto íntegro en su edición HTML":jsonSource
-    ?"Abrir el lector académico por loci":"Consultar la ficha, fuentes y facsímiles disponibles";
-   const meta=add("span","vdl-works-state",item.originalIndexed?labels.local:"Ficha catalogada · original no certificado en este índice",line);
-   meta.dataset.kind=item.kind;
+   link.title=canRead?"Abrir lector de la obra":"Ver ficha académica y fuentes disponibles";
   }
-  count.textContent=query
-   ?matched.length+" obras o fichas encontradas · "+items.indexed.length+" originales certificados en el índice."
-   :matched.length+" de "+items.indexed.length+" obras con original griego o latino indexado y fuente registrada.";
+  count.textContent=found.length?found.length+" coincidencia"+(found.length===1?"":"s")+(found.length>12?" · primeras 12":"")+". Elegí una obra para abrirla.":"No se encontraron obras con ese autor o título.";
  }
- details.addEventListener("toggle",async()=>{
-  if(!details.open||items)return;
-  count.textContent="Cargando inventario de obras…";
-  try{items=await catalog();if(details.open)render()}
-  catch(e){count.textContent="No fue posible cargar las obras: "+e.message+". Se conserva el acceso al catálogo completo."}
- });
- search.addEventListener("input",render);
+ async function load(){
+  if(items)return;
+  count.textContent="Cargando catálogo…";
+  try{items=await catalog();render()}
+  catch(e){count.textContent="El catálogo no se pudo cargar. Abrí Bibliotheca Graeca et Latina."}
+ }
+ search.addEventListener("focus",load,{once:true});
+ search.addEventListener("input",()=>{if(items)render();else load()});
 }
 function init(){
  document.querySelectorAll("[data-vdl-works-explorer]").forEach(mount);
