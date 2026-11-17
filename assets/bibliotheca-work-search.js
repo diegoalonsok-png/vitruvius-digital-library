@@ -713,9 +713,14 @@ function mount(parent,data){
  if(document.body.classList.contains("bibliotheca-plain-list")){
   const visible=document.getElementById("bibliotheca-lexicon-q");
   if(visible){
-   // Move results directly below the visible search bar, as in Lexicon.
-   const visiblePanel=visible.closest(".bibliotheca-lexicon-simple");
-   if(visiblePanel)visiblePanel.insertAdjacentElement("afterend",section);
+   // A compact dropdown belongs directly under the search form, not
+   // at the bottom of the page or inside the hidden legacy search area.
+   const visibleForm=visible.closest("#bibliotheca-lexicon-form");
+   if(visibleForm){
+    visibleForm.insertAdjacentElement("afterend",section);
+    visible.setAttribute("aria-controls","bws-results");
+    visible.setAttribute("aria-autocomplete","list");
+   }
    const sync=()=>{input.value=visible.value;model.letter="";model.limit=12;render()};
    visible.addEventListener("input",sync);
    visible.addEventListener("search",sync);
