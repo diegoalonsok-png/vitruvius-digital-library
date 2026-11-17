@@ -305,7 +305,7 @@ html[data-theme="light"] body.academic-reader .cl-translation-output a[href]{col
 <script defer src="assets/classical-lexicon.js?v=20261112-externo"></script><script defer src="assets/dictionary-everywhere.js?v=20261111-diccionario-v1"></script>
 <script defer src="assets/classics-lexical-popup.js?v=20261116-context-provenance-v1"></script>
 <script defer src="assets/classics-academic-reader.js?v=20261116-source-notes-v1"></script>
-<script defer src="assets/classics-text-reader.js?v=20261117-full-page-palette-v1"></script>
+<script defer src="assets/classics-text-reader.js?v=20261117-full-page-palette-v3"></script>
 
 
 <script defer src="assets/classics-passage-export.js?v=20261115-text-export-v1"></script>
@@ -611,6 +611,38 @@ html[data-reader-page-theme="custom"] body.academic-reader .reader-lexicon-palet
  color:var(--reader-page-fg,#e5e5e5)!important;
 }
 html[data-reader-page-theme="custom"] body.academic-reader :is(#passages,.cl-source-column,.cl-translation-column,.cl-translation-output){
+ background:var(--reader-page-bg,#17191c)!important;
+ color:var(--reader-page-fg,#e5e5e5)!important;
+}
+/* Remove opaque legacy backgrounds from content surfaces. The outer main,
+   reader and both panes receive the selected color; text wrappers stay clear. */
+html[data-reader-page-theme="custom"] body.academic-reader :is(
+ main,.reader-grid,.reader,.cl-edition-layout,.cl-dual-reader,
+ .cl-dual-reader>.cl-source-column,.cl-dual-reader>.cl-translation-column,
+ .cl-dual-reader .cl-translation-output,aside,#toc,.reader-toolbar
+){
+ background-color:var(--reader-page-bg,#17191c)!important;
+ color:var(--reader-page-fg,#e5e5e5)!important;
+}
+html[data-reader-page-theme="custom"] body.academic-reader main :is(
+ .cl-source-column,.cl-translation-column,.cl-translation-output,#passages,
+ .cl-pane-title,.cl-translation-tools,.cl-pane-options,
+ .cl-reading-height-control,.cl-unified-reading-actions,
+ .cl-annotation-tools-fold,.cl-pane-heading,.cl-pane-body,
+ .cl-passage,.cl-original-passage,.cl-translation-passage,
+ .cl-reading-surface,.cl-text-content,.cl-translation-content
+) :is(div,section,article,p,blockquote,pre,span):not(mark):not(.cl-annotation-highlight){
+ background-color:transparent!important;
+}
+/* Even when another stylesheet gives a text paragraph an opaque paper background,
+   the reader background follows the global swatch. */
+html[data-reader-page-theme="custom"] body.academic-reader :is(
+ #passages,#passages p,.cl-translation-output,.cl-translation-output p,
+ .cl-source-column,.cl-translation-column,.cl-pane-title,
+ .cl-translation-tools,.cl-pane-options,.cl-reading-height-control,
+ .cl-unified-reading-actions,.cl-annotation-tools-fold,
+ .cl-edition-layout,.cl-dual-reader
+){
  background:var(--reader-page-bg,#17191c)!important;
  color:var(--reader-page-fg,#e5e5e5)!important;
 }
