@@ -1,0 +1,45 @@
+name: Rebuild classics search index and public counts
+
+on:
+  push:
+    paths:
+      - 'data/classics-corpus/*-grc.json'
+      - 'data/classics-corpus/*-la.json'
+      - 'data/classics-corpus/search-registry.json'
+      - 'data/bibliotheca-expansion-publicada-2026-11-16.json'
+      - 'scripts/build-classics-lexical-index.mjs'
+      - 'scripts/refresh-classics-public-counts.mjs'
+      - '.github/workflows/classics-index-refresh.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: classics-index-refresh
+  cancel-in-progress: false
+
+jobs:
+  rebuild:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Generate search root shards and manifest
+        run: node --max-old-space-size=6144 scripts/build-classics-lexical-index.mjs
+      - name: Derive counters and validate new texts
+        run: node scripts/refresh-classics-public-counts.mjs
+      - name: Commit regenerated indexes without editing source books
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/index/classics data/classics-corpus/public-counts.json
+          if ! git diff --cached --quiet; then
+            git commit -m "Rebuild classics lexical index and measured catalogue counts"
+            git push
+          fi
