@@ -10,6 +10,7 @@ on:
       - 'scripts/build-classics-lexical-index.mjs'
       - 'scripts/refresh-classics-public-counts.mjs'
       - 'scripts/check-classics-new-index.mjs'
+      - 'scripts/test-classical-phrase-matching.mjs'
       - '.github/workflows/classics-index-refresh.yml'
   workflow_dispatch:
 
@@ -37,6 +38,8 @@ jobs:
         run: node scripts/refresh-classics-public-counts.mjs
       - name: Check new works are indexed at source-locus granularity
         run: node scripts/check-classics-new-index.mjs
+      - name: Check literal phrases in Latin and polytonic Greek
+        run: node scripts/test-classical-phrase-matching.mjs
       - name: Commit regenerated indexes without editing source books
         run: |
           git config user.name "github-actions[bot]"
