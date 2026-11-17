@@ -1,0 +1,61 @@
+name: Publicar fichas SEO de clásicos verificados
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/build-classics-seo-pages.mjs'
+      - '.github/workflows/build-classics-seo-pages.yml'
+      - 'data/classics-corpus/search-registry.json'
+      - 'data/bibliotheca-graeca-latina-I-bce-I-ce.json'
+      - 'data/bibliotheca-expansion-publicada-2026-11-16.json'
+permissions:
+  contents: write
+concurrency:
+  group: vdl-classics-static-seo-pages
+  cancel-in-progress: false
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Generar únicamente fichas de originales realmente indexados
+        run: node scripts/build-classics-seo-pages.mjs
+      - name: Comprobar canonicals y evitar duplicados
+        run: |
+          python - <<'PY'
+          import pathlib, re, xml.etree.ElementTree as ET
+          root=pathlib.Path('.')
+          pages=list((root/'obras').glob('*.html'))
+          assert pages, 'No se han generado fichas'
+          for file in pages:
+              text=file.read_text(encoding='utf-8')
+              assert text.count('rel="canonical"') == 1, file
+              assert 'Ficha crítica completa' in text and 'texto original indexado' in text, file
+              assert file.stem in text, file
+          xml=ET.parse('sitemap.xml')
+          urls=[el.text for el in xml.findall('.//{*}loc')]
+          assert len(urls)==len(set(urls)), 'Sitemap tiene URLs duplicadas'
+          print('Fichas:',len(pages),'Sitemap:',len(urls))
+          PY
+      - name: Publicar sólo fichas y sitemap; nunca tocar manuscritos ni R2
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          for attempt in 1 2 3; do
+            git fetch origin main
+            git checkout -B seo-generated origin/main
+            node scripts/build-classics-seo-pages.mjs
+            git add obras/ obras-clasicas-indexadas.html sitemap.xml
+            if git diff --cached --quiet; then exit 0; fi
+            git commit -m 'Publicar fichas estáticas verificadas e índice SEO de clásicos'
+            if git push origin HEAD:main; then exit 0; fi
+          done
+          exit 1
