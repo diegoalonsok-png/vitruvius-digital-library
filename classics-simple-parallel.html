@@ -121,7 +121,7 @@ mark.simple-match{background:#d8a442;color:#161616;border-radius:2px}
 @media print{.selection-speech-float{display:none!important}}
 </style><script defer src="assets/analytics-config.js?v=20261106-ga4-1"></script><script defer src="assets/analytics.js?v=20261106-ga4-1"></script></head><body><main>
 <div class="top"><h1 id="title">BIBLIOTHECA · VISOR SIMPLIFICADO</h1><nav class="actions" aria-label="Navegación de lectura"><a id="academic" href="classics-parallel-reader.html">Visor académico</a><button id="previous" type="button" aria-label="Pasaje anterior">‹</button><button id="next" type="button" aria-label="Pasaje siguiente">›</button></nav></div>
-<div class="toolbar" role="group" aria-label="Herramientas de lectura"><label>Original <select id="original-lang" aria-label="Idioma original"></select></label><label>Traducción <select id="translation-lang" aria-label="Idioma de la traducción"></select></label><label>Locus <input id="go-locus" type="search" placeholder="Ej. 2" aria-label="Locus o capítulo"></label><button id="go-button" type="button">Ir al locus</button><a id="lexicon-link" href="vitruvia-lexicon.html" style="border:1px solid #555;border-radius:7px;padding:8px 10px;color:#eee;text-decoration:none;font:13px system-ui">Diccionario · Lexicon</a><label>Palabra <input id="word-query" type="search" placeholder="Buscar palabra" aria-label="Buscar palabra"></label><button id="word-find" type="button" aria-label="Buscar próxima coincidencia">⌕</button><button id="smaller" type="button" aria-label="Reducir texto">A−</button><button id="larger" type="button" aria-label="Ampliar texto">A+</button><label>Color <select id="palette" aria-label="Colores"><option value="dark">Gris</option><option value="sepia">Sepia</option><option value="light">Marfil</option></select></label></div>
+<div class="toolbar" role="group" aria-label="Herramientas de lectura"><label>Original <select id="original-lang" aria-label="Idioma original"></select></label><label>Traducción <select id="translation-lang" aria-label="Idioma de la traducción"></select></label><label>Locus <input id="go-locus" type="search" placeholder="Ej. 1.1, 2.1, 3.1" aria-label="Locus o capítulo"></label><button id="go-button" type="button">Ir al locus</button><a id="lexicon-link" href="vitruvia-lexicon.html" style="border:1px solid #555;border-radius:7px;padding:8px 10px;color:#eee;text-decoration:none;font:13px system-ui">Diccionario · Lexicon</a><label>Palabra <input id="word-query" type="search" placeholder="Buscar palabra" aria-label="Buscar palabra"></label><button id="word-find" type="button" aria-label="Buscar próxima coincidencia">⌕</button><button id="smaller" type="button" aria-label="Reducir texto">A−</button><button id="larger" type="button" aria-label="Ampliar texto">A+</button><label>Color <select id="palette" aria-label="Colores"><option value="dark">Gris</option><option value="sepia">Sepia</option><option value="light">Marfil</option></select></label></div>
 <section class="book-search" aria-label="Búsqueda ampliada en la obra"><form id="book-search-form"><label for="book-search-input">Buscar palabra en la obra</label><input id="book-search-input" type="search" placeholder="Palabra o frase · griego o traducción" autocomplete="off"><select id="book-search-mode" aria-label="Tipo de búsqueda"><option value="exact">Exacta</option><option value="normalized" selected>Ampliada · acentos y transliteración griega</option><option value="prefix">Ampliada · inicio de palabra</option></select><select id="book-search-scope" aria-label="Texto de búsqueda"><option value="both">Original y traducción indexada</option><option value="original">Solo original</option><option value="translation">Solo traducción indexada</option></select><button type="submit">Buscar en todo el libro</button></form><div id="book-search-summary" role="status" aria-live="polite"></div><div class="search-results" id="book-search-results"></div></section><div class="share-tools" aria-label="Imprimir y compartir"><button id="print-passage" type="button">⎙ Imprimir pasaje</button><button id="share-email" type="button">✉ Correo</button><button id="share-whatsapp" type="button" aria-label="Compartir por WhatsApp">◉ WhatsApp</button><button id="save-pdf" type="button" title="Guardar el pasaje como PDF desde el diálogo de impresión" aria-label="Guardar como PDF">▤ PDF</button><span>Los enlaces compartidos conservan la obra y el locus actual.</span></div><div class="reader-utilities" aria-label="Herramientas de consulta y formato">
 <a id="search-lexicon" href="vitruvia-lexicon.html" target="_blank" rel="noopener noreferrer">Buscar en Lexicon</a>
 <a id="search-vitruvia" href="vitruvia.html" target="_blank" rel="noopener noreferrer">Buscar en Vitruvia</a>
@@ -179,9 +179,13 @@ function displayLocus(value){
 function locusCaption(value){return "Pasaje "+displayLocus(value)}
 function findLocusIndex(passages,requested){
  if(!requested||!Array.isArray(passages))return -1;
- const exact=passages.findIndex(item=>item.locus===requested);
+ const cleaned=String(requested).trim().replace(/^(?:libro|book|liber)\s+/i,"");
+ const exact=passages.findIndex(item=>item.locus===cleaned);
  if(exact>=0)return exact;
- const target=locusParts(requested);
+ // A single book number opens its first numbered section, only for
+ // the imported De officiis editions with book.section loci.
+ if(work==="cicero-officiis"&&/^[123]$/.test(cleaned))return passages.findIndex(item=>item.locus===cleaned+".1");
+ const target=locusParts(cleaned);
  if(!target)return -1;
  const matches=[];
  passages.forEach((item,index)=>{
@@ -847,6 +851,14 @@ function renderBookSearch(){
  const term=el("book-search-input").value.trim().slice(0,120),mode=el("book-search-mode").value,scope=el("book-search-scope").value;
  searchResults.replaceChildren();
  if(!term){searchSummary.textContent="Escribí una palabra o frase para buscarla en los pasajes indexados.";return}
+ // Passage references typed into the whole-book search use the same locator
+ // as the toolbar, without being mistaken for literal words in Latin.
+ if(work==="cicero-officiis"&&/^(?:(?:libro|book|liber)\s+)?[123](?:\.\d+)?$/i.test(term)){
+  const i=findLocusIndex(source,term);
+  if(i<0){searchSummary.textContent="No se encontró ese locus en esta edición.";return}
+  pos=i;searchTerm="";draw();searchSummary.textContent="Locus "+source[pos].locus+" abierto en la lectura enfrentada.";
+  document.querySelector(".cards").scrollIntoView({behavior:"smooth",block:"start"});return;
+ }
  const sets=[];
  if(scope!=="translation")sets.push({lang:leftLang,records:source,side:"original"});
  if(scope!=="original"&&translation.length)sets.push({lang:rightLang,records:translation,side:"translation"});
