@@ -46,7 +46,10 @@ function catalog(){
   }
   // Show only original Greek/Latin indexed in BOTH lexical manifest and source registry.
   // Catalog-only, external searches, OCR facsimiles and translations are never shown as originals.
-  return [...merged.values()].filter(w=>w.originalIndexed);
+  // Preserve rigorous indexed counts, but make every catalogued author and work discoverable.
+  // Missing an exact original-index certificate must not mean "author not found".
+  const all=[...merged.values()];
+  return {indexed:all.filter(w=>w.originalIndexed),all};
  }).catch(e=>{dataPromise=null;throw e});
  return dataPromise;
 }
@@ -71,8 +74,9 @@ function mount(host){
  const normalize=x=>String(x||"").normalize("NFD").replace(/\p{M}/gu,"").toLowerCase();
  function render(){
   if(!items)return;
-  const query=normalize(search.value);
-  const matched=items.filter(x=>normalize(x.author+" "+x.title).includes(query));
+  const query=normalize(search.value).trim();
+  const pool=query?items.all:items.indexed;
+  const matched=pool.filter(x=>normalize(x.author+" "+x.title+" "+x.id.replaceAll("-"," ")).includes(query));
   listing.replaceChildren();
   for(const item of matched){
    const line=add("div","vdl-works-row",null,listing);line.setAttribute("role","listitem");
@@ -86,15 +90,17 @@ function mount(host){
    const path=source?.reader||source?.path;
    const htmlSource=source?.format==="html-text"&&/^corpus\/[a-z0-9/_-]+\.html$/.test(path||"");
    const jsonSource=source&&["json-passages","structured-bilingual"].includes(source.format);
-   title.href=htmlSource?path:jsonSource
-    ?"classics-text-reader.html?"+new URLSearchParams({work:item.id,lang:source.language})
+   title.href=item.originalIndexed&&(htmlSource||jsonSource)
+    ?(htmlSource?path:"classics-text-reader.html?"+new URLSearchParams({work:item.id,lang:source.language}))
     :"classics-work-record.html?"+new URLSearchParams({work:item.id});
    title.title=htmlSource?"Leer el texto íntegro en su edición HTML":jsonSource
     ?"Abrir el lector académico por loci":"Consultar la ficha, fuentes y facsímiles disponibles";
-   const meta=add("span","vdl-works-state",labels[item.kind],line);
+   const meta=add("span","vdl-works-state",item.originalIndexed?labels.local:"Ficha catalogada · original no certificado en este índice",line);
    meta.dataset.kind=item.kind;
   }
-  count.textContent=matched.length+" de "+items.length+" obras con original griego o latino indexado y fuente registrada.";
+  count.textContent=query
+   ?matched.length+" obras o fichas encontradas · "+items.indexed.length+" originales certificados en el índice."
+   :matched.length+" de "+items.indexed.length+" obras con original griego o latino indexado y fuente registrada.";
  }
  details.addEventListener("toggle",async()=>{
   if(!details.open||items)return;
@@ -111,7 +117,7 @@ function init(){
  const display=document.querySelector('[data-cifra="obrasConTextoIndexado"]');
  if(display){
   const refresh=()=>catalog().then(items=>{
-   display.textContent=String(items.length);
+   display.textContent=String(items.indexed.length);
    display.title="Obras con original griego o latino comprobado en el registro y en el índice léxico";
   }).catch(()=>{display.textContent="—";display.title="Recuento no disponible: no se muestran datos antiguos como actuales."});
   if("requestIdleCallback" in window)window.requestIdleCallback(refresh,{timeout:2800});
