@@ -274,7 +274,7 @@ async function render(query){
    const compar=E("div",null,"bude-grid");
    const texts=[["Kur. V514 · latín",e.comparison.kurilo_latin],
     ["H f. "+e.folio+(e.visualEvidence?" · cotejo visual":" · atribución editorial pendiente"),e.comparison.h_transcription],
-    ["Rose 1899 · índice auxiliar del aparato de aparato (p. "+e.comparison.rose_page+")",e.comparison.rose_apparatus_ocr],
+    ["Rose 1899 · aparato histórico, localización auxiliar (p. "+e.comparison.rose_page+")",e.comparison.rose_apparatus_ocr],
     ["Kr. 1912 · aparato histórico, extracción auxiliar (p. "+e.comparison.krohn_page+")",e.comparison.krohn_apparatus_ocr]];
    for(const [title,body] of texts)compar.append(card(title,body,"la"));
    verified.append(compar);
