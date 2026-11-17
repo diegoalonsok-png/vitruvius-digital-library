@@ -74,7 +74,7 @@ function updateScholarly(){
  const term=clean(input.value)||clean(q.value);
  lemmaLink.href="vitruvia-lexicon.html?q="+encodeURIComponent("@"+term)+"&mode=palabra";
  formLink.href="vitruvia-lexicon.html?q="+encodeURIComponent(term)+"&mode=palabra";
- const l=String(locus.value||"").trim(),valid=/^(?:[1-9]|10)\\.\\d+\\.\\d+$/.test(l);
+ const l=String(locus.value||"").trim(),valid=/^(?:[1-9]|10)\.\d+\.\d+$/.test(l);
  apparatus.href=valid?"apparatus-bude.html?locus="+encodeURIComponent(l)+"&edition=v514&translation=es":"apparatus-bude.html";
  collation.href=valid?"colacion.html?locus="+encodeURIComponent(l):"colacion.html";
  locusHint.textContent=valid?"Locus "+l+" · cotejar lecturas y fuentes; no atribuir variantes sin comprobación.":"Escribí un locus como 1.1.1; la colación automática no acredita un manuscrito.";
