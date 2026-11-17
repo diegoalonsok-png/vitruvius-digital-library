@@ -20,6 +20,10 @@ ORIGINS = {
 ASSETS = (
     # Aparato comparativo: HTML y componentes compartidos del cotejo, incluidos prefacios.
     "aparato-comparativo.html",
+    "bibliotheca-graeca-latina.html",
+    "assets/bibliotheca-work-search.js",
+    "assets/bibliotheca-work-search.css",
+    "assets/bibliotheca-works-explorer.js",
     "assets/comparative-bude-units.js",
     "assets/dossier-integrado-731.js",
     "assets/comparative-five-editions.js",
