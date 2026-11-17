@@ -91,7 +91,7 @@ def translate(value:str,target:str)->str:
     import argostranslate.translate
     # Neural models have input-length limits. Keep longer editorial paragraphs
     # as sentence-sized chunks; preserve their reading order and punctuation.
-    sentences=re.split(r"(?<=[.!?])\\s+",value)
+    sentences=re.split(r"(?<=[.!?])\s+",value)
     chunks=[]
     current=""
     for sentence in sentences:
