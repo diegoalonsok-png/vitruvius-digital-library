@@ -92,6 +92,11 @@ mark.simple-match{background:#d8a442;color:#161616;border-radius:2px}
 /* Canson: fibra mate muy tenue; Libro: crema editorial de grano casi invisible. */
 .cards.paper-soft .card{background-color:#f0e9dd!important;background-image:radial-gradient(ellipse at 18% 24%,rgba(255,255,255,.15),transparent 62%),radial-gradient(circle at 2px 3px,rgba(105,87,63,.028) .35px,transparent .9px),radial-gradient(circle at 8px 7px,rgba(255,255,255,.22) .4px,transparent 1px),repeating-linear-gradient(112deg,rgba(110,93,70,.007) 0px,transparent 1px,transparent 12px)!important;background-size:100% 100%,13px 17px,19px 23px,100% 100%!important;color:#292a28!important}
 .cards.paper-soft[data-paper-style="book"] .card{background-color:#f5eedf!important;background-image:radial-gradient(ellipse at 12% 16%,rgba(255,255,255,.21),transparent 68%),radial-gradient(circle at 3px 6px,rgba(108,88,61,.012) .35px,transparent 1px),linear-gradient(120deg,rgba(255,255,255,.06),rgba(158,133,94,.014))!important;background-size:100% 100%,17px 21px,100% 100%!important}
+/* Sutil contraste entre original y traducción, conservando la textura de ambas hojas. */
+.cards.paper-soft .card:first-child{background-color:#f0ebe2!important}
+.cards.paper-soft .card:last-child{background-color:#eee5d7!important}
+.cards.paper-soft[data-paper-style="book"] .card:first-child{background-color:#f6f0e5!important}
+.cards.paper-soft[data-paper-style="book"] .card:last-child{background-color:#f3e9d9!important}
 .cards.paper-soft .card :is(.passage,.passage p){color:#292a28}
 @media(min-width:751px){
  .cards{grid-template-columns:minmax(0,var(--left-share,50fr)) 16px minmax(0,var(--right-share,50fr))!important;gap:8px;align-items:stretch}
