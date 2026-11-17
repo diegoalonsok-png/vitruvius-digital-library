@@ -219,6 +219,27 @@ function editDistance(a,b,cap=3){
  }
  return Math.min(cap+1,d[a.length][b.length]);
 }
+// Vocabulario temático controlado (no equivale a lematización del corpus).
+const subjects=[
+ ["architecture","Arquitectura y construcción",["arquitectura","architecture","architectura","edificios","construccion"],/architect|arquitect|aedific|edific|construction|construccion|de architectura|vitruvi/],
+ ["hydraulics","Agua y acueductos",["agua","acueducto","acueductos","aqueduct","aquaeductus","hidraulica"],/aqueduct|acueduct|aquaeduct|aquis|aquarum|hydraul|hidraul|frontinus/],
+ ["war","Guerra y estrategia",["guerra","batalla","militar","estrategia","war","bellum","πολεμος"],/bell[oi]|war|guerra|militar|strateg|στρατ|πολεμ|tactic|poliorc/],
+ ["politics","Política y Estado",["politica","republica","estado","gobierno","politics","res publica","πολιτεια"],/politic|πολιτ|republic|res publica|civitat|gobiern|government|estado/],
+ ["ethics","Ética y virtud",["etica","moral","virtud","felicidad","ethics","virtus","ἀρετή"],/etic|ethic|moral|virtud|virtus|sapien|εθικ|ἀρετ|officiis/],
+ ["rhetoric","Retórica y oratoria",["retorica","discurso","oratoria","rhetoric","orator","ρητορικη"],/retoric|rhetor|ρητορ|orator|eloquen|discurso|brutus/],
+ ["poetry","Poesía, épica y teatro",["poesia","epica","teatro","tragedia","comedia","poetry","epos","ποιησις"],/poet|ποιη|poes|epic|epop|traged|comed|oda|carmina|aeneid|iliad|odysse/],
+ ["religion","Religión y mitología",["religion","dioses","mitologia","culto","religio","mythos","θεος"],/religio|theolog|θεο|deorum|divin|myth|mitolog|culto|sacr/],
+ ["science","Matemáticas y astronomía",["matematica","astronomia","ciencias","geometria","mathematics","astronomy","γεωμετρια"],/matem|mathem|geometr|γεωμετρ|astronom|scient|cienc|physic|φυσικ/],
+ ["medicine","Medicina y salud",["medicina","salud","anatomia","medicine","ιατρικη"],/medic|ιατρ|salud|anatom|hippocrat|galen/],
+ ["geography","Geografía y viajes",["geografia","mapas","viajes","geography","geographia","γεωγραφια"],/geogr|γεωγραφ|peripl|viaj|travel|mapa|cartograf/],
+ ["history","Historia y biografías",["historia","cronica","biografia","history","historiae","ἱστορία"],/histor|ἱστορ|annal|cron|biograf|vitae|lives/],
+ ["law","Derecho y leyes",["derecho","leyes","justicia","law","ius","lex","νομος"],/jurid|derecho|leges|justic|legal|legibus|νομ/],
+ ["language","Gramática y filología",["gramatica","filologia","lengua","lexico","grammar","linguistics","γραμματικη"],/gramm|gramat|filol|philol|lexic|linguist|etymolog|etimolog/],
+ ["agriculture","Agricultura y botánica",["agricultura","cultivos","botanica","agriculture","agri cultura","φυτα"],/agric|agron|botan|naturalis|georgic|rustic|plant|φυτ/]
+];
+const subjectText=w=>[w.genre,w.title,...(w.subjects||[]),...(w.topics||[])].filter(Boolean).join(" ");
+const matchedSubjects=w=>subjects.filter(([id,label,aliases,pattern])=>pattern.test(normal(subjectText(w)))).map(([id])=>id);
+const requestedSubject=query=>{const q=foldAuthority(query);return subjects.find(([id,label,aliases])=>aliases.some(x=>foldAuthority(x)===q))?.[0]||""};
 function rank(w,query){
  const queryTokens=tokens(query);if(!queryTokens.length)return 0;
  const authority=[w.author,w.title,w.id.replaceAll("-"," "),...(w.forms||[]),...(aliasAuthority[w.id]||[])];
