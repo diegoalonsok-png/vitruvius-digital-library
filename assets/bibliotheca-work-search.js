@@ -583,6 +583,32 @@ function mount(parent,data){
   browse.addEventListener("click",()=>{model.r2Only=false;model.showAll=!model.showAll;model.limit=40;input.value="";r2Browse.textContent="Ver 44 originales R2";browse.textContent=model.showAll?"Ocultar catálogo completo":"Ver catálogo completo";render()});
  r2Browse.addEventListener("click",()=>{model.r2Only=!model.r2Only;model.showAll=model.r2Only;model.limit=50;input.value="";for(const filter of [model.authorFilter,model.genreFilter,model.subjectFilter,model.centuryFilter,model.periodFilter,model.languageFilter])filter.value="";model.letter="";r2Browse.textContent=model.r2Only?"Ocultar originales R2":"Ver 44 originales R2";browse.textContent="Ver catálogo completo";render()});
  input.addEventListener("input",()=>{if(input.value.trim()){model.r2Only=false;r2Browse.textContent="Ver 44 originales R2";model.letter="";clearAlphabet();allLetters.setAttribute("aria-pressed","true")}model.limit=40;render()});
+ // El buscador principal tiene también el modo Texto/Lexicon.
+ // Una sola letra siempre abre el índice alfabético de obras, sin enviar al Lexicon.
+ const mainForm=document.getElementById("search-form");
+ const mainQuery=document.getElementById("classic-query");
+ const mainText=document.getElementById("biblio-mode-text");
+ const mainWorks=document.getElementById("biblio-mode-works");
+ const markMainMode=works=>{
+  if(mainWorks)mainWorks.setAttribute("aria-pressed",String(works));
+  if(mainText)mainText.setAttribute("aria-pressed",String(!works));
+ };
+ if(mainWorks&&mainText){
+  mainWorks.addEventListener("click",()=>markMainMode(true));
+  mainText.addEventListener("click",()=>markMainMode(false));
+ }
+ if(mainForm&&mainQuery){
+  mainForm.addEventListener("submit",event=>{
+   const value=mainQuery.value.trim();
+   const bookMode=mainWorks?.getAttribute("aria-pressed")==="true";
+   if(!singleLetter(value)&&!bookMode)return;
+   event.preventDefault();event.stopImmediatePropagation();
+   input.value=value;model.letter="";model.r2Only=false;model.showAll=false;model.limit=40;
+   clearAlphabet();allLetters.setAttribute("aria-pressed","true");
+   render();
+   section.scrollIntoView({behavior:"smooth",block:"start"});
+  },true);
+ }
  more.addEventListener("click",()=>{model.limit+=10;render()});
  render();
  fetch(path,{cache:"no-cache"}).then(r=>{if(!r.ok)throw Error("aliases unavailable");return r.json()}).then(j=>{
