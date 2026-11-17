@@ -1,8 +1,8 @@
 {
   "schema": "vitruvia-classics-search-registry-v1",
-  "updated": "2026-11-16",
+  "updated": "2026-11-17",
   "description": "Registro verificable de transcripciones HTML y textos JSON existentes que admiten búsqueda literal de contenido. No incluye automáticamente PDF escaneados, facsímiles ni fichas sin texto. Los índices auxiliares por locus y el aparato crítico se declaran por separado; no se suman a versiones textuales originales ni implican colación autóptica.",
-  "count": 360,
+  "count": 361,
   "works": 295,
   "entries": [
     {
@@ -3316,6 +3316,16 @@
       "path": "data/classics-corpus/strabo-grc.json",
       "reader": "classics-text-reader.html?work=strabo&lang=grc",
       "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
+      "workId": "strabo",
+      "author": "Estrabón",
+      "title": "Geography (Γεωγραφικά)",
+      "language": "en",
+      "format": "json-passages",
+      "path": "data/classics-corpus/strabo-en.json",
+      "reader": "classics-text-reader.html?work=strabo&lang=en",
+      "sourceDescription": "Traducción inglesa histórica H. C. Hamilton (libros I–VI) y W. Falconer (libros VII–XVII), 1854–1857; TEI de Perseus Digital Library bajo CC BY-SA 4.0; 1516 secciones CTS numéricas vinculadas por referencia, sin cotejo filológico frase a frase."
     },
     {
       "workId": "suetonius-caesares",
