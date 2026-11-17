@@ -5,7 +5,7 @@
 const path="data/classics-corpus/title-search-aliases-multilingual.json";
 const lang={la:"latín",grc:"griego",he:"hebreo",arc:"arameo",ar:"arameo",es:"castellano",en:"inglés",fr:"francés",it:"italiano",de:"alemán",pt:"portugués"};
 const greek={α:"a",β:"b",γ:"g",δ:"d",ε:"e",ζ:"z",η:"e",θ:"th",ι:"i",κ:"k",λ:"l",μ:"m",ν:"n",ξ:"x",ο:"o",π:"p",ρ:"r",σ:"s",τ:"t",υ:"y",φ:"ph",χ:"ch",ψ:"ps",ω:"o"};
-const normal=s=>String(s||"").normalize("NFKD").replace(/[\u0300-\u036f\u1dc0-\u1dff]/g,"").toLowerCase().replace(/ς/g,"σ").replace(/æ/g,"ae").replace(/œ/g,"oe").replace(/[^\p{L}\p{N}]+/gu," ").trim().replace(/\s+/g," ");
+const normal=s=>String(s||"").normalize("NFKD").replace(/[\u0300-\u036f\u1dc0-\u1dff]/g,"").toLowerCase().replace(/[ςϲ]/g,"σ").replace(/ϐ/g,"β").replace(/ϑ/g,"θ").replace(/ϕ/g,"φ").replace(/ϖ/g,"π").replace(/ſ/g,"s").replace(/æ/g,"ae").replace(/œ/g,"oe").replace(/[^\p{L}\p{N}]+/gu," ").trim().replace(/\s+/g," ");
 const roman=s=>normal(s).replace(/[α-ω]/g,c=>greek[c]||c);
 const fold=s=>normal(s);const norm=s=>normal(s);
 const ancientGenres=[
@@ -360,7 +360,8 @@ function singleLetter(value){
 function letterMatch(w,letter,byTitle){
  const greek=/[\u0370-\u03ff\u1f00-\u1fff]/u.test(letter);
  const fields=byTitle?[w.title,w.originalTitle,w.latinTitle,w.greekTitle,...(w.originalAliases||[]),...(loadedAliases[w.id]||[])]:[w.author,...(aliasAuthority[w.id]||[])];
- return fields.some(value=>typeof value==="string"&&Boolean(value)&&
+ const candidates=greek?[...fields,w.title,w.originalTitle,w.greekTitle,w.titleOriginal,w.tituloOriginal,...(w.forms||[])]:fields;
+ return candidates.some(value=>typeof value==="string"&&Boolean(value)&&
   (!greek||/[\u0370-\u03ff\u1f00-\u1fff]/u.test(value))&&
   (greek||!/[\u0370-\u03ff\u1f00-\u1fff]/u.test(value))&&normal(value).startsWith(letter));
 }
@@ -560,7 +561,7 @@ function mount(parent,data){
  const advanced=make("details");advanced.className="bws-advanced";
  const summary=make("summary","Filtros avanzados · AUTOR, género, siglo, período, idioma y alfabeto");
  advanced.append(summary,filters,alphabet,semanticHint,historicalHint,originalHint,dateClarifier,standards);
- const filterStyles=make("style",`.bws-alphabet-group{margin:10px 0 12px}.bws-alphabet-heading{font:600 12px/1.5 system-ui;margin:8px 0 5px;opacity:.8}.bws-alphabet-group button{margin:2px;padding:7px 9px;min-width:36px;font-size:12px}.bws-alphabet-group button[aria-pressed=true]{outline:2px solid #ba9461;outline-offset:1px}.bws-library-filters .bws-author-primary{display:flex;flex-direction:column;gap:7px;min-width:min(100%,280px);grid-column:1/-1;padding:12px 14px;border:1px solid rgba(153,124,79,.55);border-radius:9px;background:rgba(160,132,85,.08)}.bws-author-primary .bws-author-heading{display:block;font:700 clamp(20px,2.5vw,28px)/1.15 system-ui,sans-serif;letter-spacing:.07em}.bws-author-primary .bws-author-caption{font:12px/1.4 system-ui,sans-serif;opacity:.82}.bws-library-filters .bws-author-primary input{width:100%;min-height:44px;font-size:16px;box-sizing:border-box}`);
+ const filterStyles=make("style",`.bws-alphabet-group{margin:10px 0 12px}.bws-alphabet-heading{font:600 12px/1.5 system-ui;margin:8px 0 5px;opacity:.8}.bws-alphabet-group button{margin:2px;padding:7px 9px;min-width:36px;font:12px/1.5 "Gentium Book Plus","Cardo",system-ui,sans-serif}.bws-alphabet-group button[aria-pressed=true]{outline:2px solid #ba9461;outline-offset:1px}.bws-library-filters .bws-author-primary{display:flex;flex-direction:column;gap:7px;min-width:min(100%,280px);grid-column:1/-1;padding:12px 14px;border:1px solid rgba(153,124,79,.55);border-radius:9px;background:rgba(160,132,85,.08)}.bws-author-primary .bws-author-heading{display:block;font:700 clamp(20px,2.5vw,28px)/1.15 system-ui,sans-serif;letter-spacing:.07em}.bws-author-primary .bws-author-caption{font:12px/1.4 system-ui,sans-serif;opacity:.82}.bws-library-filters .bws-author-primary input{width:100%;min-height:44px;font-size:16px;box-sizing:border-box}`);
  section.append(title,subtitle,form,filterStyles,advanced,region,help);
  const metric=parent.querySelector(":scope > dl");
  if(metric)metric.insertAdjacentElement("beforebegin",section);else parent.prepend(section);
