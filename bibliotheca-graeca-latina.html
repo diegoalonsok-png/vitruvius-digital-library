@@ -285,6 +285,25 @@ html[data-bibliotheca-color="sepia"] :is(.top,.bibliotheca-suite,header.hero,.se
 <p style="font-size:13px;line-height:1.65;margin:0 0 8px">Se han cruzado las 271 fichas críticas existentes y 10 fichas de ediciones adicionales con los repertorios de testimonios, el índice textual y las ediciones PDF catalogadas. Se identifican las fuentes manuscritas documentadas, las referencias bibliográficas, el acceso de lectura y los límites de integridad. Esta auditoría de metadatos <strong>no equivale a collatio manuscrita ni certifica que cada edición contenga íntegra la obra antigua</strong>.</p>
 <p style="font-size:13px;line-height:1.65;margin:0"><a href="data/classics-corpus/bibliotheca-academic-fiches-2026-11-16.json">Consultar el registro académico de las 281 fichas</a> · <a href="classics-work-record.html">Abrir fichas individuales y testimonios</a> · <a href="data/classics-corpus/bibliotheca-integrity-audit-2026-11-16.json">Control de lecturas y facsímiles</a></p>
 </section>
+<p id="bibliotheca-index-live-count" role="status" style="font:13px/1.6 system-ui,sans-serif;margin:12px 0" aria-live="polite">El recuento del registro textual se obtiene del índice vigente; no se contabilizan fichas sin texto.</p>
+<script>
+(()=>{'use strict';
+ const target=document.getElementById('bibliotheca-index-live-count');
+ Promise.all([
+  fetch('data/classics-corpus/search-registry.json').then(r=>r.ok?r.json():null).catch(()=>null),
+  fetch('data/classics-corpus/public-counts.json').then(r=>r.ok?r.json():null).catch(()=>null)
+ ]).then(([registry,counters])=>{
+  if(!registry||!Array.isArray(registry.entries))return;
+  const verifiedCount=new Set(registry.entries.map(e=>e.workId)).size;
+  const editions=registry.entries.length;
+  let description=verifiedCount+' obras distintas con rutas de búsqueda textual registradas · '+editions+' entradas por idioma o edición.';
+  if(counters?.schema==='vdl-classics-public-counts-v1'&&counters.registryEntries===editions&&counters.registryDistinctWorks===verifiedCount)
+   description+=' Índice léxico invertido: '+counters.localLexicallyIndexedDistinctWorks+' obras locales comprobadas por registro y manifiesto.';
+  else description+=' La cobertura del índice léxico invertido requiere comprobación aparte.';
+  target.textContent=description;
+ });
+})();
+</script>
 <section id="originales-r2" aria-labelledby="originales-r2-heading" style="margin:20px 0;padding:14px 16px;border:1px solid #6666;border-radius:8px">
 <h2 id="originales-r2-heading" style="font-size:clamp(18px,2vw,24px);margin:0 0 8px">44 originales digitales · Índice de obras y archivos</h2>
 <p style="font-size:13px;line-height:1.6;margin:0 0 8px">39 registros griegos y 5 latinos · 46.850 pasajes incorporados al índice léxico documentado el 16 de noviembre de 2026. Son transcripciones JSON por unidades de lectura, no necesariamente 44 libros impresos completos ni 44 PDF. Algunas entradas agrupan obras, selecciones o fragmentos. La certificación del índice no implica colación manuscrita ni garantiza la disponibilidad HTTP futura.</p>
