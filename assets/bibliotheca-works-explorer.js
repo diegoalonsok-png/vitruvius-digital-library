@@ -104,6 +104,19 @@ function mount(host){
  });
  search.addEventListener("input",render);
 }
-function init(){document.querySelectorAll("[data-vdl-works-explorer]").forEach(mount)}
+function init(){
+ document.querySelectorAll("[data-vdl-works-explorer]").forEach(mount);
+ // This number is computed from BOTH the source registry and the published
+ // inverted lexical index; never infer it from the number of catalogue cards.
+ const display=document.querySelector('[data-cifra="obrasConTextoIndexado"]');
+ if(display){
+  const refresh=()=>catalog().then(items=>{
+   display.textContent=String(items.length);
+   display.title="Obras con original griego o latino comprobado en el registro y en el índice léxico";
+  }).catch(()=>{display.textContent="—";display.title="Recuento no disponible: no se muestran datos antiguos como actuales."});
+  if("requestIdleCallback" in window)window.requestIdleCallback(refresh,{timeout:2800});
+  else setTimeout(refresh,300);
+ }
+}
 if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",init,{once:true});else init();
 })();
