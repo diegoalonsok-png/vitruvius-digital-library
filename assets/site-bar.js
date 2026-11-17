@@ -65,6 +65,9 @@ function ensureSelectionAudio(){
  }
 }
 function ensureTypography(){
+ // The classics academic reader already has its own font/appearance controls.
+ // Do not inject the duplicate floating Aa button into either .html or clean URLs.
+ if(/\\/classics-text-reader(?:\\.html)?\\/?$/.test(location.pathname))return;
  if(document.getElementById('site-typeface-toggle'))return;
  const families={original:'',georgia:'Georgia, "Times New Roman", serif',palatino:'Palatino, "Book Antiqua", serif',times:'"Times New Roman", Times, serif',arial:'Arial, Helvetica, sans-serif',system:'system-ui, -apple-system, "Segoe UI", sans-serif'};
  const key='vitruvius-global-reading-font-v1';
