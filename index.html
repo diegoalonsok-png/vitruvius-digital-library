@@ -212,6 +212,16 @@ html[data-theme="dark"] .stat-audit-detail a{color:#f0ddba}
 @media(max-width:650px){.footer-legal{align-items:flex-start;flex-direction:column;gap:13px}}
 @media(prefers-reduced-motion:reduce){.vitruvia-footer-v,.historic-top-links a.vitruvia-v-link .vitruvia-v-glyph{transition:none!important;transform:none!important}}
 
+/* Acceso directo a Bibliotheca junto al buscador Vitruvia: estilo editorial negro y serif. */
+.research-nav-controls a.bibliotheca-top-link{display:inline-flex;align-items:center;gap:10px;flex:0 1 auto;min-width:0;min-height:50px;padding:7px 13px;border:1px solid #77706a;border-radius:6px;background:#121213;color:#f8f7f4;text-decoration:none;white-space:nowrap;transition:background .2s ease,border-color .2s ease}
+.research-nav-controls .bibliotheca-top-monogram{font:italic 400 39px/.95 Georgia,"Times New Roman",serif;color:#fff;flex:none}
+.research-nav-controls .bibliotheca-top-copy{display:flex;flex-direction:column;gap:3px;text-align:left}
+.research-nav-controls .bibliotheca-top-copy strong{font:italic 400 22px/1 Georgia,"Times New Roman",serif;color:inherit}
+.research-nav-controls .bibliotheca-top-copy small{font:400 11px/1.3 Georgia,"Times New Roman",serif;color:#c9c5c5;letter-spacing:.015em}
+.research-nav-controls a.bibliotheca-top-link:hover{background:#242326;border-color:#c5b4a0}
+.research-nav-controls a.bibliotheca-top-link:focus-visible{outline:2px solid #c5b4a0;outline-offset:3px}
+@media(max-width:650px){.research-nav-controls a.bibliotheca-top-link{white-space:normal;min-height:48px}.research-nav-controls .bibliotheca-top-copy strong{font-size:20px}}
+@media(prefers-reduced-motion:reduce){.research-nav-controls a.bibliotheca-top-link{transition:none}}
 /* Vitruvia Lexicon: acceso directo debajo de Vitruvia, mismo lenguaje visual. */
 .research-nav-controls .vitruvia-top-stack{display:inline-flex;flex-direction:column;gap:6px;min-width:0;max-width:100%}
 .research-nav-controls .vitruvia-top-stack a.vitruvia-top-link{width:100%}
@@ -599,6 +609,7 @@ html[data-theme="dark"].front-color-light .research-nav-controls>.research-print
           <a class="research-lab-button" href="laboratorio-h.html" title="Folio original, transcripción latina legible y traducción sincronizada">Laboratorio H</a>
           <button type="button" id="print-home" class="research-print-button" aria-label="Imprimir o guardar como PDF el texto seleccionado" title="Selecciona un texto antes de generar su PDF"><span aria-hidden="true">⎙</span><span class="sr-only">Imprimir</span></button>
           <span class="vitruvia-top-stack"><a class="vitruvia-top-link" href="vitruvia.html" aria-labelledby="vitruvia-entry-name vitruvia-entry-description"><svg class="vitruvia-wing-v" viewBox="0 0 78 79" aria-hidden="true" focusable="false"><path d="M11 12 C17 28 24 49 35 66 C46 47 59 22 69 2" fill="none" stroke="currentColor" stroke-width="4.3" stroke-linecap="square" stroke-linejoin="round"/><path d="M7 12 L19 12 M63 2 L73 2" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="square"/></svg><span class="vitruvia-top-copy"><strong id="vitruvia-entry-name">Vitruvia</strong><small id="vitruvia-entry-description">Buscador académico en la web</small></span></a><a class="vitruvia-top-link lexicon-top-link" href="vitruvia-lexicon.html" aria-labelledby="lexicon-entry-name lexicon-entry-description"><span class="lexicon-glyph" aria-hidden="true">Λ</span><span class="vitruvia-top-copy"><strong id="lexicon-entry-name">Lexicon</strong><small id="lexicon-entry-description">Griego y latín · etimología y frases</small></span></a></span>
+          <a class="bibliotheca-top-link" href="bibliotheca-graeca-latina.html" aria-label="Abrir Bibliotheca Graeca et Latina, catálogo de autores y obras clásicas"><span class="bibliotheca-top-monogram" aria-hidden="true">B</span><span class="bibliotheca-top-copy"><strong>Bibliotheca</strong><small>Graeca et Latina</small></span></a>
           <span class="header-languages" aria-label="Seleccionar idioma de interfaz" title="Seleccionar idioma / Select language"></span>
         </div>
       </div>
