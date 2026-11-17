@@ -38,7 +38,7 @@ td.l{white-space:nowrap;font:600 13px system-ui}
 <h2 id="bude-unit-title">Aparato crítico comparativo · por locus</h2>
 <p class="small" role="note" style="padding:9px 13px;border-left:3px solid #a47c45;background:rgba(160,130,75,.08)"><strong>Estado de la evidencia:</strong> TEI digital = texto de una edición transcrita; OCR = reconocimiento de página pendiente de comprobación; cotejo impreso = lectura verificada en la edición; <i>ex imagine</i> = lectura contrastada directamente con el folio manuscrito. No deben intercambiarse estas categorías ni reconstruir variantes manuscritas a partir de la semejanza del OCR. <a href="cobertura-aparato-critico.html">Consultar el estado de cada locus</a>.</p>
 <p class="intro">Unidad crítica para los 731 loci: texto latino, traducciones y entradas atribuidas a cada fuente. Una ficha vacía señala colación pendiente, no la inexistencia de variantes. Siglas codicológicas <b>H G E S</b> distintas de las abreviaturas de edición <b>Kr.</b>, <b>Rose</b> y <b>Kur.</b>. Las entradas OCR se identifican como candidatas, no como variantes comprobadas; el símbolo <code>‖</code> delimita entradas documentales, no certifica su lectura.</p><p class="intro"><strong>Notae criticae:</strong> <code>⟨…⟩</code> = <i>suppl.</i> (suplemento editorial); <code>[…]</code> = <i>secl.</i> (texto transmitido pero excluido editorialmente); <i>om.</i> = omisión de un testimonio; <i>ex imagine</i> = lectura observada directamente en fotografía. Estas marcas se aplican exclusivamente a las entradas documentadas y no presuponen cotejo de los demás códices.</p>
-<form id="bude-form" class="bar bude-navigator" role="search"><label for="bude-book">Libro (I–X) <select id="bude-book" aria-label="Libro del tratado"></select></label><label for="bude-chapter">Prefacio / capítulo <select id="bude-chapter" aria-label="Capítulo del libro"></select></label><label for="bude-section">Sección <select id="bude-section" aria-label="Sección del capítulo"></select></label><label for="bude-locus">Locus <input id="bude-locus" name="locus" value="1.1.1" placeholder="I.1.1 · 1.praef.1" required></label><button type="submit" id="bude-go">Mostrar locus</button><button id="bude-prev" type="button">← Anterior</button><button id="bude-next" type="button">Siguiente →</button></form>
+<form id="bude-form" class="bar bude-navigator" role="search"><label for="bude-book">Libro (I–X) <select id="bude-book" aria-label="Libro del tratado"></select></label><label for="bude-chapter">Prefacio / capítulo <select id="bude-chapter" aria-label="Capítulo del libro"></select></label><label for="bude-section">Sección <select id="bude-section" aria-label="Sección del capítulo"></select></label><label for="bude-all-loci">Índice completo · 731 loci <select id="bude-all-loci" aria-label="Seleccionar cualquiera de los 731 loci del tratado"><option value="">Cargando 731 loci…</option></select></label><label for="bude-locus">Locus <input id="bude-locus" name="locus" value="1.1.1" placeholder="I.1.1 · 1.praef.1" required></label><button type="submit" id="bude-go">Mostrar locus</button><button id="bude-prev" type="button">← Anterior</button><button id="bude-next" type="button">Siguiente →</button></form>
 <p id="bude-state" class="small" role="status" aria-live="polite">Cargando testimonios…</p>
 <div class="bude-cobertura" id="bude-cobertura" role="status" aria-live="polite">Cobertura testimonial por locus: cargando…</div><p class="small" id="bude-locus-caption">Elige libro, capítulo y sección. Cada cambio mostrará el expediente documental completo de ese locus.</p>
 <div id="bude-content"></div>
@@ -116,7 +116,7 @@ fetch("data/apparatus/aparato-comparativo.json",{cache:"no-cache"}).then(r=>r.js
 })();
 </script>
 <script defer src="assets/codex-h-concordance.js?v=20261114-bude-h"></script>
-<script defer src="assets/comparative-bude-units.js?v=20261117-navegacion-x"></script>
+<script defer src="assets/comparative-bude-units.js?v=20261117-loci731-v2"></script>
 <script defer src="assets/ui-idioma.js?v=20261112-sitio3"></script>
 <script defer src="assets/edition-references.js?v=20261115-1"></script><script defer src="assets/apparatus-cite-tools.js?v=20261115-1"></script>
 
@@ -126,7 +126,7 @@ fetch("data/apparatus/aparato-comparativo.json",{cache:"no-cache"}).then(r=>r.js
 
 <script defer src="assets/critical-pages-integration.js?v=20261116-traducciones-v3"></script>
 
-<script defer src="assets/comparative-five-editions.js?v=20261116-five-v1"></script>
+<script defer src="assets/comparative-five-editions.js?v=20261117-bibliografia-v2"></script>
 
 <script defer src="assets/dossier-integrado-731.js?v=20261117-aparato-bude-v2"></script>
 <footer data-vdl-legal-notice="2026" role="contentinfo" aria-label="Derechos editoriales" style="box-sizing:border-box;display:block;clear:both;grid-column:1/-1;width:100%;margin:28px 0 0;padding:16px 18px;border-top:1px solid currentColor;text-align:center;font:12px/1.65 system-ui,sans-serif;color:inherit;background:transparent">
