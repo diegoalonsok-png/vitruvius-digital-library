@@ -64,6 +64,8 @@ function createEngine(failing=[]){
   assert.equal(r.stats.loadedSources,6,'All mocked sources loaded');
   assert.equal(r.stats.declaredSources,6);
   assert.equal(r.stats.unavailable.length,0);
+  assert.ok(r.stats.candidateEditions>=4,'Candidate pool should represent multiple editions');
+  assert.ok(r.stats.candidateWorks>=3,'Candidate pool should represent multiple ancient works');
   assert.ok(r.rows.every(x=>x.link&&x.locus&&x.source),'All hits need provenance and locus');
 }
 {
@@ -79,5 +81,14 @@ function createEngine(failing=[]){
   assert.ok(r.rows.some(x=>x.workId==='vitruvius'),'Latin passage must remain searchable');
   assert.equal(calls.filter(x=>x.includes('ai-corpora.json')).length,1,'Manifest requested once');
 }
-console.log('PASS: 3 engine scenarios, 6-source manifest, Greek/Latin hits, provenance and partial-coverage warning.');
+{
+  const {engine}=createEngine();
+  // Conceptual candidate generation should remain diverse even with zero
+  // lexical overlap. BM25 correctly returns no fabricated evidence in this case.
+  const r=await engine.search('concepto inexistente a prueba',{method:'bm25'});
+  assert.equal(r.rows.length,0,'No fabricated lexical hits');
+  assert.ok(r.stats.candidateEditions>=4,'Candidate pool must include multiple editions');
+  assert.ok(r.stats.candidateWorks>=3,'Candidate pool must include multiple works');
+}
+console.log('PASS: 4 engine scenarios, 6-source manifest, Greek/Latin hits, multi-work candidate coverage, provenance, no invented hits and partial-coverage warning.');
 console.log('SCOPE: mocked fetch only; not an HTTP availability or scholarly accuracy test.');
