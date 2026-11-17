@@ -1,0 +1,24 @@
+name: Verificar idiomas de Bibliotheca ES EN FR
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'bibliotheca-graeca-latina.html'
+      - 'assets/bibliotheca-ui-i18n.js'
+      - 'assets/bibliotheca-simple.js'
+      - 'scripts/test-bibliotheca-language.cjs'
+      - '.github/workflows/test-bibliotheca-language.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  language-regression:
+    runs-on: ubuntu-latest
+    timeout-minutes: 4
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Test ES EN FR ES · Euthydemus
+        run: node scripts/test-bibliotheca-language.cjs
