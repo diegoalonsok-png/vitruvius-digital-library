@@ -464,6 +464,8 @@ async function renderRightTranslation(article,group){
  source=$('.parallel-translation-source',article);
  const ed=edition(translationEditionIds[lang]);
  if(!holder||!source||!ed)return;
+ const identity=article.querySelector('.parallel-translation-identity');
+ if(identity)identity.innerHTML=parallelEditionIdentity(ed);
  article.querySelector('.parallel-language').value=lang;
  holder.lang=lang;
  holder.textContent='Cargando traducción '+(languages[lang]||lang)+'…';
@@ -492,8 +494,6 @@ async function renderRightTranslation(article,group){
    toggle.setAttribute('aria-pressed',String(!article.classList.contains('hide-equivalent-marks')));
    toggle.textContent=article.classList.contains('hide-equivalent-marks')?'Mostrar equivalencias':'Ocultar equivalencias';
   }
-  const identity=article.querySelector('.parallel-translation-identity');
-  if(identity)identity.innerHTML=parallelEditionIdentity(ed);
   const page=p.pdf_pages?.translation;
   const ref=p.locus!==group.locus?' · bloque que abarca el locus solicitado':'';
   source.innerHTML='<span class="parallel-source-label">Fuente de la traducción: '+escapeHTML(ed.version)+' · Diego Kurilo · '+escapeHTML(languages[lang])+(page?' · PDF p. '+escapeHTML(page):' · página PDF no registrada')+escapeHTML(ref)+'</span><p class="parallel-biblio">'+bibliographyHTML(ed)+'</p>';
@@ -594,7 +594,7 @@ function renderMore(){
        '<p class="parallel-small">Este texto latino procede de la edición indicada arriba. Consultar variantes en el aparato crítico.</p>'+
      '</section>'+
      '<section class="parallel-translation" aria-label="Traducción del mismo locus">'+
-       '<div class="parallel-heading"><span class="parallel-translation-identity">'+parallelEditionIdentity(edition(translationEditionIds[rowLanguage]))+'</span><label>IDIOMA <select class="parallel-language" aria-label="Elegir idioma de la traducción del pasaje">'+
+       '<div class="parallel-heading"><span class="parallel-edition-language">TRADUCCIÓN</span><span class="parallel-translation-identity">'+parallelEditionIdentity(edition(translationEditionIds[rowLanguage]))+'</span><label>IDIOMA <select class="parallel-language" aria-label="Elegir idioma de la traducción del pasaje">'+
          '<option value="es">Castellano</option><option value="fr">Français</option><option value="en">English</option>'+
        '</select></label></div>'+
        '<p class="parallel-passage parallel-translation-text" aria-live="polite">Cargando traducción…</p>'+
