@@ -1,10 +1,25 @@
 {
- "schema": "vitruvia-lexicon-lemma-corrections-v1",
- "note": "Asignaciones de lema verificadas a mano en un pasaje concreto. Clave: «obra locus»; valor: forma normalizada (minúsculas, sin diacríticos, v→u, j→i) → lema. Prevalecen sobre la tabla automática y se señalan con ✓. Añada solo correcciones comprobadas en el texto.",
- "la": {
-  "vitruvius 1.1.1": {
-   "est": "sum1"
+  "schema": "vitruvia-lexicon-lemma-corrections-v1",
+  "note": "Asignaciones de lema verificadas a mano en un pasaje concreto. Clave: «obra locus»; valor: forma normalizada (minúsculas, sin diacríticos, v→u, j→i) → lema. Prevalecen sobre la tabla automática y se señalan con ✓. Añada solo correcciones comprobadas en el texto.",
+  "la": {
+    "vitruvius 1.1.1": {
+      "est": "sum1"
+    }
+  },
+  "grc": {
+    "plato-euthydemus urn:cts:greekLit:tlg0059.tlg021.perseus-grc2:271.1": {
+      "διελεγου": "διαλέγομαι"
+    }
+  },
+  "references": {
+    "plato-euthydemus urn:cts:greekLit:tlg0059.tlg021.perseus-grc2:271.1": {
+      "διελεγου": {
+        "edition": "John Burnet, Platonis Opera, Tomus III (Oxford, 1903), Euthydemus 271.1",
+        "source": "https://beta.perseus.tufts.edu/urn%3Acts%3AgreekLit%3Atlg0059.tlg021.perseus-grc2%3A271/",
+        "morphology": "Imperfecto de indicativo medio/pasivo, segunda persona singular; valor medio de 'conversar' en este contexto.",
+        "grammaticalReference": "https://en.wiktionary.org/wiki/διαλέγω",
+        "status": "Cotejado en el pasaje digitalizado y con paradigma externo; no colación paleográfica"
+      }
+    }
   }
- },
- "grc": {}
 }
