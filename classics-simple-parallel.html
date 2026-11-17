@@ -265,7 +265,7 @@ async function translateCurrent(token){
   if(token!==renderToken)return;
   if(historic){
    paragraph("right-text",historic.text);
-   el("right-head").textContent=(LANG[historic.language]||historic.language.toUpperCase())+" · EDICIÓN HISTÓRICA · "+record.locus;
+   el("right-head").textContent=(LANG[historic.language]||historic.language.toUpperCase())+" · EDICIÓN HISTÓRICA · "+locusCaption(record.locus);
    status("No respondió la traducción automática al "+(LANG[target]||target)+". Se muestra una edición histórica alojada en "+(LANG[historic.language]||historic.language)+", no una traducción al idioma solicitado.");
   }else{
    paragraph("right-text","Los servicios de traducción automática no respondieron para este pasaje.");
