@@ -1,0 +1,25 @@
+name: Verificar idiomas de la portada ES EN FR
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'index.html'
+      - 'assets/i18n.js'
+      - 'assets/page-autotranslate.js'
+      - 'assets/ui-idioma.js'
+      - 'scripts/test-home-language.cjs'
+      - '.github/workflows/test-home-language.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  front-language:
+    runs-on: ubuntu-latest
+    timeout-minutes: 4
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Comprobar cambio ES EN FR ES y restauración
+        run: node scripts/test-home-language.cjs
