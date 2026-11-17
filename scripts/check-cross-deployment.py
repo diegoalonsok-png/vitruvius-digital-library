@@ -18,6 +18,14 @@ ORIGINS = {
 }
 # These source files are not supposed to be rewritten by the hosting platform.
 ASSETS = (
+    # Aparato comparativo: HTML y componentes compartidos del cotejo, incluidos prefacios.
+    "aparato-comparativo.html",
+    "assets/comparative-bude-units.js",
+    "assets/dossier-integrado-731.js",
+    "assets/comparative-five-editions.js",
+    "assets/apparatus-cite-tools.js",
+    "assets/edition-references.js",
+    "assets/vdl-edition-identity-strip.js",
     "assets/site-bar.js",
     "assets/classics-study-actions.js",
     "assets/vitruvia-lexicon.js",
