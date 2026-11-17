@@ -116,7 +116,7 @@ for(const entry of registry.entries){
   assert.equal(text.workId,entry.sourceWorkId||entry.workId,"Mismatched work ID in "+entry.path);
   assert.equal(text.language,entry.language,"Mismatched text language in "+entry.path);
   assert(Array.isArray(text.passages)&&text.passages.length>0,"No searchable passages in "+entry.path);
-  assert(text.attribution&&text.source,"Missing attribution/source in "+entry.path);
+  assert(text.attribution&&(text.source||(Array.isArray(text.sources)&&text.sources.some(s=>typeof s.url==="string"&&/^https:\/\//.test(s.url)))),"Missing attribution/source in "+entry.path);
  }
 }
 for(const w of works)for(const p of Object.values(w.corpusFiles||{}))
