@@ -18,12 +18,16 @@
   "edicionesLexicasR2": 44,
   "obrasConTextoIndexado": 291,
   "estadoIndexacion": {
-    "metodo": "Auditoría local por obra/idioma y manifiesto; R2 remoto no verificado aquí; el OCR histórico se informa separado.",
+    "metodo": "Cruce de manifiestos R2 y del registro por URL, SHA256, idioma y pasajes; verificación archivada 2026-11-17, sin afirmar nuevo sondeo HTTP.",
     "edicionesLocalesBuscables": 315,
     "edicionesLocalesConPasajes": 309,
     "edicionesHTMLBuscablesPorPalabra": 6,
-    "edicionesR2PendientesVerificacion": 44,
+    "edicionesR2PendientesVerificacion": 0,
     "edicionesOCRHistorico": 1,
-    "edicionesLocalesPendientes": 0
-  }
+    "edicionesLocalesPendientes": 0,
+    "edicionesR2IndexadasConSHA": 44,
+    "ultimaVerificacionR2": "2026-11-17T12:28:30.510Z"
+  },
+  "objetivoObras": 500,
+  "faltanParaObjetivo": 153
 }
