@@ -81,7 +81,8 @@ mode.addEventListener("change",()=>{
  if(pdfPane)pdfPane.hidden=!showPdf;
  if(showPdf){sequence++;output.removeAttribute("aria-busy")}else showState();
 });
-let enabled=["es","en","fr"].includes(new URLSearchParams(location.search).get("to"))&&new URLSearchParams(location.search).get("parallel")!=="1",current=null,sequence=0,translateSize=20,width=50;
+// El parámetro to= indica idioma preferido; nunca autoriza por sí solo enviar texto a un proveedor externo.
+let enabled=false,current=null,sequence=0,translateSize=20,width=50;
 try{const stored=Number(localStorage.getItem(key));if(stored>=25&&stored<=75)width=stored}catch{}
 function setWidth(value){
  width=Math.max(25,Math.min(75,Math.round(value)));
@@ -128,7 +129,7 @@ function showState(){
  if(!ok)return;
  label.textContent="Locus "+(window.ClassicsAcademicReader?.shortLocus(current?.locus)||current?.locus||"—")+(current?.title?" · "+current.title:"");
  if(mode.value==="pdf")return;
- if(!enabled){output.textContent="Elige castellano, inglés o francés y activa la traducción automática.";return}
+ if(!enabled){output.textContent="Idioma seleccionado: "+({es:"castellano",en:"inglés",fr:"francés"}[select.value]||select.value)+". Pulsá «Activar traducción automática» para traducir este locus.";return}
  if(!current?.text){output.textContent="El pasaje todavía no está disponible.";return}
  runTranslation();
 }
