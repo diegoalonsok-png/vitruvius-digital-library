@@ -214,7 +214,7 @@ async function render(query){
   if(c.v514?.length)for(const v of c.v514){item(ext,"Kur. V514 · entrada selectiva",v.aparato||v.lema||"Entrada editorial",v.grado||"Procedencia editorial","registro-ecdotico.html?locus="+encodeURIComponent(locus))}
   for(const [key,title] of [["rose-1899","Rose 1899"],["krohn-1912","Kr. 1912"]]){
    const witness=c[key];if(!witness)continue;
-   for(const entry of (witness.entradas||[]))item(ext,title+" · OCR candidato",entry.texto,"Página impresa "+entry.pagina+"; línea OCR "+entry.linea+"; siglas extraídas: "+(entry.sigla||[]).join(", ")+". Lectura pendiente de verificar con facsímil.",witness.pdf);
+   for(const entry of (witness.entradas||[]))item(ext,title+" · registro de aparato",entry.texto,"Extracto auxiliar de la página "+entry.pagina+"; referencia de línea "+entry.linea+"; siglas extraídas: "+(entry.sigla||[]).join(", ")+". Fuente de este fragmento: extracción OCR auxiliar, pendiente de confrontación puntual con el impreso; no define el estado de indexación de la edición.",witness.pdf);
   }
  }
  if(ext.children.length===1)ext.append(E("p","Sin entrada crítica registrada en Rose/Krohn/Kurilo para este locus; la consulta y colación de testimonios queda abierta."));
