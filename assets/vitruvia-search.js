@@ -430,7 +430,7 @@ function liveBooks(q,concept){return S.works.map(w=>{
   localHosted:!!(w.localReader?.verified||w.localHtml||w.localVersions?.length||pdf||localWitness)};
  }).filter(x=>x.baseRating>2).sort((a,b)=>b.rating-a.rating).slice(0,90)} // la bonificación por texto local o códice no basta sin coincidencia real
 
-function livePages(q,concept){return S.pages.map(p=>({type:"section",title:p.title,excerpt:p.description,meta:"Documento HTML · GitHub Pages",rating:score(p.title+" "+p.description+" "+p.path,q,concept),link:p.path})).filter(x=>x.rating>2)}
+function livePages(q,concept){return S.pages.map(p=>({type:"section",title:p.title,excerpt:p.description,meta:"Documento HTML · Biblioteca digital",rating:score(p.title+" "+p.description+" "+p.path,q,concept),link:p.path})).filter(x=>x.rating>2)}
 /* Variantes del nombre tomadas del catalogo del sitio: las obras con alias son
    datos editados, no conjeturas ortograficas. Se construye una sola vez,
    cuando el catalogo ya esta cargado; antes devuelve null y la expansion
