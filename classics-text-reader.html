@@ -506,10 +506,7 @@ ui.addEventListener("change",()=>{document.documentElement.lang=ui.value;documen
 document.addEventListener("vitruvius:language-changed",event=>{if(["es","en","fr"].includes(event.detail?.language))ui.value=event.detail.language});
 })();
 </script>
-<footer data-vdl-legal-notice="2026" role="contentinfo" aria-label="Derechos editoriales" style="box-sizing:border-box;display:block;clear:both;grid-column:1/-1;width:100%;margin:28px 0 0;padding:16px 18px;border-top:1px solid currentColor;text-align:center;font:12px/1.65 system-ui,sans-serif;color:inherit;background:transparent">
-<strong>© 2026 Editorial Sophia Lux · Arq. Diego Kurilo. Derechos reservados.</strong>
-<span style="opacity:.8">Los derechos sobre los materiales originales, el diseño y los aportes editoriales pertenecen a sus respectivos titulares. Los textos antiguos, facsímiles, imágenes y recursos de terceros conservan su situación jurídica y licencias propias.</span>
-</footer>
+
 <style id="reader-lexicon-toptools-style">
 /* Lexicon navigation controls, at the top-right of the reader. */
 body.academic-reader>header{display:flex!important;align-items:center;gap:12px;flex-wrap:wrap}
@@ -559,5 +556,10 @@ theme?.addEventListener("click",()=>{
  bg.dispatchEvent(new Event("input",{bubbles:true}));fg.dispatchEvent(new Event("input",{bubbles:true}));
 });
 })();
-</script></body>
+</script>
+<footer data-vdl-legal-notice="2026" role="contentinfo" aria-label="Derechos editoriales" style="box-sizing:border-box;display:block;clear:both;grid-column:1/-1;width:100%;margin:28px 0 0;padding:16px 18px;border-top:1px solid currentColor;text-align:center;font:12px/1.65 system-ui,sans-serif;color:inherit;background:transparent">
+<strong>© 2026 Editorial Sophia Lux · Arq. Diego Kurilo. Derechos reservados.</strong>
+<span style="opacity:.8">Los derechos sobre los materiales originales, el diseño y los aportes editoriales pertenecen a sus respectivos titulares. Los textos antiguos, facsímiles, imágenes y recursos de terceros conservan su situación jurídica y licencias propias.</span>
+</footer>
+</body>
 </html>
