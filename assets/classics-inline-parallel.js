@@ -116,9 +116,14 @@ separator.addEventListener("keydown",event=>{
 // Solo presentamos loci realmente identificados en ambas ediciones; nunca alineamos
 // por posición de párrafo ni fabricamos texto para un locus diferente.
 const indexedVersions=new Map(),indexedFiles=new Map();
-const safeEditionPath=path=>typeof path==="string"&&(
- /^data\\/(?:classics-corpus|structured|lexicon\\/fontes)\\/[a-z0-9/_-]+\\.json$/.test(path)||
- /^https:\\/\\/libros\\.vitruvius-digital-library\\.org\\/corpus\\/[a-z0-9_-]+\\.json$/.test(path));
+const safeEditionPath=path=>{
+ if(typeof path!=="string")return false;
+ if(path.startsWith("data/classics-corpus/")||path.startsWith("data/structured/")||path.startsWith("data/lexicon/fontes/"))
+  return path.endsWith(".json")&&!path.includes("..")&&!path.includes("?")&&!path.includes("#");
+ if(path.startsWith("https://libros.vitruvius-digital-library.org/corpus/"))
+  return path.endsWith(".json")&&!path.includes("..")&&!path.includes("?")&&!path.includes("#");
+ return false;
+};
 function registered(e){return e&&e.workId===work&&["es","en","fr"].includes(e.language)&&
  ["json-passages","structured-bilingual"].includes(e.format)&&safeEditionPath(e.path);}
 function versionLink(e,locus){
