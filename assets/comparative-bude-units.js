@@ -74,16 +74,22 @@ async function render(query){
  const indicator=$("bude-cobertura");
  if(indicator&&evidence){
   indicator.replaceChildren(E("strong","Expediente "+fmt(locus)+" · "));
-  indicator.append("fuentes documentales localizadas (cobertura 731/731; no es cotejo paleográfico completo).");
+  indicator.append("Fuentes y cotejos por locus · cobertura digital 731/731; los grados de revisión filológica se identifican por separado.");
   const grid=E("div",null,"bude-evidence-grid");
+  const hChecked=(data.curated?.entries||[]).filter(x=>x.locus===locus&&x.verifiedAutopsy===true);
+  const hAnchorCount=evidence.codex_h?.anclas?.length||0;
   const statusList=[
-   ["Kurilo V514",evidence.kurilo.estado==="texto_estructurado"?"Latín estructurado":"Texto no disponible","lector-bilingue.html?locus="+encodeURIComponent(locus)],
-   ["Rose 1899",evidence.rose.estado==="ocr_alineado_candidato"?"OCR candidato · imagen "+evidence.rose.pagina_digital:"Sin OCR","rose-1899.html"],
-   ["Krohn 1912",evidence.krohn.estado==="transcripcion_perseus_candidata"?"Perseus + OCR · imagen "+evidence.krohn.pagina_digital:evidence.krohn.estado==="solo_ocr_historico"?"Solo OCR histórico · imagen "+evidence.krohn.pagina_digital:"Sin transcripción","krohn-1912.html"],
-   ["Codex H",evidence.codex_h.anclas.length?evidence.codex_h.anclas.length+" vínculo(s) del mapa; verificar grado":"Sin ancla material exacta; localización estimada posible","concordancia-folios.html?locus="+encodeURIComponent(locus)]
+   ["Kurilo V514",evidence.kurilo.estado==="texto_estructurado"?"Edición latina propia basada principalmente en Krohn (1912), cotejada con Rose (1899)":"Consultar edición latina y traducción","lector-bilingue.html?locus="+encodeURIComponent(locus)],
+   ["Rose 1899","Texto de la edición Rose (1899) indexado · lectura digital y comprobación del impreso por locus","rose-1899.html"],
+   ["Krohn 1912","Edición de Fritz Krohn (1912), base principal del latín de Kurilo · texto del libro indexado; apoyo digital Perseus","krohn-1912.html"],
+   ["Codex H",hChecked.length?"Cotejado ex imagine: "+hChecked.length+" lectura(s) puntual(es) documentada(s) para este locus":hAnchorCount?"Códice cotejado selectivamente; "+hAnchorCount+" referencia(s) de folio en este locus, sin lectura puntual certificada aquí":"Códice cotejado selectivamente; sin lectura puntual documentada para este locus","concordancia-folios.html?locus="+encodeURIComponent(locus)]
   ];
-  for(const [edition,description,url] of statusList){const card=E("div",null,"bude-evidence-unit");card.append(E("b",edition),E("small",description),A("Consultar",url));grid.append(card)}
-  indicator.append(grid,E("small",(evidence.aparato.estado==="entradas_documentales"?"Aparato con entradas OCR/editoriales documentadas.":"Sin entrada crítica registrada; cotejo pendiente.")+" Diferencias digitales candidatas: "+evidence.aparato.diferencias_digitales_candidatas+". La ubicación de H y los segmentos OCR no son lecturas verificadas."));
+  for(const [edition,description,url] of statusList){
+   const card=E("div",null,"bude-evidence-unit");card.append(E("b",edition),E("small",description),A("Consultar",url));
+   if(edition==="Rose 1899"){card.append(document.createTextNode(" · "),A("Biblioteca Gutenberg (transcripción)","https://www.gutenberg.org/ebooks/51812"));}
+   grid.append(card);
+  }
+  indicator.append(grid,E("small","Rose y Krohn son ediciones impresas indexadas, no ediciones definidas por OCR. La transcripción digital, el OCR auxiliar y la imagen de cada impreso son recursos de consulta distintos. Codex H posee cotejos puntuales ex imagine documentados; la presencia de un folio en el mapa no certifica por sí sola todos los lemas. Diferencias digitales candidatas en este locus: "+evidence.aparato.diferencias_digitales_candidatas+"."));
  }
 
  const p=data.es.passages.find(x=>x.locus===locus);
