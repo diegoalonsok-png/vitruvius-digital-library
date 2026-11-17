@@ -54,7 +54,11 @@ for(const id of [...workEntries.keys()].sort((a,b)=>a.localeCompare(b))){
     inLanguage:original.language,genre:w.genre,
     isAccessibleForFree:true},
   isPartOf:{'@type':'CollectionPage',name:'Bibliotheca Graeca et Latina',
-    url:base+'/bibliotheca-graeca-latina'}
+    url:base+'/bibliotheca-graeca-latina.html'},
+  breadcrumb:{'@type':'BreadcrumbList',itemListElement:[
+    {'@type':'ListItem',position:1,name:'Bibliotheca',item:base+'/bibliotheca-graeca-latina.html'},
+    {'@type':'ListItem',position:2,name:heading,item:url}
+  ]}
  };
  const doc=`<!doctype html>
 <html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
@@ -67,7 +71,7 @@ for(const id of [...workEntries.keys()].sort((a,b)=>a.localeCompare(b))){
 <script type="application/ld+json">${JSON.stringify(structured).replace(/</g,'\\u003c')}</script>
 <link rel="stylesheet" href="../assets/style.css"><link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
 <style>main{max-width:880px;margin:auto;padding:30px 20px 90px;line-height:1.75}h1{font:400 clamp(28px,4vw,42px)/1.2 Georgia,serif}dt{font-weight:700;margin-top:12px}dd{margin-left:0}a{overflow-wrap:anywhere}nav{display:flex;gap:18px;flex-wrap:wrap}.note{padding:12px;border-left:3px solid #888}</style></head><body>
-<main><nav aria-label="Navegación"><a href="../index-auctorum-operum.html">Índice de autores</a><a href="../bibliotheca-graeca-latina.html">Bibliotheca</a><a href="../vitruvia-lexicon.html">Lexicon</a></nav>
+<main><nav aria-label="Navegación"><a href="../index-auctorum-operum.html">Índice de autores</a><a href="../bibliotheca-graeca-latina.html">Bibliotheca</a><a href="../obras-clasicas-indexadas.html">Obras con texto indexado</a><a href="../vitruvia-lexicon.html">Lexicon</a></nav>
 <p>FICHA DOCUMENTAL · LITERATURA CLÁSICA</p><h1>${esc(heading)}</h1>
 <p>${esc(abstract)}</p>${extraHTML}
 <dl><dt>Autor identificado en el catálogo</dt><dd>${esc(w.author)}</dd>
