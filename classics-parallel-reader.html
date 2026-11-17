@@ -254,7 +254,7 @@ function count(){return versions[left.value]?.passages?.length||0;}
    Exact equality is an editorial identifier match, not proof of semantic alignment.
    For a verse range or a paragraph within a book, use only the same higher-level
    book/chapter, then disclose that this is approximate. */
-function locusKey(value){return String(value??"").trim().toLowerCase().replace(/\\s+/g,"");}
+function locusKey(value){return String(value??"").trim().toLowerCase().replace(/\s+/g,"");}
 /* Normalize CTS edition prefixes only within the same selected work.
    An exact segment key is evidence of a shared location, not of equal wording. */
 function segmentKey(value){const key=locusKey(value);return key.includes(":")?key.slice(key.lastIndexOf(":")+1):key;}
@@ -614,8 +614,8 @@ Promise.all([
  }
  const locus=params.get("locus");
  if(locus){
-  const found=versions[left.value]?.passages?.findIndex(p=>String(p.locus)===locus);
-  const secondary=versions[right.value]?.passages?.findIndex(p=>String(p.locus)===locus);
+  const found=findLocusIndex(versions[left.value]?.passages,locus);
+  const secondary=findLocusIndex(versions[right.value]?.passages,locus);
   if(found>=0)position=found;else if(secondary>=0)position=secondary;
  }
  position=Math.min(position,Math.max(0,count()-1));
