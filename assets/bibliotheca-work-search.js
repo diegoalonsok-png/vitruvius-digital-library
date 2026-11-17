@@ -302,8 +302,8 @@ function addLink(parent,text,href){
 }
 
 const notableEditions=[
- {id:"rose-1899",type:"Edición crítica histórica",author:"Marcus Vitruvius Pollio · Valentinus Rose (editor)",title:"Vitruvii De architectura libri decem",date:"1899",url:"rose-1899.html",source:"https://archive.org/details/vitruviidearchit00vitr_0",forms:["Rose","Valentin Rose","Vitruvio Rose 1899"]},
- {id:"krohn-1912",type:"Edición crítica histórica",author:"Marcus Vitruvius Pollio · Fritz Krohn (editor)",title:"Vitruvii De architectura libri decem",date:"1912",url:"krohn-1912.html",source:"documents/krohn-1912.pdf",forms:["Krohn","Fritz Krohn","Vitruvio Krohn 1912"]},
+ {id:"rose-1899",type:"Edición crítica histórica",author:"Marcus Vitruvius Pollio · Valentinus Rose (editor)",title:"Vitruvii De architectura libri decem",date:"1899",url:"rose-1899.html",source:"https://archive.org/details/vitruviidearchit00vitr_0",forms:["Rose","Valentin Rose","Vitruvio Rose 1899","De architectura Rose","edición Rose"]},
+ {id:"krohn-1912",type:"Edición crítica histórica",author:"Marcus Vitruvius Pollio · Fritz Krohn (editor)",title:"Vitruvii De architectura libri decem",date:"1912",url:"krohn-1912.html",source:"documents/krohn-1912.pdf",forms:["Krohn","Fritz Krohn","Vitruvio Krohn 1912","De architectura Krohn","edición Krohn"]},
  {id:"kurilo-v514",type:"Edición bilingüe contemporánea · latín y castellano",author:"Diego Kurilo",title:"Vitruvio. De architectura. Nueva recensio académica bilingüe: El arquitecto de la teoría",date:"2026",url:"lector-bilingue.html?edition=recensio-es&locus=1.1.1",doi:"10.5281/zenodo.23884757",isbn:"978-631-01-6651-3",forms:["V514","Kurilo español","Vitruvio castellano"]},
  {id:"kurilo-v554",type:"Edición bilingüe contemporánea · latín y francés",author:"Diego Kurilo",title:"Vitruve. De architectura. Nouvelle recensio académique bilingue: L’architecte de la théorie",date:"2026",url:"lector-bilingue.html?edition=recensio-fr&locus=1.1.1",doi:"10.5281/zenodo.23885110",isbn:"978-631-01-6651-3",forms:["V554","Kurilo francés","Vitruvio francés"]},
  {id:"kurilo-v297",type:"Edición bilingüe contemporánea · latín e inglés",author:"Diego Kurilo",title:"The Architect of Theory: Vitruvius and the Intellectual World of Roman Antiquity",date:"2026",url:"lector-bilingue.html?edition=theory-en&locus=1.1.1",doi:"10.5281/zenodo.23885404",isbn:"978-631-01-6651-3",forms:["V297","Kurilo inglés","Vitruvius English"]}
@@ -313,7 +313,7 @@ function isKuriloEditionQuery(q){
  const text=foldAuthority(q);
  return /\bkurilo\b|\bdiego kurilo\b|\bv514\b|\bv554\b|\bv297\b|architect of theory|arquitecto de la teoria|architecte de la theorie|nueva recensio academica|nouvelle recensio academique/i.test(text);
 }
-function isVitruvianEditionQuery(q){return isVitruviusQuery(q)||isKuriloEditionQuery(q)}
+function isVitruvianEditionQuery(q){return isVitruviusQuery(q)||isKuriloEditionQuery(q)||/\b(?:krohn|fritz krohn|valentin rose|rose 1899)\b/i.test(foldAuthority(q))}
 function renderNotable(q,append=false){
  const {list,count,more}=model;model.region.hidden=false;
  if(!append){list.replaceChildren();more.hidden=true}
@@ -343,8 +343,10 @@ function renderNotable(q,append=false){
   li.append(make("p",(e.id.startsWith("kurilo-")?e.id.split("-")[1].toUpperCase()+" · ":"")+e.type+(e.date?" · "+e.date:""),"bws-meta"));
   if(e.isbn||e.doi){const p=make("p",(e.isbn?"ISBN editorial declarado (atribución individual sin verificar): "+e.isbn:"")+(e.doi?" · DOI: "+e.doi:""),"bws-meta");li.append(p)}
   const links=make("nav",null,"bws-actions");addLink(links,e.id.startsWith("kurilo-")?"Leer edición":e.id==="rose-1899"||e.id==="krohn-1912"?"Consultar edición":"Consultar visor o ficha",e.url);
-  if(e.source)addLink(links,"Fuente documental",e.source);
+  if(e.source)addLink(links,e.id==="krohn-1912"?"Leer PDF histórico de Krohn":e.id==="rose-1899"?"Leer facsímil de Rose":"Fuente documental",e.source);
   if(e.doi)addLink(links,"DOI de la edición","https://doi.org/"+e.doi);
+   if(e.id==="krohn-1912"||e.id==="rose-1899")addLink(links,"Cotejar edición por loci","colacion.html?locus=1.1.1");
+   if(e.id.startsWith("kurilo-"))addLink(links,"Ficha bibliográfica","classics-work-record.html?work="+(e.id==="kurilo-v514"?"vitruvio-v514-pdf":e.id==="kurilo-v554"?"vitruvio-v554-pdf":"theory-v297-pdf"));
   li.append(links);list.append(li);
  }
 }
@@ -386,7 +388,8 @@ function render(){
    const parallel=compareLink(w);if(parallel)addLink(actions,"Cotejar versiones registradas",parallel);
    if(w.facsimile)addLink(actions,"Ver facsímil",facLink(w.facsimile));
     addRecordedEditions(actions,w);
-   if(!w.newWork&&!w.registryOnly)addLink(actions,"Ficha académica",workLink(w.id));
+   if(w.id==="vitruvius")addLink(actions,"Ediciones, traducciones y códices","classics-work-record.html?work=vitruvius");
+   else if(!w.newWork&&!w.registryOnly)addLink(actions,"Ficha académica",workLink(w.id));
    li.append(actions);renderVitruvianCodices(li,w);list.append(li);
   }
   if(all.length>limit){more.hidden=false;more.textContent="Mostrar más obras ("+(all.length-limit)+" restantes)"}
