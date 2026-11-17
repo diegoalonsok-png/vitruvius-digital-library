@@ -651,21 +651,9 @@ function mount(parent,data){
   }
   alphabet.append(group);
  }
- const historicalHint=make("p",null,"bws-help");
- historicalHint.append("Sistemas de datación de las fuentes: en Roma, magistraturas consulares y, en algunas cronografías, ab urbe condita (AUC); en Grecia, arcontes, éforos, Olimpiadas y eras locales. Son referencias históricas distintas de la cronología moderna y no se convierten automáticamente sin testimonio documental. ");
- addLink(historicalHint,"Criterios cronológicos","metodologia-catalogo-clasico.html#cronologia-antigua");
- const semanticHint=make("p",null,"bws-help");
- semanticHint.textContent="Materias: vocabulario controlado basado en título, género y fichas registradas. Se aceptan términos relacionados y erratas moderadas; no equivale a indexación semántica exhaustiva ni a lematización morfológica de los textos. Para buscar lemas y pasajes, utilizar Lexicon.";
- const originalHint=make("p",null,"bws-help");
- originalHint.textContent="Puede escribir el título directamente en griego politónico o en latín; también buscar por transliteraciones o equivalencias documentadas. La periodización histórica solo se asigna cuando la fecha y la tradición lingüística acreditadas lo permiten.";
- const dateClarifier=make("p",null,"bws-help");
- dateClarifier.textContent="Cronología: el siglo corresponde a la composición antigua, nunca al año de la edición crítica (Rose 1899; Krohn 1912), del facsímil ni de la copia manuscrita. Fechas discutidas quedan sin asignación automática.";
- const standards=make("p",null,"bws-help");
- standards.append("Criterios editoriales: datación de composición documentada; género descriptivo y revisable; título original y variantes identificados; referencias Chicago 18 (notas y bibliografía). ");
- addLink(standards,"Metodología académica del índice","metodologia-catalogo-clasico.html");
  const advanced=make("details");advanced.className="bws-advanced";
  const summary=make("summary","Filtros avanzados · AUTOR, género, siglo, período, idioma y alfabeto");
- advanced.append(summary,filters,alphabet,semanticHint,historicalHint,originalHint,dateClarifier,standards);
+ advanced.append(summary,filters,alphabet);
  const filterStyles=make("style",`.bws-alphabet-group{margin:10px 0 12px}.bws-alphabet-heading{font:600 12px/1.5 system-ui;margin:8px 0 5px;opacity:.8}.bws-alphabet-group button{margin:2px;padding:7px 9px;min-width:36px;font:12px/1.5 "Gentium Book Plus","Cardo",system-ui,sans-serif}.bws-alphabet-group button[aria-pressed=true]{outline:2px solid #ba9461;outline-offset:1px}.bws-library-filters .bws-author-primary{display:flex;flex-direction:column;gap:7px;min-width:min(100%,280px);grid-column:1/-1;padding:12px 14px;border:1px solid rgba(153,124,79,.55);border-radius:9px;background:rgba(160,132,85,.08)}.bws-author-primary .bws-author-heading{display:block;font:700 clamp(20px,2.5vw,28px)/1.15 system-ui,sans-serif;letter-spacing:.07em}.bws-author-primary .bws-author-caption{font:12px/1.4 system-ui,sans-serif;opacity:.82}.bws-library-filters .bws-author-primary input{width:100%;min-height:44px;font-size:16px;box-sizing:border-box}`);
  section.append(title,subtitle,form,filterStyles,advanced,region,help);
  const metric=parent.querySelector(":scope > dl");
