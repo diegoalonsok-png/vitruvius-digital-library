@@ -21,8 +21,12 @@ const registry=json("data/classics-corpus/search-registry.json");
 const report=json("data/classics-corpus/coverage-audit.json");
 assert(Array.isArray(catalogue.works)&&catalogue.works.length>0,"Classical catalogue empty");
 const workIds=catalogue.works.map(w=>w.id);
-assert.equal(new Set(workIds).size,workIds.length,"Duplicate work identifiers");
-const listed=new Set(workIds),indexed=new Set();
+assert.equal(new Set(workIds).size,workIds.length,"Duplicate main catalogue work identifiers");
+const expansion=json("data/bibliotheca-expansion-publicada-2026-11-16.json");
+assert(Array.isArray(expansion.works),"Published expansion catalogue is unavailable");
+const expansionIds=expansion.works.map(w=>w.id);
+assert.equal(new Set(expansionIds).size,expansionIds.length,"Duplicate expansion work identifiers");
+const listed=new Set([...workIds,...expansionIds]),indexed=new Set();
 const languages=new Set(["la","grc","es","en","fr","de","it","pt"]);
 // Three originals reuse immutable, already-hosted Lexicon sources. This strict
 // allowlist rejects arbitrary alternate paths, languages and source aliases.
