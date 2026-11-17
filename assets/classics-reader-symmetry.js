@@ -68,8 +68,8 @@ function init(){
 
  function updateSharedPalette(){
   const styles=article?.style;
-  const bg=styles?.getPropertyValue("--reader-bg")?.trim()||"#fffdf7";
-  const fg=styles?.getPropertyValue("--reader-fg")?.trim()||"#202b35";
+  const bg=styles?.getPropertyValue("--reader-bg")?.trim()||"#18191b";
+  const fg=styles?.getPropertyValue("--reader-fg")?.trim()||"#e5e5e5";
   if(!/^#[0-9a-f]{6}$/i.test(bg)||!/^#[0-9a-f]{6}$/i.test(fg))return;
   root.style.setProperty("--cl-shared-bg",bg);
   root.style.setProperty("--cl-shared-fg",fg);
