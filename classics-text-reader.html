@@ -210,62 +210,7 @@ html[data-theme="light"] body.academic-reader .academic-records>summary{color:#3
 html[data-theme="light"] body.academic-reader .cl-translation-output a[href]{color:#294e67!important}
 @media print{html body.academic-reader .site-typeface-tool{display:none!important}}
 </style>
-<style id="classics-whole-page-palette">
-/* Lexicon palette controls the whole reader shell, not only its content panes. */
-html[data-reader-page-theme="custom"],html[data-reader-page-theme="custom"] body.academic-reader{
- background:var(--reader-page-bg,#17191c)!important;color:var(--reader-page-fg,#e5e5e5)!important;
-}
-html[data-reader-page-theme="custom"] body.academic-reader :is(
- header,main,aside,.reader-grid,.reader,.tools,.reader-appearance,.reader-toolbar,
- .notice,.academic-records,.academic-kicker,.search-results-section,.result-card,
- #lexicon,#toc,.cl-dual-reader,.cl-source-column,.cl-translation-column,
- .cl-translation-output,.cl-translation-output>p,.cl-pane-title,.cl-translation-tools,
- .cl-pane-options,.cl-reading-height-control,.cl-unified-reading-actions,
- .cl-annotation-tools-fold,.cl-annotation-tools,.cl-document-note,
- .cl-pane-heading,.cl-translation-meta,.cl-translation-label
-){
- background:var(--reader-page-bg,#17191c)!important;
- color:var(--reader-page-fg,#e5e5e5)!important;
- border-color:color-mix(in srgb,var(--reader-page-fg,#e5e5e5) 27%,var(--reader-page-bg,#17191c))!important;
-}
-html[data-reader-page-theme="custom"] body.academic-reader :is(
- .tools button,.tools select,.tools input,.reader-toolbar button,
- .reader-appearance button,.reader-appearance select,
- .reader-lexicon-toptools :is(button,select,a,summary),
- #toc button,.cl-unified-reading-actions :is(button,select,a),
- .cl-translation-tools :is(button,select),.cl-pane-options :is(button,select),
- .cl-reading-height-control button,.cl-annotation-tools-fold summary
-){
- background:color-mix(in srgb,var(--reader-page-fg,#e5e5e5) 9%,var(--reader-page-bg,#17191c))!important;
- color:var(--reader-page-fg,#e5e5e5)!important;
- border-color:color-mix(in srgb,var(--reader-page-fg,#e5e5e5) 30%,var(--reader-page-bg,#17191c))!important;
-}
-html[data-reader-page-theme="custom"] body.academic-reader :is(
- .brand,.academic-kicker,#work-title,#source-title,.academic-records>summary,
- .reader-toolbar,.sub,.notice,.loci-width-tools,#toc-title
-){color:var(--reader-page-fg,#e5e5e5)!important}
-html[data-reader-page-theme="custom"] body.academic-reader a:not(.reader-lexicon-swatch){
- color:var(--reader-page-fg,#e5e5e5)!important;
-}
-html[data-reader-page-theme="custom"] body.academic-reader .reader-lexicon-palette-panel{
- background:color-mix(in srgb,var(--reader-page-bg,#17191c) 94%,var(--reader-page-fg,#e5e5e5))!important;
- color:var(--reader-page-fg,#e5e5e5)!important;
-}
-html[data-reader-page-theme="custom"] body.academic-reader :is(#passages,.cl-source-column,.cl-translation-column,.cl-translation-output){
- background:var(--reader-page-bg,#17191c)!important;
- color:var(--reader-page-fg,#e5e5e5)!important;
-}
-/* Preserve explicit word-search highlights and image/facsimile colors. */
-html[data-reader-page-theme="custom"] body.academic-reader mark{
- background:#ffe34f!important;color:#1a1a1a!important;
-}
-@media print{
- html[data-reader-page-theme="custom"] body.academic-reader,
- html[data-reader-page-theme="custom"] body.academic-reader :is(main,aside,.reader,.reader-grid,#passages,.cl-source-column,.cl-translation-column){
- background:#fff!important;color:#111!important;
- }
-}
-</style></head>
+</head>
 <body class="academic-reader">
 <header><span class="brand">Vitruvius Digital Library · Bibliotheca Graeca et Latina</span><nav><a href="bibliotheca-graeca-latina.html">Bibliotheca</a><a href="vitruvia.html">Buscar en Vitruvia</a><a id="index-locorum-link" href="index-locorum.html">Index locorum</a><a href="vitruvia-lexicon.html">Lexicon</a><a id="codex-link" href="bibliotheca-graeca-latina.html">Catálogo y testimonios</a><a id="parallel-link" href="classics-parallel-reader.html">Lectura lado a lado</a><a href="metodologia-filologica.html">Método filológico</a><a href="auditoria-academica.html">Auditoría</a></nav>
 <div class="reader-lexicon-toptools" aria-label="Herramientas de Lexicon">
@@ -617,7 +562,7 @@ new MutationObserver(syncLanguages).observe(main,{childList:true,subtree:true});
 syncLanguages();
 const theme=document.getElementById("reader-top-theme"),bg=document.getElementById("reader-bg"),fg=document.getElementById("reader-fg");
 theme?.addEventListener("click",()=>{
- const dark=(bg.value.toLowerCase()==="#0d0d0e"||bg.value.toLowerCase()==="#18191b"||bg.value.toLowerCase()==="#17191c");
+ const v=bg.value;const dark=([1,3,5].map(i=>parseInt(v.slice(i,i+2),16)).reduce((sum,n,i)=>sum+n*[.299,.587,.114][i],0))<=150;
  bg.value=dark?"#f7f5ef":"#17191c";fg.value=dark?"#252520":"#e5e5e5";
  bg.dispatchEvent(new Event("input",{bubbles:true}));fg.dispatchEvent(new Event("input",{bubbles:true}));
 });
@@ -627,5 +572,61 @@ theme?.addEventListener("click",()=>{
 <strong>© 2026 Editorial Sophia Lux · Arq. Diego Kurilo. Derechos reservados.</strong>
 <span style="opacity:.8">Los derechos sobre los materiales originales, el diseño y los aportes editoriales pertenecen a sus respectivos titulares. Los textos antiguos, facsímiles, imágenes y recursos de terceros conservan su situación jurídica y licencias propias.</span>
 </footer>
+<style id="classics-whole-page-palette">
+/* Lexicon palette controls the whole reader shell, not only its content panes. */
+html[data-reader-page-theme="custom"],html[data-reader-page-theme="custom"] body.academic-reader{
+ background:var(--reader-page-bg,#17191c)!important;color:var(--reader-page-fg,#e5e5e5)!important;
+}
+html[data-reader-page-theme="custom"] body.academic-reader :is(
+ header,main,aside,.reader-grid,.reader,.tools,.reader-appearance,.reader-toolbar,
+ .notice,.academic-records,.academic-kicker,.search-results-section,.result-card,
+ #lexicon,#toc,.cl-dual-reader,.cl-source-column,.cl-translation-column,
+ .cl-translation-output,.cl-translation-output>p,.cl-pane-title,.cl-translation-tools,
+ .cl-pane-options,.cl-reading-height-control,.cl-unified-reading-actions,
+ .cl-annotation-tools-fold,.cl-annotation-tools,.cl-document-note,
+ .cl-pane-heading,.cl-translation-meta,.cl-translation-label
+){
+ background:var(--reader-page-bg,#17191c)!important;
+ color:var(--reader-page-fg,#e5e5e5)!important;
+ border-color:color-mix(in srgb,var(--reader-page-fg,#e5e5e5) 27%,var(--reader-page-bg,#17191c))!important;
+}
+html[data-reader-page-theme="custom"] body.academic-reader :is(
+ .tools button,.tools select,.tools input,.reader-toolbar button,
+ .reader-appearance button,.reader-appearance select,
+ .reader-lexicon-toptools :is(button,select,a,summary),
+ #toc button,.cl-unified-reading-actions :is(button,select,a),
+ .cl-translation-tools :is(button,select),.cl-pane-options :is(button,select),
+ .cl-reading-height-control button,.cl-annotation-tools-fold summary
+){
+ background:color-mix(in srgb,var(--reader-page-fg,#e5e5e5) 9%,var(--reader-page-bg,#17191c))!important;
+ color:var(--reader-page-fg,#e5e5e5)!important;
+ border-color:color-mix(in srgb,var(--reader-page-fg,#e5e5e5) 30%,var(--reader-page-bg,#17191c))!important;
+}
+html[data-reader-page-theme="custom"] body.academic-reader :is(
+ .brand,.academic-kicker,#work-title,#source-title,.academic-records>summary,
+ .reader-toolbar,.sub,.notice,.loci-width-tools,#toc-title
+){color:var(--reader-page-fg,#e5e5e5)!important}
+html[data-reader-page-theme="custom"] body.academic-reader a:not(.reader-lexicon-swatch){
+ color:var(--reader-page-fg,#e5e5e5)!important;
+}
+html[data-reader-page-theme="custom"] body.academic-reader .reader-lexicon-palette-panel{
+ background:color-mix(in srgb,var(--reader-page-bg,#17191c) 94%,var(--reader-page-fg,#e5e5e5))!important;
+ color:var(--reader-page-fg,#e5e5e5)!important;
+}
+html[data-reader-page-theme="custom"] body.academic-reader :is(#passages,.cl-source-column,.cl-translation-column,.cl-translation-output){
+ background:var(--reader-page-bg,#17191c)!important;
+ color:var(--reader-page-fg,#e5e5e5)!important;
+}
+/* Preserve explicit word-search highlights and image/facsimile colors. */
+html[data-reader-page-theme="custom"] body.academic-reader mark{
+ background:#ffe34f!important;color:#1a1a1a!important;
+}
+@media print{
+ html[data-reader-page-theme="custom"] body.academic-reader,
+ html[data-reader-page-theme="custom"] body.academic-reader :is(main,aside,.reader,.reader-grid,#passages,.cl-source-column,.cl-translation-column){
+ background:#fff!important;color:#111!important;
+ }
+}
+</style>
 </body>
 </html>
