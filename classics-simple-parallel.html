@@ -913,8 +913,8 @@ function renderBookSearch(){
   button.addEventListener("click",()=>{
    if(row.side==="translation"&&findLocusIndex(source,row.item.locus)<0){status("El locus de esta traducción no coincide inequívocamente con el original.");return}
    const i=findLocusIndex(source,row.item.locus);if(i<0)return;
-   pos=i;searchTerm=term;draw();document.querySelector(".cards").scrollIntoView({behavior:"smooth",block:"start"});
-  }).catch(error=>console.warn("Alternativa histórica no disponible:",error));
+   pos=i;searchTerm=term;draw();document.querySelector(".cards")?.scrollIntoView({behavior:"smooth",block:"start"});
+  });
   fragment.append(button);
  }
  searchResults.append(fragment);
