@@ -23,8 +23,8 @@ assert.equal(metrics.total_records_across_repertories,metrics.primary_catalog.re
 // The home now uses a compact Bibliotheca strip. The historical three-repertory
 // total remains in the dated audit, not as the public work count (different units).
 const corpusCounts=JSON.parse(fs.readFileSync(new URL('../data/cifras-corpus.json',import.meta.url),'utf8'));
-assert.ok(html.includes('data-cifra="obrasTotalesDeclaradas"')&&html.includes('data-cifra="obrasConTextoIndexado"'),'La portada debe mostrar obras catalogadas y textos indexados');
-assert.equal(corpusCounts.obrasTotalesDeclaradas,corpusCounts.obras+corpusCounts.obrasAdicionales,'No duplicar obras en el total público');
+assert.ok(html.includes('data-cifra="obrasConTextoIndexado"'),'La portada compacta debe mostrar obras con texto indexado');
+assert.equal(corpusCounts.obrasTotalesDeclaradas,corpusCounts.obras+corpusCounts.obrasSuplementarias+corpusCounts.obrasAdicionales,'El total público debe reconciliar repertorio principal, suplementos y adicionales');
 assert.ok(html.includes('páginas declaradas en esas tres ediciones')||html.includes('Los 731 loci son unidades de navegación'),'La portada debe distinguir páginas declaradas de loci o cotejos manuscritos');
 assert.ok(onomasticon.totals.latinWords>50000&&onomasticon.totals.greekWords>0,'El nuevo índice debe contener estadísticas latinas y griegas');
 assert.ok(onomasticon.entities.some(x=>x.id==='archimedes'&&x.loci.includes('9.praef.9')),'Arquímedes debe tener una mención real identificada por locus');
