@@ -268,8 +268,48 @@ html[data-theme="light"] body main.library #bibliotheca-work-search :is(input,se
 html[data-theme="light"] body main.library :is(#bibliotheca-work-search .bws-actions a,#bibliotheca-work-search .bws-help a,.vdl-unified-books a){color:#eee!important}
 @media(max-width:700px){body main.library #bibliotheca-work-search .bws-item{padding:12px 0!important}}
 </style>
+<style id="bibliotheca-plain-catalogue-v2">
+/* Only a direct Lexicon search and readable title–author rows are public. */
+body.bibliotheca-plain-list main.library #classics-tally,
+body.bibliotheca-plain-list main.library #classics-audit-coverage,
+body.bibliotheca-plain-list main.library .bibliotheca-search-modes,
+body.bibliotheca-plain-list main.library #search-form,
+body.bibliotheca-plain-list main.library #biblio-extra-filters,
+body.bibliotheca-plain-list main.library #biblio-filter-toggle,
+body.bibliotheca-plain-list main.library .bibliotheca-search-shortcuts,
+body.bibliotheca-plain-list main.library #bibliotheca-shortcut-note,
+body.bibliotheca-plain-list main.library #filter-method,
+body.bibliotheca-plain-list main.library #catalogue-status,
+body.bibliotheca-plain-list main.library #search-status,
+body.bibliotheca-plain-list main.library #lexicon-bar,
+body.bibliotheca-plain-list main.library #result,
+body.bibliotheca-plain-list main.library #bibliotheca-work-search > :is(h3,.bws-intro,form,.bws-advanced,.bws-help,style),
+body.bibliotheca-plain-list main.library #bibliotheca-work-search .bws-more,
+body.bibliotheca-plain-list main.library #bibliotheca-work-search .bws-meta,
+body.bibliotheca-plain-list main.library #bibliotheca-work-search .bws-actions,
+body.bibliotheca-plain-list main.library #bibliotheca-work-search .vdl-cover,
+body.bibliotheca-plain-list main.library #bibliotheca-work-search .bws-original,
+body.bibliotheca-plain-list main.library #bibliotheca-work-search .bws-heading,
+body.bibliotheca-plain-list main.library #bibliotheca-work-search .bws-alphabet {display:none!important}
+body.bibliotheca-plain-list main.library .searcharea,
+body.bibliotheca-plain-list main.library #bibliotheca-work-search{border:0!important;background:transparent!important;padding:0!important;margin:0!important;box-shadow:none!important}
+body.bibliotheca-plain-list main.library .bibliotheca-lexicon-simple{border:1px solid #555;border-radius:8px;padding:16px;margin:20px 0;background:#0c0c0c;color:#f4f4f4}
+body.bibliotheca-plain-list main.library .bibliotheca-lexicon-simple h2{font:600 19px/1.4 system-ui,sans-serif;margin:0 0 12px;color:#f5f5f5}
+body.bibliotheca-plain-list main.library .bibliotheca-lexicon-simple form{display:flex;gap:9px;align-items:center}
+body.bibliotheca-plain-list main.library .bibliotheca-lexicon-simple input{flex:1;min-width:0;padding:11px 14px;min-height:44px;background:#161616!important;border:1px solid #777!important;color:white!important;border-radius:6px;font:15px/1.4 system-ui}
+body.bibliotheca-plain-list main.library .bibliotheca-lexicon-simple button{min-height:44px;padding:10px 19px;background:#292929!important;border:1px solid #777!important;color:white!important;border-radius:6px;font:600 14px system-ui;cursor:pointer}
+body.bibliotheca-plain-list main.library .bibliotheca-plain-heading{font:600 20px/1.5 system-ui,sans-serif;margin:26px 0 10px;color:#f4f4f4!important}
+body.bibliotheca-plain-list main.library #bibliotheca-work-search .bws-results{display:block!important;list-style:none!important;max-height:none!important;overflow:visible!important;margin:0!important;padding:0!important}
+body.bibliotheca-plain-list main.library #bibliotheca-work-search .bws-item{display:flex!important;align-items:baseline!important;flex-wrap:wrap!important;gap:5px 14px!important;background:transparent!important;border:0!important;border-bottom:1px solid #444!important;border-radius:0!important;margin:0!important;padding:12px 3px!important;box-shadow:none!important}
+body.bibliotheca-plain-list main.library #bibliotheca-work-search .bws-plain-title{display:inline!important;flex:0 1 auto;font:600 17px/1.45 Georgia,serif!important;color:#f4f4f4!important;text-decoration:none!important}
+body.bibliotheca-plain-list main.library #bibliotheca-work-search .bws-plain-title:hover{text-decoration:underline!important}
+body.bibliotheca-plain-list main.library #bibliotheca-work-search .bws-plain-author{display:inline!important;font:400 14px/1.5 system-ui,sans-serif!important;color:#bbb!important}
+body.bibliotheca-plain-list main.library #bibliotheca-work-search .bws-plain-author:before{content:"— ";color:#888}
+body.bibliotheca-plain-list main.library #bibliotheca-work-search .bws-count{font:12px/1.5 system-ui;color:#aaa!important}
+@media(max-width:560px){body.bibliotheca-plain-list main.library .bibliotheca-lexicon-simple form{flex-wrap:wrap}body.bibliotheca-plain-list main.library .bibliotheca-lexicon-simple input{flex-basis:100%}}
+</style>
 </head>
-<body><a class="vdl-skip-link" href="#main-content">Saltar al contenido principal</a>
+<body class="bibliotheca-plain-list"><a class="vdl-skip-link" href="#main-content">Saltar al contenido principal</a>
 <main class="library" id="main-content">
 <nav class="top bibliotheca-nav-2026" aria-label="Navegación de Bibliotheca">
 <a class="brand" href="index.html">VITRVVIVS <span>/ Bibliotheca</span></a>
@@ -319,6 +359,15 @@ html[data-theme="light"] body main.library :is(#bibliotheca-work-search .bws-act
 <p id="intro" class="intro">Busca una palabra o frase en todos los libros indexados, o selecciona una obra. Consulta cuántas veces aparece en cada libro y dónde se encuentra.</p>
 </header>
 
+<section class="bibliotheca-lexicon-simple" aria-label="Buscador Lexicon">
+ <h2>Buscar en Lexicon</h2>
+ <form action="vitruvia-lexicon.html" method="get" role="search">
+  <label class="sr-only" for="bibliotheca-lexicon-q">Término, palabra o frase</label>
+  <input id="bibliotheca-lexicon-q" name="q" type="search" autocomplete="off" placeholder="Buscar palabras, frases y lemas · domus · λόγος · symmetria" required>
+  <button type="submit">Buscar</button>
+ </form>
+</section>
+<h2 class="bibliotheca-plain-heading">Obras · autor y título</h2>
 <section class="searcharea" aria-label="Enviar palabras y frases al análisis de Lexicon">
 <div class="bibliotheca-search-modes" role="group" aria-label="Destino de la consulta"><button type="button" id="biblio-mode-text" aria-pressed="true">Texto · Lexicon</button><button type="button" id="biblio-mode-works" aria-pressed="false">Obras · catálogo</button></div>
 <form id="search-form" class="searchform" role="search">
