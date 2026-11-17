@@ -33,7 +33,7 @@ function iniciar(){
  cargar("site-language-coverage.js?v=20261117-static-translations-v2","site-language-coverage.js");
  cargar("page-autotranslate.js?v=20261117-sitewide-v3","page-autotranslate.js");
  // Cualquier selector de idioma del sitio deja el idioma en <html lang>, que es lo que sigue el traductor.
- document.addEventListener("vitruvius:language-changed",e=>{const l=e.detail?.language;if(["es","en","fr"].includes(l)){document.documentElement.lang=l;try{localStorage.setItem(KEY,l)}catch{}}});
+ document.addEventListener("vitruvius:language-changed",e=>{const l=e.detail?.language;if(["es","en","fr"].includes(l)){lang=l;document.documentElement.lang=l;try{localStorage.setItem(KEY,l)}catch{}}});
  // Selectores propios de una página (atlas, iconografía…): avisan al resto del sitio.
  document.addEventListener("change",e=>{
   const s=e.target;if(!(s instanceof HTMLSelectElement)||s.hasAttribute("data-content-language")||s.closest("#lang"))return;
@@ -65,7 +65,22 @@ function iniciar(){
   for(const s of ajenos())if(s.value!==l&&[...s.options].some(o=>o.value===l)){s.value=l;s.dispatchEvent(new Event("change",{bubbles:true}))}
  });
  document.addEventListener("ov-locale-changed",e=>{const l=e.detail?.lang;if(["es","en","fr"].includes(l))document.documentElement.lang=l});
- if(["en","fr"].includes(lang)&&document.documentElement.lang!==lang)setTimeout(()=>{if(!["en","fr"].includes(document.documentElement.lang))document.documentElement.lang=lang},1200);
+ // The interface locale is global and persistent, regardless of which reader is open.
+ // Reapply it after navigation and when another tab changes the preference.
+ const synchronize=(next,origin)=>{
+  if(!["es","en","fr"].includes(next))return;
+  lang=next;
+  if(document.documentElement.lang!==next)document.documentElement.lang=next;
+  document.querySelectorAll('.header-languages select,.site-global-language select,#language-toggle,#classic-ui-language,#atlas-language-select,#secondary-language').forEach(s=>{
+   if(s.hasAttribute("data-content-language")||![...s.options].some(o=>o.value===next)||s.value===next)return;
+   s.value=next;
+   s.dispatchEvent(new Event("change",{bubbles:true}));
+  });
+  document.dispatchEvent(new CustomEvent("vitruvius:language-changed",{detail:{language:next,origin}}));
+ };
+ window.addEventListener("storage",e=>{if(e.key===KEY&&["es","en","fr"].includes(e.newValue))synchronize(e.newValue,"storage")});
+ window.addEventListener("pageshow",()=>{let saved=lang;try{saved=localStorage.getItem(KEY)||lang}catch{};if(["es","en","fr"].includes(saved))synchronize(saved,"navigation")});
+ if(["en","fr"].includes(lang))setTimeout(()=>synchronize(lang,"initial"),1200);
 }
 if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",iniciar,{once:true});else iniciar();
 })();
