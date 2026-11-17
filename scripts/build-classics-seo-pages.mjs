@@ -8,12 +8,8 @@ import path from 'node:path';
 
 const root=process.cwd();
 const base='https://vitruvius-digital-library.org';
-const featured=[
- 'vitruvius','homer-iliad','homer-odyssey','plato-republic',
- 'aristotle-poetics','caesar-gallico','virgil-aeneid','virgil-georgica',
- 'cicero-officiis','lucretius','tacitus-annales','didache',
- 'aristotle-nicomachean-ethics','hesiod-theogony','sophocles-antigone'
-];
+// Include every source-grounded indexed original, not a fixed shortlist.
+const featured=null;
 const read=p=>fs.readFileSync(path.join(root,p),'utf8');
 const json=p=>JSON.parse(read(p));
 const esc=s=>String(s??'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');
@@ -33,12 +29,13 @@ for(const entry of registry.entries){
 const emitted=[];
 const output=path.join(root,'obras');
 fs.mkdirSync(output,{recursive:true});
-for(const id of featured){
+for(const id of [...workEntries.keys()].sort((a,b)=>a.localeCompare(b))){
  const w=docs.get(id);
  const originals=(workEntries.get(id)||[]).filter(e=>{
   const src=String(e.reader||'');
   return /^(?:classics-text-reader\.html\?|corpus\/[a-z0-9_-]+\.html)/.test(src)
-    && e.path && typeof e.sourceDescription==='string' && e.sourceDescription.trim();
+    && e.path && (String(e.path).startsWith('data/') ? fs.existsSync(path.join(root,e.path)) : /^https:\/\/libros\.vitruvius-digital-library\.org\//.test(e.path) && /^[0-9a-f]{64}$/i.test(e.sha256||''))
+    && typeof e.sourceDescription==='string' && e.sourceDescription.trim();
  });
  if(!w||!w.author||!w.title||!w.dating||!w.genre||!originals.length)continue;
  const original=originals.find(e=>e.language===w.language)||originals[0];
