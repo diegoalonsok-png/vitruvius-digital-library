@@ -210,7 +210,62 @@ html[data-theme="light"] body.academic-reader .academic-records>summary{color:#3
 html[data-theme="light"] body.academic-reader .cl-translation-output a[href]{color:#294e67!important}
 @media print{html body.academic-reader .site-typeface-tool{display:none!important}}
 </style>
-</head>
+<style id="classics-whole-page-palette">
+/* Lexicon palette controls the whole reader shell, not only its content panes. */
+html[data-reader-page-theme="custom"],html[data-reader-page-theme="custom"] body.academic-reader{
+ background:var(--reader-page-bg,#17191c)!important;color:var(--reader-page-fg,#e5e5e5)!important;
+}
+html[data-reader-page-theme="custom"] body.academic-reader :is(
+ header,main,aside,.reader-grid,.reader,.tools,.reader-appearance,.reader-toolbar,
+ .notice,.academic-records,.academic-kicker,.search-results-section,.result-card,
+ #lexicon,#toc,.cl-dual-reader,.cl-source-column,.cl-translation-column,
+ .cl-translation-output,.cl-translation-output>p,.cl-pane-title,.cl-translation-tools,
+ .cl-pane-options,.cl-reading-height-control,.cl-unified-reading-actions,
+ .cl-annotation-tools-fold,.cl-annotation-tools,.cl-document-note,
+ .cl-pane-heading,.cl-translation-meta,.cl-translation-label
+){
+ background:var(--reader-page-bg,#17191c)!important;
+ color:var(--reader-page-fg,#e5e5e5)!important;
+ border-color:color-mix(in srgb,var(--reader-page-fg,#e5e5e5) 27%,var(--reader-page-bg,#17191c))!important;
+}
+html[data-reader-page-theme="custom"] body.academic-reader :is(
+ .tools button,.tools select,.tools input,.reader-toolbar button,
+ .reader-appearance button,.reader-appearance select,
+ .reader-lexicon-toptools :is(button,select,a,summary),
+ #toc button,.cl-unified-reading-actions :is(button,select,a),
+ .cl-translation-tools :is(button,select),.cl-pane-options :is(button,select),
+ .cl-reading-height-control button,.cl-annotation-tools-fold summary
+){
+ background:color-mix(in srgb,var(--reader-page-fg,#e5e5e5) 9%,var(--reader-page-bg,#17191c))!important;
+ color:var(--reader-page-fg,#e5e5e5)!important;
+ border-color:color-mix(in srgb,var(--reader-page-fg,#e5e5e5) 30%,var(--reader-page-bg,#17191c))!important;
+}
+html[data-reader-page-theme="custom"] body.academic-reader :is(
+ .brand,.academic-kicker,#work-title,#source-title,.academic-records>summary,
+ .reader-toolbar,.sub,.notice,.loci-width-tools,#toc-title
+){color:var(--reader-page-fg,#e5e5e5)!important}
+html[data-reader-page-theme="custom"] body.academic-reader a:not(.reader-lexicon-swatch){
+ color:var(--reader-page-fg,#e5e5e5)!important;
+}
+html[data-reader-page-theme="custom"] body.academic-reader .reader-lexicon-palette-panel{
+ background:color-mix(in srgb,var(--reader-page-bg,#17191c) 94%,var(--reader-page-fg,#e5e5e5))!important;
+ color:var(--reader-page-fg,#e5e5e5)!important;
+}
+html[data-reader-page-theme="custom"] body.academic-reader :is(#passages,.cl-source-column,.cl-translation-column,.cl-translation-output){
+ background:var(--reader-page-bg,#17191c)!important;
+ color:var(--reader-page-fg,#e5e5e5)!important;
+}
+/* Preserve explicit word-search highlights and image/facsimile colors. */
+html[data-reader-page-theme="custom"] body.academic-reader mark{
+ background:#ffe34f!important;color:#1a1a1a!important;
+}
+@media print{
+ html[data-reader-page-theme="custom"] body.academic-reader,
+ html[data-reader-page-theme="custom"] body.academic-reader :is(main,aside,.reader,.reader-grid,#passages,.cl-source-column,.cl-translation-column){
+ background:#fff!important;color:#111!important;
+ }
+}
+</style></head>
 <body class="academic-reader">
 <header><span class="brand">Vitruvius Digital Library · Bibliotheca Graeca et Latina</span><nav><a href="bibliotheca-graeca-latina.html">Bibliotheca</a><a href="vitruvia.html">Buscar en Vitruvia</a><a id="index-locorum-link" href="index-locorum.html">Index locorum</a><a href="vitruvia-lexicon.html">Lexicon</a><a id="codex-link" href="bibliotheca-graeca-latina.html">Catálogo y testimonios</a><a id="parallel-link" href="classics-parallel-reader.html">Lectura lado a lado</a><a href="metodologia-filologica.html">Método filológico</a><a href="auditoria-academica.html">Auditoría</a></nav>
 <div class="reader-lexicon-toptools" aria-label="Herramientas de Lexicon">
@@ -305,7 +360,7 @@ html[data-theme="light"] body.academic-reader .cl-translation-output a[href]{col
 <script defer src="assets/classical-lexicon.js?v=20261112-externo"></script><script defer src="assets/dictionary-everywhere.js?v=20261111-diccionario-v1"></script>
 <script defer src="assets/classics-lexical-popup.js?v=20261116-context-provenance-v1"></script>
 <script defer src="assets/classics-academic-reader.js?v=20261116-source-notes-v1"></script>
-<script defer src="assets/classics-text-reader.js?v=20261117-lexicon-dark-loci-v2"></script>
+<script defer src="assets/classics-text-reader.js?v=20261117-full-page-palette-v1"></script>
 
 
 <script defer src="assets/classics-passage-export.js?v=20261115-text-export-v1"></script>
