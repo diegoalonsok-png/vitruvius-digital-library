@@ -1,6 +1,6 @@
 import {bookTitle,bibliographyHTML,bibliographyText} from './edition-citation.mjs?v=20261105-chicago18';
 import {citation, roman, parseLocus} from './search-core.mjs?v=20261030-docx-1';
-import {parallelHighlight,parallelExcerpt,hasLatinConcept} from './parallel-highlights.mjs?v=20261117-search-decor-highlight-v8';
+import {parallelHighlight,parallelExcerpt,hasLatinConcept} from './parallel-highlights.mjs?v=20261114-logos-sources-v7';
 import {readSearchState,searchStateURL} from './home-search-state.mjs?v=20261115-query-alias-v2';
 const $ = (q, root=document) => root.querySelector(q);
 const $$ = (q, root=document) => [...root.querySelectorAll(q)];
@@ -78,7 +78,7 @@ function resultSnippet(r){
 }
 function renderCountSummary(summary){
  const box=$('#term-count-summary');box.hidden=!summary;box.replaceChildren();if(!summary)return;
- box.innerHTML='<table><caption>Apariciones en el tratado, por edición</caption><thead><tr><th>Edición</th><th>Apariciones</th><th>Pasajes</th></tr></thead><tbody>'+summary.editions.map(row=>'<tr><th>'+escapeHTML(humanEditionName(edition(row.edition)))+'</th><td>'+row.total+'</td><td>'+row.passages+'</td></tr>').join('')+'</tbody></table><p>Recuento del texto latino y/o la traducción según el filtro de idioma. Cada edición se cuenta por separado. Se excluyen el estudio preliminar, las notas y los índices. Se normalizan acentos, u/v e i/j.</p>';
+ box.innerHTML='<table><caption>Apariciones en el tratado, por edición</caption><thead><tr><th>Edición</th><th>Apariciones</th><th>Pasajes</th></tr></thead><tbody>'+summary.editions.map(row=>'<tr><th>'+escapeHTML(publicEditionName(edition(row.edition)))+'</th><td>'+row.total+'</td><td>'+row.passages+'</td></tr>').join('')+'</tbody></table><p>Recuento del texto latino y/o la traducción según el filtro de idioma. Cada edición se cuenta por separado. Se excluyen el estudio preliminar, las notas y los índices. Se normalizan acentos, u/v e i/j.</p>';
  if(summary.forms.length)box.innerHTML+='<details><summary>Formas encontradas</summary><p>'+summary.forms.map(x=>escapeHTML(x.form)+' ('+x.count+')').join(' · ')+'</p></details>';
 }
 
@@ -370,7 +370,7 @@ function scholarlyExcerpt(r,e){
 // per canonical locus while preserving all raw hits for counts, CSV and print.
 const translationEditionIds={es:'recensio-es',fr:'recensio-fr',en:'theory-en'};
 const translationNames={es:'Castellano',fr:'Français',en:'English'};
-const humanEditionName=e=>e?.id==='theory-en'?'The Architect of Theory':e?.id==='recensio-fr'?'Vitruve · De architectura':'Vitruvio · De architectura';
+const publicEditionName=e=>({'recensio-es':'Vitruvio · De architectura (castellano)','recensio-fr':'Vitruve · De architectura (français)','theory-en':'The Architect of Theory (English)'})[e?.id]||bookTitle(e);
 const parallelIndexCache=new Map();
 let alignedGroups=[],selectedTranslationLanguage='es',translationRevision=0;
 // Respect the selected Kurilo edition when showing bilingual search results.
@@ -486,7 +486,7 @@ async function renderRightTranslation(article,group){
   }
   const page=p.pdf_pages?.translation;
   const ref=p.locus!==group.locus?' · bloque que abarca el locus solicitado':'';
-  source.innerHTML='<span class="parallel-source-label">Fuente de la traducción: '+escapeHTML(humanEditionName(ed))+' · Diego Kurilo · '+escapeHTML(languages[lang])+(page?' · PDF p. '+escapeHTML(page):' · página PDF no registrada')+escapeHTML(ref)+'</span><p class="parallel-biblio">'+bibliographyHTML(ed)+'</p>';
+  source.innerHTML='<span class="parallel-source-label">Fuente de la traducción: '+escapeHTML(publicEditionName(ed))+' · Diego Kurilo · '+escapeHTML(languages[lang])+(page?' · PDF p. '+escapeHTML(page):' · página PDF no registrada')+escapeHTML(ref)+'</span><p class="parallel-biblio">'+bibliographyHTML(ed)+'</p>';
   const link=$('.parallel-open-translation',article);
   if(link)link.href=readerURL(ed.id,group.locus);
  }catch(e){
@@ -506,9 +506,9 @@ function refreshRightTranslations(){
 /* Exact editorial identifier, never substitute the portal DOI for edition DOI. */
 const VITRUVIUS_DOI={es:"10.5281/zenodo.23884757",fr:"10.5281/zenodo.23885110",en:"10.5281/zenodo.23885404"};
 const VITRUVIUS_BOOK_TITLE={
- es:"Vitruvio. De architectura. Nueva recensio académica bilingüe",
- fr:"Vitruve. De architectura. Nouvelle recensio académique bilingue",
- en:"The Architect of Theory: Vitruvius and the Intellectual World of Roman Antiquity"
+ es:"Vitruvio. De architectura. Nueva recensio académica bilingüe (V514)",
+ fr:"Vitruve. De architectura. Nouvelle recensio académique bilingue (V554)",
+ en:"The Architect of Theory: Vitruvius and the Intellectual World of Roman Antiquity (V297)"
 };
 function criticalPassageCitation(article,group){
  const lang=article.querySelector(".parallel-language")?.value||selectedTranslationLanguage||"es";
@@ -573,18 +573,18 @@ function renderMore(){
   const pdfpage=group.hits.find(x=>x.edition===r.edition&&x.language==='la')?.page;
   const latinParagraph=parallelExcerpt(r.latin,{query:lastQuery,lang:'la',latin:r.latin,max:1700});
   article.innerHTML=
-   '<div class="result-meta">VITRUVIO · '+escapeHTML(humanEditionName(e))+' · latín / '+escapeHTML(languages[editionLang]||editionLang)+' · '+escapeHTML(resultType)+'</div>'+
+   '<div class="result-meta">VITRUVIO · '+escapeHTML(publicEditionName(e))+' · latín / '+escapeHTML(languages[editionLang]||editionLang)+' · '+escapeHTML(resultType)+'</div>'+
    '<h3>'+escapeHTML(citation(r))+'</h3>'+
    '<p class="result-locus">Libro '+roman(r.book)+' · '+(r.chapter==='praef'?'Prólogo':'Capítulo '+escapeHTML(r.chapter))+' · Sección '+escapeHTML(r.section)+'</p>'+
    '<div class="parallel-columns">'+
      '<section class="parallel-latin" lang="la" aria-label="Texto latino original">'+
-       '<div class="parallel-heading"><span>LATÍN · '+escapeHTML(humanEditionName(e))+'</span><strong>'+(pdfpage?'PDF p. '+escapeHTML(pdfpage):'Página PDF no identificada')+'</strong></div>'+
+       '<div class="parallel-heading"><span>LATÍN · '+escapeHTML(publicEditionName(e))+'</span><strong>Latín'+(pdfpage?' · PDF p. '+escapeHTML(pdfpage):' · PDF: página no identificada')+'</strong></div>'+
        '<p class="parallel-passage">'+((parallelHighlight(latinParagraph,{query:lastQuery,lang:'la',latin:r.latin})?.equivalent||parallelHighlight(latinParagraph,{query:lastQuery,lang:'la',latin:r.latin})?.direct)?parallelHighlight(latinParagraph,{query:lastQuery,lang:'la',latin:r.latin}).html:resultSnippet({snippet:latinParagraph,form:'',context_start:null,context_length:null}))+'</p>'+
-       '<div class="parallel-latin-source" aria-label="Procedencia bibliográfica de la edición latina"><span class="parallel-source-label">Fuente del latín: '+escapeHTML(e.version)+' · Diego Kurilo · Latín'+(pdfpage?' · PDF p. '+escapeHTML(pdfpage):' · página PDF no registrada')+'</span><p class="parallel-biblio">'+bibliographyHTML(e)+'</p></div>'+
+       '<div class="parallel-latin-source" aria-label="Procedencia bibliográfica de la edición latina"><span class="parallel-source-label">Fuente del latín: '+escapeHTML(publicEditionName(e))+' · Diego Kurilo · Latín'+(pdfpage?' · PDF p. '+escapeHTML(pdfpage):' · página PDF no registrada')+'</span><p class="parallel-biblio">'+bibliographyHTML(e)+'</p></div>'+
        '<p class="parallel-small">Este texto latino procede de la edición indicada arriba. Consultar variantes en el aparato crítico.</p>'+
      '</section>'+
      '<section class="parallel-translation" aria-label="Traducción del mismo locus">'+
-       '<div class="parallel-heading"><span>TRADUCCIÓN</span><label>IDIOMA <select class="parallel-language" aria-label="Elegir idioma de la traducción del pasaje">'+
+       '<div class="parallel-heading"><label>TRADUCCIÓN · IDIOMA <select class="parallel-language" aria-label="Elegir idioma de la traducción del pasaje">'+
          '<option value="es">Castellano</option><option value="fr">Français</option><option value="en">English</option>'+
        '</select></label></div>'+
        '<p class="parallel-passage parallel-translation-text" aria-live="polite">Cargando traducción…</p>'+
