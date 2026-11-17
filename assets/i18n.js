@@ -505,6 +505,42 @@ Object.assign(i18n, {
  'Buscador académico en la web': ['Academic web search', 'Recherche académique sur le Web'],
  'Griego y latín · etimología y frases': ['Greek and Latin · etymology and phrases', 'Grec et latin · étymologie et phrases']
 });
+/* Missing long-form homepage copy: literal ES/EN/FR translations, never source text. */
+Object.assign(i18n,{
+"DE ARCHITECTURA · TEXTOS Y TRADICIÓN":["DE ARCHITECTURA · TEXTS AND TRANSMISSION","DE ARCHITECTURA · TEXTES ET TRANSMISSION"],
+"Textos clásicos indexados":["Indexed classical texts","Textes classiques indexés"],
+"Aparato crítico comparativo":["Comparative critical apparatus","Apparat critique comparatif"],
+"Cobertura ecdótica · 731 loci":["Text-critical coverage · 731 loci","Couverture ecdotique · 731 loci"],
+"Diccionario arquitectónico de Vitruvio":["Vitruvius architectural dictionary","Dictionnaire architectural de Vitruve"],
+"Bibliografía histórica de arquitectura":["Historical bibliography of architecture","Bibliographie historique de l’architecture"],
+"Investigación filológica":["Philological research","Recherche philologique"],
+"Quaestio philologica · búsqueda":["Quaestio philologica · search","Quaestio philologica · recherche"],
+"Atlas geográfico · ciudades de Vitruvio":["Geographical atlas · Vitruvius’ cities","Atlas géographique · villes de Vitruve"],
+"Atlas iconográfico · folios e imágenes":["Iconographic atlas · folios and images","Atlas iconographique · folios et images"],
+"Método, auditoría y erratas":["Methods, audit and corrigenda","Méthodes, audit et errata"],
+"Buscador cultural, códices y ediciones históricas":["Cultural search, codices and historical editions","Recherche culturelle, codices et éditions historiques"],
+"Descargas y fichas académicas de V514, V554 y V297 · DOI e ISBN":["Downloads and scholarly records for V514, V554 and V297 · DOI and ISBN","Téléchargements et notices scientifiques V514, V554 et V297 · DOI et ISBN"],
+"Fundamento filológico de las tres ediciones.":["Philological basis of the three editions.","Fondement philologique des trois éditions."],
+"Ejemplo de cotejo H / texto / traducción":["Example comparison: H / text / translation","Exemple de collation : H / texte / traduction"],
+"ARCHIVO DE INVESTIGACIÓN":["RESEARCH ARCHIVE","ARCHIVES DE RECHERCHE"],
+"Autor y dirección académica":["Author and academic direction","Auteur et direction scientifique"],
+"Biografía académica de Diego A. Kurilo":["Academic biography of Diego A. Kurilo","Biographie universitaire de Diego A. Kurilo"],
+"Proyecto y edición de Diego Kurilo":["Project and edition by Diego Kurilo","Projet et édition de Diego Kurilo"],
+"Biblioteca académica independiente de acceso gratuito.":["Independent academic library with free access.","Bibliothèque universitaire indépendante en accès libre."],
+"Cómo citar · Chicago / APA / RIS / BibTeX":["How to cite · Chicago / APA / RIS / BibTeX","Comment citer · Chicago / APA / RIS / BibTeX"],
+"Referencias académicas externas · publicaciones verificadas":["External scholarly references · verified publications","Références universitaires externes · publications vérifiées"],
+"Catálogos patrimoniales oficiales · fuentes del tratado":["Official heritage catalogues · treatise sources","Catalogues patrimoniaux officiels · sources du traité"],
+"Método editorial, referencias DOI y licencias":["Editorial method, DOI references and licences","Méthode éditoriale, références DOI et licences"],
+"Criterios, límites y grados de evidencia":["Criteria, limitations and evidence levels","Critères, limites et niveaux de preuve"],
+"Las lenguas de la arquitectura":["The languages of architecture","Les langues de l’architecture"],
+"Un texto que no se perdió":["A text that was never lost","Un texte qui ne fut jamais perdu"],
+"Estudios sobre la transmisión ↗":["Studies on transmission ↗","Études sur la transmission ↗"],
+"Consultar las 341 imágenes (ff. 1r–162v) ↗":["View all 341 images (ff. 1r–162v) ↗","Consulter les 341 images (ff. 1r–162v) ↗"],
+"Manuscritos, traducciones y estudios críticos.":["Manuscripts, translations and critical studies.","Manuscrits, traductions et études critiques."],
+"Enlaces externos de referencia bibliográfica: no implican afiliación, patrocinio ni aval institucional. Los símbolos son ilustrativos, no logotipos oficiales.":["External bibliographic references do not imply affiliation, sponsorship or institutional endorsement. The symbols are illustrative, not official logos.","Les références bibliographiques externes n’impliquent aucune affiliation, aucun parrainage ni soutien institutionnel. Les symboles sont illustratifs et ne constituent pas des logos officiels."],
+"Documentación primaria en bibliotecas custodias. Estos enlaces permiten consultar fuentes sobre Vitruvio y no significan que las instituciones recomienden este proyecto.":["Primary documentation at holding libraries. These links provide access to sources on Vitruvius; they do not imply institutional endorsement of this project.","Documentation primaire des bibliothèques dépositaires. Ces liens permettent de consulter des sources sur Vitruve sans impliquer que ces établissements recommandent le projet."],
+"Krohn (1912) se emplea como base editorial inicial de trabajo, no como autoridad automática; las variantes y traducciones requieren cotejo documentado con manuscritos y ediciones históricas, incluida la colección Budé cuando corresponda.":["Krohn (1912) is the principal editorial starting point, not an unquestioned authority; variants and translations require documented comparison with manuscripts and historical editions, including the Budé collection where relevant.","Krohn (1912) sert de point de départ éditorial principal, non d’autorité absolue ; les variantes et les traductions exigent une collation documentée des manuscrits et des éditions historiques, y compris la collection Budé le cas échéant."]
+});
 let currentLanguage='es';
 try{currentLanguage=localStorage.getItem(LANGUAGE_KEY)||'es'}catch{}
 if(!['es','en','fr'].includes(currentLanguage))currentLanguage='es';
@@ -550,5 +586,20 @@ document.addEventListener('vitruvius:language-changed',event=>{
  currentLanguage=next;
  translateRoot();
 });
-if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',setupLanguage);else setupLanguage();
+/* Dynamic search results, cards and asynchronous widgets are mounted after DOMContentLoaded.
+   Localise only newly inserted UI nodes; the exact-source dictionary remains reversible. */
+let translationQueue=false;
+function refreshLanguage(){
+ if(translationQueue)return;
+ translationQueue=true;
+ requestAnimationFrame(()=>{translationQueue=false;translateRoot();});
+}
+function installLanguageObserver(){
+ if(!document.body)return;
+ new MutationObserver(records=>{
+  if(records.some(r=>r.type==='childList'&&r.addedNodes.length))refreshLanguage();
+ }).observe(document.body,{childList:true,subtree:true});
+ document.addEventListener('vitruvius:interface-mounted',refreshLanguage);
+}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',()=>{setupLanguage();installLanguageObserver()});else{setupLanguage();installLanguageObserver()}
 
