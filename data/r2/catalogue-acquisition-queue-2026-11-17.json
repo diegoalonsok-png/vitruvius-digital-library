@@ -1,0 +1,173 @@
+{
+  "schema": "vdl-classics-acquisition-queue-v1",
+  "generated": "2026-11-17",
+  "purpose": "Cola de adquisición; no constituye catálogo publicado ni prueba de disponibilidad R2.",
+  "counts": {
+    "candidateWorks": 10,
+    "teiCandidates": 4,
+    "needsAlternativeSourceOrReview": 6
+  },
+  "policy": "Verificar URI, licencia, integridad, URN, deduplicación por obra/edición y lectura antes de agregar al catálogo. Nunca contar una cola como ejemplares R2.",
+  "works": [
+    {
+      "workId": "apollonius-conica",
+      "author": "Apolonio de Perge",
+      "title": "Conica",
+      "language": "grc",
+      "sourceIds": [
+        "tlg0550.tlg001"
+      ],
+      "sourceUrls": [
+        "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0550/tlg001/tlg0550.tlg001.1st1K-grc1.xml"
+      ],
+      "priority": 1,
+      "status": "candidate-tei-license-and-completeness-unverified",
+      "catalogueStatus": "staging-only-not-uploaded",
+      "doNotCountAsNew": true
+    },
+    {
+      "workId": "aristarchus-magnitudines",
+      "author": "Aristarco de Samos",
+      "title": "De magnitudinibus et distantiis solis et lunae",
+      "language": "grc",
+      "sourceIds": [
+        "tlg1181.tlg001"
+      ],
+      "sourceUrls": [
+        "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg1181/tlg001/tlg1181.tlg001.1st1K-grc1.xml"
+      ],
+      "priority": 1,
+      "status": "candidate-tei-license-and-completeness-unverified",
+      "catalogueStatus": "staging-only-not-uploaded",
+      "doNotCountAsNew": true
+    },
+    {
+      "workId": "geminus-isagoge",
+      "author": "Gémino",
+      "title": "Elementa astronomia",
+      "language": "grc",
+      "sourceIds": [
+        "tlg1383.tlg001"
+      ],
+      "sourceUrls": [
+        "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg1383/tlg001/tlg1383.tlg001.1st1K-grc1.xml"
+      ],
+      "priority": 1,
+      "status": "candidate-tei-license-and-completeness-unverified",
+      "catalogueStatus": "staging-only-not-uploaded",
+      "doNotCountAsNew": true
+    },
+    {
+      "workId": "pappus-synagoge",
+      "author": "Papo de Alejandría",
+      "title": "Synagoge",
+      "language": "grc",
+      "sourceIds": [
+        "tlg2032.tlg001"
+      ],
+      "sourceUrls": [
+        "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg2032/tlg001/tlg2032.tlg001.1st1K-grc1.xml"
+      ],
+      "priority": 1,
+      "status": "candidate-tei-license-and-completeness-unverified",
+      "catalogueStatus": "staging-only-not-uploaded",
+      "doNotCountAsNew": true
+    },
+    {
+      "workId": "apuleius-de-deo-socratis",
+      "author": "Apuleyo",
+      "title": "De deo Socratis",
+      "language": "la",
+      "sourceIds": [
+        "ll.apuleius-de-deo-socratis"
+      ],
+      "sourceUrls": [
+        "https://raw.githubusercontent.com/cltk/latin_text_latin_library/master/apuleius/apuleius.deosocratis.txt"
+      ],
+      "priority": 2,
+      "status": "requires-new-source-format-or-editorial-review",
+      "catalogueStatus": "staging-only-not-uploaded",
+      "doNotCountAsNew": true
+    },
+    {
+      "workId": "censorinus-die-natali",
+      "author": "Censorino",
+      "title": "De die natali",
+      "language": "la",
+      "sourceIds": [
+        "ll.censorinus-die-natali"
+      ],
+      "sourceUrls": [
+        "https://raw.githubusercontent.com/cltk/latin_text_latin_library/master/censorinus.txt"
+      ],
+      "priority": 2,
+      "status": "requires-new-source-format-or-editorial-review",
+      "catalogueStatus": "staging-only-not-uploaded",
+      "doNotCountAsNew": true
+    },
+    {
+      "workId": "frontinus-gromatica",
+      "author": "Frontino",
+      "title": "Opuscula gromatica",
+      "language": "la",
+      "sourceIds": [
+        "ll.frontinus-gromatica"
+      ],
+      "sourceUrls": [
+        "https://raw.githubusercontent.com/cltk/latin_text_latin_library/master/frontinus/qualitate.txt"
+      ],
+      "priority": 2,
+      "status": "requires-new-source-format-or-editorial-review",
+      "catalogueStatus": "staging-only-not-uploaded",
+      "doNotCountAsNew": true
+    },
+    {
+      "workId": "isidore-etymologiae",
+      "author": "Isidoro de Sevilla",
+      "title": "Etymologiae",
+      "language": "la",
+      "sourceIds": [
+        "ll.isidore-etymologiae"
+      ],
+      "sourceUrls": [
+        "https://raw.githubusercontent.com/cltk/latin_text_latin_library/master/isidore/1.txt"
+      ],
+      "priority": 2,
+      "status": "requires-new-source-format-or-editorial-review",
+      "catalogueStatus": "staging-only-not-uploaded",
+      "doNotCountAsNew": true
+    },
+    {
+      "workId": "seneca-naturales",
+      "author": "Séneca",
+      "title": "Naturales quaestiones",
+      "language": "la",
+      "sourceIds": [
+        "ll.seneca-naturales"
+      ],
+      "sourceUrls": [
+        "https://raw.githubusercontent.com/cltk/latin_text_latin_library/master/sen/sen.qn1.txt"
+      ],
+      "priority": 2,
+      "status": "requires-new-source-format-or-editorial-review",
+      "catalogueStatus": "staging-only-not-uploaded",
+      "doNotCountAsNew": true
+    },
+    {
+      "workId": "velleius-historia",
+      "author": "Veleyo Patérculo",
+      "title": "Historia Romana",
+      "language": "la",
+      "sourceIds": [
+        "ll.velleius-historia"
+      ],
+      "sourceUrls": [
+        "https://raw.githubusercontent.com/cltk/latin_text_latin_library/master/vell1.txt"
+      ],
+      "priority": 2,
+      "status": "requires-new-source-format-or-editorial-review",
+      "catalogueStatus": "staging-only-not-uploaded",
+      "doNotCountAsNew": true
+    }
+  ]
+}
