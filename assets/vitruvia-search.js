@@ -1790,7 +1790,7 @@ async function search(){
      link:"iconografia-vitruviana.html#lamina-"+e.id,source:"Atlas iconográfico · láminas"}));
    return {name:"Láminas históricas",rows}}).catch(()=>({name:"Láminas no disponibles",rows:[]})));
  }
- if(internal&&window.ClassicsCorpusSearch?.searchPassages){
+ if(internal&&window.ClassicsCorpusSearch?.searchPassages&&window.ClassicsCorpusSearch?.sampleWorkPassages){
   pending.push(later(async()=>{
    // All indexed Bibliotheca sources supplement Vitruvia's own book catalogue.
    // Avoid converting an author's name into a nonexistent literal quotation.
@@ -1802,13 +1802,9 @@ async function search(){
    if(authorIds.length){
     // Author requests return actual passages from that author's catalogued works,
     // labelled as samples, not false matches for the person's name in the text.
-    const registry=await window.ClassicsCorpusSearch.registry();
-    const works=[...new Set((registry||[]).filter(e=>authorIds.includes(e.workId)).map(e=>e.workId))];
-    for(const workId of works.slice(0,12)){
-     const sample=await window.ClassicsCorpusSearch.searchPassages(
-      ["et","και","the","and"],{workId,limit:10,maxPerEdition:2,includeOCR:false});
-     verified.push(...sample.slice(0,6));
-    }
+    verified=await window.ClassicsCorpusSearch.sampleWorkPassages(authorIds,{
+     limit:36,maxPerEdition:2
+    });
    }else{
     const spellings=normalized==="logos"?[q,"λόγος"]:[q];
     verified=await window.ClassicsCorpusSearch.searchPassages(spellings,{
