@@ -449,7 +449,10 @@ function mount(parent,data){
  help.append("Para buscar palabras y pasajes dentro de las ediciones, consulte ");
  addLink(help,"Vitruvia","vitruvia.html");help.append(" o ");addLink(help,"Lexicon","vitruvia-lexicon.html");help.append(".");
  const filters=make("div",null,"bws-library-filters");
- const authorFilter=make("input");authorFilter.type="search";authorFilter.placeholder="Filtrar por autor · Ὅμηρος / Homero / Homer";authorFilter.setAttribute("aria-label","Filtrar por autor en cualquier idioma");
+ const authorLabel=make("label",null,"bws-author-primary");authorLabel.htmlFor="bws-author-filter";
+ const authorHeading=make("strong","AUTOR",authorLabel,"bws-author-heading");
+ make("span","Buscá por nombre original, castellano o transliteración",authorLabel,"bws-author-caption");
+ const authorFilter=make("input");authorFilter.id="bws-author-filter";authorFilter.type="search";authorFilter.placeholder="Homero · Ὅμηρος · Homer · Vitruvio · Platón";authorFilter.setAttribute("aria-label","AUTOR · filtrar obras por autor en cualquier idioma");
  const genreFilter=make("select");genreFilter.setAttribute("aria-label","Tipo de obra");genreFilter.append(new Option("Todos los tipos de obras",""));
  const presentGenres=new Set([...index.values()].map(w=>ancientGenre(w.genre)).filter(Boolean));
  ancientGenres.filter(([key])=>presentGenres.has(key)).forEach(([key,label])=>genreFilter.append(new Option(label,key)));
@@ -473,7 +476,8 @@ function mount(parent,data){
  [["","Todas las lenguas"],["grc","Griego"],["la","Latín"],["es","Castellano"],["en","Inglés"],["fr","Francés"]].forEach(([v,t])=>languageFilter.append(new Option(t,v)));
  const sortFilter=make("select");sortFilter.setAttribute("aria-label","Orden alfabético");
  [["author","Orden por autor A–Z"],["title","Orden por título A–Z"]].forEach(([v,t])=>sortFilter.append(new Option(t,v)));
- filters.append(authorFilter,genreFilter,subjectFilter,centuryFilter,periodFilter,languageFilter,sortFilter);
+ authorLabel.append(authorFilter);
+ filters.append(authorLabel,genreFilter,subjectFilter,centuryFilter,periodFilter,languageFilter,sortFilter);
  const alphabet=make("nav",null,"bws-alphabet");alphabet.setAttribute("aria-label","Índice alfabético por autor o título");
  for(const l of ["Todos",..."ABCDEFGHIJKLMNOPQRSTUVWXYZ",..."ΑΒΓΔΕΖΗΘΙΚΛΜΝΞΟΠΡΣΤΥΦΧΨΩ"]){
   const b=make("button",l);b.type="button";b.setAttribute("aria-pressed",l==="Todos"?"true":"false");
@@ -490,9 +494,10 @@ function mount(parent,data){
  standards.append("Criterios editoriales: datación de composición documentada; género descriptivo y revisable; título original y variantes identificados; referencias Chicago 18 (notas y bibliografía). ");
  addLink(standards,"Metodología académica del índice","metodologia-catalogo-clasico.html");
  const advanced=make("details");advanced.className="bws-advanced";
- const summary=make("summary","Filtros avanzados · género, siglo, período, idioma y alfabeto");
+ const summary=make("summary","Filtros avanzados · AUTOR, género, siglo, período, idioma y alfabeto");
  advanced.append(summary,filters,alphabet,historicalHint,originalHint,dateClarifier,standards);
- section.append(title,subtitle,form,advanced,region,help);
+ const filterStyles=make("style",`.bws-library-filters .bws-author-primary{display:flex;flex-direction:column;gap:7px;min-width:min(100%,280px);grid-column:1/-1;padding:12px 14px;border:1px solid rgba(153,124,79,.55);border-radius:9px;background:rgba(160,132,85,.08)}.bws-author-primary .bws-author-heading{display:block;font:700 clamp(20px,2.5vw,28px)/1.15 system-ui,sans-serif;letter-spacing:.07em}.bws-author-primary .bws-author-caption{font:12px/1.4 system-ui,sans-serif;opacity:.82}.bws-library-filters .bws-author-primary input{width:100%;min-height:44px;font-size:16px;box-sizing:border-box}`);
+ section.append(title,subtitle,form,filterStyles,advanced,region,help);
  const metric=parent.querySelector(":scope > dl");
  if(metric)metric.insertAdjacentElement("beforebegin",section);else parent.prepend(section);
  model={items:[...index.values()],index,input,list,count,more,region,authorFilter,genreFilter,subjectFilter,centuryFilter,periodFilter,languageFilter,sortFilter,letter:"",limit:6,showAll:false,r2Only:false,compactFront:parent.id==="front-classical-works"};
