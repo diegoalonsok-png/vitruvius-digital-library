@@ -477,29 +477,52 @@ function render(){
  if(document.body.classList.contains("bibliotheca-plain-list")){
   const searched=rawQuery.trim();
   list.replaceChildren();more.hidden=true;count.textContent="";
-  // Lexicon-style discovery: zero results until a query; at most ONE hit.
   if(normal(searched).length<2){model.region.hidden=true;return;}
-  const top=model.items.map(w=>({w,score:rank(w,searched)}))
+  const readerFor=w=>{
+   const original=w.versions?.find(v=>["la","grc"].includes(v.language)&&safeReader(v.reader));
+   const available=original||w.versions?.find(v=>safeReader(v.reader));
+   if(!available)return null;
+   const url=safeReader(available.reader);
+   return url?.startsWith("classics-text-reader.html?")&&!/[?&]to=/.test(url)
+    ?url+"&to=es":url;
+  };
+  const scored=model.items.map(w=>({w,score:rank(w,searched)}))
    .filter(x=>x.score>=55)
-   .sort((a,b)=>b.score-a.score||
-     a.w.author.localeCompare(b.w.author,"es",{sensitivity:"base"})||
-     a.w.title.localeCompare(b.w.title,"es",{sensitivity:"base"}))[0];
-  if(!top){model.region.hidden=true;return;}
-  const w=top.w;
-  const original=w.versions?.find(v=>["la","grc"].includes(v.language)&&safeReader(v.reader));
-  const readable=original||w.versions?.find(v=>safeReader(v.reader));
-  // Only suggest a work that can actually be opened. A fiche is not a double reader.
-  if(!readable){model.region.hidden=true;return;}
-  const url=safeReader(readable.reader);
-  const destination=url?.startsWith("classics-text-reader.html?")
-   ?url+(url.includes("to=")?"":"&to=es")
-   :url;
-  const li=make("li",null,"bws-item");
-  const title=make("a",w.title+" — "+(w.author||"Autor no identificado"),"bws-plain-title");
-  title.href=destination;title.title="Abrir el libro en el visor de lectura doble";
-  li.append(title);list.append(li);
-  model.region.hidden=false;
-  return;
+   .sort((a,b)=>b.score-a.score||a.w.title.localeCompare(b.w.title,"es",{sensitivity:"base"}));
+  // Author search: show that author as a heading and each of their readable works,
+  // not a catalogue-wide list, and never arbitrarily pick the first book.
+  const authors=new Map();
+  for(const w of model.items){
+   const key=String(w.id||"").split("-")[0];
+   const authorScore=rank({id:key,author:w.author,title:"",
+     forms:[w.author,...(authorNameVariants[key]||[])],originalAliases:[]},searched);
+   if(authorScore<85)continue;
+   const old=authors.get(key);
+   if(!old||authorScore>old.score)authors.set(key,{key,name:w.author,score:authorScore});
+  }
+  const foundAuthor=[...authors.values()].sort((a,b)=>b.score-a.score)[0];
+  if(foundAuthor){
+   const books=model.items.filter(w=>String(w.id||"").split("-")[0]===foundAuthor.key&&readerFor(w))
+    .sort((a,b)=>a.title.localeCompare(b.title,"es",{sensitivity:"base"}));
+   if(!books.length){model.region.hidden=true;return;}
+   const heading=make("li",foundAuthor.name||"Autor","bws-author-heading");
+   list.append(heading);
+   for(const w of books){
+    const row=make("li",null,"bws-item");
+    const link=make("a",w.title,"bws-plain-title");
+    link.href=readerFor(w);link.title="Abrir el libro en su lector";
+    row.append(link);list.append(row);
+   }
+   model.region.hidden=false;return;
+  }
+  // Title search: one exact best match only, with direct reading link.
+  const match=scored.find(x=>readerFor(x.w));
+  if(!match){model.region.hidden=true;return;}
+  const row=make("li",null,"bws-item");
+  const link=make("a",match.w.title+" — "+(match.w.author||"Autor no identificado"),"bws-plain-title");
+  link.href=readerFor(match.w);link.title="Abrir el libro en su lector";
+  row.append(link);list.append(row);
+  model.region.hidden=false;return;
  }
 
  const hasFacets=Boolean(model.authorFilter.value.trim()||model.genreFilter.value||model.subjectFilter.value||model.centuryFilter.value||model.periodFilter.value||model.languageFilter.value||model.letter||typedLetter);
