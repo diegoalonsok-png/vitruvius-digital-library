@@ -364,7 +364,8 @@ function rank(w,query){
    let bestMatch=null;
    for(let i=0;i<fieldTokens.length;i++){
     if(used.has(i))continue;
-    const word=fieldTokens[i],allowed=token.length>=7?2:token.length>=5?1:0;
+    // Short names need caution; longer names can tolerate extra omissions/transpositions.
+    const word=fieldTokens[i],allowed=token.length>=11?3:token.length>=7?2:token.length>=4?1:0;
     const distance=token===word?0:word.startsWith(token)&&token.length>=3?0.5:editDistance(token,word,allowed);
     if(distance<=allowed||(distance===0.5)){if(!bestMatch||distance<bestMatch.distance)bestMatch={i,distance}}
    }
