@@ -1792,28 +1792,41 @@ async function search(){
  }
  if(internal&&window.ClassicsCorpusSearch?.searchPassages){
   pending.push(later(async()=>{
-   // Query the actual indexed loci rather than only one summary per book.
-   // Latin-script 'logos' is an explicit documented spelling lookup for
-   // Greek λόγος; it does NOT imply automatic lemmatization or translation.
-   const normalized=String(generalQuery||"").normalize("NFD")
-    .replace(/\p{M}/gu,"").toLocaleLowerCase();
-   const terms=normalized==="logos"?
-    [generalQuery,"λόγος"]: [generalQuery];
-   const verified=await window.ClassicsCorpusSearch.searchPassages(terms,{
-    limit:120,maxPerEdition:5,includeOCR:false
-   });
+   // All indexed Bibliotheca sources supplement Vitruvia's own book catalogue.
+   // Avoid converting an author's name into a nonexistent literal quotation.
+   const normalized=String(q||"").normalize("NFD").replace(/\p{M}/gu,"").toLowerCase().trim();
+   const authorIds=normalized==="julio cesar"||normalized==="julius caesar"||normalized==="cesar"?
+    ["caesar-gallico","caesar-civili"]:matchingAuthorWorks(q).map(w=>w.id);
    const languageNames={grc:"Griego",la:"Latín",es:"Castellano",en:"Inglés",fr:"Francés"};
+   let verified=[];
+   if(authorIds.length){
+    // Author requests return actual passages from that author's catalogued works,
+    // labelled as samples, not false matches for the person's name in the text.
+    const registry=await window.ClassicsCorpusSearch.registry();
+    const works=[...new Set((registry||[]).filter(e=>authorIds.includes(e.workId)).map(e=>e.workId))];
+    for(const workId of works.slice(0,12)){
+     const sample=await window.ClassicsCorpusSearch.searchPassages(
+      ["et","και","the","and"],{workId,limit:10,maxPerEdition:2,includeOCR:false});
+     verified.push(...sample.slice(0,6));
+    }
+   }else{
+    const spellings=normalized==="logos"?[q,"λόγος"]:[q];
+    verified=await window.ClassicsCorpusSearch.searchPassages(spellings,{
+     limit:180,maxPerEdition:7,includeOCR:false
+    });
+   }
    return verified.map((p,index)=>({
-    type:"section",kind:"classic-passage",
-    title:p.author+" · "+p.title+" · "+p.locus,
+    type:"passage",kind:"classic-passage",curatedAcademic:true,exactTextMatch:!authorIds.length,
+    workId:p.workId,locus:p.locus,edition:p.edition,
+    title:p.author+" · "+p.title+" · "+(p.locus||"pasaje"),
     author:(languageNames[p.language]||p.language)+(p.edition?" · "+p.edition:""),
     excerpt:p.excerpt,
-    meta:"PASAJE TEXTUAL INDEXADO · LOCUS "+p.locus+
-     " · COINCIDENCIA LITERAL"+(p.term!==generalQuery?" · grafía consultada: "+p.term:""),
-    rating:1800-index,link:p.link,
-    source:"Bibliotheca Graeca et Latina · "+(p.attribution||"texto registrado")
+    meta:"BIBLIOTHECA · "+(authorIds.length?"PASAJE DE OBRA DEL AUTOR":"COINCIDENCIA TEXTUAL")+" · LOCUS "+p.locus+
+     (!authorIds.length&&p.term!==q?" · grafía: "+p.term:""),
+    rating:12000-index,link:p.link,
+    source:"Bibliotheca Graeca et Latina · "+(p.attribution||"edición indexada")
    }));
-  }).then(rows=>({name:"Pasajes de Bibliotheca · original y traducciones registradas",rows}))
+  }).then(rows=>({name:"Pasajes de Bibliotheca · originales y traducciones",rows}))
    .catch(e=>({name:"Pasajes de Bibliotheca no disponibles",rows:[],warnings:[String(e.message||e)]})));
  }
  if((expanded||/\b(aparato|apparatus|variante|lectio)\b/i.test(q))&&internal&&window.KuriloApparatus){
