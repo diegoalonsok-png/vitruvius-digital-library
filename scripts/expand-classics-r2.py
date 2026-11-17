@@ -243,12 +243,26 @@ def discover(root=ROOT):
     links = read(root / "data/bibliotheca-perseus.json")["links"]
     catalog_ids = {w["id"] for w in cat["works"]}
     registered = {(e["workId"], e["language"]) for e in reg["entries"]}
+    # Reject a source already represented by another catalogue identifier.
+    # A CTS work code denotes the underlying work; an edition suffix alone
+    # must not create a second work. The prior R2 manifest is authoritative
+    # for editions already uploaded by this import process.
+    prior_path = root / "data/r2/classics-expansion-manifest.json"
+    prior_editions = read(prior_path).get("editions", []) if prior_path.is_file() else []
+    known_codes, known_source_urls = set(), set()
+    for edition in prior_editions:
+        for src in edition.get("sources", []):
+            urn = src.get("editionUrn", "")
+            match = re.search(r"urn:cts:(?:greekLit|latinLit):([A-Za-z0-9_-]+\\.[A-Za-z0-9_-]+)\\.", urn)
+            if match: known_codes.add(match.group(1).lower())
+            if src.get("sourceUrl"): known_source_urls.add(src["sourceUrl"])
     candidates = {}
     for name in ("clasicos-perseus.json", "clasicos-perseus-extra.json"):
         for c in read(root / "data" / name)["works"]:
             if c.get("language") in ("la", "grc") and c.get("original"):
                 try: source_url(c["original"])
                 except ValueError: continue
+                if c["id"].lower() in known_codes or c["original"] in known_source_urls: continue
                 candidates.setdefault(c["id"], c)
     owners = {}
     for wid, rows in links.items():
