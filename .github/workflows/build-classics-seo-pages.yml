@@ -7,6 +7,9 @@ on:
       - 'scripts/build-classics-seo-pages.mjs'
       - '.github/workflows/build-classics-seo-pages.yml'
       - 'data/classics-corpus/search-registry.json'
+      - 'data/classics-corpus/*-grc.json'
+      - 'data/classics-corpus/*-la.json'
+      - 'data/classics-corpus/indexation-roadmap-222.json'
       - 'data/bibliotheca-graeca-latina-I-bce-I-ce.json'
       - 'data/bibliotheca-expansion-publicada-2026-11-16.json'
 permissions:
