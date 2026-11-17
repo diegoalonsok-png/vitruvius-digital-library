@@ -12,6 +12,8 @@ const detailedPages=new Set([
  "lector-critico","loci","indices-locorum","index-locorum","commentarius-perpetuus",
  "conspectus-testimoniorum","quaestio-philologica","vitruvia"
 ]);
+// Vitruvia is a search interface, not an editorial edition dossier.
+if(page==="vitruvia")return;
 const fullDetail=detailedPages.has(page);
 const make=(tag,text,parent,cls)=>{const n=document.createElement(tag);if(text!==undefined&&text!==null)n.textContent=text;if(cls)n.className=cls;if(parent)parent.append(n);return n;};
 async function init(){
