@@ -48,7 +48,7 @@ assert(catalog.works.length>=222,'Se perdieron fichas del inventario original');
 assert(catalog.works.length===road.items.length,'Catálogo y roadmap deben tener la misma cantidad de fichas');
 assert(reg.entries.length===reg.count,'El conteo declarado no coincide con las versiones registradas');
 assert(road.items.length===catalog.works.length,'Roadmap de indexación incompleto');
-assert(ext.remoteEntries.length===ext.counts.remoteOriginalsIndexed,'Índices externos desincronizados');
+assert(ext.remoteEntries.length===ext.counts.remoteGreek+ext.counts.remoteLatin,'Manifiestos externos desincronizados por idioma');
 const registryDuplicate=[],registryBad=[];
 const seen=new Set(),originals=new Set(),versions=new Set();
 for(const e of reg.entries){
@@ -69,7 +69,9 @@ assert(registryBad.length===0,'Corpus sin archivo, idioma válido o ficha de cat
 const remoteSet=new Set(ext.remoteEntries.map(e=>e.workId));
 const remoteDuplicates=[...remoteSet].filter(id=>originals.has(id));
 assert(remoteSet.size===ext.remoteEntries.length,'Originales externos duplicados');
-assert(remoteDuplicates.length===0,'Original externo cuenta por duplicado con otro local');
+// Una fuente externa puede coexistir con su original local (p. ej., Vegecio):
+// se conserva la procedencia remota y se cuenta la obra solamente una vez.
+assert(remoteSet.size-remoteDuplicates.length===ext.counts.remoteOriginalsIndexed,'Incorporaciones externas efectivas desincronizadas');
 const totalOriginals=new Set([...originals,...remoteSet]).size;
 assert(totalOriginals===ext.counts.combinedOriginalsIndexed,'Conteo combinado original no reconciliado');
 assert(ext.counts.originalsStillWithoutIndex===catalog.works.length-totalOriginals,'Pendientes del roadmap incorrectos');
