@@ -305,8 +305,13 @@ function renderCriticalAuthority(dest,w,d){
  if(Number.isInteger(I.offsitePassages))row(dest,"Pasajes del índice auxiliar",I.offsitePassages);
  row(dest,"Trabajo ecdótico pendiente",I.action);
  section(dest,"Códices y testimonio más temprano acreditado");
- const first=M.earliestInVerifiedRegister;
- if(first){
+ const registered=witnessesFor(d,w.id).filter(ms=>!String(ms.witnessKind||"").startsWith("ancient_translation"));
+ const first=M.earliestInVerifiedRegister||null;
+ if(!first&&registered.length){
+  row(dest,"Testimonios de la obra",registered.length+" registrados con signatura; su prioridad cronológica no está demostrada por este apartado");
+  const refs=html("p","cwd-links");for(const ms of registered){row(dest,"Testigo registrado",[ms.library,ms.shelfmark,ms.date].filter(Boolean).join(" · "));addA(refs,"Consultar "+(ms.shelfmark||ms.id)+" ↗",ms.localViewer||ms.viewer||ms.manifest||ms.record)}
+  if(refs.childNodes.length)dest.append(refs);
+ }else if(first){
   row(dest,"Testimonio más temprano de nuestro registro",first.title);
   row(dest,"Biblioteca, ciudad y signatura",[first.repository,first.shelfmark].filter(Boolean).join(" · "));
   row(dest,"Datación",first.date);
@@ -549,6 +554,7 @@ function renderAcademicSummary(dest,w,d){
  const authority=critical.authority||{};
  const original=w.language;
  const witnesses=witnessesFor(d,w.id);
+ const academic=d.academicAudit.get(w.id);
  const direct=witnesses.filter(ms=>!String(ms.witnessKind||"").startsWith("ancient_translation"));
  const indirect=witnesses.length-direct.length;
  const facsimiles=witnesses.filter(ms=>Boolean(ms.viewer||ms.localViewer));
@@ -559,12 +565,14 @@ function renderAcademicSummary(dest,w,d){
  row(sec,"Identificador de obra",w.id+(authority.candidateWorkCodes?.length?" · códigos propuestos: "+authority.candidateWorkCodes.join(", "):""));
  row(sec,"Cobertura del texto original",integrity.indexed?"Existe una transcripción o índice textual asociado; la integridad se documenta por separado":"Texto original no acreditado en el índice principal");
  if(integrity.description)row(sec,"Reservas de integridad",integrity.description);
+ row(sec,"Estado de autoría",/an[oó]nim|atribuci[oó]n|pseudo|discutid|controvert/i.test(w.author)?"Autoría tradicional, colectiva o discutida; no atribuir como autógrafo":academic?.author||w.author);
+ row(sec,"Control de datación",w.dating?"Fecha o intervalo registrado para la composición; se distingue de los manuscritos":"Datación de composición pendiente de documentar");
  row(sec,"Testigos materiales individualizados",String(witnesses.length)+"; "+direct.length+" directos o sin clasificar, "+indirect+" traducción(es) antigua(s) indirecta(s)");
  row(sec,"Estado de comprobación para esta obra",witnesses.some(ms=>ms.priorityClaim==="oldest_known_extant_copy_explicitly_claimed_by_holding_institution")?"La institución identifica expresamente el testimonio como copia conservada más antigua conocida":witnesses.some(ms=>/^institutional_catalogue_checked/.test(ms.verificationLevel||""))?"Existe al menos un registro revisado contra catálogo institucional; NO se ha determinado prioridad mundial":witnesses.some(ms=>/^secondary_scholarly_source_checked/.test(ms.verificationLevel||""))?"Testigos identificados mediante publicaciones académicas; pendiente corroboración institucional y comparación global":witnesses.length?"Testimonios registrados; prioridad mundial no demostrada":"Sin testigo individual documentado en este inventario; investigación pendiente");
 
  row(sec,"Acceso a imágenes o folios",facsimiles.length+" testimonio(s) con dirección de visor o imagen registrada; la carga y la identificación precisa se auditan por separado");
  row(sec,"Alcance de verificación","Metadatos de catálogos; ninguna concordancia por título equivale a una collatio codicum.");
- row(sec,"Control automático","Auditoría Python de las fichas del repertorio; candidatos nuevos quedan en cuarentena hasta verificar signatura, contenido y fuentes.");
+ row(sec,"Control de integridad documental","Cruce de identificadores entre ficha, índice textual y testimonios registrados. No confirma lectura paleográfica ni funcionamiento HTTP de cada visor.");
  const refs=html("p","cwd-links");
  addA(refs,"Matriz codicológica del repertorio ↗","classics-manuscript-coverage.html");
  addA(refs,"Informe de auditorías Python en GitHub ↗","https://github.com/diegoalonsok-png/vitruvius-digital-library/actions/workflows/codicology-self-audit.yml");
@@ -687,7 +695,14 @@ function renderAcademicAudit(root,w,d){
   if(e.scopeNote)p.append(document.createTextNode(" · Alcance: "+e.scopeNote));
   addA(p," · Consultar PDF",e.href);sec.append(p);
  }
- row(sec,"Testimonios individualizados",a.manuscriptWitnessCount+" en el registro; no equivale al número de testigos existentes");
+ const actual=witnessesFor(d,w.id);
+ row(sec,"Testimonios individualizados",actual.length+" en el registro de signaturas; no equivale al número de testigos existentes");
+ row(sec,"Datación de composición",a.compositionDating||"Pendiente de documentación; no se confunde con fecha de copia o impresión");
+ if(actual.length){const refs=html("p","cwd-links");for(const ms of actual){
+  const link=ms.localViewer||ms.viewer||ms.manifest||ms.record;
+  if(link)addA(refs,[ms.shelfmark||ms.title,ms.viewer||ms.localViewer||ms.manifest?"Consultar folios/imágenes":"Consultar ficha del testigo"].filter(Boolean).join(" · ")+" ↗",link)
+ }if(refs.childNodes.length)sec.append(refs)}
+ else sec.append(html("p","cwd-muted","Pendiente: localizar un testimonio individual con signatura, folios, datación y acceso institucional verificables. Una fuente textual indexada no acredita por sí sola un códice."));
  sec.append(html("p","cwd-muted","El inventario distingue texto, edición impresa y códice. No se certifica obra íntegra ni cotejo crítico sin contrastar la edición y sus límites."));
  root.append(sec);
 }
