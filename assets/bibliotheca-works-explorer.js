@@ -102,6 +102,8 @@ function mount(host){
   const words=names.flatMap(n=>n.split(/\s+/));
   // One-letter searches mean an author's initial, not any letter anywhere in a title.
   if(query.length===1){
+   // On the Vitruvius portal, V must surface the canonical Vitruvius work first.
+   if(query==="v"&&(f.id==="vitruvius"||f.id.startsWith("vitruvius ")))return 200;
    if(names.some(n=>n.startsWith(query)))return 100;
    if(words.some(w=>w.startsWith(query)))return 60;
    return -1;
