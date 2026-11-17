@@ -72,11 +72,59 @@ function mount(host){
  const allLink=add("a",null,"Abrir el catálogo completo de Bibliotheca",final);allLink.href="bibliotheca-graeca-latina.html";
  let items=null;
  const normalize=x=>String(x||"").normalize("NFD").replace(/\p{M}/gu,"").toLowerCase();
+ // Common ancient author spellings, modern-language names and obvious variants.
+ // The alias is for discovery only: the academic record keeps its canonical title.
+ const authorAliases={
+  vitruvius:["vitruvio","vitruve","vitruvius","marco vitruvio","marcus vitruvius","polion","pollio"],
+  caesar:["julio cesar","julio cesar","julius caesar","cesar","cesare"],
+  cicero:["ciceron","cicerone","marco tulio ciceron"],
+  plinius:["plinio","pline"],
+  vergilius:["virgilio","virgile","virgil"],
+  horatius:["horacio","horace"],
+  ovidius:["ovidio","ovide"],
+  homer:["homero","homere","homer"],
+  plato:["platon","plato"],
+  aristoteles:["aristoteles","aristotle","aristote"],
+  strabo:["estrabon","estrabo","strabon"],
+  sallust:["salustio","salluste"]
+ };
+ function searchable(item){
+  const author=normalize(item.author),title=normalize(item.title),id=normalize(item.id.replaceAll("-"," "));
+  const aliases=Object.entries(authorAliases).flatMap(([key,values])=>
+   [key,...values].some(name=>author.includes(normalize(name))||id.includes(normalize(name)))?values:[]);
+  return {author,title,id,aliases:aliases.map(normalize)};
+ }
+ function rank(item,query){
+  if(!query)return 0;
+  const f=searchable(item);
+  const names=[f.author,...f.aliases];
+  const firstNames=names.flatMap(n=>n.split(/[,;]+/).map(x=>x.trim()));
+  const words=names.flatMap(n=>n.split(/\s+/));
+  // One-letter searches mean an author's initial, not any letter anywhere in a title.
+  if(query.length===1){
+   if(names.some(n=>n.startsWith(query)))return 100;
+   if(words.some(w=>w.startsWith(query)))return 60;
+   return -1;
+  }
+  if(names.some(n=>n===query))return 150;
+  if(names.some(n=>n.startsWith(query)))return 120;
+  if(firstNames.some(n=>n.startsWith(query)))return 115;
+  if(words.some(w=>w.startsWith(query)))return 95;
+  if(f.title.startsWith(query))return 85;
+  if(f.title.split(/\s+/).some(w=>w.startsWith(query)))return 65;
+  if(names.some(n=>n.includes(query)))return 55;
+  if(f.title.includes(query))return 35;
+  if(f.id.includes(query))return 25;
+  return -1;
+ }
  function render(){
   if(!items)return;
   const query=normalize(search.value).trim();
   const pool=query?items.all:items.indexed;
-  const matched=pool.filter(x=>normalize(x.author+" "+x.title+" "+x.id.replaceAll("-"," ")).includes(query));
+  const matched=query?pool.map((item,index)=>({item,index,score:rank(item,query)}))
+   .filter(x=>x.score>=0)
+   .sort((a,b)=>b.score-a.score||Number(b.item.originalIndexed)-Number(a.item.originalIndexed)||a.index-b.index)
+   .map(x=>x.item):pool;
   listing.replaceChildren();
   for(const item of matched){
    const line=add("div","vdl-works-row",null,listing);line.setAttribute("role","listitem");
