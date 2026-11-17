@@ -423,10 +423,7 @@ for(const type of ['pointerup','pointercancel','lostpointercapture'])aside.addEv
 @media(max-width:900px){.cl-dual-reader .cl-pane-splitter{min-height:26px;cursor:row-resize}.cl-dual-reader .cl-pane-splitter::after{width:94px;height:22px;background:radial-gradient(circle at 41% 50%,#c4c4c8 1.5px,transparent 2px),radial-gradient(circle at 50% 50%,#c4c4c8 1.5px,transparent 2px),radial-gradient(circle at 59% 50%,#c4c4c8 1.5px,transparent 2px),#26262a}}
 @media print{.loci-edge-grip,.cl-dual-reader .cl-pane-splitter::after{display:none!important}}
 </style>
-<footer data-vdl-legal-notice="2026" role="contentinfo" aria-label="Derechos editoriales" style="box-sizing:border-box;display:block;clear:both;grid-column:1/-1;width:100%;margin:28px 0 0;padding:16px 18px;border-top:1px solid currentColor;text-align:center;font:12px/1.65 system-ui,sans-serif;color:inherit;background:transparent">
-<strong>© 2026 Editorial Sophia Lux · Arq. Diego Kurilo. Derechos reservados.</strong>
-<span style="opacity:.8">Los derechos sobre los materiales originales, el diseño y los aportes editoriales pertenecen a sus respectivos titulares. Los textos antiguos, facsímiles, imágenes y recursos de terceros conservan su situación jurídica y licencias propias.</span>
-</footer>
+
 
 <style id="reader-lexicon-palette-style">
 /* Palette and interface language borrow the Lexicon controls, not an extra toolbar. */
@@ -464,5 +461,10 @@ const KEY="vitruvius-ui-lang";let saved="es";try{saved=localStorage.getItem(KEY)
 ui.addEventListener("change",()=>{document.documentElement.lang=ui.value;document.dispatchEvent(new CustomEvent("vitruvius:language-changed",{detail:{language:ui.value,origin:"classics-reader"}}))});
 document.addEventListener("vitruvius:language-changed",event=>{if(["es","en","fr"].includes(event.detail?.language))ui.value=event.detail.language});
 })();
-</script></body>
+</script>
+<footer data-vdl-legal-notice="2026" role="contentinfo" aria-label="Derechos editoriales" style="box-sizing:border-box;display:block;clear:both;grid-column:1/-1;width:100%;margin:28px 0 0;padding:16px 18px;border-top:1px solid currentColor;text-align:center;font:12px/1.65 system-ui,sans-serif;color:inherit;background:transparent">
+<strong>© 2026 Editorial Sophia Lux · Arq. Diego Kurilo. Derechos reservados.</strong>
+<span style="opacity:.8">Los derechos sobre los materiales originales, el diseño y los aportes editoriales pertenecen a sus respectivos titulares. Los textos antiguos, facsímiles, imágenes y recursos de terceros conservan su situación jurídica y licencias propias.</span>
+</footer>
+</body>
 </html>
