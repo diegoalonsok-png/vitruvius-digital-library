@@ -256,7 +256,7 @@ def discover(root=ROOT):
     for edition in prior_editions:
         for src in edition.get("sources", []):
             urn = src.get("editionUrn", "")
-            match = re.search(r"urn:cts:(?:greekLit|latinLit):([A-Za-z0-9_-]+\\.[A-Za-z0-9_-]+)\\.", urn)
+            match = re.search(r"urn:cts:(?:greekLit|latinLit):([A-Za-z0-9_-]+\.[A-Za-z0-9_-]+)\.", urn)
             if match: known_codes.add(match.group(1).lower())
             if src.get("sourceUrl"): known_source_urls.add(src["sourceUrl"])
     candidates = {}
@@ -281,9 +281,8 @@ def discover(root=ROOT):
             skipped.append(w["id"])
             continue
         if not codes or not all(c in candidates for c in codes): continue
-        if codes:
-            groups.append({"workId": w["id"], "author": w["author"], "title": w["title"], "language": w["language"], "sources": [candidates[c] for c in codes], "existing": True})
-            used.update(codes)
+        groups.append({"workId": w["id"], "author": w["author"], "title": w["title"], "language": w["language"], "sources": [candidates[c] for c in codes], "existing": True})
+        used.update(codes)
     for code, c in sorted(candidates.items()):
         if code in used: continue
         wid = "cts-" + re.sub(r"[^a-z0-9]+", "-", code.lower()).strip("-")
