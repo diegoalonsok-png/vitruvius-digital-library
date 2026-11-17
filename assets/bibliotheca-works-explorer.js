@@ -10,8 +10,9 @@ function catalog(){
   fetch(URL).then(r=>{if(!r.ok)throw Error("Inventario: HTTP "+r.status);return r.json()}),
   fetch("data/classics-corpus/search-registry.json").then(r=>{if(!r.ok)throw Error("Registro editorial: HTTP "+r.status);return r.json()}),
   fetch("data/bibliotheca-expansion-publicada-2026-11-16.json").then(r=>{if(!r.ok)throw Error("Catálogo complementario: HTTP "+r.status);return r.json()}),
-  fetch("data/index/classics/manifest.json").then(r=>{if(!r.ok)throw Error("Índice léxico: HTTP "+r.status);return r.json()})
- ]).then(([j,registry,supplement,lexical])=>{
+  fetch("data/index/classics/manifest.json").then(r=>{if(!r.ok)throw Error("Índice léxico: HTTP "+r.status);return r.json()}),
+  fetch("data/classics-corpus/title-search-aliases-multilingual.json").then(r=>r.ok?r.json():{aliases:{}}).catch(()=>({aliases:{}}))
+ ]).then(([j,registry,supplement,lexical,names])=>{
   if(!Array.isArray(j.items)||j.items.length!==j.targetWorks)throw Error("Inventario de obras inconsistente");
   const sources=new Map();
   for(const entry of registry.entries||[]){
@@ -49,7 +50,7 @@ function catalog(){
   // Preserve rigorous indexed counts, but make every catalogued author and work discoverable.
   // Missing an exact original-index certificate must not mean "author not found".
   const all=[...merged.values()];
-  return {indexed:all.filter(w=>w.originalIndexed),all};
+  return {indexed:all.filter(w=>w.originalIndexed),all,aliases:names.aliases||{}};
  }).catch(e=>{dataPromise=null;throw e});
  return dataPromise;
 }
@@ -82,6 +83,14 @@ function mount(host){
   if(q.length>1&&(title.includes(q)||id.includes(q)))return 40;
   return -1;
  }
+ const spanishAuthors={vitruvius:"Vitruvio",cicero:"Cicerón",caesar:"Julio César",homer:"Homero",hesiod:"Hesíodo",plato:"Platón",aristotle:"Aristóteles",aeschylus:"Esquilo",sophocles:"Sófocles",euripides:"Eurípides",aristophanes:"Aristófanes",herodotus:"Heródoto",thucydides:"Tucídides",xenophon:"Jenofonte",strabo:"Estrabón",plutarch:"Plutarco",virgil:"Virgilio",vergil:"Virgilio",ovid:"Ovidio",horace:"Horacio",livy:"Tito Livio",tacitus:"Tácito",seneca:"Séneca",pliny:"Plinio",apuleius:"Apuleyo",petronius:"Petronio"};
+ function bilingualName(item){
+  const alternatives=items?.aliases?.[item.id]||[];
+  const title= item.id==="vitruvius"?"Los diez libros de arquitectura":alternatives[0]||"";
+  const author=spanishAuthors[item.id.split("-")[0]]||"";
+  const different=(x,y)=>normalize(x)!==normalize(y);
+  return item.author+(author&&different(author,item.author)?" — "+author:"")+" · "+item.title+(title&&different(title,item.title)?" — "+title:"");
+ }
  function render(){
   if(!items)return;
   const q=normalize(search.value);
@@ -98,7 +107,7 @@ function mount(host){
    const structured=source&&["json-passages","structured-bilingual"].includes(source.format);
    const canRead=item.originalIndexed&&(html||structured);
    const row=add("div","vdl-works-row",null,listing);row.setAttribute("role","listitem");
-   const link=add("a","vdl-works-name",item.author+" · "+item.title,row);
+   const link=add("a","vdl-works-name",bilingualName(item),row);
    link.href=canRead?(html?path:"classics-text-reader.html?"+new URLSearchParams({work:item.id,lang:source.language}))
     :"classics-work-record.html?"+new URLSearchParams({work:item.id});
    link.title=canRead?"Abrir lector de la obra":"Ver ficha académica y fuentes disponibles";
