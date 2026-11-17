@@ -20,7 +20,7 @@ const status=make("p","",root);status.setAttribute("role","status");
 const getLocus=()=>{const fromURL=new URLSearchParams(location.search).get("locus");return fromURL||document.getElementById("bude-locus")?.value||document.getElementById("locus")?.value||"1.1.1"};
 function refresh(){const b=books.find(b=>b.id===selector.value)||books[0],l=getLocus(),u=new URL(location.href);u.search="";u.hash="";u.searchParams.set("locus",l);
 const title=b.bibliographic_title||b.title,author=b.bibliographic_author||"Kurilo, Diego",doi=b.doi?"https://doi.org/"+b.doi:"",publisher=b.publisher||"",year=b.year||"s. f.";
-if(fmt.value==="bibtex")output.value="@book{Kurilo"+b.version+",\n author={"+author+"},\n title={"+title+"},\n year={"+year+"},\n publisher={"+publisher+"},\n doi={"+(b.doi||"")+"},\n isbn={"+(b.isbn||"")+"},\n url={"+u.href+"},\n note={De architectura, locus "+l+"}\n}";
+if(fmt.value==="bibtex")output.value="@book{Kurilo"+b.version+",\n author={"+author+"},\n title={"+title+"},\n year={"+year+"},\n publisher={"+publisher+"},\n doi={"+(b.doi||"")+"},\n isbn={"+(b.isbn_status==="publisher-declared-shared"?"":(b.isbn||""))+"},\n url={"+u.href+"},\n note={De architectura, locus "+l+"; ISBN compartido no verificado individualmente}\n}";
 else if(fmt.value==="apa")output.value=author+" ("+year+"). "+title+" ("+b.version+"). "+publisher+". "+doi+" [Locus "+l+"; aparato: "+u.href+"]";
 else output.value=author+". "+title+". "+(b.edition_statement||"")+". "+(b.publication_place||"")+": "+publisher+", "+year+". "+doi+". Vitruvio, De architectura "+l+". Aparato crítico: "+u.href+" (consulta: "+new Date().toISOString().slice(0,10)+").";
 }
