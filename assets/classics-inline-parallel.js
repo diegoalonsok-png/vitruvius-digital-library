@@ -154,8 +154,19 @@ async function runTranslation(){
   note.textContent="Locus "+(window.ClassicsAcademicReader?.shortLocus(entry.locus)||entry.locus)+" · "+(entry.number||"")+" de "+(entry.total||"")+" · Texto fuente íntegro en el panel original.";
  }catch(error){
   if(stamp!==sequence||!enabled||mode.value==="pdf")return;
-  output.textContent="No fue posible traducir el pasaje. Pulsa «Reintentar» para volver a consultar el proveedor.";
-  note.textContent="Error del proveedor de traducción: "+(error?.message||"Servicio no disponible")+". No se inventa una traducción."; translate.hidden=false;translate.textContent="Reintentar traducción";
+  output.textContent="No fue posible generar la traducción dentro de Bibliotheca. El original permanece intacto.";
+  // Alternativa manual, gratuita: el usuario decide abrir Google Traductor.
+  // No se envía el contenido a Google hasta que haga clic en el enlace.
+  const link=el("a",null,"Abrir este pasaje en Google Traductor ↗");
+  const google=new URL("https://translate.google.com/");
+  google.searchParams.set("sl",entry.language==="grc"?"el":"la");
+  google.searchParams.set("tl",target);
+  google.searchParams.set("text",String(entry.text||"").slice(0,1400));
+  google.searchParams.set("op","translate");
+  link.href=google.href;link.target="_blank";link.rel="noopener noreferrer";
+  link.style.cssText="display:inline-block;margin-top:12px;color:#e3c78f;text-decoration:underline";
+  output.append(link);
+  note.textContent="Servicio externo no disponible ("+(error?.message||"error de acceso")+"). Podés usar el enlace externo sin alterar el original."; translate.hidden=false;translate.textContent="Reintentar traducción";
  }finally{if(stamp===sequence)output.removeAttribute("aria-busy")}
 }
 function activate(){enabled=true;translate.hidden=true;stop.hidden=false;showState()}
