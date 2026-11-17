@@ -68,7 +68,8 @@ function schedule(){
 async function loadPageTranslations(){
  // Static, generated JSON. A missing file means the page still needs human or
  // automated translation; never claim it was fully translated.
- const name=(location.pathname.split('/').pop()||'index.html').replace(/[^a-zA-Z0-9_.-]/g,'');
+ const rawName=(location.pathname.split('/').pop()||'index.html').replace(/[^a-zA-Z0-9_.-]/g,'');
+ const name=rawName.endsWith('.html')?rawName:rawName+'.html'; // Cloudflare supports extensionless page routes.
  if(!/^[-a-zA-Z0-9_.]+\.html$/.test(name))return;
  const dir=(document.currentScript?.src||document.querySelector('script[src*="site-language-coverage.js"]')?.src||'').split('/assets/')[0];
  if(!dir)return;
