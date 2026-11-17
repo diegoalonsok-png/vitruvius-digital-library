@@ -353,6 +353,8 @@ function buttons(){const n=count(),ok=Boolean(n&&ready.left&&(isAuto(right.value
  $("sync-position").textContent=n?(position+1)+" / "+n+" pasos de lectura":"Sin datos comparables";
 }
 function renderAuto(){
+ // Discard prior passage controls: avoid buttons translating a stale section.
+ const topActions=$("auto-top-actions");topActions.replaceChildren();topActions.hidden=true;
  if(!isAuto(right.value))return;
  const source=versions[left.value],record=source?.passages?.[Math.max(0,Math.min(position,(source?.passages?.length||1)-1))];
  const content=$("auto-content");content.replaceChildren();
@@ -376,6 +378,12 @@ function renderAuto(){
    if(select)select.value=target;
    const button=widget.querySelector(".academic-inline-translate-button");
    if(button)button.textContent="Traducir este pasaje aquí";
+   const label=widget.querySelector("label");
+   if(label&&button){
+    // Preserve the existing click handler when moving real nodes to the top.
+    topActions.append(label,button);
+    topActions.hidden=false;
+   }
    const output=widget.querySelector(".academic-inline-translation-output");
    const note=widget.querySelector(".academic-inline-translation-note");
    if(output){
