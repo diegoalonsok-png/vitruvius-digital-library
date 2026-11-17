@@ -168,3 +168,21 @@ html[data-theme="light"] body #bibliotheca-concordance .bws-concordance-meta{col
 #front-classical-works #bibliotheca-work-search .bws-help:last-child{display:none}
 #bibliotheca-work-search .bws-advanced :is(select,input){font-size:14px}
 @media(max-width:600px){#front-classical-works #bibliotheca-work-search{padding:12px}#bibliotheca-work-search .bws-advanced>summary{font-size:12px}}
+
+/* Jerarquía editorial de fichas: título de lectura y título en lengua original. */
+#bibliotheca-work-search .bws-heading .bws-work-title{
+ font-family:"Gentium Book Plus","Cardo",Georgia,serif;
+ font-size:clamp(22px,2.1vw,28px);font-weight:650;line-height:1.32;
+}
+#bibliotheca-work-search .bws-original-title{
+ display:block;margin:3px 0 7px;padding:0;
+ font:italic 17px/1.5 "Gentium Book Plus","Cardo",Georgia,serif;
+ color:#d9d3c5;overflow-wrap:anywhere;
+}
+#bibliotheca-work-search .bws-original-title .bws-original-label{
+ font:500 12px/1.5 system-ui,sans-serif;font-style:normal;letter-spacing:.015em;
+ color:#c5bcac;
+}
+html[data-theme="light"] body #bibliotheca-work-search .bws-original-title,
+html[data-theme="light"] body #bibliotheca-work-search .bws-original-title .bws-original-label{color:#41505c!important}
+@media(max-width:640px){#bibliotheca-work-search .bws-heading .bws-work-title{font-size:22px}#bibliotheca-work-search .bws-original-title{font-size:16px}}
