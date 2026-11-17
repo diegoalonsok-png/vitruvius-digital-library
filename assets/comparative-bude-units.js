@@ -89,7 +89,7 @@ async function render(query){
    if(edition==="Rose 1899"){card.append(document.createTextNode(" · "),A("Biblioteca Gutenberg (transcripción)","https://www.gutenberg.org/ebooks/51812"));}
    grid.append(card);
   }
-  indicator.append(grid,E("small","Rose y Krohn son ediciones impresas indexadas, no ediciones definidas por OCR. La transcripción digital, el OCR auxiliar y la imagen de cada impreso son recursos de consulta distintos. Codex H posee cotejos puntuales ex imagine documentados; la presencia de un folio en el mapa no certifica por sí sola todos los lemas. Diferencias digitales candidatas en este locus: "+evidence.aparato.diferencias_digitales_candidatas+"."));
+  indicator.append(grid,E("small","Rose y Krohn son ediciones impresas originales indexadas por sus textos. Las ediciones originales, sus transcripciones digitales y las imágenes de los impresos se identifican como recursos distintos. Codex H posee cotejos puntuales ex imagine documentados; la presencia de un folio en el mapa no certifica por sí sola todos los lemas. Diferencias digitales candidatas en este locus: "+evidence.aparato.diferencias_digitales_candidatas+"."));
  }
 
  const p=data.es.passages.find(x=>x.locus===locus);
@@ -109,9 +109,9 @@ async function render(query){
  const krohnOcr=data.ocr?.loci?.[locus]?.["krohn-1912"];
  const k=card("Kr. 1912 · "+fmt(locus),krohn?.latin||"No hay transcripción digital independiente de Krohn alineada a este locus.","la");
  k.append(E("small",krohn?"Transcripción Perseus, cotejo con el impreso pendiente.":"Sin transcripción de Krohn: no se sustituye por Kurilo."));
- if(krohnOcr?.page){const p=E("p",null,"bude-note");p.append(A("Ver página OCR histórica de Krohn · imagen "+krohnOcr.page,"krohn-1912.html"));k.append(p)}
+ if(krohnOcr?.page){const p=E("p",null,"bude-note");p.append(A("Ver página del impreso de Krohn · imagen "+krohnOcr.page,"krohn-1912.html"));k.append(p)}
  const ro=card("Rose 1899 · "+fmt(locus),roseTranscription?.latin||"Transcripción digital no disponible; revisar el facsímil.","la");
- ro.append(E("small",roseTranscription?(roseTranscription.status==="alignment_needs_editorial_review"?"Transcripción Project Gutenberg · división por locus pendiente de revisión; cotejar impreso.":"Transcripción independiente Project Gutenberg · aún no verificada exhaustivamente contra el impreso."):"Transcripción Rose no disponible; el OCR histórico es solo auxiliar."));
+ ro.append(E("small",roseTranscription?(roseTranscription.status==="alignment_needs_editorial_review"?"Transcripción Project Gutenberg · división por locus pendiente de revisión; cotejar impreso.":"Transcripción independiente Project Gutenberg · aún no verificada exhaustivamente contra el impreso."):"Transcripción Rose no disponible; la extracción de página es solo auxiliar."));
  if(rose?.page){const p=E("p",null,"bude-note");p.append(A("Consultar facsímil de Rose · imagen digital "+rose.page,"https://archive.org/download/vitruviidearchit00vitr_0/vitruviidearchit00vitr_0.pdf#page="+rose.page));ro.append(p)}
  const ku=card("Kur. V514 · "+fmt(locus),p?.latin||"Sin texto estructurado.","la");
  ku.append(E("small","Texto autoral V514; las elecciones editoriales de latín y griego se conservan."));
@@ -146,7 +146,7 @@ async function render(query){
  const pending=data.pendingH?.loci?.find(x=>x.locus===locus);
  if(pending){
   const triage=section("Status quaestionis · cotejo de H pendiente");
-  triage.append(E("p","Este locus no tiene una entrada crítica registrada en el aparato comparativo. Sí posee textos editoriales y OCR atribuidos a Rose y Krohn. La falta de aparato no significa ausencia de variante.","bude-note"));
+  triage.append(E("p","Este locus no tiene una entrada crítica registrada en el aparato comparativo. Sí dispone de las ediciones históricas de Rose y Krohn indexadas para consulta. La falta de aparato no significa ausencia de variante.","bude-note"));
   const d=pending.cotejo_digital;
   if(d){
    const u=E("div",null,"bude-unit");
@@ -267,11 +267,11 @@ async function render(query){
    const compar=E("div",null,"bude-grid");
    const texts=[["Kur. V514 · latín",e.comparison.kurilo_latin],
     ["H f. "+e.folio+(e.visualEvidence?" · cotejo visual":" · atribución editorial pendiente"),e.comparison.h_transcription],
-    ["Rose 1899 · OCR de aparato (p. "+e.comparison.rose_page+")",e.comparison.rose_apparatus_ocr],
-    ["Kr. 1912 · OCR de aparato (p. "+e.comparison.krohn_page+")",e.comparison.krohn_apparatus_ocr]];
+    ["Rose 1899 · índice auxiliar del aparato de aparato (p. "+e.comparison.rose_page+")",e.comparison.rose_apparatus_ocr],
+    ["Kr. 1912 · aparato histórico, extracción auxiliar (p. "+e.comparison.krohn_page+")",e.comparison.krohn_apparatus_ocr]];
    for(const [title,body] of texts)compar.append(card(title,body,"la"));
    verified.append(compar);
-   verified.append(E("p","Las siglas de Rose y Krohn se conservan como OCR documental, sin restitución ni atribución paleográfica automática.","bude-note"));
+   verified.append(E("p","Las siglas reproducidas en los aparatos históricos de Rose y Krohn se conservan con procedencia documental, sin restitución ni atribución paleográfica automática.","bude-note"));
   }
  }
  if(!selected.length)verified.append(E("p","Sin unidad cotejada publicada en este locus: el aparato se mantiene abierto y no se infiere ausencia de variantes."));
