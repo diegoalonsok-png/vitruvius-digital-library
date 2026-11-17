@@ -401,7 +401,9 @@ function spanishWorkTitle(w){
  // The multilingual alias inventory records Spanish first, except the
  // Vitruvius authority entry, whose first entries are author names.
  const candidate=w.id==="vitruvius"?"Los diez libros de arquitectura":Array.isArray(names)?names[0]:"";
- return candidate&&normal(candidate)!==normal(w.title)?candidate:"";
+ // Some Greek work titles already include a Spanish equivalent after a separator.
+ const normTitle=normal(w.title),normCandidate=normal(candidate);
+ return candidate&&normCandidate&&!normTitle.includes(normCandidate)?candidate:"";
 }
 function bilingualWorkLabel(w,author=true){
  const title=w.title+(spanishWorkTitle(w)?" — "+spanishWorkTitle(w):"");
