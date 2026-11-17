@@ -161,6 +161,28 @@ async function presentIndexed(entry,target,stamp){
  output.append(a);
  return true;
 }
+// When Spanish is not indexed, offer actual historical English, not modern-Greek MT.
+async function showHistoricalEnglishFallback(entry,stamp){
+ const e=indexedVersions.get("en");if(!e)return false;
+ const paragraphs=await indexedPassages(e);
+ if(stamp!==sequence||current!==entry||mode.value==="pdf")return true;
+ const matched=paragraphs.find(p=>String(p.locus||"").trim()===String(entry.locus||"").trim()&&typeof p.text==="string"&&p.text.trim());
+ output.replaceChildren();
+ output.append(el("p",null,"Todavía no hay traducción castellana indexada para este pasaje. Se presenta la edición inglesa histórica, identificada como inglés."));
+ if(matched){
+  const para=el("p",null,matched.text);para.lang="en";output.append(para);
+  note.textContent="Inglés histórico · Hamilton/Falconer (1854–1857), Perseus Digital Library. Coincidencia por sección CTS, no por frase ni por segmento técnico griego.";
+ }else{
+  output.append(el("p",null,"Este fragmento griego carece de una sección inglesa correspondiente en la edición histórica."));
+  note.textContent="No se inventa ni asigna una traducción a un fragmento sin locus correlativo.";
+ }
+ const a=el("a",null,"Abrir griego e inglés enfrentados");
+ const u=new URL("classics-simple-parallel.html",location.href);
+ u.searchParams.set("work",work);u.searchParams.set("left",entry.language);u.searchParams.set("right","en");
+ if(matched)u.searchParams.set("locus",entry.locus);
+ a.href=u.pathname+u.search;a.style.cssText="display:inline-block;margin:9px 0;color:#d5dde4;text-decoration:underline";
+ output.append(a);return true;
+}
 function updateIndexedChoice(info){
  indexedVersions.clear();
  for(const e of (info?.editions||[]))if(registered(e)&&!indexedVersions.has(e.language))indexedVersions.set(e.language,e);
@@ -203,7 +225,11 @@ function showState(){
   presentIndexed(current,select.value,stamp);
   return;
  }
- if(!enabled){output.textContent=current?.language==="grc"
+ if(!enabled&&current?.language==="grc"&&select.value!=="en"&&indexedVersions.has("en")){
+   const stamp=++sequence;output.textContent="Consultando la traducción histórica inglesa disponible…";
+   void showHistoricalEnglishFallback(current,stamp);return;
+  }
+  if(!enabled){output.textContent=current?.language==="grc"
   ?"No hay traducción documentada para este locus en el idioma seleccionado. Se conserva el original griego; no se ofrece transliteración automática como traducción."
   :"No hay traducción indexada en "+({es:"castellano",en:"inglés",fr:"francés"}[select.value]||select.value)+". Podés activar una versión automática orientativa.";return}
  if(!current?.text){output.textContent="El pasaje todavía no está disponible.";return}
