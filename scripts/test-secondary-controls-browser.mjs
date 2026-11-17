@@ -66,7 +66,7 @@ try{
  // Preserve one interface language while crossing different site sections.
  {
   const page=await browser.newPage();
-  await page.route(/^https?:\\/\\/(?!127\\.0\\.1|localhost)/,route=>route.abort());
+  await page.route(/^https?:\/\/(?!127\.0\.0\.1|localhost)/,route=>route.abort());
   const itinerary=[
    ['index.html','.header-languages select'],
    ['bibliotheca-graeca-latina.html','#language-toggle'],
