@@ -309,6 +309,11 @@ const notableEditions=[
  {id:"kurilo-v297",type:"Edición bilingüe contemporánea · latín e inglés",author:"Diego Kurilo",title:"The Architect of Theory: Vitruvius and the Intellectual World of Roman Antiquity",date:"2026",url:"lector-bilingue.html?edition=theory-en&locus=1.1.1",doi:"10.5281/zenodo.23885404",isbn:"978-631-01-6651-3",forms:["V297","Kurilo inglés","Vitruvius English"]}
 ];
 function isVitruviusQuery(q){return /vitruv|vitruvii|de architectura/i.test(foldAuthority(q))}
+function isKuriloEditionQuery(q){
+ const text=foldAuthority(q);
+ return /\bkurilo\b|\bdiego kurilo\b|\bv514\b|\bv554\b|\bv297\b|architect of theory|arquitecto de la teoria|architecte de la theorie|nueva recensio academica|nouvelle recensio academique/i.test(text);
+}
+function isVitruvianEditionQuery(q){return isVitruviusQuery(q)||isKuriloEditionQuery(q)}
 function renderNotable(q,append=false){
  const {list,count,more}=model;model.region.hidden=false;
  if(!append){list.replaceChildren();more.hidden=true}
@@ -318,14 +323,17 @@ function renderNotable(q,append=false){
   source:c.source||"",forms:[...(c.aliases||[]),"vitruvio","vitruvius","codex"]
  }))];
  const term=q.trim(),author=model.authorFilter.value.trim(),vitruvius=isVitruviusQuery(term);
+ const authorKurilo=isKuriloEditionQuery(author);
  const matches=result.filter(e=>{
   const record={id:e.id,title:e.title,author:e.author,forms:e.forms||[]};
-  return (!term||vitruvius||rank(record,term)>0)&&(!author||rank({...record,title:"",forms:[e.author,...(e.forms||[])]},author)>60);
+  const byQuery=!term||((vitruvius&&!isKuriloEditionQuery(term))?true:rank(record,term)>0);
+  const byAuthor=!author||(authorKurilo&&e.id.startsWith("kurilo-"))||rank({...record,title:"",forms:[e.author,...(e.forms||[])]},author)>60;
+  return byQuery&&byAuthor&&(!authorKurilo||e.id.startsWith("kurilo-"));
  });
  if(append){
   if(!matches.length)return;
   const section=make("li",null,"bws-item bws-editions-heading");
-  section.append(make("h4","Códices y ediciones de Vitruvio · "+matches.length+" registros"));
+  section.append(make("h4",(isKuriloEditionQuery(term)||isKuriloEditionQuery(author)?"Ediciones de Diego Kurilo":"Códices y ediciones de Vitruvio")+" · "+matches.length+" registros"));
   section.append(make("p","Los testimonios manuscritos, las ediciones históricas y las traducciones modernas se muestran por separado; no se cuentan como obras antiguas distintas.","bws-meta"));
   list.append(section);
  }else count.textContent=matches.length+" ediciones y testimonios documentados · no se suman como obras antiguas independientes.";
@@ -391,7 +399,7 @@ function render(){
  count.textContent=found.length+" "+(found.length===1?"obra encontrada":"obras encontradas")+
   " por autor, título o materia documentada. Las equivalencias temáticas son orientativas, no lemas verificados.";
  if(!found.length){
-  if(isVitruviusQuery(q)){renderNotable(q,true);return}
+  if(isVitruvianEditionQuery(q)||isKuriloEditionQuery(model.authorFilter.value)){renderNotable(q,true);return}
   list.append(make("li","No se encontraron obras con ese título o autor. Pruebe otra grafía o denominación.","bws-empty"));return
  }
  for(const {w} of found.slice(0,limit)){
@@ -416,7 +424,7 @@ function render(){
   if(!w.newWork&&!w.registryOnly)addLink(actions,"Ficha académica",workLink(w.id));
   item.append(actions);if(!(w.id==="vitruvius"&&isVitruviusQuery(q)))renderVitruvianCodices(item,w);list.append(item);
  }
- if(isVitruviusQuery(q)){
+ if(isVitruvianEditionQuery(q)||isKuriloEditionQuery(model.authorFilter.value)){
   renderNotable(q,true);
   count.textContent=found.length+" obra(s) del catálogo · códices, ediciones históricas y versiones modernas consultables en los resultados.";
  }
