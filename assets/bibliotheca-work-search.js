@@ -472,6 +472,30 @@ function letterMatch(w,letter,byTitle){
 function render(){
  if(!model)return;
  const {input,list,count,more,limit}=model,rawQuery=input.value.trim(),typedLetter=singleLetter(rawQuery),q=typedLetter?"":rawQuery;
+ // Bibliotheca front: permanent, simple alphabetical list. Titles remain
+ // linked to the actual scholarly record/reader; no covers or editorial cards.
+ if(document.body.classList.contains("bibliotheca-plain-list")){
+  const {list,count,more}=model;
+  model.region.hidden=false;
+  list.replaceChildren();
+  const works=[...model.items].sort((a,b)=>
+   a.author.localeCompare(b.author,"es",{sensitivity:"base"})||
+   a.title.localeCompare(b.title,"es",{sensitivity:"base"}));
+  for(const w of works){
+   const li=make("li",null,"bws-item");
+   const title=make("a",w.title,"bws-plain-title");
+   const original=w.versions?.find(v=>["la","grc"].includes(v.language)&&safeReader(v.reader));
+   title.href=!w.newWork&&!w.registryOnly?workLink(w.id):
+    original?.reader&&safeReader(original.reader)?safeReader(original.reader):
+    "classics-work-record.html?work="+encodeURIComponent(w.id);
+   const author=make("span",w.author||"Autor no identificado","bws-plain-author");
+   li.append(title,author);list.append(li);
+  }
+  count.textContent=works.length+" obras";
+  more.hidden=true;
+  return;
+ }
+
  const hasFacets=Boolean(model.authorFilter.value.trim()||model.genreFilter.value||model.subjectFilter.value||model.centuryFilter.value||model.periodFilter.value||model.languageFilter.value||model.letter||typedLetter);
  const hasQuery=normal(q).length>=2;
  if(model.periodFilter.value==="modern-notable"){renderNotable(q);return;}
