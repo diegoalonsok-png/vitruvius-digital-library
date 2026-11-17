@@ -588,15 +588,15 @@ function renderMore(){
    '<p class="result-locus">Libro '+roman(r.book)+' · '+(r.chapter==='praef'?'Prólogo':'Capítulo '+escapeHTML(r.chapter))+' · Sección '+escapeHTML(r.section)+'</p>'+
    '<div class="parallel-columns">'+
      '<section class="parallel-latin" lang="la" aria-label="Texto latino original">'+
-       '<div class="parallel-heading"><span class="parallel-edition-language">LATÍN · TEXTO ORIGINAL</span>'+parallelEditionIdentity(e)+'<small class="parallel-page-citation">'+(pdfpage?'PDF p. '+escapeHTML(pdfpage):'PDF: página no identificada')+'</small></div>'+
+       '<div class="parallel-heading"><span>LATÍN</span><strong>'+(pdfpage?'PDF p. '+escapeHTML(pdfpage):'Página PDF no identificada')+'</strong></div><div class="parallel-biblio-line">'+parallelEditionIdentity(e)+'</div>'+
        '<p class="parallel-passage">'+((parallelHighlight(latinParagraph,{query:lastQuery,lang:'la',latin:r.latin})?.equivalent||parallelHighlight(latinParagraph,{query:lastQuery,lang:'la',latin:r.latin})?.direct)?parallelHighlight(latinParagraph,{query:lastQuery,lang:'la',latin:r.latin}).html:resultSnippet({snippet:latinParagraph,form:'',context_start:null,context_length:null}))+'</p>'+
        '<div class="parallel-latin-source" aria-label="Procedencia bibliográfica de la edición latina"><span class="parallel-source-label">Fuente del latín: '+escapeHTML(e.version)+' · Diego Kurilo · Latín'+(pdfpage?' · PDF p. '+escapeHTML(pdfpage):' · página PDF no registrada')+'</span><p class="parallel-biblio">'+bibliographyHTML(e)+'</p></div>'+
        '<p class="parallel-small">Este texto latino procede de la edición indicada arriba. Consultar variantes en el aparato crítico.</p>'+
      '</section>'+
      '<section class="parallel-translation" aria-label="Traducción del mismo locus">'+
-       '<div class="parallel-heading"><span class="parallel-edition-language">TRADUCCIÓN</span><span class="parallel-translation-identity">'+parallelEditionIdentity(edition(translationEditionIds[rowLanguage]))+'</span><label>IDIOMA <select class="parallel-language" aria-label="Elegir idioma de la traducción del pasaje">'+
+       '<div class="parallel-heading"><span>TRADUCCIÓN</span><label>IDIOMA <select class="parallel-language" aria-label="Elegir idioma de la traducción del pasaje">'+
          '<option value="es">Castellano</option><option value="fr">Français</option><option value="en">English</option>'+
-       '</select></label></div>'+
+       '</select></label></div><div class="parallel-biblio-line parallel-translation-identity">'+parallelEditionIdentity(edition(translationEditionIds[rowLanguage]))+'</div>'+
        '<p class="parallel-passage parallel-translation-text" aria-live="polite">Cargando traducción…</p>'+
        '<div class="parallel-match-controls"><p class="parallel-match-note" hidden></p><button class="parallel-equivalent-toggle" type="button" aria-pressed="true" hidden>Ocultar equivalencias</button></div>'+
        '<div class="parallel-translation-source"></div>'+
