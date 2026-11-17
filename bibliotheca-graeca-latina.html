@@ -59,7 +59,7 @@
 <script defer src="assets/academic-inline-translation.js?v=20261117-unicode-rate-limit-v6"></script><script defer src="assets/scholarly-passage-citation.js?v=20261113-citable-1"></script>
 <script defer src="assets/bibliotheca-simple.js?v=20261116-notebook-scope-v1"></script>
 <script defer src="assets/bibliotheca-genre-work-list.js?v=20261114-academic-order-v1"></script>
-<link rel="stylesheet" href="assets/bibliotheca-work-search.css?v=20261117-lexicon-alphabets-v1"><script defer src="assets/bibliotheca-work-search.js?v=20261117-alphabet-expanders-v1"></script>
+<link rel="stylesheet" href="assets/bibliotheca-work-search.css?v=20261117-lexicon-alphabets-v1"><script defer src="assets/bibliotheca-work-search.js?v=20261117-plain-list-v2"></script>
 <script defer src="assets/bibliotheca-entity-search.js?v=20261115-onomastics-v1"></script>
 <script defer src="assets/bibliotheca-concordance.js?v=20261115-loci-provenance-v2"></script>
 <script defer src="assets/classics-corpus-counts.js?v=20261117-real-counts-v1"></script>
@@ -270,6 +270,9 @@ html[data-theme="light"] body main.library :is(#bibliotheca-work-search .bws-act
 </style>
 <style id="bibliotheca-plain-catalogue-v2">
 /* Only a direct Lexicon search and readable title–author rows are public. */
+body.bibliotheca-plain-list main.library #bibliotheca-entity-search,
+body.bibliotheca-plain-list main.library #bibliotheca-concordance,
+body.bibliotheca-plain-list main.library #bibliotheca-documentary-status,
 body.bibliotheca-plain-list main.library #classics-tally,
 body.bibliotheca-plain-list main.library #classics-audit-coverage,
 body.bibliotheca-plain-list main.library .bibliotheca-search-modes,
