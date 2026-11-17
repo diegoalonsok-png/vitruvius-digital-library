@@ -522,7 +522,7 @@ function studyRender(){
  const p=document.createElement("p"),links=document.createElement("div");links.className="study-actions";
  const ref=displayLocus(source[pos]?.locus||"");
  const word=selectedStudyWord;
- const add=(name,url)=>{const a=document.createElement("a");a.textContent=name;a.href=url;a.target="_blank";a.rel="noopener noreferrer";links.append(a)};
+ const add=(name,url)=>{const a=document.createElement("a");a.textContent=name;a.href=url;if(!url.startsWith("#")){a.target="_blank";a.rel="noopener noreferrer"}links.append(a)};
  const note=(message)=>{const x=document.createElement("p");x.textContent=message;panel.append(x)};
  const questions=(items)=>{const ul=document.createElement("ul");for(const q of items){const li=document.createElement("li");li.textContent=q;ul.append(li)}panel.append(ul)};
  for(const tab of document.querySelectorAll("[data-study]"))tab.setAttribute("aria-selected",String(tab.dataset.study===studyMode));
