@@ -1796,7 +1796,7 @@ async function search(){
    // Latin-script 'logos' is an explicit documented spelling lookup for
    // Greek λόγος; it does NOT imply automatic lemmatization or translation.
    const normalized=String(generalQuery||"").normalize("NFD")
-    .replace(/[\\u0300-\\u036f]/g,"").toLocaleLowerCase();
+    .replace(/\p{M}/gu,"").toLocaleLowerCase();
    const terms=normalized==="logos"?
     [generalQuery,"λόγος"]: [generalQuery];
    const verified=await window.ClassicsCorpusSearch.searchPassages(terms,{
@@ -1814,7 +1814,7 @@ async function search(){
     source:"Bibliotheca Graeca et Latina · "+(p.attribution||"texto registrado")
    }));
   }).then(rows=>({name:"Pasajes de Bibliotheca · original y traducciones registradas",rows}))
-   .catch(e=>({name:"Pasajes de Bibliotheca no disponibles",rows:[],warnings:[String(e.message||e)]}))));
+   .catch(e=>({name:"Pasajes de Bibliotheca no disponibles",rows:[],warnings:[String(e.message||e)]})));
  }
  if((expanded||/\b(aparato|apparatus|variante|lectio)\b/i.test(q))&&internal&&window.KuriloApparatus){
   const ap=window.KuriloApparatus,apLimit=/\b(aparato|apparatus|apparat|ecd[oó]tic|nota cr[ií]tica|variante|lectio|krohn|rose)\b/i.test(generalQuery)?14:6;
