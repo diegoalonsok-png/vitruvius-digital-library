@@ -87,7 +87,7 @@ const fold=s=>String(s||"").normalize("NFD").replace(/\p{M}/gu,"").toLowerCase()
 let D,vis=[],shown=0;const PASO=60;
 function celdaAp(f,k){const td=document.createElement("td");const a=f[k];if(!a){td.textContent="Sin entrada OCR localizada · cotejo pendiente";return td}
  if(!a.entradas.length){td.append(el("span","sin entrada para este pasaje","g"))}
- a.entradas.forEach(e=>{const s=el("span",null,"e");s.append(e.texto);s.append(el("span","l. "+e.linea+" · OCR candidato, no cotejado","src"));td.append(s)});
+ a.entradas.forEach(e=>{const s=el("span",null,"e");s.append(e.texto);s.append(el("span","l. "+e.linea+" · referencia pendiente de cotejo","src"));td.append(s)});
  const ln=el("a","p. "+a.pagina+" ↗","small");ln.href=a.pdf;ln.target="_blank";ln.rel="noopener";td.append(ln);return td}
 function fila(f){const tr=document.createElement("tr");
  const l=el("td",null,"l");const a=el("a",f.locus);a.href="apparatus-bude.html?locus="+encodeURIComponent(f.locus);a.title="Abrir pasaje en el lector crítico integrado";l.append(a);a.addEventListener("click",event=>{event.preventDefault();window.dispatchEvent(new CustomEvent("vdl:comparative-locus-select",{detail:{locus:f.locus}}));document.getElementById("bude-unit")?.scrollIntoView({behavior:"smooth",block:"start"})});const traditional=el("a"," · lector bilingüe","src");traditional.href="lector-bilingue.html?locus="+encodeURIComponent(f.locus);l.append(traditional);
@@ -99,7 +99,7 @@ function fila(f){const tr=document.createElement("tr");
  tr.append(v,celdaAp(f,"rose-1899"),celdaAp(f,"krohn-1912"));return tr}
 function pintar(reset){const tb=$("#filas");if(reset){tb.textContent="";shown=0}
  vis.slice(shown,shown+PASO).forEach(f=>tb.append(fila(f)));shown=Math.min(vis.length,shown+PASO);$("#mas").hidden=shown>=vis.length;
- $("#estado").textContent=vis.length+" loci mostrados de "+D.recuentos.lociNavegables+" del corpus · "+D.recuentos.lociConMaterial+" con material documental · "+D.recuentos.lociPendientesSinEntrada+" sin entrada crítica registrada · "+D.recuentos.entradasRose+" entradas Rose y "+D.recuentos.entradasKrohn+" Krohn (OCR candidato)."}
+ $("#estado").textContent=vis.length+" loci mostrados de "+D.recuentos.lociNavegables+" del corpus · "+D.recuentos.lociConMaterial+" con material documental · "+D.recuentos.lociPendientesSinEntrada+" sin entrada crítica registrada · "+D.recuentos.entradasRose+" entradas Rose y "+D.recuentos.entradasKrohn+" Krohn."}
 function filtrar(){const q=fold($("#q").value.trim()),w=$("#wit").value;
  vis=D.loci.filter(f=>{if(w==="v514"&&!f.v514.length&&!f.v514SinLema)return false;if(w&&w!=="v514"&&!(f.testigos||[]).includes(w))return false;
   if(!q)return true;if(/^\d/.test(q))return f.locus===q||f.locus.startsWith(q+".");
