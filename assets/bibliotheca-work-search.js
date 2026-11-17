@@ -340,8 +340,8 @@ function renderNotable(q,append=false){
  if(!matches.length){list.append(make("li","Sin coincidencias en ediciones modernas y códices documentados.","bws-empty"));return}
  for(const e of matches){
   const li=make("li",null,"bws-item"),heading=make("div",null,"bws-heading");heading.append(make("strong",e.title),make("span"," · "+e.author));li.append(heading);
-  li.append(make("p",e.type+(e.date?" · "+e.date:""),"bws-meta"));
-  if(e.isbn||e.doi){const p=make("p","ISBN editorial declarado: "+(e.isbn||"no consignado")+(e.doi?" · DOI: "+e.doi:""),"bws-meta");li.append(p)}
+  li.append(make("p",(e.id.startsWith("kurilo-")?e.id.split("-")[1].toUpperCase()+" · ":"")+e.type+(e.date?" · "+e.date:""),"bws-meta"));
+  if(e.isbn||e.doi){const p=make("p",(e.isbn?"ISBN editorial declarado (atribución individual sin verificar): "+e.isbn:"")+(e.doi?" · DOI: "+e.doi:""),"bws-meta");li.append(p)}
   const links=make("nav",null,"bws-actions");addLink(links,e.id.startsWith("kurilo-")?"Leer edición":e.id==="rose-1899"||e.id==="krohn-1912"?"Consultar edición":"Consultar visor o ficha",e.url);
   if(e.source)addLink(links,"Fuente documental",e.source);
   if(e.doi)addLink(links,"DOI de la edición","https://doi.org/"+e.doi);
