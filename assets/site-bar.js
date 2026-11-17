@@ -27,7 +27,7 @@ if(!document.querySelector('script[data-research-crosslinks]')){
 const editionIdentityPage=(location.pathname.split("/").pop()||"index.html").toLowerCase().replace(/\.html$/,"");
 if(editionIdentityPage!=="vitruvia"&&!document.querySelector('script[data-vdl-edition-identity]')){
  const identity=document.createElement("script");
- identity.src=root+"assets/vdl-edition-identity-strip.js?v=20261115-citation-audit-v4";
+ identity.src=root+"assets/vdl-edition-identity-strip.js?v=20261117-no-vitruvia-v5";
  identity.defer=true;identity.dataset.vdlEditionIdentity="";document.head.append(identity);
 }
 const secondaryPageRaw=(location.pathname.split("/").pop()||"index.html").toLowerCase();
