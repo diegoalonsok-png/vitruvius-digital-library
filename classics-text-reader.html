@@ -537,9 +537,10 @@ const palette=document.getElementById("reader-lexicon-palette"),ui=document.getE
 const paletteSlot=document.getElementById("reader-palette-top-slot"),uiSlot=document.getElementById("reader-ui-top-slot"),fontSlot=document.getElementById("reader-font-top-slot");
 if(!main||!top||!palette||!ui||!font||!paletteSlot||!uiSlot||!fontSlot)return;
 paletteSlot.append(palette);uiSlot.append(ui);
+const originalFontLabel=font.closest("label");
 const label=document.createElement("label");label.textContent="Fuente";
-font.parentElement?.insertBefore(document.createComment("Font selector moved to Lexicon Aa"),font);
 label.append(font);fontSlot.append(label);
+if(originalFontLabel)originalFontLabel.remove();
 function syncLanguages(){
  const selected=main.value;
  top.replaceChildren(...Array.from(main.options).filter(o=>!o.disabled&&!o.hidden).map(o=>o.cloneNode(true)));
