@@ -4,6 +4,7 @@ const DATA="data/apparatus/dossier-integrado-731-loci-latin-traducciones.json";
 const $=id=>document.getElementById(id);
 const norm=s=>{s=String(s||"").trim().toLowerCase();const m=s.match(/^([ivx]+)\./);if(m){let n=0,p=0;for(const ch of [...m[1]].reverse()){const v={i:1,v:5,x:10}[ch];n+=v<p?-v:v;p=v}s=n+s.slice(m[1].length);}return s};
 let data=null,byId=null,root=null,selected="";
+const editionBibliography={es:{title:"Vitruvio. De architectura. Nueva recensio académica bilingüe: El arquitecto de la teoría",doi:"10.5281/zenodo.23884757",isbn:"978-631-01-6651-3"},fr:{title:"Vitruve. De architectura. Nouvelle recensio académique bilingue: L’architecte de la théorie",doi:"10.5281/zenodo.23885110",isbn:"978-631-01-6651-3"},en:{title:"The Architect of Theory: Vitruvius and the Intellectual World of Roman Antiquity",doi:"10.5281/zenodo.23885404",isbn:"978-631-01-6651-3"}};
 function element(tag,content){const v=document.createElement(tag);if(content!==undefined)v.textContent=content;return v}
 function item(label,content){const p=element("p");p.append(element("strong",label+": "),document.createTextNode(content||"Sin registro"));return p}
 function render(locus){
@@ -31,7 +32,7 @@ function render(locus){
  const translations=element("div");translations.append(element("h4","Versiones castellana, francesa e inglesa (Kurilo)"));
  for(const [k,label] of [["es","Castellano V514"],["fr","Francés V554"],["en","Inglés V297"]]){
  const q=record.translations[k];
- translations.append(item(label,q.available?q.excerpt:q.merged_segment?"Integrado en el locus indexado "+q.aligned_locus+": "+q.excerpt:"No hay fragmento de traducción indexado en el locus"));
+ const bib=editionBibliography[k];const heading=element("p");heading.append(element("strong",label+" · "+bib.title));heading.append(document.createTextNode(" · ISBN editorial declarado: "+bib.isbn+" (compartido; asignación registral por edición pendiente de verificación) · "));const doi=element("a","DOI: "+bib.doi);doi.href="https://doi.org/"+bib.doi;doi.target="_blank";doi.rel="noopener noreferrer";heading.append(doi);translations.append(heading);translations.append(item("Texto",q.available?q.excerpt:q.merged_segment?"Integrado en el locus indexado "+q.aligned_locus+": "+q.excerpt:"No hay fragmento de traducción indexado en el locus"));
  }
  place.append(translations);
  if(record.translation_note){place.append(item("Comparación interpretativa",record.translation_note.analysis));if(record.translation_note.quality_flag&&record.translation_note.quality_flag!=="interpreted_from_index")place.append(item("Control de calidad",record.translation_note.quality_flag))}
@@ -47,20 +48,20 @@ function init(){
  section.append(element("h3","Collatio quinque editionum · 731 loci"));
  section.append(element("p","Dossier de localización y cotejo digital por locus; muestra el estado de lectura, divergencias candidatas y fragmentos de las tres traducciones. No declara cotejo autóptico de Rose, Krohn ni H."));
  const form=element("form");form.style.cssText="display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin:12px 0";
- const label=element("label","Locus ");label.htmlFor="vdl-dossier-locus";const field=element("input");field.id="vdl-dossier-locus";field.placeholder="1.2.2, 7.7.3, 10.11.7";field.value=norm(new URLSearchParams(location.search).get("locus")||"1.1.1");field.setAttribute("list","vdl-dossier-loci");field.style.cssText="font:inherit;min-width:160px;padding:7px";label.append(field);form.append(label);
+ const label=element("label","Libro y locus ");label.htmlFor="vdl-dossier-locus";const field=element("select");field.id="vdl-dossier-locus";field.style.cssText="font:inherit;min-width:240px;max-width:100%;padding:7px";label.append(field);form.append(label);
  const go=element("button","Examinar locus");go.type="submit";go.style.cssText="font:inherit;padding:7px 12px";form.append(go);section.append(form);
- const datalist=element("datalist");datalist.id="vdl-dossier-loci";section.append(datalist);
+ 
  const status=element("p","Cargando dossier…");status.id="vdl-dossier-status";status.setAttribute("role","status");section.append(status);
  const output=element("div");output.id="vdl-dossier-output";output.setAttribute("aria-live","polite");section.append(output);
  const target=document.getElementById("bude-unit")||document.getElementById("bude-content");
  if(target)target.insertAdjacentElement("beforebegin",section);else main.append(section);
- form.addEventListener("submit",e=>{e.preventDefault();render(field.value)});
+ form.addEventListener("submit",e=>{e.preventDefault();render(field.value)});field.addEventListener("change",()=>{render(field.value);window.dispatchEvent(new CustomEvent("vdl:comparative-locus-select",{detail:{locus:field.value}}))});
  window.addEventListener("vdl:comparative-locus-render",e=>{if(e.detail?.locus){field.value=e.detail.locus;render(e.detail.locus)}});
  window.addEventListener("popstate",()=>{field.value=new URLSearchParams(location.search).get("locus")||"1.1.1";render(field.value)});
  fetch(DATA).then(r=>{if(!r.ok)throw Error("HTTP "+r.status);return r.json()}).then(x=>{
  if(x.rows?.length!==731)throw Error("Loci incompletos");
  data=x;byId=new Map(x.rows.map(y=>[y.locus,y]));
- for(const row of x.rows){const opt=element("option");opt.value=row.locus;datalist.append(opt)}
+ const selectedLocus=norm(new URLSearchParams(location.search).get("locus")||"1.1.1");let group=null,lastBook="";for(const row of x.rows){const book=row.locus.split(".")[0];if(book!==lastBook){group=element("optgroup");group.label="Libro "+book;field.append(group);lastBook=book}const opt=element("option",row.locus.replace(".praef."," · Prefacio § "));opt.value=row.locus;group.append(opt)}field.value=byId.has(selectedLocus)?selectedLocus:x.rows[0].locus;
  status.textContent="731 loci accesibles · 31 expedientes filológicos · 31 comentarios de traducción · 4 expedientes con comprobación impresa registrada. La colación digital es exhaustiva; la verificación filológica no.";
  render(field.value);
  }).catch(e=>{status.textContent="Error al leer el dossier: "+e.message});
