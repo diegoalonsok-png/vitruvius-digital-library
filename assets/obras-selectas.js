@@ -61,7 +61,7 @@ async function load(){
   render();
  }catch(err){
   message.textContent="No fue posible comprobar el catálogo en este momento.";
-  add("p","error",err.message+" · Consultá el catálogo general mientras se restablece la consulta.",list);
+  add("p","error",err.message+" · Consulta el catálogo general mientras se restablece la consulta.",list);
  }
 }
 if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",load,{once:true});else load();

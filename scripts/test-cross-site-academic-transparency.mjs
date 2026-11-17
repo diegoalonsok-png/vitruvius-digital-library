@@ -29,8 +29,10 @@ assert.equal(coverage.works.length,road.items.length,"Las fichas deben concordar
 assert.equal(coverage.counts.cataloguedWorks,road.items.length);
 assert.equal(road.counts.originalsIndexed,works.size);
 assert.equal(works.size,road.counts.originalsIndexed,"Los originales locales indexados deben corresponder al roadmap");
-const searchableWorks=new Set(registry.entries.map(e=>e.workId));
-assert.equal(coverage.counts.indexedDistinctWorks,searchableWorks.size,"Los distintos registros indexados deben concordar con el registro de búsqueda");
-assert.equal(registry.entries.length,coverage.counts.indexedTextVersions);
-assert.equal(registry.works,searchableWorks.size);
+const mainWorkIds=new Set(road.items.map(w=>w.id));
+const mainSearchEntries=registry.entries.filter(e=>mainWorkIds.has(e.workId));
+const searchableWorks=new Set(mainSearchEntries.map(e=>e.workId));
+assert.equal(coverage.counts.indexedDistinctWorks,searchableWorks.size,"La auditoría del catálogo principal debe concordar con sus obras indexadas");
+assert.equal(mainSearchEntries.length,coverage.counts.indexedTextVersions,"La auditoría histórica solo cuenta versiones del catálogo principal");
+assert.equal(registry.works,new Set(registry.entries.map(e=>e.workId)).size,"El registro federado debe contar todas las obras indexadas");
 console.log("PASS: All four sites link a provenance dashboard and count only verified local works.");

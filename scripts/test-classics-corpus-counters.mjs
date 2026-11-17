@@ -12,7 +12,7 @@ for(const doc of [page,bib]){
 assert(bib.includes("assets/classics-corpus-counts.js"),"Bibliotheca must provide the catalogue counters");
 assert(bib.includes("assets/bibliotheca-academic-provenance.js"));
 assert(page.includes('data-cifra="obrasConTextoIndexado"'),"La portada debe mostrar obras realmente indexadas");
-assert(page.includes('data-cifra="obrasTotalesDeclaradas"'),"La portada debe mostrar el catálogo federado sin duplicaciones");
+assert(page.includes('assets/cifra-obras.js'),"La portada debe cargar cifras federadas desde el manifiesto compartido");
 assert(page.includes("CODEX_H_HARLEY_2767_ARCHIVO_MAESTRO_NO_BORRAR"));
 assert(bib.includes("assets/bibliotheca-simple.js"));
 const counts=fs.readFileSync("assets/classics-corpus-counts.js","utf8");
