@@ -495,7 +495,7 @@ async function searchPassages(terms,{limit=600,workId="",language="",maxPerEditi
 async function sampleWorkPassages(workIds,{limit=24,maxPerEdition=2}={}){
  const ids=new Set((workIds||[]).filter(Boolean));
  const entries=(await registry()).filter(e=>ids.has(e.workId)&&
-  e.format!=="historical-ocr-pages"&&e.format!=="remote-json-passages");
+  e.format!=="historical-ocr-pages");
  const rows=[];
  for(let offset=0;offset<entries.length&&rows.length<limit;offset+=4){
   await Promise.all(entries.slice(offset,offset+4).map(async e=>{
