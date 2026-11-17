@@ -59,6 +59,31 @@ for(const [code,name] of Object.entries(labels)){
  b.addEventListener("click",()=>{lang=code;render(true)});
 }
 panel.append(tabs,queryRow,termNote,results,status);
+const scholarly=el("div");scholarly.style.cssText="margin-top:14px;padding:11px 12px;border-top:1px solid #7776";
+scholarly.append(el("h4","Concordancia por lema y cotejo ecdótico"));
+scholarly.append(el("p","La búsqueda @lema opera sobre las lematizaciones registradas en el índice local; no convierte una semejanza ortográfica en identidad morfológica. Los aparatos solo documentan variantes cuando existe un testimonio comprobado.","lx-dict-meta"));
+const toolsRow=el("div");toolsRow.style.cssText="display:flex;gap:9px;flex-wrap:wrap;align-items:center";
+const lemmaLink=el("a","Buscar @lema en Lexicon");lemmaLink.href="vitruvia-lexicon.html";lemmaLink.style.cssText="padding:6px 10px;border:1px solid #7777;border-radius:5px";
+const formLink=el("a","Buscar forma literal");formLink.href="vitruvia-lexicon.html";formLink.style.cssText="padding:6px 10px;border:1px solid #7777;border-radius:5px";
+const locus=el("input");locus.type="text";locus.placeholder="Locus: 1.1.1";locus.setAttribute("aria-label","Locus canónico de Vitruvio");
+locus.style.cssText="max-width:115px;min-width:0;padding:6px;border:1px solid #7777;border-radius:5px;background:transparent;color:inherit";
+const apparatus=el("a","Aparato Budé");apparatus.style.cssText="padding:6px 10px;border:1px solid #7777;border-radius:5px";
+const collation=el("a","Colación por locus");collation.style.cssText="padding:6px 10px;border:1px solid #7777;border-radius:5px";
+const locusHint=el("small","Introducí un locus válido; ningún enlace confirma una variante por sí solo.");
+function updateScholarly(){
+ const term=clean(input.value)||clean(q.value);
+ lemmaLink.href="vitruvia-lexicon.html?q="+encodeURIComponent("@"+term)+"&mode=palabra";
+ formLink.href="vitruvia-lexicon.html?q="+encodeURIComponent(term)+"&mode=palabra";
+ const l=String(locus.value||"").trim(),valid=/^(?:[1-9]|10)\\.\\d+\\.\\d+$/.test(l);
+ apparatus.href=valid?"apparatus-bude.html?locus="+encodeURIComponent(l)+"&edition=v514&translation=es":"apparatus-bude.html";
+ collation.href=valid?"colacion.html?locus="+encodeURIComponent(l):"colacion.html";
+ locusHint.textContent=valid?"Locus "+l+" · cotejar lecturas y fuentes; no atribuir variantes sin comprobación.":"Escribí un locus como 1.1.1; la colación automática no acredita un manuscrito.";
+}
+input.addEventListener("input",updateScholarly);locus.addEventListener("input",updateScholarly);
+toolsRow.append(lemmaLink,formLink,locus,apparatus,collation);
+scholarly.append(toolsRow,locusHint);panel.append(scholarly);
+const requestedLocus=new URLSearchParams(location.search).get("locus");
+if(requestedLocus)locus.value=requestedLocus;
 root.append(panel);
 const clean=s=>String(s||"").trim().replace(/^[@#=√]+/,"").slice(0,100);
 const guess=s=>/[\u0590-\u05ff\u0700-\u074f\u0780-\u07bf]/u.test(s)?"he":/[\u0370-\u03ff\u1f00-\u1fff]/u.test(s)?"attic":"la";
@@ -68,6 +93,7 @@ function render(keepTerm=false){
  input.lang=lang==="he"?"he":lang==="arc"?"arc":lang==="la"?"la":"grc";
  input.dir=lang==="he"||lang==="arc"?"rtl":"auto";
  const term=clean(input.value),request=++seq;
+ updateScholarly();
  results.replaceChildren();status.textContent="";
  const grc=lang==="attic"||lang==="koine";
  termNote.textContent=grc?"El politónico indica grafía, no dialecto. Ático y koiné se distinguen por corpus, autor y fecha; las acepciones deben verificarse en sus loci.":lang==="arc"?"Arameo bíblico, targúmico, rabínico y siríaco requieren distinguir dialecto y escritura; semejanza gráfica ≠ misma lectura.":"Coincidencia de forma ≠ lema inequívoco; ninguna fuente externa altera la lectura del texto.";
@@ -113,6 +139,5 @@ consult.addEventListener("click",()=>render(true));
 input.addEventListener("keydown",e=>{if(e.key==="Enter"){e.preventDefault();render(true)}});
 const main=document.getElementById("lx-form");
 main?.addEventListener("submit",()=>{input.value=clean(q.value);lang=guess(q.value);render(true)});
-const obs=new MutationObserver(()=>{}); // no sincronización de datos ni alteración de índices
-lang=guess(q.value);render();
+lang=guess(q.value);render();updateScholarly();
 })();
