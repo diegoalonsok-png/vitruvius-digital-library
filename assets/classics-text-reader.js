@@ -33,7 +33,7 @@ window.addEventListener("message",event=>{
 });
 
 /* Appearance controls supplied by the same-origin twin reader; editorial text is unchanged. */
-const PARALLEL_FONTS={serif:'Georgia, "Times New Roman", serif',sans:'system-ui, sans-serif',mono:'ui-monospace, monospace',classic:'"Palatino Linotype", "Book Antiqua", Palatino, serif'};
+const PARALLEL_FONTS={serif:'Georgia, "Times New Roman", serif',sans:'system-ui, sans-serif',mono:'ui-monospace, monospace',typewriter:'"Courier New","Liberation Mono",monospace',courier:'"Courier New",Courier,monospace',ibm:'"IBM Plex Mono",ui-monospace,monospace',classic:'"Palatino Linotype", "Book Antiqua", Palatino, serif'};
 window.addEventListener("message",event=>{
  if(event.origin!==location.origin||event.source!==window.parent||window.parent===window)return;
  const cmd=event.data;
