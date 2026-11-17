@@ -112,6 +112,61 @@ separator.addEventListener("keydown",event=>{
   try{localStorage.setItem(key,String(width))}catch{}
  }
 });
+// Prioridad editorial: las traducciones indexadas prevalecen sobre servicios automáticos.
+// Solo presentamos loci realmente identificados en ambas ediciones; nunca alineamos
+// por posición de párrafo ni fabricamos texto para un locus diferente.
+const indexedVersions=new Map(),indexedFiles=new Map();
+const safeEditionPath=path=>typeof path==="string"&&(
+ /^data\\/(?:classics-corpus|structured|lexicon\\/fontes)\\/[a-z0-9/_-]+\\.json$/.test(path)||
+ /^https:\\/\\/libros\\.vitruvius-digital-library\\.org\\/corpus\\/[a-z0-9_-]+\\.json$/.test(path));
+function registered(e){return e&&e.workId===work&&["es","en","fr"].includes(e.language)&&
+ ["json-passages","structured-bilingual"].includes(e.format)&&safeEditionPath(e.path);}
+function versionLink(e,locus){
+ const u=new URL("classics-text-reader.html",location.href);
+ u.searchParams.set("work",work);u.searchParams.set("lang",e.language);
+ if(locus)u.searchParams.set("locus",locus);
+ return u.pathname+u.search;
+}
+async function indexedPassages(e){
+ if(!indexedFiles.has(e.path))indexedFiles.set(e.path,fetch(e.path).then(r=>{
+  if(!r.ok)throw Error("HTTP "+r.status);
+  return r.json();
+ }).then(j=>Array.isArray(j.passages)?j.passages:[]).catch(()=>[]));
+ return indexedFiles.get(e.path);
+}
+async function presentIndexed(entry,target,stamp){
+ const e=indexedVersions.get(target);
+ if(!e)return false;
+ // Una edición declarada no es una traducción automática ni una alineación certificada.
+ const paragraphs=await indexedPassages(e);
+ if(stamp!==sequence||current!==entry||mode.value==="pdf")return true;
+ const matched=paragraphs.find(p=>String(p.locus||"").trim()===String(entry.locus||"").trim()&&
+ typeof (p.text||p.translation)==="string"&&(p.text||p.translation).trim());
+ output.replaceChildren();
+ if(matched){
+  const para=el("p",null,matched.text||matched.translation);para.lang=target;
+  output.append(para);
+  note.textContent="Traducción indexada: "+(e.sourceDescription||e.edition||"versión bibliográfica")+" · Locus coincidente "+entry.locus+". No es una traducción automática.";
+ }else{
+  output.append(el("p",null,"Existe una traducción indexada en este idioma, pero no se acreditó correspondencia exacta con el locus seleccionado."));
+  note.textContent="Para evitar alineaciones falsas, abrí la versión textual registrada en su propio lector.";
+ }
+ const a=el("a",null,"Consultar traducción indexada · "+target.toUpperCase()+" ↗");
+ a.href=versionLink(e,matched?entry.locus:null);a.style.cssText="display:inline-block;margin:9px 0;color:#e3c78f;text-decoration:underline";
+ output.append(a);
+ return true;
+}
+function updateIndexedChoice(info){
+ indexedVersions.clear();
+ for(const e of (info?.editions||[]))if(registered(e)&&!indexedVersions.has(e.language))indexedVersions.set(e.language,e);
+ const target=select.value;
+ const hasIndexed=indexedVersions.has(target);
+ translate.hidden=hasIndexed||enabled;stop.hidden=hasIndexed||!enabled;
+ translate.disabled=hasIndexed;
+ translate.title=hasIndexed?"Ya existe una traducción documental indexada: no se necesita traducción automática.":"Traducir bajo demanda cuando no existe versión indexada.";
+ translation.setAttribute("aria-label",hasIndexed?"Traducción indexada":"Traducción automática orientativa");
+ return hasIndexed;
+}
 function updateLang(){
  const source=current?.language;
  const isOriginal=source==="la"||source==="grc";
@@ -129,12 +184,19 @@ function showState(){
  if(!ok)return;
  label.textContent="Locus "+(window.ClassicsAcademicReader?.shortLocus(current?.locus)||current?.locus||"—")+(current?.title?" · "+current.title:"");
  if(mode.value==="pdf")return;
- if(!enabled){output.textContent="Idioma seleccionado: "+({es:"castellano",en:"inglés",fr:"francés"}[select.value]||select.value)+". Pulsá «Activar traducción automática» para traducir este locus.";return}
+ if(updateIndexedChoice(current)){
+  const stamp=++sequence;
+  output.textContent="Consultando traducción indexada…";
+  presentIndexed(current,select.value,stamp);
+  return;
+ }
+ if(!enabled){output.textContent="No hay traducción indexada en "+({es:"castellano",en:"inglés",fr:"francés"}[select.value]||select.value)+". Podés activar una versión automática orientativa.";return}
  if(!current?.text){output.textContent="El pasaje todavía no está disponible.";return}
  runTranslation();
 }
 async function runTranslation(){
  const stamp=++sequence,entry=current,target=select.value;
+ if(indexedVersions.has(target)&&entry){await presentIndexed(entry,target,stamp);return;}
  if(mode.value==="pdf"||!enabled||!entry||!["la","grc"].includes(entry.language))return;
  output.replaceChildren();output.setAttribute("aria-busy","true");
  output.textContent="Traduciendo automáticamente el pasaje "+entry.locus+"…";
@@ -169,7 +231,7 @@ async function runTranslation(){
   note.textContent="Servicio externo no disponible ("+(error?.message||"error de acceso")+"). Podés usar el enlace externo sin alterar el original."; translate.hidden=false;translate.textContent="Reintentar traducción";
  }finally{if(stamp===sequence)output.removeAttribute("aria-busy")}
 }
-function activate(){enabled=true;translate.hidden=true;stop.hidden=false;showState()}
+function activate(){if(indexedVersions.has(select.value)){showState();return}enabled=true;translate.hidden=true;stop.hidden=false;showState()}
 if(enabled){translate.hidden=true;stop.hidden=false;}
 translate.addEventListener("click",activate);
 stop.addEventListener("click",()=>{
@@ -178,14 +240,14 @@ stop.addEventListener("click",()=>{
 });
 select.addEventListener("change",()=>{
  const u=new URL(location.href);u.searchParams.set("to",select.value);history.replaceState(null,"",u);
- if(enabled)runTranslation();else showState();
+ showState();
 });
 smaller.addEventListener("click",()=>{translateSize=Math.max(14,translateSize-2);output.style.setProperty("--cl-translation-size",translateSize+"px")});
 larger.addEventListener("click",()=>{translateSize=Math.min(36,translateSize+2);output.style.setProperty("--cl-translation-size",translateSize+"px")});
 document.addEventListener("vitruvia:classics-passage",event=>{
  const info=event.detail;
  if(!info||info.work!==work||typeof info.text!=="string")return;
- current=info;sequence++;
+ current=info;sequence++;updateIndexedChoice(info);
  const u=new URL("classics-parallel-reader.html",location.href);u.searchParams.set("work",work);u.searchParams.set("left",info.language);u.searchParams.set("locus",info.locus);
  const editorial=(info.editions||[]).find(e=>["es","fr","en"].includes(e.language));
  u.searchParams.set("right",editorial?.language||"auto-"+select.value);published.href=u.pathname+u.search;
