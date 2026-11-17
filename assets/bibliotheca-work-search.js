@@ -308,18 +308,27 @@ const notableEditions=[
  {id:"kurilo-v554",type:"Edición bilingüe contemporánea · latín y francés",author:"Diego Kurilo",title:"Vitruve. De architectura. Nouvelle recensio académique bilingue: L’architecte de la théorie",date:"2026",url:"lector-bilingue.html?edition=recensio-fr&locus=1.1.1",doi:"10.5281/zenodo.23885110",isbn:"978-631-01-6651-3",forms:["V554","Kurilo francés","Vitruvio francés"]},
  {id:"kurilo-v297",type:"Edición bilingüe contemporánea · latín e inglés",author:"Diego Kurilo",title:"The Architect of Theory: Vitruvius and the Intellectual World of Roman Antiquity",date:"2026",url:"lector-bilingue.html?edition=theory-en&locus=1.1.1",doi:"10.5281/zenodo.23885404",isbn:"978-631-01-6651-3",forms:["V297","Kurilo inglés","Vitruvius English"]}
 ];
-function renderNotable(q){
- const {list,count,more}=model;model.region.hidden=false;list.replaceChildren();more.hidden=true;
+function isVitruviusQuery(q){return /vitruv|vitruvii|de architectura/i.test(foldAuthority(q))}
+function renderNotable(q,append=false){
+ const {list,count,more}=model;model.region.hidden=false;
+ if(!append){list.replaceChildren();more.hidden=true}
  const result=[...notableEditions,...vitruvianCodices.map(c=>({
   id:c.id,type:"Testimonio manuscrito · "+(c.date||"fecha no consignada"),title:c.title,
   author:c.library||"Tradición manuscrita de Vitruvio",date:c.date||"",url:c.reader||"index-codicum.html",
   source:c.source||"",forms:[...(c.aliases||[]),"vitruvio","vitruvius","codex"]
  }))];
- const term=q.trim(),author=model.authorFilter.value.trim(),matches=result.filter(e=>{
+ const term=q.trim(),author=model.authorFilter.value.trim(),vitruvius=isVitruviusQuery(term);
+ const matches=result.filter(e=>{
   const record={id:e.id,title:e.title,author:e.author,forms:e.forms||[]};
-  return (!term||rank(record,term)>0)&&(!author||rank({...record,title:"",forms:[e.author,...(e.forms||[])]},author)>60);
+  return (!term||vitruvius||rank(record,term)>0)&&(!author||rank({...record,title:"",forms:[e.author,...(e.forms||[])]},author)>60);
  });
- count.textContent=matches.length+" ediciones y testimonios documentados · no se suman como obras antiguas independientes.";
+ if(append){
+  if(!matches.length)return;
+  const section=make("li",null,"bws-item bws-editions-heading");
+  section.append(make("h4","Códices y ediciones de Vitruvio · "+matches.length+" registros"));
+  section.append(make("p","Los testimonios manuscritos, las ediciones históricas y las traducciones modernas se muestran por separado; no se cuentan como obras antiguas distintas.","bws-meta"));
+  list.append(section);
+ }else count.textContent=matches.length+" ediciones y testimonios documentados · no se suman como obras antiguas independientes.";
  if(!matches.length){list.append(make("li","Sin coincidencias en ediciones modernas y códices documentados.","bws-empty"));return}
  for(const e of matches){
   const li=make("li",null,"bws-item"),heading=make("div",null,"bws-heading");heading.append(make("strong",e.title),make("span"," · "+e.author));li.append(heading);
@@ -381,7 +390,10 @@ function render(){
   .sort((a,b)=>b.rank-a.rank||a.w.title.localeCompare(b.w.title,"es",{sensitivity:"base"}));
  count.textContent=found.length+" "+(found.length===1?"obra encontrada":"obras encontradas")+
   " por autor, título o materia documentada. Las equivalencias temáticas son orientativas, no lemas verificados.";
- if(!found.length){list.append(make("li","No se encontraron obras con ese título o autor. Pruebe otra grafía o denominación.","bws-empty"));return}
+ if(!found.length){
+  if(isVitruviusQuery(q)){renderNotable(q,true);return}
+  list.append(make("li","No se encontraron obras con ese título o autor. Pruebe otra grafía o denominación.","bws-empty"));return
+ }
  for(const {w} of found.slice(0,limit)){
   const item=make("li",null,"bws-item");
   appendWorkHeading(item,w);if(window.BibliothecaCoverMiniatures)item.prepend(window.BibliothecaCoverMiniatures.create(w));
@@ -402,7 +414,11 @@ function render(){
    if(w.facsimile)addLink(actions,"Ver facsímil",facLink(w.facsimile));
     addRecordedEditions(actions,w);
   if(!w.newWork&&!w.registryOnly)addLink(actions,"Ficha académica",workLink(w.id));
-  item.append(actions);renderVitruvianCodices(item,w);list.append(item);
+  item.append(actions);if(!(w.id==="vitruvius"&&isVitruviusQuery(q)))renderVitruvianCodices(item,w);list.append(item);
+ }
+ if(isVitruviusQuery(q)){
+  renderNotable(q,true);
+  count.textContent=found.length+" obra(s) del catálogo · códices, ediciones históricas y versiones modernas consultables en los resultados.";
  }
  if(found.length>limit){more.hidden=false;more.textContent="Mostrar más ("+(found.length-limit)+" restantes)"}
 }
