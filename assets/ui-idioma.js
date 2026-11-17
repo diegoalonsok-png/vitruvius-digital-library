@@ -30,7 +30,7 @@ function iniciar(){
   if(!tieneSelector()&&!document.getElementById("vitruvius-secondary-toolbar"))cargar("secondary-reader-controls.js?v=20261112-pastilla","secondary-reader-controls.js");
  };
  if(document.readyState==="complete")setTimeout(decidir,600);else window.addEventListener("load",()=>setTimeout(decidir,600),{once:true});
- cargar("page-autotranslate.js?v=20261112-sitio","page-autotranslate.js");
+ cargar("page-autotranslate.js?v=20261117-front-complete-v2","page-autotranslate.js");
  // Cualquier selector de idioma del sitio deja el idioma en <html lang>, que es lo que sigue el traductor.
  document.addEventListener("vitruvius:language-changed",e=>{const l=e.detail?.language;if(["es","en","fr"].includes(l)){document.documentElement.lang=l;try{localStorage.setItem(KEY,l)}catch{}}});
  // Selectores propios de una página (atlas, iconografía…): avisan al resto del sitio.
