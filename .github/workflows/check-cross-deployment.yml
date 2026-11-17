@@ -3,6 +3,13 @@ on:
   push:
     branches: [main]
     paths:
+      - 'aparato-comparativo.html'
+      - 'assets/comparative-bude-units.js'
+      - 'assets/dossier-integrado-731.js'
+      - 'assets/comparative-five-editions.js'
+      - 'assets/apparatus-cite-tools.js'
+      - 'assets/edition-references.js'
+      - 'assets/vdl-edition-identity-strip.js'
       - 'assets/classics-study-actions.js'
       - 'assets/vitruvia-lexicon.js'
       - 'data/classics-corpus/semantic-conceptus-postings.json'
