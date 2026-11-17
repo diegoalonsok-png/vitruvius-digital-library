@@ -89,7 +89,7 @@
    return;
   }
   const script=document.createElement("script");
-  script.src=scriptURL("global-language.js?v=20261110-secondary-v1");
+  script.src=scriptURL("global-language.js?v=20261117-es-en-fr-v2");
   script.dataset.secondaryI18n="1";
   script.dataset.globalLanguage="1";
   script.addEventListener("load",()=>{
