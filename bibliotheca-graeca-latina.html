@@ -308,6 +308,23 @@ body.bibliotheca-plain-list main.library #bibliotheca-work-search .bws-plain-aut
 body.bibliotheca-plain-list main.library #bibliotheca-work-search .bws-count{font:12px/1.5 system-ui;color:#aaa!important}
 @media(max-width:560px){body.bibliotheca-plain-list main.library .bibliotheca-lexicon-simple form{flex-wrap:wrap}body.bibliotheca-plain-list main.library .bibliotheca-lexicon-simple input{flex-basis:100%}}
 </style>
+<style id="bibliotheca-lexicon-exact-search-v1">
+/* Same visual rhythm as the Lexicon search, one form, one actual engine. */
+body.bibliotheca-plain-list main.library .bibliotheca-lexicon-simple{background:transparent!important;border:0!important;padding:12px 0 20px!important;margin:12px 0 18px!important;color:#e5e5e5!important}
+body.bibliotheca-plain-list main.library .bib-lx-lang{display:flex;align-items:center;gap:22px;margin:4px 0 23px;font:15px/1.4 system-ui,sans-serif;color:#bbb}
+body.bibliotheca-plain-list main.library #bibliotheca-lexicon-lang{width:min(320px,60vw);min-height:52px;padding:9px 17px!important;background:#181818!important;border:1px solid #4b4b4b!important;border-radius:9px;color:#f1f1f1!important;font:18px system-ui,sans-serif}
+body.bibliotheca-plain-list main.library #bibliotheca-lexicon-form{display:flex!important;align-items:center!important;gap:10px!important;padding:8px 13px 8px 22px!important;min-height:76px;border:1px solid #424242;border-radius:48px;background:#191919!important;box-sizing:border-box}
+body.bibliotheca-plain-list main.library .bib-lx-icon{font-size:28px;color:#aaa}
+body.bibliotheca-plain-list main.library #bibliotheca-lexicon-q{min-width:0;flex:1;background:transparent!important;border:0!important;outline:0!important;box-shadow:none!important;font:19px/1.35 system-ui,sans-serif;color:#eee!important;padding:10px 2px!important}
+body.bibliotheca-plain-list main.library #bibliotheca-lexicon-q::placeholder{color:#999!important}
+body.bibliotheca-plain-list main.library #bibliotheca-lexicon-form button,body.bibliotheca-plain-list main.library #bibliotheca-lexicon-form .bib-lx-advanced{border:1px solid #454545!important;border-radius:34px!important;min-height:48px!important;padding:9px 20px!important;background:#303033!important;color:#f2f2f2!important;font:600 16px system-ui,sans-serif!important;white-space:nowrap;text-decoration:none!important;display:inline-flex!important;align-items:center;justify-content:center}
+body.bibliotheca-plain-list main.library #bibliotheca-lexicon-form #bibliotheca-lexicon-clear{border:0!important;background:transparent!important;font-size:22px!important;padding:6px!important;min-height:40px!important}
+body.bibliotheca-plain-list main.library .bib-lx-modes{display:flex;flex-wrap:wrap;gap:9px;margin:18px 0 13px}
+body.bibliotheca-plain-list main.library .bib-lx-modes button{border:1px solid #414141!important;border-radius:28px!important;padding:9px 15px!important;min-height:40px!important;background:#151515!important;color:#ddd!important;font:15px/1.2 system-ui,sans-serif!important;cursor:pointer}
+body.bibliotheca-plain-list main.library .bib-lx-modes button[aria-pressed=true]{background:#323232!important;color:#fff!important;border-color:#777!important}
+body.bibliotheca-plain-list main.library .bib-lx-hint{color:#aaa!important;font:13px/1.5 system-ui,sans-serif}
+@media(max-width:700px){body.bibliotheca-plain-list main.library #bibliotheca-lexicon-form{border-radius:25px;flex-wrap:wrap;padding:12px!important}body.bibliotheca-plain-list main.library #bibliotheca-lexicon-q{flex:1 1 calc(100% - 50px)}body.bibliotheca-plain-list main.library #bibliotheca-lexicon-form .bib-lx-advanced{flex:1}}
+</style>
 </head>
 <body class="bibliotheca-plain-list"><a class="vdl-skip-link" href="#main-content">Saltar al contenido principal</a>
 <main class="library" id="main-content">
@@ -359,13 +376,31 @@ body.bibliotheca-plain-list main.library #bibliotheca-work-search .bws-count{fon
 <p id="intro" class="intro">Busca una palabra o frase en todos los libros indexados, o selecciona una obra. Consulta cuántas veces aparece en cada libro y dónde se encuentra.</p>
 </header>
 
-<section class="bibliotheca-lexicon-simple" aria-label="Buscador Lexicon">
- <h2>Buscar en Lexicon</h2>
- <form action="vitruvia-lexicon.html" method="get" role="search">
+<section class="bibliotheca-lexicon-simple" aria-label="Buscador de Vitruvia Lexicon">
+ <div class="bib-lx-lang"><label for="bibliotheca-lexicon-lang">Lengua de búsqueda</label>
+ <select id="bibliotheca-lexicon-lang" aria-label="Lengua de búsqueda">
+ <option value="auto">Lengua: auto</option><option value="la">Latín</option><option value="grc">Griego</option><option value="he">Hebreo</option><option value="es">Castellano</option><option value="en">Inglés</option><option value="fr">Francés</option><option value="de">Alemán</option></select></div>
+ <form id="bibliotheca-lexicon-form" action="vitruvia-lexicon.html" method="get" role="search">
+  <span class="bib-lx-icon" aria-hidden="true">⌕</span>
   <label class="sr-only" for="bibliotheca-lexicon-q">Término, palabra o frase</label>
-  <input id="bibliotheca-lexicon-q" name="q" type="search" autocomplete="off" placeholder="Buscar palabras, frases y lemas · domus · λόγος · symmetria" required>
-  <button type="submit">Buscar</button>
+  <input id="bibliotheca-lexicon-q" name="q" type="search" autocomplete="off" spellcheck="false" placeholder="λόγος · symmetria · anthropos · &quot;arma virumque&quot; · @domus · aedi*" required>
+  <input id="bibliotheca-lexicon-mode" type="hidden" name="mode" value="palabra">
+  <button type="button" id="bibliotheca-lexicon-clear" aria-label="Limpiar búsqueda">✕</button>
+  <button type="submit" class="bib-lx-submit">Buscar ↗</button>
+  <a class="bib-lx-advanced" href="vitruvia-lexicon.html">Búsqueda ampliada</a>
  </form>
+ <div class="bib-lx-modes" role="group" aria-label="Tipo de búsqueda">
+  <button type="button" data-lx-mode="palabra" aria-pressed="true">Palabra</button>
+  <button type="button" data-lx-mode="lema" aria-pressed="false">Lema y flexiones</button>
+  <button type="button" data-lx-mode="etimologia" aria-pressed="false">Etimología</button>
+  <button type="button" data-lx-mode="frase" aria-pressed="false">Frase exacta</button>
+  <button type="button" data-lx-mode="sintaxis" aria-pressed="false">Sintaxis</button>
+  <button type="button" data-lx-mode="paralelos" aria-pressed="false">Paralelos</button>
+  <button type="button" data-lx-mode="analisis" aria-pressed="false">Analizar oración</button>
+  <button type="button" data-lx-mode="grupo" aria-pressed="false">Grupo de palabras</button>
+  <button type="button" data-lx-mode="sententiae" aria-pressed="false">Sententiae</button>
+ </div>
+ <p class="bib-lx-hint" id="bib-lx-hint">Entrada léxica: lema, morfología, acepciones, etimología y concordancias.</p>
 </section>
 <h2 class="bibliotheca-plain-heading">Obras · autor y título</h2>
 <section class="searcharea" aria-label="Enviar palabras y frases al análisis de Lexicon">
@@ -437,5 +472,31 @@ body.bibliotheca-plain-list main.library #bibliotheca-work-search .bws-count{fon
 <strong>© 2026 Editorial Sophia Lux · Arq. Diego Kurilo. Derechos reservados.</strong>
 <span style="opacity:.8">Los derechos sobre los materiales originales, el diseño y los aportes editoriales pertenecen a sus respectivos titulares. Los textos antiguos, facsímiles, imágenes y recursos de terceros conservan su situación jurídica y licencias propias.</span>
 </footer>
+<script id="bibliotheca-lexicon-search-bind-v1">
+(()=>{'use strict';
+ const form=document.getElementById('bibliotheca-lexicon-form');
+ const mode=document.getElementById('bibliotheca-lexicon-mode');
+ const q=document.getElementById('bibliotheca-lexicon-q');
+ const clear=document.getElementById('bibliotheca-lexicon-clear');
+ const lang=document.getElementById('bibliotheca-lexicon-lang');
+ if(!form||!mode||!q||!lang)return;
+ const notes={palabra:'Entrada léxica: lema, morfología, acepciones, etimología y concordancias.',lema:'Busca las formas documentadas del lema.',etimologia:'Explora raíces y relaciones etimológicas.',frase:'Busca una frase exacta.',sintaxis:'Explora estructuras y relaciones sintácticas.',paralelos:'Consulta pasajes paralelos.',analisis:'Analiza una oración.',grupo:'Busca un grupo de palabras.',sententiae:'Consulta el fraseario antiguo.'};
+ document.querySelectorAll('.bib-lx-modes [data-lx-mode]').forEach(button=>button.addEventListener('click',()=>{
+  mode.value=button.dataset.lxMode;
+  document.querySelectorAll('.bib-lx-modes [data-lx-mode]').forEach(b=>b.setAttribute('aria-pressed',String(b===button)));
+  document.getElementById('bib-lx-hint').textContent=notes[mode.value]||notes.palabra;
+ }));
+ clear?.addEventListener('click',()=>{q.value='';q.focus()});
+ form.addEventListener('submit',()=>{
+  // Preserve Lexicon's own search implementation: only send the query and mode.
+  const locale=lang.value;
+  const existing=form.querySelector('input[name=lang]');
+  if(locale==='auto'){existing?.remove();return}
+  const hidden=existing||document.createElement('input');
+  hidden.type='hidden';hidden.name='lang';hidden.value=locale;
+  if(!existing)form.append(hidden);
+ });
+})();
+</script>
 </body>
 </html>
