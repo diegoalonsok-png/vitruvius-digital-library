@@ -12,16 +12,16 @@ function render(locus){
  const id=norm(locus||new URLSearchParams(location.search).get("locus")||$("vdl-dossier-locus")?.value||"1.1.1");
  const record=byId.get(id);const place=$("vdl-dossier-output");if(!record){place.textContent="Locus no encontrado en los 731 registros.";return}
  selected=id;place.replaceChildren();
- const title=element("h4","Locus "+id+" · "+record.verification);place.append(title);
+ const title=element("h4","Vitr. "+(id.includes(".praef.")?id.replace(".praef.",", praef. § "):id)+" · Aparato comparativo");place.append(title);
  if(record.editorial_note){
   place.append(item("Lemma ] lectio",record.editorial_note.criticalLine));
   place.append(item("Quid mutatur",record.editorial_note.change));
   place.append(item("Fuente y cautela",record.editorial_note.decision));
  }else{
-  place.append(item("Estado","Índice automático; no hay nota editorial individual comprobada para este locus. Las diferencias indicadas no son variantes manuscritas certificadas."));
+  place.append(item("Status collationis","Testimonios digitales alineados; no consta una decisión crítica individual comprobada para este pasaje. La concordancia léxica no demuestra identidad editorial ni consenso de los manuscritos."));
  }
  for(const [name,entry] of [["Fritz Krohn (ed.), Vitruvii De architectura libri decem (Leipzig: B. G. Teubner, 1912)",record.latin_comparison.krohn],["Valentin Rose (ed.), Vitruvii De architectura libri decem (Leipzig: B. G. Teubner, 1899)",record.latin_comparison.rose],["Kurilo V554 · "+editionBibliography.fr.title+" · DOI "+editionBibliography.fr.doi+" · ISBN "+editionBibliography.fr.isbn,record.latin_comparison.kurilo_v554],["Kurilo V297 · "+editionBibliography.en.title+" · DOI "+editionBibliography.en.doi+" · ISBN "+editionBibliography.en.isbn,record.latin_comparison.kurilo_v297]]){
-  place.append(item(name,entry.available?(entry.normalized_identical?"Misma secuencia de palabras normalizada que V514":entry.edit_distance+" operaciones de edición léxica frente a V514"):"Locus fusionado/no alineado individualmente"));
+  place.append(item(name,entry.available?(entry.normalized_identical?"Concordantia lexicalis: coincidencia de palabras tras normalización informática; puntuación, grafías y lecturas manuscritas no cotejadas.":"Collatio digitalis: "+entry.edit_distance+" diferencia(s) léxica(s) calculada(s) frente a Kur. V514; pendiente de valoración ecdótica."):"Locus integrado en pasaje adyacente o sin alineación independiente"));
  }
  if(record.candidate_differences.rose.length||record.candidate_differences.krohn.length){
  const details=element("details");const summary=element("summary","Diferencias candidatas de tokens (sin verificación del impreso)");details.append(summary);
@@ -30,9 +30,9 @@ function render(locus){
  }place.append(details);
  }
  const translations=element("div");translations.append(element("h4","Versiones castellana, francesa e inglesa (Kurilo)"));
- for(const [k,label] of [["es","Castellano V514"],["fr","Francés V554"],["en","Inglés V297"]]){
+ for(const [k,label] of [["es","Kurilo · versión castellana (V514)"],["fr","Kurilo · version française (V554)"],["en","Kurilo · English version (V297)"]]){
  const q=record.translations[k];
- const bib=editionBibliography[k];const heading=element("p");heading.append(element("strong",label+" · "+bib.title));heading.append(document.createTextNode(" · ISBN editorial declarado: "+bib.isbn+" (compartido; asignación registral por edición pendiente de verificación) · "));const doi=element("a","DOI: "+bib.doi);doi.href="https://doi.org/"+bib.doi;doi.target="_blank";doi.rel="noopener noreferrer";heading.append(doi);translations.append(heading);translations.append(item("Texto",q.available?q.excerpt:q.merged_segment?"Integrado en el locus indexado "+q.aligned_locus+": "+q.excerpt:"No hay fragmento de traducción indexado en el locus"));
+ const bib=editionBibliography[k];const heading=element("p");heading.append(element("strong",label+" · Diego Kurilo, edición y traducción · "+bib.title));heading.append(document.createTextNode(" · ISBN declarado: "+bib.isbn+" (compartido; asignación individual no verificada) · "));const doi=element("a","DOI: "+bib.doi);doi.href="https://doi.org/"+bib.doi;doi.target="_blank";doi.rel="noopener noreferrer";heading.append(doi);translations.append(heading);translations.append(item("Texto",q.available?q.excerpt:q.merged_segment?"Integrado en el locus indexado "+q.aligned_locus+": "+q.excerpt:"No hay fragmento de traducción indexado en el locus"));
  }
  place.append(translations);
  if(record.translation_note){place.append(item("Comparación interpretativa",record.translation_note.analysis));if(record.translation_note.quality_flag&&record.translation_note.quality_flag!=="interpreted_from_index")place.append(item("Control de calidad",record.translation_note.quality_flag))}
@@ -45,7 +45,7 @@ function init(){
  const main=document.querySelector("main");
  if(!main||$("vdl-dossier-731"))return;
  const section=element("section");section.id="vdl-dossier-731";section.style.cssText="border:1px solid #8f8c8177;border-radius:8px;padding:14px 18px;margin:20px 0;font:13px/1.65 system-ui,sans-serif";
- section.append(element("h3","Collatio quinque editionum · 731 loci"));
+ section.append(element("h3","Collatio editionum · aparato comparativo por locus"));
  section.append(element("p","Dossier de localización y cotejo digital por locus; muestra el estado de lectura, divergencias candidatas y fragmentos de las tres traducciones. No declara cotejo autóptico de Rose, Krohn ni H."));
  const form=element("form");form.style.cssText="display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin:12px 0";
  const label=element("label","Libro y locus ");label.htmlFor="vdl-dossier-locus";const field=element("select");field.id="vdl-dossier-locus";field.style.cssText="font:inherit;min-width:240px;max-width:100%;padding:7px";label.append(field);form.append(label);
@@ -61,7 +61,7 @@ function init(){
  fetch(DATA).then(r=>{if(!r.ok)throw Error("HTTP "+r.status);return r.json()}).then(x=>{
  if(x.rows?.length!==731)throw Error("Loci incompletos");
  data=x;byId=new Map(x.rows.map(y=>[y.locus,y]));
- const selectedLocus=norm(new URLSearchParams(location.search).get("locus")||"1.1.1");let group=null,lastBook="";for(const row of x.rows){const book=row.locus.split(".")[0];if(book!==lastBook){group=element("optgroup");group.label="Libro "+book;field.append(group);lastBook=book}const opt=element("option",row.locus.replace(".praef."," · Prefacio § "));opt.value=row.locus;group.append(opt)}field.value=byId.has(selectedLocus)?selectedLocus:x.rows[0].locus;
+ const selectedLocus=norm(new URLSearchParams(location.search).get("locus")||"1.1.1");let group=null,lastBook="";for(const row of x.rows){const book=row.locus.split(".")[0];if(book!==lastBook){group=element("optgroup");group.label="Libro "+book;field.append(group);lastBook=book}const opt=element("option",row.locus.includes(".praef.")?"Libro "+book+" · Praefatio, § "+row.locus.split(".")[2]:"Libro "+book+" · "+row.locus);opt.value=row.locus;group.append(opt)}field.value=byId.has(selectedLocus)?selectedLocus:x.rows[0].locus;
  status.textContent="731 loci accesibles · 31 expedientes filológicos · 31 comentarios de traducción · 4 expedientes con comprobación impresa registrada. La colación digital es exhaustiva; la verificación filológica no.";
  render(field.value);
  }).catch(e=>{status.textContent="Error al leer el dossier: "+e.message});
