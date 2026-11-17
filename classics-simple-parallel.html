@@ -335,7 +335,7 @@ async function translateCurrent(token,onDemand=false){
  const id=[leftLang,target,record.locus,record.text].join("|");
  // Ancient Greek: prefer a documented historical English edition. On explicit
  // request only, allow an orientative English-to-Spanish translation.
- if(leftLang==="grc"){
+ if(leftLang==="grc"&&availableEditions.has("en")){
   const historic=await availableHistorical(record.locus).catch(()=>null);
   if(token!==renderToken)return;
   const showHistoric=()=>{
