@@ -263,6 +263,8 @@ function rank(w,query){
   }
   if(matched===queryTokens.length)best=Math.max(best,Math.round(105-Math.min(30,total*9)-Math.max(0,fieldTokens.length-queryTokens.length)*2));
  }
+ const subject=requestedSubject(query);
+ if(subject&&matchedSubjects(w).includes(subject))best=Math.max(best,78);
  return best;
 }
 function originalTitle(w){
