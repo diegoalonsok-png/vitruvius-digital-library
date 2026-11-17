@@ -352,7 +352,7 @@ async function translateCurrent(token){
    (leftLang==="grc"?" · El proveedor trata el griego antiguo como moderno; requiere cotejo filológico.":""));
  }catch(_){
   if(token!==renderToken)return;
-  const historic=await availableHistorical(record.locus);
+  const historic=await availableHistorical(record.locus).catch(()=>null);
   if(token!==renderToken)return;
   if(historic){
    paragraph("right-text",historic.text);
@@ -589,9 +589,11 @@ async function load(){
  el("original-lang").value=leftLang;
  source=await getEdition(entries.get(leftLang),leftLang);
  if(!source.length)throw Error("No hay pasajes de la edición original.");
- translation=rightLang?await getEdition(entries.get(rightLang),rightLang):[];
  if(requested?.startsWith("auto-")){translation=[];rightLang=targetLang;}
- el("translation-lang").value=requested?.startsWith("auto-")?requested:(requested&&entries.has(requested)?requested:(rightLang&&entries.has(rightLang)?rightLang:"auto-es"));
+ else if(rightLang&&entries.has(rightLang)){
+  try{translation=await getEdition(entries.get(rightLang),rightLang)}catch(error){console.warn("Traducción alojada no disponible:",error);translation=[];rightLang=targetLang;q.set("right","auto-"+targetLang)}
+ }else translation=[];
+ el("translation-lang").value=q.get("right")?.startsWith("auto-")?q.get("right"):(requested&&entries.has(requested)?requested:(rightLang&&entries.has(rightLang)?rightLang:"auto-"+targetLang));
  if(!el("translation-lang").value)el("translation-lang").value="auto-es";
 
  const wanted=q.get("locus");const found=findLocusIndex(source,wanted);pos=found<0?0:found;updatePassageGuide(true);draw();
@@ -600,24 +602,40 @@ async function load(){
 }
 async function changeVersion(side,value){
  const stamp=++loadingVersion,previousLocus=source[pos]?.locus||q.get("locus")||"";
- if(side==="left"){
-  if(!availableEditions.has(value))return;
-  const updated=await getEdition(availableEditions.get(value),value);
+ const old={source,leftLang,translation,rightLang,targetLang,left:q.get("left"),right:q.get("right")};
+ try{
+  if(side==="left"){
+   if(!availableEditions.has(value))throw Error("Edición original no registrada");
+   const updated=await getEdition(availableEditions.get(value),value);
+   if(stamp!==loadingVersion)return;
+   if(!updated.length)throw Error("La edición original no tiene pasajes legibles");
+   source=updated;leftLang=value;q.set("left",value);
+   if(el("translation-lang").value===value){
+    el("translation-lang").value="auto-es";targetLang="es";rightLang="es";translation=[];q.set("right","auto-es");
+   }
+  }else if(value.startsWith("auto-")){
+   const target=value.slice(5);
+   if(!["es","en","fr"].includes(target))throw Error("Idioma automático no disponible");
+   targetLang=target;rightLang=target;translation=[];q.set("right",value);
+  }else{
+   if(!availableEditions.has(value))throw Error("Traducción no registrada");
+   const updated=await getEdition(availableEditions.get(value),value);
+   if(stamp!==loadingVersion)return;
+   if(!updated.length)throw Error("La traducción alojada no tiene pasajes legibles");
+   translation=updated;rightLang=value;targetLang=["es","en","fr"].includes(value)?value:"es";q.set("right",value);
+  }
   if(stamp!==loadingVersion)return;
-  if(!updated.length){status("La edición original seleccionada no tiene pasajes legibles.");return;}
-  source=updated;leftLang=value;q.set("left",value);
-  if(el("translation-lang").value===value){el("translation-lang").value="auto-es";}
- }else if(!value.startsWith("auto-")&&!availableEditions.has(value))return;
- const choice=el("translation-lang").value;
- if(choice.startsWith("auto-")){
-  targetLang=choice.slice(5);rightLang=targetLang;translation=[];q.set("right",choice);
- }else{
-  const updated=await getEdition(availableEditions.get(choice),choice);
+  const found=findLocusIndex(source,previousLocus);pos=found>=0?found:0;
+  updatePassageGuide(true);draw();
+ }catch(error){
   if(stamp!==loadingVersion)return;
-  translation=updated;rightLang=choice;targetLang=["es","en","fr"].includes(choice)?choice:"es";q.set("right",choice);
+  source=old.source;leftLang=old.leftLang;translation=old.translation;rightLang=old.rightLang;targetLang=old.targetLang;
+  if(old.left)q.set("left",old.left);else q.delete("left");
+  if(old.right)q.set("right",old.right);else q.delete("right");
+  el("original-lang").value=old.leftLang;
+  el("translation-lang").value=old.right||"auto-"+old.targetLang;
+  status("No se pudo cambiar de versión: "+error.message+". Se conserva la lectura anterior.");
  }
- const found=findLocusIndex(source,previousLocus);
- pos=found>=0?found:0;updatePassageGuide(true);draw();
 }
 el("original-lang").addEventListener("change",e=>{void changeVersion("left",e.target.value);});
 el("translation-lang").addEventListener("change",e=>{void changeVersion("right",e.target.value);});
@@ -886,7 +904,7 @@ function renderBookSearch(){
    if(row.side==="translation"&&findLocusIndex(source,row.item.locus)<0){status("El locus de esta traducción no coincide inequívocamente con el original.");return}
    const i=findLocusIndex(source,row.item.locus);if(i<0)return;
    pos=i;searchTerm=term;draw();document.querySelector(".cards").scrollIntoView({behavior:"smooth",block:"start"});
-  });
+  }).catch(error=>console.warn("Alternativa histórica no disponible:",error));
   fragment.append(button);
  }
  searchResults.append(fragment);
