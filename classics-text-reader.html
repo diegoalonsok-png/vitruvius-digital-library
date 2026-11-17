@@ -646,6 +646,83 @@ html[data-reader-page-theme="custom"] body.academic-reader :is(
  background:var(--reader-page-bg,#17191c)!important;
  color:var(--reader-page-fg,#e5e5e5)!important;
 }
+/* Contrast repair for light swatches (marfil, papel, pergamino, blanco).
+   Theme-specific ink wins over older forced white labels in every control. */
+html[data-reader-page-theme="custom"][data-theme="light"]{
+ color-scheme:light!important;
+ --reader-control-ink:#20242a;
+ --reader-control-muted:#555d66;
+ --reader-control-border:#8f9297;
+}
+html[data-reader-page-theme="custom"][data-theme="light"] body.academic-reader :is(
+ .tools,.reader-appearance,.reader-lexicon-toptools,.search-mode-choices,
+ .reader-toolbar,.reader-nav-actions,.cl-unified-reading-actions,
+ .cl-translation-tools,.cl-pane-options,.cl-reading-height-control
+) :is(button,select,input,option,a,summary,label,output,span){
+ color:#20242a!important;
+ -webkit-text-fill-color:#20242a!important;
+ opacity:1!important;
+ text-shadow:none!important;
+}
+html[data-reader-page-theme="custom"][data-theme="light"] body.academic-reader :is(
+ .tools,.reader-appearance,.reader-lexicon-toptools,.search-mode-choices,
+ .reader-toolbar,.reader-nav-actions,.cl-unified-reading-actions,
+ .cl-translation-tools,.cl-pane-options,.cl-reading-height-control
+) :is(button,select,input,a,summary){
+ background:#e9e8e5!important;
+ border-color:#9b9ca0!important;
+ box-shadow:none!important;
+ color-scheme:light!important;
+}
+html[data-reader-page-theme="custom"][data-theme="light"] body.academic-reader :is(
+ input,textarea
+)::placeholder{
+ color:#666b72!important;
+ -webkit-text-fill-color:#666b72!important;
+ opacity:1!important;
+}
+html[data-reader-page-theme="custom"][data-theme="light"] body.academic-reader :is(
+ button[aria-pressed="true"],button[aria-selected="true"],
+ .search-mode-choices button[aria-pressed="true"]
+){
+ background:#d2d3d6!important;
+ color:#171c23!important;
+ -webkit-text-fill-color:#171c23!important;
+ border-color:#777b84!important;
+}
+html[data-reader-page-theme="custom"][data-theme="light"] body.academic-reader :is(
+ button,select,input,a,summary
+):focus-visible{
+ outline:2px solid #4c5966!important;
+ outline-offset:2px!important;
+}
+html[data-reader-page-theme="custom"][data-theme="light"] body.academic-reader :is(
+ header .brand,header nav a,.reader-lexicon-toptools a,
+ .reader-lexicon-toptools select,.reader-lexicon-toptools summary,
+ .reader-lexicon-toptools button,.reader-top-lab,
+ #language,#reader-top-text-lang,#reader-ui-language,
+ #mode-exact,#mode-expanded,#query
+){
+ color:#20242a!important;
+ -webkit-text-fill-color:#20242a!important;
+ opacity:1!important;
+}
+html[data-reader-page-theme="custom"][data-theme="light"] body.academic-reader :is(
+ #toc li button,.reader-grid aside strong,.academic-records summary,
+ #work-title,#source-title,.academic-kicker,.notice,
+ .cl-pane-title,.cl-translation-label,.cl-translation-meta
+){
+ color:#20242a!important;
+ -webkit-text-fill-color:#20242a!important;
+ opacity:1!important;
+}
+html[data-reader-page-theme="custom"][data-theme="light"] body.academic-reader .reader-lexicon-palette-panel button.reader-lexicon-swatch{
+ -webkit-text-fill-color:initial!important;
+}
+/* Keep dark swatches bright rather than inheriting light-mode ink. */
+html[data-reader-page-theme="custom"][data-theme="dark"] body.academic-reader :is(
+ .tools button,.tools select,.tools input,.reader-lexicon-toptools :is(button,select,a,summary)
+){-webkit-text-fill-color:var(--reader-page-fg,#e5e5e5)!important;}
 /* Preserve explicit word-search highlights and image/facsimile colors. */
 html[data-reader-page-theme="custom"] body.academic-reader mark{
  background:#ffe34f!important;color:#1a1a1a!important;
