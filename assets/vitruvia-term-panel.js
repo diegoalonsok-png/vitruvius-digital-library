@@ -425,27 +425,80 @@ html[data-theme=light] #vitruvia-term-panel{background:#fbf9f4;border-color:#ddd
    // Cite the subject the user actually requested, not a catalogue
    // author inferred from an incidental name overlap.
    webSummary(q).then(d=>{if(token!==seq||!d)return;const h=document.createElement('h4');h.textContent='Biografía · información de la web';bioSlot.append(h,webBlock(d,{heading:false}))});
-   if(readable.length)panel.append(readerBlock(readable));
+   if(readable.length){const reader=await readerBlock(readable);if(token!==seq)return;if(reader)panel.append(reader)}
   }
   if(hits.length)panel.append(worksBlock(hits));
   if(token!==seq)return;
  }
  // Visor de lectura dentro de la ficha: códice más antiguo cuando hay imágenes, original y traducción.
- function readerBlock(readable){
-  const box=document.createElement('div');box.id='vitruvia-term-reader';const h=document.createElement('h4');h.textContent='Leer ahora · original y traducción';box.append(h);
+ async function readerBlock(readable){
+  // Prefer Bibliotheca's existing synchronized original/translation reader.
+  // Legacy Lector clásico is a fallback only when no indexed original exists.
+  const registry=await json('data/classics-corpus/search-registry.json').catch(()=>({entries:[]}));
+  const entries=Array.isArray(registry.entries)?registry.entries:[];
+  const opts=[],seen=new Set();
+  for(const hit of readable){
+   const id=hit.w?.id;
+   const versions=id?entries.filter(e=>e.workId===id&&
+    ['json-passages','structured-bilingual'].includes(e.format)):[];
+   const original=['la','grc'].find(l=>versions.some(e=>e.language===l));
+   if(id&&original){
+    const right=['es','en','fr'].find(l=>versions.some(e=>e.language===l&&l!==original))||'auto-es';
+    if(!seen.has('parallel:'+id)){
+     seen.add('parallel:'+id);
+     opts.push({kind:'parallel',workId:id,left:original,right,
+      label:hit.w.title+' · '+(original==='la'?'latín':'griego')+' + '+(right.startsWith('auto-')?'traducción automática':right.toUpperCase())});
+    }
+    continue;
+   }
+   for(const obra of (hit.obras||[]).slice(0,hit.obras.length>12?1:hit.obras.length)){
+    if(seen.has('legacy:'+obra))continue;
+    seen.add('legacy:'+obra);
+    opts.push({kind:'legacy',obra,label:hit.w.title+
+     (hit.obras.length>1&&hit.obras.length<=12?' · '+obra.split('.').pop():'')});
+   }
+  }
+  if(!opts.length)return null;
+  const box=document.createElement('div');box.id='vitruvia-term-reader';
+  const h=document.createElement('h4');h.textContent='Leer ahora · original y traducción sincronizados';box.append(h);
   const bar=document.createElement('div');bar.className='vtp-chips';box.append(bar);
-  const opts=readable.flatMap(x=>x.obras.slice(0,x.obras.length>12?1:x.obras.length).map(o=>({o,label:x.w.title+(x.obras.length>1&&x.obras.length<=12?' · '+o.split('.').pop():'')})));
-  const sel=document.createElement('select');sel.className='vtp-chip';sel.setAttribute('aria-label','Obra');
-  for(const {o,label} of opts){const op=document.createElement('option');op.value=o;op.textContent=label;sel.append(op)}
+  const sel=document.createElement('select');sel.className='vtp-chip';sel.setAttribute('aria-label','Obra para lectura paralela');
+  opts.forEach((o,i)=>{const op=document.createElement('option');op.value=String(i);op.textContent=o.label;sel.append(op)});
   const full=document.createElement('a');full.className='vtp-chip';full.target='_blank';full.rel='noopener';
   const edPdf=document.createElement('a'),edDoc=document.createElement('a');
-  for(const [a,l] of [[edPdf,'Edición PDF'],[edDoc,'Edición DOCX']]){a.className='vtp-chip';a.textContent=l;a.setAttribute('download','');a.hidden=true}
+  for(const [a,l] of [[edPdf,'Edición PDF'],[edDoc,'Edición DOCX']]){
+   a.className='vtp-chip';a.textContent=l;a.setAttribute('download','');a.hidden=true
+  }
   bar.append(sel,full,edPdf,edDoc);
-  const frame=document.createElement('iframe');frame.title='Lector clásico';frame.style.cssText='width:100%;height:min(78vh,820px);border:1px solid var(--line,#313b38);border-radius:10px;margin-top:10px;background:#fff';box.append(frame);
-  const load=o=>{frame.src='lector-clasico.html?obra='+encodeURIComponent(o)+'&embed=1';full.href='lector-clasico.html?obra='+encodeURIComponent(o);full.textContent='Abrir en pantalla completa ↗';
-   json('data/clasicos-descargas.json?v=20261106-v1').then(d=>{const e=d?.works?.[o];edPdf.hidden=edDoc.hidden=!e;if(e){edPdf.href=e.pdf;edDoc.href=e.docx;edPdf.title=e.kb.pdf+' KB';edDoc.title=e.kb.docx+' KB'}}).catch(()=>{edPdf.hidden=edDoc.hidden=true})};
-  sel.onchange=()=>load(sel.value);if(opts.length<2)sel.hidden=true;load(opts[0].o);
-  return box;
+  const note=document.createElement('p');note.className='vtp-note';
+  note.textContent='Lectura sincronizada por locus: la edición latina o griega y la traducción indexada avanzan juntas; la traducción automática se identifica por separado.';
+  box.append(note);
+  const frame=document.createElement('iframe');frame.title='Lector paralelo sincronizado de Bibliotheca';
+  frame.loading='lazy';
+  frame.style.cssText='width:100%;height:min(78vh,820px);border:1px solid var(--line,#313b38);border-radius:10px;margin-top:10px;background:#111';box.append(frame);
+  let loadToken=0;
+  const load=()=>{
+   const choice=opts[Number(sel.value)]||opts[0],stamp=++loadToken;
+   edPdf.hidden=edDoc.hidden=true;edPdf.removeAttribute('href');edDoc.removeAttribute('href');
+   let url;
+   if(choice.kind==='parallel'){
+    url='classics-simple-parallel.html?'+new URLSearchParams({
+     work:choice.workId,left:choice.left,right:choice.right
+    }).toString();
+   }else{
+    url='lector-clasico.html?obra='+encodeURIComponent(choice.obra);
+    json('data/clasicos-descargas.json?v=20261106-v1').then(d=>{
+     if(stamp!==loadToken)return;
+     const e=d?.works?.[choice.obra];
+     if(e){edPdf.href=e.pdf;edDoc.href=e.docx;edPdf.title=e.kb?.pdf+' KB';edDoc.title=e.kb?.docx+' KB';
+      edPdf.hidden=edDoc.hidden=false}
+    }).catch(()=>{if(stamp===loadToken)edPdf.hidden=edDoc.hidden=true});
+   }
+   frame.src=url+(url.includes('?')?'&':'?')+'embed=1';
+   full.href=url;full.textContent='Abrir en pantalla completa ↗';
+  };
+  sel.onchange=load;if(opts.length<2)sel.hidden=true;
+  load();return box;
  }
  async function webSummary(q){
   const L=lang()==='en'?'en':'es';let page=null;
