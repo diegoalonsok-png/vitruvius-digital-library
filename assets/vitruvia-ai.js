@@ -48,8 +48,10 @@ async function prepareCorpus(){
   if(result.status!=="fulfilled"){unavailable.push(manifest.sources[i].workId||manifest.sources[i].url);continue}
   const {source,data}=result.value;
   if(!Array.isArray(data.passages)){unavailable.push(source.workId||source.url);continue}
-  works.push(source.workTitle+" · "+(source.edition||data.version));
+  const countBefore=documents.length;
   for(const passage of data.passages){
+   // A result without a source locus cannot be cited or opened reliably.
+   if(!passage||typeof passage.locus!=="string"||!passage.locus.trim())continue;
    const original=asString(passage.latin||passage.original||passage.greek||passage.text||"");
    const translation=asString(passage.translation||"");
    const textChunks=sliceIntoChunks(original+" "+translation);
@@ -68,6 +70,8 @@ async function prepareCorpus(){
     });
    }
   }
+  if(documents.length===countBefore)unavailable.push(source.workId||source.url);
+  else works.push(source.workTitle+" · "+(source.edition||data.version));
  }
  if(!documents.length)throw Error("No hay textos completos indexados");
  const df=new Map();
