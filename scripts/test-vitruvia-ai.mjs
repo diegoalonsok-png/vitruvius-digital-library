@@ -32,7 +32,8 @@ const samples={
     {locus:'1',text:'Ἰατρικὴ ἐπιστήμη ὑγιεινῶν καὶ νοσωδῶν.'},
     {locus:'2',text:'Ὑγιεινὸν σῶμα καὶ συμμετρία τῶν μορίων.'}]},
   'data/classics-corpus/galen-de-usu-partium-grc.json': {edition:'galen-usu',passages:[
-    {locus:'1',text:'Τῶν μορίων χρεία καὶ φύσις ἐστὶν ἐν σώματι.'}]}
+    {locus:'1',text:'Τῶν μορίων χρεία καὶ φύσις ἐστὶν ἐν σώματι.'},
+    {text:'Unlocated passage should never become a search result.'}]}
 };
 function createEngine(failing=[]){
   const calls=[];
@@ -64,6 +65,7 @@ function createEngine(failing=[]){
   assert.equal(r.stats.loadedSources,6,'All mocked sources loaded');
   assert.equal(r.stats.declaredSources,6);
   assert.equal(r.stats.unavailable.length,0);
+  assert.ok(r.rows.every(x=>x.locus),'Unlocated passages must never be indexed');
   assert.ok(r.stats.candidateEditions>=4,'Candidate pool should represent multiple editions');
   assert.ok(r.stats.candidateWorks>=3,'Candidate pool should represent multiple ancient works');
   assert.ok(r.rows.every(x=>x.link&&x.locus&&x.source),'All hits need provenance and locus');
