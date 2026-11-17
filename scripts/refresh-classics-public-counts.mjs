@@ -20,12 +20,20 @@ for(const m of manifest.index){
 const local=registered.filter(e=>typeof e.path==='string'&&!/^https?:\/\//i.test(e.path));
 const localIndexed=local.filter(e=>existsSync(e.path)&&recognized.has(key(e.workId,e.language)));
 const remote=registered.filter(e=>/^https?:\/\//i.test(e.path||''));
+const r2Index=existsSync('data/index/classics-r2/manifest.json')?read('data/index/classics-r2/manifest.json'):null;
+const r2Status=existsSync('data/r2/classics-sync-status.json')?read('data/r2/classics-sync-status.json'):null;
+const r2ByKey=new Map((r2Index?.index||[]).map(e=>[key(e.id,e.lang),e]));
+const verifiedR2=r2Status?.status==='all-registered-r2-originals-verified-and-lexically-indexed'
+ &&r2Status.verifiedOriginals===r2Index?.index?.length
+ ?remote.filter(e=>{const x=r2ByKey.get(key(e.workId,e.language));return x&&x.file===e.path&&x.sha256===e.sha256&&x.passages===e.passages;})
+ :[];
+const remoteUnverified=remote.filter(e=>!verifiedR2.includes(e));
 const localUnindexed=local.filter(e=>e.format!=='historical-ocr-pages'&&existsSync(e.path)&&!recognized.has(key(e.workId,e.language)));
 const distinct=arr=>new Set(arr.map(e=>e.workId)).size;
 const counts={
  schema:'vdl-classics-public-counts-v2',
  generated:new Date().toISOString(),
- method:'Local text files and index manifest cross-checked by original work/language; HTML word gates are not passage indices; historical OCR and unverified R2 are excluded from verified source-passage totals.',
+ method:'Local text files and index manifest cross-checked by original work/language; HTML word gates are not passage indices; historical OCR excluded from critical-text counts; R2 indexed editions are matched to last verified SHA256 manifest, without claiming live checking.',
  cataloguedWorks:read('data/cifras-corpus.json').obrasTotalesDeclaradas,
  registryEntries:registered.length,
  registryDistinctWorks:distinct(registered),
@@ -34,7 +42,9 @@ const counts={
  htmlWordGateEditions:localIndexed.filter(e=>recognized.get(key(e.workId,e.language)).status==='html-word-gate').length,
  localLexicallyIndexedDistinctWorks:distinct(localIndexed),
  localUnindexedEditions:localUnindexed.map(e=>({workId:e.workId,language:e.language,format:e.format})),
- remoteR2EditionsDeclaredNotLiveVerified:remote.length,
+ remoteR2EditionsIndexedLastVerified:verifiedR2.length,
+ remoteR2VerifiedAt:r2Status?.verifiedAt||null,
+ remoteR2EditionsDeclaredNotLiveVerified:remoteUnverified.length,
  historicalOcrEditions:local.filter(e=>e.format==='historical-ocr-pages').length,
  auditCounts:audit.counts,
  supplementaryDossiers:supplement.works.length
@@ -46,14 +56,16 @@ old.actualizado=new Date().toISOString().slice(0,10);
 old.versionesTextuales=registered.length;
 old.edicionesLexicasLocales=manifest.index.length;
 old.estadoIndexacion={
- metodo:'Auditoría local por obra/idioma y manifiesto; R2 remoto no verificado aquí; el OCR histórico se informa separado.',
+ metodo:'Auditoría local y cotejo R2 con manifiesto y comprobación SHA registrada; sin nueva prueba HTTP en esta ejecución. OCR histórico separado.',
  edicionesLocalesBuscables:counts.localIndexedEditions,
  edicionesLocalesConPasajes:counts.localIndexPassageEditions,
  edicionesHTMLBuscablesPorPalabra:counts.htmlWordGateEditions,
+ edicionesR2IndexadasConSHA:counts.remoteR2EditionsIndexedLastVerified,
+ ultimaVerificacionR2:counts.remoteR2VerifiedAt,
  edicionesR2PendientesVerificacion:counts.remoteR2EditionsDeclaredNotLiveVerified,
  edicionesOCRHistorico:counts.historicalOcrEditions,
  edicionesLocalesPendientes:localUnindexed.length
 };
 writeFileSync('data/cifras-corpus.json',JSON.stringify(old,null,2)+'\n');
-console.log(JSON.stringify({registry:counts.registryEntries,localIndex:counts.localIndexedEditions,remoteUnverified:remote.length,localUnindexed:localUnindexed.length},null,2));
+console.log(JSON.stringify({registry:counts.registryEntries,localIndex:counts.localIndexedEditions,remoteUnverified:remoteUnverified.length,localUnindexed:localUnindexed.length},null,2));
 if(localUnindexed.length)process.exitCode=1;
