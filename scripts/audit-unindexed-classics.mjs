@@ -1,0 +1,49 @@
+#!/usr/bin/env node
+/** Non-destructive check of locally registered classical editions vs inverted index.
+ * Never assumes R2 URLs are accessible or that catalogue-only works contain text.
+ * Writes a machine-readable diagnostic; only locally readable originals/editions
+ * with source passages can qualify for indexing.
+ */
+import {readFileSync,existsSync,mkdirSync,writeFileSync} from 'node:fs';
+const load=p=>JSON.parse(readFileSync(p,'utf8'));
+const registry=load('data/classics-corpus/search-registry.json');
+const manifest=load('data/index/classics/manifest.json');
+if(!Array.isArray(registry.entries)||!Array.isArray(manifest.index))throw Error('Registry/manifest missing entries');
+const indexed=new Map(manifest.index.filter(e=>e.id&&e.lang&&Number(e.passages)>0).map(e=>[e.id+'|'+e.lang,e]));
+const records=[];
+const seen=new Set();
+for(const entry of registry.entries){
+ const id=entry.workId,language=entry.language;
+ if(!id||!language)continue;
+ const key=id+'|'+language;
+ if(seen.has(key))continue;
+ seen.add(key);
+ const entries=registry.entries.filter(e=>e.workId===id&&e.language===language);
+ const registeredFiles=entries.filter(e=>typeof e.path==='string'&&e.path.trim()).map(e=>e.path);
+ const local=registeredFiles.filter(p=>!/^https?:\/\//i.test(p));
+ const remote=registeredFiles.filter(p=>/^https?:\/\//i.test(p));
+ const present=local.filter(existsSync);
+ const absent=local.filter(p=>!existsSync(p));
+ const index= indexed.get(key);
+ let state='catalogue-or-external-only';
+ if(absent.length)state='registered-local-file-missing';
+ else if(index&&present.length)state='indexed-local';
+ else if(index)state='index-without-local-source-confirmation';
+ else if(present.length)state='local-text-pending-index';
+ else if(remote.length)state='remote-unverified';
+ records.push({workId:id,language,state,registeredFiles,missingLocalFiles:absent,indexedPassages:index?.passages||0});
+}
+const counts={};
+for(const r of records)counts[r.state]=(counts[r.state]||0)+1;
+const pending=records.filter(x=>x.state!=='indexed-local');
+const report={
+ schema:'vdl-classics-unindexed-audit-v1',
+ method:'Registry versus lexical-index manifest and local filesystem; remote R2 URLs were not probed. Duplicated work/language registrations are combined. The inverted index is root-based and is not morphological lemmatization.',
+ registeredWorkLanguages:records.length,
+ counts,
+ missing:pending,
+};
+mkdirSync('data/classics-corpus',{recursive:true});
+writeFileSync('data/classics-corpus/unindexed-audit.json',JSON.stringify(report,null,2)+'\n');
+console.log(JSON.stringify({registeredWorkLanguages:records.length,counts,pending:pending.length},null,2));
+if(records.some(x=>x.state==='registered-local-file-missing'))process.exitCode=1;
