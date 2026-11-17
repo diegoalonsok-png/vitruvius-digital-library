@@ -42,7 +42,7 @@ def normalized(value:str)->str:
 def eligible(node:NavigableString)->bool:
     if not isinstance(node,NavigableString):return False
     text=normalized(str(node))
-    if len(text)<12 or len(text)>2000 or len(text.split())<3:return False
+    if len(text)<12 or len(text)>16000 or len(text.split())<3:return False
     if not SPANISH.search(text) and not SPANISH_ACCENTS.search(text):return False
     if GREEK.search(text):return False
     parent=node.parent
@@ -89,7 +89,22 @@ def pairs_install()->None:
 
 def translate(value:str,target:str)->str:
     import argostranslate.translate
-    rendered=normalized(argostranslate.translate.translate(value,"es",target))
+    # Neural models have input-length limits. Keep longer editorial paragraphs
+    # as sentence-sized chunks; preserve their reading order and punctuation.
+    sentences=re.split(r"(?<=[.!?])\\s+",value)
+    chunks=[]
+    current=""
+    for sentence in sentences:
+        if len(sentence)>440:
+            if current:chunks.append(current);current=""
+            for i in range(0,len(sentence),440):chunks.append(sentence[i:i+440])
+        elif len(current)+len(sentence)+1>440:
+            if current:chunks.append(current)
+            current=sentence
+        else:
+            current=(current+" "+sentence).strip()
+    if current:chunks.append(current)
+    rendered=normalized(" ".join(argostranslate.translate.translate(part,"es",target) for part in chunks))
     if not rendered or rendered==value:raise ValueError("Empty or unchanged translation")
     return rendered
 
