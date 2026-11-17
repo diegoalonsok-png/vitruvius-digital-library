@@ -6,6 +6,16 @@ const E=(tag,text,cls)=>{const n=document.createElement(tag);if(text!=null)n.tex
 const A=(label,url)=>{const a=E("a",label);a.href=url;return a};
 const romans=["","I","II","III","IV","V","VI","VII","VIII","IX","X"];
 const norm=s=>{s=String(s||"").trim().toLowerCase().replace(/\s+/g,"");const m=s.match(/^([ivx]+)\./);if(m){let n=0,p=0;for(const ch of m[1].split("").reverse()){const v={i:1,v:5,x:10}[ch];n+=v<p?-v:v;p=v}s=n+s.slice(m[1].length)}return s.replace(/\.praefatio\./g,".praef.").replace(/\.preface\./g,".praef.")};
+// Lexical similarity per locus: normalized word-level Levenshtein distance.
+function lexicalSimilarity(a,b){
+ if(!a?.trim()||!b?.trim())return null;
+ const words=s=>String(s).normalize("NFD").replace(/[\\u0300-\\u036f]/g,"").toLowerCase().replace(/j/g,"i").replace(/v/g,"u").match(/[a-z]+/g)||[];
+ const x=words(a),y=words(b);if(!x.length||!y.length)return null;
+ let prev=Array.from({length:y.length+1},(_,i)=>i);
+ for(let i=1;i<=x.length;i++){const curr=[i];for(let j=1;j<=y.length;j++)curr[j]=Math.min(prev[j]+1,curr[j-1]+1,prev[j-1]+(x[i-1]===y[j-1]?0:1));prev=curr;}
+ return Math.max(0,100*(1-prev[y.length]/Math.max(x.length,y.length)));
+}
+const percent=value=>value==null?"no calculable":value.toLocaleString("es-AR",{minimumFractionDigits:1,maximumFractionDigits:1})+" %";
 const BIB={krohn:"Marco Vitruvio Polión, Vitruvii De architectura libri decem, ed. Fritz Krohn (Lipsiae: B. G. Teubner, 1912; sin ISBN/DOI de la edición histórica)",rose:"Marco Vitruvio Polión, Vitruvii De architectura libri decem, ed. Valentin Rose (Lipsiae: B. G. Teubner, 1899; sin ISBN/DOI de la edición histórica)",v514:"Diego Kurilo, Vitruvio. De architectura. Nueva recensio académica bilingüe: El arquitecto de la teoría, V514 (2026). DOI 10.5281/zenodo.23884757; ISBN 978-631-01-6651-3 (declarado, atribución registral pendiente)",v554:"Diego Kurilo, Vitruve. De architectura. Nouvelle recensio académique bilingue: L’architecte de la théorie, V554 (2026). DOI 10.5281/zenodo.23885110; ISBN 978-631-01-6651-3 (declarado, atribución registral pendiente)",v297:"Diego Kurilo, The Architect of Theory: Vitruvius and the Intellectual World of Roman Antiquity, V297 (2026). DOI 10.5281/zenodo.23885404; ISBN 978-631-01-6651-3 (declarado, atribución registral pendiente)"};
 const fmt=s=>{const p=String(s).split(".");return (romans[+p[0]]||p[0])+"."+p.slice(1).join(".")};
 let data=null,loci=[],sequence=0;
@@ -133,6 +143,14 @@ async function render(query){
  const ku=card(BIB.v514+" · "+fmt(locus),p?.latin||"Sin texto estructurado.","la");
  ku.append(E("small","Texto autoral V514; las elecciones editoriales de latín y griego se conservan."));
  tgrid.append(k,ro,ku);texts.append(tgrid);
+ const symmetry=E("div",null,"bude-cobertura");
+ symmetry.append(E("strong","Similitud léxica normalizada por locus · "+fmt(locus)));
+ for(const [label,other] of [["Kurilo V514 – Rose 1899",roseTranscription?.latin],["Kurilo V514 – Krohn 1912",krohn?.latin],["Rose 1899 – Krohn 1912",roseTranscription?.latin&&krohn?.latin?null:undefined]]){
+  const value=label==="Rose 1899 – Krohn 1912"?lexicalSimilarity(roseTranscription?.latin,krohn?.latin):lexicalSimilarity(p?.latin,other);
+  symmetry.append(E("p",label+": "+percent(value)));
+ }
+ symmetry.append(E("small","Porcentaje calculado a partir de las palabras latinas indexadas en este locus mediante distancia de edición, con normalización de mayúsculas, acentos, i/j y u/v. 100 % significa coincidencia léxica normalizada, no identidad diplomática ni verificación de manuscritos."));
+ texts.append(symmetry);
  texts.append(E("p","H (Harley MS 2767) se documenta por su imagen y los cotejos expresamente verificados, en el apartado siguiente. No se publica una lectura diplomática reconstruida sin cotejo. La unidad por locus es una alineación editorial y no implica paginación idéntica en Rose y Krohn.","bude-note"));
  // Candidate lexical differences from the two independently attributed digital editions.
  // NEVER elevate these to manuscript variants or attest H to them without autopsy.
@@ -199,14 +217,15 @@ async function render(query){
  }
  const books=data.kuriloBooks?.loci?.find(x=>x.locus===locus);
  if(books){
-  const ed=section("Editiones Kurilo · V514 / V554 / V297");
+  const ed=section("Editiones Kurilo · referencias bibliográficas y cotejo por locus");
+   ed.append(E("p",BIB.v514,"bude-note"),E("p",BIB.v554,"bude-note"),E("p",BIB.v297,"bude-note"));
   const similarity=books.latin.similitud_normalizada_v514_v297;
   const frenchRecord=data.fr?.passages?.find(x=>x.locus===locus);
   const frenchAvailable=Boolean(frenchRecord?.translation?.trim());
   const frenchStatus=frenchAvailable
    ?"V554: traducción francesa recuperada del índice estructurado para este locus."
    :"V554: la lectura francesa no se mostró en esta consulta. Revisar recuperación o correspondencia por locus, sin atribuir el problema al DOCX/PDF.";
-  ed.append(E("p","V514: latín y castellano estructurados · V297: "+(books.latin.v297==="disponible"?"latín e inglés estructurados":"locus sin texto estructurado")+" · "+frenchStatus,"bude-note"));
+  ed.append(E("p","Edición V514: latín y castellano estructurados · Edición V297: "+(books.latin.v297==="disponible"?"latín e inglés estructurados":"locus sin texto estructurado")+" · "+frenchStatus,"bude-note"));
   if(!frenchAvailable){const note=E("p",null,"bude-note");note.append(A("Consultar edición francesa V554","documents/edicion-v554.html")," · ",A("PDF francés","documents/kurilo-recensio-fr.pdf")," · ",A("Índice estructurado V554","data/structured/recensio-fr.json"));ed.append(note)}
   ed.append(E("p","Similitud digital V514/V297: "+(similarity==null?"no disponible":similarity+" %")+". "+(books.latin.identidad_secuencial_normalizada===true?"Secuencia normalizada coincidente.":books.latin.identidad_secuencial_normalizada===false?"Secuencia normalizada distinta; cotejo editorial pendiente.":"Comparación incompleta.")+" No atribuir a códices manuscritos.","bude-note"));
   for(const [title,entries,kind] of [["Apéndice T de las ediciones",books.apendice_t,"appendix"],["Notas y glosas de tus libros",books.notas_autorales,"notes"]]){
