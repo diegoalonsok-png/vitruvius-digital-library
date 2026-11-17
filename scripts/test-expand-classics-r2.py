@@ -10,6 +10,24 @@ C={"id":"tlg0001.tlg001","title":"Δοκιμή","author":"Test","language":"grc"
 def tei(body,licence=True,lang="grc",urn="urn:cts:greekLit:tlg0001.tlg001.perseus-grc1"):
     return f'''<TEI xmlns="http://www.tei-c.org/ns/1.0"><teiHeader><fileDesc><titleStmt><title xml:lang="grc">Δοκιμή</title><author>Test</author><editor>Editor</editor></titleStmt><publicationStmt><availability>{'<licence target="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</licence>' if licence else ''}</availability></publicationStmt><sourceDesc><bibl><title>Edition</title><editor>Editor</editor><imprint><date>1900</date></imprint></bibl></sourceDesc></fileDesc></teiHeader><text><body><div type="edition" n="{urn}" xml:lang="{lang}">{body}</div></body></text></TEI>'''.encode()
 
+class EditorialPriority(unittest.TestCase):
+    def test_foundational_before_major_before_other(self):
+        samples = [
+            {"workId":"a", "author":"Homer", "existing":False},
+            {"workId":"b", "author":"Euclides", "existing":False},
+            {"workId":"c", "author":"Autor secundario", "existing":False},
+        ]
+        self.assertEqual([m.editorial_priority(x) for x in samples], [1,2,3])
+        self.assertEqual(len(m.choose_priority_batch(samples,12,0)),3)
+
+    def test_round_robin_without_duplicates(self):
+        samples=[{"workId":str(i),"author":"Homero","existing":False} for i in range(24)]
+        a=m.choose_priority_batch(samples,12,0)
+        b=m.choose_priority_batch(samples,12,1)
+        self.assertEqual(len(a),12)
+        self.assertEqual(len({r["workId"] for r in a}),12)
+        self.assertNotEqual([r["workId"] for r in a],[r["workId"] for r in b])
+
 class Extraction(unittest.TestCase):
     def test_mixed_prose_verse_no_notes_no_double_choice(self):
         raw=tei('<div n="1"><head>Τίτλος</head><p>Ὁ λόγος <note>NOT AUTHORIAL</note><choice><sic>WRONG</sic><corr>ἀληθής</corr></choice>.</p><lg><l n="1">πρῶτος στίχος</l><l n="2">δεύτερος στίχος</l></lg><p>τέλος.</p></div>')
