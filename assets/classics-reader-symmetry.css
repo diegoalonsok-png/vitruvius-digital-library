@@ -252,3 +252,15 @@ html:not([data-parallel-view="true"]):not([data-reading-mode="simple"]) .cl-dual
  display:flex;align-items:center;min-height:45px;
 }
 @media print{.cl-annotation-tools-fold{display:none!important}}
+
+/* Lexicon neutral dark colors: retained controls, no cream surfaces. */
+html:not([data-parallel-view="true"]):not([data-reading-mode="simple"]) body .cl-dual-reader,
+html:not([data-parallel-view="true"]):not([data-reading-mode="simple"]) body .cl-dual-reader:not(.cl-pdf-mode)>.cl-source-column,
+html:not([data-parallel-view="true"]):not([data-reading-mode="simple"]) body .cl-dual-reader:not(.cl-pdf-mode)>.cl-translation-column{background:var(--cl-shared-bg,#18191b)!important;color:var(--cl-shared-fg,#e5e5e5)!important;border-color:#444448!important}
+html:not([data-parallel-view="true"]):not([data-reading-mode="simple"]) body .cl-dual-reader :is(.cl-pane-title,.cl-translation-tools,.cl-pane-options,.cl-reading-height-control,.cl-unified-reading-actions,.cl-annotation-tools-fold){background:#202123!important;color:#e5e5e5!important;border-color:#45454a!important}
+html:not([data-parallel-view="true"]):not([data-reading-mode="simple"]) body .cl-dual-reader :is(.cl-translation-output,.cl-translation-output>p:not(.cl-caution),.cl-translation-label,.cl-translation-meta){background:transparent!important;color:var(--cl-shared-fg,#e5e5e5)!important}
+html:not([data-parallel-view="true"]):not([data-reading-mode="simple"]) body :is(.cl-unified-reading-actions,.cl-reading-height-control,.cl-translation-tools,.cl-pane-options,.cl-annotation-tools-fold) :is(button,a,select,input:not([type=range])){background:#2a2a2e!important;color:#e8e8ea!important;border:1px solid #59595f!important;border-radius:8px!important;box-shadow:none!important}
+html:not([data-parallel-view="true"]):not([data-reading-mode="simple"]) body .cl-reading-height-control{background:#202123!important;color:#e5e5e5!important;border-color:#45454a!important}
+html:not([data-parallel-view="true"]):not([data-reading-mode="simple"]) body .cl-reading-height-control button[aria-pressed=true]{border-color:#929298!important;box-shadow:inset 0 -2px 0 #929298!important}
+html:not([data-parallel-view="true"]):not([data-reading-mode="simple"]) body :is(.cl-unified-reading-actions,.cl-reading-height-control) :is(button,a,select):focus-visible{outline:2px solid #b0b0b5!important}
+@media print{html body .cl-dual-reader,html body .cl-dual-reader :is(.cl-source-column,.cl-translation-column){background:#fff!important;color:#111!important}}
