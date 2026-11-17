@@ -888,7 +888,18 @@ async function bootstrap(){
    .then(r=>{if(!r.ok)throw Error("HTTP "+r.status);return r.json()})
    .then(j=>addHistoricalViewers(j.records))
    .catch(error=>console.warn("Ediciones históricas no indexadas:",error));
- }catch(error){console.warn("Catálogo alfabético no disponible:",error);}
+ }catch(error){
+  console.warn("Catálogo alfabético no disponible:",error);
+  // Never leave a blank, apparently successful catalogue when its data failed.
+  const area=parent||document.querySelector(".searcharea");
+  if(area&&!document.getElementById("bws-load-error")){
+   const warning=make("p","No se pudo cargar el listado interactivo. Podés consultar el índice alfabético permanente.","bws-load-error");
+   warning.id="bws-load-error";warning.setAttribute("role","alert");
+   const link=make("a"," Abrir índice de autores y obras","bws-fallback-index");
+   link.href="index-auctorum-operum.html";warning.append(link);
+   area.append(warning);
+  }
+ } 
 }
 if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",bootstrap,{once:true});
 else bootstrap();
