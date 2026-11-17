@@ -265,7 +265,7 @@ html[data-theme="light"] body.academic-reader .cl-translation-output a[href]{col
   <button type="button" id="reader-italic" aria-pressed="false" title="Alternar cursiva">Cursiva</button>
   <button type="button" id="reader-align" aria-pressed="true" title="Alternar texto justificado y alineación izquierda">Justificado</button>
   <button type="button" id="reader-reset" title="Restablecer la apariencia de lectura">↺ Restablecer</button>
-  <div class="simple-reading-actions"><a id="simple-reading-link" href="?view=simple">◫ Visor simplificado</a><a id="full-reading-link" href="?">Visor académico</a></div>
+  <div class="simple-reading-actions"><a id="simple-reading-link" href="?view=simple">◫ Visor simplificado</a></div>
 </div>
 <section id="search-results-section" class="search-results-section" aria-labelledby="search-results-title" hidden>
  <div class="search-results-head"><div><h2 id="search-results-title">Pasajes encontrados en toda la obra</h2><p>Seleccione cualquier resultado para abrir el texto original en su locus. La búsqueda recorre la edición completa, no solo la página visible.</p></div><a href="#passages">Ir al lector</a></div>
@@ -468,8 +468,18 @@ for(const type of ['pointerup','pointercancel','lostpointercapture'])aside.addEv
 .reader-lexicon-custom{grid-column:1/-1;display:flex!important;justify-content:space-between;align-items:center;gap:6px;margin-top:2px}
 .reader-lexicon-custom input{width:38px;height:32px}
 #reader-ui-language{height:34px;min-height:34px;border:1px solid #49494e;border-radius:8px;background:#1c1c1e;color:#e5e5e5;padding:5px 9px;font:500 12px/1.3 Arial,Helvetica,sans-serif}
-.reader-appearance #full-reading-link{background:#6f6168!important;color:#f3eef0!important;border-color:#8b7d84!important}
-.reader-appearance #full-reading-link:hover{background:#7a6b73!important}
+/* Acceso único al visor simple, amarillo papel de bajo contraste cromático. */
+.reader-appearance .simple-reading-actions #simple-reading-link{
+ background:#f2e4b2!important;color:#2d2a22!important;
+ border:1px solid #d5c186!important;box-shadow:none!important;
+ border-radius:9px!important;font-weight:600!important;
+}
+.reader-appearance .simple-reading-actions #simple-reading-link:hover{
+ background:#e9d79a!important;border-color:#c7af6f!important;color:#24221d!important;
+}
+.reader-appearance .simple-reading-actions #simple-reading-link:focus-visible{
+ outline:2px solid #bca258!important;outline-offset:3px!important;
+}
 @media print{.reader-lexicon-palette,#reader-ui-language{display:none!important}}
 </style>
 <script id="reader-lexicon-palette-script">
