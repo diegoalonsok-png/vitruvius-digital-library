@@ -225,6 +225,28 @@ html[data-parallel-view="true"] body.academic-reader #passages .locus{margin:0 0
 @media(max-width:700px){html[data-parallel-view="true"] body.academic-reader .reader{padding:18px!important}}
 </style>
 <script>if(new URLSearchParams(location.search).get("parallel")==="1")document.documentElement.dataset.parallelView="true";</script>
+<style id="vdl-parallel-equal-text-origins-20261117">
+/* Only embedded readers: all version metadata is in the parent's equal-height header. */
+html[data-parallel-view="true"] body.academic-reader .reader>.cl-edition-layout{display:none!important}
+html[data-parallel-view="true"] body.academic-reader .reader>.cl-dual-reader{
+ border:0!important;border-radius:0!important;margin:0!important;padding:0!important;
+ min-height:0!important;overflow:visible!important;display:block!important
+}
+html[data-parallel-view="true"] body.academic-reader .reader .cl-dual-reader>.cl-source-column{
+ border:0!important;margin:0!important;padding:0!important;
+ min-height:0!important;max-height:none!important;overflow:visible!important;
+ scrollbar-gutter:auto!important
+}
+html[data-parallel-view="true"] body.academic-reader .cl-source-column>.cl-pane-title,
+html[data-parallel-view="true"] body.academic-reader .cl-source-column #passages .locus,
+html[data-parallel-view="true"] body.academic-reader .cl-source-column .vdl-annotation-bar{display:none!important}
+html[data-parallel-view="true"] body.academic-reader .cl-source-column #passages{
+ margin:0!important;padding:0!important;max-width:none!important
+}
+html[data-parallel-view="true"] body.academic-reader .cl-source-column #passages>p{
+ margin:0 0 1.25em!important;line-height:1.85!important
+}
+</style>
 </head>
 <body class="academic-reader">
 <header><span class="brand">Vitruvius Digital Library · Bibliotheca Graeca et Latina</span><nav><a href="bibliotheca-graeca-latina.html">Bibliotheca</a><a href="vitruvia.html">Buscar en Vitruvia</a><a id="index-locorum-link" href="index-locorum.html">Index locorum</a><a href="vitruvia-lexicon.html">Lexicon</a><a id="codex-link" href="bibliotheca-graeca-latina.html">Catálogo y testimonios</a><a id="parallel-link" href="classics-parallel-reader.html">Lectura lado a lado</a><a href="metodologia-filologica.html">Método filológico</a><a href="auditoria-academica.html">Auditoría</a></nav>
