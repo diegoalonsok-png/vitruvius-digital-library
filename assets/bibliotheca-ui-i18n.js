@@ -104,6 +104,8 @@ if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",
    Se traducen únicamente nodos de interfaz; títulos de obras, citas, pasajes,
    etiquetas de autor y procedencias quedan en su idioma documental. */
 const UI_TRANSLATIONS={
+"Herramientas y recursos académicos":["Academic tools and resources","Outils et ressources académiques"],
+"Autores y obras":["Authors and works","Auteurs et œuvres"],
 "Bibliotheca": ["Bibliotheca","Bibliotheca"],
 "Graeca et Latina":["Graeca et Latina","Graeca et Latina"],
 "Inicio":["Home","Accueil"],
