@@ -212,7 +212,15 @@ html[data-theme="light"] body.academic-reader .cl-translation-output a[href]{col
 </style>
 </head>
 <body class="academic-reader">
-<header><span class="brand">Vitruvius Digital Library · Bibliotheca Graeca et Latina</span><nav><a href="bibliotheca-graeca-latina.html">Bibliotheca</a><a href="vitruvia.html">Buscar en Vitruvia</a><a id="index-locorum-link" href="index-locorum.html">Index locorum</a><a href="vitruvia-lexicon.html">Lexicon</a><a id="codex-link" href="bibliotheca-graeca-latina.html">Catálogo y testimonios</a><a id="parallel-link" href="classics-parallel-reader.html">Lectura lado a lado</a><a href="metodologia-filologica.html">Método filológico</a><a href="auditoria-academica.html">Auditoría</a></nav></header>
+<header><span class="brand">Vitruvius Digital Library · Bibliotheca Graeca et Latina</span><nav><a href="bibliotheca-graeca-latina.html">Bibliotheca</a><a href="vitruvia.html">Buscar en Vitruvia</a><a id="index-locorum-link" href="index-locorum.html">Index locorum</a><a href="vitruvia-lexicon.html">Lexicon</a><a id="codex-link" href="bibliotheca-graeca-latina.html">Catálogo y testimonios</a><a id="parallel-link" href="classics-parallel-reader.html">Lectura lado a lado</a><a href="metodologia-filologica.html">Método filológico</a><a href="auditoria-academica.html">Auditoría</a></nav>
+<div class="reader-lexicon-toptools" aria-label="Herramientas de Lexicon">
+ <select id="reader-top-text-lang" aria-label="Idioma de la obra" title="Idioma de la obra"><option value="">Idioma del texto</option></select>
+ <a class="reader-top-lab" href="laboratorio-escrituras.html">Laboratorio de escrituras</a>
+ <span id="reader-palette-top-slot"></span>
+ <span id="reader-ui-top-slot"></span>
+ <button id="reader-top-theme" type="button" aria-label="Alternar fondo oscuro o claro" title="Alternar fondo oscuro o claro">☼</button>
+ <details id="reader-top-typeface"><summary title="Tipografía" aria-label="Tipografía">Aa</summary><div id="reader-font-top-slot"></div></details>
+</div></header>
 <main>
 
 <p class="academic-kicker">Bibliotheca · texto, traducción y aparato</p>
@@ -502,5 +510,54 @@ document.addEventListener("vitruvius:language-changed",event=>{if(["es","en","fr
 <strong>© 2026 Editorial Sophia Lux · Arq. Diego Kurilo. Derechos reservados.</strong>
 <span style="opacity:.8">Los derechos sobre los materiales originales, el diseño y los aportes editoriales pertenecen a sus respectivos titulares. Los textos antiguos, facsímiles, imágenes y recursos de terceros conservan su situación jurídica y licencias propias.</span>
 </footer>
-</body>
+<style id="reader-lexicon-toptools-style">
+/* Lexicon navigation controls, at the top-right of the reader. */
+body.academic-reader>header{display:flex!important;align-items:center;gap:12px;flex-wrap:wrap}
+body.academic-reader>header .reader-lexicon-toptools{display:flex;align-items:center;gap:7px;justify-content:flex-end;margin-left:auto;max-width:100%;white-space:nowrap}
+.reader-lexicon-toptools :is(select,button,a,summary){height:39px;min-height:39px;display:inline-flex;align-items:center;justify-content:center;box-sizing:border-box;padding:7px 12px;border:1px solid #54545a!important;border-radius:10px;background:#242428!important;color:#e5e5e8!important;font:600 12px/1.3 Arial,Helvetica,system-ui,sans-serif!important;text-decoration:none!important;cursor:pointer;white-space:nowrap}
+.reader-lexicon-toptools #reader-top-text-lang{width:148px}
+.reader-lexicon-toptools #reader-ui-language{height:39px;min-height:39px}
+.reader-lexicon-toptools .reader-lexicon-palette>summary{height:39px;min-height:39px}
+.reader-lexicon-toptools #reader-top-typeface{position:relative}
+.reader-lexicon-toptools #reader-top-typeface>summary{list-style:none;font-size:17px!important}
+.reader-lexicon-toptools #reader-top-typeface>summary::-webkit-details-marker{display:none}
+.reader-lexicon-toptools #reader-font-top-slot{position:absolute;right:0;top:44px;z-index:250;background:#171719;border:1px solid #515158;border-radius:9px;padding:10px;width:180px}
+.reader-lexicon-toptools #reader-top-typeface:not([open]) #reader-font-top-slot{display:none}
+.reader-lexicon-toptools #reader-font-top-slot label{display:flex;flex-direction:column;gap:6px;font:12px Arial,sans-serif;color:#d6d6da}
+.reader-lexicon-toptools #reader-font{width:100%;max-width:100%;color:#eee;background:#242428;border:1px solid #555;border-radius:6px;padding:8px}
+.reader-appearance #reader-lexicon-palette,.reader-appearance #reader-ui-language,.reader-appearance label:has(#reader-font){display:none!important}
+body.academic-reader>header a,body.academic-reader>header .brand{color:#d7d7db!important}
+body.academic-reader :is(.academic-kicker,#work-title,#source-title,.academic-records summary,.reader-toolbar,.sub,.notice,#lexicon,.cl-document-note){color:#dddde0!important}
+body.academic-reader a:not(.reader-top-lab){color:#cdd0d5}
+body.academic-reader a:hover{color:#fff}
+@media(max-width:1100px){body.academic-reader>header .reader-lexicon-toptools{width:100%;justify-content:flex-end;overflow-x:auto}}
+@media(max-width:600px){.reader-lexicon-toptools .reader-top-lab{display:none!important}.reader-lexicon-toptools #reader-top-text-lang{width:112px}}
+@media print{.reader-lexicon-toptools{display:none!important}}
+</style><script id="reader-lexicon-toptools-script">
+(()=>{"use strict";
+const main=document.getElementById("language"),top=document.getElementById("reader-top-text-lang");
+const palette=document.getElementById("reader-lexicon-palette"),ui=document.getElementById("reader-ui-language"),font=document.getElementById("reader-font");
+const paletteSlot=document.getElementById("reader-palette-top-slot"),uiSlot=document.getElementById("reader-ui-top-slot"),fontSlot=document.getElementById("reader-font-top-slot");
+if(!main||!top||!palette||!ui||!font||!paletteSlot||!uiSlot||!fontSlot)return;
+paletteSlot.append(palette);uiSlot.append(ui);
+const label=document.createElement("label");label.textContent="Fuente";
+font.parentElement?.insertBefore(document.createComment("Font selector moved to Lexicon Aa"),font);
+label.append(font);fontSlot.append(label);
+function syncLanguages(){
+ const selected=main.value;
+ top.replaceChildren(...Array.from(main.options).filter(o=>!o.disabled&&!o.hidden).map(o=>o.cloneNode(true)));
+ if(Array.from(top.options).some(o=>o.value===selected))top.value=selected;
+}
+top.addEventListener("change",()=>{main.value=top.value;main.dispatchEvent(new Event("change",{bubbles:true}))});
+main.addEventListener("change",syncLanguages);
+new MutationObserver(syncLanguages).observe(main,{childList:true,subtree:true});
+syncLanguages();
+const theme=document.getElementById("reader-top-theme"),bg=document.getElementById("reader-bg"),fg=document.getElementById("reader-fg");
+theme?.addEventListener("click",()=>{
+ const dark=(bg.value.toLowerCase()==="#0d0d0e"||bg.value.toLowerCase()==="#18191b"||bg.value.toLowerCase()==="#17191c");
+ bg.value=dark?"#f7f5ef":"#17191c";fg.value=dark?"#252520":"#e5e5e5";
+ bg.dispatchEvent(new Event("input",{bubbles:true}));fg.dispatchEvent(new Event("input",{bubbles:true}));
+});
+})();
+</script></body>
 </html>
