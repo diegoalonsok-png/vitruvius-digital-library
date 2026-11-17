@@ -23,7 +23,7 @@ function chunks(text,maxBytes=MAX_PART_BYTES,maxParts=MAX_PARTS,maxInput=MAX_INP
   }
   if(!cut)break;
   const head=rest.slice(0,cut);
-  const boundaries=[...head.matchAll(/[\\s,;··.?!:]+/gu)].map(m=>m.index+m[0].length);
+  const boundaries=[...head.matchAll(/[\s,;··.?!:]+/gu)].map(m=>m.index+m[0].length);
   const end=boundaries.filter(x=>x>=Math.floor(cut*.40)).at(-1)||cut;
   const fragment=rest.slice(0,end).trim();
   if(!fragment)break;
