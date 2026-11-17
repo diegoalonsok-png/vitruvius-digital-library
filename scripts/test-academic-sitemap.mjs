@@ -78,8 +78,8 @@ const counts=JSON.parse(fs.readFileSync("data/cifras-corpus.json","utf8"));
 const snapshot=JSON.parse(fs.readFileSync("data/corpus-snapshot-2026-11-14.json","utf8"));
 assert(counts.schema==="vdl-cifras-corpus-1"&&counts.obrasConTextoIndexado<=counts.obrasTotalesDeclaradas,
   "Indexed works must not exceed the deduplicated federated catalogue");
-assert(home.includes('id="estado-corpus"')&&home.includes('data-cifra="obrasConTextoIndexado"')&&home.includes('data-cifra="obrasTotalesDeclaradas"'),
-  "Home must expose indexed works and total catalogued works in the compact Bibliotheca strip");
+assert(home.includes('id="estado-corpus"')&&home.includes('data-cifra="obrasConTextoIndexado"'),
+  "Home must expose indexed works in the compact Bibliotheca strip; total remains in the shared JSON");
 assert.equal(counts.obrasTotalesDeclaradas,counts.obras+counts.obrasSuplementarias+counts.obrasAdicionales,
   "Published total must equal main, supplementary and additional catalogued works");
 assert(home.includes('data-cifra-fecha')&&home.includes('assets/cifra-obras.js'),
