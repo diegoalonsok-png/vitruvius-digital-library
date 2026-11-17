@@ -1,6 +1,6 @@
 import {bookTitle,bibliographyHTML,bibliographyText} from './edition-citation.mjs?v=20261105-chicago18';
 import {citation, roman, parseLocus} from './search-core.mjs?v=20261030-docx-1';
-import {parallelHighlight,parallelExcerpt,hasLatinConcept} from './parallel-highlights.mjs?v=20261114-logos-sources-v7';
+import {parallelHighlight,parallelExcerpt,hasLatinConcept} from './parallel-highlights.mjs?v=20261117-search-decor-highlight-v8';
 import {readSearchState,searchStateURL} from './home-search-state.mjs?v=20261115-query-alias-v2';
 const $ = (q, root=document) => root.querySelector(q);
 const $$ = (q, root=document) => [...root.querySelectorAll(q)];
