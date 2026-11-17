@@ -510,6 +510,20 @@ async function load(language,requestId){
    })).filter(item=>item.locus&&typeof item.text==="string"&&item.text.trim())
   };
  }
+ // Merge only Strabo's repeated technical segments of the same CTS section in memory.
+ // The stored source JSON remains unchanged and fully auditable.
+ if(work==="strabo"&&language==="grc"&&Array.isArray(corpus.passages)){
+  const byLocus=new Map();
+  for(const passage of corpus.passages){
+   const id=String(passage.locus||"");
+   const earlier=byLocus.get(id);
+   if(earlier&&typeof passage.text==="string"){
+    earlier.text+="\n"+passage.text;
+    earlier.locusKind="Sección CTS formada por segmentos TEI; no cotejo frase a frase";
+   }else if(id)byLocus.set(id,{...passage});
+  }
+  corpus={...corpus,passages:[...byLocus.values()]};
+ }
  const minimumText=indexed?.sha256&&indexed.passages>0?12:350;
  if(corpus.workId!==(indexed?.sourceWorkId||work)||corpus.language!==language||!Array.isArray(corpus.passages)||!corpus.passages.length||corpus.passages.reduce((n,p)=>n+(typeof p.text==="string"?p.text.trim().length:0),0)<minimumText)throw Error("El documento no pasó validación de integridad");
  const editionSearchIndex=await resourceRequest;
