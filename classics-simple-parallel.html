@@ -529,7 +529,7 @@ function studyRender(){
  const locus=source[pos]?.locus||"";
  if(studyMode==="philology"){
   note(word?"Palabra seleccionada: «"+word+"». Consultá su análisis léxico y posibles lemas en Lexicon; la selección por sí sola no determina su función morfosintáctica.":"Seleccioná una palabra en el texto original para investigarla en los diccionarios y el índice de Lexicon.");
-  add("Abrir Lexicon"+(word?" · "+word:""),studyUrl("vitruvia-lexicon.html",word?{q:word,mode:"palabra"}:{}));
+  add("Abrir Lexicon"+(word?" · "+word:""),studyUrl("vitruvia-lexicon.html",word?{q:word,mode:"palabra",lang:leftLang,work,locus:source[pos]?.locus||""}:{work,locus:source[pos]?.locus||""}));
   add("Ficha bibliográfica de la obra",studyUrl("classics-work-record.html",{work}));
  }else if(studyMode==="ecdotics"){
   note("Pasaje "+ref+": la transcripción indexada no prueba por sí sola una lectura manuscrita. La ficha identifica la edición fuente y, cuando constan, los testigos individuales y las reproducciones disponibles.");
@@ -567,7 +567,7 @@ const lexiconLink=el("lexicon-link");document.addEventListener("selectionchange"
  if(!word||word.length>80||/\\s/.test(word))return;
  const node=selection.anchorNode;
  if(!node||!el("left-text").contains(node)&&!el("right-text").contains(node))return;
- const u=new URL("vitruvia-lexicon.html",location.href);u.searchParams.set("q",word);u.searchParams.set("mode","palabra");lexiconLink.href=u.href;
+ const u=new URL("vitruvia-lexicon.html",location.href);u.searchParams.set("q",word);u.searchParams.set("mode","palabra");u.searchParams.set("lang",leftLang);u.searchParams.set("work",work);if(source[pos]?.locus)u.searchParams.set("locus",source[pos].locus);lexiconLink.href=u.href;
 });
 el("word-find").onclick=()=>{searchTerm=el("word-query").value.trim().slice(0,80);if(!searchTerm){draw();return;}const low=searchTerm.toLocaleLowerCase();const matches=record=>String(record?.text||"").toLocaleLowerCase().includes(low);let next=-1;for(let n=0;n<source.length;n++){const idx=(pos+n)%source.length;if(matches(source[idx])||matches(translation.find(p=>key(p.locus)===key(source[idx].locus)))){next=idx;break;}}if(next<0){status("No se encontró esa palabra en los pasajes con locus correspondiente.");return;}pos=next;draw();};el("word-query").addEventListener("keydown",e=>{if(e.key==="Enter")el("word-find").click();});appearance();
 el("previous").onclick=()=>{if(pos>0){pos--;draw();}};
