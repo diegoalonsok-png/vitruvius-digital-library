@@ -990,6 +990,22 @@ button.addEventListener("click",async()=>{
 #lexical-occurrences mark.lexical-query-hit,
 #search-results mark{font-style:normal!important}
 
+/* Readability only: larger upright text and generous leading for the bilingual concordance. */
+#lexical-occurrences .lexical-locus-latin,
+#lexical-occurrences .lexical-locus-translation,
+#lexical-occurrences .lexical-locus-translation p{
+ font-size:calc(20px * var(--lexical-reader-scale,1))!important;
+ line-height:1.85!important;
+ font-style:normal!important;
+}
+@media(max-width:700px){
+ #lexical-occurrences .lexical-locus-latin,
+ #lexical-occurrences .lexical-locus-translation,
+ #lexical-occurrences .lexical-locus-translation p{
+  font-size:calc(18px * var(--lexical-reader-scale,1))!important;
+  line-height:1.8!important;
+ }
+}
 /* The displayed results are upright in BOTH columns, including the subtitle.
    This does not touch editorial text, search ranking, or other page areas. */
 #search-results .result-parallel,
