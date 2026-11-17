@@ -210,6 +210,21 @@ html[data-theme="light"] body.academic-reader .academic-records>summary{color:#3
 html[data-theme="light"] body.academic-reader .cl-translation-output a[href]{color:#294e67!important}
 @media print{html body.academic-reader .site-typeface-tool{display:none!important}}
 </style>
+<style id="vdl-parallel-compact-embedded-reader">
+/* Only the text sheet is embedded: all study controls now live above both viewers. */
+html[data-parallel-view="true"] body.academic-reader main>:not(.reader-grid){display:none!important}
+html[data-parallel-view="true"] body.academic-reader main{padding:0!important;margin:0!important;max-width:none!important}
+html[data-parallel-view="true"] body.academic-reader .reader-grid{display:block!important;margin:0!important;padding:0!important}
+html[data-parallel-view="true"] body.academic-reader .reader-grid>aside,
+html[data-parallel-view="true"] body.academic-reader .reader-toolbar,
+html[data-parallel-view="true"] body.academic-reader #reading-reference{display:none!important}
+html[data-parallel-view="true"] body.academic-reader .reader{min-height:100dvh!important;border:0!important;border-radius:0!important;padding:22px 24px!important;margin:0!important}
+html[data-parallel-view="true"] body.academic-reader #passages{padding:0!important;margin:0!important}
+html[data-parallel-view="true"] body.academic-reader #passages p{margin:0 0 1.25em!important}
+html[data-parallel-view="true"] body.academic-reader #passages .locus{margin:0 0 8px!important}
+@media(max-width:700px){html[data-parallel-view="true"] body.academic-reader .reader{padding:18px!important}}
+</style>
+<script>if(new URLSearchParams(location.search).get("parallel")==="1")document.documentElement.dataset.parallelView="true";</script>
 </head>
 <body class="academic-reader">
 <header><span class="brand">Vitruvius Digital Library · Bibliotheca Graeca et Latina</span><nav><a href="bibliotheca-graeca-latina.html">Bibliotheca</a><a href="vitruvia.html">Buscar en Vitruvia</a><a id="index-locorum-link" href="index-locorum.html">Index locorum</a><a href="vitruvia-lexicon.html">Lexicon</a><a id="codex-link" href="bibliotheca-graeca-latina.html">Catálogo y testimonios</a><a id="parallel-link" href="classics-parallel-reader.html">Lectura lado a lado</a><a href="metodologia-filologica.html">Método filológico</a><a href="auditoria-academica.html">Auditoría</a></nav>
@@ -305,7 +320,7 @@ html[data-theme="light"] body.academic-reader .cl-translation-output a[href]{col
 <script defer src="assets/classical-lexicon.js?v=20261112-externo"></script><script defer src="assets/dictionary-everywhere.js?v=20261111-diccionario-v1"></script>
 <script defer src="assets/classics-lexical-popup.js?v=20261116-context-provenance-v1"></script>
 <script defer src="assets/classics-academic-reader.js?v=20261116-source-notes-v1"></script>
-<script defer src="assets/classics-text-reader.js?v=20261117-full-page-palette-v3"></script>
+<script defer src="assets/classics-text-reader.js?v=20261117-embedded-parallel-scroll-v1"></script>
 
 
 <script defer src="assets/classics-passage-export.js?v=20261115-text-export-v1"></script>

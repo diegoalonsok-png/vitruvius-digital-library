@@ -104,6 +104,30 @@ html::-webkit-scrollbar-corner,body::-webkit-scrollbar-corner{background:#242427
 }
 @media(max-width:700px){.parallel-pane-divider{display:none}.panes{grid-template-columns:1fr!important}}
 @media print{.parallel-pane-divider{display:none!important}.panes{grid-template-columns:1fr 1fr!important}}
+
+
+/* Unified upper tools: the existing controls stay independent by reader. */
+.viewer-top-tools{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:0 0 12px}
+.viewer-top-panel{min-width:0;background:#141415;border:1px solid #414144;border-radius:5px}
+.viewer-top-panel>strong{display:block;padding:7px 11px;color:#c8c8cc;font:600 12px/1.35 system-ui,sans-serif}
+.viewer-top-panel .appearance{border:0!important;border-top:1px solid #39393c!important;padding:8px 10px!important;gap:6px;max-width:100%}
+.viewer-top-panel .appearance label{white-space:nowrap}
+.viewer-top-panel .appearance select{max-width:138px}
+.auto-top-actions{display:flex;flex-wrap:wrap;align-items:center;gap:9px;padding:8px 10px 10px;border-top:1px solid #414144;color:#dedee0;font:12px/1.4 system-ui,sans-serif}
+.auto-top-actions[hidden]{display:none!important}
+.auto-top-actions label{display:inline-flex;align-items:center;gap:5px}
+.auto-top-actions select,.auto-top-actions button{min-height:35px!important;padding:7px 10px!important;color:#ededee!important;background:#252527!important;border:1px solid #626266!important;border-radius:6px!important;cursor:pointer}
+.pane-version{display:none!important} /* Retain JS selectors, hide redundant lower controls. */
+.panes{align-items:stretch}
+.pane{display:flex;flex-direction:column;min-width:0}
+.pane>strong{display:flex;align-items:center;min-height:42px;flex:none;padding:9px 13px}
+.pane>iframe{flex:1 1 auto}
+.auto-translation{height:88vh;height:88dvh;min-height:700px;overflow-y:auto;padding:22px 24px}
+.auto-translation .auto-title{font:600 12px/1.5 system-ui,sans-serif;margin:0 0 8px;min-height:18px}
+.auto-translation .parallel-auto-translation{margin:0!important;padding:0!important;border:0!important}
+.auto-translation .academic-inline-translation-output{margin-top:0!important;padding-top:0!important}
+@media(max-width:700px){.viewer-top-tools{grid-template-columns:1fr}.auto-translation{height:80vh;height:80dvh;min-height:480px}.pane>strong{min-height:40px}}
+
 </style><script defer src="assets/analytics-config.js?v=20261106-ga4-1"></script>
 <script defer src="assets/analytics.js?v=20261106-ga4-1"></script>
 <link rel="stylesheet" href="assets/fonts-ancient.css?v=20261111-griego-politonico-v1"></head>
@@ -112,6 +136,7 @@ html::-webkit-scrollbar-corner,body::-webkit-scrollbar-corner{background:#242427
 <main>
 <p class="note">Lectura secuencial enfrentada de originales y traducciones documentadas: se prefieren traducciones humanas indexadas en inglés o francés; si no existen, se ofrecen otras versiones alojadas y, finalmente, traducción automática opcional. Cuando no hay una traducción local, el segundo visor ofrece una versión automática orientativa, solo a petición del lector. Las versiones alojadas permiten búsquedas independientes. Un locus común no acredita equivalencia de traducción ni colación filológica.</p>
 <div class="controls"><label>Visor 1 · elegir versión <select id="left" aria-label="Versión para el primer visor"></select></label><label>Visor 2 · elegir versión <select id="right" aria-label="Versión para el segundo visor"></select></label></div>
+<div class="viewer-top-tools" aria-label="Herramientas superiores de lectura"><section class="viewer-top-panel"><strong>Apariencia · texto original</strong><div id="top-tools-left"></div></section><section class="viewer-top-panel"><strong>Apariencia · traducción</strong><div id="top-tools-right"></div><div id="auto-top-actions" class="auto-top-actions" hidden></div></section></div>
 <div class="parallel-search" role="search" aria-label="Búsqueda literal independiente por versión"><label>Buscar en visor 1 <input id="left-query" type="search" placeholder="domus / λόγος / casa" maxlength="120"></label><label>Buscar en visor 2 <input id="right-query" type="search" placeholder="casa / maison / house" maxlength="120"></label><button type="button" id="parallel-find">Buscar y subrayar en ámbar</button><button type="button" id="parallel-clear">Limpiar búsqueda</button></div>
 <div class="syncbar" aria-label="Navegación conjunta">
 <button type="button" id="sync-start">⟲ Inicio de ambas</button><button type="button" id="sync-prev">← Ambas anteriores</button><button type="button" id="sync-next">Ambas siguientes →</button>
@@ -164,6 +189,8 @@ divider.addEventListener("keydown",e=>{if(!["ArrowLeft","ArrowRight","Home","End
 divider.addEventListener("dblclick",()=>setPaneShare(50));setPaneShare(50);
 
 const $=id=>document.getElementById(id),status=$("status"),left=$("left"),right=$("right");
+// Relocate the live controls before wiring their events; no clones or duplicate IDs.
+for(const side of ["left","right"])$("top-tools-"+side).append($(side+"-appearance"));
 const LANG={grc:"Griego original",la:"Latín original",es:"Castellano",en:"English",fr:"Français",it:"Italiano",de:"Deutsch",pt:"Português",
  "auto-es":"Traducción automática orientativa · Español","auto-en":"Traducción automática orientativa · English","auto-fr":"Traducción automática orientativa · Français"};
 const AUTO_TARGETS=["auto-es","auto-en","auto-fr"];
@@ -296,7 +323,7 @@ function destination(){
  const index=Math.max(0,Math.min(position,Math.max(0,(a?.passages?.length||1)-1)));
  let second=Math.max(0,Math.min(position,Math.max(0,(b?.passages?.length||1)-1)));
  let quality=isAuto(right.value)?"auto":"ordinal";
- if($("same-locus").checked)quality="unmatched";
+ if($("same-locus").checked&&!isAuto(right.value))quality="unmatched";
  if($("same-locus").checked&&a?.passages?.[index]&&b?.passages?.length){
   const wanted=locusKey(a.passages[index].locus);
   const exact=findLocusIndex(b.passages,a.passages[index].locus);
@@ -326,6 +353,8 @@ function buttons(){const n=count(),ok=Boolean(n&&ready.left&&(isAuto(right.value
  $("sync-position").textContent=n?(position+1)+" / "+n+" pasos de lectura":"Sin datos comparables";
 }
 function renderAuto(){
+ // Discard prior passage controls: avoid buttons translating a stale section.
+ const topActions=$("auto-top-actions");topActions.replaceChildren();topActions.hidden=true;
  if(!isAuto(right.value))return;
  const source=versions[left.value],record=source?.passages?.[Math.max(0,Math.min(position,(source?.passages?.length||1)-1))];
  const content=$("auto-content");content.replaceChildren();
@@ -349,6 +378,12 @@ function renderAuto(){
    if(select)select.value=target;
    const button=widget.querySelector(".academic-inline-translate-button");
    if(button)button.textContent="Traducir este pasaje aquí";
+   const label=widget.querySelector("label");
+   if(label&&button){
+    // Preserve the existing click handler when moving real nodes to the top.
+    topActions.append(label,button);
+    topActions.hidden=false;
+   }
    const output=widget.querySelector(".academic-inline-translation-output");
    const note=widget.querySelector(".academic-inline-translation-note");
    if(output){
@@ -361,6 +396,60 @@ function renderAuto(){
   }else content.append("Este idioma no dispone de traducción automática compatible.");
  }else content.append("Servicio de traducción automática no disponible; utilice el lector del original.");
 }
+// Locus synchronization never asserts semantic or word-by-word equivalence.
+const readerScrollHandlers={left:()=>followScroll("left"),right:()=>followScroll("right")};
+const ignoreScroll={left:null,right:null};
+let scrollFrame=0,lastShownLocus="";
+function scrollSurface(side){
+ if(side==="right"&&isAuto(right.value)){
+  const node=$("auto-translation");
+  return {get:()=>node.scrollTop,max:()=>Math.max(0,node.scrollHeight-node.clientHeight),set:y=>{node.scrollTop=y}};
+ }
+ const frame=$("pane-"+side);
+ if(!ready[side]||frame.hidden)return null;
+ try{
+  const root=frame.contentDocument?.scrollingElement||frame.contentDocument?.documentElement;
+  if(!root)return null;
+  return {get:()=>root.scrollTop,max:()=>Math.max(0,root.scrollHeight-root.clientHeight),set:y=>{root.scrollTop=y}};
+ }catch{return null}
+}
+function scrollLinkAllowed(){
+ if(!ready.left||!ready.right||!$("same-locus").checked)return false;
+ return isAuto(right.value)||destination().quality==="locus";
+}
+function followScroll(side){
+ if(!scrollLinkAllowed())return;
+ const from=scrollSurface(side);if(!from)return;
+ const expected=ignoreScroll[side],actual=from.get();
+ ignoreScroll[side]=null;
+ if(expected!==null&&Math.abs(expected-actual)<3)return;
+ if(scrollFrame)cancelAnimationFrame(scrollFrame);
+ scrollFrame=requestAnimationFrame(()=>{
+  scrollFrame=0;if(!scrollLinkAllowed())return;
+  const src=scrollSurface(side),other=side==="left"?"right":"left",dst=scrollSurface(other);
+  if(!src||!dst)return;
+  const ratio=src.max()>0?Math.min(1,Math.max(0,src.get()/src.max())):0;
+  const target=Math.round(ratio*dst.max());
+  if(Math.abs(dst.get()-target)<3)return;
+  ignoreScroll[other]=target;dst.set(target);
+ });
+}
+for(const side of ["left","right"])$("pane-"+side).addEventListener("load",()=>{
+ if(htmlComparison)return;
+ try{
+  const win=$("pane-"+side).contentWindow;
+  win.removeEventListener("scroll",readerScrollHandlers[side]);
+  win.addEventListener("scroll",readerScrollHandlers[side],{passive:true});
+ }catch{}
+});
+$("auto-translation").addEventListener("scroll",readerScrollHandlers.right,{passive:true});
+function resetReadingScroll(locus){
+ if(!locus||locus===lastShownLocus)return;
+ lastShownLocus=locus;
+ if(scrollFrame){cancelAnimationFrame(scrollFrame);scrollFrame=0}
+ ignoreScroll.left=null;ignoreScroll.right=null;
+ for(const side of ["left","right"])scrollSurface(side)?.set(0);
+}
 function navigatePane(side,index){
  if(!ready[side])return;
  pendingNavigation[side]=index;
@@ -372,6 +461,7 @@ function goto(originSide=null){
  const target=destination();
  if(originSide!=="left")navigatePane("left",target.left);
  const currentLocus=a.passages[target.left]?.locus;
+ resetReadingScroll(currentLocus);
  if(currentLocus){params.set("locus",currentLocus);history.replaceState(null,"",location.pathname+"?"+params.toString());
   const cardLink=$("simple-pair");if(cardLink){const u=new URL(cardLink.href);u.searchParams.set("locus",currentLocus);u.searchParams.set("left",left.value);u.searchParams.set("right",right.value);cardLink.href=u.href;}
  }
