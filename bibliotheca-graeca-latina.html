@@ -550,6 +550,154 @@ try{
  document.documentElement.dataset.theme=(t==="dark"||t==="light")?t:"light";
 }catch{document.documentElement.dataset.theme="light"}
 </script>
+
+<style id="bibliotheca-lexicon-uniform-theme-v1">
+/* Identidad Lexicon: fondo CONTINUO en Bibliotheca. No se modifican textos,
+   funciones de consulta, fichas ni enlaces de lectura. */
+html[data-theme="dark"]:not([data-bibliotheca-color]){
+ --ba-page:#0d0d0e;--ba-text:#e9e9e7;--ba-muted:#a5a5a4;
+ --ba-line:#414143;--ba-link:#d6d7d7;--ba-field:#1a1a1b;
+ --ba-selected:#303033;--ba-hover:#29292b;--ba-placeholder:#979798;
+ color-scheme:dark;
+}
+html[data-theme="light"]:not([data-bibliotheca-color]){
+ --ba-page:#f7f5ef;--ba-text:#1d2421;--ba-muted:#555e59;
+ --ba-line:#c8c6bd;--ba-link:#334a44;--ba-field:#fff;
+ --ba-selected:#e6e5df;--ba-hover:#eeece7;--ba-placeholder:#737a76;
+ color-scheme:light;
+}
+/* El selector de colores existente cambia toda la página, no sus zonas. */
+html[data-theme]{
+ --ba-surface:var(--ba-page);
+ --ba-search:var(--ba-page);
+}
+html[data-theme] body:has(main.library),
+html[data-theme] body main.library,
+html[data-theme] body main.library :is(
+ .top,.hero,.searcharea,.bibliotheca-lexicon-simple,.bibliotheca-resources-2026,
+ .bibliotheca-suite,.bibliotheca-suite-links,.bibliotheca-top-tools,
+ #bibliotheca-work-search,#bibliotheca-entity-search,.vdl-unified-books,
+ .biblio-extra-filters,.genre-work-list,.bws-results,.bws-item,.bws-alphabet,
+ .bws-library-filters,.bibliotheca-search-modes,.bibliotheca-filters,
+ #bibliotheca-federated-status,.bibliotheca-documentary-status,
+ .bibliotheca-plain-heading,.bibliotheca-seo-discovery
+ ){
+ background:var(--ba-page)!important;
+ background-color:var(--ba-page)!important;
+ color:var(--ba-text)!important;
+ box-shadow:none!important;
+}
+html[data-theme] body main.library{
+ font:15px/1.6 Arial,Helvetica,system-ui,sans-serif;
+ letter-spacing:-.012em;
+ width:min(1540px,calc(100% - 44px));
+}
+/* Header de Lexicon: fondo plano, tipografía clásica, enlaces discretos. */
+html[data-theme] body main.library .bibliotheca-nav-2026{
+ background:transparent!important;border-bottom:1px solid var(--ba-line)!important;
+ padding:17px 0!important;
+}
+html[data-theme] body main.library .brand{
+ font:italic 400 25px/1 Georgia,"Times New Roman",serif!important;
+ letter-spacing:-.055em;color:var(--ba-text)!important;
+}
+html[data-theme] body main.library .brand span{
+ font:400 11px/1.3 Arial,system-ui,sans-serif!important;
+ letter-spacing:.1em;opacity:.7;
+}
+html[data-theme] body main.library .toplinks a{
+ font:500 12px/1.4 Arial,system-ui,sans-serif;
+ text-decoration:none!important;opacity:.85;
+}
+html[data-theme] body main.library .toplinks a:hover,
+html[data-theme] body main.library .toplinks a:focus-visible{
+ opacity:1;text-decoration:underline!important;
+}
+html[data-theme] body main.library header.hero{
+ background:transparent!important;
+ border-color:var(--ba-line)!important;
+ padding:clamp(24px,4vw,58px) 0 19px!important;
+}
+html[data-theme] body main.library header.hero .bibliotheca-display-title{
+ font-family:Georgia,"Times New Roman",serif!important;
+ font-style:italic!important;font-weight:400!important;
+ letter-spacing:-.09em!important;color:var(--ba-text)!important;
+}
+html[data-theme] body main.library header.hero .bibliotheca-display-subtitle{
+ color:var(--ba-muted)!important;
+}
+html[data-theme] body main.library .intro,
+html[data-theme] body main.library .eyebrow,
+html[data-theme] body main.library .bibliotheca-seo-discovery{
+ color:var(--ba-muted)!important;
+}
+/* Buscador con silueta Lexicon, sin caja de fondo exterior ni franjas. */
+html[data-theme] body.bibliotheca-plain-list main.library .bibliotheca-lexicon-simple{
+ background:transparent!important;
+ border:0!important;padding:13px 0 20px!important;
+ margin:12px 0 16px!important;
+}
+html[data-theme] body.bibliotheca-plain-list main.library #bibliotheca-lexicon-form{
+ background:var(--ba-field)!important;
+ color:var(--ba-text)!important;
+ border:1px solid var(--ba-line)!important;
+ border-radius:45px!important;min-height:56px!important;
+ padding:5px 7px 5px 18px!important;
+ box-shadow:none!important;
+}
+html[data-theme] body.bibliotheca-plain-list main.library #bibliotheca-lexicon-q{
+ background:transparent!important;color:var(--ba-text)!important;
+ font:400 17px/1.4 "Gentium Book Plus","Cardo",Georgia,serif!important;
+}
+html[data-theme] body.bibliotheca-plain-list main.library #bibliotheca-lexicon-q::placeholder{
+ color:var(--ba-placeholder)!important;
+ font:400 14px/1.4 Arial,system-ui,sans-serif!important;
+}
+html[data-theme] body.bibliotheca-plain-list main.library #bibliotheca-lexicon-form :is(button,.bib-lx-advanced){
+ background:var(--ba-selected)!important;color:var(--ba-text)!important;
+ border:1px solid var(--ba-line)!important;border-radius:25px!important;
+ font:500 13px/1.35 Arial,system-ui,sans-serif!important;
+}
+html[data-theme] body.bibliotheca-plain-list main.library #bibliotheca-lexicon-form :is(button,.bib-lx-advanced):hover{
+ background:var(--ba-hover)!important;
+}
+html[data-theme] body.bibliotheca-plain-list main.library #bibliotheca-work-search{
+ background:transparent!important;border:0!important;
+ padding:0!important;margin:8px 0 24px!important;
+}
+html[data-theme] body.bibliotheca-plain-list main.library #bibliotheca-work-search .bws-item{
+ background:transparent!important;
+ border:0!important;border-bottom:1px solid var(--ba-line)!important;
+ box-shadow:none!important;
+}
+html[data-theme] body.bibliotheca-plain-list main.library #bibliotheca-work-search :is(.bws-plain-title,.bws-author-heading){
+ color:var(--ba-text)!important;
+}
+html[data-theme] body.bibliotheca-plain-list main.library #bibliotheca-work-search :is(.bws-plain-author,.bws-count){
+ color:var(--ba-muted)!important;
+}
+html[data-theme] body main.library :is(.top,.hero,.bibliotheca-resources-2026,.bibliotheca-suite,
+ .genre-work-item,.bws-item,.footnote,footer){
+ border-color:var(--ba-line)!important;
+}
+/* Cambiar claro/oscuro y Fondo conserva los controles y el contraste. */
+html[data-theme] body main.library :is(#bibliotheca-theme,#language-toggle,
+ .bibliotheca-color-palette>summary,.bibliotheca-color-options button){
+ background:var(--ba-field)!important;color:var(--ba-text)!important;
+ border-color:var(--ba-line)!important;box-shadow:none!important;
+}
+html[data-theme] body main.library .bibliotheca-color-options{
+ background:var(--ba-page)!important;border-color:var(--ba-line)!important;
+}
+@media(max-width:650px){
+ html[data-theme] body main.library{width:calc(100% - 28px)}
+ html[data-theme] body main.library #bibliotheca-lexicon-form{padding:7px 9px!important;border-radius:22px!important}
+}
+@media print{
+ html[data-theme] body:has(main.library),
+ html[data-theme] body main.library{background:#fff!important;color:#111!important}
+}
+</style>
 </head>
 <body class="bibliotheca-plain-list"><a class="vdl-skip-link" href="#main-content">Saltar al contenido principal</a>
 <main class="library" id="main-content">
