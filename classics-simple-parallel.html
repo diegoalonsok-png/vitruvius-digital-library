@@ -848,15 +848,14 @@ const greekToLatin={α:"a",β:"b",γ:"g",δ:"d",ε:"e",ζ:"z",η:"e",θ:"th",ι:
 const latinizeGreek=t=>foldSearch(t).replace(/[α-ω]/g,c=>greekToLatin[c]||c);
 const hasGreek=t=>/[\u0370-\u03ff\u1f00-\u1fff]/u.test(t);
 
-function searchMatches(text,query,mode){
+function searchMatches(text,query,mode,language=""){
  const original=String(text||""),requested=String(query||"").trim();if(!requested)return [];
- const crossScript=mode!=="exact"&&hasGreek(original)&&!hasGreek(requested)&&/[a-z]/i.test(requested);
+ // Do not classify a LATIN edition as Greek merely because its apparatus quotes Greek.
+ const crossScript=language==="grc"&&mode!=="exact"&&!hasGreek(requested)&&/[a-z]/i.test(requested);
  const positions=[];
  if(crossScript){
-  // Match full Greek words by their scholarly approximate Latin transcription.
-  // Original source offsets are preserved; this is not morphological lemmatization.
   const target=latinizeGreek(requested);
-  for(const match of original.matchAll(/[\p{Script=Greek}\p{M}]+/gu)){
+  for(const match of original.matchAll(/[\\p{Script=Greek}\\p{M}]+/gu)){
    const transliteration=latinizeGreek(match[0]);
    if(mode==="prefix"?transliteration.startsWith(target):transliteration===target)positions.push(match.index);
   }
@@ -867,10 +866,10 @@ function searchMatches(text,query,mode){
  let from=0;
  while(from<t.length){
   const at=t.indexOf(q,from);if(at<0)break;
-  const prefix=mode!=="prefix"||at===0||!/[\p{L}\p{N}]/u.test(t[at-1]);
-  const end=mode!=="exact"||at+q.length===t.length||!/[\p{L}\p{N}]/u.test(t[at+q.length]);
-  const begin=mode!=="exact"||at===0||!/[\p{L}\p{N}]/u.test(t[at-1]);
-  if(prefix&&end&&begin)positions.push(at);
+  // Exact and normalized modes match a whole word/phrase; prefix allows word starts.
+  const begin=at===0||!/[\\p{L}\\p{N}]/u.test(t[at-1]);
+  const finish=at+q.length===t.length||!/[\\p{L}\\p{N}]/u.test(t[at+q.length]);
+  if(begin&&(mode==="prefix"||finish))positions.push(at);
   from=at+Math.max(q.length,1);
  }
  return positions;
@@ -889,24 +888,34 @@ function renderBookSearch(){
  }
  const sets=[];
  if(scope!=="translation")sets.push({lang:leftLang,records:source,side:"original"});
- if(scope!=="original"&&translation.length)sets.push({lang:rightLang,records:translation,side:"translation"});
+ if(scope!=="original"){
+  if(translation.length)sets.push({lang:rightLang,records:translation,side:"translation"});
+  // Automatic translations are not an indexed corpus. Search only what has
+  // actually been translated during this reading session, never fake matches.
+  else {
+   const translatedNow=String(visibleText.right||"").trim();
+   const locus=source[pos]?.locus;
+   if(locus&&translatedNow&&!/^(Obteniendo traducción|Pasaje sin texto disponible|Traducción automática no disponible)/i.test(translatedNow))
+    sets.push({lang:targetLang,records:[{locus,text:translatedNow}],side:"translation",automatic:true});
+  }
+ }
  let found=0,occurrences=0;
  const rows=[];
  for(const set of sets){
   for(const item of set.records){
-   const text=String(item.text||""),matches=searchMatches(text,term,mode);
+   const text=String(item.text||""),matches=searchMatches(text,term,mode,set.lang);
    if(!matches.length)continue;
    occurrences+=matches.length;found++;
    const at=matches[0],excerpt=text.slice(Math.max(0,at-65),Math.min(text.length,at+term.length+115)).replace(/\s+/g," ");
-   rows.push({item,side:set.side,lang:set.lang,count:matches.length,excerpt});
+   rows.push({item,side:set.side,lang:set.lang,count:matches.length,excerpt,automatic:Boolean(set.automatic)});
   }
  }
- searchSummary.textContent=found+" pasajes · "+occurrences+" coincidencias en "+sets.map(x=>LANG[x.lang]||x.lang).join(" y ")+(scope!=="original"&&!translation.length?" · Traducción automática de todo el libro no indexada; solo se busca el original.":"")+(hasGreek(source[0]?.text||"")&&!hasGreek(term)&&mode!=="exact"?" · Consulta latina transliterada al griego de forma aproximada; no constituye búsqueda por lema.":"");
+ searchSummary.textContent=found+" pasajes · "+occurrences+" coincidencias en "+sets.map(x=>LANG[x.lang]||x.lang).join(" y ")+(scope!=="original"&&!translation.length?" · La traducción automática no está indexada como libro completo; solo se busca el pasaje traducido que esté visible.":"")+(leftLang==="grc"&&!hasGreek(term)&&mode!=="exact"?" · Transliteración griega aproximada; no constituye búsqueda por lema.":"");
  if(!rows.length){const p=document.createElement("p");p.textContent="No hay coincidencias con este criterio en las versiones indexadas disponibles.";searchResults.append(p);return}
  const fragment=document.createDocumentFragment();
  for(const row of rows.slice(0,500)){
   const button=document.createElement("button");button.type="button";
-  const head=document.createElement("strong");head.textContent=(LANG[row.lang]||row.lang)+" · Locus "+displayLocus(row.item.locus);
+  const head=document.createElement("strong");head.textContent=(LANG[row.lang]||row.lang)+(row.automatic?" · automática, pasaje visible":"")+" · Locus "+displayLocus(row.item.locus);
   const context=document.createElement("span");context.textContent=" · "+row.excerpt;
   const foot=document.createElement("small");foot.textContent=row.count+" coincidencia(s) en este pasaje · Abrir locus";
   button.append(head,context,foot);
