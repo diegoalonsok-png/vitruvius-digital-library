@@ -11,8 +11,16 @@ const catalog=read("data/bibliotheca-graeca-latina-I-bce-I-ce.json");
 const registry=read("data/classics-corpus/search-registry.json");
 assert(Array.isArray(catalog.works)&&catalog.works.length>0);
 assert.equal(registry.schema,"vitruvia-classics-search-registry-v1");
-const works=catalog.works,byId=new Map(works.map(w=>[w.id,w]));
-assert.equal(byId.size,works.length,"Duplicate work ID");
+const works=catalog.works;
+const expansion=read("data/bibliotheca-expansion-publicada-2026-11-16.json");
+assert(Array.isArray(expansion.works),"Missing published expansion catalogue");
+const primaryById=new Map(works.map(w=>[w.id,w]));
+assert.equal(primaryById.size,works.length,"Duplicate main catalogue work ID");
+const byId=new Map(primaryById);
+for(const work of expansion.works){
+ assert(typeof work.id==="string"&&work.id,"Invalid published expansion identifier");
+ if(!byId.has(work.id))byId.set(work.id,work);
+}
 const groups=Object.fromEntries([...new Set(works.map(w=>w.publicStatus||"sin-estado"))].map(k=>[k,works.filter(w=>(w.publicStatus||"sin-estado")===k).length]));
 const invalid=[],checked=[];
 function fileReference(id,label,p){
