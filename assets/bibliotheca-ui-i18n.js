@@ -232,7 +232,7 @@ const UI_PATTERNS=[
  [/^Buscar en todos los libros o una obra$/,(m,l)=>l==="en"?"Search all books or one work":"Rechercher dans tous les livres ou dans une œuvre"]
 ];
 const UI_SCOPE="main.library";
-const UI_SKIP="script,style,code,pre,blockquote,cite,dfn,abbr,[data-no-ui-i18n],.notranslate,[translate=no],[lang=la],[lang=grc],[lang=he],[lang=arc],.scholarly-text,.passage-text,.reader-transcript,[data-original-language],#results,#classic-results,#classic-work,#bws-results,.bws-item,.bws-meta,.bws-help";
+const UI_SKIP="script,style,code,pre,blockquote,cite,dfn,abbr,[data-no-ui-i18n],.notranslate,[translate=no],[lang=la],[lang=grc],[lang=he],[lang=arc],.scholarly-text,.passage-text,.reader-transcript,[data-original-language],#results,#classic-results,#bws-results";
 const uiOriginal=new WeakMap(),uiTranslated=new WeakMap();
 function uiText(value,l){
  const valueTrim=value.trim();if(!valueTrim)return null;
@@ -272,7 +272,7 @@ function uiPaint(){
   else if(expected&&current!==expected)element.setAttribute(attribute,expected);
  }
  // Options are interface controls, not historical title data; only change known labels.
- for(const option of document.querySelectorAll(".bws-library-filters select option,#classic-era option,#classic-genre option,#classic-order option")){
+ for(const option of document.querySelectorAll("main.library select option")){
   if(!uiOriginal.has(option))uiOriginal.set(option,option.textContent);
   const original=uiOriginal.get(option);
   if(l==="es"){if(option.textContent!==original)option.textContent=original}
