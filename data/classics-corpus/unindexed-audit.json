@@ -1,11 +1,14 @@
 {
   "schema": "vdl-classics-unindexed-audit-v1",
-  "method": "Registry versus lexical-index manifest and local filesystem; remote R2 URLs were not probed. Duplicated work/language registrations are combined. The inverted index is root-based and is not morphological lemmatization.",
+  "method": "Registry versus lexical-index manifest and local filesystem; remote R2 URLs were not probed. Duplicated work/language registrations are combined. HTML-only readers and historical OCR are separately reported, never counted as absent source or critically verified text. Vitruvius multilingual registry identities map through the index edition gate. The inverted index is root-based and is not morphological lemmatization.",
   "registeredWorkLanguages": 360,
   "counts": {
     "indexed-local": 305,
     "remote-unverified": 44,
-    "local-text-pending-index": 11
+    "html-reader-not-in-lexical-index": 6,
+    "historical-ocr-separate-index": 1,
+    "indexed-through-edition-alias": 3,
+    "local-text-pending-index": 1
   },
   "missing": [
     {
@@ -131,7 +134,7 @@
     {
       "workId": "catullus-carmina",
       "language": "la",
-      "state": "local-text-pending-index",
+      "state": "html-reader-not-in-lexical-index",
       "registeredFiles": [
         "corpus/catullus-carmina-la.html"
       ],
@@ -141,7 +144,7 @@
     {
       "workId": "cicero-officiis",
       "language": "en",
-      "state": "local-text-pending-index",
+      "state": "html-reader-not-in-lexical-index",
       "registeredFiles": [
         "corpus/cicero-de-officiis-en.html"
       ],
@@ -151,7 +154,7 @@
     {
       "workId": "cicero-officiis",
       "language": "la",
-      "state": "local-text-pending-index",
+      "state": "html-reader-not-in-lexical-index",
       "registeredFiles": [
         "corpus/cicero-de-officiis-la.html"
       ],
@@ -301,7 +304,7 @@
     {
       "workId": "krohn-1912-pdf",
       "language": "la",
-      "state": "local-text-pending-index",
+      "state": "historical-ocr-separate-index",
       "registeredFiles": [
         "data/text/krohn-1912.json"
       ],
@@ -341,7 +344,7 @@
     {
       "workId": "lucretius",
       "language": "en",
-      "state": "local-text-pending-index",
+      "state": "html-reader-not-in-lexical-index",
       "registeredFiles": [
         "corpus/lucretius-de-rerum-natura-en.html"
       ],
@@ -351,7 +354,7 @@
     {
       "workId": "lucretius",
       "language": "es",
-      "state": "local-text-pending-index",
+      "state": "html-reader-not-in-lexical-index",
       "registeredFiles": [
         "corpus/lucretius-de-rerum-natura-es.html"
       ],
@@ -361,7 +364,7 @@
     {
       "workId": "lucretius",
       "language": "la",
-      "state": "local-text-pending-index",
+      "state": "html-reader-not-in-lexical-index",
       "registeredFiles": [
         "corpus/lucretius-de-rerum-natura-la.html"
       ],
@@ -514,36 +517,6 @@
       "state": "remote-unverified",
       "registeredFiles": [
         "https://libros.vitruvius-digital-library.org/corpus/valerio-flaco-argonautica-la.json"
-      ],
-      "missingLocalFiles": [],
-      "indexedPassages": 0
-    },
-    {
-      "workId": "vitruvius",
-      "language": "en",
-      "state": "local-text-pending-index",
-      "registeredFiles": [
-        "data/structured/theory-en.json"
-      ],
-      "missingLocalFiles": [],
-      "indexedPassages": 0
-    },
-    {
-      "workId": "vitruvius",
-      "language": "es",
-      "state": "local-text-pending-index",
-      "registeredFiles": [
-        "data/structured/recensio-es.json"
-      ],
-      "missingLocalFiles": [],
-      "indexedPassages": 0
-    },
-    {
-      "workId": "vitruvius",
-      "language": "fr",
-      "state": "local-text-pending-index",
-      "registeredFiles": [
-        "data/structured/recensio-fr.json"
       ],
       "missingLocalFiles": [],
       "indexedPassages": 0
