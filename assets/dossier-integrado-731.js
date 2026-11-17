@@ -20,7 +20,7 @@ function render(locus){
  }else{
   place.append(item("Estado","Índice automático; no hay nota editorial individual comprobada para este locus. Las diferencias indicadas no son variantes manuscritas certificadas."));
  }
- for(const [name,entry] of [["Krohn",record.latin_comparison.krohn],["Rose",record.latin_comparison.rose],["Kurilo V554",record.latin_comparison.kurilo_v554],["Kurilo V297",record.latin_comparison.kurilo_v297]]){
+ for(const [name,entry] of [["Fritz Krohn (ed.), Vitruvii De architectura libri decem (Leipzig: B. G. Teubner, 1912)",record.latin_comparison.krohn],["Valentin Rose (ed.), Vitruvii De architectura libri decem (Leipzig: B. G. Teubner, 1899)",record.latin_comparison.rose],["Kurilo V554 · "+editionBibliography.fr.title+" · DOI "+editionBibliography.fr.doi+" · ISBN "+editionBibliography.fr.isbn,record.latin_comparison.kurilo_v554],["Kurilo V297 · "+editionBibliography.en.title+" · DOI "+editionBibliography.en.doi+" · ISBN "+editionBibliography.en.isbn,record.latin_comparison.kurilo_v297]]){
   place.append(item(name,entry.available?(entry.normalized_identical?"Misma secuencia de palabras normalizada que V514":entry.edit_distance+" operaciones de edición léxica frente a V514"):"Locus fusionado/no alineado individualmente"));
  }
  if(record.candidate_differences.rose.length||record.candidate_differences.krohn.length){
