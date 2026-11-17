@@ -153,7 +153,7 @@ mark.simple-match{background:#d8a442;color:#161616;border-radius:2px}
  <p class="bude-method">Aparato informativo de lectura inspirado en la tradición de ediciones bilingües. Solo se presentan notas y datos documentados; no se infieren variantes manuscritas. La traducción automática se identifica y no constituye edición crítica cotejada.</p>
 </section>
 <p class="note" id="note" role="status">Se utilizan las ediciones existentes en la Bibliotheca. Un locus compartido no demuestra identidad textual de las versiones.</p>
-</main><script src="assets/classics-academic-reader.js?v=20261115-preserve-notes"></script><script src="assets/academic-inline-translation.js?v=20261117-anti-romanization-v5"></script><script>
+</main><script src="assets/classical-lexicon.js?v=20261117-simple-word-popup-v1"></script><script src="assets/classics-academic-reader.js?v=20261115-preserve-notes"></script><script src="assets/academic-inline-translation.js?v=20261117-anti-romanization-v5"></script><script>
 (()=>{"use strict";
 const q=new URLSearchParams(location.search),work=q.get("work")||"didache";
 const LANG={grc:"GRIEGO",la:"LATÍN",es:"CASTELLANO",en:"INGLÉS",fr:"FRANCÉS",it:"ITALIANO",de:"ALEMÁN",pt:"PORTUGUÉS"};
@@ -941,6 +941,73 @@ el("word-find").onclick=openQuickWordSearch;el("word-query").addEventListener("k
 el("previous").onclick=()=>{if(pos>0){pos--;draw();}};
 el("next").onclick=()=>{if(pos<source.length-1){pos++;draw();}};
 load().catch(e=>{paragraph("left-text",e.message);paragraph("right-text","Vuelve al visor académico para consultar las ediciones disponibles.");status("No se modificó ningún texto del catálogo.");linkBack();});
+})();
+</script><style id="simple-classical-word-popup-css">
+#simple-classical-word-popup{color-scheme:dark;max-width:min(570px,94vw);width:570px;max-height:85vh;overflow:auto;padding:22px;background:#202023;color:#eee;border:1px solid #777;border-radius:14px;box-shadow:0 16px 65px #000a;font:15px/1.6 system-ui,sans-serif}
+#simple-classical-word-popup::backdrop{background:#0009}
+#simple-classical-word-popup header{display:flex;justify-content:space-between;gap:14px;align-items:center;margin-bottom:12px}
+#simple-classical-word-popup h2{font:600 25px/1.3 Georgia,serif;margin:0;color:#eee}
+#simple-classical-word-popup .simple-word-close{cursor:pointer;background:#303037;border:1px solid #888;border-radius:7px;color:#fff;padding:7px 12px}
+#simple-classical-word-popup .simple-word-context{margin:0 0 12px;color:#c6c6ce;font:13px/1.5 system-ui,sans-serif}
+#simple-classical-word-popup .simple-word-actions{display:flex;gap:12px;flex-wrap:wrap;border-top:1px solid #555;padding-top:12px;margin-top:13px}
+#simple-classical-word-popup a{color:#d8e4ff}
+#left-text[data-simple-word-dictionary]{cursor:text}
+#left-text[data-simple-word-dictionary] mark{cursor:help}
+@media print{#simple-classical-word-popup{display:none}}
+</style>
+<script id="simple-classical-word-popup-js">
+(()=>{"use strict";
+const original=document.getElementById("left-text");
+const dictionary=window.ClassicalLexicon;
+if(!original||!dictionary?.wordAt||!dictionary?.renderPanel)return;
+original.setAttribute("data-simple-word-dictionary","");
+const dialog=document.createElement("dialog");dialog.id="simple-classical-word-popup";
+const header=document.createElement("header"),heading=document.createElement("h2"),close=document.createElement("button");
+close.type="button";close.className="simple-word-close";close.textContent="Cerrar ×";close.setAttribute("aria-label","Cerrar significado");
+header.append(heading,close);
+const context=document.createElement("p");context.className="simple-word-context";
+const content=document.createElement("div");content.className="simple-word-definition";
+const actions=document.createElement("div");actions.className="simple-word-actions";
+const lexLink=document.createElement("a");lexLink.textContent="Abrir ficha completa en Lexicon ↗";lexLink.target="_blank";lexLink.rel="noopener noreferrer";
+actions.append(lexLink);
+dialog.append(header,context,content,actions);document.body.append(dialog);
+close.addEventListener("click",()=>dialog.close());
+dialog.addEventListener("click",e=>{if(e.target===dialog)dialog.close()});
+let revision=0;
+async function showWord(word){
+ const lang=document.getElementById("original-lang")?.value||new URLSearchParams(location.search).get("left")||"la";
+ if(!["la","grc"].includes(lang))return;
+ const w=String(word||"").trim().replace(/^[^\p{L}]+|[^\p{L}\p{M}ʼ’'-]+$/gu,"");
+ if(!/^[\p{L}\p{M}ʼ’'-]{2,80}$/u.test(w))return;
+ const seq=++revision,params=new URLSearchParams(location.search);
+ const work=params.get("work")||"",locus=params.get("locus")||"";
+ heading.textContent=w;
+ context.textContent=(lang==="la"?"Latín":"Griego")+" · "+(locus?"Pasaje "+locus.split(":").pop()+" · ":"")+"Análisis léxico contextual";
+ content.replaceChildren();
+ if(lang==="la"&&w.toLocaleLowerCase()==="brutus"){
+  const note=document.createElement("p");
+  note.textContent="Brutus puede ser un nombre propio romano; brutus también es un adjetivo latino («pesado», «torpe», «insensible»). El contexto decide la interpretación: no son significados intercambiables.";
+  content.append(note);
+ }
+ const slot=document.createElement("div");content.append(slot);
+ lexLink.href="vitruvia-lexicon.html?"+new URLSearchParams({q:w,lang,mode:"palabra",...(work?{work}:{}),...(locus?{locus}:{})}).toString();
+ if(!dialog.open)dialog.showModal();
+ try{await dictionary.renderPanel(slot,w,{lang,work,online:false})}catch(err){
+  if(seq===revision){slot.textContent="No se pudo cargar la ficha. Consultá la entrada completa en Lexicon."; }
+ }
+}
+original.addEventListener("click",event=>{
+ if(event.target.closest?.("a,button,input,select,textarea"))return;
+ const selection=window.getSelection();
+ if(selection&&!selection.isCollapsed&&selection.toString().trim())return;
+ const marked=event.target.closest?.("mark");
+ const word=marked?dictionary.wordOfMark(marked):dictionary.wordAt(event);
+ if(word)void showWord(word);
+});
+original.addEventListener("dblclick",event=>{
+ const selection=window.getSelection(),word=selection?.toString().trim();
+ if(word&&/^[\p{L}\p{M}ʼ’'-]{2,80}$/u.test(word))void showWord(word);
+});
 })();
 </script><script defer src="assets/classics-study-actions.js?v=20261115-unified-v1"></script>
 <footer data-vdl-legal-notice="2026" role="contentinfo" aria-label="Derechos editoriales" style="box-sizing:border-box;display:block;clear:both;grid-column:1/-1;width:100%;margin:28px 0 0;padding:16px 18px;border-top:1px solid currentColor;text-align:center;font:12px/1.65 system-ui,sans-serif;color:inherit;background:transparent">
