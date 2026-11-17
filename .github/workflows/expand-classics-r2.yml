@@ -76,6 +76,32 @@ jobs:
             git checkout -B "expansion-retry-$attempt" origin/main
             if [ "$attempt" -eq 5 ]; then exit 1; fi
           done
+      - name: Resumen auditable de obras incorporadas y rechazadas
+        if: always()
+        shell: bash
+        run: |
+          python - <<'PY'
+          import json, os
+          from pathlib import Path
+          out=Path(os.environ["GITHUB_STEP_SUMMARY"])
+          p=Path("/tmp/vdl-classics-expansion/prepared.json")
+          if not p.exists():
+              out.open("a",encoding="utf-8").write("### Bibliotheca · importación sin reporte verificable\\nNo se declara ninguna obra nueva. Revisar el paso de extracción.\\n")
+          else:
+              j=json.loads(p.read_text(encoding="utf-8"))
+              # Previously uploaded editions may be included in the cumulative
+              # index, and are never counted as new books.
+              new=j.get("prepared",[])
+              failed=j.get("deferred",[])
+              lines=["### Bibliotheca · originales de esta tanda",
+                     f"Preparadas y verificadas para R2: **{len(new)}**; observaciones/rechazos: **{len(failed)}**.",
+                     "La preparación no acredita publicación final ni incremento del catálogo."]
+              lines += [f"- {row.get('author','')} — {row.get('title','')} ({row.get('language','')}) · `{row.get('workId','')}`" for row in new]
+              if failed:
+                  lines += ["#### Fuentes diferidas"]
+                  lines += [f"- `{row.get('workId',row.get('path',''))}`: {row.get('reason','No documentado')}" for row in failed[:30]]
+              out.open("a",encoding="utf-8").write("\\n".join(lines)+"\\n")
+          PY
       - name: Conservar diagnóstico y diferencias pendientes
         if: always()
         uses: actions/upload-artifact@v4
