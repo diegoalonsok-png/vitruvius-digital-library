@@ -69,7 +69,7 @@ async function loadPageTranslations(){
  // Static, generated JSON. A missing file means the page still needs human or
  // automated translation; never claim it was fully translated.
  const name=(location.pathname.split('/').pop()||'index.html').replace(/[^a-zA-Z0-9_.-]/g,'');
- if(!/^[-a-zA-Z0-9_.]+\\.html$/.test(name))return;
+ if(!/^[-a-zA-Z0-9_.]+\.html$/.test(name))return;
  const dir=(document.currentScript?.src||document.querySelector('script[src*="site-language-coverage.js"]')?.src||'').split('/assets/')[0];
  if(!dir)return;
  try{
