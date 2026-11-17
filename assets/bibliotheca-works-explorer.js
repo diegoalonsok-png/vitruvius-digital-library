@@ -68,7 +68,7 @@ function mount(host){
  const count=add("p","vdl-works-result-count","Escribí un autor o título para abrir el lector.",panel);count.setAttribute("role","status");
  const listing=add("div","vdl-works-list",null,panel);listing.setAttribute("role","list");listing.hidden=true;
  let items=null;
- const normalize=x=>String(x||"").normalize("NFD").replace(/\\p{M}/gu,"").toLowerCase().trim();
+ const normalize=x=>String(x||"").normalize("NFD").replace(/\p{M}/gu,"").toLowerCase().trim();
  const aliases={vitruvius:"vitruvio vitruve",caesar:"julio cesar julius caesar",cicero:"ciceron cicerone",plinius:"plinio",vergilius:"virgilio virgil",horatius:"horacio",ovidius:"ovidio",homer:"homero homere",plato:"platon",aristoteles:"aristotle aristote",strabo:"estrabon"};
  function score(w,q){
   const author=normalize(w.author),title=normalize(w.title),id=normalize(w.id.replaceAll("-"," "));
@@ -76,8 +76,8 @@ function mount(host){
   if(author===q||title===q)return 150;
   if(author.startsWith(q)||title.startsWith(q))return 110;
   if(alias.split(" ").some(x=>x.startsWith(q)))return 95;
-  if(author.split(/\\s+/).some(x=>x.startsWith(q)))return 85;
-  if(title.split(/\\s+/).some(x=>x.startsWith(q)))return 75;
+  if(author.split(/\s+/).some(x=>x.startsWith(q)))return 85;
+  if(title.split(/\s+/).some(x=>x.startsWith(q)))return 75;
   if(q.length>1&&(author.includes(q)||alias.includes(q)))return 55;
   if(q.length>1&&(title.includes(q)||id.includes(q)))return 40;
   return -1;
@@ -87,14 +87,14 @@ function mount(host){
   const q=normalize(search.value);
   listing.replaceChildren();
   if(!q){listing.hidden=true;count.textContent="Escribí un autor o título para abrir el lector.";return}
-  const found=items.all.map((item,i)=>({item,i,rank:score(item,q)})).filter(x=>x.rank>=0)
+  const found=items.indexed.map((item,i)=>({item,i,rank:score(item,q)})).filter(x=>x.rank>=0)
    .sort((a,b)=>b.rank-a.rank||Number(b.item.originalIndexed)-Number(a.item.originalIndexed)||a.i-b.i);
   listing.hidden=!found.length;
   for(const {item} of found.slice(0,12)){
    const readers=item.readers||[];
    const source=readers.find(x=>x.language===item.language)||readers.find(x=>["la","grc"].includes(x.language))||readers[0];
    const path=source?.reader||source?.path;
-   const html=source?.format==="html-text"&&/^corpus\\/[a-z0-9/_-]+\\.html$/.test(path||"");
+   const html=source?.format==="html-text"&&/^corpus\/[a-z0-9/_-]+\.html$/.test(path||"");
    const structured=source&&["json-passages","structured-bilingual"].includes(source.format);
    const canRead=item.originalIndexed&&(html||structured);
    const row=add("div","vdl-works-row",null,listing);row.setAttribute("role","listitem");
