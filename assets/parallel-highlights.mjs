@@ -11,6 +11,10 @@ const VOCABULARY=[
   es:["logos","λόγος","palabra","palabras","verbo","verbos","razón","razones","discurso","discursos"],
   fr:["logos","λόγος","parole","paroles","verbe","verbes","raison","raisons","discours"],
   en:["logos","λόγος","word","words","reason","reasons","speech","discourse","discourses"]},
+ {id:"decor",la:["decor","decoris","decori","decore","decorem","decorum","decoribus"],
+  es:["decoro","decoros","decoroso","decorosa","decorosos","decorosas","conveniencia"],
+  fr:["décor","convenance","convenances","bienséance"],
+  en:["decorum","propriety","appropriateness","fitness"]},
  {id:"domus",la:["domus","domum","domo","domi","domos","domuum","domibus","domvs","domvm","domibvs"],
   es:["casa","casas","vivienda","viviendas","hogar","hogares","residencia","residencias"],
   fr:["maison","maisons","demeure","demeures","habitation","habitations","logement","logements"],
@@ -72,13 +76,17 @@ export function parallelHighlight(text,{query="",lang="es",latin=""}={}){
  const words=[];
  for(const word of tokens){
   const literal=word.norm===q;
-  const alias=!literal&&Boolean(concept&&set?.has(word.norm)&&anchored);
-  if(!literal&&!alias)continue;
+  // An inflected Latin form of a documented lemma is not a translated
+  // equivalent. Keep it in the literal-result class, with an honest tooltip.
+  const latinInflection=!literal&&lang==="la"&&Boolean(concept?.laSet.has(word.norm));
+  const alias=!literal&&!latinInflection&&Boolean(lang!=="la"&&concept&&set?.has(word.norm)&&anchored);
+  if(!literal&&!latinInflection&&!alias)continue;
   html+=escape(target.slice(at,word.start));
-  const title=alias?' title="Equivalencia léxica orientativa; no es alineación palabra por palabra"':'';
+  const title=alias?' title="Equivalencia léxica orientativa; no es alineación palabra por palabra"':
+    latinInflection?' title="Forma flexionada documentada del término buscado"':'';
   html+='<mark class="search-hit '+(alias?'search-hit-equivalent':'search-hit-literal')+'"'+title+'>'+escape(word.value)+'</mark>';
   at=word.end;
-  if(literal)direct++;else equivalent++;
+  if(literal||latinInflection)direct++;else equivalent++;
   words.push(word.value);
  }
  html+=escape(target.slice(at));
@@ -90,7 +98,8 @@ export function parallelExcerpt(text,{query="",lang="es",latin="",max=1700}={}){
  const c=conceptFor(query),anchored=sourceAnchored(c,latin),set=anchored?c?.[lang+"Set"]:null;
  const tokens=wordTokens(t);
  const direct=tokens.find(w=>w.norm===normalize(query));
- const alt=direct||tokens.find(w=>set?.has(w.norm));
+ const inflected=lang==="la"&&c?tokens.find(w=>c.laSet.has(w.norm)):null;
+ const alt=direct||inflected||tokens.find(w=>set?.has(w.norm));
  if(!alt)return t.slice(0,max)+" …";
  const preceding=Math.min(250,Math.floor(max*.3));
  const begin=Math.max(0,Math.min(alt.start-preceding,t.length-max)),end=Math.min(t.length,begin+max);
