@@ -89,7 +89,7 @@ function mount(host){
   const title= item.id==="vitruvius"?"Los diez libros de arquitectura":alternatives[0]||"";
   const author=spanishAuthors[item.id.split("-")[0]]||"";
   const different=(x,y)=>normalize(x)!==normalize(y);
-  return item.author+(author&&different(author,item.author)?" — "+author:"")+" · "+item.title+(title&&different(title,item.title)?" — "+title:"");
+  return item.author+(author&&different(author,item.author)?" — "+author:"")+" · "+item.title+(title&&different(title,item.title)&&!normalize(item.title).includes(normalize(title))?" — "+title:"");
  }
  function render(){
   if(!items)return;
