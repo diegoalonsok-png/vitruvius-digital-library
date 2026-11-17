@@ -387,7 +387,7 @@ async function load(){
   fetch("data/classics-corpus/search-registry.json").then(r=>r.json())
  ]);
  const item=(cat.works||[]).find(w=>w.id===work);
- title=(item?.author?item.author+" · ":"")+(item?.title||work);
+ const indexed=(reg.entries||[]).find(e=>e.workId===work&&e.language==="grc")||(reg.entries||[]).find(e=>e.workId===work);title=((item?.author||indexed?.author)?(item?.author||indexed.author)+" · ":"")+(item?.title||indexed?.title||work);
  const entries=new Map();
  for(const e of reg.entries||[]){
   if(e.workId!==work||!["json-passages","structured-bilingual"].includes(e.format)||!LANG[e.language])continue;
