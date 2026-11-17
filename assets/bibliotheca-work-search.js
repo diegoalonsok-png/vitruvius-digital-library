@@ -209,37 +209,16 @@ const foldAuthority=value=>normal(value).replace(/ς/g,"σ").replace(/αι|ει|
 const tokens=s=>[...new Set(foldAuthority(s).split(" ").filter(x=>x.length>1))];
 function editDistance(a,b,cap=3){
  if(Math.abs(a.length-b.length)>cap)return cap+1;
- let row=Array.from({length:b.length+1},(_,j)=>j);
- for(let i=1;i<=a.length;i++){const next=[i];for(let j=1;j<=b.length;j++)next[j]=Math.min(next[j-1]+1,row[j]+1,row[j-1]+(a[i-1]===b[j-1]?0:1));row=next;if(Math.min(...row)>cap)return cap+1}
- return row[b.length];
+ const d=Array.from({length:a.length+1},()=>Array(b.length+1).fill(0));
+ for(let i=0;i<=a.length;i++)d[i][0]=i;
+ for(let j=0;j<=b.length;j++)d[0][j]=j;
+ for(let i=1;i<=a.length;i++)for(let j=1;j<=b.length;j++){
+  const cost=a[i-1]===b[j-1]?0:1;
+  d[i][j]=Math.min(d[i-1][j]+1,d[i][j-1]+1,d[i-1][j-1]+cost);
+  if(i>1&&j>1&&a[i-1]===b[j-2]&&a[i-2]===b[j-1])d[i][j]=Math.min(d[i][j],d[i-2][j-2]+1);
+ }
+ return Math.min(cap+1,d[a.length][b.length]);
 }
-
-/* Vocabulario temático controlado: recuperación por materias, distinta del género y
-   de la lematización morfológica del texto completo. Nunca inventa metadatos. */
-const subjects=[
- ["architecture","Arquitectura y construcción",["arquitectura","architecture","architectura","edificios","construccion","building","οικοδομικη"],/architect|arquitect|aedific|edific|building|construction|construccion|de architectura|vitruvi/i],
- ["hydraulics","Agua, acueductos e hidráulica",["agua","acueducto","acueductos","aqueduct","aquae ductus","hidraulica","hydraulics"],/aqueduct|acueduct|aquaeduct|aquis|aquarum|hydraul|hidraul|frontinus/i],
- ["war","Guerra, ejército y estrategia",["guerra","batalla","militar","estrategia","war","bellum","πολεμος","polemica"],/bell[oi]|war|guerra|militar|strateg|στρατ|πολεμ|tactic|tactica|poliorc/i],
- ["politics","Política, Estado y ciudadanía",["politica","republica","estado","gobierno","politics","res publica","πολιτεια"],/politic|πολιτ|republic|res publica|civitat|gobiern|government|estado/i],
- ["ethics","Ética, virtud y moral",["etica","moral","virtud","felicidad","ethics","virtus","ἀρετή"],/etic|ethic|moral|virtud|virtus|sapien|εθικ|ἀρετ|officiis/i],
- ["rhetoric","Retórica, discurso y oratoria",["retorica","discurso","oratoria","rhetoric","orator","ρητορικη"],/retoric|rhetor|ρητορ|orator|eloquen|discurso|brutus/i],
- ["poetry","Poesía, épica y teatro",["poesia","epica","teatro","tragedia","comedia","poetry","epos","ποιησις"],/poet|ποιη|poes|epic|epop|traged|comed|oda|od[eae]|carmina|aeneid|iliad|odysse/i],
- ["religion","Religión, dioses y mitología",["religion","dioses","mitologia","culto","religio","mythos","θεος"],/religio|theolog|θεο|deorum|divin|myth|mitolog|culto|sacr|de deo/i],
- ["science","Matemáticas, astronomía y ciencias",["matematica","astronomia","ciencias","geometria","mathematics","astronomy","γεωμετρια"],/matem|mathem|geometr|γεωμετρ|astronom|scient|cienc|physic|φυσικ/i],
- ["medicine","Medicina y salud",["medicina","salud","anatomia","medicine","ιατρικη"],/medic|ιατρ|salud|anatom|hippocrat|galen/i],
- ["geography","Geografía, mapas y viajes",["geografia","mapas","viajes","geography","geographia","γεωγραφια"],/geogr|γεωγραφ|peripl|viaj|travel|mapa|cartograf/i],
- ["history","Historia y biografías",["historia","cronica","biografia","history","historiae","ἱστορία"],/histor|ἱστορ|annal|cron|biograf|vitae|lives/i],
- ["law","Derecho y leyes",["derecho","leyes","justicia","law","ius","lex","νομος"],/jurid|derecho|leges|justic|legal|legibus|νομ/i],
- ["language","Lengua, gramática y filología",["gramatica","filologia","lengua","lexico","grammar","linguistics","γραμματικη"],/gramm|gramat|filol|philol|lexic|linguist|etymolog|etimolog/i],
- ["agriculture","Agricultura, naturaleza y botánica",["agricultura","cultivos","botanica","agriculture","agri cultura","φυτα"],/agric|agron|botan|naturalis|georgic|rustic|plant|φυτ/i]
-];
-const subjectText=w=>[w.genre,w.title,...(w.subjects||[]),...(w.topics||[])].filter(Boolean).join(" ");
-const matchedSubjects=w=>subjects.filter(([id,label,aliases,pattern])=>pattern.test(normal(subjectText(w)))).map(([id])=>id);
-function requestedSubject(query){
- const q=foldAuthority(query);
- return subjects.find(([id,label,aliases])=>aliases.some(x=>foldAuthority(x)===q))?.[0]||"";
-}
-
 function rank(w,query){
  const queryTokens=tokens(query);if(!queryTokens.length)return 0;
  const authority=[w.author,w.title,w.id.replaceAll("-"," "),...(w.forms||[]),...(aliasAuthority[w.id]||[])];
