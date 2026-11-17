@@ -59,7 +59,7 @@
 <script defer src="assets/academic-inline-translation.js?v=20261117-unicode-rate-limit-v6"></script><script defer src="assets/scholarly-passage-citation.js?v=20261113-citable-1"></script>
 <script defer src="assets/bibliotheca-simple.js?v=20261116-notebook-scope-v1"></script>
 <script defer src="assets/bibliotheca-genre-work-list.js?v=20261114-academic-order-v1"></script>
-<link rel="stylesheet" href="assets/bibliotheca-work-search.css?v=20261117-lexicon-alphabets-v1"><script defer src="assets/bibliotheca-work-search.js?v=20261117-search-first-books-v1"></script>
+<link rel="stylesheet" href="assets/bibliotheca-work-search.css?v=20261117-lexicon-alphabets-v1"><script defer src="assets/bibliotheca-work-search.js?v=20261117-single-book-result-v1"></script>
 <script defer src="assets/bibliotheca-entity-search.js?v=20261115-onomastics-v1"></script>
 <script defer src="assets/bibliotheca-concordance.js?v=20261115-loci-provenance-v2"></script>
 <script defer src="assets/classics-corpus-counts.js?v=20261117-real-counts-v1"></script>
@@ -351,6 +351,14 @@ body.bibliotheca-plain-list main.library #bibliotheca-lexicon-q{
 body.bibliotheca-plain-list main.library #bibliotheca-lexicon-form .bib-lx-submit{
  white-space:nowrap
 }
+</style>
+
+<style id="bibliotheca-one-result-v1">
+/* Exactly one matching book, a single unobtrusive line under the Lexicon-shaped field. */
+body.bibliotheca-plain-list main.library #bibliotheca-work-search .bws-count{display:none!important}
+body.bibliotheca-plain-list main.library #bibliotheca-work-search .bws-results{max-height:none!important;overflow:visible!important}
+body.bibliotheca-plain-list main.library #bibliotheca-work-search .bws-item{display:block!important;padding:8px 16px!important;border:1px solid #454545!important;border-radius:9px!important;margin:4px 0!important;background:#191919!important}
+body.bibliotheca-plain-list main.library #bibliotheca-work-search .bws-plain-title{display:block!important;font:500 16px/1.5 system-ui,sans-serif!important;color:#f4f4f4!important}
 </style>
 </head>
 <body class="bibliotheca-plain-list"><a class="vdl-skip-link" href="#main-content">Saltar al contenido principal</a>
