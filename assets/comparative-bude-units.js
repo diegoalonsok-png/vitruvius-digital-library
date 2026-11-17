@@ -108,13 +108,13 @@ async function render(query){
  const rose=data.ocr?.loci?.[locus]?.["rose-1899"];
  const roseTranscription=data.roseDigital?.passages?.find(x=>x.locus===locus);
  const krohnOcr=data.ocr?.loci?.[locus]?.["krohn-1912"];
- const k=card("Kr. 1912 · "+fmt(locus),krohn?.latin||"No hay transcripción digital independiente de Krohn alineada a este locus.","la");
+ const k=card("Fritz Krohn (ed.), Vitruvii De architectura libri decem (Lipsiae: B. G. Teubner, 1912) · "+fmt(locus),krohn?.latin||"No hay transcripción digital independiente de Krohn alineada a este locus.","la");
  k.append(E("small",krohn?"Krohn 1912 · texto digital indexado por locus (fuente Perseus); cotejo de la página impresa documentado por separado.":"Krohn 1912 · este locus no fue recuperado del índice digital en la consulta; no se sustituye por Kurilo."));
  if(krohnOcr?.page){const p=E("p",null,"bude-note");p.append(A("Ver página del impreso de Krohn · imagen "+krohnOcr.page,"krohn-1912.html"));k.append(p)}
- const ro=card("Rose 1899 · "+fmt(locus),roseTranscription?.latin||"Transcripción digital no disponible; revisar el facsímil.","la");
+ const ro=card("Valentin Rose (ed.), Vitruvii De architectura libri decem (Lipsiae: B. G. Teubner, 1899) · "+fmt(locus),roseTranscription?.latin||"Transcripción digital no disponible; revisar el facsímil.","la");
  ro.append(E("small",roseTranscription?(roseTranscription.status==="alignment_needs_editorial_review"?"Transcripción Project Gutenberg · división por locus pendiente de revisión; cotejar impreso.":"Transcripción independiente Project Gutenberg · aún no verificada exhaustivamente contra el impreso."):"Transcripción Rose no disponible; la extracción de página es solo auxiliar."));
  if(rose?.page){const p=E("p",null,"bude-note");p.append(A("Consultar facsímil de Rose · imagen digital "+rose.page,"https://archive.org/download/vitruviidearchit00vitr_0/vitruviidearchit00vitr_0.pdf#page="+rose.page));ro.append(p)}
- const ku=card("Kur. V514 · "+fmt(locus),p?.latin||"Sin texto estructurado.","la");
+ const ku=card("Diego Kurilo (ed. y trad.), Vitruvio. De architectura. Nueva recensio académica bilingüe: El arquitecto de la teoría (V514) · "+fmt(locus),p?.latin||"Sin texto estructurado.","la");
  ku.append(E("small","Texto autoral V514; las elecciones editoriales de latín y griego se conservan."));
  tgrid.append(k,ro,ku);texts.append(tgrid);
  texts.append(E("p","H (Harley MS 2767) se documenta por su imagen y los cotejos expresamente verificados, en el apartado siguiente. No se publica una lectura diplomática reconstruida sin cotejo. La unidad por locus es una alineación editorial y no implica paginación idéntica en Rose y Krohn.","bude-note"));
