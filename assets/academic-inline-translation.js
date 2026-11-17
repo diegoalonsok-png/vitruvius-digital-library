@@ -11,17 +11,25 @@ const MAX_INPUT=1200,MAX_PARTS=3,MAX_PART_BYTES=420;
 const cache=new Map();
 const utfBytes=value=>new TextEncoder().encode(value).length;
 function chunks(text,maxBytes=MAX_PART_BYTES,maxParts=MAX_PARTS,maxInput=MAX_INPUT){
+ // Split at whitespace/punctuation boundaries without breaking polytonic Greek words.
  const value=String(text||"").trim().slice(0,maxInput),parts=[];
- let part="";
- for(const character of value){
-  if(utfBytes(part+character)>maxBytes){
-   if(part.trim())parts.push(part.trim());
-   part="";
-   if(parts.length>=maxParts)break;
+ let rest=value;
+ while(rest&&parts.length<maxParts){
+  if(utfBytes(rest)<=maxBytes){parts.push(rest);break}
+  let size=0,cut=0;
+  for(const char of rest){
+   const bytes=utfBytes(char);if(size+bytes>maxBytes)break;
+   size+=bytes;cut+=char.length;
   }
-  part+=character;
+  if(!cut)break;
+  const head=rest.slice(0,cut);
+  const boundaries=[...head.matchAll(/[\\s,;··.?!:]+/gu)].map(m=>m.index+m[0].length);
+  const end=boundaries.filter(x=>x>=Math.floor(cut*.40)).at(-1)||cut;
+  const fragment=rest.slice(0,end).trim();
+  if(!fragment)break;
+  parts.push(fragment);
+  rest=rest.slice(end).trimStart();
  }
- if(part.trim()&&parts.length<maxParts)parts.push(part.trim());
  return parts;
 }
 const el=(tag,cls,content)=>{
