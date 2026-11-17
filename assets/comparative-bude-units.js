@@ -6,6 +6,7 @@ const E=(tag,text,cls)=>{const n=document.createElement(tag);if(text!=null)n.tex
 const A=(label,url)=>{const a=E("a",label);a.href=url;return a};
 const romans=["","I","II","III","IV","V","VI","VII","VIII","IX","X"];
 const norm=s=>{s=String(s||"").trim().toLowerCase().replace(/\s+/g,"");const m=s.match(/^([ivx]+)\./);if(m){let n=0,p=0;for(const ch of m[1].split("").reverse()){const v={i:1,v:5,x:10}[ch];n+=v<p?-v:v;p=v}s=n+s.slice(m[1].length)}return s.replace(/\.praefatio\./g,".praef.").replace(/\.preface\./g,".praef.")};
+const BIB={krohn:"Marco Vitruvio Polión, Vitruvii De architectura libri decem, ed. Fritz Krohn (Lipsiae: B. G. Teubner, 1912; sin ISBN/DOI de la edición histórica)",rose:"Marco Vitruvio Polión, Vitruvii De architectura libri decem, ed. Valentin Rose (Lipsiae: B. G. Teubner, 1899; sin ISBN/DOI de la edición histórica)",v514:"Diego Kurilo, Vitruvio. De architectura. Nueva recensio académica bilingüe: El arquitecto de la teoría, V514 (2026). DOI 10.5281/zenodo.23884757; ISBN 978-631-01-6651-3 (declarado, atribución registral pendiente)",v554:"Diego Kurilo, Vitruve. De architectura. Nouvelle recensio académique bilingue: L’architecte de la théorie, V554 (2026). DOI 10.5281/zenodo.23885110; ISBN 978-631-01-6651-3 (declarado, atribución registral pendiente)",v297:"Diego Kurilo, The Architect of Theory: Vitruvius and the Intellectual World of Roman Antiquity, V297 (2026). DOI 10.5281/zenodo.23885404; ISBN 978-631-01-6651-3 (declarado, atribución registral pendiente)"};
 const fmt=s=>{const p=String(s).split(".");return (romans[+p[0]]||p[0])+"."+p.slice(1).join(".")};
 let data=null,loci=[],sequence=0;
 const chapters=new Map();
@@ -79,48 +80,48 @@ async function render(query){
   const hChecked=(data.curated?.entries||[]).filter(x=>x.locus===locus&&x.verifiedAutopsy===true);
   const hAnchorCount=evidence.codex_h?.anclas?.length||0;
   const statusList=[
-   ["Kurilo V514",evidence.kurilo.estado==="texto_estructurado"?"Edición latina propia basada principalmente en Krohn (1912), cotejada con Rose (1899)":"Consultar edición latina y traducción","lector-bilingue.html?locus="+encodeURIComponent(locus)],
-   ["Rose 1899","Texto de la edición Rose (1899) indexado · lectura digital y comprobación del impreso por locus","rose-1899.html"],
-   ["Krohn 1912","Edición de Fritz Krohn (1912), base principal del latín de Kurilo · texto del libro indexado; apoyo digital Perseus","krohn-1912.html"],
+   [BIB.v514,evidence.kurilo.estado==="texto_estructurado"?"Edición latina propia basada principalmente en Krohn (1912), cotejada con Rose (1899)":"Consultar edición latina y traducción","lector-bilingue.html?locus="+encodeURIComponent(locus)],
+   [BIB.rose,"Texto de la edición Rose (1899) indexado · lectura digital y comprobación del impreso por locus","rose-1899.html"],
+   [BIB.krohn,"Edición de Fritz Krohn (1912), base principal del latín de Kurilo · texto del libro indexado; apoyo digital Perseus","krohn-1912.html"],
    ["Codex H",hChecked.length?"Cotejado ex imagine: "+hChecked.length+" lectura(s) puntual(es) documentada(s) para este locus":hAnchorCount?"Códice cotejado selectivamente; "+hAnchorCount+" referencia(s) de folio en este locus, sin lectura puntual certificada aquí":"Códice cotejado selectivamente; sin lectura puntual documentada para este locus","concordancia-folios.html?locus="+encodeURIComponent(locus)]
   ];
   for(const [edition,description,url] of statusList){
    const card=E("div",null,"bude-evidence-unit");card.append(E("b",edition),E("small",description),A("Consultar",url));
-   if(edition==="Rose 1899"){card.append(document.createTextNode(" · "),A("Biblioteca Gutenberg (transcripción)","https://www.gutenberg.org/ebooks/51812"));}
+   if(edition===BIB.rose){card.append(document.createTextNode(" · "),A("Biblioteca Gutenberg (transcripción)","https://www.gutenberg.org/ebooks/51812"));}
    grid.append(card);
   }
   indicator.append(grid,E("small","Rose y Krohn son ediciones impresas originales indexadas por sus textos. Las ediciones originales, sus transcripciones digitales y las imágenes de los impresos se identifican como recursos distintos. Codex H posee cotejos puntuales ex imagine documentados; la presencia de un folio en el mapa no certifica por sí sola todos los lemas. Diferencias digitales candidatas en este locus: "+evidence.aparato.diferencias_digitales_candidatas+"."));
  }
 
  const p=data.es.passages.find(x=>x.locus===locus);
- const grid=E("div",null,"bude-grid");grid.append(card("Textus Latinus · Kur. V514",p?.latin,"la"));
+ const grid=E("div",null,"bude-grid");grid.append(card("Textus Latinus · "+BIB.v514,p?.latin,"la"));
  if(data.fr?.loadError)grid.append(E("p","El índice francés V554 no pudo cargarse en esta solicitud: "+data.fr.loadError+". La edición está catalogada en los archivos del proyecto; consultar sus fuentes documentales.","bude-note"));
- for(const [id,title,lang] of [["es","Interpretatio Hispanica · V514","es"],["fr","Interpretatio Gallica · V554","fr"],["en","Interpretatio Anglica · V297","en"]]){
+ for(const [id,title,lang] of [["es","Interpretatio Hispanica · "+BIB.v514,"es"],["fr","Interpretatio Gallica · "+BIB.v554,"fr"],["en","Interpretatio Anglica · "+BIB.v297,"en"]]){
   const t=data[id].passages.find(x=>x.locus===locus)?.translation||"";
   grid.append(card(title,/^\s*(apparatus criticus|critical apparatus)\s*\(/i.test(t)?"Entrada de aparato; no traducción alineada.":t,lang));
  }
  root.append(E("h3","Vitr., De architectura "+fmt(locus)));root.append(grid);
  // Comparación textual completa para cada locus, independiente del aparato de variantes.
  // El texto H no se suple con V514 ni se deduce del OCR de los editores impresos.
- const texts=section("Textus comparati · Kr. 1912 / Rose 1899 / Kur. V514");
+ const texts=section("Textus comparati · edición Krohn (1912), edición Rose (1899), edición Kurilo V514");
  const tgrid=E("div",null,"bude-grid");
  const krohn=data.krohn?.passages?.find(x=>x.locus===locus);
  const rose=data.ocr?.loci?.[locus]?.["rose-1899"];
  const roseTranscription=data.roseDigital?.passages?.find(x=>x.locus===locus);
  const krohnOcr=data.ocr?.loci?.[locus]?.["krohn-1912"];
- const k=card("Fritz Krohn (ed.), Vitruvii De architectura libri decem (Lipsiae: B. G. Teubner, 1912) · "+fmt(locus),krohn?.latin||"No hay transcripción digital independiente de Krohn alineada a este locus.","la");
+ const k=card(BIB.krohn+" · "+fmt(locus),krohn?.latin||"No hay transcripción digital independiente de Krohn alineada a este locus.","la");
  k.append(E("small",krohn?"Krohn 1912 · texto digital indexado por locus (fuente Perseus); cotejo de la página impresa documentado por separado.":"Krohn 1912 · este locus no fue recuperado del índice digital en la consulta; no se sustituye por Kurilo."));
  if(krohnOcr?.page){const p=E("p",null,"bude-note");p.append(A("Ver página del impreso de Krohn · imagen "+krohnOcr.page,"krohn-1912.html"));k.append(p)}
- const ro=card("Valentin Rose (ed.), Vitruvii De architectura libri decem (Lipsiae: B. G. Teubner, 1899) · "+fmt(locus),roseTranscription?.latin||"Transcripción digital no disponible; revisar el facsímil.","la");
+ const ro=card(BIB.rose+" · "+fmt(locus),roseTranscription?.latin||"Transcripción digital no disponible; revisar el facsímil.","la");
  ro.append(E("small",roseTranscription?(roseTranscription.status==="alignment_needs_editorial_review"?"Transcripción Project Gutenberg · división por locus pendiente de revisión; cotejar impreso.":"Transcripción independiente Project Gutenberg · aún no verificada exhaustivamente contra el impreso."):"Transcripción Rose no disponible; la extracción de página es solo auxiliar."));
  if(rose?.page){const p=E("p",null,"bude-note");p.append(A("Consultar facsímil de Rose · imagen digital "+rose.page,"https://archive.org/download/vitruviidearchit00vitr_0/vitruviidearchit00vitr_0.pdf#page="+rose.page));ro.append(p)}
- const ku=card("Diego Kurilo (ed. y trad.), Vitruvio. De architectura. Nueva recensio académica bilingüe: El arquitecto de la teoría (V514) · "+fmt(locus),p?.latin||"Sin texto estructurado.","la");
+ const ku=card(BIB.v514+" · "+fmt(locus),p?.latin||"Sin texto estructurado.","la");
  ku.append(E("small","Texto autoral V514; las elecciones editoriales de latín y griego se conservan."));
  tgrid.append(k,ro,ku);texts.append(tgrid);
  texts.append(E("p","H (Harley MS 2767) se documenta por su imagen y los cotejos expresamente verificados, en el apartado siguiente. No se publica una lectura diplomática reconstruida sin cotejo. La unidad por locus es una alineación editorial y no implica paginación idéntica en Rose y Krohn.","bude-note"));
  // Candidate lexical differences from the two independently attributed digital editions.
  // NEVER elevate these to manuscript variants or attest H to them without autopsy.
- const diff=section("Collatio textualis digitalis · Kr. 1912 / Kur. V514");
+ const diff=section("Collatio textualis digitalis · "+BIB.krohn+" / "+BIB.v514);
  const candidate=data.variants?.loci?.find(x=>x.locus===locus);
  if(!candidate||candidate.estado==="sin_transcripcion_independiente"){
   diff.append(E("p","No existe en este locus una transcripción independiente de Krohn utilizable. La falta de transcripción no equivale a laguna del texto original.","bude-note"));
@@ -158,7 +159,7 @@ async function render(query){
   }
   const imp=pending.cotejo_impresos;
   if(imp){
-   for(const [name,record] of [["Rose 1899",imp.rose],["Krohn 1912",imp.krohn]]){
+   for(const [name,record] of [[BIB.rose,imp.rose],[BIB.krohn,imp.krohn]]){
     const u=E("div",null,"bude-unit");
     u.append(E("strong","Ex editione impressa · "+name+" · imagen digital "+(record.pagina_digital??"—")));
     u.append(E("div","OCR candidato asociado: "+(record.extracto_ocr||"sin texto")+(record.extracto_ocr?.length>=320?"…":"")));
@@ -212,7 +213,7 @@ async function render(query){
  const ext=section("Apparatus comparativus · Rose, Kr., Kur.");
  if(c){
   if(c.v514?.length)for(const v of c.v514){item(ext,"Kur. V514 · entrada selectiva",v.aparato||v.lema||"Entrada editorial",v.grado||"Procedencia editorial","registro-ecdotico.html?locus="+encodeURIComponent(locus))}
-  for(const [key,title] of [["rose-1899","Rose 1899"],["krohn-1912","Kr. 1912"]]){
+  for(const [key,title] of [["rose-1899",BIB.rose],["krohn-1912",BIB.krohn]]){
    const witness=c[key];if(!witness)continue;
    for(const entry of (witness.entradas||[]))item(ext,title+" · registro de aparato",entry.texto,"Extracto auxiliar de la página "+entry.pagina+"; referencia de línea "+entry.linea+"; siglas extraídas: "+(entry.sigla||[]).join(", ")+". Fuente de este fragmento: extracción OCR auxiliar, pendiente de confrontación puntual con el impreso; no define el estado de indexación de la edición.",witness.pdf);
   }
