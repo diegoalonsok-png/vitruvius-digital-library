@@ -59,8 +59,6 @@
 <script defer src="assets/academic-inline-translation.js?v=20261117-unicode-rate-limit-v6"></script><script defer src="assets/scholarly-passage-citation.js?v=20261113-citable-1"></script>
 <script defer src="assets/bibliotheca-simple.js?v=20261116-notebook-scope-v1"></script>
 <script defer src="assets/bibliotheca-genre-work-list.js?v=20261114-academic-order-v1"></script>
-<link rel="stylesheet" href="assets/bibliotheca-cover-miniatures.css?v=20261116-library-covers-v1">
-<script defer src="assets/bibliotheca-cover-miniatures.js?v=20261116-library-covers-v1"></script>
 <link rel="stylesheet" href="assets/bibliotheca-work-search.css?v=20261117-lexicon-alphabets-v1"><script defer src="assets/bibliotheca-work-search.js?v=20261117-alphabet-expanders-v1"></script>
 <script defer src="assets/bibliotheca-entity-search.js?v=20261115-onomastics-v1"></script>
 <script defer src="assets/bibliotheca-concordance.js?v=20261115-loci-provenance-v2"></script>
@@ -244,6 +242,32 @@ header.hero>.eyebrow{letter-spacing:.16em;font-size:11px;text-transform:uppercas
  document.addEventListener('DOMContentLoaded',()=>apply(read(),true),{once:true});
 })();
 </script>
+<style id="bibliotheca-monochrome-list-v1">
+/* Bibliotheca: monochrome, typography-first catalogue. No decorative covers.
+   Never changes catalogue data, reader URLs, authors or texts. */
+html body:has(main.library),html[data-theme="light"] body:has(main.library){background:#080808!important;color:#f3f3f3!important;color-scheme:dark!important}
+html body main.library,html[data-theme="light"] body main.library{background:#080808!important;color:#f3f3f3!important}
+body main.library :is(.hero,.searcharea,.top,.bibliotheca-resources-2026,.bibliotheca-suite,#bibliotheca-work-search,#bibliotheca-entity-search,.vdl-unified-books,.biblio-extra-filters,.genre-work-list,.bws-item,.bws-results,.bws-alphabet,.bws-library-filters,.bibliotheca-top-tools,.bibliotheca-suite-links,.bibliotheca-search-modes){background:#0b0b0b!important;color:#f3f3f3!important;border-color:#555!important;box-shadow:none!important}
+body main.library :is(h1,h2,h3,h4,strong,summary,label,.intro,.eyebrow,.bws-heading,.bws-heading strong,.bws-heading span,.bws-meta,.bws-intro,.bws-count,.bws-help,.genre-work-title,.genre-work-meta,.bws-empty){color:#f4f4f4!important;text-shadow:none!important}
+body main.library :is(a,a:visited){color:#f2f2f2!important;text-decoration-color:#999!important}
+body main.library :is(a:hover,a:focus-visible){color:#fff!important;text-decoration-color:#fff!important}
+body main.library :is(input,select,textarea,button,.language-toggle,.bibliotheca-suite-export,.bws-alphabet button,.bws-row>button,.vdl-unified-books button,#search-submit,#biblio-filter-toggle){background:#161616!important;color:#f5f5f5!important;border:1px solid #666!important;box-shadow:none!important}
+body main.library :is(button[aria-pressed="true"],.bws-alphabet button[aria-pressed="true"]){background:#333!important;color:white!important;border-color:#aaa!important}
+body main.library :is(input,select,textarea)::placeholder{color:#bbb!important}
+body main.library :is(button,input,select,a):focus-visible{outline:2px solid #fff!important;outline-offset:2px!important}
+body main.library :is(.vdl-cover,.vdl-cover--mini,.vdl-cover--detail,.bws-cover,.book-cover,.cover-miniature,.bibliotheca-cover){display:none!important}
+body main.library :is(#bibliotheca-work-search .bws-results,.genre-work-items,.vdl-unified-books ol){display:block!important;list-style:none!important;padding:0!important;margin:8px 0!important;max-height:none!important;overflow:visible!important;scrollbar-color:#777 #111!important}
+body main.library :is(#bibliotheca-work-search .bws-item,.genre-work-item,.vdl-unified-books li){display:block!important;padding:13px 4px!important;margin:0!important;border:0!important;border-bottom:1px solid #444!important;border-radius:0!important;background:transparent!important;box-shadow:none!important}
+body main.library :is(#bibliotheca-work-search .bws-heading,.genre-work-info){display:block!important}
+body main.library :is(#bibliotheca-work-search .bws-actions,.vdl-unified-books nav){display:flex!important;flex-wrap:wrap!important;gap:4px 18px!important}
+body main.library :is(#bibliotheca-work-search .bws-actions a,.vdl-unified-books a){color:#ddd!important}
+body main.library .bibliotheca-color-palette,body main.library #bibliotheca-theme{display:none!important}
+/* Light preference cannot recolor this catalogue blue, cream or gold. */
+html[data-theme="light"] body main.library :is(#bibliotheca-work-search,#bibliotheca-work-search :is(h3,.bws-intro,label,.bws-count,.bws-heading,.bws-heading strong,.bws-heading span,.bws-meta,.bws-help,.bws-empty,li,p,span,strong),#bibliotheca-entity-search,.vdl-unified-books){background-color:#0b0b0b!important;color:#f4f4f4!important}
+html[data-theme="light"] body main.library #bibliotheca-work-search :is(input,select,button),html[data-theme="light"] body main.library :is(.vdl-unified-books input,.vdl-unified-books button){background:#161616!important;color:#fff!important;border-color:#666!important}
+html[data-theme="light"] body main.library :is(#bibliotheca-work-search .bws-actions a,#bibliotheca-work-search .bws-help a,.vdl-unified-books a){color:#eee!important}
+@media(max-width:700px){body main.library #bibliotheca-work-search .bws-item{padding:12px 0!important}}
+</style>
 </head>
 <body><a class="vdl-skip-link" href="#main-content">Saltar al contenido principal</a>
 <main class="library" id="main-content">
