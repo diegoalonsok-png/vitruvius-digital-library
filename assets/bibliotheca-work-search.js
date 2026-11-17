@@ -351,10 +351,23 @@ function renderNotable(q,append=false){
  }
 }
 
+function singleLetter(value){
+ const input=String(value||"").trim();
+ if(!/^[\p{Script=Latin}\p{Script=Greek}\p{M}]+$/u.test(input))return "";
+ const key=normal(input).replace(/[ϲϹ]/g,"σ").replace(/ϐ/g,"β").replace(/ϑ/g,"θ").replace(/ϕ/g,"φ").replace(/ſ/g,"s");
+ return [...key].length===1?key:"";
+}
+function letterMatch(w,letter,byTitle){
+ const greek=/[\u0370-\u03ff\u1f00-\u1fff]/u.test(letter);
+ const fields=byTitle?[w.title,w.originalTitle,w.latinTitle,w.greekTitle,...(w.originalAliases||[]),...(loadedAliases[w.id]||[])]:[w.author,...(aliasAuthority[w.id]||[])];
+ return fields.some(value=>typeof value==="string"&&Boolean(value)&&
+  (!greek||/[\u0370-\u03ff\u1f00-\u1fff]/u.test(value))&&
+  (greek||!/[\u0370-\u03ff\u1f00-\u1fff]/u.test(value))&&normal(value).startsWith(letter));
+}
 function render(){
  if(!model)return;
- const {input,list,count,more,limit}=model,q=input.value.trim();
- const hasFacets=Boolean(model.authorFilter.value.trim()||model.genreFilter.value||model.subjectFilter.value||model.centuryFilter.value||model.periodFilter.value||model.languageFilter.value||model.letter);
+ const {input,list,count,more,limit}=model,rawQuery=input.value.trim(),typedLetter=singleLetter(rawQuery),q=typedLetter?"":rawQuery;
+ const hasFacets=Boolean(model.authorFilter.value.trim()||model.genreFilter.value||model.subjectFilter.value||model.centuryFilter.value||model.periodFilter.value||model.languageFilter.value||model.letter||typedLetter);
  const hasQuery=normal(q).length>=2;
  if(model.periodFilter.value==="modern-notable"){renderNotable(q);return;}
  if(!hasQuery&&!hasFacets&&!model.showAll&&!model.r2Only){
@@ -363,16 +376,15 @@ function render(){
  }
  const items=model.items.filter(w=>{
   const author=foldAuthority(model.authorFilter.value.trim());
-  const genre=model.genreFilter.value,subject=model.subjectFilter.value,century=model.centuryFilter.value,period=model.periodFilter.value,language=model.languageFilter.value,letter=model.letter;
+  const genre=model.genreFilter.value,subject=model.subjectFilter.value,century=model.centuryFilter.value,period=model.periodFilter.value,language=model.languageFilter.value,letter=typedLetter||model.letter;
   const group=ancientGenre(w.genre);
-  const key=norm(model.sortFilter.value==="title"?w.title:w.author).trim();
-  return (!model.r2Only||w.r2Original)&&(!author||rank({...w,title:"",forms:[w.author,...(aliasAuthority[w.id]||[])]},author)>=65)&&(!genre||group===genre)&&(!subject||matchedSubjects(w).includes(subject))&&(!century||centuryOf(w.dating)===century)&&(!period||periodOfWork(w)===period)&&(!language||w.versions.some(v=>v.language===language||(language==="arc"&&v.language==="ar")))&&(!letter||key.startsWith(norm(letter)));
+   return (!model.r2Only||w.r2Original)&&(!author||rank({...w,title:"",forms:[w.author,...(aliasAuthority[w.id]||[])]},author)>=65)&&(!genre||group===genre)&&(!subject||matchedSubjects(w).includes(subject))&&(!century||centuryOf(w.dating)===century)&&(!period||periodOfWork(w)===period)&&(!language||w.versions.some(v=>v.language===language||(language==="arc"&&v.language==="ar")))&&(!letter||letterMatch(w,normal(letter),model.sortFilter.value==="title"));
  });
  list.replaceChildren();more.hidden=true;
  if(!q){
   if(model.compactFront&&!hasFacets&&!model.r2Only&&!model.showAll){model.region.hidden=true;return}
   model.region.hidden=false;
-  count.textContent=(model.r2Only?"Originales registrados en Cloudflare R2 · ":"Catálogo completo · ")+items.length+" obras. El registro documental no acredita por sí solo disponibilidad HTTP.";
+  count.textContent=(typedLetter?"Inicial «"+rawQuery+"» · ":model.letter?"Inicial «"+model.letter+"» · ":model.r2Only?"Originales registrados en Cloudflare R2 · ":"Catálogo completo · ")+items.length+" obras. El registro documental no acredita por sí solo disponibilidad HTTP.";
   const all=[...items].sort((a,b)=>model.sortFilter.value==="title"?a.title.localeCompare(b.title,"es",{sensitivity:"base"}):a.author.localeCompare(b.author,"es",{sensitivity:"base"})||a.title.localeCompare(b.title,"es",{sensitivity:"base"}));
   for(const w of all.slice(0,limit)){
    const li=make("li",null,"bws-item");
@@ -512,10 +524,26 @@ function mount(parent,data){
  [["author","Orden por autor A–Z"],["title","Orden por título A–Z"]].forEach(([v,t])=>sortFilter.append(new Option(t,v)));
  authorLabel.append(authorFilter);
  filters.append(authorLabel,genreFilter,subjectFilter,centuryFilter,periodFilter,languageFilter,sortFilter);
- const alphabet=make("nav",null,"bws-alphabet");alphabet.setAttribute("aria-label","Índice alfabético por autor o título");
- for(const l of ["Todos",..."ABCDEFGHIJKLMNOPQRSTUVWXYZ",..."ΑΒΓΔΕΖΗΘΙΚΛΜΝΞΟΠΡΣΤΥΦΧΨΩ"]){
-  const b=make("button",l);b.type="button";b.setAttribute("aria-pressed",l==="Todos"?"true":"false");
-  b.addEventListener("click",()=>{model.letter=l==="Todos"?"":l;model.limit=6;alphabet.querySelectorAll("button").forEach(x=>x.setAttribute("aria-pressed",String(x===b)));render()});alphabet.append(b);
+ const alphabet=make("nav",null,"bws-alphabet");alphabet.setAttribute("aria-label","Índice latino, griego y grafías históricas");
+ const alphabetHint=make("p","Escribí una letra en el buscador (a, Α, ἀ…) para listar obras por inicial. El ático, el koiné y la escritura politónica comparten el alfabeto básico; las variantes gráficas y los signos arcaicos se muestran aparte.","bws-help");
+ alphabet.append(alphabetHint);
+ const rows=[
+  ["Latín · mayúsculas y minúsculas",[..."ABCDEFGHIJKLMNOPQRSTUVWXYZ"].map(x=>[x+" "+x.toLowerCase(),x])],
+  ["Griego · mayúsculas y minúsculas",[..."ΑΒΓΔΕΖΗΘΙΚΛΜΝΞΟΠΡΣΤΥΦΧΨΩ"].map(x=>[x+" "+x.toLowerCase(),x])],
+  ["Griego histórico, ático y politónico",[["Ϝ ϝ · digamma","Ϝ"],["Ϙ ϙ · qoppa","Ϙ"],["Ϻ ϻ · san","Ϻ"],["Ͱ ͱ · heta","Ͱ"],["Ϲ ϲ · sigma lunar","Ϲ"],["Ἀ ἀ","Ἀ"],["Ἁ ἁ","Ἁ"],["Ἐ ἐ","Ἐ"],["Ἠ ἠ","Ἠ"],["Ἰ ἰ","Ἰ"],["Ὀ ὀ","Ὀ"],["Ὑ ὑ","Ὑ"],["Ὠ ὠ","Ὠ"],["ᾼ ᾳ","ᾼ"]]],
+  ["Latín · grafías editoriales y epigráficas",[["I i","I"],["V v","V"],["U u","U"],["J j","J"],["Æ æ · ligadura","Æ"],["Œ œ · ligadura","Œ"],["ſ · s larga","ſ"]]]
+ ];
+ const clearAlphabet=()=>alphabet.querySelectorAll("button").forEach(x=>x.setAttribute("aria-pressed","false"));
+ const allLetters=make("button","Todas las letras");allLetters.type="button";allLetters.setAttribute("aria-pressed","true");
+ allLetters.addEventListener("click",()=>{input.value="";model.letter="";model.limit=40;clearAlphabet();allLetters.setAttribute("aria-pressed","true");render()});
+ alphabet.append(allLetters);
+ for(const [label,letters] of rows){
+  const group=make("div",null,"bws-alphabet-group"),head=make("p",label,"bws-alphabet-heading");group.append(head);
+  for(const [name,value] of letters){
+   const b=make("button",name);b.type="button";b.setAttribute("aria-pressed","false");
+   b.addEventListener("click",()=>{input.value="";model.letter=value;model.limit=40;clearAlphabet();b.setAttribute("aria-pressed","true");render()});group.append(b);
+  }
+  alphabet.append(group);
  }
  const historicalHint=make("p",null,"bws-help");
  historicalHint.append("Sistemas de datación de las fuentes: en Roma, magistraturas consulares y, en algunas cronografías, ab urbe condita (AUC); en Grecia, arcontes, éforos, Olimpiadas y eras locales. Son referencias históricas distintas de la cronología moderna y no se convierten automáticamente sin testimonio documental. ");
@@ -532,7 +560,7 @@ function mount(parent,data){
  const advanced=make("details");advanced.className="bws-advanced";
  const summary=make("summary","Filtros avanzados · AUTOR, género, siglo, período, idioma y alfabeto");
  advanced.append(summary,filters,alphabet,semanticHint,historicalHint,originalHint,dateClarifier,standards);
- const filterStyles=make("style",`.bws-library-filters .bws-author-primary{display:flex;flex-direction:column;gap:7px;min-width:min(100%,280px);grid-column:1/-1;padding:12px 14px;border:1px solid rgba(153,124,79,.55);border-radius:9px;background:rgba(160,132,85,.08)}.bws-author-primary .bws-author-heading{display:block;font:700 clamp(20px,2.5vw,28px)/1.15 system-ui,sans-serif;letter-spacing:.07em}.bws-author-primary .bws-author-caption{font:12px/1.4 system-ui,sans-serif;opacity:.82}.bws-library-filters .bws-author-primary input{width:100%;min-height:44px;font-size:16px;box-sizing:border-box}`);
+ const filterStyles=make("style",`.bws-alphabet-group{margin:10px 0 12px}.bws-alphabet-heading{font:600 12px/1.5 system-ui;margin:8px 0 5px;opacity:.8}.bws-alphabet-group button{margin:2px;padding:7px 9px;min-width:36px;font-size:12px}.bws-alphabet-group button[aria-pressed=true]{outline:2px solid #ba9461;outline-offset:1px}.bws-library-filters .bws-author-primary{display:flex;flex-direction:column;gap:7px;min-width:min(100%,280px);grid-column:1/-1;padding:12px 14px;border:1px solid rgba(153,124,79,.55);border-radius:9px;background:rgba(160,132,85,.08)}.bws-author-primary .bws-author-heading{display:block;font:700 clamp(20px,2.5vw,28px)/1.15 system-ui,sans-serif;letter-spacing:.07em}.bws-author-primary .bws-author-caption{font:12px/1.4 system-ui,sans-serif;opacity:.82}.bws-library-filters .bws-author-primary input{width:100%;min-height:44px;font-size:16px;box-sizing:border-box}`);
  section.append(title,subtitle,form,filterStyles,advanced,region,help);
  const metric=parent.querySelector(":scope > dl");
  if(metric)metric.insertAdjacentElement("beforebegin",section);else parent.prepend(section);
@@ -554,7 +582,7 @@ function mount(parent,data){
  form.addEventListener("submit",e=>{e.preventDefault();model.limit=40;render()});
   browse.addEventListener("click",()=>{model.r2Only=false;model.showAll=!model.showAll;model.limit=40;input.value="";r2Browse.textContent="Ver 44 originales R2";browse.textContent=model.showAll?"Ocultar catálogo completo":"Ver catálogo completo";render()});
  r2Browse.addEventListener("click",()=>{model.r2Only=!model.r2Only;model.showAll=model.r2Only;model.limit=50;input.value="";for(const filter of [model.authorFilter,model.genreFilter,model.subjectFilter,model.centuryFilter,model.periodFilter,model.languageFilter])filter.value="";model.letter="";r2Browse.textContent=model.r2Only?"Ocultar originales R2":"Ver 44 originales R2";browse.textContent="Ver catálogo completo";render()});
- input.addEventListener("input",()=>{if(input.value.trim()){model.r2Only=false;r2Browse.textContent="Ver 44 originales R2"}model.limit=40;render()});
+ input.addEventListener("input",()=>{if(input.value.trim()){model.r2Only=false;r2Browse.textContent="Ver 44 originales R2";model.letter="";clearAlphabet();allLetters.setAttribute("aria-pressed","true")}model.limit=40;render()});
  more.addEventListener("click",()=>{model.limit+=10;render()});
  render();
  fetch(path,{cache:"no-cache"}).then(r=>{if(!r.ok)throw Error("aliases unavailable");return r.json()}).then(j=>{
