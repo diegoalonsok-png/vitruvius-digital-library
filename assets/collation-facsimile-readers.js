@@ -10,7 +10,7 @@ const editions=[
  {id:"krohn-1912",label:"Krohn · 1912",editor:"F. Krohn · Teubner, Leipzig"}
 ];
 const meaningful=new Set(["symmetria","symmetriae","eurythmia","decor","dispositio","ordinatio","distributio","firmitas","utilitas","venustas","architectura","proportio","proportione","modulus","moduli","ratio","ratiocinatio","fabrica","aedificium","aedificia","templa","columna","columnae","scaena","atrium","peristylum","ichnographia","orthographia","scaenographia"]);
-const blocks=new Map();let loci={},current=new URLSearchParams(location.search).get("locus")||"1.1.1";
+const blocks=new Map(), indexed=new Map();let loci={},current=new URLSearchParams(location.search).get("locus")||"1.1.1";
 const base=id=>"https://libros.vitruvius-digital-library.org/folios/"+id+"/";
 async function json(url){const r=await fetch(url,{signal:AbortSignal.timeout(20000)});if(!r.ok)throw Error("HTTP "+r.status);return r.json()}
 async function either(local,remote){try{return await json(local)}catch{return json(remote)}}
@@ -33,6 +33,10 @@ const style=E("style");style.textContent=`
 .coll-facsimile-frame{overflow:auto;min-width:0;position:relative}
 .coll-facsimile-frame img{display:block;width:100%;max-width:none;height:auto}
 .coll-facsimile-frame iframe{width:100%;height:100%;border:0}
+.coll-indexed-reading{box-sizing:border-box;width:100%;min-height:100%;padding:22px 26px;background:#f5f2ea;color:#252525}
+.coll-indexed-reading h4{font:600 13px/1.4 system-ui;margin:0 0 12px}
+.coll-indexed-reading p{font:19px/1.85 Georgia,serif;white-space:pre-wrap;overflow-wrap:anywhere;margin:0 0 16px}
+.coll-facsimile-controls button[aria-pressed=true]{outline:2px solid #b8a06e;outline-offset:2px}
 .coll-facsimile-frame [hidden]{display:none}
 .coll-facsimile-status{grid-column:1;padding:8px 13px;margin:0;font:12px/1.5 Arial,sans-serif;color:#c4c4c7}
 .coll-facsimile-ocr summary{cursor:pointer;font:12px/1.6 Arial,sans-serif;color:#dedee1}
@@ -46,8 +50,8 @@ const style=E("style");style.textContent=`
 .coll-facsimile-card a{color:#dcdce4}
 @media(max-width:640px){.coll-facsimile-frame{height:52vh;min-height:380px}}
 `;document.head.append(style);
-mount.append(E("h2","coll-facsimile-heading","Facsímiles históricos · Rose y Krohn"));
-mount.append(E("p","coll-facsimile-intro","Páginas de los ejemplares conservados en la biblioteca, junto a las traducciones ES · FR · EN y el latín editorial. El índice del mismo PDF propone la imagen de cada locus. La imagen digital y la página impresa tienen numeraciones distintas. El OCR auxiliar se consulta por separado."));
+mount.append(E("h2","coll-facsimile-heading","Ediciones históricas indexadas y facsímiles · Rose y Krohn"));
+mount.append(E("p","coll-facsimile-intro","Por defecto se muestra el latín indexado de Rose (transcripción Gutenberg) y Krohn (TEI Perseus), alineado por locus con las traducciones ES · FR · EN. Cada botón permite alternar al facsímil PDF original sin perder la selección. La paginación de los impresos es independiente de la división por loci; la transcripción digital no sustituye la revisión del impreso."));
 const grid=E("div","coll-facsimile-grid");mount.append(grid);
 function showMarked(target,text,query){
  target.replaceChildren();const tokens=[...String(text||"").matchAll(/[\p{L}\p{M}]+/gu)];
@@ -62,6 +66,7 @@ function showMarked(target,text,query){
 }
 function update(id){
  const b=blocks.get(id),row=loci[current]?.[id];
+ renderIndexed(id);
  if(!b)return;
  const anchor=b.navigation?.loci?.[current];
  if(b.manifest){
@@ -91,8 +96,44 @@ function showPage(id,n){
  const token=++b.revision;b.image.hidden=false;delete b.image.dataset.loaded;b.fallback.hidden=true;b.fallback.removeAttribute("src");
  b.image.alt=b.ed.label+" · imagen digital "+page;
  b.image.onload=()=>{if(token===b.revision)b.image.dataset.loaded="true"};
- b.image.onerror=()=>{if(token!==b.revision)return;b.image.hidden=true;b.fallback.src=b.pdf.href;b.fallback.hidden=false;b.location.textContent="No se pudo cargar la imagen "+page+". Se muestra la misma página en el PDF conservado."};
+ b.image.onerror=()=>{if(token!==b.revision)return;b.image.hidden=true;b.fallback.src=b.pdf.href;b.fallback.hidden=b.mode!=="pdf";b.location.textContent="No se pudo cargar la imagen "+page+". Se muestra la misma página en el PDF conservado."};
  b.image.src=f.imagen;
+ b.image.hidden=b.mode!=="pdf";b.fallback.hidden=true;
+}
+function renderIndexed(id){
+ const b=blocks.get(id);if(!b)return;
+ const p=indexed.get(id)?.get(current);
+ b.indexedBody.replaceChildren();
+ b.indexedTitle.textContent=b.ed.label+" · Vitr. "+label(current)+" · texto latino indexado";
+ if(p?.latin){
+  const text=E("p",null,String(p.latin));text.lang="la";b.indexedBody.append(text);
+  b.indexedNote.textContent="Texto indexado por locus de "+(id==="rose-1899"?"la transcripción Gutenberg de Rose (1899)":"la edición TEI de Krohn (1912), distribuida por Perseus")+". Verificar en el facsímil las lecturas críticas y la paginación.";
+ }else{
+  b.indexedBody.append(E("p",null,"Texto latino indexado no disponible para este locus; utilizar PDF original."));
+  b.indexedNote.textContent="No se sustituye la lectura ausente por otra edición.";
+ }
+}
+function switchMode(id,mode){
+ const b=blocks.get(id);if(!b)return;b.mode=mode;
+ b.indexedReading.hidden=mode!=="indexed";
+ b.image.hidden=mode!=="pdf"||!b.image.dataset.loaded;
+ b.fallback.hidden=mode!=="pdf"||!b.fallback.src;
+ b.indexButton.setAttribute("aria-pressed",String(mode==="indexed"));
+ b.pdfButton.setAttribute("aria-pressed",String(mode==="pdf"));
+ b.previous.disabled=b.next.disabled=b.digital.disabled=b.go.disabled=b.zoom.disabled=mode!=="pdf"||!b.manifest;
+ if(mode==="pdf"){if(!b.selected&&b.manifest)showPage(id,1);else if(b.manifest){b.image.hidden=false;b.fallback.hidden=true}}
+ else renderIndexed(id);
+}
+async function loadIndexed(ed){
+ try{
+  const path=ed.id==="rose-1899"?"data/critical-editions/rose-1899-transcribed-loci.json":"data/critical-editions/krohn-1912-tei-loci.json";
+  const data=await json(path);
+  if(data.edition!==ed.id||!Array.isArray(data.passages))throw Error("Índice de otra edición");
+  indexed.set(ed.id,new Map(data.passages.filter(p=>p.locus&&typeof p.latin==="string").map(p=>[p.locus,p])));
+  renderIndexed(ed.id);
+ }catch(error){
+  const b=blocks.get(ed.id);if(b){b.indexedBody.replaceChildren(E("p",null,"No se pudo cargar el texto indexado: "+error.message));b.indexedNote.textContent="El facsímil PDF permanece accesible mediante el botón."}
+ }
 }
 async function loadEdition(ed){
  const b=blocks.get(ed.id);
@@ -104,9 +145,9 @@ async function loadEdition(ed){
   if(m.schema!=="vdl-folios-obra-1"||m.obra!==ed.id||!Array.isArray(m.folios)||!m.folios.length||m.folios.length!==m.imagenes||!m.folios.every((f,i)=>f.imagenDigital===i+1&&String(f.imagen).startsWith(base(ed.id))))throw Error("Índice de imágenes incoherente");
   b.manifest=m;b.navigation=nav;b.digital.max=String(m.imagenes);
   b.card.querySelector(".coll-facsimile-source").textContent=(m.custodia||"Ejemplar conservado en la biblioteca")+" · copia preservada: "+m.imagenes+" imágenes";
-  b.digital.disabled=b.go.disabled=b.zoom.disabled=false;update(ed.id);
+  update(ed.id);switchMode(ed.id,b.mode);
  }catch{
-  b.fallback.src=b.pdf.href;b.fallback.hidden=false;
+  b.fallback.src=b.pdf.href;b.fallback.hidden=b.mode!=="pdf";
   b.location.textContent="Índice de imágenes no disponible. Puede consultar el PDF completo conservado o abrir el visor de la edición.";
  }
 }
@@ -129,9 +170,14 @@ for(const ed of editions){
  const reader=E("a",null,"Visor completo ↗");reader.href=ed.id+".html?locus="+encodeURIComponent(current);reader.target="_blank";reader.rel="noopener noreferrer";
  const zoom=E("button",null,"Ampliar");zoom.type="button";zoom.setAttribute("aria-pressed","false");
  c.append(previous,digital,next,go,zoom,pdf,reader);card.append(c);
- const frame=E("div","coll-facsimile-frame");frame.setAttribute("aria-label","Facsímil "+ed.label);frame.tabIndex=0;
+ const indexButton=E("button",null,"Texto indexado");indexButton.type="button";indexButton.setAttribute("aria-pressed","true");
+ const pdfButton=E("button",null,"Ver PDF del libro");pdfButton.type="button";pdfButton.setAttribute("aria-pressed","false");
+ c.prepend(indexButton,pdfButton);
+ const frame=E("div","coll-facsimile-frame");frame.setAttribute("aria-label","Texto indexado o facsímil "+ed.label);frame.tabIndex=0;
  const image=E("img");image.decoding="async";image.loading="lazy";image.hidden=true;
- const fallback=E("iframe");fallback.title="PDF conservado · "+ed.label;fallback.hidden=true;frame.append(image,fallback);card.append(frame);
+ const fallback=E("iframe");fallback.title="PDF conservado · "+ed.label;fallback.hidden=true;
+ const indexedReading=E("article","coll-indexed-reading");const indexedTitle=E("h4");const indexedBody=E("div");const indexedNote=E("small");
+ indexedReading.append(indexedTitle,indexedBody,indexedNote);frame.append(indexedReading,image,fallback);card.append(frame);
  const locationNote=E("p","coll-facsimile-status","Cargando el índice del ejemplar conservado…");locationNote.setAttribute("role","status");card.append(locationNote);
  function page(n){showPage(ed.id,n)}
  previous.addEventListener("click",()=>page(Number(digital.value)-1));next.addEventListener("click",()=>page(Number(digital.value)+1));go.addEventListener("click",()=>page(Number(digital.value)));
@@ -142,8 +188,9 @@ for(const ed of editions){
  const row=E("div","coll-facsimile-controls");const query=E("input");query.type="search";query.placeholder="Palabra o frase latina en OCR…";query.setAttribute("aria-label","Buscar en la transcripción OCR de "+ed.label);
  const find=E("button",null,"Buscar por loci");find.type="button";row.append(query,find);o.append(row);const results=E("ul","coll-facsimile-results");o.append(results);
  const ocr=E("div");o.append(ocr);const note=E("div","muted");o.append(note);card.append(o);grid.append(card);
- blocks.set(ed.id,{ed,card,query,ocr,note,page:pageLabel,results,frame,image,fallback,pdf,reader,digital,previous,next,go,zoom,location:locationNote,selected:0,revision:0});
- loadEdition(ed);
+ blocks.set(ed.id,{ed,card,query,ocr,note,page:pageLabel,results,frame,image,fallback,pdf,reader,digital,previous,next,go,zoom,location:locationNote,selected:0,revision:0,mode:"indexed",indexButton,pdfButton,indexedReading,indexedTitle,indexedBody,indexedNote});
+ indexButton.addEventListener("click",()=>switchMode(ed.id,"indexed"));pdfButton.addEventListener("click",()=>switchMode(ed.id,"pdf"));
+ loadIndexed(ed);loadEdition(ed);
  find.addEventListener("click",()=>search(ed.id));query.addEventListener("keydown",e=>{if(e.key==="Enter"){e.preventDefault();search(ed.id)}});
 }
 fetch("data/collation-loci.json").then(r=>{if(!r.ok)throw Error("HTTP "+r.status);return r.json()}).then(data=>{loci=data.loci||{};for(const ed of editions)update(ed.id)}).catch(e=>mount.append(E("p","coll-facsimile-intro","No se pudo cargar el índice OCR auxiliar: "+e.message)));
