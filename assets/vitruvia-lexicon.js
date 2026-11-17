@@ -752,7 +752,7 @@ async function renderNgramComparatio(){
   if(revision!==ngramRevision)return;
   const {sa,sb}=ensureComparatioSelectors(D,l);
   const A=sa.value,B=sb.value;
-  if(!A||A===B)throw new Error("Seleccioná una obra y, si corresponde, una segunda obra diferente.");
+  if(!A||A===B)throw new Error("Selecciona una obra y, si corresponde, una segunda obra diferente.");
   const size=Number($("#ng-size").value);
   const engine=window.VitruviaNgramEngine;
   if(!engine?.compare)throw new Error("No se pudo cargar el motor de expresiones.");
@@ -2922,7 +2922,7 @@ async function init(){
     ngramRevision++;
     $("#ng-go").disabled=false;
     $("#ng-out").replaceChildren(el("p",{class:"lx-small"},
-     "Seleccioná «Comparar expresiones» para calcular con los nuevos parámetros."));
+     "Selecciona «Comparar expresiones» para calcular con los nuevos parámetros."));
    });
   }
  }
