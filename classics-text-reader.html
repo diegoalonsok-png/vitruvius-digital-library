@@ -249,7 +249,7 @@ html[data-parallel-view="true"] #simple-pair-inline{display:none!important}
  <div id="results" role="status" aria-live="polite"></div>
 </section>
 <div class="reader-grid">
-<aside><strong id="toc-title">Capítulos / unidades editoriales</strong><div class="loci-width-tools"><label for="loci-width-control">Ancho de loci <output id="loci-width-value">230 px</output></label><input id="loci-width-control" type="range" min="125" max="420" step="5" value="230" aria-label="Modificar ancho del índice de loci"></div><p class="sub" id="toc-help">Los loci pertenecen a esta edición; no equivalen a folios manuscritos.</p><ol id="toc" aria-label="Índice de loci y unidades textuales"></ol></aside>
+<aside><strong id="toc-title">Capítulos / unidades editoriales</strong><div class="loci-width-tools"><label for="loci-width-control">Ancho de loci <output id="loci-width-value">230 px</output></label><input id="loci-width-control" type="range" min="125" max="420" step="5" value="230" aria-label="Modificar ancho del índice de loci"></div><p class="sub" id="toc-help">Los loci pertenecen a esta edición; no equivalen a folios manuscritos.</p><ol id="toc" aria-label="Índice de loci y unidades textuales"></ol><div class="loci-edge-grip" role="separator" aria-label="Arrastrar para cambiar el ancho del índice de loci" aria-orientation="vertical" aria-valuemin="125" aria-valuemax="420" aria-valuenow="230" tabindex="0" title="Arrastrar para ajustar la barra de loci; flechas para ajustar con el teclado"></div></aside>
 <article class="reader">
 <div class="reader-toolbar"><form id="locus-form" class="academic-locus-form"><label for="locus-query">Ir a locus</label><input id="locus-query" placeholder="1.1 o URN CTS" autocomplete="off"><button type="submit">Ir</button><output id="locus-status" role="status"></output></form><button id="prev" type="button">← Anterior</button><strong id="current-locus" aria-live="polite" aria-atomic="true"></strong><div class="reader-nav-actions"><a id="simple-pair-inline" href="classics-simple-parallel.html">Lectura simple</a><button id="next" type="button">Siguiente →</button></div></div>
 
@@ -387,10 +387,12 @@ const grid=document.querySelector('.reader-grid'),aside=grid?.querySelector(':sc
 const slider=document.getElementById('loci-width-control'),out=document.getElementById('loci-width-value');
 if(!grid||!aside||!slider||!out)return;
 const key='vitruvia:classics:loci-width';
+const grip=aside.querySelector('.loci-edge-grip');
 const clamp=v=>Math.max(125,Math.min(420,Math.round(v/5)*5));
-function set(v,save=true){const n=clamp(Number(v)||230);grid.style.setProperty('--loci-width',n+'px');slider.value=n;out.textContent=n+' px';if(save)try{localStorage.setItem(key,String(n))}catch{}}
+function set(v,save=true){const n=clamp(Number(v)||230);grid.style.setProperty('--loci-width',n+'px');slider.value=n;out.textContent=n+' px';grip?.setAttribute('aria-valuenow',String(n));if(save)try{localStorage.setItem(key,String(n))}catch{}}
 let saved=230;try{saved=Number(localStorage.getItem(key))||230}catch{}set(saved,false);
 slider.addEventListener('input',()=>set(slider.value));
+if(grip)grip.addEventListener('keydown',e=>{const step=e.shiftKey?25:5;if(['ArrowLeft','ArrowRight','Home','End'].includes(e.key)){e.preventDefault();set(e.key==='Home'?125:e.key==='End'?420:Number(slider.value)+(e.key==='ArrowLeft'?-step:step));}});
 let drag=false,startX=0,startW=0;
 aside.addEventListener('pointerdown',e=>{if(innerWidth<=900||document.documentElement.classList.contains('cl-biblio-expanded'))return;const rect=aside.getBoundingClientRect();if(Math.abs(e.clientX-rect.right)>12||e.target.closest('.loci-width-tools'))return;drag=true;startX=e.clientX;startW=rect.width;aside.setPointerCapture(e.pointerId);e.preventDefault()});
 aside.addEventListener('pointermove',e=>{if(drag)set(startW+e.clientX-startX)});
@@ -399,30 +401,25 @@ for(const type of ['pointerup','pointercancel','lostpointercapture'])aside.addEv
 </script>
 
 <style id="bibliotheca-visible-resize-grips">
-/* Loci sidebar grip: same discrete vertical three-dot handle as reading panes. */
+/* Actual draggable grip for the loci sidebar; unlike a pseudo-element, it receives pointer and keyboard focus. */
+.reader-grid>aside{position:relative;overflow:visible}
+.reader-grid>aside::after{content:none!important;display:none!important}
+.loci-edge-grip{display:block;position:absolute;right:-12px;top:50%;transform:translateY(-50%);width:24px;height:96px;z-index:40;cursor:col-resize;touch-action:none;border:2px solid #68686f;border-radius:16px;background:radial-gradient(circle at 50% 41%,#c4c4c8 1.5px,transparent 2px),radial-gradient(circle at 50% 50%,#c4c4c8 1.5px,transparent 2px),radial-gradient(circle at 50% 59%,#c4c4c8 1.5px,transparent 2px),#26262a;box-shadow:0 0 0 2px #111114}
+.loci-edge-grip:hover,.loci-edge-grip:focus-visible{outline:2px solid #8b8b92;outline-offset:2px;border-color:#bbb}
+@media(max-width:900px){.loci-edge-grip{display:none!important}}
+/* Widen the actual split track to show a complete vertical handle, not a clipped sliver. */
 @media(min-width:901px){
-html:not([data-parallel-view="true"]):not([data-reading-mode="simple"]) .reader-grid>aside::after{
-content:"";position:absolute;right:-12px;top:50%;bottom:auto;transform:translateY(-50%);
-width:23px;height:94px;z-index:5;cursor:col-resize;touch-action:none;
-border:2px solid #6c6c73;border-radius:16px;background:
-radial-gradient(circle at 50% 41%,#b9b9c0 1.5px,transparent 2px),
-radial-gradient(circle at 50% 50%,#b9b9c0 1.5px,transparent 2px),
-radial-gradient(circle at 50% 59%,#b9b9c0 1.5px,transparent 2px),#232327;
-box-shadow:0 0 0 2px #111112}
+.cl-dual-reader:not(.single-source){grid-template-columns:minmax(0,var(--cl-source-percent,50%)) 26px minmax(0,1fr)!important}
+.cl-dual-reader.translation-first:not(.single-source){grid-template-columns:minmax(0,1fr) 26px minmax(0,var(--cl-source-percent,50%))!important}
 }
-.cl-dual-reader .cl-pane-splitter{position:relative;overflow:visible;touch-action:none}
-.cl-dual-reader .cl-pane-splitter::after{content:"";position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:23px;height:94px;border-radius:16px;border:2px solid #6c6c73;background:
-radial-gradient(circle at 50% 41%,#c2c2c6 1.5px,transparent 2px),
-radial-gradient(circle at 50% 50%,#c2c2c6 1.5px,transparent 2px),
-radial-gradient(circle at 50% 59%,#c2c2c6 1.5px,transparent 2px),#232327;box-shadow:0 0 0 2px #161618;pointer-events:none;z-index:5}
-.cl-dual-reader .cl-pane-splitter:hover::after,.cl-dual-reader .cl-pane-splitter:focus-visible::after{border-color:#b0b0b5;background-color:#35353b}
-@media(max-width:900px){.cl-dual-reader .cl-pane-splitter::after{width:94px;height:23px;background:
-radial-gradient(circle at 41% 50%,#c2c2c6 1.5px,transparent 2px),
-radial-gradient(circle at 50% 50%,#c2c2c6 1.5px,transparent 2px),
-radial-gradient(circle at 59% 50%,#c2c2c6 1.5px,transparent 2px),#232327}}
-@media print{.cl-dual-reader .cl-pane-splitter::after{display:none!important}}
-/* Mono text option remains selectable, preserving Latin and Greek original characters. */
-html body #passages[lang="la"],html body #passages[lang="grc"]{font-variant-ligatures:normal}
+@media(max-width:900px){
+.cl-dual-reader:not(.single-source){grid-template-rows:auto 26px auto!important}
+}
+.cl-dual-reader .cl-pane-splitter{position:relative;min-width:26px;background:#26262a;border:1px solid #5a5a60;cursor:col-resize;touch-action:none;overflow:visible}
+.cl-dual-reader .cl-pane-splitter::after{content:"";position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:22px;height:94px;border:2px solid #68686f;border-radius:16px;background:radial-gradient(circle at 50% 41%,#c4c4c8 1.5px,transparent 2px),radial-gradient(circle at 50% 50%,#c4c4c8 1.5px,transparent 2px),radial-gradient(circle at 50% 59%,#c4c4c8 1.5px,transparent 2px),#26262a;box-shadow:0 0 0 1px #111114;pointer-events:none;z-index:2}
+.cl-dual-reader .cl-pane-splitter:hover::after,.cl-dual-reader .cl-pane-splitter:focus-visible::after{border-color:#bdbdc3;background-color:#35353a}
+@media(max-width:900px){.cl-dual-reader .cl-pane-splitter{min-height:26px;cursor:row-resize}.cl-dual-reader .cl-pane-splitter::after{width:94px;height:22px;background:radial-gradient(circle at 41% 50%,#c4c4c8 1.5px,transparent 2px),radial-gradient(circle at 50% 50%,#c4c4c8 1.5px,transparent 2px),radial-gradient(circle at 59% 50%,#c4c4c8 1.5px,transparent 2px),#26262a}}
+@media print{.loci-edge-grip,.cl-dual-reader .cl-pane-splitter::after{display:none!important}}
 </style>
 <footer data-vdl-legal-notice="2026" role="contentinfo" aria-label="Derechos editoriales" style="box-sizing:border-box;display:block;clear:both;grid-column:1/-1;width:100%;margin:28px 0 0;padding:16px 18px;border-top:1px solid currentColor;text-align:center;font:12px/1.65 system-ui,sans-serif;color:inherit;background:transparent">
 <strong>© 2026 Editorial Sophia Lux · Arq. Diego Kurilo. Derechos reservados.</strong>
