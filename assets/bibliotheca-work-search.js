@@ -347,7 +347,7 @@ function render(){
   const genre=model.genreFilter.value,subject=model.subjectFilter.value,century=model.centuryFilter.value,period=model.periodFilter.value,language=model.languageFilter.value,letter=model.letter;
   const group=ancientGenre(w.genre);
   const key=norm(model.sortFilter.value==="title"?w.title:w.author).trim();
-  return (!model.r2Only||w.r2Original)&&(!author||rank({...w,title:"",forms:[w.author,...(aliasAuthority[w.id]||[])]},author)>=65)&&(!genre||group===genre)&&(!subject||matchedSubjects(w).includes(subject))&&(!century||centuryOf(w.dating)===century)&&(!period||periodOfWork(w)===period)&&(!language||w.versions.some(v=>v.language===language))&&(!letter||key.startsWith(norm(letter)));
+  return (!model.r2Only||w.r2Original)&&(!author||rank({...w,title:"",forms:[w.author,...(aliasAuthority[w.id]||[])]},author)>=65)&&(!genre||group===genre)&&(!subject||matchedSubjects(w).includes(subject))&&(!century||centuryOf(w.dating)===century)&&(!period||periodOfWork(w)===period)&&(!language||w.versions.some(v=>v.language===language||(language==="arc"&&v.language==="ar")))&&(!letter||key.startsWith(norm(letter)));
  });
  list.replaceChildren();more.hidden=true;
  if(!q){
