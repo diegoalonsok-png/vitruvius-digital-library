@@ -21,6 +21,12 @@ ASSETS = (
     # Aparato comparativo: HTML y componentes compartidos del cotejo, incluidos prefacios.
     "aparato-comparativo.html",
     "bibliotheca-graeca-latina.html",
+    # Cotejo latino indexado: el navegador y los tres archivos fuente deben coincidir en ambas publicaciones.
+    "scriptorium.html",
+    "assets/scriptorium-triple.js",
+    "data/critical-editions/krohn-1912-tei-loci.json",
+    "data/critical-editions/rose-1899-transcribed-loci.json",
+    "data/structured/recensio-es.json",
     "assets/bibliotheca-work-search.js",
     "assets/bibliotheca-work-search.css",
     "assets/bibliotheca-works-explorer.js",
