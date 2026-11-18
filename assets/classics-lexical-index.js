@@ -55,6 +55,16 @@ function catalogues(){
  if(!cataloguesTask)cataloguesTask=(async()=>{
   const local=await load(BASE+"manifest.json");
   const out=[{base:BASE,info:local}];
+  // Independently indexed and source-grounded additions; never alter the stable base index.
+  try{
+   const extra=await load("data/index/classics-additions-2026-11-17/manifest.json");
+   if(extra?.schema==="vitruvia-classics-lexical-index-v1"&&extra.works===6&&
+      Array.isArray(extra.index)&&extra.index.length===6&&
+      extra.index.every(w=>w.file?.startsWith("data/classics-corpus/plato-")&&w.passages>0)){
+    out.push({base:"data/index/classics-additions-2026-11-17/",info:extra});
+   }
+  }catch{/* The pre-existing index remains usable if the addition is unavailable. */}
+
   try{
    const descriptor=await load("data/r2/classics-expansion-index.json");
    if(descriptor?.schema==="vdl-classics-expansion-index-v1"&&
