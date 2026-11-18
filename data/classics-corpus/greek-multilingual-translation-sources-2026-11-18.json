@@ -1674,7 +1674,8 @@
       "title": "Ἐπιστολαὶ καὶ Κύριαι δόξαι · Cartas y Máximas capitales",
       "original": {
         "language": "grc",
-        "path": "https://libros.vitruvius-digital-library.org/corpus/epicuro-restos-grc.json"
+        "path": "https://libros.vitruvius-digital-library.org/corpus/epicuro-restos-grc.json",
+        "sourceCheck": "requires-manual-review"
       },
       "translations": {
         "en": {
@@ -1697,7 +1698,8 @@
       "title": "Λόγοι · Discursos",
       "original": {
         "language": "grc",
-        "path": "https://libros.vitruvius-digital-library.org/corpus/esquines-discursos-grc.json"
+        "path": "https://libros.vitruvius-digital-library.org/corpus/esquines-discursos-grc.json",
+        "sourceCheck": "requires-manual-review"
       },
       "translations": {
         "en": {
@@ -1720,7 +1722,8 @@
       "title": "Στοιχεῖα · Elementa",
       "original": {
         "language": "grc",
-        "path": "data/classics-corpus/euclid-elementa-grc.json"
+        "path": "data/classics-corpus/euclid-elementa-grc.json",
+        "sourceCheck": "requires-manual-review"
       },
       "translations": {
         "en": {
@@ -1749,7 +1752,8 @@
       "title": "Ὀπτικά · Optica",
       "original": {
         "language": "grc",
-        "path": "https://libros.vitruvius-digital-library.org/corpus/euclid-optica-grc-6cc3f8b109b782a4.json"
+        "path": "https://libros.vitruvius-digital-library.org/corpus/euclid-optica-grc-6cc3f8b109b782a4.json",
+        "sourceCheck": "requires-manual-review"
       },
       "translations": {
         "en": {
@@ -1772,7 +1776,8 @@
       "title": "Φαινόμενα · Phaenomena y escritos musicales",
       "original": {
         "language": "grc",
-        "path": "https://libros.vitruvius-digital-library.org/corpus/euclid-phaenomena-grc-4e4a3c1b1b3eda93.json"
+        "path": "https://libros.vitruvius-digital-library.org/corpus/euclid-phaenomena-grc-4e4a3c1b1b3eda93.json",
+        "sourceCheck": "requires-manual-review"
       },
       "translations": {
         "en": {
@@ -2259,7 +2264,8 @@
       "title": "Ἐκκλησιαστικὴ ἱστορία · Historia eclesiástica",
       "original": {
         "language": "grc",
-        "path": "data/classics-corpus/eusebio-grc.json"
+        "path": "data/classics-corpus/eusebio-grc.json",
+        "sourceCheck": "requires-manual-review"
       },
       "translations": {
         "en": {
@@ -2282,7 +2288,8 @@
       "title": "Τὰ ἐς τὸν Τυανέα Ἀπολλώνιον · Vida de Apolonio de Tiana",
       "original": {
         "language": "grc",
-        "path": "https://libros.vitruvius-digital-library.org/corpus/filostrato-apolonio-grc.json"
+        "path": "https://libros.vitruvius-digital-library.org/corpus/filostrato-apolonio-grc.json",
+        "sourceCheck": "requires-manual-review"
       },
       "translations": {
         "en": {
@@ -2329,7 +2336,8 @@
       "title": "Τέχνη ἰατρική",
       "original": {
         "language": "grc",
-        "path": "data/classics-corpus/galen-ars-medica-grc.json"
+        "path": "data/classics-corpus/galen-ars-medica-grc.json",
+        "sourceUrnRoot": "tlg0057.tlg007"
       },
       "translations": {
         "en": {
@@ -2352,7 +2360,8 @@
       "title": "Περὶ χρείας μορίων",
       "original": {
         "language": "grc",
-        "path": "data/classics-corpus/galen-de-usu-partium-grc.json"
+        "path": "data/classics-corpus/galen-de-usu-partium-grc.json",
+        "sourceCheck": "requires-manual-review"
       },
       "translations": {
         "en": {
@@ -2399,7 +2408,8 @@
       "title": "Περὶ φυσικῶν δυνάμεων · De naturalibus facultatibus",
       "original": {
         "language": "grc",
-        "path": "https://libros.vitruvius-digital-library.org/corpus/galeno-facultades-naturales-grc.json"
+        "path": "https://libros.vitruvius-digital-library.org/corpus/galeno-facultades-naturales-grc.json",
+        "sourceCheck": "requires-manual-review"
       },
       "translations": {
         "en": {
@@ -2422,7 +2432,8 @@
       "title": "Αὐτοματοποιητική · Automata",
       "original": {
         "language": "grc",
-        "path": "data/classics-corpus/hero-automata-grc.json"
+        "path": "data/classics-corpus/hero-automata-grc.json",
+        "sourceUrnRoot": "tlg0559.tlg002"
       },
       "translations": {
         "en": {
@@ -2445,7 +2456,8 @@
       "title": "Βελοποιικά · Belopoeica",
       "original": {
         "language": "grc",
-        "path": "https://libros.vitruvius-digital-library.org/corpus/hero-belopoeica-grc-fbb7bea5f038c2f6.json"
+        "path": "https://libros.vitruvius-digital-library.org/corpus/hero-belopoeica-grc-fbb7bea5f038c2f6.json",
+        "sourceCheck": "requires-manual-review"
       },
       "translations": {
         "en": {
@@ -2468,7 +2480,8 @@
       "title": "Πνευματικά · Pneumatica",
       "original": {
         "language": "grc",
-        "path": "data/classics-corpus/hero-pneumatica-grc.json"
+        "path": "data/classics-corpus/hero-pneumatica-grc.json",
+        "sourceUrnRoot": "tlg0559.tlg001"
       },
       "translations": {
         "en": {
@@ -2491,7 +2504,8 @@
       "title": "Ἱστορίαι",
       "original": {
         "language": "grc",
-        "path": "data/classics-corpus/herodotus-historiae-grc.json"
+        "path": "data/classics-corpus/herodotus-historiae-grc.json",
+        "sourceCheck": "requires-manual-review"
       },
       "translations": {
         "en": {
@@ -2576,7 +2590,8 @@
       "title": "Corpus Hippocraticum (selección)",
       "original": {
         "language": "grc",
-        "path": "https://libros.vitruvius-digital-library.org/corpus/hipocrates-obras-grc.json"
+        "path": "https://libros.vitruvius-digital-library.org/corpus/hipocrates-obras-grc.json",
+        "sourceCheck": "requires-manual-review"
       },
       "translations": {
         "en": {
@@ -5951,7 +5966,7 @@
     "url": "https://github.com/PerseusDL/canonical-greekLit",
     "filesChecked": 786,
     "truncated": false,
-    "originalsWithSourceUrn": 95
+    "originalsWithSourceUrn": 98
   },
   "verifiedReadableSamples": 6
 }
