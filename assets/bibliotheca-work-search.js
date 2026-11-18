@@ -175,9 +175,10 @@ const compareLink=w=>{
  const left=originals[0]?.language;
  const right=translations.find(v=>v.language!==left)?.language||
    originals.find(v=>v.language!==left)?.language;
- if(!left||!right)return "";
+ const source=left||w.versions.find(v=>safeReader(v.reader))?.language;
+ if(!source)return "";
  const u=new URL("classics-parallel-reader.html",location.href);
- u.searchParams.set("work",w.id);u.searchParams.set("left",left);u.searchParams.set("right",right);
+ u.searchParams.set("work",w.id);u.searchParams.set("left",source);u.searchParams.set("right",right||"auto-es");
  return u.pathname+u.search;
 };
 const heritageLink=raw=>{
@@ -412,7 +413,9 @@ function bilingualWorkLabel(w,author=true){
 }
 function appendWorkHeading(item,w){
  const heading=make("div",null,"bws-heading");
- const primary=make("strong",bilingualWorkLabel(w,false));primary.className="bws-work-title";
+ const primary=make("a",bilingualWorkLabel(w,false));primary.className="bws-work-title";
+  primary.href=compareLink(w)||workLink(w.id);
+  primary.title="Abrir los dos visores académicos";
  heading.append(primary,make("span"," · "+w.author+(spanishAuthorName(w)?" — "+spanishAuthorName(w):"")));
  item.append(heading);
  const orig=originalTitle(w);
@@ -499,14 +502,7 @@ function render(){
   const searched=rawQuery.trim();
   list.replaceChildren();more.hidden=true;count.textContent="";
   if(normal(searched).length<2){model.region.hidden=true;return;}
-  const readerFor=w=>{
-   const original=w.versions?.find(v=>["la","grc"].includes(v.language)&&safeReader(v.reader));
-   const available=original||w.versions?.find(v=>safeReader(v.reader));
-   if(!available)return null;
-   const url=safeReader(available.reader);
-   return url?.startsWith("classics-text-reader.html?")&&!/[?&]to=/.test(url)
-    ?url+"&to=es":url;
-  };
+  const readerFor=w=>compareLink(w);
   const scored=model.items.map(w=>({w,score:rank(w,searched)}))
    .filter(x=>x.score>=55)
    .sort((a,b)=>b.score-a.score||a.w.title.localeCompare(b.w.title,"es",{sensitivity:"base"}));
@@ -532,7 +528,7 @@ function render(){
    for(const w of books){
     const row=make("li",null,"bws-item");
     const link=make("a",bilingualWorkLabel(w,false),"bws-plain-title");
-    link.href=readerFor(w);link.title="Abrir el libro en su lector";
+    link.href=readerFor(w);link.title="Abrir los dos visores académicos";
     row.append(link);list.append(row);
    }
    model.region.hidden=false;return;
@@ -542,7 +538,7 @@ function render(){
   if(!match){model.region.hidden=true;return;}
   const row=make("li",null,"bws-item");
   const link=make("a",bilingualWorkLabel(match.w),"bws-plain-title");
-  link.href=readerFor(match.w);link.title="Abrir el libro en su lector";
+  link.href=readerFor(match.w);link.title="Abrir los dos visores académicos";
   row.append(link);list.append(row);
   model.region.hidden=false;return;
  }
@@ -765,7 +761,7 @@ function mount(parent,data){
    searchForm?.addEventListener("submit",event=>{
     event.preventDefault();event.stopImmediatePropagation();sync();
     const first=list.querySelector("a");
-    if(first)first.focus();
+    if(first)location.assign(first.href);
    },true);
    sync();
   }
@@ -785,7 +781,7 @@ function mount(parent,data){
   const anchors=[...list.querySelectorAll("a")],ix=anchors.indexOf(document.activeElement);
   if(ix<0)return;e.preventDefault();anchors[Math.max(0,Math.min(anchors.length-1,ix+(e.key==="ArrowDown"?1:-1)))].focus();
  });
- form.addEventListener("submit",e=>{e.preventDefault();model.limit=40;render()});
+ form.addEventListener("submit",e=>{e.preventDefault();model.limit=40;render();const q=input.value.trim();if(q.length<2)return;const found=model.items.map(w=>({w,score:rank(w,q)})).filter(x=>x.score>=55&&compareLink(x.w)).sort((a,b)=>b.score-a.score);if(found.length)location.assign(compareLink(found[0].w));});
   browse.addEventListener("click",()=>{model.r2Only=false;model.showAll=!model.showAll;model.limit=40;input.value="";r2Browse.textContent="Ver 44 originales R2";browse.textContent=model.showAll?"Ocultar catálogo completo":"Ver catálogo completo";render()});
  r2Browse.addEventListener("click",()=>{model.r2Only=!model.r2Only;model.showAll=model.r2Only;model.limit=50;input.value="";for(const filter of [model.authorFilter,model.genreFilter,model.subjectFilter,model.centuryFilter,model.periodFilter,model.languageFilter])filter.value="";model.letter="";r2Browse.textContent=model.r2Only?"Ocultar originales R2":"Ver 44 originales R2";browse.textContent="Ver catálogo completo";render()});
  input.addEventListener("input",()=>{if(input.value.trim()){model.r2Only=false;r2Browse.textContent="Ver 44 originales R2";model.letter="";clearAlphabet();allLetters.setAttribute("aria-pressed","true")}model.limit=40;render()});
@@ -812,6 +808,10 @@ function mount(parent,data){
    input.value=value;model.letter="";model.r2Only=false;model.showAll=false;model.limit=40;
    clearAlphabet();allLetters.setAttribute("aria-pressed","true");
    render();
+   if(bookMode&&!singleLetter(value)&&value.length>=2){
+    const candidates=model.items.map(w=>({w,score:rank(w,value)})).filter(x=>x.score>=55&&compareLink(x.w)).sort((a,b)=>b.score-a.score);
+    if(candidates.length){location.assign(compareLink(candidates[0].w));return;}
+   }
    section.scrollIntoView({behavior:"smooth",block:"start"});
   },true);
  }
