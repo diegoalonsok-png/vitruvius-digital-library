@@ -530,6 +530,9 @@ html[data-theme="dark"].front-color-light .research-nav-controls>.research-print
 .research-nav .research-nav-links.research-nav-categories{grid-column:1!important;grid-row:1!important;justify-self:start!important}
 .research-nav .research-nav-controls{grid-column:2!important;grid-row:1!important;display:flex!important;flex:initial!important;min-width:0!important;width:100%!important;justify-content:flex-start!important;align-items:center!important;flex-wrap:wrap!important}
 .research-nav .research-nav-controls .vitruvia-top-stack{order:-1!important}
+/* Bibliotheca vuelve al centro de la botonera, antes del bloque Vitruvia/Lexicon.
+   No modificar su tamaño, tipografía ni los controles vecinos. */
+.research-nav .research-nav-controls>a.bibliotheca-top-link{order:-2!important;flex:0 0 auto!important}
 @media(max-width:1000px){.research-nav .research-nav-inner{grid-template-columns:minmax(0,1fr)!important}.research-nav .research-nav-links.research-nav-categories{grid-column:1!important;grid-row:1!important}.research-nav .research-nav-controls{grid-column:1!important;grid-row:2!important;justify-content:flex-start!important}}
 .research-nav .research-nav-links.research-nav-categories{display:grid!important;grid-template-columns:repeat(5,max-content)!important;grid-auto-rows:30px!important;gap:5px 9px!important;align-items:center!important;flex:0 0 auto!important;width:max-content!important;max-width:100%!important;min-width:0!important}
 .research-nav .research-nav-group{position:relative!important;min-width:0!important;margin:0!important}
