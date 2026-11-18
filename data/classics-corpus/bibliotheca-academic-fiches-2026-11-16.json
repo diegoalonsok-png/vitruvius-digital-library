@@ -6941,6 +6941,11 @@
             "language": "grc",
             "reader": "classics-text-reader.html?work=plato-republic&lang=grc",
             "source": "data/classics-corpus/plato-republic-grc.json"
+          },
+          {
+            "language": "en",
+            "reader": "classics-text-reader.html?work=plato-republic&lang=en",
+            "source": "data/classics-corpus/plato-republic-en.json"
           }
         ]
       },
