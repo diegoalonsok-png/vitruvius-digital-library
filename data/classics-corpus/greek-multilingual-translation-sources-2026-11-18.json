@@ -6,10 +6,10 @@
   "pendingProposal": "https://github.com/diegoalonsok-png/vitruvius-digital-library/pull/418",
   "statusByLanguage": {
     "en": {
-      "not-yet-verified": 105,
+      "not-yet-verified": 102,
       "pending-merge": 25,
       "registered-local": 50,
-      "candidate-perseus-tei": 31
+      "candidate-perseus-tei": 34
     },
     "es": {
       "not-yet-verified": 178,
@@ -673,7 +673,8 @@
       "title": "Λυσιστράτη",
       "original": {
         "language": "grc",
-        "path": "data/classics-corpus/aristophanes-lysistrata-grc.json"
+        "path": "data/classics-corpus/aristophanes-lysistrata-grc.json",
+        "sourceUrnRoot": "tlg0019.tlg007"
       },
       "translations": {
         "en": {
@@ -699,7 +700,8 @@
       "title": "Εἰρήνη",
       "original": {
         "language": "grc",
-        "path": "data/classics-corpus/aristophanes-pax-grc.json"
+        "path": "data/classics-corpus/aristophanes-pax-grc.json",
+        "sourceUrnRoot": "tlg0019.tlg005"
       },
       "translations": {
         "en": {
@@ -752,7 +754,8 @@
       "title": "Βάτραχοι",
       "original": {
         "language": "grc",
-        "path": "data/classics-corpus/aristophanes-ranae-grc.json"
+        "path": "data/classics-corpus/aristophanes-ranae-grc.json",
+        "sourceUrnRoot": "tlg0019.tlg009"
       },
       "translations": {
         "en": {
@@ -805,7 +808,8 @@
       "title": "Σφῆκες",
       "original": {
         "language": "grc",
-        "path": "data/classics-corpus/aristophanes-vespae-grc.json"
+        "path": "data/classics-corpus/aristophanes-vespae-grc.json",
+        "sourceUrnRoot": "tlg0019.tlg004"
       },
       "translations": {
         "en": {
@@ -844,7 +848,8 @@
       "title": "Περὶ οὐρανοῦ · De caelo",
       "original": {
         "language": "grc",
-        "path": "https://libros.vitruvius-digital-library.org/corpus/aristoteles-del-cielo-grc.json"
+        "path": "https://libros.vitruvius-digital-library.org/corpus/aristoteles-del-cielo-grc.json",
+        "sourceCheck": "requires-manual-review"
       },
       "translations": {
         "en": {
@@ -870,7 +875,8 @@
       "title": "Περὶ τὰ ζῷα ἱστορίαι · Historia animalium",
       "original": {
         "language": "grc",
-        "path": "https://libros.vitruvius-digital-library.org/corpus/aristoteles-historia-animales-grc.json"
+        "path": "https://libros.vitruvius-digital-library.org/corpus/aristoteles-historia-animales-grc.json",
+        "sourceCheck": "requires-manual-review"
       },
       "translations": {
         "en": {
@@ -896,7 +902,8 @@
       "title": "Περὶ ψυχῆς",
       "original": {
         "language": "grc",
-        "path": "data/classics-corpus/aristotle-de-anima-grc.json"
+        "path": "data/classics-corpus/aristotle-de-anima-grc.json",
+        "sourceUrnRoot": "tlg0086.tlg002"
       },
       "translations": {
         "en": {
@@ -922,12 +929,17 @@
       "title": "Τὰ μετὰ τὰ φυσικά",
       "original": {
         "language": "grc",
-        "path": "data/classics-corpus/aristotle-metaphysics-grc.json"
+        "path": "data/classics-corpus/aristotle-metaphysics-grc.json",
+        "sourceUrnRoot": "tlg0086.tlg025"
       },
       "translations": {
         "en": {
-          "status": "not-yet-verified",
-          "note": "No se identificó una edición de esta obra en las fuentes cotejadas; no implica inexistencia de traducciones."
+          "status": "candidate-perseus-tei",
+          "url": "https://github.com/PerseusDL/canonical-greekLit/blob/master/data/tlg0086/tlg025/tlg0086.tlg025.perseus-eng2.xml",
+          "teiPath": "data/tlg0086/tlg025/tlg0086.tlg025.perseus-eng2.xml",
+          "sourceUrnRoot": "tlg0086.tlg025",
+          "source": "PerseusDL canonical-greekLit",
+          "note": "Archivo TEI inglés existente; integridad textual, traductor, licencia y loci deben verificarse antes de redistribuir."
         },
         "fr": {
           "status": "candidate-work-page",
@@ -982,7 +994,8 @@
       "title": "Φυσικὴ ἀκρόασις",
       "original": {
         "language": "grc",
-        "path": "data/classics-corpus/aristotle-physics-grc.json"
+        "path": "data/classics-corpus/aristotle-physics-grc.json",
+        "sourceUrnRoot": "tlg0086.tlg031"
       },
       "translations": {
         "en": {
@@ -1070,12 +1083,17 @@
       "title": "Ῥητορική",
       "original": {
         "language": "grc",
-        "path": "data/classics-corpus/aristotle-rhetoric-grc.json"
+        "path": "data/classics-corpus/aristotle-rhetoric-grc.json",
+        "sourceUrnRoot": "tlg0086.tlg038"
       },
       "translations": {
         "en": {
-          "status": "not-yet-verified",
-          "note": "No se identificó una edición de esta obra en las fuentes cotejadas; no implica inexistencia de traducciones."
+          "status": "candidate-perseus-tei",
+          "url": "https://github.com/PerseusDL/canonical-greekLit/blob/master/data/tlg0086/tlg038/tlg0086.tlg038.perseus-eng2.xml",
+          "teiPath": "data/tlg0086/tlg038/tlg0086.tlg038.perseus-eng2.xml",
+          "sourceUrnRoot": "tlg0086.tlg038",
+          "source": "PerseusDL canonical-greekLit",
+          "note": "Archivo TEI inglés existente; integridad textual, traductor, licencia y loci deben verificarse antes de redistribuir."
         },
         "fr": {
           "status": "candidate-work-page",
@@ -1096,7 +1114,8 @@
       "title": "Ἁρμονικὰ στοιχεῖα",
       "original": {
         "language": "grc",
-        "path": "data/classics-corpus/aristoxenus-harmonica-grc.json"
+        "path": "data/classics-corpus/aristoxenus-harmonica-grc.json",
+        "sourceUrnRoot": "tlg0088.tlg001"
       },
       "translations": {
         "en": {
@@ -1119,7 +1138,8 @@
       "title": "Ἀλεξάνδρου Ἀνάβασις",
       "original": {
         "language": "grc",
-        "path": "data/classics-corpus/arrian-anabasis-alexandri-grc.json"
+        "path": "data/classics-corpus/arrian-anabasis-alexandri-grc.json",
+        "sourceCheck": "requires-manual-review"
       },
       "translations": {
         "en": {
@@ -1142,7 +1162,8 @@
       "title": "Δειπνοσοφισταί",
       "original": {
         "language": "grc",
-        "path": "https://libros.vitruvius-digital-library.org/corpus/athenaeus-deipnosophistae-grc-c11adda328eca994.json"
+        "path": "https://libros.vitruvius-digital-library.org/corpus/athenaeus-deipnosophistae-grc-c11adda328eca994.json",
+        "sourceCheck": "requires-manual-review"
       },
       "translations": {
         "en": {
@@ -1165,7 +1186,8 @@
       "title": "Ἐπίνικοι καὶ διθύραμβοι · Epinicios y ditirambos",
       "original": {
         "language": "grc",
-        "path": "https://libros.vitruvius-digital-library.org/corpus/baquilides-poemas-grc.json"
+        "path": "https://libros.vitruvius-digital-library.org/corpus/baquilides-poemas-grc.json",
+        "sourceCheck": "requires-manual-review"
       },
       "translations": {
         "en": {
@@ -1188,12 +1210,17 @@
       "title": "Ἐπιστολὴ Βαρνάβα · Epistula Barnabae",
       "original": {
         "language": "grc",
-        "path": "data/classics-corpus/barnabas-grc.json"
+        "path": "data/classics-corpus/barnabas-grc.json",
+        "sourceUrnRoot": "tlg1216.tlg001"
       },
       "translations": {
         "en": {
-          "status": "not-yet-verified",
-          "note": "No se identificó una edición de esta obra en las fuentes cotejadas; no implica inexistencia de traducciones."
+          "status": "candidate-perseus-tei",
+          "url": "https://github.com/PerseusDL/canonical-greekLit/blob/master/data/tlg1216/tlg001/tlg1216.tlg001.perseus-eng1.xml",
+          "teiPath": "data/tlg1216/tlg001/tlg1216.tlg001.perseus-eng1.xml",
+          "sourceUrnRoot": "tlg1216.tlg001",
+          "source": "PerseusDL canonical-greekLit",
+          "note": "Archivo TEI inglés existente; integridad textual, traductor, licencia y loci deben verificarse antes de redistribuir."
         },
         "fr": {
           "status": "not-yet-verified",
@@ -5889,7 +5916,7 @@
     "url": "https://github.com/PerseusDL/canonical-greekLit",
     "filesChecked": 786,
     "truncated": false,
-    "originalsWithSourceUrn": 79
+    "originalsWithSourceUrn": 89
   },
   "verifiedReadableSamples": 6
 }
