@@ -6,11 +6,11 @@
   "totals": {
     "cataloguedWorks": 271,
     "locallyIndexedWorks": 227,
-    "translatedWorksLocal": 59,
-    "worksWithoutHostedTranslation": 212,
+    "translatedWorksLocal": 60,
+    "worksWithoutHostedTranslation": 211,
     "localTranslationLanguages": {
       "es": 5,
-      "en": 58,
+      "en": 59,
       "fr": 2
     },
     "originalTextIndexed": 183,
@@ -2414,23 +2414,28 @@
       "title": "Νεκρικοὶ διάλογοι",
       "originalLanguage": "grc",
       "originalIndexed": true,
-      "translationLanguages": [],
+      "translationLanguages": [
+        "en"
+      ],
       "localEditionLanguages": [
-        "grc"
+        "grc",
+        "en"
       ],
       "externalTranslationUnverified": [],
       "readingStatus": "lectura-local-parcial",
-      "translationSourceDescription": "Traducciones EN/ES/FR pendientes de verificar, cotejar y comprobar derechos.",
-      "translationRegisteredButNotHosted": true,
+      "translationSourceDescription": "Inglés: Matthew Donald Macleod, Lucian with an English Translation, vol. 7 (1961), digitalización TEI de Perseus (CC BY-SA 4.0), lectura por 113 secciones; castellano/francés pendientes.",
+      "translationRegisteredButNotHosted": false,
       "indexed": true,
       "originalR2Registered": false,
       "registeredOriginal": true,
       "registeredEditionLanguages": [
-        "grc"
+        "grc",
+        "en"
       ],
       "remoteEditionLanguages": [],
       "verifiedLocalEditionLanguages": [
-        "grc"
+        "grc",
+        "en"
       ]
     },
     {
