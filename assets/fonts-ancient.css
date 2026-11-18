@@ -21,13 +21,52 @@
       suprime o los recoloca, y lo que queda no es ni el texto ni su versión
       mayúscula correcta. Por eso aquí se anula, incluso frente a reglas más
       específicas: no es una preferencia estética sino un defecto. */
-[lang="grc"],[lang^="grc-"],[lang="grc-x-polytonic"],.grc,.lx-grc,.greek-text{
+[lang="grc"],[lang^="grc-"],[lang="grc-x-polytonic"],[lang="el-polyton"],.grc,.lx-grc,.greek-text{
  font-family:'Cardo','Gentium Book Plus','Gentium Plus','GFS Didot','New Athena Unicode',
   'Galatia SIL','IFAO-Grec Unicode','Palatino Linotype','Palatino','Times New Roman',serif;
  line-height:1.72;
  text-transform:none!important;
  font-variant-ligatures:none;
  font-kerning:normal;
+}
+/* El idioma de una edición, no su época o dialecto, decide el molde Unicode.
+   Ático, koiné y griego politónico comparten el repertorio Greek + Greek Extended.
+   En el lector, las preferencias de fuente de usuario llegan mediante variables
+   de mayor especificidad; estas reglas especializadas priorizan cobertura real
+   sin alterar tamaño, tinta, cursivas elegidas ni contenido del corpus. */
+:where([lang="el-polyton"],[lang^="grc-"],[lang="grc"],.lx-grc,.greek-text){
+ font-variant-caps:normal;
+ letter-spacing:normal;
+ word-break:normal;
+ overflow-wrap:break-word;
+}
+/* Prioridad deliberada sobre html body #passages y .card .passage
+   cuando sus controles eligen fuentes de interfaz sin Greek Extended. */
+html body #passages[lang="grc"],
+html body #passages[lang^="grc-"],
+html body .card .passage[lang="grc"],
+html body .card .passage[lang^="grc-"],
+html body .passage[lang="el-polyton"]{
+ font-family:'Gentium Book Plus','Cardo','Noto Serif','New Athena Unicode',
+  'GFS Didot','DejaVu Serif','Palatino Linotype','Times New Roman',serif;
+ line-height:1.92;
+ text-transform:none!important;
+ letter-spacing:normal;
+ font-variant-caps:normal;
+ font-variant-ligatures:none;
+ font-kerning:normal;
+ word-break:normal;
+ overflow-wrap:break-word;
+}
+/* Fragmentos literales y concordancias deben conservar sus marcas combinantes.
+   La normalización sin acentos se reserva a índices de búsqueda, nunca al DOM. */
+html body :is(.search-passage-excerpt,.lexeme-attested,.parallel-attested-language p)[lang="grc"],
+html body :is(.search-passage-excerpt,.lexeme-attested,.parallel-attested-language p)[lang^="grc-"]{
+ font-family:'Gentium Book Plus','Cardo','Noto Serif','New Athena Unicode',
+  'DejaVu Serif','Palatino Linotype','Times New Roman',serif;
+ line-height:1.85;
+ text-transform:none!important;
+ letter-spacing:normal;
 }
 /* Hebreo con puntuación masorética y cantilación: necesita más aire todavía. */
 [lang="he"],[lang="hbo"],[lang^="he-"],.he,.hebrew-text{
