@@ -16,6 +16,8 @@ button.className="lx-library-button";
 const semantic=document.createElement("button");semantic.type="button";semantic.textContent="Buscar conceptos documentados";semantic.className="lx-library-button";
 const status=document.createElement("p");status.setAttribute("role","status");status.className="lx-library-status";
 const list=document.createElement("div");list.className="lx-library-list";
+const workSummary=document.createElement("section");workSummary.className="lx-library-work-overview";
+workSummary.hidden=true;workSummary.setAttribute("aria-label","Libros que contienen la palabra y frecuencias por edición");
 const controls=document.createElement("div");controls.className="lx-library-actions";controls.append(button,semantic);
 const translationLabel=document.createElement("label");translationLabel.className="lx-library-translation-label";
 translationLabel.textContent="Traducción del pasaje · ";
@@ -34,10 +36,14 @@ styles.textContent+="\n#lx-classics-bridge .lx-library-highlight .lx-library-wor
 parent.append(styles);
 const readerEvidence=document.createElement("section");readerEvidence.className="lx-reader-attestation";readerEvidence.hidden=true;
 readerEvidence.setAttribute("aria-label","Testimonio textual del lector de origen");
-parent.append(title,note,readerEvidence,controls,status,list);
+parent.append(title,note,readerEvidence,controls,workSummary,status,list);
+styles.textContent+="\\n#lx-classics-bridge .lx-library-work-overview{margin:14px 0 18px;padding:10px 0;border-block:1px solid #454549}#lx-classics-bridge .lx-library-work-overview[hidden]{display:none!important}#lx-classics-bridge .lx-library-work-overview h4{font:500 17px/1.4 Georgia,serif;color:inherit;margin:0 0 7px}#lx-classics-bridge .lx-library-work-overview ol{margin:6px 0 0;padding-left:25px;columns:2;column-gap:30px}#lx-classics-bridge .lx-library-work-overview li{break-inside:avoid;margin:0 0 8px;font:13px/1.5 Georgia,serif}#lx-classics-bridge .lx-library-work-overview li a{font-weight:600;color:inherit;text-decoration:underline;text-decoration-color:#777;text-underline-offset:3px}#lx-classics-bridge .lx-library-work-overview li small{display:block;color:#aaa;font:11px/1.5 system-ui}#lx-classics-bridge .lx-library-work-overview p{margin:5px 0;color:#a6a6aa;font:12px/1.55 system-ui}#lx-classics-bridge .lx-library-excerpt{color:#a5a5a8;line-height:1.7}html[data-theme=light] #lx-classics-bridge .lx-library-excerpt{color:#53565a}html[data-theme=light] #lx-classics-bridge .lx-library-work-overview li small{color:#606065}@media(max-width:720px){#lx-classics-bridge .lx-library-work-overview ol{columns:1}}";
 styles.textContent+="\\n#lx-classics-bridge .lx-reader-attestation{padding:14px 16px;margin:12px 0 16px;border:1px solid #8e826b;border-left:4px solid #d6b67e;border-radius:8px;background:#242322;color:#f5f2eb}#lx-classics-bridge .lx-reader-attestation h4{margin:0 0 8px;font:600 17px/1.4 Georgia,serif}#lx-classics-bridge .lx-reader-attestation p{margin:6px 0;font:14px/1.7 Georgia,serif}#lx-classics-bridge .lx-reader-attestation mark{background:#f5d46b;color:#211900;padding:1px 3px;border-radius:3px}#lx-classics-bridge .lx-reader-attestation a{color:#f1d094;margin-right:12px;font:12px/1.6 system-ui}#lx-classics-bridge .lx-reader-attestation small{font:12px/1.6 system-ui;color:#d0c9bb}";
 const grid=results.closest(".results-grid");
-if(grid)grid.parentNode.insertBefore(parent,grid);else results.parentNode.insertBefore(parent,results);
+const dictionaries=document.getElementById("lx-dictionaries");
+if(dictionaries?.parentNode)dictionaries.parentNode.insertBefore(parent,dictionaries);
+else if(grid)grid.parentNode.insertBefore(parent,grid);
+else results.parentNode.insertBefore(parent,results);
 let serial=0;
 let translationContext=null,selectedLiteralRows=[];
 const translationNames={es:"castellano",en:"inglés",fr:"francés"};
@@ -351,6 +357,30 @@ function groupByWork(rows){
   String(groups.get(a)[0]?.author||"").localeCompare(String(groups.get(b)[0]?.author||""),"es")||
   String(groups.get(a)[0]?.title||"").localeCompare(String(groups.get(b)[0]?.title||""),"es"));
 }
+function showIndexedWorks(rows){
+ workSummary.replaceChildren();
+ if(!Array.isArray(rows)||!rows.length){workSummary.hidden=true;return}
+ const groups=new Map();
+ for(const row of rows){
+  if(!row.workId||!Number.isFinite(row.count)||row.count<=0)continue;
+  if(!groups.has(row.workId))groups.set(row.workId,{title:String(row.title||row.workId).replace(/\\s*·\\s*[^·]+\\s*·\\s*\\d+\\s+coincidencias\\s*$/i,""),editions:[]});
+  groups.get(row.workId).editions.push(row);
+ }
+ if(!groups.size){workSummary.hidden=true;return}
+ const heading=document.createElement("h4");heading.textContent="Libros con la palabra · "+groups.size+" obra"+(groups.size===1?"":"s");
+ const note=document.createElement("p");note.textContent="Frecuencia de la raíz en cada edición; no se suman textos originales y traducciones. Debajo figuran los párrafos con coincidencias literales verificadas.";
+ const ol=document.createElement("ol"),langs={la:"latín",grc:"griego",es:"castellano",en:"inglés",fr:"francés",it:"italiano",de:"alemán",pt:"portugués"};
+ for(const [id,g] of [...groups].sort((a,b)=>a[1].title.localeCompare(b[1].title,"es"))){
+  const li=document.createElement("li"),a=document.createElement("a"),counts=document.createElement("small");
+  const preferred=g.editions.find(e=>["la","grc"].includes(e.language))||g.editions[0];
+  a.href=safeUrl(preferred.link)||("classics-work-record.html?work="+encodeURIComponent(id));a.textContent=g.title||id;
+  const order=["la","grc","es","en","fr","it","de","pt"];
+  counts.textContent=g.editions.slice().sort((a,b)=>order.indexOf(a.language)-order.indexOf(b.language))
+   .map(v=>(langs[v.language]||v.language)+": "+v.count).join(" · ");
+  li.append(a,counts);ol.append(li);
+ }
+ workSummary.append(heading,note,ol);workSummary.hidden=false;
+}
 function showLiteralRows(rows,editions){
  list.replaceChildren();
  const fragment=document.createDocumentFragment();
@@ -423,7 +453,7 @@ async function selectLibraryWork(workId){
  }finally{if(token===serial){button.disabled=false;semantic.disabled=false}}
 }
 async function execute(mode="literal"){
- const q=input.value.trim(),token=++serial;list.replaceChildren();selectedWorkId="";currentLiteralRows=[];selectedLiteralRows=[];translationContext=null;currentQuery=q;
+ const q=input.value.trim(),token=++serial;list.replaceChildren();workSummary.replaceChildren();workSummary.hidden=true;selectedWorkId="";currentLiteralRows=[];selectedLiteralRows=[];translationContext=null;currentQuery=q;
  if(!/[\p{L}]/u.test(q)){status.textContent="Escriba una palabra griega o latina para consultar los textos indexados.";return}
  if(!window.ClassicsCorpusSearch){status.textContent="El motor de textos clásicos no está disponible.";return}
  button.disabled=true;semantic.disabled=true;status.textContent="Buscando pasajes en las ediciones indexadas…";
@@ -471,12 +501,12 @@ async function execute(mode="literal"){
    let summaryShown=0;
    if(window.ClassicsCorpusSearch.indexSummary){
     try{
-     const quick=await window.ClassicsCorpusSearch.indexSummary(q,{limit:24});
+     const quick=await window.ClassicsCorpusSearch.indexSummary(q,{limit:600});
      if(token!==serial)return;
      if(quick.length){
-      quick.forEach(addSummaryResult);
+      showIndexedWorks(quick);
       summaryShown=quick.length;
-      status.textContent=quick.length+" ediciones contienen la raíz, según el índice léxico. Leyendo los pasajes en las ediciones…";
+      status.textContent=quick.length+" ediciones contienen la raíz consultada. Recuperando los párrafos literales…";
      }
     }catch{}
    }
@@ -520,7 +550,7 @@ button.addEventListener("click",()=>execute("literal"));
 semantic.addEventListener("click",()=>execute("semantic"));
 // Corpus complementario explícitamente bajo demanda: el buscador principal
 // no debe lanzar una segunda búsqueda exhaustiva de todas las ediciones.
-input.addEventListener("input",()=>{serial++;selectedWorkId="";currentLiteralRows=[];selectedLiteralRows=[];translationContext=null;currentQuery="";button.disabled=false;semantic.disabled=false;list.replaceChildren();status.textContent="Pulse «Buscar término en el corpus completo» para consultar el registro.";});
+input.addEventListener("input",()=>{serial++;selectedWorkId="";currentLiteralRows=[];selectedLiteralRows=[];translationContext=null;currentQuery="";button.disabled=false;semantic.disabled=false;list.replaceChildren();workSummary.replaceChildren();workSummary.hidden=true;status.textContent="Escribí una palabra y pulsá Buscar para listar libros, cantidades y párrafos.";});
 status.textContent="Consulta bajo demanda: no se cargan todas las ediciones al abrir Lexicon.";
 // Deep links with an actual term should produce attested corpus results automatically.
 // Delay until the parent Lexicon has populated its search control.
@@ -556,9 +586,20 @@ async function readerAttestation(){
 void readerAttestation();
 
 const initial=new URLSearchParams(location.search).get("q");
-if(false&&initial&&/[\p{L}]/u.test(initial.trim())){
- if(!input.value.trim())input.value=initial;
- execute("literal");
+const singleWord=q=>typeof q==="string"&&q.length<=100&&/^[\p{L}\p{M}]+(?:[-'’][\p{L}\p{M}]+)*$/u.test(q);
+function autoLiteralQuery(query){
+ const q=String(query||"").trim();
+ if(!singleWord(q)||input.value.trim()!==q)return;
+ if(currentQuery===q&&(button.disabled||!workSummary.hidden||list.childElementCount))return;
+ void execute("literal");
+}
+window.addEventListener("vitruvia:lexicon-search",event=>{
+ if(event.detail?.mode==="palabra")autoLiteralQuery(event.detail?.query);
+});
+if(initial&&singleWord(initial)&&readerParams.get("orden")!=="vitruvio"){
+ const start=()=>{if(!input.value.trim())input.value=initial;autoLiteralQuery(initial)};
+ if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",()=>setTimeout(start,0),{once:true});
+ else setTimeout(start,0);
 }
 /* Excepción explícita: con «orden=vitruvio» (enlaces desde los capítulos del
    Codex H) se lee primero Vitruvio y, a continuación, el resto de las obras
