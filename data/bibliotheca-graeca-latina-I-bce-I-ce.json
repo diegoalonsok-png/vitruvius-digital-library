@@ -21543,7 +21543,12 @@
         "status": "No consta una digitalización PDF específica verificada en esta ficha."
       },
       "translation": {
-        "status": "Traducción no incorporada ni alineada con una edición identificada."
+        "status": "Traducción inglesa de John Henry Freese (1926), TEI Perseus CC BY-SA 4.0, 882 secciones indexables. Correspondencia formal de referencias CTS griego–inglés, no alineación por palabra.",
+        "language": "en",
+        "translator": "John Henry Freese",
+        "editionYear": 1926,
+        "sourceUrn": "urn:cts:greekLit:tlg0086.tlg038.perseus-eng2",
+        "alignmentStatus": "section-identifiers-verified-not-word-aligned"
       },
       "links": {
         "scaife": "https://scaife.perseus.org/library/",
@@ -21567,8 +21572,18 @@
         "note": "Pasajes de De architectura en los que Vitruvio nombra a este autor (latín de la edición V514); la mención no implica cita literal de esta obra concreta."
       },
       "corpusFiles": {
-        "grc": "data/classics-corpus/aristotle-rhetoric-grc.json"
+        "grc": "data/classics-corpus/aristotle-rhetoric-grc.json",
+        "en": "data/classics-corpus/aristotle-rhetoric-en.json"
       },
+      "localVersions": [
+        {
+          "language": "en",
+          "label": "English · John Henry Freese (1926)",
+          "path": "classics-text-reader.html?work=aristotle-rhetoric&lang=en",
+          "kind": "historical-translation",
+          "citationChicago18": "Aristotle. The Art of Rhetoric. Translated by John Henry Freese. London: William Heinemann; Cambridge, MA: Harvard University Press, 1926. TEI edition, Perseus Digital Library, Tufts University."
+        }
+      ],
       "indexationAudit": {
         "previousPublicStatus": "repertoriado-busqueda-externa",
         "registryVersionCount": 1,
