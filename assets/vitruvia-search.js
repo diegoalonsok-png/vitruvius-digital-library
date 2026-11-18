@@ -2071,7 +2071,7 @@ function setupAutocomplete(){
   for(const p of S.pages){const title=p.title||"";if(norm(title+" "+p.description).includes(q))
    add(title,title,"Biblioteca digital",35+(norm(title).startsWith(q)?10:0))}
   if(suggestions.length<5&&q.length>=4&&typeof U()?.dist==="function"){
-   const distance=U().dist,max=q.length>=7?2:1;
+   const helper=U(),distance=(a,b)=>helper.dist(a,b),max=q.length>=7?2:1;
    for(const item of fuzzy){
     if(item.text.split(" ").some(w=>w.length>=4&&distance(w.slice(0,q.length+1),q)<=max))
      add(item.label,item.value,item.subtitle,item.rank);
