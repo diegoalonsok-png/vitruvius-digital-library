@@ -1,11 +1,11 @@
 {
   "schema": "vitruvius-classics-translation-availability-v1",
-  "generated": "2026-11-16",
+  "generated": "2026-11-18",
   "basis": "Cálculo a partir de works[] y search-registry.json. Los campos de compatibilidad locallyIndexedWorks y localEditionLanguages incluyen índices registrados en R2. originalIndexed y verifiedLocalEditionLanguages solo cuentan archivos locales. originalR2Registered identifica declaraciones remotas; no certifica disponibilidad HTTP ni cotejo.",
   "scope": "271 obras del repertorio grecolatino; originales locales, índices remotos declarados y traducciones alojadas ES/EN/FR",
   "totals": {
     "cataloguedWorks": 271,
-    "locallyIndexedWorks": 227,
+    "locallyIndexedWorks": 226,
     "translatedWorksLocal": 59,
     "worksWithoutHostedTranslation": 212,
     "localTranslationLanguages": {
@@ -13,15 +13,17 @@
       "en": 58,
       "fr": 2
     },
-    "originalTextIndexed": 183,
-    "originalTextNotIndexed": 88,
-    "verifiedLocalFileWorks": 183,
+    "originalTextIndexed": 182,
+    "originalTextNotIndexed": 89,
+    "verifiedLocalFileWorks": 182,
     "declaredRemoteOnlyWorks": 44,
     "declaredR2OriginalWorks": 44,
-    "registeredOriginalWorks": 227,
-    "registeredTextVersions": 292,
-    "verifiedLocalTextVersions": 248,
-    "verifiedLocalOriginalTextIndexed": 183
+    "registeredOriginalWorks": 226,
+    "registeredTextVersions": 291,
+    "verifiedLocalTextVersions": 247,
+    "verifiedLocalOriginalTextIndexed": 182,
+    "supplementaryTextVersions": 81,
+    "allRegisteredTextVersions": 372
   },
   "works": [
     {
@@ -1555,25 +1557,19 @@
       "author": "Vitruvio · edición de Fritz Krohn",
       "title": "Vitruvii De architectura libri decem · Krohn 1912",
       "originalLanguage": "la",
-      "originalIndexed": true,
+      "originalIndexed": false,
       "translationLanguages": [],
-      "localEditionLanguages": [
-        "la"
-      ],
+      "localEditionLanguages": [],
       "externalTranslationUnverified": [],
       "readingStatus": "lectura-local-completa",
       "translationSourceDescription": "Consultar la información bibliográfica y el documento PDF.",
       "translationRegisteredButNotHosted": true,
       "indexed": true,
       "originalR2Registered": false,
-      "registeredOriginal": true,
-      "registeredEditionLanguages": [
-        "la"
-      ],
+      "registeredOriginal": false,
+      "registeredEditionLanguages": [],
       "remoteEditionLanguages": [],
-      "verifiedLocalEditionLanguages": [
-        "la"
-      ]
+      "verifiedLocalEditionLanguages": []
     },
     {
       "id": "plautus-amphitruo",

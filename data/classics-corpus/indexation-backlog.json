@@ -1,10 +1,10 @@
 {
   "schema": "vitruvia-indexation-backlog-v1",
   "derivedFrom": "data/classics-corpus/coverage-audit.json",
-  "snapshot": "2026-11-08",
+  "snapshot": "2026-11-18",
   "scope": "Faltantes detectados por registro local, no obras disponibles para descarga",
   "totalWorks": 222,
-  "missingOriginals": 40,
+  "missingOriginals": 27,
   "policy": "No duplicar ni inferir derechos, OCR, versiones o alineacion. Conservar originales. Priorizar textos livianos.",
   "entries": [
     {

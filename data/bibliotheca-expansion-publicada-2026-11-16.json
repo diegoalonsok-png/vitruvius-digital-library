@@ -262,12 +262,20 @@
       "status": "Texto griego incorporado, registrado e indexado léxicamente; sin cotejo crítico independiente",
       "publicStatus": "lectura-local-completa",
       "corpusFiles": {
-        "grc": "data/classics-corpus/euripides-cyclops-grc.json"
+        "grc": "data/classics-corpus/euripides-cyclops-grc.json",
+        "en": "data/classics-corpus/euripides-cyclops-en.json"
       },
       "localVersions": [
         {
           "language": "grc",
           "path": "data/classics-corpus/euripides-cyclops-grc.json"
+        },
+        {
+          "language": "en",
+          "label": "English · Edward P. Coleridge (1891)",
+          "path": "classics-text-reader.html?work=euripides-cyclops&lang=en",
+          "kind": "historical-translation",
+          "citationChicago18": "Eurípides. Κύκλωψ · El cíclope. Translated by Edward P. Coleridge. George Bell and Sons, London, 1891. Perseus Digital Library, TEI."
         }
       ],
       "reading": {
@@ -294,12 +302,20 @@
       "status": "Texto griego incorporado, registrado e indexado léxicamente; sin cotejo crítico independiente",
       "publicStatus": "lectura-local-completa",
       "corpusFiles": {
-        "grc": "data/classics-corpus/euripides-ion-grc.json"
+        "grc": "data/classics-corpus/euripides-ion-grc.json",
+        "en": "data/classics-corpus/euripides-ion-en.json"
       },
       "localVersions": [
         {
           "language": "grc",
           "path": "data/classics-corpus/euripides-ion-grc.json"
+        },
+        {
+          "language": "en",
+          "label": "English · Edward P. Coleridge (1906)",
+          "path": "classics-text-reader.html?work=euripides-ion&lang=en",
+          "kind": "historical-translation",
+          "citationChicago18": "Eurípides. Ἴων · Ion. Translated by Edward P. Coleridge. George Bell and Sons, London, 1906. Perseus Digital Library, TEI."
         }
       ],
       "reading": {
@@ -326,12 +342,20 @@
       "status": "Texto griego incorporado, registrado e indexado léxicamente; sin cotejo crítico independiente",
       "publicStatus": "lectura-local-completa",
       "corpusFiles": {
-        "grc": "data/classics-corpus/euripides-helena-grc.json"
+        "grc": "data/classics-corpus/euripides-helena-grc.json",
+        "en": "data/classics-corpus/euripides-helena-en.json"
       },
       "localVersions": [
         {
           "language": "grc",
           "path": "data/classics-corpus/euripides-helena-grc.json"
+        },
+        {
+          "language": "en",
+          "label": "English · Edward P. Coleridge (1906)",
+          "path": "classics-text-reader.html?work=euripides-helena&lang=en",
+          "kind": "historical-translation",
+          "citationChicago18": "Eurípides. Ἑλένη · Helena. Translated by Edward P. Coleridge. George Bell and Sons, London, 1906. Perseus Digital Library, TEI."
         }
       ],
       "reading": {
@@ -455,12 +479,20 @@
       "status": "Texto griego incorporado, registrado e indexado léxicamente; sin cotejo crítico independiente",
       "publicStatus": "lectura-local-completa",
       "corpusFiles": {
-        "grc": "data/classics-corpus/euripides-suppliants-grc.json"
+        "grc": "data/classics-corpus/euripides-suppliants-grc.json",
+        "en": "data/classics-corpus/euripides-suppliants-en.json"
       },
       "localVersions": [
         {
           "language": "grc",
           "path": "data/classics-corpus/euripides-suppliants-grc.json"
+        },
+        {
+          "language": "en",
+          "label": "English · E. P. Coleridge (1906)",
+          "path": "classics-text-reader.html?work=euripides-suppliants&lang=en",
+          "kind": "historical-translation",
+          "citationChicago18": "Eurípides. Ἱκέτιδες · Las suplicantes. Translated by E. P. Coleridge. George Bell and Sons, London, 1906. Perseus Digital Library, TEI."
         }
       ],
       "reading": {
@@ -541,12 +573,20 @@
       "status": "Texto griego incorporado, registrado e indexado léxicamente; sin cotejo crítico independiente",
       "publicStatus": "lectura-local-completa",
       "corpusFiles": {
-        "grc": "data/classics-corpus/euripides-orestes-grc.json"
+        "grc": "data/classics-corpus/euripides-orestes-grc.json",
+        "en": "data/classics-corpus/euripides-orestes-en.json"
       },
       "localVersions": [
         {
           "language": "grc",
           "path": "data/classics-corpus/euripides-orestes-grc.json"
+        },
+        {
+          "language": "en",
+          "label": "English · Edward P. Coleridge (1891)",
+          "path": "classics-text-reader.html?work=euripides-orestes&lang=en",
+          "kind": "historical-translation",
+          "citationChicago18": "Eurípides. Ὀρέστης · Orestes. Translated by Edward P. Coleridge. George Bell and Sons, London, 1891. Perseus Digital Library, TEI."
         }
       ],
       "reading": {

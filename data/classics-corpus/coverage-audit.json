@@ -1,6 +1,6 @@
 {
   "schema": "vitruvia-classics-coverage-audit-v1",
-  "date": "2026-11-16",
+  "date": "2026-11-18",
   "scope": "Se auditan exclusivamente 271 fichas de obras del catálogo local; no es un censo universal de literatura grecolatina.",
   "method": "Cruce de fichas bibliográficas, vínculos locales, corpus legible, registro de búsqueda y testimonios manuscritos; sin OCR ni verificación externa de los enlaces.",
   "counts": {
@@ -13,9 +13,9 @@
       "pendiente-de-incorporar": 2
     },
     "locallyReadableClaims": 196,
-    "indexedTextVersions": 292,
-    "indexedDistinctWorks": 227,
-    "manuscriptWitnesses": 106
+    "indexedTextVersions": 291,
+    "indexedDistinctWorks": 226,
+    "manuscriptWitnesses": 107
   },
   "works": [
     {
@@ -1332,12 +1332,8 @@
       "genre": "Arquitectura · ediciones de Vitruvio",
       "dating": "Edición crítica impresa, 1912",
       "catalogueStatus": "lectura-local-completa",
-      "indexedTextLanguages": [
-        "la"
-      ],
-      "indexedTextFiles": [
-        "data/text/krohn-1912.json"
-      ],
+      "indexedTextLanguages": [],
+      "indexedTextFiles": [],
       "localPDF": "documents/krohn-1912.pdf",
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": false,
@@ -3709,8 +3705,8 @@
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": true,
-      "hasManuscriptRecord": false,
-      "manuscriptRecords": 0,
+      "hasManuscriptRecord": true,
+      "manuscriptRecords": 1,
       "hasDeclaredExternalReading": false,
       "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador."
     },

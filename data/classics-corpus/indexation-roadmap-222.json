@@ -1,40 +1,35 @@
 {
   "schema": "vitruvius-classics-indexation-roadmap-v1",
-  "updated": "2026-11-16",
-  "method": "Counts from hosted edition paths only. A catalogue entry or external Perseus mapping never counts as indexed text or a hosted translation. No AI-supplied passages, unverified OCR, or assumed cross-language alignment. Offsite JSON indexes are counted separately from hosted texts using an evidence snapshot. Registered R2 originals are separate declarations; HTTP availability is not verified here. Diferenciar originales indexados efectivos de originales registrados: 32 obras R2 tienen ruta, texto declarado y SHA256 en el manifiesto pero no certificación HTTP vigente. La falta de índice efectivo (61) no equivale a falta de original registrado (29).",
+  "updated": "2026-11-18",
+  "method": "Counts from hosted edition paths only. A catalogue entry or external Perseus mapping never counts as indexed text or a hosted translation. No AI-supplied passages, unverified OCR, or assumed cross-language alignment. Offsite JSON indexes are counted separately from hosted texts using an evidence snapshot. Registered R2 originals are separate declarations; HTTP availability is not verified here.",
   "targetWorks": 271,
   "counts": {
-    "originalsIndexed": 183,
-    "originalsMissing": 88,
+    "originalsIndexed": 182,
+    "originalsMissing": 89,
     "worksWithHostedTranslation": 59,
     "worksMissingTranslation": 212,
-    "textVersions": 248,
-    "registeredTextVersions": 292,
+    "textVersions": 247,
+    "registeredTextVersions": 291,
     "declaredR2OriginalWorks": 44,
-    "registeredProjectOriginalWorks": 227,
-    "registeredOriginalsWithExternal": 242,
+    "registeredProjectOriginalWorks": 226,
+    "registeredOriginalsWithExternal": 241,
     "offsiteOriginalsIndexed": 27,
-    "effectiveOriginalsIndexed": 242,
-    "effectiveOriginalsMissing": 29,
+    "effectiveOriginalsIndexed": 209,
+    "effectiveOriginalsMissing": 62,
     "unindexedEditionRecordsOfExistingVitruviusWork": 3,
-    "distinctAncientWorksStillMissingOriginalIndex": 26,
+    "distinctAncientWorksStillMissingOriginalIndex": 59,
     "offsiteTextVersionsOutsidePages": 28,
     "states": {
-      "original_pendiente": 88,
-      "original_sin_traduccion_local": 124,
+      "original_pendiente": 89,
+      "original_sin_traduccion_local": 123,
       "original_y_traduccion_local": 59
     },
     "sourceReadinessForMissingOriginals": {
       "correspondencia_bibliografica_ambigua": 3,
       "requiere_fuente_no_canonica_o_edicion_especifica": 6,
-      "sin_fuente_en_mapa_perseus": 64,
+      "sin_fuente_en_mapa_perseus": 65,
       "tei_perseus_candidato_por_verificar": 15
-    },
-    "originalWorksWithRegisteredSource": 242,
-    "originalWorksWithoutRegisteredSource": 29,
-    "r2RegisteredNotEffective": 0,
-    "pendingEffectiveIndexOrVerification": 29,
-    "r2RegisteredWithSourceManifestSha256": 44
+    }
   },
   "externalIndexProvenance": "data/classics-corpus/external-index-reconciliation.json",
   "items": [
@@ -1104,9 +1099,7 @@
       "originalR2Registered": true,
       "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
-      "effectiveOriginalIndexed": true,
-      "r2LexicalIndexVerified": true,
-      "r2IndexVerifiedAt": "2026-11-16T16:55:05.673Z"
+      "effectiveOriginalIndexed": false
     },
     {
       "id": "eusebio",
@@ -1284,9 +1277,7 @@
         "branch": "corpus-originales-griegos-20261108",
         "manifestPath": "data/offsite-originals/manifest.json",
         "sourceSha256": "ae75f9d7accf097919eca0cb1412a02b5bb375593d761d149f9723af8529fe0f"
-      },
-      "r2LexicalIndexVerified": true,
-      "r2IndexVerifiedAt": "2026-11-16T16:55:05.673Z"
+      }
     },
     {
       "id": "apollodorus-poliorcetics",
@@ -1428,19 +1419,17 @@
       "title": "Vitruvii De architectura libri decem · Krohn 1912",
       "originalLanguage": "la",
       "dating": "Edición crítica impresa, 1912",
-      "indexedLanguages": [
-        "la"
-      ],
-      "originalIndexed": true,
+      "indexedLanguages": [],
+      "originalIndexed": false,
       "translationHosted": false,
-      "state": "original_sin_traduccion_local",
-      "sourceReadiness": "original_local_documentado",
+      "state": "original_pendiente",
+      "sourceReadiness": "sin_fuente_en_mapa_perseus",
       "bibliographyCandidateUrns": [],
       "translationSourceClaim": false,
       "originalR2Registered": false,
-      "registeredOriginalIndexed": true,
+      "registeredOriginalIndexed": false,
       "offsiteOriginalIndexed": false,
-      "effectiveOriginalIndexed": true
+      "effectiveOriginalIndexed": false
     },
     {
       "id": "plautus-amphitruo",
@@ -2257,9 +2246,7 @@
         "branch": "corpus-originales-griegos-20261108",
         "manifestPath": "data/offsite-originals/manifest.json",
         "sourceSha256": "03ef6158a8902f3aab555811819a85986f9d2983125d775ff005499466206198"
-      },
-      "r2LexicalIndexVerified": true,
-      "r2IndexVerifiedAt": "2026-11-16T16:55:05.673Z"
+      }
     },
     {
       "id": "lucian-dialogi-mortuorum",
@@ -2700,9 +2687,7 @@
         "branch": "corpus-originales-griegos-20261108",
         "manifestPath": "data/offsite-originals/manifest.json",
         "sourceSha256": "c418cbbc18d730ea4e0ba80d15425d89e21624c5eca1060f1430e11e1c478ac6"
-      },
-      "r2LexicalIndexVerified": true,
-      "r2IndexVerifiedAt": "2026-11-16T16:55:05.673Z"
+      }
     },
     {
       "id": "xenophon-anabasis",
@@ -2907,9 +2892,7 @@
         "branch": "corpus-originales-griegos-20261108",
         "manifestPath": "data/offsite-originals/manifest.json",
         "sourceSha256": "3d2aa5d45ebb87ba8ba6d6ccf1d42a5bdc97f74ac2b365d97d8ead7c63f4d951"
-      },
-      "r2LexicalIndexVerified": true,
-      "r2IndexVerifiedAt": "2026-11-16T16:55:05.673Z"
+      }
     },
     {
       "id": "athenaeus-deipnosophistae",
@@ -2934,9 +2917,7 @@
         "branch": "corpus-originales-griegos-20261108",
         "manifestPath": "data/offsite-originals/manifest.json",
         "sourceSha256": "f6d964a08422ae83a618b3d3747eebf684a1c11757252d9e6996c986ddd758a1"
-      },
-      "r2LexicalIndexVerified": true,
-      "r2IndexVerifiedAt": "2026-11-16T16:55:05.673Z"
+      }
     },
     {
       "id": "aeschylus-persae",
@@ -3988,9 +3969,7 @@
         "branch": "corpus-originales-griegos-20261108",
         "manifestPath": "data/offsite-originals/manifest.json",
         "sourceSha256": "d8957cc1148a02f24f0b56c741ee03a6d3da16c596015e8217e8a039c21f9cd7"
-      },
-      "r2LexicalIndexVerified": true,
-      "r2IndexVerifiedAt": "2026-11-16T16:55:05.673Z"
+      }
     },
     {
       "id": "diogenes-laertius-vitae",
@@ -4716,9 +4695,7 @@
         "branch": "corpus-originales-griegos-20261108",
         "manifestPath": "data/offsite-originals/manifest.json",
         "sourceSha256": "216d8ebd4fc26efa1c002c21066de80ee1af8db713a3dc4788a30cca05ec90a7"
-      },
-      "r2LexicalIndexVerified": true,
-      "r2IndexVerifiedAt": "2026-11-16T16:55:05.673Z"
+      }
     },
     {
       "id": "aratus-phaenomena",
@@ -4806,9 +4783,7 @@
         "branch": "corpus-originales-griegos-20261108",
         "manifestPath": "data/offsite-originals/manifest.json",
         "sourceSha256": "6e091698defd9b7d27546f4b3e578321ede2f51db1eabe39062b56aac3c18439"
-      },
-      "r2LexicalIndexVerified": true,
-      "r2IndexVerifiedAt": "2026-11-16T16:55:05.673Z"
+      }
     },
     {
       "id": "aeneas-tacticus-poliorketika",
@@ -4967,9 +4942,7 @@
         "branch": "corpus-originales-griegos-20261108",
         "manifestPath": "data/offsite-originals/manifest.json",
         "sourceSha256": "42f952d9b5416db0d77ea70519137c01e1ae0449ae54769a3158c56c374d5f68"
-      },
-      "r2LexicalIndexVerified": true,
-      "r2IndexVerifiedAt": "2026-11-16T16:55:05.673Z"
+      }
     },
     {
       "id": "euclid-phaenomena",
@@ -4995,9 +4968,7 @@
         "branch": "corpus-originales-griegos-20261108",
         "manifestPath": "data/offsite-originals/manifest.json",
         "sourceSha256": "c4402963efeb10ac0ad93dfb749d8f2a38b0d6cfcc8a7ed850320d828b74ec58"
-      },
-      "r2LexicalIndexVerified": true,
-      "r2IndexVerifiedAt": "2026-11-16T16:55:05.673Z"
+      }
     },
     {
       "id": "cleonides-harmonica",
@@ -5022,9 +4993,7 @@
         "branch": "corpus-originales-griegos-20261108",
         "manifestPath": "data/offsite-originals/manifest.json",
         "sourceSha256": "28728f3cde1654a435d55e500906fe76eb1433393610520e9be5eec5282f6057"
-      },
-      "r2LexicalIndexVerified": true,
-      "r2IndexVerifiedAt": "2026-11-16T16:55:05.673Z"
+      }
     },
     {
       "id": "hero-belopoeica",
@@ -5049,9 +5018,7 @@
         "branch": "corpus-originales-griegos-20261108",
         "manifestPath": "data/offsite-originals/manifest.json",
         "sourceSha256": "d73ba803b681fe16224b54d654acb39bd94af0d0e882baa8d84e94b8fd4a7d9d"
-      },
-      "r2LexicalIndexVerified": true,
-      "r2IndexVerifiedAt": "2026-11-16T16:55:05.673Z"
+      }
     },
     {
       "id": "philo-belopoeica",
@@ -5292,9 +5259,7 @@
       "originalR2Registered": true,
       "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
-      "effectiveOriginalIndexed": true,
-      "r2LexicalIndexVerified": true,
-      "r2IndexVerifiedAt": "2026-11-16T16:55:05.673Z"
+      "effectiveOriginalIndexed": false
     },
     {
       "id": "isocrates-discursos",
@@ -5312,9 +5277,7 @@
       "originalR2Registered": true,
       "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
-      "effectiveOriginalIndexed": true,
-      "r2LexicalIndexVerified": true,
-      "r2IndexVerifiedAt": "2026-11-16T16:55:05.673Z"
+      "effectiveOriginalIndexed": false
     },
     {
       "id": "lisias-discursos",
@@ -5332,9 +5295,7 @@
       "originalR2Registered": true,
       "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
-      "effectiveOriginalIndexed": true,
-      "r2LexicalIndexVerified": true,
-      "r2IndexVerifiedAt": "2026-11-16T16:55:05.673Z"
+      "effectiveOriginalIndexed": false
     },
     {
       "id": "longino-sublime",
@@ -5352,9 +5313,7 @@
       "originalR2Registered": true,
       "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
-      "effectiveOriginalIndexed": true,
-      "r2LexicalIndexVerified": true,
-      "r2IndexVerifiedAt": "2026-11-16T16:55:05.673Z"
+      "effectiveOriginalIndexed": false
     },
     {
       "id": "teocrito-bucolicos",
@@ -5372,9 +5331,7 @@
       "originalR2Registered": true,
       "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
-      "effectiveOriginalIndexed": true,
-      "r2LexicalIndexVerified": true,
-      "r2IndexVerifiedAt": "2026-11-16T16:55:05.673Z"
+      "effectiveOriginalIndexed": false
     },
     {
       "id": "antologia-griega",
@@ -5392,9 +5349,7 @@
       "originalR2Registered": true,
       "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
-      "effectiveOriginalIndexed": true,
-      "r2LexicalIndexVerified": true,
-      "r2IndexVerifiedAt": "2026-11-16T16:55:05.673Z"
+      "effectiveOriginalIndexed": false
     },
     {
       "id": "aquiles-tacio-leucipa",
@@ -5412,9 +5367,7 @@
       "originalR2Registered": true,
       "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
-      "effectiveOriginalIndexed": true,
-      "r2LexicalIndexVerified": true,
-      "r2IndexVerifiedAt": "2026-11-16T16:55:05.673Z"
+      "effectiveOriginalIndexed": false
     },
     {
       "id": "aristoteles-del-cielo",
@@ -5432,9 +5385,7 @@
       "originalR2Registered": true,
       "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
-      "effectiveOriginalIndexed": true,
-      "r2LexicalIndexVerified": true,
-      "r2IndexVerifiedAt": "2026-11-16T16:55:05.673Z"
+      "effectiveOriginalIndexed": false
     },
     {
       "id": "aristoteles-historia-animales",
@@ -5452,9 +5403,7 @@
       "originalR2Registered": true,
       "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
-      "effectiveOriginalIndexed": true,
-      "r2LexicalIndexVerified": true,
-      "r2IndexVerifiedAt": "2026-11-16T16:55:05.673Z"
+      "effectiveOriginalIndexed": false
     },
     {
       "id": "baquilides-poemas",
@@ -5472,9 +5421,7 @@
       "originalR2Registered": true,
       "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
-      "effectiveOriginalIndexed": true,
-      "r2LexicalIndexVerified": true,
-      "r2IndexVerifiedAt": "2026-11-16T16:55:05.673Z"
+      "effectiveOriginalIndexed": false
     },
     {
       "id": "calimaco-himnos",
@@ -5492,9 +5439,7 @@
       "originalR2Registered": true,
       "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
-      "effectiveOriginalIndexed": true,
-      "r2LexicalIndexVerified": true,
-      "r2IndexVerifiedAt": "2026-11-16T16:55:05.673Z"
+      "effectiveOriginalIndexed": false
     },
     {
       "id": "epicuro-restos",
@@ -5512,9 +5457,7 @@
       "originalR2Registered": true,
       "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
-      "effectiveOriginalIndexed": true,
-      "r2LexicalIndexVerified": true,
-      "r2IndexVerifiedAt": "2026-11-16T16:55:05.673Z"
+      "effectiveOriginalIndexed": false
     },
     {
       "id": "esquines-discursos",
@@ -5532,9 +5475,7 @@
       "originalR2Registered": true,
       "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
-      "effectiveOriginalIndexed": true,
-      "r2LexicalIndexVerified": true,
-      "r2IndexVerifiedAt": "2026-11-16T16:55:05.673Z"
+      "effectiveOriginalIndexed": false
     },
     {
       "id": "filostrato-apolonio",
@@ -5552,9 +5493,7 @@
       "originalR2Registered": true,
       "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
-      "effectiveOriginalIndexed": true,
-      "r2LexicalIndexVerified": true,
-      "r2IndexVerifiedAt": "2026-11-16T16:55:05.673Z"
+      "effectiveOriginalIndexed": false
     },
     {
       "id": "galeno-facultades-naturales",
@@ -5572,9 +5511,7 @@
       "originalR2Registered": true,
       "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
-      "effectiveOriginalIndexed": true,
-      "r2LexicalIndexVerified": true,
-      "r2IndexVerifiedAt": "2026-11-16T16:55:05.673Z"
+      "effectiveOriginalIndexed": false
     },
     {
       "id": "hipocrates-obras",
@@ -5592,9 +5529,7 @@
       "originalR2Registered": true,
       "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
-      "effectiveOriginalIndexed": true,
-      "r2LexicalIndexVerified": true,
-      "r2IndexVerifiedAt": "2026-11-16T16:55:05.673Z"
+      "effectiveOriginalIndexed": false
     },
     {
       "id": "iseo-discursos",
@@ -5612,9 +5547,7 @@
       "originalR2Registered": true,
       "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
-      "effectiveOriginalIndexed": true,
-      "r2LexicalIndexVerified": true,
-      "r2IndexVerifiedAt": "2026-11-16T16:55:05.673Z"
+      "effectiveOriginalIndexed": false
     },
     {
       "id": "jenofonte-ciropedia",
@@ -5632,9 +5565,7 @@
       "originalR2Registered": true,
       "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
-      "effectiveOriginalIndexed": true,
-      "r2LexicalIndexVerified": true,
-      "r2IndexVerifiedAt": "2026-11-16T16:55:05.673Z"
+      "effectiveOriginalIndexed": false
     },
     {
       "id": "jenofonte-economico",
@@ -5652,9 +5583,7 @@
       "originalR2Registered": true,
       "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
-      "effectiveOriginalIndexed": true,
-      "r2LexicalIndexVerified": true,
-      "r2IndexVerifiedAt": "2026-11-16T16:55:05.673Z"
+      "effectiveOriginalIndexed": false
     },
     {
       "id": "longo-dafnis-cloe",
@@ -5672,9 +5601,7 @@
       "originalR2Registered": true,
       "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
-      "effectiveOriginalIndexed": true,
-      "r2LexicalIndexVerified": true,
-      "r2IndexVerifiedAt": "2026-11-16T16:55:05.673Z"
+      "effectiveOriginalIndexed": false
     },
     {
       "id": "menandro-comedias",
@@ -5692,9 +5619,7 @@
       "originalR2Registered": true,
       "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
-      "effectiveOriginalIndexed": true,
-      "r2LexicalIndexVerified": true,
-      "r2IndexVerifiedAt": "2026-11-16T16:55:05.673Z"
+      "effectiveOriginalIndexed": false
     },
     {
       "id": "platon-cratilo-parmenides",
@@ -5712,9 +5637,7 @@
       "originalR2Registered": true,
       "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
-      "effectiveOriginalIndexed": true,
-      "r2LexicalIndexVerified": true,
-      "r2IndexVerifiedAt": "2026-11-16T16:55:05.673Z"
+      "effectiveOriginalIndexed": false
     },
     {
       "id": "platon-protagoras",
@@ -5732,9 +5655,7 @@
       "originalR2Registered": true,
       "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
-      "effectiveOriginalIndexed": true,
-      "r2LexicalIndexVerified": true,
-      "r2IndexVerifiedAt": "2026-11-16T16:55:05.673Z"
+      "effectiveOriginalIndexed": false
     },
     {
       "id": "platon-teeteto-sofista",
@@ -5752,9 +5673,7 @@
       "originalR2Registered": true,
       "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
-      "effectiveOriginalIndexed": true,
-      "r2LexicalIndexVerified": true,
-      "r2IndexVerifiedAt": "2026-11-16T16:55:05.673Z"
+      "effectiveOriginalIndexed": false
     },
     {
       "id": "plotino-eneadas",
@@ -5772,9 +5691,7 @@
       "originalR2Registered": true,
       "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
-      "effectiveOriginalIndexed": true,
-      "r2LexicalIndexVerified": true,
-      "r2IndexVerifiedAt": "2026-11-16T16:55:05.673Z"
+      "effectiveOriginalIndexed": false
     },
     {
       "id": "lyra-graeca",
@@ -5810,9 +5727,7 @@
       "originalR2Registered": true,
       "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
-      "effectiveOriginalIndexed": true,
-      "r2LexicalIndexVerified": true,
-      "r2IndexVerifiedAt": "2026-11-16T16:55:05.673Z"
+      "effectiveOriginalIndexed": false
     },
     {
       "id": "amiano-marcelino-es",
@@ -5830,9 +5745,7 @@
       "originalR2Registered": true,
       "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
-      "effectiveOriginalIndexed": true,
-      "r2LexicalIndexVerified": true,
-      "r2IndexVerifiedAt": "2026-11-16T16:55:05.673Z"
+      "effectiveOriginalIndexed": false
     },
     {
       "id": "ausonio-obras",
@@ -5850,9 +5763,7 @@
       "originalR2Registered": true,
       "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
-      "effectiveOriginalIndexed": true,
-      "r2LexicalIndexVerified": true,
-      "r2IndexVerifiedAt": "2026-11-16T16:55:05.673Z"
+      "effectiveOriginalIndexed": false
     },
     {
       "id": "claudiano-poemas",
@@ -5870,9 +5781,7 @@
       "originalR2Registered": true,
       "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
-      "effectiveOriginalIndexed": true,
-      "r2LexicalIndexVerified": true,
-      "r2IndexVerifiedAt": "2026-11-16T16:55:05.673Z"
+      "effectiveOriginalIndexed": false
     },
     {
       "id": "higino-fabulas",
@@ -5926,9 +5835,7 @@
       "originalR2Registered": true,
       "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
-      "effectiveOriginalIndexed": true,
-      "r2LexicalIndexVerified": true,
-      "r2IndexVerifiedAt": "2026-11-16T16:55:05.673Z"
+      "effectiveOriginalIndexed": false
     },
     {
       "id": "valerio-flaco-argonautica",
@@ -5946,9 +5853,7 @@
       "originalR2Registered": true,
       "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
-      "effectiveOriginalIndexed": true,
-      "r2LexicalIndexVerified": true,
-      "r2IndexVerifiedAt": "2026-11-16T16:55:05.673Z"
+      "effectiveOriginalIndexed": false
     },
     {
       "id": "aristoteles-meteorologica",
@@ -5989,7 +5894,7 @@
     {
       "id": "galeno-kuhn-vol01",
       "author": "Galeno",
-      "title": "Claudii Galeni opera omnia · Tomus XIV (ed. Kühn; identificador legado vol01, portada por cotejar)",
+      "title": "Claudii Galeni opera omnia · Tomus XIV (ed. Kühn, Leipzig 1827)",
       "originalLanguage": "grc",
       "dating": "Colección de tratados antiguos de Galeno y textos atribuidos; edición impresa del tomo XIV publicada en 1827.",
       "indexedLanguages": [],
@@ -6220,14 +6125,5 @@
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": false
     }
-  ],
-  "r2LexicalReconciliation": {
-    "verifiedAt": "2026-11-16T16:55:05.673Z",
-    "sourceManifest": "data/r2/corpus-manifest.json",
-    "indexManifest": "data/index/classics-r2/manifest.json",
-    "syncCertificate": "data/r2/classics-sync-status.json",
-    "verifiedOriginals": 44,
-    "verifiedPassages": 46850,
-    "scope": "Cotejo de manifiestos y huellas declaradas del índice R2; no implica integridad bibliográfica ni collatio de manuscritos."
-  }
+  ]
 }
