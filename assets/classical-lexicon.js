@@ -294,9 +294,26 @@ async function wiktionary(word,lang,depth=0){
   return entries.length?{entries,via:"online",sources:[{label:"Wiktionary (en)",url:"https://en.wiktionary.org/wiki/"+encodeURIComponent(word),license:"CC BY-SA 4.0"}]}:null;
  }catch{return null}
 }
+/* Editorial disambiguation for an attested Latin orthographic pair.
+ * Letter U/V equivalence is valid for searching manuscripts, but a folded
+ * spelling MUST NOT override the lemma of veritas (truth) with vereor (fear).
+ * Keep the source spelling in the passage, and expose a bounded ES gloss.
+ */
+function exactLatinLemmaOverride(word,lang){
+ if(lang!=="la"||!/^([vu])eritas$/i.test(String(word||"").normalize("NFC")))return null;
+ return{
+  word,lang,entries:[{lemma:"veritas, veritatis",morph:"sustantivo femenino · nominativo singular; grafía histórica ueritas/veritas",es:"verdad; veracidad; realidad",gloss:"truth; truthfulness; reality",lang:"la",source:"Glosa editorial revisada · veritas, -atis (léxico latino)"}],
+  via:"editorial-orthographic-disambiguation",
+  sources:[{label:"Acepción latina tradicional · veritas, -atis; comprobar contexto y edición"}],
+  note:"En este pasaje, ueritas es la grafía de veritas («verdad»); no deriva de vereor («temer»). La U/V se equipara para buscar, no para escoger un lema sin desambiguar.",
+  links:links("veritas","la","veritas")
+ };
+}
 async function lookupUncached(word,{lang,work,online=true}={}){
  const w=clean(word);if(!w)return{word:"",entries:[]};
  lang=lang||detectLang(w);
+ const correctedLemma=exactLatinLemmaOverride(w,lang);
+ if(correctedLemma)return correctedLemma;
  const place=await window.VitruviaToponyms?.lookup?.(w);
  if(place)return {word:w,lang,entries:[{lemma:place.nameLatin||place.nameAncient||place.label,morph:place.morphology?.[fold(w)]||"Topónimo antiguo · "+place.label,es:place.description,gloss:"",lang,source:place.sourceLabel||"Toponymicon editorial · fuente geográfica identificada"}],via:"documented-place",sources:(place.sources||[{label:place.sourceLabel||"Fuente geográfica",url:place.source}]),note:place.period||"",links:[[place.sourceLabel||"Fuente geográfica",place.source],...links(w,lang,place.nameLatin||place.nameAncient)]};
  const resident=window.VitruviaLexicon?.quickWord?.(w,lang);
