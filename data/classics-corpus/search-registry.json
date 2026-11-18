@@ -2,7 +2,7 @@
   "schema": "vitruvia-classics-search-registry-v1",
   "updated": "2026-11-18",
   "description": "Registro verificable de transcripciones HTML y textos JSON existentes que admiten búsqueda literal de contenido. No incluye automáticamente PDF escaneados, facsímiles ni fichas sin texto. Los índices auxiliares por locus y el aparato crítico se declaran por separado; no se suman a versiones textuales originales ni implican colación autóptica.",
-  "count": 372,
+  "count": 373,
   "works": 297,
   "entries": [
     {
@@ -2827,6 +2827,16 @@
       "path": "data/classics-corpus/plato-republic-grc.json",
       "reader": "classics-text-reader.html?work=plato-republic&lang=grc",
       "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
+      "workId": "plato-republic",
+      "author": "Platón",
+      "title": "Πολιτεία · Republic",
+      "language": "en",
+      "format": "json-passages",
+      "path": "data/classics-corpus/plato-republic-en.json",
+      "reader": "classics-text-reader.html?work=plato-republic&lang=grc&to=en",
+      "sourceDescription": "Traducción histórica en inglés de Paul Shorey (1930–1935), Perseus TEI (CC BY-SA 4.0); 278 páginas de Stephanus, sin alineación palabra por palabra."
     },
     {
       "workId": "plato-sophist",

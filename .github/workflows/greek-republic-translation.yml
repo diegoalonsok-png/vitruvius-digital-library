@@ -1,0 +1,33 @@
+name: Bibliotheca · candado griego y traducción de Platón
+on:
+  pull_request:
+    paths:
+      - 'data/classics-corpus/plato-republic-*.json'
+      - 'data/classics-corpus/search-registry.json'
+      - 'data/bibliotheca-graeca-latina-I-bce-I-ce.json'
+      - 'data/classics-corpus/bibliotheca-academic-fiches-2026-11-16.json'
+      - 'scripts/test-greek-republic-translation.mjs'
+      - '.github/workflows/greek-republic-translation.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'data/classics-corpus/plato-republic-*.json'
+      - 'data/classics-corpus/search-registry.json'
+      - 'data/bibliotheca-graeca-latina-I-bce-I-ce.json'
+      - 'data/classics-corpus/bibliotheca-academic-fiches-2026-11-16.json'
+      - 'scripts/test-greek-republic-translation.mjs'
+      - '.github/workflows/greek-republic-translation.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  verify-translation:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Comprobar que el griego y los 278 loci no se pierden
+        run: node scripts/test-greek-republic-translation.mjs
