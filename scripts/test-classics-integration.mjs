@@ -15,6 +15,10 @@ assert.equal(registry.entries.length,registry.count);
 assert.equal(coverage.works.length,coverage.totals.cataloguedWorks);
 const byId=new Map(coverage.works.map(w=>[w.id,w]));
 assert.equal(byId.size,coverage.works.length,"Duplicate works in coverage");
+const supplement=JSON.parse(read("data/bibliotheca-expansion-publicada-2026-11-16.json")).works;
+const bySupplement=new Map(supplement.map(w=>[w.id,w]));
+assert.equal(bySupplement.size,supplement.length,"Duplicate works in supplementary catalogue");
+assert([...bySupplement.keys()].every(id=>!byId.has(id)),"Supplement must not duplicate primary catalogue");
 const manifiestoR2=fs.existsSync(path.join(root,"data/r2/corpus-manifest.json"))?JSON.parse(read("data/r2/corpus-manifest.json")).obras:[];
 if(fs.existsSync(path.join(root,"data/r2/classics-expansion-manifest.json")))
  for(const row of JSON.parse(read("data/r2/classics-expansion-manifest.json")).editions||[])
@@ -25,9 +29,11 @@ for(const e of registry.entries){
  const key=[e.workId,e.language,e.path,e.edition||""].join("|");
  if(seen.has(key))errors.push("duplicate registry row: "+key);
  seen.add(key);seenWorks.add(e.workId);
- const work=byId.get(e.workId);
+ const work=byId.get(e.workId)||bySupplement.get(e.workId);
  if(!work){errors.push("Missing catalogue record for "+e.workId);continue}
- if(!work.localEditionLanguages.includes(e.language))
+ const declared=byId.has(e.workId)?work.localEditionLanguages||[]:
+  [...Object.keys(work.corpusFiles||{}),...(work.localVersions||[]).map(v=>v.language)];
+ if(!declared.includes(e.language))
   errors.push("Unreported local language "+e.workId+"/"+e.language);
  if(!/^(data\/(?:classics-corpus|structured|text|lexicon\/fontes)\/[a-zA-Z0-9._/-]+\.json|corpus\/[a-zA-Z0-9._/-]+\.html|https:\/\/libros\.vitruvius-digital-library\.org\/corpus\/[a-z0-9-]+\.json)$/.test(e.path||""))
   {errors.push("Unsafe registry path "+e.path);continue}
@@ -54,8 +60,8 @@ for(const e of registry.entries){
  if(reader&&!/^https?:\/\//.test(reader)&&!fs.existsSync(path.join(root,reader)))
   errors.push("Missing reader URL target: "+reader);
 }
-assert.equal(seenWorks.size,coverage.totals.locallyIndexedWorks,
- "Registry and public coverage indexed-work totals disagree");
+assert.equal([...seenWorks].filter(id=>byId.has(id)).length,coverage.totals.locallyIndexedWorks,
+ "Primary catalogue coverage must not count supplementary registered works");
 const translationCount=coverage.works.filter(w=>w.translationLanguages?.length);
 assert.equal(translationCount.length,coverage.totals.translatedWorksLocal,
  "Translation totals disagree with per-work metadata");
