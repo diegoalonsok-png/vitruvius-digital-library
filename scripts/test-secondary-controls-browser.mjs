@@ -112,7 +112,7 @@ try{
     [code,home],{timeout:10000});
    assert.equal((await page.locator("#home").innerText()).trim(),home,"Bibliotheca home link not translated");
   }
-  assert.match(await button.getAttribute("aria-label"),/Switch to|Activer|Activar/);
+  assert.match(await button.getAttribute("aria-label"),/Switch to|Activer|Activar|Cambiar/);
   console.log("PASS Bibliotheca color switch, contrast and language-sensitive label");
   await page.close();checked+=3;
  }
@@ -124,13 +124,69 @@ try{
   assert.equal(await page.locator("#vitruvius-secondary-toolbar").count(),0);
   await page.locator("#ui-language").selectOption("en");
   assert.equal(await page.locator("html").getAttribute("lang"),"en");
-  const theme=page.locator("#theme");await theme.click();
+  const theme=page.locator("#theme");
+  const oldMode=await page.locator("html").getAttribute("data-theme");
+  const oldBackground=await page.evaluate(()=>getComputedStyle(document.body).backgroundColor);
+  await theme.click();
+  assert.notEqual(await page.locator("html").getAttribute("data-theme"),oldMode,"Vitruvia appearance button did not switch theme");
+  assert.notEqual(await page.evaluate(()=>getComputedStyle(document.body).backgroundColor),oldBackground,"Vitruvia background did not change");
   assert.match(await theme.getAttribute("aria-label"),/Switch to/);
   await theme.click();
+  assert.equal(await page.locator("html").getAttribute("data-theme"),oldMode,"Vitruvia appearance button not reversible");
   await page.locator("#ui-language").selectOption("fr");
   assert.match(await theme.getAttribute("aria-label"),/Activer/);
   console.log("PASS Vitruvia native language and palette controls");
   await page.close();checked+=4;
+ }
+ // Portada: the colour panel must actually open, apply a colour and reset.
+ {
+  const page=await browser.newPage({viewport:{width:1350,height:850}});
+  await page.route(/^https?:\/\/(?!127\.0\.0\.1|localhost)/,route=>route.abort());
+  await page.goto(base+"index.html",{waitUntil:"domcontentloaded",timeout:30000});
+  const toggle=page.locator("#home-palette-toggle");
+  await toggle.waitFor({state:"visible",timeout:15000});
+  await toggle.click();
+  assert.equal(await toggle.getAttribute("aria-expanded"),"true","Home colour panel did not open");
+  const graphite=page.locator("#home-swatch-grid [aria-label='Fondo Grafito']");
+  await graphite.click();
+  assert.equal(await page.evaluate(()=>document.documentElement.style.getPropertyValue("--front-page-bg").trim()),"#15191e","Home graphite selection did not change background token");
+  await toggle.click();
+  await page.locator("#home-color-reset").click();
+  assert.equal(await page.evaluate(()=>document.documentElement.style.getPropertyValue("--front-page-bg").trim()),"#0b0e12","Home colour reset did not restore black");
+  console.log("PASS home colour picker: open, graphite, reset");
+  await page.close();checked+=3;
+ }
+ // Lexicon: regression for the notebook-export selector crash. A failed
+ // startup previously left the full language and colour toolbar half-initialized.
+ {
+  const page=await browser.newPage({viewport:{width:1350,height:850}});
+  await page.route(/^https?:\/\/(?!127\.0\.0\.1|localhost)/,route=>route.abort());
+  const errors=[];
+  page.on("pageerror",error=>errors.push(error.message));
+  await page.goto(base+"vitruvia-lexicon.html",{waitUntil:"domcontentloaded",timeout:30000});
+  const locale=page.locator("#lx-ui"),theme=page.locator("#theme");
+  await locale.waitFor({state:"visible",timeout:15000});
+  await theme.waitFor({state:"visible",timeout:15000});
+  await page.locator(".lx-palette-panel .lx-swatch").first().waitFor({state:"attached",timeout:10000});
+  for(const lang of ["en","fr","es"]){
+   await locale.selectOption(lang);
+   assert.equal(await page.locator("html").getAttribute("lang"),lang,"Lexicon interface locale did not change");
+   assert.equal(await locale.inputValue(),lang,"Lexicon locale select did not retain value");
+  }
+  const before=(await page.locator("html").getAttribute("data-theme"))||"dark";
+  await theme.click();
+  assert.notEqual(await page.locator("html").getAttribute("data-theme"),before,"Lexicon theme button has no effect");
+  await theme.click();
+  assert.equal(await page.locator("html").getAttribute("data-theme"),before,"Lexicon theme button cannot revert");
+  await page.locator(".lx-palette-panel .lx-swatch[aria-label='Marfil']").evaluate(el=>el.click());
+  assert.equal(await page.locator("html").getAttribute("data-theme"),"light","Lexicon marfil should select a light palette");
+  assert.equal(await page.evaluate(()=>document.documentElement.style.getPropertyValue("--lx-bg").trim()),"#f7f5ef","Lexicon palette did not set the background");
+  await page.reload({waitUntil:"domcontentloaded"});
+  await page.locator(".lx-palette-panel .lx-swatch").first().waitFor({state:"attached",timeout:10000});
+  assert.equal(await page.evaluate(()=>document.documentElement.style.getPropertyValue("--lx-bg").trim()),"#f7f5ef","Lexicon background preference was not restored");
+  assert(!errors.some(e=>/forEach is not a function|Cannot read properties of null/.test(e)),errors.join("\n"));
+  console.log("PASS Lexicon ES/EN/FR, reversible light/dark, marfil and preference persistence");
+  await page.close();checked+=8;
  }
  console.log("PASS "+checked+" repeated real-browser controls and background checks");
 }finally{await browser.close()}

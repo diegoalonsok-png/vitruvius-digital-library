@@ -2949,7 +2949,7 @@ async function init(){
  $("#col-run").addEventListener("click",collate);$("#col-example").addEventListener("click",loadCollationExample);
  $("#col-add").addEventListener("click",()=>{const n=$$(".col-wit").length;if(n>=6)return;const t=$(".col-wit").cloneNode(true);t.querySelector(".col-sig").value=String.fromCharCode(66+n);t.querySelector("textarea").value="";$("#col-wits").append(t)});
  $("#nb-add").addEventListener("click",()=>{const text=prompt("Texto del pasaje (latín, griego o hebreo):");if(!text)return;const cite=prompt("Referencia (p. ej. Vitr. 1.1.1):")||"Pasaje";addToNotebook({cite,text,lang:detectLang(text)})});
- $("[data-nb-export]").forEach(b=>b.addEventListener("click",()=>nbExport(b.dataset.nbExport)));
+ $$("[data-nb-export]").forEach(b=>b.addEventListener("click",()=>nbExport(b.dataset.nbExport)));
  const nbFile=$("#nb-import-file"),nbTrigger=$("#nb-import-trigger");
  nbTrigger?.addEventListener("click",()=>nbFile?.click());
  nbFile?.addEventListener("change",()=>{const file=nbFile.files?.[0];void nbImportFile(file).finally(()=>{nbFile.value=""})});

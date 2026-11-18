@@ -1,0 +1,48 @@
+name: Botones de idioma y color · prueba real en navegador
+on:
+  pull_request:
+    paths:
+      - 'assets/vitruvia-ui-controls.js'
+      - 'assets/vitruvia-lexicon.js'
+      - 'vitruvia.html'
+      - 'vitruvia-lexicon.html'
+      - 'scripts/test-secondary-controls-browser.mjs'
+      - '.github/workflows/controls-language-color.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'assets/vitruvia-ui-controls.js'
+      - 'assets/vitruvia-lexicon.js'
+      - 'vitruvia.html'
+      - 'vitruvia-lexicon.html'
+      - 'scripts/test-secondary-controls-browser.mjs'
+      - '.github/workflows/controls-language-color.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  language-and-color:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          lfs: false
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Verificar sintaxis de los controladores
+        run: |
+          node --check assets/vitruvia-lexicon.js
+          node --check assets/vitruvia-ui-controls.js
+          node --check scripts/test-secondary-controls-browser.mjs
+      - name: Preparar navegador Chromium
+        run: |
+          npm install --no-save playwright@1.56.1
+          npx playwright install --with-deps chromium
+      - name: Probar idiomas y colores en navegación real
+        run: |
+          python3 -m http.server 8766 --bind 127.0.0.1 >/tmp/vdl-controls-http.log 2>&1 &
+          sleep 2
+          node scripts/test-secondary-controls-browser.mjs
