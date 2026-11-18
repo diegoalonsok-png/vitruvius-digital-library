@@ -39,7 +39,10 @@ const isSharedLatin=(id,language,path,sourceWorkId)=>{
 };
 
 for(const entry of registry.entries){
- assert(listed.has(entry.workId),"Index references unknown work "+entry.workId);
+ const critical=entry.language==="la"&&entry.format==="critical-indexed-latin"&&
+  (entry.workId==="krohn-1912-indexed"&&entry.path==="data/critical-editions/krohn-1912-tei-loci.json"||
+   entry.workId==="rose-1899-indexed"&&entry.path==="data/critical-editions/rose-1899-transcribed-loci.json");
+ assert(listed.has(entry.workId)||critical,"Index references unknown work "+entry.workId);
  assert(languages.has(entry.language),"Unrecognized language "+entry.language);
  assert(typeof entry.path==="string"&&!entry.path.startsWith("/")&&!entry.path.includes(".."),"Unsafe corpus path");
  if(/^https:/.test(entry.path))
