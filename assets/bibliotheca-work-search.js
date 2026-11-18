@@ -124,6 +124,8 @@ const safeReader=s=>typeof s==="string"&&(
  /^(?:classics-text-reader|lector-bilingue|classics-parallel-reader|classics-remote-[a-z-]+-reader)\.html\?[\w.%=&+-]+$/.test(s)||
  /^corpus\/[a-z0-9/_-]+\.html$/i.test(s))?s:null;
 const workLink=id=>"classics-work-record.html?work="+encodeURIComponent(id);
+// Acceso transversal sin atribuir lemas ni correspondencias de loci no verificadas.
+const lexiconWorkLink=id=>"vitruvia-lexicon.html?"+new URLSearchParams({work:id,mode:"palabra",lang:"auto"});
 const facLink=id=>"buscador-facsimiles-clasicos.html?obra="+encodeURIComponent(id);
 const safeR2Pdf=url=>typeof url==="string"&&/^https:\/\/libros\.vitruvius-digital-library\.org\/clasicos\/pdf\/[a-z0-9-]+\.pdf$/.test(url)?url:"";
 // Manuscript witnesses are records linked to a work, never additional works.
@@ -578,6 +580,7 @@ function render(){
    if(w.heritageReader)addLink(actions,"Abrir edición histórica · "+w.heritageYear,heritageLink(w.heritageReader));
    const parallel=compareLink(w);if(parallel)addLink(actions,"Cotejar versiones registradas",parallel);
    if(w.facsimile)addLink(actions,"Ver facsímil",facLink(w.facsimile));
+    if(w.versions.some(v=>safeReader(v.reader)))addLink(actions,"Lexicon · vocabulario de esta obra",lexiconWorkLink(w.id));
     addRecordedEditions(actions,w);
    if(w.id==="vitruvius")addLink(actions,"Ediciones, traducciones y códices","classics-work-record.html?work=vitruvius");
    else if(!w.newWork&&!w.registryOnly)addLink(actions,"Ficha académica",workLink(w.id));
@@ -614,6 +617,7 @@ function render(){
   if(w.heritageReader)addLink(actions,"Abrir edición histórica · "+w.heritageYear,heritageLink(w.heritageReader));
   const parallel=compareLink(w);if(parallel)addLink(actions,"Cotejar versiones registradas",parallel);
    if(w.facsimile)addLink(actions,"Ver facsímil",facLink(w.facsimile));
+    if(w.versions.some(v=>safeReader(v.reader)))addLink(actions,"Lexicon · vocabulario de esta obra",lexiconWorkLink(w.id));
     addRecordedEditions(actions,w);
   if(!w.newWork&&!w.registryOnly)addLink(actions,"Ficha académica",workLink(w.id));
   item.append(actions);if(!(w.id==="vitruvius"&&isVitruviusQuery(q)))renderVitruvianCodices(item,w);list.append(item);
