@@ -81,7 +81,7 @@ def diagnostic_html_difference(path):
         pages, cloud = get_html(ORIGINS["github_pages"]), get_html(ORIGINS["cloudflare"])
         offset = next((i for i, (a, b) in enumerate(zip(pages, cloud)) if a != b), min(len(pages), len(cloud)))
         def markers(html):
-            match = re.search(r'<script[^>]+src=["\\']([^"\\']*scriptorium-triple\\.js[^"\\']*)', html, re.I)
+            match = re.search(r"scriptorium-triple[.]js(?:[?]v=[A-Za-z0-9_-]+)?", html)
             return {
                 "triple_script": match.group(1) if match else None,
                 "latin_triad_intro": "latín original indexado" in html and "Rose (1899" in html,
