@@ -50,6 +50,12 @@ jobs:
             git fetch origin main
             git reset --hard origin/main
             python scripts/import-classics-verified-translations.py --max-new 12
+            # Reutilizar el indexador existente; nunca anunciar textos que no
+            # hayan entrado realmente en el índice léxico de Bibliotheca.
+            if python -c "import json; assert json.load(open('data/classics-corpus/translation-import-status.json'))['newTranslations'] > 0"; then
+              node scripts/build-classics-lexical-index.mjs
+              node scripts/test-classics-lexical-index.mjs
+            fi
             python scripts/build_classics_semantic_index.py
             python scripts/sync-classics-coverage.py
             python scripts/audit-classics-222-roadmap.py
@@ -61,6 +67,8 @@ jobs:
             python scripts/sync-classics-coverage.py
             python scripts/audit-classics-222-roadmap.py
             git add data/bibliotheca-graeca-latina-I-bce-I-ce.json
+            git add data/bibliotheca-expansion-publicada-2026-11-16.json
+            git add data/index/classics
             git add data/classics-corpus
             git add data/classics-corpus/indexation-roadmap-222.json
             if git diff --cached --quiet; then
