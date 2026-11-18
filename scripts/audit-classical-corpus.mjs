@@ -12,6 +12,12 @@ const registry=read("data/classics-corpus/search-registry.json");
 assert(Array.isArray(catalog.works)&&catalog.works.length>0);
 assert.equal(registry.schema,"vitruvia-classics-search-registry-v1");
 const works=catalog.works,byId=new Map(works.map(w=>[w.id,w]));
+const supplemental=read("data/bibliotheca-expansion-publicada-2026-11-16.json").works;
+const supplementaryIds=new Set(supplemental.map(w=>w.id));
+assert.equal(supplementaryIds.size,supplemental.length,"Duplicate supplemental work ID");
+assert([...supplementaryIds].every(id=>!byId.has(id)),"Supplement duplicates primary catalogue");
+const criticalEditionPaths=new Map([["krohn-1912-indexed","data/critical-editions/krohn-1912-tei-loci.json"],["rose-1899-indexed","data/critical-editions/rose-1899-transcribed-loci.json"]]);
+
 assert.equal(byId.size,works.length,"Duplicate work ID");
 const groups=Object.fromEntries([...new Set(works.map(w=>w.publicStatus||"sin-estado"))].map(k=>[k,works.filter(w=>(w.publicStatus||"sin-estado")===k).length]));
 const invalid=[],checked=[];
@@ -51,9 +57,16 @@ assert.equal(favText.sourceBlobSha,"8103380371d27dd1fd954b77e61b3d6df68e4f3a","S
 assert(registry.entries.some(e=>e.workId==="vitruvius"),"The already indexed De architectura must remain intact");
 const unique=new Set(),languages={},formats={};
 for(const entry of registry.entries){
- assert(byId.has(entry.workId),"Search record has unknown work "+entry.workId);
+ assert(byId.has(entry.workId)||supplementaryIds.has(entry.workId)||criticalEditionPaths.has(entry.workId),
+  "Search record has unknown work "+entry.workId);
  assert(["la","grc","es","en","fr","it","de","pt"].includes(entry.language),"Invalid language");
- assert(["html-text","json-passages","structured-bilingual","historical-ocr-pages"].includes(entry.format),"Invalid index format");
+ assert(["html-text","json-passages","structured-bilingual","historical-ocr-pages","critical-indexed-latin"].includes(entry.format),"Invalid index format");
+ if(entry.format==="critical-indexed-latin"){
+  assert.equal(entry.language,"la","Modern Latin critical edition must be indexed as Latin");
+  assert.equal(entry.path,criticalEditionPaths.get(entry.workId),"Unknown or misrouted modern critical edition");
+  assert(existsSync(pathOf(entry.path)),"Missing critical edition text "+entry.path);
+  continue; // Not another ancient author/work or a Greek translation.
+ }
  if(unique.has(entry.path))assert(entry.format==="structured-bilingual"&&entry.workId==="vitruvius",
   "Duplicate indexed file "+entry.path);
  unique.add(entry.path);
@@ -215,7 +228,9 @@ const localWorks=works.filter(w=>w.publicStatus==="lectura-local-completa"||w.pu
 const published=read("data/classics-corpus/coverage-audit.json");
 assert.equal(published.schema,"vitruvia-classics-coverage-audit-v1");
 assert.equal(published.works.length,works.length,"Public coverage report is stale (work count)");
-assert.equal(published.counts.indexedTextVersions,registry.entries.length,"Public coverage report is stale (indexed versions)");
+const primaryRegistry=registry.entries.filter(e=>byId.has(e.workId));
+assert.equal(published.counts.indexedTextVersions,primaryRegistry.length,"Public MAIN-catalogue coverage report is stale (indexed versions)");
+assert.equal(published.counts.indexedDistinctWorks,new Set(primaryRegistry.map(e=>e.workId)).size,"Public MAIN-catalogue coverage work count is stale");
 const publicMap=new Map(published.works.map(w=>[w.id,w]));
 assert.equal(publicMap.size,works.length,"Duplicate/missing entry in public coverage audit");
 for(const w of works){
