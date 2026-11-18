@@ -472,13 +472,18 @@ html[data-theme=light] .featured a#featured-link{background:#232326;color:#fff}
   </nav>
  </aside>
 </section>
-<!--METRICS--><div class="metrics" id="lx-metrics"><span title="Identificadores únicos en griego o latín recogidos por el índice invertido general; no equivale a lematización"><b id="lx-indexed-works" aria-live="polite">—</b>obras originales con índice general</span><span title="Corpus especializado de morfología y lematización, diferente del índice general de Bibliotheca"><b>22</b>obras en corpus léxico especializado</span><span><b>7.322</b>pasajes</span><span><b>1.120.648</b>palabras indexadas</span><span><b>121.435</b>formas lematizadas</span><span><b>29.828</b>lemas con glosa LSJ / Lewis &amp; Short</span><span><b data-m="etym">115</b>fichas etimológicas</span><span><b data-m="sent">60</b>sententiae</span></div><!--/METRICS-->
+<!--METRICS--><div class="metrics" id="lx-metrics" aria-label="Cobertura técnica del índice general">
+<span title="Entradas de edición o versión textual del manifiesto; no equivale al número de obras únicas"><b id="lx-index-editions" aria-live="polite">—</b>ediciones y versiones en índice general</span>
+<span title="Segmentos textuales declarados en el índice invertido"><b id="lx-index-passages" aria-live="polite">—</b>pasajes del índice</span>
+<span title="Total de tokens del índice invertido; no equivale a palabras lematizadas"><b id="lx-index-tokens" aria-live="polite">—</b>tokens indexados</span>
+<span title="Formas del índice, sin afirmar lematización morfológica completa"><b id="lx-index-forms" aria-live="polite">—</b>formas registradas</span>
+</div><!--/METRICS-->
 <details class="lx-study-guide" id="lx-study-guide">
  <summary>Guía de uso académico · cómo interpretar resultados y verificar pasajes</summary>
- <p><strong>Corpus léxico especializado y búsqueda general:</strong> las 22 obras indicadas en el resumen pertenecen al corpus especializado descrito en este inventario; no representan la totalidad del índice de búsqueda de Bibliotheca. El índice general de originales y traducciones es un índice invertido por raíces y pasajes, <strong>no un corpus totalmente lematizado</strong>. No se deben sumar ediciones, traducciones y originales como si fueran obras distintas. <a href="data/index/classics/manifest.json">Consultar la cobertura técnica del índice general (JSON)</a> · <a href="index-auctorum-operum.html">Índice de autores y obras</a>.</p>
+ <p><strong>Alcance del índice general:</strong> los indicadores superiores se obtienen del manifiesto técnico vigente y describen ediciones, pasajes, tokens y formas registradas; <strong>no equivalen al número de obras únicas ni a un corpus íntegramente lematizado</strong>. La búsqueda de originales y traducciones utiliza un índice invertido por raíces y pasajes. No se deben sumar ediciones, traducciones y originales como si fueran obras distintas. <a href="data/index/classics/manifest.json">Consultar la cobertura técnica del índice general (JSON)</a> · <a href="index-auctorum-operum.html">Índice de autores y obras</a>.</p>
  <p><strong>Cobertura parcial:</strong> una obra puede estar indexada solo en algunos libros o capítulos; debe comprobarse la extensión exacta en la ficha y la edición consultada. La comparación con una traducción requiere correspondencia verificada por locus, no solo traducción automática.</p>
  <p><strong>Lematización automática:</strong> una forma puede corresponder a varios lemas. <strong>✓</strong> indica una corrección manual documentada; no una validación completa del análisis. <strong>Ficha etimológica:</strong> desarrollo editorial selectivo, sujeto a sus fuentes. <strong>Glosa:</strong> resumen de diccionario, no sustituto de Lewis &amp; Short ni LSJ. Las equivalencias de otras lenguas son relaciones semánticas documentables, no necesariamente cognados.</p>
- <p>Para comprobar un término, abra el <strong>locus exacto</strong> en el lector bilingüe y compare las ediciones V514, V554 y V297. Las coincidencias automáticas y las traducciones no deben interpretarse como variantes manuscritas verificadas.</p>
+ <p>Para comprobar un término, abra el <strong>locus exacto</strong> en el lector bilingüe y compare las ediciones disponibles y sus atribuciones bibliográficas (para Vitruvio: Krohn, Rose y Kurilo, cuando corresponda). Las coincidencias automáticas y las traducciones no deben interpretarse como variantes manuscritas verificadas.</p>
  <p><a href="protocolo-academico-lexicon.html">Protocolo académico del Lexicon</a> · <a href="metodologia-filologica.html">Metodología filológica</a> · <a href="aparato-critico.html">Aparato crítico</a></p>
 </details>
 <details class="lx-study-guide" id="lx-technical-terms">
@@ -486,18 +491,28 @@ html[data-theme=light] .featured a#featured-link{background:#232326;color:#fff}
  <p>Acceda a las concordancias disponibles de cada término. La presencia en este índice de consultas <strong>no implica que cada voz tenga una ficha etimológica completa</strong>.</p>
  <p class="lx-technical-links"><a href="vitruvia-lexicon.html?q=ordinatio&amp;mode=palabra&amp;work=vitruvius" lang="la">ordinatio</a> · <a href="vitruvia-lexicon.html?q=dispositio&amp;mode=palabra&amp;work=vitruvius" lang="la">dispositio</a> · <a href="vitruvia-lexicon.html?q=eurythmia&amp;mode=palabra&amp;work=vitruvius" lang="la">eurythmia</a> · <a href="vitruvia-lexicon.html?q=decor&amp;mode=palabra&amp;work=vitruvius" lang="la">decor</a> · <a href="vitruvia-lexicon.html?q=distributio&amp;mode=palabra&amp;work=vitruvius" lang="la">distributio</a> · <a href="vitruvia-lexicon.html?q=modulus&amp;mode=palabra&amp;work=vitruvius" lang="la">modulus</a> · <a href="vitruvia-lexicon.html?q=proportio&amp;mode=palabra&amp;work=vitruvius" lang="la">proportio</a> · <a href="vitruvia-lexicon.html?q=machina&amp;mode=palabra&amp;work=vitruvius" lang="la">machina</a> · <a href="vitruvia-lexicon.html?q=norma&amp;mode=palabra&amp;work=vitruvius" lang="la">norma</a></p>
 </details>
-<!-- La cobertura general proviene de la auditoría del catálogo; no debe confundirse con el corpus léxico local. -->
+<!-- Los datos del índice se leen del manifiesto publicado; las obras únicas del catálogo se auditan aparte. -->
 <script>
 (function(){
   var catalogue=document.getElementById('lx-catalogue-works');
   var indexed=document.getElementById('lx-indexed-works');
+  var metrics={works:'lx-index-editions',passages:'lx-index-passages',tokens:'lx-index-tokens',forms:'lx-index-forms'};
+  function setNumber(id,n){
+    var target=document.getElementById(id);
+    if(target && Number.isSafeInteger(n) && n>=0) target.textContent=n.toLocaleString('es');
+  }
+  fetch('data/index/classics/manifest.json',{cache:'no-cache'})
+    .then(function(r){if(!r.ok)throw new Error('Índice no disponible');return r.json()})
+    .then(function(data){
+      Object.keys(metrics).forEach(function(key){setNumber(metrics[key],data&&data[key]);});
+    }).catch(function(){/* No mostrar cifras fijas antiguas si el manifiesto no responde. */});
   fetch('data/classics-corpus/coverage-audit.json',{cache:'no-cache'})
-    .then(function(response){if(!response.ok)throw new Error('Coverage unavailable');return response.json()})
+    .then(function(r){if(!r.ok)throw new Error('Auditoría no disponible');return r.json()})
     .then(function(data){
       var counts=data&&data.counts||{};
-      if(Number.isInteger(counts.cataloguedWorks)&&counts.cataloguedWorks>=0)catalogue.textContent=counts.cataloguedWorks.toLocaleString('es');
-      if(Number.isInteger(counts.indexedDistinctWorks)&&counts.indexedDistinctWorks>=0)indexed.textContent=counts.indexedDistinctWorks.toLocaleString('es');
-    }).catch(function(){/* Mantener las cifras de respaldo correspondientes a la auditoría del 2026-11-08. */});
+      setNumber('lx-catalogue-works',counts.cataloguedWorks);
+      setNumber('lx-indexed-works',counts.indexedDistinctWorks);
+    }).catch(function(){/* Mantener el recuento no disponible en lugar de publicar datos no verificados. */});
 })();
 </script>
 
