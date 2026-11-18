@@ -9,6 +9,8 @@ assert.equal(totals.schema,"vdl-cifras-corpus-1");
 assert.equal(totals.obrasTotalesDeclaradas,totals.obras+totals.obrasSuplementarias+totals.obrasAdicionales);
 assert(totals.obrasConTextoIndexado<=totals.obrasTotalesDeclaradas);
 assert(js.includes('fetch(TOTALS_URL,{cache:"no-cache"})'));
+const generic=fs.readFileSync("assets/cifra-obras.js","utf8");
+assert(generic.includes('nodo.dataset.cifra==="obrasConTextoIndexado"&&document.querySelector("[data-vdl-works-explorer]")'),"Generic counter must not overwrite the expanded homepage count");
 assert(js.includes('const all=totals.obrasTotalesDeclaradas,indexed=totals.obrasConTextoIndexado'));
 assert(js.includes('items.all.map((item,i)'),"Find catalogue-only works too");
 assert(js.includes('if(q.length<2)'),"Inline search waits for two characters");
