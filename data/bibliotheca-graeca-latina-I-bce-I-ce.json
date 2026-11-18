@@ -2597,11 +2597,7 @@
         "status": "Pendiente de acreditar un PDF de una edición histórica específica"
       },
       "translation": {
-        "status": "Traducción inglesa histórica Hamilton/Falconer (1854–1857), texto TEI Perseus indexable por 1516 secciones numéricas; los fragmentos especiales del libro VII siguen sin traducción emparejada.",
-        "language": "en",
-        "translator": "Hans Claude Hamilton y William Falconer",
-        "alignmentStatus": "1516-numeric-cts-sections-mapped-special-fragments-unmatched",
-        "sourceUrn": "urn:cts:greekLit:tlg0099.tlg001.perseus-eng4"
+        "status": "Sin traducción individual vinculada todavía; consultar las disponibles en la fuente"
       },
       "links": {
         "scaife": "https://scaife.perseus.org/library/",
@@ -2620,18 +2616,8 @@
         "Geographica"
       ],
       "corpusFiles": {
-        "grc": "data/classics-corpus/strabo-grc.json",
-        "en": "data/classics-corpus/strabo-en.json"
+        "grc": "data/classics-corpus/strabo-grc.json"
       },
-      "localVersions": [
-        {
-          "language": "en",
-          "label": "English · Hamilton / Falconer (1854–1857)",
-          "path": "classics-text-reader.html?work=strabo&lang=en",
-          "kind": "historical-translation",
-          "citationChicago18": "Strabo. The Geography of Strabo. Translated by Hans Claude Hamilton and William Falconer. London: Henry G. Bohn, 1854–1857. TEI edition, Perseus Digital Library, Tufts University."
-        }
-      ],
       "century": "I a. C.–I",
       "period": "I a. C.–I",
       "lexicalIndex": {
@@ -21557,12 +21543,7 @@
         "status": "No consta una digitalización PDF específica verificada en esta ficha."
       },
       "translation": {
-        "status": "Traducción inglesa de John Henry Freese (1926), TEI Perseus CC BY-SA 4.0, 882 secciones indexables. Correspondencia formal de referencias CTS griego–inglés, no alineación por palabra.",
-        "language": "en",
-        "translator": "John Henry Freese",
-        "editionYear": 1926,
-        "sourceUrn": "urn:cts:greekLit:tlg0086.tlg038.perseus-eng2",
-        "alignmentStatus": "section-identifiers-verified-not-word-aligned"
+        "status": "Traducción no incorporada ni alineada con una edición identificada."
       },
       "links": {
         "scaife": "https://scaife.perseus.org/library/",
@@ -21586,18 +21567,8 @@
         "note": "Pasajes de De architectura en los que Vitruvio nombra a este autor (latín de la edición V514); la mención no implica cita literal de esta obra concreta."
       },
       "corpusFiles": {
-        "grc": "data/classics-corpus/aristotle-rhetoric-grc.json",
-        "en": "data/classics-corpus/aristotle-rhetoric-en.json"
+        "grc": "data/classics-corpus/aristotle-rhetoric-grc.json"
       },
-      "localVersions": [
-        {
-          "language": "en",
-          "label": "English · John Henry Freese (1926)",
-          "path": "classics-text-reader.html?work=aristotle-rhetoric&lang=en",
-          "kind": "historical-translation",
-          "citationChicago18": "Aristotle. The Art of Rhetoric. Translated by John Henry Freese. London: William Heinemann; Cambridge, MA: Harvard University Press, 1926. TEI edition, Perseus Digital Library, Tufts University."
-        }
-      ],
       "indexationAudit": {
         "previousPublicStatus": "repertoriado-busqueda-externa",
         "registryVersionCount": 1,
