@@ -8,7 +8,11 @@ const browser=await chromium.launch({headless:true});
 let checks=0;
 async function open(path){
  const page=await browser.newPage({viewport:{width:1365,height:900}});
- await page.route(/^https?:\/\/(?!127\.0\.0\.1|localhost)/,route=>route.abort());
+ await page.route(/^https?:\/\//,route=>{
+  const requestUrl=new URL(route.request().url());
+  if(requestUrl.host===new URL(base).host)return route.continue();
+  return route.abort(); // Never send requests to third-party scripts or services.
+ });
  const response=await page.goto(base+path,{waitUntil:"domcontentloaded",timeout:30000});
  assert.equal(response?.status(),200,"HTTP "+path);
  return page;
