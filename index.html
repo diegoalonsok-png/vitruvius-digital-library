@@ -543,6 +543,27 @@ html[data-theme="dark"].front-color-light .research-nav-controls>.research-print
 .research-nav .research-nav-group-items>a:is(:hover,:focus-visible){background:#293c52!important;color:#fff!important}
 @media(max-width:1080px){.research-nav .research-nav-links.research-nav-categories{grid-template-columns:repeat(3,max-content)!important;grid-auto-rows:30px!important}}
 @media(max-width:670px){.research-nav .research-nav-links.research-nav-categories{grid-template-columns:repeat(2,minmax(0,1fr))!important;width:100%!important}.research-nav .research-nav-group>summary{font-size:11px!important}.research-nav .research-nav-group-items{position:static!important;max-width:100%!important;width:100%!important}.research-nav .research-nav-group[open]{grid-column:1/-1}}
+
+/* Ajuste limitado a Bibliotheca: junto a Vitruvia/Lexicon y con la altura
+   de ambos accesos. Se conservan los textos, colores y estilos originales. */
+.research-nav .research-nav-controls>.research-bibliotheca-pair{
+  display:inline-flex!important;flex:0 1 auto!important;order:-1!important;
+  align-items:stretch!important;gap:9px!important;min-width:0!important;max-width:100%!important
+}
+.research-nav .research-nav-controls>.research-bibliotheca-pair>a.bibliotheca-top-link{
+  display:inline-flex!important;align-self:stretch!important;justify-content:center!important;
+  flex:0 0 clamp(184px,11vw,224px)!important;min-height:0!important;height:auto!important;
+  box-sizing:border-box!important;white-space:normal!important;padding:9px 11px!important
+}
+.research-nav .research-nav-controls>.research-bibliotheca-pair>.vitruvia-top-stack{
+  flex:0 1 auto!important;min-width:0!important
+}
+@media(max-width:620px){
+  .research-nav .research-nav-controls>.research-bibliotheca-pair{flex-wrap:wrap!important}
+  .research-nav .research-nav-controls>.research-bibliotheca-pair>a.bibliotheca-top-link{
+    min-height:60px!important;flex:1 1 190px!important
+  }
+}
 </style>
 <script defer src="assets/research-nav-accordion.js?v=20261118-two-subtle-rows"></script>
 </head>
@@ -615,8 +636,10 @@ html[data-theme="dark"].front-color-light .research-nav-controls>.research-print
         <div class="research-nav-controls">
           <a class="research-lab-button" href="laboratorio-h.html" title="Folio original, transcripción latina legible y traducción sincronizada">Laboratorio H</a>
           <button type="button" id="print-home" class="research-print-button" aria-label="Imprimir o guardar como PDF el texto seleccionado" title="Selecciona un texto antes de generar su PDF"><span aria-hidden="true">⎙</span><span class="sr-only">Imprimir</span></button>
-          <span class="vitruvia-top-stack"><a class="vitruvia-top-link" href="vitruvia.html" aria-labelledby="vitruvia-entry-name vitruvia-entry-description"><svg class="vitruvia-wing-v" viewBox="0 0 78 79" aria-hidden="true" focusable="false"><path d="M11 12 C17 28 24 49 35 66 C46 47 59 22 69 2" fill="none" stroke="currentColor" stroke-width="4.3" stroke-linecap="square" stroke-linejoin="round"/><path d="M7 12 L19 12 M63 2 L73 2" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="square"/></svg><span class="vitruvia-top-copy"><strong id="vitruvia-entry-name">Vitruvia</strong><small id="vitruvia-entry-description">Buscador académico en la web</small></span></a><a class="vitruvia-top-link lexicon-top-link" href="vitruvia-lexicon.html" aria-labelledby="lexicon-entry-name lexicon-entry-description"><span class="lexicon-glyph" aria-hidden="true">Λ</span><span class="vitruvia-top-copy"><strong id="lexicon-entry-name">Lexicon</strong><small id="lexicon-entry-description">Griego y latín · etimología y frases</small></span></a></span>
-          <a class="bibliotheca-top-link" href="bibliotheca-graeca-latina.html" aria-label="Abrir Bibliotheca Graeca et Latina, catálogo de autores y obras clásicas"><span class="bibliotheca-top-monogram" aria-hidden="true">B</span><span class="bibliotheca-top-copy"><strong>Bibliotheca</strong><small>Graeca et Latina</small></span></a>
+          <span class="research-bibliotheca-pair">
+            <a class="bibliotheca-top-link" href="bibliotheca-graeca-latina.html" aria-label="Abrir Bibliotheca Graeca et Latina, catálogo de autores y obras clásicas"><span class="bibliotheca-top-monogram" aria-hidden="true">B</span><span class="bibliotheca-top-copy"><strong>Bibliotheca</strong><small>Graeca et Latina</small></span></a>
+            <span class="vitruvia-top-stack"><a class="vitruvia-top-link" href="vitruvia.html" aria-labelledby="vitruvia-entry-name vitruvia-entry-description"><svg class="vitruvia-wing-v" viewBox="0 0 78 79" aria-hidden="true" focusable="false"><path d="M11 12 C17 28 24 49 35 66 C46 47 59 22 69 2" fill="none" stroke="currentColor" stroke-width="4.3" stroke-linecap="square" stroke-linejoin="round"/><path d="M7 12 L19 12 M63 2 L73 2" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="square"/></svg><span class="vitruvia-top-copy"><strong id="vitruvia-entry-name">Vitruvia</strong><small id="vitruvia-entry-description">Buscador académico en la web</small></span></a><a class="vitruvia-top-link lexicon-top-link" href="vitruvia-lexicon.html" aria-labelledby="lexicon-entry-name lexicon-entry-description"><span class="lexicon-glyph" aria-hidden="true">Λ</span><span class="vitruvia-top-copy"><strong id="lexicon-entry-name">Lexicon</strong><small id="lexicon-entry-description">Griego y latín · etimología y frases</small></span></a></span>
+          </span>
           <span class="header-languages" aria-label="Seleccionar idioma de interfaz" title="Seleccionar idioma / Select language"></span>
         </div>
       </div>
