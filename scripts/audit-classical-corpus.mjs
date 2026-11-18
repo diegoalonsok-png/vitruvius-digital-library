@@ -152,6 +152,31 @@ for(const w of allWorks){
   const intersect=[...ol].filter(l=>tl.has(l)).length;
   assert(target.passages.every(p=>typeof p.text==="string"&&p.text.trim().length>0),"Empty translated passage: "+translation.path);
   if(intersect===0){
+   // A CTS edition URN is edition-specific. Three TEI Plato translations
+   // share Stephanus section numbers with their Greek counterparts, not the
+   // complete URN nor word-level alignment. Verify every section one-to-one
+   // without editing the protected Greek or English text.
+   const stephanusKey=(locus,lang)=>{
+    const m=new RegExp("^urn:cts:greekLit:(tlg[0-9]+\\.tlg[0-9]+)\\.perseus-"+lang+"[0-9]+:([0-9]+)$").exec(locus);
+    return m?m[1]+":"+m[2]:null;
+   };
+   const greekKeys=[...ol].map(locus=>stephanusKey(locus,"grc"));
+   const englishKeys=[...tl].map(locus=>stephanusKey(locus,"eng"));
+   const sharedStephanus=translation.language==="en"&&
+    ["plato-parmenides","plato-sophist","plato-theaetetus"].includes(w.id)&&
+    target.sourceType==="published-english-translation-tei"&&
+    /por sección Stephanus, no alineación palabra a palabra/i.test(target.editorialStatus||"")&&
+    greekKeys.length>10&&greekKeys.every(Boolean)&&
+    englishKeys.length===greekKeys.length&&englishKeys.every(Boolean)&&
+    new Set(greekKeys).size===greekKeys.length&&
+    new Set(englishKeys).size===englishKeys.length&&
+    greekKeys.every(key=>englishKeys.includes(key));
+   if(sharedStephanus){
+    verifiedParallel.push({work:w.id,original:"grc",translation:"en",
+     originalLoci:ol.size,translatedLoci:tl.size,sharedLoci:0,
+     sharedBibliographicSections:greekKeys.length,alignmentLevel:"Stephanus section references only; no verbal collation"});
+    continue;
+   }
    assert.equal(target.alignmentStatus,"unaligned","Original and translation have no shared locus (undeclared): "+w.id+" / "+translation.language);
    assert(typeof target.alignment==="string"&&/no equivalencias|no alinead/i.test(target.alignment),"Unaligned translation needs an explicit reader-facing warning: "+translation.path);
    explicitlyUnaligned.push({work:w.id,translation:translation.language,reason:target.alignment});
