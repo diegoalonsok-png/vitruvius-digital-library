@@ -2,7 +2,7 @@
   "schema": "vitruvia-classics-search-registry-v1",
   "updated": "2026-11-17",
   "description": "Registro verificable de transcripciones HTML y textos JSON existentes que admiten búsqueda literal de contenido. No incluye automáticamente PDF escaneados, facsímiles ni fichas sin texto. Los índices auxiliares por locus y el aparato crítico se declaran por separado; no se suman a versiones textuales originales ni implican colación autóptica.",
-  "count": 367,
+  "count": 369,
   "works": 297,
   "entries": [
     {
@@ -2628,6 +2628,16 @@
       "workId": "plato-euthyphro",
       "author": "Platón",
       "title": "Εὐθύφρων",
+      "language": "en",
+      "format": "json-passages",
+      "path": "data/classics-corpus/plato-euthyphro-en.json",
+      "reader": "classics-text-reader.html?work=plato-euthyphro&lang=en",
+      "sourceDescription": "Traducción histórica inglesa de Harold North Fowler (1914), Perseus TEI, CC BY-SA 4.0; secciones Stephanus sin alineación automática con párrafos griegos."
+    },
+    {
+      "workId": "plato-euthyphro",
+      "author": "Platón",
+      "title": "Εὐθύφρων",
       "language": "grc",
       "format": "json-passages",
       "path": "data/classics-corpus/plato-euthyphro-grc.json",
@@ -2847,6 +2857,16 @@
       "path": "data/classics-corpus/plato-sophist-grc.json",
       "reader": "classics-text-reader.html?work=plato-sophist&lang=grc",
       "sourceDescription": "Perseus Digital Library · tlg0059.tlg007 · 53 secciones de Stephanus · edición griega de John Burnet; texto TEI indexado, no OCR ni traducción automática"
+    },
+    {
+      "workId": "plato-statesman",
+      "author": "Platón",
+      "title": "Πολιτικός",
+      "language": "en",
+      "format": "json-passages",
+      "path": "data/classics-corpus/plato-statesman-en.json",
+      "reader": "classics-text-reader.html?work=plato-statesman&lang=en",
+      "sourceDescription": "Traducción histórica inglesa de Harold North Fowler (1925), Perseus TEI, CC BY-SA 4.0; secciones Stephanus sin alineación automática con párrafos griegos."
     },
     {
       "workId": "plato-statesman",
