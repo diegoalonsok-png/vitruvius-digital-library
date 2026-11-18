@@ -502,9 +502,10 @@ html[data-theme="dark"].front-color-light .research-nav-controls>.research-print
 @media(max-width:620px){.stats-band .stats-inner{grid-template-columns:1fr;gap:6px}.stats-band .stats-inner>p{grid-template-columns:90px minmax(0,1fr);padding:8px 0!important}.stats-band .stats-inner>p>strong{font-size:38px}.stats-band .stats-inner>p>span{font-size:14px}}
 </style>
 <style id="research-nav-three-lines">
-.research-nav .research-nav-links.research-nav-categories{display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;grid-auto-rows:minmax(39px,auto);gap:5px 12px!important;align-items:stretch!important;max-width:100%;min-width:0}
+.research-nav .research-nav-links.research-nav-categories{display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;grid-auto-rows:minmax(48px,auto);gap:8px 12px!important;align-items:stretch!important;max-width:100%;min-width:0}
 .research-nav .research-nav-group{position:relative;min-width:0;margin:0}
-.research-nav .research-nav-group>summary{display:flex;align-items:center;justify-content:space-between;gap:12px;list-style:none;cursor:pointer;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;padding:9px 12px!important;margin:0!important;border:1px solid rgba(185,185,185,.28);border-radius:6px;font:600 13px/1.25 system-ui,sans-serif;color:inherit}
+.research-nav .research-nav-group>summary{display:flex!important;align-items:center;justify-content:space-between;gap:10px;list-style:none;cursor:pointer;white-space:normal!important;overflow:visible!important;text-overflow:clip!important;overflow-wrap:break-word;word-break:normal;min-height:48px;height:auto!important;box-sizing:border-box;padding:10px 14px!important;margin:0!important;border:1px solid rgba(185,185,185,.28);border-radius:6px;font:600 15px/1.4 system-ui,sans-serif!important;color:inherit}
+.research-nav .research-nav-group>summary>span{flex:0 0 auto;margin-left:auto}
 .research-nav .research-nav-group>summary::-webkit-details-marker{display:none}
 .research-nav .research-nav-group[open]>summary,.research-nav .research-nav-group>summary:hover{background:rgba(135,152,178,.15)}
 .research-nav .research-nav-group>summary:focus-visible{outline:2px solid #c9a86a;outline-offset:2px}
@@ -512,6 +513,7 @@ html[data-theme="dark"].front-color-light .research-nav-controls>.research-print
 .research-nav .research-nav-group:not([open])>.research-nav-group-items{display:none}
 .research-nav .research-nav-group-items>a{display:block!important;width:100%;box-sizing:border-box;margin:0!important;padding:8px 9px!important;font:13px/1.4 system-ui,sans-serif!important;text-decoration:none;white-space:normal!important;color:inherit!important;background:none!important}
 .research-nav .research-nav-group-items>a:is(:hover,:focus-visible){background:#293c52!important;color:#fff!important}
+@media(max-width:1100px){.research-nav .research-nav-links.research-nav-categories{grid-template-columns:repeat(2,minmax(0,1fr))!important}}
 @media(max-width:760px){.research-nav .research-nav-links.research-nav-categories{grid-template-columns:repeat(2,minmax(0,1fr))!important}}
 @media(max-width:480px){.research-nav .research-nav-links.research-nav-categories{grid-template-columns:1fr!important}.research-nav .research-nav-group>summary{white-space:normal}.research-nav .research-nav-group-items{position:static;width:auto;max-width:none;max-height:none;box-shadow:none}}
 </style>
