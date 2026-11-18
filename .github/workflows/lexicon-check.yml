@@ -47,6 +47,8 @@ jobs:
         run: node scripts/test-lexicon-integrated-dictionaries.mjs
       - name: Citas de las fichas y sentencias verificadas en el corpus
         run: python scripts/test-vitruvia-lexicon.py
+      - name: Regresión de listado de libros y pasajes para «numen»
+        run: node scripts/test-lexicon-word-books.mjs
       - name: Pruebas en navegador (consultas de referencia, citas, grupos, sin errores de JavaScript)
         run: |
           pip install playwright==1.48.0
