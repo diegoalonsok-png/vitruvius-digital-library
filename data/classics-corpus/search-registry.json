@@ -2,7 +2,7 @@
   "schema": "vitruvia-classics-search-registry-v1",
   "updated": "2026-11-18",
   "description": "Registro verificable de transcripciones HTML y textos JSON existentes que admiten búsqueda literal de contenido. No incluye automáticamente PDF escaneados, facsímiles ni fichas sin texto. Los índices auxiliares por locus y el aparato crítico se declaran por separado; no se suman a versiones textuales originales ni implican colación autóptica.",
-  "count": 401,
+  "count": 403,
   "works": 299,
   "entries": [
     {
@@ -3581,6 +3581,16 @@
       "workId": "sophocles-ajax",
       "author": "Sófocles",
       "title": "Αἴας",
+      "language": "en",
+      "format": "json-passages",
+      "path": "data/classics-corpus/sophocles-ajax-en.json",
+      "reader": "classics-text-reader.html?work=sophocles-ajax&lang=en",
+      "sourceDescription": "Richard Claverhouse Jebb, traducción inglesa histórica; Perseus TEI perseus-eng2 · 528 unidades indexadas según marcadores TEI de verso; sin alineación griego-inglés certificada"
+    },
+    {
+      "workId": "sophocles-ajax",
+      "author": "Sófocles",
+      "title": "Αἴας",
       "language": "grc",
       "format": "json-passages",
       "path": "data/classics-corpus/sophocles-ajax-grc.json",
@@ -3686,6 +3696,16 @@
       "path": "data/classics-corpus/sophocles-philoctetes-grc.json",
       "reader": "classics-text-reader.html?work=sophocles-philoctetes&lang=grc",
       "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
+      "workId": "sophocles-trachiniae",
+      "author": "Sófocles",
+      "title": "Τραχίνιαι",
+      "language": "en",
+      "format": "json-passages",
+      "path": "data/classics-corpus/sophocles-trachiniae-en.json",
+      "reader": "classics-text-reader.html?work=sophocles-trachiniae&lang=en",
+      "sourceDescription": "Richard Claverhouse Jebb, traducción inglesa histórica; Perseus TEI perseus-eng3 · 480 unidades indexadas según marcadores TEI de verso; sin alineación griego-inglés certificada"
     },
     {
       "workId": "sophocles-trachiniae",
