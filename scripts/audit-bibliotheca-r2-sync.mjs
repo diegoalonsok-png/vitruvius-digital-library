@@ -50,6 +50,29 @@ if(process.argv.includes("--remote")){
   result.indexedWithoutCatalogue=[...remoteIds].filter(id=>!ids.has(id)).sort();
   result.catalogueWithoutIndex=[...ids].filter(id=>!remoteIds.has(id)).sort();
   result.remoteChecked=true;
+  // Control bibliográfico: un ID y un OCR existente no prueban que el
+  // documento sea la obra clásica anunciada. No promover entradas huérfanas.
+  result.bibliographicWarnings=[];
+  const revisiones=[
+    {id:"historia-augusta",fuente:"exercitationescr00pete",mensaje:"El OCR es Exercitationes criticae in scriptores historiae Augustae de Hermann Peter (1863), estudio crítico; NO es el texto original de Scriptores Historiae Augustae."},
+    {id:"boecio-institutione-musica",fuente:"DeInstitutioneArithmeticaLibriDuoDeInstitutioneMusicaLibriQuinque",mensaje:"La edición de 1867 reúne De institutione arithmetica y De institutione musica, además de geometría atribuida; no catalogar como volumen exclusivo de Musica."}
+  ];
+  for(const revision of revisiones){
+    if(!remoteIds.has(revision.id))continue;
+    try{
+      const url="https://libros.vitruvius-digital-library.org/clasicos/texto/"+revision.id+".json";
+      const respuesta=await fetch(url,{signal:AbortSignal.timeout(25000),cache:"no-store"});
+      if(!respuesta.ok)throw Error("HTTP "+respuesta.status);
+      const ocr=await respuesta.json();
+      if(ocr.obra!==revision.id)throw Error("Identificador OCR incompatible");
+      if(ocr.fuente===revision.fuente){
+        result.bibliographicWarnings.push({id:revision.id,source:ocr.fuente,issue:revision.mensaje});
+        result.warnings.push("Advertencia bibliográfica "+revision.id+": "+revision.mensaje);
+      }else{
+        result.warnings.push("Revisar fuente actual "+revision.id+": "+String(ocr.fuente||"sin fuente"));
+      }
+    }catch(e){result.warnings.push("No se pudo cotejar procedencia "+revision.id+": "+e.message)}
+  }
   result.cachedIndexWithoutCatalogue=result.cachedIndexWithoutCatalogue.filter(id=>!remoteIds.has(id)||!ids.has(id));
   if(result.duplicateRemoteIds.length)result.warnings.push("IDs repetidos dentro del índice R2: "+[...new Set(result.duplicateRemoteIds)].join(", "));
   if(result.indexedWithoutCatalogue.length)result.warnings.push("Índice sin ficha: "+result.indexedWithoutCatalogue.join(", "));
@@ -62,4 +85,4 @@ console.log(JSON.stringify(result,null,2));
  // sin intentar borrar entradas automáticamente.
 if(duplicateIds.length||result.cachedIndexWithoutCatalogue.length||result.duplicateRemoteIds?.length||
  result.catalogueWithoutIndex.length||result.indexedWithoutCatalogue.length||
- result.pdfOcrMissing>0)process.exitCode=1;
+ result.pdfOcrMissing>0||result.bibliographicWarnings?.length)process.exitCode=1;
