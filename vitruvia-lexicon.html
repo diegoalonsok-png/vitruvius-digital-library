@@ -371,6 +371,21 @@ html[data-theme=light] .featured a#featured-link{background:#232326;color:#fff}
 #lx-classics-bridge .lx-library-excerpt{font:17px/1.65 Georgia,serif;text-align:justify;hyphens:auto;overflow-wrap:break-word}
 @media print{#lx-classics-bridge mark.lx-library-highlight{print-color-adjust:exact;-webkit-print-color-adjust:exact}}
 </style>
+<style id="lx-word-counts-style">
+#lx-results .lx-work-counts{border-block:1px solid #444;padding:14px 0 20px;margin:14px 0 22px}
+#lx-results .lx-work-counts h3{font:400 clamp(19px,2vw,24px)/1.35 "Gentium Book Plus",Georgia,serif;color:#e0e0e0;margin:0 0 6px}
+#lx-results .lx-work-counts .lx-small{color:#aaa;margin:0 0 10px}
+#lx-results .lx-work-counts-list{margin:0;padding:0;list-style:none;display:grid;grid-template-columns:repeat(auto-fit,minmax(255px,1fr));gap:0 20px}
+#lx-results .lx-work-counts-list li{border-bottom:1px solid #39393a;padding:0}
+#lx-results .lx-work-count-link{cursor:pointer;background:transparent;border:0;color:#bdbdbf;text-align:left;display:flex;width:100%;gap:8px;justify-content:space-between;align-items:baseline;font:14px/1.5 "Gentium Book Plus",Georgia,serif;padding:9px 0}
+#lx-results .lx-work-count-link:hover,#lx-results .lx-work-count-link:focus-visible{color:#f6f6f6;text-decoration:underline}
+#lx-results .lx-work-count-title{flex:1;min-width:0;overflow-wrap:anywhere}
+#lx-results .lx-work-count-number{white-space:nowrap;color:#aaa;font:11px/1.5 Arial,sans-serif}
+#lx-results .lx-kwic,#lx-results .lx-passage{color:#aaa}
+html[data-theme=light] #lx-results .lx-work-counts h3{color:#303030}
+html[data-theme=light] #lx-results .lx-work-count-link{color:#4a4a4a}
+html[data-theme=light] #lx-results .lx-kwic,html[data-theme=light] #lx-results .lx-passage{color:#5b5b5b}
+</style>
 <style id="lx-source-integrations">
 #lx-classics-bridge .lx-library-editions{margin:12px 0 0;padding:10px 12px;border:1px solid #45454b;border-radius:7px;background:#18181a;color:#e5e5e5}
 #lx-classics-bridge .lx-library-editions>summary{font:600 13px/1.6 Arial,sans-serif;cursor:pointer}
@@ -898,12 +913,12 @@ html[data-theme=light] .lx-attestations .lx-attestation-row{border-bottom-color:
 <script defer src="assets/bibliotheca-offsite-latin.js?v=20261110-macrobius-7books-v4"></script>
 <script defer src="assets/vitruvia-philology.js?v=20261111-filologia-v1"></script><script defer src="assets/classics-lexical-index.js?v=20261117-plato-source-index-v1"></script><script src="assets/classics-corpus-search.js?v=20261117-indexed-rose-krohn-v1" defer></script>
 <script src="assets/hiero-render.js?v=20261109-quadrats-v1" defer></script><script src="assets/lexicon-hiero-enhance.js?v=20261109-v1" defer></script><script src="assets/academic-inline-translation.js?v=20261111-hebrew-passage-v1" defer></script><script src="assets/lexicon-ngram-engine.js?v=20261116-comparatio-ngrams-v1" defer></script>
-<script src="assets/vitruvia-lexicon.js?v=20261117-controls-language-palette-v2" defer></script>
+<script src="assets/vitruvia-lexicon.js?v=20261118-word-books-counts-v1" defer></script>
 <script src="assets/lexicon-free-selection.js?v=20261113-seleccion-libre-v1" defer></script>
 <script src="assets/scholarly-query-tools.js?v=20261111-lexicon-citation-controls-v1" defer></script>
 <script src="assets/classical-lexicon.js?v=20261112-externo" defer></script><script defer src="assets/dictionary-everywhere.js?v=20261111-diccionario-v1"></script>
 <script defer src="assets/classics-lexical-popup.js?v=20261116-context-provenance-v1"></script>
-<script defer src="assets/sitio-integrado.js?v=20261112-atlas"></script><script defer src="assets/sentido-bibliotheca.js?v=20261112-sentido2"></script><script src="assets/lexicon-classics-bridge.js?v=20261117-reader-attestation-v1" defer></script>
+<script defer src="assets/sitio-integrado.js?v=20261112-atlas"></script><script defer src="assets/sentido-bibliotheca.js?v=20261112-sentido2"></script><script src="assets/lexicon-classics-bridge.js?v=20261118-word-books-counts-v1" defer></script>
 <script defer src="assets/lexicon-orthography-core.js?v=20261110-frequency-v2"></script>
 <script defer src="assets/lexicon-orthography-research.js?v=20261110-frequency-v2"></script>
 <script defer src="assets/lexicon-toponymicon.js?v=20261111-places-fast-v1"></script>
