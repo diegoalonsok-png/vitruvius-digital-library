@@ -523,6 +523,25 @@ html[data-theme="dark"].front-color-light .research-nav-controls>.research-print
 @media(max-width:760px){.corpus-compact-editions{grid-template-columns:1fr}.corpus-compact-heading{gap:5px 12px}.corpus-compact-date{width:100%}}
 </style><link rel="stylesheet" href="assets/bibliotheca-works-explorer.css?v=20261117-search-v1">
 <script defer src="assets/bibliotheca-works-explorer.js?v=20261117-plato-indexed-v1"></script>
+<style id="research-nav-compact-two-rows">
+/* Académica: nueve categorías en DOS renglones discretos, a la izquierda.
+   Sin botones grandes; el conjunto mide menos que el acceso Vitruvia+Lexicon. */
+.research-nav .research-nav-inner{display:flex!important;align-items:center!important;justify-content:flex-start!important;flex-wrap:wrap!important;column-gap:14px!important;row-gap:5px!important}
+.research-nav .research-nav-links.research-nav-categories{display:grid!important;grid-template-columns:repeat(5,max-content)!important;grid-auto-rows:30px!important;gap:5px 9px!important;align-items:center!important;flex:0 0 auto!important;width:max-content!important;max-width:100%!important;min-width:0!important}
+.research-nav .research-nav-group{position:relative!important;min-width:0!important;margin:0!important}
+.research-nav .research-nav-group>summary{display:flex!important;align-items:center!important;justify-content:flex-start!important;gap:5px!important;list-style:none!important;cursor:pointer!important;min-height:30px!important;height:30px!important;box-sizing:border-box!important;white-space:nowrap!important;overflow:visible!important;text-overflow:clip!important;background:transparent!important;border:0!important;border-radius:0!important;box-shadow:none!important;padding:3px 3px!important;margin:0!important;font:500 12px/1.25 system-ui,sans-serif!important;color:inherit!important}
+.research-nav .research-nav-group>summary>span{font-size:11px!important;opacity:.65!important;flex:0 0 auto!important}
+.research-nav .research-nav-group>summary::-webkit-details-marker{display:none!important}
+.research-nav .research-nav-group>summary:hover,.research-nav .research-nav-group[open]>summary{text-decoration:underline!important;text-underline-offset:3px!important;background:transparent!important}
+.research-nav .research-nav-group>summary:focus-visible{outline:2px solid #bba16b!important;outline-offset:2px!important}
+.research-nav .research-nav-group-items{position:absolute!important;top:calc(100% + 4px)!important;left:0!important;z-index:80!important;display:grid!important;gap:2px!important;min-width:220px!important;width:max-content!important;max-width:min(400px,90vw)!important;max-height:54vh!important;overflow-y:auto!important;box-sizing:border-box!important;margin-top:0!important;padding:7px!important;border:1px solid #65717d!important;border-radius:5px!important;background:#131b25!important;color:#f5f5f5!important;box-shadow:0 8px 16px #0005!important}
+.research-nav .research-nav-group:not([open])>.research-nav-group-items{display:none!important}
+.research-nav .research-nav-group-items>a{display:block!important;box-sizing:border-box!important;width:100%!important;margin:0!important;padding:7px 8px!important;font:12px/1.4 system-ui,sans-serif!important;text-decoration:none!important;white-space:normal!important;color:inherit!important;background:transparent!important}
+.research-nav .research-nav-group-items>a:is(:hover,:focus-visible){background:#293c52!important;color:#fff!important}
+@media(max-width:1080px){.research-nav .research-nav-links.research-nav-categories{grid-template-columns:repeat(3,max-content)!important;grid-auto-rows:30px!important}}
+@media(max-width:670px){.research-nav .research-nav-links.research-nav-categories{grid-template-columns:repeat(2,minmax(0,1fr))!important;width:100%!important}.research-nav .research-nav-group>summary{font-size:11px!important}.research-nav .research-nav-group-items{position:static!important;max-width:100%!important;width:100%!important}.research-nav .research-nav-group[open]{grid-column:1/-1}}
+</style>
+<script defer src="assets/research-nav-accordion.js?v=20261118-two-subtle-rows"></script>
 </head>
 <body>
   <a class="skip" href="#contenido">Saltar al contenido</a>
@@ -534,33 +553,61 @@ html[data-theme="dark"].front-color-light .research-nav-controls>.research-print
     </div>
     <nav class="research-nav" aria-label="Herramientas de investigación">
       <div class="wrap research-nav-inner">
-        <div class="research-nav-links">
-          <a href="principios.html">Principios editoriales</a>
-          <a href="comparador-loci.html">Comparador de loci</a>
-          <a href="concordancia-folios.html" title="Folio manuscrito, locus editorial y traducción con estado de comprobación">Folios ↔ loci</a>
-          <a href="aparato-critico.html" title="Buscar el texto latino, traducciones y notas de las tres ediciones">Texto y notas V514 · V554 · V297</a>
-          <a href="apparatus-criticus.html" title="Aparato crítico con las lecturas y variantes documentadas en el Apéndice T">Apparatus criticus · variantes</a>
-          <a href="apparatus-bude.html" title="Texto latino y traducciones en páginas enfrentadas con aparato conciso">Aparato crítico</a>
-           <a href="aparato-comparativo.html?locus=1.1.1" title="Comparación por locus de Kurilo, Krohn, Rose y testimonios manuscritos">Aparato crítico comparativo</a>
-          <a href="cobertura-aparato-critico.html" title="Mapa de cobertura por locus del aparato impreso y comentarios editoriales">Cobertura ecdótica · 731 loci</a>
-          <a href="collatio-autoptica.html" title="Cotejos visuales de folios del códice H con lecturas Rose y Krohn identificadas según evidencia disponible">Collatio autoptica · H</a>
-          <a href="status-textus.html" title="Fuentes, versiones y alcance del cotejo filológico">Status textus</a>
-          <a href="registro-ecdotico.html">Registro ecdótico</a><a href="conspectus-testimoniorum.html">Conspectus testimoniorum</a><a href="quaestio-philologica.html">Quaestio philologica · búsqueda</a><a href="corpus-tei.html">Corpus TEI XML</a><a href="concordantia-harleiana.html">Concordantia Harleiana · folios de H</a><a href="errata-editionum.html">Fe de erratas</a>
-          <a href="indices-locorum.html">Índices locorum</a><a href="colacion.html">Colación por locus</a>
-          <a href="ediciones-historicas.html">Ediciones libres</a>
-          <a class="primary" style="padding:2px 10px;font-weight:600;color:#fff;background:#1b2a4a" href="bibliotheca-graeca-latina.html" title="Bibliografía griega y latina unificada: clásicos, cristianismo primitivo, arquitectura, ingeniería, medicina e historia con textos y facsímiles">Bibliotheca Graeca et Latina · Autores y tratados</a>
-          <a href="facsimiles.html">Facsímiles manuscritos</a>
-          <a href="escritorio-h/index.html">Scriptorium H</a>
-          <a href="geographia-codicum.html">Geographia codicum</a>
-          <a href="lexicon-vitruvianum.html">Lexicon Vitruvianum</a>
-          <a href="dictionarium-architecturae-vitruvianae.html">Diccionario arquitectónico de Vitruvio</a>
-          <a href="bibliographia-architectonica.html">Bibliografía histórica de arquitectura</a>
-          <a href="vitruvia-lexicon.html" title="Consultar léxico griego y latino, frases, concordancias, loci y pasajes completos">Vitruvia Lexicon · palabras y pasajes</a>
-          <a href="onomasticon.html" title="Personajes, lugares y estadística textual">Personajes y lugares</a>
-          <a href="atlas-geographicus.html" title="Mapa de lugares mencionados por Vitruvio con nombres latinos, griegos y modernos, loci y ficha filológica">Atlas geográfico · ciudades de Vitruvio</a>
-          <a href="iconografia-vitruviana.html" title="Atlas científico de manuscritos, grabados de proporción, máquinas y arquitectura histórica">Atlas iconográfico · folios e imágenes</a><a href="mapas-antiguos.html" title="Mapas y planos históricos con fecha, lugar, signatura y folio">Mapas antiguos · signaturas y folios</a>
-          <a href="scriptorium-htr.html">Scriptorium HTR</a>
-          <a href="auditoria-academica.html">Auditoría académica</a> · <a href="erratas-ediciones.html">Erratas</a> · <a href="aparato-comparativo.html">Aparato comparativo</a> · <a href="metodologia-filologica.html" title="Codicología, ecdótica, crítica textual, sintaxis, lógica, exégesis y hermenéutica">Método filológico</a>
+        <div class="research-nav-links research-nav-categories" aria-label="Herramientas académicas agrupadas">
+  <details class="research-nav-group"><summary>Ediciones y textos <span aria-hidden="true">⌄</span></summary><div class="research-nav-group-items">
+    <a href="principios.html">Principios editoriales</a>
+    <a href="aparato-critico.html" title="Buscar el texto latino, traducciones y notas de las tres ediciones">Texto y notas V514 · V554 · V297</a>
+    <a href="status-textus.html" title="Fuentes, versiones y alcance del cotejo filológico">Status textus</a>
+    <a href="ediciones-historicas.html">Ediciones libres</a>
+  </div></details>
+  <details class="research-nav-group"><summary>Aparatos críticos <span aria-hidden="true">⌄</span></summary><div class="research-nav-group-items">
+    <a href="apparatus-criticus.html" title="Aparato crítico con las lecturas y variantes documentadas en el Apéndice T">Apparatus criticus · variantes</a>
+    <a href="apparatus-bude.html" title="Texto latino y traducciones en páginas enfrentadas con aparato conciso">Aparato crítico</a>
+    <a href="aparato-comparativo.html?locus=1.1.1" title="Comparación por locus de Kurilo, Krohn, Rose y testimonios manuscritos">Aparato crítico comparativo</a>
+    <a href="cobertura-aparato-critico.html" title="Mapa de cobertura por locus del aparato impreso y comentarios editoriales">Cobertura ecdótica · 731 loci</a>
+    <a href="aparato-comparativo.html">Aparato comparativo</a>
+  </div></details>
+  <details class="research-nav-group"><summary>Loci y cotejos <span aria-hidden="true">⌄</span></summary><div class="research-nav-group-items">
+    <a href="comparador-loci.html">Comparador de loci</a>
+    <a href="concordancia-folios.html" title="Folio manuscrito, locus editorial y traducción con estado de comprobación">Folios ↔ loci</a>
+    <a href="collatio-autoptica.html" title="Cotejos visuales de folios del códice H con lecturas Rose y Krohn identificadas según evidencia disponible">Collatio autoptica · H</a>
+    <a href="indices-locorum.html">Índices locorum</a>
+    <a href="colacion.html">Colación por locus</a>
+  </div></details>
+  <details class="research-nav-group"><summary>Manuscritos y folios <span aria-hidden="true">⌄</span></summary><div class="research-nav-group-items">
+    <a href="conspectus-testimoniorum.html">Conspectus testimoniorum</a>
+    <a href="concordantia-harleiana.html">Concordantia Harleiana · folios de H</a>
+    <a href="facsimiles.html">Facsímiles manuscritos</a>
+    <a href="escritorio-h/index.html">Scriptorium H</a>
+    <a href="geographia-codicum.html">Geographia codicum</a>
+  </div></details>
+  <details class="research-nav-group"><summary>Bibliotheca y léxicos <span aria-hidden="true">⌄</span></summary><div class="research-nav-group-items">
+    <a class="primary" style="padding:2px 10px;font-weight:600;color:#fff;background:#1b2a4a" href="bibliotheca-graeca-latina.html" title="Bibliografía griega y latina unificada: clásicos, cristianismo primitivo, arquitectura, ingeniería, medicina e historia con textos y facsímiles">Bibliotheca Graeca et Latina · Autores y tratados</a>
+    <a href="lexicon-vitruvianum.html">Lexicon Vitruvianum</a>
+    <a href="dictionarium-architecturae-vitruvianae.html">Diccionario arquitectónico de Vitruvio</a>
+    <a href="bibliographia-architectonica.html">Bibliografía histórica de arquitectura</a>
+    <a href="vitruvia-lexicon.html" title="Consultar léxico griego y latino, frases, concordancias, loci y pasajes completos">Vitruvia Lexicon · palabras y pasajes</a>
+  </div></details>
+  <details class="research-nav-group"><summary>Investigación filológica <span aria-hidden="true">⌄</span></summary><div class="research-nav-group-items">
+    <a href="registro-ecdotico.html">Registro ecdótico</a>
+    <a href="quaestio-philologica.html">Quaestio philologica · búsqueda</a>
+    <a href="corpus-tei.html">Corpus TEI XML</a>
+  </div></details>
+  <details class="research-nav-group"><summary>Atlas y cartografía <span aria-hidden="true">⌄</span></summary><div class="research-nav-group-items">
+    <a href="onomasticon.html" title="Personajes, lugares y estadística textual">Personajes y lugares</a>
+    <a href="atlas-geographicus.html" title="Mapa de lugares mencionados por Vitruvio con nombres latinos, griegos y modernos, loci y ficha filológica">Atlas geográfico · ciudades de Vitruvio</a>
+    <a href="iconografia-vitruviana.html" title="Atlas científico de manuscritos, grabados de proporción, máquinas y arquitectura histórica">Atlas iconográfico · folios e imágenes</a>
+    <a href="mapas-antiguos.html" title="Mapas y planos históricos con fecha, lugar, signatura y folio">Mapas antiguos · signaturas y folios</a>
+  </div></details>
+  <details class="research-nav-group"><summary>Laboratorios <span aria-hidden="true">⌄</span></summary><div class="research-nav-group-items">
+    <a href="scriptorium-htr.html">Scriptorium HTR</a>
+  </div></details>
+  <details class="research-nav-group"><summary>Método, auditoría y erratas <span aria-hidden="true">⌄</span></summary><div class="research-nav-group-items">
+    <a href="errata-editionum.html">Fe de erratas</a>
+    <a href="auditoria-academica.html">Auditoría académica</a>
+    <a href="erratas-ediciones.html">Erratas</a>
+    <a href="metodologia-filologica.html" title="Codicología, ecdótica, crítica textual, sintaxis, lógica, exégesis y hermenéutica">Método filológico</a>
+  </div></details>
         </div>
         <div class="research-nav-controls">
           <a class="research-lab-button" href="laboratorio-h.html" title="Folio original, transcripción latina legible y traducción sincronizada">Laboratorio H</a>
