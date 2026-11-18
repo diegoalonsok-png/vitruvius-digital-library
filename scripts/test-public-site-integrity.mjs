@@ -65,7 +65,7 @@ for(const entry of registry.entries){
   assert.equal(source.language,entry.language,"Wrong translation language: "+entry.path);
   assert(Array.isArray(source.passages)&&source.passages.length>0,"Empty indexed corpus: "+entry.path);
  }
- indexed.add(entry.workId);
+ if(!critical)indexed.add(entry.workId);
 }
 for(const work of catalogue.works){
  for(const [language,path] of Object.entries(work.corpusFiles||{})){
