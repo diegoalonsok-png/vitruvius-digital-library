@@ -29,13 +29,19 @@ def verify():
     audit = read("data/classics-corpus/coverage-audit.json")
     backlog = read("data/classics-corpus/indexation-backlog.json")
     by_id = {w["id"]: w for w in catalog["works"]}
+    supplement = read("data/bibliotheca-expansion-publicada-2026-11-16.json")["works"]
+    by_supplement = {w["id"]: w for w in supplement}
+    assert not (by_id.keys() & by_supplement.keys()), "El suplemento no debe duplicar el catálogo madre"
     translation_by_id = {w["id"]: w for w in coverage["works"]}
     audit_by_id = {w["id"]: w for w in audit["works"]}
     back_by_id = {w["id"]: w for w in backlog["entries"]}
     counted = Counter(x["workId"] for x in registry["entries"])
 
-    assert len(registry["entries"]) == registry["count"] == audit["counts"]["indexedTextVersions"]
-    assert len(counted) == registry["works"] == coverage["totals"]["locallyIndexedWorks"]
+    master_editions = [e for e in registry["entries"] if e["workId"] in by_id]
+    assert len(registry["entries"]) == registry["count"]
+    assert len(master_editions) == audit["counts"]["indexedTextVersions"]
+    assert len(counted) == registry["works"]
+    assert len({e["workId"] for e in master_editions}) == coverage["totals"]["locallyIndexedWorks"]
     assert coverage["totals"]["translatedWorksLocal"] == sum(
         bool(w["translationLanguages"]) for w in coverage["works"]
     )
@@ -107,10 +113,17 @@ def verify():
         assert all(p["text"].strip() and p["locus"] for p in document["passages"])
         assert any(e["workId"] == work_id and e["language"] == document["originalLanguage"]
                    for e in registry["entries"]), "Missing original: " + work_id
-        assert by_id[work_id]["corpusFiles"]["en"] == edition["path"]
-        assert "en" in translation_by_id[work_id]["translationLanguages"]
-        assert "en" in audit_by_id[work_id]["indexedTextLanguages"]
-        assert edition["path"] in audit_by_id[work_id]["indexedTextFiles"]
+        if work_id in by_id:
+            assert by_id[work_id]["corpusFiles"]["en"] == edition["path"]
+            assert "en" in translation_by_id[work_id]["translationLanguages"]
+            assert "en" in audit_by_id[work_id]["indexedTextLanguages"]
+            assert edition["path"] in audit_by_id[work_id]["indexedTextFiles"]
+        else:
+            # Las traducciones de los textos griegos añadidos se verifican
+            # contra la ficha complementaria, sin inflar el informe de 271.
+            assert work_id in by_supplement, "Traducción sin ficha: " + work_id
+            assert by_supplement[work_id].get("corpusFiles", {}).get("en") == edition["path"]
+            assert any(v.get("language") == "en" for v in by_supplement[work_id].get("localVersions", []))
         automated += 1
     print("PASS historical translations: 3 pioneering texts with editorial notes; "
           f"{automated} verified Perseus/First1K historical versions, originals preserved, "
