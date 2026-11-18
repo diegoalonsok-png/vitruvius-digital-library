@@ -152,7 +152,7 @@ html::-webkit-scrollbar-corner,body::-webkit-scrollbar-corner{background:#242427
 <div class="parallel-search" role="search" aria-label="Búsqueda literal independiente por versión"><label>Buscar en visor 1 <input id="left-query" type="search" placeholder="domus / λόγος / casa" maxlength="120"></label><label>Buscar en visor 2 <input id="right-query" type="search" placeholder="casa / maison / house" maxlength="120"></label><button type="button" id="parallel-find">Buscar y subrayar en ámbar</button><button type="button" id="parallel-clear">Limpiar búsqueda</button></div>
 <div class="syncbar" aria-label="Navegación conjunta">
 <button type="button" id="sync-start">⟲ Inicio de ambas</button><button type="button" id="sync-prev">← Ambas anteriores</button><button type="button" id="sync-next">Ambas siguientes →</button>
-<label><input type="checkbox" id="same-locus" checked> Coincidir por capítulo cuando sea posible</label>
+<label><input type="checkbox" id="same-locus" checked> Sincronizar mismo locus cuando exista</label>
 <output id="sync-position">Sin sincronizar</output>
 </div>
 <p id="status" role="status" aria-live="polite">Cargando las versiones documentadas…</p>
@@ -608,7 +608,8 @@ window.addEventListener("message",event=>{
    if(msg.index<0||msg.index>=rightPassages.length)return;
    const thisLocus=locusKey(rightPassages[msg.index]?.locus);
    const leftPassages=versions[left.value]?.passages||[];
-   const matched=thisLocus?leftPassages.findIndex(p=>locusKey(p.locus)===thisLocus):-1;
+   // Edition URNs differ between Greek and English; synchronize by the same work + canonical locus.
+   const matched=thisLocus?findLocusIndex(leftPassages,rightPassages[msg.index]?.locus):-1;
    const approx=matched<0&&$("same-locus").checked?apuleiusApprox(right.value,left.value,msg.index):-1;
    if(matched<0&&approx<0&&$("same-locus").checked)return;
    position=matched>=0?matched:(approx>=0?Math.min(approx,Math.max(0,count()-1)):Math.min(msg.index,Math.max(0,count()-1)));goto("right");
