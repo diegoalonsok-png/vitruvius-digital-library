@@ -2,7 +2,7 @@
   "schema": "vitruvia-classics-search-registry-v1",
   "updated": "2026-11-17",
   "description": "Registro verificable de transcripciones HTML y textos JSON existentes que admiten búsqueda literal de contenido. No incluye automáticamente PDF escaneados, facsímiles ni fichas sin texto. Los índices auxiliares por locus y el aparato crítico se declaran por separado; no se suman a versiones textuales originales ni implican colación autóptica.",
-  "count": 367,
+  "count": 371,
   "works": 297,
   "entries": [
     {
@@ -2628,6 +2628,16 @@
       "workId": "plato-euthyphro",
       "author": "Platón",
       "title": "Εὐθύφρων",
+      "language": "en",
+      "format": "json-passages",
+      "path": "data/classics-corpus/plato-euthyphro-en.json",
+      "reader": "classics-text-reader.html?work=plato-euthyphro&lang=en",
+      "sourceDescription": "Traducción histórica inglesa de Harold North Fowler (1914), Perseus TEI, CC BY-SA 4.0; secciones Stephanus sin alineación automática con párrafos griegos."
+    },
+    {
+      "workId": "plato-euthyphro",
+      "author": "Platón",
+      "title": "Εὐθύφρων",
       "language": "grc",
       "format": "json-passages",
       "path": "data/classics-corpus/plato-euthyphro-grc.json",
@@ -2667,6 +2677,16 @@
       "sourceUrn": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2",
       "sourceSha256": "faf42c199c8e5e141689cfed2b301bad000eadf5d1e9ce173d63d4f28044ded4",
       "sourceDescription": "Perseus DL TEI · Platonis Opera, Tomus III: Tetralogia V-VII. Burnet, John, editor. Oxford: Clarendon Press, 1903. · CC BY-SA 4.0; original sin cotejo independiente"
+    },
+    {
+      "workId": "plato-ion",
+      "author": "Platón",
+      "title": "Ἴων",
+      "language": "en",
+      "format": "json-passages",
+      "path": "data/classics-corpus/plato-ion-en.json",
+      "reader": "classics-text-reader.html?work=plato-ion&lang=en",
+      "sourceDescription": "Traducción histórica de William Rangeley Maitland Lamb (1925), Perseus TEI, CC BY-SA 4.0. Segmentos Stephanus sin alineación automática con el griego."
     },
     {
       "workId": "plato-ion",
@@ -2713,6 +2733,16 @@
       "sourceUrn": "urn:cts:greekLit:tlg0059.tlg020.perseus-grc2",
       "sourceSha256": "1656d85c1d69fad896958a77db2ddf47d7ea867b2944f336bfc8a71c578aa50c",
       "sourceDescription": "Perseus DL TEI · Platonis Opera, Tomus III: Tetralogia V-VII. Burnet, John, editor. Oxford: Clarendon Press, 1903. · CC BY-SA 4.0; original sin cotejo independiente"
+    },
+    {
+      "workId": "plato-menexenus",
+      "author": "Platón",
+      "title": "Μενέξενος",
+      "language": "en",
+      "format": "json-passages",
+      "path": "data/classics-corpus/plato-menexenus-en.json",
+      "reader": "classics-text-reader.html?work=plato-menexenus&lang=en",
+      "sourceDescription": "Traducción histórica de Robert Gregg Bury (1929), Perseus TEI, CC BY-SA 4.0. Segmentos Stephanus sin alineación automática con el griego."
     },
     {
       "workId": "plato-menexenus",
@@ -2847,6 +2877,16 @@
       "path": "data/classics-corpus/plato-sophist-grc.json",
       "reader": "classics-text-reader.html?work=plato-sophist&lang=grc",
       "sourceDescription": "Perseus Digital Library · tlg0059.tlg007 · 53 secciones de Stephanus · edición griega de John Burnet; texto TEI indexado, no OCR ni traducción automática"
+    },
+    {
+      "workId": "plato-statesman",
+      "author": "Platón",
+      "title": "Πολιτικός",
+      "language": "en",
+      "format": "json-passages",
+      "path": "data/classics-corpus/plato-statesman-en.json",
+      "reader": "classics-text-reader.html?work=plato-statesman&lang=en",
+      "sourceDescription": "Traducción histórica inglesa de Harold North Fowler (1925), Perseus TEI, CC BY-SA 4.0; secciones Stephanus sin alineación automática con párrafos griegos."
     },
     {
       "workId": "plato-statesman",

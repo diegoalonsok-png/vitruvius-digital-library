@@ -1,0 +1,3006 @@
+{
+  "schema": "vdl-greek-translation-coverage-v1",
+  "generated": "2026-11-17",
+  "basis": "data/classics-corpus/search-registry.json",
+  "method": "Registered local versions only; no existence, locus alignment, translation completeness or licensing audit is implied. Remote R2 OCR and bilingual PDFs are not counted as verified parallel text.",
+  "summary": {
+    "greekWorks": 211,
+    "withExistingModernVersion": 49,
+    "withoutRegisteredModernVersion": 162,
+    "registeredByLanguage": {
+      "en": 49,
+      "es": 0,
+      "fr": 0
+    }
+  },
+  "works": [
+    {
+      "id": "aeneas-tacticus-poliorketika",
+      "author": "Eneas el Táctico",
+      "title": "Πολιορκητικά",
+      "greek": {
+        "path": "data/classics-corpus/aeneas-tacticus-poliorketika-grc.json",
+        "source": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+      },
+      "translations": {},
+      "status": "needs-edited-translation",
+      "preferredExisting": null,
+      "alignmentVerified": false
+    },
+    {
+      "id": "aeschylus-oresteia",
+      "author": "Esquilo",
+      "title": "Ὀρέστεια",
+      "greek": {
+        "path": "data/classics-corpus/aeschylus-oresteia-grc.json",
+        "source": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+      },
+      "translations": {},
+      "status": "needs-edited-translation",
+      "preferredExisting": null,
+      "alignmentVerified": false
+    },
+    {
+      "id": "aeschylus-persae",
+      "author": "Esquilo",
+      "title": "Πέρσαι",
+      "greek": {
+        "path": "data/classics-corpus/aeschylus-persae-grc.json",
+        "source": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+      },
+      "translations": {
+        "en": {
+          "path": "data/classics-corpus/aeschylus-persae-en.json",
+          "source": "Traducción histórica de Herbert Weir Smyth (1922); TEI Perseus verificado por SHA; sin cotejo automático"
+        }
+      },
+      "status": "has-registered-translation",
+      "preferredExisting": "en",
+      "alignmentVerified": false
+    },
+    {
+      "id": "aeschylus-prometheus",
+      "author": "Esquilo (atribución debatida)",
+      "title": "Προμηθεὺς Δεσμώτης",
+      "greek": {
+        "path": "data/classics-corpus/aeschylus-prometheus-grc.json",
+        "source": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+      },
+      "translations": {
+        "en": {
+          "path": "data/classics-corpus/aeschylus-prometheus-en.json",
+          "source": "Traducción histórica de Herbert Weir Smyth (1922); TEI Perseus verificado por SHA; sin cotejo automático"
+        }
+      },
+      "status": "has-registered-translation",
+      "preferredExisting": "en",
+      "alignmentVerified": false
+    },
+    {
+      "id": "aeschylus-seven-thebes",
+      "author": "Esquilo",
+      "title": "Ἑπτὰ ἐπὶ Θήβας",
+      "greek": {
+        "path": "data/classics-corpus/aeschylus-seven-thebes-grc.json",
+        "source": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+      },
+      "translations": {
+        "en": {
+          "path": "data/classics-corpus/aeschylus-seven-thebes-en.json",
+          "source": "Traducción histórica de Herbert Weir Smyth (1922); TEI Perseus verificado por SHA; sin cotejo automático"
+        }
+      },
+      "status": "has-registered-translation",
+      "preferredExisting": "en",
+      "alignmentVerified": false
+    },
+    {
+      "id": "aeschylus-suppliants",
+      "author": "Esquilo",
+      "title": "Ἱκέτιδες",
+      "greek": {
+        "path": "data/classics-corpus/aeschylus-suppliants-grc.json",
+        "source": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+      },
+      "translations": {
+        "en": {
+          "path": "data/classics-corpus/aeschylus-suppliants-en.json",
+          "source": "Traducción histórica de Herbert Weir Smyth (1922); TEI Perseus verificado por SHA; sin cotejo automático"
+        }
+      },
+      "status": "has-registered-translation",
+      "preferredExisting": "en",
+      "alignmentVerified": false
+    },
+    {
+      "id": "antologia-griega",
+      "author": "Antología griega",
+      "title": "Ἀνθολογία Ἑλληνική · Anthologia Graeca (Palatina)",
+      "greek": {
+        "path": "https://libros.vitruvius-digital-library.org/corpus/antologia-griega-grc.json",
+        "source": "Perseus/First1KGreek TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+      },
+      "translations": {},
+      "status": "needs-edited-translation",
+      "preferredExisting": null,
+      "alignmentVerified": false
+    },
+    {
+      "id": "apolonio-argonauticas",
+      "author": "Apolonio de Rodas",
+      "title": "Ἀργοναυτικά · Argonautica",
+      "greek": {
+        "path": "https://libros.vitruvius-digital-library.org/corpus/apolonio-argonauticas-grc.json",
+        "source": "Perseus/First1KGreek TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+      },
+      "translations": {},
+      "status": "needs-edited-translation",
+      "preferredExisting": null,
+      "alignmentVerified": false
+    },
+    {
+      "id": "appian-romaika",
+      "author": "Apiano",
+      "title": "Ῥωμαϊκά",
+      "greek": {
+        "path": "data/classics-corpus/appian-romaika-grc.json",
+        "source": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+      },
+      "translations": {},
+      "status": "needs-edited-translation",
+      "preferredExisting": null,
+      "alignmentVerified": false
+    },
+    {
+      "id": "aquiles-tacio-leucipa",
+      "author": "Aquiles Tacio",
+      "title": "Τὰ κατὰ Λευκίππην καὶ Κλειτοφῶντα · Leucipa y Clitofonte",
+      "greek": {
+        "path": "https://libros.vitruvius-digital-library.org/corpus/aquiles-tacio-leucipa-grc.json",
+        "source": "Perseus/First1KGreek TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+      },
+      "translations": {},
+      "status": "needs-edited-translation",
+      "preferredExisting": null,
+      "alignmentVerified": false
+    },
+    {
+      "id": "aratus-phaenomena",
+      "author": "Arato de Solos",
+      "title": "Φαινόμενα",
+      "greek": {
+        "path": "data/classics-corpus/aratus-phaenomena-grc.json",
+        "source": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+      },
+      "translations": {},
+      "status": "needs-edited-translation",
+      "preferredExisting": null,
+      "alignmentVerified": false
+    },
+    {
+      "id": "archimedes-fluitantibus",
+      "author": "Arquímedes",
+      "title": "Περὶ τῶν ὀχουμένων",
+      "greek": {
+        "path": "https://libros.vitruvius-digital-library.org/corpus/archimedes-fluitantibus-grc-334fea209f231138.json",
+        "source": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente"
+      },
+      "translations": {},
+      "status": "needs-edited-translation",
+      "preferredExisting": null,
+      "alignmentVerified": false
+    },
+    {
+      "id": "aristophanes-acharnenses",
+      "author": "Aristófanes",
+      "title": "Ἀχαρνῆς",
+      "greek": {
+        "path": "data/classics-corpus/aristophanes-acharnenses-grc.json",
+        "source": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+      },
+      "translations": {},
+      "status": "needs-edited-translation",
+      "preferredExisting": null,
+      "alignmentVerified": false
+    },
+    {
+      "id": "aristophanes-aves",
+      "author": "Aristófanes",
+      "title": "Ὄρνιθες",
+      "greek": {
+        "path": "data/classics-corpus/aristophanes-aves-grc.json",
+        "source": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+      },
+      "translations": {},
+      "status": "needs-edited-translation",
+      "preferredExisting": null,
+      "alignmentVerified": false
+    },
+    {
+      "id": "aristophanes-clouds",
+      "author": "Aristófanes",
+      "title": "Νεφέλαι",
+      "greek": {
+        "path": "data/classics-corpus/aristophanes-clouds-grc.json",
+        "source": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+      },
+      "translations": {
+        "en": {
+          "path": "data/classics-corpus/aristophanes-clouds-en.json",
+          "source": "Traducción histórica de William James Hickie (1853); TEI Perseus verificado por SHA; sin cotejo automático"
+        }
+      },
+      "status": "has-registered-translation",
+      "preferredExisting": "en",
+      "alignmentVerified": false
+    },
+    {
+      "id": "aristophanes-ecclesiazusae",
+      "author": "Aristófanes",
+      "title": "Ἐκκλησιάζουσαι",
+      "greek": {
+        "path": "data/classics-corpus/aristophanes-ecclesiazusae-grc.json",
+        "source": "Perseus Digital Library TEI · Hall y Geldart (1907) · CC BY-SA 4.0; sin colación filológica propia"
+      },
+      "translations": {},
+      "status": "needs-edited-translation",
+      "preferredExisting": null,
+      "alignmentVerified": false
+    },
+    {
+      "id": "aristophanes-knights",
+      "author": "Aristófanes",
+      "title": "Ἱππῆς",
+      "greek": {
+        "path": "data/classics-corpus/aristophanes-knights-grc.json",
+        "source": "Perseus Digital Library TEI · Hall y Geldart (1906) · CC BY-SA 4.0; sin colación filológica propia"
+      },
+      "translations": {},
+      "status": "needs-edited-translation",
+      "preferredExisting": null,
+      "alignmentVerified": false
+    },
+    {
+      "id": "aristophanes-lysistrata",
+      "author": "Aristófanes",
+      "title": "Λυσιστράτη",
+      "greek": {
+        "path": "data/classics-corpus/aristophanes-lysistrata-grc.json",
+        "source": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+      },
+      "translations": {},
+      "status": "needs-edited-translation",
+      "preferredExisting": null,
+      "alignmentVerified": false
+    },
+    {
+      "id": "aristophanes-pax",
+      "author": "Aristófanes",
+      "title": "Εἰρήνη",
+      "greek": {
+        "path": "data/classics-corpus/aristophanes-pax-grc.json",
+        "source": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+      },
+      "translations": {},
+      "status": "needs-edited-translation",
+      "preferredExisting": null,
+      "alignmentVerified": false
+    },
+    {
+      "id": "aristophanes-plutus",
+      "author": "Aristófanes",
+      "title": "Πλοῦτος",
+      "greek": {
+        "path": "data/classics-corpus/aristophanes-plutus-grc.json",
+        "source": "Perseus Digital Library TEI · Hall y Geldart (1907) · CC BY-SA 4.0; sin colación filológica propia"
+      },
+      "translations": {},
+      "status": "needs-edited-translation",
+      "preferredExisting": null,
+      "alignmentVerified": false
+    },
+    {
+      "id": "aristophanes-ranae",
+      "author": "Aristófanes",
+      "title": "Βάτραχοι",
+      "greek": {
+        "path": "data/classics-corpus/aristophanes-ranae-grc.json",
+        "source": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+      },
+      "translations": {},
+      "status": "needs-edited-translation",
+      "preferredExisting": null,
+      "alignmentVerified": false
+    },
+    {
+      "id": "aristophanes-thesmophoriazusae",
+      "author": "Aristófanes",
+      "title": "Θεσμοφοριάζουσαι",
+      "greek": {
+        "path": "data/classics-corpus/aristophanes-thesmophoriazusae-grc.json",
+        "source": "Perseus Digital Library TEI · Hall y Geldart (1907) · CC BY-SA 4.0; sin colación filológica propia"
+      },
+      "translations": {},
+      "status": "needs-edited-translation",
+      "preferredExisting": null,
+      "alignmentVerified": false
+    },
+    {
+      "id": "aristophanes-vespae",
+      "author": "Aristófanes",
+      "title": "Σφῆκες",
+      "greek": {
+        "path": "data/classics-corpus/aristophanes-vespae-grc.json",
+        "source": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+      },
+      "translations": {},
+      "status": "needs-edited-translation",
+      "preferredExisting": null,
+      "alignmentVerified": false
+    },
+    {
+      "id": "aristoteles-del-cielo",
+      "author": "Aristóteles",
+      "title": "Περὶ οὐρανοῦ · De caelo",
+      "greek": {
+        "path": "https://libros.vitruvius-digital-library.org/corpus/aristoteles-del-cielo-grc.json",
+        "source": "Perseus/First1KGreek TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+      },
+      "translations": {},
+      "status": "needs-edited-translation",
+      "preferredExisting": null,
+      "alignmentVerified": false
+    },
+    {
+      "id": "aristoteles-historia-animales",
+      "author": "Aristóteles",
+      "title": "Περὶ τὰ ζῷα ἱστορίαι · Historia animalium",
+      "greek": {
+        "path": "https://libros.vitruvius-digital-library.org/corpus/aristoteles-historia-animales-grc.json",
+        "source": "Perseus/First1KGreek TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+      },
+      "translations": {},
+      "status": "needs-edited-translation",
+      "preferredExisting": null,
+      "alignmentVerified": false
+    },
+    {
+      "id": "aristotle-de-anima",
+      "author": "Aristóteles",
+      "title": "Περὶ ψυχῆς",
+      "greek": {
+        "path": "data/classics-corpus/aristotle-de-anima-grc.json",
+        "source": "OpenGreekAndLatin First1KGreek TEI · fuente editada documentada, sin colación automática"
+      },
+      "translations": {},
+      "status": "needs-edited-translation",
+      "preferredExisting": null,
+      "alignmentVerified": false
+    },
+    {
+      "id": "aristotle-metaphysics",
+      "author": "Aristóteles",
+      "title": "Τὰ μετὰ τὰ φυσικά",
+      "greek": {
+        "path": "data/classics-corpus/aristotle-metaphysics-grc.json",
+        "source": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+      },
+      "translations": {},
+      "status": "needs-edited-translation",
+      "preferredExisting": null,
+      "alignmentVerified": false
+    },
+    {
+      "id": "aristotle-nicomachean-ethics",
+      "author": "Aristóteles",
+      "title": "Ἠθικὰ Νικομάχεια",
+      "greek": {
+        "path": "data/classics-corpus/aristotle-nicomachean-ethics-grc.json",
+        "source": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+      },
+      "translations": {
+        "en": {
+          "path": "data/classics-corpus/aristotle-nicomachean-ethics-en.json",
+          "source": "Traducción histórica de Harris Rackham (1926); TEI Perseus verificado por SHA; sin cotejo automático"
+        }
+      },
+      "status": "has-registered-translation",
+      "preferredExisting": "en",
+      "alignmentVerified": false
+    },
+    {
+      "id": "aristotle-physics",
+      "author": "Aristóteles",
+      "title": "Φυσικὴ ἀκρόασις",
+      "greek": {
+        "path": "data/classics-corpus/aristotle-physics-grc.json",
+        "source": "OpenGreekAndLatin First1KGreek TEI · fuente editada documentada, sin colación automática"
+      },
+      "translations": {},
+      "status": "needs-edited-translation",
+      "preferredExisting": null,
+      "alignmentVerified": false
+    },
+    {
+      "id": "aristotle-poetics",
+      "author": "Aristóteles",
+      "title": "Περὶ ποιητικῆς",
+      "greek": {
+        "path": "data/classics-corpus/aristotle-poetics-grc.json",
+        "source": "La fuente y la atribución se muestran dentro del JSON y del lector; las traducciones no equivalen a alineación por loci."
+      },
+      "translations": {
+        "en": {
+          "path": "data/classics-corpus/aristotle-poetics-en.json",
+          "source": "W. Hamilton Fyfe (1939), TEI Perseus CC BY-SA 4.0. 26 capítulos cotejables con griego, no línea por línea."
+        }
+      },
+      "status": "has-registered-translation",
+      "preferredExisting": "en",
+      "alignmentVerified": false
+    },
+    {
+      "id": "aristotle-politics",
+      "author": "Aristóteles",
+      "title": "Πολιτικά",
+      "greek": {
+        "path": "data/classics-corpus/aristotle-politics-grc.json",
+        "source": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+      },
+      "translations": {
+        "en": {
+          "path": "data/classics-corpus/aristotle-politics-en.json",
+          "source": "Traducción histórica de Harris Rackham (1944); TEI Perseus verificado por SHA; sin cotejo automático"
+        }
+      },
+      "status": "has-registered-translation",
+      "preferredExisting": "en",
+      "alignmentVerified": false
+    },
+    {
+      "id": "aristotle-rhetoric",
+      "author": "Aristóteles",
+      "title": "Ῥητορική",
+      "greek": {
+        "path": "data/classics-corpus/aristotle-rhetoric-grc.json",
+        "source": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+      },
+      "translations": {},
+      "status": "needs-edited-translation",
+      "preferredExisting": null,
+      "alignmentVerified": false
+    },
+    {
+      "id": "aristoxenus-harmonica",
+      "author": "Aristóxeno de Tarento",
+      "title": "Ἁρμονικὰ στοιχεῖα",
+      "greek": {
+        "path": "data/classics-corpus/aristoxenus-harmonica-grc.json",
+        "source": "OpenGreekAndLatin First1KGreek TEI · fuente editada documentada, sin colación automática"
+      },
+      "translations": {},
+      "status": "needs-edited-translation",
+      "preferredExisting": null,
+      "alignmentVerified": false
+    },
+    {
+      "id": "arrian-anabasis-alexandri",
+      "author": "Arriano",
+      "title": "Ἀλεξάνδρου Ἀνάβασις",
+      "greek": {
+        "path": "data/classics-corpus/arrian-anabasis-alexandri-grc.json",
+        "source": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+      },
+      "translations": {},
+      "status": "needs-edited-translation",
+      "preferredExisting": null,
+      "alignmentVerified": false
+    },
+    {
+      "id": "athenaeus-deipnosophistae",
+      "author": "Ateneo de Náucratis",
+      "title": "Δειπνοσοφισταί",
+      "greek": {
+        "path": "https://libros.vitruvius-digital-library.org/corpus/athenaeus-deipnosophistae-grc-c11adda328eca994.json",
+        "source": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente"
+      },
+      "translations": {},
+      "status": "needs-edited-translation",
+      "preferredExisting": null,
+      "alignmentVerified": false
+    },
+    {
+      "id": "baquilides-poemas",
+      "author": "Baquílides",
+      "title": "Ἐπίνικοι καὶ διθύραμβοι · Epinicios y ditirambos",
+      "greek": {
+        "path": "https://libros.vitruvius-digital-library.org/corpus/baquilides-poemas-grc.json",
+        "source": "Perseus/First1KGreek TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+      },
+      "translations": {},
+      "status": "needs-edited-translation",
+      "preferredExisting": null,
+      "alignmentVerified": false
+    },
+    {
+      "id": "barnabas",
+      "author": "Anónimo",
+      "title": "Ἐπιστολὴ Βαρνάβα · Epistula Barnabae",
+      "greek": {
+        "path": "data/classics-corpus/barnabas-grc.json",
+        "source": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+      },
+      "translations": {},
+      "status": "needs-edited-translation",
+      "preferredExisting": null,
+      "alignmentVerified": false
+    },
+    {
+      "id": "calimaco-himnos",
+      "author": "Calímaco y Licofrón",
+      "title": "Ὕμνοι καὶ ἐπιγράμματα · Himnos y epigramas (con la Ἀλεξάνδρα de Licofrón)",
+      "greek": {
+        "path": "https://libros.vitruvius-digital-library.org/corpus/calimaco-himnos-grc.json",
+        "source": "Perseus/First1KGreek TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+      },
+      "translations": {},
+      "status": "needs-edited-translation",
+      "preferredExisting": null,
+      "alignmentVerified": false
+    },
+    {
+      "id": "callimachus-hymni",
+      "author": "Calímaco",
+      "title": "Ὕμνοι",
+      "greek": {
+        "path": "data/classics-corpus/callimachus-hymni-grc.json",
+        "source": "Perseus TEI · A. W. Mair (1921) · seis himnos · CC BY-SA 4.0; sin cotejo crítico independiente"
+      },
+      "translations": {},
+      "status": "needs-edited-translation",
+      "preferredExisting": null,
+      "alignmentVerified": false
+    },
+    {
+      "id": "cassius-dio-historia",
+      "author": "Dión Casio",
+      "title": "Ῥωμαϊκὴ ἱστορία",
+      "greek": {
+        "path": "https://libros.vitruvius-digital-library.org/corpus/cassius-dio-historia-grc-43482d9b45cf2bea.json",
+        "source": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente"
+      },
+      "translations": {},
+      "status": "needs-edited-translation",
+      "preferredExisting": null,
+      "alignmentVerified": false
+    },
+    {
+      "id": "cebes-tabula",
+      "author": "Pseudo-Cebes (atribución tradicional)",
+      "title": "Πίναξ · Tabula Cebetis",
+      "greek": {
+        "path": "data/classics-corpus/cebes-tabula-grc.json",
+        "source": "OpenGreekAndLatin First1KGreek TEI · fuente editada documentada, sin colación automática"
+      },
+      "translations": {},
+      "status": "needs-edited-translation",
+      "preferredExisting": null,
+      "alignmentVerified": false
+    },
+    {
+      "id": "clement",
+      "author": "Primera carta de Clemente",
+      "title": "Πρὸς Κορινθίους Αʹ",
+      "greek": {
+        "path": "data/classics-corpus/clement-grc.json",
+        "source": "OpenGreekAndLatin First1KGreek TEI · fuente editada documentada, sin colación automática"
+      },
+      "translations": {},
+      "status": "needs-edited-translation",
+      "preferredExisting": null,
+      "alignmentVerified": false
+    },
+    {
+      "id": "clement-2",
+      "author": "Anónimo",
+      "title": "Δευτέρα Κλήμεντος · Segunda carta de Clemente",
+      "greek": {
+        "path": "data/classics-corpus/clement-2-grc.json",
+        "source": "OpenGreekAndLatin First1KGreek TEI · fuente editada documentada, sin colación automática"
+      },
+      "translations": {},
+      "status": "needs-edited-translation",
+      "preferredExisting": null,
+      "alignmentVerified": false
+    },
+    {
+      "id": "cleonides-harmonica",
+      "author": "Cleónides (transmitido bajo el nombre de Euclides)",
+      "title": "Εἰσαγωγὴ ἁρμονική · Introductio harmonica",
+      "greek": {
+        "path": "https://libros.vitruvius-digital-library.org/corpus/cleonides-harmonica-grc-a7f8f1e13c9508a5.json",
+        "source": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente"
+      },
+      "translations": {},
+      "status": "needs-edited-translation",
+      "preferredExisting": null,
+      "alignmentVerified": false
+    },
+    {
+      "id": "demosthenes-de-corona",
+      "author": "Demóstenes",
+      "title": "Περὶ τοῦ στεφάνου",
+      "greek": {
+        "path": "data/classics-corpus/demosthenes-de-corona-grc.json",
+        "source": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+      },
+      "translations": {},
+      "status": "needs-edited-translation",
+      "preferredExisting": null,
+      "alignmentVerified": false
+    },
+    {
+      "id": "demosthenes-philippicae",
+      "author": "Demóstenes",
+      "title": "Φιλιππικοί",
+      "greek": {
+        "path": "data/classics-corpus/demosthenes-philippicae-grc.json",
+        "source": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+      },
+      "translations": {},
+      "status": "needs-edited-translation",
+      "preferredExisting": null,
+      "alignmentVerified": false
+    },
+    {
+      "id": "didache",
+      "author": "Anónimo",
+      "title": "Didache",
+      "greek": {
+        "path": "data/classics-corpus/didache-grc.json",
+        "source": "Dieciséis capítulos griegos según Wikisource; transcripción no cotejada con manuscrito; CC BY-SA, traducciones pendientes."
+      },
+      "translations": {
+        "en": {
+          "path": "data/classics-corpus/didache-en.json",
+          "source": "Joseph Barber Lightfoot, 1891; traducción inglesa histórica, transcrita desde Wikisource, capítulos 1–16."
+        }
+      },
+      "status": "has-registered-translation",
+      "preferredExisting": "en",
+      "alignmentVerified": false
+    },
+    {
+      "id": "diodorus",
+      "author": "Diodoro Sículo",
+      "title": "Βιβλιοθήκη ἱστορική",
+      "greek": {
+        "path": "data/classics-corpus/diodorus-grc.json",
+        "source": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+      },
+      "translations": {},
+      "status": "needs-edited-translation",
+      "preferredExisting": null,
+      "alignmentVerified": false
+    },
+    {
+      "id": "diogenes-laertius-vitae",
+      "author": "Diógenes Laercio",
+      "title": "Βίοι καὶ γνῶμαι τῶν ἐν φιλοσοφίᾳ εὐδοκιμησάντων",
+      "greek": {
+        "path": "data/classics-corpus/diogenes-laertius-vitae-grc.json",
+        "source": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+      },
+      "translations": {},
+      "status": "needs-edited-translation",
+      "preferredExisting": null,
+      "alignmentVerified": false
+    },
+    {
+      "id": "diognetus",
+      "author": "Anónimo",
+      "title": "Πρὸς Διόγνητον · Carta a Diogneto",
+      "greek": {
+        "path": "data/classics-corpus/diognetus-grc.json",
+        "source": "OpenGreekAndLatin First1KGreek TEI · fuente editada documentada, sin colación automática"
+      },
+      "translations": {},
+      "status": "needs-edited-translation",
+      "preferredExisting": null,
+      "alignmentVerified": false
+    },
+    {
+      "id": "dionysius",
+      "author": "Dionisio de Halicarnaso",
+      "title": "Ῥωμαϊκὴ ἀρχαιολογία",
+      "greek": {
+        "path": "data/classics-corpus/dionysius-grc.json",
+        "source": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+      },
+      "translations": {},
+      "status": "needs-edited-translation",
+      "preferredExisting": null,
+      "alignmentVerified": false
+    },
+    {
+      "id": "dioscorides",
+      "author": "Dioscórides",
+      "title": "Περὶ ὕλης ἰατρικῆς",
+      "greek": {
+        "path": "data/classics-corpus/dioscorides-grc.json",
+        "source": "OpenGreekAndLatin First1KGreek · edición TEI de procedencia identificada; posible transcripción/OCR corregido, sin colación independiente"
+      },
+      "translations": {},
+      "status": "needs-edited-translation",
+      "preferredExisting": null,
+      "alignmentVerified": false
+    },
+    {
+      "id": "epictetus-discourses",
+      "author": "Epicteto (recopilación de Arriano)",
+      "title": "Διατριβαί",
+      "greek": {
+        "path": "data/classics-corpus/epictetus-discourses-grc.json",
+        "source": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+      },
+      "translations": {},
+      "status": "needs-edited-translation",
+      "preferredExisting": null,
+      "alignmentVerified": false
+    },
+    {
+      "id": "epictetus-enchiridion",
+      "author": "Epicteto (transmitido por Arriano)",
+      "title": "Ἐγχειρίδιον · Enchiridion",
+      "greek": {
+        "path": "data/classics-corpus/epictetus-enchiridion-grc.json",
+        "source": "La fuente y la atribución se muestran dentro del JSON y del lector; las traducciones no equivalen a alineación por loci."
+      },
+      "translations": {
+        "en": {
+          "path": "data/classics-corpus/epictetus-enchiridion-en.json",
+          "source": "Traducción histórica Thomas Wentworth Higginson (1890), TEI Perseus; 53 capítulos cotejables por locus con griego, sin alineación frase a frase."
+        }
+      },
+      "status": "has-registered-translation",
+      "preferredExisting": "en",
+      "alignmentVerified": false
+    },
+    {
+      "id": "epicuro-restos",
+      "author": "Epicuro",
+      "title": "Ἐπιστολαὶ καὶ Κύριαι δόξαι · Cartas y Máximas capitales",
+      "greek": {
+        "path": "https://libros.vitruvius-digital-library.org/corpus/epicuro-restos-grc.json",
+        "source": "Perseus/First1KGreek TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+      },
+      "translations": {},
+      "status": "needs-edited-translation",
+      "preferredExisting": null,
+      "alignmentVerified": false
+    },
+    {
+      "id": "esquines-discursos",
+      "author": "Esquines",
+      "title": "Λόγοι · Discursos",
+      "greek": {
+        "path": "https://libros.vitruvius-digital-library.org/corpus/esquines-discursos-grc.json",
+        "source": "Perseus/First1KGreek TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+      },
+      "translations": {},
+      "status": "needs-edited-translation",
+      "preferredExisting": null,
+      "alignmentVerified": false
+    },
+    {
+      "id": "euclid-elementa",
+      "author": "Euclides",
+      "title": "Στοιχεῖα · Elementa",
+      "greek": {
+        "path": "data/classics-corpus/euclid-elementa-grc.json",
+        "source": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+      },
+      "translations": {},
+      "status": "needs-edited-translation",
+      "preferredExisting": null,
+      "alignmentVerified": false
+    },
+    {
+      "id": "euclid-optica",
+      "author": "Euclides",
+      "title": "Ὀπτικά · Optica",
+      "greek": {
+        "path": "https://libros.vitruvius-digital-library.org/corpus/euclid-optica-grc-6cc3f8b109b782a4.json",
+        "source": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente"
+      },
+      "translations": {},
+      "status": "needs-edited-translation",
+      "preferredExisting": null,
+      "alignmentVerified": false
+    },
+    {
+      "id": "euclid-phaenomena",
+      "author": "Euclides",
+      "title": "Φαινόμενα · Phaenomena y escritos musicales",
+      "greek": {
+        "path": "https://libros.vitruvius-digital-library.org/corpus/euclid-phaenomena-grc-4e4a3c1b1b3eda93.json",
+        "source": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente"
+      },
+      "translations": {},
+      "status": "needs-edited-translation",
+      "preferredExisting": null,
+      "alignmentVerified": false
+    },
+    {
+      "id": "euripides-alcestis",
+      "author": "Eurípides",
+      "title": "Ἄλκηστις",
+      "greek": {
+        "path": "data/classics-corpus/euripides-alcestis-grc.json",
+        "source": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+      },
+      "translations": {
+        "en": {
+          "path": "data/classics-corpus/euripides-alcestis-en.json",
+          "source": "Traducción histórica de Edward P. Coleridge (1906); TEI Perseus verificado por SHA; sin cotejo automático"
+        }
+      },
+      "status": "has-registered-translation",
+      "preferredExisting": "en",
+      "alignmentVerified": false
+    },
+    {
+      "id": "euripides-andromache",
+      "author": "Eurípides",
+      "title": "Ἀνδρομάχη",
+      "greek": {
+        "path": "data/classics-corpus/euripides-andromache-grc.json",
+        "source": "Perseus Digital Library · Gilbert Murray · urn:cts:greekLit:tlg0006.tlg006.perseus-grc2 · CC BY-SA 4.0; sin colación filológica propia"
+      },
+      "translations": {},
+      "status": "needs-edited-translation",
+      "preferredExisting": null,
+      "alignmentVerified": false
+    },
+    {
+      "id": "euripides-bacchae",
+      "author": "Eurípides",
+      "title": "Βάκχαι",
+      "greek": {
+        "path": "data/classics-corpus/euripides-bacchae-grc.json",
+        "source": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+      },
+      "translations": {
+        "en": {
+          "path": "data/classics-corpus/euripides-bacchae-en.json",
+          "source": "Traducción histórica de T. A. Buckley (1850); TEI Perseus verificado por SHA; sin cotejo automático"
+        }
+      },
+      "status": "has-registered-translation",
+      "preferredExisting": "en",
+      "alignmentVerified": false
+    },
+    {
+      "id": "euripides-cyclops",
+      "author": "Eurípides",
+      "title": "Κύκλωψ",
+      "greek": {
+        "path": "data/classics-corpus/euripides-cyclops-grc.json",
+        "source": "Perseus Digital Library TEI · Gilbert Murray · CC BY-SA 4.0; cotejo crítico independiente pendiente"
+      },
+      "translations": {},
+      "status": "needs-edited-translation",
+      "preferredExisting": null,
+      "alignmentVerified": false
+    },
+    {
+      "id": "euripides-electra",
+      "author": "Eurípides",
+      "title": "Ἠλέκτρα",
+      "greek": {
+        "path": "data/classics-corpus/euripides-electra-grc.json",
+        "source": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+      },
+      "translations": {
+        "en": {
+          "path": "data/classics-corpus/euripides-electra-en.json",
+          "source": "Traducción histórica de Edward P. Coleridge (1891); TEI Perseus verificado por SHA; sin cotejo automático"
+        }
+      },
+      "status": "has-registered-translation",
+      "preferredExisting": "en",
+      "alignmentVerified": false
+    },
+    {
+      "id": "euripides-hecuba",
+      "author": "Eurípides",
+      "title": "Ἑκάβη",
+      "greek": {
+        "path": "data/classics-corpus/euripides-hecuba-grc.json",
+        "source": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+      },
+      "translations": {
+        "en": {
+          "path": "data/classics-corpus/euripides-hecuba-en.json",
+          "source": "Traducción histórica de Edward P. Coleridge (1891); TEI Perseus verificado por SHA; sin cotejo automático"
+        }
+      },
+      "status": "has-registered-translation",
+      "preferredExisting": "en",
+      "alignmentVerified": false
+    },
+    {
+      "id": "euripides-helena",
+      "author": "Eurípides",
+      "title": "Ἑλένη",
+      "greek": {
+        "path": "data/classics-corpus/euripides-helena-grc.json",
+        "source": "Perseus Digital Library TEI · Gilbert Murray · CC BY-SA 4.0; cotejo crítico independiente pendiente"
+      },
+      "translations": {},
+      "status": "needs-edited-translation",
+      "preferredExisting": null,
+      "alignmentVerified": false
+    },
+    {
+      "id": "euripides-heracleidae",
+      "author": "Eurípides",
+      "title": "Ἡρακλεῖδαι",
+      "greek": {
+        "path": "data/classics-corpus/euripides-heracleidae-grc.json",
+        "source": "Perseus Digital Library · Gilbert Murray · urn:cts:greekLit:tlg0006.tlg004.perseus-grc2 · CC BY-SA 4.0; sin colación filológica propia"
+      },
+      "translations": {},
+      "status": "needs-edited-translation",
+      "preferredExisting": null,
+      "alignmentVerified": false
+    },
+    {
+      "id": "euripides-heracles",
+      "author": "Eurípides",
+      "title": "Ἡρακλῆς",
+      "greek": {
+        "path": "data/classics-corpus/euripides-heracles-grc.json",
+        "source": "Perseus TEI · Gilbert Murray · urn:cts:greekLit:tlg0006.tlg009.perseus-grc2 · CC BY-SA 4.0; cotejo crítico pendiente"
+      },
+      "translations": {},
+      "status": "needs-edited-translation",
+      "preferredExisting": null,
+      "alignmentVerified": false
+    },
+    {
+      "id": "euripides-hippolytus",
+      "author": "Eurípides",
+      "title": "Ἱππόλυτος",
+      "greek": {
+        "path": "data/classics-corpus/euripides-hippolytus-grc.json",
+        "source": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+      },
+      "translations": {
+        "en": {
+          "path": "data/classics-corpus/euripides-hippolytus-en.json",
+          "source": "Traducción histórica de Edward P. Coleridge (1906); TEI Perseus verificado por SHA; sin cotejo automático"
+        }
+      },
+      "status": "has-registered-translation",
+      "preferredExisting": "en",
+      "alignmentVerified": false
+    },
+    {
+      "id": "euripides-ion",
+      "author": "Eurípides",
+      "title": "Ἴων",
+      "greek": {
+        "path": "data/classics-corpus/euripides-ion-grc.json",
+        "source": "Perseus Digital Library TEI · Gilbert Murray · CC BY-SA 4.0; cotejo crítico independiente pendiente"
+      },
+      "translations": {},
+      "status": "needs-edited-translation",
+      "preferredExisting": null,
+      "alignmentVerified": false
+    },
+    {
+      "id": "euripides-iphigenia-aulid",
+      "author": "Eurípides",
+      "title": "Ἰφιγένεια ἐν Αὐλίδι",
+      "greek": {
+        "path": "data/classics-corpus/euripides-iphigenia-aulid-grc.json",
+        "source": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+      },
+      "translations": {
+        "en": {
+          "path": "data/classics-corpus/euripides-iphigenia-aulid-en.json",
+          "source": "Traducción histórica de Edward P. Coleridge (1891); TEI Perseus verificado por SHA; sin cotejo automático"
+        }
+      },
+      "status": "has-registered-translation",
+      "preferredExisting": "en",
+      "alignmentVerified": false
+    },
+    {
+      "id": "euripides-medea",
+      "author": "Eurípides",
+      "title": "Μήδεια",
+      "greek": {
+        "path": "data/classics-corpus/euripides-medea-grc.json",
+        "source": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+      },
+      "translations": {
+        "en": {
+          "path": "data/classics-corpus/euripides-medea-en.json",
+          "source": "Traducción histórica de Edward P. Coleridge (1906); TEI Perseus verificado por SHA; sin cotejo automático"
+        }
+      },
+      "status": "has-registered-translation",
+      "preferredExisting": "en",
+      "alignmentVerified": false
+    },
+    {
+      "id": "euripides-orestes",
+      "author": "Eurípides",
+      "title": "Ὀρέστης",
+      "greek": {
+        "path": "data/classics-corpus/euripides-orestes-grc.json",
+        "source": "Perseus TEI · Gilbert Murray · urn:cts:greekLit:tlg0006.tlg016.perseus-grc2 · CC BY-SA 4.0; cotejo crítico pendiente"
+      },
+      "translations": {},
+      "status": "needs-edited-translation",
+      "preferredExisting": null,
+      "alignmentVerified": false
+    },
+    {
+      "id": "euripides-suppliants",
+      "author": "Eurípides",
+      "title": "Ἱκέτιδες",
+      "greek": {
+        "path": "data/classics-corpus/euripides-suppliants-grc.json",
+        "source": "Perseus Digital Library · Gilbert Murray · urn:cts:greekLit:tlg0006.tlg008.perseus-grc2 · CC BY-SA 4.0; sin colación filológica propia"
+      },
+      "translations": {},
+      "status": "needs-edited-translation",
+      "preferredExisting": null,
+      "alignmentVerified": false
+    },
+    {
+      "id": "euripides-troades",
+      "author": "Eurípides",
+      "title": "Τρῳάδες",
+      "greek": {
+        "path": "data/classics-corpus/euripides-troades-grc.json",
+        "source": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+      },
+      "translations": {
+        "en": {
+          "path": "data/classics-corpus/euripides-troades-en.json",
+          "source": "Traducción histórica de Edward P. Coleridge (1906); TEI Perseus verificado por SHA; sin cotejo automático"
+        }
+      },
+      "status": "has-registered-translation",
+      "preferredExisting": "en",
+      "alignmentVerified": false
+    },
+    {
+      "id": "eusebio",
+      "author": "Eusebio de Cesarea",
+      "title": "Ἐκκλησιαστικὴ ἱστορία · Historia eclesiástica",
+      "greek": {
+        "path": "data/classics-corpus/eusebio-grc.json",
+        "source": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+      },
+      "translations": {},
+      "status": "needs-edited-translation",
+      "preferredExisting": null,
+      "alignmentVerified": false
+    },
+    {
+      "id": "filostrato-apolonio",
+      "author": "Filóstrato",
+      "title": "Τὰ ἐς τὸν Τυανέα Ἀπολλώνιον · Vida de Apolonio de Tiana",
+      "greek": {
+        "path": "https://libros.vitruvius-digital-library.org/corpus/filostrato-apolonio-grc.json",
+        "source": "Perseus/First1KGreek TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+      },
+      "translations": {},
+      "status": "needs-edited-translation",
+      "preferredExisting": null,
+      "alignmentVerified": false
+    },
+    {
+      "id": "galen-adhortatio-artes",
+      "author": "Galeno",
+      "title": "Προτρεπτικὸς ἐπὶ τὰς τέχνας · Adhortatio ad artes addiscendas",
+      "greek": {
+        "path": "data/classics-corpus/galen-adhortatio-artes-grc.json",
+        "source": "OpenGreekAndLatin First1KGreek · TEI griego por capítulos, CC BY-SA 4.0; atribución y cotejo según fuente, no manuscrito diplomático"
+      },
+      "translations": {},
+      "status": "needs-edited-translation",
+      "preferredExisting": null,
+      "alignmentVerified": false
+    },
+    {
+      "id": "galen-ars-medica",
+      "author": "Galeno",
+      "title": "Τέχνη ἰατρική",
+      "greek": {
+        "path": "data/classics-corpus/galen-ars-medica-grc.json",
+        "source": "OpenGreekAndLatin First1KGreek TEI · fuente editada documentada, sin colación automática"
+      },
+      "translations": {},
+      "status": "needs-edited-translation",
+      "preferredExisting": null,
+      "alignmentVerified": false
+    },
+    {
+      "id": "galen-de-usu-partium",
+      "author": "Galeno",
+      "title": "Περὶ χρείας μορίων",
+      "greek": {
+        "path": "data/classics-corpus/galen-de-usu-partium-grc.json",
+        "source": "OpenGreekAndLatin First1KGreek TEI · fuente editada documentada, sin colación automática"
+      },
+      "translations": {},
+      "status": "needs-edited-translation",
+      "preferredExisting": null,
+      "alignmentVerified": false
+    },
+    {
+      "id": "galen-optimus-medicus-philosophus",
+      "author": "Galeno",
+      "title": "Ὅτι ἄριστος ἰατρὸς καὶ φιλόσοφος · Quod optimus medicus sit quoque philosophus",
+      "greek": {
+        "path": "data/classics-corpus/galen-optimus-medicus-philosophus-grc.json",
+        "source": "OpenGreekAndLatin First1KGreek · TEI griego por capítulos, CC BY-SA 4.0; atribución y cotejo según fuente, no manuscrito diplomático"
+      },
+      "translations": {},
+      "status": "needs-edited-translation",
+      "preferredExisting": null,
+      "alignmentVerified": false
+    },
+    {
+      "id": "galeno-facultades-naturales",
+      "author": "Galeno",
+      "title": "Περὶ φυσικῶν δυνάμεων · De naturalibus facultatibus",
+      "greek": {
+        "path": "https://libros.vitruvius-digital-library.org/corpus/galeno-facultades-naturales-grc.json",
+        "source": "Perseus/First1KGreek TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+      },
+      "translations": {},
+      "status": "needs-edited-translation",
+      "preferredExisting": null,
+      "alignmentVerified": false
+    },
+    {
+      "id": "hero-automata",
+      "author": "Herón de Alejandría",
+      "title": "Αὐτοματοποιητική · Automata",
+      "greek": {
+        "path": "data/classics-corpus/hero-automata-grc.json",
+        "source": "OpenGreekAndLatin First1KGreek TEI · fuente editada documentada, sin colación automática"
+      },
+      "translations": {},
+      "status": "needs-edited-translation",
+      "preferredExisting": null,
+      "alignmentVerified": false
+    },
+    {
+      "id": "hero-belopoeica",
+      "author": "Herón de Alejandría",
+      "title": "Βελοποιικά · Belopoeica",
+      "greek": {
+        "path": "https://libros.vitruvius-digital-library.org/corpus/hero-belopoeica-grc-fbb7bea5f038c2f6.json",
+        "source": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente"
+      },
+      "translations": {},
+      "status": "needs-edited-translation",
+      "preferredExisting": null,
+      "alignmentVerified": false
+    },
+    {
+      "id": "hero-pneumatica",
+      "author": "Herón de Alejandría",
+      "title": "Πνευματικά · Pneumatica",
+      "greek": {
+        "path": "data/classics-corpus/hero-pneumatica-grc.json",
+        "source": "OpenGreekAndLatin First1KGreek TEI · fuente editada documentada, sin colación automática"
+      },
+      "translations": {},
+      "status": "needs-edited-translation",
+      "preferredExisting": null,
+      "alignmentVerified": false
+    },
+    {
+      "id": "herodotus-historiae",
+      "author": "Heródoto",
+      "title": "Ἱστορίαι",
+      "greek": {
+        "path": "data/classics-corpus/herodotus-historiae-grc.json",
+        "source": "Perseus TEI · fuente editada documentada, sin colación automática"
+      },
+      "translations": {},
+      "status": "needs-edited-translation",
+      "preferredExisting": null,
+      "alignmentVerified": false
+    },
+    {
+      "id": "hesiod-theogony",
+      "author": "Hesíodo",
+      "title": "Theogony",
+      "greek": {
+        "path": "data/classics-corpus/hesiod-theogony-grc.json",
+        "source": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+      },
+      "translations": {
+        "en": {
+          "path": "data/classics-corpus/hesiod-theogony-en.json",
+          "source": "Traducción inglesa histórica acreditada (Hugh G. Evelyn-White, 1914); TEI Perseus bajo CC BY-SA 4.0; sin alineación certificada con el original."
+        }
+      },
+      "status": "has-registered-translation",
+      "preferredExisting": "en",
+      "alignmentVerified": false
+    },
+    {
+      "id": "hesiod-works-days",
+      "author": "Hesíodo",
+      "title": "Works and Days",
+      "greek": {
+        "path": "data/classics-corpus/hesiod-works-days-grc.json",
+        "source": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+      },
+      "translations": {
+        "en": {
+          "path": "data/classics-corpus/hesiod-works-days-en.json",
+          "source": "Traducción inglesa histórica acreditada (Hugh G. Evelyn-White, 1914); TEI Perseus bajo CC BY-SA 4.0; sin alineación certificada con el original."
+        }
+      },
+      "status": "has-registered-translation",
+      "preferredExisting": "en",
+      "alignmentVerified": false
+    },
+    {
+      "id": "hipocrates-obras",
+      "author": "Hipócrates",
+      "title": "Corpus Hippocraticum (selección)",
+      "greek": {
+        "path": "https://libros.vitruvius-digital-library.org/corpus/hipocrates-obras-grc.json",
+        "source": "Perseus/First1KGreek TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+      },
+      "translations": {},
+      "status": "needs-edited-translation",
+      "preferredExisting": null,
+      "alignmentVerified": false
+    },
+    {
+      "id": "hippocrates-aphorisms",
+      "author": "Corpus hipocrático",
+      "title": "Ἀφορισμοί",
+      "greek": {
+        "path": "data/classics-corpus/hippocrates-aphorisms-grc.json",
+        "source": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+      },
+      "translations": {
+        "en": {
+          "path": "data/classics-corpus/hippocrates-aphorisms-en.json",
+          "source": "Traducción histórica de Francis Adams (1886); TEI Perseus verificado por SHA; sin cotejo automático"
+        }
+      },
+      "status": "has-registered-translation",
+      "preferredExisting": "en",
+      "alignmentVerified": false
+    },
+    {
+      "id": "hippocrates-de-prisca-medicina",
+      "author": "Corpus hipocrático",
+      "title": "Περὶ ἀρχαίης ἰητρικῆς · De prisca medicina",
+      "greek": {
+        "path": "data/classics-corpus/hippocrates-de-prisca-medicina-grc.json",
+        "source": "OpenGreekAndLatin First1KGreek · TEI griego por capítulos, CC BY-SA 4.0; atribución y cotejo según fuente, no manuscrito diplomático"
+      },
+      "translations": {},
+      "status": "needs-edited-translation",
+      "preferredExisting": null,
+      "alignmentVerified": false
+    },
+    {
+      "id": "homer-iliad",
+      "author": "Homero (autoría tradicional)",
+      "title": "Ἰλιάς",
+      "greek": {
+        "path": "data/classics-corpus/homer-iliad-grc.json",
+        "source": "La fuente y la atribución se muestran dentro del JSON y del lector; las traducciones no equivalen a alineación por loci."
+      },
+      "translations": {
+        "en": {
+          "path": "data/classics-corpus/homer-iliad-en.json",
+          "source": "Samuel Butler 1898, revisión Perseus; 24 cantos y 190 tarjetas. Cotejo solo por canto; subdivisiones de verso no equivalen automáticamente al original."
+        }
+      },
+      "status": "has-registered-translation",
+      "preferredExisting": "en",
+      "alignmentVerified": false
+    },
+    {
+      "id": "homer-odyssey",
+      "author": "Homero",
+      "title": "Ὀδύσσεια",
+      "greek": {
+        "path": "data/classics-corpus/homer-odyssey-grc.json",
+        "source": "La fuente y la atribución se muestran dentro del JSON y del lector; las traducciones no equivalen a alineación por loci."
+      },
+      "translations": {
+        "en": {
+          "path": "data/classics-corpus/homer-odyssey-en.json",
+          "source": "Samuel Butler 1900, revised by Timothy Power and Gregory Nagy, Perseus TEI, 267 passage units, 24 books; segment-level references, not word-aligned."
+        }
+      },
+      "status": "has-registered-translation",
+      "preferredExisting": "en",
+      "alignmentVerified": false
+    },
+    {
+      "id": "homeric-hymns",
+      "author": "Anónimo (atribución antigua a Homero)",
+      "title": "Ὁμηρικοὶ ὕμνοι",
+      "greek": {
+        "path": "data/classics-corpus/homeric-hymns-grc.json",
+        "source": "Perseus TEI · fuente editada documentada, sin colación automática"
+      },
+      "translations": {},
+      "status": "needs-edited-translation",
+      "preferredExisting": null,
+      "alignmentVerified": false
+    },
+    {
+      "id": "ignatius",
+      "author": "Ignacio de Antioquía",
+      "title": "Ἐπιστολαί · Cartas de Ignacio",
+      "greek": {
+        "path": "data/classics-corpus/ignatius-grc.json",
+        "source": "OpenGreekAndLatin First1KGreek · edición TEI de procedencia identificada; posible transcripción/OCR corregido, sin colación independiente"
+      },
+      "translations": {},
+      "status": "needs-edited-translation",
+      "preferredExisting": null,
+      "alignmentVerified": false
+    },
+    {
+      "id": "irenaeus",
+      "author": "Ireneo de Lyon",
+      "title": "Ἔλεγχος καὶ ἀνατροπὴ τῆς ψευδωνύμου γνώσεως · Adversus haereses",
+      "greek": {
+        "path": "data/classics-corpus/irenaeus-grc.json",
+        "source": "OpenGreekAndLatin First1KGreek TEI · fuente editada documentada, sin colación automática"
+      },
+      "translations": {},
+      "status": "needs-edited-translation",
+      "preferredExisting": null,
+      "alignmentVerified": false
+    },
+    {
+      "id": "iseo-discursos",
+      "author": "Iseo",
+      "title": "Λόγοι · Discursos",
+      "greek": {
+        "path": "https://libros.vitruvius-digital-library.org/corpus/iseo-discursos-grc.json",
+        "source": "Perseus/First1KGreek TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+      },
+      "translations": {},
+      "status": "needs-edited-translation",
+      "preferredExisting": null,
+      "alignmentVerified": false
+    },
+    {
+      "id": "isocrates-aegineticus",
+      "author": "Isócrates",
+      "title": "Αἰγητικὸς",
+      "greek": {
+        "path": "data/classics-corpus/isocrates-aegineticus-grc.json",
+        "source": "Perseus DL TEI · Isocrates, Vol. 3. Van Hook, Larue, editor. Cambridge, MA, Harvard University Press; London, William Heinemann Ltd., 1945 (printing). · CC BY-SA 4.0; original sin cotejo independiente"
+      },
+      "translations": {},
+      "status": "needs-edited-translation",
+      "preferredExisting": null,
+      "alignmentVerified": false
+    },
+    {
+      "id": "isocrates-busiris",
+      "author": "Isócrates",
+      "title": "Βούσιρις",
+      "greek": {
+        "path": "data/classics-corpus/isocrates-busiris-grc.json",
+        "source": "Perseus DL TEI · Isocrates, Vol. 3. Van Hook, Larue, editor. Cambridge, MA, Harvard University Press; London, William Heinemann Ltd., 1945 (printing). · CC BY-SA 4.0; original sin cotejo independiente"
+      },
+      "translations": {},
+      "status": "needs-edited-translation",
+      "preferredExisting": null,
+      "alignmentVerified": false
+    },
+    {
+      "id": "isocrates-callimachus",
+      "author": "Isócrates",
+      "title": "Παραγραφή πρὸς Καλλίμαχον",
+      "greek": {
+        "path": "data/classics-corpus/isocrates-callimachus-grc.json",
+        "source": "Perseus DL TEI · Isocrates, Vol. 3. Van Hook, Larue, editor. Cambridge, MA, Harvard University Press; London, William Heinemann Ltd., 1945 (printing). · CC BY-SA 4.0; original sin cotejo independiente"
+      },
+      "translations": {},
+      "status": "needs-edited-translation",
+      "preferredExisting": null,
+      "alignmentVerified": false
+    },
+    {
+      "id": "isocrates-discursos",
+      "author": "Isócrates",
+      "title": "Λόγοι · Discursos (Πρὸς Δημόνικον, Πανηγυρικός)",
+      "greek": {
+        "path": "https://libros.vitruvius-digital-library.org/corpus/isocrates-discursos-grc.json",
+        "source": "Perseus/First1KGreek TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+      },
+      "translations": {},
+      "status": "needs-edited-translation",
+      "preferredExisting": null,
+      "alignmentVerified": false
+    },
+    {
+      "id": "isocrates-euthynus",
+      "author": "Isócrates",
+      "title": "Πρὸς Εὐθύνους ἀμάρτυρος",
+      "greek": {
+        "path": "data/classics-corpus/isocrates-euthynus-grc.json",
+        "source": "Perseus DL TEI · Isocrates, Vol. 3. Van Hook, Larue, editor. Cambridge, MA, Harvard University Press; London, William Heinemann Ltd., 1945 (printing). · CC BY-SA 4.0; original sin cotejo independiente"
+      },
+      "translations": {},
+      "status": "needs-edited-translation",
+      "preferredExisting": null,
+      "alignmentVerified": false
+    },
+    {
+      "id": "isocrates-helen",
+      "author": "Isócrates",
+      "title": "Ἑλένη",
+      "greek": {
+        "path": "data/classics-corpus/isocrates-helen-grc.json",
+        "source": "Perseus DL TEI · Isocrates, Vol. 3. Van Hook, Larue, editor. Cambridge, MA, Harvard University Press; London, William Heinemann Ltd., 1945 (printing). · CC BY-SA 4.0; original sin cotejo independiente"
+      },
+      "translations": {},
+      "status": "needs-edited-translation",
+      "preferredExisting": null,
+      "alignmentVerified": false
+    },
+    {
+      "id": "isocrates-lochites",
+      "author": "Isócrates",
+      "title": "Κατὰ Λοχίτου",
+      "greek": {
+        "path": "data/classics-corpus/isocrates-lochites-grc.json",
+        "source": "Perseus DL TEI · Isocrates, Vol. 3. Van Hook, Larue, editor. Cambridge, MA, Harvard University Press; London, William Heinemann Ltd., 1945 (printing). · CC BY-SA 4.0; original sin cotejo independiente"
+      },
+      "translations": {},
+      "status": "needs-edited-translation",
+      "preferredExisting": null,
+      "alignmentVerified": false
+    },
+    {
+      "id": "isocrates-plataicus",
+      "author": "Isócrates",
+      "title": "Πλαταικός",
+      "greek": {
+        "path": "data/classics-corpus/isocrates-plataicus-grc.json",
+        "source": "Perseus DL TEI · Isocrates, Vol. 3. Van Hook, Larue, editor. Cambridge, MA, Harvard University Press; London, William Heinemann Ltd., 1945 (printing). · CC BY-SA 4.0; original sin cotejo independiente"
+      },
+      "translations": {},
+      "status": "needs-edited-translation",
+      "preferredExisting": null,
+      "alignmentVerified": false
+    },
+    {
+      "id": "isocrates-sophists",
+      "author": "Isócrates",
+      "title": "Κατὰ τῶν σοφιστῶν",
+      "greek": {
+        "path": "data/classics-corpus/isocrates-sophists-grc.json",
+        "source": "Perseus DL TEI · Isocrates, Vol 2. Norlin, George, editor. Cambridge, MA, Harvard University Press; London, William Heinemann Ltd. 1929 (printing). · CC BY-SA 4.0; original sin cotejo independiente"
+      },
+      "translations": {},
+      "status": "needs-edited-translation",
+      "preferredExisting": null,
+      "alignmentVerified": false
+    },
+    {
+      "id": "isocrates-team-horses",
+      "author": "Isócrates",
+      "title": "Περὶ τοῦ ζεύγους",
+      "greek": {
+        "path": "data/classics-corpus/isocrates-team-horses-grc.json",
+        "source": "Perseus DL TEI · Isocrates, Vol. 3. Van Hook, Larue, editor. Cambridge, MA, Harvard University Press; London, William Heinemann Ltd., 1945 (printing). · CC BY-SA 4.0; original sin cotejo independiente"
+      },
+      "translations": {},
+      "status": "needs-edited-translation",
+      "preferredExisting": null,
+      "alignmentVerified": false
+    },
+    {
+      "id": "isocrates-trapeziticus",
+      "author": "Isócrates",
+      "title": "Τραπεζιτικός",
+      "greek": {
+        "path": "data/classics-corpus/isocrates-trapeziticus-grc.json",
+        "source": "Perseus DL TEI · Isocrates, Vol. 3. Van Hook, Larue, editor. Cambridge, MA, Harvard University Press; London, William Heinemann Ltd., 1945 (printing). · CC BY-SA 4.0; original sin cotejo independiente"
+      },
+      "translations": {},
+      "status": "needs-edited-translation",
+      "preferredExisting": null,
+      "alignmentVerified": false
+    },
+    {
+      "id": "jenofonte-ciropedia",
+      "author": "Jenofonte",
+      "title": "Κύρου παιδεία · Cyropaedia",
+      "greek": {
+        "path": "https://libros.vitruvius-digital-library.org/corpus/jenofonte-ciropedia-grc.json",
+        "source": "Perseus/First1KGreek TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+      },
+      "translations": {},
+      "status": "needs-edited-translation",
+      "preferredExisting": null,
+      "alignmentVerified": false
+    },
+    {
+      "id": "jenofonte-economico",
+      "author": "Jenofonte",
+      "title": "Οἰκονομικός · Oeconomicus",
+      "greek": {
+        "path": "https://libros.vitruvius-digital-library.org/corpus/jenofonte-economico-grc.json",
+        "source": "Perseus/First1KGreek TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+      },
+      "translations": {},
+      "status": "needs-edited-translation",
+      "preferredExisting": null,
+      "alignmentVerified": false
+    },
+    {
+      "id": "josephus-antiquities",
+      "author": "Flavio Josefo",
+      "title": "Ἰουδαϊκὴ ἀρχαιολογία",
+      "greek": {
+        "path": "data/classics-corpus/josephus-antiquities-grc.json",
+        "source": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+      },
+      "translations": {},
+      "status": "needs-edited-translation",
+      "preferredExisting": null,
+      "alignmentVerified": false
+    },
+    {
+      "id": "josephus-war",
+      "author": "Flavio Josefo",
+      "title": "Περὶ τοῦ Ἰουδαϊκοῦ πολέμου",
+      "greek": {
+        "path": "data/classics-corpus/josephus-war-grc.json",
+        "source": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+      },
+      "translations": {},
+      "status": "needs-edited-translation",
+      "preferredExisting": null,
+      "alignmentVerified": false
+    },
+    {
+      "id": "justin",
+      "author": "Justino Mártir",
+      "title": "Ἀπολογία πρώτη · Primera Apología",
+      "greek": {
+        "path": "data/classics-corpus/justin-grc.json",
+        "source": "OpenGreekAndLatin First1KGreek TEI · fuente editada documentada, sin colación automática"
+      },
+      "translations": {},
+      "status": "needs-edited-translation",
+      "preferredExisting": null,
+      "alignmentVerified": false
+    },
+    {
+      "id": "lisias-discursos",
+      "author": "Lisias",
+      "title": "Λόγοι · Discursos",
+      "greek": {
+        "path": "https://libros.vitruvius-digital-library.org/corpus/lisias-discursos-grc.json",
+        "source": "Perseus/First1KGreek TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+      },
+      "translations": {},
+      "status": "needs-edited-translation",
+      "preferredExisting": null,
+      "alignmentVerified": false
+    },
+    {
+      "id": "longino-sublime",
+      "author": "Pseudo-Longino",
+      "title": "Περὶ ὕψους · De sublimitate",
+      "greek": {
+        "path": "https://libros.vitruvius-digital-library.org/corpus/longino-sublime-grc.json",
+        "source": "Perseus/First1KGreek TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+      },
+      "translations": {},
+      "status": "needs-edited-translation",
+      "preferredExisting": null,
+      "alignmentVerified": false
+    },
+    {
+      "id": "longo-dafnis-cloe",
+      "author": "Longo",
+      "title": "Δάφνις καὶ Χλόη · Poimeniká",
+      "greek": {
+        "path": "https://libros.vitruvius-digital-library.org/corpus/longo-dafnis-cloe-grc.json",
+        "source": "Perseus/First1KGreek TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+      },
+      "translations": {},
+      "status": "needs-edited-translation",
+      "preferredExisting": null,
+      "alignmentVerified": false
+    },
+    {
+      "id": "lucian-bacchus",
+      "author": "Luciano de Samósata",
+      "title": "Προλαλιά. Διόνυσος",
+      "greek": {
+        "path": "data/classics-corpus/lucian-bacchus-grc.json",
+        "source": "Perseus DL TEI · Lucian, Vol. 1. Harmon, Austin Morris, editor. London: William Heinemann, Ltd.; Cambridge, MA: Harvard University Press, 1913. · CC BY-SA 4.0; original sin cotejo independiente"
+      },
+      "translations": {},
+      "status": "needs-edited-translation",
+      "preferredExisting": null,
+      "alignmentVerified": false
+    },
+    {
+      "id": "lucian-de-domo",
+      "author": "Luciano de Samósata",
+      "title": "Περὶ τοῦ Οἴκου",
+      "greek": {
+        "path": "data/classics-corpus/lucian-de-domo-grc.json",
+        "source": "Perseus DL TEI · Lucian, Vol. 1. Harmon, Austin Morris, editor. London: William Heinemann, Ltd.; Cambridge, MA: Harvard University Press, 1913. · CC BY-SA 4.0; original sin cotejo independiente"
+      },
+      "translations": {},
+      "status": "needs-edited-translation",
+      "preferredExisting": null,
+      "alignmentVerified": false
+    },
+    {
+      "id": "lucian-demonax",
+      "author": "Luciano de Samósata",
+      "title": "Δημώνακτος Βίος",
+      "greek": {
+        "path": "data/classics-corpus/lucian-demonax-grc.json",
+        "source": "Perseus DL TEI · Lucian, Vol. 1. Harmon, Austin Morris, editor. London: William Heinemann, Ltd.; Cambridge, MA: Harvard University Press, 1913. · CC BY-SA 4.0; original sin cotejo independiente"
+      },
+      "translations": {},
+      "status": "needs-edited-translation",
+      "preferredExisting": null,
+      "alignmentVerified": false
+    },
+    {
+      "id": "lucian-dialogi-mortuorum",
+      "author": "Luciano de Samósata",
+      "title": "Νεκρικοὶ διάλογοι",
+      "greek": {
+        "path": "data/classics-corpus/lucian-dialogi-mortuorum-grc.json",
+        "source": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+      },
+      "translations": {},
+      "status": "needs-edited-translation",
+      "preferredExisting": null,
+      "alignmentVerified": false
+    },
+    {
+      "id": "lucian-electrum",
+      "author": "Luciano de Samósata",
+      "title": "Περὶ τοῦ Ἡλέκτρου ἢ Κύκνων",
+      "greek": {
+        "path": "data/classics-corpus/lucian-electrum-grc.json",
+        "source": "Perseus DL TEI · Lucian, Vol. 1. Harmon, Austin Morris, editor. London: William Heinemann, Ltd.; Cambridge, MA: Harvard University Press, 1913. · CC BY-SA 4.0; original sin cotejo independiente"
+      },
+      "translations": {},
+      "status": "needs-edited-translation",
+      "preferredExisting": null,
+      "alignmentVerified": false
+    },
+    {
+      "id": "lucian-encomium-fatherland",
+      "author": "Luciano de Samósata",
+      "title": "Πατρίδος Ἐγκώμιον",
+      "greek": {
+        "path": "data/classics-corpus/lucian-encomium-fatherland-grc.json",
+        "source": "Perseus DL TEI · Lucian, Vol. 1. Harmon, Austin Morris, editor. London: William Heinemann, Ltd.; Cambridge, MA: Harvard University Press, 1913. · CC BY-SA 4.0; original sin cotejo independiente"
+      },
+      "translations": {},
+      "status": "needs-edited-translation",
+      "preferredExisting": null,
+      "alignmentVerified": false
+    },
+    {
+      "id": "lucian-encomium-fly",
+      "author": "Luciano de Samósata",
+      "title": "Μυίας Ἐγκώμιον",
+      "greek": {
+        "path": "data/classics-corpus/lucian-encomium-fly-grc.json",
+        "source": "Perseus DL TEI · Lucian, Vol. 1. Harmon, Austin Morris, editor. London: William Heinemann, Ltd.; Cambridge, MA: Harvard University Press, 1913. · CC BY-SA 4.0; original sin cotejo independiente"
+      },
+      "translations": {},
+      "status": "needs-edited-translation",
+      "preferredExisting": null,
+      "alignmentVerified": false
+    },
+    {
+      "id": "lucian-hercules",
+      "author": "Luciano de Samósata",
+      "title": "Προλαλιά. Ἡρακλῆς",
+      "greek": {
+        "path": "data/classics-corpus/lucian-hercules-grc.json",
+        "source": "Perseus DL TEI · Lucian, Vol. 1. Harmon, Austin Morris, editor. London: William Heinemann, Ltd.; Cambridge, MA: Harvard University Press, 1913. · CC BY-SA 4.0; original sin cotejo independiente"
+      },
+      "translations": {},
+      "status": "needs-edited-translation",
+      "preferredExisting": null,
+      "alignmentVerified": false
+    },
+    {
+      "id": "lucian-hippias",
+      "author": "Luciano de Samósata",
+      "title": "Ἱππίας ἢ Βαλανεῖον",
+      "greek": {
+        "path": "data/classics-corpus/lucian-hippias-grc.json",
+        "source": "Perseus DL TEI · Lucian, Vol. 1. Harmon, Austin Morris, editor. London: William Heinemann, Ltd.; Cambridge, MA: Harvard University Press, 1913. · CC BY-SA 4.0; original sin cotejo independiente"
+      },
+      "translations": {},
+      "status": "needs-edited-translation",
+      "preferredExisting": null,
+      "alignmentVerified": false
+    },
+    {
+      "id": "lucian-nigrinus",
+      "author": "Luciano de Samósata",
+      "title": "Νιγρίνου Φιλοσοφία",
+      "greek": {
+        "path": "data/classics-corpus/lucian-nigrinus-grc.json",
+        "source": "Perseus DL TEI · Lucian, Vol. 1. Harmon, Austin Morris, editor. London: William Heinemann, Ltd.; Cambridge, MA: Harvard University Press, 1913. · CC BY-SA 4.0; original sin cotejo independiente"
+      },
+      "translations": {},
+      "status": "needs-edited-translation",
+      "preferredExisting": null,
+      "alignmentVerified": false
+    },
+    {
+      "id": "lucian-phalaris",
+      "author": "Luciano de Samósata",
+      "title": "Φάλαρις",
+      "greek": {
+        "path": "data/classics-corpus/lucian-phalaris-grc.json",
+        "source": "Perseus DL TEI · Lucian, Vol. 1. Harmon, Austin Morris, editor. London: William Heinemann, Ltd.; Cambridge, MA: Harvard University Press, 1913. · CC BY-SA 4.0; original sin cotejo independiente"
+      },
+      "translations": {},
+      "status": "needs-edited-translation",
+      "preferredExisting": null,
+      "alignmentVerified": false
+    },
+    {
+      "id": "lucian-verae-historiae",
+      "author": "Luciano de Samósata",
+      "title": "Ἀληθῆ διηγήματα",
+      "greek": {
+        "path": "data/classics-corpus/lucian-verae-historiae-grc.json",
+        "source": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+      },
+      "translations": {
+        "en": {
+          "path": "data/classics-corpus/lucian-verae-historiae-en.json",
+          "source": "Traducción histórica de Austin Morris Harmon (1913); TEI Perseus verificado por SHA; sin cotejo automático"
+        }
+      },
+      "status": "has-registered-translation",
+      "preferredExisting": "en",
+      "alignmentVerified": false
+    },
+    {
+      "id": "lysias-against-andocides",
+      "author": "Lisias",
+      "title": "κατ᾽ Ἀνδοκίδου ἀσεβείας",
+      "greek": {
+        "path": "data/classics-corpus/lysias-against-andocides-grc.json",
+        "source": "Perseus DL TEI · Lysias. Lamb, W.R.M., editor. Cambridge, MA: Harvard University Press; London: William Heinemann Ltd., 1930. · CC BY-SA 4.0; original sin cotejo independiente"
+      },
+      "translations": {},
+      "status": "needs-edited-translation",
+      "preferredExisting": null,
+      "alignmentVerified": false
+    },
+    {
+      "id": "lysias-against-simon",
+      "author": "Lisias",
+      "title": "πρὸς Σίμωνα ἀπολογία",
+      "greek": {
+        "path": "data/classics-corpus/lysias-against-simon-grc.json",
+        "source": "Perseus DL TEI · Lysias. Lamb, W.R.M., editor. Cambridge, MA: Harvard University Press; London: William Heinemann Ltd., 1930. · CC BY-SA 4.0; original sin cotejo independiente"
+      },
+      "translations": {},
+      "status": "needs-edited-translation",
+      "preferredExisting": null,
+      "alignmentVerified": false
+    },
+    {
+      "id": "lysias-calumny",
+      "author": "Lisias",
+      "title": "κατηγορία πρὸς τοὺς συνουσιαστὰς κακολογιῶν",
+      "greek": {
+        "path": "data/classics-corpus/lysias-calumny-grc.json",
+        "source": "Perseus DL TEI · Lysias. Lamb, W.R.M., editor. Cambridge, MA: Harvard University Press; London: William Heinemann Ltd., 1930. · CC BY-SA 4.0; original sin cotejo independiente"
+      },
+      "translations": {},
+      "status": "needs-edited-translation",
+      "preferredExisting": null,
+      "alignmentVerified": false
+    },
+    {
+      "id": "lysias-eratosthenes",
+      "author": "Lisias",
+      "title": "ὑπὲρ τοῦ Ἐρατοσθένους φόνου ἀπολογία",
+      "greek": {
+        "path": "data/classics-corpus/lysias-eratosthenes-grc.json",
+        "source": "Perseus DL TEI · Lysias. Lamb, W.R.M., editor. Cambridge, MA: Harvard University Press; London: William Heinemann Ltd., 1930. · CC BY-SA 4.0; original sin cotejo independiente"
+      },
+      "translations": {},
+      "status": "needs-edited-translation",
+      "preferredExisting": null,
+      "alignmentVerified": false
+    },
+    {
+      "id": "lysias-for-callias",
+      "author": "Lisias",
+      "title": "ὑπὲρ Καλλίου ἱεροσυλίας ἀπολογία",
+      "greek": {
+        "path": "data/classics-corpus/lysias-for-callias-grc.json",
+        "source": "Perseus DL TEI · Lysias. Lamb, W.R.M., editor. Cambridge, MA: Harvard University Press; London: William Heinemann Ltd., 1930. · CC BY-SA 4.0; original sin cotejo independiente"
+      },
+      "translations": {},
+      "status": "needs-edited-translation",
+      "preferredExisting": null,
+      "alignmentVerified": false
+    },
+    {
+      "id": "lysias-funeral-oration",
+      "author": "Lisias",
+      "title": "Ἐπιτάφιος τοῖς Κορινθίων βοηθοῖς",
+      "greek": {
+        "path": "data/classics-corpus/lysias-funeral-oration-grc.json",
+        "source": "Perseus DL TEI · Lysias. Lamb, W.R.M., editor. Cambridge, MA: Harvard University Press; London: William Heinemann Ltd., 1930. · CC BY-SA 4.0; original sin cotejo independiente"
+      },
+      "translations": {},
+      "status": "needs-edited-translation",
+      "preferredExisting": null,
+      "alignmentVerified": false
+    },
+    {
+      "id": "lysias-olive-stump",
+      "author": "Lisias",
+      "title": "Ἀρεοπαγιτικὸς περὶ τοῦ σηκοῦ ἀπολογία",
+      "greek": {
+        "path": "data/classics-corpus/lysias-olive-stump-grc.json",
+        "source": "Perseus DL TEI · Lysias. Lamb, W.R.M., editor. Cambridge, MA: Harvard University Press; London: William Heinemann Ltd., 1930. · CC BY-SA 4.0; original sin cotejo independiente"
+      },
+      "translations": {},
+      "status": "needs-edited-translation",
+      "preferredExisting": null,
+      "alignmentVerified": false
+    },
+    {
+      "id": "lysias-soldier",
+      "author": "Lisias",
+      "title": "ὑπὲρ τοῦ στρατιωτοῦ",
+      "greek": {
+        "path": "data/classics-corpus/lysias-soldier-grc.json",
+        "source": "Perseus DL TEI · Lysias. Lamb, W.R.M., editor. Cambridge, MA: Harvard University Press; London: William Heinemann Ltd., 1930. · CC BY-SA 4.0; original sin cotejo independiente"
+      },
+      "translations": {},
+      "status": "needs-edited-translation",
+      "preferredExisting": null,
+      "alignmentVerified": false
+    },
+    {
+      "id": "lysias-theomnestus-1",
+      "author": "Lisias",
+      "title": "κατὰ θεομνήστου, Α",
+      "greek": {
+        "path": "data/classics-corpus/lysias-theomnestus-1-grc.json",
+        "source": "Perseus DL TEI · Lysias. Lamb, W.R.M., editor. Cambridge, MA: Harvard University Press; London: William Heinemann Ltd., 1930. · CC BY-SA 4.0; original sin cotejo independiente"
+      },
+      "translations": {},
+      "status": "needs-edited-translation",
+      "preferredExisting": null,
+      "alignmentVerified": false
+    },
+    {
+      "id": "lysias-wound",
+      "author": "Lisias",
+      "title": "περὶ τραύματος ἐκ προνοίας",
+      "greek": {
+        "path": "data/classics-corpus/lysias-wound-grc.json",
+        "source": "Perseus DL TEI · Lysias. Lamb, W.R.M., editor. Cambridge, MA: Harvard University Press; London: William Heinemann Ltd., 1930. · CC BY-SA 4.0; original sin cotejo independiente"
+      },
+      "translations": {},
+      "status": "needs-edited-translation",
+      "preferredExisting": null,
+      "alignmentVerified": false
+    },
+    {
+      "id": "marcus-aurelius-meditations",
+      "author": "Marco Aurelio",
+      "title": "Τὰ εἰς ἑαυτόν",
+      "greek": {
+        "path": "data/classics-corpus/marcus-aurelius-meditations-grc.json",
+        "source": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+      },
+      "translations": {
+        "en": {
+          "path": "data/classics-corpus/marcus-aurelius-meditations-en.json",
+          "source": "Traducción histórica de George Long (1862); edición digital Standard Ebooks CC0; no edición crítica ni alineación certificada con el griego."
+        }
+      },
+      "status": "has-registered-translation",
+      "preferredExisting": "en",
+      "alignmentVerified": false
+    },
+    {
+      "id": "mark",
+      "author": "Evangelio según Marcos",
+      "title": "Εὐαγγέλιον κατὰ Μᾶρκον",
+      "greek": {
+        "path": "data/classics-corpus/mark-grc.json",
+        "source": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+      },
+      "translations": {},
+      "status": "needs-edited-translation",
+      "preferredExisting": null,
+      "alignmentVerified": false
+    },
+    {
+      "id": "menander-dyskolos",
+      "author": "Menandro",
+      "title": "Δύσκολος",
+      "greek": {
+        "path": "data/classics-corpus/menander-dyskolos-grc.json",
+        "source": "GreekDraCor · F. H. Sandbach · versión procedente de Wikisource · CC BY-SA 3.0 · numeración editorial pendiente"
+      },
+      "translations": {},
+      "status": "needs-edited-translation",
+      "preferredExisting": null,
+      "alignmentVerified": false
+    },
+    {
+      "id": "menandro-comedias",
+      "author": "Menandro",
+      "title": "Κωμῳδίαι · Comedias (fragmentos papiráceos)",
+      "greek": {
+        "path": "https://libros.vitruvius-digital-library.org/corpus/menandro-comedias-grc.json",
+        "source": "Perseus/First1KGreek TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+      },
+      "translations": {},
+      "status": "needs-edited-translation",
+      "preferredExisting": null,
+      "alignmentVerified": false
+    },
+    {
+      "id": "origenes",
+      "author": "Orígenes",
+      "title": "Περὶ ἀρχῶν · De principiis",
+      "greek": {
+        "path": "https://libros.vitruvius-digital-library.org/corpus/origenes-grc.json",
+        "source": "Perseus/First1KGreek TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+      },
+      "translations": {},
+      "status": "needs-edited-translation",
+      "preferredExisting": null,
+      "alignmentVerified": false
+    },
+    {
+      "id": "pastor-hermas",
+      "author": "Hermas",
+      "title": "Ποιμὴν Ἑρμᾶ · Pastor de Hermas",
+      "greek": {
+        "path": "data/classics-corpus/pastor-hermas-grc.json",
+        "source": "OpenGreekAndLatin First1KGreek TEI · fuente editada documentada, sin colación automática"
+      },
+      "translations": {},
+      "status": "needs-edited-translation",
+      "preferredExisting": null,
+      "alignmentVerified": false
+    },
+    {
+      "id": "pausanias-periegesis",
+      "author": "Pausanias",
+      "title": "Ἑλλάδος περιήγησις",
+      "greek": {
+        "path": "data/classics-corpus/pausanias-periegesis-grc.json",
+        "source": "Perseus TEI · fuente editada documentada, sin colación automática"
+      },
+      "translations": {},
+      "status": "needs-edited-translation",
+      "preferredExisting": null,
+      "alignmentVerified": false
+    },
+    {
+      "id": "philo",
+      "author": "Filón de Alejandría",
+      "title": "De opificio mundi",
+      "greek": {
+        "path": "data/classics-corpus/philo-grc.json",
+        "source": "OpenGreekAndLatin First1KGreek · edición TEI de procedencia identificada; posible transcripción/OCR corregido, sin colación independiente"
+      },
+      "translations": {
+        "en": {
+          "path": "data/classics-corpus/philo-en.json",
+          "source": "Traducción histórica de Charles Duke Yonge (1854); TEI OpenGreekAndLatin First1KGreek verificado por SHA; sin cotejo automático"
+        }
+      },
+      "status": "has-registered-translation",
+      "preferredExisting": "en",
+      "alignmentVerified": false
+    },
+    {
+      "id": "philo-de-vita-mosis",
+      "author": "Filón de Alejandría",
+      "title": "Περὶ τοῦ βίου Μωυσέως (De vita Mosis)",
+      "greek": {
+        "path": "data/classics-corpus/philo-de-vita-mosis-grc.json",
+        "source": "OpenGreekAndLatin First1KGreek TEI · fuente editada documentada, sin colación automática"
+      },
+      "translations": {
+        "en": {
+          "path": "data/classics-corpus/philo-de-vita-mosis-en.json",
+          "source": "Traducción histórica de Charles Duke Yonge (1855); TEI OpenGreekAndLatin First1KGreek verificado por SHA; sin cotejo automático"
+        }
+      },
+      "status": "has-registered-translation",
+      "preferredExisting": "en",
+      "alignmentVerified": false
+    },
+    {
+      "id": "philo-legum-allegoriae",
+      "author": "Filón de Alejandría",
+      "title": "Νόμων ἱερῶν ἀλληγορίαι (Legum allegoriae)",
+      "greek": {
+        "path": "data/classics-corpus/philo-legum-allegoriae-grc.json",
+        "source": "OpenGreekAndLatin First1KGreek TEI · fuente editada documentada, sin colación automática"
+      },
+      "translations": {
+        "en": {
+          "path": "data/classics-corpus/philo-legum-allegoriae-en.json",
+          "source": "Traducción histórica de Charles Duke Yonge (1854); TEI OpenGreekAndLatin First1KGreek verificado por SHA; sin cotejo automático"
+        }
+      },
+      "status": "has-registered-translation",
+      "preferredExisting": "en",
+      "alignmentVerified": false
+    },
+    {
+      "id": "pindar-olympian",
+      "author": "Píndaro",
+      "title": "Ὀλυμπιόνικοι",
+      "greek": {
+        "path": "data/classics-corpus/pindar-olympian-grc.json",
+        "source": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+      },
+      "translations": {},
+      "status": "needs-edited-translation",
+      "preferredExisting": null,
+      "alignmentVerified": false
+    },
+    {
+      "id": "pindar-pythian",
+      "author": "Píndaro",
+      "title": "Πυθιόνικοι",
+      "greek": {
+        "path": "data/classics-corpus/pindar-pythian-grc.json",
+        "source": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+      },
+      "translations": {},
+      "status": "needs-edited-translation",
+      "preferredExisting": null,
+      "alignmentVerified": false
+    },
+    {
+      "id": "plato-apology",
+      "author": "Platón",
+      "title": "Ἀπολογία Σωκράτους",
+      "greek": {
+        "path": "data/classics-corpus/plato-apology-grc.json",
+        "source": "La fuente y la atribución se muestran dentro del JSON y del lector; las traducciones no equivalen a alineación por loci."
+      },
+      "translations": {
+        "en": {
+          "path": "data/classics-corpus/plato-apology-en.json",
+          "source": "Inglés: Harold North Fowler (1914), TEI Perseus; unidades Stephanus principales 17–42; cotejo por sección general, no frase por frase."
+        }
+      },
+      "status": "has-registered-translation",
+      "preferredExisting": "en",
+      "alignmentVerified": false
+    },
+    {
+      "id": "plato-charmides",
+      "author": "Platón",
+      "title": "Χαρμίδης",
+      "greek": {
+        "path": "data/classics-corpus/plato-charmides-grc.json",
+        "source": "Perseus original Greek edited TEI | urn:cts:greekLit:tlg0059.tlg018.perseus-grc2 | CC BY-SA 4.0 | local digital paragraph segments, not canonical loci"
+      },
+      "translations": {},
+      "status": "needs-edited-translation",
+      "preferredExisting": null,
+      "alignmentVerified": false
+    },
+    {
+      "id": "plato-crito",
+      "author": "Platón",
+      "title": "Κρίτων",
+      "greek": {
+        "path": "data/classics-corpus/plato-crito-grc.json",
+        "source": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+      },
+      "translations": {
+        "en": {
+          "path": "data/classics-corpus/plato-crito-en.json",
+          "source": "Traducción histórica de Harold North Fowler (1914); TEI Perseus verificado por SHA; sin cotejo automático"
+        }
+      },
+      "status": "has-registered-translation",
+      "preferredExisting": "en",
+      "alignmentVerified": false
+    },
+    {
+      "id": "plato-euthydemus",
+      "author": "Platón",
+      "title": "Εὐθύδημος",
+      "greek": {
+        "path": "data/classics-corpus/plato-euthydemus-grc.json",
+        "source": "Perseus DL TEI · Platonis Opera, Tomus III: Tetralogia V-VII. Burnet, John, editor. Oxford: Clarendon Press, 1903. · CC BY-SA 4.0; original sin cotejo independiente"
+      },
+      "translations": {},
+      "status": "needs-edited-translation",
+      "preferredExisting": null,
+      "alignmentVerified": false
+    },
+    {
+      "id": "plato-euthyphro",
+      "author": "Platón",
+      "title": "Εὐθύφρων",
+      "greek": {
+        "path": "data/classics-corpus/plato-euthyphro-grc.json",
+        "source": "Perseus original Greek edited TEI | urn:cts:greekLit:tlg0059.tlg001.perseus-grc1 | CC BY-SA 4.0 | local digital paragraph segments, not canonical loci"
+      },
+      "translations": {
+        "en": {
+          "path": "data/classics-corpus/plato-euthyphro-en.json",
+          "source": "Traducción histórica inglesa de Harold North Fowler (1914), Perseus TEI, CC BY-SA 4.0; secciones Stephanus sin alineación automática con párrafos griegos."
+        }
+      },
+      "status": "has-registered-translation",
+      "preferredExisting": "en",
+      "alignmentVerified": false
+    },
+    {
+      "id": "plato-gorgias",
+      "author": "Platón",
+      "title": "Γοργίας",
+      "greek": {
+        "path": "data/classics-corpus/plato-gorgias-grc.json",
+        "source": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+      },
+      "translations": {
+        "en": {
+          "path": "data/classics-corpus/plato-gorgias-en.json",
+          "source": "Traducción histórica de Walter Rangeley Maitland Lamb (1925); TEI Perseus verificado por SHA; sin cotejo automático"
+        }
+      },
+      "status": "has-registered-translation",
+      "preferredExisting": "en",
+      "alignmentVerified": false
+    },
+    {
+      "id": "plato-hippias-minor",
+      "author": "Platón",
+      "title": "Ἱππίας ἐλάττων",
+      "greek": {
+        "path": "data/classics-corpus/plato-hippias-minor-grc.json",
+        "source": "Perseus DL TEI · Platonis Opera, Tomus III: Tetralogia V-VII. Burnet, John, editor. Oxford: Clarendon Press, 1903. · CC BY-SA 4.0; original sin cotejo independiente"
+      },
+      "translations": {},
+      "status": "needs-edited-translation",
+      "preferredExisting": null,
+      "alignmentVerified": false
+    },
+    {
+      "id": "plato-ion",
+      "author": "Platón",
+      "title": "Ἴων",
+      "greek": {
+        "path": "data/classics-corpus/plato-ion-grc.json",
+        "source": "Perseus DL TEI · Platonis Opera, Tomus III: Tetralogia V-VII. Burnet, John, editor. Oxford: Clarendon Press, 1903. · CC BY-SA 4.0; original sin cotejo independiente"
+      },
+      "translations": {
+        "en": {
+          "path": "data/classics-corpus/plato-ion-en.json",
+          "source": "Traducción histórica de William Rangeley Maitland Lamb (1925), Perseus TEI, CC BY-SA 4.0. Segmentos Stephanus sin alineación automática con el griego."
+        }
+      },
+      "status": "has-registered-translation",
+      "preferredExisting": "en",
+      "alignmentVerified": false
+    },
+    {
+      "id": "plato-laches",
+      "author": "Platón",
+      "title": "Λάχης",
+      "greek": {
+        "path": "data/classics-corpus/plato-laches-grc.json",
+        "source": "Perseus original Greek edited TEI | urn:cts:greekLit:tlg0059.tlg019.perseus-grc2 | CC BY-SA 4.0 | local digital paragraph segments, not canonical loci"
+      },
+      "translations": {},
+      "status": "needs-edited-translation",
+      "preferredExisting": null,
+      "alignmentVerified": false
+    },
+    {
+      "id": "plato-laws",
+      "author": "Platón",
+      "title": "Νόμοι",
+      "greek": {
+        "path": "data/classics-corpus/plato-laws-grc.json",
+        "source": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+      },
+      "translations": {},
+      "status": "needs-edited-translation",
+      "preferredExisting": null,
+      "alignmentVerified": false
+    },
+    {
+      "id": "plato-lysis",
+      "author": "Platón",
+      "title": "Λύσις",
+      "greek": {
+        "path": "data/classics-corpus/plato-lysis-grc.json",
+        "source": "Perseus DL TEI · Platonis Opera, Tomus III: Tetralogia V-VII. Burnet, John, editor. Oxford: Clarendon Press, 1903. · CC BY-SA 4.0; original sin cotejo independiente"
+      },
+      "translations": {},
+      "status": "needs-edited-translation",
+      "preferredExisting": null,
+      "alignmentVerified": false
+    },
+    {
+      "id": "plato-menexenus",
+      "author": "Platón",
+      "title": "Μενέξενος",
+      "greek": {
+        "path": "data/classics-corpus/plato-menexenus-grc.json",
+        "source": "Perseus DL TEI · Platonis Opera, Tomus III: Tetralogia V-VII. Burnet, John, editor. Oxford: Clarendon Press, 1903. · CC BY-SA 4.0; original sin cotejo independiente"
+      },
+      "translations": {
+        "en": {
+          "path": "data/classics-corpus/plato-menexenus-en.json",
+          "source": "Traducción histórica de Robert Gregg Bury (1929), Perseus TEI, CC BY-SA 4.0. Segmentos Stephanus sin alineación automática con el griego."
+        }
+      },
+      "status": "has-registered-translation",
+      "preferredExisting": "en",
+      "alignmentVerified": false
+    },
+    {
+      "id": "plato-meno",
+      "author": "Platón",
+      "title": "Μένων",
+      "greek": {
+        "path": "data/classics-corpus/plato-meno-grc.json",
+        "source": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+      },
+      "translations": {
+        "en": {
+          "path": "data/classics-corpus/plato-meno-en.json",
+          "source": "Traducción histórica de Walter Rangeley Maitland Lamb (1924); TEI Perseus verificado por SHA; sin cotejo automático"
+        }
+      },
+      "status": "has-registered-translation",
+      "preferredExisting": "en",
+      "alignmentVerified": false
+    },
+    {
+      "id": "plato-parmenides",
+      "author": "Platón",
+      "title": "Παρμενίδης",
+      "greek": {
+        "path": "data/classics-corpus/plato-parmenides-grc.json",
+        "source": "Perseus Digital Library · tlg0059.tlg009 · 41 secciones de Stephanus · edición griega de John Burnet; texto TEI indexado, no OCR ni traducción automática"
+      },
+      "translations": {
+        "en": {
+          "path": "data/classics-corpus/plato-parmenides-en.json",
+          "source": "Perseus Digital Library · tlg0059.tlg009 · 41 secciones de Stephanus · traducción inglesa histórica de Plato in Twelve Volumes; texto TEI indexado, no OCR ni traducción automática"
+        }
+      },
+      "status": "has-registered-translation",
+      "preferredExisting": "en",
+      "alignmentVerified": false
+    },
+    {
+      "id": "plato-phaedo",
+      "author": "Platón",
+      "title": "Φαίδων",
+      "greek": {
+        "path": "data/classics-corpus/plato-phaedo-grc.json",
+        "source": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+      },
+      "translations": {
+        "en": {
+          "path": "data/classics-corpus/plato-phaedo-en.json",
+          "source": "Traducción histórica de Harold North Fowler (1914); TEI Perseus verificado por SHA; sin cotejo automático"
+        }
+      },
+      "status": "has-registered-translation",
+      "preferredExisting": "en",
+      "alignmentVerified": false
+    },
+    {
+      "id": "plato-phaedrus",
+      "author": "Platón",
+      "title": "Φαῖδρος",
+      "greek": {
+        "path": "data/classics-corpus/plato-phaedrus-grc.json",
+        "source": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+      },
+      "translations": {
+        "en": {
+          "path": "data/classics-corpus/plato-phaedrus-en.json",
+          "source": "Traducción histórica de Harold North Fowler (1914); TEI Perseus verificado por SHA; sin cotejo automático"
+        }
+      },
+      "status": "has-registered-translation",
+      "preferredExisting": "en",
+      "alignmentVerified": false
+    },
+    {
+      "id": "plato-philebus",
+      "author": "Platón",
+      "title": "Φίληβος",
+      "greek": {
+        "path": "data/classics-corpus/plato-philebus-grc.json",
+        "source": "Perseus original Greek edited TEI | urn:cts:greekLit:tlg0059.tlg010.perseus-grc2 | CC BY-SA 4.0 | local digital paragraph segments, not canonical loci"
+      },
+      "translations": {},
+      "status": "needs-edited-translation",
+      "preferredExisting": null,
+      "alignmentVerified": false
+    },
+    {
+      "id": "plato-republic",
+      "author": "Platón",
+      "title": "Πολιτεία",
+      "greek": {
+        "path": "data/classics-corpus/plato-republic-grc.json",
+        "source": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+      },
+      "translations": {},
+      "status": "needs-edited-translation",
+      "preferredExisting": null,
+      "alignmentVerified": false
+    },
+    {
+      "id": "plato-sophist",
+      "author": "Platón",
+      "title": "Σοφιστής",
+      "greek": {
+        "path": "data/classics-corpus/plato-sophist-grc.json",
+        "source": "Perseus Digital Library · tlg0059.tlg007 · 53 secciones de Stephanus · edición griega de John Burnet; texto TEI indexado, no OCR ni traducción automática"
+      },
+      "translations": {
+        "en": {
+          "path": "data/classics-corpus/plato-sophist-en.json",
+          "source": "Perseus Digital Library · tlg0059.tlg007 · 53 secciones de Stephanus · traducción inglesa histórica de Plato in Twelve Volumes; texto TEI indexado, no OCR ni traducción automática"
+        }
+      },
+      "status": "has-registered-translation",
+      "preferredExisting": "en",
+      "alignmentVerified": false
+    },
+    {
+      "id": "plato-statesman",
+      "author": "Platón",
+      "title": "Πολιτικός",
+      "greek": {
+        "path": "data/classics-corpus/plato-statesman-grc.json",
+        "source": "Perseus original Greek edited TEI | urn:cts:greekLit:tlg0059.tlg008.perseus-grc2 | CC BY-SA 4.0 | local digital paragraph segments, not canonical loci"
+      },
+      "translations": {
+        "en": {
+          "path": "data/classics-corpus/plato-statesman-en.json",
+          "source": "Traducción histórica inglesa de Harold North Fowler (1925), Perseus TEI, CC BY-SA 4.0; secciones Stephanus sin alineación automática con párrafos griegos."
+        }
+      },
+      "status": "has-registered-translation",
+      "preferredExisting": "en",
+      "alignmentVerified": false
+    },
+    {
+      "id": "plato-symposium",
+      "author": "Platón",
+      "title": "Συμπόσιον",
+      "greek": {
+        "path": "data/classics-corpus/plato-symposium-grc.json",
+        "source": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+      },
+      "translations": {
+        "en": {
+          "path": "data/classics-corpus/plato-symposium-en.json",
+          "source": "Traducción histórica de Walter Rangeley Maitland Lamb (1925); TEI Perseus verificado por SHA; sin cotejo automático"
+        }
+      },
+      "status": "has-registered-translation",
+      "preferredExisting": "en",
+      "alignmentVerified": false
+    },
+    {
+      "id": "plato-theaetetus",
+      "author": "Platón",
+      "title": "Θεαίτητος",
+      "greek": {
+        "path": "data/classics-corpus/plato-theaetetus-grc.json",
+        "source": "Perseus Digital Library · tlg0059.tlg006 · 69 secciones de Stephanus · edición griega de John Burnet; texto TEI indexado, no OCR ni traducción automática"
+      },
+      "translations": {
+        "en": {
+          "path": "data/classics-corpus/plato-theaetetus-en.json",
+          "source": "Perseus Digital Library · tlg0059.tlg006 · 69 secciones de Stephanus · traducción inglesa histórica de Plato in Twelve Volumes; texto TEI indexado, no OCR ni traducción automática"
+        }
+      },
+      "status": "has-registered-translation",
+      "preferredExisting": "en",
+      "alignmentVerified": false
+    },
+    {
+      "id": "plato-timaeus",
+      "author": "Platón",
+      "title": "Τίμαιος",
+      "greek": {
+        "path": "data/classics-corpus/plato-timaeus-grc.json",
+        "source": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+      },
+      "translations": {
+        "en": {
+          "path": "data/classics-corpus/plato-timaeus-en.json",
+          "source": "Traducción histórica de Robert Gregg Bury (1929); TEI Perseus verificado por SHA; sin cotejo automático"
+        }
+      },
+      "status": "has-registered-translation",
+      "preferredExisting": "en",
+      "alignmentVerified": false
+    },
+    {
+      "id": "platon-cratilo-parmenides",
+      "author": "Platón",
+      "title": "Κρατύλος · Παρμενίδης · Crátilo y Parménides (con Fedón y Timeo, trad. de Th. Taylor)",
+      "greek": {
+        "path": "https://libros.vitruvius-digital-library.org/corpus/platon-cratilo-parmenides-grc.json",
+        "source": "Perseus/First1KGreek TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+      },
+      "translations": {},
+      "status": "needs-edited-translation",
+      "preferredExisting": null,
+      "alignmentVerified": false
+    },
+    {
+      "id": "platon-protagoras",
+      "author": "Platón",
+      "title": "Λάχης · Πρωταγόρας · Μένων · Εὐθύδημος",
+      "greek": {
+        "path": "https://libros.vitruvius-digital-library.org/corpus/platon-protagoras-grc.json",
+        "source": "Perseus/First1KGreek TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+      },
+      "translations": {},
+      "status": "needs-edited-translation",
+      "preferredExisting": null,
+      "alignmentVerified": false
+    },
+    {
+      "id": "platon-teeteto-sofista",
+      "author": "Platón",
+      "title": "Θεαίτητος · Σοφιστής · Teeteto y Sofista",
+      "greek": {
+        "path": "https://libros.vitruvius-digital-library.org/corpus/platon-teeteto-sofista-grc.json",
+        "source": "Perseus/First1KGreek TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+      },
+      "translations": {},
+      "status": "needs-edited-translation",
+      "preferredExisting": null,
+      "alignmentVerified": false
+    },
+    {
+      "id": "plotino-eneadas",
+      "author": "Plotino",
+      "title": "Ἐννεάδες · Enneades",
+      "greek": {
+        "path": "https://libros.vitruvius-digital-library.org/corpus/plotino-eneadas-grc.json",
+        "source": "Perseus/First1KGreek TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+      },
+      "translations": {},
+      "status": "needs-edited-translation",
+      "preferredExisting": null,
+      "alignmentVerified": false
+    },
+    {
+      "id": "plutarch-lives",
+      "author": "Plutarco",
+      "title": "Βίοι Παράλληλοι · Vidas paralelas",
+      "greek": {
+        "path": "https://libros.vitruvius-digital-library.org/corpus/plutarch-lives-grc-58cbbdaf742a60cf.json",
+        "source": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente"
+      },
+      "translations": {},
+      "status": "needs-edited-translation",
+      "preferredExisting": null,
+      "alignmentVerified": false
+    },
+    {
+      "id": "plutarch-moralia",
+      "author": "Plutarco",
+      "title": "Ἠθικά (Moralia)",
+      "greek": {
+        "path": "https://libros.vitruvius-digital-library.org/corpus/plutarch-moralia-grc-544c57706b559b70.json",
+        "source": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente"
+      },
+      "translations": {},
+      "status": "needs-edited-translation",
+      "preferredExisting": null,
+      "alignmentVerified": false
+    },
+    {
+      "id": "polybius-historiae",
+      "author": "Polibio",
+      "title": "Ἱστορίαι",
+      "greek": {
+        "path": "data/classics-corpus/polybius-historiae-grc.json",
+        "source": "Perseus TEI · fuente editada documentada, sin colación automática"
+      },
+      "translations": {},
+      "status": "needs-edited-translation",
+      "preferredExisting": null,
+      "alignmentVerified": false
+    },
+    {
+      "id": "polycarp",
+      "author": "Policarpo de Esmirna",
+      "title": "Πρὸς Φιλιππησίους · Carta a los Filipenses",
+      "greek": {
+        "path": "data/classics-corpus/polycarp-grc.json",
+        "source": "OpenGreekAndLatin First1KGreek · edición TEI de procedencia identificada; posible transcripción/OCR corregido, sin colación independiente"
+      },
+      "translations": {},
+      "status": "needs-edited-translation",
+      "preferredExisting": null,
+      "alignmentVerified": false
+    },
+    {
+      "id": "ps-aristotle-mechanica",
+      "author": "Pseudo-Aristóteles (escuela peripatética)",
+      "title": "Μηχανικὰ προβλήματα",
+      "greek": {
+        "path": "https://libros.vitruvius-digital-library.org/corpus/ps-aristotle-mechanica-grc-4f7a5f316207eca0.json",
+        "source": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente"
+      },
+      "translations": {},
+      "status": "needs-edited-translation",
+      "preferredExisting": null,
+      "alignmentVerified": false
+    },
+    {
+      "id": "pseudo-apollodorus-bibliotheca",
+      "author": "Pseudo-Apolodoro",
+      "title": "Βιβλιοθήκη (Bibliotheca)",
+      "greek": {
+        "path": "data/classics-corpus/pseudo-apollodorus-bibliotheca-grc.json",
+        "source": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+      },
+      "translations": {},
+      "status": "needs-edited-translation",
+      "preferredExisting": null,
+      "alignmentVerified": false
+    },
+    {
+      "id": "ptolemy-almagest",
+      "author": "Claudio Ptolomeo",
+      "title": "Μαθηματικὴ σύνταξις (Almagestum)",
+      "greek": {
+        "path": "data/classics-corpus/ptolemy-almagest-grc.json",
+        "source": "OpenGreekAndLatin First1KGreek TEI · fuente editada documentada, sin colación automática"
+      },
+      "translations": {},
+      "status": "needs-edited-translation",
+      "preferredExisting": null,
+      "alignmentVerified": false
+    },
+    {
+      "id": "quinto-esmirna-posthomericas",
+      "author": "Quinto de Esmirna",
+      "title": "Τὰ μεθ' Ὅμηρον · Posthomerica",
+      "greek": {
+        "path": "https://libros.vitruvius-digital-library.org/corpus/quinto-esmirna-posthomericas-grc.json",
+        "source": "Perseus/First1KGreek TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+      },
+      "translations": {},
+      "status": "needs-edited-translation",
+      "preferredExisting": null,
+      "alignmentVerified": false
+    },
+    {
+      "id": "sophocles-ajax",
+      "author": "Sófocles",
+      "title": "Αἴας",
+      "greek": {
+        "path": "data/classics-corpus/sophocles-ajax-grc.json",
+        "source": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+      },
+      "translations": {},
+      "status": "needs-edited-translation",
+      "preferredExisting": null,
+      "alignmentVerified": false
+    },
+    {
+      "id": "sophocles-antigone",
+      "author": "Sófocles",
+      "title": "Ἀντιγόνη",
+      "greek": {
+        "path": "data/classics-corpus/sophocles-antigone-grc.json",
+        "source": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+      },
+      "translations": {
+        "en": {
+          "path": "data/classics-corpus/sophocles-antigone-en.json",
+          "source": "Traducción histórica de Richard Jebb (1891); TEI Perseus verificado por SHA; sin cotejo automático"
+        }
+      },
+      "status": "has-registered-translation",
+      "preferredExisting": "en",
+      "alignmentVerified": false
+    },
+    {
+      "id": "sophocles-electra",
+      "author": "Sófocles",
+      "title": "Ἠλέκτρα",
+      "greek": {
+        "path": "data/classics-corpus/sophocles-electra-grc.json",
+        "source": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+      },
+      "translations": {
+        "en": {
+          "path": "data/classics-corpus/sophocles-electra-en.json",
+          "source": "Traducción histórica de Richard Jebb (1894); TEI Perseus verificado por SHA; sin cotejo automático"
+        }
+      },
+      "status": "has-registered-translation",
+      "preferredExisting": "en",
+      "alignmentVerified": false
+    },
+    {
+      "id": "sophocles-oedipus",
+      "author": "Sófocles",
+      "title": "Οἰδίπους Τύραννος",
+      "greek": {
+        "path": "data/classics-corpus/sophocles-oedipus-grc.json",
+        "source": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+      },
+      "translations": {
+        "en": {
+          "path": "data/classics-corpus/sophocles-oedipus-en.json",
+          "source": "Traducción histórica de Richard Jebb (1887); TEI Perseus verificado por SHA; sin cotejo automático"
+        }
+      },
+      "status": "has-registered-translation",
+      "preferredExisting": "en",
+      "alignmentVerified": false
+    },
+    {
+      "id": "sophocles-oedipus-colonus",
+      "author": "Sófocles",
+      "title": "Οἰδίπους ἐπὶ Κολωνῷ",
+      "greek": {
+        "path": "data/classics-corpus/sophocles-oedipus-colonus-grc.json",
+        "source": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+      },
+      "translations": {
+        "en": {
+          "path": "data/classics-corpus/sophocles-oedipus-colonus-en.json",
+          "source": "Traducción histórica de Richard Jebb (1889); TEI Perseus verificado por SHA; sin cotejo automático"
+        }
+      },
+      "status": "has-registered-translation",
+      "preferredExisting": "en",
+      "alignmentVerified": false
+    },
+    {
+      "id": "sophocles-philoctetes",
+      "author": "Sófocles",
+      "title": "Φιλοκτήτης",
+      "greek": {
+        "path": "data/classics-corpus/sophocles-philoctetes-grc.json",
+        "source": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+      },
+      "translations": {
+        "en": {
+          "path": "data/classics-corpus/sophocles-philoctetes-en.json",
+          "source": "Traducción histórica de Richard Jebb (1898); TEI Perseus verificado por SHA; sin cotejo automático"
+        }
+      },
+      "status": "has-registered-translation",
+      "preferredExisting": "en",
+      "alignmentVerified": false
+    },
+    {
+      "id": "sophocles-trachiniae",
+      "author": "Sófocles",
+      "title": "Τραχίνιαι",
+      "greek": {
+        "path": "data/classics-corpus/sophocles-trachiniae-grc.json",
+        "source": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+      },
+      "translations": {},
+      "status": "needs-edited-translation",
+      "preferredExisting": null,
+      "alignmentVerified": false
+    },
+    {
+      "id": "strabo",
+      "author": "Estrabón",
+      "title": "Γεωγραφικά",
+      "greek": {
+        "path": "data/classics-corpus/strabo-grc.json",
+        "source": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+      },
+      "translations": {},
+      "status": "needs-edited-translation",
+      "preferredExisting": null,
+      "alignmentVerified": false
+    },
+    {
+      "id": "teocrito-bucolicos",
+      "author": "Teócrito, Bión y Mosco",
+      "title": "Εἰδύλλια · Idilios",
+      "greek": {
+        "path": "https://libros.vitruvius-digital-library.org/corpus/teocrito-bucolicos-grc.json",
+        "source": "Perseus/First1KGreek TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+      },
+      "translations": {},
+      "status": "needs-edited-translation",
+      "preferredExisting": null,
+      "alignmentVerified": false
+    },
+    {
+      "id": "theocritus-idyllia",
+      "author": "Teócrito",
+      "title": "Εἰδύλλια",
+      "greek": {
+        "path": "data/classics-corpus/theocritus-idyllia-grc.json",
+        "source": "Perseus TEI · R. J. Cholmeley · CC BY-SA 4.0 · atribuciones por revisar"
+      },
+      "translations": {},
+      "status": "needs-edited-translation",
+      "preferredExisting": null,
+      "alignmentVerified": false
+    },
+    {
+      "id": "theophrastus-characters",
+      "author": "Teofrasto",
+      "title": "Ἠθικοὶ χαρακτῆρες",
+      "greek": {
+        "path": "data/classics-corpus/theophrastus-characters-grc.json",
+        "source": "La fuente y la atribución se muestran dentro del JSON y del lector; las traducciones no equivalen a alineación por loci."
+      },
+      "translations": {
+        "en": {
+          "path": "data/classics-corpus/theophrastus-characters-en.json",
+          "source": "Bennett y Hammond (1902); 30 capítulos, correspondencia general por capítulo con Diels 1909, no por párrafo."
+        }
+      },
+      "status": "has-registered-translation",
+      "preferredExisting": "en",
+      "alignmentVerified": false
+    },
+    {
+      "id": "theophrastus-historia-plantarum",
+      "author": "Teofrasto",
+      "title": "Περὶ φυτῶν ἱστορίας",
+      "greek": {
+        "path": "https://libros.vitruvius-digital-library.org/corpus/theophrastus-historia-plantarum-grc-66c50429684fcbc3.json",
+        "source": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente"
+      },
+      "translations": {},
+      "status": "needs-edited-translation",
+      "preferredExisting": null,
+      "alignmentVerified": false
+    },
+    {
+      "id": "thucydides-war",
+      "author": "Tucídides",
+      "title": "Ἱστορία τοῦ Πελοποννησιακοῦ πολέμου",
+      "greek": {
+        "path": "https://libros.vitruvius-digital-library.org/corpus/thucydides-war-grc-6090ade6c2c92022.json",
+        "source": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente"
+      },
+      "translations": {},
+      "status": "needs-edited-translation",
+      "preferredExisting": null,
+      "alignmentVerified": false
+    },
+    {
+      "id": "xenophon-agesilaus",
+      "author": "Jenofonte",
+      "title": "Ἀγησίλαος",
+      "greek": {
+        "path": "data/classics-corpus/xenophon-agesilaus-grc.json",
+        "source": "Perseus DL TEI · Xenophon. Opera omnia, Vol. 5. Marchant, Edgar Cardew, editor. Oxford: Clarendon Press, 1920. · CC BY-SA 4.0; original sin cotejo independiente"
+      },
+      "translations": {},
+      "status": "needs-edited-translation",
+      "preferredExisting": null,
+      "alignmentVerified": false
+    },
+    {
+      "id": "xenophon-anabasis",
+      "author": "Jenofonte",
+      "title": "Ἀνάβασις",
+      "greek": {
+        "path": "data/classics-corpus/xenophon-anabasis-grc.json",
+        "source": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+      },
+      "translations": {},
+      "status": "needs-edited-translation",
+      "preferredExisting": null,
+      "alignmentVerified": false
+    },
+    {
+      "id": "xenophon-apology",
+      "author": "Jenofonte",
+      "title": "Ἀπολογία Σωκράτους",
+      "greek": {
+        "path": "data/classics-corpus/xenophon-apology-grc.json",
+        "source": "Perseus DL TEI · Xenophon. Opera omnia, Vol. 2. Marchant, Edgar Cardew, editor. Oxford: Clarendon Press, 1921. · CC BY-SA 4.0; original sin cotejo independiente"
+      },
+      "translations": {},
+      "status": "needs-edited-translation",
+      "preferredExisting": null,
+      "alignmentVerified": false
+    },
+    {
+      "id": "xenophon-hellenica",
+      "author": "Jenofonte",
+      "title": "Ἑλληνικά",
+      "greek": {
+        "path": "data/classics-corpus/xenophon-hellenica-grc.json",
+        "source": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+      },
+      "translations": {},
+      "status": "needs-edited-translation",
+      "preferredExisting": null,
+      "alignmentVerified": false
+    },
+    {
+      "id": "xenophon-hiero",
+      "author": "Jenofonte",
+      "title": "Ἱέρων",
+      "greek": {
+        "path": "data/classics-corpus/xenophon-hiero-grc.json",
+        "source": "Perseus DL TEI · Xenophon. Opera omnia, Vol. 5. Marchant, Edgar Cardew, editor. Oxford: Clarendon Press, 1920. · CC BY-SA 4.0; original sin cotejo independiente"
+      },
+      "translations": {},
+      "status": "needs-edited-translation",
+      "preferredExisting": null,
+      "alignmentVerified": false
+    },
+    {
+      "id": "xenophon-hipparchicus",
+      "author": "Jenofonte",
+      "title": "Ἱππαρχικός",
+      "greek": {
+        "path": "data/classics-corpus/xenophon-hipparchicus-grc.json",
+        "source": "Perseus DL TEI · Xenophon. Opera omnia, Vol. 5. Marchant, Edgar Cardew, editor. Oxford: Clarendon Press, 1920. · CC BY-SA 4.0; original sin cotejo independiente"
+      },
+      "translations": {},
+      "status": "needs-edited-translation",
+      "preferredExisting": null,
+      "alignmentVerified": false
+    },
+    {
+      "id": "xenophon-horsemanship",
+      "author": "Jenofonte",
+      "title": "Περὶ ἱππικῆς",
+      "greek": {
+        "path": "data/classics-corpus/xenophon-horsemanship-grc.json",
+        "source": "Perseus DL TEI · Xenophon. Opera omnia, Vol. 5. Marchant, Edgar Cardew, editor. Oxford: Clarendon Press, 1920. · CC BY-SA 4.0; original sin cotejo independiente"
+      },
+      "translations": {},
+      "status": "needs-edited-translation",
+      "preferredExisting": null,
+      "alignmentVerified": false
+    },
+    {
+      "id": "xenophon-hunting",
+      "author": "Jenofonte",
+      "title": "Κυνηγετικός",
+      "greek": {
+        "path": "data/classics-corpus/xenophon-hunting-grc.json",
+        "source": "Perseus DL TEI · Xenophon. Opera omnia, Vol. 5. Marchant, Edgar Cardew, editor. Oxford: Clarendon Press, 1920. · CC BY-SA 4.0; original sin cotejo independiente"
+      },
+      "translations": {},
+      "status": "needs-edited-translation",
+      "preferredExisting": null,
+      "alignmentVerified": false
+    },
+    {
+      "id": "xenophon-lacedaemonian-constitution",
+      "author": "Jenofonte",
+      "title": "Λακεδαιμονίων Πολιτεία",
+      "greek": {
+        "path": "data/classics-corpus/xenophon-lacedaemonian-constitution-grc.json",
+        "source": "Perseus DL TEI · Xenophon. Opera omnia, Vol. 5. Marchant, Edgar Cardew, editor. Oxford: Clarendon Press, 1920. · CC BY-SA 4.0; original sin cotejo independiente"
+      },
+      "translations": {},
+      "status": "needs-edited-translation",
+      "preferredExisting": null,
+      "alignmentVerified": false
+    },
+    {
+      "id": "xenophon-memorabilia",
+      "author": "Jenofonte",
+      "title": "Ἀπομνημονεύματα",
+      "greek": {
+        "path": "data/classics-corpus/xenophon-memorabilia-grc.json",
+        "source": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+      },
+      "translations": {},
+      "status": "needs-edited-translation",
+      "preferredExisting": null,
+      "alignmentVerified": false
+    },
+    {
+      "id": "xenophon-oeconomicus",
+      "author": "Jenofonte",
+      "title": "Οἰκονομικός",
+      "greek": {
+        "path": "data/classics-corpus/xenophon-oeconomicus-grc.json",
+        "source": "Perseus DL TEI · Xenophon. Opera omnia, Vol. 2. Marchant, Edgar Cardew, editor. Oxford: Clarendon Press, 1921. · CC BY-SA 4.0; original sin cotejo independiente"
+      },
+      "translations": {},
+      "status": "needs-edited-translation",
+      "preferredExisting": null,
+      "alignmentVerified": false
+    },
+    {
+      "id": "xenophon-symposium",
+      "author": "Jenofonte",
+      "title": "Συμπόσιον",
+      "greek": {
+        "path": "data/classics-corpus/xenophon-symposium-grc.json",
+        "source": "Perseus DL TEI · Xenophon. Opera omnia, Vol. 2. Marchant, Edgar Cardew, editor. Oxford: Clarendon Press, 1921. · CC BY-SA 4.0; original sin cotejo independiente"
+      },
+      "translations": {},
+      "status": "needs-edited-translation",
+      "preferredExisting": null,
+      "alignmentVerified": false
+    },
+    {
+      "id": "xenophon-ways-means",
+      "author": "Jenofonte",
+      "title": "Πόροι ἢ περὶ προσόδων",
+      "greek": {
+        "path": "data/classics-corpus/xenophon-ways-means-grc.json",
+        "source": "Perseus DL TEI · Xenophon. Opera omnia, Vol. 5. Marchant, Edgar Cardew, editor. Oxford: Clarendon Press, 1920. · CC BY-SA 4.0; original sin cotejo independiente"
+      },
+      "translations": {},
+      "status": "needs-edited-translation",
+      "preferredExisting": null,
+      "alignmentVerified": false
+    }
+  ]
+}
