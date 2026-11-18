@@ -10,6 +10,25 @@ const LEX=window.ClassicalLexicon;
 if(!/^[a-z0-9-]{3,60}$/.test(work)){$("source-title").textContent="Obra no identificada en este lector";return}
 const base="data/classics-corpus/"+work+"-";
 const langSelect=$("language"),input=$("query");let data,active=0,results=[],search="",hostedEditions=[],resultPage=0,searchIndex=null,searchMeta="",suggestions=[];
+/* Small, independent scholarly cross-link below the existing toolbar.
+   Does not alter the approved reader controls or require a new viewer. */
+const lexiconShortcut=document.createElement("a");
+lexiconShortcut.id="reader-lexicon-current";
+lexiconShortcut.textContent="Analizar palabra y obra en Lexicon";
+lexiconShortcut.style.cssText="display:inline-block;margin:4px 0 12px;font:13px/1.5 system-ui;text-decoration:underline;text-underline-offset:3px;color:inherit";
+lexiconShortcut.href="vitruvia-lexicon.html?"+new URLSearchParams({work,mode:"palabra",lang:"auto"});
+$("reading-reference")?.insertAdjacentElement("afterend",lexiconShortcut);
+function refreshLexiconShortcut(rec){
+ const selectedWord=(input?.value||"").trim();
+ const full=new URL("vitruvia-lexicon.html",location.href);
+ full.searchParams.set("work",work);
+ full.searchParams.set("mode",selectedWord&&selectedWord.split(/\\s+/u).length>1?"frase":"palabra");
+ full.searchParams.set("lang",["la","grc"].includes(data?.language)?data.language:"auto");
+ if(selectedWord&&selectedWord.length<=160)full.searchParams.set("q",selectedWord);
+ // Lexicon can inspect the exact original locus when it has a literal lemma query.
+ if(rec?.locus&&["la","grc"].includes(data?.language))full.searchParams.set("locus",rec.locus);
+ lexiconShortcut.href=full.pathname+full.search;
+}
 const searchMode=$("search-mode");
 if(searchMode)searchMode.value=p.get("expanded")==="1"?"lexical":"literal";
 input.value=p.get("q")||"";
@@ -121,6 +140,7 @@ function select(i){
  if(!data)return;
  active=Math.max(0,Math.min(data.passages.length-1,i));
  const rec=data.passages[active];
+ refreshLexiconShortcut(rec);
  if($("locus-query"))$("locus-query").value=displayLocus(rec.locus);
  if($("locus-status"))$("locus-status").textContent="";
  $("current-locus").textContent=unitLabel()+" "+displayLocus(rec.locus)+(rec.title?" · "+rec.title:"")+" · "+(active+1)+"/"+data.passages.length;
