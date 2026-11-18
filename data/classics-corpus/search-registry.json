@@ -1,9 +1,9 @@
 {
   "schema": "vitruvia-classics-search-registry-v1",
-  "updated": "2026-11-16",
+  "updated": "2026-11-17",
   "description": "Registro verificable de transcripciones HTML y textos JSON existentes que admiten búsqueda literal de contenido. No incluye automáticamente PDF escaneados, facsímiles ni fichas sin texto. Los índices auxiliares por locus y el aparato crítico se declaran por separado; no se suman a versiones textuales originales ni implican colación autóptica.",
-  "count": 361,
-  "works": 295,
+  "count": 367,
+  "works": 297,
   "entries": [
     {
       "workId": "aeneas-tacticus-poliorketika",
@@ -1889,6 +1889,16 @@
       "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
     },
     {
+      "workId": "krohn-1912-indexed",
+      "author": "Marco Vitruvio Polión",
+      "title": "De architectura libri decem · edición Fritz Krohn (1912), latín indexado",
+      "language": "la",
+      "format": "critical-indexed-latin",
+      "path": "data/critical-editions/krohn-1912-tei-loci.json",
+      "reader": "apparatus-bude.html?edition=krohn-1912",
+      "sourceDescription": "Transcripción TEI de PerseusDL, 731 loci; cotejo integral del impreso pendiente; no OCR"
+    },
+    {
       "workId": "lisias-discursos",
       "language": "grc",
       "title": "Λόγοι · Discursos",
@@ -2737,6 +2747,26 @@
       "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
     },
     {
+      "workId": "plato-parmenides",
+      "author": "Platón",
+      "title": "Παρμενίδης",
+      "language": "en",
+      "format": "json-passages",
+      "path": "data/classics-corpus/plato-parmenides-en.json",
+      "reader": "classics-text-reader.html?work=plato-parmenides&lang=en",
+      "sourceDescription": "Perseus Digital Library · tlg0059.tlg009 · 41 secciones de Stephanus · traducción inglesa histórica de Plato in Twelve Volumes; texto TEI indexado, no OCR ni traducción automática"
+    },
+    {
+      "workId": "plato-parmenides",
+      "author": "Platón",
+      "title": "Παρμενίδης",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/plato-parmenides-grc.json",
+      "reader": "classics-text-reader.html?work=plato-parmenides&lang=grc",
+      "sourceDescription": "Perseus Digital Library · tlg0059.tlg009 · 41 secciones de Stephanus · edición griega de John Burnet; texto TEI indexado, no OCR ni traducción automática"
+    },
+    {
       "workId": "plato-phaedo",
       "author": "Platón",
       "title": "Φαίδων",
@@ -2799,6 +2829,26 @@
       "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
     },
     {
+      "workId": "plato-sophist",
+      "author": "Platón",
+      "title": "Σοφιστής",
+      "language": "en",
+      "format": "json-passages",
+      "path": "data/classics-corpus/plato-sophist-en.json",
+      "reader": "classics-text-reader.html?work=plato-sophist&lang=en",
+      "sourceDescription": "Perseus Digital Library · tlg0059.tlg007 · 53 secciones de Stephanus · traducción inglesa histórica de Plato in Twelve Volumes; texto TEI indexado, no OCR ni traducción automática"
+    },
+    {
+      "workId": "plato-sophist",
+      "author": "Platón",
+      "title": "Σοφιστής",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/plato-sophist-grc.json",
+      "reader": "classics-text-reader.html?work=plato-sophist&lang=grc",
+      "sourceDescription": "Perseus Digital Library · tlg0059.tlg007 · 53 secciones de Stephanus · edición griega de John Burnet; texto TEI indexado, no OCR ni traducción automática"
+    },
+    {
       "workId": "plato-statesman",
       "author": "Platón",
       "title": "Πολιτικός",
@@ -2829,6 +2879,26 @@
       "path": "data/classics-corpus/plato-symposium-grc.json",
       "reader": "classics-text-reader.html?work=plato-symposium&lang=grc",
       "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
+      "workId": "plato-theaetetus",
+      "author": "Platón",
+      "title": "Θεαίτητος",
+      "language": "en",
+      "format": "json-passages",
+      "path": "data/classics-corpus/plato-theaetetus-en.json",
+      "reader": "classics-text-reader.html?work=plato-theaetetus&lang=en",
+      "sourceDescription": "Perseus Digital Library · tlg0059.tlg006 · 69 secciones de Stephanus · traducción inglesa histórica de Plato in Twelve Volumes; texto TEI indexado, no OCR ni traducción automática"
+    },
+    {
+      "workId": "plato-theaetetus",
+      "author": "Platón",
+      "title": "Θεαίτητος",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/plato-theaetetus-grc.json",
+      "reader": "classics-text-reader.html?work=plato-theaetetus&lang=grc",
+      "sourceDescription": "Perseus Digital Library · tlg0059.tlg006 · 69 secciones de Stephanus · edición griega de John Burnet; texto TEI indexado, no OCR ni traducción automática"
     },
     {
       "workId": "plato-timaeus",
@@ -3046,6 +3116,16 @@
       "sourceDescription": "Perseus/First1KGreek TEI · edición atribuida en el archivo · sin cotejo ni alineación automática",
       "sha256": "5794bf90ce2af75bdec59b0bed84760d682c6038610b41346c29c8b96e0252de",
       "passages": 889
+    },
+    {
+      "workId": "rose-1899-indexed",
+      "author": "Marco Vitruvio Polión",
+      "title": "De architectura libri decem · edición Valentin Rose (1899), latín indexado",
+      "language": "la",
+      "format": "critical-indexed-latin",
+      "path": "data/critical-editions/rose-1899-transcribed-loci.json",
+      "reader": "apparatus-bude.html?edition=rose-1899",
+      "sourceDescription": "Transcripción digital Project Gutenberg, 731 loci alineados; cotejo del impreso pendiente; no OCR"
     },
     {
       "workId": "sallust-catiline",
@@ -3789,26 +3869,6 @@
       "sourceUrn": "urn:cts:greekLit:tlg0032.tlg011.perseus-grc2",
       "sourceSha256": "031797d4e1a8f49e17583f0b8828969c142ce5ed11b378e6484073c112a749a7",
       "sourceDescription": "Perseus DL TEI · Xenophon. Opera omnia, Vol. 5. Marchant, Edgar Cardew, editor. Oxford: Clarendon Press, 1920. · CC BY-SA 4.0; original sin cotejo independiente"
-    },
-    {
-      "workId": "krohn-1912-indexed",
-      "author": "Marco Vitruvio Polión",
-      "title": "De architectura libri decem · edición Fritz Krohn (1912), latín indexado",
-      "language": "la",
-      "format": "critical-indexed-latin",
-      "path": "data/critical-editions/krohn-1912-tei-loci.json",
-      "reader": "apparatus-bude.html?edition=krohn-1912",
-      "sourceDescription": "Transcripción TEI de PerseusDL, 731 loci; cotejo integral del impreso pendiente; no OCR"
-    },
-    {
-      "workId": "rose-1899-indexed",
-      "author": "Marco Vitruvio Polión",
-      "title": "De architectura libri decem · edición Valentin Rose (1899), latín indexado",
-      "language": "la",
-      "format": "critical-indexed-latin",
-      "path": "data/critical-editions/rose-1899-transcribed-loci.json",
-      "reader": "apparatus-bude.html?edition=rose-1899",
-      "sourceDescription": "Transcripción digital Project Gutenberg, 731 loci alineados; cotejo del impreso pendiente; no OCR"
     }
   ],
   "auxiliaryIndexes": [
