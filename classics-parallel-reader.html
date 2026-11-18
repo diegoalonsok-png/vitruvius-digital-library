@@ -4,7 +4,22 @@
 <title>Lectura paralela · Bibliotheca Graeca et Latina</title>
 <meta name="description" content="Lectura comparativa independiente de originales griegos y latinos y traducciones, sin exigir alineación léxica.">
 <link rel="canonical" href="https://vitruvius-digital-library.org/classics-parallel-reader">
-<meta name="robots" content="index,follow">
+<meta name="robots" content="noindex,follow">
+<!-- Legacy parallel route: canonical scholarly reader has the approved two-column interface. -->
+<script>
+(()=>{"use strict";
+ const p=new URLSearchParams(location.search);
+ const u=new URL("classics-text-reader.html",location.href);
+ const work=p.get("work"),left=p.get("left"),right=p.get("right"),locus=p.get("locus");
+ if(work)u.searchParams.set("work",work);
+ if(left&&/^(la|grc|es|en|fr|it|de|pt)$/.test(left))u.searchParams.set("lang",left);
+ const target=(right||"").replace(/^auto-/,"");
+ if(/^(es|en|fr)$/.test(target))u.searchParams.set("to",target);
+ if(locus)u.searchParams.set("locus",locus);
+ if(p.get("q"))u.searchParams.set("q",p.get("q"));
+ location.replace(u.href);
+})();
+</script>
 
 <style>
 :root{color-scheme:dark;--bg:#090909;--panel:#000000;--ink:#f3f3f3;--line:#796b5a}
