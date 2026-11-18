@@ -1,0 +1,27 @@
+name: Bibliotheca · auditoría de traducciones griegas EN FR ES
+on:
+  pull_request:
+    paths:
+      - 'data/classics-corpus/greek-translations-trilingual-audit-*.json'
+      - 'docs/bibliotheca-translation-coverage-*.md'
+      - 'scripts/test-greek-trilingual-source-audit.mjs'
+      - '.github/workflows/greek-trilingual-translation-research.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'data/classics-corpus/greek-translations-trilingual-audit-*.json'
+      - 'scripts/test-greek-trilingual-source-audit.mjs'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  coverage:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Verificar inventario de las 211 obras griegas en tres idiomas
+        run: node scripts/test-greek-trilingual-source-audit.mjs
