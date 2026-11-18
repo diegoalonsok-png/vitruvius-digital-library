@@ -16,6 +16,10 @@ for(const page of mainPages){
  assert.match(html,/<meta\s+name="referrer"\s+content="strict-origin-when-cross-origin">/i,"Missing referrer policy: "+page);
  assert.equal((html.match(/<meta\s+name="referrer"/gi)||[]).length,1,"Duplicate referrer policy: "+page);
 }
+// El Index locorum debe permanecer al final de la barra del Scriptorium y conducir a una página existente.
+const scriptorium=read("scriptorium.html");
+assert.match(scriptorium, /<nav class="script-section-nav"[^>]*>[\s\S]*<a class="script-index-locorum" href="index-locorum\.html"[^>]*>Index locorum<\/a><\/nav>/, "Scriptorium: falta botón Index locorum al final de herramientas");
+assert(existsSync(resolve(root,"index-locorum.html")), "Falta la página destino del Index locorum");
 const catalogue=json("data/bibliotheca-graeca-latina-I-bce-I-ce.json");
 const registry=json("data/classics-corpus/search-registry.json");
 const report=json("data/classics-corpus/coverage-audit.json");
