@@ -30,12 +30,17 @@ for(const e of registry.entries){
  if(seen.has(key))errors.push("duplicate registry row: "+key);
  seen.add(key);seenWorks.add(e.workId);
  const work=byId.get(e.workId)||bySupplement.get(e.workId);
- if(!work){errors.push("Missing catalogue record for "+e.workId);continue}
- const declared=byId.has(e.workId)?work.localEditionLanguages||[]:
-  [...Object.keys(work.corpusFiles||{}),...(work.localVersions||[]).map(v=>v.language)];
- if(!declared.includes(e.language))
-  errors.push("Unreported local language "+e.workId+"/"+e.language);
- if(!/^(data\/(?:classics-corpus|structured|text|lexicon\/fontes)\/[a-zA-Z0-9._/-]+\.json|corpus\/[a-zA-Z0-9._/-]+\.html|https:\/\/libros\.vitruvius-digital-library\.org\/corpus\/[a-z0-9-]+\.json)$/.test(e.path||""))
+ const critical=e.format==="critical-indexed-latin"&&e.language==="la"&&
+  (e.workId==="krohn-1912-indexed"&&e.path==="data/critical-editions/krohn-1912-tei-loci.json"||
+   e.workId==="rose-1899-indexed"&&e.path==="data/critical-editions/rose-1899-transcribed-loci.json");
+ if(!work&&!critical){errors.push("Missing catalogue record for "+e.workId);continue}
+ if(work){
+  const declared=byId.has(e.workId)?work.localEditionLanguages||[]:
+   [...Object.keys(work.corpusFiles||{}),...(work.localVersions||[]).map(v=>v.language)];
+  if(!declared.includes(e.language))
+   errors.push("Unreported local language "+e.workId+"/"+e.language);
+ }
+ if(!/^(data\/(?:classics-corpus|structured|text|lexicon\/fontes|critical-editions)\/[a-zA-Z0-9._/-]+\.json|corpus\/[a-zA-Z0-9._/-]+\.html|https:\/\/libros\.vitruvius-digital-library\.org\/corpus\/[a-z0-9-]+\.json)$/.test(e.path||""))
   {errors.push("Unsafe registry path "+e.path);continue}
  if(/^https:/.test(e.path)){
   /* Texto alojado en R2: consta en el manifiesto, no en el repositorio. */
