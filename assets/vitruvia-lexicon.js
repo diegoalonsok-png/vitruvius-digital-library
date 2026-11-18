@@ -155,7 +155,7 @@ function parseQuery(q,mode){
    alternancias, escapes, referencias ni cuantificadores anidados. */
 function safeLexiconRegex(source){
  const pattern=String(source||"");
- if(!pattern||pattern.length>64||!/[\\p{L}]/u.test(pattern)||
+ if(!pattern||pattern.length>64||!/[\p{L}]/u.test(pattern)||
     /[(){}|\\]/.test(pattern)||/\*\*|\+\+|\?\?|\*\+|\+\*|\+\?|\?\+|\?\*|\*\?/.test(pattern)||
     /\[[^\]]*$/.test(pattern)||/\]\[/.test(pattern)||
     /[^\p{L}\p{M}\p{N}\[\]\-._^$*?+]/u.test(pattern)||
