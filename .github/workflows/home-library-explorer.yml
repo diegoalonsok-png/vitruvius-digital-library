@@ -1,0 +1,28 @@
+name: Portada · catálogo y buscador de obras
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'assets/bibliotheca-works-explorer.js'
+      - 'data/cifras-corpus.json'
+      - 'scripts/test-home-library-explorer.mjs'
+      - '.github/workflows/home-library-explorer.yml'
+  pull_request:
+    paths:
+      - 'assets/bibliotheca-works-explorer.js'
+      - 'data/cifras-corpus.json'
+      - 'scripts/test-home-library-explorer.mjs'
+      - '.github/workflows/home-library-explorer.yml'
+permissions:
+  contents: read
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: node scripts/test-home-library-explorer.mjs

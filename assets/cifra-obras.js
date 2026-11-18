@@ -23,6 +23,9 @@ fetch("data/cifras-corpus.json",{cache:"no-cache"})
   if(cifras&&cifras.schema!=="vdl-cifras-corpus-1")return;
   const fmt=n=>new Intl.NumberFormat("es-AR").format(n);
   for(const nodo of marcados){
+   // The homepage explorer renders the complete catalogue plus the indexed subset.
+   // Do not race with its two-count presentation using this older single-field badge.
+   if(nodo.dataset.cifra==="obrasConTextoIndexado"&&document.querySelector("[data-vdl-works-explorer]"))continue;
    const valor=cifras[nodo.dataset.cifra];
    if(typeof valor==="number"&&valor>0)nodo.textContent=fmt(valor);
   }

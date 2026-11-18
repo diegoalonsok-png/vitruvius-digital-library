@@ -3,6 +3,7 @@
    registration as proof of a reviewed, searchable Latin/Greek transcription. */
 (()=>{"use strict";
 const URL="data/classics-corpus/indexation-roadmap-222.json";
+const TOTALS_URL="data/cifras-corpus.json";
 const labels={local:"Original griego o latino indexado"};
 let dataPromise=null;
 function catalog(){
@@ -63,22 +64,22 @@ function mount(host){
  host.classList.add("vdl-works-explorer");
  const panel=add("div","vdl-works-explorer-panel",null,host);
  const heading=add("label","vdl-works-explorer-heading","Buscar un libro para leer",panel);
- const toolbar=add("div","vdl-works-filterbar",null,panel);
- const search=add("input","vdl-works-search",null,toolbar);
- search.type="search";search.placeholder="Autor o título: Homero, Platón, Eneida…";
+ 
+ const search=add("input","vdl-works-search",null,heading);
+ search.type="search";search.placeholder="Autor, obra o título traducido: Homero, Platón, Eneida…";
  search.autocomplete="off";search.setAttribute("aria-label","Buscar una obra por autor o título");
- heading.append(search);toolbar.remove();
- const count=add("p","vdl-works-result-count","Escribí un autor o título para abrir el lector.",panel);count.setAttribute("role","status");
+
+ const count=add("p","vdl-works-result-count","Buscá por autor, título latino, griego o traducido.",panel);count.setAttribute("role","status");
  const listing=add("div","vdl-works-list",null,panel);listing.setAttribute("role","list");listing.hidden=true;
  let items=null;
  const normalize=x=>String(x||"").normalize("NFD").replace(/\p{M}/gu,"").toLowerCase().trim();
  const aliases={vitruvius:"vitruvio vitruve",caesar:"julio cesar julius caesar",cicero:"ciceron cicerone",plinius:"plinio",vergilius:"virgilio virgil",horatius:"horacio",ovidius:"ovidio",homer:"homero homere",plato:"platon",aristoteles:"aristotle aristote",strabo:"estrabon"};
  function score(w,q){
   const author=normalize(w.author),title=normalize(w.title),id=normalize(w.id.replaceAll("-"," "));
-  const alias=Object.entries(aliases).filter(([key])=>author.includes(key)||id.includes(key)).map(([,v])=>v).join(" ");
+  const alias=[...Object.entries(aliases).filter(([key])=>author.includes(key)||id.includes(key)).map(([,v])=>v),...(items?.aliases?.[w.id]||[])].map(normalize).join(" ");
   if(author===q||title===q)return 150;
   if(author.startsWith(q)||title.startsWith(q))return 110;
-  if(alias.split(" ").some(x=>x.startsWith(q)))return 95;
+  if(alias.split(" ").some(x=>x.startsWith(q))||alias.startsWith(q))return 95;
   if(author.split(/\s+/).some(x=>x.startsWith(q)))return 85;
   if(title.split(/\s+/).some(x=>x.startsWith(q)))return 75;
   if(q.length>1&&(author.includes(q)||alias.includes(q)))return 55;
@@ -97,8 +98,8 @@ function mount(host){
   if(!items)return;
   const q=normalize(search.value);
   listing.replaceChildren();
-  if(!q){listing.hidden=true;count.textContent="Escribí un autor o título para abrir el lector.";return}
-  const found=items.indexed.map((item,i)=>({item,i,rank:score(item,q)})).filter(x=>x.rank>=0)
+  if(q.length<2){listing.hidden=true;count.textContent=q?"Escribí al menos dos letras para buscar.":"Buscá por autor, título latino, griego o traducido.";return}
+  const found=items.all.map((item,i)=>({item,i,rank:score(item,q)})).filter(x=>x.rank>=0)
    .sort((a,b)=>b.rank-a.rank||Number(b.item.originalIndexed)-Number(a.item.originalIndexed)||a.i-b.i);
   listing.hidden=!found.length;
   for(const {item} of found.slice(0,12)){
@@ -113,8 +114,10 @@ function mount(host){
    link.href=canRead?(html?path:"classics-text-reader.html?"+new URLSearchParams({work:item.id,lang:source.language}))
     :"classics-work-record.html?"+new URLSearchParams({work:item.id});
    link.title=canRead?"Abrir lector de la obra":"Ver ficha académica y fuentes disponibles";
+   const state=add("small","vdl-works-availability",canRead?" · Texto original indexado":" · Ficha y fuentes",row);
+   state.setAttribute("aria-label",canRead?"Disponible para lectura":"Ficha bibliográfica, texto no confirmado");
   }
-  count.textContent=found.length?found.length+" coincidencia"+(found.length===1?"":"s")+(found.length>12?" · primeras 12":"")+". Elegí una obra para abrirla.":"No se encontraron obras con ese autor o título.";
+  count.textContent=found.length?found.length+" obra"+(found.length===1?"":"s")+" encontrada"+(found.length===1?"":"s")+(found.length>12?" · primeras 12":"")+". Las obras sin original indexado abren su ficha bibliográfica.":"No se encontraron obras con ese autor o título.";
  }
  async function load(){
   if(items)return;
@@ -122,8 +125,8 @@ function mount(host){
   try{items=await catalog();render()}
   catch(e){count.textContent="El catálogo no se pudo cargar. Abrí Bibliotheca Graeca et Latina."}
  }
- search.addEventListener("focus",load,{once:true});
- search.addEventListener("input",()=>{if(items)render();else load()});
+ // One permanent input, like Bibliotheca: no search dialog or expansion on focus.
+ search.addEventListener("input",()=>{if(search.value.trim().length<2){if(items)render();return;}if(items)render();else void load()});
 }
 function init(){
  document.querySelectorAll("[data-vdl-works-explorer]").forEach(mount);
@@ -131,10 +134,28 @@ function init(){
  // inverted lexical index; never infer it from the number of catalogue cards.
  const display=document.querySelector('[data-cifra="obrasConTextoIndexado"]');
  if(display){
-  const refresh=()=>catalog().then(items=>{
-   display.textContent=String(items.indexed.length);
-   display.title="Obras con original griego o latino comprobado en el registro y en el índice léxico";
-  }).catch(()=>{display.textContent="—";display.title="Recuento no disponible: no se muestran datos antiguos como actuales."});
+  const refresh=()=>fetch(TOTALS_URL,{cache:"no-cache"}).then(response=>{
+   if(!response.ok)throw Error("Cifras: HTTP "+response.status);
+   return response.json();
+  }).then(totals=>{
+   if(totals.schema!=="vdl-cifras-corpus-1"||!Number.isInteger(totals.obrasTotalesDeclaradas)||totals.obrasTotalesDeclaradas<1)throw Error("Inventario total inválido");
+   const all=totals.obrasTotalesDeclaradas,indexed=totals.obrasConTextoIndexado;
+   if(!Number.isInteger(indexed)||indexed<0||indexed>all)throw Error("Recuento indexado incoherente");
+   display.textContent=new Intl.NumberFormat("es-AR").format(all);
+   display.title="Obras únicas catalogadas: repertorio principal, suplementarias y adicionales. Fecha del inventario: "+(totals.actualizado||"no informada");
+   const label=display.nextElementSibling;
+   if(label)label.textContent="obras catalogadas";
+   const badge=display.closest(".vdl-indexed-feature");
+   if(badge){
+    let extra=badge.querySelector(".vdl-works-indexed-subcount");
+    if(!extra){extra=document.createElement("small");extra.className="vdl-works-indexed-subcount";extra.style.cssText="display:block;font:12px/1.4 system-ui,sans-serif;color:inherit";badge.append(extra)}
+    extra.textContent=new Intl.NumberFormat("es-AR").format(indexed)+" con texto indexado";
+   }
+  }).catch(()=>{
+   display.textContent="—";
+   display.title="No se pudo verificar el inventario actualizado";
+   const label=display.nextElementSibling;if(label)label.textContent="obras catalogadas · cifra no disponible";
+  });
   if("requestIdleCallback" in window)window.requestIdleCallback(refresh,{timeout:2800});
   else setTimeout(refresh,300);
  }

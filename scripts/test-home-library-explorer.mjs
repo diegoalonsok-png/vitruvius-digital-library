@@ -1,0 +1,24 @@
+#!/usr/bin/env node
+import assert from "node:assert/strict";
+import fs from "node:fs";
+import vm from "node:vm";
+const js=fs.readFileSync("assets/bibliotheca-works-explorer.js","utf8");
+new vm.Script(js,{filename:"assets/bibliotheca-works-explorer.js"});
+const totals=JSON.parse(fs.readFileSync("data/cifras-corpus.json","utf8"));
+assert.equal(totals.schema,"vdl-cifras-corpus-1");
+assert.equal(totals.obrasTotalesDeclaradas,totals.obras+totals.obrasSuplementarias+totals.obrasAdicionales);
+assert(totals.obrasConTextoIndexado<=totals.obrasTotalesDeclaradas);
+assert(js.includes('fetch(TOTALS_URL,{cache:"no-cache"})'));
+const generic=fs.readFileSync("assets/cifra-obras.js","utf8");
+assert(generic.includes('nodo.dataset.cifra==="obrasConTextoIndexado"&&document.querySelector("[data-vdl-works-explorer]")'),"Generic counter must not overwrite the expanded homepage count");
+assert(js.includes('const all=totals.obrasTotalesDeclaradas,indexed=totals.obrasConTextoIndexado'));
+assert(js.includes('items.all.map((item,i)'),"Find catalogue-only works too");
+assert(js.includes('if(q.length<2)'),"Inline search waits for two characters");
+assert(!js.includes('search.addEventListener("focus",load'),"No extra search interaction on focus");
+assert(js.includes('listing.hidden=!found.length'),"Results remain inline");
+assert(js.includes('items?.aliases?.[w.id]'),"Use multilingual title aliases");
+assert(js.includes('canRead?"Abrir lector de la obra":"Ver ficha académica y fuentes disponibles"'));
+assert(js.includes('" · Ficha y fuentes"'));
+assert(js.includes('label.textContent="obras catalogadas"'));
+assert(!js.includes('display.textContent=String(items.indexed.length)'),"Do not show a partial lexical subset as global total");
+console.log("PASS homepage: inventory total and indexed subset distinguished; author, title, alias and fiche search enabled");
