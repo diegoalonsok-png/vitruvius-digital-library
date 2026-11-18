@@ -337,9 +337,10 @@ html:not([data-parallel-view="true"]):not([data-reading-mode="simple"]) body.aca
 }
 
 
-/* 2026-11-18 · Acoplar la paleta al espacio libre de la PRIMERA línea.
-   La fila 2 queda reservada a las acciones de traducción; la paleta no genera fila 3.
-   Los textos originales, visores y controladores no se modifican. */
+/* 2026-11-18 · Distribución final, solicitada: paleta en el espacio inferior derecho.
+   Fila superior: intercambio, traducciones publicadas y lectura enfrentada.
+   Fila inferior: controles de traducción a la izquierda; colores y papel a la derecha.
+   Se conservan solamente dos filas; no se modifican lectores ni traducciones. */
 @media (min-width:1251px){
  html:not([data-parallel-view="true"]):not([data-reading-mode="simple"]) body.academic-reader
  .cl-edition-layout .cl-unified-reading-actions{
@@ -359,11 +360,11 @@ html:not([data-parallel-view="true"]):not([data-reading-mode="simple"]) body.aca
  }
  html:not([data-parallel-view="true"]):not([data-reading-mode="simple"]) body.academic-reader
  .cl-unified-reading-actions>.cl-translation-tools{
-  grid-column:1 / -1;grid-row:2;flex-wrap:nowrap!important;min-width:0!important;
+  grid-column:1 / 4;grid-row:2;justify-self:start!important;flex-wrap:nowrap!important;min-width:0!important;width:max-content!important;max-width:100%!important;
  }
  html:not([data-parallel-view="true"]):not([data-reading-mode="simple"]) body.academic-reader
  .cl-unified-reading-actions>.cl-compact-palette{
-  grid-column:4;grid-row:1;justify-self:stretch;justify-content:flex-end!important;
+  grid-column:4;grid-row:2;justify-self:stretch;justify-content:flex-end!important;
   width:100%!important;max-width:100%!important;min-width:0!important;
   height:34px!important;min-height:34px!important;
   margin:0!important;padding:0 2px!important;gap:3px!important;

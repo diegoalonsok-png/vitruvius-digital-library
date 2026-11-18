@@ -70,7 +70,8 @@ function init(){
     ];
     for(const [label,kind,choices] of groups){
       const name=document.createElement("span");name.className="cl-compact-palette-label";
-      name.textContent=label;palette.append(name);
+      name.textContent=label;
+      if(kind!=="bg")palette.append(name); // Sin rótulo Fondo: círculos accesibles con aria-label.
       for(const [title,color,pairedInk] of choices){
         const button=document.createElement("button");button.type="button";
         button.className="cl-compact-palette-dot";
