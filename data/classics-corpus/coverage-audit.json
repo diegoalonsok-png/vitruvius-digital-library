@@ -13,8 +13,8 @@
       "pendiente-de-incorporar": 2
     },
     "locallyReadableClaims": 196,
-    "indexedTextVersions": 292,
-    "indexedDistinctWorks": 227,
+    "indexedTextVersions": 294,
+    "indexedDistinctWorks": 226,
     "manuscriptWitnesses": 106
   },
   "works": [
@@ -2071,10 +2071,12 @@
       "dating": "siglo II d. C.",
       "catalogueStatus": "lectura-local-parcial",
       "indexedTextLanguages": [
-        "grc"
+        "grc",
+        "en"
       ],
       "indexedTextFiles": [
-        "data/classics-corpus/lucian-dialogi-mortuorum-grc.json"
+        "data/classics-corpus/lucian-dialogi-mortuorum-grc.json",
+        "data/classics-corpus/lucian-dialogi-mortuorum-en.json"
       ],
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
@@ -3657,10 +3659,12 @@
       "dating": "siglo V a. C.",
       "catalogueStatus": "lectura-local-parcial",
       "indexedTextLanguages": [
-        "grc"
+        "grc",
+        "en"
       ],
       "indexedTextFiles": [
-        "data/classics-corpus/pindar-olympian-grc.json"
+        "data/classics-corpus/pindar-olympian-grc.json",
+        "data/classics-corpus/pindar-olympian-en.json"
       ],
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
@@ -3679,10 +3683,12 @@
       "dating": "siglo V a. C.",
       "catalogueStatus": "lectura-local-parcial",
       "indexedTextLanguages": [
-        "grc"
+        "grc",
+        "en"
       ],
       "indexedTextFiles": [
-        "data/classics-corpus/pindar-pythian-grc.json"
+        "data/classics-corpus/pindar-pythian-grc.json",
+        "data/classics-corpus/pindar-pythian-en.json"
       ],
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
@@ -6030,5 +6036,5 @@
       "notes": "Facsímil alojado en Cloudflare R2, legible página a página en el visor del sitio (buscador-facsimiles-clasicos.html). El texto por página es OCR sin revisar: no es transcripción indexada ni cotejo filológico."
     }
   ],
-  "updated": "2026-11-14"
+  "updated": "2026-11-17"
 }

@@ -2,8 +2,8 @@
   "schema": "vitruvia-classics-search-registry-v1",
   "updated": "2026-11-17",
   "description": "Registro verificable de transcripciones HTML y textos JSON existentes que admiten búsqueda literal de contenido. No incluye automáticamente PDF escaneados, facsímiles ni fichas sin texto. Los índices auxiliares por locus y el aparato crítico se declaran por separado; no se suman a versiones textuales originales ni implican colación autóptica.",
-  "count": 367,
-  "works": 297,
+  "count": 370,
+  "works": 299,
   "entries": [
     {
       "workId": "aeneas-tacticus-poliorketika",
@@ -2001,6 +2001,20 @@
       "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
     },
     {
+      "workId": "lucian-dialogi-mortuorum",
+      "author": "Luciano de Samósata",
+      "title": "Νεκρικοὶ διάλογοι · Dialogues of the Dead",
+      "language": "en",
+      "format": "json-passages",
+      "path": "data/classics-corpus/lucian-dialogi-mortuorum-en.json",
+      "reader": "classics-text-reader.html?work=lucian-dialogi-mortuorum&lang=en",
+      "translator": "Matthew Donald Macleod",
+      "sourceUrn": "urn:cts:greekLit:tlg0062.tlg066.perseus-eng3",
+      "sourceDescription": "Traducción humana inglesa · Matthew Donald Macleod, Lucian with an English Translation, vol. 7 (1961); TEI Perseus · CC BY-SA 4.0; 113 secciones en correspondencia de numeración con el original griego",
+      "editionCitation": "Lucian of Samosata. Dialogues of the Dead. Trad. M. D. Macleod. Lucian with an English Translation, vol. 7 (1961). TEI Perseus Digital Library.",
+      "passages": 113
+    },
+    {
       "workId": "lucian-electrum",
       "author": "Luciano de Samósata",
       "title": "Περὶ τοῦ Ἡλέκτρου ἢ Κύκνων",
@@ -2551,6 +2565,20 @@
       "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
     },
     {
+      "workId": "pindar-olympian",
+      "author": "Píndaro",
+      "title": "Ὀλυμπιόνικοι · Olympian Odes",
+      "language": "en",
+      "format": "json-passages",
+      "path": "data/classics-corpus/pindar-olympian-en.json",
+      "reader": "classics-text-reader.html?work=pindar-olympian&lang=en",
+      "translator": "Diane Arnson Svarlien",
+      "sourceUrn": "urn:cts:greekLit:tlg0033.tlg001.perseus-eng2",
+      "sourceDescription": "Traducción humana inglesa · Diane Arnson Svarlien, Odes (Perseus Project, 1990); TEI Perseus · CC BY-SA 4.0; 14 odas completas, correspondencia por oda con el original griego, no por verso.",
+      "editionCitation": "Pindar. Olympian Odes. Trad. Diane Arnson Svarlien. Perseus Project, 1990. TEI Perseus Digital Library.",
+      "passages": 14
+    },
+    {
       "workId": "pindar-pythian",
       "author": "Píndaro",
       "title": "Πυθιόνικοι",
@@ -2559,6 +2587,20 @@
       "path": "data/classics-corpus/pindar-pythian-grc.json",
       "reader": "classics-text-reader.html?work=pindar-pythian&lang=grc",
       "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
+      "workId": "pindar-pythian",
+      "author": "Píndaro",
+      "title": "Πυθιόνικοι · Pythian Odes",
+      "language": "en",
+      "format": "json-passages",
+      "path": "data/classics-corpus/pindar-pythian-en.json",
+      "reader": "classics-text-reader.html?work=pindar-pythian&lang=en",
+      "translator": "Diane Arnson Svarlien",
+      "sourceUrn": "urn:cts:greekLit:tlg0033.tlg002.perseus-eng3",
+      "sourceDescription": "Traducción humana inglesa · Diane Arnson Svarlien, Odes (Perseus Project, 1990); TEI Perseus · CC BY-SA 4.0; 12 odas completas, correspondencia por oda con el original griego, no por verso.",
+      "editionCitation": "Pindar. Pythian Odes. Trad. Diane Arnson Svarlien. Perseus Project, 1990. TEI Perseus Digital Library.",
+      "passages": 12
     },
     {
       "workId": "plato-apology",
