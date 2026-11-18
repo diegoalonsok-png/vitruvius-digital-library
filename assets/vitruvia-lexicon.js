@@ -672,7 +672,7 @@ async function showApparatus(locus,box,btn){
   const wrap=el("div",{class:"lx-appbox"},el("h4",{},"Aparato y colación · Vitr. "+locus));
   const ents=(A.entries||[]).filter(e=>(e.loci||[]).includes(locus));
   if(ents.length)for(const e of ents.slice(0,8)){
-   const t=(e.text||"").replace(/\\s+/g," ");
+   const t=(e.text||"").replace(/\s+/g," ");
    wrap.append(el("div",{class:"lx-appentry"},el("p",{class:"lx-small"},`${e.label||e.kind||"Aparato"} · ${e.version||""} (${e.language||""}) · p. ${e.page||"?"}${e.locusLink==="estimado"?" · vínculo estimado":""}`),el("p",{},t.length>900?t.slice(0,900)+" …":t),e.pdf?el("a",{href:e.pdf,target:"_blank",rel:"noopener"},"Abrir la página del PDF"):null));
   }
   else wrap.append(el("p",{class:"lx-small"},"El índice del aparato no registra entradas vinculadas a este locus."));
@@ -2560,14 +2560,27 @@ function teiApparatus(base,B,arr,sigs){
 }
 async function loadCollationExample(){
  const loc=$("#col-locus").value.trim()||"1.1.1";const btn=$("#col-example");btn.disabled=true;btn.textContent="Cargando…";
- try{const [c,D]=await Promise.all([load("data/collation-loci.json"),lang("la")]);const p=D.corpus.passages.find(x=>x[0]==="vitruvius"&&x[1]===loc);const lc=c.loci[loc];
-  if(!p||!lc)throw new Error("locus no disponible");$("#col-base-sig").value="V514";$("#col-base").value=p[2];
-  const wits=$$(".col-wit");const ids=Object.keys(lc);ids.slice(0,wits.length).forEach((id,i)=>{wits[i].querySelector(".col-sig").value=id==="rose-1899"?"Rose":"Krohn";wits[i].querySelector("textarea").value=(lc[id].text||"").replace(/\s+\d+\s+(?=[a-z])/g," ").slice(0,4000)});
-  $("#col-note").textContent=`Ejemplo real: Vitr. ${loc}, texto de la edición V514 frente a las páginas OCR de Rose (1899) y Krohn (1912) alineadas en data/collation-loci.json. El OCR introduce ruido y arrastra el aparato a pie de página: es material de práctica, no una colación definitiva.`;collate()}
- catch(err){$("#col-note").textContent="No se pudo cargar el ejemplo: "+err.message}
+ try{
+  const [rose,krohn,kurilo]=await Promise.all([
+   load("data/critical-editions/rose-1899-transcribed-loci.json"),
+   load("data/critical-editions/krohn-1912-tei-loci.json"),
+   load("data/structured/recensio-es.json")
+  ]);
+  const base=kurilo.passages?.find(p=>p.locus===loc);
+  const r=rose.passages?.find(p=>p.locus===loc),k=krohn.passages?.find(p=>p.locus===loc);
+  if(!base?.latin||!r?.latin||!k?.latin)throw new Error("locus no disponible en las tres ediciones indexadas");
+  $("#col-base-sig").value="V514";$("#col-base").value=base.latin;
+  const wits=$$(".col-wit");
+  [[r,"Rose 1899"],[k,"Krohn 1912"]].forEach(([p,name],i)=>{
+   if(!wits[i])return;
+   wits[i].querySelector(".col-sig").value=name;
+   wits[i].querySelector("textarea").value=p.latin.slice(0,4000);
+  });
+  $("#col-note").textContent="Vitr. "+loc+" · Tres ediciones latinas indexadas: Kurilo V514, Valentin Rose 1899 (Project Gutenberg) y Fritz Krohn 1912 (Perseus TEI). Cotejo de los impresos aún pendiente; no constituye colación crítica definitiva.";
+  collate();
+ }catch(err){$("#col-note").textContent="No se pudo cargar el ejemplo: "+err.message}
  btn.disabled=false;btn.textContent="Cargar ejemplo vitruviano";
 }
-
 /* ---------- Cuaderno exegético ---------- */
 const NB_KEY="vitruvia-lexicon-notebook-v1";
 function nbLoad(){try{return JSON.parse(localStorage.getItem(NB_KEY)||"[]")}catch{return[]}}
