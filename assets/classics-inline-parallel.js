@@ -166,16 +166,13 @@ function updateIndexedChoice(info){
  for(const e of (info?.editions||[]))if(registered(e)&&!indexedVersions.has(e.language))indexedVersions.set(e.language,e);
  const target=select.value;
  const hasIndexed=indexedVersions.has(target);
- const greekOriginal=current?.language==="grc";
- // Ancient Greek is not modern Greek: external machine outputs can contain
- // transliteration and invented words. Do not offer them as translations.
- const allowAutomatic=!greekOriginal&&!hasIndexed;
- if(greekOriginal&&enabled){enabled=false;sequence++;}
+ // Permitir griego antiguo bajo petición; el proveedor valida y rechaza transliteraciones.
+ const allowAutomatic=!hasIndexed;
  translate.hidden=!allowAutomatic||enabled;
  stop.hidden=!allowAutomatic||!enabled;
  translate.disabled=false;
  translate.textContent="Activar traducción automática";
- translate.title="Solo bajo demanda para latín sin traducción indexada.";
+ translate.title="Traducción automática orientativa bajo demanda para griego o latín sin traducción indexada.";
  translation.setAttribute("aria-label",hasIndexed&&!enabled?"Traducción indexada":"Traducción automática orientativa");
  return hasIndexed;
 }
@@ -203,16 +200,14 @@ function showState(){
   presentIndexed(current,select.value,stamp);
   return;
  }
- if(!enabled){output.textContent=current?.language==="grc"
-  ?"No hay traducción documentada para este locus en el idioma seleccionado. Se conserva el original griego; no se ofrece transliteración automática como traducción."
-  :"No hay traducción indexada en "+({es:"castellano",en:"inglés",fr:"francés"}[select.value]||select.value)+". Podés activar una versión automática orientativa.";return}
+ if(!enabled){output.textContent="No hay traducción indexada en "+({es:"castellano",en:"inglés",fr:"francés"}[select.value]||select.value)+". Podés activar una traducción automática orientativa; en griego antiguo puede ser imprecisa.";return}
  if(!current?.text){output.textContent="El pasaje todavía no está disponible.";return}
  runTranslation();
 }
 async function runTranslation(){
  const stamp=++sequence,entry=current,target=select.value;
  if(indexedVersions.has(target)&&entry&&!enabled){await presentIndexed(entry,target,stamp);return;}
- if(mode.value==="pdf"||!enabled||!entry||entry.language!=="la")return;
+ if(mode.value==="pdf"||!enabled||!entry||!["la","grc"].includes(entry.language))return;
  output.replaceChildren();output.setAttribute("aria-busy","true");
  output.textContent="Traduciendo automáticamente el pasaje "+entry.locus+"…";
  note.textContent="Versión generada por un servicio de traducción automática externo. No constituye traducción filológica.";
@@ -246,7 +241,7 @@ async function runTranslation(){
   note.textContent="Servicio externo no disponible ("+(error?.message||"error de acceso")+"). Podés usar el enlace externo sin alterar el original."; translate.hidden=false;translate.textContent="Reintentar traducción";
  }finally{if(stamp===sequence)output.removeAttribute("aria-busy")}
 }
-function activate(){if(current?.language==="grc"||indexedVersions.has(select.value)){showState();return}enabled=true;translate.hidden=true;stop.hidden=false;showState()}
+function activate(){if(indexedVersions.has(select.value)){showState();return}enabled=true;translate.hidden=true;stop.hidden=false;showState()}
 if(enabled){translate.hidden=true;stop.hidden=false;}
 translate.addEventListener("click",activate);
 stop.addEventListener("click",()=>{
@@ -263,9 +258,9 @@ document.addEventListener("vitruvia:classics-passage",event=>{
  const info=event.detail;
  if(!info||info.work!==work||typeof info.text!=="string")return;
  current=info;sequence++;updateIndexedChoice(info);
- const u=new URL("classics-parallel-reader.html",location.href);u.searchParams.set("work",work);u.searchParams.set("left",info.language);u.searchParams.set("locus",info.locus);
+ const u=new URL("classics-text-reader.html",location.href);u.searchParams.set("work",work);u.searchParams.set("lang",info.language);u.searchParams.set("locus",info.locus);
  const editorial=(info.editions||[]).find(e=>["es","fr","en"].includes(e.language));
- u.searchParams.set("right",editorial?.language||"auto-"+select.value);published.href=u.pathname+u.search;
+ if(editorial)u.searchParams.set("lang",editorial.language);else u.searchParams.set("to",select.value);published.href=u.pathname+u.search;
  published.textContent=editorial?"Traducciones publicadas ↗":"Comparar otras versiones ↗";
  showState();
 });
