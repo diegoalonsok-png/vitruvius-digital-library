@@ -6,10 +6,10 @@
   "counts": {
     "originalsIndexed": 182,
     "originalsMissing": 89,
-    "worksWithHostedTranslation": 61,
-    "worksMissingTranslation": 210,
-    "textVersions": 249,
-    "registeredTextVersions": 293,
+    "worksWithHostedTranslation": 70,
+    "worksMissingTranslation": 201,
+    "textVersions": 258,
+    "registeredTextVersions": 302,
     "declaredR2OriginalWorks": 44,
     "registeredProjectOriginalWorks": 226,
     "registeredOriginalsWithExternal": 241,
@@ -21,8 +21,8 @@
     "offsiteTextVersionsOutsidePages": 28,
     "states": {
       "original_pendiente": 89,
-      "original_sin_traduccion_local": 121,
-      "original_y_traduccion_local": 61
+      "original_sin_traduccion_local": 112,
+      "original_y_traduccion_local": 70
     },
     "sourceReadinessForMissingOriginals": {
       "correspondencia_bibliografica_ambigua": 3,
@@ -2255,11 +2255,12 @@
       "originalLanguage": "grc",
       "dating": "siglo II d. C.",
       "indexedLanguages": [
+        "en",
         "grc"
       ],
       "originalIndexed": true,
-      "translationHosted": false,
-      "state": "original_sin_traduccion_local",
+      "translationHosted": true,
+      "state": "original_y_traduccion_local",
       "sourceReadiness": "original_local_documentado",
       "bibliographyCandidateUrns": [
         "tlg0062.tlg066"
@@ -2556,11 +2557,12 @@
       "originalLanguage": "grc",
       "dating": "458 a. C.",
       "indexedLanguages": [
+        "en",
         "grc"
       ],
       "originalIndexed": true,
-      "translationHosted": false,
-      "state": "original_sin_traduccion_local",
+      "translationHosted": true,
+      "state": "original_y_traduccion_local",
       "sourceReadiness": "original_local_documentado",
       "bibliographyCandidateUrns": [
         "tlg0085.tlg005",
@@ -2696,11 +2698,12 @@
       "originalLanguage": "grc",
       "dating": "siglo IV a. C.",
       "indexedLanguages": [
+        "en",
         "grc"
       ],
       "originalIndexed": true,
-      "translationHosted": false,
-      "state": "original_sin_traduccion_local",
+      "translationHosted": true,
+      "state": "original_y_traduccion_local",
       "sourceReadiness": "original_local_documentado",
       "bibliographyCandidateUrns": [
         "tlg0032.tlg006"
@@ -2718,11 +2721,12 @@
       "originalLanguage": "grc",
       "dating": "siglo IV a. C.",
       "indexedLanguages": [
+        "en",
         "grc"
       ],
       "originalIndexed": true,
-      "translationHosted": false,
-      "state": "original_sin_traduccion_local",
+      "translationHosted": true,
+      "state": "original_y_traduccion_local",
       "sourceReadiness": "original_local_documentado",
       "bibliographyCandidateUrns": [
         "tlg0059.tlg030"
@@ -3041,8 +3045,8 @@
       "originalLanguage": "grc",
       "dating": "siglo V a. C.",
       "indexedLanguages": [
-        "grc",
-        "en"
+        "en",
+        "grc"
       ],
       "originalIndexed": true,
       "translationHosted": true,
@@ -3133,8 +3137,8 @@
       "originalLanguage": "grc",
       "dating": "siglo V a. C.",
       "indexedLanguages": [
-        "grc",
-        "en"
+        "en",
+        "grc"
       ],
       "originalIndexed": true,
       "translationHosted": true,
@@ -3317,11 +3321,12 @@
       "originalLanguage": "grc",
       "dating": "414 a. C.",
       "indexedLanguages": [
+        "en",
         "grc"
       ],
       "originalIndexed": true,
-      "translationHosted": false,
-      "state": "original_sin_traduccion_local",
+      "translationHosted": true,
+      "state": "original_y_traduccion_local",
       "sourceReadiness": "original_local_documentado",
       "bibliographyCandidateUrns": [
         "tlg0019.tlg006"
@@ -3587,11 +3592,12 @@
       "originalLanguage": "grc",
       "dating": "siglo IV a. C.",
       "indexedLanguages": [
+        "en",
         "grc"
       ],
       "originalIndexed": true,
-      "translationHosted": false,
-      "state": "original_sin_traduccion_local",
+      "translationHosted": true,
+      "state": "original_y_traduccion_local",
       "sourceReadiness": "original_local_documentado",
       "bibliographyCandidateUrns": [
         "tlg0059.tlg034"
@@ -3655,11 +3661,12 @@
       "originalLanguage": "grc",
       "dating": "siglo IV a. C.",
       "indexedLanguages": [
+        "en",
         "grc"
       ],
       "originalIndexed": true,
-      "translationHosted": false,
-      "state": "original_sin_traduccion_local",
+      "translationHosted": true,
+      "state": "original_y_traduccion_local",
       "sourceReadiness": "original_local_documentado",
       "bibliographyCandidateUrns": [
         "tlg0086.tlg025"
@@ -3834,11 +3841,12 @@
       "originalLanguage": "grc",
       "dating": "siglo V a. C.",
       "indexedLanguages": [
+        "en",
         "grc"
       ],
       "originalIndexed": true,
-      "translationHosted": false,
-      "state": "original_sin_traduccion_local",
+      "translationHosted": true,
+      "state": "original_y_traduccion_local",
       "sourceReadiness": "original_local_documentado",
       "bibliographyCandidateUrns": [
         "tlg0033.tlg001"
@@ -3856,11 +3864,12 @@
       "originalLanguage": "grc",
       "dating": "siglo V a. C.",
       "indexedLanguages": [
+        "en",
         "grc"
       ],
       "originalIndexed": true,
-      "translationHosted": false,
-      "state": "original_sin_traduccion_local",
+      "translationHosted": true,
+      "state": "original_y_traduccion_local",
       "sourceReadiness": "original_local_documentado",
       "bibliographyCandidateUrns": [
         "tlg0033.tlg002"

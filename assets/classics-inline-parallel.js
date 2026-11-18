@@ -139,19 +139,44 @@ async function indexedPassages(e){
  }).then(j=>Array.isArray(j.passages)?j.passages:[]).catch(()=>[]));
  return indexedFiles.get(e.path);
 }
+/* Sólo correspondencias editoriales comprobables: sección en Luciano, oda en Píndaro.
+   No equiparar versos, palabras ni URN de ediciones diferentes por suposición. */
+function documentedGreekUnit(sourceLocus,translationLocus){
+ if(!["lucian-dialogi-mortuorum","pindar-olympian","pindar-pythian"].includes(work))return null;
+ const parse=value=>{
+  const m=/^urn:cts:greekLit:(tlg[0-9]+\.tlg[0-9]+)\.perseus-(grc|eng)[0-9]+:([0-9]+)(?:\.([0-9]+)(?:-[0-9]+)?)?$/i.exec(String(value||"").trim());
+  return m?{work:m[1],language:m[2],unit:m[3],part:m[4]||null}:null;
+ };
+ const original=parse(sourceLocus),translated=parse(translationLocus);
+ if(!original||!translated||original.work!==translated.work||original.language!=="grc"||translated.language!=="eng")return null;
+ if(work==="lucian-dialogi-mortuorum"){
+  return original.work==="tlg0062.tlg066"&&original.unit===translated.unit&&original.part===translated.part?"section":null;
+ }
+ const expected=work==="pindar-olympian"?"tlg0033.tlg001":"tlg0033.tlg002";
+ return original.work===expected&&original.unit===translated.unit&&translated.part===null?"poem":null;
+}
 async function presentIndexed(entry,target,stamp){
  const e=indexedVersions.get(target);
  if(!e)return false;
  // Una edición declarada no es una traducción automática ni una alineación certificada.
  const paragraphs=await indexedPassages(e);
  if(stamp!==sequence||current!==entry||mode.value==="pdf")return true;
- const matched=paragraphs.find(p=>String(p.locus||"").trim()===String(entry.locus||"").trim()&&
+ const exact=paragraphs.find(p=>String(p.locus||"").trim()===String(entry.locus||"").trim()&&
  typeof (p.text||p.translation)==="string"&&(p.text||p.translation).trim());
+ let mappedUnit=null;
+ const mapped=exact?null:paragraphs.find(p=>{
+  if(typeof (p.text||p.translation)!=="string"||!(p.text||p.translation).trim())return false;
+  const kind=target==="en"&&entry.language==="grc"?documentedGreekUnit(entry.locus,p.locus):null;
+  if(kind)mappedUnit=kind;
+  return Boolean(kind);
+ });
+ const matched=exact||mapped;
  output.replaceChildren();
  if(matched){
   const para=el("p",null,matched.text||matched.translation);para.lang=target;
   output.append(para);
-  note.textContent="Traducción indexada: "+(e.sourceDescription||e.edition||"versión bibliográfica")+" · Locus coincidente "+entry.locus+". No es una traducción automática.";
+  const evidence=mappedUnit==="poem"?" · Misma oda numerada; NO alineación verso por verso.":mappedUnit==="section"?" · Misma sección CTS; NO alineación palabra por palabra.":" · Locus coincidente "+entry.locus+".";
+  note.textContent="Traducción humana indexada: "+(e.sourceDescription||e.edition||"versión bibliográfica")+evidence+" No es una traducción automática.";
  }else if(paragraphs.length){
   // Independent reading of a genuine human translation, not an invented locus alignment.
   const list=el("div","cl-indexed-edition-reading");
@@ -175,7 +200,7 @@ async function presentIndexed(entry,target,stamp){
   note.textContent="Verificá la disponibilidad del texto indexado.";
  }
  const a=el("a",null,"Consultar traducción indexada · "+target.toUpperCase()+" ↗");
- a.href=versionLink(e,matched?entry.locus:null);a.style.cssText="display:inline-block;margin:9px 0;color:#d5dde4;text-decoration:underline";
+ a.href=versionLink(e,matched?matched.locus:null);a.style.cssText="display:inline-block;margin:9px 0;color:#d5dde4;text-decoration:underline";
  output.append(a);
  return true;
 }

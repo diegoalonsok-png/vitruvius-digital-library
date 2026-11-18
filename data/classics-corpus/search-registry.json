@@ -2,7 +2,7 @@
   "schema": "vitruvia-classics-search-registry-v1",
   "updated": "2026-11-18",
   "description": "Registro verificable de transcripciones HTML y textos JSON existentes que admiten búsqueda literal de contenido. No incluye automáticamente PDF escaneados, facsímiles ni fichas sin texto. Los índices auxiliares por locus y el aparato crítico se declaran por separado; no se suman a versiones textuales originales ni implican colación autóptica.",
-  "count": 403,
+  "count": 406,
   "works": 299,
   "entries": [
     {
@@ -2204,6 +2204,16 @@
       "workId": "lucian-dialogi-mortuorum",
       "author": "Luciano de Samósata",
       "title": "Νεκρικοὶ διάλογοι",
+      "language": "en",
+      "format": "json-passages",
+      "path": "data/classics-corpus/lucian-dialogi-mortuorum-en.json",
+      "reader": "classics-text-reader.html?work=lucian-dialogi-mortuorum&lang=en",
+      "sourceDescription": "Matthew Donald Macleod (1961), traducción inglesa TEI Perseus con 113 secciones documentadas; CC BY-SA 4.0, correspondencia de sección no de palabras"
+    },
+    {
+      "workId": "lucian-dialogi-mortuorum",
+      "author": "Luciano de Samósata",
+      "title": "Νεκρικοὶ διάλογοι",
       "language": "grc",
       "format": "json-passages",
       "path": "data/classics-corpus/lucian-dialogi-mortuorum-grc.json",
@@ -2754,11 +2764,31 @@
       "workId": "pindar-olympian",
       "author": "Píndaro",
       "title": "Ὀλυμπιόνικοι",
+      "language": "en",
+      "format": "json-passages",
+      "path": "data/classics-corpus/pindar-olympian-en.json",
+      "reader": "classics-text-reader.html?work=pindar-olympian&lang=en",
+      "sourceDescription": "Diane Arnson Svarlien (1990), versión inglesa de las 14 Olímpicas en TEI Perseus; CC BY-SA 4.0, correspondencia por oda no por verso"
+    },
+    {
+      "workId": "pindar-olympian",
+      "author": "Píndaro",
+      "title": "Ὀλυμπιόνικοι",
       "language": "grc",
       "format": "json-passages",
       "path": "data/classics-corpus/pindar-olympian-grc.json",
       "reader": "classics-text-reader.html?work=pindar-olympian&lang=grc",
       "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
+      "workId": "pindar-pythian",
+      "author": "Píndaro",
+      "title": "Πυθιόνικοι",
+      "language": "en",
+      "format": "json-passages",
+      "path": "data/classics-corpus/pindar-pythian-en.json",
+      "reader": "classics-text-reader.html?work=pindar-pythian&lang=en",
+      "sourceDescription": "Diane Arnson Svarlien (1990), versión inglesa de las 12 Píticas en TEI Perseus; CC BY-SA 4.0, correspondencia por oda no por verso"
     },
     {
       "workId": "pindar-pythian",

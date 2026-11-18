@@ -129,8 +129,10 @@ for(const w of allWorks)for(const p of Object.values(w.corpusFiles||{}))
 // Translation transparency: indexed languages and catalogue must agree. Checks
 // cannot establish philological quality or historical copyright on their own.
 assert.equal(registry.count,registry.entries.length,"Search registry count is stale");
-assert.equal(registry.works,new Set(registry.entries.filter(e=>e.format!=="critical-indexed-latin").map(e=>e.workId)).size,
- "Auxiliary critical-edition indexes must not inflate distinct ancient works");
+// El campo registry.works contabiliza IDs documentales del registro, incluidas
+// dos ediciones auxiliares de Vitruvio. No es el número de obras antiguas.
+assert.equal(registry.works,new Set(registry.entries.map(e=>e.workId)).size,
+ "Registry work-ID counter differs from registered editions");
 const verifiedParallel=[],explicitlyUnaligned=[];
 for(const w of allWorks){
  const entries=registry.entries.filter(e=>e.workId===w.id&&e.format==="json-passages");
@@ -152,6 +154,41 @@ for(const w of allWorks){
   const intersect=[...ol].filter(l=>tl.has(l)).length;
   assert(target.passages.every(p=>typeof p.text==="string"&&p.text.trim().length>0),"Empty translated passage: "+translation.path);
   if(intersect===0){
+   // Luciano comparte 113 secciones numeradas entre ediciones TEI; Píndaro
+   // comparte números de oda, pero NO unidades de verso entre original y versión.
+   // Sólo estas tres obras y sus URN atestiguadas permiten esta comparación.
+   if(translation.language==="en"&&["lucian-dialogi-mortuorum","pindar-olympian","pindar-pythian"].includes(w.id)){
+    const unit=(value,language)=>{
+     const m=new RegExp("^urn:cts:greekLit:(tlg[0-9]+\\.tlg[0-9]+)\\.perseus-"+language+"[0-9]+:([0-9]+)(?:\\.([0-9]+)(?:-[0-9]+)?)?$").exec(value);
+     return m?{work:m[1],unit:m[2],part:m[3]||null}:null;
+    };
+    const gr=original.passages.map(p=>unit(p.locus,"grc"));
+    const en=target.passages.map(p=>unit(p.locus,"eng"));
+    const expected=w.id==="lucian-dialogi-mortuorum"?"tlg0062.tlg066":w.id==="pindar-olympian"?"tlg0033.tlg001":"tlg0033.tlg002";
+    const expectedCount=w.id==="lucian-dialogi-mortuorum"?113:w.id==="pindar-olympian"?14:12;
+    assert(gr.every(x=>x?.work===expected)&&en.every(x=>x?.work===expected),
+     "CTS work identity mismatch for documented Greek-English parallel: "+w.id);
+    if(w.id==="lucian-dialogi-mortuorum"){
+     const grKeys=gr.map(x=>x.unit+"."+x.part),enKeys=en.map(x=>x.unit+"."+x.part);
+     assert.equal(grKeys.length,113,"Lucian original section count changed");
+     assert.equal(enKeys.length,113,"Lucian English section count changed");
+     assert.equal(new Set(grKeys).size,113,"Duplicate Greek sections in Lucian");
+     assert.deepEqual(new Set(grKeys),new Set(enKeys),"Lucian sections not paired");
+     assert.equal(target.alignmentStatus,"section");
+    }else{
+     const grOdes=new Set(gr.map(x=>x.unit)),enOdes=new Set(en.map(x=>x.unit));
+     const allOdes=Array.from({length:expectedCount},(_,i)=>String(i+1));
+     assert.deepEqual([...grOdes].sort((a,b)=>Number(a)-Number(b)),allOdes,"Greek odes incomplete: "+w.id);
+     assert.deepEqual([...enOdes].sort((a,b)=>Number(a)-Number(b)),allOdes,"English odes incomplete: "+w.id);
+     assert.equal(en.length,expectedCount,"Repeated or missing translated odes: "+w.id);
+     assert(en.every(x=>x.part===null),"English poem split cannot be matched as a whole ode");
+     assert.equal(target.alignmentStatus,"poem");
+    }
+    verifiedParallel.push({work:w.id,original:"grc",translation:"en",
+     sharedLoci:0,sharedBibliographicUnits:expectedCount,
+     alignmentLevel:w.id==="lucian-dialogi-mortuorum"?"section CTS":"whole ode; NOT individual verses"});
+    continue;
+   }
    // A CTS edition URN is edition-specific. Three TEI Plato translations
    // share Stephanus section numbers with their Greek counterparts, not the
    // complete URN nor word-level alignment. Verify every section one-to-one
