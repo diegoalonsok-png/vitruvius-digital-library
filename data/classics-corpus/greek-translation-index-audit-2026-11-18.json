@@ -5,7 +5,7 @@
   "scope": "roadmap Greek works vs search-registry entries; does not independently certify R2 objects, text completeness, licenses or locus alignment",
   "counts": {
     "greekWorks": 160,
-    "missingHumanTranslation": 112,
+    "missingHumanTranslation": 110,
     "missingOriginalRegistryEntry": 20
   },
   "works": [
@@ -871,13 +871,19 @@
       "author": "Sófocles",
       "title": "Αἴας",
       "originalRegistryIndexed": true,
-      "translationRegistryIndexed": false,
+      "translationRegistryIndexed": true,
       "indexedLanguages": [
-        "grc"
+        "grc",
+        "en"
       ],
-      "priority": "acquire-human-translation",
-      "translationStatus": "missing",
-      "sourceCandidate": null
+      "priority": "verify-locus-symmetry",
+      "translationStatus": "registered",
+      "sourceCandidate": {
+        "translator": "Richard C. Jebb",
+        "source": "PerseusDL/canonical-greekLit",
+        "language": "en",
+        "status": "indexed-source-loci-not-aligned"
+      }
     },
     {
       "workId": "sophocles-electra",
@@ -926,13 +932,19 @@
       "author": "Sófocles",
       "title": "Τραχίνιαι",
       "originalRegistryIndexed": true,
-      "translationRegistryIndexed": false,
+      "translationRegistryIndexed": true,
       "indexedLanguages": [
-        "grc"
+        "grc",
+        "en"
       ],
-      "priority": "acquire-human-translation",
-      "translationStatus": "missing",
-      "sourceCandidate": null
+      "priority": "verify-locus-symmetry",
+      "translationStatus": "registered",
+      "sourceCandidate": {
+        "translator": "Richard C. Jebb",
+        "source": "PerseusDL/canonical-greekLit",
+        "language": "en",
+        "status": "indexed-source-loci-not-aligned"
+      }
     },
     {
       "workId": "euripides-bacchae",
