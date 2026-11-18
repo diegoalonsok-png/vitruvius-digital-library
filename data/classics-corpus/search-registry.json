@@ -2,7 +2,7 @@
   "schema": "vitruvia-classics-search-registry-v1",
   "updated": "2026-11-18",
   "description": "Registro verificable de transcripciones HTML y textos JSON existentes que admiten búsqueda literal de contenido. No incluye automáticamente PDF escaneados, facsímiles ni fichas sin texto. Los índices auxiliares por locus y el aparato crítico se declaran por separado; no se suman a versiones textuales originales ni implican colación autóptica.",
-  "count": 374,
+  "count": 375,
   "works": 297,
   "entries": [
     {
@@ -3761,6 +3761,16 @@
       "path": "data/classics-corpus/xenophon-anabasis-grc.json",
       "reader": "classics-text-reader.html?work=xenophon-anabasis&lang=grc",
       "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
+      "workId": "xenophon-anabasis",
+      "author": "Jenofonte",
+      "title": "Ἀνάβασις · Anabasis",
+      "language": "en",
+      "format": "json-passages",
+      "path": "data/classics-corpus/xenophon-anabasis-en.json",
+      "reader": "classics-text-reader.html?work=xenophon-anabasis&lang=grc&to=en",
+      "sourceDescription": "Inglés: traducción histórica de Carleton L. Brownson (1921–1922), Perseus TEI; 1469 referencias libro.capítulo.sección coincidentes con el original griego."
     },
     {
       "workId": "xenophon-apology",
