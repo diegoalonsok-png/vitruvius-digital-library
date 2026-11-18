@@ -139,19 +139,35 @@ async function indexedPassages(e){
  }).then(j=>Array.isArray(j.passages)?j.passages:[]).catch(()=>[]));
  return indexedFiles.get(e.path);
 }
+// CTS editions encode the SAME section with different edition tokens
+// (perseus-grc2 / perseus-eng2). Pair only when namespace, work ID and
+// numeric book.chapter.section ALL coincide; never pair by row position.
+function sectionCtsKey(value){
+ const m=/^urn:cts:([a-z]+):((?:tlg|phi)\d+\.(?:tlg|phi)\d+)\.[a-z0-9-]+:(\d+(?:\.\d+)*)$/i.exec(String(value||"").trim());
+ return m?m[1].toLowerCase()+"|"+m[2].toLowerCase()+"|"+m[3]:null;
+}
 async function presentIndexed(entry,target,stamp){
  const e=indexedVersions.get(target);
  if(!e)return false;
  // Una edición declarada no es una traducción automática ni una alineación certificada.
  const paragraphs=await indexedPassages(e);
  if(stamp!==sequence||current!==entry||mode.value==="pdf")return true;
- const matched=paragraphs.find(p=>String(p.locus||"").trim()===String(entry.locus||"").trim()&&
- typeof (p.text||p.translation)==="string"&&(p.text||p.translation).trim());
+ const available=paragraphs.filter(p=>typeof (p.text||p.translation)==="string"&&(p.text||p.translation).trim());
+ let matched=available.find(p=>String(p.locus||"").trim()===String(entry.locus||"").trim());
+ let ctsSectionMatch=false;
+ if(!matched){
+  const wanted=sectionCtsKey(entry.locus);
+  if(wanted){
+   const candidates=available.filter(p=>sectionCtsKey(p.locus)===wanted);
+   // An ambiguous translation locus must never be declared aligned.
+   if(candidates.length===1){matched=candidates[0];ctsSectionMatch=true;}
+  }
+ }
  output.replaceChildren();
  if(matched){
   const para=el("p",null,matched.text||matched.translation);para.lang=target;
   output.append(para);
-  note.textContent="Traducción indexada: "+(e.sourceDescription||e.edition||"versión bibliográfica")+" · Locus coincidente "+entry.locus+". No es una traducción automática.";
+  note.textContent="Traducción indexada: "+(e.sourceDescription||e.edition||"versión bibliográfica")+" · "+(ctsSectionMatch?"Misma referencia de sección CTS entre ediciones: ":"Locus idéntico: ")+String(matched.locus||"")+". Sin alineación palabra a palabra ni cotejo crítico.";
  }else if(paragraphs.length){
   // Independent reading of a genuine human translation, not an invented locus alignment.
   const list=el("div","cl-indexed-edition-reading");
@@ -175,7 +191,7 @@ async function presentIndexed(entry,target,stamp){
   note.textContent="Verificá la disponibilidad del texto indexado.";
  }
  const a=el("a",null,"Consultar traducción indexada · "+target.toUpperCase()+" ↗");
- a.href=versionLink(e,matched?entry.locus:null);a.style.cssText="display:inline-block;margin:9px 0;color:#d5dde4;text-decoration:underline";
+ a.href=versionLink(e,matched?matched.locus:null);a.style.cssText="display:inline-block;margin:9px 0;color:#d5dde4;text-decoration:underline";
  output.append(a);
  return true;
 }
