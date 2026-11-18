@@ -1,6 +1,6 @@
 {
   "schema": "bibliotheca-classical-additions/1",
-  "date": "2026-11-16",
+  "date": "2026-11-17",
   "works": [
     {
       "id": "callimachus-hymni",
@@ -3815,6 +3815,99 @@
       "reading": {
         "url": "classics-text-reader.html?work=hippocrates-de-prisca-medicina&lang=grc",
         "status": "Texto original griego indexado en registro literal; cotejo de manuscritos y cobertura del índice invertido pendientes"
+      }
+    },
+    {
+      "id": "plato-parmenides",
+      "author": "Platón",
+      "title": "Παρμενίδης · Parménides",
+      "language": "grc",
+      "genre": "Diálogo filosófico",
+      "dating": "siglos V–IV a. C.",
+      "status": "Texto griego completo y traducción inglesa histórica incorporados al catálogo con loci Stephanus; indexación invertida pendiente de reconstrucción",
+      "textStatus": "registered-literal-searchable",
+      "source": "Perseus Digital Library · Platonis Opera (John Burnet (1910))",
+      "sourceUrl": "https://github.com/PerseusDL/canonical-greekLit/tree/master/data/tlg0059/tlg009",
+      "corpusFiles": {
+        "grc": "data/classics-corpus/plato-parmenides-grc.json",
+        "en": "data/classics-corpus/plato-parmenides-en.json"
+      },
+      "description": "41 secciones numeradas según paginación Stephanus; edición griega TEI de John Burnet (1910); traducción inglesa histórica de Harold North Fowler (1926). No se ha realizado una colación crítica propia ni traducción automática.",
+      "localVersions": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/plato-parmenides-grc.json"
+        },
+        {
+          "language": "en",
+          "path": "data/classics-corpus/plato-parmenides-en.json"
+        }
+      ],
+      "reading": {
+        "url": "classics-text-reader.html?work=plato-parmenides&lang=grc&to=en",
+        "status": "Texto griego completo con traducción inglesa indexada por secciones; la correspondencia no implica alineación por palabra."
+      }
+    },
+    {
+      "id": "plato-sophist",
+      "author": "Platón",
+      "title": "Σοφιστής · Sofista",
+      "language": "grc",
+      "genre": "Diálogo filosófico",
+      "dating": "siglos V–IV a. C.",
+      "status": "Texto griego completo y traducción inglesa histórica incorporados al catálogo con loci Stephanus; indexación invertida pendiente de reconstrucción",
+      "textStatus": "registered-literal-searchable",
+      "source": "Perseus Digital Library · Platonis Opera (John Burnet (1905))",
+      "sourceUrl": "https://github.com/PerseusDL/canonical-greekLit/tree/master/data/tlg0059/tlg007",
+      "corpusFiles": {
+        "grc": "data/classics-corpus/plato-sophist-grc.json",
+        "en": "data/classics-corpus/plato-sophist-en.json"
+      },
+      "description": "53 secciones numeradas según paginación Stephanus; edición griega TEI de John Burnet (1905); traducción inglesa histórica de Harold North Fowler (1921). No se ha realizado una colación crítica propia ni traducción automática.",
+      "localVersions": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/plato-sophist-grc.json"
+        },
+        {
+          "language": "en",
+          "path": "data/classics-corpus/plato-sophist-en.json"
+        }
+      ],
+      "reading": {
+        "url": "classics-text-reader.html?work=plato-sophist&lang=grc&to=en",
+        "status": "Texto griego completo con traducción inglesa indexada por secciones; la correspondencia no implica alineación por palabra."
+      }
+    },
+    {
+      "id": "plato-theaetetus",
+      "author": "Platón",
+      "title": "Θεαίτητος · Teeteto",
+      "language": "grc",
+      "genre": "Diálogo filosófico",
+      "dating": "siglos V–IV a. C.",
+      "status": "Texto griego completo y traducción inglesa histórica incorporados al catálogo con loci Stephanus; indexación invertida pendiente de reconstrucción",
+      "textStatus": "registered-literal-searchable",
+      "source": "Perseus Digital Library · Platonis Opera (John Burnet (1905))",
+      "sourceUrl": "https://github.com/PerseusDL/canonical-greekLit/tree/master/data/tlg0059/tlg006",
+      "corpusFiles": {
+        "grc": "data/classics-corpus/plato-theaetetus-grc.json",
+        "en": "data/classics-corpus/plato-theaetetus-en.json"
+      },
+      "description": "69 secciones numeradas según paginación Stephanus; edición griega TEI de John Burnet (1905); traducción inglesa histórica de Harold North Fowler (1921). No se ha realizado una colación crítica propia ni traducción automática.",
+      "localVersions": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/plato-theaetetus-grc.json"
+        },
+        {
+          "language": "en",
+          "path": "data/classics-corpus/plato-theaetetus-en.json"
+        }
+      ],
+      "reading": {
+        "url": "classics-text-reader.html?work=plato-theaetetus&lang=grc&to=en",
+        "status": "Texto griego completo con traducción inglesa indexada por secciones; la correspondencia no implica alineación por palabra."
       }
     }
   ]
