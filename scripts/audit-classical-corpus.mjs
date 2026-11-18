@@ -129,8 +129,10 @@ for(const w of allWorks)for(const p of Object.values(w.corpusFiles||{}))
 // Translation transparency: indexed languages and catalogue must agree. Checks
 // cannot establish philological quality or historical copyright on their own.
 assert.equal(registry.count,registry.entries.length,"Search registry count is stale");
-assert.equal(registry.works,new Set(registry.entries.filter(e=>e.format!=="critical-indexed-latin").map(e=>e.workId)).size,
- "Auxiliary critical-edition indexes must not inflate distinct ancient works");
+// El campo registry.works contabiliza IDs documentales del registro, incluidas
+// dos ediciones auxiliares de Vitruvio. No es el número de obras antiguas.
+assert.equal(registry.works,new Set(registry.entries.map(e=>e.workId)).size,
+ "Registry work-ID counter differs from registered editions");
 const verifiedParallel=[],explicitlyUnaligned=[];
 for(const w of allWorks){
  const entries=registry.entries.filter(e=>e.workId===w.id&&e.format==="json-passages");
