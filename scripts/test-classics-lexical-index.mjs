@@ -45,7 +45,7 @@ yes("las ediciones propias de Vitruvio están indexadas",
 group("Latín · la flexión encuentra la forma de diccionario");
 const before=requests;
 const symmetria=await Index.lookup("symmetria");
-yes("peticiones por consulta: catálogo, fragmento y manifiesto",requests-before<=3,"peticiones: "+(requests-before));
+yes("peticiones por consulta: catálogo y fragmentos de los índices",requests-before<=4,"peticiones: "+(requests-before));
 yes("symmetria aparece en el corpus",symmetria.total>0,"apariciones: "+symmetria.total+" en "+symmetria.works+" ediciones");
 yes("y aparece en el propio Vitruvio",symmetria.hits.some(h=>/^vitruvius-/.test(h.work.id)),
  "ediciones: "+symmetria.hits.map(h=>h.work.id+" ("+h.count+")").slice(0,4).join(", "));
@@ -70,7 +70,11 @@ yes("agrupa por lengua",dist.length>=1&&dist[0].language==="grc");
 yes("declara frecuencia por diez mil palabras",dist[0].per10k>0,"por 10k: "+dist[0].per10k);
 
 group("Concordancia verificada contra la edición");
-const kwic=await Index.concordance(logos,{works:2,perWork:3});
+// El lector de esta batería utiliza readFileSync: no debe intentar validar
+// como corpus local los objetos R2, cuya verificación requiere HTTP y SHA256.
+// Elegimos sólo obras alojadas y presentes en disco para cotejar la concordancia.
+const logosLocal={...logos,hits:logos.hits.filter(h=>!/^https:\/\//.test(h.work.file))};
+const kwic=await Index.concordance(logosLocal,{works:2,perWork:3});
 yes("devuelve líneas de concordancia",kwic.length>0,"líneas: "+kwic.length);
 yes("cada línea trae su locus",kwic.every(r=>typeof r.locus==="string"));
 yes("la coincidencia está en el texto real",kwic.every(r=>P.fold(r.hit).includes(logos.stem)||P.fold(r.left+r.hit+r.right).includes(logos.stem)),
