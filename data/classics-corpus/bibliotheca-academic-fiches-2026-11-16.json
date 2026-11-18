@@ -9507,6 +9507,11 @@
             "language": "grc",
             "reader": "classics-text-reader.html?work=aristotle-metaphysics&lang=grc",
             "source": "data/classics-corpus/aristotle-metaphysics-grc.json"
+          },
+          {
+            "language": "en",
+            "reader": "classics-text-reader.html?work=aristotle-metaphysics&lang=en",
+            "source": "data/classics-corpus/aristotle-metaphysics-en.json"
           }
         ]
       },
