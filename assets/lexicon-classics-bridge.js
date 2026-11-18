@@ -15,6 +15,8 @@ const button=document.createElement("button");button.type="button";button.textCo
 button.className="lx-library-button";
 const semantic=document.createElement("button");semantic.type="button";semantic.textContent="Buscar conceptos documentados";semantic.className="lx-library-button";
 const status=document.createElement("p");status.setAttribute("role","status");status.className="lx-library-status";
+const indexedTotals=document.createElement("section");indexedTotals.className="lx-indexed-work-totals";
+indexedTotals.setAttribute("aria-label","Libros con la palabra y sus recuentos");
 const list=document.createElement("div");list.className="lx-library-list";
 const controls=document.createElement("div");controls.className="lx-library-actions";controls.append(button,semantic);
 const translationLabel=document.createElement("label");translationLabel.className="lx-library-translation-label";
@@ -34,8 +36,10 @@ styles.textContent+="\n#lx-classics-bridge .lx-library-highlight .lx-library-wor
 parent.append(styles);
 const readerEvidence=document.createElement("section");readerEvidence.className="lx-reader-attestation";readerEvidence.hidden=true;
 readerEvidence.setAttribute("aria-label","Testimonio textual del lector de origen");
-parent.append(title,note,readerEvidence,controls,status,list);
+parent.append(title,note,readerEvidence,controls,status,indexedTotals,list);
 styles.textContent+="\\n#lx-classics-bridge .lx-reader-attestation{padding:14px 16px;margin:12px 0 16px;border:1px solid #8e826b;border-left:4px solid #d6b67e;border-radius:8px;background:#242322;color:#f5f2eb}#lx-classics-bridge .lx-reader-attestation h4{margin:0 0 8px;font:600 17px/1.4 Georgia,serif}#lx-classics-bridge .lx-reader-attestation p{margin:6px 0;font:14px/1.7 Georgia,serif}#lx-classics-bridge .lx-reader-attestation mark{background:#f5d46b;color:#211900;padding:1px 3px;border-radius:3px}#lx-classics-bridge .lx-reader-attestation a{color:#f1d094;margin-right:12px;font:12px/1.6 system-ui}#lx-classics-bridge .lx-reader-attestation small{font:12px/1.6 system-ui;color:#d0c9bb}";
+
+styles.textContent+=`#lx-classics-bridge .lx-indexed-work-totals{margin:13px 0 20px;padding:13px 0 19px;border-block:1px solid #45454a}#lx-classics-bridge .lx-indexed-work-totals h4{color:#e3e3e3;font:400 22px/1.35 "Gentium Book Plus",Georgia,serif;margin:0 0 6px}#lx-classics-bridge .lx-indexed-work-totals p{color:#a7a7ab;font:12px/1.55 system-ui;margin:0 0 9px}#lx-classics-bridge .lx-indexed-work-totals ol{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:0 20px}#lx-classics-bridge .lx-indexed-work-totals li{border-bottom:1px solid #333338}#lx-classics-bridge .lx-indexed-work-totals button{width:100%;display:flex;justify-content:space-between;gap:12px;align-items:baseline;text-align:left;background:transparent;border:0;color:#bcbcc1;padding:9px 0;cursor:pointer;font:14px/1.5 Georgia,serif}#lx-classics-bridge .lx-indexed-work-totals button:hover{color:#f4f4f4}#lx-classics-bridge .lx-indexed-work-totals .lx-indexed-count{white-space:nowrap;font:12px/1.5 system-ui;color:#a1a1a6}#lx-classics-bridge .lx-library-excerpt{color:#a6a6aa!important}#lx-classics-bridge .lx-library-excerpt mark.lx-library-highlight{color:#111!important}html[data-theme=light] #lx-classics-bridge .lx-indexed-work-totals h4{color:#252525}html[data-theme=light] #lx-classics-bridge .lx-indexed-work-totals button{color:#444}html[data-theme=light] #lx-classics-bridge .lx-library-excerpt{color:#535358!important}`;
 const grid=results.closest(".results-grid");
 if(grid)grid.parentNode.insertBefore(parent,grid);else results.parentNode.insertBefore(parent,results);
 let serial=0;
@@ -422,11 +426,44 @@ async function selectLibraryWork(workId){
   if(token===serial)status.textContent="No se pudieron recuperar todos los pasajes de esta obra: "+String(error.message||error);
  }finally{if(token===serial){button.disabled=false;semantic.disabled=false}}
 }
+/* The lexical index reports counts by edition, while the verified excerpts
+   beneath it cite actual source text. Root counts are not literal word counts. */
+async function showIndexedBookTotals(query,token){
+ indexedTotals.replaceChildren();
+ if(/\s/.test(query)||!/[\p{L}]/u.test(query))return;
+ const api=window.VitruviaClassicsIndex;
+ if(typeof api?.lookup!=="function")return;
+ try{
+  const result=await api.lookup(query,{translations:true});
+  if(token!==serial||input.value.trim()!==query)return;
+  const rows=(result?.hits||[]).filter(h=>h.work&&Number(h.count)>0);
+  if(!rows.length)return;
+  const heading=document.createElement("h4");
+  heading.textContent="Libros que contienen «"+query+"»";
+  const intro=document.createElement("p");
+  intro.textContent=rows.length+" ediciones con la raíz indexada. Recuentos por edición: pueden incluir formas flexionadas; los párrafos documentados aparecen a continuación.";
+  const ol=document.createElement("ol");
+  for(const hit of rows){
+   const li=document.createElement("li"),btn=document.createElement("button");
+   btn.type="button";
+   const label=document.createElement("span");
+   label.textContent=(hit.work.title||hit.work.id||"Obra")+" · "+(hit.language||hit.work.lang||"");
+   const count=document.createElement("span");
+   count.className="lx-indexed-count";
+   count.textContent=Number(hit.count).toLocaleString("es-AR")+" apariciones";
+   btn.append(label,count);btn.title="Ver los pasajes de esta obra";
+   btn.addEventListener("click",()=>{void selectLibraryWork(hit.work.id)});
+   li.append(btn);ol.append(li);
+  }
+  indexedTotals.append(heading,intro,ol);
+ }catch(error){if(token===serial)console.warn("Resumen léxico no disponible:",error)}
+}
 async function execute(mode="literal"){
- const q=input.value.trim(),token=++serial;list.replaceChildren();selectedWorkId="";currentLiteralRows=[];selectedLiteralRows=[];translationContext=null;currentQuery=q;
+ const q=input.value.trim(),token=++serial;list.replaceChildren();indexedTotals.replaceChildren();selectedWorkId="";currentLiteralRows=[];selectedLiteralRows=[];translationContext=null;currentQuery=q;
  if(!/[\p{L}]/u.test(q)){status.textContent="Escriba una palabra griega o latina para consultar los textos indexados.";return}
  if(!window.ClassicsCorpusSearch){status.textContent="El motor de textos clásicos no está disponible.";return}
  button.disabled=true;semantic.disabled=true;status.textContent="Buscando pasajes en las ediciones indexadas…";
+  if(mode==="literal")void showIndexedBookTotals(q,token);
  try{
   if(mode==="semantic"){
    const rows=await window.ClassicsCorpusSearch.semanticSearch(q,{limit:32});
@@ -520,7 +557,7 @@ button.addEventListener("click",()=>execute("literal"));
 semantic.addEventListener("click",()=>execute("semantic"));
 // Corpus complementario explícitamente bajo demanda: el buscador principal
 // no debe lanzar una segunda búsqueda exhaustiva de todas las ediciones.
-input.addEventListener("input",()=>{serial++;selectedWorkId="";currentLiteralRows=[];selectedLiteralRows=[];translationContext=null;currentQuery="";button.disabled=false;semantic.disabled=false;list.replaceChildren();status.textContent="Pulse «Buscar término en el corpus completo» para consultar el registro.";});
+input.addEventListener("input",()=>{serial++;indexedTotals.replaceChildren();selectedWorkId="";currentLiteralRows=[];selectedLiteralRows=[];translationContext=null;currentQuery="";button.disabled=false;semantic.disabled=false;list.replaceChildren();status.textContent="Pulse «Buscar término en el corpus completo» para consultar el registro.";});
 status.textContent="Consulta bajo demanda: no se cargan todas las ediciones al abrir Lexicon.";
 // Deep links with an actual term should produce attested corpus results automatically.
 // Delay until the parent Lexicon has populated its search control.
@@ -556,10 +593,11 @@ async function readerAttestation(){
 void readerAttestation();
 
 const initial=new URLSearchParams(location.search).get("q");
-if(false&&initial&&/[\p{L}]/u.test(initial.trim())){
- if(!input.value.trim())input.value=initial;
- execute("literal");
-}
+window.addEventListener("vitruvia:lexicon-search",event=>{
+ const detail=event.detail||{},term=String(detail.query||"").trim();
+ if(detail.mode!=="palabra"||!term||/\s/.test(term)||term!==input.value.trim())return;
+ void execute("literal");
+});
 /* Excepción explícita: con «orden=vitruvio» (enlaces desde los capítulos del
    Codex H) se lee primero Vitruvio y, a continuación, el resto de las obras
    clásicas. El bloque pasa debajo de los resultados vitruvianos y la búsqueda
@@ -567,7 +605,6 @@ if(false&&initial&&/[\p{L}]/u.test(initial.trim())){
 if(new URLSearchParams(location.search).get("orden")==="vitruvio"&&initial&&/[\p{L}]/u.test(initial.trim())){
  const after=grid||results;after.insertAdjacentElement("afterend",parent);
  title.textContent="Después de Vitruvio · el resto de las obras clásicas";
- let tries=0;const wait=()=>{if(results.children.length&&input.value.trim()){execute("literal");return}if(++tries<40)setTimeout(wait,250)};
- setTimeout(wait,400);
+ // The Lexicon search event starts the single full-corpus lookup.
 }
 })();
