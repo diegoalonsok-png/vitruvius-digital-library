@@ -22,9 +22,8 @@ assert.equal(registry.count, registry.entries.length);
 assert.equal(registry.entries.filter(p => p.workId === 'plato-republic' && p.language === 'grc').length, 1);
 assert.equal(registry.entries.filter(p => p.workId === 'plato-republic' && p.language === 'en').length, 1);
 const work = catalogue.works.find(w => w.id === 'plato-republic');
-assert.equal(work?.corpusFiles?.en, base + 'plato-republic-en.json');
-assert.equal(work?.corpusFiles?.grc, base + 'plato-republic-grc.json');
-assert.equal(work?.sourceRegistration?.translationHosted, true);
+assert.equal(work?.corpusFiles?.grc, base + 'plato-republic-grc.json', 'Original Greek file must remain linked in the protected catalogue');
+// Las nuevas traducciones se anuncian mediante el registro derivado; no modificar el catálogo madre.
 const fiche = fiches.records.find(w => w.workId === 'plato-republic');
 assert.ok(fiche?.textualIndex?.readers?.some(r => r.language === 'en' && r.source === base + 'plato-republic-en.json'));
 console.log('OK: griego intacto; 278 loci únicos con versión histórica inglesa; lector y catálogos sincronizados.');
