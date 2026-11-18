@@ -39,9 +39,9 @@ for(const id of importedIds){
     !Array.isArray(raw.passages)||raw.passages.length<5||raw.passages.some(p=>!p.locus||typeof p.text!=="string"||p.text.trim().length<2))throw Error("Edición incompleta o sin procedencia: "+id);
  const keys=raw.passages.map(p=>p.locus);
  if(new Set(keys).size!==keys.length)throw Error("Loci repetidos: "+id);
- if(!raw.alignment||!/not |no |no hay|no están|NOT /i.test(raw.alignment))throw Error("Falta aviso de alineación: "+id);
+ if(!raw.alignment||!/not |no |unverified|uncertified|sin alineaci[oó]n/i.test(raw.alignment))throw Error("Falta aviso de alineación: "+id);
 }
-const payload=JSON.stringify(out,null,2)+"\\n";
+const payload=JSON.stringify(out,null,2);
 if(process.argv.includes("--check")){
  const current=JSON.parse(readFileSync(reportFile,"utf8"));
  if(JSON.stringify(current)!==JSON.stringify(out))throw Error("Inventario griego desactualizado: regenerar sin --check");
