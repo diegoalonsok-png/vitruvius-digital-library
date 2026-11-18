@@ -640,10 +640,7 @@ apply();
 <script defer src="assets/critical-pages-integration.js?v=20261116-traducciones-v3"></script>
 
 <script defer src="assets/dossier-integrado-731.js?v=20261117-bude-bibliografia-v4"></script>
-<footer data-vdl-legal-notice="2026" role="contentinfo" aria-label="Derechos editoriales" style="box-sizing:border-box;display:block;clear:both;grid-column:1/-1;width:100%;margin:28px 0 0;padding:16px 18px;border-top:1px solid currentColor;text-align:center;font:12px/1.65 system-ui,sans-serif;color:inherit;background:transparent">
-<strong>© 2026 Editorial Sophia Lux · Arq. Diego Kurilo. Derechos reservados.</strong>
-<span style="opacity:.8">Los derechos sobre los materiales originales, el diseño y los aportes editoriales pertenecen a sus respectivos titulares. Los textos antiguos, facsímiles, imágenes y recursos de terceros conservan su situación jurídica y licencias propias.</span>
-</footer>
+
 
 <style id="ab-responsive-reader-handles">
 /* Typographic bibliography in the heel of each of the three historical readers. */
@@ -689,4 +686,9 @@ setWidths();
 document.querySelector('#ab-compare-height')?.addEventListener('change',e=>{const v=Number(e.target.value);if(v>0)texts.forEach((_,i)=>height(i,v));else texts.forEach(t=>{if(t)t.style.setProperty('--ab-pane-height','auto')})});
 document.querySelector('#ab-compare-reset')?.addEventListener('click',()=>{widths=[1,1,1];setWidths();texts.forEach((_,i)=>height(i,350))});
 })();
-</script></body></html>
+</script>
+<footer data-vdl-legal-notice="2026" role="contentinfo" aria-label="Derechos editoriales" style="box-sizing:border-box;display:block;clear:both;grid-column:1/-1;width:100%;margin:28px 0 0;padding:16px 18px;border-top:1px solid currentColor;text-align:center;font:12px/1.65 system-ui,sans-serif;color:inherit;background:transparent">
+<strong>© 2026 Editorial Sophia Lux · Arq. Diego Kurilo. Derechos reservados.</strong>
+<span style="opacity:.8">Los derechos sobre los materiales originales, el diseño y los aportes editoriales pertenecen a sus respectivos titulares. Los textos antiguos, facsímiles, imágenes y recursos de terceros conservan su situación jurídica y licencias propias.</span>
+</footer>
+</body></html>
