@@ -1,4 +1,4 @@
-/* Scriptorium: tres lectores independientes para Krohn, Kurilo y Rose.
+/* Scriptorium: colación latina fija Krohn 1912 · Rose 1899 · Kurilo V514.
 
    El OCR se identifica siempre como OCR. No se alinea por número de página,
    que no significa nada entre ediciones distintas, pero sí por la concordancia
@@ -10,9 +10,8 @@
 const root=document.getElementById("script-triple");
 if(!root)return;
 const initialParams=new URLSearchParams(location.search);
-const keyFor=id=>({"recensio-es":"kurilo","recensio-fr":"fr","theory-en":"en","krohn-1912":"krohn","rose-1899":"rose"})[id]||id;
-const requestedEditions=(initialParams.get("readers")||"").split(",");
-const primaryKey=keyFor(initialParams.get("edition"));
+// Los parámetros de enlaces antiguos no pueden sustituir una edición latina por una traducción.
+const COMPARISON_READERS=Object.freeze(["krohn","rose","kurilo"]);
 let stateReady=false,urlTimer=0;
 const editions={
  krohn:{name:"Krohn · 1912 · texto latino TEI",file:"data/critical-editions/krohn-1912-tei-loci.json",format:"structured",critical:true,pdf:"https://archive.org/download/vitruviidearchit00vitr_1/vitruviidearchit00vitr_1.pdf"},
@@ -220,11 +219,12 @@ const toolbar=document.createElement("div");toolbar.className="script-triple-syn
 const syncToggle=document.createElement("input");syncToggle.type="checkbox";syncToggle.checked=initialParams.get("sync")!=="0";
 const syncLabel=document.createElement("label");syncLabel.append(syncToggle,document.createTextNode(" Sincronizar los visores por locus"));
 const syncStatus=document.createElement("span");syncStatus.setAttribute("role","status");
-syncStatus.textContent="Krohn y Rose se leen por OCR de página. La semejanza calculada propone una localización; no certifica una lectura filológica.";
+syncStatus.textContent="Comparación latina de Krohn 1912 (TEI), Rose 1899 (transcripción indexada) y Kurilo V514; los PDF son documentación opcional, no texto OCR de cotejo.";
 const candidateToggle=document.createElement("input");candidateToggle.type="checkbox";candidateToggle.checked=true;
 const candidateLabel=document.createElement("label");
 candidateLabel.append(candidateToggle,document.createTextNode(" Llevar Krohn y Rose a la página concordante del locus"));
-candidateLabel.title="Usa la concordancia documentada por cotejo de trigramas; se indica su grado y no equivale a una colación verificada.";
+candidateLabel.title="Esta opción solo corresponde al lector OCR, no a los tres textos latinos indexados.";
+candidateLabel.hidden=true;
 /* Ir a un locus o a una palabra: los tres visores se colocan juntos. */
 const irBox=document.createElement("div");irBox.className="script-triple-ir";
 const irLocus=document.createElement("select");irLocus.setAttribute("aria-label","Elegir locus para sincronizar los tres visores");
@@ -237,7 +237,7 @@ loadEdition("kurilo").then(d=>{for(const p of d.pages)irLocus.append(new Option(
 let ultimaPalabra={q:"",i:-1};
 function irA(){
  const base=states.find(st=>st.editionId()==="kurilo"&&st.data)||states.find(st=>st.data?.ed.format==="structured");
- if(!base){syncStatus.textContent="Ningún visor tiene cargada una edición por loci (Kurilo V514, V554 o V297).";return}
+ if(!base){syncStatus.textContent="No hay texto latino indexado por locus disponible en los tres visores.";return}
  const q=irPalabra.value.trim();
  highlightTerm=q;
  let locus=irLocus.value;
@@ -269,7 +269,7 @@ for(const [label,value] of [["Praefatio I","1.praef.1"],["symmetria","symmetria"
  quick.append(button);
 }
 const layoutStatus=document.createElement("span");layoutStatus.className="script-triple-arrangement";layoutStatus.setAttribute("role","status");
-layoutStatus.textContent="Ordenar columnas con ← →; anchuras ajustables.";
+layoutStatus.textContent="Orden fijo: Krohn 1912 · Rose 1899 · Kurilo V514. Anchuras ajustables.";
 toolbar.append(irBox,quick,syncLabel,candidateLabel,syncStatus,layoutStatus);grid.before(toolbar);
 let highlightTerm=(initialParams.get("q")||"").trim().slice(0,80),widths=[1,1,1];
 function applyWidths(){grid.style.gridTemplateColumns=widths.map(v=>"minmax(0,"+v+"fr)").join(" ")}
@@ -402,12 +402,14 @@ function synchronize(source){
  }).catch(err=>{syncStatus.textContent="Concordancia de loci no disponible: "+err.message;});
 }
 
-for(const [slot,defaultKey] of ["krohn","kurilo","rose"].entries()){
+for(const [slot,defaultKey] of COMPARISON_READERS.entries()){
  const panel=document.createElement("section");panel.className="script-triple-pane";grid.append(panel);
- const title=document.createElement("h3");title.textContent=["I · Krohn","II · Kurilo","III · Rose"][slot];
+ const title=document.createElement("h3");title.textContent=["I · Krohn","II · Rose","III · Kurilo"][slot];
  const edition=document.createElement("select");edition.setAttribute("aria-label","Elegir edición del visor "+(slot+1));
- Object.entries(editions).forEach(([key,ed])=>{const o=document.createElement("option");o.value=key;o.textContent=ed.name;edition.append(o)});
- edition.value=editions[requestedEditions[slot]]?requestedEditions[slot]:(editions[primaryKey]&&((slot===1&&editions[primaryKey].format==="structured")||(slot===0&&primaryKey==="krohn")||(slot===2&&primaryKey==="rose"))?primaryKey:defaultKey);
+ // Cada columna usa una única fuente latina indexada; las traducciones siguen disponibles fuera de este cotejo.
+ const o=document.createElement("option");o.value=defaultKey;o.textContent=editions[defaultKey].name;edition.append(o);
+ edition.value=defaultKey;edition.disabled=true;
+ edition.title="Orden fijo de comparación latina: Krohn 1912, Rose 1899 y Kurilo V514";
  const ficha=document.createElement("p");ficha.className="script-triple-ficha";ficha.textContent=FICHA[defaultKey]||"";
  const head=document.createElement("div");head.className="script-triple-head";head.append(title,ficha,edition);panel.append(head);
  const editorialIds=document.createElement("div");editorialIds.className="script-triple-identifiers";editorialIds.setAttribute("aria-label","Identificación editorial de la edición");head.append(editorialIds);
@@ -439,12 +441,9 @@ for(const [slot,defaultKey] of ["krohn","kurilo","rose"].entries()){
  }
  void refreshEditorialIds();
 const arrange=document.createElement("div");arrange.className="script-triple-move";
-const left=document.createElement("button");left.type="button";left.textContent="←";left.title="Mover visor a la izquierda";
-const right=document.createElement("button");right.type="button";right.textContent="→";right.title="Mover visor a la derecha";
 const expand=document.createElement("button");expand.type="button";expand.textContent="⛶";expand.title="Ampliar este visor";
-left.addEventListener("click",()=>movePane(state,states.indexOf(state)-1));right.addEventListener("click",()=>movePane(state,states.indexOf(state)+1));
 expand.addEventListener("click",()=>{const active=panel.classList.contains("script-triple-expanded");states.forEach(x=>x.element.classList.remove("script-triple-expanded"));panel.classList.toggle("script-triple-expanded",!active);grid.classList.toggle("script-triple-focus",!active)});
-arrange.append(left,right,expand);head.append(arrange);
+arrange.append(expand);head.append(arrange);
  edition.addEventListener("change",()=>{ficha.textContent=FICHA[edition.value]||"";void refreshEditorialIds()});
  const bar=document.createElement("div");bar.className="script-triple-tools";
  const prev=document.createElement("button");prev.type="button";prev.textContent="←";
@@ -638,7 +637,7 @@ function underlineTerm(){
   view(){return view},
   context(){const item=data?.pages[index];return {editionId:edition.value,locus:data?.ed.format==="structured"?item?.locus:null,page:item?pageFor(item):null,pageEnd:resalte?.index===index?resalte.pageEnd:null,translation:translated,readerOnly:data?.ed.format==="ocr"}},
   editionId(){return edition.value},
-  selectEdition(id){if(!editions[id])return Promise.resolve();if(edition.value===id&&data)return Promise.resolve();edition.value=id;return load()},
+  selectEdition(id){if(id!==defaultKey)return Promise.resolve(false);if(edition.value===id&&data)return Promise.resolve(true);edition.value=id;return load()},
   focusReader(){panel.scrollIntoView({behavior:"smooth",block:"start"})},
   seek(i){index=i;show()},
   marcar(t,score,pageEnd){resalte={index,t,score,pageEnd};show()},
@@ -747,16 +746,19 @@ if(mainSource)mainSource.addEventListener("change",()=>{
  const key={"pdf:krohn":"krohn","pdf:rose-1899":"rose"}[mainSource.value];
  if(!key)return;
  const matching=states.find(st=>st.editionId()===key);
- (matching||states[key==="krohn"?0:2])?.selectEdition(key);
+ (matching||states[key==="krohn"?0:1])?.selectEdition(key);
 });
 window.ScriptTripleCompare={
  async compareEditorialLocus(locus){
-  await Promise.all([states[1].selectEdition("kurilo"),states[2].selectEdition("en")]);
-  if(!states[1].seekLocus(locus))return {ok:false,reason:"Locus no disponible en V514."};
-  const exact=states[2].seekLocus(locus),chapter=exact||states[2].seekChapter(locus);
-  synchronize(states[1]);savePosition();
-  const notice=exact?"Abierto "+locus+" en V514 y V297. Coincidencia de identificadores; cotejo editorial pendiente.":chapter?"V297 no tiene el identificador "+locus+". Se abre el capítulo correspondiente para comparar su segmentación, sin presumir una omisión.":"V297 no tiene un pasaje enlazable para "+locus+"; consultar manualmente su texto completo.";
-  if(!exact)states[2].explain(notice);
+  await Promise.all(states.map((state,i)=>state.selectEdition(COMPARISON_READERS[i])));
+  const found=states.map(state=>state.seekLocus(locus));
+  if(!found[2])return {ok:false,reason:"Locus no disponible en Kurilo V514."};
+  synchronize(states[2]);savePosition();
+  const missing=[!found[0]?"Krohn 1912":null,!found[1]?"Rose 1899":null].filter(Boolean);
+  const notice=missing.length
+   ?"Locus "+locus+" en Kurilo V514; falta concordancia indexada en "+missing.join(" y ")+". No se inventa ninguna lectura."
+   :"Locus "+locus+" abierto en Krohn 1912, Rose 1899 y Kurilo V514. Coincidencia de identificadores; cotejo filológico pendiente.";
+  if(missing.length)states[2].explain(notice);
   return {ok:true,notice};
  },
  jumpToLocus(locus){
