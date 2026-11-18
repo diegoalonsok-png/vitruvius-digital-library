@@ -194,7 +194,9 @@ function findLocusIndex(passages,requested){
   if(target.ref&&target.ref===candidate.ref&&(!target.work||!candidate.work||target.work===candidate.work))matches.push(index);
   else if(!target.ref&&target.raw===candidate.raw)matches.push(index);
  });
- return matches.length===1?matches[0]:-1;
+ // Una edición puede dividir una misma página de Stephanus en varias tarjetas.
+ // Si todas comparten obra y referencia, abrir la primera sin perder la sincronía.
+ return matches.length?matches[0]:-1;
 }
 const status=msg=>el("note").textContent=msg;
 const highlightSets={left:new Map(),right:new Map()},visibleText={left:"",right:""};
@@ -509,7 +511,8 @@ function draw(){
  paragraph("left-text",a?.text);
  const match=findLocusIndex(translation,locus);const exact=match>=0?translation[match]:null;
  el("right-head").textContent=(exact?"EDICIÓN ALOJADA · ":"TRADUCCIÓN AUTOMÁTICA · ")+(LANG[exact?rightLang:targetLang]||"TRADUCCIÓN")+" · "+locusCaption(locus);
- if(exact){paragraph("right-text",exact.text);status("Traducción histórica alojada; verificar procedencia editorial y equivalencia del locus.");budeUpdate("indexed",rightLang);}
+ if(exact){paragraph("right-text",exact.text);status("Traducción histórica alojada; ambas columnas corresponden al mismo locus, sin equivalencia palabra por palabra.");budeUpdate("indexed",rightLang);}
+ else if(translation.length){paragraph("right-text","Esta edición no tiene un pasaje documentado para el locus seleccionado.");status("Sin correspondencia exacta: no se sustituye silenciosamente la edición por traducción automática.");budeUpdate("indexed",rightLang);}
  else {budeUpdate("pending");void translateCurrent(token);}
  updatePassageGuide();el("previous").disabled=pos<=0;el("next").disabled=pos>=source.length-1;
  if(a?.locus){q.set("locus",a.locus);el("go-locus").value=displayLocus(a.locus);history.replaceState(null,"",location.pathname+"?"+q.toString());}
