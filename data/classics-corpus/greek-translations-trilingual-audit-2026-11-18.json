@@ -37,17 +37,17 @@
       "es": 0
     },
     "externalCandidates": {
-      "en": 6,
+      "en": 8,
       "fr": 65,
       "es": 51
     },
     "notYetVerified": {
-      "en": 130,
+      "en": 128,
       "fr": 146,
       "es": 160
     },
     "sourcesByLanguage": {
-      "en": 31,
+      "en": 39,
       "fr": 73,
       "es": 55
     },
@@ -1114,7 +1114,19 @@
         "en": {
           "status": "indexed-local",
           "localPath": "data/classics-corpus/aristotle-nicomachean-ethics-en.json",
-          "candidates": [],
+          "candidates": [
+            {
+              "status": "edition-page-verified",
+              "url": "https://www.gutenberg.org/ebooks/8438",
+              "translator": "D. P. Chase (edición histórica)",
+              "collection": null,
+              "note": "Traducción inglesa histórica. Confirmar edición de base y los diez libros al importar.",
+              "verifiedOn": "2026-11-18",
+              "indexedLocally": false,
+              "alignmentVerified": false,
+              "licenseReviewed": false
+            }
+          ],
           "translationImported": true,
           "sourceLanguage": "grc"
         },
@@ -3407,9 +3419,21 @@
       "originalLanguage": "grc",
       "editions": {
         "en": {
-          "status": "not-yet-verified",
+          "status": "external-candidate",
           "localPath": null,
-          "candidates": [],
+          "candidates": [
+            {
+              "status": "partial-translation-vol-1",
+              "url": "https://www.gutenberg.org/ebooks/2707",
+              "translator": "G. C. Macaulay",
+              "collection": null,
+              "note": "El eBook es volumen 1; no declarar la traducción completa de los 9 libros sin el volumen 2.",
+              "verifiedOn": "2026-11-18",
+              "indexedLocally": false,
+              "alignmentVerified": false,
+              "licenseReviewed": false
+            }
+          ],
           "translationImported": false,
           "sourceLanguage": "grc"
         },
@@ -3696,7 +3720,19 @@
         "en": {
           "status": "indexed-local",
           "localPath": "data/classics-corpus/homer-iliad-en.json",
-          "candidates": [],
+          "candidates": [
+            {
+              "status": "edition-page-verified",
+              "url": "https://www.gutenberg.org/ebooks/2199",
+              "translator": "Samuel Butler",
+              "collection": null,
+              "note": "Traducción inglesa histórica completa en prosa; cotejar cantos y licencia.",
+              "verifiedOn": "2026-11-18",
+              "indexedLocally": false,
+              "alignmentVerified": false,
+              "licenseReviewed": false
+            }
+          ],
           "translationImported": true,
           "sourceLanguage": "grc"
         },
@@ -3754,7 +3790,19 @@
         "en": {
           "status": "indexed-local",
           "localPath": "data/classics-corpus/homer-odyssey-en.json",
-          "candidates": [],
+          "candidates": [
+            {
+              "status": "edition-page-verified",
+              "url": "https://www.gutenberg.org/ebooks/1727",
+              "translator": "Samuel Butler",
+              "collection": null,
+              "note": "Traducción inglesa de 1900; cotejar 24 cantos.",
+              "verifiedOn": "2026-11-18",
+              "indexedLocally": false,
+              "alignmentVerified": false,
+              "licenseReviewed": false
+            }
+          ],
           "translationImported": true,
           "sourceLanguage": "grc"
         },
@@ -7989,7 +8037,19 @@
         "en": {
           "status": "indexed-local",
           "localPath": "data/classics-corpus/sophocles-antigone-en.json",
-          "candidates": [],
+          "candidates": [
+            {
+              "status": "collection-toc-verified",
+              "url": "https://www.gutenberg.org/ebooks/31",
+              "translator": null,
+              "collection": null,
+              "note": "Colección inglesa Plays of Sophocles: tres tragedias, dividir antes de indexar.",
+              "verifiedOn": "2026-11-18",
+              "indexedLocally": false,
+              "alignmentVerified": false,
+              "licenseReviewed": false
+            }
+          ],
           "translationImported": true,
           "sourceLanguage": "grc"
         },
@@ -8138,7 +8198,19 @@
         "en": {
           "status": "indexed-local",
           "localPath": "data/classics-corpus/sophocles-oedipus-en.json",
-          "candidates": [],
+          "candidates": [
+            {
+              "status": "collection-toc-verified",
+              "url": "https://www.gutenberg.org/ebooks/31",
+              "translator": null,
+              "collection": null,
+              "note": "Colección inglesa Plays of Sophocles, con Oedipus the King, Oedipus at Colonus y Antigone; separar cada tragedia.",
+              "verifiedOn": "2026-11-18",
+              "indexedLocally": false,
+              "alignmentVerified": false,
+              "licenseReviewed": false
+            }
+          ],
           "translationImported": true,
           "sourceLanguage": "grc"
         },
@@ -8196,7 +8268,19 @@
         "en": {
           "status": "indexed-local",
           "localPath": "data/classics-corpus/sophocles-oedipus-colonus-en.json",
-          "candidates": [],
+          "candidates": [
+            {
+              "status": "collection-toc-verified",
+              "url": "https://www.gutenberg.org/ebooks/31",
+              "translator": null,
+              "collection": null,
+              "note": "Colección inglesa Plays of Sophocles: tres tragedias, dividir antes de indexar.",
+              "verifiedOn": "2026-11-18",
+              "indexedLocally": false,
+              "alignmentVerified": false,
+              "licenseReviewed": false
+            }
+          ],
           "translationImported": true,
           "sourceLanguage": "grc"
         },
@@ -8688,9 +8772,21 @@
       "originalLanguage": "grc",
       "editions": {
         "en": {
-          "status": "not-yet-verified",
+          "status": "external-candidate",
           "localPath": null,
-          "candidates": [],
+          "candidates": [
+            {
+              "status": "edition-page-verified",
+              "url": "https://www.gutenberg.org/ebooks/1170",
+              "translator": "Henry Graham Dakyns",
+              "collection": null,
+              "note": "Traducción inglesa histórica de la Anábasis. Comprobar división en siete libros.",
+              "verifiedOn": "2026-11-18",
+              "indexedLocally": false,
+              "alignmentVerified": false,
+              "licenseReviewed": false
+            }
+          ],
           "translationImported": false,
           "sourceLanguage": "grc"
         },
