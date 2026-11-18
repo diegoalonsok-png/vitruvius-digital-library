@@ -7,14 +7,14 @@ on:
       - 'scripts/ingest-selected-classics-50.py'
       - 'data/classics-corpus/lote-50-fuentes-academicas-2026-11-16.json'
   schedule:
-    # 04:15 UTC = 01:15 Buenos Aires. El índice se publica por su propio flujo.
+    # 04:15 UTC = 01:15 Buenos Aires. Tandas de hasta ocho originales verificados; el índice se publica por su propio flujo.
     - cron: '15 4 * * *'
   workflow_dispatch:
     inputs:
       limite:
         description: 'Nuevos originales por tanda (0 = todos los pendientes, máximo 50)'
         required: false
-        default: '5'
+        default: '8'
 permissions:
   contents: write
 concurrency:
@@ -26,7 +26,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 35
     env:
-      LIMIT: ${{ github.event.inputs.limite || '5' }}
+      LIMIT: ${{ github.event.inputs.limite || '8' }}
     steps:
       - uses: actions/checkout@v4
         with:
