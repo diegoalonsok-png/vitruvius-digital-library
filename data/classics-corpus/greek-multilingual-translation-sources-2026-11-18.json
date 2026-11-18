@@ -13,11 +13,13 @@
     },
     "fr": {
       "not-yet-verified": 114,
-      "candidate-work-page": 97
+      "candidate-work-page": 93,
+      "readable-text-confirmed": 4
     },
     "es": {
       "not-yet-verified": 178,
-      "candidate-work-page": 33
+      "readable-text-confirmed": 2,
+      "candidate-work-page": 31
     }
   },
   "sourceAuthorPages": [
@@ -796,18 +798,28 @@
           "note": "No se identificó una edición de esta obra en las fuentes cotejadas; no implica inexistencia de traducciones."
         },
         "fr": {
-          "status": "candidate-work-page",
-          "url": "https://fr.wikisource.org/wiki/Les_Gu%C3%AApes",
+          "status": "readable-text-confirmed",
+          "url": "https://fr.wikisource.org/wiki/Les_Gu%C3%AApes_(trad._Eug%C3%A8ne_Talbot)",
           "source": "Wikisource FR",
-          "authorPage": "https://fr.wikisource.org/wiki/Auteur:Aristophane",
-          "note": "Enlace específico confirmado en el índice de obras de Wikisource; verificar si contiene texto completo, traductor, edición y licencia antes de importar."
+          "translator": "Eugène Talbot",
+          "editionYear": "1897",
+          "readableCharacters": 87352,
+          "fullTextScopeVerified": false,
+          "usageRightsChecked": false,
+          "locusAlignmentChecked": false,
+          "note": "Texto de traducción histórica legible y atribución observada; pendiente cotejo de integridad total, permisos de redistribución y correspondencia por loci para indexación en R2."
         },
         "es": {
-          "status": "candidate-work-page",
+          "status": "readable-text-confirmed",
           "url": "https://es.wikisource.org/wiki/Las_avispas",
           "source": "Wikisource ES",
-          "authorPage": "https://es.wikisource.org/wiki/Autor:Arist%C3%B3fanes",
-          "note": "Enlace específico confirmado en el índice de obras de Wikisource; verificar si contiene texto completo, traductor, edición y licencia antes de importar."
+          "translator": "Federico Baráibar (atribuido en catálogo de Wikisource)",
+          "editionYear": "edición histórica",
+          "readableCharacters": 81669,
+          "fullTextScopeVerified": false,
+          "usageRightsChecked": false,
+          "locusAlignmentChecked": false,
+          "note": "Texto de traducción histórica legible y atribución observada; pendiente cotejo de integridad total, permisos de redistribución y correspondencia por loci para indexación en R2."
         }
       }
     },
@@ -1746,11 +1758,16 @@
           "note": "Propuesta existente, no publicada ni fusionada."
         },
         "fr": {
-          "status": "candidate-work-page",
-          "url": "https://fr.wikisource.org/wiki/Andromaque_(Euripide)",
+          "status": "readable-text-confirmed",
+          "url": "https://fr.wikisource.org/wiki/Trag%C3%A9dies_(Euripide)/Traduction_Artaud/Andromaque",
           "source": "Wikisource FR",
-          "authorPage": "https://fr.wikisource.org/wiki/Auteur:Euripide",
-          "note": "Enlace específico confirmado en el índice de obras de Wikisource; verificar si contiene texto completo, traductor, edición y licencia antes de importar."
+          "translator": "Nicolas Louis Marie Artaud",
+          "editionYear": "1842",
+          "readableCharacters": 74492,
+          "fullTextScopeVerified": false,
+          "usageRightsChecked": false,
+          "locusAlignmentChecked": false,
+          "note": "Texto de traducción histórica legible y atribución observada; pendiente cotejo de integridad total, permisos de redistribución y correspondencia por loci para indexación en R2."
         },
         "es": {
           "status": "not-yet-verified",
@@ -4139,11 +4156,16 @@
           "note": "Propuesta existente, no publicada ni fusionada."
         },
         "fr": {
-          "status": "candidate-work-page",
-          "url": "https://fr.wikisource.org/wiki/Charmide",
+          "status": "readable-text-confirmed",
+          "url": "https://fr.wikisource.org/wiki/Charmide_(trad._Cousin)",
           "source": "Wikisource FR",
-          "authorPage": "https://fr.wikisource.org/wiki/Auteur:Platon",
-          "note": "Enlace específico confirmado en el índice de obras de Wikisource; verificar si contiene texto completo, traductor, edición y licencia antes de importar."
+          "translator": "Victor Cousin",
+          "editionYear": "siglo XIX",
+          "readableCharacters": 59095,
+          "fullTextScopeVerified": false,
+          "usageRightsChecked": false,
+          "locusAlignmentChecked": false,
+          "note": "Texto de traducción histórica legible y atribución observada; pendiente cotejo de integridad total, permisos de redistribución y correspondencia por loci para indexación en R2."
         },
         "es": {
           "status": "candidate-work-page",
@@ -4243,11 +4265,16 @@
           "note": "Enlace específico confirmado en el índice de obras de Wikisource; verificar si contiene texto completo, traductor, edición y licencia antes de importar."
         },
         "es": {
-          "status": "candidate-work-page",
-          "url": "https://es.wikisource.org/wiki/Eutifrón",
+          "status": "readable-text-confirmed",
+          "url": "https://es.wikisource.org/wiki/Eutifr%C3%B3n",
           "source": "Wikisource ES",
-          "authorPage": "https://es.wikisource.org/wiki/Autor:Plat%C3%B3n",
-          "note": "Enlace específico confirmado en el índice de obras de Wikisource; verificar si contiene texto completo, traductor, edición y licencia antes de importar."
+          "translator": "Patricio de Azcárate Corral",
+          "editionYear": "1871",
+          "readableCharacters": 48639,
+          "fullTextScopeVerified": false,
+          "usageRightsChecked": false,
+          "locusAlignmentChecked": false,
+          "note": "Texto de traducción histórica legible y atribución observada; pendiente cotejo de integridad total, permisos de redistribución y correspondencia por loci para indexación en R2."
         }
       }
     },
@@ -5134,11 +5161,16 @@
           "note": "Edición registrada; este inventario no vuelve a validar la alineación."
         },
         "fr": {
-          "status": "candidate-work-page",
-          "url": "https://fr.wikisource.org/wiki/Antigone_(Sophocle)",
+          "status": "readable-text-confirmed",
+          "url": "https://fr.wikisource.org/wiki/Trag%C3%A9dies_de_Sophocle_(Artaud)/Antigone",
           "source": "Wikisource FR",
-          "authorPage": "https://fr.wikisource.org/wiki/Auteur:Sophocle",
-          "note": "Enlace específico confirmado en el índice de obras de Wikisource; verificar si contiene texto completo, traductor, edición y licencia antes de importar."
+          "translator": "Nicolas Artaud",
+          "editionYear": "1859",
+          "readableCharacters": 92009,
+          "fullTextScopeVerified": false,
+          "usageRightsChecked": false,
+          "locusAlignmentChecked": false,
+          "note": "Texto de traducción histórica legible y atribución observada; pendiente cotejo de integridad total, permisos de redistribución y correspondencia por loci para indexación en R2."
         },
         "es": {
           "status": "candidate-work-page",
@@ -5843,5 +5875,6 @@
     "filesChecked": 786,
     "truncated": false,
     "originalsWithSourceUrn": 69
-  }
+  },
+  "verifiedReadableSamples": 6
 }
