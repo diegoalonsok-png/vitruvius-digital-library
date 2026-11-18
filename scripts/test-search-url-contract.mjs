@@ -72,6 +72,11 @@ assert(bridge.includes('["Leer locus en visor académico","classics-text-reader.
  "Lexicon must link exact original passages to the approved academic reader");
 assert(!bridge.includes('["Volver al pasaje","classics-simple-parallel.html?"'),
  "Old reader route reappeared in Lexicon exact-passage action");
+assert(!bridge.includes('new URL("classics-parallel-reader.html",location.href)'),
+ "Retired academic parallel reader must not appear in Lexicon translation links");
+assert(bridge.includes('comparison.searchParams.set("lang",row.language)')&&
+ bridge.includes('comparison.searchParams.set("to",language)'),
+ "Lexicon translation comparison must retain original and target languages in official reader");
 assert(workSearch.includes("lexiconWorkLink(w.id)"),
  "Bibliotheca must link indexed works to Lexicon with their work identifier");
 assert(bookPanel.includes('new URLSearchParams({work:workId,lang:"auto",mode:"palabra"})'),
