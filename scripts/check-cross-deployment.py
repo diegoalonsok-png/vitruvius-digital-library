@@ -83,7 +83,7 @@ def diagnostic_html_difference(path):
         def markers(html):
             match = re.search(r"scriptorium-triple[.]js(?:[?]v=[A-Za-z0-9_-]+)?", html)
             return {
-                "triple_script": match.group(1) if match else None,
+                "triple_script": match.group(0) if match else None,
                 "latin_triad_intro": "latín original indexado" in html and "Rose (1899" in html,
                 "legacy_ocr_intro": "se muestran como <strong>OCR sin corregir</strong>" in html,
             }
