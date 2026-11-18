@@ -124,9 +124,15 @@ try{
   assert.equal(await page.locator("#vitruvius-secondary-toolbar").count(),0);
   await page.locator("#ui-language").selectOption("en");
   assert.equal(await page.locator("html").getAttribute("lang"),"en");
-  const theme=page.locator("#theme");await theme.click();
+  const theme=page.locator("#theme");
+  const oldMode=await page.locator("html").getAttribute("data-theme");
+  const oldBackground=await page.evaluate(()=>getComputedStyle(document.body).backgroundColor);
+  await theme.click();
+  assert.notEqual(await page.locator("html").getAttribute("data-theme"),oldMode,"Vitruvia appearance button did not switch theme");
+  assert.notEqual(await page.evaluate(()=>getComputedStyle(document.body).backgroundColor),oldBackground,"Vitruvia background did not change");
   assert.match(await theme.getAttribute("aria-label"),/Switch to/);
   await theme.click();
+  assert.equal(await page.locator("html").getAttribute("data-theme"),oldMode,"Vitruvia appearance button not reversible");
   await page.locator("#ui-language").selectOption("fr");
   assert.match(await theme.getAttribute("aria-label"),/Activer/);
   console.log("PASS Vitruvia native language and palette controls");
