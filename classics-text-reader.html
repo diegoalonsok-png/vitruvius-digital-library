@@ -193,7 +193,7 @@ html[data-parallel-view="true"] #simple-pair-inline{display:none!important}
 <link rel="stylesheet" href="assets/lexicon-reader-scrollbars.css?v=20261110-grey-grip-v1">
 <link rel="stylesheet" href="assets/classics-lexical-popup.css?v=20261110-highlight-word-v3">
 <link rel="stylesheet" href="assets/classics-inline-parallel.css?v=20261115-swap-columns-v4">
-<link rel="stylesheet" href="assets/classics-reader-symmetry.css?v=20261118-compact-palette-v1">
+<link rel="stylesheet" href="assets/classics-reader-symmetry.css?v=20261118-viewer-only-color-v2">
 <link rel="stylesheet" href="assets/classics-academic-reader.css?v=20261117-neutral-labels-v1">
 <link rel="manifest" href="manifest.webmanifest"><link rel="apple-touch-icon" href="assets/app-icons/apple-touch-icon.png"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Vitruvius"><script defer src="assets/pwa.js?v=20261105-pwa-v1"></script>
 <script defer src="assets/site-bar.js?v=20261117-no-duplicate-aa-reader-v1"></script><link rel="canonical" href="https://vitruvius-digital-library.org/classics-text-reader">
@@ -342,12 +342,12 @@ html[data-parallel-view="true"] body.academic-reader .cl-source-column #passages
 <script defer src="assets/classical-lexicon.js?v=20261112-externo"></script><script defer src="assets/dictionary-everywhere.js?v=20261111-diccionario-v1"></script>
 <script defer src="assets/classics-lexical-popup.js?v=20261116-context-provenance-v1"></script>
 <script defer src="assets/classics-academic-reader.js?v=20261116-source-notes-v1"></script>
-<script defer src="assets/classics-text-reader.js?v=20261117-embedded-parallel-scroll-v1"></script>
+<script defer src="assets/classics-text-reader.js?v=20261118-viewer-only-color-v2"></script>
 
 
 <script defer src="assets/classics-passage-export.js?v=20261115-text-export-v1"></script>
 <script defer src="assets/classics-inline-parallel.js?v=20261117-neutral-links-v1"></script>
-<script defer src="assets/classics-reader-symmetry.js?v=20261118-compact-palette-v1"></script>
+<script defer src="assets/classics-reader-symmetry.js?v=20261118-viewer-only-color-v2"></script>
 <script defer src="assets/classics-reader-annotations.js?v=20261114-source-v3"></script>
 <script defer src="assets/classics-translation-annotations.js?v=20261114-bude-1"></script>
 <script>
@@ -768,6 +768,33 @@ html[data-reader-page-theme="custom"] body.academic-reader mark{
  html[data-reader-page-theme="custom"] body.academic-reader,
  html[data-reader-page-theme="custom"] body.academic-reader :is(main,aside,.reader,.reader-grid,#passages,.cl-source-column,.cl-translation-column){
  background:#fff!important;color:#111!important;
+ }
+}
+</style>
+
+<style id="cl-viewer-only-colors-20261118">
+/* Como el visor simple: tintas y fondo solo en las dos superficies de texto.
+   No se modifican menus, botones, interfaz, facsimiles ni resaltados. */
+html:not([data-parallel-view="true"]):not([data-reading-mode="simple"]) body.academic-reader .reader{
+ background:#111112!important;color:var(--fg,#e3e3e4)!important;
+}
+html:not([data-parallel-view="true"]):not([data-reading-mode="simple"]) body.academic-reader .cl-dual-reader:not(.cl-pdf-mode){
+ background:var(--reader-bg,#18191b)!important;color:var(--reader-fg,#e5e5e5)!important;
+}
+html:not([data-parallel-view="true"]):not([data-reading-mode="simple"]) body.academic-reader .cl-dual-reader:not(.cl-pdf-mode)>.cl-source-column,
+html:not([data-parallel-view="true"]):not([data-reading-mode="simple"]) body.academic-reader .cl-dual-reader:not(.cl-pdf-mode)>.cl-translation-column{
+ background:var(--reader-bg,#18191b)!important;color:var(--reader-fg,#e5e5e5)!important;
+}
+html:not([data-parallel-view="true"]):not([data-reading-mode="simple"]) body.academic-reader .cl-dual-reader:not(.cl-pdf-mode) #passages,
+html:not([data-parallel-view="true"]):not([data-reading-mode="simple"]) body.academic-reader .cl-dual-reader:not(.cl-pdf-mode) #passages p,
+html:not([data-parallel-view="true"]):not([data-reading-mode="simple"]) body.academic-reader .cl-dual-reader:not(.cl-pdf-mode) .cl-translation-output,
+html:not([data-parallel-view="true"]):not([data-reading-mode="simple"]) body.academic-reader .cl-dual-reader:not(.cl-pdf-mode) .cl-translation-output p:not(.cl-caution){
+ background:transparent!important;color:var(--reader-fg,#e5e5e5)!important;
+}
+@media print{
+ html body.academic-reader .cl-dual-reader,
+ html body.academic-reader .cl-dual-reader :is(.cl-source-column,.cl-translation-column,#passages,.cl-translation-output){
+  background:#fff!important;color:#111!important;
  }
 }
 </style>

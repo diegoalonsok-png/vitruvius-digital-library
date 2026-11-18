@@ -284,7 +284,7 @@ html:not([data-parallel-view="true"]):not([data-reading-mode="simple"]) body.aca
   flex:0 0 23px!important;width:23px!important;height:23px!important;
   min-width:23px!important;min-height:23px!important;max-height:23px!important;
   padding:0!important;border:2px solid #777!important;border-radius:50%!important;
-  background:var(--cl-palette-sample)!important;color:transparent!important;
+  background:var(--cl-palette-sample)!important;background-image:none!important;color:transparent!important;
   -webkit-text-fill-color:transparent!important;box-shadow:none!important;
   cursor:pointer;
 }

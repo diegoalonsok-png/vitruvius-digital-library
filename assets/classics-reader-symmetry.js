@@ -61,11 +61,11 @@ function init(){
     palette.setAttribute("aria-label","Color del fondo y de la letra en ambos visores");
     const groups=[
       ["Fondo","bg",[
-        ["Grafito","#18191b","#e5e5e5"],["Negro","#101011","#e5e5e5"],
+        ["Gris","#303030","#f2f2f3"],["Negro","#151515","#f2f2f3"],
         ["Sepia","#493e34","#fff0d7"],["Marfil","#f1e9db","#252525"],
         ["Azul","#293d50","#f5f5f5"]]],
       ["Letra","fg",[
-        ["Blanco","#e5e5e5"],["Crema","#fff0d7"],["Negro","#252525"],
+        ["Blanco","#f2f2f3"],["Marfil","#fff0d7"],["Negro","#252525"],
         ["Azul claro","#b9e0ff"],["Amarillo","#ffe5a0"]]]
     ];
     for(const [label,kind,choices] of groups){
@@ -75,6 +75,8 @@ function init(){
         const button=document.createElement("button");button.type="button";
         button.className="cl-compact-palette-dot";
         button.style.setProperty("--cl-palette-sample",color);
+        // Mantener el color real aun frente a estilos globales de botones.
+        button.style.setProperty("background",color,"important");
         button.title=label+" · "+title;
         button.setAttribute("aria-label",label+" "+title+" en ambos visores");
         button.setAttribute("aria-pressed","false");
