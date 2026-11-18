@@ -50,3 +50,11 @@ jobs:
           sleep 2
           node scripts/test-secondary-controls-browser.mjs
           node scripts/test-full-language-color-browser.mjs
+      - name: Verificar controles publicados en GitHub Pages
+        env:
+          BASE: https://diegoalonsok-png.github.io/vitruvius-digital-library/
+        run: node scripts/test-full-language-color-browser.mjs
+      - name: Verificar controles publicados en Cloudflare
+        env:
+          BASE: https://vitruvius-digital-library.org/
+        run: node scripts/test-full-language-color-browser.mjs
