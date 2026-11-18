@@ -5,10 +5,10 @@
   "method": "Registered local versions only; no existence, locus alignment, translation completeness or licensing audit is implied. Remote R2 OCR and bilingual PDFs are not counted as verified parallel text.",
   "summary": {
     "greekWorks": 211,
-    "withExistingModernVersion": 47,
-    "withoutRegisteredModernVersion": 164,
+    "withExistingModernVersion": 49,
+    "withoutRegisteredModernVersion": 162,
     "registeredByLanguage": {
-      "en": 47,
+      "en": 49,
       "es": 0,
       "fr": 0
     }
@@ -2223,9 +2223,14 @@
         "path": "data/classics-corpus/plato-ion-grc.json",
         "source": "Perseus DL TEI · Platonis Opera, Tomus III: Tetralogia V-VII. Burnet, John, editor. Oxford: Clarendon Press, 1903. · CC BY-SA 4.0; original sin cotejo independiente"
       },
-      "translations": {},
-      "status": "needs-edited-translation",
-      "preferredExisting": null,
+      "translations": {
+        "en": {
+          "path": "data/classics-corpus/plato-ion-en.json",
+          "source": "Traducción histórica de William Rangeley Maitland Lamb (1925), Perseus TEI, CC BY-SA 4.0. Segmentos Stephanus sin alineación automática con el griego."
+        }
+      },
+      "status": "has-registered-translation",
+      "preferredExisting": "en",
       "alignmentVerified": false
     },
     {
@@ -2275,9 +2280,14 @@
         "path": "data/classics-corpus/plato-menexenus-grc.json",
         "source": "Perseus DL TEI · Platonis Opera, Tomus III: Tetralogia V-VII. Burnet, John, editor. Oxford: Clarendon Press, 1903. · CC BY-SA 4.0; original sin cotejo independiente"
       },
-      "translations": {},
-      "status": "needs-edited-translation",
-      "preferredExisting": null,
+      "translations": {
+        "en": {
+          "path": "data/classics-corpus/plato-menexenus-en.json",
+          "source": "Traducción histórica de Robert Gregg Bury (1929), Perseus TEI, CC BY-SA 4.0. Segmentos Stephanus sin alineación automática con el griego."
+        }
+      },
+      "status": "has-registered-translation",
+      "preferredExisting": "en",
       "alignmentVerified": false
     },
     {
