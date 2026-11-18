@@ -40,7 +40,8 @@ def verify():
     master_editions = [e for e in registry["entries"] if e["workId"] in by_id]
     assert len(registry["entries"]) == registry["count"]
     assert len(master_editions) == audit["counts"]["indexedTextVersions"]
-    assert len(counted) == registry["works"]
+    assert len({e["workId"] for e in registry["entries"]
+                if e["format"] != "critical-indexed-latin"}) == registry["works"]
     assert len({e["workId"] for e in master_editions}) == coverage["totals"]["locallyIndexedWorks"]
     assert coverage["totals"]["translatedWorksLocal"] == sum(
         bool(w["translationLanguages"]) for w in coverage["works"]
