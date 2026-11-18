@@ -1,25 +1,37 @@
-name: Bibliotheca · candado de traducciones históricas de Platón
+name: Bibliotheca · traducciones griegas sincronizadas
 on:
   pull_request:
     paths:
       - 'data/classics-corpus/plato-republic-*.json'
       - 'data/classics-corpus/plato-laws-*.json'
+      - 'data/classics-corpus/xenophon-anabasis-*.json'
+      - 'classics-parallel-reader.html'
+      - 'classics-simple-parallel.html'
+      - 'assets/classics-academic-reader.js'
       - 'data/classics-corpus/search-registry.json'
       - 'data/bibliotheca-graeca-latina-I-bce-I-ce.json'
       - 'data/classics-corpus/bibliotheca-academic-fiches-2026-11-16.json'
       - 'scripts/test-greek-republic-translation.mjs'
       - 'scripts/test-greek-laws-translation.mjs'
+      - 'scripts/test-greek-translation-pairing.mjs'
+      - 'scripts/test-greek-parallel-browser.mjs'
       - '.github/workflows/greek-republic-translation.yml'
   push:
     branches: [main]
     paths:
       - 'data/classics-corpus/plato-republic-*.json'
       - 'data/classics-corpus/plato-laws-*.json'
+      - 'data/classics-corpus/xenophon-anabasis-*.json'
+      - 'classics-parallel-reader.html'
+      - 'classics-simple-parallel.html'
+      - 'assets/classics-academic-reader.js'
       - 'data/classics-corpus/search-registry.json'
       - 'data/bibliotheca-graeca-latina-I-bce-I-ce.json'
       - 'data/classics-corpus/bibliotheca-academic-fiches-2026-11-16.json'
       - 'scripts/test-greek-republic-translation.mjs'
       - 'scripts/test-greek-laws-translation.mjs'
+      - 'scripts/test-greek-translation-pairing.mjs'
+      - 'scripts/test-greek-parallel-browser.mjs'
       - '.github/workflows/greek-republic-translation.yml'
   workflow_dispatch:
 permissions:
@@ -37,3 +49,21 @@ jobs:
         run: |
           node scripts/test-greek-republic-translation.mjs
           node scripts/test-greek-laws-translation.mjs
+          node scripts/test-greek-translation-pairing.mjs
+  browser-symmetry:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Instalación de navegador
+        run: |
+          npm install --no-save playwright@1.56.1
+          npx playwright install --with-deps chromium
+      - name: Probar navegación griego-inglés en Chromium
+        run: |
+          python3 -m http.server 8768 --bind 127.0.0.1 > /tmp/vdl-greek-parallel-http.log 2>&1 &
+          sleep 2
+          node scripts/test-greek-parallel-browser.mjs
