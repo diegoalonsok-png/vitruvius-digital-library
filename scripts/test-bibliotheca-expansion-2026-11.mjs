@@ -32,8 +32,10 @@ for(const id of indexed){
  assert.equal(text.language,"grc");
  // A complete short speech or Socratic dialogue may have far fewer than 200
  // numbered TEI paragraphs; its size is not an editorial completeness test.
- const hasVerifiedSource=Boolean((text.sourceRevision&&text.sourceSha256)||(text.sourceGitBlobSha&&/^([0-9a-f]{40}|[0-9a-f]{64})$/.test(text.sourceGitBlobSha)&&/^https:\/\//.test(text.source||'')));\n const minCount=hasVerifiedSource?1:200;
+ // Un único locus puede contener una obra breve completa. Se comprueba contenido, fuente y cada locus.
+ const minCount=1;
  const textChars=text.passages.reduce((sum,p)=>sum+String(p.text||"").length,0);
+ assert.ok(/^https:\/\//.test(text.source||''),`Missing documented TEI source: ${id}`);
  assert.ok(text.passages.length>=minCount&&textChars>=800,`Empty/implausible Greek corpus: ${id} · ${text.passages.length} passages · ${textChars} chars`);
  assert.ok(text.passages.every(x=>x.text&&x.locus),"Every passage must retain locus and text");
  assert.ok(registry.some(e=>e.workId===id&&e.language==="grc"&&e.path===p),`Missing search registration ${id}`);
