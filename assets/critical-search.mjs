@@ -67,10 +67,10 @@ async function compareLocus(locus){
  panel.hidden=false;panel.replaceChildren();
  const title=document.createElement('h2');title.textContent='Cotejo paralelo latino · '+(canonicalLocus(locus)||locus);panel.append(title);
  const note=document.createElement('p');note.className='source-note';
- note.textContent='Tres textos latinos del mismo locus: Krohn (1912), Kurilo y Rose (1899). Los tramos históricos del índice proceden de OCR alineado automáticamente; requieren cotejo contra la edición impresa antes de afirmar variantes.';
+ note.textContent='Tres textos latinos del mismo locus: Rose (1899), Krohn (1912) y Kurilo. Los tramos históricos del índice proceden de OCR alineado automáticamente; requieren cotejo contra la edición impresa antes de afirmar variantes.';
  panel.append(note);
  const grid=document.createElement('div');grid.className='critical-parallel';panel.append(grid);
- const versions=[['Krohn · 1912','krohn-1912'],['Kurilo · latín','kurilo'],['Rose · 1899','rose-1899']];
+ const versions=[['Rose · 1899','rose-1899'],['Krohn · 1912','krohn-1912'],['Kurilo · latín','kurilo']];
  const cells=versions.map(([label])=>{
   const card=document.createElement('article');card.className='critical-parallel-edition';
   const heading=document.createElement('h3');heading.textContent=label;card.append(heading);
@@ -89,15 +89,15 @@ async function compareLocus(locus){
    (reference&&Number(p.book)===Number(reference.book)&&String(p.chapter)===String(reference.chapter)&&
     Number(reference.section)>=Number(p.section)&&Number(reference.section)<=Number(p.section_end||p.section)));
   const contents=[
+   record?.['rose-1899']?.text,
    record?.['krohn-1912']?.text,
-   passage?.latin,
-   record?.['rose-1899']?.text
+   passage?.latin
   ];
   contents.forEach((value,i)=>{
    cells[i].textContent=value&&String(value).trim()?String(value).trim():
     'No hay un texto vinculado con seguridad a este locus en el índice consultado.';
   });
-  for(const i of [0,2]){
+  for(const i of [0,1]){
    const item=record?.[versions[i][1]];
    if(!item)continue;
    const metadata=document.createElement('p');metadata.className='source-note';
