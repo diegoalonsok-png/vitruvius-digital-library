@@ -54,59 +54,61 @@ async function appendKrohnComparison(sources,latin){
    const link=document.createElement('a');link.href='https://archive.org/details/vitruviidearchit00vitr/page/n'+Math.max(0,p.page-1)+'/mode/1up';link.target='_blank';link.rel='noopener noreferrer';link.textContent='Abrir esta página del facsímil de Krohn';details.append(link);section.append(details);}
  }catch(error){status.textContent='No se pudo consultar el OCR de Krohn: '+error.message;}
 }
-let collatedLociPromise=null;
-async function getCollatedLoci(){
- if(!collatedLociPromise)collatedLociPromise=fetch('data/collation-loci.json')
-  .then(r=>{if(!r.ok)throw new Error('No se pudo abrir el cotejo por locus');return r.json()})
-  .catch(e=>{collatedLociPromise=null;throw e});
- return collatedLociPromise;
+const criticalLatinSources={
+ rose:{url:'data/critical-editions/rose-1899-transcribed-loci.json',label:'Rose · 1899'},
+ krohn:{url:'data/critical-editions/krohn-1912-tei-loci.json',label:'Krohn · 1912'}
+};
+const criticalLatinCache=new Map();
+async function loadCriticalLatin(id){
+ const source=criticalLatinSources[id];
+ if(!source)throw Error('Edición crítica desconocida');
+ if(!criticalLatinCache.has(id)){
+  criticalLatinCache.set(id,fetch(source.url).then(r=>{
+   if(!r.ok)throw Error('No se pudo cargar '+source.label);
+   return r.json();
+  }).catch(err=>{criticalLatinCache.delete(id);throw err}));
+ }
+ return criticalLatinCache.get(id);
 }
 async function compareLocus(locus){
  const compareId=++compareRevision;
  const panel=$('#critical-comparison');if(!panel)return;
  panel.hidden=false;panel.replaceChildren();
- const title=document.createElement('h2');title.textContent='Cotejo paralelo latino · '+(canonicalLocus(locus)||locus);panel.append(title);
+ const canonical=canonicalLocus(locus)||locus;
+ const title=document.createElement('h2');title.textContent='Cotejo paralelo latino · '+canonical;panel.append(title);
  const note=document.createElement('p');note.className='source-note';
- note.textContent='Tres textos latinos del mismo locus: Rose (1899), Krohn (1912) y Kurilo. Los tramos históricos del índice proceden de OCR alineado automáticamente; requieren cotejo contra la edición impresa antes de afirmar variantes.';
+ note.textContent='Tres ediciones latinas sincronizadas por locus: Rose (1899), Krohn (1912) y Kurilo. Rose es transcripción digital y Krohn texto TEI; la correspondencia entre versiones es por referencia canónica, no constituye colación de manuscritos.';
  panel.append(note);
  const grid=document.createElement('div');grid.className='critical-parallel';panel.append(grid);
- const versions=[['Rose · 1899','rose-1899'],['Krohn · 1912','krohn-1912'],['Kurilo · latín','kurilo']];
+ const versions=[['Rose · 1899','rose'],['Krohn · 1912','krohn'],['Kurilo · latín','kurilo']];
  const cells=versions.map(([label])=>{
   const card=document.createElement('article');card.className='critical-parallel-edition';
   const heading=document.createElement('h3');heading.textContent=label;card.append(heading);
   const para=document.createElement('p');para.lang='la';para.className='critical-latin-text';
-  para.textContent='Cargando texto…';card.append(para);grid.append(card);return para;
+  para.textContent='Cargando texto indexado…';card.append(para);grid.append(card);return para;
  });
- const reference=parseLocus(locus);
+ const ref=parseLocus(canonical);
+ const sameLocus=p=>p.locus===canonical||p.locus===locus||
+  (ref&&Number(p.book)===Number(ref.book)&&String(p.chapter)===String(ref.chapter)&&
+   Number(ref.section)>=Number(p.section)&&Number(ref.section)<=Number(p.section_end||p.section));
  try{
-  const [historical,kurilo]=await Promise.all([getCollatedLoci(),getCorpus(editions[0])]);
+  const datasets=await Promise.allSettled([loadCriticalLatin('rose'),loadCriticalLatin('krohn'),getCorpus(editions[0])]);
   if(compareId!==compareRevision)return;
-  const standardized=canonicalLocus(locus)||locus;
-  const candidates=[standardized,String(locus),reference?(reference.book+'.'+reference.chapter+'.'+reference.section):''];
-  const foundKey=candidates.find(key=>historical.loci&&Object.hasOwn(historical.loci,key));
-  const record=foundKey?historical.loci[foundKey]:null;
-  const passage=kurilo.passages.find(p=>p.locus===locus||p.locus===standardized||
-   (reference&&Number(p.book)===Number(reference.book)&&String(p.chapter)===String(reference.chapter)&&
-    Number(reference.section)>=Number(p.section)&&Number(reference.section)<=Number(p.section_end||p.section)));
-  const contents=[
-   record?.['rose-1899']?.text,
-   record?.['krohn-1912']?.text,
-   passage?.latin
-  ];
-  contents.forEach((value,i)=>{
-   cells[i].textContent=value&&String(value).trim()?String(value).trim():
-    'No hay un texto vinculado con seguridad a este locus en el índice consultado.';
+  datasets.forEach((res,i)=>{
+   if(res.status!=='fulfilled'){
+    cells[i].textContent='No se pudo cargar la edición: '+res.reason?.message;return;
+   }
+   const passage=(res.value.passages||[]).find(sameLocus);
+   cells[i].textContent=passage?.latin?.trim()||'Este locus no está disponible en la edición indexada.';
+   if(i<2&&passage){
+    const metadata=document.createElement('p');metadata.className='source-note';
+    metadata.textContent=i===0?'Rose 1899 · transcripción digital indexada':'Krohn 1912 · edición TEI indexada';
+    cells[i].parentElement.append(metadata);
+   }
   });
-  for(const i of [0,1]){
-   const item=record?.[versions[i][1]];
-   if(!item)continue;
-   const metadata=document.createElement('p');metadata.className='source-note';
-   metadata.textContent='Transcripción OCR alineada · coincidencia automática '+Math.round((Number(item.score)||0)*100)+' % · no constituye variante verificada';
-   cells[i].parentElement.append(metadata);
-  }
  }catch(error){
   if(compareId!==compareRevision)return;
-  cells.forEach(p=>{p.textContent='No se pudo recuperar el texto indexado: '+error.message});
+  cells.forEach(p=>p.textContent='No se pudo consultar el texto indexado: '+error.message);
  }
  panel.scrollIntoView({block:'start',behavior:'smooth'});
 }
