@@ -20,6 +20,10 @@ on:
     paths:
       - '.github/workflows/bibliotheca-reader-lexical-smoke.yml'
       - 'scripts/smoke-bibliotheca-lexical.mjs'
+      - 'scripts/test-academic-greek-parallel-browser.mjs'
+      - 'assets/classics-inline-parallel.js'
+      - 'data/classics-corpus/aristotle-rhetoric-en.json'
+      - 'data/classics-corpus/strabo-en.json'
       - 'assets/classics-text-reader.js'
       - 'assets/bibliotheca-federated-status.js'
   workflow_dispatch:
@@ -54,5 +58,7 @@ jobs:
           node scripts/test-r2-busqueda-clasicos.mjs
           node scripts/test-bibliotheca-semantic-index-usage.mjs
           node scripts/test-classics-reader-search.mjs
+      - name: Probar en Chromium el mismo locus griego-inglés en el visor académico
+        run: node scripts/test-academic-greek-parallel-browser.mjs
       - name: Navegar obras y ejecutar búsquedas latinas y griegas en Chromium
         run: node scripts/smoke-bibliotheca-lexical.mjs
