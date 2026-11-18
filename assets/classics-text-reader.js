@@ -26,9 +26,11 @@ function refreshLexiconShortcut(rec){
  full.searchParams.set("lang",["la","grc"].includes(data?.language)?data.language:"auto");
  if(selectedWord&&selectedWord.length<=160)full.searchParams.set("q",selectedWord);
  // Lexicon can inspect the exact original locus when it has a literal lemma query.
- if(rec?.locus&&["la","grc"].includes(data?.language))full.searchParams.set("locus",rec.locus);
+ if(selectedWord&&rec?.locus&&["la","grc"].includes(data?.language))full.searchParams.set("locus",rec.locus);
  lexiconShortcut.href=full.pathname+full.search;
+ lexiconShortcut.textContent=selectedWord?"Analizar en Lexicon · "+selectedWord.slice(0,36):"Explorar vocabulario de esta obra en Lexicon";
 }
+input?.addEventListener("input",()=>refreshLexiconShortcut(data?.passages?.[active]));
 const searchMode=$("search-mode");
 if(searchMode)searchMode.value=p.get("expanded")==="1"?"lexical":"literal";
 input.value=p.get("q")||"";
