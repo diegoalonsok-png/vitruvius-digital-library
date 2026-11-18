@@ -1,0 +1,83 @@
+name: Bibliotheca - sincronizar corpus griego latino GitHub a R2 (SHA)
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/sync-classics-local-r2.yml'
+  schedule:
+    - cron: '37 7 * * *'
+  workflow_dispatch:
+    inputs:
+      limite:
+        description: 'Archivos de corpus por tanda (1-40)'
+        default: '10'
+permissions:
+  contents: write
+concurrency:
+  group: vdl-source-corpus-safe-r2-sync
+  cancel-in-progress: false
+jobs:
+  sync:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Validar sintaxis y dependencias de subida
+        run: |
+          python -m py_compile scripts/sync-classics-local-to-r2.py
+          python -m pip install --disable-pip-version-check "boto3>=1.35,<2"
+      - name: Comprobar que R2 esté configurado
+        shell: bash
+        env:
+          R2_ACCOUNT_ID: ${{ secrets.R2_ACCOUNT_ID }}
+          R2_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
+          R2_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
+          R2_BUCKET: ${{ secrets.R2_BUCKET }}
+        run: |
+          for key in R2_ACCOUNT_ID R2_ACCESS_KEY_ID R2_SECRET_ACCESS_KEY R2_BUCKET; do
+            if [ -z "${!key}" ]; then
+              echo "::error::La credencial $key no está disponible. No se publicará un falso certificado de R2."
+              exit 1
+            fi
+          done
+      - name: Sincronizar originales y traducciones indexadas sin sobrescribir objetos
+        env:
+          R2_ACCOUNT_ID: ${{ secrets.R2_ACCOUNT_ID }}
+          R2_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
+          R2_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
+          R2_BUCKET: ${{ secrets.R2_BUCKET }}
+          LIMITE: ${{ inputs.limite || '10' }}
+        run: python scripts/sync-classics-local-to-r2.py --limit "$LIMITE"
+      - name: Publicar sólo el reporte de certificados de R2 en GitHub
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/r2/classics-local-r2-sync.json
+          if git diff --cached --quiet; then
+            echo "Sin novedades verificadas; no se modifican fichas ni lectores."
+            exit 0
+          fi
+          git commit -m "R2: registrar textos clásicos comprobados por SHA-256"
+          git fetch origin main
+          git rebase origin/main
+          git push origin HEAD:main
+      - name: Informe final
+        if: always()
+        shell: bash
+        run: |
+          if [ -f data/r2/classics-local-r2-sync.json ]; then
+            python - <<'PY'
+          import json, os
+          with open("data/r2/classics-local-r2-sync.json",encoding="utf-8") as f: d=json.load(f)
+          with open(os.environ["GITHUB_STEP_SUMMARY"],"a") as f:
+              f.write(f"R2: {len(d['objects'])} objetos públicos con SHA-256 comprobado.\n")
+          PY
+          fi
