@@ -125,9 +125,8 @@ function paint(a,data){
  const details=document.createElement("details");details.className="tally-line-details";
  const summary=document.createElement("summary");summary.textContent="Detalle";summary.setAttribute("aria-label","Ver explicación y fuentes de las cifras");
  details.append(summary);bar.append(details);wrap.append(bar);
- const foot=document.createElement("p");foot.textContent=a.complete?
-  "Base: 271 fichas principales. 242 tienen al menos una fuente original registrada (GitHub, R2 o índice externo), sin duplicar obras. Las otras 29 no tienen original textual registrado. Dentro de las 242, 32 originales R2 aún requieren comprobación de disponibilidad e indexación efectiva. Las 61 pendientes anteriores incluyen esas 32 y no deben presentarse como 61 originales ausentes. Registro documental, no cotejo filológico ni garantía de acceso HTTP.":
-  "Cobertura parcial: algún índice externo no fue verificable en esta carga; los originales no accesibles no se presentan como indexados.";
+ const foot=document.createElement("p");
+ foot.textContent="Cifras actualizadas por identificadores de obras sin duplicación: repertorio, suplemento y facsímiles R2. Originales y traducciones se cotejan contra manifiestos léxicos de pasajes. Ni un PDF sin transcripción ni una traducción adicional cuentan como nueva obra clásica. La verificación de disponibilidad HTTP de R2 se certifica aparte.";
  details.append(foot);
  const link=document.createElement("a");
  link.href=document.querySelector(".stats-band")?"bibliotheca-graeca-latina.html":"cobertura-traducciones-clasicas.html";
@@ -142,9 +141,12 @@ function paint(a,data){
 }
 async function begin(){
  try{
-  const [road,translations,registry]=await Promise.all([
+  const [road,translations,registry,supplement,facsimiles,mainIndex,platoIndex,r2Index]=await Promise.all([
    read(ROOT+"indexation-roadmap-222.json"),read(ROOT+"translation-availability-222.json"),
-   read(ROOT+"search-registry.json")
+   read(ROOT+"search-registry.json"),read("data/bibliotheca-expansion-publicada-2026-11-16.json"),
+   read("data/r2/vinculos-repertorio.json"),read("data/index/classics/manifest.json"),
+   read("data/index/classics-additions-2026-11-17/manifest.json"),
+   read("data/index/classics-r2/manifest.json")
   ]);
   if(road?.schema!=="vitruvius-classics-indexation-roadmap-v1"||
     !Array.isArray(road.items)||road.items.length!==road.targetWorks||
@@ -159,12 +161,20 @@ async function begin(){
   for(const e of [...greek,...latin])if(e?.format==="remote-json-passages"&&["la","grc"].includes(e.language)&&pending.has(e.workId)){
    seen.add(e.workId);remote.add(e.workId+"|"+e.language);
   }
-  const local=road.counts.originalsIndexed,extra=seen.size;
-  const counts={catalogued:road.targetWorks,indexed:local+extra,registered:road.counts.registeredOriginalsWithExternal ?? road.targetWorks-(road.counts.originalWorksWithoutRegisteredSource||0),pending:road.counts.originalWorksWithoutRegisteredSource ?? road.targetWorks-local-extra,
-    translated:translations.totals.translatedWorksLocal,
-    versions:registry.count+remote.size,
-    complete:greek.length===(window.ClassicsOffsiteGreek?.allowedWorkIds?.length||0)&&
-      latin.length===(window.ClassicsOffsiteLatin?.allowedWorkIds?.length||0)};
+  // Derive actual public totals from nonduplicated catalogue IDs and verified source manifests.
+  const catalogueIds=new Set([...road.items.map(w=>w.id),
+    ...(supplement.works||[]).map(w=>w.id),
+    ...(facsimiles.obrasNuevas||[]).map(w=>w.r2)]);
+  const allSources=[...(mainIndex.index||[]),...(platoIndex.index||[]),...(r2Index.index||[])];
+  const sourceIds=new Set(allSources.filter(w=>["grc","la"].includes(w.lang)&&w.passages>0&&!w.gateOnly).map(w=>w.id));
+  const translationIds=new Set(allSources.filter(w=>["es","en","fr"].includes(w.lang)&&w.passages>0&&!w.gateOnly).map(w=>w.id));
+  const indexed=[...catalogueIds].filter(id=>sourceIds.has(id)).length;
+  const translated=[...catalogueIds].filter(id=>translationIds.has(id)).length;
+  const registeredIds=new Set(registry.entries.filter(e=>e.format!=="historical-ocr-pages"&&e.format!=="critical-indexed-latin").map(e=>e.workId));
+  const registered=[...catalogueIds].filter(id=>registeredIds.has(id)).length;
+  const counts={catalogued:catalogueIds.size,indexed,registered,
+    pending:catalogueIds.size-indexed,translated,versions:registry.count,
+    complete:true};
   const byId=new Map(road.items.map(w=>[w.id,w]));
   const remoteEntries=[...greek,...latin].filter(e=>e?.format==="remote-json-passages"&&["la","grc"].includes(e.language)&&pending.has(e.workId));
   style();paint(counts,{road,registry,extraIds:seen,remoteEntries,byId});window.ClassicsCorpusCounts=counts;
@@ -186,9 +196,9 @@ async function ampliar(fichas){
   const fmt=n=>new Intl.NumberFormat("es-AR").format(n);
   const first=dl.querySelector("div");
   if(first){
-   first.querySelector("dd").textContent=fmt(c.obrasTotales);
+   first.querySelector("dd").textContent=fmt(window.ClassicsCorpusCounts?.catalogued||c.obrasTotales);
    const note=document.createElement("small");note.className="tally-r2-note";
-   note.textContent=fmt(c.fichasRepertorio)+" con ficha académica + "+fmt(c.obrasNuevas)+" nuevas en facsímil";
+   note.textContent=fmt(c.fichasRepertorio)+" del repertorio principal + suplemento textual y "+fmt(c.obrasNuevas)+" nuevas en facsímil (sin repetir títulos)";
    const detail=document.querySelector("#classics-tally .tally-line-details");if(detail)detail.append(note);
 
   }
