@@ -342,12 +342,37 @@ const I18N={
 "Fondo":["Background","Fond"],"Lengua: auto":["Language: auto","Langue : auto"],"Latín":["Latin","Latin"],"Griego":["Greek","Grec"],"Hebreo":["Hebrew","Hébreu"],"Castellano (etimología)":["Spanish (etymology)","Espagnol (étymologie)"],"Inglés (etimología)":["English (etymology)","Anglais (étymologie)"],"Francés (etimología)":["French (etymology)","Français (étymologie)"],"Alemán (etimología)":["German (etymology)","Allemand (étymologie)"]
 };
 const MODE_I18N={grupo:["Several words at once, in any language (Latin, Greek, Spanish, English, French, German): masonry mason builder · faber structor τέκτων. Each term is resolved to its ancient lemmas; you get a table per term and a combined concordance. +word: required in the passage; -word: excluded.","Plusieurs mots à la fois, dans n'importe quelle langue (latin, grec, espagnol, anglais, français, allemand) : maçon bâtisseur · faber structor τέκτων. Chaque terme est ramené à ses lemmes anciens ; on obtient un tableau par terme et une concordance conjointe. +mot : obligatoire ; -mot : exclu."],palabra:["Word entry: lemma, morphology, senses, etymology, attested forms, distribution by author and concordance. Accepts inflected forms, transliteration (anthropos → ἄνθρωπος), wildcards (aedi*) and approximation (~simetria).","Fiche lexicale : lemme, morphologie, sens, étymologie, formes attestées, distribution par auteur et concordance. Accepte formes fléchies, translittération (anthropos → ἄνθρωπος), jokers (aedi*) et approximation (~simetria)."],lema:["All inflected forms of a lemma: @domus, @λόγος.","Toutes les formes fléchies d'un lemme : @domus, @λόγος."],etimologia:["Etymology and etymological tree; PIE roots, Old Latin, Greek, Hebrew and loanwords.","Étymologie et arbre étymologique ; racines indo-européennes, latin archaïque, grec, hébreu et emprunts."],frase:["Exact phrases and formulas: \"firmitatis utilitatis venustatis\". A ..3 B (B up to three words after A); A NEAR/5 B (any order).","Phrases et formules exactes : « firmitatis utilitatis venustatis ». A ..3 B ; A NEAR/5 B (ordre libre)."],sintaxis:["Morphosyntactic patterns (Greek, automatic analysis): [mood=ptc case=gen] [case=gen]. Latin: lemmas and forms with distance (@facio ..2 @opus).","Motifs morphosyntaxiques (grec, analyse automatique) : [mood=ptc case=gen] [case=gen]. Latin : lemmes et formes avec distance (@facio ..2 @opus)."],paralelos:["Loci paralleli: passages sharing the most significant lemmas, weighted by rarity (TF-IDF).","Loci paralleli : passages partageant le plus de lemmes significatifs, pondérés par leur rareté (TF-IDF)."],analizar:["Word-by-word analysis: lemma, morphology, gloss and corpus frequency; interlinear view and TEI export.","Analyse mot à mot : lemme, morphologie, glose et fréquence ; vue interlinéaire et export TEI."],sententiae:["Ancient phrasebook: famous sentences with canonical reference, translation, syntax notes and corpus verification.","Recueil antique : sentences célèbres avec référence canonique, traduction, notes syntaxiques et vérification dans le corpus."]};
-function T(es){const i=S.ui==="en"?0:S.ui==="fr"?1:-1;return i<0?es:(I18N[es]?.[i]??es)}
+const LX_UI_EXTRA={
+ "Biblioteca de clásicos":["Classical library","Bibliothèque classique"],
+ "Laboratorium · investigación":["Research laboratory","Laboratoire de recherche"],
+ "Escrituras antiguas":["Ancient scripts","Écritures anciennes"],
+ "Papiros y óstraca · Lupas e IA":["Papyri and ostraca · Magnifiers and AI","Papyrus et ostraca · Loupes et IA"],
+ "Diccionarios integrados":["Integrated dictionaries","Dictionnaires intégrés"],
+ "Protocolo académico y fuentes":["Academic protocol and sources","Protocole académique et sources"],
+ "Grafías áticas, laconias y macedonias":["Attic, Laconian and Macedonian scripts","Graphies attiques, laconiennes et macédoniennes"],
+ "Search Greek and Latin originals with documented English, Spanish and French translations, where available. Shared loci do not prove textual alignment.":["Search Greek and Latin originals with documented English, Spanish and French translations, where available. Shared loci do not prove textual alignment.","Rechercher les originaux grecs et latins et leurs traductions documentées en anglais, espagnol et français, lorsqu’elles existent. Un locus commun ne prouve pas l’alignement textuel."],
+ "Buscador exclusivo de léxico, sintaxis y frases del mundo antiguo. Consulta palabras griegas y latinas —con su lema, morfología, acepciones y etimología, el latín clásico y el griego antiguo.":["Dedicated search for ancient vocabulary, syntax, and expressions. Explore Greek and Latin words, lemmas, morphology, meanings and etymology.","Moteur consacré au lexique, à la syntaxe et aux expressions antiques. Explorez le grec et le latin, les lemmes, la morphologie, les sens et l’étymologie."],
+ "Ver todos los pasajes de esta obra":["View all passages from this work","Voir tous les passages de cette œuvre"],
+ "Otras ediciones de esta obra":["Other editions of this work","Autres éditions de cette œuvre"],
+ "Copiar referencia y pasaje":["Copy reference and passage","Copier la référence et le passage"],
+ "Buscar en esta edición":["Search this edition","Chercher dans cette édition"],
+ "Origen y significado":["Origin and meaning","Origine et sens"]
+};
+function T(es){const i=S.ui==="en"?0:S.ui==="fr"?1:-1;return i<0?es:((I18N[es]||LX_UI_EXTRA[es])?.[i]??es)}
 function applyUI(){
  for(const e of document.querySelectorAll("[data-i18n]")){if(!e.dataset.es)e.dataset.es=e.textContent.trim();e.textContent=T(e.dataset.es)}
  for(const e of document.querySelectorAll("#lx-lang option,#lx-work option[value=''],#lx-order option,#lx-tabs .tab,.lx-options label")){/* textos con nodos mixtos */
   const tn=[...e.childNodes].find(n=>n.nodeType===3&&n.textContent.trim());if(!tn)continue;if(!e.dataset.es)e.dataset.es=tn.textContent.trim();tn.textContent=(e.matches(".lx-options label")?" ":"")+T(e.dataset.es)}
+ // Translate known interface-only labels; never rewrite source passages, citations, or scholarly text.
+ for(const e of document.querySelectorAll(".navlinks a:not([data-i18n]),.featured-reading-list a:not([data-i18n]),.lx-controls button:not([data-i18n])")){
+  if(e.children.length)continue;
+  if(!e.dataset.lxOriginalUi)e.dataset.lxOriginalUi=e.textContent.trim();
+  const original=e.dataset.lxOriginalUi;
+  e.textContent=T(original);
+ }
  document.documentElement.setAttribute("data-ui-lang",S.ui);
+ document.documentElement.lang=S.ui;
+ document.dispatchEvent(new CustomEvent("vitruvius:language-changed",{detail:{language:S.ui,origin:"lexicon"}}));
  renderTabs();
 }
 
