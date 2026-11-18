@@ -42,6 +42,8 @@ jobs:
         run: node scripts/refresh-classics-public-counts.mjs
       - name: Check new works are indexed at source-locus granularity
         run: node scripts/check-classics-new-index.mjs
+      - name: Probar cobertura de textos originales y traducciones incorporadas
+        run: node scripts/check-registered-originals-translations-indexed.mjs
       - name: Check literal phrases in Latin and polytonic Greek
         run: node scripts/test-classical-phrase-matching.mjs
       - name: Commit regenerated indexes without editing source books
