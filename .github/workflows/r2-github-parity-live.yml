@@ -1,0 +1,52 @@
+name: GitHub ↔ R2 · simetría real de textos y archivos
+on:
+  pull_request:
+    paths:
+      - 'scripts/check-r2-github-live-parity.py'
+      - 'scripts/check-cross-deployment.py'
+      - '.github/workflows/r2-github-parity-live.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/check-r2-github-live-parity.py'
+      - 'scripts/check-cross-deployment.py'
+      - '.github/workflows/r2-github-parity-live.yml'
+      - 'data/r2/corpus-manifest.json'
+      - 'data/index/classics-r2/manifest.json'
+      - 'data/classics-corpus/search-registry.json'
+      - 'data/r2/catalogo-clasicos-r2.json'
+  schedule:
+    - cron: '23 12 * * 3'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  parity:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Revisar sintaxis de las auditorías sin OCR
+        run: |
+          python -m py_compile scripts/check-cross-deployment.py scripts/check-r2-github-live-parity.py
+          python - <<'PY'
+          import re
+          text = '<script defer src="assets/scriptorium-triple.js?v=triada-latina-v1"></script>'
+          found = re.search(r"scriptorium-triple[.]js(?:[?]v=[A-Za-z0-9_-]+)?", text)
+          assert found and found.group(0).endswith("triada-latina-v1")
+          PY
+      - name: Comparar textos originales R2 por SHA256, idioma y loci; PDF por HEAD
+        run: python scripts/check-r2-github-live-parity.py
+      - name: Conservar diagnóstico aunque falle un objeto R2
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: auditoria-simetria-r2-github
+          path: reports/deployment/r2-github-live-parity.json
+          if-no-files-found: warn
+          retention-days: 30
