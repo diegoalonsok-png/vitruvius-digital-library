@@ -15,4 +15,10 @@ assert.match(src,/currentLiteralRows=progress\.rows\.slice\(0,160\)/,"Incrementa
 assert.match(src,/showLiteralRows\(currentLiteralRows,currentEditions\)/,"Show matched source paragraphs below the work list");
 assert.match(src,/if\(token!==serial\|\|!progress\?\.rows\?\.length\)return/,"Stale searches must not overwrite current results");
 assert.match(src,/if\(!currentEditions\.length\)currentEditions=await registeredEditions\(\)/,"Translation metadata must be fetched when selecting an indexed work immediately");
+assert.match(src,/function markedOriginalPassage\(node,row\)/,"Original paragraph must render inline");
+assert.match(src,/if\(!markedOriginalPassage\(excerpt,row\)\)markedExcerpt/,"Full source text must be preferred to snippet");
+assert.match(src,/word\.className="lx-library-word"/,"Exact words must be dictionary controls");
+assert.match(src,/attachWordDictionary\(excerpt,card,row\)/,"Dictionary must open inside Lexicon");
+assert.match(src,/word\.dataset\.word=hit\.text/,"Dictionary must receive the attested source word");
+assert.match(src,/background:#f2d46b/,"Matched classical words must be visibly yellow");
 console.log("PASS Lexicon: indexed works select source-matched loci, verified paragraphs stream below counts.");
