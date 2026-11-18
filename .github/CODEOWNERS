@@ -1,0 +1,4 @@
+# Cambios sensibles: revisión del propietario.
+# Activar protección de la rama main con revisión CODEOWNERS obligatoria
+# y los checks de este workflow requeridos para que el candado bloquee merges.
+* @diegoalonsok-png
