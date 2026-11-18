@@ -306,3 +306,32 @@ html:not([data-parallel-view="true"]):not([data-reading-mode="simple"]) body.aca
  }
 }
 @media print{.cl-compact-palette{display:none!important}}
+
+
+/* Dos acabados editoriales en el hueco de la paleta: sin segunda fila. */
+html:not([data-parallel-view="true"]):not([data-reading-mode="simple"]) body.academic-reader
+.cl-unified-reading-actions .cl-compact-paper-buttons{
+ display:inline-flex;flex:0 0 auto;align-items:center;gap:5px;
+ height:30px;max-height:30px;white-space:nowrap;
+ border-left:1px solid #656569;margin-left:9px;padding-left:10px;
+}
+html:not([data-parallel-view="true"]):not([data-reading-mode="simple"]) body.academic-reader
+.cl-unified-reading-actions .cl-compact-paper-buttons button.cl-paper-style-button{
+ display:inline-flex!important;align-items:center!important;justify-content:center!important;
+ width:auto!important;min-width:0!important;height:29px!important;min-height:29px!important;
+ max-height:29px!important;flex:0 0 auto!important;
+ padding:4px 9px!important;border:1px solid #777!important;
+ border-radius:7px!important;background:#343436!important;color:#ecebed!important;
+ -webkit-text-fill-color:#ecebed!important;box-shadow:none!important;
+ font:500 12px/1.2 system-ui,sans-serif!important;cursor:pointer;
+}
+html:not([data-parallel-view="true"]):not([data-reading-mode="simple"]) body.academic-reader
+.cl-unified-reading-actions .cl-compact-paper-buttons button.cl-paper-style-button[aria-pressed="true"]{
+ background:#e7dfd1!important;color:#2a2926!important;
+ -webkit-text-fill-color:#2a2926!important;border-color:#d6b77e!important;
+ box-shadow:inset 0 0 0 1px #bba67e!important;
+}
+html:not([data-parallel-view="true"]):not([data-reading-mode="simple"]) body.academic-reader
+.cl-unified-reading-actions .cl-compact-paper-buttons button.cl-paper-style-button:focus-visible{
+ outline:2px solid #e7ca8e!important;outline-offset:2px!important;
+}

@@ -193,7 +193,7 @@ html[data-parallel-view="true"] #simple-pair-inline{display:none!important}
 <link rel="stylesheet" href="assets/lexicon-reader-scrollbars.css?v=20261110-grey-grip-v1">
 <link rel="stylesheet" href="assets/classics-lexical-popup.css?v=20261110-highlight-word-v3">
 <link rel="stylesheet" href="assets/classics-inline-parallel.css?v=20261115-swap-columns-v4">
-<link rel="stylesheet" href="assets/classics-reader-symmetry.css?v=20261118-viewer-only-color-v2">
+<link rel="stylesheet" href="assets/classics-reader-symmetry.css?v=20261118-paper-crema-canson-v1">
 <link rel="stylesheet" href="assets/classics-academic-reader.css?v=20261117-neutral-labels-v1">
 <link rel="manifest" href="manifest.webmanifest"><link rel="apple-touch-icon" href="assets/app-icons/apple-touch-icon.png"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Vitruvius"><script defer src="assets/pwa.js?v=20261105-pwa-v1"></script>
 <script defer src="assets/site-bar.js?v=20261117-no-duplicate-aa-reader-v1"></script><link rel="canonical" href="https://vitruvius-digital-library.org/classics-text-reader">
@@ -347,7 +347,7 @@ html[data-parallel-view="true"] body.academic-reader .cl-source-column #passages
 
 <script defer src="assets/classics-passage-export.js?v=20261115-text-export-v1"></script>
 <script defer src="assets/classics-inline-parallel.js?v=20261117-neutral-links-v1"></script>
-<script defer src="assets/classics-reader-symmetry.js?v=20261118-viewer-only-color-v2"></script>
+<script defer src="assets/classics-reader-symmetry.js?v=20261118-paper-crema-canson-v1"></script>
 <script defer src="assets/classics-reader-annotations.js?v=20261114-source-v3"></script>
 <script defer src="assets/classics-translation-annotations.js?v=20261114-bude-1"></script>
 <script>
@@ -794,6 +794,43 @@ html:not([data-parallel-view="true"]):not([data-reading-mode="simple"]) body.aca
 @media print{
  html body.academic-reader .cl-dual-reader,
  html body.academic-reader .cl-dual-reader :is(.cl-source-column,.cl-translation-column,#passages,.cl-translation-output){
+  background:#fff!important;color:#111!important;
+ }
+}
+</style>
+
+<style id="vdl-academic-paper-textures-20261118">
+/* Reutilización exacta de las dos texturas CSS del visor simplificado.
+   Solo los cuerpos de los dos visores (sin barras, encabezados ni PDF). */
+html:not([data-parallel-view="true"]) body.academic-reader
+.cl-dual-reader[data-paper-style="canson"]>.cl-source-column,
+html:not([data-parallel-view="true"]) body.academic-reader
+.cl-dual-reader[data-paper-style="canson"]>.cl-translation-column:not(.cl-pdf-mode){
+ background-color:#f0e9dd!important;
+ background-image:radial-gradient(ellipse at 18% 24%,rgba(255,255,255,.15),transparent 62%),radial-gradient(circle at 2px 3px,rgba(105,87,63,.028) .35px,transparent .9px),radial-gradient(circle at 8px 7px,rgba(255,255,255,.22) .4px,transparent 1px),repeating-linear-gradient(112deg,rgba(110,93,70,.007) 0px,transparent 1px,transparent 12px)!important;
+ background-size:100% 100%,13px 17px,19px 23px,100% 100%!important;
+ color:#292a28!important;
+}
+html:not([data-parallel-view="true"]) body.academic-reader
+.cl-dual-reader[data-paper-style="cream"]>.cl-source-column,
+html:not([data-parallel-view="true"]) body.academic-reader
+.cl-dual-reader[data-paper-style="cream"]>.cl-translation-column:not(.cl-pdf-mode){
+ background-color:#f5eedf!important;
+ background-image:radial-gradient(ellipse at 12% 16%,rgba(255,255,255,.21),transparent 68%),radial-gradient(circle at 3px 6px,rgba(108,88,61,.012) .35px,transparent 1px),linear-gradient(120deg,rgba(255,255,255,.06),rgba(158,133,94,.014))!important;
+ background-size:100% 100%,17px 21px,100% 100%!important;
+ color:#292a28!important;
+}
+/* Sutil diferenciación entre hoja original y hoja traducida. */
+html:not([data-parallel-view="true"]) body.academic-reader
+.cl-dual-reader[data-paper-style="canson"]>.cl-source-column{background-color:#f0ebe2!important}
+html:not([data-parallel-view="true"]) body.academic-reader
+.cl-dual-reader[data-paper-style="canson"]>.cl-translation-column:not(.cl-pdf-mode){background-color:#eee5d7!important}
+html:not([data-parallel-view="true"]) body.academic-reader
+.cl-dual-reader[data-paper-style="cream"]>.cl-source-column{background-color:#f6f0e5!important}
+html:not([data-parallel-view="true"]) body.academic-reader
+.cl-dual-reader[data-paper-style="cream"]>.cl-translation-column:not(.cl-pdf-mode){background-color:#f3e9d9!important}
+@media print{
+ html body.academic-reader .cl-dual-reader[data-paper-style] :is(.cl-source-column,.cl-translation-column){
   background:#fff!important;color:#111!important;
  }
 }

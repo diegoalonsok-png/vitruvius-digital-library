@@ -93,6 +93,88 @@ function init(){
     }
     unifiedControls.append(palette);
     refreshCompactPalette();
+
+    // Dos acabados del visor simple, sin alterar la interfaz ni la colación.
+    // La textura se dibuja únicamente sobre las superficies del original/traducción.
+    const paperStore="vdl:classics:paper:"+new URLSearchParams(location.search).get("work");
+    const paperControls=document.createElement("span");
+    paperControls.className="cl-compact-paper-buttons";
+    paperControls.setAttribute("role","group");
+    paperControls.setAttribute("aria-label","Textura de los dos visores");
+    const paperButtons=new Map();
+    let paperMode="",beforePaper=null,applyingPaper=false;
+    const readInk=()=>({
+      bg:article?.style.getPropertyValue("--reader-bg")?.trim()||"#18191b",
+      fg:article?.style.getPropertyValue("--reader-fg")?.trim()||"#e5e5e5"
+    });
+    function savePaper(){
+      try{
+        if(paperMode)localStorage.setItem(paperStore,JSON.stringify({mode:paperMode,previous:beforePaper}));
+        else localStorage.removeItem(paperStore);
+      }catch{}
+    }
+    function updatePaperButtons(){
+      for(const [mode,button] of paperButtons)
+        button.setAttribute("aria-pressed",String(paperMode===mode));
+    }
+    function turnPaperOff(restorePrevious=false){
+      if(!paperMode)return;
+      paperMode="";
+      delete root.dataset.paperStyle;
+      if(restorePrevious&&beforePaper){
+        applyingPaper=true;
+        try{
+          applyPaletteInput("reader-bg",beforePaper.bg);
+          applyPaletteInput("reader-fg",beforePaper.fg);
+        }finally{applyingPaper=false}
+      }
+      beforePaper=null;
+      updatePaperButtons();
+      savePaper();
+    }
+    function selectPaper(mode,previous=null){
+      if(paperMode===mode){turnPaperOff(true);return}
+      if(!paperMode)beforePaper=previous||readInk();
+      paperMode=mode;
+      root.dataset.paperStyle=mode;
+      // Fondo y tinta de papel, como en el visor simplificado.
+      applyingPaper=true;
+      try{
+        applyPaletteInput("reader-bg",mode==="cream"?"#f5eedf":"#f0e9dd");
+        applyPaletteInput("reader-fg","#292a28");
+      }finally{applyingPaper=false}
+      updatePaperButtons();
+      savePaper();
+    }
+    for(const [mode,title] of [["cream","Papel crema"],["canson","Papel Canson"]]){
+      const button=document.createElement("button");
+      button.type="button";
+      button.className="cl-paper-style-button";
+      button.textContent=title;
+      button.title=mode==="canson"?"Fibra mate Canson de textura muy suave":"Hoja crema de libro, de grano muy tenue";
+      button.setAttribute("aria-label",title+" en ambos visores");
+      button.setAttribute("aria-pressed","false");
+      button.addEventListener("click",()=>selectPaper(mode));
+      paperControls.append(button);
+      paperButtons.set(mode,button);
+    }
+    palette.append(paperControls);
+    // Elegir otro color o restablecer aspecto desactiva la textura.
+    for(const id of ["reader-bg","reader-fg"])
+      document.getElementById(id)?.addEventListener("input",()=>{
+        if(!applyingPaper)turnPaperOff();
+      });
+    for(const id of ["reader-reset","reader-ivory","reader-sepia","reader-night","reader-invert"])
+      document.getElementById(id)?.addEventListener("click",()=>turnPaperOff());
+    try{
+      const saved=JSON.parse(localStorage.getItem(paperStore)||"null");
+      if(["cream","canson"].includes(saved?.mode)){
+        const prior=saved?.previous;
+        const valid=prior&&/^#[0-9a-f]{6}$/i.test(prior.bg||"")&&/^#[0-9a-f]{6}$/i.test(prior.fg||"");
+        selectPaper(saved.mode,valid?prior:readInk());
+      }
+    }catch{}
+
   }
 
  function relocateReadingControls(){
