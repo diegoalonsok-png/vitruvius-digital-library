@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "updated": "2026-11-14",
+  "updated": "2026-11-18",
   "title": "Bibliotheca Graeca et Latina · Repertorium Antiquitatis",
   "scope": "Repertorio de obras griegas y latinas, de la Antigüedad arcaica a la tardía. Distingue la consulta local del descubrimiento externo, las traducciones y los testimonios manuscritos.",
   "method": "No equiparar ficha bibliográfica, transcripción original, edición, traducción, manuscrito o PDF. Las obras pendientes tienen enlaces de localización, no visores ficticios.",
@@ -16011,7 +16011,9 @@
         "status": "PDF no acreditado ni publicado en la biblioteca."
       },
       "translation": {
-        "status": "Paul Shorey (inglés; Perseus/Scaife). Enlace documentado en la pestaña «Edición y traducción». No está alojada ni cotejada localmente."
+        "status": "Inglés: traducción histórica de Paul Shorey (1930–1935), extraída de TEI de Perseus y alojada en GitHub para lector paralelo. Alineación por página de Stephanus; sin colación palabra por palabra.",
+        "translationLanguage": "en",
+        "chicago18Bibliography": "Plato. Republic. Translated by Paul Shorey. 2 vols. Loeb Classical Library. Cambridge, MA: Harvard University Press; London: William Heinemann, 1930–1935. Digital TEI edition: Perseus Digital Library."
       },
       "links": {
         "scaife": "https://atlas.perseus.tufts.edu/library/urn%3Acts%3AgreekLit%3Atlg0059.tlg030/",
@@ -16031,7 +16033,7 @@
         "status": "fuentes-externas-identificadas",
         "witnesses": "data/bibliotheca-testimonia-verified.json",
         "originalLanguage": "grc",
-        "translationHosted": false,
+        "translationHosted": true,
         "folioAlignment": false,
         "verifiedOn": "2026-11-05"
       },
@@ -16047,13 +16049,14 @@
         "note": "Pasajes de De architectura en los que Vitruvio nombra a este autor (latín de la edición V514); la mención no implica cita literal de esta obra concreta."
       },
       "corpusFiles": {
-        "grc": "data/classics-corpus/plato-republic-grc.json"
+        "grc": "data/classics-corpus/plato-republic-grc.json",
+        "en": "data/classics-corpus/plato-republic-en.json"
       },
       "indexationAudit": {
         "previousPublicStatus": "fuente-externa-identificada",
-        "registryVersionCount": 1,
+        "registryVersionCount": 2,
         "verifiedAgainst": "data/classics-corpus/search-registry.json",
-        "auditDate": "2026-11-10",
+        "auditDate": "2026-11-18",
         "integrity": "not_verified",
         "note": "Indexed passage availability does not demonstrate complete original text or a critically validated edition."
       },
@@ -16102,7 +16105,8 @@
         "lexicalIndex": "recuentos del índice léxico",
         "witnessRecords": "testimonios catalogados en data/bibliotheca-testimonia-verified.json, ordenados por fecha de inicio",
         "earliestWitness": "elegido por la fecha de inicio más temprana entre los testimonios catalogados"
-      }
+      },
+      "localHtml": "classics-text-reader.html?work=plato-republic&lang=grc&to=en"
     },
     {
       "id": "plato-apology",
