@@ -169,15 +169,14 @@ function appendTranslation(card,row,editions){
    if(e.note){const caveat=document.createElement("small");caveat.textContent=" · "+e.note;line.append(caveat);}
    block.append(line);
   }
-  const comparison=new URL("classics-parallel-reader.html",location.href);
+  const comparison=new URL("classics-text-reader.html",location.href);
   comparison.searchParams.set("work",row.workId);
-  comparison.searchParams.set("left",row.language);
-  comparison.searchParams.set("right",language);
-   comparison.searchParams.set("rev","20261110-parallel-sync-v4");
+  comparison.searchParams.set("lang",row.language);
+  if(["es","en","fr"].includes(language))comparison.searchParams.set("to",language);
   if(row.locus)comparison.searchParams.set("locus",row.locus);
   const searched=String(row.matchedTerm||input.value||"").trim().replace(/^=/,"");
   if(searched)comparison.searchParams.set("q",searched.slice(0,120));
-  const compare=document.createElement("a");compare.href=comparison.href;compare.textContent=" · Lectura enfrentada";block.append(compare);
+  const compare=document.createElement("a");compare.href=comparison.href;compare.textContent=" · Leer en visor académico";block.append(compare);
  };
  if(typeof IntersectionObserver!=="undefined"){
   const observer=new IntersectionObserver(entries=>{
