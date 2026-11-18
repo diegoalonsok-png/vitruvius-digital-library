@@ -151,7 +151,21 @@ function parseQuery(q,mode){
  }
  return{steps,near,raw:q};
 }
+/* Expresiones regulares acotadas: solo patrones lineales sin grupos,
+   alternancias, escapes, referencias ni cuantificadores anidados. */
+function safeLexiconRegex(source){
+ const pattern=String(source||"");
+ if(!pattern||pattern.length>64||!/[\\p{L}]/u.test(pattern)||
+    /[(){}|\\]/.test(pattern)||/\*\*|\+\+|\?\?|\*\+|\+\*|\+\?|\?\+|\?\*|\*\?/.test(pattern)||
+    /\[[^\]]*$/.test(pattern)||/\]\[/.test(pattern)||
+    /[^\p{L}\p{M}\p{N}\[\]\-._^$*?+]/u.test(pattern)||
+    /(^|[^.])\*/.test(pattern)||/[+?][+?*]/.test(pattern))
+  throw new Error("Patrón no admitido. Use letras, . , .* , ? y clases [abc], hasta 64 caracteres; sin grupos.");
+ try{return new RegExp("^(?:"+pattern.replace(/^\^/,"").replace(/\$/,"")+")$","u")}
+ catch{throw new Error("Patrón regular no válido.")}
+}
 function mkTerm(w){
+ if(/^rx:/i.test(w))return{type:"regex",v:w.slice(3)};
  if(/^@/.test(w))return{type:"lemma",v:w.slice(1)};
  if(/^(prefijo|prefix|raiz|raíz|root):/i.test(w))return{type:"wild",v:w.replace(/^[^:]+:/,"")+"*"}; /* ortográfico: comienzo de palabra */
  if(/^~/.test(w))return{type:"fuzzy",v:w.slice(1)};
@@ -169,6 +183,7 @@ function resolveTerm(D,t,opts={}){
   if(!out.size)add(lk);
  }else if(t.type==="wild"){let pat=fold(t.v);if(D.l==="grc"&&!GREEK.test(t.v)){/* comodín transliterado */const rx=new RegExp("^"+latinTranslitKey(t.v).replace(/[.+^${}()|[\]\\]/g,"\\$&").replace(/\*/g,".*").replace(/\?/g,".")+"$");for(const [tk,fs] of transIndex(D))if(rx.test(tk))fs.forEach(add)}
   else{const rx=new RegExp("^"+pat.replace(/[.+^${}()|[\]\\]/g,"\\$&").replace(/\*/g,".*").replace(/\?/g,".")+"$","u");for(const k of D.keys)if(rx.test(k))out.add(k)}
+ }else if(t.type==="regex"){const rx=safeLexiconRegex(t.v);for(const k of D.keys)if(rx.test(k))out.add(k);
  }else if(t.type==="fuzzy"){const k=fold(t.v);const max=k.length>7?2:1;for(const f of D.keys)if(f[0]===k[0]&&lev(f,k,max)<=max)out.add(f);
   if(D.l==="grc"&&!GREEK.test(t.v)){const tk=latinTranslitKey(t.v);for(const [x,fs] of transIndex(D))if(lev(x,tk,max)<=max)fs.forEach(add)}
  }else if(t.type==="pattern"){for(const [k,an] of Object.entries(D.forms.forms))if(an.some(a=>typeof a[1]==="string"&&tagMatches(a[1],t.conds)))add(k)}
@@ -1519,9 +1534,9 @@ function renderQueryBuilder(){
  }
  const word=el("input",{type:"text",placeholder:"arquitectura · arquitetura · architectura · τέχνη","aria-label":"Palabra o lema"});
  row.append(el("label",{},el("span",{},"Palabra / lema"),word));
- /* Operadores sin memorizar la sintaxis: lema (@), comodín (*), aproximada (~), frase ("…"). */
+ /* Operadores: lema (@), comodín (*), regex segura (rx:), aproximada (~), frase ("…"). */
  const op=el("select",{"aria-label":"Tipo de coincidencia"});
- [["sentido","por sentido y equivalencias (recomendado)"],["forma","esta forma exacta"],["lema","todas las formas del lema · @"],["prefijo","palabras que empiezan así · *"],["aprox","grafía aproximada · ~"],["frase","frase exacta · \"…\""]].forEach(([v,t])=>op.append(el("option",{value:v},t)));
+ [["sentido","por sentido y equivalencias (recomendado)"],["forma","esta forma exacta"],["lema","todas las formas del lema · @"],["prefijo","palabras que empiezan así · *"],["regex","patrón regular seguro · rx:"],["aprox","grafía aproximada · ~"],["frase","frase exacta · \"…\""]].forEach(([v,t])=>op.append(el("option",{value:v},t)));
  row.append(el("label",{},el("span",{},"Tipo de coincidencia"),op));
  const gap=el("select",{"aria-label":"Separación del anterior"});
  [["0","contigua"],["1","hasta 1 palabra, en orden"],["3","hasta 3 palabras, en orden"],["5","hasta 5 palabras, en orden"],["8","hasta 8 palabras, en orden"],["n5","a 5 palabras, en cualquier orden"],["n10","a 10 palabras, en cualquier orden"]].forEach(([v,t])=>gap.append(el("option",{value:v},t)));
@@ -1534,7 +1549,7 @@ function renderQueryBuilder(){
  const selected=()=>Object.fromEntries(Object.entries(sels).filter(([,s])=>s.value).map(([k,s])=>[k,s.value]));
  const token=()=>{
   const w=word.value.trim();
-  if(w){const o=op.value;return o==="lema"?"@"+w.replace(/^@/,""):o==="prefijo"?w.replace(/\*$/,"")+"*":o==="aprox"?"~"+w.replace(/^~/,""):o==="frase"?'"'+w.replace(/"/g,"")+'"':w}
+  if(w){const o=op.value;return o==="lema"?"@"+w.replace(/^@/,""):o==="prefijo"?w.replace(/\*$/,"")+"*":o==="regex"?"rx:"+w.replace(/^rx:/i,""):o==="aprox"?"~"+w.replace(/^~/,""):o==="frase"?'"'+w.replace(/"/g,"")+'"':w}
   const f=selected();const p=Object.entries(f).map(([k,v])=>k+"="+v);
   return p.length?"["+p.join(" ")+"]":"";
  };
@@ -1581,14 +1596,16 @@ function renderQueryBuilder(){
   }},"Vaciar consulta"));
  host.append(preview,actions);
  const suggestions=el("p",{class:"suggestions"},el("span",{},"Construcciones"));
- [["genitivo absoluto","[mood=ptc case=gen] ..2 [case=gen]"],["infinitivo articular","[pos=art] [mood=inf]"],["μέν … δέ","μέν ..8 δέ"],["potencial (ἄν + optativo)","ἄν ..3 [mood=opt]"],["ἵνα + subjuntivo","ἵνα ..4 [mood=subj]"],["participio atributivo","[pos=art] [mood=ptc]"],["dativo instrumental + verbo","[case=dat pos=noun] [pos=verb]"]].forEach(([t,q])=>{
+ [["expresión regular: formas dic-","rx:dic.*"],["comodín interno: l?g-","l?g*"],["dos lemas a cinco palabras","@λόγος NEAR/5 @ἀλήθεια"],["raíz indoeuropea *bher-","pie:bher"],["concepto bilingüe","concepto:verdad"],["genitivo absoluto","[mood=ptc case=gen] ..2 [case=gen]"],["infinitivo articular","[pos=art] [mood=inf]"],["μέν … δέ","μέν ..8 δέ"],["potencial (ἄν + optativo)","ἄν ..3 [mood=opt]"],["ἵνα + subjuntivo","ἵνα ..4 [mood=subj]"],["participio atributivo","[pos=art] [mood=ptc]"],["dativo instrumental + verbo","[case=dat pos=noun] [pos=verb]"]].forEach(([t,q])=>{
   suggestions.append(el("button",{type:"button",onclick:()=>{
-   $("#lx-q").value=q;word.value="";S.mode="sintaxis";S.lang="grc";$("#lx-lang").value="grc";
+   $("#lx-q").value=q;word.value="";
+   S.mode=/^pie:/.test(q)?"etimologia":/^concepto:/.test(q)?"palabra":/^@|NEAR\//.test(q)?"frase":/^(rx:|l\?)/.test(q)?"palabra":"sintaxis";
+   S.lang=/^(rx:dic|l\?)/.test(q)?"la":/^(pie:|concepto:)/.test(q)?"auto":"grc";$("#lx-lang").value=S.lang;
    renderTabs();run().then(()=>$("#results").scrollIntoView({behavior:"smooth"}));
   }},t));
  });
  host.append(suggestions,el("p",{class:"explain"},
-  "Las palabras modernas se resuelven mediante equivalencias documentadas en latín y griego. El griego permite filtros morfológicos automáticos; el latín muestra lemas, glosas y concordancias, sin inventar rasgos flexivos."));
+  "Búsquedas disponibles: formas, lemas, comodines, patrón regular acotado (rx:), raíz PIE (pie:), concepto (concepto:), proximidad (NEAR/n) y patrones morfológicos griegos donde haya etiquetas. Los paralelos son similitud de pasajes, no alineación palabra a palabra. Métrica y análisis de ablativo absoluto latino requieren anotación adicional; no se infieren."));
  update();
 }
 
