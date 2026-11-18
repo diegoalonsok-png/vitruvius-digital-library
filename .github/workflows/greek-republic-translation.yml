@@ -1,21 +1,25 @@
-name: Bibliotheca · candado griego y traducción de Platón
+name: Bibliotheca · candado de traducciones históricas de Platón
 on:
   pull_request:
     paths:
       - 'data/classics-corpus/plato-republic-*.json'
+      - 'data/classics-corpus/plato-laws-*.json'
       - 'data/classics-corpus/search-registry.json'
       - 'data/bibliotheca-graeca-latina-I-bce-I-ce.json'
       - 'data/classics-corpus/bibliotheca-academic-fiches-2026-11-16.json'
       - 'scripts/test-greek-republic-translation.mjs'
+      - 'scripts/test-greek-laws-translation.mjs'
       - '.github/workflows/greek-republic-translation.yml'
   push:
     branches: [main]
     paths:
       - 'data/classics-corpus/plato-republic-*.json'
+      - 'data/classics-corpus/plato-laws-*.json'
       - 'data/classics-corpus/search-registry.json'
       - 'data/bibliotheca-graeca-latina-I-bce-I-ce.json'
       - 'data/classics-corpus/bibliotheca-academic-fiches-2026-11-16.json'
       - 'scripts/test-greek-republic-translation.mjs'
+      - 'scripts/test-greek-laws-translation.mjs'
       - '.github/workflows/greek-republic-translation.yml'
   workflow_dispatch:
 permissions:
@@ -30,4 +34,6 @@ jobs:
         with:
           node-version: '22'
       - name: Comprobar que el griego y los 278 loci no se pierden
-        run: node scripts/test-greek-republic-translation.mjs
+        run: |
+          node scripts/test-greek-republic-translation.mjs
+          node scripts/test-greek-laws-translation.mjs
