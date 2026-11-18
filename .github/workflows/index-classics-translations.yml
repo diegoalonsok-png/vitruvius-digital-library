@@ -1,0 +1,77 @@
+name: Bibliotheca - indexar originales y traducciones por locus
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'data/classics-corpus/search-registry.json'
+      - 'data/classics-corpus/*-grc.json'
+      - 'data/classics-corpus/*-la.json'
+      - 'data/classics-corpus/*-en.json'
+      - 'data/classics-corpus/*-es.json'
+      - 'data/classics-corpus/*-fr.json'
+      - 'data/structured/*.json'
+      - 'scripts/build-classics-lexical-index.mjs'
+      - '.github/workflows/index-classics-translations.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: vdl-classics-publication-main
+  cancel-in-progress: false
+jobs:
+  lexical-index:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Comprobar generador y registro textual
+        run: |
+          node --check scripts/build-classics-lexical-index.mjs
+          node scripts/build-classics-lexical-index.mjs --check
+      - name: Reconstruir indice sin OCR ni traduccion automatica
+        run: node scripts/build-classics-lexical-index.mjs
+      - name: Comprobar presencia de cada version indexable y manifiesto
+        run: |
+          node --input-type=module <<'JS'
+          import fs from 'node:fs';
+          import assert from 'node:assert/strict';
+          const registry=JSON.parse(fs.readFileSync('data/classics-corpus/search-registry.json','utf8'));
+          const manifest=JSON.parse(fs.readFileSync('data/index/classics/manifest.json','utf8'));
+          const indexed=new Set((manifest.index||[]).map(x=>x.id+'|'+x.lang));
+          const expected=(registry.entries||[]).filter(x=>x.format==='json-passages' &&
+            /^data\/classics-corpus\/[a-z0-9-]+-(grc|la|en|es|fr)\.json$/.test(x.path||''));
+          let checked=0;
+          for(const x of expected){
+            const source=JSON.parse(fs.readFileSync(x.path,'utf8'));
+            assert.equal(source.workId,x.workId,'Identidad de obra: '+x.path);
+            assert.equal(source.language,x.language,'Lengua: '+x.path);
+            assert(Array.isArray(source.passages)&&source.passages.some(p=>p.locus&&p.text),'Pasajes: '+x.path);
+            assert(indexed.has(x.workId+'|'+x.language),'Edicion no indexada: '+x.path);
+            checked++;
+          }
+          console.log('Versiones textuales con indice por obra/lengua: '+checked);
+          JS
+      - name: Publicar solo el indice reconstruido
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -A data/index/classics
+          if git diff --cached --quiet; then
+            echo 'Indice vigente; no se generan commits vacios.'
+            exit 0
+          fi
+          git commit -m 'index: sincronizar ediciones y traducciones con corpus registrado'
+          git fetch origin main
+          if ! git rebase origin/main; then
+            git rebase --abort
+            echo '::error::Conflicto de indexacion; no se sobrescriben cambios concurrentes.'
+            exit 1
+          fi
+          git push origin HEAD:main
