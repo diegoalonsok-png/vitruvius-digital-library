@@ -112,7 +112,7 @@ try{
     [code,home],{timeout:10000});
    assert.equal((await page.locator("#home").innerText()).trim(),home,"Bibliotheca home link not translated");
   }
-  assert.match(await button.getAttribute("aria-label"),/Switch to|Activer|Activar/);
+  assert.match(await button.getAttribute("aria-label"),/Switch to|Activer|Activar|Cambiar/);
   console.log("PASS Bibliotheca color switch, contrast and language-sensitive label");
   await page.close();checked+=3;
  }
