@@ -1,8 +1,8 @@
 {
   "schema": "vitruvia-classics-search-registry-v1",
-  "updated": "2026-11-16",
+  "updated": "2026-11-18",
   "description": "Registro verificable de transcripciones HTML y textos JSON existentes que admiten búsqueda literal de contenido. No incluye automáticamente PDF escaneados, facsímiles ni fichas sin texto. Los índices auxiliares por locus y el aparato crítico se declaran por separado; no se suman a versiones textuales originales ni implican colación autóptica.",
-  "count": 376,
+  "count": 379,
   "works": 299,
   "entries": [
     {
@@ -2688,6 +2688,16 @@
       "workId": "plato-euthyphro",
       "author": "Platón",
       "title": "Εὐθύφρων",
+      "language": "en",
+      "format": "json-passages",
+      "path": "data/classics-corpus/plato-euthyphro-en.json",
+      "reader": "classics-text-reader.html?work=plato-euthyphro&lang=en",
+      "sourceDescription": "Traducción histórica inglesa editada de Harold North Fowler (1914), Perseus TEI, CC BY-SA 4.0; sin alineación automática de párrafos con griego."
+    },
+    {
+      "workId": "plato-euthyphro",
+      "author": "Platón",
+      "title": "Εὐθύφρων",
       "language": "grc",
       "format": "json-passages",
       "path": "data/classics-corpus/plato-euthyphro-grc.json",
@@ -2732,6 +2742,16 @@
       "workId": "plato-ion",
       "author": "Platón",
       "title": "Ἴων",
+      "language": "en",
+      "format": "json-passages",
+      "path": "data/classics-corpus/plato-ion-en.json",
+      "reader": "classics-text-reader.html?work=plato-ion&lang=en",
+      "sourceDescription": "Traducción histórica inglesa editada de William Rangeley Maitland Lamb (1925), Perseus TEI, CC BY-SA 4.0; sin alineación automática de párrafos con griego."
+    },
+    {
+      "workId": "plato-ion",
+      "author": "Platón",
+      "title": "Ἴων",
       "language": "grc",
       "format": "json-passages",
       "path": "data/classics-corpus/plato-ion-grc.json",
@@ -2771,6 +2791,16 @@
       "path": "data/classics-corpus/plato-laws-grc.json",
       "reader": "classics-text-reader.html?work=plato-laws&lang=grc",
       "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
+      "workId": "plato-lysis",
+      "author": "Platón",
+      "title": "Λύσις",
+      "language": "en",
+      "format": "json-passages",
+      "path": "data/classics-corpus/plato-lysis-en.json",
+      "reader": "classics-text-reader.html?work=plato-lysis&lang=en",
+      "sourceDescription": "Traducción histórica inglesa editada de Walter Rangeley Maitland Lamb (1925), Perseus TEI, CC BY-SA 4.0; sin alineación automática de párrafos con griego."
     },
     {
       "workId": "plato-lysis",
