@@ -1,0 +1,44 @@
+name: Scriptorium · candado de la triada latina
+on:
+  pull_request:
+    paths:
+      - 'assets/scriptorium-triple.js'
+      - 'scriptorium.html'
+      - 'scripts/test-scriptorium-fixed-triad*.mjs'
+      - '.github/workflows/scriptorium-latin-triad.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'assets/scriptorium-triple.js'
+      - 'scriptorium.html'
+      - 'scripts/test-scriptorium-fixed-triad*.mjs'
+      - '.github/workflows/scriptorium-latin-triad.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  latin-triad:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Verificar sintaxis y tres fuentes indexadas, sin OCR
+        run: |
+          node --check assets/scriptorium-triple.js
+          node --check scripts/test-scriptorium-fixed-triad.mjs
+          node --check scripts/test-scriptorium-fixed-triad-browser.mjs
+          node scripts/test-scriptorium-fixed-triad.mjs
+      - name: Preparar Chromium
+        run: |
+          npm install --no-save playwright@1.56.1
+          npx playwright install --with-deps chromium
+      - name: Probar un enlace antiguo en navegador
+        run: |
+          python3 -m http.server 8766 --bind 127.0.0.1 >/tmp/scriptorium-triad-http.log 2>&1 &
+          sleep 2
+          node scripts/test-scriptorium-fixed-triad-browser.mjs
