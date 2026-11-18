@@ -143,7 +143,7 @@ async function indexedPassages(e){
 // (perseus-grc2 / perseus-eng2). Pair only when namespace, work ID and
 // numeric book.chapter.section ALL coincide; never pair by row position.
 function sectionCtsKey(value){
- const m=/^urn:cts:([a-z]+):((?:tlg|phi)\\d+\\.(?:tlg|phi)\\d+)\\.[a-z0-9-]+:(\\d+(?:\\.\\d+)*)$/i.exec(String(value||"").trim());
+ const m=/^urn:cts:([a-z]+):((?:tlg|phi)\d+\.(?:tlg|phi)\d+)\.[a-z0-9-]+:(\d+(?:\.\d+)*)$/i.exec(String(value||"").trim());
  return m?m[1].toLowerCase()+"|"+m[2].toLowerCase()+"|"+m[3]:null;
 }
 async function presentIndexed(entry,target,stamp){
