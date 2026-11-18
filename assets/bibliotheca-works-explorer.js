@@ -11,8 +11,9 @@ function catalog(){
   fetch("data/classics-corpus/search-registry.json").then(r=>{if(!r.ok)throw Error("Registro editorial: HTTP "+r.status);return r.json()}),
   fetch("data/bibliotheca-expansion-publicada-2026-11-16.json").then(r=>{if(!r.ok)throw Error("Catálogo complementario: HTTP "+r.status);return r.json()}),
   fetch("data/index/classics/manifest.json").then(r=>{if(!r.ok)throw Error("Índice léxico: HTTP "+r.status);return r.json()}),
-  fetch("data/classics-corpus/title-search-aliases-multilingual.json").then(r=>r.ok?r.json():{aliases:{}}).catch(()=>({aliases:{}}))
- ]).then(([j,registry,supplement,lexical,names])=>{
+  fetch("data/classics-corpus/title-search-aliases-multilingual.json").then(r=>r.ok?r.json():{aliases:{}}).catch(()=>({aliases:{}})),
+  fetch("data/index/classics-additions-2026-11-17/manifest.json").then(r=>r.ok?r.json():{index:[]}).catch(()=>({index:[]}))
+ ]).then(([j,registry,supplement,lexical,names,additions])=>{
   if(!Array.isArray(j.items)||j.items.length!==j.targetWorks)throw Error("Inventario de obras inconsistente");
   const sources=new Map();
   for(const entry of registry.entries||[]){
@@ -23,7 +24,8 @@ function catalog(){
       /^https:\/\/libros\.vitruvius-digital-library\.org\/corpus\/[a-z0-9_-]+\.json$/.test(entry.path||"");
    if(valid){if(!sources.has(entry.workId))sources.set(entry.workId,[]);sources.get(entry.workId).push(entry)}
   }
-  const lexicalIds=new Set((lexical.index||[]).filter(e=>e.lang==="grc"||e.lang==="la").map(e=>e.id+"|"+e.lang));
+  const lexicalIds=new Set([...(lexical.index||[]),...(additions.index||[])]
+   .filter(e=>e.lang==="grc"||e.lang==="la").map(e=>e.id+"|"+e.lang));
   const hasIndexedOriginal=(id,lang)=>["la","grc"].includes(lang)&&lexicalIds.has(id+"|"+lang)&&(sources.get(id)||[]).some(e=>e.language===lang);
   const merged=new Map(j.items.map(x=>[x.id,{id:x.id,author:x.author||"Autor no indicado",title:x.title||x.id,kind:"local",language:x.originalLanguage||"",originalIndexed:hasIndexedOriginal(x.id,x.originalLanguage),indexedLanguages:hasIndexedOriginal(x.id,x.originalLanguage)?[x.originalLanguage]:[],readers:sources.get(x.id)||[]}]));
   // Supplementary works are fully catalogued, not anonymous "registry-only" rows.
