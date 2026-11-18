@@ -29,7 +29,10 @@ assert(missing.every(x=>x.startsWith("7.fragments.")),"No ocultar ausencia en ot
 const entry=registry.entries.filter(x=>x.workId==="strabo"&&x.language==="en");
 assert.equal(entry.length,1);
 assert.equal(entry[0].path,"data/classics-corpus/strabo-en.json");
-assert.equal(catalogue.works.find(x=>x.id==="strabo")?.corpusFiles?.en,entry[0].path);
+assert.equal(catalogue.works.find(x=>x.id==="strabo")?.corpusFiles?.grc,"data/classics-corpus/strabo-grc.json");
+assert.equal(catalogue.works.find(x=>x.id==="strabo")?.corpusFiles?.en,undefined,"Catálogo madre protegido");
+assert.equal(english.alignmentStatus,"unaligned");
+assert.equal(english.ctsSectionCorrespondence.sharedDistinctSections,1516);
 const script=readFileSync(new URL("assets/classics-inline-parallel.js",root),"utf8");
 const match=script.match(/function sectionCtsKey\(value\)\{[\s\S]*?const m=\/(.*?)\/i\.exec/);
 assert(match,"El visor debe comparar la referencia CTS de ambas ediciones");
