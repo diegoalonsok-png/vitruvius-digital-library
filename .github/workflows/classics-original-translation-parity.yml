@@ -1,0 +1,37 @@
+name: Bibliotheca · prueba de indexación original y traducción
+on:
+  pull_request:
+    paths:
+      - 'scripts/check-registered-originals-translations-indexed.mjs'
+      - '.github/workflows/index-new-greek-classics-2026-11-16.yml'
+      - '.github/workflows/classics-translations-verified.yml'
+      - '.github/workflows/classics-index-refresh.yml'
+      - '.github/workflows/classics-original-translation-parity.yml'
+      - 'data/classics-corpus/search-registry.json'
+      - 'data/classics-corpus/*-grc.json'
+      - 'data/classics-corpus/*-la.json'
+      - 'data/classics-corpus/*-en.json'
+      - 'data/classics-corpus/*-es.json'
+      - 'data/classics-corpus/*-fr.json'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  checked:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Validar sintaxis
+        run: node --check scripts/check-registered-originals-translations-indexed.mjs
+      - name: Reconstruir índice léxico sin alterar textos originales
+        env:
+          NODE_OPTIONS: --max-old-space-size=6144
+        run: node scripts/build-classics-lexical-index.mjs
+      - name: Verificar que cada original y traducción sea buscable por sus loci
+        run: node scripts/check-registered-originals-translations-indexed.mjs

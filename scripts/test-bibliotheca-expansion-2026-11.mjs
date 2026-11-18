@@ -35,7 +35,7 @@ for(const id of indexed){
  // Un único locus puede contener una obra breve completa. Se comprueba contenido, fuente y cada locus.
  const minCount=1;
  const textChars=text.passages.reduce((sum,p)=>sum+String(p.text||"").length,0);
- assert.ok(/^https:\/\//.test(text.source||''),`Missing documented TEI source: ${id}`);
+ assert.ok(/^https:\/\//.test(text.source||'')||(Array.isArray(text.sources)&&text.sources.length>0&&text.sources.every(s=>/^https:\/\//.test(s.url||''))),`Missing documented TEI source: ${id}`);
  assert.ok(text.passages.length>=minCount&&textChars>=800,`Empty/implausible Greek corpus: ${id} · ${text.passages.length} passages · ${textChars} chars`);
  assert.ok(text.passages.every(x=>x.text&&x.locus),"Every passage must retain locus and text");
  assert.ok(registry.some(e=>e.workId===id&&e.language==="grc"&&e.path===p),`Missing search registration ${id}`);

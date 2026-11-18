@@ -58,6 +58,7 @@ jobs:
             if python -c "import json; assert json.load(open('data/classics-corpus/translation-import-status.json'))['newTranslations'] > 0"; then
               node scripts/build-classics-lexical-index.mjs
               node scripts/test-classics-lexical-index.mjs
+              node scripts/check-registered-originals-translations-indexed.mjs
             fi
             python scripts/build_classics_semantic_index.py
             python scripts/sync-classics-coverage.py

@@ -52,7 +52,7 @@ jobs:
           for(const id of names){
             const f='data/classics-corpus/'+id+'-grc.json';
             const data=JSON.parse(fs.readFileSync(f,'utf8'));
-            if(data.workId!==id||data.language!=='grc'||!Array.isArray(data.passages)||data.passages.length<1||data.passages.some(p=>!p.locus||!String(p.text||'').trim())||data.passages.reduce((n,p)=>n+String(p.text||'').length,0)<800||!/^https:\/\//.test(data.source||''))throw Error('Corpus no válido: '+id);
+            if(data.workId!==id||data.language!=='grc'||!Array.isArray(data.passages)||data.passages.length<1||data.passages.some(p=>!p.locus||!String(p.text||'').trim())||data.passages.reduce((n,p)=>n+String(p.text||'').length,0)<800||!(/^https:\/\//.test(data.source||'')||(Array.isArray(data.sources)&&data.sources.length>0&&data.sources.every(s=>/^https:\/\//.test(s.url||'')))))throw Error('Corpus no válido: '+id);
             if(!registry.entries.some(e=>e.workId===id&&e.language==='grc'&&e.path===f))throw Error('No registrado: '+id);
           }
           JS
@@ -71,6 +71,8 @@ jobs:
           JS
       - name: Probar fichas, lectores, índices y alias editoriales de R2
         run: node scripts/test-bibliotheca-expansion-2026-11.mjs
+      - name: Acreditar que originales y traducciones registradas estén indexados por locus
+        run: node scripts/check-registered-originals-translations-indexed.mjs
       - name: Marcar fichas como indexadas sólo tras completar las pruebas
         run: |
           node --input-type=module <<'JS'
