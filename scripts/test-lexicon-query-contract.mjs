@@ -42,4 +42,17 @@ assert(source.includes("if(unchanged())dl.replaceChildren"),
 assert(source.includes('literalOriginal:S.mode==="palabra"'),"Word mode must preserve the written form");
 assert(source.includes('variants:!!S.expanded'),"Approximate variants require explicit expanded search");
 assert(source.includes('exactModernConcept(q,concepts,CONC_ALIASES)'),"Modern-language and transliteration routes require documented equivalences");
+const etym=JSON.parse(readFileSync("data/lexicon/etymologicum.json","utf8"));
+assert(etym.entries.some(e=>e.lemma==="numen"&&e.l==="la"),
+ "numen must remain a documented Latin headword");
+assert(source.includes("ancientHeadword?.l||resolveLang(q)"),
+ "Spanish interface links must not suppress ancient Latin/Greek concordances");
+const bridge=readFileSync("assets/lexicon-classics-bridge.js","utf8");
+new vm.Script(bridge,{filename:"assets/lexicon-classics-bridge.js"});
+for(const contract of ['workSummary.replaceChildren()','window.addEventListener("vitruvia:lexicon-search"','showLiteralRows(rows,editions)']){
+ assert(bridge.includes(contract),"Missing per-work counts or cited passages: "+contract);
+}
+const html=readFileSync("vitruvia-lexicon.html","utf8");
+assert(html.includes("assets/vitruvia-lexicon.js?v=20261118-documented-ancient-headword-v1"),
+ "Published Lexicon must refresh the corrected script cache");
 console.log("PASS Lexicon: Greek polytonic and decomposed accents, Latin macrons, query revisions, URL history, and bounded data loading.");

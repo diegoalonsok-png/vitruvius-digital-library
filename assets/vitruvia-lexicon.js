@@ -431,7 +431,22 @@ async function run(push=true){
   }
   if(S.mode==="sententiae")return renderSententiae(q);
   if(S.mode==="etimologia")return renderEtymSearch(q);
-  if(["es","en","fr","de"].includes(S.lang)){const concepts=await conceptus();if(!isCurrent())return;const mapped=exactModernConcept(q,concepts,CONC_ALIASES);if(mapped)return renderModernEquivalents(q,mapped,isCurrent);return renderModernWord(q,S.lang);}
+  // An incoming ?lang=es may describe the interface, while a single
+  // headword such as numen is documented as Latin in Etymologicum.
+  // Keep the original-language concordance without changing the URL.
+  let ancientHeadword=null;
+  if(S.mode==="palabra"&&["es","en","fr","de"].includes(S.lang)&&/^[\p{L}\p{M}'’ʼ-]+$/u.test(q)){
+   if(!S.etym){try{S.etym=await load("data/lexicon/etymologicum.json")}catch{}}
+   if(!isCurrent())return;
+   ancientHeadword=(S.etym?.entries||[]).find(e=>["la","grc"].includes(e.l)&&
+    typeof e.lemma==="string"&&fold(e.lemma)===fold(q))||null;
+  }
+  if(["es","en","fr","de"].includes(S.lang)&&!ancientHeadword){
+   const concepts=await conceptus();if(!isCurrent())return;
+   const mapped=exactModernConcept(q,concepts,CONC_ALIASES);
+   if(mapped)return renderModernEquivalents(q,mapped,isCurrent);
+   return renderModernWord(q,S.lang);
+  }
   if(S.mode==="analizar")return analyzeSentence(q);
   if(S.mode==="paralelos")return parallels(q);
   if(S.mode==="palabra"&&S.lang==="auto"){
@@ -439,7 +454,7 @@ async function run(push=true){
    const mapped=exactModernConcept(q,concepts,CONC_ALIASES);
    if(mapped)return renderModernEquivalents(q,mapped,isCurrent);
   }
-  const l=resolveLang(q);
+  const l=ancientHeadword?.l||resolveLang(q);
   if(l==="he")return renderHebrew(q);
   const D=await lang(l);if(!isCurrent())return;
   S.D=D;fillWorks(D);if(l==="la"&&S.mode==="lema"){await loadContext();if(!isCurrent())return;}
