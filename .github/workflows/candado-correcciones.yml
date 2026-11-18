@@ -1,0 +1,94 @@
+name: Candado de correcciones y validación
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, labeled, unlabeled]
+  push:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+  pull-requests: read
+jobs:
+  validation:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Comprobar sintaxis de los módulos críticos
+        shell: bash
+        run: |
+          set -euo pipefail
+          node --input-type=module --check < assets/app.js
+          for file in \
+            assets/vitruvia-lexicon.js \
+            assets/classics-corpus-search.js \
+            assets/comparative-bude-units.js \
+            assets/comparative-triad-loci.js \
+            assets/classics-text-reader.js; do
+            node --check "$file"
+          done
+      - name: Verificar contratos estables del sitio
+        shell: bash
+        run: |
+          set -euo pipefail
+          node - <<'NODE'
+          const fs=require('node:fs');
+          function requireMatch(file,regexp,label) {
+            if(!regexp.test(fs.readFileSync(file,'utf8')))throw new Error('Protección rota: '+label+' en '+file);
+          }
+          requireMatch('index.html',/vdl-concordance-upright-passages/,'concordancia sin cursivas');
+          requireMatch('assets/app.js',/article\.dataset\.editionLanguage=rowLanguage/,'traducciones ligadas a sus ediciones');
+          requireMatch('assets/comparative-bude-units.js',/presentComparisonDifferences\(texts,locus/,'listado de variantes por locus');
+          requireMatch('assets/classics-corpus-search.js',/function loadCriticalIndexed/,'Rose y Krohn indexados');
+          requireMatch('assets/vitruvia-lexicon.js',/function applyUI\(/,'idiomas de interfaz Lexicon');
+          console.log('Contratos de las funcionalidades protegidas: OK');
+          NODE
+  revision-required:
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Exigir autorización para cambiar zonas estabilizadas
+        env:
+          PR_LABELS: ${{ join(github.event.pull_request.labels.*.name, ',') }}
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+          HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          mapfile -t changed < <(git diff --name-only "$BASE_SHA" "$HEAD_SHA")
+          protected=(
+            index.html
+            vitruvia-lexicon.html
+            classics-text-reader.html
+            classics-simple-parallel.html
+            bibliotheca-graeca-latina.html
+            aparato-comparativo.html
+            apparatus-bude.html
+            assets/app.js
+            assets/vitruvia-lexicon.js
+            assets/classics-corpus-search.js
+            assets/classics-text-reader.js
+            assets/comparative-bude-units.js
+            assets/comparative-triad-loci.js
+            assets/bibliotheca-work-search.js
+            data/classics-corpus/search-registry.json
+          )
+          touch_protected=0
+          for file in "${changed[@]}"; do
+            for locked in "${protected[@]}"; do
+              if [[ "$file" == "$locked" ]]; then
+                echo "::notice::Archivo de corrección estabilizada: $file"
+                touch_protected=1
+              fi
+            done
+          done
+          if (( touch_protected )) && [[ ",$PR_LABELS," != *",cambio-aprobado,"* ]]; then
+            echo "::error::Se requiere la etiqueta 'cambio-aprobado' y revisión del propietario antes de modificar partes estabilizadas."
+            exit 1
+          fi
+          echo "Verificación de autorización: OK"
