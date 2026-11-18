@@ -37,6 +37,62 @@ function init(){
  const toolsContent=document.createElement("div");toolsContent.className="cl-annotation-tools-content";
  toolsFold.append(toolsSummary,toolsContent);
  layout.append(toolsFold);
+
+  /* Paleta compacta en el hueco de la botonera: ambos textos comparten color.
+     Reutilizar controles nativos preserva preferencias y sincronización. */
+  const unifiedControls=layout.querySelector(".cl-unified-reading-actions");
+  const paletteDots=[];
+  function applyPaletteInput(id,value){
+    const picker=document.getElementById(id);
+    if(!picker||!/^#[0-9a-f]{6}$/i.test(value))return;
+    picker.value=value;
+    picker.dispatchEvent(new Event("input",{bubbles:true}));
+  }
+  function refreshCompactPalette(){
+    const bg=(article?.style.getPropertyValue("--reader-bg")||"#18191b").trim().toLowerCase();
+    const fg=(article?.style.getPropertyValue("--reader-fg")||"#e5e5e5").trim().toLowerCase();
+    for(const {button,kind,color} of paletteDots)
+      button.setAttribute("aria-pressed",String((kind==="bg"?bg:fg)===color.toLowerCase()));
+  }
+  if(unifiedControls&&document.documentElement.dataset.parallelView!=="true"){
+    const palette=document.createElement("div");
+    palette.className="cl-compact-palette";
+    palette.setAttribute("role","group");
+    palette.setAttribute("aria-label","Color del fondo y de la letra en ambos visores");
+    const groups=[
+      ["Fondo","bg",[
+        ["Grafito","#18191b","#e5e5e5"],["Negro","#101011","#e5e5e5"],
+        ["Sepia","#493e34","#fff0d7"],["Marfil","#f1e9db","#252525"],
+        ["Azul","#293d50","#f5f5f5"]]],
+      ["Letra","fg",[
+        ["Blanco","#e5e5e5"],["Crema","#fff0d7"],["Negro","#252525"],
+        ["Azul claro","#b9e0ff"],["Amarillo","#ffe5a0"]]]
+    ];
+    for(const [label,kind,choices] of groups){
+      const name=document.createElement("span");name.className="cl-compact-palette-label";
+      name.textContent=label;palette.append(name);
+      for(const [title,color,pairedInk] of choices){
+        const button=document.createElement("button");button.type="button";
+        button.className="cl-compact-palette-dot";
+        button.style.setProperty("--cl-palette-sample",color);
+        button.title=label+" · "+title;
+        button.setAttribute("aria-label",label+" "+title+" en ambos visores");
+        button.setAttribute("aria-pressed","false");
+        button.addEventListener("click",()=>{
+          if(kind==="bg"){
+            applyPaletteInput("reader-bg",color);
+            if(pairedInk)applyPaletteInput("reader-fg",pairedInk);
+          }else applyPaletteInput("reader-fg",color);
+          refreshCompactPalette();
+        });
+        paletteDots.push({button,kind,color});
+        palette.append(button);
+      }
+    }
+    unifiedControls.append(palette);
+    refreshCompactPalette();
+  }
+
  function relocateReadingControls(){
   const sourceBar=sourceContainer.querySelector(".vdl-annotation-bar");
   if(sourceBar)toolsContent.append(sourceBar);
@@ -73,6 +129,7 @@ function init(){
   if(!/^#[0-9a-f]{6}$/i.test(bg)||!/^#[0-9a-f]{6}$/i.test(fg))return;
   root.style.setProperty("--cl-shared-bg",bg);
   root.style.setProperty("--cl-shared-fg",fg);
+   refreshCompactPalette();
  }
  if(article){
   new MutationObserver(updateSharedPalette).observe(article,{attributes:true,attributeFilter:["style"]});
