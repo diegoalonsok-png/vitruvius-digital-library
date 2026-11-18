@@ -34,8 +34,10 @@ jobs:
         run: |
           node --check scripts/build-classics-lexical-index.mjs
           node scripts/build-classics-lexical-index.mjs --check
-      - name: Comprobar correspondencia CTS griego-inglés de Retórica
-        run: node scripts/test-aristotle-rhetoric-pairing.mjs
+      - name: Comprobar correspondencia CTS griego-inglés de Retórica y Geografía
+        run: |
+          node scripts/test-aristotle-rhetoric-pairing.mjs
+          node scripts/test-strabo-english-cts.mjs
       - name: Reconstruir indice sin OCR ni traduccion automatica
         run: node scripts/build-classics-lexical-index.mjs
       - name: Comprobar presencia de cada version indexable y manifiesto
