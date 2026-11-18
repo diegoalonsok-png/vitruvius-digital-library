@@ -223,7 +223,8 @@ syncStatus.textContent="Comparación latina de Krohn 1912 (TEI), Rose 1899 (tran
 const candidateToggle=document.createElement("input");candidateToggle.type="checkbox";candidateToggle.checked=true;
 const candidateLabel=document.createElement("label");
 candidateLabel.append(candidateToggle,document.createTextNode(" Llevar Krohn y Rose a la página concordante del locus"));
-candidateLabel.title="Usa la concordancia documentada por cotejo de trigramas; se indica su grado y no equivale a una colación verificada.";
+candidateLabel.title="Esta opción solo corresponde al lector OCR, no a los tres textos latinos indexados.";
+candidateLabel.hidden=true;
 /* Ir a un locus o a una palabra: los tres visores se colocan juntos. */
 const irBox=document.createElement("div");irBox.className="script-triple-ir";
 const irLocus=document.createElement("select");irLocus.setAttribute("aria-label","Elegir locus para sincronizar los tres visores");
@@ -236,7 +237,7 @@ loadEdition("kurilo").then(d=>{for(const p of d.pages)irLocus.append(new Option(
 let ultimaPalabra={q:"",i:-1};
 function irA(){
  const base=states.find(st=>st.editionId()==="kurilo"&&st.data)||states.find(st=>st.data?.ed.format==="structured");
- if(!base){syncStatus.textContent="Ningún visor tiene cargada una edición por loci (Kurilo V514, V554 o V297).";return}
+ if(!base){syncStatus.textContent="No hay texto latino indexado por locus disponible en los tres visores.";return}
  const q=irPalabra.value.trim();
  highlightTerm=q;
  let locus=irLocus.value;
@@ -268,7 +269,7 @@ for(const [label,value] of [["Praefatio I","1.praef.1"],["symmetria","symmetria"
  quick.append(button);
 }
 const layoutStatus=document.createElement("span");layoutStatus.className="script-triple-arrangement";layoutStatus.setAttribute("role","status");
-layoutStatus.textContent="Ordenar columnas con ← →; anchuras ajustables.";
+layoutStatus.textContent="Orden fijo: Krohn 1912 · Rose 1899 · Kurilo V514. Anchuras ajustables.";
 toolbar.append(irBox,quick,syncLabel,candidateLabel,syncStatus,layoutStatus);grid.before(toolbar);
 let highlightTerm=(initialParams.get("q")||"").trim().slice(0,80),widths=[1,1,1];
 function applyWidths(){grid.style.gridTemplateColumns=widths.map(v=>"minmax(0,"+v+"fr)").join(" ")}
@@ -440,10 +441,7 @@ for(const [slot,defaultKey] of COMPARISON_READERS.entries()){
  }
  void refreshEditorialIds();
 const arrange=document.createElement("div");arrange.className="script-triple-move";
-const left=document.createElement("button");left.type="button";left.textContent="←";left.title="Mover visor a la izquierda";
-const right=document.createElement("button");right.type="button";right.textContent="→";right.title="Mover visor a la derecha";
 const expand=document.createElement("button");expand.type="button";expand.textContent="⛶";expand.title="Ampliar este visor";
-left.addEventListener("click",()=>movePane(state,states.indexOf(state)-1));right.addEventListener("click",()=>movePane(state,states.indexOf(state)+1));
 expand.addEventListener("click",()=>{const active=panel.classList.contains("script-triple-expanded");states.forEach(x=>x.element.classList.remove("script-triple-expanded"));panel.classList.toggle("script-triple-expanded",!active);grid.classList.toggle("script-triple-focus",!active)});
 arrange.append(expand);head.append(arrange);
  edition.addEventListener("change",()=>{ficha.textContent=FICHA[edition.value]||"";void refreshEditorialIds()});
