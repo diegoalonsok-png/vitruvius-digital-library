@@ -6,9 +6,10 @@
   "pendingProposal": "https://github.com/diegoalonsok-png/vitruvius-digital-library/pull/418",
   "statusByLanguage": {
     "en": {
-      "not-yet-verified": 136,
+      "not-yet-verified": 105,
       "pending-merge": 25,
-      "registered-local": 50
+      "registered-local": 50,
+      "candidate-perseus-tei": 31
     },
     "fr": {
       "not-yet-verified": 114,
@@ -601,7 +602,8 @@
       "title": "Ἐκκλησιάζουσαι",
       "original": {
         "language": "grc",
-        "path": "data/classics-corpus/aristophanes-ecclesiazusae-grc.json"
+        "path": "data/classics-corpus/aristophanes-ecclesiazusae-grc.json",
+        "sourceUrnRoot": "tlg0019.tlg010"
       },
       "translations": {
         "en": {
@@ -627,7 +629,8 @@
       "title": "Ἱππῆς",
       "original": {
         "language": "grc",
-        "path": "data/classics-corpus/aristophanes-knights-grc.json"
+        "path": "data/classics-corpus/aristophanes-knights-grc.json",
+        "sourceUrnRoot": "tlg0019.tlg002"
       },
       "translations": {
         "en": {
@@ -705,7 +708,8 @@
       "title": "Πλοῦτος",
       "original": {
         "language": "grc",
-        "path": "data/classics-corpus/aristophanes-plutus-grc.json"
+        "path": "data/classics-corpus/aristophanes-plutus-grc.json",
+        "sourceUrnRoot": "tlg0019.tlg011"
       },
       "translations": {
         "en": {
@@ -757,7 +761,8 @@
       "title": "Θεσμοφοριάζουσαι",
       "original": {
         "language": "grc",
-        "path": "data/classics-corpus/aristophanes-thesmophoriazusae-grc.json"
+        "path": "data/classics-corpus/aristophanes-thesmophoriazusae-grc.json",
+        "sourceUrnRoot": "tlg0019.tlg008"
       },
       "translations": {
         "en": {
@@ -1729,7 +1734,8 @@
       "title": "Ἀνδρομάχη",
       "original": {
         "language": "grc",
-        "path": "data/classics-corpus/euripides-andromache-grc.json"
+        "path": "data/classics-corpus/euripides-andromache-grc.json",
+        "sourceUrnRoot": "tlg0006.tlg006"
       },
       "translations": {
         "en": {
@@ -1786,7 +1792,8 @@
       "title": "Κύκλωψ",
       "original": {
         "language": "grc",
-        "path": "data/classics-corpus/euripides-cyclops-grc.json"
+        "path": "data/classics-corpus/euripides-cyclops-grc.json",
+        "sourceUrnRoot": "tlg0006.tlg001"
       },
       "translations": {
         "en": {
@@ -1870,7 +1877,8 @@
       "title": "Ἑλένη",
       "original": {
         "language": "grc",
-        "path": "data/classics-corpus/euripides-helena-grc.json"
+        "path": "data/classics-corpus/euripides-helena-grc.json",
+        "sourceUrnRoot": "tlg0006.tlg014"
       },
       "translations": {
         "en": {
@@ -1898,7 +1906,8 @@
       "title": "Ἡρακλεῖδαι",
       "original": {
         "language": "grc",
-        "path": "data/classics-corpus/euripides-heracleidae-grc.json"
+        "path": "data/classics-corpus/euripides-heracleidae-grc.json",
+        "sourceUrnRoot": "tlg0006.tlg004"
       },
       "translations": {
         "en": {
@@ -1927,7 +1936,8 @@
       "title": "Ἡρακλῆς",
       "original": {
         "language": "grc",
-        "path": "data/classics-corpus/euripides-heracles-grc.json"
+        "path": "data/classics-corpus/euripides-heracles-grc.json",
+        "sourceUrnRoot": "tlg0006.tlg009"
       },
       "translations": {
         "en": {
@@ -1984,7 +1994,8 @@
       "title": "Ἴων",
       "original": {
         "language": "grc",
-        "path": "data/classics-corpus/euripides-ion-grc.json"
+        "path": "data/classics-corpus/euripides-ion-grc.json",
+        "sourceUrnRoot": "tlg0006.tlg010"
       },
       "translations": {
         "en": {
@@ -2068,7 +2079,8 @@
       "title": "Ὀρέστης",
       "original": {
         "language": "grc",
-        "path": "data/classics-corpus/euripides-orestes-grc.json"
+        "path": "data/classics-corpus/euripides-orestes-grc.json",
+        "sourceUrnRoot": "tlg0006.tlg016"
       },
       "translations": {
         "en": {
@@ -2096,7 +2108,8 @@
       "title": "Ἱκέτιδες",
       "original": {
         "language": "grc",
-        "path": "data/classics-corpus/euripides-suppliants-grc.json"
+        "path": "data/classics-corpus/euripides-suppliants-grc.json",
+        "sourceUrnRoot": "tlg0006.tlg008"
       },
       "translations": {
         "en": {
@@ -2198,7 +2211,8 @@
       "title": "Προτρεπτικὸς ἐπὶ τὰς τέχνας · Adhortatio ad artes addiscendas",
       "original": {
         "language": "grc",
-        "path": "data/classics-corpus/galen-adhortatio-artes-grc.json"
+        "path": "data/classics-corpus/galen-adhortatio-artes-grc.json",
+        "sourceUrnRoot": "tlg0057.tlg001"
       },
       "translations": {
         "en": {
@@ -2267,7 +2281,8 @@
       "title": "Ὅτι ἄριστος ἰατρὸς καὶ φιλόσοφος · Quod optimus medicus sit quoque philosophus",
       "original": {
         "language": "grc",
-        "path": "data/classics-corpus/galen-optimus-medicus-philosophus-grc.json"
+        "path": "data/classics-corpus/galen-optimus-medicus-philosophus-grc.json",
+        "sourceUrnRoot": "tlg0057.tlg003"
       },
       "translations": {
         "en": {
@@ -2515,12 +2530,17 @@
       "title": "Περὶ ἀρχαίης ἰητρικῆς · De prisca medicina",
       "original": {
         "language": "grc",
-        "path": "data/classics-corpus/hippocrates-de-prisca-medicina-grc.json"
+        "path": "data/classics-corpus/hippocrates-de-prisca-medicina-grc.json",
+        "sourceUrnRoot": "tlg0627.tlg001"
       },
       "translations": {
         "en": {
-          "status": "not-yet-verified",
-          "note": "No se identificó una edición de esta obra en las fuentes cotejadas; no implica inexistencia de traducciones."
+          "status": "candidate-perseus-tei",
+          "url": "https://github.com/PerseusDL/canonical-greekLit/blob/master/data/tlg0627/tlg001/tlg0627.tlg001.perseus-eng3.xml",
+          "source": "PerseusDL canonical-greekLit",
+          "sourceUrnRoot": "tlg0627.tlg001",
+          "teiPath": "data/tlg0627/tlg001/tlg0627.tlg001.perseus-eng3.xml",
+          "note": "Archivo inglés TEI identificado; requiere cotejar cobertura, traductor, licencia y correspondencia de loci."
         },
         "fr": {
           "status": "not-yet-verified",
@@ -2686,7 +2706,8 @@
       "title": "Αἰγητικὸς",
       "original": {
         "language": "grc",
-        "path": "data/classics-corpus/isocrates-aegineticus-grc.json"
+        "path": "data/classics-corpus/isocrates-aegineticus-grc.json",
+        "sourceUrnRoot": "tlg0010.tlg006"
       },
       "translations": {
         "en": {
@@ -2712,7 +2733,8 @@
       "title": "Βούσιρις",
       "original": {
         "language": "grc",
-        "path": "data/classics-corpus/isocrates-busiris-grc.json"
+        "path": "data/classics-corpus/isocrates-busiris-grc.json",
+        "sourceUrnRoot": "tlg0010.tlg010"
       },
       "translations": {
         "en": {
@@ -2738,7 +2760,8 @@
       "title": "Παραγραφή πρὸς Καλλίμαχον",
       "original": {
         "language": "grc",
-        "path": "data/classics-corpus/isocrates-callimachus-grc.json"
+        "path": "data/classics-corpus/isocrates-callimachus-grc.json",
+        "sourceUrnRoot": "tlg0010.tlg002"
       },
       "translations": {
         "en": {
@@ -2787,7 +2810,8 @@
       "title": "Πρὸς Εὐθύνους ἀμάρτυρος",
       "original": {
         "language": "grc",
-        "path": "data/classics-corpus/isocrates-euthynus-grc.json"
+        "path": "data/classics-corpus/isocrates-euthynus-grc.json",
+        "sourceUrnRoot": "tlg0010.tlg001"
       },
       "translations": {
         "en": {
@@ -2813,7 +2837,8 @@
       "title": "Ἑλένη",
       "original": {
         "language": "grc",
-        "path": "data/classics-corpus/isocrates-helen-grc.json"
+        "path": "data/classics-corpus/isocrates-helen-grc.json",
+        "sourceUrnRoot": "tlg0010.tlg009"
       },
       "translations": {
         "en": {
@@ -2839,7 +2864,8 @@
       "title": "Κατὰ Λοχίτου",
       "original": {
         "language": "grc",
-        "path": "data/classics-corpus/isocrates-lochites-grc.json"
+        "path": "data/classics-corpus/isocrates-lochites-grc.json",
+        "sourceUrnRoot": "tlg0010.tlg003"
       },
       "translations": {
         "en": {
@@ -2865,7 +2891,8 @@
       "title": "Πλαταικός",
       "original": {
         "language": "grc",
-        "path": "data/classics-corpus/isocrates-plataicus-grc.json"
+        "path": "data/classics-corpus/isocrates-plataicus-grc.json",
+        "sourceUrnRoot": "tlg0010.tlg012"
       },
       "translations": {
         "en": {
@@ -2891,7 +2918,8 @@
       "title": "Κατὰ τῶν σοφιστῶν",
       "original": {
         "language": "grc",
-        "path": "data/classics-corpus/isocrates-sophists-grc.json"
+        "path": "data/classics-corpus/isocrates-sophists-grc.json",
+        "sourceUrnRoot": "tlg0010.tlg008"
       },
       "translations": {
         "en": {
@@ -2917,7 +2945,8 @@
       "title": "Περὶ τοῦ ζεύγους",
       "original": {
         "language": "grc",
-        "path": "data/classics-corpus/isocrates-team-horses-grc.json"
+        "path": "data/classics-corpus/isocrates-team-horses-grc.json",
+        "sourceUrnRoot": "tlg0010.tlg004"
       },
       "translations": {
         "en": {
@@ -2943,7 +2972,8 @@
       "title": "Τραπεζιτικός",
       "original": {
         "language": "grc",
-        "path": "data/classics-corpus/isocrates-trapeziticus-grc.json"
+        "path": "data/classics-corpus/isocrates-trapeziticus-grc.json",
+        "sourceUrnRoot": "tlg0010.tlg005"
       },
       "translations": {
         "en": {
@@ -3159,12 +3189,17 @@
       "title": "Προλαλιά. Διόνυσος",
       "original": {
         "language": "grc",
-        "path": "data/classics-corpus/lucian-bacchus-grc.json"
+        "path": "data/classics-corpus/lucian-bacchus-grc.json",
+        "sourceUrnRoot": "tlg0062.tlg003"
       },
       "translations": {
         "en": {
-          "status": "not-yet-verified",
-          "note": "No se identificó una edición de esta obra en las fuentes cotejadas; no implica inexistencia de traducciones."
+          "status": "candidate-perseus-tei",
+          "url": "https://github.com/PerseusDL/canonical-greekLit/blob/master/data/tlg0062/tlg003/tlg0062.tlg003.perseus-eng2.xml",
+          "source": "PerseusDL canonical-greekLit",
+          "sourceUrnRoot": "tlg0062.tlg003",
+          "teiPath": "data/tlg0062/tlg003/tlg0062.tlg003.perseus-eng2.xml",
+          "note": "Archivo inglés TEI identificado; requiere cotejar cobertura, traductor, licencia y correspondencia de loci."
         },
         "fr": {
           "status": "not-yet-verified",
@@ -3182,12 +3217,17 @@
       "title": "Περὶ τοῦ Οἴκου",
       "original": {
         "language": "grc",
-        "path": "data/classics-corpus/lucian-de-domo-grc.json"
+        "path": "data/classics-corpus/lucian-de-domo-grc.json",
+        "sourceUrnRoot": "tlg0062.tlg009"
       },
       "translations": {
         "en": {
-          "status": "not-yet-verified",
-          "note": "No se identificó una edición de esta obra en las fuentes cotejadas; no implica inexistencia de traducciones."
+          "status": "candidate-perseus-tei",
+          "url": "https://github.com/PerseusDL/canonical-greekLit/blob/master/data/tlg0062/tlg009/tlg0062.tlg009.perseus-eng2.xml",
+          "source": "PerseusDL canonical-greekLit",
+          "sourceUrnRoot": "tlg0062.tlg009",
+          "teiPath": "data/tlg0062/tlg009/tlg0062.tlg009.perseus-eng2.xml",
+          "note": "Archivo inglés TEI identificado; requiere cotejar cobertura, traductor, licencia y correspondencia de loci."
         },
         "fr": {
           "status": "candidate-work-page",
@@ -3208,12 +3248,17 @@
       "title": "Δημώνακτος Βίος",
       "original": {
         "language": "grc",
-        "path": "data/classics-corpus/lucian-demonax-grc.json"
+        "path": "data/classics-corpus/lucian-demonax-grc.json",
+        "sourceUrnRoot": "tlg0062.tlg008"
       },
       "translations": {
         "en": {
-          "status": "not-yet-verified",
-          "note": "No se identificó una edición de esta obra en las fuentes cotejadas; no implica inexistencia de traducciones."
+          "status": "candidate-perseus-tei",
+          "url": "https://github.com/PerseusDL/canonical-greekLit/blob/master/data/tlg0062/tlg008/tlg0062.tlg008.perseus-eng2.xml",
+          "source": "PerseusDL canonical-greekLit",
+          "sourceUrnRoot": "tlg0062.tlg008",
+          "teiPath": "data/tlg0062/tlg008/tlg0062.tlg008.perseus-eng2.xml",
+          "note": "Archivo inglés TEI identificado; requiere cotejar cobertura, traductor, licencia y correspondencia de loci."
         },
         "fr": {
           "status": "not-yet-verified",
@@ -3257,12 +3302,17 @@
       "title": "Περὶ τοῦ Ἡλέκτρου ἢ Κύκνων",
       "original": {
         "language": "grc",
-        "path": "data/classics-corpus/lucian-electrum-grc.json"
+        "path": "data/classics-corpus/lucian-electrum-grc.json",
+        "sourceUrnRoot": "tlg0062.tlg005"
       },
       "translations": {
         "en": {
-          "status": "not-yet-verified",
-          "note": "No se identificó una edición de esta obra en las fuentes cotejadas; no implica inexistencia de traducciones."
+          "status": "candidate-perseus-tei",
+          "url": "https://github.com/PerseusDL/canonical-greekLit/blob/master/data/tlg0062/tlg005/tlg0062.tlg005.perseus-eng2.xml",
+          "source": "PerseusDL canonical-greekLit",
+          "sourceUrnRoot": "tlg0062.tlg005",
+          "teiPath": "data/tlg0062/tlg005/tlg0062.tlg005.perseus-eng2.xml",
+          "note": "Archivo inglés TEI identificado; requiere cotejar cobertura, traductor, licencia y correspondencia de loci."
         },
         "fr": {
           "status": "not-yet-verified",
@@ -3280,12 +3330,17 @@
       "title": "Πατρίδος Ἐγκώμιον",
       "original": {
         "language": "grc",
-        "path": "data/classics-corpus/lucian-encomium-fatherland-grc.json"
+        "path": "data/classics-corpus/lucian-encomium-fatherland-grc.json",
+        "sourceUrnRoot": "tlg0062.tlg010"
       },
       "translations": {
         "en": {
-          "status": "not-yet-verified",
-          "note": "No se identificó una edición de esta obra en las fuentes cotejadas; no implica inexistencia de traducciones."
+          "status": "candidate-perseus-tei",
+          "url": "https://github.com/PerseusDL/canonical-greekLit/blob/master/data/tlg0062/tlg010/tlg0062.tlg010.perseus-eng2.xml",
+          "source": "PerseusDL canonical-greekLit",
+          "sourceUrnRoot": "tlg0062.tlg010",
+          "teiPath": "data/tlg0062/tlg010/tlg0062.tlg010.perseus-eng2.xml",
+          "note": "Archivo inglés TEI identificado; requiere cotejar cobertura, traductor, licencia y correspondencia de loci."
         },
         "fr": {
           "status": "not-yet-verified",
@@ -3303,12 +3358,17 @@
       "title": "Μυίας Ἐγκώμιον",
       "original": {
         "language": "grc",
-        "path": "data/classics-corpus/lucian-encomium-fly-grc.json"
+        "path": "data/classics-corpus/lucian-encomium-fly-grc.json",
+        "sourceUrnRoot": "tlg0062.tlg006"
       },
       "translations": {
         "en": {
-          "status": "not-yet-verified",
-          "note": "No se identificó una edición de esta obra en las fuentes cotejadas; no implica inexistencia de traducciones."
+          "status": "candidate-perseus-tei",
+          "url": "https://github.com/PerseusDL/canonical-greekLit/blob/master/data/tlg0062/tlg006/tlg0062.tlg006.perseus-eng2.xml",
+          "source": "PerseusDL canonical-greekLit",
+          "sourceUrnRoot": "tlg0062.tlg006",
+          "teiPath": "data/tlg0062/tlg006/tlg0062.tlg006.perseus-eng2.xml",
+          "note": "Archivo inglés TEI identificado; requiere cotejar cobertura, traductor, licencia y correspondencia de loci."
         },
         "fr": {
           "status": "candidate-work-page",
@@ -3329,12 +3389,17 @@
       "title": "Προλαλιά. Ἡρακλῆς",
       "original": {
         "language": "grc",
-        "path": "data/classics-corpus/lucian-hercules-grc.json"
+        "path": "data/classics-corpus/lucian-hercules-grc.json",
+        "sourceUrnRoot": "tlg0062.tlg004"
       },
       "translations": {
         "en": {
-          "status": "not-yet-verified",
-          "note": "No se identificó una edición de esta obra en las fuentes cotejadas; no implica inexistencia de traducciones."
+          "status": "candidate-perseus-tei",
+          "url": "https://github.com/PerseusDL/canonical-greekLit/blob/master/data/tlg0062/tlg004/tlg0062.tlg004.perseus-eng2.xml",
+          "source": "PerseusDL canonical-greekLit",
+          "sourceUrnRoot": "tlg0062.tlg004",
+          "teiPath": "data/tlg0062/tlg004/tlg0062.tlg004.perseus-eng2.xml",
+          "note": "Archivo inglés TEI identificado; requiere cotejar cobertura, traductor, licencia y correspondencia de loci."
         },
         "fr": {
           "status": "not-yet-verified",
@@ -3352,12 +3417,17 @@
       "title": "Ἱππίας ἢ Βαλανεῖον",
       "original": {
         "language": "grc",
-        "path": "data/classics-corpus/lucian-hippias-grc.json"
+        "path": "data/classics-corpus/lucian-hippias-grc.json",
+        "sourceUrnRoot": "tlg0062.tlg002"
       },
       "translations": {
         "en": {
-          "status": "not-yet-verified",
-          "note": "No se identificó una edición de esta obra en las fuentes cotejadas; no implica inexistencia de traducciones."
+          "status": "candidate-perseus-tei",
+          "url": "https://github.com/PerseusDL/canonical-greekLit/blob/master/data/tlg0062/tlg002/tlg0062.tlg002.perseus-eng2.xml",
+          "source": "PerseusDL canonical-greekLit",
+          "sourceUrnRoot": "tlg0062.tlg002",
+          "teiPath": "data/tlg0062/tlg002/tlg0062.tlg002.perseus-eng2.xml",
+          "note": "Archivo inglés TEI identificado; requiere cotejar cobertura, traductor, licencia y correspondencia de loci."
         },
         "fr": {
           "status": "not-yet-verified",
@@ -3375,12 +3445,17 @@
       "title": "Νιγρίνου Φιλοσοφία",
       "original": {
         "language": "grc",
-        "path": "data/classics-corpus/lucian-nigrinus-grc.json"
+        "path": "data/classics-corpus/lucian-nigrinus-grc.json",
+        "sourceUrnRoot": "tlg0062.tlg007"
       },
       "translations": {
         "en": {
-          "status": "not-yet-verified",
-          "note": "No se identificó una edición de esta obra en las fuentes cotejadas; no implica inexistencia de traducciones."
+          "status": "candidate-perseus-tei",
+          "url": "https://github.com/PerseusDL/canonical-greekLit/blob/master/data/tlg0062/tlg007/tlg0062.tlg007.perseus-eng2.xml",
+          "source": "PerseusDL canonical-greekLit",
+          "sourceUrnRoot": "tlg0062.tlg007",
+          "teiPath": "data/tlg0062/tlg007/tlg0062.tlg007.perseus-eng2.xml",
+          "note": "Archivo inglés TEI identificado; requiere cotejar cobertura, traductor, licencia y correspondencia de loci."
         },
         "fr": {
           "status": "candidate-work-page",
@@ -3401,12 +3476,17 @@
       "title": "Φάλαρις",
       "original": {
         "language": "grc",
-        "path": "data/classics-corpus/lucian-phalaris-grc.json"
+        "path": "data/classics-corpus/lucian-phalaris-grc.json",
+        "sourceUrnRoot": "tlg0062.tlg001"
       },
       "translations": {
         "en": {
-          "status": "not-yet-verified",
-          "note": "No se identificó una edición de esta obra en las fuentes cotejadas; no implica inexistencia de traducciones."
+          "status": "candidate-perseus-tei",
+          "url": "https://github.com/PerseusDL/canonical-greekLit/blob/master/data/tlg0062/tlg001/tlg0062.tlg001.perseus-eng2.xml",
+          "source": "PerseusDL canonical-greekLit",
+          "sourceUrnRoot": "tlg0062.tlg001",
+          "teiPath": "data/tlg0062/tlg001/tlg0062.tlg001.perseus-eng2.xml",
+          "note": "Archivo inglés TEI identificado; requiere cotejar cobertura, traductor, licencia y correspondencia de loci."
         },
         "fr": {
           "status": "not-yet-verified",
@@ -3452,12 +3532,17 @@
       "title": "κατ᾽ Ἀνδοκίδου ἀσεβείας",
       "original": {
         "language": "grc",
-        "path": "data/classics-corpus/lysias-against-andocides-grc.json"
+        "path": "data/classics-corpus/lysias-against-andocides-grc.json",
+        "sourceUrnRoot": "tlg0540.tlg006"
       },
       "translations": {
         "en": {
-          "status": "not-yet-verified",
-          "note": "No se identificó una edición de esta obra en las fuentes cotejadas; no implica inexistencia de traducciones."
+          "status": "candidate-perseus-tei",
+          "url": "https://github.com/PerseusDL/canonical-greekLit/blob/master/data/tlg0540/tlg006/tlg0540.tlg006.perseus-eng2.xml",
+          "source": "PerseusDL canonical-greekLit",
+          "sourceUrnRoot": "tlg0540.tlg006",
+          "teiPath": "data/tlg0540/tlg006/tlg0540.tlg006.perseus-eng2.xml",
+          "note": "Archivo inglés TEI identificado; requiere cotejar cobertura, traductor, licencia y correspondencia de loci."
         },
         "fr": {
           "status": "not-yet-verified",
@@ -3475,12 +3560,17 @@
       "title": "πρὸς Σίμωνα ἀπολογία",
       "original": {
         "language": "grc",
-        "path": "data/classics-corpus/lysias-against-simon-grc.json"
+        "path": "data/classics-corpus/lysias-against-simon-grc.json",
+        "sourceUrnRoot": "tlg0540.tlg003"
       },
       "translations": {
         "en": {
-          "status": "not-yet-verified",
-          "note": "No se identificó una edición de esta obra en las fuentes cotejadas; no implica inexistencia de traducciones."
+          "status": "candidate-perseus-tei",
+          "url": "https://github.com/PerseusDL/canonical-greekLit/blob/master/data/tlg0540/tlg003/tlg0540.tlg003.perseus-eng2.xml",
+          "source": "PerseusDL canonical-greekLit",
+          "sourceUrnRoot": "tlg0540.tlg003",
+          "teiPath": "data/tlg0540/tlg003/tlg0540.tlg003.perseus-eng2.xml",
+          "note": "Archivo inglés TEI identificado; requiere cotejar cobertura, traductor, licencia y correspondencia de loci."
         },
         "fr": {
           "status": "not-yet-verified",
@@ -3498,12 +3588,17 @@
       "title": "κατηγορία πρὸς τοὺς συνουσιαστὰς κακολογιῶν",
       "original": {
         "language": "grc",
-        "path": "data/classics-corpus/lysias-calumny-grc.json"
+        "path": "data/classics-corpus/lysias-calumny-grc.json",
+        "sourceUrnRoot": "tlg0540.tlg008"
       },
       "translations": {
         "en": {
-          "status": "not-yet-verified",
-          "note": "No se identificó una edición de esta obra en las fuentes cotejadas; no implica inexistencia de traducciones."
+          "status": "candidate-perseus-tei",
+          "url": "https://github.com/PerseusDL/canonical-greekLit/blob/master/data/tlg0540/tlg008/tlg0540.tlg008.perseus-eng2.xml",
+          "source": "PerseusDL canonical-greekLit",
+          "sourceUrnRoot": "tlg0540.tlg008",
+          "teiPath": "data/tlg0540/tlg008/tlg0540.tlg008.perseus-eng2.xml",
+          "note": "Archivo inglés TEI identificado; requiere cotejar cobertura, traductor, licencia y correspondencia de loci."
         },
         "fr": {
           "status": "not-yet-verified",
@@ -3521,12 +3616,17 @@
       "title": "ὑπὲρ τοῦ Ἐρατοσθένους φόνου ἀπολογία",
       "original": {
         "language": "grc",
-        "path": "data/classics-corpus/lysias-eratosthenes-grc.json"
+        "path": "data/classics-corpus/lysias-eratosthenes-grc.json",
+        "sourceUrnRoot": "tlg0540.tlg001"
       },
       "translations": {
         "en": {
-          "status": "not-yet-verified",
-          "note": "No se identificó una edición de esta obra en las fuentes cotejadas; no implica inexistencia de traducciones."
+          "status": "candidate-perseus-tei",
+          "url": "https://github.com/PerseusDL/canonical-greekLit/blob/master/data/tlg0540/tlg001/tlg0540.tlg001.perseus-eng2.xml",
+          "source": "PerseusDL canonical-greekLit",
+          "sourceUrnRoot": "tlg0540.tlg001",
+          "teiPath": "data/tlg0540/tlg001/tlg0540.tlg001.perseus-eng2.xml",
+          "note": "Archivo inglés TEI identificado; requiere cotejar cobertura, traductor, licencia y correspondencia de loci."
         },
         "fr": {
           "status": "not-yet-verified",
@@ -3544,12 +3644,17 @@
       "title": "ὑπὲρ Καλλίου ἱεροσυλίας ἀπολογία",
       "original": {
         "language": "grc",
-        "path": "data/classics-corpus/lysias-for-callias-grc.json"
+        "path": "data/classics-corpus/lysias-for-callias-grc.json",
+        "sourceUrnRoot": "tlg0540.tlg005"
       },
       "translations": {
         "en": {
-          "status": "not-yet-verified",
-          "note": "No se identificó una edición de esta obra en las fuentes cotejadas; no implica inexistencia de traducciones."
+          "status": "candidate-perseus-tei",
+          "url": "https://github.com/PerseusDL/canonical-greekLit/blob/master/data/tlg0540/tlg005/tlg0540.tlg005.perseus-eng2.xml",
+          "source": "PerseusDL canonical-greekLit",
+          "sourceUrnRoot": "tlg0540.tlg005",
+          "teiPath": "data/tlg0540/tlg005/tlg0540.tlg005.perseus-eng2.xml",
+          "note": "Archivo inglés TEI identificado; requiere cotejar cobertura, traductor, licencia y correspondencia de loci."
         },
         "fr": {
           "status": "not-yet-verified",
@@ -3567,12 +3672,17 @@
       "title": "Ἐπιτάφιος τοῖς Κορινθίων βοηθοῖς",
       "original": {
         "language": "grc",
-        "path": "data/classics-corpus/lysias-funeral-oration-grc.json"
+        "path": "data/classics-corpus/lysias-funeral-oration-grc.json",
+        "sourceUrnRoot": "tlg0540.tlg002"
       },
       "translations": {
         "en": {
-          "status": "not-yet-verified",
-          "note": "No se identificó una edición de esta obra en las fuentes cotejadas; no implica inexistencia de traducciones."
+          "status": "candidate-perseus-tei",
+          "url": "https://github.com/PerseusDL/canonical-greekLit/blob/master/data/tlg0540/tlg002/tlg0540.tlg002.perseus-eng2.xml",
+          "source": "PerseusDL canonical-greekLit",
+          "sourceUrnRoot": "tlg0540.tlg002",
+          "teiPath": "data/tlg0540/tlg002/tlg0540.tlg002.perseus-eng2.xml",
+          "note": "Archivo inglés TEI identificado; requiere cotejar cobertura, traductor, licencia y correspondencia de loci."
         },
         "fr": {
           "status": "not-yet-verified",
@@ -3590,12 +3700,17 @@
       "title": "Ἀρεοπαγιτικὸς περὶ τοῦ σηκοῦ ἀπολογία",
       "original": {
         "language": "grc",
-        "path": "data/classics-corpus/lysias-olive-stump-grc.json"
+        "path": "data/classics-corpus/lysias-olive-stump-grc.json",
+        "sourceUrnRoot": "tlg0540.tlg007"
       },
       "translations": {
         "en": {
-          "status": "not-yet-verified",
-          "note": "No se identificó una edición de esta obra en las fuentes cotejadas; no implica inexistencia de traducciones."
+          "status": "candidate-perseus-tei",
+          "url": "https://github.com/PerseusDL/canonical-greekLit/blob/master/data/tlg0540/tlg007/tlg0540.tlg007.perseus-eng2.xml",
+          "source": "PerseusDL canonical-greekLit",
+          "sourceUrnRoot": "tlg0540.tlg007",
+          "teiPath": "data/tlg0540/tlg007/tlg0540.tlg007.perseus-eng2.xml",
+          "note": "Archivo inglés TEI identificado; requiere cotejar cobertura, traductor, licencia y correspondencia de loci."
         },
         "fr": {
           "status": "not-yet-verified",
@@ -3613,12 +3728,17 @@
       "title": "ὑπὲρ τοῦ στρατιωτοῦ",
       "original": {
         "language": "grc",
-        "path": "data/classics-corpus/lysias-soldier-grc.json"
+        "path": "data/classics-corpus/lysias-soldier-grc.json",
+        "sourceUrnRoot": "tlg0540.tlg009"
       },
       "translations": {
         "en": {
-          "status": "not-yet-verified",
-          "note": "No se identificó una edición de esta obra en las fuentes cotejadas; no implica inexistencia de traducciones."
+          "status": "candidate-perseus-tei",
+          "url": "https://github.com/PerseusDL/canonical-greekLit/blob/master/data/tlg0540/tlg009/tlg0540.tlg009.perseus-eng2.xml",
+          "source": "PerseusDL canonical-greekLit",
+          "sourceUrnRoot": "tlg0540.tlg009",
+          "teiPath": "data/tlg0540/tlg009/tlg0540.tlg009.perseus-eng2.xml",
+          "note": "Archivo inglés TEI identificado; requiere cotejar cobertura, traductor, licencia y correspondencia de loci."
         },
         "fr": {
           "status": "not-yet-verified",
@@ -3636,12 +3756,17 @@
       "title": "κατὰ θεομνήστου, Α",
       "original": {
         "language": "grc",
-        "path": "data/classics-corpus/lysias-theomnestus-1-grc.json"
+        "path": "data/classics-corpus/lysias-theomnestus-1-grc.json",
+        "sourceUrnRoot": "tlg0540.tlg010"
       },
       "translations": {
         "en": {
-          "status": "not-yet-verified",
-          "note": "No se identificó una edición de esta obra en las fuentes cotejadas; no implica inexistencia de traducciones."
+          "status": "candidate-perseus-tei",
+          "url": "https://github.com/PerseusDL/canonical-greekLit/blob/master/data/tlg0540/tlg010/tlg0540.tlg010.perseus-eng2.xml",
+          "source": "PerseusDL canonical-greekLit",
+          "sourceUrnRoot": "tlg0540.tlg010",
+          "teiPath": "data/tlg0540/tlg010/tlg0540.tlg010.perseus-eng2.xml",
+          "note": "Archivo inglés TEI identificado; requiere cotejar cobertura, traductor, licencia y correspondencia de loci."
         },
         "fr": {
           "status": "not-yet-verified",
@@ -3659,12 +3784,17 @@
       "title": "περὶ τραύματος ἐκ προνοίας",
       "original": {
         "language": "grc",
-        "path": "data/classics-corpus/lysias-wound-grc.json"
+        "path": "data/classics-corpus/lysias-wound-grc.json",
+        "sourceUrnRoot": "tlg0540.tlg004"
       },
       "translations": {
         "en": {
-          "status": "not-yet-verified",
-          "note": "No se identificó una edición de esta obra en las fuentes cotejadas; no implica inexistencia de traducciones."
+          "status": "candidate-perseus-tei",
+          "url": "https://github.com/PerseusDL/canonical-greekLit/blob/master/data/tlg0540/tlg004/tlg0540.tlg004.perseus-eng2.xml",
+          "source": "PerseusDL canonical-greekLit",
+          "sourceUrnRoot": "tlg0540.tlg004",
+          "teiPath": "data/tlg0540/tlg004/tlg0540.tlg004.perseus-eng2.xml",
+          "note": "Archivo inglés TEI identificado; requiere cotejar cobertura, traductor, licencia y correspondencia de loci."
         },
         "fr": {
           "status": "not-yet-verified",
@@ -3997,7 +4127,8 @@
       "title": "Χαρμίδης",
       "original": {
         "language": "grc",
-        "path": "data/classics-corpus/plato-charmides-grc.json"
+        "path": "data/classics-corpus/plato-charmides-grc.json",
+        "sourceUrnRoot": "tlg0059.tlg018"
       },
       "translations": {
         "en": {
@@ -4060,7 +4191,8 @@
       "title": "Εὐθύδημος",
       "original": {
         "language": "grc",
-        "path": "data/classics-corpus/plato-euthydemus-grc.json"
+        "path": "data/classics-corpus/plato-euthydemus-grc.json",
+        "sourceUrnRoot": "tlg0059.tlg021"
       },
       "translations": {
         "en": {
@@ -4092,7 +4224,8 @@
       "title": "Εὐθύφρων",
       "original": {
         "language": "grc",
-        "path": "data/classics-corpus/plato-euthyphro-grc.json"
+        "path": "data/classics-corpus/plato-euthyphro-grc.json",
+        "sourceUrnRoot": "tlg0059.tlg001"
       },
       "translations": {
         "en": {
@@ -4155,7 +4288,8 @@
       "title": "Ἱππίας ἐλάττων",
       "original": {
         "language": "grc",
-        "path": "data/classics-corpus/plato-hippias-minor-grc.json"
+        "path": "data/classics-corpus/plato-hippias-minor-grc.json",
+        "sourceUrnRoot": "tlg0059.tlg026"
       },
       "translations": {
         "en": {
@@ -4184,7 +4318,8 @@
       "title": "Ἴων",
       "original": {
         "language": "grc",
-        "path": "data/classics-corpus/plato-ion-grc.json"
+        "path": "data/classics-corpus/plato-ion-grc.json",
+        "sourceUrnRoot": "tlg0059.tlg027"
       },
       "translations": {
         "en": {
@@ -4216,7 +4351,8 @@
       "title": "Λάχης",
       "original": {
         "language": "grc",
-        "path": "data/classics-corpus/plato-laches-grc.json"
+        "path": "data/classics-corpus/plato-laches-grc.json",
+        "sourceUrnRoot": "tlg0059.tlg019"
       },
       "translations": {
         "en": {
@@ -4274,7 +4410,8 @@
       "title": "Λύσις",
       "original": {
         "language": "grc",
-        "path": "data/classics-corpus/plato-lysis-grc.json"
+        "path": "data/classics-corpus/plato-lysis-grc.json",
+        "sourceUrnRoot": "tlg0059.tlg020"
       },
       "translations": {
         "en": {
@@ -4306,7 +4443,8 @@
       "title": "Μενέξενος",
       "original": {
         "language": "grc",
-        "path": "data/classics-corpus/plato-menexenus-grc.json"
+        "path": "data/classics-corpus/plato-menexenus-grc.json",
+        "sourceUrnRoot": "tlg0059.tlg028"
       },
       "translations": {
         "en": {
@@ -4363,7 +4501,8 @@
       "title": "Παρμενίδης",
       "original": {
         "language": "grc",
-        "path": "data/classics-corpus/plato-parmenides-grc.json"
+        "path": "data/classics-corpus/plato-parmenides-grc.json",
+        "sourceUrnRoot": "tlg0059.tlg009"
       },
       "translations": {
         "en": {
@@ -4453,7 +4592,8 @@
       "title": "Φίληβος",
       "original": {
         "language": "grc",
-        "path": "data/classics-corpus/plato-philebus-grc.json"
+        "path": "data/classics-corpus/plato-philebus-grc.json",
+        "sourceUrnRoot": "tlg0059.tlg010"
       },
       "translations": {
         "en": {
@@ -4514,7 +4654,8 @@
       "title": "Σοφιστής",
       "original": {
         "language": "grc",
-        "path": "data/classics-corpus/plato-sophist-grc.json"
+        "path": "data/classics-corpus/plato-sophist-grc.json",
+        "sourceUrnRoot": "tlg0059.tlg007"
       },
       "translations": {
         "en": {
@@ -4545,7 +4686,8 @@
       "title": "Πολιτικός",
       "original": {
         "language": "grc",
-        "path": "data/classics-corpus/plato-statesman-grc.json"
+        "path": "data/classics-corpus/plato-statesman-grc.json",
+        "sourceUrnRoot": "tlg0059.tlg008"
       },
       "translations": {
         "en": {
@@ -4605,7 +4747,8 @@
       "title": "Θεαίτητος",
       "original": {
         "language": "grc",
-        "path": "data/classics-corpus/plato-theaetetus-grc.json"
+        "path": "data/classics-corpus/plato-theaetetus-grc.json",
+        "sourceUrnRoot": "tlg0059.tlg006"
       },
       "translations": {
         "en": {
@@ -5211,7 +5354,8 @@
       "title": "Εἰδύλλια",
       "original": {
         "language": "grc",
-        "path": "data/classics-corpus/theocritus-idyllia-grc.json"
+        "path": "data/classics-corpus/theocritus-idyllia-grc.json",
+        "sourceUrnRoot": "tlg0005.tlg001"
       },
       "translations": {
         "en": {
@@ -5308,12 +5452,17 @@
       "title": "Ἀγησίλαος",
       "original": {
         "language": "grc",
-        "path": "data/classics-corpus/xenophon-agesilaus-grc.json"
+        "path": "data/classics-corpus/xenophon-agesilaus-grc.json",
+        "sourceUrnRoot": "tlg0032.tlg009"
       },
       "translations": {
         "en": {
-          "status": "not-yet-verified",
-          "note": "No se identificó una edición de esta obra en las fuentes cotejadas; no implica inexistencia de traducciones."
+          "status": "candidate-perseus-tei",
+          "url": "https://github.com/PerseusDL/canonical-greekLit/blob/master/data/tlg0032/tlg009/tlg0032.tlg009.perseus-eng2.xml",
+          "source": "PerseusDL canonical-greekLit",
+          "sourceUrnRoot": "tlg0032.tlg009",
+          "teiPath": "data/tlg0032/tlg009/tlg0032.tlg009.perseus-eng2.xml",
+          "note": "Archivo inglés TEI identificado; requiere cotejar cobertura, traductor, licencia y correspondencia de loci."
         },
         "fr": {
           "status": "candidate-work-page",
@@ -5360,12 +5509,17 @@
       "title": "Ἀπολογία Σωκράτους",
       "original": {
         "language": "grc",
-        "path": "data/classics-corpus/xenophon-apology-grc.json"
+        "path": "data/classics-corpus/xenophon-apology-grc.json",
+        "sourceUrnRoot": "tlg0032.tlg005"
       },
       "translations": {
         "en": {
-          "status": "not-yet-verified",
-          "note": "No se identificó una edición de esta obra en las fuentes cotejadas; no implica inexistencia de traducciones."
+          "status": "candidate-perseus-tei",
+          "url": "https://github.com/PerseusDL/canonical-greekLit/blob/master/data/tlg0032/tlg005/tlg0032.tlg005.perseus-eng2.xml",
+          "source": "PerseusDL canonical-greekLit",
+          "sourceUrnRoot": "tlg0032.tlg005",
+          "teiPath": "data/tlg0032/tlg005/tlg0032.tlg005.perseus-eng2.xml",
+          "note": "Archivo inglés TEI identificado; requiere cotejar cobertura, traductor, licencia y correspondencia de loci."
         },
         "fr": {
           "status": "candidate-work-page",
@@ -5415,12 +5569,17 @@
       "title": "Ἱέρων",
       "original": {
         "language": "grc",
-        "path": "data/classics-corpus/xenophon-hiero-grc.json"
+        "path": "data/classics-corpus/xenophon-hiero-grc.json",
+        "sourceUrnRoot": "tlg0032.tlg008"
       },
       "translations": {
         "en": {
-          "status": "not-yet-verified",
-          "note": "No se identificó una edición de esta obra en las fuentes cotejadas; no implica inexistencia de traducciones."
+          "status": "candidate-perseus-tei",
+          "url": "https://github.com/PerseusDL/canonical-greekLit/blob/master/data/tlg0032/tlg008/tlg0032.tlg008.perseus-eng2.xml",
+          "source": "PerseusDL canonical-greekLit",
+          "sourceUrnRoot": "tlg0032.tlg008",
+          "teiPath": "data/tlg0032/tlg008/tlg0032.tlg008.perseus-eng2.xml",
+          "note": "Archivo inglés TEI identificado; requiere cotejar cobertura, traductor, licencia y correspondencia de loci."
         },
         "fr": {
           "status": "candidate-work-page",
@@ -5441,12 +5600,17 @@
       "title": "Ἱππαρχικός",
       "original": {
         "language": "grc",
-        "path": "data/classics-corpus/xenophon-hipparchicus-grc.json"
+        "path": "data/classics-corpus/xenophon-hipparchicus-grc.json",
+        "sourceUrnRoot": "tlg0032.tlg012"
       },
       "translations": {
         "en": {
-          "status": "not-yet-verified",
-          "note": "No se identificó una edición de esta obra en las fuentes cotejadas; no implica inexistencia de traducciones."
+          "status": "candidate-perseus-tei",
+          "url": "https://github.com/PerseusDL/canonical-greekLit/blob/master/data/tlg0032/tlg012/tlg0032.tlg012.perseus-eng2.xml",
+          "source": "PerseusDL canonical-greekLit",
+          "sourceUrnRoot": "tlg0032.tlg012",
+          "teiPath": "data/tlg0032/tlg012/tlg0032.tlg012.perseus-eng2.xml",
+          "note": "Archivo inglés TEI identificado; requiere cotejar cobertura, traductor, licencia y correspondencia de loci."
         },
         "fr": {
           "status": "candidate-work-page",
@@ -5467,12 +5631,17 @@
       "title": "Περὶ ἱππικῆς",
       "original": {
         "language": "grc",
-        "path": "data/classics-corpus/xenophon-horsemanship-grc.json"
+        "path": "data/classics-corpus/xenophon-horsemanship-grc.json",
+        "sourceUrnRoot": "tlg0032.tlg013"
       },
       "translations": {
         "en": {
-          "status": "not-yet-verified",
-          "note": "No se identificó una edición de esta obra en las fuentes cotejadas; no implica inexistencia de traducciones."
+          "status": "candidate-perseus-tei",
+          "url": "https://github.com/PerseusDL/canonical-greekLit/blob/master/data/tlg0032/tlg013/tlg0032.tlg013.perseus-eng2.xml",
+          "source": "PerseusDL canonical-greekLit",
+          "sourceUrnRoot": "tlg0032.tlg013",
+          "teiPath": "data/tlg0032/tlg013/tlg0032.tlg013.perseus-eng2.xml",
+          "note": "Archivo inglés TEI identificado; requiere cotejar cobertura, traductor, licencia y correspondencia de loci."
         },
         "fr": {
           "status": "candidate-work-page",
@@ -5493,12 +5662,17 @@
       "title": "Κυνηγετικός",
       "original": {
         "language": "grc",
-        "path": "data/classics-corpus/xenophon-hunting-grc.json"
+        "path": "data/classics-corpus/xenophon-hunting-grc.json",
+        "sourceUrnRoot": "tlg0032.tlg014"
       },
       "translations": {
         "en": {
-          "status": "not-yet-verified",
-          "note": "No se identificó una edición de esta obra en las fuentes cotejadas; no implica inexistencia de traducciones."
+          "status": "candidate-perseus-tei",
+          "url": "https://github.com/PerseusDL/canonical-greekLit/blob/master/data/tlg0032/tlg014/tlg0032.tlg014.perseus-eng2.xml",
+          "source": "PerseusDL canonical-greekLit",
+          "sourceUrnRoot": "tlg0032.tlg014",
+          "teiPath": "data/tlg0032/tlg014/tlg0032.tlg014.perseus-eng2.xml",
+          "note": "Archivo inglés TEI identificado; requiere cotejar cobertura, traductor, licencia y correspondencia de loci."
         },
         "fr": {
           "status": "candidate-work-page",
@@ -5519,12 +5693,17 @@
       "title": "Λακεδαιμονίων Πολιτεία",
       "original": {
         "language": "grc",
-        "path": "data/classics-corpus/xenophon-lacedaemonian-constitution-grc.json"
+        "path": "data/classics-corpus/xenophon-lacedaemonian-constitution-grc.json",
+        "sourceUrnRoot": "tlg0032.tlg010"
       },
       "translations": {
         "en": {
-          "status": "not-yet-verified",
-          "note": "No se identificó una edición de esta obra en las fuentes cotejadas; no implica inexistencia de traducciones."
+          "status": "candidate-perseus-tei",
+          "url": "https://github.com/PerseusDL/canonical-greekLit/blob/master/data/tlg0032/tlg010/tlg0032.tlg010.perseus-eng2.xml",
+          "source": "PerseusDL canonical-greekLit",
+          "sourceUrnRoot": "tlg0032.tlg010",
+          "teiPath": "data/tlg0032/tlg010/tlg0032.tlg010.perseus-eng2.xml",
+          "note": "Archivo inglés TEI identificado; requiere cotejar cobertura, traductor, licencia y correspondencia de loci."
         },
         "fr": {
           "status": "candidate-work-page",
@@ -5571,12 +5750,17 @@
       "title": "Οἰκονομικός",
       "original": {
         "language": "grc",
-        "path": "data/classics-corpus/xenophon-oeconomicus-grc.json"
+        "path": "data/classics-corpus/xenophon-oeconomicus-grc.json",
+        "sourceUrnRoot": "tlg0032.tlg003"
       },
       "translations": {
         "en": {
-          "status": "not-yet-verified",
-          "note": "No se identificó una edición de esta obra en las fuentes cotejadas; no implica inexistencia de traducciones."
+          "status": "candidate-perseus-tei",
+          "url": "https://github.com/PerseusDL/canonical-greekLit/blob/master/data/tlg0032/tlg003/tlg0032.tlg003.perseus-eng2.xml",
+          "source": "PerseusDL canonical-greekLit",
+          "sourceUrnRoot": "tlg0032.tlg003",
+          "teiPath": "data/tlg0032/tlg003/tlg0032.tlg003.perseus-eng2.xml",
+          "note": "Archivo inglés TEI identificado; requiere cotejar cobertura, traductor, licencia y correspondencia de loci."
         },
         "fr": {
           "status": "candidate-work-page",
@@ -5597,12 +5781,17 @@
       "title": "Συμπόσιον",
       "original": {
         "language": "grc",
-        "path": "data/classics-corpus/xenophon-symposium-grc.json"
+        "path": "data/classics-corpus/xenophon-symposium-grc.json",
+        "sourceUrnRoot": "tlg0032.tlg004"
       },
       "translations": {
         "en": {
-          "status": "not-yet-verified",
-          "note": "No se identificó una edición de esta obra en las fuentes cotejadas; no implica inexistencia de traducciones."
+          "status": "candidate-perseus-tei",
+          "url": "https://github.com/PerseusDL/canonical-greekLit/blob/master/data/tlg0032/tlg004/tlg0032.tlg004.perseus-eng2.xml",
+          "source": "PerseusDL canonical-greekLit",
+          "sourceUrnRoot": "tlg0032.tlg004",
+          "teiPath": "data/tlg0032/tlg004/tlg0032.tlg004.perseus-eng2.xml",
+          "note": "Archivo inglés TEI identificado; requiere cotejar cobertura, traductor, licencia y correspondencia de loci."
         },
         "fr": {
           "status": "candidate-work-page",
@@ -5626,12 +5815,17 @@
       "title": "Πόροι ἢ περὶ προσόδων",
       "original": {
         "language": "grc",
-        "path": "data/classics-corpus/xenophon-ways-means-grc.json"
+        "path": "data/classics-corpus/xenophon-ways-means-grc.json",
+        "sourceUrnRoot": "tlg0032.tlg011"
       },
       "translations": {
         "en": {
-          "status": "not-yet-verified",
-          "note": "No se identificó una edición de esta obra en las fuentes cotejadas; no implica inexistencia de traducciones."
+          "status": "candidate-perseus-tei",
+          "url": "https://github.com/PerseusDL/canonical-greekLit/blob/master/data/tlg0032/tlg011/tlg0032.tlg011.perseus-eng2.xml",
+          "source": "PerseusDL canonical-greekLit",
+          "sourceUrnRoot": "tlg0032.tlg011",
+          "teiPath": "data/tlg0032/tlg011/tlg0032.tlg011.perseus-eng2.xml",
+          "note": "Archivo inglés TEI identificado; requiere cotejar cobertura, traductor, licencia y correspondencia de loci."
         },
         "fr": {
           "status": "not-yet-verified",
@@ -5643,5 +5837,11 @@
         }
       }
     }
-  ]
+  ],
+  "sourcePerseusTree": {
+    "url": "https://github.com/PerseusDL/canonical-greekLit",
+    "filesChecked": 786,
+    "truncated": false,
+    "originalsWithSourceUrn": 69
+  }
 }
