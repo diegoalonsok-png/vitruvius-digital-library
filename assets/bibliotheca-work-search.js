@@ -177,8 +177,10 @@ const compareLink=w=>{
    originals.find(v=>v.language!==left)?.language;
  const source=left||w.versions.find(v=>safeReader(v.reader))?.language;
  if(!source)return "";
- const u=new URL("classics-parallel-reader.html",location.href);
- u.searchParams.set("work",w.id);u.searchParams.set("left",source);u.searchParams.set("right",right||"auto-es");
+ const u=new URL("classics-text-reader.html",location.href);
+ u.searchParams.set("work",w.id);u.searchParams.set("lang",source);
+ const target=right&&/^(?:es|en|fr)$/.test(right)?right:"es";
+ u.searchParams.set("to",target);
  return u.pathname+u.search;
 };
 const heritageLink=raw=>{
