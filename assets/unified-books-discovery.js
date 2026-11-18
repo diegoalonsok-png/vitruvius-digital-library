@@ -39,8 +39,8 @@ const match=(x,q)=>{
  return 0;
 };
 function mount(root,queryInput){
- if(!root||!queryInput||root.querySelector(".vdl-unified-books"))return;
- const panel=maker("section");panel.className="vdl-unified-books";
+ if(!root||root.querySelector(".vdl-unified-books"))return;
+ const panel=maker("section");panel.className="vdl-unified-books";panel.hidden=true;
  panel.setAttribute("aria-label","Catálogo unificado de libros y facsímiles");
  const h=maker("h3","Libros y visores de toda la biblioteca");
  const intro=maker("p","Busca autores y obras del corpus clásico, tratados de arquitectura y facsímiles históricos. Los resultados distinguen texto legible, PDF y visor histórico; un facsímil no equivale a una transcripción indexada.");
@@ -88,7 +88,7 @@ function mount(root,queryInput){
  }
  more.addEventListener("click",render);
  async function run(e){
-  e?.preventDefault();const id=++current,q=input.value.trim();lexLink.hidden=fold(q).length<2;lexLink.href="vitruvia-lexicon.html?q="+encodeURIComponent(q)+"&mode=palabra&lang=es";list.replaceChildren();visible=0;all=[];more.hidden=true;viewer.hidden=true;frame.removeAttribute("src");
+  e?.preventDefault();const id=++current,q=input.value.trim();panel.hidden=fold(q).length<2;lexLink.hidden=fold(q).length<2;lexLink.href="vitruvia-lexicon.html?"+new URLSearchParams({q,mode:"palabra",lang:"auto"});list.replaceChildren();visible=0;all=[];more.hidden=true;viewer.hidden=true;frame.removeAttribute("src");
   if(fold(q).length<2){status.textContent="Escriba al menos dos caracteres.";return}
   status.textContent="Consultando registros internos de textos y visores…";go.disabled=true;
   try{const data=await fetchData();if(id!==current)return;
