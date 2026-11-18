@@ -4,6 +4,13 @@ on:
     branches: [main]
     paths:
       - '.github/workflows/sync-classics-local-r2.yml'
+      - 'scripts/sync-classics-local-to-r2.py'
+      - 'data/classics-corpus/search-registry.json'
+      - 'data/classics-corpus/*-grc.json'
+      - 'data/classics-corpus/*-la.json'
+      - 'data/classics-corpus/*-en.json'
+      - 'data/classics-corpus/*-es.json'
+      - 'data/classics-corpus/*-fr.json'
   schedule:
     - cron: '37 7 * * *'
   workflow_dispatch:
