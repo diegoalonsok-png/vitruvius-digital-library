@@ -338,6 +338,35 @@ html:not([data-parallel-view="true"]):not([data-reading-mode="simple"]) body.aca
 }
 
 
+
+/* Muestras reales de cada papel: el botón anticipa el acabado del visor.
+   Solo afecta a Papel crema / Papel Canson, sin cambiar tamaño ni distribución. */
+html:not([data-parallel-view="true"]):not([data-reading-mode="simple"]) body.academic-reader
+.cl-unified-reading-actions .cl-compact-paper-buttons button.cl-paper-style-button[data-paper-kind="cream"]{
+ background-color:#d6c7ad!important;
+ background-image:radial-gradient(ellipse at 20% 17%,rgba(255,255,255,.24),transparent 68%),linear-gradient(115deg,rgba(255,255,255,.09),rgba(121,92,54,.035)),repeating-linear-gradient(0deg,rgba(110,84,53,.012) 0px,rgba(110,84,53,.012) 1px,transparent 1px,transparent 8px)!important;
+ color:#302a21!important;-webkit-text-fill-color:#302a21!important;
+ border-color:#b8a586!important;
+}
+html:not([data-parallel-view="true"]):not([data-reading-mode="simple"]) body.academic-reader
+.cl-unified-reading-actions .cl-compact-paper-buttons button.cl-paper-style-button[data-paper-kind="canson"]{
+ background-color:#c3c7c1!important;
+ background-image:radial-gradient(circle at 3px 4px,rgba(65,77,72,.065) .4px,transparent 1px),radial-gradient(circle at 9px 7px,rgba(255,255,255,.2) .4px,transparent 1px),linear-gradient(115deg,rgba(255,255,255,.08),rgba(79,91,87,.028))!important;
+ background-size:11px 13px,17px 19px,100% 100%!important;
+ color:#29312d!important;-webkit-text-fill-color:#29312d!important;
+ border-color:#a5aaa3!important;
+}
+html:not([data-parallel-view="true"]):not([data-reading-mode="simple"]) body.academic-reader
+.cl-unified-reading-actions .cl-compact-paper-buttons button.cl-paper-style-button[data-paper-kind="cream"][aria-pressed="true"]{
+ background-color:#f2e8d6!important;color:#302a21!important;-webkit-text-fill-color:#302a21!important;
+ border-color:#d6b77e!important;box-shadow:inset 0 0 0 1px #bba67e!important;
+}
+html:not([data-parallel-view="true"]):not([data-reading-mode="simple"]) body.academic-reader
+.cl-unified-reading-actions .cl-compact-paper-buttons button.cl-paper-style-button[data-paper-kind="canson"][aria-pressed="true"]{
+ background-color:#e5e9e3!important;color:#29312d!important;-webkit-text-fill-color:#29312d!important;
+ border-color:#d6b77e!important;box-shadow:inset 0 0 0 1px #bba67e!important;
+}
+
 /* 2026-11-18 · Fusión: botones de color a continuación de A+ (segunda fila).
    Sin barra de desplazamiento, sin duplicar filas ni tocar pasajes o traducciones. */
 @media (min-width:1251px){

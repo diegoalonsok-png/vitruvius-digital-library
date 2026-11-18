@@ -154,6 +154,7 @@ function init(){
       const button=document.createElement("button");
       button.type="button";
       button.className="cl-paper-style-button";
+      button.dataset.paperKind=mode; // Permite distinguir las muestras de cada textura.
       button.textContent=title;
       button.title=mode==="canson"?"Fibra mate Canson de textura muy suave":"Hoja crema de libro, de grano muy tenue";
       button.setAttribute("aria-label",title+" en ambos visores");
