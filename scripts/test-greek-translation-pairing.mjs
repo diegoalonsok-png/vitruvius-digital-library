@@ -9,7 +9,8 @@ const fiches=read(prefix+"bibliotheca-academic-fiches-2026-11-16.json");
 const works=[
  ["plato-republic",278,310],
  ["plato-laws",327,366],
- ["xenophon-anabasis",1469,1469]
+ ["xenophon-anabasis",1469,1469],
+ ["aristotle-metaphysics",142,300]
 ];
 assert.equal(registry.entries.length,registry.count);
 const key=locus=>String(locus).split(":").at(-1);
@@ -35,5 +36,5 @@ for(const [work,uniqueGreek,greekCards] of works){
 const greek=fiches.records.filter(w=>w.originalLanguage==="grc");
 assert.equal(greek.length,160);
 const withTranslation=greek.filter(w=>w.textualIndex?.readers?.some(e=>["en","es","fr"].includes(e.language)));
-assert.equal(withTranslation.length,45);
-console.log("PASS: 45/160 Greek records have ≥1 hosted historic translation; originals retained.");
+assert.equal(withTranslation.length,46);
+console.log("PASS: 46/160 Greek records have ≥1 hosted historic translation; originals retained.");

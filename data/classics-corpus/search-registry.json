@@ -2,7 +2,7 @@
   "schema": "vitruvia-classics-search-registry-v1",
   "updated": "2026-11-18",
   "description": "Registro verificable de transcripciones HTML y textos JSON existentes que admiten búsqueda literal de contenido. No incluye automáticamente PDF escaneados, facsímiles ni fichas sin texto. Los índices auxiliares por locus y el aparato crítico se declaran por separado; no se suman a versiones textuales originales ni implican colación autóptica.",
-  "count": 375,
+  "count": 376,
   "works": 297,
   "entries": [
     {
@@ -388,6 +388,16 @@
       "path": "data/classics-corpus/aristotle-metaphysics-grc.json",
       "reader": "classics-text-reader.html?work=aristotle-metaphysics&lang=grc",
       "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
+      "workId": "aristotle-metaphysics",
+      "author": "Aristóteles",
+      "title": "Τὰ μετὰ τὰ φυσικά · Metaphysics",
+      "language": "en",
+      "format": "json-passages",
+      "path": "data/classics-corpus/aristotle-metaphysics-en.json",
+      "reader": "classics-text-reader.html?work=aristotle-metaphysics&lang=grc&to=en",
+      "sourceDescription": "Traducción inglesa histórica de Hugh Tredennick (1933–1935), Perseus TEI, 142 capítulos; no alineación por párrafo."
     },
     {
       "workId": "aristotle-nicomachean-ethics",
