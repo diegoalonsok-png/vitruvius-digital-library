@@ -1,0 +1,32 @@
+name: Lexicon · búsqueda por sentido y ortografía
+on:
+  pull_request:
+    paths:
+      - 'assets/sentido-bibliotheca.js'
+      - 'scripts/test-sentido-bibliotheca-typos.mjs'
+      - '.github/workflows/lexicon-sentido-typos.yml'
+      - 'data/lexicon/conceptus.json'
+      - 'data/lexicon/etymologicum.json'
+  push:
+    branches: [main]
+    paths:
+      - 'assets/sentido-bibliotheca.js'
+      - 'scripts/test-sentido-bibliotheca-typos.mjs'
+      - '.github/workflows/lexicon-sentido-typos.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  lexical-correction:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Sintaxis y regresión de firmitas
+        run: |
+          node --check assets/sentido-bibliotheca.js
+          node --check scripts/test-sentido-bibliotheca-typos.mjs
+          node scripts/test-sentido-bibliotheca-typos.mjs
