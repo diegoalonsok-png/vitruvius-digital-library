@@ -2,7 +2,7 @@
   "schema": "vitruvia-classics-search-registry-v1",
   "updated": "2026-11-18",
   "description": "Registro verificable de transcripciones HTML y textos JSON existentes que admiten búsqueda literal de contenido. No incluye automáticamente PDF escaneados, facsímiles ni fichas sin texto. Los índices auxiliares por locus y el aparato crítico se declaran por separado; no se suman a versiones textuales originales ni implican colación autóptica.",
-  "count": 379,
+  "count": 383,
   "works": 299,
   "entries": [
     {
@@ -1756,6 +1756,16 @@
       "workId": "isocrates-aegineticus",
       "author": "Isócrates",
       "title": "Αἰγητικὸς",
+      "language": "en",
+      "format": "json-passages",
+      "path": "data/classics-corpus/isocrates-aegineticus-en.json",
+      "reader": "classics-text-reader.html?work=isocrates-aegineticus&lang=en",
+      "sourceDescription": "Traducción inglesa TEI de Larue Van Hook (1945), Perseus Digital Library, CC BY-SA 4.0; segmentación del TEI inglés, sin alineación automática con el griego."
+    },
+    {
+      "workId": "isocrates-aegineticus",
+      "author": "Isócrates",
+      "title": "Αἰγητικὸς",
       "language": "grc",
       "format": "json-passages",
       "path": "data/classics-corpus/isocrates-aegineticus-grc.json",
@@ -1763,6 +1773,16 @@
       "sourceUrn": "urn:cts:greekLit:tlg0010.tlg006.perseus-grc2",
       "sourceSha256": "201256c72164727e24f56657cc5eceb848b80d905e70071e300e4e7600fff527",
       "sourceDescription": "Perseus DL TEI · Isocrates, Vol. 3. Van Hook, Larue, editor. Cambridge, MA, Harvard University Press; London, William Heinemann Ltd., 1945 (printing). · CC BY-SA 4.0; original sin cotejo independiente"
+    },
+    {
+      "workId": "isocrates-busiris",
+      "author": "Isócrates",
+      "title": "Βούσιρις",
+      "language": "en",
+      "format": "json-passages",
+      "path": "data/classics-corpus/isocrates-busiris-en.json",
+      "reader": "classics-text-reader.html?work=isocrates-busiris&lang=en",
+      "sourceDescription": "Traducción inglesa TEI de Larue Van Hook (1945), Perseus Digital Library, CC BY-SA 4.0; segmentación del TEI inglés, sin alineación automática con el griego."
     },
     {
       "workId": "isocrates-busiris",
@@ -1816,6 +1836,16 @@
       "workId": "isocrates-helen",
       "author": "Isócrates",
       "title": "Ἑλένη",
+      "language": "en",
+      "format": "json-passages",
+      "path": "data/classics-corpus/isocrates-helen-en.json",
+      "reader": "classics-text-reader.html?work=isocrates-helen&lang=en",
+      "sourceDescription": "Traducción inglesa TEI de Larue Van Hook (1945), Perseus Digital Library, CC BY-SA 4.0; segmentación del TEI inglés, sin alineación automática con el griego."
+    },
+    {
+      "workId": "isocrates-helen",
+      "author": "Isócrates",
+      "title": "Ἑλένη",
       "language": "grc",
       "format": "json-passages",
       "path": "data/classics-corpus/isocrates-helen-grc.json",
@@ -1847,6 +1877,16 @@
       "sourceUrn": "urn:cts:greekLit:tlg0010.tlg012.perseus-grc2",
       "sourceSha256": "392fe3a2a5c39399979ee7e606fa3c8e100ec4dbee55b15889e7a69436a1c1cc",
       "sourceDescription": "Perseus DL TEI · Isocrates, Vol. 3. Van Hook, Larue, editor. Cambridge, MA, Harvard University Press; London, William Heinemann Ltd., 1945 (printing). · CC BY-SA 4.0; original sin cotejo independiente"
+    },
+    {
+      "workId": "isocrates-sophists",
+      "author": "Isócrates",
+      "title": "Κατὰ τῶν σοφιστῶν",
+      "language": "en",
+      "format": "json-passages",
+      "path": "data/classics-corpus/isocrates-sophists-en.json",
+      "reader": "classics-text-reader.html?work=isocrates-sophists&lang=en",
+      "sourceDescription": "Traducción inglesa TEI de George Norlin (1928), Perseus Digital Library, CC BY-SA 4.0; segmentación del TEI inglés, sin alineación automática con el griego."
     },
     {
       "workId": "isocrates-sophists",
