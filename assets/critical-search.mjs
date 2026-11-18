@@ -54,177 +54,60 @@ async function appendKrohnComparison(sources,latin){
    const link=document.createElement('a');link.href='https://archive.org/details/vitruviidearchit00vitr/page/n'+Math.max(0,p.page-1)+'/mode/1up';link.target='_blank';link.rel='noopener noreferrer';link.textContent='Abrir esta página del facsímil de Krohn';details.append(link);section.append(details);}
  }catch(error){status.textContent='No se pudo consultar el OCR de Krohn: '+error.message;}
 }
+let collatedLociPromise=null;
+async function getCollatedLoci(){
+ if(!collatedLociPromise)collatedLociPromise=fetch('data/collation-loci.json')
+  .then(r=>{if(!r.ok)throw new Error('No se pudo abrir el cotejo por locus');return r.json()})
+  .catch(e=>{collatedLociPromise=null;throw e});
+ return collatedLociPromise;
+}
 async function compareLocus(locus){
  const compareId=++compareRevision;
  const panel=$('#critical-comparison');if(!panel)return;
- panel.hidden=false;panel.replaceChildren();const title=document.createElement('h2');title.textContent='Cotejo paralelo · '+locus;panel.append(title);
- const notes=await getNotes();if(compareId!==compareRevision)return;const locusRef=parseLocus(locus);const noteEntries=(notes.entries||[]).filter(n=>locusRef&&sameReference(n.locus||n.candidate_locus,locusRef));
- const datasets=await Promise.allSettled(editions.map(getCorpus));if(compareId!==compareRevision)return;
- const grid=document.createElement('div');grid.className='critical-parallel';
- let referenceLatin='';
- const ref=parseLocus(locus);
- const findP=res=>res.status==='fulfilled'?res.value.passages.find(p=>p.locus===locus||(ref&&p.book===ref.book&&String(p.chapter)===String(ref.chapter)&&ref.section>=p.section&&ref.section<=(p.section_end||p.section))):null;
- const passages=datasets.map(findP);
- referenceLatin=(passages.find(p=>p?.latin)||{}).latin||'';
- /* Cada recuadro elige su versión: ediciones críticas históricas (Krohn, Rose: texto OCR localizado por
-    coincidencia con el latín del locus) o el latín y la traducción de cada edición de Kurilo. */
- const VERSIONS=[
-  {id:'krohn',label:'Krohn 1912 · latín (OCR)',ocr:'krohn-1912',pdf:'https://archive.org/details/vitruviidearchit00vitr/page/n'},
-  {id:'rose',label:'Rose 1899 · latín (OCR)',ocr:'rose-1899',pdf:'https://archive.org/details/vitruviidearchit00vitr_0/page/n'},
-  {id:'es-la',label:'V514 · latín (Kurilo)',ed:0,field:'latin'},{id:'es-tr',label:'V514 · castellano (Kurilo)',ed:0,field:'translation'},
-  {id:'fr-la',label:'V554 · latín (Kurilo)',ed:1,field:'latin'},{id:'fr-tr',label:'V554 · francés (Kurilo)',ed:1,field:'translation'},
-  {id:'en-la',label:'V297 · latín (Kurilo)',ed:2,field:'latin'},{id:'en-tr',label:'V297 · inglés (Kurilo)',ed:2,field:'translation'}];
- let saved=['krohn','es-la','en-tr'];try{const v=JSON.parse(localStorage.getItem('vitruvius-cotejo-versiones')||'null');if(Array.isArray(v)&&v.length===3&&v.every(x=>VERSIONS.some(y=>y.id===x)))saved=v}catch{}
- const ocrCache={};
- const ocrPages=id=>ocrCache[id]||(ocrCache[id]=fetch('data/text/'+id+'.json').then(r=>r.ok?r.json():[]).catch(()=>[]));
- // Tramo del OCR que mejor coincide con el latín del locus (ventana de palabras con más coincidencias).
- const fold=x=>String(x||'').normalize('NFD').replace(/\p{M}/gu,'').toLowerCase().replace(/v/g,'u').replace(/j/g,'i');
- async function ocrPassage(id){
-  const pages=await ocrPages(id);
-  if(!pages.length||!referenceLatin)return null;
-  if(id==="krohn-1912"){
-   // A saved, locus-specific OCR candidate is always preferred to an unbounded
-   // full-volume fuzzy search: otherwise nearby chapters may displace I.4.1.
-   const index=await getKrohnIndex().catch(()=>null);
-   const anchor=ocrCandidate(index,locus);
-   if(!anchor)return null;
-   const pg=pages.find(item=>item.page===anchor.page);
-   if(!pg)return null;
-   const blocks=ocrBlocksForLocus(pages,referenceLatin,anchor.page);
-   if(!blocks.length)return null;
-   return {...anchor,page:blocks[0].page,primaryPage:anchor.page,
-    share:Math.round(100*anchor.overlap),text:blocks.map(b=>b.text).join("\n\n"),
-    blocks};
-  }
-  // Other historical editions (Rose) have no locus index yet and remain
-  // explicitly labelled as provisional whole-OCR search results.
-  const want=new Set((fold(referenceLatin).match(/[a-z]{5,}/g)||[]));
-  if(!want.size)return null;
-  let best=null;
-  for(const pg of pages){
-   const words=String(pg.text||"").split(/\s+/);
-   const hit=words.map(w=>want.has(fold(w).replace(/[^a-z]/g,""))?1:0);
-   const span=Math.max(40,Math.round(referenceLatin.split(/\s+/).length*1.15));
-   let sum=0;
-   for(let i=0;i<words.length;i++){
-    sum+=hit[i];if(i>=span)sum-=hit[i-span];
-    if(!best||sum>best.sum)best={sum,page:pg.page,words,end:i,span};
-   }
-  }
-  if(!best||best.sum<Math.max(4,want.size*.3))return null;
-  const from=Math.max(0,best.end-best.span+1);
-  const win=best.words.slice(from,best.end+1);
-  const got=new Set(win.map(w=>fold(w).replace(/[^a-z]/g,"")).filter(w=>want.has(w)));
-  return {page:best.page,text:win.join(" "),share:Math.min(100,Math.round(100*got.size/want.size)),confidence:"unindexed"};
- }
- function cardFor(slot){
+ panel.hidden=false;panel.replaceChildren();
+ const title=document.createElement('h2');title.textContent='Cotejo paralelo latino · '+(canonicalLocus(locus)||locus);panel.append(title);
+ const note=document.createElement('p');note.className='source-note';
+ note.textContent='Tres textos latinos del mismo locus: Krohn (1912), Kurilo y Rose (1899). Los tramos históricos del índice proceden de OCR alineado automáticamente; requieren cotejo contra la edición impresa antes de afirmar variantes.';
+ panel.append(note);
+ const grid=document.createElement('div');grid.className='critical-parallel';panel.append(grid);
+ const versions=[['Krohn · 1912','krohn-1912'],['Kurilo · latín','kurilo'],['Rose · 1899','rose-1899']];
+ const cells=versions.map(([label])=>{
   const card=document.createElement('article');card.className='critical-parallel-edition';
-  const head=document.createElement('div');head.className='critical-version-head';
-  const sel=document.createElement('select');sel.setAttribute('aria-label','Versión del recuadro '+(slot+1));
-  for(const v of VERSIONS){const o=document.createElement('option');o.value=v.id;o.textContent=v.label;sel.append(o)}sel.value=saved[slot];
-  head.append(sel);card.append(head);const body=document.createElement('div');card.append(body);
-  async function paint(){
-   const v=VERSIONS.find(x=>x.id===sel.value);body.replaceChildren();
-   if(v.ocr){
-    const sourceId=v.ocr==='krohn-1912'?'vitruviidearchit00vitr':'vitruviidearchit00vitr_0';
-    const pdfPath=v.ocr==='krohn-1912'?'documents/krohn-1912.pdf':'https://archive.org/download/'+sourceId+'/'+sourceId+'.pdf';
-    const pdfBase=new URL(pdfPath,location.href).href;
-    const original='https://archive.org/details/'+sourceId;
-    const status=document.createElement('p');status.className='source-note';
-    status.textContent='Facsímil histórico disponible. Buscando página candidata en el OCR…';body.append(status);
-    const nav=document.createElement('div');nav.className='critical-pdf-tools';
-    const prev=document.createElement('button');prev.type='button';prev.textContent='←';
-    const label=document.createElement('label');label.textContent='Página digital ';
-    const number=document.createElement('input');number.type='number';number.min='1';number.step='1';number.value='1';number.setAttribute('aria-label','Página del PDF histórico');
-    label.append(number);
-    const next=document.createElement('button');next.type='button';next.textContent='→';
-    const go=document.createElement('button');go.type='button';go.textContent='Ir a página';
-    nav.append(prev,label,next,go);body.append(nav);
-    const frame=document.createElement('iframe');frame.className='critical-pdf-frame';frame.title=v.label+' · facsímil PDF';
-    frame.loading='lazy';frame.referrerPolicy='strict-origin-when-cross-origin';body.append(frame);
-    const links=document.createElement('p');links.className='critical-pdf-links';
-    const full=document.createElement('a');full.target='_blank';full.rel='noopener noreferrer';
-    full.textContent='Abrir PDF completo ↗';
-    const archive=document.createElement('a');archive.href=original;archive.target='_blank';archive.rel='noopener noreferrer';archive.textContent='Registro y visor de Internet Archive ↗';
-    links.append(full,document.createTextNode(' · '),archive);body.append(links);
-    function navigate(page){
-     const value=Math.max(1,Math.min(10000,Math.round(Number(page)||1)));
-     number.value=String(value);
-     const target=pdfPage(pdfBase,value);
-     frame.src=target;full.href=target;
-    }
-    prev.addEventListener('click',()=>navigate(Number(number.value)-1));
-    next.addEventListener('click',()=>navigate(Number(number.value)+1));
-    go.addEventListener('click',()=>navigate(number.value));
-    number.addEventListener('keydown',event=>{if(event.key==='Enter'){event.preventDefault();navigate(number.value)}});
-    // Avoid loading the wrong first page before OCR alignment finishes.
-    // If no candidate is found, the manual PDF viewer starts at page 1.
-    const hit=await ocrPassage(v.ocr);if(compareId!==compareRevision||sel.value!==v.id||!body.isConnected)return;
-    if(!hit){
-     status.textContent='No se identificó una página fiable para '+locus+'. El PDF está disponible desde el comienzo; selecciona manualmente el folio. No se presume alineación entre OCR y locus.';
-     navigate(1);
-     return;
-    }
-    const synced=v.ocr==="krohn-1912";
-    const strong=hit.confidence==="strong";
-    status.textContent=synced
-     ?("Krohn 1912 · Vitr., De arch. "+(canonicalLocus(locus)||locus)+
-       " · página digital candidata "+hit.page+
-       (hit.blocks?.length>1?"–"+hit.blocks[hit.blocks.length-1].page:"")+
-       " · "+hit.share+" % de trigramas latinos coincidentes ("+
-       (strong?"anclaje textual fuerte":"anclaje ambiguo")+
-       "). Bloques OCR por párrafo con posibles cortes de página; NO cotejo filológico verificado."+
-       (hit.runnerUpPage?" Otra página candidata: "+hit.runnerUpPage+".":""))
-     :"Página candidata "+hit.page+" del PDF · "+hit.share+" % de similitud OCR. Edición sin índice de loci; ubicación orientativa no verificada.";
-    navigate(hit.page);
-    if(synced&&hit.blocks?.length){
-     const explanation=document.createElement('p');explanation.className='source-note';
-     explanation.textContent='Bloques OCR localizados por coincidencias de tres palabras consecutivas del latín V514. '
-      +'La numeración es la página digital del PDF, no la página impresa; se conservan los defectos de reconocimiento.';
-     body.append(explanation);
-     for(const block of hit.blocks){
-      const excerpt=document.createElement('details');excerpt.open=strong;
-      const title=document.createElement('summary');
-      title.textContent='Locus '+(canonicalLocus(locus)||locus)+' · OCR de Krohn · página PDF '+block.page+
-       ' · '+block.referenceCoverage+' % de palabras del locus respaldadas por secuencias coincidentes';
-      excerpt.append(title);
-      const goPage=document.createElement('button');goPage.type='button';
-      goPage.className='button outline';goPage.textContent='Mostrar página '+block.page+' en el facsímil';
-      goPage.addEventListener('click',()=>navigate(block.page));excerpt.append(goPage);
-      const para=document.createElement('p');para.lang='la';para.className='critical-ocr-locus-block';
-      para.textContent=block.text;excerpt.append(para);body.append(excerpt);
-     }
-    }else if(hit.text){
-     const excerpt=document.createElement('details');const title=document.createElement('summary');
-     title.textContent='Fragmento OCR no revisado (sin índice de locus)';
-     excerpt.append(title);
-     const para=document.createElement('p');para.lang='la';para.textContent=hit.text;
-     excerpt.append(para);body.append(excerpt);
-    }
-    return;
-   }
-   const p=passages[v.ed];
-   if(!p){const x=document.createElement('p');x.textContent=datasets[v.ed].status==='fulfilled'?'Locus no individualizado en esta edición.':'No fue posible cargar esta edición.';body.append(x);return}
-   const strong=document.createElement('strong');strong.textContent=v.field==='latin'?'Texto latino':'Traducción';
-   const para=document.createElement('p');para.textContent=p[v.field]||'—';if(v.field==='latin')para.lang='la';body.append(strong,para);
-   const ownNotes=noteEntries.filter(n=>n.edition===editions[v.ed].id);
-   const subtitle=document.createElement('h4');subtitle.textContent='Aparato crítico · '+editions[v.ed].name.split(' · ')[0];body.append(subtitle);
-   if(ownNotes.length)for(const n of ownNotes){const q=document.createElement('p');const evidence=anchorEvidence(n,p);
-    q.textContent=(n.locus?'Locus citado expresamente en nota':evidence.status==='strong_unreviewed'?'Locus probable: anclaje textual fuerte (sin cotejo editorial)':'Locus propuesto, requiere cotejo')+' · Nota '+n.footnote_id+': '+n.text;body.append(q)}
-   else{const q=document.createElement('p');q.textContent='No hay notas vinculadas a este locus en el índice actual de esta edición.';body.append(q)}
+  const heading=document.createElement('h3');heading.textContent=label;card.append(heading);
+  const para=document.createElement('p');para.lang='la';para.className='critical-latin-text';
+  para.textContent='Cargando texto…';card.append(para);grid.append(card);return para;
+ });
+ const reference=parseLocus(locus);
+ try{
+  const [historical,kurilo]=await Promise.all([getCollatedLoci(),getCorpus(editions[0])]);
+  if(compareId!==compareRevision)return;
+  const standardized=canonicalLocus(locus)||locus;
+  const candidates=[standardized,String(locus),reference?(reference.book+'.'+reference.chapter+'.'+reference.section):''];
+  const foundKey=candidates.find(key=>historical.loci&&Object.hasOwn(historical.loci,key));
+  const record=foundKey?historical.loci[foundKey]:null;
+  const passage=kurilo.passages.find(p=>p.locus===locus||p.locus===standardized||
+   (reference&&Number(p.book)===Number(reference.book)&&String(p.chapter)===String(reference.chapter)&&
+    Number(reference.section)>=Number(p.section)&&Number(reference.section)<=Number(p.section_end||p.section)));
+  const contents=[
+   record?.['krohn-1912']?.text,
+   passage?.latin,
+   record?.['rose-1899']?.text
+  ];
+  contents.forEach((value,i)=>{
+   cells[i].textContent=value&&String(value).trim()?String(value).trim():
+    'No hay un texto vinculado con seguridad a este locus en el índice consultado.';
+  });
+  for(const i of [0,2]){
+   const item=record?.[versions[i][1]];
+   if(!item)continue;
+   const metadata=document.createElement('p');metadata.className='source-note';
+   metadata.textContent='Transcripción OCR alineada · coincidencia automática '+Math.round((Number(item.score)||0)*100)+' % · no constituye variante verificada';
+   cells[i].parentElement.append(metadata);
   }
-  sel.addEventListener('change',()=>{saved[slot]=sel.value;try{localStorage.setItem('vitruvius-cotejo-versiones',JSON.stringify(saved))}catch{}paint()});
-  paint();return card;
+ }catch(error){
+  if(compareId!==compareRevision)return;
+  cells.forEach(p=>{p.textContent='No se pudo recuperar el texto indexado: '+error.message});
  }
- for(let slot=0;slot<3;slot++)grid.append(cardFor(slot));
- panel.append(grid);
- const sources=document.createElement('section');sources.className='critical-parallel-edition';
- const sourceTitle=document.createElement('h3');sourceTitle.textContent='Cotejo con ediciones críticas históricas';sources.append(sourceTitle);
- const details=document.createElement('p');details.textContent='Krohn (1912): la página digital del facsímil se propone a partir del locus y de una coincidencia textual OCR reproducible. El anclaje es aproximado y no constituye cotejo filológico verificado ni identificación de variantes; consultar siempre el original de la edición crítica.';sources.append(details);
- const krohn=document.createElement('a');krohn.href='https://archive.org/details/vitruviidearchit00vitr';krohn.target='_blank';krohn.rel='noopener';krohn.textContent='Consultar Krohn 1912 (facsímil) ↗';sources.append(krohn);
- const budeTitle=document.createElement('p');budeTitle.textContent='Collection Budé: consultar el volumen correspondiente al libro '+locus.split('.')[0]+' y cotejar las referencias citadas en las notas de Kurilo. No se reproducen textos protegidos.';sources.append(budeTitle);
- const bude=document.createElement('a');bude.href='bibliografia.html#chicago-18';bude.textContent='Ver referencias bibliográficas y Budé →';sources.append(bude);panel.append(sources);
- const source=document.createElement('p');source.className='source-note';source.textContent='Comparación de textos indexados, no colación independiente de manuscritos. Krohn y Budé deben citarse por la lección comprobada, no inferirse automáticamente.';panel.append(source);
  panel.scrollIntoView({block:'start',behavior:'smooth'});
 }
 function anchorEvidence(note,passage){
