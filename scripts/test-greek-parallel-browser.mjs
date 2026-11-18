@@ -4,7 +4,7 @@ import assert from "node:assert/strict";
 import {chromium} from "playwright";
 import {readFileSync} from "node:fs";
 const base=process.env.BASE||"http://127.0.0.1:8768/";
-const read=id=>JSON.parse(readFileSync(new URL("../data/classics-corpus/"+id+"-en.json",import.meta.url),"utf8"));
+const read=(id,lang="en")=>JSON.parse(readFileSync(new URL("../data/classics-corpus/"+id+"-"+lang+".json",import.meta.url),"utf8"));
 const ref=locus=>String(locus).split(":").at(-1);
 const browser=await chromium.launch({headless:true});
 try{
@@ -16,9 +16,10 @@ try{
   const u=new URL(route.request().url());
   return u.host===new URL(base).host?route.continue():route.abort();
  });
- for(const work of ["plato-republic","plato-laws","xenophon-anabasis"]){
+ for(const work of ["plato-republic","plato-laws","xenophon-anabasis","aristotle-metaphysics"]){
   const texts=read(work).passages;
-  const startRef=ref(texts[0].locus);
+  const greek=read(work,"grc").passages;
+  const startRef=ref(greek[0].locus);
   const url=new URL("classics-parallel-reader.html",base);
   for(const [k,v] of Object.entries({work,left:"grc",right:"en",locus:startRef}))url.searchParams.set(k,v);
   const response=await page.goto(url.href,{waitUntil:"domcontentloaded",timeout:45000});
@@ -34,7 +35,7 @@ try{
   assert.equal(await page.locator("#same-locus").isChecked(),true);
   for(let i=1;i<=2;i++){
    await page.locator("#sync-next").click();
-   const wanted=ref(texts[i].locus);
+   const wanted=ref(greek[i].locus);
    await page.waitForFunction(expected=>{
     const l=document.querySelector("#left-passage-heading")?.textContent||"";
     const r=document.querySelector("#right-passage-heading")?.textContent||"";
