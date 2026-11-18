@@ -8,6 +8,7 @@ on:
       - 'scripts/import-classics-verified-translations.py'
       - 'scripts/test-classics-lexical-index.mjs'
       - 'scripts/audit-classical-corpus.mjs'
+      - 'scripts/audit-classics-coverage.py'
       - 'data/classics-corpus/mass-index-status.json'
       - 'scripts/audit-classics-222-roadmap.py'
   schedule:

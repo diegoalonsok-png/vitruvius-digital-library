@@ -147,6 +147,23 @@ def main():
                 passages = [p for p in passages if isinstance(p.get(field),str) and p[field].strip()]
                 if data.get("edition") != e.get("edition"):
                     errors.append(f"Edition mismatch: {e['path']}")
+            elif kind == "critical-indexed-latin":
+                # Krohn y Rose son ediciones críticas auxiliares de una misma
+                # obra antigua, no JSON de traducción ni obras catalogables.
+                expected = {
+                    "krohn-1912-indexed": "data/critical-editions/krohn-1912-tei-loci.json",
+                    "rose-1899-indexed": "data/critical-editions/rose-1899-transcribed-loci.json",
+                }
+                if (language != "la" or expected.get(work) != e["path"]
+                        or data.get("edition") != work.removesuffix("-indexed")):
+                    errors.append(f"Critical edition identity mismatch: {e['path']}")
+                field = "latin"
+                if len(passages) != 731 or any(
+                    not isinstance(p.get("latin"),str) or not p["latin"].strip()
+                    for p in passages
+                ):
+                    errors.append(f"Incomplete Latin critical edition: {e['path']}")
+                row["locator"] = "critical-edition locus; textual collation not certified"
             else:
                 field = "text"
                 if data.get("workId") != e.get("sourceWorkId", work) or data.get("language") != language:
