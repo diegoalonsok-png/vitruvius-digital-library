@@ -32,7 +32,7 @@ translationSelect.value=["es","en","fr"].includes(document.getElementById("lx-ui
 translationLabel.append(translationSelect);controls.append(translationLabel);
 const styles=document.createElement("style");
 styles.textContent=".lx-library-translation-label{display:inline-flex;align-items:center;gap:7px;flex-wrap:wrap;font:12px system-ui;color:inherit}.lx-library-translation-label select{border:1px solid #555;background:#19191b;color:#eee;border-radius:4px;padding:7px}.lx-library-parallel{border-left:2px solid #ab8648;padding:6px 12px;margin:8px 0 16px;background:rgba(80,70,50,.10)}.lx-library-parallel .lx-library-translation-text{white-space:pre-wrap;line-height:1.65;margin:6px 0;color:inherit}.lx-library-parallel .lx-library-translation-title{font:600 12px system-ui;color:#d9ae67;margin:2px 0}.lx-library-parallel .lx-library-translation-note{font:11px/1.5 system-ui;color:#aaa}.lx-library-parallel a{font-size:12px;text-decoration:underline;text-underline-offset:3px}";
-styles.textContent+="\n#lx-classics-bridge .lx-library-highlight .lx-library-word{display:inline;position:relative;vertical-align:baseline;font:inherit;color:inherit;background:transparent;border:0;border-radius:2px;padding:0;margin:0;text-align:inherit;cursor:pointer;text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px;text-decoration-color:#7b5100}\n#lx-classics-bridge .lx-library-highlight .lx-library-word:hover,#lx-classics-bridge .lx-library-highlight .lx-library-word:focus-visible{background:#f7bb31;color:#17100a;outline:2px solid #9d6a00;outline-offset:2px}\n#lx-classics-bridge .lx-library-dictionary{border:1px solid #5a5242;border-left:3px solid #e6bc61;border-radius:6px;background:#181819;padding:10px 14px;margin:11px 0 15px;color:#ededed;min-width:0}\n#lx-classics-bridge .lx-library-dictionary>summary{cursor:pointer;font:600 13px/1.5 system-ui;color:#f1d38c;overflow-wrap:anywhere}\n#lx-classics-bridge .lx-library-dictionary .cl-dict{margin-top:8px;color:inherit;--muted:#bababa;--line:#4b4b4d}\n#lx-classics-bridge .lx-library-dictionary .cl-dict .cl-entry{border-left-color:#cfa94d}\n#lx-classics-bridge .lx-library-dictionary .cl-dict .cl-gloss{line-height:1.6;overflow-wrap:anywhere}\n#lx-classics-bridge .lx-library-dictionary .lx-library-dictionary-footer{border-top:1px solid #404040;padding-top:10px;display:flex;flex-wrap:wrap;gap:9px 16px}\n#lx-classics-bridge .lx-library-dictionary a{color:#ebd29b;font-size:12px}\nhtml[data-theme=light] #lx-classics-bridge .lx-library-dictionary{background:#faf8f4;color:#222;border-color:#a49b88}\nhtml[data-theme=light] #lx-classics-bridge .lx-library-dictionary>summary,html[data-theme=light] #lx-classics-bridge .lx-library-dictionary a{color:#624713}\nhtml[data-theme=light] #lx-classics-bridge .lx-library-dictionary .cl-dict{--muted:#5c5c5c;--line:#b1a99b}\n";
+styles.textContent+="\n#lx-classics-bridge .lx-library-highlight .lx-library-word{display:inline;position:relative;vertical-align:baseline;font:inherit;color:#241b06;background:#f2d46b;border:0;border-radius:2px;padding:1px 2px;margin:0;text-align:inherit;cursor:pointer;text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px;text-decoration-color:#70571c}\n#lx-classics-bridge .lx-library-highlight .lx-library-word:hover,#lx-classics-bridge .lx-library-highlight .lx-library-word:focus-visible{background:#f7bb31;color:#17100a;outline:2px solid #9d6a00;outline-offset:2px}\n#lx-classics-bridge .lx-library-dictionary{border:1px solid #5a5242;border-left:3px solid #e6bc61;border-radius:6px;background:#181819;padding:10px 14px;margin:11px 0 15px;color:#ededed;min-width:0}\n#lx-classics-bridge .lx-library-dictionary>summary{cursor:pointer;font:600 13px/1.5 system-ui;color:#f1d38c;overflow-wrap:anywhere}\n#lx-classics-bridge .lx-library-dictionary .cl-dict{margin-top:8px;color:inherit;--muted:#bababa;--line:#4b4b4d}\n#lx-classics-bridge .lx-library-dictionary .cl-dict .cl-entry{border-left-color:#cfa94d}\n#lx-classics-bridge .lx-library-dictionary .cl-dict .cl-gloss{line-height:1.6;overflow-wrap:anywhere}\n#lx-classics-bridge .lx-library-dictionary .lx-library-dictionary-footer{border-top:1px solid #404040;padding-top:10px;display:flex;flex-wrap:wrap;gap:9px 16px}\n#lx-classics-bridge .lx-library-dictionary a{color:#ebd29b;font-size:12px}\nhtml[data-theme=light] #lx-classics-bridge .lx-library-dictionary{background:#faf8f4;color:#222;border-color:#a49b88}\nhtml[data-theme=light] #lx-classics-bridge .lx-library-dictionary>summary,html[data-theme=light] #lx-classics-bridge .lx-library-dictionary a{color:#624713}\nhtml[data-theme=light] #lx-classics-bridge .lx-library-dictionary .cl-dict{--muted:#5c5c5c;--line:#b1a99b}\n";
 parent.append(styles);
 const readerEvidence=document.createElement("section");readerEvidence.className="lx-reader-attestation";readerEvidence.hidden=true;
 readerEvidence.setAttribute("aria-label","Testimonio textual del lector de origen");
@@ -232,6 +232,34 @@ function editionConnections(row,editions){
 /* Preservar el resaltado literal y permitir consulta individual de palabras griegas y latinas.
  * Una coincidencia de varias palabras se divide en controles independientes, sin alterar el texto. */
 const LEXICAL_WORD=/[\p{L}\p{M}]+(?:['ʼ’][\p{L}\p{M}]+)*/gu;
+/* Show the actual indexed paragraph, not only its KWIC excerpt.
+ * Highlight only attested source tokens; keep the Greek/Latin dictionary inline.
+ */
+function markedOriginalPassage(node,row){
+ const original=String(row.originalText||"");
+ const term=String(row.term||row.matchedTerm||"").trim();
+ if(!original||!term||!["la","grc"].includes(row.language))return false;
+ const normalize=value=>String(value).normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLocaleLowerCase().replace(/ς/g,"σ");
+ const target=normalize(term);
+ const re=/[\p{L}\p{M}]+(?:['ʼ’][\p{L}\p{M}]+)*/gu;
+ const found=[];
+ for(const match of original.matchAll(re)){
+  if(normalize(match[0])===target)found.push({start:match.index,end:match.index+match[0].length,text:match[0]});
+ }
+ if(!found.length)return false;
+ let at=0;
+ for(const hit of found){
+  if(hit.start>at)node.append(document.createTextNode(original.slice(at,hit.start)));
+  const mark=document.createElement("mark");mark.className="lx-library-highlight";
+  const word=document.createElement("button");word.type="button";word.className="lx-library-word";
+  word.lang=row.language;word.textContent=hit.text;word.dataset.word=hit.text;
+  word.title="Abrir significado y morfología en el diccionario";
+  word.setAttribute("aria-label","Consultar diccionario: "+hit.text);
+  mark.append(word);node.append(mark);at=hit.end;
+ }
+ if(at<original.length)node.append(document.createTextNode(original.slice(at)));
+ return true;
+}
 function markedExcerpt(node,excerpt,language){
  const isClassical=["la","grc"].includes(language);
  const parts=String(excerpt||"").split(/(«[^»]+»)/g);
@@ -307,7 +335,7 @@ function addResult(row,editions){
  const count=document.createElement("small");count.className="lx-library-count";
  count.textContent=" · "+row.hitsInPassage+" coincidencia"+(row.hitsInPassage===1?"":"s")+" en este pasaje";
  const excerpt=document.createElement("p");excerpt.className="lx-library-excerpt";excerpt.lang=row.language==="grc"?"grc":row.language==="la"?"la":row.language||"";
- markedExcerpt(excerpt,row.excerpt,row.language);
+ if(!markedOriginalPassage(excerpt,row))markedExcerpt(excerpt,row.excerpt,row.language);
  attachWordDictionary(excerpt,card,row);
  const source=document.createElement("p");source.className="lx-library-meta";
  source.textContent="Fuente digital: "+(row.attribution||row.source||"Registro sin atribución detallada");
@@ -373,7 +401,9 @@ function showIndexedWorks(rows){
  for(const [id,g] of [...groups].sort((a,b)=>a[1].title.localeCompare(b[1].title,"es"))){
   const li=document.createElement("li"),a=document.createElement("a"),counts=document.createElement("small");
   const preferred=g.editions.find(e=>["la","grc"].includes(e.language))||g.editions[0];
-  a.href=safeUrl(preferred.link)||("classics-work-record.html?work="+encodeURIComponent(id));a.textContent=g.title||id;
+  a.href="#lx-library-passages";a.textContent=g.title||id;
+  a.setAttribute("aria-label","Mostrar pasajes verificados de "+(g.title||id));
+  a.addEventListener("click",event=>{event.preventDefault();void selectLibraryWork(id)});
   const order=["la","grc","es","en","fr","it","de","pt"];
   counts.textContent=g.editions.slice().sort((a,b)=>order.indexOf(a.language)-order.indexOf(b.language))
    .map(v=>(langs[v.language]||v.language)+": "+v.count).join(" · ");
@@ -439,6 +469,7 @@ async function selectLibraryWork(workId){
   const remaining=currentLiteralRows.filter(row=>row.workId!==workId);
   const selected=specific.filter(row=>row.workId===workId);
   selectedLiteralRows=selected;
+  if(!currentEditions.length)currentEditions=await registeredEditions();
   translationContext=await prepareTranslation(workId,currentEditions);
   if(token!==serial)return;
   showLiteralRows([...selected,...remaining],currentEditions);
@@ -510,11 +541,25 @@ async function execute(mode="literal"){
      }
     }catch{}
    }
-   const rows=await window.ClassicsCorpusSearch.searchPassages(q,{limit:160,maxPerEdition:12,language:greek?"grc":""});
+   // Present verified source paragraphs as they arrive; do not wait for every edition.
+   // Never show an index-only work as if it had an attested quotation.
+   let lastPaint=0;
+   const onProgress=progress=>{
+    if(token!==serial||!progress?.rows?.length)return;
+    const now=Date.now();
+    if(now-lastPaint<250&&progress.checked<progress.total)return;
+    lastPaint=now;
+    currentLiteralRows=progress.rows.slice(0,160);
+    showLiteralRows(currentLiteralRows,currentEditions);
+    status.textContent="Pasajes literales verificados: "+currentLiteralRows.length+
+     " · ediciones examinadas: "+progress.checked+"/"+progress.total+
+     ". La búsqueda continúa; el listado de obras permanece arriba.";
+   };
+   const rows=await window.ClassicsCorpusSearch.searchPassages(q,{limit:160,maxPerEdition:12,language:greek?"grc":"",onProgress});
    if(token!==serial)return;
    /* El resumen por edición se sustituye por los pasajes verificados, pero las
       fichas de la frase se conservan: son un hallazgo distinto y más preciso. */
-   if(summaryShown&&!/\s/.test(q.trim()))list.replaceChildren();
+   // The list below the work counts contains verified source passages only.
    const counts=new Map();
    for(const row of rows){const key=[row.workId,row.language,row.edition,row.source].join("|");counts.set(key,(counts.get(key)||0)+1)}
    const editionCount=counts.size;
