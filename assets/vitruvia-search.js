@@ -2040,25 +2040,43 @@ function setupAutocomplete(){
  const choose=v=>{input.value=v;hide();search()};
  // Coincidencias del sitio, con tolerancia a errores de tipeo (distancia de edición sobre palabras).
  function local(q){
-  const suggestions=[],seen=new Set();
-  const add=(label,value,subtitle,rank)=>{const key=norm(value);if(seen.has(key))return;seen.add(key);suggestions.push({label,value,subtitle,rank})};
-  const near=(text)=>{const ws=norm(text).split(" ");return q.length>=4&&ws.some(w=>w.length>=4&&U()?.dist(w.slice(0,q.length+1),q)<=(q.length>=7?2:1))};
+  const suggestions=[],seen=new Set(),fuzzy=[];
+  const add=(label,value,subtitle,rank)=>{
+   const key=norm(value);
+   if(!key||seen.has(key))return;
+   seen.add(key);suggestions.push({label,value,subtitle,rank});
+  };
+  // Primera pasada: títulos, autores, alias y signaturas con coincidencia literal.
+  // La distancia de edición solo se calcula si faltan resultados precisos.
   for(const [label,value,aliases,type] of canonical){
-   const norms=aliases.map(norm);
-   if(norms.some(a=>a.includes(q)||q.includes(a))||norm(label).includes(q))add(label,value,type,norm(label).startsWith(q)?120:75);
-   else if(norms.some(a=>near(a)))add(label,value,type,40);
+   const labelKey=norm(label),norms=aliases.map(norm);
+   if(norms.some(a=>a&&(a.includes(q)||q.includes(a)))||labelKey.includes(q))
+    add(label,value,type,labelKey.startsWith(q)?120:75);
+   else fuzzy.push({text:norms.join(" "),label,value,subtitle:type,rank:40});
   }
   for(const w of S.works){
    const title=w.title||"",author=w.author||"",aliases=w.aliases||[];
-   const joined=norm([title,author,...aliases].join(" "));
-   if(joined.includes(q)){const alias=aliases.find(a=>norm(a).includes(q));
-    add(title,alias&&norm(title).indexOf(q)<0?alias:title,author+" · "+(verified(w)?"lectura local":"ficha de obra"),65+(norm(title).startsWith(q)?18:0)+(alias?8:0))}
-   else if(near(joined))add(title,title,author+" · "+(verified(w)?"lectura local":"ficha de obra"),30);
+   const titleKey=norm(title),joined=norm([title,author,...aliases].join(" "));
+   const subtitle=author+" · "+(verified(w)?"lectura local":"ficha de obra");
+   if(joined.includes(q)){
+    const alias=aliases.find(a=>norm(a).includes(q));
+    add(title,alias&&!titleKey.includes(q)?alias:title,subtitle,
+     65+(titleKey===q?42:titleKey.startsWith(q)?18:0)+(alias?8:0));
+   }else fuzzy.push({text:joined,label:title,value:title,subtitle,rank:30});
   }
   for(const ms of S.witnesses)if(norm([ms.title,ms.shelfmark,ms.library].join(" ")).includes(q))
    add(ms.title+" · "+ms.shelfmark,ms.shelfmark,ms.library+" · manuscrito",100+(norm(ms.shelfmark).startsWith(q)?22:0));
-  for(const ed of S.editions)if(norm([ed.title,ed.editor,ed.year].join(" ")).includes(q))add(ed.title,ed.title,ed.year+" · "+(ed.langs||[]).join("/"),50);
-  for(const p of S.pages){const title=p.title||"";if(norm(title+" "+p.description).includes(q))add(title,title,"Biblioteca digital",35+(norm(title).startsWith(q)?10:0))}
+  for(const ed of S.editions)if(norm([ed.title,ed.editor,ed.year].join(" ")).includes(q))
+   add(ed.title,ed.title,ed.year+" · "+(ed.langs||[]).join("/"),50);
+  for(const p of S.pages){const title=p.title||"";if(norm(title+" "+p.description).includes(q))
+   add(title,title,"Biblioteca digital",35+(norm(title).startsWith(q)?10:0))}
+  if(suggestions.length<5&&q.length>=4&&typeof U()?.dist==="function"){
+   const distance=U().dist,max=q.length>=7?2:1;
+   for(const item of fuzzy){
+    if(item.text.split(" ").some(w=>w.length>=4&&distance(w.slice(0,q.length+1),q)<=max))
+     add(item.label,item.value,item.subtitle,item.rank);
+   }
+  }
   return suggestions.sort((a,b)=>b.rank-a.rank||a.label.localeCompare(b.label)).slice(0,5);
  }
  const T3=(es,en,fr)=>S.lang==="en"?en:S.lang==="fr"?fr:es;
