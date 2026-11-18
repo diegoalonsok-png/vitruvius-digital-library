@@ -6,11 +6,11 @@
   "totals": {
     "cataloguedWorks": 271,
     "locallyIndexedWorks": 227,
-    "translatedWorksLocal": 60,
-    "worksWithoutHostedTranslation": 211,
+    "translatedWorksLocal": 62,
+    "worksWithoutHostedTranslation": 209,
     "localTranslationLanguages": {
       "es": 5,
-      "en": 59,
+      "en": 61,
       "fr": 2
     },
     "originalTextIndexed": 183,
@@ -19,8 +19,8 @@
     "declaredRemoteOnlyWorks": 44,
     "declaredR2OriginalWorks": 44,
     "registeredOriginalWorks": 227,
-    "registeredTextVersions": 292,
-    "verifiedLocalTextVersions": 248,
+    "registeredTextVersions": 294,
+    "verifiedLocalTextVersions": 250,
     "verifiedLocalOriginalTextIndexed": 183
   },
   "works": [
@@ -4324,23 +4324,28 @@
       "title": "Ὀλυμπιόνικοι",
       "originalLanguage": "grc",
       "originalIndexed": true,
-      "translationLanguages": [],
+      "translationLanguages": [
+        "en"
+      ],
       "localEditionLanguages": [
-        "grc"
+        "grc",
+        "en"
       ],
       "externalTranslationUnverified": [],
       "readingStatus": "lectura-local-parcial",
-      "translationSourceDescription": "Traducción no incorporada ni alineada con una edición identificada.",
-      "translationRegisteredButNotHosted": true,
+      "translationSourceDescription": "Inglés: Diane Arnson Svarlien, Odes (Perseus Project, 1990), TEI CC BY-SA 4.0, lectura completa por odas; no alineación palabra a palabra. Castellano/francés pendientes.",
+      "translationRegisteredButNotHosted": false,
       "indexed": true,
       "originalR2Registered": false,
       "registeredOriginal": true,
       "registeredEditionLanguages": [
-        "grc"
+        "grc",
+        "en"
       ],
       "remoteEditionLanguages": [],
       "verifiedLocalEditionLanguages": [
-        "grc"
+        "grc",
+        "en"
       ]
     },
     {
@@ -4349,23 +4354,28 @@
       "title": "Πυθιόνικοι",
       "originalLanguage": "grc",
       "originalIndexed": true,
-      "translationLanguages": [],
+      "translationLanguages": [
+        "en"
+      ],
       "localEditionLanguages": [
-        "grc"
+        "grc",
+        "en"
       ],
       "externalTranslationUnverified": [],
       "readingStatus": "lectura-local-parcial",
-      "translationSourceDescription": "Traducción no incorporada ni alineada con una edición identificada.",
-      "translationRegisteredButNotHosted": true,
+      "translationSourceDescription": "Inglés: Diane Arnson Svarlien, Odes (Perseus Project, 1990), TEI CC BY-SA 4.0, lectura completa por odas; no alineación palabra a palabra. Castellano/francés pendientes.",
+      "translationRegisteredButNotHosted": false,
       "indexed": true,
       "originalR2Registered": false,
       "registeredOriginal": true,
       "registeredEditionLanguages": [
-        "grc"
+        "grc",
+        "en"
       ],
       "remoteEditionLanguages": [],
       "verifiedLocalEditionLanguages": [
-        "grc"
+        "grc",
+        "en"
       ]
     },
     {
