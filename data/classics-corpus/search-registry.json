@@ -2,7 +2,7 @@
   "schema": "vitruvia-classics-search-registry-v1",
   "updated": "2026-11-18",
   "description": "Registro verificable de transcripciones HTML y textos JSON existentes que admiten búsqueda literal de contenido. No incluye automáticamente PDF escaneados, facsímiles ni fichas sin texto. Los índices auxiliares por locus y el aparato crítico se declaran por separado; no se suman a versiones textuales originales ni implican colación autóptica.",
-  "count": 382,
+  "count": 397,
   "works": 297,
   "entries": [
     {
@@ -14,6 +14,16 @@
       "path": "data/classics-corpus/aeneas-tacticus-poliorketika-grc.json",
       "reader": "classics-text-reader.html?work=aeneas-tacticus-poliorketika&lang=grc",
       "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
+      "workId": "aeschylus-oresteia",
+      "author": "Esquilo",
+      "title": "Ὀρέστεια",
+      "language": "en",
+      "format": "json-passages",
+      "path": "data/classics-corpus/aeschylus-oresteia-en.json",
+      "reader": "classics-text-reader.html?work=aeschylus-oresteia&lang=en",
+      "sourceDescription": "Traducción inglesa TEI de Herbert Weir Smyth (1926), Perseus Digital Library, CC BY-SA 4.0; segmentación del TEI inglés, sin alineación automática con el griego."
     },
     {
       "workId": "aeschylus-oresteia",
@@ -234,6 +244,16 @@
       "path": "data/classics-corpus/aristophanes-acharnenses-grc.json",
       "reader": "classics-text-reader.html?work=aristophanes-acharnenses&lang=grc",
       "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
+      "workId": "aristophanes-aves",
+      "author": "Aristófanes",
+      "title": "Ὄρνιθες",
+      "language": "en",
+      "format": "json-passages",
+      "path": "data/classics-corpus/aristophanes-aves-en.json",
+      "reader": "classics-text-reader.html?work=aristophanes-aves&lang=en",
+      "sourceDescription": "Traducción inglesa TEI de Anonymous (según ficha TEI) (1938), Perseus Digital Library, CC BY-SA 4.0; segmentación del TEI inglés, sin alineación automática con el griego."
     },
     {
       "workId": "aristophanes-aves",
@@ -1115,6 +1135,16 @@
       "workId": "euripides-andromache",
       "author": "Eurípides",
       "title": "Ἀνδρομάχη",
+      "language": "en",
+      "format": "json-passages",
+      "path": "data/classics-corpus/euripides-andromache-en.json",
+      "reader": "classics-text-reader.html?work=euripides-andromache&lang=en",
+      "sourceDescription": "Traducción inglesa TEI de Edward P. Coleridge (1891), Perseus Digital Library, CC BY-SA 4.0; segmentación del TEI inglés, sin alineación automática con el griego."
+    },
+    {
+      "workId": "euripides-andromache",
+      "author": "Eurípides",
+      "title": "Ἀνδρομάχη",
       "language": "grc",
       "format": "json-passages",
       "path": "data/classics-corpus/euripides-andromache-grc.json",
@@ -1225,11 +1255,31 @@
       "workId": "euripides-heracleidae",
       "author": "Eurípides",
       "title": "Ἡρακλεῖδαι",
+      "language": "en",
+      "format": "json-passages",
+      "path": "data/classics-corpus/euripides-heracleidae-en.json",
+      "reader": "classics-text-reader.html?work=euripides-heracleidae&lang=en",
+      "sourceDescription": "Traducción inglesa TEI de Edward P. Coleridge (1906), Perseus Digital Library, CC BY-SA 4.0; segmentación del TEI inglés, sin alineación automática con el griego."
+    },
+    {
+      "workId": "euripides-heracleidae",
+      "author": "Eurípides",
+      "title": "Ἡρακλεῖδαι",
       "language": "grc",
       "format": "json-passages",
       "path": "data/classics-corpus/euripides-heracleidae-grc.json",
       "reader": "classics-text-reader.html?work=euripides-heracleidae&lang=grc",
       "sourceDescription": "Perseus Digital Library · Gilbert Murray · urn:cts:greekLit:tlg0006.tlg004.perseus-grc2 · CC BY-SA 4.0; sin colación filológica propia"
+    },
+    {
+      "workId": "euripides-heracles",
+      "author": "Eurípides",
+      "title": "Ἡρακλῆς",
+      "language": "en",
+      "format": "json-passages",
+      "path": "data/classics-corpus/euripides-heracles-en.json",
+      "reader": "classics-text-reader.html?work=euripides-heracles&lang=en",
+      "sourceDescription": "Traducción inglesa TEI de Edward P. Coleridge (1891), Perseus Digital Library, CC BY-SA 4.0; segmentación del TEI inglés, sin alineación automática con el griego."
     },
     {
       "workId": "euripides-heracles",
@@ -1746,6 +1796,16 @@
       "workId": "isocrates-aegineticus",
       "author": "Isócrates",
       "title": "Αἰγητικὸς",
+      "language": "en",
+      "format": "json-passages",
+      "path": "data/classics-corpus/isocrates-aegineticus-en.json",
+      "reader": "classics-text-reader.html?work=isocrates-aegineticus&lang=en",
+      "sourceDescription": "Traducción inglesa TEI de Larue Van Hook (1945), Perseus Digital Library, CC BY-SA 4.0; segmentación del TEI inglés, sin alineación automática con el griego."
+    },
+    {
+      "workId": "isocrates-aegineticus",
+      "author": "Isócrates",
+      "title": "Αἰγητικὸς",
       "language": "grc",
       "format": "json-passages",
       "path": "data/classics-corpus/isocrates-aegineticus-grc.json",
@@ -1758,6 +1818,16 @@
       "workId": "isocrates-busiris",
       "author": "Isócrates",
       "title": "Βούσιρις",
+      "language": "en",
+      "format": "json-passages",
+      "path": "data/classics-corpus/isocrates-busiris-en.json",
+      "reader": "classics-text-reader.html?work=isocrates-busiris&lang=en",
+      "sourceDescription": "Traducción inglesa TEI de Larue Van Hook (1945), Perseus Digital Library, CC BY-SA 4.0; segmentación del TEI inglés, sin alineación automática con el griego."
+    },
+    {
+      "workId": "isocrates-busiris",
+      "author": "Isócrates",
+      "title": "Βούσιρις",
       "language": "grc",
       "format": "json-passages",
       "path": "data/classics-corpus/isocrates-busiris-grc.json",
@@ -1765,6 +1835,16 @@
       "sourceUrn": "urn:cts:greekLit:tlg0010.tlg010.perseus-grc2",
       "sourceSha256": "3a76d4ec7b3ec020a0b1453aec6ac7b79746fd322f9ac24fc818503f1d8798f3",
       "sourceDescription": "Perseus DL TEI · Isocrates, Vol. 3. Van Hook, Larue, editor. Cambridge, MA, Harvard University Press; London, William Heinemann Ltd., 1945 (printing). · CC BY-SA 4.0; original sin cotejo independiente"
+    },
+    {
+      "workId": "isocrates-callimachus",
+      "author": "Isócrates",
+      "title": "Παραγραφή πρὸς Καλλίμαχον",
+      "language": "en",
+      "format": "json-passages",
+      "path": "data/classics-corpus/isocrates-callimachus-en.json",
+      "reader": "classics-text-reader.html?work=isocrates-callimachus&lang=en",
+      "sourceDescription": "Traducción inglesa TEI de Larue Van Hook (1945), Perseus Digital Library, CC BY-SA 4.0; segmentación del TEI inglés, sin alineación automática con el griego."
     },
     {
       "workId": "isocrates-callimachus",
@@ -1794,6 +1874,16 @@
       "workId": "isocrates-euthynus",
       "author": "Isócrates",
       "title": "Πρὸς Εὐθύνους ἀμάρτυρος",
+      "language": "en",
+      "format": "json-passages",
+      "path": "data/classics-corpus/isocrates-euthynus-en.json",
+      "reader": "classics-text-reader.html?work=isocrates-euthynus&lang=en",
+      "sourceDescription": "Traducción inglesa TEI de Larue Van Hook (1945), Perseus Digital Library, CC BY-SA 4.0; segmentación del TEI inglés, sin alineación automática con el griego."
+    },
+    {
+      "workId": "isocrates-euthynus",
+      "author": "Isócrates",
+      "title": "Πρὸς Εὐθύνους ἀμάρτυρος",
       "language": "grc",
       "format": "json-passages",
       "path": "data/classics-corpus/isocrates-euthynus-grc.json",
@@ -1801,6 +1891,16 @@
       "sourceUrn": "urn:cts:greekLit:tlg0010.tlg001.perseus-grc2",
       "sourceSha256": "c114e4219bbb13a0b9a8a27818c9724f76066ea8d7ca70c8dbeb3511c15f6660",
       "sourceDescription": "Perseus DL TEI · Isocrates, Vol. 3. Van Hook, Larue, editor. Cambridge, MA, Harvard University Press; London, William Heinemann Ltd., 1945 (printing). · CC BY-SA 4.0; original sin cotejo independiente"
+    },
+    {
+      "workId": "isocrates-helen",
+      "author": "Isócrates",
+      "title": "Ἑλένη",
+      "language": "en",
+      "format": "json-passages",
+      "path": "data/classics-corpus/isocrates-helen-en.json",
+      "reader": "classics-text-reader.html?work=isocrates-helen&lang=en",
+      "sourceDescription": "Traducción inglesa TEI de Larue Van Hook (1945), Perseus Digital Library, CC BY-SA 4.0; segmentación del TEI inglés, sin alineación automática con el griego."
     },
     {
       "workId": "isocrates-helen",
@@ -1818,6 +1918,16 @@
       "workId": "isocrates-lochites",
       "author": "Isócrates",
       "title": "Κατὰ Λοχίτου",
+      "language": "en",
+      "format": "json-passages",
+      "path": "data/classics-corpus/isocrates-lochites-en.json",
+      "reader": "classics-text-reader.html?work=isocrates-lochites&lang=en",
+      "sourceDescription": "Traducción inglesa TEI de Larue Van Hook (1945), Perseus Digital Library, CC BY-SA 4.0; segmentación del TEI inglés, sin alineación automática con el griego."
+    },
+    {
+      "workId": "isocrates-lochites",
+      "author": "Isócrates",
+      "title": "Κατὰ Λοχίτου",
       "language": "grc",
       "format": "json-passages",
       "path": "data/classics-corpus/isocrates-lochites-grc.json",
@@ -1825,6 +1935,16 @@
       "sourceUrn": "urn:cts:greekLit:tlg0010.tlg003.perseus-grc2",
       "sourceSha256": "0e6ab09ebaa346b4f3b85dceaf3eb0dd3b5b45f3cf0d7b6cf2fe52470ffb71ff",
       "sourceDescription": "Perseus DL TEI · Isocrates, Vol. 3. Van Hook, Larue, editor. Cambridge, MA, Harvard University Press; London, William Heinemann Ltd., 1945 (printing). · CC BY-SA 4.0; original sin cotejo independiente"
+    },
+    {
+      "workId": "isocrates-plataicus",
+      "author": "Isócrates",
+      "title": "Πλαταικός",
+      "language": "en",
+      "format": "json-passages",
+      "path": "data/classics-corpus/isocrates-plataicus-en.json",
+      "reader": "classics-text-reader.html?work=isocrates-plataicus&lang=en",
+      "sourceDescription": "Traducción inglesa TEI de Larue Van Hook (1945), Perseus Digital Library, CC BY-SA 4.0; segmentación del TEI inglés, sin alineación automática con el griego."
     },
     {
       "workId": "isocrates-plataicus",
@@ -1842,6 +1962,16 @@
       "workId": "isocrates-sophists",
       "author": "Isócrates",
       "title": "Κατὰ τῶν σοφιστῶν",
+      "language": "en",
+      "format": "json-passages",
+      "path": "data/classics-corpus/isocrates-sophists-en.json",
+      "reader": "classics-text-reader.html?work=isocrates-sophists&lang=en",
+      "sourceDescription": "Traducción inglesa TEI de George Norlin (1928), Perseus Digital Library, CC BY-SA 4.0; segmentación del TEI inglés, sin alineación automática con el griego."
+    },
+    {
+      "workId": "isocrates-sophists",
+      "author": "Isócrates",
+      "title": "Κατὰ τῶν σοφιστῶν",
       "language": "grc",
       "format": "json-passages",
       "path": "data/classics-corpus/isocrates-sophists-grc.json",
@@ -1854,6 +1984,16 @@
       "workId": "isocrates-team-horses",
       "author": "Isócrates",
       "title": "Περὶ τοῦ ζεύγους",
+      "language": "en",
+      "format": "json-passages",
+      "path": "data/classics-corpus/isocrates-team-horses-en.json",
+      "reader": "classics-text-reader.html?work=isocrates-team-horses&lang=en",
+      "sourceDescription": "Traducción inglesa TEI de Larue Van Hook (1945), Perseus Digital Library, CC BY-SA 4.0; segmentación del TEI inglés, sin alineación automática con el griego."
+    },
+    {
+      "workId": "isocrates-team-horses",
+      "author": "Isócrates",
+      "title": "Περὶ τοῦ ζεύγους",
       "language": "grc",
       "format": "json-passages",
       "path": "data/classics-corpus/isocrates-team-horses-grc.json",
@@ -1861,6 +2001,16 @@
       "sourceUrn": "urn:cts:greekLit:tlg0010.tlg004.perseus-grc2",
       "sourceSha256": "8d102a577df70de50b88f675ec47e783d329548f70a3b180397d36722e66a852",
       "sourceDescription": "Perseus DL TEI · Isocrates, Vol. 3. Van Hook, Larue, editor. Cambridge, MA, Harvard University Press; London, William Heinemann Ltd., 1945 (printing). · CC BY-SA 4.0; original sin cotejo independiente"
+    },
+    {
+      "workId": "isocrates-trapeziticus",
+      "author": "Isócrates",
+      "title": "Τραπεζιτικός",
+      "language": "en",
+      "format": "json-passages",
+      "path": "data/classics-corpus/isocrates-trapeziticus-en.json",
+      "reader": "classics-text-reader.html?work=isocrates-trapeziticus&lang=en",
+      "sourceDescription": "Traducción inglesa TEI de Larue Van Hook (1945), Perseus Digital Library, CC BY-SA 4.0; segmentación del TEI inglés, sin alineación automática con el griego."
     },
     {
       "workId": "isocrates-trapeziticus",
