@@ -65,6 +65,78 @@ function setupNavigator(){
 }
 let syncNavigator=null;
 function card(title,body,lang){const c=E("article",null,"bude-card");c.append(E("h3",title));const p=E("p",body||"Sin texto indexado para este locus.");if(lang)p.lang=lang;c.append(p);return c}
+/* Token-level comparisons of the three indexed Latin editions.
+ * Differences are candidates from digital transcription, never manuscript variants. */
+const comparisonTokens=text=>[...String(text||"").matchAll(/[\p{L}\p{M}]+(?:['’][\p{L}\p{M}]+)*/gu)].map(m=>({word:m[0],start:m.index,end:m.index+m[0].length,key:m[0].normalize("NFD").replace(/\p{M}/gu,"").toLowerCase().replace(/j/g,"i").replace(/v/g,"u")}));
+function compareWords(a,b){
+ const aa=comparisonTokens(a),bb=comparisonTokens(b);
+ if(!aa.length||!bb.length)return {available:false,aa,bb,groups:[],changedA:new Set(),changedB:new Set()};
+ // Protect the reader from quadratic work on anomalously large/pasted loci.
+ if(aa.length>950||bb.length>950)return {available:false,tooLong:true,aa,bb,groups:[],changedA:new Set(),changedB:new Set()};
+ const n=aa.length,m=bb.length,dp=new Array(n+1);
+ dp[n]=new Uint16Array(m+1);
+ for(let i=n-1;i>=0;i--){
+  const row=new Uint16Array(m+1),next=dp[i+1];dp[i]=row;
+  for(let j=m-1;j>=0;j--)row[j]=aa[i].key===bb[j].key?1+next[j+1]:Math.max(next[j],row[j+1]);
+ }
+ let i=0,j=0,part=null;const groups=[],changedA=new Set(),changedB=new Set();
+ const flush=()=>{if(part){groups.push(part);part=null}};
+ while(i<n||j<m){
+  if(i<n&&j<m&&aa[i].key===bb[j].key){flush();i++;j++;continue}
+  if(!part)part={a:[],b:[]};
+  if(j===m||(i<n&&dp[i+1][j]>=dp[i][j+1])){
+   part.a.push(aa[i].word);changedA.add(i++);
+  }else{part.b.push(bb[j].word);changedB.add(j++)}
+ }
+ flush();return {available:true,aa,bb,groups,changedA,changedB};
+}
+function markWords(node,source,tokens,marked){
+ if(!source||!tokens.length||!marked.size)return;
+ const fragment=document.createDocumentFragment();let pos=0;
+ tokens.forEach((t,i)=>{
+  if(t.start>pos)fragment.append(document.createTextNode(source.slice(pos,t.start)));
+  const span=document.createElement(marked.has(i)?"mark":"span");
+  if(marked.has(i))span.className="bude-indexed-difference";
+  span.textContent=source.slice(t.start,t.end);fragment.append(span);pos=t.end;
+ });
+ if(pos<source.length)fragment.append(document.createTextNode(source.slice(pos)));
+ node.replaceChildren(fragment);
+}
+function presentComparisonDifferences(sectionNode,locus,works,cards){
+ const names=["Krohn 1912","Rose 1899","Kurilo V514"];
+ const original=works.map(x=>String(x||"")),pairIds=[[0,2],[1,2],[0,1]];
+ const comparisons=pairIds.map(([a,b])=>({a,b,...compareWords(original[a],original[b])}));
+ const marked=[new Set(),new Set(),new Set()];
+ const panel=E("div",null,"bude-differences-list");
+ panel.append(E("h4","Diferencias de palabras y frases · locus "+fmt(locus)));
+ const expl=E("p","Comparación automática de las tres transcripciones latinas indexadas por locus. Naranja = palabras añadidas, omitidas o sustituidas frente a otra edición; no acredita una variante manuscrita ni cotejo directo del impreso.","bude-note");
+ panel.append(expl);
+ for(const item of comparisons){
+  const pair=E("section",null,"bude-differences-pair");
+  pair.append(E("h5",names[item.a]+" ↔ "+names[item.b]));
+  if(!original[item.a].trim()||!original[item.b].trim()||!item.available){
+   pair.append(E("p",item.tooLong?"Pasaje demasiado extenso para el cotejo interactivo; consultar ambos textos completos.":"Comparación no disponible: falta el texto latino indexado en una edición.","bude-note"));
+  }else if(!item.groups.length){
+   pair.append(E("p","Sin diferencias léxicas normalizadas en este locus.","bude-note"));
+  }else{
+   const ol=E("ol");ol.lang="la";
+   for(const group of item.groups){
+    const li=E("li"),one=E("span",null,"bude-difference-reading"),two=E("span",null,"bude-difference-reading");
+    const mkA=E("mark",group.a.join(" ")||"∅","bude-indexed-difference");
+    const mkB=E("mark",group.b.join(" ")||"∅","bude-indexed-difference");
+    one.append(E("strong",names[item.a]+": "),mkA);
+    two.append(E("strong",names[item.b]+": "),mkB);
+    li.append(one,two);ol.append(li);
+   }
+   pair.append(ol);
+   for(const id of item.changedA)marked[item.a].add(id);
+   for(const id of item.changedB)marked[item.b].add(id);
+  }
+  panel.append(pair);
+ }
+ works.forEach((text,i)=>{if(!text)return;const p=cards[i].querySelector("p[lang='la']");if(p)markWords(p,text,comparisonTokens(text),marked[i])});
+ sectionNode.append(panel);
+}
 function item(container,title,text,meta,url){const d=E("div",null,"bude-unit");d.append(E("strong",title),E("div","‖ "+String(text||"Sin texto recuperado")+" ‖"));if(meta)d.append(E("small",meta));if(url){const p=E("div");p.append(A("Comprobar fuente",url));d.append(p)}container.append(d)}
 const json=async url=>{const r=await fetch(url);if(!r.ok)throw Error(url+" HTTP "+r.status);return r.json()};
 function hViewerLink(folio,locus){
@@ -143,6 +215,7 @@ async function render(query){
  const ku=card(BIB.v514+" · "+fmt(locus),p?.latin||"Sin texto estructurado.","la");
  ku.append(E("small","Texto autoral V514; las elecciones editoriales de latín y griego se conservan."));
  tgrid.append(k,ro,ku);texts.append(tgrid);
+ presentComparisonDifferences(texts,locus,[krohn?.latin,roseTranscription?.latin,p?.latin],[k,ro,ku]);
  const symmetry=E("div",null,"bude-cobertura");
  symmetry.append(E("strong","Similitud léxica normalizada por locus · "+fmt(locus)));
  for(const [label,other] of [["Kurilo V514 – Rose 1899",roseTranscription?.latin],["Kurilo V514 – Krohn 1912",krohn?.latin],["Rose 1899 – Krohn 1912",roseTranscription?.latin&&krohn?.latin?null:undefined]]){
