@@ -621,7 +621,7 @@ async function readerAttestation(){
   text.append(document.createTextNode(raw.slice(cursor)));text.lang=edition.language;readerEvidence.append(text);
   const provenance=document.createElement("small");provenance.textContent=[edition.author,edition.title,"Pasaje "+locus.split(":").pop(),words.length+" coincidencia(s) exactas con normalización de diacríticos"].join(" · ");readerEvidence.append(provenance);
   const links=document.createElement("p");
-  for(const [label,url] of [["Volver al pasaje","classics-simple-parallel.html?"+new URLSearchParams({work:workId,left:edition.language,right:"auto-en",locus}).toString()],["Consultar ficha académica","classics-work-record.html?work="+encodeURIComponent(workId)]]){
+  for(const [label,url] of [["Leer locus en visor académico","classics-text-reader.html?"+new URLSearchParams({work:workId,lang:edition.language,locus,q:term}).toString()],["Consultar ficha académica","classics-work-record.html?work="+encodeURIComponent(workId)]]){
    const a=document.createElement("a");a.href=url;a.textContent=label;links.append(a);
   }
   readerEvidence.append(links);
