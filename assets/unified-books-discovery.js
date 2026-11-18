@@ -13,7 +13,7 @@ const makeData=async()=>{
  const out=new Map(),errors=paths.filter((_,i)=>!data[i]);
  const put=(id,source)=>{if(!id||!source)return null;let w=out.get(id);if(!w){w={id,title:source.title||"",author:source.author||"",aliases:[],access:[],sourceTypes:new Set()};out.set(id,w)}return w};
  for(const x of data[0]?.records||[]){const w=put("hist:"+x.id,x);if(!w)continue;w.title=x.title;w.author=x.author;w.aliases.push(...(x.aliases||[]),String(x.year||""));const link=safe(x.reader);if(link)w.access.push({url:link,label:"Abrir visor histórico · "+x.year,type:"facsimile"});w.sourceTypes.add("historic");}
- for(const x of data[1]?.entries||[]){const w=put("text:"+x.workId,x);if(!w)continue;w.title||=x.title||"";w.author||=x.author||"";if(x.title)w.aliases.push(x.title);const link=safe(x.reader);if(link&&!w.access.some(a=>a.url===link))w.access.push({url:link,label:"Leer "+({la:"latín",grc:"griego",es:"castellano",en:"inglés",fr:"francés"}[x.language]||x.language),type:"text"});w.sourceTypes.add("text");}
+ for(const x of data[1]?.entries||[]){const w=put("text:"+x.workId,x);if(!w)continue;w.title||=x.title||"";w.author||=x.author||"";if(x.title)w.aliases.push(x.title);const link=safe(x.reader);if(link&&!w.access.some(a=>a.url===link))w.access.push({url:link,label:"Leer "+({la:"latín",grc:"griego",es:"castellano",en:"inglés",fr:"francés"}[x.language]||x.language),type:"text",language:x.language});w.sourceTypes.add("text");}
  for(const x of data[3]?.records||[]){
   if(x.group!=="vitruvian")continue;
   const w=put("codex:"+x.id,{title:x.title,author:"Vitruvio"});if(!w)continue;
@@ -67,8 +67,16 @@ function mount(root,queryInput){
    const kind=maker("p",w.sourceTypes.has("codex")?"Códice o manuscrito histórico":w.sourceTypes.has("historic")?"Visor de edición histórica":w.sourceTypes.has("text")?"Texto digital indexado":"Facsímil PDF de catálogo");item.append(kind);
    const nav=maker("nav");
    if(w.id.startsWith("text:")){
-    const original=w.access.find(a=>a.type==="text"&&/classics-text-reader\.html\?/.test(a.url));
-    if(original){const read=maker("button","Leer aquí · visor académico");read.type="button";read.addEventListener("click",()=>openHere(original.url,[w.author,w.title].filter(Boolean).join(" · ")));nav.append(read)}
+    const editions=w.access.filter(a=>a.type==="text"&&/classics-text-reader\.html\?/.test(a.url));
+    const original=editions.find(a=>["grc","la"].includes(a.language))||editions[0];
+    if(original){const read=maker("button","Leer aquí · visor académico");read.type="button";read.addEventListener("click",()=>{
+     const url=new URL(original.url,location.href);
+     if(["grc","la"].includes(original.language)){
+      const available=["es","en","fr"].find(lang=>editions.some(e=>e.language===lang));
+      url.searchParams.set("to",available||"es");
+     }
+     openHere(url.pathname+url.search,[w.author,w.title].filter(Boolean).join(" · "));
+    });nav.append(read)}
    }
    for(const a of w.access.slice(0,5)){const link=maker("a",a.label);link.href=a.url;if(/^https:\/\//.test(link.href)&&new URL(link.href).origin!==location.origin){link.target="_blank";link.rel="noopener noreferrer"}nav.append(link)}
    if(w.id.startsWith("text:")){const ref=maker("a","Ficha académica");ref.href="classics-work-record.html?work="+encodeURIComponent(w.id.slice(5));nav.append(ref)}
