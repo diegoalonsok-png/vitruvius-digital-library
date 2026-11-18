@@ -132,6 +132,24 @@ try{
   console.log("PASS Vitruvia native language and palette controls");
   await page.close();checked+=4;
  }
+ // Portada: the colour panel must actually open, apply a colour and reset.
+ {
+  const page=await browser.newPage({viewport:{width:1350,height:850}});
+  await page.route(/^https?:\/\/(?!127\.0\.0\.1|localhost)/,route=>route.abort());
+  await page.goto(base+"index.html",{waitUntil:"domcontentloaded",timeout:30000});
+  const toggle=page.locator("#home-palette-toggle");
+  await toggle.waitFor({state:"visible",timeout:15000});
+  await toggle.click();
+  assert.equal(await toggle.getAttribute("aria-expanded"),"true","Home colour panel did not open");
+  const graphite=page.locator("#home-swatch-grid [aria-label='Fondo Grafito']");
+  await graphite.click();
+  assert.equal(await page.evaluate(()=>document.documentElement.style.getPropertyValue("--front-page-bg").trim()),"#15191e","Home graphite selection did not change background token");
+  await toggle.click();
+  await page.locator("#home-color-reset").click();
+  assert.equal(await page.evaluate(()=>document.documentElement.style.getPropertyValue("--front-page-bg").trim()),"#0b0e12","Home colour reset did not restore black");
+  console.log("PASS home colour picker: open, graphite, reset");
+  await page.close();checked+=3;
+ }
  // Lexicon: regression for the notebook-export selector crash. A failed
  // startup previously left the full language and colour toolbar half-initialized.
  {
