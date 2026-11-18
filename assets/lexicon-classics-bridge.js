@@ -241,7 +241,7 @@ function markedOriginalPassage(node,row){
  if(!original||!term||!["la","grc"].includes(row.language))return false;
  const normalize=value=>String(value).normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLocaleLowerCase().replace(/ς/g,"σ");
  const target=normalize(term);
- const re=/[\\p{L}\\p{M}]+(?:['ʼ’][\\p{L}\\p{M}]+)*/gu;
+ const re=/[\p{L}\p{M}]+(?:['ʼ’][\p{L}\p{M}]+)*/gu;
  const found=[];
  for(const match of original.matchAll(re)){
   if(normalize(match[0])===target)found.push({start:match.index,end:match.index+match[0].length,text:match[0]});
