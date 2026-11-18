@@ -64,11 +64,11 @@ function mount(host){
  host.classList.add("vdl-works-explorer");
  const panel=add("div","vdl-works-explorer-panel",null,host);
  const heading=add("label","vdl-works-explorer-heading","Buscar un libro para leer",panel);
- const toolbar=add("div","vdl-works-filterbar",null,panel);
- const search=add("input","vdl-works-search",null,toolbar);
+ 
+ const search=add("input","vdl-works-search",null,heading);
  search.type="search";search.placeholder="Autor, obra o título traducido: Homero, Platón, Eneida…";
  search.autocomplete="off";search.setAttribute("aria-label","Buscar una obra por autor o título");
- heading.append(search);toolbar.remove();
+
  const count=add("p","vdl-works-result-count","Buscá por autor, título latino, griego o traducido.",panel);count.setAttribute("role","status");
  const listing=add("div","vdl-works-list",null,panel);listing.setAttribute("role","list");listing.hidden=true;
  let items=null;
@@ -98,7 +98,7 @@ function mount(host){
   if(!items)return;
   const q=normalize(search.value);
   listing.replaceChildren();
-  if(!q){listing.hidden=true;count.textContent="Buscá por autor, título latino, griego o traducido.";return}
+  if(q.length<2){listing.hidden=true;count.textContent=q?"Escribí al menos dos letras para buscar.":"Buscá por autor, título latino, griego o traducido.";return}
   const found=items.all.map((item,i)=>({item,i,rank:score(item,q)})).filter(x=>x.rank>=0)
    .sort((a,b)=>b.rank-a.rank||Number(b.item.originalIndexed)-Number(a.item.originalIndexed)||a.i-b.i);
   listing.hidden=!found.length;
@@ -125,8 +125,8 @@ function mount(host){
   try{items=await catalog();render()}
   catch(e){count.textContent="El catálogo no se pudo cargar. Abrí Bibliotheca Graeca et Latina."}
  }
- search.addEventListener("focus",load,{once:true});
- search.addEventListener("input",()=>{if(items)render();else load()});
+ // One permanent input, like Bibliotheca: no search dialog or expansion on focus.
+ search.addEventListener("input",()=>{if(search.value.trim().length<2){if(items)render();return;}if(items)render();else void load()});
 }
 function init(){
  document.querySelectorAll("[data-vdl-works-explorer]").forEach(mount);
