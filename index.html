@@ -526,7 +526,11 @@ html[data-theme="dark"].front-color-light .research-nav-controls>.research-print
 <style id="research-nav-compact-two-rows">
 /* Académica: nueve categorías en DOS renglones discretos, a la izquierda.
    Sin botones grandes; el conjunto mide menos que el acceso Vitruvia+Lexicon. */
-.research-nav .research-nav-inner{display:flex!important;align-items:center!important;justify-content:flex-start!important;flex-wrap:wrap!important;column-gap:14px!important;row-gap:5px!important}
+.research-nav .research-nav-inner{display:grid!important;grid-template-columns:max-content minmax(0,1fr)!important;grid-template-rows:auto!important;align-items:center!important;justify-content:start!important;column-gap:14px!important;row-gap:6px!important}
+.research-nav .research-nav-links.research-nav-categories{grid-column:1!important;grid-row:1!important;justify-self:start!important}
+.research-nav .research-nav-controls{grid-column:2!important;grid-row:1!important;display:flex!important;flex:initial!important;min-width:0!important;width:100%!important;justify-content:flex-start!important;align-items:center!important;flex-wrap:wrap!important}
+.research-nav .research-nav-controls .vitruvia-top-stack{order:-1!important}
+@media(max-width:1000px){.research-nav .research-nav-inner{grid-template-columns:minmax(0,1fr)!important}.research-nav .research-nav-links.research-nav-categories{grid-column:1!important;grid-row:1!important}.research-nav .research-nav-controls{grid-column:1!important;grid-row:2!important;justify-content:flex-start!important}}
 .research-nav .research-nav-links.research-nav-categories{display:grid!important;grid-template-columns:repeat(5,max-content)!important;grid-auto-rows:30px!important;gap:5px 9px!important;align-items:center!important;flex:0 0 auto!important;width:max-content!important;max-width:100%!important;min-width:0!important}
 .research-nav .research-nav-group{position:relative!important;min-width:0!important;margin:0!important}
 .research-nav .research-nav-group>summary{display:flex!important;align-items:center!important;justify-content:flex-start!important;gap:5px!important;list-style:none!important;cursor:pointer!important;min-height:30px!important;height:30px!important;box-sizing:border-box!important;white-space:nowrap!important;overflow:visible!important;text-overflow:clip!important;background:transparent!important;border:0!important;border-radius:0!important;box-shadow:none!important;padding:3px 3px!important;margin:0!important;font:500 12px/1.25 system-ui,sans-serif!important;color:inherit!important}
