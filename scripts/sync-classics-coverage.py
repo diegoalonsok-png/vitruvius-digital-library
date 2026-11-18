@@ -29,7 +29,16 @@ def main():
         raise SystemExit("Master and supplementary catalogues share work identifiers")
     all_editions = registry["entries"]
     master_editions = [e for e in all_editions if e["workId"] in master_ids]
-    unknown = {e["workId"] for e in all_editions} - master_ids - supplement_ids
+    # Krohn y Rose son índices auxiliares de ediciones de Vitruvio, no obras
+    # antiguas nuevas. Se verifican por nombre, formato y ruta exactos.
+    critical = {
+        ("krohn-1912-indexed", "data/critical-editions/krohn-1912-tei-loci.json"),
+        ("rose-1899-indexed", "data/critical-editions/rose-1899-transcribed-loci.json"),
+    }
+    auxiliary = {e["workId"] for e in all_editions
+                 if e["format"] == "critical-indexed-latin"
+                 and (e["workId"], e["path"]) in critical and e["language"] == "la"}
+    unknown = {e["workId"] for e in all_editions} - master_ids - supplement_ids - auxiliary
     if unknown:
         raise SystemExit("Uncatalogued work editions: " + ", ".join(sorted(unknown)[:8]))
     coverage = load(COVERAGE)
