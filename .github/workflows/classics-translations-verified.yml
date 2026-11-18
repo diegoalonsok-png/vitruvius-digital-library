@@ -6,6 +6,7 @@ on:
     paths:
       - '.github/workflows/classics-translations-verified.yml'
       - 'scripts/import-classics-verified-translations.py'
+      - 'scripts/test-classics-lexical-index.mjs'
       - 'data/classics-corpus/mass-index-status.json'
       - 'scripts/audit-classics-222-roadmap.py'
   schedule:
