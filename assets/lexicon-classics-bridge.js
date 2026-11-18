@@ -373,7 +373,9 @@ function showIndexedWorks(rows){
  for(const [id,g] of [...groups].sort((a,b)=>a[1].title.localeCompare(b[1].title,"es"))){
   const li=document.createElement("li"),a=document.createElement("a"),counts=document.createElement("small");
   const preferred=g.editions.find(e=>["la","grc"].includes(e.language))||g.editions[0];
-  a.href=safeUrl(preferred.link)||("classics-work-record.html?work="+encodeURIComponent(id));a.textContent=g.title||id;
+  a.href="#lx-library-passages";a.textContent=g.title||id;
+  a.setAttribute("aria-label","Mostrar pasajes verificados de "+(g.title||id));
+  a.addEventListener("click",event=>{event.preventDefault();void selectLibraryWork(id)});
   const order=["la","grc","es","en","fr","it","de","pt"];
   counts.textContent=g.editions.slice().sort((a,b)=>order.indexOf(a.language)-order.indexOf(b.language))
    .map(v=>(langs[v.language]||v.language)+": "+v.count).join(" · ");
@@ -439,6 +441,7 @@ async function selectLibraryWork(workId){
   const remaining=currentLiteralRows.filter(row=>row.workId!==workId);
   const selected=specific.filter(row=>row.workId===workId);
   selectedLiteralRows=selected;
+  if(!currentEditions.length)currentEditions=await registeredEditions();
   translationContext=await prepareTranslation(workId,currentEditions);
   if(token!==serial)return;
   showLiteralRows([...selected,...remaining],currentEditions);
@@ -510,11 +513,25 @@ async function execute(mode="literal"){
      }
     }catch{}
    }
-   const rows=await window.ClassicsCorpusSearch.searchPassages(q,{limit:160,maxPerEdition:12,language:greek?"grc":""});
+   // Present verified source paragraphs as they arrive; do not wait for every edition.
+   // Never show an index-only work as if it had an attested quotation.
+   let lastPaint=0;
+   const onProgress=progress=>{
+    if(token!==serial||!progress?.rows?.length)return;
+    const now=Date.now();
+    if(now-lastPaint<250&&progress.checked<progress.total)return;
+    lastPaint=now;
+    currentLiteralRows=progress.rows.slice(0,160);
+    showLiteralRows(currentLiteralRows,currentEditions);
+    status.textContent="Pasajes literales verificados: "+currentLiteralRows.length+
+     " · ediciones examinadas: "+progress.checked+"/"+progress.total+
+     ". La búsqueda continúa; el listado de obras permanece arriba.";
+   };
+   const rows=await window.ClassicsCorpusSearch.searchPassages(q,{limit:160,maxPerEdition:12,language:greek?"grc":"",onProgress});
    if(token!==serial)return;
    /* El resumen por edición se sustituye por los pasajes verificados, pero las
       fichas de la frase se conservan: son un hallazgo distinto y más preciso. */
-   if(summaryShown&&!/\s/.test(q.trim()))list.replaceChildren();
+   // The list below the work counts contains verified source passages only.
    const counts=new Map();
    for(const row of rows){const key=[row.workId,row.language,row.edition,row.source].join("|");counts.set(key,(counts.get(key)||0)+1)}
    const editionCount=counts.size;
