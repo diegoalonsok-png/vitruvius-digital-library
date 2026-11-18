@@ -335,3 +335,66 @@ html:not([data-parallel-view="true"]):not([data-reading-mode="simple"]) body.aca
 .cl-unified-reading-actions .cl-compact-paper-buttons button.cl-paper-style-button:focus-visible{
  outline:2px solid #e7ca8e!important;outline-offset:2px!important;
 }
+
+
+/* 2026-11-18 · Acoplar la paleta al espacio libre de la PRIMERA línea.
+   La fila 2 queda reservada a las acciones de traducción; la paleta no genera fila 3.
+   Los textos originales, visores y controladores no se modifican. */
+@media (min-width:1251px){
+ html:not([data-parallel-view="true"]):not([data-reading-mode="simple"]) body.academic-reader
+ .cl-edition-layout .cl-unified-reading-actions{
+  display:grid!important;
+  grid-template-columns:max-content max-content max-content minmax(0,1fr)!important;
+  grid-template-rows:minmax(36px,auto) minmax(36px,auto)!important;
+  align-items:center!important;column-gap:8px!important;row-gap:6px!important;
+  padding:8px 11px!important;
+ }
+ html:not([data-parallel-view="true"]):not([data-reading-mode="simple"]) body.academic-reader
+ .cl-unified-reading-actions>button:first-child{grid-column:1;grid-row:1}
+ html:not([data-parallel-view="true"]):not([data-reading-mode="simple"]) body.academic-reader
+ .cl-unified-reading-actions>a:first-of-type{grid-column:2;grid-row:1}
+ html:not([data-parallel-view="true"]):not([data-reading-mode="simple"]) body.academic-reader
+ .cl-unified-reading-actions>.cl-pane-options{
+  grid-column:3;grid-row:1;min-width:0;flex-wrap:nowrap!important;
+ }
+ html:not([data-parallel-view="true"]):not([data-reading-mode="simple"]) body.academic-reader
+ .cl-unified-reading-actions>.cl-translation-tools{
+  grid-column:1 / -1;grid-row:2;flex-wrap:nowrap!important;min-width:0!important;
+ }
+ html:not([data-parallel-view="true"]):not([data-reading-mode="simple"]) body.academic-reader
+ .cl-unified-reading-actions>.cl-compact-palette{
+  grid-column:4;grid-row:1;justify-self:stretch;justify-content:flex-end!important;
+  width:100%!important;max-width:100%!important;min-width:0!important;
+  height:34px!important;min-height:34px!important;
+  margin:0!important;padding:0 2px!important;gap:3px!important;
+  flex-wrap:nowrap!important;overflow-x:auto!important;overflow-y:hidden!important;
+ }
+ html:not([data-parallel-view="true"]):not([data-reading-mode="simple"]) body.academic-reader
+ .cl-compact-palette .cl-compact-palette-label{
+  font:600 11px/1.2 system-ui,sans-serif!important;
+  margin:0 1px!important;white-space:nowrap!important;
+ }
+ html:not([data-parallel-view="true"]):not([data-reading-mode="simple"]) body.academic-reader
+ .cl-unified-reading-actions .cl-compact-palette button.cl-compact-palette-dot{
+  flex:0 0 18px!important;width:18px!important;height:18px!important;
+  min-width:18px!important;min-height:18px!important;max-height:18px!important;
+  border-width:2px!important;
+ }
+ html:not([data-parallel-view="true"]):not([data-reading-mode="simple"]) body.academic-reader
+ .cl-unified-reading-actions .cl-compact-paper-buttons{
+  margin-left:4px!important;padding-left:6px!important;gap:3px!important;
+  flex-shrink:0!important;height:28px!important;
+ }
+ html:not([data-parallel-view="true"]):not([data-reading-mode="simple"]) body.academic-reader
+ .cl-unified-reading-actions .cl-compact-paper-buttons button.cl-paper-style-button{
+  height:27px!important;min-height:27px!important;max-height:27px!important;
+  padding:3px 6px!important;font:500 11px/1.1 system-ui,sans-serif!important;
+  border-radius:6px!important;
+ }
+}
+@media (min-width:1251px) and (max-width:1600px){
+ html:not([data-parallel-view="true"]):not([data-reading-mode="simple"]) body.academic-reader
+ .cl-unified-reading-actions>.cl-compact-palette{
+  justify-content:flex-start!important;
+ }
+}
