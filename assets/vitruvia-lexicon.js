@@ -663,16 +663,30 @@ function hitCard(D,h){
 async function showApparatus(locus,box,btn){
  box.hidden=false;if(box.querySelector(".lx-appbox")){box.querySelector(".lx-appbox").remove();return}
  btn.disabled=true;const old=btn.textContent;btn.textContent="Cargando aparato…";
- try{const [A,C]=await Promise.all([load("data/apparatus-index.json"),load("data/collation-loci.json")]);
+ try{
+  const [A,rose,krohn]=await Promise.all([
+   load("data/apparatus-index.json"),
+   load("data/critical-editions/rose-1899-transcribed-loci.json"),
+   load("data/critical-editions/krohn-1912-tei-loci.json")
+  ]);
   const wrap=el("div",{class:"lx-appbox"},el("h4",{},"Aparato y colación · Vitr. "+locus));
-  const ents=A.entries.filter(e=>(e.loci||[]).includes(locus));
-  if(ents.length){for(const e of ents.slice(0,8)){const t=(e.text||"").replace(/\s+/g," ");wrap.append(el("div",{class:"lx-appentry"},el("p",{class:"lx-small"},`${e.label||e.kind||"Aparato"} · ${e.version||""} (${e.language||""}) · p. ${e.page||"?"}${e.locusLink==="estimado"?" · vínculo estimado":""}`),el("p",{},t.length>900?t.slice(0,900)+" …":t),e.pdf?el("a",{href:e.pdf,target:"_blank",rel:"noopener"},"Abrir la página del PDF"):null))}}
+  const ents=(A.entries||[]).filter(e=>(e.loci||[]).includes(locus));
+  if(ents.length)for(const e of ents.slice(0,8)){
+   const t=(e.text||"").replace(/\\s+/g," ");
+   wrap.append(el("div",{class:"lx-appentry"},el("p",{class:"lx-small"},`${e.label||e.kind||"Aparato"} · ${e.version||""} (${e.language||""}) · p. ${e.page||"?"}${e.locusLink==="estimado"?" · vínculo estimado":""}`),el("p",{},t.length>900?t.slice(0,900)+" …":t),e.pdf?el("a",{href:e.pdf,target:"_blank",rel:"noopener"},"Abrir la página del PDF"):null));
+  }
   else wrap.append(el("p",{class:"lx-small"},"El índice del aparato no registra entradas vinculadas a este locus."));
-  const c=C.loci?.[locus];
-  if(c){for(const [id,v] of Object.entries(c)){const wit=(C.witnesses||[]).find(w=>w.id===id);wrap.append(el("div",{class:"lx-appentry"},el("p",{class:"lx-small"},`${wit?.citation||id} · p. ${v.page}${v.pageEnd&&v.pageEnd!==v.page?"–"+v.pageEnd:""} · semejanza ${v.score}`),el("p",{class:"lx-passage",lang:"la"},(v.text||"").slice(0,1600)),el("p",{class:"lx-small"},"Texto OCR con el aparato a pie de página de esa edición (siglas H, G, S…): ruido de OCR posible.")))}
-   wrap.append(el("button",{type:"button",class:"lx-btn",onclick:()=>{$("#col-locus").value=locus;loadCollationExample();$("#collatio").scrollIntoView({behavior:"smooth"})}},"Colacionar este locus en el taller ecdótico"))}
+  for(const [edition,data] of [["Rose 1899",rose],["Krohn 1912",krohn]]){
+   const item=(data.passages||[]).find(p=>p.locus===locus);
+   wrap.append(el("div",{class:"lx-appentry"},
+    el("p",{class:"lx-small"},edition+" · transcripción latina indexada · "+locus),
+    el("p",{class:"lx-passage",lang:"la"},item?.latin||"El locus no está disponible en esta transcripción."),
+    el("p",{class:"lx-small"},"Texto digital indexado; cotejo completo del impreso pendiente. No es una transcripción de manuscrito.")
+   ));
+  }
+  wrap.append(el("a",{href:"apparatus-bude.html?locus="+encodeURIComponent(locus)},"Comparar Rose, Krohn y Kurilo en el aparato crítico"));
   box.append(wrap);
- }catch(err){box.append(el("p",{class:"lx-small"},"No se pudo cargar el aparato: "+err.message))}
+ }catch(err){box.append(el("p",{class:"lx-small"},"No se pudo cargar el aparato indexado: "+err.message))}
  btn.disabled=false;btn.textContent=old;
 }
 /* A book chosen from concordance lists is a passage navigation action.
