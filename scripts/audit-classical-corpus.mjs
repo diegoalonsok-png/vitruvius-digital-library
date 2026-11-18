@@ -129,7 +129,8 @@ for(const w of allWorks)for(const p of Object.values(w.corpusFiles||{}))
 // Translation transparency: indexed languages and catalogue must agree. Checks
 // cannot establish philological quality or historical copyright on their own.
 assert.equal(registry.count,registry.entries.length,"Search registry count is stale");
-assert.equal(registry.works,new Set(registry.entries.map(e=>e.workId)).size,"Search registry distinct work count is stale");
+assert.equal(registry.works,new Set(registry.entries.filter(e=>e.format!=="critical-indexed-latin").map(e=>e.workId)).size,
+ "Auxiliary critical-edition indexes must not inflate distinct ancient works");
 const verifiedParallel=[],explicitlyUnaligned=[];
 for(const w of allWorks){
  const entries=registry.entries.filter(e=>e.workId===w.id&&e.format==="json-passages");
@@ -260,7 +261,7 @@ for(const record of provenance.records){
 
 const summary={parallelLocusCoverage:verifiedParallel,explicitlyUnalignedTranslations:explicitlyUnaligned,cataloguedWorks:works.length,distinctAuthorLabels:new Set(works.map(w=>w.author)).size,status:groups,
  localReadingRecords:localWorks.length,checkedFileReferences:checked.length,
- fulltextSearchWorks:new Set(registry.entries.map(e=>e.workId)).size,fulltextSearchVersions:registry.entries.length,
+ fulltextSearchWorks:new Set(registry.entries.filter(e=>e.format!=="critical-indexed-latin").map(e=>e.workId)).size,fulltextSearchVersions:registry.entries.length,
  languages,formats,unindexedHtml,classicPDF:classicPDF.length,vitruviusPageTextIndexes:vitruviusPageTexts.length,
  note:"Binary PDFs were checked for repository presence, not OCR completeness or browser rendering. Unknown works worldwide cannot be counted from this local catalogue."};
 console.log(JSON.stringify(summary,null,2));
