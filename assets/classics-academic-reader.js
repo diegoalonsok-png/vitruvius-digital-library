@@ -44,7 +44,9 @@ function findLocus(passages,value){
   if(wanted.ref&&candidate.ref===wanted.ref&&(!wanted.work||!candidate.work||wanted.work===candidate.work))matches.push(index);
   else if(!wanted.ref&&wanted.raw===candidate.raw)matches.push(index);
  });
- return matches.length===1?matches[0]:-1;
+ // Varias tarjetas de una edición pueden compartir página/locus: usar la primera.
+ // Nunca equiparar obras distintas: el filtro CTS por work se conserva arriba.
+ return matches.length?matches[0]:-1;
 }
 /* Source-note navigator: reuses notes already attached to the edition after
  * manifest, source hash and passage checks. No new text or critical variant is
