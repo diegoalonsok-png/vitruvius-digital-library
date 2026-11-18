@@ -81,7 +81,14 @@ function mount(root,queryInput){
     });nav.append(read)}
    }
    for(const a of w.access.slice(0,5)){const link=maker("a",a.label);link.href=a.url;if(/^https:\/\//.test(link.href)&&new URL(link.href).origin!==location.origin){link.target="_blank";link.rel="noopener noreferrer"}nav.append(link)}
-   if(w.id.startsWith("text:")){const ref=maker("a","Ficha académica");ref.href="classics-work-record.html?work="+encodeURIComponent(w.id.slice(5));nav.append(ref)}
+   if(w.id.startsWith("text:")){
+    const workId=w.id.slice(5);
+    const lex=maker("a","Analizar vocabulario en Lexicon");
+    lex.href="vitruvia-lexicon.html?"+new URLSearchParams({work:workId,lang:"auto",mode:"palabra"});
+    lex.title="Abrir Lexicon con esta obra seleccionada, sin inventar resultados";
+    nav.append(lex);
+    const ref=maker("a","Ficha académica");ref.href="classics-work-record.html?work="+encodeURIComponent(workId);nav.append(ref);
+   }
    item.append(nav);list.append(item);
   }
   visible=Math.min(all.length,visible+12);more.hidden=visible>=all.length;
