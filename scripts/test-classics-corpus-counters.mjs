@@ -30,5 +30,10 @@ assert.equal(road.targetWorks,road.items.length);
 assert.equal(road.counts.originalsIndexed,road.items.filter(w=>w.originalIndexed).length);
 assert.equal(translations.totals.cataloguedWorks,road.targetWorks);
 assert.equal(registry.entries.length,registry.count);
-assert.equal(translations.totals.translatedWorksLocal,59);
+// Cifra derivada de las traducciones realmente alojadas, nunca un 59 fijo.
+const mainIds=new Set(road.items.map(w=>w.id));
+const hosted=new Set(registry.entries.filter(e=>mainIds.has(e.workId)&&
+ ["en","es","fr"].includes(e.language)&&!/^https?:\/\//.test(e.path)).map(e=>e.workId));
+assert.equal(translations.totals.translatedWorksLocal,hosted.size);
+assert.equal(road.counts.worksWithHostedTranslation,hosted.size);
 console.log("PASS: contador compartido auditado, ficha ecdótica y núcleo Vitruviano preservado.");
