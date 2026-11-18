@@ -6,6 +6,7 @@ A mismatched hash is a deployment difference, not necessarily an incorrect sourc
 import hashlib
 import json
 import os
+import re
 import sys
 import urllib.error
 import urllib.request
@@ -67,6 +68,36 @@ def request(url):
     except (urllib.error.HTTPError, urllib.error.URLError, TimeoutError, OSError) as exc:
         return {"error": str(exc)}
 
+def diagnostic_html_difference(path):
+    """Inspect only public HTML to identify version drift; do not alter either deployment."""
+    def get_html(base):
+        req = urllib.request.Request(
+            base + "/" + path,
+            headers={"User-Agent": "Vitruvius-deployment-integrity/1.0", "Cache-Control": "no-cache"},
+        )
+        with urllib.request.urlopen(req, timeout=23) as response:
+            return response.read().decode("utf-8", errors="replace")
+    try:
+        pages, cloud = get_html(ORIGINS["github_pages"]), get_html(ORIGINS["cloudflare"])
+        offset = next((i for i, (a, b) in enumerate(zip(pages, cloud)) if a != b), min(len(pages), len(cloud)))
+        def markers(html):
+            match = re.search(r"scriptorium-triple[.]js(?:[?]v=[A-Za-z0-9_-]+)?", html)
+            return {
+                "triple_script": match.group(1) if match else None,
+                "latin_triad_intro": "latín original indexado" in html and "Rose (1899" in html,
+                "legacy_ocr_intro": "se muestran como <strong>OCR sin corregir</strong>" in html,
+            }
+        return {
+            "first_difference_at": offset,
+            "github_near_difference": pages[max(0, offset - 60): offset + 120],
+            "cloudflare_near_difference": cloud[max(0, offset - 60): offset + 120],
+            "github_html": markers(pages),
+            "cloudflare_html": markers(cloud),
+        }
+    except (urllib.error.HTTPError, urllib.error.URLError, TimeoutError, OSError) as exc:
+        return {"diagnostic_error": str(exc)}
+
+
 def main():
     report = {"schema": "vdl-cross-deployment-audit-v1",
               "checked_utc": datetime.now(timezone.utc).isoformat(),
@@ -79,7 +110,10 @@ def main():
                 report["unavailable"].append({"path": path, "origin": name, "state": value})
         left, right = states.values()
         if "sha256" in left and "sha256" in right and left["sha256"] != right["sha256"]:
-            report["differences"].append({"path": path, "github_sha256": left["sha256"], "cloudflare_sha256": right["sha256"]})
+            difference = {"path": path, "github_sha256": left["sha256"], "cloudflare_sha256": right["sha256"]}
+            if path.endswith(".html"):
+                difference["html_diagnostic"] = diagnostic_html_difference(path)
+            report["differences"].append(difference)
     report["summary"] = {"assets_checked": len(ASSETS),
                          "divergent_assets": len(report["differences"]),
                          "unavailable_assets": len(report["unavailable"])}
@@ -89,6 +123,8 @@ def main():
     print(json.dumps(report["summary"], ensure_ascii=False))
     for item in report["differences"]:
         print("DIVERGENCIA", item["path"])
+        if item["path"] == "scriptorium.html":
+            print("SCRIPTORIUM_HTML_DIAGNOSTIC", json.dumps(item.get("html_diagnostic", {}), ensure_ascii=False))
     for item in report["unavailable"]:
         print("SIN VERIFICAR", item["origin"], item["path"], item["state"])
     # An incomplete check never becomes a false PASS.
