@@ -2597,7 +2597,11 @@
         "status": "Pendiente de acreditar un PDF de una edición histórica específica"
       },
       "translation": {
-        "status": "Sin traducción individual vinculada todavía; consultar las disponibles en la fuente"
+        "status": "Traducción inglesa histórica Hamilton/Falconer (1854–1857), texto TEI Perseus indexable por 1516 secciones numéricas; los fragmentos especiales del libro VII siguen sin traducción emparejada.",
+        "language": "en",
+        "translator": "Hans Claude Hamilton y William Falconer",
+        "alignmentStatus": "1516-numeric-cts-sections-mapped-special-fragments-unmatched",
+        "sourceUrn": "urn:cts:greekLit:tlg0099.tlg001.perseus-eng4"
       },
       "links": {
         "scaife": "https://scaife.perseus.org/library/",
@@ -2616,8 +2620,18 @@
         "Geographica"
       ],
       "corpusFiles": {
-        "grc": "data/classics-corpus/strabo-grc.json"
+        "grc": "data/classics-corpus/strabo-grc.json",
+        "en": "data/classics-corpus/strabo-en.json"
       },
+      "localVersions": [
+        {
+          "language": "en",
+          "label": "English · Hamilton / Falconer (1854–1857)",
+          "path": "classics-text-reader.html?work=strabo&lang=en",
+          "kind": "historical-translation",
+          "citationChicago18": "Strabo. The Geography of Strabo. Translated by Hans Claude Hamilton and William Falconer. London: Henry G. Bohn, 1854–1857. TEI edition, Perseus Digital Library, Tufts University."
+        }
+      ],
       "century": "I a. C.–I",
       "period": "I a. C.–I",
       "lexicalIndex": {
