@@ -71,6 +71,8 @@ jobs:
           JS
       - name: Probar fichas, lectores, índices y alias editoriales de R2
         run: node scripts/test-bibliotheca-expansion-2026-11.mjs
+      - name: Acreditar que originales y traducciones registradas estén indexados por locus
+        run: node scripts/check-registered-originals-translations-indexed.mjs
       - name: Marcar fichas como indexadas sólo tras completar las pruebas
         run: |
           node --input-type=module <<'JS'
