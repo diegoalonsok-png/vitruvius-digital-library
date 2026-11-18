@@ -22,7 +22,7 @@ function refreshLexiconShortcut(rec){
  const selectedWord=(input?.value||"").trim();
  const full=new URL("vitruvia-lexicon.html",location.href);
  full.searchParams.set("work",work);
- full.searchParams.set("mode",selectedWord&&selectedWord.split(/\\s+/u).length>1?"frase":"palabra");
+ full.searchParams.set("mode",selectedWord&&selectedWord.trim().split(/\s+/u).length>1?"frase":"palabra");
  full.searchParams.set("lang",["la","grc"].includes(data?.language)?data.language:"auto");
  if(selectedWord&&selectedWord.length<=160)full.searchParams.set("q",selectedWord);
  // Lexicon can inspect the exact original locus when it has a literal lemma query.
