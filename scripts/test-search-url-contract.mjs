@@ -58,4 +58,33 @@ for(const query of [
  assert(u.get("q"),"Query was lost in URL round-trip: "+query);
  assert(u.get("mode"),"Mode was lost in URL round-trip: "+query);
 }
+// Cross-app scholarly links: preserve exact work identity and source locus,
+// and never regress to the retired dual-reader route.
+const crossLinks=[
+ ["Lexicon bridge",read("assets/lexicon-classics-bridge.js")],
+ ["Bibliotheca work catalogue",read("assets/bibliotheca-work-search.js")],
+ ["Vitruvia books panel",read("assets/unified-books-discovery.js")],
+ ["Official reader",read("assets/classics-text-reader.js")]
+];
+for(const [name,source] of crossLinks)new vm.Script(source,{filename:name});
+const [bridge,workSearch,bookPanel,reader]=crossLinks.map(([,source])=>source);
+assert(bridge.includes('["Leer locus en visor académico","classics-text-reader.html?"'),
+ "Lexicon must link exact original passages to the approved academic reader");
+assert(!bridge.includes('["Volver al pasaje","classics-simple-parallel.html?"'),
+ "Old reader route reappeared in Lexicon exact-passage action");
+assert(workSearch.includes("lexiconWorkLink(w.id)"),
+ "Bibliotheca must link indexed works to Lexicon with their work identifier");
+assert(bookPanel.includes('new URLSearchParams({work:workId,lang:"auto",mode:"palabra"})'),
+ "Vitruvia must preserve a selected work on the way to Lexicon");
+assert(bookPanel.includes('new URL("classics-text-reader.html"')||
+ bookPanel.includes('classics-text-reader\\.html'),
+ "Vitruvia must still open the official academic reader");
+assert(reader.includes('lexiconShortcut.id="reader-lexicon-current"')&&
+ reader.includes('full.searchParams.set("work",work)')&&
+ reader.includes('full.searchParams.set("locus",rec.locus)'),
+ "Official reader must support returning to Lexicon with work and exact original locus");
+assert(!workSearch.includes('new URL("classics-parallel-reader.html",location.href)'),
+ "Bibliotheca must never restore the retired academic reader");
+console.log("PASS: scholarly crosslinks preserve works and verified source loci without older readers.");
+
 console.log("PASS: three static search pages parse deep links, invalidate stale requests and handle browser history.");
