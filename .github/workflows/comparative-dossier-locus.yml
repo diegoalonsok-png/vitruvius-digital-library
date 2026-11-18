@@ -1,0 +1,40 @@
+name: Aparato comparativo · botones y loci en Chromium
+on:
+  pull_request:
+    paths:
+      - 'assets/dossier-integrado-731.js'
+      - 'aparato-comparativo.html'
+      - 'scripts/test-comparative-dossier-locus-browser.mjs'
+      - '.github/workflows/comparative-dossier-locus.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'assets/dossier-integrado-731.js'
+      - 'aparato-comparativo.html'
+      - 'scripts/test-comparative-dossier-locus-browser.mjs'
+      - '.github/workflows/comparative-dossier-locus.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  locus-browser:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          lfs: false
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with: {node-version: '22'}
+      - run: |
+          node --check assets/dossier-integrado-731.js
+          node --check scripts/test-comparative-dossier-locus-browser.mjs
+      - run: |
+          npm install --no-save playwright@1.56.1
+          npx playwright install --with-deps chromium
+      - name: Probar selección de locus, prefacio y Atrás
+        run: |
+          python3 -m http.server 8766 --bind 127.0.0.1 >/tmp/dossier-http.log 2>&1 &
+          sleep 2
+          node scripts/test-comparative-dossier-locus-browser.mjs
