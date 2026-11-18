@@ -1,0 +1,33 @@
+name: Traducciones históricas · integridad de fichas y registros
+on:
+  pull_request:
+    paths:
+      - 'scripts/test-classics-historical-translations.py'
+      - 'scripts/import-classics-verified-translations.py'
+      - 'data/classics-corpus/search-registry.json'
+      - '.github/workflows/historical-translations-integrity.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/test-classics-historical-translations.py'
+      - 'scripts/import-classics-verified-translations.py'
+      - '.github/workflows/historical-translations-integrity.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  check:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m py_compile scripts/test-classics-historical-translations.py
+      - name: Reconstruir cobertura declarada, sin tocar textos
+        run: python scripts/sync-classics-coverage.py
+      - name: Certificar traducciones con autor y edición, sin alineación inventada
+        run: python scripts/test-classics-historical-translations.py
