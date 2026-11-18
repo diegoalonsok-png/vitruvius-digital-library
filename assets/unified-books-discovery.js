@@ -48,6 +48,8 @@ function mount(root,queryInput){
  const input=maker("input");input.type="search";input.maxLength=160;input.placeholder="Cesariano · Cesarin · Palladio · Julio César · Ἰλιάς";input.setAttribute("aria-label","Buscar todos los libros de la biblioteca");
  const go=maker("button","Buscar libros");go.type="submit";form.append(input,go);
  const status=maker("p");status.setAttribute("role","status");status.setAttribute("aria-live","polite");
+ const lexLink=maker("a","Ver pasajes y lemas en Lexicon");lexLink.hidden=true;
+ lexLink.style.cssText="display:inline-block;margin:7px 0 13px;text-decoration:underline;text-underline-offset:3px";
  const viewer=maker("section");viewer.className="vdl-inline-academic-reader";viewer.hidden=true;
  viewer.setAttribute("aria-label","Lectura académica dentro de Vitruvia");
  const viewerTitle=maker("h4","Lectura académica · Bibliotheca");
@@ -59,7 +61,7 @@ function mount(root,queryInput){
  viewer.append(viewerTitle,closeViewer,frame);
  const openHere=(url,title)=>{const u=new URL(url,location.href);if(u.origin!==location.origin)return;viewerTitle.textContent="Lectura académica · "+title;frame.src=u.href;viewer.hidden=false;viewer.scrollIntoView({block:"start",behavior:"smooth"})};
  const list=maker("ol");const more=maker("button","Mostrar más libros");more.type="button";more.hidden=true;
- panel.append(h,intro,form,status,viewer,list,more);root.append(panel);
+ panel.append(h,intro,form,status,lexLink,viewer,list,more);root.append(panel);
  let all=[],visible=0,current=0;
  function render(){
   for(const w of all.slice(visible,visible+12)){
@@ -86,7 +88,7 @@ function mount(root,queryInput){
  }
  more.addEventListener("click",render);
  async function run(e){
-  e?.preventDefault();const id=++current,q=input.value.trim();list.replaceChildren();visible=0;all=[];more.hidden=true;viewer.hidden=true;frame.removeAttribute("src");
+  e?.preventDefault();const id=++current,q=input.value.trim();lexLink.hidden=fold(q).length<2;lexLink.href="vitruvia-lexicon.html?q="+encodeURIComponent(q)+"&mode=palabra&lang=es";list.replaceChildren();visible=0;all=[];more.hidden=true;viewer.hidden=true;frame.removeAttribute("src");
   if(fold(q).length<2){status.textContent="Escriba al menos dos caracteres.";return}
   status.textContent="Consultando registros internos de textos y visores…";go.disabled=true;
   try{const data=await fetchData();if(id!==current)return;
