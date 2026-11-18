@@ -267,11 +267,12 @@ html:not([data-parallel-view="true"]):not([data-reading-mode="simple"]) body :is
 
 /* Paleta del lector general: muestras en una sola línea, sin aumentar botonera. */
 html:not([data-parallel-view="true"]):not([data-reading-mode="simple"]) body.academic-reader
-.cl-unified-reading-actions>.cl-compact-palette{
-  display:flex!important;flex:0 0 auto;align-items:center;flex-wrap:nowrap;
-  gap:6px;margin:0 0 0 auto;padding:0 3px;height:34px;min-height:34px;
-  white-space:nowrap;max-width:100%;overflow-x:auto;overflow-y:hidden;
-  scrollbar-width:thin;scrollbar-color:#666 transparent;
+.cl-unified-reading-actions .cl-translation-tools>.cl-compact-palette{
+  display:flex!important;flex:0 0 auto!important;align-items:center;flex-wrap:nowrap!important;
+  justify-content:flex-start!important;gap:4px;margin:0 0 0 8px!important;padding:0 2px!important;
+  height:32px!important;min-height:32px!important;
+  width:max-content!important;max-width:none!important;white-space:nowrap;
+  overflow:visible!important;scrollbar-width:none!important;
 }
 html:not([data-parallel-view="true"]):not([data-reading-mode="simple"]) body.academic-reader
 .cl-compact-palette .cl-compact-palette-label{
@@ -298,7 +299,7 @@ html:not([data-parallel-view="true"]):not([data-reading-mode="simple"]) body.aca
 }
 @media(max-width:1200px){
  html:not([data-parallel-view="true"]):not([data-reading-mode="simple"]) body.academic-reader
- .cl-unified-reading-actions>.cl-compact-palette{gap:4px}
+ .cl-unified-reading-actions .cl-translation-tools>.cl-compact-palette{gap:3px}
  html:not([data-parallel-view="true"]):not([data-reading-mode="simple"]) body.academic-reader
  .cl-unified-reading-actions .cl-compact-palette button.cl-compact-palette-dot{
   flex-basis:20px!important;width:20px!important;height:20px!important;
@@ -337,15 +338,13 @@ html:not([data-parallel-view="true"]):not([data-reading-mode="simple"]) body.aca
 }
 
 
-/* 2026-11-18 · Distribución final, solicitada: paleta en el espacio inferior derecho.
-   Fila superior: intercambio, traducciones publicadas y lectura enfrentada.
-   Fila inferior: controles de traducción a la izquierda; colores y papel a la derecha.
-   Se conservan solamente dos filas; no se modifican lectores ni traducciones. */
+/* 2026-11-18 · Fusión: botones de color a continuación de A+ (segunda fila).
+   Sin barra de desplazamiento, sin duplicar filas ni tocar pasajes o traducciones. */
 @media (min-width:1251px){
  html:not([data-parallel-view="true"]):not([data-reading-mode="simple"]) body.academic-reader
  .cl-edition-layout .cl-unified-reading-actions{
   display:grid!important;
-  grid-template-columns:max-content max-content max-content minmax(0,1fr)!important;
+  grid-template-columns:max-content max-content minmax(0,1fr)!important;
   grid-template-rows:minmax(36px,auto) minmax(36px,auto)!important;
   align-items:center!important;column-gap:8px!important;row-gap:6px!important;
   padding:8px 11px!important;
@@ -360,15 +359,17 @@ html:not([data-parallel-view="true"]):not([data-reading-mode="simple"]) body.aca
  }
  html:not([data-parallel-view="true"]):not([data-reading-mode="simple"]) body.academic-reader
  .cl-unified-reading-actions>.cl-translation-tools{
-  grid-column:1 / 4;grid-row:2;justify-self:start!important;flex-wrap:nowrap!important;min-width:0!important;width:max-content!important;max-width:100%!important;
+  grid-column:1 / -1;grid-row:2;justify-self:stretch!important;
+  justify-content:flex-start!important;flex-wrap:nowrap!important;
+  min-width:0!important;width:100%!important;max-width:100%!important;
  }
  html:not([data-parallel-view="true"]):not([data-reading-mode="simple"]) body.academic-reader
- .cl-unified-reading-actions>.cl-compact-palette{
-  grid-column:4;grid-row:2;justify-self:stretch;justify-content:flex-end!important;
-  width:100%!important;max-width:100%!important;min-width:0!important;
-  height:34px!important;min-height:34px!important;
-  margin:0!important;padding:0 2px!important;gap:3px!important;
-  flex-wrap:nowrap!important;overflow-x:auto!important;overflow-y:hidden!important;
+ .cl-unified-reading-actions .cl-translation-tools>.cl-compact-palette{
+  flex:0 0 auto!important;justify-content:flex-start!important;
+  width:max-content!important;max-width:none!important;
+  min-width:0!important;margin:0 0 0 8px!important;padding:0!important;
+  height:32px!important;min-height:32px!important;gap:4px!important;
+  flex-wrap:nowrap!important;overflow:visible!important;scrollbar-width:none!important;
  }
  html:not([data-parallel-view="true"]):not([data-reading-mode="simple"]) body.academic-reader
  .cl-compact-palette .cl-compact-palette-label{
@@ -393,9 +394,13 @@ html:not([data-parallel-view="true"]):not([data-reading-mode="simple"]) body.aca
   border-radius:6px!important;
  }
 }
-@media (min-width:1251px) and (max-width:1600px){
+/* Sin scroll horizontal en ninguna anchura: en pantallas estrechas,
+   la distribución puede adaptarse sin barras internas. */
+html:not([data-parallel-view="true"]) body.academic-reader
+.cl-translation-tools>.cl-compact-palette::-webkit-scrollbar{display:none!important}
+@media (max-width:1250px){
  html:not([data-parallel-view="true"]):not([data-reading-mode="simple"]) body.academic-reader
- .cl-unified-reading-actions>.cl-compact-palette{
-  justify-content:flex-start!important;
- }
+ .cl-unified-reading-actions>.cl-translation-tools{flex-wrap:wrap!important}
+ html:not([data-parallel-view="true"]):not([data-reading-mode="simple"]) body.academic-reader
+ .cl-translation-tools>.cl-compact-palette{margin-left:4px!important}
 }

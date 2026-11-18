@@ -92,7 +92,10 @@ function init(){
         palette.append(button);
       }
     }
-    unifiedControls.append(palette);
+    // La paleta pertenece a la misma fila que Idioma, Detener y A+/A−.
+    // Insertarla despues de A+ elimina el hueco impuesto por columnas de la fila superior.
+    const translationControls=unifiedControls.querySelector(".cl-translation-tools");
+    (translationControls||unifiedControls).append(palette);
     refreshCompactPalette();
 
     // Dos acabados del visor simple, sin alterar la interfaz ni la colación.
