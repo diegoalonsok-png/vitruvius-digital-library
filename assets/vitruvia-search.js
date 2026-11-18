@@ -94,7 +94,17 @@ const WELCOME_I18N={
  }
 };
 const T=()=>I18N[S.lang]||I18N.es;
-function related(q){const set=new Set(words(q));const n=norm(q);for(const [key,terms] of Object.entries(lex))if(n.includes(key)||words(terms).some(w=>n.includes(w)))for(const w of words(terms))set.add(w);return [...set].slice(0,48)}
+/* Expandir solo palabras completas: evita que una subcadena de "autor",
+   "cartel" u otro nombre active relaciones semánticas ajenas. */
+const lexTerms=Object.entries(lex).map(([key,terms])=>({key:norm(key),words:words(terms)}));
+function related(q){
+ const set=new Set(words(q)),queryTokens=new Set(norm(q).split(" ").filter(Boolean));
+ for(const entry of lexTerms){
+  if(queryTokens.has(entry.key)||entry.words.some(word=>queryTokens.has(word)))
+   for(const word of entry.words)set.add(word);
+ }
+ return [...set].slice(0,48);
+}
 /* Word-aware ranking: "auto" must not match "autor"; phrase matches outrank loose terms. */
 /* Memoria de raices por texto: una misma ficha se compara con varios terminos
    de la consulta, y recortar sus palabras una sola vez evita repetir trabajo. */
@@ -124,21 +134,54 @@ function hasTerm(hay,term){
  const root=philology.stem(single);
  return !!root&&root.length>=4&&stemsOf(norm(hay)).has(root);
 }
+/* Cached search plans avoid normalizing and expanding the same query for
+   every author, edition and text row. The cache is bounded and query-local. */
+const scorePlans=new Map();
+function scorePlan(q,expand){
+ const key=(expand?"1:":"0:")+q;
+ if(scorePlans.has(key))return scorePlans.get(key);
+ const n=norm(q),unique=[...new Set(words(q))];
+ const synonyms=expand?related(q).filter(w=>!unique.includes(w)):[];
+ const plan={n,unique,synonyms};
+ scorePlans.set(key,plan);
+ if(scorePlans.size>96)scorePlans.delete(scorePlans.keys().next().value);
+ return plan;
+}
 function score(s,q,expand=false){
- const txt=norm(s),n=norm(q);if(!n||!txt)return 0;
- const queryWords=words(q),unique=[...new Set(queryWords)];
- let r=hasTerm(txt,n)?35:0;
- const matched=unique.filter(w=>hasTerm(txt,w));
- if(unique.length>1&&matched.length===unique.length)r+=14;
- for(const word of matched)r+=word.length>=5?7:4;
- if(expand){for(const w of related(q))if(!unique.includes(w)&&hasTerm(txt,w))r+=1.25}
+ const txt=norm(s),plan=scorePlan(q,expand);
+ if(!plan.n||!txt)return 0;
+ let r=hasTerm(txt,plan.n)?35:0,matched=0;
+ for(const word of plan.unique)if(hasTerm(txt,word)){matched++;r+=word.length>=5?7:4;}
+ if(plan.unique.length>1&&matched===plan.unique.length)r+=14;
+ for(const word of plan.synonyms)if(hasTerm(txt,word))r+=1.25;
  return r;
 }
 const verified=w=>["lectura-local-completa","lectura-local-parcial"].includes(w.publicStatus)&&!!(w.localReader?.verified||w.pdf?.url||w.localHtml||w.localVersions?.length);
 const libraryURL=(id,view,ms)=>"bibliotheca-graeca-latina.html?"+new URLSearchParams({work:id,...(view?{view}:{}),...(ms?{ms}:{})});
 const workString=w=>[w.title,w.author,w.genre,w.dating,w.language,...(w.aliases||[])].join(" ");
-const witnessesFor=id=>S.witnesses.filter(ms=>(ms.workIds||[]).includes(id));
-const editionsFor=id=>S.editions.filter(ed=>ed.workId===id);
+/* Both collections are replaced when the catalogue loads. Build once per
+   collection identity instead of scanning every witness for every book. */
+const byWorkCache={witnessRef:null,witnesses:new Map(),editionRef:null,editions:new Map()};
+function witnessesFor(id){
+ if(byWorkCache.witnessRef!==S.witnesses){
+  byWorkCache.witnessRef=S.witnesses;byWorkCache.witnesses=new Map();
+  for(const ms of S.witnesses)for(const workId of ms.workIds||[]){
+   if(!byWorkCache.witnesses.has(workId))byWorkCache.witnesses.set(workId,[]);
+   byWorkCache.witnesses.get(workId).push(ms);
+  }
+ }
+ return byWorkCache.witnesses.get(id)||[];
+}
+function editionsFor(id){
+ if(byWorkCache.editionRef!==S.editions){
+  byWorkCache.editionRef=S.editions;byWorkCache.editions=new Map();
+  for(const ed of S.editions){
+   if(!byWorkCache.editions.has(ed.workId))byWorkCache.editions.set(ed.workId,[]);
+   byWorkCache.editions.get(ed.workId).push(ed);
+  }
+ }
+ return byWorkCache.editions.get(id)||[];
+}
 // Earliest *catalogued* material witness, not an assertion about every
 // surviving manuscript. Fall back to a dated printed edition only when no
 // dated manuscript with a verifiable reader is present.
