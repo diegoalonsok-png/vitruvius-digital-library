@@ -54,15 +54,33 @@ ASSETS = (
     "data/classics-corpus/semantic-conceptus-postings.json",
 )
 
+# Strip ONLY the analytics script Cloudflare injects into served HTML.
+# Other markup, whitespace, local scripts and text are kept byte-exact.
+_CLOUDFLARE_BEACON = re.compile(
+    rb"""<script\b(?=[^>]*\bsrc\s*=\s*["']https://static\.cloudflareinsights\.com/beacon\.min\.js(?:/[^"']*)?["'])[^>]*>\s*</script>[ \t]*(?:\r?\n)?""",
+    re.IGNORECASE,
+)
+
+
+def html_edition_bytes(raw):
+    return _CLOUDFLARE_BEACON.sub(b"", raw)
+
+
 def request(url):
     req = urllib.request.Request(url, headers={"User-Agent": "Vitruvius-deployment-integrity/1.0", "Cache-Control": "no-cache"})
     try:
         with urllib.request.urlopen(req, timeout=23) as response:
             data = response.read()
+            # Raw hashes retain forensic evidence. Only *.html is compared with
+            # the known injected Cloudflare analytics tag removed.
+            is_html = url.split("?", 1)[0].lower().endswith(".html")
+            normalized = html_edition_bytes(data) if is_html else data
             return {
                 "status": response.status,
                 "size": len(data),
                 "sha256": hashlib.sha256(data).hexdigest(),
+                "comparable_sha256": hashlib.sha256(normalized).hexdigest(),
+                "cloudflare_beacon_removed": is_html and len(normalized) != len(data),
                 "content_type": response.headers.get("Content-Type", ""),
             }
     except (urllib.error.HTTPError, urllib.error.URLError, TimeoutError, OSError) as exc:
@@ -101,7 +119,7 @@ def diagnostic_html_difference(path):
 def main():
     report = {"schema": "vdl-cross-deployment-audit-v1",
               "checked_utc": datetime.now(timezone.utc).isoformat(),
-              "origins": ORIGINS, "paths": {}, "differences": [], "unavailable": []}
+              "origins": ORIGINS, "paths": {}, "differences": [], "ignored_beacon_differences": [], "unavailable": []}
     for path in ASSETS:
         states = {name: request(root + "/" + path) for name, root in ORIGINS.items()}
         report["paths"][path] = states
@@ -109,18 +127,29 @@ def main():
             if "error" in value or value.get("status") != 200:
                 report["unavailable"].append({"path": path, "origin": name, "state": value})
         left, right = states.values()
-        if "sha256" in left and "sha256" in right and left["sha256"] != right["sha256"]:
-            difference = {"path": path, "github_sha256": left["sha256"], "cloudflare_sha256": right["sha256"]}
-            if path.endswith(".html"):
-                difference["html_diagnostic"] = diagnostic_html_difference(path)
-            report["differences"].append(difference)
+        if "sha256" in left and "sha256" in right:
+            raw_differs = left["sha256"] != right["sha256"]
+            substantive_differs = left["comparable_sha256"] != right["comparable_sha256"]
+            if substantive_differs:
+                difference = {"path": path, "github_sha256": left["sha256"], "cloudflare_sha256": right["sha256"],
+                              "github_comparable_sha256": left["comparable_sha256"],
+                              "cloudflare_comparable_sha256": right["comparable_sha256"]}
+                if path.endswith(".html"):
+                    difference["html_diagnostic"] = diagnostic_html_difference(path)
+                report["differences"].append(difference)
+            elif raw_differs:
+                report["ignored_beacon_differences"].append({"path": path, "reason": "Cloudflare-injected analytics beacon only",
+                    "github_sha256": left["sha256"], "cloudflare_sha256": right["sha256"]})
     report["summary"] = {"assets_checked": len(ASSETS),
                          "divergent_assets": len(report["differences"]),
+                         "html_beacon_only_differences": len(report["ignored_beacon_differences"]),
                          "unavailable_assets": len(report["unavailable"])}
     target = Path("reports/deployment/cross-deployment-audit.json")
     target.parent.mkdir(parents=True, exist_ok=True)
     target.write_text(json.dumps(report, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     print(json.dumps(report["summary"], ensure_ascii=False))
+    for item in report["ignored_beacon_differences"]:
+        print("DIFERENCIA INOCUA · solo beacon Cloudflare", item["path"])
     for item in report["differences"]:
         print("DIVERGENCIA", item["path"])
         if item["path"] == "scriptorium.html":
