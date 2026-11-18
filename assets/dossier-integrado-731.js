@@ -54,6 +54,9 @@ function init(){
  
  const status=element("p","Cargando dossier…");status.id="vdl-dossier-status";status.setAttribute("role","status");section.append(status);
  const output=element("div");output.id="vdl-dossier-output";output.setAttribute("aria-live","polite");section.append(output);
+ // Listeners registered before asynchronous JSON loading must see the same
+ // locus selector once the catalogue becomes available.
+ let populateLoci=()=>{};
  const target=document.getElementById("bude-unit")||document.getElementById("bude-content");
  if(target)target.insertAdjacentElement("beforebegin",section);else main.append(section);
  form.addEventListener("submit",e=>{e.preventDefault();render(field.value)});field.addEventListener("change",()=>{render(field.value);window.dispatchEvent(new CustomEvent("vdl:comparative-locus-select",{detail:{locus:field.value}}))});
@@ -66,7 +69,7 @@ function init(){
  const allBooks=[...new Set(ordered.map(row=>row.locus.split(".")[0]))];
  const roman=["","I","II","III","IV","V","VI","VII","VIII","IX","X"];
  for(const book of allBooks){const o=element("option","Libro "+roman[Number(book)]+" · "+book);o.value=book;bookField.append(o)}
- const populateLoci=(book,preferred)=>{field.replaceChildren();for(const row of ordered.filter(r=>r.locus.split(".")[0]===book)){const part=row.locus.split(".");const o=element("option",part[1]==="praef"?"Prefacio § "+part[2]+" · "+row.locus:"Capítulo "+part[1]+" · § "+part[2]+" · "+row.locus);o.value=row.locus;field.append(o)}if(preferred&&byId.has(preferred)&&preferred.startsWith(book+"."))field.value=preferred};
+ populateLoci=(book,preferred)=>{field.replaceChildren();for(const row of ordered.filter(r=>r.locus.split(".")[0]===book)){const part=row.locus.split(".");const o=element("option",part[1]==="praef"?"Prefacio § "+part[2]+" · "+row.locus:"Capítulo "+part[1]+" · § "+part[2]+" · "+row.locus);o.value=row.locus;field.append(o)}if(preferred&&byId.has(preferred)&&preferred.startsWith(book+"."))field.value=preferred};
  const selectedLocus=norm(new URLSearchParams(location.search).get("locus")||"1.1.1");
  const first=byId.has(selectedLocus)?selectedLocus:ordered[0].locus;bookField.value=first.split(".")[0];populateLoci(bookField.value,first);
  bookField.addEventListener("change",()=>{populateLoci(bookField.value);if(field.value){render(field.value);window.dispatchEvent(new CustomEvent("vdl:comparative-locus-select",{detail:{locus:field.value}}))}});
