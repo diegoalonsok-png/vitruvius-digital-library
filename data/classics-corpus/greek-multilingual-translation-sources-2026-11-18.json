@@ -6,10 +6,10 @@
   "pendingProposal": "https://github.com/diegoalonsok-png/vitruvius-digital-library/pull/418",
   "statusByLanguage": {
     "en": {
-      "not-yet-verified": 102,
+      "not-yet-verified": 97,
       "pending-merge": 25,
       "registered-local": 50,
-      "candidate-perseus-tei": 34
+      "candidate-perseus-tei": 39
     },
     "es": {
       "not-yet-verified": 178,
@@ -1238,7 +1238,8 @@
       "title": "Ὕμνοι καὶ ἐπιγράμματα · Himnos y epigramas (con la Ἀλεξάνδρα de Licofrón)",
       "original": {
         "language": "grc",
-        "path": "https://libros.vitruvius-digital-library.org/corpus/calimaco-himnos-grc.json"
+        "path": "https://libros.vitruvius-digital-library.org/corpus/calimaco-himnos-grc.json",
+        "sourceCheck": "requires-manual-review"
       },
       "translations": {
         "en": {
@@ -1261,7 +1262,8 @@
       "title": "Ὕμνοι",
       "original": {
         "language": "grc",
-        "path": "data/classics-corpus/callimachus-hymni-grc.json"
+        "path": "data/classics-corpus/callimachus-hymni-grc.json",
+        "sourceCheck": "requires-manual-review"
       },
       "translations": {
         "en": {
@@ -1284,7 +1286,8 @@
       "title": "Ῥωμαϊκὴ ἱστορία",
       "original": {
         "language": "grc",
-        "path": "https://libros.vitruvius-digital-library.org/corpus/cassius-dio-historia-grc-43482d9b45cf2bea.json"
+        "path": "https://libros.vitruvius-digital-library.org/corpus/cassius-dio-historia-grc-43482d9b45cf2bea.json",
+        "sourceCheck": "requires-manual-review"
       },
       "translations": {
         "en": {
@@ -1307,7 +1310,8 @@
       "title": "Πίναξ · Tabula Cebetis",
       "original": {
         "language": "grc",
-        "path": "data/classics-corpus/cebes-tabula-grc.json"
+        "path": "data/classics-corpus/cebes-tabula-grc.json",
+        "sourceUrnRoot": "tlg1247.tlg001"
       },
       "translations": {
         "en": {
@@ -1330,12 +1334,17 @@
       "title": "Πρὸς Κορινθίους Αʹ",
       "original": {
         "language": "grc",
-        "path": "data/classics-corpus/clement-grc.json"
+        "path": "data/classics-corpus/clement-grc.json",
+        "sourceUrnRoot": "tlg1271.tlg001"
       },
       "translations": {
         "en": {
-          "status": "not-yet-verified",
-          "note": "No se identificó una edición de esta obra en las fuentes cotejadas; no implica inexistencia de traducciones."
+          "status": "candidate-perseus-tei",
+          "url": "https://github.com/PerseusDL/canonical-greekLit/blob/master/data/tlg1271/tlg001/tlg1271.tlg001.perseus-eng1.xml",
+          "teiPath": "data/tlg1271/tlg001/tlg1271.tlg001.perseus-eng1.xml",
+          "sourceUrnRoot": "tlg1271.tlg001",
+          "source": "PerseusDL canonical-greekLit",
+          "note": "Archivo inglés TEI encontrado; autor/traductor, integridad, licencia y loci por verificar."
         },
         "fr": {
           "status": "not-yet-verified",
@@ -1353,12 +1362,17 @@
       "title": "Δευτέρα Κλήμεντος · Segunda carta de Clemente",
       "original": {
         "language": "grc",
-        "path": "data/classics-corpus/clement-2-grc.json"
+        "path": "data/classics-corpus/clement-2-grc.json",
+        "sourceUrnRoot": "tlg1271.tlg002"
       },
       "translations": {
         "en": {
-          "status": "not-yet-verified",
-          "note": "No se identificó una edición de esta obra en las fuentes cotejadas; no implica inexistencia de traducciones."
+          "status": "candidate-perseus-tei",
+          "url": "https://github.com/PerseusDL/canonical-greekLit/blob/master/data/tlg1271/tlg002/tlg1271.tlg002.perseus-eng1.xml",
+          "teiPath": "data/tlg1271/tlg002/tlg1271.tlg002.perseus-eng1.xml",
+          "sourceUrnRoot": "tlg1271.tlg002",
+          "source": "PerseusDL canonical-greekLit",
+          "note": "Archivo inglés TEI encontrado; autor/traductor, integridad, licencia y loci por verificar."
         },
         "fr": {
           "status": "not-yet-verified",
@@ -1376,7 +1390,8 @@
       "title": "Εἰσαγωγὴ ἁρμονική · Introductio harmonica",
       "original": {
         "language": "grc",
-        "path": "https://libros.vitruvius-digital-library.org/corpus/cleonides-harmonica-grc-a7f8f1e13c9508a5.json"
+        "path": "https://libros.vitruvius-digital-library.org/corpus/cleonides-harmonica-grc-a7f8f1e13c9508a5.json",
+        "sourceCheck": "requires-manual-review"
       },
       "translations": {
         "en": {
@@ -1399,12 +1414,17 @@
       "title": "Περὶ τοῦ στεφάνου",
       "original": {
         "language": "grc",
-        "path": "data/classics-corpus/demosthenes-de-corona-grc.json"
+        "path": "data/classics-corpus/demosthenes-de-corona-grc.json",
+        "sourceUrnRoot": "tlg0014.tlg018"
       },
       "translations": {
         "en": {
-          "status": "not-yet-verified",
-          "note": "No se identificó una edición de esta obra en las fuentes cotejadas; no implica inexistencia de traducciones."
+          "status": "candidate-perseus-tei",
+          "url": "https://github.com/PerseusDL/canonical-greekLit/blob/master/data/tlg0014/tlg018/tlg0014.tlg018.perseus-eng2.xml",
+          "teiPath": "data/tlg0014/tlg018/tlg0014.tlg018.perseus-eng2.xml",
+          "sourceUrnRoot": "tlg0014.tlg018",
+          "source": "PerseusDL canonical-greekLit",
+          "note": "Archivo inglés TEI encontrado; autor/traductor, integridad, licencia y loci por verificar."
         },
         "fr": {
           "status": "not-yet-verified",
@@ -1422,12 +1442,17 @@
       "title": "Φιλιππικοί",
       "original": {
         "language": "grc",
-        "path": "data/classics-corpus/demosthenes-philippicae-grc.json"
+        "path": "data/classics-corpus/demosthenes-philippicae-grc.json",
+        "sourceUrnRoot": "tlg0014.tlg004"
       },
       "translations": {
         "en": {
-          "status": "not-yet-verified",
-          "note": "No se identificó una edición de esta obra en las fuentes cotejadas; no implica inexistencia de traducciones."
+          "status": "candidate-perseus-tei",
+          "url": "https://github.com/PerseusDL/canonical-greekLit/blob/master/data/tlg0014/tlg004/tlg0014.tlg004.perseus-eng2.xml",
+          "teiPath": "data/tlg0014/tlg004/tlg0014.tlg004.perseus-eng2.xml",
+          "sourceUrnRoot": "tlg0014.tlg004",
+          "source": "PerseusDL canonical-greekLit",
+          "note": "Archivo inglés TEI encontrado; autor/traductor, integridad, licencia y loci por verificar."
         },
         "fr": {
           "status": "not-yet-verified",
@@ -1470,7 +1495,8 @@
       "title": "Βιβλιοθήκη ἱστορική",
       "original": {
         "language": "grc",
-        "path": "data/classics-corpus/diodorus-grc.json"
+        "path": "data/classics-corpus/diodorus-grc.json",
+        "sourceCheck": "requires-manual-review"
       },
       "translations": {
         "en": {
@@ -1493,7 +1519,8 @@
       "title": "Βίοι καὶ γνῶμαι τῶν ἐν φιλοσοφίᾳ εὐδοκιμησάντων",
       "original": {
         "language": "grc",
-        "path": "data/classics-corpus/diogenes-laertius-vitae-grc.json"
+        "path": "data/classics-corpus/diogenes-laertius-vitae-grc.json",
+        "sourceCheck": "requires-manual-review"
       },
       "translations": {
         "en": {
@@ -1516,12 +1543,17 @@
       "title": "Πρὸς Διόγνητον · Carta a Diogneto",
       "original": {
         "language": "grc",
-        "path": "data/classics-corpus/diognetus-grc.json"
+        "path": "data/classics-corpus/diognetus-grc.json",
+        "sourceUrnRoot": "tlg0646.tlg004"
       },
       "translations": {
         "en": {
-          "status": "not-yet-verified",
-          "note": "No se identificó una edición de esta obra en las fuentes cotejadas; no implica inexistencia de traducciones."
+          "status": "candidate-perseus-tei",
+          "url": "https://github.com/PerseusDL/canonical-greekLit/blob/master/data/tlg0646/tlg004/tlg0646.tlg004.perseus-eng1.xml",
+          "teiPath": "data/tlg0646/tlg004/tlg0646.tlg004.perseus-eng1.xml",
+          "sourceUrnRoot": "tlg0646.tlg004",
+          "source": "PerseusDL canonical-greekLit",
+          "note": "Archivo inglés TEI encontrado; autor/traductor, integridad, licencia y loci por verificar."
         },
         "fr": {
           "status": "not-yet-verified",
@@ -1539,7 +1571,8 @@
       "title": "Ῥωμαϊκὴ ἀρχαιολογία",
       "original": {
         "language": "grc",
-        "path": "data/classics-corpus/dionysius-grc.json"
+        "path": "data/classics-corpus/dionysius-grc.json",
+        "sourceCheck": "requires-manual-review"
       },
       "translations": {
         "en": {
@@ -1562,7 +1595,8 @@
       "title": "Περὶ ὕλης ἰατρικῆς",
       "original": {
         "language": "grc",
-        "path": "data/classics-corpus/dioscorides-grc.json"
+        "path": "data/classics-corpus/dioscorides-grc.json",
+        "sourceCheck": "requires-manual-review"
       },
       "translations": {
         "en": {
@@ -1585,7 +1619,8 @@
       "title": "Διατριβαί",
       "original": {
         "language": "grc",
-        "path": "data/classics-corpus/epictetus-discourses-grc.json"
+        "path": "data/classics-corpus/epictetus-discourses-grc.json",
+        "sourceCheck": "requires-manual-review"
       },
       "translations": {
         "en": {
@@ -5916,7 +5951,7 @@
     "url": "https://github.com/PerseusDL/canonical-greekLit",
     "filesChecked": 786,
     "truncated": false,
-    "originalsWithSourceUrn": 89
+    "originalsWithSourceUrn": 95
   },
   "verifiedReadableSamples": 6
 }
