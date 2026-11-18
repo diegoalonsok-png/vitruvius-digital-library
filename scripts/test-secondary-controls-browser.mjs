@@ -173,7 +173,7 @@ try{
    assert.equal(await page.locator("html").getAttribute("lang"),lang,"Lexicon interface locale did not change");
    assert.equal(await locale.inputValue(),lang,"Lexicon locale select did not retain value");
   }
-  const before=await page.locator("html").getAttribute("data-theme");
+  const before=(await page.locator("html").getAttribute("data-theme"))||"dark";
   await theme.click();
   assert.notEqual(await page.locator("html").getAttribute("data-theme"),before,"Lexicon theme button has no effect");
   await theme.click();
