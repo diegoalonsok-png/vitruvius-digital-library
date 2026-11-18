@@ -2,7 +2,7 @@
   "schema": "vitruvia-classics-search-registry-v1",
   "updated": "2026-11-18",
   "description": "Registro verificable de transcripciones HTML y textos JSON existentes que admiten búsqueda literal de contenido. No incluye automáticamente PDF escaneados, facsímiles ni fichas sin texto. Los índices auxiliares por locus y el aparato crítico se declaran por separado; no se suman a versiones textuales originales ni implican colación autóptica.",
-  "count": 373,
+  "count": 374,
   "works": 297,
   "entries": [
     {
@@ -2701,6 +2701,16 @@
       "path": "data/classics-corpus/plato-laws-grc.json",
       "reader": "classics-text-reader.html?work=plato-laws&lang=grc",
       "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
+      "workId": "plato-laws",
+      "author": "Platón",
+      "title": "Νόμοι · Laws",
+      "language": "en",
+      "format": "json-passages",
+      "path": "data/classics-corpus/plato-laws-en.json",
+      "reader": "classics-text-reader.html?work=plato-laws&lang=grc&to=en",
+      "sourceDescription": "Inglés histórico: Robert Gregg Bury (1926), Perseus TEI CC BY-SA 4.0; 327 referencias de Stephanus, sin alineación frase por frase."
     },
     {
       "workId": "plato-lysis",
