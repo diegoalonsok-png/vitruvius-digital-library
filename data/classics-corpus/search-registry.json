@@ -2,7 +2,7 @@
   "schema": "vitruvia-classics-search-registry-v1",
   "updated": "2026-11-16",
   "description": "Registro verificable de transcripciones HTML y textos JSON existentes que admiten búsqueda literal de contenido. No incluye automáticamente PDF escaneados, facsímiles ni fichas sin texto. Los índices auxiliares por locus y el aparato crítico se declaran por separado; no se suman a versiones textuales originales ni implican colación autóptica.",
-  "count": 360,
+  "count": 361,
   "works": 295,
   "entries": [
     {
@@ -1887,16 +1887,6 @@
       "path": "data/classics-corpus/juvenal-saturae-la.json",
       "reader": "classics-text-reader.html?work=juvenal-saturae&lang=la",
       "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
-    },
-    {
-      "workId": "krohn-1912-pdf",
-      "author": "Marco Vitruvio Polión · edición Fritz Krohn",
-      "title": "De architectura (1912), OCR no corregido",
-      "language": "la",
-      "format": "historical-ocr-pages",
-      "path": "data/text/krohn-1912.json",
-      "reader": "concordancia-historica.html?ed=krohn-1912",
-      "sourceDescription": "OCR automatizado del facsímil PDF Krohn 1912. Cada referencia es una página del ejemplar escaneado, no un locus crítico; cotejar la imagen antes de citar."
     },
     {
       "workId": "lisias-discursos",
@@ -3799,6 +3789,26 @@
       "sourceUrn": "urn:cts:greekLit:tlg0032.tlg011.perseus-grc2",
       "sourceSha256": "031797d4e1a8f49e17583f0b8828969c142ce5ed11b378e6484073c112a749a7",
       "sourceDescription": "Perseus DL TEI · Xenophon. Opera omnia, Vol. 5. Marchant, Edgar Cardew, editor. Oxford: Clarendon Press, 1920. · CC BY-SA 4.0; original sin cotejo independiente"
+    },
+    {
+      "workId": "krohn-1912-indexed",
+      "author": "Marco Vitruvio Polión",
+      "title": "De architectura libri decem · edición Fritz Krohn (1912), latín indexado",
+      "language": "la",
+      "format": "critical-indexed-latin",
+      "path": "data/critical-editions/krohn-1912-tei-loci.json",
+      "reader": "apparatus-bude.html?edition=krohn-1912",
+      "sourceDescription": "Transcripción TEI de PerseusDL, 731 loci; cotejo integral del impreso pendiente; no OCR"
+    },
+    {
+      "workId": "rose-1899-indexed",
+      "author": "Marco Vitruvio Polión",
+      "title": "De architectura libri decem · edición Valentin Rose (1899), latín indexado",
+      "language": "la",
+      "format": "critical-indexed-latin",
+      "path": "data/critical-editions/rose-1899-transcribed-loci.json",
+      "reader": "apparatus-bude.html?edition=rose-1899",
+      "sourceDescription": "Transcripción digital Project Gutenberg, 731 loci alineados; cotejo del impreso pendiente; no OCR"
     }
   ],
   "auxiliaryIndexes": [
