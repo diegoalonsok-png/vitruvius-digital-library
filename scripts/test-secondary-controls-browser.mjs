@@ -132,5 +132,37 @@ try{
   console.log("PASS Vitruvia native language and palette controls");
   await page.close();checked+=4;
  }
+ // Lexicon: regression for the notebook-export selector crash. A failed
+ // startup previously left the full language and colour toolbar half-initialized.
+ {
+  const page=await browser.newPage({viewport:{width:1350,height:850}});
+  await page.route(/^https?:\/\/(?!127\.0\.0\.1|localhost)/,route=>route.abort());
+  const errors=[];
+  page.on("pageerror",error=>errors.push(error.message));
+  await page.goto(base+"vitruvia-lexicon.html",{waitUntil:"domcontentloaded",timeout:30000});
+  const locale=page.locator("#lx-ui"),theme=page.locator("#theme");
+  await locale.waitFor({state:"visible",timeout:15000});
+  await theme.waitFor({state:"visible",timeout:15000});
+  await page.locator(".lx-palette-panel .lx-swatch").first().waitFor({state:"attached",timeout:10000});
+  for(const lang of ["en","fr","es"]){
+   await locale.selectOption(lang);
+   assert.equal(await page.locator("html").getAttribute("lang"),lang,"Lexicon interface locale did not change");
+   assert.equal(await locale.inputValue(),lang,"Lexicon locale select did not retain value");
+  }
+  const before=await page.locator("html").getAttribute("data-theme");
+  await theme.click();
+  assert.notEqual(await page.locator("html").getAttribute("data-theme"),before,"Lexicon theme button has no effect");
+  await theme.click();
+  assert.equal(await page.locator("html").getAttribute("data-theme"),before,"Lexicon theme button cannot revert");
+  await page.locator(".lx-palette-panel .lx-swatch[aria-label='Marfil']").evaluate(el=>el.click());
+  assert.equal(await page.locator("html").getAttribute("data-theme"),"light","Lexicon marfil should select a light palette");
+  assert.equal(await page.evaluate(()=>document.documentElement.style.getPropertyValue("--lx-bg").trim()),"#f7f5ef","Lexicon palette did not set the background");
+  await page.reload({waitUntil:"domcontentloaded"});
+  await page.locator(".lx-palette-panel .lx-swatch").first().waitFor({state:"attached",timeout:10000});
+  assert.equal(await page.evaluate(()=>document.documentElement.style.getPropertyValue("--lx-bg").trim()),"#f7f5ef","Lexicon background preference was not restored");
+  assert(!errors.some(e=>/forEach is not a function|Cannot read properties of null/.test(e)),errors.join("\n"));
+  console.log("PASS Lexicon ES/EN/FR, reversible light/dark, marfil and preference persistence");
+  await page.close();checked+=8;
+ }
  console.log("PASS "+checked+" repeated real-browser controls and background checks");
 }finally{await browser.close()}
