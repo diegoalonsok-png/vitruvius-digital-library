@@ -15,7 +15,7 @@
 
 | Idioma | Local indexado | En PR sin publicar | Fuente externa identificada | Sin fuente verificada en esta tanda |
 |---|---:|---:|---:|---:|
-| Inglés | 50 | 25 | 6 | 130 |
+| Inglés | 50 | 25 | 8 | 128 |
 | Francés | 0 | 0 | 65 | 146 |
 | Castellano | 0 | 0 | 51 | 160 |
 
@@ -80,7 +80,7 @@
 | Κύρου παιδεία · Cyropaedia (`jenofonte-ciropedia`) | Pendiente | Pendiente | Pendiente |
 | Οἰκονομικός · Oeconomicus (`jenofonte-economico`) | Pendiente | Pendiente | Pendiente |
 | Ἀγησίλαος (`xenophon-agesilaus`) | Pendiente | Pendiente | Pendiente |
-| Ἀνάβασις (`xenophon-anabasis`) | Pendiente | [Fuente localizada](https://fr.wikisource.org/wiki/Anabase_(X%C3%A9nophon)) | [Fuente localizada](https://es.wikisource.org/wiki/Autor:Jenofonte) |
+| Ἀνάβασις (`xenophon-anabasis`) | [Fuente inglesa](https://www.gutenberg.org/ebooks/1170) | [Fuente localizada](https://fr.wikisource.org/wiki/Anabase_(X%C3%A9nophon)) | [Fuente localizada](https://es.wikisource.org/wiki/Autor:Jenofonte) |
 | Ἀπολογία Σωκράτους (`xenophon-apology`) | Pendiente | Pendiente | [Texto externo](https://es.wikisource.org/wiki/La_Apolog%C3%ADa_de_S%C3%B3crates) |
 | Ἑλληνικά (`xenophon-hellenica`) | Pendiente | Pendiente | Pendiente |
 | Ἱέρων (`xenophon-hiero`) | Pendiente | Pendiente | Pendiente |
@@ -489,7 +489,7 @@
 
 | Obra en Bibliotheca | Inglés | Francés | Castellano |
 |---|---|---|---|
-| Ἱστορίαι (`herodotus-historiae`) | Pendiente | [Texto externo](https://fr.wikisource.org/wiki/Histoire_(H%C3%A9rodote)/Trad._Larcher,_1850) | [Texto externo](https://es.wikisource.org/wiki/Los_nueve_libros_de_la_historia) |
+| Ἱστορίαι (`herodotus-historiae`) | [Fuente inglesa](https://www.gutenberg.org/ebooks/2707) | [Texto externo](https://fr.wikisource.org/wiki/Histoire_(H%C3%A9rodote)/Trad._Larcher,_1850) | [Texto externo](https://es.wikisource.org/wiki/Los_nueve_libros_de_la_historia) |
 
 ### Hipócrates (1)
 
