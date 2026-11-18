@@ -2,8 +2,8 @@
   "schema": "vitruvia-classics-search-registry-v1",
   "updated": "2026-11-17",
   "description": "Registro verificable de transcripciones HTML y textos JSON existentes que admiten búsqueda literal de contenido. No incluye automáticamente PDF escaneados, facsímiles ni fichas sin texto. Los índices auxiliares por locus y el aparato crítico se declaran por separado; no se suman a versiones textuales originales ni implican colación autóptica.",
-  "count": 367,
-  "works": 297,
+  "count": 368,
+  "works": 299,
   "entries": [
     {
       "workId": "aeneas-tacticus-poliorketika",
@@ -1999,6 +1999,20 @@
       "path": "data/classics-corpus/lucian-dialogi-mortuorum-grc.json",
       "reader": "classics-text-reader.html?work=lucian-dialogi-mortuorum&lang=grc",
       "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
+      "workId": "lucian-dialogi-mortuorum",
+      "author": "Luciano de Samósata",
+      "title": "Νεκρικοὶ διάλογοι · Dialogues of the Dead",
+      "language": "en",
+      "format": "json-passages",
+      "path": "data/classics-corpus/lucian-dialogi-mortuorum-en.json",
+      "reader": "classics-text-reader.html?work=lucian-dialogi-mortuorum&lang=en",
+      "translator": "Matthew Donald Macleod",
+      "sourceUrn": "urn:cts:greekLit:tlg0062.tlg066.perseus-eng3",
+      "sourceDescription": "Traducción humana inglesa · Matthew Donald Macleod, Lucian with an English Translation, vol. 7 (1961); TEI Perseus · CC BY-SA 4.0; 113 secciones en correspondencia de numeración con el original griego",
+      "editionCitation": "Lucian of Samosata. Dialogues of the Dead. Trad. M. D. Macleod. Lucian with an English Translation, vol. 7 (1961). TEI Perseus Digital Library.",
+      "passages": 113
     },
     {
       "workId": "lucian-electrum",
