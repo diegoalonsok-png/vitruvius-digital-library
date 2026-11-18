@@ -6,11 +6,11 @@
   "totals": {
     "cataloguedWorks": 271,
     "locallyIndexedWorks": 226,
-    "translatedWorksLocal": 59,
-    "worksWithoutHostedTranslation": 212,
+    "translatedWorksLocal": 70,
+    "worksWithoutHostedTranslation": 201,
     "localTranslationLanguages": {
       "es": 5,
-      "en": 58,
+      "en": 69,
       "fr": 2
     },
     "originalTextIndexed": 182,
@@ -19,11 +19,11 @@
     "declaredRemoteOnlyWorks": 44,
     "declaredR2OriginalWorks": 44,
     "registeredOriginalWorks": 226,
-    "registeredTextVersions": 291,
-    "verifiedLocalTextVersions": 247,
+    "registeredTextVersions": 302,
+    "verifiedLocalTextVersions": 258,
     "verifiedLocalOriginalTextIndexed": 182,
-    "supplementaryTextVersions": 81,
-    "allRegisteredTextVersions": 372
+    "supplementaryTextVersions": 104,
+    "allRegisteredTextVersions": 406
   },
   "works": [
     {
@@ -2410,22 +2410,27 @@
       "title": "Νεκρικοὶ διάλογοι",
       "originalLanguage": "grc",
       "originalIndexed": true,
-      "translationLanguages": [],
+      "translationLanguages": [
+        "en"
+      ],
       "localEditionLanguages": [
+        "en",
         "grc"
       ],
       "externalTranslationUnverified": [],
       "readingStatus": "lectura-local-parcial",
-      "translationSourceDescription": "Traducciones EN/ES/FR pendientes de verificar, cotejar y comprobar derechos.",
-      "translationRegisteredButNotHosted": true,
+      "translationSourceDescription": "Traducción inglesa humana de Matthew Donald Macleod (1961), TEI Perseus, 113 secciones comunes por CTS; no correspondencia verbal certificada.",
+      "translationRegisteredButNotHosted": false,
       "indexed": true,
       "originalR2Registered": false,
       "registeredOriginal": true,
       "registeredEditionLanguages": [
+        "en",
         "grc"
       ],
       "remoteEditionLanguages": [],
       "verifiedLocalEditionLanguages": [
+        "en",
         "grc"
       ]
     },
@@ -2759,8 +2764,11 @@
       "title": "Ὀρέστεια",
       "originalLanguage": "grc",
       "originalIndexed": true,
-      "translationLanguages": [],
+      "translationLanguages": [
+        "en"
+      ],
       "localEditionLanguages": [
+        "en",
         "grc"
       ],
       "externalTranslationUnverified": [],
@@ -2771,10 +2779,12 @@
       "originalR2Registered": false,
       "registeredOriginal": true,
       "registeredEditionLanguages": [
+        "en",
         "grc"
       ],
       "remoteEditionLanguages": [],
       "verifiedLocalEditionLanguages": [
+        "en",
         "grc"
       ]
     },
@@ -2924,8 +2934,11 @@
       "title": "Ἀνάβασις",
       "originalLanguage": "grc",
       "originalIndexed": true,
-      "translationLanguages": [],
+      "translationLanguages": [
+        "en"
+      ],
       "localEditionLanguages": [
+        "en",
         "grc"
       ],
       "externalTranslationUnverified": [],
@@ -2936,10 +2949,12 @@
       "originalR2Registered": false,
       "registeredOriginal": true,
       "registeredEditionLanguages": [
+        "en",
         "grc"
       ],
       "remoteEditionLanguages": [],
       "verifiedLocalEditionLanguages": [
+        "en",
         "grc"
       ]
     },
@@ -2949,8 +2964,11 @@
       "title": "Πολιτεία",
       "originalLanguage": "grc",
       "originalIndexed": true,
-      "translationLanguages": [],
+      "translationLanguages": [
+        "en"
+      ],
       "localEditionLanguages": [
+        "en",
         "grc"
       ],
       "externalTranslationUnverified": [
@@ -2963,10 +2981,12 @@
       "originalR2Registered": false,
       "registeredOriginal": true,
       "registeredEditionLanguages": [
+        "en",
         "grc"
       ],
       "remoteEditionLanguages": [],
       "verifiedLocalEditionLanguages": [
+        "en",
         "grc"
       ]
     },
@@ -3346,8 +3366,11 @@
       "title": "Αἴας",
       "originalLanguage": "grc",
       "originalIndexed": true,
-      "translationLanguages": [],
+      "translationLanguages": [
+        "en"
+      ],
       "localEditionLanguages": [
+        "en",
         "grc"
       ],
       "externalTranslationUnverified": [],
@@ -3358,10 +3381,12 @@
       "originalR2Registered": false,
       "registeredOriginal": true,
       "registeredEditionLanguages": [
+        "en",
         "grc"
       ],
       "remoteEditionLanguages": [],
       "verifiedLocalEditionLanguages": [
+        "en",
         "grc"
       ]
     },
@@ -3461,8 +3486,11 @@
       "title": "Τραχίνιαι",
       "originalLanguage": "grc",
       "originalIndexed": true,
-      "translationLanguages": [],
+      "translationLanguages": [
+        "en"
+      ],
       "localEditionLanguages": [
+        "en",
         "grc"
       ],
       "externalTranslationUnverified": [],
@@ -3473,10 +3501,12 @@
       "originalR2Registered": false,
       "registeredOriginal": true,
       "registeredEditionLanguages": [
+        "en",
         "grc"
       ],
       "remoteEditionLanguages": [],
       "verifiedLocalEditionLanguages": [
+        "en",
         "grc"
       ]
     },
@@ -3696,8 +3726,11 @@
       "title": "Ὄρνιθες",
       "originalLanguage": "grc",
       "originalIndexed": true,
-      "translationLanguages": [],
+      "translationLanguages": [
+        "en"
+      ],
       "localEditionLanguages": [
+        "en",
         "grc"
       ],
       "externalTranslationUnverified": [],
@@ -3708,10 +3741,12 @@
       "originalR2Registered": false,
       "registeredOriginal": true,
       "registeredEditionLanguages": [
+        "en",
         "grc"
       ],
       "remoteEditionLanguages": [],
       "verifiedLocalEditionLanguages": [
+        "en",
         "grc"
       ]
     },
@@ -4028,8 +4063,11 @@
       "title": "Νόμοι",
       "originalLanguage": "grc",
       "originalIndexed": true,
-      "translationLanguages": [],
+      "translationLanguages": [
+        "en"
+      ],
       "localEditionLanguages": [
+        "en",
         "grc"
       ],
       "externalTranslationUnverified": [
@@ -4042,10 +4080,12 @@
       "originalR2Registered": false,
       "registeredOriginal": true,
       "registeredEditionLanguages": [
+        "en",
         "grc"
       ],
       "remoteEditionLanguages": [],
       "verifiedLocalEditionLanguages": [
+        "en",
         "grc"
       ]
     },
@@ -4115,8 +4155,11 @@
       "title": "Τὰ μετὰ τὰ φυσικά",
       "originalLanguage": "grc",
       "originalIndexed": true,
-      "translationLanguages": [],
+      "translationLanguages": [
+        "en"
+      ],
       "localEditionLanguages": [
+        "en",
         "grc"
       ],
       "externalTranslationUnverified": [],
@@ -4127,10 +4170,12 @@
       "originalR2Registered": false,
       "registeredOriginal": true,
       "registeredEditionLanguages": [
+        "en",
         "grc"
       ],
       "remoteEditionLanguages": [],
       "verifiedLocalEditionLanguages": [
+        "en",
         "grc"
       ]
     },
@@ -4315,22 +4360,27 @@
       "title": "Ὀλυμπιόνικοι",
       "originalLanguage": "grc",
       "originalIndexed": true,
-      "translationLanguages": [],
+      "translationLanguages": [
+        "en"
+      ],
       "localEditionLanguages": [
+        "en",
         "grc"
       ],
       "externalTranslationUnverified": [],
       "readingStatus": "lectura-local-parcial",
-      "translationSourceDescription": "Traducción no incorporada ni alineada con una edición identificada.",
-      "translationRegisteredButNotHosted": true,
+      "translationSourceDescription": "Versión inglesa humana de Diane Arnson Svarlien (1990), TEI Perseus; correspondencia por oda, sin cotejo verso a verso.",
+      "translationRegisteredButNotHosted": false,
       "indexed": true,
       "originalR2Registered": false,
       "registeredOriginal": true,
       "registeredEditionLanguages": [
+        "en",
         "grc"
       ],
       "remoteEditionLanguages": [],
       "verifiedLocalEditionLanguages": [
+        "en",
         "grc"
       ]
     },
@@ -4340,22 +4390,27 @@
       "title": "Πυθιόνικοι",
       "originalLanguage": "grc",
       "originalIndexed": true,
-      "translationLanguages": [],
+      "translationLanguages": [
+        "en"
+      ],
       "localEditionLanguages": [
+        "en",
         "grc"
       ],
       "externalTranslationUnverified": [],
       "readingStatus": "lectura-local-parcial",
-      "translationSourceDescription": "Traducción no incorporada ni alineada con una edición identificada.",
-      "translationRegisteredButNotHosted": true,
+      "translationSourceDescription": "Versión inglesa humana de Diane Arnson Svarlien (1990), TEI Perseus; correspondencia por oda, sin cotejo verso a verso.",
+      "translationRegisteredButNotHosted": false,
       "indexed": true,
       "originalR2Registered": false,
       "registeredOriginal": true,
       "registeredEditionLanguages": [
+        "en",
         "grc"
       ],
       "remoteEditionLanguages": [],
       "verifiedLocalEditionLanguages": [
+        "en",
         "grc"
       ]
     },
