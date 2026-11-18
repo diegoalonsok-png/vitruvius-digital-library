@@ -11,15 +11,15 @@
       "registered-local": 50,
       "candidate-perseus-tei": 31
     },
-    "fr": {
-      "not-yet-verified": 114,
-      "candidate-work-page": 93,
-      "readable-text-confirmed": 4
-    },
     "es": {
       "not-yet-verified": 178,
       "readable-text-confirmed": 2,
       "candidate-work-page": 31
+    },
+    "fr": {
+      "not-yet-verified": 114,
+      "candidate-work-page": 93,
+      "readable-text-confirmed": 4
     }
   },
   "sourceAuthorPages": [
@@ -234,7 +234,8 @@
       "title": "Πολιορκητικά",
       "original": {
         "language": "grc",
-        "path": "data/classics-corpus/aeneas-tacticus-poliorketika-grc.json"
+        "path": "data/classics-corpus/aeneas-tacticus-poliorketika-grc.json",
+        "sourceUrnRoot": "tlg0058.tlg001"
       },
       "translations": {
         "en": {
@@ -257,7 +258,8 @@
       "title": "Ὀρέστεια",
       "original": {
         "language": "grc",
-        "path": "data/classics-corpus/aeschylus-oresteia-grc.json"
+        "path": "data/classics-corpus/aeschylus-oresteia-grc.json",
+        "sourceUrnRoot": "tlg0085.tlg005"
       },
       "translations": {
         "en": {
@@ -283,7 +285,8 @@
       "title": "Πέρσαι",
       "original": {
         "language": "grc",
-        "path": "data/classics-corpus/aeschylus-persae-grc.json"
+        "path": "data/classics-corpus/aeschylus-persae-grc.json",
+        "sourceUrnRoot": "tlg0085.tlg002"
       },
       "translations": {
         "en": {
@@ -308,7 +311,8 @@
       "title": "Προμηθεὺς Δεσμώτης",
       "original": {
         "language": "grc",
-        "path": "data/classics-corpus/aeschylus-prometheus-grc.json"
+        "path": "data/classics-corpus/aeschylus-prometheus-grc.json",
+        "sourceUrnRoot": "tlg0085.tlg003"
       },
       "translations": {
         "en": {
@@ -333,7 +337,8 @@
       "title": "Ἑπτὰ ἐπὶ Θήβας",
       "original": {
         "language": "grc",
-        "path": "data/classics-corpus/aeschylus-seven-thebes-grc.json"
+        "path": "data/classics-corpus/aeschylus-seven-thebes-grc.json",
+        "sourceUrnRoot": "tlg0085.tlg004"
       },
       "translations": {
         "en": {
@@ -358,7 +363,8 @@
       "title": "Ἱκέτιδες",
       "original": {
         "language": "grc",
-        "path": "data/classics-corpus/aeschylus-suppliants-grc.json"
+        "path": "data/classics-corpus/aeschylus-suppliants-grc.json",
+        "sourceUrnRoot": "tlg0085.tlg001"
       },
       "translations": {
         "en": {
@@ -383,7 +389,8 @@
       "title": "Ἀνθολογία Ἑλληνική · Anthologia Graeca (Palatina)",
       "original": {
         "language": "grc",
-        "path": "https://libros.vitruvius-digital-library.org/corpus/antologia-griega-grc.json"
+        "path": "https://libros.vitruvius-digital-library.org/corpus/antologia-griega-grc.json",
+        "sourceCheck": "requires-manual-review"
       },
       "translations": {
         "en": {
@@ -406,7 +413,8 @@
       "title": "Ἀργοναυτικά · Argonautica",
       "original": {
         "language": "grc",
-        "path": "https://libros.vitruvius-digital-library.org/corpus/apolonio-argonauticas-grc.json"
+        "path": "https://libros.vitruvius-digital-library.org/corpus/apolonio-argonauticas-grc.json",
+        "sourceCheck": "requires-manual-review"
       },
       "translations": {
         "en": {
@@ -429,7 +437,8 @@
       "title": "Ῥωμαϊκά",
       "original": {
         "language": "grc",
-        "path": "data/classics-corpus/appian-romaika-grc.json"
+        "path": "data/classics-corpus/appian-romaika-grc.json",
+        "sourceCheck": "requires-manual-review"
       },
       "translations": {
         "en": {
@@ -452,7 +461,8 @@
       "title": "Τὰ κατὰ Λευκίππην καὶ Κλειτοφῶντα · Leucipa y Clitofonte",
       "original": {
         "language": "grc",
-        "path": "https://libros.vitruvius-digital-library.org/corpus/aquiles-tacio-leucipa-grc.json"
+        "path": "https://libros.vitruvius-digital-library.org/corpus/aquiles-tacio-leucipa-grc.json",
+        "sourceCheck": "requires-manual-review"
       },
       "translations": {
         "en": {
@@ -475,7 +485,8 @@
       "title": "Φαινόμενα",
       "original": {
         "language": "grc",
-        "path": "data/classics-corpus/aratus-phaenomena-grc.json"
+        "path": "data/classics-corpus/aratus-phaenomena-grc.json",
+        "sourceUrnRoot": "tlg0653.tlg001"
       },
       "translations": {
         "en": {
@@ -498,7 +509,8 @@
       "title": "Περὶ τῶν ὀχουμένων",
       "original": {
         "language": "grc",
-        "path": "https://libros.vitruvius-digital-library.org/corpus/archimedes-fluitantibus-grc-334fea209f231138.json"
+        "path": "https://libros.vitruvius-digital-library.org/corpus/archimedes-fluitantibus-grc-334fea209f231138.json",
+        "sourceCheck": "requires-manual-review"
       },
       "translations": {
         "en": {
@@ -521,7 +533,8 @@
       "title": "Ἀχαρνῆς",
       "original": {
         "language": "grc",
-        "path": "data/classics-corpus/aristophanes-acharnenses-grc.json"
+        "path": "data/classics-corpus/aristophanes-acharnenses-grc.json",
+        "sourceUrnRoot": "tlg0019.tlg001"
       },
       "translations": {
         "en": {
@@ -547,7 +560,8 @@
       "title": "Ὄρνιθες",
       "original": {
         "language": "grc",
-        "path": "data/classics-corpus/aristophanes-aves-grc.json"
+        "path": "data/classics-corpus/aristophanes-aves-grc.json",
+        "sourceUrnRoot": "tlg0019.tlg006"
       },
       "translations": {
         "en": {
@@ -576,7 +590,8 @@
       "title": "Νεφέλαι",
       "original": {
         "language": "grc",
-        "path": "data/classics-corpus/aristophanes-clouds-grc.json"
+        "path": "data/classics-corpus/aristophanes-clouds-grc.json",
+        "sourceUrnRoot": "tlg0019.tlg003"
       },
       "translations": {
         "en": {
@@ -5874,7 +5889,7 @@
     "url": "https://github.com/PerseusDL/canonical-greekLit",
     "filesChecked": 786,
     "truncated": false,
-    "originalsWithSourceUrn": 69
+    "originalsWithSourceUrn": 79
   },
   "verifiedReadableSamples": 6
 }
