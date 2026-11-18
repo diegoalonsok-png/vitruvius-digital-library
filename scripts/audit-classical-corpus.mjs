@@ -54,9 +54,18 @@ assert.equal(favText.sourceBlobSha,"8103380371d27dd1fd954b77e61b3d6df68e4f3a","S
 assert(registry.entries.some(e=>e.workId==="vitruvius"),"The already indexed De architectura must remain intact");
 const unique=new Set(),languages={},formats={};
 for(const entry of registry.entries){
- assert(byId.has(entry.workId),"Search record has unknown work "+entry.workId);
+ const critical=entry.format==="critical-indexed-latin"&&
+  (entry.workId==="krohn-1912-indexed"&&entry.path==="data/critical-editions/krohn-1912-tei-loci.json"||
+   entry.workId==="rose-1899-indexed"&&entry.path==="data/critical-editions/rose-1899-transcribed-loci.json");
+ assert(byId.has(entry.workId)||critical,"Search record has unknown work "+entry.workId);
+ if(critical){
+  assert.equal(entry.language,"la","Critical edition must retain its original Latin");
+  const edition=read(entry.path);
+  assert.equal(edition.passages?.length,731,"Critical edition requires 731 indexed loci");
+  assert(edition.passages.every(p=>p.locus&&p.latin),"Critical edition without locus or Latin reading");
+ }
  assert(["la","grc","es","en","fr","it","de","pt"].includes(entry.language),"Invalid language");
- assert(["html-text","json-passages","structured-bilingual","historical-ocr-pages"].includes(entry.format),"Invalid index format");
+ assert(["html-text","json-passages","structured-bilingual","historical-ocr-pages","critical-indexed-latin"].includes(entry.format),"Invalid index format");
  if(unique.has(entry.path))assert(entry.format==="structured-bilingual"&&entry.workId==="vitruvius",
   "Duplicate indexed file "+entry.path);
  unique.add(entry.path);
@@ -111,7 +120,8 @@ for(const entry of registry.entries){
   assert.equal(text.workId,entry.sourceWorkId||entry.workId,"Mismatched work ID in "+entry.path);
   assert.equal(text.language,entry.language,"Mismatched text language in "+entry.path);
   assert(Array.isArray(text.passages)&&text.passages.length>0,"No searchable passages in "+entry.path);
-  assert(text.attribution&&text.source,"Missing attribution/source in "+entry.path);
+  assert(text.attribution&&(text.source||(Array.isArray(text.sources)&&text.sources.length>0&&text.sources.every(s=>s.url&&s.urn))),
+   "Missing attribution/source in "+entry.path);
  }
 }
 for(const w of allWorks)for(const p of Object.values(w.corpusFiles||{}))
