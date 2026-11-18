@@ -7,6 +7,7 @@ on:
       - 'vitruvia.html'
       - 'vitruvia-lexicon.html'
       - 'scripts/test-secondary-controls-browser.mjs'
+      - 'scripts/test-full-language-color-browser.mjs'
       - '.github/workflows/controls-language-color.yml'
   push:
     branches: [main]
@@ -16,6 +17,7 @@ on:
       - 'vitruvia.html'
       - 'vitruvia-lexicon.html'
       - 'scripts/test-secondary-controls-browser.mjs'
+      - 'scripts/test-full-language-color-browser.mjs'
       - '.github/workflows/controls-language-color.yml'
   workflow_dispatch:
 permissions:
@@ -37,6 +39,7 @@ jobs:
           node --check assets/vitruvia-lexicon.js
           node --check assets/vitruvia-ui-controls.js
           node --check scripts/test-secondary-controls-browser.mjs
+          node --check scripts/test-full-language-color-browser.mjs
       - name: Preparar navegador Chromium
         run: |
           npm install --no-save playwright@1.56.1
@@ -46,3 +49,4 @@ jobs:
           python3 -m http.server 8766 --bind 127.0.0.1 >/tmp/vdl-controls-http.log 2>&1 &
           sleep 2
           node scripts/test-secondary-controls-browser.mjs
+          node scripts/test-full-language-color-browser.mjs
