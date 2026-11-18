@@ -431,7 +431,22 @@ async function run(push=true){
   }
   if(S.mode==="sententiae")return renderSententiae(q);
   if(S.mode==="etimologia")return renderEtymSearch(q);
-  if(["es","en","fr","de"].includes(S.lang)){const concepts=await conceptus();if(!isCurrent())return;const mapped=exactModernConcept(q,concepts,CONC_ALIASES);if(mapped)return renderModernEquivalents(q,mapped,isCurrent);return renderModernWord(q,S.lang);}
+  // In a link ?q=numen&mode=palabra&lang=es, the UI can be Spanish
+  // although the exact headword is attested in a Latin source edition.
+  // Prefer a documented ancient entry; do not suppress its concordance.
+  let ancientHeadword=null;
+  if(S.mode==="palabra"&&["es","en","fr","de"].includes(S.lang)&&/^[\p{L}\p{M}'’ʼ-]+$/u.test(q)){
+   if(!S.etym){try{S.etym=await load("data/lexicon/etymologicum.json")}catch{}}
+   if(!isCurrent())return;
+   ancientHeadword=(S.etym?.entries||[]).find(e=>["la","grc"].includes(e.l)&&
+    typeof e.lemma==="string"&&fold(e.lemma)===fold(q))||null;
+  }
+  if(["es","en","fr","de"].includes(S.lang)&&!ancientHeadword){
+   const concepts=await conceptus();if(!isCurrent())return;
+   const mapped=exactModernConcept(q,concepts,CONC_ALIASES);
+   if(mapped)return renderModernEquivalents(q,mapped,isCurrent);
+   return renderModernWord(q,S.lang);
+  }
   if(S.mode==="analizar")return analyzeSentence(q);
   if(S.mode==="paralelos")return parallels(q);
   if(S.mode==="palabra"&&S.lang==="auto"){
@@ -439,7 +454,7 @@ async function run(push=true){
    const mapped=exactModernConcept(q,concepts,CONC_ALIASES);
    if(mapped)return renderModernEquivalents(q,mapped,isCurrent);
   }
-  const l=resolveLang(q);
+  const l=ancientHeadword?.l||resolveLang(q);
   if(l==="he")return renderHebrew(q);
   const D=await lang(l);if(!isCurrent())return;
   S.D=D;fillWorks(D);if(l==="la"&&S.mode==="lema"){await loadContext();if(!isCurrent())return;}
@@ -482,6 +497,34 @@ function resolveLang(q){if(S.lang!=="auto")return S.lang;const rest=q.replace(/\
 function fillWorks(D){const sel=$("#lx-work");const cur=S.work;sel.replaceChildren(el("option",{value:""},"Todas las obras"));for(const [id,w] of Object.entries(D.corpus.works).sort((a,b)=>(CHRONO[a[0]]??0)-(CHRONO[b[0]]??0)))sel.append(el("option",{value:id,selected:id===cur},`${w.author} · ${w.title}`));if(!D.corpus.works[cur]){S.work="";sel.value=""}const only=$("#lx-only-vitruvius");if(only)only.checked=S.work==="vitruvius"}
 
 let hitsRenderRevision=0;
+/* Work-level occurrences are displayed before the actual cited passages.
+   Counts are from the local passage hits; never claim an uncapped total. */
+function renderWorkCounts(D,hits,capped){
+ const byWork=new Map();
+ for(const hit of hits){
+  const id=D.corpus.passages[hit.i][0],row=byWork.get(id)||{id,count:0,passages:0};
+  row.count+=Math.max(1,hit.spans?.length||0);row.passages++;
+  byWork.set(id,row);
+ }
+ const section=el("section",{class:"lx-work-counts","aria-label":"Obras que contienen la palabra"},
+  el("h3",{},"Libros que contienen «"+S.q+"»"),
+  el("p",{class:"lx-small"},byWork.size+" obras del corpus "+(D.l==="grc"?"griego":"latino")+" local. "+
+   (capped?"Recuento parcial: se alcanzó el límite de búsqueda.":"Coincidencias recuperadas y pasajes donde aparecen.")));
+ const ol=el("ol",{class:"lx-work-counts-list"});
+ for(const item of [...byWork.values()].sort((a,b)=>b.count-a.count||a.id.localeCompare(b.id))){
+  const w=work(D,item.id);
+  ol.append(el("li",{},el("button",{type:"button",class:"lx-work-count-link",
+   title:"Ver los pasajes de esta obra",onclick:()=>{
+    S.work=item.id;$("#lx-work").value=item.id;
+    const only=$("#lx-only-vitruvius");if(only)only.checked=item.id==="vitruvius";
+    S.page=0;void run();
+   }},
+   el("span",{class:"lx-work-count-title"},w.author+" · "+w.title),
+   el("span",{class:"lx-work-count-number"},item.count+" coincidencia"+(item.count===1?"":"s")+
+    " · "+item.passages+" pasaje"+(item.passages===1?"":"s")))));
+ }
+ section.append(ol);return section;
+}
 function renderHits(D,res){
  const renderRevision=++hitsRenderRevision;
  const list=$("#lx-results");list.replaceChildren();
@@ -502,6 +545,7 @@ if(!n){list.append(el("div",{class:"empty"},"No hay pasajes que cumplan la consu
  // The first visible page is built before full-corpus distribution statistics.
  // Expensive longitudinal analysis is noncritical and scheduled after paint.
  list.append(readingToolbar());
+ if(["palabra","lema","frase"].includes(S.mode))list.append(renderWorkCounts(D,hits,res.capped));
  const page=hits.slice(S.page*PAGE_SIZE,(S.page+1)*PAGE_SIZE);
  for(const h of page)list.append(hitCard(D,h));
  if(hits.length>(S.page+1)*PAGE_SIZE){list.append(el("button",{type:"button",class:"lx-more",onclick:e=>{e.target.remove();S.page++;const more=hits.slice(S.page*PAGE_SIZE,(S.page+1)*PAGE_SIZE);for(const h of more)list.append(hitCard(D,h));if(hits.length>(S.page+1)*PAGE_SIZE)list.append(e.target)}},`Mostrar ${PAGE_SIZE} más`))}
