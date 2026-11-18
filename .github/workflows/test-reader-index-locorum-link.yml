@@ -1,0 +1,27 @@
+name: Lector clásico · enlace al Índice locorum
+on:
+  pull_request:
+    paths:
+      - 'classics-text-reader.html'
+      - 'index-locorum.html'
+      - 'scripts/test-reader-index-locorum-link.mjs'
+      - '.github/workflows/test-reader-index-locorum-link.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'classics-text-reader.html'
+      - 'scripts/test-reader-index-locorum-link.mjs'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  check:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: node scripts/test-reader-index-locorum-link.mjs
