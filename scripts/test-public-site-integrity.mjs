@@ -81,7 +81,11 @@ for(const work of catalogue.works){
  }
 }
 assert.equal(registry.entries.length,registry.count,"Registry version total differs");
-assert.equal(indexed.size,registry.works,"Registry distinct work total differs");
+// El registro cuenta también los dos testimonios auxiliares Krohn/Rose,
+ // que se auditan por identidad sin tratarlos como obras antiguas nuevas.
+const registeredIds=new Set(registry.entries.map(e=>e.workId));
+assert.equal(registeredIds.size,registry.works,"Registry document-ID counter differs");
+assert.equal(indexed.size,registeredIds.size-2,"Unexpected distinct ancient-work count");
 assert.equal(report.counts.cataloguedWorks,catalogue.works.length,"Published catalogue audit stale");
 assert.equal(report.counts.indexedTextVersions,
  registry.entries.filter(e=>workIds.includes(e.workId)).length,
