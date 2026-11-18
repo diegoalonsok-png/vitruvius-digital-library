@@ -1,0 +1,2107 @@
+{
+  "schema": "vdl-greek-translation-index-audit-v1",
+  "asOf": "2026-11-18",
+  "policy": "Every original Greek work must have one legally reusable, fully indexed human translation where possible; never claim that cataloguing a PDF amounts to text indexation. Prefer indexed editions before machine translation.",
+  "scope": "roadmap Greek works vs search-registry entries; does not independently certify R2 objects, text completeness, licenses or locus alignment",
+  "counts": {
+    "greekWorks": 160,
+    "missingHumanTranslation": 112,
+    "missingOriginalRegistryEntry": 20
+  },
+  "works": [
+    {
+      "workId": "diodorus",
+      "author": "Diodoro Sículo",
+      "title": "Βιβλιοθήκη ἱστορική",
+      "originalRegistryIndexed": true,
+      "translationRegistryIndexed": false,
+      "indexedLanguages": [
+        "grc"
+      ],
+      "priority": "acquire-human-translation",
+      "translationStatus": "missing",
+      "sourceCandidate": null
+    },
+    {
+      "workId": "dionysius",
+      "author": "Dionisio de Halicarnaso",
+      "title": "Ῥωμαϊκὴ ἀρχαιολογία",
+      "originalRegistryIndexed": true,
+      "translationRegistryIndexed": false,
+      "indexedLanguages": [
+        "grc"
+      ],
+      "priority": "acquire-human-translation",
+      "translationStatus": "missing",
+      "sourceCandidate": null
+    },
+    {
+      "workId": "strabo",
+      "author": "Estrabón",
+      "title": "Γεωγραφικά",
+      "originalRegistryIndexed": true,
+      "translationRegistryIndexed": false,
+      "indexedLanguages": [
+        "grc"
+      ],
+      "priority": "acquire-human-translation",
+      "translationStatus": "missing",
+      "sourceCandidate": {
+        "author": "Horace Leonard Jones",
+        "language": "en",
+        "source": "https://penelope.uchicago.edu/thayer/e/roman/texts/strabo/home.html",
+        "rights": "Check precise edition reuse terms before import",
+        "status": "located-not-imported"
+      }
+    },
+    {
+      "workId": "philo",
+      "author": "Filón de Alejandría",
+      "title": "De opificio mundi",
+      "originalRegistryIndexed": true,
+      "translationRegistryIndexed": true,
+      "indexedLanguages": [
+        "en",
+        "grc"
+      ],
+      "priority": "verify-locus-symmetry",
+      "translationStatus": "registered",
+      "sourceCandidate": null
+    },
+    {
+      "workId": "dioscorides",
+      "author": "Dioscórides",
+      "title": "Περὶ ὕλης ἰατρικῆς",
+      "originalRegistryIndexed": true,
+      "translationRegistryIndexed": false,
+      "indexedLanguages": [
+        "grc"
+      ],
+      "priority": "acquire-human-translation",
+      "translationStatus": "missing",
+      "sourceCandidate": null
+    },
+    {
+      "workId": "josephus-war",
+      "author": "Flavio Josefo",
+      "title": "Περὶ τοῦ Ἰουδαϊκοῦ πολέμου",
+      "originalRegistryIndexed": true,
+      "translationRegistryIndexed": false,
+      "indexedLanguages": [
+        "grc"
+      ],
+      "priority": "acquire-human-translation",
+      "translationStatus": "missing",
+      "sourceCandidate": null
+    },
+    {
+      "workId": "josephus-antiquities",
+      "author": "Flavio Josefo",
+      "title": "Ἰουδαϊκὴ ἀρχαιολογία",
+      "originalRegistryIndexed": true,
+      "translationRegistryIndexed": false,
+      "indexedLanguages": [
+        "grc"
+      ],
+      "priority": "acquire-human-translation",
+      "translationStatus": "missing",
+      "sourceCandidate": null
+    },
+    {
+      "workId": "mark",
+      "author": "Evangelio según Marcos",
+      "title": "Εὐαγγέλιον κατὰ Μᾶρκον",
+      "originalRegistryIndexed": true,
+      "translationRegistryIndexed": false,
+      "indexedLanguages": [
+        "grc"
+      ],
+      "priority": "acquire-human-translation",
+      "translationStatus": "missing",
+      "sourceCandidate": null
+    },
+    {
+      "workId": "clement",
+      "author": "Primera carta de Clemente",
+      "title": "Πρὸς Κορινθίους Αʹ",
+      "originalRegistryIndexed": true,
+      "translationRegistryIndexed": false,
+      "indexedLanguages": [
+        "grc"
+      ],
+      "priority": "acquire-human-translation",
+      "translationStatus": "missing",
+      "sourceCandidate": null
+    },
+    {
+      "workId": "didache",
+      "author": "Anónimo",
+      "title": "Διδαχή · Didaché",
+      "originalRegistryIndexed": true,
+      "translationRegistryIndexed": true,
+      "indexedLanguages": [
+        "en",
+        "grc"
+      ],
+      "priority": "verify-locus-symmetry",
+      "translationStatus": "registered",
+      "sourceCandidate": null
+    },
+    {
+      "workId": "pastor-hermas",
+      "author": "Hermas",
+      "title": "Ποιμὴν Ἑρμᾶ · Pastor de Hermas",
+      "originalRegistryIndexed": true,
+      "translationRegistryIndexed": false,
+      "indexedLanguages": [
+        "grc"
+      ],
+      "priority": "acquire-human-translation",
+      "translationStatus": "missing",
+      "sourceCandidate": null
+    },
+    {
+      "workId": "barnabas",
+      "author": "Anónimo",
+      "title": "Ἐπιστολὴ Βαρνάβα · Epistula Barnabae",
+      "originalRegistryIndexed": true,
+      "translationRegistryIndexed": false,
+      "indexedLanguages": [
+        "grc"
+      ],
+      "priority": "acquire-human-translation",
+      "translationStatus": "missing",
+      "sourceCandidate": null
+    },
+    {
+      "workId": "ignatius",
+      "author": "Ignacio de Antioquía",
+      "title": "Ἐπιστολαί · Cartas de Ignacio",
+      "originalRegistryIndexed": true,
+      "translationRegistryIndexed": false,
+      "indexedLanguages": [
+        "grc"
+      ],
+      "priority": "acquire-human-translation",
+      "translationStatus": "missing",
+      "sourceCandidate": null
+    },
+    {
+      "workId": "polycarp",
+      "author": "Policarpo de Esmirna",
+      "title": "Πρὸς Φιλιππησίους · Carta a los Filipenses",
+      "originalRegistryIndexed": true,
+      "translationRegistryIndexed": false,
+      "indexedLanguages": [
+        "grc"
+      ],
+      "priority": "acquire-human-translation",
+      "translationStatus": "missing",
+      "sourceCandidate": null
+    },
+    {
+      "workId": "clement-2",
+      "author": "Anónimo",
+      "title": "Δευτέρα Κλήμεντος · Segunda carta de Clemente",
+      "originalRegistryIndexed": true,
+      "translationRegistryIndexed": false,
+      "indexedLanguages": [
+        "grc"
+      ],
+      "priority": "acquire-human-translation",
+      "translationStatus": "missing",
+      "sourceCandidate": null
+    },
+    {
+      "workId": "diognetus",
+      "author": "Anónimo",
+      "title": "Πρὸς Διόγνητον · Carta a Diogneto",
+      "originalRegistryIndexed": true,
+      "translationRegistryIndexed": false,
+      "indexedLanguages": [
+        "grc"
+      ],
+      "priority": "acquire-human-translation",
+      "translationStatus": "missing",
+      "sourceCandidate": null
+    },
+    {
+      "workId": "justin",
+      "author": "Justino Mártir",
+      "title": "Ἀπολογία πρώτη · Primera Apología",
+      "originalRegistryIndexed": true,
+      "translationRegistryIndexed": false,
+      "indexedLanguages": [
+        "grc"
+      ],
+      "priority": "acquire-human-translation",
+      "translationStatus": "missing",
+      "sourceCandidate": null
+    },
+    {
+      "workId": "irenaeus",
+      "author": "Ireneo de Lyon",
+      "title": "Ἔλεγχος καὶ ἀνατροπὴ τῆς ψευδωνύμου γνώσεως · Adversus haereses",
+      "originalRegistryIndexed": true,
+      "translationRegistryIndexed": false,
+      "indexedLanguages": [
+        "grc"
+      ],
+      "priority": "acquire-human-translation",
+      "translationStatus": "missing",
+      "sourceCandidate": null
+    },
+    {
+      "workId": "origenes",
+      "author": "Orígenes",
+      "title": "Περὶ ἀρχῶν · De principiis",
+      "originalRegistryIndexed": true,
+      "translationRegistryIndexed": false,
+      "indexedLanguages": [
+        "grc"
+      ],
+      "priority": "acquire-human-translation",
+      "translationStatus": "missing",
+      "sourceCandidate": null
+    },
+    {
+      "workId": "eusebio",
+      "author": "Eusebio de Cesarea",
+      "title": "Ἐκκλησιαστικὴ ἱστορία · Historia eclesiástica",
+      "originalRegistryIndexed": true,
+      "translationRegistryIndexed": false,
+      "indexedLanguages": [
+        "grc"
+      ],
+      "priority": "acquire-human-translation",
+      "translationStatus": "missing",
+      "sourceCandidate": null
+    },
+    {
+      "workId": "plutarch-lives",
+      "author": "Plutarco",
+      "title": "Βίοι Παράλληλοι · Vidas paralelas",
+      "originalRegistryIndexed": true,
+      "translationRegistryIndexed": false,
+      "indexedLanguages": [
+        "grc"
+      ],
+      "priority": "acquire-human-translation",
+      "translationStatus": "missing",
+      "sourceCandidate": null
+    },
+    {
+      "workId": "apollodorus-poliorcetics",
+      "author": "Apolodoro de Damasco (atribución tradicional)",
+      "title": "Πολιορκητικά · Poliorketika",
+      "originalRegistryIndexed": false,
+      "translationRegistryIndexed": false,
+      "indexedLanguages": [],
+      "priority": "index-original-and-translation",
+      "translationStatus": "missing",
+      "sourceCandidate": null
+    },
+    {
+      "workId": "hero-pneumatica",
+      "author": "Herón de Alejandría",
+      "title": "Πνευματικά · Pneumatica",
+      "originalRegistryIndexed": true,
+      "translationRegistryIndexed": false,
+      "indexedLanguages": [
+        "grc"
+      ],
+      "priority": "acquire-human-translation",
+      "translationStatus": "missing",
+      "sourceCandidate": null
+    },
+    {
+      "workId": "hero-automata",
+      "author": "Herón de Alejandría",
+      "title": "Αὐτοματοποιητική · Automata",
+      "originalRegistryIndexed": true,
+      "translationRegistryIndexed": false,
+      "indexedLanguages": [
+        "grc"
+      ],
+      "priority": "acquire-human-translation",
+      "translationStatus": "missing",
+      "sourceCandidate": null
+    },
+    {
+      "workId": "athenaeus-mechanicus",
+      "author": "Ateneo Mecánico",
+      "title": "Περὶ μηχανημάτων · De machinis",
+      "originalRegistryIndexed": false,
+      "translationRegistryIndexed": false,
+      "indexedLanguages": [],
+      "priority": "index-original-and-translation",
+      "translationStatus": "missing",
+      "sourceCandidate": null
+    },
+    {
+      "workId": "polybius-historiae",
+      "author": "Polibio",
+      "title": "Ἱστορίαι",
+      "originalRegistryIndexed": true,
+      "translationRegistryIndexed": false,
+      "indexedLanguages": [
+        "grc"
+      ],
+      "priority": "acquire-human-translation",
+      "translationStatus": "missing",
+      "sourceCandidate": null
+    },
+    {
+      "workId": "pseudo-apollodorus-bibliotheca",
+      "author": "Pseudo-Apolodoro",
+      "title": "Βιβλιοθήκη (Bibliotheca)",
+      "originalRegistryIndexed": true,
+      "translationRegistryIndexed": false,
+      "indexedLanguages": [
+        "grc"
+      ],
+      "priority": "acquire-human-translation",
+      "translationStatus": "missing",
+      "sourceCandidate": null
+    },
+    {
+      "workId": "philo-legum-allegoriae",
+      "author": "Filón de Alejandría",
+      "title": "Νόμων ἱερῶν ἀλληγορίαι (Legum allegoriae)",
+      "originalRegistryIndexed": true,
+      "translationRegistryIndexed": true,
+      "indexedLanguages": [
+        "en",
+        "grc"
+      ],
+      "priority": "verify-locus-symmetry",
+      "translationStatus": "registered",
+      "sourceCandidate": null
+    },
+    {
+      "workId": "philo-de-vita-mosis",
+      "author": "Filón de Alejandría",
+      "title": "Περὶ τοῦ βίου Μωυσέως (De vita Mosis)",
+      "originalRegistryIndexed": true,
+      "translationRegistryIndexed": true,
+      "indexedLanguages": [
+        "en",
+        "grc"
+      ],
+      "priority": "verify-locus-symmetry",
+      "translationStatus": "registered",
+      "sourceCandidate": null
+    },
+    {
+      "workId": "plutarch-moralia",
+      "author": "Plutarco",
+      "title": "Ἠθικά (Moralia)",
+      "originalRegistryIndexed": true,
+      "translationRegistryIndexed": false,
+      "indexedLanguages": [
+        "grc"
+      ],
+      "priority": "acquire-human-translation",
+      "translationStatus": "missing",
+      "sourceCandidate": null
+    },
+    {
+      "workId": "lucian-dialogi-mortuorum",
+      "author": "Luciano de Samósata",
+      "title": "Νεκρικοὶ διάλογοι",
+      "originalRegistryIndexed": true,
+      "translationRegistryIndexed": false,
+      "indexedLanguages": [
+        "grc"
+      ],
+      "priority": "acquire-human-translation",
+      "translationStatus": "missing",
+      "sourceCandidate": null
+    },
+    {
+      "workId": "lucian-verae-historiae",
+      "author": "Luciano de Samósata",
+      "title": "Ἀληθῆ διηγήματα",
+      "originalRegistryIndexed": true,
+      "translationRegistryIndexed": true,
+      "indexedLanguages": [
+        "en",
+        "grc"
+      ],
+      "priority": "verify-locus-symmetry",
+      "translationStatus": "registered",
+      "sourceCandidate": null
+    },
+    {
+      "workId": "pausanias-periegesis",
+      "author": "Pausanias",
+      "title": "Ἑλλάδος περιήγησις",
+      "originalRegistryIndexed": true,
+      "translationRegistryIndexed": false,
+      "indexedLanguages": [
+        "grc"
+      ],
+      "priority": "acquire-human-translation",
+      "translationStatus": "missing",
+      "sourceCandidate": null
+    },
+    {
+      "workId": "galen-ars-medica",
+      "author": "Galeno",
+      "title": "Τέχνη ἰατρική",
+      "originalRegistryIndexed": true,
+      "translationRegistryIndexed": false,
+      "indexedLanguages": [
+        "grc"
+      ],
+      "priority": "acquire-human-translation",
+      "translationStatus": "missing",
+      "sourceCandidate": null
+    },
+    {
+      "workId": "galen-de-usu-partium",
+      "author": "Galeno",
+      "title": "Περὶ χρείας μορίων",
+      "originalRegistryIndexed": true,
+      "translationRegistryIndexed": false,
+      "indexedLanguages": [
+        "grc"
+      ],
+      "priority": "acquire-human-translation",
+      "translationStatus": "missing",
+      "sourceCandidate": null
+    },
+    {
+      "workId": "ptolemy-almagest",
+      "author": "Claudio Ptolomeo",
+      "title": "Μαθηματικὴ σύνταξις (Almagestum)",
+      "originalRegistryIndexed": true,
+      "translationRegistryIndexed": false,
+      "indexedLanguages": [
+        "grc"
+      ],
+      "priority": "acquire-human-translation",
+      "translationStatus": "missing",
+      "sourceCandidate": null
+    },
+    {
+      "workId": "ptolemy-geographia",
+      "author": "Claudio Ptolomeo",
+      "title": "Γεωγραφικὴ ὑφήγησις",
+      "originalRegistryIndexed": false,
+      "translationRegistryIndexed": false,
+      "indexedLanguages": [],
+      "priority": "index-original-and-translation",
+      "translationStatus": "missing",
+      "sourceCandidate": null
+    },
+    {
+      "workId": "appian-romaika",
+      "author": "Apiano",
+      "title": "Ῥωμαϊκά",
+      "originalRegistryIndexed": true,
+      "translationRegistryIndexed": false,
+      "indexedLanguages": [
+        "grc"
+      ],
+      "priority": "acquire-human-translation",
+      "translationStatus": "missing",
+      "sourceCandidate": null
+    },
+    {
+      "workId": "marcus-aurelius-meditations",
+      "author": "Marco Aurelio",
+      "title": "Τὰ εἰς ἑαυτόν",
+      "originalRegistryIndexed": true,
+      "translationRegistryIndexed": true,
+      "indexedLanguages": [
+        "en",
+        "grc"
+      ],
+      "priority": "verify-locus-symmetry",
+      "translationStatus": "registered",
+      "sourceCandidate": null
+    },
+    {
+      "workId": "homer-iliad",
+      "author": "Homero (autoría tradicional)",
+      "title": "Ἰλιάς",
+      "originalRegistryIndexed": true,
+      "translationRegistryIndexed": true,
+      "indexedLanguages": [
+        "en",
+        "grc"
+      ],
+      "priority": "verify-locus-symmetry",
+      "translationStatus": "registered",
+      "sourceCandidate": null
+    },
+    {
+      "workId": "homer-odyssey",
+      "author": "Homero (autoría tradicional)",
+      "title": "Ὀδύσσεια",
+      "originalRegistryIndexed": true,
+      "translationRegistryIndexed": true,
+      "indexedLanguages": [
+        "en",
+        "grc"
+      ],
+      "priority": "verify-locus-symmetry",
+      "translationStatus": "registered",
+      "sourceCandidate": null
+    },
+    {
+      "workId": "hesiod-theogony",
+      "author": "Hesíodo",
+      "title": "Θεογονία",
+      "originalRegistryIndexed": true,
+      "translationRegistryIndexed": true,
+      "indexedLanguages": [
+        "en",
+        "grc"
+      ],
+      "priority": "verify-locus-symmetry",
+      "translationStatus": "registered",
+      "sourceCandidate": null
+    },
+    {
+      "workId": "hesiod-works-days",
+      "author": "Hesíodo",
+      "title": "Ἔργα καὶ Ἡμέραι",
+      "originalRegistryIndexed": true,
+      "translationRegistryIndexed": true,
+      "indexedLanguages": [
+        "en",
+        "grc"
+      ],
+      "priority": "verify-locus-symmetry",
+      "translationStatus": "registered",
+      "sourceCandidate": null
+    },
+    {
+      "workId": "aeschylus-oresteia",
+      "author": "Esquilo",
+      "title": "Ὀρέστεια",
+      "originalRegistryIndexed": true,
+      "translationRegistryIndexed": true,
+      "indexedLanguages": [
+        "en",
+        "grc"
+      ],
+      "priority": "verify-locus-symmetry",
+      "translationStatus": "registered",
+      "sourceCandidate": null
+    },
+    {
+      "workId": "sophocles-oedipus",
+      "author": "Sófocles",
+      "title": "Οἰδίπους Τύραννος",
+      "originalRegistryIndexed": true,
+      "translationRegistryIndexed": true,
+      "indexedLanguages": [
+        "en",
+        "grc"
+      ],
+      "priority": "verify-locus-symmetry",
+      "translationStatus": "registered",
+      "sourceCandidate": null
+    },
+    {
+      "workId": "euripides-medea",
+      "author": "Eurípides",
+      "title": "Μήδεια",
+      "originalRegistryIndexed": true,
+      "translationRegistryIndexed": true,
+      "indexedLanguages": [
+        "en",
+        "grc"
+      ],
+      "priority": "verify-locus-symmetry",
+      "translationStatus": "registered",
+      "sourceCandidate": null
+    },
+    {
+      "workId": "aristophanes-clouds",
+      "author": "Aristófanes",
+      "title": "Νεφέλαι",
+      "originalRegistryIndexed": true,
+      "translationRegistryIndexed": true,
+      "indexedLanguages": [
+        "en",
+        "grc"
+      ],
+      "priority": "verify-locus-symmetry",
+      "translationStatus": "registered",
+      "sourceCandidate": null
+    },
+    {
+      "workId": "herodotus-historiae",
+      "author": "Heródoto",
+      "title": "Ἱστορίαι",
+      "originalRegistryIndexed": true,
+      "translationRegistryIndexed": false,
+      "indexedLanguages": [
+        "grc"
+      ],
+      "priority": "acquire-human-translation",
+      "translationStatus": "missing",
+      "sourceCandidate": null
+    },
+    {
+      "workId": "thucydides-war",
+      "author": "Tucídides",
+      "title": "Ἱστορία τοῦ Πελοποννησιακοῦ πολέμου",
+      "originalRegistryIndexed": true,
+      "translationRegistryIndexed": false,
+      "indexedLanguages": [
+        "grc"
+      ],
+      "priority": "acquire-human-translation",
+      "translationStatus": "missing",
+      "sourceCandidate": null
+    },
+    {
+      "workId": "xenophon-anabasis",
+      "author": "Jenofonte",
+      "title": "Ἀνάβασις",
+      "originalRegistryIndexed": true,
+      "translationRegistryIndexed": true,
+      "indexedLanguages": [
+        "en",
+        "grc"
+      ],
+      "priority": "verify-locus-symmetry",
+      "translationStatus": "registered",
+      "sourceCandidate": null
+    },
+    {
+      "workId": "plato-republic",
+      "author": "Platón",
+      "title": "Πολιτεία",
+      "originalRegistryIndexed": true,
+      "translationRegistryIndexed": true,
+      "indexedLanguages": [
+        "en",
+        "grc"
+      ],
+      "priority": "verify-locus-symmetry",
+      "translationStatus": "registered",
+      "sourceCandidate": null
+    },
+    {
+      "workId": "plato-apology",
+      "author": "Platón",
+      "title": "Ἀπολογία Σωκράτους",
+      "originalRegistryIndexed": true,
+      "translationRegistryIndexed": true,
+      "indexedLanguages": [
+        "en",
+        "grc"
+      ],
+      "priority": "verify-locus-symmetry",
+      "translationStatus": "registered",
+      "sourceCandidate": null
+    },
+    {
+      "workId": "aristotle-poetics",
+      "author": "Aristóteles",
+      "title": "Περὶ ποιητικῆς",
+      "originalRegistryIndexed": true,
+      "translationRegistryIndexed": true,
+      "indexedLanguages": [
+        "en",
+        "grc"
+      ],
+      "priority": "verify-locus-symmetry",
+      "translationStatus": "registered",
+      "sourceCandidate": null
+    },
+    {
+      "workId": "aristotle-politics",
+      "author": "Aristóteles",
+      "title": "Πολιτικά",
+      "originalRegistryIndexed": true,
+      "translationRegistryIndexed": true,
+      "indexedLanguages": [
+        "en",
+        "grc"
+      ],
+      "priority": "verify-locus-symmetry",
+      "translationStatus": "registered",
+      "sourceCandidate": null
+    },
+    {
+      "workId": "hippocrates-aphorisms",
+      "author": "Corpus hipocrático",
+      "title": "Ἀφορισμοί",
+      "originalRegistryIndexed": true,
+      "translationRegistryIndexed": true,
+      "indexedLanguages": [
+        "en",
+        "grc"
+      ],
+      "priority": "verify-locus-symmetry",
+      "translationStatus": "registered",
+      "sourceCandidate": null
+    },
+    {
+      "workId": "epictetus-discourses",
+      "author": "Epicteto (recopilación de Arriano)",
+      "title": "Διατριβαί",
+      "originalRegistryIndexed": true,
+      "translationRegistryIndexed": false,
+      "indexedLanguages": [
+        "grc"
+      ],
+      "priority": "acquire-human-translation",
+      "translationStatus": "missing",
+      "sourceCandidate": null
+    },
+    {
+      "workId": "arrian-anabasis-alexandri",
+      "author": "Arriano",
+      "title": "Ἀλεξάνδρου Ἀνάβασις",
+      "originalRegistryIndexed": true,
+      "translationRegistryIndexed": false,
+      "indexedLanguages": [
+        "grc"
+      ],
+      "priority": "acquire-human-translation",
+      "translationStatus": "missing",
+      "sourceCandidate": null
+    },
+    {
+      "workId": "cassius-dio-historia",
+      "author": "Dión Casio",
+      "title": "Ῥωμαϊκὴ ἱστορία",
+      "originalRegistryIndexed": true,
+      "translationRegistryIndexed": false,
+      "indexedLanguages": [
+        "grc"
+      ],
+      "priority": "acquire-human-translation",
+      "translationStatus": "missing",
+      "sourceCandidate": null
+    },
+    {
+      "workId": "athenaeus-deipnosophistae",
+      "author": "Ateneo de Náucratis",
+      "title": "Δειπνοσοφισταί",
+      "originalRegistryIndexed": true,
+      "translationRegistryIndexed": false,
+      "indexedLanguages": [
+        "grc"
+      ],
+      "priority": "acquire-human-translation",
+      "translationStatus": "missing",
+      "sourceCandidate": null
+    },
+    {
+      "workId": "aeschylus-persae",
+      "author": "Esquilo",
+      "title": "Πέρσαι",
+      "originalRegistryIndexed": true,
+      "translationRegistryIndexed": true,
+      "indexedLanguages": [
+        "en",
+        "grc"
+      ],
+      "priority": "verify-locus-symmetry",
+      "translationStatus": "registered",
+      "sourceCandidate": null
+    },
+    {
+      "workId": "aeschylus-seven-thebes",
+      "author": "Esquilo",
+      "title": "Ἑπτὰ ἐπὶ Θήβας",
+      "originalRegistryIndexed": true,
+      "translationRegistryIndexed": true,
+      "indexedLanguages": [
+        "en",
+        "grc"
+      ],
+      "priority": "verify-locus-symmetry",
+      "translationStatus": "registered",
+      "sourceCandidate": null
+    },
+    {
+      "workId": "aeschylus-suppliants",
+      "author": "Esquilo",
+      "title": "Ἱκέτιδες",
+      "originalRegistryIndexed": true,
+      "translationRegistryIndexed": true,
+      "indexedLanguages": [
+        "en",
+        "grc"
+      ],
+      "priority": "verify-locus-symmetry",
+      "translationStatus": "registered",
+      "sourceCandidate": null
+    },
+    {
+      "workId": "aeschylus-prometheus",
+      "author": "Esquilo (atribución debatida)",
+      "title": "Προμηθεὺς Δεσμώτης",
+      "originalRegistryIndexed": true,
+      "translationRegistryIndexed": true,
+      "indexedLanguages": [
+        "en",
+        "grc"
+      ],
+      "priority": "verify-locus-symmetry",
+      "translationStatus": "registered",
+      "sourceCandidate": null
+    },
+    {
+      "workId": "sophocles-antigone",
+      "author": "Sófocles",
+      "title": "Ἀντιγόνη",
+      "originalRegistryIndexed": true,
+      "translationRegistryIndexed": true,
+      "indexedLanguages": [
+        "en",
+        "grc"
+      ],
+      "priority": "verify-locus-symmetry",
+      "translationStatus": "registered",
+      "sourceCandidate": null
+    },
+    {
+      "workId": "sophocles-ajax",
+      "author": "Sófocles",
+      "title": "Αἴας",
+      "originalRegistryIndexed": true,
+      "translationRegistryIndexed": false,
+      "indexedLanguages": [
+        "grc"
+      ],
+      "priority": "acquire-human-translation",
+      "translationStatus": "missing",
+      "sourceCandidate": null
+    },
+    {
+      "workId": "sophocles-electra",
+      "author": "Sófocles",
+      "title": "Ἠλέκτρα",
+      "originalRegistryIndexed": true,
+      "translationRegistryIndexed": true,
+      "indexedLanguages": [
+        "en",
+        "grc"
+      ],
+      "priority": "verify-locus-symmetry",
+      "translationStatus": "registered",
+      "sourceCandidate": null
+    },
+    {
+      "workId": "sophocles-philoctetes",
+      "author": "Sófocles",
+      "title": "Φιλοκτήτης",
+      "originalRegistryIndexed": true,
+      "translationRegistryIndexed": true,
+      "indexedLanguages": [
+        "en",
+        "grc"
+      ],
+      "priority": "verify-locus-symmetry",
+      "translationStatus": "registered",
+      "sourceCandidate": null
+    },
+    {
+      "workId": "sophocles-oedipus-colonus",
+      "author": "Sófocles",
+      "title": "Οἰδίπους ἐπὶ Κολωνῷ",
+      "originalRegistryIndexed": true,
+      "translationRegistryIndexed": true,
+      "indexedLanguages": [
+        "en",
+        "grc"
+      ],
+      "priority": "verify-locus-symmetry",
+      "translationStatus": "registered",
+      "sourceCandidate": null
+    },
+    {
+      "workId": "sophocles-trachiniae",
+      "author": "Sófocles",
+      "title": "Τραχίνιαι",
+      "originalRegistryIndexed": true,
+      "translationRegistryIndexed": false,
+      "indexedLanguages": [
+        "grc"
+      ],
+      "priority": "acquire-human-translation",
+      "translationStatus": "missing",
+      "sourceCandidate": null
+    },
+    {
+      "workId": "euripides-bacchae",
+      "author": "Eurípides",
+      "title": "Βάκχαι",
+      "originalRegistryIndexed": true,
+      "translationRegistryIndexed": true,
+      "indexedLanguages": [
+        "en",
+        "grc"
+      ],
+      "priority": "verify-locus-symmetry",
+      "translationStatus": "registered",
+      "sourceCandidate": null
+    },
+    {
+      "workId": "euripides-hippolytus",
+      "author": "Eurípides",
+      "title": "Ἱππόλυτος",
+      "originalRegistryIndexed": true,
+      "translationRegistryIndexed": true,
+      "indexedLanguages": [
+        "en",
+        "grc"
+      ],
+      "priority": "verify-locus-symmetry",
+      "translationStatus": "registered",
+      "sourceCandidate": null
+    },
+    {
+      "workId": "euripides-alcestis",
+      "author": "Eurípides",
+      "title": "Ἄλκηστις",
+      "originalRegistryIndexed": true,
+      "translationRegistryIndexed": true,
+      "indexedLanguages": [
+        "en",
+        "grc"
+      ],
+      "priority": "verify-locus-symmetry",
+      "translationStatus": "registered",
+      "sourceCandidate": null
+    },
+    {
+      "workId": "euripides-electra",
+      "author": "Eurípides",
+      "title": "Ἠλέκτρα",
+      "originalRegistryIndexed": true,
+      "translationRegistryIndexed": true,
+      "indexedLanguages": [
+        "en",
+        "grc"
+      ],
+      "priority": "verify-locus-symmetry",
+      "translationStatus": "registered",
+      "sourceCandidate": null
+    },
+    {
+      "workId": "euripides-troades",
+      "author": "Eurípides",
+      "title": "Τρῳάδες",
+      "originalRegistryIndexed": true,
+      "translationRegistryIndexed": true,
+      "indexedLanguages": [
+        "en",
+        "grc"
+      ],
+      "priority": "verify-locus-symmetry",
+      "translationStatus": "registered",
+      "sourceCandidate": null
+    },
+    {
+      "workId": "euripides-hecuba",
+      "author": "Eurípides",
+      "title": "Ἑκάβη",
+      "originalRegistryIndexed": true,
+      "translationRegistryIndexed": true,
+      "indexedLanguages": [
+        "en",
+        "grc"
+      ],
+      "priority": "verify-locus-symmetry",
+      "translationStatus": "registered",
+      "sourceCandidate": null
+    },
+    {
+      "workId": "euripides-iphigenia-aulid",
+      "author": "Eurípides",
+      "title": "Ἰφιγένεια ἐν Αὐλίδι",
+      "originalRegistryIndexed": true,
+      "translationRegistryIndexed": true,
+      "indexedLanguages": [
+        "en",
+        "grc"
+      ],
+      "priority": "verify-locus-symmetry",
+      "translationStatus": "registered",
+      "sourceCandidate": null
+    },
+    {
+      "workId": "aristophanes-aves",
+      "author": "Aristófanes",
+      "title": "Ὄρνιθες",
+      "originalRegistryIndexed": true,
+      "translationRegistryIndexed": true,
+      "indexedLanguages": [
+        "en",
+        "grc"
+      ],
+      "priority": "verify-locus-symmetry",
+      "translationStatus": "registered",
+      "sourceCandidate": null
+    },
+    {
+      "workId": "aristophanes-ranae",
+      "author": "Aristófanes",
+      "title": "Βάτραχοι",
+      "originalRegistryIndexed": true,
+      "translationRegistryIndexed": false,
+      "indexedLanguages": [
+        "grc"
+      ],
+      "priority": "acquire-human-translation",
+      "translationStatus": "missing",
+      "sourceCandidate": null
+    },
+    {
+      "workId": "aristophanes-lysistrata",
+      "author": "Aristófanes",
+      "title": "Λυσιστράτη",
+      "originalRegistryIndexed": true,
+      "translationRegistryIndexed": false,
+      "indexedLanguages": [
+        "grc"
+      ],
+      "priority": "acquire-human-translation",
+      "translationStatus": "missing",
+      "sourceCandidate": null
+    },
+    {
+      "workId": "aristophanes-vespae",
+      "author": "Aristófanes",
+      "title": "Σφῆκες",
+      "originalRegistryIndexed": true,
+      "translationRegistryIndexed": false,
+      "indexedLanguages": [
+        "grc"
+      ],
+      "priority": "acquire-human-translation",
+      "translationStatus": "missing",
+      "sourceCandidate": null
+    },
+    {
+      "workId": "aristophanes-pax",
+      "author": "Aristófanes",
+      "title": "Εἰρήνη",
+      "originalRegistryIndexed": true,
+      "translationRegistryIndexed": false,
+      "indexedLanguages": [
+        "grc"
+      ],
+      "priority": "acquire-human-translation",
+      "translationStatus": "missing",
+      "sourceCandidate": null
+    },
+    {
+      "workId": "aristophanes-acharnenses",
+      "author": "Aristófanes",
+      "title": "Ἀχαρνῆς",
+      "originalRegistryIndexed": true,
+      "translationRegistryIndexed": false,
+      "indexedLanguages": [
+        "grc"
+      ],
+      "priority": "acquire-human-translation",
+      "translationStatus": "missing",
+      "sourceCandidate": null
+    },
+    {
+      "workId": "plato-symposium",
+      "author": "Platón",
+      "title": "Συμπόσιον",
+      "originalRegistryIndexed": true,
+      "translationRegistryIndexed": true,
+      "indexedLanguages": [
+        "en",
+        "grc"
+      ],
+      "priority": "verify-locus-symmetry",
+      "translationStatus": "registered",
+      "sourceCandidate": null
+    },
+    {
+      "workId": "plato-phaedo",
+      "author": "Platón",
+      "title": "Φαίδων",
+      "originalRegistryIndexed": true,
+      "translationRegistryIndexed": true,
+      "indexedLanguages": [
+        "en",
+        "grc"
+      ],
+      "priority": "verify-locus-symmetry",
+      "translationStatus": "registered",
+      "sourceCandidate": null
+    },
+    {
+      "workId": "plato-gorgias",
+      "author": "Platón",
+      "title": "Γοργίας",
+      "originalRegistryIndexed": true,
+      "translationRegistryIndexed": true,
+      "indexedLanguages": [
+        "en",
+        "grc"
+      ],
+      "priority": "verify-locus-symmetry",
+      "translationStatus": "registered",
+      "sourceCandidate": null
+    },
+    {
+      "workId": "plato-timaeus",
+      "author": "Platón",
+      "title": "Τίμαιος",
+      "originalRegistryIndexed": true,
+      "translationRegistryIndexed": true,
+      "indexedLanguages": [
+        "en",
+        "grc"
+      ],
+      "priority": "verify-locus-symmetry",
+      "translationStatus": "registered",
+      "sourceCandidate": null
+    },
+    {
+      "workId": "plato-meno",
+      "author": "Platón",
+      "title": "Μένων",
+      "originalRegistryIndexed": true,
+      "translationRegistryIndexed": true,
+      "indexedLanguages": [
+        "en",
+        "grc"
+      ],
+      "priority": "verify-locus-symmetry",
+      "translationStatus": "registered",
+      "sourceCandidate": null
+    },
+    {
+      "workId": "plato-phaedrus",
+      "author": "Platón",
+      "title": "Φαῖδρος",
+      "originalRegistryIndexed": true,
+      "translationRegistryIndexed": true,
+      "indexedLanguages": [
+        "en",
+        "grc"
+      ],
+      "priority": "verify-locus-symmetry",
+      "translationStatus": "registered",
+      "sourceCandidate": null
+    },
+    {
+      "workId": "plato-laws",
+      "author": "Platón",
+      "title": "Νόμοι",
+      "originalRegistryIndexed": true,
+      "translationRegistryIndexed": true,
+      "indexedLanguages": [
+        "en",
+        "grc"
+      ],
+      "priority": "verify-locus-symmetry",
+      "translationStatus": "registered",
+      "sourceCandidate": null
+    },
+    {
+      "workId": "plato-crito",
+      "author": "Platón",
+      "title": "Κρίτων",
+      "originalRegistryIndexed": true,
+      "translationRegistryIndexed": true,
+      "indexedLanguages": [
+        "en",
+        "grc"
+      ],
+      "priority": "verify-locus-symmetry",
+      "translationStatus": "registered",
+      "sourceCandidate": null
+    },
+    {
+      "workId": "aristotle-nicomachean-ethics",
+      "author": "Aristóteles",
+      "title": "Ἠθικὰ Νικομάχεια",
+      "originalRegistryIndexed": true,
+      "translationRegistryIndexed": true,
+      "indexedLanguages": [
+        "en",
+        "grc"
+      ],
+      "priority": "verify-locus-symmetry",
+      "translationStatus": "registered",
+      "sourceCandidate": null
+    },
+    {
+      "workId": "aristotle-metaphysics",
+      "author": "Aristóteles",
+      "title": "Τὰ μετὰ τὰ φυσικά",
+      "originalRegistryIndexed": true,
+      "translationRegistryIndexed": true,
+      "indexedLanguages": [
+        "en",
+        "grc"
+      ],
+      "priority": "verify-locus-symmetry",
+      "translationStatus": "registered",
+      "sourceCandidate": null
+    },
+    {
+      "workId": "aristotle-physics",
+      "author": "Aristóteles",
+      "title": "Φυσικὴ ἀκρόασις",
+      "originalRegistryIndexed": true,
+      "translationRegistryIndexed": false,
+      "indexedLanguages": [
+        "grc"
+      ],
+      "priority": "acquire-human-translation",
+      "translationStatus": "missing",
+      "sourceCandidate": null
+    },
+    {
+      "workId": "aristotle-rhetoric",
+      "author": "Aristóteles",
+      "title": "Ῥητορική",
+      "originalRegistryIndexed": true,
+      "translationRegistryIndexed": false,
+      "indexedLanguages": [
+        "grc"
+      ],
+      "priority": "acquire-human-translation",
+      "translationStatus": "missing",
+      "sourceCandidate": null
+    },
+    {
+      "workId": "aristotle-de-anima",
+      "author": "Aristóteles",
+      "title": "Περὶ ψυχῆς",
+      "originalRegistryIndexed": true,
+      "translationRegistryIndexed": false,
+      "indexedLanguages": [
+        "grc"
+      ],
+      "priority": "acquire-human-translation",
+      "translationStatus": "missing",
+      "sourceCandidate": null
+    },
+    {
+      "workId": "xenophon-memorabilia",
+      "author": "Jenofonte",
+      "title": "Ἀπομνημονεύματα",
+      "originalRegistryIndexed": true,
+      "translationRegistryIndexed": false,
+      "indexedLanguages": [
+        "grc"
+      ],
+      "priority": "acquire-human-translation",
+      "translationStatus": "missing",
+      "sourceCandidate": null
+    },
+    {
+      "workId": "xenophon-hellenica",
+      "author": "Jenofonte",
+      "title": "Ἑλληνικά",
+      "originalRegistryIndexed": true,
+      "translationRegistryIndexed": false,
+      "indexedLanguages": [
+        "grc"
+      ],
+      "priority": "acquire-human-translation",
+      "translationStatus": "missing",
+      "sourceCandidate": null
+    },
+    {
+      "workId": "demosthenes-de-corona",
+      "author": "Demóstenes",
+      "title": "Περὶ τοῦ στεφάνου",
+      "originalRegistryIndexed": true,
+      "translationRegistryIndexed": false,
+      "indexedLanguages": [
+        "grc"
+      ],
+      "priority": "acquire-human-translation",
+      "translationStatus": "missing",
+      "sourceCandidate": null
+    },
+    {
+      "workId": "demosthenes-philippicae",
+      "author": "Demóstenes",
+      "title": "Φιλιππικοί",
+      "originalRegistryIndexed": true,
+      "translationRegistryIndexed": false,
+      "indexedLanguages": [
+        "grc"
+      ],
+      "priority": "acquire-human-translation",
+      "translationStatus": "missing",
+      "sourceCandidate": null
+    },
+    {
+      "workId": "pindar-olympian",
+      "author": "Píndaro",
+      "title": "Ὀλυμπιόνικοι",
+      "originalRegistryIndexed": true,
+      "translationRegistryIndexed": false,
+      "indexedLanguages": [
+        "grc"
+      ],
+      "priority": "acquire-human-translation",
+      "translationStatus": "missing",
+      "sourceCandidate": null
+    },
+    {
+      "workId": "pindar-pythian",
+      "author": "Píndaro",
+      "title": "Πυθιόνικοι",
+      "originalRegistryIndexed": true,
+      "translationRegistryIndexed": false,
+      "indexedLanguages": [
+        "grc"
+      ],
+      "priority": "acquire-human-translation",
+      "translationStatus": "missing",
+      "sourceCandidate": null
+    },
+    {
+      "workId": "homeric-hymns",
+      "author": "Anónimo (atribución antigua a Homero)",
+      "title": "Ὁμηρικοὶ ὕμνοι",
+      "originalRegistryIndexed": true,
+      "translationRegistryIndexed": false,
+      "indexedLanguages": [
+        "grc"
+      ],
+      "priority": "acquire-human-translation",
+      "translationStatus": "missing",
+      "sourceCandidate": null
+    },
+    {
+      "workId": "theophrastus-characters",
+      "author": "Teofrasto",
+      "title": "Ἠθικοὶ χαρακτῆρες",
+      "originalRegistryIndexed": true,
+      "translationRegistryIndexed": true,
+      "indexedLanguages": [
+        "en",
+        "grc"
+      ],
+      "priority": "verify-locus-symmetry",
+      "translationStatus": "registered",
+      "sourceCandidate": null
+    },
+    {
+      "workId": "theophrastus-historia-plantarum",
+      "author": "Teofrasto",
+      "title": "Περὶ φυτῶν ἱστορίας",
+      "originalRegistryIndexed": true,
+      "translationRegistryIndexed": false,
+      "indexedLanguages": [
+        "grc"
+      ],
+      "priority": "acquire-human-translation",
+      "translationStatus": "missing",
+      "sourceCandidate": null
+    },
+    {
+      "workId": "diogenes-laertius-vitae",
+      "author": "Diógenes Laercio",
+      "title": "Βίοι καὶ γνῶμαι τῶν ἐν φιλοσοφίᾳ εὐδοκιμησάντων",
+      "originalRegistryIndexed": true,
+      "translationRegistryIndexed": false,
+      "indexedLanguages": [
+        "grc"
+      ],
+      "priority": "acquire-human-translation",
+      "translationStatus": "missing",
+      "sourceCandidate": null
+    },
+    {
+      "workId": "epictetus-enchiridion",
+      "author": "Epicteto (transmitido por Arriano)",
+      "title": "Ἐγχειρίδιον · Enchiridion",
+      "originalRegistryIndexed": true,
+      "translationRegistryIndexed": true,
+      "indexedLanguages": [
+        "en",
+        "grc"
+      ],
+      "priority": "verify-locus-symmetry",
+      "translationStatus": "registered",
+      "sourceCandidate": null
+    },
+    {
+      "workId": "cebes-tabula",
+      "author": "Pseudo-Cebes (atribución tradicional)",
+      "title": "Πίναξ · Tabula Cebetis",
+      "originalRegistryIndexed": true,
+      "translationRegistryIndexed": false,
+      "indexedLanguages": [
+        "grc"
+      ],
+      "priority": "acquire-human-translation",
+      "translationStatus": "missing",
+      "sourceCandidate": null
+    },
+    {
+      "workId": "aristoxenus-harmonica",
+      "author": "Aristóxeno de Tarento",
+      "title": "Ἁρμονικὰ στοιχεῖα",
+      "originalRegistryIndexed": true,
+      "translationRegistryIndexed": false,
+      "indexedLanguages": [
+        "grc"
+      ],
+      "priority": "acquire-human-translation",
+      "translationStatus": "missing",
+      "sourceCandidate": null
+    },
+    {
+      "workId": "archimedes-fluitantibus",
+      "author": "Arquímedes",
+      "title": "Περὶ τῶν ὀχουμένων",
+      "originalRegistryIndexed": true,
+      "translationRegistryIndexed": false,
+      "indexedLanguages": [
+        "grc"
+      ],
+      "priority": "acquire-human-translation",
+      "translationStatus": "missing",
+      "sourceCandidate": null
+    },
+    {
+      "workId": "aratus-phaenomena",
+      "author": "Arato de Solos",
+      "title": "Φαινόμενα",
+      "originalRegistryIndexed": true,
+      "translationRegistryIndexed": false,
+      "indexedLanguages": [
+        "grc"
+      ],
+      "priority": "acquire-human-translation",
+      "translationStatus": "missing",
+      "sourceCandidate": null
+    },
+    {
+      "workId": "ps-aristotle-mechanica",
+      "author": "Pseudo-Aristóteles (escuela peripatética)",
+      "title": "Μηχανικὰ προβλήματα",
+      "originalRegistryIndexed": true,
+      "translationRegistryIndexed": false,
+      "indexedLanguages": [
+        "grc"
+      ],
+      "priority": "acquire-human-translation",
+      "translationStatus": "missing",
+      "sourceCandidate": null
+    },
+    {
+      "workId": "aeneas-tacticus-poliorketika",
+      "author": "Eneas el Táctico",
+      "title": "Πολιορκητικά",
+      "originalRegistryIndexed": true,
+      "translationRegistryIndexed": false,
+      "indexedLanguages": [
+        "grc"
+      ],
+      "priority": "acquire-human-translation",
+      "translationStatus": "missing",
+      "sourceCandidate": null
+    },
+    {
+      "workId": "procopius-aedificiis",
+      "author": "Procopio de Cesarea",
+      "title": "Περὶ κτισμάτων",
+      "originalRegistryIndexed": false,
+      "translationRegistryIndexed": false,
+      "indexedLanguages": [],
+      "priority": "index-original-and-translation",
+      "translationStatus": "missing",
+      "sourceCandidate": null
+    },
+    {
+      "workId": "euclid-elementa",
+      "author": "Euclides",
+      "title": "Στοιχεῖα · Elementa",
+      "originalRegistryIndexed": true,
+      "translationRegistryIndexed": false,
+      "indexedLanguages": [
+        "grc"
+      ],
+      "priority": "acquire-human-translation",
+      "translationStatus": "missing",
+      "sourceCandidate": null
+    },
+    {
+      "workId": "euclid-optica",
+      "author": "Euclides",
+      "title": "Ὀπτικά · Optica",
+      "originalRegistryIndexed": true,
+      "translationRegistryIndexed": false,
+      "indexedLanguages": [
+        "grc"
+      ],
+      "priority": "acquire-human-translation",
+      "translationStatus": "missing",
+      "sourceCandidate": null
+    },
+    {
+      "workId": "euclid-phaenomena",
+      "author": "Euclides",
+      "title": "Φαινόμενα · Phaenomena y escritos musicales",
+      "originalRegistryIndexed": true,
+      "translationRegistryIndexed": false,
+      "indexedLanguages": [
+        "grc"
+      ],
+      "priority": "acquire-human-translation",
+      "translationStatus": "missing",
+      "sourceCandidate": null
+    },
+    {
+      "workId": "cleonides-harmonica",
+      "author": "Cleónides (transmitido bajo el nombre de Euclides)",
+      "title": "Εἰσαγωγὴ ἁρμονική · Introductio harmonica",
+      "originalRegistryIndexed": true,
+      "translationRegistryIndexed": false,
+      "indexedLanguages": [
+        "grc"
+      ],
+      "priority": "acquire-human-translation",
+      "translationStatus": "missing",
+      "sourceCandidate": null
+    },
+    {
+      "workId": "hero-belopoeica",
+      "author": "Herón de Alejandría",
+      "title": "Βελοποιικά · Belopoeica",
+      "originalRegistryIndexed": true,
+      "translationRegistryIndexed": false,
+      "indexedLanguages": [
+        "grc"
+      ],
+      "priority": "acquire-human-translation",
+      "translationStatus": "missing",
+      "sourceCandidate": null
+    },
+    {
+      "workId": "philo-belopoeica",
+      "author": "Filón de Bizancio",
+      "title": "Βελοποιικά · Belopoeica (Mechanike syntaxis IV)",
+      "originalRegistryIndexed": false,
+      "translationRegistryIndexed": false,
+      "indexedLanguages": [],
+      "priority": "index-original-and-translation",
+      "translationStatus": "missing",
+      "sourceCandidate": null
+    },
+    {
+      "workId": "biton-kataskeuai",
+      "author": "Bitón",
+      "title": "Κατασκευαὶ πολεμικῶν ὀργάνων καὶ καταπαλτικῶν",
+      "originalRegistryIndexed": false,
+      "translationRegistryIndexed": false,
+      "indexedLanguages": [],
+      "priority": "index-original-and-translation",
+      "translationStatus": "missing",
+      "sourceCandidate": null
+    },
+    {
+      "workId": "geminus-isagoge",
+      "author": "Gémino",
+      "title": "Εἰσαγωγὴ εἰς τὰ φαινόμενα · Elementa astronomiae",
+      "originalRegistryIndexed": false,
+      "translationRegistryIndexed": false,
+      "indexedLanguages": [],
+      "priority": "index-original-and-translation",
+      "translationStatus": "missing",
+      "sourceCandidate": null
+    },
+    {
+      "workId": "aristarchus-magnitudines",
+      "author": "Aristarco de Samos",
+      "title": "Περὶ μεγεθῶν καὶ ἀποστημάτων ἡλίου καὶ σελήνης",
+      "originalRegistryIndexed": false,
+      "translationRegistryIndexed": false,
+      "indexedLanguages": [],
+      "priority": "index-original-and-translation",
+      "translationStatus": "missing",
+      "sourceCandidate": null
+    },
+    {
+      "workId": "apollonius-conica",
+      "author": "Apolonio de Perge",
+      "title": "Κωνικά · Conica",
+      "originalRegistryIndexed": false,
+      "translationRegistryIndexed": false,
+      "indexedLanguages": [],
+      "priority": "index-original-and-translation",
+      "translationStatus": "missing",
+      "sourceCandidate": null
+    },
+    {
+      "workId": "pappus-synagoge",
+      "author": "Papo de Alejandría",
+      "title": "Συναγωγή · Collectio (libro VIII: mecánica)",
+      "originalRegistryIndexed": false,
+      "translationRegistryIndexed": false,
+      "indexedLanguages": [],
+      "priority": "index-original-and-translation",
+      "translationStatus": "missing",
+      "sourceCandidate": null
+    },
+    {
+      "workId": "apolonio-argonauticas",
+      "author": "Apolonio de Rodas",
+      "title": "Ἀργοναυτικά · Argonautica",
+      "originalRegistryIndexed": true,
+      "translationRegistryIndexed": false,
+      "indexedLanguages": [
+        "grc"
+      ],
+      "priority": "acquire-human-translation",
+      "translationStatus": "missing",
+      "sourceCandidate": null
+    },
+    {
+      "workId": "isocrates-discursos",
+      "author": "Isócrates",
+      "title": "Λόγοι · Discursos (Πρὸς Δημόνικον, Πανηγυρικός)",
+      "originalRegistryIndexed": true,
+      "translationRegistryIndexed": false,
+      "indexedLanguages": [
+        "grc"
+      ],
+      "priority": "acquire-human-translation",
+      "translationStatus": "missing",
+      "sourceCandidate": null
+    },
+    {
+      "workId": "lisias-discursos",
+      "author": "Lisias",
+      "title": "Λόγοι · Discursos",
+      "originalRegistryIndexed": true,
+      "translationRegistryIndexed": false,
+      "indexedLanguages": [
+        "grc"
+      ],
+      "priority": "acquire-human-translation",
+      "translationStatus": "missing",
+      "sourceCandidate": null
+    },
+    {
+      "workId": "longino-sublime",
+      "author": "Pseudo-Longino",
+      "title": "Περὶ ὕψους · De sublimitate",
+      "originalRegistryIndexed": true,
+      "translationRegistryIndexed": false,
+      "indexedLanguages": [
+        "grc"
+      ],
+      "priority": "acquire-human-translation",
+      "translationStatus": "missing",
+      "sourceCandidate": null
+    },
+    {
+      "workId": "teocrito-bucolicos",
+      "author": "Teócrito, Bión y Mosco",
+      "title": "Εἰδύλλια · Idilios",
+      "originalRegistryIndexed": true,
+      "translationRegistryIndexed": false,
+      "indexedLanguages": [
+        "grc"
+      ],
+      "priority": "acquire-human-translation",
+      "translationStatus": "missing",
+      "sourceCandidate": null
+    },
+    {
+      "workId": "antologia-griega",
+      "author": "Antología griega",
+      "title": "Ἀνθολογία Ἑλληνική · Anthologia Graeca (Palatina)",
+      "originalRegistryIndexed": true,
+      "translationRegistryIndexed": false,
+      "indexedLanguages": [
+        "grc"
+      ],
+      "priority": "acquire-human-translation",
+      "translationStatus": "missing",
+      "sourceCandidate": null
+    },
+    {
+      "workId": "aquiles-tacio-leucipa",
+      "author": "Aquiles Tacio",
+      "title": "Τὰ κατὰ Λευκίππην καὶ Κλειτοφῶντα · Leucipa y Clitofonte",
+      "originalRegistryIndexed": true,
+      "translationRegistryIndexed": false,
+      "indexedLanguages": [
+        "grc"
+      ],
+      "priority": "acquire-human-translation",
+      "translationStatus": "missing",
+      "sourceCandidate": null
+    },
+    {
+      "workId": "aristoteles-del-cielo",
+      "author": "Aristóteles",
+      "title": "Περὶ οὐρανοῦ · De caelo",
+      "originalRegistryIndexed": true,
+      "translationRegistryIndexed": false,
+      "indexedLanguages": [
+        "grc"
+      ],
+      "priority": "acquire-human-translation",
+      "translationStatus": "missing",
+      "sourceCandidate": null
+    },
+    {
+      "workId": "aristoteles-historia-animales",
+      "author": "Aristóteles",
+      "title": "Περὶ τὰ ζῷα ἱστορίαι · Historia animalium",
+      "originalRegistryIndexed": true,
+      "translationRegistryIndexed": false,
+      "indexedLanguages": [
+        "grc"
+      ],
+      "priority": "acquire-human-translation",
+      "translationStatus": "missing",
+      "sourceCandidate": null
+    },
+    {
+      "workId": "baquilides-poemas",
+      "author": "Baquílides",
+      "title": "Ἐπίνικοι καὶ διθύραμβοι · Epinicios y ditirambos",
+      "originalRegistryIndexed": true,
+      "translationRegistryIndexed": false,
+      "indexedLanguages": [
+        "grc"
+      ],
+      "priority": "acquire-human-translation",
+      "translationStatus": "missing",
+      "sourceCandidate": null
+    },
+    {
+      "workId": "calimaco-himnos",
+      "author": "Calímaco y Licofrón",
+      "title": "Ὕμνοι καὶ ἐπιγράμματα · Himnos y epigramas (con la Ἀλεξάνδρα de Licofrón)",
+      "originalRegistryIndexed": true,
+      "translationRegistryIndexed": false,
+      "indexedLanguages": [
+        "grc"
+      ],
+      "priority": "acquire-human-translation",
+      "translationStatus": "missing",
+      "sourceCandidate": null
+    },
+    {
+      "workId": "epicuro-restos",
+      "author": "Epicuro",
+      "title": "Ἐπιστολαὶ καὶ Κύριαι δόξαι · Cartas y Máximas capitales",
+      "originalRegistryIndexed": true,
+      "translationRegistryIndexed": false,
+      "indexedLanguages": [
+        "grc"
+      ],
+      "priority": "acquire-human-translation",
+      "translationStatus": "missing",
+      "sourceCandidate": null
+    },
+    {
+      "workId": "esquines-discursos",
+      "author": "Esquines",
+      "title": "Λόγοι · Discursos",
+      "originalRegistryIndexed": true,
+      "translationRegistryIndexed": false,
+      "indexedLanguages": [
+        "grc"
+      ],
+      "priority": "acquire-human-translation",
+      "translationStatus": "missing",
+      "sourceCandidate": null
+    },
+    {
+      "workId": "filostrato-apolonio",
+      "author": "Filóstrato",
+      "title": "Τὰ ἐς τὸν Τυανέα Ἀπολλώνιον · Vida de Apolonio de Tiana",
+      "originalRegistryIndexed": true,
+      "translationRegistryIndexed": false,
+      "indexedLanguages": [
+        "grc"
+      ],
+      "priority": "acquire-human-translation",
+      "translationStatus": "missing",
+      "sourceCandidate": null
+    },
+    {
+      "workId": "galeno-facultades-naturales",
+      "author": "Galeno",
+      "title": "Περὶ φυσικῶν δυνάμεων · De naturalibus facultatibus",
+      "originalRegistryIndexed": true,
+      "translationRegistryIndexed": false,
+      "indexedLanguages": [
+        "grc"
+      ],
+      "priority": "acquire-human-translation",
+      "translationStatus": "missing",
+      "sourceCandidate": null
+    },
+    {
+      "workId": "hipocrates-obras",
+      "author": "Hipócrates",
+      "title": "Corpus Hippocraticum (selección)",
+      "originalRegistryIndexed": true,
+      "translationRegistryIndexed": false,
+      "indexedLanguages": [
+        "grc"
+      ],
+      "priority": "acquire-human-translation",
+      "translationStatus": "missing",
+      "sourceCandidate": null
+    },
+    {
+      "workId": "iseo-discursos",
+      "author": "Iseo",
+      "title": "Λόγοι · Discursos",
+      "originalRegistryIndexed": true,
+      "translationRegistryIndexed": false,
+      "indexedLanguages": [
+        "grc"
+      ],
+      "priority": "acquire-human-translation",
+      "translationStatus": "missing",
+      "sourceCandidate": null
+    },
+    {
+      "workId": "jenofonte-ciropedia",
+      "author": "Jenofonte",
+      "title": "Κύρου παιδεία · Cyropaedia",
+      "originalRegistryIndexed": true,
+      "translationRegistryIndexed": false,
+      "indexedLanguages": [
+        "grc"
+      ],
+      "priority": "acquire-human-translation",
+      "translationStatus": "missing",
+      "sourceCandidate": null
+    },
+    {
+      "workId": "jenofonte-economico",
+      "author": "Jenofonte",
+      "title": "Οἰκονομικός · Oeconomicus",
+      "originalRegistryIndexed": true,
+      "translationRegistryIndexed": false,
+      "indexedLanguages": [
+        "grc"
+      ],
+      "priority": "acquire-human-translation",
+      "translationStatus": "missing",
+      "sourceCandidate": null
+    },
+    {
+      "workId": "longo-dafnis-cloe",
+      "author": "Longo",
+      "title": "Δάφνις καὶ Χλόη · Poimeniká",
+      "originalRegistryIndexed": true,
+      "translationRegistryIndexed": false,
+      "indexedLanguages": [
+        "grc"
+      ],
+      "priority": "acquire-human-translation",
+      "translationStatus": "missing",
+      "sourceCandidate": null
+    },
+    {
+      "workId": "menandro-comedias",
+      "author": "Menandro",
+      "title": "Κωμῳδίαι · Comedias (fragmentos papiráceos)",
+      "originalRegistryIndexed": true,
+      "translationRegistryIndexed": false,
+      "indexedLanguages": [
+        "grc"
+      ],
+      "priority": "acquire-human-translation",
+      "translationStatus": "missing",
+      "sourceCandidate": null
+    },
+    {
+      "workId": "platon-cratilo-parmenides",
+      "author": "Platón",
+      "title": "Κρατύλος · Παρμενίδης · Crátilo y Parménides (con Fedón y Timeo, trad. de Th. Taylor)",
+      "originalRegistryIndexed": true,
+      "translationRegistryIndexed": false,
+      "indexedLanguages": [
+        "grc"
+      ],
+      "priority": "acquire-human-translation",
+      "translationStatus": "missing",
+      "sourceCandidate": null
+    },
+    {
+      "workId": "platon-protagoras",
+      "author": "Platón",
+      "title": "Λάχης · Πρωταγόρας · Μένων · Εὐθύδημος",
+      "originalRegistryIndexed": true,
+      "translationRegistryIndexed": false,
+      "indexedLanguages": [
+        "grc"
+      ],
+      "priority": "acquire-human-translation",
+      "translationStatus": "missing",
+      "sourceCandidate": null
+    },
+    {
+      "workId": "platon-teeteto-sofista",
+      "author": "Platón",
+      "title": "Θεαίτητος · Σοφιστής · Teeteto y Sofista",
+      "originalRegistryIndexed": true,
+      "translationRegistryIndexed": false,
+      "indexedLanguages": [
+        "grc"
+      ],
+      "priority": "acquire-human-translation",
+      "translationStatus": "missing",
+      "sourceCandidate": null
+    },
+    {
+      "workId": "plotino-eneadas",
+      "author": "Plotino",
+      "title": "Ἐννεάδες · Enneades",
+      "originalRegistryIndexed": true,
+      "translationRegistryIndexed": false,
+      "indexedLanguages": [
+        "grc"
+      ],
+      "priority": "acquire-human-translation",
+      "translationStatus": "missing",
+      "sourceCandidate": null
+    },
+    {
+      "workId": "lyra-graeca",
+      "author": "Poetas líricos griegos",
+      "title": "Lyra Graeca · Líricos monódicos (Safo, Alceo, Anacreonte y otros)",
+      "originalRegistryIndexed": false,
+      "translationRegistryIndexed": false,
+      "indexedLanguages": [],
+      "priority": "index-original-and-translation",
+      "translationStatus": "missing",
+      "sourceCandidate": null
+    },
+    {
+      "workId": "quinto-esmirna-posthomericas",
+      "author": "Quinto de Esmirna",
+      "title": "Τὰ μεθ' Ὅμηρον · Posthomerica",
+      "originalRegistryIndexed": true,
+      "translationRegistryIndexed": false,
+      "indexedLanguages": [
+        "grc"
+      ],
+      "priority": "acquire-human-translation",
+      "translationStatus": "missing",
+      "sourceCandidate": null
+    },
+    {
+      "workId": "aristoteles-meteorologica",
+      "author": "Aristóteles",
+      "title": "Μετεωρολογικά · Meteorologica",
+      "originalRegistryIndexed": false,
+      "translationRegistryIndexed": false,
+      "indexedLanguages": [],
+      "priority": "index-original-and-translation",
+      "translationStatus": "missing",
+      "sourceCandidate": null
+    },
+    {
+      "workId": "galeno-opera-kuhn",
+      "author": "Galeno",
+      "title": "Claudii Galeni opera omnia · Tomus XIV (ed. Kühn, Leipzig 1827)",
+      "originalRegistryIndexed": false,
+      "translationRegistryIndexed": false,
+      "indexedLanguages": [],
+      "priority": "index-original-and-translation",
+      "translationStatus": "missing",
+      "sourceCandidate": null
+    },
+    {
+      "workId": "galeno-kuhn-vol01",
+      "author": "Galeno",
+      "title": "Claudii Galeni opera omnia · Tomus XIV (ed. Kühn, Leipzig 1827)",
+      "originalRegistryIndexed": false,
+      "translationRegistryIndexed": false,
+      "indexedLanguages": [],
+      "priority": "index-original-and-translation",
+      "translationStatus": "missing",
+      "sourceCandidate": null
+    },
+    {
+      "workId": "galeno-kuhn-vol19",
+      "author": "Galeno",
+      "title": "Opera omnia, vol. XIX (ed. Kühn, Leipzig 1830)",
+      "originalRegistryIndexed": false,
+      "translationRegistryIndexed": false,
+      "indexedLanguages": [],
+      "priority": "index-original-and-translation",
+      "translationStatus": "missing",
+      "sourceCandidate": null
+    },
+    {
+      "workId": "galeno-scripta-minora",
+      "author": "Galeno",
+      "title": "Scripta minora (ed. Marquardt, Müller y Helmreich, Leipzig 1884–1893)",
+      "originalRegistryIndexed": false,
+      "translationRegistryIndexed": false,
+      "indexedLanguages": [],
+      "priority": "index-original-and-translation",
+      "translationStatus": "missing",
+      "sourceCandidate": null
+    },
+    {
+      "workId": "jamblico-vida-pitagorica",
+      "author": "Jámblico",
+      "title": "Περὶ τοῦ Πυθαγορείου βίου · De vita pythagorica",
+      "originalRegistryIndexed": false,
+      "translationRegistryIndexed": false,
+      "indexedLanguages": [],
+      "priority": "index-original-and-translation",
+      "translationStatus": "missing",
+      "sourceCandidate": null
+    },
+    {
+      "workId": "proclo-comentario-euclides",
+      "author": "Proclo",
+      "title": "Εἰς τὸ πρῶτον τῶν Εὐκλείδου Στοιχείων · In primum Euclidis Elementorum librum commentarii",
+      "originalRegistryIndexed": false,
+      "translationRegistryIndexed": false,
+      "indexedLanguages": [],
+      "priority": "index-original-and-translation",
+      "translationStatus": "missing",
+      "sourceCandidate": null
+    },
+    {
+      "workId": "sexto-empirico-obras",
+      "author": "Sexto Empírico",
+      "title": "Πρὸς μαθηματικούς · Adversus mathematicos y Esbozos pirrónicos",
+      "originalRegistryIndexed": false,
+      "translationRegistryIndexed": false,
+      "indexedLanguages": [],
+      "priority": "index-original-and-translation",
+      "translationStatus": "missing",
+      "sourceCandidate": null
+    },
+    {
+      "workId": "teon-esmirna-expositio",
+      "author": "Teón de Esmirna",
+      "title": "Τὰ κατὰ μαθηματικὴν χρήσιμα εἰς τὴν Πλάτωνος ἀνάγνωσιν · Expositio rerum mathematicarum",
+      "originalRegistryIndexed": false,
+      "translationRegistryIndexed": false,
+      "indexedLanguages": [],
+      "priority": "index-original-and-translation",
+      "translationStatus": "missing",
+      "sourceCandidate": null
+    }
+  ]
+}
