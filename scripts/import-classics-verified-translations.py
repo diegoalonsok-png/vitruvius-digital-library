@@ -20,6 +20,7 @@ from xml.etree import ElementTree as ET
 ROOT = Path(__file__).resolve().parents[1]
 BASE = ROOT / "data/classics-corpus"
 CAT = ROOT / "data/bibliotheca-graeca-latina-I-bce-I-ce.json"
+SUPP = ROOT / "data/bibliotheca-expansion-publicada-2026-11-16.json"
 REG = BASE / "search-registry.json"
 AUD = BASE / "coverage-audit.json"
 BACK = BASE / "indexation-backlog.json"
@@ -209,6 +210,33 @@ CANDIDATES = [
          blob="f93c43182be0a148df79a0d8d20e0da9e81a0ac3", translator="Charles Duke Yonge", year=1855,
          publisher="Henry G. Bohn, London", mode="hierarchical-sections",
          min_units=610, min_chars=260000),
+    dict(id="euripides-cyclops", original="grc", repo="canonical-greekLit",
+         path="data/tlg0006/tlg001/tlg0006.tlg001.perseus-eng2.xml",
+         blob="302afbb742bd49936f42dffbee31844b1dd8ad24", translator="Edward P. Coleridge",
+         year=1891, publisher="George Bell and Sons, London",
+         mode="verse-lines", min_units=250, min_chars=20000),
+    dict(id="euripides-ion", original="grc", repo="canonical-greekLit",
+         path="data/tlg0006/tlg010/tlg0006.tlg010.perseus-eng2.xml",
+         blob="7f6078888050c02f7c6122fa889f03899dfc89ce", translator="Edward P. Coleridge",
+         year=1906, publisher="George Bell and Sons, London",
+         mode="verse-lines", min_units=500, min_chars=35000),
+    dict(id="euripides-helena", original="grc", repo="canonical-greekLit",
+         path="data/tlg0006/tlg014/tlg0006.tlg014.perseus-eng2.xml",
+         blob="63d952f82365166e9188113d8606a125be03086e", translator="Edward P. Coleridge",
+         year=1906, publisher="George Bell and Sons, London",
+         mode="verse-lines", min_units=500, min_chars=35000,
+         editorialNote="Texto de la traducción modernizado por Perseus; no es edición diplomática."),
+    dict(id="euripides-suppliants", original="grc", repo="canonical-greekLit",
+         path="data/tlg0006/tlg008/tlg0006.tlg008.perseus-eng2.xml",
+         blob="180d2a681b4cc93b782a11d8d919def336a8c0eb", translator="E. P. Coleridge",
+         year=1906, publisher="George Bell and Sons, London",
+         mode="verse-lines", min_units=300, min_chars=27000),
+    dict(id="euripides-orestes", original="grc", repo="canonical-greekLit",
+         path="data/tlg0006/tlg016/tlg0006.tlg016.perseus-eng2.xml",
+         blob="689dcfaa19e5de327bbb1634ebc44cdb4262161e", translator="Edward P. Coleridge",
+         year=1891, publisher="George Bell and Sons, London",
+         mode="verse-lines", min_units=500, min_chars=40000,
+         editorialNote="Texto de la traducción modernizado por Perseus; no es edición diplomática."),
 ]
 
 
@@ -443,8 +471,9 @@ def fetch(candidate):
     return url, raw
 
 
-def update_derived(catalog, registry, audit, backlog, coverage, new):
+def update_derived(catalog, supplement, registry, audit, backlog, coverage, new):
     by_cat = {x["id"]: x for x in catalog["works"]}
+    by_supp = {x["id"]: x for x in supplement["works"]}
     by_aud = {x["id"]: x for x in audit["works"]}
     by_back = {x["id"]: x for x in backlog["entries"]}
     by_cov = {x["id"]: x for x in coverage["works"]}
@@ -452,7 +481,7 @@ def update_derived(catalog, registry, audit, backlog, coverage, new):
         c = item["candidate"]
         wid = c["id"]
         filename = item["path"]
-        w = by_cat[wid]
+        w = by_cat.get(wid) or by_supp[wid]
         source_name = ("OpenGreekAndLatin First1KGreek" if c.get("owner") == "OpenGreekAndLatin"
                        else "Perseus Digital Library")
         w.setdefault("corpusFiles", {})["en"] = filename
@@ -472,22 +501,27 @@ def update_derived(catalog, registry, audit, backlog, coverage, new):
             reader="classics-text-reader.html?work=" + wid + "&lang=en",
             sourceDescription="Traducción histórica de " + c["translator"] +
                               " (" + str(c["year"]) + "); TEI " + source_name + " verificado por SHA; sin cotejo automático"))
-        a = by_aud[wid]
-        a["indexedTextLanguages"] = sorted(set(a.get("indexedTextLanguages", [])) | {"en"})
-        a["indexedTextFiles"] = sorted(set(a.get("indexedTextFiles", [])) | {filename})
-        a["hasDedicatedReader"] = True
-        back = by_back[wid]
-        back["indexed"] = sorted(set(back.get("indexed", [])) | {"en"})
-        back["missing"] = sorted(set(back.get("missing", [])) - {"en"})
-        cov = by_cov[wid]
-        cov["originalIndexed"] = True
-        cov["indexed"] = True
-        cov["translationLanguages"] = sorted(set(cov.get("translationLanguages", [])) | {"en"})
-        cov["localEditionLanguages"] = sorted(set(cov.get("localEditionLanguages", [])) | {"en"})
-        cov["translationRegisteredButNotHosted"] = False
-        cov["translationSourceDescription"] = "Inglés histórico: " + c["translator"] + (
-             " (" + str(c["year"]) + "), texto completo de la fuente TEI " + source_name +
-             " con procedencia por SHA; sin alineación textual certificada.")
+        # El informe de 271 obras comprende solo el catálogo madre. El suplemento
+        # tiene fichas e índices independientes y no debe adulterar sus totales.
+        a = by_aud.get(wid)
+        if a is not None:
+            a["indexedTextLanguages"] = sorted(set(a.get("indexedTextLanguages", [])) | {"en"})
+            a["indexedTextFiles"] = sorted(set(a.get("indexedTextFiles", [])) | {filename})
+            a["hasDedicatedReader"] = True
+        back = by_back.get(wid)
+        if back is not None:
+            back["indexed"] = sorted(set(back.get("indexed", [])) | {"en"})
+            back["missing"] = sorted(set(back.get("missing", [])) - {"en"})
+        cov = by_cov.get(wid)
+        if cov is not None:
+            cov["originalIndexed"] = True
+            cov["indexed"] = True
+            cov["translationLanguages"] = sorted(set(cov.get("translationLanguages", [])) | {"en"})
+            cov["localEditionLanguages"] = sorted(set(cov.get("localEditionLanguages", [])) | {"en"})
+            cov["translationRegisteredButNotHosted"] = False
+            cov["translationSourceDescription"] = "Inglés histórico: " + c["translator"] + (
+                 " (" + str(c["year"]) + "), texto completo de la fuente TEI " + source_name +
+                 " con procedencia por SHA; sin alineación textual certificada.")
 
     langs_by_work = {}
     for e in registry["entries"]:
@@ -496,15 +530,16 @@ def update_derived(catalog, registry, audit, backlog, coverage, new):
     registry["works"] = len(langs_by_work)
     registry["updated"] = date.today().isoformat()
     audit["date"] = registry["updated"]
-    audit["counts"]["indexedTextVersions"] = registry["count"]
-    audit["counts"]["indexedDistinctWorks"] = registry["works"]
+    master_editions = [e for e in registry["entries"] if e["workId"] in by_cat]
+    audit["counts"]["indexedTextVersions"] = len(master_editions)
+    audit["counts"]["indexedDistinctWorks"] = len({e["workId"] for e in master_editions})
     backlog["snapshot"] = registry["updated"]
     backlog["missingOriginals"] = sum(
         e.get("original") not in langs_by_work.get(e["id"], set())
         for e in backlog["entries"] if e.get("original"))
     coverage["generated"] = registry["updated"]
     totals = coverage["totals"]
-    totals["locallyIndexedWorks"] = registry["works"]
+    totals["locallyIndexedWorks"] = len({e["workId"] for e in master_editions})
     totals["translatedWorksLocal"] = sum(bool(w.get("translationLanguages"))
                                          for w in coverage["works"])
     totals["worksWithoutHostedTranslation"] = len(coverage["works"]) - totals["translatedWorksLocal"]
@@ -521,10 +556,12 @@ def run():
     p.add_argument("--max-new", type=int, default=3)
     args = p.parse_args()
     limit = max(1, min(args.max_new, 12))
-    catalog, registry, audit, backlog, coverage = (
-        read(CAT), read(REG), read(AUD), read(BACK), read(COVER))
+    catalog, supplement, registry, audit, backlog, coverage = (
+        read(CAT), read(SUPP), read(REG), read(AUD), read(BACK), read(COVER))
     already = {(e["workId"], e["language"]) for e in registry["entries"]}
-    by_id = {w["id"]: w for w in catalog["works"]}
+    by_id = {w["id"]: w for w in catalog["works"] + supplement["works"]}
+    if len(by_id) != len(catalog["works"]) + len(supplement["works"]):
+        raise ValueError("Fichas duplicadas entre catálogo principal y suplemento")
     additions, failures, pending_originals, size = [], [], [], 0
     for candidate in CANDIDATES:
         wid = candidate["id"]
@@ -576,10 +613,10 @@ def run():
             failures.append(wid + ": " + str(err)[:200])
 
     if additions:
-        update_derived(catalog, registry, audit, backlog, coverage, additions)
+        update_derived(catalog, supplement, registry, audit, backlog, coverage, additions)
         for row in additions:
             (ROOT / row["path"]).write_bytes(row["bytes"])
-        for path, obj in [(CAT, catalog), (REG, registry), (AUD, audit),
+        for path, obj in [(CAT, catalog), (SUPP, supplement), (REG, registry), (AUD, audit),
                           (BACK, backlog), (COVER, coverage)]:
             save(path, obj)
     save(REPORT, dict(
