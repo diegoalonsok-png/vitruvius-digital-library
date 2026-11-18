@@ -1,9 +1,9 @@
 {
   "schema": "vitruvia-classics-search-registry-v1",
-  "updated": "2026-11-18",
+  "updated": "2026-11-16",
   "description": "Registro verificable de transcripciones HTML y textos JSON existentes que admiten búsqueda literal de contenido. No incluye automáticamente PDF escaneados, facsímiles ni fichas sin texto. Los índices auxiliares por locus y el aparato crítico se declaran por separado; no se suman a versiones textuales originales ni implican colación autóptica.",
   "count": 376,
-  "works": 297,
+  "works": 299,
   "entries": [
     {
       "workId": "aeneas-tacticus-poliorketika",
@@ -382,22 +382,22 @@
     {
       "workId": "aristotle-metaphysics",
       "author": "Aristóteles",
-      "title": "Τὰ μετὰ τὰ φυσικά",
-      "language": "grc",
-      "format": "json-passages",
-      "path": "data/classics-corpus/aristotle-metaphysics-grc.json",
-      "reader": "classics-text-reader.html?work=aristotle-metaphysics&lang=grc",
-      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
-    },
-    {
-      "workId": "aristotle-metaphysics",
-      "author": "Aristóteles",
       "title": "Τὰ μετὰ τὰ φυσικά · Metaphysics",
       "language": "en",
       "format": "json-passages",
       "path": "data/classics-corpus/aristotle-metaphysics-en.json",
       "reader": "classics-text-reader.html?work=aristotle-metaphysics&lang=grc&to=en",
       "sourceDescription": "Traducción inglesa histórica de Hugh Tredennick (1933–1935), Perseus TEI, 142 capítulos; no alineación por párrafo."
+    },
+    {
+      "workId": "aristotle-metaphysics",
+      "author": "Aristóteles",
+      "title": "Τὰ μετὰ τὰ φυσικά",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/aristotle-metaphysics-grc.json",
+      "reader": "classics-text-reader.html?work=aristotle-metaphysics&lang=grc",
+      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
     },
     {
       "workId": "aristotle-nicomachean-ethics",
@@ -1154,6 +1154,16 @@
     {
       "workId": "euripides-cyclops",
       "author": "Eurípides",
+      "title": "Κύκλωψ · El cíclope",
+      "language": "en",
+      "format": "json-passages",
+      "path": "data/classics-corpus/euripides-cyclops-en.json",
+      "reader": "classics-text-reader.html?work=euripides-cyclops&lang=en",
+      "sourceDescription": "Traducción histórica de Edward P. Coleridge (1891); TEI Perseus Digital Library verificado por SHA; sin cotejo automático"
+    },
+    {
+      "workId": "euripides-cyclops",
+      "author": "Eurípides",
       "title": "Κύκλωψ",
       "language": "grc",
       "format": "json-passages",
@@ -1200,6 +1210,16 @@
       "path": "data/classics-corpus/euripides-hecuba-grc.json",
       "reader": "classics-text-reader.html?work=euripides-hecuba&lang=grc",
       "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
+      "workId": "euripides-helena",
+      "author": "Eurípides",
+      "title": "Ἑλένη · Helena",
+      "language": "en",
+      "format": "json-passages",
+      "path": "data/classics-corpus/euripides-helena-en.json",
+      "reader": "classics-text-reader.html?work=euripides-helena&lang=en",
+      "sourceDescription": "Traducción histórica de Edward P. Coleridge (1906); TEI Perseus Digital Library verificado por SHA; sin cotejo automático"
     },
     {
       "workId": "euripides-helena",
@@ -1254,6 +1274,16 @@
     {
       "workId": "euripides-ion",
       "author": "Eurípides",
+      "title": "Ἴων · Ion",
+      "language": "en",
+      "format": "json-passages",
+      "path": "data/classics-corpus/euripides-ion-en.json",
+      "reader": "classics-text-reader.html?work=euripides-ion&lang=en",
+      "sourceDescription": "Traducción histórica de Edward P. Coleridge (1906); TEI Perseus Digital Library verificado por SHA; sin cotejo automático"
+    },
+    {
+      "workId": "euripides-ion",
+      "author": "Eurípides",
       "title": "Ἴων",
       "language": "grc",
       "format": "json-passages",
@@ -1304,12 +1334,32 @@
     {
       "workId": "euripides-orestes",
       "author": "Eurípides",
+      "title": "Ὀρέστης · Orestes",
+      "language": "en",
+      "format": "json-passages",
+      "path": "data/classics-corpus/euripides-orestes-en.json",
+      "reader": "classics-text-reader.html?work=euripides-orestes&lang=en",
+      "sourceDescription": "Traducción histórica de Edward P. Coleridge (1891); TEI Perseus Digital Library verificado por SHA; sin cotejo automático"
+    },
+    {
+      "workId": "euripides-orestes",
+      "author": "Eurípides",
       "title": "Ὀρέστης",
       "language": "grc",
       "format": "json-passages",
       "path": "data/classics-corpus/euripides-orestes-grc.json",
       "reader": "classics-text-reader.html?work=euripides-orestes&lang=grc",
       "sourceDescription": "Perseus TEI · Gilbert Murray · urn:cts:greekLit:tlg0006.tlg016.perseus-grc2 · CC BY-SA 4.0; cotejo crítico pendiente"
+    },
+    {
+      "workId": "euripides-suppliants",
+      "author": "Eurípides",
+      "title": "Ἱκέτιδες · Las suplicantes",
+      "language": "en",
+      "format": "json-passages",
+      "path": "data/classics-corpus/euripides-suppliants-en.json",
+      "reader": "classics-text-reader.html?work=euripides-suppliants&lang=en",
+      "sourceDescription": "Traducción histórica de E. P. Coleridge (1906); TEI Perseus Digital Library verificado por SHA; sin cotejo automático"
     },
     {
       "workId": "euripides-suppliants",
@@ -2705,22 +2755,22 @@
     {
       "workId": "plato-laws",
       "author": "Platón",
-      "title": "Νόμοι",
-      "language": "grc",
-      "format": "json-passages",
-      "path": "data/classics-corpus/plato-laws-grc.json",
-      "reader": "classics-text-reader.html?work=plato-laws&lang=grc",
-      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
-    },
-    {
-      "workId": "plato-laws",
-      "author": "Platón",
       "title": "Νόμοι · Laws",
       "language": "en",
       "format": "json-passages",
       "path": "data/classics-corpus/plato-laws-en.json",
       "reader": "classics-text-reader.html?work=plato-laws&lang=grc&to=en",
       "sourceDescription": "Inglés histórico: Robert Gregg Bury (1926), Perseus TEI CC BY-SA 4.0; 327 referencias de Stephanus, sin alineación frase por frase."
+    },
+    {
+      "workId": "plato-laws",
+      "author": "Platón",
+      "title": "Νόμοι",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/plato-laws-grc.json",
+      "reader": "classics-text-reader.html?work=plato-laws&lang=grc",
+      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
     },
     {
       "workId": "plato-lysis",
@@ -2841,22 +2891,22 @@
     {
       "workId": "plato-republic",
       "author": "Platón",
-      "title": "Πολιτεία",
-      "language": "grc",
-      "format": "json-passages",
-      "path": "data/classics-corpus/plato-republic-grc.json",
-      "reader": "classics-text-reader.html?work=plato-republic&lang=grc",
-      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
-    },
-    {
-      "workId": "plato-republic",
-      "author": "Platón",
       "title": "Πολιτεία · Republic",
       "language": "en",
       "format": "json-passages",
       "path": "data/classics-corpus/plato-republic-en.json",
       "reader": "classics-text-reader.html?work=plato-republic&lang=grc&to=en",
       "sourceDescription": "Traducción histórica en inglés de Paul Shorey (1930–1935), Perseus TEI (CC BY-SA 4.0); 278 páginas de Stephanus, sin alineación palabra por palabra."
+    },
+    {
+      "workId": "plato-republic",
+      "author": "Platón",
+      "title": "Πολιτεία",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/plato-republic-grc.json",
+      "reader": "classics-text-reader.html?work=plato-republic&lang=grc",
+      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
     },
     {
       "workId": "plato-sophist",
@@ -3765,22 +3815,22 @@
     {
       "workId": "xenophon-anabasis",
       "author": "Jenofonte",
-      "title": "Ἀνάβασις",
-      "language": "grc",
-      "format": "json-passages",
-      "path": "data/classics-corpus/xenophon-anabasis-grc.json",
-      "reader": "classics-text-reader.html?work=xenophon-anabasis&lang=grc",
-      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
-    },
-    {
-      "workId": "xenophon-anabasis",
-      "author": "Jenofonte",
       "title": "Ἀνάβασις · Anabasis",
       "language": "en",
       "format": "json-passages",
       "path": "data/classics-corpus/xenophon-anabasis-en.json",
       "reader": "classics-text-reader.html?work=xenophon-anabasis&lang=grc&to=en",
       "sourceDescription": "Inglés: traducción histórica de Carleton L. Brownson (1921–1922), Perseus TEI; 1469 referencias libro.capítulo.sección coincidentes con el original griego."
+    },
+    {
+      "workId": "xenophon-anabasis",
+      "author": "Jenofonte",
+      "title": "Ἀνάβασις",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/xenophon-anabasis-grc.json",
+      "reader": "classics-text-reader.html?work=xenophon-anabasis&lang=grc",
+      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
     },
     {
       "workId": "xenophon-apology",
@@ -3909,56 +3959,6 @@
       "sourceUrn": "urn:cts:greekLit:tlg0032.tlg011.perseus-grc2",
       "sourceSha256": "031797d4e1a8f49e17583f0b8828969c142ce5ed11b378e6484073c112a749a7",
       "sourceDescription": "Perseus DL TEI · Xenophon. Opera omnia, Vol. 5. Marchant, Edgar Cardew, editor. Oxford: Clarendon Press, 1920. · CC BY-SA 4.0; original sin cotejo independiente"
-    },
-    {
-      "workId": "euripides-cyclops",
-      "author": "Eurípides",
-      "title": "Κύκλωψ · El cíclope",
-      "language": "en",
-      "format": "json-passages",
-      "path": "data/classics-corpus/euripides-cyclops-en.json",
-      "reader": "classics-text-reader.html?work=euripides-cyclops&lang=en",
-      "sourceDescription": "Traducción histórica de Edward P. Coleridge (1891); TEI Perseus Digital Library verificado por SHA; sin cotejo automático"
-    },
-    {
-      "workId": "euripides-ion",
-      "author": "Eurípides",
-      "title": "Ἴων · Ion",
-      "language": "en",
-      "format": "json-passages",
-      "path": "data/classics-corpus/euripides-ion-en.json",
-      "reader": "classics-text-reader.html?work=euripides-ion&lang=en",
-      "sourceDescription": "Traducción histórica de Edward P. Coleridge (1906); TEI Perseus Digital Library verificado por SHA; sin cotejo automático"
-    },
-    {
-      "workId": "euripides-helena",
-      "author": "Eurípides",
-      "title": "Ἑλένη · Helena",
-      "language": "en",
-      "format": "json-passages",
-      "path": "data/classics-corpus/euripides-helena-en.json",
-      "reader": "classics-text-reader.html?work=euripides-helena&lang=en",
-      "sourceDescription": "Traducción histórica de Edward P. Coleridge (1906); TEI Perseus Digital Library verificado por SHA; sin cotejo automático"
-    },
-    {
-      "workId": "euripides-suppliants",
-      "author": "Eurípides",
-      "title": "Ἱκέτιδες · Las suplicantes",
-      "language": "en",
-      "format": "json-passages",
-      "path": "data/classics-corpus/euripides-suppliants-en.json",
-      "reader": "classics-text-reader.html?work=euripides-suppliants&lang=en",
-      "sourceDescription": "Traducción histórica de E. P. Coleridge (1906); TEI Perseus Digital Library verificado por SHA; sin cotejo automático"
-    },
-    {
-      "workId": "euripides-orestes",
-      "author": "Eurípides",
-      "title": "Ὀρέστης · Orestes",
-      "language": "en",
-      "format": "json-passages",
-      "path": "data/classics-corpus/euripides-orestes-en.json",
-      "reader": "classics-text-reader.html?work=euripides-orestes&lang=en",
-      "sourceDescription": "Traducción histórica de Edward P. Coleridge (1891); TEI Perseus Digital Library verificado por SHA; sin cotejo automático"
     }
   ],
   "auxiliaryIndexes": [
