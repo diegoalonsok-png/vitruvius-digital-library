@@ -152,15 +152,34 @@ async function presentIndexed(entry,target,stamp){
   const para=el("p",null,matched.text||matched.translation);para.lang=target;
   output.append(para);
   note.textContent="Traducción indexada: "+(e.sourceDescription||e.edition||"versión bibliográfica")+" · Locus coincidente "+entry.locus+". No es una traducción automática.";
+ }else if(paragraphs.length){
+  // Independent reading of a genuine human translation, not an invented locus alignment.
+  const list=el("div","cl-indexed-edition-reading");
+  list.setAttribute("aria-label","Traducción humana indexada · lectura independiente");
+  for(const passage of paragraphs){
+   const text=String(passage.text||passage.translation||"").trim();
+   if(!text)continue;
+   const para=el("p",null,text);para.lang=target;
+   if(passage.locus){
+    const locator=el("small",null,String(passage.locus).split(":").pop()+" · ");
+    locator.style.cssText="font-size:.7em;opacity:.72";
+    para.prepend(locator);
+   }
+   list.append(para);
+  }
+  output.append(list);
+  note.textContent="Traducción humana indexada: "+(e.sourceDescription||e.edition||"edición documentada")+
+   " · Lectura independiente completa; numeración propia, sin alineación griego–traducción certificada.";
  }else{
-  output.append(el("p",null,"Existe una traducción indexada en este idioma, pero no se acreditó correspondencia exacta con el locus seleccionado."));
-  note.textContent="Para evitar alineaciones falsas, abrí la versión textual registrada en su propio lector.";
+  output.append(el("p",null,"La edición está registrada, pero no se encontraron pasajes recuperables."));
+  note.textContent="Verificá la disponibilidad del texto indexado.";
  }
  const a=el("a",null,"Consultar traducción indexada · "+target.toUpperCase()+" ↗");
  a.href=versionLink(e,matched?entry.locus:null);a.style.cssText="display:inline-block;margin:9px 0;color:#d5dde4;text-decoration:underline";
  output.append(a);
  return true;
 }
+let initialEditionChosen=false;
 function updateIndexedChoice(info){
  indexedVersions.clear();
  for(const e of (info?.editions||[]))if(registered(e)&&!indexedVersions.has(e.language))indexedVersions.set(e.language,e);
@@ -258,6 +277,13 @@ document.addEventListener("vitruvia:classics-passage",event=>{
  const info=event.detail;
  if(!info||info.work!==work||typeof info.text!=="string")return;
  current=info;sequence++;updateIndexedChoice(info);
+ if(!initialEditionChosen){
+  initialEditionChosen=true;
+  if(!indexedVersions.has(select.value)){
+   const first=["en","fr","es"].find(lang=>indexedVersions.has(lang));
+   if(first){select.value=first;enabled=false;}
+  }
+ }
  const u=new URL("classics-text-reader.html",location.href);u.searchParams.set("work",work);u.searchParams.set("lang",info.language);u.searchParams.set("locus",info.locus);
  const editorial=(info.editions||[]).find(e=>["es","fr","en"].includes(e.language));
  if(editorial)u.searchParams.set("lang",editorial.language);else u.searchParams.set("to",select.value);published.href=u.pathname+u.search;
