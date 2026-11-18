@@ -5,10 +5,10 @@
   "method": "Registered local versions only; no existence, locus alignment, translation completeness or licensing audit is implied. Remote R2 OCR and bilingual PDFs are not counted as verified parallel text.",
   "summary": {
     "greekWorks": 211,
-    "withExistingModernVersion": 45,
-    "withoutRegisteredModernVersion": 166,
+    "withExistingModernVersion": 47,
+    "withoutRegisteredModernVersion": 164,
     "registeredByLanguage": {
-      "en": 45,
+      "en": 47,
       "es": 0,
       "fr": 0
     }
@@ -2174,9 +2174,14 @@
         "path": "data/classics-corpus/plato-euthyphro-grc.json",
         "source": "Perseus original Greek edited TEI | urn:cts:greekLit:tlg0059.tlg001.perseus-grc1 | CC BY-SA 4.0 | local digital paragraph segments, not canonical loci"
       },
-      "translations": {},
-      "status": "needs-edited-translation",
-      "preferredExisting": null,
+      "translations": {
+        "en": {
+          "path": "data/classics-corpus/plato-euthyphro-en.json",
+          "source": "Traducción histórica inglesa de Harold North Fowler (1914), Perseus TEI, CC BY-SA 4.0; secciones Stephanus sin alineación automática con párrafos griegos."
+        }
+      },
+      "status": "has-registered-translation",
+      "preferredExisting": "en",
       "alignmentVerified": false
     },
     {
@@ -2399,9 +2404,14 @@
         "path": "data/classics-corpus/plato-statesman-grc.json",
         "source": "Perseus original Greek edited TEI | urn:cts:greekLit:tlg0059.tlg008.perseus-grc2 | CC BY-SA 4.0 | local digital paragraph segments, not canonical loci"
       },
-      "translations": {},
-      "status": "needs-edited-translation",
-      "preferredExisting": null,
+      "translations": {
+        "en": {
+          "path": "data/classics-corpus/plato-statesman-en.json",
+          "source": "Traducción histórica inglesa de Harold North Fowler (1925), Perseus TEI, CC BY-SA 4.0; secciones Stephanus sin alineación automática con párrafos griegos."
+        }
+      },
+      "status": "has-registered-translation",
+      "preferredExisting": "en",
       "alignmentVerified": false
     },
     {
