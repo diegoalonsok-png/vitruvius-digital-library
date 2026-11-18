@@ -527,7 +527,9 @@ def update_derived(catalog, supplement, registry, audit, backlog, coverage, new)
     for e in registry["entries"]:
         langs_by_work.setdefault(e["workId"], set()).add(e["language"])
     registry["count"] = len(registry["entries"])
-    registry["works"] = len(langs_by_work)
+    # Las ediciones críticas de Krohn/Rose son índices auxiliares, no obras nuevas.
+    registry["works"] = len({e["workId"] for e in registry["entries"]
+                             if e.get("format") != "critical-indexed-latin"})
     registry["updated"] = date.today().isoformat()
     audit["date"] = registry["updated"]
     master_editions = [e for e in registry["entries"] if e["workId"] in by_cat]
