@@ -6,8 +6,8 @@
   "counts": {
     "originalsIndexed": 183,
     "originalsMissing": 88,
-    "worksWithHostedTranslation": 59,
-    "worksMissingTranslation": 212,
+    "worksWithHostedTranslation": 60,
+    "worksMissingTranslation": 211,
     "textVersions": 248,
     "registeredTextVersions": 292,
     "declaredR2OriginalWorks": 44,
@@ -21,8 +21,8 @@
     "offsiteTextVersionsOutsidePages": 28,
     "states": {
       "original_pendiente": 88,
-      "original_sin_traduccion_local": 124,
-      "original_y_traduccion_local": 59
+      "original_sin_traduccion_local": 123,
+      "original_y_traduccion_local": 60
     },
     "sourceReadinessForMissingOriginals": {
       "correspondencia_bibliografica_ambigua": 3,
@@ -2268,11 +2268,12 @@
       "originalLanguage": "grc",
       "dating": "siglo II d. C.",
       "indexedLanguages": [
-        "grc"
+        "grc",
+        "en"
       ],
       "originalIndexed": true,
-      "translationHosted": false,
-      "state": "original_sin_traduccion_local",
+      "translationHosted": true,
+      "state": "original_y_traduccion_local",
       "sourceReadiness": "original_local_documentado",
       "bibliographyCandidateUrns": [
         "tlg0062.tlg066"
