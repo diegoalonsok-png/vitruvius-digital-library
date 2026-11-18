@@ -64,9 +64,14 @@ def main():
     langs_by_id = {}
     remote_langs_by_id = {}
     for e in registry:
+        if e["workId"] not in {w["id"] for w in catalog}:
+            # Las ediciones del suplemento no pertenecen a las 271 fichas
+            # de la matriz histórica que audita este archivo.
+            continue
         target = remote_langs_by_id if e["path"].startswith(("https://", "http://")) else langs_by_id
         target.setdefault(e["workId"], set()).add(e["language"])
     ids = {w["id"] for w in catalog}
+    registry = [e for e in registry if e["workId"] in ids]
     assert len(ids) == len(catalog), "Catalog has duplicate work ids"
     total_works = len(catalog)
     assert set(langs_by_id) <= ids, "Search registry has an unlisted work"

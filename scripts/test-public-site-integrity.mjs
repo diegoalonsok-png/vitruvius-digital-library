@@ -21,8 +21,10 @@ const registry=json("data/classics-corpus/search-registry.json");
 const report=json("data/classics-corpus/coverage-audit.json");
 assert(Array.isArray(catalogue.works)&&catalogue.works.length>0,"Classical catalogue empty");
 const workIds=catalogue.works.map(w=>w.id);
-assert.equal(new Set(workIds).size,workIds.length,"Duplicate work identifiers");
-const listed=new Set(workIds),indexed=new Set();
+const supplement=json("data/bibliotheca-expansion-publicada-2026-11-16.json").works;
+const allIds=[...workIds,...supplement.map(w=>w.id)];
+assert.equal(new Set(allIds).size,allIds.length,"Duplicate work identifiers across catalogues");
+const listed=new Set(allIds),indexed=new Set();
 const languages=new Set(["la","grc","es","en","fr","de","it","pt"]);
 // Three originals reuse immutable, already-hosted Lexicon sources. This strict
 // allowlist rejects arbitrary alternate paths, languages and source aliases.
@@ -37,7 +39,10 @@ const isSharedLatin=(id,language,path,sourceWorkId)=>{
 };
 
 for(const entry of registry.entries){
- assert(listed.has(entry.workId),"Index references unknown work "+entry.workId);
+ const critical=entry.language==="la"&&entry.format==="critical-indexed-latin"&&
+  (entry.workId==="krohn-1912-indexed"&&entry.path==="data/critical-editions/krohn-1912-tei-loci.json"||
+   entry.workId==="rose-1899-indexed"&&entry.path==="data/critical-editions/rose-1899-transcribed-loci.json");
+ assert(listed.has(entry.workId)||critical,"Index references unknown work "+entry.workId);
  assert(languages.has(entry.language),"Unrecognized language "+entry.language);
  assert(typeof entry.path==="string"&&!entry.path.startsWith("/")&&!entry.path.includes(".."),"Unsafe corpus path");
  if(/^https:/.test(entry.path))
@@ -60,7 +65,7 @@ for(const entry of registry.entries){
   assert.equal(source.language,entry.language,"Wrong translation language: "+entry.path);
   assert(Array.isArray(source.passages)&&source.passages.length>0,"Empty indexed corpus: "+entry.path);
  }
- indexed.add(entry.workId);
+ if(!critical)indexed.add(entry.workId);
 }
 for(const work of catalogue.works){
  for(const [language,path] of Object.entries(work.corpusFiles||{})){
@@ -78,7 +83,9 @@ for(const work of catalogue.works){
 assert.equal(registry.entries.length,registry.count,"Registry version total differs");
 assert.equal(indexed.size,registry.works,"Registry distinct work total differs");
 assert.equal(report.counts.cataloguedWorks,catalogue.works.length,"Published catalogue audit stale");
-assert.equal(report.counts.indexedTextVersions,registry.entries.length,"Published text count stale");
+assert.equal(report.counts.indexedTextVersions,
+ registry.entries.filter(e=>workIds.includes(e.workId)).length,
+ "Published primary-catalogue text count stale; supplementary versions are separate");
 const source=read("assets/bibliotheca-graeca-latina.js");
 const begin=source.indexOf("function safePublicHref(value){");
 const end=source.indexOf("function navLink(url,txt)",begin);

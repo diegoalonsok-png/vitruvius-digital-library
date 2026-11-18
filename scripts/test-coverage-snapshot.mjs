@@ -8,9 +8,15 @@ const translations=read('data/classics-corpus/translation-availability-222.json'
 const coverage=read('data/classics-corpus/coverage-audit.json');
 const road=read('data/classics-corpus/indexation-roadmap-222.json');
 const external=read('data/classics-corpus/external-index-reconciliation.json');
-const local=new Set(registry.filter(e=>['la','grc'].includes(e.language)&&!e.path.startsWith('https:')).map(e=>e.workId));
-const r2=new Set(registry.filter(e=>['la','grc'].includes(e.language)&&e.path.startsWith('https:')).map(e=>e.workId));
-const offsite=new Set(external.remoteEntries.map(e=>e.workId));
+// La instantánea de cobertura documenta las 271 fichas del repertorio madre.
+// Los suplementos y las recensiones auxiliares de Krohn/Rose no son originales
+// locales adicionales de estas obras, ni deben aumentar los contadores.
+const byId=new Map(catalog.map(w=>[w.id,w]));
+const primary=registry.filter(e=>byId.has(e.workId));
+const original=e=>['la','grc'].includes(e.language)&&e.language===byId.get(e.workId)?.language;
+const local=new Set(primary.filter(e=>original(e)&&!e.path.startsWith('https:')).map(e=>e.workId));
+const r2=new Set(primary.filter(e=>original(e)&&e.path.startsWith('https:')).map(e=>e.workId));
+const offsite=new Set(external.remoteEntries.filter(e=>byId.has(e.workId)).map(e=>e.workId));
 assert.equal(translations.works.length,catalog.length);
 assert.equal(new Set(translations.works.map(w=>w.id)).size,catalog.length);
 assert.equal(translations.totals.originalTextIndexed,local.size,'Local originals must not silently include remote URLs');
@@ -24,7 +30,7 @@ assert.equal(external.counts.combinedOriginalsIndexed,road.counts.effectiveOrigi
 const statuses={};for(const w of catalog)statuses[w.publicStatus]=(statuses[w.publicStatus]||0)+1;
 assert.deepEqual(coverage.counts.catalogueStatuses,statuses);
 assert.equal(coverage.counts.manuscriptWitnesses,read('data/bibliotheca-testimonia-verified.json').records.length);
-assert.equal(coverage.counts.indexedTextVersions,registry.length);
+assert.equal(coverage.counts.indexedTextVersions,primary.length);
 assert.equal(translations.totals.translatedWorksLocal,translations.works.filter(w=>w.translationLanguages.length).length);
 assert.equal(translations.totals.worksWithoutHostedTranslation+translations.totals.translatedWorksLocal,catalog.length);
 const manifest=read('data/r2/corpus-manifest.json');
@@ -40,7 +46,7 @@ w.fetch=async url=>({ok:true,json:async()=>read(String(url).split('?')[0])});
 w.eval([...w.document.querySelectorAll('script:not([src])')].map(s=>s.textContent).find(s=>s.includes('let all=[],remoteIndexedIds=')));
 for(let i=0;i<5;i++)await new Promise(resolve=>setImmediate(resolve));
 const filter=w.document.getElementById('audit-filter');filter.value='indexed';filter.dispatchEvent(new w.Event('change'));
-assert.equal(w.document.querySelectorAll('#audit-rows tr').length,new Set(registry.map(e=>e.workId)).size);
+assert.equal(w.document.querySelectorAll('#audit-rows tr').length,new Set(primary.map(e=>e.workId)).size);
 const remoteRow=w.document.querySelector('a[href$="work=apolonio-argonauticas"]').closest('tr');
 assert.match(remoteRow.cells[2].textContent,/^R2 · registro declarado/);
 assert.equal(w.document.getElementById('audit-local-originals').textContent,String(local.size));

@@ -11,8 +11,11 @@ const catalog=read("data/bibliotheca-graeca-latina-I-bce-I-ce.json");
 const registry=read("data/classics-corpus/search-registry.json");
 assert(Array.isArray(catalog.works)&&catalog.works.length>0);
 assert.equal(registry.schema,"vitruvia-classics-search-registry-v1");
-const works=catalog.works,byId=new Map(works.map(w=>[w.id,w]));
-assert.equal(byId.size,works.length,"Duplicate work ID");
+const works=catalog.works;
+const supplement=read("data/bibliotheca-expansion-publicada-2026-11-16.json").works;
+const allWorks=[...works,...supplement];
+const byId=new Map(allWorks.map(w=>[w.id,w]));
+assert.equal(byId.size,allWorks.length,"Duplicate work ID across primary and supplementary catalogues");
 const groups=Object.fromEntries([...new Set(works.map(w=>w.publicStatus||"sin-estado"))].map(k=>[k,works.filter(w=>(w.publicStatus||"sin-estado")===k).length]));
 const invalid=[],checked=[];
 function fileReference(id,label,p){
@@ -51,9 +54,18 @@ assert.equal(favText.sourceBlobSha,"8103380371d27dd1fd954b77e61b3d6df68e4f3a","S
 assert(registry.entries.some(e=>e.workId==="vitruvius"),"The already indexed De architectura must remain intact");
 const unique=new Set(),languages={},formats={};
 for(const entry of registry.entries){
- assert(byId.has(entry.workId),"Search record has unknown work "+entry.workId);
+ const critical=entry.format==="critical-indexed-latin"&&
+  (entry.workId==="krohn-1912-indexed"&&entry.path==="data/critical-editions/krohn-1912-tei-loci.json"||
+   entry.workId==="rose-1899-indexed"&&entry.path==="data/critical-editions/rose-1899-transcribed-loci.json");
+ assert(byId.has(entry.workId)||critical,"Search record has unknown work "+entry.workId);
+ if(critical){
+  assert.equal(entry.language,"la","Critical edition must retain its original Latin");
+  const edition=read(entry.path);
+  assert.equal(edition.passages?.length,731,"Critical edition requires 731 indexed loci");
+  assert(edition.passages.every(p=>p.locus&&p.latin),"Critical edition without locus or Latin reading");
+ }
  assert(["la","grc","es","en","fr","it","de","pt"].includes(entry.language),"Invalid language");
- assert(["html-text","json-passages","structured-bilingual","historical-ocr-pages"].includes(entry.format),"Invalid index format");
+ assert(["html-text","json-passages","structured-bilingual","historical-ocr-pages","critical-indexed-latin"].includes(entry.format),"Invalid index format");
  if(unique.has(entry.path))assert(entry.format==="structured-bilingual"&&entry.workId==="vitruvius",
   "Duplicate indexed file "+entry.path);
  unique.add(entry.path);
@@ -108,17 +120,19 @@ for(const entry of registry.entries){
   assert.equal(text.workId,entry.sourceWorkId||entry.workId,"Mismatched work ID in "+entry.path);
   assert.equal(text.language,entry.language,"Mismatched text language in "+entry.path);
   assert(Array.isArray(text.passages)&&text.passages.length>0,"No searchable passages in "+entry.path);
-  assert(text.attribution&&text.source,"Missing attribution/source in "+entry.path);
+  assert(text.attribution&&(text.source||(Array.isArray(text.sources)&&text.sources.length>0&&text.sources.every(s=>s.url&&s.urn))),
+   "Missing attribution/source in "+entry.path);
  }
 }
-for(const w of works)for(const p of Object.values(w.corpusFiles||{}))
+for(const w of allWorks)for(const p of Object.values(w.corpusFiles||{}))
  assert(unique.has(p),"Local text exists but is not included in classical search: "+p);
 // Translation transparency: indexed languages and catalogue must agree. Checks
 // cannot establish philological quality or historical copyright on their own.
 assert.equal(registry.count,registry.entries.length,"Search registry count is stale");
-assert.equal(registry.works,new Set(registry.entries.map(e=>e.workId)).size,"Search registry distinct work count is stale");
+assert.equal(registry.works,new Set(registry.entries.filter(e=>e.format!=="critical-indexed-latin").map(e=>e.workId)).size,
+ "Auxiliary critical-edition indexes must not inflate distinct ancient works");
 const verifiedParallel=[],explicitlyUnaligned=[];
-for(const w of works){
+for(const w of allWorks){
  const entries=registry.entries.filter(e=>e.workId===w.id&&e.format==="json-passages");
  for(const [lang,path] of Object.entries(w.corpusFiles||{})){
   assert(entries.some(e=>e.language===lang&&e.path===path),"Corpus language missing from search registry: "+w.id+":"+lang);
@@ -215,7 +229,8 @@ const localWorks=works.filter(w=>w.publicStatus==="lectura-local-completa"||w.pu
 const published=read("data/classics-corpus/coverage-audit.json");
 assert.equal(published.schema,"vitruvia-classics-coverage-audit-v1");
 assert.equal(published.works.length,works.length,"Public coverage report is stale (work count)");
-assert.equal(published.counts.indexedTextVersions,registry.entries.length,"Public coverage report is stale (indexed versions)");
+assert.equal(published.counts.indexedTextVersions,registry.entries.filter(e=>works.some(w=>w.id===e.workId)).length,
+ "Public primary-catalogue coverage must not count supplementary editions");
 const publicMap=new Map(published.works.map(w=>[w.id,w]));
 assert.equal(publicMap.size,works.length,"Duplicate/missing entry in public coverage audit");
 for(const w of works){
@@ -246,7 +261,7 @@ for(const record of provenance.records){
 
 const summary={parallelLocusCoverage:verifiedParallel,explicitlyUnalignedTranslations:explicitlyUnaligned,cataloguedWorks:works.length,distinctAuthorLabels:new Set(works.map(w=>w.author)).size,status:groups,
  localReadingRecords:localWorks.length,checkedFileReferences:checked.length,
- fulltextSearchWorks:new Set(registry.entries.map(e=>e.workId)).size,fulltextSearchVersions:registry.entries.length,
+ fulltextSearchWorks:new Set(registry.entries.filter(e=>e.format!=="critical-indexed-latin").map(e=>e.workId)).size,fulltextSearchVersions:registry.entries.length,
  languages,formats,unindexedHtml,classicPDF:classicPDF.length,vitruviusPageTextIndexes:vitruviusPageTexts.length,
  note:"Binary PDFs were checked for repository presence, not OCR completeness or browser rendering. Unknown works worldwide cannot be counted from this local catalogue."};
 console.log(JSON.stringify(summary,null,2));
