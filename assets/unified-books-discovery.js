@@ -131,6 +131,8 @@ function mount(root,queryInput){
  // Original form remains usable; this field can be operated independently.
 }
 function init(){
+ // Home already has its dedicated works explorer. Do not mount a redundant search.
+ if(byId("home-books-search"))return;
  const bibliography=document.querySelector(".searcharea");
  const mainSearch=document.getElementById("search-form");
  if(bibliography)mount(bibliography,null);
