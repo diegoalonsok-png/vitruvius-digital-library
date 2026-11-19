@@ -7,29 +7,8 @@
     "indexed-local": 353,
     "indexed-r2-last-verified": 44,
     "indexed-html-word-gate": 6,
-    "local-text-pending-index": 2,
+    "indexed-in-critical-apparatus": 2,
     "indexed-through-edition-alias": 4
   },
-  "missing": [
-    {
-      "workId": "krohn-1912-indexed",
-      "language": "la",
-      "state": "local-text-pending-index",
-      "registeredFiles": [
-        "data/critical-editions/krohn-1912-tei-loci.json"
-      ],
-      "missingLocalFiles": [],
-      "indexedPassages": 0
-    },
-    {
-      "workId": "rose-1899-indexed",
-      "language": "la",
-      "state": "local-text-pending-index",
-      "registeredFiles": [
-        "data/critical-editions/rose-1899-transcribed-loci.json"
-      ],
-      "missingLocalFiles": [],
-      "indexedPassages": 0
-    }
-  ]
+  "missing": []
 }
