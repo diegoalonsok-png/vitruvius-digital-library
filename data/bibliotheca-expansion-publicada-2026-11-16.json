@@ -1514,7 +1514,7 @@
         "license": "CC BY-SA 4.0",
         "textualNote": "Los apartados de párrafo usados para búsqueda son segmentos locales cuando la unidad CTS reúne varios párrafos."
       },
-      "status": "Texto griego incorporado, registrado e indexado léxicamente; sin cotejo crítico independiente",
+      "status": "Original griego indexado y traducción histórica inglesa incorporada; alineación griego-inglés no verificada.",
       "textStatus": "lexically-indexed",
       "publicStatus": "lectura-local-completa",
       "reading": {
@@ -1522,7 +1522,11 @@
         "status": "Transcripción de edición TEI con segmentos digitales locales; sin cotejo crítico independiente."
       },
       "translation": {
-        "status": "Sin versión traducida cotejada alojada para esta ficha; consultar las fuentes editoriales."
+        "status": "Traducción humana histórica inglesa completa, indexada por 11 capítulos; alineación exacta con loci griegos no comprobada.",
+        "language": "en",
+        "translator": "H. G. Dakyns",
+        "source": "https://www.gutenberg.org/ebooks/1169",
+        "alignmentStatus": "unaligned"
       },
       "links": {
         "scaife": "https://scaife.perseus.org/",
@@ -1534,12 +1538,20 @@
       "selectionOrder": 15,
       "sourceUrn": "urn:cts:greekLit:tlg0032.tlg009.perseus-grc2",
       "corpusFiles": {
-        "grc": "data/classics-corpus/xenophon-agesilaus-grc.json"
+        "grc": "data/classics-corpus/xenophon-agesilaus-grc.json",
+        "en": "data/classics-corpus/xenophon-agesilaus-en.json"
       },
       "localVersions": [
         {
           "language": "grc",
           "path": "data/classics-corpus/xenophon-agesilaus-grc.json"
+        },
+        {
+          "language": "en",
+          "path": "data/classics-corpus/xenophon-agesilaus-en.json",
+          "label": "English · H. G. Dakyns",
+          "kind": "historical-translation",
+          "citation": "Xenophon. Agesilaus. Translation by H. G. Dakyns. Project Gutenberg #1169."
         }
       ]
     },
