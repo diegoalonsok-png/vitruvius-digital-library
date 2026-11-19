@@ -49,6 +49,28 @@
       "source": "https://github.com/PerseusDL/canonical-greekLit/blob/master/data/tlg0014/tlg001/tlg0014.tlg001.perseus-eng2.xml",
       "r2Status": "not_uploaded_or_verified",
       "suggestedR2Key": "corpus/demosthenes-first-olynthiac-en.json"
+    },
+    {
+      "workId": "pindar-olympian",
+      "language": "en",
+      "repositoryPath": "data/classics-corpus/pindar-olympian-en.json",
+      "gitBlobSha": "9def04ead9447f8454029746e51556f8637385a8",
+      "passages": 306,
+      "sourceUrn": "urn:cts:greekLit:tlg0033.tlg001.perseus-eng2",
+      "source": "https://github.com/PerseusDL/canonical-greekLit/blob/master/data/tlg0033/tlg001/tlg0033.tlg001.perseus-eng2.xml",
+      "r2Status": "not_uploaded_or_verified",
+      "suggestedR2Key": "corpus/pindar-olympian-en.json"
+    },
+    {
+      "workId": "pindar-pythian",
+      "language": "en",
+      "repositoryPath": "data/classics-corpus/pindar-pythian-en.json",
+      "gitBlobSha": "4739f03aadfd04ee6b900d8a4fbab725f32829e6",
+      "passages": 372,
+      "sourceUrn": "urn:cts:greekLit:tlg0033.tlg002.perseus-eng3",
+      "source": "https://github.com/PerseusDL/canonical-greekLit/blob/master/data/tlg0033/tlg002/tlg0033.tlg002.perseus-eng3.xml",
+      "r2Status": "not_uploaded_or_verified",
+      "suggestedR2Key": "corpus/pindar-pythian-en.json"
     }
   ]
 }
