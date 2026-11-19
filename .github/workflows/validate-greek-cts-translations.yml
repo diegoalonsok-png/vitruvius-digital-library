@@ -1,0 +1,32 @@
+name: Bibliotheca · validar traducciones griegas indexadas y loci
+on:
+  pull_request:
+    paths:
+      - 'data/classics-corpus/search-registry.json'
+      - 'data/classics-corpus/xenophon-hipparchicus-en.json'
+      - 'data/classics-corpus/xenophon-horsemanship-en.json'
+      - 'scripts/validate_greek_translation_sync.py'
+      - '.github/workflows/validate-greek-cts-translations.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  validate:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validar JSON y procedencia
+        run: |
+          python3 -m py_compile scripts/validate_greek_translation_sync.py
+          python3 -m json.tool data/classics-corpus/search-registry.json >/dev/null
+      - name: Verificar todas las referencias originales griegas
+        run: |
+          python3 scripts/validate_greek_translation_sync.py \
+            data/classics-corpus/xenophon-hipparchicus-en.json \
+            data/classics-corpus/xenophon-horsemanship-en.json
+      - name: Comprobar reconstrucción del índice léxico
+        run: |
+          node --check scripts/build-classics-lexical-index.mjs
+          node --max-old-space-size=6144 scripts/build-classics-lexical-index.mjs
+          node scripts/check-registered-originals-translations-indexed.mjs
