@@ -12,8 +12,8 @@ REGISTRY = CORPUS / "search-registry.json"
 BOOKS = (
     ("aristophanes-acharnenses", "Ἀχαρνῆς · The Acharnians", 3012),
     ("aristophanes-pax", "Εἰρήνη · Peace", 2571),
-    ("aristophanes-lysistrata", "Λυσιστράτη · Lysistrata", 7700),
-    ("aristophanes-ranae", "Βάτραχοι · The Frogs", 7998),
+    # Gutenberg 7700 is Jack Lindsay (d. 1990); do not redistribute without clearance.
+    # Gutenberg 7998 requires translator/rights verification before redistribution.
 )
 START = re.compile(r"\*\*\*\s*START OF (?:THE |THIS )?PROJECT GUTENBERG EBOOK[^\n]*", re.I)
 END = re.compile(r"\*\*\*\s*END OF (?:THE |THIS )?PROJECT GUTENBERG EBOOK[^\n]*", re.I)
