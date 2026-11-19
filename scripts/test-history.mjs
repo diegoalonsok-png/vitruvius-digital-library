@@ -23,7 +23,7 @@ assert.equal(metrics.total_records_across_repertories,metrics.primary_catalog.re
 // The home now uses a compact Bibliotheca strip. The historical three-repertory
 // total remains in the dated audit, not as the public work count (different units).
 const corpusCounts=JSON.parse(fs.readFileSync(new URL('../data/cifras-corpus.json',import.meta.url),'utf8'));
-assert.ok(html.includes('data-cifra="obrasTotalesDeclaradas"')&&html.includes('data-cifra="obrasConTextoIndexado"'),'La portada debe mostrar obras catalogadas y textos indexados');
+assert.ok(html.includes('data-cifra="obrasConTextoIndexado"')&&html.includes('href="bibliotheca-graeca-latina.html"'),'La portada debe mostrar el contador de originales indexados y conservar el acceso a Bibliotheca');
 assert.equal(corpusCounts.obrasTotalesDeclaradas,corpusCounts.obras+corpusCounts.obrasAdicionales,'No duplicar obras en el total público');
 assert.ok(html.includes('páginas declaradas en esas tres ediciones')||html.includes('Los 731 loci son unidades de navegación'),'La portada debe distinguir páginas declaradas de loci o cotejos manuscritos');
 assert.ok(onomasticon.totals.latinWords>50000&&onomasticon.totals.greekWords>0,'El nuevo índice debe contener estadísticas latinas y griegas');
