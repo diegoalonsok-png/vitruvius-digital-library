@@ -5,6 +5,9 @@ a.skip-link:not(:focus),a.skip:not(:focus){position:absolute;width:1px;height:1p
 .script-section-nav a,.script-citation-actions button,.script-citation-actions a,.script-dialog-actions button{display:inline-flex;align-items:center;justify-content:center;min-height:42px;padding:9px 14px;border:1px solid #8b8171;border-radius:9px;text-decoration:none;background:var(--paper,#f7f4ee);color:inherit;font:600 13px/1.4 system-ui;cursor:pointer}
 .script-section-nav a:hover,.script-citation-actions button:hover,.script-dialog-actions button:hover{border-color:#bda16a;background:#bda16a22}
 .script-section-nav a:first-child,.script-citation-actions button:first-child{background:#28485c;color:#fff;border-color:#28485c}
+/* Enlace discreto en el espacio libre al final de la barra; no rediseñar otros botones. */
+.script-section-nav .script-index-locorum{margin-left:auto;white-space:nowrap}
+@media(max-width:640px){.script-section-nav .script-index-locorum{margin-left:0}}
 .script-orientation{max-width:950px;line-height:1.7}
 .script-section-note{font-size:14px;line-height:1.65;max-width:1000px}
 .script-triple-ficha{display:none}
