@@ -1,0 +1,32 @@
+name: Auditoría de rutas Cloudflare y SEO
+on:
+  push:
+    branches:
+      - audit/cloudflare-redirects-seo-20261119
+    paths:
+      - scripts/audit-cloudflare-live-routes.py
+      - .github/workflows/audit-cloudflare-live-routes.yml
+  pull_request:
+    paths:
+      - scripts/audit-cloudflare-live-routes.py
+      - .github/workflows/audit-cloudflare-live-routes.yml
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate audit syntax
+        run: python3 -m py_compile scripts/audit-cloudflare-live-routes.py
+      - name: Verify live sitemap URLs and metadata
+        run: python3 scripts/audit-cloudflare-live-routes.py
+      - name: Upload results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: cloudflare-public-route-audit
+          path: cloudflare-public-route-audit.json
+          if-no-files-found: warn
