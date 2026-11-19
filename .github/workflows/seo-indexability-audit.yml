@@ -8,6 +8,11 @@ on:
       - '.github/workflows/seo-indexability-audit.yml'
       - 'sitemap.xml'
       - 'robots.txt'
+      - 'index.html'
+      - 'bibliotheca-graeca-latina.html'
+      - 'obras-clasicas-indexadas.html'
+      - 'obras/**'
+      - 'collatio-autoptica.html'
 permissions:
   contents: read
 jobs:
