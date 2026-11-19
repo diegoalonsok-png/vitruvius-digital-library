@@ -140,13 +140,27 @@ def main():
         raise SystemExit("Tanda con CTS repetidos o no canónicos")
     registry, catalog = read(REG), read(CAT)
     existing_ids = load_existing_ids()
+    # Contrastar obra CTS en los mapas publicados, no solamente el nuevo ID.
+    existing_urns = set()
+    perseus = read(ROOT / "data/bibliotheca-perseus.json")
+    for links in perseus.get("links", {}).values():
+        for link in links:
+            if link.get("obra"):
+                existing_urns.add(link["obra"])
+    for index_path in ("data/index/classics-r2/manifest.json",
+                       "data/index/classics/manifest.json"):
+        index = read(ROOT / index_path)
+        for edition in index.get("index", []):
+            for value in (edition.get("urn", ""), edition.get("source", "")):
+                for match in re.finditer(r"tlg[0-9]{4}\.tlg[0-9a-z]+", value):
+                    existing_urns.add(match.group(0))
     existing_registry = {(e["workId"], e["language"]) for e in registry["entries"]}
     extractor = source_extractor()
     to_write, added, failed = [], [], []
     for item in items:
         key = URN_RE.fullmatch(item["urn"])
         wid = "first1k-" + "-".join(key.groups())
-        if wid in existing_ids or (wid, "grc") in existing_registry:
+        if wid in existing_ids or (wid, "grc") in existing_registry or ".".join(key.groups()) in existing_urns:
             failed.append({"rank": item["rank"], "workId": wid,
                            "reason": "Obra ya presente; no duplicar"})
             continue
@@ -161,6 +175,7 @@ def main():
         catalog["works"].append(work)
         existing_ids.add(wid)
         existing_registry.add((wid, "grc"))
+        existing_urns.add(".".join(key.groups()))
         added.append(row)
         print(f"OK #{item['rank']:02d} {wid}: {row['passages']} loci", flush=True)
     registry["entries"].sort(key=lambda x: (x["workId"], x["language"], x.get("path", "")))
