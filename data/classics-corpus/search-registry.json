@@ -2,7 +2,7 @@
   "schema": "vitruvia-classics-search-registry-v1",
   "updated": "2026-11-19",
   "description": "Registro verificable de transcripciones HTML y textos JSON existentes que admiten búsqueda literal de contenido. No incluye automáticamente PDF escaneados, facsímiles ni fichas sin texto. Los índices auxiliares por locus y el aparato crítico se declaran por separado; no se suman a versiones textuales originales ni implican colación autóptica.",
-  "count": 410,
+  "count": 411,
   "works": 300,
   "entries": [
     {
@@ -488,6 +488,16 @@
       "path": "data/classics-corpus/aristotle-politics-grc.json",
       "reader": "classics-text-reader.html?work=aristotle-politics&lang=grc",
       "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
+      "workId": "aristotle-rhetoric",
+      "author": "Aristóteles",
+      "title": "Ῥητορική",
+      "language": "en",
+      "format": "json-passages",
+      "path": "data/classics-corpus/aristotle-rhetoric-en.json",
+      "reader": "classics-text-reader.html?work=aristotle-rhetoric&lang=en",
+      "sourceDescription": "Traducción inglesa humana John Henry Freese (1926), Perseus Digital Library TEI (CC BY-SA 4.0); 882 secciones citables de edición, sin alineación automática griego-inglés."
     },
     {
       "workId": "aristotle-rhetoric",
