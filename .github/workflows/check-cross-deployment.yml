@@ -3,6 +3,9 @@ on:
   push:
     branches: [main]
     paths:
+      - 'index.html'
+      - 'assets/unified-books-discovery.js'
+      - 'assets/bibliotheca-works-explorer.css'
       - 'aparato-comparativo.html'
       - 'bibliotheca-graeca-latina.html'
       - 'scriptorium.html'
