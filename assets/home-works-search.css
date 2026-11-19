@@ -1,0 +1,122 @@
+/* Portada exclusivamente: buscador de obras con la misma barra que
+   "Buscar en los textos vitruvianos". No altera la búsqueda principal. */
+.bibliotheca-single-count [data-vdl-works-explorer]{
+ flex:1 0 100%;
+ min-width:0;
+ width:100%;
+}
+.bibliotheca-single-count .vdl-unified-books{
+ display:block;
+ width:100%;
+ padding:12px 0 6px;
+ margin:0;
+ background:transparent;
+ color:var(--ink,#1b3040);
+}
+.bibliotheca-single-count .vdl-unified-books[hidden],
+.bibliotheca-single-count .vdl-unified-books [hidden]{
+ display:none!important;
+}
+.bibliotheca-single-count .vdl-unified-books>h3{
+ margin:0 0 5px;
+ font:600 clamp(20px,2vw,27px)/1.3 var(--serif,Georgia,serif);
+ color:inherit;
+}
+.bibliotheca-single-count .vdl-unified-books>p{
+ margin:0 0 15px;
+ font:400 14px/1.6 var(--serif,Georgia,serif);
+ color:var(--muted,#65706d);
+}
+.bibliotheca-single-count .vdl-unified-books .search-box{
+ margin:0;
+ width:100%;
+ max-width:none;
+ background:var(--white,#fff);
+ border:1px solid #b3b4ac;
+}
+.bibliotheca-single-count .vdl-unified-books .search-input-row{
+ display:flex;
+ align-items:center;
+ gap:18px;
+ padding:13px 15px 13px 24px;
+ border:0;
+}
+.bibliotheca-single-count .vdl-unified-books .search-input-row input{
+ min-width:0;
+ flex:1 1 auto;
+ width:100%;
+ padding:8px 0;
+ background:transparent;
+ border:0;
+ font:400 22px/1.4 var(--serif,Georgia,serif);
+ color:var(--ink,#1b3040);
+}
+.bibliotheca-single-count .vdl-unified-books .search-input-row .button.primary{
+ flex:0 0 auto;
+ min-width:130px;
+}
+.bibliotheca-single-count .vdl-unified-books>p[role=status]{
+ margin:12px 0 7px;
+ font:400 13px/1.5 system-ui,sans-serif;
+}
+.bibliotheca-single-count .vdl-unified-books>ol{
+ list-style:none;
+ padding:0;
+ margin:10px 0;
+ display:grid;
+ grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));
+ gap:12px;
+}
+.bibliotheca-single-count .vdl-unified-books>ol>li{
+ min-width:0;
+ padding:15px;
+ border:1px solid var(--line,#b3b4ac);
+ background:var(--white,#fff);
+ color:var(--ink,#1b3040);
+}
+.bibliotheca-single-count .vdl-unified-books>ol>li>strong{
+ display:block;
+ font:600 17px/1.4 var(--serif,Georgia,serif);
+}
+.bibliotheca-single-count .vdl-unified-books>ol>li>p{
+ font:400 12px/1.5 system-ui,sans-serif;
+ margin:5px 0 10px;
+ color:var(--muted,#65706d);
+}
+.bibliotheca-single-count .vdl-unified-books>ol>li>nav{
+ display:flex;
+ flex-wrap:wrap;
+ gap:8px 12px;
+ align-items:center;
+}
+.bibliotheca-single-count .vdl-unified-books>ol>li>nav a,
+.bibliotheca-single-count .vdl-unified-books>ol>li>nav button{
+ font:500 12px/1.45 system-ui,sans-serif;
+ color:inherit;
+ background:transparent;
+ cursor:pointer;
+ border:0;
+ padding:0;
+ text-decoration:underline;
+ text-underline-offset:3px;
+}
+.bibliotheca-single-count .vdl-unified-books>button{
+ margin:7px 0;
+ padding:9px 16px;
+ border:1px solid var(--line,#b3b4ac);
+ border-radius:2px;
+ background:transparent;
+ color:inherit;
+ cursor:pointer;
+}
+.bibliotheca-single-count [data-cifra-estado=no-verificado]{text-decoration:underline dotted;text-underline-offset:4px}
+html[data-theme=dark] .bibliotheca-single-count .vdl-unified-books,
+html[data-theme=dark] .bibliotheca-single-count .vdl-unified-books>ol>li{color:#f3eee6}
+html[data-theme=dark] .bibliotheca-single-count .vdl-unified-books .search-box,
+html[data-theme=dark] .bibliotheca-single-count .vdl-unified-books>ol>li{background:#22384a}
+html[data-theme=dark] .bibliotheca-single-count .vdl-unified-books .search-input-row input{color:#f3eee6}
+@media(max-width:640px){
+ .bibliotheca-single-count .vdl-unified-books .search-input-row{padding:10px;gap:8px}
+ .bibliotheca-single-count .vdl-unified-books .search-input-row input{font-size:17px}
+ .bibliotheca-single-count .vdl-unified-books .search-input-row .button.primary{min-width:80px;padding:10px}
+}
