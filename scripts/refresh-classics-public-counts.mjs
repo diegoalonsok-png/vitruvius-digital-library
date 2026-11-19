@@ -30,11 +30,34 @@ const verifiedR2=r2Status?.status==='all-registered-r2-originals-verified-and-le
 const remoteUnverified=remote.filter(e=>!verifiedR2.includes(e));
 const localUnindexed=local.filter(e=>e.format!=='historical-ocr-pages'&&existsSync(e.path)&&!recognized.has(key(e.workId,e.language)));
 const distinct=arr=>new Set(arr.map(e=>e.workId)).size;
+const catalogue=read('data/classics-corpus/indexation-roadmap-222.json');
+const additionalR2=read('data/r2/vinculos-repertorio.json');
+// One work ID is one title; languages, editions and PDF copies are not extra works.
+const listedIDs=new Set((catalogue.items||[]).map(w=>w.id));
+const primaryTotal=listedIDs.size;
+for(const w of supplement.works||[])if(w?.id)listedIDs.add(w.id);
+const textCatalogueIDs=new Set(listedIDs);
+const supplementaryTotal=listedIDs.size-primaryTotal;
+for(const work of additionalR2.obrasNuevas||[])if(work?.r2)listedIDs.add(work.r2);
+const r2AdditionalTotal=listedIDs.size-textCatalogueIDs.size;
+const cataloguedTotal=listedIDs.size;
+// An original is indexable only when its source file is locally checked and
+// present in the lexical manifest, or R2 has an exact previously verified SHA.
+const originalIndexedIDs=new Set(
+ [...localIndexed,...verifiedR2]
+ .filter(e=>['la','grc'].includes(e.language)&&textCatalogueIDs.has(e.workId))
+ .map(e=>e.workId)
+);
+const indexedOriginalTotal=originalIndexedIDs.size;
+if(primaryTotal!==catalogue.targetWorks||supplementaryTotal!==supplement.works.length)
+ throw Error('Catalog IDs are missing or overlapping; refuse to publish invented totals');
+if(indexedOriginalTotal>cataloguedTotal)throw Error('Indexed works exceed catalogued works');
 const counts={
  schema:'vdl-classics-public-counts-v2',
  generated:new Date().toISOString(),
  method:'Local text files and index manifest cross-checked by original work/language; HTML word gates are not passage indices; historical OCR excluded from critical-text counts; R2 indexed editions are matched to last verified SHA256 manifest, without claiming live checking.',
- cataloguedWorks:read('data/cifras-corpus.json').obrasTotalesDeclaradas,
+ cataloguedWorks:cataloguedTotal,
+ indexedOriginalWorks:indexedOriginalTotal,
  registryEntries:registered.length,
  registryDistinctWorks:distinct(registered),
  localRegisteredEditions:local.length,
@@ -53,6 +76,13 @@ counts.localIndexPassageEditions=localIndexed.length-counts.htmlWordGateEditions
 writeFileSync('data/classics-corpus/public-counts.json',JSON.stringify(counts,null,2)+'\n');
 const old=read('data/cifras-corpus.json');
 old.actualizado=new Date().toISOString().slice(0,10);
+old.obras=primaryTotal;
+old.obrasSuplementarias=supplementaryTotal;
+old.obrasAdicionales=r2AdditionalTotal;
+old.obrasTotalesDeclaradas=cataloguedTotal;
+old.obrasConTextoIndexado=indexedOriginalTotal;
+old.notaTotal=cataloguedTotal+' fichas únicas por ID comprobadas: '+primaryTotal+' repertorio principal + '+supplementaryTotal+' incorporaciones textuales suplementarias + '+r2AdditionalTotal+' fichas R2 adicionales sin solapamiento. Versiones lingüísticas y ediciones históricas se contabilizan aparte.';
+old.faltanParaObjetivo=Math.max(0,(old.objetivoObras||500)-cataloguedTotal);
 old.versionesTextuales=registered.length;
 old.edicionesLexicasLocales=manifest.index.length;
 old.estadoIndexacion={
@@ -67,5 +97,5 @@ old.estadoIndexacion={
  edicionesLocalesPendientes:localUnindexed.length
 };
 writeFileSync('data/cifras-corpus.json',JSON.stringify(old,null,2)+'\n');
-console.log(JSON.stringify({registry:counts.registryEntries,localIndex:counts.localIndexedEditions,remoteUnverified:remoteUnverified.length,localUnindexed:localUnindexed.length},null,2));
+console.log(JSON.stringify({registry:counts.registryEntries,localIndex:counts.localIndexedEditions,remoteUnverified:remoteUnverified.length,localUnindexed:localUnindexed.length,cataloguedTotal,indexedOriginalTotal},null,2));
 if(localUnindexed.length)process.exitCode=1;
