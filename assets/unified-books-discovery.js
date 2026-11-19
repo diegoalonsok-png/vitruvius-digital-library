@@ -40,14 +40,23 @@ const match=(x,q)=>{
 };
 function mount(root,queryInput){
  if(!root||root.querySelector(".vdl-unified-books"))return;
- const panel=maker("section");panel.className="vdl-unified-books";panel.hidden=true;
+ const homepage=root.hasAttribute("data-vdl-works-explorer");
+ const panel=maker("section");panel.className="vdl-unified-books";panel.hidden=!homepage;
  panel.setAttribute("aria-label","Catálogo unificado de libros y facsímiles");
- const h=maker("h3","Libros y visores de toda la biblioteca");
- const intro=maker("p","Busca autores y obras del corpus clásico, tratados de arquitectura y facsímiles históricos. Los resultados distinguen texto legible, PDF y visor histórico; un facsímil no equivale a una transcripción indexada.");
+ const h=maker("h3",homepage?"Buscar obras en Bibliotheca":"Libros y visores de toda la biblioteca");
+ const intro=maker("p",homepage?"Buscá por autor o título en las obras clásicas, sus traducciones y los facsímiles documentados.":"Busca autores y obras del corpus clásico, tratados de arquitectura y facsímiles históricos. Los resultados distinguen texto legible, PDF y visor histórico; un facsímil no equivale a una transcripción indexada.");
  const form=maker("form");form.setAttribute("role","search");
- const input=maker("input");input.type="search";input.maxLength=160;input.placeholder="Cesariano · Cesarin · Palladio · Julio César · Ἰλιάς";input.setAttribute("aria-label","Buscar todos los libros de la biblioteca");
- const go=maker("button","Buscar libros");go.type="submit";form.append(input,go);
- const status=maker("p");status.setAttribute("role","status");status.setAttribute("aria-live","polite");
+ if(homepage)form.className="search-box";
+ const input=maker("input");input.type="search";input.maxLength=160;input.placeholder=homepage?"Homero · Platón · Aristóteles · Jenofonte · symmetria":"Cesariano · Cesarin · Palladio · Julio César · Ἰλιάς";input.setAttribute("aria-label","Buscar todos los libros de la biblioteca");
+ const go=maker("button",homepage?"Buscar":"Buscar libros");go.type="submit";
+ if(homepage){
+  go.className="button primary";
+  const row=maker("div");row.className="search-input-row";
+  const icon=document.querySelector("#search-form .search-input-row svg");
+  if(icon)row.append(icon.cloneNode(true));
+  row.append(input,go);form.append(row);
+ }else form.append(input,go);
+ const status=maker("p",homepage?"Consultá el índice de obras y abrí sus lectores desde los resultados.":null);status.setAttribute("role","status");status.setAttribute("aria-live","polite");
  const lexLink=maker("a","Ver pasajes y lemas en Lexicon");lexLink.hidden=true;
  lexLink.style.cssText="display:inline-block;margin:7px 0 13px;text-decoration:underline;text-underline-offset:3px";
  const viewer=maker("section");viewer.className="vdl-inline-academic-reader";viewer.hidden=true;
@@ -130,7 +139,44 @@ function mount(root,queryInput){
  if(sourceQuery){input.value=sourceQuery;void run()}
  // Original form remains usable; this field can be operated independently.
 }
+async function updateHomeIndexedCount(){
+ const count=document.querySelector(".bibliotheca-single-count [data-cifra='obrasConTextoIndexado']");
+ if(!count)return;
+ try{
+  // These are the search indexes, not a manually maintained counter or
+  // the number of translations/editions. New indexed works appear automatically.
+  const paths=["data/index/classics/manifest.json","data/index/classics-r2/manifest.json"];
+  const manifests=await Promise.all(paths.map(async path=>{
+   const response=await fetch(path,{cache:"no-cache"});
+   if(!response.ok)throw Error("Índice no disponible: "+path);
+   return response.json();
+  }));
+  if(manifests.some(m=>!Array.isArray(m.index)))throw Error("Índice incompatible");
+  const ids=new Set();
+  for(const manifest of manifests)for(const edition of manifest.index){
+   if(["la","grc"].includes(edition.lang)&&edition.id&&Number(edition.passages)>0)ids.add(edition.id);
+  }
+  if(!ids.size)throw Error("No hay originales indexados");
+  count.textContent=new Intl.NumberFormat("es-AR").format(ids.size);
+  count.title="Obras distintas con original latino o griego en los índices publicados (GitHub y R2); las traducciones no se duplican";
+  count.dataset.cifraEstado="verificado";
+ }catch(error){
+  // The previous published snapshot is a clearly labelled fallback, not a live count.
+  count.title="No se pudo comprobar el índice actual. Consulte el estado de Bibliotheca.";
+  count.dataset.cifraEstado="no-verificado";
+  try{
+   const response=await fetch("data/cifras-corpus.json",{cache:"no-cache"});
+   const snapshot=await response.json();
+   if(response.ok&&Number(snapshot.obrasConTextoIndexado)>0){
+    count.textContent=new Intl.NumberFormat("es-AR").format(snapshot.obrasConTextoIndexado);
+    count.title="Último inventario publicado, no actualizado en tiempo real: "+(snapshot.actualizado||"fecha desconocida");
+   }
+  }catch{}
+ }
+}
 function init(){
+ const home=document.querySelector(".bibliotheca-single-count [data-vdl-works-explorer]");
+ if(home){mount(home,null);void updateHomeIndexedCount();return;}
  const bibliography=document.querySelector(".searcharea");
  const mainSearch=document.getElementById("search-form");
  if(bibliography)mount(bibliography,null);
