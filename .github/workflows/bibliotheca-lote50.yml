@@ -1,0 +1,106 @@
+name: Bibliotheca - importar e indexar lote de 50 clasicos
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+    paths:
+      - 'data/classics-corpus/batches/lote-50-priorizado-2026-11-19.json'
+      - 'scripts/importar-lote50-first1k.py'
+      - '.github/workflows/bibliotheca-lote50.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: bibliotheca-lote50-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: false
+jobs:
+  importar:
+    if: github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.ref }}
+          fetch-depth: 0
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Comprobar sintaxis del importador y del indexador
+        run: |
+          python -m py_compile scripts/importar-lote50-first1k.py scripts/build-offsite-greek-originals.py
+          node --check scripts/build-classics-lexical-index.mjs
+      - name: Detectar lote ya incorporado para evitar recargas
+        id: state
+        run: |
+          if test -f data/classics-corpus/batches/lote-50-resultado-2026-11-19.json; then
+            echo "needs_ingest=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "needs_ingest=true" >> "$GITHUB_OUTPUT"
+          fi
+      - name: Verificar y descargar 50 TEI; actualizar corpus, catalogo y registro
+        if: steps.state.outputs.needs_ingest == 'true'
+        run: python scripts/importar-lote50-first1k.py --apply --minimum 50
+      - name: Reconstruir el indice lexico existente
+        if: steps.state.outputs.needs_ingest == 'true'
+        run: node scripts/build-classics-lexical-index.mjs
+      - name: Reconstruir indice Conceptus existente
+        if: steps.state.outputs.needs_ingest == 'true'
+        run: python scripts/build_classics_semantic_index.py
+      - name: Validar originales por locus, catalogo, indices y hashes
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          def read(p): return json.loads(Path(p).read_text(encoding='utf-8'))
+          result = read('data/classics-corpus/batches/lote-50-resultado-2026-11-19.json')
+          assert result['imported'] == 50 and len(result['added']) == 50, 'No hay 50 originales verificados'
+          registry = read('data/classics-corpus/search-registry.json')
+          catalog = read('data/bibliotheca-expansion-publicada-2026-11-16.json')
+          lexical = read('data/index/classics/manifest.json')
+          semantic = read('data/classics-corpus/semantic-conceptus-postings.json')
+          by_id = {x['id']: x for x in catalog['works']}
+          registered = {(x['workId'], x['language']): x for x in registry['entries']}
+          indexed = {(x['id'], x['lang']): x for x in lexical['index']}
+          urns = set()
+          for item in result['added']:
+              work_id = item['workId']
+              assert work_id in by_id and (work_id, 'grc') in registered, 'Falta catalogo o registro ' + work_id
+              entry = registered[(work_id, 'grc')]
+              text = read(entry['path'])
+              assert text['workId'] == work_id and text['language'] == 'grc'
+              assert text['sourceSha256'] == item['sourceSha256']
+              assert len(text['passages']) == item['passages'] and item['passages'] >= 2
+              loci = [p['locus'] for p in text['passages']]
+              assert len(loci) == len(set(loci)) and all(loci)
+              assert (work_id, 'grc') in indexed, 'Obra sin indice ' + work_id
+              assert indexed[(work_id, 'grc')]['passages'] == item['passages']
+              assert text['sourceUrn'] not in urns, 'CTS duplicado ' + work_id
+              urns.add(text['sourceUrn'])
+          assert semantic, 'Indice de conceptos ausente'
+          print('PASS: 50 obras, corpus, catalogo, registro, indexacion lexico/Conceptus y loci')
+          PY
+      - name: Ejecutar la auditoria bibliografica existente
+        run: node scripts/audit-classical-corpus.mjs
+      - name: Publicar en la rama del PR solamente si todas las comprobaciones pasan
+        if: steps.state.outputs.needs_ingest == 'true'
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/classics-corpus data/bibliotheca-expansion-publicada-2026-11-16.json data/index/classics
+          if git diff --cached --quiet; then
+            echo "::error::No se generaron textos ni indices"
+            exit 1
+          fi
+          git commit -m "bibliotheca: importar e indexar 50 originales por prioridad"
+          git fetch origin "${{ github.event.pull_request.head.ref }}"
+          if ! git rebase "origin/${{ github.event.pull_request.head.ref }}"; then
+            git rebase --abort
+            echo "::error::La rama cambio; no se sobrescriben cambios concurrentes"
+            exit 1
+          fi
+          git push origin "HEAD:${{ github.event.pull_request.head.ref }}"
