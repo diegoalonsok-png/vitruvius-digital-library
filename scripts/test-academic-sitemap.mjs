@@ -69,6 +69,23 @@ assert(fs.readFileSync("vitruvia.html","utf8").includes('href="index-auctorum-op
 assert(fs.readFileSync("bibliotheca-graeca-latina.html","utf8").includes('href="index-auctorum-operum.html"'),
   "Bibliotheca must link to its static academic index");
 
+// GSC discoverability gate: every work fiche advertised in the sitemap must
+// be a real, canonical, indexable, readable HTML document. This cannot prove
+// indexing by Google; it catches source-side 404 and noindex regressions.
+const workUrls=urlList.filter(url=>url.startsWith(base+"obras/")&&url.endsWith(".html"));
+assert(workUrls.length>=200,"Classical work sitemap has unexpectedly lost most indexed fiches");
+for(const url of workUrls){
+ const localPath=decodeURIComponent(url.slice(base.length));
+ assert(!localPath.includes(".."),"Unsafe work URL: "+url);
+ assert(fs.existsSync(localPath),"Sitemap advertises a missing work fiche: "+localPath);
+ const source=fs.readFileSync(localPath,"utf8");
+ const head=source.split(/<\\/head>/i)[0];
+ assert(head.includes('<link rel="canonical" href="'+url+'">'),"Work fiche canonical differs from sitemap: "+localPath);
+ assert(!/<meta[^>]+name=["']robots["'][^>]*noindex/i.test(head),"Noindexed fiche advertised to Google: "+localPath);
+ assert(/<h1\\b/i.test(source)&&/<title\\b/i.test(head),"Incomplete public work fiche: "+localPath);
+ assert(source.includes('href="../bibliotheca-graeca-latina.html"'),"Work fiche lacks crawlable Bibliotheca link: "+localPath);
+}
+
 // HOME CORPUS STATUS CONTRACT: statistical coverage is not certified collation.
 const home=fs.readFileSync("index.html","utf8");
 const reader=fs.readFileSync("lector-bilingue.html","utf8");
@@ -76,12 +93,12 @@ const search=fs.readFileSync("vitruvia.html","utf8");
 const citationGuide=fs.readFileSync("como-citar.html","utf8");
 const counts=JSON.parse(fs.readFileSync("data/cifras-corpus.json","utf8"));
 const snapshot=JSON.parse(fs.readFileSync("data/corpus-snapshot-2026-11-14.json","utf8"));
-assert(counts.schema==="vdl-cifras-corpus-1"&&counts.obrasConTextoIndexado<=counts.obras,
-  "Corpus counters must remain self-consistent");
-assert(home.includes('id="estado-corpus"')&&home.includes('data-cifra="obrasConTextoIndexado"')&&home.includes('data-cifra="obrasTotalesDeclaradas"'),
-  "Home must expose indexed works and total catalogued works in the compact Bibliotheca strip");
-assert.equal(counts.obrasTotalesDeclaradas,counts.obras+counts.obrasAdicionales,
-  "Published total must equal main repertoire plus documented additional works");
+assert(counts.schema==="vdl-cifras-corpus-1"&&counts.obrasConTextoIndexado<=counts.obrasTotalesDeclaradas,
+  "Indexed works cannot exceed unique works across the federated catalogue");
+assert(home.includes('id="estado-corpus"')&&home.includes('data-cifra="obrasConTextoIndexado"')&&home.includes('href="bibliotheca-graeca-latina.html"'),
+  "Home must expose original-text coverage and the existing Bibliotheca link");
+assert.equal(counts.obrasTotalesDeclaradas,counts.obras+counts.obrasSuplementarias+counts.obrasAdicionales,
+  "Published total must equal main repertoire, supplementary texts and distinct R2 works");
 assert(home.includes('data-cifra-fecha')&&home.includes('assets/cifra-obras.js'),
   "Corpus date and totals must update from the shared published JSON");
 assert(home.includes('href="concordancia-folios.html"')&&home.includes('href="como-citar.html#corpus-version"'),
