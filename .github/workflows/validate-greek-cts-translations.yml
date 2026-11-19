@@ -1,0 +1,30 @@
+name: Validate Greek-English CTS translations
+on:
+  pull_request:
+    paths:
+      - 'data/classics-corpus/**'
+      - 'scripts/validate_greek_translation_sync.py'
+      - '.github/workflows/validate-greek-cts-translations.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate catalogue schema
+        run: python3 -m json.tool data/classics-corpus/search-registry.json >/dev/null
+      - name: Validate Xenophon English passages and verified Greek loci
+        run: |
+          python3 scripts/validate_greek_translation_sync.py \
+            data/classics-corpus/xenophon-apology-en.json \
+            data/classics-corpus/xenophon-agesilaus-en.json \
+            data/classics-corpus/xenophon-hiero-en.json \
+            data/classics-corpus/xenophon-oeconomicus-en.json \
+            data/classics-corpus/xenophon-symposium-en.json \
+            data/classics-corpus/xenophon-hellenica-en.json
+      - name: Protect parallel reader syntax
+        run: node --check assets/classics-text-reader.js
+      - name: Regression test for R2 incremental index fusion (mock data only)
+        run: node scripts/test-r2-indice-fusion.mjs
