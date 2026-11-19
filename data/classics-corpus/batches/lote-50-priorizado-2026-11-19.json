@@ -1,7 +1,7 @@
 {
   "schema": "vdl-classics-prioritized-batch-v1",
   "date": "2026-11-19",
-  "status": "staging-50-distinct-cts-work-ids-source-tree-verified-not-yet-imported",
+  "status": "validated-indexed-on-pr-branch-not-yet-merged",
   "scope": "50 distinct classical works; source original TEI only. Do not increment public catalogue or indexed counters until each source is imported, validated and indexed.",
   "priorityExplanation": {
     "I": "Priority 1: foundational mathematics, geometry, mechanics, architectural measurement and harmonics (curated significance order)",
@@ -864,5 +864,16 @@
       "sourceStatus": "source-listed-not-yet-imported"
     }
   ],
-  "duplicateValidation": "Compared CTS work identifiers against catalogued Perseus mappings and confirmed R2 original index; previously catalogued works removed."
+  "duplicateValidation": "Compared CTS work identifiers against catalogued Perseus mappings and confirmed R2 original index; previously catalogued works removed.",
+  "importVerification": {
+    "imported": 50,
+    "failures": 0,
+    "lexicalIndexed": 50,
+    "conceptusRebuilt": true,
+    "registryEntriesAfterImport": 459,
+    "lexicalEditionsAfterImport": 414,
+    "catalogueWorksAfterImport": 403,
+    "verifiedCommit": "b4241a31969c0ac8967b6d23331650313b974001",
+    "r2WriteVerified": false
+  }
 }
