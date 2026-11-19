@@ -39,6 +39,15 @@ jobs:
             if(!regexp.test(fs.readFileSync(file,'utf8')))throw new Error('Protección rota: '+label+' en '+file);
           }
           requireMatch('index.html',/vdl-concordance-upright-passages/,'concordancia sin cursivas');
+          // Home search lock: preserve Vitruvius and work search; prohibit duplicate mount.
+          requireMatch('index.html',/id="search-form"/,'buscador principal Vitruvius');
+          requireMatch('index.html',/id="home-books-search"/,'buscador de obras conservado');
+          requireMatch('assets/unified-books-discovery.js',/if\(byId\("home-books-search"\)\)return;/,'bloqueo del buscador redundante');
+          requireMatch('assets/bibliotheca-works-explorer.css',/#home-books-search \.vdl-works-search/,'estilo buscador de obras');
+          const home=fs.readFileSync('index.html','utf8');
+          if(/<script[^>]+src=["'][^"']*unified-books-discovery\.js/i.test(home)){
+            throw new Error('Protección rota: se ha reintroducido el buscador redundante en la portada');
+          }
           requireMatch('assets/app.js',/article\.dataset\.editionLanguage=rowLanguage/,'traducciones ligadas a sus ediciones');
           requireMatch('assets/comparative-bude-units.js',/presentComparisonDifferences\(texts,locus/,'listado de variantes por locus');
           requireMatch('assets/classics-corpus-search.js',/function loadCriticalIndexed/,'Rose y Krohn indexados');
