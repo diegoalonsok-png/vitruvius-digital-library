@@ -3134,7 +3134,13 @@
         "status": "Transcripción de edición TEI con segmentos digitales locales; sin cotejo crítico independiente."
       },
       "translation": {
-        "status": "Sin versión traducida cotejada alojada para esta ficha; consultar las fuentes editoriales."
+        "status": "Traducción inglesa histórica indexada; alineación exacta de loci griego–inglés no verificada.",
+        "language": "en",
+        "translator": "Larue Van Hook",
+        "attribution": "Isocrates · Against Euthynus; Larue Van Hook, translator (1945); Perseus Digital Library · Tufts University",
+        "source": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0010/tlg001/tlg0010.tlg001.perseus-eng2.xml",
+        "license": "CC BY-SA 4.0 · Perseus Digital Library; attribution and share-alike required",
+        "alignmentStatus": "unverified"
       },
       "links": {
         "scaife": "https://scaife.perseus.org/",
@@ -3146,12 +3152,20 @@
       "selectionOrder": 41,
       "sourceUrn": "urn:cts:greekLit:tlg0010.tlg001.perseus-grc2",
       "corpusFiles": {
-        "grc": "data/classics-corpus/isocrates-euthynus-grc.json"
+        "grc": "data/classics-corpus/isocrates-euthynus-grc.json",
+        "en": "data/classics-corpus/isocrates-euthynus-en.json"
       },
       "localVersions": [
         {
           "language": "grc",
           "path": "data/classics-corpus/isocrates-euthynus-grc.json"
+        },
+        {
+          "language": "en",
+          "path": "data/classics-corpus/isocrates-euthynus-en.json",
+          "label": "English · Larue Van Hook",
+          "kind": "historical-translation",
+          "citation": "Isocrates, Against Euthynus, translated by Larue Van Hook, vol. 3; Harvard University Press / William Heinemann, 1945."
         }
       ]
     },
@@ -3196,7 +3210,13 @@
         "status": "Transcripción de edición TEI con segmentos digitales locales; sin cotejo crítico independiente."
       },
       "translation": {
-        "status": "Sin versión traducida cotejada alojada para esta ficha; consultar las fuentes editoriales."
+        "status": "Traducción inglesa histórica indexada; alineación exacta de loci griego–inglés no verificada.",
+        "language": "en",
+        "translator": "Larue Van Hook",
+        "attribution": "Isocrates · Against Callimachus; Larue Van Hook, translator (1945); Perseus Digital Library · Tufts University",
+        "source": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0010/tlg002/tlg0010.tlg002.perseus-eng2.xml",
+        "license": "CC BY-SA 4.0 · Perseus Digital Library; attribution and share-alike required",
+        "alignmentStatus": "unverified"
       },
       "links": {
         "scaife": "https://scaife.perseus.org/",
@@ -3208,12 +3228,20 @@
       "selectionOrder": 42,
       "sourceUrn": "urn:cts:greekLit:tlg0010.tlg002.perseus-grc2",
       "corpusFiles": {
-        "grc": "data/classics-corpus/isocrates-callimachus-grc.json"
+        "grc": "data/classics-corpus/isocrates-callimachus-grc.json",
+        "en": "data/classics-corpus/isocrates-callimachus-en.json"
       },
       "localVersions": [
         {
           "language": "grc",
           "path": "data/classics-corpus/isocrates-callimachus-grc.json"
+        },
+        {
+          "language": "en",
+          "path": "data/classics-corpus/isocrates-callimachus-en.json",
+          "label": "English · Larue Van Hook",
+          "kind": "historical-translation",
+          "citation": "Isocrates, Against Callimachus, translated by Larue Van Hook, vol. 3; Harvard University Press / William Heinemann, 1945."
         }
       ]
     },
@@ -3258,7 +3286,13 @@
         "status": "Transcripción de edición TEI con segmentos digitales locales; sin cotejo crítico independiente."
       },
       "translation": {
-        "status": "Sin versión traducida cotejada alojada para esta ficha; consultar las fuentes editoriales."
+        "status": "Traducción inglesa histórica indexada; alineación exacta de loci griego–inglés no verificada.",
+        "language": "en",
+        "translator": "Larue Van Hook",
+        "attribution": "Isocrates · Against Lochites; Larue Van Hook, translator (1945); Perseus Digital Library · Tufts University",
+        "source": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0010/tlg003/tlg0010.tlg003.perseus-eng2.xml",
+        "license": "CC BY-SA 4.0 · Perseus Digital Library; attribution and share-alike required",
+        "alignmentStatus": "unverified"
       },
       "links": {
         "scaife": "https://scaife.perseus.org/",
@@ -3270,12 +3304,20 @@
       "selectionOrder": 43,
       "sourceUrn": "urn:cts:greekLit:tlg0010.tlg003.perseus-grc2",
       "corpusFiles": {
-        "grc": "data/classics-corpus/isocrates-lochites-grc.json"
+        "grc": "data/classics-corpus/isocrates-lochites-grc.json",
+        "en": "data/classics-corpus/isocrates-lochites-en.json"
       },
       "localVersions": [
         {
           "language": "grc",
           "path": "data/classics-corpus/isocrates-lochites-grc.json"
+        },
+        {
+          "language": "en",
+          "path": "data/classics-corpus/isocrates-lochites-en.json",
+          "label": "English · Larue Van Hook",
+          "kind": "historical-translation",
+          "citation": "Isocrates, Against Lochites, translated by Larue Van Hook, vol. 3; Harvard University Press / William Heinemann, 1945."
         }
       ]
     },
@@ -3320,7 +3362,13 @@
         "status": "Transcripción de edición TEI con segmentos digitales locales; sin cotejo crítico independiente."
       },
       "translation": {
-        "status": "Sin versión traducida cotejada alojada para esta ficha; consultar las fuentes editoriales."
+        "status": "Traducción inglesa histórica indexada; alineación exacta de loci griego–inglés no verificada.",
+        "language": "en",
+        "translator": "Larue Van Hook",
+        "attribution": "Isocrates · Concerning the Team of Horses; Larue Van Hook, translator (1945); Perseus Digital Library · Tufts University",
+        "source": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0010/tlg004/tlg0010.tlg004.perseus-eng2.xml",
+        "license": "CC BY-SA 4.0 · Perseus Digital Library; attribution and share-alike required",
+        "alignmentStatus": "unverified"
       },
       "links": {
         "scaife": "https://scaife.perseus.org/",
@@ -3332,12 +3380,20 @@
       "selectionOrder": 44,
       "sourceUrn": "urn:cts:greekLit:tlg0010.tlg004.perseus-grc2",
       "corpusFiles": {
-        "grc": "data/classics-corpus/isocrates-team-horses-grc.json"
+        "grc": "data/classics-corpus/isocrates-team-horses-grc.json",
+        "en": "data/classics-corpus/isocrates-team-horses-en.json"
       },
       "localVersions": [
         {
           "language": "grc",
           "path": "data/classics-corpus/isocrates-team-horses-grc.json"
+        },
+        {
+          "language": "en",
+          "path": "data/classics-corpus/isocrates-team-horses-en.json",
+          "label": "English · Larue Van Hook",
+          "kind": "historical-translation",
+          "citation": "Isocrates, Concerning the Team of Horses, translated by Larue Van Hook, vol. 3; Harvard University Press / William Heinemann, 1945."
         }
       ]
     },
@@ -3382,7 +3438,13 @@
         "status": "Transcripción de edición TEI con segmentos digitales locales; sin cotejo crítico independiente."
       },
       "translation": {
-        "status": "Sin versión traducida cotejada alojada para esta ficha; consultar las fuentes editoriales."
+        "status": "Traducción inglesa histórica indexada; alineación exacta de loci griego–inglés no verificada.",
+        "language": "en",
+        "translator": "Larue Van Hook",
+        "attribution": "Isocrates · Trapeziticus; Larue Van Hook, translator (1945); Perseus Digital Library · Tufts University",
+        "source": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0010/tlg005/tlg0010.tlg005.perseus-eng2.xml",
+        "license": "CC BY-SA 4.0 · Perseus Digital Library; attribution and share-alike required",
+        "alignmentStatus": "unverified"
       },
       "links": {
         "scaife": "https://scaife.perseus.org/",
@@ -3394,12 +3456,20 @@
       "selectionOrder": 45,
       "sourceUrn": "urn:cts:greekLit:tlg0010.tlg005.perseus-grc2",
       "corpusFiles": {
-        "grc": "data/classics-corpus/isocrates-trapeziticus-grc.json"
+        "grc": "data/classics-corpus/isocrates-trapeziticus-grc.json",
+        "en": "data/classics-corpus/isocrates-trapeziticus-en.json"
       },
       "localVersions": [
         {
           "language": "grc",
           "path": "data/classics-corpus/isocrates-trapeziticus-grc.json"
+        },
+        {
+          "language": "en",
+          "path": "data/classics-corpus/isocrates-trapeziticus-en.json",
+          "label": "English · Larue Van Hook",
+          "kind": "historical-translation",
+          "citation": "Isocrates, Trapeziticus, translated by Larue Van Hook, vol. 3; Harvard University Press / William Heinemann, 1945."
         }
       ]
     },
@@ -3444,7 +3514,13 @@
         "status": "Transcripción de edición TEI con segmentos digitales locales; sin cotejo crítico independiente."
       },
       "translation": {
-        "status": "Sin versión traducida cotejada alojada para esta ficha; consultar las fuentes editoriales."
+        "status": "Traducción inglesa histórica indexada; alineación exacta de loci griego–inglés no verificada.",
+        "language": "en",
+        "translator": "Larue Van Hook",
+        "attribution": "Isocrates · Aegineticus; Larue Van Hook, translator (1945); Perseus Digital Library · Tufts University",
+        "source": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0010/tlg006/tlg0010.tlg006.perseus-eng2.xml",
+        "license": "CC BY-SA 4.0 · Perseus Digital Library; attribution and share-alike required",
+        "alignmentStatus": "unverified"
       },
       "links": {
         "scaife": "https://scaife.perseus.org/",
@@ -3456,12 +3532,20 @@
       "selectionOrder": 46,
       "sourceUrn": "urn:cts:greekLit:tlg0010.tlg006.perseus-grc2",
       "corpusFiles": {
-        "grc": "data/classics-corpus/isocrates-aegineticus-grc.json"
+        "grc": "data/classics-corpus/isocrates-aegineticus-grc.json",
+        "en": "data/classics-corpus/isocrates-aegineticus-en.json"
       },
       "localVersions": [
         {
           "language": "grc",
           "path": "data/classics-corpus/isocrates-aegineticus-grc.json"
+        },
+        {
+          "language": "en",
+          "path": "data/classics-corpus/isocrates-aegineticus-en.json",
+          "label": "English · Larue Van Hook",
+          "kind": "historical-translation",
+          "citation": "Isocrates, Aegineticus, translated by Larue Van Hook, vol. 3; Harvard University Press / William Heinemann, 1945."
         }
       ]
     },
@@ -3506,7 +3590,13 @@
         "status": "Transcripción de edición TEI con segmentos digitales locales; sin cotejo crítico independiente."
       },
       "translation": {
-        "status": "Sin versión traducida cotejada alojada para esta ficha; consultar las fuentes editoriales."
+        "status": "Traducción inglesa histórica indexada; alineación exacta de loci griego–inglés no verificada.",
+        "language": "en",
+        "translator": "George Norlin",
+        "attribution": "Isocrates · Against the Sophists; George Norlin, translator (1928); Perseus Digital Library · Tufts University",
+        "source": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0010/tlg008/tlg0010.tlg008.perseus-eng2.xml",
+        "license": "CC BY-SA 4.0 · Perseus Digital Library; attribution and share-alike required",
+        "alignmentStatus": "unverified"
       },
       "links": {
         "scaife": "https://scaife.perseus.org/",
@@ -3518,12 +3608,20 @@
       "selectionOrder": 47,
       "sourceUrn": "urn:cts:greekLit:tlg0010.tlg008.perseus-grc2",
       "corpusFiles": {
-        "grc": "data/classics-corpus/isocrates-sophists-grc.json"
+        "grc": "data/classics-corpus/isocrates-sophists-grc.json",
+        "en": "data/classics-corpus/isocrates-sophists-en.json"
       },
       "localVersions": [
         {
           "language": "grc",
           "path": "data/classics-corpus/isocrates-sophists-grc.json"
+        },
+        {
+          "language": "en",
+          "path": "data/classics-corpus/isocrates-sophists-en.json",
+          "label": "English · George Norlin",
+          "kind": "historical-translation",
+          "citation": "Isocrates, Against the Sophists, translated by George Norlin, vol. 2; Harvard University Press / William Heinemann, 1928."
         }
       ]
     },
@@ -3568,7 +3666,13 @@
         "status": "Transcripción de edición TEI con segmentos digitales locales; sin cotejo crítico independiente."
       },
       "translation": {
-        "status": "Sin versión traducida cotejada alojada para esta ficha; consultar las fuentes editoriales."
+        "status": "Traducción inglesa histórica indexada; alineación exacta de loci griego–inglés no verificada.",
+        "language": "en",
+        "translator": "Larue Van Hook",
+        "attribution": "Isocrates · Helen; Larue Van Hook, translator (1945); Perseus Digital Library · Tufts University",
+        "source": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0010/tlg009/tlg0010.tlg009.perseus-eng2.xml",
+        "license": "CC BY-SA 4.0 · Perseus Digital Library; attribution and share-alike required",
+        "alignmentStatus": "unverified"
       },
       "links": {
         "scaife": "https://scaife.perseus.org/",
@@ -3580,12 +3684,20 @@
       "selectionOrder": 48,
       "sourceUrn": "urn:cts:greekLit:tlg0010.tlg009.perseus-grc2",
       "corpusFiles": {
-        "grc": "data/classics-corpus/isocrates-helen-grc.json"
+        "grc": "data/classics-corpus/isocrates-helen-grc.json",
+        "en": "data/classics-corpus/isocrates-helen-en.json"
       },
       "localVersions": [
         {
           "language": "grc",
           "path": "data/classics-corpus/isocrates-helen-grc.json"
+        },
+        {
+          "language": "en",
+          "path": "data/classics-corpus/isocrates-helen-en.json",
+          "label": "English · Larue Van Hook",
+          "kind": "historical-translation",
+          "citation": "Isocrates, Helen, translated by Larue Van Hook, vol. 3; Harvard University Press / William Heinemann, 1945."
         }
       ]
     },
@@ -3630,7 +3742,13 @@
         "status": "Transcripción de edición TEI con segmentos digitales locales; sin cotejo crítico independiente."
       },
       "translation": {
-        "status": "Sin versión traducida cotejada alojada para esta ficha; consultar las fuentes editoriales."
+        "status": "Traducción inglesa histórica indexada; alineación exacta de loci griego–inglés no verificada.",
+        "language": "en",
+        "translator": "Larue Van Hook",
+        "attribution": "Isocrates · Busiris; Larue Van Hook, translator (1945); Perseus Digital Library · Tufts University",
+        "source": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0010/tlg010/tlg0010.tlg010.perseus-eng2.xml",
+        "license": "CC BY-SA 4.0 · Perseus Digital Library; attribution and share-alike required",
+        "alignmentStatus": "unverified"
       },
       "links": {
         "scaife": "https://scaife.perseus.org/",
@@ -3642,12 +3760,20 @@
       "selectionOrder": 49,
       "sourceUrn": "urn:cts:greekLit:tlg0010.tlg010.perseus-grc2",
       "corpusFiles": {
-        "grc": "data/classics-corpus/isocrates-busiris-grc.json"
+        "grc": "data/classics-corpus/isocrates-busiris-grc.json",
+        "en": "data/classics-corpus/isocrates-busiris-en.json"
       },
       "localVersions": [
         {
           "language": "grc",
           "path": "data/classics-corpus/isocrates-busiris-grc.json"
+        },
+        {
+          "language": "en",
+          "path": "data/classics-corpus/isocrates-busiris-en.json",
+          "label": "English · Larue Van Hook",
+          "kind": "historical-translation",
+          "citation": "Isocrates, Busiris, translated by Larue Van Hook, vol. 3; Harvard University Press / William Heinemann, 1945."
         }
       ]
     },
@@ -3692,7 +3818,13 @@
         "status": "Transcripción de edición TEI con segmentos digitales locales; sin cotejo crítico independiente."
       },
       "translation": {
-        "status": "Sin versión traducida cotejada alojada para esta ficha; consultar las fuentes editoriales."
+        "status": "Traducción inglesa histórica indexada; alineación exacta de loci griego–inglés no verificada.",
+        "language": "en",
+        "translator": "Larue Van Hook",
+        "attribution": "Isocrates · Plataicus; Larue Van Hook, translator (1945); Perseus Digital Library · Tufts University",
+        "source": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0010/tlg012/tlg0010.tlg012.perseus-eng2.xml",
+        "license": "CC BY-SA 4.0 · Perseus Digital Library; attribution and share-alike required",
+        "alignmentStatus": "unverified"
       },
       "links": {
         "scaife": "https://scaife.perseus.org/",
@@ -3704,12 +3836,20 @@
       "selectionOrder": 50,
       "sourceUrn": "urn:cts:greekLit:tlg0010.tlg012.perseus-grc2",
       "corpusFiles": {
-        "grc": "data/classics-corpus/isocrates-plataicus-grc.json"
+        "grc": "data/classics-corpus/isocrates-plataicus-grc.json",
+        "en": "data/classics-corpus/isocrates-plataicus-en.json"
       },
       "localVersions": [
         {
           "language": "grc",
           "path": "data/classics-corpus/isocrates-plataicus-grc.json"
+        },
+        {
+          "language": "en",
+          "path": "data/classics-corpus/isocrates-plataicus-en.json",
+          "label": "English · Larue Van Hook",
+          "kind": "historical-translation",
+          "citation": "Isocrates, Plataicus, translated by Larue Van Hook, vol. 3; Harvard University Press / William Heinemann, 1945."
         }
       ]
     },
