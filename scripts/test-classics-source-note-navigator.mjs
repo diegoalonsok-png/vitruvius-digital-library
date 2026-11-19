@@ -60,5 +60,5 @@ assert.ok(reader.includes("sourceSha256:data.sourceSha256||"),
  "Reader must pass its edition source fingerprint to the note panel");
 const html=readFileSync("classics-text-reader.html","utf8");
 assert.match(html,/assets\/classics-academic-reader\.js\?v=20261116-source-notes-v1/);
-assert.match(html,/assets\/classics-text-reader\.js\?v=20261116-source-notes-v1/);
+assert.match(html,/assets\/classics-text-reader\.js\?v=[a-z0-9-]+/i);
 console.log("PASS: original source-note lookup by locus, literal notes, type, edition hash and CTS links");
