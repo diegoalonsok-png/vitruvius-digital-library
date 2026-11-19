@@ -2,7 +2,7 @@
   "schema": "vitruvia-classics-search-registry-v1",
   "updated": "2026-11-16",
   "description": "Registro verificable de transcripciones HTML y textos JSON existentes que admiten búsqueda literal de contenido. No incluye automáticamente PDF escaneados, facsímiles ni fichas sin texto. Los índices auxiliares por locus y el aparato crítico se declaran por separado; no se suman a versiones textuales originales ni implican colación autóptica.",
-  "count": 409,
+  "count": 411,
   "works": 300,
   "entries": [
     {
@@ -4190,6 +4190,16 @@
       "workId": "xenophon-hipparchicus",
       "author": "Jenofonte",
       "title": "Ἱππαρχικός",
+      "language": "en",
+      "format": "json-passages",
+      "path": "data/classics-corpus/xenophon-hipparchicus-en.json",
+      "reader": "classics-text-reader.html?work=xenophon-hipparchicus&lang=en",
+      "sourceDescription": "Jenofonte · traducción humana inglesa de Edgar Carew Marchant (1925), Perseus DL TEI CC BY-SA 4.0. Secciones CTS vinculadas al griego; un grupo de dos subdivisiones griegas por obra. Sin cotejo léxico palabra por palabra."
+    },
+    {
+      "workId": "xenophon-hipparchicus",
+      "author": "Jenofonte",
+      "title": "Ἱππαρχικός",
       "language": "grc",
       "format": "json-passages",
       "path": "data/classics-corpus/xenophon-hipparchicus-grc.json",
@@ -4197,6 +4207,16 @@
       "sourceUrn": "urn:cts:greekLit:tlg0032.tlg012.perseus-grc2",
       "sourceSha256": "85eb10fde61519574247c01024f343a90f06ff54395a4ce26dcfb10fdf7bb8a8",
       "sourceDescription": "Perseus DL TEI · Xenophon. Opera omnia, Vol. 5. Marchant, Edgar Cardew, editor. Oxford: Clarendon Press, 1920. · CC BY-SA 4.0; original sin cotejo independiente"
+    },
+    {
+      "workId": "xenophon-horsemanship",
+      "author": "Jenofonte",
+      "title": "Περὶ ἱππικῆς",
+      "language": "en",
+      "format": "json-passages",
+      "path": "data/classics-corpus/xenophon-horsemanship-en.json",
+      "reader": "classics-text-reader.html?work=xenophon-horsemanship&lang=en",
+      "sourceDescription": "Jenofonte · traducción humana inglesa de Edgar Carew Marchant (1925), Perseus DL TEI CC BY-SA 4.0. Secciones CTS vinculadas al griego; un grupo de dos subdivisiones griegas por obra. Sin cotejo léxico palabra por palabra."
     },
     {
       "workId": "xenophon-horsemanship",
