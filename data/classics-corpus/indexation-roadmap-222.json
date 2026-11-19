@@ -6,10 +6,10 @@
   "counts": {
     "originalsIndexed": 182,
     "originalsMissing": 89,
-    "worksWithHostedTranslation": 63,
-    "worksMissingTranslation": 208,
-    "textVersions": 251,
-    "registeredTextVersions": 295,
+    "worksWithHostedTranslation": 66,
+    "worksMissingTranslation": 205,
+    "textVersions": 253,
+    "registeredTextVersions": 297,
     "declaredR2OriginalWorks": 44,
     "registeredProjectOriginalWorks": 226,
     "registeredOriginalsWithExternal": 241,
@@ -21,8 +21,8 @@
     "offsiteTextVersionsOutsidePages": 28,
     "states": {
       "original_pendiente": 89,
-      "original_sin_traduccion_local": 119,
-      "original_y_traduccion_local": 63
+      "original_sin_traduccion_local": 116,
+      "original_y_traduccion_local": 66
     },
     "sourceReadinessForMissingOriginals": {
       "correspondencia_bibliografica_ambigua": 3,
@@ -3317,11 +3317,12 @@
       "originalLanguage": "grc",
       "dating": "414 a. C.",
       "indexedLanguages": [
-        "grc"
+        "grc",
+        "en"
       ],
       "originalIndexed": true,
-      "translationHosted": false,
-      "state": "original_sin_traduccion_local",
+      "translationHosted": true,
+      "state": "original_y_traduccion_local",
       "sourceReadiness": "original_local_documentado",
       "bibliographyCandidateUrns": [
         "tlg0019.tlg006"
@@ -3836,11 +3837,12 @@
       "originalLanguage": "grc",
       "dating": "siglo V a. C.",
       "indexedLanguages": [
-        "grc"
+        "grc",
+        "en"
       ],
       "originalIndexed": true,
-      "translationHosted": false,
-      "state": "original_sin_traduccion_local",
+      "translationHosted": true,
+      "state": "original_y_traduccion_local",
       "sourceReadiness": "original_local_documentado",
       "bibliographyCandidateUrns": [
         "tlg0033.tlg001"
@@ -3858,11 +3860,12 @@
       "originalLanguage": "grc",
       "dating": "siglo V a. C.",
       "indexedLanguages": [
-        "grc"
+        "grc",
+        "en"
       ],
       "originalIndexed": true,
-      "translationHosted": false,
-      "state": "original_sin_traduccion_local",
+      "translationHosted": true,
+      "state": "original_y_traduccion_local",
       "sourceReadiness": "original_local_documentado",
       "bibliographyCandidateUrns": [
         "tlg0033.tlg002"
