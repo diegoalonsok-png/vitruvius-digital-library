@@ -18,7 +18,6 @@ import re
 import sys
 import tempfile
 from urllib.request import Request, urlopen
-import xml.etree.ElementTree as ET
 
 ROOT = Path(__file__).resolve().parents[1]
 PLAN = ROOT / "data/classics-corpus/batches/lote-50-priorizado-2026-11-19.json"
@@ -26,7 +25,6 @@ REG = ROOT / "data/classics-corpus/search-registry.json"
 CAT = ROOT / "data/bibliotheca-expansion-publicada-2026-11-16.json"
 MAIN = ROOT / "data/bibliotheca-graeca-latina-I-bce-I-ce.json"
 OUT = ROOT / "data/classics-corpus/batches/lote-50-resultado-2026-11-19.json"
-TEI_NS = "{http://www.tei-c.org/ns/1.0}"
 GREEK = re.compile(r"[\u0370-\u03ff\u1f00-\u1fff]")
 SOURCE_RE = re.compile(r"^https://raw\.githubusercontent\.com/OpenGreekAndLatin/First1KGreek/master/data/[A-Za-z0-9/._-]+\.xml$")
 URN_RE = re.compile(r"^urn:cts:greekLit:([a-z0-9]+)\.([a-z0-9]+)\.[a-z0-9.-]+$")
@@ -55,11 +53,11 @@ def git_blob_sha(data: bytes) -> str:
 
 def source_extractor():
     spec = importlib.util.spec_from_file_location(
-        "vdl_perseus_extractor", ROOT / "scripts/indexar-perseus-lote.py")
+        "vdl_verified_tei", ROOT / "scripts/build-offsite-greek-originals.py")
     module = importlib.util.module_from_spec(spec)
     assert spec and spec.loader
     spec.loader.exec_module(module)
-    return module.pasajes_de
+    return module.convert
 
 def load_existing_ids():
     names = set()
@@ -85,42 +83,19 @@ def ingest_one(item, extractor):
         raise ValueError("Tamaño del TEI cambió desde el inventario")
     if git_blob_sha(source) != item["gitBlobSha"]:
         raise ValueError("SHA Git del TEI no coincide; revisar edición")
-    root = ET.fromstring(source)
-    if not root.tag.endswith("TEI"):
-        raise ValueError("La fuente no es TEI")
-    urn_root = ".".join(match.groups())
     work_id = "first1k-" + "-".join(match.groups())
-    passages = extractor(root, urn, item["title"])
-    if not passages:
-        raise ValueError("No se pudieron extraer loci")
-    normalized = []
-    seen_loci = set()
-    for entry in passages:
-        locus = str(entry.get("locus") or "").strip()
-        text = re.sub(r"\s+", " ", str(entry.get("text") or "")).strip()
-        if len(text) < 8 or not locus:
-            continue
-        if locus in seen_loci:
-            raise ValueError("Locus duplicado: " + locus)
-        seen_loci.add(locus)
-        normalized.append({"locus": locus, "text": text})
+    doc = extractor(work_id, source, item["sourceUrl"],
+                    {"title": item["title"], "author": item["author"]})
+    if doc.get("sourceUrn") != urn:
+        raise ValueError("CTS del TEI distinto del identificado en el lote")
+    normalized = doc["passages"]
     chars = sum(len(p["text"]) for p in normalized)
     greek_chars = sum(len(GREEK.findall(p["text"])) for p in normalized)
     if len(normalized) < 2 or chars < 900 or greek_chars < 200:
         raise ValueError("Contenido griego o unidades insuficientes")
-    doc = {
-        "workId": work_id, "language": "grc", "title": item["title"],
-        "sourceType": "edited-greek-tei", "editorialStatus":
-        "Edición textual histórica, no autopsia de manuscritos ni traducción automática.",
-        "sourceUrn": urn, "sourceSha256": hashlib.sha256(source).hexdigest(),
-        "sources": [{"urn": urn, "url": item["sourceUrl"],
-                     "sha256": hashlib.sha256(source).hexdigest(),
-                     "gitBlobSha": item["gitBlobSha"]}],
-        "attribution": "OpenGreekAndLatin / First1KGreek, CC BY-SA 4.0",
-        "license": "CC BY-SA 4.0",
-        "alignment": "Loci propios de la edición; traducciones no alineadas.",
-        "passages": normalized
-    }
+    doc["sources"] = [{"urn": urn, "url": item["sourceUrl"],
+                       "sha256": doc["sourceSha256"],
+                       "gitBlobSha": item["gitBlobSha"]}]
     path = f"data/classics-corpus/{work_id}-grc.json"
     registry_entry = {
         "workId": work_id, "author": item["author"],
@@ -154,7 +129,7 @@ def ingest_one(item, extractor):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--apply", action="store_true", help="Guardar solo tras validación de fuentes")
-    ap.add_argument("--minimum", type=int, default=1, help="Mínimo de importaciones verificadas")
+    ap.add_argument("--minimum", type=int, default=50, help="Mínimo de importaciones verificadas")
     args = ap.parse_args()
     batch = read(PLAN)
     items = batch.get("items") or []
