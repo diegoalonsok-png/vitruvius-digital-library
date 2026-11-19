@@ -1,0 +1,33 @@
+name: Descubribilidad de obras clásicas · sitemap y metadatos
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'obras/**'
+      - 'sitemap.xml'
+      - 'robots.txt'
+      - 'scripts/audit-classics-indexability.mjs'
+      - '.github/workflows/classics-indexability.yml'
+  pull_request:
+    paths:
+      - 'obras/**'
+      - 'sitemap.xml'
+      - 'robots.txt'
+      - 'scripts/audit-classics-indexability.mjs'
+      - '.github/workflows/classics-indexability.yml'
+  schedule:
+    - cron: '23 9 * * 1'
+permissions:
+  contents: read
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Comprobar fichas indexables, canonicals, sitemap y robots
+        run: node scripts/audit-classics-indexability.mjs
