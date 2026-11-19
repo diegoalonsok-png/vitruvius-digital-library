@@ -2,7 +2,7 @@
   "schema": "vitruvia-classics-search-registry-v1",
   "updated": "2026-11-18",
   "description": "Registro verificable de transcripciones HTML y textos JSON existentes que admiten búsqueda literal de contenido. No incluye automáticamente PDF escaneados, facsímiles ni fichas sin texto. Los índices auxiliares por locus y el aparato crítico se declaran por separado; no se suman a versiones textuales originales ni implican colación autóptica.",
-  "count": 407,
+  "count": 409,
   "works": 300,
   "entries": [
     {
@@ -2783,12 +2783,32 @@
     {
       "workId": "pindar-olympian",
       "author": "Píndaro",
+      "title": "Ὀλυμπιονῖκαι",
+      "language": "en",
+      "format": "json-passages",
+      "path": "data/classics-corpus/pindar-olympian-en.json",
+      "reader": "classics-text-reader.html?work=pindar-olympian&lang=en",
+      "sourceDescription": "Traducción humana histórica, John Edwin Sandys, Perseus TEI; 306 pasajes indexados en su propia numeración, sin correspondencia griega automática"
+    },
+    {
+      "workId": "pindar-olympian",
+      "author": "Píndaro",
       "title": "Ὀλυμπιόνικοι",
       "language": "grc",
       "format": "json-passages",
       "path": "data/classics-corpus/pindar-olympian-grc.json",
       "reader": "classics-text-reader.html?work=pindar-olympian&lang=grc",
       "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
+      "workId": "pindar-pythian",
+      "author": "Píndaro",
+      "title": "Πυθιονῖκαι",
+      "language": "en",
+      "format": "json-passages",
+      "path": "data/classics-corpus/pindar-pythian-en.json",
+      "reader": "classics-text-reader.html?work=pindar-pythian&lang=en",
+      "sourceDescription": "Traducción humana histórica, John Edwin Sandys, Perseus TEI; 372 pasajes indexados en su propia numeración, sin correspondencia griega automática"
     },
     {
       "workId": "pindar-pythian",
