@@ -28,7 +28,8 @@ const verifiedR2=r2Status?.status==='all-registered-r2-originals-verified-and-le
  ?remote.filter(e=>{const x=r2ByKey.get(key(e.workId,e.language));return x&&x.file===e.path&&x.sha256===e.sha256&&x.passages===e.passages;})
  :[];
 const remoteUnverified=remote.filter(e=>!verifiedR2.includes(e));
-const localUnindexed=local.filter(e=>e.format!=='historical-ocr-pages'&&existsSync(e.path)&&!recognized.has(key(e.workId,e.language)));
+// Krohn/Rose critical editions are indexed by the separate apparatus, not the classics lexical shards.
+const localUnindexed=local.filter(e=>!['historical-ocr-pages','critical-indexed-latin'].includes(e.format)&&existsSync(e.path)&&!recognized.has(key(e.workId,e.language)));
 const distinct=arr=>new Set(arr.map(e=>e.workId)).size;
 const catalogue=read('data/classics-corpus/indexation-roadmap-222.json');
 const additionalR2=read('data/r2/vinculos-repertorio.json');
