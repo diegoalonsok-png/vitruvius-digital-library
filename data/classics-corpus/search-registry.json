@@ -2,7 +2,7 @@
   "schema": "vitruvia-classics-search-registry-v1",
   "updated": "2026-11-18",
   "description": "Registro verificable de transcripciones HTML y textos JSON existentes que admiten búsqueda literal de contenido. No incluye automáticamente PDF escaneados, facsímiles ni fichas sin texto. Los índices auxiliares por locus y el aparato crítico se declaran por separado; no se suman a versiones textuales originales ni implican colación autóptica.",
-  "count": 403,
+  "count": 405,
   "works": 299,
   "entries": [
     {
@@ -942,6 +942,16 @@
       "path": "data/classics-corpus/columella-la.json",
       "reader": "classics-text-reader.html?work=columella&lang=la",
       "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
+      "workId": "demosthenes-de-corona",
+      "author": "Demóstenes",
+      "title": "Ὑπὲρ Κτησιφῶντος περὶ τοῦ στεφάνου",
+      "language": "en",
+      "format": "json-passages",
+      "path": "data/classics-corpus/demosthenes-de-corona-en.json",
+      "reader": "classics-text-reader.html?work=demosthenes-de-corona&lang=en",
+      "sourceDescription": "Traducción humana de C. A. Vince y J. H. Vince; texto Perseus TEI con 324 secciones indexadas y locus propio; sin afirmar alineación automática con griego"
     },
     {
       "workId": "demosthenes-de-corona",
@@ -4183,6 +4193,16 @@
       "sourceUrn": "urn:cts:greekLit:tlg0032.tlg010.perseus-grc2",
       "sourceSha256": "b4dd7878617a6b9f2f3db70b398c446a2120f928dcddeaa6d30b1621b4e8d5ca",
       "sourceDescription": "Perseus DL TEI · Xenophon. Opera omnia, Vol. 5. Marchant, Edgar Cardew, editor. Oxford: Clarendon Press, 1920. · CC BY-SA 4.0; original sin cotejo independiente"
+    },
+    {
+      "workId": "xenophon-memorabilia",
+      "author": "Jenofonte",
+      "title": "Ἀπομνημονεύματα",
+      "language": "en",
+      "format": "json-passages",
+      "path": "data/classics-corpus/xenophon-memorabilia-en.json",
+      "reader": "classics-text-reader.html?work=xenophon-memorabilia&lang=en",
+      "sourceDescription": "Traducción humana de Edgar Cardew Marchant; texto Perseus TEI con 608 secciones indexadas y locus propio; sin afirmar alineación automática con griego"
     },
     {
       "workId": "xenophon-memorabilia",
