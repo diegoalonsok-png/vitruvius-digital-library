@@ -152,6 +152,10 @@ def main():
         index = read(ROOT / index_path)
         for edition in index.get("index", []):
             for value in (edition.get("urn", ""), edition.get("source", "")):
+                if isinstance(value, list):
+                    value = " ".join(map(str, value))
+                if not isinstance(value, str):
+                    continue
                 for match in re.finditer(r"tlg[0-9]{4}\.tlg[0-9a-z]+", value):
                     existing_urns.add(match.group(0))
     existing_registry = {(e["workId"], e["language"]) for e in registry["entries"]}
