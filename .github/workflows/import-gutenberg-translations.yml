@@ -1,0 +1,27 @@
+name: Import verified Greek translations from Gutenberg
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/import_gutenberg_translations.py'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  import:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Download, validate and index Gutenberg translations
+        run: python3 scripts/import_gutenberg_translations.py
+      - name: Validate resulting JSON
+        run: python3 -m json.tool data/classics-corpus/search-registry.json >/dev/null
+      - name: Commit validated content
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add data/classics-corpus/search-registry.json data/classics-corpus/*-en.json
+          if ! git diff --cached --quiet; then
+            git commit -m 'Bibliotheca: import historical Gutenberg English translations'
+            git push
+          fi
