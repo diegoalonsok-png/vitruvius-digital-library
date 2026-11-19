@@ -79,10 +79,10 @@ for(const url of workUrls){
  assert(!localPath.includes(".."),"Unsafe work URL: "+url);
  assert(fs.existsSync(localPath),"Sitemap advertises a missing work fiche: "+localPath);
  const source=fs.readFileSync(localPath,"utf8");
- const head=source.split(/<\\/head>/i)[0];
+ const head=source.split(/<\/head>/i)[0];
  assert(head.includes('<link rel="canonical" href="'+url+'">'),"Work fiche canonical differs from sitemap: "+localPath);
  assert(!/<meta[^>]+name=["']robots["'][^>]*noindex/i.test(head),"Noindexed fiche advertised to Google: "+localPath);
- assert(/<h1\\b/i.test(source)&&/<title\\b/i.test(head),"Incomplete public work fiche: "+localPath);
+ assert(/<h1\b/i.test(source)&&/<title\b/i.test(head),"Incomplete public work fiche: "+localPath);
  assert(source.includes('href="../bibliotheca-graeca-latina.html"'),"Work fiche lacks crawlable Bibliotheca link: "+localPath);
 }
 
