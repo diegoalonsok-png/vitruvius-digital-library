@@ -64,7 +64,7 @@ def source_bytes(url, data):
     """
     if not url.lower().endswith(".html"):
         return data
-    beacon = rb'<script\\b(?=[^>]*https://static\\.cloudflareinsights\\.com/beacon\\.min\\.js)[^>]*>\\s*</script>(?:\\r?\\n)?'
+    beacon = rb'<script\b(?=[^>]*https://static\.cloudflareinsights\.com/beacon\.min\.js)[^>]*>\s*</script>(?:\r?\n)?'
     return re.sub(beacon, b"", data, flags=re.IGNORECASE)
 
 
