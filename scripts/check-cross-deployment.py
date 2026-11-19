@@ -19,6 +19,10 @@ ORIGINS = {
 }
 # These source files are not supposed to be rewritten by the hosting platform.
 ASSETS = (
+    # Portada: paridad del buscador principal, el buscador de obras y el bloqueo del duplicado.
+    "index.html",
+    "assets/unified-books-discovery.js",
+    "assets/bibliotheca-works-explorer.css",
     # Aparato comparativo: HTML y componentes compartidos del cotejo, incluidos prefacios.
     "aparato-comparativo.html",
     "bibliotheca-graeca-latina.html",
