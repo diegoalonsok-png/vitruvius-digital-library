@@ -1,8 +1,8 @@
 {
   "schema": "vitruvia-classics-search-registry-v1",
-  "updated": "2026-11-16",
+  "updated": "2026-11-19",
   "description": "Registro verificable de transcripciones HTML y textos JSON existentes que admiten búsqueda literal de contenido. No incluye automáticamente PDF escaneados, facsímiles ni fichas sin texto. Los índices auxiliares por locus y el aparato crítico se declaran por separado; no se suman a versiones textuales originales ni implican colación autóptica.",
-  "count": 409,
+  "count": 410,
   "works": 300,
   "entries": [
     {
@@ -1597,6 +1597,16 @@
       "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
       "sha256": "fbb7bea5f038c2f6e9fae37990e3a72cca1a35face1201151fef26ef59e84b60",
       "passages": 83
+    },
+    {
+      "workId": "hero-pneumatica",
+      "author": "Herón de Alejandría",
+      "title": "Πνευματικά · Pneumatica",
+      "language": "en",
+      "format": "json-passages",
+      "path": "data/classics-corpus/hero-pneumatica-en.json",
+      "reader": "classics-text-reader.html?work=hero-pneumatica&lang=en",
+      "sourceDescription": "Human English translation, Joseph George Greenwood, ed. Bennet Woodcroft (1851), Project Gutenberg #77400; 78 editorial sections indexed; original Greek not automatically aligned."
     },
     {
       "workId": "hero-pneumatica",
