@@ -5349,6 +5349,39 @@
         "url": "classics-text-reader.html?work=first1k-tlg2959-tlg002&lang=grc",
         "status": "Original griego segmentado por locus TEI; sin traducción vinculada."
       }
+    },
+    {
+      "id": "demosthenes-first-olynthiac",
+      "author": "Demóstenes",
+      "title": "Ὀλυνθιακὸς α΄ · Primera Olíntica",
+      "language": "grc",
+      "genre": "Oratoria política griega",
+      "dating": "siglo IV a. C.",
+      "status": "Original griego y traducción inglesa humana indexados léxicamente; loci por sección, sin colación independiente",
+      "textStatus": "lexically-indexed",
+      "source": "Perseus Digital Library · S. H. Butcher (texto griego, 1903) y J. H. Vince (traducción inglesa, 1930)",
+      "sourceUrl": "https://github.com/PerseusDL/canonical-greekLit/tree/master/data/tlg0014/tlg001",
+      "sourceUrn": "urn:cts:greekLit:tlg0014.tlg001.perseus-grc2",
+      "sourceLicense": "CC BY-SA 4.0 · Perseus Digital Library",
+      "corpusFiles": {
+        "grc": "data/classics-corpus/demosthenes-first-olynthiac-grc.json",
+        "en": "data/classics-corpus/demosthenes-first-olynthiac-en.json"
+      },
+      "localVersions": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/demosthenes-first-olynthiac-grc.json"
+        },
+        {
+          "language": "en",
+          "path": "data/classics-corpus/demosthenes-first-olynthiac-en.json"
+        }
+      ],
+      "publicStatus": "lectura-local-completa",
+      "reading": {
+        "url": "classics-parallel-reader.html?work=demosthenes-first-olynthiac&left=grc&right=en",
+        "status": "28 secciones griegas y 28 inglesas con números de sección homólogos; sin alineación a nivel de oración ni reconstrucción crítica."
+      }
     }
   ]
 }
