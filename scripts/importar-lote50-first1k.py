@@ -27,7 +27,7 @@ MAIN = ROOT / "data/bibliotheca-graeca-latina-I-bce-I-ce.json"
 OUT = ROOT / "data/classics-corpus/batches/lote-50-resultado-2026-11-19.json"
 GREEK = re.compile(r"[\u0370-\u03ff\u1f00-\u1fff]")
 SOURCE_RE = re.compile(r"^https://raw\.githubusercontent\.com/OpenGreekAndLatin/First1KGreek/master/data/[A-Za-z0-9/._-]+\.xml$")
-URN_RE = re.compile(r"^urn:cts:greekLit:([a-z0-9]+)\.([a-z0-9]+)\.[a-z0-9.-]+$")
+URN_RE = re.compile(r"^urn:cts:greekLit:([a-z0-9]+)\.([a-z0-9]+)\.[A-Za-z0-9.-]+$")
 USER_AGENT = "VitruviusAcademicLibrary/1.0 (source verification)"
 
 def read(path: Path):
