@@ -491,7 +491,7 @@ html[data-theme="dark"].front-color-light .research-nav-controls>.research-print
 </style>
 
 
-<link rel="stylesheet" href="assets/unified-books-discovery.css?v=20261115-v1">
+
 <style id="home-stats-alignment">
 /* Uniform metric tiles: numbers share a fixed column and labels share a baseline. */
 .stats-band .stats-inner{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px 20px;align-items:stretch}
@@ -521,7 +521,7 @@ html[data-theme="dark"].front-color-light .research-nav-controls>.research-print
 .corpus-compact-qualification,.corpus-compact-example{font:11px/1.5 system-ui,sans-serif;margin:9px 0 3px;border-top:1px solid #8884;padding-top:7px}
 #estado-corpus a{color:inherit;text-underline-offset:2px}
 @media(max-width:760px){.corpus-compact-editions{grid-template-columns:1fr}.corpus-compact-heading{gap:5px 12px}.corpus-compact-date{width:100%}}
-</style><link rel="stylesheet" href="assets/bibliotheca-works-explorer.css?v=20261117-search-v1">
+</style><link rel="stylesheet" href="assets/bibliotheca-works-explorer.css?v=20261119-match-main-search-v1">
 <script defer src="assets/bibliotheca-works-explorer.js?v=20261117-plato-indexed-v1"></script>
 <style id="research-nav-three-lines">
 .research-nav .research-nav-links.research-nav-categories{display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;grid-auto-rows:minmax(39px,auto);gap:5px 12px!important;align-items:stretch!important;max-width:100%;min-width:0}
@@ -784,7 +784,7 @@ html[data-theme="dark"].front-color-light .research-nav-controls>.research-print
     <section class="wrap bibliotheca-single-count" aria-label="Bibliotheca Graeca et Latina · originales indexados y legibles" style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;padding:12px 0;margin:7px auto;border-block:1px solid rgba(160,160,160,.28);font:13px/1.4 system-ui,sans-serif">
       <div class="vdl-indexed-feature"><strong data-cifra="obrasConTextoIndexado">—</strong><span>obras con original indexado</span></div>
       <a href="bibliotheca-graeca-latina.html" style="margin-left:auto;white-space:nowrap">Abrir Bibliotheca Graeca et Latina</a>
-      <div data-vdl-works-explorer></div>
+      <div data-vdl-works-explorer id="home-books-search"></div>
     </section>
     <section class="search-section wrap" id="buscar" aria-labelledby="search-title">
       <div class="section-heading"><div><p class="eyebrow">LECTURA E INVESTIGACIÓN</p><h2 id="search-title">Buscar en los textos vitruvianos</h2></div><p>Consulta <em>De architectura</em>: sus diez libros y ediciones.<br>Para otros autores, utiliza la <a href="bibliotheca-graeca-latina.html">Bibliotheca Graeca et Latina</a>.</p></div>
@@ -970,7 +970,7 @@ button.addEventListener("click",async()=>{
  catch{window.prompt("Copiar cita de biblioteca:",cite);}
 });
 })();
-</script><script defer src="assets/scholarly-query-tools.js?v=20261109-university-v1"></script><script defer src="assets/button-press-feedback.js?v=20261111-pulsacion-v1"></script><script defer src="assets/collapse-empty-regions.js?v=20261111-vacio-v1"></script><script defer src="assets/ui-idioma.js?v=20261117-global-sync-v6"></script><script defer src="assets/bibliotheca-r2-facsimiles.js?v=20261113-r2-1"></script><script defer src="assets/cifra-obras.js?v=20261116-reconciled-347"></script><script defer src="assets/unified-books-discovery.js?v=20261115-unified-all-books-v3"></script>
+</script><script defer src="assets/scholarly-query-tools.js?v=20261109-university-v1"></script><script defer src="assets/button-press-feedback.js?v=20261111-pulsacion-v1"></script><script defer src="assets/collapse-empty-regions.js?v=20261111-vacio-v1"></script><script defer src="assets/ui-idioma.js?v=20261117-global-sync-v6"></script><script defer src="assets/bibliotheca-r2-facsimiles.js?v=20261113-r2-1"></script><script defer src="assets/cifra-obras.js?v=20261116-reconciled-347"></script>
 
 <script defer src="assets/vitruvius-three-editions-search.js?v=20261116-compact-editions-v4"></script>
 
