@@ -83,15 +83,68 @@ jobs:
           assert semantic, 'Indice de conceptos ausente'
           print('PASS: 50 obras, corpus, catalogo, registro, indexacion lexico/Conceptus y loci')
           PY
-      - name: Ejecutar la auditoria bibliografica existente
+      - name: Auditoria de procedencia en todas las nuevas obras
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          read = lambda p: json.loads(Path(p).read_text(encoding='utf-8'))
+          report = read('data/classics-corpus/batches/lote-50-resultado-2026-11-19.json')
+          registry = read('data/classics-corpus/search-registry.json')
+          entries = {e['workId']: e for e in registry['entries'] if e['language'] == 'grc'}
+          for row in report['added']:
+              text = read(entries[row['workId']]['path'])
+              for field in ('source', 'sourceUrn', 'sourceSha256', 'attribution', 'license', 'passages'):
+                  assert text.get(field), f'Falta {field} en {row["workId"]}'
+              assert text['license'].startswith('CC BY-SA 4.0')
+          print('PASS: fuentes y atribuciones verificadas en los 50 textos')
+          PY
+      - name: Auditoria global informativa (incidencias previas separadas de la tanda)
+        continue-on-error: true
         run: node scripts/audit-classical-corpus.mjs
+      - name: Actualizar contadores publicos desde los 50 textos indexados
+        if: steps.state.outputs.needs_ingest == 'true'
+        run: |
+          python - <<'PY'
+          import json
+          from datetime import date
+          from pathlib import Path
+          def read(p): return json.loads(Path(p).read_text(encoding='utf-8'))
+          report=read('data/classics-corpus/batches/lote-50-resultado-2026-11-19.json')
+          assert report['imported']==50 and len(report['failed'])==0, 'Lote incompleto'
+          stats_path=Path('data/cifras-corpus.json')
+          c=read(stats_path)
+          primary=read('data/bibliotheca-graeca-latina-I-bce-I-ce.json')
+          supplement=read('data/bibliotheca-expansion-publicada-2026-11-16.json')
+          reg=read('data/classics-corpus/search-registry.json')
+          index=read('data/index/classics/manifest.json')
+          old_count=c['obrasSuplementarias']
+          delta=len(supplement['works'])-old_count
+          assert delta==50, f'El cambio esperado es 50, no {delta}'
+          c['obrasSuplementarias']=len(supplement['works'])
+          c['obras']=len(primary['works'])
+          c['obrasTotalesDeclaradas']=c['obras']+c['obrasSuplementarias']+c['obrasAdicionales']
+          c['notaTotal']=f"{c['obrasTotalesDeclaradas']} fichas por ID: {c['obras']} del repertorio principal + {c['obrasSuplementarias']} suplementarias + {c['obrasAdicionales']} registradas en R2; ediciones y traducciones se cuentan aparte."
+          c['versionesTextuales']=len(reg['entries'])
+          c['obrasConTextoRegistrado']+=delta
+          c['edicionesLexicasLocales']=len(index['index'])
+          c['obrasConTextoIndexado']+=delta
+          c['estadoIndexacion']['edicionesLocalesBuscables']+=delta
+          c['estadoIndexacion']['edicionesLocalesConPasajes']+=delta
+          c['faltanParaObjetivo']=max(0,c['objetivoObras']-c['obrasTotalesDeclaradas'])
+          c['actualizado']=date.today().isoformat()
+          stats_path.write_text(json.dumps(c,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+          print('Total obras del catalogo:',c['obrasTotalesDeclaradas'])
+          print('Versiones textuales:',c['versionesTextuales'])
+          print('Ediciones lexicas:',c['edicionesLexicasLocales'])
+          PY
       - name: Publicar en la rama del PR solamente si todas las comprobaciones pasan
         if: steps.state.outputs.needs_ingest == 'true'
         run: |
           set -euo pipefail
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/classics-corpus data/bibliotheca-expansion-publicada-2026-11-16.json data/index/classics
+          git add data/classics-corpus data/bibliotheca-expansion-publicada-2026-11-16.json data/index/classics data/cifras-corpus.json
           if git diff --cached --quiet; then
             echo "::error::No se generaron textos ni indices"
             exit 1
