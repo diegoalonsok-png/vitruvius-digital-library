@@ -1,8 +1,8 @@
 {
   "schema": "vitruvia-classics-search-registry-v1",
-  "updated": "2026-11-16",
+  "updated": "2026-11-19",
   "description": "Registro verificable de transcripciones HTML y textos JSON existentes que admiten búsqueda literal de contenido. No incluye automáticamente PDF escaneados, facsímiles ni fichas sin texto. Los índices auxiliares por locus y el aparato crítico se declaran por separado; no se suman a versiones textuales originales ni implican colación autóptica.",
-  "count": 409,
+  "count": 415,
   "works": 300,
   "entries": [
     {
@@ -4124,6 +4124,16 @@
       "workId": "xenophon-agesilaus",
       "author": "Jenofonte",
       "title": "Ἀγησίλαος",
+      "language": "en",
+      "format": "json-passages",
+      "path": "data/classics-corpus/xenophon-agesilaus-en.json",
+      "reader": "classics-text-reader.html?work=xenophon-agesilaus&lang=en",
+      "sourceDescription": "Perseus Digital Library · Edgar Carew Marchant · English TEI, CC BY-SA 4.0; verified Greek/English CTS section concordance, not word-level alignment"
+    },
+    {
+      "workId": "xenophon-agesilaus",
+      "author": "Jenofonte",
+      "title": "Ἀγησίλαος",
       "language": "grc",
       "format": "json-passages",
       "path": "data/classics-corpus/xenophon-agesilaus-grc.json",
@@ -4156,6 +4166,16 @@
       "workId": "xenophon-apology",
       "author": "Jenofonte",
       "title": "Ἀπολογία Σωκράτους",
+      "language": "en",
+      "format": "json-passages",
+      "path": "data/classics-corpus/xenophon-apology-en.json",
+      "reader": "classics-text-reader.html?work=xenophon-apology&lang=en",
+      "sourceDescription": "Perseus Digital Library · Otis Johnson Todd · English TEI, CC BY-SA 4.0; verified Greek/English CTS section concordance, not word-level alignment"
+    },
+    {
+      "workId": "xenophon-apology",
+      "author": "Jenofonte",
+      "title": "Ἀπολογία Σωκράτους",
       "language": "grc",
       "format": "json-passages",
       "path": "data/classics-corpus/xenophon-apology-grc.json",
@@ -4168,11 +4188,31 @@
       "workId": "xenophon-hellenica",
       "author": "Jenofonte",
       "title": "Ἑλληνικά",
+      "language": "en",
+      "format": "json-passages",
+      "path": "data/classics-corpus/xenophon-hellenica-en.json",
+      "reader": "classics-text-reader.html?work=xenophon-hellenica&lang=en",
+      "sourceDescription": "Perseus Digital Library · Carleton L. Brownson · English TEI, CC BY-SA 4.0; verified Greek/English CTS section concordance, not word-level alignment"
+    },
+    {
+      "workId": "xenophon-hellenica",
+      "author": "Jenofonte",
+      "title": "Ἑλληνικά",
       "language": "grc",
       "format": "json-passages",
       "path": "data/classics-corpus/xenophon-hellenica-grc.json",
       "reader": "classics-text-reader.html?work=xenophon-hellenica&lang=grc",
       "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
+      "workId": "xenophon-hiero",
+      "author": "Jenofonte",
+      "title": "Ἱέρων",
+      "language": "en",
+      "format": "json-passages",
+      "path": "data/classics-corpus/xenophon-hiero-en.json",
+      "reader": "classics-text-reader.html?work=xenophon-hiero&lang=en",
+      "sourceDescription": "Perseus Digital Library · Edgar Carew Marchant · English TEI, CC BY-SA 4.0; verified Greek/English CTS section concordance, not word-level alignment"
     },
     {
       "workId": "xenophon-hiero",
@@ -4258,6 +4298,16 @@
       "workId": "xenophon-oeconomicus",
       "author": "Jenofonte",
       "title": "Οἰκονομικός",
+      "language": "en",
+      "format": "json-passages",
+      "path": "data/classics-corpus/xenophon-oeconomicus-en.json",
+      "reader": "classics-text-reader.html?work=xenophon-oeconomicus&lang=en",
+      "sourceDescription": "Perseus Digital Library · Edgar Carew Marchant · English TEI, CC BY-SA 4.0; verified Greek/English CTS section concordance, not word-level alignment"
+    },
+    {
+      "workId": "xenophon-oeconomicus",
+      "author": "Jenofonte",
+      "title": "Οἰκονομικός",
       "language": "grc",
       "format": "json-passages",
       "path": "data/classics-corpus/xenophon-oeconomicus-grc.json",
@@ -4265,6 +4315,16 @@
       "sourceUrn": "urn:cts:greekLit:tlg0032.tlg003.perseus-grc2",
       "sourceSha256": "730a24656dd03bbfd3c5c5e3f28a813aeedee85c18ec89e732a5477e70ef2f59",
       "sourceDescription": "Perseus DL TEI · Xenophon. Opera omnia, Vol. 2. Marchant, Edgar Cardew, editor. Oxford: Clarendon Press, 1921. · CC BY-SA 4.0; original sin cotejo independiente"
+    },
+    {
+      "workId": "xenophon-symposium",
+      "author": "Jenofonte",
+      "title": "Συμπόσιον",
+      "language": "en",
+      "format": "json-passages",
+      "path": "data/classics-corpus/xenophon-symposium-en.json",
+      "reader": "classics-text-reader.html?work=xenophon-symposium&lang=en",
+      "sourceDescription": "Perseus Digital Library · Otis Johnson Todd · English TEI, CC BY-SA 4.0; verified Greek/English CTS section concordance, not word-level alignment"
     },
     {
       "workId": "xenophon-symposium",
