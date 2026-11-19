@@ -2,8 +2,8 @@
   "schema": "vitruvia-classics-search-registry-v1",
   "updated": "2026-11-18",
   "description": "Registro verificable de transcripciones HTML y textos JSON existentes que admiten búsqueda literal de contenido. No incluye automáticamente PDF escaneados, facsímiles ni fichas sin texto. Los índices auxiliares por locus y el aparato crítico se declaran por separado; no se suman a versiones textuales originales ni implican colación autóptica.",
-  "count": 409,
-  "works": 300,
+  "count": 410,
+  "works": 298,
   "entries": [
     {
       "workId": "aeneas-tacticus-poliorketika",
@@ -4119,6 +4119,16 @@
       "path": "data/structured/recensio-es.json",
       "reader": "lector-bilingue.html?edition=recensio-es",
       "sourceDescription": "Texto estructurado con loci declarados; las versiones editoriales V514/V554/V297 conservan DOCX y huella de procedencia. Comparación no equivale a identidad literal entre recensiones."
+    },
+    {
+      "workId": "xenophon-agesilaus",
+      "author": "Jenofonte",
+      "title": "Ἀγησίλαος · Agesilaus",
+      "language": "en",
+      "format": "json-passages",
+      "path": "data/classics-corpus/xenophon-agesilaus-en.json",
+      "reader": "classics-text-reader.html?work=xenophon-agesilaus&lang=en",
+      "sourceDescription": "H. G. Dakyns (d. 1911), historical English translation; Project Gutenberg #1169, 11 chapters; not verified for Greek paragraph alignment"
     },
     {
       "workId": "xenophon-agesilaus",
