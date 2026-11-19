@@ -16,7 +16,11 @@
  function find(original,translations){
   if(!Array.isArray(translations)||!original?.locus)return {kind:"none",passages:[]};
   const valid=translations.filter(p=>p?.locus&&text(p));
-  const exact=valid.filter(p=>key(p.locus)===key(original.locus));
+  // Only a structured numeric chapter/verse locator is meaningful across
+  // independent editions. Generic t1/segment-1 ordinal IDs are not evidence.
+  const originalKey=key(original.locus);
+  const comparable=/^\d+(?:\.\d+)+(?:-\d+)?$/.test(originalKey);
+  const exact=comparable?valid.filter(p=>key(p.locus)===originalKey):[];
   if(exact.length)return {kind:"same-locus",passages:exact};
   const source=verse(original.locus);
   if(!source||source.start===source.end)return {kind:"none",passages:[]};
