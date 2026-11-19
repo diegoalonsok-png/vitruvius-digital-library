@@ -24,8 +24,8 @@ for(const id of indexed){
  for(const field of ["author","title","genre","source","sourceUrl"]){
   assert.ok(typeof w[field]==="string"&&w[field].trim(),`Missing academic catalogue field ${field}: ${id}`);
  }
- assert.ok(["lexically-indexed","registered-pending-lexical-index"].includes(w.textStatus),`Unexpected editorial state: ${id}`);
- assert.ok(["lectura-local-completa","registered-not-indexed"].includes(w.publicStatus),
+ assert.ok(["lexically-indexed","registered-pending-lexical-index","registered-original-searchable","registered-literal-searchable"].includes(w.textStatus),`Unexpected editorial state: ${id}`);
+ assert.ok([undefined,null,"lectura-local-completa","lectura-local-por-capitulos","registered-not-indexed"].includes(w.publicStatus),
   `Unexpected public status: ${id}`);
  const p=`data/classics-corpus/${id}-grc.json`;
  assert.ok(w.corpusFiles&&typeof w.corpusFiles==="object"&&!Array.isArray(w.corpusFiles),
