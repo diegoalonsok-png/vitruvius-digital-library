@@ -1,16 +1,16 @@
 {
   "schema": "vitruvius-classics-translation-availability-v1",
   "generated": "2026-11-19",
-  "basis": "Cálculo a partir de works[] y search-registry.json. Los campos de compatibilidad locallyIndexedWorks y localEditionLanguages incluyen índices registrados en R2. originalIndexed y verifiedLocalEditionLanguages solo cuentan archivos locales. originalR2Registered identifica declaraciones remotas; no certifica disponibilidad HTTP ni cotejo. Traducción Hero Pneumatica inglesa alojada en GitHub, original griego existente; fuente y 78 secciones separadas por edición. Índice invertido pendiente de reconstrucción tras la fusión.",
+  "basis": "Cálculo a partir de works[] y search-registry.json. Los campos de compatibilidad locallyIndexedWorks y localEditionLanguages incluyen índices registrados en R2. originalIndexed y verifiedLocalEditionLanguages solo cuentan archivos locales. originalR2Registered identifica declaraciones remotas; no certifica disponibilidad HTTP ni cotejo. Traducción Hero Pneumatica inglesa alojada en GitHub, original griego existente; fuente y 78 secciones separadas por edición. Índice invertido pendiente de reconstrucción tras la fusión. Nueva Retórica EN en GitHub con 882 pasajes; el índice invertido debe reconstruirse en publicación.",
   "scope": "271 obras del repertorio grecolatino; originales locales, índices remotos declarados y traducciones alojadas ES/EN/FR",
   "totals": {
     "cataloguedWorks": 271,
     "locallyIndexedWorks": 226,
-    "translatedWorksLocal": 60,
-    "worksWithoutHostedTranslation": 211,
+    "translatedWorksLocal": 61,
+    "worksWithoutHostedTranslation": 210,
     "localTranslationLanguages": {
       "es": 5,
-      "en": 59,
+      "en": 60,
       "fr": 2
     },
     "originalTextIndexed": 182,
@@ -19,11 +19,11 @@
     "declaredRemoteOnlyWorks": 44,
     "declaredR2OriginalWorks": 44,
     "registeredOriginalWorks": 226,
-    "registeredTextVersions": 292,
-    "verifiedLocalTextVersions": 248,
+    "registeredTextVersions": 293,
+    "verifiedLocalTextVersions": 249,
     "verifiedLocalOriginalTextIndexed": 182,
     "supplementaryTextVersions": 81,
-    "allRegisteredTextVersions": 373
+    "allRegisteredTextVersions": 374
   },
   "works": [
     {
@@ -4170,22 +4170,27 @@
       "title": "Ῥητορική",
       "originalLanguage": "grc",
       "originalIndexed": true,
-      "translationLanguages": [],
+      "translationLanguages": [
+        "en"
+      ],
       "localEditionLanguages": [
+        "en",
         "grc"
       ],
       "externalTranslationUnverified": [],
-      "readingStatus": "lectura-local-parcial",
-      "translationSourceDescription": "Traducción no incorporada ni alineada con una edición identificada.",
-      "translationRegisteredButNotHosted": true,
+      "readingStatus": "lectura-local-completa",
+      "translationSourceDescription": "Inglés: John Henry Freese, The Art of Rhetoric (1926), edición TEI de Perseus Digital Library, CC BY-SA 4.0; 882 unidades citables indexables, sin alineación forzada con el griego.",
+      "translationRegisteredButNotHosted": false,
       "indexed": true,
       "originalR2Registered": false,
       "registeredOriginal": true,
       "registeredEditionLanguages": [
+        "en",
         "grc"
       ],
       "remoteEditionLanguages": [],
       "verifiedLocalEditionLanguages": [
+        "en",
         "grc"
       ]
     },
