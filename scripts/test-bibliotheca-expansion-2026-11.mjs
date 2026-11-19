@@ -25,7 +25,21 @@ for(const id of indexed){
  assert.ok(["lectura-local-completa","registered-not-indexed"].includes(w.publicStatus),
   `Unexpected public status: ${id}`);
  const p=`data/classics-corpus/${id}-grc.json`;
- assert.deepEqual(w.corpusFiles,{grc:p},"Public corpusFiles must be a language:path object");
+ assert.ok(w.corpusFiles&&typeof w.corpusFiles==="object"&&!Array.isArray(w.corpusFiles),
+  "Public corpusFiles must be a language:path object");
+ assert.equal(w.corpusFiles.grc,p,"Greek original must retain its canonical reader path");
+ // A classical work can legitimately acquire a human translation without
+ // invalidating its Greek source. Verify each additional language against
+ // both its file and the existing search registry, rather than rejecting it.
+ for(const [language,file] of Object.entries(w.corpusFiles)){
+  assert.ok(["grc","la","en","es","fr","de","it","pt"].includes(language),
+   `Invalid language for ${id}: ${language}`);
+  assert.equal(file,`data/classics-corpus/${id}-${language}.json`,
+   `Noncanonical corpus path for ${id} (${language})`);
+  assert.ok(existsSync(file),`Missing edition ${id} (${language})`);
+  assert.ok(registry.some(e=>e.workId===id&&e.language===language&&e.path===file),
+   `Unregistered edition ${id} (${language})`);
+ }
  assert.ok(existsSync(p),`Missing Greek original: ${p}`);
  const text=json(p);
  assert.equal(text.workId,id);
