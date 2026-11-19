@@ -1,0 +1,33 @@
+name: Auditoría R2 ↔ GitHub · textos públicos
+on:
+  push:
+    branches:
+      - audit/r2-github-text-symmetry-20261119
+    paths:
+      - scripts/audit-r2-github-text-symmetry.py
+      - .github/workflows/audit-r2-github-text-symmetry.yml
+  pull_request:
+    paths:
+      - scripts/audit-r2-github-text-symmetry.py
+      - .github/workflows/audit-r2-github-text-symmetry.yml
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  parity:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate audit source syntax
+        run: python3 -m py_compile scripts/audit-r2-github-text-symmetry.py
+      - name: Compare all registered R2 corpus files against GitHub catalog
+        run: |
+          python3 scripts/audit-r2-github-text-symmetry.py             --workers 4             --ocr-sample 117             --output /tmp/vitruvius-r2-symmetry-report.json
+      - name: Upload detailed parity report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: vitruvius-r2-symmetry-report
+          path: /tmp/vitruvius-r2-symmetry-report.json
+          if-no-files-found: warn
