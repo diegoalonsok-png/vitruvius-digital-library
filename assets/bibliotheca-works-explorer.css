@@ -31,3 +31,44 @@
 .vdl-works-name{display:block;padding:11px 12px;text-decoration:none;font:500 14px/1.4 system-ui,sans-serif}
 .vdl-works-name:hover,.vdl-works-name:focus-visible{background:rgba(201,164,94,.14);text-decoration:none;outline:1px solid #c9a45e;outline-offset:-1px}
 @media(max-width:660px){.vdl-works-explorer-panel{padding:10px}.vdl-works-row{display:block}}
+
+/* Homepage only: align the retained works search with the primary Vitruvius search.
+   Does not change search logic, other pages, or the primary search box. */
+#home-books-search .vdl-works-explorer-panel{
+  padding:14px 20px 16px;
+  background:var(--white);
+  border:1px solid #b3b4ac;
+  border-radius:0;
+}
+#home-books-search .vdl-works-explorer-heading{
+  color:var(--ink);
+  font:600 14px/1.5 system-ui,sans-serif;
+}
+#home-books-search .vdl-works-search{
+  display:block;
+  width:100%;
+  min-height:64px;
+  box-sizing:border-box;
+  margin-top:10px;
+  padding:12px 20px;
+  background:transparent;
+  color:var(--ink);
+  border:1px solid #59636c;
+  border-radius:0;
+  box-shadow:none;
+  font:400 22px/1.4 var(--serif,Georgia,serif);
+}
+#home-books-search .vdl-works-search::placeholder{color:#8b8d86;opacity:1}
+#home-books-search .vdl-works-search:focus{
+  outline:1px solid rgba(179,183,186,.65);
+  outline-offset:2px;
+  border-color:#59636c;
+  box-shadow:none;
+}
+#home-books-search .vdl-works-result-count{
+  font:italic 13px/1.5 var(--serif,Georgia,serif);
+}
+@media(max-width:660px){
+  #home-books-search .vdl-works-explorer-panel{padding:12px 14px}
+  #home-books-search .vdl-works-search{min-height:56px;padding:10px 14px;font-size:18px}
+}
