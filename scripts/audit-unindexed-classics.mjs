@@ -66,7 +66,7 @@ for(const entry of registry.entries){
     const edition=load(file);
     return edition.schema==='vdl-critical-edition-text-v1'
       &&Array.isArray(edition.passages)&&edition.passages.length>=700
-      &&edition.passages.every(p=>p.locus&&p.text);
+      &&edition.passages.every(p=>p.locus&&typeof p.latin==='string'&&p.latin.trim());
    }catch{return false}
   });
   state=confirmed?'indexed-in-critical-apparatus':'local-text-pending-index';
