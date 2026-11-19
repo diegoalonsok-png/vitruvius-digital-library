@@ -1,0 +1,54 @@
+{
+  "schema": "vdl-r2-ingest-pending-v1",
+  "createdAt": "2026-11-18",
+  "repository": "diegoalonsok-png/vitruvius-digital-library",
+  "scope": "GitHub-indexed classical text JSON files awaiting independent Cloudflare R2 upload and verification",
+  "verificationRule": "Do not add to data/r2/catalogo-clasicos-r2.json or claim R2 symmetry until object upload and public object availability/hash verified.",
+  "status": "pending_R2_upload",
+  "items": [
+    {
+      "workId": "demosthenes-de-corona",
+      "language": "en",
+      "repositoryPath": "data/classics-corpus/demosthenes-de-corona-en.json",
+      "gitBlobSha": "d0890eba5580462646b290337cbba66020de1608",
+      "passages": 324,
+      "sourceUrn": "urn:cts:greekLit:tlg0014.tlg018.perseus-eng2",
+      "source": "https://github.com/PerseusDL/canonical-greekLit/blob/master/data/tlg0014/tlg018/tlg0014.tlg018.perseus-eng2.xml",
+      "r2Status": "not_uploaded_or_verified",
+      "suggestedR2Key": "corpus/demosthenes-de-corona-en.json"
+    },
+    {
+      "workId": "xenophon-memorabilia",
+      "language": "en",
+      "repositoryPath": "data/classics-corpus/xenophon-memorabilia-en.json",
+      "gitBlobSha": "0f183a5fb4af5a87b227803fa9750af8373cf4bf",
+      "passages": 608,
+      "sourceUrn": "urn:cts:greekLit:tlg0032.tlg002.perseus-eng2",
+      "source": "https://github.com/PerseusDL/canonical-greekLit/blob/master/data/tlg0032/tlg002/tlg0032.tlg002.perseus-eng2.xml",
+      "r2Status": "not_uploaded_or_verified",
+      "suggestedR2Key": "corpus/xenophon-memorabilia-en.json"
+    },
+    {
+      "workId": "demosthenes-first-olynthiac",
+      "language": "grc",
+      "repositoryPath": "data/classics-corpus/demosthenes-first-olynthiac-grc.json",
+      "gitBlobSha": "aa7f175378ddfada25d867d3e0ed1388d622dc01",
+      "passages": 28,
+      "sourceUrn": "urn:cts:greekLit:tlg0014.tlg001.perseus-grc2",
+      "source": "https://github.com/PerseusDL/canonical-greekLit/blob/master/data/tlg0014/tlg001/tlg0014.tlg001.perseus-grc2.xml",
+      "r2Status": "not_uploaded_or_verified",
+      "suggestedR2Key": "corpus/demosthenes-first-olynthiac-grc.json"
+    },
+    {
+      "workId": "demosthenes-first-olynthiac",
+      "language": "en",
+      "repositoryPath": "data/classics-corpus/demosthenes-first-olynthiac-en.json",
+      "gitBlobSha": "4d410744209aedb556a69d4f3c100bc709b7bb39",
+      "passages": 28,
+      "sourceUrn": "urn:cts:greekLit:tlg0014.tlg001.perseus-eng2",
+      "source": "https://github.com/PerseusDL/canonical-greekLit/blob/master/data/tlg0014/tlg001/tlg0014.tlg001.perseus-eng2.xml",
+      "r2Status": "not_uploaded_or_verified",
+      "suggestedR2Key": "corpus/demosthenes-first-olynthiac-en.json"
+    }
+  ]
+}
