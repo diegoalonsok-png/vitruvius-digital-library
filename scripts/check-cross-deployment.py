@@ -90,6 +90,11 @@ def diagnostic_html_difference(path):
                 "triple_script": match.group(0) if match else None,
                 "latin_triad_intro": "latín original indexado" in html and "Rose (1899" in html,
                 "legacy_ocr_intro": "se muestran como <strong>OCR sin corregir</strong>" in html,
+                "home_books_search": 'id="home-books-search"' in html,
+                "main_search": 'id="search-form"' in html,
+                "old_duplicate_loader": 'src="assets/unified-books-discovery.js' in html,
+                "new_home_style": "20261119-match-main-search-v1" in html,
+                "cloudflare_analytics": "static.cloudflareinsights.com/beacon.min.js" in html,
             }
         return {
             "first_difference_at": offset,
@@ -127,8 +132,9 @@ def main():
     print(json.dumps(report["summary"], ensure_ascii=False))
     for item in report["differences"]:
         print("DIVERGENCIA", item["path"])
-        if item["path"] == "scriptorium.html":
-            print("SCRIPTORIUM_HTML_DIAGNOSTIC", json.dumps(item.get("html_diagnostic", {}), ensure_ascii=False))
+        if item["path"] in ("scriptorium.html", "index.html"):
+            tag = "INDEX_HTML_DIAGNOSTIC" if item["path"] == "index.html" else "SCRIPTORIUM_HTML_DIAGNOSTIC"
+            print(tag, json.dumps(item.get("html_diagnostic", {}), ensure_ascii=False))
     for item in report["unavailable"]:
         print("SIN VERIFICAR", item["origin"], item["path"], item["state"])
     # An incomplete check never becomes a false PASS.
