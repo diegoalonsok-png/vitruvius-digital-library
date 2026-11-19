@@ -21,8 +21,8 @@ def check(filename):
         raise ValueError(f"{p}: language is not an approved translation language")
     if not work_id or not any(e.get("workId") == work_id and e.get("language") == "grc" for e in ENTRIES):
         raise ValueError(f"{p}: corresponding indexed Greek original is missing")
-    if not data.get("source") or not data.get("sourceSha256") or not data.get("attribution"):
-        raise ValueError(f"{p}: missing source provenance, digest or attribution")
+    if not data.get("source") or not (data.get("sourceSha256") or data.get("sourceBlobSha")) or not data.get("attribution"):
+        raise ValueError(f"{p}: missing source provenance, immutable digest or attribution")
     passages = data.get("passages")
     if not isinstance(passages, list) or len(passages) < 2:
         raise ValueError(f"{p}: no indexed translation passages")
