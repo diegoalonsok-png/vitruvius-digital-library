@@ -47,7 +47,8 @@ async function prepareCorpus(){
   const entries=registry.entries.filter(e=>
    (e.format==="json-passages"||e.format==="structured-bilingual") &&
    typeof e.path==="string" &&
-   /^data\/[a-z0-9/_-]+\.json$/.test(e.path));
+   (/^data\/[a-z0-9/_-]+\.json$/.test(e.path) ||
+    /^https:\/\/libros\.vitruvius-digital-library\.org\/corpus\/[a-z0-9_-]+\.json$/.test(e.path)));
   const byPath=new Map();
   for(const e of entries)byPath.set(e.path,{
    url:e.path,workId:e.workId,workTitle:e.title,author:e.author,
@@ -67,7 +68,7 @@ async function prepareCorpus(){
  // Five requests per batch prevent a simultaneous download of the whole library.
  for(let offset=0;offset<sources.length;offset+=5){
   const batch=sources.slice(offset,offset+5);
-  const settled=await Promise.allSettled(batch.map(async source=>requestJSON("./"+source.url)));
+  const settled=await Promise.allSettled(batch.map(async source=>requestJSON(/^https:\/\//.test(source.url)?source.url:"./"+source.url)));
   for(let i=0;i<batch.length;i++){
    const source=batch[i],result=settled[i];
    if(result.status!=="fulfilled"){unavailable.push(source.workId||source.url);continue}
