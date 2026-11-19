@@ -5,7 +5,7 @@
   "scope": "roadmap Greek works vs search-registry entries; does not independently certify R2 objects, text completeness, licenses or locus alignment",
   "counts": {
     "greekWorks": 160,
-    "missingHumanTranslation": 110,
+    "missingHumanTranslation": 108,
     "missingOriginalRegistryEntry": 20
   },
   "works": [
@@ -1307,13 +1307,18 @@
       "author": "Jenofonte",
       "title": "Ἀπομνημονεύματα",
       "originalRegistryIndexed": true,
-      "translationRegistryIndexed": false,
+      "translationRegistryIndexed": true,
       "indexedLanguages": [
-        "grc"
+        "grc",
+        "en"
       ],
-      "priority": "acquire-human-translation",
-      "translationStatus": "missing",
-      "sourceCandidate": null
+      "priority": "verify-locus-symmetry",
+      "translationStatus": "registered",
+      "sourceCandidate": {
+        "source": "PerseusDL/canonical-greekLit",
+        "language": "en",
+        "status": "indexed-human-translation-source-loci-not-aligned"
+      }
     },
     {
       "workId": "xenophon-hellenica",
@@ -1333,13 +1338,18 @@
       "author": "Demóstenes",
       "title": "Περὶ τοῦ στεφάνου",
       "originalRegistryIndexed": true,
-      "translationRegistryIndexed": false,
+      "translationRegistryIndexed": true,
       "indexedLanguages": [
-        "grc"
+        "grc",
+        "en"
       ],
-      "priority": "acquire-human-translation",
-      "translationStatus": "missing",
-      "sourceCandidate": null
+      "priority": "verify-locus-symmetry",
+      "translationStatus": "registered",
+      "sourceCandidate": {
+        "source": "PerseusDL/canonical-greekLit",
+        "language": "en",
+        "status": "indexed-human-translation-source-loci-not-aligned"
+      }
     },
     {
       "workId": "demosthenes-philippicae",
