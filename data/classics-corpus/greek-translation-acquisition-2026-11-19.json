@@ -1,0 +1,697 @@
+{
+  "schema": "vitruvius-greek-translation-acquisition-v1",
+  "auditedAt": "2026-11-19",
+  "basis": "data/classics-corpus/search-registry.json",
+  "definition": "Greek workId lacking an en/es/fr entry in this registry; does not prove no translations elsewhere in R2 or under alternate work IDs",
+  "missingCount": 126,
+  "missing": [
+    {
+      "workId": "aeneas-tacticus-poliorketika",
+      "title": "Πολιορκητικά",
+      "originalPath": "data/classics-corpus/aeneas-tacticus-poliorketika-grc.json"
+    },
+    {
+      "workId": "antologia-griega",
+      "title": "Ἀνθολογία Ἑλληνική · Anthologia Graeca (Palatina)",
+      "originalPath": "https://libros.vitruvius-digital-library.org/corpus/antologia-griega-grc.json"
+    },
+    {
+      "workId": "apolonio-argonauticas",
+      "title": "Ἀργοναυτικά · Argonautica",
+      "originalPath": "https://libros.vitruvius-digital-library.org/corpus/apolonio-argonauticas-grc.json"
+    },
+    {
+      "workId": "appian-romaika",
+      "title": "Ῥωμαϊκά",
+      "originalPath": "data/classics-corpus/appian-romaika-grc.json"
+    },
+    {
+      "workId": "aquiles-tacio-leucipa",
+      "title": "Τὰ κατὰ Λευκίππην καὶ Κλειτοφῶντα · Leucipa y Clitofonte",
+      "originalPath": "https://libros.vitruvius-digital-library.org/corpus/aquiles-tacio-leucipa-grc.json"
+    },
+    {
+      "workId": "aratus-phaenomena",
+      "title": "Φαινόμενα",
+      "originalPath": "data/classics-corpus/aratus-phaenomena-grc.json"
+    },
+    {
+      "workId": "archimedes-fluitantibus",
+      "title": "Περὶ τῶν ὀχουμένων",
+      "originalPath": "https://libros.vitruvius-digital-library.org/corpus/archimedes-fluitantibus-grc-334fea209f231138.json"
+    },
+    {
+      "workId": "aristophanes-acharnenses",
+      "title": "Ἀχαρνῆς",
+      "originalPath": "data/classics-corpus/aristophanes-acharnenses-grc.json"
+    },
+    {
+      "workId": "aristophanes-ecclesiazusae",
+      "title": "Ἐκκλησιάζουσαι",
+      "originalPath": "data/classics-corpus/aristophanes-ecclesiazusae-grc.json"
+    },
+    {
+      "workId": "aristophanes-knights",
+      "title": "Ἱππῆς",
+      "originalPath": "data/classics-corpus/aristophanes-knights-grc.json"
+    },
+    {
+      "workId": "aristophanes-lysistrata",
+      "title": "Λυσιστράτη",
+      "originalPath": "data/classics-corpus/aristophanes-lysistrata-grc.json"
+    },
+    {
+      "workId": "aristophanes-pax",
+      "title": "Εἰρήνη",
+      "originalPath": "data/classics-corpus/aristophanes-pax-grc.json"
+    },
+    {
+      "workId": "aristophanes-plutus",
+      "title": "Πλοῦτος",
+      "originalPath": "data/classics-corpus/aristophanes-plutus-grc.json"
+    },
+    {
+      "workId": "aristophanes-ranae",
+      "title": "Βάτραχοι",
+      "originalPath": "data/classics-corpus/aristophanes-ranae-grc.json"
+    },
+    {
+      "workId": "aristophanes-thesmophoriazusae",
+      "title": "Θεσμοφοριάζουσαι",
+      "originalPath": "data/classics-corpus/aristophanes-thesmophoriazusae-grc.json"
+    },
+    {
+      "workId": "aristophanes-vespae",
+      "title": "Σφῆκες",
+      "originalPath": "data/classics-corpus/aristophanes-vespae-grc.json"
+    },
+    {
+      "workId": "aristoteles-del-cielo",
+      "title": "Περὶ οὐρανοῦ · De caelo",
+      "originalPath": "https://libros.vitruvius-digital-library.org/corpus/aristoteles-del-cielo-grc.json"
+    },
+    {
+      "workId": "aristoteles-historia-animales",
+      "title": "Περὶ τὰ ζῷα ἱστορίαι · Historia animalium",
+      "originalPath": "https://libros.vitruvius-digital-library.org/corpus/aristoteles-historia-animales-grc.json"
+    },
+    {
+      "workId": "aristotle-de-anima",
+      "title": "Περὶ ψυχῆς",
+      "originalPath": "data/classics-corpus/aristotle-de-anima-grc.json"
+    },
+    {
+      "workId": "aristotle-physics",
+      "title": "Φυσικὴ ἀκρόασις",
+      "originalPath": "data/classics-corpus/aristotle-physics-grc.json"
+    },
+    {
+      "workId": "aristotle-rhetoric",
+      "title": "Ῥητορική",
+      "originalPath": "data/classics-corpus/aristotle-rhetoric-grc.json"
+    },
+    {
+      "workId": "aristoxenus-harmonica",
+      "title": "Ἁρμονικὰ στοιχεῖα",
+      "originalPath": "data/classics-corpus/aristoxenus-harmonica-grc.json"
+    },
+    {
+      "workId": "arrian-anabasis-alexandri",
+      "title": "Ἀλεξάνδρου Ἀνάβασις",
+      "originalPath": "data/classics-corpus/arrian-anabasis-alexandri-grc.json"
+    },
+    {
+      "workId": "athenaeus-deipnosophistae",
+      "title": "Δειπνοσοφισταί",
+      "originalPath": "https://libros.vitruvius-digital-library.org/corpus/athenaeus-deipnosophistae-grc-c11adda328eca994.json"
+    },
+    {
+      "workId": "baquilides-poemas",
+      "title": "Ἐπίνικοι καὶ διθύραμβοι · Epinicios y ditirambos",
+      "originalPath": "https://libros.vitruvius-digital-library.org/corpus/baquilides-poemas-grc.json"
+    },
+    {
+      "workId": "barnabas",
+      "title": "Ἐπιστολὴ Βαρνάβα · Epistula Barnabae",
+      "originalPath": "data/classics-corpus/barnabas-grc.json"
+    },
+    {
+      "workId": "calimaco-himnos",
+      "title": "Ὕμνοι καὶ ἐπιγράμματα · Himnos y epigramas (con la Ἀλεξάνδρα de Licofrón)",
+      "originalPath": "https://libros.vitruvius-digital-library.org/corpus/calimaco-himnos-grc.json"
+    },
+    {
+      "workId": "callimachus-hymni",
+      "title": "Ὕμνοι",
+      "originalPath": "data/classics-corpus/callimachus-hymni-grc.json"
+    },
+    {
+      "workId": "cassius-dio-historia",
+      "title": "Ῥωμαϊκὴ ἱστορία",
+      "originalPath": "https://libros.vitruvius-digital-library.org/corpus/cassius-dio-historia-grc-43482d9b45cf2bea.json"
+    },
+    {
+      "workId": "cebes-tabula",
+      "title": "Πίναξ · Tabula Cebetis",
+      "originalPath": "data/classics-corpus/cebes-tabula-grc.json"
+    },
+    {
+      "workId": "clement",
+      "title": "Πρὸς Κορινθίους Αʹ",
+      "originalPath": "data/classics-corpus/clement-grc.json"
+    },
+    {
+      "workId": "clement-2",
+      "title": "Δευτέρα Κλήμεντος · Segunda carta de Clemente",
+      "originalPath": "data/classics-corpus/clement-2-grc.json"
+    },
+    {
+      "workId": "cleonides-harmonica",
+      "title": "Εἰσαγωγὴ ἁρμονική · Introductio harmonica",
+      "originalPath": "https://libros.vitruvius-digital-library.org/corpus/cleonides-harmonica-grc-a7f8f1e13c9508a5.json"
+    },
+    {
+      "workId": "demosthenes-philippicae",
+      "title": "Φιλιππικοί",
+      "originalPath": "data/classics-corpus/demosthenes-philippicae-grc.json"
+    },
+    {
+      "workId": "diodorus",
+      "title": "Βιβλιοθήκη ἱστορική",
+      "originalPath": "data/classics-corpus/diodorus-grc.json"
+    },
+    {
+      "workId": "diogenes-laertius-vitae",
+      "title": "Βίοι καὶ γνῶμαι τῶν ἐν φιλοσοφίᾳ εὐδοκιμησάντων",
+      "originalPath": "data/classics-corpus/diogenes-laertius-vitae-grc.json"
+    },
+    {
+      "workId": "diognetus",
+      "title": "Πρὸς Διόγνητον · Carta a Diogneto",
+      "originalPath": "data/classics-corpus/diognetus-grc.json"
+    },
+    {
+      "workId": "dionysius",
+      "title": "Ῥωμαϊκὴ ἀρχαιολογία",
+      "originalPath": "data/classics-corpus/dionysius-grc.json"
+    },
+    {
+      "workId": "dioscorides",
+      "title": "Περὶ ὕλης ἰατρικῆς",
+      "originalPath": "data/classics-corpus/dioscorides-grc.json"
+    },
+    {
+      "workId": "epictetus-discourses",
+      "title": "Διατριβαί",
+      "originalPath": "data/classics-corpus/epictetus-discourses-grc.json"
+    },
+    {
+      "workId": "epicuro-restos",
+      "title": "Ἐπιστολαὶ καὶ Κύριαι δόξαι · Cartas y Máximas capitales",
+      "originalPath": "https://libros.vitruvius-digital-library.org/corpus/epicuro-restos-grc.json"
+    },
+    {
+      "workId": "esquines-discursos",
+      "title": "Λόγοι · Discursos",
+      "originalPath": "https://libros.vitruvius-digital-library.org/corpus/esquines-discursos-grc.json"
+    },
+    {
+      "workId": "euclid-elementa",
+      "title": "Στοιχεῖα · Elementa",
+      "originalPath": "data/classics-corpus/euclid-elementa-grc.json"
+    },
+    {
+      "workId": "euclid-optica",
+      "title": "Ὀπτικά · Optica",
+      "originalPath": "https://libros.vitruvius-digital-library.org/corpus/euclid-optica-grc-6cc3f8b109b782a4.json"
+    },
+    {
+      "workId": "euclid-phaenomena",
+      "title": "Φαινόμενα · Phaenomena y escritos musicales",
+      "originalPath": "https://libros.vitruvius-digital-library.org/corpus/euclid-phaenomena-grc-4e4a3c1b1b3eda93.json"
+    },
+    {
+      "workId": "eusebio",
+      "title": "Ἐκκλησιαστικὴ ἱστορία · Historia eclesiástica",
+      "originalPath": "data/classics-corpus/eusebio-grc.json"
+    },
+    {
+      "workId": "filostrato-apolonio",
+      "title": "Τὰ ἐς τὸν Τυανέα Ἀπολλώνιον · Vida de Apolonio de Tiana",
+      "originalPath": "https://libros.vitruvius-digital-library.org/corpus/filostrato-apolonio-grc.json"
+    },
+    {
+      "workId": "galen-adhortatio-artes",
+      "title": "Προτρεπτικὸς ἐπὶ τὰς τέχνας · Adhortatio ad artes addiscendas",
+      "originalPath": "data/classics-corpus/galen-adhortatio-artes-grc.json"
+    },
+    {
+      "workId": "galen-ars-medica",
+      "title": "Τέχνη ἰατρική",
+      "originalPath": "data/classics-corpus/galen-ars-medica-grc.json"
+    },
+    {
+      "workId": "galen-de-usu-partium",
+      "title": "Περὶ χρείας μορίων",
+      "originalPath": "data/classics-corpus/galen-de-usu-partium-grc.json"
+    },
+    {
+      "workId": "galen-optimus-medicus-philosophus",
+      "title": "Ὅτι ἄριστος ἰατρὸς καὶ φιλόσοφος · Quod optimus medicus sit quoque philosophus",
+      "originalPath": "data/classics-corpus/galen-optimus-medicus-philosophus-grc.json"
+    },
+    {
+      "workId": "galeno-facultades-naturales",
+      "title": "Περὶ φυσικῶν δυνάμεων · De naturalibus facultatibus",
+      "originalPath": "https://libros.vitruvius-digital-library.org/corpus/galeno-facultades-naturales-grc.json"
+    },
+    {
+      "workId": "hero-automata",
+      "title": "Αὐτοματοποιητική · Automata",
+      "originalPath": "data/classics-corpus/hero-automata-grc.json"
+    },
+    {
+      "workId": "hero-belopoeica",
+      "title": "Βελοποιικά · Belopoeica",
+      "originalPath": "https://libros.vitruvius-digital-library.org/corpus/hero-belopoeica-grc-fbb7bea5f038c2f6.json"
+    },
+    {
+      "workId": "hero-pneumatica",
+      "title": "Πνευματικά · Pneumatica",
+      "originalPath": "data/classics-corpus/hero-pneumatica-grc.json"
+    },
+    {
+      "workId": "herodotus-historiae",
+      "title": "Ἱστορίαι",
+      "originalPath": "data/classics-corpus/herodotus-historiae-grc.json"
+    },
+    {
+      "workId": "hipocrates-obras",
+      "title": "Corpus Hippocraticum (selección)",
+      "originalPath": "https://libros.vitruvius-digital-library.org/corpus/hipocrates-obras-grc.json"
+    },
+    {
+      "workId": "hippocrates-de-prisca-medicina",
+      "title": "Περὶ ἀρχαίης ἰητρικῆς · De prisca medicina",
+      "originalPath": "data/classics-corpus/hippocrates-de-prisca-medicina-grc.json"
+    },
+    {
+      "workId": "homeric-hymns",
+      "title": "Ὁμηρικοὶ ὕμνοι",
+      "originalPath": "data/classics-corpus/homeric-hymns-grc.json"
+    },
+    {
+      "workId": "ignatius",
+      "title": "Ἐπιστολαί · Cartas de Ignacio",
+      "originalPath": "data/classics-corpus/ignatius-grc.json"
+    },
+    {
+      "workId": "irenaeus",
+      "title": "Ἔλεγχος καὶ ἀνατροπὴ τῆς ψευδωνύμου γνώσεως · Adversus haereses",
+      "originalPath": "data/classics-corpus/irenaeus-grc.json"
+    },
+    {
+      "workId": "iseo-discursos",
+      "title": "Λόγοι · Discursos",
+      "originalPath": "https://libros.vitruvius-digital-library.org/corpus/iseo-discursos-grc.json"
+    },
+    {
+      "workId": "isocrates-discursos",
+      "title": "Λόγοι · Discursos (Πρὸς Δημόνικον, Πανηγυρικός)",
+      "originalPath": "https://libros.vitruvius-digital-library.org/corpus/isocrates-discursos-grc.json"
+    },
+    {
+      "workId": "jenofonte-ciropedia",
+      "title": "Κύρου παιδεία · Cyropaedia",
+      "originalPath": "https://libros.vitruvius-digital-library.org/corpus/jenofonte-ciropedia-grc.json"
+    },
+    {
+      "workId": "jenofonte-economico",
+      "title": "Οἰκονομικός · Oeconomicus",
+      "originalPath": "https://libros.vitruvius-digital-library.org/corpus/jenofonte-economico-grc.json"
+    },
+    {
+      "workId": "josephus-antiquities",
+      "title": "Ἰουδαϊκὴ ἀρχαιολογία",
+      "originalPath": "data/classics-corpus/josephus-antiquities-grc.json"
+    },
+    {
+      "workId": "josephus-war",
+      "title": "Περὶ τοῦ Ἰουδαϊκοῦ πολέμου",
+      "originalPath": "data/classics-corpus/josephus-war-grc.json"
+    },
+    {
+      "workId": "justin",
+      "title": "Ἀπολογία πρώτη · Primera Apología",
+      "originalPath": "data/classics-corpus/justin-grc.json"
+    },
+    {
+      "workId": "lisias-discursos",
+      "title": "Λόγοι · Discursos",
+      "originalPath": "https://libros.vitruvius-digital-library.org/corpus/lisias-discursos-grc.json"
+    },
+    {
+      "workId": "longino-sublime",
+      "title": "Περὶ ὕψους · De sublimitate",
+      "originalPath": "https://libros.vitruvius-digital-library.org/corpus/longino-sublime-grc.json"
+    },
+    {
+      "workId": "longo-dafnis-cloe",
+      "title": "Δάφνις καὶ Χλόη · Poimeniká",
+      "originalPath": "https://libros.vitruvius-digital-library.org/corpus/longo-dafnis-cloe-grc.json"
+    },
+    {
+      "workId": "lucian-bacchus",
+      "title": "Προλαλιά. Διόνυσος",
+      "originalPath": "data/classics-corpus/lucian-bacchus-grc.json"
+    },
+    {
+      "workId": "lucian-de-domo",
+      "title": "Περὶ τοῦ Οἴκου",
+      "originalPath": "data/classics-corpus/lucian-de-domo-grc.json"
+    },
+    {
+      "workId": "lucian-demonax",
+      "title": "Δημώνακτος Βίος",
+      "originalPath": "data/classics-corpus/lucian-demonax-grc.json"
+    },
+    {
+      "workId": "lucian-dialogi-mortuorum",
+      "title": "Νεκρικοὶ διάλογοι",
+      "originalPath": "data/classics-corpus/lucian-dialogi-mortuorum-grc.json"
+    },
+    {
+      "workId": "lucian-electrum",
+      "title": "Περὶ τοῦ Ἡλέκτρου ἢ Κύκνων",
+      "originalPath": "data/classics-corpus/lucian-electrum-grc.json"
+    },
+    {
+      "workId": "lucian-encomium-fatherland",
+      "title": "Πατρίδος Ἐγκώμιον",
+      "originalPath": "data/classics-corpus/lucian-encomium-fatherland-grc.json"
+    },
+    {
+      "workId": "lucian-encomium-fly",
+      "title": "Μυίας Ἐγκώμιον",
+      "originalPath": "data/classics-corpus/lucian-encomium-fly-grc.json"
+    },
+    {
+      "workId": "lucian-hercules",
+      "title": "Προλαλιά. Ἡρακλῆς",
+      "originalPath": "data/classics-corpus/lucian-hercules-grc.json"
+    },
+    {
+      "workId": "lucian-hippias",
+      "title": "Ἱππίας ἢ Βαλανεῖον",
+      "originalPath": "data/classics-corpus/lucian-hippias-grc.json"
+    },
+    {
+      "workId": "lucian-nigrinus",
+      "title": "Νιγρίνου Φιλοσοφία",
+      "originalPath": "data/classics-corpus/lucian-nigrinus-grc.json"
+    },
+    {
+      "workId": "lucian-phalaris",
+      "title": "Φάλαρις",
+      "originalPath": "data/classics-corpus/lucian-phalaris-grc.json"
+    },
+    {
+      "workId": "lysias-against-andocides",
+      "title": "κατ᾽ Ἀνδοκίδου ἀσεβείας",
+      "originalPath": "data/classics-corpus/lysias-against-andocides-grc.json"
+    },
+    {
+      "workId": "lysias-against-simon",
+      "title": "πρὸς Σίμωνα ἀπολογία",
+      "originalPath": "data/classics-corpus/lysias-against-simon-grc.json"
+    },
+    {
+      "workId": "lysias-calumny",
+      "title": "κατηγορία πρὸς τοὺς συνουσιαστὰς κακολογιῶν",
+      "originalPath": "data/classics-corpus/lysias-calumny-grc.json"
+    },
+    {
+      "workId": "lysias-eratosthenes",
+      "title": "ὑπὲρ τοῦ Ἐρατοσθένους φόνου ἀπολογία",
+      "originalPath": "data/classics-corpus/lysias-eratosthenes-grc.json"
+    },
+    {
+      "workId": "lysias-for-callias",
+      "title": "ὑπὲρ Καλλίου ἱεροσυλίας ἀπολογία",
+      "originalPath": "data/classics-corpus/lysias-for-callias-grc.json"
+    },
+    {
+      "workId": "lysias-funeral-oration",
+      "title": "Ἐπιτάφιος τοῖς Κορινθίων βοηθοῖς",
+      "originalPath": "data/classics-corpus/lysias-funeral-oration-grc.json"
+    },
+    {
+      "workId": "lysias-olive-stump",
+      "title": "Ἀρεοπαγιτικὸς περὶ τοῦ σηκοῦ ἀπολογία",
+      "originalPath": "data/classics-corpus/lysias-olive-stump-grc.json"
+    },
+    {
+      "workId": "lysias-soldier",
+      "title": "ὑπὲρ τοῦ στρατιωτοῦ",
+      "originalPath": "data/classics-corpus/lysias-soldier-grc.json"
+    },
+    {
+      "workId": "lysias-theomnestus-1",
+      "title": "κατὰ θεομνήστου, Α",
+      "originalPath": "data/classics-corpus/lysias-theomnestus-1-grc.json"
+    },
+    {
+      "workId": "lysias-wound",
+      "title": "περὶ τραύματος ἐκ προνοίας",
+      "originalPath": "data/classics-corpus/lysias-wound-grc.json"
+    },
+    {
+      "workId": "mark",
+      "title": "Εὐαγγέλιον κατὰ Μᾶρκον",
+      "originalPath": "data/classics-corpus/mark-grc.json"
+    },
+    {
+      "workId": "menander-dyskolos",
+      "title": "Δύσκολος",
+      "originalPath": "data/classics-corpus/menander-dyskolos-grc.json"
+    },
+    {
+      "workId": "menandro-comedias",
+      "title": "Κωμῳδίαι · Comedias (fragmentos papiráceos)",
+      "originalPath": "https://libros.vitruvius-digital-library.org/corpus/menandro-comedias-grc.json"
+    },
+    {
+      "workId": "origenes",
+      "title": "Περὶ ἀρχῶν · De principiis",
+      "originalPath": "https://libros.vitruvius-digital-library.org/corpus/origenes-grc.json"
+    },
+    {
+      "workId": "pastor-hermas",
+      "title": "Ποιμὴν Ἑρμᾶ · Pastor de Hermas",
+      "originalPath": "data/classics-corpus/pastor-hermas-grc.json"
+    },
+    {
+      "workId": "pausanias-periegesis",
+      "title": "Ἑλλάδος περιήγησις",
+      "originalPath": "data/classics-corpus/pausanias-periegesis-grc.json"
+    },
+    {
+      "workId": "platon-cratilo-parmenides",
+      "title": "Κρατύλος · Παρμενίδης · Crátilo y Parménides (con Fedón y Timeo, trad. de Th. Taylor)",
+      "originalPath": "https://libros.vitruvius-digital-library.org/corpus/platon-cratilo-parmenides-grc.json"
+    },
+    {
+      "workId": "platon-protagoras",
+      "title": "Λάχης · Πρωταγόρας · Μένων · Εὐθύδημος",
+      "originalPath": "https://libros.vitruvius-digital-library.org/corpus/platon-protagoras-grc.json"
+    },
+    {
+      "workId": "platon-teeteto-sofista",
+      "title": "Θεαίτητος · Σοφιστής · Teeteto y Sofista",
+      "originalPath": "https://libros.vitruvius-digital-library.org/corpus/platon-teeteto-sofista-grc.json"
+    },
+    {
+      "workId": "plotino-eneadas",
+      "title": "Ἐννεάδες · Enneades",
+      "originalPath": "https://libros.vitruvius-digital-library.org/corpus/plotino-eneadas-grc.json"
+    },
+    {
+      "workId": "plutarch-lives",
+      "title": "Βίοι Παράλληλοι · Vidas paralelas",
+      "originalPath": "https://libros.vitruvius-digital-library.org/corpus/plutarch-lives-grc-58cbbdaf742a60cf.json"
+    },
+    {
+      "workId": "plutarch-moralia",
+      "title": "Ἠθικά (Moralia)",
+      "originalPath": "https://libros.vitruvius-digital-library.org/corpus/plutarch-moralia-grc-544c57706b559b70.json"
+    },
+    {
+      "workId": "polybius-historiae",
+      "title": "Ἱστορίαι",
+      "originalPath": "data/classics-corpus/polybius-historiae-grc.json"
+    },
+    {
+      "workId": "polycarp",
+      "title": "Πρὸς Φιλιππησίους · Carta a los Filipenses",
+      "originalPath": "data/classics-corpus/polycarp-grc.json"
+    },
+    {
+      "workId": "ps-aristotle-mechanica",
+      "title": "Μηχανικὰ προβλήματα",
+      "originalPath": "https://libros.vitruvius-digital-library.org/corpus/ps-aristotle-mechanica-grc-4f7a5f316207eca0.json"
+    },
+    {
+      "workId": "pseudo-apollodorus-bibliotheca",
+      "title": "Βιβλιοθήκη (Bibliotheca)",
+      "originalPath": "data/classics-corpus/pseudo-apollodorus-bibliotheca-grc.json"
+    },
+    {
+      "workId": "ptolemy-almagest",
+      "title": "Μαθηματικὴ σύνταξις (Almagestum)",
+      "originalPath": "data/classics-corpus/ptolemy-almagest-grc.json"
+    },
+    {
+      "workId": "quinto-esmirna-posthomericas",
+      "title": "Τὰ μεθ' Ὅμηρον · Posthomerica",
+      "originalPath": "https://libros.vitruvius-digital-library.org/corpus/quinto-esmirna-posthomericas-grc.json"
+    },
+    {
+      "workId": "strabo",
+      "title": "Γεωγραφικά",
+      "originalPath": "data/classics-corpus/strabo-grc.json"
+    },
+    {
+      "workId": "teocrito-bucolicos",
+      "title": "Εἰδύλλια · Idilios",
+      "originalPath": "https://libros.vitruvius-digital-library.org/corpus/teocrito-bucolicos-grc.json"
+    },
+    {
+      "workId": "theocritus-idyllia",
+      "title": "Εἰδύλλια",
+      "originalPath": "data/classics-corpus/theocritus-idyllia-grc.json"
+    },
+    {
+      "workId": "theophrastus-historia-plantarum",
+      "title": "Περὶ φυτῶν ἱστορίας",
+      "originalPath": "https://libros.vitruvius-digital-library.org/corpus/theophrastus-historia-plantarum-grc-66c50429684fcbc3.json"
+    },
+    {
+      "workId": "thucydides-war",
+      "title": "Ἱστορία τοῦ Πελοποννησιακοῦ πολέμου",
+      "originalPath": "https://libros.vitruvius-digital-library.org/corpus/thucydides-war-grc-6090ade6c2c92022.json"
+    },
+    {
+      "workId": "xenophon-agesilaus",
+      "title": "Ἀγησίλαος",
+      "originalPath": "data/classics-corpus/xenophon-agesilaus-grc.json"
+    },
+    {
+      "workId": "xenophon-apology",
+      "title": "Ἀπολογία Σωκράτους",
+      "originalPath": "data/classics-corpus/xenophon-apology-grc.json"
+    },
+    {
+      "workId": "xenophon-hellenica",
+      "title": "Ἑλληνικά",
+      "originalPath": "data/classics-corpus/xenophon-hellenica-grc.json"
+    },
+    {
+      "workId": "xenophon-hiero",
+      "title": "Ἱέρων",
+      "originalPath": "data/classics-corpus/xenophon-hiero-grc.json"
+    },
+    {
+      "workId": "xenophon-hipparchicus",
+      "title": "Ἱππαρχικός",
+      "originalPath": "data/classics-corpus/xenophon-hipparchicus-grc.json"
+    },
+    {
+      "workId": "xenophon-horsemanship",
+      "title": "Περὶ ἱππικῆς",
+      "originalPath": "data/classics-corpus/xenophon-horsemanship-grc.json"
+    },
+    {
+      "workId": "xenophon-hunting",
+      "title": "Κυνηγετικός",
+      "originalPath": "data/classics-corpus/xenophon-hunting-grc.json"
+    },
+    {
+      "workId": "xenophon-lacedaemonian-constitution",
+      "title": "Λακεδαιμονίων Πολιτεία",
+      "originalPath": "data/classics-corpus/xenophon-lacedaemonian-constitution-grc.json"
+    },
+    {
+      "workId": "xenophon-oeconomicus",
+      "title": "Οἰκονομικός",
+      "originalPath": "data/classics-corpus/xenophon-oeconomicus-grc.json"
+    },
+    {
+      "workId": "xenophon-symposium",
+      "title": "Συμπόσιον",
+      "originalPath": "data/classics-corpus/xenophon-symposium-grc.json"
+    },
+    {
+      "workId": "xenophon-ways-means",
+      "title": "Πόροι ἢ περὶ προσόδων",
+      "originalPath": "data/classics-corpus/xenophon-ways-means-grc.json"
+    }
+  ],
+  "candidates": [
+    {
+      "workId": "aristophanes-acharnenses",
+      "language": "en",
+      "sourceTitle": "The Acharnians",
+      "sourceUrl": "https://www.gutenberg.org/ebooks/3012",
+      "format": "ebook / plain text available",
+      "translationCredit": "Translator uncredited in Gutenberg #3012",
+      "rightsNote": "Gutenberg lists public domain in the USA; verify redistribution rights in target jurisdictions",
+      "alignment": "not aligned to Greek loci",
+      "status": "located-not-downloaded-not-indexed"
+    },
+    {
+      "workId": "aristophanes-knights",
+      "language": "en",
+      "sourceTitle": "The Eleven Comedies, Volume 1",
+      "sourceUrl": "https://www.gutenberg.org/ebooks/8688",
+      "format": "multitext ebook; isolate The Knights",
+      "translationCredit": "Check Gutenberg bibliographic notes before import",
+      "rightsNote": "Gutenberg public-domain edition: verify local rights and edition metadata",
+      "alignment": "not aligned to Greek loci",
+      "status": "located-not-downloaded-not-indexed"
+    },
+    {
+      "workId": "aristophanes-pax",
+      "language": "en",
+      "sourceTitle": "The Eleven Comedies, Volume 1",
+      "sourceUrl": "https://www.gutenberg.org/ebooks/8688",
+      "format": "multitext ebook; isolate Peace",
+      "translationCredit": "Check Gutenberg bibliographic notes before import",
+      "rightsNote": "Gutenberg public-domain edition: verify local rights and edition metadata",
+      "alignment": "not aligned to Greek loci",
+      "status": "located-not-downloaded-not-indexed"
+    },
+    {
+      "workId": "aristophanes-lysistrata",
+      "language": "en",
+      "sourceTitle": "The Eleven Comedies, Volume 1",
+      "sourceUrl": "https://www.gutenberg.org/ebooks/8688",
+      "format": "multitext ebook; isolate Lysistrata",
+      "translationCredit": "Check Gutenberg bibliographic notes before import",
+      "rightsNote": "Gutenberg public-domain edition: verify local rights and edition metadata",
+      "alignment": "not aligned to Greek loci",
+      "status": "located-not-downloaded-not-indexed"
+    },
+    {
+      "workId": "clement",
+      "language": "en",
+      "sourceTitle": "First Clement — Lake 1912 translation",
+      "sourceUrl": "https://voicesofthefathers.org/library/first-clement",
+      "format": "html",
+      "translationCredit": "Kirsopp Lake (1912)",
+      "rightsNote": "Site describes historical translation as US public domain; verify transcription reuse terms",
+      "alignment": "not aligned to Greek loci",
+      "status": "located-not-downloaded-not-indexed"
+    }
+  ],
+  "policy": "Do not mark a translation indexed until full text, bibliographic provenance, rights, source checksum, passage-level indexing and reader link are verified. No automatic Greek-English locus alignment."
+}
