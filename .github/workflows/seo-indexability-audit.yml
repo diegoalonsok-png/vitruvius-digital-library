@@ -1,0 +1,31 @@
+name: Auditoría SEO · Sitemap, canonicals y Dataset
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/audit-site-technical-seo.mjs'
+      - '.github/workflows/seo-indexability-audit.yml'
+      - 'sitemap.xml'
+      - 'robots.txt'
+permissions:
+  contents: read
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Diagnóstico no destructivo de indexabilidad
+        run: node scripts/audit-site-technical-seo.mjs
+      - name: Guardar informe verificable
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: seo-indexabilidad
+          path: reports/seo/technical-indexability.json
+          retention-days: 30
+          if-no-files-found: warn
