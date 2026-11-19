@@ -16,6 +16,7 @@ const pairedExact=pair.find({locus:'urn:cts:greekLit:tlg0059.tlg001.perseus-grc2
 assert.equal(pairedExact.kind,'same-locus');
 assert.equal(pairedExact.passages.length,1);
 assert.equal(pair.find({locus:'t1'},[{locus:'t2',text:'Different passage'}]).kind,'none');
+assert.equal(pair.find({locus:'t1'},[{locus:'t1',text:'Same ordinal but non-equivalent editions'}]).kind,'none');
 assert.equal(pair.find({locus:'1.1-3'},[{locus:'2.2',text:'Wrong poem'}]).kind,'none');
 assert.equal(pair.find({locus:'1.1-3'},[{locus:'1.4',text:'Outside interval'}]).kind,'none');
 assert.equal(pair.find({locus:'1.1-3'},[{locus:'1.2',text:''}]).kind,'none');
