@@ -1,16 +1,16 @@
 {
   "schema": "vitruvius-classics-translation-availability-v1",
-  "generated": "2026-11-18",
-  "basis": "Cálculo a partir de works[] y search-registry.json. Los campos de compatibilidad locallyIndexedWorks y localEditionLanguages incluyen índices registrados en R2. originalIndexed y verifiedLocalEditionLanguages solo cuentan archivos locales. originalR2Registered identifica declaraciones remotas; no certifica disponibilidad HTTP ni cotejo.",
+  "generated": "2026-11-19",
+  "basis": "Cálculo a partir de works[] y search-registry.json. Los campos de compatibilidad locallyIndexedWorks y localEditionLanguages incluyen índices registrados en R2. originalIndexed y verifiedLocalEditionLanguages solo cuentan archivos locales. originalR2Registered identifica declaraciones remotas; no certifica disponibilidad HTTP ni cotejo. Traducción Hero Pneumatica inglesa alojada en GitHub, original griego existente; fuente y 78 secciones separadas por edición. Índice invertido pendiente de reconstrucción tras la fusión.",
   "scope": "271 obras del repertorio grecolatino; originales locales, índices remotos declarados y traducciones alojadas ES/EN/FR",
   "totals": {
     "cataloguedWorks": 271,
     "locallyIndexedWorks": 226,
-    "translatedWorksLocal": 59,
-    "worksWithoutHostedTranslation": 212,
+    "translatedWorksLocal": 60,
+    "worksWithoutHostedTranslation": 211,
     "localTranslationLanguages": {
       "es": 5,
-      "en": 58,
+      "en": 59,
       "fr": 2
     },
     "originalTextIndexed": 182,
@@ -19,11 +19,11 @@
     "declaredRemoteOnlyWorks": 44,
     "declaredR2OriginalWorks": 44,
     "registeredOriginalWorks": 226,
-    "registeredTextVersions": 291,
-    "verifiedLocalTextVersions": 247,
+    "registeredTextVersions": 292,
+    "verifiedLocalTextVersions": 248,
     "verifiedLocalOriginalTextIndexed": 182,
     "supplementaryTextVersions": 81,
-    "allRegisteredTextVersions": 372
+    "allRegisteredTextVersions": 373
   },
   "works": [
     {
@@ -1432,22 +1432,27 @@
       "title": "Πνευματικά · Pneumatica",
       "originalLanguage": "grc",
       "originalIndexed": true,
-      "translationLanguages": [],
+      "translationLanguages": [
+        "en"
+      ],
       "localEditionLanguages": [
+        "en",
         "grc"
       ],
       "externalTranslationUnverified": [],
-      "readingStatus": "lectura-local-parcial",
-      "translationSourceDescription": "Traducción alemana de Schmidt en la misma edición.",
-      "translationRegisteredButNotHosted": true,
+      "readingStatus": "lectura-local-completa",
+      "translationSourceDescription": "Inglés: Joseph George Greenwood, edición Bennet Woodcroft (1851), The Pneumatics of Hero of Alexandria; Project Gutenberg eBook 77400, transcripción humana; 78 secciones indexables, no alineadas automáticamente con el griego.",
+      "translationRegisteredButNotHosted": false,
       "indexed": true,
       "originalR2Registered": false,
       "registeredOriginal": true,
       "registeredEditionLanguages": [
+        "en",
         "grc"
       ],
       "remoteEditionLanguages": [],
       "verifiedLocalEditionLanguages": [
+        "en",
         "grc"
       ]
     },
