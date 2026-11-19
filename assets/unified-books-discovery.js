@@ -104,7 +104,7 @@ function mount(root,queryInput){
  }
  more.addEventListener("click",render);
  async function run(e){
-  e?.preventDefault();const id=++current,q=input.value.trim();panel.hidden=fold(q).length<2;lexLink.hidden=fold(q).length<2;lexLink.href="vitruvia-lexicon.html?"+new URLSearchParams({q,mode:"palabra",lang:"auto"});list.replaceChildren();visible=0;all=[];more.hidden=true;viewer.hidden=true;frame.removeAttribute("src");
+  e?.preventDefault();const id=++current,q=input.value.trim();panel.hidden=!homepage&&fold(q).length<2;lexLink.hidden=fold(q).length<2;lexLink.href="vitruvia-lexicon.html?"+new URLSearchParams({q,mode:"palabra",lang:"auto"});list.replaceChildren();visible=0;all=[];more.hidden=true;viewer.hidden=true;frame.removeAttribute("src");
   if(fold(q).length<2){status.textContent="Escriba al menos dos caracteres.";return}
   status.textContent="Consultando registros internos de textos y visores…";go.disabled=true;
   try{const data=await fetchData();if(id!==current)return;
