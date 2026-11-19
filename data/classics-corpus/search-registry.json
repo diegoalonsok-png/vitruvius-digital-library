@@ -2,8 +2,8 @@
   "schema": "vitruvia-classics-search-registry-v1",
   "updated": "2026-11-18",
   "description": "Registro verificable de transcripciones HTML y textos JSON existentes que admiten búsqueda literal de contenido. No incluye automáticamente PDF escaneados, facsímiles ni fichas sin texto. Los índices auxiliares por locus y el aparato crítico se declaran por separado; no se suman a versiones textuales originales ni implican colación autóptica.",
-  "count": 405,
-  "works": 299,
+  "count": 407,
+  "works": 300,
   "entries": [
     {
       "workId": "aeneas-tacticus-poliorketika",
@@ -962,6 +962,26 @@
       "path": "data/classics-corpus/demosthenes-de-corona-grc.json",
       "reader": "classics-text-reader.html?work=demosthenes-de-corona&lang=grc",
       "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
+      "workId": "demosthenes-first-olynthiac",
+      "author": "Demóstenes",
+      "title": "Ὀλυνθιακὸς α΄ · Primera Olíntica",
+      "language": "en",
+      "format": "json-passages",
+      "path": "data/classics-corpus/demosthenes-first-olynthiac-en.json",
+      "reader": "classics-text-reader.html?work=demosthenes-first-olynthiac&lang=en",
+      "sourceDescription": "Traducción humana inglesa de J. H. Vince, 1930; Perseus Digital Library TEI; 28 secciones documentadas y coincidentes entre ambas ediciones"
+    },
+    {
+      "workId": "demosthenes-first-olynthiac",
+      "author": "Demóstenes",
+      "title": "Ὀλυνθιακὸς α΄ · Primera Olíntica",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/demosthenes-first-olynthiac-grc.json",
+      "reader": "classics-text-reader.html?work=demosthenes-first-olynthiac&lang=grc",
+      "sourceDescription": "Texto griego editado por S. H. Butcher, 1903; Perseus Digital Library TEI; 28 secciones documentadas y coincidentes entre ambas ediciones"
     },
     {
       "workId": "demosthenes-philippicae",
