@@ -23,7 +23,7 @@ jobs:
         run: python3 -m py_compile scripts/audit-r2-github-text-symmetry.py
       - name: Compare all registered R2 corpus files against GitHub catalog
         run: |
-          python3 scripts/audit-r2-github-text-symmetry.py             --workers 4             --ocr-sample 6             --output /tmp/vitruvius-r2-symmetry-report.json
+          python3 scripts/audit-r2-github-text-symmetry.py             --workers 4             --ocr-sample 117             --output /tmp/vitruvius-r2-symmetry-report.json
       - name: Upload detailed parity report
         if: always()
         uses: actions/upload-artifact@v4
