@@ -58,6 +58,16 @@ ASSETS = (
     "data/classics-corpus/semantic-conceptus-postings.json",
 )
 
+def source_bytes(url, data):
+    """Exclude only Cloudflare's automatic analytics beacon from HTML comparisons.
+    Raw SHA-256 remains recorded; any other HTML change still fails the parity check.
+    """
+    if not url.lower().endswith(".html"):
+        return data
+    beacon = rb'<script\\b(?=[^>]*https://static\\.cloudflareinsights\\.com/beacon\\.min\\.js)[^>]*>\\s*</script>(?:\\r?\\n)?'
+    return re.sub(beacon, b"", data, flags=re.IGNORECASE)
+
+
 def request(url):
     req = urllib.request.Request(url, headers={"User-Agent": "Vitruvius-deployment-integrity/1.0", "Cache-Control": "no-cache"})
     try:
@@ -67,6 +77,7 @@ def request(url):
                 "status": response.status,
                 "size": len(data),
                 "sha256": hashlib.sha256(data).hexdigest(),
+                "source_sha256": hashlib.sha256(source_bytes(url, data)).hexdigest(),
                 "content_type": response.headers.get("Content-Type", ""),
             }
     except (urllib.error.HTTPError, urllib.error.URLError, TimeoutError, OSError) as exc:
@@ -110,7 +121,8 @@ def diagnostic_html_difference(path):
 def main():
     report = {"schema": "vdl-cross-deployment-audit-v1",
               "checked_utc": datetime.now(timezone.utc).isoformat(),
-              "origins": ORIGINS, "paths": {}, "differences": [], "unavailable": []}
+              "origins": ORIGINS, "paths": {}, "differences": [],
+              "hosting_instrumentation_only": [], "unavailable": []}
     for path in ASSETS:
         states = {name: request(root + "/" + path) for name, root in ORIGINS.items()}
         report["paths"][path] = states
@@ -119,12 +131,16 @@ def main():
                 report["unavailable"].append({"path": path, "origin": name, "state": value})
         left, right = states.values()
         if "sha256" in left and "sha256" in right and left["sha256"] != right["sha256"]:
+            if left["source_sha256"] == right["source_sha256"]:
+                report["hosting_instrumentation_only"].append({"path": path, "type": "cloudflare-analytics-beacon"})
+                continue
             difference = {"path": path, "github_sha256": left["sha256"], "cloudflare_sha256": right["sha256"]}
             if path.endswith(".html"):
                 difference["html_diagnostic"] = diagnostic_html_difference(path)
             report["differences"].append(difference)
     report["summary"] = {"assets_checked": len(ASSETS),
                          "divergent_assets": len(report["differences"]),
+                         "hosting_instrumentation_only": len(report["hosting_instrumentation_only"]),
                          "unavailable_assets": len(report["unavailable"])}
     target = Path("reports/deployment/cross-deployment-audit.json")
     target.parent.mkdir(parents=True, exist_ok=True)
