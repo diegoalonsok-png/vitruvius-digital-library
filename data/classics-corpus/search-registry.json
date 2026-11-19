@@ -2,8 +2,8 @@
   "schema": "vitruvia-classics-search-registry-v1",
   "updated": "2026-11-19",
   "description": "Registro verificable de transcripciones HTML y textos JSON existentes que admiten búsqueda literal de contenido. No incluye automáticamente PDF escaneados, facsímiles ni fichas sin texto. Los índices auxiliares por locus y el aparato crítico se declaran por separado; no se suman a versiones textuales originales ni implican colación autóptica.",
-  "count": 411,
-  "works": 300,
+  "count": 461,
+  "works": 350,
   "entries": [
     {
       "workId": "aeneas-tacticus-poliorketika",
@@ -1512,6 +1512,506 @@
       "sourceDescription": "Perseus/First1KGreek TEI · edición atribuida en el archivo · sin cotejo ni alineación automática",
       "sha256": "65884f0112a0d79ccb638c7dab6fc75a5cf65d34ee01651d5ab2432857cdc9d3",
       "passages": 348
+    },
+    {
+      "workId": "first1k-tlg0057-tlg002",
+      "author": "Galen",
+      "title": "De optima doctrina",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/first1k-tlg0057-tlg002-grc.json",
+      "reader": "classics-text-reader.html?work=first1k-tlg0057-tlg002&lang=grc",
+      "sourceDescription": "OpenGreekAndLatin First1KGreek TEI · CC BY-SA 4.0 · urn:cts:greekLit:tlg0057.tlg002.1st1K-grc1 · SHA256 verificado, sin cotejo autóptico"
+    },
+    {
+      "workId": "first1k-tlg0057-tlg024",
+      "author": "Galen",
+      "title": "De optima corporis nostri constitutione",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/first1k-tlg0057-tlg024-grc.json",
+      "reader": "classics-text-reader.html?work=first1k-tlg0057-tlg024&lang=grc",
+      "sourceDescription": "OpenGreekAndLatin First1KGreek TEI · CC BY-SA 4.0 · urn:cts:greekLit:tlg0057.tlg024.1st1K-grc1 · SHA256 verificado, sin cotejo autóptico"
+    },
+    {
+      "workId": "first1k-tlg0057-tlg030",
+      "author": "Galen",
+      "title": "De atra bile",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/first1k-tlg0057-tlg030-grc.json",
+      "reader": "classics-text-reader.html?work=first1k-tlg0057-tlg030&lang=grc",
+      "sourceDescription": "OpenGreekAndLatin First1KGreek TEI · CC BY-SA 4.0 · urn:cts:greekLit:tlg0057.tlg030.1st1K-grc1 · SHA256 verificado, sin cotejo autóptico"
+    },
+    {
+      "workId": "first1k-tlg0057-tlg034",
+      "author": "Galen",
+      "title": "De parvae pilae exercitio",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/first1k-tlg0057-tlg034-grc.json",
+      "reader": "classics-text-reader.html?work=first1k-tlg0057-tlg034&lang=grc",
+      "sourceDescription": "OpenGreekAndLatin First1KGreek TEI · CC BY-SA 4.0 · urn:cts:greekLit:tlg0057.tlg034.1st1K-grc2 · SHA256 verificado, sin cotejo autóptico"
+    },
+    {
+      "workId": "first1k-tlg0057-tlg039",
+      "author": "Galen",
+      "title": "De ptisana",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/first1k-tlg0057-tlg039-grc.json",
+      "reader": "classics-text-reader.html?work=first1k-tlg0057-tlg039&lang=grc",
+      "sourceDescription": "OpenGreekAndLatin First1KGreek TEI · CC BY-SA 4.0 · urn:cts:greekLit:tlg0057.tlg039.1st1K-grc1 · SHA256 verificado, sin cotejo autóptico"
+    },
+    {
+      "workId": "first1k-tlg0057-tlg048",
+      "author": "Galen",
+      "title": "De typis",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/first1k-tlg0057-tlg048-grc.json",
+      "reader": "classics-text-reader.html?work=first1k-tlg0057-tlg048&lang=grc",
+      "sourceDescription": "OpenGreekAndLatin First1KGreek TEI · CC BY-SA 4.0 · urn:cts:greekLit:tlg0057.tlg048.1st1K-grc1 · SHA256 verificado, sin cotejo autóptico"
+    },
+    {
+      "workId": "first1k-tlg0057-tlg082",
+      "author": "Galen",
+      "title": "De sophismatis seu captionibus penes dictionem",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/first1k-tlg0057-tlg082-grc.json",
+      "reader": "classics-text-reader.html?work=first1k-tlg0057-tlg082&lang=grc",
+      "sourceDescription": "OpenGreekAndLatin First1KGreek TEI · CC BY-SA 4.0 · urn:cts:greekLit:tlg0057.tlg082.1st1K-grc1 · SHA256 verificado, sin cotejo autóptico"
+    },
+    {
+      "workId": "first1k-tlg0082-tlg002",
+      "author": "Apollonius Dyscolus",
+      "title": "Περὶ ἐπιρρημάτων",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/first1k-tlg0082-tlg002-grc.json",
+      "reader": "classics-text-reader.html?work=first1k-tlg0082-tlg002&lang=grc",
+      "sourceDescription": "OpenGreekAndLatin First1KGreek TEI · CC BY-SA 4.0 · urn:cts:greekLit:tlg0082.tlg002.1st1K-grc1 · SHA256 verificado, sin cotejo autóptico"
+    },
+    {
+      "workId": "first1k-tlg0082-tlg003",
+      "author": "Apollonius Dyscolus",
+      "title": "Περὶ συνδέσμων",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/first1k-tlg0082-tlg003-grc.json",
+      "reader": "classics-text-reader.html?work=first1k-tlg0082-tlg003&lang=grc",
+      "sourceDescription": "OpenGreekAndLatin First1KGreek TEI · CC BY-SA 4.0 · urn:cts:greekLit:tlg0082.tlg003.1st1K-grc1 · SHA256 verificado, sin cotejo autóptico"
+    },
+    {
+      "workId": "first1k-tlg0086-tlg004",
+      "author": "Aristotle",
+      "title": "Ἐκ τοῦ περὶ ἀκουστῶν",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/first1k-tlg0086-tlg004-grc.json",
+      "reader": "classics-text-reader.html?work=first1k-tlg0086-tlg004&lang=grc",
+      "sourceDescription": "OpenGreekAndLatin First1KGreek TEI · CC BY-SA 4.0 · urn:cts:greekLit:tlg0086.tlg004.1st1K-grc1 · SHA256 verificado, sin cotejo autóptico"
+    },
+    {
+      "workId": "first1k-tlg0086-tlg019",
+      "author": "Aristotle",
+      "title": "Περὶ ἀτόμων γραμμῶν",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/first1k-tlg0086-tlg019-grc.json",
+      "reader": "classics-text-reader.html?work=first1k-tlg0086-tlg019&lang=grc",
+      "sourceDescription": "OpenGreekAndLatin First1KGreek TEI · CC BY-SA 4.0 · urn:cts:greekLit:tlg0086.tlg019.1st1K-grc1 · SHA256 verificado, sin cotejo autóptico"
+    },
+    {
+      "workId": "first1k-tlg0086-tlg043",
+      "author": "Aristotle",
+      "title": "De spiritu",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/first1k-tlg0086-tlg043-grc.json",
+      "reader": "classics-text-reader.html?work=first1k-tlg0086-tlg043&lang=grc",
+      "sourceDescription": "OpenGreekAndLatin First1KGreek TEI · CC BY-SA 4.0 · urn:cts:greekLit:tlg0086.tlg043.1st1K-grc1 · SHA256 verificado, sin cotejo autóptico"
+    },
+    {
+      "workId": "first1k-tlg0086-tlg047",
+      "author": "Aristotle",
+      "title": "Περὶ Ξενοφάνους, περὶ Ζήνωνος, περὶ Γοργίου",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/first1k-tlg0086-tlg047-grc.json",
+      "reader": "classics-text-reader.html?work=first1k-tlg0086-tlg047&lang=grc",
+      "sourceDescription": "OpenGreekAndLatin First1KGreek TEI · CC BY-SA 4.0 · urn:cts:greekLit:tlg0086.tlg047.1st1K-grc1 · SHA256 verificado, sin cotejo autóptico"
+    },
+    {
+      "workId": "first1k-tlg0093-tlg006",
+      "author": "Theophrastus",
+      "title": "Ἐκ τῶν μετὰ τὰ φυσικά",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/first1k-tlg0093-tlg006-grc.json",
+      "reader": "classics-text-reader.html?work=first1k-tlg0093-tlg006&lang=grc",
+      "sourceDescription": "OpenGreekAndLatin First1KGreek TEI · CC BY-SA 4.0 · urn:cts:greekLit:tlg0093.tlg006.1st1K-grc1 · SHA256 verificado, sin cotejo autóptico"
+    },
+    {
+      "workId": "first1k-tlg0093-tlg010x03",
+      "author": "Theophrastus",
+      "title": "Περί Σημείων Ὑδάτων και Pνευμάτων και Xειμώνων και Εὐδιών",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/first1k-tlg0093-tlg010x03-grc.json",
+      "reader": "classics-text-reader.html?work=first1k-tlg0093-tlg010x03&lang=grc",
+      "sourceDescription": "OpenGreekAndLatin First1KGreek TEI · CC BY-SA 4.0 · urn:cts:greekLit:tlg0093.tlg010x03.1st1K-grc1 · SHA256 verificado, sin cotejo autóptico"
+    },
+    {
+      "workId": "first1k-tlg0093-tlg010x04",
+      "author": "Theophrastus",
+      "title": "Περί Κόπων",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/first1k-tlg0093-tlg010x04-grc.json",
+      "reader": "classics-text-reader.html?work=first1k-tlg0093-tlg010x04&lang=grc",
+      "sourceDescription": "OpenGreekAndLatin First1KGreek TEI · CC BY-SA 4.0 · urn:cts:greekLit:tlg0093.tlg010x04.1st1K-grc1 · SHA256 verificado, sin cotejo autóptico"
+    },
+    {
+      "workId": "first1k-tlg0093-tlg010x06",
+      "author": "Theophrastus",
+      "title": "Περί Ἰδρώτων",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/first1k-tlg0093-tlg010x06-grc.json",
+      "reader": "classics-text-reader.html?work=first1k-tlg0093-tlg010x06&lang=grc",
+      "sourceDescription": "OpenGreekAndLatin First1KGreek TEI · CC BY-SA 4.0 · urn:cts:greekLit:tlg0093.tlg010x06.1st1K-grc1 · SHA256 verificado, sin cotejo autóptico"
+    },
+    {
+      "workId": "first1k-tlg0358-tlg001",
+      "author": "Nicomachus of Gerasa",
+      "title": "Ἀριθμητικὴ εἰσαγωγή",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/first1k-tlg0358-tlg001-grc.json",
+      "reader": "classics-text-reader.html?work=first1k-tlg0358-tlg001&lang=grc",
+      "sourceDescription": "OpenGreekAndLatin First1KGreek TEI · CC BY-SA 4.0 · urn:cts:greekLit:tlg0358.tlg001.1st1K-grc1 · SHA256 verificado, sin cotejo autóptico"
+    },
+    {
+      "workId": "first1k-tlg0358-tlg002",
+      "author": "Nicomachus of Gerasa",
+      "title": "Ἐγχειρίδιον ἁρμονικῆς",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/first1k-tlg0358-tlg002-grc.json",
+      "reader": "classics-text-reader.html?work=first1k-tlg0358-tlg002&lang=grc",
+      "sourceDescription": "OpenGreekAndLatin First1KGreek TEI · CC BY-SA 4.0 · urn:cts:greekLit:tlg0358.tlg002.1st1K-grc1 · SHA256 verificado, sin cotejo autóptico"
+    },
+    {
+      "workId": "first1k-tlg0552-tlg001",
+      "author": "Archimède",
+      "title": "De sphaera et cylindro",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/first1k-tlg0552-tlg001-grc.json",
+      "reader": "classics-text-reader.html?work=first1k-tlg0552-tlg001&lang=grc",
+      "sourceDescription": "OpenGreekAndLatin First1KGreek TEI · CC BY-SA 4.0 · urn:cts:greekLit:tlg0552.tlg001.1st1K-grc1 · SHA256 verificado, sin cotejo autóptico"
+    },
+    {
+      "workId": "first1k-tlg0552-tlg004",
+      "author": "Archimède",
+      "title": "De lineis spiralibus",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/first1k-tlg0552-tlg004-grc.json",
+      "reader": "classics-text-reader.html?work=first1k-tlg0552-tlg004&lang=grc",
+      "sourceDescription": "OpenGreekAndLatin First1KGreek TEI · CC BY-SA 4.0 · urn:cts:greekLit:tlg0552.tlg004.1st1K-grc1 · SHA256 verificado, sin cotejo autóptico"
+    },
+    {
+      "workId": "first1k-tlg0552-tlg006",
+      "author": "Archimède",
+      "title": "Arenarius",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/first1k-tlg0552-tlg006-grc.json",
+      "reader": "classics-text-reader.html?work=first1k-tlg0552-tlg006&lang=grc",
+      "sourceDescription": "OpenGreekAndLatin First1KGreek TEI · CC BY-SA 4.0 · urn:cts:greekLit:tlg0552.tlg006.1st1K-grc1 · SHA256 verificado, sin cotejo autóptico"
+    },
+    {
+      "workId": "first1k-tlg0552-tlg007",
+      "author": "Archimède",
+      "title": "Quadratura parabolae",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/first1k-tlg0552-tlg007-grc.json",
+      "reader": "classics-text-reader.html?work=first1k-tlg0552-tlg007&lang=grc",
+      "sourceDescription": "OpenGreekAndLatin First1KGreek TEI · CC BY-SA 4.0 · urn:cts:greekLit:tlg0552.tlg007.1st1K-grc1 · SHA256 verificado, sin cotejo autóptico"
+    },
+    {
+      "workId": "first1k-tlg0559-tlg006",
+      "author": "Hero of Alexandria",
+      "title": "Metrica",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/first1k-tlg0559-tlg006-grc.json",
+      "reader": "classics-text-reader.html?work=first1k-tlg0559-tlg006&lang=grc",
+      "sourceDescription": "OpenGreekAndLatin First1KGreek TEI · CC BY-SA 4.0 · urn:cts:greekLit:tlg0559.tlg006.1st1K-grc1 · SHA256 verificado, sin cotejo autóptico"
+    },
+    {
+      "workId": "first1k-tlg0559-tlg007",
+      "author": "Hero of Alexandria",
+      "title": "Dioptra",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/first1k-tlg0559-tlg007-grc.json",
+      "reader": "classics-text-reader.html?work=first1k-tlg0559-tlg007&lang=grc",
+      "sourceDescription": "OpenGreekAndLatin First1KGreek TEI · CC BY-SA 4.0 · urn:cts:greekLit:tlg0559.tlg007.1st1K-grc1 · SHA256 verificado, sin cotejo autóptico"
+    },
+    {
+      "workId": "first1k-tlg0559-tlg011",
+      "author": "Hero of Alexandria",
+      "title": "De mensuris",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/first1k-tlg0559-tlg011-grc.json",
+      "reader": "classics-text-reader.html?work=first1k-tlg0559-tlg011&lang=grc",
+      "sourceDescription": "OpenGreekAndLatin First1KGreek TEI · CC BY-SA 4.0 · urn:cts:greekLit:tlg0559.tlg011.1st1K-grc1 · SHA256 verificado, sin cotejo autóptico"
+    },
+    {
+      "workId": "first1k-tlg0565-tlg001",
+      "author": "Soranus",
+      "title": "Gynaeciorum Libri IV",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/first1k-tlg0565-tlg001-grc.json",
+      "reader": "classics-text-reader.html?work=first1k-tlg0565-tlg001&lang=grc",
+      "sourceDescription": "OpenGreekAndLatin First1KGreek TEI · CC BY-SA 4.0 · urn:cts:greekLit:tlg0565.tlg001.1st1K-grc1 · SHA256 verificado, sin cotejo autóptico"
+    },
+    {
+      "workId": "first1k-tlg0565-tlg002",
+      "author": "Soranus",
+      "title": "De signis Fracturarum",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/first1k-tlg0565-tlg002-grc.json",
+      "reader": "classics-text-reader.html?work=first1k-tlg0565-tlg002&lang=grc",
+      "sourceDescription": "OpenGreekAndLatin First1KGreek TEI · CC BY-SA 4.0 · urn:cts:greekLit:tlg0565.tlg002.1st1K-grc1 · SHA256 verificado, sin cotejo autóptico"
+    },
+    {
+      "workId": "first1k-tlg0565-tlg003",
+      "author": "Soranus",
+      "title": "De Fasciis",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/first1k-tlg0565-tlg003-grc.json",
+      "reader": "classics-text-reader.html?work=first1k-tlg0565-tlg003&lang=grc",
+      "sourceDescription": "OpenGreekAndLatin First1KGreek TEI · CC BY-SA 4.0 · urn:cts:greekLit:tlg0565.tlg003.1st1K-grc1 · SHA256 verificado, sin cotejo autóptico"
+    },
+    {
+      "workId": "first1k-tlg0592-tlg001",
+      "author": "Hermogenes",
+      "title": "Progymnasmata [Dub.]",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/first1k-tlg0592-tlg001-grc.json",
+      "reader": "classics-text-reader.html?work=first1k-tlg0592-tlg001&lang=grc",
+      "sourceDescription": "OpenGreekAndLatin First1KGreek TEI · CC BY-SA 4.0 · urn:cts:greekLit:tlg0592.tlg001.1st1K-grc1 · SHA256 verificado, sin cotejo autóptico"
+    },
+    {
+      "workId": "first1k-tlg0592-tlg002",
+      "author": "Hermogenes",
+      "title": "Περὶ τῶν στάσεων",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/first1k-tlg0592-tlg002-grc.json",
+      "reader": "classics-text-reader.html?work=first1k-tlg0592-tlg002&lang=grc",
+      "sourceDescription": "OpenGreekAndLatin First1KGreek TEI · CC BY-SA 4.0 · urn:cts:greekLit:tlg0592.tlg002.1st1K-grc1 · SHA256 verificado, sin cotejo autóptico"
+    },
+    {
+      "workId": "first1k-tlg0592-tlg005",
+      "author": "Hermogenes",
+      "title": "Περὶ μεθόδου δεινότητος",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/first1k-tlg0592-tlg005-grc.json",
+      "reader": "classics-text-reader.html?work=first1k-tlg0592-tlg005&lang=grc",
+      "sourceDescription": "OpenGreekAndLatin First1KGreek TEI · CC BY-SA 4.0 · urn:cts:greekLit:tlg0592.tlg005.1st1K-grc1 · SHA256 verificado, sin cotejo autóptico"
+    },
+    {
+      "workId": "first1k-tlg0732-tlg001",
+      "author": "Alexander of Aphrodisias",
+      "title": "De mixtione",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/first1k-tlg0732-tlg001-grc.json",
+      "reader": "classics-text-reader.html?work=first1k-tlg0732-tlg001&lang=grc",
+      "sourceDescription": "OpenGreekAndLatin First1KGreek TEI · CC BY-SA 4.0 · urn:cts:greekLit:tlg0732.tlg001.1st1K-grc1 · SHA256 verificado, sin cotejo autóptico"
+    },
+    {
+      "workId": "first1k-tlg0732-tlg003",
+      "author": "Alexander of Aphrodisias",
+      "title": "Περὶ Πυρετῶν [Sp.]",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/first1k-tlg0732-tlg003-grc.json",
+      "reader": "classics-text-reader.html?work=first1k-tlg0732-tlg003&lang=grc",
+      "sourceDescription": "OpenGreekAndLatin First1KGreek TEI · CC BY-SA 4.0 · urn:cts:greekLit:tlg0732.tlg003.1st1K-grc1 · SHA256 verificado, sin cotejo autóptico"
+    },
+    {
+      "workId": "first1k-tlg0732-tlg012",
+      "author": "Alexander of Aphrodisias",
+      "title": "Quaestiones",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/first1k-tlg0732-tlg012-grc.json",
+      "reader": "classics-text-reader.html?work=first1k-tlg0732-tlg012&lang=grc",
+      "sourceDescription": "OpenGreekAndLatin First1KGreek TEI · CC BY-SA 4.0 · urn:cts:greekLit:tlg0732.tlg012.1st1K-grc2 · SHA256 verificado, sin cotejo autóptico"
+    },
+    {
+      "workId": "first1k-tlg1799-tlg007",
+      "author": "Euclid",
+      "title": "Data",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/first1k-tlg1799-tlg007-grc.json",
+      "reader": "classics-text-reader.html?work=first1k-tlg1799-tlg007&lang=grc",
+      "sourceDescription": "OpenGreekAndLatin First1KGreek TEI · CC BY-SA 4.0 · urn:cts:greekLit:tlg1799.tlg007.1st1K-grc1 · SHA256 verificado, sin cotejo autóptico"
+    },
+    {
+      "workId": "first1k-tlg1799-tlg011",
+      "author": "Euclid",
+      "title": "Catoptrica (recensio Theonis?)",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/first1k-tlg1799-tlg011-grc.json",
+      "reader": "classics-text-reader.html?work=first1k-tlg1799-tlg011&lang=grc",
+      "sourceDescription": "OpenGreekAndLatin First1KGreek TEI · CC BY-SA 4.0 · urn:cts:greekLit:tlg1799.tlg011.1st1K-grc1 · SHA256 verificado, sin cotejo autóptico"
+    },
+    {
+      "workId": "first1k-tlg2018-tlg011",
+      "author": "Eusebius",
+      "title": "Onomasticon",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/first1k-tlg2018-tlg011-grc.json",
+      "reader": "classics-text-reader.html?work=first1k-tlg2018-tlg011&lang=grc",
+      "sourceDescription": "OpenGreekAndLatin First1KGreek TEI · CC BY-SA 4.0 · urn:cts:greekLit:tlg2018.tlg011.1st1K-grc1 · SHA256 verificado, sin cotejo autóptico"
+    },
+    {
+      "workId": "first1k-tlg2018-tlg021",
+      "author": "Eusebius",
+      "title": "Constantini imperatoris oratio ad coetum sanctorum",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/first1k-tlg2018-tlg021-grc.json",
+      "reader": "classics-text-reader.html?work=first1k-tlg2018-tlg021&lang=grc",
+      "sourceDescription": "OpenGreekAndLatin First1KGreek TEI · CC BY-SA 4.0 · urn:cts:greekLit:tlg2018.tlg021.1st1K-grc1 · SHA256 verificado, sin cotejo autóptico"
+    },
+    {
+      "workId": "first1k-tlg2023-tlg001",
+      "author": "Iamblichus",
+      "title": "περὶ τοῦ Πυθαγορικοῦ βίου λόγος",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/first1k-tlg2023-tlg001-grc.json",
+      "reader": "classics-text-reader.html?work=first1k-tlg2023-tlg001&lang=grc",
+      "sourceDescription": "OpenGreekAndLatin First1KGreek TEI · CC BY-SA 4.0 · urn:cts:greekLit:tlg2023.tlg001.1st1K-grc1 · SHA256 verificado, sin cotejo autóptico"
+    },
+    {
+      "workId": "first1k-tlg2023-tlg003",
+      "author": "Iamblichus",
+      "title": "De communi mathematica scientia",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/first1k-tlg2023-tlg003-grc.json",
+      "reader": "classics-text-reader.html?work=first1k-tlg2023-tlg003&lang=grc",
+      "sourceDescription": "OpenGreekAndLatin First1KGreek TEI · CC BY-SA 4.0 · urn:cts:greekLit:tlg2023.tlg003.1st1K-grc1 · SHA256 verificado, sin cotejo autóptico"
+    },
+    {
+      "workId": "first1k-tlg2023-tlg004",
+      "author": "Iamblichus",
+      "title": "Περὶ τῆς Νικομάχου ἀριθμητικῆς εἰσαγωγῆς",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/first1k-tlg2023-tlg004-grc.json",
+      "reader": "classics-text-reader.html?work=first1k-tlg2023-tlg004&lang=grc",
+      "sourceDescription": "OpenGreekAndLatin First1KGreek TEI · CC BY-SA 4.0 · urn:cts:greekLit:tlg2023.tlg004.1st1K-grc1 · SHA256 verificado, sin cotejo autóptico"
+    },
+    {
+      "workId": "first1k-tlg2034-tlg002",
+      "author": "Porphyrius",
+      "title": "Vita Pythagorae",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/first1k-tlg2034-tlg002-grc.json",
+      "reader": "classics-text-reader.html?work=first1k-tlg2034-tlg002&lang=grc",
+      "sourceDescription": "OpenGreekAndLatin First1KGreek TEI · CC BY-SA 4.0 · urn:cts:greekLit:tlg2034.tlg002.1st1K-grc1 · SHA256 verificado, sin cotejo autóptico"
+    },
+    {
+      "workId": "first1k-tlg2034-tlg005",
+      "author": "Porphyrius",
+      "title": "Ad Marcellam",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/first1k-tlg2034-tlg005-grc.json",
+      "reader": "classics-text-reader.html?work=first1k-tlg2034-tlg005&lang=grc",
+      "sourceDescription": "OpenGreekAndLatin First1KGreek TEI · CC BY-SA 4.0 · urn:cts:greekLit:tlg2034.tlg005.1st1K-grc1 · SHA256 verificado, sin cotejo autóptico"
+    },
+    {
+      "workId": "first1k-tlg2042-tlg051",
+      "author": "Origenes",
+      "title": "Selecta in Leviticum",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/first1k-tlg2042-tlg051-grc.json",
+      "reader": "classics-text-reader.html?work=first1k-tlg2042-tlg051&lang=grc",
+      "sourceDescription": "OpenGreekAndLatin First1KGreek TEI · CC BY-SA 4.0 · urn:cts:greekLit:tlg2042.tlg051.1st1K-grc1 · SHA256 verificado, sin cotejo autóptico"
+    },
+    {
+      "workId": "first1k-tlg2042-tlg052",
+      "author": "Origenes",
+      "title": "Selecta in Numeros",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/first1k-tlg2042-tlg052-grc.json",
+      "reader": "classics-text-reader.html?work=first1k-tlg2042-tlg052&lang=grc",
+      "sourceDescription": "OpenGreekAndLatin First1KGreek TEI · CC BY-SA 4.0 · urn:cts:greekLit:tlg2042.tlg052.1st1K-grc1 · SHA256 verificado, sin cotejo autóptico"
+    },
+    {
+      "workId": "first1k-tlg2200-tlg00406",
+      "author": "Libanius",
+      "title": "Oratio VI",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/first1k-tlg2200-tlg00406-grc.json",
+      "reader": "classics-text-reader.html?work=first1k-tlg2200-tlg00406&lang=grc",
+      "sourceDescription": "OpenGreekAndLatin First1KGreek TEI · CC BY-SA 4.0 · urn:cts:greekLit:tlg2200.tlg00406.opp-grc1 · SHA256 verificado, sin cotejo autóptico"
+    },
+    {
+      "workId": "first1k-tlg2200-tlg00408",
+      "author": "Libanius",
+      "title": "Oratio VIII",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/first1k-tlg2200-tlg00408-grc.json",
+      "reader": "classics-text-reader.html?work=first1k-tlg2200-tlg00408&lang=grc",
+      "sourceDescription": "OpenGreekAndLatin First1KGreek TEI · CC BY-SA 4.0 · urn:cts:greekLit:tlg2200.tlg00408.opp-grc1 · SHA256 verificado, sin cotejo autóptico"
+    },
+    {
+      "workId": "first1k-tlg2200-tlg00551",
+      "author": "Libanius",
+      "title": "Declamatio 51",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/first1k-tlg2200-tlg00551-grc.json",
+      "reader": "classics-text-reader.html?work=first1k-tlg2200-tlg00551&lang=grc",
+      "sourceDescription": "OpenGreekAndLatin First1KGreek TEI · CC BY-SA 4.0 · urn:cts:greekLit:tlg2200.tlg00551.opp-grc1 · SHA256 verificado, sin cotejo autóptico"
+    },
+    {
+      "workId": "first1k-tlg2959-tlg002",
+      "author": "Methodius",
+      "title": "De libero arbitrio",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/first1k-tlg2959-tlg002-grc.json",
+      "reader": "classics-text-reader.html?work=first1k-tlg2959-tlg002&lang=grc",
+      "sourceDescription": "OpenGreekAndLatin First1KGreek TEI · CC BY-SA 4.0 · urn:cts:greekLit:tlg2959.tlg002.opp-grc1 · SHA256 verificado, sin cotejo autóptico"
     },
     {
       "workId": "frontinus",

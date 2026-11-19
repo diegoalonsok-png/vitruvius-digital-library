@@ -1,0 +1,461 @@
+{
+  "schema": "vdl-prioritized-50-import-result-v1",
+  "date": "2026-11-19",
+  "selected": 50,
+  "imported": 50,
+  "failed": [],
+  "added": [
+    {
+      "rank": 1,
+      "workId": "first1k-tlg1799-tlg007",
+      "urn": "urn:cts:greekLit:tlg1799.tlg007.1st1K-grc1",
+      "passages": 331,
+      "textCharacters": 96887,
+      "sourceSha256": "57cb1e3ef91adebb5ecb4eb002a707b2e7b8dfb168a2a52c59ce7c2c678edc72",
+      "sourceBytes": 256192
+    },
+    {
+      "rank": 2,
+      "workId": "first1k-tlg0552-tlg001",
+      "urn": "urn:cts:greekLit:tlg0552.tlg001.1st1K-grc1",
+      "passages": 226,
+      "textCharacters": 125065,
+      "sourceSha256": "ac9b78b308a76221e2301bbfcc5d90e48718eb5ff8fcdccbab8b1977708c05bb",
+      "sourceBytes": 292064
+    },
+    {
+      "rank": 3,
+      "workId": "first1k-tlg0552-tlg004",
+      "urn": "urn:cts:greekLit:tlg0552.tlg004.1st1K-grc1",
+      "passages": 114,
+      "textCharacters": 76982,
+      "sourceSha256": "8b6ed7ae63a2ad1d65e9fd4939a9b4a114fc161d13fab929d82b58709a5b885f",
+      "sourceBytes": 164298
+    },
+    {
+      "rank": 4,
+      "workId": "first1k-tlg0552-tlg007",
+      "urn": "urn:cts:greekLit:tlg0552.tlg007.1st1K-grc1",
+      "passages": 54,
+      "textCharacters": 29593,
+      "sourceSha256": "785f8a33edd41c5d243c02607c3263a807b2b83a9b8723a93d8b8fdf92a40c83",
+      "sourceBytes": 67898
+    },
+    {
+      "rank": 5,
+      "workId": "first1k-tlg0552-tlg006",
+      "urn": "urn:cts:greekLit:tlg0552.tlg006.1st1K-grc1",
+      "passages": 4,
+      "textCharacters": 30299,
+      "sourceSha256": "7d65e870a9603ddefff906d1e4eb3b9ea8425455b4d4bc6cdd1fe733e6991a66",
+      "sourceBytes": 64630
+    },
+    {
+      "rank": 6,
+      "workId": "first1k-tlg0559-tlg006",
+      "urn": "urn:cts:greekLit:tlg0559.tlg006.1st1K-grc1",
+      "passages": 99,
+      "textCharacters": 104960,
+      "sourceSha256": "c164da6e702da12a4694ef4736f5803149afb3dfcbf76e9dde59b17c73619c84",
+      "sourceBytes": 242934
+    },
+    {
+      "rank": 7,
+      "workId": "first1k-tlg0559-tlg007",
+      "urn": "urn:cts:greekLit:tlg0559.tlg007.1st1K-grc1",
+      "passages": 52,
+      "textCharacters": 72140,
+      "sourceSha256": "2a6c4f7e939c8d26dff32ce6713a57c750693cadd69b6c91abe8c19c2fbda37e",
+      "sourceBytes": 178478
+    },
+    {
+      "rank": 8,
+      "workId": "first1k-tlg0559-tlg011",
+      "urn": "urn:cts:greekLit:tlg0559.tlg011.1st1K-grc1",
+      "passages": 153,
+      "textCharacters": 29009,
+      "sourceSha256": "16918f22b4a84372174c5c641827e01ec56e89c211135ea6c1c1fcb1f9372a9b",
+      "sourceBytes": 85488
+    },
+    {
+      "rank": 9,
+      "workId": "first1k-tlg1799-tlg011",
+      "urn": "urn:cts:greekLit:tlg1799.tlg011.1st1K-grc1",
+      "passages": 78,
+      "textCharacters": 26598,
+      "sourceSha256": "7fe955cca381714b64fb161b71d6e79f65c3995e98bd08c8bce2feda82dcbad1",
+      "sourceBytes": 108975
+    },
+    {
+      "rank": 10,
+      "workId": "first1k-tlg0358-tlg001",
+      "urn": "urn:cts:greekLit:tlg0358.tlg001.1st1K-grc1",
+      "passages": 178,
+      "textCharacters": 148762,
+      "sourceSha256": "c66b2acadd790ddd046003bf58d4cce10211c897550ac2ab5029f1e14ec95a54",
+      "sourceBytes": 442420
+    },
+    {
+      "rank": 11,
+      "workId": "first1k-tlg0358-tlg002",
+      "urn": "urn:cts:greekLit:tlg0358.tlg002.1st1K-grc1",
+      "passages": 72,
+      "textCharacters": 31792,
+      "sourceSha256": "a5d3348d15af5dfb622b71ba7aa443e41d37712773d3bc67b6b4975d072c528f",
+      "sourceBytes": 87716
+    },
+    {
+      "rank": 12,
+      "workId": "first1k-tlg0057-tlg048",
+      "urn": "urn:cts:greekLit:tlg0057.tlg048.1st1K-grc1",
+      "passages": 5,
+      "textCharacters": 10267,
+      "sourceSha256": "ae205e1c1e58f4f00ed3851948dff3364a5e7a2d7149f7547594433ddbd61555",
+      "sourceBytes": 26566
+    },
+    {
+      "rank": 13,
+      "workId": "first1k-tlg0057-tlg034",
+      "urn": "urn:cts:greekLit:tlg0057.tlg034.1st1K-grc2",
+      "passages": 7,
+      "textCharacters": 10683,
+      "sourceSha256": "cc650bc25f4b9c661df429b87dabfccbcffb30f99f7bd17e30a913502457584a",
+      "sourceBytes": 27568
+    },
+    {
+      "rank": 14,
+      "workId": "first1k-tlg0057-tlg002",
+      "urn": "urn:cts:greekLit:tlg0057.tlg002.1st1K-grc1",
+      "passages": 5,
+      "textCharacters": 11828,
+      "sourceSha256": "8a0422778635a0842018ed751a5176e15e58b7c8c63fe377b36c6e1d5bfcd844",
+      "sourceBytes": 30121
+    },
+    {
+      "rank": 15,
+      "workId": "first1k-tlg0057-tlg030",
+      "urn": "urn:cts:greekLit:tlg0057.tlg030.1st1K-grc1",
+      "passages": 9,
+      "textCharacters": 39761,
+      "sourceSha256": "21dd9a7944db542f56b71d5059baaf46df1d74f22aa2f29d20fc854ff48ab332",
+      "sourceBytes": 104403
+    },
+    {
+      "rank": 16,
+      "workId": "first1k-tlg0057-tlg024",
+      "urn": "urn:cts:greekLit:tlg0057.tlg024.1st1K-grc1",
+      "passages": 4,
+      "textCharacters": 10989,
+      "sourceSha256": "799332edd251ecc1a0a3608f5c8cc4c6e483a461dd2fa71578371ea5924e325f",
+      "sourceBytes": 32292
+    },
+    {
+      "rank": 17,
+      "workId": "first1k-tlg0057-tlg082",
+      "urn": "urn:cts:greekLit:tlg0057.tlg082.1st1K-grc1",
+      "passages": 8,
+      "textCharacters": 14879,
+      "sourceSha256": "d83ccebdcbf8fbe650d23ae653f010b7b86e3fc4a025f565c2a3c3137db36332",
+      "sourceBytes": 36006
+    },
+    {
+      "rank": 18,
+      "workId": "first1k-tlg0057-tlg039",
+      "urn": "urn:cts:greekLit:tlg0057.tlg039.1st1K-grc1",
+      "passages": 6,
+      "textCharacters": 13773,
+      "sourceSha256": "ec38e2174f6b5ce352dc35e61ba1f55e25f4943389904f34f486ae72298857d1",
+      "sourceBytes": 39255
+    },
+    {
+      "rank": 19,
+      "workId": "first1k-tlg0565-tlg001",
+      "urn": "urn:cts:greekLit:tlg0565.tlg001.1st1K-grc1",
+      "passages": 205,
+      "textCharacters": 268817,
+      "sourceSha256": "5a339dcb755b4e318b49c24f67671ae6ca206cb34860bd8b5e416b2dcc0a387f",
+      "sourceBytes": 799529
+    },
+    {
+      "rank": 20,
+      "workId": "first1k-tlg0565-tlg002",
+      "urn": "urn:cts:greekLit:tlg0565.tlg002.1st1K-grc1",
+      "passages": 24,
+      "textCharacters": 7460,
+      "sourceSha256": "ae6dc75a468acc30be1bedbb47bf4027511af36a582785e94e038c4f03a7557f",
+      "sourceBytes": 22533
+    },
+    {
+      "rank": 21,
+      "workId": "first1k-tlg0565-tlg003",
+      "urn": "urn:cts:greekLit:tlg0565.tlg003.1st1K-grc1",
+      "passages": 120,
+      "textCharacters": 18808,
+      "sourceSha256": "a6eb21d8f67a63427e7a12832cd86350cbba60f0efbee6a05ce443a5ec2b0b3a",
+      "sourceBytes": 59547
+    },
+    {
+      "rank": 22,
+      "workId": "first1k-tlg0086-tlg019",
+      "urn": "urn:cts:greekLit:tlg0086.tlg019.1st1K-grc1",
+      "passages": 60,
+      "textCharacters": 16863,
+      "sourceSha256": "90d7a294101e60167635ba49ee534426f72904a94218ebd10d626d3485e95d88",
+      "sourceBytes": 48449
+    },
+    {
+      "rank": 23,
+      "workId": "first1k-tlg0086-tlg004",
+      "urn": "urn:cts:greekLit:tlg0086.tlg004.1st1K-grc1",
+      "passages": 74,
+      "textCharacters": 21368,
+      "sourceSha256": "1578b86deb91f1a92e7f9348b6c059916976be12d081f876112ba20a7d455bca",
+      "sourceBytes": 57582
+    },
+    {
+      "rank": 24,
+      "workId": "first1k-tlg0086-tlg043",
+      "urn": "urn:cts:greekLit:tlg0086.tlg043.1st1K-grc1",
+      "passages": 9,
+      "textCharacters": 19255,
+      "sourceSha256": "f6a766ff7b4aabcaf7c3a0661cc26794cd3984d0c9855900725147e1b0a74003",
+      "sourceBytes": 67389
+    },
+    {
+      "rank": 25,
+      "workId": "first1k-tlg0086-tlg047",
+      "urn": "urn:cts:greekLit:tlg0086.tlg047.1st1K-grc1",
+      "passages": 94,
+      "textCharacters": 26639,
+      "sourceSha256": "6a8ce88399d63299c1465425e3c16fcaad69f6129667af7e94a8e051ab1ec0d0",
+      "sourceBytes": 74297
+    },
+    {
+      "rank": 26,
+      "workId": "first1k-tlg0093-tlg010x04",
+      "urn": "urn:cts:greekLit:tlg0093.tlg010x04.1st1K-grc1",
+      "passages": 18,
+      "textCharacters": 8215,
+      "sourceSha256": "ab029ce5fdcd3cc1a0cfbd5b754a4814d4252fd58c80c6278fe5b3e5af4f09a5",
+      "sourceBytes": 20966
+    },
+    {
+      "rank": 27,
+      "workId": "first1k-tlg0093-tlg010x06",
+      "urn": "urn:cts:greekLit:tlg0093.tlg010x06.1st1K-grc1",
+      "passages": 40,
+      "textCharacters": 14112,
+      "sourceSha256": "13b3ce5287a1cb06ffe31fdb9c943712734ed5a340612112b1e6b373dd81f57d",
+      "sourceBytes": 34233
+    },
+    {
+      "rank": 28,
+      "workId": "first1k-tlg0093-tlg006",
+      "urn": "urn:cts:greekLit:tlg0093.tlg006.1st1K-grc1",
+      "passages": 34,
+      "textCharacters": 18819,
+      "sourceSha256": "973eecc10d80a219c71c08d75749dc3a4e3090844ec064c48148d55e3e474fa9",
+      "sourceBytes": 46992
+    },
+    {
+      "rank": 29,
+      "workId": "first1k-tlg0093-tlg010x03",
+      "urn": "urn:cts:greekLit:tlg0093.tlg010x03.1st1K-grc1",
+      "passages": 57,
+      "textCharacters": 23055,
+      "sourceSha256": "cd9f9afbb81a85c3bf2560213cf35a5a48554523211da8d0ac0c75ce7886d238",
+      "sourceBytes": 53635
+    },
+    {
+      "rank": 30,
+      "workId": "first1k-tlg0732-tlg012",
+      "urn": "urn:cts:greekLit:tlg0732.tlg012.1st1K-grc2",
+      "passages": 6,
+      "textCharacters": 20616,
+      "sourceSha256": "648048a9ae4763733d1fd3502060ecc27609095eb4c15fb70a2ddb1f55660996",
+      "sourceBytes": 51426
+    },
+    {
+      "rank": 31,
+      "workId": "first1k-tlg0732-tlg003",
+      "urn": "urn:cts:greekLit:tlg0732.tlg003.1st1K-grc1",
+      "passages": 133,
+      "textCharacters": 48315,
+      "sourceSha256": "576579610f625c7d9d4d254355bb75a175883ed5b9b29c8f115c68d19acdb423",
+      "sourceBytes": 119443
+    },
+    {
+      "rank": 32,
+      "workId": "first1k-tlg0732-tlg001",
+      "urn": "urn:cts:greekLit:tlg0732.tlg001.1st1K-grc1",
+      "passages": 16,
+      "textCharacters": 58992,
+      "sourceSha256": "257cd81564ee0c0868b3eacce10133346bb0a91d804abce504198a39d38e2c54",
+      "sourceBytes": 193504
+    },
+    {
+      "rank": 33,
+      "workId": "first1k-tlg2034-tlg005",
+      "urn": "urn:cts:greekLit:tlg2034.tlg005.1st1K-grc1",
+      "passages": 35,
+      "textCharacters": 28940,
+      "sourceSha256": "a1619abe3c06923ba4410ef88c1d826e8399373f1e87c2af8abcc68b61cfb242",
+      "sourceBytes": 63490
+    },
+    {
+      "rank": 34,
+      "workId": "first1k-tlg2034-tlg002",
+      "urn": "urn:cts:greekLit:tlg2034.tlg002.1st1K-grc1",
+      "passages": 60,
+      "textCharacters": 37952,
+      "sourceSha256": "2b8afb24c554d923f0f6a8bb38475ebc5e789880e94fc649fc7e72b7b672adac",
+      "sourceBytes": 85197
+    },
+    {
+      "rank": 35,
+      "workId": "first1k-tlg2023-tlg003",
+      "urn": "urn:cts:greekLit:tlg2023.tlg003.1st1K-grc1",
+      "passages": 105,
+      "textCharacters": 124502,
+      "sourceSha256": "b1ae75365887cfb1ed86da82a7dc8820fef9eac9a95858c33f042c6333c63bb6",
+      "sourceBytes": 261799
+    },
+    {
+      "rank": 36,
+      "workId": "first1k-tlg2023-tlg004",
+      "urn": "urn:cts:greekLit:tlg2023.tlg004.1st1K-grc1",
+      "passages": 216,
+      "textCharacters": 162649,
+      "sourceSha256": "3cb61eb2791f036eb7731310fe5e8c40b6a246ef2e5ea9fbb3cdaee2e09787dd",
+      "sourceBytes": 352874
+    },
+    {
+      "rank": 37,
+      "workId": "first1k-tlg2023-tlg001",
+      "urn": "urn:cts:greekLit:tlg2023.tlg001.1st1K-grc1",
+      "passages": 362,
+      "textCharacters": 195636,
+      "sourceSha256": "b6874459f112bef74cd69b1c67386e852ce921a7210755b568e4c9f9194957d8",
+      "sourceBytes": 444621
+    },
+    {
+      "rank": 38,
+      "workId": "first1k-tlg0592-tlg001",
+      "urn": "urn:cts:greekLit:tlg0592.tlg001.1st1K-grc1",
+      "passages": 57,
+      "textCharacters": 24624,
+      "sourceSha256": "8c860dfcc3eb1a4fb2371722d7769c5db481320f55b6609d551c6d23954b10c5",
+      "sourceBytes": 85907
+    },
+    {
+      "rank": 39,
+      "workId": "first1k-tlg0592-tlg005",
+      "urn": "urn:cts:greekLit:tlg0592.tlg005.1st1K-grc1",
+      "passages": 78,
+      "textCharacters": 40154,
+      "sourceSha256": "29f742337727458a178e8498625de707435b8f7782e80d841c045fc7623a5c32",
+      "sourceBytes": 129674
+    },
+    {
+      "rank": 40,
+      "workId": "first1k-tlg0592-tlg002",
+      "urn": "urn:cts:greekLit:tlg0592.tlg002.1st1K-grc1",
+      "passages": 80,
+      "textCharacters": 65294,
+      "sourceSha256": "f1611709d24e14da428ef9cf20ed8253077e7f8108d535225956b8e5eb19839c",
+      "sourceBytes": 216668
+    },
+    {
+      "rank": 41,
+      "workId": "first1k-tlg0082-tlg003",
+      "urn": "urn:cts:greekLit:tlg0082.tlg003.1st1K-grc1",
+      "passages": 100,
+      "textCharacters": 74703,
+      "sourceSha256": "bbc578b428d7e3ee4e2ce7036c5e6950c2da8b4736408d19e4b45d2dbfc17b2d",
+      "sourceBytes": 165775
+    },
+    {
+      "rank": 42,
+      "workId": "first1k-tlg0082-tlg002",
+      "urn": "urn:cts:greekLit:tlg0082.tlg002.1st1K-grc1",
+      "passages": 146,
+      "textCharacters": 154545,
+      "sourceSha256": "9977407b8244309928ea0bb5ec7d98972658b72acff10fde8b7b52f15c625a6f",
+      "sourceBytes": 469254
+    },
+    {
+      "rank": 43,
+      "workId": "first1k-tlg2200-tlg00408",
+      "urn": "urn:cts:greekLit:tlg2200.tlg00408.opp-grc1",
+      "passages": 15,
+      "textCharacters": 4455,
+      "sourceSha256": "31e7a40884fa78e061e7aee8d9ff1b2030ce59f3214659b58cd60f0835539e6c",
+      "sourceBytes": 22274
+    },
+    {
+      "rank": 44,
+      "workId": "first1k-tlg2200-tlg00406",
+      "urn": "urn:cts:greekLit:tlg2200.tlg00406.opp-grc1",
+      "passages": 17,
+      "textCharacters": 5629,
+      "sourceSha256": "3bafd0d8eea966b628bdbba105828ecb51d2dfb11eda82b2f840d9e474fb14bf",
+      "sourceBytes": 23743
+    },
+    {
+      "rank": 45,
+      "workId": "first1k-tlg2200-tlg00551",
+      "urn": "urn:cts:greekLit:tlg2200.tlg00551.opp-grc1",
+      "passages": 19,
+      "textCharacters": 7087,
+      "sourceSha256": "bbb238b4365f9d7b5cf00c48f10b371f5b4f32dedd7ec857c5294fe46ec0999e",
+      "sourceBytes": 27277
+    },
+    {
+      "rank": 46,
+      "workId": "first1k-tlg2018-tlg021",
+      "urn": "urn:cts:greekLit:tlg2018.tlg021.1st1K-grc1",
+      "passages": 156,
+      "textCharacters": 74774,
+      "sourceSha256": "18a6a0f67fa56fbae28891a18a02178d527cbb879c827343c916776555d82164",
+      "sourceBytes": 210009
+    },
+    {
+      "rank": 47,
+      "workId": "first1k-tlg2018-tlg011",
+      "urn": "urn:cts:greekLit:tlg2018.tlg011.1st1K-grc1",
+      "passages": 948,
+      "textCharacters": 103359,
+      "sourceSha256": "22ed67f3ba9d69c468b2f68ffe71ab8351b2b6eba0cafa273b9a2d1538fb0a1a",
+      "sourceBytes": 313290
+    },
+    {
+      "rank": 48,
+      "workId": "first1k-tlg2042-tlg051",
+      "urn": "urn:cts:greekLit:tlg2042.tlg051.1st1K-grc1",
+      "passages": 23,
+      "textCharacters": 9165,
+      "sourceSha256": "bdecaafd44a2367fd70c053af4e761c87e50903ade0bfb91aebcb387869be14d",
+      "sourceBytes": 28491
+    },
+    {
+      "rank": 49,
+      "workId": "first1k-tlg2042-tlg052",
+      "urn": "urn:cts:greekLit:tlg2042.tlg052.1st1K-grc1",
+      "passages": 35,
+      "textCharacters": 10448,
+      "sourceSha256": "82019653981beb5162012a46cbee7f0a9865c7010f180945c38897115339ad54",
+      "sourceBytes": 32768
+    },
+    {
+      "rank": 50,
+      "workId": "first1k-tlg2959-tlg002",
+      "urn": "urn:cts:greekLit:tlg2959.tlg002.opp-grc1",
+      "passages": 161,
+      "textCharacters": 45146,
+      "sourceSha256": "60a27e8167ca29eb2c67c654aa82264adba58f511d6a49d39e0225a02d66d3b5",
+      "sourceBytes": 250375
+    }
+  ],
+  "indexNote": "Índice léxico se reconstruye por build-classics-lexical-index.mjs; este informe no certifica indexación semántica.",
+  "status": "applied-needs-lexical-build"
+}
