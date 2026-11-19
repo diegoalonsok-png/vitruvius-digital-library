@@ -691,7 +691,51 @@
       "rightsNote": "Site describes historical translation as US public domain; verify transcription reuse terms",
       "alignment": "not aligned to Greek loci",
       "status": "located-not-downloaded-not-indexed"
+    },
+    {
+      "workId": "aristophanes-acharnenses",
+      "language": "fr",
+      "sourceTitle": "Les Akharniens",
+      "sourceUrl": "https://www.gutenberg.org/ebooks/19075",
+      "format": "French collected-volume ebook; extract title section only",
+      "translationCredit": "Eugène Talbot (1814–1894)",
+      "rightsNote": "Historical translation; translator died 1894; preserve edition attribution and verify full volume boundaries",
+      "alignment": "not aligned to Greek loci",
+      "status": "located-not-downloaded-not-indexed"
+    },
+    {
+      "workId": "aristophanes-knights",
+      "language": "fr",
+      "sourceTitle": "Les chevaliers",
+      "sourceUrl": "https://www.gutenberg.org/ebooks/19075",
+      "format": "French collected-volume ebook; extract title section only",
+      "translationCredit": "Eugène Talbot (1814–1894)",
+      "rightsNote": "Historical translation; translator died 1894; preserve edition attribution and verify full volume boundaries",
+      "alignment": "not aligned to Greek loci",
+      "status": "located-not-downloaded-not-indexed"
+    },
+    {
+      "workId": "aristophanes-vespae",
+      "language": "fr",
+      "sourceTitle": "Les guêpes",
+      "sourceUrl": "https://www.gutenberg.org/ebooks/19075",
+      "format": "French collected-volume ebook; extract title section only",
+      "translationCredit": "Eugène Talbot (1814–1894)",
+      "rightsNote": "Historical translation; translator died 1894; preserve edition attribution and verify full volume boundaries",
+      "alignment": "not aligned to Greek loci",
+      "status": "located-not-downloaded-not-indexed"
+    },
+    {
+      "workId": "aristophanes-pax",
+      "language": "fr",
+      "sourceTitle": "La paix",
+      "sourceUrl": "https://www.gutenberg.org/ebooks/19075",
+      "format": "French collected-volume ebook; extract title section only",
+      "translationCredit": "Eugène Talbot (1814–1894)",
+      "rightsNote": "Historical translation; translator died 1894; preserve edition attribution and verify full volume boundaries",
+      "alignment": "not aligned to Greek loci",
+      "status": "located-not-downloaded-not-indexed"
     }
   ],
-  "policy": "Do not mark a translation indexed until full text, bibliographic provenance, rights, source checksum, passage-level indexing and reader link are verified. No automatic Greek-English locus alignment."
+  "policy": "Do not mark a translation indexed until full text, bibliographic provenance, rights, source checksum, passage-level indexing and reader link are verified. No automatic Greek-English locus alignment. Modern translations such as Jack Lindsay's Lysistrata must not be automatically imported without rights clearance."
 }
