@@ -16,6 +16,9 @@ jobs:
         run: python3 scripts/import_gutenberg_translations.py
       - name: Validate resulting JSON
         run: python3 -m json.tool data/classics-corpus/search-registry.json >/dev/null
+      - name: Require verified Greek to translation synchronization
+        run: |
+          python3 scripts/validate_greek_translation_sync.py             data/classics-corpus/aristophanes-acharnenses-en.json             data/classics-corpus/aristophanes-pax-en.json
       - name: Commit validated content
         run: |
           git config user.name 'github-actions[bot]'
