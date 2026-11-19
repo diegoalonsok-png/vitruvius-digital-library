@@ -835,12 +835,29 @@ main.library .bibliotheca-resources-2026{display:none!important}
  const lang=document.getElementById('bibliotheca-lexicon-lang');
  if(!form||!mode||!q||!lang)return;
  const notes={palabra:'Entrada léxica: lema, morfología, acepciones, etimología y concordancias.',lema:'Busca las formas documentadas del lema.',etimologia:'Explora raíces y relaciones etimológicas.',frase:'Busca una frase exacta.',sintaxis:'Explora estructuras y relaciones sintácticas.',paralelos:'Consulta pasajes paralelos.',analisis:'Analiza una oración.',grupo:'Busca un grupo de palabras.',sententiae:'Consulta el fraseario antiguo.'};
+ // The Lexicon link must forward the *current* Bibliotheca search (no new UI).
+ const lexiconLink=form.querySelector('.bib-lx-advanced');
+ const syncLexiconLink=()=>{
+  if(!lexiconLink)return;
+  const params=new URLSearchParams();
+  const query=q.value.trim();
+  if(query)params.set('q',query);
+  params.set('mode',mode.value||'palabra');
+  if(lang.value&&lang.value!=='auto')params.set('lang',lang.value);
+  params.set('source','bibliotheca');
+  lexiconLink.href='vitruvia-lexicon.html?'+params.toString();
+ };
+ for(const type of ['input','search','change'])q.addEventListener(type,syncLexiconLink);
+ lang.addEventListener('change',syncLexiconLink);
+ lexiconLink?.addEventListener('click',syncLexiconLink);
  document.querySelectorAll('.bib-lx-modes [data-lx-mode]').forEach(button=>button.addEventListener('click',()=>{
   mode.value=button.dataset.lxMode;
   document.querySelectorAll('.bib-lx-modes [data-lx-mode]').forEach(b=>b.setAttribute('aria-pressed',String(b===button)));
   document.getElementById('bib-lx-hint').textContent=notes[mode.value]||notes.palabra;
+  syncLexiconLink();
  }));
- clear?.addEventListener('click',()=>{q.value='';q.focus()});
+ clear?.addEventListener('click',()=>{q.value='';syncLexiconLink();q.focus()});
+ syncLexiconLink();
  form.addEventListener('submit',()=>{
   // Preserve Lexicon's own search implementation: only send the query and mode.
   const locale=lang.value;
