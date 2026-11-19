@@ -79,4 +79,5 @@ console.log(JSON.stringify(report.counts));
 for(const i of issues.slice(0,40))console.log("SEO_ISSUE",JSON.stringify(i));
 for(const i of datasetIssues.slice(0,50))console.log("DATASET_ISSUE",JSON.stringify(i));
 for(const i of noindexPages.slice(0,25))console.log("NOINDEX_PAGE",JSON.stringify(i));
-console.log("SEO audit is diagnostic; no changes made to source HTML.");
+console.log("SEO audit completed; no changes made to source HTML.");
+if(issues.length||datasetIssues.length)process.exitCode=1;
