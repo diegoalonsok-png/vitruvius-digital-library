@@ -3,22 +3,22 @@
   "actualizado": "2026-11-19",
   "obras": 271,
   "nota": "Obras del repertorio grecolatino. Facsímiles y páginas indexadas se alojan en Cloudflare R2.",
-  "obrasSuplementarias": 72,
+  "obrasSuplementarias": 122,
   "obrasAdicionales": 10,
-  "obrasTotalesDeclaradas": 353,
-  "notaTotal": "353 fichas únicas por ID comprobadas: 271 repertorio principal + 72 incorporaciones textuales suplementarias + 10 fichas R2 adicionales sin solapamiento. Versiones lingüísticas y ediciones históricas se contabilizan aparte.",
+  "obrasTotalesDeclaradas": 403,
+  "notaTotal": "403 fichas únicas por ID: 271 del repertorio principal + 122 suplementarias + 10 adicionales de R2; versiones lingüísticas y ediciones se cuentan aparte.",
   "edicionesPdfR2": 117,
   "facsimiles": 106,
   "recepcionVitruviana": 7,
   "obrasIndexadasR2": 119,
   "paginasIndexadasR2": 56241,
-  "versionesTextuales": 409,
-  "obrasConTextoRegistrado": 297,
+  "versionesTextuales": 461,
+  "obrasConTextoRegistrado": 347,
   "edicionesLexicasLocales": 364,
   "edicionesLexicasR2": 44,
   "obrasConTextoIndexado": 297,
   "estadoIndexacion": {
-    "metodo": "Auditoría local y cotejo R2 con manifiesto y comprobación SHA registrada; sin nueva prueba HTTP en esta ejecución. OCR histórico separado.",
+    "metodo": "Los 50 originales First1KGreek se incorporan al registro con fuentes verificadas en la rama; el índice invertido y sus contadores se actualizan en el flujo CI después de fusionar. R2 sin nueva escritura en este lote.",
     "edicionesLocalesBuscables": 363,
     "edicionesLocalesConPasajes": 357,
     "edicionesHTMLBuscablesPorPalabra": 6,
@@ -26,8 +26,8 @@
     "ultimaVerificacionR2": "2026-11-17T12:28:30.510Z",
     "edicionesR2PendientesVerificacion": 0,
     "edicionesOCRHistorico": 0,
-    "edicionesLocalesPendientes": 0
+    "edicionesLocalesPendientes": 50
   },
   "objetivoObras": 500,
-  "faltanParaObjetivo": 147
+  "faltanParaObjetivo": 97
 }

@@ -3949,6 +3949,1406 @@
         "url": "classics-text-reader.html?work=plato-theaetetus&lang=grc&to=en",
         "status": "Texto griego completo con traducción inglesa indexada por secciones; la correspondencia no implica alineación por palabra."
       }
+    },
+    {
+      "id": "first1k-tlg1799-tlg007",
+      "author": "Euclid",
+      "title": "Data",
+      "language": "grc",
+      "genre": "mathematics-engineering",
+      "status": "Texto original griego incorporado; índice léxico reconstruido en el despliegue",
+      "textStatus": "lexically-indexed",
+      "source": "OpenGreekAndLatin First1KGreek · fuente TEI íntegra",
+      "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg1799/tlg007/tlg1799.tlg007.1st1K-grc1.xml",
+      "sourceUrn": "urn:cts:greekLit:tlg1799.tlg007.1st1K-grc1",
+      "sourceSha256": "57cb1e3ef91adebb5ecb4eb002a707b2e7b8dfb168a2a52c59ce7c2c678edc72",
+      "sourceLicense": "CC BY-SA 4.0",
+      "corpusFiles": {
+        "grc": "data/classics-corpus/first1k-tlg1799-tlg007-grc.json"
+      },
+      "publicStatus": "lectura-local-completa",
+      "localVersions": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/first1k-tlg1799-tlg007-grc.json"
+        }
+      ],
+      "reading": {
+        "url": "classics-text-reader.html?work=first1k-tlg1799-tlg007&lang=grc",
+        "status": "Original griego segmentado por locus TEI; sin traducción vinculada."
+      }
+    },
+    {
+      "id": "first1k-tlg0552-tlg001",
+      "author": "Archimède",
+      "title": "De sphaera et cylindro",
+      "language": "grc",
+      "genre": "mathematics-engineering",
+      "status": "Texto original griego incorporado; índice léxico reconstruido en el despliegue",
+      "textStatus": "lexically-indexed",
+      "source": "OpenGreekAndLatin First1KGreek · fuente TEI íntegra",
+      "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0552/tlg001/tlg0552.tlg001.1st1K-grc1.xml",
+      "sourceUrn": "urn:cts:greekLit:tlg0552.tlg001.1st1K-grc1",
+      "sourceSha256": "ac9b78b308a76221e2301bbfcc5d90e48718eb5ff8fcdccbab8b1977708c05bb",
+      "sourceLicense": "CC BY-SA 4.0",
+      "corpusFiles": {
+        "grc": "data/classics-corpus/first1k-tlg0552-tlg001-grc.json"
+      },
+      "publicStatus": "lectura-local-completa",
+      "localVersions": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/first1k-tlg0552-tlg001-grc.json"
+        }
+      ],
+      "reading": {
+        "url": "classics-text-reader.html?work=first1k-tlg0552-tlg001&lang=grc",
+        "status": "Original griego segmentado por locus TEI; sin traducción vinculada."
+      }
+    },
+    {
+      "id": "first1k-tlg0552-tlg004",
+      "author": "Archimède",
+      "title": "De lineis spiralibus",
+      "language": "grc",
+      "genre": "mathematics-engineering",
+      "status": "Texto original griego incorporado; índice léxico reconstruido en el despliegue",
+      "textStatus": "lexically-indexed",
+      "source": "OpenGreekAndLatin First1KGreek · fuente TEI íntegra",
+      "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0552/tlg004/tlg0552.tlg004.1st1K-grc1.xml",
+      "sourceUrn": "urn:cts:greekLit:tlg0552.tlg004.1st1K-grc1",
+      "sourceSha256": "8b6ed7ae63a2ad1d65e9fd4939a9b4a114fc161d13fab929d82b58709a5b885f",
+      "sourceLicense": "CC BY-SA 4.0",
+      "corpusFiles": {
+        "grc": "data/classics-corpus/first1k-tlg0552-tlg004-grc.json"
+      },
+      "publicStatus": "lectura-local-completa",
+      "localVersions": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/first1k-tlg0552-tlg004-grc.json"
+        }
+      ],
+      "reading": {
+        "url": "classics-text-reader.html?work=first1k-tlg0552-tlg004&lang=grc",
+        "status": "Original griego segmentado por locus TEI; sin traducción vinculada."
+      }
+    },
+    {
+      "id": "first1k-tlg0552-tlg007",
+      "author": "Archimède",
+      "title": "Quadratura parabolae",
+      "language": "grc",
+      "genre": "mathematics-engineering",
+      "status": "Texto original griego incorporado; índice léxico reconstruido en el despliegue",
+      "textStatus": "lexically-indexed",
+      "source": "OpenGreekAndLatin First1KGreek · fuente TEI íntegra",
+      "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0552/tlg007/tlg0552.tlg007.1st1K-grc1.xml",
+      "sourceUrn": "urn:cts:greekLit:tlg0552.tlg007.1st1K-grc1",
+      "sourceSha256": "785f8a33edd41c5d243c02607c3263a807b2b83a9b8723a93d8b8fdf92a40c83",
+      "sourceLicense": "CC BY-SA 4.0",
+      "corpusFiles": {
+        "grc": "data/classics-corpus/first1k-tlg0552-tlg007-grc.json"
+      },
+      "publicStatus": "lectura-local-completa",
+      "localVersions": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/first1k-tlg0552-tlg007-grc.json"
+        }
+      ],
+      "reading": {
+        "url": "classics-text-reader.html?work=first1k-tlg0552-tlg007&lang=grc",
+        "status": "Original griego segmentado por locus TEI; sin traducción vinculada."
+      }
+    },
+    {
+      "id": "first1k-tlg0552-tlg006",
+      "author": "Archimède",
+      "title": "Arenarius",
+      "language": "grc",
+      "genre": "mathematics-engineering",
+      "status": "Texto original griego incorporado; índice léxico reconstruido en el despliegue",
+      "textStatus": "lexically-indexed",
+      "source": "OpenGreekAndLatin First1KGreek · fuente TEI íntegra",
+      "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0552/tlg006/tlg0552.tlg006.1st1K-grc1.xml",
+      "sourceUrn": "urn:cts:greekLit:tlg0552.tlg006.1st1K-grc1",
+      "sourceSha256": "7d65e870a9603ddefff906d1e4eb3b9ea8425455b4d4bc6cdd1fe733e6991a66",
+      "sourceLicense": "CC BY-SA 4.0",
+      "corpusFiles": {
+        "grc": "data/classics-corpus/first1k-tlg0552-tlg006-grc.json"
+      },
+      "publicStatus": "lectura-local-completa",
+      "localVersions": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/first1k-tlg0552-tlg006-grc.json"
+        }
+      ],
+      "reading": {
+        "url": "classics-text-reader.html?work=first1k-tlg0552-tlg006&lang=grc",
+        "status": "Original griego segmentado por locus TEI; sin traducción vinculada."
+      }
+    },
+    {
+      "id": "first1k-tlg0559-tlg006",
+      "author": "Hero of Alexandria",
+      "title": "Metrica",
+      "language": "grc",
+      "genre": "mathematics-engineering",
+      "status": "Texto original griego incorporado; índice léxico reconstruido en el despliegue",
+      "textStatus": "lexically-indexed",
+      "source": "OpenGreekAndLatin First1KGreek · fuente TEI íntegra",
+      "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0559/tlg006/tlg0559.tlg006.1st1K-grc1.xml",
+      "sourceUrn": "urn:cts:greekLit:tlg0559.tlg006.1st1K-grc1",
+      "sourceSha256": "c164da6e702da12a4694ef4736f5803149afb3dfcbf76e9dde59b17c73619c84",
+      "sourceLicense": "CC BY-SA 4.0",
+      "corpusFiles": {
+        "grc": "data/classics-corpus/first1k-tlg0559-tlg006-grc.json"
+      },
+      "publicStatus": "lectura-local-completa",
+      "localVersions": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/first1k-tlg0559-tlg006-grc.json"
+        }
+      ],
+      "reading": {
+        "url": "classics-text-reader.html?work=first1k-tlg0559-tlg006&lang=grc",
+        "status": "Original griego segmentado por locus TEI; sin traducción vinculada."
+      }
+    },
+    {
+      "id": "first1k-tlg0559-tlg007",
+      "author": "Hero of Alexandria",
+      "title": "Dioptra",
+      "language": "grc",
+      "genre": "mathematics-engineering",
+      "status": "Texto original griego incorporado; índice léxico reconstruido en el despliegue",
+      "textStatus": "lexically-indexed",
+      "source": "OpenGreekAndLatin First1KGreek · fuente TEI íntegra",
+      "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0559/tlg007/tlg0559.tlg007.1st1K-grc1.xml",
+      "sourceUrn": "urn:cts:greekLit:tlg0559.tlg007.1st1K-grc1",
+      "sourceSha256": "2a6c4f7e939c8d26dff32ce6713a57c750693cadd69b6c91abe8c19c2fbda37e",
+      "sourceLicense": "CC BY-SA 4.0",
+      "corpusFiles": {
+        "grc": "data/classics-corpus/first1k-tlg0559-tlg007-grc.json"
+      },
+      "publicStatus": "lectura-local-completa",
+      "localVersions": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/first1k-tlg0559-tlg007-grc.json"
+        }
+      ],
+      "reading": {
+        "url": "classics-text-reader.html?work=first1k-tlg0559-tlg007&lang=grc",
+        "status": "Original griego segmentado por locus TEI; sin traducción vinculada."
+      }
+    },
+    {
+      "id": "first1k-tlg0559-tlg011",
+      "author": "Hero of Alexandria",
+      "title": "De mensuris",
+      "language": "grc",
+      "genre": "mathematics-engineering",
+      "status": "Texto original griego incorporado; índice léxico reconstruido en el despliegue",
+      "textStatus": "lexically-indexed",
+      "source": "OpenGreekAndLatin First1KGreek · fuente TEI íntegra",
+      "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0559/tlg011/tlg0559.tlg011.1st1K-grc1.xml",
+      "sourceUrn": "urn:cts:greekLit:tlg0559.tlg011.1st1K-grc1",
+      "sourceSha256": "16918f22b4a84372174c5c641827e01ec56e89c211135ea6c1c1fcb1f9372a9b",
+      "sourceLicense": "CC BY-SA 4.0",
+      "corpusFiles": {
+        "grc": "data/classics-corpus/first1k-tlg0559-tlg011-grc.json"
+      },
+      "publicStatus": "lectura-local-completa",
+      "localVersions": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/first1k-tlg0559-tlg011-grc.json"
+        }
+      ],
+      "reading": {
+        "url": "classics-text-reader.html?work=first1k-tlg0559-tlg011&lang=grc",
+        "status": "Original griego segmentado por locus TEI; sin traducción vinculada."
+      }
+    },
+    {
+      "id": "first1k-tlg1799-tlg011",
+      "author": "Euclid",
+      "title": "Catoptrica (recensio Theonis?)",
+      "language": "grc",
+      "genre": "mathematics-engineering",
+      "status": "Texto original griego incorporado; índice léxico reconstruido en el despliegue",
+      "textStatus": "lexically-indexed",
+      "source": "OpenGreekAndLatin First1KGreek · fuente TEI íntegra",
+      "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg1799/tlg011/tlg1799.tlg011.1st1K-grc1.xml",
+      "sourceUrn": "urn:cts:greekLit:tlg1799.tlg011.1st1K-grc1",
+      "sourceSha256": "7fe955cca381714b64fb161b71d6e79f65c3995e98bd08c8bce2feda82dcbad1",
+      "sourceLicense": "CC BY-SA 4.0",
+      "corpusFiles": {
+        "grc": "data/classics-corpus/first1k-tlg1799-tlg011-grc.json"
+      },
+      "publicStatus": "lectura-local-completa",
+      "localVersions": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/first1k-tlg1799-tlg011-grc.json"
+        }
+      ],
+      "reading": {
+        "url": "classics-text-reader.html?work=first1k-tlg1799-tlg011&lang=grc",
+        "status": "Original griego segmentado por locus TEI; sin traducción vinculada."
+      }
+    },
+    {
+      "id": "first1k-tlg0358-tlg001",
+      "author": "Nicomachus of Gerasa",
+      "title": "Ἀριθμητικὴ εἰσαγωγή",
+      "language": "grc",
+      "genre": "mathematics-engineering",
+      "status": "Texto original griego incorporado; índice léxico reconstruido en el despliegue",
+      "textStatus": "lexically-indexed",
+      "source": "OpenGreekAndLatin First1KGreek · fuente TEI íntegra",
+      "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0358/tlg001/tlg0358.tlg001.1st1K-grc1.xml",
+      "sourceUrn": "urn:cts:greekLit:tlg0358.tlg001.1st1K-grc1",
+      "sourceSha256": "c66b2acadd790ddd046003bf58d4cce10211c897550ac2ab5029f1e14ec95a54",
+      "sourceLicense": "CC BY-SA 4.0",
+      "corpusFiles": {
+        "grc": "data/classics-corpus/first1k-tlg0358-tlg001-grc.json"
+      },
+      "publicStatus": "lectura-local-completa",
+      "localVersions": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/first1k-tlg0358-tlg001-grc.json"
+        }
+      ],
+      "reading": {
+        "url": "classics-text-reader.html?work=first1k-tlg0358-tlg001&lang=grc",
+        "status": "Original griego segmentado por locus TEI; sin traducción vinculada."
+      }
+    },
+    {
+      "id": "first1k-tlg0358-tlg002",
+      "author": "Nicomachus of Gerasa",
+      "title": "Ἐγχειρίδιον ἁρμονικῆς",
+      "language": "grc",
+      "genre": "mathematics-engineering",
+      "status": "Texto original griego incorporado; índice léxico reconstruido en el despliegue",
+      "textStatus": "lexically-indexed",
+      "source": "OpenGreekAndLatin First1KGreek · fuente TEI íntegra",
+      "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0358/tlg002/tlg0358.tlg002.1st1K-grc1.xml",
+      "sourceUrn": "urn:cts:greekLit:tlg0358.tlg002.1st1K-grc1",
+      "sourceSha256": "a5d3348d15af5dfb622b71ba7aa443e41d37712773d3bc67b6b4975d072c528f",
+      "sourceLicense": "CC BY-SA 4.0",
+      "corpusFiles": {
+        "grc": "data/classics-corpus/first1k-tlg0358-tlg002-grc.json"
+      },
+      "publicStatus": "lectura-local-completa",
+      "localVersions": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/first1k-tlg0358-tlg002-grc.json"
+        }
+      ],
+      "reading": {
+        "url": "classics-text-reader.html?work=first1k-tlg0358-tlg002&lang=grc",
+        "status": "Original griego segmentado por locus TEI; sin traducción vinculada."
+      }
+    },
+    {
+      "id": "first1k-tlg0057-tlg048",
+      "author": "Galen",
+      "title": "De typis",
+      "language": "grc",
+      "genre": "medicine",
+      "status": "Texto original griego incorporado; índice léxico reconstruido en el despliegue",
+      "textStatus": "lexically-indexed",
+      "source": "OpenGreekAndLatin First1KGreek · fuente TEI íntegra",
+      "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0057/tlg048/tlg0057.tlg048.1st1K-grc1.xml",
+      "sourceUrn": "urn:cts:greekLit:tlg0057.tlg048.1st1K-grc1",
+      "sourceSha256": "ae205e1c1e58f4f00ed3851948dff3364a5e7a2d7149f7547594433ddbd61555",
+      "sourceLicense": "CC BY-SA 4.0",
+      "corpusFiles": {
+        "grc": "data/classics-corpus/first1k-tlg0057-tlg048-grc.json"
+      },
+      "publicStatus": "lectura-local-completa",
+      "localVersions": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/first1k-tlg0057-tlg048-grc.json"
+        }
+      ],
+      "reading": {
+        "url": "classics-text-reader.html?work=first1k-tlg0057-tlg048&lang=grc",
+        "status": "Original griego segmentado por locus TEI; sin traducción vinculada."
+      }
+    },
+    {
+      "id": "first1k-tlg0057-tlg034",
+      "author": "Galen",
+      "title": "De parvae pilae exercitio",
+      "language": "grc",
+      "genre": "medicine",
+      "status": "Texto original griego incorporado; índice léxico reconstruido en el despliegue",
+      "textStatus": "lexically-indexed",
+      "source": "OpenGreekAndLatin First1KGreek · fuente TEI íntegra",
+      "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0057/tlg034/tlg0057.tlg034.1st1K-grc2.xml",
+      "sourceUrn": "urn:cts:greekLit:tlg0057.tlg034.1st1K-grc2",
+      "sourceSha256": "cc650bc25f4b9c661df429b87dabfccbcffb30f99f7bd17e30a913502457584a",
+      "sourceLicense": "CC BY-SA 4.0",
+      "corpusFiles": {
+        "grc": "data/classics-corpus/first1k-tlg0057-tlg034-grc.json"
+      },
+      "publicStatus": "lectura-local-completa",
+      "localVersions": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/first1k-tlg0057-tlg034-grc.json"
+        }
+      ],
+      "reading": {
+        "url": "classics-text-reader.html?work=first1k-tlg0057-tlg034&lang=grc",
+        "status": "Original griego segmentado por locus TEI; sin traducción vinculada."
+      }
+    },
+    {
+      "id": "first1k-tlg0057-tlg002",
+      "author": "Galen",
+      "title": "De optima doctrina",
+      "language": "grc",
+      "genre": "medicine",
+      "status": "Texto original griego incorporado; índice léxico reconstruido en el despliegue",
+      "textStatus": "lexically-indexed",
+      "source": "OpenGreekAndLatin First1KGreek · fuente TEI íntegra",
+      "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0057/tlg002/tlg0057.tlg002.1st1K-grc1.xml",
+      "sourceUrn": "urn:cts:greekLit:tlg0057.tlg002.1st1K-grc1",
+      "sourceSha256": "8a0422778635a0842018ed751a5176e15e58b7c8c63fe377b36c6e1d5bfcd844",
+      "sourceLicense": "CC BY-SA 4.0",
+      "corpusFiles": {
+        "grc": "data/classics-corpus/first1k-tlg0057-tlg002-grc.json"
+      },
+      "publicStatus": "lectura-local-completa",
+      "localVersions": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/first1k-tlg0057-tlg002-grc.json"
+        }
+      ],
+      "reading": {
+        "url": "classics-text-reader.html?work=first1k-tlg0057-tlg002&lang=grc",
+        "status": "Original griego segmentado por locus TEI; sin traducción vinculada."
+      }
+    },
+    {
+      "id": "first1k-tlg0057-tlg030",
+      "author": "Galen",
+      "title": "De atra bile",
+      "language": "grc",
+      "genre": "medicine",
+      "status": "Texto original griego incorporado; índice léxico reconstruido en el despliegue",
+      "textStatus": "lexically-indexed",
+      "source": "OpenGreekAndLatin First1KGreek · fuente TEI íntegra",
+      "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0057/tlg030/tlg0057.tlg030.1st1K-grc1.xml",
+      "sourceUrn": "urn:cts:greekLit:tlg0057.tlg030.1st1K-grc1",
+      "sourceSha256": "21dd9a7944db542f56b71d5059baaf46df1d74f22aa2f29d20fc854ff48ab332",
+      "sourceLicense": "CC BY-SA 4.0",
+      "corpusFiles": {
+        "grc": "data/classics-corpus/first1k-tlg0057-tlg030-grc.json"
+      },
+      "publicStatus": "lectura-local-completa",
+      "localVersions": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/first1k-tlg0057-tlg030-grc.json"
+        }
+      ],
+      "reading": {
+        "url": "classics-text-reader.html?work=first1k-tlg0057-tlg030&lang=grc",
+        "status": "Original griego segmentado por locus TEI; sin traducción vinculada."
+      }
+    },
+    {
+      "id": "first1k-tlg0057-tlg024",
+      "author": "Galen",
+      "title": "De optima corporis nostri constitutione",
+      "language": "grc",
+      "genre": "medicine",
+      "status": "Texto original griego incorporado; índice léxico reconstruido en el despliegue",
+      "textStatus": "lexically-indexed",
+      "source": "OpenGreekAndLatin First1KGreek · fuente TEI íntegra",
+      "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0057/tlg024/tlg0057.tlg024.1st1K-grc1.xml",
+      "sourceUrn": "urn:cts:greekLit:tlg0057.tlg024.1st1K-grc1",
+      "sourceSha256": "799332edd251ecc1a0a3608f5c8cc4c6e483a461dd2fa71578371ea5924e325f",
+      "sourceLicense": "CC BY-SA 4.0",
+      "corpusFiles": {
+        "grc": "data/classics-corpus/first1k-tlg0057-tlg024-grc.json"
+      },
+      "publicStatus": "lectura-local-completa",
+      "localVersions": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/first1k-tlg0057-tlg024-grc.json"
+        }
+      ],
+      "reading": {
+        "url": "classics-text-reader.html?work=first1k-tlg0057-tlg024&lang=grc",
+        "status": "Original griego segmentado por locus TEI; sin traducción vinculada."
+      }
+    },
+    {
+      "id": "first1k-tlg0057-tlg082",
+      "author": "Galen",
+      "title": "De sophismatis seu captionibus penes dictionem",
+      "language": "grc",
+      "genre": "medicine",
+      "status": "Texto original griego incorporado; índice léxico reconstruido en el despliegue",
+      "textStatus": "lexically-indexed",
+      "source": "OpenGreekAndLatin First1KGreek · fuente TEI íntegra",
+      "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0057/tlg082/tlg0057.tlg082.1st1K-grc1.xml",
+      "sourceUrn": "urn:cts:greekLit:tlg0057.tlg082.1st1K-grc1",
+      "sourceSha256": "d83ccebdcbf8fbe650d23ae653f010b7b86e3fc4a025f565c2a3c3137db36332",
+      "sourceLicense": "CC BY-SA 4.0",
+      "corpusFiles": {
+        "grc": "data/classics-corpus/first1k-tlg0057-tlg082-grc.json"
+      },
+      "publicStatus": "lectura-local-completa",
+      "localVersions": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/first1k-tlg0057-tlg082-grc.json"
+        }
+      ],
+      "reading": {
+        "url": "classics-text-reader.html?work=first1k-tlg0057-tlg082&lang=grc",
+        "status": "Original griego segmentado por locus TEI; sin traducción vinculada."
+      }
+    },
+    {
+      "id": "first1k-tlg0057-tlg039",
+      "author": "Galen",
+      "title": "De ptisana",
+      "language": "grc",
+      "genre": "medicine",
+      "status": "Texto original griego incorporado; índice léxico reconstruido en el despliegue",
+      "textStatus": "lexically-indexed",
+      "source": "OpenGreekAndLatin First1KGreek · fuente TEI íntegra",
+      "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0057/tlg039/tlg0057.tlg039.1st1K-grc1.xml",
+      "sourceUrn": "urn:cts:greekLit:tlg0057.tlg039.1st1K-grc1",
+      "sourceSha256": "ec38e2174f6b5ce352dc35e61ba1f55e25f4943389904f34f486ae72298857d1",
+      "sourceLicense": "CC BY-SA 4.0",
+      "corpusFiles": {
+        "grc": "data/classics-corpus/first1k-tlg0057-tlg039-grc.json"
+      },
+      "publicStatus": "lectura-local-completa",
+      "localVersions": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/first1k-tlg0057-tlg039-grc.json"
+        }
+      ],
+      "reading": {
+        "url": "classics-text-reader.html?work=first1k-tlg0057-tlg039&lang=grc",
+        "status": "Original griego segmentado por locus TEI; sin traducción vinculada."
+      }
+    },
+    {
+      "id": "first1k-tlg0565-tlg001",
+      "author": "Soranus",
+      "title": "Gynaeciorum Libri IV",
+      "language": "grc",
+      "genre": "medicine",
+      "status": "Texto original griego incorporado; índice léxico reconstruido en el despliegue",
+      "textStatus": "lexically-indexed",
+      "source": "OpenGreekAndLatin First1KGreek · fuente TEI íntegra",
+      "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0565/tlg001/tlg0565.tlg001.1st1K-grc1.xml",
+      "sourceUrn": "urn:cts:greekLit:tlg0565.tlg001.1st1K-grc1",
+      "sourceSha256": "5a339dcb755b4e318b49c24f67671ae6ca206cb34860bd8b5e416b2dcc0a387f",
+      "sourceLicense": "CC BY-SA 4.0",
+      "corpusFiles": {
+        "grc": "data/classics-corpus/first1k-tlg0565-tlg001-grc.json"
+      },
+      "publicStatus": "lectura-local-completa",
+      "localVersions": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/first1k-tlg0565-tlg001-grc.json"
+        }
+      ],
+      "reading": {
+        "url": "classics-text-reader.html?work=first1k-tlg0565-tlg001&lang=grc",
+        "status": "Original griego segmentado por locus TEI; sin traducción vinculada."
+      }
+    },
+    {
+      "id": "first1k-tlg0565-tlg002",
+      "author": "Soranus",
+      "title": "De signis Fracturarum",
+      "language": "grc",
+      "genre": "medicine",
+      "status": "Texto original griego incorporado; índice léxico reconstruido en el despliegue",
+      "textStatus": "lexically-indexed",
+      "source": "OpenGreekAndLatin First1KGreek · fuente TEI íntegra",
+      "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0565/tlg002/tlg0565.tlg002.1st1K-grc1.xml",
+      "sourceUrn": "urn:cts:greekLit:tlg0565.tlg002.1st1K-grc1",
+      "sourceSha256": "ae6dc75a468acc30be1bedbb47bf4027511af36a582785e94e038c4f03a7557f",
+      "sourceLicense": "CC BY-SA 4.0",
+      "corpusFiles": {
+        "grc": "data/classics-corpus/first1k-tlg0565-tlg002-grc.json"
+      },
+      "publicStatus": "lectura-local-completa",
+      "localVersions": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/first1k-tlg0565-tlg002-grc.json"
+        }
+      ],
+      "reading": {
+        "url": "classics-text-reader.html?work=first1k-tlg0565-tlg002&lang=grc",
+        "status": "Original griego segmentado por locus TEI; sin traducción vinculada."
+      }
+    },
+    {
+      "id": "first1k-tlg0565-tlg003",
+      "author": "Soranus",
+      "title": "De Fasciis",
+      "language": "grc",
+      "genre": "medicine",
+      "status": "Texto original griego incorporado; índice léxico reconstruido en el despliegue",
+      "textStatus": "lexically-indexed",
+      "source": "OpenGreekAndLatin First1KGreek · fuente TEI íntegra",
+      "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0565/tlg003/tlg0565.tlg003.1st1K-grc1.xml",
+      "sourceUrn": "urn:cts:greekLit:tlg0565.tlg003.1st1K-grc1",
+      "sourceSha256": "a6eb21d8f67a63427e7a12832cd86350cbba60f0efbee6a05ce443a5ec2b0b3a",
+      "sourceLicense": "CC BY-SA 4.0",
+      "corpusFiles": {
+        "grc": "data/classics-corpus/first1k-tlg0565-tlg003-grc.json"
+      },
+      "publicStatus": "lectura-local-completa",
+      "localVersions": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/first1k-tlg0565-tlg003-grc.json"
+        }
+      ],
+      "reading": {
+        "url": "classics-text-reader.html?work=first1k-tlg0565-tlg003&lang=grc",
+        "status": "Original griego segmentado por locus TEI; sin traducción vinculada."
+      }
+    },
+    {
+      "id": "first1k-tlg0086-tlg019",
+      "author": "Aristotle",
+      "title": "Περὶ ἀτόμων γραμμῶν",
+      "language": "grc",
+      "genre": "philosophy-natural-science",
+      "status": "Texto original griego incorporado; índice léxico reconstruido en el despliegue",
+      "textStatus": "lexically-indexed",
+      "source": "OpenGreekAndLatin First1KGreek · fuente TEI íntegra",
+      "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0086/tlg019/tlg0086.tlg019.1st1K-grc1.xml",
+      "sourceUrn": "urn:cts:greekLit:tlg0086.tlg019.1st1K-grc1",
+      "sourceSha256": "90d7a294101e60167635ba49ee534426f72904a94218ebd10d626d3485e95d88",
+      "sourceLicense": "CC BY-SA 4.0",
+      "corpusFiles": {
+        "grc": "data/classics-corpus/first1k-tlg0086-tlg019-grc.json"
+      },
+      "publicStatus": "lectura-local-completa",
+      "localVersions": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/first1k-tlg0086-tlg019-grc.json"
+        }
+      ],
+      "reading": {
+        "url": "classics-text-reader.html?work=first1k-tlg0086-tlg019&lang=grc",
+        "status": "Original griego segmentado por locus TEI; sin traducción vinculada."
+      }
+    },
+    {
+      "id": "first1k-tlg0086-tlg004",
+      "author": "Aristotle",
+      "title": "Ἐκ τοῦ περὶ ἀκουστῶν",
+      "language": "grc",
+      "genre": "philosophy-natural-science",
+      "status": "Texto original griego incorporado; índice léxico reconstruido en el despliegue",
+      "textStatus": "lexically-indexed",
+      "source": "OpenGreekAndLatin First1KGreek · fuente TEI íntegra",
+      "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0086/tlg004/tlg0086.tlg004.1st1K-grc1.xml",
+      "sourceUrn": "urn:cts:greekLit:tlg0086.tlg004.1st1K-grc1",
+      "sourceSha256": "1578b86deb91f1a92e7f9348b6c059916976be12d081f876112ba20a7d455bca",
+      "sourceLicense": "CC BY-SA 4.0",
+      "corpusFiles": {
+        "grc": "data/classics-corpus/first1k-tlg0086-tlg004-grc.json"
+      },
+      "publicStatus": "lectura-local-completa",
+      "localVersions": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/first1k-tlg0086-tlg004-grc.json"
+        }
+      ],
+      "reading": {
+        "url": "classics-text-reader.html?work=first1k-tlg0086-tlg004&lang=grc",
+        "status": "Original griego segmentado por locus TEI; sin traducción vinculada."
+      }
+    },
+    {
+      "id": "first1k-tlg0086-tlg043",
+      "author": "Aristotle",
+      "title": "De spiritu",
+      "language": "grc",
+      "genre": "philosophy-natural-science",
+      "status": "Texto original griego incorporado; índice léxico reconstruido en el despliegue",
+      "textStatus": "lexically-indexed",
+      "source": "OpenGreekAndLatin First1KGreek · fuente TEI íntegra",
+      "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0086/tlg043/tlg0086.tlg043.1st1K-grc1.xml",
+      "sourceUrn": "urn:cts:greekLit:tlg0086.tlg043.1st1K-grc1",
+      "sourceSha256": "f6a766ff7b4aabcaf7c3a0661cc26794cd3984d0c9855900725147e1b0a74003",
+      "sourceLicense": "CC BY-SA 4.0",
+      "corpusFiles": {
+        "grc": "data/classics-corpus/first1k-tlg0086-tlg043-grc.json"
+      },
+      "publicStatus": "lectura-local-completa",
+      "localVersions": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/first1k-tlg0086-tlg043-grc.json"
+        }
+      ],
+      "reading": {
+        "url": "classics-text-reader.html?work=first1k-tlg0086-tlg043&lang=grc",
+        "status": "Original griego segmentado por locus TEI; sin traducción vinculada."
+      }
+    },
+    {
+      "id": "first1k-tlg0086-tlg047",
+      "author": "Aristotle",
+      "title": "Περὶ Ξενοφάνους, περὶ Ζήνωνος, περὶ Γοργίου",
+      "language": "grc",
+      "genre": "philosophy-natural-science",
+      "status": "Texto original griego incorporado; índice léxico reconstruido en el despliegue",
+      "textStatus": "lexically-indexed",
+      "source": "OpenGreekAndLatin First1KGreek · fuente TEI íntegra",
+      "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0086/tlg047/tlg0086.tlg047.1st1K-grc1.xml",
+      "sourceUrn": "urn:cts:greekLit:tlg0086.tlg047.1st1K-grc1",
+      "sourceSha256": "6a8ce88399d63299c1465425e3c16fcaad69f6129667af7e94a8e051ab1ec0d0",
+      "sourceLicense": "CC BY-SA 4.0",
+      "corpusFiles": {
+        "grc": "data/classics-corpus/first1k-tlg0086-tlg047-grc.json"
+      },
+      "publicStatus": "lectura-local-completa",
+      "localVersions": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/first1k-tlg0086-tlg047-grc.json"
+        }
+      ],
+      "reading": {
+        "url": "classics-text-reader.html?work=first1k-tlg0086-tlg047&lang=grc",
+        "status": "Original griego segmentado por locus TEI; sin traducción vinculada."
+      }
+    },
+    {
+      "id": "first1k-tlg0093-tlg010x04",
+      "author": "Theophrastus",
+      "title": "Περί Κόπων",
+      "language": "grc",
+      "genre": "philosophy-natural-science",
+      "status": "Texto original griego incorporado; índice léxico reconstruido en el despliegue",
+      "textStatus": "lexically-indexed",
+      "source": "OpenGreekAndLatin First1KGreek · fuente TEI íntegra",
+      "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0093/tlg010x04/tlg0093.tlg010x04.1st1K-grc1.xml",
+      "sourceUrn": "urn:cts:greekLit:tlg0093.tlg010x04.1st1K-grc1",
+      "sourceSha256": "ab029ce5fdcd3cc1a0cfbd5b754a4814d4252fd58c80c6278fe5b3e5af4f09a5",
+      "sourceLicense": "CC BY-SA 4.0",
+      "corpusFiles": {
+        "grc": "data/classics-corpus/first1k-tlg0093-tlg010x04-grc.json"
+      },
+      "publicStatus": "lectura-local-completa",
+      "localVersions": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/first1k-tlg0093-tlg010x04-grc.json"
+        }
+      ],
+      "reading": {
+        "url": "classics-text-reader.html?work=first1k-tlg0093-tlg010x04&lang=grc",
+        "status": "Original griego segmentado por locus TEI; sin traducción vinculada."
+      }
+    },
+    {
+      "id": "first1k-tlg0093-tlg010x06",
+      "author": "Theophrastus",
+      "title": "Περί Ἰδρώτων",
+      "language": "grc",
+      "genre": "philosophy-natural-science",
+      "status": "Texto original griego incorporado; índice léxico reconstruido en el despliegue",
+      "textStatus": "lexically-indexed",
+      "source": "OpenGreekAndLatin First1KGreek · fuente TEI íntegra",
+      "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0093/tlg010x06/tlg0093.tlg010x06.1st1K-grc1.xml",
+      "sourceUrn": "urn:cts:greekLit:tlg0093.tlg010x06.1st1K-grc1",
+      "sourceSha256": "13b3ce5287a1cb06ffe31fdb9c943712734ed5a340612112b1e6b373dd81f57d",
+      "sourceLicense": "CC BY-SA 4.0",
+      "corpusFiles": {
+        "grc": "data/classics-corpus/first1k-tlg0093-tlg010x06-grc.json"
+      },
+      "publicStatus": "lectura-local-completa",
+      "localVersions": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/first1k-tlg0093-tlg010x06-grc.json"
+        }
+      ],
+      "reading": {
+        "url": "classics-text-reader.html?work=first1k-tlg0093-tlg010x06&lang=grc",
+        "status": "Original griego segmentado por locus TEI; sin traducción vinculada."
+      }
+    },
+    {
+      "id": "first1k-tlg0093-tlg006",
+      "author": "Theophrastus",
+      "title": "Ἐκ τῶν μετὰ τὰ φυσικά",
+      "language": "grc",
+      "genre": "philosophy-natural-science",
+      "status": "Texto original griego incorporado; índice léxico reconstruido en el despliegue",
+      "textStatus": "lexically-indexed",
+      "source": "OpenGreekAndLatin First1KGreek · fuente TEI íntegra",
+      "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0093/tlg006/tlg0093.tlg006.1st1K-grc1.xml",
+      "sourceUrn": "urn:cts:greekLit:tlg0093.tlg006.1st1K-grc1",
+      "sourceSha256": "973eecc10d80a219c71c08d75749dc3a4e3090844ec064c48148d55e3e474fa9",
+      "sourceLicense": "CC BY-SA 4.0",
+      "corpusFiles": {
+        "grc": "data/classics-corpus/first1k-tlg0093-tlg006-grc.json"
+      },
+      "publicStatus": "lectura-local-completa",
+      "localVersions": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/first1k-tlg0093-tlg006-grc.json"
+        }
+      ],
+      "reading": {
+        "url": "classics-text-reader.html?work=first1k-tlg0093-tlg006&lang=grc",
+        "status": "Original griego segmentado por locus TEI; sin traducción vinculada."
+      }
+    },
+    {
+      "id": "first1k-tlg0093-tlg010x03",
+      "author": "Theophrastus",
+      "title": "Περί Σημείων Ὑδάτων και Pνευμάτων και Xειμώνων και Εὐδιών",
+      "language": "grc",
+      "genre": "philosophy-natural-science",
+      "status": "Texto original griego incorporado; índice léxico reconstruido en el despliegue",
+      "textStatus": "lexically-indexed",
+      "source": "OpenGreekAndLatin First1KGreek · fuente TEI íntegra",
+      "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0093/tlg010x03/tlg0093.tlg010x03.1st1K-grc1.xml",
+      "sourceUrn": "urn:cts:greekLit:tlg0093.tlg010x03.1st1K-grc1",
+      "sourceSha256": "cd9f9afbb81a85c3bf2560213cf35a5a48554523211da8d0ac0c75ce7886d238",
+      "sourceLicense": "CC BY-SA 4.0",
+      "corpusFiles": {
+        "grc": "data/classics-corpus/first1k-tlg0093-tlg010x03-grc.json"
+      },
+      "publicStatus": "lectura-local-completa",
+      "localVersions": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/first1k-tlg0093-tlg010x03-grc.json"
+        }
+      ],
+      "reading": {
+        "url": "classics-text-reader.html?work=first1k-tlg0093-tlg010x03&lang=grc",
+        "status": "Original griego segmentado por locus TEI; sin traducción vinculada."
+      }
+    },
+    {
+      "id": "first1k-tlg0732-tlg012",
+      "author": "Alexander of Aphrodisias",
+      "title": "Quaestiones",
+      "language": "grc",
+      "genre": "philosophy-natural-science",
+      "status": "Texto original griego incorporado; índice léxico reconstruido en el despliegue",
+      "textStatus": "lexically-indexed",
+      "source": "OpenGreekAndLatin First1KGreek · fuente TEI íntegra",
+      "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0732/tlg012/tlg0732.tlg012.1st1K-grc2.xml",
+      "sourceUrn": "urn:cts:greekLit:tlg0732.tlg012.1st1K-grc2",
+      "sourceSha256": "648048a9ae4763733d1fd3502060ecc27609095eb4c15fb70a2ddb1f55660996",
+      "sourceLicense": "CC BY-SA 4.0",
+      "corpusFiles": {
+        "grc": "data/classics-corpus/first1k-tlg0732-tlg012-grc.json"
+      },
+      "publicStatus": "lectura-local-completa",
+      "localVersions": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/first1k-tlg0732-tlg012-grc.json"
+        }
+      ],
+      "reading": {
+        "url": "classics-text-reader.html?work=first1k-tlg0732-tlg012&lang=grc",
+        "status": "Original griego segmentado por locus TEI; sin traducción vinculada."
+      }
+    },
+    {
+      "id": "first1k-tlg0732-tlg003",
+      "author": "Alexander of Aphrodisias",
+      "title": "Περὶ Πυρετῶν [Sp.]",
+      "language": "grc",
+      "genre": "philosophy-natural-science",
+      "status": "Texto original griego incorporado; índice léxico reconstruido en el despliegue",
+      "textStatus": "lexically-indexed",
+      "source": "OpenGreekAndLatin First1KGreek · fuente TEI íntegra",
+      "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0732/tlg003/tlg0732.tlg003.1st1K-grc1.xml",
+      "sourceUrn": "urn:cts:greekLit:tlg0732.tlg003.1st1K-grc1",
+      "sourceSha256": "576579610f625c7d9d4d254355bb75a175883ed5b9b29c8f115c68d19acdb423",
+      "sourceLicense": "CC BY-SA 4.0",
+      "corpusFiles": {
+        "grc": "data/classics-corpus/first1k-tlg0732-tlg003-grc.json"
+      },
+      "publicStatus": "lectura-local-completa",
+      "localVersions": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/first1k-tlg0732-tlg003-grc.json"
+        }
+      ],
+      "reading": {
+        "url": "classics-text-reader.html?work=first1k-tlg0732-tlg003&lang=grc",
+        "status": "Original griego segmentado por locus TEI; sin traducción vinculada."
+      }
+    },
+    {
+      "id": "first1k-tlg0732-tlg001",
+      "author": "Alexander of Aphrodisias",
+      "title": "De mixtione",
+      "language": "grc",
+      "genre": "philosophy-natural-science",
+      "status": "Texto original griego incorporado; índice léxico reconstruido en el despliegue",
+      "textStatus": "lexically-indexed",
+      "source": "OpenGreekAndLatin First1KGreek · fuente TEI íntegra",
+      "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0732/tlg001/tlg0732.tlg001.1st1K-grc1.xml",
+      "sourceUrn": "urn:cts:greekLit:tlg0732.tlg001.1st1K-grc1",
+      "sourceSha256": "257cd81564ee0c0868b3eacce10133346bb0a91d804abce504198a39d38e2c54",
+      "sourceLicense": "CC BY-SA 4.0",
+      "corpusFiles": {
+        "grc": "data/classics-corpus/first1k-tlg0732-tlg001-grc.json"
+      },
+      "publicStatus": "lectura-local-completa",
+      "localVersions": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/first1k-tlg0732-tlg001-grc.json"
+        }
+      ],
+      "reading": {
+        "url": "classics-text-reader.html?work=first1k-tlg0732-tlg001&lang=grc",
+        "status": "Original griego segmentado por locus TEI; sin traducción vinculada."
+      }
+    },
+    {
+      "id": "first1k-tlg2034-tlg005",
+      "author": "Porphyrius",
+      "title": "Ad Marcellam",
+      "language": "grc",
+      "genre": "philosophy-natural-science",
+      "status": "Texto original griego incorporado; índice léxico reconstruido en el despliegue",
+      "textStatus": "lexically-indexed",
+      "source": "OpenGreekAndLatin First1KGreek · fuente TEI íntegra",
+      "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg2034/tlg005/tlg2034.tlg005.1st1K-grc1.xml",
+      "sourceUrn": "urn:cts:greekLit:tlg2034.tlg005.1st1K-grc1",
+      "sourceSha256": "a1619abe3c06923ba4410ef88c1d826e8399373f1e87c2af8abcc68b61cfb242",
+      "sourceLicense": "CC BY-SA 4.0",
+      "corpusFiles": {
+        "grc": "data/classics-corpus/first1k-tlg2034-tlg005-grc.json"
+      },
+      "publicStatus": "lectura-local-completa",
+      "localVersions": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/first1k-tlg2034-tlg005-grc.json"
+        }
+      ],
+      "reading": {
+        "url": "classics-text-reader.html?work=first1k-tlg2034-tlg005&lang=grc",
+        "status": "Original griego segmentado por locus TEI; sin traducción vinculada."
+      }
+    },
+    {
+      "id": "first1k-tlg2034-tlg002",
+      "author": "Porphyrius",
+      "title": "Vita Pythagorae",
+      "language": "grc",
+      "genre": "philosophy-natural-science",
+      "status": "Texto original griego incorporado; índice léxico reconstruido en el despliegue",
+      "textStatus": "lexically-indexed",
+      "source": "OpenGreekAndLatin First1KGreek · fuente TEI íntegra",
+      "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg2034/tlg002/tlg2034.tlg002.1st1K-grc1.xml",
+      "sourceUrn": "urn:cts:greekLit:tlg2034.tlg002.1st1K-grc1",
+      "sourceSha256": "2b8afb24c554d923f0f6a8bb38475ebc5e789880e94fc649fc7e72b7b672adac",
+      "sourceLicense": "CC BY-SA 4.0",
+      "corpusFiles": {
+        "grc": "data/classics-corpus/first1k-tlg2034-tlg002-grc.json"
+      },
+      "publicStatus": "lectura-local-completa",
+      "localVersions": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/first1k-tlg2034-tlg002-grc.json"
+        }
+      ],
+      "reading": {
+        "url": "classics-text-reader.html?work=first1k-tlg2034-tlg002&lang=grc",
+        "status": "Original griego segmentado por locus TEI; sin traducción vinculada."
+      }
+    },
+    {
+      "id": "first1k-tlg2023-tlg003",
+      "author": "Iamblichus",
+      "title": "De communi mathematica scientia",
+      "language": "grc",
+      "genre": "philosophy-natural-science",
+      "status": "Texto original griego incorporado; índice léxico reconstruido en el despliegue",
+      "textStatus": "lexically-indexed",
+      "source": "OpenGreekAndLatin First1KGreek · fuente TEI íntegra",
+      "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg2023/tlg003/tlg2023.tlg003.1st1K-grc1.xml",
+      "sourceUrn": "urn:cts:greekLit:tlg2023.tlg003.1st1K-grc1",
+      "sourceSha256": "b1ae75365887cfb1ed86da82a7dc8820fef9eac9a95858c33f042c6333c63bb6",
+      "sourceLicense": "CC BY-SA 4.0",
+      "corpusFiles": {
+        "grc": "data/classics-corpus/first1k-tlg2023-tlg003-grc.json"
+      },
+      "publicStatus": "lectura-local-completa",
+      "localVersions": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/first1k-tlg2023-tlg003-grc.json"
+        }
+      ],
+      "reading": {
+        "url": "classics-text-reader.html?work=first1k-tlg2023-tlg003&lang=grc",
+        "status": "Original griego segmentado por locus TEI; sin traducción vinculada."
+      }
+    },
+    {
+      "id": "first1k-tlg2023-tlg004",
+      "author": "Iamblichus",
+      "title": "Περὶ τῆς Νικομάχου ἀριθμητικῆς εἰσαγωγῆς",
+      "language": "grc",
+      "genre": "philosophy-natural-science",
+      "status": "Texto original griego incorporado; índice léxico reconstruido en el despliegue",
+      "textStatus": "lexically-indexed",
+      "source": "OpenGreekAndLatin First1KGreek · fuente TEI íntegra",
+      "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg2023/tlg004/tlg2023.tlg004.1st1K-grc1.xml",
+      "sourceUrn": "urn:cts:greekLit:tlg2023.tlg004.1st1K-grc1",
+      "sourceSha256": "3cb61eb2791f036eb7731310fe5e8c40b6a246ef2e5ea9fbb3cdaee2e09787dd",
+      "sourceLicense": "CC BY-SA 4.0",
+      "corpusFiles": {
+        "grc": "data/classics-corpus/first1k-tlg2023-tlg004-grc.json"
+      },
+      "publicStatus": "lectura-local-completa",
+      "localVersions": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/first1k-tlg2023-tlg004-grc.json"
+        }
+      ],
+      "reading": {
+        "url": "classics-text-reader.html?work=first1k-tlg2023-tlg004&lang=grc",
+        "status": "Original griego segmentado por locus TEI; sin traducción vinculada."
+      }
+    },
+    {
+      "id": "first1k-tlg2023-tlg001",
+      "author": "Iamblichus",
+      "title": "περὶ τοῦ Πυθαγορικοῦ βίου λόγος",
+      "language": "grc",
+      "genre": "philosophy-natural-science",
+      "status": "Texto original griego incorporado; índice léxico reconstruido en el despliegue",
+      "textStatus": "lexically-indexed",
+      "source": "OpenGreekAndLatin First1KGreek · fuente TEI íntegra",
+      "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg2023/tlg001/tlg2023.tlg001.1st1K-grc1.xml",
+      "sourceUrn": "urn:cts:greekLit:tlg2023.tlg001.1st1K-grc1",
+      "sourceSha256": "b6874459f112bef74cd69b1c67386e852ce921a7210755b568e4c9f9194957d8",
+      "sourceLicense": "CC BY-SA 4.0",
+      "corpusFiles": {
+        "grc": "data/classics-corpus/first1k-tlg2023-tlg001-grc.json"
+      },
+      "publicStatus": "lectura-local-completa",
+      "localVersions": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/first1k-tlg2023-tlg001-grc.json"
+        }
+      ],
+      "reading": {
+        "url": "classics-text-reader.html?work=first1k-tlg2023-tlg001&lang=grc",
+        "status": "Original griego segmentado por locus TEI; sin traducción vinculada."
+      }
+    },
+    {
+      "id": "first1k-tlg0592-tlg001",
+      "author": "Hermogenes",
+      "title": "Progymnasmata [Dub.]",
+      "language": "grc",
+      "genre": "rhetoric-language",
+      "status": "Texto original griego incorporado; índice léxico reconstruido en el despliegue",
+      "textStatus": "lexically-indexed",
+      "source": "OpenGreekAndLatin First1KGreek · fuente TEI íntegra",
+      "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0592/tlg001/tlg0592.tlg001.1st1K-grc1.xml",
+      "sourceUrn": "urn:cts:greekLit:tlg0592.tlg001.1st1K-grc1",
+      "sourceSha256": "8c860dfcc3eb1a4fb2371722d7769c5db481320f55b6609d551c6d23954b10c5",
+      "sourceLicense": "CC BY-SA 4.0",
+      "corpusFiles": {
+        "grc": "data/classics-corpus/first1k-tlg0592-tlg001-grc.json"
+      },
+      "publicStatus": "lectura-local-completa",
+      "localVersions": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/first1k-tlg0592-tlg001-grc.json"
+        }
+      ],
+      "reading": {
+        "url": "classics-text-reader.html?work=first1k-tlg0592-tlg001&lang=grc",
+        "status": "Original griego segmentado por locus TEI; sin traducción vinculada."
+      }
+    },
+    {
+      "id": "first1k-tlg0592-tlg005",
+      "author": "Hermogenes",
+      "title": "Περὶ μεθόδου δεινότητος",
+      "language": "grc",
+      "genre": "rhetoric-language",
+      "status": "Texto original griego incorporado; índice léxico reconstruido en el despliegue",
+      "textStatus": "lexically-indexed",
+      "source": "OpenGreekAndLatin First1KGreek · fuente TEI íntegra",
+      "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0592/tlg005/tlg0592.tlg005.1st1K-grc1.xml",
+      "sourceUrn": "urn:cts:greekLit:tlg0592.tlg005.1st1K-grc1",
+      "sourceSha256": "29f742337727458a178e8498625de707435b8f7782e80d841c045fc7623a5c32",
+      "sourceLicense": "CC BY-SA 4.0",
+      "corpusFiles": {
+        "grc": "data/classics-corpus/first1k-tlg0592-tlg005-grc.json"
+      },
+      "publicStatus": "lectura-local-completa",
+      "localVersions": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/first1k-tlg0592-tlg005-grc.json"
+        }
+      ],
+      "reading": {
+        "url": "classics-text-reader.html?work=first1k-tlg0592-tlg005&lang=grc",
+        "status": "Original griego segmentado por locus TEI; sin traducción vinculada."
+      }
+    },
+    {
+      "id": "first1k-tlg0592-tlg002",
+      "author": "Hermogenes",
+      "title": "Περὶ τῶν στάσεων",
+      "language": "grc",
+      "genre": "rhetoric-language",
+      "status": "Texto original griego incorporado; índice léxico reconstruido en el despliegue",
+      "textStatus": "lexically-indexed",
+      "source": "OpenGreekAndLatin First1KGreek · fuente TEI íntegra",
+      "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0592/tlg002/tlg0592.tlg002.1st1K-grc1.xml",
+      "sourceUrn": "urn:cts:greekLit:tlg0592.tlg002.1st1K-grc1",
+      "sourceSha256": "f1611709d24e14da428ef9cf20ed8253077e7f8108d535225956b8e5eb19839c",
+      "sourceLicense": "CC BY-SA 4.0",
+      "corpusFiles": {
+        "grc": "data/classics-corpus/first1k-tlg0592-tlg002-grc.json"
+      },
+      "publicStatus": "lectura-local-completa",
+      "localVersions": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/first1k-tlg0592-tlg002-grc.json"
+        }
+      ],
+      "reading": {
+        "url": "classics-text-reader.html?work=first1k-tlg0592-tlg002&lang=grc",
+        "status": "Original griego segmentado por locus TEI; sin traducción vinculada."
+      }
+    },
+    {
+      "id": "first1k-tlg0082-tlg003",
+      "author": "Apollonius Dyscolus",
+      "title": "Περὶ συνδέσμων",
+      "language": "grc",
+      "genre": "rhetoric-language",
+      "status": "Texto original griego incorporado; índice léxico reconstruido en el despliegue",
+      "textStatus": "lexically-indexed",
+      "source": "OpenGreekAndLatin First1KGreek · fuente TEI íntegra",
+      "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0082/tlg003/tlg0082.tlg003.1st1K-grc1.xml",
+      "sourceUrn": "urn:cts:greekLit:tlg0082.tlg003.1st1K-grc1",
+      "sourceSha256": "bbc578b428d7e3ee4e2ce7036c5e6950c2da8b4736408d19e4b45d2dbfc17b2d",
+      "sourceLicense": "CC BY-SA 4.0",
+      "corpusFiles": {
+        "grc": "data/classics-corpus/first1k-tlg0082-tlg003-grc.json"
+      },
+      "publicStatus": "lectura-local-completa",
+      "localVersions": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/first1k-tlg0082-tlg003-grc.json"
+        }
+      ],
+      "reading": {
+        "url": "classics-text-reader.html?work=first1k-tlg0082-tlg003&lang=grc",
+        "status": "Original griego segmentado por locus TEI; sin traducción vinculada."
+      }
+    },
+    {
+      "id": "first1k-tlg0082-tlg002",
+      "author": "Apollonius Dyscolus",
+      "title": "Περὶ ἐπιρρημάτων",
+      "language": "grc",
+      "genre": "rhetoric-language",
+      "status": "Texto original griego incorporado; índice léxico reconstruido en el despliegue",
+      "textStatus": "lexically-indexed",
+      "source": "OpenGreekAndLatin First1KGreek · fuente TEI íntegra",
+      "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0082/tlg002/tlg0082.tlg002.1st1K-grc1.xml",
+      "sourceUrn": "urn:cts:greekLit:tlg0082.tlg002.1st1K-grc1",
+      "sourceSha256": "9977407b8244309928ea0bb5ec7d98972658b72acff10fde8b7b52f15c625a6f",
+      "sourceLicense": "CC BY-SA 4.0",
+      "corpusFiles": {
+        "grc": "data/classics-corpus/first1k-tlg0082-tlg002-grc.json"
+      },
+      "publicStatus": "lectura-local-completa",
+      "localVersions": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/first1k-tlg0082-tlg002-grc.json"
+        }
+      ],
+      "reading": {
+        "url": "classics-text-reader.html?work=first1k-tlg0082-tlg002&lang=grc",
+        "status": "Original griego segmentado por locus TEI; sin traducción vinculada."
+      }
+    },
+    {
+      "id": "first1k-tlg2200-tlg00408",
+      "author": "Libanius",
+      "title": "Oratio VIII",
+      "language": "grc",
+      "genre": "rhetoric-language",
+      "status": "Texto original griego incorporado; índice léxico reconstruido en el despliegue",
+      "textStatus": "lexically-indexed",
+      "source": "OpenGreekAndLatin First1KGreek · fuente TEI íntegra",
+      "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg2200/tlg00408/tlg2200.tlg00408.opp-grc1.xml",
+      "sourceUrn": "urn:cts:greekLit:tlg2200.tlg00408.opp-grc1",
+      "sourceSha256": "31e7a40884fa78e061e7aee8d9ff1b2030ce59f3214659b58cd60f0835539e6c",
+      "sourceLicense": "CC BY-SA 4.0",
+      "corpusFiles": {
+        "grc": "data/classics-corpus/first1k-tlg2200-tlg00408-grc.json"
+      },
+      "publicStatus": "lectura-local-completa",
+      "localVersions": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/first1k-tlg2200-tlg00408-grc.json"
+        }
+      ],
+      "reading": {
+        "url": "classics-text-reader.html?work=first1k-tlg2200-tlg00408&lang=grc",
+        "status": "Original griego segmentado por locus TEI; sin traducción vinculada."
+      }
+    },
+    {
+      "id": "first1k-tlg2200-tlg00406",
+      "author": "Libanius",
+      "title": "Oratio VI",
+      "language": "grc",
+      "genre": "rhetoric-language",
+      "status": "Texto original griego incorporado; índice léxico reconstruido en el despliegue",
+      "textStatus": "lexically-indexed",
+      "source": "OpenGreekAndLatin First1KGreek · fuente TEI íntegra",
+      "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg2200/tlg00406/tlg2200.tlg00406.opp-grc1.xml",
+      "sourceUrn": "urn:cts:greekLit:tlg2200.tlg00406.opp-grc1",
+      "sourceSha256": "3bafd0d8eea966b628bdbba105828ecb51d2dfb11eda82b2f840d9e474fb14bf",
+      "sourceLicense": "CC BY-SA 4.0",
+      "corpusFiles": {
+        "grc": "data/classics-corpus/first1k-tlg2200-tlg00406-grc.json"
+      },
+      "publicStatus": "lectura-local-completa",
+      "localVersions": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/first1k-tlg2200-tlg00406-grc.json"
+        }
+      ],
+      "reading": {
+        "url": "classics-text-reader.html?work=first1k-tlg2200-tlg00406&lang=grc",
+        "status": "Original griego segmentado por locus TEI; sin traducción vinculada."
+      }
+    },
+    {
+      "id": "first1k-tlg2200-tlg00551",
+      "author": "Libanius",
+      "title": "Declamatio 51",
+      "language": "grc",
+      "genre": "rhetoric-language",
+      "status": "Texto original griego incorporado; índice léxico reconstruido en el despliegue",
+      "textStatus": "lexically-indexed",
+      "source": "OpenGreekAndLatin First1KGreek · fuente TEI íntegra",
+      "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg2200/tlg00551/tlg2200.tlg00551.opp-grc1.xml",
+      "sourceUrn": "urn:cts:greekLit:tlg2200.tlg00551.opp-grc1",
+      "sourceSha256": "bbb238b4365f9d7b5cf00c48f10b371f5b4f32dedd7ec857c5294fe46ec0999e",
+      "sourceLicense": "CC BY-SA 4.0",
+      "corpusFiles": {
+        "grc": "data/classics-corpus/first1k-tlg2200-tlg00551-grc.json"
+      },
+      "publicStatus": "lectura-local-completa",
+      "localVersions": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/first1k-tlg2200-tlg00551-grc.json"
+        }
+      ],
+      "reading": {
+        "url": "classics-text-reader.html?work=first1k-tlg2200-tlg00551&lang=grc",
+        "status": "Original griego segmentado por locus TEI; sin traducción vinculada."
+      }
+    },
+    {
+      "id": "first1k-tlg2018-tlg021",
+      "author": "Eusebius",
+      "title": "Constantini imperatoris oratio ad coetum sanctorum",
+      "language": "grc",
+      "genre": "history-religion",
+      "status": "Texto original griego incorporado; índice léxico reconstruido en el despliegue",
+      "textStatus": "lexically-indexed",
+      "source": "OpenGreekAndLatin First1KGreek · fuente TEI íntegra",
+      "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg2018/tlg021/tlg2018.tlg021.1st1K-grc1.xml",
+      "sourceUrn": "urn:cts:greekLit:tlg2018.tlg021.1st1K-grc1",
+      "sourceSha256": "18a6a0f67fa56fbae28891a18a02178d527cbb879c827343c916776555d82164",
+      "sourceLicense": "CC BY-SA 4.0",
+      "corpusFiles": {
+        "grc": "data/classics-corpus/first1k-tlg2018-tlg021-grc.json"
+      },
+      "publicStatus": "lectura-local-completa",
+      "localVersions": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/first1k-tlg2018-tlg021-grc.json"
+        }
+      ],
+      "reading": {
+        "url": "classics-text-reader.html?work=first1k-tlg2018-tlg021&lang=grc",
+        "status": "Original griego segmentado por locus TEI; sin traducción vinculada."
+      }
+    },
+    {
+      "id": "first1k-tlg2018-tlg011",
+      "author": "Eusebius",
+      "title": "Onomasticon",
+      "language": "grc",
+      "genre": "history-religion",
+      "status": "Texto original griego incorporado; índice léxico reconstruido en el despliegue",
+      "textStatus": "lexically-indexed",
+      "source": "OpenGreekAndLatin First1KGreek · fuente TEI íntegra",
+      "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg2018/tlg011/tlg2018.tlg011.1st1K-grc1.xml",
+      "sourceUrn": "urn:cts:greekLit:tlg2018.tlg011.1st1K-grc1",
+      "sourceSha256": "22ed67f3ba9d69c468b2f68ffe71ab8351b2b6eba0cafa273b9a2d1538fb0a1a",
+      "sourceLicense": "CC BY-SA 4.0",
+      "corpusFiles": {
+        "grc": "data/classics-corpus/first1k-tlg2018-tlg011-grc.json"
+      },
+      "publicStatus": "lectura-local-completa",
+      "localVersions": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/first1k-tlg2018-tlg011-grc.json"
+        }
+      ],
+      "reading": {
+        "url": "classics-text-reader.html?work=first1k-tlg2018-tlg011&lang=grc",
+        "status": "Original griego segmentado por locus TEI; sin traducción vinculada."
+      }
+    },
+    {
+      "id": "first1k-tlg2042-tlg051",
+      "author": "Origenes",
+      "title": "Selecta in Leviticum",
+      "language": "grc",
+      "genre": "history-religion",
+      "status": "Texto original griego incorporado; índice léxico reconstruido en el despliegue",
+      "textStatus": "lexically-indexed",
+      "source": "OpenGreekAndLatin First1KGreek · fuente TEI íntegra",
+      "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg2042/tlg051/tlg2042.tlg051.1st1K-grc1.xml",
+      "sourceUrn": "urn:cts:greekLit:tlg2042.tlg051.1st1K-grc1",
+      "sourceSha256": "bdecaafd44a2367fd70c053af4e761c87e50903ade0bfb91aebcb387869be14d",
+      "sourceLicense": "CC BY-SA 4.0",
+      "corpusFiles": {
+        "grc": "data/classics-corpus/first1k-tlg2042-tlg051-grc.json"
+      },
+      "publicStatus": "lectura-local-completa",
+      "localVersions": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/first1k-tlg2042-tlg051-grc.json"
+        }
+      ],
+      "reading": {
+        "url": "classics-text-reader.html?work=first1k-tlg2042-tlg051&lang=grc",
+        "status": "Original griego segmentado por locus TEI; sin traducción vinculada."
+      }
+    },
+    {
+      "id": "first1k-tlg2042-tlg052",
+      "author": "Origenes",
+      "title": "Selecta in Numeros",
+      "language": "grc",
+      "genre": "history-religion",
+      "status": "Texto original griego incorporado; índice léxico reconstruido en el despliegue",
+      "textStatus": "lexically-indexed",
+      "source": "OpenGreekAndLatin First1KGreek · fuente TEI íntegra",
+      "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg2042/tlg052/tlg2042.tlg052.1st1K-grc1.xml",
+      "sourceUrn": "urn:cts:greekLit:tlg2042.tlg052.1st1K-grc1",
+      "sourceSha256": "82019653981beb5162012a46cbee7f0a9865c7010f180945c38897115339ad54",
+      "sourceLicense": "CC BY-SA 4.0",
+      "corpusFiles": {
+        "grc": "data/classics-corpus/first1k-tlg2042-tlg052-grc.json"
+      },
+      "publicStatus": "lectura-local-completa",
+      "localVersions": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/first1k-tlg2042-tlg052-grc.json"
+        }
+      ],
+      "reading": {
+        "url": "classics-text-reader.html?work=first1k-tlg2042-tlg052&lang=grc",
+        "status": "Original griego segmentado por locus TEI; sin traducción vinculada."
+      }
+    },
+    {
+      "id": "first1k-tlg2959-tlg002",
+      "author": "Methodius",
+      "title": "De libero arbitrio",
+      "language": "grc",
+      "genre": "history-religion",
+      "status": "Texto original griego incorporado; índice léxico reconstruido en el despliegue",
+      "textStatus": "lexically-indexed",
+      "source": "OpenGreekAndLatin First1KGreek · fuente TEI íntegra",
+      "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg2959/tlg002/tlg2959.tlg002.opp-grc1.xml",
+      "sourceUrn": "urn:cts:greekLit:tlg2959.tlg002.opp-grc1",
+      "sourceSha256": "60a27e8167ca29eb2c67c654aa82264adba58f511d6a49d39e0225a02d66d3b5",
+      "sourceLicense": "CC BY-SA 4.0",
+      "corpusFiles": {
+        "grc": "data/classics-corpus/first1k-tlg2959-tlg002-grc.json"
+      },
+      "publicStatus": "lectura-local-completa",
+      "localVersions": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/first1k-tlg2959-tlg002-grc.json"
+        }
+      ],
+      "reading": {
+        "url": "classics-text-reader.html?work=first1k-tlg2959-tlg002&lang=grc",
+        "status": "Original griego segmentado por locus TEI; sin traducción vinculada."
+      }
     }
   ]
 }
