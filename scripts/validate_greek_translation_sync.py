@@ -62,6 +62,8 @@ def check(filename):
         linked.add(t)
     if linked != seen:
         raise ValueError(f"{p}: not every translation passage is synchronized")
+    # For different edition segmentation, one translation section may map to
+    # two Greek sub-sections. Verify *every* Greek locus exactly once.
     if alignment.get("mappedGreekLoci") is not None:
         refs = [g for pair in mappings for g in pair["greekLoci"]]
         if len(refs) != len(set(refs)) or set(refs) != greek_loci:
