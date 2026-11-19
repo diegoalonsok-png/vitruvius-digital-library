@@ -5,7 +5,7 @@
   "scope": "roadmap Greek works vs search-registry entries; does not independently certify R2 objects, text completeness, licenses or locus alignment",
   "counts": {
     "greekWorks": 160,
-    "missingHumanTranslation": 108,
+    "missingHumanTranslation": 106,
     "missingOriginalRegistryEntry": 20
   },
   "works": [
@@ -1369,26 +1369,36 @@
       "author": "Píndaro",
       "title": "Ὀλυμπιόνικοι",
       "originalRegistryIndexed": true,
-      "translationRegistryIndexed": false,
+      "translationRegistryIndexed": true,
       "indexedLanguages": [
-        "grc"
+        "grc",
+        "en"
       ],
-      "priority": "acquire-human-translation",
-      "translationStatus": "missing",
-      "sourceCandidate": null
+      "priority": "verify-locus-symmetry",
+      "translationStatus": "registered",
+      "sourceCandidate": {
+        "source": "PerseusDL/canonical-greekLit",
+        "language": "en",
+        "status": "indexed-english-poem-line-loci-not-aligned"
+      }
     },
     {
       "workId": "pindar-pythian",
       "author": "Píndaro",
       "title": "Πυθιόνικοι",
       "originalRegistryIndexed": true,
-      "translationRegistryIndexed": false,
+      "translationRegistryIndexed": true,
       "indexedLanguages": [
-        "grc"
+        "grc",
+        "en"
       ],
-      "priority": "acquire-human-translation",
-      "translationStatus": "missing",
-      "sourceCandidate": null
+      "priority": "verify-locus-symmetry",
+      "translationStatus": "registered",
+      "sourceCandidate": {
+        "source": "PerseusDL/canonical-greekLit",
+        "language": "en",
+        "status": "indexed-english-poem-line-loci-not-aligned"
+      }
     },
     {
       "workId": "homeric-hymns",
