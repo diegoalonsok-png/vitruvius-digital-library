@@ -28,7 +28,8 @@ const verifiedR2=r2Status?.status==='all-registered-r2-originals-verified-and-le
  ?remote.filter(e=>{const x=r2ByKey.get(key(e.workId,e.language));return x&&x.file===e.path&&x.sha256===e.sha256&&x.passages===e.passages;})
  :[];
 const remoteUnverified=remote.filter(e=>!verifiedR2.includes(e));
-const localUnindexed=local.filter(e=>e.format!=='historical-ocr-pages'&&existsSync(e.path)&&!recognized.has(key(e.workId,e.language)));
+const specialCritical=local.filter(e=>e.format==='critical-indexed-latin'&&e.path.startsWith('data/critical-editions/')&&existsSync(e.path));
+const localUnindexed=local.filter(e=>e.format!=='historical-ocr-pages'&&!specialCritical.includes(e)&&existsSync(e.path)&&!recognized.has(key(e.workId,e.language)));
 const distinct=arr=>new Set(arr.map(e=>e.workId)).size;
 const counts={
  schema:'vdl-classics-public-counts-v2',
@@ -46,6 +47,7 @@ const counts={
  remoteR2VerifiedAt:r2Status?.verifiedAt||null,
  remoteR2EditionsDeclaredNotLiveVerified:remoteUnverified.length,
  historicalOcrEditions:local.filter(e=>e.format==='historical-ocr-pages').length,
+ criticalLatinEditionsInSeparateIndex:specialCritical.length,
  auditCounts:audit.counts,
  supplementaryDossiers:supplement.works.length
 };
