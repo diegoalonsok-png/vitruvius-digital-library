@@ -25,7 +25,14 @@ for(const id of indexed){
  assert.ok(["lectura-local-completa","registered-not-indexed"].includes(w.publicStatus),
   `Unexpected public status: ${id}`);
  const p=`data/classics-corpus/${id}-grc.json`;
- assert.deepEqual(w.corpusFiles,{grc:p},"Public corpusFiles must be a language:path object");
+ assert.ok(w.corpusFiles&&typeof w.corpusFiles==="object"&&!Array.isArray(w.corpusFiles),"Public corpusFiles must be a language:path object");
+ assert.equal(w.corpusFiles.grc,p,"Greek original must retain its indexed corpus path");
+ for(const [language,file] of Object.entries(w.corpusFiles)){
+  assert.ok(["grc","la","en","fr","es","de","it","pt"].includes(language),"Unsupported corpus language: "+language+" / "+id);
+  assert.equal(file,`data/classics-corpus/${id}-${language}.json`,"Unexpected corpus path: "+id+" / "+language);
+  assert.ok(existsSync(file),"Declared translation text missing: "+file);
+  assert.ok(registry.some(e=>e.workId===id&&e.language===language&&e.path===file),"Declared edition absent from search registry: "+id+" / "+language);
+ }
  assert.ok(existsSync(p),`Missing Greek original: ${p}`);
  const text=json(p);
  assert.equal(text.workId,id);
