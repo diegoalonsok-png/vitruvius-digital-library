@@ -126,3 +126,9 @@ html[data-theme=dark] .bibliotheca-single-count .vdl-unified-books .search-input
  .bibliotheca-single-count .vdl-unified-books .search-input-row input{font-size:15px}
  .bibliotheca-single-count .vdl-unified-books .search-input-row .button.primary{min-width:74px;padding:7px 9px}
 }
+
+/* El contador de obras no debe conservar el recuadro gris casi negro.
+   Azul pizarra idéntico al fondo del buscador principal de la portada. */
+.bibliotheca-single-count .vdl-indexed-feature{
+ background:#202b36!important;
+}
