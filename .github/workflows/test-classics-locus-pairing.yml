@@ -1,0 +1,29 @@
+name: Verify source-grounded classical verse pairing
+on:
+  pull_request:
+    paths:
+      - 'assets/classics-locus-pairing.js'
+      - 'assets/classics-inline-parallel.js'
+      - 'classics-text-reader.html'
+      - 'scripts/test-classics-indexed-locus-pairing.mjs'
+      - '.github/workflows/test-classics-locus-pairing.yml'
+  push:
+    paths:
+      - 'assets/classics-locus-pairing.js'
+      - 'assets/classics-inline-parallel.js'
+      - 'classics-text-reader.html'
+      - 'scripts/test-classics-indexed-locus-pairing.mjs'
+      - '.github/workflows/test-classics-locus-pairing.yml'
+permissions:
+  contents: read
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 4
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Verify original and human translation anchors
+        run: node scripts/test-classics-indexed-locus-pairing.mjs

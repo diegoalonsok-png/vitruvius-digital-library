@@ -145,13 +145,19 @@ async function presentIndexed(entry,target,stamp){
  // Una edición declarada no es una traducción automática ni una alineación certificada.
  const paragraphs=await indexedPassages(e);
  if(stamp!==sequence||current!==entry||mode.value==="pdf")return true;
- const matched=paragraphs.find(p=>String(p.locus||"").trim()===String(entry.locus||"").trim()&&
- typeof (p.text||p.translation)==="string"&&(p.text||p.translation).trim());
+ const pairing=window.ClassicsLocusPairing?.find(entry,paragraphs)||{kind:"none",passages:[]};
+ const matched=pairing.passages[0];
  output.replaceChildren();
  if(matched){
-  const para=el("p",null,matched.text||matched.translation);para.lang=target;
-  output.append(para);
-  note.textContent="Traducción indexada: "+(e.sourceDescription||e.edition||"versión bibliográfica")+" · Locus coincidente "+entry.locus+". No es una traducción automática.";
+  for(const passage of pairing.passages){
+   const para=el("p",null,passage.text||passage.translation);para.lang=target;
+   const loc=el("small",null,String(passage.locus).split(":").pop()+" · ");
+   loc.style.cssText="font-size:.7em;opacity:.72";para.prepend(loc);
+   output.append(para);
+  }
+  note.textContent="Traducción humana indexada: "+(e.sourceDescription||e.edition||"versión bibliográfica")+
+   (pairing.kind==="same-locus"?" · Mismo identificador de pasaje en ambas ediciones.": 
+    " · Versos comprendidos en el intervalo del original; correspondencia estructural aproximada, no cotejo filológico ni alineación palabra a palabra.");
  }else if(paragraphs.length){
   // Independent reading of a genuine human translation, not an invented locus alignment.
   const list=el("div","cl-indexed-edition-reading");
@@ -175,7 +181,7 @@ async function presentIndexed(entry,target,stamp){
   note.textContent="Verificá la disponibilidad del texto indexado.";
  }
  const a=el("a",null,"Consultar traducción indexada · "+target.toUpperCase()+" ↗");
- a.href=versionLink(e,matched?entry.locus:null);a.style.cssText="display:inline-block;margin:9px 0;color:#d5dde4;text-decoration:underline";
+ a.href=versionLink(e,matched?matched.locus:null);a.style.cssText="display:inline-block;margin:9px 0;color:#d5dde4;text-decoration:underline";
  output.append(a);
  return true;
 }
