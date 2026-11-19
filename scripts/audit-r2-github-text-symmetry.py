@@ -11,6 +11,7 @@ import concurrent.futures
 import hashlib
 import json
 import os
+import unicodedata
 from pathlib import Path
 from urllib.error import HTTPError, URLError
 from urllib.request import Request, urlopen
@@ -90,7 +91,12 @@ def audit_ocr(item):
             out["declaredPages"] = item.get("paginas")
             if len(pages) != item.get("paginas"):
                 out["issues"].append("page-count-mismatch")
-            nonblank = sum(bool(str(p).strip()) for p in pages)
+            # Match the site's VitruviaPhilology.fold: pages containing only punctuation
+            # or combining marks are not treated as searchable text pages.
+            nonblank = sum(isinstance(p, str) and any(
+                unicodedata.category(ch)[0] in ("L", "N")
+                for ch in unicodedata.normalize("NFD", p)
+            ) for p in pages)
             out["actualTextPages"] = nonblank
             out["declaredTextPages"] = item.get("paginasConTexto")
             if nonblank != item.get("paginasConTexto"):
@@ -130,6 +136,17 @@ def main():
     with concurrent.futures.ThreadPoolExecutor(max_workers=max(1, min(args.workers, 6))) as executor:
         text_rows = list(executor.map(audit_text, remote))
         ocr_rows = list(executor.map(audit_ocr, books[:max(0, args.ocr_sample)]))
+    facsimile_index = {"status": "unavailable", "indexedIds": 0, "uncataloguedIds": [], "missingIds": []}
+    try:
+        idx = json.loads(download(HOST + "clasicos/indice/fragmentos.json").decode("utf-8-sig"))
+        indexed_ids = {x["id"] for x in idx.get("obras", []) if isinstance(x, dict) and x.get("id")}
+        facsimile_index = {
+            "status": "verified-index-list", "indexedIds": len(indexed_ids),
+            "uncataloguedIds": sorted(indexed_ids - book_ids),
+            "missingIds": sorted(book_ids - indexed_ids)
+        }
+    except (HTTPError, URLError, OSError, ValueError, UnicodeError, json.JSONDecodeError) as error:
+        facsimile_index["detail"] = str(error)[:250]
     report = {
         "schema": "vitruvius-r2-github-text-symmetry-audit-v1",
         "basis": "public R2 HTTP objects and GitHub registry at CI checkout; no private R2 enumeration",
@@ -142,7 +159,8 @@ def main():
         "sharedIdsInAuditedRemoteTexts": len(overlap),
         "ocrSamplesAudited": len(ocr_rows),
         "ocrSamplesWarned": sum(e["status"] == "warning" for e in ocr_rows),
-        "metadataErrors": bad, "remoteTexts": text_rows, "ocrSamples": ocr_rows
+        "metadataErrors": bad, "facsimileIndex": facsimile_index,
+        "remoteTexts": text_rows, "ocrSamples": ocr_rows
     }
     Path(args.output).write_text(json.dumps(report, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     print(json.dumps({k: v for k, v in report.items() if k not in ("remoteTexts", "ocrSamples")}, ensure_ascii=False, indent=2))
