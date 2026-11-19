@@ -1,0 +1,75 @@
+{
+  "schema": "vdl-greek-source-discovery-v1",
+  "asOf": "2026-11-19",
+  "baseline": {
+    "scope": "roadmap Greek works vs main search-registry (not remote object validation)",
+    "greekWorks": 160,
+    "withoutHumanTranslationInMainRegistry": 106,
+    "withoutGreekOriginalInMainRegistry": 20,
+    "registryEditions": 409,
+    "uniqueRegistryWorkIds": 300
+  },
+  "newlyIndexedThisRun": {
+    "originalGreek": 0,
+    "humanTranslations": 0,
+    "lexical": 0,
+    "semantic": 0,
+    "r2": 0
+  },
+  "candidate": {
+    "title": "The writings of the Apostolic Fathers",
+    "publisher": "T. & T. Clark, Edinburgh",
+    "publicationYear": 1870,
+    "translators": [
+      "Alexander Roberts",
+      "James Donaldson",
+      "Frederick Crombie"
+    ],
+    "language": "en",
+    "gutenbergId": 77576,
+    "releaseDate": "2025-12-30",
+    "sourceUrl": "https://www.gutenberg.org/ebooks/77576",
+    "fullTranscriptionUrl": "https://www.gutenberg.org/files/77576/77576-h/77576-h.htm",
+    "sourceFormat": "human-proofread HTML transcription; no OCR required",
+    "rights": "Project Gutenberg states public domain in USA; verify redistribution terms and territorial rights before importing",
+    "status": "source-discovered-not-ingested",
+    "targetWorkIds": [
+      "clement",
+      "clement-2",
+      "polycarp",
+      "barnabas",
+      "ignatius",
+      "diognetus",
+      "pastor-hermas"
+    ],
+    "editorialWarnings": [
+      "Composite volume contains multiple independent works and variants; do not count collection as a new ancient work",
+      "Extract chapter headings and complete per-work text before registry entry",
+      "Ignatius has short/long and Syriac-derived recensions: do not merge or fabricate CTS alignment",
+      "Hermas is split into three books; verify coverage and chapter boundaries",
+      "Gutenberg HTML not yet fetched and SHA256 not computed in this run",
+      "No Greek/English locus symmetry certified"
+    ]
+  },
+  "openPRConflicts": [
+    {
+      "number": 418,
+      "scope": "25 Greek historical translations; unmerged, check overlapping IDs"
+    },
+    {
+      "number": 468,
+      "scope": "3 Greek historical translations; unmerged"
+    },
+    {
+      "number": 469,
+      "scope": "Aristotle Rhetoric and Strabo English; unmerged"
+    },
+    {
+      "number": 403,
+      "scope": "Strabo English; unmerged and overlapping #469"
+    }
+  ],
+  "indexingPolicy": "Do not update search-registry, roadmap, audit totals, lexical index or semantic status before complete downloadable text, source SHA, rights, locus validation and tests. No R2 write access verified; no parity claim.",
+  "semanticStatus": "Existing conceptus postings artifact listed in repository (~6 MB), not downloaded or checked; no proof of per-work semantic indexing or vectors from this run.",
+  "nextStep": "Fetch Gutenberg HTML as full file in a runtime with outbound access, hash, extract seven works preserving 1870 edition boundaries, validate rights, compare existing PRs, generate real JSON passages and lexical/semantic postings, test academic reader, then open separate integration PR."
+}
