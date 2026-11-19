@@ -1,0 +1,27 @@
+import assert from 'node:assert/strict';
+import {readFileSync} from 'node:fs';
+import {createRequire} from 'node:module';
+const require=createRequire(import.meta.url);
+const pair=require('../assets/classics-locus-pairing.js');
+const read=p=>JSON.parse(readFileSync(p,'utf8'));
+const Greek=read('data/classics-corpus/pindar-pythian-grc.json');
+const English=read('data/classics-corpus/pindar-pythian-en.json');
+const actual=pair.find(Greek.passages[0],English.passages);
+assert.equal(actual.kind,'verse-range');
+assert(actual.passages.length>=2,'Pindar verse interval should expose indexed human-translation verses');
+assert(actual.passages.every(x=>/^1\.(?:\d+)$/.test(pair.key(x.locus))));
+assert(!actual.passages.some(x=>pair.verse(x.locus).start>10));
+const pairedExact=pair.find({locus:'urn:cts:greekLit:tlg0059.tlg001.perseus-grc2:1.1'},
+ [{locus:'urn:cts:greekLit:tlg0059.tlg001.perseus-eng2:1.1',text:'Existing human text'}]);
+assert.equal(pairedExact.kind,'same-locus');
+assert.equal(pairedExact.passages.length,1);
+assert.equal(pair.find({locus:'t1'},[{locus:'t2',text:'Different passage'}]).kind,'none');
+assert.equal(pair.find({locus:'1.1-3'},[{locus:'2.2',text:'Wrong poem'}]).kind,'none');
+assert.equal(pair.find({locus:'1.1-3'},[{locus:'1.4',text:'Outside interval'}]).kind,'none');
+assert.equal(pair.find({locus:'1.1-3'},[{locus:'1.2',text:''}]).kind,'none');
+assert.equal(pair.find({locus:'1.1-3'},[{locus:'1.2-5',text:'Overlaps outside interval'}]).kind,'none');
+const reader=readFileSync('assets/classics-inline-parallel.js','utf8');
+const page=readFileSync('classics-text-reader.html','utf8');
+assert(reader.includes('ClassicsLocusPairing?.find'));
+assert(page.indexOf('assets/classics-locus-pairing.js')<page.indexOf('assets/classics-inline-parallel.js'));
+console.log(JSON.stringify({ok:true,example:'Pindar Pythian I',humanTranslationVersePassages:actual.passages.length,policy:'same CTS key or contained structural verse interval only; otherwise independent reading'}));
