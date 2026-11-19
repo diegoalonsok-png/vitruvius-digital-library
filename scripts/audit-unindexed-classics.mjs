@@ -58,6 +58,19 @@ for(const entry of registry.entries){
  else if(index||alias||htmlGate)state='index-without-local-source-confirmation';
  else if(present.length&&formats.has('html-text'))state='html-reader-not-in-lexical-index';
  else if(present.length&&formats.has('historical-ocr-pages'))state='historical-ocr-separate-index';
+ else if(present.length&&formats.has('critical-indexed-latin')){
+  // Krohn/Rose have a separate 731-locus scholarly apparatus, not a
+  // classics lexical-index shard. Confirm real indexed loci before excluding.
+  const confirmed=present.some(file=>{
+   try{
+    const edition=load(file);
+    return edition.schema==='vdl-critical-edition-text-v1'
+      &&Array.isArray(edition.passages)&&edition.passages.length>=700
+      &&edition.passages.every(p=>p.locus&&p.text);
+   }catch{return false}
+  });
+  state=confirmed?'indexed-in-critical-apparatus':'local-text-pending-index';
+ }
  else if(present.length)state='local-text-pending-index';
  else if(remote.length&&r2Index&&entries.some(e=>e.path===r2Index.file&&e.sha256===r2Index.sha256&&e.passages===r2Index.passages))state='indexed-r2-last-verified';
  else if(remote.length)state='remote-unverified';
@@ -65,7 +78,7 @@ for(const entry of registry.entries){
 }
 const counts={};
 for(const r of records)counts[r.state]=(counts[r.state]||0)+1;
-const pending=records.filter(x=>!['indexed-local','indexed-through-edition-alias','indexed-html-word-gate','historical-ocr-separate-index','indexed-r2-last-verified'].includes(x.state));
+const pending=records.filter(x=>!['indexed-local','indexed-through-edition-alias','indexed-html-word-gate','historical-ocr-separate-index','indexed-r2-last-verified','indexed-in-critical-apparatus'].includes(x.state));
 const report={
  schema:'vdl-classics-unindexed-audit-v1',
  method:'Registry versus lexical-index manifest and local filesystem; remote R2 URLs were not probed. Duplicated work/language registrations are combined. HTML word-gate editions are searchable by word but have no source-locus posting positions. Historical OCR is separately reported and never passed off as critical text. R2 remote editions are matched by work, language, exact URL, SHA256 and passage count against the last independently verified remote index manifest; this is not a fresh live probe. Vitruvius multilingual registry identities map through the index edition gate. The inverted index is root-based and is not morphological lemmatization.',
