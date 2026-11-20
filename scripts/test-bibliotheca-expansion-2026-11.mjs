@@ -65,7 +65,9 @@ for(const id of indexed){
   assert.ok(inLexicalIndex,`Edition claimed indexed but absent from lexical manifest: ${id}`);
  if(inLexicalIndex)lexicalVerified++;
  else pendingLexical.push(id);
- assert.equal(w.reading?.url,`classics-text-reader.html?work=${id}&lang=grc`);
+ const baseReader=`classics-text-reader.html?work=${id}&lang=grc`;
+ const expectedReaderUrls=[baseReader,...Object.keys(w.corpusFiles||{}).filter(lang=>["en","fr","es"].includes(lang)).map(lang=>`${baseReader}&to=${lang}`)];
+ assert.ok(expectedReaderUrls.includes(w.reading?.url),`Unexpected Greek reader URL: ${id}`);
 }
 const sappho=records.find(w=>w.id==="sappho-fragmenta");
 assert.ok(sappho,"Sappho bibliographic record is required");
