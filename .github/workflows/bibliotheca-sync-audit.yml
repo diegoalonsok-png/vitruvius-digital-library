@@ -37,6 +37,7 @@ on:
       - "data/classics-corpus/**-la.json"
       - "scripts/build-classics-lexical-index.mjs"
       - "scripts/build-r2-classics-lexical-index.mjs"
+      - "scripts/audit-classical-corpus.mjs"
   # 02:50 UTC = 23:50 del día anterior en Buenos Aires (UTC-3).
   # Se conserva el control matutino de 07:35 hora argentina.
   schedule:
