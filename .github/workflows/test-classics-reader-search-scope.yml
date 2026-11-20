@@ -20,7 +20,7 @@ jobs:
         with:
           node-version: '22'
       - name: Instalar pruebas DOM
-        run: npm ci --ignore-scripts
+        run: npm install --ignore-scripts --no-audit --no-fund
       - name: Validar sintaxis
         run: node --check assets/classics-text-reader.js
       - name: Validar los dos modos y alcances en el visor académico
