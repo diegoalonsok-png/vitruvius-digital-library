@@ -182,7 +182,7 @@ for(const w of allWorks){
     continue;
    }
    assert.equal(target.alignmentStatus,"unaligned","Original and translation have no shared locus (undeclared): "+w.id+" / "+translation.language);
-   assert(typeof target.alignment==="string"&&/no equivalencias|no alinead/i.test(target.alignment),"Unaligned translation needs an explicit reader-facing warning: "+translation.path);
+   assert(typeof target.alignment==="string"&&/no equivalencias|no alinead|not asserted equivalent|not aligned|not equivalent|not asserted to be equivalent/i.test(target.alignment),"Unaligned translation needs an explicit reader-facing warning: "+translation.path);
    explicitlyUnaligned.push({work:w.id,translation:translation.language,reason:target.alignment});
    continue;
   }
