@@ -3,7 +3,9 @@
  */
 (()=>{"use strict";
 const CATALOG="data/bibliotheca-graeca-latina-I-bce-I-ce.json";
-let records=new Map();
+const SUPPLEMENT="data/bibliotheca-expansion-publicada-2026-11-16.json";
+const EDITIONS="data/classics-corpus/edition-provenance.json";
+let records=new Map(),sourceRecords=new Map();
 const box=document.createElement("aside");box.id="classic-scholarly-provenance";box.className="classic-scholarly-provenance";box.hidden=true;
 const txt=(tag,str,cls)=>{const el=document.createElement(tag);if(cls)el.className=cls;el.textContent=str;return el};
 const link=(label,url)=>{const a=document.createElement("a");a.textContent=label;a.href=url;a.rel="noopener";if(/^https:/.test(url))a.target="_blank";return a;};
@@ -96,6 +98,29 @@ function draw(){
   detail(sec,"Nota bibliográfica:",e.note);
   const l=txt("p","");renderLink(l,"Leer edición histórica",e.url);renderLink(l,"Registro bibliográfico",e.record);if(l.childNodes.length)sec.append(l);box.append(sec);
  }
+ const source=sourceRecords.get(w.id);
+ evidenceHeading("Procedencia del original y de las traducciones");
+ if(!source){
+  box.append(txt("p","Procedencia textual individual pendiente de registrar; no se atribuye una edición sin respaldo.","status"));
+ }else{
+  const original=source.originals||[];
+  if(!original.length)box.append(txt("p","Original griego o latino: todavía no hay edición textual registrada.","status"));
+  for(const e of original){
+   detail(box,"Original "+(e.language==="grc"?"griego":e.language==="la"?"latino":e.language)+":",
+     [e.editor?"ed. "+e.editor:"",e.edition,e.attribution||e.sourceDescription].filter(Boolean).join(" · ")||"Edición pendiente de identificar");
+   if(e.source) {const p=txt("p","");renderLink(p,"Fuente editorial del original",e.source);if(p.childNodes.length)box.append(p)}
+   if(e.sourcePath?.startsWith("https:")){const p=txt("p","");renderLink(p,"Texto original registrado en R2 (sin comprobación en vivo)",e.sourcePath);if(p.childNodes.length)box.append(p)}
+   detail(box,"Estado documental:",e.status==="local-source-inspected"?"Metadatos consultados del archivo textual local":e.status==="r2-registered-not-live-checked"?"Edición declarada en R2; disponibilidad no comprobada aquí":"Registro especial; procedencia por verificar");
+  }
+  const translations=(source.translations||[]).filter(e=>["en","fr","es"].includes(e.language));
+  if(!translations.length)box.append(txt("p","Traducción humana inglesa, francesa o castellana: no registrada en el corpus alojado. No se presenta traducción automática como edición académica.","status"));
+  for(const e of translations){
+   detail(box,"Traducción "+({en:"inglesa",fr:"francesa",es:"castellana"}[e.language]||e.language)+":",
+     [e.translator?"trad. "+e.translator:"Traductor por verificar",e.edition,e.year,e.attribution||e.sourceDescription].filter(Boolean).join(" · "));
+   if(e.source){const p=txt("p","");renderLink(p,"Edición de origen de la traducción",e.source);if(p.childNodes.length)box.append(p)}
+   detail(box,"Correspondencia con el original:",e.alignmentStatus||"No declarada; no inferir alineación");
+  }
+ }
  if(w.reading?.url){const p=txt("p","");renderLink(p,"Consultar texto de referencia",w.reading.url);box.append(p)}
  if(w.reading?.status)detail(box,"Identificación de lectura:",w.reading.status);
  if(w.pdf?.url){const p=txt("p","");renderLink(p,"Abrir PDF o facsímil de impreso",w.pdf.url);box.append(p)}
@@ -106,9 +131,12 @@ function draw(){
 async function begin(){
  const sel=document.getElementById("classic-work");
  if(!sel)return;
- try{const r=await fetch(CATALOG,{cache:"no-cache"});if(!r.ok)throw Error("Catálogo inaccesible");const data=await r.json();
+ try{const [r,extra,editions]=await Promise.all([fetch(CATALOG,{cache:"no-cache"}),fetch(SUPPLEMENT,{cache:"no-cache"}),fetch(EDITIONS,{cache:"no-cache"})]);
+  if(!r.ok)throw Error("Catálogo inaccesible");const data=await r.json();
   if(!Array.isArray(data.works))throw Error("Catálogo sin obras");
-  records=new Map(data.works.map(w=>[w.id,w]));
+  const supplements=extra.ok?(await extra.json()).works:[];
+  records=new Map([...data.works,...(Array.isArray(supplements)?supplements:[])].map(w=>[w.id,w]));
+  if(editions.ok){const doc=await editions.json();if(doc.schema==="vdl-edition-provenance-v1"&&Array.isArray(doc.works))sourceRecords=new Map(doc.works.map(w=>[w.id,w]));}
  }catch(e){console.warn("Ficha crítica:",e.message);return}
  style();(document.querySelector(".workrow")||sel).insertAdjacentElement("afterend",box);
  sel.addEventListener("change",draw);
