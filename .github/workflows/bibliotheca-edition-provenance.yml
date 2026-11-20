@@ -1,0 +1,43 @@
+name: Bibliotheca · procedencia de originales y traducciones
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "20 3 * * *"
+  push:
+    branches: [main]
+    paths:
+      - "scripts/build-edition-provenance.mjs"
+      - ".github/workflows/bibliotheca-edition-provenance.yml"
+      - "data/classics-corpus/search-registry.json"
+      - "data/bibliotheca-graeca-latina-I-bce-I-ce.json"
+      - "data/bibliotheca-expansion-publicada-2026-11-16.json"
+permissions:
+  contents: write
+concurrency:
+  group: vdl-provenance-nightly
+  cancel-in-progress: false
+jobs:
+  provenance:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Comprobar fuentes y generar procedencia individual
+        run: |
+          node --check scripts/build-edition-provenance.mjs
+          node scripts/build-edition-provenance.mjs
+      - name: Publicar solo el inventario de procedencias
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/classics-corpus/edition-provenance.json
+          if git diff --cached --quiet; then echo "Procedencias sin cambios"; exit 0; fi
+          git commit -m "catalog: refresh Greek originals and translation provenance"
+          git pull --rebase origin main
+          git push origin HEAD:main
