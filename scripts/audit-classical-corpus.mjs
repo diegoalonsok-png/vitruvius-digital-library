@@ -202,6 +202,26 @@ for(const w of allWorks){
       sharedBibliographicSections:278,alignmentLevel:"Stephanus book.page references only; no verbal collation"});
     continue;
    }
+   // Plato's Laws: the English published edition retains book.Stephanus-page
+   // labels while the Greek edition has multiple technical cards per page.
+   // Check the bibliographic page set only; never claim phrase alignment.
+   if(w.id==="plato-laws" && translation.language==="en" &&
+      target.alignmentStatus==="stephanus-page" &&
+      /327 referencias únicas de página de Stephanus/i.test(target.editorialStatus||"")){
+    const pageKey=locus=>{
+      const hit=/^urn:cts:greekLit:tlg0059\.tlg034\.perseus-(?:grc|eng)\d+:([0-9]+\.[0-9]+)$/.exec(locus);
+      return hit?hit[1]:null;
+    };
+    const gr=[...ol].map(pageKey),en=[...tl].map(pageKey);
+    const grKeys=new Set(gr),enKeys=new Set(en);
+    const valid=gr.every(Boolean)&&en.every(Boolean)&&grKeys.size===327&&
+      enKeys.size===327&&[...grKeys].every(key=>enKeys.has(key));
+    assert(valid,"Plato Laws Greek and English Stephanus pages do not match");
+    verifiedParallel.push({work:w.id,original:"grc",translation:"en",
+      originalLoci:ol.size,translatedLoci:tl.size,sharedLoci:0,
+      sharedBibliographicSections:327,alignmentLevel:"Stephanus book.page references only; no phrase or manuscript alignment"});
+    continue;
+   }
    // Edition URNs differ (Greek vs English), but the original book.chapter.section
    // numbers may still coincide. Check every numeric section; never infer word alignment.
    if(w.id==="xenophon-anabasis" && target.alignmentStatus==="book-chapter-section" &&
