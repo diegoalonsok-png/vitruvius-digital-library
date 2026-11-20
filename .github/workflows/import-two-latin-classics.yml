@@ -1,0 +1,72 @@
+name: Bibliotheca - incorporar e indexar 2 clásicos latinos
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/import-two-latin-classics.py'
+      - '.github/workflows/import-two-latin-classics.yml'
+permissions:
+  contents: write
+concurrency:
+  group: vdl-classics-publication-main
+  cancel-in-progress: false
+jobs:
+  ingest:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Verificar importador y descargar ediciones latinas completas
+        run: |
+          python -m py_compile scripts/import-two-latin-classics.py
+          python scripts/import-two-latin-classics.py
+      - name: Reconstruir índice léxico
+        run: node --max-old-space-size=6144 scripts/build-classics-lexical-index.mjs
+      - name: Verificar ediciones en manifiesto y marcar fichas indexadas
+        run: |
+          python - <<'PY'
+          import json,pathlib
+          root=pathlib.Path(".")
+          master=root/"data/bibliotheca-graeca-latina-I-bce-I-ce.json"
+          supp=root/"data/bibliotheca-expansion-publicada-2026-11-16.json"
+          original=json.loads(master.read_text())
+          overlay=json.loads(supp.read_text())
+          manifest=json.loads((root/"data/index/classics/manifest.json").read_text())
+          indexed={(x["id"],x["lang"]) for x in manifest["index"]}
+          works={w["id"]:w for w in [*original["works"],*overlay["works"]]}
+          for id in ["apuleius-de-deo-socratis","censorinus-die-natali"]:
+              assert (id,"la") in indexed,"Latin text not indexed: "+id
+              w=works[id]
+              assert pathlib.Path(w["corpusFiles"]["la"]).is_file()
+              w["textStatus"]="lexically-indexed"
+              w["status"]="Texto original latino incorporado e indexado léxicamente; sin cotejo crítico independiente"
+          master.write_text(json.dumps(original,ensure_ascii=False,indent=2)+"\n")
+          supp.write_text(json.dumps(overlay,ensure_ascii=False,indent=2)+"\n")
+          PY
+      - name: Verificar integridad del índice y ausencia de originales faltantes
+        run: |
+          node scripts/test-classics-lexical-index.mjs
+          node scripts/check-registered-originals-translations-indexed.mjs
+      - name: Fusionar fichas, originales e índice en main
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/bibliotheca-graeca-latina-I-bce-I-ce.json data/bibliotheca-expansion-publicada-2026-11-16.json data/classics-corpus/search-registry.json
+          git add data/classics-corpus/apuleius-de-deo-socratis-la.json data/classics-corpus/censorinus-die-natali-la.json
+          git add data/index/classics
+          if git diff --cached --quiet; then echo "No new original or index changes"; exit 0; fi
+          git commit -m "Bibliotheca: index Apuleius and Censorinus Latin originals"
+          git pull --rebase origin main
+          git push origin HEAD:main
