@@ -1,9 +1,9 @@
 {
   "schema": "vitruvia-classics-search-registry-v1",
-  "updated": "2026-11-16",
+  "updated": "2026-11-20",
   "description": "Registro verificable de transcripciones HTML y textos JSON existentes que admiten búsqueda literal de contenido. No incluye automáticamente PDF escaneados, facsímiles ni fichas sin texto. Los índices auxiliares por locus y el aparato crítico se declaran por separado; no se suman a versiones textuales originales ni implican colación autóptica.",
-  "count": 470,
-  "works": 359,
+  "count": 473,
+  "works": 362,
   "entries": [
     {
       "workId": "aeneas-tacticus-poliorketika",
@@ -1120,6 +1120,16 @@
       "sourceDescription": "OpenGreekAndLatin First1KGreek · edición TEI de procedencia identificada; posible transcripción/OCR corregido, sin colación independiente"
     },
     {
+      "workId": "ennius-annales",
+      "author": "Ennio",
+      "title": "Annales (fragmenta)",
+      "language": "la",
+      "format": "json-passages",
+      "path": "data/classics-corpus/ennius-annales-la.json",
+      "reader": "classics-text-reader.html?work=ennius-annales&lang=la",
+      "sourceDescription": "Original latino de índice remoto previamente documentado, incorporado al corpus local con atribución y loci; no nueva obra independiente."
+    },
+    {
       "workId": "epictetus-discourses",
       "author": "Epicteto (recopilación de Arriano)",
       "title": "Διατριβαί",
@@ -2069,6 +2079,16 @@
       "path": "data/lexicon/fontes/frontinus-aquaeductu-la.json",
       "reader": "classics-text-reader.html?work=frontinus&lang=la",
       "sourceDescription": "Fuente local compartida con Lexicon sin duplicación. 130 secciones numeradas de De aquaeductu, a partir de un texto digital editado sin cotejo propio."
+    },
+    {
+      "workId": "frontinus-gromatica",
+      "author": "Frontino",
+      "title": "Opuscula gromatica",
+      "language": "la",
+      "format": "json-passages",
+      "path": "data/classics-corpus/frontinus-gromatica-la.json",
+      "reader": "classics-text-reader.html?work=frontinus-gromatica&lang=la",
+      "sourceDescription": "Original latino de índice remoto previamente documentado, incorporado al corpus local con atribución y loci; no nueva obra independiente."
     },
     {
       "workId": "frontinus-strategemata",
@@ -4226,6 +4246,16 @@
       "path": "data/classics-corpus/seneca-tragoediae-la.json",
       "reader": "classics-text-reader.html?work=seneca-tragoediae&lang=la",
       "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
+      "workId": "siculus-flaccus",
+      "author": "Sículo Flaco",
+      "title": "De condicionibus agrorum",
+      "language": "la",
+      "format": "json-passages",
+      "path": "data/classics-corpus/siculus-flaccus-la.json",
+      "reader": "classics-text-reader.html?work=siculus-flaccus&lang=la",
+      "sourceDescription": "Original latino de índice remoto previamente documentado, incorporado al corpus local con atribución y loci; no nueva obra independiente."
     },
     {
       "workId": "silius-punica",
