@@ -58,9 +58,19 @@ def main():
                     raise ValueError(f"Conflicting supplementary corpus path: {id}/{lang}")
                 files[lang]=path
                 if not any(v.get("language")==lang and v.get("path")==path for v in versions):
-                    if any(v.get("language")==lang for v in versions):
-                        raise ValueError(f"Conflicting supplementary version path: {id}/{lang}")
-                    versions.append({"language":lang,"path":path})
+                    prior=[v for v in versions if v.get("language")==lang]
+                    if prior:
+                        if len(prior)!=1:
+                            raise ValueError(f"Multiple supplementary versions need review: {id}/{lang}")
+                        existing=prior[0]
+                        old_path=str(existing.get("path",""))
+                        allowed_reader=f"classics-text-reader.html?work={id}&lang={lang}"
+                        if old_path!=allowed_reader:
+                            raise ValueError(f"Conflicting supplementary version path: {id}/{lang}")
+                        existing["reader"]=old_path
+                        existing["path"]=path
+                    else:
+                        versions.append({"language":lang,"path":path})
             if any(lang in languages for lang in ("en","fr","es")):
                 work["translation"]={"status":"Traducción humana registrada como texto local; no se afirma alineación entre pasajes sin cotejo."}
         if missing:
