@@ -181,6 +181,27 @@ for(const w of allWorks){
      sharedBibliographicSections:greekKeys.length,alignmentLevel:"Stephanus section references only; no verbal collation"});
     continue;
    }
+   // Plato's Republic is paired by Stephanus BOOK.PAGE references rather than
+   // edition-specific CTS URNs. Validate the documented 278 unique reference
+   // keys in both sources, without claiming sentence or word alignment.
+   if(w.id==="plato-republic" && translation.language==="en" &&
+      target.alignmentStatus==="stephanus-page" &&
+      /Correspondencia por página, sin colación palabra por palabra ni por folio/i.test(target.editorialStatus||"")){
+    const pageKey=locus=>{
+     const hit=/^urn:cts:greekLit:tlg0059\.tlg030\.perseus-(?:grc|eng)\d+:([0-9]+\.[0-9]+)$/.exec(locus);
+     return hit?hit[1]:null;
+    };
+    const gr=[...ol].map(pageKey),en=[...tl].map(pageKey);
+    const greekUnique=new Set(gr),englishUnique=new Set(en);
+    const valid=gr.every(Boolean)&&en.every(Boolean)&&
+      greekUnique.size===278&&englishUnique.size===278&&
+      [...greekUnique].every(key=>englishUnique.has(key));
+    assert(valid,"Plato Republic Stephanus page references are not equivalent sets");
+    verifiedParallel.push({work:w.id,original:"grc",translation:"en",
+      originalLoci:ol.size,translatedLoci:tl.size,sharedLoci:0,
+      sharedBibliographicSections:278,alignmentLevel:"Stephanus book.page references only; no verbal collation"});
+    continue;
+   }
    // Edition URNs differ (Greek vs English), but the original book.chapter.section
    // numbers may still coincide. Check every numeric section; never infer word alignment.
    if(w.id==="xenophon-anabasis" && target.alignmentStatus==="book-chapter-section" &&
