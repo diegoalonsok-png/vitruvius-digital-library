@@ -1,0 +1,54 @@
+{
+  "schema": "vitruvius-translation-source-candidates-v1",
+  "created": "2026-11-20",
+  "purpose": "Verifiable human-translation sources for existing Greek originals; not proof of ingestion, indexation, R2 upload or locus alignment.",
+  "sourceOfMissingTranslationStatus": "data/classics-corpus/indexation-roadmap-222.json",
+  "priority": "en > fr > es",
+  "items": [
+    {
+      "workId": "strabo",
+      "original": "grc",
+      "translationLanguage": "en",
+      "translator": "Hans Claude Hamilton; William Falconer",
+      "source": "Project Gutenberg",
+      "sourceUrls": [
+        "https://www.gutenberg.org/ebooks/44884",
+        "https://www.gutenberg.org/ebooks/44885",
+        "https://www.gutenberg.org/ebooks/44886"
+      ],
+      "parts": "3 volumes",
+      "status": "source_verified_ingest_pending"
+    },
+    {
+      "workId": "josephus-antiquities",
+      "original": "grc",
+      "translationLanguage": "en",
+      "translator": "William Whiston",
+      "source": "Project Gutenberg",
+      "sourceUrls": [
+        "https://www.gutenberg.org/ebooks/2848"
+      ],
+      "status": "source_verified_ingest_pending"
+    },
+    {
+      "workId": "josephus-war",
+      "original": "grc",
+      "translationLanguage": "en",
+      "translator": "William Whiston",
+      "source": "Project Gutenberg",
+      "sourceUrls": [
+        "https://www.gutenberg.org/ebooks/2850"
+      ],
+      "status": "source_verified_ingest_pending"
+    }
+  ],
+  "checksRequired": [
+    "Download primary source and record SHA-256",
+    "Confirm reproduction rights and credit Gutenberg source",
+    "Parse book/chapter/section loci using actual text (do not infer aligned loci)",
+    "Check existing R2 keys and GitHub before upload",
+    "Index full text and test search/academic reader",
+    "Reconcile R2 and GitHub manifests before updating public counts"
+  ],
+  "doesNotChangeProductionCounters": true
+}
