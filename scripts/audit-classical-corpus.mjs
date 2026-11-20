@@ -181,6 +181,25 @@ for(const w of allWorks){
      sharedBibliographicSections:greekKeys.length,alignmentLevel:"Stephanus section references only; no verbal collation"});
     continue;
    }
+   // Edition URNs differ (Greek vs English), but the original book.chapter.section
+   // numbers may still coincide. Check every numeric section; never infer word alignment.
+   if(w.id==="xenophon-anabasis" && target.alignmentStatus==="book-chapter-section" &&
+      /no implica correspondencia lingüística palabra por palabra/i.test(target.alignment||"")){
+    const section=locus=>{
+     const m=/^urn:cts:greekLit:tlg0032\.tlg006\.perseus-(?:grc|eng)\d+:(\d+\.\d+\.\d+)$/.exec(locus);
+     return m?m[1]:null;
+    };
+    const greek=[...ol].map(section),english=[...tl].map(section);
+    const valid=greek.length>=1000 && greek.length===english.length &&
+      greek.every(Boolean)&&english.every(Boolean)&&
+      new Set(greek).size===greek.length && new Set(english).size===english.length &&
+      greek.every(x=>english.includes(x));
+    assert(valid,"Xenophon book.chapter.section alignment is not bijective");
+    verifiedParallel.push({work:w.id,original:"grc",translation:"en",
+      originalLoci:ol.size,translatedLoci:tl.size,sharedLoci:0,
+      sharedBibliographicSections:greek.length,alignmentLevel:"book.chapter.section numbering only; no word alignment"});
+    continue;
+   }
    assert(target.alignmentStatus==="unaligned" || /no automatic equivalence|no equivalencias|not aligned|no alinead/i.test(target.alignment||""),"Original and translation have no shared locus (undeclared): "+w.id+" / "+translation.language);
    assert(typeof target.alignment==="string"&&/no equivalencias|no alinead|not asserted equivalent|not aligned|not equivalent|not asserted to be equivalent|no automatic equivalence/i.test(target.alignment),"Unaligned translation needs an explicit reader-facing warning: "+translation.path);
    explicitlyUnaligned.push({work:w.id,translation:translation.language,reason:target.alignment});
