@@ -28,7 +28,7 @@ for(const c of cases){
       await page.waitForFunction(()=>{
         const t=document.querySelector("#result-state")?.textContent||"";
         return /Búsqueda finalizada|fuentes procesadas|identidad documentada|Identidad documentada|índice no disponible|Índice no disponible/i.test(t);
-      },{timeout:15000}).catch(()=>{});
+      },null,{timeout:15000}).catch(()=>{});
     }else{
       await page.waitForTimeout(3000); // Lexicon/Bibliotheca are client-side: allow indexes to settle.
     }
