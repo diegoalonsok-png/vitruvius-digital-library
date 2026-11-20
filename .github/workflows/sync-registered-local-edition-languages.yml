@@ -1,0 +1,45 @@
+name: Bibliotheca - completar declaraciones de traducciones indexadas
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/sync-registered-local-edition-languages.py'
+      - '.github/workflows/sync-registered-local-edition-languages.yml'
+permissions:
+  contents: write
+concurrency:
+  group: vdl-classics-publication-main
+  cancel-in-progress: false
+jobs:
+  repair:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Cotejar cada fuente y completar fichas sin tocar libros
+        run: |
+          python -m py_compile scripts/sync-registered-local-edition-languages.py
+          python scripts/sync-registered-local-edition-languages.py
+      - name: Verificar lectores, registros e idiomas
+        run: |
+          node scripts/test-classics-integration.mjs
+          node scripts/check-registered-originals-translations-indexed.mjs
+      - name: Publicar sólo las fichas corregidas
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add data/bibliotheca-graeca-latina-I-bce-I-ce.json
+          if git diff --cached --quiet; then echo 'No faltan idiomas declarados'; exit 0; fi
+          git commit -m 'Bibliotheca: declarar traducciones locales ya indexadas'
+          git pull --rebase origin main
+          git push origin HEAD:main
