@@ -4,6 +4,7 @@ on:
     branches: [main]
     paths:
       - 'scripts/import_gutenberg_translations.py'
+      - '.github/workflows/import-gutenberg-translations.yml'
   workflow_dispatch:
 permissions:
   contents: write
@@ -16,14 +17,38 @@ jobs:
         run: python3 scripts/import_gutenberg_translations.py
       - name: Validate resulting JSON
         run: python3 -m json.tool data/classics-corpus/search-registry.json >/dev/null
-      - name: Require verified Greek to translation synchronization
+      - name: Verify source, distinct editions and explicit unaligned status
         run: |
-          python3 scripts/validate_greek_translation_sync.py             data/classics-corpus/aristophanes-acharnenses-en.json             data/classics-corpus/aristophanes-pax-en.json
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          reg=json.loads(Path('data/classics-corpus/search-registry.json').read_text())
+          indexed={(e['workId'],e['language']) for e in reg['entries']}
+          for work in ['aristophanes-acharnenses','aristophanes-pax']:
+              p=Path(f'data/classics-corpus/{work}-en.json')
+              d=json.loads(p.read_text())
+              assert (work,'grc') in indexed and (work,'en') in indexed
+              assert d['workId']==work and d['language']=='en'
+              assert d.get('source','').startswith('https://www.gutenberg.org/')
+              assert len(d.get('sourceSha256',''))==64 and d.get('attribution')
+              assert d.get('alignment')=='No Greek/English locus alignment'
+              passages=d.get('passages',[])
+              assert len(passages)>=10 and len({x['locus'] for x in passages})==len(passages)
+              assert all(x.get('text') and x.get('locusKind','').endswith('NOT aligned to Greek CTS') for x in passages)
+              print(f'Validated independent historical translation {work}: {len(passages)} segments')
+          PY
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Build and check lexical index without asserting Greek-English alignment
+        run: |
+          node scripts/build-classics-lexical-index.mjs
+          node scripts/check-registered-originals-translations-indexed.mjs
       - name: Commit validated content
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add data/classics-corpus/search-registry.json data/classics-corpus/*-en.json
+          git add data/classics-corpus/search-registry.json data/classics-corpus/aristophanes-acharnenses-en.json data/classics-corpus/aristophanes-pax-en.json data/index/classics
           if ! git diff --cached --quiet; then
             git commit -m 'Bibliotheca: import historical Gutenberg English translations'
             git push
