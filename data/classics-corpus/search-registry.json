@@ -2,8 +2,8 @@
   "schema": "vitruvia-classics-search-registry-v1",
   "updated": "2026-11-20",
   "description": "Registro verificable de transcripciones HTML y textos JSON existentes que admiten búsqueda literal de contenido. No incluye automáticamente PDF escaneados, facsímiles ni fichas sin texto. Los índices auxiliares por locus y el aparato crítico se declaran por separado; no se suman a versiones textuales originales ni implican colación autóptica.",
-  "count": 473,
-  "works": 362,
+  "count": 476,
+  "works": 365,
   "entries": [
     {
       "workId": "aeneas-tacticus-poliorketika",
@@ -3103,6 +3103,16 @@
       "sourceDescription": "Perseus DL TEI · Lysias. Lamb, W.R.M., editor. Cambridge, MA: Harvard University Press; London: William Heinemann Ltd., 1930. · CC BY-SA 4.0; original sin cotejo independiente"
     },
     {
+      "workId": "macrobius-saturnalia",
+      "author": "Macrobio",
+      "title": "Saturnalia",
+      "language": "la",
+      "format": "json-passages",
+      "path": "data/classics-corpus/macrobius-saturnalia-la.json",
+      "reader": "classics-text-reader.html?work=macrobius-saturnalia&lang=la",
+      "sourceDescription": "Edición latina de transcripción remota con procedencia registrada, ahora alojada en corpus local; sin colación autóptica"
+    },
+    {
       "workId": "marcus-aurelius-meditations",
       "author": "Marco Aurelio",
       "title": "Τὰ εἰς ἑαυτόν",
@@ -4216,6 +4226,26 @@
       "path": "data/classics-corpus/seneca-de-clementia-la.json",
       "reader": "classics-text-reader.html?work=seneca-de-clementia&lang=la",
       "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
+      "workId": "seneca-de-ira",
+      "author": "Séneca",
+      "title": "De ira",
+      "language": "la",
+      "format": "json-passages",
+      "path": "data/classics-corpus/seneca-de-ira-la.json",
+      "reader": "classics-text-reader.html?work=seneca-de-ira&lang=la",
+      "sourceDescription": "Edición latina de transcripción remota con procedencia registrada, ahora alojada en corpus local; sin colación autóptica"
+    },
+    {
+      "workId": "seneca-de-tranquillitate",
+      "author": "Séneca",
+      "title": "De tranquillitate animi",
+      "language": "la",
+      "format": "json-passages",
+      "path": "data/classics-corpus/seneca-de-tranquillitate-la.json",
+      "reader": "classics-text-reader.html?work=seneca-de-tranquillitate&lang=la",
+      "sourceDescription": "Edición latina de transcripción remota con procedencia registrada, ahora alojada en corpus local; sin colación autóptica"
     },
     {
       "workId": "seneca-epistulae",
