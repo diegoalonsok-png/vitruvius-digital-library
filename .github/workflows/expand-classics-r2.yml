@@ -18,6 +18,7 @@ on:
     paths:
       - '.github/workflows/expand-classics-r2.yml'
       - 'scripts/expand-classics-r2.py'
+      - 'scripts/test-expand-classics-r2.py'
       - 'scripts/build-r2-expansion-index.mjs'
       - 'scripts/publish-r2-expansion-index.py'
 permissions:

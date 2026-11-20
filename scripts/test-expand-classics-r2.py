@@ -13,7 +13,7 @@ def tei(body,licence=True,lang="grc",urn="urn:cts:greekLit:tlg0001.tlg001.perseu
 class CtsDeduplication(unittest.TestCase):
     def test_cts_edition_urn_exposes_underlying_work_code(self):
         import re
-        pattern=r"urn:cts:(?:greekLit|latinLit):([A-Za-z0-9_-]+\\.[A-Za-z0-9_-]+)\\."
+        pattern=r"urn:cts:(?:greekLit|latinLit):([A-Za-z0-9_-]+\.[A-Za-z0-9_-]+)\."
         for urn,expected in [
             ("urn:cts:greekLit:tlg0385.tlg001.perseus-grc2","tlg0385.tlg001"),
             ("urn:cts:latinLit:phi0119.phi001.perseus-lat2","phi0119.phi001"),
