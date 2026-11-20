@@ -1,0 +1,47 @@
+name: Bibliotheca - ediciones idiomas y fechas junto a las obras
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/build-bibliotheca-edition-list-labels.py'
+      - 'assets/bibliotheca-work-search.js'
+      - 'scripts/test-bibliotheca-edition-list-labels.mjs'
+      - '.github/workflows/bibliotheca-edition-list-labels.yml'
+permissions:
+  contents: write
+concurrency:
+  group: vdl-bibliotheca-edition-labels-main
+  cancel-in-progress: false
+jobs:
+  generate:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Derivar solo idiomas traductores versiones y fechas explícitos
+        run: |
+          python -m py_compile scripts/build-bibliotheca-edition-list-labels.py
+          python scripts/build-bibliotheca-edition-list-labels.py
+      - name: Comprobar catálogo y representación en resultados
+        run: |
+          node --check assets/bibliotheca-work-search.js
+          node scripts/test-bibliotheca-edition-list-labels.mjs
+      - name: Publicar exclusivamente metadatos derivados
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add data/classics-corpus/edition-list-labels.json
+          if git diff --cached --quiet; then echo 'Los rótulos ya estaban actualizados'; exit 0; fi
+          git commit -m 'Bibliotheca: mostrar idiomas, ediciones y fechas verificadas'
+          git pull --rebase origin main
+          git push origin HEAD:main
