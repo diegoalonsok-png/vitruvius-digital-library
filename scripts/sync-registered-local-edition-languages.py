@@ -21,6 +21,7 @@ def main():
     if set(masters)&set(overlays):raise ValueError("Duplicate catalogue work identifiers")
     all_works={**masters,**overlays}
     verified={}
+    verified_paths={}
     for e in registry["entries"]:
         work_id,lang,path=e["workId"],e["language"],str(e.get("path",""))
         if work_id not in all_works or e.get("format")!="json-passages":
@@ -38,6 +39,7 @@ def main():
         if not (record.get("source") or record.get("sources")):
             raise ValueError(f"No source provenance: {path}")
         verified.setdefault(work_id,set()).add(lang)
+        verified_paths[(work_id,lang)]=path
     revised=[]
     for id,languages in sorted(verified.items()):
         work=all_works[id]
@@ -47,6 +49,21 @@ def main():
         missing=sorted(languages-set(previous))
         if missing:
             work["localEditionLanguages"]=[*previous,*missing]
+        if id in overlays:
+            files=work.setdefault("corpusFiles",{})
+            versions=work.setdefault("localVersions",[])
+            for lang in sorted(languages):
+                path=verified_paths[(id,lang)]
+                if lang in files and files[lang]!=path:
+                    raise ValueError(f"Conflicting supplementary corpus path: {id}/{lang}")
+                files[lang]=path
+                if not any(v.get("language")==lang and v.get("path")==path for v in versions):
+                    if any(v.get("language")==lang for v in versions):
+                        raise ValueError(f"Conflicting supplementary version path: {id}/{lang}")
+                    versions.append({"language":lang,"path":path})
+            if any(lang in languages for lang in ("en","fr","es")):
+                work["translation"]={"status":"Traducción humana registrada como texto local; no se afirma alineación entre pasajes sin cotejo."}
+        if missing:
             revised.append({"id":id,"added":missing})
     if revised:
         MAIN.write_text(json.dumps(catalogue,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
