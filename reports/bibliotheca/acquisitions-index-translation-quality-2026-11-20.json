@@ -1,0 +1,97 @@
+{
+  "schema": "bibliotheca-acquisitions-index-quality-audit-v1",
+  "scope": "Manifest and code only; live JS browser interactions not demonstrated",
+  "registryEntries": 470,
+  "localLexicalEditions": 425,
+  "r2LexicalEditions": 44,
+  "recentAcquisitions": [
+    {
+      "id": "apollonius-conica",
+      "lang": "grc",
+      "passages": 178,
+      "reader": "classics-text-reader.html?work=apollonius-conica&lang=grc",
+      "indexed": true
+    },
+    {
+      "id": "aristarchus-magnitudines",
+      "lang": "grc",
+      "passages": 57,
+      "reader": "classics-text-reader.html?work=aristarchus-magnitudines&lang=grc",
+      "indexed": true
+    },
+    {
+      "id": "geminus-isagoge",
+      "lang": "grc",
+      "passages": 524,
+      "reader": "classics-text-reader.html?work=geminus-isagoge&lang=grc",
+      "indexed": true
+    },
+    {
+      "id": "pappus-synagoge",
+      "lang": "grc",
+      "passages": 548,
+      "reader": "classics-text-reader.html?work=pappus-synagoge&lang=grc",
+      "indexed": true
+    },
+    {
+      "id": "apuleius-de-deo-socratis",
+      "lang": "la",
+      "passages": 26,
+      "reader": "classics-text-reader.html?work=apuleius-de-deo-socratis&lang=la",
+      "indexed": true
+    },
+    {
+      "id": "censorinus-die-natali",
+      "lang": "la",
+      "passages": 56,
+      "reader": "classics-text-reader.html?work=censorinus-die-natali&lang=la",
+      "indexed": true
+    },
+    {
+      "id": "isidore-etymologiae",
+      "lang": "la",
+      "passages": 723,
+      "reader": "classics-text-reader.html?work=isidore-etymologiae&lang=la",
+      "indexed": true
+    },
+    {
+      "id": "seneca-naturales",
+      "lang": "la",
+      "passages": 196,
+      "reader": "classics-text-reader.html?work=seneca-naturales&lang=la",
+      "indexed": true
+    },
+    {
+      "id": "velleius-historia",
+      "lang": "la",
+      "passages": 115,
+      "reader": "classics-text-reader.html?work=velleius-historia&lang=la",
+      "indexed": true
+    }
+  ],
+  "registryEntriesOutsideLocalIndex": {
+    "remoteR2": 44,
+    "criticalIndices": 2,
+    "structuredVitruvius": 4,
+    "unclassified": []
+  },
+  "bibliotheca": {
+    "workSearchLoaded": true,
+    "catalogueAndSupplementLoaded": true,
+    "readerUsesRegistry": true,
+    "liveBrowserTest": "NOT COMPLETED"
+  },
+  "machineTranslation": {
+    "qualityCertified": false,
+    "status": "Orientative only; not an accredited historical translation",
+    "ancientGreekUsesModernGreekModel": true,
+    "limitations": [
+      "Greek grammatical moods and negations",
+      "technical vocabulary",
+      "Latin polysemy",
+      "historical context",
+      "partial passages and provider variability"
+    ],
+    "recommendation": "Prefer attested historical EN, then FR, then ES, when available"
+  }
+}
