@@ -25096,8 +25096,8 @@
         "Sobre el dios de Sócrates"
       ],
       "reading": {
-        "url": null,
-        "status": "Obra repertoriada; todavía no se ha incorporado ni cotejado su texto original en esta biblioteca."
+        "url": "classics-text-reader.html?work=apuleius-de-deo-socratis&lang=la",
+        "status": "Texto latino digital; segmentación local, no cotejo crítico."
       },
       "manuscript": {
         "manifest": null,
@@ -25154,7 +25154,21 @@
         "century": "interpretado del campo dating de esta ficha",
         "period": "interpretado del campo dating de esta ficha",
         "witnessLookup": "enlaces de búsqueda generados a partir del título"
-      }
+      },
+      "corpusFiles": {
+        "la": "data/classics-corpus/apuleius-de-deo-socratis-la.json"
+      },
+      "textStatus": "lexically-indexed",
+      "sourceUrl": "https://raw.githubusercontent.com/cltk/lat_text_latin_library/76229acaf02efd1964ac32009408a90b6f279758/apuleius/apuleius.deosocratis.txt",
+      "sourceSha256": "0978ac37a5a1f93036ebe7fa8e223df8b4dd513ba515d97a8036c5cedce9ce99",
+      "sourceLicense": "Public Domain Mark 1.0",
+      "localVersions": [
+        {
+          "language": "la",
+          "path": "data/classics-corpus/apuleius-de-deo-socratis-la.json"
+        }
+      ],
+      "status": "Texto original latino incorporado e indexado léxicamente; sin cotejo crítico independiente"
     },
     {
       "id": "vegetius-epitoma",
@@ -26694,8 +26708,8 @@
         "Censorinus"
       ],
       "reading": {
-        "url": "https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Censorinus/home.html",
-        "status": "Texto original transcrito en LacusCurtius, Universidad de Chicago; la página de la fuente indica la edición de base. Fuente externa de lectura; no alojada en este sitio."
+        "url": "classics-text-reader.html?work=censorinus-die-natali&lang=la",
+        "status": "Texto latino digital; segmentación local, no cotejo crítico."
       },
       "manuscript": {
         "manifest": null,
@@ -26747,7 +26761,21 @@
         "century": "interpretado del campo dating de esta ficha",
         "period": "interpretado del campo dating de esta ficha",
         "witnessLookup": "enlaces de búsqueda generados a partir del título"
-      }
+      },
+      "corpusFiles": {
+        "la": "data/classics-corpus/censorinus-die-natali-la.json"
+      },
+      "textStatus": "lexically-indexed",
+      "sourceUrl": "https://raw.githubusercontent.com/cltk/lat_text_latin_library/76229acaf02efd1964ac32009408a90b6f279758/censorinus.txt",
+      "sourceSha256": "12609a8a223bc5201f48e9e510993bb1066b85b0bce2a70a7b8ef8b8f4247e96",
+      "sourceLicense": "Public Domain Mark 1.0",
+      "localVersions": [
+        {
+          "language": "la",
+          "path": "data/classics-corpus/censorinus-die-natali-la.json"
+        }
+      ],
+      "status": "Texto original latino incorporado e indexado léxicamente; sin cotejo crítico independiente"
     },
     {
       "id": "augustus-res-gestae",

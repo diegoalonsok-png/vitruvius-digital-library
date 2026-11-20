@@ -2,8 +2,8 @@
   "schema": "vitruvia-classics-search-registry-v1",
   "updated": "2026-11-19",
   "description": "Registro verificable de transcripciones HTML y textos JSON existentes que admiten búsqueda literal de contenido. No incluye automáticamente PDF escaneados, facsímiles ni fichas sin texto. Los índices auxiliares por locus y el aparato crítico se declaran por separado; no se suman a versiones textuales originales ni implican colación autóptica.",
-  "count": 465,
-  "works": 354,
+  "count": 467,
+  "works": 356,
   "entries": [
     {
       "workId": "aeneas-tacticus-poliorketika",
@@ -182,6 +182,17 @@
       "path": "data/classics-corpus/apuleius-apologia-la.json",
       "reader": "classics-text-reader.html?work=apuleius-apologia&lang=la",
       "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
+      "workId": "apuleius-de-deo-socratis",
+      "author": "Apuleyo",
+      "title": "De deo Socratis",
+      "language": "la",
+      "format": "json-passages",
+      "path": "data/classics-corpus/apuleius-de-deo-socratis-la.json",
+      "reader": "classics-text-reader.html?work=apuleius-de-deo-socratis&lang=la",
+      "sourceDescription": "CLTK Latin Library historical transcription; Public Domain Mark 1.0",
+      "sourceSha256": "0978ac37a5a1f93036ebe7fa8e223df8b4dd513ba515d97a8036c5cedce9ce99"
     },
     {
       "workId": "apuleius-metamorphoses",
@@ -772,6 +783,17 @@
       "path": "data/classics-corpus/celsus-la.json",
       "reader": "classics-text-reader.html?work=celsus&lang=la",
       "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
+      "workId": "censorinus-die-natali",
+      "author": "Censorino",
+      "title": "De die natali",
+      "language": "la",
+      "format": "json-passages",
+      "path": "data/classics-corpus/censorinus-die-natali-la.json",
+      "reader": "classics-text-reader.html?work=censorinus-die-natali&lang=la",
+      "sourceDescription": "CLTK Latin Library historical transcription; Public Domain Mark 1.0",
+      "sourceSha256": "12609a8a223bc5201f48e9e510993bb1066b85b0bce2a70a7b8ef8b8f4247e96"
     },
     {
       "workId": "cicero-brutus",
