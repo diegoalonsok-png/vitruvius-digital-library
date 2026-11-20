@@ -346,6 +346,7 @@ function interpretQuery(query){
 }
 function locateQuery(query){
  const tokens=editionTokens(),q=unquoteQuery(query),key=romanKey(q,data.language),meaning=interpretQuery(q);
+ const expanded=searchMode?.value==="lexical";
  const queryWords=[...q.matchAll(WORD_TOKEN)].map(m=>romanKey(m[0],data.language));
  if(!key||key.length<2)return [];
  const result=tokens.map((words,i)=>{
@@ -361,8 +362,8 @@ function locateQuery(query){
   }
   for(const token of words){
    const literal=token.key===key;
-   const indexed=[...token.lemmaSet].some(l=>meaning.direct.has(l));
-   const equivalent=meaning.targets.has(fold(token.original))||[...token.lemmaSet].some(l=>meaning.targets.has(l));
+   const indexed=expanded&&!literal&&[...token.lemmaSet].some(l=>meaning.direct.has(l));
+   const equivalent=expanded&&!literal&&!indexed&&(meaning.targets.has(fold(token.original))||[...token.lemmaSet].some(l=>meaning.targets.has(l)));
    if(!literal&&!indexed&&!equivalent)continue;
    if(literal)literalCount++;else if(indexed)indexedCount++;else equivalentCount++;
    locations.push([token.start,token.end]);forms.add(token.original);
@@ -628,7 +629,7 @@ async function load(language,requestId){
  renderToc();
  const locus=new URLSearchParams(location.search).get("locus");
  const at=ACADEMIC?ACADEMIC.findLocus(data.passages,locus):data.passages.findIndex(x=>x.locus===locus);
- const chosen=at>=0?at:0;setQuery(input.value||"");
+ const chosen=at>=0?at:0;active=chosen;setQuery(input.value||"");
  if(search){renderSearch();const first=results[0]?.i;const anchored=results.some(x=>x.i===at);select(anchored?at:Number.isInteger(first)?first:chosen)}
  else{renderSearch();select(chosen)}
  if(locus&&at<0){
@@ -675,8 +676,22 @@ for(const [mode,id] of [["literal","mode-exact"],["lexical","mode-expanded"]]){
  });
 }
 syncSearchModeButtons();
+function syncSearchScopeButtons(){
+ for(const [scope,id] of [["chapter","scope-chapter"],["book","scope-book"]]){
+  $(id)?.setAttribute("aria-pressed",String(searchScope?.value===scope));
+ }
+}
+for(const [scope,id] of [["chapter","scope-chapter"],["book","scope-book"]]){
+ $(id)?.addEventListener("click",()=>{
+  if(!searchScope)return;
+  searchScope.value=scope;
+  searchScope.dispatchEvent(new Event("change"));
+ });
+}
+syncSearchScopeButtons();
 searchMode?.addEventListener("change",()=>{syncSearchModeButtons();$("find").click()});
 searchScope?.addEventListener("change",()=>{
+ syncSearchScopeButtons();
  if(!data)return;resultPage=0;searchScope.dataset.lastChapter=String(chapterKey(data.passages[active])||data.passages[active].locus);
  renderSearch();select(active);
 });
@@ -685,7 +700,7 @@ window.addEventListener("message",event=>{
  if(event.origin!==location.origin||event.source!==window.parent||window.parent===window)return;
  const cmd=event.data;
  if(!cmd||cmd.type!=="vitruvia-parallel-find"||cmd.work!==work||cmd.lang!==data?.language||typeof cmd.query!=="string")return;
- if(searchMode)searchMode.value="literal";
+ if(searchMode){searchMode.value="literal";syncSearchModeButtons();}
  setQuery(cmd.query.slice(0,120));resultPage=0;renderSearch();
  if(results.length)select(results[0].i);else select(active);
  window.parent.postMessage({type:"vitruvia-parallel-search-result",work,lang:data.language,sections:results.length},location.origin);
