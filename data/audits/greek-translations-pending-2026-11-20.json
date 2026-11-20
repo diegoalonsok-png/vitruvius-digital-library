@@ -1,0 +1,2533 @@
+{
+  "schema": "vdl-greek-translation-gap-audit-v1",
+  "checkedAt": "2026-11-20",
+  "registryPath": "data/classics-corpus/search-registry.json",
+  "registryUpdated": "2026-11-20",
+  "method": "Greek workId with grc entry and no en/fr/es under that exact workId in the search registry. Not proof that translation is absent in R2 or alternate IDs; verify before import.",
+  "counts": {
+    "greekWorkIds": 266,
+    "missingTranslationInSearchRegistry": 178,
+    "sourceCandidatesIdentified": 2,
+    "importedInThisAudit": 0,
+    "indexedInThisAudit": 0
+  },
+  "editorialRules": [
+    "Never duplicate a workId or count translations as distinct works.",
+    "Check R2 and alias/work equivalence before importing.",
+    "Prefer historical human English translations, then French, then Spanish; verify rights by source.",
+    "Record translator, edition and original text relationship; segment by verifiable loci; test reader and search.",
+    "Do not mark indexed until passage content and index are actually published and tested."
+  ],
+  "works": [
+    {
+      "workId": "aeneas-tacticus-poliorketika",
+      "author": "Eneas el Táctico",
+      "title": "Πολιορκητικά",
+      "originalRegistered": "data/classics-corpus/aeneas-tacticus-poliorketika-grc.json",
+      "existingLanguages": [
+        "grc"
+      ],
+      "translationRegistryStatus": "no_en_fr_es_under_same_workId",
+      "r2Crosscheck": "pending",
+      "sourceIdentification": "pending",
+      "importStatus": "not_imported",
+      "indexStatus": "not_indexed"
+    },
+    {
+      "workId": "antologia-griega",
+      "author": "Antología griega",
+      "title": "Ἀνθολογία Ἑλληνική · Anthologia Graeca (Palatina)",
+      "originalRegistered": "https://libros.vitruvius-digital-library.org/corpus/antologia-griega-grc.json",
+      "existingLanguages": [
+        "grc"
+      ],
+      "translationRegistryStatus": "no_en_fr_es_under_same_workId",
+      "r2Crosscheck": "pending",
+      "sourceIdentification": "pending",
+      "importStatus": "not_imported",
+      "indexStatus": "not_indexed"
+    },
+    {
+      "workId": "apollonius-conica",
+      "author": "Apolonio de Perge",
+      "title": "Conica · Κωνικά",
+      "originalRegistered": "data/classics-corpus/apollonius-conica-grc.json",
+      "existingLanguages": [
+        "grc"
+      ],
+      "translationRegistryStatus": "no_en_fr_es_under_same_workId",
+      "r2Crosscheck": "pending",
+      "sourceIdentification": "pending",
+      "importStatus": "not_imported",
+      "indexStatus": "not_indexed"
+    },
+    {
+      "workId": "apolonio-argonauticas",
+      "author": "Apolonio de Rodas",
+      "title": "Ἀργοναυτικά · Argonautica",
+      "originalRegistered": "https://libros.vitruvius-digital-library.org/corpus/apolonio-argonauticas-grc.json",
+      "existingLanguages": [
+        "grc"
+      ],
+      "translationRegistryStatus": "no_en_fr_es_under_same_workId",
+      "r2Crosscheck": "pending",
+      "sourceIdentification": "pending",
+      "importStatus": "not_imported",
+      "indexStatus": "not_indexed",
+      "translationCandidate": {
+        "translator": "R. C. Seaton",
+        "year": 1912,
+        "language": "en",
+        "url": "https://www.gutenberg.org/files/830/830-h/830-h.htm",
+        "source": "Project Gutenberg",
+        "status": "human_translation_located_not_integrated",
+        "notes": "Verify no equivalent existing version under another ID or R2 object and check reuse rights and locus segmentation."
+      }
+    },
+    {
+      "workId": "appian-romaika",
+      "author": "Apiano",
+      "title": "Ῥωμαϊκά",
+      "originalRegistered": "data/classics-corpus/appian-romaika-grc.json",
+      "existingLanguages": [
+        "grc"
+      ],
+      "translationRegistryStatus": "no_en_fr_es_under_same_workId",
+      "r2Crosscheck": "pending",
+      "sourceIdentification": "pending",
+      "importStatus": "not_imported",
+      "indexStatus": "not_indexed"
+    },
+    {
+      "workId": "aquiles-tacio-leucipa",
+      "author": "Aquiles Tacio",
+      "title": "Τὰ κατὰ Λευκίππην καὶ Κλειτοφῶντα · Leucipa y Clitofonte",
+      "originalRegistered": "https://libros.vitruvius-digital-library.org/corpus/aquiles-tacio-leucipa-grc.json",
+      "existingLanguages": [
+        "grc"
+      ],
+      "translationRegistryStatus": "no_en_fr_es_under_same_workId",
+      "r2Crosscheck": "pending",
+      "sourceIdentification": "pending",
+      "importStatus": "not_imported",
+      "indexStatus": "not_indexed"
+    },
+    {
+      "workId": "aratus-phaenomena",
+      "author": "Arato de Solos",
+      "title": "Φαινόμενα",
+      "originalRegistered": "data/classics-corpus/aratus-phaenomena-grc.json",
+      "existingLanguages": [
+        "grc"
+      ],
+      "translationRegistryStatus": "no_en_fr_es_under_same_workId",
+      "r2Crosscheck": "pending",
+      "sourceIdentification": "pending",
+      "importStatus": "not_imported",
+      "indexStatus": "not_indexed"
+    },
+    {
+      "workId": "archimedes-fluitantibus",
+      "author": "Arquímedes",
+      "title": "Περὶ τῶν ὀχουμένων",
+      "originalRegistered": "https://libros.vitruvius-digital-library.org/corpus/archimedes-fluitantibus-grc-334fea209f231138.json",
+      "existingLanguages": [
+        "grc"
+      ],
+      "translationRegistryStatus": "no_en_fr_es_under_same_workId",
+      "r2Crosscheck": "pending",
+      "sourceIdentification": "pending",
+      "importStatus": "not_imported",
+      "indexStatus": "not_indexed"
+    },
+    {
+      "workId": "aristarchus-magnitudines",
+      "author": "Aristarco de Samos",
+      "title": "De magnitudinibus et distantiis solis et lunae",
+      "originalRegistered": "data/classics-corpus/aristarchus-magnitudines-grc.json",
+      "existingLanguages": [
+        "grc"
+      ],
+      "translationRegistryStatus": "no_en_fr_es_under_same_workId",
+      "r2Crosscheck": "pending",
+      "sourceIdentification": "pending",
+      "importStatus": "not_imported",
+      "indexStatus": "not_indexed"
+    },
+    {
+      "workId": "aristophanes-acharnenses",
+      "author": "Aristófanes",
+      "title": "Ἀχαρνῆς",
+      "originalRegistered": "data/classics-corpus/aristophanes-acharnenses-grc.json",
+      "existingLanguages": [
+        "grc"
+      ],
+      "translationRegistryStatus": "no_en_fr_es_under_same_workId",
+      "r2Crosscheck": "pending",
+      "sourceIdentification": "pending",
+      "importStatus": "not_imported",
+      "indexStatus": "not_indexed"
+    },
+    {
+      "workId": "aristophanes-ecclesiazusae",
+      "author": "Aristófanes",
+      "title": "Ἐκκλησιάζουσαι",
+      "originalRegistered": "data/classics-corpus/aristophanes-ecclesiazusae-grc.json",
+      "existingLanguages": [
+        "grc"
+      ],
+      "translationRegistryStatus": "no_en_fr_es_under_same_workId",
+      "r2Crosscheck": "pending",
+      "sourceIdentification": "pending",
+      "importStatus": "not_imported",
+      "indexStatus": "not_indexed"
+    },
+    {
+      "workId": "aristophanes-knights",
+      "author": "Aristófanes",
+      "title": "Ἱππῆς",
+      "originalRegistered": "data/classics-corpus/aristophanes-knights-grc.json",
+      "existingLanguages": [
+        "grc"
+      ],
+      "translationRegistryStatus": "no_en_fr_es_under_same_workId",
+      "r2Crosscheck": "pending",
+      "sourceIdentification": "pending",
+      "importStatus": "not_imported",
+      "indexStatus": "not_indexed"
+    },
+    {
+      "workId": "aristophanes-lysistrata",
+      "author": "Aristófanes",
+      "title": "Λυσιστράτη",
+      "originalRegistered": "data/classics-corpus/aristophanes-lysistrata-grc.json",
+      "existingLanguages": [
+        "grc"
+      ],
+      "translationRegistryStatus": "no_en_fr_es_under_same_workId",
+      "r2Crosscheck": "pending",
+      "sourceIdentification": "pending",
+      "importStatus": "not_imported",
+      "indexStatus": "not_indexed"
+    },
+    {
+      "workId": "aristophanes-pax",
+      "author": "Aristófanes",
+      "title": "Εἰρήνη",
+      "originalRegistered": "data/classics-corpus/aristophanes-pax-grc.json",
+      "existingLanguages": [
+        "grc"
+      ],
+      "translationRegistryStatus": "no_en_fr_es_under_same_workId",
+      "r2Crosscheck": "pending",
+      "sourceIdentification": "pending",
+      "importStatus": "not_imported",
+      "indexStatus": "not_indexed"
+    },
+    {
+      "workId": "aristophanes-plutus",
+      "author": "Aristófanes",
+      "title": "Πλοῦτος",
+      "originalRegistered": "data/classics-corpus/aristophanes-plutus-grc.json",
+      "existingLanguages": [
+        "grc"
+      ],
+      "translationRegistryStatus": "no_en_fr_es_under_same_workId",
+      "r2Crosscheck": "pending",
+      "sourceIdentification": "pending",
+      "importStatus": "not_imported",
+      "indexStatus": "not_indexed"
+    },
+    {
+      "workId": "aristophanes-ranae",
+      "author": "Aristófanes",
+      "title": "Βάτραχοι",
+      "originalRegistered": "data/classics-corpus/aristophanes-ranae-grc.json",
+      "existingLanguages": [
+        "grc"
+      ],
+      "translationRegistryStatus": "no_en_fr_es_under_same_workId",
+      "r2Crosscheck": "pending",
+      "sourceIdentification": "pending",
+      "importStatus": "not_imported",
+      "indexStatus": "not_indexed"
+    },
+    {
+      "workId": "aristophanes-thesmophoriazusae",
+      "author": "Aristófanes",
+      "title": "Θεσμοφοριάζουσαι",
+      "originalRegistered": "data/classics-corpus/aristophanes-thesmophoriazusae-grc.json",
+      "existingLanguages": [
+        "grc"
+      ],
+      "translationRegistryStatus": "no_en_fr_es_under_same_workId",
+      "r2Crosscheck": "pending",
+      "sourceIdentification": "pending",
+      "importStatus": "not_imported",
+      "indexStatus": "not_indexed"
+    },
+    {
+      "workId": "aristophanes-vespae",
+      "author": "Aristófanes",
+      "title": "Σφῆκες",
+      "originalRegistered": "data/classics-corpus/aristophanes-vespae-grc.json",
+      "existingLanguages": [
+        "grc"
+      ],
+      "translationRegistryStatus": "no_en_fr_es_under_same_workId",
+      "r2Crosscheck": "pending",
+      "sourceIdentification": "pending",
+      "importStatus": "not_imported",
+      "indexStatus": "not_indexed"
+    },
+    {
+      "workId": "aristoteles-del-cielo",
+      "author": "Aristóteles",
+      "title": "Περὶ οὐρανοῦ · De caelo",
+      "originalRegistered": "https://libros.vitruvius-digital-library.org/corpus/aristoteles-del-cielo-grc.json",
+      "existingLanguages": [
+        "grc"
+      ],
+      "translationRegistryStatus": "no_en_fr_es_under_same_workId",
+      "r2Crosscheck": "pending",
+      "sourceIdentification": "pending",
+      "importStatus": "not_imported",
+      "indexStatus": "not_indexed",
+      "translationCandidate": {
+        "translator": "J. L. Stocks",
+        "year": 1922,
+        "language": "en",
+        "url": "https://classics.mit.edu/Aristotle/heavens.html",
+        "source": "MIT Internet Classics Archive",
+        "status": "human_translation_located_not_integrated",
+        "notes": "Verify no equivalent existing version under another ID or R2 object and check reuse rights and book/section segmentation."
+      }
+    },
+    {
+      "workId": "aristoteles-historia-animales",
+      "author": "Aristóteles",
+      "title": "Περὶ τὰ ζῷα ἱστορίαι · Historia animalium",
+      "originalRegistered": "https://libros.vitruvius-digital-library.org/corpus/aristoteles-historia-animales-grc.json",
+      "existingLanguages": [
+        "grc"
+      ],
+      "translationRegistryStatus": "no_en_fr_es_under_same_workId",
+      "r2Crosscheck": "pending",
+      "sourceIdentification": "pending",
+      "importStatus": "not_imported",
+      "indexStatus": "not_indexed"
+    },
+    {
+      "workId": "aristotle-de-anima",
+      "author": "Aristóteles",
+      "title": "Περὶ ψυχῆς",
+      "originalRegistered": "data/classics-corpus/aristotle-de-anima-grc.json",
+      "existingLanguages": [
+        "grc"
+      ],
+      "translationRegistryStatus": "no_en_fr_es_under_same_workId",
+      "r2Crosscheck": "pending",
+      "sourceIdentification": "pending",
+      "importStatus": "not_imported",
+      "indexStatus": "not_indexed"
+    },
+    {
+      "workId": "aristotle-physics",
+      "author": "Aristóteles",
+      "title": "Φυσικὴ ἀκρόασις",
+      "originalRegistered": "data/classics-corpus/aristotle-physics-grc.json",
+      "existingLanguages": [
+        "grc"
+      ],
+      "translationRegistryStatus": "no_en_fr_es_under_same_workId",
+      "r2Crosscheck": "pending",
+      "sourceIdentification": "pending",
+      "importStatus": "not_imported",
+      "indexStatus": "not_indexed"
+    },
+    {
+      "workId": "aristoxenus-harmonica",
+      "author": "Aristóxeno de Tarento",
+      "title": "Ἁρμονικὰ στοιχεῖα",
+      "originalRegistered": "data/classics-corpus/aristoxenus-harmonica-grc.json",
+      "existingLanguages": [
+        "grc"
+      ],
+      "translationRegistryStatus": "no_en_fr_es_under_same_workId",
+      "r2Crosscheck": "pending",
+      "sourceIdentification": "pending",
+      "importStatus": "not_imported",
+      "indexStatus": "not_indexed"
+    },
+    {
+      "workId": "arrian-anabasis-alexandri",
+      "author": "Arriano",
+      "title": "Ἀλεξάνδρου Ἀνάβασις",
+      "originalRegistered": "data/classics-corpus/arrian-anabasis-alexandri-grc.json",
+      "existingLanguages": [
+        "grc"
+      ],
+      "translationRegistryStatus": "no_en_fr_es_under_same_workId",
+      "r2Crosscheck": "pending",
+      "sourceIdentification": "pending",
+      "importStatus": "not_imported",
+      "indexStatus": "not_indexed"
+    },
+    {
+      "workId": "athenaeus-deipnosophistae",
+      "author": "Ateneo de Náucratis",
+      "title": "Δειπνοσοφισταί",
+      "originalRegistered": "https://libros.vitruvius-digital-library.org/corpus/athenaeus-deipnosophistae-grc-c11adda328eca994.json",
+      "existingLanguages": [
+        "grc"
+      ],
+      "translationRegistryStatus": "no_en_fr_es_under_same_workId",
+      "r2Crosscheck": "pending",
+      "sourceIdentification": "pending",
+      "importStatus": "not_imported",
+      "indexStatus": "not_indexed"
+    },
+    {
+      "workId": "baquilides-poemas",
+      "author": "Baquílides",
+      "title": "Ἐπίνικοι καὶ διθύραμβοι · Epinicios y ditirambos",
+      "originalRegistered": "https://libros.vitruvius-digital-library.org/corpus/baquilides-poemas-grc.json",
+      "existingLanguages": [
+        "grc"
+      ],
+      "translationRegistryStatus": "no_en_fr_es_under_same_workId",
+      "r2Crosscheck": "pending",
+      "sourceIdentification": "pending",
+      "importStatus": "not_imported",
+      "indexStatus": "not_indexed"
+    },
+    {
+      "workId": "barnabas",
+      "author": "Anónimo",
+      "title": "Ἐπιστολὴ Βαρνάβα · Epistula Barnabae",
+      "originalRegistered": "data/classics-corpus/barnabas-grc.json",
+      "existingLanguages": [
+        "grc"
+      ],
+      "translationRegistryStatus": "no_en_fr_es_under_same_workId",
+      "r2Crosscheck": "pending",
+      "sourceIdentification": "pending",
+      "importStatus": "not_imported",
+      "indexStatus": "not_indexed"
+    },
+    {
+      "workId": "calimaco-himnos",
+      "author": "Calímaco y Licofrón",
+      "title": "Ὕμνοι καὶ ἐπιγράμματα · Himnos y epigramas (con la Ἀλεξάνδρα de Licofrón)",
+      "originalRegistered": "https://libros.vitruvius-digital-library.org/corpus/calimaco-himnos-grc.json",
+      "existingLanguages": [
+        "grc"
+      ],
+      "translationRegistryStatus": "no_en_fr_es_under_same_workId",
+      "r2Crosscheck": "pending",
+      "sourceIdentification": "pending",
+      "importStatus": "not_imported",
+      "indexStatus": "not_indexed"
+    },
+    {
+      "workId": "callimachus-hymni",
+      "author": "Calímaco",
+      "title": "Ὕμνοι",
+      "originalRegistered": "data/classics-corpus/callimachus-hymni-grc.json",
+      "existingLanguages": [
+        "grc"
+      ],
+      "translationRegistryStatus": "no_en_fr_es_under_same_workId",
+      "r2Crosscheck": "pending",
+      "sourceIdentification": "pending",
+      "importStatus": "not_imported",
+      "indexStatus": "not_indexed"
+    },
+    {
+      "workId": "cassius-dio-historia",
+      "author": "Dión Casio",
+      "title": "Ῥωμαϊκὴ ἱστορία",
+      "originalRegistered": "https://libros.vitruvius-digital-library.org/corpus/cassius-dio-historia-grc-43482d9b45cf2bea.json",
+      "existingLanguages": [
+        "grc"
+      ],
+      "translationRegistryStatus": "no_en_fr_es_under_same_workId",
+      "r2Crosscheck": "pending",
+      "sourceIdentification": "pending",
+      "importStatus": "not_imported",
+      "indexStatus": "not_indexed"
+    },
+    {
+      "workId": "cebes-tabula",
+      "author": "Pseudo-Cebes (atribución tradicional)",
+      "title": "Πίναξ · Tabula Cebetis",
+      "originalRegistered": "data/classics-corpus/cebes-tabula-grc.json",
+      "existingLanguages": [
+        "grc"
+      ],
+      "translationRegistryStatus": "no_en_fr_es_under_same_workId",
+      "r2Crosscheck": "pending",
+      "sourceIdentification": "pending",
+      "importStatus": "not_imported",
+      "indexStatus": "not_indexed"
+    },
+    {
+      "workId": "clement",
+      "author": "Primera carta de Clemente",
+      "title": "Πρὸς Κορινθίους Αʹ",
+      "originalRegistered": "data/classics-corpus/clement-grc.json",
+      "existingLanguages": [
+        "grc"
+      ],
+      "translationRegistryStatus": "no_en_fr_es_under_same_workId",
+      "r2Crosscheck": "pending",
+      "sourceIdentification": "pending",
+      "importStatus": "not_imported",
+      "indexStatus": "not_indexed"
+    },
+    {
+      "workId": "clement-2",
+      "author": "Anónimo",
+      "title": "Δευτέρα Κλήμεντος · Segunda carta de Clemente",
+      "originalRegistered": "data/classics-corpus/clement-2-grc.json",
+      "existingLanguages": [
+        "grc"
+      ],
+      "translationRegistryStatus": "no_en_fr_es_under_same_workId",
+      "r2Crosscheck": "pending",
+      "sourceIdentification": "pending",
+      "importStatus": "not_imported",
+      "indexStatus": "not_indexed"
+    },
+    {
+      "workId": "cleonides-harmonica",
+      "author": "Cleónides (transmitido bajo el nombre de Euclides)",
+      "title": "Εἰσαγωγὴ ἁρμονική · Introductio harmonica",
+      "originalRegistered": "https://libros.vitruvius-digital-library.org/corpus/cleonides-harmonica-grc-a7f8f1e13c9508a5.json",
+      "existingLanguages": [
+        "grc"
+      ],
+      "translationRegistryStatus": "no_en_fr_es_under_same_workId",
+      "r2Crosscheck": "pending",
+      "sourceIdentification": "pending",
+      "importStatus": "not_imported",
+      "indexStatus": "not_indexed"
+    },
+    {
+      "workId": "demosthenes-philippicae",
+      "author": "Demóstenes",
+      "title": "Φιλιππικοί",
+      "originalRegistered": "data/classics-corpus/demosthenes-philippicae-grc.json",
+      "existingLanguages": [
+        "grc"
+      ],
+      "translationRegistryStatus": "no_en_fr_es_under_same_workId",
+      "r2Crosscheck": "pending",
+      "sourceIdentification": "pending",
+      "importStatus": "not_imported",
+      "indexStatus": "not_indexed"
+    },
+    {
+      "workId": "diodorus",
+      "author": "Diodoro Sículo",
+      "title": "Βιβλιοθήκη ἱστορική",
+      "originalRegistered": "data/classics-corpus/diodorus-grc.json",
+      "existingLanguages": [
+        "grc"
+      ],
+      "translationRegistryStatus": "no_en_fr_es_under_same_workId",
+      "r2Crosscheck": "pending",
+      "sourceIdentification": "pending",
+      "importStatus": "not_imported",
+      "indexStatus": "not_indexed"
+    },
+    {
+      "workId": "diogenes-laertius-vitae",
+      "author": "Diógenes Laercio",
+      "title": "Βίοι καὶ γνῶμαι τῶν ἐν φιλοσοφίᾳ εὐδοκιμησάντων",
+      "originalRegistered": "data/classics-corpus/diogenes-laertius-vitae-grc.json",
+      "existingLanguages": [
+        "grc"
+      ],
+      "translationRegistryStatus": "no_en_fr_es_under_same_workId",
+      "r2Crosscheck": "pending",
+      "sourceIdentification": "pending",
+      "importStatus": "not_imported",
+      "indexStatus": "not_indexed"
+    },
+    {
+      "workId": "diognetus",
+      "author": "Anónimo",
+      "title": "Πρὸς Διόγνητον · Carta a Diogneto",
+      "originalRegistered": "data/classics-corpus/diognetus-grc.json",
+      "existingLanguages": [
+        "grc"
+      ],
+      "translationRegistryStatus": "no_en_fr_es_under_same_workId",
+      "r2Crosscheck": "pending",
+      "sourceIdentification": "pending",
+      "importStatus": "not_imported",
+      "indexStatus": "not_indexed"
+    },
+    {
+      "workId": "dionysius",
+      "author": "Dionisio de Halicarnaso",
+      "title": "Ῥωμαϊκὴ ἀρχαιολογία",
+      "originalRegistered": "data/classics-corpus/dionysius-grc.json",
+      "existingLanguages": [
+        "grc"
+      ],
+      "translationRegistryStatus": "no_en_fr_es_under_same_workId",
+      "r2Crosscheck": "pending",
+      "sourceIdentification": "pending",
+      "importStatus": "not_imported",
+      "indexStatus": "not_indexed"
+    },
+    {
+      "workId": "dioscorides",
+      "author": "Dioscórides",
+      "title": "Περὶ ὕλης ἰατρικῆς",
+      "originalRegistered": "data/classics-corpus/dioscorides-grc.json",
+      "existingLanguages": [
+        "grc"
+      ],
+      "translationRegistryStatus": "no_en_fr_es_under_same_workId",
+      "r2Crosscheck": "pending",
+      "sourceIdentification": "pending",
+      "importStatus": "not_imported",
+      "indexStatus": "not_indexed"
+    },
+    {
+      "workId": "epictetus-discourses",
+      "author": "Epicteto (recopilación de Arriano)",
+      "title": "Διατριβαί",
+      "originalRegistered": "data/classics-corpus/epictetus-discourses-grc.json",
+      "existingLanguages": [
+        "grc"
+      ],
+      "translationRegistryStatus": "no_en_fr_es_under_same_workId",
+      "r2Crosscheck": "pending",
+      "sourceIdentification": "pending",
+      "importStatus": "not_imported",
+      "indexStatus": "not_indexed"
+    },
+    {
+      "workId": "epicuro-restos",
+      "author": "Epicuro",
+      "title": "Ἐπιστολαὶ καὶ Κύριαι δόξαι · Cartas y Máximas capitales",
+      "originalRegistered": "https://libros.vitruvius-digital-library.org/corpus/epicuro-restos-grc.json",
+      "existingLanguages": [
+        "grc"
+      ],
+      "translationRegistryStatus": "no_en_fr_es_under_same_workId",
+      "r2Crosscheck": "pending",
+      "sourceIdentification": "pending",
+      "importStatus": "not_imported",
+      "indexStatus": "not_indexed"
+    },
+    {
+      "workId": "esquines-discursos",
+      "author": "Esquines",
+      "title": "Λόγοι · Discursos",
+      "originalRegistered": "https://libros.vitruvius-digital-library.org/corpus/esquines-discursos-grc.json",
+      "existingLanguages": [
+        "grc"
+      ],
+      "translationRegistryStatus": "no_en_fr_es_under_same_workId",
+      "r2Crosscheck": "pending",
+      "sourceIdentification": "pending",
+      "importStatus": "not_imported",
+      "indexStatus": "not_indexed"
+    },
+    {
+      "workId": "euclid-elementa",
+      "author": "Euclides",
+      "title": "Στοιχεῖα · Elementa",
+      "originalRegistered": "data/classics-corpus/euclid-elementa-grc.json",
+      "existingLanguages": [
+        "grc"
+      ],
+      "translationRegistryStatus": "no_en_fr_es_under_same_workId",
+      "r2Crosscheck": "pending",
+      "sourceIdentification": "pending",
+      "importStatus": "not_imported",
+      "indexStatus": "not_indexed"
+    },
+    {
+      "workId": "euclid-optica",
+      "author": "Euclides",
+      "title": "Ὀπτικά · Optica",
+      "originalRegistered": "https://libros.vitruvius-digital-library.org/corpus/euclid-optica-grc-6cc3f8b109b782a4.json",
+      "existingLanguages": [
+        "grc"
+      ],
+      "translationRegistryStatus": "no_en_fr_es_under_same_workId",
+      "r2Crosscheck": "pending",
+      "sourceIdentification": "pending",
+      "importStatus": "not_imported",
+      "indexStatus": "not_indexed"
+    },
+    {
+      "workId": "euclid-phaenomena",
+      "author": "Euclides",
+      "title": "Φαινόμενα · Phaenomena y escritos musicales",
+      "originalRegistered": "https://libros.vitruvius-digital-library.org/corpus/euclid-phaenomena-grc-4e4a3c1b1b3eda93.json",
+      "existingLanguages": [
+        "grc"
+      ],
+      "translationRegistryStatus": "no_en_fr_es_under_same_workId",
+      "r2Crosscheck": "pending",
+      "sourceIdentification": "pending",
+      "importStatus": "not_imported",
+      "indexStatus": "not_indexed"
+    },
+    {
+      "workId": "eusebio",
+      "author": "Eusebio de Cesarea",
+      "title": "Ἐκκλησιαστικὴ ἱστορία · Historia eclesiástica",
+      "originalRegistered": "data/classics-corpus/eusebio-grc.json",
+      "existingLanguages": [
+        "grc"
+      ],
+      "translationRegistryStatus": "no_en_fr_es_under_same_workId",
+      "r2Crosscheck": "pending",
+      "sourceIdentification": "pending",
+      "importStatus": "not_imported",
+      "indexStatus": "not_indexed"
+    },
+    {
+      "workId": "filostrato-apolonio",
+      "author": "Filóstrato",
+      "title": "Τὰ ἐς τὸν Τυανέα Ἀπολλώνιον · Vida de Apolonio de Tiana",
+      "originalRegistered": "https://libros.vitruvius-digital-library.org/corpus/filostrato-apolonio-grc.json",
+      "existingLanguages": [
+        "grc"
+      ],
+      "translationRegistryStatus": "no_en_fr_es_under_same_workId",
+      "r2Crosscheck": "pending",
+      "sourceIdentification": "pending",
+      "importStatus": "not_imported",
+      "indexStatus": "not_indexed"
+    },
+    {
+      "workId": "first1k-tlg0057-tlg002",
+      "author": "Galen",
+      "title": "De optima doctrina",
+      "originalRegistered": "data/classics-corpus/first1k-tlg0057-tlg002-grc.json",
+      "existingLanguages": [
+        "grc"
+      ],
+      "translationRegistryStatus": "no_en_fr_es_under_same_workId",
+      "r2Crosscheck": "pending",
+      "sourceIdentification": "pending",
+      "importStatus": "not_imported",
+      "indexStatus": "not_indexed"
+    },
+    {
+      "workId": "first1k-tlg0057-tlg024",
+      "author": "Galen",
+      "title": "De optima corporis nostri constitutione",
+      "originalRegistered": "data/classics-corpus/first1k-tlg0057-tlg024-grc.json",
+      "existingLanguages": [
+        "grc"
+      ],
+      "translationRegistryStatus": "no_en_fr_es_under_same_workId",
+      "r2Crosscheck": "pending",
+      "sourceIdentification": "pending",
+      "importStatus": "not_imported",
+      "indexStatus": "not_indexed"
+    },
+    {
+      "workId": "first1k-tlg0057-tlg030",
+      "author": "Galen",
+      "title": "De atra bile",
+      "originalRegistered": "data/classics-corpus/first1k-tlg0057-tlg030-grc.json",
+      "existingLanguages": [
+        "grc"
+      ],
+      "translationRegistryStatus": "no_en_fr_es_under_same_workId",
+      "r2Crosscheck": "pending",
+      "sourceIdentification": "pending",
+      "importStatus": "not_imported",
+      "indexStatus": "not_indexed"
+    },
+    {
+      "workId": "first1k-tlg0057-tlg034",
+      "author": "Galen",
+      "title": "De parvae pilae exercitio",
+      "originalRegistered": "data/classics-corpus/first1k-tlg0057-tlg034-grc.json",
+      "existingLanguages": [
+        "grc"
+      ],
+      "translationRegistryStatus": "no_en_fr_es_under_same_workId",
+      "r2Crosscheck": "pending",
+      "sourceIdentification": "pending",
+      "importStatus": "not_imported",
+      "indexStatus": "not_indexed"
+    },
+    {
+      "workId": "first1k-tlg0057-tlg039",
+      "author": "Galen",
+      "title": "De ptisana",
+      "originalRegistered": "data/classics-corpus/first1k-tlg0057-tlg039-grc.json",
+      "existingLanguages": [
+        "grc"
+      ],
+      "translationRegistryStatus": "no_en_fr_es_under_same_workId",
+      "r2Crosscheck": "pending",
+      "sourceIdentification": "pending",
+      "importStatus": "not_imported",
+      "indexStatus": "not_indexed"
+    },
+    {
+      "workId": "first1k-tlg0057-tlg048",
+      "author": "Galen",
+      "title": "De typis",
+      "originalRegistered": "data/classics-corpus/first1k-tlg0057-tlg048-grc.json",
+      "existingLanguages": [
+        "grc"
+      ],
+      "translationRegistryStatus": "no_en_fr_es_under_same_workId",
+      "r2Crosscheck": "pending",
+      "sourceIdentification": "pending",
+      "importStatus": "not_imported",
+      "indexStatus": "not_indexed"
+    },
+    {
+      "workId": "first1k-tlg0057-tlg082",
+      "author": "Galen",
+      "title": "De sophismatis seu captionibus penes dictionem",
+      "originalRegistered": "data/classics-corpus/first1k-tlg0057-tlg082-grc.json",
+      "existingLanguages": [
+        "grc"
+      ],
+      "translationRegistryStatus": "no_en_fr_es_under_same_workId",
+      "r2Crosscheck": "pending",
+      "sourceIdentification": "pending",
+      "importStatus": "not_imported",
+      "indexStatus": "not_indexed"
+    },
+    {
+      "workId": "first1k-tlg0082-tlg002",
+      "author": "Apollonius Dyscolus",
+      "title": "Περὶ ἐπιρρημάτων",
+      "originalRegistered": "data/classics-corpus/first1k-tlg0082-tlg002-grc.json",
+      "existingLanguages": [
+        "grc"
+      ],
+      "translationRegistryStatus": "no_en_fr_es_under_same_workId",
+      "r2Crosscheck": "pending",
+      "sourceIdentification": "pending",
+      "importStatus": "not_imported",
+      "indexStatus": "not_indexed"
+    },
+    {
+      "workId": "first1k-tlg0082-tlg003",
+      "author": "Apollonius Dyscolus",
+      "title": "Περὶ συνδέσμων",
+      "originalRegistered": "data/classics-corpus/first1k-tlg0082-tlg003-grc.json",
+      "existingLanguages": [
+        "grc"
+      ],
+      "translationRegistryStatus": "no_en_fr_es_under_same_workId",
+      "r2Crosscheck": "pending",
+      "sourceIdentification": "pending",
+      "importStatus": "not_imported",
+      "indexStatus": "not_indexed"
+    },
+    {
+      "workId": "first1k-tlg0086-tlg004",
+      "author": "Aristotle",
+      "title": "Ἐκ τοῦ περὶ ἀκουστῶν",
+      "originalRegistered": "data/classics-corpus/first1k-tlg0086-tlg004-grc.json",
+      "existingLanguages": [
+        "grc"
+      ],
+      "translationRegistryStatus": "no_en_fr_es_under_same_workId",
+      "r2Crosscheck": "pending",
+      "sourceIdentification": "pending",
+      "importStatus": "not_imported",
+      "indexStatus": "not_indexed"
+    },
+    {
+      "workId": "first1k-tlg0086-tlg019",
+      "author": "Aristotle",
+      "title": "Περὶ ἀτόμων γραμμῶν",
+      "originalRegistered": "data/classics-corpus/first1k-tlg0086-tlg019-grc.json",
+      "existingLanguages": [
+        "grc"
+      ],
+      "translationRegistryStatus": "no_en_fr_es_under_same_workId",
+      "r2Crosscheck": "pending",
+      "sourceIdentification": "pending",
+      "importStatus": "not_imported",
+      "indexStatus": "not_indexed"
+    },
+    {
+      "workId": "first1k-tlg0086-tlg043",
+      "author": "Aristotle",
+      "title": "De spiritu",
+      "originalRegistered": "data/classics-corpus/first1k-tlg0086-tlg043-grc.json",
+      "existingLanguages": [
+        "grc"
+      ],
+      "translationRegistryStatus": "no_en_fr_es_under_same_workId",
+      "r2Crosscheck": "pending",
+      "sourceIdentification": "pending",
+      "importStatus": "not_imported",
+      "indexStatus": "not_indexed"
+    },
+    {
+      "workId": "first1k-tlg0086-tlg047",
+      "author": "Aristotle",
+      "title": "Περὶ Ξενοφάνους, περὶ Ζήνωνος, περὶ Γοργίου",
+      "originalRegistered": "data/classics-corpus/first1k-tlg0086-tlg047-grc.json",
+      "existingLanguages": [
+        "grc"
+      ],
+      "translationRegistryStatus": "no_en_fr_es_under_same_workId",
+      "r2Crosscheck": "pending",
+      "sourceIdentification": "pending",
+      "importStatus": "not_imported",
+      "indexStatus": "not_indexed"
+    },
+    {
+      "workId": "first1k-tlg0093-tlg006",
+      "author": "Theophrastus",
+      "title": "Ἐκ τῶν μετὰ τὰ φυσικά",
+      "originalRegistered": "data/classics-corpus/first1k-tlg0093-tlg006-grc.json",
+      "existingLanguages": [
+        "grc"
+      ],
+      "translationRegistryStatus": "no_en_fr_es_under_same_workId",
+      "r2Crosscheck": "pending",
+      "sourceIdentification": "pending",
+      "importStatus": "not_imported",
+      "indexStatus": "not_indexed"
+    },
+    {
+      "workId": "first1k-tlg0093-tlg010x03",
+      "author": "Theophrastus",
+      "title": "Περί Σημείων Ὑδάτων και Pνευμάτων και Xειμώνων και Εὐδιών",
+      "originalRegistered": "data/classics-corpus/first1k-tlg0093-tlg010x03-grc.json",
+      "existingLanguages": [
+        "grc"
+      ],
+      "translationRegistryStatus": "no_en_fr_es_under_same_workId",
+      "r2Crosscheck": "pending",
+      "sourceIdentification": "pending",
+      "importStatus": "not_imported",
+      "indexStatus": "not_indexed"
+    },
+    {
+      "workId": "first1k-tlg0093-tlg010x04",
+      "author": "Theophrastus",
+      "title": "Περί Κόπων",
+      "originalRegistered": "data/classics-corpus/first1k-tlg0093-tlg010x04-grc.json",
+      "existingLanguages": [
+        "grc"
+      ],
+      "translationRegistryStatus": "no_en_fr_es_under_same_workId",
+      "r2Crosscheck": "pending",
+      "sourceIdentification": "pending",
+      "importStatus": "not_imported",
+      "indexStatus": "not_indexed"
+    },
+    {
+      "workId": "first1k-tlg0093-tlg010x06",
+      "author": "Theophrastus",
+      "title": "Περί Ἰδρώτων",
+      "originalRegistered": "data/classics-corpus/first1k-tlg0093-tlg010x06-grc.json",
+      "existingLanguages": [
+        "grc"
+      ],
+      "translationRegistryStatus": "no_en_fr_es_under_same_workId",
+      "r2Crosscheck": "pending",
+      "sourceIdentification": "pending",
+      "importStatus": "not_imported",
+      "indexStatus": "not_indexed"
+    },
+    {
+      "workId": "first1k-tlg0358-tlg001",
+      "author": "Nicomachus of Gerasa",
+      "title": "Ἀριθμητικὴ εἰσαγωγή",
+      "originalRegistered": "data/classics-corpus/first1k-tlg0358-tlg001-grc.json",
+      "existingLanguages": [
+        "grc"
+      ],
+      "translationRegistryStatus": "no_en_fr_es_under_same_workId",
+      "r2Crosscheck": "pending",
+      "sourceIdentification": "pending",
+      "importStatus": "not_imported",
+      "indexStatus": "not_indexed"
+    },
+    {
+      "workId": "first1k-tlg0358-tlg002",
+      "author": "Nicomachus of Gerasa",
+      "title": "Ἐγχειρίδιον ἁρμονικῆς",
+      "originalRegistered": "data/classics-corpus/first1k-tlg0358-tlg002-grc.json",
+      "existingLanguages": [
+        "grc"
+      ],
+      "translationRegistryStatus": "no_en_fr_es_under_same_workId",
+      "r2Crosscheck": "pending",
+      "sourceIdentification": "pending",
+      "importStatus": "not_imported",
+      "indexStatus": "not_indexed"
+    },
+    {
+      "workId": "first1k-tlg0552-tlg001",
+      "author": "Archimède",
+      "title": "De sphaera et cylindro",
+      "originalRegistered": "data/classics-corpus/first1k-tlg0552-tlg001-grc.json",
+      "existingLanguages": [
+        "grc"
+      ],
+      "translationRegistryStatus": "no_en_fr_es_under_same_workId",
+      "r2Crosscheck": "pending",
+      "sourceIdentification": "pending",
+      "importStatus": "not_imported",
+      "indexStatus": "not_indexed"
+    },
+    {
+      "workId": "first1k-tlg0552-tlg004",
+      "author": "Archimède",
+      "title": "De lineis spiralibus",
+      "originalRegistered": "data/classics-corpus/first1k-tlg0552-tlg004-grc.json",
+      "existingLanguages": [
+        "grc"
+      ],
+      "translationRegistryStatus": "no_en_fr_es_under_same_workId",
+      "r2Crosscheck": "pending",
+      "sourceIdentification": "pending",
+      "importStatus": "not_imported",
+      "indexStatus": "not_indexed"
+    },
+    {
+      "workId": "first1k-tlg0552-tlg006",
+      "author": "Archimède",
+      "title": "Arenarius",
+      "originalRegistered": "data/classics-corpus/first1k-tlg0552-tlg006-grc.json",
+      "existingLanguages": [
+        "grc"
+      ],
+      "translationRegistryStatus": "no_en_fr_es_under_same_workId",
+      "r2Crosscheck": "pending",
+      "sourceIdentification": "pending",
+      "importStatus": "not_imported",
+      "indexStatus": "not_indexed"
+    },
+    {
+      "workId": "first1k-tlg0552-tlg007",
+      "author": "Archimède",
+      "title": "Quadratura parabolae",
+      "originalRegistered": "data/classics-corpus/first1k-tlg0552-tlg007-grc.json",
+      "existingLanguages": [
+        "grc"
+      ],
+      "translationRegistryStatus": "no_en_fr_es_under_same_workId",
+      "r2Crosscheck": "pending",
+      "sourceIdentification": "pending",
+      "importStatus": "not_imported",
+      "indexStatus": "not_indexed"
+    },
+    {
+      "workId": "first1k-tlg0559-tlg006",
+      "author": "Hero of Alexandria",
+      "title": "Metrica",
+      "originalRegistered": "data/classics-corpus/first1k-tlg0559-tlg006-grc.json",
+      "existingLanguages": [
+        "grc"
+      ],
+      "translationRegistryStatus": "no_en_fr_es_under_same_workId",
+      "r2Crosscheck": "pending",
+      "sourceIdentification": "pending",
+      "importStatus": "not_imported",
+      "indexStatus": "not_indexed"
+    },
+    {
+      "workId": "first1k-tlg0559-tlg007",
+      "author": "Hero of Alexandria",
+      "title": "Dioptra",
+      "originalRegistered": "data/classics-corpus/first1k-tlg0559-tlg007-grc.json",
+      "existingLanguages": [
+        "grc"
+      ],
+      "translationRegistryStatus": "no_en_fr_es_under_same_workId",
+      "r2Crosscheck": "pending",
+      "sourceIdentification": "pending",
+      "importStatus": "not_imported",
+      "indexStatus": "not_indexed"
+    },
+    {
+      "workId": "first1k-tlg0559-tlg011",
+      "author": "Hero of Alexandria",
+      "title": "De mensuris",
+      "originalRegistered": "data/classics-corpus/first1k-tlg0559-tlg011-grc.json",
+      "existingLanguages": [
+        "grc"
+      ],
+      "translationRegistryStatus": "no_en_fr_es_under_same_workId",
+      "r2Crosscheck": "pending",
+      "sourceIdentification": "pending",
+      "importStatus": "not_imported",
+      "indexStatus": "not_indexed"
+    },
+    {
+      "workId": "first1k-tlg0565-tlg001",
+      "author": "Soranus",
+      "title": "Gynaeciorum Libri IV",
+      "originalRegistered": "data/classics-corpus/first1k-tlg0565-tlg001-grc.json",
+      "existingLanguages": [
+        "grc"
+      ],
+      "translationRegistryStatus": "no_en_fr_es_under_same_workId",
+      "r2Crosscheck": "pending",
+      "sourceIdentification": "pending",
+      "importStatus": "not_imported",
+      "indexStatus": "not_indexed"
+    },
+    {
+      "workId": "first1k-tlg0565-tlg002",
+      "author": "Soranus",
+      "title": "De signis Fracturarum",
+      "originalRegistered": "data/classics-corpus/first1k-tlg0565-tlg002-grc.json",
+      "existingLanguages": [
+        "grc"
+      ],
+      "translationRegistryStatus": "no_en_fr_es_under_same_workId",
+      "r2Crosscheck": "pending",
+      "sourceIdentification": "pending",
+      "importStatus": "not_imported",
+      "indexStatus": "not_indexed"
+    },
+    {
+      "workId": "first1k-tlg0565-tlg003",
+      "author": "Soranus",
+      "title": "De Fasciis",
+      "originalRegistered": "data/classics-corpus/first1k-tlg0565-tlg003-grc.json",
+      "existingLanguages": [
+        "grc"
+      ],
+      "translationRegistryStatus": "no_en_fr_es_under_same_workId",
+      "r2Crosscheck": "pending",
+      "sourceIdentification": "pending",
+      "importStatus": "not_imported",
+      "indexStatus": "not_indexed"
+    },
+    {
+      "workId": "first1k-tlg0592-tlg001",
+      "author": "Hermogenes",
+      "title": "Progymnasmata [Dub.]",
+      "originalRegistered": "data/classics-corpus/first1k-tlg0592-tlg001-grc.json",
+      "existingLanguages": [
+        "grc"
+      ],
+      "translationRegistryStatus": "no_en_fr_es_under_same_workId",
+      "r2Crosscheck": "pending",
+      "sourceIdentification": "pending",
+      "importStatus": "not_imported",
+      "indexStatus": "not_indexed"
+    },
+    {
+      "workId": "first1k-tlg0592-tlg002",
+      "author": "Hermogenes",
+      "title": "Περὶ τῶν στάσεων",
+      "originalRegistered": "data/classics-corpus/first1k-tlg0592-tlg002-grc.json",
+      "existingLanguages": [
+        "grc"
+      ],
+      "translationRegistryStatus": "no_en_fr_es_under_same_workId",
+      "r2Crosscheck": "pending",
+      "sourceIdentification": "pending",
+      "importStatus": "not_imported",
+      "indexStatus": "not_indexed"
+    },
+    {
+      "workId": "first1k-tlg0592-tlg005",
+      "author": "Hermogenes",
+      "title": "Περὶ μεθόδου δεινότητος",
+      "originalRegistered": "data/classics-corpus/first1k-tlg0592-tlg005-grc.json",
+      "existingLanguages": [
+        "grc"
+      ],
+      "translationRegistryStatus": "no_en_fr_es_under_same_workId",
+      "r2Crosscheck": "pending",
+      "sourceIdentification": "pending",
+      "importStatus": "not_imported",
+      "indexStatus": "not_indexed"
+    },
+    {
+      "workId": "first1k-tlg0732-tlg001",
+      "author": "Alexander of Aphrodisias",
+      "title": "De mixtione",
+      "originalRegistered": "data/classics-corpus/first1k-tlg0732-tlg001-grc.json",
+      "existingLanguages": [
+        "grc"
+      ],
+      "translationRegistryStatus": "no_en_fr_es_under_same_workId",
+      "r2Crosscheck": "pending",
+      "sourceIdentification": "pending",
+      "importStatus": "not_imported",
+      "indexStatus": "not_indexed"
+    },
+    {
+      "workId": "first1k-tlg0732-tlg003",
+      "author": "Alexander of Aphrodisias",
+      "title": "Περὶ Πυρετῶν [Sp.]",
+      "originalRegistered": "data/classics-corpus/first1k-tlg0732-tlg003-grc.json",
+      "existingLanguages": [
+        "grc"
+      ],
+      "translationRegistryStatus": "no_en_fr_es_under_same_workId",
+      "r2Crosscheck": "pending",
+      "sourceIdentification": "pending",
+      "importStatus": "not_imported",
+      "indexStatus": "not_indexed"
+    },
+    {
+      "workId": "first1k-tlg0732-tlg012",
+      "author": "Alexander of Aphrodisias",
+      "title": "Quaestiones",
+      "originalRegistered": "data/classics-corpus/first1k-tlg0732-tlg012-grc.json",
+      "existingLanguages": [
+        "grc"
+      ],
+      "translationRegistryStatus": "no_en_fr_es_under_same_workId",
+      "r2Crosscheck": "pending",
+      "sourceIdentification": "pending",
+      "importStatus": "not_imported",
+      "indexStatus": "not_indexed"
+    },
+    {
+      "workId": "first1k-tlg1799-tlg007",
+      "author": "Euclid",
+      "title": "Data",
+      "originalRegistered": "data/classics-corpus/first1k-tlg1799-tlg007-grc.json",
+      "existingLanguages": [
+        "grc"
+      ],
+      "translationRegistryStatus": "no_en_fr_es_under_same_workId",
+      "r2Crosscheck": "pending",
+      "sourceIdentification": "pending",
+      "importStatus": "not_imported",
+      "indexStatus": "not_indexed"
+    },
+    {
+      "workId": "first1k-tlg1799-tlg011",
+      "author": "Euclid",
+      "title": "Catoptrica (recensio Theonis?)",
+      "originalRegistered": "data/classics-corpus/first1k-tlg1799-tlg011-grc.json",
+      "existingLanguages": [
+        "grc"
+      ],
+      "translationRegistryStatus": "no_en_fr_es_under_same_workId",
+      "r2Crosscheck": "pending",
+      "sourceIdentification": "pending",
+      "importStatus": "not_imported",
+      "indexStatus": "not_indexed"
+    },
+    {
+      "workId": "first1k-tlg2018-tlg011",
+      "author": "Eusebius",
+      "title": "Onomasticon",
+      "originalRegistered": "data/classics-corpus/first1k-tlg2018-tlg011-grc.json",
+      "existingLanguages": [
+        "grc"
+      ],
+      "translationRegistryStatus": "no_en_fr_es_under_same_workId",
+      "r2Crosscheck": "pending",
+      "sourceIdentification": "pending",
+      "importStatus": "not_imported",
+      "indexStatus": "not_indexed"
+    },
+    {
+      "workId": "first1k-tlg2018-tlg021",
+      "author": "Eusebius",
+      "title": "Constantini imperatoris oratio ad coetum sanctorum",
+      "originalRegistered": "data/classics-corpus/first1k-tlg2018-tlg021-grc.json",
+      "existingLanguages": [
+        "grc"
+      ],
+      "translationRegistryStatus": "no_en_fr_es_under_same_workId",
+      "r2Crosscheck": "pending",
+      "sourceIdentification": "pending",
+      "importStatus": "not_imported",
+      "indexStatus": "not_indexed"
+    },
+    {
+      "workId": "first1k-tlg2023-tlg001",
+      "author": "Iamblichus",
+      "title": "περὶ τοῦ Πυθαγορικοῦ βίου λόγος",
+      "originalRegistered": "data/classics-corpus/first1k-tlg2023-tlg001-grc.json",
+      "existingLanguages": [
+        "grc"
+      ],
+      "translationRegistryStatus": "no_en_fr_es_under_same_workId",
+      "r2Crosscheck": "pending",
+      "sourceIdentification": "pending",
+      "importStatus": "not_imported",
+      "indexStatus": "not_indexed"
+    },
+    {
+      "workId": "first1k-tlg2023-tlg003",
+      "author": "Iamblichus",
+      "title": "De communi mathematica scientia",
+      "originalRegistered": "data/classics-corpus/first1k-tlg2023-tlg003-grc.json",
+      "existingLanguages": [
+        "grc"
+      ],
+      "translationRegistryStatus": "no_en_fr_es_under_same_workId",
+      "r2Crosscheck": "pending",
+      "sourceIdentification": "pending",
+      "importStatus": "not_imported",
+      "indexStatus": "not_indexed"
+    },
+    {
+      "workId": "first1k-tlg2023-tlg004",
+      "author": "Iamblichus",
+      "title": "Περὶ τῆς Νικομάχου ἀριθμητικῆς εἰσαγωγῆς",
+      "originalRegistered": "data/classics-corpus/first1k-tlg2023-tlg004-grc.json",
+      "existingLanguages": [
+        "grc"
+      ],
+      "translationRegistryStatus": "no_en_fr_es_under_same_workId",
+      "r2Crosscheck": "pending",
+      "sourceIdentification": "pending",
+      "importStatus": "not_imported",
+      "indexStatus": "not_indexed"
+    },
+    {
+      "workId": "first1k-tlg2034-tlg002",
+      "author": "Porphyrius",
+      "title": "Vita Pythagorae",
+      "originalRegistered": "data/classics-corpus/first1k-tlg2034-tlg002-grc.json",
+      "existingLanguages": [
+        "grc"
+      ],
+      "translationRegistryStatus": "no_en_fr_es_under_same_workId",
+      "r2Crosscheck": "pending",
+      "sourceIdentification": "pending",
+      "importStatus": "not_imported",
+      "indexStatus": "not_indexed"
+    },
+    {
+      "workId": "first1k-tlg2034-tlg005",
+      "author": "Porphyrius",
+      "title": "Ad Marcellam",
+      "originalRegistered": "data/classics-corpus/first1k-tlg2034-tlg005-grc.json",
+      "existingLanguages": [
+        "grc"
+      ],
+      "translationRegistryStatus": "no_en_fr_es_under_same_workId",
+      "r2Crosscheck": "pending",
+      "sourceIdentification": "pending",
+      "importStatus": "not_imported",
+      "indexStatus": "not_indexed"
+    },
+    {
+      "workId": "first1k-tlg2042-tlg051",
+      "author": "Origenes",
+      "title": "Selecta in Leviticum",
+      "originalRegistered": "data/classics-corpus/first1k-tlg2042-tlg051-grc.json",
+      "existingLanguages": [
+        "grc"
+      ],
+      "translationRegistryStatus": "no_en_fr_es_under_same_workId",
+      "r2Crosscheck": "pending",
+      "sourceIdentification": "pending",
+      "importStatus": "not_imported",
+      "indexStatus": "not_indexed"
+    },
+    {
+      "workId": "first1k-tlg2042-tlg052",
+      "author": "Origenes",
+      "title": "Selecta in Numeros",
+      "originalRegistered": "data/classics-corpus/first1k-tlg2042-tlg052-grc.json",
+      "existingLanguages": [
+        "grc"
+      ],
+      "translationRegistryStatus": "no_en_fr_es_under_same_workId",
+      "r2Crosscheck": "pending",
+      "sourceIdentification": "pending",
+      "importStatus": "not_imported",
+      "indexStatus": "not_indexed"
+    },
+    {
+      "workId": "first1k-tlg2200-tlg00406",
+      "author": "Libanius",
+      "title": "Oratio VI",
+      "originalRegistered": "data/classics-corpus/first1k-tlg2200-tlg00406-grc.json",
+      "existingLanguages": [
+        "grc"
+      ],
+      "translationRegistryStatus": "no_en_fr_es_under_same_workId",
+      "r2Crosscheck": "pending",
+      "sourceIdentification": "pending",
+      "importStatus": "not_imported",
+      "indexStatus": "not_indexed"
+    },
+    {
+      "workId": "first1k-tlg2200-tlg00408",
+      "author": "Libanius",
+      "title": "Oratio VIII",
+      "originalRegistered": "data/classics-corpus/first1k-tlg2200-tlg00408-grc.json",
+      "existingLanguages": [
+        "grc"
+      ],
+      "translationRegistryStatus": "no_en_fr_es_under_same_workId",
+      "r2Crosscheck": "pending",
+      "sourceIdentification": "pending",
+      "importStatus": "not_imported",
+      "indexStatus": "not_indexed"
+    },
+    {
+      "workId": "first1k-tlg2200-tlg00551",
+      "author": "Libanius",
+      "title": "Declamatio 51",
+      "originalRegistered": "data/classics-corpus/first1k-tlg2200-tlg00551-grc.json",
+      "existingLanguages": [
+        "grc"
+      ],
+      "translationRegistryStatus": "no_en_fr_es_under_same_workId",
+      "r2Crosscheck": "pending",
+      "sourceIdentification": "pending",
+      "importStatus": "not_imported",
+      "indexStatus": "not_indexed"
+    },
+    {
+      "workId": "first1k-tlg2959-tlg002",
+      "author": "Methodius",
+      "title": "De libero arbitrio",
+      "originalRegistered": "data/classics-corpus/first1k-tlg2959-tlg002-grc.json",
+      "existingLanguages": [
+        "grc"
+      ],
+      "translationRegistryStatus": "no_en_fr_es_under_same_workId",
+      "r2Crosscheck": "pending",
+      "sourceIdentification": "pending",
+      "importStatus": "not_imported",
+      "indexStatus": "not_indexed"
+    },
+    {
+      "workId": "galen-adhortatio-artes",
+      "author": "Galeno",
+      "title": "Προτρεπτικὸς ἐπὶ τὰς τέχνας · Adhortatio ad artes addiscendas",
+      "originalRegistered": "data/classics-corpus/galen-adhortatio-artes-grc.json",
+      "existingLanguages": [
+        "grc"
+      ],
+      "translationRegistryStatus": "no_en_fr_es_under_same_workId",
+      "r2Crosscheck": "pending",
+      "sourceIdentification": "pending",
+      "importStatus": "not_imported",
+      "indexStatus": "not_indexed"
+    },
+    {
+      "workId": "galen-ars-medica",
+      "author": "Galeno",
+      "title": "Τέχνη ἰατρική",
+      "originalRegistered": "data/classics-corpus/galen-ars-medica-grc.json",
+      "existingLanguages": [
+        "grc"
+      ],
+      "translationRegistryStatus": "no_en_fr_es_under_same_workId",
+      "r2Crosscheck": "pending",
+      "sourceIdentification": "pending",
+      "importStatus": "not_imported",
+      "indexStatus": "not_indexed"
+    },
+    {
+      "workId": "galen-de-usu-partium",
+      "author": "Galeno",
+      "title": "Περὶ χρείας μορίων",
+      "originalRegistered": "data/classics-corpus/galen-de-usu-partium-grc.json",
+      "existingLanguages": [
+        "grc"
+      ],
+      "translationRegistryStatus": "no_en_fr_es_under_same_workId",
+      "r2Crosscheck": "pending",
+      "sourceIdentification": "pending",
+      "importStatus": "not_imported",
+      "indexStatus": "not_indexed"
+    },
+    {
+      "workId": "galen-optimus-medicus-philosophus",
+      "author": "Galeno",
+      "title": "Ὅτι ἄριστος ἰατρὸς καὶ φιλόσοφος · Quod optimus medicus sit quoque philosophus",
+      "originalRegistered": "data/classics-corpus/galen-optimus-medicus-philosophus-grc.json",
+      "existingLanguages": [
+        "grc"
+      ],
+      "translationRegistryStatus": "no_en_fr_es_under_same_workId",
+      "r2Crosscheck": "pending",
+      "sourceIdentification": "pending",
+      "importStatus": "not_imported",
+      "indexStatus": "not_indexed"
+    },
+    {
+      "workId": "galeno-facultades-naturales",
+      "author": "Galeno",
+      "title": "Περὶ φυσικῶν δυνάμεων · De naturalibus facultatibus",
+      "originalRegistered": "https://libros.vitruvius-digital-library.org/corpus/galeno-facultades-naturales-grc.json",
+      "existingLanguages": [
+        "grc"
+      ],
+      "translationRegistryStatus": "no_en_fr_es_under_same_workId",
+      "r2Crosscheck": "pending",
+      "sourceIdentification": "pending",
+      "importStatus": "not_imported",
+      "indexStatus": "not_indexed"
+    },
+    {
+      "workId": "geminus-isagoge",
+      "author": "Gémino",
+      "title": "Elementa astronomiae · Εἰσαγωγή",
+      "originalRegistered": "data/classics-corpus/geminus-isagoge-grc.json",
+      "existingLanguages": [
+        "grc"
+      ],
+      "translationRegistryStatus": "no_en_fr_es_under_same_workId",
+      "r2Crosscheck": "pending",
+      "sourceIdentification": "pending",
+      "importStatus": "not_imported",
+      "indexStatus": "not_indexed"
+    },
+    {
+      "workId": "hero-automata",
+      "author": "Herón de Alejandría",
+      "title": "Αὐτοματοποιητική · Automata",
+      "originalRegistered": "data/classics-corpus/hero-automata-grc.json",
+      "existingLanguages": [
+        "grc"
+      ],
+      "translationRegistryStatus": "no_en_fr_es_under_same_workId",
+      "r2Crosscheck": "pending",
+      "sourceIdentification": "pending",
+      "importStatus": "not_imported",
+      "indexStatus": "not_indexed"
+    },
+    {
+      "workId": "hero-belopoeica",
+      "author": "Herón de Alejandría",
+      "title": "Βελοποιικά · Belopoeica",
+      "originalRegistered": "https://libros.vitruvius-digital-library.org/corpus/hero-belopoeica-grc-fbb7bea5f038c2f6.json",
+      "existingLanguages": [
+        "grc"
+      ],
+      "translationRegistryStatus": "no_en_fr_es_under_same_workId",
+      "r2Crosscheck": "pending",
+      "sourceIdentification": "pending",
+      "importStatus": "not_imported",
+      "indexStatus": "not_indexed"
+    },
+    {
+      "workId": "herodotus-historiae",
+      "author": "Heródoto",
+      "title": "Ἱστορίαι",
+      "originalRegistered": "data/classics-corpus/herodotus-historiae-grc.json",
+      "existingLanguages": [
+        "grc"
+      ],
+      "translationRegistryStatus": "no_en_fr_es_under_same_workId",
+      "r2Crosscheck": "pending",
+      "sourceIdentification": "pending",
+      "importStatus": "not_imported",
+      "indexStatus": "not_indexed"
+    },
+    {
+      "workId": "hipocrates-obras",
+      "author": "Hipócrates",
+      "title": "Corpus Hippocraticum (selección)",
+      "originalRegistered": "https://libros.vitruvius-digital-library.org/corpus/hipocrates-obras-grc.json",
+      "existingLanguages": [
+        "grc"
+      ],
+      "translationRegistryStatus": "no_en_fr_es_under_same_workId",
+      "r2Crosscheck": "pending",
+      "sourceIdentification": "pending",
+      "importStatus": "not_imported",
+      "indexStatus": "not_indexed"
+    },
+    {
+      "workId": "hippocrates-de-prisca-medicina",
+      "author": "Corpus hipocrático",
+      "title": "Περὶ ἀρχαίης ἰητρικῆς · De prisca medicina",
+      "originalRegistered": "data/classics-corpus/hippocrates-de-prisca-medicina-grc.json",
+      "existingLanguages": [
+        "grc"
+      ],
+      "translationRegistryStatus": "no_en_fr_es_under_same_workId",
+      "r2Crosscheck": "pending",
+      "sourceIdentification": "pending",
+      "importStatus": "not_imported",
+      "indexStatus": "not_indexed"
+    },
+    {
+      "workId": "homeric-hymns",
+      "author": "Anónimo (atribución antigua a Homero)",
+      "title": "Ὁμηρικοὶ ὕμνοι",
+      "originalRegistered": "data/classics-corpus/homeric-hymns-grc.json",
+      "existingLanguages": [
+        "grc"
+      ],
+      "translationRegistryStatus": "no_en_fr_es_under_same_workId",
+      "r2Crosscheck": "pending",
+      "sourceIdentification": "pending",
+      "importStatus": "not_imported",
+      "indexStatus": "not_indexed"
+    },
+    {
+      "workId": "ignatius",
+      "author": "Ignacio de Antioquía",
+      "title": "Ἐπιστολαί · Cartas de Ignacio",
+      "originalRegistered": "data/classics-corpus/ignatius-grc.json",
+      "existingLanguages": [
+        "grc"
+      ],
+      "translationRegistryStatus": "no_en_fr_es_under_same_workId",
+      "r2Crosscheck": "pending",
+      "sourceIdentification": "pending",
+      "importStatus": "not_imported",
+      "indexStatus": "not_indexed"
+    },
+    {
+      "workId": "irenaeus",
+      "author": "Ireneo de Lyon",
+      "title": "Ἔλεγχος καὶ ἀνατροπὴ τῆς ψευδωνύμου γνώσεως · Adversus haereses",
+      "originalRegistered": "data/classics-corpus/irenaeus-grc.json",
+      "existingLanguages": [
+        "grc"
+      ],
+      "translationRegistryStatus": "no_en_fr_es_under_same_workId",
+      "r2Crosscheck": "pending",
+      "sourceIdentification": "pending",
+      "importStatus": "not_imported",
+      "indexStatus": "not_indexed"
+    },
+    {
+      "workId": "iseo-discursos",
+      "author": "Iseo",
+      "title": "Λόγοι · Discursos",
+      "originalRegistered": "https://libros.vitruvius-digital-library.org/corpus/iseo-discursos-grc.json",
+      "existingLanguages": [
+        "grc"
+      ],
+      "translationRegistryStatus": "no_en_fr_es_under_same_workId",
+      "r2Crosscheck": "pending",
+      "sourceIdentification": "pending",
+      "importStatus": "not_imported",
+      "indexStatus": "not_indexed"
+    },
+    {
+      "workId": "isocrates-discursos",
+      "author": "Isócrates",
+      "title": "Λόγοι · Discursos (Πρὸς Δημόνικον, Πανηγυρικός)",
+      "originalRegistered": "https://libros.vitruvius-digital-library.org/corpus/isocrates-discursos-grc.json",
+      "existingLanguages": [
+        "grc"
+      ],
+      "translationRegistryStatus": "no_en_fr_es_under_same_workId",
+      "r2Crosscheck": "pending",
+      "sourceIdentification": "pending",
+      "importStatus": "not_imported",
+      "indexStatus": "not_indexed"
+    },
+    {
+      "workId": "jenofonte-ciropedia",
+      "author": "Jenofonte",
+      "title": "Κύρου παιδεία · Cyropaedia",
+      "originalRegistered": "https://libros.vitruvius-digital-library.org/corpus/jenofonte-ciropedia-grc.json",
+      "existingLanguages": [
+        "grc"
+      ],
+      "translationRegistryStatus": "no_en_fr_es_under_same_workId",
+      "r2Crosscheck": "pending",
+      "sourceIdentification": "pending",
+      "importStatus": "not_imported",
+      "indexStatus": "not_indexed"
+    },
+    {
+      "workId": "jenofonte-economico",
+      "author": "Jenofonte",
+      "title": "Οἰκονομικός · Oeconomicus",
+      "originalRegistered": "https://libros.vitruvius-digital-library.org/corpus/jenofonte-economico-grc.json",
+      "existingLanguages": [
+        "grc"
+      ],
+      "translationRegistryStatus": "no_en_fr_es_under_same_workId",
+      "r2Crosscheck": "pending",
+      "sourceIdentification": "pending",
+      "importStatus": "not_imported",
+      "indexStatus": "not_indexed"
+    },
+    {
+      "workId": "josephus-antiquities",
+      "author": "Flavio Josefo",
+      "title": "Ἰουδαϊκὴ ἀρχαιολογία",
+      "originalRegistered": "data/classics-corpus/josephus-antiquities-grc.json",
+      "existingLanguages": [
+        "grc"
+      ],
+      "translationRegistryStatus": "no_en_fr_es_under_same_workId",
+      "r2Crosscheck": "pending",
+      "sourceIdentification": "pending",
+      "importStatus": "not_imported",
+      "indexStatus": "not_indexed"
+    },
+    {
+      "workId": "josephus-war",
+      "author": "Flavio Josefo",
+      "title": "Περὶ τοῦ Ἰουδαϊκοῦ πολέμου",
+      "originalRegistered": "data/classics-corpus/josephus-war-grc.json",
+      "existingLanguages": [
+        "grc"
+      ],
+      "translationRegistryStatus": "no_en_fr_es_under_same_workId",
+      "r2Crosscheck": "pending",
+      "sourceIdentification": "pending",
+      "importStatus": "not_imported",
+      "indexStatus": "not_indexed"
+    },
+    {
+      "workId": "justin",
+      "author": "Justino Mártir",
+      "title": "Ἀπολογία πρώτη · Primera Apología",
+      "originalRegistered": "data/classics-corpus/justin-grc.json",
+      "existingLanguages": [
+        "grc"
+      ],
+      "translationRegistryStatus": "no_en_fr_es_under_same_workId",
+      "r2Crosscheck": "pending",
+      "sourceIdentification": "pending",
+      "importStatus": "not_imported",
+      "indexStatus": "not_indexed"
+    },
+    {
+      "workId": "lisias-discursos",
+      "author": "Lisias",
+      "title": "Λόγοι · Discursos",
+      "originalRegistered": "https://libros.vitruvius-digital-library.org/corpus/lisias-discursos-grc.json",
+      "existingLanguages": [
+        "grc"
+      ],
+      "translationRegistryStatus": "no_en_fr_es_under_same_workId",
+      "r2Crosscheck": "pending",
+      "sourceIdentification": "pending",
+      "importStatus": "not_imported",
+      "indexStatus": "not_indexed"
+    },
+    {
+      "workId": "longino-sublime",
+      "author": "Pseudo-Longino",
+      "title": "Περὶ ὕψους · De sublimitate",
+      "originalRegistered": "https://libros.vitruvius-digital-library.org/corpus/longino-sublime-grc.json",
+      "existingLanguages": [
+        "grc"
+      ],
+      "translationRegistryStatus": "no_en_fr_es_under_same_workId",
+      "r2Crosscheck": "pending",
+      "sourceIdentification": "pending",
+      "importStatus": "not_imported",
+      "indexStatus": "not_indexed"
+    },
+    {
+      "workId": "longo-dafnis-cloe",
+      "author": "Longo",
+      "title": "Δάφνις καὶ Χλόη · Poimeniká",
+      "originalRegistered": "https://libros.vitruvius-digital-library.org/corpus/longo-dafnis-cloe-grc.json",
+      "existingLanguages": [
+        "grc"
+      ],
+      "translationRegistryStatus": "no_en_fr_es_under_same_workId",
+      "r2Crosscheck": "pending",
+      "sourceIdentification": "pending",
+      "importStatus": "not_imported",
+      "indexStatus": "not_indexed"
+    },
+    {
+      "workId": "lucian-bacchus",
+      "author": "Luciano de Samósata",
+      "title": "Προλαλιά. Διόνυσος",
+      "originalRegistered": "data/classics-corpus/lucian-bacchus-grc.json",
+      "existingLanguages": [
+        "grc"
+      ],
+      "translationRegistryStatus": "no_en_fr_es_under_same_workId",
+      "r2Crosscheck": "pending",
+      "sourceIdentification": "pending",
+      "importStatus": "not_imported",
+      "indexStatus": "not_indexed"
+    },
+    {
+      "workId": "lucian-de-domo",
+      "author": "Luciano de Samósata",
+      "title": "Περὶ τοῦ Οἴκου",
+      "originalRegistered": "data/classics-corpus/lucian-de-domo-grc.json",
+      "existingLanguages": [
+        "grc"
+      ],
+      "translationRegistryStatus": "no_en_fr_es_under_same_workId",
+      "r2Crosscheck": "pending",
+      "sourceIdentification": "pending",
+      "importStatus": "not_imported",
+      "indexStatus": "not_indexed"
+    },
+    {
+      "workId": "lucian-demonax",
+      "author": "Luciano de Samósata",
+      "title": "Δημώνακτος Βίος",
+      "originalRegistered": "data/classics-corpus/lucian-demonax-grc.json",
+      "existingLanguages": [
+        "grc"
+      ],
+      "translationRegistryStatus": "no_en_fr_es_under_same_workId",
+      "r2Crosscheck": "pending",
+      "sourceIdentification": "pending",
+      "importStatus": "not_imported",
+      "indexStatus": "not_indexed"
+    },
+    {
+      "workId": "lucian-dialogi-mortuorum",
+      "author": "Luciano de Samósata",
+      "title": "Νεκρικοὶ διάλογοι",
+      "originalRegistered": "data/classics-corpus/lucian-dialogi-mortuorum-grc.json",
+      "existingLanguages": [
+        "grc"
+      ],
+      "translationRegistryStatus": "no_en_fr_es_under_same_workId",
+      "r2Crosscheck": "pending",
+      "sourceIdentification": "pending",
+      "importStatus": "not_imported",
+      "indexStatus": "not_indexed"
+    },
+    {
+      "workId": "lucian-electrum",
+      "author": "Luciano de Samósata",
+      "title": "Περὶ τοῦ Ἡλέκτρου ἢ Κύκνων",
+      "originalRegistered": "data/classics-corpus/lucian-electrum-grc.json",
+      "existingLanguages": [
+        "grc"
+      ],
+      "translationRegistryStatus": "no_en_fr_es_under_same_workId",
+      "r2Crosscheck": "pending",
+      "sourceIdentification": "pending",
+      "importStatus": "not_imported",
+      "indexStatus": "not_indexed"
+    },
+    {
+      "workId": "lucian-encomium-fatherland",
+      "author": "Luciano de Samósata",
+      "title": "Πατρίδος Ἐγκώμιον",
+      "originalRegistered": "data/classics-corpus/lucian-encomium-fatherland-grc.json",
+      "existingLanguages": [
+        "grc"
+      ],
+      "translationRegistryStatus": "no_en_fr_es_under_same_workId",
+      "r2Crosscheck": "pending",
+      "sourceIdentification": "pending",
+      "importStatus": "not_imported",
+      "indexStatus": "not_indexed"
+    },
+    {
+      "workId": "lucian-encomium-fly",
+      "author": "Luciano de Samósata",
+      "title": "Μυίας Ἐγκώμιον",
+      "originalRegistered": "data/classics-corpus/lucian-encomium-fly-grc.json",
+      "existingLanguages": [
+        "grc"
+      ],
+      "translationRegistryStatus": "no_en_fr_es_under_same_workId",
+      "r2Crosscheck": "pending",
+      "sourceIdentification": "pending",
+      "importStatus": "not_imported",
+      "indexStatus": "not_indexed"
+    },
+    {
+      "workId": "lucian-hercules",
+      "author": "Luciano de Samósata",
+      "title": "Προλαλιά. Ἡρακλῆς",
+      "originalRegistered": "data/classics-corpus/lucian-hercules-grc.json",
+      "existingLanguages": [
+        "grc"
+      ],
+      "translationRegistryStatus": "no_en_fr_es_under_same_workId",
+      "r2Crosscheck": "pending",
+      "sourceIdentification": "pending",
+      "importStatus": "not_imported",
+      "indexStatus": "not_indexed"
+    },
+    {
+      "workId": "lucian-hippias",
+      "author": "Luciano de Samósata",
+      "title": "Ἱππίας ἢ Βαλανεῖον",
+      "originalRegistered": "data/classics-corpus/lucian-hippias-grc.json",
+      "existingLanguages": [
+        "grc"
+      ],
+      "translationRegistryStatus": "no_en_fr_es_under_same_workId",
+      "r2Crosscheck": "pending",
+      "sourceIdentification": "pending",
+      "importStatus": "not_imported",
+      "indexStatus": "not_indexed"
+    },
+    {
+      "workId": "lucian-nigrinus",
+      "author": "Luciano de Samósata",
+      "title": "Νιγρίνου Φιλοσοφία",
+      "originalRegistered": "data/classics-corpus/lucian-nigrinus-grc.json",
+      "existingLanguages": [
+        "grc"
+      ],
+      "translationRegistryStatus": "no_en_fr_es_under_same_workId",
+      "r2Crosscheck": "pending",
+      "sourceIdentification": "pending",
+      "importStatus": "not_imported",
+      "indexStatus": "not_indexed"
+    },
+    {
+      "workId": "lucian-phalaris",
+      "author": "Luciano de Samósata",
+      "title": "Φάλαρις",
+      "originalRegistered": "data/classics-corpus/lucian-phalaris-grc.json",
+      "existingLanguages": [
+        "grc"
+      ],
+      "translationRegistryStatus": "no_en_fr_es_under_same_workId",
+      "r2Crosscheck": "pending",
+      "sourceIdentification": "pending",
+      "importStatus": "not_imported",
+      "indexStatus": "not_indexed"
+    },
+    {
+      "workId": "lysias-against-andocides",
+      "author": "Lisias",
+      "title": "κατ᾽ Ἀνδοκίδου ἀσεβείας",
+      "originalRegistered": "data/classics-corpus/lysias-against-andocides-grc.json",
+      "existingLanguages": [
+        "grc"
+      ],
+      "translationRegistryStatus": "no_en_fr_es_under_same_workId",
+      "r2Crosscheck": "pending",
+      "sourceIdentification": "pending",
+      "importStatus": "not_imported",
+      "indexStatus": "not_indexed"
+    },
+    {
+      "workId": "lysias-against-simon",
+      "author": "Lisias",
+      "title": "πρὸς Σίμωνα ἀπολογία",
+      "originalRegistered": "data/classics-corpus/lysias-against-simon-grc.json",
+      "existingLanguages": [
+        "grc"
+      ],
+      "translationRegistryStatus": "no_en_fr_es_under_same_workId",
+      "r2Crosscheck": "pending",
+      "sourceIdentification": "pending",
+      "importStatus": "not_imported",
+      "indexStatus": "not_indexed"
+    },
+    {
+      "workId": "lysias-calumny",
+      "author": "Lisias",
+      "title": "κατηγορία πρὸς τοὺς συνουσιαστὰς κακολογιῶν",
+      "originalRegistered": "data/classics-corpus/lysias-calumny-grc.json",
+      "existingLanguages": [
+        "grc"
+      ],
+      "translationRegistryStatus": "no_en_fr_es_under_same_workId",
+      "r2Crosscheck": "pending",
+      "sourceIdentification": "pending",
+      "importStatus": "not_imported",
+      "indexStatus": "not_indexed"
+    },
+    {
+      "workId": "lysias-eratosthenes",
+      "author": "Lisias",
+      "title": "ὑπὲρ τοῦ Ἐρατοσθένους φόνου ἀπολογία",
+      "originalRegistered": "data/classics-corpus/lysias-eratosthenes-grc.json",
+      "existingLanguages": [
+        "grc"
+      ],
+      "translationRegistryStatus": "no_en_fr_es_under_same_workId",
+      "r2Crosscheck": "pending",
+      "sourceIdentification": "pending",
+      "importStatus": "not_imported",
+      "indexStatus": "not_indexed"
+    },
+    {
+      "workId": "lysias-for-callias",
+      "author": "Lisias",
+      "title": "ὑπὲρ Καλλίου ἱεροσυλίας ἀπολογία",
+      "originalRegistered": "data/classics-corpus/lysias-for-callias-grc.json",
+      "existingLanguages": [
+        "grc"
+      ],
+      "translationRegistryStatus": "no_en_fr_es_under_same_workId",
+      "r2Crosscheck": "pending",
+      "sourceIdentification": "pending",
+      "importStatus": "not_imported",
+      "indexStatus": "not_indexed"
+    },
+    {
+      "workId": "lysias-funeral-oration",
+      "author": "Lisias",
+      "title": "Ἐπιτάφιος τοῖς Κορινθίων βοηθοῖς",
+      "originalRegistered": "data/classics-corpus/lysias-funeral-oration-grc.json",
+      "existingLanguages": [
+        "grc"
+      ],
+      "translationRegistryStatus": "no_en_fr_es_under_same_workId",
+      "r2Crosscheck": "pending",
+      "sourceIdentification": "pending",
+      "importStatus": "not_imported",
+      "indexStatus": "not_indexed"
+    },
+    {
+      "workId": "lysias-olive-stump",
+      "author": "Lisias",
+      "title": "Ἀρεοπαγιτικὸς περὶ τοῦ σηκοῦ ἀπολογία",
+      "originalRegistered": "data/classics-corpus/lysias-olive-stump-grc.json",
+      "existingLanguages": [
+        "grc"
+      ],
+      "translationRegistryStatus": "no_en_fr_es_under_same_workId",
+      "r2Crosscheck": "pending",
+      "sourceIdentification": "pending",
+      "importStatus": "not_imported",
+      "indexStatus": "not_indexed"
+    },
+    {
+      "workId": "lysias-soldier",
+      "author": "Lisias",
+      "title": "ὑπὲρ τοῦ στρατιωτοῦ",
+      "originalRegistered": "data/classics-corpus/lysias-soldier-grc.json",
+      "existingLanguages": [
+        "grc"
+      ],
+      "translationRegistryStatus": "no_en_fr_es_under_same_workId",
+      "r2Crosscheck": "pending",
+      "sourceIdentification": "pending",
+      "importStatus": "not_imported",
+      "indexStatus": "not_indexed"
+    },
+    {
+      "workId": "lysias-theomnestus-1",
+      "author": "Lisias",
+      "title": "κατὰ θεομνήστου, Α",
+      "originalRegistered": "data/classics-corpus/lysias-theomnestus-1-grc.json",
+      "existingLanguages": [
+        "grc"
+      ],
+      "translationRegistryStatus": "no_en_fr_es_under_same_workId",
+      "r2Crosscheck": "pending",
+      "sourceIdentification": "pending",
+      "importStatus": "not_imported",
+      "indexStatus": "not_indexed"
+    },
+    {
+      "workId": "lysias-wound",
+      "author": "Lisias",
+      "title": "περὶ τραύματος ἐκ προνοίας",
+      "originalRegistered": "data/classics-corpus/lysias-wound-grc.json",
+      "existingLanguages": [
+        "grc"
+      ],
+      "translationRegistryStatus": "no_en_fr_es_under_same_workId",
+      "r2Crosscheck": "pending",
+      "sourceIdentification": "pending",
+      "importStatus": "not_imported",
+      "indexStatus": "not_indexed"
+    },
+    {
+      "workId": "mark",
+      "author": "Evangelio según Marcos",
+      "title": "Εὐαγγέλιον κατὰ Μᾶρκον",
+      "originalRegistered": "data/classics-corpus/mark-grc.json",
+      "existingLanguages": [
+        "grc"
+      ],
+      "translationRegistryStatus": "no_en_fr_es_under_same_workId",
+      "r2Crosscheck": "pending",
+      "sourceIdentification": "pending",
+      "importStatus": "not_imported",
+      "indexStatus": "not_indexed"
+    },
+    {
+      "workId": "menander-dyskolos",
+      "author": "Menandro",
+      "title": "Δύσκολος",
+      "originalRegistered": "data/classics-corpus/menander-dyskolos-grc.json",
+      "existingLanguages": [
+        "grc"
+      ],
+      "translationRegistryStatus": "no_en_fr_es_under_same_workId",
+      "r2Crosscheck": "pending",
+      "sourceIdentification": "pending",
+      "importStatus": "not_imported",
+      "indexStatus": "not_indexed"
+    },
+    {
+      "workId": "menandro-comedias",
+      "author": "Menandro",
+      "title": "Κωμῳδίαι · Comedias (fragmentos papiráceos)",
+      "originalRegistered": "https://libros.vitruvius-digital-library.org/corpus/menandro-comedias-grc.json",
+      "existingLanguages": [
+        "grc"
+      ],
+      "translationRegistryStatus": "no_en_fr_es_under_same_workId",
+      "r2Crosscheck": "pending",
+      "sourceIdentification": "pending",
+      "importStatus": "not_imported",
+      "indexStatus": "not_indexed"
+    },
+    {
+      "workId": "origenes",
+      "author": "Orígenes",
+      "title": "Περὶ ἀρχῶν · De principiis",
+      "originalRegistered": "https://libros.vitruvius-digital-library.org/corpus/origenes-grc.json",
+      "existingLanguages": [
+        "grc"
+      ],
+      "translationRegistryStatus": "no_en_fr_es_under_same_workId",
+      "r2Crosscheck": "pending",
+      "sourceIdentification": "pending",
+      "importStatus": "not_imported",
+      "indexStatus": "not_indexed"
+    },
+    {
+      "workId": "pappus-synagoge",
+      "author": "Papo de Alejandría",
+      "title": "Synagoge · Συναγωγή",
+      "originalRegistered": "data/classics-corpus/pappus-synagoge-grc.json",
+      "existingLanguages": [
+        "grc"
+      ],
+      "translationRegistryStatus": "no_en_fr_es_under_same_workId",
+      "r2Crosscheck": "pending",
+      "sourceIdentification": "pending",
+      "importStatus": "not_imported",
+      "indexStatus": "not_indexed"
+    },
+    {
+      "workId": "pastor-hermas",
+      "author": "Hermas",
+      "title": "Ποιμὴν Ἑρμᾶ · Pastor de Hermas",
+      "originalRegistered": "data/classics-corpus/pastor-hermas-grc.json",
+      "existingLanguages": [
+        "grc"
+      ],
+      "translationRegistryStatus": "no_en_fr_es_under_same_workId",
+      "r2Crosscheck": "pending",
+      "sourceIdentification": "pending",
+      "importStatus": "not_imported",
+      "indexStatus": "not_indexed"
+    },
+    {
+      "workId": "pausanias-periegesis",
+      "author": "Pausanias",
+      "title": "Ἑλλάδος περιήγησις",
+      "originalRegistered": "data/classics-corpus/pausanias-periegesis-grc.json",
+      "existingLanguages": [
+        "grc"
+      ],
+      "translationRegistryStatus": "no_en_fr_es_under_same_workId",
+      "r2Crosscheck": "pending",
+      "sourceIdentification": "pending",
+      "importStatus": "not_imported",
+      "indexStatus": "not_indexed"
+    },
+    {
+      "workId": "platon-cratilo-parmenides",
+      "author": "Platón",
+      "title": "Κρατύλος · Παρμενίδης · Crátilo y Parménides (con Fedón y Timeo, trad. de Th. Taylor)",
+      "originalRegistered": "https://libros.vitruvius-digital-library.org/corpus/platon-cratilo-parmenides-grc.json",
+      "existingLanguages": [
+        "grc"
+      ],
+      "translationRegistryStatus": "no_en_fr_es_under_same_workId",
+      "r2Crosscheck": "pending",
+      "sourceIdentification": "pending",
+      "importStatus": "not_imported",
+      "indexStatus": "not_indexed"
+    },
+    {
+      "workId": "platon-protagoras",
+      "author": "Platón",
+      "title": "Λάχης · Πρωταγόρας · Μένων · Εὐθύδημος",
+      "originalRegistered": "https://libros.vitruvius-digital-library.org/corpus/platon-protagoras-grc.json",
+      "existingLanguages": [
+        "grc"
+      ],
+      "translationRegistryStatus": "no_en_fr_es_under_same_workId",
+      "r2Crosscheck": "pending",
+      "sourceIdentification": "pending",
+      "importStatus": "not_imported",
+      "indexStatus": "not_indexed"
+    },
+    {
+      "workId": "platon-teeteto-sofista",
+      "author": "Platón",
+      "title": "Θεαίτητος · Σοφιστής · Teeteto y Sofista",
+      "originalRegistered": "https://libros.vitruvius-digital-library.org/corpus/platon-teeteto-sofista-grc.json",
+      "existingLanguages": [
+        "grc"
+      ],
+      "translationRegistryStatus": "no_en_fr_es_under_same_workId",
+      "r2Crosscheck": "pending",
+      "sourceIdentification": "pending",
+      "importStatus": "not_imported",
+      "indexStatus": "not_indexed"
+    },
+    {
+      "workId": "plotino-eneadas",
+      "author": "Plotino",
+      "title": "Ἐννεάδες · Enneades",
+      "originalRegistered": "https://libros.vitruvius-digital-library.org/corpus/plotino-eneadas-grc.json",
+      "existingLanguages": [
+        "grc"
+      ],
+      "translationRegistryStatus": "no_en_fr_es_under_same_workId",
+      "r2Crosscheck": "pending",
+      "sourceIdentification": "pending",
+      "importStatus": "not_imported",
+      "indexStatus": "not_indexed"
+    },
+    {
+      "workId": "plutarch-lives",
+      "author": "Plutarco",
+      "title": "Βίοι Παράλληλοι · Vidas paralelas",
+      "originalRegistered": "https://libros.vitruvius-digital-library.org/corpus/plutarch-lives-grc-58cbbdaf742a60cf.json",
+      "existingLanguages": [
+        "grc"
+      ],
+      "translationRegistryStatus": "no_en_fr_es_under_same_workId",
+      "r2Crosscheck": "pending",
+      "sourceIdentification": "pending",
+      "importStatus": "not_imported",
+      "indexStatus": "not_indexed"
+    },
+    {
+      "workId": "plutarch-moralia",
+      "author": "Plutarco",
+      "title": "Ἠθικά (Moralia)",
+      "originalRegistered": "https://libros.vitruvius-digital-library.org/corpus/plutarch-moralia-grc-544c57706b559b70.json",
+      "existingLanguages": [
+        "grc"
+      ],
+      "translationRegistryStatus": "no_en_fr_es_under_same_workId",
+      "r2Crosscheck": "pending",
+      "sourceIdentification": "pending",
+      "importStatus": "not_imported",
+      "indexStatus": "not_indexed"
+    },
+    {
+      "workId": "polybius-historiae",
+      "author": "Polibio",
+      "title": "Ἱστορίαι",
+      "originalRegistered": "data/classics-corpus/polybius-historiae-grc.json",
+      "existingLanguages": [
+        "grc"
+      ],
+      "translationRegistryStatus": "no_en_fr_es_under_same_workId",
+      "r2Crosscheck": "pending",
+      "sourceIdentification": "pending",
+      "importStatus": "not_imported",
+      "indexStatus": "not_indexed"
+    },
+    {
+      "workId": "polycarp",
+      "author": "Policarpo de Esmirna",
+      "title": "Πρὸς Φιλιππησίους · Carta a los Filipenses",
+      "originalRegistered": "data/classics-corpus/polycarp-grc.json",
+      "existingLanguages": [
+        "grc"
+      ],
+      "translationRegistryStatus": "no_en_fr_es_under_same_workId",
+      "r2Crosscheck": "pending",
+      "sourceIdentification": "pending",
+      "importStatus": "not_imported",
+      "indexStatus": "not_indexed"
+    },
+    {
+      "workId": "ps-aristotle-mechanica",
+      "author": "Pseudo-Aristóteles (escuela peripatética)",
+      "title": "Μηχανικὰ προβλήματα",
+      "originalRegistered": "https://libros.vitruvius-digital-library.org/corpus/ps-aristotle-mechanica-grc-4f7a5f316207eca0.json",
+      "existingLanguages": [
+        "grc"
+      ],
+      "translationRegistryStatus": "no_en_fr_es_under_same_workId",
+      "r2Crosscheck": "pending",
+      "sourceIdentification": "pending",
+      "importStatus": "not_imported",
+      "indexStatus": "not_indexed"
+    },
+    {
+      "workId": "pseudo-apollodorus-bibliotheca",
+      "author": "Pseudo-Apolodoro",
+      "title": "Βιβλιοθήκη (Bibliotheca)",
+      "originalRegistered": "data/classics-corpus/pseudo-apollodorus-bibliotheca-grc.json",
+      "existingLanguages": [
+        "grc"
+      ],
+      "translationRegistryStatus": "no_en_fr_es_under_same_workId",
+      "r2Crosscheck": "pending",
+      "sourceIdentification": "pending",
+      "importStatus": "not_imported",
+      "indexStatus": "not_indexed"
+    },
+    {
+      "workId": "ptolemy-almagest",
+      "author": "Claudio Ptolomeo",
+      "title": "Μαθηματικὴ σύνταξις (Almagestum)",
+      "originalRegistered": "data/classics-corpus/ptolemy-almagest-grc.json",
+      "existingLanguages": [
+        "grc"
+      ],
+      "translationRegistryStatus": "no_en_fr_es_under_same_workId",
+      "r2Crosscheck": "pending",
+      "sourceIdentification": "pending",
+      "importStatus": "not_imported",
+      "indexStatus": "not_indexed"
+    },
+    {
+      "workId": "quinto-esmirna-posthomericas",
+      "author": "Quinto de Esmirna",
+      "title": "Τὰ μεθ' Ὅμηρον · Posthomerica",
+      "originalRegistered": "https://libros.vitruvius-digital-library.org/corpus/quinto-esmirna-posthomericas-grc.json",
+      "existingLanguages": [
+        "grc"
+      ],
+      "translationRegistryStatus": "no_en_fr_es_under_same_workId",
+      "r2Crosscheck": "pending",
+      "sourceIdentification": "pending",
+      "importStatus": "not_imported",
+      "indexStatus": "not_indexed"
+    },
+    {
+      "workId": "strabo",
+      "author": "Estrabón",
+      "title": "Γεωγραφικά",
+      "originalRegistered": "data/classics-corpus/strabo-grc.json",
+      "existingLanguages": [
+        "grc"
+      ],
+      "translationRegistryStatus": "no_en_fr_es_under_same_workId",
+      "r2Crosscheck": "pending",
+      "sourceIdentification": "pending",
+      "importStatus": "not_imported",
+      "indexStatus": "not_indexed"
+    },
+    {
+      "workId": "teocrito-bucolicos",
+      "author": "Teócrito, Bión y Mosco",
+      "title": "Εἰδύλλια · Idilios",
+      "originalRegistered": "https://libros.vitruvius-digital-library.org/corpus/teocrito-bucolicos-grc.json",
+      "existingLanguages": [
+        "grc"
+      ],
+      "translationRegistryStatus": "no_en_fr_es_under_same_workId",
+      "r2Crosscheck": "pending",
+      "sourceIdentification": "pending",
+      "importStatus": "not_imported",
+      "indexStatus": "not_indexed"
+    },
+    {
+      "workId": "theocritus-idyllia",
+      "author": "Teócrito",
+      "title": "Εἰδύλλια",
+      "originalRegistered": "data/classics-corpus/theocritus-idyllia-grc.json",
+      "existingLanguages": [
+        "grc"
+      ],
+      "translationRegistryStatus": "no_en_fr_es_under_same_workId",
+      "r2Crosscheck": "pending",
+      "sourceIdentification": "pending",
+      "importStatus": "not_imported",
+      "indexStatus": "not_indexed"
+    },
+    {
+      "workId": "theophrastus-historia-plantarum",
+      "author": "Teofrasto",
+      "title": "Περὶ φυτῶν ἱστορίας",
+      "originalRegistered": "https://libros.vitruvius-digital-library.org/corpus/theophrastus-historia-plantarum-grc-66c50429684fcbc3.json",
+      "existingLanguages": [
+        "grc"
+      ],
+      "translationRegistryStatus": "no_en_fr_es_under_same_workId",
+      "r2Crosscheck": "pending",
+      "sourceIdentification": "pending",
+      "importStatus": "not_imported",
+      "indexStatus": "not_indexed"
+    },
+    {
+      "workId": "thucydides-war",
+      "author": "Tucídides",
+      "title": "Ἱστορία τοῦ Πελοποννησιακοῦ πολέμου",
+      "originalRegistered": "https://libros.vitruvius-digital-library.org/corpus/thucydides-war-grc-6090ade6c2c92022.json",
+      "existingLanguages": [
+        "grc"
+      ],
+      "translationRegistryStatus": "no_en_fr_es_under_same_workId",
+      "r2Crosscheck": "pending",
+      "sourceIdentification": "pending",
+      "importStatus": "not_imported",
+      "indexStatus": "not_indexed"
+    },
+    {
+      "workId": "xenophon-agesilaus",
+      "author": "Jenofonte",
+      "title": "Ἀγησίλαος",
+      "originalRegistered": "data/classics-corpus/xenophon-agesilaus-grc.json",
+      "existingLanguages": [
+        "grc"
+      ],
+      "translationRegistryStatus": "no_en_fr_es_under_same_workId",
+      "r2Crosscheck": "pending",
+      "sourceIdentification": "pending",
+      "importStatus": "not_imported",
+      "indexStatus": "not_indexed"
+    },
+    {
+      "workId": "xenophon-apology",
+      "author": "Jenofonte",
+      "title": "Ἀπολογία Σωκράτους",
+      "originalRegistered": "data/classics-corpus/xenophon-apology-grc.json",
+      "existingLanguages": [
+        "grc"
+      ],
+      "translationRegistryStatus": "no_en_fr_es_under_same_workId",
+      "r2Crosscheck": "pending",
+      "sourceIdentification": "pending",
+      "importStatus": "not_imported",
+      "indexStatus": "not_indexed"
+    },
+    {
+      "workId": "xenophon-hellenica",
+      "author": "Jenofonte",
+      "title": "Ἑλληνικά",
+      "originalRegistered": "data/classics-corpus/xenophon-hellenica-grc.json",
+      "existingLanguages": [
+        "grc"
+      ],
+      "translationRegistryStatus": "no_en_fr_es_under_same_workId",
+      "r2Crosscheck": "pending",
+      "sourceIdentification": "pending",
+      "importStatus": "not_imported",
+      "indexStatus": "not_indexed"
+    },
+    {
+      "workId": "xenophon-hiero",
+      "author": "Jenofonte",
+      "title": "Ἱέρων",
+      "originalRegistered": "data/classics-corpus/xenophon-hiero-grc.json",
+      "existingLanguages": [
+        "grc"
+      ],
+      "translationRegistryStatus": "no_en_fr_es_under_same_workId",
+      "r2Crosscheck": "pending",
+      "sourceIdentification": "pending",
+      "importStatus": "not_imported",
+      "indexStatus": "not_indexed"
+    },
+    {
+      "workId": "xenophon-hipparchicus",
+      "author": "Jenofonte",
+      "title": "Ἱππαρχικός",
+      "originalRegistered": "data/classics-corpus/xenophon-hipparchicus-grc.json",
+      "existingLanguages": [
+        "grc"
+      ],
+      "translationRegistryStatus": "no_en_fr_es_under_same_workId",
+      "r2Crosscheck": "pending",
+      "sourceIdentification": "pending",
+      "importStatus": "not_imported",
+      "indexStatus": "not_indexed"
+    },
+    {
+      "workId": "xenophon-horsemanship",
+      "author": "Jenofonte",
+      "title": "Περὶ ἱππικῆς",
+      "originalRegistered": "data/classics-corpus/xenophon-horsemanship-grc.json",
+      "existingLanguages": [
+        "grc"
+      ],
+      "translationRegistryStatus": "no_en_fr_es_under_same_workId",
+      "r2Crosscheck": "pending",
+      "sourceIdentification": "pending",
+      "importStatus": "not_imported",
+      "indexStatus": "not_indexed"
+    },
+    {
+      "workId": "xenophon-hunting",
+      "author": "Jenofonte",
+      "title": "Κυνηγετικός",
+      "originalRegistered": "data/classics-corpus/xenophon-hunting-grc.json",
+      "existingLanguages": [
+        "grc"
+      ],
+      "translationRegistryStatus": "no_en_fr_es_under_same_workId",
+      "r2Crosscheck": "pending",
+      "sourceIdentification": "pending",
+      "importStatus": "not_imported",
+      "indexStatus": "not_indexed"
+    },
+    {
+      "workId": "xenophon-lacedaemonian-constitution",
+      "author": "Jenofonte",
+      "title": "Λακεδαιμονίων Πολιτεία",
+      "originalRegistered": "data/classics-corpus/xenophon-lacedaemonian-constitution-grc.json",
+      "existingLanguages": [
+        "grc"
+      ],
+      "translationRegistryStatus": "no_en_fr_es_under_same_workId",
+      "r2Crosscheck": "pending",
+      "sourceIdentification": "pending",
+      "importStatus": "not_imported",
+      "indexStatus": "not_indexed"
+    },
+    {
+      "workId": "xenophon-oeconomicus",
+      "author": "Jenofonte",
+      "title": "Οἰκονομικός",
+      "originalRegistered": "data/classics-corpus/xenophon-oeconomicus-grc.json",
+      "existingLanguages": [
+        "grc"
+      ],
+      "translationRegistryStatus": "no_en_fr_es_under_same_workId",
+      "r2Crosscheck": "pending",
+      "sourceIdentification": "pending",
+      "importStatus": "not_imported",
+      "indexStatus": "not_indexed"
+    },
+    {
+      "workId": "xenophon-symposium",
+      "author": "Jenofonte",
+      "title": "Συμπόσιον",
+      "originalRegistered": "data/classics-corpus/xenophon-symposium-grc.json",
+      "existingLanguages": [
+        "grc"
+      ],
+      "translationRegistryStatus": "no_en_fr_es_under_same_workId",
+      "r2Crosscheck": "pending",
+      "sourceIdentification": "pending",
+      "importStatus": "not_imported",
+      "indexStatus": "not_indexed"
+    },
+    {
+      "workId": "xenophon-ways-means",
+      "author": "Jenofonte",
+      "title": "Πόροι ἢ περὶ προσόδων",
+      "originalRegistered": "data/classics-corpus/xenophon-ways-means-grc.json",
+      "existingLanguages": [
+        "grc"
+      ],
+      "translationRegistryStatus": "no_en_fr_es_under_same_workId",
+      "r2Crosscheck": "pending",
+      "sourceIdentification": "pending",
+      "importStatus": "not_imported",
+      "indexStatus": "not_indexed"
+    }
+  ]
+}
