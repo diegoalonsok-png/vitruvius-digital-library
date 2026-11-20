@@ -163,7 +163,7 @@ function show(){
  if(/[\u0590-\u05ff]/u.test(input))variants.push(["Sin signos masoréticos",input.normalize("NFD").replace(markRe,""),"Capa para recuperación gráfica, no transcripción paleográfica ni interpretación del idioma."]);
  if(/[a-z]/i.test(input))variants.push(["Latinización de búsqueda u/v e i/j",fold(input).replace(/v/g,"u").replace(/j/g,"i"),"Equivalencia experimental de grafías editoriales; no implica la misma forma histórica."]);
  const table=document.createElement("table");table.className="orth-table";
- const tr=document.createElement("tr");for(const t of ["Representación","Resultado","Criterio"]){const h=document.createElement("th");h.textContent=tr(t);tr.append(h)}table.append(tr);
+ const headerRow=document.createElement("tr");for(const t of ["Representación","Resultado","Criterio"]){const h=document.createElement("th");h.textContent=tr(t);headerRow.append(h)}table.append(headerRow);
  for(const [name,value,desc] of variants){
   const row=document.createElement("tr");
   for(const x of [name,value,desc]){const td=document.createElement("td");td.textContent=x===value?x:tr(x);if(x===value){td.dir="auto";td.style.fontSize="1.12em"}row.append(td)}
