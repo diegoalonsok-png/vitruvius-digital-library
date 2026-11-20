@@ -24,8 +24,8 @@ ids(reg,e=>[e.workId,e.language,e.path,e.edition||""].join("|"),"Registro textua
 const availableR2=new Set(corpusR2.obras.map(e=>corpusR2.base+e.archivo));
 const indexedWorks=new Set(),indexedOriginals=new Set(),indexedLocalFiles=new Set(),indexedRemoteFiles=new Set();
 for(const e of reg){
- if(!allWorks.has(e.workId))critical.push("Edición textual sin ficha: "+e.workId);
- indexedWorks.add(e.workId);
+ if(!allWorks.has(e.workId)&&e.format!=="critical-indexed-latin")critical.push("Edición textual sin ficha: "+e.workId);
+ if(e.format!=="critical-indexed-latin")indexedWorks.add(e.workId);
  const master=cat.find(w=>w.id===e.workId)||overlay.find(w=>w.id===e.workId);
  if(master&&master.language===e.language&&["grc","la"].includes(e.language))indexedOriginals.add(e.workId);
  if(/^https?:\/\//.test(e.path)){
