@@ -720,12 +720,12 @@
         "license": "CC BY-SA 4.0",
         "textualNote": "Los apartados de párrafo usados para búsqueda son segmentos locales cuando la unidad CTS reúne varios párrafos."
       },
-      "status": "Texto griego incorporado, registrado e indexado léxicamente; sin cotejo crítico independiente",
+      "status": "Texto griego de Perseus incorporado, catalogado y con índice léxico local; cotejo crítico independiente pendiente",
       "textStatus": "lexically-indexed",
       "publicStatus": "lectura-local-completa",
       "reading": {
         "url": "classics-text-reader.html?work=plato-euthyphro&lang=grc",
-        "status": "Transcripción de edición TEI con segmentos digitales locales; sin cotejo crítico independiente."
+        "status": "Texto original en griego, con referencia CTS; traducción cotejada local no acreditada."
       },
       "translation": {
         "status": "Traducción humana registrada como texto local; no se afirma alineación entre pasajes sin cotejo."
@@ -739,17 +739,12 @@
       "coverType": "typographic-institutional",
       "selectionOrder": 1,
       "corpusFiles": {
-        "grc": "data/classics-corpus/plato-euthyphro-grc.json",
-        "en": "data/classics-corpus/plato-euthyphro-en.json"
+        "grc": "data/classics-corpus/plato-euthyphro-grc.json"
       },
       "localVersions": [
         {
           "language": "grc",
           "path": "data/classics-corpus/plato-euthyphro-grc.json"
-        },
-        {
-          "language": "en",
-          "path": "data/classics-corpus/plato-euthyphro-en.json"
         }
       ],
       "sourceUrn": "urn:cts:greekLit:tlg0059.tlg001.perseus-grc1",
@@ -793,12 +788,12 @@
         "license": "CC BY-SA 4.0",
         "textualNote": "Los apartados de párrafo usados para búsqueda son segmentos locales cuando la unidad CTS reúne varios párrafos."
       },
-      "status": "Texto griego incorporado, registrado e indexado léxicamente; sin cotejo crítico independiente",
+      "status": "Texto griego de Perseus incorporado, catalogado y con índice léxico local; cotejo crítico independiente pendiente",
       "textStatus": "lexically-indexed",
       "publicStatus": "lectura-local-completa",
       "reading": {
         "url": "classics-text-reader.html?work=plato-statesman&lang=grc",
-        "status": "Transcripción de edición TEI con segmentos digitales locales; sin cotejo crítico independiente."
+        "status": "Texto original en griego, con referencia CTS; traducción cotejada local no acreditada."
       },
       "translation": {
         "status": "Traducción humana registrada como texto local; no se afirma alineación entre pasajes sin cotejo."
@@ -812,17 +807,12 @@
       "coverType": "typographic-institutional",
       "selectionOrder": 2,
       "corpusFiles": {
-        "grc": "data/classics-corpus/plato-statesman-grc.json",
-        "en": "data/classics-corpus/plato-statesman-en.json"
+        "grc": "data/classics-corpus/plato-statesman-grc.json"
       },
       "localVersions": [
         {
           "language": "grc",
           "path": "data/classics-corpus/plato-statesman-grc.json"
-        },
-        {
-          "language": "en",
-          "path": "data/classics-corpus/plato-statesman-en.json"
         }
       ],
       "sourceUrn": "urn:cts:greekLit:tlg0059.tlg008.perseus-grc2",
@@ -866,12 +856,12 @@
         "license": "CC BY-SA 4.0",
         "textualNote": "Los apartados de párrafo usados para búsqueda son segmentos locales cuando la unidad CTS reúne varios párrafos."
       },
-      "status": "Texto griego incorporado, registrado e indexado léxicamente; sin cotejo crítico independiente",
+      "status": "Texto griego de Perseus incorporado, catalogado y con índice léxico local; cotejo crítico independiente pendiente",
       "textStatus": "lexically-indexed",
       "publicStatus": "lectura-local-completa",
       "reading": {
         "url": "classics-text-reader.html?work=plato-philebus&lang=grc",
-        "status": "Transcripción de edición TEI con segmentos digitales locales; sin cotejo crítico independiente."
+        "status": "Texto original en griego, con referencia CTS; traducción cotejada local no acreditada."
       },
       "translation": {
         "status": "Traducción humana registrada como texto local; no se afirma alineación entre pasajes sin cotejo."
@@ -885,17 +875,12 @@
       "coverType": "typographic-institutional",
       "selectionOrder": 3,
       "corpusFiles": {
-        "grc": "data/classics-corpus/plato-philebus-grc.json",
-        "en": "data/classics-corpus/plato-philebus-en.json"
+        "grc": "data/classics-corpus/plato-philebus-grc.json"
       },
       "localVersions": [
         {
           "language": "grc",
           "path": "data/classics-corpus/plato-philebus-grc.json"
-        },
-        {
-          "language": "en",
-          "path": "data/classics-corpus/plato-philebus-en.json"
         }
       ],
       "sourceUrn": "urn:cts:greekLit:tlg0059.tlg010.perseus-grc2",
@@ -939,12 +924,12 @@
         "license": "CC BY-SA 4.0",
         "textualNote": "Los apartados de párrafo usados para búsqueda son segmentos locales cuando la unidad CTS reúne varios párrafos."
       },
-      "status": "Texto griego incorporado, registrado e indexado léxicamente; sin cotejo crítico independiente",
+      "status": "Texto griego de Perseus incorporado, catalogado y con índice léxico local; cotejo crítico independiente pendiente",
       "textStatus": "lexically-indexed",
       "publicStatus": "lectura-local-completa",
       "reading": {
         "url": "classics-text-reader.html?work=plato-charmides&lang=grc",
-        "status": "Transcripción de edición TEI con segmentos digitales locales; sin cotejo crítico independiente."
+        "status": "Texto original en griego, con referencia CTS; traducción cotejada local no acreditada."
       },
       "translation": {
         "status": "Traducción humana registrada como texto local; no se afirma alineación entre pasajes sin cotejo."
@@ -958,17 +943,12 @@
       "coverType": "typographic-institutional",
       "selectionOrder": 4,
       "corpusFiles": {
-        "grc": "data/classics-corpus/plato-charmides-grc.json",
-        "en": "data/classics-corpus/plato-charmides-en.json"
+        "grc": "data/classics-corpus/plato-charmides-grc.json"
       },
       "localVersions": [
         {
           "language": "grc",
           "path": "data/classics-corpus/plato-charmides-grc.json"
-        },
-        {
-          "language": "en",
-          "path": "data/classics-corpus/plato-charmides-en.json"
         }
       ],
       "sourceUrn": "urn:cts:greekLit:tlg0059.tlg018.perseus-grc2",
@@ -1012,12 +992,12 @@
         "license": "CC BY-SA 4.0",
         "textualNote": "Los apartados de párrafo usados para búsqueda son segmentos locales cuando la unidad CTS reúne varios párrafos."
       },
-      "status": "Texto griego incorporado, registrado e indexado léxicamente; sin cotejo crítico independiente",
+      "status": "Texto griego de Perseus incorporado, catalogado y con índice léxico local; cotejo crítico independiente pendiente",
       "textStatus": "lexically-indexed",
       "publicStatus": "lectura-local-completa",
       "reading": {
         "url": "classics-text-reader.html?work=plato-laches&lang=grc",
-        "status": "Transcripción de edición TEI con segmentos digitales locales; sin cotejo crítico independiente."
+        "status": "Texto original en griego, con referencia CTS; traducción cotejada local no acreditada."
       },
       "translation": {
         "status": "Traducción humana registrada como texto local; no se afirma alineación entre pasajes sin cotejo."
@@ -1031,17 +1011,12 @@
       "coverType": "typographic-institutional",
       "selectionOrder": 5,
       "corpusFiles": {
-        "grc": "data/classics-corpus/plato-laches-grc.json",
-        "en": "data/classics-corpus/plato-laches-en.json"
+        "grc": "data/classics-corpus/plato-laches-grc.json"
       },
       "localVersions": [
         {
           "language": "grc",
           "path": "data/classics-corpus/plato-laches-grc.json"
-        },
-        {
-          "language": "en",
-          "path": "data/classics-corpus/plato-laches-en.json"
         }
       ],
       "sourceUrn": "urn:cts:greekLit:tlg0059.tlg019.perseus-grc2",
@@ -1083,12 +1058,12 @@
         "license": "CC BY-SA 4.0",
         "textualNote": "Los apartados de párrafo usados para búsqueda son segmentos locales cuando la unidad CTS reúne varios párrafos."
       },
-      "status": "Texto griego incorporado, registrado e indexado léxicamente; sin cotejo crítico independiente",
+      "status": "Texto griego de Perseus incorporado, catalogado y con índice léxico local; cotejo crítico independiente pendiente",
       "textStatus": "lexically-indexed",
       "publicStatus": "lectura-local-completa",
       "reading": {
         "url": "classics-text-reader.html?work=plato-lysis&lang=grc",
-        "status": "Transcripción de edición TEI con segmentos digitales locales; sin cotejo crítico independiente."
+        "status": "Texto original en griego, con referencia CTS; traducción cotejada local no acreditada."
       },
       "translation": {
         "status": "Traducción humana registrada como texto local; no se afirma alineación entre pasajes sin cotejo."
@@ -1103,17 +1078,12 @@
       "selectionOrder": 6,
       "sourceUrn": "urn:cts:greekLit:tlg0059.tlg020.perseus-grc2",
       "corpusFiles": {
-        "grc": "data/classics-corpus/plato-lysis-grc.json",
-        "en": "data/classics-corpus/plato-lysis-en.json"
+        "grc": "data/classics-corpus/plato-lysis-grc.json"
       },
       "localVersions": [
         {
           "language": "grc",
           "path": "data/classics-corpus/plato-lysis-grc.json"
-        },
-        {
-          "language": "en",
-          "path": "data/classics-corpus/plato-lysis-en.json"
         }
       ],
       "localEditionLanguages": [
@@ -1154,12 +1124,12 @@
         "license": "CC BY-SA 4.0",
         "textualNote": "Los apartados de párrafo usados para búsqueda son segmentos locales cuando la unidad CTS reúne varios párrafos."
       },
-      "status": "Texto griego incorporado, registrado e indexado léxicamente; sin cotejo crítico independiente",
+      "status": "Texto griego de Perseus incorporado, catalogado y con índice léxico local; cotejo crítico independiente pendiente",
       "textStatus": "lexically-indexed",
       "publicStatus": "lectura-local-completa",
       "reading": {
         "url": "classics-text-reader.html?work=plato-euthydemus&lang=grc",
-        "status": "Transcripción de edición TEI con segmentos digitales locales; sin cotejo crítico independiente."
+        "status": "Texto original en griego, con referencia CTS; traducción cotejada local no acreditada."
       },
       "translation": {
         "status": "Traducción humana registrada como texto local; no se afirma alineación entre pasajes sin cotejo."
@@ -1174,17 +1144,12 @@
       "selectionOrder": 7,
       "sourceUrn": "urn:cts:greekLit:tlg0059.tlg021.perseus-grc2",
       "corpusFiles": {
-        "grc": "data/classics-corpus/plato-euthydemus-grc.json",
-        "en": "data/classics-corpus/plato-euthydemus-en.json"
+        "grc": "data/classics-corpus/plato-euthydemus-grc.json"
       },
       "localVersions": [
         {
           "language": "grc",
           "path": "data/classics-corpus/plato-euthydemus-grc.json"
-        },
-        {
-          "language": "en",
-          "path": "data/classics-corpus/plato-euthydemus-en.json"
         }
       ],
       "localEditionLanguages": [
@@ -1225,12 +1190,12 @@
         "license": "CC BY-SA 4.0",
         "textualNote": "Los apartados de párrafo usados para búsqueda son segmentos locales cuando la unidad CTS reúne varios párrafos."
       },
-      "status": "Texto griego incorporado, registrado e indexado léxicamente; sin cotejo crítico independiente",
+      "status": "Texto griego de Perseus incorporado, catalogado y con índice léxico local; cotejo crítico independiente pendiente",
       "textStatus": "lexically-indexed",
       "publicStatus": "lectura-local-completa",
       "reading": {
         "url": "classics-text-reader.html?work=plato-hippias-minor&lang=grc",
-        "status": "Transcripción de edición TEI con segmentos digitales locales; sin cotejo crítico independiente."
+        "status": "Texto original en griego, con referencia CTS; traducción cotejada local no acreditada."
       },
       "translation": {
         "status": "Traducción humana registrada como texto local; no se afirma alineación entre pasajes sin cotejo."
@@ -1245,17 +1210,12 @@
       "selectionOrder": 8,
       "sourceUrn": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2",
       "corpusFiles": {
-        "grc": "data/classics-corpus/plato-hippias-minor-grc.json",
-        "en": "data/classics-corpus/plato-hippias-minor-en.json"
+        "grc": "data/classics-corpus/plato-hippias-minor-grc.json"
       },
       "localVersions": [
         {
           "language": "grc",
           "path": "data/classics-corpus/plato-hippias-minor-grc.json"
-        },
-        {
-          "language": "en",
-          "path": "data/classics-corpus/plato-hippias-minor-en.json"
         }
       ],
       "localEditionLanguages": [
@@ -1296,12 +1256,12 @@
         "license": "CC BY-SA 4.0",
         "textualNote": "Los apartados de párrafo usados para búsqueda son segmentos locales cuando la unidad CTS reúne varios párrafos."
       },
-      "status": "Texto griego incorporado, registrado e indexado léxicamente; sin cotejo crítico independiente",
+      "status": "Texto griego de Perseus incorporado, catalogado y con índice léxico local; cotejo crítico independiente pendiente",
       "textStatus": "lexically-indexed",
       "publicStatus": "lectura-local-completa",
       "reading": {
         "url": "classics-text-reader.html?work=plato-ion&lang=grc",
-        "status": "Transcripción de edición TEI con segmentos digitales locales; sin cotejo crítico independiente."
+        "status": "Texto original en griego, con referencia CTS; traducción cotejada local no acreditada."
       },
       "translation": {
         "status": "Traducción humana registrada como texto local; no se afirma alineación entre pasajes sin cotejo."
@@ -1316,17 +1276,12 @@
       "selectionOrder": 9,
       "sourceUrn": "urn:cts:greekLit:tlg0059.tlg027.perseus-grc2",
       "corpusFiles": {
-        "grc": "data/classics-corpus/plato-ion-grc.json",
-        "en": "data/classics-corpus/plato-ion-en.json"
+        "grc": "data/classics-corpus/plato-ion-grc.json"
       },
       "localVersions": [
         {
           "language": "grc",
           "path": "data/classics-corpus/plato-ion-grc.json"
-        },
-        {
-          "language": "en",
-          "path": "data/classics-corpus/plato-ion-en.json"
         }
       ],
       "localEditionLanguages": [
@@ -1367,12 +1322,12 @@
         "license": "CC BY-SA 4.0",
         "textualNote": "Los apartados de párrafo usados para búsqueda son segmentos locales cuando la unidad CTS reúne varios párrafos."
       },
-      "status": "Texto griego incorporado, registrado e indexado léxicamente; sin cotejo crítico independiente",
+      "status": "Texto griego de Perseus incorporado, catalogado y con índice léxico local; cotejo crítico independiente pendiente",
       "textStatus": "lexically-indexed",
       "publicStatus": "lectura-local-completa",
       "reading": {
         "url": "classics-text-reader.html?work=plato-menexenus&lang=grc",
-        "status": "Transcripción de edición TEI con segmentos digitales locales; sin cotejo crítico independiente."
+        "status": "Texto original en griego, con referencia CTS; traducción cotejada local no acreditada."
       },
       "translation": {
         "status": "Traducción humana registrada como texto local; no se afirma alineación entre pasajes sin cotejo."
@@ -1387,17 +1342,12 @@
       "selectionOrder": 10,
       "sourceUrn": "urn:cts:greekLit:tlg0059.tlg028.perseus-grc2",
       "corpusFiles": {
-        "grc": "data/classics-corpus/plato-menexenus-grc.json",
-        "en": "data/classics-corpus/plato-menexenus-en.json"
+        "grc": "data/classics-corpus/plato-menexenus-grc.json"
       },
       "localVersions": [
         {
           "language": "grc",
           "path": "data/classics-corpus/plato-menexenus-grc.json"
-        },
-        {
-          "language": "en",
-          "path": "data/classics-corpus/plato-menexenus-en.json"
         }
       ],
       "localEditionLanguages": [
@@ -1438,12 +1388,12 @@
         "license": "CC BY-SA 4.0",
         "textualNote": "Los apartados de párrafo usados para búsqueda son segmentos locales cuando la unidad CTS reúne varios párrafos."
       },
-      "status": "Texto griego incorporado, registrado e indexado léxicamente; sin cotejo crítico independiente",
+      "status": "Texto griego de Perseus incorporado, catalogado y con índice léxico local; cotejo crítico independiente pendiente",
       "textStatus": "lexically-indexed",
       "publicStatus": "lectura-local-completa",
       "reading": {
         "url": "classics-text-reader.html?work=xenophon-oeconomicus&lang=grc",
-        "status": "Transcripción de edición TEI con segmentos digitales locales; sin cotejo crítico independiente."
+        "status": "Texto original en griego, con referencia CTS; traducción cotejada local no acreditada."
       },
       "translation": {
         "status": "Sin versión traducida cotejada alojada para esta ficha; consultar las fuentes editoriales."
@@ -1503,12 +1453,12 @@
         "license": "CC BY-SA 4.0",
         "textualNote": "Los apartados de párrafo usados para búsqueda son segmentos locales cuando la unidad CTS reúne varios párrafos."
       },
-      "status": "Texto griego incorporado, registrado e indexado léxicamente; sin cotejo crítico independiente",
+      "status": "Texto griego de Perseus incorporado, catalogado y con índice léxico local; cotejo crítico independiente pendiente",
       "textStatus": "lexically-indexed",
       "publicStatus": "lectura-local-completa",
       "reading": {
         "url": "classics-text-reader.html?work=xenophon-symposium&lang=grc",
-        "status": "Transcripción de edición TEI con segmentos digitales locales; sin cotejo crítico independiente."
+        "status": "Texto original en griego, con referencia CTS; traducción cotejada local no acreditada."
       },
       "translation": {
         "status": "Sin versión traducida cotejada alojada para esta ficha; consultar las fuentes editoriales."
@@ -1568,12 +1518,12 @@
         "license": "CC BY-SA 4.0",
         "textualNote": "Los apartados de párrafo usados para búsqueda son segmentos locales cuando la unidad CTS reúne varios párrafos."
       },
-      "status": "Texto griego incorporado, registrado e indexado léxicamente; sin cotejo crítico independiente",
+      "status": "Texto griego de Perseus incorporado, catalogado y con índice léxico local; cotejo crítico independiente pendiente",
       "textStatus": "lexically-indexed",
       "publicStatus": "lectura-local-completa",
       "reading": {
         "url": "classics-text-reader.html?work=xenophon-apology&lang=grc",
-        "status": "Transcripción de edición TEI con segmentos digitales locales; sin cotejo crítico independiente."
+        "status": "Texto original en griego, con referencia CTS; traducción cotejada local no acreditada."
       },
       "translation": {
         "status": "Sin versión traducida cotejada alojada para esta ficha; consultar las fuentes editoriales."
@@ -1633,12 +1583,12 @@
         "license": "CC BY-SA 4.0",
         "textualNote": "Los apartados de párrafo usados para búsqueda son segmentos locales cuando la unidad CTS reúne varios párrafos."
       },
-      "status": "Texto griego incorporado, registrado e indexado léxicamente; sin cotejo crítico independiente",
+      "status": "Texto griego de Perseus incorporado, catalogado y con índice léxico local; cotejo crítico independiente pendiente",
       "textStatus": "lexically-indexed",
       "publicStatus": "lectura-local-completa",
       "reading": {
         "url": "classics-text-reader.html?work=xenophon-hiero&lang=grc",
-        "status": "Transcripción de edición TEI con segmentos digitales locales; sin cotejo crítico independiente."
+        "status": "Texto original en griego, con referencia CTS; traducción cotejada local no acreditada."
       },
       "translation": {
         "status": "Sin versión traducida cotejada alojada para esta ficha; consultar las fuentes editoriales."
@@ -1698,12 +1648,12 @@
         "license": "CC BY-SA 4.0",
         "textualNote": "Los apartados de párrafo usados para búsqueda son segmentos locales cuando la unidad CTS reúne varios párrafos."
       },
-      "status": "Texto griego incorporado, registrado e indexado léxicamente; sin cotejo crítico independiente",
+      "status": "Texto griego de Perseus incorporado, catalogado y con índice léxico local; cotejo crítico independiente pendiente",
       "textStatus": "lexically-indexed",
       "publicStatus": "lectura-local-completa",
       "reading": {
         "url": "classics-text-reader.html?work=xenophon-agesilaus&lang=grc",
-        "status": "Transcripción de edición TEI con segmentos digitales locales; sin cotejo crítico independiente."
+        "status": "Texto original en griego, con referencia CTS; traducción cotejada local no acreditada."
       },
       "translation": {
         "status": "Sin versión traducida cotejada alojada para esta ficha; consultar las fuentes editoriales."
@@ -1763,12 +1713,12 @@
         "license": "CC BY-SA 4.0",
         "textualNote": "Los apartados de párrafo usados para búsqueda son segmentos locales cuando la unidad CTS reúne varios párrafos."
       },
-      "status": "Texto griego incorporado, registrado e indexado léxicamente; sin cotejo crítico independiente",
+      "status": "Texto griego de Perseus incorporado, catalogado y con índice léxico local; cotejo crítico independiente pendiente",
       "textStatus": "lexically-indexed",
       "publicStatus": "lectura-local-completa",
       "reading": {
         "url": "classics-text-reader.html?work=xenophon-lacedaemonian-constitution&lang=grc",
-        "status": "Transcripción de edición TEI con segmentos digitales locales; sin cotejo crítico independiente."
+        "status": "Texto original en griego, con referencia CTS; traducción cotejada local no acreditada."
       },
       "translation": {
         "status": "Sin versión traducida cotejada alojada para esta ficha; consultar las fuentes editoriales."
@@ -1828,12 +1778,12 @@
         "license": "CC BY-SA 4.0",
         "textualNote": "Los apartados de párrafo usados para búsqueda son segmentos locales cuando la unidad CTS reúne varios párrafos."
       },
-      "status": "Texto griego incorporado, registrado e indexado léxicamente; sin cotejo crítico independiente",
+      "status": "Texto griego de Perseus incorporado, catalogado y con índice léxico local; cotejo crítico independiente pendiente",
       "textStatus": "lexically-indexed",
       "publicStatus": "lectura-local-completa",
       "reading": {
         "url": "classics-text-reader.html?work=xenophon-ways-means&lang=grc",
-        "status": "Transcripción de edición TEI con segmentos digitales locales; sin cotejo crítico independiente."
+        "status": "Texto original en griego, con referencia CTS; traducción cotejada local no acreditada."
       },
       "translation": {
         "status": "Sin versión traducida cotejada alojada para esta ficha; consultar las fuentes editoriales."
@@ -1893,12 +1843,12 @@
         "license": "CC BY-SA 4.0",
         "textualNote": "Los apartados de párrafo usados para búsqueda son segmentos locales cuando la unidad CTS reúne varios párrafos."
       },
-      "status": "Texto griego incorporado, registrado e indexado léxicamente; sin cotejo crítico independiente",
+      "status": "Texto griego de Perseus incorporado, catalogado y con índice léxico local; cotejo crítico independiente pendiente",
       "textStatus": "lexically-indexed",
       "publicStatus": "lectura-local-completa",
       "reading": {
         "url": "classics-text-reader.html?work=xenophon-hipparchicus&lang=grc",
-        "status": "Transcripción de edición TEI con segmentos digitales locales; sin cotejo crítico independiente."
+        "status": "Texto original en griego, con referencia CTS; traducción cotejada local no acreditada."
       },
       "translation": {
         "status": "Sin versión traducida cotejada alojada para esta ficha; consultar las fuentes editoriales."
@@ -1958,12 +1908,12 @@
         "license": "CC BY-SA 4.0",
         "textualNote": "Los apartados de párrafo usados para búsqueda son segmentos locales cuando la unidad CTS reúne varios párrafos."
       },
-      "status": "Texto griego incorporado, registrado e indexado léxicamente; sin cotejo crítico independiente",
+      "status": "Texto griego de Perseus incorporado, catalogado y con índice léxico local; cotejo crítico independiente pendiente",
       "textStatus": "lexically-indexed",
       "publicStatus": "lectura-local-completa",
       "reading": {
         "url": "classics-text-reader.html?work=xenophon-horsemanship&lang=grc",
-        "status": "Transcripción de edición TEI con segmentos digitales locales; sin cotejo crítico independiente."
+        "status": "Texto original en griego, con referencia CTS; traducción cotejada local no acreditada."
       },
       "translation": {
         "status": "Sin versión traducida cotejada alojada para esta ficha; consultar las fuentes editoriales."
@@ -2023,12 +1973,12 @@
         "license": "CC BY-SA 4.0",
         "textualNote": "Los apartados de párrafo usados para búsqueda son segmentos locales cuando la unidad CTS reúne varios párrafos."
       },
-      "status": "Texto griego incorporado, registrado e indexado léxicamente; sin cotejo crítico independiente",
+      "status": "Texto griego de Perseus incorporado, catalogado y con índice léxico local; cotejo crítico independiente pendiente",
       "textStatus": "lexically-indexed",
       "publicStatus": "lectura-local-completa",
       "reading": {
         "url": "classics-text-reader.html?work=xenophon-hunting&lang=grc",
-        "status": "Transcripción de edición TEI con segmentos digitales locales; sin cotejo crítico independiente."
+        "status": "Texto original en griego, con referencia CTS; traducción cotejada local no acreditada."
       },
       "translation": {
         "status": "Sin versión traducida cotejada alojada para esta ficha; consultar las fuentes editoriales."
@@ -2088,12 +2038,12 @@
         "license": "CC BY-SA 4.0",
         "textualNote": "Los apartados de párrafo usados para búsqueda son segmentos locales cuando la unidad CTS reúne varios párrafos."
       },
-      "status": "Texto griego incorporado, registrado e indexado léxicamente; sin cotejo crítico independiente",
+      "status": "Texto griego de Perseus incorporado, catalogado y con índice léxico local; cotejo crítico independiente pendiente",
       "textStatus": "lexically-indexed",
       "publicStatus": "lectura-local-completa",
       "reading": {
         "url": "classics-text-reader.html?work=lucian-phalaris&lang=grc",
-        "status": "Transcripción de edición TEI con segmentos digitales locales; sin cotejo crítico independiente."
+        "status": "Texto original en griego, con referencia CTS; traducción cotejada local no acreditada."
       },
       "translation": {
         "status": "Sin versión traducida cotejada alojada para esta ficha; consultar las fuentes editoriales."
@@ -2153,12 +2103,12 @@
         "license": "CC BY-SA 4.0",
         "textualNote": "Los apartados de párrafo usados para búsqueda son segmentos locales cuando la unidad CTS reúne varios párrafos."
       },
-      "status": "Texto griego incorporado, registrado e indexado léxicamente; sin cotejo crítico independiente",
+      "status": "Texto griego de Perseus incorporado, catalogado y con índice léxico local; cotejo crítico independiente pendiente",
       "textStatus": "lexically-indexed",
       "publicStatus": "lectura-local-completa",
       "reading": {
         "url": "classics-text-reader.html?work=lucian-hippias&lang=grc",
-        "status": "Transcripción de edición TEI con segmentos digitales locales; sin cotejo crítico independiente."
+        "status": "Texto original en griego, con referencia CTS; traducción cotejada local no acreditada."
       },
       "translation": {
         "status": "Sin versión traducida cotejada alojada para esta ficha; consultar las fuentes editoriales."
@@ -2218,12 +2168,12 @@
         "license": "CC BY-SA 4.0",
         "textualNote": "Los apartados de párrafo usados para búsqueda son segmentos locales cuando la unidad CTS reúne varios párrafos."
       },
-      "status": "Texto griego incorporado, registrado e indexado léxicamente; sin cotejo crítico independiente",
+      "status": "Texto griego de Perseus incorporado, catalogado y con índice léxico local; cotejo crítico independiente pendiente",
       "textStatus": "lexically-indexed",
       "publicStatus": "lectura-local-completa",
       "reading": {
         "url": "classics-text-reader.html?work=lucian-bacchus&lang=grc",
-        "status": "Transcripción de edición TEI con segmentos digitales locales; sin cotejo crítico independiente."
+        "status": "Texto original en griego, con referencia CTS; traducción cotejada local no acreditada."
       },
       "translation": {
         "status": "Sin versión traducida cotejada alojada para esta ficha; consultar las fuentes editoriales."
@@ -2283,12 +2233,12 @@
         "license": "CC BY-SA 4.0",
         "textualNote": "Los apartados de párrafo usados para búsqueda son segmentos locales cuando la unidad CTS reúne varios párrafos."
       },
-      "status": "Texto griego incorporado, registrado e indexado léxicamente; sin cotejo crítico independiente",
+      "status": "Texto griego de Perseus incorporado, catalogado y con índice léxico local; cotejo crítico independiente pendiente",
       "textStatus": "lexically-indexed",
       "publicStatus": "lectura-local-completa",
       "reading": {
         "url": "classics-text-reader.html?work=lucian-hercules&lang=grc",
-        "status": "Transcripción de edición TEI con segmentos digitales locales; sin cotejo crítico independiente."
+        "status": "Texto original en griego, con referencia CTS; traducción cotejada local no acreditada."
       },
       "translation": {
         "status": "Sin versión traducida cotejada alojada para esta ficha; consultar las fuentes editoriales."
@@ -2348,12 +2298,12 @@
         "license": "CC BY-SA 4.0",
         "textualNote": "Los apartados de párrafo usados para búsqueda son segmentos locales cuando la unidad CTS reúne varios párrafos."
       },
-      "status": "Texto griego incorporado, registrado e indexado léxicamente; sin cotejo crítico independiente",
+      "status": "Texto griego de Perseus incorporado, catalogado y con índice léxico local; cotejo crítico independiente pendiente",
       "textStatus": "lexically-indexed",
       "publicStatus": "lectura-local-completa",
       "reading": {
         "url": "classics-text-reader.html?work=lucian-electrum&lang=grc",
-        "status": "Transcripción de edición TEI con segmentos digitales locales; sin cotejo crítico independiente."
+        "status": "Texto original en griego, con referencia CTS; traducción cotejada local no acreditada."
       },
       "translation": {
         "status": "Sin versión traducida cotejada alojada para esta ficha; consultar las fuentes editoriales."
@@ -2413,12 +2363,12 @@
         "license": "CC BY-SA 4.0",
         "textualNote": "Los apartados de párrafo usados para búsqueda son segmentos locales cuando la unidad CTS reúne varios párrafos."
       },
-      "status": "Texto griego incorporado, registrado e indexado léxicamente; sin cotejo crítico independiente",
+      "status": "Texto griego de Perseus incorporado, catalogado y con índice léxico local; cotejo crítico independiente pendiente",
       "textStatus": "lexically-indexed",
       "publicStatus": "lectura-local-completa",
       "reading": {
         "url": "classics-text-reader.html?work=lucian-encomium-fly&lang=grc",
-        "status": "Transcripción de edición TEI con segmentos digitales locales; sin cotejo crítico independiente."
+        "status": "Texto original en griego, con referencia CTS; traducción cotejada local no acreditada."
       },
       "translation": {
         "status": "Sin versión traducida cotejada alojada para esta ficha; consultar las fuentes editoriales."
@@ -2478,12 +2428,12 @@
         "license": "CC BY-SA 4.0",
         "textualNote": "Los apartados de párrafo usados para búsqueda son segmentos locales cuando la unidad CTS reúne varios párrafos."
       },
-      "status": "Texto griego incorporado, registrado e indexado léxicamente; sin cotejo crítico independiente",
+      "status": "Texto griego de Perseus incorporado, catalogado y con índice léxico local; cotejo crítico independiente pendiente",
       "textStatus": "lexically-indexed",
       "publicStatus": "lectura-local-completa",
       "reading": {
         "url": "classics-text-reader.html?work=lucian-nigrinus&lang=grc",
-        "status": "Transcripción de edición TEI con segmentos digitales locales; sin cotejo crítico independiente."
+        "status": "Texto original en griego, con referencia CTS; traducción cotejada local no acreditada."
       },
       "translation": {
         "status": "Sin versión traducida cotejada alojada para esta ficha; consultar las fuentes editoriales."
@@ -2543,12 +2493,12 @@
         "license": "CC BY-SA 4.0",
         "textualNote": "Los apartados de párrafo usados para búsqueda son segmentos locales cuando la unidad CTS reúne varios párrafos."
       },
-      "status": "Texto griego incorporado, registrado e indexado léxicamente; sin cotejo crítico independiente",
+      "status": "Texto griego de Perseus incorporado, catalogado y con índice léxico local; cotejo crítico independiente pendiente",
       "textStatus": "lexically-indexed",
       "publicStatus": "lectura-local-completa",
       "reading": {
         "url": "classics-text-reader.html?work=lucian-demonax&lang=grc",
-        "status": "Transcripción de edición TEI con segmentos digitales locales; sin cotejo crítico independiente."
+        "status": "Texto original en griego, con referencia CTS; traducción cotejada local no acreditada."
       },
       "translation": {
         "status": "Sin versión traducida cotejada alojada para esta ficha; consultar las fuentes editoriales."
@@ -2608,12 +2558,12 @@
         "license": "CC BY-SA 4.0",
         "textualNote": "Los apartados de párrafo usados para búsqueda son segmentos locales cuando la unidad CTS reúne varios párrafos."
       },
-      "status": "Texto griego incorporado, registrado e indexado léxicamente; sin cotejo crítico independiente",
+      "status": "Texto griego de Perseus incorporado, catalogado y con índice léxico local; cotejo crítico independiente pendiente",
       "textStatus": "lexically-indexed",
       "publicStatus": "lectura-local-completa",
       "reading": {
         "url": "classics-text-reader.html?work=lucian-de-domo&lang=grc",
-        "status": "Transcripción de edición TEI con segmentos digitales locales; sin cotejo crítico independiente."
+        "status": "Texto original en griego, con referencia CTS; traducción cotejada local no acreditada."
       },
       "translation": {
         "status": "Sin versión traducida cotejada alojada para esta ficha; consultar las fuentes editoriales."
@@ -2673,12 +2623,12 @@
         "license": "CC BY-SA 4.0",
         "textualNote": "Los apartados de párrafo usados para búsqueda son segmentos locales cuando la unidad CTS reúne varios párrafos."
       },
-      "status": "Texto griego incorporado, registrado e indexado léxicamente; sin cotejo crítico independiente",
+      "status": "Texto griego de Perseus incorporado, catalogado y con índice léxico local; cotejo crítico independiente pendiente",
       "textStatus": "lexically-indexed",
       "publicStatus": "lectura-local-completa",
       "reading": {
         "url": "classics-text-reader.html?work=lucian-encomium-fatherland&lang=grc",
-        "status": "Transcripción de edición TEI con segmentos digitales locales; sin cotejo crítico independiente."
+        "status": "Texto original en griego, con referencia CTS; traducción cotejada local no acreditada."
       },
       "translation": {
         "status": "Sin versión traducida cotejada alojada para esta ficha; consultar las fuentes editoriales."
@@ -2738,12 +2688,12 @@
         "license": "CC BY-SA 4.0",
         "textualNote": "Los apartados de párrafo usados para búsqueda son segmentos locales cuando la unidad CTS reúne varios párrafos."
       },
-      "status": "Texto griego incorporado, registrado e indexado léxicamente; sin cotejo crítico independiente",
+      "status": "Texto griego de Perseus incorporado, catalogado y con índice léxico local; cotejo crítico independiente pendiente",
       "textStatus": "lexically-indexed",
       "publicStatus": "lectura-local-completa",
       "reading": {
         "url": "classics-text-reader.html?work=lysias-eratosthenes&lang=grc",
-        "status": "Transcripción de edición TEI con segmentos digitales locales; sin cotejo crítico independiente."
+        "status": "Texto original en griego, con referencia CTS; traducción cotejada local no acreditada."
       },
       "translation": {
         "status": "Sin versión traducida cotejada alojada para esta ficha; consultar las fuentes editoriales."
@@ -2803,12 +2753,12 @@
         "license": "CC BY-SA 4.0",
         "textualNote": "Los apartados de párrafo usados para búsqueda son segmentos locales cuando la unidad CTS reúne varios párrafos."
       },
-      "status": "Texto griego incorporado, registrado e indexado léxicamente; sin cotejo crítico independiente",
+      "status": "Texto griego de Perseus incorporado, catalogado y con índice léxico local; cotejo crítico independiente pendiente",
       "textStatus": "lexically-indexed",
       "publicStatus": "lectura-local-completa",
       "reading": {
         "url": "classics-text-reader.html?work=lysias-funeral-oration&lang=grc",
-        "status": "Transcripción de edición TEI con segmentos digitales locales; sin cotejo crítico independiente."
+        "status": "Texto original en griego, con referencia CTS; traducción cotejada local no acreditada."
       },
       "translation": {
         "status": "Sin versión traducida cotejada alojada para esta ficha; consultar las fuentes editoriales."
@@ -2868,12 +2818,12 @@
         "license": "CC BY-SA 4.0",
         "textualNote": "Los apartados de párrafo usados para búsqueda son segmentos locales cuando la unidad CTS reúne varios párrafos."
       },
-      "status": "Texto griego incorporado, registrado e indexado léxicamente; sin cotejo crítico independiente",
+      "status": "Texto griego de Perseus incorporado, catalogado y con índice léxico local; cotejo crítico independiente pendiente",
       "textStatus": "lexically-indexed",
       "publicStatus": "lectura-local-completa",
       "reading": {
         "url": "classics-text-reader.html?work=lysias-against-simon&lang=grc",
-        "status": "Transcripción de edición TEI con segmentos digitales locales; sin cotejo crítico independiente."
+        "status": "Texto original en griego, con referencia CTS; traducción cotejada local no acreditada."
       },
       "translation": {
         "status": "Sin versión traducida cotejada alojada para esta ficha; consultar las fuentes editoriales."
@@ -2933,12 +2883,12 @@
         "license": "CC BY-SA 4.0",
         "textualNote": "Los apartados de párrafo usados para búsqueda son segmentos locales cuando la unidad CTS reúne varios párrafos."
       },
-      "status": "Texto griego incorporado, registrado e indexado léxicamente; sin cotejo crítico independiente",
+      "status": "Texto griego de Perseus incorporado, catalogado y con índice léxico local; cotejo crítico independiente pendiente",
       "textStatus": "lexically-indexed",
       "publicStatus": "lectura-local-completa",
       "reading": {
         "url": "classics-text-reader.html?work=lysias-wound&lang=grc",
-        "status": "Transcripción de edición TEI con segmentos digitales locales; sin cotejo crítico independiente."
+        "status": "Texto original en griego, con referencia CTS; traducción cotejada local no acreditada."
       },
       "translation": {
         "status": "Sin versión traducida cotejada alojada para esta ficha; consultar las fuentes editoriales."
@@ -2998,12 +2948,12 @@
         "license": "CC BY-SA 4.0",
         "textualNote": "Los apartados de párrafo usados para búsqueda son segmentos locales cuando la unidad CTS reúne varios párrafos."
       },
-      "status": "Texto griego incorporado, registrado e indexado léxicamente; sin cotejo crítico independiente",
+      "status": "Texto griego de Perseus incorporado, catalogado y con índice léxico local; cotejo crítico independiente pendiente",
       "textStatus": "lexically-indexed",
       "publicStatus": "lectura-local-completa",
       "reading": {
         "url": "classics-text-reader.html?work=lysias-for-callias&lang=grc",
-        "status": "Transcripción de edición TEI con segmentos digitales locales; sin cotejo crítico independiente."
+        "status": "Texto original en griego, con referencia CTS; traducción cotejada local no acreditada."
       },
       "translation": {
         "status": "Sin versión traducida cotejada alojada para esta ficha; consultar las fuentes editoriales."
@@ -3063,12 +3013,12 @@
         "license": "CC BY-SA 4.0",
         "textualNote": "Los apartados de párrafo usados para búsqueda son segmentos locales cuando la unidad CTS reúne varios párrafos."
       },
-      "status": "Texto griego incorporado, registrado e indexado léxicamente; sin cotejo crítico independiente",
+      "status": "Texto griego de Perseus incorporado, catalogado y con índice léxico local; cotejo crítico independiente pendiente",
       "textStatus": "lexically-indexed",
       "publicStatus": "lectura-local-completa",
       "reading": {
         "url": "classics-text-reader.html?work=lysias-against-andocides&lang=grc",
-        "status": "Transcripción de edición TEI con segmentos digitales locales; sin cotejo crítico independiente."
+        "status": "Texto original en griego, con referencia CTS; traducción cotejada local no acreditada."
       },
       "translation": {
         "status": "Sin versión traducida cotejada alojada para esta ficha; consultar las fuentes editoriales."
@@ -3128,12 +3078,12 @@
         "license": "CC BY-SA 4.0",
         "textualNote": "Los apartados de párrafo usados para búsqueda son segmentos locales cuando la unidad CTS reúne varios párrafos."
       },
-      "status": "Texto griego incorporado, registrado e indexado léxicamente; sin cotejo crítico independiente",
+      "status": "Texto griego de Perseus incorporado, catalogado y con índice léxico local; cotejo crítico independiente pendiente",
       "textStatus": "lexically-indexed",
       "publicStatus": "lectura-local-completa",
       "reading": {
         "url": "classics-text-reader.html?work=lysias-olive-stump&lang=grc",
-        "status": "Transcripción de edición TEI con segmentos digitales locales; sin cotejo crítico independiente."
+        "status": "Texto original en griego, con referencia CTS; traducción cotejada local no acreditada."
       },
       "translation": {
         "status": "Sin versión traducida cotejada alojada para esta ficha; consultar las fuentes editoriales."
@@ -3193,12 +3143,12 @@
         "license": "CC BY-SA 4.0",
         "textualNote": "Los apartados de párrafo usados para búsqueda son segmentos locales cuando la unidad CTS reúne varios párrafos."
       },
-      "status": "Texto griego incorporado, registrado e indexado léxicamente; sin cotejo crítico independiente",
+      "status": "Texto griego de Perseus incorporado, catalogado y con índice léxico local; cotejo crítico independiente pendiente",
       "textStatus": "lexically-indexed",
       "publicStatus": "lectura-local-completa",
       "reading": {
         "url": "classics-text-reader.html?work=lysias-calumny&lang=grc",
-        "status": "Transcripción de edición TEI con segmentos digitales locales; sin cotejo crítico independiente."
+        "status": "Texto original en griego, con referencia CTS; traducción cotejada local no acreditada."
       },
       "translation": {
         "status": "Sin versión traducida cotejada alojada para esta ficha; consultar las fuentes editoriales."
@@ -3258,12 +3208,12 @@
         "license": "CC BY-SA 4.0",
         "textualNote": "Los apartados de párrafo usados para búsqueda son segmentos locales cuando la unidad CTS reúne varios párrafos."
       },
-      "status": "Texto griego incorporado, registrado e indexado léxicamente; sin cotejo crítico independiente",
+      "status": "Texto griego de Perseus incorporado, catalogado y con índice léxico local; cotejo crítico independiente pendiente",
       "textStatus": "lexically-indexed",
       "publicStatus": "lectura-local-completa",
       "reading": {
         "url": "classics-text-reader.html?work=lysias-soldier&lang=grc",
-        "status": "Transcripción de edición TEI con segmentos digitales locales; sin cotejo crítico independiente."
+        "status": "Texto original en griego, con referencia CTS; traducción cotejada local no acreditada."
       },
       "translation": {
         "status": "Sin versión traducida cotejada alojada para esta ficha; consultar las fuentes editoriales."
@@ -3323,12 +3273,12 @@
         "license": "CC BY-SA 4.0",
         "textualNote": "Los apartados de párrafo usados para búsqueda son segmentos locales cuando la unidad CTS reúne varios párrafos."
       },
-      "status": "Texto griego incorporado, registrado e indexado léxicamente; sin cotejo crítico independiente",
+      "status": "Texto griego de Perseus incorporado, catalogado y con índice léxico local; cotejo crítico independiente pendiente",
       "textStatus": "lexically-indexed",
       "publicStatus": "lectura-local-completa",
       "reading": {
         "url": "classics-text-reader.html?work=lysias-theomnestus-1&lang=grc",
-        "status": "Transcripción de edición TEI con segmentos digitales locales; sin cotejo crítico independiente."
+        "status": "Texto original en griego, con referencia CTS; traducción cotejada local no acreditada."
       },
       "translation": {
         "status": "Sin versión traducida cotejada alojada para esta ficha; consultar las fuentes editoriales."
@@ -3388,12 +3338,12 @@
         "license": "CC BY-SA 4.0",
         "textualNote": "Los apartados de párrafo usados para búsqueda son segmentos locales cuando la unidad CTS reúne varios párrafos."
       },
-      "status": "Texto griego incorporado, registrado e indexado léxicamente; sin cotejo crítico independiente",
+      "status": "Texto griego de Perseus incorporado, catalogado y con índice léxico local; cotejo crítico independiente pendiente",
       "textStatus": "lexically-indexed",
       "publicStatus": "lectura-local-completa",
       "reading": {
         "url": "classics-text-reader.html?work=isocrates-euthynus&lang=grc",
-        "status": "Transcripción de edición TEI con segmentos digitales locales; sin cotejo crítico independiente."
+        "status": "Texto original en griego, con referencia CTS; traducción cotejada local no acreditada."
       },
       "translation": {
         "status": "Traducción humana registrada como texto local; no se afirma alineación entre pasajes sin cotejo."
@@ -3408,17 +3358,12 @@
       "selectionOrder": 41,
       "sourceUrn": "urn:cts:greekLit:tlg0010.tlg001.perseus-grc2",
       "corpusFiles": {
-        "grc": "data/classics-corpus/isocrates-euthynus-grc.json",
-        "en": "data/classics-corpus/isocrates-euthynus-en.json"
+        "grc": "data/classics-corpus/isocrates-euthynus-grc.json"
       },
       "localVersions": [
         {
           "language": "grc",
           "path": "data/classics-corpus/isocrates-euthynus-grc.json"
-        },
-        {
-          "language": "en",
-          "path": "data/classics-corpus/isocrates-euthynus-en.json"
         }
       ],
       "localEditionLanguages": [
@@ -3459,12 +3404,12 @@
         "license": "CC BY-SA 4.0",
         "textualNote": "Los apartados de párrafo usados para búsqueda son segmentos locales cuando la unidad CTS reúne varios párrafos."
       },
-      "status": "Texto griego incorporado, registrado e indexado léxicamente; sin cotejo crítico independiente",
+      "status": "Texto griego de Perseus incorporado, catalogado y con índice léxico local; cotejo crítico independiente pendiente",
       "textStatus": "lexically-indexed",
       "publicStatus": "lectura-local-completa",
       "reading": {
         "url": "classics-text-reader.html?work=isocrates-callimachus&lang=grc",
-        "status": "Transcripción de edición TEI con segmentos digitales locales; sin cotejo crítico independiente."
+        "status": "Texto original en griego, con referencia CTS; traducción cotejada local no acreditada."
       },
       "translation": {
         "status": "Traducción humana registrada como texto local; no se afirma alineación entre pasajes sin cotejo."
@@ -3479,17 +3424,12 @@
       "selectionOrder": 42,
       "sourceUrn": "urn:cts:greekLit:tlg0010.tlg002.perseus-grc2",
       "corpusFiles": {
-        "grc": "data/classics-corpus/isocrates-callimachus-grc.json",
-        "en": "data/classics-corpus/isocrates-callimachus-en.json"
+        "grc": "data/classics-corpus/isocrates-callimachus-grc.json"
       },
       "localVersions": [
         {
           "language": "grc",
           "path": "data/classics-corpus/isocrates-callimachus-grc.json"
-        },
-        {
-          "language": "en",
-          "path": "data/classics-corpus/isocrates-callimachus-en.json"
         }
       ],
       "localEditionLanguages": [
@@ -3530,12 +3470,12 @@
         "license": "CC BY-SA 4.0",
         "textualNote": "Los apartados de párrafo usados para búsqueda son segmentos locales cuando la unidad CTS reúne varios párrafos."
       },
-      "status": "Texto griego incorporado, registrado e indexado léxicamente; sin cotejo crítico independiente",
+      "status": "Texto griego de Perseus incorporado, catalogado y con índice léxico local; cotejo crítico independiente pendiente",
       "textStatus": "lexically-indexed",
       "publicStatus": "lectura-local-completa",
       "reading": {
         "url": "classics-text-reader.html?work=isocrates-lochites&lang=grc",
-        "status": "Transcripción de edición TEI con segmentos digitales locales; sin cotejo crítico independiente."
+        "status": "Texto original en griego, con referencia CTS; traducción cotejada local no acreditada."
       },
       "translation": {
         "status": "Traducción humana registrada como texto local; no se afirma alineación entre pasajes sin cotejo."
@@ -3550,17 +3490,12 @@
       "selectionOrder": 43,
       "sourceUrn": "urn:cts:greekLit:tlg0010.tlg003.perseus-grc2",
       "corpusFiles": {
-        "grc": "data/classics-corpus/isocrates-lochites-grc.json",
-        "en": "data/classics-corpus/isocrates-lochites-en.json"
+        "grc": "data/classics-corpus/isocrates-lochites-grc.json"
       },
       "localVersions": [
         {
           "language": "grc",
           "path": "data/classics-corpus/isocrates-lochites-grc.json"
-        },
-        {
-          "language": "en",
-          "path": "data/classics-corpus/isocrates-lochites-en.json"
         }
       ],
       "localEditionLanguages": [
@@ -3601,12 +3536,12 @@
         "license": "CC BY-SA 4.0",
         "textualNote": "Los apartados de párrafo usados para búsqueda son segmentos locales cuando la unidad CTS reúne varios párrafos."
       },
-      "status": "Texto griego incorporado, registrado e indexado léxicamente; sin cotejo crítico independiente",
+      "status": "Texto griego de Perseus incorporado, catalogado y con índice léxico local; cotejo crítico independiente pendiente",
       "textStatus": "lexically-indexed",
       "publicStatus": "lectura-local-completa",
       "reading": {
         "url": "classics-text-reader.html?work=isocrates-team-horses&lang=grc",
-        "status": "Transcripción de edición TEI con segmentos digitales locales; sin cotejo crítico independiente."
+        "status": "Texto original en griego, con referencia CTS; traducción cotejada local no acreditada."
       },
       "translation": {
         "status": "Traducción humana registrada como texto local; no se afirma alineación entre pasajes sin cotejo."
@@ -3621,17 +3556,12 @@
       "selectionOrder": 44,
       "sourceUrn": "urn:cts:greekLit:tlg0010.tlg004.perseus-grc2",
       "corpusFiles": {
-        "grc": "data/classics-corpus/isocrates-team-horses-grc.json",
-        "en": "data/classics-corpus/isocrates-team-horses-en.json"
+        "grc": "data/classics-corpus/isocrates-team-horses-grc.json"
       },
       "localVersions": [
         {
           "language": "grc",
           "path": "data/classics-corpus/isocrates-team-horses-grc.json"
-        },
-        {
-          "language": "en",
-          "path": "data/classics-corpus/isocrates-team-horses-en.json"
         }
       ],
       "localEditionLanguages": [
@@ -3672,12 +3602,12 @@
         "license": "CC BY-SA 4.0",
         "textualNote": "Los apartados de párrafo usados para búsqueda son segmentos locales cuando la unidad CTS reúne varios párrafos."
       },
-      "status": "Texto griego incorporado, registrado e indexado léxicamente; sin cotejo crítico independiente",
+      "status": "Texto griego de Perseus incorporado, catalogado y con índice léxico local; cotejo crítico independiente pendiente",
       "textStatus": "lexically-indexed",
       "publicStatus": "lectura-local-completa",
       "reading": {
         "url": "classics-text-reader.html?work=isocrates-trapeziticus&lang=grc",
-        "status": "Transcripción de edición TEI con segmentos digitales locales; sin cotejo crítico independiente."
+        "status": "Texto original en griego, con referencia CTS; traducción cotejada local no acreditada."
       },
       "translation": {
         "status": "Traducción humana registrada como texto local; no se afirma alineación entre pasajes sin cotejo."
@@ -3692,17 +3622,12 @@
       "selectionOrder": 45,
       "sourceUrn": "urn:cts:greekLit:tlg0010.tlg005.perseus-grc2",
       "corpusFiles": {
-        "grc": "data/classics-corpus/isocrates-trapeziticus-grc.json",
-        "en": "data/classics-corpus/isocrates-trapeziticus-en.json"
+        "grc": "data/classics-corpus/isocrates-trapeziticus-grc.json"
       },
       "localVersions": [
         {
           "language": "grc",
           "path": "data/classics-corpus/isocrates-trapeziticus-grc.json"
-        },
-        {
-          "language": "en",
-          "path": "data/classics-corpus/isocrates-trapeziticus-en.json"
         }
       ],
       "localEditionLanguages": [
@@ -3743,12 +3668,12 @@
         "license": "CC BY-SA 4.0",
         "textualNote": "Los apartados de párrafo usados para búsqueda son segmentos locales cuando la unidad CTS reúne varios párrafos."
       },
-      "status": "Texto griego incorporado, registrado e indexado léxicamente; sin cotejo crítico independiente",
+      "status": "Texto griego de Perseus incorporado, catalogado y con índice léxico local; cotejo crítico independiente pendiente",
       "textStatus": "lexically-indexed",
       "publicStatus": "lectura-local-completa",
       "reading": {
         "url": "classics-text-reader.html?work=isocrates-aegineticus&lang=grc",
-        "status": "Transcripción de edición TEI con segmentos digitales locales; sin cotejo crítico independiente."
+        "status": "Texto original en griego, con referencia CTS; traducción cotejada local no acreditada."
       },
       "translation": {
         "status": "Traducción humana registrada como texto local; no se afirma alineación entre pasajes sin cotejo."
@@ -3763,17 +3688,12 @@
       "selectionOrder": 46,
       "sourceUrn": "urn:cts:greekLit:tlg0010.tlg006.perseus-grc2",
       "corpusFiles": {
-        "grc": "data/classics-corpus/isocrates-aegineticus-grc.json",
-        "en": "data/classics-corpus/isocrates-aegineticus-en.json"
+        "grc": "data/classics-corpus/isocrates-aegineticus-grc.json"
       },
       "localVersions": [
         {
           "language": "grc",
           "path": "data/classics-corpus/isocrates-aegineticus-grc.json"
-        },
-        {
-          "language": "en",
-          "path": "data/classics-corpus/isocrates-aegineticus-en.json"
         }
       ],
       "localEditionLanguages": [
@@ -3814,12 +3734,12 @@
         "license": "CC BY-SA 4.0",
         "textualNote": "Los apartados de párrafo usados para búsqueda son segmentos locales cuando la unidad CTS reúne varios párrafos."
       },
-      "status": "Texto griego incorporado, registrado e indexado léxicamente; sin cotejo crítico independiente",
+      "status": "Texto griego de Perseus incorporado, catalogado y con índice léxico local; cotejo crítico independiente pendiente",
       "textStatus": "lexically-indexed",
       "publicStatus": "lectura-local-completa",
       "reading": {
         "url": "classics-text-reader.html?work=isocrates-sophists&lang=grc",
-        "status": "Transcripción de edición TEI con segmentos digitales locales; sin cotejo crítico independiente."
+        "status": "Texto original en griego, con referencia CTS; traducción cotejada local no acreditada."
       },
       "translation": {
         "status": "Traducción humana registrada como texto local; no se afirma alineación entre pasajes sin cotejo."
@@ -3834,17 +3754,12 @@
       "selectionOrder": 47,
       "sourceUrn": "urn:cts:greekLit:tlg0010.tlg008.perseus-grc2",
       "corpusFiles": {
-        "grc": "data/classics-corpus/isocrates-sophists-grc.json",
-        "en": "data/classics-corpus/isocrates-sophists-en.json"
+        "grc": "data/classics-corpus/isocrates-sophists-grc.json"
       },
       "localVersions": [
         {
           "language": "grc",
           "path": "data/classics-corpus/isocrates-sophists-grc.json"
-        },
-        {
-          "language": "en",
-          "path": "data/classics-corpus/isocrates-sophists-en.json"
         }
       ],
       "localEditionLanguages": [
@@ -3885,12 +3800,12 @@
         "license": "CC BY-SA 4.0",
         "textualNote": "Los apartados de párrafo usados para búsqueda son segmentos locales cuando la unidad CTS reúne varios párrafos."
       },
-      "status": "Texto griego incorporado, registrado e indexado léxicamente; sin cotejo crítico independiente",
+      "status": "Texto griego de Perseus incorporado, catalogado y con índice léxico local; cotejo crítico independiente pendiente",
       "textStatus": "lexically-indexed",
       "publicStatus": "lectura-local-completa",
       "reading": {
         "url": "classics-text-reader.html?work=isocrates-helen&lang=grc",
-        "status": "Transcripción de edición TEI con segmentos digitales locales; sin cotejo crítico independiente."
+        "status": "Texto original en griego, con referencia CTS; traducción cotejada local no acreditada."
       },
       "translation": {
         "status": "Traducción humana registrada como texto local; no se afirma alineación entre pasajes sin cotejo."
@@ -3905,17 +3820,12 @@
       "selectionOrder": 48,
       "sourceUrn": "urn:cts:greekLit:tlg0010.tlg009.perseus-grc2",
       "corpusFiles": {
-        "grc": "data/classics-corpus/isocrates-helen-grc.json",
-        "en": "data/classics-corpus/isocrates-helen-en.json"
+        "grc": "data/classics-corpus/isocrates-helen-grc.json"
       },
       "localVersions": [
         {
           "language": "grc",
           "path": "data/classics-corpus/isocrates-helen-grc.json"
-        },
-        {
-          "language": "en",
-          "path": "data/classics-corpus/isocrates-helen-en.json"
         }
       ],
       "localEditionLanguages": [
@@ -3956,12 +3866,12 @@
         "license": "CC BY-SA 4.0",
         "textualNote": "Los apartados de párrafo usados para búsqueda son segmentos locales cuando la unidad CTS reúne varios párrafos."
       },
-      "status": "Texto griego incorporado, registrado e indexado léxicamente; sin cotejo crítico independiente",
+      "status": "Texto griego de Perseus incorporado, catalogado y con índice léxico local; cotejo crítico independiente pendiente",
       "textStatus": "lexically-indexed",
       "publicStatus": "lectura-local-completa",
       "reading": {
         "url": "classics-text-reader.html?work=isocrates-busiris&lang=grc",
-        "status": "Transcripción de edición TEI con segmentos digitales locales; sin cotejo crítico independiente."
+        "status": "Texto original en griego, con referencia CTS; traducción cotejada local no acreditada."
       },
       "translation": {
         "status": "Traducción humana registrada como texto local; no se afirma alineación entre pasajes sin cotejo."
@@ -3976,17 +3886,12 @@
       "selectionOrder": 49,
       "sourceUrn": "urn:cts:greekLit:tlg0010.tlg010.perseus-grc2",
       "corpusFiles": {
-        "grc": "data/classics-corpus/isocrates-busiris-grc.json",
-        "en": "data/classics-corpus/isocrates-busiris-en.json"
+        "grc": "data/classics-corpus/isocrates-busiris-grc.json"
       },
       "localVersions": [
         {
           "language": "grc",
           "path": "data/classics-corpus/isocrates-busiris-grc.json"
-        },
-        {
-          "language": "en",
-          "path": "data/classics-corpus/isocrates-busiris-en.json"
         }
       ],
       "localEditionLanguages": [
@@ -4027,12 +3932,12 @@
         "license": "CC BY-SA 4.0",
         "textualNote": "Los apartados de párrafo usados para búsqueda son segmentos locales cuando la unidad CTS reúne varios párrafos."
       },
-      "status": "Texto griego incorporado, registrado e indexado léxicamente; sin cotejo crítico independiente",
+      "status": "Texto griego de Perseus incorporado, catalogado y con índice léxico local; cotejo crítico independiente pendiente",
       "textStatus": "lexically-indexed",
       "publicStatus": "lectura-local-completa",
       "reading": {
         "url": "classics-text-reader.html?work=isocrates-plataicus&lang=grc",
-        "status": "Transcripción de edición TEI con segmentos digitales locales; sin cotejo crítico independiente."
+        "status": "Texto original en griego, con referencia CTS; traducción cotejada local no acreditada."
       },
       "translation": {
         "status": "Traducción humana registrada como texto local; no se afirma alineación entre pasajes sin cotejo."
@@ -4047,17 +3952,12 @@
       "selectionOrder": 50,
       "sourceUrn": "urn:cts:greekLit:tlg0010.tlg012.perseus-grc2",
       "corpusFiles": {
-        "grc": "data/classics-corpus/isocrates-plataicus-grc.json",
-        "en": "data/classics-corpus/isocrates-plataicus-en.json"
+        "grc": "data/classics-corpus/isocrates-plataicus-grc.json"
       },
       "localVersions": [
         {
           "language": "grc",
           "path": "data/classics-corpus/isocrates-plataicus-grc.json"
-        },
-        {
-          "language": "en",
-          "path": "data/classics-corpus/isocrates-plataicus-en.json"
         }
       ],
       "localEditionLanguages": [

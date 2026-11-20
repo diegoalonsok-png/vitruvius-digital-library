@@ -1,19 +1,19 @@
 {
   "schema": "vdl-federated-bibliotheca-inventory-v1",
-  "generated": "2026-11-16T20:49:43.140015+00:00",
+  "generated": "2026-11-20T12:41:49.053363+00:00",
   "method": "Master works and additional R2 works counted separately; edition relations can be many-to-many. Remote text URLs are declared, not live-verified. Unresolved editions are never merged automatically.",
   "counts": {
     "cataloguedWorks": 271,
-    "supplementaryWorks": 66,
+    "supplementaryWorks": 123,
     "additionalWorks": 10,
-    "totalDeclaredWorks": 347,
+    "totalDeclaredWorks": 404,
     "r2EditionRecords": 117,
     "r2LinkedEditionRecords": 107,
     "r2WorkEditionRelations": 115,
     "r2AdditionalEditionRecords": 10,
     "r2UnlinkedEditionRecords": 0,
     "worksWithR2Edition": 114,
-    "worksWithLocalIndexedText": 248,
+    "worksWithLocalIndexedText": 310,
     "worksWithDeclaredRemoteIndex": 44
   },
   "unlinkedR2EditionIds": [],
@@ -304,6 +304,10 @@
       "catalogue": "github-supplementary",
       "locallyIndexedText": [
         {
+          "language": "en",
+          "path": "data/classics-corpus/euripides-cyclops-en.json"
+        },
+        {
           "language": "grc",
           "path": "data/classics-corpus/euripides-cyclops-grc.json"
         }
@@ -317,6 +321,10 @@
       "title": "Ἴων · Ion",
       "catalogue": "github-supplementary",
       "locallyIndexedText": [
+        {
+          "language": "en",
+          "path": "data/classics-corpus/euripides-ion-en.json"
+        },
         {
           "language": "grc",
           "path": "data/classics-corpus/euripides-ion-grc.json"
@@ -332,6 +340,10 @@
       "catalogue": "github-supplementary",
       "locallyIndexedText": [
         {
+          "language": "en",
+          "path": "data/classics-corpus/euripides-helena-en.json"
+        },
+        {
           "language": "grc",
           "path": "data/classics-corpus/euripides-helena-grc.json"
         }
@@ -345,6 +357,10 @@
       "title": "Ἡρακλεῖδαι · Los Heráclidas",
       "catalogue": "github-supplementary",
       "locallyIndexedText": [
+        {
+          "language": "en",
+          "path": "data/classics-corpus/euripides-heracleidae-en.json"
+        },
         {
           "language": "grc",
           "path": "data/classics-corpus/euripides-heracleidae-grc.json"
@@ -360,6 +376,10 @@
       "catalogue": "github-supplementary",
       "locallyIndexedText": [
         {
+          "language": "en",
+          "path": "data/classics-corpus/euripides-andromache-en.json"
+        },
+        {
           "language": "grc",
           "path": "data/classics-corpus/euripides-andromache-grc.json"
         }
@@ -373,6 +393,10 @@
       "title": "Ἱκέτιδες · Las suplicantes",
       "catalogue": "github-supplementary",
       "locallyIndexedText": [
+        {
+          "language": "en",
+          "path": "data/classics-corpus/euripides-suppliants-en.json"
+        },
         {
           "language": "grc",
           "path": "data/classics-corpus/euripides-suppliants-grc.json"
@@ -388,6 +412,10 @@
       "catalogue": "github-supplementary",
       "locallyIndexedText": [
         {
+          "language": "en",
+          "path": "data/classics-corpus/euripides-heracles-en.json"
+        },
+        {
           "language": "grc",
           "path": "data/classics-corpus/euripides-heracles-grc.json"
         }
@@ -401,6 +429,10 @@
       "title": "Ὀρέστης · Orestes",
       "catalogue": "github-supplementary",
       "locallyIndexedText": [
+        {
+          "language": "en",
+          "path": "data/classics-corpus/euripides-orestes-en.json"
+        },
         {
           "language": "grc",
           "path": "data/classics-corpus/euripides-orestes-grc.json"
@@ -416,6 +448,10 @@
       "catalogue": "github-supplementary",
       "locallyIndexedText": [
         {
+          "language": "en",
+          "path": "data/classics-corpus/plato-euthyphro-en.json"
+        },
+        {
           "language": "grc",
           "path": "data/classics-corpus/plato-euthyphro-grc.json"
         }
@@ -429,6 +465,10 @@
       "title": "Πολιτικός · El político",
       "catalogue": "github-supplementary",
       "locallyIndexedText": [
+        {
+          "language": "en",
+          "path": "data/classics-corpus/plato-statesman-en.json"
+        },
         {
           "language": "grc",
           "path": "data/classics-corpus/plato-statesman-grc.json"
@@ -444,6 +484,10 @@
       "catalogue": "github-supplementary",
       "locallyIndexedText": [
         {
+          "language": "en",
+          "path": "data/classics-corpus/plato-philebus-en.json"
+        },
+        {
           "language": "grc",
           "path": "data/classics-corpus/plato-philebus-grc.json"
         }
@@ -457,6 +501,10 @@
       "title": "Χαρμίδης · Cármides",
       "catalogue": "github-supplementary",
       "locallyIndexedText": [
+        {
+          "language": "en",
+          "path": "data/classics-corpus/plato-charmides-en.json"
+        },
         {
           "language": "grc",
           "path": "data/classics-corpus/plato-charmides-grc.json"
@@ -472,6 +520,10 @@
       "catalogue": "github-supplementary",
       "locallyIndexedText": [
         {
+          "language": "en",
+          "path": "data/classics-corpus/plato-laches-en.json"
+        },
+        {
           "language": "grc",
           "path": "data/classics-corpus/plato-laches-grc.json"
         }
@@ -485,6 +537,10 @@
       "title": "Λύσις · Lisis",
       "catalogue": "github-supplementary",
       "locallyIndexedText": [
+        {
+          "language": "en",
+          "path": "data/classics-corpus/plato-lysis-en.json"
+        },
         {
           "language": "grc",
           "path": "data/classics-corpus/plato-lysis-grc.json"
@@ -500,6 +556,10 @@
       "catalogue": "github-supplementary",
       "locallyIndexedText": [
         {
+          "language": "en",
+          "path": "data/classics-corpus/plato-euthydemus-en.json"
+        },
+        {
           "language": "grc",
           "path": "data/classics-corpus/plato-euthydemus-grc.json"
         }
@@ -513,6 +573,10 @@
       "title": "Ἱππίας ἐλάττων · Hipias menor",
       "catalogue": "github-supplementary",
       "locallyIndexedText": [
+        {
+          "language": "en",
+          "path": "data/classics-corpus/plato-hippias-minor-en.json"
+        },
         {
           "language": "grc",
           "path": "data/classics-corpus/plato-hippias-minor-grc.json"
@@ -528,6 +592,10 @@
       "catalogue": "github-supplementary",
       "locallyIndexedText": [
         {
+          "language": "en",
+          "path": "data/classics-corpus/plato-ion-en.json"
+        },
+        {
           "language": "grc",
           "path": "data/classics-corpus/plato-ion-grc.json"
         }
@@ -541,6 +609,10 @@
       "title": "Μενέξενος · Menéxeno",
       "catalogue": "github-supplementary",
       "locallyIndexedText": [
+        {
+          "language": "en",
+          "path": "data/classics-corpus/plato-menexenus-en.json"
+        },
         {
           "language": "grc",
           "path": "data/classics-corpus/plato-menexenus-grc.json"
@@ -976,6 +1048,10 @@
       "catalogue": "github-supplementary",
       "locallyIndexedText": [
         {
+          "language": "en",
+          "path": "data/classics-corpus/isocrates-euthynus-en.json"
+        },
+        {
           "language": "grc",
           "path": "data/classics-corpus/isocrates-euthynus-grc.json"
         }
@@ -989,6 +1065,10 @@
       "title": "Παραγραφή πρὸς Καλλίμαχον · Contra Calímaco",
       "catalogue": "github-supplementary",
       "locallyIndexedText": [
+        {
+          "language": "en",
+          "path": "data/classics-corpus/isocrates-callimachus-en.json"
+        },
         {
           "language": "grc",
           "path": "data/classics-corpus/isocrates-callimachus-grc.json"
@@ -1004,6 +1084,10 @@
       "catalogue": "github-supplementary",
       "locallyIndexedText": [
         {
+          "language": "en",
+          "path": "data/classics-corpus/isocrates-lochites-en.json"
+        },
+        {
           "language": "grc",
           "path": "data/classics-corpus/isocrates-lochites-grc.json"
         }
@@ -1017,6 +1101,10 @@
       "title": "Περὶ τοῦ ζεύγους · Sobre el par de caballos",
       "catalogue": "github-supplementary",
       "locallyIndexedText": [
+        {
+          "language": "en",
+          "path": "data/classics-corpus/isocrates-team-horses-en.json"
+        },
         {
           "language": "grc",
           "path": "data/classics-corpus/isocrates-team-horses-grc.json"
@@ -1032,6 +1120,10 @@
       "catalogue": "github-supplementary",
       "locallyIndexedText": [
         {
+          "language": "en",
+          "path": "data/classics-corpus/isocrates-trapeziticus-en.json"
+        },
+        {
           "language": "grc",
           "path": "data/classics-corpus/isocrates-trapeziticus-grc.json"
         }
@@ -1045,6 +1137,10 @@
       "title": "Αἰγητικὸς · Discurso de Egina",
       "catalogue": "github-supplementary",
       "locallyIndexedText": [
+        {
+          "language": "en",
+          "path": "data/classics-corpus/isocrates-aegineticus-en.json"
+        },
         {
           "language": "grc",
           "path": "data/classics-corpus/isocrates-aegineticus-grc.json"
@@ -1060,6 +1156,10 @@
       "catalogue": "github-supplementary",
       "locallyIndexedText": [
         {
+          "language": "en",
+          "path": "data/classics-corpus/isocrates-sophists-en.json"
+        },
+        {
           "language": "grc",
           "path": "data/classics-corpus/isocrates-sophists-grc.json"
         }
@@ -1073,6 +1173,10 @@
       "title": "Ἑλένη · Elogio de Helena",
       "catalogue": "github-supplementary",
       "locallyIndexedText": [
+        {
+          "language": "en",
+          "path": "data/classics-corpus/isocrates-helen-en.json"
+        },
         {
           "language": "grc",
           "path": "data/classics-corpus/isocrates-helen-grc.json"
@@ -1088,6 +1192,10 @@
       "catalogue": "github-supplementary",
       "locallyIndexedText": [
         {
+          "language": "en",
+          "path": "data/classics-corpus/isocrates-busiris-en.json"
+        },
+        {
           "language": "grc",
           "path": "data/classics-corpus/isocrates-busiris-grc.json"
         }
@@ -1102,8 +1210,826 @@
       "catalogue": "github-supplementary",
       "locallyIndexedText": [
         {
+          "language": "en",
+          "path": "data/classics-corpus/isocrates-plataicus-en.json"
+        },
+        {
           "language": "grc",
           "path": "data/classics-corpus/isocrates-plataicus-grc.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "galen-adhortatio-artes",
+      "author": "Galeno",
+      "title": "Προτρεπτικὸς ἐπὶ τὰς τέχνας · Adhortatio ad artes addiscendas",
+      "catalogue": "github-supplementary",
+      "locallyIndexedText": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/galen-adhortatio-artes-grc.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "galen-optimus-medicus-philosophus",
+      "author": "Galeno",
+      "title": "Ὅτι ἄριστος ἰατρὸς καὶ φιλόσοφος · Quod optimus medicus sit quoque philosophus",
+      "catalogue": "github-supplementary",
+      "locallyIndexedText": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/galen-optimus-medicus-philosophus-grc.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "hippocrates-de-prisca-medicina",
+      "author": "Corpus hipocrático (atribución tradicional)",
+      "title": "Περὶ ἀρχαίης ἰητρικῆς · De prisca medicina",
+      "catalogue": "github-supplementary",
+      "locallyIndexedText": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/hippocrates-de-prisca-medicina-grc.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "plato-parmenides",
+      "author": "Platón",
+      "title": "Παρμενίδης · Parménides",
+      "catalogue": "github-supplementary",
+      "locallyIndexedText": [
+        {
+          "language": "en",
+          "path": "data/classics-corpus/plato-parmenides-en.json"
+        },
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/plato-parmenides-grc.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "plato-sophist",
+      "author": "Platón",
+      "title": "Σοφιστής · Sofista",
+      "catalogue": "github-supplementary",
+      "locallyIndexedText": [
+        {
+          "language": "en",
+          "path": "data/classics-corpus/plato-sophist-en.json"
+        },
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/plato-sophist-grc.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "plato-theaetetus",
+      "author": "Platón",
+      "title": "Θεαίτητος · Teeteto",
+      "catalogue": "github-supplementary",
+      "locallyIndexedText": [
+        {
+          "language": "en",
+          "path": "data/classics-corpus/plato-theaetetus-en.json"
+        },
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/plato-theaetetus-grc.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "first1k-tlg1799-tlg007",
+      "author": "Euclid",
+      "title": "Data",
+      "catalogue": "github-supplementary",
+      "locallyIndexedText": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/first1k-tlg1799-tlg007-grc.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "first1k-tlg0552-tlg001",
+      "author": "Archimède",
+      "title": "De sphaera et cylindro",
+      "catalogue": "github-supplementary",
+      "locallyIndexedText": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/first1k-tlg0552-tlg001-grc.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "first1k-tlg0552-tlg004",
+      "author": "Archimède",
+      "title": "De lineis spiralibus",
+      "catalogue": "github-supplementary",
+      "locallyIndexedText": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/first1k-tlg0552-tlg004-grc.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "first1k-tlg0552-tlg007",
+      "author": "Archimède",
+      "title": "Quadratura parabolae",
+      "catalogue": "github-supplementary",
+      "locallyIndexedText": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/first1k-tlg0552-tlg007-grc.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "first1k-tlg0552-tlg006",
+      "author": "Archimède",
+      "title": "Arenarius",
+      "catalogue": "github-supplementary",
+      "locallyIndexedText": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/first1k-tlg0552-tlg006-grc.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "first1k-tlg0559-tlg006",
+      "author": "Hero of Alexandria",
+      "title": "Metrica",
+      "catalogue": "github-supplementary",
+      "locallyIndexedText": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/first1k-tlg0559-tlg006-grc.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "first1k-tlg0559-tlg007",
+      "author": "Hero of Alexandria",
+      "title": "Dioptra",
+      "catalogue": "github-supplementary",
+      "locallyIndexedText": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/first1k-tlg0559-tlg007-grc.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "first1k-tlg0559-tlg011",
+      "author": "Hero of Alexandria",
+      "title": "De mensuris",
+      "catalogue": "github-supplementary",
+      "locallyIndexedText": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/first1k-tlg0559-tlg011-grc.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "first1k-tlg1799-tlg011",
+      "author": "Euclid",
+      "title": "Catoptrica (recensio Theonis?)",
+      "catalogue": "github-supplementary",
+      "locallyIndexedText": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/first1k-tlg1799-tlg011-grc.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "first1k-tlg0358-tlg001",
+      "author": "Nicomachus of Gerasa",
+      "title": "Ἀριθμητικὴ εἰσαγωγή",
+      "catalogue": "github-supplementary",
+      "locallyIndexedText": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/first1k-tlg0358-tlg001-grc.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "first1k-tlg0358-tlg002",
+      "author": "Nicomachus of Gerasa",
+      "title": "Ἐγχειρίδιον ἁρμονικῆς",
+      "catalogue": "github-supplementary",
+      "locallyIndexedText": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/first1k-tlg0358-tlg002-grc.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "first1k-tlg0057-tlg048",
+      "author": "Galen",
+      "title": "De typis",
+      "catalogue": "github-supplementary",
+      "locallyIndexedText": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/first1k-tlg0057-tlg048-grc.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "first1k-tlg0057-tlg034",
+      "author": "Galen",
+      "title": "De parvae pilae exercitio",
+      "catalogue": "github-supplementary",
+      "locallyIndexedText": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/first1k-tlg0057-tlg034-grc.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "first1k-tlg0057-tlg002",
+      "author": "Galen",
+      "title": "De optima doctrina",
+      "catalogue": "github-supplementary",
+      "locallyIndexedText": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/first1k-tlg0057-tlg002-grc.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "first1k-tlg0057-tlg030",
+      "author": "Galen",
+      "title": "De atra bile",
+      "catalogue": "github-supplementary",
+      "locallyIndexedText": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/first1k-tlg0057-tlg030-grc.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "first1k-tlg0057-tlg024",
+      "author": "Galen",
+      "title": "De optima corporis nostri constitutione",
+      "catalogue": "github-supplementary",
+      "locallyIndexedText": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/first1k-tlg0057-tlg024-grc.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "first1k-tlg0057-tlg082",
+      "author": "Galen",
+      "title": "De sophismatis seu captionibus penes dictionem",
+      "catalogue": "github-supplementary",
+      "locallyIndexedText": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/first1k-tlg0057-tlg082-grc.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "first1k-tlg0057-tlg039",
+      "author": "Galen",
+      "title": "De ptisana",
+      "catalogue": "github-supplementary",
+      "locallyIndexedText": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/first1k-tlg0057-tlg039-grc.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "first1k-tlg0565-tlg001",
+      "author": "Soranus",
+      "title": "Gynaeciorum Libri IV",
+      "catalogue": "github-supplementary",
+      "locallyIndexedText": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/first1k-tlg0565-tlg001-grc.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "first1k-tlg0565-tlg002",
+      "author": "Soranus",
+      "title": "De signis Fracturarum",
+      "catalogue": "github-supplementary",
+      "locallyIndexedText": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/first1k-tlg0565-tlg002-grc.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "first1k-tlg0565-tlg003",
+      "author": "Soranus",
+      "title": "De Fasciis",
+      "catalogue": "github-supplementary",
+      "locallyIndexedText": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/first1k-tlg0565-tlg003-grc.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "first1k-tlg0086-tlg019",
+      "author": "Aristotle",
+      "title": "Περὶ ἀτόμων γραμμῶν",
+      "catalogue": "github-supplementary",
+      "locallyIndexedText": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/first1k-tlg0086-tlg019-grc.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "first1k-tlg0086-tlg004",
+      "author": "Aristotle",
+      "title": "Ἐκ τοῦ περὶ ἀκουστῶν",
+      "catalogue": "github-supplementary",
+      "locallyIndexedText": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/first1k-tlg0086-tlg004-grc.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "first1k-tlg0086-tlg043",
+      "author": "Aristotle",
+      "title": "De spiritu",
+      "catalogue": "github-supplementary",
+      "locallyIndexedText": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/first1k-tlg0086-tlg043-grc.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "first1k-tlg0086-tlg047",
+      "author": "Aristotle",
+      "title": "Περὶ Ξενοφάνους, περὶ Ζήνωνος, περὶ Γοργίου",
+      "catalogue": "github-supplementary",
+      "locallyIndexedText": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/first1k-tlg0086-tlg047-grc.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "first1k-tlg0093-tlg010x04",
+      "author": "Theophrastus",
+      "title": "Περί Κόπων",
+      "catalogue": "github-supplementary",
+      "locallyIndexedText": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/first1k-tlg0093-tlg010x04-grc.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "first1k-tlg0093-tlg010x06",
+      "author": "Theophrastus",
+      "title": "Περί Ἰδρώτων",
+      "catalogue": "github-supplementary",
+      "locallyIndexedText": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/first1k-tlg0093-tlg010x06-grc.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "first1k-tlg0093-tlg006",
+      "author": "Theophrastus",
+      "title": "Ἐκ τῶν μετὰ τὰ φυσικά",
+      "catalogue": "github-supplementary",
+      "locallyIndexedText": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/first1k-tlg0093-tlg006-grc.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "first1k-tlg0093-tlg010x03",
+      "author": "Theophrastus",
+      "title": "Περί Σημείων Ὑδάτων και Pνευμάτων και Xειμώνων και Εὐδιών",
+      "catalogue": "github-supplementary",
+      "locallyIndexedText": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/first1k-tlg0093-tlg010x03-grc.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "first1k-tlg0732-tlg012",
+      "author": "Alexander of Aphrodisias",
+      "title": "Quaestiones",
+      "catalogue": "github-supplementary",
+      "locallyIndexedText": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/first1k-tlg0732-tlg012-grc.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "first1k-tlg0732-tlg003",
+      "author": "Alexander of Aphrodisias",
+      "title": "Περὶ Πυρετῶν [Sp.]",
+      "catalogue": "github-supplementary",
+      "locallyIndexedText": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/first1k-tlg0732-tlg003-grc.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "first1k-tlg0732-tlg001",
+      "author": "Alexander of Aphrodisias",
+      "title": "De mixtione",
+      "catalogue": "github-supplementary",
+      "locallyIndexedText": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/first1k-tlg0732-tlg001-grc.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "first1k-tlg2034-tlg005",
+      "author": "Porphyrius",
+      "title": "Ad Marcellam",
+      "catalogue": "github-supplementary",
+      "locallyIndexedText": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/first1k-tlg2034-tlg005-grc.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "first1k-tlg2034-tlg002",
+      "author": "Porphyrius",
+      "title": "Vita Pythagorae",
+      "catalogue": "github-supplementary",
+      "locallyIndexedText": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/first1k-tlg2034-tlg002-grc.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "first1k-tlg2023-tlg003",
+      "author": "Iamblichus",
+      "title": "De communi mathematica scientia",
+      "catalogue": "github-supplementary",
+      "locallyIndexedText": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/first1k-tlg2023-tlg003-grc.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "first1k-tlg2023-tlg004",
+      "author": "Iamblichus",
+      "title": "Περὶ τῆς Νικομάχου ἀριθμητικῆς εἰσαγωγῆς",
+      "catalogue": "github-supplementary",
+      "locallyIndexedText": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/first1k-tlg2023-tlg004-grc.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "first1k-tlg2023-tlg001",
+      "author": "Iamblichus",
+      "title": "περὶ τοῦ Πυθαγορικοῦ βίου λόγος",
+      "catalogue": "github-supplementary",
+      "locallyIndexedText": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/first1k-tlg2023-tlg001-grc.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "first1k-tlg0592-tlg001",
+      "author": "Hermogenes",
+      "title": "Progymnasmata [Dub.]",
+      "catalogue": "github-supplementary",
+      "locallyIndexedText": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/first1k-tlg0592-tlg001-grc.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "first1k-tlg0592-tlg005",
+      "author": "Hermogenes",
+      "title": "Περὶ μεθόδου δεινότητος",
+      "catalogue": "github-supplementary",
+      "locallyIndexedText": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/first1k-tlg0592-tlg005-grc.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "first1k-tlg0592-tlg002",
+      "author": "Hermogenes",
+      "title": "Περὶ τῶν στάσεων",
+      "catalogue": "github-supplementary",
+      "locallyIndexedText": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/first1k-tlg0592-tlg002-grc.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "first1k-tlg0082-tlg003",
+      "author": "Apollonius Dyscolus",
+      "title": "Περὶ συνδέσμων",
+      "catalogue": "github-supplementary",
+      "locallyIndexedText": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/first1k-tlg0082-tlg003-grc.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "first1k-tlg0082-tlg002",
+      "author": "Apollonius Dyscolus",
+      "title": "Περὶ ἐπιρρημάτων",
+      "catalogue": "github-supplementary",
+      "locallyIndexedText": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/first1k-tlg0082-tlg002-grc.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "first1k-tlg2200-tlg00408",
+      "author": "Libanius",
+      "title": "Oratio VIII",
+      "catalogue": "github-supplementary",
+      "locallyIndexedText": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/first1k-tlg2200-tlg00408-grc.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "first1k-tlg2200-tlg00406",
+      "author": "Libanius",
+      "title": "Oratio VI",
+      "catalogue": "github-supplementary",
+      "locallyIndexedText": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/first1k-tlg2200-tlg00406-grc.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "first1k-tlg2200-tlg00551",
+      "author": "Libanius",
+      "title": "Declamatio 51",
+      "catalogue": "github-supplementary",
+      "locallyIndexedText": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/first1k-tlg2200-tlg00551-grc.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "first1k-tlg2018-tlg021",
+      "author": "Eusebius",
+      "title": "Constantini imperatoris oratio ad coetum sanctorum",
+      "catalogue": "github-supplementary",
+      "locallyIndexedText": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/first1k-tlg2018-tlg021-grc.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "first1k-tlg2018-tlg011",
+      "author": "Eusebius",
+      "title": "Onomasticon",
+      "catalogue": "github-supplementary",
+      "locallyIndexedText": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/first1k-tlg2018-tlg011-grc.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "first1k-tlg2042-tlg051",
+      "author": "Origenes",
+      "title": "Selecta in Leviticum",
+      "catalogue": "github-supplementary",
+      "locallyIndexedText": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/first1k-tlg2042-tlg051-grc.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "first1k-tlg2042-tlg052",
+      "author": "Origenes",
+      "title": "Selecta in Numeros",
+      "catalogue": "github-supplementary",
+      "locallyIndexedText": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/first1k-tlg2042-tlg052-grc.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "first1k-tlg2959-tlg002",
+      "author": "Methodius",
+      "title": "De libero arbitrio",
+      "catalogue": "github-supplementary",
+      "locallyIndexedText": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/first1k-tlg2959-tlg002-grc.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "demosthenes-first-olynthiac",
+      "author": "Demóstenes",
+      "title": "Ὀλυνθιακὸς α΄ · Primera Olíntica",
+      "catalogue": "github-supplementary",
+      "locallyIndexedText": [
+        {
+          "language": "en",
+          "path": "data/classics-corpus/demosthenes-first-olynthiac-en.json"
+        },
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/demosthenes-first-olynthiac-grc.json"
         }
       ],
       "declaredRemoteIndexedText": [],
@@ -2141,6 +3067,10 @@
       "catalogue": "github",
       "locallyIndexedText": [
         {
+          "language": "en",
+          "path": "data/classics-corpus/hero-pneumatica-en.json"
+        },
+        {
           "language": "grc",
           "path": "data/classics-corpus/hero-pneumatica-grc.json"
         }
@@ -2214,12 +3144,7 @@
       "author": "Vitruvio · edición de Fritz Krohn",
       "title": "Vitruvii De architectura libri decem · Krohn 1912",
       "catalogue": "github",
-      "locallyIndexedText": [
-        {
-          "language": "la",
-          "path": "data/text/krohn-1912.json"
-        }
-      ],
+      "locallyIndexedText": [],
       "declaredRemoteIndexedText": [],
       "r2FacsimileEditions": []
     },
@@ -3027,6 +3952,10 @@
       "catalogue": "github",
       "locallyIndexedText": [
         {
+          "language": "en",
+          "path": "data/classics-corpus/aeschylus-oresteia-en.json"
+        },
+        {
           "language": "grc",
           "path": "data/classics-corpus/aeschylus-oresteia-grc.json"
         }
@@ -3167,6 +4096,10 @@
       "catalogue": "github",
       "locallyIndexedText": [
         {
+          "language": "en",
+          "path": "data/classics-corpus/xenophon-anabasis-en.json"
+        },
+        {
           "language": "grc",
           "path": "data/classics-corpus/xenophon-anabasis-grc.json"
         }
@@ -3191,6 +4124,10 @@
       "title": "Πολιτεία",
       "catalogue": "github",
       "locallyIndexedText": [
+        {
+          "language": "en",
+          "path": "data/classics-corpus/plato-republic-en.json"
+        },
         {
           "language": "grc",
           "path": "data/classics-corpus/plato-republic-grc.json"
@@ -3457,6 +4394,10 @@
       "catalogue": "github",
       "locallyIndexedText": [
         {
+          "language": "en",
+          "path": "data/classics-corpus/sophocles-ajax-en.json"
+        },
+        {
           "language": "grc",
           "path": "data/classics-corpus/sophocles-ajax-grc.json"
         }
@@ -3535,6 +4476,10 @@
       "title": "Τραχίνιαι",
       "catalogue": "github",
       "locallyIndexedText": [
+        {
+          "language": "en",
+          "path": "data/classics-corpus/sophocles-trachiniae-en.json"
+        },
         {
           "language": "grc",
           "path": "data/classics-corpus/sophocles-trachiniae-grc.json"
@@ -3686,6 +4631,10 @@
       "title": "Ὄρνιθες",
       "catalogue": "github",
       "locallyIndexedText": [
+        {
+          "language": "en",
+          "path": "data/classics-corpus/aristophanes-aves-en.json"
+        },
         {
           "language": "grc",
           "path": "data/classics-corpus/aristophanes-aves-grc.json"
@@ -3945,6 +4894,10 @@
       "catalogue": "github",
       "locallyIndexedText": [
         {
+          "language": "en",
+          "path": "data/classics-corpus/plato-laws-en.json"
+        },
+        {
           "language": "grc",
           "path": "data/classics-corpus/plato-laws-grc.json"
         }
@@ -4017,6 +4970,10 @@
       "catalogue": "github",
       "locallyIndexedText": [
         {
+          "language": "en",
+          "path": "data/classics-corpus/aristotle-metaphysics-en.json"
+        },
+        {
           "language": "grc",
           "path": "data/classics-corpus/aristotle-metaphysics-grc.json"
         }
@@ -4056,6 +5013,10 @@
       "catalogue": "github",
       "locallyIndexedText": [
         {
+          "language": "en",
+          "path": "data/classics-corpus/aristotle-rhetoric-en.json"
+        },
+        {
           "language": "grc",
           "path": "data/classics-corpus/aristotle-rhetoric-grc.json"
         }
@@ -4083,6 +5044,10 @@
       "title": "Ἀπομνημονεύματα",
       "catalogue": "github",
       "locallyIndexedText": [
+        {
+          "language": "en",
+          "path": "data/classics-corpus/xenophon-memorabilia-en.json"
+        },
         {
           "language": "grc",
           "path": "data/classics-corpus/xenophon-memorabilia-grc.json"
@@ -4123,6 +5088,10 @@
       "catalogue": "github",
       "locallyIndexedText": [
         {
+          "language": "en",
+          "path": "data/classics-corpus/demosthenes-de-corona-en.json"
+        },
+        {
           "language": "grc",
           "path": "data/classics-corpus/demosthenes-de-corona-grc.json"
         }
@@ -4162,6 +5131,10 @@
       "catalogue": "github",
       "locallyIndexedText": [
         {
+          "language": "en",
+          "path": "data/classics-corpus/pindar-olympian-en.json"
+        },
+        {
           "language": "grc",
           "path": "data/classics-corpus/pindar-olympian-grc.json"
         }
@@ -4175,6 +5148,10 @@
       "title": "Πυθιόνικοι",
       "catalogue": "github",
       "locallyIndexedText": [
+        {
+          "language": "en",
+          "path": "data/classics-corpus/pindar-pythian-en.json"
+        },
         {
           "language": "grc",
           "path": "data/classics-corpus/pindar-pythian-grc.json"
@@ -4577,7 +5554,12 @@
       "author": "Apuleyo",
       "title": "De deo Socratis",
       "catalogue": "github",
-      "locallyIndexedText": [],
+      "locallyIndexedText": [
+        {
+          "language": "la",
+          "path": "data/classics-corpus/apuleius-de-deo-socratis-la.json"
+        }
+      ],
       "declaredRemoteIndexedText": [],
       "r2FacsimileEditions": []
     },
@@ -4833,7 +5815,12 @@
       "author": "Censorino",
       "title": "De die natali",
       "catalogue": "github",
-      "locallyIndexedText": [],
+      "locallyIndexedText": [
+        {
+          "language": "la",
+          "path": "data/classics-corpus/censorinus-die-natali-la.json"
+        }
+      ],
       "declaredRemoteIndexedText": [],
       "r2FacsimileEditions": []
     },
@@ -4977,7 +5964,12 @@
       "author": "Gémino",
       "title": "Εἰσαγωγὴ εἰς τὰ φαινόμενα · Elementa astronomiae",
       "catalogue": "github",
-      "locallyIndexedText": [],
+      "locallyIndexedText": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/geminus-isagoge-grc.json"
+        }
+      ],
       "declaredRemoteIndexedText": [],
       "r2FacsimileEditions": []
     },
@@ -4986,7 +5978,12 @@
       "author": "Aristarco de Samos",
       "title": "Περὶ μεγεθῶν καὶ ἀποστημάτων ἡλίου καὶ σελήνης",
       "catalogue": "github",
-      "locallyIndexedText": [],
+      "locallyIndexedText": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/aristarchus-magnitudines-grc.json"
+        }
+      ],
       "declaredRemoteIndexedText": [],
       "r2FacsimileEditions": []
     },
@@ -4995,7 +5992,12 @@
       "author": "Apolonio de Perge",
       "title": "Κωνικά · Conica",
       "catalogue": "github",
-      "locallyIndexedText": [],
+      "locallyIndexedText": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/apollonius-conica-grc.json"
+        }
+      ],
       "declaredRemoteIndexedText": [],
       "r2FacsimileEditions": []
     },
@@ -5004,7 +6006,12 @@
       "author": "Papo de Alejandría",
       "title": "Συναγωγή · Collectio (libro VIII: mecánica)",
       "catalogue": "github",
-      "locallyIndexedText": [],
+      "locallyIndexedText": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/pappus-synagoge-grc.json"
+        }
+      ],
       "declaredRemoteIndexedText": [],
       "r2FacsimileEditions": []
     },
