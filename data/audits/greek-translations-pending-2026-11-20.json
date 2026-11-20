@@ -7,7 +7,7 @@
   "counts": {
     "greekWorkIds": 266,
     "missingTranslationInSearchRegistry": 178,
-    "sourceCandidatesIdentified": 2,
+    "sourceCandidatesIdentified": 6,
     "importedInThisAudit": 0,
     "indexedInThisAudit": 0
   },
@@ -31,7 +31,16 @@
       "r2Crosscheck": "pending",
       "sourceIdentification": "pending",
       "importStatus": "not_imported",
-      "indexStatus": "not_indexed"
+      "indexStatus": "not_indexed",
+      "translationCandidate": {
+        "language": "en",
+        "translator": "Illinois Loeb Classical Library 1928 edition (translator to verify)",
+        "year": 1928,
+        "url": "https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Aeneas_Tacticus/C%2A.html",
+        "source": "LacusCurtius University of Chicago",
+        "status": "candidate_translation_found_attribution_pending",
+        "notes": "Translator attribution and whole-work availability not yet fully checked."
+      }
     },
     {
       "workId": "antologia-griega",
@@ -124,7 +133,16 @@
       "r2Crosscheck": "pending",
       "sourceIdentification": "pending",
       "importStatus": "not_imported",
-      "indexStatus": "not_indexed"
+      "indexStatus": "not_indexed",
+      "translationCandidate": {
+        "language": "en",
+        "translator": "A. W. Mair",
+        "year": 1921,
+        "url": "https://www.greekmythology.com/sources/aratus/phaenomena",
+        "source": "Perseus-derived source bibliography",
+        "status": "human_translation_located_not_integrated",
+        "notes": "Confirm reuse rights of hosted transcription, check locus structure and alias identifiers."
+      }
     },
     {
       "workId": "archimedes-fluitantibus",
@@ -208,7 +226,16 @@
       "r2Crosscheck": "pending",
       "sourceIdentification": "pending",
       "importStatus": "not_imported",
-      "indexStatus": "not_indexed"
+      "indexStatus": "not_indexed",
+      "translationCandidate": {
+        "language": "en",
+        "translator": "Benjamin Bickley Rogers",
+        "year": 1911,
+        "url": "https://en.wikisource.org/wiki/Lysistrata",
+        "source": "Wikisource bibliographic edition listing",
+        "status": "human_translation_identified_scan_or_transcription_needs_check",
+        "notes": "Verify the exact text/edition and completeness; do not mistake a different translation for Rogers."
+      }
     },
     {
       "workId": "aristophanes-pax",
@@ -343,7 +370,16 @@
       "r2Crosscheck": "pending",
       "sourceIdentification": "pending",
       "importStatus": "not_imported",
-      "indexStatus": "not_indexed"
+      "indexStatus": "not_indexed",
+      "translationCandidate": {
+        "language": "en",
+        "translator": "R. P. Hardie and R. K. Gaye",
+        "year": 1930,
+        "url": "https://classics.mit.edu/Aristotle/physics.html",
+        "source": "MIT Internet Classics Archive",
+        "status": "human_translation_located_not_integrated",
+        "notes": "Check rights, complete text, correspondence to Greek loci, and alternate registered workId."
+      }
     },
     {
       "workId": "aristoxenus-harmonica",
