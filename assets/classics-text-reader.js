@@ -32,6 +32,8 @@ function refreshLexiconShortcut(rec){
 }
 input?.addEventListener("input",()=>refreshLexiconShortcut(data?.passages?.[active]));
 const searchMode=$("search-mode");
+const searchScope=$("search-scope");
+if(searchScope)searchScope.value=p.get("scope")==="chapter"?"chapter":"book";
 if(searchMode)searchMode.value=p.get("expanded")==="1"?"lexical":"literal";
 input.value=p.get("q")||"";
 /* A trusted same-origin parallel reader may request ordinal passage navigation.
@@ -138,11 +140,29 @@ function renderToc(){
  });
  target.replaceChildren(fragment);
 }
+function chapterKey(record){
+ const named=record?.chapter||record?.chapterNumber||record?.sourceChapter;
+ if(record?.sourceBook!=null&&named!=null)return String(record.sourceBook)+"."+String(named);
+ const locus=String(record?.locus||"");
+ const tail=locus.includes(":")?locus.slice(locus.lastIndexOf(":")+1):locus;
+ const pair=/^(\d+)\.(\d+)(?:\.|$)/.exec(tail);
+ if(pair)return pair[1]+"."+pair[2];
+ const book=/^book-(\d+)\.local-/.exec(tail);
+ return book?"book-"+book[1]:null;
+}
+function inCurrentChapter(i){
+ const selected=data?.passages?.[active];if(!selected)return false;
+ const chapter=chapterKey(selected);
+ return chapter?chapterKey(data.passages[i])===chapter:i===active;
+}
 function select(i){
  if(!data)return;
  active=Math.max(0,Math.min(data.passages.length-1,i));
  const rec=data.passages[active];
  refreshLexiconShortcut(rec);
+ if(search&&searchScope?.value==="chapter"&&searchScope.dataset.lastChapter!==String(chapterKey(rec)||rec.locus)){
+  searchScope.dataset.lastChapter=String(chapterKey(rec)||rec.locus);resultPage=0;renderSearch();
+ }
  if($("locus-query"))$("locus-query").value=displayLocus(rec.locus);
  if($("locus-status"))$("locus-status").textContent="";
  $("current-locus").textContent=unitLabel()+" "+displayLocus(rec.locus)+(rec.title?" · "+rec.title:"")+" · "+(active+1)+"/"+data.passages.length;
@@ -170,6 +190,7 @@ function select(i){
  }
  const u=new URL(location.href);u.searchParams.set("locus",rec.locus);if(search)u.searchParams.set("q",search);else u.searchParams.delete("q");
  if(searchMode?.value==="literal"){u.searchParams.set("literal","1");u.searchParams.delete("expanded")}else{u.searchParams.delete("literal");u.searchParams.set("expanded","1")};
+ if(searchScope?.value==="chapter")u.searchParams.set("scope","chapter");else u.searchParams.delete("scope");
  history.replaceState(null,"",u);
  document.dispatchEvent(new CustomEvent("vitruvia:classics-passage",{
   detail:{work,language:data.language,locus:rec.locus,title:rec.title||"",text:rec.text,
@@ -325,6 +346,7 @@ function interpretQuery(query){
 }
 function locateQuery(query){
  const tokens=editionTokens(),q=unquoteQuery(query),key=romanKey(q,data.language),meaning=interpretQuery(q);
+ const expanded=searchMode?.value==="lexical";
  const queryWords=[...q.matchAll(WORD_TOKEN)].map(m=>romanKey(m[0],data.language));
  if(!key||key.length<2)return [];
  const result=tokens.map((words,i)=>{
@@ -340,14 +362,14 @@ function locateQuery(query){
   }
   for(const token of words){
    const literal=token.key===key;
-   const indexed=[...token.lemmaSet].some(l=>meaning.direct.has(l));
-   const equivalent=meaning.targets.has(fold(token.original))||[...token.lemmaSet].some(l=>meaning.targets.has(l));
+   const indexed=expanded&&!literal&&[...token.lemmaSet].some(l=>meaning.direct.has(l));
+   const equivalent=expanded&&!literal&&!indexed&&(meaning.targets.has(fold(token.original))||[...token.lemmaSet].some(l=>meaning.targets.has(l)));
    if(!literal&&!indexed&&!equivalent)continue;
    if(literal)literalCount++;else if(indexed)indexedCount++;else equivalentCount++;
    locations.push([token.start,token.end]);forms.add(token.original);
   }
   return {i,r:data.passages[i],locations,forms:[...forms],literalCount,indexedCount,equivalentCount};
- }).filter(x=>x.locations.length).sort((a,b)=>{
+ }).filter(x=>x.locations.length&&(searchScope?.value!=="chapter"||inCurrentChapter(x.i))).sort((a,b)=>{
    const rank=x=>x.literalCount?0:x.indexedCount?1:2;
    return rank(a)-rank(b)||a.i-b.i;
   });
@@ -369,6 +391,7 @@ function makeConcordanceExcerpt(text,from,to){
  if(left)node.append(document.createTextNode("…"));
  node.append(document.createTextNode(text.slice(left,from)));
  const mark=document.createElement("mark");mark.className="search-excerpt-hit";mark.textContent=text.slice(from,to);
+ mark.title="Clic: consultar significado en el diccionario";
  node.append(mark,document.createTextNode(text.slice(to,right)));
  if(right<text.length)node.append(document.createTextNode("…"));
  return node;
@@ -383,7 +406,7 @@ function renderSearch(){
  const total=results.reduce((n,x)=>n+x.locations.length,0);
  const counts=results.reduce((n,x)=>[n[0]+x.literalCount,n[1]+x.indexedCount,n[2]+x.equivalentCount],[0,0,0]);
  const header=document.createElement("p");header.className="search-summary";
- header.textContent=results.length+" pasajes en toda la edición ("+data.passages.length+" unidades) · "+total+
+ header.textContent=results.length+" pasajes "+(searchScope?.value==="chapter"?"en el capítulo o unidad actual":"en toda la obra")+" · "+total+
    " apariciones: "+counts[0]+" textuales, "+counts[1]+" por formas indexadas y "+counts[2]+" por equivalencias léxicas. "+searchMeta;
  target.append(header);
  if(!results.length){
@@ -433,7 +456,15 @@ function renderSearch(){
    excerpt.textContent=r.text.slice(0,300)+(r.text.length>300?"…":"");excerpt.lang=data.language;
    button.append(excerpt);
   }
-  button.addEventListener("click",()=>{
+  button.addEventListener("click",event=>{
+   const mark=event.target.closest?.("mark.search-excerpt-hit");
+   if(mark&&LEX&&["la","grc"].includes(data.language)){
+    const word=LEX.wordAt(event)||LEX.wordOfMark(mark);
+    if(word&&/^[\p{L}\p{M}ʼ’\u0027-]+$/u.test(word)){
+     void LEX.renderPanel($("lexicon"),word,{lang:data.language,work});
+     $("lexicon").scrollIntoView({block:"nearest",behavior:"smooth"});return;
+    }
+   }
    select(i);
    $("passages").scrollIntoView({block:"start",behavior:"smooth"});
   });
@@ -598,7 +629,7 @@ async function load(language,requestId){
  renderToc();
  const locus=new URLSearchParams(location.search).get("locus");
  const at=ACADEMIC?ACADEMIC.findLocus(data.passages,locus):data.passages.findIndex(x=>x.locus===locus);
- const chosen=at>=0?at:0;setQuery(input.value||"");
+ const chosen=at>=0?at:0;active=chosen;setQuery(input.value||"");
  if(search){renderSearch();const first=results[0]?.i;const anchored=results.some(x=>x.i===at);select(anchored?at:Number.isInteger(first)?first:chosen)}
  else{renderSearch();select(chosen)}
  if(locus&&at<0){
@@ -645,13 +676,31 @@ for(const [mode,id] of [["literal","mode-exact"],["lexical","mode-expanded"]]){
  });
 }
 syncSearchModeButtons();
+function syncSearchScopeButtons(){
+ for(const [scope,id] of [["chapter","scope-chapter"],["book","scope-book"]]){
+  $(id)?.setAttribute("aria-pressed",String(searchScope?.value===scope));
+ }
+}
+for(const [scope,id] of [["chapter","scope-chapter"],["book","scope-book"]]){
+ $(id)?.addEventListener("click",()=>{
+  if(!searchScope)return;
+  searchScope.value=scope;
+  searchScope.dispatchEvent(new Event("change"));
+ });
+}
+syncSearchScopeButtons();
 searchMode?.addEventListener("change",()=>{syncSearchModeButtons();$("find").click()});
+searchScope?.addEventListener("change",()=>{
+ syncSearchScopeButtons();
+ if(!data)return;resultPage=0;searchScope.dataset.lastChapter=String(chapterKey(data.passages[active])||data.passages[active].locus);
+ renderSearch();select(active);
+});
 /* Same-origin parallel study: independent literal queries and amber highlights. */
 window.addEventListener("message",event=>{
  if(event.origin!==location.origin||event.source!==window.parent||window.parent===window)return;
  const cmd=event.data;
  if(!cmd||cmd.type!=="vitruvia-parallel-find"||cmd.work!==work||cmd.lang!==data?.language||typeof cmd.query!=="string")return;
- if(searchMode)searchMode.value="literal";
+ if(searchMode){searchMode.value="literal";syncSearchModeButtons();}
  setQuery(cmd.query.slice(0,120));resultPage=0;renderSearch();
  if(results.length)select(results[0].i);else select(active);
  window.parent.postMessage({type:"vitruvia-parallel-search-result",work,lang:data.language,sections:results.length},location.origin);

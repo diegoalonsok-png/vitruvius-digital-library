@@ -189,6 +189,16 @@ html[data-parallel-view="true"] .simple-reading-actions{display:none!important}
 .reader-nav-actions #simple-pair-inline:hover{background:#3d3d41}
 html[data-parallel-view="true"] #simple-pair-inline{display:none!important}
 @media print{#simple-pair-inline{display:none!important}}
+
+/* Los estados de búsqueda deben diferenciarse también bajo los temas del lector. */
+.tools :is(.search-mode-choices,.search-scope-choices){display:inline-flex;align-items:center;flex-wrap:wrap;gap:4px;border:1px solid var(--line);border-radius:7px;padding:3px;background:var(--panel)}
+.tools :is(.search-mode-choices,.search-scope-choices) button[aria-pressed="false"]{background:transparent!important;color:var(--fg)!important;border:1px solid transparent!important;box-shadow:none!important}
+.tools :is(.search-mode-choices,.search-scope-choices) button[aria-pressed="true"]{background:#f7d873!important;color:#18202a!important;border:1px solid #d4ac38!important;box-shadow:inset 0 0 0 1px #d4ac38!important;font-weight:700!important}
+.tools :is(.search-mode-choices,.search-scope-choices) button{padding:7px 11px;min-height:36px;border-radius:5px;cursor:pointer}
+.tools :is(.search-mode-choices,.search-scope-choices) button:focus-visible{outline:2px solid #f7d873;outline-offset:3px}
+.tools :is(.search-mode-choices,.search-scope-choices) select[hidden]{display:none!important}
+.search-passage-jump mark.search-excerpt-hit{background:#ffe16b!important;color:#17212c!important;cursor:help}
+@media(max-width:700px){.tools .search-scope-choices{width:100%}.tools .search-scope-choices button{flex:1}}
 </style>
 <link rel="stylesheet" href="assets/lexicon-reader-scrollbars.css?v=20261110-grey-grip-v1">
 <link rel="stylesheet" href="assets/classics-lexical-popup.css?v=20261110-highlight-word-v3">
@@ -279,6 +289,11 @@ html[data-parallel-view="true"] body.academic-reader .cl-source-column #passages
 <button id="mode-expanded" type="button" aria-pressed="false" title="Añade formas del lema y equivalencias léxicas orientativas">Búsqueda ampliada</button>
 <select id="search-mode" hidden aria-hidden="true" tabindex="-1"><option value="literal">Exacta</option><option value="lexical">Ampliada</option></select>
 </div>
+<div class="search-scope-choices" role="group" aria-label="Alcance de la búsqueda">
+ <button id="scope-chapter" type="button" aria-pressed="false" title="Solo el capítulo, epístola o unidad actual">Capítulo actual</button>
+ <button id="scope-book" type="button" aria-pressed="true" title="Todas las unidades indexadas de la obra">Toda la obra</button>
+ <select id="search-scope" hidden aria-hidden="true" tabindex="-1"><option value="chapter">Capítulo actual</option><option value="book" selected>Toda la obra</option></select>
+</div>
 <button id="find" type="button">Buscar en esta edición</button>
 <button id="clear" type="button">Borrar</button>
 <button id="print" type="button">Imprimir</button>
@@ -305,7 +320,7 @@ html[data-parallel-view="true"] body.academic-reader .cl-source-column #passages
   <div class="simple-reading-actions"><a id="simple-reading-link" href="?view=simple">◫ Visor simplificado</a><a id="reader-index-locorum" href="index-locorum.html" title="Abrir el índice de pasajes y concordancias de Bibliotheca">Índice locorum</a></div>
 </div>
 <section id="search-results-section" class="search-results-section" aria-labelledby="search-results-title" hidden>
- <div class="search-results-head"><div><h2 id="search-results-title">Pasajes encontrados en toda la obra</h2><p>Seleccione cualquier resultado para abrir el texto original en su locus. La búsqueda recorre la edición completa, no solo la página visible.</p></div><a href="#passages">Ir al lector</a></div>
+ <div class="search-results-head"><div><h2 id="search-results-title">Pasajes encontrados</h2><p>Seleccione un resultado para abrir el locus; haga clic en una palabra amarilla para consultar el diccionario. El alcance depende del selector de capítulo u obra.</p></div><a href="#passages">Ir al lector</a></div>
  <div id="results" role="status" aria-live="polite"></div>
 </section>
 <div class="reader-grid">
