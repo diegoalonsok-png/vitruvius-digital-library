@@ -222,6 +222,27 @@ for(const w of allWorks){
       sharedBibliographicSections:327,alignmentLevel:"Stephanus book.page references only; no phrase or manuscript alignment"});
     continue;
    }
+   // Aristotle's Metaphysics: Greek has multiple technical cards per
+   // book.chapter; the English edition consolidates those same references.
+   // Validate the 142 bibliographic chapters only, not sentence alignment.
+   if(w.id==="aristotle-metaphysics" && translation.language==="en" &&
+      target.alignmentStatus==="book-chapter" &&
+      /142 capítulos libro\.capítulo cotejados con 142 claves únicas del griego/i.test(target.alignment||"")){
+    const chapter=locus=>{
+     const m=/^urn:cts:greekLit:tlg0086\.tlg025\.perseus-(?:grc|eng)\d+:([0-9]+\.[0-9]+)$/.exec(locus);
+     return m?m[1]:null;
+    };
+    const greek=[...ol].map(chapter),english=[...tl].map(chapter);
+    const grKeys=new Set(greek),enKeys=new Set(english);
+    const valid=greek.every(Boolean)&&english.every(Boolean)&&
+      grKeys.size===142&&enKeys.size===142&&
+      [...grKeys].every(key=>enKeys.has(key));
+    assert(valid,"Aristotle Metaphysics Greek-English book.chapter keys differ");
+    verifiedParallel.push({work:w.id,original:"grc",translation:"en",
+     originalLoci:ol.size,translatedLoci:tl.size,sharedLoci:0,
+     sharedBibliographicSections:142,alignmentLevel:"book.chapter references only; no sentence alignment"});
+    continue;
+   }
    // Edition URNs differ (Greek vs English), but the original book.chapter.section
    // numbers may still coincide. Check every numeric section; never infer word alignment.
    if(w.id==="xenophon-anabasis" && target.alignmentStatus==="book-chapter-section" &&
