@@ -22,6 +22,7 @@ on:
       - 'scripts/audit-classics-222-roadmap.py'
       - 'scripts/repair-classics-mixed-tei.py'
       - 'scripts/test-classics-historical-translations.py'
+      - 'scripts/audit-classical-corpus.mjs'
   schedule:
     - cron: '26 2,8,14,20 * * *'
 
