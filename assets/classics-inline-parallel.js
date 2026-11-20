@@ -144,7 +144,7 @@ async function presentIndexed(entry,target,stamp){
  if(!e)return false;
  // Una edición declarada no es una traducción automática ni una alineación certificada.
  const paragraphs=await indexedPassages(e);
- if(stamp!==sequence||current!==entry||mode.value==="pdf")return true;
+ if(stamp!==sequence||current!==entry||mode.value==="pdf"||select.value!==target)return true;
  const pairing=window.ClassicsLocusPairing?.find(entry,paragraphs)||{kind:"none",passages:[]};
  const matched=pairing.passages[0];
  output.replaceChildren();
@@ -185,7 +185,7 @@ async function presentIndexed(entry,target,stamp){
  output.append(a);
  return true;
 }
-let initialEditionChosen=false;
+// El idioma elegido por el lector tiene prioridad sobre ediciones en otros idiomas.
 function updateIndexedChoice(info){
  indexedVersions.clear();
  for(const e of (info?.editions||[]))if(registered(e)&&!indexedVersions.has(e.language))indexedVersions.set(e.language,e);
@@ -240,7 +240,7 @@ async function runTranslation(){
   const translateAPI=window.VitruviaInlineTranslation?.translate;
   if(typeof translateAPI!=="function")throw Error("Servicio de traducción no disponible.");
   const result=await translateAPI(entry.text,entry.language,target);
-  if(stamp!==sequence||!enabled||mode.value==="pdf")return;
+  if(stamp!==sequence||!enabled||mode.value==="pdf"||select.value!==target)return;
   output.replaceChildren();
   const para=el("p",null,result.text);para.lang=target;output.append(para);
   const caution=el("p","cl-caution",result.provider+
@@ -250,7 +250,7 @@ async function runTranslation(){
   output.append(caution);
   note.textContent="Locus "+(window.ClassicsAcademicReader?.shortLocus(entry.locus)||entry.locus)+" · "+(entry.number||"")+" de "+(entry.total||"")+" · Texto fuente íntegro en el panel original.";
  }catch(error){
-  if(stamp!==sequence||!enabled||mode.value==="pdf")return;
+  if(stamp!==sequence||!enabled||mode.value==="pdf"||select.value!==target)return;
   output.textContent="No fue posible generar la traducción dentro de Bibliotheca. El original permanece intacto.";
   // Alternativa manual, gratuita: el usuario decide abrir Google Traductor.
   // No se envía el contenido a Google hasta que haga clic en el enlace.
@@ -274,6 +274,8 @@ stop.addEventListener("click",()=>{
  output.removeAttribute("aria-busy");showState();
 });
 select.addEventListener("change",()=>{
+ sequence++; // Invalidar resultados pendientes en la lengua anterior.
+ output.removeAttribute("aria-busy");
  const u=new URL(location.href);u.searchParams.set("to",select.value);history.replaceState(null,"",u);
  showState();
 });
@@ -283,13 +285,8 @@ document.addEventListener("vitruvia:classics-passage",event=>{
  const info=event.detail;
  if(!info||info.work!==work||typeof info.text!=="string")return;
  current=info;sequence++;updateIndexedChoice(info);
- if(!initialEditionChosen){
-  initialEditionChosen=true;
-  if(!indexedVersions.has(select.value)){
-   const first=["en","fr","es"].find(lang=>indexedVersions.has(lang));
-   if(first){select.value=first;enabled=false;}
-  }
- }
+ // No elegir silenciosamente una traducción inglesa al solicitar castellano.
+ // Si no existe edición castellana, se conserva ES para traducción bajo demanda.
  const u=new URL("classics-text-reader.html",location.href);u.searchParams.set("work",work);u.searchParams.set("lang",info.language);u.searchParams.set("locus",info.locus);
  const editorial=(info.editions||[]).find(e=>["es","fr","en"].includes(e.language));
  if(editorial)u.searchParams.set("lang",editorial.language);else u.searchParams.set("to",select.value);published.href=u.pathname+u.search;
