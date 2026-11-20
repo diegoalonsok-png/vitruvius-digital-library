@@ -47,6 +47,12 @@ def main():
     local_by_work = {}
     remote_by_work = {}
     for e in registry:
+        # Ediciones latinas críticas de Krohn y Rose son índices auxiliares,
+        # no obras antiguas nuevas; se conservan y verifican como archivos.
+        if e.get("format") == "critical-indexed-latin":
+            if not (ROOT / e["path"]).is_file():
+                raise ValueError(f"Missing auxiliary critical index: {e['path']}")
+            continue
         if e["workId"] not in all_catalogued:
             raise ValueError(f"Uncatalogued indexed work: {e['workId']}")
         if str(e["path"]).startswith(("http://", "https://")):
