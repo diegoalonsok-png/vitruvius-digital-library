@@ -67,7 +67,8 @@ for(const id of indexed){
  else pendingLexical.push(id);
  const baseReader=`classics-text-reader.html?work=${id}&lang=grc`;
  const expectedReaderUrls=[baseReader,...Object.keys(w.corpusFiles||{}).filter(lang=>["en","fr","es"].includes(lang)).map(lang=>`${baseReader}&to=${lang}`)];
- assert.ok(expectedReaderUrls.includes(w.reading?.url),`Unexpected Greek reader URL: ${id}`);
+ const parallelReaders=Object.keys(w.corpusFiles||{}).filter(lang=>["en","fr","es"].includes(lang)).map(lang=>`classics-parallel-reader.html?work=${id}&left=grc&right=${lang}`);
+ assert.ok([...expectedReaderUrls,...parallelReaders].includes(w.reading?.url),`Unexpected Greek reader URL: ${id}`);
 }
 const sappho=records.find(w=>w.id==="sappho-fragmenta");
 assert.ok(sappho,"Sappho bibliographic record is required");
