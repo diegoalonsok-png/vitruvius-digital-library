@@ -1,0 +1,56 @@
+name: Promote remote Latin classical indexes to local search
+on:
+  push:
+    paths:
+      - '.github/workflows/promote-remote-latin-indexes-20261120.yml'
+      - 'scripts/promote-remote-latin-indexes-20261120.py'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: vitruvius-classics-registry-writes
+  cancel-in-progress: false
+jobs:
+  verify-import:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Verify, copy and register six remote indexed Latin originals
+        run: python3 scripts/promote-remote-latin-indexes-20261120.py
+      - name: Structural checks
+        run: |
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          root=Path('data/classics-corpus')
+          reg=json.loads((root/'search-registry.json').read_text())
+          ids={'seneca-de-ira','seneca-de-tranquillitate','macrobius-saturnalia','ennius-annales','frontinus-gromatica','siculus-flaccus'}
+          for item in reg['entries']:
+              if item.get('workId') in ids and item.get('language') == 'la':
+                  f=Path(item['path'])
+                  assert f.exists()
+                  obj=json.loads(f.read_text())
+                  assert obj['workId']==item['workId'] and obj['language']=='la'
+                  assert obj['passages'] and obj['importProvenance']
+          assert reg['count']==len(reg['entries'])
+          assert reg['works']==len({x['workId'] for x in reg['entries']})
+          PY
+      - name: Commit indexed originals without changing website appearance
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add data/classics-corpus/search-registry.json
+          for name in seneca-de-ira seneca-de-tranquillitate macrobius-saturnalia ennius-annales frontinus-gromatica siculus-flaccus; do
+            if test -f "data/classics-corpus/${name}-la.json"; then git add "data/classics-corpus/${name}-la.json"; fi
+          done
+          if ! git diff --cached --quiet; then
+            git commit -m 'Expose six verified remote Latin originals in local searchable corpus'
+            git pull --rebase
+            git push
+          fi
