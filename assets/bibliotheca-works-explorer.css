@@ -1,7 +1,7 @@
 
 /* Compact, accessible catalogue of indexed and unindexed original works. */
-.vdl-indexed-feature{display:flex;align-items:baseline;gap:9px;flex-wrap:wrap;border-left:3px solid #c9a45e;padding:4px 10px;background:rgba(203,168,100,.10)}
-.vdl-indexed-feature strong{font:700 clamp(27px,2.8vw,36px)/1 Georgia,serif;color:var(--ink);font-variant-numeric:tabular-nums}
+.vdl-indexed-feature{display:flex;align-items:baseline;gap:9px;flex-wrap:wrap;border-left:0;padding:4px 10px;background:transparent}
+.vdl-indexed-feature strong{font:700 clamp(27px,2.8vw,36px)/1 Georgia,serif;color:#f0eee8!important;font-variant-numeric:tabular-nums}
 .vdl-indexed-feature span{font:600 14px/1.3 system-ui,sans-serif}
 .vdl-works-explorer{width:100%;min-width:0}
 .vdl-works-explorer-details{border:1px solid rgba(166,154,130,.42);border-radius:6px;padding:0;overflow:hidden}
