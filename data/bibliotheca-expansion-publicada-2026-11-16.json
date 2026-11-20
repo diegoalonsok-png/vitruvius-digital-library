@@ -32,7 +32,10 @@
       "reading": {
         "url": "classics-text-reader.html?work=callimachus-hymni&lang=grc",
         "status": "Texto griego digital indexado; verificar loci contra la edición citada."
-      }
+      },
+      "localEditionLanguages": [
+        "grc"
+      ]
     },
     {
       "id": "theocritus-idyllia",
@@ -64,7 +67,10 @@
       "reading": {
         "url": "classics-text-reader.html?work=theocritus-idyllia&lang=grc",
         "status": "Texto griego digital indexado; verificar loci contra la edición citada."
-      }
+      },
+      "localEditionLanguages": [
+        "grc"
+      ]
     },
     {
       "id": "sappho-fragmenta",
@@ -119,7 +125,10 @@
       "reading": {
         "url": "classics-text-reader.html?work=menander-dyskolos&lang=grc",
         "status": "Texto griego digital indexado; verificar loci contra la edición citada."
-      }
+      },
+      "localEditionLanguages": [
+        "grc"
+      ]
     },
     {
       "id": "aristophanes-knights",
@@ -151,7 +160,10 @@
       "reading": {
         "url": "classics-text-reader.html?work=aristophanes-knights&lang=grc",
         "status": "Texto griego digital indexado; verificar loci contra la edición citada."
-      }
+      },
+      "localEditionLanguages": [
+        "grc"
+      ]
     },
     {
       "id": "aristophanes-thesmophoriazusae",
@@ -183,7 +195,10 @@
       "reading": {
         "url": "classics-text-reader.html?work=aristophanes-thesmophoriazusae&lang=grc",
         "status": "Texto griego digital indexado; verificar loci contra la edición citada."
-      }
+      },
+      "localEditionLanguages": [
+        "grc"
+      ]
     },
     {
       "id": "aristophanes-ecclesiazusae",
@@ -215,7 +230,10 @@
       "reading": {
         "url": "classics-text-reader.html?work=aristophanes-ecclesiazusae&lang=grc",
         "status": "Texto griego digital indexado; verificar loci contra la edición citada."
-      }
+      },
+      "localEditionLanguages": [
+        "grc"
+      ]
     },
     {
       "id": "aristophanes-plutus",
@@ -247,7 +265,10 @@
       "reading": {
         "url": "classics-text-reader.html?work=aristophanes-plutus&lang=grc",
         "status": "Texto griego digital indexado; verificar loci contra la edición citada."
-      }
+      },
+      "localEditionLanguages": [
+        "grc"
+      ]
     },
     {
       "id": "euripides-cyclops",
@@ -273,9 +294,10 @@
         {
           "language": "en",
           "label": "English · Edward P. Coleridge (1891)",
-          "path": "classics-text-reader.html?work=euripides-cyclops&lang=en",
+          "path": "data/classics-corpus/euripides-cyclops-en.json",
           "kind": "historical-translation",
-          "citationChicago18": "Eurípides. Κύκλωψ · El cíclope. Translated by Edward P. Coleridge. George Bell and Sons, London, 1891. Perseus Digital Library, TEI."
+          "citationChicago18": "Eurípides. Κύκλωψ · El cíclope. Translated by Edward P. Coleridge. George Bell and Sons, London, 1891. Perseus Digital Library, TEI.",
+          "reader": "classics-text-reader.html?work=euripides-cyclops&lang=en"
         }
       ],
       "reading": {
@@ -287,7 +309,14 @@
         "gallica": "https://gallica.bnf.fr/",
         "archive": "https://archive.org/"
       },
-      "description": "Texto original en griego extraído de TEI de Perseus; edición crítica histórica, no colación paleográfica propia."
+      "description": "Texto original en griego extraído de TEI de Perseus; edición crítica histórica, no colación paleográfica propia.",
+      "localEditionLanguages": [
+        "en",
+        "grc"
+      ],
+      "translation": {
+        "status": "Traducción humana registrada como texto local; no se afirma alineación entre pasajes sin cotejo."
+      }
     },
     {
       "id": "euripides-ion",
@@ -313,9 +342,10 @@
         {
           "language": "en",
           "label": "English · Edward P. Coleridge (1906)",
-          "path": "classics-text-reader.html?work=euripides-ion&lang=en",
+          "path": "data/classics-corpus/euripides-ion-en.json",
           "kind": "historical-translation",
-          "citationChicago18": "Eurípides. Ἴων · Ion. Translated by Edward P. Coleridge. George Bell and Sons, London, 1906. Perseus Digital Library, TEI."
+          "citationChicago18": "Eurípides. Ἴων · Ion. Translated by Edward P. Coleridge. George Bell and Sons, London, 1906. Perseus Digital Library, TEI.",
+          "reader": "classics-text-reader.html?work=euripides-ion&lang=en"
         }
       ],
       "reading": {
@@ -327,7 +357,14 @@
         "gallica": "https://gallica.bnf.fr/",
         "archive": "https://archive.org/"
       },
-      "description": "Texto original en griego extraído de TEI de Perseus; edición crítica histórica, no colación paleográfica propia."
+      "description": "Texto original en griego extraído de TEI de Perseus; edición crítica histórica, no colación paleográfica propia.",
+      "localEditionLanguages": [
+        "en",
+        "grc"
+      ],
+      "translation": {
+        "status": "Traducción humana registrada como texto local; no se afirma alineación entre pasajes sin cotejo."
+      }
     },
     {
       "id": "euripides-helena",
@@ -353,9 +390,10 @@
         {
           "language": "en",
           "label": "English · Edward P. Coleridge (1906)",
-          "path": "classics-text-reader.html?work=euripides-helena&lang=en",
+          "path": "data/classics-corpus/euripides-helena-en.json",
           "kind": "historical-translation",
-          "citationChicago18": "Eurípides. Ἑλένη · Helena. Translated by Edward P. Coleridge. George Bell and Sons, London, 1906. Perseus Digital Library, TEI."
+          "citationChicago18": "Eurípides. Ἑλένη · Helena. Translated by Edward P. Coleridge. George Bell and Sons, London, 1906. Perseus Digital Library, TEI.",
+          "reader": "classics-text-reader.html?work=euripides-helena&lang=en"
         }
       ],
       "reading": {
@@ -367,7 +405,14 @@
         "gallica": "https://gallica.bnf.fr/",
         "archive": "https://archive.org/"
       },
-      "description": "Texto original en griego extraído de TEI de Perseus; edición crítica histórica, no colación paleográfica propia."
+      "description": "Texto original en griego extraído de TEI de Perseus; edición crítica histórica, no colación paleográfica propia.",
+      "localEditionLanguages": [
+        "en",
+        "grc"
+      ],
+      "translation": {
+        "status": "Traducción humana registrada como texto local; no se afirma alineación entre pasajes sin cotejo."
+      }
     },
     {
       "id": "euripides-heracleidae",
@@ -391,12 +436,17 @@
       "status": "Texto griego incorporado, registrado e indexado léxicamente; sin cotejo crítico independiente",
       "publicStatus": "lectura-local-completa",
       "corpusFiles": {
-        "grc": "data/classics-corpus/euripides-heracleidae-grc.json"
+        "grc": "data/classics-corpus/euripides-heracleidae-grc.json",
+        "en": "data/classics-corpus/euripides-heracleidae-en.json"
       },
       "localVersions": [
         {
           "language": "grc",
           "path": "data/classics-corpus/euripides-heracleidae-grc.json"
+        },
+        {
+          "language": "en",
+          "path": "data/classics-corpus/euripides-heracleidae-en.json"
         }
       ],
       "reading": {
@@ -404,14 +454,18 @@
         "status": "Original griego; sin traducción local editorialmente acreditada."
       },
       "translation": {
-        "status": "No se acredita por ahora traducción alineada en el corpus local."
+        "status": "Traducción humana registrada como texto local; no se afirma alineación entre pasajes sin cotejo."
       },
       "links": {
         "scaife": "https://scaife.perseus.org/",
         "gallica": "https://gallica.bnf.fr/",
         "archive": "https://archive.org/"
       },
-      "description": "Texto en griego antiguo procedente de TEI abierto. Conservar atribución, editor, identificador CTS, alcance y estatus crítico."
+      "description": "Texto en griego antiguo procedente de TEI abierto. Conservar atribución, editor, identificador CTS, alcance y estatus crítico.",
+      "localEditionLanguages": [
+        "en",
+        "grc"
+      ]
     },
     {
       "id": "euripides-andromache",
@@ -435,12 +489,17 @@
       "status": "Texto griego incorporado, registrado e indexado léxicamente; sin cotejo crítico independiente",
       "publicStatus": "lectura-local-completa",
       "corpusFiles": {
-        "grc": "data/classics-corpus/euripides-andromache-grc.json"
+        "grc": "data/classics-corpus/euripides-andromache-grc.json",
+        "en": "data/classics-corpus/euripides-andromache-en.json"
       },
       "localVersions": [
         {
           "language": "grc",
           "path": "data/classics-corpus/euripides-andromache-grc.json"
+        },
+        {
+          "language": "en",
+          "path": "data/classics-corpus/euripides-andromache-en.json"
         }
       ],
       "reading": {
@@ -448,14 +507,18 @@
         "status": "Original griego; sin traducción local editorialmente acreditada."
       },
       "translation": {
-        "status": "No se acredita por ahora traducción alineada en el corpus local."
+        "status": "Traducción humana registrada como texto local; no se afirma alineación entre pasajes sin cotejo."
       },
       "links": {
         "scaife": "https://scaife.perseus.org/",
         "gallica": "https://gallica.bnf.fr/",
         "archive": "https://archive.org/"
       },
-      "description": "Texto en griego antiguo procedente de TEI abierto. Conservar atribución, editor, identificador CTS, alcance y estatus crítico."
+      "description": "Texto en griego antiguo procedente de TEI abierto. Conservar atribución, editor, identificador CTS, alcance y estatus crítico.",
+      "localEditionLanguages": [
+        "en",
+        "grc"
+      ]
     },
     {
       "id": "euripides-suppliants",
@@ -490,9 +553,10 @@
         {
           "language": "en",
           "label": "English · E. P. Coleridge (1906)",
-          "path": "classics-text-reader.html?work=euripides-suppliants&lang=en",
+          "path": "data/classics-corpus/euripides-suppliants-en.json",
           "kind": "historical-translation",
-          "citationChicago18": "Eurípides. Ἱκέτιδες · Las suplicantes. Translated by E. P. Coleridge. George Bell and Sons, London, 1906. Perseus Digital Library, TEI."
+          "citationChicago18": "Eurípides. Ἱκέτιδες · Las suplicantes. Translated by E. P. Coleridge. George Bell and Sons, London, 1906. Perseus Digital Library, TEI.",
+          "reader": "classics-text-reader.html?work=euripides-suppliants&lang=en"
         }
       ],
       "reading": {
@@ -500,14 +564,18 @@
         "status": "Original griego; sin traducción local editorialmente acreditada."
       },
       "translation": {
-        "status": "No se acredita por ahora traducción alineada en el corpus local."
+        "status": "Traducción humana registrada como texto local; no se afirma alineación entre pasajes sin cotejo."
       },
       "links": {
         "scaife": "https://scaife.perseus.org/",
         "gallica": "https://gallica.bnf.fr/",
         "archive": "https://archive.org/"
       },
-      "description": "Texto en griego antiguo procedente de TEI abierto. Conservar atribución, editor, identificador CTS, alcance y estatus crítico."
+      "description": "Texto en griego antiguo procedente de TEI abierto. Conservar atribución, editor, identificador CTS, alcance y estatus crítico.",
+      "localEditionLanguages": [
+        "en",
+        "grc"
+      ]
     },
     {
       "id": "euripides-heracles",
@@ -530,12 +598,17 @@
       "status": "Texto griego incorporado, registrado e indexado léxicamente; sin cotejo crítico independiente",
       "publicStatus": "lectura-local-completa",
       "corpusFiles": {
-        "grc": "data/classics-corpus/euripides-heracles-grc.json"
+        "grc": "data/classics-corpus/euripides-heracles-grc.json",
+        "en": "data/classics-corpus/euripides-heracles-en.json"
       },
       "localVersions": [
         {
           "language": "grc",
           "path": "data/classics-corpus/euripides-heracles-grc.json"
+        },
+        {
+          "language": "en",
+          "path": "data/classics-corpus/euripides-heracles-en.json"
         }
       ],
       "reading": {
@@ -543,14 +616,18 @@
         "status": "Original griego; no se declara traducción editorial local cotejada."
       },
       "translation": {
-        "status": "Traducción local acreditada no disponible en este registro."
+        "status": "Traducción humana registrada como texto local; no se afirma alineación entre pasajes sin cotejo."
       },
       "links": {
         "scaife": "https://scaife.perseus.org/",
         "gallica": "https://gallica.bnf.fr/",
         "archive": "https://archive.org/"
       },
-      "description": "Tragedia conservada en TEI de Perseus con loci CTS; texto apto para lectura y búsqueda, sin pretensión de nueva recensio."
+      "description": "Tragedia conservada en TEI de Perseus con loci CTS; texto apto para lectura y búsqueda, sin pretensión de nueva recensio.",
+      "localEditionLanguages": [
+        "en",
+        "grc"
+      ]
     },
     {
       "id": "euripides-orestes",
@@ -584,9 +661,10 @@
         {
           "language": "en",
           "label": "English · Edward P. Coleridge (1891)",
-          "path": "classics-text-reader.html?work=euripides-orestes&lang=en",
+          "path": "data/classics-corpus/euripides-orestes-en.json",
           "kind": "historical-translation",
-          "citationChicago18": "Eurípides. Ὀρέστης · Orestes. Translated by Edward P. Coleridge. George Bell and Sons, London, 1891. Perseus Digital Library, TEI."
+          "citationChicago18": "Eurípides. Ὀρέστης · Orestes. Translated by Edward P. Coleridge. George Bell and Sons, London, 1891. Perseus Digital Library, TEI.",
+          "reader": "classics-text-reader.html?work=euripides-orestes&lang=en"
         }
       ],
       "reading": {
@@ -594,14 +672,18 @@
         "status": "Original griego; no se declara traducción editorial local cotejada."
       },
       "translation": {
-        "status": "Traducción local acreditada no disponible en este registro."
+        "status": "Traducción humana registrada como texto local; no se afirma alineación entre pasajes sin cotejo."
       },
       "links": {
         "scaife": "https://scaife.perseus.org/",
         "gallica": "https://gallica.bnf.fr/",
         "archive": "https://archive.org/"
       },
-      "description": "Tragedia conservada en TEI de Perseus con loci CTS; texto apto para lectura y búsqueda, sin pretensión de nueva recensio."
+      "description": "Tragedia conservada en TEI de Perseus con loci CTS; texto apto para lectura y búsqueda, sin pretensión de nueva recensio.",
+      "localEditionLanguages": [
+        "en",
+        "grc"
+      ]
     },
     {
       "id": "plato-euthyphro",
@@ -646,7 +728,7 @@
         "status": "Transcripción de edición TEI con segmentos digitales locales; sin cotejo crítico independiente."
       },
       "translation": {
-        "status": "Sin versión traducida cotejada alojada para esta ficha; consultar las fuentes editoriales."
+        "status": "Traducción humana registrada como texto local; no se afirma alineación entre pasajes sin cotejo."
       },
       "links": {
         "scaife": "https://scaife.perseus.org/",
@@ -657,15 +739,24 @@
       "coverType": "typographic-institutional",
       "selectionOrder": 1,
       "corpusFiles": {
-        "grc": "data/classics-corpus/plato-euthyphro-grc.json"
+        "grc": "data/classics-corpus/plato-euthyphro-grc.json",
+        "en": "data/classics-corpus/plato-euthyphro-en.json"
       },
       "localVersions": [
         {
           "language": "grc",
           "path": "data/classics-corpus/plato-euthyphro-grc.json"
+        },
+        {
+          "language": "en",
+          "path": "data/classics-corpus/plato-euthyphro-en.json"
         }
       ],
-      "sourceUrn": "urn:cts:greekLit:tlg0059.tlg001.perseus-grc1"
+      "sourceUrn": "urn:cts:greekLit:tlg0059.tlg001.perseus-grc1",
+      "localEditionLanguages": [
+        "en",
+        "grc"
+      ]
     },
     {
       "id": "plato-statesman",
@@ -710,7 +801,7 @@
         "status": "Transcripción de edición TEI con segmentos digitales locales; sin cotejo crítico independiente."
       },
       "translation": {
-        "status": "Sin versión traducida cotejada alojada para esta ficha; consultar las fuentes editoriales."
+        "status": "Traducción humana registrada como texto local; no se afirma alineación entre pasajes sin cotejo."
       },
       "links": {
         "scaife": "https://scaife.perseus.org/",
@@ -721,15 +812,24 @@
       "coverType": "typographic-institutional",
       "selectionOrder": 2,
       "corpusFiles": {
-        "grc": "data/classics-corpus/plato-statesman-grc.json"
+        "grc": "data/classics-corpus/plato-statesman-grc.json",
+        "en": "data/classics-corpus/plato-statesman-en.json"
       },
       "localVersions": [
         {
           "language": "grc",
           "path": "data/classics-corpus/plato-statesman-grc.json"
+        },
+        {
+          "language": "en",
+          "path": "data/classics-corpus/plato-statesman-en.json"
         }
       ],
-      "sourceUrn": "urn:cts:greekLit:tlg0059.tlg008.perseus-grc2"
+      "sourceUrn": "urn:cts:greekLit:tlg0059.tlg008.perseus-grc2",
+      "localEditionLanguages": [
+        "en",
+        "grc"
+      ]
     },
     {
       "id": "plato-philebus",
@@ -774,7 +874,7 @@
         "status": "Transcripción de edición TEI con segmentos digitales locales; sin cotejo crítico independiente."
       },
       "translation": {
-        "status": "Sin versión traducida cotejada alojada para esta ficha; consultar las fuentes editoriales."
+        "status": "Traducción humana registrada como texto local; no se afirma alineación entre pasajes sin cotejo."
       },
       "links": {
         "scaife": "https://scaife.perseus.org/",
@@ -785,15 +885,24 @@
       "coverType": "typographic-institutional",
       "selectionOrder": 3,
       "corpusFiles": {
-        "grc": "data/classics-corpus/plato-philebus-grc.json"
+        "grc": "data/classics-corpus/plato-philebus-grc.json",
+        "en": "data/classics-corpus/plato-philebus-en.json"
       },
       "localVersions": [
         {
           "language": "grc",
           "path": "data/classics-corpus/plato-philebus-grc.json"
+        },
+        {
+          "language": "en",
+          "path": "data/classics-corpus/plato-philebus-en.json"
         }
       ],
-      "sourceUrn": "urn:cts:greekLit:tlg0059.tlg010.perseus-grc2"
+      "sourceUrn": "urn:cts:greekLit:tlg0059.tlg010.perseus-grc2",
+      "localEditionLanguages": [
+        "en",
+        "grc"
+      ]
     },
     {
       "id": "plato-charmides",
@@ -838,7 +947,7 @@
         "status": "Transcripción de edición TEI con segmentos digitales locales; sin cotejo crítico independiente."
       },
       "translation": {
-        "status": "Sin versión traducida cotejada alojada para esta ficha; consultar las fuentes editoriales."
+        "status": "Traducción humana registrada como texto local; no se afirma alineación entre pasajes sin cotejo."
       },
       "links": {
         "scaife": "https://scaife.perseus.org/",
@@ -849,15 +958,24 @@
       "coverType": "typographic-institutional",
       "selectionOrder": 4,
       "corpusFiles": {
-        "grc": "data/classics-corpus/plato-charmides-grc.json"
+        "grc": "data/classics-corpus/plato-charmides-grc.json",
+        "en": "data/classics-corpus/plato-charmides-en.json"
       },
       "localVersions": [
         {
           "language": "grc",
           "path": "data/classics-corpus/plato-charmides-grc.json"
+        },
+        {
+          "language": "en",
+          "path": "data/classics-corpus/plato-charmides-en.json"
         }
       ],
-      "sourceUrn": "urn:cts:greekLit:tlg0059.tlg018.perseus-grc2"
+      "sourceUrn": "urn:cts:greekLit:tlg0059.tlg018.perseus-grc2",
+      "localEditionLanguages": [
+        "en",
+        "grc"
+      ]
     },
     {
       "id": "plato-laches",
@@ -902,7 +1020,7 @@
         "status": "Transcripción de edición TEI con segmentos digitales locales; sin cotejo crítico independiente."
       },
       "translation": {
-        "status": "Sin versión traducida cotejada alojada para esta ficha; consultar las fuentes editoriales."
+        "status": "Traducción humana registrada como texto local; no se afirma alineación entre pasajes sin cotejo."
       },
       "links": {
         "scaife": "https://scaife.perseus.org/",
@@ -913,15 +1031,24 @@
       "coverType": "typographic-institutional",
       "selectionOrder": 5,
       "corpusFiles": {
-        "grc": "data/classics-corpus/plato-laches-grc.json"
+        "grc": "data/classics-corpus/plato-laches-grc.json",
+        "en": "data/classics-corpus/plato-laches-en.json"
       },
       "localVersions": [
         {
           "language": "grc",
           "path": "data/classics-corpus/plato-laches-grc.json"
+        },
+        {
+          "language": "en",
+          "path": "data/classics-corpus/plato-laches-en.json"
         }
       ],
-      "sourceUrn": "urn:cts:greekLit:tlg0059.tlg019.perseus-grc2"
+      "sourceUrn": "urn:cts:greekLit:tlg0059.tlg019.perseus-grc2",
+      "localEditionLanguages": [
+        "en",
+        "grc"
+      ]
     },
     {
       "id": "plato-lysis",
@@ -964,7 +1091,7 @@
         "status": "Transcripción de edición TEI con segmentos digitales locales; sin cotejo crítico independiente."
       },
       "translation": {
-        "status": "Sin versión traducida cotejada alojada para esta ficha; consultar las fuentes editoriales."
+        "status": "Traducción humana registrada como texto local; no se afirma alineación entre pasajes sin cotejo."
       },
       "links": {
         "scaife": "https://scaife.perseus.org/",
@@ -976,13 +1103,22 @@
       "selectionOrder": 6,
       "sourceUrn": "urn:cts:greekLit:tlg0059.tlg020.perseus-grc2",
       "corpusFiles": {
-        "grc": "data/classics-corpus/plato-lysis-grc.json"
+        "grc": "data/classics-corpus/plato-lysis-grc.json",
+        "en": "data/classics-corpus/plato-lysis-en.json"
       },
       "localVersions": [
         {
           "language": "grc",
           "path": "data/classics-corpus/plato-lysis-grc.json"
+        },
+        {
+          "language": "en",
+          "path": "data/classics-corpus/plato-lysis-en.json"
         }
+      ],
+      "localEditionLanguages": [
+        "en",
+        "grc"
       ]
     },
     {
@@ -1026,7 +1162,7 @@
         "status": "Transcripción de edición TEI con segmentos digitales locales; sin cotejo crítico independiente."
       },
       "translation": {
-        "status": "Sin versión traducida cotejada alojada para esta ficha; consultar las fuentes editoriales."
+        "status": "Traducción humana registrada como texto local; no se afirma alineación entre pasajes sin cotejo."
       },
       "links": {
         "scaife": "https://scaife.perseus.org/",
@@ -1038,13 +1174,22 @@
       "selectionOrder": 7,
       "sourceUrn": "urn:cts:greekLit:tlg0059.tlg021.perseus-grc2",
       "corpusFiles": {
-        "grc": "data/classics-corpus/plato-euthydemus-grc.json"
+        "grc": "data/classics-corpus/plato-euthydemus-grc.json",
+        "en": "data/classics-corpus/plato-euthydemus-en.json"
       },
       "localVersions": [
         {
           "language": "grc",
           "path": "data/classics-corpus/plato-euthydemus-grc.json"
+        },
+        {
+          "language": "en",
+          "path": "data/classics-corpus/plato-euthydemus-en.json"
         }
+      ],
+      "localEditionLanguages": [
+        "en",
+        "grc"
       ]
     },
     {
@@ -1088,7 +1233,7 @@
         "status": "Transcripción de edición TEI con segmentos digitales locales; sin cotejo crítico independiente."
       },
       "translation": {
-        "status": "Sin versión traducida cotejada alojada para esta ficha; consultar las fuentes editoriales."
+        "status": "Traducción humana registrada como texto local; no se afirma alineación entre pasajes sin cotejo."
       },
       "links": {
         "scaife": "https://scaife.perseus.org/",
@@ -1100,13 +1245,22 @@
       "selectionOrder": 8,
       "sourceUrn": "urn:cts:greekLit:tlg0059.tlg026.perseus-grc2",
       "corpusFiles": {
-        "grc": "data/classics-corpus/plato-hippias-minor-grc.json"
+        "grc": "data/classics-corpus/plato-hippias-minor-grc.json",
+        "en": "data/classics-corpus/plato-hippias-minor-en.json"
       },
       "localVersions": [
         {
           "language": "grc",
           "path": "data/classics-corpus/plato-hippias-minor-grc.json"
+        },
+        {
+          "language": "en",
+          "path": "data/classics-corpus/plato-hippias-minor-en.json"
         }
+      ],
+      "localEditionLanguages": [
+        "en",
+        "grc"
       ]
     },
     {
@@ -1150,7 +1304,7 @@
         "status": "Transcripción de edición TEI con segmentos digitales locales; sin cotejo crítico independiente."
       },
       "translation": {
-        "status": "Sin versión traducida cotejada alojada para esta ficha; consultar las fuentes editoriales."
+        "status": "Traducción humana registrada como texto local; no se afirma alineación entre pasajes sin cotejo."
       },
       "links": {
         "scaife": "https://scaife.perseus.org/",
@@ -1162,13 +1316,22 @@
       "selectionOrder": 9,
       "sourceUrn": "urn:cts:greekLit:tlg0059.tlg027.perseus-grc2",
       "corpusFiles": {
-        "grc": "data/classics-corpus/plato-ion-grc.json"
+        "grc": "data/classics-corpus/plato-ion-grc.json",
+        "en": "data/classics-corpus/plato-ion-en.json"
       },
       "localVersions": [
         {
           "language": "grc",
           "path": "data/classics-corpus/plato-ion-grc.json"
+        },
+        {
+          "language": "en",
+          "path": "data/classics-corpus/plato-ion-en.json"
         }
+      ],
+      "localEditionLanguages": [
+        "en",
+        "grc"
       ]
     },
     {
@@ -1212,7 +1375,7 @@
         "status": "Transcripción de edición TEI con segmentos digitales locales; sin cotejo crítico independiente."
       },
       "translation": {
-        "status": "Sin versión traducida cotejada alojada para esta ficha; consultar las fuentes editoriales."
+        "status": "Traducción humana registrada como texto local; no se afirma alineación entre pasajes sin cotejo."
       },
       "links": {
         "scaife": "https://scaife.perseus.org/",
@@ -1224,13 +1387,22 @@
       "selectionOrder": 10,
       "sourceUrn": "urn:cts:greekLit:tlg0059.tlg028.perseus-grc2",
       "corpusFiles": {
-        "grc": "data/classics-corpus/plato-menexenus-grc.json"
+        "grc": "data/classics-corpus/plato-menexenus-grc.json",
+        "en": "data/classics-corpus/plato-menexenus-en.json"
       },
       "localVersions": [
         {
           "language": "grc",
           "path": "data/classics-corpus/plato-menexenus-grc.json"
+        },
+        {
+          "language": "en",
+          "path": "data/classics-corpus/plato-menexenus-en.json"
         }
+      ],
+      "localEditionLanguages": [
+        "en",
+        "grc"
       ]
     },
     {
@@ -1293,6 +1465,9 @@
           "language": "grc",
           "path": "data/classics-corpus/xenophon-oeconomicus-grc.json"
         }
+      ],
+      "localEditionLanguages": [
+        "grc"
       ]
     },
     {
@@ -1355,6 +1530,9 @@
           "language": "grc",
           "path": "data/classics-corpus/xenophon-symposium-grc.json"
         }
+      ],
+      "localEditionLanguages": [
+        "grc"
       ]
     },
     {
@@ -1417,6 +1595,9 @@
           "language": "grc",
           "path": "data/classics-corpus/xenophon-apology-grc.json"
         }
+      ],
+      "localEditionLanguages": [
+        "grc"
       ]
     },
     {
@@ -1479,6 +1660,9 @@
           "language": "grc",
           "path": "data/classics-corpus/xenophon-hiero-grc.json"
         }
+      ],
+      "localEditionLanguages": [
+        "grc"
       ]
     },
     {
@@ -1541,6 +1725,9 @@
           "language": "grc",
           "path": "data/classics-corpus/xenophon-agesilaus-grc.json"
         }
+      ],
+      "localEditionLanguages": [
+        "grc"
       ]
     },
     {
@@ -1603,6 +1790,9 @@
           "language": "grc",
           "path": "data/classics-corpus/xenophon-lacedaemonian-constitution-grc.json"
         }
+      ],
+      "localEditionLanguages": [
+        "grc"
       ]
     },
     {
@@ -1665,6 +1855,9 @@
           "language": "grc",
           "path": "data/classics-corpus/xenophon-ways-means-grc.json"
         }
+      ],
+      "localEditionLanguages": [
+        "grc"
       ]
     },
     {
@@ -1727,6 +1920,9 @@
           "language": "grc",
           "path": "data/classics-corpus/xenophon-hipparchicus-grc.json"
         }
+      ],
+      "localEditionLanguages": [
+        "grc"
       ]
     },
     {
@@ -1789,6 +1985,9 @@
           "language": "grc",
           "path": "data/classics-corpus/xenophon-horsemanship-grc.json"
         }
+      ],
+      "localEditionLanguages": [
+        "grc"
       ]
     },
     {
@@ -1851,6 +2050,9 @@
           "language": "grc",
           "path": "data/classics-corpus/xenophon-hunting-grc.json"
         }
+      ],
+      "localEditionLanguages": [
+        "grc"
       ]
     },
     {
@@ -1913,6 +2115,9 @@
           "language": "grc",
           "path": "data/classics-corpus/lucian-phalaris-grc.json"
         }
+      ],
+      "localEditionLanguages": [
+        "grc"
       ]
     },
     {
@@ -1975,6 +2180,9 @@
           "language": "grc",
           "path": "data/classics-corpus/lucian-hippias-grc.json"
         }
+      ],
+      "localEditionLanguages": [
+        "grc"
       ]
     },
     {
@@ -2037,6 +2245,9 @@
           "language": "grc",
           "path": "data/classics-corpus/lucian-bacchus-grc.json"
         }
+      ],
+      "localEditionLanguages": [
+        "grc"
       ]
     },
     {
@@ -2099,6 +2310,9 @@
           "language": "grc",
           "path": "data/classics-corpus/lucian-hercules-grc.json"
         }
+      ],
+      "localEditionLanguages": [
+        "grc"
       ]
     },
     {
@@ -2161,6 +2375,9 @@
           "language": "grc",
           "path": "data/classics-corpus/lucian-electrum-grc.json"
         }
+      ],
+      "localEditionLanguages": [
+        "grc"
       ]
     },
     {
@@ -2223,6 +2440,9 @@
           "language": "grc",
           "path": "data/classics-corpus/lucian-encomium-fly-grc.json"
         }
+      ],
+      "localEditionLanguages": [
+        "grc"
       ]
     },
     {
@@ -2285,6 +2505,9 @@
           "language": "grc",
           "path": "data/classics-corpus/lucian-nigrinus-grc.json"
         }
+      ],
+      "localEditionLanguages": [
+        "grc"
       ]
     },
     {
@@ -2347,6 +2570,9 @@
           "language": "grc",
           "path": "data/classics-corpus/lucian-demonax-grc.json"
         }
+      ],
+      "localEditionLanguages": [
+        "grc"
       ]
     },
     {
@@ -2409,6 +2635,9 @@
           "language": "grc",
           "path": "data/classics-corpus/lucian-de-domo-grc.json"
         }
+      ],
+      "localEditionLanguages": [
+        "grc"
       ]
     },
     {
@@ -2471,6 +2700,9 @@
           "language": "grc",
           "path": "data/classics-corpus/lucian-encomium-fatherland-grc.json"
         }
+      ],
+      "localEditionLanguages": [
+        "grc"
       ]
     },
     {
@@ -2533,6 +2765,9 @@
           "language": "grc",
           "path": "data/classics-corpus/lysias-eratosthenes-grc.json"
         }
+      ],
+      "localEditionLanguages": [
+        "grc"
       ]
     },
     {
@@ -2595,6 +2830,9 @@
           "language": "grc",
           "path": "data/classics-corpus/lysias-funeral-oration-grc.json"
         }
+      ],
+      "localEditionLanguages": [
+        "grc"
       ]
     },
     {
@@ -2657,6 +2895,9 @@
           "language": "grc",
           "path": "data/classics-corpus/lysias-against-simon-grc.json"
         }
+      ],
+      "localEditionLanguages": [
+        "grc"
       ]
     },
     {
@@ -2719,6 +2960,9 @@
           "language": "grc",
           "path": "data/classics-corpus/lysias-wound-grc.json"
         }
+      ],
+      "localEditionLanguages": [
+        "grc"
       ]
     },
     {
@@ -2781,6 +3025,9 @@
           "language": "grc",
           "path": "data/classics-corpus/lysias-for-callias-grc.json"
         }
+      ],
+      "localEditionLanguages": [
+        "grc"
       ]
     },
     {
@@ -2843,6 +3090,9 @@
           "language": "grc",
           "path": "data/classics-corpus/lysias-against-andocides-grc.json"
         }
+      ],
+      "localEditionLanguages": [
+        "grc"
       ]
     },
     {
@@ -2905,6 +3155,9 @@
           "language": "grc",
           "path": "data/classics-corpus/lysias-olive-stump-grc.json"
         }
+      ],
+      "localEditionLanguages": [
+        "grc"
       ]
     },
     {
@@ -2967,6 +3220,9 @@
           "language": "grc",
           "path": "data/classics-corpus/lysias-calumny-grc.json"
         }
+      ],
+      "localEditionLanguages": [
+        "grc"
       ]
     },
     {
@@ -3029,6 +3285,9 @@
           "language": "grc",
           "path": "data/classics-corpus/lysias-soldier-grc.json"
         }
+      ],
+      "localEditionLanguages": [
+        "grc"
       ]
     },
     {
@@ -3091,6 +3350,9 @@
           "language": "grc",
           "path": "data/classics-corpus/lysias-theomnestus-1-grc.json"
         }
+      ],
+      "localEditionLanguages": [
+        "grc"
       ]
     },
     {
@@ -3134,7 +3396,7 @@
         "status": "Transcripción de edición TEI con segmentos digitales locales; sin cotejo crítico independiente."
       },
       "translation": {
-        "status": "Sin versión traducida cotejada alojada para esta ficha; consultar las fuentes editoriales."
+        "status": "Traducción humana registrada como texto local; no se afirma alineación entre pasajes sin cotejo."
       },
       "links": {
         "scaife": "https://scaife.perseus.org/",
@@ -3146,13 +3408,22 @@
       "selectionOrder": 41,
       "sourceUrn": "urn:cts:greekLit:tlg0010.tlg001.perseus-grc2",
       "corpusFiles": {
-        "grc": "data/classics-corpus/isocrates-euthynus-grc.json"
+        "grc": "data/classics-corpus/isocrates-euthynus-grc.json",
+        "en": "data/classics-corpus/isocrates-euthynus-en.json"
       },
       "localVersions": [
         {
           "language": "grc",
           "path": "data/classics-corpus/isocrates-euthynus-grc.json"
+        },
+        {
+          "language": "en",
+          "path": "data/classics-corpus/isocrates-euthynus-en.json"
         }
+      ],
+      "localEditionLanguages": [
+        "en",
+        "grc"
       ]
     },
     {
@@ -3196,7 +3467,7 @@
         "status": "Transcripción de edición TEI con segmentos digitales locales; sin cotejo crítico independiente."
       },
       "translation": {
-        "status": "Sin versión traducida cotejada alojada para esta ficha; consultar las fuentes editoriales."
+        "status": "Traducción humana registrada como texto local; no se afirma alineación entre pasajes sin cotejo."
       },
       "links": {
         "scaife": "https://scaife.perseus.org/",
@@ -3208,13 +3479,22 @@
       "selectionOrder": 42,
       "sourceUrn": "urn:cts:greekLit:tlg0010.tlg002.perseus-grc2",
       "corpusFiles": {
-        "grc": "data/classics-corpus/isocrates-callimachus-grc.json"
+        "grc": "data/classics-corpus/isocrates-callimachus-grc.json",
+        "en": "data/classics-corpus/isocrates-callimachus-en.json"
       },
       "localVersions": [
         {
           "language": "grc",
           "path": "data/classics-corpus/isocrates-callimachus-grc.json"
+        },
+        {
+          "language": "en",
+          "path": "data/classics-corpus/isocrates-callimachus-en.json"
         }
+      ],
+      "localEditionLanguages": [
+        "en",
+        "grc"
       ]
     },
     {
@@ -3258,7 +3538,7 @@
         "status": "Transcripción de edición TEI con segmentos digitales locales; sin cotejo crítico independiente."
       },
       "translation": {
-        "status": "Sin versión traducida cotejada alojada para esta ficha; consultar las fuentes editoriales."
+        "status": "Traducción humana registrada como texto local; no se afirma alineación entre pasajes sin cotejo."
       },
       "links": {
         "scaife": "https://scaife.perseus.org/",
@@ -3270,13 +3550,22 @@
       "selectionOrder": 43,
       "sourceUrn": "urn:cts:greekLit:tlg0010.tlg003.perseus-grc2",
       "corpusFiles": {
-        "grc": "data/classics-corpus/isocrates-lochites-grc.json"
+        "grc": "data/classics-corpus/isocrates-lochites-grc.json",
+        "en": "data/classics-corpus/isocrates-lochites-en.json"
       },
       "localVersions": [
         {
           "language": "grc",
           "path": "data/classics-corpus/isocrates-lochites-grc.json"
+        },
+        {
+          "language": "en",
+          "path": "data/classics-corpus/isocrates-lochites-en.json"
         }
+      ],
+      "localEditionLanguages": [
+        "en",
+        "grc"
       ]
     },
     {
@@ -3320,7 +3609,7 @@
         "status": "Transcripción de edición TEI con segmentos digitales locales; sin cotejo crítico independiente."
       },
       "translation": {
-        "status": "Sin versión traducida cotejada alojada para esta ficha; consultar las fuentes editoriales."
+        "status": "Traducción humana registrada como texto local; no se afirma alineación entre pasajes sin cotejo."
       },
       "links": {
         "scaife": "https://scaife.perseus.org/",
@@ -3332,13 +3621,22 @@
       "selectionOrder": 44,
       "sourceUrn": "urn:cts:greekLit:tlg0010.tlg004.perseus-grc2",
       "corpusFiles": {
-        "grc": "data/classics-corpus/isocrates-team-horses-grc.json"
+        "grc": "data/classics-corpus/isocrates-team-horses-grc.json",
+        "en": "data/classics-corpus/isocrates-team-horses-en.json"
       },
       "localVersions": [
         {
           "language": "grc",
           "path": "data/classics-corpus/isocrates-team-horses-grc.json"
+        },
+        {
+          "language": "en",
+          "path": "data/classics-corpus/isocrates-team-horses-en.json"
         }
+      ],
+      "localEditionLanguages": [
+        "en",
+        "grc"
       ]
     },
     {
@@ -3382,7 +3680,7 @@
         "status": "Transcripción de edición TEI con segmentos digitales locales; sin cotejo crítico independiente."
       },
       "translation": {
-        "status": "Sin versión traducida cotejada alojada para esta ficha; consultar las fuentes editoriales."
+        "status": "Traducción humana registrada como texto local; no se afirma alineación entre pasajes sin cotejo."
       },
       "links": {
         "scaife": "https://scaife.perseus.org/",
@@ -3394,13 +3692,22 @@
       "selectionOrder": 45,
       "sourceUrn": "urn:cts:greekLit:tlg0010.tlg005.perseus-grc2",
       "corpusFiles": {
-        "grc": "data/classics-corpus/isocrates-trapeziticus-grc.json"
+        "grc": "data/classics-corpus/isocrates-trapeziticus-grc.json",
+        "en": "data/classics-corpus/isocrates-trapeziticus-en.json"
       },
       "localVersions": [
         {
           "language": "grc",
           "path": "data/classics-corpus/isocrates-trapeziticus-grc.json"
+        },
+        {
+          "language": "en",
+          "path": "data/classics-corpus/isocrates-trapeziticus-en.json"
         }
+      ],
+      "localEditionLanguages": [
+        "en",
+        "grc"
       ]
     },
     {
@@ -3444,7 +3751,7 @@
         "status": "Transcripción de edición TEI con segmentos digitales locales; sin cotejo crítico independiente."
       },
       "translation": {
-        "status": "Sin versión traducida cotejada alojada para esta ficha; consultar las fuentes editoriales."
+        "status": "Traducción humana registrada como texto local; no se afirma alineación entre pasajes sin cotejo."
       },
       "links": {
         "scaife": "https://scaife.perseus.org/",
@@ -3456,13 +3763,22 @@
       "selectionOrder": 46,
       "sourceUrn": "urn:cts:greekLit:tlg0010.tlg006.perseus-grc2",
       "corpusFiles": {
-        "grc": "data/classics-corpus/isocrates-aegineticus-grc.json"
+        "grc": "data/classics-corpus/isocrates-aegineticus-grc.json",
+        "en": "data/classics-corpus/isocrates-aegineticus-en.json"
       },
       "localVersions": [
         {
           "language": "grc",
           "path": "data/classics-corpus/isocrates-aegineticus-grc.json"
+        },
+        {
+          "language": "en",
+          "path": "data/classics-corpus/isocrates-aegineticus-en.json"
         }
+      ],
+      "localEditionLanguages": [
+        "en",
+        "grc"
       ]
     },
     {
@@ -3506,7 +3822,7 @@
         "status": "Transcripción de edición TEI con segmentos digitales locales; sin cotejo crítico independiente."
       },
       "translation": {
-        "status": "Sin versión traducida cotejada alojada para esta ficha; consultar las fuentes editoriales."
+        "status": "Traducción humana registrada como texto local; no se afirma alineación entre pasajes sin cotejo."
       },
       "links": {
         "scaife": "https://scaife.perseus.org/",
@@ -3518,13 +3834,22 @@
       "selectionOrder": 47,
       "sourceUrn": "urn:cts:greekLit:tlg0010.tlg008.perseus-grc2",
       "corpusFiles": {
-        "grc": "data/classics-corpus/isocrates-sophists-grc.json"
+        "grc": "data/classics-corpus/isocrates-sophists-grc.json",
+        "en": "data/classics-corpus/isocrates-sophists-en.json"
       },
       "localVersions": [
         {
           "language": "grc",
           "path": "data/classics-corpus/isocrates-sophists-grc.json"
+        },
+        {
+          "language": "en",
+          "path": "data/classics-corpus/isocrates-sophists-en.json"
         }
+      ],
+      "localEditionLanguages": [
+        "en",
+        "grc"
       ]
     },
     {
@@ -3568,7 +3893,7 @@
         "status": "Transcripción de edición TEI con segmentos digitales locales; sin cotejo crítico independiente."
       },
       "translation": {
-        "status": "Sin versión traducida cotejada alojada para esta ficha; consultar las fuentes editoriales."
+        "status": "Traducción humana registrada como texto local; no se afirma alineación entre pasajes sin cotejo."
       },
       "links": {
         "scaife": "https://scaife.perseus.org/",
@@ -3580,13 +3905,22 @@
       "selectionOrder": 48,
       "sourceUrn": "urn:cts:greekLit:tlg0010.tlg009.perseus-grc2",
       "corpusFiles": {
-        "grc": "data/classics-corpus/isocrates-helen-grc.json"
+        "grc": "data/classics-corpus/isocrates-helen-grc.json",
+        "en": "data/classics-corpus/isocrates-helen-en.json"
       },
       "localVersions": [
         {
           "language": "grc",
           "path": "data/classics-corpus/isocrates-helen-grc.json"
+        },
+        {
+          "language": "en",
+          "path": "data/classics-corpus/isocrates-helen-en.json"
         }
+      ],
+      "localEditionLanguages": [
+        "en",
+        "grc"
       ]
     },
     {
@@ -3630,7 +3964,7 @@
         "status": "Transcripción de edición TEI con segmentos digitales locales; sin cotejo crítico independiente."
       },
       "translation": {
-        "status": "Sin versión traducida cotejada alojada para esta ficha; consultar las fuentes editoriales."
+        "status": "Traducción humana registrada como texto local; no se afirma alineación entre pasajes sin cotejo."
       },
       "links": {
         "scaife": "https://scaife.perseus.org/",
@@ -3642,13 +3976,22 @@
       "selectionOrder": 49,
       "sourceUrn": "urn:cts:greekLit:tlg0010.tlg010.perseus-grc2",
       "corpusFiles": {
-        "grc": "data/classics-corpus/isocrates-busiris-grc.json"
+        "grc": "data/classics-corpus/isocrates-busiris-grc.json",
+        "en": "data/classics-corpus/isocrates-busiris-en.json"
       },
       "localVersions": [
         {
           "language": "grc",
           "path": "data/classics-corpus/isocrates-busiris-grc.json"
+        },
+        {
+          "language": "en",
+          "path": "data/classics-corpus/isocrates-busiris-en.json"
         }
+      ],
+      "localEditionLanguages": [
+        "en",
+        "grc"
       ]
     },
     {
@@ -3692,7 +4035,7 @@
         "status": "Transcripción de edición TEI con segmentos digitales locales; sin cotejo crítico independiente."
       },
       "translation": {
-        "status": "Sin versión traducida cotejada alojada para esta ficha; consultar las fuentes editoriales."
+        "status": "Traducción humana registrada como texto local; no se afirma alineación entre pasajes sin cotejo."
       },
       "links": {
         "scaife": "https://scaife.perseus.org/",
@@ -3704,13 +4047,22 @@
       "selectionOrder": 50,
       "sourceUrn": "urn:cts:greekLit:tlg0010.tlg012.perseus-grc2",
       "corpusFiles": {
-        "grc": "data/classics-corpus/isocrates-plataicus-grc.json"
+        "grc": "data/classics-corpus/isocrates-plataicus-grc.json",
+        "en": "data/classics-corpus/isocrates-plataicus-en.json"
       },
       "localVersions": [
         {
           "language": "grc",
           "path": "data/classics-corpus/isocrates-plataicus-grc.json"
+        },
+        {
+          "language": "en",
+          "path": "data/classics-corpus/isocrates-plataicus-en.json"
         }
+      ],
+      "localEditionLanguages": [
+        "en",
+        "grc"
       ]
     },
     {
@@ -3759,7 +4111,10 @@
       "reading": {
         "url": "classics-text-reader.html?work=galen-adhortatio-artes&lang=grc",
         "status": "Texto original griego indexado en registro literal; cotejo de manuscritos y cobertura del índice invertido pendientes"
-      }
+      },
+      "localEditionLanguages": [
+        "grc"
+      ]
     },
     {
       "id": "galen-optimus-medicus-philosophus",
@@ -3807,7 +4162,10 @@
       "reading": {
         "url": "classics-text-reader.html?work=galen-optimus-medicus-philosophus&lang=grc",
         "status": "Texto original griego indexado en registro literal; cotejo de manuscritos y cobertura del índice invertido pendientes"
-      }
+      },
+      "localEditionLanguages": [
+        "grc"
+      ]
     },
     {
       "id": "hippocrates-de-prisca-medicina",
@@ -3855,7 +4213,10 @@
       "reading": {
         "url": "classics-text-reader.html?work=hippocrates-de-prisca-medicina&lang=grc",
         "status": "Texto original griego indexado en registro literal; cotejo de manuscritos y cobertura del índice invertido pendientes"
-      }
+      },
+      "localEditionLanguages": [
+        "grc"
+      ]
     },
     {
       "id": "plato-parmenides",
@@ -3886,6 +4247,13 @@
       "reading": {
         "url": "classics-text-reader.html?work=plato-parmenides&lang=grc&to=en",
         "status": "Texto griego completo con traducción inglesa indexada por secciones; la correspondencia no implica alineación por palabra."
+      },
+      "localEditionLanguages": [
+        "en",
+        "grc"
+      ],
+      "translation": {
+        "status": "Traducción humana registrada como texto local; no se afirma alineación entre pasajes sin cotejo."
       }
     },
     {
@@ -3917,6 +4285,13 @@
       "reading": {
         "url": "classics-text-reader.html?work=plato-sophist&lang=grc&to=en",
         "status": "Texto griego completo con traducción inglesa indexada por secciones; la correspondencia no implica alineación por palabra."
+      },
+      "localEditionLanguages": [
+        "en",
+        "grc"
+      ],
+      "translation": {
+        "status": "Traducción humana registrada como texto local; no se afirma alineación entre pasajes sin cotejo."
       }
     },
     {
@@ -3948,6 +4323,13 @@
       "reading": {
         "url": "classics-text-reader.html?work=plato-theaetetus&lang=grc&to=en",
         "status": "Texto griego completo con traducción inglesa indexada por secciones; la correspondencia no implica alineación por palabra."
+      },
+      "localEditionLanguages": [
+        "en",
+        "grc"
+      ],
+      "translation": {
+        "status": "Traducción humana registrada como texto local; no se afirma alineación entre pasajes sin cotejo."
       }
     },
     {
@@ -3976,7 +4358,10 @@
       "reading": {
         "url": "classics-text-reader.html?work=first1k-tlg1799-tlg007&lang=grc",
         "status": "Original griego segmentado por locus TEI; sin traducción vinculada."
-      }
+      },
+      "localEditionLanguages": [
+        "grc"
+      ]
     },
     {
       "id": "first1k-tlg0552-tlg001",
@@ -4004,7 +4389,10 @@
       "reading": {
         "url": "classics-text-reader.html?work=first1k-tlg0552-tlg001&lang=grc",
         "status": "Original griego segmentado por locus TEI; sin traducción vinculada."
-      }
+      },
+      "localEditionLanguages": [
+        "grc"
+      ]
     },
     {
       "id": "first1k-tlg0552-tlg004",
@@ -4032,7 +4420,10 @@
       "reading": {
         "url": "classics-text-reader.html?work=first1k-tlg0552-tlg004&lang=grc",
         "status": "Original griego segmentado por locus TEI; sin traducción vinculada."
-      }
+      },
+      "localEditionLanguages": [
+        "grc"
+      ]
     },
     {
       "id": "first1k-tlg0552-tlg007",
@@ -4060,7 +4451,10 @@
       "reading": {
         "url": "classics-text-reader.html?work=first1k-tlg0552-tlg007&lang=grc",
         "status": "Original griego segmentado por locus TEI; sin traducción vinculada."
-      }
+      },
+      "localEditionLanguages": [
+        "grc"
+      ]
     },
     {
       "id": "first1k-tlg0552-tlg006",
@@ -4088,7 +4482,10 @@
       "reading": {
         "url": "classics-text-reader.html?work=first1k-tlg0552-tlg006&lang=grc",
         "status": "Original griego segmentado por locus TEI; sin traducción vinculada."
-      }
+      },
+      "localEditionLanguages": [
+        "grc"
+      ]
     },
     {
       "id": "first1k-tlg0559-tlg006",
@@ -4116,7 +4513,10 @@
       "reading": {
         "url": "classics-text-reader.html?work=first1k-tlg0559-tlg006&lang=grc",
         "status": "Original griego segmentado por locus TEI; sin traducción vinculada."
-      }
+      },
+      "localEditionLanguages": [
+        "grc"
+      ]
     },
     {
       "id": "first1k-tlg0559-tlg007",
@@ -4144,7 +4544,10 @@
       "reading": {
         "url": "classics-text-reader.html?work=first1k-tlg0559-tlg007&lang=grc",
         "status": "Original griego segmentado por locus TEI; sin traducción vinculada."
-      }
+      },
+      "localEditionLanguages": [
+        "grc"
+      ]
     },
     {
       "id": "first1k-tlg0559-tlg011",
@@ -4172,7 +4575,10 @@
       "reading": {
         "url": "classics-text-reader.html?work=first1k-tlg0559-tlg011&lang=grc",
         "status": "Original griego segmentado por locus TEI; sin traducción vinculada."
-      }
+      },
+      "localEditionLanguages": [
+        "grc"
+      ]
     },
     {
       "id": "first1k-tlg1799-tlg011",
@@ -4200,7 +4606,10 @@
       "reading": {
         "url": "classics-text-reader.html?work=first1k-tlg1799-tlg011&lang=grc",
         "status": "Original griego segmentado por locus TEI; sin traducción vinculada."
-      }
+      },
+      "localEditionLanguages": [
+        "grc"
+      ]
     },
     {
       "id": "first1k-tlg0358-tlg001",
@@ -4228,7 +4637,10 @@
       "reading": {
         "url": "classics-text-reader.html?work=first1k-tlg0358-tlg001&lang=grc",
         "status": "Original griego segmentado por locus TEI; sin traducción vinculada."
-      }
+      },
+      "localEditionLanguages": [
+        "grc"
+      ]
     },
     {
       "id": "first1k-tlg0358-tlg002",
@@ -4256,7 +4668,10 @@
       "reading": {
         "url": "classics-text-reader.html?work=first1k-tlg0358-tlg002&lang=grc",
         "status": "Original griego segmentado por locus TEI; sin traducción vinculada."
-      }
+      },
+      "localEditionLanguages": [
+        "grc"
+      ]
     },
     {
       "id": "first1k-tlg0057-tlg048",
@@ -4284,7 +4699,10 @@
       "reading": {
         "url": "classics-text-reader.html?work=first1k-tlg0057-tlg048&lang=grc",
         "status": "Original griego segmentado por locus TEI; sin traducción vinculada."
-      }
+      },
+      "localEditionLanguages": [
+        "grc"
+      ]
     },
     {
       "id": "first1k-tlg0057-tlg034",
@@ -4312,7 +4730,10 @@
       "reading": {
         "url": "classics-text-reader.html?work=first1k-tlg0057-tlg034&lang=grc",
         "status": "Original griego segmentado por locus TEI; sin traducción vinculada."
-      }
+      },
+      "localEditionLanguages": [
+        "grc"
+      ]
     },
     {
       "id": "first1k-tlg0057-tlg002",
@@ -4340,7 +4761,10 @@
       "reading": {
         "url": "classics-text-reader.html?work=first1k-tlg0057-tlg002&lang=grc",
         "status": "Original griego segmentado por locus TEI; sin traducción vinculada."
-      }
+      },
+      "localEditionLanguages": [
+        "grc"
+      ]
     },
     {
       "id": "first1k-tlg0057-tlg030",
@@ -4368,7 +4792,10 @@
       "reading": {
         "url": "classics-text-reader.html?work=first1k-tlg0057-tlg030&lang=grc",
         "status": "Original griego segmentado por locus TEI; sin traducción vinculada."
-      }
+      },
+      "localEditionLanguages": [
+        "grc"
+      ]
     },
     {
       "id": "first1k-tlg0057-tlg024",
@@ -4396,7 +4823,10 @@
       "reading": {
         "url": "classics-text-reader.html?work=first1k-tlg0057-tlg024&lang=grc",
         "status": "Original griego segmentado por locus TEI; sin traducción vinculada."
-      }
+      },
+      "localEditionLanguages": [
+        "grc"
+      ]
     },
     {
       "id": "first1k-tlg0057-tlg082",
@@ -4424,7 +4854,10 @@
       "reading": {
         "url": "classics-text-reader.html?work=first1k-tlg0057-tlg082&lang=grc",
         "status": "Original griego segmentado por locus TEI; sin traducción vinculada."
-      }
+      },
+      "localEditionLanguages": [
+        "grc"
+      ]
     },
     {
       "id": "first1k-tlg0057-tlg039",
@@ -4452,7 +4885,10 @@
       "reading": {
         "url": "classics-text-reader.html?work=first1k-tlg0057-tlg039&lang=grc",
         "status": "Original griego segmentado por locus TEI; sin traducción vinculada."
-      }
+      },
+      "localEditionLanguages": [
+        "grc"
+      ]
     },
     {
       "id": "first1k-tlg0565-tlg001",
@@ -4480,7 +4916,10 @@
       "reading": {
         "url": "classics-text-reader.html?work=first1k-tlg0565-tlg001&lang=grc",
         "status": "Original griego segmentado por locus TEI; sin traducción vinculada."
-      }
+      },
+      "localEditionLanguages": [
+        "grc"
+      ]
     },
     {
       "id": "first1k-tlg0565-tlg002",
@@ -4508,7 +4947,10 @@
       "reading": {
         "url": "classics-text-reader.html?work=first1k-tlg0565-tlg002&lang=grc",
         "status": "Original griego segmentado por locus TEI; sin traducción vinculada."
-      }
+      },
+      "localEditionLanguages": [
+        "grc"
+      ]
     },
     {
       "id": "first1k-tlg0565-tlg003",
@@ -4536,7 +4978,10 @@
       "reading": {
         "url": "classics-text-reader.html?work=first1k-tlg0565-tlg003&lang=grc",
         "status": "Original griego segmentado por locus TEI; sin traducción vinculada."
-      }
+      },
+      "localEditionLanguages": [
+        "grc"
+      ]
     },
     {
       "id": "first1k-tlg0086-tlg019",
@@ -4564,7 +5009,10 @@
       "reading": {
         "url": "classics-text-reader.html?work=first1k-tlg0086-tlg019&lang=grc",
         "status": "Original griego segmentado por locus TEI; sin traducción vinculada."
-      }
+      },
+      "localEditionLanguages": [
+        "grc"
+      ]
     },
     {
       "id": "first1k-tlg0086-tlg004",
@@ -4592,7 +5040,10 @@
       "reading": {
         "url": "classics-text-reader.html?work=first1k-tlg0086-tlg004&lang=grc",
         "status": "Original griego segmentado por locus TEI; sin traducción vinculada."
-      }
+      },
+      "localEditionLanguages": [
+        "grc"
+      ]
     },
     {
       "id": "first1k-tlg0086-tlg043",
@@ -4620,7 +5071,10 @@
       "reading": {
         "url": "classics-text-reader.html?work=first1k-tlg0086-tlg043&lang=grc",
         "status": "Original griego segmentado por locus TEI; sin traducción vinculada."
-      }
+      },
+      "localEditionLanguages": [
+        "grc"
+      ]
     },
     {
       "id": "first1k-tlg0086-tlg047",
@@ -4648,7 +5102,10 @@
       "reading": {
         "url": "classics-text-reader.html?work=first1k-tlg0086-tlg047&lang=grc",
         "status": "Original griego segmentado por locus TEI; sin traducción vinculada."
-      }
+      },
+      "localEditionLanguages": [
+        "grc"
+      ]
     },
     {
       "id": "first1k-tlg0093-tlg010x04",
@@ -4676,7 +5133,10 @@
       "reading": {
         "url": "classics-text-reader.html?work=first1k-tlg0093-tlg010x04&lang=grc",
         "status": "Original griego segmentado por locus TEI; sin traducción vinculada."
-      }
+      },
+      "localEditionLanguages": [
+        "grc"
+      ]
     },
     {
       "id": "first1k-tlg0093-tlg010x06",
@@ -4704,7 +5164,10 @@
       "reading": {
         "url": "classics-text-reader.html?work=first1k-tlg0093-tlg010x06&lang=grc",
         "status": "Original griego segmentado por locus TEI; sin traducción vinculada."
-      }
+      },
+      "localEditionLanguages": [
+        "grc"
+      ]
     },
     {
       "id": "first1k-tlg0093-tlg006",
@@ -4732,7 +5195,10 @@
       "reading": {
         "url": "classics-text-reader.html?work=first1k-tlg0093-tlg006&lang=grc",
         "status": "Original griego segmentado por locus TEI; sin traducción vinculada."
-      }
+      },
+      "localEditionLanguages": [
+        "grc"
+      ]
     },
     {
       "id": "first1k-tlg0093-tlg010x03",
@@ -4760,7 +5226,10 @@
       "reading": {
         "url": "classics-text-reader.html?work=first1k-tlg0093-tlg010x03&lang=grc",
         "status": "Original griego segmentado por locus TEI; sin traducción vinculada."
-      }
+      },
+      "localEditionLanguages": [
+        "grc"
+      ]
     },
     {
       "id": "first1k-tlg0732-tlg012",
@@ -4788,7 +5257,10 @@
       "reading": {
         "url": "classics-text-reader.html?work=first1k-tlg0732-tlg012&lang=grc",
         "status": "Original griego segmentado por locus TEI; sin traducción vinculada."
-      }
+      },
+      "localEditionLanguages": [
+        "grc"
+      ]
     },
     {
       "id": "first1k-tlg0732-tlg003",
@@ -4816,7 +5288,10 @@
       "reading": {
         "url": "classics-text-reader.html?work=first1k-tlg0732-tlg003&lang=grc",
         "status": "Original griego segmentado por locus TEI; sin traducción vinculada."
-      }
+      },
+      "localEditionLanguages": [
+        "grc"
+      ]
     },
     {
       "id": "first1k-tlg0732-tlg001",
@@ -4844,7 +5319,10 @@
       "reading": {
         "url": "classics-text-reader.html?work=first1k-tlg0732-tlg001&lang=grc",
         "status": "Original griego segmentado por locus TEI; sin traducción vinculada."
-      }
+      },
+      "localEditionLanguages": [
+        "grc"
+      ]
     },
     {
       "id": "first1k-tlg2034-tlg005",
@@ -4872,7 +5350,10 @@
       "reading": {
         "url": "classics-text-reader.html?work=first1k-tlg2034-tlg005&lang=grc",
         "status": "Original griego segmentado por locus TEI; sin traducción vinculada."
-      }
+      },
+      "localEditionLanguages": [
+        "grc"
+      ]
     },
     {
       "id": "first1k-tlg2034-tlg002",
@@ -4900,7 +5381,10 @@
       "reading": {
         "url": "classics-text-reader.html?work=first1k-tlg2034-tlg002&lang=grc",
         "status": "Original griego segmentado por locus TEI; sin traducción vinculada."
-      }
+      },
+      "localEditionLanguages": [
+        "grc"
+      ]
     },
     {
       "id": "first1k-tlg2023-tlg003",
@@ -4928,7 +5412,10 @@
       "reading": {
         "url": "classics-text-reader.html?work=first1k-tlg2023-tlg003&lang=grc",
         "status": "Original griego segmentado por locus TEI; sin traducción vinculada."
-      }
+      },
+      "localEditionLanguages": [
+        "grc"
+      ]
     },
     {
       "id": "first1k-tlg2023-tlg004",
@@ -4956,7 +5443,10 @@
       "reading": {
         "url": "classics-text-reader.html?work=first1k-tlg2023-tlg004&lang=grc",
         "status": "Original griego segmentado por locus TEI; sin traducción vinculada."
-      }
+      },
+      "localEditionLanguages": [
+        "grc"
+      ]
     },
     {
       "id": "first1k-tlg2023-tlg001",
@@ -4984,7 +5474,10 @@
       "reading": {
         "url": "classics-text-reader.html?work=first1k-tlg2023-tlg001&lang=grc",
         "status": "Original griego segmentado por locus TEI; sin traducción vinculada."
-      }
+      },
+      "localEditionLanguages": [
+        "grc"
+      ]
     },
     {
       "id": "first1k-tlg0592-tlg001",
@@ -5012,7 +5505,10 @@
       "reading": {
         "url": "classics-text-reader.html?work=first1k-tlg0592-tlg001&lang=grc",
         "status": "Original griego segmentado por locus TEI; sin traducción vinculada."
-      }
+      },
+      "localEditionLanguages": [
+        "grc"
+      ]
     },
     {
       "id": "first1k-tlg0592-tlg005",
@@ -5040,7 +5536,10 @@
       "reading": {
         "url": "classics-text-reader.html?work=first1k-tlg0592-tlg005&lang=grc",
         "status": "Original griego segmentado por locus TEI; sin traducción vinculada."
-      }
+      },
+      "localEditionLanguages": [
+        "grc"
+      ]
     },
     {
       "id": "first1k-tlg0592-tlg002",
@@ -5068,7 +5567,10 @@
       "reading": {
         "url": "classics-text-reader.html?work=first1k-tlg0592-tlg002&lang=grc",
         "status": "Original griego segmentado por locus TEI; sin traducción vinculada."
-      }
+      },
+      "localEditionLanguages": [
+        "grc"
+      ]
     },
     {
       "id": "first1k-tlg0082-tlg003",
@@ -5096,7 +5598,10 @@
       "reading": {
         "url": "classics-text-reader.html?work=first1k-tlg0082-tlg003&lang=grc",
         "status": "Original griego segmentado por locus TEI; sin traducción vinculada."
-      }
+      },
+      "localEditionLanguages": [
+        "grc"
+      ]
     },
     {
       "id": "first1k-tlg0082-tlg002",
@@ -5124,7 +5629,10 @@
       "reading": {
         "url": "classics-text-reader.html?work=first1k-tlg0082-tlg002&lang=grc",
         "status": "Original griego segmentado por locus TEI; sin traducción vinculada."
-      }
+      },
+      "localEditionLanguages": [
+        "grc"
+      ]
     },
     {
       "id": "first1k-tlg2200-tlg00408",
@@ -5152,7 +5660,10 @@
       "reading": {
         "url": "classics-text-reader.html?work=first1k-tlg2200-tlg00408&lang=grc",
         "status": "Original griego segmentado por locus TEI; sin traducción vinculada."
-      }
+      },
+      "localEditionLanguages": [
+        "grc"
+      ]
     },
     {
       "id": "first1k-tlg2200-tlg00406",
@@ -5180,7 +5691,10 @@
       "reading": {
         "url": "classics-text-reader.html?work=first1k-tlg2200-tlg00406&lang=grc",
         "status": "Original griego segmentado por locus TEI; sin traducción vinculada."
-      }
+      },
+      "localEditionLanguages": [
+        "grc"
+      ]
     },
     {
       "id": "first1k-tlg2200-tlg00551",
@@ -5208,7 +5722,10 @@
       "reading": {
         "url": "classics-text-reader.html?work=first1k-tlg2200-tlg00551&lang=grc",
         "status": "Original griego segmentado por locus TEI; sin traducción vinculada."
-      }
+      },
+      "localEditionLanguages": [
+        "grc"
+      ]
     },
     {
       "id": "first1k-tlg2018-tlg021",
@@ -5236,7 +5753,10 @@
       "reading": {
         "url": "classics-text-reader.html?work=first1k-tlg2018-tlg021&lang=grc",
         "status": "Original griego segmentado por locus TEI; sin traducción vinculada."
-      }
+      },
+      "localEditionLanguages": [
+        "grc"
+      ]
     },
     {
       "id": "first1k-tlg2018-tlg011",
@@ -5264,7 +5784,10 @@
       "reading": {
         "url": "classics-text-reader.html?work=first1k-tlg2018-tlg011&lang=grc",
         "status": "Original griego segmentado por locus TEI; sin traducción vinculada."
-      }
+      },
+      "localEditionLanguages": [
+        "grc"
+      ]
     },
     {
       "id": "first1k-tlg2042-tlg051",
@@ -5292,7 +5815,10 @@
       "reading": {
         "url": "classics-text-reader.html?work=first1k-tlg2042-tlg051&lang=grc",
         "status": "Original griego segmentado por locus TEI; sin traducción vinculada."
-      }
+      },
+      "localEditionLanguages": [
+        "grc"
+      ]
     },
     {
       "id": "first1k-tlg2042-tlg052",
@@ -5320,7 +5846,10 @@
       "reading": {
         "url": "classics-text-reader.html?work=first1k-tlg2042-tlg052&lang=grc",
         "status": "Original griego segmentado por locus TEI; sin traducción vinculada."
-      }
+      },
+      "localEditionLanguages": [
+        "grc"
+      ]
     },
     {
       "id": "first1k-tlg2959-tlg002",
@@ -5348,7 +5877,10 @@
       "reading": {
         "url": "classics-text-reader.html?work=first1k-tlg2959-tlg002&lang=grc",
         "status": "Original griego segmentado por locus TEI; sin traducción vinculada."
-      }
+      },
+      "localEditionLanguages": [
+        "grc"
+      ]
     },
     {
       "id": "demosthenes-first-olynthiac",
@@ -5381,6 +5913,13 @@
       "reading": {
         "url": "classics-parallel-reader.html?work=demosthenes-first-olynthiac&left=grc&right=en",
         "status": "28 secciones griegas y 28 inglesas con números de sección homólogos; sin alineación a nivel de oración ni reconstrucción crítica."
+      },
+      "localEditionLanguages": [
+        "en",
+        "grc"
+      ],
+      "translation": {
+        "status": "Traducción humana registrada como texto local; no se afirma alineación entre pasajes sin cotejo."
       }
     }
   ]

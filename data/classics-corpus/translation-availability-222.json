@@ -1,29 +1,29 @@
 {
   "schema": "vitruvius-classics-translation-availability-v1",
-  "generated": "2026-11-19",
-  "basis": "Cálculo a partir de works[] y search-registry.json. Los campos de compatibilidad locallyIndexedWorks y localEditionLanguages incluyen índices registrados en R2. originalIndexed y verifiedLocalEditionLanguages solo cuentan archivos locales. originalR2Registered identifica declaraciones remotas; no certifica disponibilidad HTTP ni cotejo. Traducción Hero Pneumatica inglesa alojada en GitHub, original griego existente; fuente y 78 secciones separadas por edición. Índice invertido pendiente de reconstrucción tras la fusión. Nueva Retórica EN en GitHub con 882 pasajes; el índice invertido debe reconstruirse en publicación.",
+  "generated": "2026-11-20",
+  "basis": "Cálculo a partir de works[] y search-registry.json. Los campos de compatibilidad locallyIndexedWorks y localEditionLanguages incluyen índices registrados en R2. originalIndexed y verifiedLocalEditionLanguages solo cuentan archivos locales. originalR2Registered identifica declaraciones remotas; no certifica disponibilidad HTTP ni cotejo.",
   "scope": "271 obras del repertorio grecolatino; originales locales, índices remotos declarados y traducciones alojadas ES/EN/FR",
   "totals": {
     "cataloguedWorks": 271,
-    "locallyIndexedWorks": 226,
-    "translatedWorksLocal": 61,
-    "worksWithoutHostedTranslation": 210,
+    "locallyIndexedWorks": 232,
+    "translatedWorksLocal": 73,
+    "worksWithoutHostedTranslation": 198,
     "localTranslationLanguages": {
       "es": 5,
-      "en": 60,
+      "en": 72,
       "fr": 2
     },
-    "originalTextIndexed": 182,
-    "originalTextNotIndexed": 89,
-    "verifiedLocalFileWorks": 182,
+    "originalTextIndexed": 188,
+    "originalTextNotIndexed": 83,
+    "verifiedLocalFileWorks": 188,
     "declaredRemoteOnlyWorks": 44,
     "declaredR2OriginalWorks": 44,
-    "registeredOriginalWorks": 226,
-    "registeredTextVersions": 293,
-    "verifiedLocalTextVersions": 249,
-    "verifiedLocalOriginalTextIndexed": 182,
-    "supplementaryTextVersions": 81,
-    "allRegisteredTextVersions": 374
+    "registeredOriginalWorks": 232,
+    "registeredTextVersions": 311,
+    "verifiedLocalTextVersions": 267,
+    "verifiedLocalOriginalTextIndexed": 188,
+    "supplementaryTextVersions": 156,
+    "allRegisteredTextVersions": 467
   },
   "works": [
     {
@@ -1440,7 +1440,7 @@
         "grc"
       ],
       "externalTranslationUnverified": [],
-      "readingStatus": "lectura-local-completa",
+      "readingStatus": "lectura-local-parcial",
       "translationSourceDescription": "Inglés: Joseph George Greenwood, edición Bennet Woodcroft (1851), The Pneumatics of Hero of Alexandria; Project Gutenberg eBook 77400, transcripción humana; 78 secciones indexables, no alineadas automáticamente con el griego.",
       "translationRegisteredButNotHosted": false,
       "indexed": true,
@@ -2764,8 +2764,11 @@
       "title": "Ὀρέστεια",
       "originalLanguage": "grc",
       "originalIndexed": true,
-      "translationLanguages": [],
+      "translationLanguages": [
+        "en"
+      ],
       "localEditionLanguages": [
+        "en",
         "grc"
       ],
       "externalTranslationUnverified": [],
@@ -2776,10 +2779,12 @@
       "originalR2Registered": false,
       "registeredOriginal": true,
       "registeredEditionLanguages": [
+        "en",
         "grc"
       ],
       "remoteEditionLanguages": [],
       "verifiedLocalEditionLanguages": [
+        "en",
         "grc"
       ]
     },
@@ -2929,8 +2934,11 @@
       "title": "Ἀνάβασις",
       "originalLanguage": "grc",
       "originalIndexed": true,
-      "translationLanguages": [],
+      "translationLanguages": [
+        "en"
+      ],
       "localEditionLanguages": [
+        "en",
         "grc"
       ],
       "externalTranslationUnverified": [],
@@ -2941,10 +2949,12 @@
       "originalR2Registered": false,
       "registeredOriginal": true,
       "registeredEditionLanguages": [
+        "en",
         "grc"
       ],
       "remoteEditionLanguages": [],
       "verifiedLocalEditionLanguages": [
+        "en",
         "grc"
       ]
     },
@@ -2954,8 +2964,11 @@
       "title": "Πολιτεία",
       "originalLanguage": "grc",
       "originalIndexed": true,
-      "translationLanguages": [],
+      "translationLanguages": [
+        "en"
+      ],
       "localEditionLanguages": [
+        "en",
         "grc"
       ],
       "externalTranslationUnverified": [
@@ -2968,10 +2981,12 @@
       "originalR2Registered": false,
       "registeredOriginal": true,
       "registeredEditionLanguages": [
+        "en",
         "grc"
       ],
       "remoteEditionLanguages": [],
       "verifiedLocalEditionLanguages": [
+        "en",
         "grc"
       ]
     },
@@ -3351,8 +3366,11 @@
       "title": "Αἴας",
       "originalLanguage": "grc",
       "originalIndexed": true,
-      "translationLanguages": [],
+      "translationLanguages": [
+        "en"
+      ],
       "localEditionLanguages": [
+        "en",
         "grc"
       ],
       "externalTranslationUnverified": [],
@@ -3363,10 +3381,12 @@
       "originalR2Registered": false,
       "registeredOriginal": true,
       "registeredEditionLanguages": [
+        "en",
         "grc"
       ],
       "remoteEditionLanguages": [],
       "verifiedLocalEditionLanguages": [
+        "en",
         "grc"
       ]
     },
@@ -3466,8 +3486,11 @@
       "title": "Τραχίνιαι",
       "originalLanguage": "grc",
       "originalIndexed": true,
-      "translationLanguages": [],
+      "translationLanguages": [
+        "en"
+      ],
       "localEditionLanguages": [
+        "en",
         "grc"
       ],
       "externalTranslationUnverified": [],
@@ -3478,10 +3501,12 @@
       "originalR2Registered": false,
       "registeredOriginal": true,
       "registeredEditionLanguages": [
+        "en",
         "grc"
       ],
       "remoteEditionLanguages": [],
       "verifiedLocalEditionLanguages": [
+        "en",
         "grc"
       ]
     },
@@ -3701,8 +3726,11 @@
       "title": "Ὄρνιθες",
       "originalLanguage": "grc",
       "originalIndexed": true,
-      "translationLanguages": [],
+      "translationLanguages": [
+        "en"
+      ],
       "localEditionLanguages": [
+        "en",
         "grc"
       ],
       "externalTranslationUnverified": [],
@@ -3713,10 +3741,12 @@
       "originalR2Registered": false,
       "registeredOriginal": true,
       "registeredEditionLanguages": [
+        "en",
         "grc"
       ],
       "remoteEditionLanguages": [],
       "verifiedLocalEditionLanguages": [
+        "en",
         "grc"
       ]
     },
@@ -4033,8 +4063,11 @@
       "title": "Νόμοι",
       "originalLanguage": "grc",
       "originalIndexed": true,
-      "translationLanguages": [],
+      "translationLanguages": [
+        "en"
+      ],
       "localEditionLanguages": [
+        "en",
         "grc"
       ],
       "externalTranslationUnverified": [
@@ -4047,10 +4080,12 @@
       "originalR2Registered": false,
       "registeredOriginal": true,
       "registeredEditionLanguages": [
+        "en",
         "grc"
       ],
       "remoteEditionLanguages": [],
       "verifiedLocalEditionLanguages": [
+        "en",
         "grc"
       ]
     },
@@ -4120,8 +4155,11 @@
       "title": "Τὰ μετὰ τὰ φυσικά",
       "originalLanguage": "grc",
       "originalIndexed": true,
-      "translationLanguages": [],
+      "translationLanguages": [
+        "en"
+      ],
       "localEditionLanguages": [
+        "en",
         "grc"
       ],
       "externalTranslationUnverified": [],
@@ -4132,10 +4170,12 @@
       "originalR2Registered": false,
       "registeredOriginal": true,
       "registeredEditionLanguages": [
+        "en",
         "grc"
       ],
       "remoteEditionLanguages": [],
       "verifiedLocalEditionLanguages": [
+        "en",
         "grc"
       ]
     },
@@ -4178,7 +4218,7 @@
         "grc"
       ],
       "externalTranslationUnverified": [],
-      "readingStatus": "lectura-local-completa",
+      "readingStatus": "lectura-local-parcial",
       "translationSourceDescription": "Inglés: John Henry Freese, The Art of Rhetoric (1926), edición TEI de Perseus Digital Library, CC BY-SA 4.0; 882 unidades citables indexables, sin alineación forzada con el griego.",
       "translationRegisteredButNotHosted": false,
       "indexed": true,
@@ -4225,8 +4265,11 @@
       "title": "Ἀπομνημονεύματα",
       "originalLanguage": "grc",
       "originalIndexed": true,
-      "translationLanguages": [],
+      "translationLanguages": [
+        "en"
+      ],
       "localEditionLanguages": [
+        "en",
         "grc"
       ],
       "externalTranslationUnverified": [],
@@ -4237,10 +4280,12 @@
       "originalR2Registered": false,
       "registeredOriginal": true,
       "registeredEditionLanguages": [
+        "en",
         "grc"
       ],
       "remoteEditionLanguages": [],
       "verifiedLocalEditionLanguages": [
+        "en",
         "grc"
       ]
     },
@@ -4275,8 +4320,11 @@
       "title": "Περὶ τοῦ στεφάνου",
       "originalLanguage": "grc",
       "originalIndexed": true,
-      "translationLanguages": [],
+      "translationLanguages": [
+        "en"
+      ],
       "localEditionLanguages": [
+        "en",
         "grc"
       ],
       "externalTranslationUnverified": [],
@@ -4287,10 +4335,12 @@
       "originalR2Registered": false,
       "registeredOriginal": true,
       "registeredEditionLanguages": [
+        "en",
         "grc"
       ],
       "remoteEditionLanguages": [],
       "verifiedLocalEditionLanguages": [
+        "en",
         "grc"
       ]
     },
@@ -4325,8 +4375,11 @@
       "title": "Ὀλυμπιόνικοι",
       "originalLanguage": "grc",
       "originalIndexed": true,
-      "translationLanguages": [],
+      "translationLanguages": [
+        "en"
+      ],
       "localEditionLanguages": [
+        "en",
         "grc"
       ],
       "externalTranslationUnverified": [],
@@ -4337,10 +4390,12 @@
       "originalR2Registered": false,
       "registeredOriginal": true,
       "registeredEditionLanguages": [
+        "en",
         "grc"
       ],
       "remoteEditionLanguages": [],
       "verifiedLocalEditionLanguages": [
+        "en",
         "grc"
       ]
     },
@@ -4350,8 +4405,11 @@
       "title": "Πυθιόνικοι",
       "originalLanguage": "grc",
       "originalIndexed": true,
-      "translationLanguages": [],
+      "translationLanguages": [
+        "en"
+      ],
       "localEditionLanguages": [
+        "en",
         "grc"
       ],
       "externalTranslationUnverified": [],
@@ -4362,10 +4420,12 @@
       "originalR2Registered": false,
       "registeredOriginal": true,
       "registeredEditionLanguages": [
+        "en",
         "grc"
       ],
       "remoteEditionLanguages": [],
       "verifiedLocalEditionLanguages": [
+        "en",
         "grc"
       ]
     },
@@ -5005,19 +5065,25 @@
       "author": "Apuleyo",
       "title": "De deo Socratis",
       "originalLanguage": "la",
-      "originalIndexed": false,
+      "originalIndexed": true,
       "translationLanguages": [],
-      "localEditionLanguages": [],
+      "localEditionLanguages": [
+        "la"
+      ],
       "externalTranslationUnverified": [],
       "readingStatus": "repertoriado-busqueda-externa",
       "translationSourceDescription": "Traducción no incorporada ni alineada con una edición identificada.",
       "translationRegisteredButNotHosted": true,
       "indexed": false,
       "originalR2Registered": false,
-      "registeredOriginal": false,
-      "registeredEditionLanguages": [],
+      "registeredOriginal": true,
+      "registeredEditionLanguages": [
+        "la"
+      ],
       "remoteEditionLanguages": [],
-      "verifiedLocalEditionLanguages": []
+      "verifiedLocalEditionLanguages": [
+        "la"
+      ]
     },
     {
       "id": "vegetius-epitoma",
@@ -5399,19 +5465,25 @@
       "author": "Censorino",
       "title": "De die natali",
       "originalLanguage": "la",
-      "originalIndexed": false,
+      "originalIndexed": true,
       "translationLanguages": [],
-      "localEditionLanguages": [],
+      "localEditionLanguages": [
+        "la"
+      ],
       "externalTranslationUnverified": [],
       "readingStatus": "repertoriado-busqueda-externa",
       "translationSourceDescription": "Francés: traducción con texto latino en LacusCurtius, enlace externo verificado. Castellano e inglés pendientes.",
       "translationRegisteredButNotHosted": true,
       "indexed": false,
       "originalR2Registered": false,
-      "registeredOriginal": false,
-      "registeredEditionLanguages": [],
+      "registeredOriginal": true,
+      "registeredEditionLanguages": [
+        "la"
+      ],
       "remoteEditionLanguages": [],
-      "verifiedLocalEditionLanguages": []
+      "verifiedLocalEditionLanguages": [
+        "la"
+      ]
     },
     {
       "id": "augustus-res-gestae",
@@ -5606,28 +5678,36 @@
       "author": "Gémino",
       "title": "Εἰσαγωγὴ εἰς τὰ φαινόμενα · Elementa astronomiae",
       "originalLanguage": "grc",
-      "originalIndexed": false,
+      "originalIndexed": true,
       "translationLanguages": [],
-      "localEditionLanguages": [],
+      "localEditionLanguages": [
+        "grc"
+      ],
       "externalTranslationUnverified": [],
       "readingStatus": "fuente-externa-identificada",
       "translationSourceDescription": "Traducción alemana de Manitius en la misma edición.",
       "translationRegisteredButNotHosted": true,
       "indexed": false,
       "originalR2Registered": false,
-      "registeredOriginal": false,
-      "registeredEditionLanguages": [],
+      "registeredOriginal": true,
+      "registeredEditionLanguages": [
+        "grc"
+      ],
       "remoteEditionLanguages": [],
-      "verifiedLocalEditionLanguages": []
+      "verifiedLocalEditionLanguages": [
+        "grc"
+      ]
     },
     {
       "id": "aristarchus-magnitudines",
       "author": "Aristarco de Samos",
       "title": "Περὶ μεγεθῶν καὶ ἀποστημάτων ἡλίου καὶ σελήνης",
       "originalLanguage": "grc",
-      "originalIndexed": false,
+      "originalIndexed": true,
       "translationLanguages": [],
-      "localEditionLanguages": [],
+      "localEditionLanguages": [
+        "grc"
+      ],
       "externalTranslationUnverified": [
         "en"
       ],
@@ -5636,48 +5716,64 @@
       "translationRegisteredButNotHosted": true,
       "indexed": false,
       "originalR2Registered": false,
-      "registeredOriginal": false,
-      "registeredEditionLanguages": [],
+      "registeredOriginal": true,
+      "registeredEditionLanguages": [
+        "grc"
+      ],
       "remoteEditionLanguages": [],
-      "verifiedLocalEditionLanguages": []
+      "verifiedLocalEditionLanguages": [
+        "grc"
+      ]
     },
     {
       "id": "apollonius-conica",
       "author": "Apolonio de Perge",
       "title": "Κωνικά · Conica",
       "originalLanguage": "grc",
-      "originalIndexed": false,
+      "originalIndexed": true,
       "translationLanguages": [],
-      "localEditionLanguages": [],
+      "localEditionLanguages": [
+        "grc"
+      ],
       "externalTranslationUnverified": [],
       "readingStatus": "fuente-externa-identificada",
       "translationSourceDescription": "Traducción latina de Heiberg en la misma edición.",
       "translationRegisteredButNotHosted": true,
       "indexed": false,
       "originalR2Registered": false,
-      "registeredOriginal": false,
-      "registeredEditionLanguages": [],
+      "registeredOriginal": true,
+      "registeredEditionLanguages": [
+        "grc"
+      ],
       "remoteEditionLanguages": [],
-      "verifiedLocalEditionLanguages": []
+      "verifiedLocalEditionLanguages": [
+        "grc"
+      ]
     },
     {
       "id": "pappus-synagoge",
       "author": "Papo de Alejandría",
       "title": "Συναγωγή · Collectio (libro VIII: mecánica)",
       "originalLanguage": "grc",
-      "originalIndexed": false,
+      "originalIndexed": true,
       "translationLanguages": [],
-      "localEditionLanguages": [],
+      "localEditionLanguages": [
+        "grc"
+      ],
       "externalTranslationUnverified": [],
       "readingStatus": "fuente-externa-identificada",
       "translationSourceDescription": "Traducción latina de Hultsch en la misma edición.",
       "translationRegisteredButNotHosted": true,
       "indexed": false,
       "originalR2Registered": false,
-      "registeredOriginal": false,
-      "registeredEditionLanguages": [],
+      "registeredOriginal": true,
+      "registeredEditionLanguages": [
+        "grc"
+      ],
       "remoteEditionLanguages": [],
-      "verifiedLocalEditionLanguages": []
+      "verifiedLocalEditionLanguages": [
+        "grc"
+      ]
     },
     {
       "id": "hyginus-gromaticus",
