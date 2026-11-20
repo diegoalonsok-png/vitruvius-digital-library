@@ -129,8 +129,12 @@ for(const w of allWorks)for(const p of Object.values(w.corpusFiles||{}))
 // Translation transparency: indexed languages and catalogue must agree. Checks
 // cannot establish philological quality or historical copyright on their own.
 assert.equal(registry.count,registry.entries.length,"Search registry count is stale");
-assert.equal(registry.works,new Set(registry.entries.filter(e=>e.format!=="critical-indexed-latin").map(e=>e.workId)).size,
- "Auxiliary critical-edition indexes must not inflate distinct ancient works");
+const allRegisteredWorks=new Set(registry.entries.map(e=>e.workId));
+const auxiliaryWorks=new Set(registry.entries.filter(e=>e.format==="critical-indexed-latin").map(e=>e.workId));
+const ancientRegisteredWorks=new Set(registry.entries.filter(e=>e.format!=="critical-indexed-latin").map(e=>e.workId));
+assert.equal(registry.works,allRegisteredWorks.size,"Registry work count must match all registered identifiers");
+assert.equal(ancientRegisteredWorks.size,registry.works-[...auxiliaryWorks].filter(id=>!ancientRegisteredWorks.has(id)).length,
+ "Auxiliary critical editions must be excluded from distinct ancient-work count");
 const verifiedParallel=[],explicitlyUnaligned=[];
 for(const w of allWorks){
  const entries=registry.entries.filter(e=>e.workId===w.id&&e.format==="json-passages");
