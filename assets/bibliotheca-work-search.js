@@ -497,6 +497,28 @@ function letterMatch(w,letter,byTitle){
   (!greek||/[\u0370-\u03ff\u1f00-\u1fff]/u.test(value))&&
   (greek||!/[\u0370-\u03ff\u1f00-\u1fff]/u.test(value))&&normal(value).startsWith(letter));
 }
+function editionSummary(w){
+ const recorded=model?.editionLabels?.[w.id]||[];
+ const base=recorded.length?recorded:w.versions.map(v=>({language:v.language,kind:["la","grc"].includes(v.language)?"original":"translation"}));
+ const rows=[...new Map(base.filter(v=>v.language).map(v=>[v.language,v])).values()];
+ const originals=rows.filter(v=>["la","grc"].includes(v.language));
+ const translations=rows.filter(v=>!["la","grc"].includes(v.language));
+ const source=originals.length?"Original: "+originals.map(v=>lang[v.language]||v.language).join(", "):
+  w.originalLanguage?"Original: "+(lang[w.originalLanguage]||w.originalLanguage):"";
+ const labels=translations.map(v=>{
+  const details=[v.translator,v.publicationYear,v.edition].filter(Boolean);
+  const distinct=details.filter((value,i)=>!(i===1&&v.edition?.includes(String(value))));
+  return (lang[v.language]||v.language)+(distinct.length?" ("+distinct.join(" · ")+")":"");
+ });
+ return [source,labels.length?"Traducciones: "+labels.join("; "):"Sin traducción alojada registrada"].filter(Boolean).join(" · ");
+}
+function appendEditionSummary(row,w){
+ const value=editionSummary(w);if(!value)return;
+ const note=make("span",value,"bws-edition-note");
+ note.style.cssText="display:block;margin:4px 0 0;font:12px/1.5 system-ui,sans-serif;color:var(--muted,#b6b6b6);overflow-wrap:anywhere";
+ note.setAttribute("aria-label","Idiomas y ediciones documentadas: "+value);
+ row.append(note);
+}
 function render(){
  if(!model)return;
  const {input,list,count,more,limit}=model,rawQuery=input.value.trim(),typedLetter=singleLetter(rawQuery),q=typedLetter?"":rawQuery;
@@ -533,7 +555,7 @@ function render(){
     const row=make("li",null,"bws-item");
     const link=make("a",bilingualWorkLabel(w,false),"bws-plain-title");
     link.href=readerFor(w);link.title="Abrir los dos visores académicos";
-    row.append(link);list.append(row);
+    row.append(link);appendEditionSummary(row,w);list.append(row);
    }
    model.region.hidden=false;return;
   }
@@ -543,7 +565,7 @@ function render(){
   const row=make("li",null,"bws-item");
   const link=make("a",bilingualWorkLabel(match.w),"bws-plain-title");
   link.href=readerFor(match.w);link.title="Abrir los dos visores académicos";
-  row.append(link);list.append(row);
+  row.append(link);appendEditionSummary(row,match.w);list.append(row);
   model.region.hidden=false;return;
  }
 
@@ -823,6 +845,12 @@ function mount(parent,data){
  }
  more.addEventListener("click",()=>{model.limit+=10;render()});
  render();
+ fetch("data/classics-corpus/edition-list-labels.json",{cache:"no-cache"})
+  .then(r=>r.ok?r.json():null)
+  .then(j=>{if(j?.schema==="bibliotheca-edition-list-labels-v1"&&j.works){
+     model.editionLabels=j.works;render();
+   }})
+  .catch(()=>{/* La búsqueda funciona sin metadatos editoriales auxiliares. */});
  fetch(path,{cache:"no-cache"}).then(r=>{if(!r.ok)throw Error("aliases unavailable");return r.json()}).then(j=>{
   loadedAliases=j.aliases||{};
   for(const [id,forms] of Object.entries(loadedAliases)){
