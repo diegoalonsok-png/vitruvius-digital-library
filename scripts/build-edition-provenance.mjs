@@ -9,13 +9,15 @@ const load=p=>JSON.parse(fs.readFileSync(path.join(root,p),"utf8"));
 const main=load("data/bibliotheca-graeca-latina-I-bce-I-ce.json").works;
 const extra=load("data/bibliotheca-expansion-publicada-2026-11-16.json").works;
 const reg=load("data/classics-corpus/search-registry.json").entries;
+const additional=load("data/r2/bibliotheca-inventario-unificado.json").additionalWorks||[];
 const out=path.join(root,"data/classics-corpus/edition-provenance.json");
 const works=new Map();
-for(const work of [...main,...extra]){
+for(const work of [...main,...extra,...additional]){
  if(works.has(work.id))throw Error("Duplicate work ID "+work.id);
  works.set(work.id,{id:work.id,author:work.author||null,title:work.title||null,
   originalLanguage:work.originalLanguage||work.language||null,
-  originals:[],translations:[],missingTranslation:true});
+  originals:[],translations:[],missingTranslation:true,
+  facsimiles:(work.r2FacsimileEditions||[]).map(e=>({editionId:e.editionId||null,pdf:e.pdf||null,text:e.text||null,year:e.year||null,sha256:e.sha256||null,status:e.objectStatus||"r2-catalogue-declared-not-live-checked"}))});
 }
 let editions=0,localFiles=0,remoteDeclarations=0;
 for(const entry of reg){
