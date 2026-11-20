@@ -1,0 +1,39 @@
+name: Bibliotheca - verificar nuevas adquisiciones y traduccion automatica
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/audit-bibliotheca-acquisitions-index-quality.mjs'
+      - '.github/workflows/audit-bibliotheca-acquisitions-index-quality.yml'
+permissions:
+  contents: write
+jobs:
+  audit:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Verificar adquisiciones, fichas, lectores e indices locales y R2
+        run: node scripts/audit-bibliotheca-acquisitions-index-quality.mjs
+      - name: Archivar informe de calidad documental
+        uses: actions/upload-artifact@v4
+        with:
+          name: bibliotheca-acquisitions-index-quality
+          path: reports/bibliotheca/acquisitions-index-translation-quality-2026-11-20.json
+          retention-days: 30
+      - name: Publicar informe sin alterar originales
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add reports/bibliotheca/acquisitions-index-translation-quality-2026-11-20.json
+          if git diff --cached --quiet; then echo 'Informe sin cambios'; exit 0; fi
+          git commit -m 'Bibliotheca: documentar indexacion y limites de traduccion automatica'
+          git pull --rebase origin main
+          git push origin HEAD:main
