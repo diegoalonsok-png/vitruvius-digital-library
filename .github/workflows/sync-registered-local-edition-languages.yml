@@ -39,7 +39,7 @@ jobs:
           set -euo pipefail
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add data/bibliotheca-graeca-latina-I-bce-I-ce.json data/classics-corpus/translation-availability-222.json data/classics-corpus/coverage-audit.json
+          git add data/bibliotheca-graeca-latina-I-bce-I-ce.json data/bibliotheca-expansion-publicada-2026-11-16.json data/classics-corpus/translation-availability-222.json data/classics-corpus/coverage-audit.json
           if git diff --cached --quiet; then echo 'No faltan idiomas declarados'; exit 0; fi
           git commit -m 'Bibliotheca: declarar traducciones locales ya indexadas'
           git pull --rebase origin main
