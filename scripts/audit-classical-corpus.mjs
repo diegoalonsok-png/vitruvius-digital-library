@@ -221,8 +221,12 @@ for(const w of allWorks){
       sharedBibliographicSections:greek.length,alignmentLevel:"book.chapter.section numbering only; no word alignment"});
     continue;
    }
-   assert(target.alignmentStatus==="unaligned" || /no automatic equivalence|no automatic or unverified locus equivalence|no equivalencias|not aligned|no alinead/i.test(target.alignment||""),"Original and translation have no shared locus (undeclared): "+w.id+" / "+translation.language);
-   assert(typeof target.alignment==="string"&&/no equivalencias|no alinead|not asserted equivalent|not aligned|not equivalent|not asserted to be equivalent|no automatic equivalence|no automatic or unverified locus equivalence/i.test(target.alignment),"Unaligned translation needs an explicit reader-facing warning: "+translation.path);
+   // Edition-specific loci and technical chunk boundaries need not coincide.
+   // Require an explicit negative claim in the translation metadata before
+   // accepting an unaligned pair: never silently infer verse/word equivalence.
+   const noEquivalence = /no automatic equivalence|no automatic or unverified locus equivalence|no equivalencias|no alinead|not aligned|not equivalent|not asserted (?:to be )?equivalent|do not imply certified one-to-one mapping|without fabricated Greek correspondences/i.test(target.alignment||"");
+   assert(target.alignmentStatus==="unaligned" || noEquivalence,"Original and translation have no shared locus (undeclared): "+w.id+" / "+translation.language);
+   assert(typeof target.alignment==="string"&&noEquivalence,"Unaligned translation needs an explicit reader-facing warning: "+translation.path);
    explicitlyUnaligned.push({work:w.id,translation:translation.language,reason:target.alignment});
    continue;
   }
