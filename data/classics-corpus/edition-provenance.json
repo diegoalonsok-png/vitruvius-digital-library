@@ -3,8 +3,8 @@
   "method": "Registry plus inspected local JSON edition metadata; R2 URLs are declarations only, not live checks. No invented attribution or automatic translation claims.",
   "counts": {
     "cataloguedWorks": 404,
-    "editions": 468,
-    "localFilesInspected": 411,
+    "editions": 474,
+    "localFilesInspected": 417,
     "remoteEditionsDeclared": 44,
     "worksWithoutHostedEnFrEs": 299
   },
@@ -6747,11 +6747,30 @@
       "author": "Séneca",
       "title": "De ira",
       "originalLanguage": "la",
-      "originals": [],
+      "originals": [
+        {
+          "language": "la",
+          "kind": "original",
+          "status": "local-source-inspected",
+          "title": "De ira",
+          "translator": null,
+          "editor": null,
+          "edition": null,
+          "year": null,
+          "source": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/stoa0255/stoa010/stoa0255.stoa010.perseus-lat2.xml",
+          "sources": null,
+          "attribution": "Séneca, De ira. Ed. J. W. Basore, Moral Essays I, Londres y Nueva York, 1928. TEI: Perseus Digital Library.",
+          "license": null,
+          "editorialStatus": "Edición latina TEI, sin colación autóptica de manuscritos",
+          "alignmentStatus": null,
+          "sourcePath": "data/classics-corpus/seneca-de-ira-la.json",
+          "sourceDescription": "Edición latina de transcripción remota con procedencia registrada, ahora alojada en corpus local; sin colación autóptica",
+          "passages": 485
+        }
+      ],
       "translations": [],
       "missingTranslation": true,
-      "facsimiles": [],
-      "originalStatus": "not-registered"
+      "facsimiles": []
     },
     {
       "id": "seneca-de-clementia",
@@ -6788,11 +6807,30 @@
       "author": "Séneca",
       "title": "De tranquillitate animi",
       "originalLanguage": "la",
-      "originals": [],
+      "originals": [
+        {
+          "language": "la",
+          "kind": "original",
+          "status": "local-source-inspected",
+          "title": "De tranquillitate animi",
+          "translator": null,
+          "editor": null,
+          "edition": null,
+          "year": null,
+          "source": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/stoa0255/stoa013/stoa0255.stoa013.perseus-lat2.xml",
+          "sources": null,
+          "attribution": "Séneca, De tranquillitate animi. Ed. J. W. Basore, Moral Essays II, Londres y Nueva York, 1932. TEI: Perseus Digital Library.",
+          "license": null,
+          "editorialStatus": "Edición latina TEI, sin colación autóptica de manuscritos",
+          "alignmentStatus": null,
+          "sourcePath": "data/classics-corpus/seneca-de-tranquillitate-la.json",
+          "sourceDescription": "Edición latina de transcripción remota con procedencia registrada, ahora alojada en corpus local; sin colación autóptica",
+          "passages": 139
+        }
+      ],
       "translations": [],
       "missingTranslation": true,
-      "facsimiles": [],
-      "originalStatus": "not-registered"
+      "facsimiles": []
     },
     {
       "id": "horace-epodi",
@@ -7189,11 +7227,30 @@
       "author": "Macrobio",
       "title": "Saturnalia",
       "originalLanguage": "la",
-      "originals": [],
+      "originals": [
+        {
+          "language": "la",
+          "kind": "original",
+          "status": "local-source-inspected",
+          "title": "Saturnalia · Libri I–VII",
+          "translator": null,
+          "editor": null,
+          "edition": null,
+          "year": null,
+          "source": "https://raw.githubusercontent.com/cltk/latin_text_lacus_curtius/master/html/Macrobius/Saturnalia/1*.html",
+          "sources": null,
+          "attribution": "Macrobius, Saturnalia, libri I–VII, edición de Ludwig von Jan, Leipzig 1852, transcripción digital de LacusCurtius preservada por CLTK (repositorio en dominio público).",
+          "license": null,
+          "editorialStatus": "Siete libros latinos indexados por divisiones editoriales; lagunas y numeración de las fuentes digitales no se corrigen sin cotejo. El texto no constituye nueva edición crítica ni transcripción de manuscrito.",
+          "alignmentStatus": null,
+          "sourcePath": "data/classics-corpus/macrobius-saturnalia-la.json",
+          "sourceDescription": "Edición latina de transcripción remota con procedencia registrada, ahora alojada en corpus local; sin colación autóptica",
+          "passages": 2106
+        }
+      ],
       "translations": [],
       "missingTranslation": true,
-      "facsimiles": [],
-      "originalStatus": "not-registered"
+      "facsimiles": []
     },
     {
       "id": "epictetus-enchiridion",
@@ -7370,11 +7427,30 @@
       "author": "Ennio",
       "title": "Annales (fragmenta)",
       "originalLanguage": "la",
-      "originals": [],
+      "originals": [
+        {
+          "language": "la",
+          "kind": "original",
+          "status": "local-source-inspected",
+          "title": "Annales (fragmenta)",
+          "translator": null,
+          "editor": null,
+          "edition": null,
+          "year": null,
+          "source": "https://raw.githubusercontent.com/cltk/lat_text_latin_library/master/enn.txt",
+          "sources": null,
+          "attribution": "Quintus Ennius, Annalium fragmenta. Transcripción digital en Ennius, Fragmenta, The Latin Library, archivada por CLTK (enn.txt); edición crítica y filiación manuscrita no declaradas en el archivo.",
+          "license": null,
+          "editorialStatus": "Colección digital fragmentaria parcial (libros I, VI–XI, XVII–XVIII y fragmentos de sede incierta); no edición crítica ni colación de códices",
+          "alignmentStatus": null,
+          "sourcePath": "data/classics-corpus/ennius-annales-la.json",
+          "sourceDescription": "Original latino de índice remoto previamente documentado, incorporado al corpus local con atribución y loci; no nueva obra independiente.",
+          "passages": 31
+        }
+      ],
       "translations": [],
       "missingTranslation": true,
-      "facsimiles": [],
-      "originalStatus": "not-registered"
+      "facsimiles": []
     },
     {
       "id": "accius-fragmenta",
@@ -7856,22 +7932,60 @@
       "author": "Frontino",
       "title": "Opuscula gromatica (De agrorum qualitate, De controversiis, De limitibus)",
       "originalLanguage": "la",
-      "originals": [],
+      "originals": [
+        {
+          "language": "la",
+          "kind": "original",
+          "status": "local-source-inspected",
+          "title": "Opuscula gromatica (De agrorum qualitate, De controversiis, De limitibus)",
+          "translator": null,
+          "editor": null,
+          "edition": null,
+          "year": null,
+          "source": "https://raw.githubusercontent.com/cltk/lat_text_latin_library/master/frontinus/qualitate.txt",
+          "sources": null,
+          "attribution": "Frontino, Opuscula gromatica (De agrorum qualitate, De controversiis, De limitibus). Latin transcription at The Latin Library, mirrored by CLTK/lat_text_latin_library. The underlying print edition and manuscript witnesses are not identified; texts are not a critically collated recension. https://raw.githubusercontent.com/cltk/lat_text_latin_library/master/frontinus/qualitate.txt",
+          "license": null,
+          "editorialStatus": "Documented digital transcription, not a verified critical edition; source variants and manuscript attribution require scholarly review",
+          "alignmentStatus": null,
+          "sourcePath": "data/classics-corpus/frontinus-gromatica-la.json",
+          "sourceDescription": "Original latino de índice remoto previamente documentado, incorporado al corpus local con atribución y loci; no nueva obra independiente.",
+          "passages": 16
+        }
+      ],
       "translations": [],
       "missingTranslation": true,
-      "facsimiles": [],
-      "originalStatus": "not-registered"
+      "facsimiles": []
     },
     {
       "id": "siculus-flaccus",
       "author": "Sículo Flaco",
       "title": "De condicionibus agrorum",
       "originalLanguage": "la",
-      "originals": [],
+      "originals": [
+        {
+          "language": "la",
+          "kind": "original",
+          "status": "local-source-inspected",
+          "title": "De condicionibus agrorum",
+          "translator": null,
+          "editor": null,
+          "edition": null,
+          "year": null,
+          "source": "https://la.wikisource.org/wiki/De_condicionibus_agrorum",
+          "sources": null,
+          "attribution": "Siculus Flaccus, De condicionibus agrorum, transcripción de Wikisource en latín (de origen IntraText; edición de base no identificada), consultada el 9-XI-2026. Wikisource CC BY-SA 4.0. No cotejada ni edición crítica.",
+          "license": null,
+          "editorialStatus": "Transcripción digital atribuida, con 31 párrafos numerados; su edición de base no está identificada; no implica cotejo filológico",
+          "alignmentStatus": null,
+          "sourcePath": "data/classics-corpus/siculus-flaccus-la.json",
+          "sourceDescription": "Original latino de índice remoto previamente documentado, incorporado al corpus local con atribución y loci; no nueva obra independiente.",
+          "passages": 31
+        }
+      ],
       "translations": [],
       "missingTranslation": true,
-      "facsimiles": [],
-      "originalStatus": "not-registered"
+      "facsimiles": []
     },
     {
       "id": "sulpicia-elegiae",
