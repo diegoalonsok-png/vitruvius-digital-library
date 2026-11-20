@@ -27566,8 +27566,8 @@
         "Introduction to the Phenomena"
       ],
       "reading": {
-        "url": "https://archive.org/details/geminoueisagoget00gemi",
-        "status": "Facsímil de la edición de K. Manitius (Leipzig: Teubner, 1898), griego y alemán. Repositorio institucional (Internet Archive o biblioteca digital). Fuente externa de lectura; no alojada en este sitio. Pertinente para la astronomía de Vitruvio IX."
+        "url": "classics-text-reader.html?work=geminus-isagoge&lang=grc",
+        "status": "Texto griego segmentado; traducción sin verificar."
       },
       "manuscript": {
         "manifest": null,
@@ -27613,7 +27613,22 @@
       },
       "derivedFields": {
         "witnessLookup": "enlaces de búsqueda generados a partir del título"
-      }
+      },
+      "corpusFiles": {
+        "grc": "data/classics-corpus/geminus-isagoge-grc.json"
+      },
+      "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/ed91552c52530c8f5a3ddf2dd767e899372a804c/data/tlg1383/tlg001/tlg1383.tlg001.1st1K-grc1.xml",
+      "sourceUrn": "urn:cts:greekLit:tlg1383.tlg001.1st1K-grc1",
+      "sourceSha256": "4f515fbe2960e7fcd4102a6c5deb9c7e538f615909693863afc33eadc4e933dd",
+      "sourceLicense": "CC BY-SA 4.0",
+      "textStatus": "lexically-indexed",
+      "localVersions": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/geminus-isagoge-grc.json"
+        }
+      ],
+      "status": "Original griego TEI incorporado e indexado léxicamente; sin cotejo crítico independiente"
     },
     {
       "id": "aristarchus-magnitudines",
@@ -27630,8 +27645,8 @@
         "De magnitudinibus et distantiis solis et lunae"
       ],
       "reading": {
-        "url": "https://archive.org/details/aristarchusofsam00heatuoft",
-        "status": "Facsímil de la edición de T. L. Heath, Aristarchus of Samos, the Ancient Copernicus (Oxford: Clarendon Press, 1913), texto griego con traducción inglesa. Repositorio institucional (Internet Archive o biblioteca digital). Fuente externa de lectura; no alojada en este sitio. Vitruvio nombra a Aristarco de Samos en I.1.17, IX.2.3 y IX.8.1."
+        "url": "classics-text-reader.html?work=aristarchus-magnitudines&lang=grc",
+        "status": "Texto griego segmentado; traducción sin verificar."
       },
       "manuscript": {
         "manifest": null,
@@ -27686,7 +27701,22 @@
       },
       "derivedFields": {
         "witnessLookup": "enlaces de búsqueda generados a partir del título"
-      }
+      },
+      "corpusFiles": {
+        "grc": "data/classics-corpus/aristarchus-magnitudines-grc.json"
+      },
+      "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/ed91552c52530c8f5a3ddf2dd767e899372a804c/data/tlg1181/tlg001/tlg1181.tlg001.1st1K-grc1.xml",
+      "sourceUrn": "urn:cts:greekLit:tlg1181.tlg001.1st1K-grc1",
+      "sourceSha256": "b313dce98868284a9265faac43c7ae326f7951a4b1e556dedd0f6731a1735eb8",
+      "sourceLicense": "CC BY-SA 4.0",
+      "textStatus": "lexically-indexed",
+      "localVersions": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/aristarchus-magnitudines-grc.json"
+        }
+      ],
+      "status": "Original griego TEI incorporado e indexado léxicamente; sin cotejo crítico independiente"
     },
     {
       "id": "apollonius-conica",
@@ -27703,8 +27733,8 @@
         "Conics"
       ],
       "reading": {
-        "url": "https://archive.org/details/apolloniipergaei01apoluoft",
-        "status": "Facsímil de la edición de J. L. Heiberg, Apollonii Pergaei quae graece exstant I (Leipzig: Teubner, 1891), libros I–III. Repositorio institucional (Internet Archive o biblioteca digital). Fuente externa de lectura; no alojada en este sitio."
+        "url": "classics-text-reader.html?work=apollonius-conica&lang=grc",
+        "status": "Texto griego segmentado; traducción sin verificar."
       },
       "manuscript": {
         "manifest": null,
@@ -27758,7 +27788,22 @@
       },
       "derivedFields": {
         "witnessLookup": "enlaces de búsqueda generados a partir del título"
-      }
+      },
+      "corpusFiles": {
+        "grc": "data/classics-corpus/apollonius-conica-grc.json"
+      },
+      "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/ed91552c52530c8f5a3ddf2dd767e899372a804c/data/tlg0550/tlg001/tlg0550.tlg001.1st1K-grc1.xml",
+      "sourceUrn": "urn:cts:greekLit:tlg0550.tlg001.1st1K-grc1",
+      "sourceSha256": "6d6d5bb17dea43ec238e777fb413af56137e49dcd76e8e02dbc515ae0a5db0eb",
+      "sourceLicense": "CC BY-SA 4.0",
+      "textStatus": "lexically-indexed",
+      "localVersions": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/apollonius-conica-grc.json"
+        }
+      ],
+      "status": "Original griego TEI incorporado e indexado léxicamente; sin cotejo crítico independiente"
     },
     {
       "id": "pappus-synagoge",
@@ -27775,8 +27820,8 @@
         "Collection"
       ],
       "reading": {
-        "url": "https://archive.org/details/pappialexandrin04pappgoog",
-        "status": "Facsímil de la edición de F. Hultsch, Pappi Alexandrini collectionis quae supersunt III.1 (Berlín: Weidmann, 1878). Repositorio institucional (Internet Archive o biblioteca digital). Fuente externa de lectura; no alojada en este sitio. El libro VIII trata de la mecánica y de los mecánicos de la escuela de Herón. Volumen I (libros II–V): https://archive.org/details/pappialexandrin00hultgoog."
+        "url": "classics-text-reader.html?work=pappus-synagoge&lang=grc",
+        "status": "Texto griego segmentado; traducción sin verificar."
       },
       "manuscript": {
         "manifest": null,
@@ -27822,7 +27867,22 @@
       },
       "derivedFields": {
         "witnessLookup": "enlaces de búsqueda generados a partir del título"
-      }
+      },
+      "corpusFiles": {
+        "grc": "data/classics-corpus/pappus-synagoge-grc.json"
+      },
+      "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/ed91552c52530c8f5a3ddf2dd767e899372a804c/data/tlg2032/tlg001/tlg2032.tlg001.1st1K-grc1.xml",
+      "sourceUrn": "urn:cts:greekLit:tlg2032.tlg001.1st1K-grc1",
+      "sourceSha256": "97c19de67ffa6f15ca01bb0f47eae655354d4e1e3bfb7d9fb8837f572d40fe78",
+      "sourceLicense": "CC BY-SA 4.0",
+      "textStatus": "lexically-indexed",
+      "localVersions": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/pappus-synagoge-grc.json"
+        }
+      ],
+      "status": "Original griego TEI incorporado e indexado léxicamente; sin cotejo crítico independiente"
     },
     {
       "id": "hyginus-gromaticus",

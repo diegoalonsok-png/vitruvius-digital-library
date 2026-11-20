@@ -2,8 +2,8 @@
   "schema": "vitruvia-classics-search-registry-v1",
   "updated": "2026-11-19",
   "description": "Registro verificable de transcripciones HTML y textos JSON existentes que admiten búsqueda literal de contenido. No incluye automáticamente PDF escaneados, facsímiles ni fichas sin texto. Los índices auxiliares por locus y el aparato crítico se declaran por separado; no se suman a versiones textuales originales ni implican colación autóptica.",
-  "count": 461,
-  "works": 350,
+  "count": 465,
+  "works": 354,
   "entries": [
     {
       "workId": "aeneas-tacticus-poliorketika",
@@ -140,6 +140,18 @@
       "passages": 835
     },
     {
+      "workId": "apollonius-conica",
+      "author": "Apolonio de Perge",
+      "title": "Conica · Κωνικά",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/apollonius-conica-grc.json",
+      "reader": "classics-text-reader.html?work=apollonius-conica&lang=grc",
+      "sourceUrn": "urn:cts:greekLit:tlg0550.tlg001.1st1K-grc1",
+      "sourceSha256": "6d6d5bb17dea43ec238e777fb413af56137e49dcd76e8e02dbc515ae0a5db0eb",
+      "sourceDescription": "First1KGreek; edición de J. L. Heiberg; CC BY-SA 4.0"
+    },
+    {
       "workId": "apolonio-argonauticas",
       "language": "grc",
       "title": "Ἀργοναυτικά · Argonautica",
@@ -234,6 +246,18 @@
       "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
       "sha256": "334fea209f231138f31e8c4dddf8b188945c81f397b29601c7e9c67b17f04b4d",
       "passages": 106
+    },
+    {
+      "workId": "aristarchus-magnitudines",
+      "author": "Aristarco de Samos",
+      "title": "De magnitudinibus et distantiis solis et lunae",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/aristarchus-magnitudines-grc.json",
+      "reader": "classics-text-reader.html?work=aristarchus-magnitudines&lang=grc",
+      "sourceUrn": "urn:cts:greekLit:tlg1181.tlg001.1st1K-grc1",
+      "sourceSha256": "b313dce98868284a9265faac43c7ae326f7951a4b1e556dedd0f6731a1735eb8",
+      "sourceDescription": "First1KGreek; edición de Thomas Heath; CC BY-SA 4.0"
     },
     {
       "workId": "aristophanes-acharnenses",
@@ -2087,6 +2111,18 @@
       "passages": 41
     },
     {
+      "workId": "geminus-isagoge",
+      "author": "Gémino",
+      "title": "Elementa astronomiae · Εἰσαγωγή",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/geminus-isagoge-grc.json",
+      "reader": "classics-text-reader.html?work=geminus-isagoge&lang=grc",
+      "sourceUrn": "urn:cts:greekLit:tlg1383.tlg001.1st1K-grc1",
+      "sourceSha256": "4f515fbe2960e7fcd4102a6c5deb9c7e538f615909693863afc33eadc4e933dd",
+      "sourceDescription": "First1KGreek; edición de Charles Manitius; CC BY-SA 4.0"
+    },
+    {
       "workId": "hero-automata",
       "author": "Herón de Alejandría",
       "title": "Αὐτοματοποιητική · Automata",
@@ -3179,6 +3215,18 @@
       "path": "data/classics-corpus/ovid-tristia-la.json",
       "reader": "classics-text-reader.html?work=ovid-tristia&lang=la",
       "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
+      "workId": "pappus-synagoge",
+      "author": "Papo de Alejandría",
+      "title": "Synagoge · Συναγωγή",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/pappus-synagoge-grc.json",
+      "reader": "classics-text-reader.html?work=pappus-synagoge&lang=grc",
+      "sourceUrn": "urn:cts:greekLit:tlg2032.tlg001.1st1K-grc1",
+      "sourceSha256": "97c19de67ffa6f15ca01bb0f47eae655354d4e1e3bfb7d9fb8837f572d40fe78",
+      "sourceDescription": "First1KGreek; edición de Friedrich Hultsch; CC BY-SA 4.0"
     },
     {
       "workId": "pastor-hermas",
