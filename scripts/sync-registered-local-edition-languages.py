@@ -9,16 +9,21 @@ from pathlib import Path
 
 ROOT=Path(__file__).resolve().parents[1]
 MAIN=ROOT/"data/bibliotheca-graeca-latina-I-bce-I-ce.json"
+SUPP=ROOT/"data/bibliotheca-expansion-publicada-2026-11-16.json"
 REG=ROOT/"data/classics-corpus/search-registry.json"
 
 def main():
     catalogue=json.loads(MAIN.read_text(encoding="utf-8"))
+    supplement=json.loads(SUPP.read_text(encoding="utf-8"))
     registry=json.loads(REG.read_text(encoding="utf-8"))
     masters={w["id"]:w for w in catalogue["works"]}
+    overlays={w["id"]:w for w in supplement["works"]}
+    if set(masters)&set(overlays):raise ValueError("Duplicate catalogue work identifiers")
+    all_works={**masters,**overlays}
     verified={}
     for e in registry["entries"]:
         work_id,lang,path=e["workId"],e["language"],str(e.get("path",""))
-        if work_id not in masters or e.get("format")!="json-passages":
+        if work_id not in all_works or e.get("format")!="json-passages":
             continue
         if not path.startswith("data/classics-corpus/") or not path.endswith(f"-{lang}.json"):
             continue
@@ -35,7 +40,7 @@ def main():
         verified.setdefault(work_id,set()).add(lang)
     revised=[]
     for id,languages in sorted(verified.items()):
-        work=masters[id]
+        work=all_works[id]
         previous=work.get("localEditionLanguages",[])
         if not isinstance(previous,list):
             raise ValueError(f"Invalid localEditionLanguages: {id}")
@@ -45,5 +50,6 @@ def main():
             revised.append({"id":id,"added":missing})
     if revised:
         MAIN.write_text(json.dumps(catalogue,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
+        SUPP.write_text(json.dumps(supplement,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
     print(json.dumps({"catalogueWorksUpdated":len(revised),"verifiedNewLanguageDeclarations":sum(len(x["added"]) for x in revised),"details":revised},ensure_ascii=False))
 if __name__=="__main__":main()
