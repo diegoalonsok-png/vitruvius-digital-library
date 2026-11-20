@@ -3,6 +3,7 @@
 import hashlib
 import json
 import re
+import time
 import urllib.request
 from pathlib import Path
 
@@ -19,17 +20,30 @@ START = re.compile(r"\*\*\*\s*START OF (?:THE |THIS )?PROJECT GUTENBERG EBOOK[^\
 END = re.compile(r"\*\*\*\s*END OF (?:THE |THIS )?PROJECT GUTENBERG EBOOK[^\n]*", re.I)
 
 def get_book(number):
-    url = f"https://www.gutenberg.org/cache/epub/{number}/pg{number}.txt"
-    request = urllib.request.Request(url, headers={"User-Agent": "VitruviusBibliothecaBot/1.0"})
-    with urllib.request.urlopen(request, timeout=45) as response:
-        raw = response.read(4500001)
-    if not 12000 < len(raw) <= 4500000:
-        raise ValueError(f"Gutenberg #{number}: invalid download size")
-    text = raw.decode("utf-8-sig")
-    a, b = START.search(text), END.search(text)
-    if not a or not b or a.end() >= b.start():
-        raise ValueError(f"Gutenberg #{number}: cannot verify complete text markers")
-    return text[a.end():b.start()], url, hashlib.sha256(raw).hexdigest()
+    # Sólo rutas oficiales de Gutenberg; no reemplazar silenciosamente la edición.
+    urls = [
+        f"https://www.gutenberg.org/cache/epub/{number}/pg{number}.txt",
+        f"https://www.gutenberg.org/files/{number}/{number}-0.txt",
+        f"https://www.gutenberg.org/ebooks/{number}.txt.utf-8",
+    ]
+    errors = []
+    for url in urls:
+        for attempt in range(3):
+            try:
+                request = urllib.request.Request(url, headers={"User-Agent": "VitruviusBibliothecaBot/1.0"})
+                with urllib.request.urlopen(request, timeout=45) as response:
+                    raw = response.read(4500001)
+                if not 12000 < len(raw) <= 4500000:
+                    raise ValueError(f"Gutenberg #{number}: invalid download size")
+                text = raw.decode("utf-8-sig")
+                a, b = START.search(text), END.search(text)
+                if not a or not b or a.end() >= b.start():
+                    raise ValueError(f"Gutenberg #{number}: cannot verify complete text markers")
+                return text[a.end():b.start()], url, hashlib.sha256(raw).hexdigest()
+            except (OSError, UnicodeError, ValueError) as exc:
+                errors.append(f"{url}: {type(exc).__name__}")
+                time.sleep(1 + attempt * 2)
+    raise RuntimeError(f"Gutenberg #{number}: no verified complete source available; " + "; ".join(errors))
 
 def segment(body):
     blocks = [re.sub(r"\s+", " ", p).strip()
