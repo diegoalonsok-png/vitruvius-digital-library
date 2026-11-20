@@ -1,0 +1,72 @@
+name: Importar 4 clásicos científicos griegos verificables
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/import-four-scientific-greek-classics.py'
+      - '.github/workflows/import-four-scientific-greek-classics.yml'
+permissions:
+  contents: write
+concurrency:
+  group: vdl-classics-publication-main
+  cancel-in-progress: false
+jobs:
+  ingest:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Verificar importador
+        run: python -m py_compile scripts/import-four-scientific-greek-classics.py
+      - name: Importar fuentes con licencia, procedencia y pasajes griegos verificables
+        run: python scripts/import-four-scientific-greek-classics.py
+      - name: Reconstruir índice léxico compartido
+        run: node --max-old-space-size=6144 scripts/build-classics-lexical-index.mjs
+      - name: Verificar presencia de las obras originales en el índice publicado
+        run: |
+          python - <<'PY'
+          import json,pathlib
+          root=pathlib.Path(".")
+          catalog=json.loads((root/"data/bibliotheca-expansion-publicada-2026-11-16.json").read_text())
+          manifest=json.loads((root/"data/index/classics/manifest.json").read_text())
+          ids={x["id"] for x in manifest["index"] if x.get("lang")=="grc"}
+          selected={"apollonius-conica","aristarchus-magnitudines","geminus-isagoge","pappus-synagoge"}
+          works={w["id"]:w for w in catalog["works"]}
+          for id in selected:
+              assert id in works and id in ids,f"Greek text not indexed: {id}"
+              w=works[id]
+              assert pathlib.Path(w["corpusFiles"]["grc"]).is_file()
+              w["textStatus"]="lexically-indexed"
+              w["status"]="Original griego TEI incorporado e indexado léxicamente; sin cotejo crítico independiente"
+          (root/"data/bibliotheca-expansion-publicada-2026-11-16.json").write_text(
+              json.dumps(catalog,ensure_ascii=False,indent=2)+"\n")
+          print("Four Greek works verified in lexical index")
+          PY
+      - name: Pruebas de corpus y lector
+        run: |
+          node scripts/test-bibliotheca-expansion-2026-11.mjs
+          node scripts/check-registered-originals-translations-indexed.mjs
+      - name: Fusionar contenido e índice sin sobrescribir cambios concurrentes
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/bibliotheca-expansion-publicada-2026-11-16.json data/classics-corpus/search-registry.json
+          for id in apollonius-conica aristarchus-magnitudines geminus-isagoge pappus-synagoge; do
+            git add "data/classics-corpus/$id-grc.json"
+          done
+          git add data/index/classics
+          if git diff --cached --quiet; then echo "No new verified Greek works"; exit 0; fi
+          git commit -m "Bibliotheca: index four scientific Greek originals"
+          git pull --rebase origin main
+          git push origin HEAD:main
