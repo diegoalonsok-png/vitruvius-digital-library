@@ -37,20 +37,23 @@ jobs:
           python - <<'PY'
           import json,pathlib
           root=pathlib.Path(".")
-          catalog=json.loads((root/"data/bibliotheca-expansion-publicada-2026-11-16.json").read_text())
+          master_path=root/"data/bibliotheca-graeca-latina-I-bce-I-ce.json"
+          extra_path=root/"data/bibliotheca-expansion-publicada-2026-11-16.json"
+          master=json.loads(master_path.read_text())
+          extra=json.loads(extra_path.read_text())
           manifest=json.loads((root/"data/index/classics/manifest.json").read_text())
           ids={x["id"] for x in manifest["index"] if x.get("lang")=="grc"}
           selected={"apollonius-conica","aristarchus-magnitudines","geminus-isagoge","pappus-synagoge"}
-          works={w["id"]:w for w in catalog["works"]}
+          works={w["id"]:w for w in [*master["works"],*extra["works"]]}
           for id in selected:
               assert id in works and id in ids,f"Greek text not indexed: {id}"
               w=works[id]
               assert pathlib.Path(w["corpusFiles"]["grc"]).is_file()
               w["textStatus"]="lexically-indexed"
               w["status"]="Original griego TEI incorporado e indexado léxicamente; sin cotejo crítico independiente"
-          (root/"data/bibliotheca-expansion-publicada-2026-11-16.json").write_text(
-              json.dumps(catalog,ensure_ascii=False,indent=2)+"\n")
-          print("Four Greek works verified in lexical index")
+          master_path.write_text(json.dumps(master,ensure_ascii=False,indent=2)+"\n")
+          extra_path.write_text(json.dumps(extra,ensure_ascii=False,indent=2)+"\n")
+          print("Four original Greek works verified in lexical index")
           PY
       - name: Pruebas de corpus y lector
         run: |
@@ -61,7 +64,7 @@ jobs:
           set -euo pipefail
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/bibliotheca-expansion-publicada-2026-11-16.json data/classics-corpus/search-registry.json
+          git add data/bibliotheca-graeca-latina-I-bce-I-ce.json data/bibliotheca-expansion-publicada-2026-11-16.json data/classics-corpus/search-registry.json
           for id in apollonius-conica aristarchus-magnitudines geminus-isagoge pappus-synagoge; do
             git add "data/classics-corpus/$id-grc.json"
           done
