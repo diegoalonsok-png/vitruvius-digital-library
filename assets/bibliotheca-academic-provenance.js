@@ -5,6 +5,7 @@
 const CATALOG="data/bibliotheca-graeca-latina-I-bce-I-ce.json";
 const SUPPLEMENT="data/bibliotheca-expansion-publicada-2026-11-16.json";
 const EDITIONS="data/classics-corpus/edition-provenance.json";
+const FEDERATED="data/r2/bibliotheca-inventario-unificado.json";
 let records=new Map(),sourceRecords=new Map();
 const box=document.createElement("aside");box.id="classic-scholarly-provenance";box.className="classic-scholarly-provenance";box.hidden=true;
 const txt=(tag,str,cls)=>{const el=document.createElement(tag);if(cls)el.className=cls;el.textContent=str;return el};
@@ -103,6 +104,10 @@ function draw(){
  if(!source){
   box.append(txt("p","Procedencia textual individual pendiente de registrar; no se atribuye una edición sin respaldo.","status"));
  }else{
+  for(const e of source.facsimiles||[]){
+   const p=txt("p","");renderLink(p,"Facsímil histórico registrado en R2",e.pdf);if(p.childNodes.length)box.append(p);
+   detail(box,"Estado del facsímil:",[e.year,"Ficha R2; no equivale a texto griego transcrito ni a traducción indexada"].filter(Boolean).join(" · "));
+  }
   const original=source.originals||[];
   if(!original.length)box.append(txt("p","Original griego o latino: todavía no hay edición textual registrada.","status"));
   for(const e of original){
@@ -131,11 +136,12 @@ function draw(){
 async function begin(){
  const sel=document.getElementById("classic-work");
  if(!sel)return;
- try{const [r,extra,editions]=await Promise.all([fetch(CATALOG,{cache:"no-cache"}),fetch(SUPPLEMENT,{cache:"no-cache"}),fetch(EDITIONS,{cache:"no-cache"})]);
+ try{const [r,extra,editions,federated]=await Promise.all([fetch(CATALOG,{cache:"no-cache"}),fetch(SUPPLEMENT,{cache:"no-cache"}),fetch(EDITIONS,{cache:"no-cache"}),fetch(FEDERATED,{cache:"no-cache"})]);
   if(!r.ok)throw Error("Catálogo inaccesible");const data=await r.json();
   if(!Array.isArray(data.works))throw Error("Catálogo sin obras");
   const supplements=extra.ok?(await extra.json()).works:[];
-  records=new Map([...data.works,...(Array.isArray(supplements)?supplements:[])].map(w=>[w.id,w]));
+  const additional=federated.ok?(await federated.json()).additionalWorks:[];
+  records=new Map([...data.works,...(Array.isArray(supplements)?supplements:[]),...(Array.isArray(additional)?additional:[])].map(w=>[w.id,w]));
   if(editions.ok){const doc=await editions.json();if(doc.schema==="vdl-edition-provenance-v1"&&Array.isArray(doc.works))sourceRecords=new Map(doc.works.map(w=>[w.id,w]));}
  }catch(e){console.warn("Ficha crítica:",e.message);return}
  style();(document.querySelector(".workrow")||sel).insertAdjacentElement("afterend",box);
