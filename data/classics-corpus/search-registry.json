@@ -2,8 +2,8 @@
   "schema": "vitruvia-classics-search-registry-v1",
   "updated": "2026-11-16",
   "description": "Registro verificable de transcripciones HTML y textos JSON existentes que admiten búsqueda literal de contenido. No incluye automáticamente PDF escaneados, facsímiles ni fichas sin texto. Los índices auxiliares por locus y el aparato crítico se declaran por separado; no se suman a versiones textuales originales ni implican colación autóptica.",
-  "count": 467,
-  "works": 356,
+  "count": 470,
+  "works": 359,
   "entries": [
     {
       "workId": "aeneas-tacticus-poliorketika",
@@ -2411,6 +2411,16 @@
       "passages": 549
     },
     {
+      "workId": "isidore-etymologiae",
+      "author": "Isidoro de Sevilla",
+      "title": "Etymologiae · Originum libri XX",
+      "language": "la",
+      "format": "json-passages",
+      "path": "data/classics-corpus/isidore-etymologiae-la.json",
+      "reader": "classics-text-reader.html?work=isidore-etymologiae&lang=la",
+      "sourceDescription": "Pinned CLTK Latin Library book files; Public Domain Mark 1.0"
+    },
+    {
       "workId": "isocrates-aegineticus",
       "author": "Isócrates",
       "title": "Αἰγητικὸς",
@@ -4198,6 +4208,16 @@
       "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
     },
     {
+      "workId": "seneca-naturales",
+      "author": "Séneca",
+      "title": "Naturales quaestiones",
+      "language": "la",
+      "format": "json-passages",
+      "path": "data/classics-corpus/seneca-naturales-la.json",
+      "reader": "classics-text-reader.html?work=seneca-naturales&lang=la",
+      "sourceDescription": "Pinned CLTK Latin Library book files; Public Domain Mark 1.0"
+    },
+    {
       "workId": "seneca-tragoediae",
       "author": "Séneca (atribuciones individuales por cotejar)",
       "title": "Tragoediae (colección)",
@@ -4625,6 +4645,16 @@
       "path": "data/classics-corpus/vegetius-epitoma-la.json",
       "reader": "classics-text-reader.html?work=vegetius-epitoma&lang=la",
       "sourceDescription": "CLTK Latin Library, libros I–IV · Public Domain Mark 1.0 · transcripción digital sin cotejo impreso; segmentos técnicos"
+    },
+    {
+      "workId": "velleius-historia",
+      "author": "Veleyo Patérculo",
+      "title": "Historia Romana · libri duo",
+      "language": "la",
+      "format": "json-passages",
+      "path": "data/classics-corpus/velleius-historia-la.json",
+      "reader": "classics-text-reader.html?work=velleius-historia&lang=la",
+      "sourceDescription": "Pinned CLTK Latin Library book files; Public Domain Mark 1.0"
     },
     {
       "workId": "virgil-aeneid",

@@ -2981,8 +2981,8 @@
       "genre": "Historia natural",
       "dating": "c. 62–65 d. C.",
       "reading": {
-        "url": "https://thelatinlibrary.com/sen.html",
-        "status": "Texto latino en The Latin Library (página del autor: elegir la obra). Fuente externa de lectura; la fuente no declara la edición crítica de base."
+        "url": "classics-text-reader.html?work=seneca-naturales&lang=la",
+        "status": "Transcripción latina por libros; pasajes digitales locales."
       },
       "manuscript": {
         "manifest": null,
@@ -3040,7 +3040,73 @@
         "century": "interpretado del campo dating de esta ficha",
         "period": "interpretado del campo dating de esta ficha",
         "witnessLookup": "enlaces de búsqueda generados a partir del título"
-      }
+      },
+      "corpusFiles": {
+        "la": "data/classics-corpus/seneca-naturales-la.json"
+      },
+      "localVersions": [
+        {
+          "language": "la",
+          "path": "data/classics-corpus/seneca-naturales-la.json"
+        }
+      ],
+      "sourceFiles": [
+        {
+          "book": 1,
+          "url": "https://raw.githubusercontent.com/cltk/lat_text_latin_library/76229acaf02efd1964ac32009408a90b6f279758/sen/sen.qn1.txt",
+          "sha256": "99ec901bfea6cb7505cf00bdbde05b5baadec907470a44a52eaecdf848024166",
+          "bytes": 54301,
+          "passages": 32
+        },
+        {
+          "book": 2,
+          "url": "https://raw.githubusercontent.com/cltk/lat_text_latin_library/76229acaf02efd1964ac32009408a90b6f279758/sen/sen.qn2.txt",
+          "sha256": "ff2b143faa9f35a62009015b023630e52b3a18e6fe7fa4c35906b5d613f74c05",
+          "bytes": 60343,
+          "passages": 35
+        },
+        {
+          "book": 3,
+          "url": "https://raw.githubusercontent.com/cltk/lat_text_latin_library/76229acaf02efd1964ac32009408a90b6f279758/sen/sen.qn3.txt",
+          "sha256": "0c72540b1b386adc76878c3516270c98faced0ffd4f64b2ac627cca729b56ba2",
+          "bytes": 55210,
+          "passages": 32
+        },
+        {
+          "book": 4,
+          "url": "https://raw.githubusercontent.com/cltk/lat_text_latin_library/76229acaf02efd1964ac32009408a90b6f279758/sen/sen.qn4.txt",
+          "sha256": "f458dd853779f6c9217480df1745a45ad4e848b9438a954dfe496d16c95e3708",
+          "bytes": 36603,
+          "passages": 21
+        },
+        {
+          "book": 5,
+          "url": "https://raw.githubusercontent.com/cltk/lat_text_latin_library/76229acaf02efd1964ac32009408a90b6f279758/sen/sen.qn5.txt",
+          "sha256": "dd247c05804d076d21e3cb2d1149bc9e7c388f34f512f4099fa16b0729eb64c8",
+          "bytes": 28018,
+          "passages": 17
+        },
+        {
+          "book": 6,
+          "url": "https://raw.githubusercontent.com/cltk/lat_text_latin_library/76229acaf02efd1964ac32009408a90b6f279758/sen/sen.qn6.txt",
+          "sha256": "0e079d2a04bef408af8961ddad6c9c37edeb85448ee722709655886d409101b7",
+          "bytes": 56226,
+          "passages": 33
+        },
+        {
+          "book": 7,
+          "url": "https://raw.githubusercontent.com/cltk/lat_text_latin_library/76229acaf02efd1964ac32009408a90b6f279758/sen/sen.qn7.txt",
+          "sha256": "5c5ec5748884a6500419dad62ba897ff51c226498025d47567f4d4228c289e5f",
+          "bytes": 44210,
+          "passages": 26
+        }
+      ],
+      "sourceLicense": "Public Domain Mark 1.0",
+      "textStatus": "lexically-indexed",
+      "status": "Texto original latino incorporado e indexado léxicamente; sin cotejo crítico independiente",
+      "localEditionLanguages": [
+        "la"
+      ]
     },
     {
       "id": "lucan",
@@ -11133,8 +11199,8 @@
       "dating": "siglo I d. C.",
       "publicStatus": "repertoriado-busqueda-externa",
       "reading": {
-        "url": "https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Velleius_Paterculus/home.html",
-        "status": "Texto original de la edición Loeb Classical Library (dominio público), transcrito en LacusCurtius, Universidad de Chicago. Fuente externa de lectura; no alojada en este sitio."
+        "url": "classics-text-reader.html?work=velleius-historia&lang=la",
+        "status": "Transcripción latina por libros; pasajes digitales locales."
       },
       "manuscript": {
         "manifest": null,
@@ -11188,7 +11254,38 @@
         "century": "interpretado del campo dating de esta ficha",
         "period": "interpretado del campo dating de esta ficha",
         "witnessLookup": "enlaces de búsqueda generados a partir del título"
-      }
+      },
+      "corpusFiles": {
+        "la": "data/classics-corpus/velleius-historia-la.json"
+      },
+      "localVersions": [
+        {
+          "language": "la",
+          "path": "data/classics-corpus/velleius-historia-la.json"
+        }
+      ],
+      "sourceFiles": [
+        {
+          "book": 1,
+          "url": "https://raw.githubusercontent.com/cltk/lat_text_latin_library/76229acaf02efd1964ac32009408a90b6f279758/vell1.txt",
+          "sha256": "7a0996813bca9ba2361a4c13fd86d96062ac16ad5ec6ff80fe71f494ae8002a9",
+          "bytes": 26727,
+          "passages": 16
+        },
+        {
+          "book": 2,
+          "url": "https://raw.githubusercontent.com/cltk/lat_text_latin_library/76229acaf02efd1964ac32009408a90b6f279758/vell2.txt",
+          "sha256": "e7b290028494c29f2e9c79b43effabd43fb0681ce66a807d7be6b5ccccc35ba6",
+          "bytes": 168691,
+          "passages": 99
+        }
+      ],
+      "sourceLicense": "Public Domain Mark 1.0",
+      "textStatus": "lexically-indexed",
+      "status": "Texto original latino incorporado e indexado léxicamente; sin cotejo crítico independiente",
+      "localEditionLanguages": [
+        "la"
+      ]
     },
     {
       "id": "silius-punica",
@@ -27177,8 +27274,8 @@
         "Isidorus Hispalensis"
       ],
       "reading": {
-        "url": "https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Isidore/home.html",
-        "status": "Texto original transcrito en LacusCurtius, Universidad de Chicago; la página de la fuente indica la edición de base. Fuente externa de lectura; no alojada en este sitio."
+        "url": "classics-text-reader.html?work=isidore-etymologiae&lang=la",
+        "status": "Transcripción latina por libros; pasajes digitales locales."
       },
       "manuscript": {
         "manifest": null,
@@ -27287,7 +27384,164 @@
         "period": "interpretado del campo dating de esta ficha",
         "witnessRecords": "testimonios catalogados en data/bibliotheca-testimonia-verified.json, ordenados por fecha de inicio",
         "earliestWitness": "elegido por la fecha de inicio más temprana entre los testimonios catalogados"
-      }
+      },
+      "corpusFiles": {
+        "la": "data/classics-corpus/isidore-etymologiae-la.json"
+      },
+      "localVersions": [
+        {
+          "language": "la",
+          "path": "data/classics-corpus/isidore-etymologiae-la.json"
+        }
+      ],
+      "sourceFiles": [
+        {
+          "book": 1,
+          "url": "https://raw.githubusercontent.com/cltk/lat_text_latin_library/76229acaf02efd1964ac32009408a90b6f279758/isidore/1.txt",
+          "sha256": "f8319d0c57b3c0d84ba41e4376a8311a34ce9498d0d81139c047c9bcc3d51c2b",
+          "bytes": 94692,
+          "passages": 55
+        },
+        {
+          "book": 2,
+          "url": "https://raw.githubusercontent.com/cltk/lat_text_latin_library/76229acaf02efd1964ac32009408a90b6f279758/isidore/2.txt",
+          "sha256": "47fc7ac3078e826579814c280eee901ea925f18646405af8103a2d8b3a8dfa47",
+          "bytes": 69819,
+          "passages": 41
+        },
+        {
+          "book": 3,
+          "url": "https://raw.githubusercontent.com/cltk/lat_text_latin_library/76229acaf02efd1964ac32009408a90b6f279758/isidore/3.txt",
+          "sha256": "8c901c09ef046d977359b4570753bec5250b7251d39e02d9192533506c6fe417",
+          "bytes": 60287,
+          "passages": 36
+        },
+        {
+          "book": 4,
+          "url": "https://raw.githubusercontent.com/cltk/lat_text_latin_library/76229acaf02efd1964ac32009408a90b6f279758/isidore/4.txt",
+          "sha256": "c63655353dc9f8695e3790273fe5875286aa19d4411f7be6ce919cd62ba764b8",
+          "bytes": 24944,
+          "passages": 15
+        },
+        {
+          "book": 5,
+          "url": "https://raw.githubusercontent.com/cltk/lat_text_latin_library/76229acaf02efd1964ac32009408a90b6f279758/isidore/5.txt",
+          "sha256": "4bbe2814784880342a43b8fb8455c4f52dfee6708acd504358de661a24e3bad3",
+          "bytes": 55528,
+          "passages": 33
+        },
+        {
+          "book": 6,
+          "url": "https://raw.githubusercontent.com/cltk/lat_text_latin_library/76229acaf02efd1964ac32009408a90b6f279758/isidore/6.txt",
+          "sha256": "5ceda7334a6e93ec9043756e44f10ad6e2479af6f0b51a339e5e640a7ca96689",
+          "bytes": 64790,
+          "passages": 38
+        },
+        {
+          "book": 7,
+          "url": "https://raw.githubusercontent.com/cltk/lat_text_latin_library/76229acaf02efd1964ac32009408a90b6f279758/isidore/7.txt",
+          "sha256": "c1c22be7f31a8a4bd77245c7bc9702dee54c7d10f4da28f97da94165ea0f1563",
+          "bytes": 79829,
+          "passages": 47
+        },
+        {
+          "book": 8,
+          "url": "https://raw.githubusercontent.com/cltk/lat_text_latin_library/76229acaf02efd1964ac32009408a90b6f279758/isidore/8.txt",
+          "sha256": "f98195a297b8979ecaa387df2e965ac37f4dbfeab2181d88042ca4d85a0d3723",
+          "bytes": 64647,
+          "passages": 38
+        },
+        {
+          "book": 9,
+          "url": "https://raw.githubusercontent.com/cltk/lat_text_latin_library/76229acaf02efd1964ac32009408a90b6f279758/isidore/9.txt",
+          "sha256": "b08030a13541eab1bfe33db3154fdf0a3a0121a5b91e5d15b7a78b0f1df2e946",
+          "bytes": 72249,
+          "passages": 43
+        },
+        {
+          "book": 10,
+          "url": "https://raw.githubusercontent.com/cltk/lat_text_latin_library/76229acaf02efd1964ac32009408a90b6f279758/isidore/10.txt",
+          "sha256": "9c6d959ea9ae61503b915549ffa3d299b6ecbe5c4d31ae0dca2cf47aa3ed266c",
+          "bytes": 54657,
+          "passages": 32
+        },
+        {
+          "book": 11,
+          "url": "https://raw.githubusercontent.com/cltk/lat_text_latin_library/76229acaf02efd1964ac32009408a90b6f279758/isidore/11.txt",
+          "sha256": "b0ff1b4eee194d2082ab164c7838d3b4400bc956fb9d3bec6e3851b64bf7a74b",
+          "bytes": 53074,
+          "passages": 32
+        },
+        {
+          "book": 12,
+          "url": "https://raw.githubusercontent.com/cltk/lat_text_latin_library/76229acaf02efd1964ac32009408a90b6f279758/isidore/12.txt",
+          "sha256": "5d280067b02096cd7a9871b1858a63547e7227b9ac9dfd715b4406a8369c32e8",
+          "bytes": 81687,
+          "passages": 48
+        },
+        {
+          "book": 13,
+          "url": "https://raw.githubusercontent.com/cltk/lat_text_latin_library/76229acaf02efd1964ac32009408a90b6f279758/isidore/13.txt",
+          "sha256": "6c293c2ccbee2082725608899c78c2d54c016576ec56950aa648141f90aa3c4a",
+          "bytes": 43890,
+          "passages": 26
+        },
+        {
+          "book": 14,
+          "url": "https://raw.githubusercontent.com/cltk/lat_text_latin_library/76229acaf02efd1964ac32009408a90b6f279758/isidore/14.txt",
+          "sha256": "171ada7f26d1a46e04a2d02e8007676c18fb37b5394cd26d5762287a1450a3cd",
+          "bytes": 60044,
+          "passages": 36
+        },
+        {
+          "book": 15,
+          "url": "https://raw.githubusercontent.com/cltk/lat_text_latin_library/76229acaf02efd1964ac32009408a90b6f279758/isidore/15.txt",
+          "sha256": "d12c68a429942331ce7e6f28bab11b99a84fd229a8a9481cf1a7af306327c867",
+          "bytes": 56357,
+          "passages": 34
+        },
+        {
+          "book": 16,
+          "url": "https://raw.githubusercontent.com/cltk/lat_text_latin_library/76229acaf02efd1964ac32009408a90b6f279758/isidore/16.txt",
+          "sha256": "d4724e841a6d3b254b0ed15afeaeb5769230941d436f23035df3dfb32f3d97e6",
+          "bytes": 69496,
+          "passages": 41
+        },
+        {
+          "book": 17,
+          "url": "https://raw.githubusercontent.com/cltk/lat_text_latin_library/76229acaf02efd1964ac32009408a90b6f279758/isidore/17.txt",
+          "sha256": "73a70056a7237737bd1be8704deec325c5074b5eac88444679f6722eb28ba48a",
+          "bytes": 71125,
+          "passages": 42
+        },
+        {
+          "book": 18,
+          "url": "https://raw.githubusercontent.com/cltk/lat_text_latin_library/76229acaf02efd1964ac32009408a90b6f279758/isidore/18.txt",
+          "sha256": "2724e48e2ae9505a44113b2186eb5302520d629461298e610721585d4577dbe6",
+          "bytes": 42131,
+          "passages": 25
+        },
+        {
+          "book": 19,
+          "url": "https://raw.githubusercontent.com/cltk/lat_text_latin_library/76229acaf02efd1964ac32009408a90b6f279758/isidore/19.txt",
+          "sha256": "fa49a242d7357530fee87ee0d655b6afd54ca025d89eca448a628d948ecaab8e",
+          "bytes": 66988,
+          "passages": 40
+        },
+        {
+          "book": 20,
+          "url": "https://raw.githubusercontent.com/cltk/lat_text_latin_library/76229acaf02efd1964ac32009408a90b6f279758/isidore/20.txt",
+          "sha256": "b1a50923cb1ef5421e3f4eec0ee39c3579f470787fa14c411d50fa619674df8c",
+          "bytes": 35550,
+          "passages": 21
+        }
+      ],
+      "sourceLicense": "Public Domain Mark 1.0",
+      "textStatus": "lexically-indexed",
+      "status": "Texto original latino incorporado e indexado léxicamente; sin cotejo crítico independiente",
+      "localEditionLanguages": [
+        "la"
+      ]
     },
     {
       "id": "censorinus-die-natali",
