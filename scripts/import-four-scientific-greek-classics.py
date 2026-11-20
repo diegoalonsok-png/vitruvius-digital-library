@@ -84,11 +84,12 @@ def main():
     catalog=read(CAT);master=read(MAIN);registry=read(REG)
     indexed={e["workId"] for e in registry["entries"]}
     seen_urns={str(e.get("sourceUrn","")) for e in registry["entries"] if e.get("sourceUrn")}
-    known={w["id"] for w in catalog["works"]}|{w["id"] for w in master["works"]}
-    saved=[];new_entries=[];new_works=[]
+    master_by_id={w["id"]:w for w in master["works"]}
+    catalog_by_id={w["id"]:w for w in catalog["works"]}
+    saved=[];new_entries=[];new_works=[];updated_master=[]
     for id,author,title,a,b,editor,genre in CANDIDATES:
-        if id in indexed or id in known:
-            print("SKIP existing",id);continue
+        if id in indexed:
+            print("SKIP registered text",id);continue
         urn=f"urn:cts:greekLit:{a}.{b}.1st1K-grc1"
         if urn in seen_urns:raise ValueError("Duplicate edition URN "+urn)
         url=f"{ROOT_URL}/{a}/{b}/{a}.{b}.1st1K-grc1.xml"
@@ -115,17 +116,36 @@ def main():
           "reader":f"classics-text-reader.html?work={id}&lang=grc",
           "sourceUrn":urn,"sourceSha256":original["sourceSha256"],
           "sourceDescription":f"First1KGreek; edición de {editor}; CC BY-SA 4.0"}
+        if id in master_by_id:
+            existing=master_by_id[id]
+            if existing.get("corpusFiles",{}).get("grc"):
+                raise ValueError("Existing Greek source needs separate review: "+id)
+            existing["corpusFiles"]={**existing.get("corpusFiles",{}),"grc":path}
+            existing["sourceUrl"]=url
+            existing["sourceUrn"]=urn
+            existing["sourceSha256"]=original["sourceSha256"]
+            existing["sourceLicense"]="CC BY-SA 4.0"
+            existing["textStatus"]="registered-pending-lexical-index"
+            existing["localVersions"]=[*existing.get("localVersions",[]),{"language":"grc","path":path}]
+            existing["reading"]={"url":f"classics-text-reader.html?work={id}&lang=grc",
+                                "status":"Texto griego segmentado; traducción sin verificar."}
+            updated_master.append(id)
+        elif id in catalog_by_id:
+            raise ValueError("Existing supplementary entry requires review: "+id)
+        else:
+            new_works.append(rec)
         saved.append((path,original))
-        new_entries.append(entry);new_works.append(rec)
+        new_entries.append(entry)
         seen_urns.add(urn)
         print(f"VERIFIED {id}: {len(passages)} passages, {greek} Greek chars")
     # Sólo escribir si TODAS las fuentes candidatas validaron; sin cambios parciales.
     for path,original in saved:write(ROOT/path,original)
     catalog["works"].extend(new_works)
+    if updated_master:write(MAIN,master)
     registry["entries"].extend(new_entries)
     registry["entries"].sort(key=lambda x:(x["workId"],x["language"],x.get("format","")))
     registry["count"]=len(registry["entries"])
     registry["works"]=len({x["workId"] for x in registry["entries"]})
     write(CAT,catalog);write(REG,registry)
-    print(json.dumps({"newIndexedCandidates":len(saved),"newIds":[x["id"] for x in new_works]}))
+    print(json.dumps({"newIndexedCandidates":len(saved),"newIds":[x["id"] for x in new_works],"enrichedExistingMaster":updated_master}))
 if __name__=="__main__":main()
