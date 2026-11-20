@@ -1,0 +1,29 @@
+name: Verificar búsqueda por capítulo, modos y resaltado amarillo
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'assets/classics-text-reader.js'
+      - 'classics-text-reader.html'
+      - 'scripts/test-classics-reader-search-scope-and-color.mjs'
+      - '.github/workflows/test-classics-reader-search-scope.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  test:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Instalar pruebas DOM
+        run: npm ci --ignore-scripts
+      - name: Validar sintaxis
+        run: node --check assets/classics-text-reader.js
+      - name: Validar los dos modos y alcances en el visor académico
+        run: node scripts/test-classics-reader-search-scope-and-color.mjs
+      - name: Conservar pruebas de búsqueda preexistentes
+        run: node scripts/test-classics-reader-search.mjs
