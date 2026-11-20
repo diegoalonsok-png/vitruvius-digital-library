@@ -1,0 +1,83 @@
+name: Bibliotheca - incorporar Isidoro Seneca y Veleyo en latín
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/import-latin-book-series-20261120.py'
+      - '.github/workflows/import-latin-book-series-20261120.yml'
+permissions:
+  contents: write
+concurrency:
+  group: vdl-classics-publication-main
+  cancel-in-progress: false
+jobs:
+  ingest:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Comprobar las 29 unidades y extraer pasajes originales
+        run: |
+          python -m py_compile scripts/import-latin-book-series-20261120.py
+          python scripts/import-latin-book-series-20261120.py
+      - name: Reconstruir índice léxico clásico completo
+        run: node --max-old-space-size=6144 scripts/build-classics-lexical-index.mjs
+      - name: Certificar los libros y el índice antes de marcar publicación
+        run: |
+          python - <<'PY'
+          import json,pathlib
+          root=pathlib.Path(".")
+          primary=root/"data/bibliotheca-graeca-latina-I-bce-I-ce.json"
+          supplement=root/"data/bibliotheca-expansion-publicada-2026-11-16.json"
+          a=json.loads(primary.read_text())
+          b=json.loads(supplement.read_text())
+          manifest=json.loads((root/"data/index/classics/manifest.json").read_text())
+          indexed={(x["id"],x["lang"]):x for x in manifest["index"]}
+          names={"isidore-etymologiae":20,"seneca-naturales":7,"velleius-historia":2}
+          works={w["id"]:w for w in a["works"]+b["works"]}
+          for id,n in names.items():
+              w=works[id]
+              path=pathlib.Path(w["corpusFiles"]["la"])
+              assert path.exists(),f"Latin text missing: {id}"
+              d=json.loads(path.read_text())
+              assert d["workId"]==id and d["language"]=="la"
+              assert len(d["sourceFiles"])==n
+              assert all(len(row["sha256"])==64 and row["passages"]>0 for row in d["sourceFiles"])
+              assert (id,"la") in indexed,f"Not in lexical index: {id}"
+              assert indexed[(id,"la")]["passages"]==len(d["passages"])
+              w["textStatus"]="lexically-indexed"
+              w["status"]="Texto original latino incorporado e indexado léxicamente; sin cotejo crítico independiente"
+              if w in a["works"]:
+                  langs=w.setdefault("localEditionLanguages",[])
+                  if "la" not in langs:langs.append("la")
+          primary.write_text(json.dumps(a,ensure_ascii=False,indent=2)+"\n")
+          supplement.write_text(json.dumps(b,ensure_ascii=False,indent=2)+"\n")
+          print("3 Latin book series indexed and source-verified")
+          PY
+      - name: Comprobar integridad de índice y registros
+        run: |
+          node scripts/test-classics-lexical-index.mjs
+          node scripts/check-registered-originals-translations-indexed.mjs
+      - name: Fusionar únicamente textos y metadatos validados
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add data/bibliotheca-graeca-latina-I-bce-I-ce.json data/bibliotheca-expansion-publicada-2026-11-16.json data/classics-corpus/search-registry.json
+          git add data/classics-corpus/isidore-etymologiae-la.json data/classics-corpus/seneca-naturales-la.json data/classics-corpus/velleius-historia-la.json
+          git add data/index/classics
+          if git diff --cached --quiet; then echo 'No new books or indices'; exit 0; fi
+          git commit -m 'Bibliotheca: index complete Latin series Isidore Seneca Velleius'
+          git pull --rebase origin main
+          git push origin HEAD:main
