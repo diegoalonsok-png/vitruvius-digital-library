@@ -1,0 +1,241 @@
+{
+  "schema": "vitruvius-r2-roadmap-verification-v1",
+  "checked": "2026-11-20",
+  "scope": "Subset of 62 records marked not effectively indexed in November 18 roadmap. This does not replace broader Bibliotheca counters.",
+  "roadmapMissingRecords": 62,
+  "roadmapIndependentAncientWorksMissing": 59,
+  "verifiedR2Originals": 27,
+  "verifiedPassages": 15254,
+  "reachableButUnvalidated": 3,
+  "unreachableOnCheck": 2,
+  "notYetLocatedInMainRegistry": 30,
+  "sourceOfCounts": "data/classics-corpus/indexation-roadmap-222.json",
+  "sourceOfUrls": "data/classics-corpus/search-registry.json",
+  "interpretation": "These 27 were already in the search registry and the legacy roadmap is stale for those entries. No new ancient works were added; do not simply subtract counts without reconciled catalog scope and refreshed test.",
+  "verified": [
+    {
+      "workId": "apolonio-argonauticas",
+      "url": "https://libros.vitruvius-digital-library.org/corpus/apolonio-argonauticas-grc.json",
+      "language": "grc",
+      "passages": 585,
+      "verification": "R2 URL returned parseable JSON matching workId, with a nonempty passages array"
+    },
+    {
+      "workId": "lisias-discursos",
+      "url": "https://libros.vitruvius-digital-library.org/corpus/lisias-discursos-grc.json",
+      "language": "grc",
+      "passages": 1116,
+      "verification": "R2 URL returned parseable JSON matching workId, with a nonempty passages array"
+    },
+    {
+      "workId": "longino-sublime",
+      "url": "https://libros.vitruvius-digital-library.org/corpus/longino-sublime-grc.json",
+      "language": "grc",
+      "passages": 186,
+      "verification": "R2 URL returned parseable JSON matching workId, with a nonempty passages array"
+    },
+    {
+      "workId": "teocrito-bucolicos",
+      "url": "https://libros.vitruvius-digital-library.org/corpus/teocrito-bucolicos-grc.json",
+      "language": "grc",
+      "passages": 324,
+      "verification": "R2 URL returned parseable JSON matching workId, with a nonempty passages array"
+    },
+    {
+      "workId": "antologia-griega",
+      "url": "https://libros.vitruvius-digital-library.org/corpus/antologia-griega-grc.json",
+      "language": "grc",
+      "passages": 835,
+      "verification": "R2 URL returned parseable JSON matching workId, with a nonempty passages array"
+    },
+    {
+      "workId": "aquiles-tacio-leucipa",
+      "url": "https://libros.vitruvius-digital-library.org/corpus/aquiles-tacio-leucipa-grc.json",
+      "language": "grc",
+      "passages": 1035,
+      "verification": "R2 URL returned parseable JSON matching workId, with a nonempty passages array"
+    },
+    {
+      "workId": "aristoteles-del-cielo",
+      "url": "https://libros.vitruvius-digital-library.org/corpus/aristoteles-del-cielo-grc.json",
+      "language": "grc",
+      "passages": 39,
+      "verification": "R2 URL returned parseable JSON matching workId, with a nonempty passages array"
+    },
+    {
+      "workId": "aristoteles-historia-animales",
+      "url": "https://libros.vitruvius-digital-library.org/corpus/aristoteles-historia-animales-grc.json",
+      "language": "grc",
+      "passages": 238,
+      "verification": "R2 URL returned parseable JSON matching workId, with a nonempty passages array"
+    },
+    {
+      "workId": "baquilides-poemas",
+      "url": "https://libros.vitruvius-digital-library.org/corpus/baquilides-poemas-grc.json",
+      "language": "grc",
+      "passages": 140,
+      "verification": "R2 URL returned parseable JSON matching workId, with a nonempty passages array"
+    },
+    {
+      "workId": "calimaco-himnos",
+      "url": "https://libros.vitruvius-digital-library.org/corpus/calimaco-himnos-grc.json",
+      "language": "grc",
+      "passages": 341,
+      "verification": "R2 URL returned parseable JSON matching workId, with a nonempty passages array"
+    },
+    {
+      "workId": "epicuro-restos",
+      "url": "https://libros.vitruvius-digital-library.org/corpus/epicuro-restos-grc.json",
+      "language": "grc",
+      "passages": 193,
+      "verification": "R2 URL returned parseable JSON matching workId, with a nonempty passages array"
+    },
+    {
+      "workId": "esquines-discursos",
+      "url": "https://libros.vitruvius-digital-library.org/corpus/esquines-discursos-grc.json",
+      "language": "grc",
+      "passages": 717,
+      "verification": "R2 URL returned parseable JSON matching workId, with a nonempty passages array"
+    },
+    {
+      "workId": "filostrato-apolonio",
+      "url": "https://libros.vitruvius-digital-library.org/corpus/filostrato-apolonio-grc.json",
+      "language": "grc",
+      "passages": 348,
+      "verification": "R2 URL returned parseable JSON matching workId, with a nonempty passages array"
+    },
+    {
+      "workId": "galeno-facultades-naturales",
+      "url": "https://libros.vitruvius-digital-library.org/corpus/galeno-facultades-naturales-grc.json",
+      "language": "grc",
+      "passages": 41,
+      "verification": "R2 URL returned parseable JSON matching workId, with a nonempty passages array"
+    },
+    {
+      "workId": "iseo-discursos",
+      "url": "https://libros.vitruvius-digital-library.org/corpus/iseo-discursos-grc.json",
+      "language": "grc",
+      "passages": 549,
+      "verification": "R2 URL returned parseable JSON matching workId, with a nonempty passages array"
+    },
+    {
+      "workId": "jenofonte-ciropedia",
+      "url": "https://libros.vitruvius-digital-library.org/corpus/jenofonte-ciropedia-grc.json",
+      "language": "grc",
+      "passages": 1409,
+      "verification": "R2 URL returned parseable JSON matching workId, with a nonempty passages array"
+    },
+    {
+      "workId": "jenofonte-economico",
+      "url": "https://libros.vitruvius-digital-library.org/corpus/jenofonte-economico-grc.json",
+      "language": "grc",
+      "passages": 397,
+      "verification": "R2 URL returned parseable JSON matching workId, with a nonempty passages array"
+    },
+    {
+      "workId": "longo-dafnis-cloe",
+      "url": "https://libros.vitruvius-digital-library.org/corpus/longo-dafnis-cloe-grc.json",
+      "language": "grc",
+      "passages": 538,
+      "verification": "R2 URL returned parseable JSON matching workId, with a nonempty passages array"
+    },
+    {
+      "workId": "menandro-comedias",
+      "url": "https://libros.vitruvius-digital-library.org/corpus/menandro-comedias-grc.json",
+      "language": "grc",
+      "passages": 305,
+      "verification": "R2 URL returned parseable JSON matching workId, with a nonempty passages array"
+    },
+    {
+      "workId": "platon-cratilo-parmenides",
+      "url": "https://libros.vitruvius-digital-library.org/corpus/platon-cratilo-parmenides-grc.json",
+      "language": "grc",
+      "passages": 99,
+      "verification": "R2 URL returned parseable JSON matching workId, with a nonempty passages array"
+    },
+    {
+      "workId": "platon-protagoras",
+      "url": "https://libros.vitruvius-digital-library.org/corpus/platon-protagoras-grc.json",
+      "language": "grc",
+      "passages": 146,
+      "verification": "R2 URL returned parseable JSON matching workId, with a nonempty passages array"
+    },
+    {
+      "workId": "platon-teeteto-sofista",
+      "url": "https://libros.vitruvius-digital-library.org/corpus/platon-teeteto-sofista-grc.json",
+      "language": "grc",
+      "passages": 122,
+      "verification": "R2 URL returned parseable JSON matching workId, with a nonempty passages array"
+    },
+    {
+      "workId": "amiano-marcelino-es",
+      "url": "https://libros.vitruvius-digital-library.org/corpus/amiano-marcelino-es-la.json",
+      "language": "la",
+      "passages": 2883,
+      "verification": "R2 URL returned parseable JSON matching workId, with a nonempty passages array"
+    },
+    {
+      "workId": "ausonio-obras",
+      "url": "https://libros.vitruvius-digital-library.org/corpus/ausonio-obras-la.json",
+      "language": "la",
+      "passages": 789,
+      "verification": "R2 URL returned parseable JSON matching workId, with a nonempty passages array"
+    },
+    {
+      "workId": "claudiano-poemas",
+      "url": "https://libros.vitruvius-digital-library.org/corpus/claudiano-poemas-la.json",
+      "language": "la",
+      "passages": 1009,
+      "verification": "R2 URL returned parseable JSON matching workId, with a nonempty passages array"
+    },
+    {
+      "workId": "minucio-felix-octavio",
+      "url": "https://libros.vitruvius-digital-library.org/corpus/minucio-felix-octavio-la.json",
+      "language": "la",
+      "passages": 306,
+      "verification": "R2 URL returned parseable JSON matching workId, with a nonempty passages array"
+    },
+    {
+      "workId": "valerio-flaco-argonautica",
+      "url": "https://libros.vitruvius-digital-library.org/corpus/valerio-flaco-argonautica-la.json",
+      "language": "la",
+      "passages": 564,
+      "verification": "R2 URL returned parseable JSON matching workId, with a nonempty passages array"
+    }
+  ],
+  "partial": [
+    {
+      "workId": "origenes",
+      "url": "https://libros.vitruvius-digital-library.org/corpus/origenes-grc.json",
+      "status": "reachable, full JSON validation not established by extraction limit"
+    },
+    {
+      "workId": "isocrates-discursos",
+      "url": "https://libros.vitruvius-digital-library.org/corpus/isocrates-discursos-grc.json",
+      "status": "reachable, full JSON validation not established by extraction limit"
+    },
+    {
+      "workId": "quinto-esmirna-posthomericas",
+      "url": "https://libros.vitruvius-digital-library.org/corpus/quinto-esmirna-posthomericas-grc.json",
+      "status": "reachable, full JSON validation not established by extraction limit"
+    }
+  ],
+  "unavailable": [
+    {
+      "workId": "hipocrates-obras",
+      "url": "https://libros.vitruvius-digital-library.org/corpus/hipocrates-obras-grc.json",
+      "status": "fetch returned target_unreachable; retry and do not count as verified"
+    },
+    {
+      "workId": "plotino-eneadas",
+      "url": "https://libros.vitruvius-digital-library.org/corpus/plotino-eneadas-grc.json",
+      "status": "fetch returned target_unreachable; retry and do not count as verified"
+    }
+  ],
+  "restrictions": [
+    "No R2 write was performed",
+    "No semantic-search quality is certified",
+    "Textual integrity and translation alignment still require separate tests",
+    "Do not count an edition or translation as an extra ancient work"
+  ]
+}
