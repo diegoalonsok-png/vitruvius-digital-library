@@ -15,8 +15,9 @@ function catalog(){
   fetch("data/classics-corpus/title-search-aliases-multilingual.json").then(r=>r.ok?r.json():{aliases:{}}).catch(()=>({aliases:{}})),
   fetch("data/index/classics-additions-2026-11-17/manifest.json").then(r=>r.ok?r.json():{index:[]}).catch(()=>({index:[]})),
   fetch("data/classics-corpus/edition-list-labels.json",{cache:"no-cache"}).then(r=>r.ok?r.json():null).catch(()=>null),
-  fetch("data/r2/catalogo-clasicos-r2.json",{cache:"no-cache"}).then(r=>r.ok?r.json():null).catch(()=>null)
- ]).then(([j,registry,supplement,lexical,names,additions,editionLabels,pdfCatalogue])=>{
+  fetch("data/r2/catalogo-clasicos-r2.json",{cache:"no-cache"}).then(r=>r.ok?r.json():null).catch(()=>null),
+  fetch("data/r2/vinculos-repertorio.json",{cache:"no-cache"}).then(r=>r.ok?r.json():null).catch(()=>null)
+ ]).then(([j,registry,supplement,lexical,names,additions,editionLabels,pdfCatalogue,r2Links])=>{
   if(!Array.isArray(j.items)||j.items.length!==j.targetWorks)throw Error("Inventario de obras inconsistente");
   const sources=new Map();
   for(const entry of registry.entries||[]){
@@ -41,6 +42,13 @@ function catalog(){
     kind:"local",language:lang,originalIndexed,
     indexedLanguages:originalIndexed?[lang]:[],readers:sources.get(w.id)||[]});
   }
+  // Additional R2 work records belong to the catalogue, not to the searchable-text index.
+  // Preserve existing IDs and entries: the union is additive and does not move files.
+  for(const w of r2Links?.obrasNuevas||[]){
+   if(!w?.r2||merged.has(w.r2))continue;
+   merged.set(w.r2,{id:w.r2,author:w.autor||"Autor no indicado",title:w.obra||w.r2,
+    kind:"r2-facsimile",language:w.lengua||"",originalIndexed:false,indexedLanguages:[],readers:[]});
+  }
   // An uncatalogued text must remain discoverable, but is never passed off as
   // having an authenticated scholarly fiche or a verified lexical index.
   for(const [id,versions] of sources){
@@ -55,7 +63,7 @@ function catalog(){
   // Preserve rigorous indexed counts, but make every catalogued author and work discoverable.
   // Missing an exact original-index certificate must not mean "author not found".
   const all=[...merged.values()];
-  return {indexed:all.filter(w=>w.originalIndexed),all,aliases:names.aliases||{},editionLabels:editionLabels?.schema==='bibliotheca-edition-list-labels-v1'?editionLabels.works:{},pdfEditions:pdfCatalogue?.items||[]};
+  return {indexed:all.filter(w=>w.originalIndexed),all,aliases:names.aliases||{},editionLabels:editionLabels?.schema==='bibliotheca-edition-list-labels-v1'?editionLabels.works:{},pdfEditions:pdfCatalogue?.items||[],r2Links:r2Links?.porObra||{}};
  }).catch(e=>{dataPromise=null;throw e});
  return dataPromise;
 }
@@ -148,6 +156,18 @@ function mount(host){
    link.title=canRead?"Abrir lector de la obra":"Ver ficha académica y fuentes disponibles";
    const state=add("small","vdl-works-availability",canRead?" · Texto original indexado":" · Ficha y fuentes",info);
    state.setAttribute("aria-label",canRead?"Disponible para lectura":"Ficha bibliográfica, texto no confirmado");
+   // A facsimile can exist even where no searchable original is indexed.
+   // Never represent an OCR PDF as a scholarly transcription.
+   const editionIds=new Set([item.id,...(items.r2Links?.[item.id]||[]).map(e=>e.r2)]);
+   const facsimiles=items.pdfEditions.filter(e=>editionIds.has(e.id));
+   const seenPdf=new Set();
+   for(const pdf of facsimiles){
+    if(!/^https:\/\/libros\.vitruvius-digital-library\.org\/clasicos\/pdf\/[a-z0-9-]+\.pdf$/.test(pdf.pdf||"")||seenPdf.has(pdf.pdf))continue;
+    seenPdf.add(pdf.pdf);
+    const a=add("a","vdl-works-facsimile-link","Ver facsímil PDF",info);
+    a.href=pdf.pdf;a.target="_blank";a.rel="noopener noreferrer";
+    a.title="Facsímil registrado en R2; no implica texto indexado ni traducción cotejada";
+   }
    translationSummary(row,item,items.editionLabels,items.pdfEditions);
   }
   count.textContent=found.length?found.length+" obra"+(found.length===1?"":"s")+" encontrada"+(found.length===1?"":"s")+(found.length>12?" · primeras 12":"")+". Las obras sin original indexado abren su ficha bibliográfica.":"No se encontraron obras con ese autor o título.";
