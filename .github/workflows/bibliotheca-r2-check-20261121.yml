@@ -1,0 +1,21 @@
+name: Bibliotheca - R2 corpus remote availability (read only)
+on:
+  push:
+    branches:
+      - bibliotheca/disticha-catonis-20261121
+    paths:
+      - '.github/workflows/bibliotheca-r2-check-20261121.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  verify-r2:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Check 44 R2 corpus JSON endpoints (read only)
+        run: node scripts/check-bibliotheca-r2-remote-20261121.mjs
