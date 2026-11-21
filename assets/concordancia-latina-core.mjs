@@ -31,9 +31,15 @@ export function createConcordance(krohn,rose,{concepts=[],entries=[]}={}){
  if(loci.some(l=>!roseMap.has(l)))throw Error('Los índices no comparten los mismos 731 loci.');
  const pairs=loci.map((locus,i)=>({locus,book:parseLocus(locus).book,passages:[krohn.passages[i],roseMap.get(locus)]}));
  const indexed=pairs.map(pair=>({...pair,texts:pair.passages.map(p=>({raw:p.latin,tokens:tokens(p.latin)}))}));
+ const observed=new Set(indexed.flatMap(p=>p.texts.flatMap(t=>t.tokens.map(t=>t.word))));
  const families=new Map(),aliases=new Map();
  const addAlias=(key,terms)=>{const k=fold(key).trim();if(!k)return;const old=aliases.get(k)||new Set();for(const t of terms)old.add(t);aliases.set(k,old);};
- for(const e of entries){const forms=[e.lemma,...(e.forms||[])].filter(Boolean);for(const f of forms){const k=fold(f);const old=families.get(k)||new Set();for(const a of forms)old.add(a);families.set(k,old);}
+ for(const e of entries){const forms=[e.lemma,...(e.forms||[])].filter(Boolean),lemma=fold(e.lemma);
+  // A documented -a/-ae paradigm identifies the first declension. Complete
+  // that family only with regular forms actually attested in these two texts,
+  // including enclitic -que/-ve/-ne; never broaden to an arbitrary prefix.
+  if(lemma.endsWith('a')&&forms.some(f=>fold(f)===lemma+'e')){const stem=lemma.slice(0,-1);for(const ending of['a','ae','am','arum','as','is'])for(const enclitic of['','que','ue','ne']){const form=stem+ending+enclitic;if(observed.has(form))forms.push(form);}}
+  for(const f of forms){const k=fold(f);const old=families.get(k)||new Set();for(const a of forms)old.add(a);families.set(k,old);}
   for(const alias of [e.lemma,...(e.forms||[]),...(e.aliases||[]),...['es','en','fr'].flatMap(lang=>String(e[lang]||'').split(/[;,]/))])addAlias(alias,forms);
  }
  for(const c of concepts){const terms=(c.la||[]).filter(t=>typeof t==='string');for(const alias of [...terms,...Object.values(c.modern||{}).flat()])addAlias(alias,terms);}

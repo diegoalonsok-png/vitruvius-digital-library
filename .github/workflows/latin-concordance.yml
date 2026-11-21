@@ -25,3 +25,5 @@ jobs:
       - run: npm install --ignore-scripts --no-audit --no-fund
       - run: node scripts/test-concordancia-latina.mjs
       - run: node scripts/test-concordancia-estudio.mjs
+      - run: node scripts/test-historical.mjs
+      - run: node scripts/test-historical-parallel-ocr.mjs

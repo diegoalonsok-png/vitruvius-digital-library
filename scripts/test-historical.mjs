@@ -4,8 +4,12 @@ const read=p=>readFileSync(new URL('../'+p,import.meta.url),'utf8');
 const ui=read('assets/historical-search.mjs'),html=read('concordancia-historica.html');
 for(const edition of ['krohn-1912','rose-1899','perrault-1673']){
   assert(ui.includes("'"+edition+"'"),'Edition absent: '+edition);
-  assert(html.includes('value="'+edition+'"'),'Selector absent: '+edition);
 }
+// This route now reads independent indexed Latin; archived OCR utilities retain
+// their own data checks below, without imposing a facsimile selector on it.
+for(const side of ['krohn','rose'])assert(html.includes('id="hc-'+side+'-reader"'),'Indexed Latin reader absent: '+side);
+assert(html.includes('assets/concordancia-latina.mjs'),'Independent indexed concordance controller missing');
+assert(!html.includes('assets/historical-search.mjs'),'The new Latin reader must not initialize the former OCR controller');
 assert(ui.includes('requestSerial'),'Asynchronous edition search has no stale result guard');
 assert(ui.includes('selectHistoricalEdition'),'Edition-specific facsimile selection missing');
 assert(!ui.includes("card.querySelector('a')?.addEventListener"),'Duplicate result click handlers can produce stale or inconsistent pages');

@@ -17,6 +17,8 @@ assert.equal(parseLocus('IX.praef.10')?.key,'9.praef.10');assert.equal(parseLocu
 assert.deepEqual(engine.search('I.2.4').results.map(p=>p.locus),['1.2.4']);assert(engine.search('I.2').results.length>1);assert.equal(engine.search('99.99.99').results.length,0);
 const words=engine.search('symmetria',{mode:'words'}),semantic=engine.search('proporción'),phrase=engine.search('item symmetria est',{mode:'phrase'});
 assert(words.results.some(r=>r.locus==='1.2.4'));assert(words.results.some(r=>r.hits.some((h,i)=>h.some(([a,b])=>fold(r.passages[i].latin.slice(a,b))==='symmetriarum'))));
+for(const word of['symmetriis','symmetrias','symmetriaque','symmetriasque','symmetriisque'])assert(words.results.some(r=>r.hits.some((h,i)=>h.some(([a,b])=>fold(r.passages[i].latin.slice(a,b))===word))),'Attested inflection must be retrievable: '+word);
+const allSymmetria=engine.pairs.filter(p=>p.passages.some(p=>/\bsymmetri(?:a|ae|am|arum|as|is)(?:que|ue|ne)?\b/.test(fold(p.latin)))).map(p=>p.locus).sort();assert.deepEqual(words.results.map(r=>r.locus).sort(),allSymmetria);
 assert(semantic.results.length>words.results.length);assert(semantic.groups.flat().includes('proportio'));assert(semantic.results.some(r=>r.locus==='1.2.4'));
 assert(engine.search('belleza de los templos').results.length>0);assert(engine.search('templo',{book:'3'}).results.every(r=>r.book===3));
 assert(phrase.results.some(r=>r.locus==='1.2.4'));for(const r of phrase.results)for(let i=0;i<2;i++)for(const [a,b]of r.hits[i])assert.match(fold(r.passages[i].latin.slice(a,b)),/^item\s+symmetria\s+est$/);

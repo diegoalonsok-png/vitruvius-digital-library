@@ -17,6 +17,6 @@ assert(js.includes('encodeURIComponent(term)')&&js.includes('concordancia-histor
  "Historical results need escaped edition, query and page links");
 assert(html.includes("OCR por página")&&html.includes("no establece equivalencias"),
  "Historical page must distinguish OCR from critical collation");
-assert(historical.includes('href="concordancia-ocr-vitruvio.html"'),
- "Historical per-edition search must link to parallel OCR comparison");
+assert(historical.includes('assets/concordancia-latina.mjs')&&!historical.includes('assets/concordancia-ocr-vitruvio.js'),
+ "The rebuilt historical concordance must initialize indexed Latin and keep the independent OCR comparison out of its readers");
 console.log("PASS: independent historical OCR comparison references three extant page-indexed sources");

@@ -1,4 +1,4 @@
-import{EDITIONS,parseLocus,labelLocus,validateEdition,createConcordance,appendHighlighted,excerpt,scrollFraction,synchronizedOffset}from'./concordancia-latina-core.mjs?v=20261121-1';
+import{EDITIONS,parseLocus,labelLocus,validateEdition,createConcordance,appendHighlighted,excerpt,scrollFraction,synchronizedOffset}from'./concordancia-latina-core.mjs?v=20261121-2';
 
 export async function loadLatinSource(source,{fetcher=fetch,cryptoAPI=globalThis.crypto}={}){
  const url=new URL(source.url);
