@@ -2,7 +2,7 @@
   "schema": "vitruvia-classics-search-registry-v1",
   "updated": "2026-11-20",
   "description": "Registro verificable de transcripciones HTML y textos JSON existentes que admiten búsqueda literal de contenido. No incluye automáticamente PDF escaneados, facsímiles ni fichas sin texto. Los índices auxiliares por locus y el aparato crítico se declaran por separado; no se suman a versiones textuales originales ni implican colación autóptica.",
-  "count": 479,
+  "count": 480,
   "works": 365,
   "entries": [
     {
@@ -349,6 +349,16 @@
       "path": "data/classics-corpus/aristophanes-knights-grc.json",
       "reader": "classics-text-reader.html?work=aristophanes-knights&lang=grc",
       "sourceDescription": "Perseus Digital Library TEI · Hall y Geldart (1906) · CC BY-SA 4.0; sin colación filológica propia"
+    },
+    {
+      "workId": "aristophanes-lysistrata",
+      "author": "Aristófanes",
+      "title": "Λυσιστράτη",
+      "language": "en",
+      "format": "json-passages",
+      "path": "data/classics-corpus/aristophanes-lysistrata-en.json",
+      "reader": "classics-text-reader.html?work=aristophanes-lysistrata&lang=en",
+      "sourceDescription": "Traducción inglesa The Athenian Society (1912), English Wikisource; 476 unidades de diálogo; sin alineación crítica con original griego."
     },
     {
       "workId": "aristophanes-lysistrata",
