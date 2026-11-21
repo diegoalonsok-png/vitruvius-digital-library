@@ -6,10 +6,10 @@
   "method": "Greek workId with grc entry and no en/fr/es under that exact workId in the search registry. Not proof that translation is absent in R2 or alternate IDs; verify before import. Eusebius translation subsequently indexed in GitHub on 2026-11-20; remaining list excludes it.",
   "counts": {
     "greekWorkIds": 266,
-    "missingTranslationInSearchRegistry": 177,
-    "sourceCandidatesIdentified": 6,
-    "importedInThisAudit": 1,
-    "indexedInThisAudit": 1
+    "missingTranslationInSearchRegistry": 176,
+    "sourceCandidatesIdentified": 5,
+    "importedInThisAudit": 2,
+    "indexedInThisAudit": 2
   },
   "editorialRules": [
     "Never duplicate a workId or count translations as distinct works.",
@@ -69,29 +69,6 @@
       "sourceIdentification": "pending",
       "importStatus": "not_imported",
       "indexStatus": "not_indexed"
-    },
-    {
-      "workId": "apolonio-argonauticas",
-      "author": "Apolonio de Rodas",
-      "title": "Ἀργοναυτικά · Argonautica",
-      "originalRegistered": "https://libros.vitruvius-digital-library.org/corpus/apolonio-argonauticas-grc.json",
-      "existingLanguages": [
-        "grc"
-      ],
-      "translationRegistryStatus": "no_en_fr_es_under_same_workId",
-      "r2Crosscheck": "pending",
-      "sourceIdentification": "pending",
-      "importStatus": "not_imported",
-      "indexStatus": "not_indexed",
-      "translationCandidate": {
-        "translator": "R. C. Seaton",
-        "year": 1912,
-        "language": "en",
-        "url": "https://www.gutenberg.org/files/830/830-h/830-h.htm",
-        "source": "Project Gutenberg",
-        "status": "human_translation_located_not_integrated",
-        "notes": "Verify no equivalent existing version under another ID or R2 object and check reuse rights and locus segmentation."
-      }
     },
     {
       "workId": "appian-romaika",
@@ -2564,6 +2541,19 @@
       "gitHubPublished": true,
       "r2Mirrored": "not_verified",
       "publicReaderTested": false
+    },
+    {
+      "workId": "apolonio-argonauticas",
+      "language": "en",
+      "translator": "Robert Cooper Seaton",
+      "source": "Project Gutenberg ebook #830 (1912 historical translation)",
+      "path": "data/classics-corpus/apolonio-argonauticas-en.json",
+      "passages": 426,
+      "indexedInSearchRegistry": true,
+      "gitHubPublished": true,
+      "r2Mirrored": "not_verified",
+      "publicReaderTested": false,
+      "alignmentStatus": "unaligned"
     }
   ]
 }
