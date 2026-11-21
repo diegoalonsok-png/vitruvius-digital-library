@@ -3,10 +3,10 @@
   "method": "Registry plus inspected local JSON edition metadata; R2 URLs are declarations only, not live checks. No invented attribution or automatic translation claims.",
   "counts": {
     "cataloguedWorks": 404,
-    "editions": 474,
-    "localFilesInspected": 417,
+    "editions": 475,
+    "localFilesInspected": 418,
     "remoteEditionsDeclared": 44,
-    "worksWithoutHostedEnFrEs": 299
+    "worksWithoutHostedEnFrEs": 298
   },
   "works": [
     {
@@ -1755,8 +1755,28 @@
           "passages": 1876
         }
       ],
-      "translations": [],
-      "missingTranslation": true,
+      "translations": [
+        {
+          "language": "en",
+          "kind": "translation",
+          "status": "local-source-inspected",
+          "title": "Ἐκκλησιαστικὴ ἱστορία · Historia eclesiástica",
+          "translator": "Kirsopp Lake; J. E. L. Oulton",
+          "editor": null,
+          "edition": null,
+          "year": null,
+          "source": "https://github.com/OpenGreekAndLatin/First1KGreek/blob/master/data/tlg2018/tlg002/tlg2018.tlg002.1st1K-eng1.xml",
+          "sources": null,
+          "attribution": "Eusebius of Caesarea, Historia Ecclesiastica, English translation by Kirsopp Lake and J. E. L. Oulton, 1926–1932; digitized TEI by OpenGreekAndLatin / University of Leipzig; CC BY-SA 4.0",
+          "license": "CC BY-SA 4.0 (source TEI declares license)",
+          "editorialStatus": "Historic English translation segmented from TEI into book/chapter passages; automated XML extraction checked for unique loci, not philologically collated; original typographical/OCR-like errors may remain in upstream text",
+          "alignmentStatus": "unaligned",
+          "sourcePath": "data/classics-corpus/eusebio-en.json",
+          "sourceDescription": "Kirsopp Lake y J. E. L. Oulton, traducción inglesa histórica (1926–1932); TEI OpenGreekAndLatin / University of Leipzig, CC BY-SA 4.0; 254 pasajes por libro y capítulo, sin cotejo ni alineación independiente.",
+          "passages": 254
+        }
+      ],
+      "missingTranslation": false,
       "facsimiles": []
     },
     {
