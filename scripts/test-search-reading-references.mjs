@@ -83,10 +83,14 @@ for(const work of ['homer-iliad','homer-odyssey','caesar-gallico']){
  assert(!JSON.parse(w.localStorage.getItem(key)).some(x=>x.linkedSource));w.close();
 }
 
-// Execute the actual catalogue renderer with the current seven local sources.
+// Execute the actual catalogue renderer. Pin the no-indexed-translation
+// scenarios in memory so future acquisitions never turn into false failures.
 {
  const dom=new JSDOM('<div data-vdl-works-explorer></div>',{url:'https://example.org/',runScripts:'outside-only'}),w=dom.window;
- w.fetch=async path=>({ok:true,json:async()=>json(String(path))});w.eval(read('assets/bibliotheca-works-explorer.js'));w.document.dispatchEvent(new w.Event('DOMContentLoaded'));
+ w.fetch=async path=>({ok:true,json:async()=>{
+  const value=json(String(path));
+  return String(path)==='data/classics-corpus/search-registry.json'?{...value,entries:value.entries.filter(e=>!(['homeric-hymns','quinto-esmirna-posthomericas'].includes(e.workId)&&!['grc','la'].includes(e.language)))}:value;
+ }});w.eval(read('assets/bibliotheca-works-explorer.js'));w.document.dispatchEvent(new w.Event('DOMContentLoaded'));
  const search=w.document.querySelector('.vdl-works-search');search.value='homero';search.dispatchEvent(new w.Event('input'));
  await settle(()=>w.document.querySelector('.vdl-works-translations'));
  const rows=[...w.document.querySelectorAll('.vdl-works-row')];
