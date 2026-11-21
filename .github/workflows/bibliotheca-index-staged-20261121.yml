@@ -26,7 +26,7 @@ jobs:
         with:
           node-version: '22'
       - name: Install test dependencies
-        run: npm ci --ignore-scripts
+        run: npm install --no-audit --no-fund --ignore-scripts
       - name: Validate both newly transcribed Latin classics
         run: node scripts/test-bibliotheca-latin-20261121.mjs
       - name: Rebuild full local lexical index from real text files
