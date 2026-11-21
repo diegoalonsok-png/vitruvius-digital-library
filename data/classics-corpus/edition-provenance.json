@@ -3,10 +3,10 @@
   "method": "Registry plus inspected local JSON edition metadata; R2 URLs are declarations only, not live checks. No invented attribution or automatic translation claims.",
   "counts": {
     "cataloguedWorks": 404,
-    "editions": 476,
-    "localFilesInspected": 419,
+    "editions": 477,
+    "localFilesInspected": 420,
     "remoteEditionsDeclared": 44,
-    "worksWithoutHostedEnFrEs": 297
+    "worksWithoutHostedEnFrEs": 296
   },
   "works": [
     {
@@ -8313,8 +8313,28 @@
           "passages": null
         }
       ],
-      "translations": [],
-      "missingTranslation": true,
+      "translations": [
+        {
+          "language": "en",
+          "kind": "translation",
+          "status": "local-source-inspected",
+          "title": "Περὶ οὐρανοῦ · De caelo (On the Heavens)",
+          "translator": "John Leofric Stocks",
+          "editor": null,
+          "edition": null,
+          "year": null,
+          "source": "https://en.wikisource.org/wiki/On_the_Heavens",
+          "sources": null,
+          "attribution": "Aristotle, On the Heavens, English translation by John Leofric Stocks (1922); transcription via English Wikisource.",
+          "license": "Historical 1922 translation: public domain in United States; Wikisource text and contributors' compilation may have CC BY-SA requirements, attribution retained. Confirm local jurisdiction for reuse.",
+          "editorialStatus": "Wikisource four-book chapter extraction, no independent philological collation. The ending of Book I in the transcribed source appears to break off mid-sentence; flag as possible source lacuna, not certified complete.",
+          "alignmentStatus": "unaligned",
+          "sourcePath": "data/classics-corpus/aristoteles-del-cielo-en.json",
+          "sourceDescription": "Traducción inglesa de J. L. Stocks (1922), Wikisource; 40 secciones en cuatro libros; posible interrupción al final del libro I, sin colación griego-inglés.",
+          "passages": 40
+        }
+      ],
+      "missingTranslation": false,
       "facsimiles": []
     },
     {
