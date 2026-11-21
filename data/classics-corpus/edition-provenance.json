@@ -3,10 +3,10 @@
   "method": "Registry plus inspected local JSON edition metadata; R2 URLs are declarations only, not live checks. No invented attribution or automatic translation claims.",
   "counts": {
     "cataloguedWorks": 404,
-    "editions": 478,
-    "localFilesInspected": 421,
+    "editions": 479,
+    "localFilesInspected": 422,
     "remoteEditionsDeclared": 44,
-    "worksWithoutHostedEnFrEs": 295
+    "worksWithoutHostedEnFrEs": 294
   },
   "works": [
     {
@@ -5410,8 +5410,28 @@
           "passages": 171
         }
       ],
-      "translations": [],
-      "missingTranslation": true,
+      "translations": [
+        {
+          "language": "en",
+          "kind": "translation",
+          "status": "local-source-inspected",
+          "title": "Ἀχαρνῆς · Acharnians",
+          "translator": "The Athenian Society",
+          "editor": null,
+          "edition": null,
+          "year": null,
+          "source": "https://en.wikisource.org/wiki/Aristophanes:_The_Eleven_Comedies/Acharnians",
+          "sources": null,
+          "attribution": "Aristophanes, Acharnians. English rendering credited to The Athenian Society (1912). Digitized text on English Wikisource.",
+          "license": "Translation first published 1912, public domain United States; Wikisource transcription with applicable contributor and attribution terms; verify local jurisdiction.",
+          "editorialStatus": "Translated play extracted excluding introductory article and endnotes; dialogue blocks segmented for search but not philologically aligned with Greek text.",
+          "alignmentStatus": "unaligned",
+          "sourcePath": "data/classics-corpus/aristophanes-acharnenses-en.json",
+          "sourceDescription": "The Athenian Society (1912), English Acharnians on Wikisource; 448 dialogue passages; no Greek-English verse alignment.",
+          "passages": 448
+        }
+      ],
+      "missingTranslation": false,
       "facsimiles": []
     },
     {
