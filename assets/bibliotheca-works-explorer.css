@@ -72,3 +72,15 @@
   #home-books-search .vdl-works-explorer-panel{padding:12px 14px}
   #home-books-search .vdl-works-search{min-height:56px;padding:10px 14px;font-size:18px}
 }
+
+/* The spare width beside each title identifies the actual translated edition. */
+.vdl-works-list .vdl-works-row{display:grid;grid-template-columns:minmax(0,1.7fr) minmax(230px,1fr);gap:10px 24px;align-items:start;padding:12px}
+.vdl-works-row .vdl-works-info{min-width:0}
+.vdl-works-row .vdl-works-name{padding:0}
+.vdl-works-row .vdl-works-availability{display:block;margin-top:6px;font:400 12px/1.5 system-ui,sans-serif}
+.vdl-works-translations{min-width:0;font:400 12px/1.5 system-ui,sans-serif;color:inherit;overflow-wrap:anywhere}
+.vdl-works-translation-entry+.vdl-works-translation-entry{margin-top:6px}
+.vdl-works-translation-entry :is(strong,span,small){display:block;font-size:inherit}
+.vdl-works-translation-entry strong{font-weight:600}
+.vdl-works-translation-entry :is(span,small),.vdl-works-translation-status{opacity:.85}
+@media(max-width:760px){.vdl-works-list .vdl-works-row{grid-template-columns:minmax(0,1fr);gap:8px}.vdl-works-translations{border-left:2px solid #8a8f9166;padding-left:10px}}

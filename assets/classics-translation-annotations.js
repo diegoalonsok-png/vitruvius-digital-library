@@ -4,7 +4,7 @@
 (()=>{"use strict";
 const column=document.querySelector(".cl-translation-column");
 const output=column?.querySelector(".cl-translation-output");
-const controls=column?.querySelector(".cl-translation-tools");
+const controls=column?.querySelector(".cl-translation-tools")||document.querySelector('.cl-unified-reading-actions .cl-translation-tools');
 if(!column||!output||!controls)return;
 const work=new URLSearchParams(location.search).get("work")||"unknown";
 const palette={amarillo:"#ffe56b",verde:"#91d6aa",azul:"#97c4f6",rosa:"#f2a8ce"};
@@ -57,7 +57,8 @@ for(const [name,hex] of Object.entries(palette)){
  });
 }
 const appearanceKey="vdl.classics.translation.appearance.v1."+work;
-let fg="#202b35",bg="#fffdf7",align="justify";
+const readerStyle=document.querySelector('.reader')?.style;
+let fg=readerStyle?.getPropertyValue('--reader-fg')?.trim()||'#e5e5e5',bg=readerStyle?.getPropertyValue('--reader-bg')?.trim()||'#18191b',align="justify";
 try{const saved=JSON.parse(localStorage.getItem(appearanceKey)||"null");
  if(/^#[0-9a-f]{6}$/i.test(saved?.bg))bg=saved.bg;
  if(/^#[0-9a-f]{6}$/i.test(saved?.fg))fg=saved.fg;
@@ -80,14 +81,13 @@ for(const [kind,label] of [["bg","Fondo"],["fg","Texto"]]){
  input.addEventListener("input",()=>{if(kind==="bg")bg=input.value;else fg=input.value;paint()});
  wrapper.append(input);appearance.append(wrapper);
 }
-const body=()=>output.querySelector(":scope > p:not(.cl-caution)");
+const body=()=>output.querySelector(":scope > p:not(.cl-caution)")?output:null;
 function checksum(text){
  let hash=2166136261;
  for(let i=0;i<text.length;i++){hash^=text.charCodeAt(i);hash=Math.imul(hash,16777619)}
  return(hash>>>0).toString(36);
 }
-function key(){
- const text=body()?.textContent||"";
+function key(text=body()?.textContent||""){
  const locus=new URLSearchParams(location.search).get("locus")||"none";
  const source=document.getElementById("passages")?.getAttribute("lang")||"";
  const target=controls.querySelector("select")?.value||"es";
@@ -95,7 +95,7 @@ function key(){
 }
 function read(){
  try{
-  const saved=JSON.parse(localStorage.getItem(key())||"[]");
+  const saved=JSON.parse(localStorage.getItem(key())??localStorage.getItem(key(output.querySelector(':scope > p:not(.cl-caution)')?.textContent||''))??"[]");
   return Array.isArray(saved)?saved.filter(x=>Number.isInteger(x.a)&&Number.isInteger(x.b)&&x.a>=0&&x.b>x.a&&palette[x.color]&&["underline","highlight"].includes(x.mode)).slice(-180):[];
  }catch{return[]}
 }
@@ -108,6 +108,7 @@ function selection(){
  if(!host||!s||s.isCollapsed||!s.rangeCount)return null;
  const r=s.getRangeAt(0);
  if(!host.contains(r.startContainer)||!host.contains(r.endContainer))return null;
+ if(r.startContainer.parentElement?.closest('.cl-caution')||r.endContainer.parentElement?.closest('.cl-caution'))return null;
  const before=document.createRange();before.selectNodeContents(host);
  before.setEnd(r.startContainer,r.startOffset);
  const a=before.toString().length,b=a+r.toString().length;
@@ -163,4 +164,13 @@ new MutationObserver(()=>{
 }).observe(output,{childList:true,subtree:true,characterData:true});
 if(!support)feedback.textContent="La selección de colores está disponible; los resaltados requieren CSS Highlights.";
 redraw();
+// Linked marks use the same persistence and colours as manual target marks.
+window.ClassicsTranslationAnnotations=Object.freeze({
+ markLinked(spans,{mode='underline',color='amarillo',source}={}){
+  if(!palette[color]||!['underline','highlight'].includes(mode)||!body())return;
+  const marks=read();for(const span of spans)if(!marks.some(x=>x.a===span.a&&x.b===span.b&&x.mode===mode&&x.color===color))marks.push({a:span.a,b:span.b,mode,color,linkedSource:source});
+  if(save(marks))redraw();
+ },
+ removeLinked(source){if(save(read().filter(x=>!x.linkedSource||(source&&(x.linkedSource.b<=source.a||x.linkedSource.a>=source.b)))))redraw();}
+});
 })();

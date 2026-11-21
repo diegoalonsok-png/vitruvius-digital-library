@@ -72,15 +72,16 @@ function action(which){
   return;
  }
  if(!support){output.textContent="Las marcas requieren un navegador compatible con CSS Highlights.";return}
- if(which==="clear"){if(save([])){redraw();output.textContent="Marcas de este pasaje borradas."}return}
+ if(which==="clear"){if(save([])){redraw();output.textContent="Marcas de este pasaje borradas.";document.dispatchEvent(new CustomEvent('vitruvia:source-annotation',{detail:{action:'clear'}}))}return}
  const chosen=selection();if(!chosen){output.textContent="Selecciona primero una frase del texto.";return}
  const rows=read();
  if(which==="erase"){
-  if(save(rows.filter(x=>x.b<=chosen.a||x.a>=chosen.b))){redraw();output.textContent="Marca borrada."}return;
+  if(save(rows.filter(x=>x.b<=chosen.a||x.a>=chosen.b))){redraw();output.textContent="Marca borrada.";document.dispatchEvent(new CustomEvent('vitruvia:source-annotation',{detail:{action:'erase',...chosen}}))}return;
  }
  if(!rows.some(x=>x.a===chosen.a&&x.b===chosen.b&&x.color===color&&x.mode===mode)){
   if(save(rows.concat({...chosen,color,mode}))){redraw();output.textContent="Marca guardada en este navegador."}
  }
+ document.dispatchEvent(new CustomEvent('vitruvia:source-annotation',{detail:{action:'mark',...chosen,color,mode}}));
 }
 // Bring independent source background/text controls into the left panel,
  // while retaining the existing global reader-appearance controls and persistence.

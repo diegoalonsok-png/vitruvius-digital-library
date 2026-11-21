@@ -1,0 +1,40 @@
+name: Search references and reading languages
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'index.html'
+      - 'classics-text-reader.html'
+      - 'assets/app.js'
+      - 'assets/search-*.mjs'
+      - 'assets/parallel-highlights.mjs'
+      - 'assets/classics-inline-parallel.js'
+      - 'assets/classics-*annotations.js'
+      - 'assets/classics-linked-*'
+      - 'assets/bibliotheca-works-explorer.js'
+      - 'assets/page-autotranslate.js'
+      - 'data/search-pdf-references.json'
+      - 'data/structured/*.json'
+      - 'data/text/recensio-*.json'
+      - 'data/text/theory-en.json'
+      - 'data/classics-corpus/edition-list-labels.json'
+      - 'data/classics-corpus/search-registry.json'
+      - 'scripts/test-search-reading-references.mjs'
+      - '.github/workflows/search-reading-references.yml'
+permissions:
+  contents: read
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - run: npm install --ignore-scripts --no-audit --no-fund
+      - run: node scripts/test-search-reading-references.mjs
+      - run: node scripts/check-parallel-highlights.mjs
+      - run: node scripts/test-home-library-explorer.mjs
+      - run: node scripts/test-bibliotheca-edition-list-labels.mjs

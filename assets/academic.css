@@ -69,3 +69,14 @@ html[data-theme="dark"] footer{background:var(--paper);color:var(--ink)}html[dat
 .script-audit-glossary dt{font-weight:700;margin-top:9px}
 .script-audit-glossary dt:first-child{margin-top:0}
 .script-audit-glossary dd{margin:3px 0 0;opacity:.86}
+
+/* Bilingual search results: readable roman/upright text by default.
+   Preserve the original wording and yellow query highlights. */
+#search-results .result-parallel .parallel-columns .parallel-passage,
+#search-results .result-parallel .parallel-columns .parallel-passage :is(i,em),
+#lexical-occurrences .lexical-locus-latin,
+#lexical-occurrences .lexical-locus-translation,
+#lexical-occurrences .lexical-locus-latin :is(i,em),
+#lexical-occurrences .lexical-locus-translation :is(i,em){
+ font-style:normal!important;
+}

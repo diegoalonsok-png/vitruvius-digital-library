@@ -2,6 +2,7 @@ import {bookTitle,bibliographyHTML,bibliographyText} from './edition-citation.mj
 import {citation, roman, parseLocus} from './search-core.mjs?v=20261030-docx-1';
 import {parallelHighlight,parallelExcerpt,hasLatinConcept} from './parallel-highlights.mjs?v=20261114-logos-sources-v7';
 import {readSearchState,searchStateURL} from './home-search-state.mjs?v=20261115-query-alias-v2';
+import {resolvedPDFPage} from './search-pdf-reference.mjs?v=20261121-source-pages-v1';
 const $ = (q, root=document) => root.querySelector(q);
 const $$ = (q, root=document) => [...root.querySelectorAll(q)];
 const escapeHTML = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -372,6 +373,18 @@ const translationEditionIds={es:'recensio-es',fr:'recensio-fr',en:'theory-en'};
 const translationNames={es:'Castellano',fr:'Français',en:'English'};
 const publicEditionName=e=>({'recensio-es':'Vitruvio · De architectura (castellano)','recensio-fr':'Vitruve · De architectura (français)','theory-en':'The Architect of Theory (English)'})[e?.id]||bookTitle(e);
 const parallelIndexCache=new Map();
+let pdfReferencesPromise=null;
+function searchPDFReferences(){
+ if(!pdfReferencesPromise)pdfReferencesPromise=fetchJSON('data/search-pdf-references.json?v=20261121-source-pages-v1').catch(()=>({editions:{}}));
+ return pdfReferencesPromise;
+}
+function passageSourceHTML(ed,group,lang,page,scopeNote=''){
+ const role=lang==='la'?'ed. ':'trad. ';
+ const author=ed.author||'Diego Kurilo';
+ const reference=escapeHTML(citation(group))+' · '+escapeHTML(role+author)+' · '+escapeHTML(ed.version||ed.year||'');
+ const pdf=page?'<a class="parallel-pdf-source" href="'+escapeHTML(sourceURL(ed,page))+'" target="_blank" rel="noopener">PDF p. '+escapeHTML(page)+'</a>':'<span>Página PDF pendiente de identificación</span>';
+ return '<span class="parallel-source-label">'+reference+' · '+pdf+escapeHTML(scopeNote)+'</span><details class="parallel-bibliography"><summary>Referencia bibliográfica</summary><p class="parallel-biblio">'+bibliographyHTML(ed)+'</p></details>';
+}
 let alignedGroups=[],selectedTranslationLanguage='es',translationRevision=0;
 // Respect the selected Kurilo edition when showing bilingual search results.
 function translationLanguageForSelection(){
@@ -455,9 +468,14 @@ async function renderRightTranslation(article,group){
  holder.textContent='Cargando traducción '+(languages[lang]||lang)+'…';
  source.textContent='';
  try{
-  const indexed=await parallelEditionData(lang);
+  const [indexed,references]=await Promise.all([parallelEditionData(lang),searchPDFReferences()]);
   if(revision!==translationRevision||!article.isConnected)return;
   const p=alignedPassage(indexed,group);
+  if(p){
+   const extra=references.editions?.[ed.id]?.loci?.[p.locus];
+   const latinSource=$('.parallel-latin-source',article);
+   if(latinSource)latinSource.innerHTML=passageSourceHTML(ed,group,'la',resolvedPDFPage(p,'latin',extra));
+  }
   if(!p?.translation){
    holder.textContent='Esta edición no ofrece una traducción alineada y comprobable para este locus.';
    source.innerHTML='<a href="'+escapeHTML(readerURL(ed.id,group.locus))+'">Comprobar el locus en el lector bilingüe →</a>';
@@ -478,9 +496,9 @@ async function renderRightTranslation(article,group){
    toggle.setAttribute('aria-pressed',String(!article.classList.contains('hide-equivalent-marks')));
    toggle.textContent=article.classList.contains('hide-equivalent-marks')?'Mostrar equivalencias':'Ocultar equivalencias';
   }
-  const page=p.pdf_pages?.translation;
+  const page=resolvedPDFPage(p,'translation',references.editions?.[ed.id]?.loci?.[p.locus]);
   const ref=p.locus!==group.locus?' · bloque que abarca el locus solicitado':'';
-  source.innerHTML='<span class="parallel-source-label">Fuente de la traducción: '+escapeHTML(publicEditionName(ed))+' · Diego Kurilo · '+escapeHTML(languages[lang])+(page?' · PDF p. '+escapeHTML(page):' · página PDF no registrada')+escapeHTML(ref)+'</span><p class="parallel-biblio">'+bibliographyHTML(ed)+'</p>';
+  source.innerHTML=passageSourceHTML(ed,group,lang,page,ref);
   const link=$('.parallel-open-translation',article);
   if(link)link.href=readerURL(ed.id,group.locus);
  }catch(e){
@@ -516,6 +534,8 @@ function criticalPassageCitation(article,group){
    "DOI de la edición: https://doi.org/"+doi,
    "Consulta digital: "+location.href,
    "DOI del portal (no sustituye la edición): https://doi.org/10.5281/zenodo.23868911",
+   "Referencia del latín: "+(article.querySelector('.parallel-latin-source .parallel-source-label')?.textContent||''),
+   "Referencia de la traducción: "+(article.querySelector('.parallel-translation-source .parallel-source-label')?.textContent||''),
    "Texto latino (fuente editorial indicada en el resultado): "+latin,
    "Traducción consultada: "+translation
  ].join("\n");
@@ -573,16 +593,16 @@ function renderMore(){
    '<p class="result-locus">Libro '+roman(r.book)+' · '+(r.chapter==='praef'?'Prólogo':'Capítulo '+escapeHTML(r.chapter))+' · Sección '+escapeHTML(r.section)+'</p>'+
    '<div class="parallel-columns">'+
      '<section class="parallel-latin" lang="la" aria-label="Texto latino original">'+
-       '<div class="parallel-heading"><span>LATÍN · '+escapeHTML(publicEditionName(e))+'</span><strong>Latín'+(pdfpage?' · PDF p. '+escapeHTML(pdfpage):' · PDF: página no identificada')+'</strong></div>'+
+       '<div class="parallel-heading"><span>LATÍN · '+escapeHTML(publicEditionName(e))+'</span></div>'+
+       '<div class="parallel-latin-source" aria-label="Procedencia bibliográfica de la edición latina">'+passageSourceHTML(e,group,'la',pdfpage)+'</div>'+
        '<p class="parallel-passage">'+((parallelHighlight(latinParagraph,{query:lastQuery,lang:'la',latin:r.latin})?.equivalent||parallelHighlight(latinParagraph,{query:lastQuery,lang:'la',latin:r.latin})?.direct)?parallelHighlight(latinParagraph,{query:lastQuery,lang:'la',latin:r.latin}).html:resultSnippet({snippet:latinParagraph,form:'',context_start:null,context_length:null}))+'</p>'+
-       '<div class="parallel-latin-source" aria-label="Procedencia bibliográfica de la edición latina"><span class="parallel-source-label">Fuente del latín: '+escapeHTML(publicEditionName(e))+' · Diego Kurilo · Latín'+(pdfpage?' · PDF p. '+escapeHTML(pdfpage):' · página PDF no registrada')+'</span><p class="parallel-biblio">'+bibliographyHTML(e)+'</p></div>'+
        '<p class="parallel-small">Este texto latino procede de la edición indicada arriba. Consultar variantes en el aparato crítico.</p>'+
      '</section>'+
      '<section class="parallel-translation" aria-label="Traducción del mismo locus">'+
        '<div class="parallel-heading"><span>TRADUCCIÓN · '+escapeHTML(translationNames[rowLanguage])+' · '+escapeHTML(publicEditionName(e))+'</span></div>'+
+       '<div class="parallel-translation-source"></div>'+
        '<p class="parallel-passage parallel-translation-text" aria-live="polite">Cargando traducción…</p>'+
        '<div class="parallel-match-controls"><p class="parallel-match-note" hidden></p><button class="parallel-equivalent-toggle" type="button" aria-pressed="true" hidden>Ocultar equivalencias</button></div>'+
-       '<div class="parallel-translation-source"></div>'+
        '<p class="parallel-small">Alineación por libro, capítulo y sección. Los resaltados traducidos son equivalencias léxicas orientativas, no cotejo palabra por palabra.</p>'+
      '</section></div>'+
    '<div class="result-actions"><a href="'+escapeHTML(readerURL(e.id,group.locus))+'">Leer el latín →</a>'+

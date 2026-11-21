@@ -40,7 +40,7 @@ def make():
         if lang not in ORIGINAL:
             translator=clean(data.get("translator") or e.get("translator"))
             publisher=clean(data.get("translationEdition") or data.get("sourceEdition") or data.get("edition") or e.get("edition"))
-            date=year(data)
+            date=year(data) or year(e)
             if translator:row["translator"]=translator
             if date:row["publicationYear"]=date
             if publisher:row["edition"]=publisher

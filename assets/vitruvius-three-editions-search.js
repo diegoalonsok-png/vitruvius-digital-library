@@ -6,6 +6,8 @@ const form=document.getElementById("search-form"),input=document.getElementById(
 const home=document.getElementById("buscar"),vitruvia=document.getElementById("results");
 if(!form||!input||(!home&&!vitruvia))return;
 const create=(tag,text,cls)=>{const n=document.createElement(tag);if(text!=null)n.textContent=String(text);if(cls)n.className=cls;return n;};
+let highlight=null;
+const highlighter=import('./search-term-highlight.mjs?v=20261121-source-notes-v1').then(m=>{highlight=m.highlightSearchTerms}).catch(()=>{});
 const panel=create("section",null,"vdl-three-editions");
 panel.id="vdl-three-editions-search";panel.setAttribute("aria-label","Búsqueda latina conjunta en Kurilo Krohn y Rose");
 const css=create("style");css.textContent=`
@@ -18,6 +20,7 @@ const css=create("style");css.textContent=`
 .vdl-three-editions .vdl-entry{padding:12px 0;border-top:1px solid #bbb2a3;font:13px/1.65 system-ui}
 .vdl-three-editions .vdl-entry strong{font:600 14px/1.4 Georgia,serif}
 .vdl-three-editions .vdl-entry p{font:14px/1.6 Georgia,serif;overflow-wrap:anywhere}
+.vdl-three-editions .vdl-entry mark.search-query-underline{background:#ffe34f!important;color:#171409!important;text-decoration:underline!important;text-underline-offset:.15em;text-decoration-thickness:1px;border-radius:2px;box-decoration-break:clone;-webkit-box-decoration-break:clone}
 .vdl-three-editions .vdl-links{display:flex;flex-wrap:wrap;gap:8px 16px;font:12px system-ui}
 .vdl-three-editions a{color:inherit;text-decoration:underline;text-underline-offset:2px}
 .vdl-three-editions .vdl-status{font:12px/1.55 system-ui;opacity:.8}
@@ -112,7 +115,11 @@ function paint(){
  const ordered=currentFilter==="all"?editions.filter(ed=>allowedEdition(ed.id)).flatMap(ed=>filtered.filter(h=>h.ed.id===ed.id).slice(0,30)):filtered.slice(0,110);
  for(const hit of ordered){
    const box=create("article",null,"vdl-entry");box.append(create("strong",hit.ed.label+" · Vitr., De arch. "+hit.p.locus));
-   box.append(create("p",findExcerpt(lexical(hit.p.latin,document.getElementById("query").value,document.getElementById("search-mode")?.value||"words")?hit.p.latin:textFor(hit.p,hit.ed),document.getElementById("query").value)));
+   const query=input.value,mode=document.getElementById('search-mode')?.value||'words';
+   const excerpt=findExcerpt(lexical(hit.p.latin,query,mode)?hit.p.latin:textFor(hit.p,hit.ed),query);
+   const passage=create('p');
+   if(highlight)passage.innerHTML=highlight(excerpt,query,{roots:searchableForms(query).flat(),mode});else passage.textContent=excerpt;
+   passage.setAttribute('translate','no');box.append(passage);
    const actions=create("div",null,"vdl-links");const ap="apparatus-bude.html?locus="+encodeURIComponent(hit.p.locus)+"&edition=v514&translation=es";
    actions.append(link("Comparar Kurilo · Krohn · Rose",ap),link("Leer "+hit.ed.label,hit.ed.reader+encodeURIComponent(hit.p.locus)));
    box.append(actions);
@@ -124,7 +131,7 @@ function paint(){
 async function search(q){
  const n=++sequence,q0=String(q||"").trim();if(!q0){status.textContent="";status.hidden=true;list.replaceChildren();tabs.replaceChildren();lastHits=[];heading.open=false;return}
  status.hidden=false;heading.open=true;status.textContent="Consultando textos latinos de Kurilo, Krohn y Rose por locus…";let data;
- try{data=await getData()}catch(error){if(n===sequence)status.textContent="Los índices no están disponibles: "+error.message;return}
+ try{[data]=await Promise.all([getData(),highlighter])}catch(error){if(n===sequence)status.textContent="Los índices no están disponibles: "+error.message;return}
  if(n!==sequence)return;
  const ref=romanLocus(q0),mode=document.getElementById("search-mode")?.value||"words";
  lastHits=[];for(const {ed,passages} of data){

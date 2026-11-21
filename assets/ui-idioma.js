@@ -31,7 +31,7 @@ function iniciar(){
  };
  if(document.readyState==="complete")setTimeout(decidir,600);else window.addEventListener("load",()=>setTimeout(decidir,600),{once:true});
  cargar("site-language-coverage.js?v=20261117-route-unified-v3","site-language-coverage.js");
- cargar("page-autotranslate.js?v=20261117-sitewide-v3","page-autotranslate.js");
+ cargar("page-autotranslate.js?v=20261121-reading-language-v4","page-autotranslate.js");
  // Cualquier selector de idioma del sitio deja el idioma en <html lang>, que es lo que sigue el traductor.
  document.addEventListener("vitruvius:language-changed",e=>{const l=e.detail?.language;if(["es","en","fr"].includes(l)){lang=l;document.documentElement.lang=l;try{localStorage.setItem(KEY,l)}catch{}}});
  // Selectores propios de una página (atlas, iconografía…): avisan al resto del sitio.

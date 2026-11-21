@@ -136,12 +136,12 @@ html[data-theme="dark"] #search-results .result-parallel .parallel-columns .para
 #search-results .result-parallel .parallel-columns .parallel-passage{color:#f1eee6!important}
 #search-results .result-parallel .parallel-latin-source,
 #search-results .result-parallel .parallel-translation-source{
- margin-top:auto!important;padding-top:12px!important;border-top:1px solid #434b53!important;
- font:400 11px/1.65 system-ui,-apple-system,"Segoe UI",sans-serif!important;
+ margin:0 0 12px!important;padding-top:0!important;border-top:0!important;
+ font:400 12px/1.55 system-ui,-apple-system,"Segoe UI",sans-serif!important;
  color:#cbd2d7!important;overflow-wrap:anywhere;
 }
 #search-results .result-parallel :is(.parallel-latin-source,.parallel-translation-source) .parallel-source-label{
- display:block;color:#f0eee7!important;font-weight:650;letter-spacing:.015em;
+ display:block;color:#d4dce2!important;font-weight:400;letter-spacing:.01em;
 }
 #search-results .result-parallel :is(.parallel-latin-source,.parallel-translation-source) .parallel-biblio{
  margin:6px 0 0;color:#cbd2d7!important;font:400 11px/1.65 system-ui,sans-serif!important;
@@ -158,6 +158,19 @@ html[data-theme="dark"] #search-results .result-parallel .parallel-columns .para
 }
 @media(max-width:750px){
  #search-results .result-parallel .parallel-columns{gap:12px}
+}
+
+/* Source references stay beside the passage, without an empty flex spacer. */
+#search-results .result-parallel .parallel-columns{align-items:start}
+#search-results .result-parallel .parallel-heading{min-height:0;margin-bottom:8px;padding-bottom:8px}
+#search-results .parallel-bibliography{margin:3px 0 0;font:400 12px/1.5 system-ui,sans-serif}
+#search-results .parallel-bibliography>summary{cursor:pointer;color:#c1cad2;font:inherit}
+#search-results .parallel-bibliography[open]{margin-bottom:8px}
+#search-results .result-parallel .result-apparatus mark.search-query-underline,
+#apparatus-search-results mark.search-query-underline{
+ background:#ffe34f!important;color:#171409!important;text-decoration:underline!important;
+ text-underline-offset:.15em;text-decoration-thickness:1px;border-radius:2px;
+ box-decoration-break:clone;-webkit-box-decoration-break:clone;
 }
 
 

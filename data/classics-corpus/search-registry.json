@@ -2356,7 +2356,10 @@
       "format": "json-passages",
       "path": "data/classics-corpus/homer-iliad-en.json",
       "reader": "classics-text-reader.html?work=homer-iliad&lang=en",
-      "sourceDescription": "Samuel Butler 1898, revisión Perseus; 24 cantos y 190 tarjetas. Cotejo solo por canto; subdivisiones de verso no equivalen automáticamente al original."
+      "sourceDescription": "Samuel Butler 1898, revisión Perseus; 24 cantos y 190 tarjetas. Cotejo solo por canto; subdivisiones de verso no equivalen automáticamente al original.",
+      "translator": "Samuel Butler",
+      "publicationYear": "1898",
+      "edition": "Perseus Digital Library · revisión de Timothy Power y Gregory Nagy"
     },
     {
       "workId": "homer-iliad",
@@ -2376,7 +2379,10 @@
       "format": "json-passages",
       "path": "data/classics-corpus/homer-odyssey-en.json",
       "reader": "classics-text-reader.html?work=homer-odyssey&lang=en",
-      "sourceDescription": "Samuel Butler 1900, revised by Timothy Power and Gregory Nagy, Perseus TEI, 267 passage units, 24 books; segment-level references, not word-aligned."
+      "sourceDescription": "Samuel Butler 1900, revised by Timothy Power and Gregory Nagy, Perseus TEI, 267 passage units, 24 books; segment-level references, not word-aligned.",
+      "translator": "Samuel Butler",
+      "publicationYear": "1900",
+      "edition": "Perseus Digital Library · revisión de Timothy Power y Gregory Nagy"
     },
     {
       "workId": "homer-odyssey",

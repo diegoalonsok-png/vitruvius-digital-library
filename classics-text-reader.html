@@ -362,10 +362,11 @@ html[data-parallel-view="true"] body.academic-reader .cl-source-column #passages
 
 <script defer src="assets/classics-passage-export.js?v=20261115-text-export-v1"></script>
 <script defer src="assets/classics-locus-pairing.js?v=20261119-indexed-loci"></script>
-<script defer src="assets/classics-inline-parallel.js?v=20261118-indexed-full-reading-v2"></script>
-<script defer src="assets/classics-reader-symmetry.js?v=20261118-paper-button-texture-v5"></script>
-<script defer src="assets/classics-reader-annotations.js?v=20261114-source-v3"></script>
-<script defer src="assets/classics-translation-annotations.js?v=20261114-bude-1"></script>
+<script defer src="assets/classics-inline-parallel.js?v=20261121-selected-language-v1"></script>
+<script defer src="assets/classics-reader-symmetry.js?v=20261121-linked-tools-v1"></script>
+<script defer src="assets/classics-reader-annotations.js?v=20261121-linked-marks-v1"></script>
+<script defer src="assets/classics-translation-annotations.js?v=20261121-linked-marks-v1"></script>
+<script defer src="assets/classics-linked-highlights.js?v=20261121-linked-words-v1"></script>
 <script>
 (()=>{"use strict";
  const now=new URLSearchParams(location.search);
@@ -443,7 +444,7 @@ html[data-parallel-view="true"] body.academic-reader .cl-source-column #passages
  document.addEventListener("vitruvia:classics-passage",refresh);
 })();
 </script>
-<script defer src="assets/button-press-feedback.js?v=20261111-pulsacion-v1"></script><script defer src="assets/ui-idioma.js?v=20261114-content-languages"></script>
+<script defer src="assets/button-press-feedback.js?v=20261111-pulsacion-v1"></script><script defer src="assets/ui-idioma.js?v=20261121-reading-language-v1"></script>
 
 <style id="loci-width-style">
 @media(min-width:901px){html:not([data-parallel-view="true"]):not([data-reading-mode="simple"]) .reader-grid{grid-template-columns:minmax(125px,var(--loci-width,230px)) minmax(0,1fr)!important;gap:12px}

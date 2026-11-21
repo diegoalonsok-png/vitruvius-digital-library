@@ -187,7 +187,7 @@ function init(){
   if(sourceBar)toolsContent.append(sourceBar);
   const hitNav=sourceContainer.querySelector("#hit-nav");
   if(hitNav)toolsContent.append(hitNav);
-  const translationBar=translationContainer.querySelector(".cl-translation-annotations");
+  const translationBar=translationContainer.querySelector(".cl-translation-annotations")||layout.querySelector('.cl-translation-annotations');
   if(translationBar)toolsContent.append(translationBar);
   // The inline locus is preserved for references, selection and screen readers,
   // but the repeated visible label must not add a line above the Latin text.
