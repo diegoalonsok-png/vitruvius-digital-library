@@ -9,6 +9,10 @@ on:
       - 'scripts/test-bibliotheca-latin-20261121.mjs'
   workflow_dispatch:
 
+concurrency:
+  group: bibliotheca-index-staged-${{ github.ref }}
+  cancel-in-progress: true
+
 permissions:
   contents: write
 
@@ -54,4 +58,14 @@ jobs:
             exit 0
           fi
           git -c user.name="Bibliotheca CI" -c user.email="github-actions[bot]@users.noreply.github.com" commit -m "index: regenerate complete local lexical index [skip ci]"
-          git push origin HEAD:bibliotheca/disticha-catonis-20261121
+          # Do not force-push: other site processes may advance the review branch.
+          for attempt in 1 2 3; do
+            git fetch origin bibliotheca/disticha-catonis-20261121
+            git rebase origin/bibliotheca/disticha-catonis-20261121 || { echo 'Rebase conflict; preserve branch'; exit 1; }
+            if git push origin HEAD:bibliotheca/disticha-catonis-20261121; then
+              exit 0
+            fi
+            echo "Branch advanced concurrently; retrying fast-forward (attempt ${attempt})"
+          done
+          echo 'Branch changed too frequently; no force-push attempted'
+          exit 1
