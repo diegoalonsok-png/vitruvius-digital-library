@@ -57,7 +57,9 @@ jobs:
             echo 'No lexical index changes'
             exit 0
           fi
-          git -c user.name="Bibliotheca CI" -c user.email="github-actions[bot]@users.noreply.github.com" commit -m "index: regenerate complete local lexical index [skip ci]"
+          git config user.name "Bibliotheca CI"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git commit -m "index: regenerate complete local lexical index [skip ci]"
           # Do not force-push: other site processes may advance the review branch.
           for attempt in 1 2 3; do
             git fetch origin bibliotheca/disticha-catonis-20261121
