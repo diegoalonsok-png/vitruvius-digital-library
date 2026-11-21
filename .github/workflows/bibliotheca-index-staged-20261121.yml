@@ -1,0 +1,57 @@
+name: Bibliotheca - rebuild verified local lexical index (staging)
+on:
+  push:
+    branches:
+      - bibliotheca/disticha-catonis-20261121
+    paths:
+      - '.github/workflows/bibliotheca-index-staged-20261121.yml'
+      - 'data/classics-corpus/**'
+      - 'scripts/test-bibliotheca-latin-20261121.mjs'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  index-local-corpus:
+    if: github.repository == 'diegoalonsok-png/vitruvius-digital-library'
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: true
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install test dependencies
+        run: npm ci --ignore-scripts
+      - name: Validate both newly transcribed Latin classics
+        run: node scripts/test-bibliotheca-latin-20261121.mjs
+      - name: Rebuild full local lexical index from real text files
+        run: npm run build:index
+      - name: Verify new entries in generated manifest
+        run: |
+          node --input-type=module -e '
+          import {readFileSync} from "node:fs";
+          const m=JSON.parse(readFileSync("data/index/classics/manifest.json","utf8"));
+          for(const id of ["disticha-catonis","publilius-syrus-sententiae"]){
+            if(m.index.filter(w=>w.id===id&&w.lang==="la").length!==1)throw Error("Missing or duplicate index: "+id);
+          }
+          if(m.works<438)throw Error("Unexpected decrease in indexed versions: "+m.works);
+          console.log("Validated",m.works,"local indexed text versions");
+          '
+      - name: Test lexical search and concordances
+        run: npm run check:index
+      - name: Test corpus search index gate
+        run: npm run check:gate
+      - name: Save only regenerated lexical index in review branch
+        run: |
+          git add -- data/index/classics/
+          if git diff --cached --quiet; then
+            echo 'No lexical index changes'
+            exit 0
+          fi
+          git -c user.name="Bibliotheca CI" -c user.email="github-actions[bot]@users.noreply.github.com" commit -m "index: regenerate complete local lexical index [skip ci]"
+          git push origin HEAD:bibliotheca/disticha-catonis-20261121
