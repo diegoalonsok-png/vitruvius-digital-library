@@ -48,7 +48,7 @@ jobs:
             url='https://libros.vitruvius-digital-library.org/'+key
             public=[]
             for origin in ['https://vitruvius-digital-library.org','https://diegoalonsok-png.github.io']:
-              with urllib.request.urlopen(urllib.request.Request(url,headers={'Origin':origin}),timeout=45) as response:
+              with urllib.request.urlopen(urllib.request.Request(url,headers={'Origin':origin,'User-Agent':'Vitruvius-Digital-Library/1.0'}),timeout=45) as response:
                 downloaded=response.read();assert downloaded==raw,'Public hash mismatch'
                 allow=response.headers.get('Access-Control-Allow-Origin');assert allow in ('*',origin),'Missing cross-origin access'
                 public.append({'origin':origin,'http':response.status,'sha256':hashlib.sha256(downloaded).hexdigest(),'cors':allow})
