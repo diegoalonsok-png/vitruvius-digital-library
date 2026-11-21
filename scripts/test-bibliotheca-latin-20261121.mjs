@@ -15,10 +15,10 @@ for(const [id,n] of [["disticha-catonis",205],["publilius-syrus-sententiae",733]
  assert.equal(catalogue.works.filter(w=>w.id===id).length,1);
 }
 const d=load("data/classics-corpus/disticha-catonis-la.json");
-assert.equal(d.passages.filter(p=>/^[1-4]\\.\\d+$/.test(p.locus)).length,144);
+assert.equal(d.passages.filter(p=>/^[1-4]\.\d+$/.test(p.locus)).length,144);
 for(const [book,total] of [[1,40],[2,31],[3,24],[4,49]])for(let k=1;k<=total;k++)assert.ok(d.passages.some(p=>p.locus===book+"."+k));
 assert.match(d.passages.find(p=>p.locus==="4.9").text,/Quod tibi suspectum est/);
 const s=load("data/classics-corpus/publilius-syrus-sententiae-la.json");
-assert.ok(s.passages.every(p=>/^[A-Z]\\.\\d+$/.test(p.locus)));
+assert.ok(s.passages.every(p=>/^[A-Z]\.\d+$/.test(p.locus)));
 assert.equal(registry.count,registry.entries.length);
 console.log("PASS: two Latin texts, internal segmentation, catalogue and reader routes; lexical/vector indexes and live R2 not covered.");
