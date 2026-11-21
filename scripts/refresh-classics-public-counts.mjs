@@ -50,8 +50,12 @@ const originalIndexedIDs=new Set(
  .map(e=>e.workId)
 );
 const indexedOriginalTotal=originalIndexedIDs.size;
-if(primaryTotal!==catalogue.targetWorks||supplementaryTotal!==supplement.works.length)
- throw Error('Catalog IDs are missing or overlapping; refuse to publish invented totals');
+if(primaryTotal!==catalogue.targetWorks)
+ throw Error('Primary catalogue has unexpected duplicate or missing IDs');
+// Supplementary records may legitimately share a work ID with the primary corpus.
+// Count only newly introduced IDs; editions and repeated titles are not new works.
+if(supplementaryTotal>supplement.works.length)
+ throw Error('Supplementary distinct ID count exceeds source record count');
 if(indexedOriginalTotal>cataloguedTotal)throw Error('Indexed works exceed catalogued works');
 const counts={
  schema:'vdl-classics-public-counts-v2',
