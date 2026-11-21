@@ -2,7 +2,7 @@
   "schema": "vitruvia-classics-search-registry-v1",
   "updated": "2026-11-20",
   "description": "Registro verificable de transcripciones HTML y textos JSON existentes que admiten búsqueda literal de contenido. No incluye automáticamente PDF escaneados, facsímiles ni fichas sin texto. Los índices auxiliares por locus y el aparato crítico se declaran por separado; no se suman a versiones textuales originales ni implican colación autóptica.",
-  "count": 480,
+  "count": 481,
   "works": 365,
   "entries": [
     {
@@ -279,6 +279,16 @@
       "sourceUrn": "urn:cts:greekLit:tlg1181.tlg001.1st1K-grc1",
       "sourceSha256": "b313dce98868284a9265faac43c7ae326f7951a4b1e556dedd0f6731a1735eb8",
       "sourceDescription": "First1KGreek; edición de Thomas Heath; CC BY-SA 4.0"
+    },
+    {
+      "workId": "aristophanes-acharnenses",
+      "author": "Aristófanes",
+      "title": "Ἀχαρνῆς",
+      "language": "en",
+      "format": "json-passages",
+      "path": "data/classics-corpus/aristophanes-acharnenses-en.json",
+      "reader": "classics-text-reader.html?work=aristophanes-acharnenses&lang=en",
+      "sourceDescription": "The Athenian Society (1912), English Acharnians on Wikisource; 448 dialogue passages; no Greek-English verse alignment."
     },
     {
       "workId": "aristophanes-acharnenses",
