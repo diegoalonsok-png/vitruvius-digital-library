@@ -3,10 +3,10 @@
   "method": "Registry plus inspected local JSON edition metadata; R2 URLs are declarations only, not live checks. No invented attribution or automatic translation claims.",
   "counts": {
     "cataloguedWorks": 404,
-    "editions": 475,
-    "localFilesInspected": 418,
+    "editions": 476,
+    "localFilesInspected": 419,
     "remoteEditionsDeclared": 44,
-    "worksWithoutHostedEnFrEs": 298
+    "worksWithoutHostedEnFrEs": 297
   },
   "works": [
     {
@@ -8083,8 +8083,28 @@
           "passages": null
         }
       ],
-      "translations": [],
-      "missingTranslation": true,
+      "translations": [
+        {
+          "language": "en",
+          "kind": "translation",
+          "status": "local-source-inspected",
+          "title": "Ἀργοναυτικά · Argonautica",
+          "translator": "Robert Cooper Seaton",
+          "editor": null,
+          "edition": null,
+          "year": null,
+          "source": "https://www.gutenberg.org/files/830/830-h/830-h.htm",
+          "sources": null,
+          "attribution": "Apollonius Rhodius, The Argonautica, translated by R. C. Seaton (1912); digital transcription by Project Gutenberg, ebook #830, produced by Douglas B. Killings and David Widger.",
+          "license": null,
+          "editorialStatus": "Complete narrative extracted from Gutenberg HTML, introduction, notes and Project Gutenberg boilerplate excluded. Paragraph-based segmentation; no independently established Greek-English verse alignment or manual collation.",
+          "alignmentStatus": "unaligned",
+          "sourcePath": "data/classics-corpus/apolonio-argonauticas-en.json",
+          "sourceDescription": "Traducción humana inglesa de R. C. Seaton (1912), Project Gutenberg #830; 426 párrafos indexados en orden textual; sin alineación crítica con los versos griegos.",
+          "passages": 426
+        }
+      ],
+      "missingTranslation": false,
       "facsimiles": []
     },
     {
