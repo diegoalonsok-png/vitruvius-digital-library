@@ -2,8 +2,8 @@
   "schema": "vitruvia-classics-search-registry-v1",
   "updated": "2026-11-21",
   "description": "Registro verificable de transcripciones HTML y textos JSON existentes que admiten búsqueda literal de contenido. No incluye automáticamente PDF escaneados, facsímiles ni fichas sin texto. Los índices auxiliares por locus y el aparato crítico se declaran por separado; no se suman a versiones textuales originales ni implican colación autóptica.",
-  "count": 483,
-  "works": 367,
+  "count": 485,
+  "works": 369,
   "entries": [
     {
       "workId": "aeneas-tacticus-poliorketika",
@@ -655,6 +655,16 @@
       "path": "data/classics-corpus/aulus-gellius-noctes-la.json",
       "reader": "classics-text-reader.html?work=aulus-gellius-noctes&lang=la",
       "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
+      "workId": "aurelius-victor-liber-caesaribus",
+      "author": "Sexto Aurelio Víctor",
+      "title": "Liber de Caesaribus",
+      "language": "la",
+      "format": "json-passages",
+      "path": "data/classics-corpus/aurelius-victor-liber-caesaribus-la.json",
+      "reader": "classics-text-reader.html?work=aurelius-victor-liber-caesaribus&lang=la",
+      "sourceDescription": "Original latino Wikisource, transcripción provisional sin cotejo crítico independiente. 42 pasajes, sin traducción alineada."
     },
     {
       "workId": "ausonio-obras",
@@ -1606,6 +1616,16 @@
       "path": "data/classics-corpus/eusebio-grc.json",
       "reader": "classics-text-reader.html?work=eusebio&lang=grc",
       "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
+      "workId": "eutropius-breviarium",
+      "author": "Eutropio",
+      "title": "Breviarium historiae romanae",
+      "language": "la",
+      "format": "json-passages",
+      "path": "data/classics-corpus/eutropius-breviarium-la.json",
+      "reader": "classics-text-reader.html?work=eutropius-breviarium&lang=la",
+      "sourceDescription": "Original latino Wikisource, transcripción provisional sin cotejo crítico independiente. 225 pasajes, sin traducción alineada."
     },
     {
       "workId": "faventinus",
