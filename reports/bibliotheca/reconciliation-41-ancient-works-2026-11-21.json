@@ -1,0 +1,626 @@
+{
+  "schema": "vdl-bibliotheca-historical-backlog-reconciliation-v1",
+  "reviewedDate": "2026-11-21",
+  "readOnly": true,
+  "method": "Cross-reference 41 ancient entries from unindexed-backlog.json against search-registry.json, current lexical manifest and federated GitHub/R2 inventory. R2 objects were not live-probed.",
+  "summary": {
+    "totalHistoricalPending": 41,
+    "indexedNow": 15,
+    "notIndexed": 26,
+    "notIndexedWithR2Declared": 25,
+    "notIndexedWithoutR2Declared": 1
+  },
+  "policy": "No deletion, overwrite, deduplication or change to published counts. Existing editions preserved. A declared PDF is not automatically a searchable text.",
+  "entries": [
+    {
+      "id": "apollodorus-poliorcetics",
+      "author": "Apolodoro de Damasco (atribución tradicional)",
+      "title": "Πολιορκητικά · Poliorketika",
+      "originalLanguage": "grc",
+      "status": "r2-facsimile-declared-text-not-indexed",
+      "indexedEditions": [],
+      "r2Facsimiles": [
+        {
+          "editionId": "apollodorus-poliorcetics",
+          "objectStatus": "declared-in-r2-catalogue-not-live-probed"
+        }
+      ],
+      "action": "Verify R2 object by key and hash, inspect edition, transcribe/index by loci; never overwrite existing facsimile"
+    },
+    {
+      "id": "apollonius-conica",
+      "author": "Apolonio de Perge",
+      "title": "Κωνικά · Conica",
+      "originalLanguage": "grc",
+      "status": "indexed-in-current-github-manifest",
+      "indexedEditions": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/apollonius-conica-grc.json"
+        }
+      ],
+      "r2Facsimiles": [],
+      "action": "Remove from pending only after regenerating audit; retain all source files"
+    },
+    {
+      "id": "aristarchus-magnitudines",
+      "author": "Aristarco de Samos",
+      "title": "Περὶ μεγεθῶν καὶ ἀποστημάτων ἡλίου καὶ σελήνης",
+      "originalLanguage": "grc",
+      "status": "indexed-in-current-github-manifest",
+      "indexedEditions": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/aristarchus-magnitudines-grc.json"
+        }
+      ],
+      "r2Facsimiles": [],
+      "action": "Remove from pending only after regenerating audit; retain all source files"
+    },
+    {
+      "id": "athenaeus-mechanicus",
+      "author": "Ateneo Mecánico",
+      "title": "Περὶ μηχανημάτων · De machinis",
+      "originalLanguage": "grc",
+      "status": "r2-facsimile-declared-text-not-indexed",
+      "indexedEditions": [],
+      "r2Facsimiles": [
+        {
+          "editionId": "athenaeus-mechanicus",
+          "objectStatus": "declared-in-r2-catalogue-not-live-probed"
+        }
+      ],
+      "action": "Verify R2 object by key and hash, inspect edition, transcribe/index by loci; never overwrite existing facsimile"
+    },
+    {
+      "id": "biton-kataskeuai",
+      "author": "Bitón",
+      "title": "Κατασκευαὶ πολεμικῶν ὀργάνων καὶ καταπαλτικῶν",
+      "originalLanguage": "grc",
+      "status": "r2-facsimile-declared-text-not-indexed",
+      "indexedEditions": [],
+      "r2Facsimiles": [
+        {
+          "editionId": "biton-kataskeuai",
+          "objectStatus": "declared-in-r2-catalogue-not-live-probed"
+        }
+      ],
+      "action": "Verify R2 object by key and hash, inspect edition, transcribe/index by loci; never overwrite existing facsimile"
+    },
+    {
+      "id": "frontinus-gromatica",
+      "author": "Frontino",
+      "title": "Opuscula gromatica (De agrorum qualitate, De controversiis, De limitibus)",
+      "originalLanguage": "la",
+      "status": "indexed-in-current-github-manifest",
+      "indexedEditions": [
+        {
+          "language": "la",
+          "path": "data/classics-corpus/frontinus-gromatica-la.json"
+        }
+      ],
+      "r2Facsimiles": [],
+      "action": "Remove from pending only after regenerating audit; retain all source files"
+    },
+    {
+      "id": "geminus-isagoge",
+      "author": "Gémino",
+      "title": "Εἰσαγωγὴ εἰς τὰ φαινόμενα · Elementa astronomiae",
+      "originalLanguage": "grc",
+      "status": "indexed-in-current-github-manifest",
+      "indexedEditions": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/geminus-isagoge-grc.json"
+        }
+      ],
+      "r2Facsimiles": [],
+      "action": "Remove from pending only after regenerating audit; retain all source files"
+    },
+    {
+      "id": "hyginus-gromaticus",
+      "author": "Higino Gromático",
+      "title": "Constitutio limitum",
+      "originalLanguage": "la",
+      "status": "r2-facsimile-declared-text-not-indexed",
+      "indexedEditions": [],
+      "r2Facsimiles": [
+        {
+          "editionId": "hyginus-gromaticus",
+          "objectStatus": "declared-in-r2-catalogue-not-live-probed"
+        }
+      ],
+      "action": "Verify R2 object by key and hash, inspect edition, transcribe/index by loci; never overwrite existing facsimile"
+    },
+    {
+      "id": "pappus-synagoge",
+      "author": "Papo de Alejandría",
+      "title": "Συναγωγή · Collectio (libro VIII: mecánica)",
+      "originalLanguage": "grc",
+      "status": "indexed-in-current-github-manifest",
+      "indexedEditions": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/pappus-synagoge-grc.json"
+        }
+      ],
+      "r2Facsimiles": [],
+      "action": "Remove from pending only after regenerating audit; retain all source files"
+    },
+    {
+      "id": "philo-belopoeica",
+      "author": "Filón de Bizancio",
+      "title": "Βελοποιικά · Belopoeica (Mechanike syntaxis IV)",
+      "originalLanguage": "grc",
+      "status": "r2-facsimile-declared-text-not-indexed",
+      "indexedEditions": [],
+      "r2Facsimiles": [
+        {
+          "editionId": "philo-belopoeica",
+          "objectStatus": "declared-in-r2-catalogue-not-live-probed"
+        }
+      ],
+      "action": "Verify R2 object by key and hash, inspect edition, transcribe/index by loci; never overwrite existing facsimile"
+    },
+    {
+      "id": "procopius-aedificiis",
+      "author": "Procopio de Cesarea",
+      "title": "Περὶ κτισμάτων",
+      "originalLanguage": "grc",
+      "status": "no-textual-index-no-r2-facsimile-declared",
+      "indexedEditions": [],
+      "r2Facsimiles": [],
+      "action": "Locate verified source, check possible title aliases and rights, ingest only if truly absent"
+    },
+    {
+      "id": "ptolemy-geographia",
+      "author": "Claudio Ptolomeo",
+      "title": "Γεωγραφικὴ ὑφήγησις",
+      "originalLanguage": "grc",
+      "status": "r2-facsimile-declared-text-not-indexed",
+      "indexedEditions": [],
+      "r2Facsimiles": [
+        {
+          "editionId": "ptolemy-geographia",
+          "objectStatus": "declared-in-r2-catalogue-not-live-probed"
+        }
+      ],
+      "action": "Verify R2 object by key and hash, inspect edition, transcribe/index by loci; never overwrite existing facsimile"
+    },
+    {
+      "id": "siculus-flaccus",
+      "author": "Sículo Flaco",
+      "title": "De condicionibus agrorum",
+      "originalLanguage": "la",
+      "status": "indexed-in-current-github-manifest",
+      "indexedEditions": [
+        {
+          "language": "la",
+          "path": "data/classics-corpus/siculus-flaccus-la.json"
+        }
+      ],
+      "r2Facsimiles": [],
+      "action": "Remove from pending only after regenerating audit; retain all source files"
+    },
+    {
+      "id": "accius-fragmenta",
+      "author": "Accio",
+      "title": "Tragoediae (fragmenta)",
+      "originalLanguage": "la",
+      "status": "r2-facsimile-declared-text-not-indexed",
+      "indexedEditions": [],
+      "r2Facsimiles": [
+        {
+          "editionId": "accius-fragmenta",
+          "objectStatus": "declared-in-r2-catalogue-not-live-probed"
+        }
+      ],
+      "action": "Verify R2 object by key and hash, inspect edition, transcribe/index by loci; never overwrite existing facsimile"
+    },
+    {
+      "id": "anthologia-latina",
+      "author": "Antología latina",
+      "title": "Anthologia Latina",
+      "originalLanguage": "la",
+      "status": "r2-facsimile-declared-text-not-indexed",
+      "indexedEditions": [],
+      "r2Facsimiles": [
+        {
+          "editionId": "anthologia-latina",
+          "objectStatus": "declared-in-r2-catalogue-not-live-probed"
+        }
+      ],
+      "action": "Verify R2 object by key and hash, inspect edition, transcribe/index by loci; never overwrite existing facsimile"
+    },
+    {
+      "id": "apuleius-de-deo-socratis",
+      "author": "Apuleyo",
+      "title": "De deo Socratis",
+      "originalLanguage": "la",
+      "status": "indexed-in-current-github-manifest",
+      "indexedEditions": [
+        {
+          "language": "la",
+          "path": "data/classics-corpus/apuleius-de-deo-socratis-la.json"
+        }
+      ],
+      "r2Facsimiles": [],
+      "action": "Remove from pending only after regenerating audit; retain all source files"
+    },
+    {
+      "id": "aristoteles-meteorologica",
+      "author": "Aristóteles",
+      "title": "Μετεωρολογικά · Meteorologica",
+      "originalLanguage": "grc",
+      "status": "r2-facsimile-declared-text-not-indexed",
+      "indexedEditions": [],
+      "r2Facsimiles": [
+        {
+          "editionId": "aristoteles-meteorologica",
+          "objectStatus": "declared-in-r2-catalogue-not-live-probed"
+        }
+      ],
+      "action": "Verify R2 object by key and hash, inspect edition, transcribe/index by loci; never overwrite existing facsimile"
+    },
+    {
+      "id": "casiodoro-variae",
+      "author": "Casiodoro",
+      "title": "Variae",
+      "originalLanguage": "la",
+      "status": "r2-facsimile-declared-text-not-indexed",
+      "indexedEditions": [],
+      "r2Facsimiles": [
+        {
+          "editionId": "casiodoro-variae",
+          "objectStatus": "declared-in-r2-catalogue-not-live-probed"
+        }
+      ],
+      "action": "Verify R2 object by key and hash, inspect edition, transcribe/index by loci; never overwrite existing facsimile"
+    },
+    {
+      "id": "censorinus-die-natali",
+      "author": "Censorino",
+      "title": "De die natali",
+      "originalLanguage": "la",
+      "status": "indexed-in-current-github-manifest",
+      "indexedEditions": [
+        {
+          "language": "la",
+          "path": "data/classics-corpus/censorinus-die-natali-la.json"
+        }
+      ],
+      "r2Facsimiles": [],
+      "action": "Remove from pending only after regenerating audit; retain all source files"
+    },
+    {
+      "id": "ennius-annales",
+      "author": "Ennio",
+      "title": "Annales (fragmenta)",
+      "originalLanguage": "la",
+      "status": "indexed-in-current-github-manifest",
+      "indexedEditions": [
+        {
+          "language": "la",
+          "path": "data/classics-corpus/ennius-annales-la.json"
+        }
+      ],
+      "r2Facsimiles": [],
+      "action": "Remove from pending only after regenerating audit; retain all source files"
+    },
+    {
+      "id": "festo-verborum-significatu",
+      "author": "Festo (y Verrio Flaco)",
+      "title": "De verborum significatu",
+      "originalLanguage": "la",
+      "status": "r2-facsimile-declared-text-not-indexed",
+      "indexedEditions": [],
+      "r2Facsimiles": [
+        {
+          "editionId": "festo-verborum-significatu",
+          "objectStatus": "declared-in-r2-catalogue-not-live-probed"
+        }
+      ],
+      "action": "Verify R2 object by key and hash, inspect edition, transcribe/index by loci; never overwrite existing facsimile"
+    },
+    {
+      "id": "galeno-kuhn-vol01",
+      "author": "Galeno",
+      "title": "Claudii Galeni opera omnia · Tomus XIV (ed. Kühn, Leipzig 1827)",
+      "originalLanguage": "grc",
+      "status": "r2-facsimile-declared-text-not-indexed",
+      "indexedEditions": [],
+      "r2Facsimiles": [
+        {
+          "editionId": "galeno-kuhn-vol01",
+          "objectStatus": "declared-in-r2-catalogue-not-live-probed"
+        }
+      ],
+      "action": "Verify R2 object by key and hash, inspect edition, transcribe/index by loci; never overwrite existing facsimile"
+    },
+    {
+      "id": "galeno-kuhn-vol19",
+      "author": "Galeno",
+      "title": "Opera omnia, vol. XIX (ed. Kühn, Leipzig 1830)",
+      "originalLanguage": "grc",
+      "status": "r2-facsimile-declared-text-not-indexed",
+      "indexedEditions": [],
+      "r2Facsimiles": [
+        {
+          "editionId": "galeno-kuhn-vol19",
+          "objectStatus": "declared-in-r2-catalogue-not-live-probed"
+        }
+      ],
+      "action": "Verify R2 object by key and hash, inspect edition, transcribe/index by loci; never overwrite existing facsimile"
+    },
+    {
+      "id": "galeno-opera-kuhn",
+      "author": "Galeno",
+      "title": "Claudii Galeni opera omnia · Tomus XIV (ed. Kühn, Leipzig 1827)",
+      "originalLanguage": "grc",
+      "status": "r2-facsimile-declared-text-not-indexed",
+      "indexedEditions": [],
+      "r2Facsimiles": [
+        {
+          "editionId": "galeno-opera-kuhn",
+          "objectStatus": "declared-in-r2-catalogue-not-live-probed"
+        }
+      ],
+      "action": "Verify R2 object by key and hash, inspect edition, transcribe/index by loci; never overwrite existing facsimile"
+    },
+    {
+      "id": "galeno-scripta-minora",
+      "author": "Galeno",
+      "title": "Scripta minora (ed. Marquardt, Müller y Helmreich, Leipzig 1884–1893)",
+      "originalLanguage": "grc",
+      "status": "r2-facsimile-declared-text-not-indexed",
+      "indexedEditions": [],
+      "r2Facsimiles": [
+        {
+          "editionId": "galeno-scripta-minora",
+          "objectStatus": "declared-in-r2-catalogue-not-live-probed"
+        }
+      ],
+      "action": "Verify R2 object by key and hash, inspect edition, transcribe/index by loci; never overwrite existing facsimile"
+    },
+    {
+      "id": "higino-fabulas",
+      "author": "Higino",
+      "title": "Fabulae · Astronomica poetica",
+      "originalLanguage": "la",
+      "status": "r2-facsimile-declared-text-not-indexed",
+      "indexedEditions": [],
+      "r2Facsimiles": [
+        {
+          "editionId": "higino-fabulas",
+          "objectStatus": "declared-in-r2-catalogue-not-live-probed"
+        }
+      ],
+      "action": "Verify R2 object by key and hash, inspect edition, transcribe/index by loci; never overwrite existing facsimile"
+    },
+    {
+      "id": "isidore-etymologiae",
+      "author": "Isidoro de Sevilla",
+      "title": "Etymologiae",
+      "originalLanguage": "la",
+      "status": "indexed-in-current-github-manifest",
+      "indexedEditions": [
+        {
+          "language": "la",
+          "path": "data/classics-corpus/isidore-etymologiae-la.json"
+        }
+      ],
+      "r2Facsimiles": [],
+      "action": "Remove from pending only after regenerating audit; retain all source files"
+    },
+    {
+      "id": "jamblico-vida-pitagorica",
+      "author": "Jámblico",
+      "title": "Περὶ τοῦ Πυθαγορείου βίου · De vita pythagorica",
+      "originalLanguage": "grc",
+      "status": "r2-facsimile-declared-text-not-indexed",
+      "indexedEditions": [],
+      "r2Facsimiles": [
+        {
+          "editionId": "jamblico-vida-pitagorica",
+          "objectStatus": "declared-in-r2-catalogue-not-live-probed"
+        }
+      ],
+      "action": "Verify R2 object by key and hash, inspect edition, transcribe/index by loci; never overwrite existing facsimile"
+    },
+    {
+      "id": "lyra-graeca",
+      "author": "Poetas líricos griegos",
+      "title": "Lyra Graeca · Líricos monódicos (Safo, Alceo, Anacreonte y otros)",
+      "originalLanguage": "grc",
+      "status": "r2-facsimile-declared-text-not-indexed",
+      "indexedEditions": [],
+      "r2Facsimiles": [
+        {
+          "editionId": "lyra-graeca",
+          "objectStatus": "declared-in-r2-catalogue-not-live-probed"
+        }
+      ],
+      "action": "Verify R2 object by key and hash, inspect edition, transcribe/index by loci; never overwrite existing facsimile"
+    },
+    {
+      "id": "macrobius-saturnalia",
+      "author": "Macrobio",
+      "title": "Saturnalia",
+      "originalLanguage": "la",
+      "status": "indexed-in-current-github-manifest",
+      "indexedEditions": [
+        {
+          "language": "la",
+          "path": "data/classics-corpus/macrobius-saturnalia-la.json"
+        }
+      ],
+      "r2Facsimiles": [],
+      "action": "Remove from pending only after regenerating audit; retain all source files"
+    },
+    {
+      "id": "manilio-astronomica",
+      "author": "Manilio",
+      "title": "Astronomica",
+      "originalLanguage": "la",
+      "status": "r2-facsimile-declared-text-not-indexed",
+      "indexedEditions": [],
+      "r2Facsimiles": [
+        {
+          "editionId": "manilio-astronomica",
+          "objectStatus": "declared-in-r2-catalogue-not-live-probed"
+        }
+      ],
+      "action": "Verify R2 object by key and hash, inspect edition, transcribe/index by loci; never overwrite existing facsimile"
+    },
+    {
+      "id": "marciano-capela-nuptiis",
+      "author": "Marciano Capela",
+      "title": "De nuptiis Philologiae et Mercurii",
+      "originalLanguage": "la",
+      "status": "r2-facsimile-declared-text-not-indexed",
+      "indexedEditions": [],
+      "r2Facsimiles": [
+        {
+          "editionId": "marciano-capela-nuptiis",
+          "objectStatus": "declared-in-r2-catalogue-not-live-probed"
+        }
+      ],
+      "action": "Verify R2 object by key and hash, inspect edition, transcribe/index by loci; never overwrite existing facsimile"
+    },
+    {
+      "id": "nonio-marcelo-doctrina",
+      "author": "Nonio Marcelo",
+      "title": "De compendiosa doctrina",
+      "originalLanguage": "la",
+      "status": "r2-facsimile-declared-text-not-indexed",
+      "indexedEditions": [],
+      "r2Facsimiles": [
+        {
+          "editionId": "nonio-marcelo-doctrina",
+          "objectStatus": "declared-in-r2-catalogue-not-live-probed"
+        }
+      ],
+      "action": "Verify R2 object by key and hash, inspect edition, transcribe/index by loci; never overwrite existing facsimile"
+    },
+    {
+      "id": "paladio-opus-agriculturae",
+      "author": "Paladio",
+      "title": "Opus agriculturae",
+      "originalLanguage": "la",
+      "status": "r2-facsimile-declared-text-not-indexed",
+      "indexedEditions": [],
+      "r2Facsimiles": [
+        {
+          "editionId": "paladio-opus-agriculturae",
+          "objectStatus": "declared-in-r2-catalogue-not-live-probed"
+        }
+      ],
+      "action": "Verify R2 object by key and hash, inspect edition, transcribe/index by loci; never overwrite existing facsimile"
+    },
+    {
+      "id": "proclo-comentario-euclides",
+      "author": "Proclo",
+      "title": "Εἰς τὸ πρῶτον τῶν Εὐκλείδου Στοιχείων · In primum Euclidis Elementorum librum commentarii",
+      "originalLanguage": "grc",
+      "status": "r2-facsimile-declared-text-not-indexed",
+      "indexedEditions": [],
+      "r2Facsimiles": [
+        {
+          "editionId": "proclo-comentario-euclides",
+          "objectStatus": "declared-in-r2-catalogue-not-live-probed"
+        }
+      ],
+      "action": "Verify R2 object by key and hash, inspect edition, transcribe/index by loci; never overwrite existing facsimile"
+    },
+    {
+      "id": "seneca-de-ira",
+      "author": "Séneca",
+      "title": "De ira",
+      "originalLanguage": "la",
+      "status": "indexed-in-current-github-manifest",
+      "indexedEditions": [
+        {
+          "language": "la",
+          "path": "data/classics-corpus/seneca-de-ira-la.json"
+        }
+      ],
+      "r2Facsimiles": [],
+      "action": "Remove from pending only after regenerating audit; retain all source files"
+    },
+    {
+      "id": "seneca-de-tranquillitate",
+      "author": "Séneca",
+      "title": "De tranquillitate animi",
+      "originalLanguage": "la",
+      "status": "indexed-in-current-github-manifest",
+      "indexedEditions": [
+        {
+          "language": "la",
+          "path": "data/classics-corpus/seneca-de-tranquillitate-la.json"
+        }
+      ],
+      "r2Facsimiles": [],
+      "action": "Remove from pending only after regenerating audit; retain all source files"
+    },
+    {
+      "id": "seneca-naturales",
+      "author": "Séneca",
+      "title": "Naturales quaestiones",
+      "originalLanguage": "la",
+      "status": "indexed-in-current-github-manifest",
+      "indexedEditions": [
+        {
+          "language": "la",
+          "path": "data/classics-corpus/seneca-naturales-la.json"
+        }
+      ],
+      "r2Facsimiles": [],
+      "action": "Remove from pending only after regenerating audit; retain all source files"
+    },
+    {
+      "id": "sexto-empirico-obras",
+      "author": "Sexto Empírico",
+      "title": "Πρὸς μαθηματικούς · Adversus mathematicos y Esbozos pirrónicos",
+      "originalLanguage": "grc",
+      "status": "r2-facsimile-declared-text-not-indexed",
+      "indexedEditions": [],
+      "r2Facsimiles": [
+        {
+          "editionId": "sexto-empirico-obras",
+          "objectStatus": "declared-in-r2-catalogue-not-live-probed"
+        }
+      ],
+      "action": "Verify R2 object by key and hash, inspect edition, transcribe/index by loci; never overwrite existing facsimile"
+    },
+    {
+      "id": "teon-esmirna-expositio",
+      "author": "Teón de Esmirna",
+      "title": "Τὰ κατὰ μαθηματικὴν χρήσιμα εἰς τὴν Πλάτωνος ἀνάγνωσιν · Expositio rerum mathematicarum",
+      "originalLanguage": "grc",
+      "status": "r2-facsimile-declared-text-not-indexed",
+      "indexedEditions": [],
+      "r2Facsimiles": [
+        {
+          "editionId": "teon-esmirna-expositio",
+          "objectStatus": "declared-in-r2-catalogue-not-live-probed"
+        }
+      ],
+      "action": "Verify R2 object by key and hash, inspect edition, transcribe/index by loci; never overwrite existing facsimile"
+    },
+    {
+      "id": "velleius-historia",
+      "author": "Veleyo Patérculo",
+      "title": "Historia Romana",
+      "originalLanguage": "la",
+      "status": "indexed-in-current-github-manifest",
+      "indexedEditions": [
+        {
+          "language": "la",
+          "path": "data/classics-corpus/velleius-historia-la.json"
+        }
+      ],
+      "r2Facsimiles": [],
+      "action": "Remove from pending only after regenerating audit; retain all source files"
+    }
+  ]
+}
