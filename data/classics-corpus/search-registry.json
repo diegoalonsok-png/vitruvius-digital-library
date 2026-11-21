@@ -1,9 +1,9 @@
 {
   "schema": "vitruvia-classics-search-registry-v1",
-  "updated": "2026-11-16",
+  "updated": "2026-11-21",
   "description": "Registro verificable de transcripciones HTML y textos JSON existentes que admiten búsqueda literal de contenido. No incluye automáticamente PDF escaneados, facsímiles ni fichas sin texto. Los índices auxiliares por locus y el aparato crítico se declaran por separado; no se suman a versiones textuales originales ni implican colación autóptica.",
-  "count": 481,
-  "works": 365,
+  "count": 486,
+  "works": 369,
   "entries": [
     {
       "workId": "aeneas-tacticus-poliorketika",
@@ -657,6 +657,16 @@
       "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
     },
     {
+      "workId": "aurelius-victor-liber-caesaribus",
+      "author": "Sexto Aurelio Víctor",
+      "title": "Liber de Caesaribus",
+      "language": "la",
+      "format": "json-passages",
+      "path": "data/classics-corpus/aurelius-victor-liber-caesaribus-la.json",
+      "reader": "classics-text-reader.html?work=aurelius-victor-liber-caesaribus&lang=la",
+      "sourceDescription": "Latin original from Wikisource; provisional edited transcription with 42 passages; editorial collation pending."
+    },
+    {
       "workId": "ausonio-obras",
       "language": "la",
       "title": "Opuscula · Obras",
@@ -1160,6 +1170,16 @@
       "sourceDescription": "OpenGreekAndLatin First1KGreek · edición TEI de procedencia identificada; posible transcripción/OCR corregido, sin colación independiente"
     },
     {
+      "workId": "disticha-catonis",
+      "author": "Anónimo (Pseudo-Catón)",
+      "title": "Disticha Catonis",
+      "language": "la",
+      "format": "json-passages",
+      "path": "data/classics-corpus/disticha-catonis-la.json",
+      "reader": "classics-text-reader.html?work=disticha-catonis&lang=la",
+      "sourceDescription": "Latin original from Wikisource; provisional edited transcription with 205 passages; editorial collation pending."
+    },
+    {
       "workId": "ennius-annales",
       "author": "Ennio",
       "title": "Annales (fragmenta)",
@@ -1596,6 +1616,26 @@
       "path": "data/classics-corpus/eusebio-grc.json",
       "reader": "classics-text-reader.html?work=eusebio&lang=grc",
       "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
+      "workId": "eutropius-breviarium",
+      "author": "Eutropio",
+      "title": "Breviarium historiae romanae",
+      "language": "en",
+      "format": "json-passages",
+      "path": "data/classics-corpus/eutropius-breviarium-en.json",
+      "reader": "classics-text-reader.html?work=eutropius-breviarium&lang=en",
+      "sourceDescription": "English human translation by John Selby Watson (1853; 1886 Bell reprint), transcribed by Roger Pearse with public-domain statement; ten books with same chapter loci, no sentence-level collation."
+    },
+    {
+      "workId": "eutropius-breviarium",
+      "author": "Eutropio",
+      "title": "Breviarium historiae romanae",
+      "language": "la",
+      "format": "json-passages",
+      "path": "data/classics-corpus/eutropius-breviarium-la.json",
+      "reader": "classics-text-reader.html?work=eutropius-breviarium&lang=la",
+      "sourceDescription": "Latin original from Wikisource; provisional edited transcription with 225 passages; editorial collation pending."
     },
     {
       "workId": "faventinus",
@@ -4160,6 +4200,16 @@
       "path": "data/classics-corpus/ptolemy-almagest-grc.json",
       "reader": "classics-text-reader.html?work=ptolemy-almagest&lang=grc",
       "sourceDescription": "OpenGreekAndLatin First1KGreek TEI · fuente editada documentada, sin colación automática"
+    },
+    {
+      "workId": "publilius-syrus-sententiae",
+      "author": "Publilio Siro",
+      "title": "Sententiae",
+      "language": "la",
+      "format": "json-passages",
+      "path": "data/classics-corpus/publilius-syrus-sententiae-la.json",
+      "reader": "classics-text-reader.html?work=publilius-syrus-sententiae&lang=la",
+      "sourceDescription": "Latin original from Wikisource; provisional edited transcription with 733 passages; editorial collation pending."
     },
     {
       "workId": "quintilian",

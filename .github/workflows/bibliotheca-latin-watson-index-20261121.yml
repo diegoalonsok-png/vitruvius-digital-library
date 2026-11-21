@@ -1,0 +1,71 @@
+name: Bibliotheca - index four Latin originals and Watson translation
+on:
+  push:
+    branches:
+      - bibliotheca/latin-four-watson-indexed-20261121
+    paths:
+      - '.github/workflows/bibliotheca-latin-watson-index-20261121.yml'
+      - 'data/classics-corpus/**'
+      - 'scripts/test-bibliotheca-latin-english-20261121.mjs'
+  workflow_dispatch:
+concurrency:
+  group: bibliotheca-latin-watson-index-${{ github.ref }}
+  cancel-in-progress: true
+permissions:
+  contents: write
+jobs:
+  rebuild-and-test:
+    if: github.repository == 'diegoalonsok-png/vitruvius-digital-library'
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: true
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install dependencies (project has no package-lock)
+        run: npm install --no-audit --no-fund --ignore-scripts
+      - name: Validate four originals and Watson translation
+        run: node scripts/test-bibliotheca-latin-english-20261121.mjs
+      - name: Regenerate complete local lexical index from text files
+        run: npm run build:index
+      - name: Verify local registry and lexical manifest agree
+        run: |
+          node --input-type=module -e '
+          import {readFileSync} from "node:fs";
+          const r=JSON.parse(readFileSync("data/classics-corpus/search-registry.json","utf8"));
+          const m=JSON.parse(readFileSync("data/index/classics/manifest.json","utf8"));
+          const ids=new Set(m.index.map(w=>w.id+"|"+w.lang));
+          const all=r.entries.filter(e=>e.format==="json-passages"&&e.path.startsWith("data/classics-corpus/"));
+          const missing=all.filter(e=>!ids.has(e.workId+"|"+e.language));
+          if(missing.length)throw Error("Unindexed local texts: "+missing.map(x=>x.workId+"|"+x.language));
+          for(const id of ["disticha-catonis","publilius-syrus-sententiae","eutropius-breviarium","aurelius-victor-liber-caesaribus"])
+            if(!ids.has(id+"|la"))throw Error("Latin missing: "+id);
+          if(!ids.has("eutropius-breviarium|en"))throw Error("English Eutropius missing");
+          if(m.works<441)throw Error("Index versions dropped: "+m.works);
+          console.log("Indexed all",all.length,"locally hosted JSON versions;",m.works,"all indexed editions");
+          '
+      - name: Verify search and concordance
+        run: npm run check:index
+      - name: Verify corpus index search gate
+        run: npm run check:gate
+      - name: Commit only regenerated index on clean review branch
+        run: |
+          git add -- data/index/classics/
+          if git diff --cached --quiet; then
+            echo "No regenerated index changes"
+            exit 0
+          fi
+          git config user.name "Bibliotheca CI"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git commit -m "index: rebuild after 4 Latin classics and Watson translation [skip ci]"
+          for attempt in 1 2 3; do
+            git fetch origin bibliotheca/latin-four-watson-indexed-20261121
+            git rebase origin/bibliotheca/latin-four-watson-indexed-20261121 || { echo "Concurrent edit conflict, no force"; exit 1; }
+            if git push origin HEAD:bibliotheca/latin-four-watson-indexed-20261121; then exit 0; fi
+          done
+          echo "Concurrent updates prevented safe save; no force attempted"
+          exit 1
