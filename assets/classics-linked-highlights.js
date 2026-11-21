@@ -5,7 +5,7 @@
 const source=document.getElementById('passages'),target=document.querySelector('.cl-translation-output');
 if(!source||!target)return;
 const work=new URLSearchParams(location.search).get('work')||'';
-const core=import('./classics-linked-highlight-core.mjs?v=20261121-linked-words-v1');
+const core=import('./classics-linked-highlight-core.mjs?v=20261121-linked-words-v2');
 const concepts=fetch('data/lexicon/conceptus.json').then(r=>r.ok?r.json():null).then(j=>j?.concepts||[]).catch(()=>[]);
 const support=!!(window.CSS?.highlights&&window.Highlight);
 const feedback=document.createElement('p');feedback.className='cl-linked-highlight-note';feedback.hidden=true;

@@ -14,8 +14,9 @@ function catalog(){
   fetch("data/index/classics/manifest.json").then(r=>{if(!r.ok)throw Error("Índice léxico: HTTP "+r.status);return r.json()}),
   fetch("data/classics-corpus/title-search-aliases-multilingual.json").then(r=>r.ok?r.json():{aliases:{}}).catch(()=>({aliases:{}})),
   fetch("data/index/classics-additions-2026-11-17/manifest.json").then(r=>r.ok?r.json():{index:[]}).catch(()=>({index:[]})),
-  fetch("data/classics-corpus/edition-list-labels.json",{cache:"no-cache"}).then(r=>r.ok?r.json():null).catch(()=>null)
- ]).then(([j,registry,supplement,lexical,names,additions,editionLabels])=>{
+  fetch("data/classics-corpus/edition-list-labels.json",{cache:"no-cache"}).then(r=>r.ok?r.json():null).catch(()=>null),
+  fetch("data/r2/catalogo-clasicos-r2.json",{cache:"no-cache"}).then(r=>r.ok?r.json():null).catch(()=>null)
+ ]).then(([j,registry,supplement,lexical,names,additions,editionLabels,pdfCatalogue])=>{
   if(!Array.isArray(j.items)||j.items.length!==j.targetWorks)throw Error("Inventario de obras inconsistente");
   const sources=new Map();
   for(const entry of registry.entries||[]){
@@ -54,27 +55,37 @@ function catalog(){
   // Preserve rigorous indexed counts, but make every catalogued author and work discoverable.
   // Missing an exact original-index certificate must not mean "author not found".
   const all=[...merged.values()];
-  return {indexed:all.filter(w=>w.originalIndexed),all,aliases:names.aliases||{},editionLabels:editionLabels?.schema==='bibliotheca-edition-list-labels-v1'?editionLabels.works:{}};
+  return {indexed:all.filter(w=>w.originalIndexed),all,aliases:names.aliases||{},editionLabels:editionLabels?.schema==='bibliotheca-edition-list-labels-v1'?editionLabels.works:{},pdfEditions:pdfCatalogue?.items||[]};
  }).catch(e=>{dataPromise=null;throw e});
  return dataPromise;
 }
 function add(tag,cls,text,parent){const el=document.createElement(tag);if(cls)el.className=cls;if(text!=null)el.textContent=text;parent.append(el);return el}
 const translationLanguages={en:'inglés',fr:'francés',es:'castellano',it:'italiano',de:'alemán',pt:'portugués'};
-function translationSummary(row,item,editionLabels){
+function translationSummary(row,item,editionLabels,pdfEditions=[]){
  const panel=add('aside','vdl-works-translations',null,row);
  panel.setAttribute('aria-label','Traducciones documentadas de esta obra');
  const metadata=editionLabels?.[item.id]||[];
- const versions=[...new Map((item.readers||[]).filter(e=>translationLanguages[e.language]).map(e=>[e.language,e])).values()];
- if(!versions.length){add('span','vdl-works-translation-status','Sin traducción humana registrada',panel);return;}
+ const byLanguage=new Map((item.readers||[]).filter(e=>translationLanguages[e.language]).map(e=>[e.language,e]));
+ for(const pdf of pdfEditions){
+  if((pdf.workId||pdf.id)!==item.id)continue;
+  const language=String(pdf.idiomaEdicion||'').match(/^(?:bilingue-)?(en|fr|es|it|de|pt)$/)?.[1];
+  if(!language||byLanguage.has(language))continue;
+  byLanguage.set(language,{language,translator:pdf.traductor||'',publicationYear:pdf.anio,edition:[pdf.bilingueLoeb?'Loeb Classical Library':'',pdf.editor].filter(Boolean).join(' · '),sourceDescription:pdf.tituloEdicion,format:'facsimile-pdf',pdf:pdf.pdf});
+ }
+ const versions=[...byLanguage.values()];
+ if(!versions.length){add('span','vdl-works-translation-status','Sin traducción humana registrada en el índice de lectura',panel);return;}
  for(const source of versions){
   const info=metadata.find(e=>e.language===source.language)||source;
   const automatic=source.machineTranslation===true||/machine|automatic/i.test(source.sourceType||'');
   const line=add('div','vdl-works-translation-entry',null,panel);
-  add('strong',null,(automatic?'Automática':'Traducción humana')+' · '+translationLanguages[source.language],line);
+  add('strong',null,(automatic?'Automática':source.format==='facsimile-pdf'?'Traducción publicada (PDF)':'Traducción humana')+' · '+translationLanguages[source.language],line);
   const translator=info.translator||source.translator||'';
-  add('span',null,!automatic&&translator&&!/anonymous|an[oó]nim|unknown|no (?:identificad|acreditad)/i.test(translator)?translator:'Traductor no identificado en el registro',line);
+  add('span',null,automatic?'Versión generada automáticamente':translator&&!/anonymous|an[oó]nim|unknown|no (?:identificad|acreditad)/i.test(translator)?translator:'Traductor no identificado en el registro',line);
   const edition=[info.edition,info.publicationYear||source.publicationYear].filter(Boolean).join(' · ');
   if(edition)add('small',null,edition,line);
+  if(source.format==='facsimile-pdf'&&/^https:\/\/libros\.vitruvius-digital-library\.org\/clasicos\/pdf\/[a-z0-9-]+\.pdf$/.test(source.pdf||'')){
+   const link=add('a',null,'Ver traducción en PDF',line);link.href=source.pdf;link.target='_blank';link.rel='noopener noreferrer';
+  }
   if(source.sourceDescription)line.title=source.sourceDescription;
  }
 }
@@ -137,7 +148,7 @@ function mount(host){
    link.title=canRead?"Abrir lector de la obra":"Ver ficha académica y fuentes disponibles";
    const state=add("small","vdl-works-availability",canRead?" · Texto original indexado":" · Ficha y fuentes",info);
    state.setAttribute("aria-label",canRead?"Disponible para lectura":"Ficha bibliográfica, texto no confirmado");
-   translationSummary(row,item,items.editionLabels);
+   translationSummary(row,item,items.editionLabels,items.pdfEditions);
   }
   count.textContent=found.length?found.length+" obra"+(found.length===1?"":"s")+" encontrada"+(found.length===1?"":"s")+(found.length>12?" · primeras 12":"")+". Las obras sin original indexado abren su ficha bibliográfica.":"No se encontraron obras con ese autor o título.";
  }

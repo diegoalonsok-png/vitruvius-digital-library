@@ -24,9 +24,10 @@ assert.equal((h.match(/<mark /g)||[]).length,2);assert(!h.includes('<script>'));
 assert(!highlightSearchTerms('asymmetria','symmetria').includes('<mark'));
 assert.match(highlightSearchTerms('opus est. Opus magnum est.','opus magnum',{mode:'phrase'}),/>Opus magnum<\/mark>/);
 for(const [lang,text,word] of [['es','El sacerdote invoca a Apolo.','Apolo'],['en','The priest invokes Apollo.','Apollo'],['fr','Le prêtre invoque Apollon.','Apollon']]){
- const c=linked.equivalentCandidates({word:'Ἀπόλλωνα',lemmas:['Ἀπόλλων'],sourceLanguage:'grc',targetLanguage:lang});
+ const c=linked.equivalentCandidates({word:'Ἀπόλλωνα',lemmas:['Ἀπόλλων'],sourceLanguage:'grc',targetLanguage:lang,entries:[{gloss:'wnos, o(, Apollo, the god'}]});
  assert.deepEqual(linked.equivalentSpans(text,c).map(s=>s.text),[word]);
  assert.deepEqual(linked.equivalentSpans('The priest returns safely.',c),[]);
+ assert.deepEqual(linked.equivalentSpans('O goddess, hear.',c),[],'A dictionary’s grammatical article must not be marked as a name equivalent');
 }
 assert.deepEqual(linked.equivalentSpans('La casa contiene un atrio.',linked.equivalentCandidates({word:'domum',sourceLanguage:'la',targetLanguage:'es'})).map(s=>s.text),['casa']);
 
@@ -69,7 +70,7 @@ for(const work of ['homer-iliad','homer-odyssey','caesar-gallico']){
  d.dispatchEvent(new w.CustomEvent('vitruvia:classics-passage',{detail:{work:'homer-iliad',language:'grc',locus:'1.1',text:'Ἀπόλλωνα',editions:[]}}));
  d.querySelector('.cl-translation-tools button').click();await settle(()=>d.querySelector('.cl-translation-output p'));
  w.eval(read('assets/classics-reader-annotations.js'));w.eval(read('assets/classics-translation-annotations.js'));
- w.eval(read('assets/classics-linked-highlights.js').replace("const core=import('./classics-linked-highlight-core.mjs?v=20261121-linked-words-v1');",'const core=Promise.resolve(window.LinkedHighlightCore);'));
+ w.eval(read('assets/classics-linked-highlights.js').replace("const core=import('./classics-linked-highlight-core.mjs?v=20261121-linked-words-v2');",'const core=Promise.resolve(window.LinkedHighlightCore);'));
  const original=d.querySelector('#passages p>span:not(.locus)'),selection=w.getSelection(),range=d.createRange();range.selectNodeContents(original);selection.removeAllRanges();selection.addRange(range);d.dispatchEvent(new w.Event('selectionchange'));
  await settle(()=>d.querySelector('.cl-translation-output').dataset.linkedEquivalent==='Apolo');
  assert(w.CSS.highlights.has('vdl-linked-equivalent'));
@@ -92,6 +93,7 @@ for(const work of ['homer-iliad','homer-odyssey','caesar-gallico']){
  assert(rows.some(row=>/Ilíada|Ἰλιάς/.test(row.textContent)&&/Samuel Butler/.test(row.querySelector('.vdl-works-translations').textContent)));
  assert(rows.some(row=>/Odisea|Ὀδύσσεια/.test(row.textContent)&&/inglés/.test(row.querySelector('.vdl-works-translations').textContent)));
  assert(rows.some(row=>/Himnos|ὕμνοι/.test(row.textContent)&&/Sin traducción humana registrada/.test(row.textContent)));
+ assert(rows.some(row=>/Quinto de Esmirna/.test(row.textContent)&&/Arthur Sanders Way/.test(row.querySelector('.vdl-works-translations').textContent)&&row.querySelector('.vdl-works-translations a')?.href.includes('quinto-esmirna-posthomericas.pdf')),'A documented translated PDF must be disclosed even without an indexed translation');
  w.close();
 }
 console.log('PASS: unique PDF page anchors, escaped inflection and phrase underlines, Apollo and Latin equivalences, ES/EN/FR selection in three works, stale results discarded, English UI preserves Spanish reading, catalogue translation attribution.');

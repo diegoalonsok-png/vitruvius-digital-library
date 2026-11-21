@@ -17,12 +17,14 @@ export function equivalentCandidates({word,lemmas=[],sourceLanguage,targetLangua
   const source=[...(c[sourceLanguage]||[]),...(c.modern?.[sourceLanguage]||[])];
   if(source.some(x=>typeof x==='string'&&wanted.has(key(x))))for(const t of c[targetLanguage]||c.modern?.[targetLanguage]||[])if(typeof t==='string')found.add(t);
  }
- for(const c of names)if(inputs.some(q=>Object.values(c).flat().some(t=>key(t)===key(q))))for(const t of c[targetLanguage]||[])found.add(t);
+ let named=false;
+ for(const c of names)if(inputs.some(q=>Object.values(c).flat().some(t=>key(t)===key(q)))){for(const t of c[targetLanguage]||[])found.add(t);named=true;}
+ if(named)return [...found].filter(t=>tokens(t).length>0);
  for(const e of entries){
   const gloss=targetLanguage==='en'?e.gloss:targetLanguage==='es'?e.es:'';
   for(const value of String(gloss||'').split(/[;,/]/)){
    const clean=value.replace(/\([^)]*\)/g,'').trim(),parts=tokens(clean);
-   if(parts.length>=1&&parts.length<=4&&!/^(?:the|a|an|of|to|in|for|with|see|v\.)$/i.test(clean))found.add(clean);
+   if(parts.length>=1&&parts.length<=4&&(parts.length>1||parts[0].word.length>=2)&&!/^(?:the|a|an|of|to|in|for|with|see|v\.)$/i.test(clean))found.add(clean);
   }
  }
  return [...found].filter(t=>tokens(t).length>0);
