@@ -6,10 +6,10 @@
   "method": "Greek workId with grc entry and no en/fr/es under that exact workId in the search registry. Not proof that translation is absent in R2 or alternate IDs; verify before import. Eusebius translation subsequently indexed in GitHub on 2026-11-20; remaining list excludes it.",
   "counts": {
     "greekWorkIds": 266,
-    "missingTranslationInSearchRegistry": 175,
-    "sourceCandidatesIdentified": 4,
-    "importedInThisAudit": 3,
-    "indexedInThisAudit": 3
+    "missingTranslationInSearchRegistry": 174,
+    "sourceCandidatesIdentified": 3,
+    "importedInThisAudit": 4,
+    "indexedInThisAudit": 4
   },
   "editorialRules": [
     "Never duplicate a workId or count translations as distinct works.",
@@ -190,29 +190,6 @@
       "sourceIdentification": "pending",
       "importStatus": "not_imported",
       "indexStatus": "not_indexed"
-    },
-    {
-      "workId": "aristophanes-lysistrata",
-      "author": "Aristófanes",
-      "title": "Λυσιστράτη",
-      "originalRegistered": "data/classics-corpus/aristophanes-lysistrata-grc.json",
-      "existingLanguages": [
-        "grc"
-      ],
-      "translationRegistryStatus": "no_en_fr_es_under_same_workId",
-      "r2Crosscheck": "pending",
-      "sourceIdentification": "pending",
-      "importStatus": "not_imported",
-      "indexStatus": "not_indexed",
-      "translationCandidate": {
-        "language": "en",
-        "translator": "Benjamin Bickley Rogers",
-        "year": 1911,
-        "url": "https://en.wikisource.org/wiki/Lysistrata",
-        "source": "Wikisource bibliographic edition listing",
-        "status": "human_translation_identified_scan_or_transcription_needs_check",
-        "notes": "Verify the exact text/edition and completeness; do not mistake a different translation for Rogers."
-      }
     },
     {
       "workId": "aristophanes-pax",
@@ -2544,6 +2521,18 @@
       "r2Mirrored": "not_verified",
       "publicReaderTested": false,
       "textCompleteness": "caution_possible_book_I_lacuna"
+    },
+    {
+      "workId": "aristophanes-lysistrata",
+      "language": "en",
+      "translator": "The Athenian Society (1912)",
+      "source": "Wikisource",
+      "path": "data/classics-corpus/aristophanes-lysistrata-en.json",
+      "passages": 476,
+      "indexedInSearchRegistry": true,
+      "gitHubPublished": true,
+      "r2Mirrored": "not_verified",
+      "publicReaderTested": false
     }
   ]
 }
