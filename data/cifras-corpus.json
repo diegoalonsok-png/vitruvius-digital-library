@@ -3,10 +3,10 @@
   "actualizado": "2026-11-21",
   "obras": 271,
   "nota": "Obras del repertorio grecolatino. Facsímiles y páginas indexadas se alojan en Cloudflare R2.",
-  "obrasSuplementarias": 123,
+  "obrasSuplementarias": 127,
   "obrasAdicionales": 10,
-  "obrasTotalesDeclaradas": 404,
-  "notaTotal": "404 fichas únicas por ID comprobadas: 271 del repertorio principal, 123 suplementarias sin solapamiento y 10 obras adicionales R2. Cuatro registros suplementarios repiten identificadores del repertorio principal y no se cuentan nuevamente. Las versiones y ediciones se cuentan aparte.",
+  "obrasTotalesDeclaradas": 408,
+  "notaTotal": "408 fichas únicas por ID comprobadas: 271 repertorio principal + 127 incorporaciones textuales suplementarias + 10 fichas R2 adicionales sin solapamiento. Versiones lingüísticas y ediciones históricas se contabilizan aparte.",
   "edicionesPdfR2": 117,
   "facsimiles": 106,
   "recepcionVitruviana": 7,
@@ -16,6 +16,18 @@
   "obrasConTextoRegistrado": 369,
   "edicionesLexicasLocales": 441,
   "edicionesLexicasR2": 44,
-  "obrasConTextoIndexado": 348,
-  "notaIndexadas": "348 originales indexados según auditoría local y manifiesto publicados el 2026-11-19; cifra independiente de ediciones y facsímiles."
+  "obrasConTextoIndexado": 367,
+  "notaIndexadas": "348 originales indexados según auditoría local y manifiesto publicados el 2026-11-19; cifra independiente de ediciones y facsímiles.",
+  "faltanParaObjetivo": 92,
+  "estadoIndexacion": {
+    "metodo": "Auditoría local y cotejo R2 con manifiesto y comprobación SHA registrada; sin nueva prueba HTTP en esta ejecución. OCR histórico separado.",
+    "edicionesLocalesBuscables": 440,
+    "edicionesLocalesConPasajes": 434,
+    "edicionesHTMLBuscablesPorPalabra": 6,
+    "edicionesR2IndexadasConSHA": 44,
+    "ultimaVerificacionR2": "2026-11-17T12:28:30.510Z",
+    "edicionesR2PendientesVerificacion": 0,
+    "edicionesOCRHistorico": 0,
+    "edicionesLocalesPendientes": 0
+  }
 }

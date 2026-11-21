@@ -1,10 +1,10 @@
 {
   "schema": "vdl-classics-unindexed-audit-v1",
   "method": "Registry versus lexical-index manifest and local filesystem; remote R2 URLs were not probed. Duplicated work/language registrations are combined. HTML word-gate editions are searchable by word but have no source-locus posting positions. Historical OCR is separately reported and never passed off as critical text. R2 remote editions are matched by work, language, exact URL, SHA256 and passage count against the last independently verified remote index manifest; this is not a fresh live probe. Vitruvius multilingual registry identities map through the index edition gate. The inverted index is root-based and is not morphological lemmatization.",
-  "registeredWorkLanguages": 461,
+  "registeredWorkLanguages": 486,
   "r2VerifiedAt": "2026-11-17T12:28:30.510Z",
   "counts": {
-    "indexed-local": 405,
+    "indexed-local": 430,
     "indexed-r2-last-verified": 44,
     "indexed-html-word-gate": 6,
     "indexed-in-critical-apparatus": 2,
