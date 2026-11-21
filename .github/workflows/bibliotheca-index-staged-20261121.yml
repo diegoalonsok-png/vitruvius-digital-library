@@ -36,10 +36,10 @@ jobs:
           node --input-type=module -e '
           import {readFileSync} from "node:fs";
           const m=JSON.parse(readFileSync("data/index/classics/manifest.json","utf8"));
-          for(const id of ["disticha-catonis","publilius-syrus-sententiae"]){
+          for(const id of ["disticha-catonis","publilius-syrus-sententiae","eutropius-breviarium","aurelius-victor-liber-caesaribus"]){
             if(m.index.filter(w=>w.id===id&&w.lang==="la").length!==1)throw Error("Missing or duplicate index: "+id);
           }
-          if(m.works<438)throw Error("Unexpected decrease in indexed versions: "+m.works);
+          if(m.works<440)throw Error("Unexpected decrease in indexed versions: "+m.works);
           console.log("Validated",m.works,"local indexed text versions");
           '
       - name: Test lexical search and concordances
