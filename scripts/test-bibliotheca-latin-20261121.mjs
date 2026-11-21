@@ -23,7 +23,7 @@ assert.ok(s.passages.every(p=>/^[A-Z]\.\d+$/.test(p.locus)));
 assert.equal(registry.count,registry.entries.length);
 const e=load("data/classics-corpus/eutropius-breviarium-la.json");
 const counts=[20,28,23,27,9,25,23,23,28,18];
-assert.equal(e.passages.filter(p=>/^\\d+\\.\\d+$/.test(p.locus)).length,224);
+assert.equal(e.passages.filter(p=>/^\d+\.\d+$/.test(p.locus)).length,224);
 assert.equal(e.passages.find(p=>p.locus==="praefatio")?.text?.length>200,true);
 for(let b=1;b<=counts.length;b++)for(let n=1;n<=counts[b-1];n++)assert.ok(e.passages.some(p=>p.locus===b+"."+n),"Missing Eutropius "+b+"."+n);
 assert.equal(e.sourceUrls.length,11,"preface plus ten individually referenced books");
