@@ -2,8 +2,8 @@
   "schema": "vitruvia-classics-search-registry-v1",
   "updated": "2026-11-21",
   "description": "Registro verificable de transcripciones HTML y textos JSON existentes que admiten búsqueda literal de contenido. No incluye automáticamente PDF escaneados, facsímiles ni fichas sin texto. Los índices auxiliares por locus y el aparato crítico se declaran por separado; no se suman a versiones textuales originales ni implican colación autóptica.",
-  "count": 482,
-  "works": 366,
+  "count": 483,
+  "works": 367,
   "entries": [
     {
       "workId": "aeneas-tacticus-poliorketika",
@@ -4164,6 +4164,16 @@
       "path": "data/classics-corpus/ptolemy-almagest-grc.json",
       "reader": "classics-text-reader.html?work=ptolemy-almagest&lang=grc",
       "sourceDescription": "OpenGreekAndLatin First1KGreek TEI · fuente editada documentada, sin colación automática"
+    },
+    {
+      "workId": "publilius-syrus-sententiae",
+      "author": "Publilio Siro",
+      "title": "Sententiae",
+      "language": "la",
+      "format": "json-passages",
+      "path": "data/classics-corpus/publilius-syrus-sententiae-la.json",
+      "reader": "classics-text-reader.html?work=publilius-syrus-sententiae&lang=la",
+      "sourceDescription": "Wikisource, transcripción histórica con edición de base por cotejar; sentencias ordenadas por letra, números internos no canónicos. Sin traducción alojada."
     },
     {
       "workId": "quintilian",
