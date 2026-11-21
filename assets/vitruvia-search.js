@@ -763,9 +763,11 @@ function considerFeatured(rows,query,fromFallback=false){
   const nameOnlyQuery=core.length>=2&&core.length<=4&&!FEATURE_TYPE.has(core[0]);
   const namedAfterPenalty=!exact&&nameOnlyQuery&&genericNamedEntity.test(title)?-180:0;
   const verifiedHumanBoost=r.entityKind==="person"&&r.wikidataId?450:0;
+  const primary=primaryAcademicSubject(query);
+  const academicPriority=primary&&[primary.title,primary.entityCanonical,...(primary.aliases||[])].filter(Boolean).map(norm).includes(title)?2500:0;
   const authorityBoost=r.preferredWiki&&r.wikidataId?300:0;
   const extraTitlePenalty=!exact&&nameOnlyQuery?Math.min(60,Math.max(0,titleTokens.length-core.length)*8):0;
-  const weight=(exact?160:0)+60*ratio+(inTitle?40*Math.min(1,inTitle/Math.max(1,core.length)):0)+(title.includes(q)&&q.length>2?70:0)+originBoost+namedAfterPenalty+verifiedHumanBoost+authorityBoost-extraTitlePenalty;
+  const weight=(exact?160:0)+60*ratio+(inTitle?40*Math.min(1,inTitle/Math.max(1,core.length)):0)+(title.includes(q)&&q.length>2?70:0)+originBoost+namedAfterPenalty+verifiedHumanBoost+authorityBoost+academicPriority-extraTitlePenalty;
   // Cobertura mínima: con varias palabras de tema, al menos tres cuartas partes deben estar en el
   // artículo y alguna en su título; con una sola, debe estar en el título.
   const covered=exact||(core.length<=1?inTitle>=1:(ratio>=0.75&&inTitle>=1));
@@ -1231,6 +1233,21 @@ function classicalSubjectRows(query){
   links:[{label:"Consultar biografía y fuentes",url:x.url}]
  }));
 }
+/* Indexado de relevancia: una autoridad clasica catalogada precede
+ * a homonimos externos; una coincidencia parcial no acredita identidad. */
+function historicalIdentityConflict(query,identity){
+ if(!identity||identity.kind!=="person")return false;
+ const records=[...classicalSubjectRows(query),...onomasticonSubjectRows(query)];
+ if(!records.length)return false;
+ const names=[identity.canonical,identity.catalogName,identity.originalCanonical,...(identity.aliases||[])].filter(Boolean).map(norm);
+ return !records.some(record=>{
+  const accepted=[record.title,record.entityCanonical,...(record.aliases||[])].filter(Boolean).map(norm);
+  return names.some(name=>accepted.includes(name));
+ });
+}
+function primaryAcademicSubject(query){
+ return classicalSubjectRows(query)[0]||onomasticonSubjectRows(query)[0]||null;
+}
 function rankedTitle(row,query){
  const q=norm(topicQuery(query)).replace(/^(?:biografia de|vida de|quien fue|quien es|who was|what is) /,"").trim();
  const title=norm(row.title||"");
@@ -1655,12 +1672,14 @@ async function search(){
  const earlyIdentity=!/[\u0370-\u03ff\u1f00-\u1fff]/.test(q)&&
   ["all","wiki","external","ai"].includes(S.mode)&&window.VitruviaEntityResolver?
   (expanded?window.VitruviaEntityResolver.resolve(q,S.lang):window.VitruviaEntityResolver.resolveFast(q,S.lang)).catch(()=>null):null;
- // Display the verified subject independently of six large local indices.
+ // Give the academically documented historical subject priority over fuzzy matches.
+ const academicPrimary=primaryAcademicSubject(q);
+ if(academicPrimary)applyFeatured(academicPrimary,9500,q,q);
  // The catalogue remains necessary for reading its actual manuscripts.
  let previewIdentity=null;
  if(earlyIdentity){
   earlyIdentity.then(identity=>{
-   if(!identity||id!==S.searchId||searchSignal.aborted)return;
+   if(!identity||id!==S.searchId||searchSignal.aborted||historicalIdentityConflict(q,identity))return;
    previewIdentity=identity;
    S.identifiedSubject=identity;
    const row=authorityResult(identity);
@@ -1800,7 +1819,7 @@ async function search(){
  // Wikipedia titles and redirects supply canonical names for external retrieval.
  if(window.VitruviaEntityResolver&&wikiEnabled){
   pending.push((earlyIdentity||window.VitruviaEntityResolver.resolve(q,S.lang)).then(identity=>{
-   if(!identity)return {name:"No se resolvió una entidad enciclopédica",rows:[]};
+   if(!identity||historicalIdentityConflict(q,identity))return {name:"Identidad externa no coincidente con el registro histórico",rows:[]};
    return {name:"Autoridad enciclopédica · "+identity.canonical,
     rows:[authorityResult(identity)],identity};
   }).catch(e=>({name:"Resolución de entidad no disponible",rows:[],warnings:[e.message]})));
@@ -1923,7 +1942,7 @@ async function search(){
  await Promise.all(pending.map(p=>p.then(value=>{
   if(id!==S.searchId)return;
   const incoming=value.rows||[];
-  if(value.identity){
+  if(value.identity&&!historicalIdentityConflict(q,value.identity)){
    S.identifiedSubject=value.identity;
    if(window.VitruviaContextGuard?.isModernIdentity(value.identity)&&
       !window.VitruviaContextGuard.explicitAncientContext(q,value.identity))restoreFeature();
