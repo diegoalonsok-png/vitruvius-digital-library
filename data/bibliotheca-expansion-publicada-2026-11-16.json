@@ -143,6 +143,36 @@
       ]
     },
     {
+      "id": "aurelius-victor-liber-caesaribus",
+      "author": "Sexto Aurelio Víctor",
+      "title": "Liber de Caesaribus",
+      "language": "la",
+      "genre": "Historia romana",
+      "dating": "c. 358–360 d. C.",
+      "status": "Texto latino incorporado a rama en revisión; fuente digital verificada, cotejo editorial pendiente",
+      "textStatus": "full-text-file-provisional; lexical index rebuild pending",
+      "source": "Wikisource; edición de base no identificada",
+      "sourceUrl": "https://la.wikisource.org/wiki/Liber_de_Caesaribus",
+      "corpusFiles": {
+        "la": "data/classics-corpus/aurelius-victor-liber-caesaribus-la.json"
+      },
+      "description": "Texto de lectura provisional, 42 capítulos presentes; ausencia de cotejo con edición crítica moderna. Los números internos de parágrafo se preservan literalmente en cada capítulo, pero solo se indexan loci de capítulo.",
+      "publicStatus": "propuesta-en-rama-no-publicada",
+      "localVersions": [
+        {
+          "language": "la",
+          "path": "data/classics-corpus/aurelius-victor-liber-caesaribus-la.json"
+        }
+      ],
+      "reading": {
+        "url": "classics-text-reader.html?work=aurelius-victor-liber-caesaribus&lang=la",
+        "status": "Pendiente verificación pública tras indexación y despliegue"
+      },
+      "localEditionLanguages": [
+        "la"
+      ]
+    },
+    {
       "id": "callimachus-hymni",
       "author": "Calímaco",
       "title": "Ὕμνοι · Himnos",
@@ -660,6 +690,36 @@
       "localEditionLanguages": [
         "en",
         "grc"
+      ]
+    },
+    {
+      "id": "eutropius-breviarium",
+      "author": "Eutropio",
+      "title": "Breviarium historiae romanae",
+      "language": "la",
+      "genre": "Historia romana",
+      "dating": "c. 369–370 d. C.",
+      "status": "Texto latino incorporado a rama en revisión; fuente digital verificada, cotejo editorial pendiente",
+      "textStatus": "full-text-file-provisional; lexical index rebuild pending",
+      "source": "Wikisource; edición de base no identificada",
+      "sourceUrl": "https://la.wikisource.org/wiki/Breviarium_historiae_romanae",
+      "corpusFiles": {
+        "la": "data/classics-corpus/eutropius-breviarium-la.json"
+      },
+      "description": "Texto latino provisional extraído de diez páginas Wikisource, capítulos numerados conservados; sin cotejo crítico con edición impresa ni garantía de aparato editorial.",
+      "publicStatus": "propuesta-en-rama-no-publicada",
+      "localVersions": [
+        {
+          "language": "la",
+          "path": "data/classics-corpus/eutropius-breviarium-la.json"
+        }
+      ],
+      "reading": {
+        "url": "classics-text-reader.html?work=eutropius-breviarium&lang=la",
+        "status": "Pendiente verificación pública tras indexación y despliegue"
+      },
+      "localEditionLanguages": [
+        "la"
       ]
     },
     {
