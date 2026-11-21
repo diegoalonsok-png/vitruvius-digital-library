@@ -185,7 +185,7 @@ function init(){
  document.querySelectorAll("[data-vdl-works-explorer]").forEach(mount);
  // This number is computed from BOTH the source registry and the published
  // inverted lexical index; never infer it from the number of catalogue cards.
- const display=document.querySelector('[data-cifra="obrasConTextoIndexado"]');
+ const display=document.querySelector('[data-cifra="obrasTotalesDeclaradas"], [data-cifra="obrasConTextoIndexado"]');
  if(display){
   const refresh=()=>fetch(TOTALS_URL,{cache:"no-cache"}).then(response=>{
    if(!response.ok)throw Error("Cifras: HTTP "+response.status);
@@ -197,12 +197,12 @@ function init(){
    display.textContent=new Intl.NumberFormat("es-AR").format(all);
    display.title="Obras únicas catalogadas: repertorio principal, suplementarias y adicionales. Fecha del inventario: "+(totals.actualizado||"no informada");
    const label=display.nextElementSibling;
-   if(label)label.textContent="obras catalogadas";
+   if(label)label.textContent="obras clásicas catalogadas";
    const badge=display.closest(".vdl-indexed-feature");
    if(badge){
     let extra=badge.querySelector(".vdl-works-indexed-subcount");
     if(!extra){extra=document.createElement("small");extra.className="vdl-works-indexed-subcount";extra.style.cssText="display:block;font:12px/1.4 system-ui,sans-serif;color:inherit";badge.append(extra)}
-    extra.textContent=new Intl.NumberFormat("es-AR").format(indexed)+" con texto indexado";
+    extra.textContent=new Intl.NumberFormat("es-AR").format(indexed)+" con original indexado";
    }
   }).catch(()=>{
    display.textContent="—";
