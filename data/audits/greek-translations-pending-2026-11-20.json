@@ -6,10 +6,10 @@
   "method": "Greek workId with grc entry and no en/fr/es under that exact workId in the search registry. Not proof that translation is absent in R2 or alternate IDs; verify before import. Eusebius translation subsequently indexed in GitHub on 2026-11-20; remaining list excludes it.",
   "counts": {
     "greekWorkIds": 266,
-    "missingTranslationInSearchRegistry": 176,
-    "sourceCandidatesIdentified": 5,
-    "importedInThisAudit": 2,
-    "indexedInThisAudit": 2
+    "missingTranslationInSearchRegistry": 175,
+    "sourceCandidatesIdentified": 4,
+    "importedInThisAudit": 3,
+    "indexedInThisAudit": 3
   },
   "editorialRules": [
     "Never duplicate a workId or count translations as distinct works.",
@@ -283,29 +283,6 @@
       "sourceIdentification": "pending",
       "importStatus": "not_imported",
       "indexStatus": "not_indexed"
-    },
-    {
-      "workId": "aristoteles-del-cielo",
-      "author": "Aristóteles",
-      "title": "Περὶ οὐρανοῦ · De caelo",
-      "originalRegistered": "https://libros.vitruvius-digital-library.org/corpus/aristoteles-del-cielo-grc.json",
-      "existingLanguages": [
-        "grc"
-      ],
-      "translationRegistryStatus": "no_en_fr_es_under_same_workId",
-      "r2Crosscheck": "pending",
-      "sourceIdentification": "pending",
-      "importStatus": "not_imported",
-      "indexStatus": "not_indexed",
-      "translationCandidate": {
-        "translator": "J. L. Stocks",
-        "year": 1922,
-        "language": "en",
-        "url": "https://classics.mit.edu/Aristotle/heavens.html",
-        "source": "MIT Internet Classics Archive",
-        "status": "human_translation_located_not_integrated",
-        "notes": "Verify no equivalent existing version under another ID or R2 object and check reuse rights and book/section segmentation."
-      }
     },
     {
       "workId": "aristoteles-historia-animales",
@@ -2554,6 +2531,19 @@
       "r2Mirrored": "not_verified",
       "publicReaderTested": false,
       "alignmentStatus": "unaligned"
+    },
+    {
+      "workId": "aristoteles-del-cielo",
+      "language": "en",
+      "translator": "J. L. Stocks",
+      "source": "Wikisource (1922 translation)",
+      "path": "data/classics-corpus/aristoteles-del-cielo-en.json",
+      "passages": 40,
+      "indexedInSearchRegistry": true,
+      "gitHubPublished": true,
+      "r2Mirrored": "not_verified",
+      "publicReaderTested": false,
+      "textCompleteness": "caution_possible_book_I_lacuna"
     }
   ]
 }
