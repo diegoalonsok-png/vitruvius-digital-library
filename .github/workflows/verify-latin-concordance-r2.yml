@@ -1,0 +1,51 @@
+name: Verificar textos latinos Krohn y Rose en R2
+on:
+  push:
+    paths:
+      - '.github/workflows/verify-latin-concordance-r2.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  indexed-latin:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install --disable-pip-version-check boto3
+      - name: Localizar únicamente índices latinos independientes
+        env:
+          R2_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
+          R2_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
+        run: |
+          python - <<'PY'
+          import boto3,os,json,hashlib,pathlib
+          out=pathlib.Path('/tmp/latin-r2-verification');out.mkdir()
+          s3=boto3.client('s3',endpoint_url='https://4e936bf2c4f185a87075ca506de93e69.r2.cloudflarestorage.com',aws_access_key_id=os.environ['R2_ACCESS_KEY_ID'],aws_secret_access_key=os.environ['R2_SECRET_ACCESS_KEY'],region_name='auto')
+          bucket='vitruvius-bibliotheca'
+          report={'bucket':bucket,'matching_keys':[],'valid_sources':[]}
+          for page in s3.get_paginator('list_objects_v2').paginate(Bucket=bucket):
+            for item in page.get('Contents',[]):
+              key=item['Key'];low=key.lower()
+              if not any(n in low for n in ('krohn','rose')) or not low.endswith(('.json','.xml','.txt')):continue
+              report['matching_keys'].append({'key':key,'bytes':item['Size'],'modified':item['LastModified'].isoformat()})
+              if not low.endswith('.json') or item['Size']>18000000:continue
+              try:
+                raw=s3.get_object(Bucket=bucket,Key=key)['Body'].read();doc=json.loads(raw);rows=doc.get('passages',[])
+                edition=doc.get('edition','')
+                if edition not in ('krohn-1912','rose-1899') or len(rows)!=731 or len({r.get('locus') for r in rows})!=731 or not all(r.get('latin') for r in rows):continue
+                record={'edition':edition,'key':key,'url':'https://libros.vitruvius-digital-library.org/'+key,'sha256':hashlib.sha256(raw).hexdigest(),'bytes':len(raw),'modified':item['LastModified'].isoformat(),'provenance':doc.get('provenance',{}),'summary':doc.get('summary',{})}
+                report['valid_sources'].append(record)
+                (out/(edition+'.json')).write_bytes(raw)
+              except (ValueError,TypeError,AttributeError):pass
+          (out/'report.json').write_text(json.dumps(report,ensure_ascii=False,indent=2))
+          print(json.dumps(report,ensure_ascii=False,indent=2))
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: latin-r2-verification
+          path: /tmp/latin-r2-verification
+          if-no-files-found: error
