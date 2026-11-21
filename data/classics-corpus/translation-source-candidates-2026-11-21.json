@@ -48,6 +48,17 @@
       "textFormat": "Online books, incomplete across entire work",
       "locusPlan": "Import only verified available books; don't count as complete translation or infer section alignment.",
       "status": "verified-bibliographic-source-not-imported"
+    },
+    {
+      "workId": "procopius-aedificiis",
+      "language": "en",
+      "translator": "H. B. Dewing, with Glanville Downey",
+      "work": "Buildings (De aedificiis), Loeb Classical Library volume VII (1940)",
+      "sourceUrl": "https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Procopius/Buildings/home.html",
+      "rightsEvidence": "Hosting site describes the English translation as US public domain; confirm rights and reuse conditions for both Greek and English texts before R2 ingestion.",
+      "textFormat": "Section-level HTML transcription of Greek original and English translation",
+      "locusPlan": "Verify book/chapter/section references against the source edition; do not count as indexed or R2-held until full checks pass.",
+      "status": "verified-bibliographic-source-not-imported"
     }
   ],
   "publicationPolicy": "Place complete works, translations, and large lexical indexes only in Cloudflare R2. GitHub only stores lightweight bibliographic metadata. Do not mark translations as indexed until source ingestion, SHA verification, index generation, viewer tests and R2 presence checks pass."
