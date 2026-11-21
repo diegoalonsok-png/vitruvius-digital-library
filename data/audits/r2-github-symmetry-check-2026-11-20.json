@@ -4,35 +4,49 @@
   "scope": "GitHub search-registry vs declared R2 paths; not a live R2 object inventory",
   "registry": "data/classics-corpus/search-registry.json",
   "counts": {
-    "registeredVersions": 477,
+    "registeredVersions": 478,
     "distinctWorks": 365,
-    "githubLocalPathEntries": 427,
+    "githubLocalPathEntries": 428,
     "registeredRemoteR2Entries": 44,
     "otherPathEntries": 6,
     "duplicateWorkLanguageKeys": 0,
-    "pendingGreekTranslations": 177
+    "pendingGreekTranslations": 176
   },
   "duplicateKeys": [],
   "referenceR2Domain": "https://libros.vitruvius-digital-library.org",
   "r2LiveHttpStatus": "not_verified_external_access_unavailable",
   "r2ObjectsChecksums": "not_checked",
   "githubConfirmedSample": {
-    "path": "data/classics-corpus/eusebio-en.json",
+    "path": "data/classics-corpus/apolonio-argonauticas-en.json",
     "language": "en",
-    "passages": 254,
-    "uniqueLoci": 254,
+    "passages": 426,
     "registryEntryPresent": true
   },
   "knownRisks": [
     "Search registry stores only selected R2 references, not a complete R2 inventory.",
     "R2 URI registration does not confirm that the object exists or matches GitHub.",
     "No R2 credentials or authenticated listing available in this task; live HTTP requests did not succeed.",
-    "Do not merge or delete any object on the strength of this metadata-only check."
+    "Do not merge or delete any object on the strength of this metadata-only check.",
+    "Latest translation file exists on GitHub main but the public GitHub Pages URL served HTML rather than JSON in direct content fetch; public reader not yet verified."
   ],
   "nextVerification": [
     "List R2 bucket keys and sha256/etag for each referenced object.",
     "Compare GitHub SHA256/content digests with the corresponding R2 objects where both copies exist.",
     "Check registered URLs via HTTP 200 and parse valid JSON passages.",
     "Reconcile version registry, catalogue totals, and translation gaps after confirming live existence."
+  ],
+  "followupChecks": [
+    {
+      "checkedAt": "2026-11-20",
+      "url": "https://libros.vitruvius-digital-library.org/corpus/apolonio-argonauticas-grc.json",
+      "result": "HTTP content returned via public content fetch; structured JSON with grc workId observed",
+      "integrity": "full checksum and inventory parity not verified"
+    },
+    {
+      "checkedAt": "2026-11-20",
+      "url": "https://vitruvius-digital-library.org/data/classics-corpus/apolonio-argonauticas-en.json",
+      "result": "Public fetch returned site's HTML text rather than expected JSON, possibly deployment pending/fallback rewrite",
+      "integrity": "not publicly verified; must check deployment before claiming reader availability"
+    }
   ]
 }
