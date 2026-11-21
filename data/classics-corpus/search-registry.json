@@ -2,7 +2,7 @@
   "schema": "vitruvia-classics-search-registry-v1",
   "updated": "2026-11-20",
   "description": "Registro verificable de transcripciones HTML y textos JSON existentes que admiten búsqueda literal de contenido. No incluye automáticamente PDF escaneados, facsímiles ni fichas sin texto. Los índices auxiliares por locus y el aparato crítico se declaran por separado; no se suman a versiones textuales originales ni implican colación autóptica.",
-  "count": 478,
+  "count": 479,
   "works": 365,
   "entries": [
     {
@@ -409,6 +409,16 @@
       "path": "data/classics-corpus/aristophanes-vespae-grc.json",
       "reader": "classics-text-reader.html?work=aristophanes-vespae&lang=grc",
       "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
+      "workId": "aristoteles-del-cielo",
+      "author": "Aristóteles",
+      "title": "Περὶ οὐρανοῦ · De caelo",
+      "language": "en",
+      "format": "json-passages",
+      "path": "data/classics-corpus/aristoteles-del-cielo-en.json",
+      "reader": "classics-text-reader.html?work=aristoteles-del-cielo&lang=en",
+      "sourceDescription": "Traducción inglesa de J. L. Stocks (1922), Wikisource; 40 secciones en cuatro libros; posible interrupción al final del libro I, sin colación griego-inglés."
     },
     {
       "workId": "aristoteles-del-cielo",
