@@ -3,13 +3,13 @@
   "checkedAt": "2026-11-20",
   "registryPath": "data/classics-corpus/search-registry.json",
   "registryUpdated": "2026-11-20",
-  "method": "Greek workId with grc entry and no en/fr/es under that exact workId in the search registry. Not proof that translation is absent in R2 or alternate IDs; verify before import.",
+  "method": "Greek workId with grc entry and no en/fr/es under that exact workId in the search registry. Not proof that translation is absent in R2 or alternate IDs; verify before import. Eusebius translation subsequently indexed in GitHub on 2026-11-20; remaining list excludes it.",
   "counts": {
     "greekWorkIds": 266,
-    "missingTranslationInSearchRegistry": 178,
+    "missingTranslationInSearchRegistry": 177,
     "sourceCandidatesIdentified": 6,
-    "importedInThisAudit": 0,
-    "indexedInThisAudit": 0
+    "importedInThisAudit": 1,
+    "indexedInThisAudit": 1
   },
   "editorialRules": [
     "Never duplicate a workId or count translations as distinct works.",
@@ -708,20 +708,6 @@
       "author": "Euclides",
       "title": "Φαινόμενα · Phaenomena y escritos musicales",
       "originalRegistered": "https://libros.vitruvius-digital-library.org/corpus/euclid-phaenomena-grc-4e4a3c1b1b3eda93.json",
-      "existingLanguages": [
-        "grc"
-      ],
-      "translationRegistryStatus": "no_en_fr_es_under_same_workId",
-      "r2Crosscheck": "pending",
-      "sourceIdentification": "pending",
-      "importStatus": "not_imported",
-      "indexStatus": "not_indexed"
-    },
-    {
-      "workId": "eusebio",
-      "author": "Eusebio de Cesarea",
-      "title": "Ἐκκλησιαστικὴ ἱστορία · Historia eclesiástica",
-      "originalRegistered": "data/classics-corpus/eusebio-grc.json",
       "existingLanguages": [
         "grc"
       ],
@@ -2564,6 +2550,20 @@
       "sourceIdentification": "pending",
       "importStatus": "not_imported",
       "indexStatus": "not_indexed"
+    }
+  ],
+  "completed": [
+    {
+      "workId": "eusebio",
+      "language": "en",
+      "translator": "Kirsopp Lake; J. E. L. Oulton",
+      "source": "OpenGreekAndLatin TEI (CC BY-SA 4.0)",
+      "path": "data/classics-corpus/eusebio-en.json",
+      "passages": 254,
+      "indexedInSearchRegistry": true,
+      "gitHubPublished": true,
+      "r2Mirrored": "not_verified",
+      "publicReaderTested": false
     }
   ]
 }
