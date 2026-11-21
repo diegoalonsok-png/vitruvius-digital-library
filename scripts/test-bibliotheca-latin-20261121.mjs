@@ -3,7 +3,7 @@ import {readFileSync} from "node:fs";
 const load=p=>JSON.parse(readFileSync(p,"utf8"));
 const registry=load("data/classics-corpus/search-registry.json");
 const catalogue=load("data/bibliotheca-expansion-publicada-2026-11-16.json");
-for(const [id,n] of [["disticha-catonis",205],["publilius-syrus-sententiae",733]]){
+for(const [id,n] of [["disticha-catonis",205],["publilius-syrus-sententiae",733],["eutropius-breviarium",225],["aurelius-victor-liber-caesaribus",42]]){
  const filename="data/classics-corpus/"+id+"-la.json",data=load(filename);
  assert.equal(data.workId,id);assert.equal(data.language,"la");assert.equal(data.passages.length,n);
  assert.equal(new Set(data.passages.map(p=>p.locus)).size,n,"unique loci");
@@ -21,4 +21,12 @@ assert.match(d.passages.find(p=>p.locus==="4.9").text,/Quod tibi suspectum est/)
 const s=load("data/classics-corpus/publilius-syrus-sententiae-la.json");
 assert.ok(s.passages.every(p=>/^[A-Z]\.\d+$/.test(p.locus)));
 assert.equal(registry.count,registry.entries.length);
-console.log("PASS: two Latin texts, internal segmentation, catalogue and reader routes; lexical/vector indexes and live R2 not covered.");
+const e=load("data/classics-corpus/eutropius-breviarium-la.json");
+const counts=[20,28,23,27,9,25,23,23,28,18];
+assert.equal(e.passages.filter(p=>/^\\d+\\.\\d+$/.test(p.locus)).length,224);
+assert.equal(e.passages.find(p=>p.locus==="praefatio")?.text?.length>200,true);
+for(let b=1;b<=counts.length;b++)for(let n=1;n<=counts[b-1];n++)assert.ok(e.passages.some(p=>p.locus===b+"."+n),"Missing Eutropius "+b+"."+n);
+assert.equal(e.sourceUrls.length,11,"preface plus ten individually referenced books");
+const v=load("data/classics-corpus/aurelius-victor-liber-caesaribus-la.json");
+for(let n=1;n<=42;n++)assert.ok(v.passages.some(p=>p.locus===String(n)),"Missing Aurelius Victor chapter "+n);
+console.log("PASS: four provisional Latin texts, unique loci, full Eutropius structure, catalogue records and reader URL declarations. Live reader, full textual collation, semantic vectors and R2 not covered.");
