@@ -1,0 +1,88 @@
+{
+  "schema": "vdl-classics-acquisition-candidates-v1",
+  "date": "2026-11-21",
+  "status": "candidate-only-not-ingested",
+  "storageRule": "Full original, human translation, and index objects must be stored only in Cloudflare R2. No library totals increase until verified upload, indexing and viewer checks.",
+  "verification": "Compared author/title/IDs against roadmap, supplementary catalogue, federated inventory, search registry, and R2 facsimile metadata in GitHub. Does not prove physical absence from R2; head/hash checks required before upload.",
+  "candidates": [
+    {
+      "id": "valerius-maximus-facta-dicta",
+      "author": "Valerius Maximus",
+      "title": "Factorum et dictorum memorabilium libri IX",
+      "originalLanguage": "la",
+      "sourceUrl": "https://catalog.perseus.tufts.edu/catalog/urn:cts:latinLit:phi1038.phi001.perseus-lat1",
+      "cts": "urn:cts:latinLit:phi1038.phi001.perseus-lat1",
+      "currentRepositoryStatus": "No matching work found under checked author/title aliases",
+      "nextSteps": [
+        "Check live R2 by key, title and content SHA256",
+        "Check edition licensing and full readable source",
+        "If genuinely absent, ingest full text to R2 only",
+        "Index passages and attach edition bibliographic metadata",
+        "Verify parallel translation only if missing and licensed",
+        "Publish catalogue and test search/reader"
+      ]
+    },
+    {
+      "id": "pomponius-mela-chorographia",
+      "author": "Pomponius Mela",
+      "title": "De chorographia",
+      "originalLanguage": "la",
+      "sourceUrl": "https://catalog.perseus.tufts.edu/catalog/urn:cts:latinLit:phi0929.phi001",
+      "cts": "urn:cts:latinLit:phi0929.phi001",
+      "currentRepositoryStatus": "No matching work found under checked author/title aliases",
+      "nextSteps": [
+        "Check live R2 by key, title and content SHA256",
+        "Check edition licensing and full readable source",
+        "If genuinely absent, ingest full text to R2 only",
+        "Index passages and attach edition bibliographic metadata",
+        "Verify parallel translation only if missing and licensed",
+        "Publish catalogue and test search/reader"
+      ]
+    },
+    {
+      "id": "heliodorus-aethiopica",
+      "author": "Heliodorus of Emesa",
+      "title": "Aethiopica",
+      "originalLanguage": "grc",
+      "sourceUrl": "https://catalog.perseus.org/catalog/urn:cts:greekLit:tlg0658.tlg001",
+      "cts": "urn:cts:greekLit:tlg0658.tlg001",
+      "currentRepositoryStatus": "No matching work found under checked author/title aliases",
+      "nextSteps": [
+        "Check live R2 by key, title and content SHA256",
+        "Check edition licensing and full readable source",
+        "If genuinely absent, ingest full text to R2 only",
+        "Index passages and attach edition bibliographic metadata",
+        "Verify parallel translation only if missing and licensed",
+        "Publish catalogue and test search/reader"
+      ]
+    }
+  ],
+  "excludedPotentialDuplicates": [
+    {
+      "candidate": "Daphnis et Chloe",
+      "existingIds": [
+        "longo-dafnis-cloe",
+        "longo-dafnis-es"
+      ]
+    },
+    {
+      "candidate": "Leucippe et Clitophon",
+      "existingIds": [
+        "aquiles-tacio-leucipa"
+      ]
+    },
+    {
+      "candidate": "Noctes Atticae",
+      "existingIds": [
+        "aulus-gellius-noctes",
+        "aulo-gelio-noches"
+      ]
+    },
+    {
+      "candidate": "Octavius",
+      "existingIds": [
+        "minucio-felix-octavio"
+      ]
+    }
+  ]
+}
