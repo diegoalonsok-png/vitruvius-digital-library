@@ -1,0 +1,54 @@
+{
+  "schema": "vdl-translation-source-candidates-v1",
+  "reviewedAt": "2026-11-21",
+  "scope": "Human English translations for Greek works flagged without a registered translation; bibliography only, not indexed texts or live R2 verification.",
+  "priority": "en-fr-es",
+  "status": "source-located-not-ingested",
+  "candidates": [
+    {
+      "workId": "josephus-war",
+      "language": "en",
+      "translator": "William Whiston",
+      "work": "The Wars of the Jews",
+      "sourceUrl": "https://www.gutenberg.org/ebooks/2850",
+      "rightsEvidence": "Project Gutenberg labels public domain in USA; check relevant redistribution jurisdiction and Gutenberg terms.",
+      "textFormat": "Gutenberg downloadable eBook",
+      "locusPlan": "Compare book/chapter/section numbering to registered Greek edition; do not automatically align without validation.",
+      "status": "verified-bibliographic-source-not-imported"
+    },
+    {
+      "workId": "josephus-antiquities",
+      "language": "en",
+      "translator": "William Whiston",
+      "work": "Antiquities of the Jews",
+      "sourceUrl": "https://www.gutenberg.org/ebooks/2848",
+      "rightsEvidence": "Project Gutenberg labels public domain in USA; check relevant redistribution jurisdiction and Gutenberg terms.",
+      "textFormat": "Gutenberg downloadable eBook",
+      "locusPlan": "Compare book/chapter/section numbering to registered Greek edition.",
+      "status": "verified-bibliographic-source-not-imported"
+    },
+    {
+      "workId": "strabo",
+      "language": "en",
+      "translator": "Horace Leonard Jones",
+      "work": "Geography",
+      "sourceUrl": "https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Strabo/home.html",
+      "rightsEvidence": "Hosting site states the displayed text is public domain; confirm transcription/source reuse conditions.",
+      "textFormat": "Online sections",
+      "locusPlan": "Check coverage and canonical book/section identifiers; source is already suggested in older translation audit.",
+      "status": "verified-bibliographic-source-not-imported"
+    },
+    {
+      "workId": "diodorus",
+      "language": "en",
+      "translator": "Charles Henry Oldfather and other historical translators",
+      "work": "Library of History",
+      "sourceUrl": "https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Diodorus_Siculus/home.html",
+      "rightsEvidence": "Mixed volumes and translator dates; check rights volume by volume before import.",
+      "textFormat": "Online books, incomplete across entire work",
+      "locusPlan": "Import only verified available books; don't count as complete translation or infer section alignment.",
+      "status": "verified-bibliographic-source-not-imported"
+    }
+  ],
+  "publicationPolicy": "Place complete works, translations, and large lexical indexes only in Cloudflare R2. GitHub only stores lightweight bibliographic metadata. Do not mark translations as indexed until source ingestion, SHA verification, index generation, viewer tests and R2 presence checks pass."
+}
