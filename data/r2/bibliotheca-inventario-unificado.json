@@ -1,6 +1,6 @@
 {
   "schema": "vdl-federated-bibliotheca-inventory-v1",
-  "generated": "2026-11-20T12:41:49.053363+00:00",
+  "generated": "2026-11-21T12:23:17.806208+00:00",
   "method": "Master works and additional R2 works counted separately; edition relations can be many-to-many. Remote text URLs are declared, not live-verified. Unresolved editions are never merged automatically.",
   "counts": {
     "cataloguedWorks": 271,
@@ -13,7 +13,7 @@
     "r2AdditionalEditionRecords": 10,
     "r2UnlinkedEditionRecords": 0,
     "worksWithR2Edition": 114,
-    "worksWithLocalIndexedText": 310,
+    "worksWithLocalIndexedText": 321,
     "worksWithDeclaredRemoteIndex": 44
   },
   "unlinkedR2EditionIds": [],
@@ -2512,7 +2512,12 @@
       "author": "Séneca",
       "title": "Naturales quaestiones",
       "catalogue": "github",
-      "locallyIndexedText": [],
+      "locallyIndexedText": [
+        {
+          "language": "la",
+          "path": "data/classics-corpus/seneca-naturales-la.json"
+        }
+      ],
       "declaredRemoteIndexedText": [],
       "r2FacsimileEditions": []
     },
@@ -2932,6 +2937,10 @@
       "title": "Ἐκκλησιαστικὴ ἱστορία · Historia eclesiástica",
       "catalogue": "github",
       "locallyIndexedText": [
+        {
+          "language": "en",
+          "path": "data/classics-corpus/eusebio-en.json"
+        },
         {
           "language": "grc",
           "path": "data/classics-corpus/eusebio-grc.json"
@@ -3604,7 +3613,12 @@
       "author": "Veleyo Patérculo",
       "title": "Historia Romana",
       "catalogue": "github",
-      "locallyIndexedText": [],
+      "locallyIndexedText": [
+        {
+          "language": "la",
+          "path": "data/classics-corpus/velleius-historia-la.json"
+        }
+      ],
       "declaredRemoteIndexedText": [],
       "r2FacsimileEditions": []
     },
@@ -4686,6 +4700,10 @@
       "catalogue": "github",
       "locallyIndexedText": [
         {
+          "language": "en",
+          "path": "data/classics-corpus/aristophanes-lysistrata-en.json"
+        },
+        {
           "language": "grc",
           "path": "data/classics-corpus/aristophanes-lysistrata-grc.json"
         }
@@ -4738,6 +4756,10 @@
       "title": "Ἀχαρνῆς",
       "catalogue": "github",
       "locallyIndexedText": [
+        {
+          "language": "en",
+          "path": "data/classics-corpus/aristophanes-acharnenses-en.json"
+        },
         {
           "language": "grc",
           "path": "data/classics-corpus/aristophanes-acharnenses-grc.json"
@@ -5410,7 +5432,12 @@
       "author": "Séneca",
       "title": "De ira",
       "catalogue": "github",
-      "locallyIndexedText": [],
+      "locallyIndexedText": [
+        {
+          "language": "la",
+          "path": "data/classics-corpus/seneca-de-ira-la.json"
+        }
+      ],
       "declaredRemoteIndexedText": [],
       "r2FacsimileEditions": []
     },
@@ -5433,7 +5460,12 @@
       "author": "Séneca",
       "title": "De tranquillitate animi",
       "catalogue": "github",
-      "locallyIndexedText": [],
+      "locallyIndexedText": [
+        {
+          "language": "la",
+          "path": "data/classics-corpus/seneca-de-tranquillitate-la.json"
+        }
+      ],
       "declaredRemoteIndexedText": [],
       "r2FacsimileEditions": []
     },
@@ -5646,7 +5678,12 @@
       "author": "Macrobio",
       "title": "Saturnalia",
       "catalogue": "github",
-      "locallyIndexedText": [],
+      "locallyIndexedText": [
+        {
+          "language": "la",
+          "path": "data/classics-corpus/macrobius-saturnalia-la.json"
+        }
+      ],
       "declaredRemoteIndexedText": [],
       "r2FacsimileEditions": []
     },
@@ -5740,7 +5777,12 @@
       "author": "Ennio",
       "title": "Annales (fragmenta)",
       "catalogue": "github",
-      "locallyIndexedText": [],
+      "locallyIndexedText": [
+        {
+          "language": "la",
+          "path": "data/classics-corpus/ennius-annales-la.json"
+        }
+      ],
       "declaredRemoteIndexedText": [],
       "r2FacsimileEditions": []
     },
@@ -5806,7 +5848,12 @@
       "author": "Isidoro de Sevilla",
       "title": "Etymologiae",
       "catalogue": "github",
-      "locallyIndexedText": [],
+      "locallyIndexedText": [
+        {
+          "language": "la",
+          "path": "data/classics-corpus/isidore-etymologiae-la.json"
+        }
+      ],
       "declaredRemoteIndexedText": [],
       "r2FacsimileEditions": []
     },
@@ -6040,7 +6087,12 @@
       "author": "Frontino",
       "title": "Opuscula gromatica (De agrorum qualitate, De controversiis, De limitibus)",
       "catalogue": "github",
-      "locallyIndexedText": [],
+      "locallyIndexedText": [
+        {
+          "language": "la",
+          "path": "data/classics-corpus/frontinus-gromatica-la.json"
+        }
+      ],
       "declaredRemoteIndexedText": [],
       "r2FacsimileEditions": []
     },
@@ -6049,7 +6101,12 @@
       "author": "Sículo Flaco",
       "title": "De condicionibus agrorum",
       "catalogue": "github",
-      "locallyIndexedText": [],
+      "locallyIndexedText": [
+        {
+          "language": "la",
+          "path": "data/classics-corpus/siculus-flaccus-la.json"
+        }
+      ],
       "declaredRemoteIndexedText": [],
       "r2FacsimileEditions": []
     },
@@ -6076,7 +6133,12 @@
       "author": "Apolonio de Rodas",
       "title": "Ἀργοναυτικά · Argonautica",
       "catalogue": "github",
-      "locallyIndexedText": [],
+      "locallyIndexedText": [
+        {
+          "language": "en",
+          "path": "data/classics-corpus/apolonio-argonauticas-en.json"
+        }
+      ],
       "declaredRemoteIndexedText": [
         {
           "language": "grc",
@@ -6251,7 +6313,12 @@
       "author": "Aristóteles",
       "title": "Περὶ οὐρανοῦ · De caelo",
       "catalogue": "github",
-      "locallyIndexedText": [],
+      "locallyIndexedText": [
+        {
+          "language": "en",
+          "path": "data/classics-corpus/aristoteles-del-cielo-en.json"
+        }
+      ],
       "declaredRemoteIndexedText": [
         {
           "language": "grc",
