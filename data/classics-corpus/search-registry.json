@@ -2,7 +2,7 @@
   "schema": "vitruvia-classics-search-registry-v1",
   "updated": "2026-11-20",
   "description": "Registro verificable de transcripciones HTML y textos JSON existentes que admiten búsqueda literal de contenido. No incluye automáticamente PDF escaneados, facsímiles ni fichas sin texto. Los índices auxiliares por locus y el aparato crítico se declaran por separado; no se suman a versiones textuales originales ni implican colación autóptica.",
-  "count": 476,
+  "count": 477,
   "works": 365,
   "entries": [
     {
@@ -1536,6 +1536,16 @@
       "path": "data/classics-corpus/euripides-troades-grc.json",
       "reader": "classics-text-reader.html?work=euripides-troades&lang=grc",
       "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
+      "workId": "eusebio",
+      "author": "Eusebio de Cesarea",
+      "title": "Ἐκκλησιαστικὴ ἱστορία · Historia eclesiástica",
+      "language": "en",
+      "format": "json-passages",
+      "path": "data/classics-corpus/eusebio-en.json",
+      "reader": "classics-text-reader.html?work=eusebio&lang=en",
+      "sourceDescription": "Kirsopp Lake y J. E. L. Oulton, traducción inglesa histórica (1926–1932); TEI OpenGreekAndLatin / University of Leipzig, CC BY-SA 4.0; 254 pasajes por libro y capítulo, sin cotejo ni alineación independiente."
     },
     {
       "workId": "eusebio",
