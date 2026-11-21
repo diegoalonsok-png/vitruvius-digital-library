@@ -1,0 +1,27 @@
+name: Concordancia latina indexada · Krohn y Rose
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'concordancia-historica.html'
+      - 'assets/concordancia-latina*'
+      - 'data/critical-editions/*.json'
+      - 'data/lexicon/conceptus.json'
+      - 'data/latin-lexicon.json'
+      - 'scripts/test-concordancia-latina.mjs'
+      - '.github/workflows/latin-concordance.yml'
+permissions:
+  contents: read
+jobs:
+  indexed-latin:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - run: npm install --ignore-scripts --no-audit --no-fund
+      - run: node scripts/test-concordancia-latina.mjs
+      - run: node scripts/test-concordancia-estudio.mjs

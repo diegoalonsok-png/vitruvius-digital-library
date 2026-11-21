@@ -1,0 +1,28 @@
+{
+  "schema": "vdl-latin-concordance-r2-v1",
+  "editions": [
+    {
+      "edition": "krohn-1912",
+      "editor": "Fritz Krohn",
+      "year": 1912,
+      "path": "data/critical-editions/krohn-1912-tei-loci.json",
+      "key": "corpus/critical-editions/krohn-1912-tei-loci-8924e3f2c67d.json",
+      "url": "https://libros.vitruvius-digital-library.org/corpus/critical-editions/krohn-1912-tei-loci-8924e3f2c67d.json",
+      "sha256": "8924e3f2c67dc411aaa56a511c8d237e4ca8e0cf57a7caf3311870985f3b40f8",
+      "bytes": 514788,
+      "loci": 731
+    },
+    {
+      "edition": "rose-1899",
+      "editor": "Valentin Rose",
+      "year": 1899,
+      "path": "data/critical-editions/rose-1899-transcribed-loci.json",
+      "key": "corpus/critical-editions/rose-1899-transcribed-loci-59abde2b9e23.json",
+      "url": "https://libros.vitruvius-digital-library.org/corpus/critical-editions/rose-1899-transcribed-loci-59abde2b9e23.json",
+      "sha256": "59abde2b9e2377d4ef6c3c45249525c19998e0a1f624de0a77e36c09cff06b24",
+      "bytes": 558738,
+      "loci": 731
+    }
+  ],
+  "note": "Exact copies of the existing independent digital Latin editions. No PDF or OCR source. SHA-256 verifies each R2 response."
+}

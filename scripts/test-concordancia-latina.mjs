@@ -1,0 +1,61 @@
+import assert from'node:assert/strict';
+import{readFileSync}from'node:fs';
+import{webcrypto,createHash}from'node:crypto';
+import{JSDOM}from'jsdom';
+import{createConcordance,parseLocus,fold,appendHighlighted,excerpt,scrollFraction,synchronizedOffset}from'../assets/concordancia-latina-core.mjs';
+import{loadLatinSource,mountConcordance}from'../assets/concordancia-latina.mjs';
+const read=path=>readFileSync(path,'utf8'),json=path=>JSON.parse(read(path));
+const manifest=json('data/critical-editions/concordance-r2-sources.json');
+const docs=manifest.editions.map(s=>json(s.path));
+const vocabulary={concepts:json('data/lexicon/conceptus.json').concepts,entries:json('data/latin-lexicon.json').entries};
+const engine=createConcordance(...docs,vocabulary),html=read('concordancia-historica.html');
+assert.equal(engine.loci.length,731);assert.equal(new Set(engine.loci).size,731);
+for(const pair of engine.pairs){for(let side=0;side<2;side++){assert.equal(pair.passages[side].latin,docs[side].passages.find(p=>p.locus===pair.locus).latin);assert.equal(pair.passages[side].locus,pair.locus);}}
+assert(engine.pairs.some(p=>p.passages[0].latin!==p.passages[1].latin),'The independent editions must not be replaced by one shared Latin text');
+for(const q of['I.2.4','1.2.4','Libro I / 2 / 4','Vitr., De arch. I.2.4'])assert.equal(parseLocus(q)?.key,'1.2.4');
+assert.equal(parseLocus('IX.praef.10')?.key,'9.praef.10');assert.equal(parseLocus('X.prefacio.1')?.key,'10.praef.1');assert.equal(parseLocus('XI.1.1'),null);assert.equal(parseLocus('1.0.1'),null);
+assert.deepEqual(engine.search('I.2.4').results.map(p=>p.locus),['1.2.4']);assert(engine.search('I.2').results.length>1);assert.equal(engine.search('99.99.99').results.length,0);
+const words=engine.search('symmetria',{mode:'words'}),semantic=engine.search('proporción'),phrase=engine.search('item symmetria est',{mode:'phrase'});
+assert(words.results.some(r=>r.locus==='1.2.4'));assert(words.results.some(r=>r.hits.some((h,i)=>h.some(([a,b])=>fold(r.passages[i].latin.slice(a,b))==='symmetriarum'))));
+assert(semantic.results.length>words.results.length);assert(semantic.groups.flat().includes('proportio'));assert(semantic.results.some(r=>r.locus==='1.2.4'));
+assert(engine.search('belleza de los templos').results.length>0);assert(engine.search('templo',{book:'3'}).results.every(r=>r.book===3));
+assert(phrase.results.some(r=>r.locus==='1.2.4'));for(const r of phrase.results)for(let i=0;i<2;i++)for(const [a,b]of r.hits[i])assert.match(fold(r.passages[i].latin.slice(a,b)),/^item\s+symmetria\s+est$/);
+assert.equal(engine.search('symmetri',{mode:'phrase'}).results.length,0,'No substring matches in exact phrase mode');
+for(const q of['symmetria','venustas','firmitas','aedes','symphonia']){
+ const result=engine.search(q,{mode:'phrase'}).results.map(r=>r.locus).sort();
+ const baseline=engine.pairs.filter(p=>p.passages.some(p=>new RegExp('(?<![a-z])'+fold(q)+'(?![a-z])').test(fold(p.latin)))).map(p=>p.locus).sort();assert.deepEqual(result,baseline,'Postings must retain every actual occurrence of '+q);
+}
+const accentDom=new JSDOM('<p></p>');const target=accentDom.window.document.querySelector('p');const source='a\u0304qua <img src=x onerror=alert(1)> aquae';appendHighlighted(target,source,[[0,5],[source.length-5,source.length]]);assert.equal(target.textContent,source);assert.equal(target.querySelector('img'),null);assert.equal(target.querySelector('mark').textContent,'a\u0304qua');
+const part=excerpt('x '.repeat(100)+'symmetria est'+' y'.repeat(100),[[200,213]],50);assert.equal(part.text.slice(...part.hits[0]),'symmetria est');accentDom.window.close();
+assert.equal(scrollFraction({scrollHeight:1000,clientHeight:400,scrollTop:300}),.5);assert.equal(synchronizedOffset({scrollHeight:1600,clientHeight:400},.5),600);assert.equal(scrollFraction({scrollHeight:100,clientHeight:400,scrollTop:0}),0);
+assert(!/<(?:iframe|embed|object)\b/i.test(html));assert(!/pdfjs|concordancia-ocr-vitruvio|concordancia-ocr-vitruvio\.js/i.test(html));
+for(const s of manifest.editions){assert.equal(createHash('sha256').update(readFileSync(s.path)).digest('hex'),s.sha256);assert(s.url.startsWith('https://libros.vitruvius-digital-library.org/corpus/critical-editions/'));}
+const requests=[];
+const fetcher=async url=>{requests.push(String(url));const s=manifest.editions.find(s=>s.url===url);const path=s?.path||url;const raw=readFileSync(path);return{ok:true,status:200,json:async()=>JSON.parse(raw),arrayBuffer:async()=>raw.buffer.slice(raw.byteOffset,raw.byteOffset+raw.byteLength)};};
+await loadLatinSource(manifest.editions[0],{fetcher,cryptoAPI:webcrypto});
+await assert.rejects(()=>loadLatinSource({...manifest.editions[0],sha256:'0'.repeat(64)},{fetcher,cryptoAPI:webcrypto}),/no coincide/);
+await assert.rejects(()=>loadLatinSource({...manifest.editions[0],url:'https://libros.vitruvius-digital-library.org/folios/krohn-1912/ocr.json'},{fetcher,cryptoAPI:webcrypto}),/no autorizada/);
+const broken=structuredClone(docs[1]);broken.passages.pop();assert.throws(()=>createConcordance(docs[0],broken,vocabulary),/731/);
+const wrong=structuredClone(docs[1]);wrong.edition='recensio-es';assert.throws(()=>createConcordance(docs[0],wrong,vocabulary),/no corresponde/);
+const dom=new JSDOM(html,{url:'https://vitruvius-digital-library.org/concordancia-historica?locus=1.2.4&q=symmetria&mode=words',pretendToBeVisual:true,runScripts:'outside-only'}),win=dom.window,d=win.document,$=id=>d.getElementById(id);
+const dictionaryBindings=[];win.ClassicalLexicon={attachClick:(root,panel,opts)=>dictionaryBindings.push({root,panel,opts}),renderPanel:(panel,word)=>{panel.textContent=word;}};
+const mounted=await mountConcordance(d,{fetcher,cryptoAPI:webcrypto,win});assert(!mounted.error);assert.equal($('hc-workspace').dataset.ready,'true');assert.equal($('hc-loci').options.length,731);assert.equal(dictionaryBindings.length,3);
+for(const side of['krohn','rose']){assert.equal($('hc-'+side+'-reader').dataset.locus,'1.2.4');assert.equal($('hc-'+side+'-reader').lang,'la');assert.equal($('hc-'+side+'-reader').getAttribute('translate'),'no');assert($('hc-'+side+'-reader').querySelector('mark'));}
+assert($('hc-results').querySelectorAll('.hc-results-item').length>0);assert($('hc-results').querySelectorAll('mark').length>0);
+$('hc-next').click();assert.equal($('hc-krohn-reader').dataset.locus,'1.2.5');assert.equal($('hc-rose-reader').dataset.locus,'1.2.5');$('hc-prev').click();assert.equal($('hc-loci').value,'1.2.4');
+$('hc-locus').value='IX.praef.10';$('hc-locus-form').dispatchEvent(new win.Event('submit',{bubbles:true,cancelable:true}));assert.equal($('hc-loci').value,'9.praef.10');
+$('hc-locus').value='99.1.1';$('hc-locus-form').dispatchEvent(new win.Event('submit',{bubbles:true,cancelable:true}));assert.match($('hc-locus-message').textContent,/No se encontró/);assert.equal($('hc-loci').value,'9.praef.10');
+mounted.showLocus(engine.loci[0]);assert($('hc-prev').disabled);mounted.showLocus(engine.loci.at(-1));assert($('hc-next').disabled);
+const review=docs[1].passages.find(p=>p.status==='alignment_needs_editorial_review');assert(review);mounted.showLocus(review.locus);assert.match($('hc-rose-source').textContent,/pendiente de revisión/);
+$('hc-query').value='item symmetria est';$('hc-mode').value='phrase';$('hc-search-form').dispatchEvent(new win.Event('submit',{bubbles:true,cancelable:true}));assert.equal($('hc-query').value,'item symmetria est');assert($('hc-results').querySelector('mark'));
+$('hc-query').value='zznonexistentzz';mounted.runSearch();assert.equal($('hc-results').childElementCount,0);assert.match($('hc-search-status').textContent,/No se encontraron/);
+$('hc-clear').click();assert.equal($('hc-query').value,'');assert.equal(d.querySelectorAll('.hc-reader mark').length,0);
+$('hc-height').value='840';$('hc-height').dispatchEvent(new win.Event('input'));assert.equal($('hc-workspace').style.getPropertyValue('--hc-height'),'840px');$('hc-larger').click();assert.equal($('hc-workspace').style.getPropertyValue('--hc-font'),'22px');
+$('hc-divider').dispatchEvent(new win.KeyboardEvent('keydown',{key:'ArrowRight'}));assert.equal($('hc-divider').getAttribute('aria-valuenow'),'52');$('hc-reset').click();assert.equal($('hc-height').value,'620');assert.equal($('hc-divider').getAttribute('aria-valuenow'),'50');
+const readers=[$('hc-krohn-reader'),$('hc-rose-reader')];for(const [i,r]of readers.entries()){Object.defineProperty(r,'scrollHeight',{value:i?1600:1000});Object.defineProperty(r,'clientHeight',{value:400});}readers[0].scrollTop=300;readers[0].dispatchEvent(new win.Event('scroll'));assert.equal(readers[1].scrollTop,600);readers[1].dispatchEvent(new win.Event('scroll'));assert.equal(readers[0].scrollTop,300);$('hc-sync').click();readers[0].scrollTop=150;readers[0].dispatchEvent(new win.Event('scroll'));assert.equal(readers[1].scrollTop,600);
+dictionaryBindings[0].opts().onWord('symmetria');assert.equal($('hc-dictionary').hidden,false);$('hc-dictionary-close').click();assert.equal($('hc-dictionary').hidden,true);
+assert(requests.filter(u=>u.startsWith('https:')).every(u=>u.startsWith('https://libros.vitruvius-digital-library.org/corpus/critical-editions/')));assert(!requests.some(u=>/\.pdf|\/ocr[/.]|folios\//i.test(u)));
+win.close();
+const failed=new JSDOM(html,{url:'https://vitruvius-digital-library.org/concordancia-historica'});const fallbackRequests=[];const failingFetch=async url=>{fallbackRequests.push(url);if(String(url).includes('rose-1899-transcribed'))return{ok:false,status:503};return fetcher(url);};
+const failedMount=await mountConcordance(failed.window.document,{fetcher:failingFetch,cryptoAPI:webcrypto,win:failed.window});assert(failedMount.error);assert.equal(failed.window.document.getElementById('hc-workspace').dataset.ready,'error');assert(failed.window.document.getElementById('hc-search-button').disabled);assert(!fallbackRequests.some(u=>u.includes('recensio')||u.includes('/ocr')));failed.window.close();
+console.log('PASS: 731 independent Latin pairs; word, phrase and semantic searches; highlights; synchronized navigation and scrolling; dictionary; R2 integrity and failure isolation.');
