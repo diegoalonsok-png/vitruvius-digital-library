@@ -5145,6 +5145,36 @@
       }
     },
     {
+      "id": "publilius-syrus-sententiae",
+      "author": "Publilio Siro",
+      "title": "Sententiae",
+      "language": "la",
+      "genre": "Sentencias morales latinas",
+      "dating": "siglo I a. C.",
+      "status": "Texto latino preparado para lectura, con localizadores alfabéticos internos; procedencia editorial por cotejar",
+      "textStatus": "full-text-file-provisional; lexical index rebuild pending",
+      "source": "Wikisource; página de discusión atribuye la edición a W. Meyer (1880), pendiente de cotejo independiente",
+      "sourceUrl": "https://la.wikisource.org/wiki/Sententiae_(Publilius_Syrus)",
+      "corpusFiles": {
+        "la": "data/classics-corpus/publilius-syrus-sententiae-la.json"
+      },
+      "description": "733 sentencias transcritas, agrupadas alfabéticamente; no se equiparan a loci críticos ni a otras ediciones.",
+      "publicStatus": "propuesta-en-rama-no-publicada",
+      "localVersions": [
+        {
+          "language": "la",
+          "path": "data/classics-corpus/publilius-syrus-sententiae-la.json"
+        }
+      ],
+      "reading": {
+        "url": "classics-text-reader.html?work=publilius-syrus-sententiae&lang=la",
+        "status": "La disponibilidad pública depende de revisión, índice y despliegue."
+      },
+      "localEditionLanguages": [
+        "la"
+      ]
+    },
+    {
       "id": "sappho-fragmenta",
       "author": "Safo",
       "title": "Fragmenta · Fragmentos",
