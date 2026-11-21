@@ -1,0 +1,62 @@
+name: Sincronizar índices latinos independientes a R2
+on:
+  push:
+    paths:
+      - '.github/workflows/sync-latin-concordance-r2.yml'
+      - 'data/critical-editions/concordance-r2-sources.json'
+      - 'data/critical-editions/krohn-1912-tei-loci.json'
+      - 'data/critical-editions/rose-1899-transcribed-loci.json'
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: latin-concordance-r2
+  cancel-in-progress: false
+jobs:
+  latin-indexes:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install --disable-pip-version-check boto3
+      - name: Copiar solo los dos índices digitales y comprobar R2
+        env:
+          R2_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
+          R2_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
+        run: |
+          python - <<'PY'
+          import boto3,os,json,hashlib,pathlib,urllib.request,urllib.error
+          from botocore.exceptions import ClientError
+          s3=boto3.client('s3',endpoint_url='https://4e936bf2c4f185a87075ca506de93e69.r2.cloudflarestorage.com',aws_access_key_id=os.environ['R2_ACCESS_KEY_ID'],aws_secret_access_key=os.environ['R2_SECRET_ACCESS_KEY'],region_name='auto')
+          bucket='vitruvius-bibliotheca';report=[]
+          files=[('krohn-1912','krohn-1912-tei-loci.json','8924e3f2c67dc411aaa56a511c8d237e4ca8e0cf57a7caf3311870985f3b40f8'),('rose-1899','rose-1899-transcribed-loci.json','59abde2b9e2377d4ef6c3c45249525c19998e0a1f624de0a77e36c09cff06b24')]
+          for edition,name,expected in files:
+            path=pathlib.Path('data/critical-editions')/name;raw=path.read_bytes();digest=hashlib.sha256(raw).hexdigest();assert digest==expected,'Source changed; review required'
+            doc=json.loads(raw);rows=doc['passages'];assert doc['edition']==edition and doc['schema']=='vdl-critical-edition-text-v1' and len(rows)==731 and len({r['locus'] for r in rows})==731 and all(r['latin'] for r in rows)
+            key='corpus/critical-editions/'+name[:-5]+'-'+digest[:12]+'.json'
+            try:
+              existing=s3.get_object(Bucket=bucket,Key=key)['Body'].read();assert existing==raw,'Immutable key collision'
+              action='already_present'
+            except ClientError as error:
+              if str(error.response['Error']['Code']) not in ('NoSuchKey','404'):raise
+              s3.put_object(Bucket=bucket,Key=key,Body=raw,ContentType='application/json; charset=utf-8',CacheControl='public, max-age=31536000, immutable',Metadata={'sha256':digest,'edition':edition,'source':'independent-digital-latin-index','loci':'731'})
+              action='copied_existing_digital_index'
+            assert s3.get_object(Bucket=bucket,Key=key)['Body'].read()==raw
+            url='https://libros.vitruvius-digital-library.org/'+key
+            public=[]
+            for origin in ['https://vitruvius-digital-library.org','https://diegoalonsok-png.github.io']:
+              with urllib.request.urlopen(urllib.request.Request(url,headers={'Origin':origin}),timeout=45) as response:
+                downloaded=response.read();assert downloaded==raw,'Public hash mismatch'
+                allow=response.headers.get('Access-Control-Allow-Origin');assert allow in ('*',origin),'Missing cross-origin access'
+                public.append({'origin':origin,'http':response.status,'sha256':hashlib.sha256(downloaded).hexdigest(),'cors':allow})
+            report.append({'edition':edition,'key':key,'url':url,'sha256':digest,'loci':731,'action':action,'public_checks':public})
+          out=pathlib.Path('/tmp/latin-r2-published.json');out.write_text(json.dumps(report,ensure_ascii=False,indent=2));print(out.read_text())
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: independent-latin-r2-published
+          path: /tmp/latin-r2-published.json
+          if-no-files-found: error
