@@ -2,7 +2,7 @@
   "schema": "vitruvia-classics-search-registry-v1",
   "updated": "2026-11-20",
   "description": "Registro verificable de transcripciones HTML y textos JSON existentes que admiten búsqueda literal de contenido. No incluye automáticamente PDF escaneados, facsímiles ni fichas sin texto. Los índices auxiliares por locus y el aparato crítico se declaran por separado; no se suman a versiones textuales originales ni implican colación autóptica.",
-  "count": 477,
+  "count": 478,
   "works": 365,
   "entries": [
     {
@@ -150,6 +150,16 @@
       "sourceUrn": "urn:cts:greekLit:tlg0550.tlg001.1st1K-grc1",
       "sourceSha256": "6d6d5bb17dea43ec238e777fb413af56137e49dcd76e8e02dbc515ae0a5db0eb",
       "sourceDescription": "First1KGreek; edición de J. L. Heiberg; CC BY-SA 4.0"
+    },
+    {
+      "workId": "apolonio-argonauticas",
+      "author": "Apolonio de Rodas",
+      "title": "Ἀργοναυτικά · Argonautica",
+      "language": "en",
+      "format": "json-passages",
+      "path": "data/classics-corpus/apolonio-argonauticas-en.json",
+      "reader": "classics-text-reader.html?work=apolonio-argonauticas&lang=en",
+      "sourceDescription": "Traducción humana inglesa de R. C. Seaton (1912), Project Gutenberg #830; 426 párrafos indexados en orden textual; sin alineación crítica con los versos griegos."
     },
     {
       "workId": "apolonio-argonauticas",
