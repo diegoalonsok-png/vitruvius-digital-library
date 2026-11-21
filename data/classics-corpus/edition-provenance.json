@@ -3,10 +3,10 @@
   "method": "Registry plus inspected local JSON edition metadata; R2 URLs are declarations only, not live checks. No invented attribution or automatic translation claims.",
   "counts": {
     "cataloguedWorks": 404,
-    "editions": 477,
-    "localFilesInspected": 420,
+    "editions": 478,
+    "localFilesInspected": 421,
     "remoteEditionsDeclared": 44,
-    "worksWithoutHostedEnFrEs": 296
+    "worksWithoutHostedEnFrEs": 295
   },
   "works": [
     {
@@ -5300,8 +5300,28 @@
           "passages": 184
         }
       ],
-      "translations": [],
-      "missingTranslation": true,
+      "translations": [
+        {
+          "language": "en",
+          "kind": "translation",
+          "status": "local-source-inspected",
+          "title": "Λυσιστράτη · Lysistrata",
+          "translator": "The Athenian Society (collective attribution in the 1912 edition)",
+          "editor": null,
+          "edition": null,
+          "year": null,
+          "source": "https://en.wikisource.org/wiki/Aristophanes:_The_Eleven_Comedies/Lysistrata",
+          "sources": null,
+          "attribution": "Aristophanes, Lysistrata, in Aristophanes: The Eleven Comedies (1912), translation credited to The Athenian Society; transcribed on English Wikisource.",
+          "license": "Historical 1912 English version, public domain in US on publication-date grounds; verify jurisdiction. Wikisource transcript with attribution and applicable reuse terms.",
+          "editorialStatus": "Full play through explicit FINIS marker; introduction and editorial numbered endnotes excluded. Dialogue blocks extracted from online transcription, not independently collated.",
+          "alignmentStatus": "unaligned",
+          "sourcePath": "data/classics-corpus/aristophanes-lysistrata-en.json",
+          "sourceDescription": "Traducción inglesa The Athenian Society (1912), English Wikisource; 476 unidades de diálogo; sin alineación crítica con original griego.",
+          "passages": 476
+        }
+      ],
+      "missingTranslation": false,
       "facsimiles": []
     },
     {
