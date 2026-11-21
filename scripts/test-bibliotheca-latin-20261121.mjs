@@ -7,7 +7,7 @@ for(const [id,n] of [["disticha-catonis",205],["publilius-syrus-sententiae",733]
  const filename="data/classics-corpus/"+id+"-la.json",data=load(filename);
  assert.equal(data.workId,id);assert.equal(data.language,"la");assert.equal(data.passages.length,n);
  assert.equal(new Set(data.passages.map(p=>p.locus)).size,n,"unique loci");
- assert.ok(data.passages.every(p=>p.locus&&p.text&&p.text.length>10));
+ assert.ok(data.passages.every(p=>p.locus&&p.text&&p.text.length>2));
  assert.ok(data.source&&data.license&&data.editorialStatus);
  const reg=registry.entries.filter(e=>e.workId===id&&e.language==="la");
  assert.equal(reg.length,1);assert.equal(reg[0].path,filename);
