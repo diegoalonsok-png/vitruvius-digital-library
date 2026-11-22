@@ -42,7 +42,10 @@ function valid(e){
      ||e.format==="structured-bilingual"&&e.workId==="vitruvius"&&
       /^data\/structured\/(?:recensio-es|recensio-fr|theory-en)\.json$/.test(e.path||"")
      ||e.format==="historical-ocr-pages"&&e.workId==="krohn-1912-pdf"&&e.language==="la"&&
-      e.path==="data/text/krohn-1912.json");
+      e.path==="data/text/krohn-1912.json"
+     ||e.format==="critical-indexed-latin"&&e.language==="la"&&
+      (e.workId==="krohn-1912-indexed"&&e.path==="data/critical-editions/krohn-1912-tei-loci.json"||
+       e.workId==="rose-1899-indexed"&&e.path==="data/critical-editions/rose-1899-transcribed-loci.json"));
 }
 async function registry(){
  if(!registryTask)registryTask=(window.VitruviaIndexCache?.json(REGISTRY)||fetch(REGISTRY).then(r=>{if(!r.ok)throw Error("HTTP "+r.status);return r.json()})).then(async j=>{
