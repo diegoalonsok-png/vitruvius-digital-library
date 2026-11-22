@@ -360,16 +360,28 @@ def main():
         print(f"POSPONE TRADUCCIÓN SIN ORIGINAL R2: {candidate_id}")
     pendientes = [o for o in pendientes
                   if not o.get("traduccionDe") or o["traduccionDe"] in hechos]
-    # Conservar el orden de llegada dentro de cada grupo. Primero las traducciones
-    # humanas candidatas en inglés, después francés, después castellano;
-    # los nuevos originales no se descartan, se procesan en las tandas siguientes.
+    # Cada tanda debe incorporar ORIGINALES nuevos además de traducciones;
+    # reservar cupos para ambos evita que las búsquedas de traducción agoten
+    # indefinidamente el límite antes de llegar a un clásico nuevo.
     priority = {"en": 0, "fr": 1, "es": 2}
-    pendientes.sort(key=lambda o: priority.get(o.get("lengua"), 3)
-                    if o.get("traduccionDe") else 3)
+    traducciones = sorted((o for o in pendientes if o.get("traduccionDe")),
+                          key=lambda o: priority.get(o.get("lengua"), 3))
+    originales = [o for o in pendientes if not o.get("traduccionDe")]
 
     limite = int(os.environ.get("LIMITE", "0") or 0)
-    if limite:
-        pendientes = pendientes[:limite]
+    solo_traducciones = os.environ.get("SOLO_TRADUCCIONES") == "1"
+    if solo_traducciones:
+        pendientes = traducciones[:limite] if limite else traducciones
+    elif limite:
+        cupo_original = max(1, (limite * 2 + 1) // 3)
+        cupo_traduccion = limite - cupo_original
+        pendientes = originales[:cupo_original] + traducciones[:cupo_traduccion]
+        elegidos = {o["id"] for o in pendientes}
+        if len(pendientes) < limite:
+            pendientes.extend([o for o in [*originales, *traducciones]
+                               if o["id"] not in elegidos][:limite - len(pendientes)])
+    else:
+        pendientes = [*originales, *traducciones]
     print(f"pendientes: {len(pendientes)} (ya catalogadas: {len(hechos)}; repetidas omitidas: {len(repetidas)})")
     informe = {"incorporadas": [], "no_encontradas": {}}
     with ThreadPoolExecutor(max_workers=3) as ex:
