@@ -7,6 +7,54 @@
   },
   "obras": [
     {
+      "id": "artemidoro-oneirocritica",
+      "autor": "Artemidoro de Daldis",
+      "obra": "Ὀνειροκριτικά · Oneirocritica",
+      "lengua": "grc",
+      "titulo": [
+        "oneirocritica"
+      ],
+      "creador": "artemidorus|daldianus",
+      "preferirIdentificador": "artemidoridaldia00arte",
+      "tanda": 1,
+      "fuenteEdicion": "https://archive.org/details/artemidoridaldia00arte",
+      "editorEdicion": "Edición colectiva grecolatina, París, Marc Orry, 1603",
+      "justificacion": "Edición histórica con otros autores y textos en paralelo: verificar el intervalo de Artemidoro y OCR griego antes de declararla completa o indexarla."
+    },
+    {
+      "id": "alcifron-epistolae",
+      "autor": "Alcifrón",
+      "obra": "Ἐπιστολαί · Epistulae",
+      "lengua": "grc",
+      "titulo": [
+        "alciphronis",
+        "epistolae"
+      ],
+      "creador": "alciphron|meineke",
+      "preferirIdentificador": "alciphronisrhet00meingoog",
+      "tanda": 1,
+      "fuenteEdicion": "https://archive.org/details/alciphronisrhet00meingoog",
+      "editorEdicion": "August Meineke, Teubner, Leipzig, 1853",
+      "justificacion": "Original griego publicado en 1853; la ficha IA etiqueta el volumen como latín, por lo que hay que comprobar idioma real y OCR antes del alta."
+    },
+    {
+      "id": "solino-collectanea",
+      "autor": "Cayo Julio Solino",
+      "obra": "Collectanea rerum memorabilium",
+      "lengua": "la",
+      "titulo": [
+        "collectanea",
+        "rerum",
+        "memorabilium"
+      ],
+      "creador": "solinus|mommsen",
+      "preferirIdentificador": "collectanearerum00soliuoft",
+      "tanda": 1,
+      "fuenteEdicion": "https://archive.org/details/collectanearerum00soliuoft",
+      "editorEdicion": "Theodor Mommsen, Weidmann, Berlín, 1895",
+      "justificacion": "Edición latina histórica de Mommsen: comprobar integridad, OCR, SHA-256 y no existencia en R2 antes de publicar."
+    },
+    {
       "id": "heron-metrica-dioptra",
       "autor": "Herón de Alejandría",
       "obra": "Μετρικά · Περὶ διόπτρας · Metrica y Dioptra",
