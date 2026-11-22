@@ -47,7 +47,7 @@ def buscar(creador, titulos, idioma, anio_max):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--limite", type=int, default=0)
-    ap.add_argument("--idiomas", default="es,en,fr")
+    ap.add_argument("--idiomas", default="en,fr,es")
     args = ap.parse_args()
     idiomas = [i for i in args.idiomas.split(",") if i in IDIOMAS]
 
