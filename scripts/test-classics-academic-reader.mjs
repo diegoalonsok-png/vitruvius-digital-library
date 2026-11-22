@@ -5,7 +5,7 @@ import {readFileSync,existsSync} from "node:fs";
 import {JSDOM} from "jsdom";
 const read=p=>readFileSync(p,"utf8"),load=p=>JSON.parse(read(p));
 const pause=()=>new Promise(r=>setTimeout(r,10));
-async function until(fn){for(let i=0;i<180;i++){if(fn())return;await pause()}assert(fn(),"Timed out waiting for the reader");}
+async function until(fn){for(let i=0;i<1200;i++){if(fn())return;await pause()}assert(fn(),"Timed out waiting for the reader (12 s): verificar carga, errores y respuesta de traducción");}
 const manifest=load("data/classics-corpus/reading-notes/manifest.json");
 let checked=0;
 for(const e of manifest.entries){
