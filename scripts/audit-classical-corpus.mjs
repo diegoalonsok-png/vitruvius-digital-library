@@ -265,7 +265,7 @@ for(const w of allWorks){
    // Edition-specific loci and technical chunk boundaries need not coincide.
    // Require an explicit negative claim in the translation metadata before
    // accepting an unaligned pair: never silently infer verse/word equivalence.
-   const noEquivalence = /no automatic equivalence|no automatic or unverified locus equivalence|no equivalencias|no alinead|not aligned|not equivalent|not asserted (?:to be )?equivalent|do not imply certified one-to-one mapping|without fabricated Greek correspondences/i.test(target.alignment||"");
+   const noEquivalence = /no automatic equivalence|no automatic or unverified locus equivalence|no equivalencias|no alinead|not aligned|not equivalent|not asserted (?:to be )?equivalent|do not imply certified one-to-one mapping|without fabricated Greek correspondences|no equivalencia semántica(?: palabra a palabra)?/i.test(target.alignment||"");
    assert(target.alignmentStatus==="unaligned" || noEquivalence,"Original and translation have no shared locus (undeclared): "+w.id+" / "+translation.language);
    // The shared scholarly reader already renders this exact explicit warning
    // when an unaligned edition omits optional `alignment` metadata. Recognize
