@@ -210,7 +210,7 @@ jobs:
             data/classics-corpus/search-registry.json data/classics-corpus/coverage-audit.json \
             data/perseus-provenance-audit.json reports index-auctorum-operum.html
           # Aun si algún generador antiguo modificó un texto, no lo versionar aquí.
-          if git diff --cached --name-only | grep -E '^data/classics-corpus/[a-z0-9-]+-(grc|la|en|fr|es|it|de|pt)\\.json$|^data/index/classics/'; then
+          if git diff --cached --name-only | grep -E '^data/classics-corpus/[a-z0-9-]+-(grc|la|en|fr|es|it|de|pt)\.json$|^data/index/classics/'; then
             echo '::error::La tanda intenta incluir libros o índices voluminosos en GitHub.'
             exit 1
           fi
