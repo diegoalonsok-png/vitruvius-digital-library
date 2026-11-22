@@ -265,7 +265,7 @@ for(const w of allWorks){
    // Edition-specific loci and technical chunk boundaries need not coincide.
    // Require an explicit negative claim in the translation metadata before
    // accepting an unaligned pair: never silently infer verse/word equivalence.
-   const noEquivalence = /no automatic equivalence|no automatic or unverified locus equivalence|no equivalencias|no alinead|not aligned|not equivalent|not asserted (?:to be )?equivalent|do not imply certified one-to-one mapping|without fabricated Greek correspondences|no equivalencia semántica(?: palabra a palabra)?/i.test(target.alignment||"");
+   const noEquivalence = /no automatic equivalence|no automatic or unverified locus equivalence|no equivalencias|no alinead|not aligned|not equivalent|not asserted (?:to be )?equivalent|do not imply certified one-to-one mapping|without fabricated Greek correspondences|no equivalencia semántica(?: palabra a palabra)?|(?:not|no|without|sin|sans|does not|do not)\\b[^.]{0,140}(?:align(?:ed|ment)?|equivalen(?:ce|cia|t|te)?|correspond(?:ence|encia)?|cotej(?:o|ada|adas)?|one.to.one)/i.test(target.alignment||"");
    // The existing reader visibly warns that editions are not philologically
    // aligned when metadata has no explicit alignment statement. This applies
    // to older historical translations without an alignmentStatus property too.
