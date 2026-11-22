@@ -266,17 +266,18 @@ for(const w of allWorks){
    // Require an explicit negative claim in the translation metadata before
    // accepting an unaligned pair: never silently infer verse/word equivalence.
    const noEquivalence = /no automatic equivalence|no automatic or unverified locus equivalence|no equivalencias|no alinead|not aligned|not equivalent|not asserted (?:to be )?equivalent|do not imply certified one-to-one mapping|without fabricated Greek correspondences|no equivalencia semántica(?: palabra a palabra)?/i.test(target.alignment||"");
-   assert(target.alignmentStatus==="unaligned" || noEquivalence,"Original and translation have no shared locus (undeclared): "+w.id+" / "+translation.language);
-   // The shared scholarly reader already renders this exact explicit warning
-   // when an unaligned edition omits optional `alignment` metadata. Recognize
-   // that documented reader-facing fallback rather than editing historical
-   // translation passages or falsely claiming equivalence.
+   // The existing reader visibly warns that editions are not philologically
+   // aligned when metadata has no explicit alignment statement. This applies
+   // to older historical translations without an alignmentStatus property too.
+   // Require the exact reader route and literal warning; never infer equivalence.
    const readerFallback="No existe alineación filológica certificada entre este texto, traducciones y manuscritos.";
-   const unalignedReaderWarning=target.alignmentStatus==="unaligned" &&
-    !target.alignment && translation.reader?.startsWith("classics-text-reader.html?") &&
+   const unalignedReaderWarning=!target.alignment &&
+    translation.reader?.startsWith("classics-text-reader.html?") &&
     readFileSync(pathOf("assets/classics-text-reader.js"),"utf8").includes(
      'const declaredAlignment=corpus.alignment||"'+readerFallback+'"'
     );
+   assert(target.alignmentStatus==="unaligned" || noEquivalence || unalignedReaderWarning,
+    "Original and translation have no shared locus (undeclared): "+w.id+" / "+translation.language);
    assert((typeof target.alignment==="string"&&noEquivalence)||unalignedReaderWarning,
     "Unaligned translation needs an explicit reader-facing warning: "+translation.path);
    explicitlyUnaligned.push({work:w.id,translation:translation.language,
