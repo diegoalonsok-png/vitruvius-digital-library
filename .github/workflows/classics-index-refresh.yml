@@ -25,6 +25,8 @@ concurrency:
 
 jobs:
   rebuild:
+    # LEGACY DESACTIVADO: impedir nuevos fragmentos de índice en GitHub.
+    if: ${{ false }}
     runs-on: ubuntu-latest
     timeout-minutes: 25
     steps:
