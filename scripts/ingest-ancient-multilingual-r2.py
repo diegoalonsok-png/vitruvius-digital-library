@@ -107,18 +107,22 @@ def make_index(passages):
 
 
 def candidates():
-    # Prefer Aramaic-bearing books, then brief Koine tests.
-    for book in OSHB:
-        yield {'id': 'oshb-' + book.lower(), 'book': book, 'edition': 'OSHB/WLC', 'language': 'hbo',
-               'source': f'https://raw.githubusercontent.com/openscriptures/morphhb/{OSHB_SHA}/wlc/{book}.xml',
-               'attribution': 'Original work of the Open Scriptures Hebrew Bible available at https://github.com/openscriptures/morphhb',
-               'license': 'CC BY 4.0', 'sourceProject': 'Open Scriptures Hebrew Bible'}
-    for book in SBL:
-        yield {'id': 'sblgnt-' + book.lower(), 'book': book, 'edition': 'SBLGNT 1.2', 'language': 'grc',
-               'dialect': 'koine',
-               'source': f'https://raw.githubusercontent.com/Faithlife/SBLGNT/{SBL_SHA}/data/sblgnt/xml/{book}.xml',
-               'attribution': 'SBL Greek New Testament © Society of Biblical Literature and Logos Bible Software',
-               'license': 'CC BY 4.0', 'sourceProject': 'SBL Greek New Testament'}
+    # First verified Aramaic-bearing books and a Koine sample, then the rest.
+    priority = [('oshb', 'Dan'), ('oshb', 'Ezra'), ('sbl', 'Phlm'), ('sbl', 'Jas')]
+    queue = priority + [('oshb', b) for b in OSHB if b not in ('Dan', 'Ezra')] + [
+        ('sbl', b) for b in SBL if b not in ('Phlm', 'Jas')]
+    for corpus, book in queue:
+        if corpus == 'oshb':
+            yield {'id': 'oshb-' + book.lower(), 'book': book, 'edition': 'OSHB/WLC', 'language': 'hbo',
+                   'source': f'https://raw.githubusercontent.com/openscriptures/morphhb/{OSHB_SHA}/wlc/{book}.xml',
+                   'attribution': 'Original work of the Open Scriptures Hebrew Bible available at https://github.com/openscriptures/morphhb',
+                   'license': 'CC BY 4.0', 'sourceProject': 'Open Scriptures Hebrew Bible'}
+        else:
+            yield {'id': 'sblgnt-' + book.lower(), 'book': book, 'edition': 'SBLGNT 1.2', 'language': 'grc',
+                   'dialect': 'koine',
+                   'source': f'https://raw.githubusercontent.com/Faithlife/SBLGNT/{SBL_SHA}/data/sblgnt/xml/{book}.xml',
+                   'attribution': 'SBL Greek New Testament © Society of Biblical Literature and Logos Bible Software',
+                   'license': 'CC BY 4.0', 'sourceProject': 'SBL Greek New Testament'}
 
 
 def r2_client():
