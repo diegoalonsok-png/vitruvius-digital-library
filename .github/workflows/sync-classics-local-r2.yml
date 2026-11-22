@@ -43,10 +43,10 @@ jobs:
       - name: Comprobar que R2 esté configurado
         shell: bash
         env:
-          R2_ACCOUNT_ID: ${{ secrets.R2_ACCOUNT_ID }}
+          R2_ACCOUNT_ID: ${{ secrets.R2_ACCOUNT_ID || '4e936bf2c4f185a87075ca506de93e69' }}
           R2_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
           R2_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
-          R2_BUCKET: ${{ secrets.R2_BUCKET }}
+          R2_BUCKET: ${{ secrets.R2_BUCKET || 'vitruvius-bibliotheca' }}
         run: |
           for key in R2_ACCOUNT_ID R2_ACCESS_KEY_ID R2_SECRET_ACCESS_KEY R2_BUCKET; do
             if [ -z "${!key}" ]; then
@@ -56,10 +56,10 @@ jobs:
           done
       - name: Sincronizar originales y traducciones indexadas sin sobrescribir objetos
         env:
-          R2_ACCOUNT_ID: ${{ secrets.R2_ACCOUNT_ID }}
+          R2_ACCOUNT_ID: ${{ secrets.R2_ACCOUNT_ID || '4e936bf2c4f185a87075ca506de93e69' }}
           R2_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
           R2_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
-          R2_BUCKET: ${{ secrets.R2_BUCKET }}
+          R2_BUCKET: ${{ secrets.R2_BUCKET || 'vitruvius-bibliotheca' }}
           LIMITE: ${{ inputs.limite || '40' }}
         run: python scripts/sync-classics-local-to-r2.py --limit "$LIMITE"
       - name: Publicar sólo el reporte de certificados de R2 en GitHub
