@@ -135,7 +135,7 @@ const ancientRegisteredWorks=new Set(registry.entries.filter(e=>e.format!=="crit
 assert.equal(registry.works,allRegisteredWorks.size,"Registry work count must match all registered identifiers");
 assert.equal(ancientRegisteredWorks.size,registry.works-[...auxiliaryWorks].filter(id=>!ancientRegisteredWorks.has(id)).length,
  "Auxiliary critical editions must be excluded from distinct ancient-work count");
-const verifiedParallel=[],explicitlyUnaligned=[];
+const verifiedParallel=[],explicitlyUnaligned=[],unverifiedAlignmentWarnings=[];
 for(const w of allWorks){
  const entries=registry.entries.filter(e=>e.workId===w.id&&e.format==="json-passages");
  for(const [lang,path] of Object.entries(w.corpusFiles||{})){
@@ -265,7 +265,7 @@ for(const w of allWorks){
    // Edition-specific loci and technical chunk boundaries need not coincide.
    // Require an explicit negative claim in the translation metadata before
    // accepting an unaligned pair: never silently infer verse/word equivalence.
-   const noEquivalence = /no automatic equivalence|no automatic or unverified locus equivalence|no equivalencias|no alinead|not aligned|not equivalent|not asserted (?:to be )?equivalent|do not imply certified one-to-one mapping|without fabricated Greek correspondences|no equivalencia semántica(?: palabra a palabra)?|(?:not|no|without|sin|sans|does not|do not)\b[^.]{0,140}(?:align(?:ed|ment)?|equivalen(?:ce|cia|t|te)?|correspond(?:ence|encia)?|cotej(?:o|ada|adas)?|one.to.one)/i.test(target.alignment||"");
+   const noEquivalence = /no automatic equivalence|no automatic or unverified locus equivalence|no equivalencias|no alinead|not aligned|not equivalent|not asserted (?:to be )?equivalent|do not imply certified one-to-one mapping|without fabricated Greek correspondences|no equivalencia semántica(?: palabra a palabra)?|(?:not|no|without|sin|sans|does not|do not)\b[^.]{0,140}(?:align(?:ed|ment)?|equivalen(?:ce|cia|t|te)?|correspond(?:ence|encia)?|cotej(?:o|ada|adas)?|mapp?(?:ing|ed)?|mapeo|mapa|collat(?:ion|ed)?|verse.by.verse|word.by.word|one.to.one)/i.test(target.alignment||"");
    // The existing reader visibly warns that editions are not philologically
    // aligned when metadata has no explicit alignment statement. This applies
    // to older historical translations without an alignmentStatus property too.
@@ -276,10 +276,16 @@ for(const w of allWorks){
     readFileSync(pathOf("assets/classics-text-reader.js"),"utf8").includes(
      'const declaredAlignment=corpus.alignment||"'+readerFallback+'"'
     );
-   assert(target.alignmentStatus==="unaligned" || noEquivalence || unalignedReaderWarning,
-    "Original and translation have no shared locus (undeclared): "+w.id+" / "+translation.language);
-   assert((typeof target.alignment==="string"&&noEquivalence)||unalignedReaderWarning,
-    "Unaligned translation needs an explicit reader-facing warning: "+translation.path);
+   const declared=target.alignmentStatus==="unaligned" || noEquivalence || unalignedReaderWarning;
+   const visible=(typeof target.alignment==="string"&&noEquivalence)||unalignedReaderWarning;
+   if(!declared || !visible){
+    // Report ALL problematic editions in one run, not one by one. Do not
+    // admit any silently aligned pair into the public academic catalogue.
+    unverifiedAlignmentWarnings.push({work:w.id,language:translation.language,
+      path:translation.path,alignmentStatus:target.alignmentStatus||null,
+      declaredAlignment:target.alignment||null,declared,visible});
+    continue;
+   }
    explicitlyUnaligned.push({work:w.id,translation:translation.language,
     reason:target.alignment||readerFallback});
    continue;
@@ -289,6 +295,9 @@ for(const w of allWorks){
   verifiedParallel.push({work:w.id,original:originals[0].language,translation:translation.language,originalLoci:ol.size,translatedLoci:tl.size,sharedLoci:intersect});
  }
 }
+assert.deepEqual(unverifiedAlignmentWarnings,[],
+ "Unaligned translations missing an explicit reader-facing warning: "+JSON.stringify(unverifiedAlignmentWarnings));
+
 // Teofrasto: capítulo traducido 1–30 cotejable en número con el griego, no en frases.
 const characterGr=read("data/classics-corpus/theophrastus-characters-grc.json");
 const characterEn=read("data/classics-corpus/theophrastus-characters-en.json");
