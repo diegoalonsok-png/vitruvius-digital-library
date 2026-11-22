@@ -95,7 +95,7 @@ def translation_text(raw,src):
     if not translators: raise ValueError("No se acredita traductor humano")
     source_desc=header.find("t:fileDesc/t:sourceDesc",NS)
     if source_desc is None: raise ValueError("Sin fuente bibliográfica")
-    dates=[int(y) for y in re.findall(r"\b(?:1[5-9]\d{2}|20\d{2})\b",m.flat(source_desc))]
+    dates=[int(y) for y in re.findall(r"(?<!\d)(?:1[5-9]\d{2}|20\d{2})(?!\d)",m.flat(source_desc))]
     if not dates or min(dates)>1930:
         raise ValueError("Edición histórica anterior a 1931 no acreditada")
     title=m.flat(header.find("t:fileDesc/t:titleStmt/t:title",NS)) or src["filename"]
