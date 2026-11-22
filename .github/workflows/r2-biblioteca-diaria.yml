@@ -109,7 +109,7 @@ jobs:
             echo 'No se encontraron traducciones candidatas nuevas para esta tanda.'
           else
             echo 'Se encontraron traducciones candidatas: importar únicamente si pasan los controles de fuente, idioma y derechos.'
-            LIMITE=4 python scripts/r2-importar-clasicos.py
+            SOLO_TRADUCCIONES=1 LIMITE=4 python scripts/r2-importar-clasicos.py
           fi
 
       - name: Ficha de repertorio para las obras nuevas
