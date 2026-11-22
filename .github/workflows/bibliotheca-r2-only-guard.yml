@@ -1,0 +1,46 @@
+name: Bibliotheca - prohibir libros en GitHub
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  no-heavy-bibliotheca-content:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Prohibir nuevas versiones de libros e índices grandes en GitHub
+        shell: bash
+        env:
+          BEFORE: ${{ github.event.before }}
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import os, re, subprocess, sys
+          base = os.environ.get("BASE_SHA") or os.environ.get("BEFORE")
+          if not base or re.fullmatch("0+",base):
+              base = subprocess.check_output(["git","rev-parse","HEAD^"],text=True).strip()
+          filenames=subprocess.check_output(["git","diff","--name-only","--diff-filter=AMR",base,"HEAD"],text=True).splitlines()
+          blocked=[]
+          for path in filenames:
+              # Sólo código, manifiestos y fichas ligeras deben cambiar en GitHub.
+              source=re.fullmatch(r"data/classics-corpus/[a-z0-9-]+-(?:grc|la|en|fr|es|it|de|pt)\.json",path)
+              index=path.startswith("data/index/classics/") and path!="data/index/classics/manifest.json"
+              structured=re.fullmatch(r"data/structured/[a-z0-9-]+\.json",path)
+              other=re.fullmatch(r"(?:clasicos|corpus|bibliotheca)/.*\.(?:pdf|epub|tei|xml|txt)",path)
+              if source or index or structured or other:
+                  blocked.append(path)
+          if blocked:
+              print("::error::GitHub no es depósito de Bibliotheca. Subir libros, ediciones e índices a R2:")
+              for path in blocked[:35]: print("::error::"+path)
+              sys.exit(1)
+          print("PASS: cambios sin libros ni índices grandes de Bibliotheca en GitHub.")
+          PY
