@@ -12,6 +12,7 @@ const file = 'index-auctorum-operum.html';
 const inventory = json('data/r2/bibliotheca-inventario-unificado.json');
 const supplement = json('data/bibliotheca-expansion-publicada-2026-11-16.json');
 const catalogue = json('data/bibliotheca-graeca-latina-I-bce-I-ce.json');
+const ocrCoverage = json('data/r2/bibliotheca-ocr-coverage.json');
 const primary = inventory.works || [];
 const supplementary = inventory.supplementaryWorks || [];
 const other = inventory.additionalWorks || [];
@@ -86,13 +87,36 @@ const otherRows = other.map(x => {
    ' · objeto R2 declarado, no verificado en vivo</span></li>';
 }).join('\n');
 
+// OCR search is page-level only, never a critical transcription or newly acquired work.
+if(ocrCoverage.counts?.masterWorks!==primary.length)throw new Error('OCR coverage and principal catalogue disagree');
+const primaryIds = new Set(primary.map(x=>x.id));
+const ocrLinked = ocrCoverage.r2IndexDeclared?(ocrCoverage.ocrSearchableWithoutTranscription||[]):[];
+const ocrIds = new Set();
+const ocrLinks = ocrLinked.map(row=>{
+ if(!primaryIds.has(row.id)||ocrIds.has(row.id))throw new Error('OCR entry absent or repeated: '+row.id);
+ ocrIds.add(row.id);
+ if(!(row.facsimileReaders||[]).length)throw new Error('No facsimile reader for '+row.id);
+ const links=row.facsimileReaders.map(ref=>{
+  const prefix='buscador-facsimiles-clasicos.html?obra=';
+  if(!ref.reader?.startsWith(prefix)||!/^[a-z0-9-]+$/.test(ref.reader.slice(prefix.length)))throw new Error('Unexpected OCR reader '+row.id);
+  return '<a href="'+escapeHTML(ref.reader)+'">OCR de '+escapeHTML(ref.editionId)+'</a>';
+ }).join(' · ');
+ return '<li><strong>'+escapeHTML(row.author)+'</strong> · '+escapeHTML(row.title)+' · '+links+
+  '<span class="meta">OCR por página · no texto crítico ni locus validado</span></li>';
+}).join('\n');
+const ocrSection=ocrLinked.length
+ ? '<section id="ocr-facsimiles"><h2>Fichas con búsqueda OCR de facsímiles R2 · '+ocrLinked.length+
+   '</h2><p>Índices OCR por página ya declarados en R2 para obras sin transcripción textual individual. Varias fichas pueden remitir a un mismo volumen colectivo; no se suman libros nuevos ni se afirma una traducción humana. La disponibilidad de cada objeto requiere comprobación individual.</p><ul>'+
+   ocrLinks+'</ul></section>'
+ : '';
+
 const extension = begin+'\n'+addedMain+'\n'+
   '<section id="suplemento-literario"><h2>Autores y obras suplementarias · '+supplementary.length+
   ' registros</h2><p>Identificadores documentales y lectores declarados en el catálogo suplementario. Algunos tratados individuales pertenecen a volúmenes colectivos ya catalogados; no se contabilizan automáticamente como libros nuevos. Las versiones de idiomas consignadas no acreditan alineación humana de los pasajes.</p>'+
   '<nav aria-label="Autores suplementarios" style="display:flex;flex-wrap:wrap;gap:8px 12px"><strong>Autores:</strong>'+nav+'</nav>'+
   listing+'</section>\n'+
   '<section id="otras-colecciones"><h2>Otras colecciones históricas · '+other.length+
-  ' registros</h2><p>Arquitectura, recepción de la Antigüedad y materias posteriores; categoría independiente del repertorio grecolatino. Las direcciones de R2 requieren verificación pública.</p><ul>'+otherRows+'</ul></section>\n'+end;
+  ' registros</h2><p>Arquitectura, recepción de la Antigüedad y materias posteriores; categoría independiente del repertorio grecolatino. Las direcciones de R2 requieren verificación pública.</p><ul>'+otherRows+'</ul></section>\n'+ocrSection+'\n'+end;
 page = page.slice(0,start)+extension+page.slice(stop+end.length);
 const lead = 'Índice estático consultable sin JavaScript:';
 const trail = 'Para disponibilidad textual actual, consultar';
