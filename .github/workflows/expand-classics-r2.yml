@@ -13,8 +13,9 @@ run-name: Bibliotheca R2 · lote conservador de 12 grupos · ${{ github.event_na
 on:
   workflow_dispatch:
   schedule:
-    # Nueva tanda acotada cada día, sin solapamiento con la anterior.
-    - cron: '17 5 * * *'
+    # Cuatro tandas conservadoras por día, cada 6 horas; la misma concurrencia
+    # protege de solapamientos y nunca cancela una carga activa en R2.
+    - cron: '17 3,9,15,21 * * *'
   push:
     branches: [main]
     paths:
