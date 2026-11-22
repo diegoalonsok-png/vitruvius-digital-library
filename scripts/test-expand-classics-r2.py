@@ -69,4 +69,51 @@ class Extraction(unittest.TestCase):
         self.assertEqual(len({p['locus'] for p in ps}),2)
         self.assertTrue(all('no locus canónico' in p['locusKind'] for p in ps))
 
+
+class R2PublicVerification(unittest.TestCase):
+    def test_transient_503_retries_then_checks_public_hash(self):
+        from io import BytesIO
+        from unittest.mock import patch
+        from urllib.error import HTTPError
+
+        raw=b'Original classical index payload'
+        class Stored:
+            def get_object(self, **kwargs):
+                return {'Body': BytesIO(raw)}
+        url='https://libros.vitruvius-digital-library.org/temporary'
+        with patch.object(m, 'urlopen', side_effect=[
+            HTTPError(url, 503, 'Service Unavailable', None, None),
+            BytesIO(raw)
+        ]) as opened, patch.object(m.time, 'sleep') as slept:
+            m.put_verified(Stored(), 'bucket', 'corpus/indice/ampliacion/test.json', raw, 'application/json')
+        self.assertEqual(opened.call_count, 2)
+        slept.assert_called_once()
+
+    def test_public_digest_mismatch_is_never_published(self):
+        from io import BytesIO
+        from unittest.mock import patch
+        raw=b'Original classical index payload'
+        class Stored:
+            def get_object(self, **kwargs):
+                return {'Body': BytesIO(raw)}
+        with patch.object(m, 'urlopen', return_value=BytesIO(b'Mismatched payload')) as opened, patch.object(m.time, 'sleep') as slept:
+            with self.assertRaisesRegex(ValueError, 'SHA256'):
+                m.put_verified(Stored(), 'bucket', 'corpus/indice/ampliacion/test.json', raw, 'application/json')
+        opened.assert_called_once()
+        slept.assert_not_called()
+
+    def test_public_403_stops_without_retry(self):
+        from io import BytesIO
+        from unittest.mock import patch
+        from urllib.error import HTTPError
+        raw=b'Original classical index payload'
+        class Stored:
+            def get_object(self, **kwargs):
+                return {'Body': BytesIO(raw)}
+        with patch.object(m, 'urlopen', side_effect=HTTPError('https://example.org/', 403, 'Forbidden', None, None)) as opened, patch.object(m.time, 'sleep') as slept:
+            with self.assertRaises(HTTPError):
+                m.put_verified(Stored(), 'bucket', 'corpus/indice/ampliacion/test.json', raw, 'application/json')
+        opened.assert_called_once()
+        slept.assert_not_called()
+
 if __name__=='__main__':unittest.main()
