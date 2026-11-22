@@ -34,6 +34,8 @@ concurrency:
   cancel-in-progress: false
 jobs:
   rebuild:
+    # LEGACY DESACTIVADO: el índice léxico completo no debe crecer en GitHub.
+    if: ${{ false }}
     runs-on: ubuntu-latest
     timeout-minutes: 45
     steps:
