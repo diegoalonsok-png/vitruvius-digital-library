@@ -8,3 +8,21 @@ __pycache__/
 *.key
 node_modules/
 package-lock.json
+
+# Bibliotheca: nunca incorporar nuevos libros ni índices voluminosos a GitHub.
+# Las obras ya versionadas no se borran ni se alteran por estas reglas:
+# la migración verificable a R2 se hace antes de retirar cualquier archivo.
+/data/classics-corpus/*-grc.json
+/data/classics-corpus/*-la.json
+/data/classics-corpus/*-en.json
+/data/classics-corpus/*-es.json
+/data/classics-corpus/*-fr.json
+/data/classics-corpus/*-it.json
+/data/classics-corpus/*-de.json
+/data/classics-corpus/*-pt.json
+/data/index/classics/**
+/data/structured/*.json
+/corpus/*.html
+/clasicos/**/*.pdf
+/clasicos/**/*.epub
+/clasicos/**/*.tei
