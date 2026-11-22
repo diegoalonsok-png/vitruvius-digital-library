@@ -96,6 +96,22 @@ jobs:
           LIMITE: ${{ inputs.limite || '8' }}
         run: python scripts/r2-importar-clasicos.py
 
+      # Un original recién subido puede no haber existido al descubrir
+      # traducciones antes de la tanda. Rebuscar EN -> FR -> ES ahora, con
+      # metadatos de edición y derechos; ningún archivo completo va a GitHub.
+      - name: Buscar traducciones humanas para los originales recién incorporados
+        if: ${{ github.event_name != 'workflow_dispatch' || inputs.traducciones }}
+        run: |
+          cp r2-clasicos-informe.json r2-clasicos-informe-originales.json
+          cp data/r2/clasicos-candidatos.json /tmp/clasicos-candidatos-antes-traducciones.json
+          python scripts/r2-candidatos-traducciones.py --nuevas --limite 12 --idiomas en,fr,es
+          if cmp -s /tmp/clasicos-candidatos-antes-traducciones.json data/r2/clasicos-candidatos.json; then
+            echo 'No se encontraron traducciones candidatas nuevas para esta tanda.'
+          else
+            echo 'Se encontraron traducciones candidatas: importar únicamente si pasan los controles de fuente, idioma y derechos.'
+            LIMITE=4 python scripts/r2-importar-clasicos.py
+          fi
+
       - name: Ficha de repertorio para las obras nuevas
         # No publicar contadores, fichas ni índices si falló un paso anterior.
         run: python scripts/r2-fichas-obras-nuevas.py
@@ -126,6 +142,9 @@ jobs:
           python scripts/sincronizar-reconciliacion.py
           python scripts/cifras-corpus.py
           python scripts/sync-classics-coverage.py
+
+      - name: Actualizar el índice de autores y obras desde las fichas ya acreditadas
+        run: node scripts/refresh-index-auctorum.mjs
 
       - name: Indexar las obras de la tanda y subir el índice a R2
         # No publicar contadores, fichas ni índices si falló un paso anterior.
@@ -186,7 +205,15 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/r2 data/cifras-corpus.json data/bibliotheca-graeca-latina-I-bce-I-ce.json data/classics-corpus data/perseus-provenance-audit.json reports
+          # Nunca poner textos completos ni fragmentos de índice de Bibliotheca en GitHub.
+          git add -- data/r2 data/cifras-corpus.json data/bibliotheca-graeca-latina-I-bce-I-ce.json \
+            data/classics-corpus/search-registry.json data/classics-corpus/coverage-audit.json \
+            data/perseus-provenance-audit.json reports index-auctorum-operum.html
+          # Aun si algún generador antiguo modificó un texto, no lo versionar aquí.
+          if git diff --cached --name-only | grep -E '^data/classics-corpus/[a-z0-9-]+-(grc|la|en|fr|es|it|de|pt)\\.json$|^data/index/classics/'; then
+            echo '::error::La tanda intenta incluir libros o índices voluminosos en GitHub.'
+            exit 1
+          fi
           if git diff --cached --quiet; then echo "Sin cambios"; exit 0; fi
           git commit -m "Biblioteca clásica: tanda diaria incorporada, indexada y contada"
           for i in 1 2 3 4 5; do
