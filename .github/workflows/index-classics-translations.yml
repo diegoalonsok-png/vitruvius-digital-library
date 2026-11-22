@@ -20,7 +20,8 @@ concurrency:
   cancel-in-progress: false
 jobs:
   lexical-index:
-    if: github.ref == 'refs/heads/main'
+    # LEGACY DESACTIVADO: no publicar índices originales/traducciones en GitHub.
+    if: ${{ false }}
     runs-on: ubuntu-latest
     timeout-minutes: 60
     steps:
