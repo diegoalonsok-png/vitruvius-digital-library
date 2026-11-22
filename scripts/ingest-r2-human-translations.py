@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Import human TEI translations of already archived Greek works into R2.
+"""Import human TEI translations of already archived Greek and Latin works into R2.
 
 Never invent a translation, duplicate a (work,language), replace an original,
 or count a translation as an additional ancient work. Persist source TEI,
@@ -48,7 +48,7 @@ def source_files(row):
     for origin in row.get("sources",[]):
         u=origin.get("sourceUrl","")
         match=re.fullmatch(
-          r"https://raw\.githubusercontent\.com/(PerseusDL/canonical-greekLit)/master/(data/[A-Za-z0-9_-]+/[A-Za-z0-9_-]+)/[A-Za-z0-9._-]+\.xml",u)
+          r"https://raw\.githubusercontent\.com/(PerseusDL/canonical-(?:greekLit|latinLit))/master/(data/[A-Za-z0-9_-]+/[A-Za-z0-9_-]+)/[A-Za-z0-9._-]+\.xml",u)
         if not match: continue
         repo,directory=match.groups()
         code=WORK_CODE.search(origin.get("editionUrn",""))
@@ -62,7 +62,7 @@ def source_files(row):
             if file.get("type") != "file" or not TRANSLATION.search(name): continue
             if not name.startswith(code.group(1)+"."): continue
             url=file.get("download_url","")
-            if url.startswith("https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/"):
+            if url.startswith("https://raw.githubusercontent.com/"+repo+"/"):
                 yield {"url":url,"filename":name,"workCode":code.group(1)}
         return
 
@@ -191,8 +191,10 @@ def acquire(limit):
     previous=m.read(MANIFEST).get("editions",[]) if MANIFEST.exists() else []
     covered.update((e["workId"],e["language"]) for e in previous)
     original=m.read(ORIGINALS).get("editions",[])
-    options=[r for r in original if r["workId"] in known and r["language"]=="grc" and (r["workId"],"en") not in covered]
-    # Keep deterministic order; skip sources with no eligible, human translation.
+    options=[r for r in original if r["workId"] in known
+             and r["language"] in ("grc","la")
+             and any((r["workId"],lang) not in covered for lang in ("en","fr","es"))]
+    # Source language is preserved; translations do not create a second work.
     options.sort(key=lambda r:(r["workId"],r["title"]))
     report={"generated":datetime.now(timezone.utc).isoformat(),"considered":len(options),
             "published":[],"deferred":[]}
@@ -200,25 +202,38 @@ def acquire(limit):
         m.save(BASE/"published.json",report)
         return report
     s3,bucket=m.client()
+    lang_codes={"eng":"en","fre":"fr","fra":"fr","spa":"es"}
+    rank={"en":0,"fr":1,"es":2}
     for row in options:
         if len(report["published"])>=limit: break
         try:
             sources=list(source_files(row))
             if not sources: raise ValueError("No hay traducción TEI descargable en Perseus")
-            errors=[]
+            eligible=[]
             for src in sources:
-                # One human translation per language and work; English first.
-                if not re.search(r"\.perseus-eng\d+\.xml$",src["filename"]):continue
+                match=re.search(r"\.perseus-(eng|fre|fra|spa)\d+\.xml$",src["filename"])
+                if not match: continue
+                lang=lang_codes[match.group(1)]
+                if (row["workId"],lang) in covered: continue
+                eligible.append((rank[lang],lang,src))
+            eligible.sort(key=lambda x:(x[0],x[2]["filename"]))
+            if not eligible: continue
+            errors=[]
+            obtained=0
+            for _,lang,src in eligible:
+                if len(report["published"])>=limit: break
+                if (row["workId"],lang) in covered: continue
                 try:
                     found=publish(row,src,s3,bucket)
-                    if (found["workId"],found["language"]) in covered: continue
+                    if found["language"]!=lang:
+                        raise ValueError("Idioma del fichero y TEI no coincide")
                     report["published"].append(found)
                     covered.add((found["workId"],found["language"]))
-                    print("VERIFIED_TRANSLATION",row["workId"],found["language"],found["passages"],flush=True)
-                    break
+                    obtained+=1
+                    print("VERIFIED_TRANSLATION",row["workId"],lang,found["passages"],flush=True)
                 except Exception as exc:
                     errors.append(src["filename"]+": "+str(exc)[:180])
-            else:
+            if not obtained and errors:
                 raise ValueError("Sin traducción publicable: "+"; ".join(errors[:3]))
         except Exception as exc:
             report["deferred"].append({"workId":row["workId"],"reason":str(exc)[:350]})
