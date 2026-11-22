@@ -132,6 +132,17 @@ def procesar(o, ctx):
             if o.get("idioma") == "spa" and not es_castellano(doc):
                 raise ValueError("la edición no figura en castellano")
             m, f, anio = elegir_pdf(ident, ctx["anio_max"], ctx["max_bytes"])
+            if o.get("traduccionDe"):
+                # No asumir que "English" en una búsqueda o en el título asegura
+                # que el documento seleccionado realmente esté en inglés.
+                declared = m.get("language") or []
+                declared = declared if isinstance(declared, list) else [declared]
+                language = fold(" ".join(str(value) for value in declared))
+                labels = {"en": ("english", "eng"),
+                          "fr": ("french", "fre", "fra"),
+                          "es": ("spanish", "spa", "espanol", "castellano")}
+                if not any(tag in language.split() for tag in labels.get(o["lengua"], ())):
+                    raise ValueError("El idioma de la traducción no está acreditado en los metadatos de la edición")
             datos = get(f"https://archive.org/download/{ident}/{urllib.parse.quote(f['name'])}", binario=True,
                         timeout=600)
             sha = hashlib.sha256(datos).hexdigest()
@@ -245,6 +256,16 @@ def main():
     ctx = {"s3": s3, "shas": shas, "concepts": concepts, "anio_max": cand["limites"]["anioMaximo"],
            "max_bytes": cand["limites"]["maxMiB"] * 1048576}
     pendientes = [o for o in cand["obras"] if o["id"] not in hechos]
+    # Una cola corrupta no debe lanzar dos subidas concurrentes bajo la misma clave R2.
+    seen_pending = set()
+    unique_pending = []
+    for candidate in pendientes:
+        if candidate["id"] in seen_pending:
+            print(f"SALTA ID REPETIDO EN COLA: {candidate['id']}")
+            continue
+        seen_pending.add(candidate["id"])
+        unique_pending.append(candidate)
+    pendientes = unique_pending
 
     # Regla de no repetición: una obra que ya está en la biblioteca —ficha,
     # facsímil alojado o PDF del repositorio— no se vuelve a subir. Sólo se
@@ -265,6 +286,20 @@ def main():
         elif motivo:
             print(f"ADMITE {o['id']}: {motivo}")
     pendientes = [o for o, _ in admitidas]
+    # Una traducción nunca se ingresa como obra independiente si aún no está
+    # almacenado en R2 el original al que debe quedar vinculada.
+    sin_original = [o["id"] for o in pendientes
+                    if o.get("traduccionDe") and o["traduccionDe"] not in hechos]
+    for candidate_id in sin_original:
+        print(f"POSPONE TRADUCCIÓN SIN ORIGINAL R2: {candidate_id}")
+    pendientes = [o for o in pendientes
+                  if not o.get("traduccionDe") or o["traduccionDe"] in hechos]
+    # Conservar el orden de llegada dentro de cada grupo. Primero las traducciones
+    # humanas candidatas en inglés, después francés, después castellano;
+    # los nuevos originales no se descartan, se procesan en las tandas siguientes.
+    priority = {"en": 0, "fr": 1, "es": 2}
+    pendientes.sort(key=lambda o: priority.get(o.get("lengua"), 3)
+                    if o.get("traduccionDe") else 3)
 
     limite = int(os.environ.get("LIMITE", "0") or 0)
     if limite:
