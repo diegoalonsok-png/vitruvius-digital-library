@@ -1,0 +1,95 @@
+name: Bibliotheca · traducciones humanas TEI a Cloudflare R2
+run-name: Bibliotheca R2 · traducciones sin duplicados · ${{ github.event_name }}
+# Works with the original-text acquisition job, never alongside it.
+on:
+  workflow_dispatch:
+  schedule:
+    # Eight staggered runs daily, alternating with original uploads.
+    - cron: '47 1,4,7,10,13,16,19,22 * * *'
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/ingest-human-translations-r2.yml'
+      - 'scripts/ingest-r2-human-translations.py'
+permissions:
+  contents: write
+concurrency:
+  group: vdl-classics-expansion-r2
+  cancel-in-progress: false
+jobs:
+  translations:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 150
+    env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      R2_ACCOUNT_ID: ${{ secrets.R2_ACCOUNT_ID }}
+      R2_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
+      R2_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
+      R2_BUCKET: ${{ secrets.R2_BUCKET }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: python -m pip install --quiet 'boto3>=1.36,<2'
+      - name: Validar extracción TEI y el índice literal antes de subir
+        run: |
+          python -m py_compile scripts/ingest-r2-human-translations.py
+          python scripts/ingest-r2-human-translations.py --self-test
+          python scripts/test-expand-classics-r2.py
+      - name: Localizar, cotejar, subir a R2 y verificar traducciones humanas
+        run: python -u scripts/ingest-r2-human-translations.py --publish --limit 4
+      - name: Comprobar si hubo nuevas traducciones publicadas
+        shell: bash
+        run: |
+          python - <<'PY'
+          import json,os
+          from pathlib import Path
+          p=Path('/tmp/vdl-classics-translations/published.json')
+          j=json.loads(p.read_text('utf-8'))
+          n=len(j.get('published',[]))
+          with open(os.environ['GITHUB_ENV'],'a') as out:
+              out.write('PUBLISHED_TRANSLATIONS='+('true' if n else 'false')+'\n')
+          with open(os.environ['GITHUB_STEP_SUMMARY'],'a') as out:
+              out.write('### Traducciones humanas de Bibliotheca\n')
+              out.write(f'Publicadas y verificadas en R2: **{n}**. Diferidas: {len(j.get("deferred",[]))}.\n')
+              out.write('Los originales se conservan; las traducciones no cuentan como obras distintas.\n')
+              for r in j.get('published',[]):
+                  out.write(f'- {r["author"]} — {r["title"]} · {r["language"]} · {", ".join(r["translators"])} · [R2]({r["url"]})\n')
+          PY
+      - name: Sincronizar catálogo y buscador tras publicación verificada
+        if: env.PUBLISHED_TRANSLATIONS == 'true'
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          published=no
+          for attempt in 1 2 3 4 5; do
+            git fetch origin main
+            git reset --hard origin/main
+            python scripts/ingest-r2-human-translations.py --finalize
+            python scripts/sync-classics-coverage.py
+            python scripts/sync-bibliotheca-github-r2.py
+            node scripts/audit-classical-corpus.mjs
+            git add data/bibliotheca-graeca-latina-I-bce-I-ce.json data/classics-corpus/search-registry.json data/r2/classics-translation-manifest.json data/classics-corpus/coverage-audit.json data/classics-corpus/translation-availability-222.json data/r2/bibliotheca-inventario-unificado.json data/cifras-corpus.json
+            if git diff --cached --quiet; then published=yes; break; fi
+            git commit -m 'Publicar traducciones humanas verificadas en R2 e indexarlas en Bibliotheca'
+            if git push origin HEAD:main; then published=yes; break; fi
+            if [ "$attempt" -eq 5 ]; then exit 1; fi
+          done
+          test "$published" = yes
+      - name: Conservar diagnóstico verificable del lote
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: bibliotheca-human-translations-r2-report
+          path: /tmp/vdl-classics-translations/published.json
+          if-no-files-found: ignore
+          retention-days: 30
