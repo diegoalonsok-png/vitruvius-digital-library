@@ -267,8 +267,20 @@ for(const w of allWorks){
    // accepting an unaligned pair: never silently infer verse/word equivalence.
    const noEquivalence = /no automatic equivalence|no automatic or unverified locus equivalence|no equivalencias|no alinead|not aligned|not equivalent|not asserted (?:to be )?equivalent|do not imply certified one-to-one mapping|without fabricated Greek correspondences/i.test(target.alignment||"");
    assert(target.alignmentStatus==="unaligned" || noEquivalence,"Original and translation have no shared locus (undeclared): "+w.id+" / "+translation.language);
-   assert(typeof target.alignment==="string"&&noEquivalence,"Unaligned translation needs an explicit reader-facing warning: "+translation.path);
-   explicitlyUnaligned.push({work:w.id,translation:translation.language,reason:target.alignment});
+   // The shared scholarly reader already renders this exact explicit warning
+   // when an unaligned edition omits optional `alignment` metadata. Recognize
+   // that documented reader-facing fallback rather than editing historical
+   // translation passages or falsely claiming equivalence.
+   const readerFallback="No existe alineación filológica certificada entre este texto, traducciones y manuscritos.";
+   const unalignedReaderWarning=target.alignmentStatus==="unaligned" &&
+    !target.alignment && translation.reader?.startsWith("classics-text-reader.html?") &&
+    readFileSync(pathOf("assets/classics-text-reader.js"),"utf8").includes(
+     'const declaredAlignment=corpus.alignment||"'+readerFallback+'"'
+    );
+   assert((typeof target.alignment==="string"&&noEquivalence)||unalignedReaderWarning,
+    "Unaligned translation needs an explicit reader-facing warning: "+translation.path);
+   explicitlyUnaligned.push({work:w.id,translation:translation.language,
+    reason:target.alignment||readerFallback});
    continue;
   }
   if(target.chicago18Bibliography)
