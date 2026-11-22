@@ -9,6 +9,7 @@ run-name: Bibliotheca R2 · lote conservador de 12 grupos · ${{ github.event_na
 # Solicitud 2026-11-17: nuevo lote de clásicos hacia la meta de 500, con indexación de los originales que superen validaciones.
 # Revisión 2026-11-17: ejecutar siguiente lote solo con fuentes no duplicadas, CTS corregidos y pruebas de extracción.
 # Continuación 2026-11-22: incorporar más originales latinos y griegos a R2, sin repetir obras, con SHA y lector verificados.
+# Nueva tanda 2026-11-22: tras 11 originales publicados, continuar adquisiciones TEI griegas y latinas solo con códigos CTS no repetidos.
 on:
   workflow_dispatch:
   schedule:
