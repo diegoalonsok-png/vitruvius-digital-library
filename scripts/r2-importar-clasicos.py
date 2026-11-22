@@ -16,7 +16,7 @@
   como OCR no revisado: localiza páginas, no reemplaza la lectura.
 * Nunca borra nada, ni en R2 ni en el repositorio.
 """
-import hashlib, io, json, os, sys, time, urllib.parse, urllib.request
+import hashlib, io, json, os, re, sys, time, urllib.parse, urllib.request
 from collections import defaultdict
 from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
@@ -116,6 +116,30 @@ def es_loeb(titulo, editor, anio):
             and any(w in fold(ed) for w in ("heinemann", "putnam", "harvard")))
 
 
+def credito_traductor(paginas, idioma):
+    """No publicar como traducción reconocida un PDF con idioma pero sin traductor acreditado.
+
+    Solo un crédito explícito en los primeros folios; no inventar atribuciones,
+    ni deducir que toda edición titulada 'translation' es una traducción humana.
+    """
+    portada = re.sub(r"\\s+", " ", " ".join(paginas[:20]))
+    pautas = {
+        "en": r"\\b(?:translated(?:\\s+into\\s+english|\\s+from\\s+(?:the\\s+)?(?:greek|latin))?|translation|english\\s+version)\\s+by\\s+",
+        "fr": r"\\b(?:traduit(?:e)?|traduction)\\s+(?:du\\s+grec\\s+|du\\s+latin\\s+)?par\\s+",
+        "es": r"\\b(?:traducido|traducida|traducci[oó]n|versi[oó]n\\s+castellana)\\s+(?:del\\s+griego\\s+|del\\s+lat[ií]n\\s+)?(?:por|de)\\s+",
+    }
+    match = re.search(pautas.get(idioma, r"(?!)"), portada, flags=re.IGNORECASE)
+    if not match:
+        return None
+    # Guardar solo una indicación legible: las separaciones OCR pueden ser
+    # imperfectas. Esto NO certifica prestigio académico ni cotejo filológico.
+    secuencia = portada[match.end():match.end()+95].strip(" ,.;:-")
+    nombre = re.match(r"([A-ZÀ-Ý][A-Za-zÀ-ÿ.'’-]+(?:\\s+(?:[A-ZÀ-Ý][A-Za-zÀ-ÿ.'’-]+|[A-ZÀ-Ý]\\.)){1,5})", secuencia)
+    if not nombre:
+        return None
+    return nombre.group(1)
+
+
 def procesar(o, ctx):
     import fitz
     rechazos = []
@@ -158,6 +182,9 @@ def procesar(o, ctx):
             portada = fold(" ".join(paginas[:20]))
             if not any(fold(c).split()[0] in portada for c in o["creador"].split("|")):
                 raise ValueError("el autor no aparece en las primeras páginas")
+            traductor = credito_traductor(paginas, o["lengua"]) if o.get("traduccionDe") else None
+            if o.get("traduccionDe") and not traductor:
+                raise ValueError("Traducción sin nombre de traductor acreditado en la portada del volumen; requiere revisión")
             clave_pdf = f"clasicos/pdf/{o['id']}.pdf"
             clave_txt = f"clasicos/texto/{o['id']}.json"
             digital, indice = pdf_bundle(o["id"], paginas, methods, sha, ctx["concepts"], ident)
@@ -195,6 +222,9 @@ def procesar(o, ctx):
             ficha = {
                 "id": o["id"], "autor": o["autor"], "obra": o["obra"], "lengua": o["lengua"],
                 **({"traduccionDe": o["traduccionDe"]} if o.get("traduccionDe") else {}),
+                **({"traductor": traductor,
+                    "acreditacionTraduccion": "Crédito de traductor en portada OCR; requiere cotejo editorial independiente"}
+                   if traductor else {}),
                 **({"coleccion": o["coleccion"]} if o.get("coleccion") else {}),
                 "idiomaEdicion": o.get("idioma") or ("bilingue-en" if "english translation" in fold(titulo) else "s/d"),
                 "tanda": o.get("tanda", 1),
