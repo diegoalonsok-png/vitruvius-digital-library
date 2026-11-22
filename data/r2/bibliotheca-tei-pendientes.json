@@ -1,0 +1,19 @@
+{
+  "schema": "vdl-bibliotheca-tei-pendientes-r2-v1",
+  "metodo": "Fuentes TEI primarias con edición y licencia acreditadas. Sin archivos completos en GitHub. Sólo se publican en Cloudflare R2 después de verificar SHA-256, identificador CTS, lengua, integridad y ausencia de edición remota con la misma clave.",
+  "obras": [
+    {
+      "id": "aristoteles-meteorologica",
+      "author": "Aristóteles",
+      "title": "Μετεωρολογικά · Meteorologica",
+      "language": "grc",
+      "ctsUrn": "urn:cts:greekLit:tlg0086.tlg026.1st1K-grc2",
+      "source": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/73b30bef380192988c6b31e4f8649781c534473e/data/tlg0086/tlg026/tlg0086.tlg026.1st1K-grc2.xml",
+      "sourceEdition": "Francis H. Fobes (ed.), Aristotelis Meteorologicorum Libri Quattuor, Cambridge, MA: Harvard University Press, 1919; TEI OpenGreekAndLatin/First1KGreek",
+      "license": "CC BY-SA 4.0",
+      "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "editorialScope": "Texto griego distribuido en cuatro libros y capítulos con referencias CTS; el aparato de notas del TEI NO se mezcla con el texto principal.",
+      "rationale": "El inventario federado no registra transcripción griega indexada para esta obra; el facsímil R2 de 1923 se conserva como edición independiente."
+    }
+  ]
+}
