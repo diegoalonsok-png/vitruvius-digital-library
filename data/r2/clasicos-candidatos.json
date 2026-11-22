@@ -83,7 +83,9 @@
    "tanda": 1,
    "fuenteEdicion": "https://archive.org/details/artemidoridaldia00arte",
    "editorEdicion": "Edición colectiva grecolatina, París, Marc Orry, 1603",
-   "justificacion": "Edición histórica con otros autores y textos en paralelo: verificar el intervalo de Artemidoro y OCR griego antes de declararla completa o indexarla."
+   "justificacion": "Edición histórica con otros autores y textos en paralelo: verificar el intervalo de Artemidoro y OCR griego antes de declararla completa o indexarla.",
+   "requiereDelimitacionEditorial": true,
+   "notaDelimitacion": "La edición de 1603 contiene obras de Artemidoro, Achmet, Astrampsico y Nicéforo. Delimitar folios antes de asignar a Artemidoro una transcripción, un índice semántico o una traducción paralela."
   },
   {
    "id": "alcifron-epistolae",
