@@ -2,6 +2,39 @@
  "schema": "vdl-r2-fichas-nuevas-metadatos-1",
  "descripcion": "Datos de la obra antigua (no de la edición) para las obras que entran al repertorio desde un facsímil alojado en R2. Lo que no está aquí queda consignado como pendiente en la ficha: no se completa por inferencia. Género y datación son de nivel catalográfico y no equivalen a dictamen de autoría ni a cotejo.",
  "obras": {
+  "artemidoro-oneirocritica": {
+   "titulo": "Ὀνειροκριτικά · Oneirocritica",
+   "genero": "Tratado sobre interpretación de sueños",
+   "datacion": "Siglo II d. C.",
+   "aliases": [
+    "Artemidorus Daldianus",
+    "Artemidoro de Daldis",
+    "Oneirocritica"
+   ],
+   "alcance": "El volumen de 1603 reúne a Artemidoro con Ahmad ibn Sirin, Astrampsico y Nicéforo; separar sus secciones antes de ofrecer lectura alineada."
+  },
+  "alcifron-epistolae": {
+   "titulo": "Ἐπιστολαί · Epistulae",
+   "genero": "Ficción epistolar griega",
+   "datacion": "Siglos II–III d. C. (datación discutida)",
+   "aliases": [
+    "Alciphron",
+    "Alcifrón",
+    "Cartas de Alcifrón"
+   ],
+   "alcance": "Revisar el texto griego y la edición de Meineke de 1853; Internet Archive indica 'latín' en los metadatos del escaneo."
+  },
+  "solino-collectanea": {
+   "titulo": "Collectanea rerum memorabilium · Polyhistor",
+   "genero": "Geografía antigua y mirabilia",
+   "datacion": "Siglos III–IV d. C. (datación discutida)",
+   "aliases": [
+    "C. Iulius Solinus",
+    "Solinus",
+    "Polyhistor"
+   ],
+   "alcance": "Edición de Theodor Mommsen de 1895; distinguir la redacción antigua de las reelaboraciones tardías."
+  },
   "apolonio-argonauticas": {
    "titulo": "Ἀργοναυτικά · Argonautica",
    "genero": "Poesía épica helenística",
