@@ -1,0 +1,98 @@
+name: Bibliotheca - indexar fuentes TEI pendientes en R2
+
+# Lotes conservadores de originales griegos con procedencia, licencias y loci.
+# Los textos completos se descargan temporalmente en el runner y se publican
+# solo en R2, nunca en GitHub. No se sobrescriben objetos de edición existentes.
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'data/r2/bibliotheca-tei-pendientes.json'
+      - 'scripts/indexar-bibliotheca-tei-r2.py'
+      - '.github/workflows/bibliotheca-tei-pendientes-r2.yml'
+
+permissions:
+  contents: write
+
+# El índice remoto y los manifiestos comparten una sola cola de publicación.
+concurrency:
+  group: vdl-classics-publication-main
+  cancel-in-progress: false
+
+jobs:
+  indexar:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Leer siempre la versión vigente de main
+        shell: bash
+        run: |
+          git fetch --quiet origin main
+          git checkout -B vdl-publication origin/main
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Validar programa y cola contra el inventario, sin escribir en R2
+        run: |
+          python -m py_compile scripts/indexar-bibliotheca-tei-r2.py
+          python scripts/indexar-bibliotheca-tei-r2.py --dry-run
+      - name: Instalar cliente de R2
+        run: python -m pip install --quiet 'boto3>=1.36'
+      - name: Extraer capítulos TEI, verificar edición y subir solo objetos nuevos a R2
+        env:
+          R2_ACCOUNT_ID: ${{ secrets.R2_ACCOUNT_ID }}
+          R2_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
+          R2_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
+        run: python scripts/indexar-bibliotheca-tei-r2.py
+      - name: Fusionar índice Conceptus del corpus remoto sin perder ediciones
+        env:
+          R2_ACCOUNT_ID: ${{ secrets.R2_ACCOUNT_ID }}
+          R2_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
+          R2_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
+          R2_BUCKET: vitruvius-bibliotheca
+        run: python scripts/index-r2-corpus-conceptus.py
+      - name: Sincronizar inventario y sección de autores
+        run: |
+          python scripts/sync-bibliotheca-github-r2.py
+          python scripts/build-bibliotheca-ocr-coverage.py
+          node scripts/refresh-index-auctorum.mjs
+      - name: Verificar simetría, registro y fuentes de lectura
+        run: |
+          node scripts/test-registro-corpus-r2.mjs
+          node scripts/test-r2-busqueda-clasicos.mjs
+          node scripts/test-bibliotheca-remote-conceptus.mjs
+      - name: Publicar únicamente manifiestos y referencias livianas
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add --             data/classics-corpus/search-registry.json             data/r2/corpus-manifest.json             data/r2/corpus-conceptus-manifest.json             data/r2/bibliotheca-inventario-unificado.json             data/r2/bibliotheca-ocr-coverage.json             index-auctorum-operum.html
+          if git diff --cached --quiet; then
+            echo 'Sin cambios bibliográficos; ninguna edición duplicada.'
+            exit 0
+          fi
+          git commit -qm 'Bibliotheca: indexar Meteorologica griega en R2 con loci y SHA verificados'
+          for attempt in 1 2 3 4; do
+            git fetch --quiet origin main
+            if ! git rebase origin/main; then
+              git rebase --abort
+              echo '::error::Conflicto con edición concurrente; no sobreescribir catálogos.'
+              exit 1
+            fi
+            if git push origin HEAD:main; then
+              echo 'Metadatos y vínculos publicados; contenido únicamente en R2.'
+              exit 0
+            fi
+            sleep 6
+          done
+          echo '::error::El repositorio avanzó; metadatos no publicados.'
+          exit 1
