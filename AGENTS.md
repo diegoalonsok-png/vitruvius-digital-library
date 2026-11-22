@@ -15,9 +15,13 @@
 
 **Prohibido** añadir estos archivos a `main` o a ramas temporales de GitHub, incluso como paso de preparación. El procesamiento temporal debe realizarse fuera del repositorio y la publicación del contenido debe dirigirse a R2.
 
-## 2. GitHub almacena exclusivamente la aplicación y referencias ligeras
+## 2. GitHub conserva todos sus archivos existentes; los libros nuevos van a R2
 
-En GitHub pueden quedar el código del sitio y los visores, configuración, manifiestos compactos, catálogos livianos, fichas bibliográficas, procedencia, licencias, IDs y URL de los objetos alojados en R2. No copiar textos completos ni generar grandes índices allí.
+**Prohibido borrar, trasladar, renombrar, sobrescribir o retirar textos y archivos ya presentes en GitHub como parte de una migración de almacenamiento.** Los originales, traducciones, textos por pasajes, índices y cualquier otro archivo histórico permanecen en su ubicación actual de GitHub; tampoco se los copia masivamente hacia R2 sin nueva autorización expresa.
+
+Para **obras y ediciones nuevas**, GitHub conserva solo código, visores, configuración, manifiestos compactos, catálogos livianos, fichas bibliográficas, procedencia, licencias, IDs y URL de los objetos alojados en R2. No añadir nuevos textos completos ni grandes índices a GitHub.
+
+**Sincronización obligatoria después de cada alta nueva en R2:** publicar en GitHub las fichas, identificadores, idioma, procedencia, SHA-256, URLs y los índices/manifiestos ligeros que permitan localizar la obra en Bibliotheca. Comprobar que el objeto de R2 sea legible en el visor antes de declarar la sincronización terminada. **No sustituir ni cambiar rutas locales existentes de GitHub**.
 
 ## 3. Flujo obligatorio de incorporación
 
@@ -40,6 +44,6 @@ En GitHub pueden quedar el código del sitio y los visores, configuración, mani
 
 ## 5. Corrección histórica pendiente
 
-En la rama provisional `bibliotheca-staging-aelian-20261121` se prepararon archivos grandes de *Claudio Eliano, Varia historia* antes de establecerse esta norma. **No fusionar esa rama**. Migrar su contenido a R2 únicamente cuando haya acceso de escritura y se complete la verificación; después, retirar los archivos voluminosos de la rama sin afectar a `main`. No confundir esta excepción histórica con autorización para repetir el procedimiento.
+En la rama provisional `bibliotheca-staging-aelian-20261121` se prepararon archivos grandes de *Claudio Eliano, Varia historia* antes de establecerse esta norma. **No fusionar esa rama ni borrar, trasladar o retirar sus archivos sin autorización expresa**. Mantenerla intacta; ninguna migración o liberación de espacio está autorizada por defecto.
 
 **Esta norma prevalece en todos los trabajos futuros de incorporación de libros a Bibliotheca.**
