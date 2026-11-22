@@ -27,6 +27,8 @@ concurrency:
 
 jobs:
   import-index-catalogue:
+    # LEGACY DESACTIVADO: el corpus y sus fragmentos deben ir a Cloudflare R2.
+    if: ${{ false }}
     runs-on: ubuntu-latest
     timeout-minutes: 120
     steps:
