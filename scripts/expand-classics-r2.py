@@ -22,6 +22,7 @@ import time
 import unicodedata
 from urllib.parse import urlparse
 from urllib.request import Request, urlopen
+from urllib.error import HTTPError, URLError
 import xml.etree.ElementTree as ET
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -337,9 +338,26 @@ def put_verified(s3, bucket, key, raw, mime):
     verified = s3.get_object(Bucket=bucket, Key=key)["Body"].read()
     if digest(verified) != digest(raw): raise ValueError("SHA256 de R2 discordante: " + key)
     # The public route used by readers must deliver the exact same bytes.
-    with urlopen(Request(HOST + "/" + key, headers={"User-Agent": "VitruviusAcademicCorpus/2.0"}), timeout=60) as response:
-        public = response.read(len(raw) + 1)
-    if digest(public) != digest(raw): raise ValueError("SHA256 público discordante: " + key)
+    # Transient Cloudflare 503/429/5xx responses must not strand an otherwise
+    # verified R2 edition. Never retry or accept a SHA256 mismatch.
+    public_url = HOST + "/" + key
+    for attempt in range(6):
+        try:
+            with urlopen(Request(public_url, headers={"User-Agent": "VitruviusAcademicCorpus/2.0"}), timeout=60) as response:
+                public = response.read(len(raw) + 1)
+        except HTTPError as exc:
+            if exc.code not in (404, 408, 425, 429, 500, 502, 503, 504) or attempt == 5:
+                raise
+            time.sleep(min(2 ** (attempt + 1), 20))
+            continue
+        except (URLError, TimeoutError, ConnectionError) as exc:
+            if attempt == 5:
+                raise
+            time.sleep(min(2 ** (attempt + 1), 20))
+            continue
+        if digest(public) != digest(raw):
+            raise ValueError("SHA256 público discordante: " + key)
+        break
 
 def local_inventory(root=ROOT):
     reg = read(root / "data/classics-corpus/search-registry.json")
