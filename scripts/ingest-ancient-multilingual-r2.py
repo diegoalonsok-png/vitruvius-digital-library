@@ -127,11 +127,14 @@ def candidates():
 
 def r2_client():
     import boto3
-    vals = [os.environ.get(x) for x in ('R2_ACCOUNT_ID', 'R2_ACCESS_KEY_ID', 'R2_SECRET_ACCESS_KEY')]
-    if not all(vals):
-        raise EnvironmentError('Missing R2 credentials: not publishing to GitHub instead')
+    # Reuse the public account endpoint already configured in the existing R2 importers.
+    vals = [os.environ.get('R2_ACCOUNT_ID') or '4e936bf2c4f185a87075ca506de93e69',
+            os.environ.get('R2_ACCESS_KEY_ID'), os.environ.get('R2_SECRET_ACCESS_KEY')]
+    if not vals[1] or not vals[2]:
+        raise EnvironmentError('Missing R2 access keys: not publishing to GitHub instead')
     return boto3.client('s3', endpoint_url=f'https://{vals[0]}.r2.cloudflarestorage.com',
-                        aws_access_key_id=vals[1], aws_secret_access_key=vals[2]), os.environ.get('R2_BUCKET') or 'vitruvius-bibliotheca'
+                        region_name='auto', aws_access_key_id=vals[1],
+                        aws_secret_access_key=vals[2]), os.environ.get('R2_BUCKET') or 'vitruvius-bibliotheca'
 
 
 def send_immutable(client, bucket, key, body, content_type):
