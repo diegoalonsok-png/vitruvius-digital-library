@@ -22,7 +22,9 @@ concurrency:
   cancel-in-progress: false
 jobs:
   ingest:
-    if: github.ref == 'refs/heads/main'
+    # LEGACY DESACTIVADO: descargaba fuentes griegas completas en GitHub.
+    # No reactivar hasta migrar el almacenamiento al destino R2.
+    if: ${{ false }}
     runs-on: ubuntu-latest
     timeout-minutes: 35
     env:
