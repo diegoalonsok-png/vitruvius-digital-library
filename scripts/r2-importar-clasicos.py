@@ -256,6 +256,12 @@ def main():
     ctx = {"s3": s3, "shas": shas, "concepts": concepts, "anio_max": cand["limites"]["anioMaximo"],
            "max_bytes": cand["limites"]["maxMiB"] * 1048576}
     pendientes = [o for o in cand["obras"] if o["id"] not in hechos]
+    # No confundir la digitalización de un volumen colectivo con una edición
+    # íntegra de un solo autor: sin rango de páginas verificado se pospone.
+    sin_delimitar = [o["id"] for o in pendientes if o.get("requiereDelimitacionEditorial")]
+    for candidate_id in sin_delimitar:
+        print(f"POSPONE VOLUMEN COLECTIVO SIN DELIMITAR: {candidate_id}")
+    pendientes = [o for o in pendientes if not o.get("requiereDelimitacionEditorial")]
     # Una cola corrupta no debe lanzar dos subidas concurrentes bajo la misma clave R2.
     seen_pending = set()
     unique_pending = []
