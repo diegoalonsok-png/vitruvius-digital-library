@@ -2,13 +2,13 @@
   "schema": "vitruvius-perseus-provenance-audit-v1",
   "generated": "2026-11-22",
   "scope": "Catálogo principal y ediciones TEI originales acreditadas y archivadas en R2; no certifica servicios externos",
-  "method": "Candidate PHI/TLG work codes are not CTS edition URNs. Source descriptions copied from the local index are claims to audit, not proof of an external canonical edition or an institutional link. No automatic CTS URNs or permanent URLs are invented. Incorporaciones R2: edición declarada en TEI fuente, SHA256, licencia y localizador comprobados; no se presume afiliación externa. Incorporaciones R2: edición declarada en TEI fuente, SHA256, licencia y localizador comprobados; no se presume afiliación externa.",
+  "method": "Candidate PHI/TLG work codes are not CTS edition URNs. Source descriptions copied from the local index are claims to audit, not proof of an external canonical edition or an institutional link. No automatic CTS URNs or permanent URLs are invented. Incorporaciones R2: edición declarada en TEI fuente, SHA256, licencia y localizador comprobados; no se presume afiliación externa. Incorporaciones R2: edición declarada en TEI fuente, SHA256, licencia y localizador comprobados; no se presume afiliación externa. Incorporaciones R2: edición declarada en TEI fuente, SHA256, licencia y localizador comprobados; no se presume afiliación externa.",
   "counts": {
-    "works": 288,
-    "worksWithCandidateWorkCodes": 196,
-    "versions": 263,
+    "works": 294,
+    "worksWithCandidateWorkCodes": 202,
+    "versions": 269,
     "worksWithPerseusSourceDescription": 142,
-    "verifiedEditionUrns": 18
+    "verifiedEditionUrns": 24
   },
   "links": {
     "scaife": "https://scaife.perseus.org/",
@@ -6700,6 +6700,192 @@
       "otherSourceEditions": [],
       "r2TextUrl": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg024-grc-8f03300c54095b7c.json",
       "r2Sha256": "8f03300c54095b7cbe38885e3a1f0e75e449b222f3fa7a1ef8f06a72befe6a7b",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "cts-stoa0033a-tlg043",
+      "author": "Pseudo-Aristotle",
+      "title": "De spiritu",
+      "originalLanguage": "grc",
+      "sourceReadiness": "original_r2_tei_publicado_con_sha256",
+      "originalIndexed": false,
+      "originalR2Registered": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "stoa0033a.tlg043"
+      ],
+      "versions": [
+        {
+          "language": "grc",
+          "path": "https://libros.vitruvius-digital-library.org/corpus/cts-stoa0033a-tlg043-grc-fbb8e47a5442ab83.json",
+          "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "reader": "classics-text-reader.html?work=cts-stoa0033a-tlg043&lang=grc"
+        }
+      ],
+      "ctsEditionUrn": "urn:cts:greekLit:stoa0033a.tlg043.1st1K-grc1",
+      "ctsStatus": "declared_and_checked_in_source_tei_header",
+      "ctsSourceUri": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/stoa0033a/tlg043/stoa0033a.tlg043.1st1K-grc1.xml",
+      "ctsEvidence": "TEI XML original, div[@type=edition]/@n, edición y SHA256 verificados mediante fuente R2: 8cc7cc0d65ae73df8bc640d7651d136f0b2a54b347e244f746895c99aaa410b6",
+      "ctsNote": "URN de edición declarada en TEI; no implica resolución CTS pública ni cotejo de manuscritos.",
+      "sourceRights": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "otherSourceEditions": [],
+      "r2TextUrl": "https://libros.vitruvius-digital-library.org/corpus/cts-stoa0033a-tlg043-grc-fbb8e47a5442ab83.json",
+      "r2Sha256": "fbb8e47a5442ab835e3539a0e9131ec3e7620051ddfb10812c600debf6952725",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "cts-stoa0033a-tlg028",
+      "author": "Pseudo-Aristotle",
+      "title": "De mundo",
+      "originalLanguage": "grc",
+      "sourceReadiness": "original_r2_tei_publicado_con_sha256",
+      "originalIndexed": false,
+      "originalR2Registered": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "stoa0033a.tlg028"
+      ],
+      "versions": [
+        {
+          "language": "grc",
+          "path": "https://libros.vitruvius-digital-library.org/corpus/cts-stoa0033a-tlg028-grc-f538e75f26d38956.json",
+          "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "reader": "classics-text-reader.html?work=cts-stoa0033a-tlg028&lang=grc"
+        }
+      ],
+      "ctsEditionUrn": "urn:cts:greekLit:stoa0033a.tlg028.1st1K-grc1",
+      "ctsStatus": "declared_and_checked_in_source_tei_header",
+      "ctsSourceUri": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/stoa0033a/tlg028/stoa0033a.tlg028.1st1K-grc1.xml",
+      "ctsEvidence": "TEI XML original, div[@type=edition]/@n, edición y SHA256 verificados mediante fuente R2: 96581ef4334570050022bae1858e55dad92db49ffc4a515bc7365fd8da162f8e",
+      "ctsNote": "URN de edición declarada en TEI; no implica resolución CTS pública ni cotejo de manuscritos.",
+      "sourceRights": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "otherSourceEditions": [],
+      "r2TextUrl": "https://libros.vitruvius-digital-library.org/corpus/cts-stoa0033a-tlg028-grc-f538e75f26d38956.json",
+      "r2Sha256": "f538e75f26d389569cd8bd5ddd0d6f8e6b925e71c30bf6c1d094c832b6c65678",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "cts-tlg0006-tlg001",
+      "author": "Eurípides",
+      "title": "Cyclops",
+      "originalLanguage": "grc",
+      "sourceReadiness": "original_r2_tei_publicado_con_sha256",
+      "originalIndexed": false,
+      "originalR2Registered": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "tlg0006.tlg001"
+      ],
+      "versions": [
+        {
+          "language": "grc",
+          "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0006-tlg001-grc-1ffde549798a4d64.json",
+          "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "reader": "classics-text-reader.html?work=cts-tlg0006-tlg001&lang=grc"
+        }
+      ],
+      "ctsEditionUrn": "urn:cts:greekLit:tlg0006.tlg001.perseus-grc2",
+      "ctsStatus": "declared_and_checked_in_source_tei_header",
+      "ctsSourceUri": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0006/tlg001/tlg0006.tlg001.perseus-grc2.xml",
+      "ctsEvidence": "TEI XML original, div[@type=edition]/@n, edición y SHA256 verificados mediante fuente R2: ba0084f208fcde2251abe19d365d67d9ca13a2a6a154a50c9294f5414ac29415",
+      "ctsNote": "URN de edición declarada en TEI; no implica resolución CTS pública ni cotejo de manuscritos.",
+      "sourceRights": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "otherSourceEditions": [],
+      "r2TextUrl": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0006-tlg001-grc-1ffde549798a4d64.json",
+      "r2Sha256": "1ffde549798a4d6448edba71f9eaeea1df340fee7383014c4abce32f2fc11763",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "cts-tlg0062-tlg025",
+      "author": "Luciano de Samósata",
+      "title": "Piscator",
+      "originalLanguage": "grc",
+      "sourceReadiness": "original_r2_tei_publicado_con_sha256",
+      "originalIndexed": false,
+      "originalR2Registered": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "tlg0062.tlg025"
+      ],
+      "versions": [
+        {
+          "language": "grc",
+          "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg025-grc-7a6f7ffa7b41f39e.json",
+          "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "reader": "classics-text-reader.html?work=cts-tlg0062-tlg025&lang=grc"
+        }
+      ],
+      "ctsEditionUrn": "urn:cts:greekLit:tlg0062.tlg025.perseus-grc2",
+      "ctsStatus": "declared_and_checked_in_source_tei_header",
+      "ctsSourceUri": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0062/tlg025/tlg0062.tlg025.perseus-grc2.xml",
+      "ctsEvidence": "TEI XML original, div[@type=edition]/@n, edición y SHA256 verificados mediante fuente R2: 1775e80069ffba9d9cd618fd13d96bdc0cd342ef8f6f10d670a77abf23c471e2",
+      "ctsNote": "URN de edición declarada en TEI; no implica resolución CTS pública ni cotejo de manuscritos.",
+      "sourceRights": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "otherSourceEditions": [],
+      "r2TextUrl": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg025-grc-7a6f7ffa7b41f39e.json",
+      "r2Sha256": "7a6f7ffa7b41f39e7bdc3df880521eb27f54362f4c0c2deb32aeb5e9066feec1",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "cts-tlg0062-tlg027",
+      "author": "Luciano de Samósata",
+      "title": "De Sacrificiis",
+      "originalLanguage": "grc",
+      "sourceReadiness": "original_r2_tei_publicado_con_sha256",
+      "originalIndexed": false,
+      "originalR2Registered": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "tlg0062.tlg027"
+      ],
+      "versions": [
+        {
+          "language": "grc",
+          "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg027-grc-9ead483cea0934e1.json",
+          "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "reader": "classics-text-reader.html?work=cts-tlg0062-tlg027&lang=grc"
+        }
+      ],
+      "ctsEditionUrn": "urn:cts:greekLit:tlg0062.tlg027.perseus-grc2",
+      "ctsStatus": "declared_and_checked_in_source_tei_header",
+      "ctsSourceUri": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0062/tlg027/tlg0062.tlg027.perseus-grc2.xml",
+      "ctsEvidence": "TEI XML original, div[@type=edition]/@n, edición y SHA256 verificados mediante fuente R2: df2d29330cc0e4f2acbb0ca3a4a5aea72804d6de4f2261caea0956b319f1b87b",
+      "ctsNote": "URN de edición declarada en TEI; no implica resolución CTS pública ni cotejo de manuscritos.",
+      "sourceRights": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "otherSourceEditions": [],
+      "r2TextUrl": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg027-grc-9ead483cea0934e1.json",
+      "r2Sha256": "9ead483cea0934e160dc038eef4efe0f14e5baab62d7354c2414e8ade243b286",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "cts-tlg0062-tlg026",
+      "author": "Luciano de Samósata",
+      "title": "Bis accusatus sive tribunalia",
+      "originalLanguage": "grc",
+      "sourceReadiness": "original_r2_tei_publicado_con_sha256",
+      "originalIndexed": false,
+      "originalR2Registered": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "tlg0062.tlg026"
+      ],
+      "versions": [
+        {
+          "language": "grc",
+          "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg026-grc-5c566e511a39164c.json",
+          "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "reader": "classics-text-reader.html?work=cts-tlg0062-tlg026&lang=grc"
+        }
+      ],
+      "ctsEditionUrn": "urn:cts:greekLit:tlg0062.tlg026.perseus-grc2",
+      "ctsStatus": "declared_and_checked_in_source_tei_header",
+      "ctsSourceUri": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0062/tlg026/tlg0062.tlg026.perseus-grc2.xml",
+      "ctsEvidence": "TEI XML original, div[@type=edition]/@n, edición y SHA256 verificados mediante fuente R2: 9927aa1ca37f30824fa8801cfb4742dd26987145e4288f48ea6b97d11654789e",
+      "ctsNote": "URN de edición declarada en TEI; no implica resolución CTS pública ni cotejo de manuscritos.",
+      "sourceRights": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "otherSourceEditions": [],
+      "r2TextUrl": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg026-grc-5c566e511a39164c.json",
+      "r2Sha256": "5c566e511a39164c34d12eee175b56c60af05c1d30791766e1b18242f49c8a66",
       "perseusAffiliation": false
     }
   ]

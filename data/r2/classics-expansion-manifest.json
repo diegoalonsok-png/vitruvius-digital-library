@@ -1,6 +1,6 @@
 {
  "schema": "vdl-classics-expansion-manifest-v1",
- "generated": "2026-11-22T17:30:17.650345+00:00",
+ "generated": "2026-11-22T17:44:43.353297+00:00",
  "discovery": {
   "sourceRecords": 1993,
   "alreadyIndexedCatalogueWorks": 252,
@@ -4820,6 +4820,258 @@
    "characters": 22670,
    "bytes": 87714,
    "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg024-grc-8f03300c54095b7c.json"
+  },
+  {
+   "workId": "cts-stoa0033a-tlg043",
+   "author": "Pseudo-Aristotle",
+   "title": "De spiritu",
+   "language": "grc",
+   "dating": "",
+   "sources": [
+    {
+     "title": "De spiritu",
+     "titleLanguage": "und",
+     "author": "pseudo-Aristotle",
+     "editors": [
+      "Immanuel Bekker"
+     ],
+     "bibliography": "Aristotelis Opera pseudo-Aristotle Immanuel Bekker Oxford University Press Oxford 3 355-367 1837 HathiTrust",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:stoa0033a.tlg043.1st1K-grc1",
+     "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/stoa0033a/tlg043/stoa0033a.tlg043.1st1K-grc1.xml",
+     "sourceSha256": "8cc7cc0d65ae73df8bc640d7651d136f0b2a54b347e244f746895c99aaa410b6",
+     "sourceReferences": [
+      "https://catalog.hathitrust.org/Record/001222547"
+     ],
+     "publicationYear": "1837",
+     "publisher": "Oxford University Press",
+     "publicationPlace": "Oxford",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/8cc7cc0d65ae73df8bc640d7651d136f0b2a54b347e244f746895c99aaa410b6.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-stoa0033a-tlg043-grc-fbb8e47a5442ab83.json",
+   "sha256": "fbb8e47a5442ab835e3539a0e9131ec3e7620051ddfb10812c600debf6952725",
+   "passages": 10,
+   "characters": 19345,
+   "bytes": 42157,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-stoa0033a-tlg043-grc-fbb8e47a5442ab83.json"
+  },
+  {
+   "workId": "cts-stoa0033a-tlg028",
+   "author": "Pseudo-Aristotle",
+   "title": "De mundo",
+   "language": "grc",
+   "dating": "",
+   "sources": [
+    {
+     "title": "De mundo",
+     "titleLanguage": "und",
+     "author": "pseudo-Aristotle",
+     "editors": [
+      "Immanuel Bekker"
+     ],
+     "bibliography": "Aristotelis Opera pseudo-Aristotle Immanuel Bekker Oxford University Press Oxford 3 131-157 1837 HathiTrust",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:stoa0033a.tlg028.1st1K-grc1",
+     "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/stoa0033a/tlg028/stoa0033a.tlg028.1st1K-grc1.xml",
+     "sourceSha256": "96581ef4334570050022bae1858e55dad92db49ffc4a515bc7365fd8da162f8e",
+     "sourceReferences": [
+      "https://catalog.hathitrust.org/Record/001222547"
+     ],
+     "publicationYear": "1837",
+     "publisher": "Oxford University Press",
+     "publicationPlace": "Oxford",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/96581ef4334570050022bae1858e55dad92db49ffc4a515bc7365fd8da162f8e.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-stoa0033a-tlg028-grc-f538e75f26d38956.json",
+   "sha256": "f538e75f26d389569cd8bd5ddd0d6f8e6b925e71c30bf6c1d094c832b6c65678",
+   "passages": 29,
+   "characters": 39967,
+   "bytes": 86700,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-stoa0033a-tlg028-grc-f538e75f26d38956.json"
+  },
+  {
+   "workId": "cts-tlg0006-tlg001",
+   "author": "Eurípides",
+   "title": "Cyclops",
+   "language": "grc",
+   "dating": "431 a. C.",
+   "sources": [
+    {
+     "title": "Κύκλωψ",
+     "titleLanguage": "grc",
+     "author": "Euripides",
+     "editors": [
+      "Gilbert Murray"
+     ],
+     "bibliography": "Euripides Euripidis Fabulae Gilbert Murray Oxford Clarendon Press 1902 1 The Internet Archive",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg0006.tlg001.perseus-grc2",
+     "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0006/tlg001/tlg0006.tlg001.perseus-grc2.xml",
+     "sourceSha256": "ba0084f208fcde2251abe19d365d67d9ca13a2a6a154a50c9294f5414ac29415",
+     "sourceReferences": [
+      "https://archive.org/details/euripidisfabulae01euriuoft/page/n25/mode/2up"
+     ],
+     "publicationYear": "1902",
+     "publisher": "Clarendon Press",
+     "publicationPlace": "Oxford",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/ba0084f208fcde2251abe19d365d67d9ca13a2a6a154a50c9294f5414ac29415.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-tlg0006-tlg001-grc-1ffde549798a4d64.json",
+   "sha256": "1ffde549798a4d6448edba71f9eaeea1df340fee7383014c4abce32f2fc11763",
+   "passages": 256,
+   "characters": 27433,
+   "bytes": 96375,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0006-tlg001-grc-1ffde549798a4d64.json"
+  },
+  {
+   "workId": "cts-tlg0062-tlg025",
+   "author": "Luciano de Samósata",
+   "title": "Piscator",
+   "language": "grc",
+   "dating": "c. 125–c. 180 d. C.",
+   "sources": [
+    {
+     "title": "Ἀναβιοῦντες ἢ Ἁλιεύς",
+     "titleLanguage": "grc",
+     "author": "Lucian",
+     "editors": [
+      "Austin Morris Harmon"
+     ],
+     "bibliography": "Lucian Lucian Austin Morris Harmon London William Heinemann Ltd. Cambridge, MA Harvard University Press 1921 3 Loeb Classical Library Internet Archive",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg0062.tlg025.perseus-grc2",
+     "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0062/tlg025/tlg0062.tlg025.perseus-grc2.xml",
+     "sourceSha256": "1775e80069ffba9d9cd618fd13d96bdc0cd342ef8f6f10d670a77abf23c471e2",
+     "sourceReferences": [
+      "https://archive.org/details/lucianhar03luciuoft/page/n13/mode/2up"
+     ],
+     "publicationYear": "1921",
+     "publisher": "William Heinemann Ltd.",
+     "publicationPlace": "London",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/1775e80069ffba9d9cd618fd13d96bdc0cd342ef8f6f10d670a77abf23c471e2.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-tlg0062-tlg025-grc-7a6f7ffa7b41f39e.json",
+   "sha256": "7a6f7ffa7b41f39e7bdc3df880521eb27f54362f4c0c2deb32aeb5e9066feec1",
+   "passages": 177,
+   "characters": 40859,
+   "bytes": 109716,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg025-grc-7a6f7ffa7b41f39e.json"
+  },
+  {
+   "workId": "cts-tlg0062-tlg027",
+   "author": "Luciano de Samósata",
+   "title": "De Sacrificiis",
+   "language": "grc",
+   "dating": "c. 125–c. 180 d. C.",
+   "sources": [
+    {
+     "title": "Περὶ Θυσιῶν",
+     "titleLanguage": "grc",
+     "author": "Lucian",
+     "editors": [
+      "Austin Morris Harmon"
+     ],
+     "bibliography": "Lucian Lucian Austin Morris Harmon London William Heinemann Ltd. Cambridge, MA Harvard University Press 1921 3 Loeb Classical Library Internet Archive",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg0062.tlg027.perseus-grc2",
+     "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0062/tlg027/tlg0062.tlg027.perseus-grc2.xml",
+     "sourceSha256": "df2d29330cc0e4f2acbb0ca3a4a5aea72804d6de4f2261caea0956b319f1b87b",
+     "sourceReferences": [
+      "https://archive.org/details/lucianhar03luciuoft/page/154/mode/2up"
+     ],
+     "publicationYear": "1921",
+     "publisher": "William Heinemann Ltd.",
+     "publicationPlace": "London",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/df2d29330cc0e4f2acbb0ca3a4a5aea72804d6de4f2261caea0956b319f1b87b.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-tlg0062-tlg027-grc-9ead483cea0934e1.json",
+   "sha256": "9ead483cea0934e160dc038eef4efe0f14e5baab62d7354c2414e8ade243b286",
+   "passages": 20,
+   "characters": 10801,
+   "bytes": 26355,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg027-grc-9ead483cea0934e1.json"
+  },
+  {
+   "workId": "cts-tlg0062-tlg026",
+   "author": "Luciano de Samósata",
+   "title": "Bis accusatus sive tribunalia",
+   "language": "grc",
+   "dating": "c. 125–c. 180 d. C.",
+   "sources": [
+    {
+     "title": "Δὶς κατηγορούμενος",
+     "titleLanguage": "grc",
+     "author": "Lucian",
+     "editors": [
+      "Austin Morris Harmon"
+     ],
+     "bibliography": "Lucian Lucian Austin Morris Harmon London William Heinemann Ltd. Cambridge, MA Harvard University Press 1921 3 Loeb Classical Library Internet Archive",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg0062.tlg026.perseus-grc2",
+     "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0062/tlg026/tlg0062.tlg026.perseus-grc2.xml",
+     "sourceSha256": "9927aa1ca37f30824fa8801cfb4742dd26987145e4288f48ea6b97d11654789e",
+     "sourceReferences": [
+      "https://archive.org/details/lucianhar03luciuoft/page/84/mode/2up"
+     ],
+     "publicationYear": "1921",
+     "publisher": "William Heinemann Ltd.",
+     "publicationPlace": "London",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/9927aa1ca37f30824fa8801cfb4742dd26987145e4288f48ea6b97d11654789e.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-tlg0062-tlg026-grc-5c566e511a39164c.json",
+   "sha256": "5c566e511a39164c34d12eee175b56c60af05c1d30791766e1b18242f49c8a66",
+   "passages": 123,
+   "characters": 35989,
+   "bytes": 92073,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg026-grc-5c566e511a39164c.json"
   }
  ],
  "githubPreserved": [
@@ -8025,44 +8277,44 @@
  ],
  "deferred": [
   {
-   "workId": "cts-phi0893-phi002",
+   "workId": "cts-phi1014-phi004",
    "sources": [
-    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0893/phi002/phi0893.phi002.perseus-lat2.xml"
+    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi1014/phi004/phi1014.phi004.perseus-lat1.xml"
    ],
    "reason": "Sin licencia abierta explícita admisible en la cabecera TEI"
   },
   {
-   "workId": "cts-phi0959-phi001",
+   "workId": "cts-phi1017-phi011",
    "sources": [
-    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0959/phi001/phi0959.phi001.perseus-lat2.xml"
+    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi1017/phi011/phi1017.phi011.perseus-lat2.xml"
    ],
    "reason": "Sin licencia abierta explícita admisible en la cabecera TEI"
   },
   {
-   "workId": "cts-phi0959-phi003",
+   "workId": "cts-phi1014-phi003",
    "sources": [
-    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0959/phi003/phi0959.phi003.perseus-lat2.xml"
+    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi1014/phi003/phi1014.phi003.perseus-lat1.xml"
    ],
    "reason": "Sin licencia abierta explícita admisible en la cabecera TEI"
   },
   {
-   "workId": "cts-phi0959-phi010",
+   "workId": "cts-phi1014-phi002",
    "sources": [
-    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0959/phi010/phi0959.phi010.perseus-lat2.xml"
+    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi1014/phi002/phi1014.phi002.perseus-lat1.xml"
    ],
    "reason": "Sin licencia abierta explícita admisible en la cabecera TEI"
   },
   {
-   "workId": "cts-phi1014-phi001",
+   "workId": "cts-phi1017-phi013",
    "sources": [
-    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi1014/phi001/phi1014.phi001.perseus-lat1.xml"
+    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi1017/phi013/phi1017.phi013.perseus-lat2.xml"
    ],
    "reason": "Sin licencia abierta explícita admisible en la cabecera TEI"
   },
   {
-   "workId": "cts-phi2331-phi009",
+   "workId": "cts-phi2331-phi010",
    "sources": [
-    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi2331/phi009/phi2331.phi009.perseus-lat2.xml"
+    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi2331/phi010/phi2331.phi010.perseus-lat2.xml"
    ],
    "reason": "Sin licencia abierta explícita admisible en la cabecera TEI"
   }
