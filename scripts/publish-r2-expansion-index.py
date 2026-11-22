@@ -16,7 +16,8 @@ s3, bucket = mod.client()
 prefix = "corpus/indice/ampliacion/" + mod.digest(manifest)[:24] + "/"
 def publish(path):
     mod.put_verified(s3, bucket, prefix + path.relative_to(source).as_posix(), path.read_bytes(), "application/json;charset=utf-8")
-with ThreadPoolExecutor(max_workers=8) as pool:
+# Keep public Cloudflare verification below the transient 503 rate threshold.
+with ThreadPoolExecutor(max_workers=4) as pool:
     list(pool.map(publish, sorted(source.rglob("*.json"))))
 descriptor = {"schema": "vdl-classics-expansion-index-v1", "url": mod.HOST + "/" + prefix + "manifest.json", "sha256": mod.digest(manifest), "works": data["works"], "passages": data["passages"], "generated": data["generated"], "verification": "SHA256 S3 y acceso público comprobados para cada corpus y fragmento"}
 mod.save(folder / "index-descriptor.json", descriptor)
