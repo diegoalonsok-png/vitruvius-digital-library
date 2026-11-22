@@ -47,6 +47,7 @@ def buscar(creador, titulos, idioma, anio_max):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--limite", type=int, default=0)
+    ap.add_argument("--nuevas", action="store_true", help="Sólo originales incorporados y verificados en la tanda actual")
     ap.add_argument("--idiomas", default="en,fr,es")
     args = ap.parse_args()
     idiomas = [i for i in args.idiomas.split(",") if i in IDIOMAS]
@@ -57,10 +58,14 @@ def main():
     ya = {o["id"] for o in candidatos["obras"]}
     por_id = {o["id"]: o for o in candidatos["obras"]}
 
-    faltan = [x for x in catalogo["items"] if not x.get("bilingueLoeb")]
+    faltan = [x for x in catalogo["items"] if not x.get("bilingueLoeb") and not x.get("traduccionDe")]
+    if args.nuevas:
+        informe = ROOT / "r2-clasicos-informe.json"
+        incorporadas = set(json.loads(informe.read_text(encoding="utf-8")).get("incorporadas", [])) if informe.exists() else set()
+        faltan = [x for x in faltan if x["id"] in incorporadas]
     if args.limite:
         faltan = faltan[:args.limite]
-    print(f"{len(faltan)} ediciones alojadas sin traducción en el propio volumen.")
+    print(f"{len(faltan)} originales R2 seleccionados para buscar traducción acreditada.")
 
     nuevos = []
     for obra in faltan:
@@ -92,7 +97,7 @@ def main():
                 "justificacion": (f"Traducción {IDIOMAS[idioma][1]} de dominio público de una obra ya alojada "
                                   f"sólo en lengua original; edición por revisar antes de darla por académica."),
             })
-            print(f"  + {nuevo_id}: {doc.get('identifier')} ({doc.get('year') or 's. f.'})")
+            print(f"  + {nuevo_id}: {doc.get('identifier')} ({doc.get('year') or 's. f.'}); candidato pendiente de acreditar traductor y edición.")
             break  # una traducción por obra y tanda
 
     if not nuevos:
