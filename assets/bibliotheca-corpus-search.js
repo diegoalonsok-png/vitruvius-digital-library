@@ -102,6 +102,13 @@ function loadStructured(e){
      .map(p=>({locus:p.locus,text:p[field]}))};
  });
 }
+function loadCriticalIndexed(e){
+ if(!cache.has(e.path))cache.set(e.path,fetch(e.path).then(r=>{if(!r.ok)throw Error("HTTP "+r.status);return r.json()}).then(d=>
+  d?.edition===e.workId.replace("-indexed","")&&Array.isArray(d.passages)&&d.passages.length>=700?
+   {attribution:e.sourceDescription,passages:d.passages.filter(p=>typeof p.latin==="string"&&p.latin.trim()).map(p=>({locus:p.locus,text:p.latin}))}:null
+ ).catch(()=>null));
+ return cache.get(e.path);
+}
 function loadHistoricalOcr(e){
  // Keep machine OCR separate from editorial Latin. Its locators are PDF pages only.
  if(!cache.has(e.path))cache.set(e.path,fetch(e.path).then(r=>{
@@ -148,7 +155,7 @@ async function search(q,{limit=8,isCancelled=()=>false}={}){
  // Bounded parallelism avoids a sudden 20-file burst for every first search.
  for(let offset=0;offset<targets.length;offset+=8){
   await Promise.all(targets.slice(offset,offset+8).map(async e=>{
-   const d=e.format==="html-text"?await loadHtml(e):e.format==="structured-bilingual"?await loadStructured(e):e.format==="historical-ocr-pages"?await loadHistoricalOcr(e):await loadJson(e);
+   const d=e.format==="html-text"?await loadHtml(e):e.format==="structured-bilingual"?await loadStructured(e):e.format==="historical-ocr-pages"?await loadHistoricalOcr(e):e.format==="critical-indexed-latin"?await loadCriticalIndexed(e):await loadJson(e);
    if(isCancelled())return;
    if(!d?.passages?.length){failed++;const remote=/^https?:/.test(e.path)||e.format==="remote-json-passages";if(remote)remoteFailed++;else localFailed++;failedSources.push({workId:e.workId,path:e.path,remote});return}loaded++;
    let total=0,units=0,first=null;
@@ -162,7 +169,7 @@ async function search(q,{limit=8,isCancelled=()=>false}={}){
    let link=e.reader||(e.format==="html-text"?e.path:"classics-text-reader.html?work="+e.workId+"&lang="+e.language);
    link+=(link.includes("?")?"&":"?")+"q="+encodeURIComponent(q);
    if(e.format==="historical-ocr-pages")link+="&page="+encodeURIComponent(first.passage.page);
-   else if(["json-passages","structured-bilingual","remote-json-passages"].includes(e.format))link+="&locus="+encodeURIComponent(first.passage.locus);
+   else if(["json-passages","structured-bilingual","remote-json-passages","critical-indexed-latin"].includes(e.format))link+="&locus="+encodeURIComponent(first.passage.locus);
    else if(first.passage.anchor)link+="#"+encodeURIComponent(first.passage.anchor);
    rows.push({type:"section",kind:"classic-text",workId:e.workId,language:e.language,
     title:e.author+" · "+e.title+" · "+(languageName[e.language]||e.language)+" · "+total+" coincidencias",
@@ -316,7 +323,7 @@ async function semanticSearch(q,{limit=6}={}){
     if(version&&!version.concepts.some(c=>c.concept===concept.id)){skippedNoHit++;return}
    }
    examined++;
-   const d=e.format==="html-text"?await loadHtml(e):e.format==="structured-bilingual"?await loadStructured(e):e.format==="historical-ocr-pages"?await loadHistoricalOcr(e):await loadJson(e);
+   const d=e.format==="html-text"?await loadHtml(e):e.format==="structured-bilingual"?await loadStructured(e):e.format==="historical-ocr-pages"?await loadHistoricalOcr(e):e.format==="critical-indexed-latin"?await loadCriticalIndexed(e):await loadJson(e);
    if(!d?.passages?.length){failed++;const remote=/^https?:/.test(e.path)||e.format==="remote-json-passages";if(remote)remoteFailed++;else localFailed++;failedSources.push({workId:e.workId,path:e.path,remote});return}
    loaded++;
    let first=null,total=0,units=0;
@@ -335,7 +342,7 @@ async function semanticSearch(q,{limit=6}={}){
       "classics-text-reader.html?work="+e.workId+"&lang="+e.language);
    let link=linkBase+(linkBase.includes("?")?"&":"?")+"q="+encodeURIComponent(first.term);
    if(e.format==="historical-ocr-pages")link+="&page="+encodeURIComponent(first.passage.page);
-   else if(["json-passages","structured-bilingual","remote-json-passages"].includes(e.format))link+="&locus="+encodeURIComponent(first.passage.locus);
+   else if(["json-passages","structured-bilingual","remote-json-passages","critical-indexed-latin"].includes(e.format))link+="&locus="+encodeURIComponent(first.passage.locus);
    else if(first.passage.anchor)link+="#"+encodeURIComponent(first.passage.anchor);
    else {
     // HTML text without an editorial anchor: point to a real matching
@@ -463,7 +470,7 @@ async function searchPassages(terms,{limit=600,workId="",allowedWorkIds=null,lan
   await Promise.all(targets.slice(offset,offset+4).map(async e=>{
    if(isCancelled())return;
    let d;
-   try {d=e.format==="html-text"?await loadHtml(e):e.format==="structured-bilingual"?await loadStructured(e):e.format==="historical-ocr-pages"?await loadHistoricalOcr(e):await loadJson(e)}
+   try {d=e.format==="html-text"?await loadHtml(e):e.format==="structured-bilingual"?await loadStructured(e):e.format==="historical-ocr-pages"?await loadHistoricalOcr(e):e.format==="critical-indexed-latin"?await loadCriticalIndexed(e):await loadJson(e)}
    catch(err){failed++;failures.push({workId:e.workId,language:e.language,path:e.path});return}
    if(!d?.passages?.length){failed++;failures.push({workId:e.workId,language:e.language,path:e.path});return}
    loaded++;
@@ -487,7 +494,7 @@ async function searchPassages(terms,{limit=600,workId="",allowedWorkIds=null,lan
     const base=e.reader||(e.format==="html-text"?e.path:"classics-text-reader.html?work="+e.workId+"&lang="+e.language);
     let href=base+(base.includes("?")?"&":"?")+"q="+encodeURIComponent(term);
     if(e.format==="historical-ocr-pages")href+="&page="+encodeURIComponent(p.page);
-    else if(["json-passages","structured-bilingual","remote-json-passages"].includes(e.format))href+="&locus="+encodeURIComponent(p.locus);
+    else if(["json-passages","structured-bilingual","remote-json-passages","critical-indexed-latin"].includes(e.format))href+="&locus="+encodeURIComponent(p.locus);
     else if(p.anchor)href+="#"+encodeURIComponent(p.anchor);
     else {const quote=p.text.slice(Math.max(0,hit[0]-24),Math.min(p.text.length,hit[1]+36)).trim();
      if(quote)href+="#:~:text="+encodeURIComponent(quote)}
