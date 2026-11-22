@@ -1,0 +1,102 @@
+name: Bibliotheca - originales hebreos arameos y griego koine a R2
+
+# Colección experimental separada: no modifica visores, catálogo publicado
+# ni obras existentes. Texto completo y sus índices se conservan SOLO en R2.
+# En GitHub solo se publica el registro pequeño de procedencia.
+on:
+  workflow_dispatch:
+    inputs:
+      limite:
+        description: "Número máximo de libros de edición por tanda (1-66)"
+        required: false
+        default: "6"
+  schedule:
+    - cron: "23 6 * * *"
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/ingest-ancient-multilingual-r2.yml"
+
+concurrency:
+  group: vdl-r2-ancient-multilingual
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  archive:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 90
+    env:
+      R2_ACCOUNT_ID: ${{ secrets.R2_ACCOUNT_ID }}
+      R2_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
+      R2_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
+      R2_BUCKET: ${{ secrets.R2_BUCKET }}
+      LIMIT: ${{ inputs.limite || '6' }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Comprobar sintaxis y reglas de adquisición
+        run: |
+          python -m py_compile scripts/ingest-ancient-multilingual-r2.py
+          python - <<'PY'
+          import importlib.util
+          spec=importlib.util.spec_from_file_location("r2ancient", "scripts/ingest-ancient-multilingual-r2.py")
+          module=importlib.util.module_from_spec(spec)
+          spec.loader.exec_module(module)
+          planned=list(module.candidates())
+          assert len(planned)==66 and len({row["id"] for row in planned})==66
+          assert planned[0]["id"]=="oshb-dan" and planned[1]["id"]=="oshb-ezra"
+          assert module.norm("בִּ/שְׁנַ֣ת")=="בשנת"
+          assert module.norm("ἀνθρώπων")=="ανθρωπων"
+          PY
+      - run: python -m pip install --quiet "boto3>=1.36,<2"
+      - name: Incorporar originales y crear índices inmutables exclusivamente en Cloudflare R2
+        run: python -u scripts/ingest-ancient-multilingual-r2.py --limit "$LIMIT"
+      - name: Confirmar que la sincronización incluye sólo metadatos
+        run: |
+          python - <<'PY'
+          import json
+          p='data/r2/ancient-semitic-koine-acquisitions.json'
+          d=json.load(open(p,encoding="utf8"))
+          assert d["items"]
+          assert all(len(x["sourceSha256"])==64 and x["textUrl"].startswith("https://libros.vitruvius-digital-library.org/") for x in d["items"])
+          assert all(x["state"]=="r2-stored-indexed-pending-reader-validation" for x in d["items"])
+          PY
+      - name: Sincronizar únicamente manifiesto de referencias sin sobrescribir obras
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -- data/r2/ancient-semitic-koine-acquisitions.json
+          test "$(git diff --cached --name-only | wc -l)" -le 1
+          if git diff --cached --quiet; then
+            echo "No hay nuevas ediciones registradas."
+            exit 0
+          fi
+          git commit -m "Bibliotheca R2: referencias de originales semíticos y koiné verificados"
+          for attempt in 1 2 3 4; do
+            if git pull --rebase -q origin main && git push -q origin HEAD:main; then
+              exit 0
+            fi
+            if test -d .git/rebase-merge || test -d .git/rebase-apply; then
+              git rebase --abort
+              exit 1
+            fi
+            sleep 4
+          done
+          echo "::error::Objetos R2 preservados; sincronización del manifiesto pendiente"
+          exit 1
+      - name: Transparencia de la ejecución
+        if: always()
+        run: |
+          echo "## Bibliotheca: adquisición semítica y griega koiné" >> "$GITHUB_STEP_SUMMARY"
+          echo "Los originales e índices nunca se almacenan en GitHub." >> "$GITHUB_STEP_SUMMARY"
+          echo "Este workflow NO acredita aún publicación en el visor académico." >> "$GITHUB_STEP_SUMMARY"
