@@ -1,0 +1,408 @@
+{
+  "schema": "vdl-classics-local-r2-verified-v1",
+  "source": "GitHub indexed corpus",
+  "publicBase": "https://libros.vitruvius-digital-library.org/corpus/",
+  "objects": [
+    {
+      "key": "corpus/aeneas-tacticus-poliorketika-grc.json",
+      "workId": "aeneas-tacticus-poliorketika",
+      "language": "grc",
+      "sha256": "c0dbee00059ad89693d23b2d0516f7bf6d569aec4a5dc68b23bc318e560b153e",
+      "passages": 386,
+      "bytes": 228483,
+      "verifiedAt": "2026-11-22T13:59:40.071409+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/aeschylus-oresteia-en.json",
+      "workId": "aeschylus-oresteia",
+      "language": "en",
+      "sha256": "d12a9bb7bb1a59a9550b0fd037d4fc1f20df03063fd8f61950a45f11023728cb",
+      "passages": 1275,
+      "bytes": 479045,
+      "verifiedAt": "2026-11-22T13:59:41.089769+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/aeschylus-oresteia-grc.json",
+      "workId": "aeschylus-oresteia",
+      "language": "grc",
+      "sha256": "3129eacbd81d9b4f98d431091bda49df5459fe820430eef85c9c3c4038206390",
+      "passages": 482,
+      "bytes": 360308,
+      "verifiedAt": "2026-11-22T13:59:42.134147+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/aeschylus-persae-en.json",
+      "workId": "aeschylus-persae",
+      "language": "en",
+      "sha256": "899ca3b94dd4e0144e025a26220c9a325b5e702ece4a6beb209b3557567fbd7a",
+      "passages": 38,
+      "bytes": 56351,
+      "verifiedAt": "2026-11-22T13:59:43.174997+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/aeschylus-persae-grc.json",
+      "workId": "aeschylus-persae",
+      "language": "grc",
+      "sha256": "7fec8fb70c842e5b0f147108f4d6ca28f95731bcb1ef2276fa9168f9f72e8e45",
+      "passages": 141,
+      "bytes": 95390,
+      "verifiedAt": "2026-11-22T13:59:44.154168+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/aeschylus-prometheus-en.json",
+      "workId": "aeschylus-prometheus",
+      "language": "en",
+      "sha256": "2aa79012dce364d1e03f9ed49d64ae6d6eea88b059ec2a7db97dc5a07f25c211",
+      "passages": 40,
+      "bytes": 58898,
+      "verifiedAt": "2026-11-22T13:59:45.050880+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/aeschylus-prometheus-grc.json",
+      "workId": "aeschylus-prometheus",
+      "language": "grc",
+      "sha256": "3f7a9d264f1f818079c56c1bd6037a7d294c892614fa8e6041e1615c316ecf92",
+      "passages": 140,
+      "bytes": 106010,
+      "verifiedAt": "2026-11-22T13:59:46.026962+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/aeschylus-seven-thebes-en.json",
+      "workId": "aeschylus-seven-thebes",
+      "language": "en",
+      "sha256": "2c4de506fedadff564184785643252340519fe712000da08d63fcb4130cfabbf",
+      "passages": 38,
+      "bytes": 56336,
+      "verifiedAt": "2026-11-22T13:59:46.947089+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/aeschylus-seven-thebes-grc.json",
+      "workId": "aeschylus-seven-thebes",
+      "language": "grc",
+      "sha256": "d4ad567fde79fed325d6099fa153e92a77064e7d72b3527bc812f39d8ad9c87b",
+      "passages": 139,
+      "bytes": 94170,
+      "verifiedAt": "2026-11-22T13:59:47.889490+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/aeschylus-suppliants-en.json",
+      "workId": "aeschylus-suppliants",
+      "language": "en",
+      "sha256": "d07d1c2cd162ec9f21ad1f62511a1235a2fa7d1d3a385b312de46e85c7e8ffdb",
+      "passages": 40,
+      "bytes": 53732,
+      "verifiedAt": "2026-11-22T13:59:48.912722+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/aeschylus-suppliants-grc.json",
+      "workId": "aeschylus-suppliants",
+      "language": "grc",
+      "sha256": "f3e40d7553a2149a6b2e17bf7c694276e61354812b90ac50a5176d065bcccd1d",
+      "passages": 138,
+      "bytes": 88823,
+      "verifiedAt": "2026-11-22T13:59:49.865614+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/apollonius-conica-grc.json",
+      "workId": "apollonius-conica",
+      "language": "grc",
+      "sha256": "77b1fef1016fa37c942a6089b73c9746d61363ad005ad271736f2a3dedd73e7d",
+      "passages": 178,
+      "bytes": 112501,
+      "verifiedAt": "2026-11-22T13:59:50.853662+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/apolonio-argonauticas-en.json",
+      "workId": "apolonio-argonauticas",
+      "language": "en",
+      "sha256": "8cb07ed38679cd257351010ed9e488544abad43486d705c2841674cecddf62ca",
+      "passages": 426,
+      "bytes": 398869,
+      "verifiedAt": "2026-11-22T13:59:51.915710+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/appian-romaika-grc.json",
+      "workId": "appian-romaika",
+      "language": "grc",
+      "sha256": "b99cb1ba029a0449d275379eb54d03100fccae6e9e84bb89a1717d8f91294b82",
+      "passages": 1279,
+      "bytes": 3056365,
+      "verifiedAt": "2026-11-22T13:59:53.105254+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/apuleius-apologia-la.json",
+      "workId": "apuleius-apologia",
+      "language": "la",
+      "sha256": "8e4d094d94f3bb6b83c41fe4b888cddac893774da62d6d722271aaf04d66a4fb",
+      "passages": 103,
+      "bytes": 165194,
+      "verifiedAt": "2026-11-22T13:59:54.050008+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/apuleius-de-deo-socratis-la.json",
+      "workId": "apuleius-de-deo-socratis",
+      "language": "la",
+      "sha256": "75c5fa0b85aa025dacb6a0817280e1f90e793827133f7b6ed5cb2af5f4bf2cbd",
+      "passages": 26,
+      "bytes": 37731,
+      "verifiedAt": "2026-11-22T13:59:54.930811+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/apuleius-metamorphoses-en.json",
+      "workId": "apuleius-metamorphoses",
+      "language": "en",
+      "sha256": "a3a5a0056a0d402f35d0c5067dd7c7a7c1605809d39cde23ec7e1c44f4c66ec9",
+      "passages": 114,
+      "bytes": 445077,
+      "verifiedAt": "2026-11-22T13:59:55.914388+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/apuleius-metamorphoses-es.json",
+      "workId": "apuleius-metamorphoses",
+      "language": "es",
+      "sha256": "a4ca4a209f13ea7f26ae0ff4a28498d407c62373d4a50ddecc578e498205a608",
+      "passages": 312,
+      "bytes": 576870,
+      "verifiedAt": "2026-11-22T13:59:56.964619+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/apuleius-metamorphoses-la.json",
+      "workId": "apuleius-metamorphoses",
+      "language": "la",
+      "sha256": "a033bf3e83704a8149d1f43bc1bc43e3cd24edbb46e901fda56f8409897e1553",
+      "passages": 351,
+      "bytes": 404041,
+      "verifiedAt": "2026-11-22T13:59:57.844371+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/aratus-phaenomena-grc.json",
+      "workId": "aratus-phaenomena",
+      "language": "grc",
+      "sha256": "fce075797906e39de5389f913b9fbfc5054b3522fe592fd88a8205197f733e8b",
+      "passages": 144,
+      "bytes": 138523,
+      "verifiedAt": "2026-11-22T13:59:58.791583+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/aristarchus-magnitudines-grc.json",
+      "workId": "aristarchus-magnitudines",
+      "language": "grc",
+      "sha256": "66495fab2f0a1ee75758e74aac231a9640918f455e310e329a65100856b6b82b",
+      "passages": 57,
+      "bytes": 74896,
+      "verifiedAt": "2026-11-22T13:59:59.674878+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/aristophanes-acharnenses-en.json",
+      "workId": "aristophanes-acharnenses",
+      "language": "en",
+      "sha256": "5fdc01bc64c4ce329dd943c9639795e67ce2aa6f433a5e174e5a972549aa03b9",
+      "passages": 448,
+      "bytes": 127525,
+      "verifiedAt": "2026-11-22T14:00:00.735158+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/aristophanes-acharnenses-grc.json",
+      "workId": "aristophanes-acharnenses",
+      "language": "grc",
+      "sha256": "d61f34e687ad163bd213d319cc4b63a71cb4828ec88e26472769a296c8fa2246",
+      "passages": 171,
+      "bytes": 126558,
+      "verifiedAt": "2026-11-22T14:00:01.656982+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/aristophanes-aves-en.json",
+      "workId": "aristophanes-aves",
+      "language": "en",
+      "sha256": "1c38b6f38bf674ed0201036dd10bad5bbe9c7d88d40307e4d1862adf45dfd48f",
+      "passages": 994,
+      "bytes": 285818,
+      "verifiedAt": "2026-11-22T14:00:02.812496+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/aristophanes-aves-grc.json",
+      "workId": "aristophanes-aves",
+      "language": "grc",
+      "sha256": "5bc4ed0ba1e0afa97ac2eb87098c371afe274bef852b591c7966dfe1445b2e72",
+      "passages": 248,
+      "bytes": 186402,
+      "verifiedAt": "2026-11-22T14:00:03.815093+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/aristophanes-clouds-en.json",
+      "workId": "aristophanes-clouds",
+      "language": "en",
+      "sha256": "1166724a28c7852ca3c6aa52f76c7317560fce342a5d9220be904b75db012969",
+      "passages": 79,
+      "bytes": 91232,
+      "verifiedAt": "2026-11-22T14:00:04.812006+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/aristophanes-clouds-grc.json",
+      "workId": "aristophanes-clouds",
+      "language": "grc",
+      "sha256": "0bd70a4f9da1b2aaa0724092a91503e39756d869dc51b8a593dfe7a63f948710",
+      "passages": 208,
+      "bytes": 167696,
+      "verifiedAt": "2026-11-22T14:00:05.851069+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/aristophanes-ecclesiazusae-grc.json",
+      "workId": "aristophanes-ecclesiazusae",
+      "language": "grc",
+      "sha256": "43f2a830f8c6b5c3eb127065781ccb052c9558b07f00539085b09b47848d436c",
+      "passages": 1407,
+      "bytes": 213812,
+      "verifiedAt": "2026-11-22T14:00:06.942857+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/aristophanes-knights-grc.json",
+      "workId": "aristophanes-knights",
+      "language": "grc",
+      "sha256": "682f7aacc5216cd5f8169097aaf3c5a2c39f363505bb4ba2ac1e74b3c2c7ccaf",
+      "passages": 1497,
+      "bytes": 237471,
+      "verifiedAt": "2026-11-22T14:00:08.175988+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/aristophanes-lysistrata-en.json",
+      "workId": "aristophanes-lysistrata",
+      "language": "en",
+      "sha256": "19549793a0ef90d955bfac0e3ab5c4ca3c70e690fc0c85bbe41f9eee2d2b0233",
+      "passages": 476,
+      "bytes": 130409,
+      "verifiedAt": "2026-11-22T14:00:09.198845+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/aristophanes-lysistrata-grc.json",
+      "workId": "aristophanes-lysistrata",
+      "language": "grc",
+      "sha256": "67de266c42b5c314ecdbcf417aee10ba301028169454ce73c3f2df9642216576",
+      "passages": 184,
+      "bytes": 136945,
+      "verifiedAt": "2026-11-22T14:00:10.178693+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/aristophanes-pax-grc.json",
+      "workId": "aristophanes-pax",
+      "language": "grc",
+      "sha256": "20641ac70c57b090fc8678a6324074d98e42d6e7226e2371cab3ae7cb56e43d5",
+      "passages": 188,
+      "bytes": 139258,
+      "verifiedAt": "2026-11-22T14:00:11.264059+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/aristophanes-plutus-grc.json",
+      "workId": "aristophanes-plutus",
+      "language": "grc",
+      "sha256": "5db4955446825c3055c2795dca4512d416b0620e322f56b50f74a102c2d1b69d",
+      "passages": 1395,
+      "bytes": 216327,
+      "verifiedAt": "2026-11-22T14:00:12.329626+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/aristophanes-ranae-grc.json",
+      "workId": "aristophanes-ranae",
+      "language": "grc",
+      "sha256": "c77ee5b8dc1ff34c19d45c0b3ca46794669a52b373d6a5ba69e3fed7c8c96c14",
+      "passages": 225,
+      "bytes": 163631,
+      "verifiedAt": "2026-11-22T14:00:13.312074+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/plato-parmenides-en.json",
+      "workId": "plato-parmenides",
+      "language": "en",
+      "sha256": "e82d7c1b64d4e4b326710f147a546f1391b9a44478965ff40b50219addaa5019",
+      "passages": 41,
+      "bytes": 106903,
+      "verifiedAt": "2026-11-22T13:59:33.718009+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/plato-parmenides-grc.json",
+      "workId": "plato-parmenides",
+      "language": "grc",
+      "sha256": "d282f54ab19813091d8c84a5631abc5e2adcf6f46562b91aa9bf278fe5d18ac2",
+      "passages": 41,
+      "bytes": 167049,
+      "verifiedAt": "2026-11-22T13:59:34.790652+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/plato-sophist-en.json",
+      "workId": "plato-sophist",
+      "language": "en",
+      "sha256": "880dd338330cf38782cfdc12ad1ae31cc5c6475b8afbe61c25656a2fea46b7f6",
+      "passages": 53,
+      "bytes": 127078,
+      "verifiedAt": "2026-11-22T13:59:35.889979+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/plato-sophist-grc.json",
+      "workId": "plato-sophist",
+      "language": "grc",
+      "sha256": "3a1e55c2ee8c30658b0ad18c0bf73233cdf6137913f59d55efcc95354a00b70b",
+      "passages": 53,
+      "bytes": 191097,
+      "verifiedAt": "2026-11-22T13:59:37.014960+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/plato-theaetetus-en.json",
+      "workId": "plato-theaetetus",
+      "language": "en",
+      "sha256": "fb335df72fad7dc7e683c0ace2a039a75274cfb643c376a16b8546b2d5f0e39e",
+      "passages": 69,
+      "bytes": 183591,
+      "verifiedAt": "2026-11-22T13:59:38.086978+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/plato-theaetetus-grc.json",
+      "workId": "plato-theaetetus",
+      "language": "grc",
+      "sha256": "6e44141d442cd28e719577b7693967978f251f1b560cd862ad6428f323aac6a0",
+      "passages": 69,
+      "bytes": 267195,
+      "verifiedAt": "2026-11-22T13:59:39.109363+00:00",
+      "status": "uploaded-and-verified"
+    }
+  ],
+  "updated": "2026-11-22T14:00:13.313441+00:00"
+}
