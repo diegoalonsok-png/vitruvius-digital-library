@@ -39,7 +39,11 @@
         "Verify parallel translation only if missing and licensed",
         "Publish catalogue and test search/reader"
       ],
-      "r2Presence": "unknown-requires-live-key-and-hash-check"
+      "r2Presence": "unknown-requires-live-key-and-hash-check",
+      "sourceTeiUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0658/tlg001/tlg0658.tlg001.perseus-grc1.xml",
+      "sourceTeiRepository": "OpenGreekAndLatin/First1KGreek",
+      "sourceTeiVerified": "GitHub directory listing 2026-11-22; XML 1000116 bytes; full parsing/completeness/license not yet certified",
+      "sourceEditionUrn": "urn:cts:greekLit:tlg0658.tlg001.perseus-grc1"
     },
     {
       "id": "quintus-curtius-historiae-alexandri",
@@ -57,7 +61,11 @@
         "Index authentic passages with correct division by book and chapter",
         "Find a human English translation first; verify edition, rights, and completeness",
         "Add only light metadata to GitHub after R2 upload confirmed and test reader/search"
-      ]
+      ],
+      "sourceTeiUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0860/phi001/phi0860.phi001.perseus-lat2.xml",
+      "sourceTeiRepository": "PerseusDL/canonical-latinLit",
+      "sourceTeiVerified": "GitHub directory listing 2026-11-22; XML 912268 bytes; full parsing/completeness/license not yet certified",
+      "sourceEditionUrn": "urn:cts:latinLit:phi0860.phi001.perseus-lat2"
     }
   ],
   "excludedPotentialDuplicates": [
