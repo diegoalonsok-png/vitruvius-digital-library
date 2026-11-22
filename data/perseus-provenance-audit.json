@@ -2,13 +2,13 @@
   "schema": "vitruvius-perseus-provenance-audit-v1",
   "generated": "2026-11-22",
   "scope": "Catálogo principal y ediciones TEI originales acreditadas y archivadas en R2; no certifica servicios externos",
-  "method": "Candidate PHI/TLG work codes are not CTS edition URNs. Source descriptions copied from the local index are claims to audit, not proof of an external canonical edition or an institutional link. No automatic CTS URNs or permanent URLs are invented. Incorporaciones R2: edición declarada en TEI fuente, SHA256, licencia y localizador comprobados; no se presume afiliación externa.",
+  "method": "Candidate PHI/TLG work codes are not CTS edition URNs. Source descriptions copied from the local index are claims to audit, not proof of an external canonical edition or an institutional link. No automatic CTS URNs or permanent URLs are invented. Incorporaciones R2: edición declarada en TEI fuente, SHA256, licencia y localizador comprobados; no se presume afiliación externa. Incorporaciones R2: edición declarada en TEI fuente, SHA256, licencia y localizador comprobados; no se presume afiliación externa.",
   "counts": {
-    "works": 282,
-    "worksWithCandidateWorkCodes": 190,
-    "versions": 257,
+    "works": 288,
+    "worksWithCandidateWorkCodes": 196,
+    "versions": 263,
     "worksWithPerseusSourceDescription": 142,
-    "verifiedEditionUrns": 12
+    "verifiedEditionUrns": 18
   },
   "links": {
     "scaife": "https://scaife.perseus.org/",
@@ -6514,6 +6514,192 @@
       "otherSourceEditions": [],
       "r2TextUrl": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg018-grc-5c31c0511a197a5b.json",
       "r2Sha256": "5c31c0511a197a5be567a4545e03aef63afa91844fd85a40771bbae6cf0f7ada",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "cts-phi0692-phi013",
+      "author": "Appendix Vergiliana",
+      "title": "De Est et Non",
+      "originalLanguage": "la",
+      "sourceReadiness": "original_r2_tei_publicado_con_sha256",
+      "originalIndexed": false,
+      "originalR2Registered": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "phi0692.phi013"
+      ],
+      "versions": [
+        {
+          "language": "la",
+          "path": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0692-phi013-la-d1859e8354b04807.json",
+          "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "reader": "classics-text-reader.html?work=cts-phi0692-phi013&lang=la"
+        }
+      ],
+      "ctsEditionUrn": "urn:cts:latinLit:phi0692.phi013.perseus-lat1",
+      "ctsStatus": "declared_and_checked_in_source_tei_header",
+      "ctsSourceUri": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0692/phi013/phi0692.phi013.perseus-lat1.xml",
+      "ctsEvidence": "TEI XML original, div[@type=edition]/@n, edición y SHA256 verificados mediante fuente R2: 02df1ed2beb1ea4363e31f4eec12789a2ed01541d5a82d1067d2d38daf88cf31",
+      "ctsNote": "URN de edición declarada en TEI; no implica resolución CTS pública ni cotejo de manuscritos.",
+      "sourceRights": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "otherSourceEditions": [],
+      "r2TextUrl": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0692-phi013-la-d1859e8354b04807.json",
+      "r2Sha256": "d1859e8354b048072c4a930f8f67e516ac6e8929e979b85d0488ee83cb44a10c",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "cts-phi0692-phi011",
+      "author": "Appendix Vergiliana",
+      "title": "Moretum",
+      "originalLanguage": "la",
+      "sourceReadiness": "original_r2_tei_publicado_con_sha256",
+      "originalIndexed": false,
+      "originalR2Registered": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "phi0692.phi011"
+      ],
+      "versions": [
+        {
+          "language": "la",
+          "path": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0692-phi011-la-ee43883d57a004ba.json",
+          "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "reader": "classics-text-reader.html?work=cts-phi0692-phi011&lang=la"
+        }
+      ],
+      "ctsEditionUrn": "urn:cts:latinLit:phi0692.phi011.perseus-lat1",
+      "ctsStatus": "declared_and_checked_in_source_tei_header",
+      "ctsSourceUri": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0692/phi011/phi0692.phi011.perseus-lat1.xml",
+      "ctsEvidence": "TEI XML original, div[@type=edition]/@n, edición y SHA256 verificados mediante fuente R2: 3ab6a98279176c032ae0821f45fd8aa1590e0968bc37c546af3e135cc9786380",
+      "ctsNote": "URN de edición declarada en TEI; no implica resolución CTS pública ni cotejo de manuscritos.",
+      "sourceRights": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "otherSourceEditions": [],
+      "r2TextUrl": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0692-phi011-la-ee43883d57a004ba.json",
+      "r2Sha256": "ee43883d57a004bae44ee0eaf6b84995614c7e59419daabecef510978922ea55",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "cts-phi0692-phi012",
+      "author": "Appendix Vergiliana",
+      "title": "De Institutione Viri Boni",
+      "originalLanguage": "la",
+      "sourceReadiness": "original_r2_tei_publicado_con_sha256",
+      "originalIndexed": false,
+      "originalR2Registered": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "phi0692.phi012"
+      ],
+      "versions": [
+        {
+          "language": "la",
+          "path": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0692-phi012-la-76b6db728954aa97.json",
+          "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "reader": "classics-text-reader.html?work=cts-phi0692-phi012&lang=la"
+        }
+      ],
+      "ctsEditionUrn": "urn:cts:latinLit:phi0692.phi012.perseus-lat1",
+      "ctsStatus": "declared_and_checked_in_source_tei_header",
+      "ctsSourceUri": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0692/phi012/phi0692.phi012.perseus-lat1.xml",
+      "ctsEvidence": "TEI XML original, div[@type=edition]/@n, edición y SHA256 verificados mediante fuente R2: 71ca46dbadafad5dfa7fa6da2bb09f0804d216aa8de9a68851d86af48f60371f",
+      "ctsNote": "URN de edición declarada en TEI; no implica resolución CTS pública ni cotejo de manuscritos.",
+      "sourceRights": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "otherSourceEditions": [],
+      "r2TextUrl": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0692-phi012-la-76b6db728954aa97.json",
+      "r2Sha256": "76b6db728954aa9789c510f726b07fccb8cfdff1654c878647accc9a2251299c",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "cts-tlg0062-tlg022",
+      "author": "Luciano de Samósata",
+      "title": "Timon",
+      "originalLanguage": "grc",
+      "sourceReadiness": "original_r2_tei_publicado_con_sha256",
+      "originalIndexed": false,
+      "originalR2Registered": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "tlg0062.tlg022"
+      ],
+      "versions": [
+        {
+          "language": "grc",
+          "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg022-grc-0ef62278baa50f02.json",
+          "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "reader": "classics-text-reader.html?work=cts-tlg0062-tlg022&lang=grc"
+        }
+      ],
+      "ctsEditionUrn": "urn:cts:greekLit:tlg0062.tlg022.perseus-grc2",
+      "ctsStatus": "declared_and_checked_in_source_tei_header",
+      "ctsSourceUri": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0062/tlg022/tlg0062.tlg022.perseus-grc2.xml",
+      "ctsEvidence": "TEI XML original, div[@type=edition]/@n, edición y SHA256 verificados mediante fuente R2: 9806b9dd291e8fdb6f822bca9fcebf89d04b22ae7493116e98b4018b2e08298d",
+      "ctsNote": "URN de edición declarada en TEI; no implica resolución CTS pública ni cotejo de manuscritos.",
+      "sourceRights": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "otherSourceEditions": [],
+      "r2TextUrl": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg022-grc-0ef62278baa50f02.json",
+      "r2Sha256": "0ef62278baa50f02ea0f8fc730a530544160f84a7d788a74ac54464fa82dcbd0",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "cts-tlg0062-tlg023",
+      "author": "Luciano de Samósata",
+      "title": "Contemplantes",
+      "originalLanguage": "grc",
+      "sourceReadiness": "original_r2_tei_publicado_con_sha256",
+      "originalIndexed": false,
+      "originalR2Registered": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "tlg0062.tlg023"
+      ],
+      "versions": [
+        {
+          "language": "grc",
+          "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg023-grc-13f0b5c93b8deead.json",
+          "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "reader": "classics-text-reader.html?work=cts-tlg0062-tlg023&lang=grc"
+        }
+      ],
+      "ctsEditionUrn": "urn:cts:greekLit:tlg0062.tlg023.perseus-grc2",
+      "ctsStatus": "declared_and_checked_in_source_tei_header",
+      "ctsSourceUri": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0062/tlg023/tlg0062.tlg023.perseus-grc2.xml",
+      "ctsEvidence": "TEI XML original, div[@type=edition]/@n, edición y SHA256 verificados mediante fuente R2: 683be981e40146d843c9675e26649d993472f0a496e9f8af982030bcc5926521",
+      "ctsNote": "URN de edición declarada en TEI; no implica resolución CTS pública ni cotejo de manuscritos.",
+      "sourceRights": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "otherSourceEditions": [],
+      "r2TextUrl": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg023-grc-13f0b5c93b8deead.json",
+      "r2Sha256": "13f0b5c93b8deead889c484fb2b47b25e5f307a6c2d02c28da149b26d236e46f",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "cts-tlg0062-tlg024",
+      "author": "Luciano de Samósata",
+      "title": "Vitarum auctio",
+      "originalLanguage": "grc",
+      "sourceReadiness": "original_r2_tei_publicado_con_sha256",
+      "originalIndexed": false,
+      "originalR2Registered": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "tlg0062.tlg024"
+      ],
+      "versions": [
+        {
+          "language": "grc",
+          "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg024-grc-8f03300c54095b7c.json",
+          "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "reader": "classics-text-reader.html?work=cts-tlg0062-tlg024&lang=grc"
+        }
+      ],
+      "ctsEditionUrn": "urn:cts:greekLit:tlg0062.tlg024.perseus-grc2",
+      "ctsStatus": "declared_and_checked_in_source_tei_header",
+      "ctsSourceUri": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0062/tlg024/tlg0062.tlg024.perseus-grc2.xml",
+      "ctsEvidence": "TEI XML original, div[@type=edition]/@n, edición y SHA256 verificados mediante fuente R2: af67f81e9771e9625ea5269317246c06468469a69e4f7b3c63989bbc02db0098",
+      "ctsNote": "URN de edición declarada en TEI; no implica resolución CTS pública ni cotejo de manuscritos.",
+      "sourceRights": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "otherSourceEditions": [],
+      "r2TextUrl": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg024-grc-8f03300c54095b7c.json",
+      "r2Sha256": "8f03300c54095b7cbe38885e3a1f0e75e449b222f3fa7a1ef8f06a72befe6a7b",
       "perseusAffiliation": false
     }
   ]

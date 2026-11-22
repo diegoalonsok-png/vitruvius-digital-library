@@ -2,8 +2,8 @@
  "schema": "vitruvia-classics-search-registry-v1",
  "updated": "2026-11-22",
  "description": "Registro verificable de transcripciones HTML y textos JSON existentes que admiten búsqueda literal de contenido. No incluye automáticamente PDF escaneados, facsímiles ni fichas sin texto. Los índices auxiliares por locus y el aparato crítico se declaran por separado; no se suman a versiones textuales originales ni implican colación autóptica.",
- "count": 497,
- "works": 380,
+ "count": 503,
+ "works": 386,
  "entries": [
   {
    "workId": "aeneas-tacticus-poliorketika",
@@ -1146,6 +1146,42 @@
    "passages": 65
   },
   {
+   "workId": "cts-phi0692-phi011",
+   "author": "Appendix Vergiliana",
+   "title": "Moretum",
+   "language": "la",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0692-phi011-la-ee43883d57a004ba.json",
+   "reader": "classics-text-reader.html?work=cts-phi0692-phi011&lang=la",
+   "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+   "sha256": "ee43883d57a004bae44ee0eaf6b84995614c7e59419daabecef510978922ea55",
+   "passages": 123
+  },
+  {
+   "workId": "cts-phi0692-phi012",
+   "author": "Appendix Vergiliana",
+   "title": "De Institutione Viri Boni",
+   "language": "la",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0692-phi012-la-76b6db728954aa97.json",
+   "reader": "classics-text-reader.html?work=cts-phi0692-phi012&lang=la",
+   "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+   "sha256": "76b6db728954aa9789c510f726b07fccb8cfdff1654c878647accc9a2251299c",
+   "passages": 27
+  },
+  {
+   "workId": "cts-phi0692-phi013",
+   "author": "Appendix Vergiliana",
+   "title": "De Est et Non",
+   "language": "la",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0692-phi013-la-d1859e8354b04807.json",
+   "reader": "classics-text-reader.html?work=cts-phi0692-phi013&lang=la",
+   "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+   "sha256": "d1859e8354b048072c4a930f8f67e516ac6e8929e979b85d0488ee83cb44a10c",
+   "passages": 26
+  },
+  {
    "workId": "cts-tlg0062-tlg016",
    "author": "Luciano de Samósata",
    "title": "Cataplus",
@@ -1180,6 +1216,42 @@
    "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
    "sha256": "5c31c0511a197a5be567a4545e03aef63afa91844fd85a40771bbae6cf0f7ada",
    "passages": 187
+  },
+  {
+   "workId": "cts-tlg0062-tlg022",
+   "author": "Luciano de Samósata",
+   "title": "Timon",
+   "language": "grc",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg022-grc-0ef62278baa50f02.json",
+   "reader": "classics-text-reader.html?work=cts-tlg0062-tlg022&lang=grc",
+   "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+   "sha256": "0ef62278baa50f02ea0f8fc730a530544160f84a7d788a74ac54464fa82dcbd0",
+   "passages": 126
+  },
+  {
+   "workId": "cts-tlg0062-tlg023",
+   "author": "Luciano de Samósata",
+   "title": "Contemplantes",
+   "language": "grc",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg023-grc-13f0b5c93b8deead.json",
+   "reader": "classics-text-reader.html?work=cts-tlg0062-tlg023&lang=grc",
+   "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+   "sha256": "13f0b5c93b8deead889c484fb2b47b25e5f307a6c2d02c28da149b26d236e46f",
+   "passages": 126
+  },
+  {
+   "workId": "cts-tlg0062-tlg024",
+   "author": "Luciano de Samósata",
+   "title": "Vitarum auctio",
+   "language": "grc",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg024-grc-8f03300c54095b7c.json",
+   "reader": "classics-text-reader.html?work=cts-tlg0062-tlg024&lang=grc",
+   "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+   "sha256": "8f03300c54095b7cbe38885e3a1f0e75e449b222f3fa7a1ef8f06a72befe6a7b",
+   "passages": 264
   },
   {
    "workId": "demosthenes-de-corona",
