@@ -58,7 +58,11 @@ def main():
     ya = {o["id"] for o in candidatos["obras"]}
     por_id = {o["id"]: o for o in candidatos["obras"]}
 
-    faltan = [x for x in catalogo["items"] if not x.get("bilingueLoeb") and not x.get("traduccionDe")]
+    # Una traducción es una edición de la obra, no una obra nueva. No buscar
+    # otras si ya existe una traducción de cualquier idioma vinculada en R2.
+    traducidas = {x["traduccionDe"] for x in catalogo["items"] if x.get("traduccionDe")}
+    faltan = [x for x in catalogo["items"]
+              if not x.get("bilingueLoeb") and not x.get("traduccionDe") and x["id"] not in traducidas]
     if args.nuevas:
         informe = ROOT / "r2-clasicos-informe.json"
         incorporadas = set(json.loads(informe.read_text(encoding="utf-8")).get("incorporadas", [])) if informe.exists() else set()
