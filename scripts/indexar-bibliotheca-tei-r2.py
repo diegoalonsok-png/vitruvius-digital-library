@@ -122,7 +122,7 @@ def parse_source(row: dict) -> tuple[dict, bytes]:
 def get_s3():
     import boto3
     from botocore.config import Config
-    account = os.environ.get("R2_ACCOUNT_ID", "4e936bf2c4f185a87075ca506de93e69")
+    account = os.environ.get("R2_ACCOUNT_ID") or "4e936bf2c4f185a87075ca506de93e69"
     for name in ("R2_ACCESS_KEY_ID", "R2_SECRET_ACCESS_KEY"):
         if not os.environ.get(name):
             raise ValueError("Falta credencial R2: " + name)
