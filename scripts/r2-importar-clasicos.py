@@ -192,33 +192,62 @@ def procesar(o, ctx):
             index_data = json_bytes(indice)
             clave_indice = f"clasicos/indice-obras/{o['id']}.json"
             s3 = ctx["s3"]
-            # Nunca sobrescribir un objeto preexistente sin ficha (ingesta
-            # interrumpida): puede ser otra edición o una copia aún en revisión.
-            # La reconciliación editorial de huérfanos es un proceso separado.
+            # Reanudar una ingesta cuyo PDF/texto/índice sí quedaron en R2
+            # pero cuyo catálogo no llegó a GitHub por un fallo posterior.
+            # Nunca volver a subir ni sobrescribir esos objetos.
             from botocore.exceptions import ClientError
-            for existing_key in (clave_pdf, clave_txt, clave_indice):
+            claves = (clave_pdf, clave_txt, clave_indice)
+            existentes = {}
+            for key in claves:
                 try:
-                    s3.head_object(Bucket=BUCKET, Key=existing_key)
+                    existentes[key] = s3.head_object(Bucket=BUCKET, Key=key)
                 except ClientError as exc:
                     code = str(exc.response.get("Error", {}).get("Code", ""))
                     if code not in ("404", "NotFound", "NoSuchKey"):
-                        raise RuntimeError("No se puede confirmar ausencia en R2: " + existing_key) from exc
-                else:
-                    raise ValueError("Objeto existente sin ficha GitHub; no sobrescribir: " + existing_key)
-            s3.put_object(Bucket=BUCKET, Key=clave_pdf, Body=datos, ContentType="application/pdf",
-                          CacheControl="public, max-age=31536000", Metadata={"sha256": sha, "ia": ident})
-            s3.put_object(Bucket=BUCKET, Key=clave_txt, Body=texto, ContentType="application/json; charset=utf-8",
-                          CacheControl="public, max-age=86400")
-            s3.put_object(Bucket=BUCKET, Key=clave_indice, Body=index_data, ContentType="application/json; charset=utf-8",
-                          CacheControl="public, max-age=86400")
-            # A catalogue entry is ready only when PDF, full text AND both indexes are public.
-            for key, payload in [(clave_txt, texto), (clave_indice, index_data)]:
+                        raise RuntimeError("No se pudo comprobar el objeto R2: " + key) from exc
+                    existentes[key] = None
+            recuperada = any(existentes.values())
+            if recuperada and not all(existentes.values()):
+                raise ValueError("Ingesta R2 incompleta; no sobrescribir objetos existentes: " + o["id"])
+            if recuperada:
+                esperado = existentes[clave_pdf].get("Metadata", {}).get("sha256")
+                if esperado != sha:
+                    raise ValueError("El PDF existente en R2 no coincide con SHA-256 de la edición: " + o["id"])
+                # Validación cruzada de los objetos existentes; el índice debe
+                # corresponder al texto exacto ya almacenado y a este mismo PDF.
+                texto = get(PUBLICO + "/" + clave_txt, binario=True)
+                index_data = get(PUBLICO + "/" + clave_indice, binario=True)
+                recuperado = json.loads(texto)
+                indice_guardado = json.loads(index_data)
+                if (recuperado.get("obra") != o["id"] or
+                    recuperado.get("sourceSha256") != sha or
+                    recuperado.get("fuente") != ident or
+                    not isinstance(recuperado.get("paginas"), list) or
+                    len(recuperado["paginas"]) != len(paginas) or
+                    indice_guardado.get("workId") != o["id"] or
+                    indice_guardado.get("sourceSha256") != sha or
+                    indice_guardado.get("textSha256") != hashlib.sha256(texto).hexdigest() or
+                    indice_guardado.get("units") != len(paginas) or
+                    not indice_guardado.get("literal")):
+                    raise ValueError("Texto/índice R2 existente no corresponde al PDF acreditado: " + o["id"])
+                paginas = recuperado["paginas"]
+                methods = recuperado.get("metodosPagina") or methods
+                con_texto = sum(1 for t in paginas if len(t.strip()) > 200)
+            else:
+                s3.put_object(Bucket=BUCKET, Key=clave_pdf, Body=datos, ContentType="application/pdf",
+                              CacheControl="public, max-age=31536000", Metadata={"sha256": sha, "ia": ident})
+                s3.put_object(Bucket=BUCKET, Key=clave_txt, Body=texto, ContentType="application/json; charset=utf-8",
+                              CacheControl="public, max-age=86400")
+                s3.put_object(Bucket=BUCKET, Key=clave_indice, Body=index_data, ContentType="application/json; charset=utf-8",
+                              CacheControl="public, max-age=86400")
+            # Verificar los tres objetos públicos antes de incorporar su ficha.
+            for key, payload in ((clave_txt, texto), (clave_indice, index_data)):
                 verified = get(PUBLICO + "/" + key, binario=True)
                 if hashlib.sha256(verified).digest() != hashlib.sha256(payload).digest():
-                    raise ValueError("Public text/index SHA-256 mismatch: " + key)
+                    raise ValueError("SHA-256 del texto/índice público distinto: " + key)
             publico = get(PUBLICO + "/" + clave_pdf, binario=True, timeout=600)
             if hashlib.sha256(publico).hexdigest() != sha:
-                raise ValueError("SHA-256 del objeto público distinto")
+                raise ValueError("SHA-256 del PDF público distinto")
             ficha = {
                 "id": o["id"], "autor": o["autor"], "obra": o["obra"], "lengua": o["lengua"],
                 **({"traduccionDe": o["traduccionDe"]} if o.get("traduccionDe") else {}),
@@ -242,6 +271,7 @@ def procesar(o, ctx):
                                "paginasSinTexto": sum(not p.strip() for p in paginas),
                                "incidenciasOCR": sum(bool(m.get("issue")) for m in methods)},
                 "verificado": "SHA-256 del objeto público idéntico; autor presente en las primeras páginas",
+                **({"recuperadaSinSobrescritura": True} if recuperada else {}),
             }
             return ficha, paginas, rechazos
         except Exception as e:  # noqa: BLE001
@@ -349,7 +379,9 @@ def main():
                 for cid, pags in postings(ficha, paginas, lex).items():
                     con["postings"].setdefault(cid, {})[ficha["id"]] = {"paginas": pags[:60], "total": len(pags)}
                 informe["incorporadas"].append(ficha["id"])
-                print(f"OK  {o['id']}: {ficha['identificadorIA']} ({ficha['anio']}, {ficha['paginas']} págs, "
+                if ficha.get("recuperadaSinSobrescritura"):
+                    informe.setdefault("recuperadas", []).append(ficha["id"])
+                print(f"{'RECUPERADO' if ficha.get('recuperadaSinSobrescritura') else 'OK'}  {o['id']}: {ficha['identificadorIA']} ({ficha['anio']}, {ficha['paginas']} págs, "
                       f"{ficha['bytes']/1048576:.1f} MB)", flush=True)
                 guardar(cat, con, informe)  # guardado incremental: un corte no pierde lo ya subido
             else:
