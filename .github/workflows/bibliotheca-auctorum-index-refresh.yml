@@ -1,0 +1,66 @@
+name: Bibliotheca - actualizar Index auctorum et operum
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '19 9 * * *'
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/refresh-index-auctorum.mjs'
+      - '.github/workflows/bibliotheca-auctorum-index-refresh.yml'
+      - 'data/bibliotheca-expansion-publicada-2026-11-16.json'
+      - 'data/r2/bibliotheca-inventario-unificado.json'
+      - 'data/bibliotheca-graeca-latina-I-bce-I-ce.json'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: bibliotheca-index-auctorum-refresh-main
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: true
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Validar y sincronizar índice alfabético desde catálogos
+        shell: bash
+        run: |
+          set -euo pipefail
+          node --check scripts/refresh-index-auctorum.mjs
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          for attempt in 1 2 3 4; do
+            git fetch --quiet origin main
+            git checkout -B bibliotheca-index-refresh origin/main
+            node scripts/refresh-index-auctorum.mjs
+            # El segundo paso comprueba idempotencia sin alterar otros archivos.
+            first="$(sha256sum index-auctorum-operum.html | cut -d' ' -f1)"
+            node scripts/refresh-index-auctorum.mjs
+            second="$(sha256sum index-auctorum-operum.html | cut -d' ' -f1)"
+            test "$first" = "$second"
+            git add -- index-auctorum-operum.html
+            if git diff --cached --quiet; then
+              echo 'El índice de autores coincide con los inventarios.'
+              exit 0
+            fi
+            git commit -qm 'Bibliotheca: sincronizar Index auctorum con el catálogo vigente'
+            if git push origin HEAD:main; then
+              echo 'Índice alfabético actualizado sin alterar originales ni R2.'
+              exit 0
+            fi
+            echo 'main avanzó: releyendo el inventario para evitar sobreescrituras.'
+            sleep 5
+          done
+          echo '::error::No se pudo actualizar el índice por conflicto concurrente.'
+          exit 1
