@@ -48,7 +48,9 @@ jobs:
       - run: python scripts/sync-classics-coverage.py
       - run: python scripts/test-classics-historical-translations.py
   index-and-validate:
-    if: github.event_name != 'pull_request'
+    # LEGACY DESACTIVADO: no publicar originales ni índices extensos en GitHub.
+    # Usar el pipeline R2 de Bibliotheca para toda incorporación futura.
+    if: ${{ false }}
     needs: integrity-test
     runs-on: ubuntu-latest
     timeout-minutes: 80
