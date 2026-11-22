@@ -122,11 +122,11 @@ def credito_traductor(paginas, idioma):
     Solo un crédito explícito en los primeros folios; no inventar atribuciones,
     ni deducir que toda edición titulada 'translation' es una traducción humana.
     """
-    portada = re.sub(r"\\s+", " ", " ".join(paginas[:20]))
+    portada = re.sub(r"\s+", " ", " ".join(paginas[:20]))
     pautas = {
-        "en": r"\\b(?:translated(?:\\s+into\\s+english|\\s+from\\s+(?:the\\s+)?(?:greek|latin))?|translation|english\\s+version)\\s+by\\s+",
-        "fr": r"\\b(?:traduit(?:e)?|traduction)\\s+(?:du\\s+grec\\s+|du\\s+latin\\s+)?par\\s+",
-        "es": r"\\b(?:traducido|traducida|traducci[oó]n|versi[oó]n\\s+castellana)\\s+(?:del\\s+griego\\s+|del\\s+lat[ií]n\\s+)?(?:por|de)\\s+",
+        "en": r"\b(?:translated(?:\s+into\s+english|\s+from\s+(?:the\s+)?(?:greek|latin))?|translation|english\s+version)\s+by\s+",
+        "fr": r"\b(?:traduit(?:e)?|traduction)\s+(?:du\s+grec\s+|du\s+latin\s+)?par\s+",
+        "es": r"\b(?:traducido|traducida|traducci[oó]n|versi[oó]n\s+castellana)\s+(?:del\s+griego\s+|del\s+lat[ií]n\s+)?(?:por|de)\s+",
     }
     match = re.search(pautas.get(idioma, r"(?!)"), portada, flags=re.IGNORECASE)
     if not match:
@@ -134,7 +134,7 @@ def credito_traductor(paginas, idioma):
     # Guardar solo una indicación legible: las separaciones OCR pueden ser
     # imperfectas. Esto NO certifica prestigio académico ni cotejo filológico.
     secuencia = portada[match.end():match.end()+95].strip(" ,.;:-")
-    nombre = re.match(r"([A-ZÀ-Ý][A-Za-zÀ-ÿ.'’-]+(?:\\s+(?:[A-ZÀ-Ý][A-Za-zÀ-ÿ.'’-]+|[A-ZÀ-Ý]\\.)){1,5})", secuencia)
+    nombre = re.match(r"([A-ZÀ-Ý][A-Za-zÀ-ÿ.'’-]+(?:\s+(?:[A-ZÀ-Ý][A-Za-zÀ-ÿ.'’-]+|[A-ZÀ-Ý]\.)){1,5})", secuencia)
     if not nombre:
         return None
     return nombre.group(1)
