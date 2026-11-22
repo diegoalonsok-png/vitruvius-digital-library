@@ -21,6 +21,7 @@ on:
       - 'scripts/expand-classics-r2.py'
       - 'scripts/test-expand-classics-r2.py'
       - 'scripts/audit-classical-corpus.mjs'
+      - 'scripts/reconcile-perseus-provenance-expansion.mjs'
       - 'scripts/build-r2-expansion-index.mjs'
       - 'scripts/publish-r2-expansion-index.py'
 permissions:
@@ -53,6 +54,7 @@ jobs:
         run: python scripts/test-expand-classics-r2.py
       - name: Reconciliar metadatos de cobertura y validar traducciones antes de incorporar originales
         run: |
+          node --check scripts/reconcile-perseus-provenance-expansion.mjs
           python scripts/sync-classics-coverage.py
           node scripts/audit-classical-corpus.mjs
       - name: Incorporar todo original admisible y preservar textos de GitHub
@@ -72,8 +74,10 @@ jobs:
             python scripts/expand-classics-r2.py --finalize
             python scripts/sync-classics-coverage.py
             python scripts/sync-bibliotheca-github-r2.py
+            node scripts/reconcile-perseus-provenance-expansion.mjs
+            node scripts/test-perseus-provenance.mjs
             node scripts/audit-classical-corpus.mjs
-            git add data/bibliotheca-graeca-latina-I-bce-I-ce.json data/classics-corpus/search-registry.json data/r2/classics-expansion-index.json data/r2/classics-expansion-manifest.json data/classics-corpus/coverage-audit.json data/classics-corpus/translation-availability-222.json data/r2/bibliotheca-inventario-unificado.json data/cifras-corpus.json
+            git add data/bibliotheca-graeca-latina-I-bce-I-ce.json data/classics-corpus/search-registry.json data/r2/classics-expansion-index.json data/r2/classics-expansion-manifest.json data/classics-corpus/coverage-audit.json data/classics-corpus/translation-availability-222.json data/r2/bibliotheca-inventario-unificado.json data/cifras-corpus.json data/perseus-provenance-audit.json perseus-procedencia-textual.html
             if git diff --cached --quiet; then break; fi
             git commit -m 'Incorporar originales TEI en R2 con índices, procedencia y preservación de GitHub'
             if git push origin HEAD:main; then break; fi
