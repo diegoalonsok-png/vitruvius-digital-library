@@ -1,24 +1,10 @@
 name: Bibliotheca - sincronizar corpus griego latino GitHub a R2 (SHA)
+# Congelado a petición del responsable: NO mover/copiar los textos existentes
+# de GitHub a R2 ni reescribir rutas de lectura. Se preservan intactos ambos.
+# La sincronización de metadatos de nuevas adquisiciones R2 es independiente.
 on:
-  push:
-    branches: [main]
-    paths:
-      - '.github/workflows/sync-classics-local-r2.yml'
-      - 'scripts/sync-classics-local-to-r2.py'
-      - 'data/classics-corpus/search-registry.json'
-      - 'data/classics-corpus/*-grc.json'
-      - 'data/classics-corpus/*-la.json'
-      - 'data/classics-corpus/*-en.json'
-      - 'data/classics-corpus/*-es.json'
-      - 'data/classics-corpus/*-fr.json'
-  schedule:
-    # Migración por tandas: 40 textos por ejecución, hasta completar el legado.
-    - cron: '17 */2 * * *'
   workflow_dispatch:
-    inputs:
-      limite:
-        description: 'Archivos de corpus por tanda (1-40)'
-        default: '40'
+
 permissions:
   contents: write
 concurrency:
@@ -26,7 +12,8 @@ concurrency:
   cancel-in-progress: false
 jobs:
   sync:
-    if: github.ref == 'refs/heads/main'
+    # Desactivado incluso ante ejecución manual; requiere orden expresa nueva.
+    if: ${{ false }}
     runs-on: ubuntu-latest
     timeout-minutes: 90
     steps:
