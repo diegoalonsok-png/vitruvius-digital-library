@@ -104,7 +104,10 @@ def main():
     public = source_coverage["totals"]
     assert indexed == public["originalTextIndexed"], (indexed, public["originalTextIndexed"])
     assert translated == public["translatedWorksLocal"], (translated, public["translatedWorksLocal"])
-    assert indexed == len(langs_by_id), "Registry claims inconsistent original-language coverage"
+    # El registro también contiene obras con SOLO traducción local: no equivalen
+    # a originales indexados. Comprobar que ningún original contado carezca
+    # de entrada, sin exigir igualdad con todas las obras del registro.
+    assert indexed <= len(langs_by_id), "Originales indexados exceden las obras locales registradas"
     remote_only = sum(w["offsiteOriginalIndexed"] and not w["originalIndexed"] for w in entries)
     effective_indexed = sum(w["effectiveOriginalIndexed"] for w in entries)
     assert effective_indexed + sum(not w["effectiveOriginalIndexed"] for w in entries) == total_works
