@@ -16,6 +16,7 @@ on:
     branches: [main]
     paths:
       - ".github/workflows/ingest-ancient-multilingual-r2.yml"
+      - "scripts/ingest-ancient-multilingual-r2.py"
 
 concurrency:
   group: vdl-r2-ancient-multilingual
