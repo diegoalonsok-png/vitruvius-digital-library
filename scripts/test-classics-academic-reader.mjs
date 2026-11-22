@@ -27,7 +27,15 @@ w.HTMLElement.prototype.scrollIntoView=function(){};w.matchMedia=()=>({matches:f
 w.addEventListener("error",e=>errors.push(e.message));
 w.VitruviaInlineTranslation={translate:async(text,source,target)=>{translations.push({text,source,target});return {text:"Traducción de prueba al "+target,provider:"Proveedor de prueba"}}};
 for(const path of ["assets/classical-lexicon.js","assets/classics-academic-reader.js","assets/classics-text-reader.js","assets/classics-inline-parallel.js","assets/classics-reader-annotations.js","assets/classics-translation-annotations.js"])w.eval(read(path));
-await until(()=>d.querySelector("#passages p")&&d.querySelector(".cl-translation-output p"));
+await until(()=>d.querySelector("#passages p")&&d.querySelector(".cl-translation-output"));
+// Translation by external service requires an explicit click. The URL's
+// language preference alone must never trigger automatic transfer of text.
+assert.equal(translations.length,0,"El lector no debe traducir automáticamente sin consentimiento");
+const activation=[...d.querySelectorAll(".cl-translation-tools button")].find(
+  button=>button.textContent.includes("Activar traducción automática"));
+assert(activation&&!activation.hidden,"La traducción orientativa debe permitir activación explícita");
+activation.click();
+await until(()=>d.querySelector(".cl-translation-output p")&&translations.length>0);
 assert.deepEqual(errors,[]);
 assert.match(d.querySelector("#current-locus").textContent,/Capítulo 1\.1/);
 assert(!d.querySelector("#passages p>span:not(.locus)").textContent.includes("Acts"));
