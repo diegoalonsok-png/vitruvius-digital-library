@@ -1,12 +1,12 @@
 {
   "schema": "vdl-federated-bibliotheca-inventory-v1",
-  "generated": "2026-11-22T12:25:51.048280+00:00",
+  "generated": "2026-11-22T17:26:11.145377+00:00",
   "method": "Master works and additional R2 works counted separately; edition relations can be many-to-many. Remote text URLs are declared, not live-verified. Unresolved editions are never merged automatically.",
   "counts": {
-    "cataloguedWorks": 271,
+    "cataloguedWorks": 282,
     "supplementaryWorks": 127,
     "additionalWorks": 10,
-    "totalDeclaredWorks": 408,
+    "totalDeclaredWorks": 419,
     "r2EditionRecords": 117,
     "r2LinkedEditionRecords": 107,
     "r2WorkEditionRelations": 115,
@@ -14,7 +14,7 @@
     "r2UnlinkedEditionRecords": 0,
     "worksWithR2Edition": 114,
     "worksWithLocalIndexedText": 325,
-    "worksWithDeclaredRemoteIndex": 44
+    "worksWithDeclaredRemoteIndex": 55
   },
   "unlinkedR2EditionIds": [],
   "additionalWorks": [
@@ -7342,6 +7342,160 @@
           "objectStatus": "declared-in-r2-catalogue-not-live-probed"
         }
       ]
+    },
+    {
+      "id": "cts-phi0474-phi036",
+      "author": "Cicerón",
+      "title": "De Inventione",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "la",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0474-phi036-la-6ce61f6aa9e34769.json"
+        }
+      ],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "cts-phi0474-phi038",
+      "author": "Cicerón",
+      "title": "Partitiones Oratoriae",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "la",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0474-phi038-la-1e32100f897601a8.json"
+        }
+      ],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "cts-phi0474-phi040",
+      "author": "Cicerón",
+      "title": "Orator",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "la",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0474-phi040-la-6ff17151fc460bd6.json"
+        }
+      ],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "cts-phi0474-phi041",
+      "author": "Cicerón",
+      "title": "De Optimo Genere Oratorum",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "la",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0474-phi041-la-7937aefe7ff7a789.json"
+        }
+      ],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "cts-phi0474-phi046",
+      "author": "Cicerón",
+      "title": "Lucullus",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "la",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0474-phi046-la-7a354f343f44b3c8.json"
+        }
+      ],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "cts-phi0474-phi045",
+      "author": "Cicerón",
+      "title": "Academica",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "la",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0474-phi045-la-a977f3d5c4370d93.json"
+        }
+      ],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "cts-phi0474-phi042",
+      "author": "Cicerón",
+      "title": "Topica",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "la",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0474-phi042-la-bbf7cd046b72a8d7.json"
+        }
+      ],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "cts-phi0474-phi047",
+      "author": "Cicerón",
+      "title": "Paradoxa Stoicorum",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "la",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0474-phi047-la-c5d63c7f8f9efedd.json"
+        }
+      ],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "cts-tlg0062-tlg016",
+      "author": "Luciano de Samósata",
+      "title": "Cataplus",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg016-grc-5004e4b54425dc19.json"
+        }
+      ],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "cts-tlg0062-tlg017",
+      "author": "Luciano de Samósata",
+      "title": "Juppiter Confutatus",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg017-grc-dac8437b031446bc.json"
+        }
+      ],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "cts-tlg0062-tlg018",
+      "author": "Luciano de Samósata",
+      "title": "Juppiter Tragoedus",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg018-grc-5c31c0511a197a5b.json"
+        }
+      ],
+      "r2FacsimileEditions": []
     }
   ]
 }

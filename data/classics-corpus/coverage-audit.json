@@ -1,20 +1,20 @@
 {
   "schema": "vitruvia-classics-coverage-audit-v1",
-  "date": "2026-11-20",
+  "date": "2026-11-22",
   "scope": "Se auditan exclusivamente 271 fichas de obras del catálogo local; no es un censo universal de literatura grecolatina.",
   "method": "Cruce de fichas bibliográficas, vínculos locales, corpus legible, registro de búsqueda y testimonios manuscritos; sin OCR ni verificación externa de los enlaces.",
   "counts": {
-    "cataloguedWorks": 271,
+    "cataloguedWorks": 282,
     "catalogueStatuses": {
       "lectura-local-completa": 31,
-      "lectura-local-parcial": 165,
+      "lectura-local-parcial": 176,
       "fuente-externa-identificada": 61,
       "repertoriado-busqueda-externa": 12,
       "pendiente-de-incorporar": 2
     },
-    "locallyReadableClaims": 196,
-    "indexedTextVersions": 311,
-    "indexedDistinctWorks": 232,
+    "locallyReadableClaims": 207,
+    "indexedTextVersions": 336,
+    "indexedDistinctWorks": 252,
     "manuscriptWitnesses": 107
   },
   "works": [
@@ -535,8 +535,12 @@
       "genre": "Historia natural",
       "dating": "c. 62–65 d. C.",
       "catalogueStatus": "repertoriado-busqueda-externa",
-      "indexedTextLanguages": [],
-      "indexedTextFiles": [],
+      "indexedTextLanguages": [
+        "la"
+      ],
+      "indexedTextFiles": [
+        "data/classics-corpus/seneca-naturales-la.json"
+      ],
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": false,
@@ -1089,9 +1093,11 @@
       "dating": "Principios del siglo IV d. C.",
       "catalogueStatus": "lectura-local-parcial",
       "indexedTextLanguages": [
+        "en",
         "grc"
       ],
       "indexedTextFiles": [
+        "data/classics-corpus/eusebio-en.json",
         "data/classics-corpus/eusebio-grc.json"
       ],
       "localPDF": null,
@@ -1914,8 +1920,12 @@
       "genre": "Historiografía",
       "dating": "siglo I d. C.",
       "catalogueStatus": "repertoriado-busqueda-externa",
-      "indexedTextLanguages": [],
-      "indexedTextFiles": [],
+      "indexedTextLanguages": [
+        "la"
+      ],
+      "indexedTextFiles": [
+        "data/classics-corpus/velleius-historia-la.json"
+      ],
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": false,
@@ -3189,9 +3199,11 @@
       "dating": "411 a. C.",
       "catalogueStatus": "lectura-local-parcial",
       "indexedTextLanguages": [
+        "en",
         "grc"
       ],
       "indexedTextFiles": [
+        "data/classics-corpus/aristophanes-lysistrata-en.json",
         "data/classics-corpus/aristophanes-lysistrata-grc.json"
       ],
       "localPDF": null,
@@ -3255,9 +3267,11 @@
       "dating": "425 a. C.",
       "catalogueStatus": "lectura-local-parcial",
       "indexedTextLanguages": [
+        "en",
         "grc"
       ],
       "indexedTextFiles": [
+        "data/classics-corpus/aristophanes-acharnenses-en.json",
         "data/classics-corpus/aristophanes-acharnenses-grc.json"
       ],
       "localPDF": null,
@@ -4040,8 +4054,12 @@
       "genre": "Filosofía estoica",
       "dating": "siglo I d. C.",
       "catalogueStatus": "repertoriado-busqueda-externa",
-      "indexedTextLanguages": [],
-      "indexedTextFiles": [],
+      "indexedTextLanguages": [
+        "la"
+      ],
+      "indexedTextFiles": [
+        "data/classics-corpus/seneca-de-ira-la.json"
+      ],
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": false,
@@ -4080,8 +4098,12 @@
       "genre": "Filosofía estoica",
       "dating": "siglo I d. C.",
       "catalogueStatus": "repertoriado-busqueda-externa",
-      "indexedTextLanguages": [],
-      "indexedTextFiles": [],
+      "indexedTextLanguages": [
+        "la"
+      ],
+      "indexedTextFiles": [
+        "data/classics-corpus/seneca-de-tranquillitate-la.json"
+      ],
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": false,
@@ -4384,8 +4406,12 @@
       "genre": "Miscelánea erudita",
       "dating": "siglo V d. C.",
       "catalogueStatus": "repertoriado-busqueda-externa",
-      "indexedTextLanguages": [],
-      "indexedTextFiles": [],
+      "indexedTextLanguages": [
+        "la"
+      ],
+      "indexedTextFiles": [
+        "data/classics-corpus/macrobius-saturnalia-la.json"
+      ],
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": false,
@@ -4514,8 +4540,12 @@
       "genre": "Épica",
       "dating": "siglo II a. C.",
       "catalogueStatus": "repertoriado-busqueda-externa",
-      "indexedTextLanguages": [],
-      "indexedTextFiles": [],
+      "indexedTextLanguages": [
+        "la"
+      ],
+      "indexedTextFiles": [
+        "data/classics-corpus/ennius-annales-la.json"
+      ],
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": false,
@@ -4612,8 +4642,12 @@
       "genre": "Miscelánea erudita",
       "dating": "siglo VII d. C.",
       "catalogueStatus": "repertoriado-busqueda-externa",
-      "indexedTextLanguages": [],
-      "indexedTextFiles": [],
+      "indexedTextLanguages": [
+        "la"
+      ],
+      "indexedTextFiles": [
+        "data/classics-corpus/isidore-etymologiae-la.json"
+      ],
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": false,
@@ -4926,8 +4960,12 @@
       "genre": "Agrimensura",
       "dating": "finales del s. I d. C.",
       "catalogueStatus": "fuente-externa-identificada",
-      "indexedTextLanguages": [],
-      "indexedTextFiles": [],
+      "indexedTextLanguages": [
+        "la"
+      ],
+      "indexedTextFiles": [
+        "data/classics-corpus/frontinus-gromatica-la.json"
+      ],
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": false,
@@ -4944,8 +4982,12 @@
       "genre": "Agrimensura",
       "dating": "s. I–II d. C. (datación debatida)",
       "catalogueStatus": "fuente-externa-identificada",
-      "indexedTextLanguages": [],
-      "indexedTextFiles": [],
+      "indexedTextLanguages": [
+        "la"
+      ],
+      "indexedTextFiles": [
+        "data/classics-corpus/siculus-flaccus-la.json"
+      ],
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": false,
@@ -4987,9 +5029,11 @@
       "dating": "c. 250 a. C.",
       "catalogueStatus": "fuente-externa-identificada",
       "indexedTextLanguages": [
+        "en",
         "grc"
       ],
       "indexedTextFiles": [
+        "data/classics-corpus/apolonio-argonauticas-en.json",
         "https://libros.vitruvius-digital-library.org/corpus/apolonio-argonauticas-grc.json"
       ],
       "localPDF": null,
@@ -5162,9 +5206,11 @@
       "dating": "Siglo IV a. C.",
       "catalogueStatus": "fuente-externa-identificada",
       "indexedTextLanguages": [
+        "en",
         "grc"
       ],
       "indexedTextFiles": [
+        "data/classics-corpus/aristoteles-del-cielo-en.json",
         "https://libros.vitruvius-digital-library.org/corpus/aristoteles-del-cielo-grc.json"
       ],
       "localPDF": null,
@@ -6076,6 +6122,171 @@
       "manuscriptRecords": 0,
       "hasDeclaredExternalReading": true,
       "notes": "Facsímil alojado en Cloudflare R2, legible página a página en el visor del sitio (buscador-facsimiles-clasicos.html). El texto por página es OCR sin revisar: no es transcripción indexada ni cotejo filológico."
+    },
+    {
+      "id": "cts-phi0474-phi036",
+      "author": "Cicerón",
+      "title": "De Inventione",
+      "originalLanguage": "la",
+      "catalogueStatus": "lectura-local-parcial",
+      "indexedTextLanguages": [
+        "la"
+      ],
+      "indexedTextFiles": [
+        "https://libros.vitruvius-digital-library.org/corpus/cts-phi0474-phi036-la-6ce61f6aa9e34769.json"
+      ],
+      "manuscriptRecords": 0,
+      "hasManuscriptRecord": false
+    },
+    {
+      "id": "cts-phi0474-phi038",
+      "author": "Cicerón",
+      "title": "Partitiones Oratoriae",
+      "originalLanguage": "la",
+      "catalogueStatus": "lectura-local-parcial",
+      "indexedTextLanguages": [
+        "la"
+      ],
+      "indexedTextFiles": [
+        "https://libros.vitruvius-digital-library.org/corpus/cts-phi0474-phi038-la-1e32100f897601a8.json"
+      ],
+      "manuscriptRecords": 0,
+      "hasManuscriptRecord": false
+    },
+    {
+      "id": "cts-phi0474-phi040",
+      "author": "Cicerón",
+      "title": "Orator",
+      "originalLanguage": "la",
+      "catalogueStatus": "lectura-local-parcial",
+      "indexedTextLanguages": [
+        "la"
+      ],
+      "indexedTextFiles": [
+        "https://libros.vitruvius-digital-library.org/corpus/cts-phi0474-phi040-la-6ff17151fc460bd6.json"
+      ],
+      "manuscriptRecords": 0,
+      "hasManuscriptRecord": false
+    },
+    {
+      "id": "cts-phi0474-phi041",
+      "author": "Cicerón",
+      "title": "De Optimo Genere Oratorum",
+      "originalLanguage": "la",
+      "catalogueStatus": "lectura-local-parcial",
+      "indexedTextLanguages": [
+        "la"
+      ],
+      "indexedTextFiles": [
+        "https://libros.vitruvius-digital-library.org/corpus/cts-phi0474-phi041-la-7937aefe7ff7a789.json"
+      ],
+      "manuscriptRecords": 0,
+      "hasManuscriptRecord": false
+    },
+    {
+      "id": "cts-phi0474-phi046",
+      "author": "Cicerón",
+      "title": "Lucullus",
+      "originalLanguage": "la",
+      "catalogueStatus": "lectura-local-parcial",
+      "indexedTextLanguages": [
+        "la"
+      ],
+      "indexedTextFiles": [
+        "https://libros.vitruvius-digital-library.org/corpus/cts-phi0474-phi046-la-7a354f343f44b3c8.json"
+      ],
+      "manuscriptRecords": 0,
+      "hasManuscriptRecord": false
+    },
+    {
+      "id": "cts-phi0474-phi045",
+      "author": "Cicerón",
+      "title": "Academica",
+      "originalLanguage": "la",
+      "catalogueStatus": "lectura-local-parcial",
+      "indexedTextLanguages": [
+        "la"
+      ],
+      "indexedTextFiles": [
+        "https://libros.vitruvius-digital-library.org/corpus/cts-phi0474-phi045-la-a977f3d5c4370d93.json"
+      ],
+      "manuscriptRecords": 0,
+      "hasManuscriptRecord": false
+    },
+    {
+      "id": "cts-phi0474-phi042",
+      "author": "Cicerón",
+      "title": "Topica",
+      "originalLanguage": "la",
+      "catalogueStatus": "lectura-local-parcial",
+      "indexedTextLanguages": [
+        "la"
+      ],
+      "indexedTextFiles": [
+        "https://libros.vitruvius-digital-library.org/corpus/cts-phi0474-phi042-la-bbf7cd046b72a8d7.json"
+      ],
+      "manuscriptRecords": 0,
+      "hasManuscriptRecord": false
+    },
+    {
+      "id": "cts-phi0474-phi047",
+      "author": "Cicerón",
+      "title": "Paradoxa Stoicorum",
+      "originalLanguage": "la",
+      "catalogueStatus": "lectura-local-parcial",
+      "indexedTextLanguages": [
+        "la"
+      ],
+      "indexedTextFiles": [
+        "https://libros.vitruvius-digital-library.org/corpus/cts-phi0474-phi047-la-c5d63c7f8f9efedd.json"
+      ],
+      "manuscriptRecords": 0,
+      "hasManuscriptRecord": false
+    },
+    {
+      "id": "cts-tlg0062-tlg016",
+      "author": "Luciano de Samósata",
+      "title": "Cataplus",
+      "originalLanguage": "grc",
+      "catalogueStatus": "lectura-local-parcial",
+      "indexedTextLanguages": [
+        "grc"
+      ],
+      "indexedTextFiles": [
+        "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg016-grc-5004e4b54425dc19.json"
+      ],
+      "manuscriptRecords": 0,
+      "hasManuscriptRecord": false
+    },
+    {
+      "id": "cts-tlg0062-tlg017",
+      "author": "Luciano de Samósata",
+      "title": "Juppiter Confutatus",
+      "originalLanguage": "grc",
+      "catalogueStatus": "lectura-local-parcial",
+      "indexedTextLanguages": [
+        "grc"
+      ],
+      "indexedTextFiles": [
+        "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg017-grc-dac8437b031446bc.json"
+      ],
+      "manuscriptRecords": 0,
+      "hasManuscriptRecord": false
+    },
+    {
+      "id": "cts-tlg0062-tlg018",
+      "author": "Luciano de Samósata",
+      "title": "Juppiter Tragoedus",
+      "originalLanguage": "grc",
+      "catalogueStatus": "lectura-local-parcial",
+      "indexedTextLanguages": [
+        "grc"
+      ],
+      "indexedTextFiles": [
+        "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg018-grc-5c31c0511a197a5b.json"
+      ],
+      "manuscriptRecords": 0,
+      "hasManuscriptRecord": false
     }
   ],
   "updated": "2026-11-14"

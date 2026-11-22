@@ -1,29 +1,29 @@
 {
   "schema": "vitruvius-classics-translation-availability-v1",
-  "generated": "2026-11-20",
+  "generated": "2026-11-22",
   "basis": "Cálculo a partir de works[] y search-registry.json. Los campos de compatibilidad locallyIndexedWorks y localEditionLanguages incluyen índices registrados en R2. originalIndexed y verifiedLocalEditionLanguages solo cuentan archivos locales. originalR2Registered identifica declaraciones remotas; no certifica disponibilidad HTTP ni cotejo.",
   "scope": "271 obras del repertorio grecolatino; originales locales, índices remotos declarados y traducciones alojadas ES/EN/FR",
   "totals": {
-    "cataloguedWorks": 271,
-    "locallyIndexedWorks": 232,
-    "translatedWorksLocal": 73,
-    "worksWithoutHostedTranslation": 198,
+    "cataloguedWorks": 282,
+    "locallyIndexedWorks": 252,
+    "translatedWorksLocal": 78,
+    "worksWithoutHostedTranslation": 204,
     "localTranslationLanguages": {
       "es": 5,
-      "en": 72,
+      "en": 77,
       "fr": 2
     },
-    "originalTextIndexed": 188,
-    "originalTextNotIndexed": 83,
-    "verifiedLocalFileWorks": 188,
-    "declaredRemoteOnlyWorks": 44,
-    "declaredR2OriginalWorks": 44,
-    "registeredOriginalWorks": 232,
-    "registeredTextVersions": 311,
-    "verifiedLocalTextVersions": 267,
-    "verifiedLocalOriginalTextIndexed": 188,
-    "supplementaryTextVersions": 156,
-    "allRegisteredTextVersions": 467
+    "originalTextIndexed": 197,
+    "originalTextNotIndexed": 85,
+    "verifiedLocalFileWorks": 199,
+    "declaredRemoteOnlyWorks": 53,
+    "declaredR2OriginalWorks": 55,
+    "registeredOriginalWorks": 252,
+    "registeredTextVersions": 336,
+    "verifiedLocalTextVersions": 281,
+    "verifiedLocalOriginalTextIndexed": 197,
+    "supplementaryTextVersions": 161,
+    "allRegisteredTextVersions": 497
   },
   "works": [
     {
@@ -655,19 +655,25 @@
       "author": "Séneca",
       "title": "Naturales quaestiones",
       "originalLanguage": "la",
-      "originalIndexed": false,
+      "originalIndexed": true,
       "translationLanguages": [],
-      "localEditionLanguages": [],
+      "localEditionLanguages": [
+        "la"
+      ],
       "externalTranslationUnverified": [],
       "readingStatus": "repertoriado-busqueda-externa",
       "translationSourceDescription": "Sin traducción individual vinculada todavía; consultar las disponibles en la fuente",
       "translationRegisteredButNotHosted": false,
       "indexed": false,
       "originalR2Registered": false,
-      "registeredOriginal": false,
-      "registeredEditionLanguages": [],
+      "registeredOriginal": true,
+      "registeredEditionLanguages": [
+        "la"
+      ],
       "remoteEditionLanguages": [],
-      "verifiedLocalEditionLanguages": []
+      "verifiedLocalEditionLanguages": [
+        "la"
+      ]
     },
     {
       "id": "lucan",
@@ -1288,8 +1294,11 @@
       "title": "Ἐκκλησιαστικὴ ἱστορία · Historia eclesiástica",
       "originalLanguage": "grc",
       "originalIndexed": true,
-      "translationLanguages": [],
+      "translationLanguages": [
+        "en"
+      ],
       "localEditionLanguages": [
+        "en",
         "grc"
       ],
       "externalTranslationUnverified": [],
@@ -1300,10 +1309,12 @@
       "originalR2Registered": false,
       "registeredOriginal": true,
       "registeredEditionLanguages": [
+        "en",
         "grc"
       ],
       "remoteEditionLanguages": [],
       "verifiedLocalEditionLanguages": [
+        "en",
         "grc"
       ]
     },
@@ -2235,19 +2246,25 @@
       "author": "Veleyo Patérculo",
       "title": "Historia Romana",
       "originalLanguage": "la",
-      "originalIndexed": false,
+      "originalIndexed": true,
       "translationLanguages": [],
-      "localEditionLanguages": [],
+      "localEditionLanguages": [
+        "la"
+      ],
       "externalTranslationUnverified": [],
       "readingStatus": "repertoriado-busqueda-externa",
       "translationSourceDescription": "Inglés: traducción de la edición Loeb (dominio público) en LacusCurtius, enlace externo verificado. Castellano y francés pendientes.",
       "translationRegisteredButNotHosted": true,
       "indexed": false,
       "originalR2Registered": false,
-      "registeredOriginal": false,
-      "registeredEditionLanguages": [],
+      "registeredOriginal": true,
+      "registeredEditionLanguages": [
+        "la"
+      ],
       "remoteEditionLanguages": [],
-      "verifiedLocalEditionLanguages": []
+      "verifiedLocalEditionLanguages": [
+        "la"
+      ]
     },
     {
       "id": "silius-punica",
@@ -3781,8 +3798,11 @@
       "title": "Λυσιστράτη",
       "originalLanguage": "grc",
       "originalIndexed": true,
-      "translationLanguages": [],
+      "translationLanguages": [
+        "en"
+      ],
       "localEditionLanguages": [
+        "en",
         "grc"
       ],
       "externalTranslationUnverified": [],
@@ -3793,10 +3813,12 @@
       "originalR2Registered": false,
       "registeredOriginal": true,
       "registeredEditionLanguages": [
+        "en",
         "grc"
       ],
       "remoteEditionLanguages": [],
       "verifiedLocalEditionLanguages": [
+        "en",
         "grc"
       ]
     },
@@ -3856,8 +3878,11 @@
       "title": "Ἀχαρνῆς",
       "originalLanguage": "grc",
       "originalIndexed": true,
-      "translationLanguages": [],
+      "translationLanguages": [
+        "en"
+      ],
       "localEditionLanguages": [
+        "en",
         "grc"
       ],
       "externalTranslationUnverified": [],
@@ -3868,10 +3893,12 @@
       "originalR2Registered": false,
       "registeredOriginal": true,
       "registeredEditionLanguages": [
+        "en",
         "grc"
       ],
       "remoteEditionLanguages": [],
       "verifiedLocalEditionLanguages": [
+        "en",
         "grc"
       ]
     },
@@ -4802,19 +4829,25 @@
       "author": "Séneca",
       "title": "De ira",
       "originalLanguage": "la",
-      "originalIndexed": false,
+      "originalIndexed": true,
       "translationLanguages": [],
-      "localEditionLanguages": [],
+      "localEditionLanguages": [
+        "la"
+      ],
       "externalTranslationUnverified": [],
       "readingStatus": "repertoriado-busqueda-externa",
       "translationSourceDescription": "Traducción no incorporada ni alineada con una edición identificada.",
       "translationRegisteredButNotHosted": true,
       "indexed": false,
       "originalR2Registered": false,
-      "registeredOriginal": false,
-      "registeredEditionLanguages": [],
+      "registeredOriginal": true,
+      "registeredEditionLanguages": [
+        "la"
+      ],
       "remoteEditionLanguages": [],
-      "verifiedLocalEditionLanguages": []
+      "verifiedLocalEditionLanguages": [
+        "la"
+      ]
     },
     {
       "id": "seneca-de-clementia",
@@ -4846,19 +4879,25 @@
       "author": "Séneca",
       "title": "De tranquillitate animi",
       "originalLanguage": "la",
-      "originalIndexed": false,
+      "originalIndexed": true,
       "translationLanguages": [],
-      "localEditionLanguages": [],
+      "localEditionLanguages": [
+        "la"
+      ],
       "externalTranslationUnverified": [],
       "readingStatus": "repertoriado-busqueda-externa",
       "translationSourceDescription": "Traducción no incorporada ni alineada con una edición identificada.",
       "translationRegisteredButNotHosted": true,
       "indexed": false,
       "originalR2Registered": false,
-      "registeredOriginal": false,
-      "registeredEditionLanguages": [],
+      "registeredOriginal": true,
+      "registeredEditionLanguages": [
+        "la"
+      ],
       "remoteEditionLanguages": [],
-      "verifiedLocalEditionLanguages": []
+      "verifiedLocalEditionLanguages": [
+        "la"
+      ]
     },
     {
       "id": "horace-epodi",
@@ -5190,19 +5229,25 @@
       "author": "Macrobio",
       "title": "Saturnalia",
       "originalLanguage": "la",
-      "originalIndexed": false,
+      "originalIndexed": true,
       "translationLanguages": [],
-      "localEditionLanguages": [],
+      "localEditionLanguages": [
+        "la"
+      ],
       "externalTranslationUnverified": [],
       "readingStatus": "repertoriado-busqueda-externa",
       "translationSourceDescription": "Traducción no incorporada ni alineada con una edición identificada.",
       "translationRegisteredButNotHosted": true,
       "indexed": false,
       "originalR2Registered": false,
-      "registeredOriginal": false,
-      "registeredEditionLanguages": [],
+      "registeredOriginal": true,
+      "registeredEditionLanguages": [
+        "la"
+      ],
       "remoteEditionLanguages": [],
-      "verifiedLocalEditionLanguages": []
+      "verifiedLocalEditionLanguages": [
+        "la"
+      ]
     },
     {
       "id": "epictetus-enchiridion",
@@ -5339,19 +5384,25 @@
       "author": "Ennio",
       "title": "Annales (fragmenta)",
       "originalLanguage": "la",
-      "originalIndexed": false,
+      "originalIndexed": true,
       "translationLanguages": [],
-      "localEditionLanguages": [],
+      "localEditionLanguages": [
+        "la"
+      ],
       "externalTranslationUnverified": [],
       "readingStatus": "repertoriado-busqueda-externa",
       "translationSourceDescription": "Traducción no incorporada ni alineada con una edición identificada.",
       "translationRegisteredButNotHosted": true,
       "indexed": false,
       "originalR2Registered": false,
-      "registeredOriginal": false,
-      "registeredEditionLanguages": [],
+      "registeredOriginal": true,
+      "registeredEditionLanguages": [
+        "la"
+      ],
       "remoteEditionLanguages": [],
-      "verifiedLocalEditionLanguages": []
+      "verifiedLocalEditionLanguages": [
+        "la"
+      ]
     },
     {
       "id": "accius-fragmenta",
@@ -5446,19 +5497,25 @@
       "author": "Isidoro de Sevilla",
       "title": "Etymologiae",
       "originalLanguage": "la",
-      "originalIndexed": false,
+      "originalIndexed": true,
       "translationLanguages": [],
-      "localEditionLanguages": [],
+      "localEditionLanguages": [
+        "la"
+      ],
       "externalTranslationUnverified": [],
       "readingStatus": "repertoriado-busqueda-externa",
       "translationSourceDescription": "Traducción no incorporada ni alineada con una edición identificada.",
       "translationRegisteredButNotHosted": true,
       "indexed": false,
       "originalR2Registered": false,
-      "registeredOriginal": false,
-      "registeredEditionLanguages": [],
+      "registeredOriginal": true,
+      "registeredEditionLanguages": [
+        "la"
+      ],
       "remoteEditionLanguages": [],
-      "verifiedLocalEditionLanguages": []
+      "verifiedLocalEditionLanguages": [
+        "la"
+      ]
     },
     {
       "id": "censorinus-die-natali",
@@ -5799,38 +5856,50 @@
       "author": "Frontino",
       "title": "Opuscula gromatica (De agrorum qualitate, De controversiis, De limitibus)",
       "originalLanguage": "la",
-      "originalIndexed": false,
+      "originalIndexed": true,
       "translationLanguages": [],
-      "localEditionLanguages": [],
+      "localEditionLanguages": [
+        "la"
+      ],
       "externalTranslationUnverified": [],
       "readingStatus": "fuente-externa-identificada",
       "translationSourceDescription": "Traducción moderna no vinculada aún.",
       "translationRegisteredButNotHosted": true,
       "indexed": false,
       "originalR2Registered": false,
-      "registeredOriginal": false,
-      "registeredEditionLanguages": [],
+      "registeredOriginal": true,
+      "registeredEditionLanguages": [
+        "la"
+      ],
       "remoteEditionLanguages": [],
-      "verifiedLocalEditionLanguages": []
+      "verifiedLocalEditionLanguages": [
+        "la"
+      ]
     },
     {
       "id": "siculus-flaccus",
       "author": "Sículo Flaco",
       "title": "De condicionibus agrorum",
       "originalLanguage": "la",
-      "originalIndexed": false,
+      "originalIndexed": true,
       "translationLanguages": [],
-      "localEditionLanguages": [],
+      "localEditionLanguages": [
+        "la"
+      ],
       "externalTranslationUnverified": [],
       "readingStatus": "fuente-externa-identificada",
       "translationSourceDescription": "Traducción moderna no vinculada aún.",
       "translationRegisteredButNotHosted": true,
       "indexed": false,
       "originalR2Registered": false,
-      "registeredOriginal": false,
-      "registeredEditionLanguages": [],
+      "registeredOriginal": true,
+      "registeredEditionLanguages": [
+        "la"
+      ],
       "remoteEditionLanguages": [],
-      "verifiedLocalEditionLanguages": []
+      "verifiedLocalEditionLanguages": [
+        "la"
+      ]
     },
     {
       "id": "sulpicia-elegiae",
@@ -5868,8 +5937,11 @@
       "title": "Ἀργοναυτικά · Argonautica",
       "originalLanguage": "grc",
       "originalIndexed": false,
-      "translationLanguages": [],
+      "translationLanguages": [
+        "en"
+      ],
       "localEditionLanguages": [
+        "en",
         "grc"
       ],
       "externalTranslationUnverified": [],
@@ -5878,12 +5950,15 @@
       "originalR2Registered": true,
       "registeredOriginal": true,
       "registeredEditionLanguages": [
+        "en",
         "grc"
       ],
       "remoteEditionLanguages": [
         "grc"
       ],
-      "verifiedLocalEditionLanguages": []
+      "verifiedLocalEditionLanguages": [
+        "en"
+      ]
     },
     {
       "id": "isocrates-discursos",
@@ -6029,8 +6104,11 @@
       "title": "Περὶ οὐρανοῦ · De caelo",
       "originalLanguage": "grc",
       "originalIndexed": false,
-      "translationLanguages": [],
+      "translationLanguages": [
+        "en"
+      ],
       "localEditionLanguages": [
+        "en",
         "grc"
       ],
       "externalTranslationUnverified": [],
@@ -6039,12 +6117,15 @@
       "originalR2Registered": true,
       "registeredOriginal": true,
       "registeredEditionLanguages": [
+        "en",
         "grc"
       ],
       "remoteEditionLanguages": [
         "grc"
       ],
-      "verifiedLocalEditionLanguages": []
+      "verifiedLocalEditionLanguages": [
+        "en"
+      ]
     },
     {
       "id": "aristoteles-historia-animales",
@@ -6880,6 +6961,248 @@
       "registeredEditionLanguages": [],
       "remoteEditionLanguages": [],
       "verifiedLocalEditionLanguages": []
+    },
+    {
+      "id": "cts-phi0474-phi036",
+      "author": "Cicerón",
+      "title": "De Inventione",
+      "originalLanguage": "la",
+      "translationLanguages": [],
+      "localEditionLanguages": [
+        "la"
+      ],
+      "notes": "Edición TEI incorporada en R2; sin traducción humana ni colación independiente acreditadas.",
+      "originalIndexed": false,
+      "originalR2Registered": true,
+      "registeredOriginal": true,
+      "verifiedLocalEditionLanguages": [],
+      "registeredEditionLanguages": [
+        "la"
+      ],
+      "remoteEditionLanguages": [
+        "la"
+      ],
+      "readingStatus": "lectura-local-parcial"
+    },
+    {
+      "id": "cts-phi0474-phi038",
+      "author": "Cicerón",
+      "title": "Partitiones Oratoriae",
+      "originalLanguage": "la",
+      "translationLanguages": [],
+      "localEditionLanguages": [
+        "la"
+      ],
+      "notes": "Edición TEI incorporada en R2; sin traducción humana ni colación independiente acreditadas.",
+      "originalIndexed": false,
+      "originalR2Registered": true,
+      "registeredOriginal": true,
+      "verifiedLocalEditionLanguages": [],
+      "registeredEditionLanguages": [
+        "la"
+      ],
+      "remoteEditionLanguages": [
+        "la"
+      ],
+      "readingStatus": "lectura-local-parcial"
+    },
+    {
+      "id": "cts-phi0474-phi040",
+      "author": "Cicerón",
+      "title": "Orator",
+      "originalLanguage": "la",
+      "translationLanguages": [],
+      "localEditionLanguages": [
+        "la"
+      ],
+      "notes": "Edición TEI incorporada en R2; sin traducción humana ni colación independiente acreditadas.",
+      "originalIndexed": false,
+      "originalR2Registered": true,
+      "registeredOriginal": true,
+      "verifiedLocalEditionLanguages": [],
+      "registeredEditionLanguages": [
+        "la"
+      ],
+      "remoteEditionLanguages": [
+        "la"
+      ],
+      "readingStatus": "lectura-local-parcial"
+    },
+    {
+      "id": "cts-phi0474-phi041",
+      "author": "Cicerón",
+      "title": "De Optimo Genere Oratorum",
+      "originalLanguage": "la",
+      "translationLanguages": [],
+      "localEditionLanguages": [
+        "la"
+      ],
+      "notes": "Edición TEI incorporada en R2; sin traducción humana ni colación independiente acreditadas.",
+      "originalIndexed": false,
+      "originalR2Registered": true,
+      "registeredOriginal": true,
+      "verifiedLocalEditionLanguages": [],
+      "registeredEditionLanguages": [
+        "la"
+      ],
+      "remoteEditionLanguages": [
+        "la"
+      ],
+      "readingStatus": "lectura-local-parcial"
+    },
+    {
+      "id": "cts-phi0474-phi046",
+      "author": "Cicerón",
+      "title": "Lucullus",
+      "originalLanguage": "la",
+      "translationLanguages": [],
+      "localEditionLanguages": [
+        "la"
+      ],
+      "notes": "Edición TEI incorporada en R2; sin traducción humana ni colación independiente acreditadas.",
+      "originalIndexed": false,
+      "originalR2Registered": true,
+      "registeredOriginal": true,
+      "verifiedLocalEditionLanguages": [],
+      "registeredEditionLanguages": [
+        "la"
+      ],
+      "remoteEditionLanguages": [
+        "la"
+      ],
+      "readingStatus": "lectura-local-parcial"
+    },
+    {
+      "id": "cts-phi0474-phi045",
+      "author": "Cicerón",
+      "title": "Academica",
+      "originalLanguage": "la",
+      "translationLanguages": [],
+      "localEditionLanguages": [
+        "la"
+      ],
+      "notes": "Edición TEI incorporada en R2; sin traducción humana ni colación independiente acreditadas.",
+      "originalIndexed": false,
+      "originalR2Registered": true,
+      "registeredOriginal": true,
+      "verifiedLocalEditionLanguages": [],
+      "registeredEditionLanguages": [
+        "la"
+      ],
+      "remoteEditionLanguages": [
+        "la"
+      ],
+      "readingStatus": "lectura-local-parcial"
+    },
+    {
+      "id": "cts-phi0474-phi042",
+      "author": "Cicerón",
+      "title": "Topica",
+      "originalLanguage": "la",
+      "translationLanguages": [],
+      "localEditionLanguages": [
+        "la"
+      ],
+      "notes": "Edición TEI incorporada en R2; sin traducción humana ni colación independiente acreditadas.",
+      "originalIndexed": false,
+      "originalR2Registered": true,
+      "registeredOriginal": true,
+      "verifiedLocalEditionLanguages": [],
+      "registeredEditionLanguages": [
+        "la"
+      ],
+      "remoteEditionLanguages": [
+        "la"
+      ],
+      "readingStatus": "lectura-local-parcial"
+    },
+    {
+      "id": "cts-phi0474-phi047",
+      "author": "Cicerón",
+      "title": "Paradoxa Stoicorum",
+      "originalLanguage": "la",
+      "translationLanguages": [],
+      "localEditionLanguages": [
+        "la"
+      ],
+      "notes": "Edición TEI incorporada en R2; sin traducción humana ni colación independiente acreditadas.",
+      "originalIndexed": false,
+      "originalR2Registered": true,
+      "registeredOriginal": true,
+      "verifiedLocalEditionLanguages": [],
+      "registeredEditionLanguages": [
+        "la"
+      ],
+      "remoteEditionLanguages": [
+        "la"
+      ],
+      "readingStatus": "lectura-local-parcial"
+    },
+    {
+      "id": "cts-tlg0062-tlg016",
+      "author": "Luciano de Samósata",
+      "title": "Cataplus",
+      "originalLanguage": "grc",
+      "translationLanguages": [],
+      "localEditionLanguages": [
+        "grc"
+      ],
+      "notes": "Edición TEI incorporada en R2; sin traducción humana ni colación independiente acreditadas.",
+      "originalIndexed": false,
+      "originalR2Registered": true,
+      "registeredOriginal": true,
+      "verifiedLocalEditionLanguages": [],
+      "registeredEditionLanguages": [
+        "grc"
+      ],
+      "remoteEditionLanguages": [
+        "grc"
+      ],
+      "readingStatus": "lectura-local-parcial"
+    },
+    {
+      "id": "cts-tlg0062-tlg017",
+      "author": "Luciano de Samósata",
+      "title": "Juppiter Confutatus",
+      "originalLanguage": "grc",
+      "translationLanguages": [],
+      "localEditionLanguages": [
+        "grc"
+      ],
+      "notes": "Edición TEI incorporada en R2; sin traducción humana ni colación independiente acreditadas.",
+      "originalIndexed": false,
+      "originalR2Registered": true,
+      "registeredOriginal": true,
+      "verifiedLocalEditionLanguages": [],
+      "registeredEditionLanguages": [
+        "grc"
+      ],
+      "remoteEditionLanguages": [
+        "grc"
+      ],
+      "readingStatus": "lectura-local-parcial"
+    },
+    {
+      "id": "cts-tlg0062-tlg018",
+      "author": "Luciano de Samósata",
+      "title": "Juppiter Tragoedus",
+      "originalLanguage": "grc",
+      "translationLanguages": [],
+      "localEditionLanguages": [
+        "grc"
+      ],
+      "notes": "Edición TEI incorporada en R2; sin traducción humana ni colación independiente acreditadas.",
+      "originalIndexed": false,
+      "originalR2Registered": true,
+      "registeredOriginal": true,
+      "verifiedLocalEditionLanguages": [],
+      "registeredEditionLanguages": [
+        "grc"
+      ],
+      "remoteEditionLanguages": [
+        "grc"
+      ],
+      "readingStatus": "lectura-local-parcial"
     }
   ]
 }
