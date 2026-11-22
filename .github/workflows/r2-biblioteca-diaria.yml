@@ -14,6 +14,8 @@ on:
     branches: [main]
     paths:
       - 'data/r2/clasicos-candidatos.json'
+      - 'assets/bibliotheca-corpus-search.js'
+      - 'scripts/test-classics-source-diagnostics.mjs'
       - '.github/workflows/r2-biblioteca-diaria.yml'
   schedule:
     - cron: "43 5 * * *"
