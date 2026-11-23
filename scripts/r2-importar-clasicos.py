@@ -109,7 +109,7 @@ def elegir_pdf(ident, anio_max, max_bytes):
             if f.get("name", "").lower().endswith(".pdf") and f.get("size")]
     pdfs.sort(key=lambda f: (f.get("format") != "Text PDF", int(f["size"])))
     if not pdfs:
-        raise ValueError("sin PDF dentro del límite de tamaño")
+        raise ValueError("sin PDF disponible en esta edición")
     return m, pdfs[0], anio
 
 
@@ -186,7 +186,6 @@ def procesar(o, ctx):
             # Los fragmentos breves también son clásicos admisibles.
             con_texto = sum(1 for t in paginas if len(t.strip()) > 200)
             # Las ediciones con texto parcial se etiquetan sin inventar lectura íntegra.
-            portada = fold(" ".join(paginas[:20]))
             # La portada OCR puede omitir el autor: usar la ficha y metadatos de origen.
             traductor = credito_traductor(paginas, o["lengua"]) if o.get("traduccionDe") else None
             if o.get("traduccionDe") and not traductor:
@@ -267,7 +266,9 @@ def procesar(o, ctx):
                 "editor": m.get("publisher"), "creadorIA": m.get("creator"),
                 "bilingueLoeb": es_loeb(titulo, m.get("publisher"), int(anio) if anio.isdigit() else 0),
                 "fuente": f"https://archive.org/details/{ident}", "identificadorIA": ident,
-                "derechos": "Reutilización acreditada en metadatos de Internet Archive",
+                "derechos": "Reutilización declarada en metadatos de Internet Archive",
+                "licenciaEdicion": m.get("licenseurl") or m.get("license"),
+                "estadoDerechosFuente": m.get("possible-copyright-status"),
                 "pdf": PUBLICO + "/" + clave_pdf, "texto": PUBLICO + "/" + clave_txt,
                 "bytes": len(datos), "sha256": sha, "paginas": len(paginas), "paginasConTexto": con_texto,
                 "indiceLectura": PUBLICO + "/" + clave_indice,
@@ -276,7 +277,7 @@ def procesar(o, ctx):
                                "paginasOCR": sum("Tesseract OCR" in m["method"] for m in methods),
                                "paginasSinTexto": sum(not p.strip() for p in paginas),
                                "incidenciasOCR": sum(bool(m.get("issue")) for m in methods)},
-                "verificado": "SHA-256 del objeto público idéntico; autor presente en las primeras páginas",
+                "verificado": "SHA-256 de los objetos públicos coincidente; edición seleccionada por metadatos",
                 **({"recuperadaSinSobrescritura": True} if recuperada else {}),
             }
             return ficha, paginas, rechazos
