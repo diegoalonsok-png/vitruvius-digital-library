@@ -1,5 +1,7 @@
 name: R2 — biblioteca clásica, tanda diaria
 
+# Cuatro tandas cada seis horas, de hasta 15 candidatos verificables cada una.
+# Evitar una ejecución ilimitada bloqueada por OCR o descargas de fuentes inaccesibles.
 # Todos los días: incorpora obras clásicas de dominio público que la biblioteca
 # todavía no tiene, les da ficha de repertorio, las indexa y recalcula los
 # contadores. Los PDF, su texto y los fragmentos del índice van SOLO a Cloudflare
@@ -19,12 +21,12 @@ on:
       - 'scripts/test-classics-academic-reader.mjs'
       - '.github/workflows/r2-biblioteca-diaria.yml'
   schedule:
-    - cron: "43 5 * * *"
+    - cron: "43 5,11,17,23 * * *"
   workflow_dispatch:
     inputs:
       limite:
         description: "Máximo de obras en la tanda (0 = todas las pendientes)"
-        default: "0"
+        default: "15"
       traducciones:
         description: "Buscar traducciones de dominio público para las obras alojadas sin ninguna"
         type: boolean
@@ -93,7 +95,7 @@ jobs:
         env:
           R2_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
           R2_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
-          LIMITE: ${{ inputs.limite || '0' }}
+          LIMITE: ${{ inputs.limite || '15' }}
         run: python scripts/r2-importar-clasicos.py
 
       # Un original recién subido puede no haber existido al descubrir
