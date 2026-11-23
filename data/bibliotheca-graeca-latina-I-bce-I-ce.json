@@ -164,7 +164,7 @@
     "archive": "https://archive.org/search?query=De%20officiis%20Cicer%C3%B3n",
     "gallica": "https://gallica.bnf.fr/Search?ArianeWireIndex=index&p=1&q=De%20officiis"
    },
-   "publicStatus": "lectura-local-completa",
+   "publicStatus": "lectura-local-parcial",
    "localReader": null,
    "localHtml": "corpus/cicero-de-officiis-la-en.html",
    "localEdition": {
@@ -189,6 +189,16 @@
      "label": "English · Walter Miller 1913",
      "path": "corpus/cicero-de-officiis-en.html",
      "kind": "translation"
+    },
+    {
+     "language": "la",
+     "path": "https://libros.vitruvius-digital-library.org/corpus/cicero-officiis-la-27b0c1263a85dabe.json",
+     "label": "Edición original la · urn:cts:latinLit:phi0474.phi055.perseus-lat2",
+     "reader": "classics-text-reader.html?work=cicero-officiis&lang=la&edition=27b0c1263a85dabe",
+     "sourceUrns": [
+      "urn:cts:latinLit:phi0474.phi055.perseus-lat2"
+     ],
+     "sha256": "27b0c1263a85dabe7db7877059a1a363eb7bd031b11ad6d742ebaa84c3258c7d"
     }
    ],
    "bibliography": {
@@ -329,6 +339,43 @@
     "lexicalIndex": "recuentos del índice léxico",
     "witnessRecords": "testimonios catalogados en data/bibliotheca-testimonia-verified.json, ordenados por fecha de inicio",
     "earliestWitness": "elegido por la fecha de inicio más temprana entre los testimonios catalogados"
+   },
+   "corpusFiles": {
+    "la": "https://libros.vitruvius-digital-library.org/corpus/cicero-officiis-la-27b0c1263a85dabe.json"
+   },
+   "indexedEdition": {
+    "sources": [
+     {
+      "title": "De Officiis",
+      "titleLanguage": "lat",
+      "author": "M. Tullius Cicero",
+      "editors": [
+       "Walter Miller"
+      ],
+      "bibliography": "M. Tullius Cicero De Officiis Walter Miller London William Heinemann New York G.P. Putham's Sons 1913 1928 Loeb Classical Library Internet Archive",
+      "licences": [
+       {
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+       }
+      ],
+      "editionUrn": "urn:cts:latinLit:phi0474.phi055.perseus-lat2",
+      "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0474/phi055/phi0474.phi055.perseus-lat2.xml",
+      "sourceSha256": "e9277e5ce2f343011de4139ac80917f3a30dd2c76d82471eb38a53d33b06bbdd",
+      "sourceReferences": [
+       "https://archive.org/details/deofficiiswithen00ciceuoft/page/2/mode/2up"
+      ],
+      "publicationYear": "1913",
+      "publisher": "William Heinemann",
+      "publicationPlace": "London",
+      "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/e9277e5ce2f343011de4139ac80917f3a30dd2c76d82471eb38a53d33b06bbdd.xml"
+     }
+    ],
+    "sha256": "27b0c1263a85dabe7db7877059a1a363eb7bd031b11ad6d742ebaa84c3258c7d",
+    "passages": 564,
+    "characters": 232539,
+    "bytes": 324421,
+    "url": "https://libros.vitruvius-digital-library.org/corpus/cicero-officiis-la-27b0c1263a85dabe.json"
    }
   },
   {
@@ -470,7 +517,58 @@
    },
    "localEditionLanguages": [
     "la"
-   ]
+   ],
+   "localVersions": [
+    {
+     "language": "la",
+     "path": "data/classics-corpus/cicero-oratore-la.json",
+     "label": "Versión conservada antes de la ampliación R2"
+    },
+    {
+     "language": "la",
+     "path": "https://libros.vitruvius-digital-library.org/corpus/cicero-oratore-la-31925594830fad31.json",
+     "label": "Edición original la · urn:cts:latinLit:phi0474.phi037.perseus-lat2",
+     "reader": "classics-text-reader.html?work=cicero-oratore&lang=la&edition=31925594830fad31",
+     "sourceUrns": [
+      "urn:cts:latinLit:phi0474.phi037.perseus-lat2"
+     ],
+     "sha256": "31925594830fad31e3547708467423e72f7bbe74ec0f29529a45799cf3cd11df"
+    }
+   ],
+   "indexedEdition": {
+    "sources": [
+     {
+      "title": "De Oratore",
+      "titleLanguage": "lat",
+      "author": "M. Tullius Cicero",
+      "editors": [
+       "Augustus Samuel Wilkins"
+      ],
+      "bibliography": "M. Tullius Cicero Rhetorica Augustus Samuel Wilkins Oxford Clarendon Press 1902 1 Scriptorum Classicorum Bibliotheca Oxoniensis Oxford Classical Texts Internet Archive",
+      "licences": [
+       {
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+       }
+      ],
+      "editionUrn": "urn:cts:latinLit:phi0474.phi037.perseus-lat2",
+      "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0474/phi037/phi0474.phi037.perseus-lat2.xml",
+      "sourceSha256": "057aef5553eeb2f3e30eb17b57466d5195599e5204158df1a54ea3a10322fc6a",
+      "sourceReferences": [
+       "https://archive.org/details/rhetoricarecogno01ciceuoft/page/viii/mode/2up"
+      ],
+      "publicationYear": "1902",
+      "publisher": "Clarendon Press",
+      "publicationPlace": "Oxford",
+      "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/057aef5553eeb2f3e30eb17b57466d5195599e5204158df1a54ea3a10322fc6a.xml"
+     }
+    ],
+    "sha256": "31925594830fad31e3547708467423e72f7bbe74ec0f29529a45799cf3cd11df",
+    "passages": 885,
+    "characters": 415024,
+    "bytes": 558582,
+    "url": "https://libros.vitruvius-digital-library.org/corpus/cicero-oratore-la-31925594830fad31.json"
+   }
   },
   {
    "id": "cicero-republica",
@@ -584,7 +682,58 @@
    },
    "localEditionLanguages": [
     "la"
-   ]
+   ],
+   "localVersions": [
+    {
+     "language": "la",
+     "path": "data/classics-corpus/cicero-republica-la.json",
+     "label": "Versión conservada antes de la ampliación R2"
+    },
+    {
+     "language": "la",
+     "path": "https://libros.vitruvius-digital-library.org/corpus/cicero-republica-la-d72a43994db65e6e.json",
+     "label": "Edición original la · urn:cts:latinLit:phi0474.phi043.perseus-lat2",
+     "reader": "classics-text-reader.html?work=cicero-republica&lang=la&edition=d72a43994db65e6e",
+     "sourceUrns": [
+      "urn:cts:latinLit:phi0474.phi043.perseus-lat2"
+     ],
+     "sha256": "d72a43994db65e6e2abf4a7ffc72bd95ee44f8ca5ce9ce831c3d24e7093847d6"
+    }
+   ],
+   "indexedEdition": {
+    "sources": [
+     {
+      "title": "De Re Publica",
+      "titleLanguage": "lat",
+      "author": "M. Tullius Cicero",
+      "editors": [
+       "Carl Friedrich Wilhelm Mueller"
+      ],
+      "bibliography": "M. Tullius Cicero Librorum de Re Publica Sex Carl Friedrich Wilhelm Mueller Leipzig Teubner 1889 Internet Archive",
+      "licences": [
+       {
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+       }
+      ],
+      "editionUrn": "urn:cts:latinLit:phi0474.phi043.perseus-lat2",
+      "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0474/phi043/phi0474.phi043.perseus-lat2.xml",
+      "sourceSha256": "c0bdd9af55f18d14af1a4b80d35dbfcbecc2a1b247b34f92f5bada0a724973ad",
+      "sourceReferences": [
+       "https://archive.org/details/mtuliciceronisl00mlgoog/page/n6/mode/2up"
+      ],
+      "publicationYear": "1889",
+      "publisher": "Teubner",
+      "publicationPlace": "Leipzig",
+      "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/c0bdd9af55f18d14af1a4b80d35dbfcbecc2a1b247b34f92f5bada0a724973ad.xml"
+     }
+    ],
+    "sha256": "d72a43994db65e6e2abf4a7ffc72bd95ee44f8ca5ce9ce831c3d24e7093847d6",
+    "passages": 292,
+    "characters": 148448,
+    "bytes": 197115,
+    "url": "https://libros.vitruvius-digital-library.org/corpus/cicero-republica-la-d72a43994db65e6e.json"
+   }
   },
   {
    "id": "caesar-gallico",
@@ -637,7 +786,7 @@
     "archive": "https://archive.org/search?query=Commentarii%20de%20bello%20Gallico%20Julio%20C%C3%A9sar",
     "gallica": "https://gallica.bnf.fr/Search?ArianeWireIndex=index&p=1&q=Commentarii%20de%20bello%20Gallico"
    },
-   "publicStatus": "lectura-local-completa",
+   "publicStatus": "lectura-local-parcial",
    "localReader": null,
    "aliases": [
     "César",
@@ -727,7 +876,58 @@
    "localEditionLanguages": [
     "en",
     "la"
-   ]
+   ],
+   "localVersions": [
+    {
+     "language": "la",
+     "path": "data/classics-corpus/caesar-gallico-la.json",
+     "label": "Versión conservada antes de la ampliación R2"
+    },
+    {
+     "language": "la",
+     "path": "https://libros.vitruvius-digital-library.org/corpus/caesar-gallico-la-37387ba76bfefc48.json",
+     "label": "Edición original la · urn:cts:latinLit:phi0448.phi001.perseus-lat2",
+     "reader": "classics-text-reader.html?work=caesar-gallico&lang=la&edition=37387ba76bfefc48",
+     "sourceUrns": [
+      "urn:cts:latinLit:phi0448.phi001.perseus-lat2"
+     ],
+     "sha256": "37387ba76bfefc488b1b1de00065b16096d475852d7fae2463001435462a4144"
+    }
+   ],
+   "indexedEdition": {
+    "sources": [
+     {
+      "title": "De bello Gallico",
+      "titleLanguage": "lat",
+      "author": "Julius Caesar",
+      "editors": [
+       "T. Rice Holmes"
+      ],
+      "bibliography": "Julius Caesar C. Iuli Commentarii Rerum in Gallia Gestarum VII A. Hirti Commentarius VII T. Rice Holmes Oxford Clarendon 1914 Scriptorum Classicorum Bibliotheca Oxoniensis Internet Archive",
+      "licences": [
+       {
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+       }
+      ],
+      "editionUrn": "urn:cts:latinLit:phi0448.phi001.perseus-lat2",
+      "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0448/phi001/phi0448.phi001.perseus-lat2.xml",
+      "sourceSha256": "15ec3ef2a36352742ddb75d4f7da23a143899b6b60ee3a7ca3192d4917ca1568",
+      "sourceReferences": [
+       "https://archive.org/details/ciulicaesarisco00caesgoog"
+      ],
+      "publicationYear": "1914",
+      "publisher": "Clarendon",
+      "publicationPlace": "Oxford",
+      "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/15ec3ef2a36352742ddb75d4f7da23a143899b6b60ee3a7ca3192d4917ca1568.xml"
+     }
+    ],
+    "sha256": "37387ba76bfefc488b1b1de00065b16096d475852d7fae2463001435462a4144",
+    "passages": 2158,
+    "characters": 374219,
+    "bytes": 723301,
+    "url": "https://libros.vitruvius-digital-library.org/corpus/caesar-gallico-la-37387ba76bfefc48.json"
+   }
   },
   {
    "id": "caesar-civili",
@@ -769,7 +969,7 @@
     "archive": "https://archive.org/search?query=Commentarii%20de%20bello%20civili%20Julio%20C%C3%A9sar",
     "gallica": "https://gallica.bnf.fr/Search?ArianeWireIndex=index&p=1&q=Commentarii%20de%20bello%20civili"
    },
-   "publicStatus": "lectura-local-completa",
+   "publicStatus": "lectura-local-parcial",
    "localReader": {
     "original": "data/classics-corpus/caesar-civili-la.json",
     "translations": [
@@ -846,7 +1046,58 @@
    "localEditionLanguages": [
     "en",
     "la"
-   ]
+   ],
+   "localVersions": [
+    {
+     "language": "la",
+     "path": "data/classics-corpus/caesar-civili-la.json",
+     "label": "Versión conservada antes de la ampliación R2"
+    },
+    {
+     "language": "la",
+     "path": "https://libros.vitruvius-digital-library.org/corpus/caesar-civili-la-105ecee4f007b3d1.json",
+     "label": "Edición original la · urn:cts:latinLit:phi0448.phi002.perseus-lat3",
+     "reader": "classics-text-reader.html?work=caesar-civili&lang=la&edition=105ecee4f007b3d1",
+     "sourceUrns": [
+      "urn:cts:latinLit:phi0448.phi002.perseus-lat3"
+     ],
+     "sha256": "105ecee4f007b3d1c974a200c6105fbfdc911fd80d35c012cef04503799d3619"
+    }
+   ],
+   "indexedEdition": {
+    "sources": [
+     {
+      "title": "The Civil Wars",
+      "titleLanguage": "und",
+      "author": "Julius Caesar",
+      "editors": [
+       "Arthur George Peskett"
+      ],
+      "bibliography": "Julius Caesar The Civil Wars Arthur George Peskett London, UK William Heinemann New York, NY G. P. Putnam's Sons 1914 Open Content Alliance",
+      "licences": [
+       {
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+       }
+      ],
+      "editionUrn": "urn:cts:latinLit:phi0448.phi002.perseus-lat3",
+      "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0448/phi002/phi0448.phi002.perseus-lat3.xml",
+      "sourceSha256": "49866f833354fa608a4b6d790253bd6932944459aa7389cc5b1295675f85932e",
+      "sourceReferences": [
+       "https://archive.org/details/civilwarswitheng00caesuoft/page/2/mode/2up"
+      ],
+      "publicationYear": "1914",
+      "publisher": "William Heinemann",
+      "publicationPlace": "London, UK",
+      "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/49866f833354fa608a4b6d790253bd6932944459aa7389cc5b1295675f85932e.xml"
+     }
+    ],
+    "sha256": "105ecee4f007b3d1c974a200c6105fbfdc911fd80d35c012cef04503799d3619",
+    "passages": 243,
+    "characters": 238485,
+    "bytes": 279071,
+    "url": "https://libros.vitruvius-digital-library.org/corpus/caesar-civili-la-105ecee4f007b3d1.json"
+   }
   },
   {
    "id": "sallust-catiline",
@@ -9165,6 +9416,21 @@
      "path": "classics-text-reader.html?work=cicero-catilinariae&lang=en",
      "kind": "historical-translation",
      "citationChicago18": "Cicerón. In Catilinam (Orationes Catilinariae). Translated by Charles Duke Yonge. Henry G. Bohn, London, 1856. Perseus Digital Library, TEI."
+    },
+    {
+     "language": "la",
+     "path": "data/classics-corpus/cicero-catilinariae-la.json",
+     "label": "Versión conservada antes de la ampliación R2"
+    },
+    {
+     "language": "la",
+     "path": "https://libros.vitruvius-digital-library.org/corpus/cicero-catilinariae-la-1309fb61afe4a83d.json",
+     "label": "Edición original la · urn:cts:latinLit:phi0474.phi013.perseus-lat2",
+     "reader": "classics-text-reader.html?work=cicero-catilinariae&lang=la&edition=1309fb61afe4a83d",
+     "sourceUrns": [
+      "urn:cts:latinLit:phi0474.phi013.perseus-lat2"
+     ],
+     "sha256": "1309fb61afe4a83dd004a52acee1dd73e663fe22b9c9070fccd56817622ef9e6"
     }
    ],
    "indexationAudit": {
@@ -9252,7 +9518,41 @@
    "localEditionLanguages": [
     "en",
     "la"
-   ]
+   ],
+   "indexedEdition": {
+    "sources": [
+     {
+      "title": "In L. Catilinam",
+      "titleLanguage": "lat",
+      "author": "M. Tullius Cicero",
+      "editors": [
+       "Albert Curtis Clark"
+      ],
+      "bibliography": "M. Tullius Cicero Orationes Albert Curtis Clark Oxford Clarendon 1908 1 Pro Sex. Roscio; De imperio Cn. Pompei; Pro Cluentio; In Catilinam; Pro Murena; Pro Caelio Scriptorum Classicorum Bibliotheca Oxoniensis Oxford Classical Texts Internet Archive",
+      "licences": [
+       {
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+       }
+      ],
+      "editionUrn": "urn:cts:latinLit:phi0474.phi013.perseus-lat2",
+      "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0474/phi013/phi0474.phi013.perseus-lat2.xml",
+      "sourceSha256": "3e0f7f8d3d12c1bb43b2b27838a51bc81c32427e71dcc207ef7c8c8b2e5e91aa",
+      "sourceReferences": [
+       "https://archive.org/details/orationesrecogno01ciceuoft/page/n209/mode/2up"
+      ],
+      "publicationYear": "1908",
+      "publisher": "Clarendon",
+      "publicationPlace": "Oxford",
+      "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/3e0f7f8d3d12c1bb43b2b27838a51bc81c32427e71dcc207ef7c8c8b2e5e91aa.xml"
+     }
+    ],
+    "sha256": "1309fb61afe4a83dd004a52acee1dd73e663fe22b9c9070fccd56817622ef9e6",
+    "passages": 126,
+    "characters": 85946,
+    "bytes": 108026,
+    "url": "https://libros.vitruvius-digital-library.org/corpus/cicero-catilinariae-la-1309fb61afe4a83d.json"
+   }
   },
   {
    "id": "catullus-carmina",
@@ -17210,7 +17510,7 @@
    "language": "grc",
    "genre": "Poética",
    "dating": "siglo IV a. C.",
-   "publicStatus": "lectura-local-completa",
+   "publicStatus": "lectura-local-parcial",
    "reading": {
     "url": null,
     "status": "PDF histórico verificado en GitHub · Aristotle’s Poetics, traducción inglesa anotada publicada en Londres en 1819; 102 páginas. No contiene un texto griego integral comprobado."
@@ -17384,7 +17684,58 @@
    "localEditionLanguages": [
     "en",
     "grc"
-   ]
+   ],
+   "localVersions": [
+    {
+     "language": "grc",
+     "path": "data/classics-corpus/aristotle-poetics-grc.json",
+     "label": "Versión conservada antes de la ampliación R2"
+    },
+    {
+     "language": "grc",
+     "path": "https://libros.vitruvius-digital-library.org/corpus/aristotle-poetics-grc-0fbd018e16d33deb.json",
+     "label": "Edición original grc · urn:cts:greekLit:tlg0086.tlg034.perseus-grc2",
+     "reader": "classics-text-reader.html?work=aristotle-poetics&lang=grc&edition=0fbd018e16d33deb",
+     "sourceUrns": [
+      "urn:cts:greekLit:tlg0086.tlg034.perseus-grc2"
+     ],
+     "sha256": "0fbd018e16d33debe38a9a51380ac1156b5efd9f3e75e571a53134d655c8d314"
+    }
+   ],
+   "indexedEdition": {
+    "sources": [
+     {
+      "title": "Περὶ ποιητικῆς",
+      "titleLanguage": "grc",
+      "author": "Aristotle",
+      "editors": [
+       "Rudolf Kassel"
+      ],
+      "bibliography": "Aristotelis De arte poetica liber Aristotle Rudolf Kassel Clarendon Press Oxford, UK 1965 SLUB",
+      "licences": [
+       {
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+       }
+      ],
+      "editionUrn": "urn:cts:greekLit:tlg0086.tlg034.perseus-grc2",
+      "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0086/tlg034/tlg0086.tlg034.perseus-grc2.xml",
+      "sourceSha256": "3bcb460e5ecb684a5929df7d5df3a1535a835520d930705366b7168f393196aa",
+      "sourceReferences": [
+       "https://digital.slub-dresden.de/werkansicht/dlf/112360/13?tx_dlf%5Bpagegrid%5D=0&cHash=9dfdbc0be1f7342c999475fe8cca21bf"
+      ],
+      "publicationYear": "1965",
+      "publisher": "Clarendon Press",
+      "publicationPlace": "Oxford, UK",
+      "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/3bcb460e5ecb684a5929df7d5df3a1535a835520d930705366b7168f393196aa.xml"
+     }
+    ],
+    "sha256": "0fbd018e16d33debe38a9a51380ac1156b5efd9f3e75e571a53134d655c8d314",
+    "passages": 381,
+    "characters": 59344,
+    "bytes": 179442,
+    "url": "https://libros.vitruvius-digital-library.org/corpus/aristotle-poetics-grc-0fbd018e16d33deb.json"
+   }
   },
   {
    "id": "aristotle-politics",
@@ -17451,6 +17802,21 @@
      "path": "classics-text-reader.html?work=aristotle-politics&lang=en",
      "kind": "historical-translation",
      "citationChicago18": "Aristóteles. Πολιτικά. Translated by Harris Rackham. William Heinemann / Harvard University Press, 1944. Perseus Digital Library, TEI."
+    },
+    {
+     "language": "grc",
+     "path": "data/classics-corpus/aristotle-politics-grc.json",
+     "label": "Versión conservada antes de la ampliación R2"
+    },
+    {
+     "language": "grc",
+     "path": "https://libros.vitruvius-digital-library.org/corpus/aristotle-politics-grc-1ab3f91cebfcff92.json",
+     "label": "Edición original grc · urn:cts:greekLit:tlg0086.tlg035.perseus-grc2",
+     "reader": "classics-text-reader.html?work=aristotle-politics&lang=grc&edition=1ab3f91cebfcff92",
+     "sourceUrns": [
+      "urn:cts:greekLit:tlg0086.tlg035.perseus-grc2"
+     ],
+     "sha256": "1ab3f91cebfcff928e7fd271bb7fe6927f3fd30e18bedc5e9ccc185eb085c191"
     }
    ],
    "century": "IV a. C.",
@@ -17509,7 +17875,39 @@
    "localEditionLanguages": [
     "en",
     "grc"
-   ]
+   ],
+   "indexedEdition": {
+    "sources": [
+     {
+      "title": "Πολιτικά",
+      "titleLanguage": "grc",
+      "author": "Aristotle",
+      "editors": [
+       "William David Ross"
+      ],
+      "bibliography": "Aristotelis Politica Aristotle William David Ross Clarendon Press Oxford 1957 Oxford Classical Texts SLUB",
+      "licences": [
+       {
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+       }
+      ],
+      "editionUrn": "urn:cts:greekLit:tlg0086.tlg035.perseus-grc2",
+      "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0086/tlg035/tlg0086.tlg035.perseus-grc2.xml",
+      "sourceSha256": "2098a515dae41d04d2272dc999bf587ca3bb2f7b613f13664a5fa8827878a141",
+      "sourceReferences": [],
+      "publicationYear": "1957",
+      "publisher": "Clarendon Press",
+      "publicationPlace": "Oxford",
+      "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/2098a515dae41d04d2272dc999bf587ca3bb2f7b613f13664a5fa8827878a141.xml"
+     }
+    ],
+    "sha256": "1ab3f91cebfcff928e7fd271bb7fe6927f3fd30e18bedc5e9ccc185eb085c191",
+    "passages": 446,
+    "characters": 402391,
+    "bytes": 860119,
+    "url": "https://libros.vitruvius-digital-library.org/corpus/aristotle-politics-grc-1ab3f91cebfcff92.json"
+   }
   },
   {
    "id": "hippocrates-aphorisms",
@@ -21288,7 +21686,60 @@
    },
    "localEditionLanguages": [
     "grc"
-   ]
+   ],
+   "localVersions": [
+    {
+     "language": "grc",
+     "path": "data/classics-corpus/aristophanes-ranae-grc.json",
+     "label": "Versión conservada antes de la ampliación R2"
+    },
+    {
+     "language": "grc",
+     "path": "https://libros.vitruvius-digital-library.org/corpus/aristophanes-ranae-grc-de43059441376775.json",
+     "label": "Edición original grc · urn:cts:greekLit:tlg0019.tlg009.perseus-grc2",
+     "reader": "classics-text-reader.html?work=aristophanes-ranae&lang=grc&edition=de43059441376775",
+     "sourceUrns": [
+      "urn:cts:greekLit:tlg0019.tlg009.perseus-grc2"
+     ],
+     "sha256": "de43059441376775e1bc5f430e9220dc293fda79db47e2655a4d63b2b2155e55"
+    }
+   ],
+   "indexedEdition": {
+    "sources": [
+     {
+      "title": "Βάτραχοι",
+      "titleLanguage": "grc",
+      "author": "Aristophanes",
+      "editors": [
+       "F. W. Hall",
+       "William M. Geldart",
+       "W. M. Geldart"
+      ],
+      "bibliography": "Aristophanes Aristophanis Comoediae F. W. Hall William M. Geldart Oxford Clarendon Press 1907 2 Internet Archive",
+      "licences": [
+       {
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+       }
+      ],
+      "editionUrn": "urn:cts:greekLit:tlg0019.tlg009.perseus-grc2",
+      "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0019/tlg009/tlg0019.tlg009.perseus-grc2.xml",
+      "sourceSha256": "033fee35d164bd2cfcaf47326f3f8abc8626820c73a229b9f4d5b6f552d120ed",
+      "sourceReferences": [
+       "https://archive.org/details/aristophaniscomo02arisuoft/page/100/mode/2up"
+      ],
+      "publicationYear": "1907",
+      "publisher": "Clarendon Press",
+      "publicationPlace": "Oxford",
+      "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/033fee35d164bd2cfcaf47326f3f8abc8626820c73a229b9f4d5b6f552d120ed.xml"
+     }
+    ],
+    "sha256": "de43059441376775e1bc5f430e9220dc293fda79db47e2655a4d63b2b2155e55",
+    "passages": 754,
+    "characters": 62805,
+    "bytes": 245462,
+    "url": "https://libros.vitruvius-digital-library.org/corpus/aristophanes-ranae-grc-de43059441376775.json"
+   }
   },
   {
    "id": "aristophanes-lysistrata",
@@ -21540,7 +21991,60 @@
    },
    "localEditionLanguages": [
     "grc"
-   ]
+   ],
+   "localVersions": [
+    {
+     "language": "grc",
+     "path": "data/classics-corpus/aristophanes-vespae-grc.json",
+     "label": "Versión conservada antes de la ampliación R2"
+    },
+    {
+     "language": "grc",
+     "path": "https://libros.vitruvius-digital-library.org/corpus/aristophanes-vespae-grc-bfb30936387df05e.json",
+     "label": "Edición original grc · urn:cts:greekLit:tlg0019.tlg004.perseus-grc2",
+     "reader": "classics-text-reader.html?work=aristophanes-vespae&lang=grc&edition=bfb30936387df05e",
+     "sourceUrns": [
+      "urn:cts:greekLit:tlg0019.tlg004.perseus-grc2"
+     ],
+     "sha256": "bfb30936387df05e051df1deb4a2da1aea31c5c81ef68c0a8e446e947106bf23"
+    }
+   ],
+   "indexedEdition": {
+    "sources": [
+     {
+      "title": "Σφῆκες",
+      "titleLanguage": "grc",
+      "author": "Aristophanes",
+      "editors": [
+       "F. W. Hall",
+       "William M. Geldart",
+       "W. M. Geldart"
+      ],
+      "bibliography": "Aristophanes Aristophanis Comoediae F. W. Hall William M. Geldart Oxford Clarendon Press 1906 1 Internet Archive",
+      "licences": [
+       {
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+       }
+      ],
+      "editionUrn": "urn:cts:greekLit:tlg0019.tlg004.perseus-grc2",
+      "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0019/tlg004/tlg0019.tlg004.perseus-grc2.xml",
+      "sourceSha256": "5cba6db8f49a86b2f6f2cb667b546295327ac0611cc0625d525d2bc983d08750",
+      "sourceReferences": [
+       "https://archive.org/details/aristophaniscomo01arisuoft/page/n185/mode/2up"
+      ],
+      "publicationYear": "1906",
+      "publisher": "Clarendon Press",
+      "publicationPlace": "Oxford",
+      "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/5cba6db8f49a86b2f6f2cb667b546295327ac0611cc0625d525d2bc983d08750.xml"
+     }
+    ],
+    "sha256": "bfb30936387df05e051df1deb4a2da1aea31c5c81ef68c0a8e446e947106bf23",
+    "passages": 536,
+    "characters": 65757,
+    "bytes": 216045,
+    "url": "https://libros.vitruvius-digital-library.org/corpus/aristophanes-vespae-grc-bfb30936387df05e.json"
+   }
   },
   {
    "id": "aristophanes-pax",
@@ -23170,6 +23674,21 @@
      "path": "classics-text-reader.html?work=aristotle-nicomachean-ethics&lang=en",
      "kind": "historical-translation",
      "citationChicago18": "Aristóteles. Ἠθικὰ Νικομάχεια. Translated by Harris Rackham. William Heinemann Ltd. / G. P. Putnam's Sons, 1926. Perseus Digital Library, TEI."
+    },
+    {
+     "language": "grc",
+     "path": "data/classics-corpus/aristotle-nicomachean-ethics-grc.json",
+     "label": "Versión conservada antes de la ampliación R2"
+    },
+    {
+     "language": "grc",
+     "path": "https://libros.vitruvius-digital-library.org/corpus/aristotle-nicomachean-ethics-grc-1480c2b104f560a0.json",
+     "label": "Edición original grc · urn:cts:greekLit:tlg0086.tlg010.perseus-grc2",
+     "reader": "classics-text-reader.html?work=aristotle-nicomachean-ethics&lang=grc&edition=1480c2b104f560a0",
+     "sourceUrns": [
+      "urn:cts:greekLit:tlg0086.tlg010.perseus-grc2"
+     ],
+     "sha256": "1480c2b104f560a04b157bce582738ec56a336c2cb7849cd75e5c32b85d7ba2a"
     }
    ],
    "indexationAudit": {
@@ -23238,7 +23757,41 @@
    "localEditionLanguages": [
     "en",
     "grc"
-   ]
+   ],
+   "indexedEdition": {
+    "sources": [
+     {
+      "title": "Ἠθικὰ Νικομάχεια",
+      "titleLanguage": "grc",
+      "author": "Aristotle",
+      "editors": [
+       "Ingram Bywater"
+      ],
+      "bibliography": "Aristotelis Ethica Nicomachea Aristotle Ingram Bywater Clarendon Press Oxford 1894 Oxford Classical Texts Internet Archive",
+      "licences": [
+       {
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+       }
+      ],
+      "editionUrn": "urn:cts:greekLit:tlg0086.tlg010.perseus-grc2",
+      "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0086/tlg010/tlg0086.tlg010.perseus-grc2.xml",
+      "sourceSha256": "4c86c8f734876d2a19b0b58fa2aea08f002ce145c7c547d428b7662098a7bba8",
+      "sourceReferences": [
+       "https://archive.org/details/aristotelis00aristuoft/page/n11/mode/2up"
+      ],
+      "publicationYear": "1894",
+      "publisher": "Clarendon Press",
+      "publicationPlace": "Oxford",
+      "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/4c86c8f734876d2a19b0b58fa2aea08f002ce145c7c547d428b7662098a7bba8.xml"
+     }
+    ],
+    "sha256": "1480c2b104f560a04b157bce582738ec56a336c2cb7849cd75e5c32b85d7ba2a",
+    "passages": 141,
+    "characters": 330143,
+    "bytes": 671495,
+    "url": "https://libros.vitruvius-digital-library.org/corpus/aristotle-nicomachean-ethics-grc-1480c2b104f560a0.json"
+   }
   },
   {
    "id": "aristotle-metaphysics",
@@ -23362,7 +23915,59 @@
    "localEditionLanguages": [
     "en",
     "grc"
-   ]
+   ],
+   "localVersions": [
+    {
+     "language": "grc",
+     "path": "data/classics-corpus/aristotle-metaphysics-grc.json",
+     "label": "Versión conservada antes de la ampliación R2"
+    },
+    {
+     "language": "grc",
+     "path": "https://libros.vitruvius-digital-library.org/corpus/aristotle-metaphysics-grc-40f3eb2abca710cf.json",
+     "label": "Edición original grc · urn:cts:greekLit:tlg0086.tlg025.perseus-grc2",
+     "reader": "classics-text-reader.html?work=aristotle-metaphysics&lang=grc&edition=40f3eb2abca710cf",
+     "sourceUrns": [
+      "urn:cts:greekLit:tlg0086.tlg025.perseus-grc2"
+     ],
+     "sha256": "40f3eb2abca710cf20fbbc18043c44fe70a4524a6987e2b373a55485039c3363"
+    }
+   ],
+   "indexedEdition": {
+    "sources": [
+     {
+      "title": "τὰ Μετὰ τὰ Φυσικά",
+      "titleLanguage": "grc",
+      "author": "Aristotle",
+      "editors": [
+       "William David Ross"
+      ],
+      "bibliography": "Aristotle's Metaphysics Aristotle William David Ross Clarendon Press Oxford 1924 1-2 Oxford Classical Texts Internet Archive Internet Archive",
+      "licences": [
+       {
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+       }
+      ],
+      "editionUrn": "urn:cts:greekLit:tlg0086.tlg025.perseus-grc2",
+      "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0086/tlg025/tlg0086.tlg025.perseus-grc2.xml",
+      "sourceSha256": "81df0f59585259ea5f5312b4e4540e7b64e659b04614e5c32187420b90ecd528",
+      "sourceReferences": [
+       "https://archive.org/details/aristotlesmetaph0001aris/page/n171/mode/2up",
+       "https://archive.org/details/aristotlesmetaph0002aris/page/n13/mode/2up"
+      ],
+      "publicationYear": "1924",
+      "publisher": "Clarendon Press",
+      "publicationPlace": "Oxford",
+      "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/81df0f59585259ea5f5312b4e4540e7b64e659b04614e5c32187420b90ecd528.xml"
+     }
+    ],
+    "sha256": "40f3eb2abca710cf20fbbc18043c44fe70a4524a6987e2b373a55485039c3363",
+    "passages": 156,
+    "characters": 437853,
+    "bytes": 884695,
+    "url": "https://libros.vitruvius-digital-library.org/corpus/aristotle-metaphysics-grc-40f3eb2abca710cf.json"
+   }
   },
   {
    "id": "aristotle-physics",
@@ -23485,7 +24090,56 @@
    },
    "localEditionLanguages": [
     "grc"
-   ]
+   ],
+   "localVersions": [
+    {
+     "language": "grc",
+     "path": "data/classics-corpus/aristotle-physics-grc.json",
+     "label": "Versión conservada antes de la ampliación R2"
+    },
+    {
+     "language": "grc",
+     "path": "https://libros.vitruvius-digital-library.org/corpus/aristotle-physics-grc-1e7f7f9320aa9757.json",
+     "label": "Edición original grc · urn:cts:greekLit:tlg0086.tlg031.1st1K-grc1",
+     "reader": "classics-text-reader.html?work=aristotle-physics&lang=grc&edition=1e7f7f9320aa9757",
+     "sourceUrns": [
+      "urn:cts:greekLit:tlg0086.tlg031.1st1K-grc1"
+     ],
+     "sha256": "1e7f7f9320aa9757433dae814f62a47df45354651b620ee4cb48e6b4cd9c8981"
+    }
+   ],
+   "indexedEdition": {
+    "sources": [
+     {
+      "title": "Physica",
+      "titleLanguage": "lat",
+      "author": "Aristotle",
+      "editors": [
+       "W. D. Ross"
+      ],
+      "bibliography": "Aristotelis Physica W. D. Ross Aristotle Clarendon Oxford 1960 Scriptorum classicorum bibliotheca Oxoniensis SLUB",
+      "licences": [
+       {
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+       }
+      ],
+      "editionUrn": "urn:cts:greekLit:tlg0086.tlg031.1st1K-grc1",
+      "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0086/tlg031/tlg0086.tlg031.1st1K-grc1.xml",
+      "sourceSha256": "bf5ed935bb5ee53cd3461e9cb1aa2adc70bb7d8c6959a752a487b8582126d8df",
+      "sourceReferences": [],
+      "publicationYear": "1960",
+      "publisher": "Clarendon",
+      "publicationPlace": "Oxford",
+      "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/bf5ed935bb5ee53cd3461e9cb1aa2adc70bb7d8c6959a752a487b8582126d8df.xml"
+     }
+    ],
+    "sha256": "1e7f7f9320aa9757433dae814f62a47df45354651b620ee4cb48e6b4cd9c8981",
+    "passages": 104,
+    "characters": 305065,
+    "bytes": 614107,
+    "url": "https://libros.vitruvius-digital-library.org/corpus/aristotle-physics-grc-1e7f7f9320aa9757.json"
+   }
   },
   {
    "id": "aristotle-rhetoric",
@@ -23609,7 +24263,56 @@
    "localEditionLanguages": [
     "en",
     "grc"
-   ]
+   ],
+   "localVersions": [
+    {
+     "language": "grc",
+     "path": "data/classics-corpus/aristotle-rhetoric-grc.json",
+     "label": "Versión conservada antes de la ampliación R2"
+    },
+    {
+     "language": "grc",
+     "path": "https://libros.vitruvius-digital-library.org/corpus/aristotle-rhetoric-grc-11046daae99b48eb.json",
+     "label": "Edición original grc · urn:cts:greekLit:tlg0086.tlg038.perseus-grc2",
+     "reader": "classics-text-reader.html?work=aristotle-rhetoric&lang=grc&edition=11046daae99b48eb",
+     "sourceUrns": [
+      "urn:cts:greekLit:tlg0086.tlg038.perseus-grc2"
+     ],
+     "sha256": "11046daae99b48ebe968e6f6e5b4f6036928add37630a95264cb1b98f9110c50"
+    }
+   ],
+   "indexedEdition": {
+    "sources": [
+     {
+      "title": "Ῥητορική",
+      "titleLanguage": "grc",
+      "author": "Aristotle",
+      "editors": [
+       "William David Ross"
+      ],
+      "bibliography": "Aristotelis Ars Rhetorica Aristotle William David Ross Oxford Clarendon Press 1959 Oxford Classical Texts SLUB",
+      "licences": [
+       {
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+       }
+      ],
+      "editionUrn": "urn:cts:greekLit:tlg0086.tlg038.perseus-grc2",
+      "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0086/tlg038/tlg0086.tlg038.perseus-grc2.xml",
+      "sourceSha256": "fae178ee6be622231d89b0208d98c7d141397a21f504270bfa040fb24fb2ccfd",
+      "sourceReferences": [],
+      "publicationYear": "1959",
+      "publisher": "Clarendon Press",
+      "publicationPlace": "Oxford",
+      "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/fae178ee6be622231d89b0208d98c7d141397a21f504270bfa040fb24fb2ccfd.xml"
+     }
+    ],
+    "sha256": "11046daae99b48ebe968e6f6e5b4f6036928add37630a95264cb1b98f9110c50",
+    "passages": 918,
+    "characters": 257183,
+    "bytes": 654301,
+    "url": "https://libros.vitruvius-digital-library.org/corpus/aristotle-rhetoric-grc-11046daae99b48eb.json"
+   }
   },
   {
    "id": "aristotle-de-anima",
@@ -23732,7 +24435,58 @@
    },
    "localEditionLanguages": [
     "grc"
-   ]
+   ],
+   "localVersions": [
+    {
+     "language": "grc",
+     "path": "data/classics-corpus/aristotle-de-anima-grc.json",
+     "label": "Versión conservada antes de la ampliación R2"
+    },
+    {
+     "language": "grc",
+     "path": "https://libros.vitruvius-digital-library.org/corpus/aristotle-de-anima-grc-08a5ed425b6a2c29.json",
+     "label": "Edición original grc · urn:cts:greekLit:tlg0086.tlg002.1st1K-grc1",
+     "reader": "classics-text-reader.html?work=aristotle-de-anima&lang=grc&edition=08a5ed425b6a2c29",
+     "sourceUrns": [
+      "urn:cts:greekLit:tlg0086.tlg002.1st1K-grc1"
+     ],
+     "sha256": "08a5ed425b6a2c292a5ac448de832da743ae6091221fb93f0788db5d52bbc847"
+    }
+   ],
+   "indexedEdition": {
+    "sources": [
+     {
+      "title": "De anima",
+      "titleLanguage": "lat",
+      "author": "Aristotle",
+      "editors": [
+       "Immanuel Bekker"
+      ],
+      "bibliography": "Aristotelis Opera Aristotle Immanuel Bekker Oxford University Press Oxford 3 158-242 1837 HathiTrust",
+      "licences": [
+       {
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+       }
+      ],
+      "editionUrn": "urn:cts:greekLit:tlg0086.tlg002.1st1K-grc1",
+      "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0086/tlg002/tlg0086.tlg002.1st1K-grc1.xml",
+      "sourceSha256": "bbd7e9619e01fcf0298b2bb288dd2126cfdde1cebf4190d2ec0473b9971e5108",
+      "sourceReferences": [
+       "https://hdl.handle.net/2027/nyp.33433022674836?urlappend=%3Bseq=168"
+      ],
+      "publicationYear": "1837",
+      "publisher": "Oxford University Press",
+      "publicationPlace": "Oxford",
+      "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/bbd7e9619e01fcf0298b2bb288dd2126cfdde1cebf4190d2ec0473b9971e5108.xml"
+     }
+    ],
+    "sha256": "08a5ed425b6a2c292a5ac448de832da743ae6091221fb93f0788db5d52bbc847",
+    "passages": 45,
+    "characters": 117849,
+    "bytes": 245713,
+    "url": "https://libros.vitruvius-digital-library.org/corpus/aristotle-de-anima-grc-08a5ed425b6a2c29.json"
+   }
   },
   {
    "id": "xenophon-memorabilia",
@@ -24732,7 +25486,890 @@
    },
    "localEditionLanguages": [
     "grc"
-   ]
+   ],
+   "localVersions": [
+    {
+     "language": "grc",
+     "path": "data/classics-corpus/homeric-hymns-grc.json",
+     "label": "Versión conservada antes de la ampliación R2"
+    },
+    {
+     "language": "grc",
+     "path": "https://libros.vitruvius-digital-library.org/corpus/homeric-hymns-grc-bcea97dd83a75532.json",
+     "label": "Edición original grc · urn:cts:greekLit:tlg0013.tlg001.perseus-grc2, urn:cts:greekLit:tlg0013.tlg002.perseus-grc2, urn:cts:greekLit:tlg0013.tlg003.perseus-grc2, urn:cts:greekLit:tlg0013.tlg004.perseus-grc2, urn:cts:greekLit:tlg0013.tlg005.perseus-grc2, urn:cts:greekLit:tlg0013.tlg006.perseus-grc2, urn:cts:greekLit:tlg0013.tlg007.perseus-grc2, urn:cts:greekLit:tlg0013.tlg008.perseus-grc2, urn:cts:greekLit:tlg0013.tlg009.perseus-grc2, urn:cts:greekLit:tlg0013.tlg010.perseus-grc2, urn:cts:greekLit:tlg0013.tlg011.perseus-grc2, urn:cts:greekLit:tlg0013.tlg012.perseus-grc2, urn:cts:greekLit:tlg0013.tlg013.perseus-grc2, urn:cts:greekLit:tlg0013.tlg014.perseus-grc2, urn:cts:greekLit:tlg0013.tlg015.perseus-grc2, urn:cts:greekLit:tlg0013.tlg016.perseus-grc2, urn:cts:greekLit:tlg0013.tlg017.perseus-grc2, urn:cts:greekLit:tlg0013.tlg018.perseus-grc2, urn:cts:greekLit:tlg0013.tlg019.perseus-grc2, urn:cts:greekLit:tlg0013.tlg020.perseus-grc2, urn:cts:greekLit:tlg0013.tlg021.perseus-grc2, urn:cts:greekLit:tlg0013.tlg022.perseus-grc2, urn:cts:greekLit:tlg0013.tlg023.perseus-grc2, urn:cts:greekLit:tlg0013.tlg024.perseus-grc2, urn:cts:greekLit:tlg0013.tlg025.perseus-grc2, urn:cts:greekLit:tlg0013.tlg026.perseus-grc2, urn:cts:greekLit:tlg0013.tlg027.perseus-grc2, urn:cts:greekLit:tlg0013.tlg028.perseus-grc2, urn:cts:greekLit:tlg0013.tlg029.perseus-grc2, urn:cts:greekLit:tlg0013.tlg030.perseus-grc2, urn:cts:greekLit:tlg0013.tlg031.perseus-grc2, urn:cts:greekLit:tlg0013.tlg032.perseus-grc2, urn:cts:greekLit:tlg0013.tlg033.perseus-grc2",
+     "reader": "classics-text-reader.html?work=homeric-hymns&lang=grc&edition=bcea97dd83a75532",
+     "sourceUrns": [
+      "urn:cts:greekLit:tlg0013.tlg001.perseus-grc2",
+      "urn:cts:greekLit:tlg0013.tlg002.perseus-grc2",
+      "urn:cts:greekLit:tlg0013.tlg003.perseus-grc2",
+      "urn:cts:greekLit:tlg0013.tlg004.perseus-grc2",
+      "urn:cts:greekLit:tlg0013.tlg005.perseus-grc2",
+      "urn:cts:greekLit:tlg0013.tlg006.perseus-grc2",
+      "urn:cts:greekLit:tlg0013.tlg007.perseus-grc2",
+      "urn:cts:greekLit:tlg0013.tlg008.perseus-grc2",
+      "urn:cts:greekLit:tlg0013.tlg009.perseus-grc2",
+      "urn:cts:greekLit:tlg0013.tlg010.perseus-grc2",
+      "urn:cts:greekLit:tlg0013.tlg011.perseus-grc2",
+      "urn:cts:greekLit:tlg0013.tlg012.perseus-grc2",
+      "urn:cts:greekLit:tlg0013.tlg013.perseus-grc2",
+      "urn:cts:greekLit:tlg0013.tlg014.perseus-grc2",
+      "urn:cts:greekLit:tlg0013.tlg015.perseus-grc2",
+      "urn:cts:greekLit:tlg0013.tlg016.perseus-grc2",
+      "urn:cts:greekLit:tlg0013.tlg017.perseus-grc2",
+      "urn:cts:greekLit:tlg0013.tlg018.perseus-grc2",
+      "urn:cts:greekLit:tlg0013.tlg019.perseus-grc2",
+      "urn:cts:greekLit:tlg0013.tlg020.perseus-grc2",
+      "urn:cts:greekLit:tlg0013.tlg021.perseus-grc2",
+      "urn:cts:greekLit:tlg0013.tlg022.perseus-grc2",
+      "urn:cts:greekLit:tlg0013.tlg023.perseus-grc2",
+      "urn:cts:greekLit:tlg0013.tlg024.perseus-grc2",
+      "urn:cts:greekLit:tlg0013.tlg025.perseus-grc2",
+      "urn:cts:greekLit:tlg0013.tlg026.perseus-grc2",
+      "urn:cts:greekLit:tlg0013.tlg027.perseus-grc2",
+      "urn:cts:greekLit:tlg0013.tlg028.perseus-grc2",
+      "urn:cts:greekLit:tlg0013.tlg029.perseus-grc2",
+      "urn:cts:greekLit:tlg0013.tlg030.perseus-grc2",
+      "urn:cts:greekLit:tlg0013.tlg031.perseus-grc2",
+      "urn:cts:greekLit:tlg0013.tlg032.perseus-grc2",
+      "urn:cts:greekLit:tlg0013.tlg033.perseus-grc2"
+     ],
+     "sha256": "bcea97dd83a755320c165497ae9c676e2221bf6b8464820341074a7d19ea526b"
+    }
+   ],
+   "indexedEdition": {
+    "sources": [
+     {
+      "title": "Hymn 1 To Dionysus",
+      "titleLanguage": "und",
+      "author": "Anonymous",
+      "editors": [
+       "Hugh G. Evelyn-White"
+      ],
+      "bibliography": "Anonymous Hesiod, the Homeric Hymns and Homerica Hugh G. Evelyn-White London William Heinemann Ltd. New York The Macmillan Co. 1914 Loeb Classical Library Internet Archive",
+      "licences": [
+       {
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+       }
+      ],
+      "editionUrn": "urn:cts:greekLit:tlg0013.tlg001.perseus-grc2",
+      "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0013/tlg001/tlg0013.tlg001.perseus-grc2.xml",
+      "sourceSha256": "4b99086965043fc464704f5aaec5c03823f8097fb2c5e10f1cceeba603826f33",
+      "sourceReferences": [
+       "https://archive.org/details/hesiodhomerichym00hesiuoft/hesiodhomerichym00hesiuoft/page/286/mode/2up"
+      ],
+      "publicationYear": "1914",
+      "publisher": "William Heinemann Ltd.",
+      "publicationPlace": "London",
+      "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/4b99086965043fc464704f5aaec5c03823f8097fb2c5e10f1cceeba603826f33.xml"
+     },
+     {
+      "title": "Hymn 2 To Demeter",
+      "titleLanguage": "und",
+      "author": "Anonymous",
+      "editors": [
+       "Hugh G. Evelyn-White"
+      ],
+      "bibliography": "Anonymous Hesiod, the Homeric Hymns and Homerica Hugh G. Evelyn-White London William Heinemann Ltd. New York The Macmillan Co. 1914 Loeb Classical Library Internet Archive",
+      "licences": [
+       {
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+       }
+      ],
+      "editionUrn": "urn:cts:greekLit:tlg0013.tlg002.perseus-grc2",
+      "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0013/tlg002/tlg0013.tlg002.perseus-grc2.xml",
+      "sourceSha256": "5b43f3088061634e8ccfa22bad631f4d430afe0d5b60ce0251ccde084ed05292",
+      "sourceReferences": [
+       "https://archive.org/details/hesiodhomerichym00hesiuoft/hesiodhomerichym00hesiuoft/page/288/mode/2up"
+      ],
+      "publicationYear": "1914",
+      "publisher": "William Heinemann Ltd.",
+      "publicationPlace": "London",
+      "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/5b43f3088061634e8ccfa22bad631f4d430afe0d5b60ce0251ccde084ed05292.xml"
+     },
+     {
+      "title": "Hymn 3 To Apollo",
+      "titleLanguage": "und",
+      "author": "Anonymous",
+      "editors": [
+       "Hugh G. Evelyn-White"
+      ],
+      "bibliography": "Anonymous Hesiod, the Homeric Hymns and Homerica Hugh G. Evelyn-White London William Heinemann Ltd. New York The Macmillan Co. 1914 Loeb Classical Library Internet Archive",
+      "licences": [
+       {
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+       }
+      ],
+      "editionUrn": "urn:cts:greekLit:tlg0013.tlg003.perseus-grc2",
+      "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0013/tlg003/tlg0013.tlg003.perseus-grc2.xml",
+      "sourceSha256": "21e70ba200ddc1314cb3b5a04eafd03cc1d613890a559f286a7efe690eeb7fe6",
+      "sourceReferences": [
+       "https://archive.org/details/hesiodhomerichym00hesiuoft/hesiodhomerichym00hesiuoft/page/324/mode/2up"
+      ],
+      "publicationYear": "1914",
+      "publisher": "William Heinemann Ltd.",
+      "publicationPlace": "London",
+      "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/21e70ba200ddc1314cb3b5a04eafd03cc1d613890a559f286a7efe690eeb7fe6.xml"
+     },
+     {
+      "title": "Hymn 4 To Hermes",
+      "titleLanguage": "und",
+      "author": "Anonymous",
+      "editors": [
+       "Hugh G. Evelyn-White"
+      ],
+      "bibliography": "Anonymous Hesiod, the Homeric Hymns and Homerica Hugh G. Evelyn-White London William Heinemann Ltd. New York The Macmillan Co. 1914 Loeb Classical Library Internet Archive",
+      "licences": [
+       {
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+       }
+      ],
+      "editionUrn": "urn:cts:greekLit:tlg0013.tlg004.perseus-grc2",
+      "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0013/tlg004/tlg0013.tlg004.perseus-grc2.xml",
+      "sourceSha256": "a381f8dee65a915c98b8ebe8a62939939119aea1fdaeaac9211d4087e7be2b9a",
+      "sourceReferences": [
+       "https://archive.org/details/hesiodhomerichym00hesiuoft/hesiodhomerichym00hesiuoft/page/362/mode/2up"
+      ],
+      "publicationYear": "1914",
+      "publisher": "William Heinemann Ltd.",
+      "publicationPlace": "London",
+      "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/a381f8dee65a915c98b8ebe8a62939939119aea1fdaeaac9211d4087e7be2b9a.xml"
+     },
+     {
+      "title": "Hymn 5 To Aphrodite",
+      "titleLanguage": "und",
+      "author": "Anonymous",
+      "editors": [
+       "Hugh G. Evelyn-White"
+      ],
+      "bibliography": "Anonymous Hesiod, the Homeric Hymns and Homerica Hugh G. Evelyn-White London William Heinemann Ltd. New York The Macmillan Co. 1914 Loeb Classical Library Internet Archive",
+      "licences": [
+       {
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+       }
+      ],
+      "editionUrn": "urn:cts:greekLit:tlg0013.tlg005.perseus-grc2",
+      "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0013/tlg005/tlg0013.tlg005.perseus-grc2.xml",
+      "sourceSha256": "542d2678d4d96877698ee3d9cf72ae0d7f342dc6e3e9b58fce1dd8b7b5fc11b0",
+      "sourceReferences": [
+       "https://archive.org/details/hesiodhomerichym00hesiuoft/hesiodhomerichym00hesiuoft/page/406/mode/2up"
+      ],
+      "publicationYear": "1914",
+      "publisher": "William Heinemann Ltd.",
+      "publicationPlace": "London",
+      "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/542d2678d4d96877698ee3d9cf72ae0d7f342dc6e3e9b58fce1dd8b7b5fc11b0.xml"
+     },
+     {
+      "title": "Hymn 6 To Aphrodite",
+      "titleLanguage": "und",
+      "author": "Anónimo (atribución antigua a Homero)",
+      "editors": [
+       "Hugh G. Evelyn-White"
+      ],
+      "bibliography": "Anonymous Hesiod, the Homeric Hymns and Homerica Hugh G. Evelyn-White London William Heinemann Ltd. New York The Macmillan Co. 1914 Loeb Classical Library Internet Archive",
+      "licences": [
+       {
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+       }
+      ],
+      "editionUrn": "urn:cts:greekLit:tlg0013.tlg006.perseus-grc2",
+      "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0013/tlg006/tlg0013.tlg006.perseus-grc2.xml",
+      "sourceSha256": "79401c62a15daf3eed620ac924499701cc5f7324ec17651829e7cb7904762205",
+      "sourceReferences": [
+       "https://archive.org/details/hesiodhomerichym00hesiuoft/hesiodhomerichym00hesiuoft/page/426/mode/2up"
+      ],
+      "publicationYear": "1914",
+      "publisher": "William Heinemann Ltd.",
+      "publicationPlace": "London",
+      "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/79401c62a15daf3eed620ac924499701cc5f7324ec17651829e7cb7904762205.xml"
+     },
+     {
+      "title": "Hymn 7 To Dionysus",
+      "titleLanguage": "und",
+      "author": "Anonymous",
+      "editors": [
+       "Hugh G. Evelyn-White"
+      ],
+      "bibliography": "Anonymous Hesiod, the Homeric Hymns and Homerica Hugh G. Evelyn-White London William Heinemann Ltd. New York The Macmillan Co. 1914 Loeb Classical Library Internet Archive",
+      "licences": [
+       {
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+       }
+      ],
+      "editionUrn": "urn:cts:greekLit:tlg0013.tlg007.perseus-grc2",
+      "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0013/tlg007/tlg0013.tlg007.perseus-grc2.xml",
+      "sourceSha256": "7a0ca2c08db55e74b9d22ad068be374291d4bde53cf73474d310ff5021842fad",
+      "sourceReferences": [
+       "https://archive.org/details/hesiodhomerichym00hesiuoft/hesiodhomerichym00hesiuoft/page/428/mode/2up"
+      ],
+      "publicationYear": "1914",
+      "publisher": "William Heinemann Ltd.",
+      "publicationPlace": "London",
+      "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/7a0ca2c08db55e74b9d22ad068be374291d4bde53cf73474d310ff5021842fad.xml"
+     },
+     {
+      "title": "Hymn 8 To Ares",
+      "titleLanguage": "und",
+      "author": "Anonymous",
+      "editors": [
+       "Hugh G. Evelyn-White"
+      ],
+      "bibliography": "Anonymous Hesiod, the Homeric Hymns and Homerica Hugh G. Evelyn-White London William Heinemann Ltd. New York The Macmillan Co. 1914 Loeb Classical Library Internet Archive",
+      "licences": [
+       {
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+       }
+      ],
+      "editionUrn": "urn:cts:greekLit:tlg0013.tlg008.perseus-grc2",
+      "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0013/tlg008/tlg0013.tlg008.perseus-grc2.xml",
+      "sourceSha256": "011b8d1cfce89cda851b640262fdf0b9ffb4a6e4734918ae9c49cb5fa6ba765d",
+      "sourceReferences": [
+       "https://archive.org/details/hesiodhomerichym00hesiuoft/hesiodhomerichym00hesiuoft/page/432/mode/2up"
+      ],
+      "publicationYear": "1914",
+      "publisher": "William Heinemann Ltd.",
+      "publicationPlace": "London",
+      "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/011b8d1cfce89cda851b640262fdf0b9ffb4a6e4734918ae9c49cb5fa6ba765d.xml"
+     },
+     {
+      "title": "Hymn 9 To Artemis",
+      "titleLanguage": "und",
+      "author": "Anonymous",
+      "editors": [
+       "Hugh G. Evelyn-White"
+      ],
+      "bibliography": "Anonymous Hesiod, the Homeric Hymns and Homerica Hugh G. Evelyn-White London William Heinemann Ltd. New York The Macmillan Co. 1914 Loeb Classical Library Internet Archive",
+      "licences": [
+       {
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+       }
+      ],
+      "editionUrn": "urn:cts:greekLit:tlg0013.tlg009.perseus-grc2",
+      "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0013/tlg009/tlg0013.tlg009.perseus-grc2.xml",
+      "sourceSha256": "039c6058c13b04d5a537877fcf20f5b0a1f3f01ef3c8fd4ec17752134d3cbf22",
+      "sourceReferences": [
+       "https://archive.org/details/hesiodhomerichym00hesiuoft/hesiodhomerichym00hesiuoft/page/434/mode/2up"
+      ],
+      "publicationYear": "1914",
+      "publisher": "William Heinemann Ltd.",
+      "publicationPlace": "London",
+      "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/039c6058c13b04d5a537877fcf20f5b0a1f3f01ef3c8fd4ec17752134d3cbf22.xml"
+     },
+     {
+      "title": "Hymn 10 To Aphrodite",
+      "titleLanguage": "und",
+      "author": "Anonymous",
+      "editors": [
+       "Hugh G. Evelyn-White"
+      ],
+      "bibliography": "Anonymous Hesiod, the Homeric Hymns and Homerica Hugh G. Evelyn-White London William Heinemann Ltd. New York The Macmillan Co. 1914 Loeb Classical Library Internet Archive",
+      "licences": [
+       {
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+       }
+      ],
+      "editionUrn": "urn:cts:greekLit:tlg0013.tlg010.perseus-grc2",
+      "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0013/tlg010/tlg0013.tlg010.perseus-grc2.xml",
+      "sourceSha256": "bc979a9f989611e0f66e7ae97ff573171515e222002956549d611755901a7e76",
+      "sourceReferences": [
+       "https://archive.org/details/hesiodhomerichym00hesiuoft/hesiodhomerichym00hesiuoft/page/434/mode/2up"
+      ],
+      "publicationYear": "1914",
+      "publisher": "William Heinemann Ltd.",
+      "publicationPlace": "London",
+      "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/bc979a9f989611e0f66e7ae97ff573171515e222002956549d611755901a7e76.xml"
+     },
+     {
+      "title": "Hymn 11 To Athena",
+      "titleLanguage": "und",
+      "author": "Anonymous",
+      "editors": [
+       "Hugh G. Evelyn-White"
+      ],
+      "bibliography": "Anonymous Hesiod, the Homeric Hymns and Homerica Hugh G. Evelyn-White London William Heinemann Ltd. New York The Macmillan Co. 1914 Loeb Classical Library Internet Archive",
+      "licences": [
+       {
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+       }
+      ],
+      "editionUrn": "urn:cts:greekLit:tlg0013.tlg011.perseus-grc2",
+      "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0013/tlg011/tlg0013.tlg011.perseus-grc2.xml",
+      "sourceSha256": "57efd9ace2bdec24be0ebfd7da611b1a2b113ce93da4d758e57e6e48020ed424",
+      "sourceReferences": [
+       "https://archive.org/details/hesiodhomerichym00hesiuoft/hesiodhomerichym00hesiuoft/page/436/mode/2up?"
+      ],
+      "publicationYear": "1914",
+      "publisher": "William Heinemann Ltd.",
+      "publicationPlace": "London",
+      "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/57efd9ace2bdec24be0ebfd7da611b1a2b113ce93da4d758e57e6e48020ed424.xml"
+     },
+     {
+      "title": "Hymn 12 To Hera",
+      "titleLanguage": "und",
+      "author": "Anonymous",
+      "editors": [
+       "Hugh G. Evelyn-White"
+      ],
+      "bibliography": "Anonymous Hesiod, the Homeric Hymns and Homerica Hugh G. Evelyn-White London William Heinemann Ltd. New York The Macmillan Co. 1914 Loeb Classical Library Internet Archive",
+      "licences": [
+       {
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+       }
+      ],
+      "editionUrn": "urn:cts:greekLit:tlg0013.tlg012.perseus-grc2",
+      "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0013/tlg012/tlg0013.tlg012.perseus-grc2.xml",
+      "sourceSha256": "a1d752a281904787993c3b5efd4d5f1386c69696542467a648fd517204aea6c2",
+      "sourceReferences": [
+       "https://archive.org/details/hesiodhomerichym00hesiuoft/hesiodhomerichym00hesiuoft/page/436/mode/2up?"
+      ],
+      "publicationYear": "1914",
+      "publisher": "William Heinemann Ltd.",
+      "publicationPlace": "London",
+      "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/a1d752a281904787993c3b5efd4d5f1386c69696542467a648fd517204aea6c2.xml"
+     },
+     {
+      "title": "Hymn 13 To Demeter",
+      "titleLanguage": "und",
+      "author": "Anonymous",
+      "editors": [
+       "Hugh G. Evelyn-White"
+      ],
+      "bibliography": "Anonymous Hesiod, the Homeric Hymns and Homerica Hugh G. Evelyn-White London William Heinemann Ltd. New York The Macmillan Co. 1914 Loeb Classical Library Internet Archive",
+      "licences": [
+       {
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+       }
+      ],
+      "editionUrn": "urn:cts:greekLit:tlg0013.tlg013.perseus-grc2",
+      "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0013/tlg013/tlg0013.tlg013.perseus-grc2.xml",
+      "sourceSha256": "c1c3535adb53cb1f609738e1148ab5dd30a69564f65b966ca191864213400941",
+      "sourceReferences": [
+       "https://archive.org/details/hesiodhomerichym00hesiuoft/hesiodhomerichym00hesiuoft/page/436/mode/2up?"
+      ],
+      "publicationYear": "1914",
+      "publisher": "William Heinemann Ltd.",
+      "publicationPlace": "London",
+      "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/c1c3535adb53cb1f609738e1148ab5dd30a69564f65b966ca191864213400941.xml"
+     },
+     {
+      "title": "Hymn 14 to the Mother of the Gods",
+      "titleLanguage": "und",
+      "author": "Anonymous",
+      "editors": [
+       "Hugh G. Evelyn-White"
+      ],
+      "bibliography": "Anonymous Hesiod, the Homeric Hymns and Homerica Hugh G. Evelyn-White London William Heinemann Ltd. New York The Macmillan Co. 1914 Loeb Classical Library Internet Archive",
+      "licences": [
+       {
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+       }
+      ],
+      "editionUrn": "urn:cts:greekLit:tlg0013.tlg014.perseus-grc2",
+      "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0013/tlg014/tlg0013.tlg014.perseus-grc2.xml",
+      "sourceSha256": "8e7703505654383a94584d1e8a116e5d98892c1355d7b6562f1ffd971b1057e2",
+      "sourceReferences": [
+       "https://archive.org/details/hesiodhomerichym00hesiuoft/hesiodhomerichym00hesiuoft/page/438/mode/2up?"
+      ],
+      "publicationYear": "1914",
+      "publisher": "William Heinemann Ltd.",
+      "publicationPlace": "London",
+      "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/8e7703505654383a94584d1e8a116e5d98892c1355d7b6562f1ffd971b1057e2.xml"
+     },
+     {
+      "title": "Hymn 15 To Heracles the Lion-Hearted",
+      "titleLanguage": "und",
+      "author": "Anonymous",
+      "editors": [
+       "Hugh G. Evelyn-White"
+      ],
+      "bibliography": "Anonymous Hesiod, the Homeric Hymns and Homerica Hugh G. Evelyn-White London William Heinemann Ltd. New York The Macmillan Co. 1914 Loeb Classical Library Internet Archive",
+      "licences": [
+       {
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+       }
+      ],
+      "editionUrn": "urn:cts:greekLit:tlg0013.tlg015.perseus-grc2",
+      "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0013/tlg015/tlg0013.tlg015.perseus-grc2.xml",
+      "sourceSha256": "d98e9478a8526654f1373e95726b6960bffbbd94020d10b0da483fa7535ec52b",
+      "sourceReferences": [
+       "https://archive.org/details/hesiodhomerichym00hesiuoft/hesiodhomerichym00hesiuoft/page/438/mode/2up?"
+      ],
+      "publicationYear": "1914",
+      "publisher": "William Heinemann Ltd.",
+      "publicationPlace": "London",
+      "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/d98e9478a8526654f1373e95726b6960bffbbd94020d10b0da483fa7535ec52b.xml"
+     },
+     {
+      "title": "Hymn 16 To Asclepius",
+      "titleLanguage": "und",
+      "author": "Anonymous",
+      "editors": [
+       "Hugh G. Evelyn-White"
+      ],
+      "bibliography": "Anonymous Hesiod, the Homeric Hymns and Homerica Hugh G. Evelyn-White London William Heinemann Ltd. New York The Macmillan Co. 1914 Loeb Classical Library Internet Archive",
+      "licences": [
+       {
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+       }
+      ],
+      "editionUrn": "urn:cts:greekLit:tlg0013.tlg016.perseus-grc2",
+      "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0013/tlg016/tlg0013.tlg016.perseus-grc2.xml",
+      "sourceSha256": "eebcc22a6930e4d34dfd00590b7f274c440200c06e874cb91488279480a39543",
+      "sourceReferences": [
+       "https://archive.org/details/hesiodhomerichym00hesiuoft/hesiodhomerichym00hesiuoft/page/440/mode/2up?"
+      ],
+      "publicationYear": "1914",
+      "publisher": "William Heinemann Ltd.",
+      "publicationPlace": "London",
+      "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/eebcc22a6930e4d34dfd00590b7f274c440200c06e874cb91488279480a39543.xml"
+     },
+     {
+      "title": "Hymn 17 To the Dioscuri",
+      "titleLanguage": "und",
+      "author": "Anonymous",
+      "editors": [
+       "Hugh G. Evelyn-White"
+      ],
+      "bibliography": "Anonymous Hesiod, the Homeric Hymns and Homerica Hugh G. Evelyn-White London William Heinemann Ltd. New York The Macmillan Co. 1914 Loeb Classical Library Internet Archive",
+      "licences": [
+       {
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+       }
+      ],
+      "editionUrn": "urn:cts:greekLit:tlg0013.tlg017.perseus-grc2",
+      "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0013/tlg017/tlg0013.tlg017.perseus-grc2.xml",
+      "sourceSha256": "e888f3a8593a3a28c08869d73966003c6d9eaa2bd53bc9a9d3120be8ad87bd1f",
+      "sourceReferences": [
+       "https://archive.org/details/hesiodhomerichym00hesiuoft/hesiodhomerichym00hesiuoft/page/440/mode/2up?"
+      ],
+      "publicationYear": "1914",
+      "publisher": "William Heinemann Ltd.",
+      "publicationPlace": "London",
+      "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/e888f3a8593a3a28c08869d73966003c6d9eaa2bd53bc9a9d3120be8ad87bd1f.xml"
+     },
+     {
+      "title": "Hymn 18 To Hermes",
+      "titleLanguage": "und",
+      "author": "Anonymous",
+      "editors": [
+       "Hugh G. Evelyn-White"
+      ],
+      "bibliography": "Anonymous Hesiod, the Homeric Hymns and Homerica Hugh G. Evelyn-White London William Heinemann Ltd. New York The Macmillan Co. 1914 Loeb Classical Library Internet Archive",
+      "licences": [
+       {
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+       }
+      ],
+      "editionUrn": "urn:cts:greekLit:tlg0013.tlg018.perseus-grc2",
+      "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0013/tlg018/tlg0013.tlg018.perseus-grc2.xml",
+      "sourceSha256": "109c9e65ec20c8d24afef826fcc8f2ad22fa77b3b256c6861dc33505bd811c48",
+      "sourceReferences": [
+       "https://archive.org/details/hesiodhomerichym00hesiuoft/hesiodhomerichym00hesiuoft/page/440/mode/2up?"
+      ],
+      "publicationYear": "1914",
+      "publisher": "William Heinemann Ltd.",
+      "publicationPlace": "London",
+      "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/109c9e65ec20c8d24afef826fcc8f2ad22fa77b3b256c6861dc33505bd811c48.xml"
+     },
+     {
+      "title": "Hymn 19 to Pan",
+      "titleLanguage": "und",
+      "author": "Anonymous",
+      "editors": [
+       "Hugh G. Evelyn-White"
+      ],
+      "bibliography": "Anonymous Hesiod, the Homeric Hymns and Homerica Hugh G. Evelyn-White London William Heinemann Ltd. New York The Macmillan Co. 1914 Loeb Classical Library Internet Archive",
+      "licences": [
+       {
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+       }
+      ],
+      "editionUrn": "urn:cts:greekLit:tlg0013.tlg019.perseus-grc2",
+      "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0013/tlg019/tlg0013.tlg019.perseus-grc2.xml",
+      "sourceSha256": "7009b9b7e6d8a5c63eebd067da69a07a89ec2fe65f9f06a3f2211d06de1a3977",
+      "sourceReferences": [
+       "https://archive.org/details/hesiodhomerichym00hesiuoft/hesiodhomerichym00hesiuoft/page/442/mode/2up?"
+      ],
+      "publicationYear": "1914",
+      "publisher": "William Heinemann Ltd.",
+      "publicationPlace": "London",
+      "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/7009b9b7e6d8a5c63eebd067da69a07a89ec2fe65f9f06a3f2211d06de1a3977.xml"
+     },
+     {
+      "title": "Hymn 20 To Hephaestus",
+      "titleLanguage": "und",
+      "author": "Anonymous",
+      "editors": [
+       "Hugh G. Evelyn-White"
+      ],
+      "bibliography": "Anonymous Hesiod, the Homeric Hymns and Homerica Hugh G. Evelyn-White London William Heinemann Ltd. New York The Macmillan Co. 1914 Loeb Classical Library Internet Archive",
+      "licences": [
+       {
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+       }
+      ],
+      "editionUrn": "urn:cts:greekLit:tlg0013.tlg020.perseus-grc2",
+      "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0013/tlg020/tlg0013.tlg020.perseus-grc2.xml",
+      "sourceSha256": "092d7b91bff0658fc26c0540edfe7260aefcb71bd19a32048bb98927a426cdc0",
+      "sourceReferences": [
+       "https://archive.org/details/hesiodhomerichym00hesiuoft/hesiodhomerichym00hesiuoft/page/446/mode/2up?"
+      ],
+      "publicationYear": "1914",
+      "publisher": "William Heinemann Ltd.",
+      "publicationPlace": "London",
+      "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/092d7b91bff0658fc26c0540edfe7260aefcb71bd19a32048bb98927a426cdc0.xml"
+     },
+     {
+      "title": "Hymn 21 To Apollo",
+      "titleLanguage": "und",
+      "author": "Anonymous",
+      "editors": [
+       "Hugh G. Evelyn-White"
+      ],
+      "bibliography": "Anonymous Hesiod, the Homeric Hymns and Homerica Hugh G. Evelyn-White London William Heinemann Ltd. New York The Macmillan Co. 1914 Loeb Classical Library Internet Archive",
+      "licences": [
+       {
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+       }
+      ],
+      "editionUrn": "urn:cts:greekLit:tlg0013.tlg021.perseus-grc2",
+      "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0013/tlg021/tlg0013.tlg021.perseus-grc2.xml",
+      "sourceSha256": "699c6846718929dadec7ac66ee18e3c7d7d0ee10f2688bb4d2636419335ee9ac",
+      "sourceReferences": [
+       "https://archive.org/details/hesiodhomerichym00hesiuoft/hesiodhomerichym00hesiuoft/page/446/mode/2up?"
+      ],
+      "publicationYear": "1914",
+      "publisher": "William Heinemann Ltd.",
+      "publicationPlace": "London",
+      "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/699c6846718929dadec7ac66ee18e3c7d7d0ee10f2688bb4d2636419335ee9ac.xml"
+     },
+     {
+      "title": "Hymn 22 To Poseidon",
+      "titleLanguage": "und",
+      "author": "Anonymous",
+      "editors": [
+       "Hugh G. Evelyn-White"
+      ],
+      "bibliography": "Anonymous Hesiod, the Homeric Hymns and Homerica Hugh G. Evelyn-White London William Heinemann Ltd. New York The Macmillan Co. 1914 Loeb Classical Library Internet Archive",
+      "licences": [
+       {
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+       }
+      ],
+      "editionUrn": "urn:cts:greekLit:tlg0013.tlg022.perseus-grc2",
+      "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0013/tlg022/tlg0013.tlg022.perseus-grc2.xml",
+      "sourceSha256": "0006b1d123733b9a0e6bd9f88a8f78eff19520f8ab804c5e782121221326902b",
+      "sourceReferences": [
+       "https://archive.org/details/hesiodhomerichym00hesiuoft/hesiodhomerichym00hesiuoft/page/448/mode/2up?"
+      ],
+      "publicationYear": "1914",
+      "publisher": "William Heinemann Ltd.",
+      "publicationPlace": "London",
+      "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/0006b1d123733b9a0e6bd9f88a8f78eff19520f8ab804c5e782121221326902b.xml"
+     },
+     {
+      "title": "Hymn 23 to Zeus",
+      "titleLanguage": "und",
+      "author": "Anonymous",
+      "editors": [
+       "Hugh G. Evelyn-White"
+      ],
+      "bibliography": "Anonymous Hesiod, the Homeric Hymns and Homerica Hugh G. Evelyn-White London William Heinemann Ltd. New York The Macmillan Co. 1914 Loeb Classical Library Internet Archive",
+      "licences": [
+       {
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+       }
+      ],
+      "editionUrn": "urn:cts:greekLit:tlg0013.tlg023.perseus-grc2",
+      "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0013/tlg023/tlg0013.tlg023.perseus-grc2.xml",
+      "sourceSha256": "dff790ecacece7a834fc66de0350616eae0375c3c5c150b8411072d614ee61b5",
+      "sourceReferences": [
+       "https://archive.org/details/hesiodhomerichym00hesiuoft/hesiodhomerichym00hesiuoft/page/448/mode/2up?"
+      ],
+      "publicationYear": "1914",
+      "publisher": "William Heinemann Ltd.",
+      "publicationPlace": "London",
+      "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/dff790ecacece7a834fc66de0350616eae0375c3c5c150b8411072d614ee61b5.xml"
+     },
+     {
+      "title": "Hymn 24 To Hestia",
+      "titleLanguage": "und",
+      "author": "Anonymous",
+      "editors": [
+       "Hugh G. Evelyn-White"
+      ],
+      "bibliography": "Anonymous Hesiod, the Homeric Hymns and Homerica Hugh G. Evelyn-White London William Heinemann Ltd. New York The Macmillan Co. 1914 Loeb Classical Library Internet Archive",
+      "licences": [
+       {
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+       }
+      ],
+      "editionUrn": "urn:cts:greekLit:tlg0013.tlg024.perseus-grc2",
+      "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0013/tlg024/tlg0013.tlg024.perseus-grc2.xml",
+      "sourceSha256": "8c37469d6c9c3632aa484a5e7baf3f82ffab7320face778507eb17c8bb0bdeda",
+      "sourceReferences": [
+       "https://archive.org/details/hesiodhomerichym00hesiuoft/hesiodhomerichym00hesiuoft/page/448/mode/2up?"
+      ],
+      "publicationYear": "1914",
+      "publisher": "William Heinemann Ltd.",
+      "publicationPlace": "London",
+      "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/8c37469d6c9c3632aa484a5e7baf3f82ffab7320face778507eb17c8bb0bdeda.xml"
+     },
+     {
+      "title": "Hymn 25 To the Muses and Apollo",
+      "titleLanguage": "und",
+      "author": "Anonymous",
+      "editors": [
+       "Hugh G. Evelyn-White"
+      ],
+      "bibliography": "Anonymous Hesiod, the Homeric Hymns and Homerica Hugh G. Evelyn-White London William Heinemann Ltd. New York The Macmillan Co. 1914 Loeb Classical Library Internet Archive",
+      "licences": [
+       {
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+       }
+      ],
+      "editionUrn": "urn:cts:greekLit:tlg0013.tlg025.perseus-grc2",
+      "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0013/tlg025/tlg0013.tlg025.perseus-grc2.xml",
+      "sourceSha256": "0c16c78cdc886cdc4651644d0dea48aaf5a0de71353f8776c5f08a2a42c8795f",
+      "sourceReferences": [
+       "https://archive.org/details/hesiodhomerichym00hesiuoft/hesiodhomerichym00hesiuoft/page/450/mode/2up?"
+      ],
+      "publicationYear": "1914",
+      "publisher": "William Heinemann Ltd.",
+      "publicationPlace": "London",
+      "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/0c16c78cdc886cdc4651644d0dea48aaf5a0de71353f8776c5f08a2a42c8795f.xml"
+     },
+     {
+      "title": "Hymn 26 To Dionysus",
+      "titleLanguage": "und",
+      "author": "Anonymous",
+      "editors": [
+       "Hugh G. Evelyn-White"
+      ],
+      "bibliography": "Anonymous Hesiod, the Homeric Hymns and Homerica Hugh G. Evelyn-White London William Heinemann Ltd. New York The Macmillan Co. 1914 Loeb Classical Library Internet Archive",
+      "licences": [
+       {
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+       }
+      ],
+      "editionUrn": "urn:cts:greekLit:tlg0013.tlg026.perseus-grc2",
+      "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0013/tlg026/tlg0013.tlg026.perseus-grc2.xml",
+      "sourceSha256": "5f1ebe0bfa49f3b15f7e6150bdc3762feb22ebd2125f9859f4e3c0aa8e09b110",
+      "sourceReferences": [
+       "https://archive.org/details/hesiodhomerichym00hesiuoft/hesiodhomerichym00hesiuoft/page/450/mode/2up?"
+      ],
+      "publicationYear": "1914",
+      "publisher": "William Heinemann Ltd.",
+      "publicationPlace": "London",
+      "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/5f1ebe0bfa49f3b15f7e6150bdc3762feb22ebd2125f9859f4e3c0aa8e09b110.xml"
+     },
+     {
+      "title": "Hymn 27 To Artemis",
+      "titleLanguage": "und",
+      "author": "Anonymous",
+      "editors": [
+       "Hugh G. Evelyn-White"
+      ],
+      "bibliography": "Anonymous Hesiod, the Homeric Hymns and Homerica Hugh G. Evelyn-White London William Heinemann Ltd. New York The Macmillan Co. 1914 Loeb Classical Library Internet Archive",
+      "licences": [
+       {
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+       }
+      ],
+      "editionUrn": "urn:cts:greekLit:tlg0013.tlg027.perseus-grc2",
+      "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0013/tlg027/tlg0013.tlg027.perseus-grc2.xml",
+      "sourceSha256": "ccda3f93b7bad56e9ee6c7e301cdf80dd0ef226c30a9630244f211ca32437dd8",
+      "sourceReferences": [
+       "https://archive.org/details/hesiodhomerichym00hesiuoft/hesiodhomerichym00hesiuoft/page/452/mode/2up?"
+      ],
+      "publicationYear": "1914",
+      "publisher": "William Heinemann Ltd.",
+      "publicationPlace": "London",
+      "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/ccda3f93b7bad56e9ee6c7e301cdf80dd0ef226c30a9630244f211ca32437dd8.xml"
+     },
+     {
+      "title": "Hymn 28 To Athena",
+      "titleLanguage": "und",
+      "author": "Anonymous",
+      "editors": [
+       "Hugh G. Evelyn-White"
+      ],
+      "bibliography": "Anonymous Hesiod, the Homeric Hymns and Homerica Hugh G. Evelyn-White London William Heinemann Ltd. New York The Macmillan Co. 1914 Loeb Classical Library Internet Archive",
+      "licences": [
+       {
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+       }
+      ],
+      "editionUrn": "urn:cts:greekLit:tlg0013.tlg028.perseus-grc2",
+      "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0013/tlg028/tlg0013.tlg028.perseus-grc2.xml",
+      "sourceSha256": "ed5be9e1a3acdda56f6988c36449ad540abe39ddd3954ad47315f955a5375125",
+      "sourceReferences": [
+       "https://archive.org/details/hesiodhomerichym00hesiuoft/hesiodhomerichym00hesiuoft/page/452/mode/2up?"
+      ],
+      "publicationYear": "1914",
+      "publisher": "William Heinemann Ltd.",
+      "publicationPlace": "London",
+      "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/ed5be9e1a3acdda56f6988c36449ad540abe39ddd3954ad47315f955a5375125.xml"
+     },
+     {
+      "title": "Hymn 29 To Hestia",
+      "titleLanguage": "und",
+      "author": "Anonymous",
+      "editors": [
+       "Hugh G. Evelyn-White"
+      ],
+      "bibliography": "Anonymous Hesiod, the Homeric Hymns and Homerica Hugh G. Evelyn-White London William Heinemann Ltd. New York The Macmillan Co. 1914 Loeb Classical Library Internet Archive",
+      "licences": [
+       {
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+       }
+      ],
+      "editionUrn": "urn:cts:greekLit:tlg0013.tlg029.perseus-grc2",
+      "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0013/tlg029/tlg0013.tlg029.perseus-grc2.xml",
+      "sourceSha256": "5028eb74776148d35a05fbba5b60857830ed62a3ab9cc4cd9dd65226dc8b8dc4",
+      "sourceReferences": [
+       "https://archive.org/details/hesiodhomerichym00hesiuoft/hesiodhomerichym00hesiuoft/page/454/mode/2up?"
+      ],
+      "publicationYear": "1914",
+      "publisher": "William Heinemann Ltd.",
+      "publicationPlace": "London",
+      "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/5028eb74776148d35a05fbba5b60857830ed62a3ab9cc4cd9dd65226dc8b8dc4.xml"
+     },
+     {
+      "title": "Hymn 30 To Earth",
+      "titleLanguage": "und",
+      "author": "Anonymous",
+      "editors": [
+       "Hugh G. Evelyn-White"
+      ],
+      "bibliography": "Anonymous Hesiod, the Homeric Hymns and Homerica Hugh G. Evelyn-White London William Heinemann Ltd. New York The Macmillan Co. 1914 Loeb Classical Library Internet Archive",
+      "licences": [
+       {
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+       }
+      ],
+      "editionUrn": "urn:cts:greekLit:tlg0013.tlg030.perseus-grc2",
+      "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0013/tlg030/tlg0013.tlg030.perseus-grc2.xml",
+      "sourceSha256": "2ff5ce7197cba4225d78f4111cc9215a2342d8914d89b2a3f10061e7d8ce33ab",
+      "sourceReferences": [
+       "https://archive.org/details/hesiodhomerichym00hesiuoft/hesiodhomerichym00hesiuoft/page/456/mode/2up?"
+      ],
+      "publicationYear": "1914",
+      "publisher": "William Heinemann Ltd.",
+      "publicationPlace": "London",
+      "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/2ff5ce7197cba4225d78f4111cc9215a2342d8914d89b2a3f10061e7d8ce33ab.xml"
+     },
+     {
+      "title": "Hymn 31 To Helios",
+      "titleLanguage": "und",
+      "author": "Anonymous",
+      "editors": [
+       "Hugh G. Evelyn-White"
+      ],
+      "bibliography": "Anonymous Hesiod, the Homeric Hymns and Homerica Hugh G. Evelyn-White London William Heinemann Ltd. New York The Macmillan Co. 1914 Loeb Classical Library Internet Archive",
+      "licences": [
+       {
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+       }
+      ],
+      "editionUrn": "urn:cts:greekLit:tlg0013.tlg031.perseus-grc2",
+      "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0013/tlg031/tlg0013.tlg031.perseus-grc2.xml",
+      "sourceSha256": "ce08f853138c64a50985ae6212eb020cdbed200c11c059b403dd0c3dcdbe3c0d",
+      "sourceReferences": [
+       "https://archive.org/details/hesiodhomerichym00hesiuoft/hesiodhomerichym00hesiuoft/page/458/mode/2up?"
+      ],
+      "publicationYear": "1914",
+      "publisher": "William Heinemann Ltd.",
+      "publicationPlace": "London",
+      "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/ce08f853138c64a50985ae6212eb020cdbed200c11c059b403dd0c3dcdbe3c0d.xml"
+     },
+     {
+      "title": "Hymn 32 To Selene",
+      "titleLanguage": "und",
+      "author": "Anonymous",
+      "editors": [
+       "Hugh G. Evelyn-White"
+      ],
+      "bibliography": "Anonymous Hesiod, the Homeric Hymns and Homerica Hugh G. Evelyn-White London William Heinemann Ltd. New York The Macmillan Co. 1914 Loeb Classical Library Internet Archive",
+      "licences": [
+       {
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+       }
+      ],
+      "editionUrn": "urn:cts:greekLit:tlg0013.tlg032.perseus-grc2",
+      "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0013/tlg032/tlg0013.tlg032.perseus-grc2.xml",
+      "sourceSha256": "f0f35b14fad419a9787af16e6c7a759dbe7524e7660918c73d19b4a967b343f1",
+      "sourceReferences": [
+       "https://archive.org/details/hesiodhomerichym00hesiuoft/hesiodhomerichym00hesiuoft/page/458/mode/2up?"
+      ],
+      "publicationYear": "1914",
+      "publisher": "William Heinemann Ltd.",
+      "publicationPlace": "London",
+      "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/f0f35b14fad419a9787af16e6c7a759dbe7524e7660918c73d19b4a967b343f1.xml"
+     },
+     {
+      "title": "Hymn 33 To the Dioscuri",
+      "titleLanguage": "und",
+      "author": "Anonymous",
+      "editors": [
+       "Hugh G. Evelyn-White"
+      ],
+      "bibliography": "Anonymous Hesiod, the Homeric Hymns and Homerica Hugh G. Evelyn-White London William Heinemann Ltd. New York The Macmillan Co. 1914 Loeb Classical Library Internet Archive",
+      "licences": [
+       {
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+       }
+      ],
+      "editionUrn": "urn:cts:greekLit:tlg0013.tlg033.perseus-grc2",
+      "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0013/tlg033/tlg0013.tlg033.perseus-grc2.xml",
+      "sourceSha256": "a21faf8aec46279fab0e8062a7ef620da6e221d5d665c530a630c27c66d0f678",
+      "sourceReferences": [
+       "https://archive.org/details/hesiodhomerichym00hesiuoft/hesiodhomerichym00hesiuoft/page/460/mode/2up?"
+      ],
+      "publicationYear": "1914",
+      "publisher": "William Heinemann Ltd.",
+      "publicationPlace": "London",
+      "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/a21faf8aec46279fab0e8062a7ef620da6e221d5d665c530a630c27c66d0f678.xml"
+     }
+    ],
+    "sha256": "bcea97dd83a755320c165497ae9c676e2221bf6b8464820341074a7d19ea526b",
+    "passages": 2002,
+    "characters": 101611,
+    "bytes": 504723,
+    "url": "https://libros.vitruvius-digital-library.org/corpus/homeric-hymns-grc-bcea97dd83a75532.json"
+   }
   },
   {
    "id": "theophrastus-characters",
@@ -25196,7 +26833,59 @@
    },
    "localEditionLanguages": [
     "la"
-   ]
+   ],
+   "localVersions": [
+    {
+     "language": "la",
+     "path": "data/classics-corpus/cicero-pro-archia-la.json",
+     "label": "Versión conservada antes de la ampliación R2"
+    },
+    {
+     "language": "la",
+     "path": "https://libros.vitruvius-digital-library.org/corpus/cicero-pro-archia-la-614e0fb3412bd37f.json",
+     "label": "Edición original la · urn:cts:latinLit:phi0474.phi016.perseus-lat2",
+     "reader": "classics-text-reader.html?work=cicero-pro-archia&lang=la&edition=614e0fb3412bd37f",
+     "sourceUrns": [
+      "urn:cts:latinLit:phi0474.phi016.perseus-lat2"
+     ],
+     "sha256": "614e0fb3412bd37f787a8bd9d391b4e47b2e2e207eb4fba05e3221d9fa006d5d"
+    }
+   ],
+   "indexedEdition": {
+    "sources": [
+     {
+      "title": "Pro Archia Poeta",
+      "titleLanguage": "lat",
+      "author": "M. Tullius Cicero",
+      "editors": [
+       "Albert Curtis Clark"
+      ],
+      "bibliography": "M. Tullius Cicero Orationes Albert Curtis Clark Oxford Clarendon 1911 6 Pro Tullio; Pro Fonteio; Pro Sulla; Pro Archia; Pro Plancio; Pro Scauro Scriptorum Classicorum Bibliotheca Oxoniensis Oxford Classical Texts HathiTrust Internet Archive",
+      "licences": [
+       {
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+       }
+      ],
+      "editionUrn": "urn:cts:latinLit:phi0474.phi016.perseus-lat2",
+      "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0474/phi016/phi0474.phi016.perseus-lat2.xml",
+      "sourceSha256": "39c8940231a521e3d42304d72df5638c5d4564491224a6d5e269d034efa7d20e",
+      "sourceReferences": [
+       "https://hdl.handle.net/2027/njp.32101073249417?urlappend=%3Bseq=108%3Bownerid=13510798896722459-120",
+       "https://archive.org/details/orationes0006cice/page/n107/mode/2up"
+      ],
+      "publicationYear": "1911",
+      "publisher": "Clarendon",
+      "publicationPlace": "Oxford",
+      "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/39c8940231a521e3d42304d72df5638c5d4564491224a6d5e269d034efa7d20e.xml"
+     }
+    ],
+    "sha256": "614e0fb3412bd37f787a8bd9d391b4e47b2e2e207eb4fba05e3221d9fa006d5d",
+    "passages": 35,
+    "characters": 21283,
+    "bytes": 28911,
+    "url": "https://libros.vitruvius-digital-library.org/corpus/cicero-pro-archia-la-614e0fb3412bd37f.json"
+   }
   },
   {
    "id": "cicero-de-finibus",
@@ -25304,7 +26993,58 @@
    },
    "localEditionLanguages": [
     "la"
-   ]
+   ],
+   "localVersions": [
+    {
+     "language": "la",
+     "path": "data/classics-corpus/cicero-de-finibus-la.json",
+     "label": "Versión conservada antes de la ampliación R2"
+    },
+    {
+     "language": "la",
+     "path": "https://libros.vitruvius-digital-library.org/corpus/cicero-de-finibus-la-fed77e779ab6b61c.json",
+     "label": "Edición original la · urn:cts:latinLit:phi0474.phi048.perseus-lat2",
+     "reader": "classics-text-reader.html?work=cicero-de-finibus&lang=la&edition=fed77e779ab6b61c",
+     "sourceUrns": [
+      "urn:cts:latinLit:phi0474.phi048.perseus-lat2"
+     ],
+     "sha256": "fed77e779ab6b61c70365d1bed6316717dd645aea060c083624868147ee8fc8d"
+    }
+   ],
+   "indexedEdition": {
+    "sources": [
+     {
+      "title": "de Finibus Bonorum et Malorum",
+      "titleLanguage": "lat",
+      "author": "M. Tullius Cicero",
+      "editors": [
+       "Theodor Schiche"
+      ],
+      "bibliography": "Scripta Quae Manserunt Omnia, Fasc. 43 De Finibus Bonorum et Malorum Libri Quinque M. Tullius Cicero Theodor Schiche Leipzig Teubner 1915 Scripta Quae Manserunt Omnia HathiTrust",
+      "licences": [
+       {
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+       }
+      ],
+      "editionUrn": "urn:cts:latinLit:phi0474.phi048.perseus-lat2",
+      "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0474/phi048/phi0474.phi048.perseus-lat2.xml",
+      "sourceSha256": "169e1c52a51692a7af4e1c74217973f063544392946365c45ea8e1c95988e863",
+      "sourceReferences": [
+       "https://babel.hathitrust.org/cgi/pt?id=umn.31951002299499v&seq=20"
+      ],
+      "publicationYear": "1915",
+      "publisher": "Teubner",
+      "publicationPlace": "Leipzig",
+      "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/169e1c52a51692a7af4e1c74217973f063544392946365c45ea8e1c95988e863.xml"
+     }
+    ],
+    "sha256": "fed77e779ab6b61c70365d1bed6316717dd645aea060c083624868147ee8fc8d",
+    "passages": 626,
+    "characters": 315340,
+    "bytes": 417748,
+    "url": "https://libros.vitruvius-digital-library.org/corpus/cicero-de-finibus-la-fed77e779ab6b61c.json"
+   }
   },
   {
    "id": "cicero-tusculanae",
@@ -25563,7 +27303,58 @@
    },
    "localEditionLanguages": [
     "la"
-   ]
+   ],
+   "localVersions": [
+    {
+     "language": "la",
+     "path": "data/classics-corpus/cicero-de-natura-deorum-la.json",
+     "label": "Versión conservada antes de la ampliación R2"
+    },
+    {
+     "language": "la",
+     "path": "https://libros.vitruvius-digital-library.org/corpus/cicero-de-natura-deorum-la-3619661c4eb3575d.json",
+     "label": "Edición original la · urn:cts:latinLit:phi0474.phi050.perseus-lat2",
+     "reader": "classics-text-reader.html?work=cicero-de-natura-deorum&lang=la&edition=3619661c4eb3575d",
+     "sourceUrns": [
+      "urn:cts:latinLit:phi0474.phi050.perseus-lat2"
+     ],
+     "sha256": "3619661c4eb3575d1cf9f44c54420d9bf301bdc71b8b1a22e46c523d44eee5f8"
+    }
+   ],
+   "indexedEdition": {
+    "sources": [
+     {
+      "title": "De Natura Deorum",
+      "titleLanguage": "lat",
+      "author": "M. Tullius Cicero",
+      "editors": [
+       "Otto Plasberg"
+      ],
+      "bibliography": "Scripta Quae Manserunt Omnia, Fasc. 45 De Natura Deorum M. Tullius Cicero Otto Plasberg Leipzig Teubner 1917 Scripta Quae Manserunt Omnia Google Books",
+      "licences": [
+       {
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+       }
+      ],
+      "editionUrn": "urn:cts:latinLit:phi0474.phi050.perseus-lat2",
+      "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0474/phi050/phi0474.phi050.perseus-lat2.xml",
+      "sourceSha256": "7c093bd889c24c235fd29b3d385075e10c53e39394585c00a374ab36ed64bcce",
+      "sourceReferences": [
+       "https://www.google.com/books/edition/Scripta_quae_manserunt_omnia_De_natura_d/nXZQ6GcE_icC?hl=en&gbpv=1&pg=PA1&printsec=frontcover"
+      ],
+      "publicationYear": "1917",
+      "publisher": "Teubner",
+      "publicationPlace": "Leipzig",
+      "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/7c093bd889c24c235fd29b3d385075e10c53e39394585c00a374ab36ed64bcce.xml"
+     }
+    ],
+    "sha256": "3619661c4eb3575d1cf9f44c54420d9bf301bdc71b8b1a22e46c523d44eee5f8",
+    "passages": 489,
+    "characters": 242413,
+    "bytes": 322722,
+    "url": "https://libros.vitruvius-digital-library.org/corpus/cicero-de-natura-deorum-la-3619661c4eb3575d.json"
+   }
   },
   {
    "id": "cicero-de-amicitia",
@@ -25671,7 +27462,59 @@
    },
    "localEditionLanguages": [
     "la"
-   ]
+   ],
+   "localVersions": [
+    {
+     "language": "la",
+     "path": "data/classics-corpus/cicero-de-amicitia-la.json",
+     "label": "Versión conservada antes de la ampliación R2"
+    },
+    {
+     "language": "la",
+     "path": "https://libros.vitruvius-digital-library.org/corpus/cicero-de-amicitia-la-9676e08312483531.json",
+     "label": "Edición original la · urn:cts:latinLit:phi0474.phi052.perseus-lat2",
+     "reader": "classics-text-reader.html?work=cicero-de-amicitia&lang=la&edition=9676e08312483531",
+     "sourceUrns": [
+      "urn:cts:latinLit:phi0474.phi052.perseus-lat2"
+     ],
+     "sha256": "9676e08312483531de7ed2ac4662b74a397fb7c1b74888e5efb332a4717650ba"
+    }
+   ],
+   "indexedEdition": {
+    "sources": [
+     {
+      "title": "Laelius De Amicitia",
+      "titleLanguage": "lat",
+      "author": "M. Tullius Cicero",
+      "editors": [
+       "William Armistead Falconer"
+      ],
+      "bibliography": "M. Tullius Cicero De Senectute, De Amicitia, De Divinatione William Armistead Falconer London William Heinemann New York G. P. Putnam's Sons 1923 Loeb Classical Library HathiTrust The Internet Archive",
+      "licences": [
+       {
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+       }
+      ],
+      "editionUrn": "urn:cts:latinLit:phi0474.phi052.perseus-lat2",
+      "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0474/phi052/phi0474.phi052.perseus-lat2.xml",
+      "sourceSha256": "72b06bbc51124747f047ab7bd376bb20bac10a260a413c6359ff25aa7b7d3f52",
+      "sourceReferences": [
+       "https://babel.hathitrust.org/cgi/pt?id=uiuo.ark:/13960/t1fk4dn2x&seq=120",
+       "https://archive.org/details/desenectutedeami0000cice/page/108"
+      ],
+      "publicationYear": "1923",
+      "publisher": "William Heinemann",
+      "publicationPlace": "London",
+      "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/72b06bbc51124747f047ab7bd376bb20bac10a260a413c6359ff25aa7b7d3f52.xml"
+     }
+    ],
+    "sha256": "9676e08312483531de7ed2ac4662b74a397fb7c1b74888e5efb332a4717650ba",
+    "passages": 134,
+    "characters": 62467,
+    "bytes": 85656,
+    "url": "https://libros.vitruvius-digital-library.org/corpus/cicero-de-amicitia-la-9676e08312483531.json"
+   }
   },
   {
    "id": "cicero-de-senectute",
@@ -25779,7 +27622,58 @@
    },
    "localEditionLanguages": [
     "la"
-   ]
+   ],
+   "localVersions": [
+    {
+     "language": "la",
+     "path": "data/classics-corpus/cicero-de-senectute-la.json",
+     "label": "Versión conservada antes de la ampliación R2"
+    },
+    {
+     "language": "la",
+     "path": "https://libros.vitruvius-digital-library.org/corpus/cicero-de-senectute-la-249b2fd918695c2e.json",
+     "label": "Edición original la · urn:cts:latinLit:phi0474.phi051.perseus-lat2",
+     "reader": "classics-text-reader.html?work=cicero-de-senectute&lang=la&edition=249b2fd918695c2e",
+     "sourceUrns": [
+      "urn:cts:latinLit:phi0474.phi051.perseus-lat2"
+     ],
+     "sha256": "249b2fd918695c2e630a58442dd725167f299faf8053a8dde31ccbd1973183ce"
+    }
+   ],
+   "indexedEdition": {
+    "sources": [
+     {
+      "title": "Cato Maior De Senectute",
+      "titleLanguage": "lat",
+      "author": "M. Tullius Cicero",
+      "editors": [
+       "William Armistead Falconer"
+      ],
+      "bibliography": "M. Tullius Cicero De Senectute, De Amicitia, De Divinatione William Armistead Falconer London William Heinemann New York G. P. Putnam's Sons 1923 Loeb Classical Library HathiTrust",
+      "licences": [
+       {
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+       }
+      ],
+      "editionUrn": "urn:cts:latinLit:phi0474.phi051.perseus-lat2",
+      "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0474/phi051/phi0474.phi051.perseus-lat2.xml",
+      "sourceSha256": "9c05be8471cec3abc50f0b0166ff4ebbaaff43c804251d3ff2cc19ce9c18fda1",
+      "sourceReferences": [
+       "https://babel.hathitrust.org/cgi/pt?id=uiuo.ark:/13960/t1fk4dn2x&seq=20"
+      ],
+      "publicationYear": "1923",
+      "publisher": "William Heinemann",
+      "publicationPlace": "London",
+      "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/9c05be8471cec3abc50f0b0166ff4ebbaaff43c804251d3ff2cc19ce9c18fda1.xml"
+     }
+    ],
+    "sha256": "249b2fd918695c2e630a58442dd725167f299faf8053a8dde31ccbd1973183ce",
+    "passages": 112,
+    "characters": 56134,
+    "bytes": 75750,
+    "url": "https://libros.vitruvius-digital-library.org/corpus/cicero-de-senectute-la-249b2fd918695c2e.json"
+   }
   },
   {
    "id": "cicero-de-divinatione",
@@ -25887,7 +27781,59 @@
    },
    "localEditionLanguages": [
     "la"
-   ]
+   ],
+   "localVersions": [
+    {
+     "language": "la",
+     "path": "data/classics-corpus/cicero-de-divinatione-la.json",
+     "label": "Versión conservada antes de la ampliación R2"
+    },
+    {
+     "language": "la",
+     "path": "https://libros.vitruvius-digital-library.org/corpus/cicero-de-divinatione-la-6c4ef5561d4831ed.json",
+     "label": "Edición original la · urn:cts:latinLit:phi0474.phi053.perseus-lat4",
+     "reader": "classics-text-reader.html?work=cicero-de-divinatione&lang=la&edition=6c4ef5561d4831ed",
+     "sourceUrns": [
+      "urn:cts:latinLit:phi0474.phi053.perseus-lat4"
+     ],
+     "sha256": "6c4ef5561d4831ed878a71d9bf7b2612f5551c508179a90aa18986960c9fb149"
+    }
+   ],
+   "indexedEdition": {
+    "sources": [
+     {
+      "title": "De Divinatione",
+      "titleLanguage": "lat",
+      "author": "M. Tullius Cicero",
+      "editors": [
+       "William Armistead Falconer"
+      ],
+      "bibliography": "M. Tullius Cicero De Senectute, De Amicitia, De Divinatione William Armistead Falconer London William Heinemann New York G. P. Putnam's Sons 1923 Loeb Classical Library HathiTrust The Internet Archive",
+      "licences": [
+       {
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+       }
+      ],
+      "editionUrn": "urn:cts:latinLit:phi0474.phi053.perseus-lat4",
+      "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0474/phi053/phi0474.phi053.perseus-lat4.xml",
+      "sourceSha256": "3142d6ca280b7e5f7c993fb58e7bb369bdd1396a98bd864d9853f0d035994700",
+      "sourceReferences": [
+       "https://babel.hathitrust.org/cgi/pt?id=uiuo.ark:/13960/t70x0g39h&seq=234",
+       "https://archive.org/details/desenectutedeami0000cice/page/108"
+      ],
+      "publicationYear": "1923",
+      "publisher": "William Heinemann",
+      "publicationPlace": "London",
+      "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/3142d6ca280b7e5f7c993fb58e7bb369bdd1396a98bd864d9853f0d035994700.xml"
+     }
+    ],
+    "sha256": "6c4ef5561d4831ed878a71d9bf7b2612f5551c508179a90aa18986960c9fb149",
+    "passages": 390,
+    "characters": 188359,
+    "bytes": 252990,
+    "url": "https://libros.vitruvius-digital-library.org/corpus/cicero-de-divinatione-la-6c4ef5561d4831ed.json"
+   }
   },
   {
    "id": "cicero-brutus",
@@ -25991,7 +27937,58 @@
    },
    "localEditionLanguages": [
     "la"
-   ]
+   ],
+   "localVersions": [
+    {
+     "language": "la",
+     "path": "data/classics-corpus/cicero-brutus-la.json",
+     "label": "Versión conservada antes de la ampliación R2"
+    },
+    {
+     "language": "la",
+     "path": "https://libros.vitruvius-digital-library.org/corpus/cicero-brutus-la-e0742d7727de376b.json",
+     "label": "Edición original la · urn:cts:latinLit:phi0474.phi039.perseus-lat2",
+     "reader": "classics-text-reader.html?work=cicero-brutus&lang=la&edition=e0742d7727de376b",
+     "sourceUrns": [
+      "urn:cts:latinLit:phi0474.phi039.perseus-lat2"
+     ],
+     "sha256": "e0742d7727de376b2eb4efefa6973dcfca864cf6a352220b135b7510d970282e"
+    }
+   ],
+   "indexedEdition": {
+    "sources": [
+     {
+      "title": "Brutus",
+      "titleLanguage": "und",
+      "author": "M. Tullius Cicero",
+      "editors": [
+       "Augustus Samuel Wilkins"
+      ],
+      "bibliography": "M. Tullius Cicero Rhetorica Augustus Samuel Wilkins Oxford Clarendon Press 1902 2 Scriptorum Classicorum Bibliotheca Oxoniensis Oxford Classical Texts Internet Archive",
+      "licences": [
+       {
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+       }
+      ],
+      "editionUrn": "urn:cts:latinLit:phi0474.phi039.perseus-lat2",
+      "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0474/phi039/phi0474.phi039.perseus-lat2.xml",
+      "sourceSha256": "28c26d36ee5b3888799beea5c962cf0c45f87bceedf3e973af8afe6a242ce0f7",
+      "sourceReferences": [
+       "https://archive.org/details/rhetoricarecogno02ciceuoft/page/n15/mode/2up"
+      ],
+      "publicationYear": "1902",
+      "publisher": "Clarendon Press",
+      "publicationPlace": "Oxford",
+      "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/28c26d36ee5b3888799beea5c962cf0c45f87bceedf3e973af8afe6a242ce0f7.xml"
+     }
+    ],
+    "sha256": "e0742d7727de376b2eb4efefa6973dcfca864cf6a352220b135b7510d970282e",
+    "passages": 354,
+    "characters": 168806,
+    "bytes": 226935,
+    "url": "https://libros.vitruvius-digital-library.org/corpus/cicero-brutus-la-e0742d7727de376b.json"
+   }
   },
   {
    "id": "cicero-philippicae",
@@ -26095,7 +28092,59 @@
    },
    "localEditionLanguages": [
     "la"
-   ]
+   ],
+   "localVersions": [
+    {
+     "language": "la",
+     "path": "data/classics-corpus/cicero-philippicae-la.json",
+     "label": "Versión conservada antes de la ampliación R2"
+    },
+    {
+     "language": "la",
+     "path": "https://libros.vitruvius-digital-library.org/corpus/cicero-philippicae-la-1b3c469f152e52c8.json",
+     "label": "Edición original la · urn:cts:latinLit:phi0474.phi035.perseus-lat2",
+     "reader": "classics-text-reader.html?work=cicero-philippicae&lang=la&edition=1b3c469f152e52c8",
+     "sourceUrns": [
+      "urn:cts:latinLit:phi0474.phi035.perseus-lat2"
+     ],
+     "sha256": "1b3c469f152e52c89b3d481b19570559a6e735a7cc067f0a680a63736fcfe88e"
+    }
+   ],
+   "indexedEdition": {
+    "sources": [
+     {
+      "title": "Philippicae",
+      "titleLanguage": "lat",
+      "author": "M. Tullius Cicero",
+      "editors": [
+       "Albert Curtis Clark"
+      ],
+      "bibliography": "M. Tullius Cicero Orationes Albert Curtis Clark Oxford Clarendon Press 1918 1901 6 Pro Milone; Pro Marcello; Pro Ligario; Pro Rege Deiotaro; Philippicae I-XIV Scriptorum Classicorum Bibliotheca Oxoniensis Oxford Classical Texts HathiTrust Internet Archive",
+      "licences": [
+       {
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+       }
+      ],
+      "editionUrn": "urn:cts:latinLit:phi0474.phi035.perseus-lat2",
+      "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0474/phi035/phi0474.phi035.perseus-lat2.xml",
+      "sourceSha256": "726ea765f077de0b86742656239fb0eb08ed3c17df80a6833e4d51a319110b01",
+      "sourceReferences": [
+       "https://hdl.handle.net/2027/uc1.31822018932749?urlappend=%3Bseq=131",
+       "https://archive.org/details/mtvlliciceroniso06cice/page/n115/mode/2up"
+      ],
+      "publicationYear": "1918",
+      "publisher": "Clarendon Press",
+      "publicationPlace": "Oxford",
+      "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/726ea765f077de0b86742656239fb0eb08ed3c17df80a6833e4d51a319110b01.xml"
+     }
+    ],
+    "sha256": "1b3c469f152e52c89b3d481b19570559a6e735a7cc067f0a680a63736fcfe88e",
+    "passages": 590,
+    "characters": 361828,
+    "bytes": 458217,
+    "url": "https://libros.vitruvius-digital-library.org/corpus/cicero-philippicae-la-1b3c469f152e52c8.json"
+   }
   },
   {
    "id": "seneca-de-brevitate",
@@ -31547,7 +33596,7 @@
     "facsimil": "https://libros.vitruvius-digital-library.org/clasicos/pdf/aristoteles-del-cielo.pdf",
     "texto": "https://libros.vitruvius-digital-library.org/clasicos/texto/aristoteles-del-cielo.json"
    },
-   "publicStatus": "fuente-externa-identificada",
+   "publicStatus": "lectura-local-parcial",
    "localReader": null,
    "addedBy": "facsímil alojado en R2 · scripts/r2-fichas-obras-nuevas.py",
    "sourceRegistration": {
@@ -31579,7 +33628,56 @@
     "period": "interpretado del campo dating de esta ficha"
    },
    "century": "IV a. C.",
-   "period": "IV a. C."
+   "period": "IV a. C.",
+   "corpusFiles": {
+    "grc": "https://libros.vitruvius-digital-library.org/corpus/aristoteles-del-cielo-grc-05efdc48def562a1.json"
+   },
+   "localVersions": [
+    {
+     "language": "grc",
+     "path": "https://libros.vitruvius-digital-library.org/corpus/aristoteles-del-cielo-grc-05efdc48def562a1.json",
+     "label": "Edición original grc · urn:cts:greekLit:tlg0086.tlg005.1st1K-grc1",
+     "reader": "classics-text-reader.html?work=aristoteles-del-cielo&lang=grc&edition=05efdc48def562a1",
+     "sourceUrns": [
+      "urn:cts:greekLit:tlg0086.tlg005.1st1K-grc1"
+     ],
+     "sha256": "05efdc48def562a10434c70c59d2c788cadaed0154e7308916fc14e805e9b3ba"
+    }
+   ],
+   "indexedEdition": {
+    "sources": [
+     {
+      "title": "De caelo",
+      "titleLanguage": "lat",
+      "author": "Aristotle",
+      "editors": [
+       "Carl Prantl"
+      ],
+      "bibliography": "Aristoteles De coelo et De generatione et corruptione Carl Prantl Aristotle Teubner Leipzig 1881 Internet Archive",
+      "licences": [
+       {
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+       }
+      ],
+      "editionUrn": "urn:cts:greekLit:tlg0086.tlg005.1st1K-grc1",
+      "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0086/tlg005/tlg0086.tlg005.1st1K-grc1.xml",
+      "sourceSha256": "d4df9f3c5cf86dd8cb2ee5278310a6ef8b11a9543b32a573c5ba31b7490489cf",
+      "sourceReferences": [
+       "https://archive.org/stream/decoeloetdegene00prangoog#page/n11/mode/2up"
+      ],
+      "publicationYear": "1881",
+      "publisher": "Teubner",
+      "publicationPlace": "Leipzig",
+      "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/d4df9f3c5cf86dd8cb2ee5278310a6ef8b11a9543b32a573c5ba31b7490489cf.xml"
+     }
+    ],
+    "sha256": "05efdc48def562a10434c70c59d2c788cadaed0154e7308916fc14e805e9b3ba",
+    "passages": 46,
+    "characters": 170282,
+    "bytes": 341490,
+    "url": "https://libros.vitruvius-digital-library.org/corpus/aristoteles-del-cielo-grc-05efdc48def562a1.json"
+   }
   },
   {
    "id": "aristoteles-historia-animales",
@@ -31625,7 +33723,7 @@
     "facsimil": "https://libros.vitruvius-digital-library.org/clasicos/pdf/aristoteles-historia-animales.pdf",
     "texto": "https://libros.vitruvius-digital-library.org/clasicos/texto/aristoteles-historia-animales.json"
    },
-   "publicStatus": "fuente-externa-identificada",
+   "publicStatus": "lectura-local-parcial",
    "localReader": null,
    "addedBy": "facsímil alojado en R2 · scripts/r2-fichas-obras-nuevas.py",
    "sourceRegistration": {
@@ -31657,7 +33755,56 @@
     "period": "interpretado del campo dating de esta ficha"
    },
    "century": "IV a. C.",
-   "period": "IV a. C."
+   "period": "IV a. C.",
+   "corpusFiles": {
+    "grc": "https://libros.vitruvius-digital-library.org/corpus/aristoteles-historia-animales-grc-0d1c1c571eca646b.json"
+   },
+   "localVersions": [
+    {
+     "language": "grc",
+     "path": "https://libros.vitruvius-digital-library.org/corpus/aristoteles-historia-animales-grc-0d1c1c571eca646b.json",
+     "label": "Edición original grc · urn:cts:greekLit:tlg0086.tlg014.1st1K-grc1",
+     "reader": "classics-text-reader.html?work=aristoteles-historia-animales&lang=grc&edition=0d1c1c571eca646b",
+     "sourceUrns": [
+      "urn:cts:greekLit:tlg0086.tlg014.1st1K-grc1"
+     ],
+     "sha256": "0d1c1c571eca646b419849236734fc45b90b64432b3074f84c57b1ce6ddff717"
+    }
+   ],
+   "indexedEdition": {
+    "sources": [
+     {
+      "title": "Historia animalium",
+      "titleLanguage": "lat",
+      "author": "Aristotle",
+      "editors": [
+       "Immanuel Bekker"
+      ],
+      "bibliography": "Aristotelis Opera Aristotle Immanuel Bekker Oxford University Press Oxford 4 1-383 1837 HathiTrust",
+      "licences": [
+       {
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+       }
+      ],
+      "editionUrn": "urn:cts:greekLit:tlg0086.tlg014.1st1K-grc1",
+      "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0086/tlg014/tlg0086.tlg014.1st1K-grc1.xml",
+      "sourceSha256": "ad1354d9c9199aee823294dad30e0e0784d10295c311fe7816501806bbbae042",
+      "sourceReferences": [
+       "https://hdl.handle.net/2027/nyp.33433022676013?urlappend=%3Bseq=12"
+      ],
+      "publicationYear": "1837",
+      "publisher": "Oxford University Press",
+      "publicationPlace": "Oxford",
+      "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/ad1354d9c9199aee823294dad30e0e0784d10295c311fe7816501806bbbae042.xml"
+     }
+    ],
+    "sha256": "0d1c1c571eca646b419849236734fc45b90b64432b3074f84c57b1ce6ddff717",
+    "passages": 343,
+    "characters": 555162,
+    "bytes": 1170225,
+    "url": "https://libros.vitruvius-digital-library.org/corpus/aristoteles-historia-animales-grc-0d1c1c571eca646b.json"
+   }
   },
   {
    "id": "baquilides-poemas",
@@ -33788,7 +35935,7 @@
     "facsimil": "https://libros.vitruvius-digital-library.org/clasicos/pdf/aristoteles-meteorologica.pdf",
     "texto": "https://libros.vitruvius-digital-library.org/clasicos/texto/aristoteles-meteorologica.json"
    },
-   "publicStatus": "fuente-externa-identificada",
+   "publicStatus": "lectura-local-parcial",
    "localReader": null,
    "addedBy": "facsímil alojado en R2 · scripts/r2-fichas-obras-nuevas.py",
    "sourceRegistration": {
@@ -33819,6 +35966,55 @@
     "century": "interpretado del campo dating de esta ficha",
     "period": "interpretado del campo dating de esta ficha",
     "witnessLookup": "enlaces de búsqueda generados a partir del título"
+   },
+   "corpusFiles": {
+    "grc": "https://libros.vitruvius-digital-library.org/corpus/aristoteles-meteorologica-grc-e56a80cc0c10dc06.json"
+   },
+   "localVersions": [
+    {
+     "language": "grc",
+     "path": "https://libros.vitruvius-digital-library.org/corpus/aristoteles-meteorologica-grc-e56a80cc0c10dc06.json",
+     "label": "Edición original grc · urn:cts:greekLit:tlg0086.tlg026.1st1K-grc1",
+     "reader": "classics-text-reader.html?work=aristoteles-meteorologica&lang=grc&edition=e56a80cc0c10dc06",
+     "sourceUrns": [
+      "urn:cts:greekLit:tlg0086.tlg026.1st1K-grc1"
+     ],
+     "sha256": "e56a80cc0c10dc06d9441eb5b98b3cc92094cf63c048d3a6170a8af4808c7a88"
+    }
+   ],
+   "indexedEdition": {
+    "sources": [
+     {
+      "title": "Meteorologica",
+      "titleLanguage": "lat",
+      "author": "Aristotle",
+      "editors": [
+       "Immanuel Bekker"
+      ],
+      "bibliography": "Aristotelis Opera Aristotle Immanuel Bekker Oxford University Press Oxford 3 1-130 1837 HathiTrust",
+      "licences": [
+       {
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+       }
+      ],
+      "editionUrn": "urn:cts:greekLit:tlg0086.tlg026.1st1K-grc1",
+      "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0086/tlg026/tlg0086.tlg026.1st1K-grc1.xml",
+      "sourceSha256": "0fdbe3bde804237e2621ba3918b75cab589ec41d11290da189dc180408b522f7",
+      "sourceReferences": [
+       "https://hdl.handle.net/2027/nyp.33433022676005?urlappend=%3Bseq=14"
+      ],
+      "publicationYear": "1837",
+      "publisher": "Oxford University Press",
+      "publicationPlace": "Oxford",
+      "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/0fdbe3bde804237e2621ba3918b75cab589ec41d11290da189dc180408b522f7.xml"
+     }
+    ],
+    "sha256": "e56a80cc0c10dc06d9441eb5b98b3cc92094cf63c048d3a6170a8af4808c7a88",
+    "passages": 52,
+    "characters": 196581,
+    "bytes": 404748,
+    "url": "https://libros.vitruvius-digital-library.org/corpus/aristoteles-meteorologica-grc-e56a80cc0c10dc06.json"
    }
   },
   {
@@ -49057,6 +51253,1055 @@
     "characters": 30092,
     "bytes": 70668,
     "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg015-grc-8717879bee928f83.json"
+   }
+  },
+  {
+   "id": "cts-tlg0062-tlg052",
+   "author": "Luciano de Samósata",
+   "title": "Abdicatus",
+   "language": "grc",
+   "genre": "Corpus clásico ampliado",
+   "dating": "c. 125–c. 180 d. C.",
+   "reading": {
+    "url": "classics-text-reader.html?work=cts-tlg0062-tlg052&lang=grc&edition=6b56828dfb8c68d0",
+    "status": "Edición TEI alojada en R2 con búsqueda y traducción automática por pasaje"
+   },
+   "manuscript": {
+    "status": "Sin testimonio manuscrito individual asignado; la edición TEI se identifica por separado"
+   },
+   "pdf": {
+    "url": null,
+    "status": "No consta PDF ni facsímil individual verificado para esta edición"
+   },
+   "translation": {
+    "status": "Traducción automática de consulta por pasaje; no se atribuye a un traductor académico"
+   },
+   "links": {
+    "scaife": "https://scaife.perseus.org/library/urn:cts:greekLit:tlg0062.tlg052.perseus-grc2/"
+   },
+   "aliases": [
+    "urn:cts:greekLit:tlg0062.tlg052.perseus-grc2"
+   ],
+   "relatedWorkIds": [],
+   "catalogueProvenance": "Título y autor de los catálogos CTS del sitio; edición contrastada con su cabecera TEI. No se retrotraduce el título.",
+   "corpusFiles": {
+    "grc": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg052-grc-6b56828dfb8c68d0.json"
+   },
+   "localVersions": [
+    {
+     "language": "grc",
+     "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg052-grc-6b56828dfb8c68d0.json",
+     "label": "Edición original grc · urn:cts:greekLit:tlg0062.tlg052.perseus-grc2",
+     "reader": "classics-text-reader.html?work=cts-tlg0062-tlg052&lang=grc&edition=6b56828dfb8c68d0",
+     "sourceUrns": [
+      "urn:cts:greekLit:tlg0062.tlg052.perseus-grc2"
+     ],
+     "sha256": "6b56828dfb8c68d0f8119f88eea4a126f8cff8bdc1e7b44bdf435ed5f00354ee"
+    }
+   ],
+   "publicStatus": "lectura-local-parcial",
+   "indexedEdition": {
+    "sources": [
+     {
+      "title": "Ἀποκηρυττόμενος",
+      "titleLanguage": "grc",
+      "author": "Lucian",
+      "editors": [
+       "Austin Morris Harmon"
+      ],
+      "bibliography": "Lucian Lucian Austin Morris Harmon Cambridge, MA Harvard University Press London William Heinemann Ltd. 1936 5 Loeb Classical Library Internet Archive",
+      "licences": [
+       {
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+       }
+      ],
+      "editionUrn": "urn:cts:greekLit:tlg0062.tlg052.perseus-grc2",
+      "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0062/tlg052/tlg0062.tlg052.perseus-grc2.xml",
+      "sourceSha256": "5e224de9500725ee36c420c8ff8a72d6016d53c108f4fd7309c6cea0c18bf518",
+      "sourceReferences": [
+       "https://archive.org/details/lucianhar05luciuoft/page/330/mode/2up"
+      ],
+      "publicationYear": "1936",
+      "publisher": "Harvard University Press",
+      "publicationPlace": "Cambridge, MA",
+      "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/5e224de9500725ee36c420c8ff8a72d6016d53c108f4fd7309c6cea0c18bf518.xml"
+     }
+    ],
+    "sha256": "6b56828dfb8c68d0f8119f88eea4a126f8cff8bdc1e7b44bdf435ed5f00354ee",
+    "passages": 44,
+    "characters": 30257,
+    "bytes": 68244,
+    "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg052-grc-6b56828dfb8c68d0.json"
+   }
+  },
+  {
+   "id": "cts-tlg0062-tlg054",
+   "author": "Luciano de Samósata",
+   "title": "Dipsades",
+   "language": "grc",
+   "genre": "Corpus clásico ampliado",
+   "dating": "c. 125–c. 180 d. C.",
+   "reading": {
+    "url": "classics-text-reader.html?work=cts-tlg0062-tlg054&lang=grc&edition=c861eece1f8ebe16",
+    "status": "Edición TEI alojada en R2 con búsqueda y traducción automática por pasaje"
+   },
+   "manuscript": {
+    "status": "Sin testimonio manuscrito individual asignado; la edición TEI se identifica por separado"
+   },
+   "pdf": {
+    "url": null,
+    "status": "No consta PDF ni facsímil individual verificado para esta edición"
+   },
+   "translation": {
+    "status": "Traducción automática de consulta por pasaje; no se atribuye a un traductor académico"
+   },
+   "links": {
+    "scaife": "https://scaife.perseus.org/library/urn:cts:greekLit:tlg0062.tlg054.perseus-grc3/"
+   },
+   "aliases": [
+    "urn:cts:greekLit:tlg0062.tlg054.perseus-grc3"
+   ],
+   "relatedWorkIds": [],
+   "catalogueProvenance": "Título y autor de los catálogos CTS del sitio; edición contrastada con su cabecera TEI. No se retrotraduce el título.",
+   "corpusFiles": {
+    "grc": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg054-grc-c861eece1f8ebe16.json"
+   },
+   "localVersions": [
+    {
+     "language": "grc",
+     "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg054-grc-c861eece1f8ebe16.json",
+     "label": "Edición original grc · urn:cts:greekLit:tlg0062.tlg054.perseus-grc3",
+     "reader": "classics-text-reader.html?work=cts-tlg0062-tlg054&lang=grc&edition=c861eece1f8ebe16",
+     "sourceUrns": [
+      "urn:cts:greekLit:tlg0062.tlg054.perseus-grc3"
+     ],
+     "sha256": "c861eece1f8ebe16b2aff8dbae90d654c1862169a687950e2307cae6f660cdfe"
+    }
+   ],
+   "publicStatus": "lectura-local-parcial",
+   "indexedEdition": {
+    "sources": [
+     {
+      "title": "Περὶ τῶν διψάδων",
+      "titleLanguage": "grc",
+      "author": "Lucian of Samosata",
+      "editors": [
+       "Kenneth Kilburn"
+      ],
+      "bibliography": "Lucian of Samosata Lucian with an English Translation Kenneth Kilburn London William Heinemann Ltd. Cambridge, MA Harvard University Press 1959 6 Internet Archive Hathi Trust",
+      "licences": [
+       {
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+       }
+      ],
+      "editionUrn": "urn:cts:greekLit:tlg0062.tlg054.perseus-grc3",
+      "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0062/tlg054/tlg0062.tlg054.perseus-grc3.xml",
+      "sourceSha256": "a2df219a317a5f02ac7a133e15b316ca3f08f7940b26866ece4ab93fc875e940",
+      "sourceReferences": [
+       "https://archive.org/details/luciankilb06luciuoft/page/77/mode/2up",
+       "https://hdl.handle.net/2027/osu.32435024202103?urlappend=%3Bseq=93"
+      ],
+      "publicationYear": "1959",
+      "publisher": "William Heinemann Ltd.",
+      "publicationPlace": "London",
+      "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/a2df219a317a5f02ac7a133e15b316ca3f08f7940b26866ece4ab93fc875e940.xml"
+     }
+    ],
+    "sha256": "c861eece1f8ebe16b2aff8dbae90d654c1862169a687950e2307cae6f660cdfe",
+    "passages": 10,
+    "characters": 5769,
+    "bytes": 14974,
+    "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg054-grc-c861eece1f8ebe16.json"
+   }
+  },
+  {
+   "id": "cts-tlg0062-tlg053",
+   "author": "Luciano de Samósata",
+   "title": "Quomodo historia conscribenda sit",
+   "language": "grc",
+   "genre": "Corpus clásico ampliado",
+   "dating": "c. 125–c. 180 d. C.",
+   "reading": {
+    "url": "classics-text-reader.html?work=cts-tlg0062-tlg053&lang=grc&edition=9d2d90652477afb8",
+    "status": "Edición TEI alojada en R2 con búsqueda y traducción automática por pasaje"
+   },
+   "manuscript": {
+    "status": "Sin testimonio manuscrito individual asignado; la edición TEI se identifica por separado"
+   },
+   "pdf": {
+    "url": null,
+    "status": "No consta PDF ni facsímil individual verificado para esta edición"
+   },
+   "translation": {
+    "status": "Traducción automática de consulta por pasaje; no se atribuye a un traductor académico"
+   },
+   "links": {
+    "scaife": "https://scaife.perseus.org/library/urn:cts:greekLit:tlg0062.tlg053.perseus-grc3/"
+   },
+   "aliases": [
+    "urn:cts:greekLit:tlg0062.tlg053.perseus-grc3"
+   ],
+   "relatedWorkIds": [],
+   "catalogueProvenance": "Título y autor de los catálogos CTS del sitio; edición contrastada con su cabecera TEI. No se retrotraduce el título.",
+   "corpusFiles": {
+    "grc": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg053-grc-9d2d90652477afb8.json"
+   },
+   "localVersions": [
+    {
+     "language": "grc",
+     "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg053-grc-9d2d90652477afb8.json",
+     "label": "Edición original grc · urn:cts:greekLit:tlg0062.tlg053.perseus-grc3",
+     "reader": "classics-text-reader.html?work=cts-tlg0062-tlg053&lang=grc&edition=9d2d90652477afb8",
+     "sourceUrns": [
+      "urn:cts:greekLit:tlg0062.tlg053.perseus-grc3"
+     ],
+     "sha256": "9d2d90652477afb83ab7b7ced82b5793ce2c31c1c86b11fd4bd44b6df3d97231"
+    }
+   ],
+   "publicStatus": "lectura-local-parcial",
+   "indexedEdition": {
+    "sources": [
+     {
+      "title": "Πῶς δεῖ ἱστορίαν συγγράφειν",
+      "titleLanguage": "grc",
+      "author": "Lucian of Samosata",
+      "editors": [
+       "Kenneth Kilburn"
+      ],
+      "bibliography": "Lucian of Samosata Lucian with an English Translation Kenneth Kilburn London William Heinemann Ltd. Cambridge, MA Harvard University Press 1959 6 Internet Archive Hathi Trust",
+      "licences": [
+       {
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+       }
+      ],
+      "editionUrn": "urn:cts:greekLit:tlg0062.tlg053.perseus-grc3",
+      "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0062/tlg053/tlg0062.tlg053.perseus-grc3.xml",
+      "sourceSha256": "6eabd0e8b138614688cf1ed1307906411a4209c5e1ef70c8e758644af60d32dc",
+      "sourceReferences": [
+       "https://archive.org/details/luciankilb06luciuoft/page/3/mode/2up",
+       "https://hdl.handle.net/2027/osu.32435024202103?urlappend=%3Bseq=19"
+      ],
+      "publicationYear": "1959",
+      "publisher": "William Heinemann Ltd.",
+      "publicationPlace": "London",
+      "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/6eabd0e8b138614688cf1ed1307906411a4209c5e1ef70c8e758644af60d32dc.xml"
+     }
+    ],
+    "sha256": "9d2d90652477afb83ab7b7ced82b5793ce2c31c1c86b11fd4bd44b6df3d97231",
+    "passages": 71,
+    "characters": 47275,
+    "bytes": 106412,
+    "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg053-grc-9d2d90652477afb8.json"
+   }
+  },
+  {
+   "id": "cts-tlg0062-tlg059",
+   "author": "Luciano de Samósata",
+   "title": "Apologia",
+   "language": "grc",
+   "genre": "Corpus clásico ampliado",
+   "dating": "c. 125–c. 180 d. C.",
+   "reading": {
+    "url": "classics-text-reader.html?work=cts-tlg0062-tlg059&lang=grc&edition=12baf9fc7871e8e5",
+    "status": "Edición TEI alojada en R2 con búsqueda y traducción automática por pasaje"
+   },
+   "manuscript": {
+    "status": "Sin testimonio manuscrito individual asignado; la edición TEI se identifica por separado"
+   },
+   "pdf": {
+    "url": null,
+    "status": "No consta PDF ni facsímil individual verificado para esta edición"
+   },
+   "translation": {
+    "status": "Traducción automática de consulta por pasaje; no se atribuye a un traductor académico"
+   },
+   "links": {
+    "scaife": "https://scaife.perseus.org/library/urn:cts:greekLit:tlg0062.tlg059.perseus-grc3/"
+   },
+   "aliases": [
+    "urn:cts:greekLit:tlg0062.tlg059.perseus-grc3"
+   ],
+   "relatedWorkIds": [],
+   "catalogueProvenance": "Título y autor de los catálogos CTS del sitio; edición contrastada con su cabecera TEI. No se retrotraduce el título.",
+   "corpusFiles": {
+    "grc": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg059-grc-12baf9fc7871e8e5.json"
+   },
+   "localVersions": [
+    {
+     "language": "grc",
+     "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg059-grc-12baf9fc7871e8e5.json",
+     "label": "Edición original grc · urn:cts:greekLit:tlg0062.tlg059.perseus-grc3",
+     "reader": "classics-text-reader.html?work=cts-tlg0062-tlg059&lang=grc&edition=12baf9fc7871e8e5",
+     "sourceUrns": [
+      "urn:cts:greekLit:tlg0062.tlg059.perseus-grc3"
+     ],
+     "sha256": "12baf9fc7871e8e511b661ac6e04db7048be043ed96cd551eb74b3fd846c140c"
+    }
+   ],
+   "publicStatus": "lectura-local-parcial",
+   "indexedEdition": {
+    "sources": [
+     {
+      "title": "Ἀπολογία",
+      "titleLanguage": "grc",
+      "author": "Lucian of Samosata",
+      "editors": [
+       "Kenneth Kilburn"
+      ],
+      "bibliography": "Lucian of Samosata Lucian with an English Translation Kenneth Kilburn London William Heinemann Ltd. Cambridge, MA Harvard University Press 1959 6 Internet Archive Hathi Trust",
+      "licences": [
+       {
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+       }
+      ],
+      "editionUrn": "urn:cts:greekLit:tlg0062.tlg059.perseus-grc3",
+      "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0062/tlg059/tlg0062.tlg059.perseus-grc3.xml",
+      "sourceSha256": "5a80547d3519bd66bb4a39d849c9b2bee0ee4c7a42069a6cbe5c873ab272d0cc",
+      "sourceReferences": [
+       "https://archive.org/details/luciankilb06luciuoft/page/193/mode/2up",
+       "https://hdl.handle.net/2027/osu.32435024202103?urlappend=%3Bseq=209"
+      ],
+      "publicationYear": "1959",
+      "publisher": "William Heinemann Ltd.",
+      "publicationPlace": "London",
+      "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/5a80547d3519bd66bb4a39d849c9b2bee0ee4c7a42069a6cbe5c873ab272d0cc.xml"
+     }
+    ],
+    "sha256": "12baf9fc7871e8e511b661ac6e04db7048be043ed96cd551eb74b3fd846c140c",
+    "passages": 17,
+    "characters": 13034,
+    "bytes": 30326,
+    "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg059-grc-12baf9fc7871e8e5.json"
+   }
+  },
+  {
+   "id": "cts-tlg0062-tlg058",
+   "author": "Luciano de Samósata",
+   "title": "Pro lapsu inter salutandum",
+   "language": "grc",
+   "genre": "Corpus clásico ampliado",
+   "dating": "c. 125–c. 180 d. C.",
+   "reading": {
+    "url": "classics-text-reader.html?work=cts-tlg0062-tlg058&lang=grc&edition=56996acb20a89fd8",
+    "status": "Edición TEI alojada en R2 con búsqueda y traducción automática por pasaje"
+   },
+   "manuscript": {
+    "status": "Sin testimonio manuscrito individual asignado; la edición TEI se identifica por separado"
+   },
+   "pdf": {
+    "url": null,
+    "status": "No consta PDF ni facsímil individual verificado para esta edición"
+   },
+   "translation": {
+    "status": "Traducción automática de consulta por pasaje; no se atribuye a un traductor académico"
+   },
+   "links": {
+    "scaife": "https://scaife.perseus.org/library/urn:cts:greekLit:tlg0062.tlg058.perseus-grc3/"
+   },
+   "aliases": [
+    "urn:cts:greekLit:tlg0062.tlg058.perseus-grc3"
+   ],
+   "relatedWorkIds": [],
+   "catalogueProvenance": "Título y autor de los catálogos CTS del sitio; edición contrastada con su cabecera TEI. No se retrotraduce el título.",
+   "corpusFiles": {
+    "grc": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg058-grc-56996acb20a89fd8.json"
+   },
+   "localVersions": [
+    {
+     "language": "grc",
+     "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg058-grc-56996acb20a89fd8.json",
+     "label": "Edición original grc · urn:cts:greekLit:tlg0062.tlg058.perseus-grc3",
+     "reader": "classics-text-reader.html?work=cts-tlg0062-tlg058&lang=grc&edition=56996acb20a89fd8",
+     "sourceUrns": [
+      "urn:cts:greekLit:tlg0062.tlg058.perseus-grc3"
+     ],
+     "sha256": "56996acb20a89fd8bd9b2bf5e6b7c1e44a71a237f577cd12a861c9762f7b2552"
+    }
+   ],
+   "publicStatus": "lectura-local-parcial",
+   "indexedEdition": {
+    "sources": [
+     {
+      "title": "Ὑπέρ τοῦ ἐν τῇ προσαγορεύσει πταισμάτως",
+      "titleLanguage": "grc",
+      "author": "Lucian of Samosata",
+      "editors": [
+       "Kenneth Kilburn"
+      ],
+      "bibliography": "Lucian of Samosata Lucian with an English Translation Kenneth Kilburn London William Heinemann Ltd. Cambridge, MA Harvard University Press 1959 6 Internet Archive Hathi Trust",
+      "licences": [
+       {
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+       }
+      ],
+      "editionUrn": "urn:cts:greekLit:tlg0062.tlg058.perseus-grc3",
+      "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0062/tlg058/tlg0062.tlg058.perseus-grc3.xml",
+      "sourceSha256": "4449755ca26479941017058fea17ff31746857bf637ac4cebfafaa85eaf2c118",
+      "sourceReferences": [
+       "https://archive.org/details/luciankilb06luciuoft/page/173/mode/2up",
+       "https://hdl.handle.net/2027/osu.32435024202103?urlappend=%3Bseq=189"
+      ],
+      "publicationYear": "1959",
+      "publisher": "William Heinemann Ltd.",
+      "publicationPlace": "London",
+      "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/4449755ca26479941017058fea17ff31746857bf637ac4cebfafaa85eaf2c118.xml"
+     }
+    ],
+    "sha256": "56996acb20a89fd8bd9b2bf5e6b7c1e44a71a237f577cd12a861c9762f7b2552",
+    "passages": 21,
+    "characters": 9968,
+    "bytes": 25036,
+    "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg058-grc-56996acb20a89fd8.json"
+   }
+  },
+  {
+   "id": "cts-tlg0062-tlg060",
+   "author": "Luciano de Samósata",
+   "title": "Harmonides",
+   "language": "grc",
+   "genre": "Corpus clásico ampliado",
+   "dating": "c. 125–c. 180 d. C.",
+   "reading": {
+    "url": "classics-text-reader.html?work=cts-tlg0062-tlg060&lang=grc&edition=2d05f6abc826400c",
+    "status": "Edición TEI alojada en R2 con búsqueda y traducción automática por pasaje"
+   },
+   "manuscript": {
+    "status": "Sin testimonio manuscrito individual asignado; la edición TEI se identifica por separado"
+   },
+   "pdf": {
+    "url": null,
+    "status": "No consta PDF ni facsímil individual verificado para esta edición"
+   },
+   "translation": {
+    "status": "Traducción automática de consulta por pasaje; no se atribuye a un traductor académico"
+   },
+   "links": {
+    "scaife": "https://scaife.perseus.org/library/urn:cts:greekLit:tlg0062.tlg060.perseus-grc3/"
+   },
+   "aliases": [
+    "urn:cts:greekLit:tlg0062.tlg060.perseus-grc3"
+   ],
+   "relatedWorkIds": [],
+   "catalogueProvenance": "Título y autor de los catálogos CTS del sitio; edición contrastada con su cabecera TEI. No se retrotraduce el título.",
+   "corpusFiles": {
+    "grc": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg060-grc-2d05f6abc826400c.json"
+   },
+   "localVersions": [
+    {
+     "language": "grc",
+     "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg060-grc-2d05f6abc826400c.json",
+     "label": "Edición original grc · urn:cts:greekLit:tlg0062.tlg060.perseus-grc3",
+     "reader": "classics-text-reader.html?work=cts-tlg0062-tlg060&lang=grc&edition=2d05f6abc826400c",
+     "sourceUrns": [
+      "urn:cts:greekLit:tlg0062.tlg060.perseus-grc3"
+     ],
+     "sha256": "2d05f6abc826400ccc868218174ec636ee4ef04e072ee728ca0dab39838b24c4"
+    }
+   ],
+   "publicStatus": "lectura-local-parcial",
+   "indexedEdition": {
+    "sources": [
+     {
+      "title": "Ἀπολογία",
+      "titleLanguage": "grc",
+      "author": "Lucian of Samosata",
+      "editors": [
+       "Kenneth Kilburn"
+      ],
+      "bibliography": "Lucian of Samosata Lucian with an English Translation Kenneth Kilburn London William Heinemann Ltd. Cambridge, MA Harvard University Press 1959 6 Internet Archive Hathi Trust",
+      "licences": [
+       {
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+       }
+      ],
+      "editionUrn": "urn:cts:greekLit:tlg0062.tlg060.perseus-grc3",
+      "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0062/tlg060/tlg0062.tlg060.perseus-grc3.xml",
+      "sourceSha256": "4b92039a5e3d4c8668f1e58bac9c12589c88d7556e0f2ab23344c17f45cd304a",
+      "sourceReferences": [
+       "https://archive.org/details/luciankilb06luciuoft/page/217/mode/2up",
+       "https://hdl.handle.net/2027/osu.32435024202103?urlappend=%3Bseq=233"
+      ],
+      "publicationYear": "1959",
+      "publisher": "William Heinemann Ltd.",
+      "publicationPlace": "London",
+      "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/4b92039a5e3d4c8668f1e58bac9c12589c88d7556e0f2ab23344c17f45cd304a.xml"
+     }
+    ],
+    "sha256": "2d05f6abc826400ccc868218174ec636ee4ef04e072ee728ca0dab39838b24c4",
+    "passages": 6,
+    "characters": 5749,
+    "bytes": 14237,
+    "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg060-grc-2d05f6abc826400c.json"
+   }
+  },
+  {
+   "id": "cts-tlg0062-tlg061",
+   "author": "Luciano de Samósata",
+   "title": "Hesiod",
+   "language": "grc",
+   "genre": "Corpus clásico ampliado",
+   "dating": "c. 125–c. 180 d. C.",
+   "reading": {
+    "url": "classics-text-reader.html?work=cts-tlg0062-tlg061&lang=grc&edition=52788fc49b94637e",
+    "status": "Edición TEI alojada en R2 con búsqueda y traducción automática por pasaje"
+   },
+   "manuscript": {
+    "status": "Sin testimonio manuscrito individual asignado; la edición TEI se identifica por separado"
+   },
+   "pdf": {
+    "url": null,
+    "status": "No consta PDF ni facsímil individual verificado para esta edición"
+   },
+   "translation": {
+    "status": "Traducción automática de consulta por pasaje; no se atribuye a un traductor académico"
+   },
+   "links": {
+    "scaife": "https://scaife.perseus.org/library/urn:cts:greekLit:tlg0062.tlg061.perseus-grc3/"
+   },
+   "aliases": [
+    "urn:cts:greekLit:tlg0062.tlg061.perseus-grc3"
+   ],
+   "relatedWorkIds": [],
+   "catalogueProvenance": "Título y autor de los catálogos CTS del sitio; edición contrastada con su cabecera TEI. No se retrotraduce el título.",
+   "corpusFiles": {
+    "grc": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg061-grc-52788fc49b94637e.json"
+   },
+   "localVersions": [
+    {
+     "language": "grc",
+     "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg061-grc-52788fc49b94637e.json",
+     "label": "Edición original grc · urn:cts:greekLit:tlg0062.tlg061.perseus-grc3",
+     "reader": "classics-text-reader.html?work=cts-tlg0062-tlg061&lang=grc&edition=52788fc49b94637e",
+     "sourceUrns": [
+      "urn:cts:greekLit:tlg0062.tlg061.perseus-grc3"
+     ],
+     "sha256": "52788fc49b94637e56b4d1f29e3443b2473a482a609413740e3bc56d477c43fa"
+    }
+   ],
+   "publicStatus": "lectura-local-parcial",
+   "indexedEdition": {
+    "sources": [
+     {
+      "title": "Διάλογος πρὸς Ἡσίοδον",
+      "titleLanguage": "grc",
+      "author": "Lucian of Samosata",
+      "editors": [
+       "Kenneth Kilburn"
+      ],
+      "bibliography": "Lucian of Samosata Lucian with an English Translation Kenneth Kilburn London William Heinemann Ltd. Cambridge, MA Harvard University Press 1959 6 Internet Archive Hathi Trust",
+      "licences": [
+       {
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+       }
+      ],
+      "editionUrn": "urn:cts:greekLit:tlg0062.tlg061.perseus-grc3",
+      "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0062/tlg061/tlg0062.tlg061.perseus-grc3.xml",
+      "sourceSha256": "22b2bdcd8a77646d6ac831081bff07fe75ecb08d0df352d1b8320516ab46a0d5",
+      "sourceReferences": [
+       "https://archive.org/details/luciankilb06luciuoft/page/229/mode/2up",
+       "https://hdl.handle.net/2027/osu.32435024202103?urlappend=%3Bseq=245"
+      ],
+      "publicationYear": "1959",
+      "publisher": "William Heinemann Ltd.",
+      "publicationPlace": "London",
+      "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/22b2bdcd8a77646d6ac831081bff07fe75ecb08d0df352d1b8320516ab46a0d5.xml"
+     }
+    ],
+    "sha256": "52788fc49b94637e56b4d1f29e3443b2473a482a609413740e3bc56d477c43fa",
+    "passages": 10,
+    "characters": 5588,
+    "bytes": 14670,
+    "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg061-grc-52788fc49b94637e.json"
+   }
+  },
+  {
+   "id": "cts-tlg0062-tlg062",
+   "author": "Luciano de Samósata",
+   "title": "Scytha",
+   "language": "grc",
+   "genre": "Corpus clásico ampliado",
+   "dating": "c. 125–c. 180 d. C.",
+   "reading": {
+    "url": "classics-text-reader.html?work=cts-tlg0062-tlg062&lang=grc&edition=38fe2488aa8d3812",
+    "status": "Edición TEI alojada en R2 con búsqueda y traducción automática por pasaje"
+   },
+   "manuscript": {
+    "status": "Sin testimonio manuscrito individual asignado; la edición TEI se identifica por separado"
+   },
+   "pdf": {
+    "url": null,
+    "status": "No consta PDF ni facsímil individual verificado para esta edición"
+   },
+   "translation": {
+    "status": "Traducción automática de consulta por pasaje; no se atribuye a un traductor académico"
+   },
+   "links": {
+    "scaife": "https://scaife.perseus.org/library/urn:cts:greekLit:tlg0062.tlg062.perseus-grc3/"
+   },
+   "aliases": [
+    "urn:cts:greekLit:tlg0062.tlg062.perseus-grc3"
+   ],
+   "relatedWorkIds": [],
+   "catalogueProvenance": "Título y autor de los catálogos CTS del sitio; edición contrastada con su cabecera TEI. No se retrotraduce el título.",
+   "corpusFiles": {
+    "grc": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg062-grc-38fe2488aa8d3812.json"
+   },
+   "localVersions": [
+    {
+     "language": "grc",
+     "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg062-grc-38fe2488aa8d3812.json",
+     "label": "Edición original grc · urn:cts:greekLit:tlg0062.tlg062.perseus-grc3",
+     "reader": "classics-text-reader.html?work=cts-tlg0062-tlg062&lang=grc&edition=38fe2488aa8d3812",
+     "sourceUrns": [
+      "urn:cts:greekLit:tlg0062.tlg062.perseus-grc3"
+     ],
+     "sha256": "38fe2488aa8d3812ad06d998c84462e73990dadc729172c475ecfa882bad81b8"
+    }
+   ],
+   "publicStatus": "lectura-local-parcial",
+   "indexedEdition": {
+    "sources": [
+     {
+      "title": "Σκύθης ἢ πρόξενος",
+      "titleLanguage": "grc",
+      "author": "Lucian of Samosata",
+      "editors": [
+       "Kenneth Kilburn"
+      ],
+      "bibliography": "Lucian of Samosata Lucian with an English Translation Kenneth Kilburn London William Heinemann Ltd. Cambridge, MA Harvard University Press 1959 6 Internet Archive Hathi Trust",
+      "licences": [
+       {
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+       }
+      ],
+      "editionUrn": "urn:cts:greekLit:tlg0062.tlg062.perseus-grc3",
+      "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0062/tlg062/tlg0062.tlg062.perseus-grc3.xml",
+      "sourceSha256": "e0d93b6ac47b64d0b162103596e41bf6dee02274d4481eafafa9f82c725d864b",
+      "sourceReferences": [
+       "https://archive.org/details/luciankilb06luciuoft/page/241/mode/2up",
+       "https://hdl.handle.net/2027/osu.32435024202103?urlappend=%3Bseq=257"
+      ],
+      "publicationYear": "1959",
+      "publisher": "William Heinemann Ltd.",
+      "publicationPlace": "London",
+      "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/e0d93b6ac47b64d0b162103596e41bf6dee02274d4481eafafa9f82c725d864b.xml"
+     }
+    ],
+    "sha256": "38fe2488aa8d3812ad06d998c84462e73990dadc729172c475ecfa882bad81b8",
+    "passages": 12,
+    "characters": 10944,
+    "bytes": 25385,
+    "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg062-grc-38fe2488aa8d3812.json"
+   }
+  },
+  {
+   "id": "cts-tlg0062-tlg063",
+   "author": "Luciano de Samósata",
+   "title": "Hermotimus",
+   "language": "grc",
+   "genre": "Corpus clásico ampliado",
+   "dating": "c. 125–c. 180 d. C.",
+   "reading": {
+    "url": "classics-text-reader.html?work=cts-tlg0062-tlg063&lang=grc&edition=ee3537463dd50a13",
+    "status": "Edición TEI alojada en R2 con búsqueda y traducción automática por pasaje"
+   },
+   "manuscript": {
+    "status": "Sin testimonio manuscrito individual asignado; la edición TEI se identifica por separado"
+   },
+   "pdf": {
+    "url": null,
+    "status": "No consta PDF ni facsímil individual verificado para esta edición"
+   },
+   "translation": {
+    "status": "Traducción automática de consulta por pasaje; no se atribuye a un traductor académico"
+   },
+   "links": {
+    "scaife": "https://scaife.perseus.org/library/urn:cts:greekLit:tlg0062.tlg063.perseus-grc3/"
+   },
+   "aliases": [
+    "urn:cts:greekLit:tlg0062.tlg063.perseus-grc3"
+   ],
+   "relatedWorkIds": [],
+   "catalogueProvenance": "Título y autor de los catálogos CTS del sitio; edición contrastada con su cabecera TEI. No se retrotraduce el título.",
+   "corpusFiles": {
+    "grc": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg063-grc-ee3537463dd50a13.json"
+   },
+   "localVersions": [
+    {
+     "language": "grc",
+     "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg063-grc-ee3537463dd50a13.json",
+     "label": "Edición original grc · urn:cts:greekLit:tlg0062.tlg063.perseus-grc3",
+     "reader": "classics-text-reader.html?work=cts-tlg0062-tlg063&lang=grc&edition=ee3537463dd50a13",
+     "sourceUrns": [
+      "urn:cts:greekLit:tlg0062.tlg063.perseus-grc3"
+     ],
+     "sha256": "ee3537463dd50a13f9dae07478da015017fd2135e79add301a4d4bdfccb90a2e"
+    }
+   ],
+   "publicStatus": "lectura-local-parcial",
+   "indexedEdition": {
+    "sources": [
+     {
+      "title": "Σκύθης ἢ πρόξενος",
+      "titleLanguage": "grc",
+      "author": "Lucian of Samosata",
+      "editors": [
+       "Kenneth Kilburn"
+      ],
+      "bibliography": "Lucian of Samosata Lucian with an English Translation Kenneth Kilburn London William Heinemann Ltd. Cambridge, MA Harvard University Press 1959 6 Internet Archive Hathi Trust",
+      "licences": [
+       {
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+       }
+      ],
+      "editionUrn": "urn:cts:greekLit:tlg0062.tlg063.perseus-grc3",
+      "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0062/tlg063/tlg0062.tlg063.perseus-grc3.xml",
+      "sourceSha256": "0e1d68baa1d18ea65c88f0dbe6dd5ce29a85e44410ce1229370d5a3dac426ce3",
+      "sourceReferences": [
+       "https://archive.org/details/luciankilb06luciuoft/page/261/mode/2up",
+       "https://hdl.handle.net/2027/osu.32435024202103?urlappend=%3Bseq=277"
+      ],
+      "publicationYear": "1959",
+      "publisher": "William Heinemann Ltd.",
+      "publicationPlace": "London",
+      "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/0e1d68baa1d18ea65c88f0dbe6dd5ce29a85e44410ce1229370d5a3dac426ce3.xml"
+     }
+    ],
+    "sha256": "ee3537463dd50a13f9dae07478da015017fd2135e79add301a4d4bdfccb90a2e",
+    "passages": 306,
+    "characters": 86379,
+    "bytes": 219672,
+    "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg063-grc-ee3537463dd50a13.json"
+   }
+  },
+  {
+   "id": "cts-tlg0062-tlg064",
+   "author": "Luciano de Samósata",
+   "title": "Prometheus es in verbis",
+   "language": "grc",
+   "genre": "Corpus clásico ampliado",
+   "dating": "c. 125–c. 180 d. C.",
+   "reading": {
+    "url": "classics-text-reader.html?work=cts-tlg0062-tlg064&lang=grc&edition=2153e3c18d38dd58",
+    "status": "Edición TEI alojada en R2 con búsqueda y traducción automática por pasaje"
+   },
+   "manuscript": {
+    "status": "Sin testimonio manuscrito individual asignado; la edición TEI se identifica por separado"
+   },
+   "pdf": {
+    "url": null,
+    "status": "No consta PDF ni facsímil individual verificado para esta edición"
+   },
+   "translation": {
+    "status": "Traducción automática de consulta por pasaje; no se atribuye a un traductor académico"
+   },
+   "links": {
+    "scaife": "https://scaife.perseus.org/library/urn:cts:greekLit:tlg0062.tlg064.perseus-grc3/"
+   },
+   "aliases": [
+    "urn:cts:greekLit:tlg0062.tlg064.perseus-grc3"
+   ],
+   "relatedWorkIds": [],
+   "catalogueProvenance": "Título y autor de los catálogos CTS del sitio; edición contrastada con su cabecera TEI. No se retrotraduce el título.",
+   "corpusFiles": {
+    "grc": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg064-grc-2153e3c18d38dd58.json"
+   },
+   "localVersions": [
+    {
+     "language": "grc",
+     "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg064-grc-2153e3c18d38dd58.json",
+     "label": "Edición original grc · urn:cts:greekLit:tlg0062.tlg064.perseus-grc3",
+     "reader": "classics-text-reader.html?work=cts-tlg0062-tlg064&lang=grc&edition=2153e3c18d38dd58",
+     "sourceUrns": [
+      "urn:cts:greekLit:tlg0062.tlg064.perseus-grc3"
+     ],
+     "sha256": "2153e3c18d38dd58f84720e0d3908ca158cd614b86621e4dec19427415ea0c3f"
+    }
+   ],
+   "publicStatus": "lectura-local-parcial",
+   "indexedEdition": {
+    "sources": [
+     {
+      "title": "Πρὸς τὸν εἰπόντα, Προμηθεὺς εἴ εἶ ἐν λόγοις",
+      "titleLanguage": "grc",
+      "author": "Lucian of Samosata",
+      "editors": [
+       "Kenneth Kilburn"
+      ],
+      "bibliography": "Lucian of Samosata Lucian with an English Translation Kenneth Kilburn London William Heinemann Ltd. Cambridge, MA Harvard University Press 1959 6 Internet Archive Hathi Trust",
+      "licences": [
+       {
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+       }
+      ],
+      "editionUrn": "urn:cts:greekLit:tlg0062.tlg064.perseus-grc3",
+      "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0062/tlg064/tlg0062.tlg064.perseus-grc3.xml",
+      "sourceSha256": "2af91c55f3d2b43b1f8ba7ab63e8b334b1a6f7b591b4616652d2f2f0257ba383",
+      "sourceReferences": [
+       "https://archive.org/details/luciankilb06luciuoft/page/419/mode/2up",
+       "https://hdl.handle.net/2027/osu.32435024202103?urlappend=%3Bseq=435"
+      ],
+      "publicationYear": "1959",
+      "publisher": "William Heinemann Ltd.",
+      "publicationPlace": "London",
+      "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/2af91c55f3d2b43b1f8ba7ab63e8b334b1a6f7b591b4616652d2f2f0257ba383.xml"
+     }
+    ],
+    "sha256": "2153e3c18d38dd58f84720e0d3908ca158cd614b86621e4dec19427415ea0c3f",
+    "passages": 8,
+    "characters": 6248,
+    "bytes": 15680,
+    "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg064-grc-2153e3c18d38dd58.json"
+   }
+  },
+  {
+   "id": "cts-stoa0275-stoa023",
+   "author": "Tertuliano",
+   "title": "De Patientia",
+   "language": "la",
+   "genre": "Corpus clásico ampliado",
+   "dating": "197 d. C.",
+   "reading": {
+    "url": "classics-text-reader.html?work=cts-stoa0275-stoa023&lang=la&edition=1af5570147a2066c",
+    "status": "Edición TEI alojada en R2 con búsqueda y traducción automática por pasaje"
+   },
+   "manuscript": {
+    "status": "Sin testimonio manuscrito individual asignado; la edición TEI se identifica por separado"
+   },
+   "pdf": {
+    "url": null,
+    "status": "No consta PDF ni facsímil individual verificado para esta edición"
+   },
+   "translation": {
+    "status": "Traducción automática de consulta por pasaje; no se atribuye a un traductor académico"
+   },
+   "links": {
+    "scaife": "https://scaife.perseus.org/library/urn:cts:latinLit:stoa0275.stoa023.opp-lat1/"
+   },
+   "aliases": [
+    "urn:cts:latinLit:stoa0275.stoa023.opp-lat1"
+   ],
+   "relatedWorkIds": [],
+   "catalogueProvenance": "Título y autor de los catálogos CTS del sitio; edición contrastada con su cabecera TEI. No se retrotraduce el título.",
+   "corpusFiles": {
+    "la": "https://libros.vitruvius-digital-library.org/corpus/cts-stoa0275-stoa023-la-1af5570147a2066c.json"
+   },
+   "localVersions": [
+    {
+     "language": "la",
+     "path": "https://libros.vitruvius-digital-library.org/corpus/cts-stoa0275-stoa023-la-1af5570147a2066c.json",
+     "label": "Edición original la · urn:cts:latinLit:stoa0275.stoa023.opp-lat1",
+     "reader": "classics-text-reader.html?work=cts-stoa0275-stoa023&lang=la&edition=1af5570147a2066c",
+     "sourceUrns": [
+      "urn:cts:latinLit:stoa0275.stoa023.opp-lat1"
+     ],
+     "sha256": "1af5570147a2066cf6a010011838c37ce46193da59d1bde18ca81dac982f7ce8"
+    }
+   ],
+   "publicStatus": "lectura-local-parcial",
+   "indexedEdition": {
+    "sources": [
+     {
+      "title": "De Patientia",
+      "titleLanguage": "lat",
+      "author": "Tertullian",
+      "editors": [
+       "Franz Oehler"
+      ],
+      "bibliography": "Quinti Septimii Florentis Tertulliani Quae Supersunt Omnia Tertullian Franz Oehler T. O. Weigel Leipzig 1853 1 HathiTrust",
+      "licences": [
+       {
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+       }
+      ],
+      "editionUrn": "urn:cts:latinLit:stoa0275.stoa023.opp-lat1",
+      "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/stoa0275/stoa023/stoa0275.stoa023.opp-lat1.xml",
+      "sourceSha256": "1fa4836b1c4a386432e20626a040bfba252ca64f7ed8b9d3ef6972e2ca0a83e8",
+      "sourceReferences": [
+       "https://hdl.handle.net/2027/mdp.39015012086974?urlappend=%3Bseq=943%3Bownerid=13510798896211526-997"
+      ],
+      "publicationYear": "1853",
+      "publisher": "T. O. Weigel",
+      "publicationPlace": "Leipzig",
+      "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/1fa4836b1c4a386432e20626a040bfba252ca64f7ed8b9d3ef6972e2ca0a83e8.xml"
+     }
+    ],
+    "sha256": "1af5570147a2066cf6a010011838c37ce46193da59d1bde18ca81dac982f7ce8",
+    "passages": 17,
+    "characters": 32759,
+    "bytes": 37298,
+    "url": "https://libros.vitruvius-digital-library.org/corpus/cts-stoa0275-stoa023-la-1af5570147a2066c.json"
+   }
+  },
+  {
+   "id": "cts-stoa0275-stoa024",
+   "author": "Tertuliano",
+   "title": "De Praescriptionibus Hereticorum",
+   "language": "la",
+   "genre": "Corpus clásico ampliado",
+   "dating": "197 d. C.",
+   "reading": {
+    "url": "classics-text-reader.html?work=cts-stoa0275-stoa024&lang=la&edition=14cec650ebf59cad",
+    "status": "Edición TEI alojada en R2 con búsqueda y traducción automática por pasaje"
+   },
+   "manuscript": {
+    "status": "Sin testimonio manuscrito individual asignado; la edición TEI se identifica por separado"
+   },
+   "pdf": {
+    "url": null,
+    "status": "No consta PDF ni facsímil individual verificado para esta edición"
+   },
+   "translation": {
+    "status": "Traducción automática de consulta por pasaje; no se atribuye a un traductor académico"
+   },
+   "links": {
+    "scaife": "https://scaife.perseus.org/library/urn:cts:latinLit:stoa0275.stoa024.opp-lat1/"
+   },
+   "aliases": [
+    "urn:cts:latinLit:stoa0275.stoa024.opp-lat1"
+   ],
+   "relatedWorkIds": [],
+   "catalogueProvenance": "Título y autor de los catálogos CTS del sitio; edición contrastada con su cabecera TEI. No se retrotraduce el título.",
+   "corpusFiles": {
+    "la": "https://libros.vitruvius-digital-library.org/corpus/cts-stoa0275-stoa024-la-14cec650ebf59cad.json"
+   },
+   "localVersions": [
+    {
+     "language": "la",
+     "path": "https://libros.vitruvius-digital-library.org/corpus/cts-stoa0275-stoa024-la-14cec650ebf59cad.json",
+     "label": "Edición original la · urn:cts:latinLit:stoa0275.stoa024.opp-lat1",
+     "reader": "classics-text-reader.html?work=cts-stoa0275-stoa024&lang=la&edition=14cec650ebf59cad",
+     "sourceUrns": [
+      "urn:cts:latinLit:stoa0275.stoa024.opp-lat1"
+     ],
+     "sha256": "14cec650ebf59cad24d2a266bedf6b2651c8e4458f14a4d76d9d49a05319f4a1"
+    }
+   ],
+   "publicStatus": "lectura-local-parcial",
+   "indexedEdition": {
+    "sources": [
+     {
+      "title": "De Praescriptionibus Hereticorum",
+      "titleLanguage": "lat",
+      "author": "Tertullian",
+      "editors": [
+       "Franz Oehler"
+      ],
+      "bibliography": "Quinti Septimii Florentis Tertulliani Quae Supersunt Omnia Tertullian Franz Oehler T. O. Weigel Leipzig 1854 2 HathiTrust",
+      "licences": [
+       {
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+       }
+      ],
+      "editionUrn": "urn:cts:latinLit:stoa0275.stoa024.opp-lat1",
+      "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/stoa0275/stoa024/stoa0275.stoa024.opp-lat1.xml",
+      "sourceSha256": "bbb5b7f7dc7173c24dd61e4d9d97b7021b8f49ff9f7d49ded95a2997da781b8c",
+      "sourceReferences": [
+       "https://hdl.handle.net/2027/mdp.39015028766650?urlappend=%3Bseq=11%3Bownerid=13510798896211811-15"
+      ],
+      "publicationYear": "1854",
+      "publisher": "T. O. Weigel",
+      "publicationPlace": "Leipzig",
+      "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/bbb5b7f7dc7173c24dd61e4d9d97b7021b8f49ff9f7d49ded95a2997da781b8c.xml"
+     }
+    ],
+    "sha256": "14cec650ebf59cad24d2a266bedf6b2651c8e4458f14a4d76d9d49a05319f4a1",
+    "passages": 45,
+    "characters": 58999,
+    "bytes": 67943,
+    "url": "https://libros.vitruvius-digital-library.org/corpus/cts-stoa0275-stoa024-la-14cec650ebf59cad.json"
+   }
+  },
+  {
+   "id": "cts-stoa0275-stoa025",
+   "author": "Tertuliano",
+   "title": "De Pudicitia",
+   "language": "la",
+   "genre": "Corpus clásico ampliado",
+   "dating": "197 d. C.",
+   "reading": {
+    "url": "classics-text-reader.html?work=cts-stoa0275-stoa025&lang=la&edition=63e7f4968e203cbe",
+    "status": "Edición TEI alojada en R2 con búsqueda y traducción automática por pasaje"
+   },
+   "manuscript": {
+    "status": "Sin testimonio manuscrito individual asignado; la edición TEI se identifica por separado"
+   },
+   "pdf": {
+    "url": null,
+    "status": "No consta PDF ni facsímil individual verificado para esta edición"
+   },
+   "translation": {
+    "status": "Traducción automática de consulta por pasaje; no se atribuye a un traductor académico"
+   },
+   "links": {
+    "scaife": "https://scaife.perseus.org/library/urn:cts:latinLit:stoa0275.stoa025.opp-lat1/"
+   },
+   "aliases": [
+    "urn:cts:latinLit:stoa0275.stoa025.opp-lat1"
+   ],
+   "relatedWorkIds": [],
+   "catalogueProvenance": "Título y autor de los catálogos CTS del sitio; edición contrastada con su cabecera TEI. No se retrotraduce el título.",
+   "corpusFiles": {
+    "la": "https://libros.vitruvius-digital-library.org/corpus/cts-stoa0275-stoa025-la-63e7f4968e203cbe.json"
+   },
+   "localVersions": [
+    {
+     "language": "la",
+     "path": "https://libros.vitruvius-digital-library.org/corpus/cts-stoa0275-stoa025-la-63e7f4968e203cbe.json",
+     "label": "Edición original la · urn:cts:latinLit:stoa0275.stoa025.opp-lat1",
+     "reader": "classics-text-reader.html?work=cts-stoa0275-stoa025&lang=la&edition=63e7f4968e203cbe",
+     "sourceUrns": [
+      "urn:cts:latinLit:stoa0275.stoa025.opp-lat1"
+     ],
+     "sha256": "63e7f4968e203cbe59dbc85febde3e57086625d358eb80c1e6b81c097c2c0347"
+    }
+   ],
+   "publicStatus": "lectura-local-parcial",
+   "indexedEdition": {
+    "sources": [
+     {
+      "title": "De Pudicitia",
+      "titleLanguage": "lat",
+      "author": "Tertullian",
+      "editors": [
+       "Franz Oehler"
+      ],
+      "bibliography": "Quinti Septimii Florentis Tertulliani Quae Supersunt Omnia Tertullian Franz Oehler T. O. Weigel Leipzig 1853 1 HathiTrust",
+      "licences": [
+       {
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+       }
+      ],
+      "editionUrn": "urn:cts:latinLit:stoa0275.stoa025.opp-lat1",
+      "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/stoa0275/stoa025/stoa0275.stoa025.opp-lat1.xml",
+      "sourceSha256": "7c19dc54ffc03eea51d5be4c9327988cd523f8dd2396544c59b436a4a0eb9253",
+      "sourceReferences": [
+       "https://hdl.handle.net/2027/mdp.39015012086974?urlappend=%3Bseq=943%3Bownerid=13510798896211526-997"
+      ],
+      "publicationYear": "1853",
+      "publisher": "T. O. Weigel",
+      "publicationPlace": "Leipzig",
+      "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/7c19dc54ffc03eea51d5be4c9327988cd523f8dd2396544c59b436a4a0eb9253.xml"
+     }
+    ],
+    "sha256": "63e7f4968e203cbe59dbc85febde3e57086625d358eb80c1e6b81c097c2c0347",
+    "passages": 23,
+    "characters": 94754,
+    "bytes": 100239,
+    "url": "https://libros.vitruvius-digital-library.org/corpus/cts-stoa0275-stoa025-la-63e7f4968e203cbe.json"
    }
   }
  ],

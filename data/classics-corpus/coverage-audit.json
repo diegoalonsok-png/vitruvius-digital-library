@@ -4,17 +4,17 @@
   "scope": "Se auditan exclusivamente 271 fichas de obras del catálogo local; no es un censo universal de literatura grecolatina.",
   "method": "Cruce de fichas bibliográficas, vínculos locales, corpus legible, registro de búsqueda y testimonios manuscritos; sin OCR ni verificación externa de los enlaces.",
   "counts": {
-    "cataloguedWorks": 441,
+    "cataloguedWorks": 454,
     "catalogueStatuses": {
-      "lectura-local-completa": 28,
-      "lectura-local-parcial": 342,
-      "fuente-externa-identificada": 57,
+      "lectura-local-completa": 24,
+      "lectura-local-parcial": 362,
+      "fuente-externa-identificada": 54,
       "repertoriado-busqueda-externa": 12,
       "pendiente-de-incorporar": 2
     },
-    "locallyReadableClaims": 370,
-    "indexedTextVersions": 562,
-    "indexedDistinctWorks": 411,
+    "locallyReadableClaims": 386,
+    "indexedTextVersions": 602,
+    "indexedDistinctWorks": 425,
     "manuscriptWitnesses": 107
   },
   "works": [
@@ -52,14 +52,15 @@
       "originalLanguage": "la",
       "genre": "Filosofía",
       "dating": "44 a. C.",
-      "catalogueStatus": "lectura-local-completa",
+      "catalogueStatus": "lectura-local-parcial",
       "indexedTextLanguages": [
         "en",
         "la"
       ],
       "indexedTextFiles": [
         "corpus/cicero-de-officiis-en.html",
-        "corpus/cicero-de-officiis-la.html"
+        "corpus/cicero-de-officiis-la.html",
+        "https://libros.vitruvius-digital-library.org/corpus/cicero-officiis-la-27b0c1263a85dabe.json"
       ],
       "localPDF": "documents/classics/cicero-de-officiis-miller-1913.pdf",
       "hasStructuredVitruviusReader": false,
@@ -81,7 +82,8 @@
         "la"
       ],
       "indexedTextFiles": [
-        "data/classics-corpus/cicero-oratore-la.json"
+        "data/classics-corpus/cicero-oratore-la.json",
+        "https://libros.vitruvius-digital-library.org/corpus/cicero-oratore-la-31925594830fad31.json"
       ],
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
@@ -103,7 +105,8 @@
         "la"
       ],
       "indexedTextFiles": [
-        "data/classics-corpus/cicero-republica-la.json"
+        "data/classics-corpus/cicero-republica-la.json",
+        "https://libros.vitruvius-digital-library.org/corpus/cicero-republica-la-d72a43994db65e6e.json"
       ],
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
@@ -120,14 +123,15 @@
       "originalLanguage": "la",
       "genre": "Historia militar",
       "dating": "c. 58–50 a. C.",
-      "catalogueStatus": "lectura-local-completa",
+      "catalogueStatus": "lectura-local-parcial",
       "indexedTextLanguages": [
         "en",
         "la"
       ],
       "indexedTextFiles": [
         "data/classics-corpus/caesar-gallico-en.json",
-        "data/classics-corpus/caesar-gallico-la.json"
+        "data/classics-corpus/caesar-gallico-la.json",
+        "https://libros.vitruvius-digital-library.org/corpus/caesar-gallico-la-37387ba76bfefc48.json"
       ],
       "localPDF": "documents/classics/caesar-de-bello-gallico-smith-1842.pdf",
       "hasStructuredVitruviusReader": false,
@@ -144,14 +148,15 @@
       "originalLanguage": "la",
       "genre": "Historia militar",
       "dating": "c. 49–48 a. C.",
-      "catalogueStatus": "lectura-local-completa",
+      "catalogueStatus": "lectura-local-parcial",
       "indexedTextLanguages": [
         "en",
         "la"
       ],
       "indexedTextFiles": [
         "data/classics-corpus/caesar-civili-en.json",
-        "data/classics-corpus/caesar-civili-la.json"
+        "data/classics-corpus/caesar-civili-la.json",
+        "https://libros.vitruvius-digital-library.org/corpus/caesar-civili-la-105ecee4f007b3d1.json"
       ],
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
@@ -1477,7 +1482,8 @@
       ],
       "indexedTextFiles": [
         "data/classics-corpus/cicero-catilinariae-en.json",
-        "data/classics-corpus/cicero-catilinariae-la.json"
+        "data/classics-corpus/cicero-catilinariae-la.json",
+        "https://libros.vitruvius-digital-library.org/corpus/cicero-catilinariae-la-1309fb61afe4a83d.json"
       ],
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
@@ -2594,14 +2600,15 @@
       "originalLanguage": "grc",
       "genre": "Poética",
       "dating": "siglo IV a. C.",
-      "catalogueStatus": "lectura-local-completa",
+      "catalogueStatus": "lectura-local-parcial",
       "indexedTextLanguages": [
         "en",
         "grc"
       ],
       "indexedTextFiles": [
         "data/classics-corpus/aristotle-poetics-en.json",
-        "data/classics-corpus/aristotle-poetics-grc.json"
+        "data/classics-corpus/aristotle-poetics-grc.json",
+        "https://libros.vitruvius-digital-library.org/corpus/aristotle-poetics-grc-0fbd018e16d33deb.json"
       ],
       "localPDF": "documents/classics/aristotle-poetics-greek-christ-1893.pdf",
       "hasStructuredVitruviusReader": false,
@@ -2625,7 +2632,8 @@
       ],
       "indexedTextFiles": [
         "data/classics-corpus/aristotle-politics-en.json",
-        "data/classics-corpus/aristotle-politics-grc.json"
+        "data/classics-corpus/aristotle-politics-grc.json",
+        "https://libros.vitruvius-digital-library.org/corpus/aristotle-politics-grc-1ab3f91cebfcff92.json"
       ],
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
@@ -3206,7 +3214,8 @@
         "grc"
       ],
       "indexedTextFiles": [
-        "data/classics-corpus/aristophanes-ranae-grc.json"
+        "data/classics-corpus/aristophanes-ranae-grc.json",
+        "https://libros.vitruvius-digital-library.org/corpus/aristophanes-ranae-grc-de43059441376775.json"
       ],
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
@@ -3252,7 +3261,8 @@
         "grc"
       ],
       "indexedTextFiles": [
-        "data/classics-corpus/aristophanes-vespae-grc.json"
+        "data/classics-corpus/aristophanes-vespae-grc.json",
+        "https://libros.vitruvius-digital-library.org/corpus/aristophanes-vespae-grc-bfb30936387df05e.json"
       ],
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
@@ -3518,7 +3528,8 @@
       ],
       "indexedTextFiles": [
         "data/classics-corpus/aristotle-nicomachean-ethics-en.json",
-        "data/classics-corpus/aristotle-nicomachean-ethics-grc.json"
+        "data/classics-corpus/aristotle-nicomachean-ethics-grc.json",
+        "https://libros.vitruvius-digital-library.org/corpus/aristotle-nicomachean-ethics-grc-1480c2b104f560a0.json"
       ],
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
@@ -3542,7 +3553,8 @@
       ],
       "indexedTextFiles": [
         "data/classics-corpus/aristotle-metaphysics-en.json",
-        "data/classics-corpus/aristotle-metaphysics-grc.json"
+        "data/classics-corpus/aristotle-metaphysics-grc.json",
+        "https://libros.vitruvius-digital-library.org/corpus/aristotle-metaphysics-grc-40f3eb2abca710cf.json"
       ],
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
@@ -3564,7 +3576,8 @@
         "grc"
       ],
       "indexedTextFiles": [
-        "data/classics-corpus/aristotle-physics-grc.json"
+        "data/classics-corpus/aristotle-physics-grc.json",
+        "https://libros.vitruvius-digital-library.org/corpus/aristotle-physics-grc-1e7f7f9320aa9757.json"
       ],
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
@@ -3588,7 +3601,8 @@
       ],
       "indexedTextFiles": [
         "data/classics-corpus/aristotle-rhetoric-en.json",
-        "data/classics-corpus/aristotle-rhetoric-grc.json"
+        "data/classics-corpus/aristotle-rhetoric-grc.json",
+        "https://libros.vitruvius-digital-library.org/corpus/aristotle-rhetoric-grc-11046daae99b48eb.json"
       ],
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
@@ -3610,7 +3624,8 @@
         "grc"
       ],
       "indexedTextFiles": [
-        "data/classics-corpus/aristotle-de-anima-grc.json"
+        "data/classics-corpus/aristotle-de-anima-grc.json",
+        "https://libros.vitruvius-digital-library.org/corpus/aristotle-de-anima-grc-08a5ed425b6a2c29.json"
       ],
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
@@ -3774,7 +3789,8 @@
         "grc"
       ],
       "indexedTextFiles": [
-        "data/classics-corpus/homeric-hymns-grc.json"
+        "data/classics-corpus/homeric-hymns-grc.json",
+        "https://libros.vitruvius-digital-library.org/corpus/homeric-hymns-grc-bcea97dd83a75532.json"
       ],
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
@@ -3864,7 +3880,8 @@
         "la"
       ],
       "indexedTextFiles": [
-        "data/classics-corpus/cicero-pro-archia-la.json"
+        "data/classics-corpus/cicero-pro-archia-la.json",
+        "https://libros.vitruvius-digital-library.org/corpus/cicero-pro-archia-la-614e0fb3412bd37f.json"
       ],
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
@@ -3886,7 +3903,8 @@
         "la"
       ],
       "indexedTextFiles": [
-        "data/classics-corpus/cicero-de-finibus-la.json"
+        "data/classics-corpus/cicero-de-finibus-la.json",
+        "https://libros.vitruvius-digital-library.org/corpus/cicero-de-finibus-la-fed77e779ab6b61c.json"
       ],
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
@@ -3931,7 +3949,8 @@
         "la"
       ],
       "indexedTextFiles": [
-        "data/classics-corpus/cicero-de-natura-deorum-la.json"
+        "data/classics-corpus/cicero-de-natura-deorum-la.json",
+        "https://libros.vitruvius-digital-library.org/corpus/cicero-de-natura-deorum-la-3619661c4eb3575d.json"
       ],
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
@@ -3953,7 +3972,8 @@
         "la"
       ],
       "indexedTextFiles": [
-        "data/classics-corpus/cicero-de-amicitia-la.json"
+        "data/classics-corpus/cicero-de-amicitia-la.json",
+        "https://libros.vitruvius-digital-library.org/corpus/cicero-de-amicitia-la-9676e08312483531.json"
       ],
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
@@ -3975,7 +3995,8 @@
         "la"
       ],
       "indexedTextFiles": [
-        "data/classics-corpus/cicero-de-senectute-la.json"
+        "data/classics-corpus/cicero-de-senectute-la.json",
+        "https://libros.vitruvius-digital-library.org/corpus/cicero-de-senectute-la-249b2fd918695c2e.json"
       ],
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
@@ -3997,7 +4018,8 @@
         "la"
       ],
       "indexedTextFiles": [
-        "data/classics-corpus/cicero-de-divinatione-la.json"
+        "data/classics-corpus/cicero-de-divinatione-la.json",
+        "https://libros.vitruvius-digital-library.org/corpus/cicero-de-divinatione-la-6c4ef5561d4831ed.json"
       ],
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
@@ -4019,7 +4041,8 @@
         "la"
       ],
       "indexedTextFiles": [
-        "data/classics-corpus/cicero-brutus-la.json"
+        "data/classics-corpus/cicero-brutus-la.json",
+        "https://libros.vitruvius-digital-library.org/corpus/cicero-brutus-la-e0742d7727de376b.json"
       ],
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
@@ -4041,7 +4064,8 @@
         "la"
       ],
       "indexedTextFiles": [
-        "data/classics-corpus/cicero-philippicae-la.json"
+        "data/classics-corpus/cicero-philippicae-la.json",
+        "https://libros.vitruvius-digital-library.org/corpus/cicero-philippicae-la-1b3c469f152e52c8.json"
       ],
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
@@ -5240,13 +5264,14 @@
       "originalLanguage": "grc",
       "genre": "Filosofía natural y cosmología",
       "dating": "Siglo IV a. C.",
-      "catalogueStatus": "fuente-externa-identificada",
+      "catalogueStatus": "lectura-local-parcial",
       "indexedTextLanguages": [
         "en",
         "grc"
       ],
       "indexedTextFiles": [
         "data/classics-corpus/aristoteles-del-cielo-en.json",
+        "https://libros.vitruvius-digital-library.org/corpus/aristoteles-del-cielo-grc-05efdc48def562a1.json",
         "https://libros.vitruvius-digital-library.org/corpus/aristoteles-del-cielo-grc.json"
       ],
       "localPDF": null,
@@ -5267,11 +5292,12 @@
       "originalLanguage": "grc",
       "genre": "Zoología",
       "dating": "Siglo IV a. C.",
-      "catalogueStatus": "fuente-externa-identificada",
+      "catalogueStatus": "lectura-local-parcial",
       "indexedTextLanguages": [
         "grc"
       ],
       "indexedTextFiles": [
+        "https://libros.vitruvius-digital-library.org/corpus/aristoteles-historia-animales-grc-0d1c1c571eca646b.json",
         "https://libros.vitruvius-digital-library.org/corpus/aristoteles-historia-animales-grc.json"
       ],
       "localPDF": null,
@@ -5897,9 +5923,13 @@
       "originalLanguage": "grc",
       "genre": "Filosofía natural",
       "dating": "Siglo IV a. C.",
-      "catalogueStatus": "fuente-externa-identificada",
-      "indexedTextLanguages": [],
-      "indexedTextFiles": [],
+      "catalogueStatus": "lectura-local-parcial",
+      "indexedTextLanguages": [
+        "grc"
+      ],
+      "indexedTextFiles": [
+        "https://libros.vitruvius-digital-library.org/corpus/aristoteles-meteorologica-grc-e56a80cc0c10dc06.json"
+      ],
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": true,
@@ -8758,6 +8788,201 @@
       ],
       "indexedTextFiles": [
         "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg015-grc-8717879bee928f83.json"
+      ],
+      "manuscriptRecords": 0,
+      "hasManuscriptRecord": false
+    },
+    {
+      "id": "cts-tlg0062-tlg052",
+      "author": "Luciano de Samósata",
+      "title": "Abdicatus",
+      "originalLanguage": "grc",
+      "catalogueStatus": "lectura-local-parcial",
+      "indexedTextLanguages": [
+        "grc"
+      ],
+      "indexedTextFiles": [
+        "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg052-grc-6b56828dfb8c68d0.json"
+      ],
+      "manuscriptRecords": 0,
+      "hasManuscriptRecord": false
+    },
+    {
+      "id": "cts-tlg0062-tlg054",
+      "author": "Luciano de Samósata",
+      "title": "Dipsades",
+      "originalLanguage": "grc",
+      "catalogueStatus": "lectura-local-parcial",
+      "indexedTextLanguages": [
+        "grc"
+      ],
+      "indexedTextFiles": [
+        "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg054-grc-c861eece1f8ebe16.json"
+      ],
+      "manuscriptRecords": 0,
+      "hasManuscriptRecord": false
+    },
+    {
+      "id": "cts-tlg0062-tlg053",
+      "author": "Luciano de Samósata",
+      "title": "Quomodo historia conscribenda sit",
+      "originalLanguage": "grc",
+      "catalogueStatus": "lectura-local-parcial",
+      "indexedTextLanguages": [
+        "grc"
+      ],
+      "indexedTextFiles": [
+        "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg053-grc-9d2d90652477afb8.json"
+      ],
+      "manuscriptRecords": 0,
+      "hasManuscriptRecord": false
+    },
+    {
+      "id": "cts-tlg0062-tlg059",
+      "author": "Luciano de Samósata",
+      "title": "Apologia",
+      "originalLanguage": "grc",
+      "catalogueStatus": "lectura-local-parcial",
+      "indexedTextLanguages": [
+        "grc"
+      ],
+      "indexedTextFiles": [
+        "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg059-grc-12baf9fc7871e8e5.json"
+      ],
+      "manuscriptRecords": 0,
+      "hasManuscriptRecord": false
+    },
+    {
+      "id": "cts-tlg0062-tlg058",
+      "author": "Luciano de Samósata",
+      "title": "Pro lapsu inter salutandum",
+      "originalLanguage": "grc",
+      "catalogueStatus": "lectura-local-parcial",
+      "indexedTextLanguages": [
+        "grc"
+      ],
+      "indexedTextFiles": [
+        "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg058-grc-56996acb20a89fd8.json"
+      ],
+      "manuscriptRecords": 0,
+      "hasManuscriptRecord": false
+    },
+    {
+      "id": "cts-tlg0062-tlg060",
+      "author": "Luciano de Samósata",
+      "title": "Harmonides",
+      "originalLanguage": "grc",
+      "catalogueStatus": "lectura-local-parcial",
+      "indexedTextLanguages": [
+        "grc"
+      ],
+      "indexedTextFiles": [
+        "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg060-grc-2d05f6abc826400c.json"
+      ],
+      "manuscriptRecords": 0,
+      "hasManuscriptRecord": false
+    },
+    {
+      "id": "cts-tlg0062-tlg061",
+      "author": "Luciano de Samósata",
+      "title": "Hesiod",
+      "originalLanguage": "grc",
+      "catalogueStatus": "lectura-local-parcial",
+      "indexedTextLanguages": [
+        "grc"
+      ],
+      "indexedTextFiles": [
+        "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg061-grc-52788fc49b94637e.json"
+      ],
+      "manuscriptRecords": 0,
+      "hasManuscriptRecord": false
+    },
+    {
+      "id": "cts-tlg0062-tlg062",
+      "author": "Luciano de Samósata",
+      "title": "Scytha",
+      "originalLanguage": "grc",
+      "catalogueStatus": "lectura-local-parcial",
+      "indexedTextLanguages": [
+        "grc"
+      ],
+      "indexedTextFiles": [
+        "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg062-grc-38fe2488aa8d3812.json"
+      ],
+      "manuscriptRecords": 0,
+      "hasManuscriptRecord": false
+    },
+    {
+      "id": "cts-tlg0062-tlg063",
+      "author": "Luciano de Samósata",
+      "title": "Hermotimus",
+      "originalLanguage": "grc",
+      "catalogueStatus": "lectura-local-parcial",
+      "indexedTextLanguages": [
+        "grc"
+      ],
+      "indexedTextFiles": [
+        "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg063-grc-ee3537463dd50a13.json"
+      ],
+      "manuscriptRecords": 0,
+      "hasManuscriptRecord": false
+    },
+    {
+      "id": "cts-tlg0062-tlg064",
+      "author": "Luciano de Samósata",
+      "title": "Prometheus es in verbis",
+      "originalLanguage": "grc",
+      "catalogueStatus": "lectura-local-parcial",
+      "indexedTextLanguages": [
+        "grc"
+      ],
+      "indexedTextFiles": [
+        "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg064-grc-2153e3c18d38dd58.json"
+      ],
+      "manuscriptRecords": 0,
+      "hasManuscriptRecord": false
+    },
+    {
+      "id": "cts-stoa0275-stoa023",
+      "author": "Tertuliano",
+      "title": "De Patientia",
+      "originalLanguage": "la",
+      "catalogueStatus": "lectura-local-parcial",
+      "indexedTextLanguages": [
+        "la"
+      ],
+      "indexedTextFiles": [
+        "https://libros.vitruvius-digital-library.org/corpus/cts-stoa0275-stoa023-la-1af5570147a2066c.json"
+      ],
+      "manuscriptRecords": 0,
+      "hasManuscriptRecord": false
+    },
+    {
+      "id": "cts-stoa0275-stoa024",
+      "author": "Tertuliano",
+      "title": "De Praescriptionibus Hereticorum",
+      "originalLanguage": "la",
+      "catalogueStatus": "lectura-local-parcial",
+      "indexedTextLanguages": [
+        "la"
+      ],
+      "indexedTextFiles": [
+        "https://libros.vitruvius-digital-library.org/corpus/cts-stoa0275-stoa024-la-14cec650ebf59cad.json"
+      ],
+      "manuscriptRecords": 0,
+      "hasManuscriptRecord": false
+    },
+    {
+      "id": "cts-stoa0275-stoa025",
+      "author": "Tertuliano",
+      "title": "De Pudicitia",
+      "originalLanguage": "la",
+      "catalogueStatus": "lectura-local-parcial",
+      "indexedTextLanguages": [
+        "la"
+      ],
+      "indexedTextFiles": [
+        "https://libros.vitruvius-digital-library.org/corpus/cts-stoa0275-stoa025-la-63e7f4968e203cbe.json"
       ],
       "manuscriptRecords": 0,
       "hasManuscriptRecord": false

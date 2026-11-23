@@ -2,8 +2,8 @@
  "schema": "vitruvia-classics-search-registry-v1",
  "updated": "2026-11-23",
  "description": "Registro verificable de transcripciones HTML y textos JSON existentes que admiten búsqueda literal de contenido. No incluye automáticamente PDF escaneados, facsímiles ni fichas sin texto. Los índices auxiliares por locus y el aparato crítico se declaran por separado; no se suman a versiones textuales originales ni implican colación autóptica.",
- "count": 723,
- "works": 539,
+ "count": 763,
+ "works": 553,
  "entries": [
   {
    "workId": "aeneas-tacticus-poliorketika",
@@ -450,6 +450,19 @@
    "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
   },
   {
+   "workId": "aristophanes-ranae",
+   "author": "Aristófanes",
+   "title": "Βάτραχοι",
+   "language": "grc",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/aristophanes-ranae-grc-de43059441376775.json",
+   "reader": "classics-text-reader.html?work=aristophanes-ranae&lang=grc&edition=de43059441376775",
+   "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+   "sourceUrn": "urn:cts:greekLit:tlg0019.tlg009.perseus-grc2",
+   "sha256": "de43059441376775e1bc5f430e9220dc293fda79db47e2655a4d63b2b2155e55",
+   "passages": 754
+  },
+  {
    "workId": "aristophanes-thesmophoriazusae",
    "author": "Aristófanes",
    "title": "Θεσμοφοριάζουσαι",
@@ -470,6 +483,19 @@
    "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
   },
   {
+   "workId": "aristophanes-vespae",
+   "author": "Aristófanes",
+   "title": "Σφῆκες",
+   "language": "grc",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/aristophanes-vespae-grc-bfb30936387df05e.json",
+   "reader": "classics-text-reader.html?work=aristophanes-vespae&lang=grc&edition=bfb30936387df05e",
+   "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+   "sourceUrn": "urn:cts:greekLit:tlg0019.tlg004.perseus-grc2",
+   "sha256": "bfb30936387df05e051df1deb4a2da1aea31c5c81ef68c0a8e446e947106bf23",
+   "passages": 536
+  },
+  {
    "workId": "aristoteles-del-cielo",
    "author": "Aristóteles",
    "title": "Περὶ οὐρανοῦ · De caelo",
@@ -478,6 +504,19 @@
    "path": "data/classics-corpus/aristoteles-del-cielo-en.json",
    "reader": "classics-text-reader.html?work=aristoteles-del-cielo&lang=en",
    "sourceDescription": "Traducción inglesa de J. L. Stocks (1922), Wikisource; 40 secciones en cuatro libros; posible interrupción al final del libro I, sin colación griego-inglés."
+  },
+  {
+   "workId": "aristoteles-del-cielo",
+   "author": "Aristóteles",
+   "title": "Περὶ οὐρανοῦ · De caelo",
+   "language": "grc",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/aristoteles-del-cielo-grc-05efdc48def562a1.json",
+   "reader": "classics-text-reader.html?work=aristoteles-del-cielo&lang=grc&edition=05efdc48def562a1",
+   "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+   "sourceUrn": "urn:cts:greekLit:tlg0086.tlg005.1st1K-grc1",
+   "sha256": "05efdc48def562a10434c70c59d2c788cadaed0154e7308916fc14e805e9b3ba",
+   "passages": 46
   },
   {
    "workId": "aristoteles-del-cielo",
@@ -493,6 +532,19 @@
   },
   {
    "workId": "aristoteles-historia-animales",
+   "author": "Aristóteles",
+   "title": "Περὶ τὰ ζῷα ἱστορίαι · Historia animalium",
+   "language": "grc",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/aristoteles-historia-animales-grc-0d1c1c571eca646b.json",
+   "reader": "classics-text-reader.html?work=aristoteles-historia-animales&lang=grc&edition=0d1c1c571eca646b",
+   "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+   "sourceUrn": "urn:cts:greekLit:tlg0086.tlg014.1st1K-grc1",
+   "sha256": "0d1c1c571eca646b419849236734fc45b90b64432b3074f84c57b1ce6ddff717",
+   "passages": 343
+  },
+  {
+   "workId": "aristoteles-historia-animales",
    "language": "grc",
    "title": "Περὶ τὰ ζῷα ἱστορίαι · Historia animalium",
    "author": "Aristóteles",
@@ -504,6 +556,19 @@
    "passages": 238
   },
   {
+   "workId": "aristoteles-meteorologica",
+   "author": "Aristóteles",
+   "title": "Μετεωρολογικά · Meteorologica",
+   "language": "grc",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/aristoteles-meteorologica-grc-e56a80cc0c10dc06.json",
+   "reader": "classics-text-reader.html?work=aristoteles-meteorologica&lang=grc&edition=e56a80cc0c10dc06",
+   "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+   "sourceUrn": "urn:cts:greekLit:tlg0086.tlg026.1st1K-grc1",
+   "sha256": "e56a80cc0c10dc06d9441eb5b98b3cc92094cf63c048d3a6170a8af4808c7a88",
+   "passages": 52
+  },
+  {
    "workId": "aristotle-de-anima",
    "author": "Aristóteles",
    "title": "Περὶ ψυχῆς",
@@ -512,6 +577,19 @@
    "path": "data/classics-corpus/aristotle-de-anima-grc.json",
    "reader": "classics-text-reader.html?work=aristotle-de-anima&lang=grc",
    "sourceDescription": "OpenGreekAndLatin First1KGreek TEI · fuente editada documentada, sin colación automática"
+  },
+  {
+   "workId": "aristotle-de-anima",
+   "author": "Aristóteles",
+   "title": "Περὶ ψυχῆς",
+   "language": "grc",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/aristotle-de-anima-grc-08a5ed425b6a2c29.json",
+   "reader": "classics-text-reader.html?work=aristotle-de-anima&lang=grc&edition=08a5ed425b6a2c29",
+   "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+   "sourceUrn": "urn:cts:greekLit:tlg0086.tlg002.1st1K-grc1",
+   "sha256": "08a5ed425b6a2c292a5ac448de832da743ae6091221fb93f0788db5d52bbc847",
+   "passages": 45
   },
   {
    "workId": "aristotle-metaphysics",
@@ -534,6 +612,19 @@
    "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
   },
   {
+   "workId": "aristotle-metaphysics",
+   "author": "Aristóteles",
+   "title": "Τὰ μετὰ τὰ φυσικά",
+   "language": "grc",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/aristotle-metaphysics-grc-40f3eb2abca710cf.json",
+   "reader": "classics-text-reader.html?work=aristotle-metaphysics&lang=grc&edition=40f3eb2abca710cf",
+   "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+   "sourceUrn": "urn:cts:greekLit:tlg0086.tlg025.perseus-grc2",
+   "sha256": "40f3eb2abca710cf20fbbc18043c44fe70a4524a6987e2b373a55485039c3363",
+   "passages": 156
+  },
+  {
    "workId": "aristotle-nicomachean-ethics",
    "author": "Aristóteles",
    "title": "Ἠθικὰ Νικομάχεια",
@@ -554,6 +645,19 @@
    "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
   },
   {
+   "workId": "aristotle-nicomachean-ethics",
+   "author": "Aristóteles",
+   "title": "Ἠθικὰ Νικομάχεια",
+   "language": "grc",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/aristotle-nicomachean-ethics-grc-1480c2b104f560a0.json",
+   "reader": "classics-text-reader.html?work=aristotle-nicomachean-ethics&lang=grc&edition=1480c2b104f560a0",
+   "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+   "sourceUrn": "urn:cts:greekLit:tlg0086.tlg010.perseus-grc2",
+   "sha256": "1480c2b104f560a04b157bce582738ec56a336c2cb7849cd75e5c32b85d7ba2a",
+   "passages": 141
+  },
+  {
    "workId": "aristotle-physics",
    "author": "Aristóteles",
    "title": "Φυσικὴ ἀκρόασις",
@@ -562,6 +666,19 @@
    "path": "data/classics-corpus/aristotle-physics-grc.json",
    "reader": "classics-text-reader.html?work=aristotle-physics&lang=grc",
    "sourceDescription": "OpenGreekAndLatin First1KGreek TEI · fuente editada documentada, sin colación automática"
+  },
+  {
+   "workId": "aristotle-physics",
+   "author": "Aristóteles",
+   "title": "Φυσικὴ ἀκρόασις",
+   "language": "grc",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/aristotle-physics-grc-1e7f7f9320aa9757.json",
+   "reader": "classics-text-reader.html?work=aristotle-physics&lang=grc&edition=1e7f7f9320aa9757",
+   "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+   "sourceUrn": "urn:cts:greekLit:tlg0086.tlg031.1st1K-grc1",
+   "sha256": "1e7f7f9320aa9757433dae814f62a47df45354651b620ee4cb48e6b4cd9c8981",
+   "passages": 104
   },
   {
    "workId": "aristotle-poetics",
@@ -584,6 +701,19 @@
    "sourceDescription": "La fuente y la atribución se muestran dentro del JSON y del lector; las traducciones no equivalen a alineación por loci."
   },
   {
+   "workId": "aristotle-poetics",
+   "author": "Aristóteles",
+   "title": "Περὶ ποιητικῆς",
+   "language": "grc",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/aristotle-poetics-grc-0fbd018e16d33deb.json",
+   "reader": "classics-text-reader.html?work=aristotle-poetics&lang=grc&edition=0fbd018e16d33deb",
+   "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+   "sourceUrn": "urn:cts:greekLit:tlg0086.tlg034.perseus-grc2",
+   "sha256": "0fbd018e16d33debe38a9a51380ac1156b5efd9f3e75e571a53134d655c8d314",
+   "passages": 381
+  },
+  {
    "workId": "aristotle-politics",
    "author": "Aristóteles",
    "title": "Πολιτικά",
@@ -604,6 +734,19 @@
    "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
   },
   {
+   "workId": "aristotle-politics",
+   "author": "Aristóteles",
+   "title": "Πολιτικά",
+   "language": "grc",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/aristotle-politics-grc-1ab3f91cebfcff92.json",
+   "reader": "classics-text-reader.html?work=aristotle-politics&lang=grc&edition=1ab3f91cebfcff92",
+   "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+   "sourceUrn": "urn:cts:greekLit:tlg0086.tlg035.perseus-grc2",
+   "sha256": "1ab3f91cebfcff928e7fd271bb7fe6927f3fd30e18bedc5e9ccc185eb085c191",
+   "passages": 446
+  },
+  {
    "workId": "aristotle-rhetoric",
    "author": "Aristóteles",
    "title": "Ῥητορική",
@@ -622,6 +765,19 @@
    "path": "data/classics-corpus/aristotle-rhetoric-grc.json",
    "reader": "classics-text-reader.html?work=aristotle-rhetoric&lang=grc",
    "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+  },
+  {
+   "workId": "aristotle-rhetoric",
+   "author": "Aristóteles",
+   "title": "Ῥητορική",
+   "language": "grc",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/aristotle-rhetoric-grc-11046daae99b48eb.json",
+   "reader": "classics-text-reader.html?work=aristotle-rhetoric&lang=grc&edition=11046daae99b48eb",
+   "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+   "sourceUrn": "urn:cts:greekLit:tlg0086.tlg038.perseus-grc2",
+   "sha256": "11046daae99b48ebe968e6f6e5b4f6036928add37630a95264cb1b98f9110c50",
+   "passages": 918
   },
   {
    "workId": "aristoxenus-harmonica",
@@ -782,6 +938,19 @@
    "sourceDescription": "PerseusDL TEI CC BY-SA 4.0, tres libros, 243 capítulos; cotejo por locus editorial, no alineación automática."
   },
   {
+   "workId": "caesar-civili",
+   "author": "Julio César",
+   "title": "Commentarii de bello civili",
+   "language": "la",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/caesar-civili-la-105ecee4f007b3d1.json",
+   "reader": "classics-text-reader.html?work=caesar-civili&lang=la&edition=105ecee4f007b3d1",
+   "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+   "sourceUrn": "urn:cts:latinLit:phi0448.phi002.perseus-lat3",
+   "sha256": "105ecee4f007b3d1c974a200c6105fbfdc911fd80d35c012cef04503799d3619",
+   "passages": 243
+  },
+  {
    "workId": "caesar-gallico",
    "author": "Julio César (libro VIII: Aulo Hircio)",
    "title": "De bello Gallico",
@@ -800,6 +969,19 @@
    "path": "data/classics-corpus/caesar-gallico-la.json",
    "reader": "classics-text-reader.html?work=caesar-gallico&lang=la",
    "sourceDescription": "La fuente y la atribución se muestran dentro del JSON y del lector; las traducciones no equivalen a alineación por loci."
+  },
+  {
+   "workId": "caesar-gallico",
+   "author": "Julio César",
+   "title": "Commentarii de bello Gallico",
+   "language": "la",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/caesar-gallico-la-37387ba76bfefc48.json",
+   "reader": "classics-text-reader.html?work=caesar-gallico&lang=la&edition=37387ba76bfefc48",
+   "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+   "sourceUrn": "urn:cts:latinLit:phi0448.phi001.perseus-lat2",
+   "sha256": "37387ba76bfefc488b1b1de00065b16096d475852d7fae2463001435462a4144",
+   "passages": 2158
   },
   {
    "workId": "calimaco-himnos",
@@ -907,6 +1089,19 @@
    "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
   },
   {
+   "workId": "cicero-brutus",
+   "author": "Cicerón",
+   "title": "Brutus",
+   "language": "la",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/cicero-brutus-la-e0742d7727de376b.json",
+   "reader": "classics-text-reader.html?work=cicero-brutus&lang=la&edition=e0742d7727de376b",
+   "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+   "sourceUrn": "urn:cts:latinLit:phi0474.phi039.perseus-lat2",
+   "sha256": "e0742d7727de376b2eb4efefa6973dcfca864cf6a352220b135b7510d970282e",
+   "passages": 354
+  },
+  {
    "workId": "cicero-catilinariae",
    "author": "Cicerón",
    "title": "In Catilinam (Orationes Catilinariae)",
@@ -927,6 +1122,19 @@
    "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
   },
   {
+   "workId": "cicero-catilinariae",
+   "author": "Cicerón",
+   "title": "In Catilinam (Orationes Catilinariae)",
+   "language": "la",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/cicero-catilinariae-la-1309fb61afe4a83d.json",
+   "reader": "classics-text-reader.html?work=cicero-catilinariae&lang=la&edition=1309fb61afe4a83d",
+   "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+   "sourceUrn": "urn:cts:latinLit:phi0474.phi013.perseus-lat2",
+   "sha256": "1309fb61afe4a83dd004a52acee1dd73e663fe22b9c9070fccd56817622ef9e6",
+   "passages": 126
+  },
+  {
    "workId": "cicero-de-amicitia",
    "author": "Cicerón",
    "title": "Laelius de amicitia",
@@ -935,6 +1143,19 @@
    "path": "data/classics-corpus/cicero-de-amicitia-la.json",
    "reader": "classics-text-reader.html?work=cicero-de-amicitia&lang=la",
    "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+  },
+  {
+   "workId": "cicero-de-amicitia",
+   "author": "Cicerón",
+   "title": "Laelius de amicitia",
+   "language": "la",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/cicero-de-amicitia-la-9676e08312483531.json",
+   "reader": "classics-text-reader.html?work=cicero-de-amicitia&lang=la&edition=9676e08312483531",
+   "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+   "sourceUrn": "urn:cts:latinLit:phi0474.phi052.perseus-lat2",
+   "sha256": "9676e08312483531de7ed2ac4662b74a397fb7c1b74888e5efb332a4717650ba",
+   "passages": 134
   },
   {
    "workId": "cicero-de-divinatione",
@@ -947,6 +1168,19 @@
    "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
   },
   {
+   "workId": "cicero-de-divinatione",
+   "author": "Cicerón",
+   "title": "De divinatione",
+   "language": "la",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/cicero-de-divinatione-la-6c4ef5561d4831ed.json",
+   "reader": "classics-text-reader.html?work=cicero-de-divinatione&lang=la&edition=6c4ef5561d4831ed",
+   "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+   "sourceUrn": "urn:cts:latinLit:phi0474.phi053.perseus-lat4",
+   "sha256": "6c4ef5561d4831ed878a71d9bf7b2612f5551c508179a90aa18986960c9fb149",
+   "passages": 390
+  },
+  {
    "workId": "cicero-de-finibus",
    "author": "Cicerón",
    "title": "De finibus bonorum et malorum",
@@ -955,6 +1189,19 @@
    "path": "data/classics-corpus/cicero-de-finibus-la.json",
    "reader": "classics-text-reader.html?work=cicero-de-finibus&lang=la",
    "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+  },
+  {
+   "workId": "cicero-de-finibus",
+   "author": "Cicerón",
+   "title": "De finibus bonorum et malorum",
+   "language": "la",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/cicero-de-finibus-la-fed77e779ab6b61c.json",
+   "reader": "classics-text-reader.html?work=cicero-de-finibus&lang=la&edition=fed77e779ab6b61c",
+   "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+   "sourceUrn": "urn:cts:latinLit:phi0474.phi048.perseus-lat2",
+   "sha256": "fed77e779ab6b61c70365d1bed6316717dd645aea060c083624868147ee8fc8d",
+   "passages": 626
   },
   {
    "workId": "cicero-de-natura-deorum",
@@ -967,6 +1214,19 @@
    "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
   },
   {
+   "workId": "cicero-de-natura-deorum",
+   "author": "Cicerón",
+   "title": "De natura deorum",
+   "language": "la",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/cicero-de-natura-deorum-la-3619661c4eb3575d.json",
+   "reader": "classics-text-reader.html?work=cicero-de-natura-deorum&lang=la&edition=3619661c4eb3575d",
+   "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+   "sourceUrn": "urn:cts:latinLit:phi0474.phi050.perseus-lat2",
+   "sha256": "3619661c4eb3575d1cf9f44c54420d9bf301bdc71b8b1a22e46c523d44eee5f8",
+   "passages": 489
+  },
+  {
    "workId": "cicero-de-senectute",
    "author": "Cicerón",
    "title": "Cato Maior de senectute",
@@ -975,6 +1235,19 @@
    "path": "data/classics-corpus/cicero-de-senectute-la.json",
    "reader": "classics-text-reader.html?work=cicero-de-senectute&lang=la",
    "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+  },
+  {
+   "workId": "cicero-de-senectute",
+   "author": "Cicerón",
+   "title": "Cato Maior de senectute",
+   "language": "la",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/cicero-de-senectute-la-249b2fd918695c2e.json",
+   "reader": "classics-text-reader.html?work=cicero-de-senectute&lang=la&edition=249b2fd918695c2e",
+   "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+   "sourceUrn": "urn:cts:latinLit:phi0474.phi051.perseus-lat2",
+   "sha256": "249b2fd918695c2e630a58442dd725167f299faf8053a8dde31ccbd1973183ce",
+   "passages": 112
   },
   {
    "workId": "cicero-officiis",
@@ -997,6 +1270,19 @@
    "sourceDescription": "Procedencia bibliográfica indicada en la página de lectura; no equivale a un facsímil."
   },
   {
+   "workId": "cicero-officiis",
+   "author": "Cicerón",
+   "title": "De officiis",
+   "language": "la",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/cicero-officiis-la-27b0c1263a85dabe.json",
+   "reader": "classics-text-reader.html?work=cicero-officiis&lang=la&edition=27b0c1263a85dabe",
+   "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+   "sourceUrn": "urn:cts:latinLit:phi0474.phi055.perseus-lat2",
+   "sha256": "27b0c1263a85dabe7db7877059a1a363eb7bd031b11ad6d742ebaa84c3258c7d",
+   "passages": 564
+  },
+  {
    "workId": "cicero-oratore",
    "author": "Cicerón",
    "title": "De oratore",
@@ -1005,6 +1291,19 @@
    "path": "data/classics-corpus/cicero-oratore-la.json",
    "reader": "classics-text-reader.html?work=cicero-oratore&lang=la",
    "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+  },
+  {
+   "workId": "cicero-oratore",
+   "author": "Cicerón",
+   "title": "De oratore",
+   "language": "la",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/cicero-oratore-la-31925594830fad31.json",
+   "reader": "classics-text-reader.html?work=cicero-oratore&lang=la&edition=31925594830fad31",
+   "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+   "sourceUrn": "urn:cts:latinLit:phi0474.phi037.perseus-lat2",
+   "sha256": "31925594830fad31e3547708467423e72f7bbe74ec0f29529a45799cf3cd11df",
+   "passages": 885
   },
   {
    "workId": "cicero-philippicae",
@@ -1017,6 +1316,19 @@
    "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
   },
   {
+   "workId": "cicero-philippicae",
+   "author": "Cicerón",
+   "title": "Philippicae",
+   "language": "la",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/cicero-philippicae-la-1b3c469f152e52c8.json",
+   "reader": "classics-text-reader.html?work=cicero-philippicae&lang=la&edition=1b3c469f152e52c8",
+   "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+   "sourceUrn": "urn:cts:latinLit:phi0474.phi035.perseus-lat2",
+   "sha256": "1b3c469f152e52c89b3d481b19570559a6e735a7cc067f0a680a63736fcfe88e",
+   "passages": 590
+  },
+  {
    "workId": "cicero-pro-archia",
    "author": "Cicerón",
    "title": "Pro Archia poeta",
@@ -1027,6 +1339,19 @@
    "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
   },
   {
+   "workId": "cicero-pro-archia",
+   "author": "Cicerón",
+   "title": "Pro Archia poeta",
+   "language": "la",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/cicero-pro-archia-la-614e0fb3412bd37f.json",
+   "reader": "classics-text-reader.html?work=cicero-pro-archia&lang=la&edition=614e0fb3412bd37f",
+   "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+   "sourceUrn": "urn:cts:latinLit:phi0474.phi016.perseus-lat2",
+   "sha256": "614e0fb3412bd37f787a8bd9d391b4e47b2e2e207eb4fba05e3221d9fa006d5d",
+   "passages": 35
+  },
+  {
    "workId": "cicero-republica",
    "author": "Cicerón",
    "title": "De re publica",
@@ -1035,6 +1360,19 @@
    "path": "data/classics-corpus/cicero-republica-la.json",
    "reader": "classics-text-reader.html?work=cicero-republica&lang=la",
    "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+  },
+  {
+   "workId": "cicero-republica",
+   "author": "Cicerón",
+   "title": "De re publica",
+   "language": "la",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/cicero-republica-la-d72a43994db65e6e.json",
+   "reader": "classics-text-reader.html?work=cicero-republica&lang=la&edition=d72a43994db65e6e",
+   "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+   "sourceUrn": "urn:cts:latinLit:phi0474.phi043.perseus-lat2",
+   "sha256": "d72a43994db65e6e2abf4a7ffc72bd95ee44f8ca5ce9ce831c3d24e7093847d6",
+   "passages": 292
   },
   {
    "workId": "cicero-tusculanae",
@@ -1606,6 +1944,45 @@
    "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
    "sha256": "fbb8e47a5442ab835e3539a0e9131ec3e7620051ddfb10812c600debf6952725",
    "passages": 10
+  },
+  {
+   "workId": "cts-stoa0275-stoa023",
+   "author": "Tertuliano",
+   "title": "De Patientia",
+   "language": "la",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/cts-stoa0275-stoa023-la-1af5570147a2066c.json",
+   "reader": "classics-text-reader.html?work=cts-stoa0275-stoa023&lang=la&edition=1af5570147a2066c",
+   "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+   "sourceUrn": "urn:cts:latinLit:stoa0275.stoa023.opp-lat1",
+   "sha256": "1af5570147a2066cf6a010011838c37ce46193da59d1bde18ca81dac982f7ce8",
+   "passages": 17
+  },
+  {
+   "workId": "cts-stoa0275-stoa024",
+   "author": "Tertuliano",
+   "title": "De Praescriptionibus Hereticorum",
+   "language": "la",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/cts-stoa0275-stoa024-la-14cec650ebf59cad.json",
+   "reader": "classics-text-reader.html?work=cts-stoa0275-stoa024&lang=la&edition=14cec650ebf59cad",
+   "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+   "sourceUrn": "urn:cts:latinLit:stoa0275.stoa024.opp-lat1",
+   "sha256": "14cec650ebf59cad24d2a266bedf6b2651c8e4458f14a4d76d9d49a05319f4a1",
+   "passages": 45
+  },
+  {
+   "workId": "cts-stoa0275-stoa025",
+   "author": "Tertuliano",
+   "title": "De Pudicitia",
+   "language": "la",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/cts-stoa0275-stoa025-la-63e7f4968e203cbe.json",
+   "reader": "classics-text-reader.html?work=cts-stoa0275-stoa025&lang=la&edition=63e7f4968e203cbe",
+   "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+   "sourceUrn": "urn:cts:latinLit:stoa0275.stoa025.opp-lat1",
+   "sha256": "63e7f4968e203cbe59dbc85febde3e57086625d358eb80c1e6b81c097c2c0347",
+   "passages": 23
   },
   {
    "workId": "cts-tlg0006-tlg001",
@@ -3212,6 +3589,45 @@
    "passages": 29
   },
   {
+   "workId": "cts-tlg0062-tlg052",
+   "author": "Luciano de Samósata",
+   "title": "Abdicatus",
+   "language": "grc",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg052-grc-6b56828dfb8c68d0.json",
+   "reader": "classics-text-reader.html?work=cts-tlg0062-tlg052&lang=grc&edition=6b56828dfb8c68d0",
+   "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+   "sourceUrn": "urn:cts:greekLit:tlg0062.tlg052.perseus-grc2",
+   "sha256": "6b56828dfb8c68d0f8119f88eea4a126f8cff8bdc1e7b44bdf435ed5f00354ee",
+   "passages": 44
+  },
+  {
+   "workId": "cts-tlg0062-tlg053",
+   "author": "Luciano de Samósata",
+   "title": "Quomodo historia conscribenda sit",
+   "language": "grc",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg053-grc-9d2d90652477afb8.json",
+   "reader": "classics-text-reader.html?work=cts-tlg0062-tlg053&lang=grc&edition=9d2d90652477afb8",
+   "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+   "sourceUrn": "urn:cts:greekLit:tlg0062.tlg053.perseus-grc3",
+   "sha256": "9d2d90652477afb83ab7b7ced82b5793ce2c31c1c86b11fd4bd44b6df3d97231",
+   "passages": 71
+  },
+  {
+   "workId": "cts-tlg0062-tlg054",
+   "author": "Luciano de Samósata",
+   "title": "Dipsades",
+   "language": "grc",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg054-grc-c861eece1f8ebe16.json",
+   "reader": "classics-text-reader.html?work=cts-tlg0062-tlg054&lang=grc&edition=c861eece1f8ebe16",
+   "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+   "sourceUrn": "urn:cts:greekLit:tlg0062.tlg054.perseus-grc3",
+   "sha256": "c861eece1f8ebe16b2aff8dbae90d654c1862169a687950e2307cae6f660cdfe",
+   "passages": 10
+  },
+  {
    "workId": "cts-tlg0062-tlg055",
    "author": "Luciano de Samósata",
    "title": "Saturnalia",
@@ -3249,6 +3665,97 @@
    "sourceUrn": "urn:cts:greekLit:tlg0062.tlg057.perseus-grc3",
    "sha256": "d990b6e6e44671721dbbf5ab16cf323c23fe236c8901b703e18b078464820365",
    "passages": 13
+  },
+  {
+   "workId": "cts-tlg0062-tlg058",
+   "author": "Luciano de Samósata",
+   "title": "Pro lapsu inter salutandum",
+   "language": "grc",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg058-grc-56996acb20a89fd8.json",
+   "reader": "classics-text-reader.html?work=cts-tlg0062-tlg058&lang=grc&edition=56996acb20a89fd8",
+   "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+   "sourceUrn": "urn:cts:greekLit:tlg0062.tlg058.perseus-grc3",
+   "sha256": "56996acb20a89fd8bd9b2bf5e6b7c1e44a71a237f577cd12a861c9762f7b2552",
+   "passages": 21
+  },
+  {
+   "workId": "cts-tlg0062-tlg059",
+   "author": "Luciano de Samósata",
+   "title": "Apologia",
+   "language": "grc",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg059-grc-12baf9fc7871e8e5.json",
+   "reader": "classics-text-reader.html?work=cts-tlg0062-tlg059&lang=grc&edition=12baf9fc7871e8e5",
+   "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+   "sourceUrn": "urn:cts:greekLit:tlg0062.tlg059.perseus-grc3",
+   "sha256": "12baf9fc7871e8e511b661ac6e04db7048be043ed96cd551eb74b3fd846c140c",
+   "passages": 17
+  },
+  {
+   "workId": "cts-tlg0062-tlg060",
+   "author": "Luciano de Samósata",
+   "title": "Harmonides",
+   "language": "grc",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg060-grc-2d05f6abc826400c.json",
+   "reader": "classics-text-reader.html?work=cts-tlg0062-tlg060&lang=grc&edition=2d05f6abc826400c",
+   "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+   "sourceUrn": "urn:cts:greekLit:tlg0062.tlg060.perseus-grc3",
+   "sha256": "2d05f6abc826400ccc868218174ec636ee4ef04e072ee728ca0dab39838b24c4",
+   "passages": 6
+  },
+  {
+   "workId": "cts-tlg0062-tlg061",
+   "author": "Luciano de Samósata",
+   "title": "Hesiod",
+   "language": "grc",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg061-grc-52788fc49b94637e.json",
+   "reader": "classics-text-reader.html?work=cts-tlg0062-tlg061&lang=grc&edition=52788fc49b94637e",
+   "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+   "sourceUrn": "urn:cts:greekLit:tlg0062.tlg061.perseus-grc3",
+   "sha256": "52788fc49b94637e56b4d1f29e3443b2473a482a609413740e3bc56d477c43fa",
+   "passages": 10
+  },
+  {
+   "workId": "cts-tlg0062-tlg062",
+   "author": "Luciano de Samósata",
+   "title": "Scytha",
+   "language": "grc",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg062-grc-38fe2488aa8d3812.json",
+   "reader": "classics-text-reader.html?work=cts-tlg0062-tlg062&lang=grc&edition=38fe2488aa8d3812",
+   "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+   "sourceUrn": "urn:cts:greekLit:tlg0062.tlg062.perseus-grc3",
+   "sha256": "38fe2488aa8d3812ad06d998c84462e73990dadc729172c475ecfa882bad81b8",
+   "passages": 12
+  },
+  {
+   "workId": "cts-tlg0062-tlg063",
+   "author": "Luciano de Samósata",
+   "title": "Hermotimus",
+   "language": "grc",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg063-grc-ee3537463dd50a13.json",
+   "reader": "classics-text-reader.html?work=cts-tlg0062-tlg063&lang=grc&edition=ee3537463dd50a13",
+   "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+   "sourceUrn": "urn:cts:greekLit:tlg0062.tlg063.perseus-grc3",
+   "sha256": "ee3537463dd50a13f9dae07478da015017fd2135e79add301a4d4bdfccb90a2e",
+   "passages": 306
+  },
+  {
+   "workId": "cts-tlg0062-tlg064",
+   "author": "Luciano de Samósata",
+   "title": "Prometheus es in verbis",
+   "language": "grc",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg064-grc-2153e3c18d38dd58.json",
+   "reader": "classics-text-reader.html?work=cts-tlg0062-tlg064&lang=grc&edition=2153e3c18d38dd58",
+   "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+   "sourceUrn": "urn:cts:greekLit:tlg0062.tlg064.perseus-grc3",
+   "sha256": "2153e3c18d38dd58f84720e0d3908ca158cd614b86621e4dec19427415ea0c3f",
+   "passages": 8
   },
   {
    "workId": "cts-tlg0062-tlg068",
@@ -5268,6 +5775,19 @@
    "path": "data/classics-corpus/homeric-hymns-grc.json",
    "reader": "classics-text-reader.html?work=homeric-hymns&lang=grc",
    "sourceDescription": "Perseus TEI · fuente editada documentada, sin colación automática"
+  },
+  {
+   "workId": "homeric-hymns",
+   "author": "Anónimo (atribución antigua a Homero)",
+   "title": "Ὁμηρικοὶ ὕμνοι",
+   "language": "grc",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/homeric-hymns-grc-bcea97dd83a75532.json",
+   "reader": "classics-text-reader.html?work=homeric-hymns&lang=grc&edition=bcea97dd83a75532",
+   "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+   "sourceUrn": "urn:cts:greekLit:tlg0013.tlg001.perseus-grc2",
+   "sha256": "bcea97dd83a755320c165497ae9c676e2221bf6b8464820341074a7d19ea526b",
+   "passages": 2002
   },
   {
    "workId": "horace-ars-poetica",

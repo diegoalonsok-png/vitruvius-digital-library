@@ -2,13 +2,13 @@
   "schema": "vitruvius-perseus-provenance-audit-v1",
   "generated": "2026-11-23",
   "scope": "Catálogo principal y ediciones TEI originales acreditadas y archivadas en R2; no certifica servicios externos",
-  "method": "Candidate PHI/TLG work codes are not CTS edition URNs. Source descriptions copied from the local index are claims to audit, not proof of an external canonical edition or an institutional link. No automatic CTS URNs or permanent URLs are invented. Incorporaciones R2: edición declarada en TEI fuente, SHA256, licencia y localizador comprobados; no se presume afiliación externa. Incorporaciones R2: edición declarada en TEI fuente, SHA256, licencia y localizador comprobados; no se presume afiliación externa. Incorporaciones R2: edición declarada en TEI fuente, SHA256, licencia y localizador comprobados; no se presume afiliación externa. Incorporaciones R2: edición declarada en TEI fuente, SHA256, licencia y localizador comprobados; no se presume afiliación externa. Incorporaciones R2: edición declarada en TEI fuente, SHA256, licencia y localizador comprobados; no se presume afiliación externa. Incorporaciones R2: edición declarada en TEI fuente, SHA256, licencia y localizador comprobados; no se presume afiliación externa. Incorporaciones R2: edición declarada en TEI fuente, SHA256, licencia y localizador comprobados; no se presume afiliación externa. Incorporaciones R2: edición declarada en TEI fuente, SHA256, licencia y localizador comprobados; no se presume afiliación externa. Incorporaciones R2: edición declarada en TEI fuente, SHA256, licencia y localizador comprobados; no se presume afiliación externa. Incorporaciones R2: edición declarada en TEI fuente, SHA256, licencia y localizador comprobados; no se presume afiliación externa. Incorporaciones R2: edición declarada en TEI fuente, SHA256, licencia y localizador comprobados; no se presume afiliación externa. Incorporaciones R2: edición declarada en TEI fuente, SHA256, licencia y localizador comprobados; no se presume afiliación externa. Incorporaciones R2: edición declarada en TEI fuente, SHA256, licencia y localizador comprobados; no se presume afiliación externa. Incorporaciones R2: edición declarada en TEI fuente, SHA256, licencia y localizador comprobados; no se presume afiliación externa. Incorporaciones R2: edición declarada en TEI fuente, SHA256, licencia y localizador comprobados; no se presume afiliación externa.",
+  "method": "Candidate PHI/TLG work codes are not CTS edition URNs. Source descriptions copied from the local index are claims to audit, not proof of an external canonical edition or an institutional link. No automatic CTS URNs or permanent URLs are invented. Incorporaciones R2: edición declarada en TEI fuente, SHA256, licencia y localizador comprobados; no se presume afiliación externa. Incorporaciones R2: edición declarada en TEI fuente, SHA256, licencia y localizador comprobados; no se presume afiliación externa. Incorporaciones R2: edición declarada en TEI fuente, SHA256, licencia y localizador comprobados; no se presume afiliación externa. Incorporaciones R2: edición declarada en TEI fuente, SHA256, licencia y localizador comprobados; no se presume afiliación externa. Incorporaciones R2: edición declarada en TEI fuente, SHA256, licencia y localizador comprobados; no se presume afiliación externa. Incorporaciones R2: edición declarada en TEI fuente, SHA256, licencia y localizador comprobados; no se presume afiliación externa. Incorporaciones R2: edición declarada en TEI fuente, SHA256, licencia y localizador comprobados; no se presume afiliación externa. Incorporaciones R2: edición declarada en TEI fuente, SHA256, licencia y localizador comprobados; no se presume afiliación externa. Incorporaciones R2: edición declarada en TEI fuente, SHA256, licencia y localizador comprobados; no se presume afiliación externa. Incorporaciones R2: edición declarada en TEI fuente, SHA256, licencia y localizador comprobados; no se presume afiliación externa. Incorporaciones R2: edición declarada en TEI fuente, SHA256, licencia y localizador comprobados; no se presume afiliación externa. Incorporaciones R2: edición declarada en TEI fuente, SHA256, licencia y localizador comprobados; no se presume afiliación externa. Incorporaciones R2: edición declarada en TEI fuente, SHA256, licencia y localizador comprobados; no se presume afiliación externa. Incorporaciones R2: edición declarada en TEI fuente, SHA256, licencia y localizador comprobados; no se presume afiliación externa. Incorporaciones R2: edición declarada en TEI fuente, SHA256, licencia y localizador comprobados; no se presume afiliación externa. Incorporaciones R2: edición declarada en TEI fuente, SHA256, licencia y localizador comprobados; no se presume afiliación externa.",
   "counts": {
-    "works": 441,
-    "worksWithCandidateWorkCodes": 349,
-    "versions": 416,
+    "works": 454,
+    "worksWithCandidateWorkCodes": 362,
+    "versions": 429,
     "worksWithPerseusSourceDescription": 142,
-    "verifiedEditionUrns": 171
+    "verifiedEditionUrns": 184
   },
   "links": {
     "scaife": "https://scaife.perseus.org/",
@@ -11443,6 +11443,409 @@
       "otherSourceEditions": [],
       "r2TextUrl": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg015-grc-8717879bee928f83.json",
       "r2Sha256": "8717879bee928f83ead54edf6ffc87c733bc23fdad2363150e6a37b84ca6e1f0",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "cts-tlg0062-tlg052",
+      "author": "Luciano de Samósata",
+      "title": "Abdicatus",
+      "originalLanguage": "grc",
+      "sourceReadiness": "original_r2_tei_publicado_con_sha256",
+      "originalIndexed": false,
+      "originalR2Registered": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "tlg0062.tlg052"
+      ],
+      "versions": [
+        {
+          "language": "grc",
+          "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg052-grc-6b56828dfb8c68d0.json",
+          "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "reader": "classics-text-reader.html?work=cts-tlg0062-tlg052&lang=grc&edition=6b56828dfb8c68d0"
+        }
+      ],
+      "ctsEditionUrn": "urn:cts:greekLit:tlg0062.tlg052.perseus-grc2",
+      "ctsStatus": "declared_and_checked_in_source_tei_header",
+      "ctsSourceUri": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0062/tlg052/tlg0062.tlg052.perseus-grc2.xml",
+      "ctsEvidence": "TEI XML original, div[@type=edition]/@n, edición y SHA256 verificados mediante fuente R2: 5e224de9500725ee36c420c8ff8a72d6016d53c108f4fd7309c6cea0c18bf518",
+      "ctsNote": "URN de edición declarada en TEI; no implica resolución CTS pública ni cotejo de manuscritos.",
+      "sourceRights": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "otherSourceEditions": [],
+      "r2TextUrl": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg052-grc-6b56828dfb8c68d0.json",
+      "r2Sha256": "6b56828dfb8c68d0f8119f88eea4a126f8cff8bdc1e7b44bdf435ed5f00354ee",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "cts-tlg0062-tlg054",
+      "author": "Luciano de Samósata",
+      "title": "Dipsades",
+      "originalLanguage": "grc",
+      "sourceReadiness": "original_r2_tei_publicado_con_sha256",
+      "originalIndexed": false,
+      "originalR2Registered": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "tlg0062.tlg054"
+      ],
+      "versions": [
+        {
+          "language": "grc",
+          "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg054-grc-c861eece1f8ebe16.json",
+          "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "reader": "classics-text-reader.html?work=cts-tlg0062-tlg054&lang=grc&edition=c861eece1f8ebe16"
+        }
+      ],
+      "ctsEditionUrn": "urn:cts:greekLit:tlg0062.tlg054.perseus-grc3",
+      "ctsStatus": "declared_and_checked_in_source_tei_header",
+      "ctsSourceUri": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0062/tlg054/tlg0062.tlg054.perseus-grc3.xml",
+      "ctsEvidence": "TEI XML original, div[@type=edition]/@n, edición y SHA256 verificados mediante fuente R2: a2df219a317a5f02ac7a133e15b316ca3f08f7940b26866ece4ab93fc875e940",
+      "ctsNote": "URN de edición declarada en TEI; no implica resolución CTS pública ni cotejo de manuscritos.",
+      "sourceRights": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "otherSourceEditions": [],
+      "r2TextUrl": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg054-grc-c861eece1f8ebe16.json",
+      "r2Sha256": "c861eece1f8ebe16b2aff8dbae90d654c1862169a687950e2307cae6f660cdfe",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "cts-tlg0062-tlg053",
+      "author": "Luciano de Samósata",
+      "title": "Quomodo historia conscribenda sit",
+      "originalLanguage": "grc",
+      "sourceReadiness": "original_r2_tei_publicado_con_sha256",
+      "originalIndexed": false,
+      "originalR2Registered": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "tlg0062.tlg053"
+      ],
+      "versions": [
+        {
+          "language": "grc",
+          "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg053-grc-9d2d90652477afb8.json",
+          "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "reader": "classics-text-reader.html?work=cts-tlg0062-tlg053&lang=grc&edition=9d2d90652477afb8"
+        }
+      ],
+      "ctsEditionUrn": "urn:cts:greekLit:tlg0062.tlg053.perseus-grc3",
+      "ctsStatus": "declared_and_checked_in_source_tei_header",
+      "ctsSourceUri": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0062/tlg053/tlg0062.tlg053.perseus-grc3.xml",
+      "ctsEvidence": "TEI XML original, div[@type=edition]/@n, edición y SHA256 verificados mediante fuente R2: 6eabd0e8b138614688cf1ed1307906411a4209c5e1ef70c8e758644af60d32dc",
+      "ctsNote": "URN de edición declarada en TEI; no implica resolución CTS pública ni cotejo de manuscritos.",
+      "sourceRights": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "otherSourceEditions": [],
+      "r2TextUrl": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg053-grc-9d2d90652477afb8.json",
+      "r2Sha256": "9d2d90652477afb83ab7b7ced82b5793ce2c31c1c86b11fd4bd44b6df3d97231",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "cts-tlg0062-tlg059",
+      "author": "Luciano de Samósata",
+      "title": "Apologia",
+      "originalLanguage": "grc",
+      "sourceReadiness": "original_r2_tei_publicado_con_sha256",
+      "originalIndexed": false,
+      "originalR2Registered": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "tlg0062.tlg059"
+      ],
+      "versions": [
+        {
+          "language": "grc",
+          "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg059-grc-12baf9fc7871e8e5.json",
+          "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "reader": "classics-text-reader.html?work=cts-tlg0062-tlg059&lang=grc&edition=12baf9fc7871e8e5"
+        }
+      ],
+      "ctsEditionUrn": "urn:cts:greekLit:tlg0062.tlg059.perseus-grc3",
+      "ctsStatus": "declared_and_checked_in_source_tei_header",
+      "ctsSourceUri": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0062/tlg059/tlg0062.tlg059.perseus-grc3.xml",
+      "ctsEvidence": "TEI XML original, div[@type=edition]/@n, edición y SHA256 verificados mediante fuente R2: 5a80547d3519bd66bb4a39d849c9b2bee0ee4c7a42069a6cbe5c873ab272d0cc",
+      "ctsNote": "URN de edición declarada en TEI; no implica resolución CTS pública ni cotejo de manuscritos.",
+      "sourceRights": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "otherSourceEditions": [],
+      "r2TextUrl": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg059-grc-12baf9fc7871e8e5.json",
+      "r2Sha256": "12baf9fc7871e8e511b661ac6e04db7048be043ed96cd551eb74b3fd846c140c",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "cts-tlg0062-tlg058",
+      "author": "Luciano de Samósata",
+      "title": "Pro lapsu inter salutandum",
+      "originalLanguage": "grc",
+      "sourceReadiness": "original_r2_tei_publicado_con_sha256",
+      "originalIndexed": false,
+      "originalR2Registered": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "tlg0062.tlg058"
+      ],
+      "versions": [
+        {
+          "language": "grc",
+          "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg058-grc-56996acb20a89fd8.json",
+          "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "reader": "classics-text-reader.html?work=cts-tlg0062-tlg058&lang=grc&edition=56996acb20a89fd8"
+        }
+      ],
+      "ctsEditionUrn": "urn:cts:greekLit:tlg0062.tlg058.perseus-grc3",
+      "ctsStatus": "declared_and_checked_in_source_tei_header",
+      "ctsSourceUri": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0062/tlg058/tlg0062.tlg058.perseus-grc3.xml",
+      "ctsEvidence": "TEI XML original, div[@type=edition]/@n, edición y SHA256 verificados mediante fuente R2: 4449755ca26479941017058fea17ff31746857bf637ac4cebfafaa85eaf2c118",
+      "ctsNote": "URN de edición declarada en TEI; no implica resolución CTS pública ni cotejo de manuscritos.",
+      "sourceRights": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "otherSourceEditions": [],
+      "r2TextUrl": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg058-grc-56996acb20a89fd8.json",
+      "r2Sha256": "56996acb20a89fd8bd9b2bf5e6b7c1e44a71a237f577cd12a861c9762f7b2552",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "cts-tlg0062-tlg060",
+      "author": "Luciano de Samósata",
+      "title": "Harmonides",
+      "originalLanguage": "grc",
+      "sourceReadiness": "original_r2_tei_publicado_con_sha256",
+      "originalIndexed": false,
+      "originalR2Registered": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "tlg0062.tlg060"
+      ],
+      "versions": [
+        {
+          "language": "grc",
+          "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg060-grc-2d05f6abc826400c.json",
+          "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "reader": "classics-text-reader.html?work=cts-tlg0062-tlg060&lang=grc&edition=2d05f6abc826400c"
+        }
+      ],
+      "ctsEditionUrn": "urn:cts:greekLit:tlg0062.tlg060.perseus-grc3",
+      "ctsStatus": "declared_and_checked_in_source_tei_header",
+      "ctsSourceUri": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0062/tlg060/tlg0062.tlg060.perseus-grc3.xml",
+      "ctsEvidence": "TEI XML original, div[@type=edition]/@n, edición y SHA256 verificados mediante fuente R2: 4b92039a5e3d4c8668f1e58bac9c12589c88d7556e0f2ab23344c17f45cd304a",
+      "ctsNote": "URN de edición declarada en TEI; no implica resolución CTS pública ni cotejo de manuscritos.",
+      "sourceRights": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "otherSourceEditions": [],
+      "r2TextUrl": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg060-grc-2d05f6abc826400c.json",
+      "r2Sha256": "2d05f6abc826400ccc868218174ec636ee4ef04e072ee728ca0dab39838b24c4",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "cts-tlg0062-tlg061",
+      "author": "Luciano de Samósata",
+      "title": "Hesiod",
+      "originalLanguage": "grc",
+      "sourceReadiness": "original_r2_tei_publicado_con_sha256",
+      "originalIndexed": false,
+      "originalR2Registered": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "tlg0062.tlg061"
+      ],
+      "versions": [
+        {
+          "language": "grc",
+          "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg061-grc-52788fc49b94637e.json",
+          "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "reader": "classics-text-reader.html?work=cts-tlg0062-tlg061&lang=grc&edition=52788fc49b94637e"
+        }
+      ],
+      "ctsEditionUrn": "urn:cts:greekLit:tlg0062.tlg061.perseus-grc3",
+      "ctsStatus": "declared_and_checked_in_source_tei_header",
+      "ctsSourceUri": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0062/tlg061/tlg0062.tlg061.perseus-grc3.xml",
+      "ctsEvidence": "TEI XML original, div[@type=edition]/@n, edición y SHA256 verificados mediante fuente R2: 22b2bdcd8a77646d6ac831081bff07fe75ecb08d0df352d1b8320516ab46a0d5",
+      "ctsNote": "URN de edición declarada en TEI; no implica resolución CTS pública ni cotejo de manuscritos.",
+      "sourceRights": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "otherSourceEditions": [],
+      "r2TextUrl": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg061-grc-52788fc49b94637e.json",
+      "r2Sha256": "52788fc49b94637e56b4d1f29e3443b2473a482a609413740e3bc56d477c43fa",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "cts-tlg0062-tlg062",
+      "author": "Luciano de Samósata",
+      "title": "Scytha",
+      "originalLanguage": "grc",
+      "sourceReadiness": "original_r2_tei_publicado_con_sha256",
+      "originalIndexed": false,
+      "originalR2Registered": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "tlg0062.tlg062"
+      ],
+      "versions": [
+        {
+          "language": "grc",
+          "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg062-grc-38fe2488aa8d3812.json",
+          "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "reader": "classics-text-reader.html?work=cts-tlg0062-tlg062&lang=grc&edition=38fe2488aa8d3812"
+        }
+      ],
+      "ctsEditionUrn": "urn:cts:greekLit:tlg0062.tlg062.perseus-grc3",
+      "ctsStatus": "declared_and_checked_in_source_tei_header",
+      "ctsSourceUri": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0062/tlg062/tlg0062.tlg062.perseus-grc3.xml",
+      "ctsEvidence": "TEI XML original, div[@type=edition]/@n, edición y SHA256 verificados mediante fuente R2: e0d93b6ac47b64d0b162103596e41bf6dee02274d4481eafafa9f82c725d864b",
+      "ctsNote": "URN de edición declarada en TEI; no implica resolución CTS pública ni cotejo de manuscritos.",
+      "sourceRights": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "otherSourceEditions": [],
+      "r2TextUrl": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg062-grc-38fe2488aa8d3812.json",
+      "r2Sha256": "38fe2488aa8d3812ad06d998c84462e73990dadc729172c475ecfa882bad81b8",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "cts-tlg0062-tlg063",
+      "author": "Luciano de Samósata",
+      "title": "Hermotimus",
+      "originalLanguage": "grc",
+      "sourceReadiness": "original_r2_tei_publicado_con_sha256",
+      "originalIndexed": false,
+      "originalR2Registered": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "tlg0062.tlg063"
+      ],
+      "versions": [
+        {
+          "language": "grc",
+          "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg063-grc-ee3537463dd50a13.json",
+          "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "reader": "classics-text-reader.html?work=cts-tlg0062-tlg063&lang=grc&edition=ee3537463dd50a13"
+        }
+      ],
+      "ctsEditionUrn": "urn:cts:greekLit:tlg0062.tlg063.perseus-grc3",
+      "ctsStatus": "declared_and_checked_in_source_tei_header",
+      "ctsSourceUri": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0062/tlg063/tlg0062.tlg063.perseus-grc3.xml",
+      "ctsEvidence": "TEI XML original, div[@type=edition]/@n, edición y SHA256 verificados mediante fuente R2: 0e1d68baa1d18ea65c88f0dbe6dd5ce29a85e44410ce1229370d5a3dac426ce3",
+      "ctsNote": "URN de edición declarada en TEI; no implica resolución CTS pública ni cotejo de manuscritos.",
+      "sourceRights": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "otherSourceEditions": [],
+      "r2TextUrl": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg063-grc-ee3537463dd50a13.json",
+      "r2Sha256": "ee3537463dd50a13f9dae07478da015017fd2135e79add301a4d4bdfccb90a2e",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "cts-tlg0062-tlg064",
+      "author": "Luciano de Samósata",
+      "title": "Prometheus es in verbis",
+      "originalLanguage": "grc",
+      "sourceReadiness": "original_r2_tei_publicado_con_sha256",
+      "originalIndexed": false,
+      "originalR2Registered": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "tlg0062.tlg064"
+      ],
+      "versions": [
+        {
+          "language": "grc",
+          "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg064-grc-2153e3c18d38dd58.json",
+          "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "reader": "classics-text-reader.html?work=cts-tlg0062-tlg064&lang=grc&edition=2153e3c18d38dd58"
+        }
+      ],
+      "ctsEditionUrn": "urn:cts:greekLit:tlg0062.tlg064.perseus-grc3",
+      "ctsStatus": "declared_and_checked_in_source_tei_header",
+      "ctsSourceUri": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0062/tlg064/tlg0062.tlg064.perseus-grc3.xml",
+      "ctsEvidence": "TEI XML original, div[@type=edition]/@n, edición y SHA256 verificados mediante fuente R2: 2af91c55f3d2b43b1f8ba7ab63e8b334b1a6f7b591b4616652d2f2f0257ba383",
+      "ctsNote": "URN de edición declarada en TEI; no implica resolución CTS pública ni cotejo de manuscritos.",
+      "sourceRights": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "otherSourceEditions": [],
+      "r2TextUrl": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg064-grc-2153e3c18d38dd58.json",
+      "r2Sha256": "2153e3c18d38dd58f84720e0d3908ca158cd614b86621e4dec19427415ea0c3f",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "cts-stoa0275-stoa023",
+      "author": "Tertuliano",
+      "title": "De Patientia",
+      "originalLanguage": "la",
+      "sourceReadiness": "original_r2_tei_publicado_con_sha256",
+      "originalIndexed": false,
+      "originalR2Registered": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "stoa0275.stoa023"
+      ],
+      "versions": [
+        {
+          "language": "la",
+          "path": "https://libros.vitruvius-digital-library.org/corpus/cts-stoa0275-stoa023-la-1af5570147a2066c.json",
+          "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "reader": "classics-text-reader.html?work=cts-stoa0275-stoa023&lang=la&edition=1af5570147a2066c"
+        }
+      ],
+      "ctsEditionUrn": "urn:cts:latinLit:stoa0275.stoa023.opp-lat1",
+      "ctsStatus": "declared_and_checked_in_source_tei_header",
+      "ctsSourceUri": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/stoa0275/stoa023/stoa0275.stoa023.opp-lat1.xml",
+      "ctsEvidence": "TEI XML original, div[@type=edition]/@n, edición y SHA256 verificados mediante fuente R2: 1fa4836b1c4a386432e20626a040bfba252ca64f7ed8b9d3ef6972e2ca0a83e8",
+      "ctsNote": "URN de edición declarada en TEI; no implica resolución CTS pública ni cotejo de manuscritos.",
+      "sourceRights": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "otherSourceEditions": [],
+      "r2TextUrl": "https://libros.vitruvius-digital-library.org/corpus/cts-stoa0275-stoa023-la-1af5570147a2066c.json",
+      "r2Sha256": "1af5570147a2066cf6a010011838c37ce46193da59d1bde18ca81dac982f7ce8",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "cts-stoa0275-stoa024",
+      "author": "Tertuliano",
+      "title": "De Praescriptionibus Hereticorum",
+      "originalLanguage": "la",
+      "sourceReadiness": "original_r2_tei_publicado_con_sha256",
+      "originalIndexed": false,
+      "originalR2Registered": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "stoa0275.stoa024"
+      ],
+      "versions": [
+        {
+          "language": "la",
+          "path": "https://libros.vitruvius-digital-library.org/corpus/cts-stoa0275-stoa024-la-14cec650ebf59cad.json",
+          "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "reader": "classics-text-reader.html?work=cts-stoa0275-stoa024&lang=la&edition=14cec650ebf59cad"
+        }
+      ],
+      "ctsEditionUrn": "urn:cts:latinLit:stoa0275.stoa024.opp-lat1",
+      "ctsStatus": "declared_and_checked_in_source_tei_header",
+      "ctsSourceUri": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/stoa0275/stoa024/stoa0275.stoa024.opp-lat1.xml",
+      "ctsEvidence": "TEI XML original, div[@type=edition]/@n, edición y SHA256 verificados mediante fuente R2: bbb5b7f7dc7173c24dd61e4d9d97b7021b8f49ff9f7d49ded95a2997da781b8c",
+      "ctsNote": "URN de edición declarada en TEI; no implica resolución CTS pública ni cotejo de manuscritos.",
+      "sourceRights": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "otherSourceEditions": [],
+      "r2TextUrl": "https://libros.vitruvius-digital-library.org/corpus/cts-stoa0275-stoa024-la-14cec650ebf59cad.json",
+      "r2Sha256": "14cec650ebf59cad24d2a266bedf6b2651c8e4458f14a4d76d9d49a05319f4a1",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "cts-stoa0275-stoa025",
+      "author": "Tertuliano",
+      "title": "De Pudicitia",
+      "originalLanguage": "la",
+      "sourceReadiness": "original_r2_tei_publicado_con_sha256",
+      "originalIndexed": false,
+      "originalR2Registered": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "stoa0275.stoa025"
+      ],
+      "versions": [
+        {
+          "language": "la",
+          "path": "https://libros.vitruvius-digital-library.org/corpus/cts-stoa0275-stoa025-la-63e7f4968e203cbe.json",
+          "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "reader": "classics-text-reader.html?work=cts-stoa0275-stoa025&lang=la&edition=63e7f4968e203cbe"
+        }
+      ],
+      "ctsEditionUrn": "urn:cts:latinLit:stoa0275.stoa025.opp-lat1",
+      "ctsStatus": "declared_and_checked_in_source_tei_header",
+      "ctsSourceUri": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/stoa0275/stoa025/stoa0275.stoa025.opp-lat1.xml",
+      "ctsEvidence": "TEI XML original, div[@type=edition]/@n, edición y SHA256 verificados mediante fuente R2: 7c19dc54ffc03eea51d5be4c9327988cd523f8dd2396544c59b436a4a0eb9253",
+      "ctsNote": "URN de edición declarada en TEI; no implica resolución CTS pública ni cotejo de manuscritos.",
+      "sourceRights": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "otherSourceEditions": [],
+      "r2TextUrl": "https://libros.vitruvius-digital-library.org/corpus/cts-stoa0275-stoa025-la-63e7f4968e203cbe.json",
+      "r2Sha256": "63e7f4968e203cbe59dbc85febde3e57086625d358eb80c1e6b81c097c2c0347",
       "perseusAffiliation": false
     }
   ]

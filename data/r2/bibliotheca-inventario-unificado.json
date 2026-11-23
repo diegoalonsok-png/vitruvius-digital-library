@@ -1,12 +1,12 @@
 {
   "schema": "vdl-federated-bibliotheca-inventory-v1",
-  "generated": "2026-11-23T18:55:54.405797+00:00",
+  "generated": "2026-11-23T19:12:59.593013+00:00",
   "method": "Master works and additional R2 works counted separately; edition relations can be many-to-many. Remote text URLs are declared, not live-verified. Unresolved editions are never merged automatically.",
   "counts": {
-    "cataloguedWorks": 441,
+    "cataloguedWorks": 454,
     "supplementaryWorks": 127,
     "additionalWorks": 10,
-    "totalDeclaredWorks": 578,
+    "totalDeclaredWorks": 591,
     "r2EditionRecords": 117,
     "r2LinkedEditionRecords": 107,
     "r2WorkEditionRelations": 115,
@@ -14,7 +14,7 @@
     "r2UnlinkedEditionRecords": 0,
     "worksWithR2Edition": 114,
     "worksWithLocalIndexedText": 325,
-    "worksWithDeclaredRemoteIndex": 247
+    "worksWithDeclaredRemoteIndex": 285
   },
   "unlinkedR2EditionIds": [],
   "additionalWorks": [
@@ -2149,7 +2149,12 @@
           "path": "corpus/cicero-de-officiis-la.html"
         }
       ],
-      "declaredRemoteIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "la",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/cicero-officiis-la-27b0c1263a85dabe.json"
+        }
+      ],
       "r2FacsimileEditions": []
     },
     {
@@ -2163,7 +2168,12 @@
           "path": "data/classics-corpus/cicero-oratore-la.json"
         }
       ],
-      "declaredRemoteIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "la",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/cicero-oratore-la-31925594830fad31.json"
+        }
+      ],
       "r2FacsimileEditions": [
         {
           "editionId": "ciceron-de-oratore",
@@ -2188,7 +2198,12 @@
           "path": "data/classics-corpus/cicero-republica-la.json"
         }
       ],
-      "declaredRemoteIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "la",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/cicero-republica-la-d72a43994db65e6e.json"
+        }
+      ],
       "r2FacsimileEditions": [
         {
           "editionId": "ciceron-de-re-publica",
@@ -2217,7 +2232,12 @@
           "path": "data/classics-corpus/caesar-gallico-la.json"
         }
       ],
-      "declaredRemoteIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "la",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/caesar-gallico-la-37387ba76bfefc48.json"
+        }
+      ],
       "r2FacsimileEditions": []
     },
     {
@@ -2235,7 +2255,12 @@
           "path": "data/classics-corpus/caesar-civili-la.json"
         }
       ],
-      "declaredRemoteIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "la",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/caesar-civili-la-105ecee4f007b3d1.json"
+        }
+      ],
       "r2FacsimileEditions": [
         {
           "editionId": "cesar-guerra-civil",
@@ -3317,7 +3342,12 @@
           "path": "data/classics-corpus/cicero-catilinariae-la.json"
         }
       ],
-      "declaredRemoteIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "la",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/cicero-catilinariae-la-1309fb61afe4a83d.json"
+        }
+      ],
       "r2FacsimileEditions": []
     },
     {
@@ -4309,7 +4339,12 @@
           "path": "data/classics-corpus/aristotle-poetics-grc.json"
         }
       ],
-      "declaredRemoteIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/aristotle-poetics-grc-0fbd018e16d33deb.json"
+        }
+      ],
       "r2FacsimileEditions": []
     },
     {
@@ -4327,7 +4362,12 @@
           "path": "data/classics-corpus/aristotle-politics-grc.json"
         }
       ],
-      "declaredRemoteIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/aristotle-politics-grc-1ab3f91cebfcff92.json"
+        }
+      ],
       "r2FacsimileEditions": [
         {
           "editionId": "aristoteles-politica",
@@ -4863,7 +4903,12 @@
           "path": "data/classics-corpus/aristophanes-ranae-grc.json"
         }
       ],
-      "declaredRemoteIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/aristophanes-ranae-grc-de43059441376775.json"
+        }
+      ],
       "r2FacsimileEditions": [
         {
           "editionId": "aristofanes-comedias",
@@ -4906,7 +4951,12 @@
           "path": "data/classics-corpus/aristophanes-vespae-grc.json"
         }
       ],
-      "declaredRemoteIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/aristophanes-vespae-grc-bfb30936387df05e.json"
+        }
+      ],
       "r2FacsimileEditions": []
     },
     {
@@ -5186,7 +5236,12 @@
           "path": "data/classics-corpus/aristotle-nicomachean-ethics-grc.json"
         }
       ],
-      "declaredRemoteIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/aristotle-nicomachean-ethics-grc-1480c2b104f560a0.json"
+        }
+      ],
       "r2FacsimileEditions": []
     },
     {
@@ -5204,7 +5259,12 @@
           "path": "data/classics-corpus/aristotle-metaphysics-grc.json"
         }
       ],
-      "declaredRemoteIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/aristotle-metaphysics-grc-40f3eb2abca710cf.json"
+        }
+      ],
       "r2FacsimileEditions": [
         {
           "editionId": "aristoteles-metafisica",
@@ -5229,7 +5289,12 @@
           "path": "data/classics-corpus/aristotle-physics-grc.json"
         }
       ],
-      "declaredRemoteIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/aristotle-physics-grc-1e7f7f9320aa9757.json"
+        }
+      ],
       "r2FacsimileEditions": []
     },
     {
@@ -5247,7 +5312,12 @@
           "path": "data/classics-corpus/aristotle-rhetoric-grc.json"
         }
       ],
-      "declaredRemoteIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/aristotle-rhetoric-grc-11046daae99b48eb.json"
+        }
+      ],
       "r2FacsimileEditions": []
     },
     {
@@ -5261,7 +5331,12 @@
           "path": "data/classics-corpus/aristotle-de-anima-grc.json"
         }
       ],
-      "declaredRemoteIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/aristotle-de-anima-grc-08a5ed425b6a2c29.json"
+        }
+      ],
       "r2FacsimileEditions": []
     },
     {
@@ -5407,7 +5482,12 @@
           "path": "data/classics-corpus/homeric-hymns-grc.json"
         }
       ],
-      "declaredRemoteIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/homeric-hymns-grc-bcea97dd83a75532.json"
+        }
+      ],
       "r2FacsimileEditions": []
     },
     {
@@ -5489,7 +5569,12 @@
           "path": "data/classics-corpus/cicero-pro-archia-la.json"
         }
       ],
-      "declaredRemoteIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "la",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/cicero-pro-archia-la-614e0fb3412bd37f.json"
+        }
+      ],
       "r2FacsimileEditions": []
     },
     {
@@ -5503,7 +5588,12 @@
           "path": "data/classics-corpus/cicero-de-finibus-la.json"
         }
       ],
-      "declaredRemoteIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "la",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/cicero-de-finibus-la-fed77e779ab6b61c.json"
+        }
+      ],
       "r2FacsimileEditions": []
     },
     {
@@ -5547,7 +5637,12 @@
           "path": "data/classics-corpus/cicero-de-natura-deorum-la.json"
         }
       ],
-      "declaredRemoteIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "la",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/cicero-de-natura-deorum-la-3619661c4eb3575d.json"
+        }
+      ],
       "r2FacsimileEditions": []
     },
     {
@@ -5561,7 +5656,12 @@
           "path": "data/classics-corpus/cicero-de-amicitia-la.json"
         }
       ],
-      "declaredRemoteIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "la",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/cicero-de-amicitia-la-9676e08312483531.json"
+        }
+      ],
       "r2FacsimileEditions": []
     },
     {
@@ -5575,7 +5675,12 @@
           "path": "data/classics-corpus/cicero-de-senectute-la.json"
         }
       ],
-      "declaredRemoteIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "la",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/cicero-de-senectute-la-249b2fd918695c2e.json"
+        }
+      ],
       "r2FacsimileEditions": []
     },
     {
@@ -5589,7 +5694,12 @@
           "path": "data/classics-corpus/cicero-de-divinatione-la.json"
         }
       ],
-      "declaredRemoteIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "la",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/cicero-de-divinatione-la-6c4ef5561d4831ed.json"
+        }
+      ],
       "r2FacsimileEditions": []
     },
     {
@@ -5603,7 +5713,12 @@
           "path": "data/classics-corpus/cicero-brutus-la.json"
         }
       ],
-      "declaredRemoteIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "la",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/cicero-brutus-la-e0742d7727de376b.json"
+        }
+      ],
       "r2FacsimileEditions": []
     },
     {
@@ -5617,7 +5732,12 @@
           "path": "data/classics-corpus/cicero-philippicae-la.json"
         }
       ],
-      "declaredRemoteIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "la",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/cicero-philippicae-la-1b3c469f152e52c8.json"
+        }
+      ],
       "r2FacsimileEditions": []
     },
     {
@@ -6555,6 +6675,10 @@
       "declaredRemoteIndexedText": [
         {
           "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/aristoteles-del-cielo-grc-05efdc48def562a1.json"
+        },
+        {
+          "language": "grc",
           "url": "https://libros.vitruvius-digital-library.org/corpus/aristoteles-del-cielo-grc.json"
         }
       ],
@@ -6578,6 +6702,10 @@
       "catalogue": "github",
       "locallyIndexedText": [],
       "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/aristoteles-historia-animales-grc-0d1c1c571eca646b.json"
+        },
         {
           "language": "grc",
           "url": "https://libros.vitruvius-digital-library.org/corpus/aristoteles-historia-animales-grc.json"
@@ -7226,7 +7354,12 @@
       "title": "Μετεωρολογικά · Meteorologica",
       "catalogue": "github",
       "locallyIndexedText": [],
-      "declaredRemoteIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/aristoteles-meteorologica-grc-e56a80cc0c10dc06.json"
+        }
+      ],
       "r2FacsimileEditions": [
         {
           "editionId": "aristoteles-meteorologica",
@@ -10020,6 +10153,188 @@
         {
           "language": "grc",
           "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg015-grc-8717879bee928f83.json"
+        }
+      ],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "cts-tlg0062-tlg052",
+      "author": "Luciano de Samósata",
+      "title": "Abdicatus",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg052-grc-6b56828dfb8c68d0.json"
+        }
+      ],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "cts-tlg0062-tlg054",
+      "author": "Luciano de Samósata",
+      "title": "Dipsades",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg054-grc-c861eece1f8ebe16.json"
+        }
+      ],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "cts-tlg0062-tlg053",
+      "author": "Luciano de Samósata",
+      "title": "Quomodo historia conscribenda sit",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg053-grc-9d2d90652477afb8.json"
+        }
+      ],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "cts-tlg0062-tlg059",
+      "author": "Luciano de Samósata",
+      "title": "Apologia",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg059-grc-12baf9fc7871e8e5.json"
+        }
+      ],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "cts-tlg0062-tlg058",
+      "author": "Luciano de Samósata",
+      "title": "Pro lapsu inter salutandum",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg058-grc-56996acb20a89fd8.json"
+        }
+      ],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "cts-tlg0062-tlg060",
+      "author": "Luciano de Samósata",
+      "title": "Harmonides",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg060-grc-2d05f6abc826400c.json"
+        }
+      ],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "cts-tlg0062-tlg061",
+      "author": "Luciano de Samósata",
+      "title": "Hesiod",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg061-grc-52788fc49b94637e.json"
+        }
+      ],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "cts-tlg0062-tlg062",
+      "author": "Luciano de Samósata",
+      "title": "Scytha",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg062-grc-38fe2488aa8d3812.json"
+        }
+      ],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "cts-tlg0062-tlg063",
+      "author": "Luciano de Samósata",
+      "title": "Hermotimus",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg063-grc-ee3537463dd50a13.json"
+        }
+      ],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "cts-tlg0062-tlg064",
+      "author": "Luciano de Samósata",
+      "title": "Prometheus es in verbis",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg064-grc-2153e3c18d38dd58.json"
+        }
+      ],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "cts-stoa0275-stoa023",
+      "author": "Tertuliano",
+      "title": "De Patientia",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "la",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/cts-stoa0275-stoa023-la-1af5570147a2066c.json"
+        }
+      ],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "cts-stoa0275-stoa024",
+      "author": "Tertuliano",
+      "title": "De Praescriptionibus Hereticorum",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "la",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/cts-stoa0275-stoa024-la-14cec650ebf59cad.json"
+        }
+      ],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "cts-stoa0275-stoa025",
+      "author": "Tertuliano",
+      "title": "De Pudicitia",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "la",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/cts-stoa0275-stoa025-la-63e7f4968e203cbe.json"
         }
       ],
       "r2FacsimileEditions": []

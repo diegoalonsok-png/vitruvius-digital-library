@@ -4,26 +4,26 @@
   "basis": "Cálculo a partir de works[] y search-registry.json. Los campos de compatibilidad locallyIndexedWorks y localEditionLanguages incluyen índices registrados en R2. originalIndexed y verifiedLocalEditionLanguages solo cuentan archivos locales. originalR2Registered identifica declaraciones remotas; no certifica disponibilidad HTTP ni cotejo.",
   "scope": "271 obras del repertorio grecolatino; originales locales, índices remotos declarados y traducciones alojadas ES/EN/FR",
   "totals": {
-    "cataloguedWorks": 441,
-    "locallyIndexedWorks": 411,
+    "cataloguedWorks": 454,
+    "locallyIndexedWorks": 425,
     "translatedWorksLocal": 78,
-    "worksWithoutHostedTranslation": 363,
+    "worksWithoutHostedTranslation": 376,
     "localTranslationLanguages": {
       "es": 5,
       "en": 77,
       "fr": 2
     },
     "originalTextIndexed": 197,
-    "originalTextNotIndexed": 244,
+    "originalTextNotIndexed": 257,
     "verifiedLocalFileWorks": 199,
-    "declaredRemoteOnlyWorks": 212,
-    "declaredR2OriginalWorks": 247,
-    "registeredOriginalWorks": 411,
-    "registeredTextVersions": 562,
+    "declaredRemoteOnlyWorks": 226,
+    "declaredR2OriginalWorks": 285,
+    "registeredOriginalWorks": 425,
+    "registeredTextVersions": 602,
     "verifiedLocalTextVersions": 281,
     "verifiedLocalOriginalTextIndexed": 197,
     "supplementaryTextVersions": 161,
-    "allRegisteredTextVersions": 723
+    "allRegisteredTextVersions": 763
   },
   "works": [
     {
@@ -78,17 +78,19 @@
         "la"
       ],
       "externalTranslationUnverified": [],
-      "readingStatus": "lectura-local-completa",
+      "readingStatus": "lectura-local-parcial",
       "translationSourceDescription": "Inglés: Walter Miller (1913), disponible; castellano y francés: traducciones completas pendientes de identificar, cotejar y alojar.",
       "translationRegisteredButNotHosted": false,
       "indexed": true,
-      "originalR2Registered": false,
+      "originalR2Registered": true,
       "registeredOriginal": true,
       "registeredEditionLanguages": [
         "en",
         "la"
       ],
-      "remoteEditionLanguages": [],
+      "remoteEditionLanguages": [
+        "la"
+      ],
       "verifiedLocalEditionLanguages": [
         "en",
         "la"
@@ -109,12 +111,14 @@
       "translationSourceDescription": "Sin traducción individual vinculada todavía; consultar las disponibles en la fuente",
       "translationRegisteredButNotHosted": false,
       "indexed": true,
-      "originalR2Registered": false,
+      "originalR2Registered": true,
       "registeredOriginal": true,
       "registeredEditionLanguages": [
         "la"
       ],
-      "remoteEditionLanguages": [],
+      "remoteEditionLanguages": [
+        "la"
+      ],
       "verifiedLocalEditionLanguages": [
         "la"
       ]
@@ -134,12 +138,14 @@
       "translationSourceDescription": "Sin traducción individual vinculada todavía; consultar las disponibles en la fuente",
       "translationRegisteredButNotHosted": false,
       "indexed": true,
-      "originalR2Registered": false,
+      "originalR2Registered": true,
       "registeredOriginal": true,
       "registeredEditionLanguages": [
         "la"
       ],
-      "remoteEditionLanguages": [],
+      "remoteEditionLanguages": [
+        "la"
+      ],
       "verifiedLocalEditionLanguages": [
         "la"
       ]
@@ -158,17 +164,19 @@
         "la"
       ],
       "externalTranslationUnverified": [],
-      "readingStatus": "lectura-local-completa",
+      "readingStatus": "lectura-local-parcial",
       "translationSourceDescription": "Inglés: W. A. McDevitte y W. S. Bohn (1870–72), 8 libros, edición TEI Perseus. Libro VIII de Aulo Hircio; cotejo por capítulo, no palabra por palabra.",
       "translationRegisteredButNotHosted": false,
       "indexed": true,
-      "originalR2Registered": false,
+      "originalR2Registered": true,
       "registeredOriginal": true,
       "registeredEditionLanguages": [
         "en",
         "la"
       ],
-      "remoteEditionLanguages": [],
+      "remoteEditionLanguages": [
+        "la"
+      ],
       "verifiedLocalEditionLanguages": [
         "en",
         "la"
@@ -188,17 +196,19 @@
         "la"
       ],
       "externalTranslationUnverified": [],
-      "readingStatus": "lectura-local-completa",
+      "readingStatus": "lectura-local-parcial",
       "translationSourceDescription": "Inglés: traducción de la edición Loeb (dominio público) en LacusCurtius, enlace externo verificado. Castellano y francés pendientes.",
       "translationRegisteredButNotHosted": false,
       "indexed": true,
-      "originalR2Registered": false,
+      "originalR2Registered": true,
       "registeredOriginal": true,
       "registeredEditionLanguages": [
         "en",
         "la"
       ],
-      "remoteEditionLanguages": [],
+      "remoteEditionLanguages": [
+        "la"
+      ],
       "verifiedLocalEditionLanguages": [
         "en",
         "la"
@@ -1736,13 +1746,15 @@
       "translationSourceDescription": "Inglés histórico: Charles Duke Yonge (1856), texto completo de la fuente TEI Perseus con procedencia por SHA; sin alineación textual certificada.",
       "translationRegisteredButNotHosted": false,
       "indexed": true,
-      "originalR2Registered": false,
+      "originalR2Registered": true,
       "registeredOriginal": true,
       "registeredEditionLanguages": [
         "en",
         "la"
       ],
-      "remoteEditionLanguages": [],
+      "remoteEditionLanguages": [
+        "la"
+      ],
       "verifiedLocalEditionLanguages": [
         "en",
         "la"
@@ -3073,17 +3085,19 @@
         "grc"
       ],
       "externalTranslationUnverified": [],
-      "readingStatus": "lectura-local-completa",
+      "readingStatus": "lectura-local-parcial",
       "translationSourceDescription": "Traducción inglesa W. Hamilton Fyfe (1939), codificación TEI Perseus CC BY-SA 4.0, lectura por 26 capítulos; cotejo por líneas Bekker pendiente. Castellano/francés pendientes.",
       "translationRegisteredButNotHosted": false,
       "indexed": true,
-      "originalR2Registered": false,
+      "originalR2Registered": true,
       "registeredOriginal": true,
       "registeredEditionLanguages": [
         "en",
         "grc"
       ],
-      "remoteEditionLanguages": [],
+      "remoteEditionLanguages": [
+        "grc"
+      ],
       "verifiedLocalEditionLanguages": [
         "en",
         "grc"
@@ -3107,13 +3121,15 @@
       "translationSourceDescription": "Inglés histórico: Harris Rackham (1944), texto completo de la fuente TEI Perseus con procedencia por SHA; sin alineación textual certificada.",
       "translationRegisteredButNotHosted": false,
       "indexed": true,
-      "originalR2Registered": false,
+      "originalR2Registered": true,
       "registeredOriginal": true,
       "registeredEditionLanguages": [
         "en",
         "grc"
       ],
-      "remoteEditionLanguages": [],
+      "remoteEditionLanguages": [
+        "grc"
+      ],
       "verifiedLocalEditionLanguages": [
         "en",
         "grc"
@@ -3833,12 +3849,14 @@
       "translationSourceDescription": "Traducción no incorporada ni alineada con una edición identificada.",
       "translationRegisteredButNotHosted": true,
       "indexed": true,
-      "originalR2Registered": false,
+      "originalR2Registered": true,
       "registeredOriginal": true,
       "registeredEditionLanguages": [
         "grc"
       ],
-      "remoteEditionLanguages": [],
+      "remoteEditionLanguages": [
+        "grc"
+      ],
       "verifiedLocalEditionLanguages": [
         "grc"
       ]
@@ -3888,12 +3906,14 @@
       "translationSourceDescription": "Traducción no incorporada ni alineada con una edición identificada.",
       "translationRegisteredButNotHosted": true,
       "indexed": true,
-      "originalR2Registered": false,
+      "originalR2Registered": true,
       "registeredOriginal": true,
       "registeredEditionLanguages": [
         "grc"
       ],
-      "remoteEditionLanguages": [],
+      "remoteEditionLanguages": [
+        "grc"
+      ],
       "verifiedLocalEditionLanguages": [
         "grc"
       ]
@@ -4223,13 +4243,15 @@
       "translationSourceDescription": "Inglés histórico: Harris Rackham (1926), texto completo de la fuente TEI Perseus con procedencia por SHA; sin alineación textual certificada.",
       "translationRegisteredButNotHosted": false,
       "indexed": true,
-      "originalR2Registered": false,
+      "originalR2Registered": true,
       "registeredOriginal": true,
       "registeredEditionLanguages": [
         "en",
         "grc"
       ],
-      "remoteEditionLanguages": [],
+      "remoteEditionLanguages": [
+        "grc"
+      ],
       "verifiedLocalEditionLanguages": [
         "en",
         "grc"
@@ -4253,13 +4275,15 @@
       "translationSourceDescription": "Traducción no incorporada ni alineada con una edición identificada.",
       "translationRegisteredButNotHosted": true,
       "indexed": true,
-      "originalR2Registered": false,
+      "originalR2Registered": true,
       "registeredOriginal": true,
       "registeredEditionLanguages": [
         "en",
         "grc"
       ],
-      "remoteEditionLanguages": [],
+      "remoteEditionLanguages": [
+        "grc"
+      ],
       "verifiedLocalEditionLanguages": [
         "en",
         "grc"
@@ -4280,12 +4304,14 @@
       "translationSourceDescription": "Traducción no incorporada ni alineada con una edición identificada.",
       "translationRegisteredButNotHosted": true,
       "indexed": true,
-      "originalR2Registered": false,
+      "originalR2Registered": true,
       "registeredOriginal": true,
       "registeredEditionLanguages": [
         "grc"
       ],
-      "remoteEditionLanguages": [],
+      "remoteEditionLanguages": [
+        "grc"
+      ],
       "verifiedLocalEditionLanguages": [
         "grc"
       ]
@@ -4308,13 +4334,15 @@
       "translationSourceDescription": "Inglés: John Henry Freese, The Art of Rhetoric (1926), edición TEI de Perseus Digital Library, CC BY-SA 4.0; 882 unidades citables indexables, sin alineación forzada con el griego.",
       "translationRegisteredButNotHosted": false,
       "indexed": true,
-      "originalR2Registered": false,
+      "originalR2Registered": true,
       "registeredOriginal": true,
       "registeredEditionLanguages": [
         "en",
         "grc"
       ],
-      "remoteEditionLanguages": [],
+      "remoteEditionLanguages": [
+        "grc"
+      ],
       "verifiedLocalEditionLanguages": [
         "en",
         "grc"
@@ -4335,12 +4363,14 @@
       "translationSourceDescription": "Traducción no incorporada ni alineada con una edición identificada.",
       "translationRegisteredButNotHosted": true,
       "indexed": true,
-      "originalR2Registered": false,
+      "originalR2Registered": true,
       "registeredOriginal": true,
       "registeredEditionLanguages": [
         "grc"
       ],
-      "remoteEditionLanguages": [],
+      "remoteEditionLanguages": [
+        "grc"
+      ],
       "verifiedLocalEditionLanguages": [
         "grc"
       ]
@@ -4534,12 +4564,14 @@
       "translationSourceDescription": "Traducción no incorporada ni alineada con una edición identificada.",
       "translationRegisteredButNotHosted": true,
       "indexed": true,
-      "originalR2Registered": false,
+      "originalR2Registered": true,
       "registeredOriginal": true,
       "registeredEditionLanguages": [
         "grc"
       ],
-      "remoteEditionLanguages": [],
+      "remoteEditionLanguages": [
+        "grc"
+      ],
       "verifiedLocalEditionLanguages": [
         "grc"
       ]
@@ -4639,12 +4671,14 @@
       "translationSourceDescription": "Traducción no incorporada ni alineada con una edición identificada.",
       "translationRegisteredButNotHosted": true,
       "indexed": true,
-      "originalR2Registered": false,
+      "originalR2Registered": true,
       "registeredOriginal": true,
       "registeredEditionLanguages": [
         "la"
       ],
-      "remoteEditionLanguages": [],
+      "remoteEditionLanguages": [
+        "la"
+      ],
       "verifiedLocalEditionLanguages": [
         "la"
       ]
@@ -4664,12 +4698,14 @@
       "translationSourceDescription": "Inglés: traducción de la edición Loeb (dominio público) en LacusCurtius, enlace externo verificado. Castellano y francés pendientes.",
       "translationRegisteredButNotHosted": true,
       "indexed": true,
-      "originalR2Registered": false,
+      "originalR2Registered": true,
       "registeredOriginal": true,
       "registeredEditionLanguages": [
         "la"
       ],
-      "remoteEditionLanguages": [],
+      "remoteEditionLanguages": [
+        "la"
+      ],
       "verifiedLocalEditionLanguages": [
         "la"
       ]
@@ -4716,12 +4752,14 @@
       "translationSourceDescription": "Traducción no incorporada ni alineada con una edición identificada.",
       "translationRegisteredButNotHosted": true,
       "indexed": true,
-      "originalR2Registered": false,
+      "originalR2Registered": true,
       "registeredOriginal": true,
       "registeredEditionLanguages": [
         "la"
       ],
-      "remoteEditionLanguages": [],
+      "remoteEditionLanguages": [
+        "la"
+      ],
       "verifiedLocalEditionLanguages": [
         "la"
       ]
@@ -4741,12 +4779,14 @@
       "translationSourceDescription": "Inglés: traducción de la edición Loeb (dominio público) en LacusCurtius, enlace externo verificado. Castellano y francés pendientes.",
       "translationRegisteredButNotHosted": true,
       "indexed": true,
-      "originalR2Registered": false,
+      "originalR2Registered": true,
       "registeredOriginal": true,
       "registeredEditionLanguages": [
         "la"
       ],
-      "remoteEditionLanguages": [],
+      "remoteEditionLanguages": [
+        "la"
+      ],
       "verifiedLocalEditionLanguages": [
         "la"
       ]
@@ -4766,12 +4806,14 @@
       "translationSourceDescription": "Inglés: traducción de la edición Loeb (dominio público) en LacusCurtius, enlace externo verificado. Castellano y francés pendientes.",
       "translationRegisteredButNotHosted": true,
       "indexed": true,
-      "originalR2Registered": false,
+      "originalR2Registered": true,
       "registeredOriginal": true,
       "registeredEditionLanguages": [
         "la"
       ],
-      "remoteEditionLanguages": [],
+      "remoteEditionLanguages": [
+        "la"
+      ],
       "verifiedLocalEditionLanguages": [
         "la"
       ]
@@ -4791,12 +4833,14 @@
       "translationSourceDescription": "Inglés: traducción de la edición Loeb (dominio público) en LacusCurtius, enlace externo verificado. Castellano y francés pendientes.",
       "translationRegisteredButNotHosted": true,
       "indexed": true,
-      "originalR2Registered": false,
+      "originalR2Registered": true,
       "registeredOriginal": true,
       "registeredEditionLanguages": [
         "la"
       ],
-      "remoteEditionLanguages": [],
+      "remoteEditionLanguages": [
+        "la"
+      ],
       "verifiedLocalEditionLanguages": [
         "la"
       ]
@@ -4816,12 +4860,14 @@
       "translationSourceDescription": "Traducción no incorporada ni alineada con una edición identificada.",
       "translationRegisteredButNotHosted": true,
       "indexed": true,
-      "originalR2Registered": false,
+      "originalR2Registered": true,
       "registeredOriginal": true,
       "registeredEditionLanguages": [
         "la"
       ],
-      "remoteEditionLanguages": [],
+      "remoteEditionLanguages": [
+        "la"
+      ],
       "verifiedLocalEditionLanguages": [
         "la"
       ]
@@ -4841,12 +4887,14 @@
       "translationSourceDescription": "Traducción no incorporada ni alineada con una edición identificada.",
       "translationRegisteredButNotHosted": true,
       "indexed": true,
-      "originalR2Registered": false,
+      "originalR2Registered": true,
       "registeredOriginal": true,
       "registeredEditionLanguages": [
         "la"
       ],
-      "remoteEditionLanguages": [],
+      "remoteEditionLanguages": [
+        "la"
+      ],
       "verifiedLocalEditionLanguages": [
         "la"
       ]
@@ -6181,7 +6229,7 @@
         "grc"
       ],
       "externalTranslationUnverified": [],
-      "readingStatus": "fuente-externa-identificada",
+      "readingStatus": "lectura-local-parcial",
       "translationSourceDescription": "Facsímil de dominio público alojado en R2. Sin traducción alojada; pendiente de localizar una traducción de dominio público.",
       "originalR2Registered": true,
       "registeredOriginal": true,
@@ -6207,7 +6255,7 @@
         "grc"
       ],
       "externalTranslationUnverified": [],
-      "readingStatus": "fuente-externa-identificada",
+      "readingStatus": "lectura-local-parcial",
       "translationSourceDescription": "Facsímil de dominio público alojado en R2. Sin traducción alojada; pendiente de localizar una traducción de dominio público.",
       "originalR2Registered": true,
       "registeredOriginal": true,
@@ -6783,14 +6831,20 @@
       "originalLanguage": "grc",
       "originalIndexed": false,
       "translationLanguages": [],
-      "localEditionLanguages": [],
+      "localEditionLanguages": [
+        "grc"
+      ],
       "externalTranslationUnverified": [],
-      "readingStatus": "fuente-externa-identificada",
+      "readingStatus": "lectura-local-parcial",
       "translationSourceDescription": "Facsímil de dominio público alojado en R2. Sin traducción alojada; pendiente de localizar una traducción de dominio público.",
-      "originalR2Registered": false,
-      "registeredOriginal": false,
-      "registeredEditionLanguages": [],
-      "remoteEditionLanguages": [],
+      "originalR2Registered": true,
+      "registeredOriginal": true,
+      "registeredEditionLanguages": [
+        "grc"
+      ],
+      "remoteEditionLanguages": [
+        "grc"
+      ],
       "verifiedLocalEditionLanguages": []
     },
     {
@@ -10831,6 +10885,292 @@
       ],
       "remoteEditionLanguages": [
         "grc"
+      ],
+      "readingStatus": "lectura-local-parcial"
+    },
+    {
+      "id": "cts-tlg0062-tlg052",
+      "author": "Luciano de Samósata",
+      "title": "Abdicatus",
+      "originalLanguage": "grc",
+      "translationLanguages": [],
+      "localEditionLanguages": [
+        "grc"
+      ],
+      "notes": "Edición TEI incorporada en R2; sin traducción humana ni colación independiente acreditadas.",
+      "originalIndexed": false,
+      "originalR2Registered": true,
+      "registeredOriginal": true,
+      "verifiedLocalEditionLanguages": [],
+      "registeredEditionLanguages": [
+        "grc"
+      ],
+      "remoteEditionLanguages": [
+        "grc"
+      ],
+      "readingStatus": "lectura-local-parcial"
+    },
+    {
+      "id": "cts-tlg0062-tlg054",
+      "author": "Luciano de Samósata",
+      "title": "Dipsades",
+      "originalLanguage": "grc",
+      "translationLanguages": [],
+      "localEditionLanguages": [
+        "grc"
+      ],
+      "notes": "Edición TEI incorporada en R2; sin traducción humana ni colación independiente acreditadas.",
+      "originalIndexed": false,
+      "originalR2Registered": true,
+      "registeredOriginal": true,
+      "verifiedLocalEditionLanguages": [],
+      "registeredEditionLanguages": [
+        "grc"
+      ],
+      "remoteEditionLanguages": [
+        "grc"
+      ],
+      "readingStatus": "lectura-local-parcial"
+    },
+    {
+      "id": "cts-tlg0062-tlg053",
+      "author": "Luciano de Samósata",
+      "title": "Quomodo historia conscribenda sit",
+      "originalLanguage": "grc",
+      "translationLanguages": [],
+      "localEditionLanguages": [
+        "grc"
+      ],
+      "notes": "Edición TEI incorporada en R2; sin traducción humana ni colación independiente acreditadas.",
+      "originalIndexed": false,
+      "originalR2Registered": true,
+      "registeredOriginal": true,
+      "verifiedLocalEditionLanguages": [],
+      "registeredEditionLanguages": [
+        "grc"
+      ],
+      "remoteEditionLanguages": [
+        "grc"
+      ],
+      "readingStatus": "lectura-local-parcial"
+    },
+    {
+      "id": "cts-tlg0062-tlg059",
+      "author": "Luciano de Samósata",
+      "title": "Apologia",
+      "originalLanguage": "grc",
+      "translationLanguages": [],
+      "localEditionLanguages": [
+        "grc"
+      ],
+      "notes": "Edición TEI incorporada en R2; sin traducción humana ni colación independiente acreditadas.",
+      "originalIndexed": false,
+      "originalR2Registered": true,
+      "registeredOriginal": true,
+      "verifiedLocalEditionLanguages": [],
+      "registeredEditionLanguages": [
+        "grc"
+      ],
+      "remoteEditionLanguages": [
+        "grc"
+      ],
+      "readingStatus": "lectura-local-parcial"
+    },
+    {
+      "id": "cts-tlg0062-tlg058",
+      "author": "Luciano de Samósata",
+      "title": "Pro lapsu inter salutandum",
+      "originalLanguage": "grc",
+      "translationLanguages": [],
+      "localEditionLanguages": [
+        "grc"
+      ],
+      "notes": "Edición TEI incorporada en R2; sin traducción humana ni colación independiente acreditadas.",
+      "originalIndexed": false,
+      "originalR2Registered": true,
+      "registeredOriginal": true,
+      "verifiedLocalEditionLanguages": [],
+      "registeredEditionLanguages": [
+        "grc"
+      ],
+      "remoteEditionLanguages": [
+        "grc"
+      ],
+      "readingStatus": "lectura-local-parcial"
+    },
+    {
+      "id": "cts-tlg0062-tlg060",
+      "author": "Luciano de Samósata",
+      "title": "Harmonides",
+      "originalLanguage": "grc",
+      "translationLanguages": [],
+      "localEditionLanguages": [
+        "grc"
+      ],
+      "notes": "Edición TEI incorporada en R2; sin traducción humana ni colación independiente acreditadas.",
+      "originalIndexed": false,
+      "originalR2Registered": true,
+      "registeredOriginal": true,
+      "verifiedLocalEditionLanguages": [],
+      "registeredEditionLanguages": [
+        "grc"
+      ],
+      "remoteEditionLanguages": [
+        "grc"
+      ],
+      "readingStatus": "lectura-local-parcial"
+    },
+    {
+      "id": "cts-tlg0062-tlg061",
+      "author": "Luciano de Samósata",
+      "title": "Hesiod",
+      "originalLanguage": "grc",
+      "translationLanguages": [],
+      "localEditionLanguages": [
+        "grc"
+      ],
+      "notes": "Edición TEI incorporada en R2; sin traducción humana ni colación independiente acreditadas.",
+      "originalIndexed": false,
+      "originalR2Registered": true,
+      "registeredOriginal": true,
+      "verifiedLocalEditionLanguages": [],
+      "registeredEditionLanguages": [
+        "grc"
+      ],
+      "remoteEditionLanguages": [
+        "grc"
+      ],
+      "readingStatus": "lectura-local-parcial"
+    },
+    {
+      "id": "cts-tlg0062-tlg062",
+      "author": "Luciano de Samósata",
+      "title": "Scytha",
+      "originalLanguage": "grc",
+      "translationLanguages": [],
+      "localEditionLanguages": [
+        "grc"
+      ],
+      "notes": "Edición TEI incorporada en R2; sin traducción humana ni colación independiente acreditadas.",
+      "originalIndexed": false,
+      "originalR2Registered": true,
+      "registeredOriginal": true,
+      "verifiedLocalEditionLanguages": [],
+      "registeredEditionLanguages": [
+        "grc"
+      ],
+      "remoteEditionLanguages": [
+        "grc"
+      ],
+      "readingStatus": "lectura-local-parcial"
+    },
+    {
+      "id": "cts-tlg0062-tlg063",
+      "author": "Luciano de Samósata",
+      "title": "Hermotimus",
+      "originalLanguage": "grc",
+      "translationLanguages": [],
+      "localEditionLanguages": [
+        "grc"
+      ],
+      "notes": "Edición TEI incorporada en R2; sin traducción humana ni colación independiente acreditadas.",
+      "originalIndexed": false,
+      "originalR2Registered": true,
+      "registeredOriginal": true,
+      "verifiedLocalEditionLanguages": [],
+      "registeredEditionLanguages": [
+        "grc"
+      ],
+      "remoteEditionLanguages": [
+        "grc"
+      ],
+      "readingStatus": "lectura-local-parcial"
+    },
+    {
+      "id": "cts-tlg0062-tlg064",
+      "author": "Luciano de Samósata",
+      "title": "Prometheus es in verbis",
+      "originalLanguage": "grc",
+      "translationLanguages": [],
+      "localEditionLanguages": [
+        "grc"
+      ],
+      "notes": "Edición TEI incorporada en R2; sin traducción humana ni colación independiente acreditadas.",
+      "originalIndexed": false,
+      "originalR2Registered": true,
+      "registeredOriginal": true,
+      "verifiedLocalEditionLanguages": [],
+      "registeredEditionLanguages": [
+        "grc"
+      ],
+      "remoteEditionLanguages": [
+        "grc"
+      ],
+      "readingStatus": "lectura-local-parcial"
+    },
+    {
+      "id": "cts-stoa0275-stoa023",
+      "author": "Tertuliano",
+      "title": "De Patientia",
+      "originalLanguage": "la",
+      "translationLanguages": [],
+      "localEditionLanguages": [
+        "la"
+      ],
+      "notes": "Edición TEI incorporada en R2; sin traducción humana ni colación independiente acreditadas.",
+      "originalIndexed": false,
+      "originalR2Registered": true,
+      "registeredOriginal": true,
+      "verifiedLocalEditionLanguages": [],
+      "registeredEditionLanguages": [
+        "la"
+      ],
+      "remoteEditionLanguages": [
+        "la"
+      ],
+      "readingStatus": "lectura-local-parcial"
+    },
+    {
+      "id": "cts-stoa0275-stoa024",
+      "author": "Tertuliano",
+      "title": "De Praescriptionibus Hereticorum",
+      "originalLanguage": "la",
+      "translationLanguages": [],
+      "localEditionLanguages": [
+        "la"
+      ],
+      "notes": "Edición TEI incorporada en R2; sin traducción humana ni colación independiente acreditadas.",
+      "originalIndexed": false,
+      "originalR2Registered": true,
+      "registeredOriginal": true,
+      "verifiedLocalEditionLanguages": [],
+      "registeredEditionLanguages": [
+        "la"
+      ],
+      "remoteEditionLanguages": [
+        "la"
+      ],
+      "readingStatus": "lectura-local-parcial"
+    },
+    {
+      "id": "cts-stoa0275-stoa025",
+      "author": "Tertuliano",
+      "title": "De Pudicitia",
+      "originalLanguage": "la",
+      "translationLanguages": [],
+      "localEditionLanguages": [
+        "la"
+      ],
+      "notes": "Edición TEI incorporada en R2; sin traducción humana ni colación independiente acreditadas.",
+      "originalIndexed": false,
+      "originalR2Registered": true,
+      "registeredOriginal": true,
+      "verifiedLocalEditionLanguages": [],
+      "registeredEditionLanguages": [
+        "la"
+      ],
+      "remoteEditionLanguages": [
+        "la"
       ],
       "readingStatus": "lectura-local-parcial"
     }
