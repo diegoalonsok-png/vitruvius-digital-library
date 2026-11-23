@@ -9,7 +9,28 @@ const allowed={"apuleius-metamorphoses":"Apuleyo · Metamorphoses (Asinus aureus
 const LEX=window.ClassicalLexicon;
 if(!/^[a-z0-9-]{3,60}$/.test(work)){$("source-title").textContent="Obra no identificada en este lector";return}
 const base="data/classics-corpus/"+work+"-";
-const langSelect=$("language"),input=$("query");let data,active=0,results=[],search="",hostedEditions=[],resultPage=0,searchIndex=null,searchMeta="",suggestions=[];
+const langSelect=$("language"),editionSelect=$("edition-version"),input=$("query");let data,active=0,results=[],search="",hostedEditions=[],resultPage=0,searchIndex=null,searchMeta="",suggestions=[];
+const editionKey=e=>e?.sha256?e.sha256.slice(0,16):e?.path||"";
+function selectHostedEdition(language,requested="",defaultPath=""){
+ if(!editionSelect)return;
+ const versions=hostedEditions.filter(e=>e.language===language);
+ const choices=versions.map((entry,i)=>{
+  const option=document.createElement("option");
+  option.value=editionKey(entry);
+  const source=entry.sourceUrn||entry.editionCitation||entry.edition||entry.path.split("/").at(-1);
+  option.textContent="Versión "+(i+1)+" · "+String(source).slice(0,120);
+  return option;
+ });
+ editionSelect.replaceChildren(...choices);
+ const active=versions.find(e=>editionKey(e)===requested)||
+   versions.find(e=>e.path===defaultPath)||versions[0];
+ if(active)editionSelect.value=editionKey(active);
+ const multi=versions.length>1;
+ editionSelect.hidden=!multi;
+ const label=$("edition-version-label");
+ if(label)label.hidden=!multi;
+}
+
 /* Small, independent scholarly cross-link below the existing toolbar.
    Does not alter the approved reader controls or require a new viewer. */
 const lexiconShortcut=document.createElement("a");
@@ -547,7 +568,8 @@ async function showHoldingLibraries(){
 let editionRequest=0;
 async function load(language,requestId){
  const resourceRequest=loadSearchResources(language).catch(err=>{console.warn("Índice léxico complementario no disponible",err);return null});
- const indexed=hostedEditions.find(e=>e.language===language);
+ const selected=editionSelect?.value||p.get("edition")||"";
+ const indexed=hostedEditions.find(e=>e.language===language&&editionKey(e)===selected)||hostedEditions.find(e=>e.language===language);
   const path=indexed?.path||base+language+".json",response=await fetch(path);
  if(!response.ok)throw Error("Edición todavía no incorporada: "+language+" · HTTP "+response.status);
  let corpus=await response.json();
@@ -625,7 +647,11 @@ async function load(language,requestId){
  $("method-note").textContent=[corpus.editorialStatus,declaredAlignment,sourceCoverage,"Fuente y atribución: "+corpus.attribution].filter(Boolean).join(" · ");
  $("attribution").textContent=(corpus.chicago18Bibliography?"Referencia bibliográfica (Chicago, 18.ª ed.): "+corpus.chicago18Bibliography+" · ":"")+corpus.source+" · "+corpus.license+" · La biblioteca no atribuye traducciones al códice; toda comparación requiere cotejo filológico.";
  $("toc-help").textContent=sourceCoverage||declaredAlignment;
- const u=new URL(location.href);u.searchParams.set("lang",language);history.replaceState(null,"",u);
+ const u=new URL(location.href);u.searchParams.set("lang",language);
+ if(hostedEditions.filter(e=>e.language===language).length>1)
+  u.searchParams.set("edition",editionKey(indexed));
+ else u.searchParams.delete("edition");
+ history.replaceState(null,"",u);
  renderToc();
  const locus=new URLSearchParams(location.search).get("locus");
  const at=ACADEMIC?ACADEMIC.findLocus(data.passages,locus):data.passages.findIndex(x=>x.locus===locus);
@@ -655,7 +681,11 @@ $("locus-form")?.addEventListener("submit",event=>{
  if(i<0){$("locus-status").textContent="No se encontró un locus único en esta edición. Seleccione una unidad del índice.";return}
  select(i);$("passages").scrollIntoView({block:"nearest"});
 });
-$("language").addEventListener("change",e=>swap(e.target.value));
+$("language").addEventListener("change",e=>{
+ selectHostedEdition(e.target.value);
+ swap(e.target.value);
+});
+editionSelect?.addEventListener("change",()=>swap(langSelect.value));
 $("find").addEventListener("click",()=>{
  if(!data)return;
  setQuery(input.value);resultPage=0;renderSearch();
@@ -823,6 +853,7 @@ $("prev").addEventListener("click",()=>select(active-1));$("next").addEventListe
   for(const o of [...langSelect.options])if(!available.has(o.value))o.remove();
   if(![...langSelect.options].some(o=>o.value===p.get("lang")))langSelect.value=available.has("grc")?"grc":available.has("la")?"la":langSelect.options[0]?.value||"en";
   else langSelect.value=p.get("lang");
+  selectHostedEdition(langSelect.value,p.get("edition")||"",record?.corpusFiles?.[langSelect.value]||"");
   await swap(langSelect.value);
  }catch(err){$("source-title").textContent=err.message;$("method-note").textContent="No se pudo cargar esta edición. Consulte la ficha de la obra y sus fuentes; el error de acceso no indica que el texto falte en el catálogo."}
 })();
