@@ -2,7 +2,7 @@
  "schema": "vitruvia-classics-search-registry-v1",
  "updated": "2026-11-23",
  "description": "Registro verificable de transcripciones HTML y textos JSON existentes que admiten búsqueda literal de contenido. No incluye automáticamente PDF escaneados, facsímiles ni fichas sin texto. Los índices auxiliares por locus y el aparato crítico se declaran por separado; no se suman a versiones textuales originales ni implican colación autóptica.",
- "count": 566,
+ "count": 570,
  "works": 425,
  "entries": [
   {
@@ -1863,6 +1863,19 @@
    "title": "Vitarum auctio",
    "language": "en",
    "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg024-en-bcd89363e94a5e12.json",
+   "reader": "classics-text-reader.html?work=cts-tlg0062-tlg024&lang=en&edition=bcd89363e94a5e12",
+   "sourceDescription": "Traducción humana acreditada: Emily James Smith; TEI Perseus, licencia y SHA256 verificados",
+   "sourceUrn": "urn:cts:greekLit:tlg0062.tlg024.perseus-eng5",
+   "sha256": "bcd89363e94a5e1210410581b37dec6ee479c69a95c05c92fd2e1b10148d52c8",
+   "passages": 264
+  },
+  {
+   "workId": "cts-tlg0062-tlg024",
+   "author": "Luciano de Samósata",
+   "title": "Vitarum auctio",
+   "language": "en",
+   "format": "json-passages",
    "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg024-en-e8050b155cf678ee.json",
    "reader": "classics-text-reader.html?work=cts-tlg0062-tlg024&lang=en",
    "sourceDescription": "Traducción humana acreditada: Austin Morris Harmon; TEI Perseus, licencia y SHA256 verificados",
@@ -1885,6 +1898,32 @@
    "workId": "cts-tlg0062-tlg025",
    "author": "Luciano de Samósata",
    "title": "Piscator",
+   "language": "en",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg025-en-0b5fcf26cd9498bc.json",
+   "reader": "classics-text-reader.html?work=cts-tlg0062-tlg025&lang=en&edition=0b5fcf26cd9498bc",
+   "sourceDescription": "Traducción humana acreditada: Austin Morris Harmon; TEI Perseus, licencia y SHA256 verificados",
+   "sourceUrn": "urn:cts:greekLit:tlg0062.tlg025.perseus-eng2",
+   "sha256": "0b5fcf26cd9498bcd7dd4b4290d2e99e45c7aee97339bae12c768cba45cb8c98",
+   "passages": 176
+  },
+  {
+   "workId": "cts-tlg0062-tlg025",
+   "author": "Luciano de Samósata",
+   "title": "Piscator",
+   "language": "en",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg025-en-5f4e6cf74ce2bb90.json",
+   "reader": "classics-text-reader.html?work=cts-tlg0062-tlg025&lang=en&edition=5f4e6cf74ce2bb90",
+   "sourceDescription": "Traducción humana acreditada: Henry Watson Fowler, Francis George Fowler; TEI Perseus, licencia y SHA256 verificados",
+   "sourceUrn": "urn:cts:greekLit:tlg0062.tlg025.perseus-eng4",
+   "sha256": "5f4e6cf74ce2bb906ad147c43d900a7d0bda6ccd9b2d5bd57d0e23a15b55458e",
+   "passages": 179
+  },
+  {
+   "workId": "cts-tlg0062-tlg025",
+   "author": "Luciano de Samósata",
+   "title": "Piscator",
    "language": "grc",
    "format": "json-passages",
    "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg025-grc-7a6f7ffa7b41f39e.json",
@@ -1892,6 +1931,19 @@
    "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
    "sha256": "7a6f7ffa7b41f39e7bdc3df880521eb27f54362f4c0c2deb32aeb5e9066feec1",
    "passages": 177
+  },
+  {
+   "workId": "cts-tlg0062-tlg026",
+   "author": "Luciano de Samósata",
+   "title": "Bis accusatus sive tribunalia",
+   "language": "en",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg026-en-97e4487ad9086066.json",
+   "reader": "classics-text-reader.html?work=cts-tlg0062-tlg026&lang=en&edition=97e4487ad9086066",
+   "sourceDescription": "Traducción humana acreditada: Austin Morris Harmon; TEI Perseus, licencia y SHA256 verificados",
+   "sourceUrn": "urn:cts:greekLit:tlg0062.tlg026.perseus-eng2",
+   "sha256": "97e4487ad9086066213a79ba21d3dc2d950aca606b9272f084dc78200acd187c",
+   "passages": 122
   },
   {
    "workId": "cts-tlg0062-tlg026",

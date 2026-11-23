@@ -1,6 +1,6 @@
 {
  "schema": "vdl-classics-translation-manifest-v1",
- "generated": "2026-11-23T00:43:45.065601+00:00",
+ "generated": "2026-11-23T00:51:24.320858+00:00",
  "method": "Traducciones humanas TEI licenciadas y publicadas en R2 con SHA-256, índice literal por pasaje, sin alineación automática",
  "editions": [
   {
@@ -560,6 +560,99 @@
    ],
    "indexUrl": "https://libros.vitruvius-digital-library.org/corpus/indice/traducciones/cts-tlg0062-tlg024-en-56fd14458b681925.json",
    "indexSha256": "56fd14458b681925afa4818f55c6a2fdae2255faac9d1db78f9af1dc3bda58a8"
+  },
+  {
+   "workId": "cts-tlg0062-tlg024",
+   "author": "Luciano de Samósata",
+   "title": "Vitarum auctio",
+   "language": "en",
+   "filename": "cts-tlg0062-tlg024-en-bcd89363e94a5e12.json",
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg024-en-bcd89363e94a5e12.json",
+   "sha256": "bcd89363e94a5e1210410581b37dec6ee479c69a95c05c92fd2e1b10148d52c8",
+   "passages": 264,
+   "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0062/tlg024/tlg0062.tlg024.perseus-eng5.xml",
+   "sourceUrn": "urn:cts:greekLit:tlg0062.tlg024.perseus-eng5",
+   "sourceSha256": "d153e703c35e10dd4f462408b9a976778f1a21ee0ee5ab102f9bf0339ac2a5c0",
+   "sourceArchived": "https://libros.vitruvius-digital-library.org/corpus/fuentes/d153e703c35e10dd4f462408b9a976778f1a21ee0ee5ab102f9bf0339ac2a5c0.xml",
+   "translators": [
+    "Emily James Smith"
+   ],
+   "publicationYear": 1892,
+   "license": [
+    "https://creativecommons.org/licenses/by-sa/4.0/"
+   ],
+   "indexUrl": "https://libros.vitruvius-digital-library.org/corpus/indice/traducciones/cts-tlg0062-tlg024-en-ea6ace30fbbc140e.json",
+   "indexSha256": "ea6ace30fbbc140ea1c8ed74dd7d8f4bc80bc6575a6b04cc456c721823bb0de7"
+  },
+  {
+   "workId": "cts-tlg0062-tlg025",
+   "author": "Luciano de Samósata",
+   "title": "Piscator",
+   "language": "en",
+   "filename": "cts-tlg0062-tlg025-en-0b5fcf26cd9498bc.json",
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg025-en-0b5fcf26cd9498bc.json",
+   "sha256": "0b5fcf26cd9498bcd7dd4b4290d2e99e45c7aee97339bae12c768cba45cb8c98",
+   "passages": 176,
+   "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0062/tlg025/tlg0062.tlg025.perseus-eng2.xml",
+   "sourceUrn": "urn:cts:greekLit:tlg0062.tlg025.perseus-eng2",
+   "sourceSha256": "b485349efaf414dc55e06490e86e3a395e95359d75ab62cf82ccce2663ba8fa8",
+   "sourceArchived": "https://libros.vitruvius-digital-library.org/corpus/fuentes/b485349efaf414dc55e06490e86e3a395e95359d75ab62cf82ccce2663ba8fa8.xml",
+   "translators": [
+    "Austin Morris Harmon"
+   ],
+   "publicationYear": 1921,
+   "license": [
+    "https://creativecommons.org/licenses/by-sa/4.0/"
+   ],
+   "indexUrl": "https://libros.vitruvius-digital-library.org/corpus/indice/traducciones/cts-tlg0062-tlg025-en-9390990a75590adb.json",
+   "indexSha256": "9390990a75590adb5b3b612abd38f25a287ccd993ec4f87379b3e218a70aec8b"
+  },
+  {
+   "workId": "cts-tlg0062-tlg025",
+   "author": "Luciano de Samósata",
+   "title": "Piscator",
+   "language": "en",
+   "filename": "cts-tlg0062-tlg025-en-5f4e6cf74ce2bb90.json",
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg025-en-5f4e6cf74ce2bb90.json",
+   "sha256": "5f4e6cf74ce2bb906ad147c43d900a7d0bda6ccd9b2d5bd57d0e23a15b55458e",
+   "passages": 179,
+   "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0062/tlg025/tlg0062.tlg025.perseus-eng4.xml",
+   "sourceUrn": "urn:cts:greekLit:tlg0062.tlg025.perseus-eng4",
+   "sourceSha256": "881d6568b17082f2cbf9587fca6e3430aa5907697089cdeaafa36699ec9e1278",
+   "sourceArchived": "https://libros.vitruvius-digital-library.org/corpus/fuentes/881d6568b17082f2cbf9587fca6e3430aa5907697089cdeaafa36699ec9e1278.xml",
+   "translators": [
+    "Henry Watson Fowler",
+    "Francis George Fowler"
+   ],
+   "publicationYear": 1905,
+   "license": [
+    "https://creativecommons.org/licenses/by-sa/4.0/"
+   ],
+   "indexUrl": "https://libros.vitruvius-digital-library.org/corpus/indice/traducciones/cts-tlg0062-tlg025-en-4efde478299b128f.json",
+   "indexSha256": "4efde478299b128f0fc5d965b745fccc9b9a21c5d62d88f9c624b417aa31b3e4"
+  },
+  {
+   "workId": "cts-tlg0062-tlg026",
+   "author": "Luciano de Samósata",
+   "title": "Bis accusatus sive tribunalia",
+   "language": "en",
+   "filename": "cts-tlg0062-tlg026-en-97e4487ad9086066.json",
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg026-en-97e4487ad9086066.json",
+   "sha256": "97e4487ad9086066213a79ba21d3dc2d950aca606b9272f084dc78200acd187c",
+   "passages": 122,
+   "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0062/tlg026/tlg0062.tlg026.perseus-eng2.xml",
+   "sourceUrn": "urn:cts:greekLit:tlg0062.tlg026.perseus-eng2",
+   "sourceSha256": "d837b9f346de5d62f93e8ba09147e89199fc6d061e9f280b3694d2b363461adb",
+   "sourceArchived": "https://libros.vitruvius-digital-library.org/corpus/fuentes/d837b9f346de5d62f93e8ba09147e89199fc6d061e9f280b3694d2b363461adb.xml",
+   "translators": [
+    "Austin Morris Harmon"
+   ],
+   "publicationYear": 1921,
+   "license": [
+    "https://creativecommons.org/licenses/by-sa/4.0/"
+   ],
+   "indexUrl": "https://libros.vitruvius-digital-library.org/corpus/indice/traducciones/cts-tlg0062-tlg026-en-7eda869029001a28.json",
+   "indexSha256": "7eda869029001a28ed1344ab439abc70a8036fae49a63aa1c38c95f94c7ff004"
   }
  ],
  "lastDeferred": [
@@ -658,6 +751,38 @@
   {
    "workId": "cts-tlg0014-tlg044",
    "reason": "Sin traducción publicable: tlg0014.tlg044.perseus-eng2.xml: Edición histórica anterior a 1931 no acreditada"
+  },
+  {
+   "workId": "cts-tlg0014-tlg053",
+   "reason": "Sin traducción publicable: tlg0014.tlg053.perseus-eng2.xml: Edición histórica anterior a 1931 no acreditada"
+  },
+  {
+   "workId": "cts-tlg0014-tlg054",
+   "reason": "Sin traducción publicable: tlg0014.tlg054.perseus-eng2.xml: Edición histórica anterior a 1931 no acreditada"
+  },
+  {
+   "workId": "cts-tlg0014-tlg055",
+   "reason": "Sin traducción publicable: tlg0014.tlg055.perseus-eng2.xml: Edición histórica anterior a 1931 no acreditada"
+  },
+  {
+   "workId": "cts-tlg0014-tlg056",
+   "reason": "Sin traducción publicable: tlg0014.tlg056.perseus-eng2.xml: Edición histórica anterior a 1931 no acreditada"
+  },
+  {
+   "workId": "cts-tlg0014-tlg057",
+   "reason": "Sin traducción publicable: tlg0014.tlg057.perseus-eng2.xml: Edición histórica anterior a 1931 no acreditada"
+  },
+  {
+   "workId": "cts-tlg0014-tlg058",
+   "reason": "Sin traducción publicable: tlg0014.tlg058.perseus-eng2.xml: Edición histórica anterior a 1931 no acreditada"
+  },
+  {
+   "workId": "cts-tlg0014-tlg059",
+   "reason": "Sin traducción publicable: tlg0014.tlg059.perseus-eng2.xml: Edición histórica anterior a 1931 no acreditada"
+  },
+  {
+   "workId": "cts-tlg0014-tlg060",
+   "reason": "Sin traducción publicable: tlg0014.tlg060.perseus-eng2.xml: Edición histórica anterior a 1931 no acreditada"
   }
  ],
  "policy": "Una obra bibliográfica, varias versiones humanas identificadas por URN, sin eliminar ni reemplazar ninguna"

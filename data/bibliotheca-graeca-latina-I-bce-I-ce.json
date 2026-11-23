@@ -34706,6 +34706,14 @@
      "reader": "classics-text-reader.html?work=cts-tlg0062-tlg024&lang=en&edition=5b53d953866c07d4",
      "sourceUrn": "urn:cts:greekLit:tlg0062.tlg024.perseus-eng4",
      "sha256": "5b53d953866c07d49df1b0516a380e75da42bd3e3a0fe5820e6d597dfcbf5cf8"
+    },
+    {
+     "language": "en",
+     "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg024-en-bcd89363e94a5e12.json",
+     "label": "Traducción humana: Emily James Smith",
+     "reader": "classics-text-reader.html?work=cts-tlg0062-tlg024&lang=en&edition=bcd89363e94a5e12",
+     "sourceUrn": "urn:cts:greekLit:tlg0062.tlg024.perseus-eng5",
+     "sha256": "bcd89363e94a5e1210410581b37dec6ee479c69a95c05c92fd2e1b10148d52c8"
     }
    ],
    "publicStatus": "lectura-local-parcial",
@@ -34770,6 +34778,19 @@
      ],
      "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg024-en-5b53d953866c07d4.json",
      "indexUrl": "https://libros.vitruvius-digital-library.org/corpus/indice/traducciones/cts-tlg0062-tlg024-en-56fd14458b681925.json"
+    },
+    {
+     "language": "en",
+     "translators": [
+      "Emily James Smith"
+     ],
+     "publicationYear": 1892,
+     "sourceUrn": "urn:cts:greekLit:tlg0062.tlg024.perseus-eng5",
+     "license": [
+      "https://creativecommons.org/licenses/by-sa/4.0/"
+     ],
+     "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg024-en-bcd89363e94a5e12.json",
+     "indexUrl": "https://libros.vitruvius-digital-library.org/corpus/indice/traducciones/cts-tlg0062-tlg024-en-ea6ace30fbbc140e.json"
     }
    ]
   },
@@ -35054,7 +35075,8 @@
    "relatedWorkIds": [],
    "catalogueProvenance": "Título y autor de los catálogos CTS del sitio; edición contrastada con su cabecera TEI. No se retrotraduce el título.",
    "corpusFiles": {
-    "grc": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg025-grc-7a6f7ffa7b41f39e.json"
+    "grc": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg025-grc-7a6f7ffa7b41f39e.json",
+    "en": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg025-en-0b5fcf26cd9498bc.json"
    },
    "localVersions": [
     {
@@ -35062,6 +35084,22 @@
      "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg025-grc-7a6f7ffa7b41f39e.json",
      "label": "Original grc · edición TEI en R2",
      "reader": "classics-text-reader.html?work=cts-tlg0062-tlg025&lang=grc"
+    },
+    {
+     "language": "en",
+     "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg025-en-0b5fcf26cd9498bc.json",
+     "label": "Traducción humana: Austin Morris Harmon",
+     "reader": "classics-text-reader.html?work=cts-tlg0062-tlg025&lang=en&edition=0b5fcf26cd9498bc",
+     "sourceUrn": "urn:cts:greekLit:tlg0062.tlg025.perseus-eng2",
+     "sha256": "0b5fcf26cd9498bcd7dd4b4290d2e99e45c7aee97339bae12c768cba45cb8c98"
+    },
+    {
+     "language": "en",
+     "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg025-en-5f4e6cf74ce2bb90.json",
+     "label": "Traducción humana: Henry Watson Fowler, Francis George Fowler",
+     "reader": "classics-text-reader.html?work=cts-tlg0062-tlg025&lang=en&edition=5f4e6cf74ce2bb90",
+     "sourceUrn": "urn:cts:greekLit:tlg0062.tlg025.perseus-eng4",
+     "sha256": "5f4e6cf74ce2bb906ad147c43d900a7d0bda6ccd9b2d5bd57d0e23a15b55458e"
     }
    ],
    "publicStatus": "lectura-local-parcial",
@@ -35098,7 +35136,36 @@
     "characters": 40859,
     "bytes": 109716,
     "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg025-grc-7a6f7ffa7b41f39e.json"
-   }
+   },
+   "humanTranslations": [
+    {
+     "language": "en",
+     "translators": [
+      "Austin Morris Harmon"
+     ],
+     "publicationYear": 1921,
+     "sourceUrn": "urn:cts:greekLit:tlg0062.tlg025.perseus-eng2",
+     "license": [
+      "https://creativecommons.org/licenses/by-sa/4.0/"
+     ],
+     "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg025-en-0b5fcf26cd9498bc.json",
+     "indexUrl": "https://libros.vitruvius-digital-library.org/corpus/indice/traducciones/cts-tlg0062-tlg025-en-9390990a75590adb.json"
+    },
+    {
+     "language": "en",
+     "translators": [
+      "Henry Watson Fowler",
+      "Francis George Fowler"
+     ],
+     "publicationYear": 1905,
+     "sourceUrn": "urn:cts:greekLit:tlg0062.tlg025.perseus-eng4",
+     "license": [
+      "https://creativecommons.org/licenses/by-sa/4.0/"
+     ],
+     "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg025-en-5f4e6cf74ce2bb90.json",
+     "indexUrl": "https://libros.vitruvius-digital-library.org/corpus/indice/traducciones/cts-tlg0062-tlg025-en-4efde478299b128f.json"
+    }
+   ]
   },
   {
    "id": "cts-tlg0062-tlg027",
@@ -35206,7 +35273,8 @@
    "relatedWorkIds": [],
    "catalogueProvenance": "Título y autor de los catálogos CTS del sitio; edición contrastada con su cabecera TEI. No se retrotraduce el título.",
    "corpusFiles": {
-    "grc": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg026-grc-5c566e511a39164c.json"
+    "grc": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg026-grc-5c566e511a39164c.json",
+    "en": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg026-en-97e4487ad9086066.json"
    },
    "localVersions": [
     {
@@ -35214,6 +35282,14 @@
      "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg026-grc-5c566e511a39164c.json",
      "label": "Original grc · edición TEI en R2",
      "reader": "classics-text-reader.html?work=cts-tlg0062-tlg026&lang=grc"
+    },
+    {
+     "language": "en",
+     "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg026-en-97e4487ad9086066.json",
+     "label": "Traducción humana: Austin Morris Harmon",
+     "reader": "classics-text-reader.html?work=cts-tlg0062-tlg026&lang=en&edition=97e4487ad9086066",
+     "sourceUrn": "urn:cts:greekLit:tlg0062.tlg026.perseus-eng2",
+     "sha256": "97e4487ad9086066213a79ba21d3dc2d950aca606b9272f084dc78200acd187c"
     }
    ],
    "publicStatus": "lectura-local-parcial",
@@ -35250,7 +35326,22 @@
     "characters": 35989,
     "bytes": 92073,
     "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg026-grc-5c566e511a39164c.json"
-   }
+   },
+   "humanTranslations": [
+    {
+     "language": "en",
+     "translators": [
+      "Austin Morris Harmon"
+     ],
+     "publicationYear": 1921,
+     "sourceUrn": "urn:cts:greekLit:tlg0062.tlg026.perseus-eng2",
+     "license": [
+      "https://creativecommons.org/licenses/by-sa/4.0/"
+     ],
+     "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg026-en-97e4487ad9086066.json",
+     "indexUrl": "https://libros.vitruvius-digital-library.org/corpus/indice/traducciones/cts-tlg0062-tlg026-en-7eda869029001a28.json"
+    }
+   ]
   },
   {
    "id": "cts-tlg0014-tlg003",

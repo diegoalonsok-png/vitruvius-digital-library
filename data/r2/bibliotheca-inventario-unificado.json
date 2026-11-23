@@ -1,6 +1,6 @@
 {
   "schema": "vdl-federated-bibliotheca-inventory-v1",
-  "generated": "2026-11-23T00:47:26.487979+00:00",
+  "generated": "2026-11-23T00:51:24.447516+00:00",
   "method": "Master works and additional R2 works counted separately; edition relations can be many-to-many. Remote text URLs are declared, not live-verified. Unresolved editions are never merged automatically.",
   "counts": {
     "cataloguedWorks": 327,
@@ -7632,6 +7632,10 @@
         },
         {
           "language": "en",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg024-en-bcd89363e94a5e12.json"
+        },
+        {
+          "language": "en",
           "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg024-en-e8050b155cf678ee.json"
         },
         {
@@ -7695,6 +7699,14 @@
       "locallyIndexedText": [],
       "declaredRemoteIndexedText": [
         {
+          "language": "en",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg025-en-0b5fcf26cd9498bc.json"
+        },
+        {
+          "language": "en",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg025-en-5f4e6cf74ce2bb90.json"
+        },
+        {
           "language": "grc",
           "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg025-grc-7a6f7ffa7b41f39e.json"
         }
@@ -7722,6 +7734,10 @@
       "catalogue": "github",
       "locallyIndexedText": [],
       "declaredRemoteIndexedText": [
+        {
+          "language": "en",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg026-en-97e4487ad9086066.json"
+        },
         {
           "language": "grc",
           "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg026-grc-5c566e511a39164c.json"
