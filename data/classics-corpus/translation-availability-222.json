@@ -4,26 +4,26 @@
   "basis": "Cálculo a partir de works[] y search-registry.json. Los campos de compatibilidad locallyIndexedWorks y localEditionLanguages incluyen índices registrados en R2. originalIndexed y verifiedLocalEditionLanguages solo cuentan archivos locales. originalR2Registered identifica declaraciones remotas; no certifica disponibilidad HTTP ni cotejo.",
   "scope": "271 obras del repertorio grecolatino; originales locales, índices remotos declarados y traducciones alojadas ES/EN/FR",
   "totals": {
-    "cataloguedWorks": 316,
-    "locallyIndexedWorks": 286,
+    "cataloguedWorks": 327,
+    "locallyIndexedWorks": 297,
     "translatedWorksLocal": 78,
-    "worksWithoutHostedTranslation": 238,
+    "worksWithoutHostedTranslation": 249,
     "localTranslationLanguages": {
       "es": 5,
       "en": 77,
       "fr": 2
     },
     "originalTextIndexed": 197,
-    "originalTextNotIndexed": 119,
+    "originalTextNotIndexed": 130,
     "verifiedLocalFileWorks": 199,
-    "declaredRemoteOnlyWorks": 87,
-    "declaredR2OriginalWorks": 89,
-    "registeredOriginalWorks": 286,
-    "registeredTextVersions": 394,
+    "declaredRemoteOnlyWorks": 98,
+    "declaredR2OriginalWorks": 100,
+    "registeredOriginalWorks": 297,
+    "registeredTextVersions": 405,
     "verifiedLocalTextVersions": 281,
     "verifiedLocalOriginalTextIndexed": 197,
     "supplementaryTextVersions": 161,
-    "allRegisteredTextVersions": 555
+    "allRegisteredTextVersions": 566
   },
   "works": [
     {
@@ -7982,6 +7982,248 @@
       "id": "cts-tlg0062-tlg045",
       "author": "Luciano de Samósata",
       "title": "De saltatione",
+      "originalLanguage": "grc",
+      "translationLanguages": [],
+      "localEditionLanguages": [
+        "grc"
+      ],
+      "notes": "Edición TEI incorporada en R2; sin traducción humana ni colación independiente acreditadas.",
+      "originalIndexed": false,
+      "originalR2Registered": true,
+      "registeredOriginal": true,
+      "verifiedLocalEditionLanguages": [],
+      "registeredEditionLanguages": [
+        "grc"
+      ],
+      "remoteEditionLanguages": [
+        "grc"
+      ],
+      "readingStatus": "lectura-local-parcial"
+    },
+    {
+      "id": "cts-tlg0014-tlg055",
+      "author": "Demóstenes",
+      "title": "Against Callicles",
+      "originalLanguage": "grc",
+      "translationLanguages": [],
+      "localEditionLanguages": [
+        "grc"
+      ],
+      "notes": "Edición TEI incorporada en R2; sin traducción humana ni colación independiente acreditadas.",
+      "originalIndexed": false,
+      "originalR2Registered": true,
+      "registeredOriginal": true,
+      "verifiedLocalEditionLanguages": [],
+      "registeredEditionLanguages": [
+        "grc"
+      ],
+      "remoteEditionLanguages": [
+        "grc"
+      ],
+      "readingStatus": "lectura-local-parcial"
+    },
+    {
+      "id": "cts-tlg0014-tlg056",
+      "author": "Demóstenes",
+      "title": "Against Dionysodorus",
+      "originalLanguage": "grc",
+      "translationLanguages": [],
+      "localEditionLanguages": [
+        "grc"
+      ],
+      "notes": "Edición TEI incorporada en R2; sin traducción humana ni colación independiente acreditadas.",
+      "originalIndexed": false,
+      "originalR2Registered": true,
+      "registeredOriginal": true,
+      "verifiedLocalEditionLanguages": [],
+      "registeredEditionLanguages": [
+        "grc"
+      ],
+      "remoteEditionLanguages": [
+        "grc"
+      ],
+      "readingStatus": "lectura-local-parcial"
+    },
+    {
+      "id": "cts-tlg0014-tlg054",
+      "author": "Demóstenes",
+      "title": "Against Conon",
+      "originalLanguage": "grc",
+      "translationLanguages": [],
+      "localEditionLanguages": [
+        "grc"
+      ],
+      "notes": "Edición TEI incorporada en R2; sin traducción humana ni colación independiente acreditadas.",
+      "originalIndexed": false,
+      "originalR2Registered": true,
+      "registeredOriginal": true,
+      "verifiedLocalEditionLanguages": [],
+      "registeredEditionLanguages": [
+        "grc"
+      ],
+      "remoteEditionLanguages": [
+        "grc"
+      ],
+      "readingStatus": "lectura-local-parcial"
+    },
+    {
+      "id": "cts-tlg0014-tlg053",
+      "author": "Demóstenes",
+      "title": "Apollodorus Against Nicostratus",
+      "originalLanguage": "grc",
+      "translationLanguages": [],
+      "localEditionLanguages": [
+        "grc"
+      ],
+      "notes": "Edición TEI incorporada en R2; sin traducción humana ni colación independiente acreditadas.",
+      "originalIndexed": false,
+      "originalR2Registered": true,
+      "registeredOriginal": true,
+      "verifiedLocalEditionLanguages": [],
+      "registeredEditionLanguages": [
+        "grc"
+      ],
+      "remoteEditionLanguages": [
+        "grc"
+      ],
+      "readingStatus": "lectura-local-parcial"
+    },
+    {
+      "id": "cts-tlg0014-tlg057",
+      "author": "Demóstenes",
+      "title": "Against Eubulides",
+      "originalLanguage": "grc",
+      "translationLanguages": [],
+      "localEditionLanguages": [
+        "grc"
+      ],
+      "notes": "Edición TEI incorporada en R2; sin traducción humana ni colación independiente acreditadas.",
+      "originalIndexed": false,
+      "originalR2Registered": true,
+      "registeredOriginal": true,
+      "verifiedLocalEditionLanguages": [],
+      "registeredEditionLanguages": [
+        "grc"
+      ],
+      "remoteEditionLanguages": [
+        "grc"
+      ],
+      "readingStatus": "lectura-local-parcial"
+    },
+    {
+      "id": "cts-tlg0014-tlg060",
+      "author": "Demóstenes",
+      "title": "The Funeral Speech",
+      "originalLanguage": "grc",
+      "translationLanguages": [],
+      "localEditionLanguages": [
+        "grc"
+      ],
+      "notes": "Edición TEI incorporada en R2; sin traducción humana ni colación independiente acreditadas.",
+      "originalIndexed": false,
+      "originalR2Registered": true,
+      "registeredOriginal": true,
+      "verifiedLocalEditionLanguages": [],
+      "registeredEditionLanguages": [
+        "grc"
+      ],
+      "remoteEditionLanguages": [
+        "grc"
+      ],
+      "readingStatus": "lectura-local-parcial"
+    },
+    {
+      "id": "cts-tlg0014-tlg059",
+      "author": "Demóstenes",
+      "title": "Theomnestus and Apollodorus Against Neaera",
+      "originalLanguage": "grc",
+      "translationLanguages": [],
+      "localEditionLanguages": [
+        "grc"
+      ],
+      "notes": "Edición TEI incorporada en R2; sin traducción humana ni colación independiente acreditadas.",
+      "originalIndexed": false,
+      "originalR2Registered": true,
+      "registeredOriginal": true,
+      "verifiedLocalEditionLanguages": [],
+      "registeredEditionLanguages": [
+        "grc"
+      ],
+      "remoteEditionLanguages": [
+        "grc"
+      ],
+      "readingStatus": "lectura-local-parcial"
+    },
+    {
+      "id": "cts-tlg0014-tlg058",
+      "author": "Demóstenes",
+      "title": "Against Theocrines",
+      "originalLanguage": "grc",
+      "translationLanguages": [],
+      "localEditionLanguages": [
+        "grc"
+      ],
+      "notes": "Edición TEI incorporada en R2; sin traducción humana ni colación independiente acreditadas.",
+      "originalIndexed": false,
+      "originalR2Registered": true,
+      "registeredOriginal": true,
+      "verifiedLocalEditionLanguages": [],
+      "registeredEditionLanguages": [
+        "grc"
+      ],
+      "remoteEditionLanguages": [
+        "grc"
+      ],
+      "readingStatus": "lectura-local-parcial"
+    },
+    {
+      "id": "cts-tlg0062-tlg049",
+      "author": "Luciano de Samósata",
+      "title": "Pseudologista",
+      "originalLanguage": "grc",
+      "translationLanguages": [],
+      "localEditionLanguages": [
+        "grc"
+      ],
+      "notes": "Edición TEI incorporada en R2; sin traducción humana ni colación independiente acreditadas.",
+      "originalIndexed": false,
+      "originalR2Registered": true,
+      "registeredOriginal": true,
+      "verifiedLocalEditionLanguages": [],
+      "registeredEditionLanguages": [
+        "grc"
+      ],
+      "remoteEditionLanguages": [
+        "grc"
+      ],
+      "readingStatus": "lectura-local-parcial"
+    },
+    {
+      "id": "cts-tlg0062-tlg051",
+      "author": "Luciano de Samósata",
+      "title": "Tyrannicida",
+      "originalLanguage": "grc",
+      "translationLanguages": [],
+      "localEditionLanguages": [
+        "grc"
+      ],
+      "notes": "Edición TEI incorporada en R2; sin traducción humana ni colación independiente acreditadas.",
+      "originalIndexed": false,
+      "originalR2Registered": true,
+      "registeredOriginal": true,
+      "verifiedLocalEditionLanguages": [],
+      "registeredEditionLanguages": [
+        "grc"
+      ],
+      "remoteEditionLanguages": [
+        "grc"
+      ],
+      "readingStatus": "lectura-local-parcial"
+    },
+    {
+      "id": "cts-tlg0062-tlg050",
+      "author": "Luciano de Samósata",
+      "title": "Deorum concilium",
       "originalLanguage": "grc",
       "translationLanguages": [],
       "localEditionLanguages": [

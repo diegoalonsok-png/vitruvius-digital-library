@@ -4,17 +4,17 @@
   "scope": "Se auditan exclusivamente 271 fichas de obras del catálogo local; no es un censo universal de literatura grecolatina.",
   "method": "Cruce de fichas bibliográficas, vínculos locales, corpus legible, registro de búsqueda y testimonios manuscritos; sin OCR ni verificación externa de los enlaces.",
   "counts": {
-    "cataloguedWorks": 316,
+    "cataloguedWorks": 327,
     "catalogueStatuses": {
       "lectura-local-completa": 31,
-      "lectura-local-parcial": 210,
+      "lectura-local-parcial": 221,
       "fuente-externa-identificada": 61,
       "repertoriado-busqueda-externa": 12,
       "pendiente-de-incorporar": 2
     },
-    "locallyReadableClaims": 241,
-    "indexedTextVersions": 394,
-    "indexedDistinctWorks": 286,
+    "locallyReadableClaims": 252,
+    "indexedTextVersions": 405,
+    "indexedDistinctWorks": 297,
     "manuscriptWitnesses": 107
   },
   "works": [
@@ -6834,6 +6834,171 @@
       ],
       "indexedTextFiles": [
         "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg045-grc-b21d1ff03ba735ab.json"
+      ],
+      "manuscriptRecords": 0,
+      "hasManuscriptRecord": false
+    },
+    {
+      "id": "cts-tlg0014-tlg055",
+      "author": "Demóstenes",
+      "title": "Against Callicles",
+      "originalLanguage": "grc",
+      "catalogueStatus": "lectura-local-parcial",
+      "indexedTextLanguages": [
+        "grc"
+      ],
+      "indexedTextFiles": [
+        "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0014-tlg055-grc-ccda01b8dfcd795a.json"
+      ],
+      "manuscriptRecords": 0,
+      "hasManuscriptRecord": false
+    },
+    {
+      "id": "cts-tlg0014-tlg056",
+      "author": "Demóstenes",
+      "title": "Against Dionysodorus",
+      "originalLanguage": "grc",
+      "catalogueStatus": "lectura-local-parcial",
+      "indexedTextLanguages": [
+        "grc"
+      ],
+      "indexedTextFiles": [
+        "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0014-tlg056-grc-b735a1a7c628d792.json"
+      ],
+      "manuscriptRecords": 0,
+      "hasManuscriptRecord": false
+    },
+    {
+      "id": "cts-tlg0014-tlg054",
+      "author": "Demóstenes",
+      "title": "Against Conon",
+      "originalLanguage": "grc",
+      "catalogueStatus": "lectura-local-parcial",
+      "indexedTextLanguages": [
+        "grc"
+      ],
+      "indexedTextFiles": [
+        "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0014-tlg054-grc-3782eb2a4375954a.json"
+      ],
+      "manuscriptRecords": 0,
+      "hasManuscriptRecord": false
+    },
+    {
+      "id": "cts-tlg0014-tlg053",
+      "author": "Demóstenes",
+      "title": "Apollodorus Against Nicostratus",
+      "originalLanguage": "grc",
+      "catalogueStatus": "lectura-local-parcial",
+      "indexedTextLanguages": [
+        "grc"
+      ],
+      "indexedTextFiles": [
+        "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0014-tlg053-grc-a7f8f798a1f833b4.json"
+      ],
+      "manuscriptRecords": 0,
+      "hasManuscriptRecord": false
+    },
+    {
+      "id": "cts-tlg0014-tlg057",
+      "author": "Demóstenes",
+      "title": "Against Eubulides",
+      "originalLanguage": "grc",
+      "catalogueStatus": "lectura-local-parcial",
+      "indexedTextLanguages": [
+        "grc"
+      ],
+      "indexedTextFiles": [
+        "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0014-tlg057-grc-1ddd193ab0b9dc78.json"
+      ],
+      "manuscriptRecords": 0,
+      "hasManuscriptRecord": false
+    },
+    {
+      "id": "cts-tlg0014-tlg060",
+      "author": "Demóstenes",
+      "title": "The Funeral Speech",
+      "originalLanguage": "grc",
+      "catalogueStatus": "lectura-local-parcial",
+      "indexedTextLanguages": [
+        "grc"
+      ],
+      "indexedTextFiles": [
+        "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0014-tlg060-grc-9d87d5853f4e0147.json"
+      ],
+      "manuscriptRecords": 0,
+      "hasManuscriptRecord": false
+    },
+    {
+      "id": "cts-tlg0014-tlg059",
+      "author": "Demóstenes",
+      "title": "Theomnestus and Apollodorus Against Neaera",
+      "originalLanguage": "grc",
+      "catalogueStatus": "lectura-local-parcial",
+      "indexedTextLanguages": [
+        "grc"
+      ],
+      "indexedTextFiles": [
+        "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0014-tlg059-grc-a802a67e8b1167ea.json"
+      ],
+      "manuscriptRecords": 0,
+      "hasManuscriptRecord": false
+    },
+    {
+      "id": "cts-tlg0014-tlg058",
+      "author": "Demóstenes",
+      "title": "Against Theocrines",
+      "originalLanguage": "grc",
+      "catalogueStatus": "lectura-local-parcial",
+      "indexedTextLanguages": [
+        "grc"
+      ],
+      "indexedTextFiles": [
+        "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0014-tlg058-grc-de4b35f9a7d9034d.json"
+      ],
+      "manuscriptRecords": 0,
+      "hasManuscriptRecord": false
+    },
+    {
+      "id": "cts-tlg0062-tlg049",
+      "author": "Luciano de Samósata",
+      "title": "Pseudologista",
+      "originalLanguage": "grc",
+      "catalogueStatus": "lectura-local-parcial",
+      "indexedTextLanguages": [
+        "grc"
+      ],
+      "indexedTextFiles": [
+        "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg049-grc-d7554c7ed9688c6b.json"
+      ],
+      "manuscriptRecords": 0,
+      "hasManuscriptRecord": false
+    },
+    {
+      "id": "cts-tlg0062-tlg051",
+      "author": "Luciano de Samósata",
+      "title": "Tyrannicida",
+      "originalLanguage": "grc",
+      "catalogueStatus": "lectura-local-parcial",
+      "indexedTextLanguages": [
+        "grc"
+      ],
+      "indexedTextFiles": [
+        "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg051-grc-1f17c8d70e1d41e7.json"
+      ],
+      "manuscriptRecords": 0,
+      "hasManuscriptRecord": false
+    },
+    {
+      "id": "cts-tlg0062-tlg050",
+      "author": "Luciano de Samósata",
+      "title": "Deorum concilium",
+      "originalLanguage": "grc",
+      "catalogueStatus": "lectura-local-parcial",
+      "indexedTextLanguages": [
+        "grc"
+      ],
+      "indexedTextFiles": [
+        "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg050-grc-16347c3d048e2e0a.json"
       ],
       "manuscriptRecords": 0,
       "hasManuscriptRecord": false

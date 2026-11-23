@@ -37101,6 +37101,828 @@
     "bytes": 103843,
     "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg045-grc-b21d1ff03ba735ab.json"
    }
+  },
+  {
+   "id": "cts-tlg0014-tlg055",
+   "author": "Demóstenes",
+   "title": "Against Callicles",
+   "language": "grc",
+   "genre": "Corpus clásico ampliado",
+   "dating": "330 a. C.",
+   "reading": {
+    "url": "classics-text-reader.html?work=cts-tlg0014-tlg055&lang=grc&edition=ccda01b8dfcd795a",
+    "status": "Edición TEI alojada en R2 con búsqueda y traducción automática por pasaje"
+   },
+   "manuscript": {
+    "status": "Sin testimonio manuscrito individual asignado; la edición TEI se identifica por separado"
+   },
+   "pdf": {
+    "url": null,
+    "status": "No consta PDF ni facsímil individual verificado para esta edición"
+   },
+   "translation": {
+    "status": "Traducción automática de consulta por pasaje; no se atribuye a un traductor académico"
+   },
+   "links": {
+    "scaife": "https://scaife.perseus.org/library/urn:cts:greekLit:tlg0014.tlg055.perseus-grc2/"
+   },
+   "aliases": [
+    "urn:cts:greekLit:tlg0014.tlg055.perseus-grc2"
+   ],
+   "relatedWorkIds": [],
+   "catalogueProvenance": "Título y autor de los catálogos CTS del sitio; edición contrastada con su cabecera TEI. No se retrotraduce el título.",
+   "corpusFiles": {
+    "grc": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0014-tlg055-grc-ccda01b8dfcd795a.json"
+   },
+   "localVersions": [
+    {
+     "language": "grc",
+     "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0014-tlg055-grc-ccda01b8dfcd795a.json",
+     "label": "Original grc · edición TEI en R2",
+     "reader": "classics-text-reader.html?work=cts-tlg0014-tlg055&lang=grc&edition=ccda01b8dfcd795a"
+    }
+   ],
+   "publicStatus": "lectura-local-parcial",
+   "indexedEdition": {
+    "sources": [
+     {
+      "title": "πρὸς Καλλικλέα περὶ χωρίου βλάβης",
+      "titleLanguage": "grc",
+      "author": "Demosthenes",
+      "editors": [
+       "William Rennie"
+      ],
+      "bibliography": "Demosthenes Orationes William Rennie Clarendon Press Oxford 1931 3 Internet Archive",
+      "licences": [
+       {
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+       }
+      ],
+      "editionUrn": "urn:cts:greekLit:tlg0014.tlg055.perseus-grc2",
+      "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0014/tlg055/tlg0014.tlg055.perseus-grc2.xml",
+      "sourceSha256": "6f3f7ccd934c8781b7ee8e19f534ae9c94196a00e0812779e0180858a81f7c56",
+      "sourceReferences": [],
+      "publicationYear": "1931",
+      "publisher": "Clarendon Press",
+      "publicationPlace": "Oxford",
+      "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/6f3f7ccd934c8781b7ee8e19f534ae9c94196a00e0812779e0180858a81f7c56.xml"
+     }
+    ],
+    "sha256": "ccda01b8dfcd795ae558b6f65cd904bdab76fdeb8611f31088056fa197423309",
+    "passages": 40,
+    "characters": 13421,
+    "bytes": 34373,
+    "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0014-tlg055-grc-ccda01b8dfcd795a.json"
+   }
+  },
+  {
+   "id": "cts-tlg0014-tlg056",
+   "author": "Demóstenes",
+   "title": "Against Dionysodorus",
+   "language": "grc",
+   "genre": "Corpus clásico ampliado",
+   "dating": "330 a. C.",
+   "reading": {
+    "url": "classics-text-reader.html?work=cts-tlg0014-tlg056&lang=grc&edition=b735a1a7c628d792",
+    "status": "Edición TEI alojada en R2 con búsqueda y traducción automática por pasaje"
+   },
+   "manuscript": {
+    "status": "Sin testimonio manuscrito individual asignado; la edición TEI se identifica por separado"
+   },
+   "pdf": {
+    "url": null,
+    "status": "No consta PDF ni facsímil individual verificado para esta edición"
+   },
+   "translation": {
+    "status": "Traducción automática de consulta por pasaje; no se atribuye a un traductor académico"
+   },
+   "links": {
+    "scaife": "https://scaife.perseus.org/library/urn:cts:greekLit:tlg0014.tlg056.perseus-grc2/"
+   },
+   "aliases": [
+    "urn:cts:greekLit:tlg0014.tlg056.perseus-grc2"
+   ],
+   "relatedWorkIds": [],
+   "catalogueProvenance": "Título y autor de los catálogos CTS del sitio; edición contrastada con su cabecera TEI. No se retrotraduce el título.",
+   "corpusFiles": {
+    "grc": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0014-tlg056-grc-b735a1a7c628d792.json"
+   },
+   "localVersions": [
+    {
+     "language": "grc",
+     "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0014-tlg056-grc-b735a1a7c628d792.json",
+     "label": "Original grc · edición TEI en R2",
+     "reader": "classics-text-reader.html?work=cts-tlg0014-tlg056&lang=grc&edition=b735a1a7c628d792"
+    }
+   ],
+   "publicStatus": "lectura-local-parcial",
+   "indexedEdition": {
+    "sources": [
+     {
+      "title": "κατὰ Διονυσοδώρου βλάβης",
+      "titleLanguage": "grc",
+      "author": "Demosthenes",
+      "editors": [
+       "William Rennie"
+      ],
+      "bibliography": "Demosthenes Orationes William Rennie Clarendon Press Oxford 1931 3 Internet Archive",
+      "licences": [
+       {
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+       }
+      ],
+      "editionUrn": "urn:cts:greekLit:tlg0014.tlg056.perseus-grc2",
+      "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0014/tlg056/tlg0014.tlg056.perseus-grc2.xml",
+      "sourceSha256": "d754fc13b8cb0645361766e0ebf526b833e097a1466f82a4274190e7afcd3e07",
+      "sourceReferences": [],
+      "publicationYear": "1931",
+      "publisher": "Clarendon Press",
+      "publicationPlace": "Oxford",
+      "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/d754fc13b8cb0645361766e0ebf526b833e097a1466f82a4274190e7afcd3e07.xml"
+     }
+    ],
+    "sha256": "b735a1a7c628d792993410406c784532f6c4053810c2c4a8fff59592d0759579",
+    "passages": 60,
+    "characters": 20907,
+    "bytes": 52371,
+    "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0014-tlg056-grc-b735a1a7c628d792.json"
+   }
+  },
+  {
+   "id": "cts-tlg0014-tlg054",
+   "author": "Demóstenes",
+   "title": "Against Conon",
+   "language": "grc",
+   "genre": "Corpus clásico ampliado",
+   "dating": "330 a. C.",
+   "reading": {
+    "url": "classics-text-reader.html?work=cts-tlg0014-tlg054&lang=grc&edition=3782eb2a4375954a",
+    "status": "Edición TEI alojada en R2 con búsqueda y traducción automática por pasaje"
+   },
+   "manuscript": {
+    "status": "Sin testimonio manuscrito individual asignado; la edición TEI se identifica por separado"
+   },
+   "pdf": {
+    "url": null,
+    "status": "No consta PDF ni facsímil individual verificado para esta edición"
+   },
+   "translation": {
+    "status": "Traducción automática de consulta por pasaje; no se atribuye a un traductor académico"
+   },
+   "links": {
+    "scaife": "https://scaife.perseus.org/library/urn:cts:greekLit:tlg0014.tlg054.perseus-grc2/"
+   },
+   "aliases": [
+    "urn:cts:greekLit:tlg0014.tlg054.perseus-grc2"
+   ],
+   "relatedWorkIds": [],
+   "catalogueProvenance": "Título y autor de los catálogos CTS del sitio; edición contrastada con su cabecera TEI. No se retrotraduce el título.",
+   "corpusFiles": {
+    "grc": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0014-tlg054-grc-3782eb2a4375954a.json"
+   },
+   "localVersions": [
+    {
+     "language": "grc",
+     "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0014-tlg054-grc-3782eb2a4375954a.json",
+     "label": "Original grc · edición TEI en R2",
+     "reader": "classics-text-reader.html?work=cts-tlg0014-tlg054&lang=grc&edition=3782eb2a4375954a"
+    }
+   ],
+   "publicStatus": "lectura-local-parcial",
+   "indexedEdition": {
+    "sources": [
+     {
+      "title": "κατὰ Κόνωνος αἰκείας",
+      "titleLanguage": "grc",
+      "author": "Demosthenes",
+      "editors": [
+       "William Rennie"
+      ],
+      "bibliography": "Demosthenes Orationes William Rennie Clarendon Press Oxford 1931 3 Internet Archive",
+      "licences": [
+       {
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+       }
+      ],
+      "editionUrn": "urn:cts:greekLit:tlg0014.tlg054.perseus-grc2",
+      "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0014/tlg054/tlg0014.tlg054.perseus-grc2.xml",
+      "sourceSha256": "add3634b1903946eb8010426e0064169044cb83173414df6a6072adad59fd439",
+      "sourceReferences": [],
+      "publicationYear": "1931",
+      "publisher": "Clarendon Press",
+      "publicationPlace": "Oxford",
+      "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/add3634b1903946eb8010426e0064169044cb83173414df6a6072adad59fd439.xml"
+     }
+    ],
+    "sha256": "3782eb2a4375954a2aadb0e6aa3bfc53f00fbc71d16c55ed8006cf19f8216f84",
+    "passages": 56,
+    "characters": 20236,
+    "bytes": 50232,
+    "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0014-tlg054-grc-3782eb2a4375954a.json"
+   }
+  },
+  {
+   "id": "cts-tlg0014-tlg053",
+   "author": "Demóstenes",
+   "title": "Apollodorus Against Nicostratus",
+   "language": "grc",
+   "genre": "Corpus clásico ampliado",
+   "dating": "330 a. C.",
+   "reading": {
+    "url": "classics-text-reader.html?work=cts-tlg0014-tlg053&lang=grc&edition=a7f8f798a1f833b4",
+    "status": "Edición TEI alojada en R2 con búsqueda y traducción automática por pasaje"
+   },
+   "manuscript": {
+    "status": "Sin testimonio manuscrito individual asignado; la edición TEI se identifica por separado"
+   },
+   "pdf": {
+    "url": null,
+    "status": "No consta PDF ni facsímil individual verificado para esta edición"
+   },
+   "translation": {
+    "status": "Traducción automática de consulta por pasaje; no se atribuye a un traductor académico"
+   },
+   "links": {
+    "scaife": "https://scaife.perseus.org/library/urn:cts:greekLit:tlg0014.tlg053.perseus-grc2/"
+   },
+   "aliases": [
+    "urn:cts:greekLit:tlg0014.tlg053.perseus-grc2"
+   ],
+   "relatedWorkIds": [],
+   "catalogueProvenance": "Título y autor de los catálogos CTS del sitio; edición contrastada con su cabecera TEI. No se retrotraduce el título.",
+   "corpusFiles": {
+    "grc": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0014-tlg053-grc-a7f8f798a1f833b4.json"
+   },
+   "localVersions": [
+    {
+     "language": "grc",
+     "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0014-tlg053-grc-a7f8f798a1f833b4.json",
+     "label": "Original grc · edición TEI en R2",
+     "reader": "classics-text-reader.html?work=cts-tlg0014-tlg053&lang=grc&edition=a7f8f798a1f833b4"
+    }
+   ],
+   "publicStatus": "lectura-local-parcial",
+   "indexedEdition": {
+    "sources": [
+     {
+      "title": "πρὸς Νικόστρατον περὶ ἀνδραπόδων ἀπογραφῆς Ἀρεθουσίου",
+      "titleLanguage": "grc",
+      "author": "Demosthenes",
+      "editors": [
+       "William Rennie"
+      ],
+      "bibliography": "Demosthenes Orationes William Rennie Clarendon Press Oxford 1931 3 Internet Archive",
+      "licences": [
+       {
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+       }
+      ],
+      "editionUrn": "urn:cts:greekLit:tlg0014.tlg053.perseus-grc2",
+      "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0014/tlg053/tlg0014.tlg053.perseus-grc2.xml",
+      "sourceSha256": "890ab4f95a8cf9688b7d96cdb5b9ba8948c39c7e7b9249a729b6024c7545dc03",
+      "sourceReferences": [],
+      "publicationYear": "1931",
+      "publisher": "Clarendon Press",
+      "publicationPlace": "Oxford",
+      "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/890ab4f95a8cf9688b7d96cdb5b9ba8948c39c7e7b9249a729b6024c7545dc03.xml"
+     }
+    ],
+    "sha256": "a7f8f798a1f833b42b29c5e3472f39e3be61a6b882046f6d648700bb92d0ae7e",
+    "passages": 36,
+    "characters": 12665,
+    "bytes": 32512,
+    "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0014-tlg053-grc-a7f8f798a1f833b4.json"
+   }
+  },
+  {
+   "id": "cts-tlg0014-tlg057",
+   "author": "Demóstenes",
+   "title": "Against Eubulides",
+   "language": "grc",
+   "genre": "Corpus clásico ampliado",
+   "dating": "330 a. C.",
+   "reading": {
+    "url": "classics-text-reader.html?work=cts-tlg0014-tlg057&lang=grc&edition=1ddd193ab0b9dc78",
+    "status": "Edición TEI alojada en R2 con búsqueda y traducción automática por pasaje"
+   },
+   "manuscript": {
+    "status": "Sin testimonio manuscrito individual asignado; la edición TEI se identifica por separado"
+   },
+   "pdf": {
+    "url": null,
+    "status": "No consta PDF ni facsímil individual verificado para esta edición"
+   },
+   "translation": {
+    "status": "Traducción automática de consulta por pasaje; no se atribuye a un traductor académico"
+   },
+   "links": {
+    "scaife": "https://scaife.perseus.org/library/urn:cts:greekLit:tlg0014.tlg057.perseus-grc2/"
+   },
+   "aliases": [
+    "urn:cts:greekLit:tlg0014.tlg057.perseus-grc2"
+   ],
+   "relatedWorkIds": [],
+   "catalogueProvenance": "Título y autor de los catálogos CTS del sitio; edición contrastada con su cabecera TEI. No se retrotraduce el título.",
+   "corpusFiles": {
+    "grc": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0014-tlg057-grc-1ddd193ab0b9dc78.json"
+   },
+   "localVersions": [
+    {
+     "language": "grc",
+     "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0014-tlg057-grc-1ddd193ab0b9dc78.json",
+     "label": "Original grc · edición TEI en R2",
+     "reader": "classics-text-reader.html?work=cts-tlg0014-tlg057&lang=grc&edition=1ddd193ab0b9dc78"
+    }
+   ],
+   "publicStatus": "lectura-local-parcial",
+   "indexedEdition": {
+    "sources": [
+     {
+      "title": "ἔφεσις πρὸς Εὐβουλίδην",
+      "titleLanguage": "grc",
+      "author": "Demosthenes",
+      "editors": [
+       "William Rennie"
+      ],
+      "bibliography": "Demosthenes Orationes William Rennie Clarendon Press Oxford 1931 3 Internet Archive",
+      "licences": [
+       {
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+       }
+      ],
+      "editionUrn": "urn:cts:greekLit:tlg0014.tlg057.perseus-grc2",
+      "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0014/tlg057/tlg0014.tlg057.perseus-grc2.xml",
+      "sourceSha256": "c28c8819f7bd750144e95d4b51a48d8b39190dbad335fd01f60a4700b15b380e",
+      "sourceReferences": [],
+      "publicationYear": "1931",
+      "publisher": "Clarendon Press",
+      "publicationPlace": "Oxford",
+      "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/c28c8819f7bd750144e95d4b51a48d8b39190dbad335fd01f60a4700b15b380e.xml"
+     }
+    ],
+    "sha256": "1ddd193ab0b9dc78e57b68d4f55e7ce035cc00618e09f258fc4989c209b7a648",
+    "passages": 91,
+    "characters": 29255,
+    "bytes": 73355,
+    "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0014-tlg057-grc-1ddd193ab0b9dc78.json"
+   }
+  },
+  {
+   "id": "cts-tlg0014-tlg060",
+   "author": "Demóstenes",
+   "title": "The Funeral Speech",
+   "language": "grc",
+   "genre": "Corpus clásico ampliado",
+   "dating": "330 a. C.",
+   "reading": {
+    "url": "classics-text-reader.html?work=cts-tlg0014-tlg060&lang=grc&edition=9d87d5853f4e0147",
+    "status": "Edición TEI alojada en R2 con búsqueda y traducción automática por pasaje"
+   },
+   "manuscript": {
+    "status": "Sin testimonio manuscrito individual asignado; la edición TEI se identifica por separado"
+   },
+   "pdf": {
+    "url": null,
+    "status": "No consta PDF ni facsímil individual verificado para esta edición"
+   },
+   "translation": {
+    "status": "Traducción automática de consulta por pasaje; no se atribuye a un traductor académico"
+   },
+   "links": {
+    "scaife": "https://scaife.perseus.org/library/urn:cts:greekLit:tlg0014.tlg060.perseus-grc2/"
+   },
+   "aliases": [
+    "urn:cts:greekLit:tlg0014.tlg060.perseus-grc2"
+   ],
+   "relatedWorkIds": [],
+   "catalogueProvenance": "Título y autor de los catálogos CTS del sitio; edición contrastada con su cabecera TEI. No se retrotraduce el título.",
+   "corpusFiles": {
+    "grc": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0014-tlg060-grc-9d87d5853f4e0147.json"
+   },
+   "localVersions": [
+    {
+     "language": "grc",
+     "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0014-tlg060-grc-9d87d5853f4e0147.json",
+     "label": "Original grc · edición TEI en R2",
+     "reader": "classics-text-reader.html?work=cts-tlg0014-tlg060&lang=grc&edition=9d87d5853f4e0147"
+    }
+   ],
+   "publicStatus": "lectura-local-parcial",
+   "indexedEdition": {
+    "sources": [
+     {
+      "title": "ἐπιτάφιος",
+      "titleLanguage": "grc",
+      "author": "Demosthenes",
+      "editors": [
+       "William Rennie"
+      ],
+      "bibliography": "Demosthenes Orationes William Rennie Clarendon Press Oxford 1931 3 Internet Archive",
+      "licences": [
+       {
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+       }
+      ],
+      "editionUrn": "urn:cts:greekLit:tlg0014.tlg060.perseus-grc2",
+      "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0014/tlg060/tlg0014.tlg060.perseus-grc2.xml",
+      "sourceSha256": "1b0cdf75a2feaa1b7452cd7808b21c9017b6b81ce1ab1d8f5b2993a5321d68b1",
+      "sourceReferences": [
+       "https://archive.org/details/orationesrecog03demouoft/page/334/mode/2up?"
+      ],
+      "publicationYear": "1931",
+      "publisher": "Clarendon Press",
+      "publicationPlace": "Oxford",
+      "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/1b0cdf75a2feaa1b7452cd7808b21c9017b6b81ce1ab1d8f5b2993a5321d68b1.xml"
+     }
+    ],
+    "sha256": "9d87d5853f4e014779f8e056325b88dd7a8deceb9546495f2d768c1d76254f37",
+    "passages": 38,
+    "characters": 16130,
+    "bytes": 39499,
+    "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0014-tlg060-grc-9d87d5853f4e0147.json"
+   }
+  },
+  {
+   "id": "cts-tlg0014-tlg059",
+   "author": "Demóstenes",
+   "title": "Theomnestus and Apollodorus Against Neaera",
+   "language": "grc",
+   "genre": "Corpus clásico ampliado",
+   "dating": "330 a. C.",
+   "reading": {
+    "url": "classics-text-reader.html?work=cts-tlg0014-tlg059&lang=grc&edition=a802a67e8b1167ea",
+    "status": "Edición TEI alojada en R2 con búsqueda y traducción automática por pasaje"
+   },
+   "manuscript": {
+    "status": "Sin testimonio manuscrito individual asignado; la edición TEI se identifica por separado"
+   },
+   "pdf": {
+    "url": null,
+    "status": "No consta PDF ni facsímil individual verificado para esta edición"
+   },
+   "translation": {
+    "status": "Traducción automática de consulta por pasaje; no se atribuye a un traductor académico"
+   },
+   "links": {
+    "scaife": "https://scaife.perseus.org/library/urn:cts:greekLit:tlg0014.tlg059.perseus-grc2/"
+   },
+   "aliases": [
+    "urn:cts:greekLit:tlg0014.tlg059.perseus-grc2"
+   ],
+   "relatedWorkIds": [],
+   "catalogueProvenance": "Título y autor de los catálogos CTS del sitio; edición contrastada con su cabecera TEI. No se retrotraduce el título.",
+   "corpusFiles": {
+    "grc": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0014-tlg059-grc-a802a67e8b1167ea.json"
+   },
+   "localVersions": [
+    {
+     "language": "grc",
+     "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0014-tlg059-grc-a802a67e8b1167ea.json",
+     "label": "Original grc · edición TEI en R2",
+     "reader": "classics-text-reader.html?work=cts-tlg0014-tlg059&lang=grc&edition=a802a67e8b1167ea"
+    }
+   ],
+   "publicStatus": "lectura-local-parcial",
+   "indexedEdition": {
+    "sources": [
+     {
+      "title": "κατὰ Νεαίρας",
+      "titleLanguage": "grc",
+      "author": "Demosthenes",
+      "editors": [
+       "William Rennie"
+      ],
+      "bibliography": "Demosthenes Orationes William Rennie Clarendon Press Oxford 1931 3 Internet Archive",
+      "licences": [
+       {
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+       }
+      ],
+      "editionUrn": "urn:cts:greekLit:tlg0014.tlg059.perseus-grc2",
+      "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0014/tlg059/tlg0014.tlg059.perseus-grc2.xml",
+      "sourceSha256": "e68baf072331fb83b2f74631a2a0804235dd31e40682be68e09ac529502c2192",
+      "sourceReferences": [],
+      "publicationYear": "1931",
+      "publisher": "Clarendon Press",
+      "publicationPlace": "Oxford",
+      "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/e68baf072331fb83b2f74631a2a0804235dd31e40682be68e09ac529502c2192.xml"
+     }
+    ],
+    "sha256": "a802a67e8b1167ea70ac3762587d76ad5d7670a82836bd1a976c89d3643b82c1",
+    "passages": 168,
+    "characters": 59239,
+    "bytes": 144746,
+    "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0014-tlg059-grc-a802a67e8b1167ea.json"
+   }
+  },
+  {
+   "id": "cts-tlg0014-tlg058",
+   "author": "Demóstenes",
+   "title": "Against Theocrines",
+   "language": "grc",
+   "genre": "Corpus clásico ampliado",
+   "dating": "330 a. C.",
+   "reading": {
+    "url": "classics-text-reader.html?work=cts-tlg0014-tlg058&lang=grc&edition=de4b35f9a7d9034d",
+    "status": "Edición TEI alojada en R2 con búsqueda y traducción automática por pasaje"
+   },
+   "manuscript": {
+    "status": "Sin testimonio manuscrito individual asignado; la edición TEI se identifica por separado"
+   },
+   "pdf": {
+    "url": null,
+    "status": "No consta PDF ni facsímil individual verificado para esta edición"
+   },
+   "translation": {
+    "status": "Traducción automática de consulta por pasaje; no se atribuye a un traductor académico"
+   },
+   "links": {
+    "scaife": "https://scaife.perseus.org/library/urn:cts:greekLit:tlg0014.tlg058.perseus-grc2/"
+   },
+   "aliases": [
+    "urn:cts:greekLit:tlg0014.tlg058.perseus-grc2"
+   ],
+   "relatedWorkIds": [],
+   "catalogueProvenance": "Título y autor de los catálogos CTS del sitio; edición contrastada con su cabecera TEI. No se retrotraduce el título.",
+   "corpusFiles": {
+    "grc": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0014-tlg058-grc-de4b35f9a7d9034d.json"
+   },
+   "localVersions": [
+    {
+     "language": "grc",
+     "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0014-tlg058-grc-de4b35f9a7d9034d.json",
+     "label": "Original grc · edición TEI en R2",
+     "reader": "classics-text-reader.html?work=cts-tlg0014-tlg058&lang=grc&edition=de4b35f9a7d9034d"
+    }
+   ],
+   "publicStatus": "lectura-local-parcial",
+   "indexedEdition": {
+    "sources": [
+     {
+      "title": "ἔνδειξις κατὰ Θεοκρίνου",
+      "titleLanguage": "grc",
+      "author": "Demosthenes",
+      "editors": [
+       "William Rennie"
+      ],
+      "bibliography": "Demosthenes Orationes William Rennie Clarendon Press Oxford 1931 3 Internet Archive",
+      "licences": [
+       {
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+       }
+      ],
+      "editionUrn": "urn:cts:greekLit:tlg0014.tlg058.perseus-grc2",
+      "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0014/tlg058/tlg0014.tlg058.perseus-grc2.xml",
+      "sourceSha256": "a62dafcb0b590500827c4dfe0851ad147117965a31e6cbdb129a756424562b3d",
+      "sourceReferences": [],
+      "publicationYear": "1931",
+      "publisher": "Clarendon Press",
+      "publicationPlace": "Oxford",
+      "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/a62dafcb0b590500827c4dfe0851ad147117965a31e6cbdb129a756424562b3d.xml"
+     }
+    ],
+    "sha256": "de4b35f9a7d9034d52b6dda450b4f568cebd1e45e4ad87ebfd85339027bb239f",
+    "passages": 97,
+    "characters": 30119,
+    "bytes": 75918,
+    "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0014-tlg058-grc-de4b35f9a7d9034d.json"
+   }
+  },
+  {
+   "id": "cts-tlg0062-tlg049",
+   "author": "Luciano de Samósata",
+   "title": "Pseudologista",
+   "language": "grc",
+   "genre": "Corpus clásico ampliado",
+   "dating": "c. 125–c. 180 d. C.",
+   "reading": {
+    "url": "classics-text-reader.html?work=cts-tlg0062-tlg049&lang=grc&edition=d7554c7ed9688c6b",
+    "status": "Edición TEI alojada en R2 con búsqueda y traducción automática por pasaje"
+   },
+   "manuscript": {
+    "status": "Sin testimonio manuscrito individual asignado; la edición TEI se identifica por separado"
+   },
+   "pdf": {
+    "url": null,
+    "status": "No consta PDF ni facsímil individual verificado para esta edición"
+   },
+   "translation": {
+    "status": "Traducción automática de consulta por pasaje; no se atribuye a un traductor académico"
+   },
+   "links": {
+    "scaife": "https://scaife.perseus.org/library/urn:cts:greekLit:tlg0062.tlg049.perseus-grc2/"
+   },
+   "aliases": [
+    "urn:cts:greekLit:tlg0062.tlg049.perseus-grc2"
+   ],
+   "relatedWorkIds": [],
+   "catalogueProvenance": "Título y autor de los catálogos CTS del sitio; edición contrastada con su cabecera TEI. No se retrotraduce el título.",
+   "corpusFiles": {
+    "grc": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg049-grc-d7554c7ed9688c6b.json"
+   },
+   "localVersions": [
+    {
+     "language": "grc",
+     "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg049-grc-d7554c7ed9688c6b.json",
+     "label": "Original grc · edición TEI en R2",
+     "reader": "classics-text-reader.html?work=cts-tlg0062-tlg049&lang=grc&edition=d7554c7ed9688c6b"
+    }
+   ],
+   "publicStatus": "lectura-local-parcial",
+   "indexedEdition": {
+    "sources": [
+     {
+      "title": "Ψευδολογιστής",
+      "titleLanguage": "grc",
+      "author": "Lucian",
+      "editors": [
+       "Austin Morris Harmon"
+      ],
+      "bibliography": "Lucian Lucian Austin Morris Harmon Cambridge, MA Harvard University Press London William Heinemann Ltd. 1936 5 Loeb Classical Library Internet Archive",
+      "licences": [
+       {
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+       }
+      ],
+      "editionUrn": "urn:cts:greekLit:tlg0062.tlg049.perseus-grc2",
+      "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0062/tlg049/tlg0062.tlg049.perseus-grc2.xml",
+      "sourceSha256": "f2db0b3c43225df23862da3f478208ad75a68c6ade3c5042fe6930c46cdcbe6c",
+      "sourceReferences": [
+       "https://archive.org/details/lucianhar05luciuoft/page/330/mode/2up"
+      ],
+      "publicationYear": "1936",
+      "publisher": "Harvard University Press",
+      "publicationPlace": "Cambridge, MA",
+      "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/f2db0b3c43225df23862da3f478208ad75a68c6ade3c5042fe6930c46cdcbe6c.xml"
+     }
+    ],
+    "sha256": "d7554c7ed9688c6b5859dfa6faae71d9ac6a72a51646697fe29c33a43654094a",
+    "passages": 41,
+    "characters": 23898,
+    "bytes": 55245,
+    "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg049-grc-d7554c7ed9688c6b.json"
+   }
+  },
+  {
+   "id": "cts-tlg0062-tlg051",
+   "author": "Luciano de Samósata",
+   "title": "Tyrannicida",
+   "language": "grc",
+   "genre": "Corpus clásico ampliado",
+   "dating": "c. 125–c. 180 d. C.",
+   "reading": {
+    "url": "classics-text-reader.html?work=cts-tlg0062-tlg051&lang=grc&edition=1f17c8d70e1d41e7",
+    "status": "Edición TEI alojada en R2 con búsqueda y traducción automática por pasaje"
+   },
+   "manuscript": {
+    "status": "Sin testimonio manuscrito individual asignado; la edición TEI se identifica por separado"
+   },
+   "pdf": {
+    "url": null,
+    "status": "No consta PDF ni facsímil individual verificado para esta edición"
+   },
+   "translation": {
+    "status": "Traducción automática de consulta por pasaje; no se atribuye a un traductor académico"
+   },
+   "links": {
+    "scaife": "https://scaife.perseus.org/library/urn:cts:greekLit:tlg0062.tlg051.perseus-grc2/"
+   },
+   "aliases": [
+    "urn:cts:greekLit:tlg0062.tlg051.perseus-grc2"
+   ],
+   "relatedWorkIds": [],
+   "catalogueProvenance": "Título y autor de los catálogos CTS del sitio; edición contrastada con su cabecera TEI. No se retrotraduce el título.",
+   "corpusFiles": {
+    "grc": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg051-grc-1f17c8d70e1d41e7.json"
+   },
+   "localVersions": [
+    {
+     "language": "grc",
+     "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg051-grc-1f17c8d70e1d41e7.json",
+     "label": "Original grc · edición TEI en R2",
+     "reader": "classics-text-reader.html?work=cts-tlg0062-tlg051&lang=grc&edition=1f17c8d70e1d41e7"
+    }
+   ],
+   "publicStatus": "lectura-local-parcial",
+   "indexedEdition": {
+    "sources": [
+     {
+      "title": "Τυραννοκτόνος",
+      "titleLanguage": "grc",
+      "author": "Lucian",
+      "editors": [
+       "Austin Morris Harmon"
+      ],
+      "bibliography": "Lucian Lucian Austin Morris Harmon Cambridge, MA Harvard University Press London William Heinemann Ltd. 1936 5 Internet Archive",
+      "licences": [
+       {
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+       }
+      ],
+      "editionUrn": "urn:cts:greekLit:tlg0062.tlg051.perseus-grc2",
+      "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0062/tlg051/tlg0062.tlg051.perseus-grc2.xml",
+      "sourceSha256": "0622085fdb12709f6dd4036a9ee9b19f884013a522d826cd3c04d2b8f9225674",
+      "sourceReferences": [
+       "https://archive.org/details/lucianhar05luciuoft/page/330/mode/2up"
+      ],
+      "publicationYear": "1936",
+      "publisher": "Harvard University Press",
+      "publicationPlace": "Cambridge, MA",
+      "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/0622085fdb12709f6dd4036a9ee9b19f884013a522d826cd3c04d2b8f9225674.xml"
+     }
+    ],
+    "sha256": "1f17c8d70e1d41e7b0e4351135a289fe23726492ffecacec52be0c1aefdbb9b8",
+    "passages": 29,
+    "characters": 18336,
+    "bytes": 42346,
+    "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg051-grc-1f17c8d70e1d41e7.json"
+   }
+  },
+  {
+   "id": "cts-tlg0062-tlg050",
+   "author": "Luciano de Samósata",
+   "title": "Deorum concilium",
+   "language": "grc",
+   "genre": "Corpus clásico ampliado",
+   "dating": "c. 125–c. 180 d. C.",
+   "reading": {
+    "url": "classics-text-reader.html?work=cts-tlg0062-tlg050&lang=grc&edition=16347c3d048e2e0a",
+    "status": "Edición TEI alojada en R2 con búsqueda y traducción automática por pasaje"
+   },
+   "manuscript": {
+    "status": "Sin testimonio manuscrito individual asignado; la edición TEI se identifica por separado"
+   },
+   "pdf": {
+    "url": null,
+    "status": "No consta PDF ni facsímil individual verificado para esta edición"
+   },
+   "translation": {
+    "status": "Traducción automática de consulta por pasaje; no se atribuye a un traductor académico"
+   },
+   "links": {
+    "scaife": "https://scaife.perseus.org/library/urn:cts:greekLit:tlg0062.tlg050.perseus-grc2/"
+   },
+   "aliases": [
+    "urn:cts:greekLit:tlg0062.tlg050.perseus-grc2"
+   ],
+   "relatedWorkIds": [],
+   "catalogueProvenance": "Título y autor de los catálogos CTS del sitio; edición contrastada con su cabecera TEI. No se retrotraduce el título.",
+   "corpusFiles": {
+    "grc": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg050-grc-16347c3d048e2e0a.json"
+   },
+   "localVersions": [
+    {
+     "language": "grc",
+     "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg050-grc-16347c3d048e2e0a.json",
+     "label": "Original grc · edición TEI en R2",
+     "reader": "classics-text-reader.html?work=cts-tlg0062-tlg050&lang=grc&edition=16347c3d048e2e0a"
+    }
+   ],
+   "publicStatus": "lectura-local-parcial",
+   "indexedEdition": {
+    "sources": [
+     {
+      "title": "Θεῶν Ἐκκλησία",
+      "titleLanguage": "grc",
+      "author": "Lucian",
+      "editors": [
+       "Austin Morris Harmon"
+      ],
+      "bibliography": "Lucian Lucian Austin Morris Harmon Cambridge, MA Harvard University Press London William Heinemann Ltd. 1936 5 Loeb Classical Library Internet Archive",
+      "licences": [
+       {
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+       }
+      ],
+      "editionUrn": "urn:cts:greekLit:tlg0062.tlg050.perseus-grc2",
+      "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0062/tlg050/tlg0062.tlg050.perseus-grc2.xml",
+      "sourceSha256": "154707be6f181e29be1553eca42294241cdc026be0fe01160469849b057ad89b",
+      "sourceReferences": [
+       "https://archive.org/details/lucianhar05luciuoft/page/330/mode/2up"
+      ],
+      "publicationYear": "1936",
+      "publisher": "Harvard University Press",
+      "publicationPlace": "Cambridge, MA",
+      "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/154707be6f181e29be1553eca42294241cdc026be0fe01160469849b057ad89b.xml"
+     }
+    ],
+    "sha256": "16347c3d048e2e0aa90ce20ce8121cb191be920bca7cf744512f75e14e60b3dd",
+    "passages": 32,
+    "characters": 11339,
+    "bytes": 29221,
+    "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg050-grc-16347c3d048e2e0a.json"
+   }
   }
  ],
  "pdfPolicy": {
