@@ -34005,7 +34005,8 @@
    "relatedWorkIds": [],
    "catalogueProvenance": "Título y autor de los catálogos CTS del sitio; edición contrastada con su cabecera TEI. No se retrotraduce el título.",
    "corpusFiles": {
-    "grc": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg018-grc-5c31c0511a197a5b.json"
+    "grc": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg018-grc-5c31c0511a197a5b.json",
+    "en": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg018-en-111469af421292a8.json"
    },
    "localVersions": [
     {
@@ -34013,6 +34014,13 @@
      "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg018-grc-5c31c0511a197a5b.json",
      "label": "Original grc · edición TEI en R2",
      "reader": "classics-text-reader.html?work=cts-tlg0062-tlg018&lang=grc"
+    },
+    {
+     "language": "en",
+     "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg018-en-111469af421292a8.json",
+     "label": "Traducción humana: Austin Morris Harmon",
+     "reader": "classics-text-reader.html?work=cts-tlg0062-tlg018&lang=en",
+     "sourceUrn": "urn:cts:greekLit:tlg0062.tlg018.perseus-eng2"
     }
    ],
    "publicStatus": "lectura-local-parcial",
@@ -34049,7 +34057,22 @@
     "characters": 41378,
     "bytes": 112404,
     "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg018-grc-5c31c0511a197a5b.json"
-   }
+   },
+   "humanTranslations": [
+    {
+     "language": "en",
+     "translators": [
+      "Austin Morris Harmon"
+     ],
+     "publicationYear": 1915,
+     "sourceUrn": "urn:cts:greekLit:tlg0062.tlg018.perseus-eng2",
+     "license": [
+      "https://creativecommons.org/licenses/by-sa/4.0/"
+     ],
+     "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg018-en-111469af421292a8.json",
+     "indexUrl": "https://libros.vitruvius-digital-library.org/corpus/indice/traducciones/cts-tlg0062-tlg018-en-628d386c2ade4708.json"
+    }
+   ]
   },
   {
    "id": "cts-phi0692-phi013",
@@ -34309,7 +34332,8 @@
    "relatedWorkIds": [],
    "catalogueProvenance": "Título y autor de los catálogos CTS del sitio; edición contrastada con su cabecera TEI. No se retrotraduce el título.",
    "corpusFiles": {
-    "grc": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg022-grc-0ef62278baa50f02.json"
+    "grc": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg022-grc-0ef62278baa50f02.json",
+    "en": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg022-en-e883d6296b5af763.json"
    },
    "localVersions": [
     {
@@ -34317,6 +34341,13 @@
      "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg022-grc-0ef62278baa50f02.json",
      "label": "Original grc · edición TEI en R2",
      "reader": "classics-text-reader.html?work=cts-tlg0062-tlg022&lang=grc"
+    },
+    {
+     "language": "en",
+     "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg022-en-e883d6296b5af763.json",
+     "label": "Traducción humana: Austin Morris Harmon",
+     "reader": "classics-text-reader.html?work=cts-tlg0062-tlg022&lang=en",
+     "sourceUrn": "urn:cts:greekLit:tlg0062.tlg022.perseus-eng2"
     }
    ],
    "publicStatus": "lectura-local-parcial",
@@ -34353,7 +34384,22 @@
     "characters": 38120,
     "bytes": 96486,
     "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg022-grc-0ef62278baa50f02.json"
-   }
+   },
+   "humanTranslations": [
+    {
+     "language": "en",
+     "translators": [
+      "Austin Morris Harmon"
+     ],
+     "publicationYear": 1915,
+     "sourceUrn": "urn:cts:greekLit:tlg0062.tlg022.perseus-eng2",
+     "license": [
+      "https://creativecommons.org/licenses/by-sa/4.0/"
+     ],
+     "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg022-en-e883d6296b5af763.json",
+     "indexUrl": "https://libros.vitruvius-digital-library.org/corpus/indice/traducciones/cts-tlg0062-tlg022-en-1531147ca332ec75.json"
+    }
+   ]
   },
   {
    "id": "cts-tlg0062-tlg023",
@@ -34385,7 +34431,8 @@
    "relatedWorkIds": [],
    "catalogueProvenance": "Título y autor de los catálogos CTS del sitio; edición contrastada con su cabecera TEI. No se retrotraduce el título.",
    "corpusFiles": {
-    "grc": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg023-grc-13f0b5c93b8deead.json"
+    "grc": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg023-grc-13f0b5c93b8deead.json",
+    "en": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg023-en-62ec650bbc2ff636.json"
    },
    "localVersions": [
     {
@@ -34393,6 +34440,13 @@
      "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg023-grc-13f0b5c93b8deead.json",
      "label": "Original grc · edición TEI en R2",
      "reader": "classics-text-reader.html?work=cts-tlg0062-tlg023&lang=grc"
+    },
+    {
+     "language": "en",
+     "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg023-en-62ec650bbc2ff636.json",
+     "label": "Traducción humana: Austin Morris Harmon",
+     "reader": "classics-text-reader.html?work=cts-tlg0062-tlg023&lang=en",
+     "sourceUrn": "urn:cts:greekLit:tlg0062.tlg023.perseus-eng2"
     }
    ],
    "publicStatus": "lectura-local-parcial",
@@ -34429,7 +34483,22 @@
     "characters": 25712,
     "bytes": 72322,
     "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg023-grc-13f0b5c93b8deead.json"
-   }
+   },
+   "humanTranslations": [
+    {
+     "language": "en",
+     "translators": [
+      "Austin Morris Harmon"
+     ],
+     "publicationYear": 1915,
+     "sourceUrn": "urn:cts:greekLit:tlg0062.tlg023.perseus-eng2",
+     "license": [
+      "https://creativecommons.org/licenses/by-sa/4.0/"
+     ],
+     "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg023-en-62ec650bbc2ff636.json",
+     "indexUrl": "https://libros.vitruvius-digital-library.org/corpus/indice/traducciones/cts-tlg0062-tlg023-en-d6d2d522ba9ec705.json"
+    }
+   ]
   },
   {
    "id": "cts-tlg0062-tlg024",
@@ -34461,7 +34530,8 @@
    "relatedWorkIds": [],
    "catalogueProvenance": "Título y autor de los catálogos CTS del sitio; edición contrastada con su cabecera TEI. No se retrotraduce el título.",
    "corpusFiles": {
-    "grc": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg024-grc-8f03300c54095b7c.json"
+    "grc": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg024-grc-8f03300c54095b7c.json",
+    "en": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg024-en-e8050b155cf678ee.json"
    },
    "localVersions": [
     {
@@ -34469,6 +34539,13 @@
      "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg024-grc-8f03300c54095b7c.json",
      "label": "Original grc · edición TEI en R2",
      "reader": "classics-text-reader.html?work=cts-tlg0062-tlg024&lang=grc"
+    },
+    {
+     "language": "en",
+     "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg024-en-e8050b155cf678ee.json",
+     "label": "Traducción humana: Austin Morris Harmon",
+     "reader": "classics-text-reader.html?work=cts-tlg0062-tlg024&lang=en",
+     "sourceUrn": "urn:cts:greekLit:tlg0062.tlg024.perseus-eng2"
     }
    ],
    "publicStatus": "lectura-local-parcial",
@@ -34505,7 +34582,22 @@
     "characters": 22670,
     "bytes": 87714,
     "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg024-grc-8f03300c54095b7c.json"
-   }
+   },
+   "humanTranslations": [
+    {
+     "language": "en",
+     "translators": [
+      "Austin Morris Harmon"
+     ],
+     "publicationYear": 1915,
+     "sourceUrn": "urn:cts:greekLit:tlg0062.tlg024.perseus-eng2",
+     "license": [
+      "https://creativecommons.org/licenses/by-sa/4.0/"
+     ],
+     "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg024-en-e8050b155cf678ee.json",
+     "indexUrl": "https://libros.vitruvius-digital-library.org/corpus/indice/traducciones/cts-tlg0062-tlg024-en-373ad5b5f0121c28.json"
+    }
+   ]
   },
   {
    "id": "cts-stoa0033a-tlg043",

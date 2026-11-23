@@ -2,7 +2,7 @@
  "schema": "vitruvia-classics-search-registry-v1",
  "updated": "2026-11-23",
  "description": "Registro verificable de transcripciones HTML y textos JSON existentes que admiten búsqueda literal de contenido. No incluye automáticamente PDF escaneados, facsímiles ni fichas sin texto. Los índices auxiliares por locus y el aparato crítico se declaran por separado; no se suman a versiones textuales originales ni implican colación autóptica.",
- "count": 543,
+ "count": 547,
  "works": 414,
  "entries": [
   {
@@ -1581,6 +1581,18 @@
    "workId": "cts-tlg0062-tlg018",
    "author": "Luciano de Samósata",
    "title": "Juppiter Tragoedus",
+   "language": "en",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg018-en-111469af421292a8.json",
+   "reader": "classics-text-reader.html?work=cts-tlg0062-tlg018&lang=en",
+   "sourceDescription": "Traducción humana acreditada: Austin Morris Harmon; TEI Perseus, licencia y SHA256 verificados",
+   "sha256": "111469af421292a8992695ae11b7005c977c9d4248f97092457ae0669cd574a4",
+   "passages": 188
+  },
+  {
+   "workId": "cts-tlg0062-tlg018",
+   "author": "Luciano de Samósata",
+   "title": "Juppiter Tragoedus",
    "language": "grc",
    "format": "json-passages",
    "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg018-grc-5c31c0511a197a5b.json",
@@ -1588,6 +1600,18 @@
    "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
    "sha256": "5c31c0511a197a5be567a4545e03aef63afa91844fd85a40771bbae6cf0f7ada",
    "passages": 187
+  },
+  {
+   "workId": "cts-tlg0062-tlg022",
+   "author": "Luciano de Samósata",
+   "title": "Timon",
+   "language": "en",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg022-en-e883d6296b5af763.json",
+   "reader": "classics-text-reader.html?work=cts-tlg0062-tlg022&lang=en",
+   "sourceDescription": "Traducción humana acreditada: Austin Morris Harmon; TEI Perseus, licencia y SHA256 verificados",
+   "sha256": "e883d6296b5af763546be091468303fde60336f73a50f6204d63fbf06b5e374a",
+   "passages": 124
   },
   {
    "workId": "cts-tlg0062-tlg022",
@@ -1605,6 +1629,18 @@
    "workId": "cts-tlg0062-tlg023",
    "author": "Luciano de Samósata",
    "title": "Contemplantes",
+   "language": "en",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg023-en-62ec650bbc2ff636.json",
+   "reader": "classics-text-reader.html?work=cts-tlg0062-tlg023&lang=en",
+   "sourceDescription": "Traducción humana acreditada: Austin Morris Harmon; TEI Perseus, licencia y SHA256 verificados",
+   "sha256": "62ec650bbc2ff63646be7a10d34e6d5cd2fe05bd18e0769b0b20f8fe31ea44cf",
+   "passages": 127
+  },
+  {
+   "workId": "cts-tlg0062-tlg023",
+   "author": "Luciano de Samósata",
+   "title": "Contemplantes",
    "language": "grc",
    "format": "json-passages",
    "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg023-grc-13f0b5c93b8deead.json",
@@ -1612,6 +1648,18 @@
    "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
    "sha256": "13f0b5c93b8deead889c484fb2b47b25e5f307a6c2d02c28da149b26d236e46f",
    "passages": 126
+  },
+  {
+   "workId": "cts-tlg0062-tlg024",
+   "author": "Luciano de Samósata",
+   "title": "Vitarum auctio",
+   "language": "en",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg024-en-e8050b155cf678ee.json",
+   "reader": "classics-text-reader.html?work=cts-tlg0062-tlg024&lang=en",
+   "sourceDescription": "Traducción humana acreditada: Austin Morris Harmon; TEI Perseus, licencia y SHA256 verificados",
+   "sha256": "e8050b155cf678ee9bc581f2f8c9aafc6b96cbe93d295793a6a2f708e98fd80b",
+   "passages": 265
   },
   {
    "workId": "cts-tlg0062-tlg024",

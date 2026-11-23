@@ -1,6 +1,6 @@
 {
  "schema": "vdl-classics-translation-manifest-v1",
- "generated": "2026-11-23T00:35:36.466432+00:00",
+ "generated": "2026-11-23T00:39:27.411068+00:00",
  "method": "Traducciones humanas TEI licenciadas y publicadas en R2 con SHA-256, índice literal por pasaje, sin alineación automática",
  "editions": [
   {
@@ -278,6 +278,98 @@
    ],
    "indexUrl": "https://libros.vitruvius-digital-library.org/corpus/indice/traducciones/cts-tlg0014-tlg011-en-0374538d6842efce.json",
    "indexSha256": "0374538d6842efcee4f362d56bc4774fb475141b3e28443e19e03ca266b577b2"
+  },
+  {
+   "workId": "cts-tlg0062-tlg018",
+   "author": "Luciano de Samósata",
+   "title": "Juppiter Tragoedus",
+   "language": "en",
+   "filename": "cts-tlg0062-tlg018-en-111469af421292a8.json",
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg018-en-111469af421292a8.json",
+   "sha256": "111469af421292a8992695ae11b7005c977c9d4248f97092457ae0669cd574a4",
+   "passages": 188,
+   "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0062/tlg018/tlg0062.tlg018.perseus-eng2.xml",
+   "sourceUrn": "urn:cts:greekLit:tlg0062.tlg018.perseus-eng2",
+   "sourceSha256": "9f699d3a59fe535b3c2ac7c8b74a11d8d6576a359a3bd1743daa45a0d8acfb8f",
+   "sourceArchived": "https://libros.vitruvius-digital-library.org/corpus/fuentes/9f699d3a59fe535b3c2ac7c8b74a11d8d6576a359a3bd1743daa45a0d8acfb8f.xml",
+   "translators": [
+    "Austin Morris Harmon"
+   ],
+   "publicationYear": 1915,
+   "license": [
+    "https://creativecommons.org/licenses/by-sa/4.0/"
+   ],
+   "indexUrl": "https://libros.vitruvius-digital-library.org/corpus/indice/traducciones/cts-tlg0062-tlg018-en-628d386c2ade4708.json",
+   "indexSha256": "628d386c2ade47082c75bf871754eefb9143e40aaf0757a0b9f75093aab2622b"
+  },
+  {
+   "workId": "cts-tlg0062-tlg022",
+   "author": "Luciano de Samósata",
+   "title": "Timon",
+   "language": "en",
+   "filename": "cts-tlg0062-tlg022-en-e883d6296b5af763.json",
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg022-en-e883d6296b5af763.json",
+   "sha256": "e883d6296b5af763546be091468303fde60336f73a50f6204d63fbf06b5e374a",
+   "passages": 124,
+   "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0062/tlg022/tlg0062.tlg022.perseus-eng2.xml",
+   "sourceUrn": "urn:cts:greekLit:tlg0062.tlg022.perseus-eng2",
+   "sourceSha256": "c0e69b9322de165a5601647a5fd80abd273e1463eca5850db7711d077fe054c9",
+   "sourceArchived": "https://libros.vitruvius-digital-library.org/corpus/fuentes/c0e69b9322de165a5601647a5fd80abd273e1463eca5850db7711d077fe054c9.xml",
+   "translators": [
+    "Austin Morris Harmon"
+   ],
+   "publicationYear": 1915,
+   "license": [
+    "https://creativecommons.org/licenses/by-sa/4.0/"
+   ],
+   "indexUrl": "https://libros.vitruvius-digital-library.org/corpus/indice/traducciones/cts-tlg0062-tlg022-en-1531147ca332ec75.json",
+   "indexSha256": "1531147ca332ec757ae9af0e54c7a6e8f043a8db2c7cc453917a0a22e830adc3"
+  },
+  {
+   "workId": "cts-tlg0062-tlg023",
+   "author": "Luciano de Samósata",
+   "title": "Contemplantes",
+   "language": "en",
+   "filename": "cts-tlg0062-tlg023-en-62ec650bbc2ff636.json",
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg023-en-62ec650bbc2ff636.json",
+   "sha256": "62ec650bbc2ff63646be7a10d34e6d5cd2fe05bd18e0769b0b20f8fe31ea44cf",
+   "passages": 127,
+   "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0062/tlg023/tlg0062.tlg023.perseus-eng2.xml",
+   "sourceUrn": "urn:cts:greekLit:tlg0062.tlg023.perseus-eng2",
+   "sourceSha256": "e1ca095d298dbe55e20ff19cdb4dde1425fc264d4cf2c0a21db7ab1fabbb744c",
+   "sourceArchived": "https://libros.vitruvius-digital-library.org/corpus/fuentes/e1ca095d298dbe55e20ff19cdb4dde1425fc264d4cf2c0a21db7ab1fabbb744c.xml",
+   "translators": [
+    "Austin Morris Harmon"
+   ],
+   "publicationYear": 1915,
+   "license": [
+    "https://creativecommons.org/licenses/by-sa/4.0/"
+   ],
+   "indexUrl": "https://libros.vitruvius-digital-library.org/corpus/indice/traducciones/cts-tlg0062-tlg023-en-d6d2d522ba9ec705.json",
+   "indexSha256": "d6d2d522ba9ec7058acc84864718bdbf3e38eae2a8edd0c9d55f51025483e7a5"
+  },
+  {
+   "workId": "cts-tlg0062-tlg024",
+   "author": "Luciano de Samósata",
+   "title": "Vitarum auctio",
+   "language": "en",
+   "filename": "cts-tlg0062-tlg024-en-e8050b155cf678ee.json",
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg024-en-e8050b155cf678ee.json",
+   "sha256": "e8050b155cf678ee9bc581f2f8c9aafc6b96cbe93d295793a6a2f708e98fd80b",
+   "passages": 265,
+   "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0062/tlg024/tlg0062.tlg024.perseus-eng2.xml",
+   "sourceUrn": "urn:cts:greekLit:tlg0062.tlg024.perseus-eng2",
+   "sourceSha256": "a0e79de5473804efa364c538c37a6c8915748fc7467369b3faca06017061a413",
+   "sourceArchived": "https://libros.vitruvius-digital-library.org/corpus/fuentes/a0e79de5473804efa364c538c37a6c8915748fc7467369b3faca06017061a413.xml",
+   "translators": [
+    "Austin Morris Harmon"
+   ],
+   "publicationYear": 1915,
+   "license": [
+    "https://creativecommons.org/licenses/by-sa/4.0/"
+   ],
+   "indexUrl": "https://libros.vitruvius-digital-library.org/corpus/indice/traducciones/cts-tlg0062-tlg024-en-373ad5b5f0121c28.json",
+   "indexSha256": "373ad5b5f0121c287eb060d33e3f188274a55f897ce4a76fd5d27d67a8476d33"
   }
  ],
  "lastDeferred": [
@@ -344,6 +436,38 @@
   {
    "workId": "cts-stoa0033a-tlg043",
    "reason": "No hay traducción TEI descargable en Perseus"
+  },
+  {
+   "workId": "cts-tlg0014-tlg037",
+   "reason": "Sin traducción publicable: tlg0014.tlg037.perseus-eng2.xml: Edición histórica anterior a 1931 no acreditada"
+  },
+  {
+   "workId": "cts-tlg0014-tlg038",
+   "reason": "Sin traducción publicable: tlg0014.tlg038.perseus-eng2.xml: Edición histórica anterior a 1931 no acreditada"
+  },
+  {
+   "workId": "cts-tlg0014-tlg039",
+   "reason": "Sin traducción publicable: tlg0014.tlg039.perseus-eng2.xml: Edición histórica anterior a 1931 no acreditada"
+  },
+  {
+   "workId": "cts-tlg0014-tlg040",
+   "reason": "Sin traducción publicable: tlg0014.tlg040.perseus-eng2.xml: Edición histórica anterior a 1931 no acreditada"
+  },
+  {
+   "workId": "cts-tlg0014-tlg041",
+   "reason": "Sin traducción publicable: tlg0014.tlg041.perseus-eng2.xml: Edición histórica anterior a 1931 no acreditada"
+  },
+  {
+   "workId": "cts-tlg0014-tlg042",
+   "reason": "Sin traducción publicable: tlg0014.tlg042.perseus-eng2.xml: Edición histórica anterior a 1931 no acreditada"
+  },
+  {
+   "workId": "cts-tlg0014-tlg043",
+   "reason": "Sin traducción publicable: tlg0014.tlg043.perseus-eng2.xml: Edición histórica anterior a 1931 no acreditada"
+  },
+  {
+   "workId": "cts-tlg0014-tlg044",
+   "reason": "Sin traducción publicable: tlg0014.tlg044.perseus-eng2.xml: Edición histórica anterior a 1931 no acreditada"
   }
  ],
  "policy": "No se reemplazan originales, traducciones previas, facsímiles ni índices de GitHub"
