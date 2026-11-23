@@ -2,7 +2,7 @@
  "schema": "vitruvia-classics-search-registry-v1",
  "updated": "2026-11-23",
  "description": "Registro verificable de transcripciones HTML y textos JSON existentes que admiten búsqueda literal de contenido. No incluye automáticamente PDF escaneados, facsímiles ni fichas sin texto. Los índices auxiliares por locus y el aparato crítico se declaran por separado; no se suman a versiones textuales originales ni implican colación autóptica.",
- "count": 547,
+ "count": 551,
  "works": 414,
  "entries": [
   {
@@ -1535,11 +1535,37 @@
    "title": "Cataplus",
    "language": "en",
    "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg016-en-2b7ea6feb4f407b1.json",
+   "reader": "classics-text-reader.html?work=cts-tlg0062-tlg016&lang=en",
+   "sourceDescription": "Traducción humana acreditada: Emily James Smith; TEI Perseus, licencia y SHA256 verificados",
+   "sourceUrn": "urn:cts:greekLit:tlg0062.tlg016.perseus-eng5",
+   "sha256": "2b7ea6feb4f407b1fa84dd55c498d2b77eade5b1ff06c90c8ec5d26e156d0ee8",
+   "passages": 173
+  },
+  {
+   "workId": "cts-tlg0062-tlg016",
+   "author": "Luciano de Samósata",
+   "title": "Cataplus",
+   "language": "en",
+   "format": "json-passages",
    "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg016-en-7c11ffc8ec68ce24.json",
    "reader": "classics-text-reader.html?work=cts-tlg0062-tlg016&lang=en",
    "sourceDescription": "Traducción humana acreditada: Austin Morris Harmon; TEI Perseus, licencia y SHA256 verificados",
    "sha256": "7c11ffc8ec68ce246ccb209f31004a15ef294d7f8936daa43a977c4e8c65fc9a",
    "passages": 177
+  },
+  {
+   "workId": "cts-tlg0062-tlg016",
+   "author": "Luciano de Samósata",
+   "title": "Cataplus",
+   "language": "en",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg016-en-92d17434b8755512.json",
+   "reader": "classics-text-reader.html?work=cts-tlg0062-tlg016&lang=en",
+   "sourceDescription": "Traducción humana acreditada: Henry Watson Fowler, Francis George Fowler; TEI Perseus, licencia y SHA256 verificados",
+   "sourceUrn": "urn:cts:greekLit:tlg0062.tlg016.perseus-eng4",
+   "sha256": "92d17434b87555125746622f788b4cd02576b4a94fa7974c84dbc6c1070b03d0",
+   "passages": 179
   },
   {
    "workId": "cts-tlg0062-tlg016",
@@ -1552,6 +1578,19 @@
    "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
    "sha256": "5004e4b54425dc1909dcb6c824e2f00c1ba894fee8ba19d00feddc42bf26f3c1",
    "passages": 175
+  },
+  {
+   "workId": "cts-tlg0062-tlg017",
+   "author": "Luciano de Samósata",
+   "title": "Juppiter Confutatus",
+   "language": "en",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg017-en-94f7649b80475fab.json",
+   "reader": "classics-text-reader.html?work=cts-tlg0062-tlg017&lang=en",
+   "sourceDescription": "Traducción humana acreditada: Henry Watson Fowler, Francis George Fowler; TEI Perseus, licencia y SHA256 verificados",
+   "sourceUrn": "urn:cts:greekLit:tlg0062.tlg017.perseus-eng4",
+   "sha256": "94f7649b80475fab412ad5e53dd78fb5cafa573e898a9302b48577899b11907f",
+   "passages": 75
   },
   {
    "workId": "cts-tlg0062-tlg017",
@@ -1576,6 +1615,19 @@
    "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
    "sha256": "dac8437b031446bce1ec2115b3f383980b7bcab26a8fc863714341eae2d28ef2",
    "passages": 72
+  },
+  {
+   "workId": "cts-tlg0062-tlg018",
+   "author": "Luciano de Samósata",
+   "title": "Juppiter Tragoedus",
+   "language": "en",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg018-en-0b0e7622b5a400e2.json",
+   "reader": "classics-text-reader.html?work=cts-tlg0062-tlg018&lang=en",
+   "sourceDescription": "Traducción humana acreditada: Henry Watson Fowler, Francis George Fowler; TEI Perseus, licencia y SHA256 verificados",
+   "sourceUrn": "urn:cts:greekLit:tlg0062.tlg018.perseus-eng4",
+   "sha256": "0b0e7622b5a400e22c8df709778589b3054168249a9ad14be87e23606b290fdd",
+   "passages": 200
   },
   {
    "workId": "cts-tlg0062-tlg018",
