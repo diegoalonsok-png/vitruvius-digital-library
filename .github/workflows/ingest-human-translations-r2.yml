@@ -13,6 +13,9 @@ on:
       - 'scripts/ingest-r2-human-translations.py'
       - 'scripts/check-bibliotheca-github-metadata-only.py'
       - 'scripts/test-bibliotheca-no-delete.py'
+      - 'scripts/test-bibliotheca-versioning.py'
+      - 'assets/classics-text-reader.js'
+      - 'classics-text-reader.html'
 permissions:
   contents: write
 concurrency:
@@ -46,6 +49,8 @@ jobs:
           python scripts/ingest-r2-human-translations.py --self-test
           python scripts/test-expand-classics-r2.py
           python scripts/test-bibliotheca-no-delete.py
+          python scripts/test-bibliotheca-versioning.py
+          node --check assets/classics-text-reader.js
       - name: Localizar, cotejar, subir a R2 y verificar traducciones humanas
         run: python -u scripts/ingest-r2-human-translations.py --publish --limit 4
       - name: Comprobar si hubo nuevas traducciones publicadas
