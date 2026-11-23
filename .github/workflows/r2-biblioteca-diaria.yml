@@ -24,7 +24,7 @@ on:
     inputs:
       limite:
         description: "Máximo de obras en la tanda (0 = todas las pendientes)"
-        default: "8"
+        default: "0"
       traducciones:
         description: "Buscar traducciones de dominio público para las obras alojadas sin ninguna"
         type: boolean
@@ -93,7 +93,7 @@ jobs:
         env:
           R2_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
           R2_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
-          LIMITE: ${{ inputs.limite || '8' }}
+          LIMITE: ${{ inputs.limite || '0' }}
         run: python scripts/r2-importar-clasicos.py
 
       # Un original recién subido puede no haber existido al descubrir
