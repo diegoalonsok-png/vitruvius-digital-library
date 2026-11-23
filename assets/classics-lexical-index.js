@@ -74,10 +74,14 @@ function catalogues(){
     const remoteBase=descriptor.url.replace(/manifest\.json$/,"");
     if(extra.schema==="vdl-classics-index-segments-v1"&&Array.isArray(extra.segments)){
      const segments=await Promise.all(extra.segments.map(async segment=>{
-      if(!/^segment-\d{4}\/manifest\.json$/.test(segment.file))throw Error("Ruta de índice inválida");
-      const info=await load(remoteBase+segment.file);
+      // Los segmentos anteriores conservan su URL inmutable de R2.
+      const rel=/^segment-\d{4}\/manifest\.json$/.test(segment.file);
+      const absolute=/^https:\/\/libros\.vitruvius-digital-library\.org\/corpus\/indice\/ampliacion\/[a-f0-9]{24}\/segment-\d{4}\/manifest\.json$/.test(segment.file);
+      if(!rel&&!absolute)throw Error("Ruta de índice inválida");
+      const segmentUrl=rel?remoteBase+segment.file:segment.file;
+      const info=await load(segmentUrl);
       if(info.schema!=="vitruvia-classics-lexical-index-v1"||!Array.isArray(info.index)||info.index.length!==segment.works)throw Error("Segmento discordante");
-      return {base:remoteBase+segment.file.replace(/manifest\.json$/,""),info};
+      return {base:segmentUrl.slice(0,-"manifest.json".length),info};
      }));
      if(segments.reduce((n,s)=>n+s.info.works,0)!==extra.works)throw Error("Cobertura segmentada discordante");
      out.push(...segments);
