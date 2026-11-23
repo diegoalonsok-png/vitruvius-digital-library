@@ -3,6 +3,7 @@ run-name: Bibliotheca R2 · hasta 25 grupos por tanda · ${{ github.event_name }
 # Meta operativa: ocho tandas al día de hasta 25 grupos (capacidad 200/día, sujeto a fuentes admisibles).
 # Tras un lote de 20 con 13 licencias aptas, se amplía el margen para superar 100 incorporaciones válidas/día.
 # Registrar como incorporados sólo los originales verificados en R2, con URL, SHA-256 e índice.
+# Continuación editorial 2026-11-23: iniciar otra tanda sin reemplazar las 142 ediciones R2 verificadas ni contar rechazadas.
 # Mantener manuscritos, PDF, traducciones y versiones previas sin sustituirlos.
 # Solicitud 2026-11-16 (segunda tanda): publicar únicamente objetos nuevos con licencia y fuente verificadas.
 # Solicitud editorial 2026-11-16: continuar lote conservador hasta 12 grupos, sin sobrescrituras.
