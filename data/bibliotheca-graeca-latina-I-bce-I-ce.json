@@ -3940,6 +3940,21 @@
      "kind": "translation",
      "edition": "Traducción histórica 1877 · Perseus TEI",
      "citationChicago18": "Tacitus, Cornelius. The Life of Cnaeus Julius Agricola. In The Agricola and Germania of Tacitus. Translated by Alfred John Church and William Jackson Brodribb. London: Macmillan, 1877."
+    },
+    {
+     "language": "la",
+     "path": "data/classics-corpus/tacitus-agricola-la.json",
+     "label": "Versión conservada antes de la ampliación R2"
+    },
+    {
+     "language": "la",
+     "path": "https://libros.vitruvius-digital-library.org/corpus/tacitus-agricola-la-2f923fec319b6a47.json",
+     "label": "Edición original la · urn:cts:latinLit:phi1351.phi001.perseus-lat2",
+     "reader": "classics-text-reader.html?work=tacitus-agricola&lang=la&edition=2f923fec319b6a47",
+     "sourceUrns": [
+      "urn:cts:latinLit:phi1351.phi001.perseus-lat2"
+     ],
+     "sha256": "2f923fec319b6a4789e072d868f3610748ff8fb78031467eb3509048bbe6604b"
     }
    ],
    "bibliography": {
@@ -3997,7 +4012,41 @@
    "localEditionLanguages": [
     "en",
     "la"
-   ]
+   ],
+   "indexedEdition": {
+    "sources": [
+     {
+      "title": "Vita Agricolae",
+      "titleLanguage": "lat",
+      "author": "Cornelius Tacitus",
+      "editors": [
+       "Henry Furneaux"
+      ],
+      "bibliography": "Cornelius Tacitus Opera Minora Henry Furneaux Clarendon Press Oxford 1899-1900 Germania, Vita Agricolae, Dialogus De Oratoribus. Scriptorum Classicorum Bibliotheca Oxoniensis Oxford Classical Texts Internet Archive",
+      "licences": [
+       {
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+       }
+      ],
+      "editionUrn": "urn:cts:latinLit:phi1351.phi001.perseus-lat2",
+      "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi1351/phi001/phi1351.phi001.perseus-lat2.xml",
+      "sourceSha256": "c6ed0dbc08ef63e3291468445fa3e489356b66faf3dfa9018ee5471228210676",
+      "sourceReferences": [
+       "https://archive.org/details/operaminorarecog00taciuoft/page/40/mode/2up"
+      ],
+      "publicationYear": "1899-1900",
+      "publisher": "Clarendon Press",
+      "publicationPlace": "Oxford",
+      "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/c6ed0dbc08ef63e3291468445fa3e489356b66faf3dfa9018ee5471228210676.xml"
+     }
+    ],
+    "sha256": "2f923fec319b6a4789e072d868f3610748ff8fb78031467eb3509048bbe6604b",
+    "passages": 214,
+    "characters": 49621,
+    "bytes": 85620,
+    "url": "https://libros.vitruvius-digital-library.org/corpus/tacitus-agricola-la-2f923fec319b6a47.json"
+   }
   },
   {
    "id": "tacitus-germania",
@@ -8862,7 +8911,58 @@
    },
    "localEditionLanguages": [
     "la"
-   ]
+   ],
+   "localVersions": [
+    {
+     "language": "la",
+     "path": "data/classics-corpus/terentius-heautontimorumenos-la.json",
+     "label": "Versión conservada antes de la ampliación R2"
+    },
+    {
+     "language": "la",
+     "path": "https://libros.vitruvius-digital-library.org/corpus/terentius-heautontimorumenos-la-55b31ab48b5830c4.json",
+     "label": "Edición original la · urn:cts:latinLit:phi0134.phi002.perseus-lat2",
+     "reader": "classics-text-reader.html?work=terentius-heautontimorumenos&lang=la&edition=55b31ab48b5830c4",
+     "sourceUrns": [
+      "urn:cts:latinLit:phi0134.phi002.perseus-lat2"
+     ],
+     "sha256": "55b31ab48b5830c4e23cd566046a5090c1d1032e713bde49a89cf2b430703836"
+    }
+   ],
+   "indexedEdition": {
+    "sources": [
+     {
+      "title": "Heautontimorumenos",
+      "titleLanguage": "lat",
+      "author": "Publius Terentius Afer (Terence)",
+      "editors": [
+       "Edward St. John Parry"
+      ],
+      "bibliography": "Publii Terentii Comoediae Sex Publius Terentius Afer (Terence) Edward St. John Parry London Whitaker and Co. George Bell 1857 Internet Archive",
+      "licences": [
+       {
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+       }
+      ],
+      "editionUrn": "urn:cts:latinLit:phi0134.phi002.perseus-lat2",
+      "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0134/phi002/phi0134.phi002.perseus-lat2.xml",
+      "sourceSha256": "f606ae6e891594514effeb9f2bb8d3514bddcc3579483760a73b9e6ca17d202d",
+      "sourceReferences": [
+       "https://archive.org/details/comoediaesexwith00tereuoft/page/160/mode/2up"
+      ],
+      "publicationYear": "1857",
+      "publisher": "Whitaker and Co.",
+      "publicationPlace": "London",
+      "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/f606ae6e891594514effeb9f2bb8d3514bddcc3579483760a73b9e6ca17d202d.xml"
+     }
+    ],
+    "sha256": "55b31ab48b5830c4e23cd566046a5090c1d1032e713bde49a89cf2b430703836",
+    "passages": 786,
+    "characters": 67812,
+    "bytes": 194584,
+    "url": "https://libros.vitruvius-digital-library.org/corpus/terentius-heautontimorumenos-la-55b31ab48b5830c4.json"
+   }
   },
   {
    "id": "cato-agri-cultura",
@@ -15642,6 +15742,21 @@
      "path": "classics-text-reader.html?work=sophocles-oedipus&lang=en",
      "kind": "historical-translation",
      "citationChicago18": "Sófocles. Οἰδίπους Τύραννος. Translated by Richard Jebb. Cambridge University Press, 1887. Perseus Digital Library, TEI."
+    },
+    {
+     "language": "grc",
+     "path": "data/classics-corpus/sophocles-oedipus-grc.json",
+     "label": "Versión conservada antes de la ampliación R2"
+    },
+    {
+     "language": "grc",
+     "path": "https://libros.vitruvius-digital-library.org/corpus/sophocles-oedipus-grc-8a1ca9bcb20a2676.json",
+     "label": "Edición original grc · urn:cts:greekLit:tlg0011.tlg004.perseus-grc2",
+     "reader": "classics-text-reader.html?work=sophocles-oedipus&lang=grc&edition=8a1ca9bcb20a2676",
+     "sourceUrns": [
+      "urn:cts:greekLit:tlg0011.tlg004.perseus-grc2"
+     ],
+     "sha256": "8a1ca9bcb20a2676ef00ad4dc4622966e182cdfdaa6d3ba7e6b01fd93c21cb4a"
     }
    ],
    "century": "V a. C.",
@@ -15704,7 +15819,41 @@
    "localEditionLanguages": [
     "en",
     "grc"
-   ]
+   ],
+   "indexedEdition": {
+    "sources": [
+     {
+      "title": "Οἰδίπους Τύραννος",
+      "titleLanguage": "grc",
+      "author": "Sophocles",
+      "editors": [
+       "Francis Storr"
+      ],
+      "bibliography": "Sophocles Sophocles Oedipus the king. Oedipus at Colonus. Antigone Francis Storr London New York William Heinemann Ltd. The Macmillan Company 1912 1 The Loeb classical library Internet Archive",
+      "licences": [
+       {
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+       }
+      ],
+      "editionUrn": "urn:cts:greekLit:tlg0011.tlg004.perseus-grc2",
+      "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0011/tlg004/tlg0011.tlg004.perseus-grc2.xml",
+      "sourceSha256": "0ad527e90a9c633db3eaeb1353372524dee9607d49828fd26da99c1884e5cf25",
+      "sourceReferences": [
+       "https://archive.org/details/sophoclesstor01sophuoft/page/6/mode/2up"
+      ],
+      "publicationYear": "1912",
+      "publisher": "William Heinemann Ltd.",
+      "publicationPlace": "London",
+      "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/0ad527e90a9c633db3eaeb1353372524dee9607d49828fd26da99c1884e5cf25.xml"
+     }
+    ],
+    "sha256": "8a1ca9bcb20a2676ef00ad4dc4622966e182cdfdaa6d3ba7e6b01fd93c21cb4a",
+    "passages": 458,
+    "characters": 57952,
+    "bytes": 188052,
+    "url": "https://libros.vitruvius-digital-library.org/corpus/sophocles-oedipus-grc-8a1ca9bcb20a2676.json"
+   }
   },
   {
    "id": "euripides-medea",
@@ -18143,6 +18292,21 @@
      "path": "classics-text-reader.html?work=sophocles-antigone&lang=en",
      "kind": "historical-translation",
      "citationChicago18": "Sófocles. Ἀντιγόνη. Translated by Richard Jebb. Cambridge University Press, 1891. Perseus Digital Library, TEI."
+    },
+    {
+     "language": "grc",
+     "path": "data/classics-corpus/sophocles-antigone-grc.json",
+     "label": "Versión conservada antes de la ampliación R2"
+    },
+    {
+     "language": "grc",
+     "path": "https://libros.vitruvius-digital-library.org/corpus/sophocles-antigone-grc-66405788a958fe40.json",
+     "label": "Edición original grc · urn:cts:greekLit:tlg0011.tlg002.perseus-grc2",
+     "reader": "classics-text-reader.html?work=sophocles-antigone&lang=grc&edition=66405788a958fe40",
+     "sourceUrns": [
+      "urn:cts:greekLit:tlg0011.tlg002.perseus-grc2"
+     ],
+     "sha256": "66405788a958fe405e76f4a1f0276ad5a484a227effd85c31e9025b8bc370d33"
     }
    ],
    "indexationAudit": {
@@ -18213,7 +18377,41 @@
    "localEditionLanguages": [
     "en",
     "grc"
-   ]
+   ],
+   "indexedEdition": {
+    "sources": [
+     {
+      "title": "Ἀντιγόνη",
+      "titleLanguage": "grc",
+      "author": "Sophocles",
+      "editors": [
+       "Francis Storr"
+      ],
+      "bibliography": "Sophocles Sophocles Oedipus the king. Oedipus at Colonus. Antigone Francis Storr London New York William Heinemann Ltd. The Macmillan Company 1912 1 The Loeb classical library Internet Archive",
+      "licences": [
+       {
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+       }
+      ],
+      "editionUrn": "urn:cts:greekLit:tlg0011.tlg002.perseus-grc2",
+      "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0011/tlg002/tlg0011.tlg002.perseus-grc2.xml",
+      "sourceSha256": "f5d2f4989ca5a71076f808eefd08b5d74e543f76fe219f9eb38c9cd5cb571846",
+      "sourceReferences": [
+       "https://archive.org/details/sophoclesstor01sophuoft/page/308/mode/2up"
+      ],
+      "publicationYear": "1912",
+      "publisher": "William Heinemann Ltd.",
+      "publicationPlace": "London",
+      "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/f5d2f4989ca5a71076f808eefd08b5d74e543f76fe219f9eb38c9cd5cb571846.xml"
+     }
+    ],
+    "sha256": "66405788a958fe405e76f4a1f0276ad5a484a227effd85c31e9025b8bc370d33",
+    "passages": 299,
+    "characters": 47223,
+    "bytes": 141491,
+    "url": "https://libros.vitruvius-digital-library.org/corpus/sophocles-antigone-grc-66405788a958fe40.json"
+   }
   },
   {
    "id": "sophocles-ajax",
@@ -18331,7 +18529,58 @@
    "localEditionLanguages": [
     "en",
     "grc"
-   ]
+   ],
+   "localVersions": [
+    {
+     "language": "grc",
+     "path": "data/classics-corpus/sophocles-ajax-grc.json",
+     "label": "Versión conservada antes de la ampliación R2"
+    },
+    {
+     "language": "grc",
+     "path": "https://libros.vitruvius-digital-library.org/corpus/sophocles-ajax-grc-c04b15a588ea7a83.json",
+     "label": "Edición original grc · urn:cts:greekLit:tlg0011.tlg003.perseus-grc2",
+     "reader": "classics-text-reader.html?work=sophocles-ajax&lang=grc&edition=c04b15a588ea7a83",
+     "sourceUrns": [
+      "urn:cts:greekLit:tlg0011.tlg003.perseus-grc2"
+     ],
+     "sha256": "c04b15a588ea7a8372326f3d475bcbf221e7c720b7feba89c90cc7b1877c660a"
+    }
+   ],
+   "indexedEdition": {
+    "sources": [
+     {
+      "title": "Αἴας",
+      "titleLanguage": "grc",
+      "author": "Sophocles",
+      "editors": [
+       "Francis Storr"
+      ],
+      "bibliography": "Sophocles Sophocles Ajax. Electra. Trachiniae. Philoctetes Francis Storr London New York William Heinemann Ltd. The Macmillan Company 1913 2 The Loeb classical library Internet Archive",
+      "licences": [
+       {
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+       }
+      ],
+      "editionUrn": "urn:cts:greekLit:tlg0011.tlg003.perseus-grc2",
+      "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0011/tlg003/tlg0011.tlg003.perseus-grc2.xml",
+      "sourceSha256": "166a1c03c627bd6d183eb138c964cc703f311c5ad03fa0fc923f7e2ac99ecbec",
+      "sourceReferences": [
+       "https://archive.org/details/sophoclesstor02sophuoft/page/6/mode/2up"
+      ],
+      "publicationYear": "1913",
+      "publisher": "William Heinemann Ltd.",
+      "publicationPlace": "London",
+      "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/166a1c03c627bd6d183eb138c964cc703f311c5ad03fa0fc923f7e2ac99ecbec.xml"
+     }
+    ],
+    "sha256": "c04b15a588ea7a8372326f3d475bcbf221e7c720b7feba89c90cc7b1877c660a",
+    "passages": 310,
+    "characters": 50386,
+    "bytes": 149447,
+    "url": "https://libros.vitruvius-digital-library.org/corpus/sophocles-ajax-grc-c04b15a588ea7a83.json"
+   }
   },
   {
    "id": "sophocles-electra",
@@ -18393,6 +18642,21 @@
      "path": "classics-text-reader.html?work=sophocles-electra&lang=en",
      "kind": "historical-translation",
      "citationChicago18": "Sófocles. Ἠλέκτρα. Translated by Richard Jebb. Cambridge University Press, 1894. Perseus Digital Library, TEI."
+    },
+    {
+     "language": "grc",
+     "path": "data/classics-corpus/sophocles-electra-grc.json",
+     "label": "Versión conservada antes de la ampliación R2"
+    },
+    {
+     "language": "grc",
+     "path": "https://libros.vitruvius-digital-library.org/corpus/sophocles-electra-grc-adc35d916caa86e6.json",
+     "label": "Edición original grc · urn:cts:greekLit:tlg0011.tlg005.perseus-grc2",
+     "reader": "classics-text-reader.html?work=sophocles-electra&lang=grc&edition=adc35d916caa86e6",
+     "sourceUrns": [
+      "urn:cts:greekLit:tlg0011.tlg005.perseus-grc2"
+     ],
+     "sha256": "adc35d916caa86e6374febde1775ecd598b0f5e11f8b38ebc53501740c37fc9d"
     }
    ],
    "indexationAudit": {
@@ -18463,7 +18727,41 @@
    "localEditionLanguages": [
     "en",
     "grc"
-   ]
+   ],
+   "indexedEdition": {
+    "sources": [
+     {
+      "title": "Ἠλέκτρα",
+      "titleLanguage": "grc",
+      "author": "Sophocles",
+      "editors": [
+       "Francis Storr"
+      ],
+      "bibliography": "Sophocles Sophocles Ajax. Electra. Trachiniae. Philoctetes Francis Storr London New York William Heinemann Ltd. The Macmillan Company 1913 2 The Loeb classical library Internet Archive",
+      "licences": [
+       {
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+       }
+      ],
+      "editionUrn": "urn:cts:greekLit:tlg0011.tlg005.perseus-grc2",
+      "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0011/tlg005/tlg0011.tlg005.perseus-grc2.xml",
+      "sourceSha256": "bce7c2887f2b0d30a149c104cb16a0ea9ae5d83ec239b29853b7b5f08b6c4a07",
+      "sourceReferences": [
+       "https://archive.org/details/sophoclesstor02sophuoft/page/126/mode/2up"
+      ],
+      "publicationYear": "1913",
+      "publisher": "William Heinemann Ltd.",
+      "publicationPlace": "London",
+      "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/bce7c2887f2b0d30a149c104cb16a0ea9ae5d83ec239b29853b7b5f08b6c4a07.xml"
+     }
+    ],
+    "sha256": "adc35d916caa86e6374febde1775ecd598b0f5e11f8b38ebc53501740c37fc9d",
+    "passages": 421,
+    "characters": 55346,
+    "bytes": 176765,
+    "url": "https://libros.vitruvius-digital-library.org/corpus/sophocles-electra-grc-adc35d916caa86e6.json"
+   }
   },
   {
    "id": "sophocles-philoctetes",
@@ -18525,6 +18823,21 @@
      "path": "classics-text-reader.html?work=sophocles-philoctetes&lang=en",
      "kind": "historical-translation",
      "citationChicago18": "Sófocles. Φιλοκτήτης. Translated by Richard Jebb. Cambridge University Press, 1898. Perseus Digital Library, TEI."
+    },
+    {
+     "language": "grc",
+     "path": "data/classics-corpus/sophocles-philoctetes-grc.json",
+     "label": "Versión conservada antes de la ampliación R2"
+    },
+    {
+     "language": "grc",
+     "path": "https://libros.vitruvius-digital-library.org/corpus/sophocles-philoctetes-grc-79c04856bff3adb6.json",
+     "label": "Edición original grc · urn:cts:greekLit:tlg0011.tlg006.perseus-grc2",
+     "reader": "classics-text-reader.html?work=sophocles-philoctetes&lang=grc&edition=79c04856bff3adb6",
+     "sourceUrns": [
+      "urn:cts:greekLit:tlg0011.tlg006.perseus-grc2"
+     ],
+     "sha256": "79c04856bff3adb611af16bee521f5e2142a0cab87aab97d28be1f259243212a"
     }
    ],
    "indexationAudit": {
@@ -18595,7 +18908,41 @@
    "localEditionLanguages": [
     "en",
     "grc"
-   ]
+   ],
+   "indexedEdition": {
+    "sources": [
+     {
+      "title": "Φιλοκτήτης",
+      "titleLanguage": "grc",
+      "author": "Sophocles",
+      "editors": [
+       "Francis Storr"
+      ],
+      "bibliography": "Sophocles Sophocles Ajax. Electra. Trachiniae. Philoctetes Francis Storr London New York William Heinemann Ltd. The Macmillan Company 1913 2 The Loeb classical library Internet Archive",
+      "licences": [
+       {
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+       }
+      ],
+      "editionUrn": "urn:cts:greekLit:tlg0011.tlg006.perseus-grc2",
+      "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0011/tlg006/tlg0011.tlg006.perseus-grc2.xml",
+      "sourceSha256": "a1233e43b1723c01fe8b11349ebb78143a13477cc32c41a043323c075061d11a",
+      "sourceReferences": [
+       "https://archive.org/details/sophoclesstor02sophuoft/page/366/mode/2up"
+      ],
+      "publicationYear": "1913",
+      "publisher": "William Heinemann Ltd.",
+      "publicationPlace": "London",
+      "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/a1233e43b1723c01fe8b11349ebb78143a13477cc32c41a043323c075061d11a.xml"
+     }
+    ],
+    "sha256": "79c04856bff3adb611af16bee521f5e2142a0cab87aab97d28be1f259243212a",
+    "passages": 414,
+    "characters": 55885,
+    "bytes": 176430,
+    "url": "https://libros.vitruvius-digital-library.org/corpus/sophocles-philoctetes-grc-79c04856bff3adb6.json"
+   }
   },
   {
    "id": "sophocles-oedipus-colonus",
@@ -18657,6 +19004,21 @@
      "path": "classics-text-reader.html?work=sophocles-oedipus-colonus&lang=en",
      "kind": "historical-translation",
      "citationChicago18": "Sófocles. Οἰδίπους ἐπὶ Κολωνῷ. Translated by Richard Jebb. Cambridge University Press, 1889. Perseus Digital Library, TEI."
+    },
+    {
+     "language": "grc",
+     "path": "data/classics-corpus/sophocles-oedipus-colonus-grc.json",
+     "label": "Versión conservada antes de la ampliación R2"
+    },
+    {
+     "language": "grc",
+     "path": "https://libros.vitruvius-digital-library.org/corpus/sophocles-oedipus-colonus-grc-0c79d59eb96a59af.json",
+     "label": "Edición original grc · urn:cts:greekLit:tlg0011.tlg007.perseus-grc2",
+     "reader": "classics-text-reader.html?work=sophocles-oedipus-colonus&lang=grc&edition=0c79d59eb96a59af",
+     "sourceUrns": [
+      "urn:cts:greekLit:tlg0011.tlg007.perseus-grc2"
+     ],
+     "sha256": "0c79d59eb96a59afb71841a9e6df93f4d1faabc492f04a4dab057c1293c0d4c0"
     }
    ],
    "indexationAudit": {
@@ -18727,7 +19089,41 @@
    "localEditionLanguages": [
     "en",
     "grc"
-   ]
+   ],
+   "indexedEdition": {
+    "sources": [
+     {
+      "title": "Οἰδίπους ἐπὶ Κολωνῷ",
+      "titleLanguage": "grc",
+      "author": "Sophocles",
+      "editors": [
+       "Francis Storr"
+      ],
+      "bibliography": "Sophocles Sophocles Ajax. Electra. Trachiniae. Philoctetes Francis Storr London New York William Heinemann Ltd. The Macmillan Company 1912 1 The Loeb classical library Internet Archive",
+      "licences": [
+       {
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+       }
+      ],
+      "editionUrn": "urn:cts:greekLit:tlg0011.tlg007.perseus-grc2",
+      "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0011/tlg007/tlg0011.tlg007.perseus-grc2.xml",
+      "sourceSha256": "68ad23d097092228fedacd308afad1979ad59c0ec969395c07160d74d725f3fc",
+      "sourceReferences": [
+       "https://archive.org/details/sophoclesstor01sophuoft/page/140/mode/2up"
+      ],
+      "publicationYear": "1912",
+      "publisher": "William Heinemann Ltd.",
+      "publicationPlace": "London",
+      "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/68ad23d097092228fedacd308afad1979ad59c0ec969395c07160d74d725f3fc.xml"
+     }
+    ],
+    "sha256": "0c79d59eb96a59afb71841a9e6df93f4d1faabc492f04a4dab057c1293c0d4c0",
+    "passages": 546,
+    "characters": 65409,
+    "bytes": 215997,
+    "url": "https://libros.vitruvius-digital-library.org/corpus/sophocles-oedipus-colonus-grc-0c79d59eb96a59af.json"
+   }
   },
   {
    "id": "sophocles-trachiniae",
@@ -18845,7 +19241,58 @@
    "localEditionLanguages": [
     "en",
     "grc"
-   ]
+   ],
+   "localVersions": [
+    {
+     "language": "grc",
+     "path": "data/classics-corpus/sophocles-trachiniae-grc.json",
+     "label": "Versión conservada antes de la ampliación R2"
+    },
+    {
+     "language": "grc",
+     "path": "https://libros.vitruvius-digital-library.org/corpus/sophocles-trachiniae-grc-12d4fe9b38e22277.json",
+     "label": "Edición original grc · urn:cts:greekLit:tlg0011.tlg001.perseus-grc2",
+     "reader": "classics-text-reader.html?work=sophocles-trachiniae&lang=grc&edition=12d4fe9b38e22277",
+     "sourceUrns": [
+      "urn:cts:greekLit:tlg0011.tlg001.perseus-grc2"
+     ],
+     "sha256": "12d4fe9b38e222779a3b519a833682f11bedc4da063acdf633bbd9db97ad73fe"
+    }
+   ],
+   "indexedEdition": {
+    "sources": [
+     {
+      "title": "Τραχίνιαι",
+      "titleLanguage": "grc",
+      "author": "Sophocles",
+      "editors": [
+       "Francis Storr"
+      ],
+      "bibliography": "Sophocles Sophocles Ajax. Electra. Trachiniae. Philoctetes Francis Storr London New York William Heinemann Ltd. The Macmillan Company 1913 2 The Loeb classical library Internet Archive",
+      "licences": [
+       {
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+       }
+      ],
+      "editionUrn": "urn:cts:greekLit:tlg0011.tlg001.perseus-grc2",
+      "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0011/tlg001/tlg0011.tlg001.perseus-grc2.xml",
+      "sourceSha256": "890c7cbbc693e11b20d5f7469b01e4c71f0e4637d33bc7b86994ec76265960dd",
+      "sourceReferences": [
+       "https://archive.org/details/sophoclesstor02sophuoft/page/258/mode/2up"
+      ],
+      "publicationYear": "1913",
+      "publisher": "William Heinemann Ltd.",
+      "publicationPlace": "London",
+      "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/890c7cbbc693e11b20d5f7469b01e4c71f0e4637d33bc7b86994ec76265960dd.xml"
+     }
+    ],
+    "sha256": "12d4fe9b38e222779a3b519a833682f11bedc4da063acdf633bbd9db97ad73fe",
+    "passages": 273,
+    "characters": 46439,
+    "bytes": 135807,
+    "url": "https://libros.vitruvius-digital-library.org/corpus/sophocles-trachiniae-grc-12d4fe9b38e22277.json"
+   }
   },
   {
    "id": "euripides-bacchae",
@@ -38013,6 +38460,246 @@
     "characters": 11339,
     "bytes": 29221,
     "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg050-grc-16347c3d048e2e0a.json"
+   }
+  },
+  {
+   "id": "cts-tlg0062-tlg046",
+   "author": "Luciano de Samósata",
+   "title": "Lexiphanes",
+   "language": "grc",
+   "genre": "Corpus clásico ampliado",
+   "dating": "c. 125–c. 180 d. C.",
+   "reading": {
+    "url": "classics-text-reader.html?work=cts-tlg0062-tlg046&lang=grc&edition=05bc613dbbc06372",
+    "status": "Edición TEI alojada en R2 con búsqueda y traducción automática por pasaje"
+   },
+   "manuscript": {
+    "status": "Sin testimonio manuscrito individual asignado; la edición TEI se identifica por separado"
+   },
+   "pdf": {
+    "url": null,
+    "status": "No consta PDF ni facsímil individual verificado para esta edición"
+   },
+   "translation": {
+    "status": "Traducción automática de consulta por pasaje; no se atribuye a un traductor académico"
+   },
+   "links": {
+    "scaife": "https://scaife.perseus.org/library/urn:cts:greekLit:tlg0062.tlg046.perseus-grc2/"
+   },
+   "aliases": [
+    "urn:cts:greekLit:tlg0062.tlg046.perseus-grc2"
+   ],
+   "relatedWorkIds": [],
+   "catalogueProvenance": "Título y autor de los catálogos CTS del sitio; edición contrastada con su cabecera TEI. No se retrotraduce el título.",
+   "corpusFiles": {
+    "grc": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg046-grc-05bc613dbbc06372.json"
+   },
+   "localVersions": [
+    {
+     "language": "grc",
+     "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg046-grc-05bc613dbbc06372.json",
+     "label": "Edición original grc · urn:cts:greekLit:tlg0062.tlg046.perseus-grc2",
+     "reader": "classics-text-reader.html?work=cts-tlg0062-tlg046&lang=grc&edition=05bc613dbbc06372",
+     "sourceUrns": [
+      "urn:cts:greekLit:tlg0062.tlg046.perseus-grc2"
+     ],
+     "sha256": "05bc613dbbc06372eadd8d290e2275fb914dee6344cb54219389f5e406fb7144"
+    }
+   ],
+   "publicStatus": "lectura-local-parcial",
+   "indexedEdition": {
+    "sources": [
+     {
+      "title": "Λεξιφάνης",
+      "titleLanguage": "grc",
+      "author": "Lucian",
+      "editors": [
+       "Austin Morris Harmon"
+      ],
+      "bibliography": "Lucian Lucian Austin Morris Harmon London William Heinemann Ltd. Cambridge, MA Harvard University Press 1936 5 Loeb Classical Library Internet Archive",
+      "licences": [
+       {
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+       }
+      ],
+      "editionUrn": "urn:cts:greekLit:tlg0062.tlg046.perseus-grc2",
+      "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0062/tlg046/tlg0062.tlg046.perseus-grc2.xml",
+      "sourceSha256": "518aef59c4c27bcbc55fcfbbe77212a3bdeedec65b7759e822fcbadb5323cd0e",
+      "sourceReferences": [
+       "https://archive.org/details/lucianhar05luciuoft/page/292/mode/2up"
+      ],
+      "publicationYear": "1936",
+      "publisher": "William Heinemann Ltd.",
+      "publicationPlace": "London",
+      "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/518aef59c4c27bcbc55fcfbbe77212a3bdeedec65b7759e822fcbadb5323cd0e.xml"
+     }
+    ],
+    "sha256": "05bc613dbbc06372eadd8d290e2275fb914dee6344cb54219389f5e406fb7144",
+    "passages": 42,
+    "characters": 17915,
+    "bytes": 43620,
+    "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg046-grc-05bc613dbbc06372.json"
+   }
+  },
+  {
+   "id": "cts-tlg0062-tlg047",
+   "author": "Luciano de Samósata",
+   "title": "Eunuchus",
+   "language": "grc",
+   "genre": "Corpus clásico ampliado",
+   "dating": "c. 125–c. 180 d. C.",
+   "reading": {
+    "url": "classics-text-reader.html?work=cts-tlg0062-tlg047&lang=grc&edition=d89b8b0519db4c65",
+    "status": "Edición TEI alojada en R2 con búsqueda y traducción automática por pasaje"
+   },
+   "manuscript": {
+    "status": "Sin testimonio manuscrito individual asignado; la edición TEI se identifica por separado"
+   },
+   "pdf": {
+    "url": null,
+    "status": "No consta PDF ni facsímil individual verificado para esta edición"
+   },
+   "translation": {
+    "status": "Traducción automática de consulta por pasaje; no se atribuye a un traductor académico"
+   },
+   "links": {
+    "scaife": "https://scaife.perseus.org/library/urn:cts:greekLit:tlg0062.tlg047.perseus-grc2/"
+   },
+   "aliases": [
+    "urn:cts:greekLit:tlg0062.tlg047.perseus-grc2"
+   ],
+   "relatedWorkIds": [],
+   "catalogueProvenance": "Título y autor de los catálogos CTS del sitio; edición contrastada con su cabecera TEI. No se retrotraduce el título.",
+   "corpusFiles": {
+    "grc": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg047-grc-d89b8b0519db4c65.json"
+   },
+   "localVersions": [
+    {
+     "language": "grc",
+     "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg047-grc-d89b8b0519db4c65.json",
+     "label": "Edición original grc · urn:cts:greekLit:tlg0062.tlg047.perseus-grc2",
+     "reader": "classics-text-reader.html?work=cts-tlg0062-tlg047&lang=grc&edition=d89b8b0519db4c65",
+     "sourceUrns": [
+      "urn:cts:greekLit:tlg0062.tlg047.perseus-grc2"
+     ],
+     "sha256": "d89b8b0519db4c65a8be1bd518343ce01c5c172c26d86daaa1400d3ca80e19d7"
+    }
+   ],
+   "publicStatus": "lectura-local-parcial",
+   "indexedEdition": {
+    "sources": [
+     {
+      "title": "Εὐνοῦχος",
+      "titleLanguage": "grc",
+      "author": "Lucian",
+      "editors": [
+       "Austin Morris Harmon"
+      ],
+      "bibliography": "Lucian Lucian Austin Morris Harmon London William Heinemann Ltd. Cambridge, MA Harvard University Press 1936 5 Loeb Classical Library Internet Archive",
+      "licences": [
+       {
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+       }
+      ],
+      "editionUrn": "urn:cts:greekLit:tlg0062.tlg047.perseus-grc2",
+      "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0062/tlg047/tlg0062.tlg047.perseus-grc2.xml",
+      "sourceSha256": "201171eff55d6c8e2a38c616032a9c560bbaefc1c1ef3ba1df224b55f8ec733d",
+      "sourceReferences": [
+       "https://archive.org/details/lucianhar05luciuoft/page/330/mode/2up"
+      ],
+      "publicationYear": "1936",
+      "publisher": "William Heinemann Ltd.",
+      "publicationPlace": "London",
+      "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/201171eff55d6c8e2a38c616032a9c560bbaefc1c1ef3ba1df224b55f8ec733d.xml"
+     }
+    ],
+    "sha256": "d89b8b0519db4c65a8be1bd518343ce01c5c172c26d86daaa1400d3ca80e19d7",
+    "passages": 25,
+    "characters": 8294,
+    "bytes": 22115,
+    "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg047-grc-d89b8b0519db4c65.json"
+   }
+  },
+  {
+   "id": "cts-tlg0062-tlg048",
+   "author": "Luciano de Samósata",
+   "title": "De astrologia",
+   "language": "grc",
+   "genre": "Corpus clásico ampliado",
+   "dating": "c. 125–c. 180 d. C.",
+   "reading": {
+    "url": "classics-text-reader.html?work=cts-tlg0062-tlg048&lang=grc&edition=8298669728a69f19",
+    "status": "Edición TEI alojada en R2 con búsqueda y traducción automática por pasaje"
+   },
+   "manuscript": {
+    "status": "Sin testimonio manuscrito individual asignado; la edición TEI se identifica por separado"
+   },
+   "pdf": {
+    "url": null,
+    "status": "No consta PDF ni facsímil individual verificado para esta edición"
+   },
+   "translation": {
+    "status": "Traducción automática de consulta por pasaje; no se atribuye a un traductor académico"
+   },
+   "links": {
+    "scaife": "https://scaife.perseus.org/library/urn:cts:greekLit:tlg0062.tlg048.perseus-grc2/"
+   },
+   "aliases": [
+    "urn:cts:greekLit:tlg0062.tlg048.perseus-grc2"
+   ],
+   "relatedWorkIds": [],
+   "catalogueProvenance": "Título y autor de los catálogos CTS del sitio; edición contrastada con su cabecera TEI. No se retrotraduce el título.",
+   "corpusFiles": {
+    "grc": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg048-grc-8298669728a69f19.json"
+   },
+   "localVersions": [
+    {
+     "language": "grc",
+     "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg048-grc-8298669728a69f19.json",
+     "label": "Edición original grc · urn:cts:greekLit:tlg0062.tlg048.perseus-grc2",
+     "reader": "classics-text-reader.html?work=cts-tlg0062-tlg048&lang=grc&edition=8298669728a69f19",
+     "sourceUrns": [
+      "urn:cts:greekLit:tlg0062.tlg048.perseus-grc2"
+     ],
+     "sha256": "8298669728a69f1934186bd783a16f59c7677ca574105f974cac63c11153f67c"
+    }
+   ],
+   "publicStatus": "lectura-local-parcial",
+   "indexedEdition": {
+    "sources": [
+     {
+      "title": "Περὶ τῆς Ἀστρολογίας",
+      "titleLanguage": "grc",
+      "author": "Lucian",
+      "editors": [
+       "Austin Morris Harmon"
+      ],
+      "bibliography": "Lucian Lucian Austin Morris Harmon Cambridge, MA Harvard University Press London William Heinemann Ltd. 1936 5 Loeb Classical Library Internet Archive",
+      "licences": [
+       {
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+       }
+      ],
+      "editionUrn": "urn:cts:greekLit:tlg0062.tlg048.perseus-grc2",
+      "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0062/tlg048/tlg0062.tlg048.perseus-grc2.xml",
+      "sourceSha256": "f2481a9a77c6fc1362018ad77331c3a504c992519045054de45756edccc8461b",
+      "sourceReferences": [
+       "https://archive.org/details/lucianhar05luciuoft/page/330/mode/2up"
+      ],
+      "publicationYear": "1936",
+      "publisher": "Harvard University Press",
+      "publicationPlace": "Cambridge, MA",
+      "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/f2481a9a77c6fc1362018ad77331c3a504c992519045054de45756edccc8461b.xml"
+     }
+    ],
+    "sha256": "8298669728a69f1934186bd783a16f59c7677ca574105f974cac63c11153f67c",
+    "passages": 31,
+    "characters": 12146,
+    "bytes": 30639,
+    "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg048-grc-8298669728a69f19.json"
    }
   }
  ],

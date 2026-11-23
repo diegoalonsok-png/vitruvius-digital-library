@@ -4,17 +4,17 @@
   "scope": "Se auditan exclusivamente 271 fichas de obras del catálogo local; no es un censo universal de literatura grecolatina.",
   "method": "Cruce de fichas bibliográficas, vínculos locales, corpus legible, registro de búsqueda y testimonios manuscritos; sin OCR ni verificación externa de los enlaces.",
   "counts": {
-    "cataloguedWorks": 327,
+    "cataloguedWorks": 330,
     "catalogueStatuses": {
       "lectura-local-completa": 31,
-      "lectura-local-parcial": 221,
+      "lectura-local-parcial": 224,
       "fuente-externa-identificada": 61,
       "repertoriado-busqueda-externa": 12,
       "pendiente-de-incorporar": 2
     },
-    "locallyReadableClaims": 252,
-    "indexedTextVersions": 409,
-    "indexedDistinctWorks": 297,
+    "locallyReadableClaims": 255,
+    "indexedTextVersions": 421,
+    "indexedDistinctWorks": 300,
     "manuscriptWitnesses": 107
   },
   "works": [
@@ -717,7 +717,8 @@
       ],
       "indexedTextFiles": [
         "data/classics-corpus/tacitus-agricola-en.json",
-        "data/classics-corpus/tacitus-agricola-la.json"
+        "data/classics-corpus/tacitus-agricola-la.json",
+        "https://libros.vitruvius-digital-library.org/corpus/tacitus-agricola-la-2f923fec319b6a47.json"
       ],
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
@@ -1428,7 +1429,8 @@
         "la"
       ],
       "indexedTextFiles": [
-        "data/classics-corpus/terentius-heautontimorumenos-la.json"
+        "data/classics-corpus/terentius-heautontimorumenos-la.json",
+        "https://libros.vitruvius-digital-library.org/corpus/terentius-heautontimorumenos-la-55b31ab48b5830c4.json"
       ],
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
@@ -2402,7 +2404,8 @@
       ],
       "indexedTextFiles": [
         "data/classics-corpus/sophocles-oedipus-en.json",
-        "data/classics-corpus/sophocles-oedipus-grc.json"
+        "data/classics-corpus/sophocles-oedipus-grc.json",
+        "https://libros.vitruvius-digital-library.org/corpus/sophocles-oedipus-grc-8a1ca9bcb20a2676.json"
       ],
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
@@ -2848,7 +2851,8 @@
       ],
       "indexedTextFiles": [
         "data/classics-corpus/sophocles-antigone-en.json",
-        "data/classics-corpus/sophocles-antigone-grc.json"
+        "data/classics-corpus/sophocles-antigone-grc.json",
+        "https://libros.vitruvius-digital-library.org/corpus/sophocles-antigone-grc-66405788a958fe40.json"
       ],
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
@@ -2872,7 +2876,8 @@
       ],
       "indexedTextFiles": [
         "data/classics-corpus/sophocles-ajax-en.json",
-        "data/classics-corpus/sophocles-ajax-grc.json"
+        "data/classics-corpus/sophocles-ajax-grc.json",
+        "https://libros.vitruvius-digital-library.org/corpus/sophocles-ajax-grc-c04b15a588ea7a83.json"
       ],
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
@@ -2896,7 +2901,8 @@
       ],
       "indexedTextFiles": [
         "data/classics-corpus/sophocles-electra-en.json",
-        "data/classics-corpus/sophocles-electra-grc.json"
+        "data/classics-corpus/sophocles-electra-grc.json",
+        "https://libros.vitruvius-digital-library.org/corpus/sophocles-electra-grc-adc35d916caa86e6.json"
       ],
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
@@ -2920,7 +2926,8 @@
       ],
       "indexedTextFiles": [
         "data/classics-corpus/sophocles-philoctetes-en.json",
-        "data/classics-corpus/sophocles-philoctetes-grc.json"
+        "data/classics-corpus/sophocles-philoctetes-grc.json",
+        "https://libros.vitruvius-digital-library.org/corpus/sophocles-philoctetes-grc-79c04856bff3adb6.json"
       ],
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
@@ -2944,7 +2951,8 @@
       ],
       "indexedTextFiles": [
         "data/classics-corpus/sophocles-oedipus-colonus-en.json",
-        "data/classics-corpus/sophocles-oedipus-colonus-grc.json"
+        "data/classics-corpus/sophocles-oedipus-colonus-grc.json",
+        "https://libros.vitruvius-digital-library.org/corpus/sophocles-oedipus-colonus-grc-0c79d59eb96a59af.json"
       ],
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
@@ -2968,7 +2976,8 @@
       ],
       "indexedTextFiles": [
         "data/classics-corpus/sophocles-trachiniae-en.json",
-        "data/classics-corpus/sophocles-trachiniae-grc.json"
+        "data/classics-corpus/sophocles-trachiniae-grc.json",
+        "https://libros.vitruvius-digital-library.org/corpus/sophocles-trachiniae-grc-12d4fe9b38e22277.json"
       ],
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
@@ -7005,6 +7014,51 @@
       ],
       "indexedTextFiles": [
         "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg050-grc-16347c3d048e2e0a.json"
+      ],
+      "manuscriptRecords": 0,
+      "hasManuscriptRecord": false
+    },
+    {
+      "id": "cts-tlg0062-tlg046",
+      "author": "Luciano de Samósata",
+      "title": "Lexiphanes",
+      "originalLanguage": "grc",
+      "catalogueStatus": "lectura-local-parcial",
+      "indexedTextLanguages": [
+        "grc"
+      ],
+      "indexedTextFiles": [
+        "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg046-grc-05bc613dbbc06372.json"
+      ],
+      "manuscriptRecords": 0,
+      "hasManuscriptRecord": false
+    },
+    {
+      "id": "cts-tlg0062-tlg047",
+      "author": "Luciano de Samósata",
+      "title": "Eunuchus",
+      "originalLanguage": "grc",
+      "catalogueStatus": "lectura-local-parcial",
+      "indexedTextLanguages": [
+        "grc"
+      ],
+      "indexedTextFiles": [
+        "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg047-grc-d89b8b0519db4c65.json"
+      ],
+      "manuscriptRecords": 0,
+      "hasManuscriptRecord": false
+    },
+    {
+      "id": "cts-tlg0062-tlg048",
+      "author": "Luciano de Samósata",
+      "title": "De astrologia",
+      "originalLanguage": "grc",
+      "catalogueStatus": "lectura-local-parcial",
+      "indexedTextLanguages": [
+        "grc"
+      ],
+      "indexedTextFiles": [
+        "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg048-grc-8298669728a69f19.json"
       ],
       "manuscriptRecords": 0,
       "hasManuscriptRecord": false

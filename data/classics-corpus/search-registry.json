@@ -2,8 +2,8 @@
  "schema": "vitruvia-classics-search-registry-v1",
  "updated": "2026-11-23",
  "description": "Registro verificable de transcripciones HTML y textos JSON existentes que admiten búsqueda literal de contenido. No incluye automáticamente PDF escaneados, facsímiles ni fichas sin texto. Los índices auxiliares por locus y el aparato crítico se declaran por separado; no se suman a versiones textuales originales ni implican colación autóptica.",
- "count": 570,
- "works": 425,
+ "count": 582,
+ "works": 428,
  "entries": [
   {
    "workId": "aeneas-tacticus-poliorketika",
@@ -2040,6 +2040,45 @@
    "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
    "sha256": "b21d1ff03ba735abc74aab06de35ee6ade529c57d2b1289b5e9f08e69db49e87",
    "passages": 91
+  },
+  {
+   "workId": "cts-tlg0062-tlg046",
+   "author": "Luciano de Samósata",
+   "title": "Lexiphanes",
+   "language": "grc",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg046-grc-05bc613dbbc06372.json",
+   "reader": "classics-text-reader.html?work=cts-tlg0062-tlg046&lang=grc&edition=05bc613dbbc06372",
+   "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+   "sourceUrn": "urn:cts:greekLit:tlg0062.tlg046.perseus-grc2",
+   "sha256": "05bc613dbbc06372eadd8d290e2275fb914dee6344cb54219389f5e406fb7144",
+   "passages": 42
+  },
+  {
+   "workId": "cts-tlg0062-tlg047",
+   "author": "Luciano de Samósata",
+   "title": "Eunuchus",
+   "language": "grc",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg047-grc-d89b8b0519db4c65.json",
+   "reader": "classics-text-reader.html?work=cts-tlg0062-tlg047&lang=grc&edition=d89b8b0519db4c65",
+   "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+   "sourceUrn": "urn:cts:greekLit:tlg0062.tlg047.perseus-grc2",
+   "sha256": "d89b8b0519db4c65a8be1bd518343ce01c5c172c26d86daaa1400d3ca80e19d7",
+   "passages": 25
+  },
+  {
+   "workId": "cts-tlg0062-tlg048",
+   "author": "Luciano de Samósata",
+   "title": "De astrologia",
+   "language": "grc",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg048-grc-8298669728a69f19.json",
+   "reader": "classics-text-reader.html?work=cts-tlg0062-tlg048&lang=grc&edition=8298669728a69f19",
+   "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+   "sourceUrn": "urn:cts:greekLit:tlg0062.tlg048.perseus-grc2",
+   "sha256": "8298669728a69f1934186bd783a16f59c7677ca574105f974cac63c11153f67c",
+   "passages": 31
   },
   {
    "workId": "cts-tlg0062-tlg049",
@@ -5455,6 +5494,19 @@
    "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
   },
   {
+   "workId": "sophocles-ajax",
+   "author": "Sófocles",
+   "title": "Αἴας",
+   "language": "grc",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/sophocles-ajax-grc-c04b15a588ea7a83.json",
+   "reader": "classics-text-reader.html?work=sophocles-ajax&lang=grc&edition=c04b15a588ea7a83",
+   "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+   "sourceUrn": "urn:cts:greekLit:tlg0011.tlg003.perseus-grc2",
+   "sha256": "c04b15a588ea7a8372326f3d475bcbf221e7c720b7feba89c90cc7b1877c660a",
+   "passages": 310
+  },
+  {
    "workId": "sophocles-antigone",
    "author": "Sófocles",
    "title": "Ἀντιγόνη",
@@ -5473,6 +5525,19 @@
    "path": "data/classics-corpus/sophocles-antigone-grc.json",
    "reader": "classics-text-reader.html?work=sophocles-antigone&lang=grc",
    "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+  },
+  {
+   "workId": "sophocles-antigone",
+   "author": "Sófocles",
+   "title": "Ἀντιγόνη",
+   "language": "grc",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/sophocles-antigone-grc-66405788a958fe40.json",
+   "reader": "classics-text-reader.html?work=sophocles-antigone&lang=grc&edition=66405788a958fe40",
+   "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+   "sourceUrn": "urn:cts:greekLit:tlg0011.tlg002.perseus-grc2",
+   "sha256": "66405788a958fe405e76f4a1f0276ad5a484a227effd85c31e9025b8bc370d33",
+   "passages": 299
   },
   {
    "workId": "sophocles-electra",
@@ -5495,6 +5560,19 @@
    "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
   },
   {
+   "workId": "sophocles-electra",
+   "author": "Sófocles",
+   "title": "Ἠλέκτρα",
+   "language": "grc",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/sophocles-electra-grc-adc35d916caa86e6.json",
+   "reader": "classics-text-reader.html?work=sophocles-electra&lang=grc&edition=adc35d916caa86e6",
+   "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+   "sourceUrn": "urn:cts:greekLit:tlg0011.tlg005.perseus-grc2",
+   "sha256": "adc35d916caa86e6374febde1775ecd598b0f5e11f8b38ebc53501740c37fc9d",
+   "passages": 421
+  },
+  {
    "workId": "sophocles-oedipus",
    "author": "Sófocles",
    "title": "Οἰδίπους Τύραννος",
@@ -5513,6 +5591,19 @@
    "path": "data/classics-corpus/sophocles-oedipus-grc.json",
    "reader": "classics-text-reader.html?work=sophocles-oedipus&lang=grc",
    "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+  },
+  {
+   "workId": "sophocles-oedipus",
+   "author": "Sófocles",
+   "title": "Οἰδίπους Τύραννος",
+   "language": "grc",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/sophocles-oedipus-grc-8a1ca9bcb20a2676.json",
+   "reader": "classics-text-reader.html?work=sophocles-oedipus&lang=grc&edition=8a1ca9bcb20a2676",
+   "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+   "sourceUrn": "urn:cts:greekLit:tlg0011.tlg004.perseus-grc2",
+   "sha256": "8a1ca9bcb20a2676ef00ad4dc4622966e182cdfdaa6d3ba7e6b01fd93c21cb4a",
+   "passages": 458
   },
   {
    "workId": "sophocles-oedipus-colonus",
@@ -5535,6 +5626,19 @@
    "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
   },
   {
+   "workId": "sophocles-oedipus-colonus",
+   "author": "Sófocles",
+   "title": "Οἰδίπους ἐπὶ Κολωνῷ",
+   "language": "grc",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/sophocles-oedipus-colonus-grc-0c79d59eb96a59af.json",
+   "reader": "classics-text-reader.html?work=sophocles-oedipus-colonus&lang=grc&edition=0c79d59eb96a59af",
+   "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+   "sourceUrn": "urn:cts:greekLit:tlg0011.tlg007.perseus-grc2",
+   "sha256": "0c79d59eb96a59afb71841a9e6df93f4d1faabc492f04a4dab057c1293c0d4c0",
+   "passages": 546
+  },
+  {
    "workId": "sophocles-philoctetes",
    "author": "Sófocles",
    "title": "Φιλοκτήτης",
@@ -5555,6 +5659,19 @@
    "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
   },
   {
+   "workId": "sophocles-philoctetes",
+   "author": "Sófocles",
+   "title": "Φιλοκτήτης",
+   "language": "grc",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/sophocles-philoctetes-grc-79c04856bff3adb6.json",
+   "reader": "classics-text-reader.html?work=sophocles-philoctetes&lang=grc&edition=79c04856bff3adb6",
+   "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+   "sourceUrn": "urn:cts:greekLit:tlg0011.tlg006.perseus-grc2",
+   "sha256": "79c04856bff3adb611af16bee521f5e2142a0cab87aab97d28be1f259243212a",
+   "passages": 414
+  },
+  {
    "workId": "sophocles-trachiniae",
    "author": "Sófocles",
    "title": "Τραχίνιαι",
@@ -5573,6 +5690,19 @@
    "path": "data/classics-corpus/sophocles-trachiniae-grc.json",
    "reader": "classics-text-reader.html?work=sophocles-trachiniae&lang=grc",
    "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+  },
+  {
+   "workId": "sophocles-trachiniae",
+   "author": "Sófocles",
+   "title": "Τραχίνιαι",
+   "language": "grc",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/sophocles-trachiniae-grc-12d4fe9b38e22277.json",
+   "reader": "classics-text-reader.html?work=sophocles-trachiniae&lang=grc&edition=12d4fe9b38e22277",
+   "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+   "sourceUrn": "urn:cts:greekLit:tlg0011.tlg001.perseus-grc2",
+   "sha256": "12d4fe9b38e222779a3b519a833682f11bedc4da063acdf633bbd9db97ad73fe",
+   "passages": 273
   },
   {
    "workId": "statius-thebais",
@@ -5645,6 +5775,19 @@
    "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
   },
   {
+   "workId": "tacitus-agricola",
+   "author": "Tácito",
+   "title": "Agricola",
+   "language": "la",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/tacitus-agricola-la-2f923fec319b6a47.json",
+   "reader": "classics-text-reader.html?work=tacitus-agricola&lang=la&edition=2f923fec319b6a47",
+   "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+   "sourceUrn": "urn:cts:latinLit:phi1351.phi001.perseus-lat2",
+   "sha256": "2f923fec319b6a4789e072d868f3610748ff8fb78031467eb3509048bbe6604b",
+   "passages": 214
+  },
+  {
    "workId": "tacitus-annales",
    "author": "Tácito",
    "title": "Annales",
@@ -5715,6 +5858,19 @@
    "path": "data/classics-corpus/terentius-heautontimorumenos-la.json",
    "reader": "classics-text-reader.html?work=terentius-heautontimorumenos&lang=la",
    "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+  },
+  {
+   "workId": "terentius-heautontimorumenos",
+   "author": "Terencio",
+   "title": "Heautontimorumenos",
+   "language": "la",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/terentius-heautontimorumenos-la-55b31ab48b5830c4.json",
+   "reader": "classics-text-reader.html?work=terentius-heautontimorumenos&lang=la&edition=55b31ab48b5830c4",
+   "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+   "sourceUrn": "urn:cts:latinLit:phi0134.phi002.perseus-lat2",
+   "sha256": "55b31ab48b5830c4e23cd566046a5090c1d1032e713bde49a89cf2b430703836",
+   "passages": 786
   },
   {
    "workId": "tertullian",

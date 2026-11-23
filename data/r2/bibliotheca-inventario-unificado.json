@@ -1,12 +1,12 @@
 {
   "schema": "vdl-federated-bibliotheca-inventory-v1",
-  "generated": "2026-11-23T00:51:24.447516+00:00",
+  "generated": "2026-11-23T01:00:19.194507+00:00",
   "method": "Master works and additional R2 works counted separately; edition relations can be many-to-many. Remote text URLs are declared, not live-verified. Unresolved editions are never merged automatically.",
   "counts": {
-    "cataloguedWorks": 327,
+    "cataloguedWorks": 330,
     "supplementaryWorks": 127,
     "additionalWorks": 10,
-    "totalDeclaredWorks": 464,
+    "totalDeclaredWorks": 467,
     "r2EditionRecords": 117,
     "r2LinkedEditionRecords": 107,
     "r2WorkEditionRelations": 115,
@@ -14,7 +14,7 @@
     "r2UnlinkedEditionRecords": 0,
     "worksWithR2Edition": 114,
     "worksWithLocalIndexedText": 325,
-    "worksWithDeclaredRemoteIndex": 100
+    "worksWithDeclaredRemoteIndex": 112
   },
   "unlinkedR2EditionIds": [],
   "additionalWorks": [
@@ -2738,7 +2738,12 @@
           "path": "data/classics-corpus/tacitus-agricola-la.json"
         }
       ],
-      "declaredRemoteIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "la",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/tacitus-agricola-la-2f923fec319b6a47.json"
+        }
+      ],
       "r2FacsimileEditions": []
     },
     {
@@ -3270,7 +3275,12 @@
           "path": "data/classics-corpus/terentius-heautontimorumenos-la.json"
         }
       ],
-      "declaredRemoteIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "la",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/terentius-heautontimorumenos-la-55b31ab48b5830c4.json"
+        }
+      ],
       "r2FacsimileEditions": []
     },
     {
@@ -4063,7 +4073,12 @@
           "path": "data/classics-corpus/sophocles-oedipus-grc.json"
         }
       ],
-      "declaredRemoteIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/sophocles-oedipus-grc-8a1ca9bcb20a2676.json"
+        }
+      ],
       "r2FacsimileEditions": [
         {
           "editionId": "sofocles-tragedias",
@@ -4451,7 +4466,12 @@
           "path": "data/classics-corpus/sophocles-antigone-grc.json"
         }
       ],
-      "declaredRemoteIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/sophocles-antigone-grc-66405788a958fe40.json"
+        }
+      ],
       "r2FacsimileEditions": [
         {
           "editionId": "sofocles-tragedias",
@@ -4480,7 +4500,12 @@
           "path": "data/classics-corpus/sophocles-ajax-grc.json"
         }
       ],
-      "declaredRemoteIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/sophocles-ajax-grc-c04b15a588ea7a83.json"
+        }
+      ],
       "r2FacsimileEditions": []
     },
     {
@@ -4498,7 +4523,12 @@
           "path": "data/classics-corpus/sophocles-electra-grc.json"
         }
       ],
-      "declaredRemoteIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/sophocles-electra-grc-adc35d916caa86e6.json"
+        }
+      ],
       "r2FacsimileEditions": []
     },
     {
@@ -4516,7 +4546,12 @@
           "path": "data/classics-corpus/sophocles-philoctetes-grc.json"
         }
       ],
-      "declaredRemoteIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/sophocles-philoctetes-grc-79c04856bff3adb6.json"
+        }
+      ],
       "r2FacsimileEditions": []
     },
     {
@@ -4534,7 +4569,12 @@
           "path": "data/classics-corpus/sophocles-oedipus-colonus-grc.json"
         }
       ],
-      "declaredRemoteIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/sophocles-oedipus-colonus-grc-0c79d59eb96a59af.json"
+        }
+      ],
       "r2FacsimileEditions": [
         {
           "editionId": "sofocles-tragedias",
@@ -4563,7 +4603,12 @@
           "path": "data/classics-corpus/sophocles-trachiniae-grc.json"
         }
       ],
-      "declaredRemoteIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/sophocles-trachiniae-grc-12d4fe9b38e22277.json"
+        }
+      ],
       "r2FacsimileEditions": []
     },
     {
@@ -8235,6 +8280,48 @@
         {
           "language": "grc",
           "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg050-grc-16347c3d048e2e0a.json"
+        }
+      ],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "cts-tlg0062-tlg046",
+      "author": "Luciano de Samósata",
+      "title": "Lexiphanes",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg046-grc-05bc613dbbc06372.json"
+        }
+      ],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "cts-tlg0062-tlg047",
+      "author": "Luciano de Samósata",
+      "title": "Eunuchus",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg047-grc-d89b8b0519db4c65.json"
+        }
+      ],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "cts-tlg0062-tlg048",
+      "author": "Luciano de Samósata",
+      "title": "De astrologia",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg048-grc-8298669728a69f19.json"
         }
       ],
       "r2FacsimileEditions": []
