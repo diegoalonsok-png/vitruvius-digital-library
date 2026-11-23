@@ -43132,6 +43132,1447 @@
     "bytes": 76568,
     "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0057-tlg053-grc-745fe2066194a8be.json"
    }
+  },
+  {
+   "id": "cts-phi0474-phi058",
+   "author": "Cicerón",
+   "title": "Letters to his brother Quintus",
+   "language": "la",
+   "genre": "Corpus clásico ampliado",
+   "dating": "106–43 a. C.",
+   "reading": {
+    "url": "classics-text-reader.html?work=cts-phi0474-phi058&lang=la&edition=1629b2b729cde2a4",
+    "status": "Edición TEI alojada en R2 con búsqueda y traducción automática por pasaje"
+   },
+   "manuscript": {
+    "status": "Sin testimonio manuscrito individual asignado; la edición TEI se identifica por separado"
+   },
+   "pdf": {
+    "url": null,
+    "status": "No consta PDF ni facsímil individual verificado para esta edición"
+   },
+   "translation": {
+    "status": "Traducción automática de consulta por pasaje; no se atribuye a un traductor académico"
+   },
+   "links": {
+    "scaife": "https://scaife.perseus.org/library/urn:cts:latinLit:phi0474.phi058.perseus-lat2/"
+   },
+   "aliases": [
+    "urn:cts:latinLit:phi0474.phi058.perseus-lat2"
+   ],
+   "relatedWorkIds": [],
+   "catalogueProvenance": "Título y autor de los catálogos CTS del sitio; edición contrastada con su cabecera TEI. No se retrotraduce el título.",
+   "corpusFiles": {
+    "la": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0474-phi058-la-1629b2b729cde2a4.json"
+   },
+   "localVersions": [
+    {
+     "language": "la",
+     "path": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0474-phi058-la-1629b2b729cde2a4.json",
+     "label": "Edición original la · urn:cts:latinLit:phi0474.phi058.perseus-lat2",
+     "reader": "classics-text-reader.html?work=cts-phi0474-phi058&lang=la&edition=1629b2b729cde2a4",
+     "sourceUrns": [
+      "urn:cts:latinLit:phi0474.phi058.perseus-lat2"
+     ],
+     "sha256": "1629b2b729cde2a4e56c0e92cee8b98d5292d5b667a5137da11b3e20148489a9"
+    }
+   ],
+   "publicStatus": "lectura-local-parcial",
+   "indexedEdition": {
+    "sources": [
+     {
+      "title": "Epistulae ad Quintum Fratrem",
+      "titleLanguage": "lat",
+      "author": "M. Tullius Cicero",
+      "editors": [
+       "Louis Claude Purser"
+      ],
+      "bibliography": "M. Tullius Cicero Epistulae Epistulae ad Quintum Fratrem, Commentariolum Petitionis, Epistulae ad M. Brutum. Pseudo-Ciceronis Epistula ad Octavianum, Fragmenta Epistularum Louis Claude Purser Oxford Clarendon Press 1903 3 Scriptorum Classicorum Bibliotheca Oxoniensis Internet Archive",
+      "licences": [
+       {
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+       }
+      ],
+      "editionUrn": "urn:cts:latinLit:phi0474.phi058.perseus-lat2",
+      "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0474/phi058/phi0474.phi058.perseus-lat2.xml",
+      "sourceSha256": "49c0e1269fac855288a90cc92c2eceabd736cc235a07f480ee86543ddb0fb2c0",
+      "sourceReferences": [
+       "https://archive.org/details/epistulaerecogno03ciceuoft/page/n11/mode/2up"
+      ],
+      "publicationYear": "1903",
+      "publisher": "Clarendon Press",
+      "publicationPlace": "Oxford",
+      "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/49c0e1269fac855288a90cc92c2eceabd736cc235a07f480ee86543ddb0fb2c0.xml"
+     }
+    ],
+    "sha256": "1629b2b729cde2a4e56c0e92cee8b98d5292d5b667a5137da11b3e20148489a9",
+    "passages": 234,
+    "characters": 122890,
+    "bytes": 163331,
+    "url": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0474-phi058-la-1629b2b729cde2a4.json"
+   }
+  },
+  {
+   "id": "cts-phi0474-phi072",
+   "author": "Cicerón",
+   "title": "Timaeus",
+   "language": "la",
+   "genre": "Corpus clásico ampliado",
+   "dating": "106–43 a. C.",
+   "reading": {
+    "url": "classics-text-reader.html?work=cts-phi0474-phi072&lang=la&edition=6ffbccf1b779e09f",
+    "status": "Edición TEI alojada en R2 con búsqueda y traducción automática por pasaje"
+   },
+   "manuscript": {
+    "status": "Sin testimonio manuscrito individual asignado; la edición TEI se identifica por separado"
+   },
+   "pdf": {
+    "url": null,
+    "status": "No consta PDF ni facsímil individual verificado para esta edición"
+   },
+   "translation": {
+    "status": "Traducción automática de consulta por pasaje; no se atribuye a un traductor académico"
+   },
+   "links": {
+    "scaife": "https://scaife.perseus.org/library/urn:cts:latinLit:phi0474.phi072.perseus-lat2/"
+   },
+   "aliases": [
+    "urn:cts:latinLit:phi0474.phi072.perseus-lat2"
+   ],
+   "relatedWorkIds": [],
+   "catalogueProvenance": "Título y autor de los catálogos CTS del sitio; edición contrastada con su cabecera TEI. No se retrotraduce el título.",
+   "corpusFiles": {
+    "la": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0474-phi072-la-6ffbccf1b779e09f.json"
+   },
+   "localVersions": [
+    {
+     "language": "la",
+     "path": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0474-phi072-la-6ffbccf1b779e09f.json",
+     "label": "Edición original la · urn:cts:latinLit:phi0474.phi072.perseus-lat2",
+     "reader": "classics-text-reader.html?work=cts-phi0474-phi072&lang=la&edition=6ffbccf1b779e09f",
+     "sourceUrns": [
+      "urn:cts:latinLit:phi0474.phi072.perseus-lat2"
+     ],
+     "sha256": "6ffbccf1b779e09faec5eb7c3bc76853d8c622ae9af5aab699ff69733d338b4d"
+    }
+   ],
+   "publicStatus": "lectura-local-parcial",
+   "indexedEdition": {
+    "sources": [
+     {
+      "title": "Timaeus",
+      "titleLanguage": "und",
+      "author": "M. Tullius Cicero",
+      "editors": [
+       "Carl Friedrich Wilhelm Mueller"
+      ],
+      "bibliography": "M. Tullius Cicero Scripta Quae Manserunt Omnia, Partis IV, Vol. III Libros De Officiis, Catonem Maiorum De Senectute, Laelium De Amicitia, Paradoxa, Timaeum, Fragmenta. Carl Friedrich Wilhelm Mueller Leipzig Teubner 1898 Internet Archive",
+      "licences": [
+       {
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+       }
+      ],
+      "editionUrn": "urn:cts:latinLit:phi0474.phi072.perseus-lat2",
+      "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0474/phi072/phi0474.phi072.perseus-lat2.xml",
+      "sourceSha256": "99832db739810f0f590379468b645197316b9e17e8f48b53996a8cabd8e54d1f",
+      "sourceReferences": [
+       "https://archive.org/details/p3scriptaquaemanse04ciceuoft/page/214/mode/2up"
+      ],
+      "publicationYear": "1898",
+      "publisher": "Teubner",
+      "publicationPlace": "Leipzig",
+      "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/99832db739810f0f590379468b645197316b9e17e8f48b53996a8cabd8e54d1f.xml"
+     }
+    ],
+    "sha256": "6ffbccf1b779e09faec5eb7c3bc76853d8c622ae9af5aab699ff69733d338b4d",
+    "passages": 53,
+    "characters": 29162,
+    "bytes": 39583,
+    "url": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0474-phi072-la-6ffbccf1b779e09f.json"
+   }
+  },
+  {
+   "id": "cts-phi0474-phi059",
+   "author": "Cicerón",
+   "title": "Letters to Brutus",
+   "language": "la",
+   "genre": "Corpus clásico ampliado",
+   "dating": "106–43 a. C.",
+   "reading": {
+    "url": "classics-text-reader.html?work=cts-phi0474-phi059&lang=la&edition=21cceb55c869a940",
+    "status": "Edición TEI alojada en R2 con búsqueda y traducción automática por pasaje"
+   },
+   "manuscript": {
+    "status": "Sin testimonio manuscrito individual asignado; la edición TEI se identifica por separado"
+   },
+   "pdf": {
+    "url": null,
+    "status": "No consta PDF ni facsímil individual verificado para esta edición"
+   },
+   "translation": {
+    "status": "Traducción automática de consulta por pasaje; no se atribuye a un traductor académico"
+   },
+   "links": {
+    "scaife": "https://scaife.perseus.org/library/urn:cts:latinLit:phi0474.phi059.perseus-lat2/"
+   },
+   "aliases": [
+    "urn:cts:latinLit:phi0474.phi059.perseus-lat2"
+   ],
+   "relatedWorkIds": [],
+   "catalogueProvenance": "Título y autor de los catálogos CTS del sitio; edición contrastada con su cabecera TEI. No se retrotraduce el título.",
+   "corpusFiles": {
+    "la": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0474-phi059-la-21cceb55c869a940.json"
+   },
+   "localVersions": [
+    {
+     "language": "la",
+     "path": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0474-phi059-la-21cceb55c869a940.json",
+     "label": "Edición original la · urn:cts:latinLit:phi0474.phi059.perseus-lat2",
+     "reader": "classics-text-reader.html?work=cts-phi0474-phi059&lang=la&edition=21cceb55c869a940",
+     "sourceUrns": [
+      "urn:cts:latinLit:phi0474.phi059.perseus-lat2"
+     ],
+     "sha256": "21cceb55c869a940f459ad47f048583ca77197fb4d80f4b33ae7ba1ef0864a09"
+    }
+   ],
+   "publicStatus": "lectura-local-parcial",
+   "indexedEdition": {
+    "sources": [
+     {
+      "title": "Epistulae ad M. Brutum",
+      "titleLanguage": "lat",
+      "author": "M. Tullius Cicero",
+      "editors": [
+       "Louis Claude Purser"
+      ],
+      "bibliography": "M. Tullius Cicero Epistulae Epistulae ad Quintum Fratrem, Commentariolum Petitionis, Epistulae ad M. Brutum. Pseudo-Ciceronis Epistula ad Octavianum, Fragmenta Epistularum Louis Claude Purser Oxford Clarendon Press 1903 3 Scriptorum Classicorum Bibliotheca Oxoniensis Internet Archive",
+      "licences": [
+       {
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+       }
+      ],
+      "editionUrn": "urn:cts:latinLit:phi0474.phi059.perseus-lat2",
+      "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0474/phi059/phi0474.phi059.perseus-lat2.xml",
+      "sourceSha256": "42c4cf406b67af86036fd8621ec443918c55f2f5b2699820e26e5ed83949c3c8",
+      "sourceReferences": [
+       "https://archive.org/details/epistulaerecogno03ciceuoft/page/104/mode/2up"
+      ],
+      "publicationYear": "1903",
+      "publisher": "Clarendon Press",
+      "publicationPlace": "Oxford",
+      "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/42c4cf406b67af86036fd8621ec443918c55f2f5b2699820e26e5ed83949c3c8.xml"
+     }
+    ],
+    "sha256": "21cceb55c869a940f459ad47f048583ca77197fb4d80f4b33ae7ba1ef0864a09",
+    "passages": 141,
+    "characters": 64608,
+    "bytes": 89341,
+    "url": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0474-phi059-la-21cceb55c869a940.json"
+   }
+  },
+  {
+   "id": "cts-phi0474-phi057",
+   "author": "Cicerón",
+   "title": "Letters to Atticus",
+   "language": "la",
+   "genre": "Corpus clásico ampliado",
+   "dating": "106–43 a. C.",
+   "reading": {
+    "url": "classics-text-reader.html?work=cts-phi0474-phi057&lang=la&edition=769ee7cc82185053",
+    "status": "Edición TEI alojada en R2 con búsqueda y traducción automática por pasaje"
+   },
+   "manuscript": {
+    "status": "Sin testimonio manuscrito individual asignado; la edición TEI se identifica por separado"
+   },
+   "pdf": {
+    "url": null,
+    "status": "No consta PDF ni facsímil individual verificado para esta edición"
+   },
+   "translation": {
+    "status": "Traducción automática de consulta por pasaje; no se atribuye a un traductor académico"
+   },
+   "links": {
+    "scaife": "https://scaife.perseus.org/library/urn:cts:latinLit:phi0474.phi057.perseus-lat2/"
+   },
+   "aliases": [
+    "urn:cts:latinLit:phi0474.phi057.perseus-lat2"
+   ],
+   "relatedWorkIds": [],
+   "catalogueProvenance": "Título y autor de los catálogos CTS del sitio; edición contrastada con su cabecera TEI. No se retrotraduce el título.",
+   "corpusFiles": {
+    "la": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0474-phi057-la-769ee7cc82185053.json"
+   },
+   "localVersions": [
+    {
+     "language": "la",
+     "path": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0474-phi057-la-769ee7cc82185053.json",
+     "label": "Edición original la · urn:cts:latinLit:phi0474.phi057.perseus-lat2",
+     "reader": "classics-text-reader.html?work=cts-phi0474-phi057&lang=la&edition=769ee7cc82185053",
+     "sourceUrns": [
+      "urn:cts:latinLit:phi0474.phi057.perseus-lat2"
+     ],
+     "sha256": "769ee7cc821850538a0ce3d8b87e1f13abb9872ac87dcac44f0f7eeae4b9039d"
+    }
+   ],
+   "publicStatus": "lectura-local-parcial",
+   "indexedEdition": {
+    "sources": [
+     {
+      "title": "Epistulae ad Atticum",
+      "titleLanguage": "lat",
+      "author": "M. Tullius Cicero",
+      "editors": [
+       "Louis Claude Purser"
+      ],
+      "bibliography": "M. Tullius Cicero Epistulae Epistulae ad Atticum, Pars Prior and Pars Posterior Louis Claude Purser Oxford Clarendon Press 1903 2 1-2 Scriptorum Classicorum Bibliotheca Oxoniensis Internet Archive Internet Archive",
+      "licences": [
+       {
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+       }
+      ],
+      "editionUrn": "urn:cts:latinLit:phi0474.phi057.perseus-lat2",
+      "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0474/phi057/phi0474.phi057.perseus-lat2.xml",
+      "sourceSha256": "dc2eb12739b59c319e4d992f84e5e6d216dd714be4521fbbff9bba96b787d053",
+      "sourceReferences": [
+       "https://archive.org/details/p1epistulaerecog02ciceuoft/page/n21/mode/2up",
+       "https://archive.org/details/p2epistulaerecog02ciceuoft/page/n9/mode/2up"
+      ],
+      "publicationYear": "1903",
+      "publisher": "Clarendon Press",
+      "publicationPlace": "Oxford",
+      "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/dc2eb12739b59c319e4d992f84e5e6d216dd714be4521fbbff9bba96b787d053.xml"
+     }
+    ],
+    "sha256": "769ee7cc821850538a0ce3d8b87e1f13abb9872ac87dcac44f0f7eeae4b9039d",
+    "passages": 2060,
+    "characters": 823906,
+    "bytes": 1172463,
+    "url": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0474-phi057-la-769ee7cc82185053.json"
+   }
+  },
+  {
+   "id": "cts-phi0692-phi002",
+   "author": "Appendix Vergiliana",
+   "title": "Lydia",
+   "language": "la",
+   "genre": "Corpus clásico ampliado",
+   "dating": "s. I a. C.–s. I d. C.",
+   "reading": {
+    "url": "classics-text-reader.html?work=cts-phi0692-phi002&lang=la&edition=44a1772603f21edc",
+    "status": "Edición TEI alojada en R2 con búsqueda y traducción automática por pasaje"
+   },
+   "manuscript": {
+    "status": "Sin testimonio manuscrito individual asignado; la edición TEI se identifica por separado"
+   },
+   "pdf": {
+    "url": null,
+    "status": "No consta PDF ni facsímil individual verificado para esta edición"
+   },
+   "translation": {
+    "status": "Traducción automática de consulta por pasaje; no se atribuye a un traductor académico"
+   },
+   "links": {
+    "scaife": "https://scaife.perseus.org/library/urn:cts:latinLit:phi0692.phi002.perseus-lat1/"
+   },
+   "aliases": [
+    "urn:cts:latinLit:phi0692.phi002.perseus-lat1"
+   ],
+   "relatedWorkIds": [],
+   "catalogueProvenance": "Título y autor de los catálogos CTS del sitio; edición contrastada con su cabecera TEI. No se retrotraduce el título.",
+   "corpusFiles": {
+    "la": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0692-phi002-la-44a1772603f21edc.json"
+   },
+   "localVersions": [
+    {
+     "language": "la",
+     "path": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0692-phi002-la-44a1772603f21edc.json",
+     "label": "Edición original la · urn:cts:latinLit:phi0692.phi002.perseus-lat1",
+     "reader": "classics-text-reader.html?work=cts-phi0692-phi002&lang=la&edition=44a1772603f21edc",
+     "sourceUrns": [
+      "urn:cts:latinLit:phi0692.phi002.perseus-lat1"
+     ],
+     "sha256": "44a1772603f21edc40fc64ed9823d71326f2ca17896f30afc422ad5714d16c08"
+    }
+   ],
+   "publicStatus": "lectura-local-parcial",
+   "indexedEdition": {
+    "sources": [
+     {
+      "title": "Lydia",
+      "titleLanguage": "lat",
+      "author": "Anonymous",
+      "editors": [
+       "Robinson Ellis"
+      ],
+      "bibliography": "Appendix Vergiliana sive Carmina Minora Vergilio adtributa Robinson Ellis e Typographeo Clarendoniano Oxonii 1907 Internet Archive",
+      "licences": [
+       {
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+       }
+      ],
+      "editionUrn": "urn:cts:latinLit:phi0692.phi002.perseus-lat1",
+      "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0692/phi002/phi0692.phi002.perseus-lat1.xml",
+      "sourceSha256": "9d840614091122f76d0f158d0434651e36388fd11198105b51ce284802037a66",
+      "sourceReferences": [
+       "https://archive.org/details/appendixvergilia00elliuoft/page/n91/mode/2up"
+      ],
+      "publicationYear": "1907",
+      "publisher": "e Typographeo Clarendoniano",
+      "publicationPlace": "Oxonii",
+      "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/9d840614091122f76d0f158d0434651e36388fd11198105b51ce284802037a66.xml"
+     }
+    ],
+    "sha256": "44a1772603f21edc40fc64ed9823d71326f2ca17896f30afc422ad5714d16c08",
+    "passages": 81,
+    "characters": 3418,
+    "bytes": 16025,
+    "url": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0692-phi002-la-44a1772603f21edc.json"
+   }
+  },
+  {
+   "id": "cts-phi0692-phi001",
+   "author": "Appendix Vergiliana",
+   "title": "Dirae",
+   "language": "la",
+   "genre": "Corpus clásico ampliado",
+   "dating": "s. I a. C.–s. I d. C.",
+   "reading": {
+    "url": "classics-text-reader.html?work=cts-phi0692-phi001&lang=la&edition=fe97020aedc362bc",
+    "status": "Edición TEI alojada en R2 con búsqueda y traducción automática por pasaje"
+   },
+   "manuscript": {
+    "status": "Sin testimonio manuscrito individual asignado; la edición TEI se identifica por separado"
+   },
+   "pdf": {
+    "url": null,
+    "status": "No consta PDF ni facsímil individual verificado para esta edición"
+   },
+   "translation": {
+    "status": "Traducción automática de consulta por pasaje; no se atribuye a un traductor académico"
+   },
+   "links": {
+    "scaife": "https://scaife.perseus.org/library/urn:cts:latinLit:phi0692.phi001.perseus-lat1/"
+   },
+   "aliases": [
+    "urn:cts:latinLit:phi0692.phi001.perseus-lat1"
+   ],
+   "relatedWorkIds": [],
+   "catalogueProvenance": "Título y autor de los catálogos CTS del sitio; edición contrastada con su cabecera TEI. No se retrotraduce el título.",
+   "corpusFiles": {
+    "la": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0692-phi001-la-fe97020aedc362bc.json"
+   },
+   "localVersions": [
+    {
+     "language": "la",
+     "path": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0692-phi001-la-fe97020aedc362bc.json",
+     "label": "Edición original la · urn:cts:latinLit:phi0692.phi001.perseus-lat1",
+     "reader": "classics-text-reader.html?work=cts-phi0692-phi001&lang=la&edition=fe97020aedc362bc",
+     "sourceUrns": [
+      "urn:cts:latinLit:phi0692.phi001.perseus-lat1"
+     ],
+     "sha256": "fe97020aedc362bc4ed220bc5c889d0d9cc716f45b3cbad7141fbaa4b3f08fd6"
+    }
+   ],
+   "publicStatus": "lectura-local-parcial",
+   "indexedEdition": {
+    "sources": [
+     {
+      "title": "Dirae",
+      "titleLanguage": "lat",
+      "author": "Anonymous",
+      "editors": [
+       "Robinson Ellis"
+      ],
+      "bibliography": "Appendix Vergiliana sive Carmina Minora Vergilio adtributa Robinson Ellis e Typographeo Clarendoniano Oxonii 1907 Internet Archive",
+      "licences": [
+       {
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+       }
+      ],
+      "editionUrn": "urn:cts:latinLit:phi0692.phi001.perseus-lat1",
+      "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0692/phi001/phi0692.phi001.perseus-lat1.xml",
+      "sourceSha256": "8778d4db478ed02c3d56f91a5cef0adcd54006505cda6a0191a26d132087d169",
+      "sourceReferences": [
+       "https://archive.org/details/appendixvergilia00elliuoft/page/n85/mode/2up"
+      ],
+      "publicationYear": "1907",
+      "publisher": "e Typographeo Clarendoniano",
+      "publicationPlace": "Oxonii",
+      "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/8778d4db478ed02c3d56f91a5cef0adcd54006505cda6a0191a26d132087d169.xml"
+     }
+    ],
+    "sha256": "fe97020aedc362bc4ed220bc5c889d0d9cc716f45b3cbad7141fbaa4b3f08fd6",
+    "passages": 104,
+    "characters": 4443,
+    "bytes": 20090,
+    "url": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0692-phi001-la-fe97020aedc362bc.json"
+   }
+  },
+  {
+   "id": "cts-phi0692-phi003",
+   "author": "Appendix Vergiliana",
+   "title": "Culex",
+   "language": "la",
+   "genre": "Corpus clásico ampliado",
+   "dating": "s. I a. C.–s. I d. C.",
+   "reading": {
+    "url": "classics-text-reader.html?work=cts-phi0692-phi003&lang=la&edition=2009be528af2e5b1",
+    "status": "Edición TEI alojada en R2 con búsqueda y traducción automática por pasaje"
+   },
+   "manuscript": {
+    "status": "Sin testimonio manuscrito individual asignado; la edición TEI se identifica por separado"
+   },
+   "pdf": {
+    "url": null,
+    "status": "No consta PDF ni facsímil individual verificado para esta edición"
+   },
+   "translation": {
+    "status": "Traducción automática de consulta por pasaje; no se atribuye a un traductor académico"
+   },
+   "links": {
+    "scaife": "https://scaife.perseus.org/library/urn:cts:latinLit:phi0692.phi003.perseus-lat1/"
+   },
+   "aliases": [
+    "urn:cts:latinLit:phi0692.phi003.perseus-lat1"
+   ],
+   "relatedWorkIds": [],
+   "catalogueProvenance": "Título y autor de los catálogos CTS del sitio; edición contrastada con su cabecera TEI. No se retrotraduce el título.",
+   "corpusFiles": {
+    "la": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0692-phi003-la-2009be528af2e5b1.json"
+   },
+   "localVersions": [
+    {
+     "language": "la",
+     "path": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0692-phi003-la-2009be528af2e5b1.json",
+     "label": "Edición original la · urn:cts:latinLit:phi0692.phi003.perseus-lat1",
+     "reader": "classics-text-reader.html?work=cts-phi0692-phi003&lang=la&edition=2009be528af2e5b1",
+     "sourceUrns": [
+      "urn:cts:latinLit:phi0692.phi003.perseus-lat1"
+     ],
+     "sha256": "2009be528af2e5b19f10806a1cfccaa5b9430a588a4500835d24150e79688377"
+    }
+   ],
+   "publicStatus": "lectura-local-parcial",
+   "indexedEdition": {
+    "sources": [
+     {
+      "title": "Culex",
+      "titleLanguage": "lat",
+      "author": "Anonymous",
+      "editors": [
+       "Robinson Ellis"
+      ],
+      "bibliography": "Appendix Vergiliana sive Carmina Minora Vergilio adtributa Robinson Ellis e Typographeo Clarendoniano Oxonii 1907 Internet Archive",
+      "licences": [
+       {
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+       }
+      ],
+      "editionUrn": "urn:cts:latinLit:phi0692.phi003.perseus-lat1",
+      "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0692/phi003/phi0692.phi003.perseus-lat1.xml",
+      "sourceSha256": "f2e5115e7f731b626f560825c8525e6147bba2a6f090744b3c2a5d65ff0ea1bd",
+      "sourceReferences": [
+       "https://archive.org/details/appendixvergilia00elliuoft/page/n19/mode/2up"
+      ],
+      "publicationYear": "1907",
+      "publisher": "e Typographeo Clarendoniano",
+      "publicationPlace": "Oxonii",
+      "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/f2e5115e7f731b626f560825c8525e6147bba2a6f090744b3c2a5d65ff0ea1bd.xml"
+     }
+    ],
+    "sha256": "2009be528af2e5b19f10806a1cfccaa5b9430a588a4500835d24150e79688377",
+    "passages": 416,
+    "characters": 17822,
+    "bytes": 75039,
+    "url": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0692-phi003-la-2009be528af2e5b1.json"
+   }
+  },
+  {
+   "id": "cts-phi0692-phi005",
+   "author": "Appendix Vergiliana",
+   "title": "Copa",
+   "language": "la",
+   "genre": "Corpus clásico ampliado",
+   "dating": "s. I a. C.–s. I d. C.",
+   "reading": {
+    "url": "classics-text-reader.html?work=cts-phi0692-phi005&lang=la&edition=ca018337a4a6ac8f",
+    "status": "Edición TEI alojada en R2 con búsqueda y traducción automática por pasaje"
+   },
+   "manuscript": {
+    "status": "Sin testimonio manuscrito individual asignado; la edición TEI se identifica por separado"
+   },
+   "pdf": {
+    "url": null,
+    "status": "No consta PDF ni facsímil individual verificado para esta edición"
+   },
+   "translation": {
+    "status": "Traducción automática de consulta por pasaje; no se atribuye a un traductor académico"
+   },
+   "links": {
+    "scaife": "https://scaife.perseus.org/library/urn:cts:latinLit:phi0692.phi005.perseus-lat1/"
+   },
+   "aliases": [
+    "urn:cts:latinLit:phi0692.phi005.perseus-lat1"
+   ],
+   "relatedWorkIds": [],
+   "catalogueProvenance": "Título y autor de los catálogos CTS del sitio; edición contrastada con su cabecera TEI. No se retrotraduce el título.",
+   "corpusFiles": {
+    "la": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0692-phi005-la-ca018337a4a6ac8f.json"
+   },
+   "localVersions": [
+    {
+     "language": "la",
+     "path": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0692-phi005-la-ca018337a4a6ac8f.json",
+     "label": "Edición original la · urn:cts:latinLit:phi0692.phi005.perseus-lat1",
+     "reader": "classics-text-reader.html?work=cts-phi0692-phi005&lang=la&edition=ca018337a4a6ac8f",
+     "sourceUrns": [
+      "urn:cts:latinLit:phi0692.phi005.perseus-lat1"
+     ],
+     "sha256": "ca018337a4a6ac8f85a757972fcb982889284c938449cf3d1c9f033731ca048f"
+    }
+   ],
+   "publicStatus": "lectura-local-parcial",
+   "indexedEdition": {
+    "sources": [
+     {
+      "title": "Copa",
+      "titleLanguage": "lat",
+      "author": "Anonymous",
+      "editors": [
+       "Robinson Ellis"
+      ],
+      "bibliography": "Appendix Vergiliana sive Carmina Minora Vergilio adtributa Robinson Ellis e Typographeo Clarendoniano Oxonii 1907 Internet Archive",
+      "licences": [
+       {
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+       }
+      ],
+      "editionUrn": "urn:cts:latinLit:phi0692.phi005.perseus-lat1",
+      "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0692/phi005/phi0692.phi005.perseus-lat1.xml",
+      "sourceSha256": "ab626da65cabaef9cbd6375a79b5e140022498c2a19d42dad345ce1c0fd65441",
+      "sourceReferences": [
+       "https://archive.org/details/appendixvergilia00elliuoft/page/n97/mode/2up"
+      ],
+      "publicationYear": "1907",
+      "publisher": "e Typographeo Clarendoniano",
+      "publicationPlace": "Oxonii",
+      "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/ab626da65cabaef9cbd6375a79b5e140022498c2a19d42dad345ce1c0fd65441.xml"
+     }
+    ],
+    "sha256": "ca018337a4a6ac8f85a757972fcb982889284c938449cf3d1c9f033731ca048f",
+    "passages": 39,
+    "characters": 1523,
+    "bytes": 8579,
+    "url": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0692-phi005-la-ca018337a4a6ac8f.json"
+   }
+  },
+  {
+   "id": "cts-phi0692-phi008",
+   "author": "Appendix Vergiliana",
+   "title": "Priapea",
+   "language": "la",
+   "genre": "Corpus clásico ampliado",
+   "dating": "s. I a. C.–s. I d. C.",
+   "reading": {
+    "url": "classics-text-reader.html?work=cts-phi0692-phi008&lang=la&edition=cdd82af6c02a049f",
+    "status": "Edición TEI alojada en R2 con búsqueda y traducción automática por pasaje"
+   },
+   "manuscript": {
+    "status": "Sin testimonio manuscrito individual asignado; la edición TEI se identifica por separado"
+   },
+   "pdf": {
+    "url": null,
+    "status": "No consta PDF ni facsímil individual verificado para esta edición"
+   },
+   "translation": {
+    "status": "Traducción automática de consulta por pasaje; no se atribuye a un traductor académico"
+   },
+   "links": {
+    "scaife": "https://scaife.perseus.org/library/urn:cts:latinLit:phi0692.phi008.perseus-lat1/"
+   },
+   "aliases": [
+    "urn:cts:latinLit:phi0692.phi008.perseus-lat1"
+   ],
+   "relatedWorkIds": [],
+   "catalogueProvenance": "Título y autor de los catálogos CTS del sitio; edición contrastada con su cabecera TEI. No se retrotraduce el título.",
+   "corpusFiles": {
+    "la": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0692-phi008-la-cdd82af6c02a049f.json"
+   },
+   "localVersions": [
+    {
+     "language": "la",
+     "path": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0692-phi008-la-cdd82af6c02a049f.json",
+     "label": "Edición original la · urn:cts:latinLit:phi0692.phi008.perseus-lat1",
+     "reader": "classics-text-reader.html?work=cts-phi0692-phi008&lang=la&edition=cdd82af6c02a049f",
+     "sourceUrns": [
+      "urn:cts:latinLit:phi0692.phi008.perseus-lat1"
+     ],
+     "sha256": "cdd82af6c02a049f07203a26b1725a1ffed3c2040b28e4b42d54a74ab1d30ef9"
+    }
+   ],
+   "publicStatus": "lectura-local-parcial",
+   "indexedEdition": {
+    "sources": [
+     {
+      "title": "Priapea",
+      "titleLanguage": "lat",
+      "author": "Anonymous",
+      "editors": [
+       "Robinson Ellis"
+      ],
+      "bibliography": "Appendix Vergiliana sive carmina minora Vergilio adtributa Robinson Ellis e Typographeo Clarendoniano Oxonii 1907 Internet Archive",
+      "licences": [
+       {
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+       }
+      ],
+      "editionUrn": "urn:cts:latinLit:phi0692.phi008.perseus-lat1",
+      "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0692/phi008/phi0692.phi008.perseus-lat1.xml",
+      "sourceSha256": "993072a7262b421b7665c51c3491b220a4bfa1abfe5716bf09968cf958983340",
+      "sourceReferences": [
+       "https://archive.org/details/appendixvergilia00elliuoft/page/n101/mode/2up"
+      ],
+      "publicationYear": "1907",
+      "publisher": "e Typographeo Clarendoniano",
+      "publicationPlace": "Oxonii",
+      "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/993072a7262b421b7665c51c3491b220a4bfa1abfe5716bf09968cf958983340.xml"
+     }
+    ],
+    "sha256": "cdd82af6c02a049f07203a26b1725a1ffed3c2040b28e4b42d54a74ab1d30ef9",
+    "passages": 47,
+    "characters": 1816,
+    "bytes": 9975,
+    "url": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0692-phi008-la-cdd82af6c02a049f.json"
+   }
+  },
+  {
+   "id": "cts-phi0692-phi007",
+   "author": "Appendix Vergiliana",
+   "title": "Ciris",
+   "language": "la",
+   "genre": "Corpus clásico ampliado",
+   "dating": "s. I a. C.–s. I d. C.",
+   "reading": {
+    "url": "classics-text-reader.html?work=cts-phi0692-phi007&lang=la&edition=65df30aeae912550",
+    "status": "Edición TEI alojada en R2 con búsqueda y traducción automática por pasaje"
+   },
+   "manuscript": {
+    "status": "Sin testimonio manuscrito individual asignado; la edición TEI se identifica por separado"
+   },
+   "pdf": {
+    "url": null,
+    "status": "No consta PDF ni facsímil individual verificado para esta edición"
+   },
+   "translation": {
+    "status": "Traducción automática de consulta por pasaje; no se atribuye a un traductor académico"
+   },
+   "links": {
+    "scaife": "https://scaife.perseus.org/library/urn:cts:latinLit:phi0692.phi007.perseus-lat1/"
+   },
+   "aliases": [
+    "urn:cts:latinLit:phi0692.phi007.perseus-lat1"
+   ],
+   "relatedWorkIds": [],
+   "catalogueProvenance": "Título y autor de los catálogos CTS del sitio; edición contrastada con su cabecera TEI. No se retrotraduce el título.",
+   "corpusFiles": {
+    "la": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0692-phi007-la-65df30aeae912550.json"
+   },
+   "localVersions": [
+    {
+     "language": "la",
+     "path": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0692-phi007-la-65df30aeae912550.json",
+     "label": "Edición original la · urn:cts:latinLit:phi0692.phi007.perseus-lat1",
+     "reader": "classics-text-reader.html?work=cts-phi0692-phi007&lang=la&edition=65df30aeae912550",
+     "sourceUrns": [
+      "urn:cts:latinLit:phi0692.phi007.perseus-lat1"
+     ],
+     "sha256": "65df30aeae91255040bb88b3665f53fc0640c8fe7159453ec20f3bde48c74fc3"
+    }
+   ],
+   "publicStatus": "lectura-local-parcial",
+   "indexedEdition": {
+    "sources": [
+     {
+      "title": "Ciris",
+      "titleLanguage": "lat",
+      "author": "Anonymous",
+      "editors": [
+       "Robinson Ellis"
+      ],
+      "bibliography": "Appendix Vergiliana sive Carmina Minora Vergilio adtributa Robinson Ellis e Typographeo Clarendoniano Oxonii 1907 Internet Archive",
+      "licences": [
+       {
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+       }
+      ],
+      "editionUrn": "urn:cts:latinLit:phi0692.phi007.perseus-lat1",
+      "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0692/phi007/phi0692.phi007.perseus-lat1.xml",
+      "sourceSha256": "43c433266f9d73736faebc58442768940e673285dcb75638e75339a5f4934cb8",
+      "sourceReferences": [
+       "https://archive.org/details/appendixvergilia00elliuoft/page/n45/mode/2up"
+      ],
+      "publicationYear": "1907",
+      "publisher": "e Typographeo Clarendoniano",
+      "publicationPlace": "Oxonii",
+      "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/43c433266f9d73736faebc58442768940e673285dcb75638e75339a5f4934cb8.xml"
+     }
+    ],
+    "sha256": "65df30aeae91255040bb88b3665f53fc0640c8fe7159453ec20f3bde48c74fc3",
+    "passages": 542,
+    "characters": 23276,
+    "bytes": 97221,
+    "url": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0692-phi007-la-65df30aeae912550.json"
+   }
+  },
+  {
+   "id": "cts-phi0692-phi006",
+   "author": "Appendix Vergiliana",
+   "title": "Elegiae in Maecenatem",
+   "language": "la",
+   "genre": "Corpus clásico ampliado",
+   "dating": "s. I a. C.–s. I d. C.",
+   "reading": {
+    "url": "classics-text-reader.html?work=cts-phi0692-phi006&lang=la&edition=d70af6485898e23d",
+    "status": "Edición TEI alojada en R2 con búsqueda y traducción automática por pasaje"
+   },
+   "manuscript": {
+    "status": "Sin testimonio manuscrito individual asignado; la edición TEI se identifica por separado"
+   },
+   "pdf": {
+    "url": null,
+    "status": "No consta PDF ni facsímil individual verificado para esta edición"
+   },
+   "translation": {
+    "status": "Traducción automática de consulta por pasaje; no se atribuye a un traductor académico"
+   },
+   "links": {
+    "scaife": "https://scaife.perseus.org/library/urn:cts:latinLit:phi0692.phi006.perseus-lat1/"
+   },
+   "aliases": [
+    "urn:cts:latinLit:phi0692.phi006.perseus-lat1"
+   ],
+   "relatedWorkIds": [],
+   "catalogueProvenance": "Título y autor de los catálogos CTS del sitio; edición contrastada con su cabecera TEI. No se retrotraduce el título.",
+   "corpusFiles": {
+    "la": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0692-phi006-la-d70af6485898e23d.json"
+   },
+   "localVersions": [
+    {
+     "language": "la",
+     "path": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0692-phi006-la-d70af6485898e23d.json",
+     "label": "Edición original la · urn:cts:latinLit:phi0692.phi006.perseus-lat1",
+     "reader": "classics-text-reader.html?work=cts-phi0692-phi006&lang=la&edition=d70af6485898e23d",
+     "sourceUrns": [
+      "urn:cts:latinLit:phi0692.phi006.perseus-lat1"
+     ],
+     "sha256": "d70af6485898e23daf54b54d43dfa7e44932100ca1f2247278a7529408240d64"
+    }
+   ],
+   "publicStatus": "lectura-local-parcial",
+   "indexedEdition": {
+    "sources": [
+     {
+      "title": "Elegiae in Maecenatem",
+      "titleLanguage": "lat",
+      "author": "Anonymous",
+      "editors": [
+       "Robinson Ellis"
+      ],
+      "bibliography": "Appendix Vergiliana sive Carmina Minora Vergilio adtributa Robinson Ellis e Typographeo Clarendoniano Oxonii 1907 Internet Archive",
+      "licences": [
+       {
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+       }
+      ],
+      "editionUrn": "urn:cts:latinLit:phi0692.phi006.perseus-lat1",
+      "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0692/phi006/phi0692.phi006.perseus-lat1.xml",
+      "sourceSha256": "2d85ba23fc4e5ffd97a676aaafabc2518806dfc1836970e7d26a395f2decff62",
+      "sourceReferences": [
+       "https://archive.org/details/appendixvergilia00elliuoft/page/n129/mode/2up"
+      ],
+      "publicationYear": "1907",
+      "publisher": "e Typographeo Clarendoniano",
+      "publicationPlace": "Oxonii",
+      "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/2d85ba23fc4e5ffd97a676aaafabc2518806dfc1836970e7d26a395f2decff62.xml"
+     }
+    ],
+    "sha256": "d70af6485898e23daf54b54d43dfa7e44932100ca1f2247278a7529408240d64",
+    "passages": 177,
+    "characters": 7074,
+    "bytes": 32501,
+    "url": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0692-phi006-la-d70af6485898e23d.json"
+   }
+  },
+  {
+   "id": "cts-phi0692-phi009",
+   "author": "Appendix Vergiliana",
+   "title": "Catalepton",
+   "language": "la",
+   "genre": "Corpus clásico ampliado",
+   "dating": "s. I a. C.–s. I d. C.",
+   "reading": {
+    "url": "classics-text-reader.html?work=cts-phi0692-phi009&lang=la&edition=abe3bb748e5fae0e",
+    "status": "Edición TEI alojada en R2 con búsqueda y traducción automática por pasaje"
+   },
+   "manuscript": {
+    "status": "Sin testimonio manuscrito individual asignado; la edición TEI se identifica por separado"
+   },
+   "pdf": {
+    "url": null,
+    "status": "No consta PDF ni facsímil individual verificado para esta edición"
+   },
+   "translation": {
+    "status": "Traducción automática de consulta por pasaje; no se atribuye a un traductor académico"
+   },
+   "links": {
+    "scaife": "https://scaife.perseus.org/library/urn:cts:latinLit:phi0692.phi009.perseus-lat1/"
+   },
+   "aliases": [
+    "urn:cts:latinLit:phi0692.phi009.perseus-lat1"
+   ],
+   "relatedWorkIds": [],
+   "catalogueProvenance": "Título y autor de los catálogos CTS del sitio; edición contrastada con su cabecera TEI. No se retrotraduce el título.",
+   "corpusFiles": {
+    "la": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0692-phi009-la-abe3bb748e5fae0e.json"
+   },
+   "localVersions": [
+    {
+     "language": "la",
+     "path": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0692-phi009-la-abe3bb748e5fae0e.json",
+     "label": "Edición original la · urn:cts:latinLit:phi0692.phi009.perseus-lat1",
+     "reader": "classics-text-reader.html?work=cts-phi0692-phi009&lang=la&edition=abe3bb748e5fae0e",
+     "sourceUrns": [
+      "urn:cts:latinLit:phi0692.phi009.perseus-lat1"
+     ],
+     "sha256": "abe3bb748e5fae0e01af23e2104e2bd97e8084785e287fc9d7be32aca1350fcc"
+    }
+   ],
+   "publicStatus": "lectura-local-parcial",
+   "indexedEdition": {
+    "sources": [
+     {
+      "title": "Catalepton",
+      "titleLanguage": "lat",
+      "author": "Anonymous",
+      "editors": [
+       "Robinson Ellis"
+      ],
+      "bibliography": "Appendix Vergiliana, sive carmina minora Vergilio adtributa Robinson Ellis e Typographeo Clarendoniano Oxonii 1907 Internet Archive",
+      "licences": [
+       {
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+       }
+      ],
+      "editionUrn": "urn:cts:latinLit:phi0692.phi009.perseus-lat1",
+      "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0692/phi009/phi0692.phi009.perseus-lat1.xml",
+      "sourceSha256": "50cc848eee639c647833dde37b05a90b3560072ee400d7b9b52fd4dcb594066c",
+      "sourceReferences": [
+       "https://archive.org/details/appendixvergilia00elliuoft/page/n105/mode/2up"
+      ],
+      "publicationYear": "1907",
+      "publisher": "e Typographeo Clarendoniano",
+      "publicationPlace": "Oxonii",
+      "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/50cc848eee639c647833dde37b05a90b3560072ee400d7b9b52fd4dcb594066c.xml"
+     }
+    ],
+    "sha256": "abe3bb748e5fae0e01af23e2104e2bd97e8084785e287fc9d7be32aca1350fcc",
+    "passages": 231,
+    "characters": 8556,
+    "bytes": 41221,
+    "url": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0692-phi009-la-abe3bb748e5fae0e.json"
+   }
+  },
+  {
+   "id": "cts-tlg0057-tlg068",
+   "author": "Galeno",
+   "title": "De venae sectione adversus Erasistratum",
+   "language": "grc",
+   "genre": "Corpus clásico ampliado",
+   "dating": "siglo II d. C.",
+   "reading": {
+    "url": "classics-text-reader.html?work=cts-tlg0057-tlg068&lang=grc&edition=ac34bcb8a8a5cd7f",
+    "status": "Edición TEI alojada en R2 con búsqueda y traducción automática por pasaje"
+   },
+   "manuscript": {
+    "status": "Sin testimonio manuscrito individual asignado; la edición TEI se identifica por separado"
+   },
+   "pdf": {
+    "url": null,
+    "status": "No consta PDF ni facsímil individual verificado para esta edición"
+   },
+   "translation": {
+    "status": "Traducción automática de consulta por pasaje; no se atribuye a un traductor académico"
+   },
+   "links": {
+    "scaife": "https://scaife.perseus.org/library/urn:cts:greekLit:tlg0057.tlg068.1st1K-grc1/"
+   },
+   "aliases": [
+    "urn:cts:greekLit:tlg0057.tlg068.1st1K-grc1"
+   ],
+   "relatedWorkIds": [],
+   "catalogueProvenance": "Título y autor de los catálogos CTS del sitio; edición contrastada con su cabecera TEI. No se retrotraduce el título.",
+   "corpusFiles": {
+    "grc": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0057-tlg068-grc-ac34bcb8a8a5cd7f.json"
+   },
+   "localVersions": [
+    {
+     "language": "grc",
+     "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0057-tlg068-grc-ac34bcb8a8a5cd7f.json",
+     "label": "Edición original grc · urn:cts:greekLit:tlg0057.tlg068.1st1K-grc1",
+     "reader": "classics-text-reader.html?work=cts-tlg0057-tlg068&lang=grc&edition=ac34bcb8a8a5cd7f",
+     "sourceUrns": [
+      "urn:cts:greekLit:tlg0057.tlg068.1st1K-grc1"
+     ],
+     "sha256": "ac34bcb8a8a5cd7f2b50e8f331677a768293ab58e91e7d9a8c973a5d38a11e33"
+    }
+   ],
+   "publicStatus": "lectura-local-parcial",
+   "indexedEdition": {
+    "sources": [
+     {
+      "title": "De venae sectione adversus Erasistratum",
+      "titleLanguage": "lat",
+      "author": "Galen",
+      "editors": [
+       "Karl Gottlob Kühn"
+      ],
+      "bibliography": "Claudii Galeni Opera Omnia Galen Karl Gottlob Kühn Knobloch Leipzig 11 147-186 1826 HathiTrust",
+      "licences": [
+       {
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+       }
+      ],
+      "editionUrn": "urn:cts:greekLit:tlg0057.tlg068.1st1K-grc1",
+      "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0057/tlg068/tlg0057.tlg068.1st1K-grc1.xml",
+      "sourceSha256": "c234184fd88b24d0ac67cd14f02a50a3505737e2613b1a53528ae6c6ca8966ef",
+      "sourceReferences": [
+       "https://hdl.handle.net/2027/hvd.hxpp8s?urlappend=%3Bseq=159%3Bownerid=27021597764275152-163"
+      ],
+      "publicationYear": "1826",
+      "publisher": "Knobloch",
+      "publicationPlace": "Leipzig",
+      "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/c234184fd88b24d0ac67cd14f02a50a3505737e2613b1a53528ae6c6ca8966ef.xml"
+     }
+    ],
+    "sha256": "ac34bcb8a8a5cd7f2b50e8f331677a768293ab58e91e7d9a8c973a5d38a11e33",
+    "passages": 10,
+    "characters": 37761,
+    "bytes": 79595,
+    "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0057-tlg068-grc-ac34bcb8a8a5cd7f.json"
+   }
+  },
+  {
+   "id": "cts-tlg0057-tlg069",
+   "author": "Galeno",
+   "title": "De venae sectione adversus Erasistrateos Romae degentes",
+   "language": "grc",
+   "genre": "Corpus clásico ampliado",
+   "dating": "siglo II d. C.",
+   "reading": {
+    "url": "classics-text-reader.html?work=cts-tlg0057-tlg069&lang=grc&edition=d13589715de2f617",
+    "status": "Edición TEI alojada en R2 con búsqueda y traducción automática por pasaje"
+   },
+   "manuscript": {
+    "status": "Sin testimonio manuscrito individual asignado; la edición TEI se identifica por separado"
+   },
+   "pdf": {
+    "url": null,
+    "status": "No consta PDF ni facsímil individual verificado para esta edición"
+   },
+   "translation": {
+    "status": "Traducción automática de consulta por pasaje; no se atribuye a un traductor académico"
+   },
+   "links": {
+    "scaife": "https://scaife.perseus.org/library/urn:cts:greekLit:tlg0057.tlg069.1st1K-grc1/"
+   },
+   "aliases": [
+    "urn:cts:greekLit:tlg0057.tlg069.1st1K-grc1"
+   ],
+   "relatedWorkIds": [],
+   "catalogueProvenance": "Título y autor de los catálogos CTS del sitio; edición contrastada con su cabecera TEI. No se retrotraduce el título.",
+   "corpusFiles": {
+    "grc": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0057-tlg069-grc-d13589715de2f617.json"
+   },
+   "localVersions": [
+    {
+     "language": "grc",
+     "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0057-tlg069-grc-d13589715de2f617.json",
+     "label": "Edición original grc · urn:cts:greekLit:tlg0057.tlg069.1st1K-grc1",
+     "reader": "classics-text-reader.html?work=cts-tlg0057-tlg069&lang=grc&edition=d13589715de2f617",
+     "sourceUrns": [
+      "urn:cts:greekLit:tlg0057.tlg069.1st1K-grc1"
+     ],
+     "sha256": "d13589715de2f617a8e256fd217dec021849ad8f11082b2084baa5b9b6c49a09"
+    }
+   ],
+   "publicStatus": "lectura-local-parcial",
+   "indexedEdition": {
+    "sources": [
+     {
+      "title": "De venae sectione adversus Erasistrateos Romae degentes",
+      "titleLanguage": "lat",
+      "author": "Galen",
+      "editors": [
+       "Karl Gottlob Kühn"
+      ],
+      "bibliography": "Claudii Galeni Opera Omnia Galen Karl Gottlob Kühn Knobloch Leipzig 11 187-249 1826 HathiTrust",
+      "licences": [
+       {
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+       }
+      ],
+      "editionUrn": "urn:cts:greekLit:tlg0057.tlg069.1st1K-grc1",
+      "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0057/tlg069/tlg0057.tlg069.1st1K-grc1.xml",
+      "sourceSha256": "af3ec62e58d72c4b98820d80c9e6eac1dbd2f0e347634d59e75903d06dbc405e",
+      "sourceReferences": [
+       "https://hdl.handle.net/2027/hvd.hxpp8s?urlappend=%3Bseq=199%3Bownerid=27021597764275719-203"
+      ],
+      "publicationYear": "1826",
+      "publisher": "Knobloch",
+      "publicationPlace": "Leipzig",
+      "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/af3ec62e58d72c4b98820d80c9e6eac1dbd2f0e347634d59e75903d06dbc405e.xml"
+     }
+    ],
+    "sha256": "d13589715de2f617a8e256fd217dec021849ad8f11082b2084baa5b9b6c49a09",
+    "passages": 10,
+    "characters": 58620,
+    "bytes": 121627,
+    "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0057-tlg069-grc-d13589715de2f617.json"
+   }
+  },
+  {
+   "id": "cts-tlg0057-tlg067",
+   "author": "Galeno",
+   "title": "Ad Glauconem de methodo medendi",
+   "language": "grc",
+   "genre": "Corpus clásico ampliado",
+   "dating": "siglo II d. C.",
+   "reading": {
+    "url": "classics-text-reader.html?work=cts-tlg0057-tlg067&lang=grc&edition=7855964e0f6a02b3",
+    "status": "Edición TEI alojada en R2 con búsqueda y traducción automática por pasaje"
+   },
+   "manuscript": {
+    "status": "Sin testimonio manuscrito individual asignado; la edición TEI se identifica por separado"
+   },
+   "pdf": {
+    "url": null,
+    "status": "No consta PDF ni facsímil individual verificado para esta edición"
+   },
+   "translation": {
+    "status": "Traducción automática de consulta por pasaje; no se atribuye a un traductor académico"
+   },
+   "links": {
+    "scaife": "https://scaife.perseus.org/library/urn:cts:greekLit:tlg0057.tlg067.1st1K-grc1/"
+   },
+   "aliases": [
+    "urn:cts:greekLit:tlg0057.tlg067.1st1K-grc1"
+   ],
+   "relatedWorkIds": [],
+   "catalogueProvenance": "Título y autor de los catálogos CTS del sitio; edición contrastada con su cabecera TEI. No se retrotraduce el título.",
+   "corpusFiles": {
+    "grc": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0057-tlg067-grc-7855964e0f6a02b3.json"
+   },
+   "localVersions": [
+    {
+     "language": "grc",
+     "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0057-tlg067-grc-7855964e0f6a02b3.json",
+     "label": "Edición original grc · urn:cts:greekLit:tlg0057.tlg067.1st1K-grc1",
+     "reader": "classics-text-reader.html?work=cts-tlg0057-tlg067&lang=grc&edition=7855964e0f6a02b3",
+     "sourceUrns": [
+      "urn:cts:greekLit:tlg0057.tlg067.1st1K-grc1"
+     ],
+     "sha256": "7855964e0f6a02b384c165fc4d4c99cdaca65099fedef6fc4f7b2490aa430fc3"
+    }
+   ],
+   "publicStatus": "lectura-local-parcial",
+   "indexedEdition": {
+    "sources": [
+     {
+      "title": "Ad Glauconem de methodo medendi",
+      "titleLanguage": "lat",
+      "author": "Galen",
+      "editors": [
+       "Karl Gottlob Kühn"
+      ],
+      "bibliography": "Claudii Galeni Opera Omnia Galen Karl Gottlob Kühn Knobloch Leipzig 11 1-146 1826 HathiTrust",
+      "licences": [
+       {
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+       }
+      ],
+      "editionUrn": "urn:cts:greekLit:tlg0057.tlg067.1st1K-grc1",
+      "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0057/tlg067/tlg0057.tlg067.1st1K-grc1.xml",
+      "sourceSha256": "0a24ce010c4e2b5f9c076252fc7fbc2c4379622dad8f33b0c86b51b46dcb8df0",
+      "sourceReferences": [
+       "https://hdl.handle.net/2027/hvd.hxpp8s?urlappend=%3Bseq=12"
+      ],
+      "publicationYear": "1826",
+      "publisher": "Knobloch",
+      "publicationPlace": "Leipzig",
+      "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/0a24ce010c4e2b5f9c076252fc7fbc2c4379622dad8f33b0c86b51b46dcb8df0.xml"
+     }
+    ],
+    "sha256": "7855964e0f6a02b384c165fc4d4c99cdaca65099fedef6fc4f7b2490aa430fc3",
+    "passages": 31,
+    "characters": 142889,
+    "bytes": 294440,
+    "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0057-tlg067-grc-7855964e0f6a02b3.json"
+   }
+  },
+  {
+   "id": "cts-tlg0057-tlg070",
+   "author": "Galeno",
+   "title": "De curandi ratione per venae sectionem",
+   "language": "grc",
+   "genre": "Corpus clásico ampliado",
+   "dating": "siglo II d. C.",
+   "reading": {
+    "url": "classics-text-reader.html?work=cts-tlg0057-tlg070&lang=grc&edition=8618bfef36243cdf",
+    "status": "Edición TEI alojada en R2 con búsqueda y traducción automática por pasaje"
+   },
+   "manuscript": {
+    "status": "Sin testimonio manuscrito individual asignado; la edición TEI se identifica por separado"
+   },
+   "pdf": {
+    "url": null,
+    "status": "No consta PDF ni facsímil individual verificado para esta edición"
+   },
+   "translation": {
+    "status": "Traducción automática de consulta por pasaje; no se atribuye a un traductor académico"
+   },
+   "links": {
+    "scaife": "https://scaife.perseus.org/library/urn:cts:greekLit:tlg0057.tlg070.1st1K-grc1/"
+   },
+   "aliases": [
+    "urn:cts:greekLit:tlg0057.tlg070.1st1K-grc1"
+   ],
+   "relatedWorkIds": [],
+   "catalogueProvenance": "Título y autor de los catálogos CTS del sitio; edición contrastada con su cabecera TEI. No se retrotraduce el título.",
+   "corpusFiles": {
+    "grc": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0057-tlg070-grc-8618bfef36243cdf.json"
+   },
+   "localVersions": [
+    {
+     "language": "grc",
+     "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0057-tlg070-grc-8618bfef36243cdf.json",
+     "label": "Edición original grc · urn:cts:greekLit:tlg0057.tlg070.1st1K-grc1",
+     "reader": "classics-text-reader.html?work=cts-tlg0057-tlg070&lang=grc&edition=8618bfef36243cdf",
+     "sourceUrns": [
+      "urn:cts:greekLit:tlg0057.tlg070.1st1K-grc1"
+     ],
+     "sha256": "8618bfef36243cdfe7b28f6d4a96041552a228ef775a66bd6b0d9d8094d007cb"
+    }
+   ],
+   "publicStatus": "lectura-local-parcial",
+   "indexedEdition": {
+    "sources": [
+     {
+      "title": "De curandi ratione per venae sectionem",
+      "titleLanguage": "lat",
+      "author": "Galen",
+      "editors": [
+       "Karl Gottlob Kühn"
+      ],
+      "bibliography": "Claudii Galeni Opera Omnia Galen Karl Gottlob Kühn Knobloch Leipzig 11 250-316 1826 HathiTrust",
+      "licences": [
+       {
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+       }
+      ],
+      "editionUrn": "urn:cts:greekLit:tlg0057.tlg070.1st1K-grc1",
+      "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0057/tlg070/tlg0057.tlg070.1st1K-grc1.xml",
+      "sourceSha256": "677c8acd45ccdeb12a2b648c8f5e6e055f8b68d5b21336bb9a0b5d66ac58bc2e",
+      "sourceReferences": [
+       "https://hdl.handle.net/2027/hvd.hxpp8s?urlappend=%3Bseq=262"
+      ],
+      "publicationYear": "1826",
+      "publisher": "Knobloch",
+      "publicationPlace": "Leipzig",
+      "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/677c8acd45ccdeb12a2b648c8f5e6e055f8b68d5b21336bb9a0b5d66ac58bc2e.xml"
+     }
+    ],
+    "sha256": "8618bfef36243cdfe7b28f6d4a96041552a228ef775a66bd6b0d9d8094d007cb",
+    "passages": 24,
+    "characters": 64185,
+    "bytes": 134833,
+    "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0057-tlg070-grc-8618bfef36243cdf.json"
+   }
+  },
+  {
+   "id": "cts-tlg0057-tlg071",
+   "author": "Galeno",
+   "title": "De hirudinibus, revulsione, cucurbitula, incisione et scarificatione",
+   "language": "grc",
+   "genre": "Corpus clásico ampliado",
+   "dating": "siglo II d. C.",
+   "reading": {
+    "url": "classics-text-reader.html?work=cts-tlg0057-tlg071&lang=grc&edition=9cce361ea23b2147",
+    "status": "Edición TEI alojada en R2 con búsqueda y traducción automática por pasaje"
+   },
+   "manuscript": {
+    "status": "Sin testimonio manuscrito individual asignado; la edición TEI se identifica por separado"
+   },
+   "pdf": {
+    "url": null,
+    "status": "No consta PDF ni facsímil individual verificado para esta edición"
+   },
+   "translation": {
+    "status": "Traducción automática de consulta por pasaje; no se atribuye a un traductor académico"
+   },
+   "links": {
+    "scaife": "https://scaife.perseus.org/library/urn:cts:greekLit:tlg0057.tlg071.1st1K-grc1/"
+   },
+   "aliases": [
+    "urn:cts:greekLit:tlg0057.tlg071.1st1K-grc1"
+   ],
+   "relatedWorkIds": [],
+   "catalogueProvenance": "Título y autor de los catálogos CTS del sitio; edición contrastada con su cabecera TEI. No se retrotraduce el título.",
+   "corpusFiles": {
+    "grc": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0057-tlg071-grc-9cce361ea23b2147.json"
+   },
+   "localVersions": [
+    {
+     "language": "grc",
+     "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0057-tlg071-grc-9cce361ea23b2147.json",
+     "label": "Edición original grc · urn:cts:greekLit:tlg0057.tlg071.1st1K-grc1",
+     "reader": "classics-text-reader.html?work=cts-tlg0057-tlg071&lang=grc&edition=9cce361ea23b2147",
+     "sourceUrns": [
+      "urn:cts:greekLit:tlg0057.tlg071.1st1K-grc1"
+     ],
+     "sha256": "9cce361ea23b2147a5c5b6b703c45a6c6e1c73d8f3a72934ecc74e3d4a0f6f09"
+    }
+   ],
+   "publicStatus": "lectura-local-parcial",
+   "indexedEdition": {
+    "sources": [
+     {
+      "title": "De hirudinibus, revulsione, cucurbitula, incisione et scarificatione",
+      "titleLanguage": "lat",
+      "author": "Galen",
+      "editors": [
+       "Karl Gottlob Kühn"
+      ],
+      "bibliography": "Claudii Galeni Opera Omnia Galen Karl Gottlob Kühn Knobloch Leipzig 11 317-322 1826 HathiTrust",
+      "licences": [
+       {
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+       }
+      ],
+      "editionUrn": "urn:cts:greekLit:tlg0057.tlg071.1st1K-grc1",
+      "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0057/tlg071/tlg0057.tlg071.1st1K-grc1.xml",
+      "sourceSha256": "0f3f8ed6d4e81a1da3ac3b39036b07ffeb81e311cf808147b7cd035cf5483fa9",
+      "sourceReferences": [
+       "https://hdl.handle.net/2027/hvd.hxpp8s?urlappend=%3Bseq=329%3Bownerid=27021597764275152-333"
+      ],
+      "publicationYear": "1826",
+      "publisher": "Knobloch",
+      "publicationPlace": "Leipzig",
+      "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/0f3f8ed6d4e81a1da3ac3b39036b07ffeb81e311cf808147b7cd035cf5483fa9.xml"
+     }
+    ],
+    "sha256": "9cce361ea23b2147a5c5b6b703c45a6c6e1c73d8f3a72934ecc74e3d4a0f6f09",
+    "passages": 8,
+    "characters": 4581,
+    "bytes": 12507,
+    "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0057-tlg071-grc-9cce361ea23b2147.json"
+   }
+  },
+  {
+   "id": "cts-tlg0057-tlg072",
+   "author": "Galeno",
+   "title": "De purgantium medicamentorum facultate",
+   "language": "grc",
+   "genre": "Corpus clásico ampliado",
+   "dating": "siglo II d. C.",
+   "reading": {
+    "url": "classics-text-reader.html?work=cts-tlg0057-tlg072&lang=grc&edition=c38037be32299b29",
+    "status": "Edición TEI alojada en R2 con búsqueda y traducción automática por pasaje"
+   },
+   "manuscript": {
+    "status": "Sin testimonio manuscrito individual asignado; la edición TEI se identifica por separado"
+   },
+   "pdf": {
+    "url": null,
+    "status": "No consta PDF ni facsímil individual verificado para esta edición"
+   },
+   "translation": {
+    "status": "Traducción automática de consulta por pasaje; no se atribuye a un traductor académico"
+   },
+   "links": {
+    "scaife": "https://scaife.perseus.org/library/urn:cts:greekLit:tlg0057.tlg072.1st1K-grc1/"
+   },
+   "aliases": [
+    "urn:cts:greekLit:tlg0057.tlg072.1st1K-grc1"
+   ],
+   "relatedWorkIds": [],
+   "catalogueProvenance": "Título y autor de los catálogos CTS del sitio; edición contrastada con su cabecera TEI. No se retrotraduce el título.",
+   "corpusFiles": {
+    "grc": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0057-tlg072-grc-c38037be32299b29.json"
+   },
+   "localVersions": [
+    {
+     "language": "grc",
+     "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0057-tlg072-grc-c38037be32299b29.json",
+     "label": "Edición original grc · urn:cts:greekLit:tlg0057.tlg072.1st1K-grc1",
+     "reader": "classics-text-reader.html?work=cts-tlg0057-tlg072&lang=grc&edition=c38037be32299b29",
+     "sourceUrns": [
+      "urn:cts:greekLit:tlg0057.tlg072.1st1K-grc1"
+     ],
+     "sha256": "c38037be32299b29c7536183c2f065e2c74359d8a487bd959caf20e967e20e7e"
+    }
+   ],
+   "publicStatus": "lectura-local-parcial",
+   "indexedEdition": {
+    "sources": [
+     {
+      "title": "De purgantium medicamentorum facultate",
+      "titleLanguage": "lat",
+      "author": "Galen",
+      "editors": [
+       "Karl Gottlob Kühn"
+      ],
+      "bibliography": "Claudii Galeni Opera Omnia Galen Karl Gottlob Kühn Knobloch Lipsiae 11 323-342 1826 HathiTrust",
+      "licences": [
+       {
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+       }
+      ],
+      "editionUrn": "urn:cts:greekLit:tlg0057.tlg072.1st1K-grc1",
+      "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0057/tlg072/tlg0057.tlg072.1st1K-grc1.xml",
+      "sourceSha256": "b7cde4034adf6485a1c720d7b7e9d0e6399a4a405b409422fbf5d5e0745e9e1c",
+      "sourceReferences": [
+       "https://hdl.handle.net/2027/hvd.hxpp8s?urlappend=%3Bseq=335%3Bownerid=27021597764275152-339"
+      ],
+      "publicationYear": "1826",
+      "publisher": "Knobloch",
+      "publicationPlace": "Lipsiae",
+      "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/b7cde4034adf6485a1c720d7b7e9d0e6399a4a405b409422fbf5d5e0745e9e1c.xml"
+     }
+    ],
+    "sha256": "c38037be32299b29c7536183c2f065e2c74359d8a487bd959caf20e967e20e7e",
+    "passages": 6,
+    "characters": 18892,
+    "bytes": 40920,
+    "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0057-tlg072-grc-c38037be32299b29.json"
+   }
   }
  ],
  "pdfPolicy": {

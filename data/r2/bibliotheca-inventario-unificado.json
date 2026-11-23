@@ -1,12 +1,12 @@
 {
   "schema": "vdl-federated-bibliotheca-inventory-v1",
-  "generated": "2026-11-23T03:53:30.733963+00:00",
+  "generated": "2026-11-23T04:06:00.402353+00:00",
   "method": "Master works and additional R2 works counted separately; edition relations can be many-to-many. Remote text URLs are declared, not live-verified. Unresolved editions are never merged automatically.",
   "counts": {
-    "cataloguedWorks": 372,
+    "cataloguedWorks": 390,
     "supplementaryWorks": 127,
     "additionalWorks": 10,
-    "totalDeclaredWorks": 509,
+    "totalDeclaredWorks": 527,
     "r2EditionRecords": 117,
     "r2LinkedEditionRecords": 107,
     "r2WorkEditionRelations": 115,
@@ -14,7 +14,7 @@
     "r2UnlinkedEditionRecords": 0,
     "worksWithR2Edition": 114,
     "worksWithLocalIndexedText": 325,
-    "worksWithDeclaredRemoteIndex": 173
+    "worksWithDeclaredRemoteIndex": 191
   },
   "unlinkedR2EditionIds": [],
   "additionalWorks": [
@@ -9009,6 +9009,258 @@
         {
           "language": "grc",
           "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0057-tlg053-grc-745fe2066194a8be.json"
+        }
+      ],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "cts-phi0474-phi058",
+      "author": "Cicerón",
+      "title": "Letters to his brother Quintus",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "la",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0474-phi058-la-1629b2b729cde2a4.json"
+        }
+      ],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "cts-phi0474-phi072",
+      "author": "Cicerón",
+      "title": "Timaeus",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "la",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0474-phi072-la-6ffbccf1b779e09f.json"
+        }
+      ],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "cts-phi0474-phi059",
+      "author": "Cicerón",
+      "title": "Letters to Brutus",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "la",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0474-phi059-la-21cceb55c869a940.json"
+        }
+      ],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "cts-phi0474-phi057",
+      "author": "Cicerón",
+      "title": "Letters to Atticus",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "la",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0474-phi057-la-769ee7cc82185053.json"
+        }
+      ],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "cts-phi0692-phi002",
+      "author": "Appendix Vergiliana",
+      "title": "Lydia",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "la",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0692-phi002-la-44a1772603f21edc.json"
+        }
+      ],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "cts-phi0692-phi001",
+      "author": "Appendix Vergiliana",
+      "title": "Dirae",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "la",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0692-phi001-la-fe97020aedc362bc.json"
+        }
+      ],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "cts-phi0692-phi003",
+      "author": "Appendix Vergiliana",
+      "title": "Culex",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "la",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0692-phi003-la-2009be528af2e5b1.json"
+        }
+      ],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "cts-phi0692-phi005",
+      "author": "Appendix Vergiliana",
+      "title": "Copa",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "la",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0692-phi005-la-ca018337a4a6ac8f.json"
+        }
+      ],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "cts-phi0692-phi008",
+      "author": "Appendix Vergiliana",
+      "title": "Priapea",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "la",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0692-phi008-la-cdd82af6c02a049f.json"
+        }
+      ],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "cts-phi0692-phi007",
+      "author": "Appendix Vergiliana",
+      "title": "Ciris",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "la",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0692-phi007-la-65df30aeae912550.json"
+        }
+      ],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "cts-phi0692-phi006",
+      "author": "Appendix Vergiliana",
+      "title": "Elegiae in Maecenatem",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "la",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0692-phi006-la-d70af6485898e23d.json"
+        }
+      ],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "cts-phi0692-phi009",
+      "author": "Appendix Vergiliana",
+      "title": "Catalepton",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "la",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0692-phi009-la-abe3bb748e5fae0e.json"
+        }
+      ],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "cts-tlg0057-tlg068",
+      "author": "Galeno",
+      "title": "De venae sectione adversus Erasistratum",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0057-tlg068-grc-ac34bcb8a8a5cd7f.json"
+        }
+      ],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "cts-tlg0057-tlg069",
+      "author": "Galeno",
+      "title": "De venae sectione adversus Erasistrateos Romae degentes",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0057-tlg069-grc-d13589715de2f617.json"
+        }
+      ],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "cts-tlg0057-tlg067",
+      "author": "Galeno",
+      "title": "Ad Glauconem de methodo medendi",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0057-tlg067-grc-7855964e0f6a02b3.json"
+        }
+      ],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "cts-tlg0057-tlg070",
+      "author": "Galeno",
+      "title": "De curandi ratione per venae sectionem",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0057-tlg070-grc-8618bfef36243cdf.json"
+        }
+      ],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "cts-tlg0057-tlg071",
+      "author": "Galeno",
+      "title": "De hirudinibus, revulsione, cucurbitula, incisione et scarificatione",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0057-tlg071-grc-9cce361ea23b2147.json"
+        }
+      ],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "cts-tlg0057-tlg072",
+      "author": "Galeno",
+      "title": "De purgantium medicamentorum facultate",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0057-tlg072-grc-c38037be32299b29.json"
         }
       ],
       "r2FacsimileEditions": []
