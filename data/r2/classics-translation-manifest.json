@@ -1,0 +1,166 @@
+{
+ "schema": "vdl-classics-translation-manifest-v1",
+ "generated": "2026-11-23T00:10:29.739387+00:00",
+ "method": "Traducciones humanas TEI licenciadas y publicadas en R2 con SHA-256, índice literal por pasaje, sin alineación automática",
+ "editions": [
+  {
+   "workId": "athenaeus-deipnosophistae",
+   "author": "Ateneo de Náucratis",
+   "title": "Δειπνοσοφισταί",
+   "language": "en",
+   "filename": "athenaeus-deipnosophistae-en-5a43e09255f3e527.json",
+   "url": "https://libros.vitruvius-digital-library.org/corpus/athenaeus-deipnosophistae-en-5a43e09255f3e527.json",
+   "sha256": "5a43e09255f3e5273d9dafa34c56a30b7ba6ed54b79a693f72f73ba9e51c66bb",
+   "passages": 1901,
+   "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0008/tlg001/tlg0008.tlg001.perseus-eng2.xml",
+   "sourceUrn": "urn:cts:greekLit:tlg0008.tlg001.perseus-eng2",
+   "sourceSha256": "fae309396e2451d6df4b31450050353c672bd8ca7c4878af079da771656dbf1f",
+   "sourceArchived": "https://libros.vitruvius-digital-library.org/corpus/fuentes/fae309396e2451d6df4b31450050353c672bd8ca7c4878af079da771656dbf1f.xml",
+   "translators": [
+    "Charles Duke Yonge"
+   ],
+   "publicationYear": 1854,
+   "license": [
+    "https://creativecommons.org/licenses/by-sa/4.0/"
+   ],
+   "indexUrl": "https://libros.vitruvius-digital-library.org/corpus/indice/traducciones/athenaeus-deipnosophistae-en-0ab10c806558f336.json",
+   "indexSha256": "0ab10c806558f33661c30cadba5d2fa9d8db5ebe0f2f8810704d94ff2ed4854d"
+  },
+  {
+   "workId": "cts-tlg0006-tlg001",
+   "author": "Eurípides",
+   "title": "Cyclops",
+   "language": "en",
+   "filename": "cts-tlg0006-tlg001-en-9b3ef3dcd3597cc0.json",
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0006-tlg001-en-9b3ef3dcd3597cc0.json",
+   "sha256": "9b3ef3dcd3597cc06fecccef6a6e7922aee111e913f3d6ed249d555efa02b862",
+   "passages": 263,
+   "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0006/tlg001/tlg0006.tlg001.perseus-eng2.xml",
+   "sourceUrn": "urn:cts:greekLit:tlg0006.tlg001.perseus-eng2",
+   "sourceSha256": "c1424a11f4bb3bd659dab1c3ace5f1cc9698b6a6470f4bbb799fd15b6fd9cf75",
+   "sourceArchived": "https://libros.vitruvius-digital-library.org/corpus/fuentes/c1424a11f4bb3bd659dab1c3ace5f1cc9698b6a6470f4bbb799fd15b6fd9cf75.xml",
+   "translators": [
+    "Edward P. Coleridge"
+   ],
+   "publicationYear": 1891,
+   "license": [
+    "https://creativecommons.org/licenses/by-sa/4.0/"
+   ],
+   "indexUrl": "https://libros.vitruvius-digital-library.org/corpus/indice/traducciones/cts-tlg0006-tlg001-en-b50c22b75406363a.json",
+   "indexSha256": "b50c22b75406363a213d0b0412ea73a2fb878d40bc63e667b171e729364342d0"
+  },
+  {
+   "workId": "cts-tlg0062-tlg016",
+   "author": "Luciano de Samósata",
+   "title": "Cataplus",
+   "language": "en",
+   "filename": "cts-tlg0062-tlg016-en-7c11ffc8ec68ce24.json",
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg016-en-7c11ffc8ec68ce24.json",
+   "sha256": "7c11ffc8ec68ce246ccb209f31004a15ef294d7f8936daa43a977c4e8c65fc9a",
+   "passages": 177,
+   "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0062/tlg016/tlg0062.tlg016.perseus-eng2.xml",
+   "sourceUrn": "urn:cts:greekLit:tlg0062.tlg016.perseus-eng2",
+   "sourceSha256": "31c297dc575650eb0ff7b67c26a1acf0383f7bbca140e6f0c07e2b3b3aa0ec9f",
+   "sourceArchived": "https://libros.vitruvius-digital-library.org/corpus/fuentes/31c297dc575650eb0ff7b67c26a1acf0383f7bbca140e6f0c07e2b3b3aa0ec9f.xml",
+   "translators": [
+    "Austin Morris Harmon"
+   ],
+   "publicationYear": 1915,
+   "license": [
+    "https://creativecommons.org/licenses/by-sa/4.0/"
+   ],
+   "indexUrl": "https://libros.vitruvius-digital-library.org/corpus/indice/traducciones/cts-tlg0062-tlg016-en-90d9b12b68ae4bf5.json",
+   "indexSha256": "90d9b12b68ae4bf556cc5772d4db54ba6d2122f667e50af6609f255f1bdfd763"
+  },
+  {
+   "workId": "cts-tlg0062-tlg017",
+   "author": "Luciano de Samósata",
+   "title": "Juppiter Confutatus",
+   "language": "en",
+   "filename": "cts-tlg0062-tlg017-en-cfc6a79baa26bc50.json",
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg017-en-cfc6a79baa26bc50.json",
+   "sha256": "cfc6a79baa26bc502a5c1a228afa93ed1b70ddeb017f021e3ff300c35d3eb3c8",
+   "passages": 73,
+   "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0062/tlg017/tlg0062.tlg017.perseus-eng2.xml",
+   "sourceUrn": "urn:cts:greekLit:tlg0062.tlg017.perseus-eng2",
+   "sourceSha256": "6eeb92413ff3e8313710d669a34c3ad2d5d25b2594df1c55f637327cd471ca16",
+   "sourceArchived": "https://libros.vitruvius-digital-library.org/corpus/fuentes/6eeb92413ff3e8313710d669a34c3ad2d5d25b2594df1c55f637327cd471ca16.xml",
+   "translators": [
+    "Austin Morris Harmon"
+   ],
+   "publicationYear": 1915,
+   "license": [
+    "https://creativecommons.org/licenses/by-sa/4.0/"
+   ],
+   "indexUrl": "https://libros.vitruvius-digital-library.org/corpus/indice/traducciones/cts-tlg0062-tlg017-en-d647462bed7db630.json",
+   "indexSha256": "d647462bed7db630ad642747e695d69f78930cc947dcc1e12112cc29f8763309"
+  }
+ ],
+ "lastDeferred": [
+  {
+   "workId": "archimedes-fluitantibus",
+   "reason": "No hay traducción TEI descargable en Perseus"
+  },
+  {
+   "workId": "cassius-dio-historia",
+   "reason": "No hay traducción TEI descargable en Perseus"
+  },
+  {
+   "workId": "cleonides-harmonica",
+   "reason": "No hay traducción TEI descargable en Perseus"
+  },
+  {
+   "workId": "cts-phi0474-phi036",
+   "reason": "No hay traducción TEI descargable en Perseus"
+  },
+  {
+   "workId": "cts-phi0474-phi038",
+   "reason": "No hay traducción TEI descargable en Perseus"
+  },
+  {
+   "workId": "cts-phi0474-phi040",
+   "reason": "No hay traducción TEI descargable en Perseus"
+  },
+  {
+   "workId": "cts-phi0474-phi041",
+   "reason": "No hay traducción TEI descargable en Perseus"
+  },
+  {
+   "workId": "cts-phi0474-phi042",
+   "reason": "No hay traducción TEI descargable en Perseus"
+  },
+  {
+   "workId": "cts-phi0474-phi045",
+   "reason": "No hay traducción TEI descargable en Perseus"
+  },
+  {
+   "workId": "cts-phi0474-phi046",
+   "reason": "No hay traducción TEI descargable en Perseus"
+  },
+  {
+   "workId": "cts-phi0474-phi047",
+   "reason": "No hay traducción TEI descargable en Perseus"
+  },
+  {
+   "workId": "cts-phi0692-phi011",
+   "reason": "No hay traducción TEI descargable en Perseus"
+  },
+  {
+   "workId": "cts-phi0692-phi012",
+   "reason": "No hay traducción TEI descargable en Perseus"
+  },
+  {
+   "workId": "cts-phi0692-phi013",
+   "reason": "No hay traducción TEI descargable en Perseus"
+  },
+  {
+   "workId": "cts-stoa0033a-tlg028",
+   "reason": "No hay traducción TEI descargable en Perseus"
+  },
+  {
+   "workId": "cts-stoa0033a-tlg043",
+   "reason": "No hay traducción TEI descargable en Perseus"
+  }
+ ],
+ "policy": "No se reemplazan originales, traducciones previas, facsímiles ni índices de GitHub"
+}

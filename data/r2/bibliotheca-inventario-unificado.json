@@ -1,6 +1,6 @@
 {
   "schema": "vdl-federated-bibliotheca-inventory-v1",
-  "generated": "2026-11-22T17:58:04.746979+00:00",
+  "generated": "2026-11-23T00:10:29.842661+00:00",
   "method": "Master works and additional R2 works counted separately; edition relations can be many-to-many. Remote text URLs are declared, not live-verified. Unresolved editions are never merged automatically.",
   "counts": {
     "cataloguedWorks": 294,
@@ -4354,6 +4354,10 @@
       "locallyIndexedText": [],
       "declaredRemoteIndexedText": [
         {
+          "language": "en",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/athenaeus-deipnosophistae-en-5a43e09255f3e527.json"
+        },
+        {
           "language": "grc",
           "url": "https://libros.vitruvius-digital-library.org/corpus/athenaeus-deipnosophistae-grc-c11adda328eca994.json"
         }
@@ -7463,6 +7467,10 @@
       "locallyIndexedText": [],
       "declaredRemoteIndexedText": [
         {
+          "language": "en",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg016-en-7c11ffc8ec68ce24.json"
+        },
+        {
           "language": "grc",
           "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg016-grc-5004e4b54425dc19.json"
         }
@@ -7476,6 +7484,10 @@
       "catalogue": "github",
       "locallyIndexedText": [],
       "declaredRemoteIndexedText": [
+        {
+          "language": "en",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg017-en-cfc6a79baa26bc50.json"
+        },
         {
           "language": "grc",
           "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg017-grc-dac8437b031446bc.json"
@@ -7616,6 +7628,10 @@
       "catalogue": "github",
       "locallyIndexedText": [],
       "declaredRemoteIndexedText": [
+        {
+          "language": "en",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0006-tlg001-en-9b3ef3dcd3597cc0.json"
+        },
         {
           "language": "grc",
           "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0006-tlg001-grc-1ffde549798a4d64.json"

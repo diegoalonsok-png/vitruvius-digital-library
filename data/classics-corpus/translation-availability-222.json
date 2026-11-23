@@ -1,6 +1,6 @@
 {
   "schema": "vitruvius-classics-translation-availability-v1",
-  "generated": "2026-11-22",
+  "generated": "2026-11-23",
   "basis": "Cálculo a partir de works[] y search-registry.json. Los campos de compatibilidad locallyIndexedWorks y localEditionLanguages incluyen índices registrados en R2. originalIndexed y verifiedLocalEditionLanguages solo cuentan archivos locales. originalR2Registered identifica declaraciones remotas; no certifica disponibilidad HTTP ni cotejo.",
   "scope": "271 obras del repertorio grecolatino; originales locales, índices remotos declarados y traducciones alojadas ES/EN/FR",
   "totals": {
@@ -19,11 +19,11 @@
     "declaredRemoteOnlyWorks": 65,
     "declaredR2OriginalWorks": 67,
     "registeredOriginalWorks": 264,
-    "registeredTextVersions": 348,
+    "registeredTextVersions": 352,
     "verifiedLocalTextVersions": 281,
     "verifiedLocalOriginalTextIndexed": 197,
     "supplementaryTextVersions": 161,
-    "allRegisteredTextVersions": 509
+    "allRegisteredTextVersions": 513
   },
   "works": [
     {
@@ -3210,6 +3210,7 @@
       "originalIndexed": false,
       "translationLanguages": [],
       "localEditionLanguages": [
+        "en",
         "grc"
       ],
       "externalTranslationUnverified": [],
@@ -3220,9 +3221,11 @@
       "originalR2Registered": true,
       "registeredOriginal": true,
       "registeredEditionLanguages": [
+        "en",
         "grc"
       ],
       "remoteEditionLanguages": [
+        "en",
         "grc"
       ],
       "verifiedLocalEditionLanguages": []
@@ -7145,6 +7148,7 @@
       "originalLanguage": "grc",
       "translationLanguages": [],
       "localEditionLanguages": [
+        "en",
         "grc"
       ],
       "notes": "Edición TEI incorporada en R2; sin traducción humana ni colación independiente acreditadas.",
@@ -7153,9 +7157,11 @@
       "registeredOriginal": true,
       "verifiedLocalEditionLanguages": [],
       "registeredEditionLanguages": [
+        "en",
         "grc"
       ],
       "remoteEditionLanguages": [
+        "en",
         "grc"
       ],
       "readingStatus": "lectura-local-parcial"
@@ -7167,6 +7173,7 @@
       "originalLanguage": "grc",
       "translationLanguages": [],
       "localEditionLanguages": [
+        "en",
         "grc"
       ],
       "notes": "Edición TEI incorporada en R2; sin traducción humana ni colación independiente acreditadas.",
@@ -7175,9 +7182,11 @@
       "registeredOriginal": true,
       "verifiedLocalEditionLanguages": [],
       "registeredEditionLanguages": [
+        "en",
         "grc"
       ],
       "remoteEditionLanguages": [
+        "en",
         "grc"
       ],
       "readingStatus": "lectura-local-parcial"
@@ -7387,6 +7396,7 @@
       "originalLanguage": "grc",
       "translationLanguages": [],
       "localEditionLanguages": [
+        "en",
         "grc"
       ],
       "notes": "Edición TEI incorporada en R2; sin traducción humana ni colación independiente acreditadas.",
@@ -7395,9 +7405,11 @@
       "registeredOriginal": true,
       "verifiedLocalEditionLanguages": [],
       "registeredEditionLanguages": [
+        "en",
         "grc"
       ],
       "remoteEditionLanguages": [
+        "en",
         "grc"
       ],
       "readingStatus": "lectura-local-parcial"

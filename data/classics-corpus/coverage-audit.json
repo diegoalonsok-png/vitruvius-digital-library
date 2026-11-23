@@ -1,6 +1,6 @@
 {
   "schema": "vitruvia-classics-coverage-audit-v1",
-  "date": "2026-11-22",
+  "date": "2026-11-23",
   "scope": "Se auditan exclusivamente 271 fichas de obras del catálogo local; no es un censo universal de literatura grecolatina.",
   "method": "Cruce de fichas bibliográficas, vínculos locales, corpus legible, registro de búsqueda y testimonios manuscritos; sin OCR ni verificación externa de los enlaces.",
   "counts": {
@@ -13,7 +13,7 @@
       "pendiente-de-incorporar": 2
     },
     "locallyReadableClaims": 219,
-    "indexedTextVersions": 348,
+    "indexedTextVersions": 352,
     "indexedDistinctWorks": 264,
     "manuscriptWitnesses": 107
   },
@@ -2723,9 +2723,11 @@
       "dating": "siglos II–III d. C.",
       "catalogueStatus": "lectura-local-parcial",
       "indexedTextLanguages": [
+        "en",
         "grc"
       ],
       "indexedTextFiles": [
+        "https://libros.vitruvius-digital-library.org/corpus/athenaeus-deipnosophistae-en-5a43e09255f3e527.json",
         "https://libros.vitruvius-digital-library.org/corpus/athenaeus-deipnosophistae-grc-c11adda328eca994.json"
       ],
       "localPDF": null,
@@ -6250,9 +6252,11 @@
       "originalLanguage": "grc",
       "catalogueStatus": "lectura-local-parcial",
       "indexedTextLanguages": [
+        "en",
         "grc"
       ],
       "indexedTextFiles": [
+        "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg016-en-7c11ffc8ec68ce24.json",
         "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg016-grc-5004e4b54425dc19.json"
       ],
       "manuscriptRecords": 0,
@@ -6265,9 +6269,11 @@
       "originalLanguage": "grc",
       "catalogueStatus": "lectura-local-parcial",
       "indexedTextLanguages": [
+        "en",
         "grc"
       ],
       "indexedTextFiles": [
+        "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg017-en-cfc6a79baa26bc50.json",
         "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg017-grc-dac8437b031446bc.json"
       ],
       "manuscriptRecords": 0,
@@ -6415,9 +6421,11 @@
       "originalLanguage": "grc",
       "catalogueStatus": "lectura-local-parcial",
       "indexedTextLanguages": [
+        "en",
         "grc"
       ],
       "indexedTextFiles": [
+        "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0006-tlg001-en-9b3ef3dcd3597cc0.json",
         "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0006-tlg001-grc-1ffde549798a4d64.json"
       ],
       "manuscriptRecords": 0,

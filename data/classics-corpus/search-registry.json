@@ -1,8 +1,8 @@
 {
  "schema": "vitruvia-classics-search-registry-v1",
- "updated": "2026-11-22",
+ "updated": "2026-11-23",
  "description": "Registro verificable de transcripciones HTML y textos JSON existentes que admiten búsqueda literal de contenido. No incluye automáticamente PDF escaneados, facsímiles ni fichas sin texto. Los índices auxiliares por locus y el aparato crítico se declaran por separado; no se suman a versiones textuales originales ni implican colación autóptica.",
- "count": 509,
+ "count": 513,
  "works": 392,
  "entries": [
   {
@@ -603,6 +603,18 @@
    "path": "data/classics-corpus/arrian-anabasis-alexandri-grc.json",
    "reader": "classics-text-reader.html?work=arrian-anabasis-alexandri&lang=grc",
    "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+  },
+  {
+   "workId": "athenaeus-deipnosophistae",
+   "author": "Ateneo de Náucratis",
+   "title": "Δειπνοσοφισταί",
+   "language": "en",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/athenaeus-deipnosophistae-en-5a43e09255f3e527.json",
+   "reader": "classics-text-reader.html?work=athenaeus-deipnosophistae&lang=en",
+   "sourceDescription": "Traducción humana acreditada: Charles Duke Yonge; TEI Perseus, licencia y SHA256 verificados",
+   "sha256": "5a43e09255f3e5273d9dafa34c56a30b7ba6ed54b79a693f72f73ba9e51c66bb",
+   "passages": 1901
   },
   {
    "workId": "athenaeus-deipnosophistae",
@@ -1209,6 +1221,18 @@
    "workId": "cts-tlg0006-tlg001",
    "author": "Eurípides",
    "title": "Cyclops",
+   "language": "en",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0006-tlg001-en-9b3ef3dcd3597cc0.json",
+   "reader": "classics-text-reader.html?work=cts-tlg0006-tlg001&lang=en",
+   "sourceDescription": "Traducción humana acreditada: Edward P. Coleridge; TEI Perseus, licencia y SHA256 verificados",
+   "sha256": "9b3ef3dcd3597cc06fecccef6a6e7922aee111e913f3d6ed249d555efa02b862",
+   "passages": 263
+  },
+  {
+   "workId": "cts-tlg0006-tlg001",
+   "author": "Eurípides",
+   "title": "Cyclops",
    "language": "grc",
    "format": "json-passages",
    "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0006-tlg001-grc-1ffde549798a4d64.json",
@@ -1221,6 +1245,18 @@
    "workId": "cts-tlg0062-tlg016",
    "author": "Luciano de Samósata",
    "title": "Cataplus",
+   "language": "en",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg016-en-7c11ffc8ec68ce24.json",
+   "reader": "classics-text-reader.html?work=cts-tlg0062-tlg016&lang=en",
+   "sourceDescription": "Traducción humana acreditada: Austin Morris Harmon; TEI Perseus, licencia y SHA256 verificados",
+   "sha256": "7c11ffc8ec68ce246ccb209f31004a15ef294d7f8936daa43a977c4e8c65fc9a",
+   "passages": 177
+  },
+  {
+   "workId": "cts-tlg0062-tlg016",
+   "author": "Luciano de Samósata",
+   "title": "Cataplus",
    "language": "grc",
    "format": "json-passages",
    "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg016-grc-5004e4b54425dc19.json",
@@ -1228,6 +1264,18 @@
    "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
    "sha256": "5004e4b54425dc1909dcb6c824e2f00c1ba894fee8ba19d00feddc42bf26f3c1",
    "passages": 175
+  },
+  {
+   "workId": "cts-tlg0062-tlg017",
+   "author": "Luciano de Samósata",
+   "title": "Juppiter Confutatus",
+   "language": "en",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg017-en-cfc6a79baa26bc50.json",
+   "reader": "classics-text-reader.html?work=cts-tlg0062-tlg017&lang=en",
+   "sourceDescription": "Traducción humana acreditada: Austin Morris Harmon; TEI Perseus, licencia y SHA256 verificados",
+   "sha256": "cfc6a79baa26bc502a5c1a228afa93ed1b70ddeb017f021e3ff300c35d3eb3c8",
+   "passages": 73
   },
   {
    "workId": "cts-tlg0062-tlg017",
