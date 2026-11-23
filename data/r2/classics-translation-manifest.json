@@ -1,6 +1,6 @@
 {
  "schema": "vdl-classics-translation-manifest-v1",
- "generated": "2026-11-23T00:51:24.320858+00:00",
+ "generated": "2026-11-23T09:52:17.767715+00:00",
  "method": "Traducciones humanas TEI licenciadas y publicadas en R2 con SHA-256, índice literal por pasaje, sin alineación automática",
  "editions": [
   {
@@ -653,11 +653,115 @@
    ],
    "indexUrl": "https://libros.vitruvius-digital-library.org/corpus/indice/traducciones/cts-tlg0062-tlg026-en-7eda869029001a28.json",
    "indexSha256": "7eda869029001a28ed1344ab439abc70a8036fae49a63aa1c38c95f94c7ff004"
+  },
+  {
+   "workId": "cts-phi0119-phi004",
+   "author": "Plauto",
+   "title": "Bacchides",
+   "language": "en",
+   "filename": "cts-phi0119-phi004-en-9cf95db3aa6b6d96.json",
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0119-phi004-en-9cf95db3aa6b6d96.json",
+   "sha256": "9cf95db3aa6b6d963a71d2c5c7e77d1b95fa2c66b394c14a5eb29dd4c7f21c9e",
+   "passages": 770,
+   "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0119/phi004/phi0119.phi004.perseus-eng2.xml",
+   "sourceUrn": "urn:cts:latinLit:phi0119.phi004.perseus-eng2",
+   "sourceSha256": "04fd3b167d9a51d71df55d4959688554eac176ece26e1e833c6390ba40e96743",
+   "sourceArchived": "https://libros.vitruvius-digital-library.org/corpus/fuentes/04fd3b167d9a51d71df55d4959688554eac176ece26e1e833c6390ba40e96743.xml",
+   "translators": [
+    "Henry Thomas Riley"
+   ],
+   "publicationYear": 1912,
+   "license": [
+    "https://creativecommons.org/licenses/by-sa/4.0/"
+   ],
+   "indexUrl": "https://libros.vitruvius-digital-library.org/corpus/indice/traducciones/cts-phi0119-phi004-en-0f82f3156ae11543.json",
+   "indexSha256": "0f82f3156ae11543ea18757ddce78cedfec4037b22d00f5ee3b9902053d17c9e"
+  },
+  {
+   "workId": "cts-phi0474-phi005",
+   "author": "Cicerón",
+   "title": "In C. Verrem",
+   "language": "en",
+   "filename": "cts-phi0474-phi005-en-5ef4713f38b8461f.json",
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0474-phi005-en-5ef4713f38b8461f.json",
+   "sha256": "5ef4713f38b8461f4088104840c64891708273ffc91d846b91740d174532abd0",
+   "passages": 1173,
+   "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0474/phi005/phi0474.phi005.perseus-eng2.xml",
+   "sourceUrn": "urn:cts:latinLit:phi0474.phi005.perseus-eng2",
+   "sourceSha256": "e16ff0a246d082f5b8eaac4ba7c36527724caa610c6f5ac23bd10679f88262f2",
+   "sourceArchived": "https://libros.vitruvius-digital-library.org/corpus/fuentes/e16ff0a246d082f5b8eaac4ba7c36527724caa610c6f5ac23bd10679f88262f2.xml",
+   "translators": [
+    "Charles Duke Yonge"
+   ],
+   "publicationYear": 1856,
+   "license": [
+    "https://creativecommons.org/licenses/by-sa/4.0/"
+   ],
+   "indexUrl": "https://libros.vitruvius-digital-library.org/corpus/indice/traducciones/cts-phi0474-phi005-en-50164a3189e0c195.json",
+   "indexSha256": "50164a3189e0c195608cce63f8529770bb6cc48f540b91277f240f92ceeb9d5b"
+  },
+  {
+   "workId": "cts-phi0474-phi006",
+   "author": "Cicerón",
+   "title": "Pro M. Tullio",
+   "language": "en",
+   "filename": "cts-phi0474-phi006-en-02fc41c4924545cd.json",
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0474-phi006-en-02fc41c4924545cd.json",
+   "sha256": "02fc41c4924545cd7a2b083d4dc2f1b1aabf09ac6a07e578330d356253c2fb27",
+   "passages": 61,
+   "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0474/phi006/phi0474.phi006.perseus-eng2.xml",
+   "sourceUrn": "urn:cts:latinLit:phi0474.phi006.perseus-eng2",
+   "sourceSha256": "a6f388e93239759fe86e3e2c412665ad4dd4bafa261aa2dd81c7eae87908eb02",
+   "sourceArchived": "https://libros.vitruvius-digital-library.org/corpus/fuentes/a6f388e93239759fe86e3e2c412665ad4dd4bafa261aa2dd81c7eae87908eb02.xml",
+   "translators": [
+    "Charles Duke Yonge"
+   ],
+   "publicationYear": 1856,
+   "license": [
+    "https://creativecommons.org/licenses/by-sa/4.0/"
+   ],
+   "indexUrl": "https://libros.vitruvius-digital-library.org/corpus/indice/traducciones/cts-phi0474-phi006-en-2027488472d2fc02.json",
+   "indexSha256": "2027488472d2fc02be73754c6887cb8f12a5f58e52c68e8a4dbb8c33f3b440ac"
+  },
+  {
+   "workId": "cts-phi0474-phi007",
+   "author": "Cicerón",
+   "title": "Pro Fonteio",
+   "language": "en",
+   "filename": "cts-phi0474-phi007-en-aa03f83cab6f7cad.json",
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0474-phi007-en-aa03f83cab6f7cad.json",
+   "sha256": "aa03f83cab6f7cad6949291d397eb138717052abda5b784f67c86a16c17c4be7",
+   "passages": 63,
+   "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0474/phi007/phi0474.phi007.perseus-eng2.xml",
+   "sourceUrn": "urn:cts:latinLit:phi0474.phi007.perseus-eng2",
+   "sourceSha256": "827d0616be979e407edf16c0036ad6b512216fe8c416ec27bc6e1ca0a421ba2b",
+   "sourceArchived": "https://libros.vitruvius-digital-library.org/corpus/fuentes/827d0616be979e407edf16c0036ad6b512216fe8c416ec27bc6e1ca0a421ba2b.xml",
+   "translators": [
+    "Charles Duke Yonge"
+   ],
+   "publicationYear": 1856,
+   "license": [
+    "https://creativecommons.org/licenses/by-sa/4.0/"
+   ],
+   "indexUrl": "https://libros.vitruvius-digital-library.org/corpus/indice/traducciones/cts-phi0474-phi007-en-8fdd59a854b7456a.json",
+   "indexSha256": "8fdd59a854b7456a8d5b0a9455693abaf97703f3002611eea360d623f692b8c3"
   }
  ],
  "lastDeferred": [
   {
+   "workId": "apollonius-conica",
+   "reason": "No hay traducción TEI descargable en Perseus"
+  },
+  {
+   "workId": "apolonio-argonauticas",
+   "reason": "No hay traducción TEI descargable en Perseus"
+  },
+  {
    "workId": "archimedes-fluitantibus",
+   "reason": "No hay traducción TEI descargable en Perseus"
+  },
+  {
+   "workId": "aristarchus-magnitudines",
    "reason": "No hay traducción TEI descargable en Perseus"
   },
   {
@@ -665,124 +769,16 @@
    "reason": "No hay traducción TEI descargable en Perseus"
   },
   {
+   "workId": "cicero-tusculanae",
+   "reason": "No hay traducción TEI descargable en Perseus"
+  },
+  {
    "workId": "cleonides-harmonica",
    "reason": "No hay traducción TEI descargable en Perseus"
   },
   {
-   "workId": "cts-phi0474-phi036",
+   "workId": "cts-ogl0001-ogl001",
    "reason": "No hay traducción TEI descargable en Perseus"
-  },
-  {
-   "workId": "cts-phi0474-phi038",
-   "reason": "No hay traducción TEI descargable en Perseus"
-  },
-  {
-   "workId": "cts-phi0474-phi040",
-   "reason": "No hay traducción TEI descargable en Perseus"
-  },
-  {
-   "workId": "cts-phi0474-phi041",
-   "reason": "No hay traducción TEI descargable en Perseus"
-  },
-  {
-   "workId": "cts-phi0474-phi042",
-   "reason": "No hay traducción TEI descargable en Perseus"
-  },
-  {
-   "workId": "cts-phi0474-phi045",
-   "reason": "No hay traducción TEI descargable en Perseus"
-  },
-  {
-   "workId": "cts-phi0474-phi046",
-   "reason": "No hay traducción TEI descargable en Perseus"
-  },
-  {
-   "workId": "cts-phi0474-phi047",
-   "reason": "No hay traducción TEI descargable en Perseus"
-  },
-  {
-   "workId": "cts-phi0692-phi011",
-   "reason": "No hay traducción TEI descargable en Perseus"
-  },
-  {
-   "workId": "cts-phi0692-phi012",
-   "reason": "No hay traducción TEI descargable en Perseus"
-  },
-  {
-   "workId": "cts-phi0692-phi013",
-   "reason": "No hay traducción TEI descargable en Perseus"
-  },
-  {
-   "workId": "cts-stoa0033a-tlg028",
-   "reason": "No hay traducción TEI descargable en Perseus"
-  },
-  {
-   "workId": "cts-stoa0033a-tlg043",
-   "reason": "No hay traducción TEI descargable en Perseus"
-  },
-  {
-   "workId": "cts-tlg0014-tlg037",
-   "reason": "Sin traducción publicable: tlg0014.tlg037.perseus-eng2.xml: Edición histórica anterior a 1931 no acreditada"
-  },
-  {
-   "workId": "cts-tlg0014-tlg038",
-   "reason": "Sin traducción publicable: tlg0014.tlg038.perseus-eng2.xml: Edición histórica anterior a 1931 no acreditada"
-  },
-  {
-   "workId": "cts-tlg0014-tlg039",
-   "reason": "Sin traducción publicable: tlg0014.tlg039.perseus-eng2.xml: Edición histórica anterior a 1931 no acreditada"
-  },
-  {
-   "workId": "cts-tlg0014-tlg040",
-   "reason": "Sin traducción publicable: tlg0014.tlg040.perseus-eng2.xml: Edición histórica anterior a 1931 no acreditada"
-  },
-  {
-   "workId": "cts-tlg0014-tlg041",
-   "reason": "Sin traducción publicable: tlg0014.tlg041.perseus-eng2.xml: Edición histórica anterior a 1931 no acreditada"
-  },
-  {
-   "workId": "cts-tlg0014-tlg042",
-   "reason": "Sin traducción publicable: tlg0014.tlg042.perseus-eng2.xml: Edición histórica anterior a 1931 no acreditada"
-  },
-  {
-   "workId": "cts-tlg0014-tlg043",
-   "reason": "Sin traducción publicable: tlg0014.tlg043.perseus-eng2.xml: Edición histórica anterior a 1931 no acreditada"
-  },
-  {
-   "workId": "cts-tlg0014-tlg044",
-   "reason": "Sin traducción publicable: tlg0014.tlg044.perseus-eng2.xml: Edición histórica anterior a 1931 no acreditada"
-  },
-  {
-   "workId": "cts-tlg0014-tlg053",
-   "reason": "Sin traducción publicable: tlg0014.tlg053.perseus-eng2.xml: Edición histórica anterior a 1931 no acreditada"
-  },
-  {
-   "workId": "cts-tlg0014-tlg054",
-   "reason": "Sin traducción publicable: tlg0014.tlg054.perseus-eng2.xml: Edición histórica anterior a 1931 no acreditada"
-  },
-  {
-   "workId": "cts-tlg0014-tlg055",
-   "reason": "Sin traducción publicable: tlg0014.tlg055.perseus-eng2.xml: Edición histórica anterior a 1931 no acreditada"
-  },
-  {
-   "workId": "cts-tlg0014-tlg056",
-   "reason": "Sin traducción publicable: tlg0014.tlg056.perseus-eng2.xml: Edición histórica anterior a 1931 no acreditada"
-  },
-  {
-   "workId": "cts-tlg0014-tlg057",
-   "reason": "Sin traducción publicable: tlg0014.tlg057.perseus-eng2.xml: Edición histórica anterior a 1931 no acreditada"
-  },
-  {
-   "workId": "cts-tlg0014-tlg058",
-   "reason": "Sin traducción publicable: tlg0014.tlg058.perseus-eng2.xml: Edición histórica anterior a 1931 no acreditada"
-  },
-  {
-   "workId": "cts-tlg0014-tlg059",
-   "reason": "Sin traducción publicable: tlg0014.tlg059.perseus-eng2.xml: Edición histórica anterior a 1931 no acreditada"
-  },
-  {
-   "workId": "cts-tlg0014-tlg060",
-   "reason": "Sin traducción publicable: tlg0014.tlg060.perseus-eng2.xml: Edición histórica anterior a 1931 no acreditada"
   }
  ],
  "policy": "Una obra bibliográfica, varias versiones humanas identificadas por URN, sin eliminar ni reemplazar ninguna"

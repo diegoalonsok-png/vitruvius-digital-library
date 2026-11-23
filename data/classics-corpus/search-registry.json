@@ -2,7 +2,7 @@
  "schema": "vitruvia-classics-search-registry-v1",
  "updated": "2026-11-23",
  "description": "Registro verificable de transcripciones HTML y textos JSON existentes que admiten búsqueda literal de contenido. No incluye automáticamente PDF escaneados, facsímiles ni fichas sin texto. Los índices auxiliares por locus y el aparato crítico se declaran por separado; no se suman a versiones textuales originales ni implican colación autóptica.",
- "count": 707,
+ "count": 711,
  "works": 533,
  "entries": [
   {
@@ -1130,6 +1130,19 @@
    "workId": "cts-phi0119-phi004",
    "author": "Plauto",
    "title": "Bacchides",
+   "language": "en",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0119-phi004-en-9cf95db3aa6b6d96.json",
+   "reader": "classics-text-reader.html?work=cts-phi0119-phi004&lang=en&edition=9cf95db3aa6b6d96",
+   "sourceDescription": "Traducción humana acreditada: Henry Thomas Riley; TEI Perseus, licencia y SHA256 verificados",
+   "sourceUrn": "urn:cts:latinLit:phi0119.phi004.perseus-eng2",
+   "sha256": "9cf95db3aa6b6d963a71d2c5c7e77d1b95fa2c66b394c14a5eb29dd4c7f21c9e",
+   "passages": 770
+  },
+  {
+   "workId": "cts-phi0119-phi004",
+   "author": "Plauto",
+   "title": "Bacchides",
    "language": "la",
    "format": "json-passages",
    "path": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0119-phi004-la-49d9bab79fbcfcef.json",
@@ -1138,6 +1151,19 @@
    "sourceUrn": "urn:cts:latinLit:phi0119.phi004.perseus-lat2",
    "sha256": "49d9bab79fbcfcef9ddd382643a05eb953f32c5e0c1aa0ad308a5a9e66b79cc9",
    "passages": 726
+  },
+  {
+   "workId": "cts-phi0474-phi005",
+   "author": "Cicerón",
+   "title": "In C. Verrem",
+   "language": "en",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0474-phi005-en-5ef4713f38b8461f.json",
+   "reader": "classics-text-reader.html?work=cts-phi0474-phi005&lang=en&edition=5ef4713f38b8461f",
+   "sourceDescription": "Traducción humana acreditada: Charles Duke Yonge; TEI Perseus, licencia y SHA256 verificados",
+   "sourceUrn": "urn:cts:latinLit:phi0474.phi005.perseus-eng2",
+   "sha256": "5ef4713f38b8461f4088104840c64891708273ffc91d846b91740d174532abd0",
+   "passages": 1173
   },
   {
    "workId": "cts-phi0474-phi005",
@@ -1156,6 +1182,19 @@
    "workId": "cts-phi0474-phi006",
    "author": "Cicerón",
    "title": "Pro M. Tullio",
+   "language": "en",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0474-phi006-en-02fc41c4924545cd.json",
+   "reader": "classics-text-reader.html?work=cts-phi0474-phi006&lang=en&edition=02fc41c4924545cd",
+   "sourceDescription": "Traducción humana acreditada: Charles Duke Yonge; TEI Perseus, licencia y SHA256 verificados",
+   "sourceUrn": "urn:cts:latinLit:phi0474.phi006.perseus-eng2",
+   "sha256": "02fc41c4924545cd7a2b083d4dc2f1b1aabf09ac6a07e578330d356253c2fb27",
+   "passages": 61
+  },
+  {
+   "workId": "cts-phi0474-phi006",
+   "author": "Cicerón",
+   "title": "Pro M. Tullio",
    "language": "la",
    "format": "json-passages",
    "path": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0474-phi006-la-dd440de6ae9ce2e1.json",
@@ -1164,6 +1203,19 @@
    "sourceUrn": "urn:cts:latinLit:phi0474.phi006.perseus-lat2",
    "sha256": "dd440de6ae9ce2e11c0ff5f562e90f8f28270c436c76ebae8e63e9b28c91a71f",
    "passages": 58
+  },
+  {
+   "workId": "cts-phi0474-phi007",
+   "author": "Cicerón",
+   "title": "Pro Fonteio",
+   "language": "en",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0474-phi007-en-aa03f83cab6f7cad.json",
+   "reader": "classics-text-reader.html?work=cts-phi0474-phi007&lang=en&edition=aa03f83cab6f7cad",
+   "sourceDescription": "Traducción humana acreditada: Charles Duke Yonge; TEI Perseus, licencia y SHA256 verificados",
+   "sourceUrn": "urn:cts:latinLit:phi0474.phi007.perseus-eng2",
+   "sha256": "aa03f83cab6f7cad6949291d397eb138717052abda5b784f67c86a16c17c4be7",
+   "passages": 63
   },
   {
    "workId": "cts-phi0474-phi007",
