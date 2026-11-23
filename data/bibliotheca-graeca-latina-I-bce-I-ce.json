@@ -5832,7 +5832,61 @@
    },
    "localEditionLanguages": [
     "grc"
-   ]
+   ],
+   "localVersions": [
+    {
+     "language": "grc",
+     "path": "data/classics-corpus/eusebio-grc.json",
+     "label": "Versión conservada antes de la ampliación R2"
+    },
+    {
+     "language": "grc",
+     "path": "https://libros.vitruvius-digital-library.org/corpus/eusebio-grc-c3b4f462dc2721ff.json",
+     "label": "Edición original grc · urn:cts:greekLit:tlg2018.tlg002.perseus-grc2",
+     "reader": "classics-text-reader.html?work=eusebio&lang=grc&edition=c3b4f462dc2721ff",
+     "sourceUrns": [
+      "urn:cts:greekLit:tlg2018.tlg002.perseus-grc2"
+     ],
+     "sha256": "c3b4f462dc2721ff637e693c7b56a4f5f264221da235ced6ca18c065906d88bf"
+    }
+   ],
+   "indexedEdition": {
+    "sources": [
+     {
+      "title": "Ἐκκλησιαστικὴ ἱστορία",
+      "titleLanguage": "grc",
+      "author": "Eusebius of Caesarea",
+      "editors": [
+       "Kirsopp Lake",
+       "J.E.L. Oulton",
+       "H.J. Lawlor"
+      ],
+      "bibliography": "The Ecclesiastical History Eusebius Kirsopp Lake J.E.L. Oulton H.J. Lawlor William Heinemann London G.P. Putnam's Sons New York Harvard University Press Cambridge, MA 1926-1932 1-2 Loeb Classical Library Internet Archive Internet Archive",
+      "licences": [
+       {
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+       }
+      ],
+      "editionUrn": "urn:cts:greekLit:tlg2018.tlg002.perseus-grc2",
+      "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg2018/tlg002/tlg2018.tlg002.perseus-grc2.xml",
+      "sourceSha256": "eabfaf3d4e9347c9e0c011b4564ee7bb0be94246771cff18651470df65052bb0",
+      "sourceReferences": [
+       "https://archive.org/details/ecclesiasticalhi01euseuoft",
+       "https://archive.org/details/ecclesiasticalhi02euseuoft"
+      ],
+      "publicationYear": "1926-1932",
+      "publisher": "William Heinemann",
+      "publicationPlace": "London",
+      "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/eabfaf3d4e9347c9e0c011b4564ee7bb0be94246771cff18651470df65052bb0.xml"
+     }
+    ],
+    "sha256": "c3b4f462dc2721ff637e693c7b56a4f5f264221da235ced6ca18c065906d88bf",
+    "passages": 2198,
+    "characters": 659300,
+    "bytes": 1654554,
+    "url": "https://libros.vitruvius-digital-library.org/corpus/eusebio-grc-c3b4f462dc2721ff.json"
+   }
   },
   {
    "id": "columella",
@@ -15002,7 +15056,7 @@
    "language": "grc",
    "genre": "Épica",
    "dating": "tradición arcaica; fijación y datación debatidas",
-   "publicStatus": "lectura-local-completa",
+   "publicStatus": "lectura-local-parcial",
    "reading": {
     "url": null,
     "status": "Ilíada completa en griego en el lector del sitio (Perseus Digital Library, CC BY-SA 4.0), con búsqueda por palabra resaltada y diccionario."
@@ -15068,6 +15122,21 @@
      "path": "classics-text-reader.html?work=homer-iliad&lang=en",
      "kind": "historical-translation",
      "source": "https://github.com/PerseusDL/canonical-greekLit/blob/master/data/tlg0012/tlg001/tlg0012.tlg001.perseus-eng4.xml"
+    },
+    {
+     "language": "grc",
+     "path": "data/classics-corpus/homer-iliad-grc.json",
+     "label": "Versión conservada antes de la ampliación R2"
+    },
+    {
+     "language": "grc",
+     "path": "https://libros.vitruvius-digital-library.org/corpus/homer-iliad-grc-aca5401c60ffd77c.json",
+     "label": "Edición original grc · urn:cts:greekLit:tlg0012.tlg001.perseus-grc2",
+     "reader": "classics-text-reader.html?work=homer-iliad&lang=grc&edition=aca5401c60ffd77c",
+     "sourceUrns": [
+      "urn:cts:greekLit:tlg0012.tlg001.perseus-grc2"
+     ],
+     "sha256": "aca5401c60ffd77cab0786982c5517569259eced9aa7a5c539218e5d3b3a4237"
     }
    ],
    "lexicalIndex": {
@@ -15119,7 +15188,43 @@
    "localEditionLanguages": [
     "en",
     "grc"
-   ]
+   ],
+   "indexedEdition": {
+    "sources": [
+     {
+      "title": "Ἰλιάς",
+      "titleLanguage": "grc",
+      "author": "Homer",
+      "editors": [
+       "David B. Monro",
+       "Thomas W. Allen"
+      ],
+      "bibliography": "Homer Homeri Opera David B. Monro Thomas W. Allen Editio Tertia Oxford Clarendon Press 1908-1920 1-2 Scriptorum classicorum bibliotheca Oxoniensis Internet Archive Internet Archive",
+      "licences": [
+       {
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+       }
+      ],
+      "editionUrn": "urn:cts:greekLit:tlg0012.tlg001.perseus-grc2",
+      "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0012/tlg001/tlg0012.tlg001.perseus-grc2.xml",
+      "sourceSha256": "cd74db353d411844774d7a6b5d870084967e6f7b082a30ea5be86f9e164bd71b",
+      "sourceReferences": [
+       "https://archive.org/details/homerioperarecog01homeuoft",
+       "https://archive.org/details/homerioperarecog02homeuoft"
+      ],
+      "publicationYear": "1908-1920",
+      "publisher": "Clarendon Press",
+      "publicationPlace": "Oxford",
+      "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/cd74db353d411844774d7a6b5d870084967e6f7b082a30ea5be86f9e164bd71b.xml"
+     }
+    ],
+    "sha256": "aca5401c60ffd77cab0786982c5517569259eced9aa7a5c539218e5d3b3a4237",
+    "passages": 9262,
+    "characters": 681141,
+    "bytes": 2597389,
+    "url": "https://libros.vitruvius-digital-library.org/corpus/homer-iliad-grc-aca5401c60ffd77c.json"
+   }
   },
   {
    "id": "homer-odyssey",
@@ -15128,7 +15233,7 @@
    "language": "grc",
    "genre": "Épica",
    "dating": "tradición arcaica; fijación y datación debatidas",
-   "publicStatus": "lectura-local-completa",
+   "publicStatus": "lectura-local-parcial",
    "reading": {
     "url": null,
     "status": "Odisea completa en griego en el lector del sitio (Perseus Digital Library, CC BY-SA 4.0), con búsqueda por palabra resaltada y diccionario."
@@ -15284,7 +15389,57 @@
    "localEditionLanguages": [
     "en",
     "grc"
-   ]
+   ],
+   "localVersions": [
+    {
+     "language": "grc",
+     "path": "data/classics-corpus/homer-odyssey-grc.json",
+     "label": "Versión conservada antes de la ampliación R2"
+    },
+    {
+     "language": "grc",
+     "path": "https://libros.vitruvius-digital-library.org/corpus/homer-odyssey-grc-58c5474cb0794dad.json",
+     "label": "Edición original grc · urn:cts:greekLit:tlg0012.tlg002.perseus-grc2",
+     "reader": "classics-text-reader.html?work=homer-odyssey&lang=grc&edition=58c5474cb0794dad",
+     "sourceUrns": [
+      "urn:cts:greekLit:tlg0012.tlg002.perseus-grc2"
+     ],
+     "sha256": "58c5474cb0794dada69fd4f83124275dc40decbb7ba1bdfaa94978ae4e662d2e"
+    }
+   ],
+   "indexedEdition": {
+    "sources": [
+     {
+      "title": "Ὀδύσσεια",
+      "titleLanguage": "grc",
+      "author": "Homer",
+      "editors": [
+       "A. T. Murray",
+       "Augustus Taber Murray"
+      ],
+      "bibliography": "Homer The Odyssey with an English Translation A. T. Murray London William Heinemann, Ltd. New York G.P. Putnam's Sons 1919 1-2 Loeb Classical Library Internet Archive HathiTrust",
+      "licences": [
+       {
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+       }
+      ],
+      "editionUrn": "urn:cts:greekLit:tlg0012.tlg002.perseus-grc2",
+      "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0012/tlg002/tlg0012.tlg002.perseus-grc2.xml",
+      "sourceSha256": "7b13c553363bed18c86c5db3e350b9482b0ec5cab1ecf9f4d6de8438d6d96f6a",
+      "sourceReferences": [],
+      "publicationYear": "1919",
+      "publisher": "William Heinemann, Ltd.",
+      "publicationPlace": "London",
+      "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/7b13c553363bed18c86c5db3e350b9482b0ec5cab1ecf9f4d6de8438d6d96f6a.xml"
+     }
+    ],
+    "sha256": "58c5474cb0794dada69fd4f83124275dc40decbb7ba1bdfaa94978ae4e662d2e",
+    "passages": 4589,
+    "characters": 533714,
+    "bytes": 1670623,
+    "url": "https://libros.vitruvius-digital-library.org/corpus/homer-odyssey-grc-58c5474cb0794dad.json"
+   }
   },
   {
    "id": "hesiod-theogony",
@@ -15345,6 +15500,21 @@
      "kind": "translation",
      "edition": "Traducción histórica 1914 · Perseus TEI",
      "citationChicago18": "Hesiod. Theogony. In Hesiod, the Homeric Hymns and Homerica. Translated by Hugh G. Evelyn-White. Loeb Classical Library. London: William Heinemann; New York: Macmillan, 1914."
+    },
+    {
+     "language": "grc",
+     "path": "data/classics-corpus/hesiod-theogony-grc.json",
+     "label": "Versión conservada antes de la ampliación R2"
+    },
+    {
+     "language": "grc",
+     "path": "https://libros.vitruvius-digital-library.org/corpus/hesiod-theogony-grc-a225cba98b4e7f8d.json",
+     "label": "Edición original grc · urn:cts:greekLit:tlg0020.tlg001.perseus-grc2",
+     "reader": "classics-text-reader.html?work=hesiod-theogony&lang=grc&edition=a225cba98b4e7f8d",
+     "sourceUrns": [
+      "urn:cts:greekLit:tlg0020.tlg001.perseus-grc2"
+     ],
+     "sha256": "a225cba98b4e7f8deacee76277f70963ea46c4e215f1769d7f41b329fd1dd8ee"
     }
    ],
    "bibliography": {
@@ -15425,7 +15595,41 @@
    "localEditionLanguages": [
     "en",
     "grc"
-   ]
+   ],
+   "indexedEdition": {
+    "sources": [
+     {
+      "title": "Θεογονία",
+      "titleLanguage": "grc",
+      "author": "Hesiod",
+      "editors": [
+       "Hugh G. Evelyn-White"
+      ],
+      "bibliography": "Hesiod Hesiod, the Homeric Hymns and Homerica Hugh G. Evelyn-White London William Heinemann Ltd. New York The Macmillan Co. 1914 Loeb Classical Library Internet Archive",
+      "licences": [
+       {
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+       }
+      ],
+      "editionUrn": "urn:cts:greekLit:tlg0020.tlg001.perseus-grc2",
+      "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0020/tlg001/tlg0020.tlg001.perseus-grc2.xml",
+      "sourceSha256": "846289213bae92120391e15e67d19f539d2809c4dab14ce8a9f614a376a7b1dd",
+      "sourceReferences": [
+       "https://archive.org/details/hesiodhomerichym00hesiuoft/hesiodhomerichym00hesiuoft/page/78/mode/2up"
+      ],
+      "publicationYear": "1914",
+      "publisher": "William Heinemann Ltd.",
+      "publicationPlace": "London",
+      "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/846289213bae92120391e15e67d19f539d2809c4dab14ce8a9f614a376a7b1dd.xml"
+     }
+    ],
+    "sha256": "a225cba98b4e7f8deacee76277f70963ea46c4e215f1769d7f41b329fd1dd8ee",
+    "passages": 996,
+    "characters": 44148,
+    "bytes": 221105,
+    "url": "https://libros.vitruvius-digital-library.org/corpus/hesiod-theogony-grc-a225cba98b4e7f8d.json"
+   }
   },
   {
    "id": "hesiod-works-days",
@@ -15486,6 +15690,21 @@
      "kind": "translation",
      "edition": "Traducción histórica 1914 · Perseus TEI",
      "citationChicago18": "Hesiod. Works and Days. In Hesiod, the Homeric Hymns and Homerica. Translated by Hugh G. Evelyn-White. Loeb Classical Library. London: William Heinemann; New York: Macmillan, 1914."
+    },
+    {
+     "language": "grc",
+     "path": "data/classics-corpus/hesiod-works-days-grc.json",
+     "label": "Versión conservada antes de la ampliación R2"
+    },
+    {
+     "language": "grc",
+     "path": "https://libros.vitruvius-digital-library.org/corpus/hesiod-works-days-grc-e0c2c3bd4cb44e9f.json",
+     "label": "Edición original grc · urn:cts:greekLit:tlg0020.tlg002.perseus-grc2",
+     "reader": "classics-text-reader.html?work=hesiod-works-days&lang=grc&edition=e0c2c3bd4cb44e9f",
+     "sourceUrns": [
+      "urn:cts:greekLit:tlg0020.tlg002.perseus-grc2"
+     ],
+     "sha256": "e0c2c3bd4cb44e9f59096f4eee1576ad8252d67cfe901140580ff0d271f705d0"
     }
    ],
    "bibliography": {
@@ -15568,7 +15787,41 @@
    "localEditionLanguages": [
     "en",
     "grc"
-   ]
+   ],
+   "indexedEdition": {
+    "sources": [
+     {
+      "title": "Ἔργα καὶ Ἡμέραι",
+      "titleLanguage": "grc",
+      "author": "Hesiod",
+      "editors": [
+       "Hugh G. Evelyn-White"
+      ],
+      "bibliography": "Hesiod Hesiod, the Homeric Hymns and Homerica Hugh G. Evelyn-White London William Heinemann Ltd. New York The Macmillan Co. 1914 Loeb Classical Library Internet Archive",
+      "licences": [
+       {
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+       }
+      ],
+      "editionUrn": "urn:cts:greekLit:tlg0020.tlg002.perseus-grc2",
+      "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0020/tlg002/tlg0020.tlg002.perseus-grc2.xml",
+      "sourceSha256": "1f46dbb85cff3090a8044ee2c02bea0e13e9ca9c2d3aafa9c0b9ef2028f18d18",
+      "sourceReferences": [
+       "https://archive.org/details/hesiodhomerichym00hesiuoft/hesiodhomerichym00hesiuoft/page/n55/mode/2up"
+      ],
+      "publicationYear": "1914",
+      "publisher": "William Heinemann Ltd.",
+      "publicationPlace": "London",
+      "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/1f46dbb85cff3090a8044ee2c02bea0e13e9ca9c2d3aafa9c0b9ef2028f18d18.xml"
+     }
+    ],
+    "sha256": "e0c2c3bd4cb44e9f59096f4eee1576ad8252d67cfe901140580ff0d271f705d0",
+    "passages": 825,
+    "characters": 35755,
+    "bytes": 181707,
+    "url": "https://libros.vitruvius-digital-library.org/corpus/hesiod-works-days-grc-e0c2c3bd4cb44e9f.json"
+   }
   },
   {
    "id": "aeschylus-oresteia",
@@ -15920,6 +16173,21 @@
      "path": "classics-text-reader.html?work=euripides-medea&lang=en",
      "kind": "historical-translation",
      "citationChicago18": "Eurípides. Μήδεια. Translated by Edward P. Coleridge. George Bell and Sons, London, 1906. Perseus Digital Library, TEI."
+    },
+    {
+     "language": "grc",
+     "path": "data/classics-corpus/euripides-medea-grc.json",
+     "label": "Versión conservada antes de la ampliación R2"
+    },
+    {
+     "language": "grc",
+     "path": "https://libros.vitruvius-digital-library.org/corpus/euripides-medea-grc-e30ae176ff19444b.json",
+     "label": "Edición original grc · urn:cts:greekLit:tlg0006.tlg003.perseus-grc2",
+     "reader": "classics-text-reader.html?work=euripides-medea&lang=grc&edition=e30ae176ff19444b",
+     "sourceUrns": [
+      "urn:cts:greekLit:tlg0006.tlg003.perseus-grc2"
+     ],
+     "sha256": "e30ae176ff19444b3292d121b01dcb8cc54057a1e91d1f09b87f9536e5cf73ad"
     }
    ],
    "century": "V a. C.",
@@ -15980,7 +16248,41 @@
    "localEditionLanguages": [
     "en",
     "grc"
-   ]
+   ],
+   "indexedEdition": {
+    "sources": [
+     {
+      "title": "Μήδεια",
+      "titleLanguage": "grc",
+      "author": "Euripides",
+      "editors": [
+       "Gilbert Murray"
+      ],
+      "bibliography": "Euripides Euripidis Fabulae Gilbert Murray Oxford Clarendon Press 1902 1 The Internet Archive",
+      "licences": [
+       {
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+       }
+      ],
+      "editionUrn": "urn:cts:greekLit:tlg0006.tlg003.perseus-grc2",
+      "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0006/tlg003/tlg0006.tlg003.perseus-grc2.xml",
+      "sourceSha256": "089f052d8c683474f8a68172e204ac1bd518304616cebe4962c5674f563681ab",
+      "sourceReferences": [
+       "https://archive.org/details/euripidisfabulae01euriuoft/page/n103"
+      ],
+      "publicationYear": "1902",
+      "publisher": "Clarendon Press",
+      "publicationPlace": "Oxford",
+      "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/089f052d8c683474f8a68172e204ac1bd518304616cebe4962c5674f563681ab.xml"
+     }
+    ],
+    "sha256": "e30ae176ff19444b3292d121b01dcb8cc54057a1e91d1f09b87f9536e5cf73ad",
+    "passages": 250,
+    "characters": 51047,
+    "bytes": 141380,
+    "url": "https://libros.vitruvius-digital-library.org/corpus/euripides-medea-grc-e30ae176ff19444b.json"
+   }
   },
   {
    "id": "aristophanes-clouds",
@@ -16271,7 +16573,61 @@
    },
    "localEditionLanguages": [
     "grc"
-   ]
+   ],
+   "localVersions": [
+    {
+     "language": "grc",
+     "path": "data/classics-corpus/herodotus-historiae-grc.json",
+     "label": "Versión conservada antes de la ampliación R2"
+    },
+    {
+     "language": "grc",
+     "path": "https://libros.vitruvius-digital-library.org/corpus/herodotus-historiae-grc-70947463faac0fcc.json",
+     "label": "Edición original grc · urn:cts:greekLit:tlg0016.tlg001.perseus-grc2",
+     "reader": "classics-text-reader.html?work=herodotus-historiae&lang=grc&edition=70947463faac0fcc",
+     "sourceUrns": [
+      "urn:cts:greekLit:tlg0016.tlg001.perseus-grc2"
+     ],
+     "sha256": "70947463faac0fcc2eb74397fbd395e5c879d8776f17a297f295df8ce82834f9"
+    }
+   ],
+   "indexedEdition": {
+    "sources": [
+     {
+      "title": "Ἱστορίαι",
+      "titleLanguage": "grc",
+      "author": "Herodotus",
+      "editors": [
+       "A.D. Godley"
+      ],
+      "bibliography": "Herodotus A.D. Godley Cambridge London Harvard University Press William Heinemann Ltd. 1920-1925 Loeb Classical Library The Internet Archive The Internet Archive The Internet Archive The Internet Archive",
+      "licences": [
+       {
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+       }
+      ],
+      "editionUrn": "urn:cts:greekLit:tlg0016.tlg001.perseus-grc2",
+      "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0016/tlg001/tlg0016.tlg001.perseus-grc2.xml",
+      "sourceSha256": "e6b87d6a1cc3c5cf676dbf897ceb76d12c1019c62d7953e05cc05042bfba0b93",
+      "sourceReferences": [
+       "https://archive.org/details/historiesvolumei00hero_249/page/n5/mode/2up",
+       "https://archive.org/details/historiesvolumei00hero_114/page/n8/mode/2up",
+       "https://archive.org/details/historiesvolumei00hero_574/page/n10/mode/2up",
+       "https://archive.org/details/historiesvolumei00hero/page/n8/mode/2up"
+      ],
+      "publicationYear": "1920-1925",
+      "publisher": "Harvard University Press",
+      "publicationPlace": "Cambridge",
+      "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/e6b87d6a1cc3c5cf676dbf897ceb76d12c1019c62d7953e05cc05042bfba0b93.xml"
+     }
+    ],
+    "sha256": "70947463faac0fcc2eb74397fbd395e5c879d8776f17a297f295df8ce82834f9",
+    "passages": 4341,
+    "characters": 1166000,
+    "bytes": 2984441,
+    "url": "https://libros.vitruvius-digital-library.org/corpus/herodotus-historiae-grc-70947463faac0fcc.json"
+   }
   },
   {
    "id": "thucydides-war",
@@ -19363,6 +19719,21 @@
      "path": "classics-text-reader.html?work=euripides-bacchae&lang=en",
      "kind": "historical-translation",
      "citationChicago18": "Eurípides. Βάκχαι. Translated by T. A. Buckley. Henry G. Bohn, London, 1850. Perseus Digital Library, TEI."
+    },
+    {
+     "language": "grc",
+     "path": "data/classics-corpus/euripides-bacchae-grc.json",
+     "label": "Versión conservada antes de la ampliación R2"
+    },
+    {
+     "language": "grc",
+     "path": "https://libros.vitruvius-digital-library.org/corpus/euripides-bacchae-grc-34429bbacd7694b3.json",
+     "label": "Edición original grc · urn:cts:greekLit:tlg0006.tlg017.perseus-grc2",
+     "reader": "classics-text-reader.html?work=euripides-bacchae&lang=grc&edition=34429bbacd7694b3",
+     "sourceUrns": [
+      "urn:cts:greekLit:tlg0006.tlg017.perseus-grc2"
+     ],
+     "sha256": "34429bbacd7694b382defffd888117d94098c776b15fcf3b10157dd09736524a"
     }
    ],
    "indexationAudit": {
@@ -19431,7 +19802,41 @@
    "localEditionLanguages": [
     "en",
     "grc"
-   ]
+   ],
+   "indexedEdition": {
+    "sources": [
+     {
+      "title": "Βάκχαι",
+      "titleLanguage": "grc",
+      "author": "Euripides",
+      "editors": [
+       "Gilbert Murray"
+      ],
+      "bibliography": "Euripides Euripidis Fabulae Gilbert Murray Oxford Clarendon Press 1913 3 The Internet Archive",
+      "licences": [
+       {
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+       }
+      ],
+      "editionUrn": "urn:cts:greekLit:tlg0006.tlg017.perseus-grc2",
+      "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0006/tlg017/tlg0006.tlg017.perseus-grc2.xml",
+      "sourceSha256": "ede3c813d9c9e24c06efed67b9da50b9f4ad91ad76aecb153ab9d1aa7550903b",
+      "sourceReferences": [
+       "https://archive.org/details/euripidisfabulae03euri_0/page/n229/"
+      ],
+      "publicationYear": "1913",
+      "publisher": "Clarendon Press",
+      "publicationPlace": "Oxford",
+      "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/ede3c813d9c9e24c06efed67b9da50b9f4ad91ad76aecb153ab9d1aa7550903b.xml"
+     }
+    ],
+    "sha256": "34429bbacd7694b382defffd888117d94098c776b15fcf3b10157dd09736524a",
+    "passages": 325,
+    "characters": 49743,
+    "bytes": 149858,
+    "url": "https://libros.vitruvius-digital-library.org/corpus/euripides-bacchae-grc-34429bbacd7694b3.json"
+   }
   },
   {
    "id": "euripides-hippolytus",
@@ -19502,6 +19907,21 @@
      "path": "classics-text-reader.html?work=euripides-hippolytus&lang=en",
      "kind": "historical-translation",
      "citationChicago18": "Eurípides. Ἱππόλυτος. Translated by Edward P. Coleridge. George Bell and Sons, London, 1906. Perseus Digital Library, TEI."
+    },
+    {
+     "language": "grc",
+     "path": "data/classics-corpus/euripides-hippolytus-grc.json",
+     "label": "Versión conservada antes de la ampliación R2"
+    },
+    {
+     "language": "grc",
+     "path": "https://libros.vitruvius-digital-library.org/corpus/euripides-hippolytus-grc-e816f91a43cc0e4d.json",
+     "label": "Edición original grc · urn:cts:greekLit:tlg0006.tlg005.perseus-grc2",
+     "reader": "classics-text-reader.html?work=euripides-hippolytus&lang=grc&edition=e816f91a43cc0e4d",
+     "sourceUrns": [
+      "urn:cts:greekLit:tlg0006.tlg005.perseus-grc2"
+     ],
+     "sha256": "e816f91a43cc0e4dac2a373727c2cb5b318af395b36817af073ca20af26b8e3e"
     }
    ],
    "indexationAudit": {
@@ -19570,7 +19990,41 @@
    "localEditionLanguages": [
     "en",
     "grc"
-   ]
+   ],
+   "indexedEdition": {
+    "sources": [
+     {
+      "title": "Ἱππόλυτος",
+      "titleLanguage": "grc",
+      "author": "Euripides",
+      "editors": [
+       "Gilbert Murray"
+      ],
+      "bibliography": "Euripides Euripidis Fabulae Gilbert Murray Oxford Clarendon Press 1902 1 The Internet Archive",
+      "licences": [
+       {
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+       }
+      ],
+      "editionUrn": "urn:cts:greekLit:tlg0006.tlg005.perseus-grc2",
+      "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0006/tlg005/tlg0006.tlg005.perseus-grc2.xml",
+      "sourceSha256": "9c17463401444faec352cb74ade85e87092581cc80f38ebb8ffd47d415ef081b",
+      "sourceReferences": [
+       "https://archive.org/details/euripidisfabulae01euriuoft/page/n207"
+      ],
+      "publicationYear": "1902",
+      "publisher": "Clarendon Press",
+      "publicationPlace": "Oxford",
+      "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/9c17463401444faec352cb74ade85e87092581cc80f38ebb8ffd47d415ef081b.xml"
+     }
+    ],
+    "sha256": "e816f91a43cc0e4dac2a373727c2cb5b318af395b36817af073ca20af26b8e3e",
+    "passages": 299,
+    "characters": 52130,
+    "bytes": 151279,
+    "url": "https://libros.vitruvius-digital-library.org/corpus/euripides-hippolytus-grc-e816f91a43cc0e4d.json"
+   }
   },
   {
    "id": "euripides-alcestis",
@@ -19641,6 +20095,21 @@
      "path": "classics-text-reader.html?work=euripides-alcestis&lang=en",
      "kind": "historical-translation",
      "citationChicago18": "Eurípides. Ἄλκηστις. Translated by Edward P. Coleridge. George Bell and Sons, London, 1906. Perseus Digital Library, TEI."
+    },
+    {
+     "language": "grc",
+     "path": "data/classics-corpus/euripides-alcestis-grc.json",
+     "label": "Versión conservada antes de la ampliación R2"
+    },
+    {
+     "language": "grc",
+     "path": "https://libros.vitruvius-digital-library.org/corpus/euripides-alcestis-grc-74e01fcd5ff7102c.json",
+     "label": "Edición original grc · urn:cts:greekLit:tlg0006.tlg002.perseus-grc2",
+     "reader": "classics-text-reader.html?work=euripides-alcestis&lang=grc&edition=74e01fcd5ff7102c",
+     "sourceUrns": [
+      "urn:cts:greekLit:tlg0006.tlg002.perseus-grc2"
+     ],
+     "sha256": "74e01fcd5ff7102cb6e655d3b6554aeb7f614dcdccfa99d1512252fe53e307e3"
     }
    ],
    "indexationAudit": {
@@ -19709,7 +20178,41 @@
    "localEditionLanguages": [
     "en",
     "grc"
-   ]
+   ],
+   "indexedEdition": {
+    "sources": [
+     {
+      "title": "Ἄλκηστις",
+      "titleLanguage": "grc",
+      "author": "Euripides",
+      "editors": [
+       "Gilbert Murray"
+      ],
+      "bibliography": "Euripides Euripidis Fabulae Gilbert Murray Oxford Clarendon Press 1902 1 The Internet Archive",
+      "licences": [
+       {
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+       }
+      ],
+      "editionUrn": "urn:cts:greekLit:tlg0006.tlg002.perseus-grc2",
+      "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0006/tlg002/tlg0006.tlg002.perseus-grc2.xml",
+      "sourceSha256": "8c74efabf03276a730f3b371d1cd0491462a3dbe6b306751bc73e4c6d96dda82",
+      "sourceReferences": [
+       "https://archive.org/details/euripidisfabulae01euriuoft/page/n55/mode/2up"
+      ],
+      "publicationYear": "1902",
+      "publisher": "Clarendon Press",
+      "publicationPlace": "Oxford",
+      "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/8c74efabf03276a730f3b371d1cd0491462a3dbe6b306751bc73e4c6d96dda82.xml"
+     }
+    ],
+    "sha256": "74e01fcd5ff7102cb6e655d3b6554aeb7f614dcdccfa99d1512252fe53e307e3",
+    "passages": 323,
+    "characters": 42280,
+    "bytes": 136081,
+    "url": "https://libros.vitruvius-digital-library.org/corpus/euripides-alcestis-grc-74e01fcd5ff7102c.json"
+   }
   },
   {
    "id": "euripides-electra",
@@ -19780,6 +20283,21 @@
      "path": "classics-text-reader.html?work=euripides-electra&lang=en",
      "kind": "historical-translation",
      "citationChicago18": "Eurípides. Ἠλέκτρα. Translated by Edward P. Coleridge. George Bell and Sons, London, 1891. Perseus Digital Library, TEI."
+    },
+    {
+     "language": "grc",
+     "path": "data/classics-corpus/euripides-electra-grc.json",
+     "label": "Versión conservada antes de la ampliación R2"
+    },
+    {
+     "language": "grc",
+     "path": "https://libros.vitruvius-digital-library.org/corpus/euripides-electra-grc-9d1f267736c75530.json",
+     "label": "Edición original grc · urn:cts:greekLit:tlg0006.tlg012.perseus-grc2",
+     "reader": "classics-text-reader.html?work=euripides-electra&lang=grc&edition=9d1f267736c75530",
+     "sourceUrns": [
+      "urn:cts:greekLit:tlg0006.tlg012.perseus-grc2"
+     ],
+     "sha256": "9d1f267736c755307d51656e80d0e83574ae16cf07310306e6cef4050071add1"
     }
    ],
    "indexationAudit": {
@@ -19848,7 +20366,41 @@
    "localEditionLanguages": [
     "en",
     "grc"
-   ]
+   ],
+   "indexedEdition": {
+    "sources": [
+     {
+      "title": "Ἠλέκτρα",
+      "titleLanguage": "grc",
+      "author": "Euripides",
+      "editors": [
+       "Gilbert Murray"
+      ],
+      "bibliography": "Euripides Euripidis Fabulae Gilbert Murray Oxford Clarendon Press 1913 2 The Internet Archive",
+      "licences": [
+       {
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+       }
+      ],
+      "editionUrn": "urn:cts:greekLit:tlg0006.tlg012.perseus-grc2",
+      "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0006/tlg012/tlg0006.tlg012.perseus-grc2.xml",
+      "sourceSha256": "81624b4a16bf3b6555530bf84decaade62082edac17c102614438fea8cfed6d4",
+      "sourceReferences": [
+       "https://archive.org/details/euripidisfabu02euri/page/n243"
+      ],
+      "publicationYear": "1913",
+      "publisher": "Clarendon Press",
+      "publicationPlace": "Oxford",
+      "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/81624b4a16bf3b6555530bf84decaade62082edac17c102614438fea8cfed6d4.xml"
+     }
+    ],
+    "sha256": "9d1f267736c755307d51656e80d0e83574ae16cf07310306e6cef4050071add1",
+    "passages": 372,
+    "characters": 50035,
+    "bytes": 158247,
+    "url": "https://libros.vitruvius-digital-library.org/corpus/euripides-electra-grc-9d1f267736c75530.json"
+   }
   },
   {
    "id": "euripides-troades",
@@ -19919,6 +20471,21 @@
      "path": "classics-text-reader.html?work=euripides-troades&lang=en",
      "kind": "historical-translation",
      "citationChicago18": "Eurípides. Τρῳάδες. Translated by Edward P. Coleridge. George Bell and Sons, London, 1906. Perseus Digital Library, TEI."
+    },
+    {
+     "language": "grc",
+     "path": "data/classics-corpus/euripides-troades-grc.json",
+     "label": "Versión conservada antes de la ampliación R2"
+    },
+    {
+     "language": "grc",
+     "path": "https://libros.vitruvius-digital-library.org/corpus/euripides-troades-grc-c84c045ca0e6bd1c.json",
+     "label": "Edición original grc · urn:cts:greekLit:tlg0006.tlg011.perseus-grc2",
+     "reader": "classics-text-reader.html?work=euripides-troades&lang=grc&edition=c84c045ca0e6bd1c",
+     "sourceUrns": [
+      "urn:cts:greekLit:tlg0006.tlg011.perseus-grc2"
+     ],
+     "sha256": "c84c045ca0e6bd1ce27904343bc8d94ed2c0b3640bfd3c9a2239ddf3323c5cd5"
     }
    ],
    "indexationAudit": {
@@ -19987,7 +20554,41 @@
    "localEditionLanguages": [
     "en",
     "grc"
-   ]
+   ],
+   "indexedEdition": {
+    "sources": [
+     {
+      "title": "Τρῳάδες",
+      "titleLanguage": "grc",
+      "author": "Euripides",
+      "editors": [
+       "Gilbert Murray"
+      ],
+      "bibliography": "Euripides Euripidis Fabulae Gilbert Murray Oxford Clarendon Press 1913 2 The Internet Archive",
+      "licences": [
+       {
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+       }
+      ],
+      "editionUrn": "urn:cts:greekLit:tlg0006.tlg011.perseus-grc2",
+      "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0006/tlg011/tlg0006.tlg011.perseus-grc2.xml",
+      "sourceSha256": "2fdc774fb108482f24e7c2df37b52a94ff3225937b280b113caecd1ce31366d2",
+      "sourceReferences": [
+       "https://archive.org/details/euripidisfabu02euri/page/n189"
+      ],
+      "publicationYear": "1913",
+      "publisher": "Clarendon Press",
+      "publicationPlace": "Oxford",
+      "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/2fdc774fb108482f24e7c2df37b52a94ff3225937b280b113caecd1ce31366d2.xml"
+     }
+    ],
+    "sha256": "c84c045ca0e6bd1ce27904343bc8d94ed2c0b3640bfd3c9a2239ddf3323c5cd5",
+    "passages": 229,
+    "characters": 46323,
+    "bytes": 127731,
+    "url": "https://libros.vitruvius-digital-library.org/corpus/euripides-troades-grc-c84c045ca0e6bd1c.json"
+   }
   },
   {
    "id": "euripides-hecuba",
@@ -20058,6 +20659,21 @@
      "path": "classics-text-reader.html?work=euripides-hecuba&lang=en",
      "kind": "historical-translation",
      "citationChicago18": "Eurípides. Ἑκάβη. Translated by Edward P. Coleridge. George Bell and Sons, London, 1891. Perseus Digital Library, TEI."
+    },
+    {
+     "language": "grc",
+     "path": "data/classics-corpus/euripides-hecuba-grc.json",
+     "label": "Versión conservada antes de la ampliación R2"
+    },
+    {
+     "language": "grc",
+     "path": "https://libros.vitruvius-digital-library.org/corpus/euripides-hecuba-grc-40185bc38f8ae812.json",
+     "label": "Edición original grc · urn:cts:greekLit:tlg0006.tlg007.perseus-grc2",
+     "reader": "classics-text-reader.html?work=euripides-hecuba&lang=grc&edition=40185bc38f8ae812",
+     "sourceUrns": [
+      "urn:cts:greekLit:tlg0006.tlg007.perseus-grc2"
+     ],
+     "sha256": "40185bc38f8ae812d3e84e2aefcdc74de23004edf337a9030546214b13c769ed"
     }
    ],
    "indexationAudit": {
@@ -20126,7 +20742,41 @@
    "localEditionLanguages": [
     "en",
     "grc"
-   ]
+   ],
+   "indexedEdition": {
+    "sources": [
+     {
+      "title": "Ἑκάβη",
+      "titleLanguage": "grc",
+      "author": "Euripides",
+      "editors": [
+       "Gilbert Murray"
+      ],
+      "bibliography": "Euripides Euripidis Fabulae Gilbert Murray Oxford Clarendon Press 1902 1 The Internet Archive",
+      "licences": [
+       {
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+       }
+      ],
+      "editionUrn": "urn:cts:greekLit:tlg0006.tlg007.perseus-grc2",
+      "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0006/tlg007/tlg0006.tlg007.perseus-grc2.xml",
+      "sourceSha256": "06e6cc694bcca80a1d1f782279d685fe442b2009840b8e1828566074d84714d0",
+      "sourceReferences": [
+       "https://archive.org/details/euripidisfabulae01euriuoft/page/n321/mode/2up"
+      ],
+      "publicationYear": "1902",
+      "publisher": "Clarendon Press",
+      "publicationPlace": "Oxford",
+      "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/06e6cc694bcca80a1d1f782279d685fe442b2009840b8e1828566074d84714d0.xml"
+     }
+    ],
+    "sha256": "40185bc38f8ae812d3e84e2aefcdc74de23004edf337a9030546214b13c769ed",
+    "passages": 262,
+    "characters": 46439,
+    "bytes": 133606,
+    "url": "https://libros.vitruvius-digital-library.org/corpus/euripides-hecuba-grc-40185bc38f8ae812.json"
+   }
   },
   {
    "id": "euripides-iphigenia-aulid",
@@ -20197,6 +20847,21 @@
      "path": "classics-text-reader.html?work=euripides-iphigenia-aulid&lang=en",
      "kind": "historical-translation",
      "citationChicago18": "Eurípides. Ἰφιγένεια ἐν Αὐλίδι. Translated by Edward P. Coleridge. George Bell and Sons, London, 1891. Perseus Digital Library, TEI."
+    },
+    {
+     "language": "grc",
+     "path": "data/classics-corpus/euripides-iphigenia-aulid-grc.json",
+     "label": "Versión conservada antes de la ampliación R2"
+    },
+    {
+     "language": "grc",
+     "path": "https://libros.vitruvius-digital-library.org/corpus/euripides-iphigenia-aulid-grc-1a7cf0a271932833.json",
+     "label": "Edición original grc · urn:cts:greekLit:tlg0006.tlg018.perseus-grc2",
+     "reader": "classics-text-reader.html?work=euripides-iphigenia-aulid&lang=grc&edition=1a7cf0a271932833",
+     "sourceUrns": [
+      "urn:cts:greekLit:tlg0006.tlg018.perseus-grc2"
+     ],
+     "sha256": "1a7cf0a271932833c85a4683d143ec11ecac88bd36cc11ab62b33ec03230f3c7"
     }
    ],
    "indexationAudit": {
@@ -20265,7 +20930,41 @@
    "localEditionLanguages": [
     "en",
     "grc"
-   ]
+   ],
+   "indexedEdition": {
+    "sources": [
+     {
+      "title": "Ἰφιγένεια ἐν Αὐλίδι",
+      "titleLanguage": "grc",
+      "author": "Euripides",
+      "editors": [
+       "Gilbert Murray"
+      ],
+      "bibliography": "Euripides Euripidis Fabulae Gilbert Murray Oxford Clarendon Press 1913 3 The Internet Archive",
+      "licences": [
+       {
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+       }
+      ],
+      "editionUrn": "urn:cts:greekLit:tlg0006.tlg018.perseus-grc2",
+      "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0006/tlg018/tlg0006.tlg018.perseus-grc2.xml",
+      "sourceSha256": "09e973e3dbd968346a9c069332b36fadf326dd6c3e453e0362e649dd4832efe2",
+      "sourceReferences": [
+       "https://archive.org/details/euripidisfabulae03euri_0/page/n287/"
+      ],
+      "publicationYear": "1913",
+      "publisher": "Clarendon Press",
+      "publicationPlace": "Oxford",
+      "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/09e973e3dbd968346a9c069332b36fadf326dd6c3e453e0362e649dd4832efe2.xml"
+     }
+    ],
+    "sha256": "1a7cf0a271932833c85a4683d143ec11ecac88bd36cc11ab62b33ec03230f3c7",
+    "passages": 425,
+    "characters": 61293,
+    "bytes": 188690,
+    "url": "https://libros.vitruvius-digital-library.org/corpus/euripides-iphigenia-aulid-grc-1a7cf0a271932833.json"
+   }
   },
   {
    "id": "aristophanes-aves",
@@ -23149,7 +23848,58 @@
    "localEditionLanguages": [
     "en",
     "grc"
-   ]
+   ],
+   "localVersions": [
+    {
+     "language": "grc",
+     "path": "data/classics-corpus/demosthenes-de-corona-grc.json",
+     "label": "Versión conservada antes de la ampliación R2"
+    },
+    {
+     "language": "grc",
+     "path": "https://libros.vitruvius-digital-library.org/corpus/demosthenes-de-corona-grc-25758d90038d204a.json",
+     "label": "Edición original grc · urn:cts:greekLit:tlg0014.tlg018.perseus-grc2",
+     "reader": "classics-text-reader.html?work=demosthenes-de-corona&lang=grc&edition=25758d90038d204a",
+     "sourceUrns": [
+      "urn:cts:greekLit:tlg0014.tlg018.perseus-grc2"
+     ],
+     "sha256": "25758d90038d204aa85d24eff1a2e90034de7726d6eb77d93ee0b60293455a50"
+    }
+   ],
+   "indexedEdition": {
+    "sources": [
+     {
+      "title": "ὑπὲρ Κτησιφῶντος περὶ τοῦ στεφάνου",
+      "titleLanguage": "grc",
+      "author": "Demosthenes",
+      "editors": [
+       "Samuel Henry Butcher"
+      ],
+      "bibliography": "Demosthenes Demosthenis Orationes Samuel Henry Butcher Clarendon Press Oxford 1903 1 Internet Archive",
+      "licences": [
+       {
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+       }
+      ],
+      "editionUrn": "urn:cts:greekLit:tlg0014.tlg018.perseus-grc2",
+      "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0014/tlg018/tlg0014.tlg018.perseus-grc2.xml",
+      "sourceSha256": "ecc22eb6c54c225c7c90c0d2e09b8b99260ca8db0a67ef6ba1b17dc395fee1df",
+      "sourceReferences": [
+       "https://archive.org/details/orationesrecogno01demouoft/page/220/mode/2up"
+      ],
+      "publicationYear": "1903",
+      "publisher": "Clarendon Press",
+      "publicationPlace": "Oxford",
+      "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/ecc22eb6c54c225c7c90c0d2e09b8b99260ca8db0a67ef6ba1b17dc395fee1df.xml"
+     }
+    ],
+    "sha256": "25758d90038d204aa85d24eff1a2e90034de7726d6eb77d93ee0b60293455a50",
+    "passages": 384,
+    "characters": 142006,
+    "bytes": 340663,
+    "url": "https://libros.vitruvius-digital-library.org/corpus/demosthenes-de-corona-grc-25758d90038d204a.json"
+   }
   },
   {
    "id": "demosthenes-philippicae",
@@ -23263,7 +24013,132 @@
    },
    "localEditionLanguages": [
     "grc"
-   ]
+   ],
+   "localVersions": [
+    {
+     "language": "grc",
+     "path": "data/classics-corpus/demosthenes-philippicae-grc.json",
+     "label": "Versión conservada antes de la ampliación R2"
+    },
+    {
+     "language": "grc",
+     "path": "https://libros.vitruvius-digital-library.org/corpus/demosthenes-philippicae-grc-ad6432832c69087c.json",
+     "label": "Edición original grc · urn:cts:greekLit:tlg0014.tlg004.perseus-grc2, urn:cts:greekLit:tlg0014.tlg006.perseus-grc2, urn:cts:greekLit:tlg0014.tlg009.perseus-grc2, urn:cts:greekLit:tlg0014.tlg010.perseus-grc2",
+     "reader": "classics-text-reader.html?work=demosthenes-philippicae&lang=grc&edition=ad6432832c69087c",
+     "sourceUrns": [
+      "urn:cts:greekLit:tlg0014.tlg004.perseus-grc2",
+      "urn:cts:greekLit:tlg0014.tlg006.perseus-grc2",
+      "urn:cts:greekLit:tlg0014.tlg009.perseus-grc2",
+      "urn:cts:greekLit:tlg0014.tlg010.perseus-grc2"
+     ],
+     "sha256": "ad6432832c69087c3e06a5c96adb5cf042f07cd1c50c1b56487280a40c40e963"
+    }
+   ],
+   "indexedEdition": {
+    "sources": [
+     {
+      "title": "κατὰ Φιλίππου α΄",
+      "titleLanguage": "grc",
+      "author": "Demosthenes",
+      "editors": [
+       "Samuel Henry Butcher"
+      ],
+      "bibliography": "Demosthenes Demosthenis Orationes Samuel Henry Butcher Clarendon Press Oxford 1903 1 Internet Archive",
+      "licences": [
+       {
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+       }
+      ],
+      "editionUrn": "urn:cts:greekLit:tlg0014.tlg004.perseus-grc2",
+      "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0014/tlg004/tlg0014.tlg004.perseus-grc2.xml",
+      "sourceSha256": "811d55485f51b002002b31736972accfc9279750384ca1a0ee87212bbc24e102",
+      "sourceReferences": [],
+      "publicationYear": "1903",
+      "publisher": "Clarendon Press",
+      "publicationPlace": "Oxford",
+      "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/811d55485f51b002002b31736972accfc9279750384ca1a0ee87212bbc24e102.xml"
+     },
+     {
+      "title": "κατὰ Φιλίππου β΄",
+      "titleLanguage": "grc",
+      "author": "Demosthenes",
+      "editors": [
+       "Samuel Henry Butcher"
+      ],
+      "bibliography": "Demosthenes Demosthenis Orationes Samuel Henry Butcher Clarendon Press Oxford 1903 1 Internet Archive",
+      "licences": [
+       {
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+       }
+      ],
+      "editionUrn": "urn:cts:greekLit:tlg0014.tlg006.perseus-grc2",
+      "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0014/tlg006/tlg0014.tlg006.perseus-grc2.xml",
+      "sourceSha256": "fb45e540e383a4aa5573c3a436eb3f32885994c3abb8ee0d39131351a1f39c7a",
+      "sourceReferences": [
+       "https://archive.org/details/orationesrecogno01demouoft/page/64/mode/2up"
+      ],
+      "publicationYear": "1903",
+      "publisher": "Clarendon Press",
+      "publicationPlace": "Oxford",
+      "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/fb45e540e383a4aa5573c3a436eb3f32885994c3abb8ee0d39131351a1f39c7a.xml"
+     },
+     {
+      "title": "κατὰ Φιλίππου γ΄",
+      "titleLanguage": "grc",
+      "author": "Demosthenes",
+      "editors": [
+       "Samuel Henry Butcher"
+      ],
+      "bibliography": "Demosthenes Demosthenis Orationes Samuel Henry Butcher Clarendon Press Oxford 1903 1 Internet Archive",
+      "licences": [
+       {
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+       }
+      ],
+      "editionUrn": "urn:cts:greekLit:tlg0014.tlg009.perseus-grc2",
+      "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0014/tlg009/tlg0014.tlg009.perseus-grc2.xml",
+      "sourceSha256": "daefe3c23893ffaad85879a6a68780d6382d8e45a95677c477b23f223556b352",
+      "sourceReferences": [
+       "https://archive.org/details/orationesrecogno01demouoft/page/109/mode/2up"
+      ],
+      "publicationYear": "1903",
+      "publisher": "Clarendon Press",
+      "publicationPlace": "Oxford",
+      "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/daefe3c23893ffaad85879a6a68780d6382d8e45a95677c477b23f223556b352.xml"
+     },
+     {
+      "title": "κατὰ Φιλίππου δ΄",
+      "titleLanguage": "grc",
+      "author": "Demosthenes",
+      "editors": [
+       "Samuel Henry Butcher"
+      ],
+      "bibliography": "Demosthenes Demosthenis Orationes Samuel Henry Butcher Clarendon Press Oxford 1903 1 Internet Archive",
+      "licences": [
+       {
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+       }
+      ],
+      "editionUrn": "urn:cts:greekLit:tlg0014.tlg010.perseus-grc2",
+      "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0014/tlg010/tlg0014.tlg010.perseus-grc2.xml",
+      "sourceSha256": "c6793b91623da9efd768bcc80564ff4c5b0793b689373ebaa6d1f5d071c0490f",
+      "sourceReferences": [],
+      "publicationYear": "1903",
+      "publisher": "Clarendon Press",
+      "publicationPlace": "Oxford",
+      "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/c6793b91623da9efd768bcc80564ff4c5b0793b689373ebaa6d1f5d071c0490f.xml"
+     }
+    ],
+    "sha256": "ad6432832c69087c3e06a5c96adb5cf042f07cd1c50c1b56487280a40c40e963",
+    "passages": 245,
+    "characters": 88297,
+    "bytes": 216303,
+    "url": "https://libros.vitruvius-digital-library.org/corpus/demosthenes-philippicae-grc-ad6432832c69087c.json"
+   }
   },
   {
    "id": "pindar-olympian",
@@ -24284,7 +25159,58 @@
    },
    "localEditionLanguages": [
     "la"
-   ]
+   ],
+   "localVersions": [
+    {
+     "language": "la",
+     "path": "data/classics-corpus/cicero-tusculanae-la.json",
+     "label": "Versión conservada antes de la ampliación R2"
+    },
+    {
+     "language": "la",
+     "path": "https://libros.vitruvius-digital-library.org/corpus/cicero-tusculanae-la-dbd6b48180fe8f8e.json",
+     "label": "Edición original la · urn:cts:latinLit:phi0474.phi049.perseus-lat2",
+     "reader": "classics-text-reader.html?work=cicero-tusculanae&lang=la&edition=dbd6b48180fe8f8e",
+     "sourceUrns": [
+      "urn:cts:latinLit:phi0474.phi049.perseus-lat2"
+     ],
+     "sha256": "dbd6b48180fe8f8e2f48b4b8dcd4e699f21c28dd235cf5504b6f808283d2715e"
+    }
+   ],
+   "indexedEdition": {
+    "sources": [
+     {
+      "title": "Tusculanae Disputationes",
+      "titleLanguage": "lat",
+      "author": "M. Tullius Cicero",
+      "editors": [
+       "Max Pohlenz"
+      ],
+      "bibliography": "Scripta Quae Manserunt Omnia, Fasc. 44 Tusculanae Disputationes M. Tullius Cicero Max Pohlenz Leipzig Teubner 1918 Scripta Quae Manserunt Omnia HathiTrust",
+      "licences": [
+       {
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+       }
+      ],
+      "editionUrn": "urn:cts:latinLit:phi0474.phi049.perseus-lat2",
+      "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0474/phi049/phi0474.phi049.perseus-lat2.xml",
+      "sourceSha256": "cd01991ba300b9c84e638ad51ae9c6857d4644dc9a23d0199c587f81ad9cd84a",
+      "sourceReferences": [
+       "https://babel.hathitrust.org/cgi/pt?id=ufl.31262040316167&seq=28"
+      ],
+      "publicationYear": "1918",
+      "publisher": "Teubner",
+      "publicationPlace": "Leipzig",
+      "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/cd01991ba300b9c84e638ad51ae9c6857d4644dc9a23d0199c587f81ad9cd84a.xml"
+     }
+    ],
+    "sha256": "dbd6b48180fe8f8e2f48b4b8dcd4e699f21c28dd235cf5504b6f808283d2715e",
+    "passages": 717,
+    "characters": 319597,
+    "bytes": 437054,
+    "url": "https://libros.vitruvius-digital-library.org/corpus/cicero-tusculanae-la-dbd6b48180fe8f8e.json"
+   }
   },
   {
    "id": "cicero-de-natura-deorum",
@@ -41725,6 +42651,486 @@
     "characters": 63517,
     "bytes": 203638,
     "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0006-tlg014-grc-0b976d1aa65e5e77.json"
+   }
+  },
+  {
+   "id": "cts-tlg0057-tlg049",
+   "author": "Galeno",
+   "title": "Adversus eos qui de typis scripserunt vel de circuitibus",
+   "language": "grc",
+   "genre": "Corpus clásico ampliado",
+   "dating": "siglo II d. C.",
+   "reading": {
+    "url": "classics-text-reader.html?work=cts-tlg0057-tlg049&lang=grc&edition=0358891b42bd0f03",
+    "status": "Edición TEI alojada en R2 con búsqueda y traducción automática por pasaje"
+   },
+   "manuscript": {
+    "status": "Sin testimonio manuscrito individual asignado; la edición TEI se identifica por separado"
+   },
+   "pdf": {
+    "url": null,
+    "status": "No consta PDF ni facsímil individual verificado para esta edición"
+   },
+   "translation": {
+    "status": "Traducción automática de consulta por pasaje; no se atribuye a un traductor académico"
+   },
+   "links": {
+    "scaife": "https://scaife.perseus.org/library/urn:cts:greekLit:tlg0057.tlg049.1st1K-grc1/"
+   },
+   "aliases": [
+    "urn:cts:greekLit:tlg0057.tlg049.1st1K-grc1"
+   ],
+   "relatedWorkIds": [],
+   "catalogueProvenance": "Título y autor de los catálogos CTS del sitio; edición contrastada con su cabecera TEI. No se retrotraduce el título.",
+   "corpusFiles": {
+    "grc": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0057-tlg049-grc-0358891b42bd0f03.json"
+   },
+   "localVersions": [
+    {
+     "language": "grc",
+     "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0057-tlg049-grc-0358891b42bd0f03.json",
+     "label": "Edición original grc · urn:cts:greekLit:tlg0057.tlg049.1st1K-grc1",
+     "reader": "classics-text-reader.html?work=cts-tlg0057-tlg049&lang=grc&edition=0358891b42bd0f03",
+     "sourceUrns": [
+      "urn:cts:greekLit:tlg0057.tlg049.1st1K-grc1"
+     ],
+     "sha256": "0358891b42bd0f03acf7e290ea80463bcec4d2f53c129270c6088fb485a0f945"
+    }
+   ],
+   "publicStatus": "lectura-local-parcial",
+   "indexedEdition": {
+    "sources": [
+     {
+      "title": "Adversus eos qui de typis scripserunt vel de circuitibus",
+      "titleLanguage": "lat",
+      "author": "Galen",
+      "editors": [
+       "Karl Gottlob Kühn"
+      ],
+      "bibliography": "Claudii Galeni Opera Omnia Galen Karl Gottlob Kühn Knobloch Leipzig 7 475-512 1824 HathiTrust",
+      "licences": [
+       {
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+       }
+      ],
+      "editionUrn": "urn:cts:greekLit:tlg0057.tlg049.1st1K-grc1",
+      "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0057/tlg049/tlg0057.tlg049.1st1K-grc1.xml",
+      "sourceSha256": "68f099c451dfa3927c559b753b9c0d172bb9391a981602f5d1fced8175a9270b",
+      "sourceReferences": [
+       "https://hdl.handle.net/2027/hvd.hxpp8n?urlappend=%3Bseq=487"
+      ],
+      "publicationYear": "1824",
+      "publisher": "Knobloch",
+      "publicationPlace": "Leipzig",
+      "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/68f099c451dfa3927c559b753b9c0d172bb9391a981602f5d1fced8175a9270b.xml"
+     }
+    ],
+    "sha256": "0358891b42bd0f03acf7e290ea80463bcec4d2f53c129270c6088fb485a0f945",
+    "passages": 10,
+    "characters": 36302,
+    "bytes": 76476,
+    "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0057-tlg049-grc-0358891b42bd0f03.json"
+   }
+  },
+  {
+   "id": "cts-tlg0057-tlg050",
+   "author": "Galeno",
+   "title": "De plenitudine",
+   "language": "grc",
+   "genre": "Corpus clásico ampliado",
+   "dating": "siglo II d. C.",
+   "reading": {
+    "url": "classics-text-reader.html?work=cts-tlg0057-tlg050&lang=grc&edition=b0bbfd85e58caa29",
+    "status": "Edición TEI alojada en R2 con búsqueda y traducción automática por pasaje"
+   },
+   "manuscript": {
+    "status": "Sin testimonio manuscrito individual asignado; la edición TEI se identifica por separado"
+   },
+   "pdf": {
+    "url": null,
+    "status": "No consta PDF ni facsímil individual verificado para esta edición"
+   },
+   "translation": {
+    "status": "Traducción automática de consulta por pasaje; no se atribuye a un traductor académico"
+   },
+   "links": {
+    "scaife": "https://scaife.perseus.org/library/urn:cts:greekLit:tlg0057.tlg050.1st1K-grc1/"
+   },
+   "aliases": [
+    "urn:cts:greekLit:tlg0057.tlg050.1st1K-grc1"
+   ],
+   "relatedWorkIds": [],
+   "catalogueProvenance": "Título y autor de los catálogos CTS del sitio; edición contrastada con su cabecera TEI. No se retrotraduce el título.",
+   "corpusFiles": {
+    "grc": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0057-tlg050-grc-b0bbfd85e58caa29.json"
+   },
+   "localVersions": [
+    {
+     "language": "grc",
+     "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0057-tlg050-grc-b0bbfd85e58caa29.json",
+     "label": "Edición original grc · urn:cts:greekLit:tlg0057.tlg050.1st1K-grc1",
+     "reader": "classics-text-reader.html?work=cts-tlg0057-tlg050&lang=grc&edition=b0bbfd85e58caa29",
+     "sourceUrns": [
+      "urn:cts:greekLit:tlg0057.tlg050.1st1K-grc1"
+     ],
+     "sha256": "b0bbfd85e58caa290fd60a8da7f7a7a53fa6986371a610575167a6b1305cf54f"
+    }
+   ],
+   "publicStatus": "lectura-local-parcial",
+   "indexedEdition": {
+    "sources": [
+     {
+      "title": "De plenitudine",
+      "titleLanguage": "lat",
+      "author": "Galen",
+      "editors": [
+       "Karl Gottlob Kühn"
+      ],
+      "bibliography": "Claudii Galeni Opera Omnia Galen Karl Gottlob Kühn Knobloch Leipzig 7 513-583 1824 HathiTrust",
+      "licences": [
+       {
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+       }
+      ],
+      "editionUrn": "urn:cts:greekLit:tlg0057.tlg050.1st1K-grc1",
+      "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0057/tlg050/tlg0057.tlg050.1st1K-grc1.xml",
+      "sourceSha256": "e815421e2f1d1d207e3a0e0c3a0f04349a7dbf46ca5f9d21518255b8728dc76f",
+      "sourceReferences": [
+       "https://hdl.handle.net/2027/hvd.hxpp8n?urlappend=%3Bseq=525"
+      ],
+      "publicationYear": "1824",
+      "publisher": "Knobloch",
+      "publicationPlace": "Leipzig",
+      "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/e815421e2f1d1d207e3a0e0c3a0f04349a7dbf46ca5f9d21518255b8728dc76f.xml"
+     }
+    ],
+    "sha256": "b0bbfd85e58caa290fd60a8da7f7a7a53fa6986371a610575167a6b1305cf54f",
+    "passages": 12,
+    "characters": 69523,
+    "bytes": 143485,
+    "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0057-tlg050-grc-b0bbfd85e58caa29.json"
+   }
+  },
+  {
+   "id": "cts-tlg0057-tlg051",
+   "author": "Galeno",
+   "title": "De tremore, palpitatione, convulsione et rigore",
+   "language": "grc",
+   "genre": "Corpus clásico ampliado",
+   "dating": "siglo II d. C.",
+   "reading": {
+    "url": "classics-text-reader.html?work=cts-tlg0057-tlg051&lang=grc&edition=70db8eacfdb8386f",
+    "status": "Edición TEI alojada en R2 con búsqueda y traducción automática por pasaje"
+   },
+   "manuscript": {
+    "status": "Sin testimonio manuscrito individual asignado; la edición TEI se identifica por separado"
+   },
+   "pdf": {
+    "url": null,
+    "status": "No consta PDF ni facsímil individual verificado para esta edición"
+   },
+   "translation": {
+    "status": "Traducción automática de consulta por pasaje; no se atribuye a un traductor académico"
+   },
+   "links": {
+    "scaife": "https://scaife.perseus.org/library/urn:cts:greekLit:tlg0057.tlg051.1st1K-grc1/"
+   },
+   "aliases": [
+    "urn:cts:greekLit:tlg0057.tlg051.1st1K-grc1"
+   ],
+   "relatedWorkIds": [],
+   "catalogueProvenance": "Título y autor de los catálogos CTS del sitio; edición contrastada con su cabecera TEI. No se retrotraduce el título.",
+   "corpusFiles": {
+    "grc": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0057-tlg051-grc-70db8eacfdb8386f.json"
+   },
+   "localVersions": [
+    {
+     "language": "grc",
+     "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0057-tlg051-grc-70db8eacfdb8386f.json",
+     "label": "Edición original grc · urn:cts:greekLit:tlg0057.tlg051.1st1K-grc1",
+     "reader": "classics-text-reader.html?work=cts-tlg0057-tlg051&lang=grc&edition=70db8eacfdb8386f",
+     "sourceUrns": [
+      "urn:cts:greekLit:tlg0057.tlg051.1st1K-grc1"
+     ],
+     "sha256": "70db8eacfdb8386f994eac3f2677b102310927d8697a25cd953ea65b54c6a914"
+    }
+   ],
+   "publicStatus": "lectura-local-parcial",
+   "indexedEdition": {
+    "sources": [
+     {
+      "title": "De tremore, palpitatione, convulsione et rigore",
+      "titleLanguage": "lat",
+      "author": "Galen",
+      "editors": [
+       "Karl Gottlob Kühn"
+      ],
+      "bibliography": "Claudii Galeni Opera Omnia Galen Karl Gottlob Kühn Knobloch Leipzig 7 584-642 1824 HathiTrust",
+      "licences": [
+       {
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+       }
+      ],
+      "editionUrn": "urn:cts:greekLit:tlg0057.tlg051.1st1K-grc1",
+      "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0057/tlg051/tlg0057.tlg051.1st1K-grc1.xml",
+      "sourceSha256": "7f619d629cd6d729cde4ad9b004fe41afb84e1dcf073e9b0e9c00d69b34e6583",
+      "sourceReferences": [
+       "https://hdl.handle.net/2027/hvd.hxpp8n?urlappend=%3Bseq=596"
+      ],
+      "publicationYear": "1824",
+      "publisher": "Knobloch",
+      "publicationPlace": "Leipzig",
+      "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/7f619d629cd6d729cde4ad9b004fe41afb84e1dcf073e9b0e9c00d69b34e6583.xml"
+     }
+    ],
+    "sha256": "70db8eacfdb8386f994eac3f2677b102310927d8697a25cd953ea65b54c6a914",
+    "passages": 9,
+    "characters": 56487,
+    "bytes": 116960,
+    "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0057-tlg051-grc-70db8eacfdb8386f.json"
+   }
+  },
+  {
+   "id": "cts-tlg0057-tlg052",
+   "author": "Galeno",
+   "title": "De comate secundum Hippocratem",
+   "language": "grc",
+   "genre": "Corpus clásico ampliado",
+   "dating": "siglo II d. C.",
+   "reading": {
+    "url": "classics-text-reader.html?work=cts-tlg0057-tlg052&lang=grc&edition=20a504fb248696aa",
+    "status": "Edición TEI alojada en R2 con búsqueda y traducción automática por pasaje"
+   },
+   "manuscript": {
+    "status": "Sin testimonio manuscrito individual asignado; la edición TEI se identifica por separado"
+   },
+   "pdf": {
+    "url": null,
+    "status": "No consta PDF ni facsímil individual verificado para esta edición"
+   },
+   "translation": {
+    "status": "Traducción automática de consulta por pasaje; no se atribuye a un traductor académico"
+   },
+   "links": {
+    "scaife": "https://scaife.perseus.org/library/urn:cts:greekLit:tlg0057.tlg052.1st1K-grc1/"
+   },
+   "aliases": [
+    "urn:cts:greekLit:tlg0057.tlg052.1st1K-grc1"
+   ],
+   "relatedWorkIds": [],
+   "catalogueProvenance": "Título y autor de los catálogos CTS del sitio; edición contrastada con su cabecera TEI. No se retrotraduce el título.",
+   "corpusFiles": {
+    "grc": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0057-tlg052-grc-20a504fb248696aa.json"
+   },
+   "localVersions": [
+    {
+     "language": "grc",
+     "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0057-tlg052-grc-20a504fb248696aa.json",
+     "label": "Edición original grc · urn:cts:greekLit:tlg0057.tlg052.1st1K-grc1",
+     "reader": "classics-text-reader.html?work=cts-tlg0057-tlg052&lang=grc&edition=20a504fb248696aa",
+     "sourceUrns": [
+      "urn:cts:greekLit:tlg0057.tlg052.1st1K-grc1"
+     ],
+     "sha256": "20a504fb248696aa7ec3faa2378160c9d4583f621b25e3e8096792f3e4d97017"
+    }
+   ],
+   "publicStatus": "lectura-local-parcial",
+   "indexedEdition": {
+    "sources": [
+     {
+      "title": "De comate secundum Hippocratem",
+      "titleLanguage": "lat",
+      "author": "Galen",
+      "editors": [
+       "Karl Gottlob Kühn"
+      ],
+      "bibliography": "Claudii Galeni Opera Omnia Galen Karl Gottlob Kühn Knobloch Lipsiae 7 643-665 1824 HathiTrust",
+      "licences": [
+       {
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+       }
+      ],
+      "editionUrn": "urn:cts:greekLit:tlg0057.tlg052.1st1K-grc1",
+      "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0057/tlg052/tlg0057.tlg052.1st1K-grc1.xml",
+      "sourceSha256": "3b673c9c121abca192f34196e7fddf9b6cb865fce3667fcfda33dcae8c0df614",
+      "sourceReferences": [
+       "https://hdl.handle.net/2027/hvd.hxpp8n?urlappend=%3Bseq=655"
+      ],
+      "publicationYear": "1824",
+      "publisher": "Knobloch",
+      "publicationPlace": "Lipsiae",
+      "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/3b673c9c121abca192f34196e7fddf9b6cb865fce3667fcfda33dcae8c0df614.xml"
+     }
+    ],
+    "sha256": "20a504fb248696aa7ec3faa2378160c9d4583f621b25e3e8096792f3e4d97017",
+    "passages": 9,
+    "characters": 21391,
+    "bytes": 46244,
+    "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0057-tlg052-grc-20a504fb248696aa.json"
+   }
+  },
+  {
+   "id": "cts-tlg0057-tlg054",
+   "author": "Galeno",
+   "title": "De tumoribus praeter naturam",
+   "language": "grc",
+   "genre": "Corpus clásico ampliado",
+   "dating": "siglo II d. C.",
+   "reading": {
+    "url": "classics-text-reader.html?work=cts-tlg0057-tlg054&lang=grc&edition=3ae4c1fb5cd73b91",
+    "status": "Edición TEI alojada en R2 con búsqueda y traducción automática por pasaje"
+   },
+   "manuscript": {
+    "status": "Sin testimonio manuscrito individual asignado; la edición TEI se identifica por separado"
+   },
+   "pdf": {
+    "url": null,
+    "status": "No consta PDF ni facsímil individual verificado para esta edición"
+   },
+   "translation": {
+    "status": "Traducción automática de consulta por pasaje; no se atribuye a un traductor académico"
+   },
+   "links": {
+    "scaife": "https://scaife.perseus.org/library/urn:cts:greekLit:tlg0057.tlg054.1st1K-grc1/"
+   },
+   "aliases": [
+    "urn:cts:greekLit:tlg0057.tlg054.1st1K-grc1"
+   ],
+   "relatedWorkIds": [],
+   "catalogueProvenance": "Título y autor de los catálogos CTS del sitio; edición contrastada con su cabecera TEI. No se retrotraduce el título.",
+   "corpusFiles": {
+    "grc": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0057-tlg054-grc-3ae4c1fb5cd73b91.json"
+   },
+   "localVersions": [
+    {
+     "language": "grc",
+     "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0057-tlg054-grc-3ae4c1fb5cd73b91.json",
+     "label": "Edición original grc · urn:cts:greekLit:tlg0057.tlg054.1st1K-grc1",
+     "reader": "classics-text-reader.html?work=cts-tlg0057-tlg054&lang=grc&edition=3ae4c1fb5cd73b91",
+     "sourceUrns": [
+      "urn:cts:greekLit:tlg0057.tlg054.1st1K-grc1"
+     ],
+     "sha256": "3ae4c1fb5cd73b91ba0138d4b71db7297547063e36ae09b208004eb87934c662"
+    }
+   ],
+   "publicStatus": "lectura-local-parcial",
+   "indexedEdition": {
+    "sources": [
+     {
+      "title": "De tumoribus praeter naturam",
+      "titleLanguage": "lat",
+      "author": "Galen",
+      "editors": [
+       "Karl Gottlob Kühn"
+      ],
+      "bibliography": "Claudii Galeni Opera Omnia Galen Karl Gottlob Kühn Knobloch Lipsiae 7 705-732 1824 HathiTrust",
+      "licences": [
+       {
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+       }
+      ],
+      "editionUrn": "urn:cts:greekLit:tlg0057.tlg054.1st1K-grc1",
+      "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0057/tlg054/tlg0057.tlg054.1st1K-grc1.xml",
+      "sourceSha256": "839b13c714e9a9cf33a5334ae20f13fea0b02b4009fe150a26aa26a3ae486064",
+      "sourceReferences": [
+       "https://hdl.handle.net/2027/hvd.hxpp8n?urlappend=%3Bseq=717"
+      ],
+      "publicationYear": "1824",
+      "publisher": "Knobloch",
+      "publicationPlace": "Lipsiae",
+      "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/839b13c714e9a9cf33a5334ae20f13fea0b02b4009fe150a26aa26a3ae486064.xml"
+     }
+    ],
+    "sha256": "3ae4c1fb5cd73b91ba0138d4b71db7297547063e36ae09b208004eb87934c662",
+    "passages": 18,
+    "characters": 26503,
+    "bytes": 57922,
+    "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0057-tlg054-grc-3ae4c1fb5cd73b91.json"
+   }
+  },
+  {
+   "id": "cts-tlg0057-tlg053",
+   "author": "Galeno",
+   "title": "De marcore",
+   "language": "grc",
+   "genre": "Corpus clásico ampliado",
+   "dating": "siglo II d. C.",
+   "reading": {
+    "url": "classics-text-reader.html?work=cts-tlg0057-tlg053&lang=grc&edition=745fe2066194a8be",
+    "status": "Edición TEI alojada en R2 con búsqueda y traducción automática por pasaje"
+   },
+   "manuscript": {
+    "status": "Sin testimonio manuscrito individual asignado; la edición TEI se identifica por separado"
+   },
+   "pdf": {
+    "url": null,
+    "status": "No consta PDF ni facsímil individual verificado para esta edición"
+   },
+   "translation": {
+    "status": "Traducción automática de consulta por pasaje; no se atribuye a un traductor académico"
+   },
+   "links": {
+    "scaife": "https://scaife.perseus.org/library/urn:cts:greekLit:tlg0057.tlg053.1st1K-grc1/"
+   },
+   "aliases": [
+    "urn:cts:greekLit:tlg0057.tlg053.1st1K-grc1"
+   ],
+   "relatedWorkIds": [],
+   "catalogueProvenance": "Título y autor de los catálogos CTS del sitio; edición contrastada con su cabecera TEI. No se retrotraduce el título.",
+   "corpusFiles": {
+    "grc": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0057-tlg053-grc-745fe2066194a8be.json"
+   },
+   "localVersions": [
+    {
+     "language": "grc",
+     "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0057-tlg053-grc-745fe2066194a8be.json",
+     "label": "Edición original grc · urn:cts:greekLit:tlg0057.tlg053.1st1K-grc1",
+     "reader": "classics-text-reader.html?work=cts-tlg0057-tlg053&lang=grc&edition=745fe2066194a8be",
+     "sourceUrns": [
+      "urn:cts:greekLit:tlg0057.tlg053.1st1K-grc1"
+     ],
+     "sha256": "745fe2066194a8be272383389c23d692f65475bd60aa263ad47e98c04ffba36d"
+    }
+   ],
+   "publicStatus": "lectura-local-parcial",
+   "indexedEdition": {
+    "sources": [
+     {
+      "title": "De marcore",
+      "titleLanguage": "lat",
+      "author": "Galen",
+      "editors": [
+       "Karl Gottlob Kühn"
+      ],
+      "bibliography": "Claudii Galeni Opera Omnia Galen Karl Gottlob Kühn Knobloch Leipzig 7 666-704 1824 HathiTrust",
+      "licences": [
+       {
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+       }
+      ],
+      "editionUrn": "urn:cts:greekLit:tlg0057.tlg053.1st1K-grc1",
+      "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0057/tlg053/tlg0057.tlg053.1st1K-grc1.xml",
+      "sourceSha256": "81e726df7a02e57e7f56dd1bb879f26dff8517d3670d0794be44cc2a604fedce",
+      "sourceReferences": [
+       "https://hdl.handle.net/2027/hvd.hxpp8n?urlappend=%3Bseq=678"
+      ],
+      "publicationYear": "1824",
+      "publisher": "Knobloch",
+      "publicationPlace": "Leipzig",
+      "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/81e726df7a02e57e7f56dd1bb879f26dff8517d3670d0794be44cc2a604fedce.xml"
+     }
+    ],
+    "sha256": "745fe2066194a8be272383389c23d692f65475bd60aa263ad47e98c04ffba36d",
+    "passages": 12,
+    "characters": 36272,
+    "bytes": 76568,
+    "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0057-tlg053-grc-745fe2066194a8be.json"
    }
   }
  ],

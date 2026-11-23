@@ -1,12 +1,12 @@
 {
   "schema": "vdl-federated-bibliotheca-inventory-v1",
-  "generated": "2026-11-23T03:23:15.421457+00:00",
+  "generated": "2026-11-23T03:53:30.733963+00:00",
   "method": "Master works and additional R2 works counted separately; edition relations can be many-to-many. Remote text URLs are declared, not live-verified. Unresolved editions are never merged automatically.",
   "counts": {
-    "cataloguedWorks": 366,
+    "cataloguedWorks": 372,
     "supplementaryWorks": 127,
     "additionalWorks": 10,
-    "totalDeclaredWorks": 503,
+    "totalDeclaredWorks": 509,
     "r2EditionRecords": 117,
     "r2LinkedEditionRecords": 107,
     "r2WorkEditionRelations": 115,
@@ -14,7 +14,7 @@
     "r2UnlinkedEditionRecords": 0,
     "worksWithR2Edition": 114,
     "worksWithLocalIndexedText": 325,
-    "worksWithDeclaredRemoteIndex": 150
+    "worksWithDeclaredRemoteIndex": 173
   },
   "unlinkedR2EditionIds": [],
   "additionalWorks": [
@@ -3011,7 +3011,12 @@
           "path": "data/classics-corpus/eusebio-grc.json"
         }
       ],
-      "declaredRemoteIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/eusebio-grc-c3b4f462dc2721ff.json"
+        }
+      ],
       "r2FacsimileEditions": []
     },
     {
@@ -3972,7 +3977,12 @@
           "path": "data/classics-corpus/homer-iliad-grc.json"
         }
       ],
-      "declaredRemoteIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/homer-iliad-grc-aca5401c60ffd77c.json"
+        }
+      ],
       "r2FacsimileEditions": []
     },
     {
@@ -3990,7 +4000,12 @@
           "path": "data/classics-corpus/homer-odyssey-grc.json"
         }
       ],
-      "declaredRemoteIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/homer-odyssey-grc-58c5474cb0794dad.json"
+        }
+      ],
       "r2FacsimileEditions": []
     },
     {
@@ -4008,7 +4023,12 @@
           "path": "data/classics-corpus/hesiod-theogony-grc.json"
         }
       ],
-      "declaredRemoteIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/hesiod-theogony-grc-a225cba98b4e7f8d.json"
+        }
+      ],
       "r2FacsimileEditions": []
     },
     {
@@ -4026,7 +4046,12 @@
           "path": "data/classics-corpus/hesiod-works-days-grc.json"
         }
       ],
-      "declaredRemoteIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/hesiod-works-days-grc-e0c2c3bd4cb44e9f.json"
+        }
+      ],
       "r2FacsimileEditions": []
     },
     {
@@ -4107,7 +4132,12 @@
           "path": "data/classics-corpus/euripides-medea-grc.json"
         }
       ],
-      "declaredRemoteIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/euripides-medea-grc-e30ae176ff19444b.json"
+        }
+      ],
       "r2FacsimileEditions": []
     },
     {
@@ -4139,7 +4169,12 @@
           "path": "data/classics-corpus/herodotus-historiae-grc.json"
         }
       ],
-      "declaredRemoteIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/herodotus-historiae-grc-70947463faac0fcc.json"
+        }
+      ],
       "r2FacsimileEditions": [
         {
           "editionId": "herodoto-historias",
@@ -4626,7 +4661,12 @@
           "path": "data/classics-corpus/euripides-bacchae-grc.json"
         }
       ],
-      "declaredRemoteIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/euripides-bacchae-grc-34429bbacd7694b3.json"
+        }
+      ],
       "r2FacsimileEditions": []
     },
     {
@@ -4644,7 +4684,12 @@
           "path": "data/classics-corpus/euripides-hippolytus-grc.json"
         }
       ],
-      "declaredRemoteIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/euripides-hippolytus-grc-e816f91a43cc0e4d.json"
+        }
+      ],
       "r2FacsimileEditions": []
     },
     {
@@ -4662,7 +4707,12 @@
           "path": "data/classics-corpus/euripides-alcestis-grc.json"
         }
       ],
-      "declaredRemoteIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/euripides-alcestis-grc-74e01fcd5ff7102c.json"
+        }
+      ],
       "r2FacsimileEditions": []
     },
     {
@@ -4680,7 +4730,12 @@
           "path": "data/classics-corpus/euripides-electra-grc.json"
         }
       ],
-      "declaredRemoteIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/euripides-electra-grc-9d1f267736c75530.json"
+        }
+      ],
       "r2FacsimileEditions": [
         {
           "editionId": "euripides-tragedias",
@@ -4709,7 +4764,12 @@
           "path": "data/classics-corpus/euripides-troades-grc.json"
         }
       ],
-      "declaredRemoteIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/euripides-troades-grc-c84c045ca0e6bd1c.json"
+        }
+      ],
       "r2FacsimileEditions": []
     },
     {
@@ -4727,7 +4787,12 @@
           "path": "data/classics-corpus/euripides-hecuba-grc.json"
         }
       ],
-      "declaredRemoteIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/euripides-hecuba-grc-40185bc38f8ae812.json"
+        }
+      ],
       "r2FacsimileEditions": []
     },
     {
@@ -4745,7 +4810,12 @@
           "path": "data/classics-corpus/euripides-iphigenia-aulid-grc.json"
         }
       ],
-      "declaredRemoteIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/euripides-iphigenia-aulid-grc-1a7cf0a271932833.json"
+        }
+      ],
       "r2FacsimileEditions": []
     },
     {
@@ -5227,7 +5297,12 @@
           "path": "data/classics-corpus/demosthenes-de-corona-grc.json"
         }
       ],
-      "declaredRemoteIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/demosthenes-de-corona-grc-25758d90038d204a.json"
+        }
+      ],
       "r2FacsimileEditions": [
         {
           "editionId": "demostenes-discursos",
@@ -5252,7 +5327,12 @@
           "path": "data/classics-corpus/demosthenes-philippicae-grc.json"
         }
       ],
-      "declaredRemoteIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/demosthenes-philippicae-grc-ad6432832c69087c.json"
+        }
+      ],
       "r2FacsimileEditions": []
     },
     {
@@ -5412,7 +5492,12 @@
           "path": "data/classics-corpus/cicero-tusculanae-la.json"
         }
       ],
-      "declaredRemoteIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "la",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/cicero-tusculanae-la-dbd6b48180fe8f8e.json"
+        }
+      ],
       "r2FacsimileEditions": [
         {
           "editionId": "ciceron-tusculanas",
@@ -8840,6 +8925,90 @@
         {
           "language": "grc",
           "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0006-tlg014-grc-0b976d1aa65e5e77.json"
+        }
+      ],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "cts-tlg0057-tlg049",
+      "author": "Galeno",
+      "title": "Adversus eos qui de typis scripserunt vel de circuitibus",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0057-tlg049-grc-0358891b42bd0f03.json"
+        }
+      ],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "cts-tlg0057-tlg050",
+      "author": "Galeno",
+      "title": "De plenitudine",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0057-tlg050-grc-b0bbfd85e58caa29.json"
+        }
+      ],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "cts-tlg0057-tlg051",
+      "author": "Galeno",
+      "title": "De tremore, palpitatione, convulsione et rigore",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0057-tlg051-grc-70db8eacfdb8386f.json"
+        }
+      ],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "cts-tlg0057-tlg052",
+      "author": "Galeno",
+      "title": "De comate secundum Hippocratem",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0057-tlg052-grc-20a504fb248696aa.json"
+        }
+      ],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "cts-tlg0057-tlg054",
+      "author": "Galeno",
+      "title": "De tumoribus praeter naturam",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0057-tlg054-grc-3ae4c1fb5cd73b91.json"
+        }
+      ],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "cts-tlg0057-tlg053",
+      "author": "Galeno",
+      "title": "De marcore",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0057-tlg053-grc-745fe2066194a8be.json"
         }
       ],
       "r2FacsimileEditions": []

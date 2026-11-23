@@ -4,17 +4,17 @@
   "scope": "Se auditan exclusivamente 271 fichas de obras del catálogo local; no es un censo universal de literatura grecolatina.",
   "method": "Cruce de fichas bibliográficas, vínculos locales, corpus legible, registro de búsqueda y testimonios manuscritos; sin OCR ni verificación externa de los enlaces.",
   "counts": {
-    "cataloguedWorks": 366,
+    "cataloguedWorks": 372,
     "catalogueStatuses": {
-      "lectura-local-completa": 31,
-      "lectura-local-parcial": 263,
+      "lectura-local-completa": 29,
+      "lectura-local-parcial": 271,
       "fuente-externa-identificada": 58,
       "repertoriado-busqueda-externa": 12,
       "pendiente-de-incorporar": 2
     },
-    "locallyReadableClaims": 294,
-    "indexedTextVersions": 460,
-    "indexedDistinctWorks": 336,
+    "locallyReadableClaims": 300,
+    "indexedTextVersions": 483,
+    "indexedDistinctWorks": 342,
     "manuscriptWitnesses": 107
   },
   "works": [
@@ -1099,7 +1099,8 @@
       ],
       "indexedTextFiles": [
         "data/classics-corpus/eusebio-en.json",
-        "data/classics-corpus/eusebio-grc.json"
+        "data/classics-corpus/eusebio-grc.json",
+        "https://libros.vitruvius-digital-library.org/corpus/eusebio-grc-c3b4f462dc2721ff.json"
       ],
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
@@ -2277,14 +2278,15 @@
       "originalLanguage": "grc",
       "genre": "Épica",
       "dating": "tradición arcaica; fijación y datación debatidas",
-      "catalogueStatus": "lectura-local-completa",
+      "catalogueStatus": "lectura-local-parcial",
       "indexedTextLanguages": [
         "en",
         "grc"
       ],
       "indexedTextFiles": [
         "data/classics-corpus/homer-iliad-en.json",
-        "data/classics-corpus/homer-iliad-grc.json"
+        "data/classics-corpus/homer-iliad-grc.json",
+        "https://libros.vitruvius-digital-library.org/corpus/homer-iliad-grc-aca5401c60ffd77c.json"
       ],
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
@@ -2301,14 +2303,15 @@
       "originalLanguage": "grc",
       "genre": "Épica",
       "dating": "tradición arcaica; fijación y datación debatidas",
-      "catalogueStatus": "lectura-local-completa",
+      "catalogueStatus": "lectura-local-parcial",
       "indexedTextLanguages": [
         "en",
         "grc"
       ],
       "indexedTextFiles": [
         "data/classics-corpus/homer-odyssey-en.json",
-        "data/classics-corpus/homer-odyssey-grc.json"
+        "data/classics-corpus/homer-odyssey-grc.json",
+        "https://libros.vitruvius-digital-library.org/corpus/homer-odyssey-grc-58c5474cb0794dad.json"
       ],
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
@@ -2332,7 +2335,8 @@
       ],
       "indexedTextFiles": [
         "data/classics-corpus/hesiod-theogony-en.json",
-        "data/classics-corpus/hesiod-theogony-grc.json"
+        "data/classics-corpus/hesiod-theogony-grc.json",
+        "https://libros.vitruvius-digital-library.org/corpus/hesiod-theogony-grc-a225cba98b4e7f8d.json"
       ],
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
@@ -2356,7 +2360,8 @@
       ],
       "indexedTextFiles": [
         "data/classics-corpus/hesiod-works-days-en.json",
-        "data/classics-corpus/hesiod-works-days-grc.json"
+        "data/classics-corpus/hesiod-works-days-grc.json",
+        "https://libros.vitruvius-digital-library.org/corpus/hesiod-works-days-grc-e0c2c3bd4cb44e9f.json"
       ],
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
@@ -2429,7 +2434,8 @@
       ],
       "indexedTextFiles": [
         "data/classics-corpus/euripides-medea-en.json",
-        "data/classics-corpus/euripides-medea-grc.json"
+        "data/classics-corpus/euripides-medea-grc.json",
+        "https://libros.vitruvius-digital-library.org/corpus/euripides-medea-grc-e30ae176ff19444b.json"
       ],
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
@@ -2475,7 +2481,8 @@
         "grc"
       ],
       "indexedTextFiles": [
-        "data/classics-corpus/herodotus-historiae-grc.json"
+        "data/classics-corpus/herodotus-historiae-grc.json",
+        "https://libros.vitruvius-digital-library.org/corpus/herodotus-historiae-grc-70947463faac0fcc.json"
       ],
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
@@ -3001,7 +3008,8 @@
       ],
       "indexedTextFiles": [
         "data/classics-corpus/euripides-bacchae-en.json",
-        "data/classics-corpus/euripides-bacchae-grc.json"
+        "data/classics-corpus/euripides-bacchae-grc.json",
+        "https://libros.vitruvius-digital-library.org/corpus/euripides-bacchae-grc-34429bbacd7694b3.json"
       ],
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
@@ -3025,7 +3033,8 @@
       ],
       "indexedTextFiles": [
         "data/classics-corpus/euripides-hippolytus-en.json",
-        "data/classics-corpus/euripides-hippolytus-grc.json"
+        "data/classics-corpus/euripides-hippolytus-grc.json",
+        "https://libros.vitruvius-digital-library.org/corpus/euripides-hippolytus-grc-e816f91a43cc0e4d.json"
       ],
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
@@ -3049,7 +3058,8 @@
       ],
       "indexedTextFiles": [
         "data/classics-corpus/euripides-alcestis-en.json",
-        "data/classics-corpus/euripides-alcestis-grc.json"
+        "data/classics-corpus/euripides-alcestis-grc.json",
+        "https://libros.vitruvius-digital-library.org/corpus/euripides-alcestis-grc-74e01fcd5ff7102c.json"
       ],
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
@@ -3073,7 +3083,8 @@
       ],
       "indexedTextFiles": [
         "data/classics-corpus/euripides-electra-en.json",
-        "data/classics-corpus/euripides-electra-grc.json"
+        "data/classics-corpus/euripides-electra-grc.json",
+        "https://libros.vitruvius-digital-library.org/corpus/euripides-electra-grc-9d1f267736c75530.json"
       ],
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
@@ -3097,7 +3108,8 @@
       ],
       "indexedTextFiles": [
         "data/classics-corpus/euripides-troades-en.json",
-        "data/classics-corpus/euripides-troades-grc.json"
+        "data/classics-corpus/euripides-troades-grc.json",
+        "https://libros.vitruvius-digital-library.org/corpus/euripides-troades-grc-c84c045ca0e6bd1c.json"
       ],
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
@@ -3121,7 +3133,8 @@
       ],
       "indexedTextFiles": [
         "data/classics-corpus/euripides-hecuba-en.json",
-        "data/classics-corpus/euripides-hecuba-grc.json"
+        "data/classics-corpus/euripides-hecuba-grc.json",
+        "https://libros.vitruvius-digital-library.org/corpus/euripides-hecuba-grc-40185bc38f8ae812.json"
       ],
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
@@ -3145,7 +3158,8 @@
       ],
       "indexedTextFiles": [
         "data/classics-corpus/euripides-iphigenia-aulid-en.json",
-        "data/classics-corpus/euripides-iphigenia-aulid-grc.json"
+        "data/classics-corpus/euripides-iphigenia-aulid-grc.json",
+        "https://libros.vitruvius-digital-library.org/corpus/euripides-iphigenia-aulid-grc-1a7cf0a271932833.json"
       ],
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
@@ -3661,7 +3675,8 @@
       ],
       "indexedTextFiles": [
         "data/classics-corpus/demosthenes-de-corona-en.json",
-        "data/classics-corpus/demosthenes-de-corona-grc.json"
+        "data/classics-corpus/demosthenes-de-corona-grc.json",
+        "https://libros.vitruvius-digital-library.org/corpus/demosthenes-de-corona-grc-25758d90038d204a.json"
       ],
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
@@ -3683,7 +3698,8 @@
         "grc"
       ],
       "indexedTextFiles": [
-        "data/classics-corpus/demosthenes-philippicae-grc.json"
+        "data/classics-corpus/demosthenes-philippicae-grc.json",
+        "https://libros.vitruvius-digital-library.org/corpus/demosthenes-philippicae-grc-ad6432832c69087c.json"
       ],
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
@@ -3887,7 +3903,8 @@
         "la"
       ],
       "indexedTextFiles": [
-        "data/classics-corpus/cicero-tusculanae-la.json"
+        "data/classics-corpus/cicero-tusculanae-la.json",
+        "https://libros.vitruvius-digital-library.org/corpus/cicero-tusculanae-la-dbd6b48180fe8f8e.json"
       ],
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
@@ -7602,6 +7619,96 @@
       ],
       "indexedTextFiles": [
         "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0006-tlg014-grc-0b976d1aa65e5e77.json"
+      ],
+      "manuscriptRecords": 0,
+      "hasManuscriptRecord": false
+    },
+    {
+      "id": "cts-tlg0057-tlg049",
+      "author": "Galeno",
+      "title": "Adversus eos qui de typis scripserunt vel de circuitibus",
+      "originalLanguage": "grc",
+      "catalogueStatus": "lectura-local-parcial",
+      "indexedTextLanguages": [
+        "grc"
+      ],
+      "indexedTextFiles": [
+        "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0057-tlg049-grc-0358891b42bd0f03.json"
+      ],
+      "manuscriptRecords": 0,
+      "hasManuscriptRecord": false
+    },
+    {
+      "id": "cts-tlg0057-tlg050",
+      "author": "Galeno",
+      "title": "De plenitudine",
+      "originalLanguage": "grc",
+      "catalogueStatus": "lectura-local-parcial",
+      "indexedTextLanguages": [
+        "grc"
+      ],
+      "indexedTextFiles": [
+        "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0057-tlg050-grc-b0bbfd85e58caa29.json"
+      ],
+      "manuscriptRecords": 0,
+      "hasManuscriptRecord": false
+    },
+    {
+      "id": "cts-tlg0057-tlg051",
+      "author": "Galeno",
+      "title": "De tremore, palpitatione, convulsione et rigore",
+      "originalLanguage": "grc",
+      "catalogueStatus": "lectura-local-parcial",
+      "indexedTextLanguages": [
+        "grc"
+      ],
+      "indexedTextFiles": [
+        "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0057-tlg051-grc-70db8eacfdb8386f.json"
+      ],
+      "manuscriptRecords": 0,
+      "hasManuscriptRecord": false
+    },
+    {
+      "id": "cts-tlg0057-tlg052",
+      "author": "Galeno",
+      "title": "De comate secundum Hippocratem",
+      "originalLanguage": "grc",
+      "catalogueStatus": "lectura-local-parcial",
+      "indexedTextLanguages": [
+        "grc"
+      ],
+      "indexedTextFiles": [
+        "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0057-tlg052-grc-20a504fb248696aa.json"
+      ],
+      "manuscriptRecords": 0,
+      "hasManuscriptRecord": false
+    },
+    {
+      "id": "cts-tlg0057-tlg054",
+      "author": "Galeno",
+      "title": "De tumoribus praeter naturam",
+      "originalLanguage": "grc",
+      "catalogueStatus": "lectura-local-parcial",
+      "indexedTextLanguages": [
+        "grc"
+      ],
+      "indexedTextFiles": [
+        "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0057-tlg054-grc-3ae4c1fb5cd73b91.json"
+      ],
+      "manuscriptRecords": 0,
+      "hasManuscriptRecord": false
+    },
+    {
+      "id": "cts-tlg0057-tlg053",
+      "author": "Galeno",
+      "title": "De marcore",
+      "originalLanguage": "grc",
+      "catalogueStatus": "lectura-local-parcial",
+      "indexedTextLanguages": [
+        "grc"
+      ],
+      "indexedTextFiles": [
+        "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0057-tlg053-grc-745fe2066194a8be.json"
       ],
       "manuscriptRecords": 0,
       "hasManuscriptRecord": false

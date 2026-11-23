@@ -2,8 +2,8 @@
  "schema": "vitruvia-classics-search-registry-v1",
  "updated": "2026-11-23",
  "description": "Registro verificable de transcripciones HTML y textos JSON existentes que admiten búsqueda literal de contenido. No incluye automáticamente PDF escaneados, facsímiles ni fichas sin texto. Los índices auxiliares por locus y el aparato crítico se declaran por separado; no se suman a versiones textuales originales ni implican colación autóptica.",
- "count": 621,
- "works": 464,
+ "count": 644,
+ "works": 470,
  "entries": [
   {
    "workId": "aeneas-tacticus-poliorketika",
@@ -1047,6 +1047,19 @@
    "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
   },
   {
+   "workId": "cicero-tusculanae",
+   "author": "Cicerón",
+   "title": "Tusculanae disputationes",
+   "language": "la",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/cicero-tusculanae-la-dbd6b48180fe8f8e.json",
+   "reader": "classics-text-reader.html?work=cicero-tusculanae&lang=la&edition=dbd6b48180fe8f8e",
+   "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+   "sourceUrn": "urn:cts:latinLit:phi0474.phi049.perseus-lat2",
+   "sha256": "dbd6b48180fe8f8e2f48b4b8dcd4e699f21c28dd235cf5504b6f808283d2715e",
+   "passages": 717
+  },
+  {
    "workId": "claudiano-poemas",
    "language": "la",
    "title": "Carmina · Poemas",
@@ -1894,6 +1907,84 @@
    "passages": 38
   },
   {
+   "workId": "cts-tlg0057-tlg049",
+   "author": "Galeno",
+   "title": "Adversus eos qui de typis scripserunt vel de circuitibus",
+   "language": "grc",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0057-tlg049-grc-0358891b42bd0f03.json",
+   "reader": "classics-text-reader.html?work=cts-tlg0057-tlg049&lang=grc&edition=0358891b42bd0f03",
+   "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+   "sourceUrn": "urn:cts:greekLit:tlg0057.tlg049.1st1K-grc1",
+   "sha256": "0358891b42bd0f03acf7e290ea80463bcec4d2f53c129270c6088fb485a0f945",
+   "passages": 10
+  },
+  {
+   "workId": "cts-tlg0057-tlg050",
+   "author": "Galeno",
+   "title": "De plenitudine",
+   "language": "grc",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0057-tlg050-grc-b0bbfd85e58caa29.json",
+   "reader": "classics-text-reader.html?work=cts-tlg0057-tlg050&lang=grc&edition=b0bbfd85e58caa29",
+   "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+   "sourceUrn": "urn:cts:greekLit:tlg0057.tlg050.1st1K-grc1",
+   "sha256": "b0bbfd85e58caa290fd60a8da7f7a7a53fa6986371a610575167a6b1305cf54f",
+   "passages": 12
+  },
+  {
+   "workId": "cts-tlg0057-tlg051",
+   "author": "Galeno",
+   "title": "De tremore, palpitatione, convulsione et rigore",
+   "language": "grc",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0057-tlg051-grc-70db8eacfdb8386f.json",
+   "reader": "classics-text-reader.html?work=cts-tlg0057-tlg051&lang=grc&edition=70db8eacfdb8386f",
+   "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+   "sourceUrn": "urn:cts:greekLit:tlg0057.tlg051.1st1K-grc1",
+   "sha256": "70db8eacfdb8386f994eac3f2677b102310927d8697a25cd953ea65b54c6a914",
+   "passages": 9
+  },
+  {
+   "workId": "cts-tlg0057-tlg052",
+   "author": "Galeno",
+   "title": "De comate secundum Hippocratem",
+   "language": "grc",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0057-tlg052-grc-20a504fb248696aa.json",
+   "reader": "classics-text-reader.html?work=cts-tlg0057-tlg052&lang=grc&edition=20a504fb248696aa",
+   "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+   "sourceUrn": "urn:cts:greekLit:tlg0057.tlg052.1st1K-grc1",
+   "sha256": "20a504fb248696aa7ec3faa2378160c9d4583f621b25e3e8096792f3e4d97017",
+   "passages": 9
+  },
+  {
+   "workId": "cts-tlg0057-tlg053",
+   "author": "Galeno",
+   "title": "De marcore",
+   "language": "grc",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0057-tlg053-grc-745fe2066194a8be.json",
+   "reader": "classics-text-reader.html?work=cts-tlg0057-tlg053&lang=grc&edition=745fe2066194a8be",
+   "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+   "sourceUrn": "urn:cts:greekLit:tlg0057.tlg053.1st1K-grc1",
+   "sha256": "745fe2066194a8be272383389c23d692f65475bd60aa263ad47e98c04ffba36d",
+   "passages": 12
+  },
+  {
+   "workId": "cts-tlg0057-tlg054",
+   "author": "Galeno",
+   "title": "De tumoribus praeter naturam",
+   "language": "grc",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0057-tlg054-grc-3ae4c1fb5cd73b91.json",
+   "reader": "classics-text-reader.html?work=cts-tlg0057-tlg054&lang=grc&edition=3ae4c1fb5cd73b91",
+   "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+   "sourceUrn": "urn:cts:greekLit:tlg0057.tlg054.1st1K-grc1",
+   "sha256": "3ae4c1fb5cd73b91ba0138d4b71db7297547063e36ae09b208004eb87934c662",
+   "passages": 18
+  },
+  {
    "workId": "cts-tlg0062-tlg016",
    "author": "Luciano de Samósata",
    "title": "Cataplus",
@@ -2647,6 +2738,19 @@
    "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
   },
   {
+   "workId": "demosthenes-de-corona",
+   "author": "Demóstenes",
+   "title": "Περὶ τοῦ στεφάνου",
+   "language": "grc",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/demosthenes-de-corona-grc-25758d90038d204a.json",
+   "reader": "classics-text-reader.html?work=demosthenes-de-corona&lang=grc&edition=25758d90038d204a",
+   "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+   "sourceUrn": "urn:cts:greekLit:tlg0014.tlg018.perseus-grc2",
+   "sha256": "25758d90038d204aa85d24eff1a2e90034de7726d6eb77d93ee0b60293455a50",
+   "passages": 384
+  },
+  {
    "workId": "demosthenes-first-olynthiac",
    "author": "Demóstenes",
    "title": "Ὀλυνθιακὸς α΄ · Primera Olíntica",
@@ -2675,6 +2779,19 @@
    "path": "data/classics-corpus/demosthenes-philippicae-grc.json",
    "reader": "classics-text-reader.html?work=demosthenes-philippicae&lang=grc",
    "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+  },
+  {
+   "workId": "demosthenes-philippicae",
+   "author": "Demóstenes",
+   "title": "Φιλιππικοί",
+   "language": "grc",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/demosthenes-philippicae-grc-ad6432832c69087c.json",
+   "reader": "classics-text-reader.html?work=demosthenes-philippicae&lang=grc&edition=ad6432832c69087c",
+   "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+   "sourceUrn": "urn:cts:greekLit:tlg0014.tlg004.perseus-grc2",
+   "sha256": "ad6432832c69087c3e06a5c96adb5cf042f07cd1c50c1b56487280a40c40e963",
+   "passages": 245
   },
   {
    "workId": "didache",
@@ -2875,6 +2992,19 @@
    "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
   },
   {
+   "workId": "euripides-alcestis",
+   "author": "Eurípides",
+   "title": "Ἄλκηστις",
+   "language": "grc",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/euripides-alcestis-grc-74e01fcd5ff7102c.json",
+   "reader": "classics-text-reader.html?work=euripides-alcestis&lang=grc&edition=74e01fcd5ff7102c",
+   "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+   "sourceUrn": "urn:cts:greekLit:tlg0006.tlg002.perseus-grc2",
+   "sha256": "74e01fcd5ff7102cb6e655d3b6554aeb7f614dcdccfa99d1512252fe53e307e3",
+   "passages": 323
+  },
+  {
    "workId": "euripides-andromache",
    "author": "Eurípides",
    "title": "Ἀνδρομάχη",
@@ -2913,6 +3043,19 @@
    "path": "data/classics-corpus/euripides-bacchae-grc.json",
    "reader": "classics-text-reader.html?work=euripides-bacchae&lang=grc",
    "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+  },
+  {
+   "workId": "euripides-bacchae",
+   "author": "Eurípides",
+   "title": "Βάκχαι",
+   "language": "grc",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/euripides-bacchae-grc-34429bbacd7694b3.json",
+   "reader": "classics-text-reader.html?work=euripides-bacchae&lang=grc&edition=34429bbacd7694b3",
+   "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+   "sourceUrn": "urn:cts:greekLit:tlg0006.tlg017.perseus-grc2",
+   "sha256": "34429bbacd7694b382defffd888117d94098c776b15fcf3b10157dd09736524a",
+   "passages": 325
   },
   {
    "workId": "euripides-cyclops",
@@ -2955,6 +3098,19 @@
    "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
   },
   {
+   "workId": "euripides-electra",
+   "author": "Eurípides",
+   "title": "Ἠλέκτρα",
+   "language": "grc",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/euripides-electra-grc-9d1f267736c75530.json",
+   "reader": "classics-text-reader.html?work=euripides-electra&lang=grc&edition=9d1f267736c75530",
+   "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+   "sourceUrn": "urn:cts:greekLit:tlg0006.tlg012.perseus-grc2",
+   "sha256": "9d1f267736c755307d51656e80d0e83574ae16cf07310306e6cef4050071add1",
+   "passages": 372
+  },
+  {
    "workId": "euripides-hecuba",
    "author": "Eurípides",
    "title": "Ἑκάβη",
@@ -2973,6 +3129,19 @@
    "path": "data/classics-corpus/euripides-hecuba-grc.json",
    "reader": "classics-text-reader.html?work=euripides-hecuba&lang=grc",
    "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+  },
+  {
+   "workId": "euripides-hecuba",
+   "author": "Eurípides",
+   "title": "Ἑκάβη",
+   "language": "grc",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/euripides-hecuba-grc-40185bc38f8ae812.json",
+   "reader": "classics-text-reader.html?work=euripides-hecuba&lang=grc&edition=40185bc38f8ae812",
+   "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+   "sourceUrn": "urn:cts:greekLit:tlg0006.tlg007.perseus-grc2",
+   "sha256": "40185bc38f8ae812d3e84e2aefcdc74de23004edf337a9030546214b13c769ed",
+   "passages": 262
   },
   {
    "workId": "euripides-helena",
@@ -3055,6 +3224,19 @@
    "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
   },
   {
+   "workId": "euripides-hippolytus",
+   "author": "Eurípides",
+   "title": "Ἱππόλυτος",
+   "language": "grc",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/euripides-hippolytus-grc-e816f91a43cc0e4d.json",
+   "reader": "classics-text-reader.html?work=euripides-hippolytus&lang=grc&edition=e816f91a43cc0e4d",
+   "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+   "sourceUrn": "urn:cts:greekLit:tlg0006.tlg005.perseus-grc2",
+   "sha256": "e816f91a43cc0e4dac2a373727c2cb5b318af395b36817af073ca20af26b8e3e",
+   "passages": 299
+  },
+  {
    "workId": "euripides-ion",
    "author": "Eurípides",
    "title": "Ἴων · Ion",
@@ -3095,6 +3277,19 @@
    "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
   },
   {
+   "workId": "euripides-iphigenia-aulid",
+   "author": "Eurípides",
+   "title": "Ἰφιγένεια ἐν Αὐλίδι",
+   "language": "grc",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/euripides-iphigenia-aulid-grc-1a7cf0a271932833.json",
+   "reader": "classics-text-reader.html?work=euripides-iphigenia-aulid&lang=grc&edition=1a7cf0a271932833",
+   "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+   "sourceUrn": "urn:cts:greekLit:tlg0006.tlg018.perseus-grc2",
+   "sha256": "1a7cf0a271932833c85a4683d143ec11ecac88bd36cc11ab62b33ec03230f3c7",
+   "passages": 425
+  },
+  {
    "workId": "euripides-medea",
    "author": "Eurípides",
    "title": "Μήδεια",
@@ -3113,6 +3308,19 @@
    "path": "data/classics-corpus/euripides-medea-grc.json",
    "reader": "classics-text-reader.html?work=euripides-medea&lang=grc",
    "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+  },
+  {
+   "workId": "euripides-medea",
+   "author": "Eurípides",
+   "title": "Μήδεια",
+   "language": "grc",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/euripides-medea-grc-e30ae176ff19444b.json",
+   "reader": "classics-text-reader.html?work=euripides-medea&lang=grc&edition=e30ae176ff19444b",
+   "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+   "sourceUrn": "urn:cts:greekLit:tlg0006.tlg003.perseus-grc2",
+   "sha256": "e30ae176ff19444b3292d121b01dcb8cc54057a1e91d1f09b87f9536e5cf73ad",
+   "passages": 250
   },
   {
    "workId": "euripides-orestes",
@@ -3175,6 +3383,19 @@
    "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
   },
   {
+   "workId": "euripides-troades",
+   "author": "Eurípides",
+   "title": "Τρῳάδες",
+   "language": "grc",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/euripides-troades-grc-c84c045ca0e6bd1c.json",
+   "reader": "classics-text-reader.html?work=euripides-troades&lang=grc&edition=c84c045ca0e6bd1c",
+   "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+   "sourceUrn": "urn:cts:greekLit:tlg0006.tlg011.perseus-grc2",
+   "sha256": "c84c045ca0e6bd1ce27904343bc8d94ed2c0b3640bfd3c9a2239ddf3323c5cd5",
+   "passages": 229
+  },
+  {
    "workId": "eusebio",
    "author": "Eusebio de Cesarea",
    "title": "Ἐκκλησιαστικὴ ἱστορία · Historia eclesiástica",
@@ -3193,6 +3414,19 @@
    "path": "data/classics-corpus/eusebio-grc.json",
    "reader": "classics-text-reader.html?work=eusebio&lang=grc",
    "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+  },
+  {
+   "workId": "eusebio",
+   "author": "Eusebio de Cesarea",
+   "title": "Ἐκκλησιαστικὴ ἱστορία · Historia eclesiástica",
+   "language": "grc",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/eusebio-grc-c3b4f462dc2721ff.json",
+   "reader": "classics-text-reader.html?work=eusebio&lang=grc&edition=c3b4f462dc2721ff",
+   "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+   "sourceUrn": "urn:cts:greekLit:tlg2018.tlg002.perseus-grc2",
+   "sha256": "c3b4f462dc2721ff637e693c7b56a4f5f264221da235ced6ca18c065906d88bf",
+   "passages": 2198
   },
   {
    "workId": "eutropius-breviarium",
@@ -3884,6 +4118,19 @@
    "sourceDescription": "Perseus TEI · fuente editada documentada, sin colación automática"
   },
   {
+   "workId": "herodotus-historiae",
+   "author": "Heródoto",
+   "title": "Ἱστορίαι",
+   "language": "grc",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/herodotus-historiae-grc-70947463faac0fcc.json",
+   "reader": "classics-text-reader.html?work=herodotus-historiae&lang=grc&edition=70947463faac0fcc",
+   "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+   "sourceUrn": "urn:cts:greekLit:tlg0016.tlg001.perseus-grc2",
+   "sha256": "70947463faac0fcc2eb74397fbd395e5c879d8776f17a297f295df8ce82834f9",
+   "passages": 4341
+  },
+  {
    "workId": "hesiod-theogony",
    "author": "Hesíodo",
    "title": "Theogony",
@@ -3904,6 +4151,19 @@
    "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
   },
   {
+   "workId": "hesiod-theogony",
+   "author": "Hesíodo",
+   "title": "Θεογονία",
+   "language": "grc",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/hesiod-theogony-grc-a225cba98b4e7f8d.json",
+   "reader": "classics-text-reader.html?work=hesiod-theogony&lang=grc&edition=a225cba98b4e7f8d",
+   "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+   "sourceUrn": "urn:cts:greekLit:tlg0020.tlg001.perseus-grc2",
+   "sha256": "a225cba98b4e7f8deacee76277f70963ea46c4e215f1769d7f41b329fd1dd8ee",
+   "passages": 996
+  },
+  {
    "workId": "hesiod-works-days",
    "author": "Hesíodo",
    "title": "Works and Days",
@@ -3922,6 +4182,19 @@
    "path": "data/classics-corpus/hesiod-works-days-grc.json",
    "reader": "classics-text-reader.html?work=hesiod-works-days&lang=grc",
    "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+  },
+  {
+   "workId": "hesiod-works-days",
+   "author": "Hesíodo",
+   "title": "Ἔργα καὶ Ἡμέραι",
+   "language": "grc",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/hesiod-works-days-grc-e0c2c3bd4cb44e9f.json",
+   "reader": "classics-text-reader.html?work=hesiod-works-days&lang=grc&edition=e0c2c3bd4cb44e9f",
+   "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+   "sourceUrn": "urn:cts:greekLit:tlg0020.tlg002.perseus-grc2",
+   "sha256": "e0c2c3bd4cb44e9f59096f4eee1576ad8252d67cfe901140580ff0d271f705d0",
+   "passages": 825
   },
   {
    "workId": "hipocrates-obras",
@@ -3989,6 +4262,19 @@
    "sourceDescription": "La fuente y la atribución se muestran dentro del JSON y del lector; las traducciones no equivalen a alineación por loci."
   },
   {
+   "workId": "homer-iliad",
+   "author": "Homero (autoría tradicional)",
+   "title": "Ἰλιάς",
+   "language": "grc",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/homer-iliad-grc-aca5401c60ffd77c.json",
+   "reader": "classics-text-reader.html?work=homer-iliad&lang=grc&edition=aca5401c60ffd77c",
+   "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+   "sourceUrn": "urn:cts:greekLit:tlg0012.tlg001.perseus-grc2",
+   "sha256": "aca5401c60ffd77cab0786982c5517569259eced9aa7a5c539218e5d3b3a4237",
+   "passages": 9262
+  },
+  {
    "workId": "homer-odyssey",
    "author": "Homero",
    "title": "Ὀδύσσεια",
@@ -4010,6 +4296,19 @@
    "path": "data/classics-corpus/homer-odyssey-grc.json",
    "reader": "classics-text-reader.html?work=homer-odyssey&lang=grc",
    "sourceDescription": "La fuente y la atribución se muestran dentro del JSON y del lector; las traducciones no equivalen a alineación por loci."
+  },
+  {
+   "workId": "homer-odyssey",
+   "author": "Homero (autoría tradicional)",
+   "title": "Ὀδύσσεια",
+   "language": "grc",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/homer-odyssey-grc-58c5474cb0794dad.json",
+   "reader": "classics-text-reader.html?work=homer-odyssey&lang=grc&edition=58c5474cb0794dad",
+   "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+   "sourceUrn": "urn:cts:greekLit:tlg0012.tlg002.perseus-grc2",
+   "sha256": "58c5474cb0794dada69fd4f83124275dc40decbb7ba1bdfaa94978ae4e662d2e",
+   "passages": 4589
   },
   {
    "workId": "homeric-hymns",
