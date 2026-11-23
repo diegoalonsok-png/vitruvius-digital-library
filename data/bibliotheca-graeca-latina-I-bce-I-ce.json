@@ -1062,6 +1062,22 @@
       "urn:cts:latinLit:phi0448.phi002.perseus-lat3"
      ],
      "sha256": "105ecee4f007b3d1c974a200c6105fbfdc911fd80d35c012cef04503799d3619"
+    },
+    {
+     "language": "en",
+     "path": "https://libros.vitruvius-digital-library.org/corpus/caesar-civili-en-f5863c1740e1347a.json",
+     "label": "Traducción humana: Arthur George Peskett",
+     "reader": "classics-text-reader.html?work=caesar-civili&lang=en&edition=f5863c1740e1347a",
+     "sourceUrn": "urn:cts:latinLit:phi0448.phi002.perseus-eng2",
+     "sha256": "f5863c1740e1347a9000ba9e530b7c575fbdcba710ea9e62410628878bd5e8d9"
+    },
+    {
+     "language": "en",
+     "path": "https://libros.vitruvius-digital-library.org/corpus/caesar-civili-en-b8335c9d47be91dc.json",
+     "label": "Traducción humana: William Duncan",
+     "reader": "classics-text-reader.html?work=caesar-civili&lang=en&edition=b8335c9d47be91dc",
+     "sourceUrn": "urn:cts:latinLit:phi0448.phi002.perseus-eng3",
+     "sha256": "b8335c9d47be91dc5ace196c64671a0444d300a1d7080d3ffd664b28dd586832"
     }
    ],
    "indexedEdition": {
@@ -1097,7 +1113,35 @@
     "characters": 238485,
     "bytes": 279071,
     "url": "https://libros.vitruvius-digital-library.org/corpus/caesar-civili-la-105ecee4f007b3d1.json"
-   }
+   },
+   "humanTranslations": [
+    {
+     "language": "en",
+     "translators": [
+      "Arthur George Peskett"
+     ],
+     "publicationYear": 1914,
+     "sourceUrn": "urn:cts:latinLit:phi0448.phi002.perseus-eng2",
+     "license": [
+      "https://creativecommons.org/licenses/by-sa/4.0/"
+     ],
+     "url": "https://libros.vitruvius-digital-library.org/corpus/caesar-civili-en-f5863c1740e1347a.json",
+     "indexUrl": "https://libros.vitruvius-digital-library.org/corpus/indice/traducciones/caesar-civili-en-5f2a4884a7dbe83a.json"
+    },
+    {
+     "language": "en",
+     "translators": [
+      "William Duncan"
+     ],
+     "publicationYear": 1856,
+     "sourceUrn": "urn:cts:latinLit:phi0448.phi002.perseus-eng3",
+     "license": [
+      "https://creativecommons.org/licenses/by-sa/4.0/"
+     ],
+     "url": "https://libros.vitruvius-digital-library.org/corpus/caesar-civili-en-b8335c9d47be91dc.json",
+     "indexUrl": "https://libros.vitruvius-digital-library.org/corpus/indice/traducciones/caesar-civili-en-0a6cc46addcc52ea.json"
+    }
+   ]
   },
   {
    "id": "sallust-catiline",
@@ -24194,6 +24238,14 @@
       "urn:cts:greekLit:tlg0086.tlg010.perseus-grc2"
      ],
      "sha256": "1480c2b104f560a04b157bce582738ec56a336c2cb7849cd75e5c32b85d7ba2a"
+    },
+    {
+     "language": "en",
+     "path": "https://libros.vitruvius-digital-library.org/corpus/aristotle-nicomachean-ethics-en-44c17fa0068276d6.json",
+     "label": "Traducción humana: Harris Rackham",
+     "reader": "classics-text-reader.html?work=aristotle-nicomachean-ethics&lang=en&edition=44c17fa0068276d6",
+     "sourceUrn": "urn:cts:greekLit:tlg0086.tlg010.perseus-eng2",
+     "sha256": "44c17fa0068276d6c7f9d40afed83e02841ed0b53c60efe034039401b9df3313"
     }
    ],
    "indexationAudit": {
@@ -24296,7 +24348,22 @@
     "characters": 330143,
     "bytes": 671495,
     "url": "https://libros.vitruvius-digital-library.org/corpus/aristotle-nicomachean-ethics-grc-1480c2b104f560a0.json"
-   }
+   },
+   "humanTranslations": [
+    {
+     "language": "en",
+     "translators": [
+      "Harris Rackham"
+     ],
+     "publicationYear": 1926,
+     "sourceUrn": "urn:cts:greekLit:tlg0086.tlg010.perseus-eng2",
+     "license": [
+      "https://creativecommons.org/licenses/by-sa/4.0/"
+     ],
+     "url": "https://libros.vitruvius-digital-library.org/corpus/aristotle-nicomachean-ethics-en-44c17fa0068276d6.json",
+     "indexUrl": "https://libros.vitruvius-digital-library.org/corpus/indice/traducciones/aristotle-nicomachean-ethics-en-48f2afd7a36c618a.json"
+    }
+   ]
   },
   {
    "id": "aristotle-metaphysics",
@@ -24704,7 +24771,8 @@
     "note": "Pasajes de De architectura en los que Vitruvio nombra a este autor (latín de la edición V514); la mención no implica cita literal de esta obra concreta."
    },
    "corpusFiles": {
-    "grc": "data/classics-corpus/aristotle-rhetoric-grc.json"
+    "grc": "data/classics-corpus/aristotle-rhetoric-grc.json",
+    "en": "https://libros.vitruvius-digital-library.org/corpus/aristotle-rhetoric-en-5ada8f0f9a8427ed.json"
    },
    "indexationAudit": {
     "previousPublicStatus": "repertoriado-busqueda-externa",
@@ -24784,6 +24852,14 @@
       "urn:cts:greekLit:tlg0086.tlg038.perseus-grc2"
      ],
      "sha256": "11046daae99b48ebe968e6f6e5b4f6036928add37630a95264cb1b98f9110c50"
+    },
+    {
+     "language": "en",
+     "path": "https://libros.vitruvius-digital-library.org/corpus/aristotle-rhetoric-en-5ada8f0f9a8427ed.json",
+     "label": "Traducción humana: John Henry Freese",
+     "reader": "classics-text-reader.html?work=aristotle-rhetoric&lang=en&edition=5ada8f0f9a8427ed",
+     "sourceUrn": "urn:cts:greekLit:tlg0086.tlg038.perseus-eng2",
+     "sha256": "5ada8f0f9a8427edc7725b259d28d6e4978e3d99746df88ea4b04f66a5c55616"
     }
    ],
    "indexedEdition": {
@@ -24817,7 +24893,22 @@
     "characters": 257183,
     "bytes": 654301,
     "url": "https://libros.vitruvius-digital-library.org/corpus/aristotle-rhetoric-grc-11046daae99b48eb.json"
-   }
+   },
+   "humanTranslations": [
+    {
+     "language": "en",
+     "translators": [
+      "John Henry Freese"
+     ],
+     "publicationYear": 1926,
+     "sourceUrn": "urn:cts:greekLit:tlg0086.tlg038.perseus-eng2",
+     "license": [
+      "https://creativecommons.org/licenses/by-sa/4.0/"
+     ],
+     "url": "https://libros.vitruvius-digital-library.org/corpus/aristotle-rhetoric-en-5ada8f0f9a8427ed.json",
+     "indexUrl": "https://libros.vitruvius-digital-library.org/corpus/indice/traducciones/aristotle-rhetoric-en-bcc80e5968a03a55.json"
+    }
+   ]
   },
   {
    "id": "aristotle-de-anima",

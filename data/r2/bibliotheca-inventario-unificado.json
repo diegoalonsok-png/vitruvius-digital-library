@@ -1,6 +1,6 @@
 {
   "schema": "vdl-federated-bibliotheca-inventory-v1",
-  "generated": "2026-11-23T21:35:34.213713+00:00",
+  "generated": "2026-11-23T22:17:44.753916+00:00",
   "method": "Master works and additional R2 works counted separately; edition relations can be many-to-many. Remote text URLs are declared, not live-verified. Unresolved editions are never merged automatically.",
   "counts": {
     "cataloguedWorks": 467,
@@ -2256,6 +2256,14 @@
         }
       ],
       "declaredRemoteIndexedText": [
+        {
+          "language": "en",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/caesar-civili-en-b8335c9d47be91dc.json"
+        },
+        {
+          "language": "en",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/caesar-civili-en-f5863c1740e1347a.json"
+        },
         {
           "language": "la",
           "url": "https://libros.vitruvius-digital-library.org/corpus/caesar-civili-la-105ecee4f007b3d1.json"
@@ -5288,6 +5296,10 @@
       ],
       "declaredRemoteIndexedText": [
         {
+          "language": "en",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/aristotle-nicomachean-ethics-en-44c17fa0068276d6.json"
+        },
+        {
           "language": "grc",
           "url": "https://libros.vitruvius-digital-library.org/corpus/aristotle-nicomachean-ethics-grc-1480c2b104f560a0.json"
         }
@@ -5363,6 +5375,10 @@
         }
       ],
       "declaredRemoteIndexedText": [
+        {
+          "language": "en",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/aristotle-rhetoric-en-5ada8f0f9a8427ed.json"
+        },
         {
           "language": "grc",
           "url": "https://libros.vitruvius-digital-library.org/corpus/aristotle-rhetoric-grc-11046daae99b48eb.json"

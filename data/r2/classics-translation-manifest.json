@@ -1,6 +1,6 @@
 {
  "schema": "vdl-classics-translation-manifest-v1",
- "generated": "2026-11-23T09:52:17.767715+00:00",
+ "generated": "2026-11-23T22:17:44.623718+00:00",
  "method": "Traducciones humanas TEI licenciadas y publicadas en R2 con SHA-256, índice literal por pasaje, sin alineación automática",
  "editions": [
   {
@@ -745,6 +745,98 @@
    ],
    "indexUrl": "https://libros.vitruvius-digital-library.org/corpus/indice/traducciones/cts-phi0474-phi007-en-8fdd59a854b7456a.json",
    "indexSha256": "8fdd59a854b7456a8d5b0a9455693abaf97703f3002611eea360d623f692b8c3"
+  },
+  {
+   "workId": "aristotle-nicomachean-ethics",
+   "author": "Aristóteles",
+   "title": "Ἠθικὰ Νικομάχεια",
+   "language": "en",
+   "filename": "aristotle-nicomachean-ethics-en-44c17fa0068276d6.json",
+   "url": "https://libros.vitruvius-digital-library.org/corpus/aristotle-nicomachean-ethics-en-44c17fa0068276d6.json",
+   "sha256": "44c17fa0068276d6c7f9d40afed83e02841ed0b53c60efe034039401b9df3313",
+   "passages": 1313,
+   "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0086/tlg010/tlg0086.tlg010.perseus-eng2.xml",
+   "sourceUrn": "urn:cts:greekLit:tlg0086.tlg010.perseus-eng2",
+   "sourceSha256": "ffbd530e99b34ebab4332f98aa456aa930a671e6125db26e18d4d7c68bc3948f",
+   "sourceArchived": "https://libros.vitruvius-digital-library.org/corpus/fuentes/ffbd530e99b34ebab4332f98aa456aa930a671e6125db26e18d4d7c68bc3948f.xml",
+   "translators": [
+    "Harris Rackham"
+   ],
+   "publicationYear": 1926,
+   "license": [
+    "https://creativecommons.org/licenses/by-sa/4.0/"
+   ],
+   "indexUrl": "https://libros.vitruvius-digital-library.org/corpus/indice/traducciones/aristotle-nicomachean-ethics-en-48f2afd7a36c618a.json",
+   "indexSha256": "48f2afd7a36c618a256542cbe06aa4a8050c17d87b652142a2854a851fd63786"
+  },
+  {
+   "workId": "aristotle-rhetoric",
+   "author": "Aristóteles",
+   "title": "Ῥητορική",
+   "language": "en",
+   "filename": "aristotle-rhetoric-en-5ada8f0f9a8427ed.json",
+   "url": "https://libros.vitruvius-digital-library.org/corpus/aristotle-rhetoric-en-5ada8f0f9a8427ed.json",
+   "sha256": "5ada8f0f9a8427edc7725b259d28d6e4978e3d99746df88ea4b04f66a5c55616",
+   "passages": 913,
+   "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0086/tlg038/tlg0086.tlg038.perseus-eng2.xml",
+   "sourceUrn": "urn:cts:greekLit:tlg0086.tlg038.perseus-eng2",
+   "sourceSha256": "9b376a0eb82ceab13d4783e446a729240ff7c0468dd1c8a43bb48d4c48896bfd",
+   "sourceArchived": "https://libros.vitruvius-digital-library.org/corpus/fuentes/9b376a0eb82ceab13d4783e446a729240ff7c0468dd1c8a43bb48d4c48896bfd.xml",
+   "translators": [
+    "John Henry Freese"
+   ],
+   "publicationYear": 1926,
+   "license": [
+    "https://creativecommons.org/licenses/by-sa/4.0/"
+   ],
+   "indexUrl": "https://libros.vitruvius-digital-library.org/corpus/indice/traducciones/aristotle-rhetoric-en-bcc80e5968a03a55.json",
+   "indexSha256": "bcc80e5968a03a55f1cb3fb3bb9ff300dbcfbd3165895a2d6ee8dfaa7666e9ba"
+  },
+  {
+   "workId": "caesar-civili",
+   "author": "Julio César",
+   "title": "Commentarii de bello civili",
+   "language": "en",
+   "filename": "caesar-civili-en-f5863c1740e1347a.json",
+   "url": "https://libros.vitruvius-digital-library.org/corpus/caesar-civili-en-f5863c1740e1347a.json",
+   "sha256": "f5863c1740e1347a9000ba9e530b7c575fbdcba710ea9e62410628878bd5e8d9",
+   "passages": 243,
+   "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0448/phi002/phi0448.phi002.perseus-eng2.xml",
+   "sourceUrn": "urn:cts:latinLit:phi0448.phi002.perseus-eng2",
+   "sourceSha256": "90665a4ad046e9199f2896eeded5f8427d43c4f2d84dc721c64254d37d762ff6",
+   "sourceArchived": "https://libros.vitruvius-digital-library.org/corpus/fuentes/90665a4ad046e9199f2896eeded5f8427d43c4f2d84dc721c64254d37d762ff6.xml",
+   "translators": [
+    "Arthur George Peskett"
+   ],
+   "publicationYear": 1914,
+   "license": [
+    "https://creativecommons.org/licenses/by-sa/4.0/"
+   ],
+   "indexUrl": "https://libros.vitruvius-digital-library.org/corpus/indice/traducciones/caesar-civili-en-5f2a4884a7dbe83a.json",
+   "indexSha256": "5f2a4884a7dbe83ae91f1edba3fccb2d9ef8fe7351a35d918704e6207863d3d0"
+  },
+  {
+   "workId": "caesar-civili",
+   "author": "Julio César",
+   "title": "Commentarii de bello civili",
+   "language": "en",
+   "filename": "caesar-civili-en-b8335c9d47be91dc.json",
+   "url": "https://libros.vitruvius-digital-library.org/corpus/caesar-civili-en-b8335c9d47be91dc.json",
+   "sha256": "b8335c9d47be91dc5ace196c64671a0444d300a1d7080d3ffd664b28dd586832",
+   "passages": 259,
+   "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0448/phi002/phi0448.phi002.perseus-eng3.xml",
+   "sourceUrn": "urn:cts:latinLit:phi0448.phi002.perseus-eng3",
+   "sourceSha256": "39159e8e76395fadecd603498559e3fcd409fde62c6db36a04e421907d2e1630",
+   "sourceArchived": "https://libros.vitruvius-digital-library.org/corpus/fuentes/39159e8e76395fadecd603498559e3fcd409fde62c6db36a04e421907d2e1630.xml",
+   "translators": [
+    "William Duncan"
+   ],
+   "publicationYear": 1856,
+   "license": [
+    "https://creativecommons.org/licenses/by-sa/4.0/"
+   ],
+   "indexUrl": "https://libros.vitruvius-digital-library.org/corpus/indice/traducciones/caesar-civili-en-0a6cc46addcc52ea.json",
+   "indexSha256": "0a6cc46addcc52ead7a3d786e492fb774aee8c00737938f74cb689a7ae9b6c93"
   }
  ],
  "lastDeferred": [
@@ -765,20 +857,44 @@
    "reason": "No hay traducción TEI descargable en Perseus"
   },
   {
-   "workId": "cassius-dio-historia",
+   "workId": "aristophanes-ranae",
    "reason": "No hay traducción TEI descargable en Perseus"
   },
   {
-   "workId": "cicero-tusculanae",
+   "workId": "aristophanes-vespae",
    "reason": "No hay traducción TEI descargable en Perseus"
   },
   {
-   "workId": "cleonides-harmonica",
+   "workId": "aristoteles-del-cielo",
    "reason": "No hay traducción TEI descargable en Perseus"
   },
   {
-   "workId": "cts-ogl0001-ogl001",
+   "workId": "aristoteles-historia-animales",
    "reason": "No hay traducción TEI descargable en Perseus"
+  },
+  {
+   "workId": "aristoteles-meteorologica",
+   "reason": "No hay traducción TEI descargable en Perseus"
+  },
+  {
+   "workId": "aristotle-de-anima",
+   "reason": "No hay traducción TEI descargable en Perseus"
+  },
+  {
+   "workId": "aristotle-metaphysics",
+   "reason": "Sin traducción publicable: tlg0086.tlg025.perseus-eng2.xml: Edición histórica anterior a 1931 no acreditada"
+  },
+  {
+   "workId": "aristotle-physics",
+   "reason": "No hay traducción TEI descargable en Perseus"
+  },
+  {
+   "workId": "aristotle-poetics",
+   "reason": "Sin traducción publicable: tlg0086.tlg034.perseus-eng2.xml: Edición histórica anterior a 1931 no acreditada"
+  },
+  {
+   "workId": "aristotle-politics",
+   "reason": "Sin traducción publicable: tlg0086.tlg035.perseus-eng2.xml: Edición histórica anterior a 1931 no acreditada"
   }
  ],
  "policy": "Una obra bibliográfica, varias versiones humanas identificadas por URN, sin eliminar ni reemplazar ninguna"

@@ -2,7 +2,7 @@
  "schema": "vitruvia-classics-search-registry-v1",
  "updated": "2026-11-23",
  "description": "Registro verificable de transcripciones HTML y textos JSON existentes que admiten búsqueda literal de contenido. No incluye automáticamente PDF escaneados, facsímiles ni fichas sin texto. Los índices auxiliares por locus y el aparato crítico se declaran por separado; no se suman a versiones textuales originales ni implican colación autóptica.",
- "count": 787,
+ "count": 791,
  "works": 566,
  "entries": [
   {
@@ -638,6 +638,19 @@
    "workId": "aristotle-nicomachean-ethics",
    "author": "Aristóteles",
    "title": "Ἠθικὰ Νικομάχεια",
+   "language": "en",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/aristotle-nicomachean-ethics-en-44c17fa0068276d6.json",
+   "reader": "classics-text-reader.html?work=aristotle-nicomachean-ethics&lang=en&edition=44c17fa0068276d6",
+   "sourceDescription": "Traducción humana acreditada: Harris Rackham; TEI Perseus, licencia y SHA256 verificados",
+   "sourceUrn": "urn:cts:greekLit:tlg0086.tlg010.perseus-eng2",
+   "sha256": "44c17fa0068276d6c7f9d40afed83e02841ed0b53c60efe034039401b9df3313",
+   "passages": 1313
+  },
+  {
+   "workId": "aristotle-nicomachean-ethics",
+   "author": "Aristóteles",
+   "title": "Ἠθικὰ Νικομάχεια",
    "language": "grc",
    "format": "json-passages",
    "path": "data/classics-corpus/aristotle-nicomachean-ethics-grc.json",
@@ -755,6 +768,19 @@
    "path": "data/classics-corpus/aristotle-rhetoric-en.json",
    "reader": "classics-text-reader.html?work=aristotle-rhetoric&lang=en",
    "sourceDescription": "Traducción inglesa humana John Henry Freese (1926), Perseus Digital Library TEI (CC BY-SA 4.0); 882 secciones citables de edición, sin alineación automática griego-inglés."
+  },
+  {
+   "workId": "aristotle-rhetoric",
+   "author": "Aristóteles",
+   "title": "Ῥητορική",
+   "language": "en",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/aristotle-rhetoric-en-5ada8f0f9a8427ed.json",
+   "reader": "classics-text-reader.html?work=aristotle-rhetoric&lang=en&edition=5ada8f0f9a8427ed",
+   "sourceDescription": "Traducción humana acreditada: John Henry Freese; TEI Perseus, licencia y SHA256 verificados",
+   "sourceUrn": "urn:cts:greekLit:tlg0086.tlg038.perseus-eng2",
+   "sha256": "5ada8f0f9a8427edc7725b259d28d6e4978e3d99746df88ea4b04f66a5c55616",
+   "passages": 913
   },
   {
    "workId": "aristotle-rhetoric",
@@ -926,6 +952,32 @@
    "path": "data/classics-corpus/caesar-civili-en.json",
    "reader": "classics-text-reader.html?work=caesar-civili&lang=en",
    "sourceDescription": "PerseusDL TEI CC BY-SA 4.0, tres libros, 243 capítulos; cotejo por locus editorial, no alineación automática."
+  },
+  {
+   "workId": "caesar-civili",
+   "author": "Julio César",
+   "title": "Commentarii de bello civili",
+   "language": "en",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/caesar-civili-en-b8335c9d47be91dc.json",
+   "reader": "classics-text-reader.html?work=caesar-civili&lang=en&edition=b8335c9d47be91dc",
+   "sourceDescription": "Traducción humana acreditada: William Duncan; TEI Perseus, licencia y SHA256 verificados",
+   "sourceUrn": "urn:cts:latinLit:phi0448.phi002.perseus-eng3",
+   "sha256": "b8335c9d47be91dc5ace196c64671a0444d300a1d7080d3ffd664b28dd586832",
+   "passages": 259
+  },
+  {
+   "workId": "caesar-civili",
+   "author": "Julio César",
+   "title": "Commentarii de bello civili",
+   "language": "en",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/caesar-civili-en-f5863c1740e1347a.json",
+   "reader": "classics-text-reader.html?work=caesar-civili&lang=en&edition=f5863c1740e1347a",
+   "sourceDescription": "Traducción humana acreditada: Arthur George Peskett; TEI Perseus, licencia y SHA256 verificados",
+   "sourceUrn": "urn:cts:latinLit:phi0448.phi002.perseus-eng2",
+   "sha256": "f5863c1740e1347a9000ba9e530b7c575fbdcba710ea9e62410628878bd5e8d9",
+   "passages": 243
   },
   {
    "workId": "caesar-civili",
