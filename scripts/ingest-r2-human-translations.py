@@ -187,14 +187,29 @@ def acquire(limit):
     catalogue=m.read(CATALOGUE)
     known={w["id"] for w in catalogue["works"]}
     reg=m.read(REGISTRY)
-    covered={(e["workId"],e["language"]) for e in reg["entries"]}
     previous=m.read(MANIFEST).get("editions",[]) if MANIFEST.exists() else []
-    covered.update((e["workId"],e["language"]) for e in previous)
+    # Uniqueness belongs to the specific translation edition, not merely
+    # its work, author, title or language. Two English translations can coexist.
+    published_urns={e.get("sourceUrn") for e in previous if e.get("sourceUrn")}
+    for work in catalogue["works"]:
+        for version in work.get("humanTranslations",[]):
+            if version.get("sourceUrn"): published_urns.add(version["sourceUrn"])
+        for version in work.get("localVersions",[]):
+            if version.get("sourceUrn"): published_urns.add(version["sourceUrn"])
     original=m.read(ORIGINALS).get("editions",[])
-    options=[r for r in original if r["workId"] in known
-             and r["language"] in ("grc","la")
-             and any((r["workId"],lang) not in covered for lang in ("en","fr","es"))]
-    # Source language is preserved; translations do not create a second work.
+    # Identical original work/source combinations are not queried repeatedly.
+    options=[]
+    seen_originals=set()
+    for row in original:
+        if row["workId"] not in known or row["language"] not in ("grc","la"): continue
+        codes=[]
+        for src in row.get("sources",[]):
+            match=WORK_CODE.search(src.get("editionUrn",""))
+            if match: codes.append(match.group(1))
+        identity=(row["workId"],tuple(sorted(set(codes))))
+        if identity not in seen_originals:
+            options.append(row)
+            seen_originals.add(identity)
     options.sort(key=lambda r:(r["workId"],r["title"]))
     report={"generated":datetime.now(timezone.utc).isoformat(),"considered":len(options),
             "published":[],"deferred":[]}
@@ -214,23 +229,26 @@ def acquire(limit):
                 match=re.search(r"\.perseus-(eng|fre|fra|spa)\d+\.xml$",src["filename"])
                 if not match: continue
                 lang=lang_codes[match.group(1)]
-                if (row["workId"],lang) in covered: continue
-                eligible.append((rank[lang],lang,src))
+                stem=src["filename"].removesuffix(".xml")
+                namespace="latinLit" if row["language"]=="la" else "greekLit"
+                edition_urn="urn:cts:"+namespace+":"+stem
+                if edition_urn in published_urns: continue
+                eligible.append((rank[lang],lang,src,edition_urn))
             eligible.sort(key=lambda x:(x[0],x[2]["filename"]))
             if not eligible: continue
             errors=[]
             obtained=0
-            for _,lang,src in eligible:
+            for _,lang,src,urn in eligible:
                 if len(report["published"])>=limit: break
-                if (row["workId"],lang) in covered: continue
+                if urn in published_urns: continue
                 try:
                     found=publish(row,src,s3,bucket)
-                    if found["language"]!=lang:
-                        raise ValueError("Idioma del fichero y TEI no coincide")
+                    if found["language"]!=lang or found["sourceUrn"]!=urn:
+                        raise ValueError("Identidad del fichero y TEI no coincide")
                     report["published"].append(found)
-                    covered.add((found["workId"],found["language"]))
+                    published_urns.add(found["sourceUrn"])
                     obtained+=1
-                    print("VERIFIED_TRANSLATION",row["workId"],lang,found["passages"],flush=True)
+                    print("VERIFIED_TRANSLATION",row["workId"],lang,urn,found["passages"],flush=True)
                 except Exception as exc:
                     errors.append(src["filename"]+": "+str(exc)[:180])
             if not obtained and errors:
@@ -248,38 +266,45 @@ def finalize():
     cat=m.read(CATALOGUE)
     reg=m.read(REGISTRY)
     byid={w["id"]:w for w in cat["works"]}
-    entries={(e["workId"],e["language"]):e for e in reg["entries"]}
+    entries={(e["workId"],e["language"],e["path"]):e for e in reg["entries"]}
     prior=m.read(MANIFEST) if MANIFEST.exists() else {"schema":"vdl-classics-translation-manifest-v1","editions":[]}
-    mapped={(e["workId"],e["language"]):e for e in prior.get("editions",[])}
+    mapped={(e["workId"],e["sourceUrn"]):e for e in prior.get("editions",[])}
+    count_new=0
     for row in rows:
         wid,lang=row["workId"],row["language"]
         if wid not in byid: raise ValueError("Traducción sin obra original catalogada: "+wid)
-        if (wid,lang) in entries:
-            # Never silently overwrite another published translation.
-            if entries[(wid,lang)]["path"]!=row["url"]:
-                raise ValueError("Ya existe traducción distinta: "+wid+"/"+lang)
+        identity=(wid,row["sourceUrn"])
+        old=mapped.get(identity)
+        if old and (old["url"]!=row["url"] or old["sha256"]!=row["sha256"]):
+            raise ValueError("No se reemplaza ni reescribe una edición traducida existente")
+        key=(wid,lang,row["url"])
+        if key in entries:
+            if entries[key].get("sha256") and entries[key]["sha256"]!=row["sha256"]:
+                raise ValueError("Archivo de edición existente con hash discordante")
             continue
         w=byid[wid]
         reader="classics-text-reader.html?work="+wid+"&lang="+lang
         v={"language":lang,"path":row["url"],"label":"Traducción humana: "+", ".join(row["translators"]),
-           "reader":reader,"sourceUrn":row["sourceUrn"]}
+           "reader":reader,"sourceUrn":row["sourceUrn"],"sha256":row["sha256"]}
         w.setdefault("localVersions",[])
-        if not any(x.get("path")==row["url"] for x in w["localVersions"]): w["localVersions"].append(v)
+        if not any(x.get("path")==row["url"] for x in w["localVersions"]):
+            w["localVersions"].append(v)
         files=w.setdefault("corpusFiles",{})
-        if lang in files and files[lang]!=row["url"]:
-            raise ValueError("Otra versión ya almacenada en la ficha: "+wid)
-        files[lang]=row["url"]
+        # This mapping identifies the established DEFAULT; new versions are
+        # catalogued separately and must not take away the previous selection.
+        files.setdefault(lang,row["url"])
         w.setdefault("humanTranslations",[])
         if not any(x.get("sourceUrn")==row["sourceUrn"] for x in w["humanTranslations"]):
             w["humanTranslations"].append({"language":lang,"translators":row["translators"],
                 "publicationYear":row["publicationYear"],"sourceUrn":row["sourceUrn"],
                 "license":row["license"],"url":row["url"],"indexUrl":row["indexUrl"]})
-        entries[(wid,lang)]={"workId":wid,"author":w["author"],"title":w["title"],"language":lang,
+        entries[key]={"workId":wid,"author":w["author"],"title":w["title"],"language":lang,
           "format":"json-passages","path":row["url"],"reader":reader,
           "sourceDescription":"Traducción humana acreditada: "+", ".join(row["translators"])+"; TEI Perseus, licencia y SHA256 verificados",
-          "sha256":row["sha256"],"passages":row["passages"]}
-        mapped[(wid,lang)]=row
-    reg["entries"]=sorted(entries.values(),key=lambda r:(r["workId"],r["language"]))
+          "sourceUrn":row["sourceUrn"],"sha256":row["sha256"],"passages":row["passages"]}
+        mapped.setdefault(identity,row)
+        count_new+=1
+    reg["entries"]=sorted(entries.values(),key=lambda r:(r["workId"],r["language"],r["path"]))
     reg["count"]=len(entries)
     reg["works"]=len({e["workId"] for e in entries.values()})
     reg["updated"]=datetime.now(timezone.utc).date().isoformat()
@@ -288,8 +313,8 @@ def finalize():
       "generated":datetime.now(timezone.utc).isoformat(),
       "method":"Traducciones humanas TEI licenciadas y publicadas en R2 con SHA-256, índice literal por pasaje, sin alineación automática",
       "editions":list(mapped.values()),"lastDeferred":report.get("deferred",[]),
-      "policy":"No se reemplazan originales, traducciones previas, facsímiles ni índices de GitHub"})
-    print(json.dumps({"newTranslations":len(rows),"totalTranslationRecords":len(mapped),"registryVersions":len(entries)}))
+      "policy":"Una obra bibliográfica, varias versiones humanas identificadas por URN, sin eliminar ni reemplazar ninguna"})
+    print(json.dumps({"newTranslations":count_new,"totalTranslationRecords":len(mapped),"registryVersions":len(entries)}))
 
 def selftest():
     example=b"""<TEI xmlns="http://www.tei-c.org/ns/1.0"><teiHeader><fileDesc><titleStmt><title>Sample</title><editor role="translator">A. Translator</editor></titleStmt><publicationStmt><availability><licence target="https://creativecommons.org/licenses/by-sa/4.0/"/></availability></publicationStmt><sourceDesc><bibl><date>1891</date>Old edition</bibl></sourceDesc></fileDesc></teiHeader><text xml:lang="eng"><body><div type="translation" xml:lang="eng" n="urn:cts:greekLit:tlg0006.tlg001.perseus-eng2"><div n="1"><p>A sentence of translated text.</p></div></div></body></text></TEI>"""
