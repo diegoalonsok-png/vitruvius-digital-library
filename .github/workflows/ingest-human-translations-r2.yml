@@ -11,6 +11,7 @@ on:
     paths:
       - '.github/workflows/ingest-human-translations-r2.yml'
       - 'scripts/ingest-r2-human-translations.py'
+      - 'scripts/check-bibliotheca-github-metadata-only.py'
 permissions:
   contents: write
 concurrency:
@@ -79,6 +80,7 @@ jobs:
             python scripts/sync-bibliotheca-github-r2.py
             node scripts/audit-classical-corpus.mjs
             git add data/bibliotheca-graeca-latina-I-bce-I-ce.json data/classics-corpus/search-registry.json data/r2/classics-translation-manifest.json data/classics-corpus/coverage-audit.json data/classics-corpus/translation-availability-222.json data/r2/bibliotheca-inventario-unificado.json data/cifras-corpus.json
+            python scripts/check-bibliotheca-github-metadata-only.py
             if git diff --cached --quiet; then published=yes; break; fi
             git commit -m 'Publicar traducciones humanas verificadas en R2 e indexarlas en Bibliotheca'
             if git push origin HEAD:main; then published=yes; break; fi
