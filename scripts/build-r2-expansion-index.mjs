@@ -16,7 +16,39 @@ const conceptus=JSON.parse(conceptRaw);
 if(conceptus.schema!=="vitruvia-lexicon-conceptus-v1"||!Array.isArray(conceptus.concepts))throw Error("Conceptus schema changed");
 const conceptSha256=createHash("sha256").update(conceptRaw).digest("hex");
 const report=JSON.parse(readFileSync(join(folder,"prepared.json"),"utf8"));
-const rows=report.published.length?report.published:report.prepared;
+// Incremental publication reuses immutable, SHA-verified older index segments.
+// New editions get their own segments; old R2 shards are not downloaded/re-uploaded.
+const incremental=process.argv.includes("--incremental");
+const allRows=report.published.length?report.published:report.prepared;
+const previousEditions=JSON.parse(readFileSync("data/r2/classics-expansion-manifest.json","utf8")).editions||[];
+const oldUrls=new Set(previousEditions.map(row=>row.url));
+const rows=incremental?report.prepared.filter(row=>!oldUrls.has(row.url)):allRows;
+let oldSegments=[];
+if(incremental&&previousEditions.length){
+ const descriptor=JSON.parse(readFileSync("data/r2/classics-expansion-index.json","utf8"));
+ if(!/^https:\/\/libros\.vitruvius-digital-library\.org\/corpus\/indice\/ampliacion\/[a-f0-9]{24}\/manifest\.json$/.test(descriptor.url||""))
+  throw Error("Previous index descriptor URL not admissible");
+ const response=await fetch(descriptor.url,{signal:AbortSignal.timeout(60000)});
+ if(!response.ok)throw Error("Previous immutable R2 index unavailable: HTTP "+response.status);
+ const raw=Buffer.from(await response.arrayBuffer());
+ if(createHash("sha256").update(raw).digest("hex")!==descriptor.sha256)
+  throw Error("Previous index SHA256 does not match descriptor");
+ const manifest=JSON.parse(raw.toString("utf8"));
+ if(manifest.schema!=="vdl-classics-index-segments-v1"||!Array.isArray(manifest.segments)||
+    manifest.works!==descriptor.works||manifest.works!==previousEditions.length)
+  throw Error("Previous index/edition count mismatch");
+ const base=descriptor.url.replace(/manifest\\.json$/,"");
+ oldSegments=manifest.segments.map(segment=>{
+  const path=segment.file;
+  const absolute=/^https:\/\/libros\.vitruvius-digital-library\.org\/corpus\/indice\/ampliacion\/[a-f0-9]{24}\/segment-\d{4}\/manifest\.json$/.test(path);
+  if(!absolute&&!/^segment-\d{4}\/manifest\.json$/.test(path))
+   throw Error("Invalid previous index segment URL");
+  return {...segment,file:absolute?path:base+path};
+ });
+ if(oldSegments.reduce((sum,x)=>sum+x.works,0)!==manifest.works)
+  throw Error("Prior segment coverage mismatch");
+}
+if(incremental&&!rows.length)throw Error("No new editions: skip the index publication step");
 function build(rows,out){
 const works=[],index=new Map(),forms=new Map(),stemCache=new Map();let totalTokens=0,totalPassages=0;
 function post(map,key,workIndex,passageIndex){
@@ -124,13 +156,16 @@ const manifest={schema:"vitruvia-classics-lexical-index-v1",generated:new Date()
 writeFileSync(join(out,"manifest.json"),JSON.stringify(manifest));
 return {works:works.length,passages:totalPassages,tokens:totalTokens,languages,sha256:createHash("sha256").update(JSON.stringify(manifest)).digest("hex")};
 }
-const out=join(folder,"index"),segments=[];mkdirSync(out,{recursive:true});
+const out=join(folder,"index"),segments=[...oldSegments];mkdirSync(out,{recursive:true});
 for(let offset=0;offset<rows.length;offset+=120){
- const part="segment-"+String(segments.length+1).padStart(4,"0");
+ const part="segment-"+String(offset/120+1).padStart(4,"0");
  const summary=build(rows.slice(offset,offset+120),join(out,part));
  segments.push({file:part+"/manifest.json",...summary});
  console.log(JSON.stringify({segment:part,...summary}));
 }
 const root={schema:"vdl-classics-index-segments-v1",generated:new Date().toISOString(),works:segments.reduce((n,s)=>n+s.works,0),passages:segments.reduce((n,s)=>n+s.passages,0),tokens:segments.reduce((n,s)=>n+s.tokens,0),segments};
+if(incremental&&(root.works!==allRows.length||
+  root.passages!==allRows.reduce((sum,row)=>sum+row.passages,0)))
+ throw Error("Incremental index must contain every registered edition/passsage");
 writeFileSync(join(out,"manifest.json"),JSON.stringify(root));
 console.log(JSON.stringify({works:root.works,passages:root.passages,segments:segments.length}));
