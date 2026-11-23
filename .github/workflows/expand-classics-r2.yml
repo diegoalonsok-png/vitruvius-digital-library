@@ -29,6 +29,7 @@ on:
     branches: [main]
     paths:
       - '.github/workflows/expand-classics-r2.yml'
+      - 'data/r2/classics-expansion-manifest.json'
       - 'scripts/expand-classics-r2.py'
       - 'assets/classics-lexical-index.js'
       - 'scripts/check-bibliotheca-github-metadata-only.py'
