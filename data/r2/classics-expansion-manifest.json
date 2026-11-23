@@ -1,10 +1,10 @@
 {
  "schema": "vdl-classics-expansion-manifest-v1",
- "generated": "2026-11-23T07:45:05.512813+00:00",
+ "generated": "2026-11-23T18:53:17.892092+00:00",
  "discovery": {
-  "sourceRecords": 1830,
-  "alreadyIndexedCatalogueWorks": 269,
-  "pendingGroups": 1738,
+  "sourceRecords": 1808,
+  "alreadyIndexedCatalogueWorks": 291,
+  "pendingGroups": 1716,
   "policy": "Una obra bibliográfica, múltiples ediciones identificadas por URN y hash; sin sustituir ni duplicar archivos",
   "githubTextFiles": 450,
   "githubUnregisteredFiles": 14,
@@ -12236,6 +12236,500 @@
    "characters": 18200,
    "bytes": 42228,
    "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg001-grc-5a31676d0243490e.json"
+  },
+  {
+   "workId": "plato-crito",
+   "author": "Platón",
+   "title": "Κρίτων",
+   "language": "grc",
+   "sources": [
+    {
+     "title": "Κρίτων",
+     "titleLanguage": "grc",
+     "author": "Plato",
+     "editors": [
+      "John Burnet"
+     ],
+     "bibliography": "Plato Platonis Opera John Burnet Oxford Clarendon Press 1905 1 Internet Archive",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg0059.tlg003.perseus-grc2",
+     "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0059/tlg003/tlg0059.tlg003.perseus-grc2.xml",
+     "sourceSha256": "8083e9b4dadf7d7e49ed0f6ea5ce787bffcc1ea1d3a5f329e795f129b4450701",
+     "sourceReferences": [
+      "https://archive.org/details/operarecognovitb01platuoft/page/25/mode/1up"
+     ],
+     "publicationYear": "1905",
+     "publisher": "Clarendon Press",
+     "publicationPlace": "Oxford",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/8083e9b4dadf7d7e49ed0f6ea5ce787bffcc1ea1d3a5f329e795f129b4450701.xml"
+    }
+   ],
+   "existing": true,
+   "filename": "plato-crito-grc-1838b50a9751d0db.json",
+   "sha256": "1838b50a9751d0db4950ac75462689b2dc0e29143d2140f8c1a55ee7c4b8bdf0",
+   "passages": 103,
+   "characters": 24859,
+   "bytes": 66501,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/plato-crito-grc-1838b50a9751d0db.json"
+  },
+  {
+   "workId": "plato-gorgias",
+   "author": "Platón",
+   "title": "Γοργίας",
+   "language": "grc",
+   "sources": [
+    {
+     "title": "Γοργίας",
+     "titleLanguage": "grc",
+     "author": "Plato",
+     "editors": [
+      "John Burnet"
+     ],
+     "bibliography": "Plato Platonis Opera John Burnet Oxford Clarendon Press 1903 3 Internet Archive",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg0059.tlg023.perseus-grc2",
+     "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0059/tlg023/tlg0059.tlg023.perseus-grc2.xml",
+     "sourceSha256": "3077dca55b53cdb4fc7e63b12446ee5060320dfe52f75a5600057da43f9a8fcf",
+     "sourceReferences": [
+      "https://archive.org/details/operarecognovitb03platuoft/page/361/mode/1up"
+     ],
+     "publicationYear": "1903",
+     "publisher": "Clarendon Press",
+     "publicationPlace": "Oxford",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/3077dca55b53cdb4fc7e63b12446ee5060320dfe52f75a5600057da43f9a8fcf.xml"
+    }
+   ],
+   "existing": true,
+   "filename": "plato-gorgias-grc-33aa448ba31d252f.json",
+   "sha256": "33aa448ba31d252f8a6ee309ffab2428bb8f0c16e401ed06c7376ba5cf67c9d4",
+   "passages": 1107,
+   "characters": 159309,
+   "bytes": 487215,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/plato-gorgias-grc-33aa448ba31d252f.json"
+  },
+  {
+   "workId": "jenofonte-ciropedia",
+   "author": "Jenofonte",
+   "title": "Κύρου παιδεία · Cyropaedia",
+   "language": "grc",
+   "dating": "siglo IV a. C.",
+   "sources": [
+    {
+     "title": "Κύρου παιδεία",
+     "titleLanguage": "grc",
+     "author": "Xenophon",
+     "editors": [
+      "Edgar Carew Marchant"
+     ],
+     "bibliography": "Xenophon Opera Omnia Edgar Carew Marchant Clarendon Press Oxford 1910 1970 4 The Internet Archive",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg0032.tlg007.perseus-grc2",
+     "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0032/tlg007/tlg0032.tlg007.perseus-grc2.xml",
+     "sourceSha256": "2bb8735ec3cc3083d329d9b0c98bfbb1353cc23c5e3bdca2ce63714de080fa37",
+     "sourceReferences": [
+      "https://archive.org/details/operaomniarecogn04xenouoft/page/n17/mode/2up"
+     ],
+     "publicationYear": "1910",
+     "publisher": "Clarendon Press",
+     "publicationPlace": "Oxford",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/2bb8735ec3cc3083d329d9b0c98bfbb1353cc23c5e3bdca2ce63714de080fa37.xml"
+    }
+   ],
+   "existing": true,
+   "relatedWorkIds": [],
+   "filename": "jenofonte-ciropedia-grc-4e7aa43f734d4e1f.json",
+   "sha256": "4e7aa43f734d4e1fa00da4d49cd64ca23e5efb68c8ba634a5a6664bf5b7c88dd",
+   "passages": 1416,
+   "characters": 480431,
+   "bytes": 1172056,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/jenofonte-ciropedia-grc-4e7aa43f734d4e1f.json"
+  },
+  {
+   "workId": "plato-apology",
+   "author": "Platón",
+   "title": "Ἀπολογία Σωκράτους",
+   "language": "grc",
+   "sources": [
+    {
+     "title": "Ἀπολογία Σωκράτους",
+     "titleLanguage": "grc",
+     "author": "Plato",
+     "editors": [
+      "John Burnet"
+     ],
+     "bibliography": "Plato Platonis Opera John Burnet Oxford Clarendon Press 1905 1 Internet Archive",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg0059.tlg002.perseus-grc2",
+     "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0059/tlg002/tlg0059.tlg002.perseus-grc2.xml",
+     "sourceSha256": "ca0a81e96e866bdb32fecbf0f94033d986c4fb45febbab22cab8e0e393273653",
+     "sourceReferences": [
+      "https://archive.org/details/operarecognovitb01platuoft/page/25/mode/1up"
+     ],
+     "publicationYear": "1905",
+     "publisher": "Clarendon Press",
+     "publicationPlace": "Oxford",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/ca0a81e96e866bdb32fecbf0f94033d986c4fb45febbab22cab8e0e393273653.xml"
+    }
+   ],
+   "existing": true,
+   "filename": "plato-apology-grc-65e14cf32c920155.json",
+   "sha256": "65e14cf32c9201550bdd2ae9de44a74696ef8737c06454d6ebc3fed5fe620086",
+   "passages": 27,
+   "characters": 52471,
+   "bytes": 109130,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/plato-apology-grc-65e14cf32c920155.json"
+  },
+  {
+   "workId": "cts-tlg0062-tlg020",
+   "author": "Luciano de Samósata",
+   "title": "Prometheus",
+   "language": "grc",
+   "dating": "c. 125–c. 180 d. C.",
+   "sources": [
+    {
+     "title": "Προμηθεύς",
+     "titleLanguage": "grc",
+     "author": "Lucian",
+     "editors": [
+      "Austin Morris Harmon"
+     ],
+     "bibliography": "Lucian Lucian Austin Morris Harmon London William Heinemann Ltd. Cambridge, MA Harvard University Press 1915 2 Loeb Classical Library Internet Archive",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg0062.tlg020.perseus-grc2",
+     "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0062/tlg020/tlg0062.tlg020.perseus-grc2.xml",
+     "sourceSha256": "85d7737e134fd6120f695760c0351b06c22fd3849fd48f3404ead8e930d09d5a",
+     "sourceReferences": [
+      "https://archive.org/details/lucianhar02luciuoft/page/242/mode/2up"
+     ],
+     "publicationYear": "1915",
+     "publisher": "William Heinemann Ltd.",
+     "publicationPlace": "London",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/85d7737e134fd6120f695760c0351b06c22fd3849fd48f3404ead8e930d09d5a.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-tlg0062-tlg020-grc-5d74e55e000cfc48.json",
+   "sha256": "5d74e55e000cfc486d96f075d945775d26b77df2530682f68f3c446c073cf3cb",
+   "passages": 35,
+   "characters": 14650,
+   "bytes": 36155,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg020-grc-5d74e55e000cfc48.json"
+  },
+  {
+   "workId": "plato-laws",
+   "author": "Platón",
+   "title": "Νόμοι",
+   "language": "grc",
+   "sources": [
+    {
+     "title": "Νόμοι",
+     "titleLanguage": "grc",
+     "author": "Plato",
+     "editors": [
+      "John Burnet"
+     ],
+     "bibliography": "Plato Platonis Opera John Burnet Oxford Clarendon Press 1915 5.1 Internet Archive",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg0059.tlg034.perseus-grc2",
+     "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0059/tlg034/tlg0059.tlg034.perseus-grc2.xml",
+     "sourceSha256": "de3d272bce1402708b848682c743241ff10c67c496030ac5cf8f6e997688f079",
+     "sourceReferences": [
+      "https://archive.org/details/p1platonisopera05platuoft/page/624/mode/1up"
+     ],
+     "publicationYear": "1915",
+     "publisher": "Clarendon Press",
+     "publicationPlace": "Oxford",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/de3d272bce1402708b848682c743241ff10c67c496030ac5cf8f6e997688f079.xml"
+    }
+   ],
+   "existing": true,
+   "filename": "plato-laws-grc-a427d13c999d2b7f.json",
+   "sha256": "a427d13c999d2b7f7476ac4b5228b6b0cf695e975eca984bc15e548b7fa908be",
+   "passages": 1999,
+   "characters": 639950,
+   "bytes": 1567627,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/plato-laws-grc-a427d13c999d2b7f.json"
+  },
+  {
+   "workId": "cts-tlg0062-tlg028",
+   "author": "Luciano de Samósata",
+   "title": "Adversus indoctum et libros multos ementem",
+   "language": "grc",
+   "dating": "c. 125–c. 180 d. C.",
+   "sources": [
+    {
+     "title": "Πρὸς τὸν ἀπαίδευτον καὶ πολλὰ βιβλία ὠνούμενον",
+     "titleLanguage": "grc",
+     "author": "Lucian",
+     "editors": [
+      "Austin Morris Harmon"
+     ],
+     "bibliography": "Lucian Lucian Austin Morris Harmon London William Heinemann Ltd. Cambridge, MA Harvard University Press 1921 3 Loeb Classical Library Internet Archive",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg0062.tlg028.perseus-grc2",
+     "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0062/tlg028/tlg0062.tlg028.perseus-grc2.xml",
+     "sourceSha256": "d39e450b6225f606b976a76f6cd5d02e992c69f0283e4807012fbe2715bb5097",
+     "sourceReferences": [
+      "https://archive.org/details/lucianhar03luciuoft/page/174/mode/2up"
+     ],
+     "publicationYear": "1921",
+     "publisher": "William Heinemann Ltd.",
+     "publicationPlace": "London",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/d39e450b6225f606b976a76f6cd5d02e992c69f0283e4807012fbe2715bb5097.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-tlg0062-tlg028-grc-8bcbf72bbccdfad2.json",
+   "sha256": "8bcbf72bbccdfad241a97dea1c0628ab8e8ad229dd3a53b02a39a0af95699d40",
+   "passages": 39,
+   "characters": 23429,
+   "bytes": 54137,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg028-grc-8bcbf72bbccdfad2.json"
+  },
+  {
+   "workId": "cts-tlg0062-tlg021",
+   "author": "Luciano de Samósata",
+   "title": "Icaromenippus",
+   "language": "grc",
+   "dating": "c. 125–c. 180 d. C.",
+   "sources": [
+    {
+     "title": "Ἰκαρομένιππος ἢ Ὑπερνέφελος",
+     "titleLanguage": "grc",
+     "author": "Lucian",
+     "editors": [
+      "Austin Morris Harmon"
+     ],
+     "bibliography": "Lucian Lucian Austin Morris Harmon London William Heinemann Ltd. Cambridge, MA Harvard University Press 1915 2 Loeb Classical Library Internet Archive",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg0062.tlg021.perseus-grc2",
+     "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0062/tlg021/tlg0062.tlg021.perseus-grc2.xml",
+     "sourceSha256": "a6d58efd43ca9a20b830f4a432e4515b56d252d29f4d70ace1a075fe8fb64c56",
+     "sourceReferences": [
+      "https://archive.org/details/lucianhar02luciuoft/page/268/mode/2up"
+     ],
+     "publicationYear": "1915",
+     "publisher": "William Heinemann Ltd.",
+     "publicationPlace": "London",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/a6d58efd43ca9a20b830f4a432e4515b56d252d29f4d70ace1a075fe8fb64c56.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-tlg0062-tlg021-grc-ff72e7901679280c.json",
+   "sha256": "ff72e7901679280cd458ff9b2f0fff61f3219de7fce3491c5e16731e0ea67d5c",
+   "passages": 60,
+   "characters": 32980,
+   "bytes": 76097,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg021-grc-ff72e7901679280c.json"
+  },
+  {
+   "workId": "cts-tlg0062-tlg019",
+   "author": "Luciano de Samósata",
+   "title": "Gallus",
+   "language": "grc",
+   "dating": "c. 125–c. 180 d. C.",
+   "sources": [
+    {
+     "title": "Ὄνειρος ἢ Ἀλεκτρυών",
+     "titleLanguage": "grc",
+     "author": "Lucian",
+     "editors": [
+      "Austin Morris Harmon"
+     ],
+     "bibliography": "Lucian Lucian Austin Morris Harmon London William Heinemann Ltd. Cambridge, MA Harvard University Press 1915 2 Loeb Classical Library Internet Archive",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg0062.tlg019.perseus-grc2",
+     "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0062/tlg019/tlg0062.tlg019.perseus-grc2.xml",
+     "sourceSha256": "3718d123b06ec3ef37008de9b40af00e304e526afe8fdebc2a3e2f6205289eb1",
+     "sourceReferences": [
+      "https://archive.org/details/lucianhar02luciuoft/page/172/mode/2up"
+     ],
+     "publicationYear": "1915",
+     "publisher": "William Heinemann Ltd.",
+     "publicationPlace": "London",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/3718d123b06ec3ef37008de9b40af00e304e526afe8fdebc2a3e2f6205289eb1.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-tlg0062-tlg019-grc-017f1262e3b96b68.json",
+   "sha256": "017f1262e3b96b68b224249edcb78c4eb57a7f359a13acaf3e4552a26514b6b7",
+   "passages": 136,
+   "characters": 35929,
+   "bytes": 93700,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg019-grc-017f1262e3b96b68.json"
+  },
+  {
+   "workId": "cts-tlg0062-tlg029",
+   "author": "Luciano de Samósata",
+   "title": "Somnium sive vita Luciani",
+   "language": "grc",
+   "dating": "c. 125–c. 180 d. C.",
+   "sources": [
+    {
+     "title": "Περὶ τοῦ Ἐνυπνίου ἤτοι Βίος Λουκιανοῦ",
+     "titleLanguage": "grc",
+     "author": "Lucian",
+     "editors": [
+      "Austin Morris Harmon"
+     ],
+     "bibliography": "Lucian Lucian Austin Morris Harmon London William Heinemann Ltd. Cambridge, MA Harvard University Press 1921 3 Loeb Classical Library Internet Archive",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg0062.tlg029.perseus-grc2",
+     "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0062/tlg029/tlg0062.tlg029.perseus-grc2.xml",
+     "sourceSha256": "2799870ce8de94cd8facea46acb8a2ed2dc16a6e3fad43aa043beea917bd0502",
+     "sourceReferences": [
+      "https://archive.org/details/lucianhar03luciuoft/page/214/mode/2up"
+     ],
+     "publicationYear": "1921",
+     "publisher": "William Heinemann Ltd.",
+     "publicationPlace": "London",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/2799870ce8de94cd8facea46acb8a2ed2dc16a6e3fad43aa043beea917bd0502.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-tlg0062-tlg029-grc-faa86b3dcec6d59f.json",
+   "sha256": "faa86b3dcec6d59f582c71d88dcacfd90f4753e8ced8095d9656d6febc79ad28",
+   "passages": 22,
+   "characters": 11175,
+   "bytes": 27408,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg029-grc-faa86b3dcec6d59f.json"
+  },
+  {
+   "workId": "plato-meno",
+   "author": "Platón",
+   "title": "Μένων",
+   "language": "grc",
+   "sources": [
+    {
+     "title": "Μένων",
+     "titleLanguage": "grc",
+     "author": "Plato",
+     "editors": [
+      "John Burnet"
+     ],
+     "bibliography": "Plato Platonis Opera John Burnet Oxford Clarendon Press 1903 3 Internet Archive",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg0059.tlg024.perseus-grc2",
+     "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0059/tlg024/tlg0059.tlg024.perseus-grc2.xml",
+     "sourceSha256": "709778fae0c383601225b2cf2b74b041159183977e5f694474647f3035379f70",
+     "sourceReferences": [
+      "https://archive.org/details/operarecognovitb03platuoft/page/480/mode/1up"
+     ],
+     "publicationYear": "1903",
+     "publisher": "Clarendon Press",
+     "publicationPlace": "Oxford",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/709778fae0c383601225b2cf2b74b041159183977e5f694474647f3035379f70.xml"
+    }
+   ],
+   "existing": true,
+   "filename": "plato-meno-grc-eb1bcd7ca8af333a.json",
+   "sha256": "eb1bcd7ca8af333aca0d8ad1d0538d677dc87ce486db46ccea93b9f2d0299af0",
+   "passages": 570,
+   "characters": 58919,
+   "bytes": 205992,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/plato-meno-grc-eb1bcd7ca8af333a.json"
+  },
+  {
+   "workId": "cts-tlg0062-tlg015",
+   "author": "Luciano de Samósata",
+   "title": "Symposium",
+   "language": "grc",
+   "dating": "c. 125–c. 180 d. C.",
+   "sources": [
+    {
+     "title": "Συμπόσιον ἢ Λαπίθαι",
+     "titleLanguage": "grc",
+     "author": "Lucian",
+     "editors": [
+      "Austin Morris Harmon"
+     ],
+     "bibliography": "Lucian Lucian Austin Morris Harmon London William Heinemann Ltd. Cambridge, MA Harvard University Press 1913 1 Loeb Classical Library Internet Archive",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg0062.tlg015.perseus-grc2",
+     "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0062/tlg015/tlg0062.tlg015.perseus-grc2.xml",
+     "sourceSha256": "189954552bc2117b8e1df044c999e44a7f272fb4838e75be7911373844612727",
+     "sourceReferences": [
+      "https://archive.org/details/lucianha01luciuoft/page/412/mode/2up"
+     ],
+     "publicationYear": "1913",
+     "publisher": "William Heinemann Ltd.",
+     "publicationPlace": "London",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/189954552bc2117b8e1df044c999e44a7f272fb4838e75be7911373844612727.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-tlg0062-tlg015-grc-8717879bee928f83.json",
+   "sha256": "8717879bee928f83ead54edf6ffc87c733bc23fdad2363150e6a37b84ca6e1f0",
+   "passages": 61,
+   "characters": 30092,
+   "bytes": 70668,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg015-grc-8717879bee928f83.json"
   }
  ],
  "githubPreserved": [
@@ -15441,23 +15935,93 @@
  ],
  "deferred": [
   {
-   "workId": "cts-tlg1805-tlg010",
+   "workId": "livy",
    "sources": [
-    "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg1805/tlg010/tlg1805.tlg010.1st1K-grc1.xml"
-   ],
-   "reason": "Lengua TEI discrepante o sin acreditar: la"
-  },
-  {
-   "workId": "cts-stoa0045-stoa010",
-   "sources": [
-    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/stoa0045/stoa010/stoa0045.stoa010.perseus-lat2.xml"
+    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0914/phi001/phi0914.phi001.perseus-lat5.xml"
    ],
    "reason": "Sin licencia abierta explícita admisible en la cabecera TEI"
   },
   {
-   "workId": "cts-stoa0045-stoa011",
+   "workId": "horace-sermones",
    "sources": [
-    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/stoa0045/stoa011/stoa0045.stoa011.perseus-lat2.xml"
+    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0893/phi004/phi0893.phi004.perseus-lat2.xml"
+   ],
+   "reason": "Sin licencia abierta explícita admisible en la cabecera TEI"
+  },
+  {
+   "workId": "horace-odes",
+   "sources": [
+    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0893/phi001/phi0893.phi001.perseus-lat2.xml"
+   ],
+   "reason": "Sin licencia abierta explícita admisible en la cabecera TEI"
+  },
+  {
+   "workId": "lucretius",
+   "sources": [
+    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0550/phi001/phi0550.phi001.perseus-lat1.xml"
+   ],
+   "reason": "Sin licencia abierta explícita admisible en la cabecera TEI"
+  },
+  {
+   "workId": "ovid-ars-amatoria",
+   "sources": [
+    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0959/phi004/phi0959.phi004.perseus-lat2.xml"
+   ],
+   "reason": "Sin licencia abierta explícita admisible en la cabecera TEI"
+  },
+  {
+   "workId": "ovid",
+   "sources": [
+    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0959/phi006/phi0959.phi006.perseus-lat2.xml"
+   ],
+   "reason": "Sin licencia abierta explícita admisible en la cabecera TEI"
+  },
+  {
+   "workId": "ovid-fasti",
+   "sources": [
+    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0959/phi007/phi0959.phi007.perseus-lat2.xml"
+   ],
+   "reason": "Sin licencia abierta explícita admisible en la cabecera TEI"
+  },
+  {
+   "workId": "ovid-ex-ponto",
+   "sources": [
+    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0959/phi009/phi0959.phi009.perseus-lat2.xml"
+   ],
+   "reason": "Sin licencia abierta explícita admisible en la cabecera TEI"
+  },
+  {
+   "workId": "ovid-heroides",
+   "sources": [
+    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0959/phi002/phi0959.phi002.perseus-lat2.xml"
+   ],
+   "reason": "Sin licencia abierta explícita admisible en la cabecera TEI"
+  },
+  {
+   "workId": "ovid-remedia-amoris",
+   "sources": [
+    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0959/phi005/phi0959.phi005.perseus-lat2.xml"
+   ],
+   "reason": "Sin licencia abierta explícita admisible en la cabecera TEI"
+  },
+  {
+   "workId": "ovid-tristia",
+   "sources": [
+    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0959/phi008/phi0959.phi008.perseus-lat2.xml"
+   ],
+   "reason": "Sin licencia abierta explícita admisible en la cabecera TEI"
+  },
+  {
+   "workId": "cts-stoa0045-stoa012",
+   "sources": [
+    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/stoa0045/stoa012/stoa0045.stoa012.perseus-lat2.xml"
+   ],
+   "reason": "Sin licencia abierta explícita admisible en la cabecera TEI"
+  },
+  {
+   "workId": "cts-stoa0045-stoa013",
+   "sources": [
+    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/stoa0045/stoa013/stoa0045.stoa013.perseus-lat2.xml"
    ],
    "reason": "Sin licencia abierta explícita admisible en la cabecera TEI"
   }

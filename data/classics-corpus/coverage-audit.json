@@ -4,17 +4,17 @@
   "scope": "Se auditan exclusivamente 271 fichas de obras del catálogo local; no es un censo universal de literatura grecolatina.",
   "method": "Cruce de fichas bibliográficas, vínculos locales, corpus legible, registro de búsqueda y testimonios manuscritos; sin OCR ni verificación externa de los enlaces.",
   "counts": {
-    "cataloguedWorks": 435,
+    "cataloguedWorks": 441,
     "catalogueStatuses": {
-      "lectura-local-completa": 29,
-      "lectura-local-parcial": 334,
-      "fuente-externa-identificada": 58,
+      "lectura-local-completa": 28,
+      "lectura-local-parcial": 342,
+      "fuente-externa-identificada": 57,
       "repertoriado-busqueda-externa": 12,
       "pendiente-de-incorporar": 2
     },
-    "locallyReadableClaims": 363,
-    "indexedTextVersions": 550,
-    "indexedDistinctWorks": 405,
+    "locallyReadableClaims": 370,
+    "indexedTextVersions": 562,
+    "indexedDistinctWorks": 411,
     "manuscriptWitnesses": 107
   },
   "works": [
@@ -2569,14 +2569,15 @@
       "originalLanguage": "grc",
       "genre": "Filosofía",
       "dating": "siglo IV a. C.",
-      "catalogueStatus": "lectura-local-completa",
+      "catalogueStatus": "lectura-local-parcial",
       "indexedTextLanguages": [
         "en",
         "grc"
       ],
       "indexedTextFiles": [
         "data/classics-corpus/plato-apology-en.json",
-        "data/classics-corpus/plato-apology-grc.json"
+        "data/classics-corpus/plato-apology-grc.json",
+        "https://libros.vitruvius-digital-library.org/corpus/plato-apology-grc-65e14cf32c920155.json"
       ],
       "localPDF": "documents/classics/plato-apologia-socratis-adam-1891.pdf",
       "hasStructuredVitruviusReader": false,
@@ -3369,7 +3370,8 @@
       ],
       "indexedTextFiles": [
         "data/classics-corpus/plato-gorgias-en.json",
-        "data/classics-corpus/plato-gorgias-grc.json"
+        "data/classics-corpus/plato-gorgias-grc.json",
+        "https://libros.vitruvius-digital-library.org/corpus/plato-gorgias-grc-33aa448ba31d252f.json"
       ],
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
@@ -3417,7 +3419,8 @@
       ],
       "indexedTextFiles": [
         "data/classics-corpus/plato-meno-en.json",
-        "data/classics-corpus/plato-meno-grc.json"
+        "data/classics-corpus/plato-meno-grc.json",
+        "https://libros.vitruvius-digital-library.org/corpus/plato-meno-grc-eb1bcd7ca8af333a.json"
       ],
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
@@ -3465,7 +3468,8 @@
       ],
       "indexedTextFiles": [
         "data/classics-corpus/plato-laws-en.json",
-        "data/classics-corpus/plato-laws-grc.json"
+        "data/classics-corpus/plato-laws-grc.json",
+        "https://libros.vitruvius-digital-library.org/corpus/plato-laws-grc-a427d13c999d2b7f.json"
       ],
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
@@ -3489,7 +3493,8 @@
       ],
       "indexedTextFiles": [
         "data/classics-corpus/plato-crito-en.json",
-        "data/classics-corpus/plato-crito-grc.json"
+        "data/classics-corpus/plato-crito-grc.json",
+        "https://libros.vitruvius-digital-library.org/corpus/plato-crito-grc-1838b50a9751d0db.json"
       ],
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
@@ -5487,11 +5492,12 @@
       "originalLanguage": "grc",
       "genre": "Historia novelada y teoría del mando",
       "dating": "Siglo IV a. C.",
-      "catalogueStatus": "fuente-externa-identificada",
+      "catalogueStatus": "lectura-local-parcial",
       "indexedTextLanguages": [
         "grc"
       ],
       "indexedTextFiles": [
+        "https://libros.vitruvius-digital-library.org/corpus/jenofonte-ciropedia-grc-4e7aa43f734d4e1f.json",
         "https://libros.vitruvius-digital-library.org/corpus/jenofonte-ciropedia-grc.json"
       ],
       "localPDF": null,
@@ -8662,6 +8668,96 @@
       ],
       "indexedTextFiles": [
         "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg001-grc-5a31676d0243490e.json"
+      ],
+      "manuscriptRecords": 0,
+      "hasManuscriptRecord": false
+    },
+    {
+      "id": "cts-tlg0062-tlg020",
+      "author": "Luciano de Samósata",
+      "title": "Prometheus",
+      "originalLanguage": "grc",
+      "catalogueStatus": "lectura-local-parcial",
+      "indexedTextLanguages": [
+        "grc"
+      ],
+      "indexedTextFiles": [
+        "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg020-grc-5d74e55e000cfc48.json"
+      ],
+      "manuscriptRecords": 0,
+      "hasManuscriptRecord": false
+    },
+    {
+      "id": "cts-tlg0062-tlg028",
+      "author": "Luciano de Samósata",
+      "title": "Adversus indoctum et libros multos ementem",
+      "originalLanguage": "grc",
+      "catalogueStatus": "lectura-local-parcial",
+      "indexedTextLanguages": [
+        "grc"
+      ],
+      "indexedTextFiles": [
+        "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg028-grc-8bcbf72bbccdfad2.json"
+      ],
+      "manuscriptRecords": 0,
+      "hasManuscriptRecord": false
+    },
+    {
+      "id": "cts-tlg0062-tlg021",
+      "author": "Luciano de Samósata",
+      "title": "Icaromenippus",
+      "originalLanguage": "grc",
+      "catalogueStatus": "lectura-local-parcial",
+      "indexedTextLanguages": [
+        "grc"
+      ],
+      "indexedTextFiles": [
+        "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg021-grc-ff72e7901679280c.json"
+      ],
+      "manuscriptRecords": 0,
+      "hasManuscriptRecord": false
+    },
+    {
+      "id": "cts-tlg0062-tlg019",
+      "author": "Luciano de Samósata",
+      "title": "Gallus",
+      "originalLanguage": "grc",
+      "catalogueStatus": "lectura-local-parcial",
+      "indexedTextLanguages": [
+        "grc"
+      ],
+      "indexedTextFiles": [
+        "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg019-grc-017f1262e3b96b68.json"
+      ],
+      "manuscriptRecords": 0,
+      "hasManuscriptRecord": false
+    },
+    {
+      "id": "cts-tlg0062-tlg029",
+      "author": "Luciano de Samósata",
+      "title": "Somnium sive vita Luciani",
+      "originalLanguage": "grc",
+      "catalogueStatus": "lectura-local-parcial",
+      "indexedTextLanguages": [
+        "grc"
+      ],
+      "indexedTextFiles": [
+        "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg029-grc-faa86b3dcec6d59f.json"
+      ],
+      "manuscriptRecords": 0,
+      "hasManuscriptRecord": false
+    },
+    {
+      "id": "cts-tlg0062-tlg015",
+      "author": "Luciano de Samósata",
+      "title": "Symposium",
+      "originalLanguage": "grc",
+      "catalogueStatus": "lectura-local-parcial",
+      "indexedTextLanguages": [
+        "grc"
+      ],
+      "indexedTextFiles": [
+        "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg015-grc-8717879bee928f83.json"
       ],
       "manuscriptRecords": 0,
       "hasManuscriptRecord": false

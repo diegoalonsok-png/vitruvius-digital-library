@@ -2,8 +2,8 @@
  "schema": "vitruvia-classics-search-registry-v1",
  "updated": "2026-11-23",
  "description": "Registro verificable de transcripciones HTML y textos JSON existentes que admiten búsqueda literal de contenido. No incluye automáticamente PDF escaneados, facsímiles ni fichas sin texto. Los índices auxiliares por locus y el aparato crítico se declaran por separado; no se suman a versiones textuales originales ni implican colación autóptica.",
- "count": 711,
- "works": 533,
+ "count": 723,
+ "works": 539,
  "entries": [
   {
    "workId": "aeneas-tacticus-poliorketika",
@@ -2648,6 +2648,19 @@
    "passages": 28
   },
   {
+   "workId": "cts-tlg0062-tlg015",
+   "author": "Luciano de Samósata",
+   "title": "Symposium",
+   "language": "grc",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg015-grc-8717879bee928f83.json",
+   "reader": "classics-text-reader.html?work=cts-tlg0062-tlg015&lang=grc&edition=8717879bee928f83",
+   "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+   "sourceUrn": "urn:cts:greekLit:tlg0062.tlg015.perseus-grc2",
+   "sha256": "8717879bee928f83ead54edf6ffc87c733bc23fdad2363150e6a37b84ca6e1f0",
+   "passages": 61
+  },
+  {
    "workId": "cts-tlg0062-tlg016",
    "author": "Luciano de Samósata",
    "title": "Cataplus",
@@ -2783,6 +2796,45 @@
    "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
    "sha256": "5c31c0511a197a5be567a4545e03aef63afa91844fd85a40771bbae6cf0f7ada",
    "passages": 187
+  },
+  {
+   "workId": "cts-tlg0062-tlg019",
+   "author": "Luciano de Samósata",
+   "title": "Gallus",
+   "language": "grc",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg019-grc-017f1262e3b96b68.json",
+   "reader": "classics-text-reader.html?work=cts-tlg0062-tlg019&lang=grc&edition=017f1262e3b96b68",
+   "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+   "sourceUrn": "urn:cts:greekLit:tlg0062.tlg019.perseus-grc2",
+   "sha256": "017f1262e3b96b68b224249edcb78c4eb57a7f359a13acaf3e4552a26514b6b7",
+   "passages": 136
+  },
+  {
+   "workId": "cts-tlg0062-tlg020",
+   "author": "Luciano de Samósata",
+   "title": "Prometheus",
+   "language": "grc",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg020-grc-5d74e55e000cfc48.json",
+   "reader": "classics-text-reader.html?work=cts-tlg0062-tlg020&lang=grc&edition=5d74e55e000cfc48",
+   "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+   "sourceUrn": "urn:cts:greekLit:tlg0062.tlg020.perseus-grc2",
+   "sha256": "5d74e55e000cfc486d96f075d945775d26b77df2530682f68f3c446c073cf3cb",
+   "passages": 35
+  },
+  {
+   "workId": "cts-tlg0062-tlg021",
+   "author": "Luciano de Samósata",
+   "title": "Icaromenippus",
+   "language": "grc",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg021-grc-ff72e7901679280c.json",
+   "reader": "classics-text-reader.html?work=cts-tlg0062-tlg021&lang=grc&edition=ff72e7901679280c",
+   "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+   "sourceUrn": "urn:cts:greekLit:tlg0062.tlg021.perseus-grc2",
+   "sha256": "ff72e7901679280cd458ff9b2f0fff61f3219de7fce3491c5e16731e0ea67d5c",
+   "passages": 60
   },
   {
    "workId": "cts-tlg0062-tlg022",
@@ -2982,6 +3034,32 @@
    "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
    "sha256": "9ead483cea0934e160dc038eef4efe0f14e5baab62d7354c2414e8ade243b286",
    "passages": 20
+  },
+  {
+   "workId": "cts-tlg0062-tlg028",
+   "author": "Luciano de Samósata",
+   "title": "Adversus indoctum et libros multos ementem",
+   "language": "grc",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg028-grc-8bcbf72bbccdfad2.json",
+   "reader": "classics-text-reader.html?work=cts-tlg0062-tlg028&lang=grc&edition=8bcbf72bbccdfad2",
+   "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+   "sourceUrn": "urn:cts:greekLit:tlg0062.tlg028.perseus-grc2",
+   "sha256": "8bcbf72bbccdfad241a97dea1c0628ab8e8ad229dd3a53b02a39a0af95699d40",
+   "passages": 39
+  },
+  {
+   "workId": "cts-tlg0062-tlg029",
+   "author": "Luciano de Samósata",
+   "title": "Somnium sive vita Luciani",
+   "language": "grc",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg029-grc-faa86b3dcec6d59f.json",
+   "reader": "classics-text-reader.html?work=cts-tlg0062-tlg029&lang=grc&edition=faa86b3dcec6d59f",
+   "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+   "sourceUrn": "urn:cts:greekLit:tlg0062.tlg029.perseus-grc2",
+   "sha256": "faa86b3dcec6d59f582c71d88dcacfd90f4753e8ced8095d9656d6febc79ad28",
+   "passages": 22
   },
   {
    "workId": "cts-tlg0062-tlg034",
@@ -5517,6 +5595,19 @@
   },
   {
    "workId": "jenofonte-ciropedia",
+   "author": "Jenofonte",
+   "title": "Κύρου παιδεία · Cyropaedia",
+   "language": "grc",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/jenofonte-ciropedia-grc-4e7aa43f734d4e1f.json",
+   "reader": "classics-text-reader.html?work=jenofonte-ciropedia&lang=grc&edition=4e7aa43f734d4e1f",
+   "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+   "sourceUrn": "urn:cts:greekLit:tlg0032.tlg007.perseus-grc2",
+   "sha256": "4e7aa43f734d4e1fa00da4d49cd64ca23e5efb68c8ba634a5a6664bf5b7c88dd",
+   "passages": 1416
+  },
+  {
+   "workId": "jenofonte-ciropedia",
    "language": "grc",
    "title": "Κύρου παιδεία · Cyropaedia",
    "author": "Jenofonte",
@@ -6314,6 +6405,19 @@
    "sourceDescription": "La fuente y la atribución se muestran dentro del JSON y del lector; las traducciones no equivalen a alineación por loci."
   },
   {
+   "workId": "plato-apology",
+   "author": "Platón",
+   "title": "Ἀπολογία Σωκράτους",
+   "language": "grc",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/plato-apology-grc-65e14cf32c920155.json",
+   "reader": "classics-text-reader.html?work=plato-apology&lang=grc&edition=65e14cf32c920155",
+   "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+   "sourceUrn": "urn:cts:greekLit:tlg0059.tlg002.perseus-grc2",
+   "sha256": "65e14cf32c9201550bdd2ae9de44a74696ef8737c06454d6ebc3fed5fe620086",
+   "passages": 27
+  },
+  {
    "workId": "plato-charmides",
    "author": "Platón",
    "title": "Χαρμίδης",
@@ -6354,6 +6458,19 @@
    "path": "data/classics-corpus/plato-crito-grc.json",
    "reader": "classics-text-reader.html?work=plato-crito&lang=grc",
    "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+  },
+  {
+   "workId": "plato-crito",
+   "author": "Platón",
+   "title": "Κρίτων",
+   "language": "grc",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/plato-crito-grc-1838b50a9751d0db.json",
+   "reader": "classics-text-reader.html?work=plato-crito&lang=grc&edition=1838b50a9751d0db",
+   "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+   "sourceUrn": "urn:cts:greekLit:tlg0059.tlg003.perseus-grc2",
+   "sha256": "1838b50a9751d0db4950ac75462689b2dc0e29143d2140f8c1a55ee7c4b8bdf0",
+   "passages": 103
   },
   {
    "workId": "plato-euthydemus",
@@ -6418,6 +6535,19 @@
    "path": "data/classics-corpus/plato-gorgias-grc.json",
    "reader": "classics-text-reader.html?work=plato-gorgias&lang=grc",
    "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+  },
+  {
+   "workId": "plato-gorgias",
+   "author": "Platón",
+   "title": "Γοργίας",
+   "language": "grc",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/plato-gorgias-grc-33aa448ba31d252f.json",
+   "reader": "classics-text-reader.html?work=plato-gorgias&lang=grc&edition=33aa448ba31d252f",
+   "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+   "sourceUrn": "urn:cts:greekLit:tlg0059.tlg023.perseus-grc2",
+   "sha256": "33aa448ba31d252f8a6ee309ffab2428bb8f0c16e401ed06c7376ba5cf67c9d4",
+   "passages": 1107
   },
   {
    "workId": "plato-hippias-minor",
@@ -6506,6 +6636,19 @@
    "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
   },
   {
+   "workId": "plato-laws",
+   "author": "Platón",
+   "title": "Νόμοι",
+   "language": "grc",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/plato-laws-grc-a427d13c999d2b7f.json",
+   "reader": "classics-text-reader.html?work=plato-laws&lang=grc&edition=a427d13c999d2b7f",
+   "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+   "sourceUrn": "urn:cts:greekLit:tlg0059.tlg034.perseus-grc2",
+   "sha256": "a427d13c999d2b7f7476ac4b5228b6b0cf695e975eca984bc15e548b7fa908be",
+   "passages": 1999
+  },
+  {
    "workId": "plato-lysis",
    "author": "Platón",
    "title": "Λύσις",
@@ -6568,6 +6711,19 @@
    "path": "data/classics-corpus/plato-meno-grc.json",
    "reader": "classics-text-reader.html?work=plato-meno&lang=grc",
    "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+  },
+  {
+   "workId": "plato-meno",
+   "author": "Platón",
+   "title": "Μένων",
+   "language": "grc",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/plato-meno-grc-eb1bcd7ca8af333a.json",
+   "reader": "classics-text-reader.html?work=plato-meno&lang=grc&edition=eb1bcd7ca8af333a",
+   "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+   "sourceUrn": "urn:cts:greekLit:tlg0059.tlg024.perseus-grc2",
+   "sha256": "eb1bcd7ca8af333aca0d8ad1d0538d677dc87ce486db46ccea93b9f2d0299af0",
+   "passages": 570
   },
   {
    "workId": "plato-parmenides",

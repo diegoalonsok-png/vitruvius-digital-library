@@ -1,12 +1,12 @@
 {
   "schema": "vdl-federated-bibliotheca-inventory-v1",
-  "generated": "2026-11-23T09:52:17.921185+00:00",
+  "generated": "2026-11-23T18:55:54.405797+00:00",
   "method": "Master works and additional R2 works counted separately; edition relations can be many-to-many. Remote text URLs are declared, not live-verified. Unresolved editions are never merged automatically.",
   "counts": {
-    "cataloguedWorks": 435,
+    "cataloguedWorks": 441,
     "supplementaryWorks": 127,
     "additionalWorks": 10,
-    "totalDeclaredWorks": 572,
+    "totalDeclaredWorks": 578,
     "r2EditionRecords": 117,
     "r2LinkedEditionRecords": 107,
     "r2WorkEditionRelations": 115,
@@ -14,7 +14,7 @@
     "r2UnlinkedEditionRecords": 0,
     "worksWithR2Edition": 114,
     "worksWithLocalIndexedText": 325,
-    "worksWithDeclaredRemoteIndex": 236
+    "worksWithDeclaredRemoteIndex": 247
   },
   "unlinkedR2EditionIds": [],
   "additionalWorks": [
@@ -4275,7 +4275,12 @@
           "path": "data/classics-corpus/plato-apology-grc.json"
         }
       ],
-      "declaredRemoteIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/plato-apology-grc-65e14cf32c920155.json"
+        }
+      ],
       "r2FacsimileEditions": [
         {
           "editionId": "platon-fedon",
@@ -5020,7 +5025,12 @@
           "path": "data/classics-corpus/plato-gorgias-grc.json"
         }
       ],
-      "declaredRemoteIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/plato-gorgias-grc-33aa448ba31d252f.json"
+        }
+      ],
       "r2FacsimileEditions": []
     },
     {
@@ -5067,7 +5077,12 @@
           "path": "data/classics-corpus/plato-meno-grc.json"
         }
       ],
-      "declaredRemoteIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/plato-meno-grc-eb1bcd7ca8af333a.json"
+        }
+      ],
       "r2FacsimileEditions": []
     },
     {
@@ -5103,7 +5118,12 @@
           "path": "data/classics-corpus/plato-laws-grc.json"
         }
       ],
-      "declaredRemoteIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/plato-laws-grc-a427d13c999d2b7f.json"
+        }
+      ],
       "r2FacsimileEditions": [
         {
           "editionId": "platon-leyes",
@@ -5132,7 +5152,12 @@
           "path": "data/classics-corpus/plato-crito-grc.json"
         }
       ],
-      "declaredRemoteIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/plato-crito-grc-1838b50a9751d0db.json"
+        }
+      ],
       "r2FacsimileEditions": [
         {
           "editionId": "platon-fedon",
@@ -6778,6 +6803,10 @@
       "catalogue": "github",
       "locallyIndexedText": [],
       "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/jenofonte-ciropedia-grc-4e7aa43f734d4e1f.json"
+        },
         {
           "language": "grc",
           "url": "https://libros.vitruvius-digital-library.org/corpus/jenofonte-ciropedia-grc.json"
@@ -9907,6 +9936,90 @@
         {
           "language": "grc",
           "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg001-grc-5a31676d0243490e.json"
+        }
+      ],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "cts-tlg0062-tlg020",
+      "author": "Luciano de Samósata",
+      "title": "Prometheus",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg020-grc-5d74e55e000cfc48.json"
+        }
+      ],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "cts-tlg0062-tlg028",
+      "author": "Luciano de Samósata",
+      "title": "Adversus indoctum et libros multos ementem",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg028-grc-8bcbf72bbccdfad2.json"
+        }
+      ],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "cts-tlg0062-tlg021",
+      "author": "Luciano de Samósata",
+      "title": "Icaromenippus",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg021-grc-ff72e7901679280c.json"
+        }
+      ],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "cts-tlg0062-tlg019",
+      "author": "Luciano de Samósata",
+      "title": "Gallus",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg019-grc-017f1262e3b96b68.json"
+        }
+      ],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "cts-tlg0062-tlg029",
+      "author": "Luciano de Samósata",
+      "title": "Somnium sive vita Luciani",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg029-grc-faa86b3dcec6d59f.json"
+        }
+      ],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "cts-tlg0062-tlg015",
+      "author": "Luciano de Samósata",
+      "title": "Symposium",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg015-grc-8717879bee928f83.json"
         }
       ],
       "r2FacsimileEditions": []
