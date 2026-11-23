@@ -93,6 +93,75 @@ def forbid_book_deletions(path, before, after):
                 + path + " / " + key + ": desaparecen "
                 + str(len(missing)) + " registros: " + repr(missing[:5])
             )
+    # Una obra tiene identidad bibliográfica estable, pero puede reunir muchas
+    # ediciones y traducciones. Las referencias anteriores nunca se sustituyen.
+    if path == "data/bibliotheca-graeca-latina-I-bce-I-ce.json":
+        previous = {w["id"]: w for w in before.get("works", [])}
+        current = {w["id"]: w for w in after.get("works", [])}
+        for wid, old in previous.items():
+            now = current[wid]
+            for lang, url in (old.get("corpusFiles") or {}).items():
+                if (now.get("corpusFiles") or {}).get(lang) != url:
+                    raise ValueError(
+                        "CLAUSULA: NO SE REEMPLAZAN VERSIONES. "
+                        + wid + " / " + lang + ": conservar archivo principal " + str(url)
+                    )
+            collections = [
+                ("localVersions", ("language", "path")),
+                ("humanTranslations", ("sourceUrn", "url")),
+                ("pdfEditions", ("url",)),
+            ]
+            for key, fields in collections:
+                old_rows = old.get(key) or []
+                if not old_rows:
+                    continue
+                if not isinstance(old_rows, list):
+                    raise ValueError("Colección histórica inválida: " + wid + "/" + key)
+                new_rows = now.get(key) or []
+                old_ids = {
+                    tuple(str(r.get(k) or "") for k in fields)
+                    for r in old_rows if isinstance(r, dict)
+                }
+                new_ids = {
+                    tuple(str(r.get(k) or "") for k in fields)
+                    for r in new_rows if isinstance(r, dict)
+                }
+                if not old_ids <= new_ids:
+                    raise ValueError(
+                        "CLAUSULA: NO SE REEMPLAZAN VERSIONES. "
+                        + wid + ": se pierde una edición de " + key
+                    )
+            prior_index = (old.get("indexedEdition") or {}).get("url")
+            current_index = (now.get("indexedEdition") or {}).get("url")
+            if prior_index and current_index != prior_index:
+                raise ValueError(
+                    "CLAUSULA: NO SE REEMPLAZAN VERSIONES. "
+                    + wid + ": la edición indexada original debe permanecer"
+                )
+    # URL + identidad puede ser la misma en dos sincronizaciones, pero nunca
+    # cambiar su contenido registrado; los nuevos archivos tienen URL y hash nuevos.
+    for key, fields in rules.get(path, []):
+        old_rows = {
+            tuple(str(r.get(k) or "") for k in fields): r
+            for r in before.get(key, []) if isinstance(r, dict)
+        }
+        new_rows = {
+            tuple(str(r.get(k) or "") for k in fields): r
+            for r in after.get(key, []) if isinstance(r, dict)
+        }
+        if path in (
+            "data/classics-corpus/search-registry.json",
+            "data/r2/classics-expansion-manifest.json",
+            "data/r2/classics-translation-manifest.json",
+        ):
+            for identity, old in old_rows.items():
+                new = new_rows[identity]
+                for field in ("sha256", "sourceUrn", "sourceSha256"):
+                    if old.get(field) and new.get(field) != old[field]:
+                        raise ValueError(
+                            "CLAUSULA: NO SE REEMPLAZAN VERSIONES. "
+                            + str(identity) + " cambió " + field
+                        )
     if path == "data/cifras-corpus.json":
         for field in ("obras", "obrasSuplementarias", "obrasAdicionales", "obrasTotalesDeclaradas"):
             if field in before and field in after and int(after[field]) < int(before[field]):
