@@ -467,8 +467,20 @@ def finalize(folder, root=ROOT):
         previous = w.setdefault("corpusFiles", {}).get(lang)
         if previous and previous != row["url"] and not any(v.get("path") == previous for v in w.get("localVersions", [])):
             w.setdefault("localVersions", []).append({"language": lang, "path": previous, "label": "Versión conservada antes de la ampliación R2"})
-        w["corpusFiles"][lang] = row["url"]
-        w.setdefault("localVersions", []).append({"language": lang, "path": row["url"], "label": "Original " + lang + " · edición TEI en R2", "reader": reader})
+        # Una obra puede tener varias ediciones en el mismo idioma.
+        # La edición previamente predeterminada NUNCA se reemplaza.
+        w["corpusFiles"].setdefault(lang, row["url"])
+        w.setdefault("localVersions", [])
+        if not any(v.get("path") == row["url"] for v in w["localVersions"]):
+            w["localVersions"].append({
+                "language": lang, "path": row["url"],
+                "label": "Edición original " + lang + " · " + ", ".join(
+                    src["editionUrn"] for src in row["sources"]
+                ),
+                "reader": reader,
+                "sourceUrns": [src["editionUrn"] for src in row["sources"]],
+                "sha256": row["sha256"]
+            })
         w["publicStatus"] = "lectura-local-parcial"
         w.setdefault("indexedEdition", summary)
         entries[(wid, lang, row["url"])] = {"workId": wid, "author": w["author"], "title": w["title"], "language": lang, "format": "json-passages", "path": row["url"], "reader": reader,
