@@ -245,51 +245,97 @@ def discover(root=ROOT):
     cat = read(root / "data/bibliotheca-graeca-latina-I-bce-I-ce.json")
     reg = read(root / "data/classics-corpus/search-registry.json")
     links = read(root / "data/bibliotheca-perseus.json")["links"]
-    catalog_ids = {w["id"] for w in cat["works"]}
-    registered = {(e["workId"], e["language"]) for e in reg["entries"]}
-    # Reject a source already represented by another catalogue identifier.
-    # A CTS work code denotes the underlying work; an edition suffix alone
-    # must not create a second work. The prior R2 manifest is authoritative
-    # for editions already uploaded by this import process.
+    works_by_id = {w["id"]: w for w in cat["works"]}
+    catalogue_ids = set(works_by_id)
+    registered_urls = {e.get("path") for e in reg["entries"]}
     prior_path = root / "data/r2/classics-expansion-manifest.json"
-    prior_editions = read(prior_path).get("editions", []) if prior_path.is_file() else []
-    known_codes, known_source_urls = set(), set()
-    for edition in prior_editions:
-        for src in edition.get("sources", []):
-            urn = src.get("editionUrn", "")
-            match = re.search(r"urn:cts:(?:greekLit|latinLit):([A-Za-z0-9_-]+\.[A-Za-z0-9_-]+)\.", urn)
-            if match: known_codes.add(match.group(1).lower())
-            if src.get("sourceUrl"): known_source_urls.add(src["sourceUrl"])
+    previous = read(prior_path).get("editions", []) if prior_path.is_file() else []
+    known_source_urls, known_urns = set(), set()
+    existing_by_code = {}
+    for record in previous:
+        for source in record.get("sources", []):
+            urn = source.get("editionUrn") or ""
+            if urn: known_urns.add(urn)
+            matched = re.search(r"urn:cts:(?:greekLit|latinLit):([A-Za-z0-9_-]+\\.[A-Za-z0-9_-]+)\\.", urn)
+            if matched: existing_by_code.setdefault(matched.group(1).lower(), record["workId"])
+            if source.get("sourceUrl"): known_source_urls.add(source["sourceUrl"])
+    for work in cat["works"]:
+        for alias in work.get("aliases", []):
+            matched = re.search(r"urn:cts:(?:greekLit|latinLit):([A-Za-z0-9_-]+\\.[A-Za-z0-9_-]+)\\.", str(alias))
+            if matched: existing_by_code.setdefault(matched.group(1).lower(), work["id"])
+            if str(alias).startswith("urn:cts:"): known_urns.add(str(alias))
+        for source in (work.get("indexedEdition") or {}).get("sources", []):
+            if source.get("sourceUrl"): known_source_urls.add(source["sourceUrl"])
+            if source.get("editionUrn"): known_urns.add(source["editionUrn"])
+    # Edition suffixes identify versions; a CTS work code identifies the work.
+    # A second TEI for the same code is NOT a duplicate work and NOT a replacement.
     candidates = {}
     for name in ("clasicos-perseus.json", "clasicos-perseus-extra.json"):
         for c in read(root / "data" / name)["works"]:
-            if c.get("language") in ("la", "grc") and c.get("original"):
-                try: source_url(c["original"])
-                except ValueError: continue
-                if c["id"].lower() in known_codes or c["original"] in known_source_urls: continue
-                candidates.setdefault(c["id"], c)
+            if c.get("language") not in ("la", "grc") or not c.get("original"): continue
+            try: source_url(c["original"])
+            except ValueError: continue
+            if c["original"] in known_source_urls: continue
+            file_stem = Path(c["original"]).name.removesuffix(".xml")
+            namespace = "greekLit" if c["language"] == "grc" else "latinLit"
+            candidate_urn = "urn:cts:" + namespace + ":" + file_stem
+            if candidate_urn in known_urns: continue
+            candidates.setdefault(c["id"], {})[c["original"]] = c
     owners = {}
-    for wid, rows in links.items():
-        for row in rows: owners.setdefault(row["obra"], []).append(wid)
-    groups, used, skipped = [], set(), []
-    for w in cat["works"]:
-        codes = [e["obra"] for e in links.get(w["id"], [])]
-        if (w["id"], w["language"]) in registered:
-            # Exclude every CTS work attached to an already indexed title,
-            # even if some sources are missing from the eligible TEI pool.
-            # Otherwise a missing sibling edition gets a new cts-* title.
-            used.update(codes)
-            skipped.append(w["id"])
-            continue
-        if not codes or not all(c in candidates for c in codes): continue
-        groups.append({"workId": w["id"], "author": w["author"], "title": w["title"], "language": w["language"], "sources": [candidates[c] for c in codes], "existing": True})
-        used.update(codes)
-    for code, c in sorted(candidates.items()):
-        if code in used: continue
-        wid = "cts-" + re.sub(r"[^a-z0-9]+", "-", code.lower()).strip("-")
-        if wid in catalog_ids or (wid, c["language"]) in registered: continue
-        groups.append({"workId": wid, "author": c["author"], "title": c["title"], "language": c["language"], "dating": c.get("dates", ""), "sources": [c], "existing": False, "relatedWorkIds": owners.get(code, [])})
-    return groups, {"sourceRecords": len(candidates), "alreadyIndexedCatalogueWorks": len(skipped), "pendingGroups": len(groups)}
+    for work_id, rows in links.items():
+        for row in rows: owners.setdefault(row["obra"], []).append(work_id)
+    groups, used_codes, skipped = [], set(), []
+    for work in cat["works"]:
+        codes = [e["obra"] for e in links.get(work["id"], [])]
+        eligible = [c for code in codes for c in candidates.get(code, {}).values()
+                    if c["language"] == work["language"]]
+        if eligible:
+            groups.append({"workId": work["id"], "author": work["author"], "title": work["title"],
+                           "language": work["language"], "sources": eligible, "existing": True})
+            used_codes.update(codes)
+        else:
+            skipped.append(work["id"])
+    def normalize_label(value):
+        value = unicodedata.normalize("NFKD", str(value or "")).casefold()
+        return " ".join(re.sub(r"[^a-z0-9]+", " ", "".join(ch for ch in value if not unicodedata.combining(ch))).split())
+    known_bibliography = {
+        (normalize_label(w["author"]), normalize_label(w["title"])): w["id"]
+        for w in cat["works"] if w.get("author") and w.get("title")
+    }
+    grouped = {}
+    for code in sorted(candidates):
+        if code in used_codes: continue
+        for candidate in candidates[code].values():
+            wid = existing_by_code.get(code.lower())
+            if not wid:
+                wid = next((w for w in owners.get(code, [])
+                            if w in works_by_id and works_by_id[w]["language"] == candidate["language"]), None)
+            if not wid:
+                wid = known_bibliography.get((normalize_label(candidate["author"]), normalize_label(candidate["title"])))
+                if wid in works_by_id and works_by_id[wid]["language"] != candidate["language"]:
+                    wid = None
+            if not wid:
+                wid = "cts-" + re.sub(r"[^a-z0-9]+", "-", code.lower()).strip("-")
+            if wid in works_by_id and works_by_id[wid]["language"] != candidate["language"]:
+                # Do not merge different original languages under an unverified ID.
+                continue
+            group = grouped.setdefault(wid, {
+                "workId": wid,
+                "author": works_by_id[wid]["author"] if wid in works_by_id else candidate["author"],
+                "title": works_by_id[wid]["title"] if wid in works_by_id else candidate["title"],
+                "language": candidate["language"], "dating": candidate.get("dates", ""),
+                "sources": [], "existing": wid in catalogue_ids,
+                "relatedWorkIds": owners.get(code, [])
+            })
+            if candidate["original"] not in {x["original"] for x in group["sources"]}:
+                group["sources"].append(candidate)
+    groups.extend(grouped.values())
+    return groups, {
+        "sourceRecords": sum(len(x) for x in candidates.values()),
+        "alreadyIndexedCatalogueWorks": len(skipped),
+        "pendingGroups": len(groups),
+        "policy": "Una obra bibliográfica, múltiples ediciones identificadas por URN y hash; sin sustituir ni duplicar archivos"
+    }
 
 def prepare(group, folder):
     sources, passages = [], []
@@ -390,10 +436,20 @@ def finalize(folder, root=ROOT):
     regpath = root / "data/classics-corpus/search-registry.json"
     cat, reg = read(catpath), read(regpath)
     byid = {w["id"]: w for w in cat["works"]}
-    entries = {(e["workId"], e["language"]): e for e in reg["entries"]}
+    entries = {(e["workId"], e["language"], e["path"]): e for e in reg["entries"]}
     for row in completed:
         wid, lang = row["workId"], row["language"]
-        if (wid, lang) in entries: continue
+        if (wid, lang, row["url"]) in entries: continue
+        # An existing author/title is ONE work with multiple distinct versions.
+        # Use the established bibliographic ID instead of creating a duplicate.
+        if wid not in byid:
+            normalize = lambda x: "".join(ch for ch in unicodedata.normalize("NFKD", str(x or "").casefold()) if not unicodedata.combining(ch)).strip()
+            matching = [w["id"] for w in byid.values()
+                        if normalize(w.get("author")) == normalize(row["author"])
+                        and normalize(w.get("title")) == normalize(row["title"])
+                        and w.get("language") == lang]
+            if matching: wid = matching[0]
+        if (wid, lang, row["url"]) in entries: continue
         reader = f"classics-text-reader.html?work={wid}&lang={lang}"
         summary = {k: row[k] for k in ("sources", "sha256", "passages", "characters", "bytes", "url")}
         if wid not in byid:
@@ -414,11 +470,11 @@ def finalize(folder, root=ROOT):
         w["corpusFiles"][lang] = row["url"]
         w.setdefault("localVersions", []).append({"language": lang, "path": row["url"], "label": "Original " + lang + " · edición TEI en R2", "reader": reader})
         w["publicStatus"] = "lectura-local-parcial"
-        w["indexedEdition"] = summary
-        entries[(wid, lang)] = {"workId": wid, "author": w["author"], "title": w["title"], "language": lang, "format": "json-passages", "path": row["url"], "reader": reader,
+        w.setdefault("indexedEdition", summary)
+        entries[(wid, lang, row["url"])] = {"workId": wid, "author": w["author"], "title": w["title"], "language": lang, "format": "json-passages", "path": row["url"], "reader": reader,
             "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente", "sha256": row["sha256"], "passages": row["passages"]}
     cat["works"] = list(byid.values())
-    reg["entries"] = sorted(entries.values(), key=lambda e: (e["workId"], e["language"]))
+    reg["entries"] = sorted(entries.values(), key=lambda e: (e["workId"], e["language"], e["path"]))
     reg["count"] = len(entries); reg["works"] = len({e["workId"] for e in entries.values()}); reg["updated"] = datetime.now(timezone.utc).date().isoformat()
     save(catpath, cat); save(regpath, reg)
     save(root / "data/r2/classics-expansion-index.json", descriptor)
@@ -426,7 +482,10 @@ def finalize(folder, root=ROOT):
     oldpath = root / "data/r2/classics-expansion-manifest.json"
     old = read(oldpath) if oldpath.exists() else {"editions": [], "githubPreserved": []}
     prior = {r["url"]: r for r in old["editions"]}
-    for row in completed: prior[row["url"]] = row
+    for row in completed:
+        if row["url"] in prior and prior[row["url"]].get("sha256") != row["sha256"]:
+            raise ValueError("La versión R2 existente no puede cambiar de contenido")
+        prior.setdefault(row["url"], row)
     preserved = {r["path"] + "|" + r["sha256"]: r for r in old.get("githubPreserved", [])}
     for row in report.get("githubPreserved", []): preserved[row["path"] + "|" + row["sha256"]] = row
     save(oldpath, {"schema": "vdl-classics-expansion-manifest-v1", "generated": report["generated"], "discovery": report["discovery"], "editions": list(prior.values()), "githubPreserved": list(preserved.values()), "deferred": report["deferred"], "policy": "No se borran ni reemplazan originales de GitHub, PDFs, traducciones o códices. Cobertura relativa a los catálogos CTS inventariados, no a toda la literatura antigua."})
