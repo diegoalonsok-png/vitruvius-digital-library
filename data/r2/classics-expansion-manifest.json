@@ -1,18 +1,18 @@
 {
  "schema": "vdl-classics-expansion-manifest-v1",
- "generated": "2026-11-23T02:58:15.964388+00:00",
+ "generated": "2026-11-23T03:18:21.811446+00:00",
  "discovery": {
-  "sourceRecords": 1936,
-  "alreadyIndexedCatalogueWorks": 167,
-  "pendingGroups": 1841,
+  "sourceRecords": 1910,
+  "alreadyIndexedCatalogueWorks": 193,
+  "pendingGroups": 1815,
   "policy": "Una obra bibliográfica, múltiples ediciones identificadas por URN y hash; sin sustituir ni duplicar archivos",
   "githubTextFiles": 450,
   "githubUnregisteredFiles": 14,
   "selectionPolicy": "fundamentales > grandes tradiciones > especializados; rotación intra-grupo",
-  "selectedGroups": 15,
+  "selectedGroups": 20,
   "selectedByPriority": {
-   "1": 11,
-   "2": 3,
+   "1": 14,
+   "2": 5,
    "3": 1
   },
   "unchangedGithubPreservationReused": 450
@@ -8025,6 +8025,549 @@
    "characters": 10198,
    "bytes": 23466,
    "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0086-tlg020-grc-e60ed4c247f1f4b6.json"
+  },
+  {
+   "workId": "cts-tlg0006-tlg006",
+   "author": "Eurípides",
+   "title": "Andromache",
+   "language": "grc",
+   "dating": "431 a. C.",
+   "sources": [
+    {
+     "title": "Ἀνδρομάχη",
+     "titleLanguage": "grc",
+     "author": "Euripides",
+     "editors": [
+      "Gilbert Murray"
+     ],
+     "bibliography": "Euripides Euripidis Fabulae Gilbert Murray Oxford Clarendon Press 1902 1 The Internet Archive",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2",
+     "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0006/tlg006/tlg0006.tlg006.perseus-grc2.xml",
+     "sourceSha256": "093211da5a04cf24e1cb42edbec2e3bb655b3113a61b044c754df37d88508f95",
+     "sourceReferences": [
+      "https://archive.org/details/euripidisfabulae01euriuoft/page/n269"
+     ],
+     "publicationYear": "1902",
+     "publisher": "Clarendon Press",
+     "publicationPlace": "Oxford",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/093211da5a04cf24e1cb42edbec2e3bb655b3113a61b044c754df37d88508f95.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-tlg0006-tlg006-grc-6840401d8621b781.json",
+   "sha256": "6840401d8621b78140477663702d0d97c175f7c11463cd8ff5446d6c5449e7ef",
+   "passages": 213,
+   "characters": 46226,
+   "bytes": 126128,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0006-tlg006-grc-6840401d8621b781.json"
+  },
+  {
+   "workId": "cts-tlg0006-tlg004",
+   "author": "Eurípides",
+   "title": "Heracleidae",
+   "language": "grc",
+   "dating": "431 a. C.",
+   "sources": [
+    {
+     "title": "Ἡρακλεῖδαι",
+     "titleLanguage": "grc",
+     "author": "Euripides",
+     "editors": [
+      "Gilbert Murray"
+     ],
+     "bibliography": "Euripides Euripidis Fabulae Gilbert Murray Oxford Clarendon Press 1902 1 The Internet Archive",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg0006.tlg004.perseus-grc2",
+     "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0006/tlg004/tlg0006.tlg004.perseus-grc2.xml",
+     "sourceSha256": "b97cc0c0db167d62dc945277c8d995532fc26e3b4c028c87e2974e4af63da641",
+     "sourceReferences": [
+      "https://archive.org/details/euripidisfabulae01euriuoft/page/n163"
+     ],
+     "publicationYear": "1902",
+     "publisher": "Clarendon Press",
+     "publicationPlace": "Oxford",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/b97cc0c0db167d62dc945277c8d995532fc26e3b4c028c87e2974e4af63da641.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-tlg0006-tlg004-grc-c353d7e79e144aa4.json",
+   "sha256": "c353d7e79e144aa494041b69699f8bd15022736b3b73bc42dcfbb35ec158b0c1",
+   "passages": 212,
+   "characters": 39455,
+   "bytes": 112289,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0006-tlg004-grc-c353d7e79e144aa4.json"
+  },
+  {
+   "workId": "cts-tlg0006-tlg009",
+   "author": "Eurípides",
+   "title": "Heracles",
+   "language": "grc",
+   "dating": "431 a. C.",
+   "sources": [
+    {
+     "title": "Ἡρακλῆς",
+     "titleLanguage": "grc",
+     "author": "Euripides",
+     "editors": [
+      "Gilbert Murray"
+     ],
+     "bibliography": "Euripides Euripidis Fabulae Gilbert Murray Oxford Clarendon Press 1913 2 The Internet Archive",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg0006.tlg009.perseus-grc2",
+     "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0006/tlg009/tlg0006.tlg009.perseus-grc2.xml",
+     "sourceSha256": "8a68fa2f76c1edadffbd47b166abc41b593252f718e123d6e9ef225223b902d8",
+     "sourceReferences": [
+      "https://archive.org/details/euripidisfabu02euri/page/n67/mode/2up"
+     ],
+     "publicationYear": "1913",
+     "publisher": "Clarendon Press",
+     "publicationPlace": "Oxford",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/8a68fa2f76c1edadffbd47b166abc41b593252f718e123d6e9ef225223b902d8.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-tlg0006-tlg009-grc-75f8a7f12ea36a19.json",
+   "sha256": "75f8a7f12ea36a19fcf29ad4492b5e2ad7ef33414d442a112c5d4ea0523c3781",
+   "passages": 299,
+   "characters": 51340,
+   "bytes": 149148,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0006-tlg009-grc-75f8a7f12ea36a19.json"
+  },
+  {
+   "workId": "cts-tlg0006-tlg008",
+   "author": "Eurípides",
+   "title": "Suppliants",
+   "language": "grc",
+   "dating": "431 a. C.",
+   "sources": [
+    {
+     "title": "Ἱκέτιδες",
+     "titleLanguage": "grc",
+     "author": "Euripides",
+     "editors": [
+      "Gilbert Murray"
+     ],
+     "bibliography": "Euripides Euripidis Fabulae Gilbert Murray Oxford Clarendon Press 1913 2 The Internet Archive",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg0006.tlg008.perseus-grc2",
+     "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0006/tlg008/tlg0006.tlg008.perseus-grc2.xml",
+     "sourceSha256": "c4608b2612a5728672b97efe1e373d3253430f4b00328bf08182d15a558d1fce",
+     "sourceReferences": [
+      "https://archive.org/details/euripidisfabu02euri/page/n17"
+     ],
+     "publicationYear": "1913",
+     "publisher": "Clarendon Press",
+     "publicationPlace": "Oxford",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/c4608b2612a5728672b97efe1e373d3253430f4b00328bf08182d15a558d1fce.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-tlg0006-tlg008-grc-41284bf9c8294e85.json",
+   "sha256": "41284bf9c8294e857a305a3bc9388e672161a44340e4bb847a56540ea422de60",
+   "passages": 254,
+   "characters": 45615,
+   "bytes": 130560,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0006-tlg008-grc-41284bf9c8294e85.json"
+  },
+  {
+   "workId": "cts-tlg5022-tlg007",
+   "author": "Escolios a Euclides",
+   "title": "Scholia in Euclidis data et catoptrica",
+   "language": "grc",
+   "dating": "antigüedad tardía y Bizancio",
+   "sources": [
+    {
+     "title": "Scholia in Euclidis data et catoptrica (scholia vetera)",
+     "titleLanguage": "lat",
+     "author": "Scholia in Euclidem",
+     "editors": [
+      "Henricus Menge",
+      "Heinrich Menge"
+     ],
+     "bibliography": "Euclidis Opera Omnia Henricus Menge Scholia in Euclidem Leipzig Teubner 1916 8 Internet Archive",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg5022.tlg007.1st1K-grc1",
+     "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg5022/tlg007/tlg5022.tlg007.1st1K-grc1.xml",
+     "sourceSha256": "e5bbdde427d6686db58bfc80632958decf5574ff7a86ce60a8cb92b45d1779dd",
+     "sourceReferences": [
+      "https://archive.org/stream/euclidisoperaomn08eucluoft#page/190/mode/2up"
+     ],
+     "publicationYear": "1916",
+     "publisher": "Leipzig",
+     "publicationPlace": "Teubner",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/e5bbdde427d6686db58bfc80632958decf5574ff7a86ce60a8cb92b45d1779dd.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-tlg5022-tlg007-grc-fe61236e8c2220bf.json",
+   "sha256": "fe61236e8c2220bfa7fb647b28a72af8ac07001195f179661eaa4396f06f5679",
+   "passages": 19,
+   "characters": 3149,
+   "bytes": 10953,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg5022-tlg007-grc-fe61236e8c2220bf.json"
+  },
+  {
+   "workId": "cts-tlg0006-tlg013",
+   "author": "Eurípides",
+   "title": "Iphigenia in Tauris",
+   "language": "grc",
+   "dating": "431 a. C.",
+   "sources": [
+    {
+     "title": "Ἰφιγένεια ἐν Ταύροις",
+     "titleLanguage": "grc",
+     "author": "Euripides",
+     "editors": [
+      "Gilbert Murray"
+     ],
+     "bibliography": "Euripides Euripidis Fabulae Gilbert Murray Oxford Clarendon Press 1913 2 The Internet Archive",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg0006.tlg013.perseus-grc2",
+     "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0006/tlg013/tlg0006.tlg013.perseus-grc2.xml",
+     "sourceSha256": "dae8c3abd8083b0f185c0213485faf42378828d03056032e956b7b138044f08c",
+     "sourceReferences": [
+      "https://archive.org/details/euripidisfabu02euri/page/n297"
+     ],
+     "publicationYear": "1913",
+     "publisher": "Clarendon Press",
+     "publicationPlace": "Oxford",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/dae8c3abd8083b0f185c0213485faf42378828d03056032e956b7b138044f08c.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-tlg0006-tlg013-grc-f663ff4d2d5f0969.json",
+   "sha256": "f663ff4d2d5f0969e1e62d2ad661d2ef0b60485110e1c6bbb9e9039edd2b9f74",
+   "passages": 407,
+   "characters": 54985,
+   "bytes": 173709,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0006-tlg013-grc-f663ff4d2d5f0969.json"
+  },
+  {
+   "workId": "cts-tlg0006-tlg010",
+   "author": "Eurípides",
+   "title": "Ion",
+   "language": "grc",
+   "dating": "431 a. C.",
+   "sources": [
+    {
+     "title": "Ἴων",
+     "titleLanguage": "grc",
+     "author": "Euripides",
+     "editors": [
+      "Gilbert Murray"
+     ],
+     "bibliography": "Euripides Euripidis Fabulae Gilbert Murray Oxford Clarendon Press 1913 2 The Internet Archive",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg0006.tlg010.perseus-grc2",
+     "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0006/tlg010/tlg0006.tlg010.perseus-grc2.xml",
+     "sourceSha256": "37a881b065d6223f25df5655f750c966cf6971aa393042069f5ce94619561a47",
+     "sourceReferences": [
+      "https://archive.org/details/euripidisfabu02euri/page/n123/mode/2up"
+     ],
+     "publicationYear": "1913",
+     "publisher": "Clarendon Press",
+     "publicationPlace": "Oxford",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/37a881b065d6223f25df5655f750c966cf6971aa393042069f5ce94619561a47.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-tlg0006-tlg010-grc-2d69c2a9e6ce1355.json",
+   "sha256": "2d69c2a9e6ce135512c73b076685d716cf92a5fdfd84639e8390f49f63f04ea1",
+   "passages": 561,
+   "characters": 59803,
+   "bytes": 207437,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0006-tlg010-grc-2d69c2a9e6ce1355.json"
+  },
+  {
+   "workId": "cts-tlg5029-tlg001",
+   "author": "Scholia in Lucianum",
+   "title": "Scholia in Lucianum",
+   "language": "grc",
+   "dating": "",
+   "sources": [
+    {
+     "title": "Scholia in Lucianum (scholia vetera et recentiora Arethae)",
+     "titleLanguage": "lat",
+     "author": "Scholia in Lucianum",
+     "editors": [
+      "Hugo Rabe"
+     ],
+     "bibliography": "Scholia in Lucianum Scholia in Lucianum Hugo Rabe Leipzig Teubner 1906 Internet Archive",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg5029.tlg001.1st1K-grc1",
+     "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg5029/tlg001/tlg5029.tlg001.1st1K-grc1.xml",
+     "sourceSha256": "f050caca5cb65cf490a15f33784ede726cb910b6de641c3a78d8851de05615be",
+     "sourceReferences": [
+      "https://www.archive.org/details/scholiainlucianu00rabe"
+     ],
+     "publicationYear": "1906",
+     "publisher": "Teubner",
+     "publicationPlace": "Leipzig",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/f050caca5cb65cf490a15f33784ede726cb910b6de641c3a78d8851de05615be.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-tlg5029-tlg001-grc-9080e57e130cbde8.json",
+   "sha256": "9080e57e130cbde862497ff330fe90f69c0835724af71e7d8c4ee382e1d42ed7",
+   "passages": 2710,
+   "characters": 348075,
+   "bytes": 1098323,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg5029-tlg001-grc-9080e57e130cbde8.json"
+  },
+  {
+   "workId": "apollonius-conica",
+   "author": "Apolonio de Perge",
+   "title": "Κωνικά · Conica",
+   "language": "grc",
+   "sources": [
+    {
+     "title": "Conica",
+     "titleLanguage": "lat",
+     "author": "Apollonius of Perga",
+     "editors": [
+      "J. L. Heiberg"
+     ],
+     "bibliography": "Apollonius Pergaeus Apollonii Pergaei quae graece exstant J. L. Heiberg Leipzig Teubner 1893 2 Internet Archive",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg0550.tlg001.1st1K-grc1",
+     "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0550/tlg001/tlg0550.tlg001.1st1K-grc1.xml",
+     "sourceSha256": "6d6d5bb17dea43ec238e777fb413af56137e49dcd76e8e02dbc515ae0a5db0eb",
+     "sourceReferences": [
+      "https://archive.org/details/apolloniipergaei02apoluoft/page/2/mode/1up"
+     ],
+     "publicationYear": "1893",
+     "publisher": "Teubner",
+     "publicationPlace": "Leipzig",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/6d6d5bb17dea43ec238e777fb413af56137e49dcd76e8e02dbc515ae0a5db0eb.xml"
+    }
+   ],
+   "existing": true,
+   "filename": "apollonius-conica-grc-5342e9747c1cc782.json",
+   "sha256": "5342e9747c1cc782e8715127a0699dc71bd0cf3e406db40ba0bf92f05631e481",
+   "passages": 235,
+   "characters": 45177,
+   "bytes": 125810,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/apollonius-conica-grc-5342e9747c1cc782.json"
+  },
+  {
+   "workId": "aristarchus-magnitudines",
+   "author": "Aristarco de Samos",
+   "title": "Περὶ μεγεθῶν καὶ ἀποστημάτων ἡλίου καὶ σελήνης",
+   "language": "grc",
+   "sources": [
+    {
+     "title": "De magnitudinibus et distantiis solis et lunae",
+     "titleLanguage": "lat",
+     "author": "Aristarchus of Samos",
+     "editors": [
+      "Sir Thomas Heath"
+     ],
+     "bibliography": "Aristarchus of Samon The Ancient Copernicus Sir Thomas Heath Aristarchus Clarendon Press Oxford 1913 The Internet Archive",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg1181.tlg001.1st1K-grc1",
+     "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg1181/tlg001/tlg1181.tlg001.1st1K-grc1.xml",
+     "sourceSha256": "b313dce98868284a9265faac43c7ae326f7951a4b1e556dedd0f6731a1735eb8",
+     "sourceReferences": [
+      "https://archive.org/details/aristarchusofsam00heatuoft"
+     ],
+     "publicationYear": "1913",
+     "publisher": "Clarendon Press",
+     "publicationPlace": "Oxford",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/b313dce98868284a9265faac43c7ae326f7951a4b1e556dedd0f6731a1735eb8.xml"
+    }
+   ],
+   "existing": true,
+   "filename": "aristarchus-magnitudines-grc-9f0bfd53a9ef98aa.json",
+   "sha256": "9f0bfd53a9ef98aa95541cf66f15255e14dea93df2e61ac406e624782d84be86",
+   "passages": 76,
+   "characters": 34380,
+   "bytes": 80096,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/aristarchus-magnitudines-grc-9f0bfd53a9ef98aa.json"
+  },
+  {
+   "workId": "apolonio-argonauticas",
+   "author": "Apolonio de Rodas",
+   "title": "Ἀργοναυτικά · Argonautica",
+   "language": "grc",
+   "dating": "siglo III a. C.",
+   "sources": [
+    {
+     "title": "Argonautica",
+     "titleLanguage": "und",
+     "author": "Apollonius Rhodius",
+     "editors": [
+      "George W. Mooney"
+     ],
+     "bibliography": "Argonautica Apollonius Rhodius George W. Mooney London Longmans, Green 1912 Internet Archive",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg0001.tlg001.perseus-grc2",
+     "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0001/tlg001/tlg0001.tlg001.perseus-grc2.xml",
+     "sourceSha256": "b38618d041ad8c20754d9d7f72fd119a2be3e01716e50520d2afbf6ac01cbfee",
+     "sourceReferences": [
+      "https://archive.org/details/argonauticaedite00apoluoft/page/66/mode/2up"
+     ],
+     "publicationYear": "1912",
+     "publisher": "Longmans, Green",
+     "publicationPlace": "London",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/b38618d041ad8c20754d9d7f72fd119a2be3e01716e50520d2afbf6ac01cbfee.xml"
+    }
+   ],
+   "existing": true,
+   "relatedWorkIds": [],
+   "filename": "apolonio-argonauticas-grc-e619bfb84111b081.json",
+   "sha256": "e619bfb84111b0811d9f061bc742918e0f9faf3af2fccb39354fc3c36395b786",
+   "passages": 5831,
+   "characters": 248490,
+   "bytes": 1272949,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/apolonio-argonauticas-grc-e619bfb84111b081.json"
+  },
+  {
+   "workId": "cts-phi0119-phi004",
+   "author": "Plauto",
+   "title": "Bacchides",
+   "language": "la",
+   "dating": "c. 254–184 a. C.",
+   "sources": [
+    {
+     "title": "Bacchides",
+     "titleLanguage": "lat",
+     "author": "T. Maccius Plautus",
+     "editors": [
+      "Friedrich Leo"
+     ],
+     "bibliography": "T. Maccius Plautus Plauti Comoediae Friedrich Leo Berlin Weidmann 1895 1 Internet Archive",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+      }
+     ],
+     "editionUrn": "urn:cts:latinLit:phi0119.phi004.perseus-lat2",
+     "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0119/phi004/phi0119.phi004.perseus-lat2.xml",
+     "sourceSha256": "3a88a49cb6488a7d71f8757cd70913fc626ade827d7959317b56df826aea4410",
+     "sourceReferences": [
+      "https://archive.org/details/comoediaerecensu01plauuoft/page/126/mode/2up"
+     ],
+     "publicationYear": "1895",
+     "publisher": "Weidmann",
+     "publicationPlace": "Berlin",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/3a88a49cb6488a7d71f8757cd70913fc626ade827d7959317b56df826aea4410.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-phi0119-phi004-la-49d9bab79fbcfcef.json",
+   "sha256": "49d9bab79fbcfcef9ddd382643a05eb953f32c5e0c1aa0ad308a5a9e66b79cc9",
+   "passages": 726,
+   "characters": 64502,
+   "bytes": 182695,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0119-phi004-la-49d9bab79fbcfcef.json"
+  },
+  {
+   "workId": "cts-tlg0006-tlg014",
+   "author": "Eurípides",
+   "title": "Helen",
+   "language": "grc",
+   "dating": "431 a. C.",
+   "sources": [
+    {
+     "title": "Ἑλένη",
+     "titleLanguage": "grc",
+     "author": "Euripides",
+     "editors": [
+      "Gilbert Murray"
+     ],
+     "bibliography": "Euripides Euripidis Fabulae Gilbert Murray Oxford Clarendon Press 1913 3 The Internet Archive",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg0006.tlg014.perseus-grc2",
+     "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0006/tlg014/tlg0006.tlg014.perseus-grc2.xml",
+     "sourceSha256": "4769e17dd17607399dbaf8ff327e79d302de499d957e0ac921ae233fa63f6545",
+     "sourceReferences": [
+      "https://archive.org/details/euripidisfabulae03euri_0/page/n13/"
+     ],
+     "publicationYear": "1913",
+     "publisher": "Clarendon Press",
+     "publicationPlace": "Oxford",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/4769e17dd17607399dbaf8ff327e79d302de499d957e0ac921ae233fa63f6545.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-tlg0006-tlg014-grc-0b976d1aa65e5e77.json",
+   "sha256": "0b976d1aa65e5e7762b9b80c56b01521b38b4da4ca13eaa75b24f59b0875765b",
+   "passages": 491,
+   "characters": 63517,
+   "bytes": 203638,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0006-tlg014-grc-0b976d1aa65e5e77.json"
   }
  ],
  "githubPreserved": [
@@ -11228,6 +11771,56 @@
    "r2Key": "preserved/github/6c7f2ee0eada84ebb9f2a6954b9e2e60f4db514ee8d8c3a5c160e754349ee53f.json"
   }
  ],
- "deferred": [],
+ "deferred": [
+  {
+   "workId": "cts-phi0959-phi010",
+   "sources": [
+    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0959/phi010/phi0959.phi010.perseus-lat2.xml"
+   ],
+   "reason": "Sin licencia abierta explícita admisible en la cabecera TEI"
+  },
+  {
+   "workId": "cts-phi1014-phi002",
+   "sources": [
+    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi1014/phi002/phi1014.phi002.perseus-lat1.xml"
+   ],
+   "reason": "Sin licencia abierta explícita admisible en la cabecera TEI"
+  },
+  {
+   "workId": "cts-phi1014-phi003",
+   "sources": [
+    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi1014/phi003/phi1014.phi003.perseus-lat1.xml"
+   ],
+   "reason": "Sin licencia abierta explícita admisible en la cabecera TEI"
+  },
+  {
+   "workId": "cts-phi1014-phi001",
+   "sources": [
+    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi1014/phi001/phi1014.phi001.perseus-lat1.xml"
+   ],
+   "reason": "Sin licencia abierta explícita admisible en la cabecera TEI"
+  },
+  {
+   "workId": "cts-phi1014-phi004",
+   "sources": [
+    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi1014/phi004/phi1014.phi004.perseus-lat1.xml"
+   ],
+   "reason": "Sin licencia abierta explícita admisible en la cabecera TEI"
+  },
+  {
+   "workId": "cts-phi1017-phi011",
+   "sources": [
+    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi1017/phi011/phi1017.phi011.perseus-lat2.xml"
+   ],
+   "reason": "Sin licencia abierta explícita admisible en la cabecera TEI"
+  },
+  {
+   "workId": "cts-phi1017-phi013",
+   "sources": [
+    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi1017/phi013/phi1017.phi013.perseus-lat2.xml"
+   ],
+   "reason": "Sin licencia abierta explícita admisible en la cabecera TEI"
+  }
+ ],
  "policy": "No se borran ni reemplazan originales de GitHub, PDFs, traducciones o códices. Cobertura relativa a los catálogos CTS inventariados, no a toda la literatura antigua."
 }

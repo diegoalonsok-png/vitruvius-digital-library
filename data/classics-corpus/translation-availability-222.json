@@ -4,26 +4,26 @@
   "basis": "Cálculo a partir de works[] y search-registry.json. Los campos de compatibilidad locallyIndexedWorks y localEditionLanguages incluyen índices registrados en R2. originalIndexed y verifiedLocalEditionLanguages solo cuentan archivos locales. originalR2Registered identifica declaraciones remotas; no certifica disponibilidad HTTP ni cotejo.",
   "scope": "271 obras del repertorio grecolatino; originales locales, índices remotos declarados y traducciones alojadas ES/EN/FR",
   "totals": {
-    "cataloguedWorks": 356,
-    "locallyIndexedWorks": 326,
+    "cataloguedWorks": 366,
+    "locallyIndexedWorks": 336,
     "translatedWorksLocal": 78,
-    "worksWithoutHostedTranslation": 278,
+    "worksWithoutHostedTranslation": 288,
     "localTranslationLanguages": {
       "es": 5,
       "en": 77,
       "fr": 2
     },
     "originalTextIndexed": 197,
-    "originalTextNotIndexed": 159,
+    "originalTextNotIndexed": 169,
     "verifiedLocalFileWorks": 199,
-    "declaredRemoteOnlyWorks": 127,
-    "declaredR2OriginalWorks": 138,
-    "registeredOriginalWorks": 326,
-    "registeredTextVersions": 447,
+    "declaredRemoteOnlyWorks": 137,
+    "declaredR2OriginalWorks": 150,
+    "registeredOriginalWorks": 336,
+    "registeredTextVersions": 460,
     "verifiedLocalTextVersions": 281,
     "verifiedLocalOriginalTextIndexed": 197,
     "supplementaryTextVersions": 161,
-    "allRegisteredTextVersions": 608
+    "allRegisteredTextVersions": 621
   },
   "works": [
     {
@@ -5789,16 +5789,18 @@
       "externalTranslationUnverified": [
         "en"
       ],
-      "readingStatus": "fuente-externa-identificada",
+      "readingStatus": "lectura-local-parcial",
       "translationSourceDescription": "Traducción inglesa de Heath en la misma edición.",
       "translationRegisteredButNotHosted": true,
       "indexed": false,
-      "originalR2Registered": false,
+      "originalR2Registered": true,
       "registeredOriginal": true,
       "registeredEditionLanguages": [
         "grc"
       ],
-      "remoteEditionLanguages": [],
+      "remoteEditionLanguages": [
+        "grc"
+      ],
       "verifiedLocalEditionLanguages": [
         "grc"
       ]
@@ -5814,16 +5816,18 @@
         "grc"
       ],
       "externalTranslationUnverified": [],
-      "readingStatus": "fuente-externa-identificada",
+      "readingStatus": "lectura-local-parcial",
       "translationSourceDescription": "Traducción latina de Heiberg en la misma edición.",
       "translationRegisteredButNotHosted": true,
       "indexed": false,
-      "originalR2Registered": false,
+      "originalR2Registered": true,
       "registeredOriginal": true,
       "registeredEditionLanguages": [
         "grc"
       ],
-      "remoteEditionLanguages": [],
+      "remoteEditionLanguages": [
+        "grc"
+      ],
       "verifiedLocalEditionLanguages": [
         "grc"
       ]
@@ -5966,7 +5970,7 @@
         "grc"
       ],
       "externalTranslationUnverified": [],
-      "readingStatus": "fuente-externa-identificada",
+      "readingStatus": "lectura-local-parcial",
       "translationSourceDescription": "Facsímil de dominio público alojado en R2. El volumen trae la traducción inglesa enfrentada (Loeb), que no está indexada como texto aparte.",
       "originalR2Registered": true,
       "registeredOriginal": true,
@@ -8886,6 +8890,226 @@
       "id": "cts-tlg0086-tlg020",
       "author": "Aristóteles",
       "title": "De longitudine et brevitate vitae",
+      "originalLanguage": "grc",
+      "translationLanguages": [],
+      "localEditionLanguages": [
+        "grc"
+      ],
+      "notes": "Edición TEI incorporada en R2; sin traducción humana ni colación independiente acreditadas.",
+      "originalIndexed": false,
+      "originalR2Registered": true,
+      "registeredOriginal": true,
+      "verifiedLocalEditionLanguages": [],
+      "registeredEditionLanguages": [
+        "grc"
+      ],
+      "remoteEditionLanguages": [
+        "grc"
+      ],
+      "readingStatus": "lectura-local-parcial"
+    },
+    {
+      "id": "cts-tlg0006-tlg006",
+      "author": "Eurípides",
+      "title": "Andromache",
+      "originalLanguage": "grc",
+      "translationLanguages": [],
+      "localEditionLanguages": [
+        "grc"
+      ],
+      "notes": "Edición TEI incorporada en R2; sin traducción humana ni colación independiente acreditadas.",
+      "originalIndexed": false,
+      "originalR2Registered": true,
+      "registeredOriginal": true,
+      "verifiedLocalEditionLanguages": [],
+      "registeredEditionLanguages": [
+        "grc"
+      ],
+      "remoteEditionLanguages": [
+        "grc"
+      ],
+      "readingStatus": "lectura-local-parcial"
+    },
+    {
+      "id": "cts-tlg0006-tlg004",
+      "author": "Eurípides",
+      "title": "Heracleidae",
+      "originalLanguage": "grc",
+      "translationLanguages": [],
+      "localEditionLanguages": [
+        "grc"
+      ],
+      "notes": "Edición TEI incorporada en R2; sin traducción humana ni colación independiente acreditadas.",
+      "originalIndexed": false,
+      "originalR2Registered": true,
+      "registeredOriginal": true,
+      "verifiedLocalEditionLanguages": [],
+      "registeredEditionLanguages": [
+        "grc"
+      ],
+      "remoteEditionLanguages": [
+        "grc"
+      ],
+      "readingStatus": "lectura-local-parcial"
+    },
+    {
+      "id": "cts-tlg0006-tlg009",
+      "author": "Eurípides",
+      "title": "Heracles",
+      "originalLanguage": "grc",
+      "translationLanguages": [],
+      "localEditionLanguages": [
+        "grc"
+      ],
+      "notes": "Edición TEI incorporada en R2; sin traducción humana ni colación independiente acreditadas.",
+      "originalIndexed": false,
+      "originalR2Registered": true,
+      "registeredOriginal": true,
+      "verifiedLocalEditionLanguages": [],
+      "registeredEditionLanguages": [
+        "grc"
+      ],
+      "remoteEditionLanguages": [
+        "grc"
+      ],
+      "readingStatus": "lectura-local-parcial"
+    },
+    {
+      "id": "cts-tlg0006-tlg008",
+      "author": "Eurípides",
+      "title": "Suppliants",
+      "originalLanguage": "grc",
+      "translationLanguages": [],
+      "localEditionLanguages": [
+        "grc"
+      ],
+      "notes": "Edición TEI incorporada en R2; sin traducción humana ni colación independiente acreditadas.",
+      "originalIndexed": false,
+      "originalR2Registered": true,
+      "registeredOriginal": true,
+      "verifiedLocalEditionLanguages": [],
+      "registeredEditionLanguages": [
+        "grc"
+      ],
+      "remoteEditionLanguages": [
+        "grc"
+      ],
+      "readingStatus": "lectura-local-parcial"
+    },
+    {
+      "id": "cts-tlg5022-tlg007",
+      "author": "Escolios a Euclides",
+      "title": "Scholia in Euclidis data et catoptrica",
+      "originalLanguage": "grc",
+      "translationLanguages": [],
+      "localEditionLanguages": [
+        "grc"
+      ],
+      "notes": "Edición TEI incorporada en R2; sin traducción humana ni colación independiente acreditadas.",
+      "originalIndexed": false,
+      "originalR2Registered": true,
+      "registeredOriginal": true,
+      "verifiedLocalEditionLanguages": [],
+      "registeredEditionLanguages": [
+        "grc"
+      ],
+      "remoteEditionLanguages": [
+        "grc"
+      ],
+      "readingStatus": "lectura-local-parcial"
+    },
+    {
+      "id": "cts-tlg0006-tlg013",
+      "author": "Eurípides",
+      "title": "Iphigenia in Tauris",
+      "originalLanguage": "grc",
+      "translationLanguages": [],
+      "localEditionLanguages": [
+        "grc"
+      ],
+      "notes": "Edición TEI incorporada en R2; sin traducción humana ni colación independiente acreditadas.",
+      "originalIndexed": false,
+      "originalR2Registered": true,
+      "registeredOriginal": true,
+      "verifiedLocalEditionLanguages": [],
+      "registeredEditionLanguages": [
+        "grc"
+      ],
+      "remoteEditionLanguages": [
+        "grc"
+      ],
+      "readingStatus": "lectura-local-parcial"
+    },
+    {
+      "id": "cts-tlg0006-tlg010",
+      "author": "Eurípides",
+      "title": "Ion",
+      "originalLanguage": "grc",
+      "translationLanguages": [],
+      "localEditionLanguages": [
+        "grc"
+      ],
+      "notes": "Edición TEI incorporada en R2; sin traducción humana ni colación independiente acreditadas.",
+      "originalIndexed": false,
+      "originalR2Registered": true,
+      "registeredOriginal": true,
+      "verifiedLocalEditionLanguages": [],
+      "registeredEditionLanguages": [
+        "grc"
+      ],
+      "remoteEditionLanguages": [
+        "grc"
+      ],
+      "readingStatus": "lectura-local-parcial"
+    },
+    {
+      "id": "cts-tlg5029-tlg001",
+      "author": "Scholia in Lucianum",
+      "title": "Scholia in Lucianum",
+      "originalLanguage": "grc",
+      "translationLanguages": [],
+      "localEditionLanguages": [
+        "grc"
+      ],
+      "notes": "Edición TEI incorporada en R2; sin traducción humana ni colación independiente acreditadas.",
+      "originalIndexed": false,
+      "originalR2Registered": true,
+      "registeredOriginal": true,
+      "verifiedLocalEditionLanguages": [],
+      "registeredEditionLanguages": [
+        "grc"
+      ],
+      "remoteEditionLanguages": [
+        "grc"
+      ],
+      "readingStatus": "lectura-local-parcial"
+    },
+    {
+      "id": "cts-phi0119-phi004",
+      "author": "Plauto",
+      "title": "Bacchides",
+      "originalLanguage": "la",
+      "translationLanguages": [],
+      "localEditionLanguages": [
+        "la"
+      ],
+      "notes": "Edición TEI incorporada en R2; sin traducción humana ni colación independiente acreditadas.",
+      "originalIndexed": false,
+      "originalR2Registered": true,
+      "registeredOriginal": true,
+      "verifiedLocalEditionLanguages": [],
+      "registeredEditionLanguages": [
+        "la"
+      ],
+      "remoteEditionLanguages": [
+        "la"
+      ],
+      "readingStatus": "lectura-local-parcial"
+    },
+    {
+      "id": "cts-tlg0006-tlg014",
+      "author": "Eurípides",
+      "title": "Helen",
       "originalLanguage": "grc",
       "translationLanguages": [],
       "localEditionLanguages": [

@@ -2,8 +2,8 @@
  "schema": "vitruvia-classics-search-registry-v1",
  "updated": "2026-11-23",
  "description": "Registro verificable de transcripciones HTML y textos JSON existentes que admiten búsqueda literal de contenido. No incluye automáticamente PDF escaneados, facsímiles ni fichas sin texto. Los índices auxiliares por locus y el aparato crítico se declaran por separado; no se suman a versiones textuales originales ni implican colación autóptica.",
- "count": 608,
- "works": 454,
+ "count": 621,
+ "works": 464,
  "entries": [
   {
    "workId": "aeneas-tacticus-poliorketika",
@@ -152,6 +152,19 @@
    "sourceDescription": "First1KGreek; edición de J. L. Heiberg; CC BY-SA 4.0"
   },
   {
+   "workId": "apollonius-conica",
+   "author": "Apolonio de Perge",
+   "title": "Κωνικά · Conica",
+   "language": "grc",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/apollonius-conica-grc-5342e9747c1cc782.json",
+   "reader": "classics-text-reader.html?work=apollonius-conica&lang=grc&edition=5342e9747c1cc782",
+   "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+   "sourceUrn": "urn:cts:greekLit:tlg0550.tlg001.1st1K-grc1",
+   "sha256": "5342e9747c1cc782e8715127a0699dc71bd0cf3e406db40ba0bf92f05631e481",
+   "passages": 235
+  },
+  {
    "workId": "apolonio-argonauticas",
    "author": "Apolonio de Rodas",
    "title": "Ἀργοναυτικά · Argonautica",
@@ -160,6 +173,19 @@
    "path": "data/classics-corpus/apolonio-argonauticas-en.json",
    "reader": "classics-text-reader.html?work=apolonio-argonauticas&lang=en",
    "sourceDescription": "Traducción humana inglesa de R. C. Seaton (1912), Project Gutenberg #830; 426 párrafos indexados en orden textual; sin alineación crítica con los versos griegos."
+  },
+  {
+   "workId": "apolonio-argonauticas",
+   "author": "Apolonio de Rodas",
+   "title": "Ἀργοναυτικά · Argonautica",
+   "language": "grc",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/apolonio-argonauticas-grc-e619bfb84111b081.json",
+   "reader": "classics-text-reader.html?work=apolonio-argonauticas&lang=grc&edition=e619bfb84111b081",
+   "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+   "sourceUrn": "urn:cts:greekLit:tlg0001.tlg001.perseus-grc2",
+   "sha256": "e619bfb84111b0811d9f061bc742918e0f9faf3af2fccb39354fc3c36395b786",
+   "passages": 5831
   },
   {
    "workId": "apolonio-argonauticas",
@@ -279,6 +305,19 @@
    "sourceUrn": "urn:cts:greekLit:tlg1181.tlg001.1st1K-grc1",
    "sourceSha256": "b313dce98868284a9265faac43c7ae326f7951a4b1e556dedd0f6731a1735eb8",
    "sourceDescription": "First1KGreek; edición de Thomas Heath; CC BY-SA 4.0"
+  },
+  {
+   "workId": "aristarchus-magnitudines",
+   "author": "Aristarco de Samos",
+   "title": "Περὶ μεγεθῶν καὶ ἀποστημάτων ἡλίου καὶ σελήνης",
+   "language": "grc",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/aristarchus-magnitudines-grc-9f0bfd53a9ef98aa.json",
+   "reader": "classics-text-reader.html?work=aristarchus-magnitudines&lang=grc&edition=9f0bfd53a9ef98aa",
+   "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+   "sourceUrn": "urn:cts:greekLit:tlg1181.tlg001.1st1K-grc1",
+   "sha256": "9f0bfd53a9ef98aa95541cf66f15255e14dea93df2e61ac406e624782d84be86",
+   "passages": 76
   },
   {
    "workId": "aristophanes-acharnenses",
@@ -1075,6 +1114,19 @@
    "passages": 4
   },
   {
+   "workId": "cts-phi0119-phi004",
+   "author": "Plauto",
+   "title": "Bacchides",
+   "language": "la",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0119-phi004-la-49d9bab79fbcfcef.json",
+   "reader": "classics-text-reader.html?work=cts-phi0119-phi004&lang=la&edition=49d9bab79fbcfcef",
+   "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+   "sourceUrn": "urn:cts:latinLit:phi0119.phi004.perseus-lat2",
+   "sha256": "49d9bab79fbcfcef9ddd382643a05eb953f32c5e0c1aa0ad308a5a9e66b79cc9",
+   "passages": 726
+  },
+  {
    "workId": "cts-phi0474-phi005",
    "author": "Cicerón",
    "title": "In C. Verrem",
@@ -1357,6 +1409,97 @@
    "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
    "sha256": "1ffde549798a4d6448edba71f9eaeea1df340fee7383014c4abce32f2fc11763",
    "passages": 256
+  },
+  {
+   "workId": "cts-tlg0006-tlg004",
+   "author": "Eurípides",
+   "title": "Heracleidae",
+   "language": "grc",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0006-tlg004-grc-c353d7e79e144aa4.json",
+   "reader": "classics-text-reader.html?work=cts-tlg0006-tlg004&lang=grc&edition=c353d7e79e144aa4",
+   "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+   "sourceUrn": "urn:cts:greekLit:tlg0006.tlg004.perseus-grc2",
+   "sha256": "c353d7e79e144aa494041b69699f8bd15022736b3b73bc42dcfbb35ec158b0c1",
+   "passages": 212
+  },
+  {
+   "workId": "cts-tlg0006-tlg006",
+   "author": "Eurípides",
+   "title": "Andromache",
+   "language": "grc",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0006-tlg006-grc-6840401d8621b781.json",
+   "reader": "classics-text-reader.html?work=cts-tlg0006-tlg006&lang=grc&edition=6840401d8621b781",
+   "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+   "sourceUrn": "urn:cts:greekLit:tlg0006.tlg006.perseus-grc2",
+   "sha256": "6840401d8621b78140477663702d0d97c175f7c11463cd8ff5446d6c5449e7ef",
+   "passages": 213
+  },
+  {
+   "workId": "cts-tlg0006-tlg008",
+   "author": "Eurípides",
+   "title": "Suppliants",
+   "language": "grc",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0006-tlg008-grc-41284bf9c8294e85.json",
+   "reader": "classics-text-reader.html?work=cts-tlg0006-tlg008&lang=grc&edition=41284bf9c8294e85",
+   "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+   "sourceUrn": "urn:cts:greekLit:tlg0006.tlg008.perseus-grc2",
+   "sha256": "41284bf9c8294e857a305a3bc9388e672161a44340e4bb847a56540ea422de60",
+   "passages": 254
+  },
+  {
+   "workId": "cts-tlg0006-tlg009",
+   "author": "Eurípides",
+   "title": "Heracles",
+   "language": "grc",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0006-tlg009-grc-75f8a7f12ea36a19.json",
+   "reader": "classics-text-reader.html?work=cts-tlg0006-tlg009&lang=grc&edition=75f8a7f12ea36a19",
+   "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+   "sourceUrn": "urn:cts:greekLit:tlg0006.tlg009.perseus-grc2",
+   "sha256": "75f8a7f12ea36a19fcf29ad4492b5e2ad7ef33414d442a112c5d4ea0523c3781",
+   "passages": 299
+  },
+  {
+   "workId": "cts-tlg0006-tlg010",
+   "author": "Eurípides",
+   "title": "Ion",
+   "language": "grc",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0006-tlg010-grc-2d69c2a9e6ce1355.json",
+   "reader": "classics-text-reader.html?work=cts-tlg0006-tlg010&lang=grc&edition=2d69c2a9e6ce1355",
+   "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+   "sourceUrn": "urn:cts:greekLit:tlg0006.tlg010.perseus-grc2",
+   "sha256": "2d69c2a9e6ce135512c73b076685d716cf92a5fdfd84639e8390f49f63f04ea1",
+   "passages": 561
+  },
+  {
+   "workId": "cts-tlg0006-tlg013",
+   "author": "Eurípides",
+   "title": "Iphigenia in Tauris",
+   "language": "grc",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0006-tlg013-grc-f663ff4d2d5f0969.json",
+   "reader": "classics-text-reader.html?work=cts-tlg0006-tlg013&lang=grc&edition=f663ff4d2d5f0969",
+   "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+   "sourceUrn": "urn:cts:greekLit:tlg0006.tlg013.perseus-grc2",
+   "sha256": "f663ff4d2d5f0969e1e62d2ad661d2ef0b60485110e1c6bbb9e9039edd2b9f74",
+   "passages": 407
+  },
+  {
+   "workId": "cts-tlg0006-tlg014",
+   "author": "Eurípides",
+   "title": "Helen",
+   "language": "grc",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0006-tlg014-grc-0b976d1aa65e5e77.json",
+   "reader": "classics-text-reader.html?work=cts-tlg0006-tlg014&lang=grc&edition=0b976d1aa65e5e77",
+   "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+   "sourceUrn": "urn:cts:greekLit:tlg0006.tlg014.perseus-grc2",
+   "sha256": "0b976d1aa65e5e7762b9b80c56b01521b38b4da4ca13eaa75b24f59b0875765b",
+   "passages": 491
   },
   {
    "workId": "cts-tlg0012-tlg003",
@@ -2456,6 +2599,32 @@
    "sourceUrn": "urn:cts:greekLit:tlg0086.tlg020.1st1K-grc1",
    "sha256": "e60ed4c247f1f4b62375a300b5a3b03207894cb008a9f1ffe836464451c192a2",
    "passages": 7
+  },
+  {
+   "workId": "cts-tlg5022-tlg007",
+   "author": "Escolios a Euclides",
+   "title": "Scholia in Euclidis data et catoptrica",
+   "language": "grc",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg5022-tlg007-grc-fe61236e8c2220bf.json",
+   "reader": "classics-text-reader.html?work=cts-tlg5022-tlg007&lang=grc&edition=fe61236e8c2220bf",
+   "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+   "sourceUrn": "urn:cts:greekLit:tlg5022.tlg007.1st1K-grc1",
+   "sha256": "fe61236e8c2220bfa7fb647b28a72af8ac07001195f179661eaa4396f06f5679",
+   "passages": 19
+  },
+  {
+   "workId": "cts-tlg5029-tlg001",
+   "author": "Scholia in Lucianum",
+   "title": "Scholia in Lucianum",
+   "language": "grc",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg5029-tlg001-grc-9080e57e130cbde8.json",
+   "reader": "classics-text-reader.html?work=cts-tlg5029-tlg001&lang=grc&edition=9080e57e130cbde8",
+   "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+   "sourceUrn": "urn:cts:greekLit:tlg5029.tlg001.1st1K-grc1",
+   "sha256": "9080e57e130cbde862497ff330fe90f69c0835724af71e7d8c4ee382e1d42ed7",
+   "passages": 2710
   },
   {
    "workId": "demosthenes-de-corona",
