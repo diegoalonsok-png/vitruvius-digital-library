@@ -49,6 +49,48 @@ class NoDeletionPolicy(unittest.TestCase):
         p="data/cifras-corpus.json"
         self.verify(p,{"obrasTotalesDeclaradas":431},{"obrasTotalesDeclaradas":430})
 
+    def test_same_author_title_has_two_versions_not_two_works(self):
+        path="data/bibliotheca-graeca-latina-I-bce-I-ce.json"
+        original={"id":"luciano","author":"Luciano","title":"Doble acusación",
+                  "corpusFiles":{"grc":"https://r2/greek-first.json"},
+                  "localVersions":[{"language":"grc","path":"https://r2/greek-first.json"}]}
+        second={**original, "localVersions":original["localVersions"]+
+                [{"language":"grc","path":"https://r2/greek-second.json",
+                  "sourceUrn":"urn:cts:greekLit:tlg0062.tlg026.perseus-grc4"}]}
+        m.forbid_book_deletions(path,{"works":[original]},{"works":[second]})
+        self.assertEqual(len({"luciano"}),1)
+        self.assertEqual(len(second["localVersions"]),2)
+
+    def test_same_language_distinct_translation_is_additive(self):
+        path="data/classics-corpus/search-registry.json"
+        old={"entries":[{"workId":"luciano","language":"en","path":"https://r2/first.json","sha256":"first"}]}
+        new={"entries":old["entries"]+
+             [{"workId":"luciano","language":"en","path":"https://r2/second.json","sha256":"second"}]}
+        m.forbid_book_deletions(path,old,new)
+
+    def test_replacing_default_original_is_blocked(self):
+        path="data/bibliotheca-graeca-latina-I-bce-I-ce.json"
+        original={"id":"a","corpusFiles":{"la":"https://r2/edition-one.json"}}
+        replacement={"id":"a","corpusFiles":{"la":"https://r2/edition-two.json"}}
+        with self.assertRaisesRegex(ValueError,"NO SE REEMPLAZAN VERSIONES"):
+            m.forbid_book_deletions(path,{"works":[original]},{"works":[replacement]})
+
+    def test_removing_an_older_version_is_blocked(self):
+        path="data/bibliotheca-graeca-latina-I-bce-I-ce.json"
+        original={"id":"a","localVersions":[
+            {"language":"la","path":"https://r2/first.json"},
+            {"language":"la","path":"https://r2/second.json"}]}
+        current={"id":"a","localVersions":[{"language":"la","path":"https://r2/second.json"}]}
+        with self.assertRaisesRegex(ValueError,"NO SE REEMPLAZAN VERSIONES"):
+            m.forbid_book_deletions(path,{"works":[original]},{"works":[current]})
+
+    def test_same_edition_url_cannot_change_hash(self):
+        path="data/r2/classics-translation-manifest.json"
+        old={"editions":[{"workId":"a","language":"en","url":"https://r2/translation.json","sha256":"old"}]}
+        new={"editions":[{"workId":"a","language":"en","url":"https://r2/translation.json","sha256":"new"}]}
+        with self.assertRaisesRegex(ValueError,"NO SE REEMPLAZAN VERSIONES"):
+            m.forbid_book_deletions(path,old,new)
+
     def test_no_r2_delete_api_in_acquisition_scripts(self):
         for path in [
             ROOT/"scripts/expand-classics-r2.py",
