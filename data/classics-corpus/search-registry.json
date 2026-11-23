@@ -2,7 +2,7 @@
  "schema": "vitruvia-classics-search-registry-v1",
  "updated": "2026-11-23",
  "description": "Registro verificable de transcripciones HTML y textos JSON existentes que admiten búsqueda literal de contenido. No incluye automáticamente PDF escaneados, facsímiles ni fichas sin texto. Los índices auxiliares por locus y el aparato crítico se declaran por separado; no se suman a versiones textuales originales ni implican colación autóptica.",
- "count": 551,
+ "count": 555,
  "works": 414,
  "entries": [
   {
@@ -1645,6 +1645,19 @@
    "workId": "cts-tlg0062-tlg018",
    "author": "Luciano de Samósata",
    "title": "Juppiter Tragoedus",
+   "language": "en",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg018-en-b148f4324577f4c9.json",
+   "reader": "classics-text-reader.html?work=cts-tlg0062-tlg018&lang=en&edition=b148f4324577f4c9",
+   "sourceDescription": "Traducción humana acreditada: Emily James Smith; TEI Perseus, licencia y SHA256 verificados",
+   "sourceUrn": "urn:cts:greekLit:tlg0062.tlg018.perseus-eng5",
+   "sha256": "b148f4324577f4c95285d6e36a93dfb909c84804b30ecd845bab2041acfcaacd",
+   "passages": 201
+  },
+  {
+   "workId": "cts-tlg0062-tlg018",
+   "author": "Luciano de Samósata",
+   "title": "Juppiter Tragoedus",
    "language": "grc",
    "format": "json-passages",
    "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg018-grc-5c31c0511a197a5b.json",
@@ -1652,6 +1665,19 @@
    "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
    "sha256": "5c31c0511a197a5be567a4545e03aef63afa91844fd85a40771bbae6cf0f7ada",
    "passages": 187
+  },
+  {
+   "workId": "cts-tlg0062-tlg022",
+   "author": "Luciano de Samósata",
+   "title": "Timon",
+   "language": "en",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg022-en-be6a0ec6112dc5ac.json",
+   "reader": "classics-text-reader.html?work=cts-tlg0062-tlg022&lang=en&edition=be6a0ec6112dc5ac",
+   "sourceDescription": "Traducción humana acreditada: Henry Watson Fowler, Francis George Fowler; TEI Perseus, licencia y SHA256 verificados",
+   "sourceUrn": "urn:cts:greekLit:tlg0062.tlg022.perseus-eng4",
+   "sha256": "be6a0ec6112dc5aca96a35089891b024208cb6d86d5ed86b6698c85c4f971dee",
+   "passages": 132
   },
   {
    "workId": "cts-tlg0062-tlg022",
@@ -1693,6 +1719,19 @@
    "workId": "cts-tlg0062-tlg023",
    "author": "Luciano de Samósata",
    "title": "Contemplantes",
+   "language": "en",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg023-en-e7007bcb8091cb94.json",
+   "reader": "classics-text-reader.html?work=cts-tlg0062-tlg023&lang=en&edition=e7007bcb8091cb94",
+   "sourceDescription": "Traducción humana acreditada: Henry Watson Fowler, Francis George Fowler; TEI Perseus, licencia y SHA256 verificados",
+   "sourceUrn": "urn:cts:greekLit:tlg0062.tlg023.perseus-eng4",
+   "sha256": "e7007bcb8091cb94e9249a3054de97516472cf1dc4fca7076a25330fe6879e56",
+   "passages": 132
+  },
+  {
+   "workId": "cts-tlg0062-tlg023",
+   "author": "Luciano de Samósata",
+   "title": "Contemplantes",
    "language": "grc",
    "format": "json-passages",
    "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg023-grc-13f0b5c93b8deead.json",
@@ -1700,6 +1739,19 @@
    "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
    "sha256": "13f0b5c93b8deead889c484fb2b47b25e5f307a6c2d02c28da149b26d236e46f",
    "passages": 126
+  },
+  {
+   "workId": "cts-tlg0062-tlg024",
+   "author": "Luciano de Samósata",
+   "title": "Vitarum auctio",
+   "language": "en",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg024-en-5b53d953866c07d4.json",
+   "reader": "classics-text-reader.html?work=cts-tlg0062-tlg024&lang=en&edition=5b53d953866c07d4",
+   "sourceDescription": "Traducción humana acreditada: Henry Watson Fowler, Francis George Fowler; TEI Perseus, licencia y SHA256 verificados",
+   "sourceUrn": "urn:cts:greekLit:tlg0062.tlg024.perseus-eng4",
+   "sha256": "5b53d953866c07d49df1b0516a380e75da42bd3e3a0fe5820e6d597dfcbf5cf8",
+   "passages": 266
   },
   {
    "workId": "cts-tlg0062-tlg024",

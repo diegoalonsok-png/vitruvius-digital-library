@@ -1,6 +1,6 @@
 {
   "schema": "vdl-federated-bibliotheca-inventory-v1",
-  "generated": "2026-11-23T00:41:47.118609+00:00",
+  "generated": "2026-11-23T00:43:45.179971+00:00",
   "method": "Master works and additional R2 works counted separately; edition relations can be many-to-many. Remote text URLs are declared, not live-verified. Unresolved editions are never merged automatically.",
   "counts": {
     "cataloguedWorks": 316,
@@ -7523,6 +7523,10 @@
           "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg018-en-111469af421292a8.json"
         },
         {
+          "language": "en",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg018-en-b148f4324577f4c9.json"
+        },
+        {
           "language": "grc",
           "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg018-grc-5c31c0511a197a5b.json"
         }
@@ -7580,6 +7584,10 @@
       "declaredRemoteIndexedText": [
         {
           "language": "en",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg022-en-be6a0ec6112dc5ac.json"
+        },
+        {
+          "language": "en",
           "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg022-en-e883d6296b5af763.json"
         },
         {
@@ -7601,6 +7609,10 @@
           "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg023-en-62ec650bbc2ff636.json"
         },
         {
+          "language": "en",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg023-en-e7007bcb8091cb94.json"
+        },
+        {
           "language": "grc",
           "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg023-grc-13f0b5c93b8deead.json"
         }
@@ -7614,6 +7626,10 @@
       "catalogue": "github",
       "locallyIndexedText": [],
       "declaredRemoteIndexedText": [
+        {
+          "language": "en",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg024-en-5b53d953866c07d4.json"
+        },
         {
           "language": "en",
           "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg024-en-e8050b155cf678ee.json"

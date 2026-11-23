@@ -1,6 +1,6 @@
 {
  "schema": "vdl-classics-translation-manifest-v1",
- "generated": "2026-11-23T00:41:47.020570+00:00",
+ "generated": "2026-11-23T00:43:45.065601+00:00",
  "method": "Traducciones humanas TEI licenciadas y publicadas en R2 con SHA-256, índice literal por pasaje, sin alineación automática",
  "editions": [
   {
@@ -465,6 +465,101 @@
    ],
    "indexUrl": "https://libros.vitruvius-digital-library.org/corpus/indice/traducciones/cts-tlg0062-tlg018-en-9fc3dbde991fa4f8.json",
    "indexSha256": "9fc3dbde991fa4f82c8b8322030251b72a0afcf38dc20f6d05e984e1b2ebb992"
+  },
+  {
+   "workId": "cts-tlg0062-tlg018",
+   "author": "Luciano de Samósata",
+   "title": "Juppiter Tragoedus",
+   "language": "en",
+   "filename": "cts-tlg0062-tlg018-en-b148f4324577f4c9.json",
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg018-en-b148f4324577f4c9.json",
+   "sha256": "b148f4324577f4c95285d6e36a93dfb909c84804b30ecd845bab2041acfcaacd",
+   "passages": 201,
+   "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0062/tlg018/tlg0062.tlg018.perseus-eng5.xml",
+   "sourceUrn": "urn:cts:greekLit:tlg0062.tlg018.perseus-eng5",
+   "sourceSha256": "8f4f88855f2c22a6f1b0844e06f697c3ab3e8d9141555135bb689718888faa22",
+   "sourceArchived": "https://libros.vitruvius-digital-library.org/corpus/fuentes/8f4f88855f2c22a6f1b0844e06f697c3ab3e8d9141555135bb689718888faa22.xml",
+   "translators": [
+    "Emily James Smith"
+   ],
+   "publicationYear": 1892,
+   "license": [
+    "https://creativecommons.org/licenses/by-sa/4.0/"
+   ],
+   "indexUrl": "https://libros.vitruvius-digital-library.org/corpus/indice/traducciones/cts-tlg0062-tlg018-en-2e3ba9236def3b42.json",
+   "indexSha256": "2e3ba9236def3b42fd8c8234f6a2196189b068dbb94764c2f4ad948bb0773153"
+  },
+  {
+   "workId": "cts-tlg0062-tlg022",
+   "author": "Luciano de Samósata",
+   "title": "Timon",
+   "language": "en",
+   "filename": "cts-tlg0062-tlg022-en-be6a0ec6112dc5ac.json",
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg022-en-be6a0ec6112dc5ac.json",
+   "sha256": "be6a0ec6112dc5aca96a35089891b024208cb6d86d5ed86b6698c85c4f971dee",
+   "passages": 132,
+   "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0062/tlg022/tlg0062.tlg022.perseus-eng4.xml",
+   "sourceUrn": "urn:cts:greekLit:tlg0062.tlg022.perseus-eng4",
+   "sourceSha256": "d735b0c7bfc13969b3a838570aa9ed382a0aa5060c9b9f13f8e1226f82660a4e",
+   "sourceArchived": "https://libros.vitruvius-digital-library.org/corpus/fuentes/d735b0c7bfc13969b3a838570aa9ed382a0aa5060c9b9f13f8e1226f82660a4e.xml",
+   "translators": [
+    "Henry Watson Fowler",
+    "Francis George Fowler"
+   ],
+   "publicationYear": 1905,
+   "license": [
+    "https://creativecommons.org/licenses/by-sa/4.0/"
+   ],
+   "indexUrl": "https://libros.vitruvius-digital-library.org/corpus/indice/traducciones/cts-tlg0062-tlg022-en-0f9b8d653c19ad5d.json",
+   "indexSha256": "0f9b8d653c19ad5dfd50844c7975030c20a5a969db7485589efdb06886b53209"
+  },
+  {
+   "workId": "cts-tlg0062-tlg023",
+   "author": "Luciano de Samósata",
+   "title": "Contemplantes",
+   "language": "en",
+   "filename": "cts-tlg0062-tlg023-en-e7007bcb8091cb94.json",
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg023-en-e7007bcb8091cb94.json",
+   "sha256": "e7007bcb8091cb94e9249a3054de97516472cf1dc4fca7076a25330fe6879e56",
+   "passages": 132,
+   "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0062/tlg023/tlg0062.tlg023.perseus-eng4.xml",
+   "sourceUrn": "urn:cts:greekLit:tlg0062.tlg023.perseus-eng4",
+   "sourceSha256": "517e138b715fe6878f6ccf47fed5da3078fa13e2cdbf5ff263ffb8572815527d",
+   "sourceArchived": "https://libros.vitruvius-digital-library.org/corpus/fuentes/517e138b715fe6878f6ccf47fed5da3078fa13e2cdbf5ff263ffb8572815527d.xml",
+   "translators": [
+    "Henry Watson Fowler",
+    "Francis George Fowler"
+   ],
+   "publicationYear": 1905,
+   "license": [
+    "https://creativecommons.org/licenses/by-sa/4.0/"
+   ],
+   "indexUrl": "https://libros.vitruvius-digital-library.org/corpus/indice/traducciones/cts-tlg0062-tlg023-en-c365a9a1fa2339f6.json",
+   "indexSha256": "c365a9a1fa2339f61d5afbdb5ffce2ac9d3239c3a9de4a283f48a604c5a7d027"
+  },
+  {
+   "workId": "cts-tlg0062-tlg024",
+   "author": "Luciano de Samósata",
+   "title": "Vitarum auctio",
+   "language": "en",
+   "filename": "cts-tlg0062-tlg024-en-5b53d953866c07d4.json",
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg024-en-5b53d953866c07d4.json",
+   "sha256": "5b53d953866c07d49df1b0516a380e75da42bd3e3a0fe5820e6d597dfcbf5cf8",
+   "passages": 266,
+   "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0062/tlg024/tlg0062.tlg024.perseus-eng4.xml",
+   "sourceUrn": "urn:cts:greekLit:tlg0062.tlg024.perseus-eng4",
+   "sourceSha256": "31ff4f192a5b13ce908a59526c0c8bad1eb77ddb39cacf4e775f785c85a50310",
+   "sourceArchived": "https://libros.vitruvius-digital-library.org/corpus/fuentes/31ff4f192a5b13ce908a59526c0c8bad1eb77ddb39cacf4e775f785c85a50310.xml",
+   "translators": [
+    "Henry Watson Fowler",
+    "Francis George Fowler"
+   ],
+   "publicationYear": 1905,
+   "license": [
+    "https://creativecommons.org/licenses/by-sa/4.0/"
+   ],
+   "indexUrl": "https://libros.vitruvius-digital-library.org/corpus/indice/traducciones/cts-tlg0062-tlg024-en-56fd14458b681925.json",
+   "indexSha256": "56fd14458b681925afa4818f55c6a2fdae2255faac9d1db78f9af1dc3bda58a8"
   }
  ],
  "lastDeferred": [
