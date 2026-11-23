@@ -1,6 +1,7 @@
 name: Ampliar clásicos griegos y latinos en R2 sin borrar GitHub
-run-name: Bibliotheca R2 · lote conservador de 12 grupos · ${{ github.event_name }}
-# Tanda acotada para incorporación verificable: máximo 12 grupos nuevos por ejecución.
+run-name: Bibliotheca R2 · hasta 15 grupos por tanda · ${{ github.event_name }}
+# Meta operativa: ocho tandas al día de hasta 15 grupos nuevos (capacidad 120/día, sin prometer 120 admisibles).
+# Registrar como incorporados sólo los originales verificados en R2, con URL, SHA-256 e índice.
 # Mantener manuscritos, PDF, traducciones y versiones previas sin sustituirlos.
 # Solicitud 2026-11-16 (segunda tanda): publicar únicamente objetos nuevos con licencia y fuente verificadas.
 # Solicitud editorial 2026-11-16: continuar lote conservador hasta 12 grupos, sin sobrescrituras.
@@ -12,6 +13,11 @@ run-name: Bibliotheca R2 · lote conservador de 12 grupos · ${{ github.event_na
 # Nueva tanda 2026-11-22: tras 11 originales publicados, continuar adquisiciones TEI griegas y latinas solo con códigos CTS no repetidos.
 on:
   workflow_dispatch:
+    inputs:
+      limite:
+        description: "Tope de grupos por tanda; 15 por defecto (0 = todos, sin recomendación)"
+        required: false
+        default: "15"
   schedule:
     # Ocho tandas durante las 24 horas, cada 3 horas. Las traducciones
     # se intercalan y comparten concurrencia para proteger R2 y el catálogo.
@@ -71,8 +77,10 @@ jobs:
           node --check scripts/reconcile-perseus-provenance-expansion.mjs
           python scripts/sync-classics-coverage.py
           node scripts/audit-classical-corpus.mjs
-      - name: Incorporar todo original admisible y preservar textos de GitHub
-        run: python -u scripts/expand-classics-r2.py --publish --workers 4 --limit 12
+      - name: Incorporar originales admisibles a R2 por lote acotado
+        env:
+          LIMITE_TANDA: ${{ inputs.limite || '15' }}
+        run: python -u scripts/expand-classics-r2.py --publish --workers 4 --limit "$LIMITE_TANDA"
       - name: Identificar nuevas ediciones antes de indexar
         id: nuevas
         shell: bash
