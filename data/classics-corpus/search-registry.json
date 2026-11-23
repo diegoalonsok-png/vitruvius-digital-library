@@ -2,8 +2,8 @@
  "schema": "vitruvia-classics-search-registry-v1",
  "updated": "2026-11-23",
  "description": "Registro verificable de transcripciones HTML y textos JSON existentes que admiten búsqueda literal de contenido. No incluye automáticamente PDF escaneados, facsímiles ni fichas sin texto. Los índices auxiliares por locus y el aparato crítico se declaran por separado; no se suman a versiones textuales originales ni implican colación autóptica.",
- "count": 513,
- "works": 392,
+ "count": 524,
+ "works": 403,
  "entries": [
   {
    "workId": "aeneas-tacticus-poliorketika",
@@ -1242,6 +1242,102 @@
    "passages": 256
   },
   {
+   "workId": "cts-tlg0012-tlg003",
+   "author": "Homero (autoría tradicional)",
+   "title": "Epigrams",
+   "language": "grc",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0012-tlg003-grc-69414ed634462af6.json",
+   "reader": "classics-text-reader.html?work=cts-tlg0012-tlg003&lang=grc",
+   "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+   "sha256": "69414ed634462af6c99de979c969032c04ba08f04fe386980a1b2690db278d22",
+   "passages": 109
+  },
+  {
+   "workId": "cts-tlg0014-tlg001",
+   "author": "Demóstenes",
+   "title": "First Olynthiac",
+   "language": "grc",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0014-tlg001-grc-db3a98e6070e635b.json",
+   "reader": "classics-text-reader.html?work=cts-tlg0014-tlg001&lang=grc",
+   "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+   "sha256": "db3a98e6070e635bdfb93f09d64a5b5cf95083dd2d134826fcd33c5f95c409ac",
+   "passages": 28
+  },
+  {
+   "workId": "cts-tlg0014-tlg002",
+   "author": "Demóstenes",
+   "title": "Second Olynthiac",
+   "language": "grc",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0014-tlg002-grc-af531c6897607fb8.json",
+   "reader": "classics-text-reader.html?work=cts-tlg0014-tlg002&lang=grc",
+   "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+   "sha256": "af531c6897607fb8fba164c1b63351e2042b90eb49fdbcb39ded40eb8aee49d8",
+   "passages": 31
+  },
+  {
+   "workId": "cts-tlg0014-tlg003",
+   "author": "Demóstenes",
+   "title": "Third Olynthiac",
+   "language": "grc",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0014-tlg003-grc-7e085e1c1f260249.json",
+   "reader": "classics-text-reader.html?work=cts-tlg0014-tlg003&lang=grc",
+   "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+   "sha256": "7e085e1c1f260249a95302bef5dad6b86ea2e759fb164ab6efed3cdcaef99ff2",
+   "passages": 37
+  },
+  {
+   "workId": "cts-tlg0014-tlg005",
+   "author": "Demóstenes",
+   "title": "On the Peace",
+   "language": "grc",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0014-tlg005-grc-3e13114fb967feea.json",
+   "reader": "classics-text-reader.html?work=cts-tlg0014-tlg005&lang=grc",
+   "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+   "sha256": "3e13114fb967feeac5d0b9609a91930060a887fd09af78b52daa95d7459a5a87",
+   "passages": 25
+  },
+  {
+   "workId": "cts-tlg0014-tlg007",
+   "author": "Demóstenes",
+   "title": "On Halonnesus",
+   "language": "grc",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0014-tlg007-grc-9c1a2f76787c1b46.json",
+   "reader": "classics-text-reader.html?work=cts-tlg0014-tlg007&lang=grc",
+   "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+   "sha256": "9c1a2f76787c1b468dd6f43b4463c253d4436f02d5bbb03b124c30ebe77bbf94",
+   "passages": 46
+  },
+  {
+   "workId": "cts-tlg0014-tlg008",
+   "author": "Demóstenes",
+   "title": "On the Chersonese",
+   "language": "grc",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0014-tlg008-grc-37aff329a7eeca2b.json",
+   "reader": "classics-text-reader.html?work=cts-tlg0014-tlg008&lang=grc",
+   "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+   "sha256": "37aff329a7eeca2b2b6ab1735e95f1c74e4659f7466e100a71bc111939a9ca95",
+   "passages": 77
+  },
+  {
+   "workId": "cts-tlg0014-tlg011",
+   "author": "Demóstenes",
+   "title": "Answer to Philip’s Letter",
+   "language": "grc",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0014-tlg011-grc-7ade6daab217a32d.json",
+   "reader": "classics-text-reader.html?work=cts-tlg0014-tlg011&lang=grc",
+   "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+   "sha256": "7ade6daab217a32dddf82af28d5dc25cf66cdb4a283be1bb5efd4d17c7f5465f",
+   "passages": 23
+  },
+  {
    "workId": "cts-tlg0062-tlg016",
    "author": "Luciano de Samósata",
    "title": "Cataplus",
@@ -1372,6 +1468,42 @@
    "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
    "sha256": "9ead483cea0934e160dc038eef4efe0f14e5baab62d7354c2414e8ade243b286",
    "passages": 20
+  },
+  {
+   "workId": "cts-tlg0062-tlg034",
+   "author": "Luciano de Samósata",
+   "title": "Anacharsis",
+   "language": "grc",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg034-grc-1c3742073628e32b.json",
+   "reader": "classics-text-reader.html?work=cts-tlg0062-tlg034&lang=grc",
+   "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+   "sha256": "1c3742073628e32b8db381883515f8431418aa146e54b3260fd6c864e3897929",
+   "passages": 67
+  },
+  {
+   "workId": "cts-tlg0062-tlg035",
+   "author": "Luciano de Samósata",
+   "title": "Necyomantia",
+   "language": "grc",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg035-grc-d818b14ed454755c.json",
+   "reader": "classics-text-reader.html?work=cts-tlg0062-tlg035&lang=grc",
+   "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+   "sha256": "d818b14ed454755c036207d93da1a658a908abfd159afa91e4bea7ea3781e46d",
+   "passages": 48
+  },
+  {
+   "workId": "cts-tlg0062-tlg036",
+   "author": "Luciano de Samósata",
+   "title": "De luctu",
+   "language": "grc",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg036-grc-b1554f36b0298dcd.json",
+   "reader": "classics-text-reader.html?work=cts-tlg0062-tlg036&lang=grc",
+   "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+   "sha256": "b1554f36b0298dcd36e0069df8455308fb2ddf3f15404946a590e51c8a95f2b6",
+   "passages": 27
   },
   {
    "workId": "demosthenes-de-corona",

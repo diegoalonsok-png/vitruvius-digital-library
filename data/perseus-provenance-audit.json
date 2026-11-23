@@ -1,14 +1,14 @@
 {
   "schema": "vitruvius-perseus-provenance-audit-v1",
-  "generated": "2026-11-22",
+  "generated": "2026-11-23",
   "scope": "Catálogo principal y ediciones TEI originales acreditadas y archivadas en R2; no certifica servicios externos",
-  "method": "Candidate PHI/TLG work codes are not CTS edition URNs. Source descriptions copied from the local index are claims to audit, not proof of an external canonical edition or an institutional link. No automatic CTS URNs or permanent URLs are invented. Incorporaciones R2: edición declarada en TEI fuente, SHA256, licencia y localizador comprobados; no se presume afiliación externa. Incorporaciones R2: edición declarada en TEI fuente, SHA256, licencia y localizador comprobados; no se presume afiliación externa. Incorporaciones R2: edición declarada en TEI fuente, SHA256, licencia y localizador comprobados; no se presume afiliación externa.",
+  "method": "Candidate PHI/TLG work codes are not CTS edition URNs. Source descriptions copied from the local index are claims to audit, not proof of an external canonical edition or an institutional link. No automatic CTS URNs or permanent URLs are invented. Incorporaciones R2: edición declarada en TEI fuente, SHA256, licencia y localizador comprobados; no se presume afiliación externa. Incorporaciones R2: edición declarada en TEI fuente, SHA256, licencia y localizador comprobados; no se presume afiliación externa. Incorporaciones R2: edición declarada en TEI fuente, SHA256, licencia y localizador comprobados; no se presume afiliación externa. Incorporaciones R2: edición declarada en TEI fuente, SHA256, licencia y localizador comprobados; no se presume afiliación externa.",
   "counts": {
-    "works": 294,
-    "worksWithCandidateWorkCodes": 202,
-    "versions": 269,
+    "works": 305,
+    "worksWithCandidateWorkCodes": 213,
+    "versions": 280,
     "worksWithPerseusSourceDescription": 142,
-    "verifiedEditionUrns": 24
+    "verifiedEditionUrns": 35
   },
   "links": {
     "scaife": "https://scaife.perseus.org/",
@@ -6886,6 +6886,347 @@
       "otherSourceEditions": [],
       "r2TextUrl": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg026-grc-5c566e511a39164c.json",
       "r2Sha256": "5c566e511a39164c34d12eee175b56c60af05c1d30791766e1b18242f49c8a66",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "cts-tlg0014-tlg003",
+      "author": "Demóstenes",
+      "title": "Third Olynthiac",
+      "originalLanguage": "grc",
+      "sourceReadiness": "original_r2_tei_publicado_con_sha256",
+      "originalIndexed": false,
+      "originalR2Registered": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "tlg0014.tlg003"
+      ],
+      "versions": [
+        {
+          "language": "grc",
+          "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0014-tlg003-grc-7e085e1c1f260249.json",
+          "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "reader": "classics-text-reader.html?work=cts-tlg0014-tlg003&lang=grc"
+        }
+      ],
+      "ctsEditionUrn": "urn:cts:greekLit:tlg0014.tlg003.perseus-grc2",
+      "ctsStatus": "declared_and_checked_in_source_tei_header",
+      "ctsSourceUri": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0014/tlg003/tlg0014.tlg003.perseus-grc2.xml",
+      "ctsEvidence": "TEI XML original, div[@type=edition]/@n, edición y SHA256 verificados mediante fuente R2: 303d3f177d5ca465bb819cb3f8786979dff9778eff2314bb106f5a076ce8609b",
+      "ctsNote": "URN de edición declarada en TEI; no implica resolución CTS pública ni cotejo de manuscritos.",
+      "sourceRights": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "otherSourceEditions": [],
+      "r2TextUrl": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0014-tlg003-grc-7e085e1c1f260249.json",
+      "r2Sha256": "7e085e1c1f260249a95302bef5dad6b86ea2e759fb164ab6efed3cdcaef99ff2",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "cts-tlg0014-tlg002",
+      "author": "Demóstenes",
+      "title": "Second Olynthiac",
+      "originalLanguage": "grc",
+      "sourceReadiness": "original_r2_tei_publicado_con_sha256",
+      "originalIndexed": false,
+      "originalR2Registered": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "tlg0014.tlg002"
+      ],
+      "versions": [
+        {
+          "language": "grc",
+          "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0014-tlg002-grc-af531c6897607fb8.json",
+          "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "reader": "classics-text-reader.html?work=cts-tlg0014-tlg002&lang=grc"
+        }
+      ],
+      "ctsEditionUrn": "urn:cts:greekLit:tlg0014.tlg002.perseus-grc2",
+      "ctsStatus": "declared_and_checked_in_source_tei_header",
+      "ctsSourceUri": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0014/tlg002/tlg0014.tlg002.perseus-grc2.xml",
+      "ctsEvidence": "TEI XML original, div[@type=edition]/@n, edición y SHA256 verificados mediante fuente R2: e51d00002cdc59068f36a91cd873488a80ea9b43a9da6d927998be292e7662c1",
+      "ctsNote": "URN de edición declarada en TEI; no implica resolución CTS pública ni cotejo de manuscritos.",
+      "sourceRights": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "otherSourceEditions": [],
+      "r2TextUrl": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0014-tlg002-grc-af531c6897607fb8.json",
+      "r2Sha256": "af531c6897607fb8fba164c1b63351e2042b90eb49fdbcb39ded40eb8aee49d8",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "cts-tlg0014-tlg001",
+      "author": "Demóstenes",
+      "title": "First Olynthiac",
+      "originalLanguage": "grc",
+      "sourceReadiness": "original_r2_tei_publicado_con_sha256",
+      "originalIndexed": false,
+      "originalR2Registered": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "tlg0014.tlg001"
+      ],
+      "versions": [
+        {
+          "language": "grc",
+          "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0014-tlg001-grc-db3a98e6070e635b.json",
+          "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "reader": "classics-text-reader.html?work=cts-tlg0014-tlg001&lang=grc"
+        }
+      ],
+      "ctsEditionUrn": "urn:cts:greekLit:tlg0014.tlg001.perseus-grc2",
+      "ctsStatus": "declared_and_checked_in_source_tei_header",
+      "ctsSourceUri": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0014/tlg001/tlg0014.tlg001.perseus-grc2.xml",
+      "ctsEvidence": "TEI XML original, div[@type=edition]/@n, edición y SHA256 verificados mediante fuente R2: 26a51c63b0fc2ea7ec2f7682b32234fec1a69be00d43c8fca79ed2ff8ae354b6",
+      "ctsNote": "URN de edición declarada en TEI; no implica resolución CTS pública ni cotejo de manuscritos.",
+      "sourceRights": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "otherSourceEditions": [],
+      "r2TextUrl": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0014-tlg001-grc-db3a98e6070e635b.json",
+      "r2Sha256": "db3a98e6070e635bdfb93f09d64a5b5cf95083dd2d134826fcd33c5f95c409ac",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "cts-tlg0012-tlg003",
+      "author": "Homero (autoría tradicional)",
+      "title": "Epigrams",
+      "originalLanguage": "grc",
+      "sourceReadiness": "original_r2_tei_publicado_con_sha256",
+      "originalIndexed": false,
+      "originalR2Registered": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "tlg0012.tlg003"
+      ],
+      "versions": [
+        {
+          "language": "grc",
+          "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0012-tlg003-grc-69414ed634462af6.json",
+          "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "reader": "classics-text-reader.html?work=cts-tlg0012-tlg003&lang=grc"
+        }
+      ],
+      "ctsEditionUrn": "urn:cts:greekLit:tlg0012.tlg003.perseus-grc1",
+      "ctsStatus": "declared_and_checked_in_source_tei_header",
+      "ctsSourceUri": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0012/tlg003/tlg0012.tlg003.perseus-grc1.xml",
+      "ctsEvidence": "TEI XML original, div[@type=edition]/@n, edición y SHA256 verificados mediante fuente R2: 3f2524fd5072bcab6c03e0cdf9756f8f880c9031b39a7abbb6d156e81869919d",
+      "ctsNote": "URN de edición declarada en TEI; no implica resolución CTS pública ni cotejo de manuscritos.",
+      "sourceRights": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "otherSourceEditions": [],
+      "r2TextUrl": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0012-tlg003-grc-69414ed634462af6.json",
+      "r2Sha256": "69414ed634462af6c99de979c969032c04ba08f04fe386980a1b2690db278d22",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "cts-tlg0014-tlg008",
+      "author": "Demóstenes",
+      "title": "On the Chersonese",
+      "originalLanguage": "grc",
+      "sourceReadiness": "original_r2_tei_publicado_con_sha256",
+      "originalIndexed": false,
+      "originalR2Registered": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "tlg0014.tlg008"
+      ],
+      "versions": [
+        {
+          "language": "grc",
+          "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0014-tlg008-grc-37aff329a7eeca2b.json",
+          "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "reader": "classics-text-reader.html?work=cts-tlg0014-tlg008&lang=grc"
+        }
+      ],
+      "ctsEditionUrn": "urn:cts:greekLit:tlg0014.tlg008.perseus-grc2",
+      "ctsStatus": "declared_and_checked_in_source_tei_header",
+      "ctsSourceUri": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0014/tlg008/tlg0014.tlg008.perseus-grc2.xml",
+      "ctsEvidence": "TEI XML original, div[@type=edition]/@n, edición y SHA256 verificados mediante fuente R2: 0d83111808781bcd6fa10ce13ab6d63ea6e580e5d405e44c38165f643a935df0",
+      "ctsNote": "URN de edición declarada en TEI; no implica resolución CTS pública ni cotejo de manuscritos.",
+      "sourceRights": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "otherSourceEditions": [],
+      "r2TextUrl": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0014-tlg008-grc-37aff329a7eeca2b.json",
+      "r2Sha256": "37aff329a7eeca2b2b6ab1735e95f1c74e4659f7466e100a71bc111939a9ca95",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "cts-tlg0014-tlg011",
+      "author": "Demóstenes",
+      "title": "Answer to Philip’s Letter",
+      "originalLanguage": "grc",
+      "sourceReadiness": "original_r2_tei_publicado_con_sha256",
+      "originalIndexed": false,
+      "originalR2Registered": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "tlg0014.tlg011"
+      ],
+      "versions": [
+        {
+          "language": "grc",
+          "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0014-tlg011-grc-7ade6daab217a32d.json",
+          "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "reader": "classics-text-reader.html?work=cts-tlg0014-tlg011&lang=grc"
+        }
+      ],
+      "ctsEditionUrn": "urn:cts:greekLit:tlg0014.tlg011.perseus-grc2",
+      "ctsStatus": "declared_and_checked_in_source_tei_header",
+      "ctsSourceUri": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0014/tlg011/tlg0014.tlg011.perseus-grc2.xml",
+      "ctsEvidence": "TEI XML original, div[@type=edition]/@n, edición y SHA256 verificados mediante fuente R2: c1c3be47e2eada84a27586abd42e7d7151dd294ce89e76e9d3e9423a278b76c2",
+      "ctsNote": "URN de edición declarada en TEI; no implica resolución CTS pública ni cotejo de manuscritos.",
+      "sourceRights": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "otherSourceEditions": [],
+      "r2TextUrl": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0014-tlg011-grc-7ade6daab217a32d.json",
+      "r2Sha256": "7ade6daab217a32dddf82af28d5dc25cf66cdb4a283be1bb5efd4d17c7f5465f",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "cts-tlg0014-tlg005",
+      "author": "Demóstenes",
+      "title": "On the Peace",
+      "originalLanguage": "grc",
+      "sourceReadiness": "original_r2_tei_publicado_con_sha256",
+      "originalIndexed": false,
+      "originalR2Registered": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "tlg0014.tlg005"
+      ],
+      "versions": [
+        {
+          "language": "grc",
+          "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0014-tlg005-grc-3e13114fb967feea.json",
+          "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "reader": "classics-text-reader.html?work=cts-tlg0014-tlg005&lang=grc"
+        }
+      ],
+      "ctsEditionUrn": "urn:cts:greekLit:tlg0014.tlg005.perseus-grc2",
+      "ctsStatus": "declared_and_checked_in_source_tei_header",
+      "ctsSourceUri": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0014/tlg005/tlg0014.tlg005.perseus-grc2.xml",
+      "ctsEvidence": "TEI XML original, div[@type=edition]/@n, edición y SHA256 verificados mediante fuente R2: d17330254202449a6446bdaa8391635190bb35120a78ed463b9b44865fa37c97",
+      "ctsNote": "URN de edición declarada en TEI; no implica resolución CTS pública ni cotejo de manuscritos.",
+      "sourceRights": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "otherSourceEditions": [],
+      "r2TextUrl": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0014-tlg005-grc-3e13114fb967feea.json",
+      "r2Sha256": "3e13114fb967feeac5d0b9609a91930060a887fd09af78b52daa95d7459a5a87",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "cts-tlg0014-tlg007",
+      "author": "Demóstenes",
+      "title": "On Halonnesus",
+      "originalLanguage": "grc",
+      "sourceReadiness": "original_r2_tei_publicado_con_sha256",
+      "originalIndexed": false,
+      "originalR2Registered": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "tlg0014.tlg007"
+      ],
+      "versions": [
+        {
+          "language": "grc",
+          "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0014-tlg007-grc-9c1a2f76787c1b46.json",
+          "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "reader": "classics-text-reader.html?work=cts-tlg0014-tlg007&lang=grc"
+        }
+      ],
+      "ctsEditionUrn": "urn:cts:greekLit:tlg0014.tlg007.perseus-grc2",
+      "ctsStatus": "declared_and_checked_in_source_tei_header",
+      "ctsSourceUri": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0014/tlg007/tlg0014.tlg007.perseus-grc2.xml",
+      "ctsEvidence": "TEI XML original, div[@type=edition]/@n, edición y SHA256 verificados mediante fuente R2: 5caecc53852d6a118f574590121e163320b7e3934f40bd8df56c31a315453ec7",
+      "ctsNote": "URN de edición declarada en TEI; no implica resolución CTS pública ni cotejo de manuscritos.",
+      "sourceRights": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "otherSourceEditions": [],
+      "r2TextUrl": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0014-tlg007-grc-9c1a2f76787c1b46.json",
+      "r2Sha256": "9c1a2f76787c1b468dd6f43b4463c253d4436f02d5bbb03b124c30ebe77bbf94",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "cts-tlg0062-tlg034",
+      "author": "Luciano de Samósata",
+      "title": "Anacharsis",
+      "originalLanguage": "grc",
+      "sourceReadiness": "original_r2_tei_publicado_con_sha256",
+      "originalIndexed": false,
+      "originalR2Registered": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "tlg0062.tlg034"
+      ],
+      "versions": [
+        {
+          "language": "grc",
+          "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg034-grc-1c3742073628e32b.json",
+          "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "reader": "classics-text-reader.html?work=cts-tlg0062-tlg034&lang=grc"
+        }
+      ],
+      "ctsEditionUrn": "urn:cts:greekLit:tlg0062.tlg034.perseus-grc2",
+      "ctsStatus": "declared_and_checked_in_source_tei_header",
+      "ctsSourceUri": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0062/tlg034/tlg0062.tlg034.perseus-grc2.xml",
+      "ctsEvidence": "TEI XML original, div[@type=edition]/@n, edición y SHA256 verificados mediante fuente R2: 35ff8afc295b21ebd83f8ad3057cb35002d1b91cbd0054519ee4ec0cb15e7e72",
+      "ctsNote": "URN de edición declarada en TEI; no implica resolución CTS pública ni cotejo de manuscritos.",
+      "sourceRights": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "otherSourceEditions": [],
+      "r2TextUrl": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg034-grc-1c3742073628e32b.json",
+      "r2Sha256": "1c3742073628e32b8db381883515f8431418aa146e54b3260fd6c864e3897929",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "cts-tlg0062-tlg036",
+      "author": "Luciano de Samósata",
+      "title": "De luctu",
+      "originalLanguage": "grc",
+      "sourceReadiness": "original_r2_tei_publicado_con_sha256",
+      "originalIndexed": false,
+      "originalR2Registered": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "tlg0062.tlg036"
+      ],
+      "versions": [
+        {
+          "language": "grc",
+          "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg036-grc-b1554f36b0298dcd.json",
+          "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "reader": "classics-text-reader.html?work=cts-tlg0062-tlg036&lang=grc"
+        }
+      ],
+      "ctsEditionUrn": "urn:cts:greekLit:tlg0062.tlg036.perseus-grc2",
+      "ctsStatus": "declared_and_checked_in_source_tei_header",
+      "ctsSourceUri": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0062/tlg036/tlg0062.tlg036.perseus-grc2.xml",
+      "ctsEvidence": "TEI XML original, div[@type=edition]/@n, edición y SHA256 verificados mediante fuente R2: 0dd9d480cab84ac3516ae61553ec9db4d380c9072cd5530a81c46dd9f495e57c",
+      "ctsNote": "URN de edición declarada en TEI; no implica resolución CTS pública ni cotejo de manuscritos.",
+      "sourceRights": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "otherSourceEditions": [],
+      "r2TextUrl": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg036-grc-b1554f36b0298dcd.json",
+      "r2Sha256": "b1554f36b0298dcd36e0069df8455308fb2ddf3f15404946a590e51c8a95f2b6",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "cts-tlg0062-tlg035",
+      "author": "Luciano de Samósata",
+      "title": "Necyomantia",
+      "originalLanguage": "grc",
+      "sourceReadiness": "original_r2_tei_publicado_con_sha256",
+      "originalIndexed": false,
+      "originalR2Registered": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "tlg0062.tlg035"
+      ],
+      "versions": [
+        {
+          "language": "grc",
+          "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg035-grc-d818b14ed454755c.json",
+          "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "reader": "classics-text-reader.html?work=cts-tlg0062-tlg035&lang=grc"
+        }
+      ],
+      "ctsEditionUrn": "urn:cts:greekLit:tlg0062.tlg035.perseus-grc2",
+      "ctsStatus": "declared_and_checked_in_source_tei_header",
+      "ctsSourceUri": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0062/tlg035/tlg0062.tlg035.perseus-grc2.xml",
+      "ctsEvidence": "TEI XML original, div[@type=edition]/@n, edición y SHA256 verificados mediante fuente R2: f2f589c1a8188c9f3303162c714dfb20766997101bcc322506cda6971a31c1ec",
+      "ctsNote": "URN de edición declarada en TEI; no implica resolución CTS pública ni cotejo de manuscritos.",
+      "sourceRights": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "otherSourceEditions": [],
+      "r2TextUrl": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg035-grc-d818b14ed454755c.json",
+      "r2Sha256": "d818b14ed454755c036207d93da1a658a908abfd159afa91e4bea7ea3781e46d",
       "perseusAffiliation": false
     }
   ]

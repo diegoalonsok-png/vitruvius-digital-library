@@ -1,10 +1,10 @@
 {
  "schema": "vdl-classics-expansion-manifest-v1",
- "generated": "2026-11-22T17:44:43.353297+00:00",
+ "generated": "2026-11-22T23:57:00.356476+00:00",
  "discovery": {
-  "sourceRecords": 1993,
-  "alreadyIndexedCatalogueWorks": 252,
-  "pendingGroups": 1726,
+  "sourceRecords": 1981,
+  "alreadyIndexedCatalogueWorks": 264,
+  "pendingGroups": 1714,
   "githubTextFiles": 450,
   "githubUnregisteredFiles": 14,
   "selectionPolicy": "fundamentales > grandes tradiciones > especializados; rotación intra-grupo",
@@ -5072,6 +5072,464 @@
    "characters": 35989,
    "bytes": 92073,
    "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg026-grc-5c566e511a39164c.json"
+  },
+  {
+   "workId": "cts-tlg0014-tlg003",
+   "author": "Demóstenes",
+   "title": "Third Olynthiac",
+   "language": "grc",
+   "dating": "330 a. C.",
+   "sources": [
+    {
+     "title": "Ὀλυνθιακὸς γ΄",
+     "titleLanguage": "grc",
+     "author": "Demosthenes",
+     "editors": [
+      "Samuel Henry Butcher"
+     ],
+     "bibliography": "Demosthenes Demosthenis Orationes Samuel Henry Butcher Clarendon Press Oxford 1903 1 Internet Archive",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg0014.tlg003.perseus-grc2",
+     "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0014/tlg003/tlg0014.tlg003.perseus-grc2.xml",
+     "sourceSha256": "303d3f177d5ca465bb819cb3f8786979dff9778eff2314bb106f5a076ce8609b",
+     "sourceReferences": [
+      "https://archive.org/details/orationesrecogno01demouoft/page/26/mode/2up"
+     ],
+     "publicationYear": "1903",
+     "publisher": "Clarendon Press",
+     "publicationPlace": "Oxford",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/303d3f177d5ca465bb819cb3f8786979dff9778eff2314bb106f5a076ce8609b.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-tlg0014-tlg003-grc-7e085e1c1f260249.json",
+   "sha256": "7e085e1c1f260249a95302bef5dad6b86ea2e759fb164ab6efed3cdcaef99ff2",
+   "passages": 37,
+   "characters": 14650,
+   "bytes": 36377,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0014-tlg003-grc-7e085e1c1f260249.json"
+  },
+  {
+   "workId": "cts-tlg0014-tlg002",
+   "author": "Demóstenes",
+   "title": "Second Olynthiac",
+   "language": "grc",
+   "dating": "330 a. C.",
+   "sources": [
+    {
+     "title": "Ὀλυνθιακὸς β΄",
+     "titleLanguage": "grc",
+     "author": "Demosthenes",
+     "editors": [
+      "Samuel Henry Butcher"
+     ],
+     "bibliography": "Demosthenes Demosthenis Orationes Samuel Henry Butcher Clarendon Press Oxford 1903 1 Internet Archive",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg0014.tlg002.perseus-grc2",
+     "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0014/tlg002/tlg0014.tlg002.perseus-grc2.xml",
+     "sourceSha256": "e51d00002cdc59068f36a91cd873488a80ea9b43a9da6d927998be292e7662c1",
+     "sourceReferences": [
+      "https://archive.org/details/orationesrecogno01demouoft/page/17/mode/2up"
+     ],
+     "publicationYear": "1903",
+     "publisher": "Clarendon Press",
+     "publicationPlace": "Oxford",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/e51d00002cdc59068f36a91cd873488a80ea9b43a9da6d927998be292e7662c1.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-tlg0014-tlg002-grc-af531c6897607fb8.json",
+   "sha256": "af531c6897607fb8fba164c1b63351e2042b90eb49fdbcb39ded40eb8aee49d8",
+   "passages": 31,
+   "characters": 12876,
+   "bytes": 31992,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0014-tlg002-grc-af531c6897607fb8.json"
+  },
+  {
+   "workId": "cts-tlg0014-tlg001",
+   "author": "Demóstenes",
+   "title": "First Olynthiac",
+   "language": "grc",
+   "dating": "330 a. C.",
+   "sources": [
+    {
+     "title": "Ὀλυνθιακὸς α΄",
+     "titleLanguage": "grc",
+     "author": "Demosthenes",
+     "editors": [
+      "Samuel Henry Butcher"
+     ],
+     "bibliography": "Demosthenes Demosthenis Orationes Samuel Henry Butcher Clarendon Press Oxford 1903 1 Internet Archive",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg0014.tlg001.perseus-grc2",
+     "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0014/tlg001/tlg0014.tlg001.perseus-grc2.xml",
+     "sourceSha256": "26a51c63b0fc2ea7ec2f7682b32234fec1a69be00d43c8fca79ed2ff8ae354b6",
+     "sourceReferences": [
+      "https://archive.org/details/orationesrecogno01demouoft/page/5/mode/2up"
+     ],
+     "publicationYear": "1903",
+     "publisher": "Clarendon Press",
+     "publicationPlace": "Oxford",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/26a51c63b0fc2ea7ec2f7682b32234fec1a69be00d43c8fca79ed2ff8ae354b6.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-tlg0014-tlg001-grc-db3a98e6070e635b.json",
+   "sha256": "db3a98e6070e635bdfb93f09d64a5b5cf95083dd2d134826fcd33c5f95c409ac",
+   "passages": 28,
+   "characters": 11516,
+   "bytes": 28856,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0014-tlg001-grc-db3a98e6070e635b.json"
+  },
+  {
+   "workId": "cts-tlg0012-tlg003",
+   "author": "Homero (autoría tradicional)",
+   "title": "Epigrams",
+   "language": "grc",
+   "dating": "tradición arcaica; fijación y datación debatidas",
+   "sources": [
+    {
+     "title": "Ἐπιγράμματα",
+     "titleLanguage": "und",
+     "author": "Homer",
+     "editors": [
+      "Hugh G. Evelyn-White"
+     ],
+     "bibliography": "Homer The Homeric Hymns and Homerica with an English Translation Homeric Hymns Hugh G. Evelyn-White London William Heinemann, Ltd. New York The Macmillan Co. 1914 Loeb Classical Library Internet Archive",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg0012.tlg003.perseus-grc1",
+     "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0012/tlg003/tlg0012.tlg003.perseus-grc1.xml",
+     "sourceSha256": "3f2524fd5072bcab6c03e0cdf9756f8f880c9031b39a7abbb6d156e81869919d",
+     "sourceReferences": [
+      "https://archive.org/details/hesiodhomerichym00hesiuoft/"
+     ],
+     "publicationYear": "",
+     "publisher": "",
+     "publicationPlace": "",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/3f2524fd5072bcab6c03e0cdf9756f8f880c9031b39a7abbb6d156e81869919d.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-tlg0012-tlg003-grc-69414ed634462af6.json",
+   "sha256": "69414ed634462af6c99de979c969032c04ba08f04fe386980a1b2690db278d22",
+   "passages": 109,
+   "characters": 4690,
+   "bytes": 25723,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0012-tlg003-grc-69414ed634462af6.json"
+  },
+  {
+   "workId": "cts-tlg0014-tlg008",
+   "author": "Demóstenes",
+   "title": "On the Chersonese",
+   "language": "grc",
+   "dating": "330 a. C.",
+   "sources": [
+    {
+     "title": "περὶ τῶν ἐν Χερρονήσῳ",
+     "titleLanguage": "grc",
+     "author": "Demosthenes",
+     "editors": [
+      "Samuel Henry Butcher"
+     ],
+     "bibliography": "Demosthenes Demosthenis Orationes Samuel Henry Butcher Clarendon Press Oxford 1903 1 Internet Archive",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg0014.tlg008.perseus-grc2",
+     "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0014/tlg008/tlg0014.tlg008.perseus-grc2.xml",
+     "sourceSha256": "0d83111808781bcd6fa10ce13ab6d63ea6e580e5d405e44c38165f643a935df0",
+     "sourceReferences": [
+      "https://archive.org/details/orationesrecogno01demouoft/page/88/mode/2up?view=theater"
+     ],
+     "publicationYear": "1903",
+     "publisher": "Clarendon Press",
+     "publicationPlace": "Oxford",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/0d83111808781bcd6fa10ce13ab6d63ea6e580e5d405e44c38165f643a935df0.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-tlg0014-tlg008-grc-37aff329a7eeca2b.json",
+   "sha256": "37aff329a7eeca2b2b6ab1735e95f1c74e4659f7466e100a71bc111939a9ca95",
+   "passages": 77,
+   "characters": 26601,
+   "bytes": 66124,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0014-tlg008-grc-37aff329a7eeca2b.json"
+  },
+  {
+   "workId": "cts-tlg0014-tlg011",
+   "author": "Demóstenes",
+   "title": "Answer to Philip’s Letter",
+   "language": "grc",
+   "dating": "330 a. C.",
+   "sources": [
+    {
+     "title": "πρὸς τὴν ἐπιστολήν τὴν Φιλίππου",
+     "titleLanguage": "grc",
+     "author": "Demosthenes",
+     "editors": [
+      "Samuel Henry Butcher"
+     ],
+     "bibliography": "Demosthenes Demosthenis Orationes Samuel Henry Butcher Clarendon Press Oxford 1903 Internet Archive",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg0014.tlg011.perseus-grc2",
+     "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0014/tlg011/tlg0014.tlg011.perseus-grc2.xml",
+     "sourceSha256": "c1c3be47e2eada84a27586abd42e7d7151dd294ce89e76e9d3e9423a278b76c2",
+     "sourceReferences": [],
+     "publicationYear": "1903",
+     "publisher": "Clarendon Press",
+     "publicationPlace": "Oxford",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/c1c3be47e2eada84a27586abd42e7d7151dd294ce89e76e9d3e9423a278b76c2.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-tlg0014-tlg011-grc-7ade6daab217a32d.json",
+   "sha256": "7ade6daab217a32dddf82af28d5dc25cf66cdb4a283be1bb5efd4d17c7f5465f",
+   "passages": 23,
+   "characters": 8386,
+   "bytes": 21961,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0014-tlg011-grc-7ade6daab217a32d.json"
+  },
+  {
+   "workId": "cts-tlg0014-tlg005",
+   "author": "Demóstenes",
+   "title": "On the Peace",
+   "language": "grc",
+   "dating": "330 a. C.",
+   "sources": [
+    {
+     "title": "περὶ τῆς εἰρήνης",
+     "titleLanguage": "und",
+     "author": "Demosthenes",
+     "editors": [
+      "Samuel Henry Butcher"
+     ],
+     "bibliography": "Demosthenes Demosthenis Orationes Samuel Henry Butcher Clarendon Press Oxford 1903 1 Internet Archive",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg0014.tlg005.perseus-grc2",
+     "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0014/tlg005/tlg0014.tlg005.perseus-grc2.xml",
+     "sourceSha256": "d17330254202449a6446bdaa8391635190bb35120a78ed463b9b44865fa37c97",
+     "sourceReferences": [],
+     "publicationYear": "1903",
+     "publisher": "Clarendon Press",
+     "publicationPlace": "Oxford",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/d17330254202449a6446bdaa8391635190bb35120a78ed463b9b44865fa37c97.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-tlg0014-tlg005-grc-3e13114fb967feea.json",
+   "sha256": "3e13114fb967feeac5d0b9609a91930060a887fd09af78b52daa95d7459a5a87",
+   "passages": 25,
+   "characters": 9227,
+   "bytes": 23834,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0014-tlg005-grc-3e13114fb967feea.json"
+  },
+  {
+   "workId": "cts-tlg0014-tlg007",
+   "author": "Demóstenes",
+   "title": "On Halonnesus",
+   "language": "grc",
+   "dating": "330 a. C.",
+   "sources": [
+    {
+     "title": "περὶ Ἀλοννήσου",
+     "titleLanguage": "grc",
+     "author": "Demosthenes",
+     "editors": [
+      "Samuel Henry Butcher"
+     ],
+     "bibliography": "Demosthenes Demosthenis Orationes Samuel Henry Butcher Clarendon Press Oxford 1903 1 Internet Archive",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg0014.tlg007.perseus-grc2",
+     "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0014/tlg007/tlg0014.tlg007.perseus-grc2.xml",
+     "sourceSha256": "5caecc53852d6a118f574590121e163320b7e3934f40bd8df56c31a315453ec7",
+     "sourceReferences": [
+      "https://archive.org/details/orationesrecogno01demouoft/page/75/mode/2up"
+     ],
+     "publicationYear": "1903",
+     "publisher": "Clarendon Press",
+     "publicationPlace": "Oxford",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/5caecc53852d6a118f574590121e163320b7e3934f40bd8df56c31a315453ec7.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-tlg0014-tlg007-grc-9c1a2f76787c1b46.json",
+   "sha256": "9c1a2f76787c1b468dd6f43b4463c253d4436f02d5bbb03b124c30ebe77bbf94",
+   "passages": 46,
+   "characters": 15622,
+   "bytes": 39871,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0014-tlg007-grc-9c1a2f76787c1b46.json"
+  },
+  {
+   "workId": "cts-tlg0062-tlg034",
+   "author": "Luciano de Samósata",
+   "title": "Anacharsis",
+   "language": "grc",
+   "dating": "c. 125–c. 180 d. C.",
+   "sources": [
+    {
+     "title": "Ἀνάχαρσις ἢ Περὶ Γυμνασίων",
+     "titleLanguage": "grc",
+     "author": "Lucian",
+     "editors": [
+      "Austin Morris Harmon"
+     ],
+     "bibliography": "Lucian Lucian Austin Morris Harmon London William Heinemann Ltd. Cambridge, MA Harvard University Press 1925 4 Loeb Classical Library Internet Archive",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg0062.tlg034.perseus-grc2",
+     "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0062/tlg034/tlg0062.tlg034.perseus-grc2.xml",
+     "sourceSha256": "35ff8afc295b21ebd83f8ad3057cb35002d1b91cbd0054519ee4ec0cb15e7e72",
+     "sourceReferences": [
+      "https://archive.org/details/lucianhar04luciuoft/page/n13/mode/2up"
+     ],
+     "publicationYear": "1925",
+     "publisher": "William Heinemann Ltd.",
+     "publicationPlace": "London",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/35ff8afc295b21ebd83f8ad3057cb35002d1b91cbd0054519ee4ec0cb15e7e72.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-tlg0062-tlg034-grc-1c3742073628e32b.json",
+   "sha256": "1c3742073628e32b8db381883515f8431418aa146e54b3260fd6c864e3897929",
+   "passages": 67,
+   "characters": 40161,
+   "bytes": 91397,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg034-grc-1c3742073628e32b.json"
+  },
+  {
+   "workId": "cts-tlg0062-tlg036",
+   "author": "Luciano de Samósata",
+   "title": "De luctu",
+   "language": "grc",
+   "dating": "c. 125–c. 180 d. C.",
+   "sources": [
+    {
+     "title": "Περὶ Πένθους",
+     "titleLanguage": "grc",
+     "author": "Lucian",
+     "editors": [
+      "Austin Morris Harmon"
+     ],
+     "bibliography": "Lucian Lucian Austin Morris Harmon London William Heinemann Ltd. Cambridge, MA Harvard University Press 1925 4 Loeb Classical Library Internet Archive",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg0062.tlg036.perseus-grc2",
+     "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0062/tlg036/tlg0062.tlg036.perseus-grc2.xml",
+     "sourceSha256": "0dd9d480cab84ac3516ae61553ec9db4d380c9072cd5530a81c46dd9f495e57c",
+     "sourceReferences": [
+      "https://archive.org/details/lucianhar04luciuoft/page/112/mode/2up"
+     ],
+     "publicationYear": "1925",
+     "publisher": "William Heinemann Ltd.",
+     "publicationPlace": "London",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/0dd9d480cab84ac3516ae61553ec9db4d380c9072cd5530a81c46dd9f495e57c.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-tlg0062-tlg036-grc-b1554f36b0298dcd.json",
+   "sha256": "b1554f36b0298dcd36e0069df8455308fb2ddf3f15404946a590e51c8a95f2b6",
+   "passages": 27,
+   "characters": 11008,
+   "bytes": 27768,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg036-grc-b1554f36b0298dcd.json"
+  },
+  {
+   "workId": "cts-tlg0062-tlg035",
+   "author": "Luciano de Samósata",
+   "title": "Necyomantia",
+   "language": "grc",
+   "dating": "c. 125–c. 180 d. C.",
+   "sources": [
+    {
+     "title": "Μένιππος ἢ Νεκυομαντεία",
+     "titleLanguage": "grc",
+     "author": "Lucian",
+     "editors": [
+      "Austin Morris Harmon"
+     ],
+     "bibliography": "Lucian Lucian Austin Morris Harmon London William Heinemann Ltd. Cambridge, MA Harvard University Press 1925 4 Loeb Classical Library Internet Archive",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg0062.tlg035.perseus-grc2",
+     "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0062/tlg035/tlg0062.tlg035.perseus-grc2.xml",
+     "sourceSha256": "f2f589c1a8188c9f3303162c714dfb20766997101bcc322506cda6971a31c1ec",
+     "sourceReferences": [
+      "https://archive.org/details/lucianhar04luciuoft/page/72/mode/2up"
+     ],
+     "publicationYear": "1925",
+     "publisher": "William Heinemann Ltd.",
+     "publicationPlace": "London",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/f2f589c1a8188c9f3303162c714dfb20766997101bcc322506cda6971a31c1ec.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-tlg0062-tlg035-grc-d818b14ed454755c.json",
+   "sha256": "d818b14ed454755c036207d93da1a658a908abfd159afa91e4bea7ea3781e46d",
+   "passages": 48,
+   "characters": 21068,
+   "bytes": 50754,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg035-grc-d818b14ed454755c.json"
   }
  ],
  "githubPreserved": [
@@ -8277,44 +8735,9 @@
  ],
  "deferred": [
   {
-   "workId": "cts-phi1014-phi004",
+   "workId": "cts-phi2331-phi011",
    "sources": [
-    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi1014/phi004/phi1014.phi004.perseus-lat1.xml"
-   ],
-   "reason": "Sin licencia abierta explícita admisible en la cabecera TEI"
-  },
-  {
-   "workId": "cts-phi1017-phi011",
-   "sources": [
-    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi1017/phi011/phi1017.phi011.perseus-lat2.xml"
-   ],
-   "reason": "Sin licencia abierta explícita admisible en la cabecera TEI"
-  },
-  {
-   "workId": "cts-phi1014-phi003",
-   "sources": [
-    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi1014/phi003/phi1014.phi003.perseus-lat1.xml"
-   ],
-   "reason": "Sin licencia abierta explícita admisible en la cabecera TEI"
-  },
-  {
-   "workId": "cts-phi1014-phi002",
-   "sources": [
-    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi1014/phi002/phi1014.phi002.perseus-lat1.xml"
-   ],
-   "reason": "Sin licencia abierta explícita admisible en la cabecera TEI"
-  },
-  {
-   "workId": "cts-phi1017-phi013",
-   "sources": [
-    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi1017/phi013/phi1017.phi013.perseus-lat2.xml"
-   ],
-   "reason": "Sin licencia abierta explícita admisible en la cabecera TEI"
-  },
-  {
-   "workId": "cts-phi2331-phi010",
-   "sources": [
-    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi2331/phi010/phi2331.phi010.perseus-lat2.xml"
+    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi2331/phi011/phi2331.phi011.perseus-lat2.xml"
    ],
    "reason": "Sin licencia abierta explícita admisible en la cabecera TEI"
   }
