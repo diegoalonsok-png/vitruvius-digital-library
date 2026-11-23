@@ -4,17 +4,17 @@
   "scope": "Se auditan exclusivamente 271 fichas de obras del catálogo local; no es un censo universal de literatura grecolatina.",
   "method": "Cruce de fichas bibliográficas, vínculos locales, corpus legible, registro de búsqueda y testimonios manuscritos; sin OCR ni verificación externa de los enlaces.",
   "counts": {
-    "cataloguedWorks": 341,
+    "cataloguedWorks": 356,
     "catalogueStatuses": {
       "lectura-local-completa": 31,
-      "lectura-local-parcial": 235,
+      "lectura-local-parcial": 250,
       "fuente-externa-identificada": 61,
       "repertoriado-busqueda-externa": 12,
       "pendiente-de-incorporar": 2
     },
-    "locallyReadableClaims": 266,
-    "indexedTextVersions": 432,
-    "indexedDistinctWorks": 311,
+    "locallyReadableClaims": 281,
+    "indexedTextVersions": 447,
+    "indexedDistinctWorks": 326,
     "manuscriptWitnesses": 107
   },
   "works": [
@@ -7224,6 +7224,231 @@
       ],
       "indexedTextFiles": [
         "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg056-grc-3c3065a4a862ebae.json"
+      ],
+      "manuscriptRecords": 0,
+      "hasManuscriptRecord": false
+    },
+    {
+      "id": "cts-tlg0086-tlg008",
+      "author": "Aristóteles",
+      "title": "De divinatione per somnum",
+      "originalLanguage": "grc",
+      "catalogueStatus": "lectura-local-parcial",
+      "indexedTextLanguages": [
+        "grc"
+      ],
+      "indexedTextFiles": [
+        "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0086-tlg008-grc-dc140af1f38cae43.json"
+      ],
+      "manuscriptRecords": 0,
+      "hasManuscriptRecord": false
+    },
+    {
+      "id": "cts-tlg0086-tlg011",
+      "author": "Aristóteles",
+      "title": "Epistulae",
+      "originalLanguage": "grc",
+      "catalogueStatus": "lectura-local-parcial",
+      "indexedTextLanguages": [
+        "grc"
+      ],
+      "indexedTextFiles": [
+        "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0086-tlg011-grc-911c48a0db4d8e69.json"
+      ],
+      "manuscriptRecords": 0,
+      "hasManuscriptRecord": false
+    },
+    {
+      "id": "cts-tlg0086-tlg012",
+      "author": "Aristóteles",
+      "title": "De Generatione Animalium",
+      "originalLanguage": "grc",
+      "catalogueStatus": "lectura-local-parcial",
+      "indexedTextLanguages": [
+        "grc"
+      ],
+      "indexedTextFiles": [
+        "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0086-tlg012-grc-439fd172ff04dcc5.json"
+      ],
+      "manuscriptRecords": 0,
+      "hasManuscriptRecord": false
+    },
+    {
+      "id": "cts-tlg0086-tlg009",
+      "author": "Aristóteles",
+      "title": "Eudemian Ethics",
+      "originalLanguage": "grc",
+      "catalogueStatus": "lectura-local-parcial",
+      "indexedTextLanguages": [
+        "grc"
+      ],
+      "indexedTextFiles": [
+        "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0086-tlg009-grc-fadb884ac267d6cb.json"
+      ],
+      "manuscriptRecords": 0,
+      "hasManuscriptRecord": false
+    },
+    {
+      "id": "cts-tlg0086-tlg015",
+      "author": "Aristóteles",
+      "title": "De animalium incessu",
+      "originalLanguage": "grc",
+      "catalogueStatus": "lectura-local-parcial",
+      "indexedTextLanguages": [
+        "grc"
+      ],
+      "indexedTextFiles": [
+        "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0086-tlg015-grc-f8b93103f0a5ffa0.json"
+      ],
+      "manuscriptRecords": 0,
+      "hasManuscriptRecord": false
+    },
+    {
+      "id": "cts-tlg0086-tlg013",
+      "author": "Aristóteles",
+      "title": "De generatione et corruptione",
+      "originalLanguage": "grc",
+      "catalogueStatus": "lectura-local-parcial",
+      "indexedTextLanguages": [
+        "grc"
+      ],
+      "indexedTextFiles": [
+        "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0086-tlg013-grc-f54cf4ecdbbe0116.json"
+      ],
+      "manuscriptRecords": 0,
+      "hasManuscriptRecord": false
+    },
+    {
+      "id": "cts-tlg0086-tlg016",
+      "author": "Aristóteles",
+      "title": "De insomniis",
+      "originalLanguage": "grc",
+      "catalogueStatus": "lectura-local-parcial",
+      "indexedTextLanguages": [
+        "grc"
+      ],
+      "indexedTextFiles": [
+        "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0086-tlg016-grc-0fe6d75a7d9153ba.json"
+      ],
+      "manuscriptRecords": 0,
+      "hasManuscriptRecord": false
+    },
+    {
+      "id": "cts-tlg0086-tlg018",
+      "author": "Aristóteles",
+      "title": "De iuventute et senectute, De vita et morte",
+      "originalLanguage": "grc",
+      "catalogueStatus": "lectura-local-parcial",
+      "indexedTextLanguages": [
+        "grc"
+      ],
+      "indexedTextFiles": [
+        "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0086-tlg018-grc-3337f3a3b338b7cc.json"
+      ],
+      "manuscriptRecords": 0,
+      "hasManuscriptRecord": false
+    },
+    {
+      "id": "cts-tlg0086-tlg017",
+      "author": "Aristóteles",
+      "title": "De interpretatione",
+      "originalLanguage": "grc",
+      "catalogueStatus": "lectura-local-parcial",
+      "indexedTextLanguages": [
+        "grc"
+      ],
+      "indexedTextFiles": [
+        "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0086-tlg017-grc-b4a8546bc845b322.json"
+      ],
+      "manuscriptRecords": 0,
+      "hasManuscriptRecord": false
+    },
+    {
+      "id": "cts-tlg0062-tlg068",
+      "author": "Luciano de Samósata",
+      "title": "Dialogi deorum",
+      "originalLanguage": "grc",
+      "catalogueStatus": "lectura-local-parcial",
+      "indexedTextLanguages": [
+        "grc"
+      ],
+      "indexedTextFiles": [
+        "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg068-grc-0b1360ea59e036e0.json"
+      ],
+      "manuscriptRecords": 0,
+      "hasManuscriptRecord": false
+    },
+    {
+      "id": "cts-tlg0086-tlg019",
+      "author": "Aristóteles",
+      "title": "De lineis insecabilibus",
+      "originalLanguage": "grc",
+      "catalogueStatus": "lectura-local-parcial",
+      "indexedTextLanguages": [
+        "grc"
+      ],
+      "indexedTextFiles": [
+        "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0086-tlg019-grc-cf069e927b9e3965.json"
+      ],
+      "manuscriptRecords": 0,
+      "hasManuscriptRecord": false
+    },
+    {
+      "id": "cts-tlg0062-tlg070",
+      "author": "Luciano de Samósata",
+      "title": "Soleocista",
+      "originalLanguage": "grc",
+      "catalogueStatus": "lectura-local-parcial",
+      "indexedTextLanguages": [
+        "grc"
+      ],
+      "indexedTextFiles": [
+        "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg070-grc-acc2fd60263be6d3.json"
+      ],
+      "manuscriptRecords": 0,
+      "hasManuscriptRecord": false
+    },
+    {
+      "id": "cts-tlg0062-tlg069",
+      "author": "Luciano de Samósata",
+      "title": "Dialogi meretricii",
+      "originalLanguage": "grc",
+      "catalogueStatus": "lectura-local-parcial",
+      "indexedTextLanguages": [
+        "grc"
+      ],
+      "indexedTextFiles": [
+        "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg069-grc-40c76ecb104df9f1.json"
+      ],
+      "manuscriptRecords": 0,
+      "hasManuscriptRecord": false
+    },
+    {
+      "id": "cts-ogl0001-ogl001",
+      "author": "Pinytus, Saint, Bishop of Knossos",
+      "title": "De Epistola Pinyti ad Dionysium",
+      "originalLanguage": "grc",
+      "catalogueStatus": "lectura-local-parcial",
+      "indexedTextLanguages": [
+        "grc"
+      ],
+      "indexedTextFiles": [
+        "https://libros.vitruvius-digital-library.org/corpus/cts-ogl0001-ogl001-grc-f95475c455684431.json"
+      ],
+      "manuscriptRecords": 0,
+      "hasManuscriptRecord": false
+    },
+    {
+      "id": "cts-tlg0086-tlg020",
+      "author": "Aristóteles",
+      "title": "De longitudine et brevitate vitae",
+      "originalLanguage": "grc",
+      "catalogueStatus": "lectura-local-parcial",
+      "indexedTextLanguages": [
+        "grc"
+      ],
+      "indexedTextFiles": [
+        "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0086-tlg020-grc-e60ed4c247f1f4b6.json"
       ],
       "manuscriptRecords": 0,
       "hasManuscriptRecord": false

@@ -2,13 +2,13 @@
   "schema": "vitruvius-perseus-provenance-audit-v1",
   "generated": "2026-11-23",
   "scope": "Catálogo principal y ediciones TEI originales acreditadas y archivadas en R2; no certifica servicios externos",
-  "method": "Candidate PHI/TLG work codes are not CTS edition URNs. Source descriptions copied from the local index are claims to audit, not proof of an external canonical edition or an institutional link. No automatic CTS URNs or permanent URLs are invented. Incorporaciones R2: edición declarada en TEI fuente, SHA256, licencia y localizador comprobados; no se presume afiliación externa. Incorporaciones R2: edición declarada en TEI fuente, SHA256, licencia y localizador comprobados; no se presume afiliación externa. Incorporaciones R2: edición declarada en TEI fuente, SHA256, licencia y localizador comprobados; no se presume afiliación externa. Incorporaciones R2: edición declarada en TEI fuente, SHA256, licencia y localizador comprobados; no se presume afiliación externa. Incorporaciones R2: edición declarada en TEI fuente, SHA256, licencia y localizador comprobados; no se presume afiliación externa. Incorporaciones R2: edición declarada en TEI fuente, SHA256, licencia y localizador comprobados; no se presume afiliación externa. Incorporaciones R2: edición declarada en TEI fuente, SHA256, licencia y localizador comprobados; no se presume afiliación externa. Incorporaciones R2: edición declarada en TEI fuente, SHA256, licencia y localizador comprobados; no se presume afiliación externa.",
+  "method": "Candidate PHI/TLG work codes are not CTS edition URNs. Source descriptions copied from the local index are claims to audit, not proof of an external canonical edition or an institutional link. No automatic CTS URNs or permanent URLs are invented. Incorporaciones R2: edición declarada en TEI fuente, SHA256, licencia y localizador comprobados; no se presume afiliación externa. Incorporaciones R2: edición declarada en TEI fuente, SHA256, licencia y localizador comprobados; no se presume afiliación externa. Incorporaciones R2: edición declarada en TEI fuente, SHA256, licencia y localizador comprobados; no se presume afiliación externa. Incorporaciones R2: edición declarada en TEI fuente, SHA256, licencia y localizador comprobados; no se presume afiliación externa. Incorporaciones R2: edición declarada en TEI fuente, SHA256, licencia y localizador comprobados; no se presume afiliación externa. Incorporaciones R2: edición declarada en TEI fuente, SHA256, licencia y localizador comprobados; no se presume afiliación externa. Incorporaciones R2: edición declarada en TEI fuente, SHA256, licencia y localizador comprobados; no se presume afiliación externa. Incorporaciones R2: edición declarada en TEI fuente, SHA256, licencia y localizador comprobados; no se presume afiliación externa. Incorporaciones R2: edición declarada en TEI fuente, SHA256, licencia y localizador comprobados; no se presume afiliación externa.",
   "counts": {
-    "works": 341,
-    "worksWithCandidateWorkCodes": 249,
-    "versions": 316,
+    "works": 356,
+    "worksWithCandidateWorkCodes": 264,
+    "versions": 331,
     "worksWithPerseusSourceDescription": 142,
-    "verifiedEditionUrns": 71
+    "verifiedEditionUrns": 86
   },
   "links": {
     "scaife": "https://scaife.perseus.org/",
@@ -8343,6 +8343,471 @@
       "otherSourceEditions": [],
       "r2TextUrl": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg056-grc-3c3065a4a862ebae.json",
       "r2Sha256": "3c3065a4a862ebae391b39afa53ddecc1802c87db670428e5b3575f9c6bcb8fb",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "cts-tlg0086-tlg008",
+      "author": "Aristóteles",
+      "title": "De divinatione per somnum",
+      "originalLanguage": "grc",
+      "sourceReadiness": "original_r2_tei_publicado_con_sha256",
+      "originalIndexed": false,
+      "originalR2Registered": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "tlg0086.tlg008"
+      ],
+      "versions": [
+        {
+          "language": "grc",
+          "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0086-tlg008-grc-dc140af1f38cae43.json",
+          "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "reader": "classics-text-reader.html?work=cts-tlg0086-tlg008&lang=grc&edition=dc140af1f38cae43"
+        }
+      ],
+      "ctsEditionUrn": "urn:cts:greekLit:tlg0086.tlg008.1st1K-grc1",
+      "ctsStatus": "declared_and_checked_in_source_tei_header",
+      "ctsSourceUri": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0086/tlg008/tlg0086.tlg008.1st1K-grc1.xml",
+      "ctsEvidence": "TEI XML original, div[@type=edition]/@n, edición y SHA256 verificados mediante fuente R2: 1f1e8599b0c48b68351ef292211c7945aa4866422652e6da867f95a9352004ae",
+      "ctsNote": "URN de edición declarada en TEI; no implica resolución CTS pública ni cotejo de manuscritos.",
+      "sourceRights": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "otherSourceEditions": [],
+      "r2TextUrl": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0086-tlg008-grc-dc140af1f38cae43.json",
+      "r2Sha256": "dc140af1f38cae43c756d428d21def59cd5f2aa927d11feee3ade7f4e0ecccd7",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "cts-tlg0086-tlg011",
+      "author": "Aristóteles",
+      "title": "Epistulae",
+      "originalLanguage": "grc",
+      "sourceReadiness": "original_r2_tei_publicado_con_sha256",
+      "originalIndexed": false,
+      "originalR2Registered": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "tlg0086.tlg011"
+      ],
+      "versions": [
+        {
+          "language": "grc",
+          "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0086-tlg011-grc-911c48a0db4d8e69.json",
+          "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "reader": "classics-text-reader.html?work=cts-tlg0086-tlg011&lang=grc&edition=911c48a0db4d8e69"
+        }
+      ],
+      "ctsEditionUrn": "urn:cts:greekLit:tlg0086.tlg011.1st1K-grc1",
+      "ctsStatus": "declared_and_checked_in_source_tei_header",
+      "ctsSourceUri": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0086/tlg011/tlg0086.tlg011.1st1K-grc1.xml",
+      "ctsEvidence": "TEI XML original, div[@type=edition]/@n, edición y SHA256 verificados mediante fuente R2: d607e79fb5a9d56117144049ad8f9fd39371aaadeef9b2e11419c0752d98d7da",
+      "ctsNote": "URN de edición declarada en TEI; no implica resolución CTS pública ni cotejo de manuscritos.",
+      "sourceRights": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "otherSourceEditions": [],
+      "r2TextUrl": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0086-tlg011-grc-911c48a0db4d8e69.json",
+      "r2Sha256": "911c48a0db4d8e69567682564bd5f1dab796baf98fd358581fc8b4d9b5906062",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "cts-tlg0086-tlg012",
+      "author": "Aristóteles",
+      "title": "De Generatione Animalium",
+      "originalLanguage": "grc",
+      "sourceReadiness": "original_r2_tei_publicado_con_sha256",
+      "originalIndexed": false,
+      "originalR2Registered": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "tlg0086.tlg012"
+      ],
+      "versions": [
+        {
+          "language": "grc",
+          "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0086-tlg012-grc-439fd172ff04dcc5.json",
+          "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "reader": "classics-text-reader.html?work=cts-tlg0086-tlg012&lang=grc&edition=439fd172ff04dcc5"
+        }
+      ],
+      "ctsEditionUrn": "urn:cts:greekLit:tlg0086.tlg012.1st1K-grc1",
+      "ctsStatus": "declared_and_checked_in_source_tei_header",
+      "ctsSourceUri": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0086/tlg012/tlg0086.tlg012.1st1K-grc1.xml",
+      "ctsEvidence": "TEI XML original, div[@type=edition]/@n, edición y SHA256 verificados mediante fuente R2: 9be68cd4f78085a14849ec6d882f973fab7ffab08c6c66064b49d0d851b39a7a",
+      "ctsNote": "URN de edición declarada en TEI; no implica resolución CTS pública ni cotejo de manuscritos.",
+      "sourceRights": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "otherSourceEditions": [],
+      "r2TextUrl": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0086-tlg012-grc-439fd172ff04dcc5.json",
+      "r2Sha256": "439fd172ff04dcc5e4742d1798f99e955d8573696afab1225889c43ba6842e8b",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "cts-tlg0086-tlg009",
+      "author": "Aristóteles",
+      "title": "Eudemian Ethics",
+      "originalLanguage": "grc",
+      "sourceReadiness": "original_r2_tei_publicado_con_sha256",
+      "originalIndexed": false,
+      "originalR2Registered": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "tlg0086.tlg009"
+      ],
+      "versions": [
+        {
+          "language": "grc",
+          "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0086-tlg009-grc-fadb884ac267d6cb.json",
+          "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "reader": "classics-text-reader.html?work=cts-tlg0086-tlg009&lang=grc&edition=fadb884ac267d6cb"
+        }
+      ],
+      "ctsEditionUrn": "urn:cts:greekLit:tlg0086.tlg009.perseus-grc2",
+      "ctsStatus": "declared_and_checked_in_source_tei_header",
+      "ctsSourceUri": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0086/tlg009/tlg0086.tlg009.perseus-grc2.xml",
+      "ctsEvidence": "TEI XML original, div[@type=edition]/@n, edición y SHA256 verificados mediante fuente R2: 4fc07ad4775209f5381835e2636e587c83050d8513648b6d7bfaee9cbfbacae6",
+      "ctsNote": "URN de edición declarada en TEI; no implica resolución CTS pública ni cotejo de manuscritos.",
+      "sourceRights": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "otherSourceEditions": [],
+      "r2TextUrl": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0086-tlg009-grc-fadb884ac267d6cb.json",
+      "r2Sha256": "fadb884ac267d6cbdda81f16c2c79024761fe31d9687d31cc79f3927329dc2dc",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "cts-tlg0086-tlg015",
+      "author": "Aristóteles",
+      "title": "De animalium incessu",
+      "originalLanguage": "grc",
+      "sourceReadiness": "original_r2_tei_publicado_con_sha256",
+      "originalIndexed": false,
+      "originalR2Registered": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "tlg0086.tlg015"
+      ],
+      "versions": [
+        {
+          "language": "grc",
+          "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0086-tlg015-grc-f8b93103f0a5ffa0.json",
+          "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "reader": "classics-text-reader.html?work=cts-tlg0086-tlg015&lang=grc&edition=f8b93103f0a5ffa0"
+        }
+      ],
+      "ctsEditionUrn": "urn:cts:greekLit:tlg0086.tlg015.1st1K-grc1",
+      "ctsStatus": "declared_and_checked_in_source_tei_header",
+      "ctsSourceUri": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0086/tlg015/tlg0086.tlg015.1st1K-grc1.xml",
+      "ctsEvidence": "TEI XML original, div[@type=edition]/@n, edición y SHA256 verificados mediante fuente R2: ce1540dd973fff0e3c8940e8629af993c8864e80d6b57f898bbb15e6019fdfd9",
+      "ctsNote": "URN de edición declarada en TEI; no implica resolución CTS pública ni cotejo de manuscritos.",
+      "sourceRights": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "otherSourceEditions": [],
+      "r2TextUrl": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0086-tlg015-grc-f8b93103f0a5ffa0.json",
+      "r2Sha256": "f8b93103f0a5ffa0326bb3e572f0e6d0b009917cca7283d5971fbb6b54e6503d",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "cts-tlg0086-tlg013",
+      "author": "Aristóteles",
+      "title": "De generatione et corruptione",
+      "originalLanguage": "grc",
+      "sourceReadiness": "original_r2_tei_publicado_con_sha256",
+      "originalIndexed": false,
+      "originalR2Registered": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "tlg0086.tlg013"
+      ],
+      "versions": [
+        {
+          "language": "grc",
+          "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0086-tlg013-grc-f54cf4ecdbbe0116.json",
+          "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "reader": "classics-text-reader.html?work=cts-tlg0086-tlg013&lang=grc&edition=f54cf4ecdbbe0116"
+        }
+      ],
+      "ctsEditionUrn": "urn:cts:greekLit:tlg0086.tlg013.1st1K-grc1",
+      "ctsStatus": "declared_and_checked_in_source_tei_header",
+      "ctsSourceUri": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0086/tlg013/tlg0086.tlg013.1st1K-grc1.xml",
+      "ctsEvidence": "TEI XML original, div[@type=edition]/@n, edición y SHA256 verificados mediante fuente R2: 2c4b701ead1ba0ab6656feaca096f08d75ae6f13117c907736ffc8e465384b24",
+      "ctsNote": "URN de edición declarada en TEI; no implica resolución CTS pública ni cotejo de manuscritos.",
+      "sourceRights": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "otherSourceEditions": [],
+      "r2TextUrl": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0086-tlg013-grc-f54cf4ecdbbe0116.json",
+      "r2Sha256": "f54cf4ecdbbe0116a969e80d246a3cc4bc96a12c9522b83ff914eea36d280d18",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "cts-tlg0086-tlg016",
+      "author": "Aristóteles",
+      "title": "De insomniis",
+      "originalLanguage": "grc",
+      "sourceReadiness": "original_r2_tei_publicado_con_sha256",
+      "originalIndexed": false,
+      "originalR2Registered": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "tlg0086.tlg016"
+      ],
+      "versions": [
+        {
+          "language": "grc",
+          "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0086-tlg016-grc-0fe6d75a7d9153ba.json",
+          "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "reader": "classics-text-reader.html?work=cts-tlg0086-tlg016&lang=grc&edition=0fe6d75a7d9153ba"
+        }
+      ],
+      "ctsEditionUrn": "urn:cts:greekLit:tlg0086.tlg016.1st1K-grc1",
+      "ctsStatus": "declared_and_checked_in_source_tei_header",
+      "ctsSourceUri": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0086/tlg016/tlg0086.tlg016.1st1K-grc1.xml",
+      "ctsEvidence": "TEI XML original, div[@type=edition]/@n, edición y SHA256 verificados mediante fuente R2: fdc4389a580a9d44b0b1fd619f839d0f824b5e8816c8a7f1ce0d3398117d044f",
+      "ctsNote": "URN de edición declarada en TEI; no implica resolución CTS pública ni cotejo de manuscritos.",
+      "sourceRights": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "otherSourceEditions": [],
+      "r2TextUrl": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0086-tlg016-grc-0fe6d75a7d9153ba.json",
+      "r2Sha256": "0fe6d75a7d9153ba1f91a1ba84859e61b1294f0e507fa7b3727339f562ba39bf",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "cts-tlg0086-tlg018",
+      "author": "Aristóteles",
+      "title": "De iuventute et senectute, De vita et morte",
+      "originalLanguage": "grc",
+      "sourceReadiness": "original_r2_tei_publicado_con_sha256",
+      "originalIndexed": false,
+      "originalR2Registered": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "tlg0086.tlg018"
+      ],
+      "versions": [
+        {
+          "language": "grc",
+          "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0086-tlg018-grc-3337f3a3b338b7cc.json",
+          "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "reader": "classics-text-reader.html?work=cts-tlg0086-tlg018&lang=grc&edition=3337f3a3b338b7cc"
+        }
+      ],
+      "ctsEditionUrn": "urn:cts:greekLit:tlg0086.tlg018.1st1K-grc1",
+      "ctsStatus": "declared_and_checked_in_source_tei_header",
+      "ctsSourceUri": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0086/tlg018/tlg0086.tlg018.1st1K-grc1.xml",
+      "ctsEvidence": "TEI XML original, div[@type=edition]/@n, edición y SHA256 verificados mediante fuente R2: a50eaaed0fc3a6ef6ef6dad789efbedacd0f9324dbdca73a3d665bd75ebb8c2a",
+      "ctsNote": "URN de edición declarada en TEI; no implica resolución CTS pública ni cotejo de manuscritos.",
+      "sourceRights": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "otherSourceEditions": [],
+      "r2TextUrl": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0086-tlg018-grc-3337f3a3b338b7cc.json",
+      "r2Sha256": "3337f3a3b338b7ccf410281ff58cef16a5a9b514482142d4a6a9646f1d68d5c9",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "cts-tlg0086-tlg017",
+      "author": "Aristóteles",
+      "title": "De interpretatione",
+      "originalLanguage": "grc",
+      "sourceReadiness": "original_r2_tei_publicado_con_sha256",
+      "originalIndexed": false,
+      "originalR2Registered": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "tlg0086.tlg017"
+      ],
+      "versions": [
+        {
+          "language": "grc",
+          "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0086-tlg017-grc-b4a8546bc845b322.json",
+          "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "reader": "classics-text-reader.html?work=cts-tlg0086-tlg017&lang=grc&edition=b4a8546bc845b322"
+        }
+      ],
+      "ctsEditionUrn": "urn:cts:greekLit:tlg0086.tlg017.1st1K-grc1",
+      "ctsStatus": "declared_and_checked_in_source_tei_header",
+      "ctsSourceUri": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0086/tlg017/tlg0086.tlg017.1st1K-grc1.xml",
+      "ctsEvidence": "TEI XML original, div[@type=edition]/@n, edición y SHA256 verificados mediante fuente R2: 17aae7b1a15560c5473619b59b9390c966f24ad95618565c41a86e45c2955ed2",
+      "ctsNote": "URN de edición declarada en TEI; no implica resolución CTS pública ni cotejo de manuscritos.",
+      "sourceRights": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "otherSourceEditions": [],
+      "r2TextUrl": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0086-tlg017-grc-b4a8546bc845b322.json",
+      "r2Sha256": "b4a8546bc845b322bee369f7d5ce3ac2fa911211ac219aa6b25c541335f2f710",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "cts-tlg0062-tlg068",
+      "author": "Luciano de Samósata",
+      "title": "Dialogi deorum",
+      "originalLanguage": "grc",
+      "sourceReadiness": "original_r2_tei_publicado_con_sha256",
+      "originalIndexed": false,
+      "originalR2Registered": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "tlg0062.tlg068"
+      ],
+      "versions": [
+        {
+          "language": "grc",
+          "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg068-grc-0b1360ea59e036e0.json",
+          "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "reader": "classics-text-reader.html?work=cts-tlg0062-tlg068&lang=grc&edition=0b1360ea59e036e0"
+        }
+      ],
+      "ctsEditionUrn": "urn:cts:greekLit:tlg0062.tlg068.perseus-grc3",
+      "ctsStatus": "declared_and_checked_in_source_tei_header",
+      "ctsSourceUri": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0062/tlg068/tlg0062.tlg068.perseus-grc3.xml",
+      "ctsEvidence": "TEI XML original, div[@type=edition]/@n, edición y SHA256 verificados mediante fuente R2: 3a65707f5a37ccb5158ee99208002b7ca46b67428a615b769c5cba0c24607df7",
+      "ctsNote": "URN de edición declarada en TEI; no implica resolución CTS pública ni cotejo de manuscritos.",
+      "sourceRights": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "otherSourceEditions": [],
+      "r2TextUrl": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg068-grc-0b1360ea59e036e0.json",
+      "r2Sha256": "0b1360ea59e036e0abb0bc3958052f7d05294a8c723bb9f7d1270906972283bf",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "cts-tlg0086-tlg019",
+      "author": "Aristóteles",
+      "title": "De lineis insecabilibus",
+      "originalLanguage": "grc",
+      "sourceReadiness": "original_r2_tei_publicado_con_sha256",
+      "originalIndexed": false,
+      "originalR2Registered": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "tlg0086.tlg019"
+      ],
+      "versions": [
+        {
+          "language": "grc",
+          "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0086-tlg019-grc-cf069e927b9e3965.json",
+          "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "reader": "classics-text-reader.html?work=cts-tlg0086-tlg019&lang=grc&edition=cf069e927b9e3965"
+        }
+      ],
+      "ctsEditionUrn": "urn:cts:greekLit:tlg0086.tlg019.1st1K-grc1",
+      "ctsStatus": "declared_and_checked_in_source_tei_header",
+      "ctsSourceUri": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0086/tlg019/tlg0086.tlg019.1st1K-grc1.xml",
+      "ctsEvidence": "TEI XML original, div[@type=edition]/@n, edición y SHA256 verificados mediante fuente R2: 90d7a294101e60167635ba49ee534426f72904a94218ebd10d626d3485e95d88",
+      "ctsNote": "URN de edición declarada en TEI; no implica resolución CTS pública ni cotejo de manuscritos.",
+      "sourceRights": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "otherSourceEditions": [],
+      "r2TextUrl": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0086-tlg019-grc-cf069e927b9e3965.json",
+      "r2Sha256": "cf069e927b9e3965e1ba2e5f4a6b7f9824f5fea8532c61da04326b378c5f0a32",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "cts-tlg0062-tlg070",
+      "author": "Luciano de Samósata",
+      "title": "Soleocista",
+      "originalLanguage": "grc",
+      "sourceReadiness": "original_r2_tei_publicado_con_sha256",
+      "originalIndexed": false,
+      "originalR2Registered": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "tlg0062.tlg070"
+      ],
+      "versions": [
+        {
+          "language": "grc",
+          "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg070-grc-acc2fd60263be6d3.json",
+          "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "reader": "classics-text-reader.html?work=cts-tlg0062-tlg070&lang=grc&edition=acc2fd60263be6d3"
+        }
+      ],
+      "ctsEditionUrn": "urn:cts:greekLit:tlg0062.tlg070.perseus-grc2",
+      "ctsStatus": "declared_and_checked_in_source_tei_header",
+      "ctsSourceUri": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0062/tlg070/tlg0062.tlg070.perseus-grc2.xml",
+      "ctsEvidence": "TEI XML original, div[@type=edition]/@n, edición y SHA256 verificados mediante fuente R2: 17f6d6e3089927f523555c524166f90e2c9b30f0aea60c8ad7f1b68ebe9e405e",
+      "ctsNote": "URN de edición declarada en TEI; no implica resolución CTS pública ni cotejo de manuscritos.",
+      "sourceRights": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "otherSourceEditions": [],
+      "r2TextUrl": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg070-grc-acc2fd60263be6d3.json",
+      "r2Sha256": "acc2fd60263be6d3493ba77211c7ba9e15bfe6997ac32520335a571843c62345",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "cts-tlg0062-tlg069",
+      "author": "Luciano de Samósata",
+      "title": "Dialogi meretricii",
+      "originalLanguage": "grc",
+      "sourceReadiness": "original_r2_tei_publicado_con_sha256",
+      "originalIndexed": false,
+      "originalR2Registered": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "tlg0062.tlg069"
+      ],
+      "versions": [
+        {
+          "language": "grc",
+          "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg069-grc-40c76ecb104df9f1.json",
+          "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "reader": "classics-text-reader.html?work=cts-tlg0062-tlg069&lang=grc&edition=40c76ecb104df9f1"
+        }
+      ],
+      "ctsEditionUrn": "urn:cts:greekLit:tlg0062.tlg069.perseus-grc3",
+      "ctsStatus": "declared_and_checked_in_source_tei_header",
+      "ctsSourceUri": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0062/tlg069/tlg0062.tlg069.perseus-grc3.xml",
+      "ctsEvidence": "TEI XML original, div[@type=edition]/@n, edición y SHA256 verificados mediante fuente R2: 667c4d18dff11a875c791acd3cb6fe8887fd40cf5e94d7651705c8f37e1e6ec6",
+      "ctsNote": "URN de edición declarada en TEI; no implica resolución CTS pública ni cotejo de manuscritos.",
+      "sourceRights": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "otherSourceEditions": [],
+      "r2TextUrl": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg069-grc-40c76ecb104df9f1.json",
+      "r2Sha256": "40c76ecb104df9f1c4c2606f358b1f5e4388e6ed46f95c068e554733c898cb51",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "cts-ogl0001-ogl001",
+      "author": "Pinytus, Saint, Bishop of Knossos",
+      "title": "De Epistola Pinyti ad Dionysium",
+      "originalLanguage": "grc",
+      "sourceReadiness": "original_r2_tei_publicado_con_sha256",
+      "originalIndexed": false,
+      "originalR2Registered": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "ogl0001.ogl001"
+      ],
+      "versions": [
+        {
+          "language": "grc",
+          "path": "https://libros.vitruvius-digital-library.org/corpus/cts-ogl0001-ogl001-grc-f95475c455684431.json",
+          "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "reader": "classics-text-reader.html?work=cts-ogl0001-ogl001&lang=grc&edition=f95475c455684431"
+        }
+      ],
+      "ctsEditionUrn": "urn:cts:greekLit:ogl0001.ogl001.1st1K-grc1",
+      "ctsStatus": "declared_and_checked_in_source_tei_header",
+      "ctsSourceUri": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/ogl0001/ogl001/ogl0001.ogl001.1st1K-grc1.xml",
+      "ctsEvidence": "TEI XML original, div[@type=edition]/@n, edición y SHA256 verificados mediante fuente R2: 764c27e340f5e171f5d2ef154acae5a4f340d8f14b6c0b3d9c65dc3ad92c1490",
+      "ctsNote": "URN de edición declarada en TEI; no implica resolución CTS pública ni cotejo de manuscritos.",
+      "sourceRights": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "otherSourceEditions": [],
+      "r2TextUrl": "https://libros.vitruvius-digital-library.org/corpus/cts-ogl0001-ogl001-grc-f95475c455684431.json",
+      "r2Sha256": "f95475c4556844318ba08221afe929da702f643247787eb1790467f537fec025",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "cts-tlg0086-tlg020",
+      "author": "Aristóteles",
+      "title": "De longitudine et brevitate vitae",
+      "originalLanguage": "grc",
+      "sourceReadiness": "original_r2_tei_publicado_con_sha256",
+      "originalIndexed": false,
+      "originalR2Registered": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "tlg0086.tlg020"
+      ],
+      "versions": [
+        {
+          "language": "grc",
+          "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0086-tlg020-grc-e60ed4c247f1f4b6.json",
+          "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "reader": "classics-text-reader.html?work=cts-tlg0086-tlg020&lang=grc&edition=e60ed4c247f1f4b6"
+        }
+      ],
+      "ctsEditionUrn": "urn:cts:greekLit:tlg0086.tlg020.1st1K-grc1",
+      "ctsStatus": "declared_and_checked_in_source_tei_header",
+      "ctsSourceUri": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0086/tlg020/tlg0086.tlg020.1st1K-grc1.xml",
+      "ctsEvidence": "TEI XML original, div[@type=edition]/@n, edición y SHA256 verificados mediante fuente R2: 5bfbaf7ae5d9e02a3d882336de055cf59c528469fea8388418d43b726b912707",
+      "ctsNote": "URN de edición declarada en TEI; no implica resolución CTS pública ni cotejo de manuscritos.",
+      "sourceRights": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "otherSourceEditions": [],
+      "r2TextUrl": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0086-tlg020-grc-e60ed4c247f1f4b6.json",
+      "r2Sha256": "e60ed4c247f1f4b62375a300b5a3b03207894cb008a9f1ffe836464451c192a2",
       "perseusAffiliation": false
     }
   ]

@@ -1,6 +1,6 @@
 {
  "schema": "vdl-classics-expansion-manifest-v1",
- "generated": "2026-11-23T02:51:33.167420+00:00",
+ "generated": "2026-11-23T02:58:15.964388+00:00",
  "discovery": {
   "sourceRecords": 1936,
   "alreadyIndexedCatalogueWorks": 167,
@@ -9,9 +9,9 @@
   "githubTextFiles": 450,
   "githubUnregisteredFiles": 14,
   "selectionPolicy": "fundamentales > grandes tradiciones > especializados; rotación intra-grupo",
-  "selectedGroups": 12,
+  "selectedGroups": 15,
   "selectedByPriority": {
-   "1": 8,
+   "1": 11,
    "2": 3,
    "3": 1
   },
@@ -7393,6 +7393,638 @@
    "characters": 5739,
    "bytes": 14931,
    "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg056-grc-3c3065a4a862ebae.json"
+  },
+  {
+   "workId": "cts-tlg0086-tlg008",
+   "author": "Aristóteles",
+   "title": "De divinatione per somnum",
+   "language": "grc",
+   "dating": "siglo IV a. C.",
+   "sources": [
+    {
+     "title": "De divinatione per somnum",
+     "titleLanguage": "lat",
+     "author": "Aristotle",
+     "editors": [
+      "Immanuel Bekker"
+     ],
+     "bibliography": "Aristotelis Opera Aristotle Immanuel Bekker Oxford University Press Oxford 3 309-314 1837 HathiTrust",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg0086.tlg008.1st1K-grc1",
+     "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0086/tlg008/tlg0086.tlg008.1st1K-grc1.xml",
+     "sourceSha256": "1f1e8599b0c48b68351ef292211c7945aa4866422652e6da867f95a9352004ae",
+     "sourceReferences": [
+      "https://hdl.handle.net/2027/nyp.33433022676005?urlappend=%3Bseq=320"
+     ],
+     "publicationYear": "1837",
+     "publisher": "Oxford University Press",
+     "publicationPlace": "Oxford",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/1f1e8599b0c48b68351ef292211c7945aa4866422652e6da867f95a9352004ae.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-tlg0086-tlg008-grc-dc140af1f38cae43.json",
+   "sha256": "dc140af1f38cae43c756d428d21def59cd5f2aa927d11feee3ade7f4e0ecccd7",
+   "passages": 5,
+   "characters": 7465,
+   "bytes": 17703,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0086-tlg008-grc-dc140af1f38cae43.json"
+  },
+  {
+   "workId": "cts-tlg0086-tlg011",
+   "author": "Aristóteles",
+   "title": "Epistulae",
+   "language": "grc",
+   "dating": "siglo IV a. C.",
+   "sources": [
+    {
+     "title": "Epistulae",
+     "titleLanguage": "lat",
+     "author": "Aristotle",
+     "editors": [
+      "Rudolf Hercher"
+     ],
+     "bibliography": "Epistolographi Graeci Rudolf Hercher Paris A. F. Didot 1873 Internet Archive",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg0086.tlg011.1st1K-grc1",
+     "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0086/tlg011/tlg0086.tlg011.1st1K-grc1.xml",
+     "sourceSha256": "d607e79fb5a9d56117144049ad8f9fd39371aaadeef9b2e11419c0752d98d7da",
+     "sourceReferences": [
+      "https://www.archive.org/stream/epistolographoih00hercuoft#page/172/mode/2up"
+     ],
+     "publicationYear": "1873",
+     "publisher": "A. F. Didot",
+     "publicationPlace": "Paris",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/d607e79fb5a9d56117144049ad8f9fd39371aaadeef9b2e11419c0752d98d7da.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-tlg0086-tlg011-grc-911c48a0db4d8e69.json",
+   "sha256": "911c48a0db4d8e69567682564bd5f1dab796baf98fd358581fc8b4d9b5906062",
+   "passages": 12,
+   "characters": 5108,
+   "bytes": 13712,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0086-tlg011-grc-911c48a0db4d8e69.json"
+  },
+  {
+   "workId": "cts-tlg0086-tlg012",
+   "author": "Aristóteles",
+   "title": "De Generatione Animalium",
+   "language": "grc",
+   "dating": "siglo IV a. C.",
+   "sources": [
+    {
+     "title": "De Generatione Animalium",
+     "titleLanguage": "lat",
+     "author": "Aristotle",
+     "editors": [
+      "Immanuel Bekker"
+     ],
+     "bibliography": "Aristotelis De generatione animalium libri quinque Immanuel Bekker Aristotle Berlin Typis Academicis, G. Reimer 1829 HathiTrust",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg0086.tlg012.1st1K-grc1",
+     "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0086/tlg012/tlg0086.tlg012.1st1K-grc1.xml",
+     "sourceSha256": "9be68cd4f78085a14849ec6d882f973fab7ffab08c6c66064b49d0d851b39a7a",
+     "sourceReferences": [
+      "https://hdl.handle.net/2027/njp.32101073028480"
+     ],
+     "publicationYear": "1829",
+     "publisher": "Typis Academicis, G. Reimer",
+     "publicationPlace": "Berlin",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/9be68cd4f78085a14849ec6d882f973fab7ffab08c6c66064b49d0d851b39a7a.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-tlg0086-tlg012-grc-439fd172ff04dcc5.json",
+   "sha256": "439fd172ff04dcc5e4742d1798f99e955d8573696afab1225889c43ba6842e8b",
+   "passages": 60,
+   "characters": 293127,
+   "bytes": 585001,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0086-tlg012-grc-439fd172ff04dcc5.json"
+  },
+  {
+   "workId": "cts-tlg0086-tlg009",
+   "author": "Aristóteles",
+   "title": "Eudemian Ethics",
+   "language": "grc",
+   "dating": "siglo IV a. C.",
+   "sources": [
+    {
+     "title": "Ἠθικὰ Εὐδήμεια",
+     "titleLanguage": "grc",
+     "author": "Aristotle",
+     "editors": [
+      "Franz Susemihl"
+     ],
+     "bibliography": "Aristotelis Ethica Eudemia. Eudemi Rhodii Ethica. Aristotle Franz Susemihl Teubner Leipzig 1884 Internet Archive",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg0086.tlg009.perseus-grc2",
+     "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0086/tlg009/tlg0086.tlg009.perseus-grc2.xml",
+     "sourceSha256": "4fc07ad4775209f5381835e2636e587c83050d8513648b6d7bfaee9cbfbacae6",
+     "sourceReferences": [
+      "https://archive.org/details/aristotelisethic00aris_1/page/n43/mode/2up"
+     ],
+     "publicationYear": "1884",
+     "publisher": "Teubner",
+     "publicationPlace": "Leipzig",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/4fc07ad4775209f5381835e2636e587c83050d8513648b6d7bfaee9cbfbacae6.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-tlg0086-tlg009-grc-fadb884ac267d6cb.json",
+   "sha256": "fadb884ac267d6cbdda81f16c2c79024761fe31d9687d31cc79f3927329dc2dc",
+   "passages": 131,
+   "characters": 151131,
+   "bytes": 318570,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0086-tlg009-grc-fadb884ac267d6cb.json"
+  },
+  {
+   "workId": "cts-tlg0086-tlg015",
+   "author": "Aristóteles",
+   "title": "De animalium incessu",
+   "language": "grc",
+   "dating": "siglo IV a. C.",
+   "sources": [
+    {
+     "title": "De animalium incessu",
+     "titleLanguage": "lat",
+     "author": "Aristotle",
+     "editors": [
+      "Werner Jaeger"
+     ],
+     "bibliography": "Aristotelis De animalium motione et De animalium incessu Werner Jaeger Aristotle Teubner Leipzig 1913 HathiTrust",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg0086.tlg015.1st1K-grc1",
+     "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0086/tlg015/tlg0086.tlg015.1st1K-grc1.xml",
+     "sourceSha256": "ce1540dd973fff0e3c8940e8629af993c8864e80d6b57f898bbb15e6019fdfd9",
+     "sourceReferences": [],
+     "publicationYear": "1913",
+     "publisher": "Teubner",
+     "publicationPlace": "Leipzig",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/ce1540dd973fff0e3c8940e8629af993c8864e80d6b57f898bbb15e6019fdfd9.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-tlg0086-tlg015-grc-f8b93103f0a5ffa0.json",
+   "sha256": "f8b93103f0a5ffa0326bb3e572f0e6d0b009917cca7283d5971fbb6b54e6503d",
+   "passages": 22,
+   "characters": 36909,
+   "bytes": 77279,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0086-tlg015-grc-f8b93103f0a5ffa0.json"
+  },
+  {
+   "workId": "cts-tlg0086-tlg013",
+   "author": "Aristóteles",
+   "title": "De generatione et corruptione",
+   "language": "grc",
+   "dating": "siglo IV a. C.",
+   "sources": [
+    {
+     "title": "De generatione et corruptione",
+     "titleLanguage": "lat",
+     "author": "Aristotle",
+     "editors": [
+      "E.S. Forster",
+      "D.J. Furley",
+      "E. S. Forster"
+     ],
+     "bibliography": "Aristotle. On Sophistical Refutations. On Coming-to-be and Passing-away. On the Cosmos E.S. Forster D.J. Furley Aristotle William Heinemann London Harvard University Press Cambridge, Mass 1955 Loeb Classical Library Internet Archive",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg0086.tlg013.1st1K-grc1",
+     "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0086/tlg013/tlg0086.tlg013.1st1K-grc1.xml",
+     "sourceSha256": "2c4b701ead1ba0ab6656feaca096f08d75ae6f13117c907736ffc8e465384b24",
+     "sourceReferences": [
+      "https://archive.org/stream/onsophisticalref00arisuoft#page/162/mode/2up/search/On+sophistical+refutations"
+     ],
+     "publicationYear": "1955",
+     "publisher": "William Heinemann",
+     "publicationPlace": "London",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/2c4b701ead1ba0ab6656feaca096f08d75ae6f13117c907736ffc8e465384b24.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-tlg0086-tlg013-grc-f54cf4ecdbbe0116.json",
+   "sha256": "f54cf4ecdbbe0116a969e80d246a3cc4bc96a12c9522b83ff914eea36d280d18",
+   "passages": 98,
+   "characters": 93997,
+   "bytes": 201492,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0086-tlg013-grc-f54cf4ecdbbe0116.json"
+  },
+  {
+   "workId": "cts-tlg0086-tlg016",
+   "author": "Aristóteles",
+   "title": "De insomniis",
+   "language": "grc",
+   "dating": "siglo IV a. C.",
+   "sources": [
+    {
+     "title": "De insomniis",
+     "titleLanguage": "und",
+     "author": "Aristotle",
+     "editors": [
+      "Immanuel Bekker"
+     ],
+     "bibliography": "Aristotelis Opera Aristotle Immanuel Bekker Oxford University Press Oxford 3 299-309 1837 HathiTrust",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg0086.tlg016.1st1K-grc1",
+     "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0086/tlg016/tlg0086.tlg016.1st1K-grc1.xml",
+     "sourceSha256": "fdc4389a580a9d44b0b1fd619f839d0f824b5e8816c8a7f1ce0d3398117d044f",
+     "sourceReferences": [
+      "https://hdl.handle.net/2027/nyp.33433022676005?urlappend=%3Bseq=310"
+     ],
+     "publicationYear": "1837",
+     "publisher": "Oxford University Press",
+     "publicationPlace": "Oxford",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/fdc4389a580a9d44b0b1fd619f839d0f824b5e8816c8a7f1ce0d3398117d044f.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-tlg0086-tlg016-grc-0fe6d75a7d9153ba.json",
+   "sha256": "0fe6d75a7d9153ba1f91a1ba84859e61b1294f0e507fa7b3727339f562ba39bf",
+   "passages": 3,
+   "characters": 14771,
+   "bytes": 32088,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0086-tlg016-grc-0fe6d75a7d9153ba.json"
+  },
+  {
+   "workId": "cts-tlg0086-tlg018",
+   "author": "Aristóteles",
+   "title": "De iuventute et senectute, De vita et morte",
+   "language": "grc",
+   "dating": "siglo IV a. C.",
+   "sources": [
+    {
+     "title": "De iuventute et senectute, De vita et morte",
+     "titleLanguage": "lat",
+     "author": "Aristotle",
+     "editors": [
+      "Immanuel Bekker"
+     ],
+     "bibliography": "Aristotelis Opera Aristotle Immanuel Bekker Oxford University Press Oxford 3 322-329 1837 HathiTrust",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg0086.tlg018.1st1K-grc1",
+     "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0086/tlg018/tlg0086.tlg018.1st1K-grc1.xml",
+     "sourceSha256": "a50eaaed0fc3a6ef6ef6dad789efbedacd0f9324dbdca73a3d665bd75ebb8c2a",
+     "sourceReferences": [
+      "https://hdl.handle.net/2027/nyp.33433022676005?urlappend=%3Bseq=334"
+     ],
+     "publicationYear": "1837",
+     "publisher": "Oxford University Press",
+     "publicationPlace": "Oxford",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/a50eaaed0fc3a6ef6ef6dad789efbedacd0f9324dbdca73a3d665bd75ebb8c2a.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-tlg0086-tlg018-grc-3337f3a3b338b7cc.json",
+   "sha256": "3337f3a3b338b7ccf410281ff58cef16a5a9b514482142d4a6a9646f1d68d5c9",
+   "passages": 7,
+   "characters": 10628,
+   "bytes": 24369,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0086-tlg018-grc-3337f3a3b338b7cc.json"
+  },
+  {
+   "workId": "cts-tlg0086-tlg017",
+   "author": "Aristóteles",
+   "title": "De interpretatione",
+   "language": "grc",
+   "dating": "siglo IV a. C.",
+   "sources": [
+    {
+     "title": "De interpretatione",
+     "titleLanguage": "lat",
+     "author": "Aristotle",
+     "editors": [
+      "Immanuel Bekker"
+     ],
+     "bibliography": "Aristotelis Opera Aristotle Immanuel Bekker Oxford University Press Oxford 1 39-60 1837 HathiTrust",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg0086.tlg017.1st1K-grc1",
+     "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0086/tlg017/tlg0086.tlg017.1st1K-grc1.xml",
+     "sourceSha256": "17aae7b1a15560c5473619b59b9390c966f24ad95618565c41a86e45c2955ed2",
+     "sourceReferences": [
+      "https://hdl.handle.net/2027/mdp.39015027645400?urlappend=%3Bseq=48"
+     ],
+     "publicationYear": "1837",
+     "publisher": "Oxford University Press",
+     "publicationPlace": "Oxford",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/17aae7b1a15560c5473619b59b9390c966f24ad95618565c41a86e45c2955ed2.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-tlg0086-tlg017-grc-b4a8546bc845b322.json",
+   "sha256": "b4a8546bc845b322bee369f7d5ce3ac2fa911211ac219aa6b25c541335f2f710",
+   "passages": 41,
+   "characters": 35486,
+   "bytes": 79761,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0086-tlg017-grc-b4a8546bc845b322.json"
+  },
+  {
+   "workId": "cts-tlg0062-tlg068",
+   "author": "Luciano de Samósata",
+   "title": "Dialogi deorum",
+   "language": "grc",
+   "dating": "c. 125–c. 180 d. C.",
+   "sources": [
+    {
+     "title": "Θεῶν διάλογοι",
+     "titleLanguage": "grc",
+     "author": "Lucian of Samosata",
+     "editors": [
+      "Matthew Donald Macleod"
+     ],
+     "bibliography": "Lucian of Samosata Lucian with an English Translation Matthew Donald Macleod London William Heinemann Ltd. Cambridge, MA Harvard University Press 1961 7 Internet Archive Hathi Trust",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg0062.tlg068.perseus-grc3",
+     "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0062/tlg068/tlg0062.tlg068.perseus-grc3.xml",
+     "sourceSha256": "3a65707f5a37ccb5158ee99208002b7ca46b67428a615b769c5cba0c24607df7",
+     "sourceReferences": [
+      "https://archive.org/details/lucianmac07luciuoft/page/241/mode/2up",
+      "https://hdl.handle.net/2027/osu.32435024202095?urlappend=%3Bseq=257"
+     ],
+     "publicationYear": "1961",
+     "publisher": "William Heinemann Ltd.",
+     "publicationPlace": "London",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/3a65707f5a37ccb5158ee99208002b7ca46b67428a615b769c5cba0c24607df7.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-tlg0062-tlg068-grc-0b1360ea59e036e0.json",
+   "sha256": "0b1360ea59e036e0abb0bc3958052f7d05294a8c723bb9f7d1270906972283bf",
+   "passages": 312,
+   "characters": 46887,
+   "bytes": 143294,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg068-grc-0b1360ea59e036e0.json"
+  },
+  {
+   "workId": "cts-tlg0086-tlg019",
+   "author": "Aristóteles",
+   "title": "De lineis insecabilibus",
+   "language": "grc",
+   "dating": "siglo IV a. C.",
+   "sources": [
+    {
+     "title": "Περὶ ἀτόμων γραμμῶν",
+     "titleLanguage": "grc",
+     "author": "Aristotle",
+     "editors": [
+      "Immanuel Bekker"
+     ],
+     "bibliography": "Aristotelis Opera Aristotle Immanuel Bekker Oxford University Press Oxford 6 1837 Internet Archive",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg0086.tlg019.1st1K-grc1",
+     "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0086/tlg019/tlg0086.tlg019.1st1K-grc1.xml",
+     "sourceSha256": "90d7a294101e60167635ba49ee534426f72904a94218ebd10d626d3485e95d88",
+     "sourceReferences": [
+      "https://archive.org/details/operaexrecension06arisuoft/page/174/mode/2up"
+     ],
+     "publicationYear": "1837",
+     "publisher": "Oxford University Press",
+     "publicationPlace": "Oxford",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/90d7a294101e60167635ba49ee534426f72904a94218ebd10d626d3485e95d88.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-tlg0086-tlg019-grc-cf069e927b9e3965.json",
+   "sha256": "cf069e927b9e3965e1ba2e5f4a6b7f9824f5fea8532c61da04326b378c5f0a32",
+   "passages": 60,
+   "characters": 16863,
+   "bytes": 44358,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0086-tlg019-grc-cf069e927b9e3965.json"
+  },
+  {
+   "workId": "cts-tlg0062-tlg070",
+   "author": "Luciano de Samósata",
+   "title": "Soleocista",
+   "language": "grc",
+   "dating": "c. 125–c. 180 d. C.",
+   "sources": [
+    {
+     "title": "Ψευδοσοφιστής ἢ Σολοικιστής",
+     "titleLanguage": "grc",
+     "author": "Lucian",
+     "editors": [
+      "Karl Jacobitz"
+     ],
+     "bibliography": "Luciani Samosatensis Opera Lucian Karl Jacobitz Teubner Leipzig 1913 3 Internet Archive",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg0062.tlg070.perseus-grc2",
+     "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0062/tlg070/tlg0062.tlg070.perseus-grc2.xml",
+     "sourceSha256": "17f6d6e3089927f523555c524166f90e2c9b30f0aea60c8ad7f1b68ebe9e405e",
+     "sourceReferences": [
+      "https://archive.org/details/operaexrecogniti03luciuoft/page/402/mode/2up"
+     ],
+     "publicationYear": "1913",
+     "publisher": "Teubner",
+     "publicationPlace": "Leipzig",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/17f6d6e3089927f523555c524166f90e2c9b30f0aea60c8ad7f1b68ebe9e405e.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-tlg0062-tlg070-grc-acc2fd60263be6d3.json",
+   "sha256": "acc2fd60263be6d3493ba77211c7ba9e15bfe6997ac32520335a571843c62345",
+   "passages": 105,
+   "characters": 11200,
+   "bytes": 40183,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg070-grc-acc2fd60263be6d3.json"
+  },
+  {
+   "workId": "cts-tlg0062-tlg069",
+   "author": "Luciano de Samósata",
+   "title": "Dialogi meretricii",
+   "language": "grc",
+   "dating": "c. 125–c. 180 d. C.",
+   "sources": [
+    {
+     "title": "Ἑταιρικοὶ διάλογοι",
+     "titleLanguage": "grc",
+     "author": "Lucian of Samosata",
+     "editors": [
+      "Matthew Donald Macleod"
+     ],
+     "bibliography": "Lucian of Samosata Lucian with an English Translation Matthew Donald Macleod London William Heinemann Ltd. Cambridge, MA Harvard University Press 1961 7 Internet Archive Hathi Trust",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg0062.tlg069.perseus-grc3",
+     "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0062/tlg069/tlg0062.tlg069.perseus-grc3.xml",
+     "sourceSha256": "667c4d18dff11a875c791acd3cb6fe8887fd40cf5e94d7651705c8f37e1e6ec6",
+     "sourceReferences": [
+      "https://archive.org/details/lucianmac07luciuoft/page/357/mode/2up",
+      "https://hdl.handle.net/2027/osu.32435024202095?urlappend=%3Bseq=373"
+     ],
+     "publicationYear": "1961",
+     "publisher": "William Heinemann Ltd.",
+     "publicationPlace": "London",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/667c4d18dff11a875c791acd3cb6fe8887fd40cf5e94d7651705c8f37e1e6ec6.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-tlg0062-tlg069-grc-40c76ecb104df9f1.json",
+   "sha256": "40c76ecb104df9f1c4c2606f358b1f5e4388e6ed46f95c068e554733c898cb51",
+   "passages": 275,
+   "characters": 50380,
+   "bytes": 143861,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg069-grc-40c76ecb104df9f1.json"
+  },
+  {
+   "workId": "cts-ogl0001-ogl001",
+   "author": "Pinytus, Saint, Bishop of Knossos",
+   "title": "De Epistola Pinyti ad Dionysium",
+   "language": "grc",
+   "dating": "",
+   "sources": [
+    {
+     "title": "De Epistola Pinyti ad Dionysium",
+     "titleLanguage": "lat",
+     "author": "Pinytus",
+     "editors": [
+      "Martin Joseph Routh"
+     ],
+     "bibliography": "Reliquiae sacrae Martin Joseph Routh Pinytus, Saint, Bishop of Knossos Oxford University Press Oxford 1846 1 Internet Archive",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:ogl0001.ogl001.1st1K-grc1",
+     "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/ogl0001/ogl001/ogl0001.ogl001.1st1K-grc1.xml",
+     "sourceSha256": "764c27e340f5e171f5d2ef154acae5a4f340d8f14b6c0b3d9c65dc3ad92c1490",
+     "sourceReferences": [
+      "https://archive.org/details/reliquiaesacraes01rout/page/184/mode/2up"
+     ],
+     "publicationYear": "1846",
+     "publisher": "Oxford University Press",
+     "publicationPlace": "Oxford",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/764c27e340f5e171f5d2ef154acae5a4f340d8f14b6c0b3d9c65dc3ad92c1490.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-ogl0001-ogl001-grc-f95475c455684431.json",
+   "sha256": "f95475c4556844318ba08221afe929da702f643247787eb1790467f537fec025",
+   "passages": 4,
+   "characters": 688,
+   "bytes": 3728,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-ogl0001-ogl001-grc-f95475c455684431.json"
+  },
+  {
+   "workId": "cts-tlg0086-tlg020",
+   "author": "Aristóteles",
+   "title": "De longitudine et brevitate vitae",
+   "language": "grc",
+   "dating": "siglo IV a. C.",
+   "sources": [
+    {
+     "title": "De longitudine et brevitate vitae",
+     "titleLanguage": "lat",
+     "author": "Aristotle",
+     "editors": [
+      "Immanuel Bekker"
+     ],
+     "bibliography": "Aristotelis Opera Aristotle Immanuel Bekker Oxford University Press Oxford 3 315-321 1837",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg0086.tlg020.1st1K-grc1",
+     "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0086/tlg020/tlg0086.tlg020.1st1K-grc1.xml",
+     "sourceSha256": "5bfbaf7ae5d9e02a3d882336de055cf59c528469fea8388418d43b726b912707",
+     "sourceReferences": [
+      "https://hdl.handle.net/2027/nyp.33433022676005?urlappend=%3Bseq=326"
+     ],
+     "publicationYear": "1837",
+     "publisher": "Oxford University Press",
+     "publicationPlace": "Oxford",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/5bfbaf7ae5d9e02a3d882336de055cf59c528469fea8388418d43b726b912707.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-tlg0086-tlg020-grc-e60ed4c247f1f4b6.json",
+   "sha256": "e60ed4c247f1f4b62375a300b5a3b03207894cb008a9f1ffe836464451c192a2",
+   "passages": 7,
+   "characters": 10198,
+   "bytes": 23466,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0086-tlg020-grc-e60ed4c247f1f4b6.json"
   }
  ],
  "githubPreserved": [
@@ -10596,14 +11228,6 @@
    "r2Key": "preserved/github/6c7f2ee0eada84ebb9f2a6954b9e2e60f4db514ee8d8c3a5c160e754349ee53f.json"
   }
  ],
- "deferred": [
-  {
-   "workId": "tibullus-elegiae",
-   "sources": [
-    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0660/phi001/phi0660.phi001.perseus-lat2.xml"
-   ],
-   "reason": "Sin licencia abierta explícita admisible en la cabecera TEI"
-  }
- ],
+ "deferred": [],
  "policy": "No se borran ni reemplazan originales de GitHub, PDFs, traducciones o códices. Cobertura relativa a los catálogos CTS inventariados, no a toda la literatura antigua."
 }

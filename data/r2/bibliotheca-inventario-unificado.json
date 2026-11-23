@@ -1,12 +1,12 @@
 {
   "schema": "vdl-federated-bibliotheca-inventory-v1",
-  "generated": "2026-11-23T02:57:28.687899+00:00",
+  "generated": "2026-11-23T03:00:23.045014+00:00",
   "method": "Master works and additional R2 works counted separately; edition relations can be many-to-many. Remote text URLs are declared, not live-verified. Unresolved editions are never merged automatically.",
   "counts": {
-    "cataloguedWorks": 341,
+    "cataloguedWorks": 356,
     "supplementaryWorks": 127,
     "additionalWorks": 10,
-    "totalDeclaredWorks": 478,
+    "totalDeclaredWorks": 493,
     "r2EditionRecords": 117,
     "r2LinkedEditionRecords": 107,
     "r2WorkEditionRelations": 115,
@@ -14,7 +14,7 @@
     "r2UnlinkedEditionRecords": 0,
     "worksWithR2Edition": 114,
     "worksWithLocalIndexedText": 325,
-    "worksWithDeclaredRemoteIndex": 123
+    "worksWithDeclaredRemoteIndex": 138
   },
   "unlinkedR2EditionIds": [],
   "additionalWorks": [
@@ -8476,6 +8476,216 @@
         {
           "language": "grc",
           "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg056-grc-3c3065a4a862ebae.json"
+        }
+      ],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "cts-tlg0086-tlg008",
+      "author": "Aristóteles",
+      "title": "De divinatione per somnum",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0086-tlg008-grc-dc140af1f38cae43.json"
+        }
+      ],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "cts-tlg0086-tlg011",
+      "author": "Aristóteles",
+      "title": "Epistulae",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0086-tlg011-grc-911c48a0db4d8e69.json"
+        }
+      ],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "cts-tlg0086-tlg012",
+      "author": "Aristóteles",
+      "title": "De Generatione Animalium",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0086-tlg012-grc-439fd172ff04dcc5.json"
+        }
+      ],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "cts-tlg0086-tlg009",
+      "author": "Aristóteles",
+      "title": "Eudemian Ethics",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0086-tlg009-grc-fadb884ac267d6cb.json"
+        }
+      ],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "cts-tlg0086-tlg015",
+      "author": "Aristóteles",
+      "title": "De animalium incessu",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0086-tlg015-grc-f8b93103f0a5ffa0.json"
+        }
+      ],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "cts-tlg0086-tlg013",
+      "author": "Aristóteles",
+      "title": "De generatione et corruptione",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0086-tlg013-grc-f54cf4ecdbbe0116.json"
+        }
+      ],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "cts-tlg0086-tlg016",
+      "author": "Aristóteles",
+      "title": "De insomniis",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0086-tlg016-grc-0fe6d75a7d9153ba.json"
+        }
+      ],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "cts-tlg0086-tlg018",
+      "author": "Aristóteles",
+      "title": "De iuventute et senectute, De vita et morte",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0086-tlg018-grc-3337f3a3b338b7cc.json"
+        }
+      ],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "cts-tlg0086-tlg017",
+      "author": "Aristóteles",
+      "title": "De interpretatione",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0086-tlg017-grc-b4a8546bc845b322.json"
+        }
+      ],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "cts-tlg0062-tlg068",
+      "author": "Luciano de Samósata",
+      "title": "Dialogi deorum",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg068-grc-0b1360ea59e036e0.json"
+        }
+      ],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "cts-tlg0086-tlg019",
+      "author": "Aristóteles",
+      "title": "De lineis insecabilibus",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0086-tlg019-grc-cf069e927b9e3965.json"
+        }
+      ],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "cts-tlg0062-tlg070",
+      "author": "Luciano de Samósata",
+      "title": "Soleocista",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg070-grc-acc2fd60263be6d3.json"
+        }
+      ],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "cts-tlg0062-tlg069",
+      "author": "Luciano de Samósata",
+      "title": "Dialogi meretricii",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg069-grc-40c76ecb104df9f1.json"
+        }
+      ],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "cts-ogl0001-ogl001",
+      "author": "Pinytus, Saint, Bishop of Knossos",
+      "title": "De Epistola Pinyti ad Dionysium",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/cts-ogl0001-ogl001-grc-f95475c455684431.json"
+        }
+      ],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "cts-tlg0086-tlg020",
+      "author": "Aristóteles",
+      "title": "De longitudine et brevitate vitae",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0086-tlg020-grc-e60ed4c247f1f4b6.json"
         }
       ],
       "r2FacsimileEditions": []

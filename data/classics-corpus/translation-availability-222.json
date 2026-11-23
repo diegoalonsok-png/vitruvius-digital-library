@@ -4,26 +4,26 @@
   "basis": "Cálculo a partir de works[] y search-registry.json. Los campos de compatibilidad locallyIndexedWorks y localEditionLanguages incluyen índices registrados en R2. originalIndexed y verifiedLocalEditionLanguages solo cuentan archivos locales. originalR2Registered identifica declaraciones remotas; no certifica disponibilidad HTTP ni cotejo.",
   "scope": "271 obras del repertorio grecolatino; originales locales, índices remotos declarados y traducciones alojadas ES/EN/FR",
   "totals": {
-    "cataloguedWorks": 341,
-    "locallyIndexedWorks": 311,
+    "cataloguedWorks": 356,
+    "locallyIndexedWorks": 326,
     "translatedWorksLocal": 78,
-    "worksWithoutHostedTranslation": 263,
+    "worksWithoutHostedTranslation": 278,
     "localTranslationLanguages": {
       "es": 5,
       "en": 77,
       "fr": 2
     },
     "originalTextIndexed": 197,
-    "originalTextNotIndexed": 144,
+    "originalTextNotIndexed": 159,
     "verifiedLocalFileWorks": 199,
-    "declaredRemoteOnlyWorks": 112,
-    "declaredR2OriginalWorks": 123,
-    "registeredOriginalWorks": 311,
-    "registeredTextVersions": 432,
+    "declaredRemoteOnlyWorks": 127,
+    "declaredR2OriginalWorks": 138,
+    "registeredOriginalWorks": 326,
+    "registeredTextVersions": 447,
     "verifiedLocalTextVersions": 281,
     "verifiedLocalOriginalTextIndexed": 197,
     "supplementaryTextVersions": 161,
-    "allRegisteredTextVersions": 593
+    "allRegisteredTextVersions": 608
   },
   "works": [
     {
@@ -8556,6 +8556,336 @@
       "id": "cts-tlg0062-tlg056",
       "author": "Luciano de Samósata",
       "title": "Herodotus",
+      "originalLanguage": "grc",
+      "translationLanguages": [],
+      "localEditionLanguages": [
+        "grc"
+      ],
+      "notes": "Edición TEI incorporada en R2; sin traducción humana ni colación independiente acreditadas.",
+      "originalIndexed": false,
+      "originalR2Registered": true,
+      "registeredOriginal": true,
+      "verifiedLocalEditionLanguages": [],
+      "registeredEditionLanguages": [
+        "grc"
+      ],
+      "remoteEditionLanguages": [
+        "grc"
+      ],
+      "readingStatus": "lectura-local-parcial"
+    },
+    {
+      "id": "cts-tlg0086-tlg008",
+      "author": "Aristóteles",
+      "title": "De divinatione per somnum",
+      "originalLanguage": "grc",
+      "translationLanguages": [],
+      "localEditionLanguages": [
+        "grc"
+      ],
+      "notes": "Edición TEI incorporada en R2; sin traducción humana ni colación independiente acreditadas.",
+      "originalIndexed": false,
+      "originalR2Registered": true,
+      "registeredOriginal": true,
+      "verifiedLocalEditionLanguages": [],
+      "registeredEditionLanguages": [
+        "grc"
+      ],
+      "remoteEditionLanguages": [
+        "grc"
+      ],
+      "readingStatus": "lectura-local-parcial"
+    },
+    {
+      "id": "cts-tlg0086-tlg011",
+      "author": "Aristóteles",
+      "title": "Epistulae",
+      "originalLanguage": "grc",
+      "translationLanguages": [],
+      "localEditionLanguages": [
+        "grc"
+      ],
+      "notes": "Edición TEI incorporada en R2; sin traducción humana ni colación independiente acreditadas.",
+      "originalIndexed": false,
+      "originalR2Registered": true,
+      "registeredOriginal": true,
+      "verifiedLocalEditionLanguages": [],
+      "registeredEditionLanguages": [
+        "grc"
+      ],
+      "remoteEditionLanguages": [
+        "grc"
+      ],
+      "readingStatus": "lectura-local-parcial"
+    },
+    {
+      "id": "cts-tlg0086-tlg012",
+      "author": "Aristóteles",
+      "title": "De Generatione Animalium",
+      "originalLanguage": "grc",
+      "translationLanguages": [],
+      "localEditionLanguages": [
+        "grc"
+      ],
+      "notes": "Edición TEI incorporada en R2; sin traducción humana ni colación independiente acreditadas.",
+      "originalIndexed": false,
+      "originalR2Registered": true,
+      "registeredOriginal": true,
+      "verifiedLocalEditionLanguages": [],
+      "registeredEditionLanguages": [
+        "grc"
+      ],
+      "remoteEditionLanguages": [
+        "grc"
+      ],
+      "readingStatus": "lectura-local-parcial"
+    },
+    {
+      "id": "cts-tlg0086-tlg009",
+      "author": "Aristóteles",
+      "title": "Eudemian Ethics",
+      "originalLanguage": "grc",
+      "translationLanguages": [],
+      "localEditionLanguages": [
+        "grc"
+      ],
+      "notes": "Edición TEI incorporada en R2; sin traducción humana ni colación independiente acreditadas.",
+      "originalIndexed": false,
+      "originalR2Registered": true,
+      "registeredOriginal": true,
+      "verifiedLocalEditionLanguages": [],
+      "registeredEditionLanguages": [
+        "grc"
+      ],
+      "remoteEditionLanguages": [
+        "grc"
+      ],
+      "readingStatus": "lectura-local-parcial"
+    },
+    {
+      "id": "cts-tlg0086-tlg015",
+      "author": "Aristóteles",
+      "title": "De animalium incessu",
+      "originalLanguage": "grc",
+      "translationLanguages": [],
+      "localEditionLanguages": [
+        "grc"
+      ],
+      "notes": "Edición TEI incorporada en R2; sin traducción humana ni colación independiente acreditadas.",
+      "originalIndexed": false,
+      "originalR2Registered": true,
+      "registeredOriginal": true,
+      "verifiedLocalEditionLanguages": [],
+      "registeredEditionLanguages": [
+        "grc"
+      ],
+      "remoteEditionLanguages": [
+        "grc"
+      ],
+      "readingStatus": "lectura-local-parcial"
+    },
+    {
+      "id": "cts-tlg0086-tlg013",
+      "author": "Aristóteles",
+      "title": "De generatione et corruptione",
+      "originalLanguage": "grc",
+      "translationLanguages": [],
+      "localEditionLanguages": [
+        "grc"
+      ],
+      "notes": "Edición TEI incorporada en R2; sin traducción humana ni colación independiente acreditadas.",
+      "originalIndexed": false,
+      "originalR2Registered": true,
+      "registeredOriginal": true,
+      "verifiedLocalEditionLanguages": [],
+      "registeredEditionLanguages": [
+        "grc"
+      ],
+      "remoteEditionLanguages": [
+        "grc"
+      ],
+      "readingStatus": "lectura-local-parcial"
+    },
+    {
+      "id": "cts-tlg0086-tlg016",
+      "author": "Aristóteles",
+      "title": "De insomniis",
+      "originalLanguage": "grc",
+      "translationLanguages": [],
+      "localEditionLanguages": [
+        "grc"
+      ],
+      "notes": "Edición TEI incorporada en R2; sin traducción humana ni colación independiente acreditadas.",
+      "originalIndexed": false,
+      "originalR2Registered": true,
+      "registeredOriginal": true,
+      "verifiedLocalEditionLanguages": [],
+      "registeredEditionLanguages": [
+        "grc"
+      ],
+      "remoteEditionLanguages": [
+        "grc"
+      ],
+      "readingStatus": "lectura-local-parcial"
+    },
+    {
+      "id": "cts-tlg0086-tlg018",
+      "author": "Aristóteles",
+      "title": "De iuventute et senectute, De vita et morte",
+      "originalLanguage": "grc",
+      "translationLanguages": [],
+      "localEditionLanguages": [
+        "grc"
+      ],
+      "notes": "Edición TEI incorporada en R2; sin traducción humana ni colación independiente acreditadas.",
+      "originalIndexed": false,
+      "originalR2Registered": true,
+      "registeredOriginal": true,
+      "verifiedLocalEditionLanguages": [],
+      "registeredEditionLanguages": [
+        "grc"
+      ],
+      "remoteEditionLanguages": [
+        "grc"
+      ],
+      "readingStatus": "lectura-local-parcial"
+    },
+    {
+      "id": "cts-tlg0086-tlg017",
+      "author": "Aristóteles",
+      "title": "De interpretatione",
+      "originalLanguage": "grc",
+      "translationLanguages": [],
+      "localEditionLanguages": [
+        "grc"
+      ],
+      "notes": "Edición TEI incorporada en R2; sin traducción humana ni colación independiente acreditadas.",
+      "originalIndexed": false,
+      "originalR2Registered": true,
+      "registeredOriginal": true,
+      "verifiedLocalEditionLanguages": [],
+      "registeredEditionLanguages": [
+        "grc"
+      ],
+      "remoteEditionLanguages": [
+        "grc"
+      ],
+      "readingStatus": "lectura-local-parcial"
+    },
+    {
+      "id": "cts-tlg0062-tlg068",
+      "author": "Luciano de Samósata",
+      "title": "Dialogi deorum",
+      "originalLanguage": "grc",
+      "translationLanguages": [],
+      "localEditionLanguages": [
+        "grc"
+      ],
+      "notes": "Edición TEI incorporada en R2; sin traducción humana ni colación independiente acreditadas.",
+      "originalIndexed": false,
+      "originalR2Registered": true,
+      "registeredOriginal": true,
+      "verifiedLocalEditionLanguages": [],
+      "registeredEditionLanguages": [
+        "grc"
+      ],
+      "remoteEditionLanguages": [
+        "grc"
+      ],
+      "readingStatus": "lectura-local-parcial"
+    },
+    {
+      "id": "cts-tlg0086-tlg019",
+      "author": "Aristóteles",
+      "title": "De lineis insecabilibus",
+      "originalLanguage": "grc",
+      "translationLanguages": [],
+      "localEditionLanguages": [
+        "grc"
+      ],
+      "notes": "Edición TEI incorporada en R2; sin traducción humana ni colación independiente acreditadas.",
+      "originalIndexed": false,
+      "originalR2Registered": true,
+      "registeredOriginal": true,
+      "verifiedLocalEditionLanguages": [],
+      "registeredEditionLanguages": [
+        "grc"
+      ],
+      "remoteEditionLanguages": [
+        "grc"
+      ],
+      "readingStatus": "lectura-local-parcial"
+    },
+    {
+      "id": "cts-tlg0062-tlg070",
+      "author": "Luciano de Samósata",
+      "title": "Soleocista",
+      "originalLanguage": "grc",
+      "translationLanguages": [],
+      "localEditionLanguages": [
+        "grc"
+      ],
+      "notes": "Edición TEI incorporada en R2; sin traducción humana ni colación independiente acreditadas.",
+      "originalIndexed": false,
+      "originalR2Registered": true,
+      "registeredOriginal": true,
+      "verifiedLocalEditionLanguages": [],
+      "registeredEditionLanguages": [
+        "grc"
+      ],
+      "remoteEditionLanguages": [
+        "grc"
+      ],
+      "readingStatus": "lectura-local-parcial"
+    },
+    {
+      "id": "cts-tlg0062-tlg069",
+      "author": "Luciano de Samósata",
+      "title": "Dialogi meretricii",
+      "originalLanguage": "grc",
+      "translationLanguages": [],
+      "localEditionLanguages": [
+        "grc"
+      ],
+      "notes": "Edición TEI incorporada en R2; sin traducción humana ni colación independiente acreditadas.",
+      "originalIndexed": false,
+      "originalR2Registered": true,
+      "registeredOriginal": true,
+      "verifiedLocalEditionLanguages": [],
+      "registeredEditionLanguages": [
+        "grc"
+      ],
+      "remoteEditionLanguages": [
+        "grc"
+      ],
+      "readingStatus": "lectura-local-parcial"
+    },
+    {
+      "id": "cts-ogl0001-ogl001",
+      "author": "Pinytus, Saint, Bishop of Knossos",
+      "title": "De Epistola Pinyti ad Dionysium",
+      "originalLanguage": "grc",
+      "translationLanguages": [],
+      "localEditionLanguages": [
+        "grc"
+      ],
+      "notes": "Edición TEI incorporada en R2; sin traducción humana ni colación independiente acreditadas.",
+      "originalIndexed": false,
+      "originalR2Registered": true,
+      "registeredOriginal": true,
+      "verifiedLocalEditionLanguages": [],
+      "registeredEditionLanguages": [
+        "grc"
+      ],
+      "remoteEditionLanguages": [
+        "grc"
+      ],
+      "readingStatus": "lectura-local-parcial"
+    },
+    {
+      "id": "cts-tlg0086-tlg020",
+      "author": "Aristóteles",
+      "title": "De longitudine et brevitate vitae",
       "originalLanguage": "grc",
       "translationLanguages": [],
       "localEditionLanguages": [
