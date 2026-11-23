@@ -1,6 +1,6 @@
 name: Ampliar clásicos griegos y latinos en R2 sin borrar GitHub
-run-name: Bibliotheca R2 · hasta 15 grupos por tanda · ${{ github.event_name }}
-# Meta operativa: ocho tandas al día de hasta 15 grupos nuevos (capacidad 120/día, sin prometer 120 admisibles).
+run-name: Bibliotheca R2 · hasta 20 grupos por tanda · ${{ github.event_name }}
+# Meta operativa: ocho tandas al día de hasta 20 grupos (capacidad 160/día, sujeto a fuentes admisibles).
 # Registrar como incorporados sólo los originales verificados en R2, con URL, SHA-256 e índice.
 # Mantener manuscritos, PDF, traducciones y versiones previas sin sustituirlos.
 # Solicitud 2026-11-16 (segunda tanda): publicar únicamente objetos nuevos con licencia y fuente verificadas.
@@ -15,9 +15,9 @@ on:
   workflow_dispatch:
     inputs:
       limite:
-        description: "Tope de grupos por tanda; 15 por defecto (0 = todos, sin recomendación)"
+        description: "Tope de grupos por tanda; 20 por defecto (0 = todos, no recomendado)"
         required: false
-        default: "15"
+        default: "20"
   schedule:
     # Ocho tandas durante las 24 horas, cada 3 horas. Las traducciones
     # se intercalan y comparten concurrencia para proteger R2 y el catálogo.
@@ -58,6 +58,28 @@ jobs:
         with:
           fetch-depth: 1
           persist-credentials: true
+      - name: Actualizar el checkout antes de descubrir obras, sin perder ediciones recientes
+        run: |
+          git fetch --quiet origin main
+          git checkout -B vdl-expansion origin/main
+      - name: Detectar desajuste entre manifiesto R2 y cobertura del índice
+        shell: bash
+        run: |
+          python - <<'PY'
+          import json, os
+          from pathlib import Path
+          manifest=json.loads(Path("data/r2/classics-expansion-manifest.json").read_text())
+          descriptor=json.loads(Path("data/r2/classics-expansion-index.json").read_text())
+          edition_count=len(manifest["editions"])
+          indexed=descriptor["works"]
+          if indexed>edition_count:
+              raise SystemExit("Índice R2 declara más ediciones que el manifiesto: requiere auditoría")
+          incremental=indexed==edition_count
+          with open(os.environ["GITHUB_ENV"],"a",encoding="utf-8") as fh:
+              fh.write("R2_INDEX_INCREMENTAL="+("1" if incremental else "0")+"\n")
+          print(f"R2: {edition_count} ediciones; índice {indexed}. "+
+                ("Reutilización incremental segura" if incremental else "Reparar índice completo sin borrar ediciones"))
+          PY
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
@@ -79,7 +101,7 @@ jobs:
           node scripts/audit-classical-corpus.mjs
       - name: Incorporar originales admisibles a R2 por lote acotado
         env:
-          LIMITE_TANDA: ${{ inputs.limite || '15' }}
+          LIMITE_TANDA: ${{ inputs.limite || '20' }}
         run: python -u scripts/expand-classics-r2.py --publish --workers 4 --limit "$LIMITE_TANDA"
       - name: Identificar nuevas ediciones antes de indexar
         id: nuevas
@@ -88,10 +110,14 @@ jobs:
           NUM=$(python -c 'import json; print(len(json.load(open("/tmp/vdl-classics-expansion/prepared.json"))["prepared"]))')
           echo "cantidad=$NUM" >> "$GITHUB_OUTPUT"
           echo "Ediciones nuevas acreditadas: $NUM; sin cambios no se reconstruye el índice."
-      - name: Construir y publicar sólo los segmentos nuevos del índice R2
+      - name: Publicar segmentos nuevos o reconstruir cobertura histórica si falta
         if: steps.nuevas.outputs.cantidad != '0'
         run: |
-          node --max-old-space-size=11000 scripts/build-r2-expansion-index.mjs /tmp/vdl-classics-expansion --incremental
+          if [ "$R2_INDEX_INCREMENTAL" = "1" ]; then
+            node --max-old-space-size=11000 scripts/build-r2-expansion-index.mjs /tmp/vdl-classics-expansion --incremental
+          else
+            node --max-old-space-size=11000 scripts/build-r2-expansion-index.mjs /tmp/vdl-classics-expansion
+          fi
           python scripts/publish-r2-expansion-index.py /tmp/vdl-classics-expansion
       - name: Actualizar desde el catálogo más reciente y publicar sólo referencias verificadas
         if: steps.nuevas.outputs.cantidad != '0'
