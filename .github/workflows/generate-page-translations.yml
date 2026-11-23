@@ -18,10 +18,10 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 90
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
         with:
           persist-credentials: true
-      - uses: actions/setup-python@v5
+      - uses: actions/setup-python@v7
         with:
           python-version: '3.11'
           cache: pip
@@ -29,7 +29,7 @@ jobs:
       - name: Install offline translation tools
         run: python -m pip install -r scripts/requirements-page-translations.txt
       - name: Cache translation models
-        uses: actions/cache@v4
+        uses: actions/cache@v6
         with:
           path: |
             ~/.local/share/argos-translate

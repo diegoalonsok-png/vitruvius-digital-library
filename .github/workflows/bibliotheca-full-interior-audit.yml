@@ -21,8 +21,8 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 90
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
         with:
           python-version: "3.12"
       - name: Sintaxis del auditor
@@ -50,7 +50,7 @@ jobs:
           PY
       - name: Conservar evidencias para revision academica
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: bibliotheca-281-works-originals-${{ github.run_id }}
           path: reports/bibliotheca/full-integrity-*.json
@@ -67,8 +67,8 @@ jobs:
       matrix:
         start: [0, 30, 60, 90]
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
         with:
           python-version: "3.12"
       - name: Dependencia para verificar PDFs realmente descargados
@@ -102,7 +102,7 @@ jobs:
           PY
       - name: Archivar resultados individuales
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: bibliotheca-117-editions-${{ matrix.start }}-${{ github.run_id }}
           path: reports/bibliotheca/full-integrity-*.json

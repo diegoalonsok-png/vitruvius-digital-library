@@ -12,7 +12,7 @@ jobs:
   import:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - name: Download, validate and index Gutenberg translations
         run: python3 scripts/import_gutenberg_translations.py
       - name: Validate resulting JSON
@@ -37,7 +37,7 @@ jobs:
               assert all(x.get('text') and x.get('locusKind','').endswith('NOT aligned to Greek CTS') for x in passages)
               print(f'Validated independent historical translation {work}: {len(passages)} segments')
           PY
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v7
         with:
           node-version: '22'
       - name: Build and check lexical index without asserting Greek-English alignment

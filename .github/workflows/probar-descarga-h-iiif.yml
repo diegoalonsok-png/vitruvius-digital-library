@@ -40,7 +40,7 @@ jobs:
                 print("Imagen 9 descargada:",len(content),"bytes")
           (target/"estado.txt").write_text(f"Manifiesto: {base}\nImágenes: {len(pages)}\nPrueba de una imagen, sin publicar colección.\n",encoding="utf-8")
           PY
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         if: always()
         with:
           name: prueba-codex-h

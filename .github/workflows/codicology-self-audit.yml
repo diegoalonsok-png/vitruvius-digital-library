@@ -28,10 +28,10 @@ jobs:
     timeout-minutes: 25
     steps:
       - name: Check out registered scholarly catalogue
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
       - name: Set up Python (no paid API or extra packages)
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v7
         with:
           python-version: '3.11'
 
@@ -49,7 +49,7 @@ jobs:
 
       - name: Publish audit artifacts (do not commit anything)
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: codicology-222-metadata-only
           path: reports/codicology/*.json
@@ -86,10 +86,10 @@ jobs:
     timeout-minutes: 15
     steps:
       - name: Check out codicological records
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
       - name: Python (no external paid packages)
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v7
         with:
           python-version: '3.11'
 
@@ -109,7 +109,7 @@ jobs:
 
       - name: Preserve lightweight scholarly review report only
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: codicology-weekly-spotcheck-json
           path: reports/codicology-weekly/weekly-review.json

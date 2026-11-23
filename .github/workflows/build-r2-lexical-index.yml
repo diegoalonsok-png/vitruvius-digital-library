@@ -24,10 +24,10 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 60
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
         with:
           persist-credentials: true
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v7
         with:
           node-version: "22"
       - name: Preflight catalogue, manifests and script syntax
@@ -49,7 +49,7 @@ jobs:
         run: node scripts/write-r2-sync-status.mjs
       - name: Upload R2 build diagnostics
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: r2-lexical-build-diagnostics
           if-no-files-found: warn

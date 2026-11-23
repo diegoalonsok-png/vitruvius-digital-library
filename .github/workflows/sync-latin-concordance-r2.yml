@@ -17,8 +17,8 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
         with:
           python-version: '3.12'
       - run: python -m pip install --disable-pip-version-check boto3
@@ -55,7 +55,7 @@ jobs:
             report.append({'edition':edition,'key':key,'url':url,'sha256':digest,'loci':731,'action':action,'public_checks':public})
           out=pathlib.Path('/tmp/latin-r2-published.json');out.write_text(json.dumps(report,ensure_ascii=False,indent=2));print(out.read_text())
           PY
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         with:
           name: independent-latin-r2-published
           path: /tmp/latin-r2-published.json
