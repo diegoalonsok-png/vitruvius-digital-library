@@ -32,6 +32,75 @@ def git(*args):
         ["git", *args], stdout=subprocess.PIPE, stderr=subprocess.PIPE, check=True
     ).stdout
 
+def _records(document, key, label):
+    """Extract stable identities: every previously published record must survive."""
+    if not isinstance(document, dict):
+        raise ValueError(f"{label}: formato inesperado")
+    rows = document.get(key)
+    if not isinstance(rows, list):
+        raise ValueError(f"{label}: falta la colección {key}")
+    return rows
+
+
+def _identities(document, key, fields, label):
+    rows = _records(document, key, label)
+    ids = set()
+    for row in rows:
+        if not isinstance(row, dict):
+            raise ValueError(f"{label}: registro no es objeto")
+        identity = tuple(str(row.get(k) or "") for k in fields)
+        if not all(identity):
+            raise ValueError(f"{label}: falta identidad {fields}")
+        if identity in ids:
+            raise ValueError(f"{label}: identidad duplicada {identity}")
+        ids.add(identity)
+    return ids
+
+
+def forbid_book_deletions(path, before, after):
+    """No title, original, translation, indexed edition or archived R2 object vanishes.
+
+    Each comparison is against Git HEAD, not the previous synchronization step.
+    Metadata can grow or be enriched; an old ID/version must remain addressable.
+    """
+    rules = {
+        "data/bibliotheca-graeca-latina-I-bce-I-ce.json": [
+            ("works", ("id",)),
+        ],
+        "data/classics-corpus/search-registry.json": [
+            ("entries", ("workId", "language", "path")),
+        ],
+        "data/r2/classics-expansion-manifest.json": [
+            ("editions", ("workId", "language", "url")),
+            ("githubPreserved", ("path", "sha256", "r2Key")),
+        ],
+        "data/r2/classics-translation-manifest.json": [
+            ("editions", ("workId", "language", "url")),
+        ],
+        "data/r2/bibliotheca-inventario-unificado.json": [
+            ("works", ("id",)),
+            ("supplementaryWorks", ("id",)),
+            ("additionalWorks", ("id",)),
+        ],
+    }
+    for key, fields in rules.get(path, []):
+        old = _identities(before, key, fields, path + " (HEAD)")
+        new = _identities(after, key, fields, path + " (nuevo)")
+        missing = sorted(old - new)
+        if missing:
+            raise ValueError(
+                "CLAUSULA: NO SE BORRAN LIBROS NI EDICIONES. "
+                + path + " / " + key + ": desaparecen "
+                + str(len(missing)) + " registros: " + repr(missing[:5])
+            )
+    if path == "data/cifras-corpus.json":
+        for field in ("obras", "obrasSuplementarias", "obrasAdicionales", "obrasTotalesDeclaradas"):
+            if field in before and field in after and int(after[field]) < int(before[field]):
+                raise ValueError(
+                    "CLAUSULA: NO SE BORRAN LIBROS. Disminuye " + field
+                )
+
+
 def check():
     deleted = [
         x.decode() for x in git("diff", "--cached", "--name-only", "-z", "--diff-filter=D").split(b"\0") if x
@@ -53,6 +122,12 @@ def check():
             obj = json.loads(raw.decode("utf-8"))
             if isinstance(obj, dict) and isinstance(obj.get("passages"), list):
                 raise ValueError("Contiene pasajes de texto completo; solo R2: " + path)
+            try:
+                original = git("show", "HEAD:" + path)
+            except subprocess.CalledProcessError:
+                original = b""
+            if original:
+                forbid_book_deletions(path, json.loads(original.decode("utf-8")), obj)
     if total > MAX_BATCH_BYTES:
         raise ValueError("Lote de metadatos demasiado voluminoso; alojar en R2")
     print(f"GitHub solo metadatos: {len(staged)} archivos, {total} bytes")
