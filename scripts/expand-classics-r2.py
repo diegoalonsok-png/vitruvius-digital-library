@@ -549,6 +549,11 @@ def main():
             urls = {r["url"] for r in report["published"]}
             for row in read(previous_manifest).get("editions", []):
                 if row["url"] in urls: continue
+                if os.getenv("R2_INDEX_INCREMENTAL") == "1":
+                    # Edición anterior inmutable: el constructor cotejará SHA-256
+                    # del índice R2 anterior antes de reutilizar sus fragmentos.
+                    report["published"].append(row)
+                    continue
                 raw = s3.get_object(Bucket=bucket, Key="corpus/" + row["filename"])["Body"].read()
                 if digest(raw) != row["sha256"]: raise ValueError("Edición anterior R2 discordante")
                 (folder / "corpus").mkdir(parents=True, exist_ok=True)
