@@ -1,6 +1,7 @@
 name: Ampliar clásicos griegos y latinos en R2 sin borrar GitHub
-run-name: Bibliotheca R2 · hasta 20 grupos por tanda · ${{ github.event_name }}
-# Meta operativa: ocho tandas al día de hasta 20 grupos (capacidad 160/día, sujeto a fuentes admisibles).
+run-name: Bibliotheca R2 · hasta 25 grupos por tanda · ${{ github.event_name }}
+# Meta operativa: ocho tandas al día de hasta 25 grupos (capacidad 200/día, sujeto a fuentes admisibles).
+# Tras un lote de 20 con 13 licencias aptas, se amplía el margen para superar 100 incorporaciones válidas/día.
 # Registrar como incorporados sólo los originales verificados en R2, con URL, SHA-256 e índice.
 # Mantener manuscritos, PDF, traducciones y versiones previas sin sustituirlos.
 # Solicitud 2026-11-16 (segunda tanda): publicar únicamente objetos nuevos con licencia y fuente verificadas.
@@ -15,9 +16,9 @@ on:
   workflow_dispatch:
     inputs:
       limite:
-        description: "Tope de grupos por tanda; 20 por defecto (0 = todos, no recomendado)"
+        description: "Tope de grupos por tanda; 25 por defecto (0 = todos, no recomendado)"
         required: false
-        default: "20"
+        default: "25"
   schedule:
     # Ocho tandas durante las 24 horas, cada 3 horas. Las traducciones
     # se intercalan y comparten concurrencia para proteger R2 y el catálogo.
@@ -101,7 +102,7 @@ jobs:
           node scripts/audit-classical-corpus.mjs
       - name: Incorporar originales admisibles a R2 por lote acotado
         env:
-          LIMITE_TANDA: ${{ inputs.limite || '20' }}
+          LIMITE_TANDA: ${{ inputs.limite || '25' }}
         run: python -u scripts/expand-classics-r2.py --publish --workers 4 --limit "$LIMITE_TANDA"
       - name: Identificar nuevas ediciones antes de indexar
         id: nuevas
