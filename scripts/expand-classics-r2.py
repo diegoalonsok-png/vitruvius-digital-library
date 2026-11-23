@@ -483,7 +483,21 @@ def main():
                 (folder / "corpus").mkdir(parents=True, exist_ok=True)
                 (folder / "corpus" / row["filename"]).write_bytes(raw)
                 report["published"].append(row)
+        # Previously verified immutable, content-addressed preservation objects
+        # are not reuploaded on every run. Changes always receive a new R2 key;
+        # this is safe because put_verified validated SHA256 via S3 and public CDN
+        # before the earlier record entered the committed manifest.
+        prior_preserved = {
+            (x.get("path"), x.get("sha256"), x.get("r2Key")): x
+            for x in (read(previous_manifest).get("githubPreserved", []) if previous_manifest.exists() else [])
+        }
+        preserved_reused = 0
         for row in inventory:
+            identity = (row["path"], row["sha256"], row["r2Key"])
+            if identity in prior_preserved:
+                report["githubPreserved"].append(row)
+                preserved_reused += 1
+                continue
             p = ROOT / row["path"]
             mime = "application/json;charset=utf-8" if p.suffix == ".json" else "text/html;charset=utf-8" if p.suffix == ".html" else "application/pdf"
             try:
@@ -491,6 +505,7 @@ def main():
                 report["githubPreserved"].append(row)
             except Exception as exc:
                 report["deferred"].append({"path": row["path"], "reason": "Copia de preservación pendiente: " + str(exc)[:300]})
+        info["unchangedGithubPreservationReused"] = preserved_reused
         save(folder / "prepared.json", report)
     print(json.dumps({"prepared": len(report["prepared"]), "published": len(report["published"]), "deferred": len(report["deferred"]), "githubPreserved": len(report["githubPreserved"])}))
     if not report["prepared"] and not report["published"]: raise SystemExit("No se recuperó ninguna edición publicable")
