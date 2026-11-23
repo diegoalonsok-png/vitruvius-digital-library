@@ -13,6 +13,7 @@ los que no vuelven a generarse.
 Uso: python3 scripts/r2-subir-indice.py [--origen DIR]
 """
 import argparse, hashlib, json, os, sys, time, urllib.request
+from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -39,21 +40,34 @@ def main():
     s3 = boto3.client("s3", endpoint_url=ENDPOINT, region_name="auto",
                       aws_access_key_id=os.environ["R2_ACCESS_KEY_ID"],
                       aws_secret_access_key=os.environ["R2_SECRET_ACCESS_KEY"],
-                      config=Config(retries={"max_attempts": 8, "mode": "adaptive"},
+                      config=Config(max_pool_connections=8, retries={"max_attempts": 8, "mode": "adaptive"},
                                     request_checksum_calculation="when_required",
                                     response_checksum_validation="when_required"))
 
-    subidos, bytes_totales = 0, 0
-    for archivo in archivos:
+    # Cuatro transferencias paralelas evitan esperas por cada fragmento.
+    # El manifiesto público se publica al final: nunca anuncia lotes incompletos.
+    fragmentos = origen / "fragmentos.json"
+    if not fragmentos.is_file():
+        sys.exit("No existe fragmentos.json; no publicar un índice incompleto")
+
+    def subir(archivo):
         cuerpo = archivo.read_bytes()
         s3.put_object(Bucket=BUCKET, Key=PREFIJO + archivo.name, Body=cuerpo,
                       ContentType="application/json; charset=utf-8",
                       CacheControl="public, max-age=86400",
                       Metadata={"sha256": hashlib.sha256(cuerpo).hexdigest()})
-        subidos += 1
-        bytes_totales += len(cuerpo)
-        if subidos % 25 == 0:
-            print(f"  {subidos}/{len(archivos)} fragmentos")
+        return len(cuerpo)
+
+    subidos, bytes_totales = 0, 0
+    datos = [a for a in archivos if a.name != "fragmentos.json"]
+    with ThreadPoolExecutor(max_workers=4) as pool:
+        for tamano in pool.map(subir, datos):
+            subidos += 1
+            bytes_totales += tamano
+            if subidos % 25 == 0:
+                print(f"  {subidos}/{len(archivos)} fragmentos", flush=True)
+    bytes_totales += subir(fragmentos)
+    subidos += 1
 
     # Verificación desde el dominio público: el índice no sirve si no se lee.
     time.sleep(3)
