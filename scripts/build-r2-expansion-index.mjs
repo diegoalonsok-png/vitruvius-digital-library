@@ -37,7 +37,7 @@ if(incremental&&previousEditions.length){
  if(manifest.schema!=="vdl-classics-index-segments-v1"||!Array.isArray(manifest.segments)||
     manifest.works!==descriptor.works||manifest.works!==previousEditions.length)
   throw Error("Previous index/edition count mismatch");
- const base=descriptor.url.replace(/manifest\\.json$/,"");
+ const base=descriptor.url.slice(0,-"manifest.json".length);
  oldSegments=manifest.segments.map(segment=>{
   const path=segment.file;
   const absolute=/^https:\/\/libros\.vitruvius-digital-library\.org\/corpus\/indice\/ampliacion\/[a-f0-9]{24}\/segment-\d{4}\/manifest\.json$/.test(path);
