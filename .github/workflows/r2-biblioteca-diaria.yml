@@ -2,7 +2,7 @@ name: R2 — biblioteca clásica, tanda diaria
 
 # Cuatro tandas cada seis horas, de hasta 15 candidatos verificables cada una.
 # Evitar una ejecución ilimitada bloqueada por OCR o descargas de fuentes inaccesibles.
-# Todos los días: incorpora obras clásicas de dominio público que la biblioteca
+# Todos los días: incorpora ediciones reutilizables de clásicos grecolatinos que la biblioteca
 # todavía no tiene, les da ficha de repertorio, las indexa y recalcula los
 # contadores. Los PDF, su texto y los fragmentos del índice van SOLO a Cloudflare
 # R2; al repositorio entran únicamente los catálogos, las fichas y los
@@ -65,6 +65,7 @@ jobs:
         run: |
           python scripts/build_classics_semantic_index.py
           python scripts/check_classics_semantic_index_coverage.py
+          python scripts/test-r2-open-admission.py
 
       # La tanda siguiente se bloquea si el lector, la búsqueda semántica o
       # la integración de traducción fallan en las pruebas reproducibles.
