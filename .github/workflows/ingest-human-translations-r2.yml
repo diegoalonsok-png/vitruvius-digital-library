@@ -11,6 +11,9 @@ on:
     paths:
       - '.github/workflows/ingest-human-translations-r2.yml'
       - 'scripts/ingest-r2-human-translations.py'
+      # Al terminar una incorporación de originales, buscar de inmediato traducciones
+      # humanas de sus nuevas ediciones, sin esperar la próxima ejecución horaria.
+      - 'data/r2/classics-expansion-manifest.json'
       - 'scripts/check-bibliotheca-github-metadata-only.py'
       - 'scripts/test-bibliotheca-no-delete.py'
       - 'scripts/test-bibliotheca-versioning.py'
