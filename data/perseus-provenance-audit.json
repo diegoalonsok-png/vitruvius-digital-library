@@ -2,13 +2,13 @@
   "schema": "vitruvius-perseus-provenance-audit-v1",
   "generated": "2026-11-23",
   "scope": "Catálogo principal y ediciones TEI originales acreditadas y archivadas en R2; no certifica servicios externos",
-  "method": "Candidate PHI/TLG work codes are not CTS edition URNs. Source descriptions copied from the local index are claims to audit, not proof of an external canonical edition or an institutional link. No automatic CTS URNs or permanent URLs are invented. Incorporaciones R2: edición declarada en TEI fuente, SHA256, licencia y localizador comprobados; no se presume afiliación externa. Incorporaciones R2: edición declarada en TEI fuente, SHA256, licencia y localizador comprobados; no se presume afiliación externa. Incorporaciones R2: edición declarada en TEI fuente, SHA256, licencia y localizador comprobados; no se presume afiliación externa. Incorporaciones R2: edición declarada en TEI fuente, SHA256, licencia y localizador comprobados; no se presume afiliación externa. Incorporaciones R2: edición declarada en TEI fuente, SHA256, licencia y localizador comprobados; no se presume afiliación externa. Incorporaciones R2: edición declarada en TEI fuente, SHA256, licencia y localizador comprobados; no se presume afiliación externa. Incorporaciones R2: edición declarada en TEI fuente, SHA256, licencia y localizador comprobados; no se presume afiliación externa. Incorporaciones R2: edición declarada en TEI fuente, SHA256, licencia y localizador comprobados; no se presume afiliación externa. Incorporaciones R2: edición declarada en TEI fuente, SHA256, licencia y localizador comprobados; no se presume afiliación externa. Incorporaciones R2: edición declarada en TEI fuente, SHA256, licencia y localizador comprobados; no se presume afiliación externa. Incorporaciones R2: edición declarada en TEI fuente, SHA256, licencia y localizador comprobados; no se presume afiliación externa. Incorporaciones R2: edición declarada en TEI fuente, SHA256, licencia y localizador comprobados; no se presume afiliación externa. Incorporaciones R2: edición declarada en TEI fuente, SHA256, licencia y localizador comprobados; no se presume afiliación externa.",
+  "method": "Candidate PHI/TLG work codes are not CTS edition URNs. Source descriptions copied from the local index are claims to audit, not proof of an external canonical edition or an institutional link. No automatic CTS URNs or permanent URLs are invented. Incorporaciones R2: edición declarada en TEI fuente, SHA256, licencia y localizador comprobados; no se presume afiliación externa. Incorporaciones R2: edición declarada en TEI fuente, SHA256, licencia y localizador comprobados; no se presume afiliación externa. Incorporaciones R2: edición declarada en TEI fuente, SHA256, licencia y localizador comprobados; no se presume afiliación externa. Incorporaciones R2: edición declarada en TEI fuente, SHA256, licencia y localizador comprobados; no se presume afiliación externa. Incorporaciones R2: edición declarada en TEI fuente, SHA256, licencia y localizador comprobados; no se presume afiliación externa. Incorporaciones R2: edición declarada en TEI fuente, SHA256, licencia y localizador comprobados; no se presume afiliación externa. Incorporaciones R2: edición declarada en TEI fuente, SHA256, licencia y localizador comprobados; no se presume afiliación externa. Incorporaciones R2: edición declarada en TEI fuente, SHA256, licencia y localizador comprobados; no se presume afiliación externa. Incorporaciones R2: edición declarada en TEI fuente, SHA256, licencia y localizador comprobados; no se presume afiliación externa. Incorporaciones R2: edición declarada en TEI fuente, SHA256, licencia y localizador comprobados; no se presume afiliación externa. Incorporaciones R2: edición declarada en TEI fuente, SHA256, licencia y localizador comprobados; no se presume afiliación externa. Incorporaciones R2: edición declarada en TEI fuente, SHA256, licencia y localizador comprobados; no se presume afiliación externa. Incorporaciones R2: edición declarada en TEI fuente, SHA256, licencia y localizador comprobados; no se presume afiliación externa. Incorporaciones R2: edición declarada en TEI fuente, SHA256, licencia y localizador comprobados; no se presume afiliación externa.",
   "counts": {
-    "works": 413,
-    "worksWithCandidateWorkCodes": 321,
-    "versions": 388,
+    "works": 435,
+    "worksWithCandidateWorkCodes": 343,
+    "versions": 410,
     "worksWithPerseusSourceDescription": 142,
-    "verifiedEditionUrns": 143
+    "verifiedEditionUrns": 165
   },
   "links": {
     "scaife": "https://scaife.perseus.org/",
@@ -10575,6 +10575,688 @@
       "otherSourceEditions": [],
       "r2TextUrl": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0059-tlg005-grc-4831ff8292d4b9c3.json",
       "r2Sha256": "4831ff8292d4b9c3419c152cecf608faeb1cd55869ad36beaf32c2ad3bbacc0a",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "cts-tlg2018-tlg003",
+      "author": "Eusebio de Cesarea",
+      "title": "De Martyribus Palaestinae (Recensio Brevior)",
+      "originalLanguage": "grc",
+      "sourceReadiness": "original_r2_tei_publicado_con_sha256",
+      "originalIndexed": false,
+      "originalR2Registered": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "tlg2018.tlg003"
+      ],
+      "versions": [
+        {
+          "language": "grc",
+          "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg2018-tlg003-grc-eabae5aabdc81f66.json",
+          "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "reader": "classics-text-reader.html?work=cts-tlg2018-tlg003&lang=grc&edition=eabae5aabdc81f66"
+        }
+      ],
+      "ctsEditionUrn": "urn:cts:greekLit:tlg2018.tlg003.1st1K-grc1",
+      "ctsStatus": "declared_and_checked_in_source_tei_header",
+      "ctsSourceUri": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg2018/tlg003/tlg2018.tlg003.1st1K-grc1.xml",
+      "ctsEvidence": "TEI XML original, div[@type=edition]/@n, edición y SHA256 verificados mediante fuente R2: 45b9f9365f15cc3854a8643ada9f25c55ba418613605826dc1194f1f30e36057",
+      "ctsNote": "URN de edición declarada en TEI; no implica resolución CTS pública ni cotejo de manuscritos.",
+      "sourceRights": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "otherSourceEditions": [],
+      "r2TextUrl": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg2018-tlg003-grc-eabae5aabdc81f66.json",
+      "r2Sha256": "eabae5aabdc81f664c6bc635db1222973fd8f5a17d4cc47627666c5181f09c10",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "cts-tlg1805-tlg009",
+      "author": "Vidas de Homero",
+      "title": "Eustathii vita",
+      "originalLanguage": "grc",
+      "sourceReadiness": "original_r2_tei_publicado_con_sha256",
+      "originalIndexed": false,
+      "originalR2Registered": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "tlg1805.tlg009"
+      ],
+      "versions": [
+        {
+          "language": "grc",
+          "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg1805-tlg009-grc-e380dba123401826.json",
+          "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "reader": "classics-text-reader.html?work=cts-tlg1805-tlg009&lang=grc&edition=e380dba123401826"
+        }
+      ],
+      "ctsEditionUrn": "urn:cts:greekLit:tlg1805.tlg009.1st1K-grc1",
+      "ctsStatus": "declared_and_checked_in_source_tei_header",
+      "ctsSourceUri": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg1805/tlg009/tlg1805.tlg009.1st1K-grc1.xml",
+      "ctsEvidence": "TEI XML original, div[@type=edition]/@n, edición y SHA256 verificados mediante fuente R2: dfa4e4d25fd6b95633c2b6e8d3561d3e0d6c829d2bf9c081b29752ba60442c79",
+      "ctsNote": "URN de edición declarada en TEI; no implica resolución CTS pública ni cotejo de manuscritos.",
+      "sourceRights": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "otherSourceEditions": [],
+      "r2TextUrl": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg1805-tlg009-grc-e380dba123401826.json",
+      "r2Sha256": "e380dba12340182667196a20dea923d4395026f417ea27462287f894757547d3",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "cts-tlg2018-tlg005",
+      "author": "Eusebio de Cesarea",
+      "title": "Demonstratio Evangelica",
+      "originalLanguage": "grc",
+      "sourceReadiness": "original_r2_tei_publicado_con_sha256",
+      "originalIndexed": false,
+      "originalR2Registered": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "tlg2018.tlg005"
+      ],
+      "versions": [
+        {
+          "language": "grc",
+          "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg2018-tlg005-grc-a513f2744c2df054.json",
+          "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "reader": "classics-text-reader.html?work=cts-tlg2018-tlg005&lang=grc&edition=a513f2744c2df054"
+        }
+      ],
+      "ctsEditionUrn": "urn:cts:greekLit:tlg2018.tlg005.1st1K-grc1",
+      "ctsStatus": "declared_and_checked_in_source_tei_header",
+      "ctsSourceUri": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg2018/tlg005/tlg2018.tlg005.1st1K-grc1.xml",
+      "ctsEvidence": "TEI XML original, div[@type=edition]/@n, edición y SHA256 verificados mediante fuente R2: d2659e57c90a0f77a6bc16951b16fc6d3b66aa13ded143af01b8d17d00d50414",
+      "ctsNote": "URN de edición declarada en TEI; no implica resolución CTS pública ni cotejo de manuscritos.",
+      "sourceRights": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "otherSourceEditions": [],
+      "r2TextUrl": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg2018-tlg005-grc-a513f2744c2df054.json",
+      "r2Sha256": "a513f2744c2df05464134175bf7778210fc381604ade85acf17fe5906bb97a1d",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "cts-tlg2018-tlg007",
+      "author": "Eusebio de Cesarea",
+      "title": "Contra Marcellum",
+      "originalLanguage": "grc",
+      "sourceReadiness": "original_r2_tei_publicado_con_sha256",
+      "originalIndexed": false,
+      "originalR2Registered": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "tlg2018.tlg007"
+      ],
+      "versions": [
+        {
+          "language": "grc",
+          "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg2018-tlg007-grc-a1a7a41bdad3f7b1.json",
+          "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "reader": "classics-text-reader.html?work=cts-tlg2018-tlg007&lang=grc&edition=a1a7a41bdad3f7b1"
+        }
+      ],
+      "ctsEditionUrn": "urn:cts:greekLit:tlg2018.tlg007.1st1K-grc1",
+      "ctsStatus": "declared_and_checked_in_source_tei_header",
+      "ctsSourceUri": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg2018/tlg007/tlg2018.tlg007.1st1K-grc1.xml",
+      "ctsEvidence": "TEI XML original, div[@type=edition]/@n, edición y SHA256 verificados mediante fuente R2: 83a88b3a33d0a448b48822772c25fb8ea868dd7f174334a2e96c13261d5588ed",
+      "ctsNote": "URN de edición declarada en TEI; no implica resolución CTS pública ni cotejo de manuscritos.",
+      "sourceRights": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "otherSourceEditions": [],
+      "r2TextUrl": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg2018-tlg007-grc-a1a7a41bdad3f7b1.json",
+      "r2Sha256": "a1a7a41bdad3f7b19cd925db548da4d411f6c7a9fd5b15885832d5ab0b0e1797",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "cts-tlg2018-tlg008",
+      "author": "Eusebio de Cesarea",
+      "title": "Epistula ad Flacillum",
+      "originalLanguage": "grc",
+      "sourceReadiness": "original_r2_tei_publicado_con_sha256",
+      "originalIndexed": false,
+      "originalR2Registered": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "tlg2018.tlg008"
+      ],
+      "versions": [
+        {
+          "language": "grc",
+          "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg2018-tlg008-grc-dd355ebf46ace7a6.json",
+          "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "reader": "classics-text-reader.html?work=cts-tlg2018-tlg008&lang=grc&edition=dd355ebf46ace7a6"
+        }
+      ],
+      "ctsEditionUrn": "urn:cts:greekLit:tlg2018.tlg008.1st1K-grc1",
+      "ctsStatus": "declared_and_checked_in_source_tei_header",
+      "ctsSourceUri": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg2018/tlg008/tlg2018.tlg008.1st1K-grc1.xml",
+      "ctsEvidence": "TEI XML original, div[@type=edition]/@n, edición y SHA256 verificados mediante fuente R2: 38df7377f1adb9cff40dfa19da72ee1b32838e0fbb0fea8e00ead1febd21f704",
+      "ctsNote": "URN de edición declarada en TEI; no implica resolución CTS pública ni cotejo de manuscritos.",
+      "sourceRights": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "otherSourceEditions": [],
+      "r2TextUrl": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg2018-tlg008-grc-dd355ebf46ace7a6.json",
+      "r2Sha256": "dd355ebf46ace7a621e4e07f14b3cf5dc587cb1365b717135e30a989c377fe1f",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "cts-tlg2018-tlg001",
+      "author": "Eusebio de Cesarea",
+      "title": "Praeparatio Evangelica",
+      "originalLanguage": "grc",
+      "sourceReadiness": "original_r2_tei_publicado_con_sha256",
+      "originalIndexed": false,
+      "originalR2Registered": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "tlg2018.tlg001"
+      ],
+      "versions": [
+        {
+          "language": "grc",
+          "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg2018-tlg001-grc-b05e5524fabe5aea.json",
+          "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "reader": "classics-text-reader.html?work=cts-tlg2018-tlg001&lang=grc&edition=b05e5524fabe5aea"
+        }
+      ],
+      "ctsEditionUrn": "urn:cts:greekLit:tlg2018.tlg001.1st1K-grc1",
+      "ctsStatus": "declared_and_checked_in_source_tei_header",
+      "ctsSourceUri": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg2018/tlg001/tlg2018.tlg001.1st1K-grc1.xml",
+      "ctsEvidence": "TEI XML original, div[@type=edition]/@n, edición y SHA256 verificados mediante fuente R2: c90fcf7562fccc3cb34b853df777885135e8beae4002ab56cefe91a9378bbd26",
+      "ctsNote": "URN de edición declarada en TEI; no implica resolución CTS pública ni cotejo de manuscritos.",
+      "sourceRights": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "otherSourceEditions": [],
+      "r2TextUrl": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg2018-tlg001-grc-b05e5524fabe5aea.json",
+      "r2Sha256": "b05e5524fabe5aea21ab5ca1c0ecde8c717cc15a75f25737aa3ea40e7266f9d2",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "cts-tlg2018-tlg009",
+      "author": "Eusebio de Cesarea",
+      "title": "De Ecclesiastica Theologia",
+      "originalLanguage": "grc",
+      "sourceReadiness": "original_r2_tei_publicado_con_sha256",
+      "originalIndexed": false,
+      "originalR2Registered": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "tlg2018.tlg009"
+      ],
+      "versions": [
+        {
+          "language": "grc",
+          "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg2018-tlg009-grc-7ec6efea6957c293.json",
+          "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "reader": "classics-text-reader.html?work=cts-tlg2018-tlg009&lang=grc&edition=7ec6efea6957c293"
+        }
+      ],
+      "ctsEditionUrn": "urn:cts:greekLit:tlg2018.tlg009.1st1K-grc1",
+      "ctsStatus": "declared_and_checked_in_source_tei_header",
+      "ctsSourceUri": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg2018/tlg009/tlg2018.tlg009.1st1K-grc1.xml",
+      "ctsEvidence": "TEI XML original, div[@type=edition]/@n, edición y SHA256 verificados mediante fuente R2: 588499d6803dd3f1ad98bd0c563f3c9643751b2571a1785eac73686b94b9de3b",
+      "ctsNote": "URN de edición declarada en TEI; no implica resolución CTS pública ni cotejo de manuscritos.",
+      "sourceRights": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "otherSourceEditions": [],
+      "r2TextUrl": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg2018-tlg009-grc-7ec6efea6957c293.json",
+      "r2Sha256": "7ec6efea6957c293401c3c8c61241cf2a037943ae13102820e3c77281079cd6d",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "cts-tlg2018-tlg010",
+      "author": "Eusebio de Cesarea",
+      "title": "De Theophania (Fragmenta)",
+      "originalLanguage": "grc",
+      "sourceReadiness": "original_r2_tei_publicado_con_sha256",
+      "originalIndexed": false,
+      "originalR2Registered": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "tlg2018.tlg010"
+      ],
+      "versions": [
+        {
+          "language": "grc",
+          "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg2018-tlg010-grc-91e4a1f88989323f.json",
+          "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "reader": "classics-text-reader.html?work=cts-tlg2018-tlg010&lang=grc&edition=91e4a1f88989323f"
+        }
+      ],
+      "ctsEditionUrn": "urn:cts:greekLit:tlg2018.tlg010.1st1K-grc1",
+      "ctsStatus": "declared_and_checked_in_source_tei_header",
+      "ctsSourceUri": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg2018/tlg010/tlg2018.tlg010.1st1K-grc1.xml",
+      "ctsEvidence": "TEI XML original, div[@type=edition]/@n, edición y SHA256 verificados mediante fuente R2: 60857423b970c5592f7fe42db1168ac8a23211e4d37aea6c89caec151cf10ac8",
+      "ctsNote": "URN de edición declarada en TEI; no implica resolución CTS pública ni cotejo de manuscritos.",
+      "sourceRights": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "otherSourceEditions": [],
+      "r2TextUrl": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg2018-tlg010-grc-91e4a1f88989323f.json",
+      "r2Sha256": "91e4a1f88989323fc1a6c734ef3faaa41278cc5a13da1c8e4f06842b9a95ac15",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "cts-tlg2018-tlg011",
+      "author": "Eusebio de Cesarea",
+      "title": "Onomasticon",
+      "originalLanguage": "grc",
+      "sourceReadiness": "original_r2_tei_publicado_con_sha256",
+      "originalIndexed": false,
+      "originalR2Registered": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "tlg2018.tlg011"
+      ],
+      "versions": [
+        {
+          "language": "grc",
+          "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg2018-tlg011-grc-861db347acc61ed9.json",
+          "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "reader": "classics-text-reader.html?work=cts-tlg2018-tlg011&lang=grc&edition=861db347acc61ed9"
+        }
+      ],
+      "ctsEditionUrn": "urn:cts:greekLit:tlg2018.tlg011.1st1K-grc1",
+      "ctsStatus": "declared_and_checked_in_source_tei_header",
+      "ctsSourceUri": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg2018/tlg011/tlg2018.tlg011.1st1K-grc1.xml",
+      "ctsEvidence": "TEI XML original, div[@type=edition]/@n, edición y SHA256 verificados mediante fuente R2: 22ed67f3ba9d69c468b2f68ffe71ab8351b2b6eba0cafa273b9a2d1538fb0a1a",
+      "ctsNote": "URN de edición declarada en TEI; no implica resolución CTS pública ni cotejo de manuscritos.",
+      "sourceRights": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "otherSourceEditions": [],
+      "r2TextUrl": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg2018-tlg011-grc-861db347acc61ed9.json",
+      "r2Sha256": "861db347acc61ed9a6da1793087a33870a5fab12ffe123b964eeecb951fccb96",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "cts-tlg2018-tlg020",
+      "author": "Eusebio de Cesarea",
+      "title": "Vita Constantini",
+      "originalLanguage": "grc",
+      "sourceReadiness": "original_r2_tei_publicado_con_sha256",
+      "originalIndexed": false,
+      "originalR2Registered": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "tlg2018.tlg020"
+      ],
+      "versions": [
+        {
+          "language": "grc",
+          "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg2018-tlg020-grc-f6e7fac4848cce36.json",
+          "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "reader": "classics-text-reader.html?work=cts-tlg2018-tlg020&lang=grc&edition=f6e7fac4848cce36"
+        }
+      ],
+      "ctsEditionUrn": "urn:cts:greekLit:tlg2018.tlg020.1st1K-grc1",
+      "ctsStatus": "declared_and_checked_in_source_tei_header",
+      "ctsSourceUri": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg2018/tlg020/tlg2018.tlg020.1st1K-grc1.xml",
+      "ctsEvidence": "TEI XML original, div[@type=edition]/@n, edición y SHA256 verificados mediante fuente R2: 1de5b204e5cf24773690120bc67a022706ff3d6f241df06e34ed58911a0abf7b",
+      "ctsNote": "URN de edición declarada en TEI; no implica resolución CTS pública ni cotejo de manuscritos.",
+      "sourceRights": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "otherSourceEditions": [],
+      "r2TextUrl": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg2018-tlg020-grc-f6e7fac4848cce36.json",
+      "r2Sha256": "f6e7fac4848cce36ab966a431d784620ed76bea14ddae800e1953d446efbd862",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "cts-tlg2018-tlg021",
+      "author": "Eusebio de Cesarea",
+      "title": "Constantini imperatoris oratio ad coetum sanctorum",
+      "originalLanguage": "grc",
+      "sourceReadiness": "original_r2_tei_publicado_con_sha256",
+      "originalIndexed": false,
+      "originalR2Registered": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "tlg2018.tlg021"
+      ],
+      "versions": [
+        {
+          "language": "grc",
+          "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg2018-tlg021-grc-2b999546b690b18b.json",
+          "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "reader": "classics-text-reader.html?work=cts-tlg2018-tlg021&lang=grc&edition=2b999546b690b18b"
+        }
+      ],
+      "ctsEditionUrn": "urn:cts:greekLit:tlg2018.tlg021.1st1K-grc1",
+      "ctsStatus": "declared_and_checked_in_source_tei_header",
+      "ctsSourceUri": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg2018/tlg021/tlg2018.tlg021.1st1K-grc1.xml",
+      "ctsEvidence": "TEI XML original, div[@type=edition]/@n, edición y SHA256 verificados mediante fuente R2: 18a6a0f67fa56fbae28891a18a02178d527cbb879c827343c916776555d82164",
+      "ctsNote": "URN de edición declarada en TEI; no implica resolución CTS pública ni cotejo de manuscritos.",
+      "sourceRights": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "otherSourceEditions": [],
+      "r2TextUrl": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg2018-tlg021-grc-2b999546b690b18b.json",
+      "r2Sha256": "2b999546b690b18b998c16391dd3c0ad54c56f34efb898bdf13b67c3ca4406c9",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "cts-tlg2018-tlg022",
+      "author": "Eusebio de Cesarea",
+      "title": "De Laudibus Constantini",
+      "originalLanguage": "grc",
+      "sourceReadiness": "original_r2_tei_publicado_con_sha256",
+      "originalIndexed": false,
+      "originalR2Registered": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "tlg2018.tlg022"
+      ],
+      "versions": [
+        {
+          "language": "grc",
+          "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg2018-tlg022-grc-065ffb736fca1b9a.json",
+          "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "reader": "classics-text-reader.html?work=cts-tlg2018-tlg022&lang=grc&edition=065ffb736fca1b9a"
+        }
+      ],
+      "ctsEditionUrn": "urn:cts:greekLit:tlg2018.tlg022.1st1K-grc1",
+      "ctsStatus": "declared_and_checked_in_source_tei_header",
+      "ctsSourceUri": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg2018/tlg022/tlg2018.tlg022.1st1K-grc1.xml",
+      "ctsEvidence": "TEI XML original, div[@type=edition]/@n, edición y SHA256 verificados mediante fuente R2: f0b1d84e9774fcef7295bd2c347c2b620d37dfb070c97928e60555ee12b2adc1",
+      "ctsNote": "URN de edición declarada en TEI; no implica resolución CTS pública ni cotejo de manuscritos.",
+      "sourceRights": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "otherSourceEditions": [],
+      "r2TextUrl": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg2018-tlg022-grc-065ffb736fca1b9a.json",
+      "r2Sha256": "065ffb736fca1b9af21602d2d5b41de333e4b644a8524d9eb0103a40bcaa499a",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "cts-tlg2040-tlg002",
+      "author": "Basilio de Cesarea",
+      "title": "De legendis gentilium libris",
+      "originalLanguage": "grc",
+      "sourceReadiness": "original_r2_tei_publicado_con_sha256",
+      "originalIndexed": false,
+      "originalR2Registered": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "tlg2040.tlg002"
+      ],
+      "versions": [
+        {
+          "language": "grc",
+          "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg2040-tlg002-grc-b215d710078d06df.json",
+          "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "reader": "classics-text-reader.html?work=cts-tlg2040-tlg002&lang=grc&edition=b215d710078d06df"
+        }
+      ],
+      "ctsEditionUrn": "urn:cts:greekLit:tlg2040.tlg002.perseus-grc2",
+      "ctsStatus": "declared_and_checked_in_source_tei_header",
+      "ctsSourceUri": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg2040/tlg002/tlg2040.tlg002.perseus-grc2.xml",
+      "ctsEvidence": "TEI XML original, div[@type=edition]/@n, edición y SHA256 verificados mediante fuente R2: 9e74e36e4e769a8f386ad38d20d6f4946859e1e0a60d6de64181a269f7f06b07",
+      "ctsNote": "URN de edición declarada en TEI; no implica resolución CTS pública ni cotejo de manuscritos.",
+      "sourceRights": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "otherSourceEditions": [],
+      "r2TextUrl": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg2040-tlg002-grc-b215d710078d06df.json",
+      "r2Sha256": "b215d710078d06df058a3266414285d871e5e2023ab756e6f5a768c2e89cbd5d",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "cts-tlg2018-tlg023",
+      "author": "Eusebio de Cesarea",
+      "title": "Generalis elementaria introductio (= Eclogae propheticae)",
+      "originalLanguage": "grc",
+      "sourceReadiness": "original_r2_tei_publicado_con_sha256",
+      "originalIndexed": false,
+      "originalR2Registered": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "tlg2018.tlg023"
+      ],
+      "versions": [
+        {
+          "language": "grc",
+          "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg2018-tlg023-grc-9fe1369f27c4cf84.json",
+          "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "reader": "classics-text-reader.html?work=cts-tlg2018-tlg023&lang=grc&edition=9fe1369f27c4cf84"
+        }
+      ],
+      "ctsEditionUrn": "urn:cts:greekLit:tlg2018.tlg023.1st1K-grc1",
+      "ctsStatus": "declared_and_checked_in_source_tei_header",
+      "ctsSourceUri": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg2018/tlg023/tlg2018.tlg023.1st1K-grc1.xml",
+      "ctsEvidence": "TEI XML original, div[@type=edition]/@n, edición y SHA256 verificados mediante fuente R2: 980ca1968013e032ce89b0930f0d8124c5b68f68f8f3ffbdf699e8e9e5a68fc3",
+      "ctsNote": "URN de edición declarada en TEI; no implica resolución CTS pública ni cotejo de manuscritos.",
+      "sourceRights": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "otherSourceEditions": [],
+      "r2TextUrl": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg2018-tlg023-grc-9fe1369f27c4cf84.json",
+      "r2Sha256": "9fe1369f27c4cf84b2b00a8f24206452d62d557f78c8b4abb84375da79b8202f",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "cts-tlg0061-tlg004",
+      "author": "Pseudo-Luciano",
+      "title": "Halcyon",
+      "originalLanguage": "grc",
+      "sourceReadiness": "original_r2_tei_publicado_con_sha256",
+      "originalIndexed": false,
+      "originalR2Registered": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "tlg0061.tlg004"
+      ],
+      "versions": [
+        {
+          "language": "grc",
+          "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0061-tlg004-grc-fb4d543adf68fe8f.json",
+          "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "reader": "classics-text-reader.html?work=cts-tlg0061-tlg004&lang=grc&edition=fb4d543adf68fe8f"
+        }
+      ],
+      "ctsEditionUrn": "urn:cts:greekLit:tlg0061.tlg004.1st1K-grc1",
+      "ctsStatus": "declared_and_checked_in_source_tei_header",
+      "ctsSourceUri": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0061/tlg004/tlg0061.tlg004.1st1K-grc1.xml",
+      "ctsEvidence": "TEI XML original, div[@type=edition]/@n, edición y SHA256 verificados mediante fuente R2: ff08bc8d7ca32550a1f56020f56bcb31ccd53aa7f730822eed6cd884408f0732",
+      "ctsNote": "URN de edición declarada en TEI; no implica resolución CTS pública ni cotejo de manuscritos.",
+      "sourceRights": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "otherSourceEditions": [],
+      "r2TextUrl": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0061-tlg004-grc-fb4d543adf68fe8f.json",
+      "r2Sha256": "fb4d543adf68fe8fb123b5d26277c8bd54b35816ae0b75466bc352a8b3a5e74a",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "cts-tlg0061-tlg005",
+      "author": "Pseudo-Luciano",
+      "title": "Ocypus",
+      "originalLanguage": "grc",
+      "sourceReadiness": "original_r2_tei_publicado_con_sha256",
+      "originalIndexed": false,
+      "originalR2Registered": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "tlg0061.tlg005"
+      ],
+      "versions": [
+        {
+          "language": "grc",
+          "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0061-tlg005-grc-b22213682cbbffab.json",
+          "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "reader": "classics-text-reader.html?work=cts-tlg0061-tlg005&lang=grc&edition=b22213682cbbffab"
+        }
+      ],
+      "ctsEditionUrn": "urn:cts:greekLit:tlg0061.tlg005.1st1K-grc1",
+      "ctsStatus": "declared_and_checked_in_source_tei_header",
+      "ctsSourceUri": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0061/tlg005/tlg0061.tlg005.1st1K-grc1.xml",
+      "ctsEvidence": "TEI XML original, div[@type=edition]/@n, edición y SHA256 verificados mediante fuente R2: 8de4320b5cdf270b9585ea5b0a67c3c4f50818bfa184a228d972e7b6811ac3a3",
+      "ctsNote": "URN de edición declarada en TEI; no implica resolución CTS pública ni cotejo de manuscritos.",
+      "sourceRights": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "otherSourceEditions": [],
+      "r2TextUrl": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0061-tlg005-grc-b22213682cbbffab.json",
+      "r2Sha256": "b22213682cbbffab25a8e73224856cf2b86c3fa478fb794df9bdf3f4099bf357",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "cts-tlg2040-tlg004",
+      "author": "Basilio de Cesarea",
+      "title": "Epistulae",
+      "originalLanguage": "grc",
+      "sourceReadiness": "original_r2_tei_publicado_con_sha256",
+      "originalIndexed": false,
+      "originalR2Registered": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "tlg2040.tlg004"
+      ],
+      "versions": [
+        {
+          "language": "grc",
+          "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg2040-tlg004-grc-cedcd59f6565097a.json",
+          "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "reader": "classics-text-reader.html?work=cts-tlg2040-tlg004&lang=grc&edition=cedcd59f6565097a"
+        }
+      ],
+      "ctsEditionUrn": "urn:cts:greekLit:tlg2040.tlg004.perseus-grc2",
+      "ctsStatus": "declared_and_checked_in_source_tei_header",
+      "ctsSourceUri": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg2040/tlg004/tlg2040.tlg004.perseus-grc2.xml",
+      "ctsEvidence": "TEI XML original, div[@type=edition]/@n, edición y SHA256 verificados mediante fuente R2: ed12ff2a5d6d76b3a9d61fcd2df76ef428000c3f3d21c9d68e80515823bc53d9",
+      "ctsNote": "URN de edición declarada en TEI; no implica resolución CTS pública ni cotejo de manuscritos.",
+      "sourceRights": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "otherSourceEditions": [],
+      "r2TextUrl": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg2040-tlg004-grc-cedcd59f6565097a.json",
+      "r2Sha256": "cedcd59f6565097a9eef937df591b6166dc3d85954b083e7a6f8cf8c5c8590e4",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "cts-tlg0061-tlg006",
+      "author": "Pseudo-Luciano",
+      "title": "Cynicus",
+      "originalLanguage": "grc",
+      "sourceReadiness": "original_r2_tei_publicado_con_sha256",
+      "originalIndexed": false,
+      "originalR2Registered": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "tlg0061.tlg006"
+      ],
+      "versions": [
+        {
+          "language": "grc",
+          "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0061-tlg006-grc-2444b0c61be977a0.json",
+          "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "reader": "classics-text-reader.html?work=cts-tlg0061-tlg006&lang=grc&edition=2444b0c61be977a0"
+        }
+      ],
+      "ctsEditionUrn": "urn:cts:greekLit:tlg0061.tlg006.1st1K-grc1",
+      "ctsStatus": "declared_and_checked_in_source_tei_header",
+      "ctsSourceUri": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0061/tlg006/tlg0061.tlg006.1st1K-grc1.xml",
+      "ctsEvidence": "TEI XML original, div[@type=edition]/@n, edición y SHA256 verificados mediante fuente R2: 968daa3c4fd4fcb7ec5a53b9be247e62fe79d93617c1205d6d3862c83af1773a",
+      "ctsNote": "URN de edición declarada en TEI; no implica resolución CTS pública ni cotejo de manuscritos.",
+      "sourceRights": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "otherSourceEditions": [],
+      "r2TextUrl": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0061-tlg006-grc-2444b0c61be977a0.json",
+      "r2Sha256": "2444b0c61be977a0553e0a615ffe1792fd289a3072b496c704d06b1fba4b62b5",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "cts-tlg0061-tlg008",
+      "author": "Pseudo-Luciano",
+      "title": "Charidemus",
+      "originalLanguage": "grc",
+      "sourceReadiness": "original_r2_tei_publicado_con_sha256",
+      "originalIndexed": false,
+      "originalR2Registered": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "tlg0061.tlg008"
+      ],
+      "versions": [
+        {
+          "language": "grc",
+          "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0061-tlg008-grc-97d268369f1f79ba.json",
+          "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "reader": "classics-text-reader.html?work=cts-tlg0061-tlg008&lang=grc&edition=97d268369f1f79ba"
+        }
+      ],
+      "ctsEditionUrn": "urn:cts:greekLit:tlg0061.tlg008.1st1K-grc1",
+      "ctsStatus": "declared_and_checked_in_source_tei_header",
+      "ctsSourceUri": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0061/tlg008/tlg0061.tlg008.1st1K-grc1.xml",
+      "ctsEvidence": "TEI XML original, div[@type=edition]/@n, edición y SHA256 verificados mediante fuente R2: 44be51cc59ee706bacb04f0bde9fb0c430e4288a138ae3d2ae786d155894ed17",
+      "ctsNote": "URN de edición declarada en TEI; no implica resolución CTS pública ni cotejo de manuscritos.",
+      "sourceRights": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "otherSourceEditions": [],
+      "r2TextUrl": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0061-tlg008-grc-97d268369f1f79ba.json",
+      "r2Sha256": "97d268369f1f79bae131a98d46ac17d99ef35d6e60297cfe31aa63e221023555",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "cts-tlg0061-tlg007",
+      "author": "Pseudo-Luciano",
+      "title": "Philopatris",
+      "originalLanguage": "grc",
+      "sourceReadiness": "original_r2_tei_publicado_con_sha256",
+      "originalIndexed": false,
+      "originalR2Registered": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "tlg0061.tlg007"
+      ],
+      "versions": [
+        {
+          "language": "grc",
+          "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0061-tlg007-grc-ce4dc8273f8fe819.json",
+          "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "reader": "classics-text-reader.html?work=cts-tlg0061-tlg007&lang=grc&edition=ce4dc8273f8fe819"
+        }
+      ],
+      "ctsEditionUrn": "urn:cts:greekLit:tlg0061.tlg007.1st1K-grc1",
+      "ctsStatus": "declared_and_checked_in_source_tei_header",
+      "ctsSourceUri": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0061/tlg007/tlg0061.tlg007.1st1K-grc1.xml",
+      "ctsEvidence": "TEI XML original, div[@type=edition]/@n, edición y SHA256 verificados mediante fuente R2: 8cba60d8cdd35cf975168ea50a7a7da68759932a5cca833070e83dd51623543e",
+      "ctsNote": "URN de edición declarada en TEI; no implica resolución CTS pública ni cotejo de manuscritos.",
+      "sourceRights": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "otherSourceEditions": [],
+      "r2TextUrl": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0061-tlg007-grc-ce4dc8273f8fe819.json",
+      "r2Sha256": "ce4dc8273f8fe8199cc7379295ea0f3317103be51600fbb26f834b7274f8c7e7",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "cts-tlg2138-tlg001",
+      "author": "Canticum Euripidis",
+      "title": "Ex Orestis Stasimo I",
+      "originalLanguage": "grc",
+      "sourceReadiness": "original_r2_tei_publicado_con_sha256",
+      "originalIndexed": false,
+      "originalR2Registered": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "tlg2138.tlg001"
+      ],
+      "versions": [
+        {
+          "language": "grc",
+          "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg2138-tlg001-grc-949c0cfcbfd8b4ba.json",
+          "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "reader": "classics-text-reader.html?work=cts-tlg2138-tlg001&lang=grc&edition=949c0cfcbfd8b4ba"
+        }
+      ],
+      "ctsEditionUrn": "urn:cts:greekLit:tlg2138.tlg001.1st1K-grc1",
+      "ctsStatus": "declared_and_checked_in_source_tei_header",
+      "ctsSourceUri": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg2138/tlg001/tlg2138.tlg001.1st1K-grc1.xml",
+      "ctsEvidence": "TEI XML original, div[@type=edition]/@n, edición y SHA256 verificados mediante fuente R2: aa5c1af885c516844728669b038cc33996d614ae5fea530a0cfa66edabea3659",
+      "ctsNote": "URN de edición declarada en TEI; no implica resolución CTS pública ni cotejo de manuscritos.",
+      "sourceRights": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "otherSourceEditions": [],
+      "r2TextUrl": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg2138-tlg001-grc-949c0cfcbfd8b4ba.json",
+      "r2Sha256": "949c0cfcbfd8b4ba4be95fc397ade988c0ac8e17d2b2d9248d8526015ef690db",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "cts-tlg0062-tlg001",
+      "author": "Luciano de Samósata",
+      "title": "Phalaris",
+      "originalLanguage": "grc",
+      "sourceReadiness": "original_r2_tei_publicado_con_sha256",
+      "originalIndexed": false,
+      "originalR2Registered": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "tlg0062.tlg001"
+      ],
+      "versions": [
+        {
+          "language": "grc",
+          "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg001-grc-5a31676d0243490e.json",
+          "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "reader": "classics-text-reader.html?work=cts-tlg0062-tlg001&lang=grc&edition=5a31676d0243490e"
+        }
+      ],
+      "ctsEditionUrn": "urn:cts:greekLit:tlg0062.tlg001.perseus-grc2",
+      "ctsStatus": "declared_and_checked_in_source_tei_header",
+      "ctsSourceUri": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0062/tlg001/tlg0062.tlg001.perseus-grc2.xml",
+      "ctsEvidence": "TEI XML original, div[@type=edition]/@n, edición y SHA256 verificados mediante fuente R2: 92cd254311b1f77941ccd17c04f364146460aa89f184654c7cb914c6164e9d3a",
+      "ctsNote": "URN de edición declarada en TEI; no implica resolución CTS pública ni cotejo de manuscritos.",
+      "sourceRights": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "otherSourceEditions": [],
+      "r2TextUrl": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg001-grc-5a31676d0243490e.json",
+      "r2Sha256": "5a31676d0243490e453aa5e0819f5abf005e53d0ac9058bb2471c75c3db2ca61",
       "perseusAffiliation": false
     }
   ]

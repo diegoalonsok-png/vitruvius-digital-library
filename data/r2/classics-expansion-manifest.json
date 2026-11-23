@@ -1,10 +1,10 @@
 {
  "schema": "vdl-classics-expansion-manifest-v1",
- "generated": "2026-11-23T05:19:17.722184+00:00",
+ "generated": "2026-11-23T07:45:05.512813+00:00",
  "discovery": {
-  "sourceRecords": 1853,
-  "alreadyIndexedCatalogueWorks": 246,
-  "pendingGroups": 1761,
+  "sourceRecords": 1830,
+  "alreadyIndexedCatalogueWorks": 269,
+  "pendingGroups": 1738,
   "policy": "Una obra bibliográfica, múltiples ediciones identificadas por URN y hash; sin sustituir ni duplicar archivos",
   "githubTextFiles": 450,
   "githubUnregisteredFiles": 14,
@@ -11309,6 +11309,933 @@
    "characters": 107764,
    "bytes": 334143,
    "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0059-tlg005-grc-4831ff8292d4b9c3.json"
+  },
+  {
+   "workId": "cts-tlg2018-tlg003",
+   "author": "Eusebio de Cesarea",
+   "title": "De Martyribus Palaestinae (Recensio Brevior)",
+   "language": "grc",
+   "dating": "Principios del siglo IV d. C.",
+   "sources": [
+    {
+     "title": "De Martyribus Palaestinae (Recensio Brevior)",
+     "titleLanguage": "lat",
+     "author": "Eusebius",
+     "editors": [
+      "Wilhelm Dindorf"
+     ],
+     "bibliography": "Eusebii Caesariensis Opera Wilhelm Dindorf Eusebius Teubner Leipzig 1871 4 Internet Archive",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg2018.tlg003.1st1K-grc1",
+     "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg2018/tlg003/tlg2018.tlg003.1st1K-grc1.xml",
+     "sourceSha256": "45b9f9365f15cc3854a8643ada9f25c55ba418613605826dc1194f1f30e36057",
+     "sourceReferences": [
+      "https://archive.org/details/opera00callgoog"
+     ],
+     "publicationYear": "1871",
+     "publisher": "Teubner",
+     "publicationPlace": "Leipzig",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/45b9f9365f15cc3854a8643ada9f25c55ba418613605826dc1194f1f30e36057.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-tlg2018-tlg003-grc-eabae5aabdc81f66.json",
+   "sha256": "eabae5aabdc81f664c6bc635db1222973fd8f5a17d4cc47627666c5181f09c10",
+   "passages": 131,
+   "characters": 52265,
+   "bytes": 127906,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg2018-tlg003-grc-eabae5aabdc81f66.json"
+  },
+  {
+   "workId": "cts-tlg1805-tlg009",
+   "author": "Vidas de Homero",
+   "title": "Eustathii vita",
+   "language": "grc",
+   "dating": "época imperial",
+   "sources": [
+    {
+     "title": "Eustathii vita",
+     "titleLanguage": "lat",
+     "author": "Vitae Homeri",
+     "editors": [
+      "Thomas W. Allen"
+     ],
+     "bibliography": "Homeri Opera Thomas W. Allen Oxford Clarendon Press 1912 5 Internet Archive",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg1805.tlg009.1st1K-grc1",
+     "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg1805/tlg009/tlg1805.tlg009.1st1K-grc1.xml",
+     "sourceSha256": "dfa4e4d25fd6b95633c2b6e8d3561d3e0d6c829d2bf9c081b29752ba60442c79",
+     "sourceReferences": [
+      "https://archive.org/details/homeriopera05home/page/254/mode/2up"
+     ],
+     "publicationYear": "1912",
+     "publisher": "Clarendon Press",
+     "publicationPlace": "Oxford",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/dfa4e4d25fd6b95633c2b6e8d3561d3e0d6c829d2bf9c081b29752ba60442c79.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-tlg1805-tlg009-grc-e380dba123401826.json",
+   "sha256": "e380dba12340182667196a20dea923d4395026f417ea27462287f894757547d3",
+   "passages": 2,
+   "characters": 637,
+   "bytes": 3382,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg1805-tlg009-grc-e380dba123401826.json"
+  },
+  {
+   "workId": "cts-tlg2018-tlg005",
+   "author": "Eusebio de Cesarea",
+   "title": "Demonstratio Evangelica",
+   "language": "grc",
+   "dating": "Principios del siglo IV d. C.",
+   "sources": [
+    {
+     "title": "Demonstratio Evangelica",
+     "titleLanguage": "lat",
+     "author": "Eusebius",
+     "editors": [
+      "Wilhelm Dindorf"
+     ],
+     "bibliography": "Eusebii Caesariensis Opera Wilhelm Dindorf Eusebius Teubner Leipzig 1867 3 Internet Archive",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg2018.tlg005.1st1K-grc1",
+     "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg2018/tlg005/tlg2018.tlg005.1st1K-grc1.xml",
+     "sourceSha256": "d2659e57c90a0f77a6bc16951b16fc6d3b66aa13ded143af01b8d17d00d50414",
+     "sourceReferences": [
+      "https://archive.org/details/operaeusebius03euseuoft"
+     ],
+     "publicationYear": "1867",
+     "publisher": "Teubner",
+     "publicationPlace": "Leipzig",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/d2659e57c90a0f77a6bc16951b16fc6d3b66aa13ded143af01b8d17d00d50414.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-tlg2018-tlg005-grc-a513f2744c2df054.json",
+   "sha256": "a513f2744c2df05464134175bf7778210fc381604ade85acf17fe5906bb97a1d",
+   "passages": 2743,
+   "characters": 973375,
+   "bytes": 2397654,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg2018-tlg005-grc-a513f2744c2df054.json"
+  },
+  {
+   "workId": "cts-tlg2018-tlg007",
+   "author": "Eusebio de Cesarea",
+   "title": "Contra Marcellum",
+   "language": "grc",
+   "dating": "Principios del siglo IV d. C.",
+   "sources": [
+    {
+     "title": "των κατά Μαρκέλλου",
+     "titleLanguage": "grc",
+     "author": "Eusebius of Caesarea",
+     "editors": [
+      "Erich Klostermann"
+     ],
+     "bibliography": "Eusebius Werke Eusebius Erich Klostermann Leipzig J. C. Hinrichs 1906 4 Internet Archive",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg2018.tlg007.1st1K-grc1",
+     "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg2018/tlg007/tlg2018.tlg007.1st1K-grc1.xml",
+     "sourceSha256": "83a88b3a33d0a448b48822772c25fb8ea868dd7f174334a2e96c13261d5588ed",
+     "sourceReferences": [
+      "https://archive.org/details/eusebiuswerke04euse/page/n35/mode/2up"
+     ],
+     "publicationYear": "1906",
+     "publisher": "J. C. Hinrichs",
+     "publicationPlace": "Leipzig",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/83a88b3a33d0a448b48822772c25fb8ea868dd7f174334a2e96c13261d5588ed.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-tlg2018-tlg007-grc-a1a7a41bdad3f7b1.json",
+   "sha256": "a1a7a41bdad3f7b19cd925db548da4d411f6c7a9fd5b15885832d5ab0b0e1797",
+   "passages": 293,
+   "characters": 112770,
+   "bytes": 269262,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg2018-tlg007-grc-a1a7a41bdad3f7b1.json"
+  },
+  {
+   "workId": "cts-tlg2018-tlg008",
+   "author": "Eusebio de Cesarea",
+   "title": "Epistula ad Flacillum",
+   "language": "grc",
+   "dating": "Principios del siglo IV d. C.",
+   "sources": [
+    {
+     "title": "Epistula ad Flacillum",
+     "titleLanguage": "lat",
+     "author": "Eusebius of Caesarea",
+     "editors": [
+      "Erich Klostermann"
+     ],
+     "bibliography": "Eusebius Werke Eusebius Erich Klostermann Leipzig J. C. Hinrichs 1906 4 Internet Archive",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg2018.tlg008.1st1K-grc1",
+     "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg2018/tlg008/tlg2018.tlg008.1st1K-grc1.xml",
+     "sourceSha256": "38df7377f1adb9cff40dfa19da72ee1b32838e0fbb0fea8e00ead1febd21f704",
+     "sourceReferences": [
+      "https://archive.org/details/eusebiuswerke04euse/page/60/mode/2up"
+     ],
+     "publicationYear": "1906",
+     "publisher": "J. C. Hinrichs",
+     "publicationPlace": "Leipzig",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/38df7377f1adb9cff40dfa19da72ee1b32838e0fbb0fea8e00ead1febd21f704.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-tlg2018-tlg008-grc-dd355ebf46ace7a6.json",
+   "sha256": "dd355ebf46ace7a621e4e07f14b3cf5dc587cb1365b717135e30a989c377fe1f",
+   "passages": 3,
+   "characters": 1173,
+   "bytes": 4655,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg2018-tlg008-grc-dd355ebf46ace7a6.json"
+  },
+  {
+   "workId": "cts-tlg2018-tlg001",
+   "author": "Eusebio de Cesarea",
+   "title": "Praeparatio Evangelica",
+   "language": "grc",
+   "dating": "Principios del siglo IV d. C.",
+   "sources": [
+    {
+     "title": "Praeperatio Evangelica",
+     "titleLanguage": "lat",
+     "author": "Eusebius",
+     "editors": [
+      "Wilhelm Dindorf"
+     ],
+     "bibliography": "Eusebii Caesaerensis Opera Wilhelm Dindorf Eusebius Teubner Leipzig 1867 1-2 Internet Archive (vol. i.) Internet Archive (vol. ii.)",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg2018.tlg001.1st1K-grc1",
+     "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg2018/tlg001/tlg2018.tlg001.1st1K-grc1.xml",
+     "sourceSha256": "c90fcf7562fccc3cb34b853df777885135e8beae4002ab56cefe91a9378bbd26",
+     "sourceReferences": [
+      "https://archive.org/details/opera02callgoog",
+      "https://archive.org/details/operaeusebius02euseuoft"
+     ],
+     "publicationYear": "1867",
+     "publisher": "Teubner",
+     "publicationPlace": "Leipzig",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/c90fcf7562fccc3cb34b853df777885135e8beae4002ab56cefe91a9378bbd26.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-tlg2018-tlg001-grc-b05e5524fabe5aea.json",
+   "sha256": "b05e5524fabe5aea21ab5ca1c0ecde8c717cc15a75f25737aa3ea40e7266f9d2",
+   "passages": 5022,
+   "characters": 1437796,
+   "bytes": 3693522,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg2018-tlg001-grc-b05e5524fabe5aea.json"
+  },
+  {
+   "workId": "cts-tlg2018-tlg009",
+   "author": "Eusebio de Cesarea",
+   "title": "De Ecclesiastica Theologia",
+   "language": "grc",
+   "dating": "Principios del siglo IV d. C.",
+   "sources": [
+    {
+     "title": "περὶ τῆς ἐκκλησιαστικῆς θεολογίας",
+     "titleLanguage": "grc",
+     "author": "Eusebius of Caesarea",
+     "editors": [
+      "Erich Klostermann"
+     ],
+     "bibliography": "Eusebius Werke Eusebius Erich Klostermann Leipzig J. C. Hinrichs 1906 4 Internet Archive",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg2018.tlg009.1st1K-grc1",
+     "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg2018/tlg009/tlg2018.tlg009.1st1K-grc1.xml",
+     "sourceSha256": "588499d6803dd3f1ad98bd0c563f3c9643751b2571a1785eac73686b94b9de3b",
+     "sourceReferences": [
+      "https://archive.org/details/eusebiuswerke04euse/page/61/mode/1up"
+     ],
+     "publicationYear": "1906",
+     "publisher": "J. C. Hinrichs",
+     "publicationPlace": "Leipzig",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/588499d6803dd3f1ad98bd0c563f3c9643751b2571a1785eac73686b94b9de3b.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-tlg2018-tlg009-grc-7ec6efea6957c293.json",
+   "sha256": "7ec6efea6957c293401c3c8c61241cf2a037943ae13102820e3c77281079cd6d",
+   "passages": 588,
+   "characters": 248802,
+   "bytes": 585678,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg2018-tlg009-grc-7ec6efea6957c293.json"
+  },
+  {
+   "workId": "cts-tlg2018-tlg010",
+   "author": "Eusebio de Cesarea",
+   "title": "De Theophania (Fragmenta)",
+   "language": "grc",
+   "dating": "Principios del siglo IV d. C.",
+   "sources": [
+    {
+     "title": "De Theophania (Fragmenta)",
+     "titleLanguage": "lat",
+     "author": "Eusebius",
+     "editors": [
+      "Hugo Gressmann"
+     ],
+     "bibliography": "Eusebius Werke Hugo Gressmann Eusebius J. C. Hinrichs'Sche Buchhandlung Leipzig 1904 3.2 Internet Archive",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg2018.tlg010.1st1K-grc1",
+     "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg2018/tlg010/tlg2018.tlg010.1st1K-grc1.xml",
+     "sourceSha256": "60857423b970c5592f7fe42db1168ac8a23211e4d37aea6c89caec151cf10ac8",
+     "sourceReferences": [
+      "https://archive.org/details/p1eusebiuswer03euse/page/n279/mode/2up"
+     ],
+     "publicationYear": "1904",
+     "publisher": "J. C. Hinrichs'Sche Buchhandlung",
+     "publicationPlace": "Leipzig",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/60857423b970c5592f7fe42db1168ac8a23211e4d37aea6c89caec151cf10ac8.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-tlg2018-tlg010-grc-91e4a1f88989323f.json",
+   "sha256": "91e4a1f88989323fc1a6c734ef3faaa41278cc5a13da1c8e4f06842b9a95ac15",
+   "passages": 34,
+   "characters": 52125,
+   "bytes": 111090,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg2018-tlg010-grc-91e4a1f88989323f.json"
+  },
+  {
+   "workId": "cts-tlg2018-tlg011",
+   "author": "Eusebio de Cesarea",
+   "title": "Onomasticon",
+   "language": "grc",
+   "dating": "Principios del siglo IV d. C.",
+   "sources": [
+    {
+     "title": "Onomasticon",
+     "titleLanguage": "lat",
+     "author": "Eusebius",
+     "editors": [
+      "Erich Klostermann"
+     ],
+     "bibliography": "Eusebius Werke Erich Klostermann Eusebius J. C. Hinrichs'sche Buchhandlung Leipzig 1904 3.1 Internet Archive",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg2018.tlg011.1st1K-grc1",
+     "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg2018/tlg011/tlg2018.tlg011.1st1K-grc1.xml",
+     "sourceSha256": "22ed67f3ba9d69c468b2f68ffe71ab8351b2b6eba0cafa273b9a2d1538fb0a1a",
+     "sourceReferences": [
+      "https://archive.org/details/p1eusebiuswer03euse/page/n39/mode/2up"
+     ],
+     "publicationYear": "1904",
+     "publisher": "J. C. Hinrichs'sche Buchhandlung",
+     "publicationPlace": "Leipzig",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/22ed67f3ba9d69c468b2f68ffe71ab8351b2b6eba0cafa273b9a2d1538fb0a1a.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-tlg2018-tlg011-grc-861db347acc61ed9.json",
+   "sha256": "861db347acc61ed9a6da1793087a33870a5fab12ffe123b964eeecb951fccb96",
+   "passages": 1077,
+   "characters": 106273,
+   "bytes": 366590,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg2018-tlg011-grc-861db347acc61ed9.json"
+  },
+  {
+   "workId": "cts-tlg2018-tlg020",
+   "author": "Eusebio de Cesarea",
+   "title": "Vita Constantini",
+   "language": "grc",
+   "dating": "Principios del siglo IV d. C.",
+   "sources": [
+    {
+     "title": "Vita Constantini",
+     "titleLanguage": "lat",
+     "author": "Eusebius",
+     "editors": [
+      "Ivar A. Heikel"
+     ],
+     "bibliography": "Eusebius Werke Ivar A. Heikel Eusebius J.C.Hinrichs'sche Buchhandlung Leipzig 1902 1 Internet Archive",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg2018.tlg020.1st1K-grc1",
+     "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg2018/tlg020/tlg2018.tlg020.1st1K-grc1.xml",
+     "sourceSha256": "1de5b204e5cf24773690120bc67a022706ff3d6f241df06e34ed58911a0abf7b",
+     "sourceReferences": [
+      "https://archive.org/details/eusebiuswerke01euse/page/n113/mode/2up"
+     ],
+     "publicationYear": "1902",
+     "publisher": "J.C.Hinrichs'sche Buchhandlung",
+     "publicationPlace": "Leipzig",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/1de5b204e5cf24773690120bc67a022706ff3d6f241df06e34ed58911a0abf7b.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-tlg2018-tlg020-grc-f6e7fac4848cce36.json",
+   "sha256": "f6e7fac4848cce36ab966a431d784620ed76bea14ddae800e1953d446efbd862",
+   "passages": 820,
+   "characters": 256703,
+   "bytes": 644710,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg2018-tlg020-grc-f6e7fac4848cce36.json"
+  },
+  {
+   "workId": "cts-tlg2018-tlg021",
+   "author": "Eusebio de Cesarea",
+   "title": "Constantini imperatoris oratio ad coetum sanctorum",
+   "language": "grc",
+   "dating": "Principios del siglo IV d. C.",
+   "sources": [
+    {
+     "title": "Constantini imperatoris oratio ad coetum sanctorum",
+     "titleLanguage": "lat",
+     "author": "Eusebius",
+     "editors": [
+      "Ivar A. Heikel"
+     ],
+     "bibliography": "Eusebius Werke Ivar A. Heikel Eusebius J.C.Hinrichs'Sche Buchhandlung Leipzig 1902 1 Internet Archive",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg2018.tlg021.1st1K-grc1",
+     "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg2018/tlg021/tlg2018.tlg021.1st1K-grc1.xml",
+     "sourceSha256": "18a6a0f67fa56fbae28891a18a02178d527cbb879c827343c916776555d82164",
+     "sourceReferences": [
+      "https://archive.org/details/eusebiuswerke01euse/page/148/mode/2up"
+     ],
+     "publicationYear": "1902",
+     "publisher": "J.C.Hinrichs'Sche Buchhandlung",
+     "publicationPlace": "Leipzig",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/18a6a0f67fa56fbae28891a18a02178d527cbb879c827343c916776555d82164.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-tlg2018-tlg021-grc-2b999546b690b18b.json",
+   "sha256": "2b999546b690b18b998c16391dd3c0ad54c56f34efb898bdf13b67c3ca4406c9",
+   "passages": 160,
+   "characters": 74919,
+   "bytes": 176939,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg2018-tlg021-grc-2b999546b690b18b.json"
+  },
+  {
+   "workId": "cts-tlg2018-tlg022",
+   "author": "Eusebio de Cesarea",
+   "title": "De Laudibus Constantini",
+   "language": "grc",
+   "dating": "Principios del siglo IV d. C.",
+   "sources": [
+    {
+     "title": "De laudibus Constantini",
+     "titleLanguage": "lat",
+     "author": "Eusebius",
+     "editors": [
+      "Ivar A. Heikel"
+     ],
+     "bibliography": "Eusebius Werke Ivar A. Heikel Eusebius J.C.Hinrichs'sche Buchhandlung Leipzig 1902 1 Internet Archive",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg2018.tlg022.1st1K-grc1",
+     "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg2018/tlg022/tlg2018.tlg022.1st1K-grc1.xml",
+     "sourceSha256": "f0b1d84e9774fcef7295bd2c347c2b620d37dfb070c97928e60555ee12b2adc1",
+     "sourceReferences": [
+      "https://archive.org/details/eusebiuswerke01euse/page/192/mode/2up"
+     ],
+     "publicationYear": "1902",
+     "publisher": "J.C.Hinrichs'sche Buchhandlung",
+     "publicationPlace": "Leipzig",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/f0b1d84e9774fcef7295bd2c347c2b620d37dfb070c97928e60555ee12b2adc1.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-tlg2018-tlg022-grc-065ffb736fca1b9a.json",
+   "sha256": "065ffb736fca1b9af21602d2d5b41de333e4b644a8524d9eb0103a40bcaa499a",
+   "passages": 253,
+   "characters": 125550,
+   "bytes": 294004,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg2018-tlg022-grc-065ffb736fca1b9a.json"
+  },
+  {
+   "workId": "cts-tlg2040-tlg002",
+   "author": "Basilio de Cesarea",
+   "title": "De legendis gentilium libris",
+   "language": "grc",
+   "dating": "330–379 d. C.",
+   "sources": [
+    {
+     "title": "Πρὸς τοὺς νέους, ὅπως ἂν ἐξ Ἑλληνικῶν ὠφελοῖντο λόγων",
+     "titleLanguage": "grc",
+     "author": "Basil, Saint, Bishop of Caesarea",
+     "editors": [
+      "Roy J. Deferrari"
+     ],
+     "bibliography": "The Letters Saint Basil Roy J. Deferrari William Heinemann London Harvard University Press Cambridge, MA 1934 4 Loeb Classical Library Internet Archive",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg2040.tlg002.perseus-grc2",
+     "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg2040/tlg002/tlg2040.tlg002.perseus-grc2.xml",
+     "sourceSha256": "9e74e36e4e769a8f386ad38d20d6f4946859e1e0a60d6de64181a269f7f06b07",
+     "sourceReferences": [
+      "https://archive.org/details/letterswithengli04basiuoft/page/378/mode/2up"
+     ],
+     "publicationYear": "1934",
+     "publisher": "William Heinemann",
+     "publicationPlace": "London",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/9e74e36e4e769a8f386ad38d20d6f4946859e1e0a60d6de64181a269f7f06b07.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-tlg2040-tlg002-grc-b215d710078d06df.json",
+   "sha256": "b215d710078d06df058a3266414285d871e5e2023ab756e6f5a768c2e89cbd5d",
+   "passages": 108,
+   "characters": 29604,
+   "bytes": 77430,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg2040-tlg002-grc-b215d710078d06df.json"
+  },
+  {
+   "workId": "cts-tlg2018-tlg023",
+   "author": "Eusebio de Cesarea",
+   "title": "Generalis elementaria introductio (= Eclogae propheticae)",
+   "language": "grc",
+   "dating": "Principios del siglo IV d. C.",
+   "sources": [
+    {
+     "title": "Generalis elementaria introductio (= Eclogae propheticae)",
+     "titleLanguage": "lat",
+     "author": "Eusebius",
+     "editors": [
+      "Thomas Gaisford"
+     ],
+     "bibliography": "Eusebii Pamphili Episcopi Caesariensis Eclogae Propheticae Eusebius of Caesarea Thomas Gaisford Oxford University Press Oxford 1842 Internet Archive HathiTrust",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg2018.tlg023.1st1K-grc1",
+     "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg2018/tlg023/tlg2018.tlg023.1st1K-grc1.xml",
+     "sourceSha256": "980ca1968013e032ce89b0930f0d8124c5b68f68f8f3ffbdf699e8e9e5a68fc3",
+     "sourceReferences": [
+      "https://archive.org/details/eusebiuseclogaepropheticae/page/n6/mode/1up",
+      "https://hdl.handle.net/2027/hvd.hwm3fm"
+     ],
+     "publicationYear": "1842",
+     "publisher": "Oxford University Press",
+     "publicationPlace": "Oxford",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/980ca1968013e032ce89b0930f0d8124c5b68f68f8f3ffbdf699e8e9e5a68fc3.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-tlg2018-tlg023-grc-9fe1369f27c4cf84.json",
+   "sha256": "9fe1369f27c4cf84b2b00a8f24206452d62d557f78c8b4abb84375da79b8202f",
+   "passages": 343,
+   "characters": 319201,
+   "bytes": 683177,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg2018-tlg023-grc-9fe1369f27c4cf84.json"
+  },
+  {
+   "workId": "cts-tlg0061-tlg004",
+   "author": "Pseudo-Luciano",
+   "title": "Halcyon",
+   "language": "grc",
+   "dating": "época imperial",
+   "sources": [
+    {
+     "title": "Ἀλκυών",
+     "titleLanguage": "grc",
+     "author": "Pseudo-Lucian",
+     "editors": [
+      "Karl Jacobitz"
+     ],
+     "bibliography": "Luciani Samosatensis Opera Lucian Karl Jacobitz Teubner Leipzig 1909 1 Internet Archive",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg0061.tlg004.1st1K-grc1",
+     "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0061/tlg004/tlg0061.tlg004.1st1K-grc1.xml",
+     "sourceSha256": "ff08bc8d7ca32550a1f56020f56bcb31ccd53aa7f730822eed6cd884408f0732",
+     "sourceReferences": [
+      "https://archive.org/details/operaexrecogniti01luciuoft/page/58/mode/2up"
+     ],
+     "publicationYear": "1909",
+     "publisher": "Teubner",
+     "publicationPlace": "Leipzig",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/ff08bc8d7ca32550a1f56020f56bcb31ccd53aa7f730822eed6cd884408f0732.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-tlg0061-tlg004-grc-fb4d543adf68fe8f.json",
+   "sha256": "fb4d543adf68fe8fb123b5d26277c8bd54b35816ae0b75466bc352a8b3a5e74a",
+   "passages": 15,
+   "characters": 5778,
+   "bytes": 15476,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0061-tlg004-grc-fb4d543adf68fe8f.json"
+  },
+  {
+   "workId": "cts-tlg0061-tlg005",
+   "author": "Pseudo-Luciano",
+   "title": "Ocypus",
+   "language": "grc",
+   "dating": "época imperial",
+   "sources": [
+    {
+     "title": "Ὠκύπους",
+     "titleLanguage": "grc",
+     "author": "Pseudo-Lucian",
+     "editors": [
+      "Karl Jacobitz"
+     ],
+     "bibliography": "Luciani Samosatensis Opera Lucian Karl Jacobitz Teubner Leipzig 1913 3 Internet Archive",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg0061.tlg005.1st1K-grc1",
+     "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0061/tlg005/tlg0061.tlg005.1st1K-grc1.xml",
+     "sourceSha256": "8de4320b5cdf270b9585ea5b0a67c3c4f50818bfa184a228d972e7b6811ac3a3",
+     "sourceReferences": [],
+     "publicationYear": "1913",
+     "publisher": "Teubner",
+     "publicationPlace": "Leipzig",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/8de4320b5cdf270b9585ea5b0a67c3c4f50818bfa184a228d972e7b6811ac3a3.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-tlg0061-tlg005-grc-b22213682cbbffab.json",
+   "sha256": "b22213682cbbffab25a8e73224856cf2b86c3fa478fb794df9bdf3f4099bf357",
+   "passages": 47,
+   "characters": 7429,
+   "bytes": 23516,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0061-tlg005-grc-b22213682cbbffab.json"
+  },
+  {
+   "workId": "cts-tlg2040-tlg004",
+   "author": "Basilio de Cesarea",
+   "title": "Epistulae",
+   "language": "grc",
+   "dating": "330–379 d. C.",
+   "sources": [
+    {
+     "title": "Epistulae",
+     "titleLanguage": "lat",
+     "author": "Basil, Saint, Bishop of Caesarea",
+     "editors": [
+      "Roy J. Deferrari"
+     ],
+     "bibliography": "The Letters Saint Basil Roy J. Deferrari William Heinemann London Harvard University Press Cambridge, MA 1926-1934 1-4 Loeb Classical Library Internet Archive Internet Archive Hathi Trust Internet Archive",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg2040.tlg004.perseus-grc2",
+     "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg2040/tlg004/tlg2040.tlg004.perseus-grc2.xml",
+     "sourceSha256": "ed12ff2a5d6d76b3a9d61fcd2df76ef428000c3f3d21c9d68e80515823bc53d9",
+     "sourceReferences": [
+      "https://archive.org/details/letterswithengli01basiuoft/page/2/mode/2up",
+      "https://archive.org/details/letterswithengli02basiuoft/page/n17/mode/2up",
+      "https://babel.hathitrust.org/cgi/pt?id=uc1.32106011513097&seq=22",
+      "https://archive.org/details/letterswithengli04basiuoft/page/n19/mode/2up"
+     ],
+     "publicationYear": "1926-1934",
+     "publisher": "William Heinemann",
+     "publicationPlace": "London",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/ed12ff2a5d6d76b3a9d61fcd2df76ef428000c3f3d21c9d68e80515823bc53d9.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-tlg2040-tlg004-grc-cedcd59f6565097a.json",
+   "sha256": "cedcd59f6565097a9eef937df591b6166dc3d85954b083e7a6f8cf8c5c8590e4",
+   "passages": 1403,
+   "characters": 869688,
+   "bytes": 1932375,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg2040-tlg004-grc-cedcd59f6565097a.json"
+  },
+  {
+   "workId": "cts-tlg0061-tlg006",
+   "author": "Pseudo-Luciano",
+   "title": "Cynicus",
+   "language": "grc",
+   "dating": "época imperial",
+   "sources": [
+    {
+     "title": "Κυνικός",
+     "titleLanguage": "grc",
+     "author": "Pseudo-Lucian",
+     "editors": [
+      "Karl Jacobitz"
+     ],
+     "bibliography": "Luciani Samosatensis Opera Lucian Karl Jacobitz Teubner Leipzig 1913 3 Internet Archive",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg0061.tlg006.1st1K-grc1",
+     "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0061/tlg006/tlg0061.tlg006.1st1K-grc1.xml",
+     "sourceSha256": "968daa3c4fd4fcb7ec5a53b9be247e62fe79d93617c1205d6d3862c83af1773a",
+     "sourceReferences": [
+      "https://archive.org/details/operaexrecogniti03luciuoft/page/392/mode/2up"
+     ],
+     "publicationYear": "1913",
+     "publisher": "Teubner",
+     "publicationPlace": "Leipzig",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/968daa3c4fd4fcb7ec5a53b9be247e62fe79d93617c1205d6d3862c83af1773a.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-tlg0061-tlg006-grc-2444b0c61be977a0.json",
+   "sha256": "2444b0c61be977a0553e0a615ffe1792fd289a3072b496c704d06b1fba4b62b5",
+   "passages": 66,
+   "characters": 15093,
+   "bytes": 41588,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0061-tlg006-grc-2444b0c61be977a0.json"
+  },
+  {
+   "workId": "cts-tlg0061-tlg008",
+   "author": "Pseudo-Luciano",
+   "title": "Charidemus",
+   "language": "grc",
+   "dating": "época imperial",
+   "sources": [
+    {
+     "title": "Χαρίδημος ἢ Περὶ Κάλλους",
+     "titleLanguage": "grc",
+     "author": "Pseudo-Lucian",
+     "editors": [
+      "Karl Jacobitz"
+     ],
+     "bibliography": "Luciani Samosatensis Opera Lucian Karl Jacobitz Teubner Leipzig 1913 3 Internet Archive",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg0061.tlg008.1st1K-grc1",
+     "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0061/tlg008/tlg0061.tlg008.1st1K-grc1.xml",
+     "sourceSha256": "44be51cc59ee706bacb04f0bde9fb0c430e4288a138ae3d2ae786d155894ed17",
+     "sourceReferences": [
+      "https://archive.org/details/operaexrecogniti03luciuoft/page/424/mode/2up"
+     ],
+     "publicationYear": "1913",
+     "publisher": "Teubner",
+     "publicationPlace": "Leipzig",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/44be51cc59ee706bacb04f0bde9fb0c430e4288a138ae3d2ae786d155894ed17.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-tlg0061-tlg008-grc-97d268369f1f79ba.json",
+   "sha256": "97d268369f1f79bae131a98d46ac17d99ef35d6e60297cfe31aa63e221023555",
+   "passages": 38,
+   "characters": 22147,
+   "bytes": 51322,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0061-tlg008-grc-97d268369f1f79ba.json"
+  },
+  {
+   "workId": "cts-tlg0061-tlg007",
+   "author": "Pseudo-Luciano",
+   "title": "Philopatris",
+   "language": "grc",
+   "dating": "época imperial",
+   "sources": [
+    {
+     "title": "Φιλόπατρις ἢ Διδασκόμενος",
+     "titleLanguage": "grc",
+     "author": "Pseudo-Lucian",
+     "editors": [
+      "Karl Jacobitz"
+     ],
+     "bibliography": "Luciani Samosatensis Opera Lucian Karl Jacobitz Teubner Leipzig 1913 3 Internet Archive",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg0061.tlg007.1st1K-grc1",
+     "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0061/tlg007/tlg0061.tlg007.1st1K-grc1.xml",
+     "sourceSha256": "8cba60d8cdd35cf975168ea50a7a7da68759932a5cca833070e83dd51623543e",
+     "sourceReferences": [
+      "https://archive.org/details/operaexrecogniti03luciuoft/page/410/mode/2up"
+     ],
+     "publicationYear": "1913",
+     "publisher": "Teubner",
+     "publicationPlace": "Leipzig",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/8cba60d8cdd35cf975168ea50a7a7da68759932a5cca833070e83dd51623543e.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-tlg0061-tlg007-grc-ce4dc8273f8fe819.json",
+   "sha256": "ce4dc8273f8fe8199cc7379295ea0f3317103be51600fbb26f834b7274f8c7e7",
+   "passages": 88,
+   "characters": 21215,
+   "bytes": 57015,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0061-tlg007-grc-ce4dc8273f8fe819.json"
+  },
+  {
+   "workId": "cts-tlg2138-tlg001",
+   "author": "Canticum Euripidis",
+   "title": "Ex Orestis Stasimo I",
+   "language": "grc",
+   "dating": "",
+   "sources": [
+    {
+     "title": "Ex Orestis Stasimo I",
+     "titleLanguage": "lat",
+     "author": "Canticum Euripidis",
+     "editors": [
+      "Karl von Jan"
+     ],
+     "bibliography": "Musici scriptores Graeci Karl von Jan Canticum Euripidis Teubner Leipzig 1895 Internet Archive",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg2138.tlg001.1st1K-grc1",
+     "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg2138/tlg001/tlg2138.tlg001.1st1K-grc1.xml",
+     "sourceSha256": "aa5c1af885c516844728669b038cc33996d614ae5fea530a0cfa66edabea3659",
+     "sourceReferences": [
+      "https://archive.org/details/bub_gb_Q_gkcPDBpAYC/page/n533/mode/2up"
+     ],
+     "publicationYear": "1895",
+     "publisher": "Teubner",
+     "publicationPlace": "Leipzig",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/aa5c1af885c516844728669b038cc33996d614ae5fea530a0cfa66edabea3659.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-tlg2138-tlg001-grc-949c0cfcbfd8b4ba.json",
+   "sha256": "949c0cfcbfd8b4ba4be95fc397ade988c0ac8e17d2b2d9248d8526015ef690db",
+   "passages": 3,
+   "characters": 261,
+   "bytes": 2796,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg2138-tlg001-grc-949c0cfcbfd8b4ba.json"
+  },
+  {
+   "workId": "cts-tlg0062-tlg001",
+   "author": "Luciano de Samósata",
+   "title": "Phalaris",
+   "language": "grc",
+   "dating": "c. 125–c. 180 d. C.",
+   "sources": [
+    {
+     "title": "Φάλαρις",
+     "titleLanguage": "grc",
+     "author": "Lucian of Samosata",
+     "editors": [
+      "Austin Morris Harmon"
+     ],
+     "bibliography": "Lucian Lucian Austin Morris Harmon London William Heinemann Ltd. Cambridge, MA Harvard University Press 1913 1 Loeb Classical Library Internet Archive",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg0062.tlg001.perseus-grc2",
+     "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0062/tlg001/tlg0062.tlg001.perseus-grc2.xml",
+     "sourceSha256": "92cd254311b1f77941ccd17c04f364146460aa89f184654c7cb914c6164e9d3a",
+     "sourceReferences": [
+      "https://archive.org/details/lucianha01luciuoft/page/n19/mode/2up"
+     ],
+     "publicationYear": "1913",
+     "publisher": "William Heinemann Ltd.",
+     "publicationPlace": "London",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/92cd254311b1f77941ccd17c04f364146460aa89f184654c7cb914c6164e9d3a.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-tlg0062-tlg001-grc-5a31676d0243490e.json",
+   "sha256": "5a31676d0243490e453aa5e0819f5abf005e53d0ac9058bb2471c75c3db2ca61",
+   "passages": 28,
+   "characters": 18200,
+   "bytes": 42228,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg001-grc-5a31676d0243490e.json"
   }
  ],
  "githubPreserved": [
@@ -14514,16 +15441,23 @@
  ],
  "deferred": [
   {
-   "workId": "cts-stoa0045-stoa008",
+   "workId": "cts-tlg1805-tlg010",
    "sources": [
-    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/stoa0045/stoa008/stoa0045.stoa008.perseus-lat2.xml"
+    "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg1805/tlg010/tlg1805.tlg010.1st1K-grc1.xml"
+   ],
+   "reason": "Lengua TEI discrepante o sin acreditar: la"
+  },
+  {
+   "workId": "cts-stoa0045-stoa010",
+   "sources": [
+    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/stoa0045/stoa010/stoa0045.stoa010.perseus-lat2.xml"
    ],
    "reason": "Sin licencia abierta explícita admisible en la cabecera TEI"
   },
   {
-   "workId": "cts-stoa0045-stoa009",
+   "workId": "cts-stoa0045-stoa011",
    "sources": [
-    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/stoa0045/stoa009/stoa0045.stoa009.perseus-lat2.xml"
+    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/stoa0045/stoa011/stoa0045.stoa011.perseus-lat2.xml"
    ],
    "reason": "Sin licencia abierta explícita admisible en la cabecera TEI"
   }
