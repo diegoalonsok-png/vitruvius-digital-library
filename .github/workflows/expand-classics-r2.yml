@@ -21,6 +21,7 @@ on:
     paths:
       - '.github/workflows/expand-classics-r2.yml'
       - 'scripts/expand-classics-r2.py'
+      - 'assets/classics-lexical-index.js'
       - 'scripts/check-bibliotheca-github-metadata-only.py'
       - 'scripts/test-bibliotheca-no-delete.py'
       - 'scripts/test-bibliotheca-versioning.py'
@@ -45,6 +46,7 @@ jobs:
       R2_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
       R2_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
       R2_BUCKET: ${{ secrets.R2_BUCKET }}
+      R2_INDEX_INCREMENTAL: '1'
     steps:
       - uses: actions/checkout@v4
         with:
@@ -71,11 +73,20 @@ jobs:
           node scripts/audit-classical-corpus.mjs
       - name: Incorporar todo original admisible y preservar textos de GitHub
         run: python -u scripts/expand-classics-r2.py --publish --workers 4 --limit 12
-      - name: Construir y comprobar índice de pasajes en R2
+      - name: Identificar nuevas ediciones antes de indexar
+        id: nuevas
+        shell: bash
         run: |
-          node --max-old-space-size=11000 scripts/build-r2-expansion-index.mjs /tmp/vdl-classics-expansion
+          NUM=$(python -c 'import json; print(len(json.load(open("/tmp/vdl-classics-expansion/prepared.json"))["prepared"]))')
+          echo "cantidad=$NUM" >> "$GITHUB_OUTPUT"
+          echo "Ediciones nuevas acreditadas: $NUM; sin cambios no se reconstruye el índice."
+      - name: Construir y publicar sólo los segmentos nuevos del índice R2
+        if: steps.nuevas.outputs.cantidad != '0'
+        run: |
+          node --max-old-space-size=11000 scripts/build-r2-expansion-index.mjs /tmp/vdl-classics-expansion --incremental
           python scripts/publish-r2-expansion-index.py /tmp/vdl-classics-expansion
       - name: Actualizar desde el catálogo más reciente y publicar sólo referencias verificadas
+        if: steps.nuevas.outputs.cantidad != '0'
         shell: bash
         run: |
           set -euo pipefail
