@@ -1,6 +1,6 @@
 {
  "schema": "vdl-classics-translation-manifest-v1",
- "generated": "2026-11-23T00:10:29.739387+00:00",
+ "generated": "2026-11-23T00:32:20.465626+00:00",
  "method": "Traducciones humanas TEI licenciadas y publicadas en R2 con SHA-256, índice literal por pasaje, sin alineación automática",
  "editions": [
   {
@@ -94,6 +94,98 @@
    ],
    "indexUrl": "https://libros.vitruvius-digital-library.org/corpus/indice/traducciones/cts-tlg0062-tlg017-en-d647462bed7db630.json",
    "indexSha256": "d647462bed7db630ad642747e695d69f78930cc947dcc1e12112cc29f8763309"
+  },
+  {
+   "workId": "cts-tlg0012-tlg003",
+   "author": "Homero (autoría tradicional)",
+   "title": "Epigrams",
+   "language": "en",
+   "filename": "cts-tlg0012-tlg003-en-6b28bfb6e67740c1.json",
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0012-tlg003-en-6b28bfb6e67740c1.json",
+   "sha256": "6b28bfb6e67740c1b87ee956dd1b3fb16c9559d678c9bec421e72b5480aa8f94",
+   "passages": 109,
+   "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0012/tlg003/tlg0012.tlg003.perseus-eng1.xml",
+   "sourceUrn": "urn:cts:greekLit:tlg0012.tlg003.perseus-eng1",
+   "sourceSha256": "3f285b4b47a73db26bce2c2c3728b13297470e2466ae0fa44dbc269f82dabedc",
+   "sourceArchived": "https://libros.vitruvius-digital-library.org/corpus/fuentes/3f285b4b47a73db26bce2c2c3728b13297470e2466ae0fa44dbc269f82dabedc.xml",
+   "translators": [
+    "Hugh G. Evelyn-White"
+   ],
+   "publicationYear": 1914,
+   "license": [
+    "https://creativecommons.org/licenses/by-sa/4.0/"
+   ],
+   "indexUrl": "https://libros.vitruvius-digital-library.org/corpus/indice/traducciones/cts-tlg0012-tlg003-en-ea7e288e115fb54f.json",
+   "indexSha256": "ea7e288e115fb54fad7f61984f1f950a773b5e4d16af173bbec2451a97b95c2e"
+  },
+  {
+   "workId": "cts-tlg0014-tlg001",
+   "author": "Demóstenes",
+   "title": "First Olynthiac",
+   "language": "en",
+   "filename": "cts-tlg0014-tlg001-en-d5a4467aa037aa22.json",
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0014-tlg001-en-d5a4467aa037aa22.json",
+   "sha256": "d5a4467aa037aa229638341054c4fdebd0ca73605b540faaf7b2179e206a7cae",
+   "passages": 28,
+   "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0014/tlg001/tlg0014.tlg001.perseus-eng2.xml",
+   "sourceUrn": "urn:cts:greekLit:tlg0014.tlg001.perseus-eng2",
+   "sourceSha256": "9a3f39afbefbf63657a4d1640ab305960186731a9ad84cb69924f171485b377e",
+   "sourceArchived": "https://libros.vitruvius-digital-library.org/corpus/fuentes/9a3f39afbefbf63657a4d1640ab305960186731a9ad84cb69924f171485b377e.xml",
+   "translators": [
+    "James Herbert Vince"
+   ],
+   "publicationYear": 1930,
+   "license": [
+    "https://creativecommons.org/licenses/by-sa/4.0/"
+   ],
+   "indexUrl": "https://libros.vitruvius-digital-library.org/corpus/indice/traducciones/cts-tlg0014-tlg001-en-45ab53223b7642ea.json",
+   "indexSha256": "45ab53223b7642ea7c79d189465e7be0d7dabc70795c9e20adf19766e4304102"
+  },
+  {
+   "workId": "cts-tlg0014-tlg002",
+   "author": "Demóstenes",
+   "title": "Second Olynthiac",
+   "language": "en",
+   "filename": "cts-tlg0014-tlg002-en-436838d637137cfd.json",
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0014-tlg002-en-436838d637137cfd.json",
+   "sha256": "436838d637137cfd05e4c4da7247b826b723a99d930d8fd3d0f52117b4d5fc73",
+   "passages": 31,
+   "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0014/tlg002/tlg0014.tlg002.perseus-eng2.xml",
+   "sourceUrn": "urn:cts:greekLit:tlg0014.tlg002.perseus-eng2",
+   "sourceSha256": "5187a4d98b5b1bb1b29210a9dee1888cc85f0e1e49f02e9d8c035205404b67ae",
+   "sourceArchived": "https://libros.vitruvius-digital-library.org/corpus/fuentes/5187a4d98b5b1bb1b29210a9dee1888cc85f0e1e49f02e9d8c035205404b67ae.xml",
+   "translators": [
+    "James Herbert Vince"
+   ],
+   "publicationYear": 1930,
+   "license": [
+    "https://creativecommons.org/licenses/by-sa/4.0/"
+   ],
+   "indexUrl": "https://libros.vitruvius-digital-library.org/corpus/indice/traducciones/cts-tlg0014-tlg002-en-db7e8507ce5ac7fe.json",
+   "indexSha256": "db7e8507ce5ac7feaca9277770a6f9ee181accce4645e25a5e0661decf9109f6"
+  },
+  {
+   "workId": "cts-tlg0014-tlg003",
+   "author": "Demóstenes",
+   "title": "Third Olynthiac",
+   "language": "en",
+   "filename": "cts-tlg0014-tlg003-en-c278621ae49e06c1.json",
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0014-tlg003-en-c278621ae49e06c1.json",
+   "sha256": "c278621ae49e06c17a18d793b6ef36818185d580334bb8eefa0aab5a58d59cbc",
+   "passages": 37,
+   "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0014/tlg003/tlg0014.tlg003.perseus-eng2.xml",
+   "sourceUrn": "urn:cts:greekLit:tlg0014.tlg003.perseus-eng2",
+   "sourceSha256": "4fbee6f970cb107d17e8dd77de690b3f3cad3d31cd6d50e3f7e18c965ad34e5c",
+   "sourceArchived": "https://libros.vitruvius-digital-library.org/corpus/fuentes/4fbee6f970cb107d17e8dd77de690b3f3cad3d31cd6d50e3f7e18c965ad34e5c.xml",
+   "translators": [
+    "James Herbert Vince"
+   ],
+   "publicationYear": 1930,
+   "license": [
+    "https://creativecommons.org/licenses/by-sa/4.0/"
+   ],
+   "indexUrl": "https://libros.vitruvius-digital-library.org/corpus/indice/traducciones/cts-tlg0014-tlg003-en-2b54a1382f2eba66.json",
+   "indexSha256": "2b54a1382f2eba666ef853c1d59be7b25140fd9c4d58213db92c7ddd915eebb9"
   }
  ],
  "lastDeferred": [
