@@ -450,7 +450,7 @@ def finalize(folder, root=ROOT):
                         and w.get("language") == lang]
             if matching: wid = matching[0]
         if (wid, lang, row["url"]) in entries: continue
-        reader = f"classics-text-reader.html?work={wid}&lang={lang}"
+        reader = f"classics-text-reader.html?work={wid}&lang={lang}&edition={row['sha256'][:16]}"
         summary = {k: row[k] for k in ("sources", "sha256", "passages", "characters", "bytes", "url")}
         if wid not in byid:
             byid[wid] = {"id": wid, "author": row["author"], "title": row["title"], "language": lang,
@@ -472,7 +472,7 @@ def finalize(folder, root=ROOT):
         w["publicStatus"] = "lectura-local-parcial"
         w.setdefault("indexedEdition", summary)
         entries[(wid, lang, row["url"])] = {"workId": wid, "author": w["author"], "title": w["title"], "language": lang, "format": "json-passages", "path": row["url"], "reader": reader,
-            "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente", "sha256": row["sha256"], "passages": row["passages"]}
+            "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente", "sourceUrn": row["sources"][0]["editionUrn"], "sha256": row["sha256"], "passages": row["passages"]}
     cat["works"] = list(byid.values())
     reg["entries"] = sorted(entries.values(), key=lambda e: (e["workId"], e["language"], e["path"]))
     reg["count"] = len(entries); reg["works"] = len({e["workId"] for e in entries.values()}); reg["updated"] = datetime.now(timezone.utc).date().isoformat()
