@@ -4,26 +4,26 @@
   "basis": "Cálculo a partir de works[] y search-registry.json. Los campos de compatibilidad locallyIndexedWorks y localEditionLanguages incluyen índices registrados en R2. originalIndexed y verifiedLocalEditionLanguages solo cuentan archivos locales. originalR2Registered identifica declaraciones remotas; no certifica disponibilidad HTTP ni cotejo.",
   "scope": "271 obras del repertorio grecolatino; originales locales, índices remotos declarados y traducciones alojadas ES/EN/FR",
   "totals": {
-    "cataloguedWorks": 454,
-    "locallyIndexedWorks": 425,
+    "cataloguedWorks": 467,
+    "locallyIndexedWorks": 438,
     "translatedWorksLocal": 78,
-    "worksWithoutHostedTranslation": 376,
+    "worksWithoutHostedTranslation": 389,
     "localTranslationLanguages": {
       "es": 5,
       "en": 77,
       "fr": 2
     },
     "originalTextIndexed": 197,
-    "originalTextNotIndexed": 257,
+    "originalTextNotIndexed": 270,
     "verifiedLocalFileWorks": 199,
-    "declaredRemoteOnlyWorks": 226,
-    "declaredR2OriginalWorks": 285,
-    "registeredOriginalWorks": 425,
-    "registeredTextVersions": 602,
+    "declaredRemoteOnlyWorks": 239,
+    "declaredR2OriginalWorks": 309,
+    "registeredOriginalWorks": 438,
+    "registeredTextVersions": 626,
     "verifiedLocalTextVersions": 281,
     "verifiedLocalOriginalTextIndexed": 197,
     "supplementaryTextVersions": 161,
-    "allRegisteredTextVersions": 763
+    "allRegisteredTextVersions": 787
   },
   "works": [
     {
@@ -650,12 +650,14 @@
       "translationSourceDescription": "Sin traducción individual vinculada todavía; consultar las disponibles en la fuente",
       "translationRegisteredButNotHosted": false,
       "indexed": true,
-      "originalR2Registered": false,
+      "originalR2Registered": true,
       "registeredOriginal": true,
       "registeredEditionLanguages": [
         "la"
       ],
-      "remoteEditionLanguages": [],
+      "remoteEditionLanguages": [
+        "la"
+      ],
       "verifiedLocalEditionLanguages": [
         "la"
       ]
@@ -907,12 +909,14 @@
       "translationSourceDescription": "Sin traducción individual vinculada todavía; consultar las disponibles en la fuente",
       "translationRegisteredButNotHosted": false,
       "indexed": true,
-      "originalR2Registered": false,
+      "originalR2Registered": true,
       "registeredOriginal": true,
       "registeredEditionLanguages": [
         "la"
       ],
-      "remoteEditionLanguages": [],
+      "remoteEditionLanguages": [
+        "la"
+      ],
       "verifiedLocalEditionLanguages": [
         "la"
       ]
@@ -1935,12 +1939,14 @@
       "translationSourceDescription": "Inglés: traducción de la edición Loeb (dominio público) en LacusCurtius, enlace externo verificado. Castellano y francés pendientes.",
       "translationRegisteredButNotHosted": true,
       "indexed": true,
-      "originalR2Registered": false,
+      "originalR2Registered": true,
       "registeredOriginal": true,
       "registeredEditionLanguages": [
         "la"
       ],
-      "remoteEditionLanguages": [],
+      "remoteEditionLanguages": [
+        "la"
+      ],
       "verifiedLocalEditionLanguages": [
         "la"
       ]
@@ -1960,12 +1966,14 @@
       "translationSourceDescription": "Inglés: traducción de la edición Loeb (dominio público) en LacusCurtius, enlace externo verificado. Castellano y francés pendientes.",
       "translationRegisteredButNotHosted": true,
       "indexed": true,
-      "originalR2Registered": false,
+      "originalR2Registered": true,
       "registeredOriginal": true,
       "registeredEditionLanguages": [
         "la"
       ],
-      "remoteEditionLanguages": [],
+      "remoteEditionLanguages": [
+        "la"
+      ],
       "verifiedLocalEditionLanguages": [
         "la"
       ]
@@ -2995,13 +3003,15 @@
       "translationSourceDescription": "Traducciones EN/ES/FR pendientes de verificar, cotejar y comprobar derechos.",
       "translationRegisteredButNotHosted": true,
       "indexed": true,
-      "originalR2Registered": false,
+      "originalR2Registered": true,
       "registeredOriginal": true,
       "registeredEditionLanguages": [
         "en",
         "grc"
       ],
-      "remoteEditionLanguages": [],
+      "remoteEditionLanguages": [
+        "grc"
+      ],
       "verifiedLocalEditionLanguages": [
         "en",
         "grc"
@@ -3027,13 +3037,15 @@
       "translationSourceDescription": "Paul Shorey (inglés; Perseus/Scaife). Enlace documentado en la pestaña «Edición y traducción». No está alojada ni cotejada localmente.",
       "translationRegisteredButNotHosted": true,
       "indexed": true,
-      "originalR2Registered": false,
+      "originalR2Registered": true,
       "registeredOriginal": true,
       "registeredEditionLanguages": [
         "en",
         "grc"
       ],
-      "remoteEditionLanguages": [],
+      "remoteEditionLanguages": [
+        "grc"
+      ],
       "verifiedLocalEditionLanguages": [
         "en",
         "grc"
@@ -3991,13 +4003,15 @@
       "translationSourceDescription": "Inglés histórico: Walter Rangeley Maitland Lamb (1925), texto completo de la fuente TEI Perseus con procedencia por SHA; sin alineación textual certificada.",
       "translationRegisteredButNotHosted": false,
       "indexed": true,
-      "originalR2Registered": false,
+      "originalR2Registered": true,
       "registeredOriginal": true,
       "registeredEditionLanguages": [
         "en",
         "grc"
       ],
-      "remoteEditionLanguages": [],
+      "remoteEditionLanguages": [
+        "grc"
+      ],
       "verifiedLocalEditionLanguages": [
         "en",
         "grc"
@@ -4021,13 +4035,15 @@
       "translationSourceDescription": "Inglés histórico: Harold North Fowler (1914), texto completo de la fuente TEI Perseus con procedencia por SHA; sin alineación textual certificada.",
       "translationRegisteredButNotHosted": false,
       "indexed": true,
-      "originalR2Registered": false,
+      "originalR2Registered": true,
       "registeredOriginal": true,
       "registeredEditionLanguages": [
         "en",
         "grc"
       ],
-      "remoteEditionLanguages": [],
+      "remoteEditionLanguages": [
+        "grc"
+      ],
       "verifiedLocalEditionLanguages": [
         "en",
         "grc"
@@ -4085,13 +4101,15 @@
       "translationSourceDescription": "Inglés histórico: Robert Gregg Bury (1929), texto completo de la fuente TEI Perseus con procedencia por SHA; sin alineación textual certificada.",
       "translationRegisteredButNotHosted": false,
       "indexed": true,
-      "originalR2Registered": false,
+      "originalR2Registered": true,
       "registeredOriginal": true,
       "registeredEditionLanguages": [
         "en",
         "grc"
       ],
-      "remoteEditionLanguages": [],
+      "remoteEditionLanguages": [
+        "grc"
+      ],
       "verifiedLocalEditionLanguages": [
         "en",
         "grc"
@@ -4147,13 +4165,15 @@
       "translationSourceDescription": "Inglés histórico: Harold North Fowler (1914), texto completo de la fuente TEI Perseus con procedencia por SHA; sin alineación textual certificada.",
       "translationRegisteredButNotHosted": false,
       "indexed": true,
-      "originalR2Registered": false,
+      "originalR2Registered": true,
       "registeredOriginal": true,
       "registeredEditionLanguages": [
         "en",
         "grc"
       ],
-      "remoteEditionLanguages": [],
+      "remoteEditionLanguages": [
+        "grc"
+      ],
       "verifiedLocalEditionLanguages": [
         "en",
         "grc"
@@ -5177,12 +5197,14 @@
       "translationSourceDescription": "Traducción no incorporada ni alineada con una edición identificada.",
       "translationRegisteredButNotHosted": true,
       "indexed": true,
-      "originalR2Registered": false,
+      "originalR2Registered": true,
       "registeredOriginal": true,
       "registeredEditionLanguages": [
         "la"
       ],
-      "remoteEditionLanguages": [],
+      "remoteEditionLanguages": [
+        "la"
+      ],
       "verifiedLocalEditionLanguages": [
         "la"
       ]
@@ -11156,6 +11178,292 @@
       "id": "cts-stoa0275-stoa025",
       "author": "Tertuliano",
       "title": "De Pudicitia",
+      "originalLanguage": "la",
+      "translationLanguages": [],
+      "localEditionLanguages": [
+        "la"
+      ],
+      "notes": "Edición TEI incorporada en R2; sin traducción humana ni colación independiente acreditadas.",
+      "originalIndexed": false,
+      "originalR2Registered": true,
+      "registeredOriginal": true,
+      "verifiedLocalEditionLanguages": [],
+      "registeredEditionLanguages": [
+        "la"
+      ],
+      "remoteEditionLanguages": [
+        "la"
+      ],
+      "readingStatus": "lectura-local-parcial"
+    },
+    {
+      "id": "cts-tlg0530-tlg032",
+      "author": "Pseudo-Galeno",
+      "title": "De theriaca ad Pamphilianum",
+      "originalLanguage": "grc",
+      "translationLanguages": [],
+      "localEditionLanguages": [
+        "grc"
+      ],
+      "notes": "Edición TEI incorporada en R2; sin traducción humana ni colación independiente acreditadas.",
+      "originalIndexed": false,
+      "originalR2Registered": true,
+      "registeredOriginal": true,
+      "verifiedLocalEditionLanguages": [],
+      "registeredEditionLanguages": [
+        "grc"
+      ],
+      "remoteEditionLanguages": [
+        "grc"
+      ],
+      "readingStatus": "lectura-local-parcial"
+    },
+    {
+      "id": "cts-tlg0530-tlg043",
+      "author": "Pseudo-Galeno",
+      "title": "De optima secta ad Thrasybulum",
+      "originalLanguage": "grc",
+      "translationLanguages": [],
+      "localEditionLanguages": [
+        "grc"
+      ],
+      "notes": "Edición TEI incorporada en R2; sin traducción humana ni colación independiente acreditadas.",
+      "originalIndexed": false,
+      "originalR2Registered": true,
+      "registeredOriginal": true,
+      "verifiedLocalEditionLanguages": [],
+      "registeredEditionLanguages": [
+        "grc"
+      ],
+      "remoteEditionLanguages": [
+        "grc"
+      ],
+      "readingStatus": "lectura-local-parcial"
+    },
+    {
+      "id": "cts-tlg0533-tlg003",
+      "author": "Calímaco",
+      "title": "Epigrams",
+      "originalLanguage": "grc",
+      "translationLanguages": [],
+      "localEditionLanguages": [
+        "grc"
+      ],
+      "notes": "Edición TEI incorporada en R2; sin traducción humana ni colación independiente acreditadas.",
+      "originalIndexed": false,
+      "originalR2Registered": true,
+      "registeredOriginal": true,
+      "verifiedLocalEditionLanguages": [],
+      "registeredEditionLanguages": [
+        "grc"
+      ],
+      "remoteEditionLanguages": [
+        "grc"
+      ],
+      "readingStatus": "lectura-local-parcial"
+    },
+    {
+      "id": "cts-tlg0533-tlg004",
+      "author": "Calímaco",
+      "title": "Epigrams and Fragments",
+      "originalLanguage": "grc",
+      "translationLanguages": [],
+      "localEditionLanguages": [
+        "grc"
+      ],
+      "notes": "Edición TEI incorporada en R2; sin traducción humana ni colación independiente acreditadas.",
+      "originalIndexed": false,
+      "originalR2Registered": true,
+      "registeredOriginal": true,
+      "verifiedLocalEditionLanguages": [],
+      "registeredEditionLanguages": [
+        "grc"
+      ],
+      "remoteEditionLanguages": [
+        "grc"
+      ],
+      "readingStatus": "lectura-local-parcial"
+    },
+    {
+      "id": "cts-tlg0533-tlg006",
+      "author": "Calímaco",
+      "title": "Aetia",
+      "originalLanguage": "grc",
+      "translationLanguages": [],
+      "localEditionLanguages": [
+        "grc"
+      ],
+      "notes": "Edición TEI incorporada en R2; sin traducción humana ni colación independiente acreditadas.",
+      "originalIndexed": false,
+      "originalR2Registered": true,
+      "registeredOriginal": true,
+      "verifiedLocalEditionLanguages": [],
+      "registeredEditionLanguages": [
+        "grc"
+      ],
+      "remoteEditionLanguages": [
+        "grc"
+      ],
+      "readingStatus": "lectura-local-parcial"
+    },
+    {
+      "id": "cts-tlg0533-tlg009",
+      "author": "Calímaco",
+      "title": "Hecala",
+      "originalLanguage": "grc",
+      "translationLanguages": [],
+      "localEditionLanguages": [
+        "grc"
+      ],
+      "notes": "Edición TEI incorporada en R2; sin traducción humana ni colación independiente acreditadas.",
+      "originalIndexed": false,
+      "originalR2Registered": true,
+      "registeredOriginal": true,
+      "verifiedLocalEditionLanguages": [],
+      "registeredEditionLanguages": [
+        "grc"
+      ],
+      "remoteEditionLanguages": [
+        "grc"
+      ],
+      "readingStatus": "lectura-local-parcial"
+    },
+    {
+      "id": "cts-tlg0533-tlg007",
+      "author": "Calímaco",
+      "title": "Iambi",
+      "originalLanguage": "grc",
+      "translationLanguages": [],
+      "localEditionLanguages": [
+        "grc"
+      ],
+      "notes": "Edición TEI incorporada en R2; sin traducción humana ni colación independiente acreditadas.",
+      "originalIndexed": false,
+      "originalR2Registered": true,
+      "registeredOriginal": true,
+      "verifiedLocalEditionLanguages": [],
+      "registeredEditionLanguages": [
+        "grc"
+      ],
+      "remoteEditionLanguages": [
+        "grc"
+      ],
+      "readingStatus": "lectura-local-parcial"
+    },
+    {
+      "id": "cts-tlg0533-tlg015",
+      "author": "Calímaco",
+      "title": "Hymn to Zeus",
+      "originalLanguage": "grc",
+      "translationLanguages": [],
+      "localEditionLanguages": [
+        "grc"
+      ],
+      "notes": "Edición TEI incorporada en R2; sin traducción humana ni colación independiente acreditadas.",
+      "originalIndexed": false,
+      "originalR2Registered": true,
+      "registeredOriginal": true,
+      "verifiedLocalEditionLanguages": [],
+      "registeredEditionLanguages": [
+        "grc"
+      ],
+      "remoteEditionLanguages": [
+        "grc"
+      ],
+      "readingStatus": "lectura-local-parcial"
+    },
+    {
+      "id": "cts-tlg0533-tlg017",
+      "author": "Calímaco",
+      "title": "Hymn to Artemis",
+      "originalLanguage": "grc",
+      "translationLanguages": [],
+      "localEditionLanguages": [
+        "grc"
+      ],
+      "notes": "Edición TEI incorporada en R2; sin traducción humana ni colación independiente acreditadas.",
+      "originalIndexed": false,
+      "originalR2Registered": true,
+      "registeredOriginal": true,
+      "verifiedLocalEditionLanguages": [],
+      "registeredEditionLanguages": [
+        "grc"
+      ],
+      "remoteEditionLanguages": [
+        "grc"
+      ],
+      "readingStatus": "lectura-local-parcial"
+    },
+    {
+      "id": "cts-stoa0275-stoa029",
+      "author": "Tertuliano",
+      "title": "De Virginibus Velandis",
+      "originalLanguage": "la",
+      "translationLanguages": [],
+      "localEditionLanguages": [
+        "la"
+      ],
+      "notes": "Edición TEI incorporada en R2; sin traducción humana ni colación independiente acreditadas.",
+      "originalIndexed": false,
+      "originalR2Registered": true,
+      "registeredOriginal": true,
+      "verifiedLocalEditionLanguages": [],
+      "registeredEditionLanguages": [
+        "la"
+      ],
+      "remoteEditionLanguages": [
+        "la"
+      ],
+      "readingStatus": "lectura-local-parcial"
+    },
+    {
+      "id": "cts-stoa0275-stoa030",
+      "author": "Tertuliano",
+      "title": "Scorpiace",
+      "originalLanguage": "la",
+      "translationLanguages": [],
+      "localEditionLanguages": [
+        "la"
+      ],
+      "notes": "Edición TEI incorporada en R2; sin traducción humana ni colación independiente acreditadas.",
+      "originalIndexed": false,
+      "originalR2Registered": true,
+      "registeredOriginal": true,
+      "verifiedLocalEditionLanguages": [],
+      "registeredEditionLanguages": [
+        "la"
+      ],
+      "remoteEditionLanguages": [
+        "la"
+      ],
+      "readingStatus": "lectura-local-parcial"
+    },
+    {
+      "id": "cts-tlg0533-tlg016",
+      "author": "Calímaco",
+      "title": "Hymn to Apollo",
+      "originalLanguage": "grc",
+      "translationLanguages": [],
+      "localEditionLanguages": [
+        "grc"
+      ],
+      "notes": "Edición TEI incorporada en R2; sin traducción humana ni colación independiente acreditadas.",
+      "originalIndexed": false,
+      "originalR2Registered": true,
+      "registeredOriginal": true,
+      "verifiedLocalEditionLanguages": [],
+      "registeredEditionLanguages": [
+        "grc"
+      ],
+      "remoteEditionLanguages": [
+        "grc"
+      ],
+      "readingStatus": "lectura-local-parcial"
+    },
+    {
+      "id": "cts-stoa0276-stoa002",
+      "author": "Pseudo-Tertuliano",
+      "title": "Ad Uxorem",
       "originalLanguage": "la",
       "translationLanguages": [],
       "localEditionLanguages": [

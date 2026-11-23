@@ -3222,7 +3222,61 @@
    },
    "localEditionLanguages": [
     "la"
-   ]
+   ],
+   "localVersions": [
+    {
+     "language": "la",
+     "path": "data/classics-corpus/seneca-epistulae-la.json",
+     "label": "Versión conservada antes de la ampliación R2"
+    },
+    {
+     "language": "la",
+     "path": "https://libros.vitruvius-digital-library.org/corpus/seneca-epistulae-la-f5585b6140d95884.json",
+     "label": "Edición original la · urn:cts:latinLit:phi1017.phi015.perseus-lat2",
+     "reader": "classics-text-reader.html?work=seneca-epistulae&lang=la&edition=f5585b6140d95884",
+     "sourceUrns": [
+      "urn:cts:latinLit:phi1017.phi015.perseus-lat2"
+     ],
+     "sha256": "f5585b6140d958846b932afd40e09f59fd6ecc71e3eaaa9c60890431bd69837d"
+    }
+   ],
+   "indexedEdition": {
+    "sources": [
+     {
+      "title": "Ad Lucilium Epistulae Morales",
+      "titleLanguage": "lat",
+      "author": "Seneca, Lucius Annaeus",
+      "editors": [
+       "Richard Mott Gummere",
+       "Richard M. Gummere"
+      ],
+      "bibliography": "Ad Lucilium Epistulae Morales Seneca Richard Mott Gummere Cambridge London Harvard University Press William Heinemann, Ltd. 1917-1925 1-3 Loeb Classical Library Internet Archive Internet Archive Internet Archive",
+      "licences": [
+       {
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+       }
+      ],
+      "editionUrn": "urn:cts:latinLit:phi1017.phi015.perseus-lat2",
+      "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi1017/phi015/phi1017.phi015.perseus-lat2.xml",
+      "sourceSha256": "079db8ee6c09bd08233441a06d7fc5a1c15331f28d868257dcc97910dd7fb74d",
+      "sourceReferences": [
+       "https://archive.org/details/adluciliumepistu01sene/page/2/mode/2up",
+       "https://archive.org/details/adluciliumepistu02sene/page/2/mode/2up",
+       "https://archive.org/details/adluciliumepistu03seneuoft/page/2/mode/2up"
+      ],
+      "publicationYear": "1917-1925",
+      "publisher": "Harvard University Press",
+      "publicationPlace": "Cambridge",
+      "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/079db8ee6c09bd08233441a06d7fc5a1c15331f28d868257dcc97910dd7fb74d.xml"
+     }
+    ],
+    "sha256": "f5585b6140d958846b932afd40e09f59fd6ecc71e3eaaa9c60890431bd69837d",
+    "passages": 2483,
+    "characters": 805950,
+    "bytes": 1212152,
+    "url": "https://libros.vitruvius-digital-library.org/corpus/seneca-epistulae-la-f5585b6140d95884.json"
+   }
   },
   {
    "id": "seneca-naturales",
@@ -4386,7 +4440,58 @@
    },
    "localEditionLanguages": [
     "la"
-   ]
+   ],
+   "localVersions": [
+    {
+     "language": "la",
+     "path": "data/classics-corpus/tacitus-germania-la.json",
+     "label": "Versión conservada antes de la ampliación R2"
+    },
+    {
+     "language": "la",
+     "path": "https://libros.vitruvius-digital-library.org/corpus/tacitus-germania-la-ab310dddb318f489.json",
+     "label": "Edición original la · urn:cts:latinLit:phi1351.phi002.perseus-lat2",
+     "reader": "classics-text-reader.html?work=tacitus-germania&lang=la&edition=ab310dddb318f489",
+     "sourceUrns": [
+      "urn:cts:latinLit:phi1351.phi002.perseus-lat2"
+     ],
+     "sha256": "ab310dddb318f4891b00edb13756a2206e0bf71b17bc3e71e133c182954058b9"
+    }
+   ],
+   "indexedEdition": {
+    "sources": [
+     {
+      "title": "Germania",
+      "titleLanguage": "lat",
+      "author": "Cornelius Tacitus",
+      "editors": [
+       "Henry Furneaux"
+      ],
+      "bibliography": "Cornelius Tacitus Opera Minora Henry Furneaux Clarendon Press Oxford 1899-1900 Germania, Vita Agricolae, Dialogus De Oratoribus. Scriptorum Classicorum Bibliotheca Oxoniensis Oxford Classical Texts Internet Archive",
+      "licences": [
+       {
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+       }
+      ],
+      "editionUrn": "urn:cts:latinLit:phi1351.phi002.perseus-lat2",
+      "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi1351/phi002/phi1351.phi002.perseus-lat2.xml",
+      "sourceSha256": "ecc70d87e3f8d6ef00ed30e8bf41ecd85841fcc8852b8e1884cb979b7f9f74a1",
+      "sourceReferences": [
+       "https://archive.org/details/operaminorarecog00taciuoft/page/8/mode/2up"
+      ],
+      "publicationYear": "1899-1900",
+      "publisher": "Clarendon Press",
+      "publicationPlace": "Oxford",
+      "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/ecc70d87e3f8d6ef00ed30e8bf41ecd85841fcc8852b8e1884cb979b7f9f74a1.xml"
+     }
+    ],
+    "sha256": "ab310dddb318f4891b00edb13756a2206e0bf71b17bc3e71e133c182954058b9",
+    "passages": 187,
+    "characters": 39459,
+    "bytes": 71143,
+    "url": "https://libros.vitruvius-digital-library.org/corpus/tacitus-germania-la-ab310dddb318f489.json"
+   }
   },
   {
    "id": "frontinus",
@@ -10412,7 +10517,59 @@
    },
    "localEditionLanguages": [
     "la"
-   ]
+   ],
+   "localVersions": [
+    {
+     "language": "la",
+     "path": "data/classics-corpus/tacitus-annales-la.json",
+     "label": "Versión conservada antes de la ampliación R2"
+    },
+    {
+     "language": "la",
+     "path": "https://libros.vitruvius-digital-library.org/corpus/tacitus-annales-la-a312f40619b81288.json",
+     "label": "Edición original la · urn:cts:latinLit:phi1351.phi005.perseus-lat2",
+     "reader": "classics-text-reader.html?work=tacitus-annales&lang=la&edition=a312f40619b81288",
+     "sourceUrns": [
+      "urn:cts:latinLit:phi1351.phi005.perseus-lat2"
+     ],
+     "sha256": "a312f40619b81288a07f80caaf6ceeb94fdd6e7b18a4958a6a4e4ec227448c02"
+    }
+   ],
+   "indexedEdition": {
+    "sources": [
+     {
+      "title": "Annales",
+      "titleLanguage": "lat",
+      "author": "Cornelius Tacitus",
+      "editors": [
+       "Charles Dennis Fisher"
+      ],
+      "bibliography": "Annales Cornelii Taciti Annalivm ab excessv divi Avgvsti libri Cornelius Tacitus Charles Dennis Fisher Clarendon Press Oxford 1906 Internet Archive HathiTrust",
+      "licences": [
+       {
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+       }
+      ],
+      "editionUrn": "urn:cts:latinLit:phi1351.phi005.perseus-lat2",
+      "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi1351/phi005/phi1351.phi005.perseus-lat2.xml",
+      "sourceSha256": "667f319b16fb24f3ce529679917d865b68f1763db82e54b2675c6d7187fdc0af",
+      "sourceReferences": [
+       "https://archive.org/details/fisher-annalium-1906-lat/page/n7/mode/2up",
+       "https://babel.hathitrust.org/cgi/pt?id=uc1.b4636988&seq=12"
+      ],
+      "publicationYear": "1906",
+      "publisher": "Clarendon Press",
+      "publicationPlace": "Oxford",
+      "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/667f319b16fb24f3ce529679917d865b68f1763db82e54b2675c6d7187fdc0af.xml"
+     }
+    ],
+    "sha256": "a312f40619b81288a07f80caaf6ceeb94fdd6e7b18a4958a6a4e4ec227448c02",
+    "passages": 752,
+    "characters": 660772,
+    "bytes": 782642,
+    "url": "https://libros.vitruvius-digital-library.org/corpus/tacitus-annales-la-a312f40619b81288.json"
+   }
   },
   {
    "id": "tacitus-historiae",
@@ -10520,7 +10677,59 @@
    },
    "localEditionLanguages": [
     "la"
-   ]
+   ],
+   "localVersions": [
+    {
+     "language": "la",
+     "path": "data/classics-corpus/tacitus-historiae-la.json",
+     "label": "Versión conservada antes de la ampliación R2"
+    },
+    {
+     "language": "la",
+     "path": "https://libros.vitruvius-digital-library.org/corpus/tacitus-historiae-la-202699de8ce4fcde.json",
+     "label": "Edición original la · urn:cts:latinLit:phi1351.phi004.perseus-lat2",
+     "reader": "classics-text-reader.html?work=tacitus-historiae&lang=la&edition=202699de8ce4fcde",
+     "sourceUrns": [
+      "urn:cts:latinLit:phi1351.phi004.perseus-lat2"
+     ],
+     "sha256": "202699de8ce4fcde8330ff9bc08e71511c14b7061662fbfecee875149b37a98b"
+    }
+   ],
+   "indexedEdition": {
+    "sources": [
+     {
+      "title": "Historiae",
+      "titleLanguage": "lat",
+      "author": "Cornelius Tacitus",
+      "editors": [
+       "Charles Dennis Fisher"
+      ],
+      "bibliography": "Historiae Cornelius Tacitus Charles Dennis Fisher Clarendon Press Oxford 1911 Internet Archive HathiTrust",
+      "licences": [
+       {
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+       }
+      ],
+      "editionUrn": "urn:cts:latinLit:phi1351.phi004.perseus-lat2",
+      "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi1351/phi004/phi1351.phi004.perseus-lat2.xml",
+      "sourceSha256": "a1aaf3ad531abe5c517b6de03aefc1348cd142a0580fd17899f8313b609c6ceb",
+      "sourceReferences": [
+       "https://archive.org/details/fisher-historiarum-1911-lat/page/n9/mode/2up",
+       "https://babel.hathitrust.org/cgi/pt?id=umn.31951d01147700p&seq=16"
+      ],
+      "publicationYear": "1911",
+      "publisher": "Clarendon Press",
+      "publicationPlace": "Oxford",
+      "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/a1aaf3ad531abe5c517b6de03aefc1348cd142a0580fd17899f8313b609c6ceb.xml"
+     }
+    ],
+    "sha256": "202699de8ce4fcde8330ff9bc08e71511c14b7061662fbfecee875149b37a98b",
+    "passages": 411,
+    "characters": 387109,
+    "bytes": 454408,
+    "url": "https://libros.vitruvius-digital-library.org/corpus/tacitus-historiae-la-202699de8ce4fcde.json"
+   }
   },
   {
    "id": "suetonius-caesares",
@@ -17185,7 +17394,58 @@
    "localEditionLanguages": [
     "en",
     "grc"
-   ]
+   ],
+   "localVersions": [
+    {
+     "language": "grc",
+     "path": "data/classics-corpus/xenophon-anabasis-grc.json",
+     "label": "Versión conservada antes de la ampliación R2"
+    },
+    {
+     "language": "grc",
+     "path": "https://libros.vitruvius-digital-library.org/corpus/xenophon-anabasis-grc-a9fc9e138c5450a9.json",
+     "label": "Edición original grc · urn:cts:greekLit:tlg0032.tlg006.perseus-grc2",
+     "reader": "classics-text-reader.html?work=xenophon-anabasis&lang=grc&edition=a9fc9e138c5450a9",
+     "sourceUrns": [
+      "urn:cts:greekLit:tlg0032.tlg006.perseus-grc2"
+     ],
+     "sha256": "a9fc9e138c5450a93c6fc5c90cc131e0c37496595e66ffdd8e214b570242fe3b"
+    }
+   ],
+   "indexedEdition": {
+    "sources": [
+     {
+      "title": "Ἀνάβασις",
+      "titleLanguage": "grc",
+      "author": "Xenophon",
+      "editors": [
+       "Edgar Carew Marchant"
+      ],
+      "bibliography": "Xenophon Opera Omnia Edgar Carew Marchant Clarendon Press Oxford 1904 1961 3 The Internet Archive",
+      "licences": [
+       {
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+       }
+      ],
+      "editionUrn": "urn:cts:greekLit:tlg0032.tlg006.perseus-grc2",
+      "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0032/tlg006/tlg0032.tlg006.perseus-grc2.xml",
+      "sourceSha256": "828fc2be2050a451f1a003f0403f83d9347f500bf95e625c8a4d8af6e5e8a876",
+      "sourceReferences": [
+       "https://archive.org/details/operaomniarecogn03xenouoft/page/14/mode/2up"
+      ],
+      "publicationYear": "1904",
+      "publisher": "Clarendon Press",
+      "publicationPlace": "Oxford",
+      "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/828fc2be2050a451f1a003f0403f83d9347f500bf95e625c8a4d8af6e5e8a876.xml"
+     }
+    ],
+    "sha256": "a9fc9e138c5450a93c6fc5c90cc131e0c37496595e66ffdd8e214b570242fe3b",
+    "passages": 1464,
+    "characters": 353860,
+    "bytes": 933369,
+    "url": "https://libros.vitruvius-digital-library.org/corpus/xenophon-anabasis-grc-a9fc9e138c5450a9.json"
+   }
   },
   {
    "id": "plato-republic",
@@ -17315,7 +17575,58 @@
    "localEditionLanguages": [
     "en",
     "grc"
-   ]
+   ],
+   "localVersions": [
+    {
+     "language": "grc",
+     "path": "data/classics-corpus/plato-republic-grc.json",
+     "label": "Versión conservada antes de la ampliación R2"
+    },
+    {
+     "language": "grc",
+     "path": "https://libros.vitruvius-digital-library.org/corpus/plato-republic-grc-d80eccff4bc30d41.json",
+     "label": "Edición original grc · urn:cts:greekLit:tlg0059.tlg030.perseus-grc2",
+     "reader": "classics-text-reader.html?work=plato-republic&lang=grc&edition=d80eccff4bc30d41",
+     "sourceUrns": [
+      "urn:cts:greekLit:tlg0059.tlg030.perseus-grc2"
+     ],
+     "sha256": "d80eccff4bc30d416ba6d3e14b343875d455704c6e27ff1e8d20d08e4fc96296"
+    }
+   ],
+   "indexedEdition": {
+    "sources": [
+     {
+      "title": "Πολιτεία",
+      "titleLanguage": "grc",
+      "author": "Plato",
+      "editors": [
+       "John Burnet"
+      ],
+      "bibliography": "Plato Platonis Opera John Burnet Oxford Clarendon Press 1905 4 Internet Archive",
+      "licences": [
+       {
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+       }
+      ],
+      "editionUrn": "urn:cts:greekLit:tlg0059.tlg030.perseus-grc2",
+      "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0059/tlg030/tlg0059.tlg030.perseus-grc2.xml",
+      "sourceSha256": "bc433e38c3d3432d882b40af3ca6930d4110a89d291943ebac8d001a6e774ba7",
+      "sourceReferences": [
+       "https://archive.org/details/operarecognovitb04platuoft/page/9/mode/1up"
+      ],
+      "publicationYear": "1905",
+      "publisher": "Clarendon Press",
+      "publicationPlace": "Oxford",
+      "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/bc433e38c3d3432d882b40af3ca6930d4110a89d291943ebac8d001a6e774ba7.xml"
+     }
+    ],
+    "sha256": "d80eccff4bc30d416ba6d3e14b343875d455704c6e27ff1e8d20d08e4fc96296",
+    "passages": 278,
+    "characters": 527332,
+    "bytes": 1072117,
+    "url": "https://libros.vitruvius-digital-library.org/corpus/plato-republic-grc-d80eccff4bc30d41.json"
+   }
   },
   {
    "id": "plato-apology",
@@ -22370,6 +22681,21 @@
      "path": "classics-text-reader.html?work=plato-symposium&lang=en",
      "kind": "historical-translation",
      "citationChicago18": "Platón. Συμπόσιον. Translated by Walter Rangeley Maitland Lamb. Harvard University Press / William Heinemann, 1925. Perseus Digital Library, TEI."
+    },
+    {
+     "language": "grc",
+     "path": "data/classics-corpus/plato-symposium-grc.json",
+     "label": "Versión conservada antes de la ampliación R2"
+    },
+    {
+     "language": "grc",
+     "path": "https://libros.vitruvius-digital-library.org/corpus/plato-symposium-grc-faf96d0dfa371f66.json",
+     "label": "Edición original grc · urn:cts:greekLit:tlg0059.tlg011.perseus-grc2",
+     "reader": "classics-text-reader.html?work=plato-symposium&lang=grc&edition=faf96d0dfa371f66",
+     "sourceUrns": [
+      "urn:cts:greekLit:tlg0059.tlg011.perseus-grc2"
+     ],
+     "sha256": "faf96d0dfa371f663c3d49e52e4b8254a42c6a556a34645e41995db8ae96de10"
     }
    ],
    "indexationAudit": {
@@ -22435,7 +22761,39 @@
    "localEditionLanguages": [
     "en",
     "grc"
-   ]
+   ],
+   "indexedEdition": {
+    "sources": [
+     {
+      "title": "Συμπόσιον",
+      "titleLanguage": "grc",
+      "author": "Plato",
+      "editors": [
+       "John Burnet"
+      ],
+      "bibliography": "Plato Platonis Opera John Burnet Oxford Clarendon Press 1910 2 Internet Archive",
+      "licences": [
+       {
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+       }
+      ],
+      "editionUrn": "urn:cts:greekLit:tlg0059.tlg011.perseus-grc2",
+      "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0059/tlg011/tlg0059.tlg011.perseus-grc2.xml",
+      "sourceSha256": "02c018b6833b6c3536851ce4c8dd2d3030246586b5abdf47ef5d9ecbdd393838",
+      "sourceReferences": [],
+      "publicationYear": "1910",
+      "publisher": "Clarendon Press",
+      "publicationPlace": "Oxford",
+      "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/02c018b6833b6c3536851ce4c8dd2d3030246586b5abdf47ef5d9ecbdd393838.xml"
+     }
+    ],
+    "sha256": "faf96d0dfa371f663c3d49e52e4b8254a42c6a556a34645e41995db8ae96de10",
+    "passages": 56,
+    "characters": 103613,
+    "bytes": 213692,
+    "url": "https://libros.vitruvius-digital-library.org/corpus/plato-symposium-grc-faf96d0dfa371f66.json"
+   }
   },
   {
    "id": "plato-phaedo",
@@ -22509,6 +22867,21 @@
      "path": "classics-text-reader.html?work=plato-phaedo&lang=en",
      "kind": "historical-translation",
      "citationChicago18": "Platón. Φαίδων. Translated by Harold North Fowler. Harvard University Press / William Heinemann, 1914. Perseus Digital Library, TEI."
+    },
+    {
+     "language": "grc",
+     "path": "data/classics-corpus/plato-phaedo-grc.json",
+     "label": "Versión conservada antes de la ampliación R2"
+    },
+    {
+     "language": "grc",
+     "path": "https://libros.vitruvius-digital-library.org/corpus/plato-phaedo-grc-891ade35e86fb2a1.json",
+     "label": "Edición original grc · urn:cts:greekLit:tlg0059.tlg004.perseus-grc2",
+     "reader": "classics-text-reader.html?work=plato-phaedo&lang=grc&edition=891ade35e86fb2a1",
+     "sourceUrns": [
+      "urn:cts:greekLit:tlg0059.tlg004.perseus-grc2"
+     ],
+     "sha256": "891ade35e86fb2a12cd71e717bc5fbe5370be5d82609fad31ad1a65ea11fdc1d"
     }
    ],
    "indexationAudit": {
@@ -22574,7 +22947,41 @@
    "localEditionLanguages": [
     "en",
     "grc"
-   ]
+   ],
+   "indexedEdition": {
+    "sources": [
+     {
+      "title": "Φαίδων",
+      "titleLanguage": "grc",
+      "author": "Plato",
+      "editors": [
+       "John Burnet"
+      ],
+      "bibliography": "Plato Platonis Opera John Burnet Oxford Clarendon Press 1905 1 Internet Archive",
+      "licences": [
+       {
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+       }
+      ],
+      "editionUrn": "urn:cts:greekLit:tlg0059.tlg004.perseus-grc2",
+      "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0059/tlg004/tlg0059.tlg004.perseus-grc2.xml",
+      "sourceSha256": "f7e26d7d4126e46f6546600ae9ad445836814fad8c3551e1a5b0f454f3e9e1a6",
+      "sourceReferences": [
+       "https://archive.org/details/operarecognovitb01platuoft/page/79/mode/1up"
+      ],
+      "publicationYear": "1905",
+      "publisher": "Clarendon Press",
+      "publicationPlace": "Oxford",
+      "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/f7e26d7d4126e46f6546600ae9ad445836814fad8c3551e1a5b0f454f3e9e1a6.xml"
+     }
+    ],
+    "sha256": "891ade35e86fb2a12cd71e717bc5fbe5370be5d82609fad31ad1a65ea11fdc1d",
+    "passages": 93,
+    "characters": 130694,
+    "bytes": 271900,
+    "url": "https://libros.vitruvius-digital-library.org/corpus/plato-phaedo-grc-891ade35e86fb2a1.json"
+   }
   },
   {
    "id": "plato-gorgias",
@@ -22844,6 +23251,21 @@
      "path": "classics-text-reader.html?work=plato-timaeus&lang=en",
      "kind": "historical-translation",
      "citationChicago18": "Platón. Τίμαιος. Translated by Robert Gregg Bury. Harvard University Press / William Heinemann Ltd., 1929. Perseus Digital Library, TEI."
+    },
+    {
+     "language": "grc",
+     "path": "data/classics-corpus/plato-timaeus-grc.json",
+     "label": "Versión conservada antes de la ampliación R2"
+    },
+    {
+     "language": "grc",
+     "path": "https://libros.vitruvius-digital-library.org/corpus/plato-timaeus-grc-2590a7fe55f9b9cb.json",
+     "label": "Edición original grc · urn:cts:greekLit:tlg0059.tlg031.perseus-grc2",
+     "reader": "classics-text-reader.html?work=plato-timaeus&lang=grc&edition=2590a7fe55f9b9cb",
+     "sourceUrns": [
+      "urn:cts:greekLit:tlg0059.tlg031.perseus-grc2"
+     ],
+     "sha256": "2590a7fe55f9b9cbade227022e9ce0c807f45751d05b61254b9c56073a35689c"
     }
    ],
    "indexationAudit": {
@@ -22907,7 +23329,41 @@
    "localEditionLanguages": [
     "en",
     "grc"
-   ]
+   ],
+   "indexedEdition": {
+    "sources": [
+     {
+      "title": "Τίμαιος",
+      "titleLanguage": "grc",
+      "author": "Plato",
+      "editors": [
+       "John Burnet"
+      ],
+      "bibliography": "Plato Platonis Opera John Burnet Oxford Clarendon Press 1905 4 Internet Archive",
+      "licences": [
+       {
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+       }
+      ],
+      "editionUrn": "urn:cts:greekLit:tlg0059.tlg031.perseus-grc2",
+      "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0059/tlg031/tlg0059.tlg031.perseus-grc2.xml",
+      "sourceSha256": "8f58216a930089214b5adfef8b3a0121402b1e3122d76f8fc74bb8b9f6fb0d9d",
+      "sourceReferences": [
+       "https://archive.org/details/operarecognovitb04platuoft/page/421/mode/1up"
+      ],
+      "publicationYear": "1905",
+      "publisher": "Clarendon Press",
+      "publicationPlace": "Oxford",
+      "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/8f58216a930089214b5adfef8b3a0121402b1e3122d76f8fc74bb8b9f6fb0d9d.xml"
+     }
+    ],
+    "sha256": "2590a7fe55f9b9cbade227022e9ce0c807f45751d05b61254b9c56073a35689c",
+    "passages": 113,
+    "characters": 145595,
+    "bytes": 304033,
+    "url": "https://libros.vitruvius-digital-library.org/corpus/plato-timaeus-grc-2590a7fe55f9b9cb.json"
+   }
   },
   {
    "id": "plato-meno",
@@ -23169,6 +23625,21 @@
      "path": "classics-text-reader.html?work=plato-phaedrus&lang=en",
      "kind": "historical-translation",
      "citationChicago18": "Platón. Φαῖδρος. Translated by Harold North Fowler. Harvard University Press / William Heinemann Ltd., 1914. Perseus Digital Library, TEI."
+    },
+    {
+     "language": "grc",
+     "path": "data/classics-corpus/plato-phaedrus-grc.json",
+     "label": "Versión conservada antes de la ampliación R2"
+    },
+    {
+     "language": "grc",
+     "path": "https://libros.vitruvius-digital-library.org/corpus/plato-phaedrus-grc-7dff6138449b836a.json",
+     "label": "Edición original grc · urn:cts:greekLit:tlg0059.tlg012.perseus-grc2",
+     "reader": "classics-text-reader.html?work=plato-phaedrus&lang=grc&edition=7dff6138449b836a",
+     "sourceUrns": [
+      "urn:cts:greekLit:tlg0059.tlg012.perseus-grc2"
+     ],
+     "sha256": "7dff6138449b836a3d5f1cd54f8b729b291c4aa8b8c9d546c124886cf241aa8b"
     }
    ],
    "indexationAudit": {
@@ -23234,7 +23705,41 @@
    "localEditionLanguages": [
     "en",
     "grc"
-   ]
+   ],
+   "indexedEdition": {
+    "sources": [
+     {
+      "title": "Φαῖδρος",
+      "titleLanguage": "grc",
+      "author": "Plato",
+      "editors": [
+       "John Burnet"
+      ],
+      "bibliography": "Plato Platonis Opera John Burnet Oxford Clarendon Press 1910 2 Internet Archive",
+      "licences": [
+       {
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+       }
+      ],
+      "editionUrn": "urn:cts:greekLit:tlg0059.tlg012.perseus-grc2",
+      "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0059/tlg012/tlg0059.tlg012.perseus-grc2.xml",
+      "sourceSha256": "88adfe015464189a02af827e5e48856c8c18bbc8590ccfdc063a1b4224034a53",
+      "sourceReferences": [
+       "https://archive.org/details/operarecognovitb02platuoft/page/222/mode/1up"
+      ],
+      "publicationYear": "1910",
+      "publisher": "Clarendon Press",
+      "publicationPlace": "Oxford",
+      "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/88adfe015464189a02af827e5e48856c8c18bbc8590ccfdc063a1b4224034a53.xml"
+     }
+    ],
+    "sha256": "7dff6138449b836a3d5f1cd54f8b729b291c4aa8b8c9d546c124886cf241aa8b",
+    "passages": 401,
+    "characters": 101353,
+    "bytes": 262776,
+    "url": "https://libros.vitruvius-digital-library.org/corpus/plato-phaedrus-grc-7dff6138449b836a.json"
+   }
   },
   {
    "id": "plato-laws",
@@ -29307,7 +29812,58 @@
    },
    "localEditionLanguages": [
     "la"
-   ]
+   ],
+   "localVersions": [
+    {
+     "language": "la",
+     "path": "data/classics-corpus/tacitus-dialogus-la.json",
+     "label": "Versión conservada antes de la ampliación R2"
+    },
+    {
+     "language": "la",
+     "path": "https://libros.vitruvius-digital-library.org/corpus/tacitus-dialogus-la-dc26cf708c291832.json",
+     "label": "Edición original la · urn:cts:latinLit:phi1351.phi003.perseus-lat2",
+     "reader": "classics-text-reader.html?work=tacitus-dialogus&lang=la&edition=dc26cf708c291832",
+     "sourceUrns": [
+      "urn:cts:latinLit:phi1351.phi003.perseus-lat2"
+     ],
+     "sha256": "dc26cf708c2918327845e46846540c9f69a10794324b053263f0fcaf2c3b51fd"
+    }
+   ],
+   "indexedEdition": {
+    "sources": [
+     {
+      "title": "Dialogus de Oratoribus",
+      "titleLanguage": "lat",
+      "author": "Cornelius Tacitus",
+      "editors": [
+       "Henry Furneaux"
+      ],
+      "bibliography": "Cornelius Tacitus Opera Minora Henry Furneaux Clarendon Press Oxford 1899-1900 Germania, Vita Agricolae, Dialogus De Oratoribus. Scriptorum Classicorum Bibliotheca Oxoniensis Oxford Classical Texts Internet Archive",
+      "licences": [
+       {
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+       }
+      ],
+      "editionUrn": "urn:cts:latinLit:phi1351.phi003.perseus-lat2",
+      "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi1351/phi003/phi1351.phi003.perseus-lat2.xml",
+      "sourceSha256": "311b7e221a81103d10438c5d583b9baecf8217895d869b6e48ea6ff13c77cc3b",
+      "sourceReferences": [
+       "https://archive.org/details/operaminorarecog00taciuoft/page/78/mode/2up"
+      ],
+      "publicationYear": "1899-1900",
+      "publisher": "Clarendon Press",
+      "publicationPlace": "Oxford",
+      "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/311b7e221a81103d10438c5d583b9baecf8217895d869b6e48ea6ff13c77cc3b.xml"
+     }
+    ],
+    "sha256": "dc26cf708c2918327845e46846540c9f69a10794324b053263f0fcaf2c3b51fd",
+    "passages": 228,
+    "characters": 64921,
+    "bytes": 103199,
+    "url": "https://libros.vitruvius-digital-library.org/corpus/tacitus-dialogus-la-dc26cf708c291832.json"
+   }
   },
   {
    "id": "apuleius-apologia",
@@ -52302,6 +52858,1051 @@
     "characters": 94754,
     "bytes": 100239,
     "url": "https://libros.vitruvius-digital-library.org/corpus/cts-stoa0275-stoa025-la-63e7f4968e203cbe.json"
+   }
+  },
+  {
+   "id": "cts-tlg0530-tlg032",
+   "author": "Pseudo-Galeno",
+   "title": "De theriaca ad Pamphilianum",
+   "language": "grc",
+   "genre": "Corpus clásico ampliado",
+   "dating": "época imperial",
+   "reading": {
+    "url": "classics-text-reader.html?work=cts-tlg0530-tlg032&lang=grc&edition=1031d220105ceff8",
+    "status": "Edición TEI alojada en R2 con búsqueda y traducción automática por pasaje"
+   },
+   "manuscript": {
+    "status": "Sin testimonio manuscrito individual asignado; la edición TEI se identifica por separado"
+   },
+   "pdf": {
+    "url": null,
+    "status": "No consta PDF ni facsímil individual verificado para esta edición"
+   },
+   "translation": {
+    "status": "Traducción automática de consulta por pasaje; no se atribuye a un traductor académico"
+   },
+   "links": {
+    "scaife": "https://scaife.perseus.org/library/urn:cts:greekLit:tlg0530.tlg032.1st1K-grc1/"
+   },
+   "aliases": [
+    "urn:cts:greekLit:tlg0530.tlg032.1st1K-grc1"
+   ],
+   "relatedWorkIds": [],
+   "catalogueProvenance": "Título y autor de los catálogos CTS del sitio; edición contrastada con su cabecera TEI. No se retrotraduce el título.",
+   "corpusFiles": {
+    "grc": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0530-tlg032-grc-1031d220105ceff8.json"
+   },
+   "localVersions": [
+    {
+     "language": "grc",
+     "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0530-tlg032-grc-1031d220105ceff8.json",
+     "label": "Edición original grc · urn:cts:greekLit:tlg0530.tlg032.1st1K-grc1",
+     "reader": "classics-text-reader.html?work=cts-tlg0530-tlg032&lang=grc&edition=1031d220105ceff8",
+     "sourceUrns": [
+      "urn:cts:greekLit:tlg0530.tlg032.1st1K-grc1"
+     ],
+     "sha256": "1031d220105ceff897ce746c896c8b968ae7299140c17580c1762add3c6e7cc4"
+    }
+   ],
+   "publicStatus": "lectura-local-parcial",
+   "indexedEdition": {
+    "sources": [
+     {
+      "title": "De theriaca ad Pamphilianum",
+      "titleLanguage": "lat",
+      "author": "Pseudo-Galen",
+      "editors": [
+       "Karl Gottlob Kühn"
+      ],
+      "bibliography": "Claudii Galeni Opera Omnia Pseudo-Galen Karl Gottlob Kühn Cnobloch Lipsiae 14 295-310 1827 HathiTrust",
+      "licences": [
+       {
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+       }
+      ],
+      "editionUrn": "urn:cts:greekLit:tlg0530.tlg032.1st1K-grc1",
+      "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0530/tlg032/tlg0530.tlg032.1st1K-grc1.xml",
+      "sourceSha256": "6acf4e34195a19d7a9260a3620de494194718179da14f69347853a7243cf8e50",
+      "sourceReferences": [
+       "https://hdl.handle.net/2027/hvd.hxpp8u?urlappend=%3Bseq=222"
+      ],
+      "publicationYear": "1827",
+      "publisher": "Cnobloch",
+      "publicationPlace": "Lipsiae",
+      "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/6acf4e34195a19d7a9260a3620de494194718179da14f69347853a7243cf8e50.xml"
+     }
+    ],
+    "sha256": "1031d220105ceff897ce746c896c8b968ae7299140c17580c1762add3c6e7cc4",
+    "passages": 2,
+    "characters": 14317,
+    "bytes": 30112,
+    "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0530-tlg032-grc-1031d220105ceff8.json"
+   }
+  },
+  {
+   "id": "cts-tlg0530-tlg043",
+   "author": "Pseudo-Galeno",
+   "title": "De optima secta ad Thrasybulum",
+   "language": "grc",
+   "genre": "Corpus clásico ampliado",
+   "dating": "época imperial",
+   "reading": {
+    "url": "classics-text-reader.html?work=cts-tlg0530-tlg043&lang=grc&edition=97488bd40fc39d7b",
+    "status": "Edición TEI alojada en R2 con búsqueda y traducción automática por pasaje"
+   },
+   "manuscript": {
+    "status": "Sin testimonio manuscrito individual asignado; la edición TEI se identifica por separado"
+   },
+   "pdf": {
+    "url": null,
+    "status": "No consta PDF ni facsímil individual verificado para esta edición"
+   },
+   "translation": {
+    "status": "Traducción automática de consulta por pasaje; no se atribuye a un traductor académico"
+   },
+   "links": {
+    "scaife": "https://scaife.perseus.org/library/urn:cts:greekLit:tlg0530.tlg043.1st1K-grc1/"
+   },
+   "aliases": [
+    "urn:cts:greekLit:tlg0530.tlg043.1st1K-grc1"
+   ],
+   "relatedWorkIds": [],
+   "catalogueProvenance": "Título y autor de los catálogos CTS del sitio; edición contrastada con su cabecera TEI. No se retrotraduce el título.",
+   "corpusFiles": {
+    "grc": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0530-tlg043-grc-97488bd40fc39d7b.json"
+   },
+   "localVersions": [
+    {
+     "language": "grc",
+     "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0530-tlg043-grc-97488bd40fc39d7b.json",
+     "label": "Edición original grc · urn:cts:greekLit:tlg0530.tlg043.1st1K-grc1",
+     "reader": "classics-text-reader.html?work=cts-tlg0530-tlg043&lang=grc&edition=97488bd40fc39d7b",
+     "sourceUrns": [
+      "urn:cts:greekLit:tlg0530.tlg043.1st1K-grc1"
+     ],
+     "sha256": "97488bd40fc39d7b238770775d0a17fd25cb3fb7fd54baac516e64acd084b67a"
+    }
+   ],
+   "publicStatus": "lectura-local-parcial",
+   "indexedEdition": {
+    "sources": [
+     {
+      "title": "De optima secta ad Thrasybulum",
+      "titleLanguage": "lat",
+      "author": "Pseudo-Galen",
+      "editors": [
+       "Karl Gottlob Kühn"
+      ],
+      "bibliography": "Claudii Galeni Opera Omnia Pseudo-Galen Karl Gottlob Kühn Cnobloch Lipsiae 1 106-223 1821 HathiTrust",
+      "licences": [
+       {
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+       }
+      ],
+      "editionUrn": "urn:cts:greekLit:tlg0530.tlg043.1st1K-grc1",
+      "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0530/tlg043/tlg0530.tlg043.1st1K-grc1.xml",
+      "sourceSha256": "31a8691eb5ff9fbaefaae3b36c2a7efa969e376317b6de721149582f316974a1",
+      "sourceReferences": [
+       "https://hdl.handle.net/2027/njp.32101003105341?urlappend=%3Bseq=380"
+      ],
+      "publicationYear": "1821",
+      "publisher": "Cnobloch",
+      "publicationPlace": "Lipsiae",
+      "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/31a8691eb5ff9fbaefaae3b36c2a7efa969e376317b6de721149582f316974a1.xml"
+     }
+    ],
+    "sha256": "97488bd40fc39d7b238770775d0a17fd25cb3fb7fd54baac516e64acd084b67a",
+    "passages": 52,
+    "characters": 111422,
+    "bytes": 233627,
+    "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0530-tlg043-grc-97488bd40fc39d7b.json"
+   }
+  },
+  {
+   "id": "cts-tlg0533-tlg003",
+   "author": "Calímaco",
+   "title": "Epigrams",
+   "language": "grc",
+   "genre": "Corpus clásico ampliado",
+   "dating": "c. 310–240 a. C.",
+   "reading": {
+    "url": "classics-text-reader.html?work=cts-tlg0533-tlg003&lang=grc&edition=fe61b058aa732923",
+    "status": "Edición TEI alojada en R2 con búsqueda y traducción automática por pasaje"
+   },
+   "manuscript": {
+    "status": "Sin testimonio manuscrito individual asignado; la edición TEI se identifica por separado"
+   },
+   "pdf": {
+    "url": null,
+    "status": "No consta PDF ni facsímil individual verificado para esta edición"
+   },
+   "translation": {
+    "status": "Traducción automática de consulta por pasaje; no se atribuye a un traductor académico"
+   },
+   "links": {
+    "scaife": "https://scaife.perseus.org/library/urn:cts:greekLit:tlg0533.tlg003.perseus-grc2/"
+   },
+   "aliases": [
+    "urn:cts:greekLit:tlg0533.tlg003.perseus-grc2"
+   ],
+   "relatedWorkIds": [],
+   "catalogueProvenance": "Título y autor de los catálogos CTS del sitio; edición contrastada con su cabecera TEI. No se retrotraduce el título.",
+   "corpusFiles": {
+    "grc": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0533-tlg003-grc-fe61b058aa732923.json"
+   },
+   "localVersions": [
+    {
+     "language": "grc",
+     "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0533-tlg003-grc-fe61b058aa732923.json",
+     "label": "Edición original grc · urn:cts:greekLit:tlg0533.tlg003.perseus-grc2",
+     "reader": "classics-text-reader.html?work=cts-tlg0533-tlg003&lang=grc&edition=fe61b058aa732923",
+     "sourceUrns": [
+      "urn:cts:greekLit:tlg0533.tlg003.perseus-grc2"
+     ],
+     "sha256": "fe61b058aa732923e32b94c22a5bc6ee24294e7931a54f633b2b929c895d79b4"
+    }
+   ],
+   "publicStatus": "lectura-local-parcial",
+   "indexedEdition": {
+    "sources": [
+     {
+      "title": "Ἐπιγράμματα",
+      "titleLanguage": "grc",
+      "author": "Callimachus",
+      "editors": [
+       "Ulrich von Wilamowitz-Moellendorff"
+      ],
+      "bibliography": "Callimachi Hymni et Epigrammata Callimachus Ulrich von Wilamowitz-Moellendorff Weidmann Berlin 1897 Google Books Internet Archive",
+      "licences": [
+       {
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+       }
+      ],
+      "editionUrn": "urn:cts:greekLit:tlg0533.tlg003.perseus-grc2",
+      "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0533/tlg003/tlg0533.tlg003.perseus-grc2.xml",
+      "sourceSha256": "b0616f107363cad1efeacc4fa2fa8a38b6efb5a0a47a75375ae395a845878d4a",
+      "sourceReferences": [
+       "https://books.google.com/books?id=cFdJ4Zne23YC%26amp;pg=PA55#v=onepage%26amp;q%26amp;f=false",
+       "https://archive.org/details/callimachihymni01moegoog/page/46/mode/2up"
+      ],
+      "publicationYear": "1897",
+      "publisher": "Weidmann",
+      "publicationPlace": "Berlin",
+      "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/b0616f107363cad1efeacc4fa2fa8a38b6efb5a0a47a75375ae395a845878d4a.xml"
+     }
+    ],
+    "sha256": "fe61b058aa732923e32b94c22a5bc6ee24294e7931a54f633b2b929c895d79b4",
+    "passages": 294,
+    "characters": 11758,
+    "bytes": 64044,
+    "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0533-tlg003-grc-fe61b058aa732923.json"
+   }
+  },
+  {
+   "id": "cts-tlg0533-tlg004",
+   "author": "Calímaco",
+   "title": "Epigrams and Fragments",
+   "language": "grc",
+   "genre": "Corpus clásico ampliado",
+   "dating": "c. 310–240 a. C.",
+   "reading": {
+    "url": "classics-text-reader.html?work=cts-tlg0533-tlg004&lang=grc&edition=5cb0e288f9aea15e",
+    "status": "Edición TEI alojada en R2 con búsqueda y traducción automática por pasaje"
+   },
+   "manuscript": {
+    "status": "Sin testimonio manuscrito individual asignado; la edición TEI se identifica por separado"
+   },
+   "pdf": {
+    "url": null,
+    "status": "No consta PDF ni facsímil individual verificado para esta edición"
+   },
+   "translation": {
+    "status": "Traducción automática de consulta por pasaje; no se atribuye a un traductor académico"
+   },
+   "links": {
+    "scaife": "https://scaife.perseus.org/library/urn:cts:greekLit:tlg0533.tlg004.perseus-grc2/"
+   },
+   "aliases": [
+    "urn:cts:greekLit:tlg0533.tlg004.perseus-grc2"
+   ],
+   "relatedWorkIds": [],
+   "catalogueProvenance": "Título y autor de los catálogos CTS del sitio; edición contrastada con su cabecera TEI. No se retrotraduce el título.",
+   "corpusFiles": {
+    "grc": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0533-tlg004-grc-5cb0e288f9aea15e.json"
+   },
+   "localVersions": [
+    {
+     "language": "grc",
+     "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0533-tlg004-grc-5cb0e288f9aea15e.json",
+     "label": "Edición original grc · urn:cts:greekLit:tlg0533.tlg004.perseus-grc2",
+     "reader": "classics-text-reader.html?work=cts-tlg0533-tlg004&lang=grc&edition=5cb0e288f9aea15e",
+     "sourceUrns": [
+      "urn:cts:greekLit:tlg0533.tlg004.perseus-grc2"
+     ],
+     "sha256": "5cb0e288f9aea15e2073f522abc24c382cbddf655bceadb2842181cc28b61cca"
+    }
+   ],
+   "publicStatus": "lectura-local-parcial",
+   "indexedEdition": {
+    "sources": [
+     {
+      "title": "Ἐπιγράμματα",
+      "titleLanguage": "grc",
+      "author": "Callimachus",
+      "editors": [
+       "A. W. Mair"
+      ],
+      "bibliography": "Callimachus and Lycophron; Aratus Callimachus A. W. Mair William Heinemann London G.P. Putnam's Sons New York 1921 Internet Archive",
+      "licences": [
+       {
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+       }
+      ],
+      "editionUrn": "urn:cts:greekLit:tlg0533.tlg004.perseus-grc2",
+      "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0533/tlg004/tlg0533.tlg004.perseus-grc2.xml",
+      "sourceSha256": "7226cc4694b8e5d3e6e5104c8a8ebc96c5619c97aeedf97f5fffcbfbbb446ab7",
+      "sourceReferences": [
+       "https://archive.org/details/callimachuslycop00calluoft/page/136/mode/2up"
+      ],
+      "publicationYear": "1921",
+      "publisher": "William Heinemann",
+      "publicationPlace": "London",
+      "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/7226cc4694b8e5d3e6e5104c8a8ebc96c5619c97aeedf97f5fffcbfbbb446ab7.xml"
+     }
+    ],
+    "sha256": "5cb0e288f9aea15e2073f522abc24c382cbddf655bceadb2842181cc28b61cca",
+    "passages": 305,
+    "characters": 12078,
+    "bytes": 66091,
+    "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0533-tlg004-grc-5cb0e288f9aea15e.json"
+   }
+  },
+  {
+   "id": "cts-tlg0533-tlg006",
+   "author": "Calímaco",
+   "title": "Aetia",
+   "language": "grc",
+   "genre": "Corpus clásico ampliado",
+   "dating": "c. 310–240 a. C.",
+   "reading": {
+    "url": "classics-text-reader.html?work=cts-tlg0533-tlg006&lang=grc&edition=5afb7f2d74eb4d6d",
+    "status": "Edición TEI alojada en R2 con búsqueda y traducción automática por pasaje"
+   },
+   "manuscript": {
+    "status": "Sin testimonio manuscrito individual asignado; la edición TEI se identifica por separado"
+   },
+   "pdf": {
+    "url": null,
+    "status": "No consta PDF ni facsímil individual verificado para esta edición"
+   },
+   "translation": {
+    "status": "Traducción automática de consulta por pasaje; no se atribuye a un traductor académico"
+   },
+   "links": {
+    "scaife": "https://scaife.perseus.org/library/urn:cts:greekLit:tlg0533.tlg006.1st1K-grc1/"
+   },
+   "aliases": [
+    "urn:cts:greekLit:tlg0533.tlg006.1st1K-grc1"
+   ],
+   "relatedWorkIds": [],
+   "catalogueProvenance": "Título y autor de los catálogos CTS del sitio; edición contrastada con su cabecera TEI. No se retrotraduce el título.",
+   "corpusFiles": {
+    "grc": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0533-tlg006-grc-5afb7f2d74eb4d6d.json"
+   },
+   "localVersions": [
+    {
+     "language": "grc",
+     "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0533-tlg006-grc-5afb7f2d74eb4d6d.json",
+     "label": "Edición original grc · urn:cts:greekLit:tlg0533.tlg006.1st1K-grc1",
+     "reader": "classics-text-reader.html?work=cts-tlg0533-tlg006&lang=grc&edition=5afb7f2d74eb4d6d",
+     "sourceUrns": [
+      "urn:cts:greekLit:tlg0533.tlg006.1st1K-grc1"
+     ],
+     "sha256": "5afb7f2d74eb4d6d669aa1f7a1ca1033a264c778e34169df74b36061b21b82e5"
+    }
+   ],
+   "publicStatus": "lectura-local-parcial",
+   "indexedEdition": {
+    "sources": [
+     {
+      "title": "Aetia",
+      "titleLanguage": "lat",
+      "author": "Callimachus",
+      "editors": [
+       "A. W. Mair",
+       "G. R. Mair"
+      ],
+      "bibliography": "Callimachus Callimachus and Lycophron A. W. Mair G. R. Mair London William Heinemann 1921 Internet Archive",
+      "licences": [
+       {
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+       }
+      ],
+      "editionUrn": "urn:cts:greekLit:tlg0533.tlg006.1st1K-grc1",
+      "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0533/tlg006/tlg0533.tlg006.1st1K-grc1.xml",
+      "sourceSha256": "36942c35590c2e011d7f0d86b28befa3a103faebe32f571586e49100905b325c",
+      "sourceReferences": [
+       "https://archive.org/details/callimachuslycop00calluoft/page/184/mode/2up?view=theater"
+      ],
+      "publicationYear": "1921",
+      "publisher": "William Heinemann",
+      "publicationPlace": "London",
+      "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/36942c35590c2e011d7f0d86b28befa3a103faebe32f571586e49100905b325c.xml"
+     }
+    ],
+    "sha256": "5afb7f2d74eb4d6d669aa1f7a1ca1033a264c778e34169df74b36061b21b82e5",
+    "passages": 54,
+    "characters": 10047,
+    "bytes": 28843,
+    "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0533-tlg006-grc-5afb7f2d74eb4d6d.json"
+   }
+  },
+  {
+   "id": "cts-tlg0533-tlg009",
+   "author": "Calímaco",
+   "title": "Hecala",
+   "language": "grc",
+   "genre": "Corpus clásico ampliado",
+   "dating": "c. 310–240 a. C.",
+   "reading": {
+    "url": "classics-text-reader.html?work=cts-tlg0533-tlg009&lang=grc&edition=3ae92620ed889a96",
+    "status": "Edición TEI alojada en R2 con búsqueda y traducción automática por pasaje"
+   },
+   "manuscript": {
+    "status": "Sin testimonio manuscrito individual asignado; la edición TEI se identifica por separado"
+   },
+   "pdf": {
+    "url": null,
+    "status": "No consta PDF ni facsímil individual verificado para esta edición"
+   },
+   "translation": {
+    "status": "Traducción automática de consulta por pasaje; no se atribuye a un traductor académico"
+   },
+   "links": {
+    "scaife": "https://scaife.perseus.org/library/urn:cts:greekLit:tlg0533.tlg009.1st1K-grc1/"
+   },
+   "aliases": [
+    "urn:cts:greekLit:tlg0533.tlg009.1st1K-grc1"
+   ],
+   "relatedWorkIds": [],
+   "catalogueProvenance": "Título y autor de los catálogos CTS del sitio; edición contrastada con su cabecera TEI. No se retrotraduce el título.",
+   "corpusFiles": {
+    "grc": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0533-tlg009-grc-3ae92620ed889a96.json"
+   },
+   "localVersions": [
+    {
+     "language": "grc",
+     "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0533-tlg009-grc-3ae92620ed889a96.json",
+     "label": "Edición original grc · urn:cts:greekLit:tlg0533.tlg009.1st1K-grc1",
+     "reader": "classics-text-reader.html?work=cts-tlg0533-tlg009&lang=grc&edition=3ae92620ed889a96",
+     "sourceUrns": [
+      "urn:cts:greekLit:tlg0533.tlg009.1st1K-grc1"
+     ],
+     "sha256": "3ae92620ed889a964f066488bfe2b5d32eb189725c04a44f55199ad8f6d3240d"
+    }
+   ],
+   "publicStatus": "lectura-local-parcial",
+   "indexedEdition": {
+    "sources": [
+     {
+      "title": "Hecala",
+      "titleLanguage": "lat",
+      "author": "Callimachus",
+      "editors": [
+       "A. W. Mair",
+       "G. R. Mair"
+      ],
+      "bibliography": "Callimachus Callimachus and Lycophron A. W. Mair G. R. Mair London William Heinemann 1921 Internet Archive",
+      "licences": [
+       {
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+       }
+      ],
+      "editionUrn": "urn:cts:greekLit:tlg0533.tlg009.1st1K-grc1",
+      "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0533/tlg009/tlg0533.tlg009.1st1K-grc1.xml",
+      "sourceSha256": "1114c53c2a00abd9ba3d4f40df97f2bd3cb617984d5b3a5983f8d18b7aa97e04",
+      "sourceReferences": [],
+      "publicationYear": "1921",
+      "publisher": "William Heinemann",
+      "publicationPlace": "London",
+      "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/1114c53c2a00abd9ba3d4f40df97f2bd3cb617984d5b3a5983f8d18b7aa97e04.xml"
+     }
+    ],
+    "sha256": "3ae92620ed889a964f066488bfe2b5d32eb189725c04a44f55199ad8f6d3240d",
+    "passages": 72,
+    "characters": 8010,
+    "bytes": 27802,
+    "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0533-tlg009-grc-3ae92620ed889a96.json"
+   }
+  },
+  {
+   "id": "cts-tlg0533-tlg007",
+   "author": "Calímaco",
+   "title": "Iambi",
+   "language": "grc",
+   "genre": "Corpus clásico ampliado",
+   "dating": "c. 310–240 a. C.",
+   "reading": {
+    "url": "classics-text-reader.html?work=cts-tlg0533-tlg007&lang=grc&edition=4cfbe2e3a5782918",
+    "status": "Edición TEI alojada en R2 con búsqueda y traducción automática por pasaje"
+   },
+   "manuscript": {
+    "status": "Sin testimonio manuscrito individual asignado; la edición TEI se identifica por separado"
+   },
+   "pdf": {
+    "url": null,
+    "status": "No consta PDF ni facsímil individual verificado para esta edición"
+   },
+   "translation": {
+    "status": "Traducción automática de consulta por pasaje; no se atribuye a un traductor académico"
+   },
+   "links": {
+    "scaife": "https://scaife.perseus.org/library/urn:cts:greekLit:tlg0533.tlg007.1st1K-grc1/"
+   },
+   "aliases": [
+    "urn:cts:greekLit:tlg0533.tlg007.1st1K-grc1"
+   ],
+   "relatedWorkIds": [],
+   "catalogueProvenance": "Título y autor de los catálogos CTS del sitio; edición contrastada con su cabecera TEI. No se retrotraduce el título.",
+   "corpusFiles": {
+    "grc": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0533-tlg007-grc-4cfbe2e3a5782918.json"
+   },
+   "localVersions": [
+    {
+     "language": "grc",
+     "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0533-tlg007-grc-4cfbe2e3a5782918.json",
+     "label": "Edición original grc · urn:cts:greekLit:tlg0533.tlg007.1st1K-grc1",
+     "reader": "classics-text-reader.html?work=cts-tlg0533-tlg007&lang=grc&edition=4cfbe2e3a5782918",
+     "sourceUrns": [
+      "urn:cts:greekLit:tlg0533.tlg007.1st1K-grc1"
+     ],
+     "sha256": "4cfbe2e3a5782918099b8f73fe5a725d508a48dc76c064913b67477935a35456"
+    }
+   ],
+   "publicStatus": "lectura-local-parcial",
+   "indexedEdition": {
+    "sources": [
+     {
+      "title": "Iambi",
+      "titleLanguage": "lat",
+      "author": "Callimachus",
+      "editors": [
+       "A. W. Mair",
+       "G. R. Mair"
+      ],
+      "bibliography": "Callimachus Callimachus and Lycophron A. W. Mair G. R. Mair London William Heinemann 1921 Internet Archive",
+      "licences": [
+       {
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+       }
+      ],
+      "editionUrn": "urn:cts:greekLit:tlg0533.tlg007.1st1K-grc1",
+      "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0533/tlg007/tlg0533.tlg007.1st1K-grc1.xml",
+      "sourceSha256": "f5daa3722983e66c27f3ba467a1b0f3dbda4cff987bf59107fa960b70259cb5b",
+      "sourceReferences": [
+       "https://archive.org/details/callimachuslycop00calluoft/page/272/mode/2up?view=theater"
+      ],
+      "publicationYear": "1921",
+      "publisher": "William Heinemann",
+      "publicationPlace": "London",
+      "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/f5daa3722983e66c27f3ba467a1b0f3dbda4cff987bf59107fa960b70259cb5b.xml"
+     }
+    ],
+    "sha256": "4cfbe2e3a5782918099b8f73fe5a725d508a48dc76c064913b67477935a35456",
+    "passages": 54,
+    "characters": 8336,
+    "bytes": 25594,
+    "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0533-tlg007-grc-4cfbe2e3a5782918.json"
+   }
+  },
+  {
+   "id": "cts-tlg0533-tlg015",
+   "author": "Calímaco",
+   "title": "Hymn to Zeus",
+   "language": "grc",
+   "genre": "Corpus clásico ampliado",
+   "dating": "c. 310–240 a. C.",
+   "reading": {
+    "url": "classics-text-reader.html?work=cts-tlg0533-tlg015&lang=grc&edition=e34a760fb94ffba7",
+    "status": "Edición TEI alojada en R2 con búsqueda y traducción automática por pasaje"
+   },
+   "manuscript": {
+    "status": "Sin testimonio manuscrito individual asignado; la edición TEI se identifica por separado"
+   },
+   "pdf": {
+    "url": null,
+    "status": "No consta PDF ni facsímil individual verificado para esta edición"
+   },
+   "translation": {
+    "status": "Traducción automática de consulta por pasaje; no se atribuye a un traductor académico"
+   },
+   "links": {
+    "scaife": "https://scaife.perseus.org/library/urn:cts:greekLit:tlg0533.tlg015.perseus-grc4/"
+   },
+   "aliases": [
+    "urn:cts:greekLit:tlg0533.tlg015.perseus-grc4"
+   ],
+   "relatedWorkIds": [],
+   "catalogueProvenance": "Título y autor de los catálogos CTS del sitio; edición contrastada con su cabecera TEI. No se retrotraduce el título.",
+   "corpusFiles": {
+    "grc": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0533-tlg015-grc-e34a760fb94ffba7.json"
+   },
+   "localVersions": [
+    {
+     "language": "grc",
+     "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0533-tlg015-grc-e34a760fb94ffba7.json",
+     "label": "Edición original grc · urn:cts:greekLit:tlg0533.tlg015.perseus-grc4",
+     "reader": "classics-text-reader.html?work=cts-tlg0533-tlg015&lang=grc&edition=e34a760fb94ffba7",
+     "sourceUrns": [
+      "urn:cts:greekLit:tlg0533.tlg015.perseus-grc4"
+     ],
+     "sha256": "e34a760fb94ffba77f2ff5400927d307da635dddd486d501dddf96fae3cf971f"
+    }
+   ],
+   "publicStatus": "lectura-local-parcial",
+   "indexedEdition": {
+    "sources": [
+     {
+      "title": "εἰς Δία",
+      "titleLanguage": "grc",
+      "author": "Callimachus",
+      "editors": [
+       "Ulrich von Wilamowitz-Moellendorff"
+      ],
+      "bibliography": "Callimachi Hymni et Epigrammata Callimachus Ulrich von Wilamowitz-Moellendorff Weidmann Berlin 1897 Google Books Internet Archive",
+      "licences": [
+       {
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+       }
+      ],
+      "editionUrn": "urn:cts:greekLit:tlg0533.tlg015.perseus-grc4",
+      "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0533/tlg015/tlg0533.tlg015.perseus-grc4.xml",
+      "sourceSha256": "ead1ee12d28a348a80cff538e8fa7292bdee820b763cc58b8c072aa85b1956c2",
+      "sourceReferences": [
+       "https://books.google.com/books?id=cFdJ4Zne23YC",
+       "https://archive.org/details/callimachihymni01moegoog/page/8/mode/2up"
+      ],
+      "publicationYear": "1897",
+      "publisher": "Weidmann",
+      "publicationPlace": "Berlin",
+      "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/ead1ee12d28a348a80cff538e8fa7292bdee820b763cc58b8c072aa85b1956c2.xml"
+     }
+    ],
+    "sha256": "e34a760fb94ffba77f2ff5400927d307da635dddd486d501dddf96fae3cf971f",
+    "passages": 97,
+    "characters": 4235,
+    "bytes": 23041,
+    "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0533-tlg015-grc-e34a760fb94ffba7.json"
+   }
+  },
+  {
+   "id": "cts-tlg0533-tlg017",
+   "author": "Calímaco",
+   "title": "Hymn to Artemis",
+   "language": "grc",
+   "genre": "Corpus clásico ampliado",
+   "dating": "c. 310–240 a. C.",
+   "reading": {
+    "url": "classics-text-reader.html?work=cts-tlg0533-tlg017&lang=grc&edition=d20e2cf4468f487a",
+    "status": "Edición TEI alojada en R2 con búsqueda y traducción automática por pasaje"
+   },
+   "manuscript": {
+    "status": "Sin testimonio manuscrito individual asignado; la edición TEI se identifica por separado"
+   },
+   "pdf": {
+    "url": null,
+    "status": "No consta PDF ni facsímil individual verificado para esta edición"
+   },
+   "translation": {
+    "status": "Traducción automática de consulta por pasaje; no se atribuye a un traductor académico"
+   },
+   "links": {
+    "scaife": "https://scaife.perseus.org/library/urn:cts:greekLit:tlg0533.tlg017.perseus-grc4/"
+   },
+   "aliases": [
+    "urn:cts:greekLit:tlg0533.tlg017.perseus-grc4"
+   ],
+   "relatedWorkIds": [],
+   "catalogueProvenance": "Título y autor de los catálogos CTS del sitio; edición contrastada con su cabecera TEI. No se retrotraduce el título.",
+   "corpusFiles": {
+    "grc": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0533-tlg017-grc-d20e2cf4468f487a.json"
+   },
+   "localVersions": [
+    {
+     "language": "grc",
+     "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0533-tlg017-grc-d20e2cf4468f487a.json",
+     "label": "Edición original grc · urn:cts:greekLit:tlg0533.tlg017.perseus-grc4",
+     "reader": "classics-text-reader.html?work=cts-tlg0533-tlg017&lang=grc&edition=d20e2cf4468f487a",
+     "sourceUrns": [
+      "urn:cts:greekLit:tlg0533.tlg017.perseus-grc4"
+     ],
+     "sha256": "d20e2cf4468f487af51032b3a9bc39962b707519233ee49f84911700e5dc31fd"
+    }
+   ],
+   "publicStatus": "lectura-local-parcial",
+   "indexedEdition": {
+    "sources": [
+     {
+      "title": "εἰς Ἄρτεμιν",
+      "titleLanguage": "grc",
+      "author": "Callimachus",
+      "editors": [
+       "Ulrich von Wilamowitz-Moellendorff"
+      ],
+      "bibliography": "Callimachi Hymni et Epigrammata Callimachus Ulrich von Wilamowitz-Moellendorff Weidmann Berlin 1897 Google Books Internet Archive",
+      "licences": [
+       {
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+       }
+      ],
+      "editionUrn": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc4",
+      "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0533/tlg017/tlg0533.tlg017.perseus-grc4.xml",
+      "sourceSha256": "abadb17528f3db84b216f77e84e60a4980d276cf9b97d8fa20eb3fff463ab973",
+      "sourceReferences": [
+       "https://books.google.com/books?id=cFdJ4Zne23YC",
+       "https://archive.org/details/callimachihymni01moegoog/page/16/mode/2up"
+      ],
+      "publicationYear": "1897",
+      "publisher": "Weidmann",
+      "publicationPlace": "Berlin",
+      "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/abadb17528f3db84b216f77e84e60a4980d276cf9b97d8fa20eb3fff463ab973.xml"
+     }
+    ],
+    "sha256": "d20e2cf4468f487af51032b3a9bc39962b707519233ee49f84911700e5dc31fd",
+    "passages": 269,
+    "characters": 11565,
+    "bytes": 60255,
+    "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0533-tlg017-grc-d20e2cf4468f487a.json"
+   }
+  },
+  {
+   "id": "cts-stoa0275-stoa029",
+   "author": "Tertuliano",
+   "title": "De Virginibus Velandis",
+   "language": "la",
+   "genre": "Corpus clásico ampliado",
+   "dating": "197 d. C.",
+   "reading": {
+    "url": "classics-text-reader.html?work=cts-stoa0275-stoa029&lang=la&edition=f954438d0a9c9cc6",
+    "status": "Edición TEI alojada en R2 con búsqueda y traducción automática por pasaje"
+   },
+   "manuscript": {
+    "status": "Sin testimonio manuscrito individual asignado; la edición TEI se identifica por separado"
+   },
+   "pdf": {
+    "url": null,
+    "status": "No consta PDF ni facsímil individual verificado para esta edición"
+   },
+   "translation": {
+    "status": "Traducción automática de consulta por pasaje; no se atribuye a un traductor académico"
+   },
+   "links": {
+    "scaife": "https://scaife.perseus.org/library/urn:cts:latinLit:stoa0275.stoa029.opp-lat1/"
+   },
+   "aliases": [
+    "urn:cts:latinLit:stoa0275.stoa029.opp-lat1"
+   ],
+   "relatedWorkIds": [],
+   "catalogueProvenance": "Título y autor de los catálogos CTS del sitio; edición contrastada con su cabecera TEI. No se retrotraduce el título.",
+   "corpusFiles": {
+    "la": "https://libros.vitruvius-digital-library.org/corpus/cts-stoa0275-stoa029-la-f954438d0a9c9cc6.json"
+   },
+   "localVersions": [
+    {
+     "language": "la",
+     "path": "https://libros.vitruvius-digital-library.org/corpus/cts-stoa0275-stoa029-la-f954438d0a9c9cc6.json",
+     "label": "Edición original la · urn:cts:latinLit:stoa0275.stoa029.opp-lat1",
+     "reader": "classics-text-reader.html?work=cts-stoa0275-stoa029&lang=la&edition=f954438d0a9c9cc6",
+     "sourceUrns": [
+      "urn:cts:latinLit:stoa0275.stoa029.opp-lat1"
+     ],
+     "sha256": "f954438d0a9c9cc6b3aa3ef02fef8356fb2307538ae2e3e7610f974e377d823a"
+    }
+   ],
+   "publicStatus": "lectura-local-parcial",
+   "indexedEdition": {
+    "sources": [
+     {
+      "title": "De Virginibus Velandis",
+      "titleLanguage": "lat",
+      "author": "Tertullian",
+      "editors": [
+       "Franz Oehler"
+      ],
+      "bibliography": "Quinti Septimii Florentis Tertulliani Quae Supersunt Omnia Tertullian Franz Oehler T. O. Weigel Leipzig 1853 1 HathiTrust",
+      "licences": [
+       {
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+       }
+      ],
+      "editionUrn": "urn:cts:latinLit:stoa0275.stoa029.opp-lat1",
+      "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/stoa0275/stoa029/stoa0275.stoa029.opp-lat1.xml",
+      "sourceSha256": "d7cec1c65930ce8f2c953aed7daf47ae0112e17e0c28dc1b29086302a58b81b7",
+      "sourceReferences": [
+       "https://hdl.handle.net/2027/mdp.39015012086974?urlappend=%3Bseq=913%3Bownerid=13510798896211526-967"
+      ],
+      "publicationYear": "1853",
+      "publisher": "T. O. Weigel",
+      "publicationPlace": "Leipzig",
+      "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/d7cec1c65930ce8f2c953aed7daf47ae0112e17e0c28dc1b29086302a58b81b7.xml"
+     }
+    ],
+    "sha256": "f954438d0a9c9cc6b3aa3ef02fef8356fb2307538ae2e3e7610f974e377d823a",
+    "passages": 18,
+    "characters": 38474,
+    "bytes": 43198,
+    "url": "https://libros.vitruvius-digital-library.org/corpus/cts-stoa0275-stoa029-la-f954438d0a9c9cc6.json"
+   }
+  },
+  {
+   "id": "cts-stoa0275-stoa030",
+   "author": "Tertuliano",
+   "title": "Scorpiace",
+   "language": "la",
+   "genre": "Corpus clásico ampliado",
+   "dating": "197 d. C.",
+   "reading": {
+    "url": "classics-text-reader.html?work=cts-stoa0275-stoa030&lang=la&edition=caf071f43b011c00",
+    "status": "Edición TEI alojada en R2 con búsqueda y traducción automática por pasaje"
+   },
+   "manuscript": {
+    "status": "Sin testimonio manuscrito individual asignado; la edición TEI se identifica por separado"
+   },
+   "pdf": {
+    "url": null,
+    "status": "No consta PDF ni facsímil individual verificado para esta edición"
+   },
+   "translation": {
+    "status": "Traducción automática de consulta por pasaje; no se atribuye a un traductor académico"
+   },
+   "links": {
+    "scaife": "https://scaife.perseus.org/library/urn:cts:latinLit:stoa0275.stoa030.opp-lat1/"
+   },
+   "aliases": [
+    "urn:cts:latinLit:stoa0275.stoa030.opp-lat1"
+   ],
+   "relatedWorkIds": [],
+   "catalogueProvenance": "Título y autor de los catálogos CTS del sitio; edición contrastada con su cabecera TEI. No se retrotraduce el título.",
+   "corpusFiles": {
+    "la": "https://libros.vitruvius-digital-library.org/corpus/cts-stoa0275-stoa030-la-caf071f43b011c00.json"
+   },
+   "localVersions": [
+    {
+     "language": "la",
+     "path": "https://libros.vitruvius-digital-library.org/corpus/cts-stoa0275-stoa030-la-caf071f43b011c00.json",
+     "label": "Edición original la · urn:cts:latinLit:stoa0275.stoa030.opp-lat1",
+     "reader": "classics-text-reader.html?work=cts-stoa0275-stoa030&lang=la&edition=caf071f43b011c00",
+     "sourceUrns": [
+      "urn:cts:latinLit:stoa0275.stoa030.opp-lat1"
+     ],
+     "sha256": "caf071f43b011c005e520bc96e56a5640a7dd044076a3aa92342cebe0b497a19"
+    }
+   ],
+   "publicStatus": "lectura-local-parcial",
+   "indexedEdition": {
+    "sources": [
+     {
+      "title": "De Scorpiace",
+      "titleLanguage": "lat",
+      "author": "Tertullian",
+      "editors": [
+       "Franz Oehler"
+      ],
+      "bibliography": "Quinti Septimii Florentis Tertulliani Quae Supersunt Omnia Tertullian Franz Oehler T. O. Weigel Leipzig 1853 1 HathiTrust",
+      "licences": [
+       {
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+       }
+      ],
+      "editionUrn": "urn:cts:latinLit:stoa0275.stoa030.opp-lat1",
+      "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/stoa0275/stoa030/stoa0275.stoa030.opp-lat1.xml",
+      "sourceSha256": "b89e70a4608f95f05f1c1c97cceee607d99d07932fb17294b622251c0ee862b1",
+      "sourceReferences": [
+       "https://hdl.handle.net/2027/mdp.39015012086974?urlappend=%3Bseq=525%3Bownerid=13510798896211526-537"
+      ],
+      "publicationYear": "1853",
+      "publisher": "T. O. Weigel",
+      "publicationPlace": "Leipzig",
+      "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/b89e70a4608f95f05f1c1c97cceee607d99d07932fb17294b622251c0ee862b1.xml"
+     }
+    ],
+    "sha256": "caf071f43b011c005e520bc96e56a5640a7dd044076a3aa92342cebe0b497a19",
+    "passages": 16,
+    "characters": 54850,
+    "bytes": 59241,
+    "url": "https://libros.vitruvius-digital-library.org/corpus/cts-stoa0275-stoa030-la-caf071f43b011c00.json"
+   }
+  },
+  {
+   "id": "cts-tlg0533-tlg016",
+   "author": "Calímaco",
+   "title": "Hymn to Apollo",
+   "language": "grc",
+   "genre": "Corpus clásico ampliado",
+   "dating": "c. 310–240 a. C.",
+   "reading": {
+    "url": "classics-text-reader.html?work=cts-tlg0533-tlg016&lang=grc&edition=e2038edcfd1ab657",
+    "status": "Edición TEI alojada en R2 con búsqueda y traducción automática por pasaje"
+   },
+   "manuscript": {
+    "status": "Sin testimonio manuscrito individual asignado; la edición TEI se identifica por separado"
+   },
+   "pdf": {
+    "url": null,
+    "status": "No consta PDF ni facsímil individual verificado para esta edición"
+   },
+   "translation": {
+    "status": "Traducción automática de consulta por pasaje; no se atribuye a un traductor académico"
+   },
+   "links": {
+    "scaife": "https://scaife.perseus.org/library/urn:cts:greekLit:tlg0533.tlg016.perseus-grc4/"
+   },
+   "aliases": [
+    "urn:cts:greekLit:tlg0533.tlg016.perseus-grc4"
+   ],
+   "relatedWorkIds": [],
+   "catalogueProvenance": "Título y autor de los catálogos CTS del sitio; edición contrastada con su cabecera TEI. No se retrotraduce el título.",
+   "corpusFiles": {
+    "grc": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0533-tlg016-grc-e2038edcfd1ab657.json"
+   },
+   "localVersions": [
+    {
+     "language": "grc",
+     "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0533-tlg016-grc-e2038edcfd1ab657.json",
+     "label": "Edición original grc · urn:cts:greekLit:tlg0533.tlg016.perseus-grc4",
+     "reader": "classics-text-reader.html?work=cts-tlg0533-tlg016&lang=grc&edition=e2038edcfd1ab657",
+     "sourceUrns": [
+      "urn:cts:greekLit:tlg0533.tlg016.perseus-grc4"
+     ],
+     "sha256": "e2038edcfd1ab6578f1bb0ea34e6dedf55a9b294ace7db9146a1f8825a145462"
+    }
+   ],
+   "publicStatus": "lectura-local-parcial",
+   "indexedEdition": {
+    "sources": [
+     {
+      "title": "εἰς Απόλλωνα",
+      "titleLanguage": "grc",
+      "author": "Callimachus",
+      "editors": [
+       "Ulrich von Wilamowitz-Moellendorff"
+      ],
+      "bibliography": "Callimachi Hymni et Epigrammata Callimachus Ulrich von Wilamowitz-Moellendorff Weidmann Berlin 1897 Google Books Internet Archive",
+      "licences": [
+       {
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+       }
+      ],
+      "editionUrn": "urn:cts:greekLit:tlg0533.tlg016.perseus-grc4",
+      "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0533/tlg016/tlg0533.tlg016.perseus-grc4.xml",
+      "sourceSha256": "8a5b4671be1a1e567f49070c68ca1bab7f56ee3c80fc2f0489f3fd1aa2497068",
+      "sourceReferences": [
+       "https://books.google.com/books?id=cFdJ4Zne23YC",
+       "https://archive.org/details/callimachihymni01moegoog/page/12/mode/2up"
+      ],
+      "publicationYear": "1897",
+      "publisher": "Weidmann",
+      "publicationPlace": "Berlin",
+      "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/8a5b4671be1a1e567f49070c68ca1bab7f56ee3c80fc2f0489f3fd1aa2497068.xml"
+     }
+    ],
+    "sha256": "e2038edcfd1ab6578f1bb0ea34e6dedf55a9b294ace7db9146a1f8825a145462",
+    "passages": 114,
+    "characters": 4898,
+    "bytes": 26670,
+    "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0533-tlg016-grc-e2038edcfd1ab657.json"
+   }
+  },
+  {
+   "id": "cts-stoa0276-stoa002",
+   "author": "Pseudo-Tertuliano",
+   "title": "Ad Uxorem",
+   "language": "la",
+   "genre": "Corpus clásico ampliado",
+   "dating": "siglo III d. C.",
+   "reading": {
+    "url": "classics-text-reader.html?work=cts-stoa0276-stoa002&lang=la&edition=1dc24610a655b146",
+    "status": "Edición TEI alojada en R2 con búsqueda y traducción automática por pasaje"
+   },
+   "manuscript": {
+    "status": "Sin testimonio manuscrito individual asignado; la edición TEI se identifica por separado"
+   },
+   "pdf": {
+    "url": null,
+    "status": "No consta PDF ni facsímil individual verificado para esta edición"
+   },
+   "translation": {
+    "status": "Traducción automática de consulta por pasaje; no se atribuye a un traductor académico"
+   },
+   "links": {
+    "scaife": "https://scaife.perseus.org/library/urn:cts:latinLit:stoa0276.stoa002.opp-lat1/"
+   },
+   "aliases": [
+    "urn:cts:latinLit:stoa0276.stoa002.opp-lat1"
+   ],
+   "relatedWorkIds": [],
+   "catalogueProvenance": "Título y autor de los catálogos CTS del sitio; edición contrastada con su cabecera TEI. No se retrotraduce el título.",
+   "corpusFiles": {
+    "la": "https://libros.vitruvius-digital-library.org/corpus/cts-stoa0276-stoa002-la-1dc24610a655b146.json"
+   },
+   "localVersions": [
+    {
+     "language": "la",
+     "path": "https://libros.vitruvius-digital-library.org/corpus/cts-stoa0276-stoa002-la-1dc24610a655b146.json",
+     "label": "Edición original la · urn:cts:latinLit:stoa0276.stoa002.opp-lat1",
+     "reader": "classics-text-reader.html?work=cts-stoa0276-stoa002&lang=la&edition=1dc24610a655b146",
+     "sourceUrns": [
+      "urn:cts:latinLit:stoa0276.stoa002.opp-lat1"
+     ],
+     "sha256": "1dc24610a655b14647945490dc90fa0ea01cee85766573567e787467697647b3"
+    }
+   ],
+   "publicStatus": "lectura-local-parcial",
+   "indexedEdition": {
+    "sources": [
+     {
+      "title": "Ad Uxorem",
+      "titleLanguage": "lat",
+      "author": "Tertullian",
+      "editors": [
+       "Franz Oehler"
+      ],
+      "bibliography": "Quinti Septimii Florentis Tertulliani Quae Supersunt Omnia Tertullian Franz Oehler T. O. Weigel Leipzig 1853 1 HathiTrust",
+      "licences": [
+       {
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+       }
+      ],
+      "editionUrn": "urn:cts:latinLit:stoa0276.stoa002.opp-lat1",
+      "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/stoa0276/stoa002/stoa0276.stoa002.opp-lat1.xml",
+      "sourceSha256": "c31542c1aaccd30d25c59fc5865e6569668c2ec1526d07c0ede219891f690fe3",
+      "sourceReferences": [
+       "https://hdl.handle.net/2027/mdp.39015012086974?urlappend=%3Bseq=699%3Bownerid=13510798896211526-723"
+      ],
+      "publicationYear": "1853",
+      "publisher": "T. O. Weigel",
+      "publicationPlace": "Leipzig",
+      "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/c31542c1aaccd30d25c59fc5865e6569668c2ec1526d07c0ede219891f690fe3.xml"
+     }
+    ],
+    "sha256": "1dc24610a655b14647945490dc90fa0ea01cee85766573567e787467697647b3",
+    "passages": 18,
+    "characters": 29916,
+    "bytes": 34621,
+    "url": "https://libros.vitruvius-digital-library.org/corpus/cts-stoa0276-stoa002-la-1dc24610a655b146.json"
    }
   }
  ],

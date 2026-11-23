@@ -2,8 +2,8 @@
  "schema": "vitruvia-classics-search-registry-v1",
  "updated": "2026-11-23",
  "description": "Registro verificable de transcripciones HTML y textos JSON existentes que admiten búsqueda literal de contenido. No incluye automáticamente PDF escaneados, facsímiles ni fichas sin texto. Los índices auxiliares por locus y el aparato crítico se declaran por separado; no se suman a versiones textuales originales ni implican colación autóptica.",
- "count": 763,
- "works": 553,
+ "count": 787,
+ "works": 566,
  "entries": [
   {
    "workId": "aeneas-tacticus-poliorketika",
@@ -1985,6 +1985,45 @@
    "passages": 23
   },
   {
+   "workId": "cts-stoa0275-stoa029",
+   "author": "Tertuliano",
+   "title": "De Virginibus Velandis",
+   "language": "la",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/cts-stoa0275-stoa029-la-f954438d0a9c9cc6.json",
+   "reader": "classics-text-reader.html?work=cts-stoa0275-stoa029&lang=la&edition=f954438d0a9c9cc6",
+   "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+   "sourceUrn": "urn:cts:latinLit:stoa0275.stoa029.opp-lat1",
+   "sha256": "f954438d0a9c9cc6b3aa3ef02fef8356fb2307538ae2e3e7610f974e377d823a",
+   "passages": 18
+  },
+  {
+   "workId": "cts-stoa0275-stoa030",
+   "author": "Tertuliano",
+   "title": "Scorpiace",
+   "language": "la",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/cts-stoa0275-stoa030-la-caf071f43b011c00.json",
+   "reader": "classics-text-reader.html?work=cts-stoa0275-stoa030&lang=la&edition=caf071f43b011c00",
+   "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+   "sourceUrn": "urn:cts:latinLit:stoa0275.stoa030.opp-lat1",
+   "sha256": "caf071f43b011c005e520bc96e56a5640a7dd044076a3aa92342cebe0b497a19",
+   "passages": 16
+  },
+  {
+   "workId": "cts-stoa0276-stoa002",
+   "author": "Pseudo-Tertuliano",
+   "title": "Ad Uxorem",
+   "language": "la",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/cts-stoa0276-stoa002-la-1dc24610a655b146.json",
+   "reader": "classics-text-reader.html?work=cts-stoa0276-stoa002&lang=la&edition=1dc24610a655b146",
+   "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+   "sourceUrn": "urn:cts:latinLit:stoa0276.stoa002.opp-lat1",
+   "sha256": "1dc24610a655b14647945490dc90fa0ea01cee85766573567e787467697647b3",
+   "passages": 18
+  },
+  {
    "workId": "cts-tlg0006-tlg001",
    "author": "Eurípides",
    "title": "Cyclops",
@@ -3938,6 +3977,136 @@
    "sourceUrn": "urn:cts:greekLit:tlg0086.tlg020.1st1K-grc1",
    "sha256": "e60ed4c247f1f4b62375a300b5a3b03207894cb008a9f1ffe836464451c192a2",
    "passages": 7
+  },
+  {
+   "workId": "cts-tlg0530-tlg032",
+   "author": "Pseudo-Galeno",
+   "title": "De theriaca ad Pamphilianum",
+   "language": "grc",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0530-tlg032-grc-1031d220105ceff8.json",
+   "reader": "classics-text-reader.html?work=cts-tlg0530-tlg032&lang=grc&edition=1031d220105ceff8",
+   "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+   "sourceUrn": "urn:cts:greekLit:tlg0530.tlg032.1st1K-grc1",
+   "sha256": "1031d220105ceff897ce746c896c8b968ae7299140c17580c1762add3c6e7cc4",
+   "passages": 2
+  },
+  {
+   "workId": "cts-tlg0530-tlg043",
+   "author": "Pseudo-Galeno",
+   "title": "De optima secta ad Thrasybulum",
+   "language": "grc",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0530-tlg043-grc-97488bd40fc39d7b.json",
+   "reader": "classics-text-reader.html?work=cts-tlg0530-tlg043&lang=grc&edition=97488bd40fc39d7b",
+   "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+   "sourceUrn": "urn:cts:greekLit:tlg0530.tlg043.1st1K-grc1",
+   "sha256": "97488bd40fc39d7b238770775d0a17fd25cb3fb7fd54baac516e64acd084b67a",
+   "passages": 52
+  },
+  {
+   "workId": "cts-tlg0533-tlg003",
+   "author": "Calímaco",
+   "title": "Epigrams",
+   "language": "grc",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0533-tlg003-grc-fe61b058aa732923.json",
+   "reader": "classics-text-reader.html?work=cts-tlg0533-tlg003&lang=grc&edition=fe61b058aa732923",
+   "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+   "sourceUrn": "urn:cts:greekLit:tlg0533.tlg003.perseus-grc2",
+   "sha256": "fe61b058aa732923e32b94c22a5bc6ee24294e7931a54f633b2b929c895d79b4",
+   "passages": 294
+  },
+  {
+   "workId": "cts-tlg0533-tlg004",
+   "author": "Calímaco",
+   "title": "Epigrams and Fragments",
+   "language": "grc",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0533-tlg004-grc-5cb0e288f9aea15e.json",
+   "reader": "classics-text-reader.html?work=cts-tlg0533-tlg004&lang=grc&edition=5cb0e288f9aea15e",
+   "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+   "sourceUrn": "urn:cts:greekLit:tlg0533.tlg004.perseus-grc2",
+   "sha256": "5cb0e288f9aea15e2073f522abc24c382cbddf655bceadb2842181cc28b61cca",
+   "passages": 305
+  },
+  {
+   "workId": "cts-tlg0533-tlg006",
+   "author": "Calímaco",
+   "title": "Aetia",
+   "language": "grc",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0533-tlg006-grc-5afb7f2d74eb4d6d.json",
+   "reader": "classics-text-reader.html?work=cts-tlg0533-tlg006&lang=grc&edition=5afb7f2d74eb4d6d",
+   "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+   "sourceUrn": "urn:cts:greekLit:tlg0533.tlg006.1st1K-grc1",
+   "sha256": "5afb7f2d74eb4d6d669aa1f7a1ca1033a264c778e34169df74b36061b21b82e5",
+   "passages": 54
+  },
+  {
+   "workId": "cts-tlg0533-tlg007",
+   "author": "Calímaco",
+   "title": "Iambi",
+   "language": "grc",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0533-tlg007-grc-4cfbe2e3a5782918.json",
+   "reader": "classics-text-reader.html?work=cts-tlg0533-tlg007&lang=grc&edition=4cfbe2e3a5782918",
+   "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+   "sourceUrn": "urn:cts:greekLit:tlg0533.tlg007.1st1K-grc1",
+   "sha256": "4cfbe2e3a5782918099b8f73fe5a725d508a48dc76c064913b67477935a35456",
+   "passages": 54
+  },
+  {
+   "workId": "cts-tlg0533-tlg009",
+   "author": "Calímaco",
+   "title": "Hecala",
+   "language": "grc",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0533-tlg009-grc-3ae92620ed889a96.json",
+   "reader": "classics-text-reader.html?work=cts-tlg0533-tlg009&lang=grc&edition=3ae92620ed889a96",
+   "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+   "sourceUrn": "urn:cts:greekLit:tlg0533.tlg009.1st1K-grc1",
+   "sha256": "3ae92620ed889a964f066488bfe2b5d32eb189725c04a44f55199ad8f6d3240d",
+   "passages": 72
+  },
+  {
+   "workId": "cts-tlg0533-tlg015",
+   "author": "Calímaco",
+   "title": "Hymn to Zeus",
+   "language": "grc",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0533-tlg015-grc-e34a760fb94ffba7.json",
+   "reader": "classics-text-reader.html?work=cts-tlg0533-tlg015&lang=grc&edition=e34a760fb94ffba7",
+   "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+   "sourceUrn": "urn:cts:greekLit:tlg0533.tlg015.perseus-grc4",
+   "sha256": "e34a760fb94ffba77f2ff5400927d307da635dddd486d501dddf96fae3cf971f",
+   "passages": 97
+  },
+  {
+   "workId": "cts-tlg0533-tlg016",
+   "author": "Calímaco",
+   "title": "Hymn to Apollo",
+   "language": "grc",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0533-tlg016-grc-e2038edcfd1ab657.json",
+   "reader": "classics-text-reader.html?work=cts-tlg0533-tlg016&lang=grc&edition=e2038edcfd1ab657",
+   "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+   "sourceUrn": "urn:cts:greekLit:tlg0533.tlg016.perseus-grc4",
+   "sha256": "e2038edcfd1ab6578f1bb0ea34e6dedf55a9b294ace7db9146a1f8825a145462",
+   "passages": 114
+  },
+  {
+   "workId": "cts-tlg0533-tlg017",
+   "author": "Calímaco",
+   "title": "Hymn to Artemis",
+   "language": "grc",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0533-tlg017-grc-d20e2cf4468f487a.json",
+   "reader": "classics-text-reader.html?work=cts-tlg0533-tlg017&lang=grc&edition=d20e2cf4468f487a",
+   "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+   "sourceUrn": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc4",
+   "sha256": "d20e2cf4468f487af51032b3a9bc39962b707519233ee49f84911700e5dc31fd",
+   "passages": 269
   },
   {
    "workId": "cts-tlg1805-tlg009",
@@ -7286,6 +7455,19 @@
    "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
   },
   {
+   "workId": "plato-phaedo",
+   "author": "Platón",
+   "title": "Φαίδων",
+   "language": "grc",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/plato-phaedo-grc-891ade35e86fb2a1.json",
+   "reader": "classics-text-reader.html?work=plato-phaedo&lang=grc&edition=891ade35e86fb2a1",
+   "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+   "sourceUrn": "urn:cts:greekLit:tlg0059.tlg004.perseus-grc2",
+   "sha256": "891ade35e86fb2a12cd71e717bc5fbe5370be5d82609fad31ad1a65ea11fdc1d",
+   "passages": 93
+  },
+  {
    "workId": "plato-phaedrus",
    "author": "Platón",
    "title": "Φαῖδρος",
@@ -7304,6 +7486,19 @@
    "path": "data/classics-corpus/plato-phaedrus-grc.json",
    "reader": "classics-text-reader.html?work=plato-phaedrus&lang=grc",
    "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+  },
+  {
+   "workId": "plato-phaedrus",
+   "author": "Platón",
+   "title": "Φαῖδρος",
+   "language": "grc",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/plato-phaedrus-grc-7dff6138449b836a.json",
+   "reader": "classics-text-reader.html?work=plato-phaedrus&lang=grc&edition=7dff6138449b836a",
+   "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+   "sourceUrn": "urn:cts:greekLit:tlg0059.tlg012.perseus-grc2",
+   "sha256": "7dff6138449b836a3d5f1cd54f8b729b291c4aa8b8c9d546c124886cf241aa8b",
+   "passages": 401
   },
   {
    "workId": "plato-philebus",
@@ -7346,6 +7541,19 @@
    "path": "data/classics-corpus/plato-republic-grc.json",
    "reader": "classics-text-reader.html?work=plato-republic&lang=grc",
    "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+  },
+  {
+   "workId": "plato-republic",
+   "author": "Platón",
+   "title": "Πολιτεία",
+   "language": "grc",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/plato-republic-grc-d80eccff4bc30d41.json",
+   "reader": "classics-text-reader.html?work=plato-republic&lang=grc&edition=d80eccff4bc30d41",
+   "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+   "sourceUrn": "urn:cts:greekLit:tlg0059.tlg030.perseus-grc2",
+   "sha256": "d80eccff4bc30d416ba6d3e14b343875d455704c6e27ff1e8d20d08e4fc96296",
+   "passages": 278
   },
   {
    "workId": "plato-sophist",
@@ -7410,6 +7618,19 @@
    "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
   },
   {
+   "workId": "plato-symposium",
+   "author": "Platón",
+   "title": "Συμπόσιον",
+   "language": "grc",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/plato-symposium-grc-faf96d0dfa371f66.json",
+   "reader": "classics-text-reader.html?work=plato-symposium&lang=grc&edition=faf96d0dfa371f66",
+   "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+   "sourceUrn": "urn:cts:greekLit:tlg0059.tlg011.perseus-grc2",
+   "sha256": "faf96d0dfa371f663c3d49e52e4b8254a42c6a556a34645e41995db8ae96de10",
+   "passages": 56
+  },
+  {
    "workId": "plato-theaetetus",
    "author": "Platón",
    "title": "Θεαίτητος",
@@ -7448,6 +7669,19 @@
    "path": "data/classics-corpus/plato-timaeus-grc.json",
    "reader": "classics-text-reader.html?work=plato-timaeus&lang=grc",
    "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+  },
+  {
+   "workId": "plato-timaeus",
+   "author": "Platón",
+   "title": "Τίμαιος",
+   "language": "grc",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/plato-timaeus-grc-2590a7fe55f9b9cb.json",
+   "reader": "classics-text-reader.html?work=plato-timaeus&lang=grc&edition=2590a7fe55f9b9cb",
+   "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+   "sourceUrn": "urn:cts:greekLit:tlg0059.tlg031.perseus-grc2",
+   "sha256": "2590a7fe55f9b9cbade227022e9ce0c807f45751d05b61254b9c56073a35689c",
+   "passages": 113
   },
   {
    "workId": "platon-cratilo-parmenides",
@@ -7785,6 +8019,19 @@
    "path": "data/classics-corpus/seneca-epistulae-la.json",
    "reader": "classics-text-reader.html?work=seneca-epistulae&lang=la",
    "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+  },
+  {
+   "workId": "seneca-epistulae",
+   "author": "Séneca",
+   "title": "Epistulae morales ad Lucilium",
+   "language": "la",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/seneca-epistulae-la-f5585b6140d95884.json",
+   "reader": "classics-text-reader.html?work=seneca-epistulae&lang=la&edition=f5585b6140d95884",
+   "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+   "sourceUrn": "urn:cts:latinLit:phi1017.phi015.perseus-lat2",
+   "sha256": "f5585b6140d958846b932afd40e09f59fd6ecc71e3eaaa9c60890431bd69837d",
+   "passages": 2483
   },
   {
    "workId": "seneca-naturales",
@@ -8151,6 +8398,19 @@
    "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
   },
   {
+   "workId": "tacitus-annales",
+   "author": "Tácito",
+   "title": "Annales",
+   "language": "la",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/tacitus-annales-la-a312f40619b81288.json",
+   "reader": "classics-text-reader.html?work=tacitus-annales&lang=la&edition=a312f40619b81288",
+   "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+   "sourceUrn": "urn:cts:latinLit:phi1351.phi005.perseus-lat2",
+   "sha256": "a312f40619b81288a07f80caaf6ceeb94fdd6e7b18a4958a6a4e4ec227448c02",
+   "passages": 752
+  },
+  {
    "workId": "tacitus-dialogus",
    "author": "Tácito (atribución tradicional)",
    "title": "Dialogus de oratoribus",
@@ -8159,6 +8419,19 @@
    "path": "data/classics-corpus/tacitus-dialogus-la.json",
    "reader": "classics-text-reader.html?work=tacitus-dialogus&lang=la",
    "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+  },
+  {
+   "workId": "tacitus-dialogus",
+   "author": "Tácito (atribución tradicional)",
+   "title": "Dialogus de oratoribus",
+   "language": "la",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/tacitus-dialogus-la-dc26cf708c291832.json",
+   "reader": "classics-text-reader.html?work=tacitus-dialogus&lang=la&edition=dc26cf708c291832",
+   "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+   "sourceUrn": "urn:cts:latinLit:phi1351.phi003.perseus-lat2",
+   "sha256": "dc26cf708c2918327845e46846540c9f69a10794324b053263f0fcaf2c3b51fd",
+   "passages": 228
   },
   {
    "workId": "tacitus-germania",
@@ -8171,6 +8444,19 @@
    "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
   },
   {
+   "workId": "tacitus-germania",
+   "author": "Tácito",
+   "title": "Germania",
+   "language": "la",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/tacitus-germania-la-ab310dddb318f489.json",
+   "reader": "classics-text-reader.html?work=tacitus-germania&lang=la&edition=ab310dddb318f489",
+   "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+   "sourceUrn": "urn:cts:latinLit:phi1351.phi002.perseus-lat2",
+   "sha256": "ab310dddb318f4891b00edb13756a2206e0bf71b17bc3e71e133c182954058b9",
+   "passages": 187
+  },
+  {
    "workId": "tacitus-historiae",
    "author": "Tácito",
    "title": "Historiae",
@@ -8179,6 +8465,19 @@
    "path": "data/classics-corpus/tacitus-historiae-la.json",
    "reader": "classics-text-reader.html?work=tacitus-historiae&lang=la",
    "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+  },
+  {
+   "workId": "tacitus-historiae",
+   "author": "Tácito",
+   "title": "Historiae",
+   "language": "la",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/tacitus-historiae-la-202699de8ce4fcde.json",
+   "reader": "classics-text-reader.html?work=tacitus-historiae&lang=la&edition=202699de8ce4fcde",
+   "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+   "sourceUrn": "urn:cts:latinLit:phi1351.phi004.perseus-lat2",
+   "sha256": "202699de8ce4fcde8330ff9bc08e71511c14b7061662fbfecee875149b37a98b",
+   "passages": 411
   },
   {
    "workId": "teocrito-bucolicos",
@@ -8477,6 +8776,19 @@
    "path": "data/classics-corpus/xenophon-anabasis-grc.json",
    "reader": "classics-text-reader.html?work=xenophon-anabasis&lang=grc",
    "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+  },
+  {
+   "workId": "xenophon-anabasis",
+   "author": "Jenofonte",
+   "title": "Ἀνάβασις",
+   "language": "grc",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/xenophon-anabasis-grc-a9fc9e138c5450a9.json",
+   "reader": "classics-text-reader.html?work=xenophon-anabasis&lang=grc&edition=a9fc9e138c5450a9",
+   "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+   "sourceUrn": "urn:cts:greekLit:tlg0032.tlg006.perseus-grc2",
+   "sha256": "a9fc9e138c5450a93c6fc5c90cc131e0c37496595e66ffdd8e214b570242fe3b",
+   "passages": 1464
   },
   {
    "workId": "xenophon-apology",

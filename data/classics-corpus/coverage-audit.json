@@ -4,17 +4,17 @@
   "scope": "Se auditan exclusivamente 271 fichas de obras del catálogo local; no es un censo universal de literatura grecolatina.",
   "method": "Cruce de fichas bibliográficas, vínculos locales, corpus legible, registro de búsqueda y testimonios manuscritos; sin OCR ni verificación externa de los enlaces.",
   "counts": {
-    "cataloguedWorks": 454,
+    "cataloguedWorks": 467,
     "catalogueStatuses": {
       "lectura-local-completa": 24,
-      "lectura-local-parcial": 362,
+      "lectura-local-parcial": 375,
       "fuente-externa-identificada": 54,
       "repertoriado-busqueda-externa": 12,
       "pendiente-de-incorporar": 2
     },
-    "locallyReadableClaims": 386,
-    "indexedTextVersions": 602,
-    "indexedDistinctWorks": 425,
+    "locallyReadableClaims": 399,
+    "indexedTextVersions": 626,
+    "indexedDistinctWorks": 438,
     "manuscriptWitnesses": 107
   },
   "works": [
@@ -522,7 +522,8 @@
         "la"
       ],
       "indexedTextFiles": [
-        "data/classics-corpus/seneca-epistulae-la.json"
+        "data/classics-corpus/seneca-epistulae-la.json",
+        "https://libros.vitruvius-digital-library.org/corpus/seneca-epistulae-la-f5585b6140d95884.json"
       ],
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
@@ -745,7 +746,8 @@
         "la"
       ],
       "indexedTextFiles": [
-        "data/classics-corpus/tacitus-germania-la.json"
+        "data/classics-corpus/tacitus-germania-la.json",
+        "https://libros.vitruvius-digital-library.org/corpus/tacitus-germania-la-ab310dddb318f489.json"
       ],
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
@@ -1641,7 +1643,8 @@
         "la"
       ],
       "indexedTextFiles": [
-        "data/classics-corpus/tacitus-annales-la.json"
+        "data/classics-corpus/tacitus-annales-la.json",
+        "https://libros.vitruvius-digital-library.org/corpus/tacitus-annales-la-a312f40619b81288.json"
       ],
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
@@ -1663,7 +1666,8 @@
         "la"
       ],
       "indexedTextFiles": [
-        "data/classics-corpus/tacitus-historiae-la.json"
+        "data/classics-corpus/tacitus-historiae-la.json",
+        "https://libros.vitruvius-digital-library.org/corpus/tacitus-historiae-la-202699de8ce4fcde.json"
       ],
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
@@ -2534,7 +2538,8 @@
       ],
       "indexedTextFiles": [
         "data/classics-corpus/xenophon-anabasis-en.json",
-        "data/classics-corpus/xenophon-anabasis-grc.json"
+        "data/classics-corpus/xenophon-anabasis-grc.json",
+        "https://libros.vitruvius-digital-library.org/corpus/xenophon-anabasis-grc-a9fc9e138c5450a9.json"
       ],
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
@@ -2558,7 +2563,8 @@
       ],
       "indexedTextFiles": [
         "data/classics-corpus/plato-republic-en.json",
-        "data/classics-corpus/plato-republic-grc.json"
+        "data/classics-corpus/plato-republic-grc.json",
+        "https://libros.vitruvius-digital-library.org/corpus/plato-republic-grc-d80eccff4bc30d41.json"
       ],
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
@@ -3332,7 +3338,8 @@
       ],
       "indexedTextFiles": [
         "data/classics-corpus/plato-symposium-en.json",
-        "data/classics-corpus/plato-symposium-grc.json"
+        "data/classics-corpus/plato-symposium-grc.json",
+        "https://libros.vitruvius-digital-library.org/corpus/plato-symposium-grc-faf96d0dfa371f66.json"
       ],
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
@@ -3356,7 +3363,8 @@
       ],
       "indexedTextFiles": [
         "data/classics-corpus/plato-phaedo-en.json",
-        "data/classics-corpus/plato-phaedo-grc.json"
+        "data/classics-corpus/plato-phaedo-grc.json",
+        "https://libros.vitruvius-digital-library.org/corpus/plato-phaedo-grc-891ade35e86fb2a1.json"
       ],
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
@@ -3405,7 +3413,8 @@
       ],
       "indexedTextFiles": [
         "data/classics-corpus/plato-timaeus-en.json",
-        "data/classics-corpus/plato-timaeus-grc.json"
+        "data/classics-corpus/plato-timaeus-grc.json",
+        "https://libros.vitruvius-digital-library.org/corpus/plato-timaeus-grc-2590a7fe55f9b9cb.json"
       ],
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
@@ -3454,7 +3463,8 @@
       ],
       "indexedTextFiles": [
         "data/classics-corpus/plato-phaedrus-en.json",
-        "data/classics-corpus/plato-phaedrus-grc.json"
+        "data/classics-corpus/plato-phaedrus-grc.json",
+        "https://libros.vitruvius-digital-library.org/corpus/plato-phaedrus-grc-7dff6138449b836a.json"
       ],
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
@@ -4313,7 +4323,8 @@
         "la"
       ],
       "indexedTextFiles": [
-        "data/classics-corpus/tacitus-dialogus-la.json"
+        "data/classics-corpus/tacitus-dialogus-la.json",
+        "https://libros.vitruvius-digital-library.org/corpus/tacitus-dialogus-la-dc26cf708c291832.json"
       ],
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
@@ -8983,6 +8994,201 @@
       ],
       "indexedTextFiles": [
         "https://libros.vitruvius-digital-library.org/corpus/cts-stoa0275-stoa025-la-63e7f4968e203cbe.json"
+      ],
+      "manuscriptRecords": 0,
+      "hasManuscriptRecord": false
+    },
+    {
+      "id": "cts-tlg0530-tlg032",
+      "author": "Pseudo-Galeno",
+      "title": "De theriaca ad Pamphilianum",
+      "originalLanguage": "grc",
+      "catalogueStatus": "lectura-local-parcial",
+      "indexedTextLanguages": [
+        "grc"
+      ],
+      "indexedTextFiles": [
+        "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0530-tlg032-grc-1031d220105ceff8.json"
+      ],
+      "manuscriptRecords": 0,
+      "hasManuscriptRecord": false
+    },
+    {
+      "id": "cts-tlg0530-tlg043",
+      "author": "Pseudo-Galeno",
+      "title": "De optima secta ad Thrasybulum",
+      "originalLanguage": "grc",
+      "catalogueStatus": "lectura-local-parcial",
+      "indexedTextLanguages": [
+        "grc"
+      ],
+      "indexedTextFiles": [
+        "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0530-tlg043-grc-97488bd40fc39d7b.json"
+      ],
+      "manuscriptRecords": 0,
+      "hasManuscriptRecord": false
+    },
+    {
+      "id": "cts-tlg0533-tlg003",
+      "author": "Calímaco",
+      "title": "Epigrams",
+      "originalLanguage": "grc",
+      "catalogueStatus": "lectura-local-parcial",
+      "indexedTextLanguages": [
+        "grc"
+      ],
+      "indexedTextFiles": [
+        "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0533-tlg003-grc-fe61b058aa732923.json"
+      ],
+      "manuscriptRecords": 0,
+      "hasManuscriptRecord": false
+    },
+    {
+      "id": "cts-tlg0533-tlg004",
+      "author": "Calímaco",
+      "title": "Epigrams and Fragments",
+      "originalLanguage": "grc",
+      "catalogueStatus": "lectura-local-parcial",
+      "indexedTextLanguages": [
+        "grc"
+      ],
+      "indexedTextFiles": [
+        "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0533-tlg004-grc-5cb0e288f9aea15e.json"
+      ],
+      "manuscriptRecords": 0,
+      "hasManuscriptRecord": false
+    },
+    {
+      "id": "cts-tlg0533-tlg006",
+      "author": "Calímaco",
+      "title": "Aetia",
+      "originalLanguage": "grc",
+      "catalogueStatus": "lectura-local-parcial",
+      "indexedTextLanguages": [
+        "grc"
+      ],
+      "indexedTextFiles": [
+        "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0533-tlg006-grc-5afb7f2d74eb4d6d.json"
+      ],
+      "manuscriptRecords": 0,
+      "hasManuscriptRecord": false
+    },
+    {
+      "id": "cts-tlg0533-tlg009",
+      "author": "Calímaco",
+      "title": "Hecala",
+      "originalLanguage": "grc",
+      "catalogueStatus": "lectura-local-parcial",
+      "indexedTextLanguages": [
+        "grc"
+      ],
+      "indexedTextFiles": [
+        "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0533-tlg009-grc-3ae92620ed889a96.json"
+      ],
+      "manuscriptRecords": 0,
+      "hasManuscriptRecord": false
+    },
+    {
+      "id": "cts-tlg0533-tlg007",
+      "author": "Calímaco",
+      "title": "Iambi",
+      "originalLanguage": "grc",
+      "catalogueStatus": "lectura-local-parcial",
+      "indexedTextLanguages": [
+        "grc"
+      ],
+      "indexedTextFiles": [
+        "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0533-tlg007-grc-4cfbe2e3a5782918.json"
+      ],
+      "manuscriptRecords": 0,
+      "hasManuscriptRecord": false
+    },
+    {
+      "id": "cts-tlg0533-tlg015",
+      "author": "Calímaco",
+      "title": "Hymn to Zeus",
+      "originalLanguage": "grc",
+      "catalogueStatus": "lectura-local-parcial",
+      "indexedTextLanguages": [
+        "grc"
+      ],
+      "indexedTextFiles": [
+        "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0533-tlg015-grc-e34a760fb94ffba7.json"
+      ],
+      "manuscriptRecords": 0,
+      "hasManuscriptRecord": false
+    },
+    {
+      "id": "cts-tlg0533-tlg017",
+      "author": "Calímaco",
+      "title": "Hymn to Artemis",
+      "originalLanguage": "grc",
+      "catalogueStatus": "lectura-local-parcial",
+      "indexedTextLanguages": [
+        "grc"
+      ],
+      "indexedTextFiles": [
+        "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0533-tlg017-grc-d20e2cf4468f487a.json"
+      ],
+      "manuscriptRecords": 0,
+      "hasManuscriptRecord": false
+    },
+    {
+      "id": "cts-stoa0275-stoa029",
+      "author": "Tertuliano",
+      "title": "De Virginibus Velandis",
+      "originalLanguage": "la",
+      "catalogueStatus": "lectura-local-parcial",
+      "indexedTextLanguages": [
+        "la"
+      ],
+      "indexedTextFiles": [
+        "https://libros.vitruvius-digital-library.org/corpus/cts-stoa0275-stoa029-la-f954438d0a9c9cc6.json"
+      ],
+      "manuscriptRecords": 0,
+      "hasManuscriptRecord": false
+    },
+    {
+      "id": "cts-stoa0275-stoa030",
+      "author": "Tertuliano",
+      "title": "Scorpiace",
+      "originalLanguage": "la",
+      "catalogueStatus": "lectura-local-parcial",
+      "indexedTextLanguages": [
+        "la"
+      ],
+      "indexedTextFiles": [
+        "https://libros.vitruvius-digital-library.org/corpus/cts-stoa0275-stoa030-la-caf071f43b011c00.json"
+      ],
+      "manuscriptRecords": 0,
+      "hasManuscriptRecord": false
+    },
+    {
+      "id": "cts-tlg0533-tlg016",
+      "author": "Calímaco",
+      "title": "Hymn to Apollo",
+      "originalLanguage": "grc",
+      "catalogueStatus": "lectura-local-parcial",
+      "indexedTextLanguages": [
+        "grc"
+      ],
+      "indexedTextFiles": [
+        "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0533-tlg016-grc-e2038edcfd1ab657.json"
+      ],
+      "manuscriptRecords": 0,
+      "hasManuscriptRecord": false
+    },
+    {
+      "id": "cts-stoa0276-stoa002",
+      "author": "Pseudo-Tertuliano",
+      "title": "Ad Uxorem",
+      "originalLanguage": "la",
+      "catalogueStatus": "lectura-local-parcial",
+      "indexedTextLanguages": [
+        "la"
+      ],
+      "indexedTextFiles": [
+        "https://libros.vitruvius-digital-library.org/corpus/cts-stoa0276-stoa002-la-1dc24610a655b146.json"
       ],
       "manuscriptRecords": 0,
       "hasManuscriptRecord": false

@@ -2,13 +2,13 @@
   "schema": "vitruvius-perseus-provenance-audit-v1",
   "generated": "2026-11-23",
   "scope": "Catálogo principal y ediciones TEI originales acreditadas y archivadas en R2; no certifica servicios externos",
-  "method": "Candidate PHI/TLG work codes are not CTS edition URNs. Source descriptions copied from the local index are claims to audit, not proof of an external canonical edition or an institutional link. No automatic CTS URNs or permanent URLs are invented. Incorporaciones R2: edición declarada en TEI fuente, SHA256, licencia y localizador comprobados; no se presume afiliación externa. Incorporaciones R2: edición declarada en TEI fuente, SHA256, licencia y localizador comprobados; no se presume afiliación externa. Incorporaciones R2: edición declarada en TEI fuente, SHA256, licencia y localizador comprobados; no se presume afiliación externa. Incorporaciones R2: edición declarada en TEI fuente, SHA256, licencia y localizador comprobados; no se presume afiliación externa. Incorporaciones R2: edición declarada en TEI fuente, SHA256, licencia y localizador comprobados; no se presume afiliación externa. Incorporaciones R2: edición declarada en TEI fuente, SHA256, licencia y localizador comprobados; no se presume afiliación externa. Incorporaciones R2: edición declarada en TEI fuente, SHA256, licencia y localizador comprobados; no se presume afiliación externa. Incorporaciones R2: edición declarada en TEI fuente, SHA256, licencia y localizador comprobados; no se presume afiliación externa. Incorporaciones R2: edición declarada en TEI fuente, SHA256, licencia y localizador comprobados; no se presume afiliación externa. Incorporaciones R2: edición declarada en TEI fuente, SHA256, licencia y localizador comprobados; no se presume afiliación externa. Incorporaciones R2: edición declarada en TEI fuente, SHA256, licencia y localizador comprobados; no se presume afiliación externa. Incorporaciones R2: edición declarada en TEI fuente, SHA256, licencia y localizador comprobados; no se presume afiliación externa. Incorporaciones R2: edición declarada en TEI fuente, SHA256, licencia y localizador comprobados; no se presume afiliación externa. Incorporaciones R2: edición declarada en TEI fuente, SHA256, licencia y localizador comprobados; no se presume afiliación externa. Incorporaciones R2: edición declarada en TEI fuente, SHA256, licencia y localizador comprobados; no se presume afiliación externa. Incorporaciones R2: edición declarada en TEI fuente, SHA256, licencia y localizador comprobados; no se presume afiliación externa.",
+  "method": "Candidate PHI/TLG work codes are not CTS edition URNs. Source descriptions copied from the local index are claims to audit, not proof of an external canonical edition or an institutional link. No automatic CTS URNs or permanent URLs are invented. Incorporaciones R2: edición declarada en TEI fuente, SHA256, licencia y localizador comprobados; no se presume afiliación externa. Incorporaciones R2: edición declarada en TEI fuente, SHA256, licencia y localizador comprobados; no se presume afiliación externa. Incorporaciones R2: edición declarada en TEI fuente, SHA256, licencia y localizador comprobados; no se presume afiliación externa. Incorporaciones R2: edición declarada en TEI fuente, SHA256, licencia y localizador comprobados; no se presume afiliación externa. Incorporaciones R2: edición declarada en TEI fuente, SHA256, licencia y localizador comprobados; no se presume afiliación externa. Incorporaciones R2: edición declarada en TEI fuente, SHA256, licencia y localizador comprobados; no se presume afiliación externa. Incorporaciones R2: edición declarada en TEI fuente, SHA256, licencia y localizador comprobados; no se presume afiliación externa. Incorporaciones R2: edición declarada en TEI fuente, SHA256, licencia y localizador comprobados; no se presume afiliación externa. Incorporaciones R2: edición declarada en TEI fuente, SHA256, licencia y localizador comprobados; no se presume afiliación externa. Incorporaciones R2: edición declarada en TEI fuente, SHA256, licencia y localizador comprobados; no se presume afiliación externa. Incorporaciones R2: edición declarada en TEI fuente, SHA256, licencia y localizador comprobados; no se presume afiliación externa. Incorporaciones R2: edición declarada en TEI fuente, SHA256, licencia y localizador comprobados; no se presume afiliación externa. Incorporaciones R2: edición declarada en TEI fuente, SHA256, licencia y localizador comprobados; no se presume afiliación externa. Incorporaciones R2: edición declarada en TEI fuente, SHA256, licencia y localizador comprobados; no se presume afiliación externa. Incorporaciones R2: edición declarada en TEI fuente, SHA256, licencia y localizador comprobados; no se presume afiliación externa. Incorporaciones R2: edición declarada en TEI fuente, SHA256, licencia y localizador comprobados; no se presume afiliación externa. Incorporaciones R2: edición declarada en TEI fuente, SHA256, licencia y localizador comprobados; no se presume afiliación externa.",
   "counts": {
-    "works": 454,
-    "worksWithCandidateWorkCodes": 362,
-    "versions": 429,
+    "works": 467,
+    "worksWithCandidateWorkCodes": 375,
+    "versions": 442,
     "worksWithPerseusSourceDescription": 142,
-    "verifiedEditionUrns": 184
+    "verifiedEditionUrns": 197
   },
   "links": {
     "scaife": "https://scaife.perseus.org/",
@@ -11846,6 +11846,409 @@
       "otherSourceEditions": [],
       "r2TextUrl": "https://libros.vitruvius-digital-library.org/corpus/cts-stoa0275-stoa025-la-63e7f4968e203cbe.json",
       "r2Sha256": "63e7f4968e203cbe59dbc85febde3e57086625d358eb80c1e6b81c097c2c0347",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "cts-tlg0530-tlg032",
+      "author": "Pseudo-Galeno",
+      "title": "De theriaca ad Pamphilianum",
+      "originalLanguage": "grc",
+      "sourceReadiness": "original_r2_tei_publicado_con_sha256",
+      "originalIndexed": false,
+      "originalR2Registered": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "tlg0530.tlg032"
+      ],
+      "versions": [
+        {
+          "language": "grc",
+          "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0530-tlg032-grc-1031d220105ceff8.json",
+          "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "reader": "classics-text-reader.html?work=cts-tlg0530-tlg032&lang=grc&edition=1031d220105ceff8"
+        }
+      ],
+      "ctsEditionUrn": "urn:cts:greekLit:tlg0530.tlg032.1st1K-grc1",
+      "ctsStatus": "declared_and_checked_in_source_tei_header",
+      "ctsSourceUri": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0530/tlg032/tlg0530.tlg032.1st1K-grc1.xml",
+      "ctsEvidence": "TEI XML original, div[@type=edition]/@n, edición y SHA256 verificados mediante fuente R2: 6acf4e34195a19d7a9260a3620de494194718179da14f69347853a7243cf8e50",
+      "ctsNote": "URN de edición declarada en TEI; no implica resolución CTS pública ni cotejo de manuscritos.",
+      "sourceRights": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "otherSourceEditions": [],
+      "r2TextUrl": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0530-tlg032-grc-1031d220105ceff8.json",
+      "r2Sha256": "1031d220105ceff897ce746c896c8b968ae7299140c17580c1762add3c6e7cc4",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "cts-tlg0530-tlg043",
+      "author": "Pseudo-Galeno",
+      "title": "De optima secta ad Thrasybulum",
+      "originalLanguage": "grc",
+      "sourceReadiness": "original_r2_tei_publicado_con_sha256",
+      "originalIndexed": false,
+      "originalR2Registered": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "tlg0530.tlg043"
+      ],
+      "versions": [
+        {
+          "language": "grc",
+          "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0530-tlg043-grc-97488bd40fc39d7b.json",
+          "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "reader": "classics-text-reader.html?work=cts-tlg0530-tlg043&lang=grc&edition=97488bd40fc39d7b"
+        }
+      ],
+      "ctsEditionUrn": "urn:cts:greekLit:tlg0530.tlg043.1st1K-grc1",
+      "ctsStatus": "declared_and_checked_in_source_tei_header",
+      "ctsSourceUri": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0530/tlg043/tlg0530.tlg043.1st1K-grc1.xml",
+      "ctsEvidence": "TEI XML original, div[@type=edition]/@n, edición y SHA256 verificados mediante fuente R2: 31a8691eb5ff9fbaefaae3b36c2a7efa969e376317b6de721149582f316974a1",
+      "ctsNote": "URN de edición declarada en TEI; no implica resolución CTS pública ni cotejo de manuscritos.",
+      "sourceRights": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "otherSourceEditions": [],
+      "r2TextUrl": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0530-tlg043-grc-97488bd40fc39d7b.json",
+      "r2Sha256": "97488bd40fc39d7b238770775d0a17fd25cb3fb7fd54baac516e64acd084b67a",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "cts-tlg0533-tlg003",
+      "author": "Calímaco",
+      "title": "Epigrams",
+      "originalLanguage": "grc",
+      "sourceReadiness": "original_r2_tei_publicado_con_sha256",
+      "originalIndexed": false,
+      "originalR2Registered": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "tlg0533.tlg003"
+      ],
+      "versions": [
+        {
+          "language": "grc",
+          "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0533-tlg003-grc-fe61b058aa732923.json",
+          "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "reader": "classics-text-reader.html?work=cts-tlg0533-tlg003&lang=grc&edition=fe61b058aa732923"
+        }
+      ],
+      "ctsEditionUrn": "urn:cts:greekLit:tlg0533.tlg003.perseus-grc2",
+      "ctsStatus": "declared_and_checked_in_source_tei_header",
+      "ctsSourceUri": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0533/tlg003/tlg0533.tlg003.perseus-grc2.xml",
+      "ctsEvidence": "TEI XML original, div[@type=edition]/@n, edición y SHA256 verificados mediante fuente R2: b0616f107363cad1efeacc4fa2fa8a38b6efb5a0a47a75375ae395a845878d4a",
+      "ctsNote": "URN de edición declarada en TEI; no implica resolución CTS pública ni cotejo de manuscritos.",
+      "sourceRights": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "otherSourceEditions": [],
+      "r2TextUrl": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0533-tlg003-grc-fe61b058aa732923.json",
+      "r2Sha256": "fe61b058aa732923e32b94c22a5bc6ee24294e7931a54f633b2b929c895d79b4",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "cts-tlg0533-tlg004",
+      "author": "Calímaco",
+      "title": "Epigrams and Fragments",
+      "originalLanguage": "grc",
+      "sourceReadiness": "original_r2_tei_publicado_con_sha256",
+      "originalIndexed": false,
+      "originalR2Registered": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "tlg0533.tlg004"
+      ],
+      "versions": [
+        {
+          "language": "grc",
+          "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0533-tlg004-grc-5cb0e288f9aea15e.json",
+          "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "reader": "classics-text-reader.html?work=cts-tlg0533-tlg004&lang=grc&edition=5cb0e288f9aea15e"
+        }
+      ],
+      "ctsEditionUrn": "urn:cts:greekLit:tlg0533.tlg004.perseus-grc2",
+      "ctsStatus": "declared_and_checked_in_source_tei_header",
+      "ctsSourceUri": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0533/tlg004/tlg0533.tlg004.perseus-grc2.xml",
+      "ctsEvidence": "TEI XML original, div[@type=edition]/@n, edición y SHA256 verificados mediante fuente R2: 7226cc4694b8e5d3e6e5104c8a8ebc96c5619c97aeedf97f5fffcbfbbb446ab7",
+      "ctsNote": "URN de edición declarada en TEI; no implica resolución CTS pública ni cotejo de manuscritos.",
+      "sourceRights": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "otherSourceEditions": [],
+      "r2TextUrl": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0533-tlg004-grc-5cb0e288f9aea15e.json",
+      "r2Sha256": "5cb0e288f9aea15e2073f522abc24c382cbddf655bceadb2842181cc28b61cca",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "cts-tlg0533-tlg006",
+      "author": "Calímaco",
+      "title": "Aetia",
+      "originalLanguage": "grc",
+      "sourceReadiness": "original_r2_tei_publicado_con_sha256",
+      "originalIndexed": false,
+      "originalR2Registered": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "tlg0533.tlg006"
+      ],
+      "versions": [
+        {
+          "language": "grc",
+          "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0533-tlg006-grc-5afb7f2d74eb4d6d.json",
+          "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "reader": "classics-text-reader.html?work=cts-tlg0533-tlg006&lang=grc&edition=5afb7f2d74eb4d6d"
+        }
+      ],
+      "ctsEditionUrn": "urn:cts:greekLit:tlg0533.tlg006.1st1K-grc1",
+      "ctsStatus": "declared_and_checked_in_source_tei_header",
+      "ctsSourceUri": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0533/tlg006/tlg0533.tlg006.1st1K-grc1.xml",
+      "ctsEvidence": "TEI XML original, div[@type=edition]/@n, edición y SHA256 verificados mediante fuente R2: 36942c35590c2e011d7f0d86b28befa3a103faebe32f571586e49100905b325c",
+      "ctsNote": "URN de edición declarada en TEI; no implica resolución CTS pública ni cotejo de manuscritos.",
+      "sourceRights": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "otherSourceEditions": [],
+      "r2TextUrl": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0533-tlg006-grc-5afb7f2d74eb4d6d.json",
+      "r2Sha256": "5afb7f2d74eb4d6d669aa1f7a1ca1033a264c778e34169df74b36061b21b82e5",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "cts-tlg0533-tlg009",
+      "author": "Calímaco",
+      "title": "Hecala",
+      "originalLanguage": "grc",
+      "sourceReadiness": "original_r2_tei_publicado_con_sha256",
+      "originalIndexed": false,
+      "originalR2Registered": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "tlg0533.tlg009"
+      ],
+      "versions": [
+        {
+          "language": "grc",
+          "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0533-tlg009-grc-3ae92620ed889a96.json",
+          "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "reader": "classics-text-reader.html?work=cts-tlg0533-tlg009&lang=grc&edition=3ae92620ed889a96"
+        }
+      ],
+      "ctsEditionUrn": "urn:cts:greekLit:tlg0533.tlg009.1st1K-grc1",
+      "ctsStatus": "declared_and_checked_in_source_tei_header",
+      "ctsSourceUri": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0533/tlg009/tlg0533.tlg009.1st1K-grc1.xml",
+      "ctsEvidence": "TEI XML original, div[@type=edition]/@n, edición y SHA256 verificados mediante fuente R2: 1114c53c2a00abd9ba3d4f40df97f2bd3cb617984d5b3a5983f8d18b7aa97e04",
+      "ctsNote": "URN de edición declarada en TEI; no implica resolución CTS pública ni cotejo de manuscritos.",
+      "sourceRights": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "otherSourceEditions": [],
+      "r2TextUrl": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0533-tlg009-grc-3ae92620ed889a96.json",
+      "r2Sha256": "3ae92620ed889a964f066488bfe2b5d32eb189725c04a44f55199ad8f6d3240d",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "cts-tlg0533-tlg007",
+      "author": "Calímaco",
+      "title": "Iambi",
+      "originalLanguage": "grc",
+      "sourceReadiness": "original_r2_tei_publicado_con_sha256",
+      "originalIndexed": false,
+      "originalR2Registered": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "tlg0533.tlg007"
+      ],
+      "versions": [
+        {
+          "language": "grc",
+          "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0533-tlg007-grc-4cfbe2e3a5782918.json",
+          "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "reader": "classics-text-reader.html?work=cts-tlg0533-tlg007&lang=grc&edition=4cfbe2e3a5782918"
+        }
+      ],
+      "ctsEditionUrn": "urn:cts:greekLit:tlg0533.tlg007.1st1K-grc1",
+      "ctsStatus": "declared_and_checked_in_source_tei_header",
+      "ctsSourceUri": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0533/tlg007/tlg0533.tlg007.1st1K-grc1.xml",
+      "ctsEvidence": "TEI XML original, div[@type=edition]/@n, edición y SHA256 verificados mediante fuente R2: f5daa3722983e66c27f3ba467a1b0f3dbda4cff987bf59107fa960b70259cb5b",
+      "ctsNote": "URN de edición declarada en TEI; no implica resolución CTS pública ni cotejo de manuscritos.",
+      "sourceRights": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "otherSourceEditions": [],
+      "r2TextUrl": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0533-tlg007-grc-4cfbe2e3a5782918.json",
+      "r2Sha256": "4cfbe2e3a5782918099b8f73fe5a725d508a48dc76c064913b67477935a35456",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "cts-tlg0533-tlg015",
+      "author": "Calímaco",
+      "title": "Hymn to Zeus",
+      "originalLanguage": "grc",
+      "sourceReadiness": "original_r2_tei_publicado_con_sha256",
+      "originalIndexed": false,
+      "originalR2Registered": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "tlg0533.tlg015"
+      ],
+      "versions": [
+        {
+          "language": "grc",
+          "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0533-tlg015-grc-e34a760fb94ffba7.json",
+          "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "reader": "classics-text-reader.html?work=cts-tlg0533-tlg015&lang=grc&edition=e34a760fb94ffba7"
+        }
+      ],
+      "ctsEditionUrn": "urn:cts:greekLit:tlg0533.tlg015.perseus-grc4",
+      "ctsStatus": "declared_and_checked_in_source_tei_header",
+      "ctsSourceUri": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0533/tlg015/tlg0533.tlg015.perseus-grc4.xml",
+      "ctsEvidence": "TEI XML original, div[@type=edition]/@n, edición y SHA256 verificados mediante fuente R2: ead1ee12d28a348a80cff538e8fa7292bdee820b763cc58b8c072aa85b1956c2",
+      "ctsNote": "URN de edición declarada en TEI; no implica resolución CTS pública ni cotejo de manuscritos.",
+      "sourceRights": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "otherSourceEditions": [],
+      "r2TextUrl": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0533-tlg015-grc-e34a760fb94ffba7.json",
+      "r2Sha256": "e34a760fb94ffba77f2ff5400927d307da635dddd486d501dddf96fae3cf971f",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "cts-tlg0533-tlg017",
+      "author": "Calímaco",
+      "title": "Hymn to Artemis",
+      "originalLanguage": "grc",
+      "sourceReadiness": "original_r2_tei_publicado_con_sha256",
+      "originalIndexed": false,
+      "originalR2Registered": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "tlg0533.tlg017"
+      ],
+      "versions": [
+        {
+          "language": "grc",
+          "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0533-tlg017-grc-d20e2cf4468f487a.json",
+          "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "reader": "classics-text-reader.html?work=cts-tlg0533-tlg017&lang=grc&edition=d20e2cf4468f487a"
+        }
+      ],
+      "ctsEditionUrn": "urn:cts:greekLit:tlg0533.tlg017.perseus-grc4",
+      "ctsStatus": "declared_and_checked_in_source_tei_header",
+      "ctsSourceUri": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0533/tlg017/tlg0533.tlg017.perseus-grc4.xml",
+      "ctsEvidence": "TEI XML original, div[@type=edition]/@n, edición y SHA256 verificados mediante fuente R2: abadb17528f3db84b216f77e84e60a4980d276cf9b97d8fa20eb3fff463ab973",
+      "ctsNote": "URN de edición declarada en TEI; no implica resolución CTS pública ni cotejo de manuscritos.",
+      "sourceRights": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "otherSourceEditions": [],
+      "r2TextUrl": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0533-tlg017-grc-d20e2cf4468f487a.json",
+      "r2Sha256": "d20e2cf4468f487af51032b3a9bc39962b707519233ee49f84911700e5dc31fd",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "cts-stoa0275-stoa029",
+      "author": "Tertuliano",
+      "title": "De Virginibus Velandis",
+      "originalLanguage": "la",
+      "sourceReadiness": "original_r2_tei_publicado_con_sha256",
+      "originalIndexed": false,
+      "originalR2Registered": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "stoa0275.stoa029"
+      ],
+      "versions": [
+        {
+          "language": "la",
+          "path": "https://libros.vitruvius-digital-library.org/corpus/cts-stoa0275-stoa029-la-f954438d0a9c9cc6.json",
+          "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "reader": "classics-text-reader.html?work=cts-stoa0275-stoa029&lang=la&edition=f954438d0a9c9cc6"
+        }
+      ],
+      "ctsEditionUrn": "urn:cts:latinLit:stoa0275.stoa029.opp-lat1",
+      "ctsStatus": "declared_and_checked_in_source_tei_header",
+      "ctsSourceUri": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/stoa0275/stoa029/stoa0275.stoa029.opp-lat1.xml",
+      "ctsEvidence": "TEI XML original, div[@type=edition]/@n, edición y SHA256 verificados mediante fuente R2: d7cec1c65930ce8f2c953aed7daf47ae0112e17e0c28dc1b29086302a58b81b7",
+      "ctsNote": "URN de edición declarada en TEI; no implica resolución CTS pública ni cotejo de manuscritos.",
+      "sourceRights": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "otherSourceEditions": [],
+      "r2TextUrl": "https://libros.vitruvius-digital-library.org/corpus/cts-stoa0275-stoa029-la-f954438d0a9c9cc6.json",
+      "r2Sha256": "f954438d0a9c9cc6b3aa3ef02fef8356fb2307538ae2e3e7610f974e377d823a",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "cts-stoa0275-stoa030",
+      "author": "Tertuliano",
+      "title": "Scorpiace",
+      "originalLanguage": "la",
+      "sourceReadiness": "original_r2_tei_publicado_con_sha256",
+      "originalIndexed": false,
+      "originalR2Registered": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "stoa0275.stoa030"
+      ],
+      "versions": [
+        {
+          "language": "la",
+          "path": "https://libros.vitruvius-digital-library.org/corpus/cts-stoa0275-stoa030-la-caf071f43b011c00.json",
+          "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "reader": "classics-text-reader.html?work=cts-stoa0275-stoa030&lang=la&edition=caf071f43b011c00"
+        }
+      ],
+      "ctsEditionUrn": "urn:cts:latinLit:stoa0275.stoa030.opp-lat1",
+      "ctsStatus": "declared_and_checked_in_source_tei_header",
+      "ctsSourceUri": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/stoa0275/stoa030/stoa0275.stoa030.opp-lat1.xml",
+      "ctsEvidence": "TEI XML original, div[@type=edition]/@n, edición y SHA256 verificados mediante fuente R2: b89e70a4608f95f05f1c1c97cceee607d99d07932fb17294b622251c0ee862b1",
+      "ctsNote": "URN de edición declarada en TEI; no implica resolución CTS pública ni cotejo de manuscritos.",
+      "sourceRights": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "otherSourceEditions": [],
+      "r2TextUrl": "https://libros.vitruvius-digital-library.org/corpus/cts-stoa0275-stoa030-la-caf071f43b011c00.json",
+      "r2Sha256": "caf071f43b011c005e520bc96e56a5640a7dd044076a3aa92342cebe0b497a19",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "cts-tlg0533-tlg016",
+      "author": "Calímaco",
+      "title": "Hymn to Apollo",
+      "originalLanguage": "grc",
+      "sourceReadiness": "original_r2_tei_publicado_con_sha256",
+      "originalIndexed": false,
+      "originalR2Registered": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "tlg0533.tlg016"
+      ],
+      "versions": [
+        {
+          "language": "grc",
+          "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0533-tlg016-grc-e2038edcfd1ab657.json",
+          "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "reader": "classics-text-reader.html?work=cts-tlg0533-tlg016&lang=grc&edition=e2038edcfd1ab657"
+        }
+      ],
+      "ctsEditionUrn": "urn:cts:greekLit:tlg0533.tlg016.perseus-grc4",
+      "ctsStatus": "declared_and_checked_in_source_tei_header",
+      "ctsSourceUri": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0533/tlg016/tlg0533.tlg016.perseus-grc4.xml",
+      "ctsEvidence": "TEI XML original, div[@type=edition]/@n, edición y SHA256 verificados mediante fuente R2: 8a5b4671be1a1e567f49070c68ca1bab7f56ee3c80fc2f0489f3fd1aa2497068",
+      "ctsNote": "URN de edición declarada en TEI; no implica resolución CTS pública ni cotejo de manuscritos.",
+      "sourceRights": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "otherSourceEditions": [],
+      "r2TextUrl": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0533-tlg016-grc-e2038edcfd1ab657.json",
+      "r2Sha256": "e2038edcfd1ab6578f1bb0ea34e6dedf55a9b294ace7db9146a1f8825a145462",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "cts-stoa0276-stoa002",
+      "author": "Pseudo-Tertuliano",
+      "title": "Ad Uxorem",
+      "originalLanguage": "la",
+      "sourceReadiness": "original_r2_tei_publicado_con_sha256",
+      "originalIndexed": false,
+      "originalR2Registered": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "stoa0276.stoa002"
+      ],
+      "versions": [
+        {
+          "language": "la",
+          "path": "https://libros.vitruvius-digital-library.org/corpus/cts-stoa0276-stoa002-la-1dc24610a655b146.json",
+          "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "reader": "classics-text-reader.html?work=cts-stoa0276-stoa002&lang=la&edition=1dc24610a655b146"
+        }
+      ],
+      "ctsEditionUrn": "urn:cts:latinLit:stoa0276.stoa002.opp-lat1",
+      "ctsStatus": "declared_and_checked_in_source_tei_header",
+      "ctsSourceUri": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/stoa0276/stoa002/stoa0276.stoa002.opp-lat1.xml",
+      "ctsEvidence": "TEI XML original, div[@type=edition]/@n, edición y SHA256 verificados mediante fuente R2: c31542c1aaccd30d25c59fc5865e6569668c2ec1526d07c0ede219891f690fe3",
+      "ctsNote": "URN de edición declarada en TEI; no implica resolución CTS pública ni cotejo de manuscritos.",
+      "sourceRights": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "otherSourceEditions": [],
+      "r2TextUrl": "https://libros.vitruvius-digital-library.org/corpus/cts-stoa0276-stoa002-la-1dc24610a655b146.json",
+      "r2Sha256": "1dc24610a655b14647945490dc90fa0ea01cee85766573567e787467697647b3",
       "perseusAffiliation": false
     }
   ]
