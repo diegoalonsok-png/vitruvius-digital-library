@@ -1,10 +1,10 @@
 {
  "schema": "vdl-classics-expansion-manifest-v1",
- "generated": "2026-11-23T00:49:03.181842+00:00",
+ "generated": "2026-11-23T02:51:33.167420+00:00",
  "discovery": {
-  "sourceRecords": 1948,
-  "alreadyIndexedCatalogueWorks": 155,
-  "pendingGroups": 1853,
+  "sourceRecords": 1936,
+  "alreadyIndexedCatalogueWorks": 167,
+  "pendingGroups": 1841,
   "policy": "Una obra bibliográfica, múltiples ediciones identificadas por URN y hash; sin sustituir ni duplicar archivos",
   "githubTextFiles": 450,
   "githubUnregisteredFiles": 14,
@@ -6926,6 +6926,473 @@
    "characters": 67812,
    "bytes": 194584,
    "url": "https://libros.vitruvius-digital-library.org/corpus/terentius-heautontimorumenos-la-55b31ab48b5830c4.json"
+  },
+  {
+   "workId": "cts-phi0474-phi007",
+   "author": "Cicerón",
+   "title": "Pro Fonteio",
+   "language": "la",
+   "dating": "106–43 a. C.",
+   "sources": [
+    {
+     "title": "Pro M. Fonteio",
+     "titleLanguage": "lat",
+     "author": "M. Tullius Cicero",
+     "editors": [
+      "Albert Curtis Clark"
+     ],
+     "bibliography": "M. Tullius Cicero Orationes Albert Curtis Clark Oxford Clarendon 1911 6 Pro Tullio; Pro Fonteio; Pro Sulla; Pro Archia; Pro Plancio; Pro Scauro Scriptorum Classicorum Bibliotheca Oxoniensis HathiTrust Internet Archive",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+      }
+     ],
+     "editionUrn": "urn:cts:latinLit:phi0474.phi007.perseus-lat2",
+     "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0474/phi007/phi0474.phi007.perseus-lat2.xml",
+     "sourceSha256": "9835ad6944af1db32af8ccf2aaf1d803c6e010f71170966e0fd792db14172c1c",
+     "sourceReferences": [
+      "https://hdl.handle.net/2027/njp.32101073249417?urlappend=%3Bseq=42%3Bownerid=13510798896722459-54",
+      "https://archive.org/details/orationes0006cice/page/n41/mode/2up"
+     ],
+     "publicationYear": "1911",
+     "publisher": "Clarendon",
+     "publicationPlace": "Oxford",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/9835ad6944af1db32af8ccf2aaf1d803c6e010f71170966e0fd792db14172c1c.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-phi0474-phi007-la-c4c64131dfe6b2c0.json",
+   "sha256": "c4c64131dfe6b2c0e680cd695e9a6942ee7a8c86d5005822567d8f0247c79d50",
+   "passages": 53,
+   "characters": 31523,
+   "bytes": 41968,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0474-phi007-la-c4c64131dfe6b2c0.json"
+  },
+  {
+   "workId": "cts-phi0474-phi006",
+   "author": "Cicerón",
+   "title": "Pro M. Tullio",
+   "language": "la",
+   "dating": "106–43 a. C.",
+   "sources": [
+    {
+     "title": "Pro M. Tullio",
+     "titleLanguage": "lat",
+     "author": "M. Tullius Cicero",
+     "editors": [
+      "Albert Curtis Clark"
+     ],
+     "bibliography": "M. Tullius Cicero Orationes Albert Curtis Clark Oxford Clarendon 1911 6 Pro Tullio; Pro Fonteio; Pro Sulla; Pro Archia; Pro Plancio; Pro Scauro Scriptorum Classicorum Bibliotheca Oxoniensis Oxford Classical Texts HathiTrust Internet Archive",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+      }
+     ],
+     "editionUrn": "urn:cts:latinLit:phi0474.phi006.perseus-lat2",
+     "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0474/phi006/phi0474.phi006.perseus-lat2.xml",
+     "sourceSha256": "e9a7e4e81539bce6b4998a17246a0f0440f719b6292c05fd1f59c4d1b308fbf9",
+     "sourceReferences": [
+      "https://hdl.handle.net/2027/njp.32101073249417?urlappend=%3Bseq=24%3Bownerid=13510798896722459-28",
+      "https://archive.org/details/orationes0006cice/page/n23/mode/2up"
+     ],
+     "publicationYear": "1911",
+     "publisher": "Clarendon",
+     "publicationPlace": "Oxford",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/e9a7e4e81539bce6b4998a17246a0f0440f719b6292c05fd1f59c4d1b308fbf9.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-phi0474-phi006-la-dd440de6ae9ce2e1.json",
+   "sha256": "dd440de6ae9ce2e11c0ff5f562e90f8f28270c436c76ebae8e63e9b28c91a71f",
+   "passages": 58,
+   "characters": 22118,
+   "bytes": 33379,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0474-phi006-la-dd440de6ae9ce2e1.json"
+  },
+  {
+   "workId": "cts-phi0474-phi008",
+   "author": "Cicerón",
+   "title": "Pro A. Caecina",
+   "language": "la",
+   "dating": "106–43 a. C.",
+   "sources": [
+    {
+     "title": "Pro A. Caecina",
+     "titleLanguage": "lat",
+     "author": "M. Tullius Cicero",
+     "editors": [
+      "Albert Curtis Clark"
+     ],
+     "bibliography": "M. Tullius Cicero Orationes Albert Curtis Clark Oxford Clarendon Press 1909 4 Pro P. Quinctio; Pro Q. Roscio comoedo; Pro A. Caecina; De lege agraria contra Rullum; Pro C. Rabirio perduellionis reo; Pro L. Flacco; In L. Pisonem; Pro C. Rabirio Postumo Scriptorum Classicorum Bibliotheca Oxoniensis Oxford Classical Texts Internet Archive",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+      }
+     ],
+     "editionUrn": "urn:cts:latinLit:phi0474.phi008.perseus-lat2",
+     "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0474/phi008/phi0474.phi008.perseus-lat2.xml",
+     "sourceSha256": "6fc8a4966a9fd845629c489436ced5050ee2c1da0bd5ed77373b69312d34c79e",
+     "sourceReferences": [
+      "https://archive.org/details/orationesrecogno04ciceuoft/page/64/mode/2up"
+     ],
+     "publicationYear": "1909",
+     "publisher": "Clarendon Press",
+     "publicationPlace": "Oxford",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/6fc8a4966a9fd845629c489436ced5050ee2c1da0bd5ed77373b69312d34c79e.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-phi0474-phi008-la-ce22633d9f199be5.json",
+   "sha256": "ce22633d9f199be5ae06779b40e1f6c1e05256a1ff547c15e284ec3c52e741de",
+   "passages": 114,
+   "characters": 67903,
+   "bytes": 87992,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0474-phi008-la-ce22633d9f199be5.json"
+  },
+  {
+   "workId": "cts-phi0474-phi005",
+   "author": "Cicerón",
+   "title": "In C. Verrem",
+   "language": "la",
+   "dating": "106–43 a. C.",
+   "sources": [
+    {
+     "title": "In C. Verrem",
+     "titleLanguage": "lat",
+     "author": "M. Tullius Cicero",
+     "editors": [
+      "William Peterson"
+     ],
+     "bibliography": "M. Tullius Cicero Orationes William Peterson Oxford Clarendon 1917 3 Divinatio in Q. Caecilium; In C. Verrem Scriptorum Classicorum Bibliotheca Oxoniensis Oxford Classical Texts Open Content Alliance",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+      }
+     ],
+     "editionUrn": "urn:cts:latinLit:phi0474.phi005.perseus-lat2",
+     "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0474/phi005/phi0474.phi005.perseus-lat2.xml",
+     "sourceSha256": "fbc4a31486d0a451133792c4512ee059eb623af6b11df9aa8e2d813fd4278543",
+     "sourceReferences": [
+      "https://archive.org/details/orationesrecogno02ciceuoft/page/n53/mode/2up"
+     ],
+     "publicationYear": "1917",
+     "publisher": "Clarendon",
+     "publicationPlace": "Oxford",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/fbc4a31486d0a451133792c4512ee059eb623af6b11df9aa8e2d813fd4278543.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-phi0474-phi005-la-eb61c208b5aace1f.json",
+   "sha256": "eb61c208b5aace1ff31eb4a29297836aef590b00ce3e462760e6eb51669bedb4",
+   "passages": 1095,
+   "characters": 693199,
+   "bytes": 872501,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0474-phi005-la-eb61c208b5aace1f.json"
+  },
+  {
+   "workId": "cts-phi0474-phi009",
+   "author": "Cicerón",
+   "title": "De Imperio Cn. Pompei Ad Quirites",
+   "language": "la",
+   "dating": "106–43 a. C.",
+   "sources": [
+    {
+     "title": "De Imperio Cn. Pompei Ad Quirites",
+     "titleLanguage": "lat",
+     "author": "M. Tullius Cicero",
+     "editors": [
+      "Albert Curtis Clark"
+     ],
+     "bibliography": "M. Tullius Cicero Orationes Albert Curtis Clark Oxford Clarendon 1908 1 Pro Sex. Roscio; De imperio Cn. Pompei; Pro Cluentio; In Catilinam; Pro Murena; Pro Caelio Scriptorum Classicorum Bibliotheca Oxoniensis Oxford Classical Texts Internet Archive",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+      }
+     ],
+     "editionUrn": "urn:cts:latinLit:phi0474.phi009.perseus-lat2",
+     "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0474/phi009/phi0474.phi009.perseus-lat2.xml",
+     "sourceSha256": "bd8d1ccabf598fad1bc14bea3379ebd76c533789863ac4b326a326fd0e7690bb",
+     "sourceReferences": [
+      "https://archive.org/details/orationesrecogno01ciceuoft/page/n83/mode/2up"
+     ],
+     "publicationYear": "1908",
+     "publisher": "Clarendon",
+     "publicationPlace": "Oxford",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/bd8d1ccabf598fad1bc14bea3379ebd76c533789863ac4b326a326fd0e7690bb.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-phi0474-phi009-la-bdf975c8ee41bd61.json",
+   "sha256": "bdf975c8ee41bd613540624919021fcce5ea381b42c843fa3a1709f2081731f5",
+   "passages": 76,
+   "characters": 46180,
+   "bytes": 60210,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0474-phi009-la-bdf975c8ee41bd61.json"
+  },
+  {
+   "workId": "cts-phi0474-phi011",
+   "author": "Cicerón",
+   "title": "De Lege Agraria",
+   "language": "la",
+   "dating": "106–43 a. C.",
+   "sources": [
+    {
+     "title": "De Lege Agraria",
+     "titleLanguage": "lat",
+     "author": "M. Tullius Cicero",
+     "editors": [
+      "Albert Curtis Clark"
+     ],
+     "bibliography": "M. Tullius Cicero Orationes Albert Curtis Clark Oxford Clarendon Press 1909 4 Pro P. Quinctio; Pro Q. Roscio comoedo; Pro A. Caecina; De lege agraria contra Rullum; Pro C. Rabirio perduellionis reo; Pro L. Flacco; In L. Pisonem; Pro C. Rabirio Postumo Scriptorum Classicorum Bibliotheca Oxoniensis Oxford Classical Texts Internet Archive",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+      }
+     ],
+     "editionUrn": "urn:cts:latinLit:phi0474.phi011.perseus-lat2",
+     "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0474/phi011/phi0474.phi011.perseus-lat2.xml",
+     "sourceSha256": "c38242f911df03e99ea722a48f364b523db3c92e46d346ee16c43c32d3e2b298",
+     "sourceReferences": [
+      "https://archive.org/details/orationesrecogno04ciceuoft/page/112/mode/2up"
+     ],
+     "publicationYear": "1909",
+     "publisher": "Clarendon Press",
+     "publicationPlace": "Oxford",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/c38242f911df03e99ea722a48f364b523db3c92e46d346ee16c43c32d3e2b298.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-phi0474-phi011-la-7b73141390be1fb5.json",
+   "sha256": "7b73141390be1fb59c9ea2c543d3b2b3bc93a17a41b6400686b7f9ab405949fc",
+   "passages": 166,
+   "characters": 96070,
+   "bytes": 124630,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0474-phi011-la-7b73141390be1fb5.json"
+  },
+  {
+   "workId": "cts-phi0474-phi012",
+   "author": "Cicerón",
+   "title": "Pro C. Rabirio Perduellionis Reo Ad Quirites",
+   "language": "la",
+   "dating": "106–43 a. C.",
+   "sources": [
+    {
+     "title": "Pro C. Rabirio Perduellionis Reo Ad Quirites",
+     "titleLanguage": "lat",
+     "author": "M. Tullius Cicero",
+     "editors": [
+      "Albert Curtis Clark"
+     ],
+     "bibliography": "M. Tullius Cicero Orationes Albert Curtis Clark Oxford Clarendon Press 1909 4 Pro P. Quinctio; Pro Q. Roscio comoedo; Pro A. Caecina; De lege agraria contra Rullum; Pro C. Rabirio perduellionis reo; Pro L. Flacco; In L. Pisonem; Pro C. Rabirio Postumo Scriptorum Classicorum Bibliotheca Oxoniensis Oxford Classical Texts Internet Archive",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+      }
+     ],
+     "editionUrn": "urn:cts:latinLit:phi0474.phi012.perseus-lat2",
+     "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0474/phi012/phi0474.phi012.perseus-lat2.xml",
+     "sourceSha256": "462e87398fe5734b6cb249473c660e2965c70669d7cf49f89b97e5cf2e3e7438",
+     "sourceReferences": [
+      "https://archive.org/details/orationesrecogno04ciceuoft/page/178/mode/2up"
+     ],
+     "publicationYear": "1909",
+     "publisher": "Clarendon Press",
+     "publicationPlace": "Oxford",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/462e87398fe5734b6cb249473c660e2965c70669d7cf49f89b97e5cf2e3e7438.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-phi0474-phi012-la-9c2ef800aeb8c9be.json",
+   "sha256": "9c2ef800aeb8c9be953caebd8530e44070e7df735413b4397b2bfa7080e8b4cb",
+   "passages": 42,
+   "characters": 24354,
+   "bytes": 33185,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0474-phi012-la-9c2ef800aeb8c9be.json"
+  },
+  {
+   "workId": "cts-phi0474-phi010",
+   "author": "Cicerón",
+   "title": "Pro A. Cluentio",
+   "language": "la",
+   "dating": "106–43 a. C.",
+   "sources": [
+    {
+     "title": "Pro A. Cluentio",
+     "titleLanguage": "lat",
+     "author": "M. Tullius Cicero",
+     "editors": [
+      "Albert Curtis Clark"
+     ],
+     "bibliography": "M. Tullius Cicero Orationes Albert Curtis Clark Oxford Clarendon Press 1908 1 Pro Sex. Roscio; De imperio Cn. Pompei; Pro Cluentio; In Catilinam; Pro Murena; Pro Caelio Scriptorum Classicorum Bibliotheca Oxoniensis Oxford Classical Texts Internet Archive",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+      }
+     ],
+     "editionUrn": "urn:cts:latinLit:phi0474.phi010.perseus-lat2",
+     "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0474/phi010/phi0474.phi010.perseus-lat2.xml",
+     "sourceSha256": "9cd537ac1599ed431aa8b06142fb84f471cbe6908911f60faaa51b1080ca6c63",
+     "sourceReferences": [
+      "https://archive.org/details/orationesrecogno01ciceuoft/page/n115/mode/2up"
+     ],
+     "publicationYear": "1908",
+     "publisher": "Clarendon Press",
+     "publicationPlace": "Oxford",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/9cd537ac1599ed431aa8b06142fb84f471cbe6908911f60faaa51b1080ca6c63.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-phi0474-phi010-la-a7e0e8068ef4f387.json",
+   "sha256": "a7e0e8068ef4f3870877c28338db153c7b57060e77e35e9064de36b5033040bf",
+   "passages": 217,
+   "characters": 143236,
+   "bytes": 179557,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0474-phi010-la-a7e0e8068ef4f387.json"
+  },
+  {
+   "workId": "cts-tlg0062-tlg055",
+   "author": "Luciano de Samósata",
+   "title": "Saturnalia",
+   "language": "grc",
+   "dating": "c. 125–c. 180 d. C.",
+   "sources": [
+    {
+     "title": "Τὰ πρὸς Κρόνον",
+     "titleLanguage": "grc",
+     "author": "Lucian of Samosata",
+     "editors": [
+      "Kenneth Kilburn"
+     ],
+     "bibliography": "Lucian of Samosata Lucian with an English Translation Kenneth Kilburn London William Heinemann Ltd. Cambridge, MA Harvard University Press 1959 6 Internet Archive Hathi Trust",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg0062.tlg055.perseus-grc3",
+     "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0062/tlg055/tlg0062.tlg055.perseus-grc3.xml",
+     "sourceSha256": "616f9c4cf32d0885e4fc3ccb740fff050adc9ed236e6b5abc644f81abec4a8ce",
+     "sourceReferences": [
+      "https://archive.org/details/luciankilb06luciuoft/page/89/mode/2up",
+      "https://hdl.handle.net/2027/osu.32435024202103?urlappend=%3Bseq=105"
+     ],
+     "publicationYear": "1959",
+     "publisher": "William Heinemann Ltd.",
+     "publicationPlace": "London",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/616f9c4cf32d0885e4fc3ccb740fff050adc9ed236e6b5abc644f81abec4a8ce.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-tlg0062-tlg055-grc-6ecef8adc5285474.json",
+   "sha256": "6ecef8adc5285474a88ef1547798479a592c492c8680890f568561e1d40d3cc4",
+   "passages": 91,
+   "characters": 32200,
+   "bytes": 79722,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg055-grc-6ecef8adc5285474.json"
+  },
+  {
+   "workId": "cts-tlg0062-tlg057",
+   "author": "Luciano de Samósata",
+   "title": "Zeuxis",
+   "language": "grc",
+   "dating": "c. 125–c. 180 d. C.",
+   "sources": [
+    {
+     "title": "Ζεῦξις ἢ Ἀντίοχος",
+     "titleLanguage": "grc",
+     "author": "Lucian of Samosata",
+     "editors": [
+      "Kenneth Kilburn"
+     ],
+     "bibliography": "Lucian of Samosata Lucian with an English Translation Kenneth Kilburn London William Heinemann Ltd. Cambridge, MA Harvard University Press 1959 6 Internet Archive Hathi Trust",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg0062.tlg057.perseus-grc3",
+     "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0062/tlg057/tlg0062.tlg057.perseus-grc3.xml",
+     "sourceSha256": "1a1c2857ba2f036585c87f4c4150f399b39a40a605c9f28a40e79df83dd4283b",
+     "sourceReferences": [
+      "https://archive.org/details/luciankilb06luciuoft/page/155/mode/2up",
+      "https://hdl.handle.net/2027/osu.32435024202103?urlappend=%3Bseq=171"
+     ],
+     "publicationYear": "1959",
+     "publisher": "William Heinemann Ltd.",
+     "publicationPlace": "London",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/1a1c2857ba2f036585c87f4c4150f399b39a40a605c9f28a40e79df83dd4283b.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-tlg0062-tlg057-grc-d990b6e6e4467172.json",
+   "sha256": "d990b6e6e44671721dbbf5ab16cf323c23fe236c8901b703e18b078464820365",
+   "passages": 13,
+   "characters": 9345,
+   "bytes": 22491,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg057-grc-d990b6e6e4467172.json"
+  },
+  {
+   "workId": "cts-tlg0062-tlg056",
+   "author": "Luciano de Samósata",
+   "title": "Herodotus",
+   "language": "grc",
+   "dating": "c. 125–c. 180 d. C.",
+   "sources": [
+    {
+     "title": "Ἡρόδοτος ἢ Ἀετίων",
+     "titleLanguage": "grc",
+     "author": "Lucian of Samosata",
+     "editors": [
+      "Kenneth Kilburn"
+     ],
+     "bibliography": "Lucian of Samosata Lucian with an English Translation Kenneth Kilburn London William Heinemann Ltd. Cambridge, MA Harvard University Press 1959 6 Internet Archive Hathi Trust",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg0062.tlg056.perseus-grc3",
+     "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0062/tlg056/tlg0062.tlg056.perseus-grc3.xml",
+     "sourceSha256": "044f3814825b1a368d0f4d938affeaa75c59789a83b8a8286d40eff148d252c4",
+     "sourceReferences": [
+      "https://archive.org/details/luciankilb06luciuoft/page/143/mode/2up",
+      "https://hdl.handle.net/2027/osu.32435024202103?urlappend=%3Bseq=159"
+     ],
+     "publicationYear": "1959",
+     "publisher": "William Heinemann Ltd.",
+     "publicationPlace": "London",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/044f3814825b1a368d0f4d938affeaa75c59789a83b8a8286d40eff148d252c4.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-tlg0062-tlg056-grc-3c3065a4a862ebae.json",
+   "sha256": "3c3065a4a862ebae391b39afa53ddecc1802c87db670428e5b3575f9c6bcb8fb",
+   "passages": 10,
+   "characters": 5739,
+   "bytes": 14931,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg056-grc-3c3065a4a862ebae.json"
   }
  ],
  "githubPreserved": [
@@ -10129,6 +10596,14 @@
    "r2Key": "preserved/github/6c7f2ee0eada84ebb9f2a6954b9e2e60f4db514ee8d8c3a5c160e754349ee53f.json"
   }
  ],
- "deferred": [],
+ "deferred": [
+  {
+   "workId": "tibullus-elegiae",
+   "sources": [
+    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0660/phi001/phi0660.phi001.perseus-lat2.xml"
+   ],
+   "reason": "Sin licencia abierta explícita admisible en la cabecera TEI"
+  }
+ ],
  "policy": "No se borran ni reemplazan originales de GitHub, PDFs, traducciones o códices. Cobertura relativa a los catálogos CTS inventariados, no a toda la literatura antigua."
 }
