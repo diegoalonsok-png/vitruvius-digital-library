@@ -2,8 +2,8 @@
  "schema": "vitruvia-classics-search-registry-v1",
  "updated": "2026-11-23",
  "description": "Registro verificable de transcripciones HTML y textos JSON existentes que admiten búsqueda literal de contenido. No incluye automáticamente PDF escaneados, facsímiles ni fichas sin texto. Los índices auxiliares por locus y el aparato crítico se declaran por separado; no se suman a versiones textuales originales ni implican colación autóptica.",
- "count": 532,
- "works": 403,
+ "count": 543,
+ "works": 414,
  "entries": [
   {
    "workId": "aeneas-tacticus-poliorketika",
@@ -1434,6 +1434,102 @@
    "passages": 23
   },
   {
+   "workId": "cts-tlg0014-tlg037",
+   "author": "Demóstenes",
+   "title": "Against Pantaenetus",
+   "language": "grc",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0014-tlg037-grc-5599ad2d76baf31c.json",
+   "reader": "classics-text-reader.html?work=cts-tlg0014-tlg037&lang=grc",
+   "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+   "sha256": "5599ad2d76baf31c9fcbe9074684a08b52c2d999682deaef9385ba72f2a77ea8",
+   "passages": 88
+  },
+  {
+   "workId": "cts-tlg0014-tlg038",
+   "author": "Demóstenes",
+   "title": "Against Nausimachus and Xenopeithes",
+   "language": "grc",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0014-tlg038-grc-d9db94d31dcda8df.json",
+   "reader": "classics-text-reader.html?work=cts-tlg0014-tlg038&lang=grc",
+   "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+   "sha256": "d9db94d31dcda8df7491d2398072d15e17e54991ec8d129fccaf8eb2f100517b",
+   "passages": 35
+  },
+  {
+   "workId": "cts-tlg0014-tlg039",
+   "author": "Demóstenes",
+   "title": "Against Boeotus I",
+   "language": "grc",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0014-tlg039-grc-96cf9d8712d32f4e.json",
+   "reader": "classics-text-reader.html?work=cts-tlg0014-tlg039&lang=grc",
+   "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+   "sha256": "96cf9d8712d32f4e75ac8fa57926c7925360cac79583f22c7063f86ee7ec40cd",
+   "passages": 47
+  },
+  {
+   "workId": "cts-tlg0014-tlg040",
+   "author": "Demóstenes",
+   "title": "Against Boeotus II",
+   "language": "grc",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0014-tlg040-grc-d22611db5a551513.json",
+   "reader": "classics-text-reader.html?work=cts-tlg0014-tlg040&lang=grc",
+   "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+   "sha256": "d22611db5a5515136e604efd7ad9439b3043b6c59c7aeb00cd6285fbfb58c507",
+   "passages": 70
+  },
+  {
+   "workId": "cts-tlg0014-tlg041",
+   "author": "Demóstenes",
+   "title": "Against Spudias",
+   "language": "grc",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0014-tlg041-grc-2dd402499722c28d.json",
+   "reader": "classics-text-reader.html?work=cts-tlg0014-tlg041&lang=grc",
+   "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+   "sha256": "2dd402499722c28d3a28cf31114d026feb218687c2324e872f8ff498afe61386",
+   "passages": 38
+  },
+  {
+   "workId": "cts-tlg0014-tlg042",
+   "author": "Demóstenes",
+   "title": "Against Phaenippus",
+   "language": "grc",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0014-tlg042-grc-74f09dee377fad46.json",
+   "reader": "classics-text-reader.html?work=cts-tlg0014-tlg042&lang=grc",
+   "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+   "sha256": "74f09dee377fad4620bd0e86555637e050bd289b3e432e1847ddcc80400f29c1",
+   "passages": 41
+  },
+  {
+   "workId": "cts-tlg0014-tlg043",
+   "author": "Demóstenes",
+   "title": "Against Macartatus",
+   "language": "grc",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0014-tlg043-grc-47e74f8f1ab16166.json",
+   "reader": "classics-text-reader.html?work=cts-tlg0014-tlg043&lang=grc",
+   "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+   "sha256": "47e74f8f1ab16166065c29e042728ce55af94d51f2344e8f31bb307501101bf5",
+   "passages": 116
+  },
+  {
+   "workId": "cts-tlg0014-tlg044",
+   "author": "Demóstenes",
+   "title": "Against Leochares",
+   "language": "grc",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0014-tlg044-grc-f55df8e39b4c2ca2.json",
+   "reader": "classics-text-reader.html?work=cts-tlg0014-tlg044&lang=grc",
+   "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+   "sha256": "f55df8e39b4c2ca28cf6b3a17268137ff78d663294508eeaeef4ec63d6243e43",
+   "passages": 72
+  },
+  {
    "workId": "cts-tlg0062-tlg016",
    "author": "Luciano de Samósata",
    "title": "Cataplus",
@@ -1600,6 +1696,42 @@
    "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
    "sha256": "b1554f36b0298dcd36e0069df8455308fb2ddf3f15404946a590e51c8a95f2b6",
    "passages": 27
+  },
+  {
+   "workId": "cts-tlg0062-tlg043",
+   "author": "Luciano de Samósata",
+   "title": "Fugitivi",
+   "language": "grc",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg043-grc-f93f4a86394a5e5b.json",
+   "reader": "classics-text-reader.html?work=cts-tlg0062-tlg043&lang=grc",
+   "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+   "sha256": "f93f4a86394a5e5b8ed7d04d41b59c77bc750eed28f1b001387268962ef07c86",
+   "passages": 97
+  },
+  {
+   "workId": "cts-tlg0062-tlg044",
+   "author": "Luciano de Samósata",
+   "title": "Toxaris vel amicitia",
+   "language": "grc",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg044-grc-96dd19dcfbde4734.json",
+   "reader": "classics-text-reader.html?work=cts-tlg0062-tlg044&lang=grc",
+   "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+   "sha256": "96dd19dcfbde473493a108a92b385c9ce7f06e9210f52619f9de6482e3002f6c",
+   "passages": 90
+  },
+  {
+   "workId": "cts-tlg0062-tlg045",
+   "author": "Luciano de Samósata",
+   "title": "De saltatione",
+   "language": "grc",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg045-grc-b21d1ff03ba735ab.json",
+   "reader": "classics-text-reader.html?work=cts-tlg0062-tlg045&lang=grc",
+   "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+   "sha256": "b21d1ff03ba735abc74aab06de35ee6ade529c57d2b1289b5e9f08e69db49e87",
+   "passages": 91
   },
   {
    "workId": "demosthenes-de-corona",

@@ -1,10 +1,10 @@
 {
  "schema": "vdl-classics-expansion-manifest-v1",
- "generated": "2026-11-22T23:57:00.356476+00:00",
+ "generated": "2026-11-23T00:31:58.853850+00:00",
  "discovery": {
-  "sourceRecords": 1981,
-  "alreadyIndexedCatalogueWorks": 264,
-  "pendingGroups": 1714,
+  "sourceRecords": 1970,
+  "alreadyIndexedCatalogueWorks": 275,
+  "pendingGroups": 1703,
   "githubTextFiles": 450,
   "githubUnregisteredFiles": 14,
   "selectionPolicy": "fundamentales > grandes tradiciones > especializados; rotación intra-grupo",
@@ -13,7 +13,8 @@
    "1": 8,
    "2": 3,
    "3": 1
-  }
+  },
+  "unchangedGithubPreservationReused": 450
  },
  "editions": [
   {
@@ -5530,6 +5531,466 @@
    "characters": 21068,
    "bytes": 50754,
    "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg035-grc-d818b14ed454755c.json"
+  },
+  {
+   "workId": "cts-tlg0014-tlg039",
+   "author": "Demóstenes",
+   "title": "Against Boeotus I",
+   "language": "grc",
+   "dating": "330 a. C.",
+   "sources": [
+    {
+     "title": "πρὸς Βοιωτὸν περὶ τοῦ Ὀνόματος",
+     "titleLanguage": "grc",
+     "author": "Demosthenes",
+     "editors": [
+      "William Rennie"
+     ],
+     "bibliography": "Demosthenes Demosthenes Orationes William Rennie Clarendon Press Oxford 1921 2.2 Internet Archive",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg0014.tlg039.perseus-grc2",
+     "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0014/tlg039/tlg0014.tlg039.perseus-grc2.xml",
+     "sourceSha256": "a16cd298df9d9e55fe6e09f38daed991832d7d3ab2f2dbac0683124431b075b0",
+     "sourceReferences": [
+      "https://archive.org/details/p2orationesrecog02demouoft/page/172/mode/2up?"
+     ],
+     "publicationYear": "1921",
+     "publisher": "Clarendon Press",
+     "publicationPlace": "Oxford",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/a16cd298df9d9e55fe6e09f38daed991832d7d3ab2f2dbac0683124431b075b0.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-tlg0014-tlg039-grc-96cf9d8712d32f4e.json",
+   "sha256": "96cf9d8712d32f4e75ac8fa57926c7925360cac79583f22c7063f86ee7ec40cd",
+   "passages": 47,
+   "characters": 16636,
+   "bytes": 41797,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0014-tlg039-grc-96cf9d8712d32f4e.json"
+  },
+  {
+   "workId": "cts-tlg0014-tlg038",
+   "author": "Demóstenes",
+   "title": "Against Nausimachus and Xenopeithes",
+   "language": "grc",
+   "dating": "330 a. C.",
+   "sources": [
+    {
+     "title": "παραγραφὴ πρὸς Ναυσίμακον καὶ Ξενοπείθην",
+     "titleLanguage": "grc",
+     "author": "Demosthenes",
+     "editors": [
+      "William Rennie"
+     ],
+     "bibliography": "Demosthenes Demosthenes Orationes William Rennie Clarendon Press Oxford 1921 2.2 Internet Archive",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg0014.tlg038.perseus-grc2",
+     "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0014/tlg038/tlg0014.tlg038.perseus-grc2.xml",
+     "sourceSha256": "7d3f6e1d9a1b304690ae2a51ddb0d0c2fedf4d6fc658d7076f9e5dbad0a58285",
+     "sourceReferences": [
+      "https://archive.org/details/p2orationesrecog02demouoft/page/162/mode/2up?"
+     ],
+     "publicationYear": "1921",
+     "publisher": "Clarendon Press",
+     "publicationPlace": "Oxford",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/7d3f6e1d9a1b304690ae2a51ddb0d0c2fedf4d6fc658d7076f9e5dbad0a58285.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-tlg0014-tlg038-grc-d9db94d31dcda8df.json",
+   "sha256": "d9db94d31dcda8df7491d2398072d15e17e54991ec8d129fccaf8eb2f100517b",
+   "passages": 35,
+   "characters": 11590,
+   "bytes": 30195,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0014-tlg038-grc-d9db94d31dcda8df.json"
+  },
+  {
+   "workId": "cts-tlg0014-tlg040",
+   "author": "Demóstenes",
+   "title": "Against Boeotus II",
+   "language": "grc",
+   "dating": "330 a. C.",
+   "sources": [
+    {
+     "title": "πρὸς Βοιωτὸν περὶ προικὸς μητρῴας",
+     "titleLanguage": "grc",
+     "author": "Demosthenes",
+     "editors": [
+      "William Rennie"
+     ],
+     "bibliography": "Demosthenes Demosthenes Orationes William Rennie Clarendon Press Oxford 1921 2.2 Internet Archive",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg0014.tlg040.perseus-grc2",
+     "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0014/tlg040/tlg0014.tlg040.perseus-grc2.xml",
+     "sourceSha256": "a7e29787f8cf78ae848b857f4f675e9d606833955c25c054b2d3d2a2e3657cdf",
+     "sourceReferences": [
+      "https://archive.org/details/p2orationesrecog02demouoft/page/172/mode/2up?"
+     ],
+     "publicationYear": "1921",
+     "publisher": "Clarendon Press",
+     "publicationPlace": "Oxford",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/a7e29787f8cf78ae848b857f4f675e9d606833955c25c054b2d3d2a2e3657cdf.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-tlg0014-tlg040-grc-d22611db5a551513.json",
+   "sha256": "d22611db5a5515136e604efd7ad9439b3043b6c59c7aeb00cd6285fbfb58c507",
+   "passages": 70,
+   "characters": 24643,
+   "bytes": 61388,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0014-tlg040-grc-d22611db5a551513.json"
+  },
+  {
+   "workId": "cts-tlg0014-tlg042",
+   "author": "Demóstenes",
+   "title": "Against Phaenippus",
+   "language": "grc",
+   "dating": "330 a. C.",
+   "sources": [
+    {
+     "title": "πρὸς Φαίνιππον περὶ ἀντιδόσεως",
+     "titleLanguage": "grc",
+     "author": "Demosthenes",
+     "editors": [
+      "William Rennie"
+     ],
+     "bibliography": "Demosthenes Orationes William Rennie Clarendon Press Oxford 1931 3 Internet Archive",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg0014.tlg042.perseus-grc2",
+     "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0014/tlg042/tlg0014.tlg042.perseus-grc2.xml",
+     "sourceSha256": "93883f896a3fb1a0a2f0ff8148657298e00c41bbb7977beedb6a9ecf3d1519ba",
+     "sourceReferences": [],
+     "publicationYear": "1931",
+     "publisher": "Clarendon Press",
+     "publicationPlace": "Oxford",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/93883f896a3fb1a0a2f0ff8148657298e00c41bbb7977beedb6a9ecf3d1519ba.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-tlg0014-tlg042-grc-74f09dee377fad46.json",
+   "sha256": "74f09dee377fad4620bd0e86555637e050bd289b3e432e1847ddcc80400f29c1",
+   "passages": 41,
+   "characters": 14200,
+   "bytes": 36081,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0014-tlg042-grc-74f09dee377fad46.json"
+  },
+  {
+   "workId": "cts-tlg0014-tlg037",
+   "author": "Demóstenes",
+   "title": "Against Pantaenetus",
+   "language": "grc",
+   "dating": "330 a. C.",
+   "sources": [
+    {
+     "title": "παραγραφὴ πρὸς Πανταίνετον",
+     "titleLanguage": "grc",
+     "author": "Demosthenes",
+     "editors": [
+      "William Rennie"
+     ],
+     "bibliography": "Demosthenes Demosthenes Orationes William Rennie Clarendon Press Oxford 1921 2.2 Internet Archive",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg0014.tlg037.perseus-grc2",
+     "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0014/tlg037/tlg0014.tlg037.perseus-grc2.xml",
+     "sourceSha256": "688a5f93780a37c2153ebadd499b23443a001e0bae372fc44cd190c22b525b15",
+     "sourceReferences": [
+      "https://archive.org/details/p2orationesrecog02demouoft/page/142/"
+     ],
+     "publicationYear": "1921",
+     "publisher": "Clarendon Press",
+     "publicationPlace": "Oxford",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/688a5f93780a37c2153ebadd499b23443a001e0bae372fc44cd190c22b525b15.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-tlg0014-tlg037-grc-5599ad2d76baf31c.json",
+   "sha256": "5599ad2d76baf31c9fcbe9074684a08b52c2d999682deaef9385ba72f2a77ea8",
+   "passages": 88,
+   "characters": 23752,
+   "bytes": 62200,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0014-tlg037-grc-5599ad2d76baf31c.json"
+  },
+  {
+   "workId": "cts-tlg0014-tlg043",
+   "author": "Demóstenes",
+   "title": "Against Macartatus",
+   "language": "grc",
+   "dating": "330 a. C.",
+   "sources": [
+    {
+     "title": "πρὸς Μακάρτατον περὶ Ἁγνίου κλήρου",
+     "titleLanguage": "grc",
+     "author": "Demosthenes",
+     "editors": [
+      "William Rennie"
+     ],
+     "bibliography": "Demosthenes Orationes William Rennie Clarendon Press Oxford 1931 3 Internet Archive",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg0014.tlg043.perseus-grc2",
+     "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0014/tlg043/tlg0014.tlg043.perseus-grc2.xml",
+     "sourceSha256": "0238a0b4a9a7a61361823fceaae3f63b315ff5db8d8beabf0e0841c46550edaa",
+     "sourceReferences": [
+      "https://archive.org/details/orationesrecog03demouoft/page/22/mode/2up?"
+     ],
+     "publicationYear": "1931",
+     "publisher": "Clarendon Press",
+     "publicationPlace": "Oxford",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/0238a0b4a9a7a61361823fceaae3f63b315ff5db8d8beabf0e0841c46550edaa.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-tlg0014-tlg043-grc-47e74f8f1ab16166.json",
+   "sha256": "47e74f8f1ab16166065c29e042728ce55af94d51f2344e8f31bb307501101bf5",
+   "passages": 116,
+   "characters": 39776,
+   "bytes": 98305,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0014-tlg043-grc-47e74f8f1ab16166.json"
+  },
+  {
+   "workId": "cts-tlg0014-tlg041",
+   "author": "Demóstenes",
+   "title": "Against Spudias",
+   "language": "grc",
+   "dating": "330 a. C.",
+   "sources": [
+    {
+     "title": "πρὸς Σπουδίαν ὑπὲρ προικός",
+     "titleLanguage": "grc",
+     "author": "Demosthenes",
+     "editors": [
+      "William Rennie"
+     ],
+     "bibliography": "Demosthenes Orationes William Rennie Clarendon Press Oxford 1931 3 Internet Archive",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg0014.tlg041.perseus-grc2",
+     "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0014/tlg041/tlg0014.tlg041.perseus-grc2.xml",
+     "sourceSha256": "7fc902bc6253cabb332dff648849a6e2082d6c789edfc7faab24e052a30065f1",
+     "sourceReferences": [
+      "https://archive.org/details/orationesrecog03demouoft/page/n19/mode/2up"
+     ],
+     "publicationYear": "1931",
+     "publisher": "Clarendon Press",
+     "publicationPlace": "Oxford",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/7fc902bc6253cabb332dff648849a6e2082d6c789edfc7faab24e052a30065f1.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-tlg0014-tlg041-grc-2dd402499722c28d.json",
+   "sha256": "2dd402499722c28d3a28cf31114d026feb218687c2324e872f8ff498afe61386",
+   "passages": 38,
+   "characters": 12694,
+   "bytes": 32668,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0014-tlg041-grc-2dd402499722c28d.json"
+  },
+  {
+   "workId": "cts-tlg0014-tlg044",
+   "author": "Demóstenes",
+   "title": "Against Leochares",
+   "language": "grc",
+   "dating": "330 a. C.",
+   "sources": [
+    {
+     "title": "πρὸς Λεωκάρη περὶ τοῦ Ἀρχιάδου κλήρου",
+     "titleLanguage": "grc",
+     "author": "Demosthenes",
+     "editors": [
+      "William Rennie"
+     ],
+     "bibliography": "Demosthenes Orationes William Rennie Clarendon Press Oxford 1931 3 Internet Archive",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg0014.tlg044.perseus-grc2",
+     "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0014/tlg044/tlg0014.tlg044.perseus-grc2.xml",
+     "sourceSha256": "6e7c2b4a9f7f23899437126f5df678220e6002ea41121c79e370810a3d1a9a60",
+     "sourceReferences": [
+      "https://archive.org/details/orationesrecog03demouoft/page/48/mode/2up"
+     ],
+     "publicationYear": "1931",
+     "publisher": "Clarendon Press",
+     "publicationPlace": "Oxford",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/6e7c2b4a9f7f23899437126f5df678220e6002ea41121c79e370810a3d1a9a60.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-tlg0014-tlg044-grc-f55df8e39b4c2ca2.json",
+   "sha256": "f55df8e39b4c2ca28cf6b3a17268137ff78d663294508eeaeef4ec63d6243e43",
+   "passages": 72,
+   "characters": 27144,
+   "bytes": 66704,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0014-tlg044-grc-f55df8e39b4c2ca2.json"
+  },
+  {
+   "workId": "cts-tlg0062-tlg043",
+   "author": "Luciano de Samósata",
+   "title": "Fugitivi",
+   "language": "grc",
+   "dating": "c. 125–c. 180 d. C.",
+   "sources": [
+    {
+     "title": "Δραπέται",
+     "titleLanguage": "grc",
+     "author": "Lucian",
+     "editors": [
+      "Austin Morris Harmon"
+     ],
+     "bibliography": "Lucian Lucian Austin Morris Harmon London William Heinemann Ltd. Cambridge, MA Harvard University Press 1936 5 Loeb Classical Library Internet Archive",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg0062.tlg043.perseus-grc2",
+     "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0062/tlg043/tlg0062.tlg043.perseus-grc2.xml",
+     "sourceSha256": "c4ec9bca6b2d5610613b9e368c409cc1607524f3990251009e0563e7d4a3364f",
+     "sourceReferences": [
+      "https://archive.org/details/lucianhar05luciuoft/page/54/mode/2up"
+     ],
+     "publicationYear": "1936",
+     "publisher": "William Heinemann Ltd.",
+     "publicationPlace": "London",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/c4ec9bca6b2d5610613b9e368c409cc1607524f3990251009e0563e7d4a3364f.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-tlg0062-tlg043-grc-f93f4a86394a5e5b.json",
+   "sha256": "f93f4a86394a5e5b8ed7d04d41b59c77bc750eed28f1b001387268962ef07c86",
+   "passages": 97,
+   "characters": 20103,
+   "bytes": 56515,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg043-grc-f93f4a86394a5e5b.json"
+  },
+  {
+   "workId": "cts-tlg0062-tlg044",
+   "author": "Luciano de Samósata",
+   "title": "Toxaris vel amicitia",
+   "language": "grc",
+   "dating": "c. 125–c. 180 d. C.",
+   "sources": [
+    {
+     "title": "Τόξαρις ἢ Φιλία",
+     "titleLanguage": "grc",
+     "author": "Lucian",
+     "editors": [
+      "Austin Morris Harmon"
+     ],
+     "bibliography": "Lucian Lucian Austin Morris Harmon London William Heinemann Ltd. Cambridge, MA Harvard University Press 1936 5 Loeb Classical Library Internet Archive",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg0062.tlg044.perseus-grc2",
+     "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0062/tlg044/tlg0062.tlg044.perseus-grc2.xml",
+     "sourceSha256": "d70390752a9e6319bd2279e0a46e4a739887a04f0a10274c56b5110d799d7345",
+     "sourceReferences": [
+      "https://archive.org/details/lucianhar05luciuoft/page/102/mode/2up"
+     ],
+     "publicationYear": "1936",
+     "publisher": "William Heinemann Ltd.",
+     "publicationPlace": "London",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/d70390752a9e6319bd2279e0a46e4a739887a04f0a10274c56b5110d799d7345.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-tlg0062-tlg044-grc-96dd19dcfbde4734.json",
+   "sha256": "96dd19dcfbde473493a108a92b385c9ce7f06e9210f52619f9de6482e3002f6c",
+   "passages": 90,
+   "characters": 61442,
+   "bytes": 136748,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg044-grc-96dd19dcfbde4734.json"
+  },
+  {
+   "workId": "cts-tlg0062-tlg045",
+   "author": "Luciano de Samósata",
+   "title": "De saltatione",
+   "language": "grc",
+   "dating": "c. 125–c. 180 d. C.",
+   "sources": [
+    {
+     "title": "Περὶ Ὀρχήσεως",
+     "titleLanguage": "grc",
+     "author": "Lucian",
+     "editors": [
+      "Austin Morris Harmon"
+     ],
+     "bibliography": "Lucian Lucian Austin Morris Harmon London William Heinemann Ltd. Cambridge, MA Harvard University Press 1936 5 Loeb Classical Library Internet Archive",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg0062.tlg045.perseus-grc2",
+     "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0062/tlg045/tlg0062.tlg045.perseus-grc2.xml",
+     "sourceSha256": "5075e6efd53e9f7462b309da0f2df2ffd691d25b7aa7ac48be9733fda8fd107e",
+     "sourceReferences": [
+      "https://archive.org/details/lucianhar05luciuoft/page/210/mode/2up"
+     ],
+     "publicationYear": "1936",
+     "publisher": "William Heinemann Ltd.",
+     "publicationPlace": "London",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/5075e6efd53e9f7462b309da0f2df2ffd691d25b7aa7ac48be9733fda8fd107e.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-tlg0062-tlg045-grc-b21d1ff03ba735ab.json",
+   "sha256": "b21d1ff03ba735abc74aab06de35ee6ade529c57d2b1289b5e9f08e69db49e87",
+   "passages": 91,
+   "characters": 44583,
+   "bytes": 103843,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg045-grc-b21d1ff03ba735ab.json"
   }
  ],
  "githubPreserved": [
@@ -8735,9 +9196,9 @@
  ],
  "deferred": [
   {
-   "workId": "cts-phi2331-phi011",
+   "workId": "cts-phi2331-phi013",
    "sources": [
-    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi2331/phi011/phi2331.phi011.perseus-lat2.xml"
+    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi2331/phi013/phi2331.phi013.perseus-lat2.xml"
    ],
    "reason": "Sin licencia abierta explícita admisible en la cabecera TEI"
   }

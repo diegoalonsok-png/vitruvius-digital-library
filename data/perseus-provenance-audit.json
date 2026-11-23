@@ -2,13 +2,13 @@
   "schema": "vitruvius-perseus-provenance-audit-v1",
   "generated": "2026-11-23",
   "scope": "Catálogo principal y ediciones TEI originales acreditadas y archivadas en R2; no certifica servicios externos",
-  "method": "Candidate PHI/TLG work codes are not CTS edition URNs. Source descriptions copied from the local index are claims to audit, not proof of an external canonical edition or an institutional link. No automatic CTS URNs or permanent URLs are invented. Incorporaciones R2: edición declarada en TEI fuente, SHA256, licencia y localizador comprobados; no se presume afiliación externa. Incorporaciones R2: edición declarada en TEI fuente, SHA256, licencia y localizador comprobados; no se presume afiliación externa. Incorporaciones R2: edición declarada en TEI fuente, SHA256, licencia y localizador comprobados; no se presume afiliación externa. Incorporaciones R2: edición declarada en TEI fuente, SHA256, licencia y localizador comprobados; no se presume afiliación externa.",
+  "method": "Candidate PHI/TLG work codes are not CTS edition URNs. Source descriptions copied from the local index are claims to audit, not proof of an external canonical edition or an institutional link. No automatic CTS URNs or permanent URLs are invented. Incorporaciones R2: edición declarada en TEI fuente, SHA256, licencia y localizador comprobados; no se presume afiliación externa. Incorporaciones R2: edición declarada en TEI fuente, SHA256, licencia y localizador comprobados; no se presume afiliación externa. Incorporaciones R2: edición declarada en TEI fuente, SHA256, licencia y localizador comprobados; no se presume afiliación externa. Incorporaciones R2: edición declarada en TEI fuente, SHA256, licencia y localizador comprobados; no se presume afiliación externa. Incorporaciones R2: edición declarada en TEI fuente, SHA256, licencia y localizador comprobados; no se presume afiliación externa.",
   "counts": {
-    "works": 305,
-    "worksWithCandidateWorkCodes": 213,
-    "versions": 280,
+    "works": 316,
+    "worksWithCandidateWorkCodes": 224,
+    "versions": 291,
     "worksWithPerseusSourceDescription": 142,
-    "verifiedEditionUrns": 35
+    "verifiedEditionUrns": 46
   },
   "links": {
     "scaife": "https://scaife.perseus.org/",
@@ -7227,6 +7227,347 @@
       "otherSourceEditions": [],
       "r2TextUrl": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg035-grc-d818b14ed454755c.json",
       "r2Sha256": "d818b14ed454755c036207d93da1a658a908abfd159afa91e4bea7ea3781e46d",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "cts-tlg0014-tlg039",
+      "author": "Demóstenes",
+      "title": "Against Boeotus I",
+      "originalLanguage": "grc",
+      "sourceReadiness": "original_r2_tei_publicado_con_sha256",
+      "originalIndexed": false,
+      "originalR2Registered": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "tlg0014.tlg039"
+      ],
+      "versions": [
+        {
+          "language": "grc",
+          "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0014-tlg039-grc-96cf9d8712d32f4e.json",
+          "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "reader": "classics-text-reader.html?work=cts-tlg0014-tlg039&lang=grc"
+        }
+      ],
+      "ctsEditionUrn": "urn:cts:greekLit:tlg0014.tlg039.perseus-grc2",
+      "ctsStatus": "declared_and_checked_in_source_tei_header",
+      "ctsSourceUri": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0014/tlg039/tlg0014.tlg039.perseus-grc2.xml",
+      "ctsEvidence": "TEI XML original, div[@type=edition]/@n, edición y SHA256 verificados mediante fuente R2: a16cd298df9d9e55fe6e09f38daed991832d7d3ab2f2dbac0683124431b075b0",
+      "ctsNote": "URN de edición declarada en TEI; no implica resolución CTS pública ni cotejo de manuscritos.",
+      "sourceRights": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "otherSourceEditions": [],
+      "r2TextUrl": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0014-tlg039-grc-96cf9d8712d32f4e.json",
+      "r2Sha256": "96cf9d8712d32f4e75ac8fa57926c7925360cac79583f22c7063f86ee7ec40cd",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "cts-tlg0014-tlg038",
+      "author": "Demóstenes",
+      "title": "Against Nausimachus and Xenopeithes",
+      "originalLanguage": "grc",
+      "sourceReadiness": "original_r2_tei_publicado_con_sha256",
+      "originalIndexed": false,
+      "originalR2Registered": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "tlg0014.tlg038"
+      ],
+      "versions": [
+        {
+          "language": "grc",
+          "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0014-tlg038-grc-d9db94d31dcda8df.json",
+          "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "reader": "classics-text-reader.html?work=cts-tlg0014-tlg038&lang=grc"
+        }
+      ],
+      "ctsEditionUrn": "urn:cts:greekLit:tlg0014.tlg038.perseus-grc2",
+      "ctsStatus": "declared_and_checked_in_source_tei_header",
+      "ctsSourceUri": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0014/tlg038/tlg0014.tlg038.perseus-grc2.xml",
+      "ctsEvidence": "TEI XML original, div[@type=edition]/@n, edición y SHA256 verificados mediante fuente R2: 7d3f6e1d9a1b304690ae2a51ddb0d0c2fedf4d6fc658d7076f9e5dbad0a58285",
+      "ctsNote": "URN de edición declarada en TEI; no implica resolución CTS pública ni cotejo de manuscritos.",
+      "sourceRights": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "otherSourceEditions": [],
+      "r2TextUrl": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0014-tlg038-grc-d9db94d31dcda8df.json",
+      "r2Sha256": "d9db94d31dcda8df7491d2398072d15e17e54991ec8d129fccaf8eb2f100517b",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "cts-tlg0014-tlg040",
+      "author": "Demóstenes",
+      "title": "Against Boeotus II",
+      "originalLanguage": "grc",
+      "sourceReadiness": "original_r2_tei_publicado_con_sha256",
+      "originalIndexed": false,
+      "originalR2Registered": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "tlg0014.tlg040"
+      ],
+      "versions": [
+        {
+          "language": "grc",
+          "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0014-tlg040-grc-d22611db5a551513.json",
+          "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "reader": "classics-text-reader.html?work=cts-tlg0014-tlg040&lang=grc"
+        }
+      ],
+      "ctsEditionUrn": "urn:cts:greekLit:tlg0014.tlg040.perseus-grc2",
+      "ctsStatus": "declared_and_checked_in_source_tei_header",
+      "ctsSourceUri": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0014/tlg040/tlg0014.tlg040.perseus-grc2.xml",
+      "ctsEvidence": "TEI XML original, div[@type=edition]/@n, edición y SHA256 verificados mediante fuente R2: a7e29787f8cf78ae848b857f4f675e9d606833955c25c054b2d3d2a2e3657cdf",
+      "ctsNote": "URN de edición declarada en TEI; no implica resolución CTS pública ni cotejo de manuscritos.",
+      "sourceRights": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "otherSourceEditions": [],
+      "r2TextUrl": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0014-tlg040-grc-d22611db5a551513.json",
+      "r2Sha256": "d22611db5a5515136e604efd7ad9439b3043b6c59c7aeb00cd6285fbfb58c507",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "cts-tlg0014-tlg042",
+      "author": "Demóstenes",
+      "title": "Against Phaenippus",
+      "originalLanguage": "grc",
+      "sourceReadiness": "original_r2_tei_publicado_con_sha256",
+      "originalIndexed": false,
+      "originalR2Registered": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "tlg0014.tlg042"
+      ],
+      "versions": [
+        {
+          "language": "grc",
+          "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0014-tlg042-grc-74f09dee377fad46.json",
+          "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "reader": "classics-text-reader.html?work=cts-tlg0014-tlg042&lang=grc"
+        }
+      ],
+      "ctsEditionUrn": "urn:cts:greekLit:tlg0014.tlg042.perseus-grc2",
+      "ctsStatus": "declared_and_checked_in_source_tei_header",
+      "ctsSourceUri": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0014/tlg042/tlg0014.tlg042.perseus-grc2.xml",
+      "ctsEvidence": "TEI XML original, div[@type=edition]/@n, edición y SHA256 verificados mediante fuente R2: 93883f896a3fb1a0a2f0ff8148657298e00c41bbb7977beedb6a9ecf3d1519ba",
+      "ctsNote": "URN de edición declarada en TEI; no implica resolución CTS pública ni cotejo de manuscritos.",
+      "sourceRights": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "otherSourceEditions": [],
+      "r2TextUrl": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0014-tlg042-grc-74f09dee377fad46.json",
+      "r2Sha256": "74f09dee377fad4620bd0e86555637e050bd289b3e432e1847ddcc80400f29c1",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "cts-tlg0014-tlg037",
+      "author": "Demóstenes",
+      "title": "Against Pantaenetus",
+      "originalLanguage": "grc",
+      "sourceReadiness": "original_r2_tei_publicado_con_sha256",
+      "originalIndexed": false,
+      "originalR2Registered": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "tlg0014.tlg037"
+      ],
+      "versions": [
+        {
+          "language": "grc",
+          "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0014-tlg037-grc-5599ad2d76baf31c.json",
+          "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "reader": "classics-text-reader.html?work=cts-tlg0014-tlg037&lang=grc"
+        }
+      ],
+      "ctsEditionUrn": "urn:cts:greekLit:tlg0014.tlg037.perseus-grc2",
+      "ctsStatus": "declared_and_checked_in_source_tei_header",
+      "ctsSourceUri": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0014/tlg037/tlg0014.tlg037.perseus-grc2.xml",
+      "ctsEvidence": "TEI XML original, div[@type=edition]/@n, edición y SHA256 verificados mediante fuente R2: 688a5f93780a37c2153ebadd499b23443a001e0bae372fc44cd190c22b525b15",
+      "ctsNote": "URN de edición declarada en TEI; no implica resolución CTS pública ni cotejo de manuscritos.",
+      "sourceRights": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "otherSourceEditions": [],
+      "r2TextUrl": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0014-tlg037-grc-5599ad2d76baf31c.json",
+      "r2Sha256": "5599ad2d76baf31c9fcbe9074684a08b52c2d999682deaef9385ba72f2a77ea8",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "cts-tlg0014-tlg043",
+      "author": "Demóstenes",
+      "title": "Against Macartatus",
+      "originalLanguage": "grc",
+      "sourceReadiness": "original_r2_tei_publicado_con_sha256",
+      "originalIndexed": false,
+      "originalR2Registered": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "tlg0014.tlg043"
+      ],
+      "versions": [
+        {
+          "language": "grc",
+          "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0014-tlg043-grc-47e74f8f1ab16166.json",
+          "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "reader": "classics-text-reader.html?work=cts-tlg0014-tlg043&lang=grc"
+        }
+      ],
+      "ctsEditionUrn": "urn:cts:greekLit:tlg0014.tlg043.perseus-grc2",
+      "ctsStatus": "declared_and_checked_in_source_tei_header",
+      "ctsSourceUri": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0014/tlg043/tlg0014.tlg043.perseus-grc2.xml",
+      "ctsEvidence": "TEI XML original, div[@type=edition]/@n, edición y SHA256 verificados mediante fuente R2: 0238a0b4a9a7a61361823fceaae3f63b315ff5db8d8beabf0e0841c46550edaa",
+      "ctsNote": "URN de edición declarada en TEI; no implica resolución CTS pública ni cotejo de manuscritos.",
+      "sourceRights": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "otherSourceEditions": [],
+      "r2TextUrl": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0014-tlg043-grc-47e74f8f1ab16166.json",
+      "r2Sha256": "47e74f8f1ab16166065c29e042728ce55af94d51f2344e8f31bb307501101bf5",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "cts-tlg0014-tlg041",
+      "author": "Demóstenes",
+      "title": "Against Spudias",
+      "originalLanguage": "grc",
+      "sourceReadiness": "original_r2_tei_publicado_con_sha256",
+      "originalIndexed": false,
+      "originalR2Registered": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "tlg0014.tlg041"
+      ],
+      "versions": [
+        {
+          "language": "grc",
+          "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0014-tlg041-grc-2dd402499722c28d.json",
+          "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "reader": "classics-text-reader.html?work=cts-tlg0014-tlg041&lang=grc"
+        }
+      ],
+      "ctsEditionUrn": "urn:cts:greekLit:tlg0014.tlg041.perseus-grc2",
+      "ctsStatus": "declared_and_checked_in_source_tei_header",
+      "ctsSourceUri": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0014/tlg041/tlg0014.tlg041.perseus-grc2.xml",
+      "ctsEvidence": "TEI XML original, div[@type=edition]/@n, edición y SHA256 verificados mediante fuente R2: 7fc902bc6253cabb332dff648849a6e2082d6c789edfc7faab24e052a30065f1",
+      "ctsNote": "URN de edición declarada en TEI; no implica resolución CTS pública ni cotejo de manuscritos.",
+      "sourceRights": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "otherSourceEditions": [],
+      "r2TextUrl": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0014-tlg041-grc-2dd402499722c28d.json",
+      "r2Sha256": "2dd402499722c28d3a28cf31114d026feb218687c2324e872f8ff498afe61386",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "cts-tlg0014-tlg044",
+      "author": "Demóstenes",
+      "title": "Against Leochares",
+      "originalLanguage": "grc",
+      "sourceReadiness": "original_r2_tei_publicado_con_sha256",
+      "originalIndexed": false,
+      "originalR2Registered": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "tlg0014.tlg044"
+      ],
+      "versions": [
+        {
+          "language": "grc",
+          "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0014-tlg044-grc-f55df8e39b4c2ca2.json",
+          "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "reader": "classics-text-reader.html?work=cts-tlg0014-tlg044&lang=grc"
+        }
+      ],
+      "ctsEditionUrn": "urn:cts:greekLit:tlg0014.tlg044.perseus-grc2",
+      "ctsStatus": "declared_and_checked_in_source_tei_header",
+      "ctsSourceUri": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0014/tlg044/tlg0014.tlg044.perseus-grc2.xml",
+      "ctsEvidence": "TEI XML original, div[@type=edition]/@n, edición y SHA256 verificados mediante fuente R2: 6e7c2b4a9f7f23899437126f5df678220e6002ea41121c79e370810a3d1a9a60",
+      "ctsNote": "URN de edición declarada en TEI; no implica resolución CTS pública ni cotejo de manuscritos.",
+      "sourceRights": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "otherSourceEditions": [],
+      "r2TextUrl": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0014-tlg044-grc-f55df8e39b4c2ca2.json",
+      "r2Sha256": "f55df8e39b4c2ca28cf6b3a17268137ff78d663294508eeaeef4ec63d6243e43",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "cts-tlg0062-tlg043",
+      "author": "Luciano de Samósata",
+      "title": "Fugitivi",
+      "originalLanguage": "grc",
+      "sourceReadiness": "original_r2_tei_publicado_con_sha256",
+      "originalIndexed": false,
+      "originalR2Registered": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "tlg0062.tlg043"
+      ],
+      "versions": [
+        {
+          "language": "grc",
+          "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg043-grc-f93f4a86394a5e5b.json",
+          "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "reader": "classics-text-reader.html?work=cts-tlg0062-tlg043&lang=grc"
+        }
+      ],
+      "ctsEditionUrn": "urn:cts:greekLit:tlg0062.tlg043.perseus-grc2",
+      "ctsStatus": "declared_and_checked_in_source_tei_header",
+      "ctsSourceUri": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0062/tlg043/tlg0062.tlg043.perseus-grc2.xml",
+      "ctsEvidence": "TEI XML original, div[@type=edition]/@n, edición y SHA256 verificados mediante fuente R2: c4ec9bca6b2d5610613b9e368c409cc1607524f3990251009e0563e7d4a3364f",
+      "ctsNote": "URN de edición declarada en TEI; no implica resolución CTS pública ni cotejo de manuscritos.",
+      "sourceRights": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "otherSourceEditions": [],
+      "r2TextUrl": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg043-grc-f93f4a86394a5e5b.json",
+      "r2Sha256": "f93f4a86394a5e5b8ed7d04d41b59c77bc750eed28f1b001387268962ef07c86",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "cts-tlg0062-tlg044",
+      "author": "Luciano de Samósata",
+      "title": "Toxaris vel amicitia",
+      "originalLanguage": "grc",
+      "sourceReadiness": "original_r2_tei_publicado_con_sha256",
+      "originalIndexed": false,
+      "originalR2Registered": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "tlg0062.tlg044"
+      ],
+      "versions": [
+        {
+          "language": "grc",
+          "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg044-grc-96dd19dcfbde4734.json",
+          "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "reader": "classics-text-reader.html?work=cts-tlg0062-tlg044&lang=grc"
+        }
+      ],
+      "ctsEditionUrn": "urn:cts:greekLit:tlg0062.tlg044.perseus-grc2",
+      "ctsStatus": "declared_and_checked_in_source_tei_header",
+      "ctsSourceUri": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0062/tlg044/tlg0062.tlg044.perseus-grc2.xml",
+      "ctsEvidence": "TEI XML original, div[@type=edition]/@n, edición y SHA256 verificados mediante fuente R2: d70390752a9e6319bd2279e0a46e4a739887a04f0a10274c56b5110d799d7345",
+      "ctsNote": "URN de edición declarada en TEI; no implica resolución CTS pública ni cotejo de manuscritos.",
+      "sourceRights": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "otherSourceEditions": [],
+      "r2TextUrl": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg044-grc-96dd19dcfbde4734.json",
+      "r2Sha256": "96dd19dcfbde473493a108a92b385c9ce7f06e9210f52619f9de6482e3002f6c",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "cts-tlg0062-tlg045",
+      "author": "Luciano de Samósata",
+      "title": "De saltatione",
+      "originalLanguage": "grc",
+      "sourceReadiness": "original_r2_tei_publicado_con_sha256",
+      "originalIndexed": false,
+      "originalR2Registered": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "tlg0062.tlg045"
+      ],
+      "versions": [
+        {
+          "language": "grc",
+          "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg045-grc-b21d1ff03ba735ab.json",
+          "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "reader": "classics-text-reader.html?work=cts-tlg0062-tlg045&lang=grc"
+        }
+      ],
+      "ctsEditionUrn": "urn:cts:greekLit:tlg0062.tlg045.perseus-grc2",
+      "ctsStatus": "declared_and_checked_in_source_tei_header",
+      "ctsSourceUri": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0062/tlg045/tlg0062.tlg045.perseus-grc2.xml",
+      "ctsEvidence": "TEI XML original, div[@type=edition]/@n, edición y SHA256 verificados mediante fuente R2: 5075e6efd53e9f7462b309da0f2df2ffd691d25b7aa7ac48be9733fda8fd107e",
+      "ctsNote": "URN de edición declarada en TEI; no implica resolución CTS pública ni cotejo de manuscritos.",
+      "sourceRights": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "otherSourceEditions": [],
+      "r2TextUrl": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg045-grc-b21d1ff03ba735ab.json",
+      "r2Sha256": "b21d1ff03ba735abc74aab06de35ee6ade529c57d2b1289b5e9f08e69db49e87",
       "perseusAffiliation": false
     }
   ]
