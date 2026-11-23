@@ -283,7 +283,7 @@ def finalize():
                 raise ValueError("Archivo de edición existente con hash discordante")
             continue
         w=byid[wid]
-        reader="classics-text-reader.html?work="+wid+"&lang="+lang
+        reader="classics-text-reader.html?work="+wid+"&lang="+lang+"&edition="+row["sha256"][:16]
         v={"language":lang,"path":row["url"],"label":"Traducción humana: "+", ".join(row["translators"]),
            "reader":reader,"sourceUrn":row["sourceUrn"],"sha256":row["sha256"]}
         w.setdefault("localVersions",[])
