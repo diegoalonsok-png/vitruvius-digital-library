@@ -1,6 +1,6 @@
 name: Bibliotheca · traducciones humanas TEI a Cloudflare R2
 run-name: Bibliotheca R2 · traducciones sin duplicados · ${{ github.event_name }}
-# Works with the original-text acquisition job, never alongside it.
+# Immutable translation objects can be uploaded independently; Git catalogue writes rebase on current main.
 on:
   workflow_dispatch:
   schedule:
@@ -14,7 +14,7 @@ on:
 permissions:
   contents: write
 concurrency:
-  group: vdl-classics-expansion-r2
+  group: vdl-classics-human-translations-r2
   cancel-in-progress: false
 jobs:
   translations:
