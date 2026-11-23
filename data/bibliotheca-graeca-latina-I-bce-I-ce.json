@@ -35412,7 +35412,8 @@
    "relatedWorkIds": [],
    "catalogueProvenance": "Título y autor de los catálogos CTS del sitio; edición contrastada con su cabecera TEI. No se retrotraduce el título.",
    "corpusFiles": {
-    "grc": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0014-tlg008-grc-37aff329a7eeca2b.json"
+    "grc": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0014-tlg008-grc-37aff329a7eeca2b.json",
+    "en": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0014-tlg008-en-5696268a0647ce0f.json"
    },
    "localVersions": [
     {
@@ -35420,6 +35421,13 @@
      "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0014-tlg008-grc-37aff329a7eeca2b.json",
      "label": "Original grc · edición TEI en R2",
      "reader": "classics-text-reader.html?work=cts-tlg0014-tlg008&lang=grc"
+    },
+    {
+     "language": "en",
+     "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0014-tlg008-en-5696268a0647ce0f.json",
+     "label": "Traducción humana: James Herbert Vince",
+     "reader": "classics-text-reader.html?work=cts-tlg0014-tlg008&lang=en",
+     "sourceUrn": "urn:cts:greekLit:tlg0014.tlg008.perseus-eng2"
     }
    ],
    "publicStatus": "lectura-local-parcial",
@@ -35456,7 +35464,22 @@
     "characters": 26601,
     "bytes": 66124,
     "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0014-tlg008-grc-37aff329a7eeca2b.json"
-   }
+   },
+   "humanTranslations": [
+    {
+     "language": "en",
+     "translators": [
+      "James Herbert Vince"
+     ],
+     "publicationYear": 1930,
+     "sourceUrn": "urn:cts:greekLit:tlg0014.tlg008.perseus-eng2",
+     "license": [
+      "https://creativecommons.org/licenses/by-sa/4.0/"
+     ],
+     "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0014-tlg008-en-5696268a0647ce0f.json",
+     "indexUrl": "https://libros.vitruvius-digital-library.org/corpus/indice/traducciones/cts-tlg0014-tlg008-en-012579b93221d9e1.json"
+    }
+   ]
   },
   {
    "id": "cts-tlg0014-tlg011",
@@ -35488,7 +35511,8 @@
    "relatedWorkIds": [],
    "catalogueProvenance": "Título y autor de los catálogos CTS del sitio; edición contrastada con su cabecera TEI. No se retrotraduce el título.",
    "corpusFiles": {
-    "grc": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0014-tlg011-grc-7ade6daab217a32d.json"
+    "grc": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0014-tlg011-grc-7ade6daab217a32d.json",
+    "en": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0014-tlg011-en-a0738b5ee9a28cc1.json"
    },
    "localVersions": [
     {
@@ -35496,6 +35520,13 @@
      "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0014-tlg011-grc-7ade6daab217a32d.json",
      "label": "Original grc · edición TEI en R2",
      "reader": "classics-text-reader.html?work=cts-tlg0014-tlg011&lang=grc"
+    },
+    {
+     "language": "en",
+     "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0014-tlg011-en-a0738b5ee9a28cc1.json",
+     "label": "Traducción humana: James Herbert Vince",
+     "reader": "classics-text-reader.html?work=cts-tlg0014-tlg011&lang=en",
+     "sourceUrn": "urn:cts:greekLit:tlg0014.tlg011.perseus-eng2"
     }
    ],
    "publicStatus": "lectura-local-parcial",
@@ -35530,7 +35561,22 @@
     "characters": 8386,
     "bytes": 21961,
     "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0014-tlg011-grc-7ade6daab217a32d.json"
-   }
+   },
+   "humanTranslations": [
+    {
+     "language": "en",
+     "translators": [
+      "James Herbert Vince"
+     ],
+     "publicationYear": 1930,
+     "sourceUrn": "urn:cts:greekLit:tlg0014.tlg011.perseus-eng2",
+     "license": [
+      "https://creativecommons.org/licenses/by-sa/4.0/"
+     ],
+     "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0014-tlg011-en-a0738b5ee9a28cc1.json",
+     "indexUrl": "https://libros.vitruvius-digital-library.org/corpus/indice/traducciones/cts-tlg0014-tlg011-en-0374538d6842efce.json"
+    }
+   ]
   },
   {
    "id": "cts-tlg0014-tlg005",
@@ -35562,7 +35608,8 @@
    "relatedWorkIds": [],
    "catalogueProvenance": "Título y autor de los catálogos CTS del sitio; edición contrastada con su cabecera TEI. No se retrotraduce el título.",
    "corpusFiles": {
-    "grc": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0014-tlg005-grc-3e13114fb967feea.json"
+    "grc": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0014-tlg005-grc-3e13114fb967feea.json",
+    "en": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0014-tlg005-en-a2bc9febe3c16ccb.json"
    },
    "localVersions": [
     {
@@ -35570,6 +35617,13 @@
      "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0014-tlg005-grc-3e13114fb967feea.json",
      "label": "Original grc · edición TEI en R2",
      "reader": "classics-text-reader.html?work=cts-tlg0014-tlg005&lang=grc"
+    },
+    {
+     "language": "en",
+     "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0014-tlg005-en-a2bc9febe3c16ccb.json",
+     "label": "Traducción humana: James Herbert Vince",
+     "reader": "classics-text-reader.html?work=cts-tlg0014-tlg005&lang=en",
+     "sourceUrn": "urn:cts:greekLit:tlg0014.tlg005.perseus-eng2"
     }
    ],
    "publicStatus": "lectura-local-parcial",
@@ -35604,7 +35658,22 @@
     "characters": 9227,
     "bytes": 23834,
     "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0014-tlg005-grc-3e13114fb967feea.json"
-   }
+   },
+   "humanTranslations": [
+    {
+     "language": "en",
+     "translators": [
+      "James Herbert Vince"
+     ],
+     "publicationYear": 1930,
+     "sourceUrn": "urn:cts:greekLit:tlg0014.tlg005.perseus-eng2",
+     "license": [
+      "https://creativecommons.org/licenses/by-sa/4.0/"
+     ],
+     "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0014-tlg005-en-a2bc9febe3c16ccb.json",
+     "indexUrl": "https://libros.vitruvius-digital-library.org/corpus/indice/traducciones/cts-tlg0014-tlg005-en-0352632793cc15fb.json"
+    }
+   ]
   },
   {
    "id": "cts-tlg0014-tlg007",
@@ -35636,7 +35705,8 @@
    "relatedWorkIds": [],
    "catalogueProvenance": "Título y autor de los catálogos CTS del sitio; edición contrastada con su cabecera TEI. No se retrotraduce el título.",
    "corpusFiles": {
-    "grc": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0014-tlg007-grc-9c1a2f76787c1b46.json"
+    "grc": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0014-tlg007-grc-9c1a2f76787c1b46.json",
+    "en": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0014-tlg007-en-515897ff96f26200.json"
    },
    "localVersions": [
     {
@@ -35644,6 +35714,13 @@
      "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0014-tlg007-grc-9c1a2f76787c1b46.json",
      "label": "Original grc · edición TEI en R2",
      "reader": "classics-text-reader.html?work=cts-tlg0014-tlg007&lang=grc"
+    },
+    {
+     "language": "en",
+     "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0014-tlg007-en-515897ff96f26200.json",
+     "label": "Traducción humana: James Herbert Vince",
+     "reader": "classics-text-reader.html?work=cts-tlg0014-tlg007&lang=en",
+     "sourceUrn": "urn:cts:greekLit:tlg0014.tlg007.perseus-eng2"
     }
    ],
    "publicStatus": "lectura-local-parcial",
@@ -35680,7 +35757,22 @@
     "characters": 15622,
     "bytes": 39871,
     "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0014-tlg007-grc-9c1a2f76787c1b46.json"
-   }
+   },
+   "humanTranslations": [
+    {
+     "language": "en",
+     "translators": [
+      "James Herbert Vince"
+     ],
+     "publicationYear": 1930,
+     "sourceUrn": "urn:cts:greekLit:tlg0014.tlg007.perseus-eng2",
+     "license": [
+      "https://creativecommons.org/licenses/by-sa/4.0/"
+     ],
+     "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0014-tlg007-en-515897ff96f26200.json",
+     "indexUrl": "https://libros.vitruvius-digital-library.org/corpus/indice/traducciones/cts-tlg0014-tlg007-en-ef77ba8582558a4c.json"
+    }
+   ]
   },
   {
    "id": "cts-tlg0062-tlg034",

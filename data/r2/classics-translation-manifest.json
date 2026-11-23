@@ -1,6 +1,6 @@
 {
  "schema": "vdl-classics-translation-manifest-v1",
- "generated": "2026-11-23T00:32:20.465626+00:00",
+ "generated": "2026-11-23T00:34:41.653409+00:00",
  "method": "Traducciones humanas TEI licenciadas y publicadas en R2 con SHA-256, índice literal por pasaje, sin alineación automática",
  "editions": [
   {
@@ -186,6 +186,98 @@
    ],
    "indexUrl": "https://libros.vitruvius-digital-library.org/corpus/indice/traducciones/cts-tlg0014-tlg003-en-2b54a1382f2eba66.json",
    "indexSha256": "2b54a1382f2eba666ef853c1d59be7b25140fd9c4d58213db92c7ddd915eebb9"
+  },
+  {
+   "workId": "cts-tlg0014-tlg005",
+   "author": "Demóstenes",
+   "title": "On the Peace",
+   "language": "en",
+   "filename": "cts-tlg0014-tlg005-en-a2bc9febe3c16ccb.json",
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0014-tlg005-en-a2bc9febe3c16ccb.json",
+   "sha256": "a2bc9febe3c16ccbf717703f983ac35a0a6cfd9d1fabfc8637caa3401b177345",
+   "passages": 25,
+   "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0014/tlg005/tlg0014.tlg005.perseus-eng2.xml",
+   "sourceUrn": "urn:cts:greekLit:tlg0014.tlg005.perseus-eng2",
+   "sourceSha256": "4d622cac7017f4e54e0d48d35c9032e2ae675ddaecc6b18377a245b98c56369b",
+   "sourceArchived": "https://libros.vitruvius-digital-library.org/corpus/fuentes/4d622cac7017f4e54e0d48d35c9032e2ae675ddaecc6b18377a245b98c56369b.xml",
+   "translators": [
+    "James Herbert Vince"
+   ],
+   "publicationYear": 1930,
+   "license": [
+    "https://creativecommons.org/licenses/by-sa/4.0/"
+   ],
+   "indexUrl": "https://libros.vitruvius-digital-library.org/corpus/indice/traducciones/cts-tlg0014-tlg005-en-0352632793cc15fb.json",
+   "indexSha256": "0352632793cc15fba8f726805736cc874cfa499d188de5b87a3009acf8bb0940"
+  },
+  {
+   "workId": "cts-tlg0014-tlg007",
+   "author": "Demóstenes",
+   "title": "On Halonnesus",
+   "language": "en",
+   "filename": "cts-tlg0014-tlg007-en-515897ff96f26200.json",
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0014-tlg007-en-515897ff96f26200.json",
+   "sha256": "515897ff96f26200b2f9f92e4435714cda5baf9a49545d13f43fe39307da9ebe",
+   "passages": 46,
+   "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0014/tlg007/tlg0014.tlg007.perseus-eng2.xml",
+   "sourceUrn": "urn:cts:greekLit:tlg0014.tlg007.perseus-eng2",
+   "sourceSha256": "fddb7c7004ed826fe4953e1c60774344beeda0495253e7a8097ad198b91fd698",
+   "sourceArchived": "https://libros.vitruvius-digital-library.org/corpus/fuentes/fddb7c7004ed826fe4953e1c60774344beeda0495253e7a8097ad198b91fd698.xml",
+   "translators": [
+    "James Herbert Vince"
+   ],
+   "publicationYear": 1930,
+   "license": [
+    "https://creativecommons.org/licenses/by-sa/4.0/"
+   ],
+   "indexUrl": "https://libros.vitruvius-digital-library.org/corpus/indice/traducciones/cts-tlg0014-tlg007-en-ef77ba8582558a4c.json",
+   "indexSha256": "ef77ba8582558a4c844375cc1bc5d2d88a01dd30a057917c8879a530c07d85a5"
+  },
+  {
+   "workId": "cts-tlg0014-tlg008",
+   "author": "Demóstenes",
+   "title": "On the Chersonese",
+   "language": "en",
+   "filename": "cts-tlg0014-tlg008-en-5696268a0647ce0f.json",
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0014-tlg008-en-5696268a0647ce0f.json",
+   "sha256": "5696268a0647ce0fc0baf9aae430d3c5bc3e134fb77fe7c4ba3b67c4387c6afc",
+   "passages": 77,
+   "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0014/tlg008/tlg0014.tlg008.perseus-eng2.xml",
+   "sourceUrn": "urn:cts:greekLit:tlg0014.tlg008.perseus-eng2",
+   "sourceSha256": "ef1820d4f8b88eac0f82945be8c0dbc15e86ca8cc6c9423d692b29f003a8b4d9",
+   "sourceArchived": "https://libros.vitruvius-digital-library.org/corpus/fuentes/ef1820d4f8b88eac0f82945be8c0dbc15e86ca8cc6c9423d692b29f003a8b4d9.xml",
+   "translators": [
+    "James Herbert Vince"
+   ],
+   "publicationYear": 1930,
+   "license": [
+    "https://creativecommons.org/licenses/by-sa/4.0/"
+   ],
+   "indexUrl": "https://libros.vitruvius-digital-library.org/corpus/indice/traducciones/cts-tlg0014-tlg008-en-012579b93221d9e1.json",
+   "indexSha256": "012579b93221d9e1389285a7ca413cfcf91a4684a3e33bb0463c4d3455419fcc"
+  },
+  {
+   "workId": "cts-tlg0014-tlg011",
+   "author": "Demóstenes",
+   "title": "Answer to Philip’s Letter",
+   "language": "en",
+   "filename": "cts-tlg0014-tlg011-en-a0738b5ee9a28cc1.json",
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0014-tlg011-en-a0738b5ee9a28cc1.json",
+   "sha256": "a0738b5ee9a28cc151c945bef4698d57171dc3c921819df2ed34595947c3bfaf",
+   "passages": 23,
+   "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0014/tlg011/tlg0014.tlg011.perseus-eng2.xml",
+   "sourceUrn": "urn:cts:greekLit:tlg0014.tlg011.perseus-eng2",
+   "sourceSha256": "785cf1879f8b75419158dba9db3114d9005b68532c4b9f7149a1415930446ad7",
+   "sourceArchived": "https://libros.vitruvius-digital-library.org/corpus/fuentes/785cf1879f8b75419158dba9db3114d9005b68532c4b9f7149a1415930446ad7.xml",
+   "translators": [
+    "James Herbert Vince"
+   ],
+   "publicationYear": 1930,
+   "license": [
+    "https://creativecommons.org/licenses/by-sa/4.0/"
+   ],
+   "indexUrl": "https://libros.vitruvius-digital-library.org/corpus/indice/traducciones/cts-tlg0014-tlg011-en-0374538d6842efce.json",
+   "indexSha256": "0374538d6842efcee4f362d56bc4774fb475141b3e28443e19e03ca266b577b2"
   }
  ],
  "lastDeferred": [

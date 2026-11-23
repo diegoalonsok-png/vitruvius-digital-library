@@ -2,7 +2,7 @@
  "schema": "vitruvia-classics-search-registry-v1",
  "updated": "2026-11-23",
  "description": "Registro verificable de transcripciones HTML y textos JSON existentes que admiten búsqueda literal de contenido. No incluye automáticamente PDF escaneados, facsímiles ni fichas sin texto. Los índices auxiliares por locus y el aparato crítico se declaran por separado; no se suman a versiones textuales originales ni implican colación autóptica.",
- "count": 528,
+ "count": 532,
  "works": 403,
  "entries": [
   {
@@ -1341,6 +1341,18 @@
    "workId": "cts-tlg0014-tlg005",
    "author": "Demóstenes",
    "title": "On the Peace",
+   "language": "en",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0014-tlg005-en-a2bc9febe3c16ccb.json",
+   "reader": "classics-text-reader.html?work=cts-tlg0014-tlg005&lang=en",
+   "sourceDescription": "Traducción humana acreditada: James Herbert Vince; TEI Perseus, licencia y SHA256 verificados",
+   "sha256": "a2bc9febe3c16ccbf717703f983ac35a0a6cfd9d1fabfc8637caa3401b177345",
+   "passages": 25
+  },
+  {
+   "workId": "cts-tlg0014-tlg005",
+   "author": "Demóstenes",
+   "title": "On the Peace",
    "language": "grc",
    "format": "json-passages",
    "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0014-tlg005-grc-3e13114fb967feea.json",
@@ -1348,6 +1360,18 @@
    "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
    "sha256": "3e13114fb967feeac5d0b9609a91930060a887fd09af78b52daa95d7459a5a87",
    "passages": 25
+  },
+  {
+   "workId": "cts-tlg0014-tlg007",
+   "author": "Demóstenes",
+   "title": "On Halonnesus",
+   "language": "en",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0014-tlg007-en-515897ff96f26200.json",
+   "reader": "classics-text-reader.html?work=cts-tlg0014-tlg007&lang=en",
+   "sourceDescription": "Traducción humana acreditada: James Herbert Vince; TEI Perseus, licencia y SHA256 verificados",
+   "sha256": "515897ff96f26200b2f9f92e4435714cda5baf9a49545d13f43fe39307da9ebe",
+   "passages": 46
   },
   {
    "workId": "cts-tlg0014-tlg007",
@@ -1365,6 +1389,18 @@
    "workId": "cts-tlg0014-tlg008",
    "author": "Demóstenes",
    "title": "On the Chersonese",
+   "language": "en",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0014-tlg008-en-5696268a0647ce0f.json",
+   "reader": "classics-text-reader.html?work=cts-tlg0014-tlg008&lang=en",
+   "sourceDescription": "Traducción humana acreditada: James Herbert Vince; TEI Perseus, licencia y SHA256 verificados",
+   "sha256": "5696268a0647ce0fc0baf9aae430d3c5bc3e134fb77fe7c4ba3b67c4387c6afc",
+   "passages": 77
+  },
+  {
+   "workId": "cts-tlg0014-tlg008",
+   "author": "Demóstenes",
+   "title": "On the Chersonese",
    "language": "grc",
    "format": "json-passages",
    "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0014-tlg008-grc-37aff329a7eeca2b.json",
@@ -1372,6 +1408,18 @@
    "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
    "sha256": "37aff329a7eeca2b2b6ab1735e95f1c74e4659f7466e100a71bc111939a9ca95",
    "passages": 77
+  },
+  {
+   "workId": "cts-tlg0014-tlg011",
+   "author": "Demóstenes",
+   "title": "Answer to Philip’s Letter",
+   "language": "en",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0014-tlg011-en-a0738b5ee9a28cc1.json",
+   "reader": "classics-text-reader.html?work=cts-tlg0014-tlg011&lang=en",
+   "sourceDescription": "Traducción humana acreditada: James Herbert Vince; TEI Perseus, licencia y SHA256 verificados",
+   "sha256": "a0738b5ee9a28cc151c945bef4698d57171dc3c921819df2ed34595947c3bfaf",
+   "passages": 23
   },
   {
    "workId": "cts-tlg0014-tlg011",
