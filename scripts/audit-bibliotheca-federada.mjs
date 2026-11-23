@@ -21,7 +21,22 @@ const works=ids(cat,w=>w.id,"Obra"),overlayIds=ids(overlay,w=>w.id,"Obra supleme
 for(const id of overlayIds)if(works.has(id))critical.push("Obra suplementaria duplicada en catálogo principal: "+id);
 const allWorks=new Set([...works,...overlayIds]);
 ids(reg,e=>[e.workId,e.language,e.path,e.edition||""].join("|"),"Registro textual");
-const availableR2=new Set(corpusR2.obras.map(e=>corpusR2.base+e.archivo));
+// El registro remoto utiliza tres manifiestos complementarios: originales iniciales,
+// ampliaciones TEI y traducciones humanas. Comprobarlos juntos evita falsos faltantes.
+const expansionR2=read("data/r2/classics-expansion-manifest.json");
+const translationsR2=read("data/r2/classics-translation-manifest.json");
+const declaredR2=[
+ ...corpusR2.obras.map(e=>({url:corpusR2.base+e.archivo,sha256:e.sha256})),
+ ...expansionR2.editions.map(e=>({url:e.url,sha256:e.sha256})),
+ ...translationsR2.editions.map(e=>({url:e.url,sha256:e.sha256}))
+];
+const hashesByUrl=new Map();
+for(const e of declaredR2){
+ if(!e.url||!e.url.startsWith(corpusR2.base)||!e.sha256)critical.push("Manifiesto R2 sin URL/hash válido: "+String(e.url));
+ if(hashesByUrl.has(e.url)&&hashesByUrl.get(e.url)!==e.sha256)critical.push("Manifiestos R2 discordantes (SHA-256): "+e.url);
+ hashesByUrl.set(e.url,e.sha256);
+}
+const availableR2=new Set(hashesByUrl.keys());
 const indexedWorks=new Set(),indexedOriginals=new Set(),indexedLocalFiles=new Set(),indexedRemoteFiles=new Set();
 for(const e of reg){
  if(!allWorks.has(e.workId)&&e.format!=="critical-indexed-latin")critical.push("Edición textual sin ficha: "+e.workId);
