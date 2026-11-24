@@ -18,7 +18,7 @@
 """
 import hashlib, io, json, os, re, sys, time, urllib.parse, urllib.request
 from collections import defaultdict
-from concurrent.futures import ThreadPoolExecutor
+from concurrent.futures import ThreadPoolExecutor, as_completed
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -370,7 +370,9 @@ def main():
 
     limite = int(os.environ.get("LIMITE", "0") or 0)
     solo_traducciones = os.environ.get("SOLO_TRADUCCIONES") == "1"
-    if solo_traducciones:
+    if os.environ.get("SOLO_ORIGINALES") == "1":
+        pendientes = originales[:limite] if limite else originales
+    elif solo_traducciones:
         pendientes = traducciones[:limite] if limite else traducciones
     elif limite:
         cupo_original = max(1, (limite * 2 + 1) // 3)
@@ -385,7 +387,13 @@ def main():
     print(f"pendientes: {len(pendientes)} (ya catalogadas: {len(hechos)}; repetidas omitidas: {len(repetidas)})")
     informe = {"incorporadas": [], "no_encontradas": {}}
     with ThreadPoolExecutor(max_workers=3) as ex:
-        for o, (ficha, paginas, rech) in zip(pendientes, ex.map(lambda o: procesar(o, ctx), pendientes)):
+        futures = {ex.submit(procesar, o, ctx): o for o in pendientes}
+        for future in as_completed(futures):
+            o = futures[future]
+            try:
+                ficha, paginas, rech = future.result()
+            except Exception as exc:
+                ficha, paginas, rech = None, None, [str(exc)[:300]]
             if ficha:
                 cat["items"].append(ficha)
                 for cid, pags in postings(ficha, paginas, lex).items():
