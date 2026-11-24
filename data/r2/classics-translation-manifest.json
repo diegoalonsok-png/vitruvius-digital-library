@@ -1,6 +1,6 @@
 {
  "schema": "vdl-classics-translation-manifest-v1",
- "generated": "2026-11-23T22:17:44.623718+00:00",
+ "generated": "2026-11-24T06:30:29.111140+00:00",
  "method": "Traducciones humanas TEI licenciadas y publicadas en R2 con SHA-256, índice literal por pasaje, sin alineación automática",
  "editions": [
   {
@@ -837,6 +837,100 @@
    ],
    "indexUrl": "https://libros.vitruvius-digital-library.org/corpus/indice/traducciones/caesar-civili-en-0a6cc46addcc52ea.json",
    "indexSha256": "0a6cc46addcc52ead7a3d786e492fb774aee8c00737938f74cb689a7ae9b6c93"
+  },
+  {
+   "workId": "caesar-gallico",
+   "author": "Julio César",
+   "title": "Commentarii de bello Gallico",
+   "language": "en",
+   "filename": "caesar-gallico-en-f325248330fd0898.json",
+   "url": "https://libros.vitruvius-digital-library.org/corpus/caesar-gallico-en-f325248330fd0898.json",
+   "sha256": "f325248330fd0898a258cd983ddd446a3e36c3df99d83902afed9411395e98dd",
+   "passages": 404,
+   "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0448/phi001/phi0448.phi001.perseus-eng2.xml",
+   "sourceUrn": "urn:cts:latinLit:phi0448.phi001.perseus-eng2",
+   "sourceSha256": "fa4aa7c8892d986e6a12660c39ff2906d7295a7fee915fc2e23cf54d65b52d7c",
+   "sourceArchived": "https://libros.vitruvius-digital-library.org/corpus/fuentes/fa4aa7c8892d986e6a12660c39ff2906d7295a7fee915fc2e23cf54d65b52d7c.xml",
+   "translators": [
+    "William Alexander McDevitte",
+    "W. S. Bohn",
+    "W. A. McDevitte"
+   ],
+   "publicationYear": 1870,
+   "license": [
+    "https://creativecommons.org/licenses/by-sa/4.0/"
+   ],
+   "indexUrl": "https://libros.vitruvius-digital-library.org/corpus/indice/traducciones/caesar-gallico-en-1311ae7480c9cb04.json",
+   "indexSha256": "1311ae7480c9cb04296cce4b435274a4c6eec5a88cdd5daa4984e81f052649a8"
+  },
+  {
+   "workId": "cicero-catilinariae",
+   "author": "Cicerón",
+   "title": "In Catilinam (Orationes Catilinariae)",
+   "language": "en",
+   "filename": "cicero-catilinariae-en-b2e407a170bdffc0.json",
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cicero-catilinariae-en-b2e407a170bdffc0.json",
+   "sha256": "b2e407a170bdffc0d7c10d3192237ece3b5bf6c6b8d1703d6a6bd4cdd69ed053",
+   "passages": 159,
+   "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0474/phi013/phi0474.phi013.perseus-eng2.xml",
+   "sourceUrn": "urn:cts:latinLit:phi0474.phi013.perseus-eng2",
+   "sourceSha256": "751291a78be36354ec39ee579e9e2c556c85bcbfc329fca7cee7d0915f5066c7",
+   "sourceArchived": "https://libros.vitruvius-digital-library.org/corpus/fuentes/751291a78be36354ec39ee579e9e2c556c85bcbfc329fca7cee7d0915f5066c7.xml",
+   "translators": [
+    "Charles Duke Yonge"
+   ],
+   "publicationYear": 1856,
+   "license": [
+    "https://creativecommons.org/licenses/by-sa/4.0/"
+   ],
+   "indexUrl": "https://libros.vitruvius-digital-library.org/corpus/indice/traducciones/cicero-catilinariae-en-e71553ac2a35dfd6.json",
+   "indexSha256": "e71553ac2a35dfd6e66f6b4e903d5ef0ea69aeec736911b1558d49f82251e029"
+  },
+  {
+   "workId": "cicero-pro-archia",
+   "author": "Cicerón",
+   "title": "Pro Archia poeta",
+   "language": "en",
+   "filename": "cicero-pro-archia-en-b1aa94a55e837236.json",
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cicero-pro-archia-en-b1aa94a55e837236.json",
+   "sha256": "b1aa94a55e83723610cff02ffd92d91204f8d8c6f0bfaf7f0f49912f30c10645",
+   "passages": 42,
+   "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0474/phi016/phi0474.phi016.perseus-eng2.xml",
+   "sourceUrn": "urn:cts:latinLit:phi0474.phi016.perseus-eng2",
+   "sourceSha256": "9480d691f4fa487b0cb7596b28a223a9be5c6ade4aaa1b86eb31d5ba38ddf25b",
+   "sourceArchived": "https://libros.vitruvius-digital-library.org/corpus/fuentes/9480d691f4fa487b0cb7596b28a223a9be5c6ade4aaa1b86eb31d5ba38ddf25b.xml",
+   "translators": [
+    "Charles Duke Yonge"
+   ],
+   "publicationYear": 1856,
+   "license": [
+    "https://creativecommons.org/licenses/by-sa/4.0/"
+   ],
+   "indexUrl": "https://libros.vitruvius-digital-library.org/corpus/indice/traducciones/cicero-pro-archia-en-50e082c53cf95b7f.json",
+   "indexSha256": "50e082c53cf95b7fe450153b03af6a50c01ed7b9b562460ec28ec331bc59fa2a"
+  },
+  {
+   "workId": "cts-phi0474-phi008",
+   "author": "Cicerón",
+   "title": "Pro A. Caecina",
+   "language": "en",
+   "filename": "cts-phi0474-phi008-en-0c9dbdd6004eef07.json",
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0474-phi008-en-0c9dbdd6004eef07.json",
+   "sha256": "0c9dbdd6004eef073d4ba637f48c7556dcccf9e5d9292ff5d55cf868a6fa2f51",
+   "passages": 126,
+   "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0474/phi008/phi0474.phi008.perseus-eng2.xml",
+   "sourceUrn": "urn:cts:latinLit:phi0474.phi008.perseus-eng2",
+   "sourceSha256": "7ae5dc68b1dbea118dcda6f7510084232bfc56b7ec4bfd87b5ae856cfeccb875",
+   "sourceArchived": "https://libros.vitruvius-digital-library.org/corpus/fuentes/7ae5dc68b1dbea118dcda6f7510084232bfc56b7ec4bfd87b5ae856cfeccb875.xml",
+   "translators": [
+    "Charles Duke Yonge"
+   ],
+   "publicationYear": 1856,
+   "license": [
+    "https://creativecommons.org/licenses/by-sa/4.0/"
+   ],
+   "indexUrl": "https://libros.vitruvius-digital-library.org/corpus/indice/traducciones/cts-phi0474-phi008-en-cda48af4d009bb6b.json",
+   "indexSha256": "cda48af4d009bb6b5cfa1a2dbd405913ac11756c717b8b1c9f1b94650e4f41a6"
   }
  ],
  "lastDeferred": [
@@ -895,6 +989,62 @@
   {
    "workId": "aristotle-politics",
    "reason": "Sin traducción publicable: tlg0086.tlg035.perseus-eng2.xml: Edición histórica anterior a 1931 no acreditada"
+  },
+  {
+   "workId": "cassius-dio-historia",
+   "reason": "No hay traducción TEI descargable en Perseus"
+  },
+  {
+   "workId": "cicero-brutus",
+   "reason": "No hay traducción TEI descargable en Perseus"
+  },
+  {
+   "workId": "cicero-de-amicitia",
+   "reason": "Sin traducción publicable: phi0474.phi052.perseus-eng2.xml: Sin licencia de reutilización explícita"
+  },
+  {
+   "workId": "cicero-de-divinatione",
+   "reason": "Sin traducción publicable: phi0474.phi053.perseus-eng1.xml: Sin licencia de reutilización explícita"
+  },
+  {
+   "workId": "cicero-de-finibus",
+   "reason": "No hay traducción TEI descargable en Perseus"
+  },
+  {
+   "workId": "cicero-de-natura-deorum",
+   "reason": "No hay traducción TEI descargable en Perseus"
+  },
+  {
+   "workId": "cicero-de-senectute",
+   "reason": "Sin traducción publicable: phi0474.phi051.perseus-eng1.xml: Sin licencia de reutilización explícita"
+  },
+  {
+   "workId": "cicero-officiis",
+   "reason": "Sin traducción publicable: phi0474.phi055.perseus-eng1.xml: Sin licencia de reutilización explícita"
+  },
+  {
+   "workId": "cicero-oratore",
+   "reason": "No hay traducción TEI descargable en Perseus"
+  },
+  {
+   "workId": "cicero-philippicae",
+   "reason": "Sin traducción publicable: phi0474.phi035.perseus-eng1.xml: No está marcado como traducción humana TEI"
+  },
+  {
+   "workId": "cicero-republica",
+   "reason": "No hay traducción TEI descargable en Perseus"
+  },
+  {
+   "workId": "cicero-tusculanae",
+   "reason": "No hay traducción TEI descargable en Perseus"
+  },
+  {
+   "workId": "cleonides-harmonica",
+   "reason": "No hay traducción TEI descargable en Perseus"
+  },
+  {
+   "workId": "cts-ogl0001-ogl001",
+   "reason": "No hay traducción TEI descargable en Perseus"
   }
  ],
  "policy": "Una obra bibliográfica, varias versiones humanas identificadas por URN, sin eliminar ni reemplazar ninguna"

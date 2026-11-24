@@ -1,6 +1,6 @@
 {
   "schema": "vdl-federated-bibliotheca-inventory-v1",
-  "generated": "2026-11-23T23:36:43.504284+00:00",
+  "generated": "2026-11-24T06:30:29.238139+00:00",
   "method": "Master works and additional R2 works counted separately; edition relations can be many-to-many. Remote text URLs are declared, not live-verified. Unresolved editions are never merged automatically.",
   "counts": {
     "cataloguedWorks": 507,
@@ -2234,6 +2234,10 @@
       ],
       "declaredRemoteIndexedText": [
         {
+          "language": "en",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/caesar-gallico-en-f325248330fd0898.json"
+        },
+        {
           "language": "la",
           "url": "https://libros.vitruvius-digital-library.org/corpus/caesar-gallico-la-37387ba76bfefc48.json"
         }
@@ -3361,6 +3365,10 @@
         }
       ],
       "declaredRemoteIndexedText": [
+        {
+          "language": "en",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/cicero-catilinariae-en-b2e407a170bdffc0.json"
+        },
         {
           "language": "la",
           "url": "https://libros.vitruvius-digital-library.org/corpus/cicero-catilinariae-la-1309fb61afe4a83d.json"
@@ -5636,6 +5644,10 @@
         }
       ],
       "declaredRemoteIndexedText": [
+        {
+          "language": "en",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/cicero-pro-archia-en-b1aa94a55e837236.json"
+        },
         {
           "language": "la",
           "url": "https://libros.vitruvius-digital-library.org/corpus/cicero-pro-archia-la-614e0fb3412bd37f.json"
@@ -8701,6 +8713,10 @@
       "catalogue": "github",
       "locallyIndexedText": [],
       "declaredRemoteIndexedText": [
+        {
+          "language": "en",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0474-phi008-en-0c9dbdd6004eef07.json"
+        },
         {
           "language": "la",
           "url": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0474-phi008-la-ce22633d9f199be5.json"

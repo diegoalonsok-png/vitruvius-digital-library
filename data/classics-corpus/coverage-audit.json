@@ -1,6 +1,6 @@
 {
   "schema": "vitruvia-classics-coverage-audit-v1",
-  "date": "2026-11-23",
+  "date": "2026-11-24",
   "scope": "Se auditan exclusivamente 271 fichas de obras del catálogo local; no es un censo universal de literatura grecolatina.",
   "method": "Cruce de fichas bibliográficas, vínculos locales, corpus legible, registro de búsqueda y testimonios manuscritos; sin OCR ni verificación externa de los enlaces.",
   "counts": {
@@ -13,7 +13,7 @@
       "pendiente-de-incorporar": 2
     },
     "locallyReadableClaims": 439,
-    "indexedTextVersions": 670,
+    "indexedTextVersions": 674,
     "indexedDistinctWorks": 478,
     "manuscriptWitnesses": 107
   },
@@ -131,6 +131,7 @@
       "indexedTextFiles": [
         "data/classics-corpus/caesar-gallico-en.json",
         "data/classics-corpus/caesar-gallico-la.json",
+        "https://libros.vitruvius-digital-library.org/corpus/caesar-gallico-en-f325248330fd0898.json",
         "https://libros.vitruvius-digital-library.org/corpus/caesar-gallico-la-37387ba76bfefc48.json"
       ],
       "localPDF": "documents/classics/caesar-de-bello-gallico-smith-1842.pdf",
@@ -1487,6 +1488,7 @@
       "indexedTextFiles": [
         "data/classics-corpus/cicero-catilinariae-en.json",
         "data/classics-corpus/cicero-catilinariae-la.json",
+        "https://libros.vitruvius-digital-library.org/corpus/cicero-catilinariae-en-b2e407a170bdffc0.json",
         "https://libros.vitruvius-digital-library.org/corpus/cicero-catilinariae-la-1309fb61afe4a83d.json"
       ],
       "localPDF": null,
@@ -3891,10 +3893,12 @@
       "dating": "62 a. C.",
       "catalogueStatus": "lectura-local-parcial",
       "indexedTextLanguages": [
+        "en",
         "la"
       ],
       "indexedTextFiles": [
         "data/classics-corpus/cicero-pro-archia-la.json",
+        "https://libros.vitruvius-digital-library.org/corpus/cicero-pro-archia-en-b1aa94a55e837236.json",
         "https://libros.vitruvius-digital-library.org/corpus/cicero-pro-archia-la-614e0fb3412bd37f.json"
       ],
       "localPDF": null,
@@ -7175,9 +7179,11 @@
       "originalLanguage": "la",
       "catalogueStatus": "lectura-local-parcial",
       "indexedTextLanguages": [
+        "en",
         "la"
       ],
       "indexedTextFiles": [
+        "https://libros.vitruvius-digital-library.org/corpus/cts-phi0474-phi008-en-0c9dbdd6004eef07.json",
         "https://libros.vitruvius-digital-library.org/corpus/cts-phi0474-phi008-la-ce22633d9f199be5.json"
       ],
       "manuscriptRecords": 0,

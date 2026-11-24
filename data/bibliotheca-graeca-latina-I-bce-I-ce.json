@@ -892,6 +892,14 @@
       "urn:cts:latinLit:phi0448.phi001.perseus-lat2"
      ],
      "sha256": "37387ba76bfefc488b1b1de00065b16096d475852d7fae2463001435462a4144"
+    },
+    {
+     "language": "en",
+     "path": "https://libros.vitruvius-digital-library.org/corpus/caesar-gallico-en-f325248330fd0898.json",
+     "label": "Traducción humana: William Alexander McDevitte, W. S. Bohn, W. A. McDevitte",
+     "reader": "classics-text-reader.html?work=caesar-gallico&lang=en&edition=f325248330fd0898",
+     "sourceUrn": "urn:cts:latinLit:phi0448.phi001.perseus-eng2",
+     "sha256": "f325248330fd0898a258cd983ddd446a3e36c3df99d83902afed9411395e98dd"
     }
    ],
    "indexedEdition": {
@@ -927,7 +935,24 @@
     "characters": 374219,
     "bytes": 723301,
     "url": "https://libros.vitruvius-digital-library.org/corpus/caesar-gallico-la-37387ba76bfefc48.json"
-   }
+   },
+   "humanTranslations": [
+    {
+     "language": "en",
+     "translators": [
+      "William Alexander McDevitte",
+      "W. S. Bohn",
+      "W. A. McDevitte"
+     ],
+     "publicationYear": 1870,
+     "sourceUrn": "urn:cts:latinLit:phi0448.phi001.perseus-eng2",
+     "license": [
+      "https://creativecommons.org/licenses/by-sa/4.0/"
+     ],
+     "url": "https://libros.vitruvius-digital-library.org/corpus/caesar-gallico-en-f325248330fd0898.json",
+     "indexUrl": "https://libros.vitruvius-digital-library.org/corpus/indice/traducciones/caesar-gallico-en-1311ae7480c9cb04.json"
+    }
+   ]
   },
   {
    "id": "caesar-civili",
@@ -9580,6 +9605,14 @@
       "urn:cts:latinLit:phi0474.phi013.perseus-lat2"
      ],
      "sha256": "1309fb61afe4a83dd004a52acee1dd73e663fe22b9c9070fccd56817622ef9e6"
+    },
+    {
+     "language": "en",
+     "path": "https://libros.vitruvius-digital-library.org/corpus/cicero-catilinariae-en-b2e407a170bdffc0.json",
+     "label": "Traducción humana: Charles Duke Yonge",
+     "reader": "classics-text-reader.html?work=cicero-catilinariae&lang=en&edition=b2e407a170bdffc0",
+     "sourceUrn": "urn:cts:latinLit:phi0474.phi013.perseus-eng2",
+     "sha256": "b2e407a170bdffc0d7c10d3192237ece3b5bf6c6b8d1703d6a6bd4cdd69ed053"
     }
    ],
    "indexationAudit": {
@@ -9701,7 +9734,22 @@
     "characters": 85946,
     "bytes": 108026,
     "url": "https://libros.vitruvius-digital-library.org/corpus/cicero-catilinariae-la-1309fb61afe4a83d.json"
-   }
+   },
+   "humanTranslations": [
+    {
+     "language": "en",
+     "translators": [
+      "Charles Duke Yonge"
+     ],
+     "publicationYear": 1856,
+     "sourceUrn": "urn:cts:latinLit:phi0474.phi013.perseus-eng2",
+     "license": [
+      "https://creativecommons.org/licenses/by-sa/4.0/"
+     ],
+     "url": "https://libros.vitruvius-digital-library.org/corpus/cicero-catilinariae-en-b2e407a170bdffc0.json",
+     "indexUrl": "https://libros.vitruvius-digital-library.org/corpus/indice/traducciones/cicero-catilinariae-en-e71553ac2a35dfd6.json"
+    }
+   ]
   },
   {
    "id": "catullus-carmina",
@@ -27384,7 +27432,8 @@
     "note": "Pasajes de De architectura en los que Vitruvio nombra a este autor (latín de la edición V514); la mención no implica cita literal de esta obra concreta."
    },
    "corpusFiles": {
-    "la": "data/classics-corpus/cicero-pro-archia-la.json"
+    "la": "data/classics-corpus/cicero-pro-archia-la.json",
+    "en": "https://libros.vitruvius-digital-library.org/corpus/cicero-pro-archia-en-b1aa94a55e837236.json"
    },
    "indexationAudit": {
     "previousPublicStatus": "repertoriado-busqueda-externa",
@@ -27445,6 +27494,14 @@
       "urn:cts:latinLit:phi0474.phi016.perseus-lat2"
      ],
      "sha256": "614e0fb3412bd37f787a8bd9d391b4e47b2e2e207eb4fba05e3221d9fa006d5d"
+    },
+    {
+     "language": "en",
+     "path": "https://libros.vitruvius-digital-library.org/corpus/cicero-pro-archia-en-b1aa94a55e837236.json",
+     "label": "Traducción humana: Charles Duke Yonge",
+     "reader": "classics-text-reader.html?work=cicero-pro-archia&lang=en&edition=b1aa94a55e837236",
+     "sourceUrn": "urn:cts:latinLit:phi0474.phi016.perseus-eng2",
+     "sha256": "b1aa94a55e83723610cff02ffd92d91204f8d8c6f0bfaf7f0f49912f30c10645"
     }
    ],
    "indexedEdition": {
@@ -27481,7 +27538,22 @@
     "characters": 21283,
     "bytes": 28911,
     "url": "https://libros.vitruvius-digital-library.org/corpus/cicero-pro-archia-la-614e0fb3412bd37f.json"
-   }
+   },
+   "humanTranslations": [
+    {
+     "language": "en",
+     "translators": [
+      "Charles Duke Yonge"
+     ],
+     "publicationYear": 1856,
+     "sourceUrn": "urn:cts:latinLit:phi0474.phi016.perseus-eng2",
+     "license": [
+      "https://creativecommons.org/licenses/by-sa/4.0/"
+     ],
+     "url": "https://libros.vitruvius-digital-library.org/corpus/cicero-pro-archia-en-b1aa94a55e837236.json",
+     "indexUrl": "https://libros.vitruvius-digital-library.org/corpus/indice/traducciones/cicero-pro-archia-en-50e082c53cf95b7f.json"
+    }
+   ]
   },
   {
    "id": "cicero-de-finibus",
@@ -43146,7 +43218,8 @@
    "relatedWorkIds": [],
    "catalogueProvenance": "Título y autor de los catálogos CTS del sitio; edición contrastada con su cabecera TEI. No se retrotraduce el título.",
    "corpusFiles": {
-    "la": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0474-phi008-la-ce22633d9f199be5.json"
+    "la": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0474-phi008-la-ce22633d9f199be5.json",
+    "en": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0474-phi008-en-0c9dbdd6004eef07.json"
    },
    "localVersions": [
     {
@@ -43158,6 +43231,14 @@
       "urn:cts:latinLit:phi0474.phi008.perseus-lat2"
      ],
      "sha256": "ce22633d9f199be5ae06779b40e1f6c1e05256a1ff547c15e284ec3c52e741de"
+    },
+    {
+     "language": "en",
+     "path": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0474-phi008-en-0c9dbdd6004eef07.json",
+     "label": "Traducción humana: Charles Duke Yonge",
+     "reader": "classics-text-reader.html?work=cts-phi0474-phi008&lang=en&edition=0c9dbdd6004eef07",
+     "sourceUrn": "urn:cts:latinLit:phi0474.phi008.perseus-eng2",
+     "sha256": "0c9dbdd6004eef073d4ba637f48c7556dcccf9e5d9292ff5d55cf868a6fa2f51"
     }
    ],
    "publicStatus": "lectura-local-parcial",
@@ -43194,7 +43275,22 @@
     "characters": 67903,
     "bytes": 87992,
     "url": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0474-phi008-la-ce22633d9f199be5.json"
-   }
+   },
+   "humanTranslations": [
+    {
+     "language": "en",
+     "translators": [
+      "Charles Duke Yonge"
+     ],
+     "publicationYear": 1856,
+     "sourceUrn": "urn:cts:latinLit:phi0474.phi008.perseus-eng2",
+     "license": [
+      "https://creativecommons.org/licenses/by-sa/4.0/"
+     ],
+     "url": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0474-phi008-en-0c9dbdd6004eef07.json",
+     "indexUrl": "https://libros.vitruvius-digital-library.org/corpus/indice/traducciones/cts-phi0474-phi008-en-cda48af4d009bb6b.json"
+    }
+   ]
   },
   {
    "id": "cts-phi0474-phi005",

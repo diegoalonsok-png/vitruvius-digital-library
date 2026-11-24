@@ -1,8 +1,8 @@
 {
  "schema": "vitruvia-classics-search-registry-v1",
- "updated": "2026-11-23",
+ "updated": "2026-11-24",
  "description": "Registro verificable de transcripciones HTML y textos JSON existentes que admiten búsqueda literal de contenido. No incluye automáticamente PDF escaneados, facsímiles ni fichas sin texto. Los índices auxiliares por locus y el aparato crítico se declaran por separado; no se suman a versiones textuales originales ni implican colación autóptica.",
- "count": 831,
+ "count": 835,
  "works": 606,
  "entries": [
   {
@@ -1016,6 +1016,19 @@
    "workId": "caesar-gallico",
    "author": "Julio César",
    "title": "Commentarii de bello Gallico",
+   "language": "en",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/caesar-gallico-en-f325248330fd0898.json",
+   "reader": "classics-text-reader.html?work=caesar-gallico&lang=en&edition=f325248330fd0898",
+   "sourceDescription": "Traducción humana acreditada: William Alexander McDevitte, W. S. Bohn, W. A. McDevitte; TEI Perseus, licencia y SHA256 verificados",
+   "sourceUrn": "urn:cts:latinLit:phi0448.phi001.perseus-eng2",
+   "sha256": "f325248330fd0898a258cd983ddd446a3e36c3df99d83902afed9411395e98dd",
+   "passages": 404
+  },
+  {
+   "workId": "caesar-gallico",
+   "author": "Julio César",
+   "title": "Commentarii de bello Gallico",
    "language": "la",
    "format": "json-passages",
    "path": "data/classics-corpus/caesar-gallico-la.json",
@@ -1162,6 +1175,19 @@
    "path": "data/classics-corpus/cicero-catilinariae-en.json",
    "reader": "classics-text-reader.html?work=cicero-catilinariae&lang=en",
    "sourceDescription": "Traducción histórica de Charles Duke Yonge (1856); TEI Perseus verificado por SHA; sin cotejo automático"
+  },
+  {
+   "workId": "cicero-catilinariae",
+   "author": "Cicerón",
+   "title": "In Catilinam (Orationes Catilinariae)",
+   "language": "en",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/cicero-catilinariae-en-b2e407a170bdffc0.json",
+   "reader": "classics-text-reader.html?work=cicero-catilinariae&lang=en&edition=b2e407a170bdffc0",
+   "sourceDescription": "Traducción humana acreditada: Charles Duke Yonge; TEI Perseus, licencia y SHA256 verificados",
+   "sourceUrn": "urn:cts:latinLit:phi0474.phi013.perseus-eng2",
+   "sha256": "b2e407a170bdffc0d7c10d3192237ece3b5bf6c6b8d1703d6a6bd4cdd69ed053",
+   "passages": 159
   },
   {
    "workId": "cicero-catilinariae",
@@ -1379,6 +1405,19 @@
    "sourceUrn": "urn:cts:latinLit:phi0474.phi035.perseus-lat2",
    "sha256": "1b3c469f152e52c89b3d481b19570559a6e735a7cc067f0a680a63736fcfe88e",
    "passages": 590
+  },
+  {
+   "workId": "cicero-pro-archia",
+   "author": "Cicerón",
+   "title": "Pro Archia poeta",
+   "language": "en",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/cicero-pro-archia-en-b1aa94a55e837236.json",
+   "reader": "classics-text-reader.html?work=cicero-pro-archia&lang=en&edition=b1aa94a55e837236",
+   "sourceDescription": "Traducción humana acreditada: Charles Duke Yonge; TEI Perseus, licencia y SHA256 verificados",
+   "sourceUrn": "urn:cts:latinLit:phi0474.phi016.perseus-eng2",
+   "sha256": "b1aa94a55e83723610cff02ffd92d91204f8d8c6f0bfaf7f0f49912f30c10645",
+   "passages": 42
   },
   {
    "workId": "cicero-pro-archia",
@@ -1619,6 +1658,19 @@
    "sourceUrn": "urn:cts:latinLit:phi0474.phi007.perseus-lat2",
    "sha256": "c4c64131dfe6b2c0e680cd695e9a6942ee7a8c86d5005822567d8f0247c79d50",
    "passages": 53
+  },
+  {
+   "workId": "cts-phi0474-phi008",
+   "author": "Cicerón",
+   "title": "Pro A. Caecina",
+   "language": "en",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0474-phi008-en-0c9dbdd6004eef07.json",
+   "reader": "classics-text-reader.html?work=cts-phi0474-phi008&lang=en&edition=0c9dbdd6004eef07",
+   "sourceDescription": "Traducción humana acreditada: Charles Duke Yonge; TEI Perseus, licencia y SHA256 verificados",
+   "sourceUrn": "urn:cts:latinLit:phi0474.phi008.perseus-eng2",
+   "sha256": "0c9dbdd6004eef073d4ba637f48c7556dcccf9e5d9292ff5d55cf868a6fa2f51",
+   "passages": 126
   },
   {
    "workId": "cts-phi0474-phi008",
