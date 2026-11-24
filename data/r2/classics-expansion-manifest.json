@@ -1,10 +1,10 @@
 {
  "schema": "vdl-classics-expansion-manifest-v1",
- "generated": "2026-11-24T09:59:16.102652+00:00",
+ "generated": "2026-11-24T22:30:28.841703+00:00",
  "discovery": {
-  "sourceRecords": 1660,
-  "alreadyIndexedCatalogueWorks": 403,
-  "pendingGroups": 1600,
+  "sourceRecords": 1630,
+  "alreadyIndexedCatalogueWorks": 433,
+  "pendingGroups": 1570,
   "policy": "Una obra bibliográfica, múltiples ediciones identificadas por URN y hash; sin sustituir ni duplicar archivos",
   "githubTextFiles": 450,
   "githubUnregisteredFiles": 14,
@@ -19108,6 +19108,1676 @@
    "characters": 116089,
    "bytes": 144578,
    "url": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0474-phi022-la-799056a0039a5399.json"
+  },
+  {
+   "workId": "cts-tlg0014-tlg012",
+   "author": "Demóstenes",
+   "title": "Philip’s Letter",
+   "language": "grc",
+   "dating": "330 a. C.",
+   "sources": [
+    {
+     "title": "ἐπιστολή [Φιλίππου]",
+     "titleLanguage": "grc",
+     "author": "Demosthenes",
+     "editors": [
+      "Samuel Henry Butcher"
+     ],
+     "bibliography": "Demosthenes Demosthenis Orationes Samuel Henry Butcher Clarendon Press Oxford 1903 1 Internet Archive",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg0014.tlg012.perseus-grc2",
+     "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0014/tlg012/tlg0014.tlg012.perseus-grc2.xml",
+     "sourceSha256": "4a5ce60361991c3ec2bc4c10bd374c34de26de79e113ceb3c416907edf50b5e2",
+     "sourceReferences": [],
+     "publicationYear": "1903",
+     "publisher": "Clarendon Press",
+     "publicationPlace": "Oxford",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/4a5ce60361991c3ec2bc4c10bd374c34de26de79e113ceb3c416907edf50b5e2.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-tlg0014-tlg012-grc-4d207278595de4f2.json",
+   "sha256": "4d207278595de4f29bfb4fcf8a97011ab603d07baa986a45423f1f7fa70977c7",
+   "passages": 24,
+   "characters": 9408,
+   "bytes": 24130,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0014-tlg012-grc-4d207278595de4f2.json"
+  },
+  {
+   "workId": "cts-tlg0006-tlg020",
+   "author": "Eurípides",
+   "title": "Fragmenta",
+   "language": "grc",
+   "dating": "431 a. C.",
+   "sources": [
+    {
+     "title": "Fragmenta",
+     "titleLanguage": "lat",
+     "author": "Euripides",
+     "editors": [
+      "August Nauck"
+     ],
+     "bibliography": "Euripides Tragicorum Graecorum Fragmenta August Nauck Leipzig Teubner 1889 Internet Archive",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg0006.tlg020.1st1K-grc1",
+     "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0006/tlg020/tlg0006.tlg020.1st1K-grc1.xml",
+     "sourceSha256": "faa891dd7d4c5b6a73786c30925bff4a47ed61049a229fd667855a464fab0a3c",
+     "sourceReferences": [
+      "https://archive.org/details/tragicorumgraeco00naucuoft/page/363/mode/1up"
+     ],
+     "publicationYear": "1889",
+     "publisher": "Teubner",
+     "publicationPlace": "Leipzig",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/faa891dd7d4c5b6a73786c30925bff4a47ed61049a229fd667855a464fab0a3c.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-tlg0006-tlg020-grc-35def094b2c1f101.json",
+   "sha256": "35def094b2c1f10191cf6c990282bbbabcab5b5e41ec97dce33e7e932d51a60c",
+   "passages": 3093,
+   "characters": 105123,
+   "bytes": 687322,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0006-tlg020-grc-35def094b2c1f101.json"
+  },
+  {
+   "workId": "cts-tlg0006-tlg019",
+   "author": "Eurípides",
+   "title": "Rhesus",
+   "language": "grc",
+   "dating": "431 a. C.",
+   "sources": [
+    {
+     "title": "Ῥῆσος",
+     "titleLanguage": "grc",
+     "author": "Euripides",
+     "editors": [
+      "Gilbert Murray"
+     ],
+     "bibliography": "Euripides Euripidis Fabulae Gilbert Murray Oxford Clarendon Press 1913 3 The Internet Archive",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg0006.tlg019.perseus-grc2",
+     "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0006/tlg019/tlg0006.tlg019.perseus-grc2.xml",
+     "sourceSha256": "cc992eb2c8de9c9f68868205f82ecebe6fd9d51489334ca2ad4753d8b80189f6",
+     "sourceReferences": [
+      "https://archive.org/details/euripidisfabulae03euri_0/page/n357/"
+     ],
+     "publicationYear": "1913",
+     "publisher": "Clarendon Press",
+     "publicationPlace": "Oxford",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/cc992eb2c8de9c9f68868205f82ecebe6fd9d51489334ca2ad4753d8b80189f6.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-tlg0006-tlg019-grc-f79c7da42e7f1b2d.json",
+   "sha256": "f79c7da42e7f1b2de9c2cf6c9135d54ae63218c3bf35ef70b1087cd156dbd7ea",
+   "passages": 206,
+   "characters": 35623,
+   "bytes": 103721,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0006-tlg019-grc-f79c7da42e7f1b2d.json"
+  },
+  {
+   "workId": "cts-tlg0011-tlg008",
+   "author": "Sófocles",
+   "title": "Ichneutae",
+   "language": "grc",
+   "dating": "siglo V a. C.",
+   "sources": [
+    {
+     "title": "Ichneutae",
+     "titleLanguage": "und",
+     "author": "Sophocles",
+     "editors": [
+      "Arthur S. Hunt"
+     ],
+     "bibliography": "Sophocles Oxyrhynchus Papyri Part 9, Number 1174 Arthur S. Hunt London Egypt Exploration Fund 1912 9 Internet Archive",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg0011.tlg008.perseus-grc2",
+     "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0011/tlg008/tlg0011.tlg008.perseus-grc2.xml",
+     "sourceSha256": "a888fb32c9876a4379673cbf12833768f83fe8746dfd513e4fbe588e9fcef1e4",
+     "sourceReferences": [
+      "https://archive.org/details/pt9oxyrhynchuspa00grenuoft/page/36/mode/2up"
+     ],
+     "publicationYear": "1912",
+     "publisher": "Egypt Exploration Fund",
+     "publicationPlace": "London",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/a888fb32c9876a4379673cbf12833768f83fe8746dfd513e4fbe588e9fcef1e4.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-tlg0011-tlg008-grc-0bae7c2548a9f7ae.json",
+   "sha256": "0bae7c2548a9f7ae423b77dde7d2ec13fa66fbab8767ba9feb28d80807e6602b",
+   "passages": 96,
+   "characters": 13557,
+   "bytes": 42138,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0011-tlg008-grc-0bae7c2548a9f7ae.json"
+  },
+  {
+   "workId": "cts-tlg0014-tlg013",
+   "author": "Demóstenes",
+   "title": "On Organization",
+   "language": "grc",
+   "dating": "330 a. C.",
+   "sources": [
+    {
+     "title": "περὶ συντάξεως",
+     "titleLanguage": "grc",
+     "author": "Demosthenes",
+     "editors": [
+      "Samuel Henry Butcher"
+     ],
+     "bibliography": "Demosthenes Demosthenis Orationes Samuel Henry Butcher Clarendon Press Oxford 1903 1 Internet Archive",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg0014.tlg013.perseus-grc2",
+     "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0014/tlg013/tlg0014.tlg013.perseus-grc2.xml",
+     "sourceSha256": "5d44047b80b9b3e918a4d9f5ac508702bc18c854a16b02943680d489dcca344b",
+     "sourceReferences": [
+      "https://archive.org/details/orationesrecogno01demouoft/page/166/mode/2up"
+     ],
+     "publicationYear": "1903",
+     "publisher": "Clarendon Press",
+     "publicationPlace": "Oxford",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/5d44047b80b9b3e918a4d9f5ac508702bc18c854a16b02943680d489dcca344b.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-tlg0014-tlg013-grc-7e0a5f3bccb37d8e.json",
+   "sha256": "7e0a5f3bccb37d8effdb6e91204dfbc0e1040cad0d1234c8eab347aa91112717",
+   "passages": 36,
+   "characters": 14560,
+   "bytes": 36078,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0014-tlg013-grc-7e0a5f3bccb37d8e.json"
+  },
+  {
+   "workId": "cts-tlg0014-tlg016",
+   "author": "Demóstenes",
+   "title": "For the People of Megalopolis",
+   "language": "grc",
+   "dating": "330 a. C.",
+   "sources": [
+    {
+     "title": "ὑπὲρ Μεγαλοπολιτῶν",
+     "titleLanguage": "grc",
+     "author": "Demosthenes",
+     "editors": [
+      "Samuel Henry Butcher"
+     ],
+     "bibliography": "Demosthenes Demosthenis Orationes Samuel Henry Butcher Clarendon Press Oxford 1903 1 Internet Archive",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg0014.tlg016.perseus-grc2",
+     "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0014/tlg016/tlg0014.tlg016.perseus-grc2.xml",
+     "sourceSha256": "f4f39c8c9a3b62fe942c4386d1aa4900db10b1f8cf8ee5c4751afa29e8d4e136",
+     "sourceReferences": [],
+     "publicationYear": "1903",
+     "publisher": "Clarendon Press",
+     "publicationPlace": "Oxford",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/f4f39c8c9a3b62fe942c4386d1aa4900db10b1f8cf8ee5c4751afa29e8d4e136.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-tlg0014-tlg016-grc-d91035fd49794aed.json",
+   "sha256": "d91035fd49794aed391f150c17e57c5923936979fc24762d0e8e4c62d912bb62",
+   "passages": 32,
+   "characters": 12159,
+   "bytes": 30664,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0014-tlg016-grc-d91035fd49794aed.json"
+  },
+  {
+   "workId": "cts-tlg0014-tlg014",
+   "author": "Demóstenes",
+   "title": "On the Navy-Boards",
+   "language": "grc",
+   "dating": "330 a. C.",
+   "sources": [
+    {
+     "title": "περὶ τῶν συμμοριῶν",
+     "titleLanguage": "grc",
+     "author": "Demosthenes",
+     "editors": [
+      "Samuel Henry Butcher"
+     ],
+     "bibliography": "Demosthenes Demosthenis Orationes Samuel Henry Butcher Clarendon Press Oxford 1903 1 Internet Archive",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg0014.tlg014.perseus-grc2",
+     "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0014/tlg014/tlg0014.tlg014.perseus-grc2.xml",
+     "sourceSha256": "0edb1cfcafe3bf3ed28a79b423b07f5a4350ab52978606db97feb157f4ac6e02",
+     "sourceReferences": [
+      "https://archive.org/details/orationesrecogno01demouoft/page/176/mode/2up"
+     ],
+     "publicationYear": "1903",
+     "publisher": "Clarendon Press",
+     "publicationPlace": "Oxford",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/0edb1cfcafe3bf3ed28a79b423b07f5a4350ab52978606db97feb157f4ac6e02.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-tlg0014-tlg014-grc-7e8c595ed3cb933f.json",
+   "sha256": "7e8c595ed3cb933f5aa837d069ced1ef5a0bea81a796e9ca98ea173fc0e6d6bd",
+   "passages": 41,
+   "characters": 16193,
+   "bytes": 40131,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0014-tlg014-grc-7e8c595ed3cb933f.json"
+  },
+  {
+   "workId": "cts-tlg0014-tlg015",
+   "author": "Demóstenes",
+   "title": "For the Liberty of the Rhodians",
+   "language": "grc",
+   "dating": "330 a. C.",
+   "sources": [
+    {
+     "title": "ὑπὲρ τῆς Ῥοδίων ἐλευθερίας",
+     "titleLanguage": "grc",
+     "author": "Demosthenes",
+     "editors": [
+      "Samuel Henry Butcher"
+     ],
+     "bibliography": "Demosthenes Demosthenis Orationes Samuel Henry Butcher Clarendon Press Oxford 1903 1 Internet Archive",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg0014.tlg015.perseus-grc2",
+     "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0014/tlg015/tlg0014.tlg015.perseus-grc2.xml",
+     "sourceSha256": "0600946ac2a735286769bc6f65901729d9ccc76512665c341697f85a4b48dc6e",
+     "sourceReferences": [
+      "https://archive.org/details/orationesrecogno01demouoft"
+     ],
+     "publicationYear": "1903",
+     "publisher": "Clarendon Press",
+     "publicationPlace": "Oxford",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/0600946ac2a735286769bc6f65901729d9ccc76512665c341697f85a4b48dc6e.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-tlg0014-tlg015-grc-1549bde0bb22f23f.json",
+   "sha256": "1549bde0bb22f23f811b1c4360d96ad933bd4a59069d32d242586dece9fcb2e2",
+   "passages": 35,
+   "characters": 14142,
+   "bytes": 35253,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0014-tlg015-grc-1549bde0bb22f23f.json"
+  },
+  {
+   "workId": "cts-tlg0014-tlg017",
+   "author": "Demóstenes",
+   "title": "On the Treaty with Alexander",
+   "language": "grc",
+   "dating": "330 a. C.",
+   "sources": [
+    {
+     "title": "περὶ τῶν πρὸς Ἀλέξανδρον συνθηκῶν",
+     "titleLanguage": "grc",
+     "author": "Demosthenes",
+     "editors": [
+      "Samuel Henry Butcher"
+     ],
+     "bibliography": "Demosthenes Demosthenis Orationes Samuel Henry Butcher Clarendon PressOxford 1903 1 Internet Archive",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg0014.tlg017.perseus-grc2",
+     "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0014/tlg017/tlg0014.tlg017.perseus-grc2.xml",
+     "sourceSha256": "ea4ef29b155f26aebf3ad90eef95e9953df46c2728abd02c9ef01538362140fb",
+     "sourceReferences": [
+      "https://archive.org/details/orationesrecogno01demouoft"
+     ],
+     "publicationYear": "1903",
+     "publisher": "Clarendon Press",
+     "publicationPlace": "Oxford",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/ea4ef29b155f26aebf3ad90eef95e9953df46c2728abd02c9ef01538362140fb.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-tlg0014-tlg017-grc-4cbcb410d7ec4d3e.json",
+   "sha256": "4cbcb410d7ec4d3e8d774fd99ba14ef58e0ec56f050c158dd9e807ab4b71e01b",
+   "passages": 30,
+   "characters": 11936,
+   "bytes": 30122,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0014-tlg017-grc-4cbcb410d7ec4d3e.json"
+  },
+  {
+   "workId": "cts-tlg0014-tlg019",
+   "author": "Demóstenes",
+   "title": "On the False Embassy",
+   "language": "grc",
+   "dating": "330 a. C.",
+   "sources": [
+    {
+     "title": "περὶ τῆς παραπρεσβείας",
+     "titleLanguage": "grc",
+     "author": "Demosthenes",
+     "editors": [
+      "Samuel Henry Butcher"
+     ],
+     "bibliography": "Demosthenes Demosthenis Orationes Samuel Henry Butcher Clarendon PressOxford 1903 1 Internet Archive",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg0014.tlg019.perseus-grc2",
+     "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0014/tlg019/tlg0014.tlg019.perseus-grc2.xml",
+     "sourceSha256": "404be30f50d2883dbac53504a957d9bfa875cf0dc7988aecf725b57f6230db26",
+     "sourceReferences": [
+      "https://archive.org/details/orationesrecogno01demouoft"
+     ],
+     "publicationYear": "1903",
+     "publisher": "Clarendon Press",
+     "publicationPlace": "Oxford",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/404be30f50d2883dbac53504a957d9bfa875cf0dc7988aecf725b57f6230db26.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-tlg0014-tlg019-grc-4184b8d0581f996d.json",
+   "sha256": "4184b8d0581f996d07da225cebf7528a90b4455638f2711d6994dec67223c2d5",
+   "passages": 382,
+   "characters": 146845,
+   "bytes": 349520,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0014-tlg019-grc-4184b8d0581f996d.json"
+  },
+  {
+   "workId": "cts-tlg0014-tlg020",
+   "author": "Demóstenes",
+   "title": "Against Leptines",
+   "language": "grc",
+   "dating": "330 a. C.",
+   "sources": [
+    {
+     "title": "περὶ τῆς Ἀτελείας πρὸς Λεπτίνην",
+     "titleLanguage": "grc",
+     "author": "Demosthenes",
+     "editors": [
+      "Samuel Henry Butcher"
+     ],
+     "bibliography": "Demosthenes Demosthenes Orationes Samuel Henry Butcher Clarendon Press Oxford 1907 2.1 Internet Archive",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg0014.tlg020.perseus-grc2",
+     "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0014/tlg020/tlg0014.tlg020.perseus-grc2.xml",
+     "sourceSha256": "7dcc2b4caa46fda9a46f165698995bda1efc47330273f586b45f5c0dcde84ca6",
+     "sourceReferences": [],
+     "publicationYear": "1907",
+     "publisher": "Clarendon Press",
+     "publicationPlace": "Oxford",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/7dcc2b4caa46fda9a46f165698995bda1efc47330273f586b45f5c0dcde84ca6.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-tlg0014-tlg020-grc-c2f29adb865fbcb3.json",
+   "sha256": "c2f29adb865fbcb33192687773dfc653a92bcae45ed55fb797e319c6a82e13d0",
+   "passages": 190,
+   "characters": 70234,
+   "bytes": 169171,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0014-tlg020-grc-c2f29adb865fbcb3.json"
+  },
+  {
+   "workId": "cts-tlg0014-tlg021",
+   "author": "Demóstenes",
+   "title": "Against Meidias",
+   "language": "grc",
+   "dating": "330 a. C.",
+   "sources": [
+    {
+     "title": "κατὰ Μειδίου περὶ τοῦ Κονδύλου",
+     "titleLanguage": "grc",
+     "author": "Demosthenes",
+     "editors": [
+      "Samuel Henry Butcher"
+     ],
+     "bibliography": "Demosthenes Demosthenes Orationes Samuel Henry Butcher Clarendon Press Oxford 1907 2.1 Internet Archive",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg0014.tlg021.perseus-grc2",
+     "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0014/tlg021/tlg0014.tlg021.perseus-grc2.xml",
+     "sourceSha256": "a81be2912ac192465553ba6d2e95f5a705b6476c30a6637d639f0c6365362b7c",
+     "sourceReferences": [
+      "https://archive.org/details/p1orationesrecog02demouoft/page/n65/mode/2up"
+     ],
+     "publicationYear": "1907",
+     "publisher": "Clarendon Press",
+     "publicationPlace": "Oxford",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/a81be2912ac192465553ba6d2e95f5a705b6476c30a6637d639f0c6365362b7c.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-tlg0014-tlg021-grc-390041bfb6e6c241.json",
+   "sha256": "390041bfb6e6c241a7ffdb253d46aeb7762e3c342a0131d76565e19602ac123e",
+   "passages": 255,
+   "characters": 98517,
+   "bytes": 235198,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0014-tlg021-grc-390041bfb6e6c241.json"
+  },
+  {
+   "workId": "cts-tlg0014-tlg022",
+   "author": "Demóstenes",
+   "title": "Against Androtion",
+   "language": "grc",
+   "dating": "330 a. C.",
+   "sources": [
+    {
+     "title": "κατὰ Ἀνδροτίωνος παρανόμων",
+     "titleLanguage": "grc",
+     "author": "Demosthenes",
+     "editors": [
+      "Samuel Henry Butcher"
+     ],
+     "bibliography": "Demosthenes Demosthenes Orationes Samuel Henry Butcher Clarendon Press Oxford 1907 2.1 Internet Archive",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg0014.tlg022.perseus-grc2",
+     "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0014/tlg022/tlg0014.tlg022.perseus-grc2.xml",
+     "sourceSha256": "db92c38671fa9b93ab6a2bae93205abb76e87b25f5901b78e39b2b29763ca6e7",
+     "sourceReferences": [
+      "https://archive.org/details/p1orationesrecog02demouoft/page/n133/mode/2up"
+     ],
+     "publicationYear": "1907",
+     "publisher": "Clarendon Press",
+     "publicationPlace": "Oxford",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/db92c38671fa9b93ab6a2bae93205abb76e87b25f5901b78e39b2b29763ca6e7.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-tlg0014-tlg022-grc-8842f87fb1825e8f.json",
+   "sha256": "8842f87fb1825e8fb78833eecb646cd2f988097e60440cc8b76cd5b529ab7c14",
+   "passages": 78,
+   "characters": 34788,
+   "bytes": 82346,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0014-tlg022-grc-8842f87fb1825e8f.json"
+  },
+  {
+   "workId": "cts-tlg0014-tlg023",
+   "author": "Demóstenes",
+   "title": "Against Aristocrates",
+   "language": "grc",
+   "dating": "330 a. C.",
+   "sources": [
+    {
+     "title": "κατὰ Ἀριστοκράτους",
+     "titleLanguage": "grc",
+     "author": "Demosthenes",
+     "editors": [
+      "Samuel Henry Butcher"
+     ],
+     "bibliography": "Demosthenes Demosthenes Orationes Samuel Henry Butcher Clarendon Press Oxford 1907 2.1 Internet Archive",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg0014.tlg023.perseus-grc2",
+     "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0014/tlg023/tlg0014.tlg023.perseus-grc2.xml",
+     "sourceSha256": "3cdb2fe332782769345e85415cb9e37b0676f39c84e1507b814b55da74b79e20",
+     "sourceReferences": [
+      "https://archive.org/details/p1orationesrecog02demouoft/page/n161/mode/2up"
+     ],
+     "publicationYear": "1907",
+     "publisher": "Clarendon Press",
+     "publicationPlace": "Oxford",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/3cdb2fe332782769345e85415cb9e37b0676f39c84e1507b814b55da74b79e20.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-tlg0014-tlg023-grc-8c0cadc48dc242e8.json",
+   "sha256": "8c0cadc48dc242e8419d603839d6a8987617ad6ba1c37ffccd5f8e94837010ef",
+   "passages": 276,
+   "characters": 96405,
+   "bytes": 233913,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0014-tlg023-grc-8c0cadc48dc242e8.json"
+  },
+  {
+   "workId": "cts-tlg0014-tlg024",
+   "author": "Demóstenes",
+   "title": "Against Timocrates",
+   "language": "grc",
+   "dating": "330 a. C.",
+   "sources": [
+    {
+     "title": "κατὰ Τιμοκράτους",
+     "titleLanguage": "grc",
+     "author": "Demosthenes",
+     "editors": [
+      "Samuel Henry Butcher"
+     ],
+     "bibliography": "Demosthenes Demosthenes Orationes Samuel Henry Butcher Clarendon Press Oxford 1907 2.1 Internet Archive",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg0014.tlg024.perseus-grc2",
+     "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0014/tlg024/tlg0014.tlg024.perseus-grc2.xml",
+     "sourceSha256": "daef6cf013afbd71b7568286215a84c93a34a4434404799cce0ad2c74960fdd3",
+     "sourceReferences": [],
+     "publicationYear": "1907",
+     "publisher": "Clarendon Press",
+     "publicationPlace": "Oxford",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/daef6cf013afbd71b7568286215a84c93a34a4434404799cce0ad2c74960fdd3.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-tlg0014-tlg024-grc-b96a7e6e77ffd9a7.json",
+   "sha256": "b96a7e6e77ffd9a7317d72588ea11781040157e9dbab3a83beec6485e2fd57a6",
+   "passages": 247,
+   "characters": 91736,
+   "bytes": 220118,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0014-tlg024-grc-b96a7e6e77ffd9a7.json"
+  },
+  {
+   "workId": "cts-tlg0014-tlg025",
+   "author": "Demóstenes",
+   "title": "Against Aristogeiton I",
+   "language": "grc",
+   "dating": "330 a. C.",
+   "sources": [
+    {
+     "title": "κατὰ Ἀριστογείτονος α΄",
+     "titleLanguage": "grc",
+     "author": "Demosthenes",
+     "editors": [
+      "Samuel Henry Butcher"
+     ],
+     "bibliography": "Demosthenes Demosthenes Orationes Samuel Henry Butcher Clarendon Press Oxford 1907 2.1 Internet Archive",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg0014.tlg025.perseus-grc2",
+     "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0014/tlg025/tlg0014.tlg025.perseus-grc2.xml",
+     "sourceSha256": "cb888a60761281ac634ff818b8bfffd2802ae3dbd37b114d452774d662c779bb",
+     "sourceReferences": [],
+     "publicationYear": "1907",
+     "publisher": "Clarendon Press",
+     "publicationPlace": "Oxford",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/cb888a60761281ac634ff818b8bfffd2802ae3dbd37b114d452774d662c779bb.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-tlg0014-tlg025-grc-25771d0c907dc32b.json",
+   "sha256": "25771d0c907dc32b5d131ba5e8d2b2b6e3c882a1073fd98fdaa0ca9255519442",
+   "passages": 105,
+   "characters": 41636,
+   "bytes": 99788,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0014-tlg025-grc-25771d0c907dc32b.json"
+  },
+  {
+   "workId": "cts-tlg0014-tlg026",
+   "author": "Demóstenes",
+   "title": "Against Aristogeiton II",
+   "language": "grc",
+   "dating": "330 a. C.",
+   "sources": [
+    {
+     "title": "κατὰ Ἀριστογείτονος β΄",
+     "titleLanguage": "grc",
+     "author": "Demosthenes",
+     "editors": [
+      "Samuel Henry Butcher"
+     ],
+     "bibliography": "Demosthenes Demosthenes Orationes Samuel Henry Butcher Clarendon Press Oxford 1907 2.1 Internet Archive",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg0014.tlg026.perseus-grc2",
+     "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0014/tlg026/tlg0014.tlg026.perseus-grc2.xml",
+     "sourceSha256": "4ea7e7efac1f9f23155e2ca24fbdb7997917189a51cd34ba566d04838e6a0e12",
+     "sourceReferences": [
+      "https://archive.org/details/p1orationesrecog02demouoft/page/n325/mode/2up"
+     ],
+     "publicationYear": "1907",
+     "publisher": "Clarendon Press",
+     "publicationPlace": "Oxford",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/4ea7e7efac1f9f23155e2ca24fbdb7997917189a51cd34ba566d04838e6a0e12.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-tlg0014-tlg026-grc-9f7a4c5f0c73f72f.json",
+   "sha256": "9f7a4c5f0c73f72fa84d7ea0492b616b5e99cb4f941842318772b58bb486df46",
+   "passages": 27,
+   "characters": 10901,
+   "bytes": 27590,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0014-tlg026-grc-9f7a4c5f0c73f72f.json"
+  },
+  {
+   "workId": "cts-tlg0014-tlg027",
+   "author": "Demóstenes",
+   "title": "Against Aphobus I",
+   "language": "grc",
+   "dating": "330 a. C.",
+   "sources": [
+    {
+     "title": "κατὰ Ἀφόβου ἐπιτροπῆς α΄",
+     "titleLanguage": "grc",
+     "author": "Demosthenes",
+     "editors": [
+      "William Rennie"
+     ],
+     "bibliography": "Demosthenes Demosthenes Orationes William Rennie Clarendon Press Oxford 1921 2.2 Internet Archive",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg0014.tlg027.perseus-grc2",
+     "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0014/tlg027/tlg0014.tlg027.perseus-grc2.xml",
+     "sourceSha256": "6dd8d5c315c759dc36f0b0dc5da072e47656958a78edf41a7430b17ae8e0f6fa",
+     "sourceReferences": [
+      "https://archive.org/details/p2orationesrecog02demouoft/page/n15/mode/2up"
+     ],
+     "publicationYear": "1921",
+     "publisher": "Clarendon Press",
+     "publicationPlace": "Oxford",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/6dd8d5c315c759dc36f0b0dc5da072e47656958a78edf41a7430b17ae8e0f6fa.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-tlg0014-tlg027-grc-cfa4f3555619a872.json",
+   "sha256": "cfa4f3555619a872bb8cbbcf53f2b24e53ef8320898f4aecec6fa6adf9c518d7",
+   "passages": 83,
+   "characters": 29296,
+   "bytes": 72373,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0014-tlg027-grc-cfa4f3555619a872.json"
+  },
+  {
+   "workId": "cts-tlg0014-tlg028",
+   "author": "Demóstenes",
+   "title": "Against Aphobus II",
+   "language": "grc",
+   "dating": "330 a. C.",
+   "sources": [
+    {
+     "title": "κατὰ Ἀφόβου β΄",
+     "titleLanguage": "grc",
+     "author": "Demosthenes",
+     "editors": [
+      "William Rennie"
+     ],
+     "bibliography": "Demosthenes Demosthenes Orationes William Rennie Clarendon Press Oxford 1921 2.2 Internet Archive",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg0014.tlg028.perseus-grc2",
+     "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0014/tlg028/tlg0014.tlg028.perseus-grc2.xml",
+     "sourceSha256": "6721a62329fe362350f794617947d2194d352fa3fda1285e5fff7886bb7c1b57",
+     "sourceReferences": [
+      "https://archive.org/details/p2orationesrecog02demouoft/page/22/mode/2up"
+     ],
+     "publicationYear": "1921",
+     "publisher": "Clarendon Press",
+     "publicationPlace": "Oxford",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/6721a62329fe362350f794617947d2194d352fa3fda1285e5fff7886bb7c1b57.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-tlg0014-tlg028-grc-b9afc62b8fa39193.json",
+   "sha256": "b9afc62b8fa39193a206ca7f14ceaae9883c8af0fe1a0c17c5ec2ac9944714ee",
+   "passages": 35,
+   "characters": 9821,
+   "bytes": 26637,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0014-tlg028-grc-b9afc62b8fa39193.json"
+  },
+  {
+   "workId": "cts-tlg0014-tlg029",
+   "author": "Demóstenes",
+   "title": "Against Aphobus III",
+   "language": "grc",
+   "dating": "330 a. C.",
+   "sources": [
+    {
+     "title": "πρὸς Ἄφοβον ὑπὲρ Φάνου ψευδομαρτυριῶν γ΄",
+     "titleLanguage": "grc",
+     "author": "Demosthenes",
+     "editors": [
+      "William Rennie"
+     ],
+     "bibliography": "Demosthenes Demosthenes Orationes William Rennie Clarendon Press Oxford 1921 2.2 Internet Archive",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg0014.tlg029.perseus-grc2",
+     "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0014/tlg029/tlg0014.tlg029.perseus-grc2.xml",
+     "sourceSha256": "95f4fb55302e0a8ba7b827fc0a3353c6081977a03593a2ecc9379077bd2f6e42",
+     "sourceReferences": [
+      "https://archive.org/details/p2orationesrecog02demouoft/page/30/mode/2up"
+     ],
+     "publicationYear": "1921",
+     "publisher": "Clarendon Press",
+     "publicationPlace": "Oxford",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/95f4fb55302e0a8ba7b827fc0a3353c6081977a03593a2ecc9379077bd2f6e42.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-tlg0014-tlg029-grc-6420478a3d3f839e.json",
+   "sha256": "6420478a3d3f839ee5ceb57187018166d42a77aa25bffdfb4b7fcdd8cb97f9e7",
+   "passages": 67,
+   "characters": 24965,
+   "bytes": 61374,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0014-tlg029-grc-6420478a3d3f839e.json"
+  },
+  {
+   "workId": "cts-tlg0014-tlg030",
+   "author": "Demóstenes",
+   "title": "Against Onetor I",
+   "language": "grc",
+   "dating": "330 a. C.",
+   "sources": [
+    {
+     "title": "πρὸς Ὀνήτορα ἐξούλης α΄",
+     "titleLanguage": "grc",
+     "author": "Demosthenes",
+     "editors": [
+      "William Rennie"
+     ],
+     "bibliography": "Demosthenes Demosthenes Orationes William Rennie Clarendon Press Oxford 1921 2.2 Internet Archive",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg0014.tlg030.perseus-grc2",
+     "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0014/tlg030/tlg0014.tlg030.perseus-grc2.xml",
+     "sourceSha256": "e60d71072c0a185cb3817189227dab5e58a41cffe6a111e623422a5905cd77fd",
+     "sourceReferences": [
+      "https://archive.org/details/p2orationesrecog02demouoft/page/48/mode/2up"
+     ],
+     "publicationYear": "1921",
+     "publisher": "Clarendon Press",
+     "publicationPlace": "Oxford",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/e60d71072c0a185cb3817189227dab5e58a41cffe6a111e623422a5905cd77fd.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-tlg0014-tlg030-grc-135ed26b6637db59.json",
+   "sha256": "135ed26b6637db59be2f84198a83995518b6a8dc0ff8adab0960d47657f29ec4",
+   "passages": 50,
+   "characters": 15184,
+   "bytes": 39558,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0014-tlg030-grc-135ed26b6637db59.json"
+  },
+  {
+   "workId": "cts-tlg0014-tlg031",
+   "author": "Demóstenes",
+   "title": "Against Onetor II",
+   "language": "grc",
+   "dating": "330 a. C.",
+   "sources": [
+    {
+     "title": "πρὸς Ὀνήτορα ἐξούλης β΄",
+     "titleLanguage": "und",
+     "author": "Demosthenes",
+     "editors": [
+      "William Rennie"
+     ],
+     "bibliography": "Demosthenes Demosthenes Orationes William Rennie Clarendon Press Oxford 1921 2.2 Internet Archive",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg0014.tlg031.perseus-grc2",
+     "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0014/tlg031/tlg0014.tlg031.perseus-grc2.xml",
+     "sourceSha256": "53330c9f40845ac3be9c01595b309532d770463379e859bff4d3c3370162adb1",
+     "sourceReferences": [
+      "https://archive.org/details/p2orationesrecog02demouoft/page/60/mode/2up"
+     ],
+     "publicationYear": "1921",
+     "publisher": "Clarendon Press",
+     "publicationPlace": "Oxford",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/53330c9f40845ac3be9c01595b309532d770463379e859bff4d3c3370162adb1.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-tlg0014-tlg031-grc-106c679d923783ce.json",
+   "sha256": "106c679d923783ce53f464ef9cbe84970871bdc9628c0398a22764869a4fc0d9",
+   "passages": 15,
+   "characters": 5907,
+   "bytes": 15863,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0014-tlg031-grc-106c679d923783ce.json"
+  },
+  {
+   "workId": "cts-tlg0014-tlg032",
+   "author": "Demóstenes",
+   "title": "Against Zenothemis",
+   "language": "grc",
+   "dating": "330 a. C.",
+   "sources": [
+    {
+     "title": "πρὸς Ζηνόθεμιν παραγραφή",
+     "titleLanguage": "grc",
+     "author": "Demosthenes",
+     "editors": [
+      "William Rennie"
+     ],
+     "bibliography": "Demosthenes Demosthenes Orationes William Rennie Clarendon Press Oxford 1921 2.2 Internet Archive",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg0014.tlg032.perseus-grc2",
+     "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0014/tlg032/tlg0014.tlg032.perseus-grc2.xml",
+     "sourceSha256": "9170729d78764f5bdf7f44d5ccee3b2858409fe65038dc8f71d7df9f9cd6fae4",
+     "sourceReferences": [
+      "https://archive.org/details/p2orationesrecog02demouoft/page/66/mode/2up"
+     ],
+     "publicationYear": "1921",
+     "publisher": "Clarendon Press",
+     "publicationPlace": "Oxford",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/9170729d78764f5bdf7f44d5ccee3b2858409fe65038dc8f71d7df9f9cd6fae4.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-tlg0014-tlg032-grc-7d63e6215be0a90b.json",
+   "sha256": "7d63e6215be0a90bd9d1e073275aa7ed4a07a3fa92743ede5e995710df9b5049",
+   "passages": 37,
+   "characters": 11893,
+   "bytes": 31059,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0014-tlg032-grc-7d63e6215be0a90b.json"
+  },
+  {
+   "workId": "cts-tlg0014-tlg033",
+   "author": "Demóstenes",
+   "title": "Against Apaturius",
+   "language": "grc",
+   "dating": "330 a. C.",
+   "sources": [
+    {
+     "title": "πρὸς Ἀπατούριον παραγραφή",
+     "titleLanguage": "grc",
+     "author": "Demosthenes",
+     "editors": [
+      "William Rennie"
+     ],
+     "bibliography": "Demosthenes Demosthenes Orationes William Rennie Clarendon Press Oxford 1921 2.2 Internet Archive",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg0014.tlg033.perseus-grc2",
+     "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0014/tlg033/tlg0014.tlg033.perseus-grc2.xml",
+     "sourceSha256": "ae2ee438af50de527d638057998094821c5a807ae418e30e5bf9e949ee7f385b",
+     "sourceReferences": [
+      "https://archive.org/details/p2orationesrecog02demouoft/page/76/mode/2up"
+     ],
+     "publicationYear": "1921",
+     "publisher": "Clarendon Press",
+     "publicationPlace": "Oxford",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/ae2ee438af50de527d638057998094821c5a807ae418e30e5bf9e949ee7f385b.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-tlg0014-tlg033-grc-aff26957b0ec05e7.json",
+   "sha256": "aff26957b0ec05e7f6236641ff52c593e972083daeaa7a3a174b5746cd39ba80",
+   "passages": 48,
+   "characters": 16308,
+   "bytes": 41565,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0014-tlg033-grc-aff26957b0ec05e7.json"
+  },
+  {
+   "workId": "cts-tlg0014-tlg034",
+   "author": "Demóstenes",
+   "title": "Against Phormio",
+   "language": "grc",
+   "dating": "330 a. C.",
+   "sources": [
+    {
+     "title": "πρὸς Φορμίωνα ὑπὲρ δανείου",
+     "titleLanguage": "grc",
+     "author": "Demosthenes",
+     "editors": [
+      "William Rennie"
+     ],
+     "bibliography": "Demosthenes Demosthenes Orationes William Rennie Clarendon Press Oxford 1921 2.2 Internet Archive",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg0014.tlg034.perseus-grc2",
+     "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0014/tlg034/tlg0014.tlg034.perseus-grc2.xml",
+     "sourceSha256": "5be610591b5fc1ac9894daccea708f62a8cb9b00e11a576432d66dac63f357ef",
+     "sourceReferences": [
+      "https://archive.org/details/p2orationesrecog02demouoft/page/88/mode/2up"
+     ],
+     "publicationYear": "1921",
+     "publisher": "Clarendon Press",
+     "publicationPlace": "Oxford",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/5be610591b5fc1ac9894daccea708f62a8cb9b00e11a576432d66dac63f357ef.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-tlg0014-tlg034-grc-400f1ada59637d78.json",
+   "sha256": "400f1ada59637d78572e508abc54b47c85272d2c71d65e61e572c9a65dd6aa4c",
+   "passages": 68,
+   "characters": 20802,
+   "bytes": 53417,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0014-tlg034-grc-400f1ada59637d78.json"
+  },
+  {
+   "workId": "cts-tlg0014-tlg035",
+   "author": "Demóstenes",
+   "title": "Against Lacritus",
+   "language": "grc",
+   "dating": "330 a. C.",
+   "sources": [
+    {
+     "title": "πρὸς τὴν Λάκριτον παραγραφὴν",
+     "titleLanguage": "grc",
+     "author": "Demosthenes",
+     "editors": [
+      "William Rennie"
+     ],
+     "bibliography": "Demosthenes Demosthenes Orationes William Rennie Clarendon Press Oxford 1921 2.2 Internet Archive",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg0014.tlg035.perseus-grc2",
+     "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0014/tlg035/tlg0014.tlg035.perseus-grc2.xml",
+     "sourceSha256": "3464ea6832027b8d1b0b506e3e0e76094a450d42813807c70f66e99946a8c474",
+     "sourceReferences": [
+      "https://archive.org/details/p2orationesrecog02demouoft/page/106/mode/2up"
+     ],
+     "publicationYear": "1921",
+     "publisher": "Clarendon Press",
+     "publicationPlace": "Oxford",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/3464ea6832027b8d1b0b506e3e0e76094a450d42813807c70f66e99946a8c474.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-tlg0014-tlg035-grc-45cc38f66f80cdac.json",
+   "sha256": "45cc38f66f80cdacfcda8eec8524a3e127c12779c5ba7564dc3c20461549a79a",
+   "passages": 75,
+   "characters": 23810,
+   "bytes": 60449,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0014-tlg035-grc-45cc38f66f80cdac.json"
+  },
+  {
+   "workId": "cts-phi1056-phi001",
+   "author": "Vitruvio",
+   "title": "De architectura",
+   "language": "la",
+   "dating": "c. 30–20 a. C.",
+   "sources": [
+    {
+     "title": "De Architectura",
+     "titleLanguage": "lat",
+     "author": "Vitruvius Pollio",
+     "editors": [
+      "Fritz Krohn"
+     ],
+     "bibliography": "Vitruvius Pollio Vitruvii De Architectura Fritz Krohn Leipzig B.G. Teubner 1912 Intenet Archive",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+      }
+     ],
+     "editionUrn": "urn:cts:latinLit:phi1056.phi001.perseus-lat2",
+     "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi1056/phi001/phi1056.phi001.perseus-lat2.xml",
+     "sourceSha256": "05dcb1b88a1be9ed81806babf96301cae06a601d855f52adfbf2e55a16bd1786",
+     "sourceReferences": [
+      "https://archive.org/details/vitruviidearchit00vitr/page/n17/mode/2up"
+     ],
+     "publicationYear": "1912",
+     "publisher": "B.G. Teubner",
+     "publicationPlace": "Leipzig",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/05dcb1b88a1be9ed81806babf96301cae06a601d855f52adfbf2e55a16bd1786.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-phi1056-phi001-la-74495af6761cfc6b.json",
+   "sha256": "74495af6761cfc6bf36cd633060ee59e77e46627301f68253af40a87d26dbc5b",
+   "passages": 806,
+   "characters": 417254,
+   "bytes": 550575,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-phi1056-phi001-la-74495af6761cfc6b.json"
+  },
+  {
+   "workId": "cts-tlg0057-tlg001",
+   "author": "Galeno",
+   "title": "Adhortatio ad artes addiscendas",
+   "language": "grc",
+   "dating": "siglo II d. C.",
+   "sources": [
+    {
+     "title": "Adhortatio ad artes addiscendas",
+     "titleLanguage": "lat",
+     "author": "Galen",
+     "editors": [
+      "Karl Gottlob Kühn"
+     ],
+     "bibliography": "Claudii Galeni Opera Omnia Galen Karl Gottlob Kühn Knobloch Leipzig 1 1-39 1821 HathiTrust",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg0057.tlg001.1st1K-grc1",
+     "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0057/tlg001/tlg0057.tlg001.1st1K-grc1.xml",
+     "sourceSha256": "927da69db46399dd121ed52e05d413583ae0f0d7f6fa2c5cea39c4ae19167c35",
+     "sourceReferences": [
+      "https://hdl.handle.net/2027/hvd.hxpp8j?urlappend=%3Bseq=274%3Bownerid=27021597764275760-278"
+     ],
+     "publicationYear": "1821",
+     "publisher": "Knobloch",
+     "publicationPlace": "Leipzig",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/927da69db46399dd121ed52e05d413583ae0f0d7f6fa2c5cea39c4ae19167c35.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-tlg0057-tlg001-grc-b761668170ea88c0.json",
+   "sha256": "b761668170ea88c08d68deb9c24279b8a86b9677362db96a860fc9835c288d49",
+   "passages": 15,
+   "characters": 32217,
+   "bytes": 67365,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0057-tlg001-grc-b761668170ea88c0.json"
+  },
+  {
+   "workId": "cts-tlg0057-tlg002",
+   "author": "Galeno",
+   "title": "De optima doctrina",
+   "language": "grc",
+   "dating": "siglo II d. C.",
+   "sources": [
+    {
+     "title": "De optima doctrina",
+     "titleLanguage": "lat",
+     "author": "Galen",
+     "editors": [
+      "Karl Gottlob Kühn"
+     ],
+     "bibliography": "Claudii Galeni Opera Omnia Galen Karl Gottlob Kühn Knobloch Lipsiae 1 40-52 1821 HathiTrust",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg0057.tlg002.1st1K-grc1",
+     "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0057/tlg002/tlg0057.tlg002.1st1K-grc1.xml",
+     "sourceSha256": "8a0422778635a0842018ed751a5176e15e58b7c8c63fe377b36c6e1d5bfcd844",
+     "sourceReferences": [
+      "https://hdl.handle.net/2027/hvd.hxpp8j?urlappend=%3Bseq=315%3Bownerid=27021597764275188-323"
+     ],
+     "publicationYear": "1821",
+     "publisher": "Knobloch",
+     "publicationPlace": "Lipsiae",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/8a0422778635a0842018ed751a5176e15e58b7c8c63fe377b36c6e1d5bfcd844.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-tlg0057-tlg002-grc-f92b0ffa765e482f.json",
+   "sha256": "f92b0ffa765e482f37a93c029c90cc178176592a698344258f80859a46c1b6fa",
+   "passages": 6,
+   "characters": 11863,
+   "bytes": 26649,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0057-tlg002-grc-f92b0ffa765e482f.json"
+  },
+  {
+   "workId": "cts-tlg0057-tlg003",
+   "author": "Galeno",
+   "title": "Quod optimus medicus sit quoque philosophus",
+   "language": "grc",
+   "dating": "siglo II d. C.",
+   "sources": [
+    {
+     "title": "Quod optimus medicus sit quoque philosophus",
+     "titleLanguage": "lat",
+     "author": "Galen",
+     "editors": [
+      "Karl Gottlob Kühn"
+     ],
+     "bibliography": "Claudii Galeni Opera Omnia Galen Karl Gottlob Kühn Knobloch Leipzig 1 53-63 1821 HathiTrust",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg0057.tlg003.1st1K-grc1",
+     "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0057/tlg003/tlg0057.tlg003.1st1K-grc1.xml",
+     "sourceSha256": "5f25cfa3184c267917f8e4712629aff18ba46f84f7b48103f191710242cc5d86",
+     "sourceReferences": [
+      "https://hdl.handle.net/2027/hvd.hxpp8j?urlappend=%3Bseq=327%3Bownerid=27021597764275188-335"
+     ],
+     "publicationYear": "1821",
+     "publisher": "Knobloch",
+     "publicationPlace": "Leipzig",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/5f25cfa3184c267917f8e4712629aff18ba46f84f7b48103f191710242cc5d86.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-tlg0057-tlg003-grc-dbd6645914bc1fdf.json",
+   "sha256": "dbd6645914bc1fdf6ac4d84c28fdbd16ec8a252f3e0f1cd18b7d3a4904155f9c",
+   "passages": 5,
+   "characters": 8837,
+   "bytes": 19973,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0057-tlg003-grc-dbd6645914bc1fdf.json"
+  },
+  {
+   "workId": "cts-tlg0057-tlg004",
+   "author": "Galeno",
+   "title": "De sectis ad eos qui introducuntur",
+   "language": "grc",
+   "dating": "siglo II d. C.",
+   "sources": [
+    {
+     "title": "De sectis ad eos qui introducuntur",
+     "titleLanguage": "lat",
+     "author": "Galen",
+     "editors": [
+      "Karl Gottlob Kühn"
+     ],
+     "bibliography": "Claudii Galeni Opera Omnia Galen Karl Gottlob Kühn Knobloch Leipzig 1 64-105 1821 HathiTrust",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg0057.tlg004.1st1K-grc1",
+     "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0057/tlg004/tlg0057.tlg004.1st1K-grc1.xml",
+     "sourceSha256": "066f48f71493ef3d6ff9752adc7358900fd702e92e7acfee1e8978df9e92f107",
+     "sourceReferences": [
+      "https://hdl.handle.net/2027/hvd.hxpp8j?urlappend=%3Bseq=339%3Bownerid=27021597764275188-347"
+     ],
+     "publicationYear": "1821",
+     "publisher": "Knobloch",
+     "publicationPlace": "Leipzig",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/066f48f71493ef3d6ff9752adc7358900fd702e92e7acfee1e8978df9e92f107.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-tlg0057-tlg004-grc-c00e35aee186f193.json",
+   "sha256": "c00e35aee186f193e7f75017302c2a9170442e5065f8bd5299adf99e7b1e3be2",
+   "passages": 10,
+   "characters": 38867,
+   "bytes": 81493,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0057-tlg004-grc-c00e35aee186f193.json"
+  },
+  {
+   "workId": "cts-tlg0057-tlg006",
+   "author": "Galeno",
+   "title": "De constitutione artis medicae ad Patrophilum",
+   "language": "grc",
+   "dating": "siglo II d. C.",
+   "sources": [
+    {
+     "title": "De constitutione artis medicae ad Patrophilum",
+     "titleLanguage": "lat",
+     "author": "Galen",
+     "editors": [
+      "Karl Gottlob Kühn"
+     ],
+     "bibliography": "Claudii Galeni Opera Omnia Galen Karl Gottlob Kühn Knobloch Lipsiae 1 224-304 1821 HathiTrust",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg0057.tlg006.1st1K-grc1",
+     "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0057/tlg006/tlg0057.tlg006.1st1K-grc1.xml",
+     "sourceSha256": "9244c19878a8009ff7f87666b4ac383f953fc7c0a583bcd4b4b6e0e2c8705361",
+     "sourceReferences": [
+      "https://hdl.handle.net/2027/hvd.hxpp8j?urlappend=%3Bseq=498%3Bownerid=27021597764275188-506"
+     ],
+     "publicationYear": "1821",
+     "publisher": "Knobloch",
+     "publicationPlace": "Lipsiae",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/9244c19878a8009ff7f87666b4ac383f953fc7c0a583bcd4b4b6e0e2c8705361.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-tlg0057-tlg006-grc-23b350c7eff974f1.json",
+   "sha256": "23b350c7eff974f176d6be35e1da71913e4b3d973ef17fd6a2c28110f08eac02",
+   "passages": 22,
+   "characters": 74628,
+   "bytes": 155077,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0057-tlg006-grc-23b350c7eff974f1.json"
+  },
+  {
+   "workId": "cts-tlg0057-tlg008",
+   "author": "Galeno",
+   "title": "De elementis ex Hippocrate",
+   "language": "grc",
+   "dating": "siglo II d. C.",
+   "sources": [
+    {
+     "title": "De elementis ex Hippocrate",
+     "titleLanguage": "lat",
+     "author": "Galen",
+     "editors": [
+      "Karl Gottlob Kühn"
+     ],
+     "bibliography": "Claudii Galeni Opera Omnia Galen Karl Gottlob Kühn Knobloch Leipzig 1 413-508 1821 HathiTrust",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg0057.tlg008.1st1K-grc1",
+     "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0057/tlg008/tlg0057.tlg008.1st1K-grc1.xml",
+     "sourceSha256": "83b7bdde7de2c19f0348f281b63f287668940ec2e647fd9b165d45310e0b0b65",
+     "sourceReferences": [
+      "https://hdl.handle.net/2027/hvd.hxpp8j?urlappend=%3Bseq=686%3Bownerid=27021597764275760-688"
+     ],
+     "publicationYear": "1821",
+     "publisher": "Knobloch",
+     "publicationPlace": "Leipzig",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/83b7bdde7de2c19f0348f281b63f287668940ec2e647fd9b165d45310e0b0b65.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-tlg0057-tlg008-grc-8a61f97897288025.json",
+   "sha256": "8a61f97897288025252b2aeb9054bd03aa5ade481b65817b2b18466a0bd5624a",
+   "passages": 16,
+   "characters": 81350,
+   "bytes": 167573,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0057-tlg008-grc-8a61f97897288025.json"
+  },
+  {
+   "workId": "cts-tlg0057-tlg009",
+   "author": "Galeno",
+   "title": "De temperamentis",
+   "language": "grc",
+   "dating": "siglo II d. C.",
+   "sources": [
+    {
+     "title": "De temperamentis",
+     "titleLanguage": "lat",
+     "author": "Galen",
+     "editors": [
+      "Karl Gottlob Kühn"
+     ],
+     "bibliography": "Claudii Galeni Opera Omnia Galen Karl Gottlob Kühn Knobloch Leipzig 1 509-694 1821 HathiTrust",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg0057.tlg009.1st1K-grc1",
+     "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0057/tlg009/tlg0057.tlg009.1st1K-grc1.xml",
+     "sourceSha256": "c6aafb17ecad6e29664507697bc8e36c5544be3e7bb6c3d71ae0b39e9184a30a",
+     "sourceReferences": [
+      "https://hdl.handle.net/2027/hvd.hxpp8j?urlappend=%3Bseq=783%3Bownerid=27021597764275188-785"
+     ],
+     "publicationYear": "1821",
+     "publisher": "Knobloch",
+     "publicationPlace": "Leipzig",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/c6aafb17ecad6e29664507697bc8e36c5544be3e7bb6c3d71ae0b39e9184a30a.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-tlg0057-tlg009-grc-2724471d8c392833.json",
+   "sha256": "2724471d8c39283323995930fd7b5f052f96d7f53b287713674c5b599ff6c1a3",
+   "passages": 28,
+   "characters": 169064,
+   "bytes": 345127,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0057-tlg009-grc-2724471d8c392833.json"
+  },
+  {
+   "workId": "cts-tlg0057-tlg012",
+   "author": "Galeno",
+   "title": "De ossibus ad tirones",
+   "language": "grc",
+   "dating": "siglo II d. C.",
+   "sources": [
+    {
+     "title": "De ossibus ad tirones",
+     "titleLanguage": "lat",
+     "author": "Galen",
+     "editors": [
+      "Karl Gottlob Kühn"
+     ],
+     "bibliography": "Claudii Galeni Opera Omnia Galen Karl Gottlob Kühn Knobloch Leipzig 2 732-778 1821 Internet Archive",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg0057.tlg012.1st1K-grc1",
+     "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0057/tlg012/tlg0057.tlg012.1st1K-grc1.xml",
+     "sourceSha256": "a61bf284e031a92b8be935a318ca9afbd5f9661e2cecf0ca72c5c1e62c86a383",
+     "sourceReferences": [
+      "https://archive.org/stream/hapantaoperaomni02galeuoft#page/732/mode/2up"
+     ],
+     "publicationYear": "1821",
+     "publisher": "Knobloch",
+     "publicationPlace": "Leipzig",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/a61bf284e031a92b8be935a318ca9afbd5f9661e2cecf0ca72c5c1e62c86a383.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-tlg0057-tlg012-grc-e275fb457ce2ed98.json",
+   "sha256": "e275fb457ce2ed988c684c57503bafed5a33e9c1095f136ebc6fef261e295b05",
+   "passages": 28,
+   "characters": 42370,
+   "bytes": 91404,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0057-tlg012-grc-e275fb457ce2ed98.json"
+  },
+  {
+   "workId": "cts-tlg0010-tlg013",
+   "author": "Isócrates",
+   "title": "To Nicocles",
+   "language": "grc",
+   "dating": "436–338 a. C.",
+   "sources": [
+    {
+     "title": "Πρὸς Νικόκλεα",
+     "titleLanguage": "grc",
+     "author": "Isocrates",
+     "editors": [
+      "George Norlin"
+     ],
+     "bibliography": "Isocrates Isocrates George Norlin Cambridge, MA London, UK Harvard University Press William Heinemann Ltd. 1 1928 Loeb Classical Library Internet Archive",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg0010.tlg013.perseus-grc2",
+     "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0010/tlg013/tlg0010.tlg013.perseus-grc2.xml",
+     "sourceSha256": "16a0ddc32bab187dc607b1d61eaeede2864e0f5a108bc511cd462cdf51d151c0",
+     "sourceReferences": [
+      "https://archive.org/details/isocrates01isoc/page/40/mode/2up"
+     ],
+     "publicationYear": "1928",
+     "publisher": "Harvard University Press",
+     "publicationPlace": "Cambridge, MA",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/16a0ddc32bab187dc607b1d61eaeede2864e0f5a108bc511cd462cdf51d151c0.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-tlg0010-tlg013-grc-51af0cf23f56cb79.json",
+   "sha256": "51af0cf23f56cb79a2f1064cf4a03ac9711c28e46e6e0a7b23440300d51e9ece",
+   "passages": 60,
+   "characters": 19320,
+   "bytes": 49225,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0010-tlg013-grc-51af0cf23f56cb79.json"
+  },
+  {
+   "workId": "cts-tlg0057-tlg011",
+   "author": "Galeno",
+   "title": "De anatomicis administrationibus",
+   "language": "grc",
+   "dating": "siglo II d. C.",
+   "sources": [
+    {
+     "title": "De anatomicis administrationibus",
+     "titleLanguage": "lat",
+     "author": "Galen",
+     "editors": [
+      "Karl Gottlob Kühn"
+     ],
+     "bibliography": "Claudii Galeni Opera Omnia Galen Karl Gottlob Kühn Knobloch Leipzig 2 215-731 1821 HathiTrust",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg0057.tlg011.1st1K-grc1",
+     "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0057/tlg011/tlg0057.tlg011.1st1K-grc1.xml",
+     "sourceSha256": "abccd24f51c31834b65935fbb491421dfe77821ca8241d92fa85ecd088fbfbeb",
+     "sourceReferences": [
+      "https://hdl.handle.net/2027/chi.17443628?urlappend=%3Bseq=227%3Bownerid=13510798903417072-275"
+     ],
+     "publicationYear": "1821",
+     "publisher": "Knobloch",
+     "publicationPlace": "Leipzig",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/abccd24f51c31834b65935fbb491421dfe77821ca8241d92fa85ecd088fbfbeb.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-tlg0057-tlg011-grc-6b772a03a260d233.json",
+   "sha256": "6b772a03a260d233002d1195b1ac8640c36837ee9d5474e93015a19170630956",
+   "passages": 110,
+   "characters": 487558,
+   "bytes": 1000429,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0057-tlg011-grc-6b772a03a260d233.json"
+  },
+  {
+   "workId": "cts-tlg0010-tlg015",
+   "author": "Isócrates",
+   "title": "Evagoras",
+   "language": "grc",
+   "dating": "436–338 a. C.",
+   "sources": [
+    {
+     "title": "Εὐαγόρας",
+     "titleLanguage": "grc",
+     "author": "Isocrates",
+     "editors": [
+      "Larue Van Hook"
+     ],
+     "bibliography": "Isocrates Isocrates Larue Van Hook Cambridge, MA London, UK Harvard University Press William Heinemann Ltd. 3 1945 Loeb Classical Library Internet Archive",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg0010.tlg015.perseus-grc2",
+     "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0010/tlg015/tlg0010.tlg015.perseus-grc2.xml",
+     "sourceSha256": "3b227a7dce9a64cd185f3ceb23349074ee99e3a57f0c074cd929b09d8b11d8c8",
+     "sourceReferences": [
+      "https://archive.org/details/isocrateswitheng03isocuoft/page/4/mode/2up"
+     ],
+     "publicationYear": "1945",
+     "publisher": "Harvard University Press",
+     "publicationPlace": "Cambridge, MA",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/3b227a7dce9a64cd185f3ceb23349074ee99e3a57f0c074cd929b09d8b11d8c8.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-tlg0010-tlg015-grc-59a456bbe4e9c5ed.json",
+   "sha256": "59a456bbe4e9c5edac0f99feffaee5e6cc7dc877c7ded334a2206f596f2ae3ed",
+   "passages": 81,
+   "characters": 29942,
+   "bytes": 73416,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0010-tlg015-grc-59a456bbe4e9c5ed.json"
+  },
+  {
+   "workId": "cts-tlg0010-tlg014",
+   "author": "Isócrates",
+   "title": "Nicocles or the Cyprians",
+   "language": "grc",
+   "dating": "436–338 a. C.",
+   "sources": [
+    {
+     "title": "Νικόκλης ἢ Κύπριοι",
+     "titleLanguage": "grc",
+     "author": "Isocrates",
+     "editors": [
+      "George Norlin"
+     ],
+     "bibliography": "Isocrates Isocrates George Norlin Cambridge, MA London, UK Harvard University Press William Heinemann Ltd. 1 1928 Loeb Classical Library Internet Archive",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg0010.tlg014.perseus-grc2",
+     "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0010/tlg014/tlg0010.tlg014.perseus-grc2.xml",
+     "sourceSha256": "f31509f94122986100126deadfe8053eab5bb99b7b1b96bb58116f69445924c2",
+     "sourceReferences": [
+      "https://archive.org/details/isocrates01isoc/page/76/mode/2up"
+     ],
+     "publicationYear": "1928",
+     "publisher": "Harvard University Press",
+     "publicationPlace": "Cambridge, MA",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/f31509f94122986100126deadfe8053eab5bb99b7b1b96bb58116f69445924c2.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-tlg0010-tlg014-grc-1c726c9943b9b502.json",
+   "sha256": "1c726c9943b9b502c29e96a5a3c307299e87058744dd3c62f309f753e1f46600",
+   "passages": 65,
+   "characters": 24202,
+   "bytes": 59699,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0010-tlg014-grc-1c726c9943b9b502.json"
+  },
+  {
+   "workId": "cts-tlg0014-tlg036",
+   "author": "Demóstenes",
+   "title": "For Phormio",
+   "language": "grc",
+   "dating": "330 a. C.",
+   "sources": [
+    {
+     "title": "παραγραφὴ ὑπὲρ Φορμίωνος",
+     "titleLanguage": "grc",
+     "author": "Demosthenes",
+     "editors": [
+      "William Rennie"
+     ],
+     "bibliography": "Demosthenes Demosthenes Orationes William Rennie Clarendon Press Oxford 1921 2.2 Internet Archive",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg0014.tlg036.perseus-grc2",
+     "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0014/tlg036/tlg0014.tlg036.perseus-grc2.xml",
+     "sourceSha256": "8af530495c19c757443e3fbe20645dbf66cc84803aae0434174acf3236932935",
+     "sourceReferences": [
+      "https://archive.org/details/p2orationesrecog02demouoft/page/124/mode/2up"
+     ],
+     "publicationYear": "1921",
+     "publisher": "Clarendon Press",
+     "publicationPlace": "Oxford",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/8af530495c19c757443e3fbe20645dbf66cc84803aae0434174acf3236932935.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-tlg0014-tlg036-grc-13c5146ab1d23432.json",
+   "sha256": "13c5146ab1d23432ed19e08a08107fe9e5a8e4e379477c7a86fb9c4296d74af6",
+   "passages": 85,
+   "characters": 24793,
+   "bytes": 63775,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0014-tlg036-grc-13c5146ab1d23432.json"
   }
  ],
  "githubPreserved": [
@@ -22311,86 +23981,6 @@
    "r2Key": "preserved/github/6c7f2ee0eada84ebb9f2a6954b9e2e60f4db514ee8d8c3a5c160e754349ee53f.json"
   }
  ],
- "deferred": [
-  {
-   "workId": "ovid-heroides",
-   "sources": [
-    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0959/phi002/phi0959.phi002.perseus-lat2.xml"
-   ],
-   "reason": "Sin licencia abierta explícita admisible en la cabecera TEI"
-  },
-  {
-   "workId": "ovid-fasti",
-   "sources": [
-    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0959/phi007/phi0959.phi007.perseus-lat2.xml"
-   ],
-   "reason": "Sin licencia abierta explícita admisible en la cabecera TEI"
-  },
-  {
-   "workId": "ovid-ex-ponto",
-   "sources": [
-    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0959/phi009/phi0959.phi009.perseus-lat2.xml"
-   ],
-   "reason": "Sin licencia abierta explícita admisible en la cabecera TEI"
-  },
-  {
-   "workId": "ovid-ars-amatoria",
-   "sources": [
-    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0959/phi004/phi0959.phi004.perseus-lat2.xml"
-   ],
-   "reason": "Sin licencia abierta explícita admisible en la cabecera TEI"
-  },
-  {
-   "workId": "ovid-remedia-amoris",
-   "sources": [
-    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0959/phi005/phi0959.phi005.perseus-lat2.xml"
-   ],
-   "reason": "Sin licencia abierta explícita admisible en la cabecera TEI"
-  },
-  {
-   "workId": "ovid-tristia",
-   "sources": [
-    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0959/phi008/phi0959.phi008.perseus-lat2.xml"
-   ],
-   "reason": "Sin licencia abierta explícita admisible en la cabecera TEI"
-  },
-  {
-   "workId": "virgil-aeneid",
-   "sources": [
-    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0690/phi003/phi0690.phi003.perseus-lat2.xml"
-   ],
-   "reason": "Sin licencia abierta explícita admisible en la cabecera TEI"
-  },
-  {
-   "workId": "seneca-de-clementia",
-   "sources": [
-    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi1017/phi014/phi1017.phi014.perseus-lat2.xml"
-   ],
-   "reason": "Sin licencia abierta explícita admisible en la cabecera TEI"
-  },
-  {
-   "workId": "virgil-georgica",
-   "sources": [
-    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0690/phi002/phi0690.phi002.perseus-lat2.xml"
-   ],
-   "reason": "Sin licencia abierta explícita admisible en la cabecera TEI"
-  },
-  {
-   "workId": "seneca-tragoediae",
-   "sources": [
-    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi1017/phi001/phi1017.phi001.perseus-lat2.xml",
-    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi1017/phi002/phi1017.phi002.perseus-lat2.xml",
-    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi1017/phi003/phi1017.phi003.perseus-lat2.xml",
-    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi1017/phi004/phi1017.phi004.perseus-lat2.xml",
-    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi1017/phi005/phi1017.phi005.perseus-lat2.xml",
-    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi1017/phi006/phi1017.phi006.perseus-lat2.xml",
-    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi1017/phi007/phi1017.phi007.perseus-lat2.xml",
-    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi1017/phi008/phi1017.phi008.perseus-lat2.xml",
-    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi1017/phi009/phi1017.phi009.perseus-lat2.xml",
-    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi1017/phi010/phi1017.phi010.perseus-lat2.xml"
-   ],
-   "reason": "Sin licencia abierta explícita admisible en la cabecera TEI"
-  }
- ],
+ "deferred": [],
  "policy": "No se borran ni reemplazan originales de GitHub, PDFs, traducciones o códices. Cobertura relativa a los catálogos CTS inventariados, no a toda la literatura antigua."
 }
