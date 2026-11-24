@@ -1,6 +1,6 @@
 name: R2 — biblioteca clásica, tanda diaria
 
-# Cuatro tandas cada seis horas, de hasta 15 candidatos verificables cada una.
+# Cuatro tandas cada seis horas, de hasta 40 candidatos verificables cada una.
 # Evitar una ejecución ilimitada bloqueada por OCR o descargas de fuentes inaccesibles.
 # Todos los días: incorpora obras clásicas de dominio público que la biblioteca
 # todavía no tiene, les da ficha de repertorio, las indexa y recalcula los
@@ -26,11 +26,11 @@ on:
     inputs:
       limite:
         description: "Máximo de obras en la tanda (0 = todas las pendientes)"
-        default: "15"
+        default: "40"
       traducciones:
         description: "Buscar traducciones de dominio público para las obras alojadas sin ninguna"
         type: boolean
-        default: true
+        default: false
 
 concurrency:
   group: vdl-classics-publication-main
@@ -58,6 +58,35 @@ jobs:
           python-version: "3.12"
       - run: pip install --quiet "boto3>=1.36" pymupdf
 
+      - name: Estado de la biblioteca antes de la tanda
+        run: python scripts/r2-duplicados.py
+
+      - name: OCR de páginas escaneadas (griego, latín y traducciones)
+        run: sudo apt-get update -qq && sudo apt-get install -y tesseract-ocr tesseract-ocr-grc tesseract-ocr-lat tesseract-ocr-eng tesseract-ocr-fra tesseract-ocr-spa
+      - name: Incorporar obras nuevas a R2
+        env:
+          R2_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
+          R2_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
+          LIMITE: ${{ inputs.limite || '40' }}
+          SOLO_ORIGINALES: '1'
+        run: python scripts/r2-importar-clasicos.py
+
+      # Un original recién subido puede no haber existido al descubrir
+      # traducciones antes de la tanda. Rebuscar EN -> FR -> ES ahora, con
+      # metadatos de edición y derechos; ningún archivo completo va a GitHub.
+      - name: Buscar traducciones humanas para los originales recién incorporados
+        if: ${{ github.event_name == 'workflow_dispatch' && inputs.traducciones }}
+        run: |
+          cp r2-clasicos-informe.json r2-clasicos-informe-originales.json
+          cp data/r2/clasicos-candidatos.json /tmp/clasicos-candidatos-antes-traducciones.json
+          python scripts/r2-candidatos-traducciones.py --nuevas --limite 12 --idiomas en,fr,es
+          if cmp -s /tmp/clasicos-candidatos-antes-traducciones.json data/r2/clasicos-candidatos.json; then
+            echo 'No se encontraron traducciones candidatas nuevas para esta tanda.'
+          else
+            echo 'Se encontraron traducciones candidatas: importar únicamente si pasan los controles de fuente, idioma y derechos.'
+            SOLO_TRADUCCIONES=1 LIMITE=4 python scripts/r2-importar-clasicos.py
+          fi
+
       # Reindexar frente al registro actual antes de exigir índice estático.
       # Nuevas ediciones indexadas por otro workflow pueden haber avanzado el
       # registro sin disparar este workflow (commits del token GITHUB_TOKEN).
@@ -70,7 +99,7 @@ jobs:
       # la integración de traducción fallan en las pruebas reproducibles.
       # La prueba de traducción usa un proveedor simulado; no certifica
       # la disponibilidad del servicio externo en producción.
-      - name: Verificar búsqueda semántica, lectores y traducción antes de descargar más
+      - name: Verificar búsqueda semántica, lectores y traducción antes de publicar
         run: |
           npm install --no-save jsdom
           node scripts/test-classics-source-diagnostics.mjs
@@ -81,38 +110,6 @@ jobs:
 
       - name: Auditoría inicial de fichas, textos y raíces indexadas
         run: node scripts/audit-bibliotheca-federada.mjs --check --strict
-
-      - name: Estado de la biblioteca antes de la tanda
-        run: python scripts/r2-duplicados.py
-
-      - name: Buscar traducciones humanas históricas para originales alojados en R2
-        if: ${{ github.event_name != 'workflow_dispatch' || inputs.traducciones }}
-        run: python scripts/r2-candidatos-traducciones.py --limite 12 --idiomas en,fr,es
-
-      - name: OCR de páginas escaneadas (griego, latín y traducciones)
-        run: sudo apt-get update -qq && sudo apt-get install -y tesseract-ocr tesseract-ocr-grc tesseract-ocr-lat tesseract-ocr-eng tesseract-ocr-fra tesseract-ocr-spa
-      - name: Incorporar obras nuevas a R2
-        env:
-          R2_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
-          R2_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
-          LIMITE: ${{ inputs.limite || '15' }}
-        run: python scripts/r2-importar-clasicos.py
-
-      # Un original recién subido puede no haber existido al descubrir
-      # traducciones antes de la tanda. Rebuscar EN -> FR -> ES ahora, con
-      # metadatos de edición y derechos; ningún archivo completo va a GitHub.
-      - name: Buscar traducciones humanas para los originales recién incorporados
-        if: ${{ github.event_name != 'workflow_dispatch' || inputs.traducciones }}
-        run: |
-          cp r2-clasicos-informe.json r2-clasicos-informe-originales.json
-          cp data/r2/clasicos-candidatos.json /tmp/clasicos-candidatos-antes-traducciones.json
-          python scripts/r2-candidatos-traducciones.py --nuevas --limite 12 --idiomas en,fr,es
-          if cmp -s /tmp/clasicos-candidatos-antes-traducciones.json data/r2/clasicos-candidatos.json; then
-            echo 'No se encontraron traducciones candidatas nuevas para esta tanda.'
-          else
-            echo 'Se encontraron traducciones candidatas: importar únicamente si pasan los controles de fuente, idioma y derechos.'
-            SOLO_TRADUCCIONES=1 LIMITE=4 python scripts/r2-importar-clasicos.py
-          fi
 
       - name: Ficha de repertorio para las obras nuevas
         # No publicar contadores, fichas ni índices si falló un paso anterior.
