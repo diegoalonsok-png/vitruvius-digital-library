@@ -20,6 +20,7 @@ import hashlib, io, json, os, re, sys, time, urllib.parse, urllib.request
 from collections import defaultdict
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from pathlib import Path
+from threading import Lock
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "scripts"))
@@ -170,8 +171,9 @@ def procesar(o, ctx):
             datos = get(f"https://archive.org/download/{ident}/{urllib.parse.quote(f['name'])}", binario=True,
                         timeout=600)
             sha = hashlib.sha256(datos).hexdigest()
-            if sha in ctx["shas"]:
-                raise ValueError("PDF idéntico ya presente en la biblioteca")
+            with ctx["sha_lock"]:
+                if sha in ctx["shas"]:
+                    raise ValueError("PDF idéntico ya presente o reservado en esta tanda")
             pdf = fitz.open(stream=datos, filetype="pdf")
             paginas, methods = pdf_pages(pdf, o["lengua"], o.get("idioma", ""))
             if len(paginas) < 20:
@@ -191,6 +193,14 @@ def procesar(o, ctx):
             texto = json_bytes(digital)
             index_data = json_bytes(indice)
             clave_indice = f"clasicos/indice-obras/{o['id']}.json"
+            # Reservar la huella tras validar la edición, justo antes de escribir
+            # en R2. Evita que dos trabajadores admitan simultáneamente el mismo
+            # PDF bajo identificadores distintos. Una reserva fallida se podrá
+            # reconsiderar en la próxima tanda, sin arriesgar otra copia ahora.
+            with ctx["sha_lock"]:
+                if sha in ctx["shas"]:
+                    raise ValueError("PDF idéntico ya presente o reservado en esta tanda")
+                ctx["shas"].add(sha)
             s3 = ctx["s3"]
             # Reanudar una ingesta cuyo PDF/texto/índice sí quedaron en R2
             # pero cuyo catálogo no llegó a GitHub por un fallo posterior.
@@ -325,7 +335,7 @@ def main():
                       config=Config(retries={"max_attempts": 8, "mode": "adaptive"},
                                     request_checksum_calculation="when_required",
                                     response_checksum_validation="when_required"))
-    ctx = {"s3": s3, "shas": shas, "concepts": concepts, "anio_max": cand["limites"]["anioMaximo"],
+    ctx = {"s3": s3, "shas": shas, "sha_lock": Lock(), "concepts": concepts, "anio_max": cand["limites"]["anioMaximo"],
            "max_bytes": cand["limites"]["maxMiB"] * 1048576}
     pendientes = [o for o in cand["obras"] if o["id"] not in hechos]
     # No confundir la digitalización de un volumen colectivo con una edición
