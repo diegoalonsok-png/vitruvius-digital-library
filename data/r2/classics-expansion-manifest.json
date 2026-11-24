@@ -1,10 +1,10 @@
 {
  "schema": "vdl-classics-expansion-manifest-v1",
- "generated": "2026-11-23T23:32:25.951041+00:00",
+ "generated": "2026-11-24T09:59:16.102652+00:00",
  "discovery": {
-  "sourceRecords": 1700,
-  "alreadyIndexedCatalogueWorks": 363,
-  "pendingGroups": 1640,
+  "sourceRecords": 1660,
+  "alreadyIndexedCatalogueWorks": 403,
+  "pendingGroups": 1600,
   "policy": "Una obra bibliográfica, múltiples ediciones identificadas por URN y hash; sin sustituir ni duplicar archivos",
   "githubTextFiles": 450,
   "githubUnregisteredFiles": 14,
@@ -17846,6 +17846,1268 @@
    "characters": 44827,
    "bytes": 118262,
    "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0086-tlg041-grc-77a1136359d99d07.json"
+  },
+  {
+   "workId": "cts-phi0426-phi001",
+   "author": "Pseudo-César",
+   "title": "De Bello Africo",
+   "language": "la",
+   "dating": "siglo I a. C.",
+   "sources": [
+    {
+     "title": "De Bello Africo",
+     "titleLanguage": "lat",
+     "author": "Pseudo-Caesar",
+     "editors": [
+      "A. G. Way"
+     ],
+     "bibliography": "Julius Caesar Alexandrian, African and Spanish Wars A. G. Way William Heinemann Ltd. London Harvard University Press Cambridge, MA 1955 Loeb Classical Library Internet Archive",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+      }
+     ],
+     "editionUrn": "urn:cts:latinLit:phi0426.phi001.perseus-lat1",
+     "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0426/phi001/phi0426.phi001.perseus-lat1.xml",
+     "sourceSha256": "5e1c36b774b896e2eeca97a2af4f000371727e9fa97a1a19fba495d5f210a854",
+     "sourceReferences": [
+      "https://archive.org/details/alexandrianafric00caesuoft/page/146/mode/2up"
+     ],
+     "publicationYear": "1955",
+     "publisher": "William Heinemann Ltd.",
+     "publicationPlace": "London",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/5e1c36b774b896e2eeca97a2af4f000371727e9fa97a1a19fba495d5f210a854.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-phi0426-phi001-la-fd2cb89d3ce4bfb4.json",
+   "sha256": "fd2cb89d3ce4bfb471b7eba15f50ddc8b7e4b6d0d810953f374351b1b7ad8b38",
+   "passages": 98,
+   "characters": 94289,
+   "bytes": 111660,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0426-phi001-la-fd2cb89d3ce4bfb4.json"
+  },
+  {
+   "workId": "cts-phi0428-phi001",
+   "author": "Pseudo-César",
+   "title": "De Bello Alexandrino",
+   "language": "la",
+   "dating": "s. I a. C.",
+   "sources": [
+    {
+     "title": "De Bello Alexandrino",
+     "titleLanguage": "lat",
+     "author": "Pseudo-Caesar",
+     "editors": [
+      "A. G. Way"
+     ],
+     "bibliography": "Julius Caesar Alexandrian, African and Spanish Wars A. G. Way William Heinemann Ltd. London Harvard University Press Cambridge, MA 1955 Loeb Classical Library Internet Archive",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+      }
+     ],
+     "editionUrn": "urn:cts:latinLit:phi0428.phi001.perseus-lat1",
+     "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0428/phi001/phi0428.phi001.perseus-lat1.xml",
+     "sourceSha256": "30a9336b2ce921950a70a2935381f89db0d02c3522c9b40160ee2311f2d374d6",
+     "sourceReferences": [
+      "https://archive.org/details/alexandrianafric00caesuoft/page/10/mode/2up"
+     ],
+     "publicationYear": "1955",
+     "publisher": "William Heinemann Ltd.",
+     "publicationPlace": "London",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/30a9336b2ce921950a70a2935381f89db0d02c3522c9b40160ee2311f2d374d6.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-phi0428-phi001-la-4805e22e8c8e0ff2.json",
+   "sha256": "4805e22e8c8e0ff20f2db66585123c49e3cc250b96fed0d74ba781d8b5de8d6d",
+   "passages": 78,
+   "characters": 77646,
+   "bytes": 91910,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0428-phi001-la-4805e22e8c8e0ff2.json"
+  },
+  {
+   "workId": "xenophon-memorabilia",
+   "author": "Jenofonte",
+   "title": "Ἀπομνημονεύματα",
+   "language": "grc",
+   "sources": [
+    {
+     "title": "Ἀπομνημονεύματα",
+     "titleLanguage": "grc",
+     "author": "Xenophon",
+     "editors": [
+      "Edgar Carew Marchant"
+     ],
+     "bibliography": "Xenophon Xenophontis opera omnia Edgar Carew Marchant Editio Altera Oxford Clarendon Press 1921 1971 2 Scriptorum classicorum bibliotheca Oxoniensis Internet Archive",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg0032.tlg002.perseus-grc2",
+     "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0032/tlg002/tlg0032.tlg002.perseus-grc2.xml",
+     "sourceSha256": "5d5a5e35f223b08bfc8e35b0ba6322422d73c04c30ee2072f6d12dad62dc2f96",
+     "sourceReferences": [
+      "https://archive.org/details/operaomniarecogn02xenouoft/page/7/mode/2up"
+     ],
+     "publicationYear": "1921",
+     "publisher": "Clarendon Press",
+     "publicationPlace": "Oxford",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/5d5a5e35f223b08bfc8e35b0ba6322422d73c04c30ee2072f6d12dad62dc2f96.xml"
+    }
+   ],
+   "existing": true,
+   "filename": "xenophon-memorabilia-grc-738694d4f0c9a805.json",
+   "sha256": "738694d4f0c9a805b16940d7883faf16b77c5ce9ebbdf4444bea0c04b40db4f3",
+   "passages": 612,
+   "characters": 219737,
+   "bytes": 529263,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/xenophon-memorabilia-grc-738694d4f0c9a805.json"
+  },
+  {
+   "workId": "xenophon-hellenica",
+   "author": "Jenofonte",
+   "title": "Ἑλληνικά",
+   "language": "grc",
+   "sources": [
+    {
+     "title": "Ἑλληνικά",
+     "titleLanguage": "grc",
+     "author": "Xenophon",
+     "editors": [
+      "Edgar Cardew Marchant"
+     ],
+     "bibliography": "Xenophon Xenophontis opera omnia Oxford Clarendon Press 1900 1968 1 Scriptorum classicorum bibliotheca Oxoniensis Internet Archive",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg0032.tlg001.perseus-grc2",
+     "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0032/tlg001/tlg0032.tlg001.perseus-grc2.xml",
+     "sourceSha256": "82c5e91c392f3ff407fb16645a8b57c9cfd23ff0ff24785a6b8b209add864f59",
+     "sourceReferences": [
+      "https://archive.org/details/operaomniarecogn01xenouoft/page/n15/mode/2up"
+     ],
+     "publicationYear": "1900",
+     "publisher": "Clarendon Press",
+     "publicationPlace": "Oxford",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/82c5e91c392f3ff407fb16645a8b57c9cfd23ff0ff24785a6b8b209add864f59.xml"
+    }
+   ],
+   "existing": true,
+   "filename": "xenophon-hellenica-grc-602080dca4023c87.json",
+   "sha256": "602080dca4023c879430d67c54a73be7f49b66a0fccbd8bec0400678f2540df4",
+   "passages": 1153,
+   "characters": 425956,
+   "bytes": 1023367,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/xenophon-hellenica-grc-602080dca4023c87.json"
+  },
+  {
+   "workId": "cts-phi0430-phi001",
+   "author": "Pseudo-César",
+   "title": "De Bello Hispaniensi",
+   "language": "la",
+   "dating": "s. I a. C.",
+   "sources": [
+    {
+     "title": "De Bello Hispaniensi",
+     "titleLanguage": "lat",
+     "author": "Pseudo-Caesar",
+     "editors": [
+      "A. G. Way"
+     ],
+     "bibliography": "Julius Caesar Alexandrian, African and Spanish Wars A. G. Way William Heinemann Ltd. London Harvard University Press Cambridge, MA 1955 Loeb Classical Library Internet Archive",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+      }
+     ],
+     "editionUrn": "urn:cts:latinLit:phi0430.phi001.perseus-lat1",
+     "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0430/phi001/phi0430.phi001.perseus-lat1.xml",
+     "sourceSha256": "0bc6fb5678b10a9da9902cab7296acbce080ad2cacc92e5c35ff875bf0e27ec9",
+     "sourceReferences": [
+      "https://archive.org/details/alexandrianafric00caesuoft/page/310/mode/2up"
+     ],
+     "publicationYear": "1955",
+     "publisher": "William Heinemann Ltd.",
+     "publicationPlace": "London",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/0bc6fb5678b10a9da9902cab7296acbce080ad2cacc92e5c35ff875bf0e27ec9.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-phi0430-phi001-la-2cb5b9eea84b7a55.json",
+   "sha256": "2cb5b9eea84b7a559f752e714e7858192457db182e2516f0e31bdd0d12b77873",
+   "passages": 42,
+   "characters": 43513,
+   "bytes": 52097,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0430-phi001-la-2cb5b9eea84b7a55.json"
+  },
+  {
+   "workId": "cts-phi0474-phi001",
+   "author": "Cicerón",
+   "title": "Pro P. Quinctio",
+   "language": "la",
+   "dating": "106–43 a. C.",
+   "sources": [
+    {
+     "title": "Pro P. Quinctio",
+     "titleLanguage": "lat",
+     "author": "M. Tullius Cicero",
+     "editors": [
+      "Albert Curtis Clark"
+     ],
+     "bibliography": "M. Tullius Cicero Orationes Albert Curtis Clark Oxford Clarendon Press 1909 4 Pro P. Quinctio; Pro Q. Roscio comoedo; Pro A. Caecina; De lege agraria contra Rullum; Pro C. Rabirio perduellionis reo; Pro L. Flacco; In L. Pisonem; Pro C. Rabirio Postumo Scriptorum Classicorum Bibliotheca Oxoniensis Oxford Classical Texts Internet Archive",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+      }
+     ],
+     "editionUrn": "urn:cts:latinLit:phi0474.phi001.perseus-lat2",
+     "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0474/phi001/phi0474.phi001.perseus-lat2.xml",
+     "sourceSha256": "657659f3dc8afaf9cef285ec1869b25ab571affdb9a9810cbf1f58d48205ba84",
+     "sourceReferences": [
+      "https://archive.org/details/orationesrecogno04ciceuoft/page/n23"
+     ],
+     "publicationYear": "1909",
+     "publisher": "Clarendon Press",
+     "publicationPlace": "Oxford",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/657659f3dc8afaf9cef285ec1869b25ab571affdb9a9810cbf1f58d48205ba84.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-phi0474-phi001-la-26e7795cbc05cae5.json",
+   "sha256": "26e7795cbc05cae5e140644a7c6c09e730539991f3d5246491b4501da4e57275",
+   "passages": 112,
+   "characters": 58063,
+   "bytes": 77822,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0474-phi001-la-26e7795cbc05cae5.json"
+  },
+  {
+   "workId": "cts-phi0474-phi002",
+   "author": "Cicerón",
+   "title": "Pro S. Roscio Amerino",
+   "language": "la",
+   "dating": "106–43 a. C.",
+   "sources": [
+    {
+     "title": "Pro Sex. Roscio Amerino",
+     "titleLanguage": "lat",
+     "author": "M. Tullius Cicero",
+     "editors": [
+      "Albert Curtis Clark"
+     ],
+     "bibliography": "M. Tullius Cicero Orationes Albert Curtis Clark Oxford Clarendon 1908 1 Pro Sex. Roscio; De imperio Cn. Pompei; Pro Cluentio; In Catilinam; Pro Murena; Pro Caelio Scriptorum Classicorum Bibliotheca Oxoniensis Oxford Classical Texts Internet Archive",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+      }
+     ],
+     "editionUrn": "urn:cts:latinLit:phi0474.phi002.perseus-lat2",
+     "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0474/phi002/phi0474.phi002.perseus-lat2.xml",
+     "sourceSha256": "457501d9a2b4a1a6425832e4e4804f0493374fe65f9d81477b3da176091cbe0a",
+     "sourceReferences": [
+      "https://archive.org/details/orationesrecogno01ciceuoft/page/n23/mode/2up"
+     ],
+     "publicationYear": "1908",
+     "publisher": "Clarendon",
+     "publicationPlace": "Oxford",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/457501d9a2b4a1a6425832e4e4804f0493374fe65f9d81477b3da176091cbe0a.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-phi0474-phi002-la-cf77cc290374994f.json",
+   "sha256": "cf77cc290374994fab8a726ed109165fb6d0d7e550671976a52fbd8760c4b046",
+   "passages": 161,
+   "characters": 88129,
+   "bytes": 115578,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0474-phi002-la-cf77cc290374994f.json"
+  },
+  {
+   "workId": "cts-phi0474-phi003",
+   "author": "Cicerón",
+   "title": "Pro Q. Roscio Comoedo",
+   "language": "la",
+   "dating": "106–43 a. C.",
+   "sources": [
+    {
+     "title": "Pro Q. Roscio Comoedo",
+     "titleLanguage": "lat",
+     "author": "M. Tullius Cicero",
+     "editors": [
+      "Albert Curtis Clark"
+     ],
+     "bibliography": "M. Tullius Cicero Orationes Albert Curtis Clark Oxford Clarendon Press 1909 4 Pro P. Quinctio; Pro Q. Roscio comoedo; Pro A. Caecina; De lege agraria contra Rullum; Pro C. Rabirio perduellionis reo; Pro L. Flacco; In L. Pisonem; Pro C. Rabirio Postumo Scriptorum Classicorum Bibliotheca Oxoniensis Oxford Classical Texts Internet Archive",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+      }
+     ],
+     "editionUrn": "urn:cts:latinLit:phi0474.phi003.perseus-lat2",
+     "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0474/phi003/phi0474.phi003.perseus-lat2.xml",
+     "sourceSha256": "3f6cee16dda96adb25d8f5ec1abea271963df814d797df1a27e03b3d64720650",
+     "sourceReferences": [
+      "https://archive.org/details/orationesrecogno04ciceuoft/page/40/mode/2up"
+     ],
+     "publicationYear": "1909",
+     "publisher": "Clarendon Press",
+     "publicationPlace": "Oxford",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/3f6cee16dda96adb25d8f5ec1abea271963df814d797df1a27e03b3d64720650.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-phi0474-phi003-la-56c18c5040fe1f49.json",
+   "sha256": "56c18c5040fe1f49fd307d63a8c791648d9496252e51e4f3962bd7c458f8dce1",
+   "passages": 62,
+   "characters": 31518,
+   "bytes": 43693,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0474-phi003-la-56c18c5040fe1f49.json"
+  },
+  {
+   "workId": "cts-phi0474-phi004",
+   "author": "Cicerón",
+   "title": "Divinatio in Q. Caecilium",
+   "language": "la",
+   "dating": "106–43 a. C.",
+   "sources": [
+    {
+     "title": "Divinatio in Q. Caecilium",
+     "titleLanguage": "lat",
+     "author": "M. Tullius Cicero",
+     "editors": [
+      "William Peterson"
+     ],
+     "bibliography": "M. Tullius Cicero Orationes William Peterson Oxford Clarendon 1917 3 Divinatio in Q. Caecilium; In C. Verrem Scriptorum Classicorum Bibliotheca Oxoniensis Oxford Classical Texts Open Content Alliance",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+      }
+     ],
+     "editionUrn": "urn:cts:latinLit:phi0474.phi004.perseus-lat2",
+     "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0474/phi004/phi0474.phi004.perseus-lat2.xml",
+     "sourceSha256": "970ee16a95b0d016774624a4735250bcabf8b9b957053c3e7578980a1baf081c",
+     "sourceReferences": [
+      "https://archive.org/details/orationesrecogno02ciceuoft/page/n29/mode/2up"
+     ],
+     "publicationYear": "1917",
+     "publisher": "Clarendon",
+     "publicationPlace": "Oxford",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/970ee16a95b0d016774624a4735250bcabf8b9b957053c3e7578980a1baf081c.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-phi0474-phi004-la-699ccb8b6bff1146.json",
+   "sha256": "699ccb8b6bff1146bf5c3e543b5eeaba70a2aa4a2bbc6bbd5682d9507abaedb7",
+   "passages": 84,
+   "characters": 38779,
+   "bytes": 53995,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0474-phi004-la-699ccb8b6bff1146.json"
+  },
+  {
+   "workId": "cts-phi0474-phi014",
+   "author": "Cicerón",
+   "title": "Pro L. Murena",
+   "language": "la",
+   "dating": "106–43 a. C.",
+   "sources": [
+    {
+     "title": "Pro L. Murena",
+     "titleLanguage": "lat",
+     "author": "M. Tullius Cicero",
+     "editors": [
+      "Albert Curtis Clark"
+     ],
+     "bibliography": "M. Tullius Cicero Orationes Albert Curtis Clark Oxford Clarendon 1908 1 Pro Sex. Roscio; De imperio Cn. Pompei; Pro Cluentio; In Catilinam; Pro Murena; Pro Caelio Scriptorum Classicorum Bibliotheca Oxoniensis Oxford Classical Texts Internet Archive",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+      }
+     ],
+     "editionUrn": "urn:cts:latinLit:phi0474.phi014.perseus-lat2",
+     "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0474/phi014/phi0474.phi014.perseus-lat2.xml",
+     "sourceSha256": "f81c465749bb6948036b9bbe99b996cc194c7e27d4bef922f7b57b613265bb3e",
+     "sourceReferences": [
+      "https://archive.org/details/orationesrecogno01ciceuoft/page/n267/mode/2up"
+     ],
+     "publicationYear": "1908",
+     "publisher": "Clarendon",
+     "publicationPlace": "Oxford",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/f81c465749bb6948036b9bbe99b996cc194c7e27d4bef922f7b57b613265bb3e.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-phi0474-phi014-la-6c225568ff385c99.json",
+   "sha256": "6c225568ff385c9943951bee0a103e6c09973be75e0b7be61263345a4e7a0eb7",
+   "passages": 99,
+   "characters": 72774,
+   "bytes": 90389,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0474-phi014-la-6c225568ff385c99.json"
+  },
+  {
+   "workId": "cts-phi0474-phi015",
+   "author": "Cicerón",
+   "title": "Pro P. Sulla",
+   "language": "la",
+   "dating": "106–43 a. C.",
+   "sources": [
+    {
+     "title": "Pro P. Sulla",
+     "titleLanguage": "lat",
+     "author": "M. Tullius Cicero",
+     "editors": [
+      "Albert Curtis Clark"
+     ],
+     "bibliography": "M. Tullius Cicero Orationes Albert Curtis Clark Oxonii e Typographeo Clarendoniano 1911 6 Pro Tullio; Pro Fonteio; Pro Sulla; Pro Archia; Pro Plancio; Pro Scauro Scriptorum Classicorum Bibliotheca Oxoniensis Oxford Classical Texts HathiTrust Internet Archive",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+      }
+     ],
+     "editionUrn": "urn:cts:latinLit:phi0474.phi015.perseus-lat2",
+     "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0474/phi015/phi0474.phi015.perseus-lat2.xml",
+     "sourceSha256": "a27cc2a14d428d358f6db1fef13caf9d4c98fb3f841afb4a33151908b8139a24",
+     "sourceReferences": [
+      "https://hdl.handle.net/2027/njp.32101073249417?urlappend=%3Bseq=66%3Bownerid=13510798896722459-78",
+      "https://archive.org/details/orationes0006cice/page/n65/mode/2up"
+     ],
+     "publicationYear": "1911",
+     "publisher": "e Typographeo Clarendoniano",
+     "publicationPlace": "Oxonii",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/a27cc2a14d428d358f6db1fef13caf9d4c98fb3f841afb4a33151908b8139a24.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-phi0474-phi015-la-55e2751ecb1ac8aa.json",
+   "sha256": "55e2751ecb1ac8aa61acf9ed29b447d9b4b1a9451b550f0cd1a5a0bf34e3659b",
+   "passages": 97,
+   "characters": 62482,
+   "bytes": 79893,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0474-phi015-la-55e2751ecb1ac8aa.json"
+  },
+  {
+   "workId": "cts-phi0474-phi017",
+   "author": "Cicerón",
+   "title": "Pro L. Flacco",
+   "language": "la",
+   "dating": "106–43 a. C.",
+   "sources": [
+    {
+     "title": "Pro L. Flacco",
+     "titleLanguage": "lat",
+     "author": "M. Tullius Cicero",
+     "editors": [
+      "Albert Curtis Clark"
+     ],
+     "bibliography": "M. Tullius Cicero Orationes Albert Curtis Clark Oxford Clarendon Press 1909 4 Pro P. Quinctio; Pro Q. Roscio comoedo; Pro A. Caecina; De lege agraria contra Rullum; Pro C. Rabirio perduellionis reo; Pro L. Flacco; In L. Pisonem; Pro C. Rabirio Postumo Scriptorum Classicorum Bibliotheca Oxoniensis Oxford Classical Texts Internet Archive",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+      }
+     ],
+     "editionUrn": "urn:cts:latinLit:phi0474.phi017.perseus-lat2",
+     "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0474/phi017/phi0474.phi017.perseus-lat2.xml",
+     "sourceSha256": "4e4905c126582e3a313a311dc9506369839b04af2821ba3d274c9a96fbe621f1",
+     "sourceReferences": [
+      "https://archive.org/details/orationesrecogno04ciceuoft/page/196/mode/2up"
+     ],
+     "publicationYear": "1909",
+     "publisher": "Clarendon Press",
+     "publicationPlace": "Oxford",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/4e4905c126582e3a313a311dc9506369839b04af2821ba3d274c9a96fbe621f1.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-phi0474-phi017-la-f6676069c0c1e01f.json",
+   "sha256": "f6676069c0c1e01f74042561704f143811cd9aa6bfedf79c6e5654e7e6b843e1",
+   "passages": 119,
+   "characters": 76133,
+   "bytes": 97017,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0474-phi017-la-f6676069c0c1e01f.json"
+  },
+  {
+   "workId": "cts-phi0474-phi018",
+   "author": "Cicerón",
+   "title": "Cum Populo Gratias Egit",
+   "language": "la",
+   "dating": "106–43 a. C.",
+   "sources": [
+    {
+     "title": "Cum Populo Gratias Egit",
+     "titleLanguage": "lat",
+     "author": "M. Tullius Cicero",
+     "editors": [
+      "William Peterson"
+     ],
+     "bibliography": "M. Tullius Cicero Orationes William Peterson Oxford Clarendon 1909 5 Cum Senatui Gratias Egit; Cum Populo Gratias Egit; De Domo Sua; De Haruspicum Responso; Pro Sestio; In Vatinium; De Provinciis Consularibus; Pro Balbo Scriptorum Classicorum Bibliotheca Oxoniensis Oxford Classical Texts Internet Archive HathiTrust",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+      }
+     ],
+     "editionUrn": "urn:cts:latinLit:phi0474.phi018.perseus-lat2",
+     "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0474/phi018/phi0474.phi018.perseus-lat2.xml",
+     "sourceSha256": "90a16a9dee04e25c62851c0019397b9ce91d2b9c33a705282701dce7c39dfb6f",
+     "sourceReferences": [
+      "https://archive.org/details/orationesrecogno05ciceuoft/page/17/mode/2up",
+      "https://babel.hathitrust.org/cgi/pt?id=njp.32101073249664&amp=&seq=48"
+     ],
+     "publicationYear": "1909",
+     "publisher": "Clarendon",
+     "publicationPlace": "Oxford",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/90a16a9dee04e25c62851c0019397b9ce91d2b9c33a705282701dce7c39dfb6f.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-phi0474-phi018-la-d6b2e845ffecd78c.json",
+   "sha256": "d6b2e845ffecd78c6568285ffafaa993f6b77cb07df7e4abaa3c3f80f0b68524",
+   "passages": 26,
+   "characters": 18566,
+   "bytes": 24853,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0474-phi018-la-d6b2e845ffecd78c.json"
+  },
+  {
+   "workId": "cts-phi0474-phi019",
+   "author": "Cicerón",
+   "title": "Cum Senatui Gratias Egit",
+   "language": "la",
+   "dating": "106–43 a. C.",
+   "sources": [
+    {
+     "title": "Cum Senatui Gratias Egit",
+     "titleLanguage": "lat",
+     "author": "M. Tullius Cicero",
+     "editors": [
+      "William Peterson"
+     ],
+     "bibliography": "M. Tullius Cicero Orationes William Peterson Oxford Clarendon 1909 5 Cum Senatui Gratias Egit; Cum Populo Gratias Egit; De Domo Sua; De Haruspicum Responso; Pro Sestio; In Vatinium; De Provinciis Consularibus; Pro Balbo Scriptorum Classicorum Bibliotheca Oxoniensis Oxford Classical Texts Internet Archive HathiTrust",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+      }
+     ],
+     "editionUrn": "urn:cts:latinLit:phi0474.phi019.perseus-lat2",
+     "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0474/phi019/phi0474.phi019.perseus-lat2.xml",
+     "sourceSha256": "ca0156bb68fdf08f5a73b7eb99a2c9250bb5bb03dd1cb3e80101414a74df92e6",
+     "sourceReferences": [
+      "https://archive.org/details/orationesrecogno05ciceuoft/page/n21/mode/2up",
+      "https://babel.hathitrust.org/cgi/pt?id=njp.32101073249664&seq=28"
+     ],
+     "publicationYear": "1909",
+     "publisher": "Clarendon",
+     "publicationPlace": "Oxford",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/ca0156bb68fdf08f5a73b7eb99a2c9250bb5bb03dd1cb3e80101414a74df92e6.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-phi0474-phi019-la-c326dc4074cb623c.json",
+   "sha256": "c326dc4074cb623c76bdf15010bbfc0a4d7dc4be2363704dda82c2f48e722f6c",
+   "passages": 43,
+   "characters": 30161,
+   "bytes": 39116,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0474-phi019-la-c326dc4074cb623c.json"
+  },
+  {
+   "workId": "cts-phi0474-phi020",
+   "author": "Cicerón",
+   "title": "De Domo Sua Ad Pontifices",
+   "language": "la",
+   "dating": "106–43 a. C.",
+   "sources": [
+    {
+     "title": "De Domo Sua Ad Pontifices",
+     "titleLanguage": "lat",
+     "author": "M. Tullius Cicero",
+     "editors": [
+      "William Peterson"
+     ],
+     "bibliography": "M. Tullius Cicero Orationes William Peterson Oxford Clarendon Press 1909 5 Cum Senatui Gratias Egit; Cum Populo Gratias Egit; De Domo Sua; De Haruspicum Responso; Pro Sestio; In Vatinium; De Provinciis Consularibus; Pro Balbo Scriptorum Classicorum Bibliotheca Oxoniensis Oxford Classical Texts HathiTrust",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+      }
+     ],
+     "editionUrn": "urn:cts:latinLit:phi0474.phi020.perseus-lat2",
+     "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0474/phi020/phi0474.phi020.perseus-lat2.xml",
+     "sourceSha256": "9949f059e9b35978390a88259983146e71f8c33dbf34585e3c1fe1d210465a96",
+     "sourceReferences": [
+      "https://archive.org/details/orationesrecogno05ciceuoft/page/25/mode/2up"
+     ],
+     "publicationYear": "1909",
+     "publisher": "Clarendon Press",
+     "publicationPlace": "Oxford",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/9949f059e9b35978390a88259983146e71f8c33dbf34585e3c1fe1d210465a96.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-phi0474-phi020-la-8fbe3ec419fa9b02.json",
+   "sha256": "8fbe3ec419fa9b02ba1c9e1b7bd37eb1de3c571f7e168a2d7b0c20ddf0ba2a04",
+   "passages": 154,
+   "characters": 103409,
+   "bytes": 129834,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0474-phi020-la-8fbe3ec419fa9b02.json"
+  },
+  {
+   "workId": "cts-phi0474-phi021",
+   "author": "Cicerón",
+   "title": "De Haruspicum Responso In P. Clodium",
+   "language": "la",
+   "dating": "106–43 a. C.",
+   "sources": [
+    {
+     "title": "De Haruspicum Responso in P. Clodium in Senatu Habita",
+     "titleLanguage": "lat",
+     "author": "M. Tullius Cicero",
+     "editors": [
+      "William Peterson"
+     ],
+     "bibliography": "M. Tullius Cicero Orationes William Peterson Oxford Clarendon Press 1909 5 Cum Senatui Gratias Egit; Cum Populo Gratias Egit; De Domo Sua; De Haruspicum Responso; Pro Sestio; In Vatinium; De Provinciis Consularibus; Pro Balbo Scriptorum Classicorum Bibliotheca Oxoniensis Oxford Classical Texts Internet Archive",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+      }
+     ],
+     "editionUrn": "urn:cts:latinLit:phi0474.phi021.perseus-lat2",
+     "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0474/phi021/phi0474.phi021.perseus-lat2.xml",
+     "sourceSha256": "c9fc69a0da92f61e653b6c0c55a375f4ac1c987a0bc5002cb74fcd5e0cc50adc",
+     "sourceReferences": [
+      "https://archive.org/details/orationesrecogno05ciceuoft/page/89/mode/2up"
+     ],
+     "publicationYear": "1909",
+     "publisher": "Clarendon Press",
+     "publicationPlace": "Oxford",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/c9fc69a0da92f61e653b6c0c55a375f4ac1c987a0bc5002cb74fcd5e0cc50adc.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-phi0474-phi021-la-bef77363071ad00e.json",
+   "sha256": "bef77363071ad00e225dde647ccdb70c14e321067470d56893a9f9b0d7445bc2",
+   "passages": 65,
+   "characters": 51789,
+   "bytes": 64233,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0474-phi021-la-bef77363071ad00e.json"
+  },
+  {
+   "workId": "cts-tlg0751-tlg005",
+   "author": "Pseudo-Hippocrates",
+   "title": "Ἑρμηνεία περὶ ἐνεργῶν λίθων",
+   "language": "grc",
+   "dating": "",
+   "sources": [
+    {
+     "title": "Ἑρμηνεία περὶ ἐνεργῶν λίθων",
+     "titleLanguage": "grc",
+     "author": "Hippocrates (Pseudo)",
+     "editors": [
+      "Fernand de Mély"
+     ],
+     "bibliography": "Hippocrates (Pseudo) Fernand de Mély Les lapidaires de l'antiquité et du moyen age Paris Ernest Leroux 1898 2.1 HathiTrust",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg0751.tlg005.1st1K-grc1",
+     "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0751/tlg005/tlg0751.tlg005.1st1K-grc1.xml",
+     "sourceSha256": "4c51472ddc58019c7f871d81a1a18b686d9e743905076092a84902299b7cfe9a",
+     "sourceReferences": [
+      "https://hdl.handle.net/2027/uc1.c3080492?urlappend=%3Bseq=215"
+     ],
+     "publicationYear": "1898",
+     "publisher": "Ernest Leroux",
+     "publicationPlace": "Paris",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/4c51472ddc58019c7f871d81a1a18b686d9e743905076092a84902299b7cfe9a.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-tlg0751-tlg005-grc-e3fc5bf12fc1acdf.json",
+   "sha256": "e3fc5bf12fc1acdf511f10a53bdebaeb5d37fd5efb6fdbc4da6805f4819c7c73",
+   "passages": 42,
+   "characters": 10640,
+   "bytes": 29188,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0751-tlg005-grc-e3fc5bf12fc1acdf.json"
+  },
+  {
+   "workId": "cts-tlg0751-tlg034",
+   "author": "Pseudo-Hippocrates",
+   "title": "De septimestri partu",
+   "language": "grc",
+   "dating": "",
+   "sources": [
+    {
+     "title": "De septimestri partu",
+     "titleLanguage": "und",
+     "author": "pseudo-Hippocrates",
+     "editors": [
+      "Émile Littré"
+     ],
+     "bibliography": "Oeuvres complètes d'Hippocrate pseudo-Hippocrates Émile Littré Baillière Paris 7 436-452 1851 HathiTrust",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg0751.tlg034.1st1K-grc1",
+     "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0751/tlg034/tlg0751.tlg034.1st1K-grc1.xml",
+     "sourceSha256": "47016702ec8ec5a0736a798dda4bdfbb927351f4f41ee12b771857da81e9deac",
+     "sourceReferences": [
+      "https://catalog.hathitrust.org/Record/009347819"
+     ],
+     "publicationYear": "1851",
+     "publisher": "Baillière",
+     "publicationPlace": "Paris",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/47016702ec8ec5a0736a798dda4bdfbb927351f4f41ee12b771857da81e9deac.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-tlg0751-tlg034-grc-c6041868f79537f0.json",
+   "sha256": "c6041868f79537f04eb8ab15b4d1fa6189b5863f3a3765047a6961a56e5a449f",
+   "passages": 10,
+   "characters": 10301,
+   "bytes": 24168,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0751-tlg034-grc-c6041868f79537f0.json"
+  },
+  {
+   "workId": "cts-tlg1799-tlg007",
+   "author": "Euclides",
+   "title": "Data",
+   "language": "grc",
+   "dating": "c. 300 a. C.",
+   "sources": [
+    {
+     "title": "Data",
+     "titleLanguage": "und",
+     "author": "Euclid",
+     "editors": [
+      "Johan Ludvig Heiberg",
+      "Heinrich Menge"
+     ],
+     "bibliography": "Euclidis Opera Omnia Johan Ludvig Heiberg Heinrich Menge Euclid Teubner Leipzig 1896 6 Internet Archive",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg1799.tlg007.1st1K-grc1",
+     "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg1799/tlg007/tlg1799.tlg007.1st1K-grc1.xml",
+     "sourceSha256": "57cb1e3ef91adebb5ecb4eb002a707b2e7b8dfb168a2a52c59ce7c2c678edc72",
+     "sourceReferences": [
+      "https://archive.org/stream/euclidisoperaomn06eucluoft#page/n67/mode/2up"
+     ],
+     "publicationYear": "1896",
+     "publisher": "Teubner",
+     "publicationPlace": "Leipzig",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/57cb1e3ef91adebb5ecb4eb002a707b2e7b8dfb168a2a52c59ce7c2c678edc72.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-tlg1799-tlg007-grc-a6d2f8700d1787a2.json",
+   "sha256": "a6d2f8700d1787a2d249ee109ded8a937847927808901fe47247d18fb0fbcaa6",
+   "passages": 426,
+   "characters": 97249,
+   "bytes": 254903,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg1799-tlg007-grc-a6d2f8700d1787a2.json"
+  },
+  {
+   "workId": "cts-tlg1799-tlg008",
+   "author": "Euclides",
+   "title": "Data (demonstrationes alterae)",
+   "language": "grc",
+   "dating": "c. 300 a. C.",
+   "sources": [
+    {
+     "title": "Data (demonstrationes alterae)",
+     "titleLanguage": "lat",
+     "author": "Euclid",
+     "editors": [
+      "Johan Ludvig Heiberg",
+      "Heinrich Menge"
+     ],
+     "bibliography": "Euclidiis Opera Omnia Johan Ludvig Heiberg Heinrich Menge Euclid Teubner Lepizig 1896 6 Internet Archive",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg1799.tlg008.1st1K-grc1",
+     "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg1799/tlg008/tlg1799.tlg008.1st1K-grc1.xml",
+     "sourceSha256": "f68b8f9a5486434d5823d2882cc2674a3aae7ad2c87c78738ddaaa0124031ee1",
+     "sourceReferences": [],
+     "publicationYear": "1896",
+     "publisher": "Teubner",
+     "publicationPlace": "Lepizig",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/f68b8f9a5486434d5823d2882cc2674a3aae7ad2c87c78738ddaaa0124031ee1.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-tlg1799-tlg008-grc-a0ba2a0efdfe12cc.json",
+   "sha256": "a0ba2a0efdfe12ccd5800d0b9b50c4b47bf18613ddbb2a9ba8133b6cbb1ee522",
+   "passages": 67,
+   "characters": 20319,
+   "bytes": 51175,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg1799-tlg008-grc-a0ba2a0efdfe12cc.json"
+  },
+  {
+   "workId": "cts-tlg1799-tlg010",
+   "author": "Euclides",
+   "title": "Opticorum recensio Theonis",
+   "language": "grc",
+   "dating": "c. 300 a. C.",
+   "sources": [
+    {
+     "title": "Opticorum recensio Theonis",
+     "titleLanguage": "lat",
+     "author": "Euclid",
+     "editors": [
+      "Johan Ludvig Heiberg",
+      "Heinrich Menge"
+     ],
+     "bibliography": "Euclidis Opera Omnia Johan Ludvig Heiberg Heinrich Menge Euclid Teubner Leipzig 1895 7 Internet Archive",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg1799.tlg010.1st1K-grc1",
+     "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg1799/tlg010/tlg1799.tlg010.1st1K-grc1.xml",
+     "sourceSha256": "0225b5a3fd86580e158deea66e23214a8ce19d4dee6e0961724b779eb92f4ae7",
+     "sourceReferences": [
+      "https://archive.org/details/euclidisoperaomn07eucluoft/page/142/mode/2up?"
+     ],
+     "publicationYear": "1895",
+     "publisher": "Teubner",
+     "publicationPlace": "Leipzig",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/0225b5a3fd86580e158deea66e23214a8ce19d4dee6e0961724b779eb92f4ae7.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-tlg1799-tlg010-grc-693e5e6751ff34f0.json",
+   "sha256": "693e5e6751ff34f061685cab78ddea8f495fd32c2d0eeba10b86ade2f97db4e5",
+   "passages": 199,
+   "characters": 53296,
+   "bytes": 136198,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg1799-tlg010-grc-693e5e6751ff34f0.json"
+  },
+  {
+   "workId": "cts-tlg1799-tlg011",
+   "author": "Euclides",
+   "title": "Catoptrica (recensio Theonis?)",
+   "language": "grc",
+   "dating": "c. 300 a. C.",
+   "sources": [
+    {
+     "title": "Catoptrica (recensio Theonis?)",
+     "titleLanguage": "lat",
+     "author": "Euclid",
+     "editors": [
+      "Johan Ludvig Heiberg",
+      "Heinrich Menge"
+     ],
+     "bibliography": "Euclidis Opera Omnia Johan Ludvig Heiberg Heinrich Menge Euclid Teubner Leipzig 1895 7 Internet Archive",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg1799.tlg011.1st1K-grc1",
+     "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg1799/tlg011/tlg1799.tlg011.1st1K-grc1.xml",
+     "sourceSha256": "7fe955cca381714b64fb161b71d6e79f65c3995e98bd08c8bce2feda82dcbad1",
+     "sourceReferences": [
+      "https://archive.org/details/euclidisoperaomn07eucluoft/page/284/mode/2up?"
+     ],
+     "publicationYear": "1895",
+     "publisher": "Teubner",
+     "publicationPlace": "Leipzig",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/7fe955cca381714b64fb161b71d6e79f65c3995e98bd08c8bce2feda82dcbad1.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-tlg1799-tlg011-grc-eda0f1858af9f52a.json",
+   "sha256": "eda0f1858af9f52af64bdfe2d0083ab863ef7908752257279cd50fc9fc3803ce",
+   "passages": 109,
+   "characters": 26717,
+   "bytes": 70728,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg1799-tlg011-grc-eda0f1858af9f52a.json"
+  },
+  {
+   "workId": "cts-tlg1799-tlg013",
+   "author": "Euclides",
+   "title": "Phaenomena (recensio b)",
+   "language": "grc",
+   "dating": "c. 300 a. C.",
+   "sources": [
+    {
+     "title": "Phaenomena (recensio b)",
+     "titleLanguage": "lat",
+     "author": "Euclid",
+     "editors": [
+      "Heinrich Menge"
+     ],
+     "bibliography": "Euclidis Opera Omnia Heinrich Menge Euclid Leipzig Teubner 1916 8 Internet Archive",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg1799.tlg013.1st1K-grc1",
+     "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg1799/tlg013/tlg1799.tlg013.1st1K-grc1.xml",
+     "sourceSha256": "7a0c3cb09cd33b4ec886d570d669db4ef3ee55c1c4cb9ba6ba0855693dccea6d",
+     "sourceReferences": [
+      "https://archive.org/stream/euclidisoperaomn08eucluoft#page/106/mode/2up"
+     ],
+     "publicationYear": "1916",
+     "publisher": "Leipzig",
+     "publicationPlace": "Teubner",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/7a0c3cb09cd33b4ec886d570d669db4ef3ee55c1c4cb9ba6ba0855693dccea6d.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-tlg1799-tlg013-grc-9059d61e0bb9a5a6.json",
+   "sha256": "9059d61e0bb9a5a6d8638f274d3c6c9e079f9684b150f0ab6afb925ec5f17eba",
+   "passages": 14,
+   "characters": 3786,
+   "bytes": 11422,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg1799-tlg013-grc-9059d61e0bb9a5a6.json"
+  },
+  {
+   "workId": "cts-tlg1799-tlg014",
+   "author": "Euclides",
+   "title": "Phaenomena (demonstrationes alterae recensionis b)",
+   "language": "grc",
+   "dating": "c. 300 a. C.",
+   "sources": [
+    {
+     "title": "Phaenomena (demonstrationes alterae recensionis b)",
+     "titleLanguage": "lat",
+     "author": "Euclid",
+     "editors": [
+      "Heinrich Menge"
+     ],
+     "bibliography": "Euclidis Opera Omnia Heinrich Menge Euclid Leipzig Teubner 1916 8 Internet Archive",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg1799.tlg014.1st1K-grc1",
+     "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg1799/tlg014/tlg1799.tlg014.1st1K-grc1.xml",
+     "sourceSha256": "3f3f9eaa2a92eae60556f54885ab4f3f259de7e8f5a1fe90e4b070b126fb6f86",
+     "sourceReferences": [
+      "https://archive.org/stream/euclidisoperaomn08eucluoft#page/n3/mode/2up"
+     ],
+     "publicationYear": "1916",
+     "publisher": "Leipzig",
+     "publicationPlace": "Teubner",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/3f3f9eaa2a92eae60556f54885ab4f3f259de7e8f5a1fe90e4b070b126fb6f86.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-tlg1799-tlg014-grc-f045631912036997.json",
+   "sha256": "f045631912036997216f6cca0ee3eed6dd1b16e421efee7cb0e184a8bac95b22",
+   "passages": 20,
+   "characters": 12007,
+   "bytes": 27947,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg1799-tlg014-grc-f045631912036997.json"
+  },
+  {
+   "workId": "cts-tlg1799-tlg016",
+   "author": "Euclides",
+   "title": "Fragmenta",
+   "language": "grc",
+   "dating": "c. 300 a. C.",
+   "sources": [
+    {
+     "title": "Fragmenta",
+     "titleLanguage": "lat",
+     "author": "Euclid",
+     "editors": [
+      "Heinrich Menge"
+     ],
+     "bibliography": "Euclidis Opera Omnia Heinrich Menge Euclid Leipzig Teubner 1916 8 Internet Archive",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg1799.tlg016.1st1K-grc1",
+     "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg1799/tlg016/tlg1799.tlg016.1st1K-grc1.xml",
+     "sourceSha256": "229df155df30651fa15064760875f54f2a0c7081489578e4c557ff54392c9633",
+     "sourceReferences": [
+      "https://archive.org/stream/euclidisoperaomn08eucluoft#page/n3/mode/2up"
+     ],
+     "publicationYear": "1916",
+     "publisher": "Leipzig",
+     "publicationPlace": "Teubner",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/229df155df30651fa15064760875f54f2a0c7081489578e4c557ff54392c9633.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-tlg1799-tlg016-grc-10f314b2379b019e.json",
+   "sha256": "10f314b2379b019e18d0db75943d483fad2863c8bda9b97d2855a9297f3492f7",
+   "passages": 183,
+   "characters": 49894,
+   "bytes": 125531,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg1799-tlg016-grc-10f314b2379b019e.json"
+  },
+  {
+   "workId": "cts-tlg1799-tlg017",
+   "author": "Euclides",
+   "title": "Epigramma",
+   "language": "grc",
+   "dating": "c. 300 a. C.",
+   "sources": [
+    {
+     "title": "Epigramma",
+     "titleLanguage": "lat",
+     "author": "Euclid",
+     "editors": [
+      "Heinrich Menge"
+     ],
+     "bibliography": "Euclidis Opera Omnia Heinrich Menge Euclid Leipzig Teubner 1916 8 Internet Archive",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg1799.tlg017.1st1K-grc1",
+     "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg1799/tlg017/tlg1799.tlg017.1st1K-grc1.xml",
+     "sourceSha256": "c9e9686d83501589a1e19a94843b4d7636d7c61f6fe2deccc0168e385a4a6680",
+     "sourceReferences": [
+      "https://archive.org/stream/euclidisoperaomn08eucluoft#page/186/mode/2up"
+     ],
+     "publicationYear": "1916",
+     "publisher": "Leipzig",
+     "publicationPlace": "Teubner",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/c9e9686d83501589a1e19a94843b4d7636d7c61f6fe2deccc0168e385a4a6680.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-tlg1799-tlg017-grc-b9a4ce72c2bce3bc.json",
+   "sha256": "b9a4ce72c2bce3bc5727c2e4e1e6053d97a6b9ec81f9fcde3c980afa16db52f4",
+   "passages": 3,
+   "characters": 1440,
+   "bytes": 4047,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg1799-tlg017-grc-b9a4ce72c2bce3bc.json"
+  },
+  {
+   "workId": "cts-tlg0010-tlg007",
+   "author": "Isócrates",
+   "title": "To Demonicus",
+   "language": "grc",
+   "dating": "436–338 a. C.",
+   "sources": [
+    {
+     "title": "Πρὸς Δημόνικον",
+     "titleLanguage": "grc",
+     "author": "Isocrates",
+     "editors": [
+      "Larue Van Hook",
+      "George Norlin"
+     ],
+     "bibliography": "Isocrates Isocrates Larue Van Hook Cambridge, MA London, UK Harvard University Press William Heinemann Ltd. 1 1928 Loeb Classical Library Internet Archive",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg0010.tlg007.perseus-grc2",
+     "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0010/tlg007/tlg0010.tlg007.perseus-grc2.xml",
+     "sourceSha256": "a551cdcf4b57fce90c8d79beb51ed8aa1c5cb936f56a86d105c50857d83963d8",
+     "sourceReferences": [
+      "https://archive.org/details/isocrates01isoc/page/4/mode/2up"
+     ],
+     "publicationYear": "1928",
+     "publisher": "Harvard University Press",
+     "publicationPlace": "Cambridge, MA",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/a551cdcf4b57fce90c8d79beb51ed8aa1c5cb936f56a86d105c50857d83963d8.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-tlg0010-tlg007-grc-8330f8f48b994492.json",
+   "sha256": "8330f8f48b9944926f7fc65f29632bb8c3ae185eaf0a0ba39cb2a5bffadb2968",
+   "passages": 64,
+   "characters": 18645,
+   "bytes": 48561,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0010-tlg007-grc-8330f8f48b994492.json"
+  },
+  {
+   "workId": "cts-tlg0010-tlg008",
+   "author": "Isócrates",
+   "title": "Against the Sophists",
+   "language": "grc",
+   "dating": "436–338 a. C.",
+   "sources": [
+    {
+     "title": "Κατὰ τῶν σοφιστῶν",
+     "titleLanguage": "grc",
+     "author": "Isocrates",
+     "editors": [
+      "George Norlin"
+     ],
+     "bibliography": "Isocrates Isocrates George Norlin Cambridge, MA London, UK Harvard University Press William Heinemann Ltd. 2 1928 Loeb Classical Library Internet Archive",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg0010.tlg008.perseus-grc2",
+     "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0010/tlg008/tlg0010.tlg008.perseus-grc2.xml",
+     "sourceSha256": "5211a39f9190a16768ceffb78a5148913b81694e52431fe89363990fd6fb9732",
+     "sourceReferences": [
+      "https://archive.org/details/in.ernet.dli.2015.185377/page/162/mode/2up"
+     ],
+     "publicationYear": "1928",
+     "publisher": "Harvard University Press",
+     "publicationPlace": "Cambridge, MA",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/5211a39f9190a16768ceffb78a5148913b81694e52431fe89363990fd6fb9732.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-tlg0010-tlg008-grc-72eb3110445830b7.json",
+   "sha256": "72eb3110445830b7e8da88ee1b3ede60cbc2803061709a0cf171c1a3f5cb7498",
+   "passages": 22,
+   "characters": 8850,
+   "bytes": 22814,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0010-tlg008-grc-72eb3110445830b7.json"
+  },
+  {
+   "workId": "cts-tlg0010-tlg009",
+   "author": "Isócrates",
+   "title": "Helen",
+   "language": "grc",
+   "dating": "436–338 a. C.",
+   "sources": [
+    {
+     "title": "Ἑλένη",
+     "titleLanguage": "grc",
+     "author": "Isocrates",
+     "editors": [
+      "Larue Van Hook"
+     ],
+     "bibliography": "Isocrates Isocrates Larue Van Hook Cambridge, MA London, UK Harvard University Press William Heinemann Ltd. 3 1945 Loeb Classical Library Internet Archive",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg0010.tlg009.perseus-grc2",
+     "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0010/tlg009/tlg0010.tlg009.perseus-grc2.xml",
+     "sourceSha256": "be14f8b216a7b45df53f85b5d5cef72448a2b6fceebf5f93f45c600029b001b3",
+     "sourceReferences": [
+      "https://archive.org/details/isocrateswitheng03isocuoft/page/60/mode/2up"
+     ],
+     "publicationYear": "1945",
+     "publisher": "Harvard University Press",
+     "publicationPlace": "Cambridge, MA",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/be14f8b216a7b45df53f85b5d5cef72448a2b6fceebf5f93f45c600029b001b3.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-tlg0010-tlg009-grc-f812a12f326d412f.json",
+   "sha256": "f812a12f326d412fa164bf85ddc307e560a200faabb0b706d0ef85e62041f96b",
+   "passages": 69,
+   "characters": 24137,
+   "bytes": 60201,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0010-tlg009-grc-f812a12f326d412f.json"
+  },
+  {
+   "workId": "cts-phi0474-phi022",
+   "author": "Cicerón",
+   "title": "Pro P. Sestio",
+   "language": "la",
+   "dating": "106–43 a. C.",
+   "sources": [
+    {
+     "title": "Pro P. Sestio",
+     "titleLanguage": "lat",
+     "author": "M. Tullius Cicero",
+     "editors": [
+      "William Peterson"
+     ],
+     "bibliography": "M. Tullius Cicero Orationes William Peterson Oxford Clarendon Press 1909 5 Cum Senatui Gratias Egit; Cum Populo Gratias Egit; De Domo Sua; De Haruspicum Responso; Pro Sestio; In Vatinium; De Provinciis Consularibus; Pro Balbo Scriptorum Classicorum Bibliotheca Oxoniensis Oxford Classical Texts Internet Archive",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+      }
+     ],
+     "editionUrn": "urn:cts:latinLit:phi0474.phi022.perseus-lat2",
+     "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0474/phi022/phi0474.phi022.perseus-lat2.xml",
+     "sourceSha256": "ea84748fbf938dcf0159ea71d3b8e6fb7629629d5094b7e79517fc2184473bdb",
+     "sourceReferences": [
+      "https://archive.org/details/orationesrecogno05ciceuoft/page/123/mode/2up"
+     ],
+     "publicationYear": "1909",
+     "publisher": "Clarendon Press",
+     "publicationPlace": "Oxford",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/ea84748fbf938dcf0159ea71d3b8e6fb7629629d5094b7e79517fc2184473bdb.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-phi0474-phi022-la-799056a0039a5399.json",
+   "sha256": "799056a0039a539917cfd6dbaf3d2031a1f11b775173934fa108d5155951c7e6",
+   "passages": 167,
+   "characters": 116089,
+   "bytes": 144578,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0474-phi022-la-799056a0039a5399.json"
   }
  ],
  "githubPreserved": [
@@ -21049,6 +22311,86 @@
    "r2Key": "preserved/github/6c7f2ee0eada84ebb9f2a6954b9e2e60f4db514ee8d8c3a5c160e754349ee53f.json"
   }
  ],
- "deferred": [],
+ "deferred": [
+  {
+   "workId": "ovid-heroides",
+   "sources": [
+    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0959/phi002/phi0959.phi002.perseus-lat2.xml"
+   ],
+   "reason": "Sin licencia abierta explícita admisible en la cabecera TEI"
+  },
+  {
+   "workId": "ovid-fasti",
+   "sources": [
+    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0959/phi007/phi0959.phi007.perseus-lat2.xml"
+   ],
+   "reason": "Sin licencia abierta explícita admisible en la cabecera TEI"
+  },
+  {
+   "workId": "ovid-ex-ponto",
+   "sources": [
+    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0959/phi009/phi0959.phi009.perseus-lat2.xml"
+   ],
+   "reason": "Sin licencia abierta explícita admisible en la cabecera TEI"
+  },
+  {
+   "workId": "ovid-ars-amatoria",
+   "sources": [
+    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0959/phi004/phi0959.phi004.perseus-lat2.xml"
+   ],
+   "reason": "Sin licencia abierta explícita admisible en la cabecera TEI"
+  },
+  {
+   "workId": "ovid-remedia-amoris",
+   "sources": [
+    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0959/phi005/phi0959.phi005.perseus-lat2.xml"
+   ],
+   "reason": "Sin licencia abierta explícita admisible en la cabecera TEI"
+  },
+  {
+   "workId": "ovid-tristia",
+   "sources": [
+    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0959/phi008/phi0959.phi008.perseus-lat2.xml"
+   ],
+   "reason": "Sin licencia abierta explícita admisible en la cabecera TEI"
+  },
+  {
+   "workId": "virgil-aeneid",
+   "sources": [
+    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0690/phi003/phi0690.phi003.perseus-lat2.xml"
+   ],
+   "reason": "Sin licencia abierta explícita admisible en la cabecera TEI"
+  },
+  {
+   "workId": "seneca-de-clementia",
+   "sources": [
+    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi1017/phi014/phi1017.phi014.perseus-lat2.xml"
+   ],
+   "reason": "Sin licencia abierta explícita admisible en la cabecera TEI"
+  },
+  {
+   "workId": "virgil-georgica",
+   "sources": [
+    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0690/phi002/phi0690.phi002.perseus-lat2.xml"
+   ],
+   "reason": "Sin licencia abierta explícita admisible en la cabecera TEI"
+  },
+  {
+   "workId": "seneca-tragoediae",
+   "sources": [
+    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi1017/phi001/phi1017.phi001.perseus-lat2.xml",
+    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi1017/phi002/phi1017.phi002.perseus-lat2.xml",
+    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi1017/phi003/phi1017.phi003.perseus-lat2.xml",
+    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi1017/phi004/phi1017.phi004.perseus-lat2.xml",
+    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi1017/phi005/phi1017.phi005.perseus-lat2.xml",
+    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi1017/phi006/phi1017.phi006.perseus-lat2.xml",
+    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi1017/phi007/phi1017.phi007.perseus-lat2.xml",
+    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi1017/phi008/phi1017.phi008.perseus-lat2.xml",
+    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi1017/phi009/phi1017.phi009.perseus-lat2.xml",
+    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi1017/phi010/phi1017.phi010.perseus-lat2.xml"
+   ],
+   "reason": "Sin licencia abierta explícita admisible en la cabecera TEI"
+  }
+ ],
  "policy": "No se borran ni reemplazan originales de GitHub, PDFs, traducciones o códices. Cobertura relativa a los catálogos CTS inventariados, no a toda la literatura antigua."
 }

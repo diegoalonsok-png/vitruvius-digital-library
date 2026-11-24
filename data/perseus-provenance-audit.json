@@ -1,14 +1,14 @@
 {
   "schema": "vitruvius-perseus-provenance-audit-v1",
-  "generated": "2026-11-23",
+  "generated": "2026-11-24",
   "scope": "Catálogo principal y ediciones TEI originales acreditadas y archivadas en R2; no certifica servicios externos",
-  "method": "Candidate PHI/TLG work codes are not CTS edition URNs. Source descriptions copied from the local index are claims to audit, not proof of an external canonical edition or an institutional link. No automatic CTS URNs or permanent URLs are invented. Incorporaciones R2: edición declarada en TEI fuente, SHA256, licencia y localizador comprobados; no se presume afiliación externa. Incorporaciones R2: edición declarada en TEI fuente, SHA256, licencia y localizador comprobados; no se presume afiliación externa. Incorporaciones R2: edición declarada en TEI fuente, SHA256, licencia y localizador comprobados; no se presume afiliación externa. Incorporaciones R2: edición declarada en TEI fuente, SHA256, licencia y localizador comprobados; no se presume afiliación externa. Incorporaciones R2: edición declarada en TEI fuente, SHA256, licencia y localizador comprobados; no se presume afiliación externa. Incorporaciones R2: edición declarada en TEI fuente, SHA256, licencia y localizador comprobados; no se presume afiliación externa. Incorporaciones R2: edición declarada en TEI fuente, SHA256, licencia y localizador comprobados; no se presume afiliación externa. Incorporaciones R2: edición declarada en TEI fuente, SHA256, licencia y localizador comprobados; no se presume afiliación externa. Incorporaciones R2: edición declarada en TEI fuente, SHA256, licencia y localizador comprobados; no se presume afiliación externa. Incorporaciones R2: edición declarada en TEI fuente, SHA256, licencia y localizador comprobados; no se presume afiliación externa. Incorporaciones R2: edición declarada en TEI fuente, SHA256, licencia y localizador comprobados; no se presume afiliación externa. Incorporaciones R2: edición declarada en TEI fuente, SHA256, licencia y localizador comprobados; no se presume afiliación externa. Incorporaciones R2: edición declarada en TEI fuente, SHA256, licencia y localizador comprobados; no se presume afiliación externa. Incorporaciones R2: edición declarada en TEI fuente, SHA256, licencia y localizador comprobados; no se presume afiliación externa. Incorporaciones R2: edición declarada en TEI fuente, SHA256, licencia y localizador comprobados; no se presume afiliación externa. Incorporaciones R2: edición declarada en TEI fuente, SHA256, licencia y localizador comprobados; no se presume afiliación externa. Incorporaciones R2: edición declarada en TEI fuente, SHA256, licencia y localizador comprobados; no se presume afiliación externa. Incorporaciones R2: edición declarada en TEI fuente, SHA256, licencia y localizador comprobados; no se presume afiliación externa.",
+  "method": "Candidate PHI/TLG work codes are not CTS edition URNs. Source descriptions copied from the local index are claims to audit, not proof of an external canonical edition or an institutional link. No automatic CTS URNs or permanent URLs are invented. Incorporaciones R2: edición declarada en TEI fuente, SHA256, licencia y localizador comprobados; no se presume afiliación externa. Incorporaciones R2: edición declarada en TEI fuente, SHA256, licencia y localizador comprobados; no se presume afiliación externa. Incorporaciones R2: edición declarada en TEI fuente, SHA256, licencia y localizador comprobados; no se presume afiliación externa. Incorporaciones R2: edición declarada en TEI fuente, SHA256, licencia y localizador comprobados; no se presume afiliación externa. Incorporaciones R2: edición declarada en TEI fuente, SHA256, licencia y localizador comprobados; no se presume afiliación externa. Incorporaciones R2: edición declarada en TEI fuente, SHA256, licencia y localizador comprobados; no se presume afiliación externa. Incorporaciones R2: edición declarada en TEI fuente, SHA256, licencia y localizador comprobados; no se presume afiliación externa. Incorporaciones R2: edición declarada en TEI fuente, SHA256, licencia y localizador comprobados; no se presume afiliación externa. Incorporaciones R2: edición declarada en TEI fuente, SHA256, licencia y localizador comprobados; no se presume afiliación externa. Incorporaciones R2: edición declarada en TEI fuente, SHA256, licencia y localizador comprobados; no se presume afiliación externa. Incorporaciones R2: edición declarada en TEI fuente, SHA256, licencia y localizador comprobados; no se presume afiliación externa. Incorporaciones R2: edición declarada en TEI fuente, SHA256, licencia y localizador comprobados; no se presume afiliación externa. Incorporaciones R2: edición declarada en TEI fuente, SHA256, licencia y localizador comprobados; no se presume afiliación externa. Incorporaciones R2: edición declarada en TEI fuente, SHA256, licencia y localizador comprobados; no se presume afiliación externa. Incorporaciones R2: edición declarada en TEI fuente, SHA256, licencia y localizador comprobados; no se presume afiliación externa. Incorporaciones R2: edición declarada en TEI fuente, SHA256, licencia y localizador comprobados; no se presume afiliación externa. Incorporaciones R2: edición declarada en TEI fuente, SHA256, licencia y localizador comprobados; no se presume afiliación externa. Incorporaciones R2: edición declarada en TEI fuente, SHA256, licencia y localizador comprobados; no se presume afiliación externa. Incorporaciones R2: edición declarada en TEI fuente, SHA256, licencia y localizador comprobados; no se presume afiliación externa.",
   "counts": {
-    "works": 507,
-    "worksWithCandidateWorkCodes": 415,
-    "versions": 482,
+    "works": 535,
+    "worksWithCandidateWorkCodes": 443,
+    "versions": 510,
     "worksWithPerseusSourceDescription": 142,
-    "verifiedEditionUrns": 237
+    "verifiedEditionUrns": 265
   },
   "links": {
     "scaife": "https://scaife.perseus.org/",
@@ -13489,6 +13489,874 @@
       "otherSourceEditions": [],
       "r2TextUrl": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0086-tlg041-grc-77a1136359d99d07.json",
       "r2Sha256": "77a1136359d99d073905b55757304dcdb24a8f3a4bfdc0b887299c23d429be8c",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "cts-phi0426-phi001",
+      "author": "Pseudo-César",
+      "title": "De Bello Africo",
+      "originalLanguage": "la",
+      "sourceReadiness": "original_r2_tei_publicado_con_sha256",
+      "originalIndexed": false,
+      "originalR2Registered": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "phi0426.phi001"
+      ],
+      "versions": [
+        {
+          "language": "la",
+          "path": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0426-phi001-la-fd2cb89d3ce4bfb4.json",
+          "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "reader": "classics-text-reader.html?work=cts-phi0426-phi001&lang=la&edition=fd2cb89d3ce4bfb4"
+        }
+      ],
+      "ctsEditionUrn": "urn:cts:latinLit:phi0426.phi001.perseus-lat1",
+      "ctsStatus": "declared_and_checked_in_source_tei_header",
+      "ctsSourceUri": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0426/phi001/phi0426.phi001.perseus-lat1.xml",
+      "ctsEvidence": "TEI XML original, div[@type=edition]/@n, edición y SHA256 verificados mediante fuente R2: 5e1c36b774b896e2eeca97a2af4f000371727e9fa97a1a19fba495d5f210a854",
+      "ctsNote": "URN de edición declarada en TEI; no implica resolución CTS pública ni cotejo de manuscritos.",
+      "sourceRights": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "otherSourceEditions": [],
+      "r2TextUrl": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0426-phi001-la-fd2cb89d3ce4bfb4.json",
+      "r2Sha256": "fd2cb89d3ce4bfb471b7eba15f50ddc8b7e4b6d0d810953f374351b1b7ad8b38",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "cts-phi0428-phi001",
+      "author": "Pseudo-César",
+      "title": "De Bello Alexandrino",
+      "originalLanguage": "la",
+      "sourceReadiness": "original_r2_tei_publicado_con_sha256",
+      "originalIndexed": false,
+      "originalR2Registered": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "phi0428.phi001"
+      ],
+      "versions": [
+        {
+          "language": "la",
+          "path": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0428-phi001-la-4805e22e8c8e0ff2.json",
+          "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "reader": "classics-text-reader.html?work=cts-phi0428-phi001&lang=la&edition=4805e22e8c8e0ff2"
+        }
+      ],
+      "ctsEditionUrn": "urn:cts:latinLit:phi0428.phi001.perseus-lat1",
+      "ctsStatus": "declared_and_checked_in_source_tei_header",
+      "ctsSourceUri": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0428/phi001/phi0428.phi001.perseus-lat1.xml",
+      "ctsEvidence": "TEI XML original, div[@type=edition]/@n, edición y SHA256 verificados mediante fuente R2: 30a9336b2ce921950a70a2935381f89db0d02c3522c9b40160ee2311f2d374d6",
+      "ctsNote": "URN de edición declarada en TEI; no implica resolución CTS pública ni cotejo de manuscritos.",
+      "sourceRights": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "otherSourceEditions": [],
+      "r2TextUrl": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0428-phi001-la-4805e22e8c8e0ff2.json",
+      "r2Sha256": "4805e22e8c8e0ff20f2db66585123c49e3cc250b96fed0d74ba781d8b5de8d6d",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "cts-phi0430-phi001",
+      "author": "Pseudo-César",
+      "title": "De Bello Hispaniensi",
+      "originalLanguage": "la",
+      "sourceReadiness": "original_r2_tei_publicado_con_sha256",
+      "originalIndexed": false,
+      "originalR2Registered": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "phi0430.phi001"
+      ],
+      "versions": [
+        {
+          "language": "la",
+          "path": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0430-phi001-la-2cb5b9eea84b7a55.json",
+          "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "reader": "classics-text-reader.html?work=cts-phi0430-phi001&lang=la&edition=2cb5b9eea84b7a55"
+        }
+      ],
+      "ctsEditionUrn": "urn:cts:latinLit:phi0430.phi001.perseus-lat1",
+      "ctsStatus": "declared_and_checked_in_source_tei_header",
+      "ctsSourceUri": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0430/phi001/phi0430.phi001.perseus-lat1.xml",
+      "ctsEvidence": "TEI XML original, div[@type=edition]/@n, edición y SHA256 verificados mediante fuente R2: 0bc6fb5678b10a9da9902cab7296acbce080ad2cacc92e5c35ff875bf0e27ec9",
+      "ctsNote": "URN de edición declarada en TEI; no implica resolución CTS pública ni cotejo de manuscritos.",
+      "sourceRights": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "otherSourceEditions": [],
+      "r2TextUrl": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0430-phi001-la-2cb5b9eea84b7a55.json",
+      "r2Sha256": "2cb5b9eea84b7a559f752e714e7858192457db182e2516f0e31bdd0d12b77873",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "cts-phi0474-phi001",
+      "author": "Cicerón",
+      "title": "Pro P. Quinctio",
+      "originalLanguage": "la",
+      "sourceReadiness": "original_r2_tei_publicado_con_sha256",
+      "originalIndexed": false,
+      "originalR2Registered": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "phi0474.phi001"
+      ],
+      "versions": [
+        {
+          "language": "la",
+          "path": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0474-phi001-la-26e7795cbc05cae5.json",
+          "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "reader": "classics-text-reader.html?work=cts-phi0474-phi001&lang=la&edition=26e7795cbc05cae5"
+        }
+      ],
+      "ctsEditionUrn": "urn:cts:latinLit:phi0474.phi001.perseus-lat2",
+      "ctsStatus": "declared_and_checked_in_source_tei_header",
+      "ctsSourceUri": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0474/phi001/phi0474.phi001.perseus-lat2.xml",
+      "ctsEvidence": "TEI XML original, div[@type=edition]/@n, edición y SHA256 verificados mediante fuente R2: 657659f3dc8afaf9cef285ec1869b25ab571affdb9a9810cbf1f58d48205ba84",
+      "ctsNote": "URN de edición declarada en TEI; no implica resolución CTS pública ni cotejo de manuscritos.",
+      "sourceRights": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "otherSourceEditions": [],
+      "r2TextUrl": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0474-phi001-la-26e7795cbc05cae5.json",
+      "r2Sha256": "26e7795cbc05cae5e140644a7c6c09e730539991f3d5246491b4501da4e57275",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "cts-phi0474-phi002",
+      "author": "Cicerón",
+      "title": "Pro S. Roscio Amerino",
+      "originalLanguage": "la",
+      "sourceReadiness": "original_r2_tei_publicado_con_sha256",
+      "originalIndexed": false,
+      "originalR2Registered": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "phi0474.phi002"
+      ],
+      "versions": [
+        {
+          "language": "la",
+          "path": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0474-phi002-la-cf77cc290374994f.json",
+          "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "reader": "classics-text-reader.html?work=cts-phi0474-phi002&lang=la&edition=cf77cc290374994f"
+        }
+      ],
+      "ctsEditionUrn": "urn:cts:latinLit:phi0474.phi002.perseus-lat2",
+      "ctsStatus": "declared_and_checked_in_source_tei_header",
+      "ctsSourceUri": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0474/phi002/phi0474.phi002.perseus-lat2.xml",
+      "ctsEvidence": "TEI XML original, div[@type=edition]/@n, edición y SHA256 verificados mediante fuente R2: 457501d9a2b4a1a6425832e4e4804f0493374fe65f9d81477b3da176091cbe0a",
+      "ctsNote": "URN de edición declarada en TEI; no implica resolución CTS pública ni cotejo de manuscritos.",
+      "sourceRights": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "otherSourceEditions": [],
+      "r2TextUrl": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0474-phi002-la-cf77cc290374994f.json",
+      "r2Sha256": "cf77cc290374994fab8a726ed109165fb6d0d7e550671976a52fbd8760c4b046",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "cts-phi0474-phi003",
+      "author": "Cicerón",
+      "title": "Pro Q. Roscio Comoedo",
+      "originalLanguage": "la",
+      "sourceReadiness": "original_r2_tei_publicado_con_sha256",
+      "originalIndexed": false,
+      "originalR2Registered": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "phi0474.phi003"
+      ],
+      "versions": [
+        {
+          "language": "la",
+          "path": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0474-phi003-la-56c18c5040fe1f49.json",
+          "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "reader": "classics-text-reader.html?work=cts-phi0474-phi003&lang=la&edition=56c18c5040fe1f49"
+        }
+      ],
+      "ctsEditionUrn": "urn:cts:latinLit:phi0474.phi003.perseus-lat2",
+      "ctsStatus": "declared_and_checked_in_source_tei_header",
+      "ctsSourceUri": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0474/phi003/phi0474.phi003.perseus-lat2.xml",
+      "ctsEvidence": "TEI XML original, div[@type=edition]/@n, edición y SHA256 verificados mediante fuente R2: 3f6cee16dda96adb25d8f5ec1abea271963df814d797df1a27e03b3d64720650",
+      "ctsNote": "URN de edición declarada en TEI; no implica resolución CTS pública ni cotejo de manuscritos.",
+      "sourceRights": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "otherSourceEditions": [],
+      "r2TextUrl": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0474-phi003-la-56c18c5040fe1f49.json",
+      "r2Sha256": "56c18c5040fe1f49fd307d63a8c791648d9496252e51e4f3962bd7c458f8dce1",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "cts-phi0474-phi004",
+      "author": "Cicerón",
+      "title": "Divinatio in Q. Caecilium",
+      "originalLanguage": "la",
+      "sourceReadiness": "original_r2_tei_publicado_con_sha256",
+      "originalIndexed": false,
+      "originalR2Registered": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "phi0474.phi004"
+      ],
+      "versions": [
+        {
+          "language": "la",
+          "path": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0474-phi004-la-699ccb8b6bff1146.json",
+          "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "reader": "classics-text-reader.html?work=cts-phi0474-phi004&lang=la&edition=699ccb8b6bff1146"
+        }
+      ],
+      "ctsEditionUrn": "urn:cts:latinLit:phi0474.phi004.perseus-lat2",
+      "ctsStatus": "declared_and_checked_in_source_tei_header",
+      "ctsSourceUri": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0474/phi004/phi0474.phi004.perseus-lat2.xml",
+      "ctsEvidence": "TEI XML original, div[@type=edition]/@n, edición y SHA256 verificados mediante fuente R2: 970ee16a95b0d016774624a4735250bcabf8b9b957053c3e7578980a1baf081c",
+      "ctsNote": "URN de edición declarada en TEI; no implica resolución CTS pública ni cotejo de manuscritos.",
+      "sourceRights": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "otherSourceEditions": [],
+      "r2TextUrl": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0474-phi004-la-699ccb8b6bff1146.json",
+      "r2Sha256": "699ccb8b6bff1146bf5c3e543b5eeaba70a2aa4a2bbc6bbd5682d9507abaedb7",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "cts-phi0474-phi014",
+      "author": "Cicerón",
+      "title": "Pro L. Murena",
+      "originalLanguage": "la",
+      "sourceReadiness": "original_r2_tei_publicado_con_sha256",
+      "originalIndexed": false,
+      "originalR2Registered": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "phi0474.phi014"
+      ],
+      "versions": [
+        {
+          "language": "la",
+          "path": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0474-phi014-la-6c225568ff385c99.json",
+          "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "reader": "classics-text-reader.html?work=cts-phi0474-phi014&lang=la&edition=6c225568ff385c99"
+        }
+      ],
+      "ctsEditionUrn": "urn:cts:latinLit:phi0474.phi014.perseus-lat2",
+      "ctsStatus": "declared_and_checked_in_source_tei_header",
+      "ctsSourceUri": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0474/phi014/phi0474.phi014.perseus-lat2.xml",
+      "ctsEvidence": "TEI XML original, div[@type=edition]/@n, edición y SHA256 verificados mediante fuente R2: f81c465749bb6948036b9bbe99b996cc194c7e27d4bef922f7b57b613265bb3e",
+      "ctsNote": "URN de edición declarada en TEI; no implica resolución CTS pública ni cotejo de manuscritos.",
+      "sourceRights": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "otherSourceEditions": [],
+      "r2TextUrl": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0474-phi014-la-6c225568ff385c99.json",
+      "r2Sha256": "6c225568ff385c9943951bee0a103e6c09973be75e0b7be61263345a4e7a0eb7",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "cts-phi0474-phi015",
+      "author": "Cicerón",
+      "title": "Pro P. Sulla",
+      "originalLanguage": "la",
+      "sourceReadiness": "original_r2_tei_publicado_con_sha256",
+      "originalIndexed": false,
+      "originalR2Registered": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "phi0474.phi015"
+      ],
+      "versions": [
+        {
+          "language": "la",
+          "path": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0474-phi015-la-55e2751ecb1ac8aa.json",
+          "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "reader": "classics-text-reader.html?work=cts-phi0474-phi015&lang=la&edition=55e2751ecb1ac8aa"
+        }
+      ],
+      "ctsEditionUrn": "urn:cts:latinLit:phi0474.phi015.perseus-lat2",
+      "ctsStatus": "declared_and_checked_in_source_tei_header",
+      "ctsSourceUri": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0474/phi015/phi0474.phi015.perseus-lat2.xml",
+      "ctsEvidence": "TEI XML original, div[@type=edition]/@n, edición y SHA256 verificados mediante fuente R2: a27cc2a14d428d358f6db1fef13caf9d4c98fb3f841afb4a33151908b8139a24",
+      "ctsNote": "URN de edición declarada en TEI; no implica resolución CTS pública ni cotejo de manuscritos.",
+      "sourceRights": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "otherSourceEditions": [],
+      "r2TextUrl": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0474-phi015-la-55e2751ecb1ac8aa.json",
+      "r2Sha256": "55e2751ecb1ac8aa61acf9ed29b447d9b4b1a9451b550f0cd1a5a0bf34e3659b",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "cts-phi0474-phi017",
+      "author": "Cicerón",
+      "title": "Pro L. Flacco",
+      "originalLanguage": "la",
+      "sourceReadiness": "original_r2_tei_publicado_con_sha256",
+      "originalIndexed": false,
+      "originalR2Registered": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "phi0474.phi017"
+      ],
+      "versions": [
+        {
+          "language": "la",
+          "path": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0474-phi017-la-f6676069c0c1e01f.json",
+          "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "reader": "classics-text-reader.html?work=cts-phi0474-phi017&lang=la&edition=f6676069c0c1e01f"
+        }
+      ],
+      "ctsEditionUrn": "urn:cts:latinLit:phi0474.phi017.perseus-lat2",
+      "ctsStatus": "declared_and_checked_in_source_tei_header",
+      "ctsSourceUri": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0474/phi017/phi0474.phi017.perseus-lat2.xml",
+      "ctsEvidence": "TEI XML original, div[@type=edition]/@n, edición y SHA256 verificados mediante fuente R2: 4e4905c126582e3a313a311dc9506369839b04af2821ba3d274c9a96fbe621f1",
+      "ctsNote": "URN de edición declarada en TEI; no implica resolución CTS pública ni cotejo de manuscritos.",
+      "sourceRights": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "otherSourceEditions": [],
+      "r2TextUrl": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0474-phi017-la-f6676069c0c1e01f.json",
+      "r2Sha256": "f6676069c0c1e01f74042561704f143811cd9aa6bfedf79c6e5654e7e6b843e1",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "cts-phi0474-phi018",
+      "author": "Cicerón",
+      "title": "Cum Populo Gratias Egit",
+      "originalLanguage": "la",
+      "sourceReadiness": "original_r2_tei_publicado_con_sha256",
+      "originalIndexed": false,
+      "originalR2Registered": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "phi0474.phi018"
+      ],
+      "versions": [
+        {
+          "language": "la",
+          "path": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0474-phi018-la-d6b2e845ffecd78c.json",
+          "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "reader": "classics-text-reader.html?work=cts-phi0474-phi018&lang=la&edition=d6b2e845ffecd78c"
+        }
+      ],
+      "ctsEditionUrn": "urn:cts:latinLit:phi0474.phi018.perseus-lat2",
+      "ctsStatus": "declared_and_checked_in_source_tei_header",
+      "ctsSourceUri": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0474/phi018/phi0474.phi018.perseus-lat2.xml",
+      "ctsEvidence": "TEI XML original, div[@type=edition]/@n, edición y SHA256 verificados mediante fuente R2: 90a16a9dee04e25c62851c0019397b9ce91d2b9c33a705282701dce7c39dfb6f",
+      "ctsNote": "URN de edición declarada en TEI; no implica resolución CTS pública ni cotejo de manuscritos.",
+      "sourceRights": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "otherSourceEditions": [],
+      "r2TextUrl": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0474-phi018-la-d6b2e845ffecd78c.json",
+      "r2Sha256": "d6b2e845ffecd78c6568285ffafaa993f6b77cb07df7e4abaa3c3f80f0b68524",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "cts-phi0474-phi019",
+      "author": "Cicerón",
+      "title": "Cum Senatui Gratias Egit",
+      "originalLanguage": "la",
+      "sourceReadiness": "original_r2_tei_publicado_con_sha256",
+      "originalIndexed": false,
+      "originalR2Registered": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "phi0474.phi019"
+      ],
+      "versions": [
+        {
+          "language": "la",
+          "path": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0474-phi019-la-c326dc4074cb623c.json",
+          "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "reader": "classics-text-reader.html?work=cts-phi0474-phi019&lang=la&edition=c326dc4074cb623c"
+        }
+      ],
+      "ctsEditionUrn": "urn:cts:latinLit:phi0474.phi019.perseus-lat2",
+      "ctsStatus": "declared_and_checked_in_source_tei_header",
+      "ctsSourceUri": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0474/phi019/phi0474.phi019.perseus-lat2.xml",
+      "ctsEvidence": "TEI XML original, div[@type=edition]/@n, edición y SHA256 verificados mediante fuente R2: ca0156bb68fdf08f5a73b7eb99a2c9250bb5bb03dd1cb3e80101414a74df92e6",
+      "ctsNote": "URN de edición declarada en TEI; no implica resolución CTS pública ni cotejo de manuscritos.",
+      "sourceRights": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "otherSourceEditions": [],
+      "r2TextUrl": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0474-phi019-la-c326dc4074cb623c.json",
+      "r2Sha256": "c326dc4074cb623c76bdf15010bbfc0a4d7dc4be2363704dda82c2f48e722f6c",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "cts-phi0474-phi020",
+      "author": "Cicerón",
+      "title": "De Domo Sua Ad Pontifices",
+      "originalLanguage": "la",
+      "sourceReadiness": "original_r2_tei_publicado_con_sha256",
+      "originalIndexed": false,
+      "originalR2Registered": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "phi0474.phi020"
+      ],
+      "versions": [
+        {
+          "language": "la",
+          "path": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0474-phi020-la-8fbe3ec419fa9b02.json",
+          "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "reader": "classics-text-reader.html?work=cts-phi0474-phi020&lang=la&edition=8fbe3ec419fa9b02"
+        }
+      ],
+      "ctsEditionUrn": "urn:cts:latinLit:phi0474.phi020.perseus-lat2",
+      "ctsStatus": "declared_and_checked_in_source_tei_header",
+      "ctsSourceUri": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0474/phi020/phi0474.phi020.perseus-lat2.xml",
+      "ctsEvidence": "TEI XML original, div[@type=edition]/@n, edición y SHA256 verificados mediante fuente R2: 9949f059e9b35978390a88259983146e71f8c33dbf34585e3c1fe1d210465a96",
+      "ctsNote": "URN de edición declarada en TEI; no implica resolución CTS pública ni cotejo de manuscritos.",
+      "sourceRights": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "otherSourceEditions": [],
+      "r2TextUrl": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0474-phi020-la-8fbe3ec419fa9b02.json",
+      "r2Sha256": "8fbe3ec419fa9b02ba1c9e1b7bd37eb1de3c571f7e168a2d7b0c20ddf0ba2a04",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "cts-phi0474-phi021",
+      "author": "Cicerón",
+      "title": "De Haruspicum Responso In P. Clodium",
+      "originalLanguage": "la",
+      "sourceReadiness": "original_r2_tei_publicado_con_sha256",
+      "originalIndexed": false,
+      "originalR2Registered": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "phi0474.phi021"
+      ],
+      "versions": [
+        {
+          "language": "la",
+          "path": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0474-phi021-la-bef77363071ad00e.json",
+          "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "reader": "classics-text-reader.html?work=cts-phi0474-phi021&lang=la&edition=bef77363071ad00e"
+        }
+      ],
+      "ctsEditionUrn": "urn:cts:latinLit:phi0474.phi021.perseus-lat2",
+      "ctsStatus": "declared_and_checked_in_source_tei_header",
+      "ctsSourceUri": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0474/phi021/phi0474.phi021.perseus-lat2.xml",
+      "ctsEvidence": "TEI XML original, div[@type=edition]/@n, edición y SHA256 verificados mediante fuente R2: c9fc69a0da92f61e653b6c0c55a375f4ac1c987a0bc5002cb74fcd5e0cc50adc",
+      "ctsNote": "URN de edición declarada en TEI; no implica resolución CTS pública ni cotejo de manuscritos.",
+      "sourceRights": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "otherSourceEditions": [],
+      "r2TextUrl": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0474-phi021-la-bef77363071ad00e.json",
+      "r2Sha256": "bef77363071ad00e225dde647ccdb70c14e321067470d56893a9f9b0d7445bc2",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "cts-tlg0751-tlg005",
+      "author": "Pseudo-Hippocrates",
+      "title": "Ἑρμηνεία περὶ ἐνεργῶν λίθων",
+      "originalLanguage": "grc",
+      "sourceReadiness": "original_r2_tei_publicado_con_sha256",
+      "originalIndexed": false,
+      "originalR2Registered": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "tlg0751.tlg005"
+      ],
+      "versions": [
+        {
+          "language": "grc",
+          "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0751-tlg005-grc-e3fc5bf12fc1acdf.json",
+          "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "reader": "classics-text-reader.html?work=cts-tlg0751-tlg005&lang=grc&edition=e3fc5bf12fc1acdf"
+        }
+      ],
+      "ctsEditionUrn": "urn:cts:greekLit:tlg0751.tlg005.1st1K-grc1",
+      "ctsStatus": "declared_and_checked_in_source_tei_header",
+      "ctsSourceUri": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0751/tlg005/tlg0751.tlg005.1st1K-grc1.xml",
+      "ctsEvidence": "TEI XML original, div[@type=edition]/@n, edición y SHA256 verificados mediante fuente R2: 4c51472ddc58019c7f871d81a1a18b686d9e743905076092a84902299b7cfe9a",
+      "ctsNote": "URN de edición declarada en TEI; no implica resolución CTS pública ni cotejo de manuscritos.",
+      "sourceRights": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "otherSourceEditions": [],
+      "r2TextUrl": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0751-tlg005-grc-e3fc5bf12fc1acdf.json",
+      "r2Sha256": "e3fc5bf12fc1acdf511f10a53bdebaeb5d37fd5efb6fdbc4da6805f4819c7c73",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "cts-tlg0751-tlg034",
+      "author": "Pseudo-Hippocrates",
+      "title": "De septimestri partu",
+      "originalLanguage": "grc",
+      "sourceReadiness": "original_r2_tei_publicado_con_sha256",
+      "originalIndexed": false,
+      "originalR2Registered": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "tlg0751.tlg034"
+      ],
+      "versions": [
+        {
+          "language": "grc",
+          "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0751-tlg034-grc-c6041868f79537f0.json",
+          "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "reader": "classics-text-reader.html?work=cts-tlg0751-tlg034&lang=grc&edition=c6041868f79537f0"
+        }
+      ],
+      "ctsEditionUrn": "urn:cts:greekLit:tlg0751.tlg034.1st1K-grc1",
+      "ctsStatus": "declared_and_checked_in_source_tei_header",
+      "ctsSourceUri": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0751/tlg034/tlg0751.tlg034.1st1K-grc1.xml",
+      "ctsEvidence": "TEI XML original, div[@type=edition]/@n, edición y SHA256 verificados mediante fuente R2: 47016702ec8ec5a0736a798dda4bdfbb927351f4f41ee12b771857da81e9deac",
+      "ctsNote": "URN de edición declarada en TEI; no implica resolución CTS pública ni cotejo de manuscritos.",
+      "sourceRights": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "otherSourceEditions": [],
+      "r2TextUrl": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0751-tlg034-grc-c6041868f79537f0.json",
+      "r2Sha256": "c6041868f79537f04eb8ab15b4d1fa6189b5863f3a3765047a6961a56e5a449f",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "cts-tlg1799-tlg007",
+      "author": "Euclides",
+      "title": "Data",
+      "originalLanguage": "grc",
+      "sourceReadiness": "original_r2_tei_publicado_con_sha256",
+      "originalIndexed": false,
+      "originalR2Registered": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "tlg1799.tlg007"
+      ],
+      "versions": [
+        {
+          "language": "grc",
+          "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg1799-tlg007-grc-a6d2f8700d1787a2.json",
+          "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "reader": "classics-text-reader.html?work=cts-tlg1799-tlg007&lang=grc&edition=a6d2f8700d1787a2"
+        }
+      ],
+      "ctsEditionUrn": "urn:cts:greekLit:tlg1799.tlg007.1st1K-grc1",
+      "ctsStatus": "declared_and_checked_in_source_tei_header",
+      "ctsSourceUri": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg1799/tlg007/tlg1799.tlg007.1st1K-grc1.xml",
+      "ctsEvidence": "TEI XML original, div[@type=edition]/@n, edición y SHA256 verificados mediante fuente R2: 57cb1e3ef91adebb5ecb4eb002a707b2e7b8dfb168a2a52c59ce7c2c678edc72",
+      "ctsNote": "URN de edición declarada en TEI; no implica resolución CTS pública ni cotejo de manuscritos.",
+      "sourceRights": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "otherSourceEditions": [],
+      "r2TextUrl": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg1799-tlg007-grc-a6d2f8700d1787a2.json",
+      "r2Sha256": "a6d2f8700d1787a2d249ee109ded8a937847927808901fe47247d18fb0fbcaa6",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "cts-tlg1799-tlg008",
+      "author": "Euclides",
+      "title": "Data (demonstrationes alterae)",
+      "originalLanguage": "grc",
+      "sourceReadiness": "original_r2_tei_publicado_con_sha256",
+      "originalIndexed": false,
+      "originalR2Registered": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "tlg1799.tlg008"
+      ],
+      "versions": [
+        {
+          "language": "grc",
+          "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg1799-tlg008-grc-a0ba2a0efdfe12cc.json",
+          "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "reader": "classics-text-reader.html?work=cts-tlg1799-tlg008&lang=grc&edition=a0ba2a0efdfe12cc"
+        }
+      ],
+      "ctsEditionUrn": "urn:cts:greekLit:tlg1799.tlg008.1st1K-grc1",
+      "ctsStatus": "declared_and_checked_in_source_tei_header",
+      "ctsSourceUri": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg1799/tlg008/tlg1799.tlg008.1st1K-grc1.xml",
+      "ctsEvidence": "TEI XML original, div[@type=edition]/@n, edición y SHA256 verificados mediante fuente R2: f68b8f9a5486434d5823d2882cc2674a3aae7ad2c87c78738ddaaa0124031ee1",
+      "ctsNote": "URN de edición declarada en TEI; no implica resolución CTS pública ni cotejo de manuscritos.",
+      "sourceRights": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "otherSourceEditions": [],
+      "r2TextUrl": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg1799-tlg008-grc-a0ba2a0efdfe12cc.json",
+      "r2Sha256": "a0ba2a0efdfe12ccd5800d0b9b50c4b47bf18613ddbb2a9ba8133b6cbb1ee522",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "cts-tlg1799-tlg010",
+      "author": "Euclides",
+      "title": "Opticorum recensio Theonis",
+      "originalLanguage": "grc",
+      "sourceReadiness": "original_r2_tei_publicado_con_sha256",
+      "originalIndexed": false,
+      "originalR2Registered": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "tlg1799.tlg010"
+      ],
+      "versions": [
+        {
+          "language": "grc",
+          "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg1799-tlg010-grc-693e5e6751ff34f0.json",
+          "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "reader": "classics-text-reader.html?work=cts-tlg1799-tlg010&lang=grc&edition=693e5e6751ff34f0"
+        }
+      ],
+      "ctsEditionUrn": "urn:cts:greekLit:tlg1799.tlg010.1st1K-grc1",
+      "ctsStatus": "declared_and_checked_in_source_tei_header",
+      "ctsSourceUri": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg1799/tlg010/tlg1799.tlg010.1st1K-grc1.xml",
+      "ctsEvidence": "TEI XML original, div[@type=edition]/@n, edición y SHA256 verificados mediante fuente R2: 0225b5a3fd86580e158deea66e23214a8ce19d4dee6e0961724b779eb92f4ae7",
+      "ctsNote": "URN de edición declarada en TEI; no implica resolución CTS pública ni cotejo de manuscritos.",
+      "sourceRights": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "otherSourceEditions": [],
+      "r2TextUrl": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg1799-tlg010-grc-693e5e6751ff34f0.json",
+      "r2Sha256": "693e5e6751ff34f061685cab78ddea8f495fd32c2d0eeba10b86ade2f97db4e5",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "cts-tlg1799-tlg011",
+      "author": "Euclides",
+      "title": "Catoptrica (recensio Theonis?)",
+      "originalLanguage": "grc",
+      "sourceReadiness": "original_r2_tei_publicado_con_sha256",
+      "originalIndexed": false,
+      "originalR2Registered": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "tlg1799.tlg011"
+      ],
+      "versions": [
+        {
+          "language": "grc",
+          "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg1799-tlg011-grc-eda0f1858af9f52a.json",
+          "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "reader": "classics-text-reader.html?work=cts-tlg1799-tlg011&lang=grc&edition=eda0f1858af9f52a"
+        }
+      ],
+      "ctsEditionUrn": "urn:cts:greekLit:tlg1799.tlg011.1st1K-grc1",
+      "ctsStatus": "declared_and_checked_in_source_tei_header",
+      "ctsSourceUri": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg1799/tlg011/tlg1799.tlg011.1st1K-grc1.xml",
+      "ctsEvidence": "TEI XML original, div[@type=edition]/@n, edición y SHA256 verificados mediante fuente R2: 7fe955cca381714b64fb161b71d6e79f65c3995e98bd08c8bce2feda82dcbad1",
+      "ctsNote": "URN de edición declarada en TEI; no implica resolución CTS pública ni cotejo de manuscritos.",
+      "sourceRights": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "otherSourceEditions": [],
+      "r2TextUrl": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg1799-tlg011-grc-eda0f1858af9f52a.json",
+      "r2Sha256": "eda0f1858af9f52af64bdfe2d0083ab863ef7908752257279cd50fc9fc3803ce",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "cts-tlg1799-tlg013",
+      "author": "Euclides",
+      "title": "Phaenomena (recensio b)",
+      "originalLanguage": "grc",
+      "sourceReadiness": "original_r2_tei_publicado_con_sha256",
+      "originalIndexed": false,
+      "originalR2Registered": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "tlg1799.tlg013"
+      ],
+      "versions": [
+        {
+          "language": "grc",
+          "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg1799-tlg013-grc-9059d61e0bb9a5a6.json",
+          "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "reader": "classics-text-reader.html?work=cts-tlg1799-tlg013&lang=grc&edition=9059d61e0bb9a5a6"
+        }
+      ],
+      "ctsEditionUrn": "urn:cts:greekLit:tlg1799.tlg013.1st1K-grc1",
+      "ctsStatus": "declared_and_checked_in_source_tei_header",
+      "ctsSourceUri": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg1799/tlg013/tlg1799.tlg013.1st1K-grc1.xml",
+      "ctsEvidence": "TEI XML original, div[@type=edition]/@n, edición y SHA256 verificados mediante fuente R2: 7a0c3cb09cd33b4ec886d570d669db4ef3ee55c1c4cb9ba6ba0855693dccea6d",
+      "ctsNote": "URN de edición declarada en TEI; no implica resolución CTS pública ni cotejo de manuscritos.",
+      "sourceRights": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "otherSourceEditions": [],
+      "r2TextUrl": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg1799-tlg013-grc-9059d61e0bb9a5a6.json",
+      "r2Sha256": "9059d61e0bb9a5a6d8638f274d3c6c9e079f9684b150f0ab6afb925ec5f17eba",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "cts-tlg1799-tlg014",
+      "author": "Euclides",
+      "title": "Phaenomena (demonstrationes alterae recensionis b)",
+      "originalLanguage": "grc",
+      "sourceReadiness": "original_r2_tei_publicado_con_sha256",
+      "originalIndexed": false,
+      "originalR2Registered": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "tlg1799.tlg014"
+      ],
+      "versions": [
+        {
+          "language": "grc",
+          "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg1799-tlg014-grc-f045631912036997.json",
+          "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "reader": "classics-text-reader.html?work=cts-tlg1799-tlg014&lang=grc&edition=f045631912036997"
+        }
+      ],
+      "ctsEditionUrn": "urn:cts:greekLit:tlg1799.tlg014.1st1K-grc1",
+      "ctsStatus": "declared_and_checked_in_source_tei_header",
+      "ctsSourceUri": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg1799/tlg014/tlg1799.tlg014.1st1K-grc1.xml",
+      "ctsEvidence": "TEI XML original, div[@type=edition]/@n, edición y SHA256 verificados mediante fuente R2: 3f3f9eaa2a92eae60556f54885ab4f3f259de7e8f5a1fe90e4b070b126fb6f86",
+      "ctsNote": "URN de edición declarada en TEI; no implica resolución CTS pública ni cotejo de manuscritos.",
+      "sourceRights": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "otherSourceEditions": [],
+      "r2TextUrl": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg1799-tlg014-grc-f045631912036997.json",
+      "r2Sha256": "f045631912036997216f6cca0ee3eed6dd1b16e421efee7cb0e184a8bac95b22",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "cts-tlg1799-tlg016",
+      "author": "Euclides",
+      "title": "Fragmenta",
+      "originalLanguage": "grc",
+      "sourceReadiness": "original_r2_tei_publicado_con_sha256",
+      "originalIndexed": false,
+      "originalR2Registered": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "tlg1799.tlg016"
+      ],
+      "versions": [
+        {
+          "language": "grc",
+          "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg1799-tlg016-grc-10f314b2379b019e.json",
+          "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "reader": "classics-text-reader.html?work=cts-tlg1799-tlg016&lang=grc&edition=10f314b2379b019e"
+        }
+      ],
+      "ctsEditionUrn": "urn:cts:greekLit:tlg1799.tlg016.1st1K-grc1",
+      "ctsStatus": "declared_and_checked_in_source_tei_header",
+      "ctsSourceUri": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg1799/tlg016/tlg1799.tlg016.1st1K-grc1.xml",
+      "ctsEvidence": "TEI XML original, div[@type=edition]/@n, edición y SHA256 verificados mediante fuente R2: 229df155df30651fa15064760875f54f2a0c7081489578e4c557ff54392c9633",
+      "ctsNote": "URN de edición declarada en TEI; no implica resolución CTS pública ni cotejo de manuscritos.",
+      "sourceRights": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "otherSourceEditions": [],
+      "r2TextUrl": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg1799-tlg016-grc-10f314b2379b019e.json",
+      "r2Sha256": "10f314b2379b019e18d0db75943d483fad2863c8bda9b97d2855a9297f3492f7",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "cts-tlg1799-tlg017",
+      "author": "Euclides",
+      "title": "Epigramma",
+      "originalLanguage": "grc",
+      "sourceReadiness": "original_r2_tei_publicado_con_sha256",
+      "originalIndexed": false,
+      "originalR2Registered": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "tlg1799.tlg017"
+      ],
+      "versions": [
+        {
+          "language": "grc",
+          "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg1799-tlg017-grc-b9a4ce72c2bce3bc.json",
+          "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "reader": "classics-text-reader.html?work=cts-tlg1799-tlg017&lang=grc&edition=b9a4ce72c2bce3bc"
+        }
+      ],
+      "ctsEditionUrn": "urn:cts:greekLit:tlg1799.tlg017.1st1K-grc1",
+      "ctsStatus": "declared_and_checked_in_source_tei_header",
+      "ctsSourceUri": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg1799/tlg017/tlg1799.tlg017.1st1K-grc1.xml",
+      "ctsEvidence": "TEI XML original, div[@type=edition]/@n, edición y SHA256 verificados mediante fuente R2: c9e9686d83501589a1e19a94843b4d7636d7c61f6fe2deccc0168e385a4a6680",
+      "ctsNote": "URN de edición declarada en TEI; no implica resolución CTS pública ni cotejo de manuscritos.",
+      "sourceRights": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "otherSourceEditions": [],
+      "r2TextUrl": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg1799-tlg017-grc-b9a4ce72c2bce3bc.json",
+      "r2Sha256": "b9a4ce72c2bce3bc5727c2e4e1e6053d97a6b9ec81f9fcde3c980afa16db52f4",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "cts-tlg0010-tlg007",
+      "author": "Isócrates",
+      "title": "To Demonicus",
+      "originalLanguage": "grc",
+      "sourceReadiness": "original_r2_tei_publicado_con_sha256",
+      "originalIndexed": false,
+      "originalR2Registered": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "tlg0010.tlg007"
+      ],
+      "versions": [
+        {
+          "language": "grc",
+          "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0010-tlg007-grc-8330f8f48b994492.json",
+          "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "reader": "classics-text-reader.html?work=cts-tlg0010-tlg007&lang=grc&edition=8330f8f48b994492"
+        }
+      ],
+      "ctsEditionUrn": "urn:cts:greekLit:tlg0010.tlg007.perseus-grc2",
+      "ctsStatus": "declared_and_checked_in_source_tei_header",
+      "ctsSourceUri": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0010/tlg007/tlg0010.tlg007.perseus-grc2.xml",
+      "ctsEvidence": "TEI XML original, div[@type=edition]/@n, edición y SHA256 verificados mediante fuente R2: a551cdcf4b57fce90c8d79beb51ed8aa1c5cb936f56a86d105c50857d83963d8",
+      "ctsNote": "URN de edición declarada en TEI; no implica resolución CTS pública ni cotejo de manuscritos.",
+      "sourceRights": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "otherSourceEditions": [],
+      "r2TextUrl": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0010-tlg007-grc-8330f8f48b994492.json",
+      "r2Sha256": "8330f8f48b9944926f7fc65f29632bb8c3ae185eaf0a0ba39cb2a5bffadb2968",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "cts-tlg0010-tlg008",
+      "author": "Isócrates",
+      "title": "Against the Sophists",
+      "originalLanguage": "grc",
+      "sourceReadiness": "original_r2_tei_publicado_con_sha256",
+      "originalIndexed": false,
+      "originalR2Registered": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "tlg0010.tlg008"
+      ],
+      "versions": [
+        {
+          "language": "grc",
+          "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0010-tlg008-grc-72eb3110445830b7.json",
+          "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "reader": "classics-text-reader.html?work=cts-tlg0010-tlg008&lang=grc&edition=72eb3110445830b7"
+        }
+      ],
+      "ctsEditionUrn": "urn:cts:greekLit:tlg0010.tlg008.perseus-grc2",
+      "ctsStatus": "declared_and_checked_in_source_tei_header",
+      "ctsSourceUri": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0010/tlg008/tlg0010.tlg008.perseus-grc2.xml",
+      "ctsEvidence": "TEI XML original, div[@type=edition]/@n, edición y SHA256 verificados mediante fuente R2: 5211a39f9190a16768ceffb78a5148913b81694e52431fe89363990fd6fb9732",
+      "ctsNote": "URN de edición declarada en TEI; no implica resolución CTS pública ni cotejo de manuscritos.",
+      "sourceRights": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "otherSourceEditions": [],
+      "r2TextUrl": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0010-tlg008-grc-72eb3110445830b7.json",
+      "r2Sha256": "72eb3110445830b7e8da88ee1b3ede60cbc2803061709a0cf171c1a3f5cb7498",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "cts-tlg0010-tlg009",
+      "author": "Isócrates",
+      "title": "Helen",
+      "originalLanguage": "grc",
+      "sourceReadiness": "original_r2_tei_publicado_con_sha256",
+      "originalIndexed": false,
+      "originalR2Registered": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "tlg0010.tlg009"
+      ],
+      "versions": [
+        {
+          "language": "grc",
+          "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0010-tlg009-grc-f812a12f326d412f.json",
+          "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "reader": "classics-text-reader.html?work=cts-tlg0010-tlg009&lang=grc&edition=f812a12f326d412f"
+        }
+      ],
+      "ctsEditionUrn": "urn:cts:greekLit:tlg0010.tlg009.perseus-grc2",
+      "ctsStatus": "declared_and_checked_in_source_tei_header",
+      "ctsSourceUri": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0010/tlg009/tlg0010.tlg009.perseus-grc2.xml",
+      "ctsEvidence": "TEI XML original, div[@type=edition]/@n, edición y SHA256 verificados mediante fuente R2: be14f8b216a7b45df53f85b5d5cef72448a2b6fceebf5f93f45c600029b001b3",
+      "ctsNote": "URN de edición declarada en TEI; no implica resolución CTS pública ni cotejo de manuscritos.",
+      "sourceRights": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "otherSourceEditions": [],
+      "r2TextUrl": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0010-tlg009-grc-f812a12f326d412f.json",
+      "r2Sha256": "f812a12f326d412fa164bf85ddc307e560a200faabb0b706d0ef85e62041f96b",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "cts-phi0474-phi022",
+      "author": "Cicerón",
+      "title": "Pro P. Sestio",
+      "originalLanguage": "la",
+      "sourceReadiness": "original_r2_tei_publicado_con_sha256",
+      "originalIndexed": false,
+      "originalR2Registered": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "phi0474.phi022"
+      ],
+      "versions": [
+        {
+          "language": "la",
+          "path": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0474-phi022-la-799056a0039a5399.json",
+          "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "reader": "classics-text-reader.html?work=cts-phi0474-phi022&lang=la&edition=799056a0039a5399"
+        }
+      ],
+      "ctsEditionUrn": "urn:cts:latinLit:phi0474.phi022.perseus-lat2",
+      "ctsStatus": "declared_and_checked_in_source_tei_header",
+      "ctsSourceUri": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0474/phi022/phi0474.phi022.perseus-lat2.xml",
+      "ctsEvidence": "TEI XML original, div[@type=edition]/@n, edición y SHA256 verificados mediante fuente R2: ea84748fbf938dcf0159ea71d3b8e6fb7629629d5094b7e79517fc2184473bdb",
+      "ctsNote": "URN de edición declarada en TEI; no implica resolución CTS pública ni cotejo de manuscritos.",
+      "sourceRights": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "otherSourceEditions": [],
+      "r2TextUrl": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0474-phi022-la-799056a0039a5399.json",
+      "r2Sha256": "799056a0039a539917cfd6dbaf3d2031a1f11b775173934fa108d5155951c7e6",
       "perseusAffiliation": false
     }
   ]
