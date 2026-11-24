@@ -1,0 +1,35 @@
+name: Descargar originales clásicos a R2 sin indexar
+on:
+  workflow_dispatch:
+    inputs:
+      limite:
+        description: "0 = todos los candidatos disponibles"
+        default: "0"
+  schedule:
+    - cron: '47 0,3,6,9,12,15,18,21 * * *'
+permissions:
+  contents: read
+concurrency:
+  group: vdl-classics-expansion-r2
+  cancel-in-progress: false
+jobs:
+  archive:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 150
+    env:
+      R2_ACCOUNT_ID: ${{ secrets.R2_ACCOUNT_ID }}
+      R2_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
+      R2_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
+      R2_BUCKET: ${{ secrets.R2_BUCKET }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install 'boto3>=1.36,<2'
+      - run: python -m py_compile scripts/download-classics-r2.py
+      - run: python scripts/test-expand-classics-r2.py
+      - name: Archivar originales sin esperar al índice
+        env:
+          LIMIT: ${{ inputs.limite || '0' }}
+        run: python -u scripts/download-classics-r2.py --workers 12 --limit "$LIMIT"
