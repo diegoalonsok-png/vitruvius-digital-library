@@ -207,9 +207,8 @@ def procesar(o, ctx):
                         raise RuntimeError("No se pudo comprobar el objeto R2: " + key) from exc
                     existentes[key] = None
             recuperada = any(existentes.values())
-            if recuperada and not all(existentes.values()):
-                raise ValueError("Ingesta R2 incompleta; no sobrescribir objetos existentes: " + o["id"])
-            if recuperada:
+            completa = all(existentes.values())
+            if completa:
                 esperado = existentes[clave_pdf].get("Metadata", {}).get("sha256")
                 if esperado != sha:
                     raise ValueError("El PDF existente en R2 no coincide con SHA-256 de la edición: " + o["id"])
@@ -234,12 +233,25 @@ def procesar(o, ctx):
                 methods = recuperado.get("metodosPagina") or methods
                 con_texto = sum(1 for t in paginas if len(t.strip()) > 200)
             else:
-                s3.put_object(Bucket=BUCKET, Key=clave_pdf, Body=datos, ContentType="application/pdf",
-                              CacheControl="public, max-age=31536000", Metadata={"sha256": sha, "ia": ident})
-                s3.put_object(Bucket=BUCKET, Key=clave_txt, Body=texto, ContentType="application/json; charset=utf-8",
-                              CacheControl="public, max-age=86400")
-                s3.put_object(Bucket=BUCKET, Key=clave_indice, Body=index_data, ContentType="application/json; charset=utf-8",
-                              CacheControl="public, max-age=86400")
+                # Completar una tanda interrumpida únicamente cuando los objetos
+                # existentes coinciden byte por byte con la edición regenerada.
+                # Verificar todos los presentes antes de escribir cualquier faltante.
+                objetos = (
+                    (clave_pdf, datos, "application/pdf", "public, max-age=31536000", {"sha256": sha, "ia": ident}),
+                    (clave_txt, texto, "application/json; charset=utf-8", "public, max-age=86400", {}),
+                    (clave_indice, index_data, "application/json; charset=utf-8", "public, max-age=86400", {}),
+                )
+                for key, payload, _, _, _ in objetos:
+                    if existentes[key]:
+                        anterior = get(PUBLICO + "/" + key, binario=True, timeout=600)
+                        if hashlib.sha256(anterior).digest() != hashlib.sha256(payload).digest():
+                            raise ValueError("Ingesta parcial incompatible; conservar objeto existente: " + key)
+                for key, payload, mime, cache, metadata in objetos:
+                    if not existentes[key]:
+                        # La precondición impide sobrescrituras incluso si otro
+                        # proceso crea el objeto entre HEAD y PUT.
+                        s3.put_object(Bucket=BUCKET, Key=key, Body=payload, ContentType=mime,
+                                      CacheControl=cache, Metadata=metadata, IfNoneMatch="*")
             # Verificar los tres objetos públicos antes de incorporar su ficha.
             for key, payload in ((clave_txt, texto), (clave_indice, index_data)):
                 verified = get(PUBLICO + "/" + key, binario=True)
