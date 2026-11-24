@@ -1,6 +1,6 @@
 {
  "schema": "vdl-classics-translation-manifest-v1",
- "generated": "2026-11-24T06:30:29.111140+00:00",
+ "generated": "2026-11-24T19:08:10.365117+00:00",
  "method": "Traducciones humanas TEI licenciadas y publicadas en R2 con SHA-256, índice literal por pasaje, sin alineación automática",
  "editions": [
   {
@@ -931,6 +931,98 @@
    ],
    "indexUrl": "https://libros.vitruvius-digital-library.org/corpus/indice/traducciones/cts-phi0474-phi008-en-cda48af4d009bb6b.json",
    "indexSha256": "cda48af4d009bb6b5cfa1a2dbd405913ac11756c717b8b1c9f1b94650e4f41a6"
+  },
+  {
+   "workId": "cts-phi0474-phi001",
+   "author": "Cicerón",
+   "title": "Pro P. Quinctio",
+   "language": "en",
+   "filename": "cts-phi0474-phi001-en-44f3ecf9cc44cad9.json",
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0474-phi001-en-44f3ecf9cc44cad9.json",
+   "sha256": "44f3ecf9cc44cad98bdab858165f7ebe0649a2eaeccc45106f30b2decbb924cb",
+   "passages": 114,
+   "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0474/phi001/phi0474.phi001.perseus-eng2.xml",
+   "sourceUrn": "urn:cts:latinLit:phi0474.phi001.perseus-eng2",
+   "sourceSha256": "6bf4c37b3cba2fa8d7b960cb50136a607c5b1e6354014c95c0a07a4991ad5c1b",
+   "sourceArchived": "https://libros.vitruvius-digital-library.org/corpus/fuentes/6bf4c37b3cba2fa8d7b960cb50136a607c5b1e6354014c95c0a07a4991ad5c1b.xml",
+   "translators": [
+    "Charles Duke Yonge"
+   ],
+   "publicationYear": 1856,
+   "license": [
+    "https://creativecommons.org/licenses/by-sa/4.0/"
+   ],
+   "indexUrl": "https://libros.vitruvius-digital-library.org/corpus/indice/traducciones/cts-phi0474-phi001-en-22da24a976019f9f.json",
+   "indexSha256": "22da24a976019f9f957d6e4ebeb3fd002ee408f7c6b425de539e4c2886be5d12"
+  },
+  {
+   "workId": "cts-phi0474-phi002",
+   "author": "Cicerón",
+   "title": "Pro S. Roscio Amerino",
+   "language": "en",
+   "filename": "cts-phi0474-phi002-en-2198ca140492a353.json",
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0474-phi002-en-2198ca140492a353.json",
+   "sha256": "2198ca140492a353f9e39cbd4d64b7ac21357807671c1cc3c087894a13a1dfcf",
+   "passages": 169,
+   "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0474/phi002/phi0474.phi002.perseus-eng2.xml",
+   "sourceUrn": "urn:cts:latinLit:phi0474.phi002.perseus-eng2",
+   "sourceSha256": "607f86e4afddea0bde9c4ccb68bf6f97b930045d9360b54f713f4c34f3f27e6f",
+   "sourceArchived": "https://libros.vitruvius-digital-library.org/corpus/fuentes/607f86e4afddea0bde9c4ccb68bf6f97b930045d9360b54f713f4c34f3f27e6f.xml",
+   "translators": [
+    "Charles Duke Yonge"
+   ],
+   "publicationYear": 1856,
+   "license": [
+    "https://creativecommons.org/licenses/by-sa/4.0/"
+   ],
+   "indexUrl": "https://libros.vitruvius-digital-library.org/corpus/indice/traducciones/cts-phi0474-phi002-en-397af6b1ffd2ab43.json",
+   "indexSha256": "397af6b1ffd2ab435e0807de49c363c462559620a02d74c68f7764d8089a1e24"
+  },
+  {
+   "workId": "cts-phi0474-phi003",
+   "author": "Cicerón",
+   "title": "Pro Q. Roscio Comoedo",
+   "language": "en",
+   "filename": "cts-phi0474-phi003-en-d1476b9d7c6b61fb.json",
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0474-phi003-en-d1476b9d7c6b61fb.json",
+   "sha256": "d1476b9d7c6b61fbf23fd8ced2de4669e3e21919fb7652b64ac0ff5db6704239",
+   "passages": 67,
+   "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0474/phi003/phi0474.phi003.perseus-eng2.xml",
+   "sourceUrn": "urn:cts:latinLit:phi0474.phi003.perseus-eng2",
+   "sourceSha256": "6bff2f131dbcc29b31e951be5487f5e061a628fb97b44e6bab1e02b69adb3745",
+   "sourceArchived": "https://libros.vitruvius-digital-library.org/corpus/fuentes/6bff2f131dbcc29b31e951be5487f5e061a628fb97b44e6bab1e02b69adb3745.xml",
+   "translators": [
+    "Charles Duke Yonge"
+   ],
+   "publicationYear": 1856,
+   "license": [
+    "https://creativecommons.org/licenses/by-sa/4.0/"
+   ],
+   "indexUrl": "https://libros.vitruvius-digital-library.org/corpus/indice/traducciones/cts-phi0474-phi003-en-42d7360e5a7b273f.json",
+   "indexSha256": "42d7360e5a7b273fc4e1998b84ebdd9f04cac956b749ed2c53620237a9c930aa"
+  },
+  {
+   "workId": "cts-phi0474-phi004",
+   "author": "Cicerón",
+   "title": "Divinatio in Q. Caecilium",
+   "language": "en",
+   "filename": "cts-phi0474-phi004-en-2645b0749332eacc.json",
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0474-phi004-en-2645b0749332eacc.json",
+   "sha256": "2645b0749332eaccecb8aaa32a1b811dcd9ec9df379e571194f543d0e40f6a00",
+   "passages": 87,
+   "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0474/phi004/phi0474.phi004.perseus-eng2.xml",
+   "sourceUrn": "urn:cts:latinLit:phi0474.phi004.perseus-eng2",
+   "sourceSha256": "158f1364400544af4832bf6055cbf0422999d5a8d643c8b13606a4ef95d1072b",
+   "sourceArchived": "https://libros.vitruvius-digital-library.org/corpus/fuentes/158f1364400544af4832bf6055cbf0422999d5a8d643c8b13606a4ef95d1072b.xml",
+   "translators": [
+    "Charles Duke Yonge"
+   ],
+   "publicationYear": 1856,
+   "license": [
+    "https://creativecommons.org/licenses/by-sa/4.0/"
+   ],
+   "indexUrl": "https://libros.vitruvius-digital-library.org/corpus/indice/traducciones/cts-phi0474-phi004-en-dd8a453e79f3e3a9.json",
+   "indexSha256": "dd8a453e79f3e3a958a094ee0d82f983d289222eaa1480a60b5b3df679ac7c5a"
   }
  ],
  "lastDeferred": [
@@ -1044,6 +1136,18 @@
   },
   {
    "workId": "cts-ogl0001-ogl001",
+   "reason": "No hay traducción TEI descargable en Perseus"
+  },
+  {
+   "workId": "cts-phi0426-phi001",
+   "reason": "Sin traducción publicable: phi0426.phi001.perseus-eng1.xml: Edición histórica anterior a 1931 no acreditada"
+  },
+  {
+   "workId": "cts-phi0428-phi001",
+   "reason": "Sin traducción publicable: phi0428.phi001.perseus-eng1.xml: Edición histórica anterior a 1931 no acreditada"
+  },
+  {
+   "workId": "cts-phi0430-phi001",
    "reason": "No hay traducción TEI descargable en Perseus"
   }
  ],
