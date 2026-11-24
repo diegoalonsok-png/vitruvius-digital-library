@@ -78,8 +78,8 @@ def main():
             receipt=json.loads(s3.get_object(Bucket=bucket,Key=receipt_key)["Body"].read())
             if receipt["sourceUrl"] != url or receipt["workId"] != group["workId"]:
                 raise ValueError("Receipt identity mismatch")
-            raw=s3.get_object(Bucket=bucket,Key=receipt["key"])["Body"].read()
-            if exp.digest(raw)!=receipt["sha256"]:
+            head=s3.head_object(Bucket=bucket,Key=receipt["key"])
+            if head.get("Metadata",{}).get("sha256")!=receipt["sha256"] or head.get("ContentLength")!=receipt["bytes"]:
                 raise ValueError("Archived source hash mismatch")
             return "reused",group["workId"]
         except ClientError as e:
@@ -95,7 +95,14 @@ def main():
                  "key":key,"sha256":sha,"bytes":len(raw),"indexStatus":"pending"}
         immutable(s3,bucket,receipt_key,exp.packed(receipt),"application/json")
         return ("archived" if new else "reused"),group["workId"]
-    jobs=[(g,c) for g in groups for c in g["sources"]]
+    # Prefer one original per work before additional editions.
+    jobs=[(g,g["sources"][0]) for g in groups if g["sources"]]
+    jobs.extend((g,c) for g in groups for c in g["sources"][1:])
+    # List existing receipts once rather than downloading each archived book.
+    existing=set()
+    for page in s3.get_paginator("list_objects_v2").paginate(Bucket=bucket,Prefix="ingest/tei-receipts/"):
+        existing.update(o["Key"] for o in page.get("Contents",[]))
+    jobs.sort(key=lambda pair: "ingest/tei-receipts/"+exp.digest(pair[1]["original"].encode())+".json" in existing)
     if args.limit:
         jobs=jobs[:args.limit]
     archived=set()
