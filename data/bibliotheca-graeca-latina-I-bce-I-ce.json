@@ -16536,7 +16536,110 @@
    "localEditionLanguages": [
     "en",
     "grc"
-   ]
+   ],
+   "localVersions": [
+    {
+     "language": "grc",
+     "path": "data/classics-corpus/aeschylus-oresteia-grc.json",
+     "label": "Versión conservada antes de la ampliación R2"
+    },
+    {
+     "language": "grc",
+     "path": "https://libros.vitruvius-digital-library.org/corpus/aeschylus-oresteia-grc-68452dc0d78a49ec.json",
+     "label": "Edición original grc · urn:cts:greekLit:tlg0085.tlg005.perseus-grc2, urn:cts:greekLit:tlg0085.tlg006.perseus-grc2, urn:cts:greekLit:tlg0085.tlg007.perseus-grc2",
+     "reader": "classics-text-reader.html?work=aeschylus-oresteia&lang=grc&edition=68452dc0d78a49ec",
+     "sourceUrns": [
+      "urn:cts:greekLit:tlg0085.tlg005.perseus-grc2",
+      "urn:cts:greekLit:tlg0085.tlg006.perseus-grc2",
+      "urn:cts:greekLit:tlg0085.tlg007.perseus-grc2"
+     ],
+     "sha256": "68452dc0d78a49ec4e46eefba83dd6bd55a650a62cf1c32087f056a57f070564"
+    }
+   ],
+   "indexedEdition": {
+    "sources": [
+     {
+      "title": "Ἀγαμέμνων",
+      "titleLanguage": "grc",
+      "author": "Aeschylus",
+      "editors": [
+       "Herbert Weir Smyth"
+      ],
+      "bibliography": "Aeschylus Aeschylus Herbert Weir Smyth New York London William Heinemann G.P. Putnam's Sons 1926 2 Internet Archive",
+      "licences": [
+       {
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+       }
+      ],
+      "editionUrn": "urn:cts:greekLit:tlg0085.tlg005.perseus-grc2",
+      "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0085/tlg005/tlg0085.tlg005.perseus-grc2.xml",
+      "sourceSha256": "c8f5651422eb973d127453dae1fe879284da8a8c10d9c1f0f31e087aa1603613",
+      "sourceReferences": [
+       "https://archive.org/details/aeschyluswitheng02aescuoft/page/6/mode/2up"
+      ],
+      "publicationYear": "1926",
+      "publisher": "William Heinemann",
+      "publicationPlace": "New York",
+      "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/c8f5651422eb973d127453dae1fe879284da8a8c10d9c1f0f31e087aa1603613.xml"
+     },
+     {
+      "title": "Χοηφóρoι",
+      "titleLanguage": "grc",
+      "author": "Aeschylus",
+      "editors": [
+       "Herbert Weir Smyth"
+      ],
+      "bibliography": "Aeschylus Aeschylus Herbert Weir Smyth New York London William Heinemann G.P. Putnam's Sons 1926 2 Internet Archive",
+      "licences": [
+       {
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+       }
+      ],
+      "editionUrn": "urn:cts:greekLit:tlg0085.tlg006.perseus-grc2",
+      "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0085/tlg006/tlg0085.tlg006.perseus-grc2.xml",
+      "sourceSha256": "b36ecb56239ca106944bee5b9821fd97b3eafe75c3983e7a6bb3b955f825bb3a",
+      "sourceReferences": [
+       "https://archive.org/details/aeschyluswitheng02aescuoft/page/158/mode/2up"
+      ],
+      "publicationYear": "1926",
+      "publisher": "William Heinemann",
+      "publicationPlace": "New York",
+      "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/b36ecb56239ca106944bee5b9821fd97b3eafe75c3983e7a6bb3b955f825bb3a.xml"
+     },
+     {
+      "title": "Εὐμενίδες",
+      "titleLanguage": "grc",
+      "author": "Aeschylus",
+      "editors": [
+       "Herbert Weir Smyth"
+      ],
+      "bibliography": "Aeschylus Aeschylus Herbert Weir Smyth New York London William Heinemann G.P. Putnam's Sons 1926 2 Internet Archive",
+      "licences": [
+       {
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+       }
+      ],
+      "editionUrn": "urn:cts:greekLit:tlg0085.tlg007.perseus-grc2",
+      "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0085/tlg007/tlg0085.tlg007.perseus-grc2.xml",
+      "sourceSha256": "e8a0b8d4de87b3b0933bbce841e980fd575ae2e293f6c534ffb59e83e8d6703d",
+      "sourceReferences": [
+       "https://archive.org/details/aeschyluswitheng02aescuoft/page/272/mode/2up"
+      ],
+      "publicationYear": "1926",
+      "publisher": "William Heinemann",
+      "publicationPlace": "New York",
+      "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/e8a0b8d4de87b3b0933bbce841e980fd575ae2e293f6c534ffb59e83e8d6703d.xml"
+     }
+    ],
+    "sha256": "68452dc0d78a49ec4e46eefba83dd6bd55a650a62cf1c32087f056a57f070564",
+    "passages": 650,
+    "characters": 127078,
+    "bytes": 353278,
+    "url": "https://libros.vitruvius-digital-library.org/corpus/aeschylus-oresteia-grc-68452dc0d78a49ec.json"
+   }
   },
   {
    "id": "sophocles-oedipus",
@@ -16952,6 +17055,21 @@
      "path": "classics-text-reader.html?work=aristophanes-clouds&lang=en",
      "kind": "historical-translation",
      "citationChicago18": "Aristófanes. Νεφέλαι. Translated by William James Hickie. Bohn, London, 1853. Perseus Digital Library, TEI."
+    },
+    {
+     "language": "grc",
+     "path": "data/classics-corpus/aristophanes-clouds-grc.json",
+     "label": "Versión conservada antes de la ampliación R2"
+    },
+    {
+     "language": "grc",
+     "path": "https://libros.vitruvius-digital-library.org/corpus/aristophanes-clouds-grc-32a7488fccca60d5.json",
+     "label": "Edición original grc · urn:cts:greekLit:tlg0019.tlg003.perseus-grc2",
+     "reader": "classics-text-reader.html?work=aristophanes-clouds&lang=grc&edition=32a7488fccca60d5",
+     "sourceUrns": [
+      "urn:cts:greekLit:tlg0019.tlg003.perseus-grc2"
+     ],
+     "sha256": "32a7488fccca60d59760159c1a86be07be0f7b71bef4655a1c5561472f3c448e"
     }
    ],
    "century": "V a. C.",
@@ -17033,7 +17151,43 @@
    "localEditionLanguages": [
     "en",
     "grc"
-   ]
+   ],
+   "indexedEdition": {
+    "sources": [
+     {
+      "title": "Νεφέλαι",
+      "titleLanguage": "grc",
+      "author": "Aristophanes",
+      "editors": [
+       "F. W. Hall",
+       "William M. Geldart",
+       "W. M. Geldart"
+      ],
+      "bibliography": "Aristophanes Aristophanis Comoediae F. W. Hall William M. Geldart Oxford Clarendon Press 1906 1 Internet Archive",
+      "licences": [
+       {
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+       }
+      ],
+      "editionUrn": "urn:cts:greekLit:tlg0019.tlg003.perseus-grc2",
+      "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0019/tlg003/tlg0019.tlg003.perseus-grc2.xml",
+      "sourceSha256": "3d9c06744ef2620192e4ebb247578da3d9da442405b955aec5b41e07b09269a5",
+      "sourceReferences": [
+       "https://archive.org/details/aristophaniscomo01arisuoft/page/n127/mode/2up"
+      ],
+      "publicationYear": "1906",
+      "publisher": "Clarendon Press",
+      "publicationPlace": "Oxford",
+      "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/3d9c06744ef2620192e4ebb247578da3d9da442405b955aec5b41e07b09269a5.xml"
+     }
+    ],
+    "sha256": "32a7488fccca60d59760159c1a86be07be0f7b71bef4655a1c5561472f3c448e",
+    "passages": 662,
+    "characters": 66222,
+    "bytes": 237103,
+    "url": "https://libros.vitruvius-digital-library.org/corpus/aristophanes-clouds-grc-32a7488fccca60d5.json"
+   }
   },
   {
    "id": "herodotus-historiae",
@@ -18918,6 +19072,21 @@
      "path": "classics-text-reader.html?work=aeschylus-persae&lang=en",
      "kind": "historical-translation",
      "citationChicago18": "Esquilo. Πέρσαι. Translated by Herbert Weir Smyth. William Heinemann / G. P. Putnam's Sons, 1922. Perseus Digital Library, TEI."
+    },
+    {
+     "language": "grc",
+     "path": "data/classics-corpus/aeschylus-persae-grc.json",
+     "label": "Versión conservada antes de la ampliación R2"
+    },
+    {
+     "language": "grc",
+     "path": "https://libros.vitruvius-digital-library.org/corpus/aeschylus-persae-grc-0e20dfd894408e18.json",
+     "label": "Edición original grc · urn:cts:greekLit:tlg0085.tlg002.perseus-grc2",
+     "reader": "classics-text-reader.html?work=aeschylus-persae&lang=grc&edition=0e20dfd894408e18",
+     "sourceUrns": [
+      "urn:cts:greekLit:tlg0085.tlg002.perseus-grc2"
+     ],
+     "sha256": "0e20dfd894408e18901b447599936a16d8f04fc856e6a361642df9bc364ee92f"
     }
    ],
    "indexationAudit": {
@@ -19008,7 +19177,42 @@
    "localEditionLanguages": [
     "en",
     "grc"
-   ]
+   ],
+   "indexedEdition": {
+    "sources": [
+     {
+      "title": "Πέρσαι",
+      "titleLanguage": "grc",
+      "author": "Aeschylus",
+      "editors": [
+       "Herbert Weir Smyth"
+      ],
+      "bibliography": "Aeschylus Aeschylus Suppliant Maidens Persians Prometheus Seven Against Thebes Herbert Weir Smyth New York London William Heinemann G.P. Putnam's Sons 1922 1 HathiTrust Internet Archive",
+      "licences": [
+       {
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+       }
+      ],
+      "editionUrn": "urn:cts:greekLit:tlg0085.tlg002.perseus-grc2",
+      "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0085/tlg002/tlg0085.tlg002.perseus-grc2.xml",
+      "sourceSha256": "8e528d9aeeab17a95749570e26ad649c24ee0e36b06adc24be1caed0097d613a",
+      "sourceReferences": [
+       "https://hdl.handle.net/2027/uc1.32106006136839?urlappend=%3Bseq=156%3Bownerid=9007199263410116-160",
+       "https://archive.org/details/L145AeschylusISuppliantPersiansPrometheusSevenAgainstThebes/page/106/mode/2up"
+      ],
+      "publicationYear": "1922",
+      "publisher": "William Heinemann",
+      "publicationPlace": "New York",
+      "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/8e528d9aeeab17a95749570e26ad649c24ee0e36b06adc24be1caed0097d613a.xml"
+     }
+    ],
+    "sha256": "0e20dfd894408e18901b447599936a16d8f04fc856e6a361642df9bc364ee92f",
+    "passages": 211,
+    "characters": 35098,
+    "bytes": 103393,
+    "url": "https://libros.vitruvius-digital-library.org/corpus/aeschylus-persae-grc-0e20dfd894408e18.json"
+   }
   },
   {
    "id": "aeschylus-seven-thebes",
@@ -19077,6 +19281,21 @@
      "path": "classics-text-reader.html?work=aeschylus-seven-thebes&lang=en",
      "kind": "historical-translation",
      "citationChicago18": "Esquilo. Ἑπτὰ ἐπὶ Θήβας. Translated by Herbert Weir Smyth. William Heinemann / G. P. Putnam's Sons, 1922. Perseus Digital Library, TEI."
+    },
+    {
+     "language": "grc",
+     "path": "data/classics-corpus/aeschylus-seven-thebes-grc.json",
+     "label": "Versión conservada antes de la ampliación R2"
+    },
+    {
+     "language": "grc",
+     "path": "https://libros.vitruvius-digital-library.org/corpus/aeschylus-seven-thebes-grc-1701da4a7a820dd6.json",
+     "label": "Edición original grc · urn:cts:greekLit:tlg0085.tlg004.perseus-grc2",
+     "reader": "classics-text-reader.html?work=aeschylus-seven-thebes&lang=grc&edition=1701da4a7a820dd6",
+     "sourceUrns": [
+      "urn:cts:greekLit:tlg0085.tlg004.perseus-grc2"
+     ],
+     "sha256": "1701da4a7a820dd6acca925f523a629e2914e6ce380faa417a2589e8f7553f48"
     }
    ],
    "indexationAudit": {
@@ -19167,7 +19386,42 @@
    "localEditionLanguages": [
     "en",
     "grc"
-   ]
+   ],
+   "indexedEdition": {
+    "sources": [
+     {
+      "title": "Ἑπτὰ ἐπὶ Θήβας",
+      "titleLanguage": "grc",
+      "author": "Aeschylus",
+      "editors": [
+       "Herbert Weir Smyth"
+      ],
+      "bibliography": "Aeschylus Aeschylus Suppliant Maidens Persians Prometheus Seven Against Thebes Herbert Weir Smyth New York London William Heinemann G.P. Putnam's Sons 1922 1 HathiTrust Internet Archive",
+      "licences": [
+       {
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+       }
+      ],
+      "editionUrn": "urn:cts:greekLit:tlg0085.tlg004.perseus-grc2",
+      "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0085/tlg004/tlg0085.tlg004.perseus-grc2.xml",
+      "sourceSha256": "467c79aaf0a1a509bf301dd5cb3bae727064fee6fd078b19851d3a325a43d738",
+      "sourceReferences": [
+       "https://hdl.handle.net/2027/uc1.32106006136839?urlappend=%3Bseq=368%3Bownerid=9007199263390187-372",
+       "https://archive.org/details/L145AeschylusISuppliantPersiansPrometheusSevenAgainstThebes/page/317/"
+      ],
+      "publicationYear": "1922",
+      "publisher": "William Heinemann",
+      "publicationPlace": "New York",
+      "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/467c79aaf0a1a509bf301dd5cb3bae727064fee6fd078b19851d3a325a43d738.xml"
+     }
+    ],
+    "sha256": "1701da4a7a820dd6acca925f523a629e2914e6ce380faa417a2589e8f7553f48",
+    "passages": 191,
+    "characters": 34887,
+    "bytes": 99803,
+    "url": "https://libros.vitruvius-digital-library.org/corpus/aeschylus-seven-thebes-grc-1701da4a7a820dd6.json"
+   }
   },
   {
    "id": "aeschylus-suppliants",
@@ -19236,6 +19490,21 @@
      "path": "classics-text-reader.html?work=aeschylus-suppliants&lang=en",
      "kind": "historical-translation",
      "citationChicago18": "Esquilo. Ἱκέτιδες. Translated by Herbert Weir Smyth. William Heinemann / G. P. Putnam's Sons, 1922. Perseus Digital Library, TEI."
+    },
+    {
+     "language": "grc",
+     "path": "data/classics-corpus/aeschylus-suppliants-grc.json",
+     "label": "Versión conservada antes de la ampliación R2"
+    },
+    {
+     "language": "grc",
+     "path": "https://libros.vitruvius-digital-library.org/corpus/aeschylus-suppliants-grc-5e026ec0f3700666.json",
+     "label": "Edición original grc · urn:cts:greekLit:tlg0085.tlg001.perseus-grc2",
+     "reader": "classics-text-reader.html?work=aeschylus-suppliants&lang=grc&edition=5e026ec0f3700666",
+     "sourceUrns": [
+      "urn:cts:greekLit:tlg0085.tlg001.perseus-grc2"
+     ],
+     "sha256": "5e026ec0f37006668beae4bf4bb59aa96654c83849820b3fb18d604dcac3570c"
     }
    ],
    "indexationAudit": {
@@ -19306,7 +19575,42 @@
    "localEditionLanguages": [
     "en",
     "grc"
-   ]
+   ],
+   "indexedEdition": {
+    "sources": [
+     {
+      "title": "Ἱκέτιδες",
+      "titleLanguage": "grc",
+      "author": "Aeschylus",
+      "editors": [
+       "Herbert Weir Smyth"
+      ],
+      "bibliography": "Aeschylus Aeschylus Suppliant Maidens Persians Prometheus Seven Against Thebes Herbert Weir Smyth New York London William Heinemann G.P. Putnam's Sons 1922 1 HathiTrust Internet Archive",
+      "licences": [
+       {
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+       }
+      ],
+      "editionUrn": "urn:cts:greekLit:tlg0085.tlg001.perseus-grc2",
+      "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0085/tlg001/tlg0085.tlg001.perseus-grc2.xml",
+      "sourceSha256": "fbe9cd6ac4caaed8465ca75daeca66ee2ea9bda946f99ded6aeaa0fb1f1ef061",
+      "sourceReferences": [
+       "https://hdl.handle.net/2027/uc1.32106006136839?urlappend=%3Bseq=51%3Bownerid=9007199263410116-55",
+       "https://archive.org/details/L145AeschylusISuppliantPersiansPrometheusSevenAgainstThebes/page/n40/"
+      ],
+      "publicationYear": "1922",
+      "publisher": "William Heinemann",
+      "publicationPlace": "New York",
+      "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/fbe9cd6ac4caaed8465ca75daeca66ee2ea9bda946f99ded6aeaa0fb1f1ef061.xml"
+     }
+    ],
+    "sha256": "5e026ec0f37006668beae4bf4bb59aa96654c83849820b3fb18d604dcac3570c",
+    "passages": 236,
+    "characters": 33606,
+    "bytes": 104480,
+    "url": "https://libros.vitruvius-digital-library.org/corpus/aeschylus-suppliants-grc-5e026ec0f3700666.json"
+   }
   },
   {
    "id": "aeschylus-prometheus",
@@ -19368,6 +19672,21 @@
      "path": "classics-text-reader.html?work=aeschylus-prometheus&lang=en",
      "kind": "historical-translation",
      "citationChicago18": "Esquilo (atribución debatida). Προμηθεὺς Δεσμώτης. Translated by Herbert Weir Smyth. William Heinemann / G. P. Putnam's Sons, 1922. Perseus Digital Library, TEI."
+    },
+    {
+     "language": "grc",
+     "path": "data/classics-corpus/aeschylus-prometheus-grc.json",
+     "label": "Versión conservada antes de la ampliación R2"
+    },
+    {
+     "language": "grc",
+     "path": "https://libros.vitruvius-digital-library.org/corpus/aeschylus-prometheus-grc-221f9a88108f89dc.json",
+     "label": "Edición original grc · urn:cts:greekLit:tlg0085.tlg003.perseus-grc2",
+     "reader": "classics-text-reader.html?work=aeschylus-prometheus&lang=grc&edition=221f9a88108f89dc",
+     "sourceUrns": [
+      "urn:cts:greekLit:tlg0085.tlg003.perseus-grc2"
+     ],
+     "sha256": "221f9a88108f89dc0658f137cc9697a7ca0a020d1c7987ac46f0b49076fdfab5"
     }
    ],
    "indexationAudit": {
@@ -19438,7 +19757,41 @@
    "localEditionLanguages": [
     "en",
     "grc"
-   ]
+   ],
+   "indexedEdition": {
+    "sources": [
+     {
+      "title": "Προμηθεὺς δεσμώτης",
+      "titleLanguage": "grc",
+      "author": "Aeschylus",
+      "editors": [
+       "Herbert Weir Smyth"
+      ],
+      "bibliography": "Aeschylus Aeschylus Suppliant Maidens Persians Prometheus Seven Against Thebes Herbert Weir Smyth New York London William Heinemann G.P. Putnam's Sons 1922 1 HathiTrust Internet Archive",
+      "licences": [
+       {
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+       }
+      ],
+      "editionUrn": "urn:cts:greekLit:tlg0085.tlg003.perseus-grc2",
+      "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0085/tlg003/tlg0085.tlg003.perseus-grc2.xml",
+      "sourceSha256": "21c74dd89473bd9a2c6442a3efb224e61e71941d34c3dfd1b940bd85eba59896",
+      "sourceReferences": [
+       "https://hdl.handle.net/2027/uc1.32106006136839?urlappend=%3Bseq=260%3Bownerid=9007199263390187-264"
+      ],
+      "publicationYear": "1922",
+      "publisher": "William Heinemann",
+      "publicationPlace": "New York",
+      "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/21c74dd89473bd9a2c6442a3efb224e61e71941d34c3dfd1b940bd85eba59896.xml"
+     }
+    ],
+    "sha256": "221f9a88108f89dc0658f137cc9697a7ca0a020d1c7987ac46f0b49076fdfab5",
+    "passages": 219,
+    "characters": 39486,
+    "bytes": 113660,
+    "url": "https://libros.vitruvius-digital-library.org/corpus/aeschylus-prometheus-grc-221f9a88108f89dc.json"
+   }
   },
   {
    "id": "sophocles-antigone",
@@ -21943,7 +22296,60 @@
    "localEditionLanguages": [
     "en",
     "grc"
-   ]
+   ],
+   "localVersions": [
+    {
+     "language": "grc",
+     "path": "data/classics-corpus/aristophanes-aves-grc.json",
+     "label": "Versión conservada antes de la ampliación R2"
+    },
+    {
+     "language": "grc",
+     "path": "https://libros.vitruvius-digital-library.org/corpus/aristophanes-aves-grc-3cf416800db55aa7.json",
+     "label": "Edición original grc · urn:cts:greekLit:tlg0019.tlg006.perseus-grc2",
+     "reader": "classics-text-reader.html?work=aristophanes-aves&lang=grc&edition=3cf416800db55aa7",
+     "sourceUrns": [
+      "urn:cts:greekLit:tlg0019.tlg006.perseus-grc2"
+     ],
+     "sha256": "3cf416800db55aa75e601aa6f4240bcdaef448f73767089cf39977a324153f91"
+    }
+   ],
+   "indexedEdition": {
+    "sources": [
+     {
+      "title": "Ὄρνιθες",
+      "titleLanguage": "grc",
+      "author": "Aristophanes",
+      "editors": [
+       "F. W. Hall",
+       "William M. Geldart",
+       "W. M. Geldart"
+      ],
+      "bibliography": "Aristophanes Aristophanis Comoediae F. W. Hall William M. Geldart Oxford Clarendon Press 1906 1 Internet Archive",
+      "licences": [
+       {
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+       }
+      ],
+      "editionUrn": "urn:cts:greekLit:tlg0019.tlg006.perseus-grc2",
+      "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0019/tlg006/tlg0019.tlg006.perseus-grc2.xml",
+      "sourceSha256": "95d055d669b828652be993c1fdd85bc6aff703a3f82226db7541703214cae8df",
+      "sourceReferences": [
+       "https://archive.org/details/aristophaniscomo01arisuoft/page/n303/mode/2up"
+      ],
+      "publicationYear": "1906",
+      "publisher": "Clarendon Press",
+      "publicationPlace": "Oxford",
+      "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/95d055d669b828652be993c1fdd85bc6aff703a3f82226db7541703214cae8df.xml"
+     }
+    ],
+    "sha256": "3cf416800db55aa75e601aa6f4240bcdaef448f73767089cf39977a324153f91",
+    "passages": 752,
+    "characters": 72820,
+    "bytes": 264103,
+    "url": "https://libros.vitruvius-digital-library.org/corpus/aristophanes-aves-grc-3cf416800db55aa7.json"
+   }
   },
   {
    "id": "aristophanes-ranae",
@@ -22268,7 +22674,60 @@
    },
    "localEditionLanguages": [
     "grc"
-   ]
+   ],
+   "localVersions": [
+    {
+     "language": "grc",
+     "path": "data/classics-corpus/aristophanes-lysistrata-grc.json",
+     "label": "Versión conservada antes de la ampliación R2"
+    },
+    {
+     "language": "grc",
+     "path": "https://libros.vitruvius-digital-library.org/corpus/aristophanes-lysistrata-grc-128c0885128254f9.json",
+     "label": "Edición original grc · urn:cts:greekLit:tlg0019.tlg007.perseus-grc2",
+     "reader": "classics-text-reader.html?work=aristophanes-lysistrata&lang=grc&edition=128c0885128254f9",
+     "sourceUrns": [
+      "urn:cts:greekLit:tlg0019.tlg007.perseus-grc2"
+     ],
+     "sha256": "128c0885128254f9d46fe0bee4485d5eb756ddc76a48bc94ea8007b6770de77e"
+    }
+   ],
+   "indexedEdition": {
+    "sources": [
+     {
+      "title": "Λυσιστράτη",
+      "titleLanguage": "grc",
+      "author": "Aristophanes",
+      "editors": [
+       "F. W. Hall",
+       "William M. Geldart",
+       "W. M. Geldart"
+      ],
+      "bibliography": "Aristophanes Aristophanis Comoediae F. W. Hall William M. Geldart Oxford Clarendon Press 1907 2 Internet Archive",
+      "licences": [
+       {
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+       }
+      ],
+      "editionUrn": "urn:cts:greekLit:tlg0019.tlg007.perseus-grc2",
+      "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0019/tlg007/tlg0019.tlg007.perseus-grc2.xml",
+      "sourceSha256": "3a4cb4e7b9e2df324b6c841e97adb54d47e77f7a8bb2e099ccab12bb933538e9",
+      "sourceReferences": [
+       "https://archive.org/details/aristophaniscomo02arisuoft/page/n15/mode/2up"
+      ],
+      "publicationYear": "1907",
+      "publisher": "Clarendon Press",
+      "publicationPlace": "Oxford",
+      "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/3a4cb4e7b9e2df324b6c841e97adb54d47e77f7a8bb2e099ccab12bb933538e9.xml"
+     }
+    ],
+    "sha256": "128c0885128254f9d46fe0bee4485d5eb756ddc76a48bc94ea8007b6770de77e",
+    "passages": 565,
+    "characters": 54479,
+    "bytes": 198777,
+    "url": "https://libros.vitruvius-digital-library.org/corpus/aristophanes-lysistrata-grc-128c0885128254f9.json"
+   }
   },
   {
    "id": "aristophanes-vespae",
@@ -22573,7 +23032,60 @@
    },
    "localEditionLanguages": [
     "grc"
-   ]
+   ],
+   "localVersions": [
+    {
+     "language": "grc",
+     "path": "data/classics-corpus/aristophanes-pax-grc.json",
+     "label": "Versión conservada antes de la ampliación R2"
+    },
+    {
+     "language": "grc",
+     "path": "https://libros.vitruvius-digital-library.org/corpus/aristophanes-pax-grc-f40cba02c34e05c9.json",
+     "label": "Edición original grc · urn:cts:greekLit:tlg0019.tlg005.perseus-grc2",
+     "reader": "classics-text-reader.html?work=aristophanes-pax&lang=grc&edition=f40cba02c34e05c9",
+     "sourceUrns": [
+      "urn:cts:greekLit:tlg0019.tlg005.perseus-grc2"
+     ],
+     "sha256": "f40cba02c34e05c95bd390848a3afabde53bf72df184c2f6b0d5413cd746341a"
+    }
+   ],
+   "indexedEdition": {
+    "sources": [
+     {
+      "title": "Εἰρήνη",
+      "titleLanguage": "grc",
+      "author": "Aristophanes",
+      "editors": [
+       "F. W. Hall",
+       "William M. Geldart",
+       "W. M. Geldart"
+      ],
+      "bibliography": "Aristophanes Aristophanis Comoediae F. W. Hall William M. Geldart Oxford Clarendon Press 1906 1 Internet Archive",
+      "licences": [
+       {
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+       }
+      ],
+      "editionUrn": "urn:cts:greekLit:tlg0019.tlg005.perseus-grc2",
+      "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0019/tlg005/tlg0019.tlg005.perseus-grc2.xml",
+      "sourceSha256": "fa202ab499bb9168c5c99b8bdc821806944f04180a00befedc125c609521e1f4",
+      "sourceReferences": [
+       "https://archive.org/details/aristophaniscomo01arisuoft/page/n249/mode/2up"
+      ],
+      "publicationYear": "1906",
+      "publisher": "Clarendon Press",
+      "publicationPlace": "Oxford",
+      "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/fa202ab499bb9168c5c99b8bdc821806944f04180a00befedc125c609521e1f4.xml"
+     }
+    ],
+    "sha256": "f40cba02c34e05c95bd390848a3afabde53bf72df184c2f6b0d5413cd746341a",
+    "passages": 583,
+    "characters": 53963,
+    "bytes": 200726,
+    "url": "https://libros.vitruvius-digital-library.org/corpus/aristophanes-pax-grc-f40cba02c34e05c9.json"
+   }
   },
   {
    "id": "aristophanes-acharnenses",
@@ -22699,7 +23211,60 @@
    },
    "localEditionLanguages": [
     "grc"
-   ]
+   ],
+   "localVersions": [
+    {
+     "language": "grc",
+     "path": "data/classics-corpus/aristophanes-acharnenses-grc.json",
+     "label": "Versión conservada antes de la ampliación R2"
+    },
+    {
+     "language": "grc",
+     "path": "https://libros.vitruvius-digital-library.org/corpus/aristophanes-acharnenses-grc-7a9342b594e3cd6d.json",
+     "label": "Edición original grc · urn:cts:greekLit:tlg0019.tlg001.perseus-grc2",
+     "reader": "classics-text-reader.html?work=aristophanes-acharnenses&lang=grc&edition=7a9342b594e3cd6d",
+     "sourceUrns": [
+      "urn:cts:greekLit:tlg0019.tlg001.perseus-grc2"
+     ],
+     "sha256": "7a9342b594e3cd6d0fac57fc489a0cfc420790dbb18d2901b9313cb353ec3cb5"
+    }
+   ],
+   "indexedEdition": {
+    "sources": [
+     {
+      "title": "Ἀχαρνῆς",
+      "titleLanguage": "grc",
+      "author": "Aristophanes",
+      "editors": [
+       "F. W. Hall",
+       "William M. Geldart",
+       "W. M. Geldart"
+      ],
+      "bibliography": "Aristophanes Aristophanis Comoediae F. W. Hall William M. Geldart Oxford Clarendon Press 1906 1 Internet Archive",
+      "licences": [
+       {
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+       }
+      ],
+      "editionUrn": "urn:cts:greekLit:tlg0019.tlg001.perseus-grc2",
+      "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0019/tlg001/tlg0019.tlg001.perseus-grc2.xml",
+      "sourceSha256": "ddd552db45d25359c7173c237b698ee963a70bb030ca9d72929e880093c9bc90",
+      "sourceReferences": [
+       "https://archive.org/details/aristophaniscomo01arisuoft/page/n21/mode/2up"
+      ],
+      "publicationYear": "1906",
+      "publisher": "Clarendon Press",
+      "publicationPlace": "Oxford",
+      "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/ddd552db45d25359c7173c237b698ee963a70bb030ca9d72929e880093c9bc90.xml"
+     }
+    ],
+    "sha256": "7a9342b594e3cd6d0fac57fc489a0cfc420790dbb18d2901b9313cb353ec3cb5",
+    "passages": 489,
+    "characters": 49755,
+    "bytes": 176951,
+    "url": "https://libros.vitruvius-digital-library.org/corpus/aristophanes-acharnenses-grc-7a9342b594e3cd6d.json"
+   }
   },
   {
    "id": "plato-symposium",
@@ -63018,6 +63583,2164 @@
     "characters": 24793,
     "bytes": 63775,
     "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0014-tlg036-grc-13c5146ab1d23432.json"
+   }
+  },
+  {
+   "id": "cts-tlg5023-tlg010",
+   "author": "Escolios a Eurípides",
+   "title": "Vitae Euripidis",
+   "language": "grc",
+   "genre": "Corpus clásico ampliado",
+   "dating": "antigüedad tardía y Bizancio",
+   "reading": {
+    "url": "classics-text-reader.html?work=cts-tlg5023-tlg010&lang=grc&edition=4031d77df94d26f5",
+    "status": "Edición TEI alojada en R2 con búsqueda y traducción automática por pasaje"
+   },
+   "manuscript": {
+    "status": "Sin testimonio manuscrito individual asignado; la edición TEI se identifica por separado"
+   },
+   "pdf": {
+    "url": null,
+    "status": "No consta PDF ni facsímil individual verificado para esta edición"
+   },
+   "translation": {
+    "status": "Traducción automática de consulta por pasaje; no se atribuye a un traductor académico"
+   },
+   "links": {
+    "scaife": "https://scaife.perseus.org/library/urn:cts:greekLit:tlg5023.tlg010.1st1K-grc1/"
+   },
+   "aliases": [
+    "urn:cts:greekLit:tlg5023.tlg010.1st1K-grc1"
+   ],
+   "relatedWorkIds": [],
+   "catalogueProvenance": "Título y autor de los catálogos CTS del sitio; edición contrastada con su cabecera TEI. No se retrotraduce el título.",
+   "corpusFiles": {
+    "grc": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg5023-tlg010-grc-4031d77df94d26f5.json"
+   },
+   "localVersions": [
+    {
+     "language": "grc",
+     "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg5023-tlg010-grc-4031d77df94d26f5.json",
+     "label": "Edición original grc · urn:cts:greekLit:tlg5023.tlg010.1st1K-grc1",
+     "reader": "classics-text-reader.html?work=cts-tlg5023-tlg010&lang=grc&edition=4031d77df94d26f5",
+     "sourceUrns": [
+      "urn:cts:greekLit:tlg5023.tlg010.1st1K-grc1"
+     ],
+     "sha256": "4031d77df94d26f5c01009a725f24ccb5154dfb1816c5819cf869c94129a18d1"
+    }
+   ],
+   "publicStatus": "lectura-local-parcial",
+   "indexedEdition": {
+    "sources": [
+     {
+      "title": "Vitae Euripidis",
+      "titleLanguage": "lat",
+      "author": "Scholia in Euripidem",
+      "editors": [
+       "Wilhelm Dindorf"
+      ],
+      "bibliography": "Scholia Graeca in Euripidis tragoedias Wilhelm Dindorf Scholia in Euripidem Oxford University Press Oxford 1863 1 Internet Archive",
+      "licences": [
+       {
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+       }
+      ],
+      "editionUrn": "urn:cts:greekLit:tlg5023.tlg010.1st1K-grc1",
+      "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg5023/tlg010/tlg5023.tlg010.1st1K-grc1.xml",
+      "sourceSha256": "524827ab723c070fb019188c38d0a1f4b0ada4128a590ff913c0720f429b79a9",
+      "sourceReferences": [
+       "https://archive.org/details/scholiagraecaine01dind/page/16/mode/2up"
+      ],
+      "publicationYear": "1863",
+      "publisher": "Oxford University Press",
+      "publicationPlace": "Oxford",
+      "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/524827ab723c070fb019188c38d0a1f4b0ada4128a590ff913c0720f429b79a9.xml"
+     }
+    ],
+    "sha256": "4031d77df94d26f5c01009a725f24ccb5154dfb1816c5819cf869c94129a18d1",
+    "passages": 15,
+    "characters": 10369,
+    "bytes": 24620,
+    "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg5023-tlg010-grc-4031d77df94d26f5.json"
+   }
+  },
+  {
+   "id": "cts-tlg4193-tlg012",
+   "author": "Anonymi In Aristotelis Sophisticos Elenchos",
+   "title": "In Aristotelis Sophisticos Elenchos Paraphrasis",
+   "language": "grc",
+   "genre": "Corpus clásico ampliado",
+   "dating": "Datación no consignada en la fuente de catálogo",
+   "reading": {
+    "url": "classics-text-reader.html?work=cts-tlg4193-tlg012&lang=grc&edition=2335bbbfd73a3ca7",
+    "status": "Edición TEI alojada en R2 con búsqueda y traducción automática por pasaje"
+   },
+   "manuscript": {
+    "status": "Sin testimonio manuscrito individual asignado; la edición TEI se identifica por separado"
+   },
+   "pdf": {
+    "url": null,
+    "status": "No consta PDF ni facsímil individual verificado para esta edición"
+   },
+   "translation": {
+    "status": "Traducción automática de consulta por pasaje; no se atribuye a un traductor académico"
+   },
+   "links": {
+    "scaife": "https://scaife.perseus.org/library/urn:cts:greekLit:tlg4193.tlg012.1st1K-grc1/"
+   },
+   "aliases": [
+    "urn:cts:greekLit:tlg4193.tlg012.1st1K-grc1"
+   ],
+   "relatedWorkIds": [],
+   "catalogueProvenance": "Título y autor de los catálogos CTS del sitio; edición contrastada con su cabecera TEI. No se retrotraduce el título.",
+   "corpusFiles": {
+    "grc": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg4193-tlg012-grc-2335bbbfd73a3ca7.json"
+   },
+   "localVersions": [
+    {
+     "language": "grc",
+     "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg4193-tlg012-grc-2335bbbfd73a3ca7.json",
+     "label": "Edición original grc · urn:cts:greekLit:tlg4193.tlg012.1st1K-grc1",
+     "reader": "classics-text-reader.html?work=cts-tlg4193-tlg012&lang=grc&edition=2335bbbfd73a3ca7",
+     "sourceUrns": [
+      "urn:cts:greekLit:tlg4193.tlg012.1st1K-grc1"
+     ],
+     "sha256": "2335bbbfd73a3ca76d3b9e86439e934bb62dc4c5091ccdc947c31ba0ff3afb20"
+    }
+   ],
+   "publicStatus": "lectura-local-parcial",
+   "indexedEdition": {
+    "sources": [
+     {
+      "title": "In Aristotelis sophisticos elenchos paraphrasis",
+      "titleLanguage": "lat",
+      "author": "Anonymi in Aristotelis Sophisticos Elenchos",
+      "editors": [
+       "Michael Hayduck"
+      ],
+      "bibliography": "Michael Hayduck Anonymi in Aristotelis Sophisticos Elenchos Anonymi In Aristotelis sophisticos elenchos paraphrasis Reimer Berlin 1884 23 Internet Archive",
+      "licences": [
+       {
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+       }
+      ],
+      "editionUrn": "urn:cts:greekLit:tlg4193.tlg012.1st1K-grc1",
+      "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg4193/tlg012/tlg4193.tlg012.1st1K-grc1.xml",
+      "sourceSha256": "a750619900f67837dd853fea1e6d2de91e4f0def6afebe39196baa0fd24d9d12",
+      "sourceReferences": [],
+      "publicationYear": "1884",
+      "publisher": "Reimer",
+      "publicationPlace": "Berlin",
+      "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/a750619900f67837dd853fea1e6d2de91e4f0def6afebe39196baa0fd24d9d12.xml"
+     }
+    ],
+    "sha256": "2335bbbfd73a3ca76d3b9e86439e934bb62dc4c5091ccdc947c31ba0ff3afb20",
+    "passages": 107,
+    "characters": 173568,
+    "bytes": 366992,
+    "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg4193-tlg012-grc-2335bbbfd73a3ca7.json"
+   }
+  },
+  {
+   "id": "cts-tlg4033-tlg003",
+   "author": "Anonymi In Aristotelis Ethica Nicomachea",
+   "title": "In Ethica Nicomachea Paraphrasis (Pseudepigraphum Olim A Constantino Palaeocappa confectum et olim sub auctore Heliodoro\n    Prusensi vel Andronico Rhodio vel Olympiodoro)",
+   "language": "grc",
+   "genre": "Corpus clásico ampliado",
+   "dating": "Datación no consignada en la fuente de catálogo",
+   "reading": {
+    "url": "classics-text-reader.html?work=cts-tlg4033-tlg003&lang=grc&edition=9edae93646b25d71",
+    "status": "Edición TEI alojada en R2 con búsqueda y traducción automática por pasaje"
+   },
+   "manuscript": {
+    "status": "Sin testimonio manuscrito individual asignado; la edición TEI se identifica por separado"
+   },
+   "pdf": {
+    "url": null,
+    "status": "No consta PDF ni facsímil individual verificado para esta edición"
+   },
+   "translation": {
+    "status": "Traducción automática de consulta por pasaje; no se atribuye a un traductor académico"
+   },
+   "links": {
+    "scaife": "https://scaife.perseus.org/library/urn:cts:greekLit:tlg4033.tlg003.1st1K-grc1/"
+   },
+   "aliases": [
+    "urn:cts:greekLit:tlg4033.tlg003.1st1K-grc1"
+   ],
+   "relatedWorkIds": [],
+   "catalogueProvenance": "Título y autor de los catálogos CTS del sitio; edición contrastada con su cabecera TEI. No se retrotraduce el título.",
+   "corpusFiles": {
+    "grc": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg4033-tlg003-grc-9edae93646b25d71.json"
+   },
+   "localVersions": [
+    {
+     "language": "grc",
+     "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg4033-tlg003-grc-9edae93646b25d71.json",
+     "label": "Edición original grc · urn:cts:greekLit:tlg4033.tlg003.1st1K-grc1",
+     "reader": "classics-text-reader.html?work=cts-tlg4033-tlg003&lang=grc&edition=9edae93646b25d71",
+     "sourceUrns": [
+      "urn:cts:greekLit:tlg4033.tlg003.1st1K-grc1"
+     ],
+     "sha256": "9edae93646b25d712035dded5ea9583c187021f028a2ebb6266656dfab07a613"
+    }
+   ],
+   "publicStatus": "lectura-local-parcial",
+   "indexedEdition": {
+    "sources": [
+     {
+      "title": "In ethica Nicomachea paraphrasis",
+      "titleLanguage": "lat",
+      "author": "Anonymi In Aristotelis Ethica Nicomachea",
+      "editors": [
+       "Gustav Heylbut"
+      ],
+      "bibliography": "Gustav Heylbut Anonymi In Aristotelis Ethica Nicomachea Heliodori in Ethica Nicomachea Paraphrasis Reimer Berlin 1889 Commentaria in Aristotelem Graeca 19.2 Internet Archive",
+      "licences": [
+       {
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+       }
+      ],
+      "editionUrn": "urn:cts:greekLit:tlg4033.tlg003.1st1K-grc1",
+      "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg4033/tlg003/tlg4033.tlg003.1st1K-grc1.xml",
+      "sourceSha256": "eb48cc73370de303b5ac228c4f11bdecb058b42c695a2d8c94d6bd0dcd45b336",
+      "sourceReferences": [
+       "https://archive.org/details/commentariaina19pt12akaduoft"
+      ],
+      "publicationYear": "1889",
+      "publisher": "Reimer",
+      "publicationPlace": "Berlin",
+      "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/eb48cc73370de303b5ac228c4f11bdecb058b42c695a2d8c94d6bd0dcd45b336.xml"
+     }
+    ],
+    "sha256": "9edae93646b25d712035dded5ea9583c187021f028a2ebb6266656dfab07a613",
+    "passages": 303,
+    "characters": 578905,
+    "bytes": 1214818,
+    "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg4033-tlg003-grc-9edae93646b25d71.json"
+   }
+  },
+  {
+   "id": "cts-tlg5023-tlg001",
+   "author": "Escolios a Eurípides",
+   "title": "Scholia in Euripidem (scholia vetera)",
+   "language": "grc",
+   "genre": "Corpus clásico ampliado",
+   "dating": "antigüedad tardía y Bizancio",
+   "reading": {
+    "url": "classics-text-reader.html?work=cts-tlg5023-tlg001&lang=grc&edition=7162e45d235b6e32",
+    "status": "Edición TEI alojada en R2 con búsqueda y traducción automática por pasaje"
+   },
+   "manuscript": {
+    "status": "Sin testimonio manuscrito individual asignado; la edición TEI se identifica por separado"
+   },
+   "pdf": {
+    "url": null,
+    "status": "No consta PDF ni facsímil individual verificado para esta edición"
+   },
+   "translation": {
+    "status": "Traducción automática de consulta por pasaje; no se atribuye a un traductor académico"
+   },
+   "links": {
+    "scaife": "https://scaife.perseus.org/library/urn:cts:greekLit:tlg5023.tlg001.1st1K-grc1/"
+   },
+   "aliases": [
+    "urn:cts:greekLit:tlg5023.tlg001.1st1K-grc1"
+   ],
+   "relatedWorkIds": [],
+   "catalogueProvenance": "Título y autor de los catálogos CTS del sitio; edición contrastada con su cabecera TEI. No se retrotraduce el título.",
+   "corpusFiles": {
+    "grc": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg5023-tlg001-grc-7162e45d235b6e32.json"
+   },
+   "localVersions": [
+    {
+     "language": "grc",
+     "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg5023-tlg001-grc-7162e45d235b6e32.json",
+     "label": "Edición original grc · urn:cts:greekLit:tlg5023.tlg001.1st1K-grc1",
+     "reader": "classics-text-reader.html?work=cts-tlg5023-tlg001&lang=grc&edition=7162e45d235b6e32",
+     "sourceUrns": [
+      "urn:cts:greekLit:tlg5023.tlg001.1st1K-grc1"
+     ],
+     "sha256": "7162e45d235b6e32081c8ee7776b4d32c999b71d2522945f2d615b004790e135"
+    }
+   ],
+   "publicStatus": "lectura-local-parcial",
+   "indexedEdition": {
+    "sources": [
+     {
+      "title": "Scholia in Euripidem (scholia vetera)",
+      "titleLanguage": "lat",
+      "author": "Scholia in Euripidem",
+      "editors": [
+       "Eduard Schwartz"
+      ],
+      "bibliography": "Scholia in Euripidem Scholia in Euripidem Eduard Schwartz Berlin G. Reimer 1887 Internet Archive",
+      "licences": [
+       {
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+       }
+      ],
+      "editionUrn": "urn:cts:greekLit:tlg5023.tlg001.1st1K-grc1",
+      "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg5023/tlg001/tlg5023.tlg001.1st1K-grc1.xml",
+      "sourceSha256": "cf133518f0ffeb627776ec5f9d846ffc3907ed6f8142789c66c020420a90d4ba",
+      "sourceReferences": [
+       "https://archive.org/details/scholiaineuripi00schwgoog/page/n21/mode/1up"
+      ],
+      "publicationYear": "1887",
+      "publisher": "G. Reimer",
+      "publicationPlace": "Berlin",
+      "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/cf133518f0ffeb627776ec5f9d846ffc3907ed6f8142789c66c020420a90d4ba.xml"
+     }
+    ],
+    "sha256": "7162e45d235b6e32081c8ee7776b4d32c999b71d2522945f2d615b004790e135",
+    "passages": 7861,
+    "characters": 913029,
+    "bytes": 3093570,
+    "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg5023-tlg001-grc-7162e45d235b6e32.json"
+   }
+  },
+  {
+   "id": "cts-tlg5023-tlg011",
+   "author": "Escolios a Eurípides",
+   "title": "Scholia in Euripidis Rhesum",
+   "language": "grc",
+   "genre": "Corpus clásico ampliado",
+   "dating": "antigüedad tardía y Bizancio",
+   "reading": {
+    "url": "classics-text-reader.html?work=cts-tlg5023-tlg011&lang=grc&edition=51d49822dedae096",
+    "status": "Edición TEI alojada en R2 con búsqueda y traducción automática por pasaje"
+   },
+   "manuscript": {
+    "status": "Sin testimonio manuscrito individual asignado; la edición TEI se identifica por separado"
+   },
+   "pdf": {
+    "url": null,
+    "status": "No consta PDF ni facsímil individual verificado para esta edición"
+   },
+   "translation": {
+    "status": "Traducción automática de consulta por pasaje; no se atribuye a un traductor académico"
+   },
+   "links": {
+    "scaife": "https://scaife.perseus.org/library/urn:cts:greekLit:tlg5023.tlg011.1st1K-grc1/"
+   },
+   "aliases": [
+    "urn:cts:greekLit:tlg5023.tlg011.1st1K-grc1"
+   ],
+   "relatedWorkIds": [],
+   "catalogueProvenance": "Título y autor de los catálogos CTS del sitio; edición contrastada con su cabecera TEI. No se retrotraduce el título.",
+   "corpusFiles": {
+    "grc": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg5023-tlg011-grc-51d49822dedae096.json"
+   },
+   "localVersions": [
+    {
+     "language": "grc",
+     "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg5023-tlg011-grc-51d49822dedae096.json",
+     "label": "Edición original grc · urn:cts:greekLit:tlg5023.tlg011.1st1K-grc1",
+     "reader": "classics-text-reader.html?work=cts-tlg5023-tlg011&lang=grc&edition=51d49822dedae096",
+     "sourceUrns": [
+      "urn:cts:greekLit:tlg5023.tlg011.1st1K-grc1"
+     ],
+     "sha256": "51d49822dedae096aba204fd6e4bcbcb3bef2a46ffbdc96e02913206056cdaa6"
+    }
+   ],
+   "publicStatus": "lectura-local-parcial",
+   "indexedEdition": {
+    "sources": [
+     {
+      "title": "Scholia in Euripidis Rhesum",
+      "titleLanguage": "lat",
+      "author": "Scholia in Euripidem",
+      "editors": [
+       "Wilhelm Dindorf"
+      ],
+      "bibliography": "Scholia Graeca in Euripidis tragoedias Wilhelm Dindorf Scholia Euripidem Oxford University Press Oxford 1863 1 Internet Archive",
+      "licences": [
+       {
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+       }
+      ],
+      "editionUrn": "urn:cts:greekLit:tlg5023.tlg011.1st1K-grc1",
+      "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg5023/tlg011/tlg5023.tlg011.1st1K-grc1.xml",
+      "sourceSha256": "2644edf7550b6591a2969386b46338fcadc9562c585b71b4ba107c71be0f2f81",
+      "sourceReferences": [
+       "https://archive.org/stream/scholiagraecaine01dind#page/16/mode/2up"
+      ],
+      "publicationYear": "1863",
+      "publisher": "Oxford University Press",
+      "publicationPlace": "Oxford",
+      "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/2644edf7550b6591a2969386b46338fcadc9562c585b71b4ba107c71be0f2f81.xml"
+     }
+    ],
+    "sha256": "51d49822dedae096aba204fd6e4bcbcb3bef2a46ffbdc96e02913206056cdaa6",
+    "passages": 109,
+    "characters": 24820,
+    "bytes": 67119,
+    "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg5023-tlg011-grc-51d49822dedae096.json"
+   }
+  },
+  {
+   "id": "cts-tlg5023-tlg012",
+   "author": "Escolios a Eurípides",
+   "title": "Scholia in Euripidis Troiades",
+   "language": "grc",
+   "genre": "Corpus clásico ampliado",
+   "dating": "antigüedad tardía y Bizancio",
+   "reading": {
+    "url": "classics-text-reader.html?work=cts-tlg5023-tlg012&lang=grc&edition=6264783c04763300",
+    "status": "Edición TEI alojada en R2 con búsqueda y traducción automática por pasaje"
+   },
+   "manuscript": {
+    "status": "Sin testimonio manuscrito individual asignado; la edición TEI se identifica por separado"
+   },
+   "pdf": {
+    "url": null,
+    "status": "No consta PDF ni facsímil individual verificado para esta edición"
+   },
+   "translation": {
+    "status": "Traducción automática de consulta por pasaje; no se atribuye a un traductor académico"
+   },
+   "links": {
+    "scaife": "https://scaife.perseus.org/library/urn:cts:greekLit:tlg5023.tlg012.1st1K-grc1/"
+   },
+   "aliases": [
+    "urn:cts:greekLit:tlg5023.tlg012.1st1K-grc1"
+   ],
+   "relatedWorkIds": [],
+   "catalogueProvenance": "Título y autor de los catálogos CTS del sitio; edición contrastada con su cabecera TEI. No se retrotraduce el título.",
+   "corpusFiles": {
+    "grc": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg5023-tlg012-grc-6264783c04763300.json"
+   },
+   "localVersions": [
+    {
+     "language": "grc",
+     "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg5023-tlg012-grc-6264783c04763300.json",
+     "label": "Edición original grc · urn:cts:greekLit:tlg5023.tlg012.1st1K-grc1",
+     "reader": "classics-text-reader.html?work=cts-tlg5023-tlg012&lang=grc&edition=6264783c04763300",
+     "sourceUrns": [
+      "urn:cts:greekLit:tlg5023.tlg012.1st1K-grc1"
+     ],
+     "sha256": "6264783c0476330070d76b94f11a783342d0830266324e8414f56fd8c243f7a7"
+    }
+   ],
+   "publicStatus": "lectura-local-parcial",
+   "indexedEdition": {
+    "sources": [
+     {
+      "title": "Scholia in Euripidis Troiades",
+      "titleLanguage": "lat",
+      "author": "Scholia in Euripidem",
+      "editors": [
+       "Wilhelm Dindorf"
+      ],
+      "bibliography": "Scholia Graeca in Euripidis tragoedias Wilhelm Dindorf Scholia in Euripidem Oxford University Press Oxford 1863 1 Internet Archive",
+      "licences": [
+       {
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+       }
+      ],
+      "editionUrn": "urn:cts:greekLit:tlg5023.tlg012.1st1K-grc1",
+      "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg5023/tlg012/tlg5023.tlg012.1st1K-grc1.xml",
+      "sourceSha256": "3d84ab775f9db6614910408392edc26d1ec499f450c0c8121fd68abbb52d7a83",
+      "sourceReferences": [
+       "https://archive.org/stream/scholiagraecaine01dind#page/40/mode/2up"
+      ],
+      "publicationYear": "1863",
+      "publisher": "Oxford University Press",
+      "publicationPlace": "Oxford",
+      "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/3d84ab775f9db6614910408392edc26d1ec499f450c0c8121fd68abbb52d7a83.xml"
+     }
+    ],
+    "sha256": "6264783c0476330070d76b94f11a783342d0830266324e8414f56fd8c243f7a7",
+    "passages": 251,
+    "characters": 38578,
+    "bytes": 115901,
+    "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg5023-tlg012-grc-6264783c04763300.json"
+   }
+  },
+  {
+   "id": "cts-tlg5023-tlg013",
+   "author": "Escolios a Eurípides",
+   "title": "Scholia in Euripidis Hippolytum",
+   "language": "grc",
+   "genre": "Corpus clásico ampliado",
+   "dating": "antigüedad tardía y Bizancio",
+   "reading": {
+    "url": "classics-text-reader.html?work=cts-tlg5023-tlg013&lang=grc&edition=678030fd055a5e1b",
+    "status": "Edición TEI alojada en R2 con búsqueda y traducción automática por pasaje"
+   },
+   "manuscript": {
+    "status": "Sin testimonio manuscrito individual asignado; la edición TEI se identifica por separado"
+   },
+   "pdf": {
+    "url": null,
+    "status": "No consta PDF ni facsímil individual verificado para esta edición"
+   },
+   "translation": {
+    "status": "Traducción automática de consulta por pasaje; no se atribuye a un traductor académico"
+   },
+   "links": {
+    "scaife": "https://scaife.perseus.org/library/urn:cts:greekLit:tlg5023.tlg013.1st1K-grc1/"
+   },
+   "aliases": [
+    "urn:cts:greekLit:tlg5023.tlg013.1st1K-grc1"
+   ],
+   "relatedWorkIds": [],
+   "catalogueProvenance": "Título y autor de los catálogos CTS del sitio; edición contrastada con su cabecera TEI. No se retrotraduce el título.",
+   "corpusFiles": {
+    "grc": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg5023-tlg013-grc-678030fd055a5e1b.json"
+   },
+   "localVersions": [
+    {
+     "language": "grc",
+     "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg5023-tlg013-grc-678030fd055a5e1b.json",
+     "label": "Edición original grc · urn:cts:greekLit:tlg5023.tlg013.1st1K-grc1",
+     "reader": "classics-text-reader.html?work=cts-tlg5023-tlg013&lang=grc&edition=678030fd055a5e1b",
+     "sourceUrns": [
+      "urn:cts:greekLit:tlg5023.tlg013.1st1K-grc1"
+     ],
+     "sha256": "678030fd055a5e1b85c28eeec6721d2308e0cfcd63bf4fa070e51af90c19dfd9"
+    }
+   ],
+   "publicStatus": "lectura-local-parcial",
+   "indexedEdition": {
+    "sources": [
+     {
+      "title": "Scholia in Euripidis Hippolytum",
+      "titleLanguage": "lat",
+      "author": "Scholia in Euripidem",
+      "editors": [
+       "Wilhelm Dindorf"
+      ],
+      "bibliography": "Scholia Graeca in Euripidis tragoedias Wilhelm Dindorf Scholia in Euripidem Oxford University Press Oxford 1863 1 Internet Archive",
+      "licences": [
+       {
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+       }
+      ],
+      "editionUrn": "urn:cts:greekLit:tlg5023.tlg013.1st1K-grc1",
+      "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg5023/tlg013/tlg5023.tlg013.1st1K-grc1.xml",
+      "sourceSha256": "823bc89e665264ce6bf721fd3d51282411302bb839b2d2f09ba114647733684a",
+      "sourceReferences": [
+       "https://archive.org/stream/scholiagraecaine01dind#page/70/mode/2up"
+      ],
+      "publicationYear": "1863",
+      "publisher": "Oxford University Press",
+      "publicationPlace": "Oxford",
+      "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/823bc89e665264ce6bf721fd3d51282411302bb839b2d2f09ba114647733684a.xml"
+     }
+    ],
+    "sha256": "678030fd055a5e1b85c28eeec6721d2308e0cfcd63bf4fa070e51af90c19dfd9",
+    "passages": 806,
+    "characters": 166438,
+    "bytes": 447098,
+    "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg5023-tlg013-grc-678030fd055a5e1b.json"
+   }
+  },
+  {
+   "id": "cts-tlg5023-tlg014",
+   "author": "Escolios a Eurípides",
+   "title": "Scholia in Euripidis Hecubam (scholia vetera et scholia\n        recentiora Thomae Magistri, Triclinii, Moschopuli et anonyma)",
+   "language": "grc",
+   "genre": "Corpus clásico ampliado",
+   "dating": "antigüedad tardía y Bizancio",
+   "reading": {
+    "url": "classics-text-reader.html?work=cts-tlg5023-tlg014&lang=grc&edition=683651b97fbc342b",
+    "status": "Edición TEI alojada en R2 con búsqueda y traducción automática por pasaje"
+   },
+   "manuscript": {
+    "status": "Sin testimonio manuscrito individual asignado; la edición TEI se identifica por separado"
+   },
+   "pdf": {
+    "url": null,
+    "status": "No consta PDF ni facsímil individual verificado para esta edición"
+   },
+   "translation": {
+    "status": "Traducción automática de consulta por pasaje; no se atribuye a un traductor académico"
+   },
+   "links": {
+    "scaife": "https://scaife.perseus.org/library/urn:cts:greekLit:tlg5023.tlg014.1st1K-grc1/"
+   },
+   "aliases": [
+    "urn:cts:greekLit:tlg5023.tlg014.1st1K-grc1"
+   ],
+   "relatedWorkIds": [],
+   "catalogueProvenance": "Título y autor de los catálogos CTS del sitio; edición contrastada con su cabecera TEI. No se retrotraduce el título.",
+   "corpusFiles": {
+    "grc": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg5023-tlg014-grc-683651b97fbc342b.json"
+   },
+   "localVersions": [
+    {
+     "language": "grc",
+     "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg5023-tlg014-grc-683651b97fbc342b.json",
+     "label": "Edición original grc · urn:cts:greekLit:tlg5023.tlg014.1st1K-grc1",
+     "reader": "classics-text-reader.html?work=cts-tlg5023-tlg014&lang=grc&edition=683651b97fbc342b",
+     "sourceUrns": [
+      "urn:cts:greekLit:tlg5023.tlg014.1st1K-grc1"
+     ],
+     "sha256": "683651b97fbc342b444d43b808dc0a2ecf6648054cd6d2de6dbd5f2d18659d46"
+    }
+   ],
+   "publicStatus": "lectura-local-parcial",
+   "indexedEdition": {
+    "sources": [
+     {
+      "title": "Scholia in Euripidis Hecubam (scholia vetera et scholia recentiora Thomae Magistri, Triclinii, Moschopuli et anonyma)",
+      "titleLanguage": "lat",
+      "author": "Scholia in Euripidem",
+      "editors": [
+       "Wilhelm Dindorf"
+      ],
+      "bibliography": "Scholia Graeca in Euripidis tragoedias Wilhelm Dindorf Scholia in Euripidem Oxford University Press Oxford 1863 1 Internet Archive",
+      "licences": [
+       {
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+       }
+      ],
+      "editionUrn": "urn:cts:greekLit:tlg5023.tlg014.1st1K-grc1",
+      "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg5023/tlg014/tlg5023.tlg014.1st1K-grc1.xml",
+      "sourceSha256": "b82226f80d50f56d8e4ae5c2258293b5bfbb9cbb46bcc197597bfad882d38cd9",
+      "sourceReferences": [
+       "https://archive.org/stream/scholiagraecaine01dind#page/200/mode/2up"
+      ],
+      "publicationYear": "1863",
+      "publisher": "Oxford University Press",
+      "publicationPlace": "Oxford",
+      "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/b82226f80d50f56d8e4ae5c2258293b5bfbb9cbb46bcc197597bfad882d38cd9.xml"
+     }
+    ],
+    "sha256": "683651b97fbc342b444d43b808dc0a2ecf6648054cd6d2de6dbd5f2d18659d46",
+    "passages": 1555,
+    "characters": 534651,
+    "bytes": 1239202,
+    "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg5023-tlg014-grc-683651b97fbc342b.json"
+   }
+  },
+  {
+   "id": "cts-tlg5023-tlg015",
+   "author": "Escolios a Eurípides",
+   "title": "Scholia in Euripidis Orestem (scholia vetera et scholia recentiora Thomae Magistri, Triclinii, Moschopuli et anonyma)",
+   "language": "grc",
+   "genre": "Corpus clásico ampliado",
+   "dating": "antigüedad tardía y Bizancio",
+   "reading": {
+    "url": "classics-text-reader.html?work=cts-tlg5023-tlg015&lang=grc&edition=e4458a252581f58c",
+    "status": "Edición TEI alojada en R2 con búsqueda y traducción automática por pasaje"
+   },
+   "manuscript": {
+    "status": "Sin testimonio manuscrito individual asignado; la edición TEI se identifica por separado"
+   },
+   "pdf": {
+    "url": null,
+    "status": "No consta PDF ni facsímil individual verificado para esta edición"
+   },
+   "translation": {
+    "status": "Traducción automática de consulta por pasaje; no se atribuye a un traductor académico"
+   },
+   "links": {
+    "scaife": "https://scaife.perseus.org/library/urn:cts:greekLit:tlg5023.tlg015.1st1K-grc1/"
+   },
+   "aliases": [
+    "urn:cts:greekLit:tlg5023.tlg015.1st1K-grc1"
+   ],
+   "relatedWorkIds": [],
+   "catalogueProvenance": "Título y autor de los catálogos CTS del sitio; edición contrastada con su cabecera TEI. No se retrotraduce el título.",
+   "corpusFiles": {
+    "grc": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg5023-tlg015-grc-e4458a252581f58c.json"
+   },
+   "localVersions": [
+    {
+     "language": "grc",
+     "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg5023-tlg015-grc-e4458a252581f58c.json",
+     "label": "Edición original grc · urn:cts:greekLit:tlg5023.tlg015.1st1K-grc1",
+     "reader": "classics-text-reader.html?work=cts-tlg5023-tlg015&lang=grc&edition=e4458a252581f58c",
+     "sourceUrns": [
+      "urn:cts:greekLit:tlg5023.tlg015.1st1K-grc1"
+     ],
+     "sha256": "e4458a252581f58c761634a85270df2a409f4d354a713d8b51f8d723040df0cc"
+    }
+   ],
+   "publicStatus": "lectura-local-parcial",
+   "indexedEdition": {
+    "sources": [
+     {
+      "title": "Scholia in Euripidis Orestem (scholia vetera et scholia recentiora Thomae Magistri, Triclinii, Moschopuli et anonyma)",
+      "titleLanguage": "lat",
+      "author": "Scholia in Euripidem",
+      "editors": [
+       "Wilhelm Dindorf"
+      ],
+      "bibliography": "Scholia in Euripidem Scholia Graeca in Euripidis Tragoedias Wilhelm Dindorf Oxford Oxford University Press 1863 2 Internet Archive",
+      "licences": [
+       {
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+       }
+      ],
+      "editionUrn": "urn:cts:greekLit:tlg5023.tlg015.1st1K-grc1",
+      "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg5023/tlg015/tlg5023.tlg015.1st1K-grc1.xml",
+      "sourceSha256": "b9702901682bcc0e054f86dc9e04eb9288d0083919808812099f08b97bdf2395",
+      "sourceReferences": [
+       "https://archive.org/details/scholiagraecaine02dind/page/n5/mode/2up"
+      ],
+      "publicationYear": "1863",
+      "publisher": "Oxford University Press",
+      "publicationPlace": "Oxford",
+      "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/b9702901682bcc0e054f86dc9e04eb9288d0083919808812099f08b97bdf2395.xml"
+     }
+    ],
+    "sha256": "e4458a252581f58c761634a85270df2a409f4d354a713d8b51f8d723040df0cc",
+    "passages": 2641,
+    "characters": 470767,
+    "bytes": 1342020,
+    "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg5023-tlg015-grc-e4458a252581f58c.json"
+   }
+  },
+  {
+   "id": "cts-tlg5023-tlg016",
+   "author": "Escolios a Eurípides",
+   "title": "Scholia in Euripidis Phoenissas (scholia vetera et scholia recentiora Thomae Magistri, Triclinii, Moschopuli et anonyma)",
+   "language": "grc",
+   "genre": "Corpus clásico ampliado",
+   "dating": "antigüedad tardía y Bizancio",
+   "reading": {
+    "url": "classics-text-reader.html?work=cts-tlg5023-tlg016&lang=grc&edition=d98de1b8a398914d",
+    "status": "Edición TEI alojada en R2 con búsqueda y traducción automática por pasaje"
+   },
+   "manuscript": {
+    "status": "Sin testimonio manuscrito individual asignado; la edición TEI se identifica por separado"
+   },
+   "pdf": {
+    "url": null,
+    "status": "No consta PDF ni facsímil individual verificado para esta edición"
+   },
+   "translation": {
+    "status": "Traducción automática de consulta por pasaje; no se atribuye a un traductor académico"
+   },
+   "links": {
+    "scaife": "https://scaife.perseus.org/library/urn:cts:greekLit:tlg5023.tlg016.1st1K-grc1/"
+   },
+   "aliases": [
+    "urn:cts:greekLit:tlg5023.tlg016.1st1K-grc1"
+   ],
+   "relatedWorkIds": [],
+   "catalogueProvenance": "Título y autor de los catálogos CTS del sitio; edición contrastada con su cabecera TEI. No se retrotraduce el título.",
+   "corpusFiles": {
+    "grc": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg5023-tlg016-grc-d98de1b8a398914d.json"
+   },
+   "localVersions": [
+    {
+     "language": "grc",
+     "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg5023-tlg016-grc-d98de1b8a398914d.json",
+     "label": "Edición original grc · urn:cts:greekLit:tlg5023.tlg016.1st1K-grc1",
+     "reader": "classics-text-reader.html?work=cts-tlg5023-tlg016&lang=grc&edition=d98de1b8a398914d",
+     "sourceUrns": [
+      "urn:cts:greekLit:tlg5023.tlg016.1st1K-grc1"
+     ],
+     "sha256": "d98de1b8a398914dfb8eb146123040f6da5b9ee671072a496cb32ab8edf6f449"
+    }
+   ],
+   "publicStatus": "lectura-local-parcial",
+   "indexedEdition": {
+    "sources": [
+     {
+      "title": "Scholia in Euripidis Phoenissas (scholia vetera et scholia recentiora Thomae Magistri, Triclinii, Moschopuli et anonyma)",
+      "titleLanguage": "lat",
+      "author": "Scholia in Euripidem",
+      "editors": [
+       "Wilhelm Dindorf"
+      ],
+      "bibliography": "Scholia in Euripidem Scholia Graeca in Euripidis Tragoedias Wilhelm Dindorf Oxford Oxford University Press 1863 3 Internet Archive",
+      "licences": [
+       {
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+       }
+      ],
+      "editionUrn": "urn:cts:greekLit:tlg5023.tlg016.1st1K-grc1",
+      "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg5023/tlg016/tlg5023.tlg016.1st1K-grc1.xml",
+      "sourceSha256": "de994584ed78dd85bff73c4dcd63a0ba6665efb0e61614c58a4eec539d3cbc31",
+      "sourceReferences": [
+       "https://archive.org/details/scholiagraecaine03dind/page/n6/mode/1up?view=theater"
+      ],
+      "publicationYear": "1863",
+      "publisher": "Oxford University Press",
+      "publicationPlace": "Oxford",
+      "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/de994584ed78dd85bff73c4dcd63a0ba6665efb0e61614c58a4eec539d3cbc31.xml"
+     }
+    ],
+    "sha256": "d98de1b8a398914dfb8eb146123040f6da5b9ee671072a496cb32ab8edf6f449",
+    "passages": 2725,
+    "characters": 477589,
+    "bytes": 1368292,
+    "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg5023-tlg016-grc-d98de1b8a398914d.json"
+   }
+  },
+  {
+   "id": "cts-tlg5026-tlg007",
+   "author": "Escolios a Homero",
+   "title": "Scholia in Odysseam",
+   "language": "grc",
+   "genre": "Corpus clásico ampliado",
+   "dating": "antigüedad y Bizancio",
+   "reading": {
+    "url": "classics-text-reader.html?work=cts-tlg5026-tlg007&lang=grc&edition=1271ef7249c43298",
+    "status": "Edición TEI alojada en R2 con búsqueda y traducción automática por pasaje"
+   },
+   "manuscript": {
+    "status": "Sin testimonio manuscrito individual asignado; la edición TEI se identifica por separado"
+   },
+   "pdf": {
+    "url": null,
+    "status": "No consta PDF ni facsímil individual verificado para esta edición"
+   },
+   "translation": {
+    "status": "Traducción automática de consulta por pasaje; no se atribuye a un traductor académico"
+   },
+   "links": {
+    "scaife": "https://scaife.perseus.org/library/urn:cts:greekLit:tlg5026.tlg007.1st1K-grc1/"
+   },
+   "aliases": [
+    "urn:cts:greekLit:tlg5026.tlg007.1st1K-grc1"
+   ],
+   "relatedWorkIds": [],
+   "catalogueProvenance": "Título y autor de los catálogos CTS del sitio; edición contrastada con su cabecera TEI. No se retrotraduce el título.",
+   "corpusFiles": {
+    "grc": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg5026-tlg007-grc-1271ef7249c43298.json"
+   },
+   "localVersions": [
+    {
+     "language": "grc",
+     "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg5026-tlg007-grc-1271ef7249c43298.json",
+     "label": "Edición original grc · urn:cts:greekLit:tlg5026.tlg007.1st1K-grc1",
+     "reader": "classics-text-reader.html?work=cts-tlg5026-tlg007&lang=grc&edition=1271ef7249c43298",
+     "sourceUrns": [
+      "urn:cts:greekLit:tlg5026.tlg007.1st1K-grc1"
+     ],
+     "sha256": "1271ef7249c43298e3bf60708ff27f03c76c5f4fb22b8a3a58e0b93dcffe399d"
+    }
+   ],
+   "publicStatus": "lectura-local-parcial",
+   "indexedEdition": {
+    "sources": [
+     {
+      "title": "Scholia in Odysseam",
+      "titleLanguage": "lat",
+      "author": "Scholia in Homerum",
+      "editors": [
+       "Wilhelm Dindorf"
+      ],
+      "bibliography": "Scholia Graeca in Homeri Odysseam Wilhelm Dindorf Scholia in Homerum Clarendon Oxford 1855 1-2 Internet Archive Internet Archive",
+      "licences": [
+       {
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+       }
+      ],
+      "editionUrn": "urn:cts:greekLit:tlg5026.tlg007.1st1K-grc1",
+      "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg5026/tlg007/tlg5026.tlg007.1st1K-grc1.xml",
+      "sourceSha256": "b730b8a9f984f518a26dbe1287d61112b2ac184519e47874c09f12faf42b69b3",
+      "sourceReferences": [],
+      "publicationYear": "1855",
+      "publisher": "Clarendon",
+      "publicationPlace": "Oxford",
+      "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/b730b8a9f984f518a26dbe1287d61112b2ac184519e47874c09f12faf42b69b3.xml"
+     }
+    ],
+    "sha256": "1271ef7249c43298e3bf60708ff27f03c76c5f4fb22b8a3a58e0b93dcffe399d",
+    "passages": 6983,
+    "characters": 1059709,
+    "bytes": 3117410,
+    "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg5026-tlg007-grc-1271ef7249c43298.json"
+   }
+  },
+  {
+   "id": "cts-tlg9004-tlg001",
+   "author": "Anonymi In Aristotelis Librum Alterum Analyticorum Posteriorum",
+   "title": "Anonymi In Analyticorum Posteriorum Librum Alterum Commentarium",
+   "language": "grc",
+   "genre": "Corpus clásico ampliado",
+   "dating": "Datación no consignada en la fuente de catálogo",
+   "reading": {
+    "url": "classics-text-reader.html?work=cts-tlg9004-tlg001&lang=grc&edition=a2f2210825f6d903",
+    "status": "Edición TEI alojada en R2 con búsqueda y traducción automática por pasaje"
+   },
+   "manuscript": {
+    "status": "Sin testimonio manuscrito individual asignado; la edición TEI se identifica por separado"
+   },
+   "pdf": {
+    "url": null,
+    "status": "No consta PDF ni facsímil individual verificado para esta edición"
+   },
+   "translation": {
+    "status": "Traducción automática de consulta por pasaje; no se atribuye a un traductor académico"
+   },
+   "links": {
+    "scaife": "https://scaife.perseus.org/library/urn:cts:greekLit:tlg9004.tlg001.opp-grc1/"
+   },
+   "aliases": [
+    "urn:cts:greekLit:tlg9004.tlg001.opp-grc1"
+   ],
+   "relatedWorkIds": [],
+   "catalogueProvenance": "Título y autor de los catálogos CTS del sitio; edición contrastada con su cabecera TEI. No se retrotraduce el título.",
+   "corpusFiles": {
+    "grc": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg9004-tlg001-grc-a2f2210825f6d903.json"
+   },
+   "localVersions": [
+    {
+     "language": "grc",
+     "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg9004-tlg001-grc-a2f2210825f6d903.json",
+     "label": "Edición original grc · urn:cts:greekLit:tlg9004.tlg001.opp-grc1",
+     "reader": "classics-text-reader.html?work=cts-tlg9004-tlg001&lang=grc&edition=a2f2210825f6d903",
+     "sourceUrns": [
+      "urn:cts:greekLit:tlg9004.tlg001.opp-grc1"
+     ],
+     "sha256": "a2f2210825f6d903a209c63fe61fd052cfcbabbe6fa7c452037d93faeb8da746"
+    }
+   ],
+   "publicStatus": "lectura-local-parcial",
+   "indexedEdition": {
+    "sources": [
+     {
+      "title": "Anonymi in analyticorum posteriorum librum alterum commentarium",
+      "titleLanguage": "lat",
+      "author": "Anonymi In Aristotelis Librum Alterum Analyticorum Posteriorum",
+      "editors": [
+       "Maximilianus Wallies",
+       "Maximilian Wallies"
+      ],
+      "bibliography": "Ioannis Philoponi in Aristotelis analytica posteriora commentaria cum anonymo in librum ii Maximilianus Wallies Anonymi In Aristotelis Librum Alterum Analyticorum Posteriorum Reimer Berlin 1909 Commentaria in Aristotelem Graeca 13.3 Internet Archive",
+      "licences": [
+       {
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+       }
+      ],
+      "editionUrn": "urn:cts:greekLit:tlg9004.tlg001.opp-grc1",
+      "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg9004/tlg001/tlg9004.tlg001.opp-grc1.xml",
+      "sourceSha256": "48f3ebb53ee5c2a020f71f5a7e1e74179548f17b2a853edffee33f384afc3ac5",
+      "sourceReferences": [
+       "https://archive.org/stream/commentariaina13pt3akaduoft"
+      ],
+      "publicationYear": "1909",
+      "publisher": "Reimer",
+      "publicationPlace": "Berlin",
+      "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/48f3ebb53ee5c2a020f71f5a7e1e74179548f17b2a853edffee33f384afc3ac5.xml"
+     }
+    ],
+    "sha256": "a2f2210825f6d903a209c63fe61fd052cfcbabbe6fa7c452037d93faeb8da746",
+    "passages": 317,
+    "characters": 102158,
+    "bytes": 253593,
+    "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg9004-tlg001-grc-a2f2210825f6d903.json"
+   }
+  },
+  {
+   "id": "cts-tlg5037-tlg004",
+   "author": "Scholia in Sophoclem",
+   "title": "Scholia in Sophoclem (scholia vetera)",
+   "language": "grc",
+   "genre": "Corpus clásico ampliado",
+   "dating": "Datación no consignada en la fuente de catálogo",
+   "reading": {
+    "url": "classics-text-reader.html?work=cts-tlg5037-tlg004&lang=grc&edition=ff23e3790863f817",
+    "status": "Edición TEI alojada en R2 con búsqueda y traducción automática por pasaje"
+   },
+   "manuscript": {
+    "status": "Sin testimonio manuscrito individual asignado; la edición TEI se identifica por separado"
+   },
+   "pdf": {
+    "url": null,
+    "status": "No consta PDF ni facsímil individual verificado para esta edición"
+   },
+   "translation": {
+    "status": "Traducción automática de consulta por pasaje; no se atribuye a un traductor académico"
+   },
+   "links": {
+    "scaife": "https://scaife.perseus.org/library/urn:cts:greekLit:tlg5037.tlg004.1st1K-grc1/"
+   },
+   "aliases": [
+    "urn:cts:greekLit:tlg5037.tlg004.1st1K-grc1"
+   ],
+   "relatedWorkIds": [],
+   "catalogueProvenance": "Título y autor de los catálogos CTS del sitio; edición contrastada con su cabecera TEI. No se retrotraduce el título.",
+   "corpusFiles": {
+    "grc": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg5037-tlg004-grc-ff23e3790863f817.json"
+   },
+   "localVersions": [
+    {
+     "language": "grc",
+     "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg5037-tlg004-grc-ff23e3790863f817.json",
+     "label": "Edición original grc · urn:cts:greekLit:tlg5037.tlg004.1st1K-grc1",
+     "reader": "classics-text-reader.html?work=cts-tlg5037-tlg004&lang=grc&edition=ff23e3790863f817",
+     "sourceUrns": [
+      "urn:cts:greekLit:tlg5037.tlg004.1st1K-grc1"
+     ],
+     "sha256": "ff23e3790863f817a0e5fed9c401fb27ee984ccc63db249138636ed59d3e5766"
+    }
+   ],
+   "publicStatus": "lectura-local-parcial",
+   "indexedEdition": {
+    "sources": [
+     {
+      "title": "Scholia in Sophoclem (scholia vetera)",
+      "titleLanguage": "lat",
+      "author": "Scholia in Sophoclem",
+      "editors": [
+       "Petrus N. Papageorgius"
+      ],
+      "bibliography": "Scholia in Sophoclis tragoedias vetera Petrus N. Papageorgius Scholia in Sophoclem Teubner Leipzig 1888 Internet Archive",
+      "licences": [
+       {
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+       }
+      ],
+      "editionUrn": "urn:cts:greekLit:tlg5037.tlg004.1st1K-grc1",
+      "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg5037/tlg004/tlg5037.tlg004.1st1K-grc1.xml",
+      "sourceSha256": "8670e7149acbefddb5a6146dcad473bda2526fef2db09917eee8984ca24f9f79",
+      "sourceReferences": [
+       "https://archive.org/stream/scholiainsophoc00unkngoog#page/n29/mode/2up"
+      ],
+      "publicationYear": "1888",
+      "publisher": "Teubner",
+      "publicationPlace": "Leipzig",
+      "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/8670e7149acbefddb5a6146dcad473bda2526fef2db09917eee8984ca24f9f79.xml"
+     }
+    ],
+    "sha256": "ff23e3790863f817a0e5fed9c401fb27ee984ccc63db249138636ed59d3e5766",
+    "passages": 4948,
+    "characters": 449237,
+    "bytes": 1652939,
+    "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg5037-tlg004-grc-ff23e3790863f817.json"
+   }
+  },
+  {
+   "id": "cts-tlg5026-tlg001",
+   "author": "Escolios a Homero",
+   "title": "Scholia in Iliadem",
+   "language": "grc",
+   "genre": "Corpus clásico ampliado",
+   "dating": "antigüedad y Bizancio",
+   "reading": {
+    "url": "classics-text-reader.html?work=cts-tlg5026-tlg001&lang=grc&edition=0107ec455ce9faa7",
+    "status": "Edición TEI alojada en R2 con búsqueda y traducción automática por pasaje"
+   },
+   "manuscript": {
+    "status": "Sin testimonio manuscrito individual asignado; la edición TEI se identifica por separado"
+   },
+   "pdf": {
+    "url": null,
+    "status": "No consta PDF ni facsímil individual verificado para esta edición"
+   },
+   "translation": {
+    "status": "Traducción automática de consulta por pasaje; no se atribuye a un traductor académico"
+   },
+   "links": {
+    "scaife": "https://scaife.perseus.org/library/urn:cts:greekLit:tlg5026.tlg001.1st1K-grc1/"
+   },
+   "aliases": [
+    "urn:cts:greekLit:tlg5026.tlg001.1st1K-grc1"
+   ],
+   "relatedWorkIds": [],
+   "catalogueProvenance": "Título y autor de los catálogos CTS del sitio; edición contrastada con su cabecera TEI. No se retrotraduce el título.",
+   "corpusFiles": {
+    "grc": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg5026-tlg001-grc-0107ec455ce9faa7.json"
+   },
+   "localVersions": [
+    {
+     "language": "grc",
+     "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg5026-tlg001-grc-0107ec455ce9faa7.json",
+     "label": "Edición original grc · urn:cts:greekLit:tlg5026.tlg001.1st1K-grc1",
+     "reader": "classics-text-reader.html?work=cts-tlg5026-tlg001&lang=grc&edition=0107ec455ce9faa7",
+     "sourceUrns": [
+      "urn:cts:greekLit:tlg5026.tlg001.1st1K-grc1"
+     ],
+     "sha256": "0107ec455ce9faa77e8ddeb69b3a148cf2a34f20dbf9579c8f934f40fc24fc8d"
+    }
+   ],
+   "publicStatus": "lectura-local-parcial",
+   "indexedEdition": {
+    "sources": [
+     {
+      "title": "Scholia in Iliadum",
+      "titleLanguage": "lat",
+      "author": "Scholia in Homerum",
+      "editors": [
+       "Wilhelm Dindorf",
+       "Ernst Maas"
+      ],
+      "bibliography": "Scholia Graeca In Homeri Iliadem Wilhelm Dindorf Ernst Maas Scholia in Homerum Clarendon Oxford 1875-1888 1-6 Internet Archive Internet Archive Internet Archive Internet Archive Internet Archive Internet Archive",
+      "licences": [
+       {
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+       }
+      ],
+      "editionUrn": "urn:cts:greekLit:tlg5026.tlg001.1st1K-grc1",
+      "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg5026/tlg001/tlg5026.tlg001.1st1K-grc1.xml",
+      "sourceSha256": "65cf5390d39e9d6628e9ce23682ead3094755ab8fc4118ecd694656ec704ee4d",
+      "sourceReferences": [],
+      "publicationYear": "1875-1888",
+      "publisher": "Clarendon",
+      "publicationPlace": "Oxford",
+      "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/65cf5390d39e9d6628e9ce23682ead3094755ab8fc4118ecd694656ec704ee4d.xml"
+     }
+    ],
+    "sha256": "0107ec455ce9faa77e8ddeb69b3a148cf2a34f20dbf9579c8f934f40fc24fc8d",
+    "passages": 30390,
+    "characters": 4643444,
+    "bytes": 13752055,
+    "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg5026-tlg001-grc-0107ec455ce9faa7.json"
+   }
+  },
+  {
+   "id": "cts-tlg0057-tlg061",
+   "author": "Galeno",
+   "title": "De causis pulsuum",
+   "language": "grc",
+   "genre": "Corpus clásico ampliado",
+   "dating": "siglo II d. C.",
+   "reading": {
+    "url": "classics-text-reader.html?work=cts-tlg0057-tlg061&lang=grc&edition=09099145bf78c297",
+    "status": "Edición TEI alojada en R2 con búsqueda y traducción automática por pasaje"
+   },
+   "manuscript": {
+    "status": "Sin testimonio manuscrito individual asignado; la edición TEI se identifica por separado"
+   },
+   "pdf": {
+    "url": null,
+    "status": "No consta PDF ni facsímil individual verificado para esta edición"
+   },
+   "translation": {
+    "status": "Traducción automática de consulta por pasaje; no se atribuye a un traductor académico"
+   },
+   "links": {
+    "scaife": "https://scaife.perseus.org/library/urn:cts:greekLit:tlg0057.tlg061.1st1K-grc1/"
+   },
+   "aliases": [
+    "urn:cts:greekLit:tlg0057.tlg061.1st1K-grc1"
+   ],
+   "relatedWorkIds": [],
+   "catalogueProvenance": "Título y autor de los catálogos CTS del sitio; edición contrastada con su cabecera TEI. No se retrotraduce el título.",
+   "corpusFiles": {
+    "grc": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0057-tlg061-grc-09099145bf78c297.json"
+   },
+   "localVersions": [
+    {
+     "language": "grc",
+     "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0057-tlg061-grc-09099145bf78c297.json",
+     "label": "Edición original grc · urn:cts:greekLit:tlg0057.tlg061.1st1K-grc1",
+     "reader": "classics-text-reader.html?work=cts-tlg0057-tlg061&lang=grc&edition=09099145bf78c297",
+     "sourceUrns": [
+      "urn:cts:greekLit:tlg0057.tlg061.1st1K-grc1"
+     ],
+     "sha256": "09099145bf78c2971ad5483535339c359949a0d2ac6c99fba6566a28885c3b51"
+    }
+   ],
+   "publicStatus": "lectura-local-parcial",
+   "indexedEdition": {
+    "sources": [
+     {
+      "title": "De causis pulsuum",
+      "titleLanguage": "lat",
+      "author": "Galen",
+      "editors": [
+       "Karl Gottlob Kühn"
+      ],
+      "bibliography": "Claudii Galeni Opera Omnia Galen Karl Gottlob Kühn Knobloch Lipsiae 9 1-204 1825 HathiTrust",
+      "licences": [
+       {
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+       }
+      ],
+      "editionUrn": "urn:cts:greekLit:tlg0057.tlg061.1st1K-grc1",
+      "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0057/tlg061/tlg0057.tlg061.1st1K-grc1.xml",
+      "sourceSha256": "e23048d26965d9084995e431aa4af01d7fe5a9882597af3f11261397f8a27862",
+      "sourceReferences": [
+       "https://hdl.handle.net/2027/hvd.hxpp8q?urlappend=%3Bseq=21"
+      ],
+      "publicationYear": "1825",
+      "publisher": "Knobloch",
+      "publicationPlace": "Lipsiae",
+      "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/e23048d26965d9084995e431aa4af01d7fe5a9882597af3f11261397f8a27862.xml"
+     }
+    ],
+    "sha256": "09099145bf78c2971ad5483535339c359949a0d2ac6c99fba6566a28885c3b51",
+    "passages": 114,
+    "characters": 200876,
+    "bytes": 423705,
+    "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0057-tlg061-grc-09099145bf78c297.json"
+   }
+  },
+  {
+   "id": "cts-tlg0057-tlg063",
+   "author": "Galeno",
+   "title": "Synopsis librorum suorum de pulsibus",
+   "language": "grc",
+   "genre": "Corpus clásico ampliado",
+   "dating": "siglo II d. C.",
+   "reading": {
+    "url": "classics-text-reader.html?work=cts-tlg0057-tlg063&lang=grc&edition=bfbf587570abb9a5",
+    "status": "Edición TEI alojada en R2 con búsqueda y traducción automática por pasaje"
+   },
+   "manuscript": {
+    "status": "Sin testimonio manuscrito individual asignado; la edición TEI se identifica por separado"
+   },
+   "pdf": {
+    "url": null,
+    "status": "No consta PDF ni facsímil individual verificado para esta edición"
+   },
+   "translation": {
+    "status": "Traducción automática de consulta por pasaje; no se atribuye a un traductor académico"
+   },
+   "links": {
+    "scaife": "https://scaife.perseus.org/library/urn:cts:greekLit:tlg0057.tlg063.1st1K-grc1/"
+   },
+   "aliases": [
+    "urn:cts:greekLit:tlg0057.tlg063.1st1K-grc1"
+   ],
+   "relatedWorkIds": [],
+   "catalogueProvenance": "Título y autor de los catálogos CTS del sitio; edición contrastada con su cabecera TEI. No se retrotraduce el título.",
+   "corpusFiles": {
+    "grc": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0057-tlg063-grc-bfbf587570abb9a5.json"
+   },
+   "localVersions": [
+    {
+     "language": "grc",
+     "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0057-tlg063-grc-bfbf587570abb9a5.json",
+     "label": "Edición original grc · urn:cts:greekLit:tlg0057.tlg063.1st1K-grc1",
+     "reader": "classics-text-reader.html?work=cts-tlg0057-tlg063&lang=grc&edition=bfbf587570abb9a5",
+     "sourceUrns": [
+      "urn:cts:greekLit:tlg0057.tlg063.1st1K-grc1"
+     ],
+     "sha256": "bfbf587570abb9a5f182b9490d1dd4bb04bf656ee3e955d278c0c365e60b78aa"
+    }
+   ],
+   "publicStatus": "lectura-local-parcial",
+   "indexedEdition": {
+    "sources": [
+     {
+      "title": "Synopsis librorum suorum de pulsibus",
+      "titleLanguage": "lat",
+      "author": "Galen",
+      "editors": [
+       "Karl Gottlob Kühn"
+      ],
+      "bibliography": "Claudii Galeni Opera Omnia Galen Karl Gottlob Kühn Knobloch Leipzig 9 431-533 1825 HathiTrust",
+      "licences": [
+       {
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+       }
+      ],
+      "editionUrn": "urn:cts:greekLit:tlg0057.tlg063.1st1K-grc1",
+      "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0057/tlg063/tlg0057.tlg063.1st1K-grc1.xml",
+      "sourceSha256": "a747b88db6a659013af1b94120b77cb848c81d741799af7e373c43fd35ec4143",
+      "sourceReferences": [
+       "https://hdl.handle.net/2027/hvd.hxpp8q?urlappend=%3Bseq=451"
+      ],
+      "publicationYear": "1825",
+      "publisher": "Knobloch",
+      "publicationPlace": "Leipzig",
+      "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/a747b88db6a659013af1b94120b77cb848c81d741799af7e373c43fd35ec4143.xml"
+     }
+    ],
+    "sha256": "bfbf587570abb9a5f182b9490d1dd4bb04bf656ee3e955d278c0c365e60b78aa",
+    "passages": 31,
+    "characters": 98394,
+    "bytes": 204588,
+    "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0057-tlg063-grc-bfbf587570abb9a5.json"
+   }
+  },
+  {
+   "id": "cts-tlg0057-tlg062",
+   "author": "Galeno",
+   "title": "De praesagitione ex pulsibus",
+   "language": "grc",
+   "genre": "Corpus clásico ampliado",
+   "dating": "siglo II d. C.",
+   "reading": {
+    "url": "classics-text-reader.html?work=cts-tlg0057-tlg062&lang=grc&edition=fce684e17036ab46",
+    "status": "Edición TEI alojada en R2 con búsqueda y traducción automática por pasaje"
+   },
+   "manuscript": {
+    "status": "Sin testimonio manuscrito individual asignado; la edición TEI se identifica por separado"
+   },
+   "pdf": {
+    "url": null,
+    "status": "No consta PDF ni facsímil individual verificado para esta edición"
+   },
+   "translation": {
+    "status": "Traducción automática de consulta por pasaje; no se atribuye a un traductor académico"
+   },
+   "links": {
+    "scaife": "https://scaife.perseus.org/library/urn:cts:greekLit:tlg0057.tlg062.1st1K-grc1/"
+   },
+   "aliases": [
+    "urn:cts:greekLit:tlg0057.tlg062.1st1K-grc1"
+   ],
+   "relatedWorkIds": [],
+   "catalogueProvenance": "Título y autor de los catálogos CTS del sitio; edición contrastada con su cabecera TEI. No se retrotraduce el título.",
+   "corpusFiles": {
+    "grc": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0057-tlg062-grc-fce684e17036ab46.json"
+   },
+   "localVersions": [
+    {
+     "language": "grc",
+     "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0057-tlg062-grc-fce684e17036ab46.json",
+     "label": "Edición original grc · urn:cts:greekLit:tlg0057.tlg062.1st1K-grc1",
+     "reader": "classics-text-reader.html?work=cts-tlg0057-tlg062&lang=grc&edition=fce684e17036ab46",
+     "sourceUrns": [
+      "urn:cts:greekLit:tlg0057.tlg062.1st1K-grc1"
+     ],
+     "sha256": "fce684e17036ab46bb1196eb4f90972a659a0c52943ca90b6d8dc5ed52327727"
+    }
+   ],
+   "publicStatus": "lectura-local-parcial",
+   "indexedEdition": {
+    "sources": [
+     {
+      "title": "De praesagitione ex pulsibus",
+      "titleLanguage": "lat",
+      "author": "Galen",
+      "editors": [
+       "Karl Gottlob Kühn"
+      ],
+      "bibliography": "Claudii Galeni Opera Omnia Galen Karl Gottlob Kühn Knobloch Lipsiae 9 205-430 1825 HathiTrust",
+      "licences": [
+       {
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+       }
+      ],
+      "editionUrn": "urn:cts:greekLit:tlg0057.tlg062.1st1K-grc1",
+      "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0057/tlg062/tlg0057.tlg062.1st1K-grc1.xml",
+      "sourceSha256": "8f4689a211ddf058e291c543700fda6ed1a4a43145516a6cb493b3fc628732ea",
+      "sourceReferences": [
+       "https://hdl.handle.net/2027/hvd.hxpp8q?urlappend=%3Bseq=225"
+      ],
+      "publicationYear": "1825",
+      "publisher": "Knobloch",
+      "publicationPlace": "Lipsiae",
+      "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/8f4689a211ddf058e291c543700fda6ed1a4a43145516a6cb493b3fc628732ea.xml"
+     }
+    ],
+    "sha256": "fce684e17036ab46bb1196eb4f90972a659a0c52943ca90b6d8dc5ed52327727",
+    "passages": 48,
+    "characters": 227529,
+    "bytes": 467159,
+    "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0057-tlg062-grc-fce684e17036ab46.json"
+   }
+  },
+  {
+   "id": "cts-tlg0057-tlg064",
+   "author": "Galeno",
+   "title": "De crisibus",
+   "language": "grc",
+   "genre": "Corpus clásico ampliado",
+   "dating": "siglo II d. C.",
+   "reading": {
+    "url": "classics-text-reader.html?work=cts-tlg0057-tlg064&lang=grc&edition=34a3c35b1fa02ea7",
+    "status": "Edición TEI alojada en R2 con búsqueda y traducción automática por pasaje"
+   },
+   "manuscript": {
+    "status": "Sin testimonio manuscrito individual asignado; la edición TEI se identifica por separado"
+   },
+   "pdf": {
+    "url": null,
+    "status": "No consta PDF ni facsímil individual verificado para esta edición"
+   },
+   "translation": {
+    "status": "Traducción automática de consulta por pasaje; no se atribuye a un traductor académico"
+   },
+   "links": {
+    "scaife": "https://scaife.perseus.org/library/urn:cts:greekLit:tlg0057.tlg064.1st1K-grc1/"
+   },
+   "aliases": [
+    "urn:cts:greekLit:tlg0057.tlg064.1st1K-grc1"
+   ],
+   "relatedWorkIds": [],
+   "catalogueProvenance": "Título y autor de los catálogos CTS del sitio; edición contrastada con su cabecera TEI. No se retrotraduce el título.",
+   "corpusFiles": {
+    "grc": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0057-tlg064-grc-34a3c35b1fa02ea7.json"
+   },
+   "localVersions": [
+    {
+     "language": "grc",
+     "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0057-tlg064-grc-34a3c35b1fa02ea7.json",
+     "label": "Edición original grc · urn:cts:greekLit:tlg0057.tlg064.1st1K-grc1",
+     "reader": "classics-text-reader.html?work=cts-tlg0057-tlg064&lang=grc&edition=34a3c35b1fa02ea7",
+     "sourceUrns": [
+      "urn:cts:greekLit:tlg0057.tlg064.1st1K-grc1"
+     ],
+     "sha256": "34a3c35b1fa02ea77fd99828d21812c4dbb1161cfedc52b9e8195711216e6833"
+    }
+   ],
+   "publicStatus": "lectura-local-parcial",
+   "indexedEdition": {
+    "sources": [
+     {
+      "title": "De crisibus",
+      "titleLanguage": "lat",
+      "author": "Galen",
+      "editors": [
+       "Karl Gottlob Kühn"
+      ],
+      "bibliography": "Claudii Galeni Opera Omnia Galen Karl Gottlob Kühn Knobloch Lipsiae 9 550-768 1825 HathiTrust",
+      "licences": [
+       {
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+       }
+      ],
+      "editionUrn": "urn:cts:greekLit:tlg0057.tlg064.1st1K-grc1",
+      "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0057/tlg064/tlg0057.tlg064.1st1K-grc1.xml",
+      "sourceSha256": "388c417abce5f148f7c64be2c0c35dd2083798197cc31a44a31704dda77d5580",
+      "sourceReferences": [
+       "https://hdl.handle.net/2027/hvd.hxpp8q?urlappend=%3Bseq=570"
+      ],
+      "publicationYear": "1825",
+      "publisher": "Knobloch",
+      "publicationPlace": "Lipsiae",
+      "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/388c417abce5f148f7c64be2c0c35dd2083798197cc31a44a31704dda77d5580.xml"
+     }
+    ],
+    "sha256": "34a3c35b1fa02ea77fd99828d21812c4dbb1161cfedc52b9e8195711216e6833",
+    "passages": 47,
+    "characters": 211472,
+    "bytes": 434373,
+    "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0057-tlg064-grc-34a3c35b1fa02ea7.json"
+   }
+  },
+  {
+   "id": "cts-tlg0057-tlg065",
+   "author": "Galeno",
+   "title": "De diebus decretoriis",
+   "language": "grc",
+   "genre": "Corpus clásico ampliado",
+   "dating": "siglo II d. C.",
+   "reading": {
+    "url": "classics-text-reader.html?work=cts-tlg0057-tlg065&lang=grc&edition=553d093c69d923df",
+    "status": "Edición TEI alojada en R2 con búsqueda y traducción automática por pasaje"
+   },
+   "manuscript": {
+    "status": "Sin testimonio manuscrito individual asignado; la edición TEI se identifica por separado"
+   },
+   "pdf": {
+    "url": null,
+    "status": "No consta PDF ni facsímil individual verificado para esta edición"
+   },
+   "translation": {
+    "status": "Traducción automática de consulta por pasaje; no se atribuye a un traductor académico"
+   },
+   "links": {
+    "scaife": "https://scaife.perseus.org/library/urn:cts:greekLit:tlg0057.tlg065.1st1K-grc1/"
+   },
+   "aliases": [
+    "urn:cts:greekLit:tlg0057.tlg065.1st1K-grc1"
+   ],
+   "relatedWorkIds": [],
+   "catalogueProvenance": "Título y autor de los catálogos CTS del sitio; edición contrastada con su cabecera TEI. No se retrotraduce el título.",
+   "corpusFiles": {
+    "grc": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0057-tlg065-grc-553d093c69d923df.json"
+   },
+   "localVersions": [
+    {
+     "language": "grc",
+     "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0057-tlg065-grc-553d093c69d923df.json",
+     "label": "Edición original grc · urn:cts:greekLit:tlg0057.tlg065.1st1K-grc1",
+     "reader": "classics-text-reader.html?work=cts-tlg0057-tlg065&lang=grc&edition=553d093c69d923df",
+     "sourceUrns": [
+      "urn:cts:greekLit:tlg0057.tlg065.1st1K-grc1"
+     ],
+     "sha256": "553d093c69d923df820e4e1dcdfbd59795f43e4592ba3b221a871becdfa6bcef"
+    }
+   ],
+   "publicStatus": "lectura-local-parcial",
+   "indexedEdition": {
+    "sources": [
+     {
+      "title": "De diebus decretoriis",
+      "titleLanguage": "lat",
+      "author": "Galen",
+      "editors": [
+       "Karl Gottlob Kühn"
+      ],
+      "bibliography": "Claudii Galeni Opera Omnia Galen Karl Gottlob Kühn Knobloch Leipzig 9 761-941 1825 HathiTrust",
+      "licences": [
+       {
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+       }
+      ],
+      "editionUrn": "urn:cts:greekLit:tlg0057.tlg065.1st1K-grc1",
+      "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0057/tlg065/tlg0057.tlg065.1st1K-grc1.xml",
+      "sourceSha256": "0cdeacc3a3a3adc34d25205f70924a5a6f83cb5485ac3d4a8a42aa5b5435cfa4",
+      "sourceReferences": [
+       "https://hdl.handle.net/2027/hvd.hxpp8q?urlappend=%3Bseq=789"
+      ],
+      "publicationYear": "1825",
+      "publisher": "Knobloch",
+      "publicationPlace": "Leipzig",
+      "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/0cdeacc3a3a3adc34d25205f70924a5a6f83cb5485ac3d4a8a42aa5b5435cfa4.xml"
+     }
+    ],
+    "sha256": "553d093c69d923df820e4e1dcdfbd59795f43e4592ba3b221a871becdfa6bcef",
+    "passages": 44,
+    "characters": 170143,
+    "bytes": 351374,
+    "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0057-tlg065-grc-553d093c69d923df.json"
+   }
+  },
+  {
+   "id": "cts-tlg0057-tlg073",
+   "author": "Galeno",
+   "title": "Quos quibus catharticis medicamentis et quando purgare oporteat",
+   "language": "grc",
+   "genre": "Corpus clásico ampliado",
+   "dating": "siglo II d. C.",
+   "reading": {
+    "url": "classics-text-reader.html?work=cts-tlg0057-tlg073&lang=grc&edition=59ea70ed62896dcb",
+    "status": "Edición TEI alojada en R2 con búsqueda y traducción automática por pasaje"
+   },
+   "manuscript": {
+    "status": "Sin testimonio manuscrito individual asignado; la edición TEI se identifica por separado"
+   },
+   "pdf": {
+    "url": null,
+    "status": "No consta PDF ni facsímil individual verificado para esta edición"
+   },
+   "translation": {
+    "status": "Traducción automática de consulta por pasaje; no se atribuye a un traductor académico"
+   },
+   "links": {
+    "scaife": "https://scaife.perseus.org/library/urn:cts:greekLit:tlg0057.tlg073.1st1K-grc1/"
+   },
+   "aliases": [
+    "urn:cts:greekLit:tlg0057.tlg073.1st1K-grc1"
+   ],
+   "relatedWorkIds": [],
+   "catalogueProvenance": "Título y autor de los catálogos CTS del sitio; edición contrastada con su cabecera TEI. No se retrotraduce el título.",
+   "corpusFiles": {
+    "grc": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0057-tlg073-grc-59ea70ed62896dcb.json"
+   },
+   "localVersions": [
+    {
+     "language": "grc",
+     "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0057-tlg073-grc-59ea70ed62896dcb.json",
+     "label": "Edición original grc · urn:cts:greekLit:tlg0057.tlg073.1st1K-grc1",
+     "reader": "classics-text-reader.html?work=cts-tlg0057-tlg073&lang=grc&edition=59ea70ed62896dcb",
+     "sourceUrns": [
+      "urn:cts:greekLit:tlg0057.tlg073.1st1K-grc1"
+     ],
+     "sha256": "59ea70ed62896dcbd98214d4b02e0276e6d6ab959618539f24c51f0f1294619b"
+    }
+   ],
+   "publicStatus": "lectura-local-parcial",
+   "indexedEdition": {
+    "sources": [
+     {
+      "title": "Quos quibus catharticis medicamentis et quando purgare oporteat",
+      "titleLanguage": "lat",
+      "author": "Galen",
+      "editors": [
+       "Karl Gottlob Kühn"
+      ],
+      "bibliography": "Claudii Galeni Opera Omnia Galen Karl Gottlob Kühn Knobloch Lipsiae 11 343-356 1826 HathiTrust",
+      "licences": [
+       {
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+       }
+      ],
+      "editionUrn": "urn:cts:greekLit:tlg0057.tlg073.1st1K-grc1",
+      "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0057/tlg073/tlg0057.tlg073.1st1K-grc1.xml",
+      "sourceSha256": "5709411676d99fbf788291a1e92854424526d18b23b5fb4546dca534d6c60c23",
+      "sourceReferences": [
+       "https://hdl.handle.net/2027/hvd.hxpp8s?urlappend=%3Bseq=355%3Bownerid=27021597764275152-359"
+      ],
+      "publicationYear": "1826",
+      "publisher": "Knobloch",
+      "publicationPlace": "Lipsiae",
+      "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/5709411676d99fbf788291a1e92854424526d18b23b5fb4546dca534d6c60c23.xml"
+     }
+    ],
+    "sha256": "59ea70ed62896dcbd98214d4b02e0276e6d6ab959618539f24c51f0f1294619b",
+    "passages": 2,
+    "characters": 12797,
+    "bytes": 28036,
+    "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0057-tlg073-grc-59ea70ed62896dcb.json"
+   }
+  },
+  {
+   "id": "cts-tlg0057-tlg074",
+   "author": "Galeno",
+   "title": "Pro puero epileptico consilium",
+   "language": "grc",
+   "genre": "Corpus clásico ampliado",
+   "dating": "siglo II d. C.",
+   "reading": {
+    "url": "classics-text-reader.html?work=cts-tlg0057-tlg074&lang=grc&edition=3135b26c31682f8d",
+    "status": "Edición TEI alojada en R2 con búsqueda y traducción automática por pasaje"
+   },
+   "manuscript": {
+    "status": "Sin testimonio manuscrito individual asignado; la edición TEI se identifica por separado"
+   },
+   "pdf": {
+    "url": null,
+    "status": "No consta PDF ni facsímil individual verificado para esta edición"
+   },
+   "translation": {
+    "status": "Traducción automática de consulta por pasaje; no se atribuye a un traductor académico"
+   },
+   "links": {
+    "scaife": "https://scaife.perseus.org/library/urn:cts:greekLit:tlg0057.tlg074.1st1K-grc1/"
+   },
+   "aliases": [
+    "urn:cts:greekLit:tlg0057.tlg074.1st1K-grc1"
+   ],
+   "relatedWorkIds": [],
+   "catalogueProvenance": "Título y autor de los catálogos CTS del sitio; edición contrastada con su cabecera TEI. No se retrotraduce el título.",
+   "corpusFiles": {
+    "grc": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0057-tlg074-grc-3135b26c31682f8d.json"
+   },
+   "localVersions": [
+    {
+     "language": "grc",
+     "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0057-tlg074-grc-3135b26c31682f8d.json",
+     "label": "Edición original grc · urn:cts:greekLit:tlg0057.tlg074.1st1K-grc1",
+     "reader": "classics-text-reader.html?work=cts-tlg0057-tlg074&lang=grc&edition=3135b26c31682f8d",
+     "sourceUrns": [
+      "urn:cts:greekLit:tlg0057.tlg074.1st1K-grc1"
+     ],
+     "sha256": "3135b26c31682f8d6dcbd611830eca35a00890df0c807d6894178657985e3696"
+    }
+   ],
+   "publicStatus": "lectura-local-parcial",
+   "indexedEdition": {
+    "sources": [
+     {
+      "title": "Pro puero epileptico consilium",
+      "titleLanguage": "lat",
+      "author": "Galen",
+      "editors": [
+       "Karl Gottlob Kühn"
+      ],
+      "bibliography": "Claudii Galeni Opera Omnia Galen Karl Gottlob Kühn Knobloch Leipzig 11 357-368 1826 HathiTrust",
+      "licences": [
+       {
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+       }
+      ],
+      "editionUrn": "urn:cts:greekLit:tlg0057.tlg074.1st1K-grc1",
+      "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0057/tlg074/tlg0057.tlg074.1st1K-grc1.xml",
+      "sourceSha256": "3b09ea9986d64f65dd42f46e2fc1fea2281a4aa9c70c8c5936ebe584b7add0f9",
+      "sourceReferences": [
+       "https://hdl.handle.net/2027/hvd.hxpp8s?urlappend=%3Bseq=369%3Bownerid=27021597764275719-373"
+      ],
+      "publicationYear": "1826",
+      "publisher": "Knobloch",
+      "publicationPlace": "Leipzig",
+      "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/3b09ea9986d64f65dd42f46e2fc1fea2281a4aa9c70c8c5936ebe584b7add0f9.xml"
+     }
+    ],
+    "sha256": "3135b26c31682f8d6dcbd611830eca35a00890df0c807d6894178657985e3696",
+    "passages": 7,
+    "characters": 19910,
+    "bytes": 42962,
+    "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0057-tlg074-grc-3135b26c31682f8d.json"
+   }
+  },
+  {
+   "id": "cts-tlg0057-tlg066",
+   "author": "Galeno",
+   "title": "De methodo medendi",
+   "language": "grc",
+   "genre": "Corpus clásico ampliado",
+   "dating": "siglo II d. C.",
+   "reading": {
+    "url": "classics-text-reader.html?work=cts-tlg0057-tlg066&lang=grc&edition=cbab3be4355fd85d",
+    "status": "Edición TEI alojada en R2 con búsqueda y traducción automática por pasaje"
+   },
+   "manuscript": {
+    "status": "Sin testimonio manuscrito individual asignado; la edición TEI se identifica por separado"
+   },
+   "pdf": {
+    "url": null,
+    "status": "No consta PDF ni facsímil individual verificado para esta edición"
+   },
+   "translation": {
+    "status": "Traducción automática de consulta por pasaje; no se atribuye a un traductor académico"
+   },
+   "links": {
+    "scaife": "https://scaife.perseus.org/library/urn:cts:greekLit:tlg0057.tlg066.1st1K-grc1/"
+   },
+   "aliases": [
+    "urn:cts:greekLit:tlg0057.tlg066.1st1K-grc1"
+   ],
+   "relatedWorkIds": [],
+   "catalogueProvenance": "Título y autor de los catálogos CTS del sitio; edición contrastada con su cabecera TEI. No se retrotraduce el título.",
+   "corpusFiles": {
+    "grc": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0057-tlg066-grc-cbab3be4355fd85d.json"
+   },
+   "localVersions": [
+    {
+     "language": "grc",
+     "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0057-tlg066-grc-cbab3be4355fd85d.json",
+     "label": "Edición original grc · urn:cts:greekLit:tlg0057.tlg066.1st1K-grc1",
+     "reader": "classics-text-reader.html?work=cts-tlg0057-tlg066&lang=grc&edition=cbab3be4355fd85d",
+     "sourceUrns": [
+      "urn:cts:greekLit:tlg0057.tlg066.1st1K-grc1"
+     ],
+     "sha256": "cbab3be4355fd85d941e97645bc4b02bf55e9f6dd59830e9a583f2a801f449c3"
+    }
+   ],
+   "publicStatus": "lectura-local-parcial",
+   "indexedEdition": {
+    "sources": [
+     {
+      "title": "De methodo medendi",
+      "titleLanguage": "lat",
+      "author": "Galen",
+      "editors": [
+       "Karl Gottlob Kühn"
+      ],
+      "bibliography": "Claudii Galeni Opera Omnia Galen Karl Gottlob Kühn Knobloch Leipzig 10 1-1021 1825 HathiTrust",
+      "licences": [
+       {
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+       }
+      ],
+      "editionUrn": "urn:cts:greekLit:tlg0057.tlg066.1st1K-grc1",
+      "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0057/tlg066/tlg0057.tlg066.1st1K-grc1.xml",
+      "sourceSha256": "18da6603976a5b97200bc98615035f0df19043b12662f6b6e0a5fe3b027a5f2f",
+      "sourceReferences": [
+       "https://hdl.handle.net/2027/njp.32101073247403?urlappend=%3Bseq=13%3Bownerid=27021597768766401-13"
+      ],
+      "publicationYear": "1825",
+      "publisher": "Knobloch",
+      "publicationPlace": "Leipzig",
+      "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/18da6603976a5b97200bc98615035f0df19043b12662f6b6e0a5fe3b027a5f2f.xml"
+     }
+    ],
+    "sha256": "cbab3be4355fd85d941e97645bc4b02bf55e9f6dd59830e9a583f2a801f449c3",
+    "passages": 194,
+    "characters": 986822,
+    "bytes": 2021089,
+    "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0057-tlg066-grc-cbab3be4355fd85d.json"
+   }
+  },
+  {
+   "id": "cts-tlg0057-tlg075",
+   "author": "Galeno",
+   "title": "De simplicium medicamentorum temperamentis ac facultatibus I-VI",
+   "language": "grc",
+   "genre": "Corpus clásico ampliado",
+   "dating": "siglo II d. C.",
+   "reading": {
+    "url": "classics-text-reader.html?work=cts-tlg0057-tlg075&lang=grc&edition=688adb2f5decbe50",
+    "status": "Edición TEI alojada en R2 con búsqueda y traducción automática por pasaje"
+   },
+   "manuscript": {
+    "status": "Sin testimonio manuscrito individual asignado; la edición TEI se identifica por separado"
+   },
+   "pdf": {
+    "url": null,
+    "status": "No consta PDF ni facsímil individual verificado para esta edición"
+   },
+   "translation": {
+    "status": "Traducción automática de consulta por pasaje; no se atribuye a un traductor académico"
+   },
+   "links": {
+    "scaife": "https://scaife.perseus.org/library/urn:cts:greekLit:tlg0057.tlg075.1st1K-grc1/"
+   },
+   "aliases": [
+    "urn:cts:greekLit:tlg0057.tlg075.1st1K-grc1"
+   ],
+   "relatedWorkIds": [],
+   "catalogueProvenance": "Título y autor de los catálogos CTS del sitio; edición contrastada con su cabecera TEI. No se retrotraduce el título.",
+   "corpusFiles": {
+    "grc": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0057-tlg075-grc-688adb2f5decbe50.json"
+   },
+   "localVersions": [
+    {
+     "language": "grc",
+     "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0057-tlg075-grc-688adb2f5decbe50.json",
+     "label": "Edición original grc · urn:cts:greekLit:tlg0057.tlg075.1st1K-grc1",
+     "reader": "classics-text-reader.html?work=cts-tlg0057-tlg075&lang=grc&edition=688adb2f5decbe50",
+     "sourceUrns": [
+      "urn:cts:greekLit:tlg0057.tlg075.1st1K-grc1"
+     ],
+     "sha256": "688adb2f5decbe507131163cb06c1c994cf843ba9553cae6402ec8c051c4929b"
+    }
+   ],
+   "publicStatus": "lectura-local-parcial",
+   "indexedEdition": {
+    "sources": [
+     {
+      "title": "De simplicium medicamentorum temperamentis ac facultatibus I-VI",
+      "titleLanguage": "lat",
+      "author": "Galen",
+      "editors": [
+       "Karl Gottlob Kühn"
+      ],
+      "bibliography": "Claudii Galeni Opera Omnia Galen Karl Gottlob Kühn Knobloch Leipzig 11 379-892 1826 Knobloch Leipzig 12 1-377 1826 HathiTrust HathiTrust",
+      "licences": [
+       {
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+       }
+      ],
+      "editionUrn": "urn:cts:greekLit:tlg0057.tlg075.1st1K-grc1",
+      "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0057/tlg075/tlg0057.tlg075.1st1K-grc1.xml",
+      "sourceSha256": "41a73a6e9334fc8e68a602d97b41925d9b6b568e866547828b98727681c5b183",
+      "sourceReferences": [
+       "https://hdl.handle.net/2027/hvd.hxpp8s?urlappend=%3Bseq=391%3Bownerid=27021597764275152-395",
+       "https://hdl.handle.net/2027/hvd.hxpp8r?urlappend=%3Bseq=19%3Bownerid=27021597764278335-15"
+      ],
+      "publicationYear": "1826",
+      "publisher": "Knobloch",
+      "publicationPlace": "Leipzig",
+      "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/41a73a6e9334fc8e68a602d97b41925d9b6b568e866547828b98727681c5b183.xml"
+     }
+    ],
+    "sha256": "688adb2f5decbe507131163cb06c1c994cf843ba9553cae6402ec8c051c4929b",
+    "passages": 801,
+    "characters": 839621,
+    "bytes": 1814485,
+    "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0057-tlg075-grc-688adb2f5decbe50.json"
+   }
+  },
+  {
+   "id": "cts-tlg0057-tlg076",
+   "author": "Galeno",
+   "title": "De compositione medicamentorum secundum locos libri X",
+   "language": "grc",
+   "genre": "Corpus clásico ampliado",
+   "dating": "siglo II d. C.",
+   "reading": {
+    "url": "classics-text-reader.html?work=cts-tlg0057-tlg076&lang=grc&edition=a5e42ae75dcc9dea",
+    "status": "Edición TEI alojada en R2 con búsqueda y traducción automática por pasaje"
+   },
+   "manuscript": {
+    "status": "Sin testimonio manuscrito individual asignado; la edición TEI se identifica por separado"
+   },
+   "pdf": {
+    "url": null,
+    "status": "No consta PDF ni facsímil individual verificado para esta edición"
+   },
+   "translation": {
+    "status": "Traducción automática de consulta por pasaje; no se atribuye a un traductor académico"
+   },
+   "links": {
+    "scaife": "https://scaife.perseus.org/library/urn:cts:greekLit:tlg0057.tlg076.1st1K-grc1/"
+   },
+   "aliases": [
+    "urn:cts:greekLit:tlg0057.tlg076.1st1K-grc1"
+   ],
+   "relatedWorkIds": [],
+   "catalogueProvenance": "Título y autor de los catálogos CTS del sitio; edición contrastada con su cabecera TEI. No se retrotraduce el título.",
+   "corpusFiles": {
+    "grc": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0057-tlg076-grc-a5e42ae75dcc9dea.json"
+   },
+   "localVersions": [
+    {
+     "language": "grc",
+     "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0057-tlg076-grc-a5e42ae75dcc9dea.json",
+     "label": "Edición original grc · urn:cts:greekLit:tlg0057.tlg076.1st1K-grc1",
+     "reader": "classics-text-reader.html?work=cts-tlg0057-tlg076&lang=grc&edition=a5e42ae75dcc9dea",
+     "sourceUrns": [
+      "urn:cts:greekLit:tlg0057.tlg076.1st1K-grc1"
+     ],
+     "sha256": "a5e42ae75dcc9dea5235eef77b5a9412a6c5ee6daf6eddf5ab9a6c65b2decfc8"
+    }
+   ],
+   "publicStatus": "lectura-local-parcial",
+   "indexedEdition": {
+    "sources": [
+     {
+      "title": "De compositione medicamentorum secundum locos",
+      "titleLanguage": "lat",
+      "author": "Galen",
+      "editors": [
+       "Karl Gottlob Kühn"
+      ],
+      "bibliography": "Claudii Galeni Opera Omnia Galen Karl Gottlob Kühn Knobloch Leipzig 12 378-1007 1826 Knobloch Leipzig 13 1-361 1827 HathiTrust HathiTrust",
+      "licences": [
+       {
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+       }
+      ],
+      "editionUrn": "urn:cts:greekLit:tlg0057.tlg076.1st1K-grc1",
+      "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0057/tlg076/tlg0057.tlg076.1st1K-grc1.xml",
+      "sourceSha256": "495e189a0ebb34820f74b3d544cc61fe98cd426273addebc073a9610d7f2af20",
+      "sourceReferences": [
+       "https://hdl.handle.net/2027/hvd.hxpp8r?urlappend=%3Bseq=396%3Bownerid=27021597764278335-400",
+       "https://hdl.handle.net/2027/hvd.hxpp8t?urlappend=%3Bseq=13%3Bownerid=27021597764274908-19"
+      ],
+      "publicationYear": "1826",
+      "publisher": "Knobloch",
+      "publicationPlace": "Leipzig",
+      "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/495e189a0ebb34820f74b3d544cc61fe98cd426273addebc073a9610d7f2af20.xml"
+     }
+    ],
+    "sha256": "a5e42ae75dcc9dea5235eef77b5a9412a6c5ee6daf6eddf5ab9a6c65b2decfc8",
+    "passages": 676,
+    "characters": 935499,
+    "bytes": 1968953,
+    "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0057-tlg076-grc-a5e42ae75dcc9dea.json"
+   }
+  },
+  {
+   "id": "cts-tlg0010-tlg019",
+   "author": "Isócrates",
+   "title": "Antidosis",
+   "language": "grc",
+   "genre": "Corpus clásico ampliado",
+   "dating": "436–338 a. C.",
+   "reading": {
+    "url": "classics-text-reader.html?work=cts-tlg0010-tlg019&lang=grc&edition=497e4e2b0108c583",
+    "status": "Edición TEI alojada en R2 con búsqueda y traducción automática por pasaje"
+   },
+   "manuscript": {
+    "status": "Sin testimonio manuscrito individual asignado; la edición TEI se identifica por separado"
+   },
+   "pdf": {
+    "url": null,
+    "status": "No consta PDF ni facsímil individual verificado para esta edición"
+   },
+   "translation": {
+    "status": "Traducción automática de consulta por pasaje; no se atribuye a un traductor académico"
+   },
+   "links": {
+    "scaife": "https://scaife.perseus.org/library/urn:cts:greekLit:tlg0010.tlg019.perseus-grc2/"
+   },
+   "aliases": [
+    "urn:cts:greekLit:tlg0010.tlg019.perseus-grc2"
+   ],
+   "relatedWorkIds": [],
+   "catalogueProvenance": "Título y autor de los catálogos CTS del sitio; edición contrastada con su cabecera TEI. No se retrotraduce el título.",
+   "corpusFiles": {
+    "grc": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0010-tlg019-grc-497e4e2b0108c583.json"
+   },
+   "localVersions": [
+    {
+     "language": "grc",
+     "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0010-tlg019-grc-497e4e2b0108c583.json",
+     "label": "Edición original grc · urn:cts:greekLit:tlg0010.tlg019.perseus-grc2",
+     "reader": "classics-text-reader.html?work=cts-tlg0010-tlg019&lang=grc&edition=497e4e2b0108c583",
+     "sourceUrns": [
+      "urn:cts:greekLit:tlg0010.tlg019.perseus-grc2"
+     ],
+     "sha256": "497e4e2b0108c583bb3235c74067dd93bebbb9ac7e92263aab35da2e31a4a0cf"
+    }
+   ],
+   "publicStatus": "lectura-local-parcial",
+   "indexedEdition": {
+    "sources": [
+     {
+      "title": "Περὶ ἀντιδόσεως",
+      "titleLanguage": "grc",
+      "author": "Isocrates",
+      "editors": [
+       "George Norlin"
+      ],
+      "bibliography": "Isocrates Isocrates George Norlin Cambridge, MA London, UK Harvard University Press William Heinemann Ltd. 2 1928 Loeb Classical Library Internet Archive",
+      "licences": [
+       {
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+       }
+      ],
+      "editionUrn": "urn:cts:greekLit:tlg0010.tlg019.perseus-grc2",
+      "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0010/tlg019/tlg0010.tlg019.perseus-grc2.xml",
+      "sourceSha256": "ee361dbe16222c75bad9a9dfb91407685f46efe31f04a780249faa3edabbe2e0",
+      "sourceReferences": [
+       "https://archive.org/details/in.ernet.dli.2015.185377/page/184/mode/2up"
+      ],
+      "publicationYear": "1928",
+      "publisher": "Harvard University Press",
+      "publicationPlace": "Cambridge, MA",
+      "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/ee361dbe16222c75bad9a9dfb91407685f46efe31f04a780249faa3edabbe2e0.xml"
+     }
+    ],
+    "sha256": "497e4e2b0108c583bb3235c74067dd93bebbb9ac7e92263aab35da2e31a4a0cf",
+    "passages": 322,
+    "characters": 114570,
+    "bytes": 277332,
+    "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0010-tlg019-grc-497e4e2b0108c583.json"
+   }
+  },
+  {
+   "id": "cts-tlg0010-tlg020",
+   "author": "Isócrates",
+   "title": "To Philip",
+   "language": "grc",
+   "genre": "Corpus clásico ampliado",
+   "dating": "436–338 a. C.",
+   "reading": {
+    "url": "classics-text-reader.html?work=cts-tlg0010-tlg020&lang=grc&edition=687801fa597708dc",
+    "status": "Edición TEI alojada en R2 con búsqueda y traducción automática por pasaje"
+   },
+   "manuscript": {
+    "status": "Sin testimonio manuscrito individual asignado; la edición TEI se identifica por separado"
+   },
+   "pdf": {
+    "url": null,
+    "status": "No consta PDF ni facsímil individual verificado para esta edición"
+   },
+   "translation": {
+    "status": "Traducción automática de consulta por pasaje; no se atribuye a un traductor académico"
+   },
+   "links": {
+    "scaife": "https://scaife.perseus.org/library/urn:cts:greekLit:tlg0010.tlg020.perseus-grc2/"
+   },
+   "aliases": [
+    "urn:cts:greekLit:tlg0010.tlg020.perseus-grc2"
+   ],
+   "relatedWorkIds": [],
+   "catalogueProvenance": "Título y autor de los catálogos CTS del sitio; edición contrastada con su cabecera TEI. No se retrotraduce el título.",
+   "corpusFiles": {
+    "grc": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0010-tlg020-grc-687801fa597708dc.json"
+   },
+   "localVersions": [
+    {
+     "language": "grc",
+     "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0010-tlg020-grc-687801fa597708dc.json",
+     "label": "Edición original grc · urn:cts:greekLit:tlg0010.tlg020.perseus-grc2",
+     "reader": "classics-text-reader.html?work=cts-tlg0010-tlg020&lang=grc&edition=687801fa597708dc",
+     "sourceUrns": [
+      "urn:cts:greekLit:tlg0010.tlg020.perseus-grc2"
+     ],
+     "sha256": "687801fa597708dc0007ff7791ad18ba0f925bbf6ef0ed453d3659b06d08b055"
+    }
+   ],
+   "publicStatus": "lectura-local-parcial",
+   "indexedEdition": {
+    "sources": [
+     {
+      "title": "Φίλιππος",
+      "titleLanguage": "grc",
+      "author": "Isocrates",
+      "editors": [
+       "George Norlin"
+      ],
+      "bibliography": "Isocrates Isocrates George Norlin Cambridge, MA London, UK Harvard University Press William Heinemann Ltd. 1 1928 Loeb Classical Library Internet Archive",
+      "licences": [
+       {
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+       }
+      ],
+      "editionUrn": "urn:cts:greekLit:tlg0010.tlg020.perseus-grc2",
+      "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0010/tlg020/tlg0010.tlg020.perseus-grc2.xml",
+      "sourceSha256": "e7ad2a8923e770cede717f9bc3ea3b68ca4091d5bc0fe88d0a81dadfebc3bbd5",
+      "sourceReferences": [
+       "https://archive.org/details/isocrates01isoc/page/246/mode/2up"
+      ],
+      "publicationYear": "1928",
+      "publisher": "Harvard University Press",
+      "publicationPlace": "Cambridge, MA",
+      "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/e7ad2a8923e770cede717f9bc3ea3b68ca4091d5bc0fe88d0a81dadfebc3bbd5.xml"
+     }
+    ],
+    "sha256": "687801fa597708dc0007ff7791ad18ba0f925bbf6ef0ed453d3659b06d08b055",
+    "passages": 160,
+    "characters": 56571,
+    "bytes": 137942,
+    "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0010-tlg020-grc-687801fa597708dc.json"
+   }
+  },
+  {
+   "id": "cts-tlg0010-tlg021",
+   "author": "Isócrates",
+   "title": "Panathenaicus",
+   "language": "grc",
+   "genre": "Corpus clásico ampliado",
+   "dating": "436–338 a. C.",
+   "reading": {
+    "url": "classics-text-reader.html?work=cts-tlg0010-tlg021&lang=grc&edition=27012eb73f516ab5",
+    "status": "Edición TEI alojada en R2 con búsqueda y traducción automática por pasaje"
+   },
+   "manuscript": {
+    "status": "Sin testimonio manuscrito individual asignado; la edición TEI se identifica por separado"
+   },
+   "pdf": {
+    "url": null,
+    "status": "No consta PDF ni facsímil individual verificado para esta edición"
+   },
+   "translation": {
+    "status": "Traducción automática de consulta por pasaje; no se atribuye a un traductor académico"
+   },
+   "links": {
+    "scaife": "https://scaife.perseus.org/library/urn:cts:greekLit:tlg0010.tlg021.perseus-grc2/"
+   },
+   "aliases": [
+    "urn:cts:greekLit:tlg0010.tlg021.perseus-grc2"
+   ],
+   "relatedWorkIds": [],
+   "catalogueProvenance": "Título y autor de los catálogos CTS del sitio; edición contrastada con su cabecera TEI. No se retrotraduce el título.",
+   "corpusFiles": {
+    "grc": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0010-tlg021-grc-27012eb73f516ab5.json"
+   },
+   "localVersions": [
+    {
+     "language": "grc",
+     "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0010-tlg021-grc-27012eb73f516ab5.json",
+     "label": "Edición original grc · urn:cts:greekLit:tlg0010.tlg021.perseus-grc2",
+     "reader": "classics-text-reader.html?work=cts-tlg0010-tlg021&lang=grc&edition=27012eb73f516ab5",
+     "sourceUrns": [
+      "urn:cts:greekLit:tlg0010.tlg021.perseus-grc2"
+     ],
+     "sha256": "27012eb73f516ab55a0ab48061594360c88b05a04b605df51229103fefdaa7b0"
+    }
+   ],
+   "publicStatus": "lectura-local-parcial",
+   "indexedEdition": {
+    "sources": [
+     {
+      "title": "Παναθηναικός",
+      "titleLanguage": "grc",
+      "author": "Isocrates",
+      "editors": [
+       "George Norlin"
+      ],
+      "bibliography": "Isocrates Isocrates George Norlin Cambridge, MA London, UK Harvard University Press William Heinemann Ltd. 2 1928 Loeb Classical Library Internet Archive",
+      "licences": [
+       {
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+       }
+      ],
+      "editionUrn": "urn:cts:greekLit:tlg0010.tlg021.perseus-grc2",
+      "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0010/tlg021/tlg0010.tlg021.perseus-grc2.xml",
+      "sourceSha256": "b77f4c4872b9907956e50a15282c5ae47d0ab0cef486cd41173c6ec8a13e70bd",
+      "sourceReferences": [
+       "https://archive.org/details/in.ernet.dli.2015.185377/page/372/mode/2up"
+      ],
+      "publicationYear": "1928",
+      "publisher": "Harvard University Press",
+      "publicationPlace": "Cambridge, MA",
+      "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/b77f4c4872b9907956e50a15282c5ae47d0ab0cef486cd41173c6ec8a13e70bd.xml"
+     }
+    ],
+    "sha256": "27012eb73f516ab55a0ab48061594360c88b05a04b605df51229103fefdaa7b0",
+    "passages": 279,
+    "characters": 104336,
+    "bytes": 250822,
+    "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0010-tlg021-grc-27012eb73f516ab5.json"
    }
   }
  ],

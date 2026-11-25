@@ -4,17 +4,17 @@
   "scope": "Se auditan exclusivamente 271 fichas de obras del catálogo local; no es un censo universal de literatura grecolatina.",
   "method": "Cruce de fichas bibliográficas, vínculos locales, corpus legible, registro de búsqueda y testimonios manuscritos; sin OCR ni verificación externa de los enlaces.",
   "counts": {
-    "cataloguedWorks": 575,
+    "cataloguedWorks": 602,
     "catalogueStatuses": {
       "lectura-local-completa": 24,
-      "lectura-local-parcial": 483,
+      "lectura-local-parcial": 510,
       "fuente-externa-identificada": 54,
       "repertoriado-busqueda-externa": 12,
       "pendiente-de-incorporar": 2
     },
-    "locallyReadableClaims": 507,
-    "indexedTextVersions": 752,
-    "indexedDistinctWorks": 546,
+    "locallyReadableClaims": 534,
+    "indexedTextVersions": 789,
+    "indexedDistinctWorks": 573,
     "manuscriptWitnesses": 107
   },
   "works": [
@@ -2399,7 +2399,8 @@
       ],
       "indexedTextFiles": [
         "data/classics-corpus/aeschylus-oresteia-en.json",
-        "data/classics-corpus/aeschylus-oresteia-grc.json"
+        "data/classics-corpus/aeschylus-oresteia-grc.json",
+        "https://libros.vitruvius-digital-library.org/corpus/aeschylus-oresteia-grc-68452dc0d78a49ec.json"
       ],
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
@@ -2473,7 +2474,8 @@
       ],
       "indexedTextFiles": [
         "data/classics-corpus/aristophanes-clouds-en.json",
-        "data/classics-corpus/aristophanes-clouds-grc.json"
+        "data/classics-corpus/aristophanes-clouds-grc.json",
+        "https://libros.vitruvius-digital-library.org/corpus/aristophanes-clouds-grc-32a7488fccca60d5.json"
       ],
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
@@ -2781,7 +2783,8 @@
       ],
       "indexedTextFiles": [
         "data/classics-corpus/aeschylus-persae-en.json",
-        "data/classics-corpus/aeschylus-persae-grc.json"
+        "data/classics-corpus/aeschylus-persae-grc.json",
+        "https://libros.vitruvius-digital-library.org/corpus/aeschylus-persae-grc-0e20dfd894408e18.json"
       ],
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
@@ -2805,7 +2808,8 @@
       ],
       "indexedTextFiles": [
         "data/classics-corpus/aeschylus-seven-thebes-en.json",
-        "data/classics-corpus/aeschylus-seven-thebes-grc.json"
+        "data/classics-corpus/aeschylus-seven-thebes-grc.json",
+        "https://libros.vitruvius-digital-library.org/corpus/aeschylus-seven-thebes-grc-1701da4a7a820dd6.json"
       ],
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
@@ -2829,7 +2833,8 @@
       ],
       "indexedTextFiles": [
         "data/classics-corpus/aeschylus-suppliants-en.json",
-        "data/classics-corpus/aeschylus-suppliants-grc.json"
+        "data/classics-corpus/aeschylus-suppliants-grc.json",
+        "https://libros.vitruvius-digital-library.org/corpus/aeschylus-suppliants-grc-5e026ec0f3700666.json"
       ],
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
@@ -2853,7 +2858,8 @@
       ],
       "indexedTextFiles": [
         "data/classics-corpus/aeschylus-prometheus-en.json",
-        "data/classics-corpus/aeschylus-prometheus-grc.json"
+        "data/classics-corpus/aeschylus-prometheus-grc.json",
+        "https://libros.vitruvius-digital-library.org/corpus/aeschylus-prometheus-grc-221f9a88108f89dc.json"
       ],
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
@@ -3202,7 +3208,8 @@
       ],
       "indexedTextFiles": [
         "data/classics-corpus/aristophanes-aves-en.json",
-        "data/classics-corpus/aristophanes-aves-grc.json"
+        "data/classics-corpus/aristophanes-aves-grc.json",
+        "https://libros.vitruvius-digital-library.org/corpus/aristophanes-aves-grc-3cf416800db55aa7.json"
       ],
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
@@ -3249,7 +3256,8 @@
       ],
       "indexedTextFiles": [
         "data/classics-corpus/aristophanes-lysistrata-en.json",
-        "data/classics-corpus/aristophanes-lysistrata-grc.json"
+        "data/classics-corpus/aristophanes-lysistrata-grc.json",
+        "https://libros.vitruvius-digital-library.org/corpus/aristophanes-lysistrata-grc-128c0885128254f9.json"
       ],
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
@@ -3294,7 +3302,8 @@
         "grc"
       ],
       "indexedTextFiles": [
-        "data/classics-corpus/aristophanes-pax-grc.json"
+        "data/classics-corpus/aristophanes-pax-grc.json",
+        "https://libros.vitruvius-digital-library.org/corpus/aristophanes-pax-grc-f40cba02c34e05c9.json"
       ],
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
@@ -3318,7 +3327,8 @@
       ],
       "indexedTextFiles": [
         "data/classics-corpus/aristophanes-acharnenses-en.json",
-        "data/classics-corpus/aristophanes-acharnenses-grc.json"
+        "data/classics-corpus/aristophanes-acharnenses-grc.json",
+        "https://libros.vitruvius-digital-library.org/corpus/aristophanes-acharnenses-grc-7a9342b594e3cd6d.json"
       ],
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
@@ -10837,6 +10847,411 @@
       ],
       "indexedTextFiles": [
         "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0014-tlg036-grc-13c5146ab1d23432.json"
+      ],
+      "manuscriptRecords": 0,
+      "hasManuscriptRecord": false
+    },
+    {
+      "id": "cts-tlg5023-tlg010",
+      "author": "Escolios a Eurípides",
+      "title": "Vitae Euripidis",
+      "originalLanguage": "grc",
+      "catalogueStatus": "lectura-local-parcial",
+      "indexedTextLanguages": [
+        "grc"
+      ],
+      "indexedTextFiles": [
+        "https://libros.vitruvius-digital-library.org/corpus/cts-tlg5023-tlg010-grc-4031d77df94d26f5.json"
+      ],
+      "manuscriptRecords": 0,
+      "hasManuscriptRecord": false
+    },
+    {
+      "id": "cts-tlg4193-tlg012",
+      "author": "Anonymi In Aristotelis Sophisticos Elenchos",
+      "title": "In Aristotelis Sophisticos Elenchos Paraphrasis",
+      "originalLanguage": "grc",
+      "catalogueStatus": "lectura-local-parcial",
+      "indexedTextLanguages": [
+        "grc"
+      ],
+      "indexedTextFiles": [
+        "https://libros.vitruvius-digital-library.org/corpus/cts-tlg4193-tlg012-grc-2335bbbfd73a3ca7.json"
+      ],
+      "manuscriptRecords": 0,
+      "hasManuscriptRecord": false
+    },
+    {
+      "id": "cts-tlg4033-tlg003",
+      "author": "Anonymi In Aristotelis Ethica Nicomachea",
+      "title": "In Ethica Nicomachea Paraphrasis (Pseudepigraphum Olim A Constantino Palaeocappa confectum et olim sub auctore Heliodoro\n    Prusensi vel Andronico Rhodio vel Olympiodoro)",
+      "originalLanguage": "grc",
+      "catalogueStatus": "lectura-local-parcial",
+      "indexedTextLanguages": [
+        "grc"
+      ],
+      "indexedTextFiles": [
+        "https://libros.vitruvius-digital-library.org/corpus/cts-tlg4033-tlg003-grc-9edae93646b25d71.json"
+      ],
+      "manuscriptRecords": 0,
+      "hasManuscriptRecord": false
+    },
+    {
+      "id": "cts-tlg5023-tlg001",
+      "author": "Escolios a Eurípides",
+      "title": "Scholia in Euripidem (scholia vetera)",
+      "originalLanguage": "grc",
+      "catalogueStatus": "lectura-local-parcial",
+      "indexedTextLanguages": [
+        "grc"
+      ],
+      "indexedTextFiles": [
+        "https://libros.vitruvius-digital-library.org/corpus/cts-tlg5023-tlg001-grc-7162e45d235b6e32.json"
+      ],
+      "manuscriptRecords": 0,
+      "hasManuscriptRecord": false
+    },
+    {
+      "id": "cts-tlg5023-tlg011",
+      "author": "Escolios a Eurípides",
+      "title": "Scholia in Euripidis Rhesum",
+      "originalLanguage": "grc",
+      "catalogueStatus": "lectura-local-parcial",
+      "indexedTextLanguages": [
+        "grc"
+      ],
+      "indexedTextFiles": [
+        "https://libros.vitruvius-digital-library.org/corpus/cts-tlg5023-tlg011-grc-51d49822dedae096.json"
+      ],
+      "manuscriptRecords": 0,
+      "hasManuscriptRecord": false
+    },
+    {
+      "id": "cts-tlg5023-tlg012",
+      "author": "Escolios a Eurípides",
+      "title": "Scholia in Euripidis Troiades",
+      "originalLanguage": "grc",
+      "catalogueStatus": "lectura-local-parcial",
+      "indexedTextLanguages": [
+        "grc"
+      ],
+      "indexedTextFiles": [
+        "https://libros.vitruvius-digital-library.org/corpus/cts-tlg5023-tlg012-grc-6264783c04763300.json"
+      ],
+      "manuscriptRecords": 0,
+      "hasManuscriptRecord": false
+    },
+    {
+      "id": "cts-tlg5023-tlg013",
+      "author": "Escolios a Eurípides",
+      "title": "Scholia in Euripidis Hippolytum",
+      "originalLanguage": "grc",
+      "catalogueStatus": "lectura-local-parcial",
+      "indexedTextLanguages": [
+        "grc"
+      ],
+      "indexedTextFiles": [
+        "https://libros.vitruvius-digital-library.org/corpus/cts-tlg5023-tlg013-grc-678030fd055a5e1b.json"
+      ],
+      "manuscriptRecords": 0,
+      "hasManuscriptRecord": false
+    },
+    {
+      "id": "cts-tlg5023-tlg014",
+      "author": "Escolios a Eurípides",
+      "title": "Scholia in Euripidis Hecubam (scholia vetera et scholia\n        recentiora Thomae Magistri, Triclinii, Moschopuli et anonyma)",
+      "originalLanguage": "grc",
+      "catalogueStatus": "lectura-local-parcial",
+      "indexedTextLanguages": [
+        "grc"
+      ],
+      "indexedTextFiles": [
+        "https://libros.vitruvius-digital-library.org/corpus/cts-tlg5023-tlg014-grc-683651b97fbc342b.json"
+      ],
+      "manuscriptRecords": 0,
+      "hasManuscriptRecord": false
+    },
+    {
+      "id": "cts-tlg5023-tlg015",
+      "author": "Escolios a Eurípides",
+      "title": "Scholia in Euripidis Orestem (scholia vetera et scholia recentiora Thomae Magistri, Triclinii, Moschopuli et anonyma)",
+      "originalLanguage": "grc",
+      "catalogueStatus": "lectura-local-parcial",
+      "indexedTextLanguages": [
+        "grc"
+      ],
+      "indexedTextFiles": [
+        "https://libros.vitruvius-digital-library.org/corpus/cts-tlg5023-tlg015-grc-e4458a252581f58c.json"
+      ],
+      "manuscriptRecords": 0,
+      "hasManuscriptRecord": false
+    },
+    {
+      "id": "cts-tlg5023-tlg016",
+      "author": "Escolios a Eurípides",
+      "title": "Scholia in Euripidis Phoenissas (scholia vetera et scholia recentiora Thomae Magistri, Triclinii, Moschopuli et anonyma)",
+      "originalLanguage": "grc",
+      "catalogueStatus": "lectura-local-parcial",
+      "indexedTextLanguages": [
+        "grc"
+      ],
+      "indexedTextFiles": [
+        "https://libros.vitruvius-digital-library.org/corpus/cts-tlg5023-tlg016-grc-d98de1b8a398914d.json"
+      ],
+      "manuscriptRecords": 0,
+      "hasManuscriptRecord": false
+    },
+    {
+      "id": "cts-tlg5026-tlg007",
+      "author": "Escolios a Homero",
+      "title": "Scholia in Odysseam",
+      "originalLanguage": "grc",
+      "catalogueStatus": "lectura-local-parcial",
+      "indexedTextLanguages": [
+        "grc"
+      ],
+      "indexedTextFiles": [
+        "https://libros.vitruvius-digital-library.org/corpus/cts-tlg5026-tlg007-grc-1271ef7249c43298.json"
+      ],
+      "manuscriptRecords": 0,
+      "hasManuscriptRecord": false
+    },
+    {
+      "id": "cts-tlg9004-tlg001",
+      "author": "Anonymi In Aristotelis Librum Alterum Analyticorum Posteriorum",
+      "title": "Anonymi In Analyticorum Posteriorum Librum Alterum Commentarium",
+      "originalLanguage": "grc",
+      "catalogueStatus": "lectura-local-parcial",
+      "indexedTextLanguages": [
+        "grc"
+      ],
+      "indexedTextFiles": [
+        "https://libros.vitruvius-digital-library.org/corpus/cts-tlg9004-tlg001-grc-a2f2210825f6d903.json"
+      ],
+      "manuscriptRecords": 0,
+      "hasManuscriptRecord": false
+    },
+    {
+      "id": "cts-tlg5037-tlg004",
+      "author": "Scholia in Sophoclem",
+      "title": "Scholia in Sophoclem (scholia vetera)",
+      "originalLanguage": "grc",
+      "catalogueStatus": "lectura-local-parcial",
+      "indexedTextLanguages": [
+        "grc"
+      ],
+      "indexedTextFiles": [
+        "https://libros.vitruvius-digital-library.org/corpus/cts-tlg5037-tlg004-grc-ff23e3790863f817.json"
+      ],
+      "manuscriptRecords": 0,
+      "hasManuscriptRecord": false
+    },
+    {
+      "id": "cts-tlg5026-tlg001",
+      "author": "Escolios a Homero",
+      "title": "Scholia in Iliadem",
+      "originalLanguage": "grc",
+      "catalogueStatus": "lectura-local-parcial",
+      "indexedTextLanguages": [
+        "grc"
+      ],
+      "indexedTextFiles": [
+        "https://libros.vitruvius-digital-library.org/corpus/cts-tlg5026-tlg001-grc-0107ec455ce9faa7.json"
+      ],
+      "manuscriptRecords": 0,
+      "hasManuscriptRecord": false
+    },
+    {
+      "id": "cts-tlg0057-tlg061",
+      "author": "Galeno",
+      "title": "De causis pulsuum",
+      "originalLanguage": "grc",
+      "catalogueStatus": "lectura-local-parcial",
+      "indexedTextLanguages": [
+        "grc"
+      ],
+      "indexedTextFiles": [
+        "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0057-tlg061-grc-09099145bf78c297.json"
+      ],
+      "manuscriptRecords": 0,
+      "hasManuscriptRecord": false
+    },
+    {
+      "id": "cts-tlg0057-tlg063",
+      "author": "Galeno",
+      "title": "Synopsis librorum suorum de pulsibus",
+      "originalLanguage": "grc",
+      "catalogueStatus": "lectura-local-parcial",
+      "indexedTextLanguages": [
+        "grc"
+      ],
+      "indexedTextFiles": [
+        "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0057-tlg063-grc-bfbf587570abb9a5.json"
+      ],
+      "manuscriptRecords": 0,
+      "hasManuscriptRecord": false
+    },
+    {
+      "id": "cts-tlg0057-tlg062",
+      "author": "Galeno",
+      "title": "De praesagitione ex pulsibus",
+      "originalLanguage": "grc",
+      "catalogueStatus": "lectura-local-parcial",
+      "indexedTextLanguages": [
+        "grc"
+      ],
+      "indexedTextFiles": [
+        "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0057-tlg062-grc-fce684e17036ab46.json"
+      ],
+      "manuscriptRecords": 0,
+      "hasManuscriptRecord": false
+    },
+    {
+      "id": "cts-tlg0057-tlg064",
+      "author": "Galeno",
+      "title": "De crisibus",
+      "originalLanguage": "grc",
+      "catalogueStatus": "lectura-local-parcial",
+      "indexedTextLanguages": [
+        "grc"
+      ],
+      "indexedTextFiles": [
+        "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0057-tlg064-grc-34a3c35b1fa02ea7.json"
+      ],
+      "manuscriptRecords": 0,
+      "hasManuscriptRecord": false
+    },
+    {
+      "id": "cts-tlg0057-tlg065",
+      "author": "Galeno",
+      "title": "De diebus decretoriis",
+      "originalLanguage": "grc",
+      "catalogueStatus": "lectura-local-parcial",
+      "indexedTextLanguages": [
+        "grc"
+      ],
+      "indexedTextFiles": [
+        "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0057-tlg065-grc-553d093c69d923df.json"
+      ],
+      "manuscriptRecords": 0,
+      "hasManuscriptRecord": false
+    },
+    {
+      "id": "cts-tlg0057-tlg073",
+      "author": "Galeno",
+      "title": "Quos quibus catharticis medicamentis et quando purgare oporteat",
+      "originalLanguage": "grc",
+      "catalogueStatus": "lectura-local-parcial",
+      "indexedTextLanguages": [
+        "grc"
+      ],
+      "indexedTextFiles": [
+        "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0057-tlg073-grc-59ea70ed62896dcb.json"
+      ],
+      "manuscriptRecords": 0,
+      "hasManuscriptRecord": false
+    },
+    {
+      "id": "cts-tlg0057-tlg074",
+      "author": "Galeno",
+      "title": "Pro puero epileptico consilium",
+      "originalLanguage": "grc",
+      "catalogueStatus": "lectura-local-parcial",
+      "indexedTextLanguages": [
+        "grc"
+      ],
+      "indexedTextFiles": [
+        "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0057-tlg074-grc-3135b26c31682f8d.json"
+      ],
+      "manuscriptRecords": 0,
+      "hasManuscriptRecord": false
+    },
+    {
+      "id": "cts-tlg0057-tlg066",
+      "author": "Galeno",
+      "title": "De methodo medendi",
+      "originalLanguage": "grc",
+      "catalogueStatus": "lectura-local-parcial",
+      "indexedTextLanguages": [
+        "grc"
+      ],
+      "indexedTextFiles": [
+        "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0057-tlg066-grc-cbab3be4355fd85d.json"
+      ],
+      "manuscriptRecords": 0,
+      "hasManuscriptRecord": false
+    },
+    {
+      "id": "cts-tlg0057-tlg075",
+      "author": "Galeno",
+      "title": "De simplicium medicamentorum temperamentis ac facultatibus I-VI",
+      "originalLanguage": "grc",
+      "catalogueStatus": "lectura-local-parcial",
+      "indexedTextLanguages": [
+        "grc"
+      ],
+      "indexedTextFiles": [
+        "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0057-tlg075-grc-688adb2f5decbe50.json"
+      ],
+      "manuscriptRecords": 0,
+      "hasManuscriptRecord": false
+    },
+    {
+      "id": "cts-tlg0057-tlg076",
+      "author": "Galeno",
+      "title": "De compositione medicamentorum secundum locos libri X",
+      "originalLanguage": "grc",
+      "catalogueStatus": "lectura-local-parcial",
+      "indexedTextLanguages": [
+        "grc"
+      ],
+      "indexedTextFiles": [
+        "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0057-tlg076-grc-a5e42ae75dcc9dea.json"
+      ],
+      "manuscriptRecords": 0,
+      "hasManuscriptRecord": false
+    },
+    {
+      "id": "cts-tlg0010-tlg019",
+      "author": "Isócrates",
+      "title": "Antidosis",
+      "originalLanguage": "grc",
+      "catalogueStatus": "lectura-local-parcial",
+      "indexedTextLanguages": [
+        "grc"
+      ],
+      "indexedTextFiles": [
+        "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0010-tlg019-grc-497e4e2b0108c583.json"
+      ],
+      "manuscriptRecords": 0,
+      "hasManuscriptRecord": false
+    },
+    {
+      "id": "cts-tlg0010-tlg020",
+      "author": "Isócrates",
+      "title": "To Philip",
+      "originalLanguage": "grc",
+      "catalogueStatus": "lectura-local-parcial",
+      "indexedTextLanguages": [
+        "grc"
+      ],
+      "indexedTextFiles": [
+        "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0010-tlg020-grc-687801fa597708dc.json"
+      ],
+      "manuscriptRecords": 0,
+      "hasManuscriptRecord": false
+    },
+    {
+      "id": "cts-tlg0010-tlg021",
+      "author": "Isócrates",
+      "title": "Panathenaicus",
+      "originalLanguage": "grc",
+      "catalogueStatus": "lectura-local-parcial",
+      "indexedTextLanguages": [
+        "grc"
+      ],
+      "indexedTextFiles": [
+        "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0010-tlg021-grc-27012eb73f516ab5.json"
       ],
       "manuscriptRecords": 0,
       "hasManuscriptRecord": false

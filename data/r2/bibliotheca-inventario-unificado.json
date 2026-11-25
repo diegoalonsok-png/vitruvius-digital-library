@@ -1,12 +1,12 @@
 {
   "schema": "vdl-federated-bibliotheca-inventory-v1",
-  "generated": "2026-11-25T03:12:53.785089+00:00",
+  "generated": "2026-11-25T08:49:55.455704+00:00",
   "method": "Master works and additional R2 works counted separately; edition relations can be many-to-many. Remote text URLs are declared, not live-verified. Unresolved editions are never merged automatically.",
   "counts": {
-    "cataloguedWorks": 575,
+    "cataloguedWorks": 602,
     "supplementaryWorks": 127,
     "additionalWorks": 10,
-    "totalDeclaredWorks": 712,
+    "totalDeclaredWorks": 739,
     "r2EditionRecords": 117,
     "r2LinkedEditionRecords": 107,
     "r2WorkEditionRelations": 115,
@@ -14,7 +14,7 @@
     "r2UnlinkedEditionRecords": 0,
     "worksWithR2Edition": 114,
     "worksWithLocalIndexedText": 325,
-    "worksWithDeclaredRemoteIndex": 419
+    "worksWithDeclaredRemoteIndex": 456
   },
   "unlinkedR2EditionIds": [],
   "additionalWorks": [
@@ -4135,7 +4135,12 @@
           "path": "data/classics-corpus/aeschylus-oresteia-grc.json"
         }
       ],
-      "declaredRemoteIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/aeschylus-oresteia-grc-68452dc0d78a49ec.json"
+        }
+      ],
       "r2FacsimileEditions": [
         {
           "editionId": "esquilo-tragedias",
@@ -4221,7 +4226,12 @@
           "path": "data/classics-corpus/aristophanes-clouds-grc.json"
         }
       ],
-      "declaredRemoteIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/aristophanes-clouds-grc-32a7488fccca60d5.json"
+        }
+      ],
       "r2FacsimileEditions": []
     },
     {
@@ -4520,7 +4530,12 @@
           "path": "data/classics-corpus/aeschylus-persae-grc.json"
         }
       ],
-      "declaredRemoteIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/aeschylus-persae-grc-0e20dfd894408e18.json"
+        }
+      ],
       "r2FacsimileEditions": []
     },
     {
@@ -4538,7 +4553,12 @@
           "path": "data/classics-corpus/aeschylus-seven-thebes-grc.json"
         }
       ],
-      "declaredRemoteIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/aeschylus-seven-thebes-grc-1701da4a7a820dd6.json"
+        }
+      ],
       "r2FacsimileEditions": []
     },
     {
@@ -4556,7 +4576,12 @@
           "path": "data/classics-corpus/aeschylus-suppliants-grc.json"
         }
       ],
-      "declaredRemoteIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/aeschylus-suppliants-grc-5e026ec0f3700666.json"
+        }
+      ],
       "r2FacsimileEditions": []
     },
     {
@@ -4574,7 +4599,12 @@
           "path": "data/classics-corpus/aeschylus-prometheus-grc.json"
         }
       ],
-      "declaredRemoteIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/aeschylus-prometheus-grc-221f9a88108f89dc.json"
+        }
+      ],
       "r2FacsimileEditions": []
     },
     {
@@ -4924,7 +4954,12 @@
           "path": "data/classics-corpus/aristophanes-aves-grc.json"
         }
       ],
-      "declaredRemoteIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/aristophanes-aves-grc-3cf416800db55aa7.json"
+        }
+      ],
       "r2FacsimileEditions": [
         {
           "editionId": "aristofanes-comedias",
@@ -4983,7 +5018,12 @@
           "path": "data/classics-corpus/aristophanes-lysistrata-grc.json"
         }
       ],
-      "declaredRemoteIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/aristophanes-lysistrata-grc-128c0885128254f9.json"
+        }
+      ],
       "r2FacsimileEditions": []
     },
     {
@@ -5016,7 +5056,12 @@
           "path": "data/classics-corpus/aristophanes-pax-grc.json"
         }
       ],
-      "declaredRemoteIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/aristophanes-pax-grc-f40cba02c34e05c9.json"
+        }
+      ],
       "r2FacsimileEditions": [
         {
           "editionId": "aristofanes-comedias",
@@ -5045,7 +5090,12 @@
           "path": "data/classics-corpus/aristophanes-acharnenses-grc.json"
         }
       ],
-      "declaredRemoteIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/aristophanes-acharnenses-grc-7a9342b594e3cd6d.json"
+        }
+      ],
       "r2FacsimileEditions": []
     },
     {
@@ -12158,6 +12208,384 @@
         {
           "language": "grc",
           "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0014-tlg036-grc-13c5146ab1d23432.json"
+        }
+      ],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "cts-tlg5023-tlg010",
+      "author": "Escolios a Eurípides",
+      "title": "Vitae Euripidis",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg5023-tlg010-grc-4031d77df94d26f5.json"
+        }
+      ],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "cts-tlg4193-tlg012",
+      "author": "Anonymi In Aristotelis Sophisticos Elenchos",
+      "title": "In Aristotelis Sophisticos Elenchos Paraphrasis",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg4193-tlg012-grc-2335bbbfd73a3ca7.json"
+        }
+      ],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "cts-tlg4033-tlg003",
+      "author": "Anonymi In Aristotelis Ethica Nicomachea",
+      "title": "In Ethica Nicomachea Paraphrasis (Pseudepigraphum Olim A Constantino Palaeocappa confectum et olim sub auctore Heliodoro\n    Prusensi vel Andronico Rhodio vel Olympiodoro)",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg4033-tlg003-grc-9edae93646b25d71.json"
+        }
+      ],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "cts-tlg5023-tlg001",
+      "author": "Escolios a Eurípides",
+      "title": "Scholia in Euripidem (scholia vetera)",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg5023-tlg001-grc-7162e45d235b6e32.json"
+        }
+      ],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "cts-tlg5023-tlg011",
+      "author": "Escolios a Eurípides",
+      "title": "Scholia in Euripidis Rhesum",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg5023-tlg011-grc-51d49822dedae096.json"
+        }
+      ],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "cts-tlg5023-tlg012",
+      "author": "Escolios a Eurípides",
+      "title": "Scholia in Euripidis Troiades",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg5023-tlg012-grc-6264783c04763300.json"
+        }
+      ],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "cts-tlg5023-tlg013",
+      "author": "Escolios a Eurípides",
+      "title": "Scholia in Euripidis Hippolytum",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg5023-tlg013-grc-678030fd055a5e1b.json"
+        }
+      ],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "cts-tlg5023-tlg014",
+      "author": "Escolios a Eurípides",
+      "title": "Scholia in Euripidis Hecubam (scholia vetera et scholia\n        recentiora Thomae Magistri, Triclinii, Moschopuli et anonyma)",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg5023-tlg014-grc-683651b97fbc342b.json"
+        }
+      ],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "cts-tlg5023-tlg015",
+      "author": "Escolios a Eurípides",
+      "title": "Scholia in Euripidis Orestem (scholia vetera et scholia recentiora Thomae Magistri, Triclinii, Moschopuli et anonyma)",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg5023-tlg015-grc-e4458a252581f58c.json"
+        }
+      ],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "cts-tlg5023-tlg016",
+      "author": "Escolios a Eurípides",
+      "title": "Scholia in Euripidis Phoenissas (scholia vetera et scholia recentiora Thomae Magistri, Triclinii, Moschopuli et anonyma)",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg5023-tlg016-grc-d98de1b8a398914d.json"
+        }
+      ],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "cts-tlg5026-tlg007",
+      "author": "Escolios a Homero",
+      "title": "Scholia in Odysseam",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg5026-tlg007-grc-1271ef7249c43298.json"
+        }
+      ],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "cts-tlg9004-tlg001",
+      "author": "Anonymi In Aristotelis Librum Alterum Analyticorum Posteriorum",
+      "title": "Anonymi In Analyticorum Posteriorum Librum Alterum Commentarium",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg9004-tlg001-grc-a2f2210825f6d903.json"
+        }
+      ],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "cts-tlg5037-tlg004",
+      "author": "Scholia in Sophoclem",
+      "title": "Scholia in Sophoclem (scholia vetera)",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg5037-tlg004-grc-ff23e3790863f817.json"
+        }
+      ],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "cts-tlg5026-tlg001",
+      "author": "Escolios a Homero",
+      "title": "Scholia in Iliadem",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg5026-tlg001-grc-0107ec455ce9faa7.json"
+        }
+      ],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "cts-tlg0057-tlg061",
+      "author": "Galeno",
+      "title": "De causis pulsuum",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0057-tlg061-grc-09099145bf78c297.json"
+        }
+      ],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "cts-tlg0057-tlg063",
+      "author": "Galeno",
+      "title": "Synopsis librorum suorum de pulsibus",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0057-tlg063-grc-bfbf587570abb9a5.json"
+        }
+      ],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "cts-tlg0057-tlg062",
+      "author": "Galeno",
+      "title": "De praesagitione ex pulsibus",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0057-tlg062-grc-fce684e17036ab46.json"
+        }
+      ],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "cts-tlg0057-tlg064",
+      "author": "Galeno",
+      "title": "De crisibus",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0057-tlg064-grc-34a3c35b1fa02ea7.json"
+        }
+      ],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "cts-tlg0057-tlg065",
+      "author": "Galeno",
+      "title": "De diebus decretoriis",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0057-tlg065-grc-553d093c69d923df.json"
+        }
+      ],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "cts-tlg0057-tlg073",
+      "author": "Galeno",
+      "title": "Quos quibus catharticis medicamentis et quando purgare oporteat",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0057-tlg073-grc-59ea70ed62896dcb.json"
+        }
+      ],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "cts-tlg0057-tlg074",
+      "author": "Galeno",
+      "title": "Pro puero epileptico consilium",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0057-tlg074-grc-3135b26c31682f8d.json"
+        }
+      ],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "cts-tlg0057-tlg066",
+      "author": "Galeno",
+      "title": "De methodo medendi",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0057-tlg066-grc-cbab3be4355fd85d.json"
+        }
+      ],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "cts-tlg0057-tlg075",
+      "author": "Galeno",
+      "title": "De simplicium medicamentorum temperamentis ac facultatibus I-VI",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0057-tlg075-grc-688adb2f5decbe50.json"
+        }
+      ],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "cts-tlg0057-tlg076",
+      "author": "Galeno",
+      "title": "De compositione medicamentorum secundum locos libri X",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0057-tlg076-grc-a5e42ae75dcc9dea.json"
+        }
+      ],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "cts-tlg0010-tlg019",
+      "author": "Isócrates",
+      "title": "Antidosis",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0010-tlg019-grc-497e4e2b0108c583.json"
+        }
+      ],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "cts-tlg0010-tlg020",
+      "author": "Isócrates",
+      "title": "To Philip",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0010-tlg020-grc-687801fa597708dc.json"
+        }
+      ],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "cts-tlg0010-tlg021",
+      "author": "Isócrates",
+      "title": "Panathenaicus",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0010-tlg021-grc-27012eb73f516ab5.json"
         }
       ],
       "r2FacsimileEditions": []

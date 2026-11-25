@@ -4,26 +4,26 @@
   "basis": "Cálculo a partir de works[] y search-registry.json. Los campos de compatibilidad locallyIndexedWorks y localEditionLanguages incluyen índices registrados en R2. originalIndexed y verifiedLocalEditionLanguages solo cuentan archivos locales. originalR2Registered identifica declaraciones remotas; no certifica disponibilidad HTTP ni cotejo.",
   "scope": "271 obras del repertorio grecolatino; originales locales, índices remotos declarados y traducciones alojadas ES/EN/FR",
   "totals": {
-    "cataloguedWorks": 575,
-    "locallyIndexedWorks": 546,
+    "cataloguedWorks": 602,
+    "locallyIndexedWorks": 573,
     "translatedWorksLocal": 78,
-    "worksWithoutHostedTranslation": 497,
+    "worksWithoutHostedTranslation": 524,
     "localTranslationLanguages": {
       "es": 5,
       "en": 77,
       "fr": 2
     },
     "originalTextIndexed": 197,
-    "originalTextNotIndexed": 378,
+    "originalTextNotIndexed": 405,
     "verifiedLocalFileWorks": 199,
-    "declaredRemoteOnlyWorks": 347,
-    "declaredR2OriginalWorks": 419,
-    "registeredOriginalWorks": 546,
-    "registeredTextVersions": 752,
+    "declaredRemoteOnlyWorks": 374,
+    "declaredR2OriginalWorks": 456,
+    "registeredOriginalWorks": 573,
+    "registeredTextVersions": 789,
     "verifiedLocalTextVersions": 281,
     "verifiedLocalOriginalTextIndexed": 197,
     "supplementaryTextVersions": 161,
-    "allRegisteredTextVersions": 913
+    "allRegisteredTextVersions": 950
   },
   "works": [
     {
@@ -2830,13 +2830,15 @@
       "translationSourceDescription": "Traducciones EN/ES/FR pendientes de verificar, cotejar y comprobar derechos.",
       "translationRegisteredButNotHosted": true,
       "indexed": true,
-      "originalR2Registered": false,
+      "originalR2Registered": true,
       "registeredOriginal": true,
       "registeredEditionLanguages": [
         "en",
         "grc"
       ],
-      "remoteEditionLanguages": [],
+      "remoteEditionLanguages": [
+        "grc"
+      ],
       "verifiedLocalEditionLanguages": [
         "en",
         "grc"
@@ -2924,13 +2926,15 @@
       "translationSourceDescription": "Inglés histórico: William James Hickie (1853), texto completo de la fuente TEI Perseus con procedencia por SHA; sin alineación textual certificada.",
       "translationRegisteredButNotHosted": false,
       "indexed": true,
-      "originalR2Registered": false,
+      "originalR2Registered": true,
       "registeredOriginal": true,
       "registeredEditionLanguages": [
         "en",
         "grc"
       ],
-      "remoteEditionLanguages": [],
+      "remoteEditionLanguages": [
+        "grc"
+      ],
       "verifiedLocalEditionLanguages": [
         "en",
         "grc"
@@ -3301,13 +3305,15 @@
       "translationSourceDescription": "Inglés histórico: Herbert Weir Smyth (1922), texto completo de la fuente TEI Perseus con procedencia por SHA; sin alineación textual certificada.",
       "translationRegisteredButNotHosted": false,
       "indexed": true,
-      "originalR2Registered": false,
+      "originalR2Registered": true,
       "registeredOriginal": true,
       "registeredEditionLanguages": [
         "en",
         "grc"
       ],
-      "remoteEditionLanguages": [],
+      "remoteEditionLanguages": [
+        "grc"
+      ],
       "verifiedLocalEditionLanguages": [
         "en",
         "grc"
@@ -3331,13 +3337,15 @@
       "translationSourceDescription": "Inglés histórico: Herbert Weir Smyth (1922), texto completo de la fuente TEI Perseus con procedencia por SHA; sin alineación textual certificada.",
       "translationRegisteredButNotHosted": false,
       "indexed": true,
-      "originalR2Registered": false,
+      "originalR2Registered": true,
       "registeredOriginal": true,
       "registeredEditionLanguages": [
         "en",
         "grc"
       ],
-      "remoteEditionLanguages": [],
+      "remoteEditionLanguages": [
+        "grc"
+      ],
       "verifiedLocalEditionLanguages": [
         "en",
         "grc"
@@ -3361,13 +3369,15 @@
       "translationSourceDescription": "Inglés histórico: Herbert Weir Smyth (1922), texto completo de la fuente TEI Perseus con procedencia por SHA; sin alineación textual certificada.",
       "translationRegisteredButNotHosted": false,
       "indexed": true,
-      "originalR2Registered": false,
+      "originalR2Registered": true,
       "registeredOriginal": true,
       "registeredEditionLanguages": [
         "en",
         "grc"
       ],
-      "remoteEditionLanguages": [],
+      "remoteEditionLanguages": [
+        "grc"
+      ],
       "verifiedLocalEditionLanguages": [
         "en",
         "grc"
@@ -3391,13 +3401,15 @@
       "translationSourceDescription": "Inglés histórico: Herbert Weir Smyth (1922), texto completo de la fuente TEI Perseus con procedencia por SHA; sin alineación textual certificada.",
       "translationRegisteredButNotHosted": false,
       "indexed": true,
-      "originalR2Registered": false,
+      "originalR2Registered": true,
       "registeredOriginal": true,
       "registeredEditionLanguages": [
         "en",
         "grc"
       ],
-      "remoteEditionLanguages": [],
+      "remoteEditionLanguages": [
+        "grc"
+      ],
       "verifiedLocalEditionLanguages": [
         "en",
         "grc"
@@ -3837,13 +3849,15 @@
       "translationSourceDescription": "Traducción no incorporada ni alineada con una edición identificada.",
       "translationRegisteredButNotHosted": true,
       "indexed": true,
-      "originalR2Registered": false,
+      "originalR2Registered": true,
       "registeredOriginal": true,
       "registeredEditionLanguages": [
         "en",
         "grc"
       ],
-      "remoteEditionLanguages": [],
+      "remoteEditionLanguages": [
+        "grc"
+      ],
       "verifiedLocalEditionLanguages": [
         "en",
         "grc"
@@ -3894,13 +3908,15 @@
       "translationSourceDescription": "Traducción no incorporada ni alineada con una edición identificada.",
       "translationRegisteredButNotHosted": true,
       "indexed": true,
-      "originalR2Registered": false,
+      "originalR2Registered": true,
       "registeredOriginal": true,
       "registeredEditionLanguages": [
         "en",
         "grc"
       ],
-      "remoteEditionLanguages": [],
+      "remoteEditionLanguages": [
+        "grc"
+      ],
       "verifiedLocalEditionLanguages": [
         "en",
         "grc"
@@ -3948,12 +3964,14 @@
       "translationSourceDescription": "Traducción no incorporada ni alineada con una edición identificada.",
       "translationRegisteredButNotHosted": true,
       "indexed": true,
-      "originalR2Registered": false,
+      "originalR2Registered": true,
       "registeredOriginal": true,
       "registeredEditionLanguages": [
         "grc"
       ],
-      "remoteEditionLanguages": [],
+      "remoteEditionLanguages": [
+        "grc"
+      ],
       "verifiedLocalEditionLanguages": [
         "grc"
       ]
@@ -3976,13 +3994,15 @@
       "translationSourceDescription": "Traducción no incorporada ni alineada con una edición identificada.",
       "translationRegisteredButNotHosted": true,
       "indexed": true,
-      "originalR2Registered": false,
+      "originalR2Registered": true,
       "registeredOriginal": true,
       "registeredEditionLanguages": [
         "en",
         "grc"
       ],
-      "remoteEditionLanguages": [],
+      "remoteEditionLanguages": [
+        "grc"
+      ],
       "verifiedLocalEditionLanguages": [
         "en",
         "grc"
@@ -13879,6 +13899,600 @@
       "id": "cts-tlg0014-tlg036",
       "author": "Demóstenes",
       "title": "For Phormio",
+      "originalLanguage": "grc",
+      "translationLanguages": [],
+      "localEditionLanguages": [
+        "grc"
+      ],
+      "notes": "Edición TEI incorporada en R2; sin traducción humana ni colación independiente acreditadas.",
+      "originalIndexed": false,
+      "originalR2Registered": true,
+      "registeredOriginal": true,
+      "verifiedLocalEditionLanguages": [],
+      "registeredEditionLanguages": [
+        "grc"
+      ],
+      "remoteEditionLanguages": [
+        "grc"
+      ],
+      "readingStatus": "lectura-local-parcial"
+    },
+    {
+      "id": "cts-tlg5023-tlg010",
+      "author": "Escolios a Eurípides",
+      "title": "Vitae Euripidis",
+      "originalLanguage": "grc",
+      "translationLanguages": [],
+      "localEditionLanguages": [
+        "grc"
+      ],
+      "notes": "Edición TEI incorporada en R2; sin traducción humana ni colación independiente acreditadas.",
+      "originalIndexed": false,
+      "originalR2Registered": true,
+      "registeredOriginal": true,
+      "verifiedLocalEditionLanguages": [],
+      "registeredEditionLanguages": [
+        "grc"
+      ],
+      "remoteEditionLanguages": [
+        "grc"
+      ],
+      "readingStatus": "lectura-local-parcial"
+    },
+    {
+      "id": "cts-tlg4193-tlg012",
+      "author": "Anonymi In Aristotelis Sophisticos Elenchos",
+      "title": "In Aristotelis Sophisticos Elenchos Paraphrasis",
+      "originalLanguage": "grc",
+      "translationLanguages": [],
+      "localEditionLanguages": [
+        "grc"
+      ],
+      "notes": "Edición TEI incorporada en R2; sin traducción humana ni colación independiente acreditadas.",
+      "originalIndexed": false,
+      "originalR2Registered": true,
+      "registeredOriginal": true,
+      "verifiedLocalEditionLanguages": [],
+      "registeredEditionLanguages": [
+        "grc"
+      ],
+      "remoteEditionLanguages": [
+        "grc"
+      ],
+      "readingStatus": "lectura-local-parcial"
+    },
+    {
+      "id": "cts-tlg4033-tlg003",
+      "author": "Anonymi In Aristotelis Ethica Nicomachea",
+      "title": "In Ethica Nicomachea Paraphrasis (Pseudepigraphum Olim A Constantino Palaeocappa confectum et olim sub auctore Heliodoro\n    Prusensi vel Andronico Rhodio vel Olympiodoro)",
+      "originalLanguage": "grc",
+      "translationLanguages": [],
+      "localEditionLanguages": [
+        "grc"
+      ],
+      "notes": "Edición TEI incorporada en R2; sin traducción humana ni colación independiente acreditadas.",
+      "originalIndexed": false,
+      "originalR2Registered": true,
+      "registeredOriginal": true,
+      "verifiedLocalEditionLanguages": [],
+      "registeredEditionLanguages": [
+        "grc"
+      ],
+      "remoteEditionLanguages": [
+        "grc"
+      ],
+      "readingStatus": "lectura-local-parcial"
+    },
+    {
+      "id": "cts-tlg5023-tlg001",
+      "author": "Escolios a Eurípides",
+      "title": "Scholia in Euripidem (scholia vetera)",
+      "originalLanguage": "grc",
+      "translationLanguages": [],
+      "localEditionLanguages": [
+        "grc"
+      ],
+      "notes": "Edición TEI incorporada en R2; sin traducción humana ni colación independiente acreditadas.",
+      "originalIndexed": false,
+      "originalR2Registered": true,
+      "registeredOriginal": true,
+      "verifiedLocalEditionLanguages": [],
+      "registeredEditionLanguages": [
+        "grc"
+      ],
+      "remoteEditionLanguages": [
+        "grc"
+      ],
+      "readingStatus": "lectura-local-parcial"
+    },
+    {
+      "id": "cts-tlg5023-tlg011",
+      "author": "Escolios a Eurípides",
+      "title": "Scholia in Euripidis Rhesum",
+      "originalLanguage": "grc",
+      "translationLanguages": [],
+      "localEditionLanguages": [
+        "grc"
+      ],
+      "notes": "Edición TEI incorporada en R2; sin traducción humana ni colación independiente acreditadas.",
+      "originalIndexed": false,
+      "originalR2Registered": true,
+      "registeredOriginal": true,
+      "verifiedLocalEditionLanguages": [],
+      "registeredEditionLanguages": [
+        "grc"
+      ],
+      "remoteEditionLanguages": [
+        "grc"
+      ],
+      "readingStatus": "lectura-local-parcial"
+    },
+    {
+      "id": "cts-tlg5023-tlg012",
+      "author": "Escolios a Eurípides",
+      "title": "Scholia in Euripidis Troiades",
+      "originalLanguage": "grc",
+      "translationLanguages": [],
+      "localEditionLanguages": [
+        "grc"
+      ],
+      "notes": "Edición TEI incorporada en R2; sin traducción humana ni colación independiente acreditadas.",
+      "originalIndexed": false,
+      "originalR2Registered": true,
+      "registeredOriginal": true,
+      "verifiedLocalEditionLanguages": [],
+      "registeredEditionLanguages": [
+        "grc"
+      ],
+      "remoteEditionLanguages": [
+        "grc"
+      ],
+      "readingStatus": "lectura-local-parcial"
+    },
+    {
+      "id": "cts-tlg5023-tlg013",
+      "author": "Escolios a Eurípides",
+      "title": "Scholia in Euripidis Hippolytum",
+      "originalLanguage": "grc",
+      "translationLanguages": [],
+      "localEditionLanguages": [
+        "grc"
+      ],
+      "notes": "Edición TEI incorporada en R2; sin traducción humana ni colación independiente acreditadas.",
+      "originalIndexed": false,
+      "originalR2Registered": true,
+      "registeredOriginal": true,
+      "verifiedLocalEditionLanguages": [],
+      "registeredEditionLanguages": [
+        "grc"
+      ],
+      "remoteEditionLanguages": [
+        "grc"
+      ],
+      "readingStatus": "lectura-local-parcial"
+    },
+    {
+      "id": "cts-tlg5023-tlg014",
+      "author": "Escolios a Eurípides",
+      "title": "Scholia in Euripidis Hecubam (scholia vetera et scholia\n        recentiora Thomae Magistri, Triclinii, Moschopuli et anonyma)",
+      "originalLanguage": "grc",
+      "translationLanguages": [],
+      "localEditionLanguages": [
+        "grc"
+      ],
+      "notes": "Edición TEI incorporada en R2; sin traducción humana ni colación independiente acreditadas.",
+      "originalIndexed": false,
+      "originalR2Registered": true,
+      "registeredOriginal": true,
+      "verifiedLocalEditionLanguages": [],
+      "registeredEditionLanguages": [
+        "grc"
+      ],
+      "remoteEditionLanguages": [
+        "grc"
+      ],
+      "readingStatus": "lectura-local-parcial"
+    },
+    {
+      "id": "cts-tlg5023-tlg015",
+      "author": "Escolios a Eurípides",
+      "title": "Scholia in Euripidis Orestem (scholia vetera et scholia recentiora Thomae Magistri, Triclinii, Moschopuli et anonyma)",
+      "originalLanguage": "grc",
+      "translationLanguages": [],
+      "localEditionLanguages": [
+        "grc"
+      ],
+      "notes": "Edición TEI incorporada en R2; sin traducción humana ni colación independiente acreditadas.",
+      "originalIndexed": false,
+      "originalR2Registered": true,
+      "registeredOriginal": true,
+      "verifiedLocalEditionLanguages": [],
+      "registeredEditionLanguages": [
+        "grc"
+      ],
+      "remoteEditionLanguages": [
+        "grc"
+      ],
+      "readingStatus": "lectura-local-parcial"
+    },
+    {
+      "id": "cts-tlg5023-tlg016",
+      "author": "Escolios a Eurípides",
+      "title": "Scholia in Euripidis Phoenissas (scholia vetera et scholia recentiora Thomae Magistri, Triclinii, Moschopuli et anonyma)",
+      "originalLanguage": "grc",
+      "translationLanguages": [],
+      "localEditionLanguages": [
+        "grc"
+      ],
+      "notes": "Edición TEI incorporada en R2; sin traducción humana ni colación independiente acreditadas.",
+      "originalIndexed": false,
+      "originalR2Registered": true,
+      "registeredOriginal": true,
+      "verifiedLocalEditionLanguages": [],
+      "registeredEditionLanguages": [
+        "grc"
+      ],
+      "remoteEditionLanguages": [
+        "grc"
+      ],
+      "readingStatus": "lectura-local-parcial"
+    },
+    {
+      "id": "cts-tlg5026-tlg007",
+      "author": "Escolios a Homero",
+      "title": "Scholia in Odysseam",
+      "originalLanguage": "grc",
+      "translationLanguages": [],
+      "localEditionLanguages": [
+        "grc"
+      ],
+      "notes": "Edición TEI incorporada en R2; sin traducción humana ni colación independiente acreditadas.",
+      "originalIndexed": false,
+      "originalR2Registered": true,
+      "registeredOriginal": true,
+      "verifiedLocalEditionLanguages": [],
+      "registeredEditionLanguages": [
+        "grc"
+      ],
+      "remoteEditionLanguages": [
+        "grc"
+      ],
+      "readingStatus": "lectura-local-parcial"
+    },
+    {
+      "id": "cts-tlg9004-tlg001",
+      "author": "Anonymi In Aristotelis Librum Alterum Analyticorum Posteriorum",
+      "title": "Anonymi In Analyticorum Posteriorum Librum Alterum Commentarium",
+      "originalLanguage": "grc",
+      "translationLanguages": [],
+      "localEditionLanguages": [
+        "grc"
+      ],
+      "notes": "Edición TEI incorporada en R2; sin traducción humana ni colación independiente acreditadas.",
+      "originalIndexed": false,
+      "originalR2Registered": true,
+      "registeredOriginal": true,
+      "verifiedLocalEditionLanguages": [],
+      "registeredEditionLanguages": [
+        "grc"
+      ],
+      "remoteEditionLanguages": [
+        "grc"
+      ],
+      "readingStatus": "lectura-local-parcial"
+    },
+    {
+      "id": "cts-tlg5037-tlg004",
+      "author": "Scholia in Sophoclem",
+      "title": "Scholia in Sophoclem (scholia vetera)",
+      "originalLanguage": "grc",
+      "translationLanguages": [],
+      "localEditionLanguages": [
+        "grc"
+      ],
+      "notes": "Edición TEI incorporada en R2; sin traducción humana ni colación independiente acreditadas.",
+      "originalIndexed": false,
+      "originalR2Registered": true,
+      "registeredOriginal": true,
+      "verifiedLocalEditionLanguages": [],
+      "registeredEditionLanguages": [
+        "grc"
+      ],
+      "remoteEditionLanguages": [
+        "grc"
+      ],
+      "readingStatus": "lectura-local-parcial"
+    },
+    {
+      "id": "cts-tlg5026-tlg001",
+      "author": "Escolios a Homero",
+      "title": "Scholia in Iliadem",
+      "originalLanguage": "grc",
+      "translationLanguages": [],
+      "localEditionLanguages": [
+        "grc"
+      ],
+      "notes": "Edición TEI incorporada en R2; sin traducción humana ni colación independiente acreditadas.",
+      "originalIndexed": false,
+      "originalR2Registered": true,
+      "registeredOriginal": true,
+      "verifiedLocalEditionLanguages": [],
+      "registeredEditionLanguages": [
+        "grc"
+      ],
+      "remoteEditionLanguages": [
+        "grc"
+      ],
+      "readingStatus": "lectura-local-parcial"
+    },
+    {
+      "id": "cts-tlg0057-tlg061",
+      "author": "Galeno",
+      "title": "De causis pulsuum",
+      "originalLanguage": "grc",
+      "translationLanguages": [],
+      "localEditionLanguages": [
+        "grc"
+      ],
+      "notes": "Edición TEI incorporada en R2; sin traducción humana ni colación independiente acreditadas.",
+      "originalIndexed": false,
+      "originalR2Registered": true,
+      "registeredOriginal": true,
+      "verifiedLocalEditionLanguages": [],
+      "registeredEditionLanguages": [
+        "grc"
+      ],
+      "remoteEditionLanguages": [
+        "grc"
+      ],
+      "readingStatus": "lectura-local-parcial"
+    },
+    {
+      "id": "cts-tlg0057-tlg063",
+      "author": "Galeno",
+      "title": "Synopsis librorum suorum de pulsibus",
+      "originalLanguage": "grc",
+      "translationLanguages": [],
+      "localEditionLanguages": [
+        "grc"
+      ],
+      "notes": "Edición TEI incorporada en R2; sin traducción humana ni colación independiente acreditadas.",
+      "originalIndexed": false,
+      "originalR2Registered": true,
+      "registeredOriginal": true,
+      "verifiedLocalEditionLanguages": [],
+      "registeredEditionLanguages": [
+        "grc"
+      ],
+      "remoteEditionLanguages": [
+        "grc"
+      ],
+      "readingStatus": "lectura-local-parcial"
+    },
+    {
+      "id": "cts-tlg0057-tlg062",
+      "author": "Galeno",
+      "title": "De praesagitione ex pulsibus",
+      "originalLanguage": "grc",
+      "translationLanguages": [],
+      "localEditionLanguages": [
+        "grc"
+      ],
+      "notes": "Edición TEI incorporada en R2; sin traducción humana ni colación independiente acreditadas.",
+      "originalIndexed": false,
+      "originalR2Registered": true,
+      "registeredOriginal": true,
+      "verifiedLocalEditionLanguages": [],
+      "registeredEditionLanguages": [
+        "grc"
+      ],
+      "remoteEditionLanguages": [
+        "grc"
+      ],
+      "readingStatus": "lectura-local-parcial"
+    },
+    {
+      "id": "cts-tlg0057-tlg064",
+      "author": "Galeno",
+      "title": "De crisibus",
+      "originalLanguage": "grc",
+      "translationLanguages": [],
+      "localEditionLanguages": [
+        "grc"
+      ],
+      "notes": "Edición TEI incorporada en R2; sin traducción humana ni colación independiente acreditadas.",
+      "originalIndexed": false,
+      "originalR2Registered": true,
+      "registeredOriginal": true,
+      "verifiedLocalEditionLanguages": [],
+      "registeredEditionLanguages": [
+        "grc"
+      ],
+      "remoteEditionLanguages": [
+        "grc"
+      ],
+      "readingStatus": "lectura-local-parcial"
+    },
+    {
+      "id": "cts-tlg0057-tlg065",
+      "author": "Galeno",
+      "title": "De diebus decretoriis",
+      "originalLanguage": "grc",
+      "translationLanguages": [],
+      "localEditionLanguages": [
+        "grc"
+      ],
+      "notes": "Edición TEI incorporada en R2; sin traducción humana ni colación independiente acreditadas.",
+      "originalIndexed": false,
+      "originalR2Registered": true,
+      "registeredOriginal": true,
+      "verifiedLocalEditionLanguages": [],
+      "registeredEditionLanguages": [
+        "grc"
+      ],
+      "remoteEditionLanguages": [
+        "grc"
+      ],
+      "readingStatus": "lectura-local-parcial"
+    },
+    {
+      "id": "cts-tlg0057-tlg073",
+      "author": "Galeno",
+      "title": "Quos quibus catharticis medicamentis et quando purgare oporteat",
+      "originalLanguage": "grc",
+      "translationLanguages": [],
+      "localEditionLanguages": [
+        "grc"
+      ],
+      "notes": "Edición TEI incorporada en R2; sin traducción humana ni colación independiente acreditadas.",
+      "originalIndexed": false,
+      "originalR2Registered": true,
+      "registeredOriginal": true,
+      "verifiedLocalEditionLanguages": [],
+      "registeredEditionLanguages": [
+        "grc"
+      ],
+      "remoteEditionLanguages": [
+        "grc"
+      ],
+      "readingStatus": "lectura-local-parcial"
+    },
+    {
+      "id": "cts-tlg0057-tlg074",
+      "author": "Galeno",
+      "title": "Pro puero epileptico consilium",
+      "originalLanguage": "grc",
+      "translationLanguages": [],
+      "localEditionLanguages": [
+        "grc"
+      ],
+      "notes": "Edición TEI incorporada en R2; sin traducción humana ni colación independiente acreditadas.",
+      "originalIndexed": false,
+      "originalR2Registered": true,
+      "registeredOriginal": true,
+      "verifiedLocalEditionLanguages": [],
+      "registeredEditionLanguages": [
+        "grc"
+      ],
+      "remoteEditionLanguages": [
+        "grc"
+      ],
+      "readingStatus": "lectura-local-parcial"
+    },
+    {
+      "id": "cts-tlg0057-tlg066",
+      "author": "Galeno",
+      "title": "De methodo medendi",
+      "originalLanguage": "grc",
+      "translationLanguages": [],
+      "localEditionLanguages": [
+        "grc"
+      ],
+      "notes": "Edición TEI incorporada en R2; sin traducción humana ni colación independiente acreditadas.",
+      "originalIndexed": false,
+      "originalR2Registered": true,
+      "registeredOriginal": true,
+      "verifiedLocalEditionLanguages": [],
+      "registeredEditionLanguages": [
+        "grc"
+      ],
+      "remoteEditionLanguages": [
+        "grc"
+      ],
+      "readingStatus": "lectura-local-parcial"
+    },
+    {
+      "id": "cts-tlg0057-tlg075",
+      "author": "Galeno",
+      "title": "De simplicium medicamentorum temperamentis ac facultatibus I-VI",
+      "originalLanguage": "grc",
+      "translationLanguages": [],
+      "localEditionLanguages": [
+        "grc"
+      ],
+      "notes": "Edición TEI incorporada en R2; sin traducción humana ni colación independiente acreditadas.",
+      "originalIndexed": false,
+      "originalR2Registered": true,
+      "registeredOriginal": true,
+      "verifiedLocalEditionLanguages": [],
+      "registeredEditionLanguages": [
+        "grc"
+      ],
+      "remoteEditionLanguages": [
+        "grc"
+      ],
+      "readingStatus": "lectura-local-parcial"
+    },
+    {
+      "id": "cts-tlg0057-tlg076",
+      "author": "Galeno",
+      "title": "De compositione medicamentorum secundum locos libri X",
+      "originalLanguage": "grc",
+      "translationLanguages": [],
+      "localEditionLanguages": [
+        "grc"
+      ],
+      "notes": "Edición TEI incorporada en R2; sin traducción humana ni colación independiente acreditadas.",
+      "originalIndexed": false,
+      "originalR2Registered": true,
+      "registeredOriginal": true,
+      "verifiedLocalEditionLanguages": [],
+      "registeredEditionLanguages": [
+        "grc"
+      ],
+      "remoteEditionLanguages": [
+        "grc"
+      ],
+      "readingStatus": "lectura-local-parcial"
+    },
+    {
+      "id": "cts-tlg0010-tlg019",
+      "author": "Isócrates",
+      "title": "Antidosis",
+      "originalLanguage": "grc",
+      "translationLanguages": [],
+      "localEditionLanguages": [
+        "grc"
+      ],
+      "notes": "Edición TEI incorporada en R2; sin traducción humana ni colación independiente acreditadas.",
+      "originalIndexed": false,
+      "originalR2Registered": true,
+      "registeredOriginal": true,
+      "verifiedLocalEditionLanguages": [],
+      "registeredEditionLanguages": [
+        "grc"
+      ],
+      "remoteEditionLanguages": [
+        "grc"
+      ],
+      "readingStatus": "lectura-local-parcial"
+    },
+    {
+      "id": "cts-tlg0010-tlg020",
+      "author": "Isócrates",
+      "title": "To Philip",
+      "originalLanguage": "grc",
+      "translationLanguages": [],
+      "localEditionLanguages": [
+        "grc"
+      ],
+      "notes": "Edición TEI incorporada en R2; sin traducción humana ni colación independiente acreditadas.",
+      "originalIndexed": false,
+      "originalR2Registered": true,
+      "registeredOriginal": true,
+      "verifiedLocalEditionLanguages": [],
+      "registeredEditionLanguages": [
+        "grc"
+      ],
+      "remoteEditionLanguages": [
+        "grc"
+      ],
+      "readingStatus": "lectura-local-parcial"
+    },
+    {
+      "id": "cts-tlg0010-tlg021",
+      "author": "Isócrates",
+      "title": "Panathenaicus",
       "originalLanguage": "grc",
       "translationLanguages": [],
       "localEditionLanguages": [
