@@ -1,8 +1,8 @@
 {
  "schema": "vitruvia-classics-search-registry-v1",
- "updated": "2026-11-24",
+ "updated": "2026-11-25",
  "description": "Registro verificable de transcripciones HTML y textos JSON existentes que admiten búsqueda literal de contenido. No incluye automáticamente PDF escaneados, facsímiles ni fichas sin texto. Los índices auxiliares por locus y el aparato crítico se declaran por separado; no se suman a versiones textuales originales ni implican colación autóptica.",
- "count": 909,
+ "count": 913,
  "works": 674,
  "entries": [
   {
@@ -1832,6 +1832,19 @@
    "workId": "cts-phi0474-phi009",
    "author": "Cicerón",
    "title": "De Imperio Cn. Pompei Ad Quirites",
+   "language": "en",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0474-phi009-en-afe3edb3a753ed9e.json",
+   "reader": "classics-text-reader.html?work=cts-phi0474-phi009&lang=en&edition=afe3edb3a753ed9e",
+   "sourceDescription": "Traducción humana acreditada: Charles Duke Yonge; TEI Perseus, licencia y SHA256 verificados",
+   "sourceUrn": "urn:cts:latinLit:phi0474.phi009.perseus-eng2",
+   "sha256": "afe3edb3a753ed9eaadb4aa41a9b6cd435e3defe23c5f247f3c6abe0e57b383a",
+   "passages": 80
+  },
+  {
+   "workId": "cts-phi0474-phi009",
+   "author": "Cicerón",
+   "title": "De Imperio Cn. Pompei Ad Quirites",
    "language": "la",
    "format": "json-passages",
    "path": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0474-phi009-la-bdf975c8ee41bd61.json",
@@ -1840,6 +1853,19 @@
    "sourceUrn": "urn:cts:latinLit:phi0474.phi009.perseus-lat2",
    "sha256": "bdf975c8ee41bd613540624919021fcce5ea381b42c843fa3a1709f2081731f5",
    "passages": 76
+  },
+  {
+   "workId": "cts-phi0474-phi010",
+   "author": "Cicerón",
+   "title": "Pro A. Cluentio",
+   "language": "en",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0474-phi010-en-5bd7f103ac9bd252.json",
+   "reader": "classics-text-reader.html?work=cts-phi0474-phi010&lang=en&edition=5bd7f103ac9bd252",
+   "sourceDescription": "Traducción humana acreditada: Charles Duke Yonge; TEI Perseus, licencia y SHA256 verificados",
+   "sourceUrn": "urn:cts:latinLit:phi0474.phi010.perseus-eng2",
+   "sha256": "5bd7f103ac9bd252414a8bcdf31d4ca9d678a3b5a29faecc174d0db2be1e3b44",
+   "passages": 245
   },
   {
    "workId": "cts-phi0474-phi010",
@@ -1858,6 +1884,19 @@
    "workId": "cts-phi0474-phi011",
    "author": "Cicerón",
    "title": "De Lege Agraria",
+   "language": "en",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0474-phi011-en-ecedaff4550681e4.json",
+   "reader": "classics-text-reader.html?work=cts-phi0474-phi011&lang=en&edition=ecedaff4550681e4",
+   "sourceDescription": "Traducción humana acreditada: Charles Duke Yonge; TEI Perseus, licencia y SHA256 verificados",
+   "sourceUrn": "urn:cts:latinLit:phi0474.phi011.perseus-eng2",
+   "sha256": "ecedaff4550681e45068c765ccc956e466ee4c216c1c4e89d22b3d621b2a474b",
+   "passages": 193
+  },
+  {
+   "workId": "cts-phi0474-phi011",
+   "author": "Cicerón",
+   "title": "De Lege Agraria",
    "language": "la",
    "format": "json-passages",
    "path": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0474-phi011-la-7b73141390be1fb5.json",
@@ -1866,6 +1905,19 @@
    "sourceUrn": "urn:cts:latinLit:phi0474.phi011.perseus-lat2",
    "sha256": "7b73141390be1fb59c9ea2c543d3b2b3bc93a17a41b6400686b7f9ab405949fc",
    "passages": 166
+  },
+  {
+   "workId": "cts-phi0474-phi012",
+   "author": "Cicerón",
+   "title": "Pro C. Rabirio Perduellionis Reo Ad Quirites",
+   "language": "en",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0474-phi012-en-f4417dcf0fa60e42.json",
+   "reader": "classics-text-reader.html?work=cts-phi0474-phi012&lang=en&edition=f4417dcf0fa60e42",
+   "sourceDescription": "Traducción humana acreditada: Charles Duke Yonge; TEI Perseus, licencia y SHA256 verificados",
+   "sourceUrn": "urn:cts:latinLit:phi0474.phi012.perseus-eng3",
+   "sha256": "f4417dcf0fa60e420030ffd70a7d2f8c763de5ed65277309cf6e912e82fbf6a5",
+   "passages": 47
   },
   {
    "workId": "cts-phi0474-phi012",

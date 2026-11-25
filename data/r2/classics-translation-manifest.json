@@ -1,6 +1,6 @@
 {
  "schema": "vdl-classics-translation-manifest-v1",
- "generated": "2026-11-24T19:08:10.365117+00:00",
+ "generated": "2026-11-25T03:12:53.662006+00:00",
  "method": "Traducciones humanas TEI licenciadas y publicadas en R2 con SHA-256, índice literal por pasaje, sin alineación automática",
  "editions": [
   {
@@ -1023,6 +1023,98 @@
    ],
    "indexUrl": "https://libros.vitruvius-digital-library.org/corpus/indice/traducciones/cts-phi0474-phi004-en-dd8a453e79f3e3a9.json",
    "indexSha256": "dd8a453e79f3e3a958a094ee0d82f983d289222eaa1480a60b5b3df679ac7c5a"
+  },
+  {
+   "workId": "cts-phi0474-phi009",
+   "author": "Cicerón",
+   "title": "De Imperio Cn. Pompei Ad Quirites",
+   "language": "en",
+   "filename": "cts-phi0474-phi009-en-afe3edb3a753ed9e.json",
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0474-phi009-en-afe3edb3a753ed9e.json",
+   "sha256": "afe3edb3a753ed9eaadb4aa41a9b6cd435e3defe23c5f247f3c6abe0e57b383a",
+   "passages": 80,
+   "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0474/phi009/phi0474.phi009.perseus-eng2.xml",
+   "sourceUrn": "urn:cts:latinLit:phi0474.phi009.perseus-eng2",
+   "sourceSha256": "0464b7c50824f7582e7dab500b82ee1a78a7ee7034a70d0bcb3b5112da71464e",
+   "sourceArchived": "https://libros.vitruvius-digital-library.org/corpus/fuentes/0464b7c50824f7582e7dab500b82ee1a78a7ee7034a70d0bcb3b5112da71464e.xml",
+   "translators": [
+    "Charles Duke Yonge"
+   ],
+   "publicationYear": 1856,
+   "license": [
+    "https://creativecommons.org/licenses/by-sa/4.0/"
+   ],
+   "indexUrl": "https://libros.vitruvius-digital-library.org/corpus/indice/traducciones/cts-phi0474-phi009-en-e6a203fc563565b3.json",
+   "indexSha256": "e6a203fc563565b31f6e2d7b5cb11ae0574f8b81f8f2f59372e9f68c902a59d6"
+  },
+  {
+   "workId": "cts-phi0474-phi010",
+   "author": "Cicerón",
+   "title": "Pro A. Cluentio",
+   "language": "en",
+   "filename": "cts-phi0474-phi010-en-5bd7f103ac9bd252.json",
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0474-phi010-en-5bd7f103ac9bd252.json",
+   "sha256": "5bd7f103ac9bd252414a8bcdf31d4ca9d678a3b5a29faecc174d0db2be1e3b44",
+   "passages": 245,
+   "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0474/phi010/phi0474.phi010.perseus-eng2.xml",
+   "sourceUrn": "urn:cts:latinLit:phi0474.phi010.perseus-eng2",
+   "sourceSha256": "c24c6f0d8f38bafb2a9853949bbad975f48051c490e9aa20a341c95ac80a1080",
+   "sourceArchived": "https://libros.vitruvius-digital-library.org/corpus/fuentes/c24c6f0d8f38bafb2a9853949bbad975f48051c490e9aa20a341c95ac80a1080.xml",
+   "translators": [
+    "Charles Duke Yonge"
+   ],
+   "publicationYear": 1856,
+   "license": [
+    "https://creativecommons.org/licenses/by-sa/4.0/"
+   ],
+   "indexUrl": "https://libros.vitruvius-digital-library.org/corpus/indice/traducciones/cts-phi0474-phi010-en-d218c2bdaa1456b3.json",
+   "indexSha256": "d218c2bdaa1456b35649c98a109abe757613e6130924947bac1bd663614ff2e5"
+  },
+  {
+   "workId": "cts-phi0474-phi011",
+   "author": "Cicerón",
+   "title": "De Lege Agraria",
+   "language": "en",
+   "filename": "cts-phi0474-phi011-en-ecedaff4550681e4.json",
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0474-phi011-en-ecedaff4550681e4.json",
+   "sha256": "ecedaff4550681e45068c765ccc956e466ee4c216c1c4e89d22b3d621b2a474b",
+   "passages": 193,
+   "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0474/phi011/phi0474.phi011.perseus-eng2.xml",
+   "sourceUrn": "urn:cts:latinLit:phi0474.phi011.perseus-eng2",
+   "sourceSha256": "644e1142261c46a1cf3f080be306dd1bd7ce00b49fe87bf507d1d29b4123d3e0",
+   "sourceArchived": "https://libros.vitruvius-digital-library.org/corpus/fuentes/644e1142261c46a1cf3f080be306dd1bd7ce00b49fe87bf507d1d29b4123d3e0.xml",
+   "translators": [
+    "Charles Duke Yonge"
+   ],
+   "publicationYear": 1856,
+   "license": [
+    "https://creativecommons.org/licenses/by-sa/4.0/"
+   ],
+   "indexUrl": "https://libros.vitruvius-digital-library.org/corpus/indice/traducciones/cts-phi0474-phi011-en-b19ac22f85b04aed.json",
+   "indexSha256": "b19ac22f85b04aed533ad58ba98a68c5bdcab18a9861e994014dcd984f7e8353"
+  },
+  {
+   "workId": "cts-phi0474-phi012",
+   "author": "Cicerón",
+   "title": "Pro C. Rabirio Perduellionis Reo Ad Quirites",
+   "language": "en",
+   "filename": "cts-phi0474-phi012-en-f4417dcf0fa60e42.json",
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0474-phi012-en-f4417dcf0fa60e42.json",
+   "sha256": "f4417dcf0fa60e420030ffd70a7d2f8c763de5ed65277309cf6e912e82fbf6a5",
+   "passages": 47,
+   "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0474/phi012/phi0474.phi012.perseus-eng3.xml",
+   "sourceUrn": "urn:cts:latinLit:phi0474.phi012.perseus-eng3",
+   "sourceSha256": "74e1b6108e1a4335dabce6d6dca19e2badfbcc6882b402aacc9a52ce1acbadbd",
+   "sourceArchived": "https://libros.vitruvius-digital-library.org/corpus/fuentes/74e1b6108e1a4335dabce6d6dca19e2badfbcc6882b402aacc9a52ce1acbadbd.xml",
+   "translators": [
+    "Charles Duke Yonge"
+   ],
+   "publicationYear": 1856,
+   "license": [
+    "https://creativecommons.org/licenses/by-sa/4.0/"
+   ],
+   "indexUrl": "https://libros.vitruvius-digital-library.org/corpus/indice/traducciones/cts-phi0474-phi012-en-f64e53c80c3e0ca1.json",
+   "indexSha256": "f64e53c80c3e0ca135066891baef360b0e2cf0de14080e4e02299266630ddd40"
   }
  ],
  "lastDeferred": [
