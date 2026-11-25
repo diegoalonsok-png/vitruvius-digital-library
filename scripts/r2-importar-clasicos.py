@@ -18,8 +18,9 @@
 """
 import hashlib, io, json, os, re, sys, time, urllib.parse, urllib.request
 from collections import defaultdict
-from concurrent.futures import ThreadPoolExecutor
+from concurrent.futures import ThreadPoolExecutor, as_completed
 from pathlib import Path
+from threading import Lock
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "scripts"))
@@ -170,8 +171,9 @@ def procesar(o, ctx):
             datos = get(f"https://archive.org/download/{ident}/{urllib.parse.quote(f['name'])}", binario=True,
                         timeout=600)
             sha = hashlib.sha256(datos).hexdigest()
-            if sha in ctx["shas"]:
-                raise ValueError("PDF idéntico ya presente en la biblioteca")
+            with ctx["sha_lock"]:
+                if sha in ctx["shas"]:
+                    raise ValueError("PDF idéntico ya presente o reservado en esta tanda")
             pdf = fitz.open(stream=datos, filetype="pdf")
             paginas, methods = pdf_pages(pdf, o["lengua"], o.get("idioma", ""))
             if len(paginas) < 20:
@@ -191,6 +193,14 @@ def procesar(o, ctx):
             texto = json_bytes(digital)
             index_data = json_bytes(indice)
             clave_indice = f"clasicos/indice-obras/{o['id']}.json"
+            # Reservar la huella tras validar la edición, justo antes de escribir
+            # en R2. Evita que dos trabajadores admitan simultáneamente el mismo
+            # PDF bajo identificadores distintos. Una reserva fallida se podrá
+            # reconsiderar en la próxima tanda, sin arriesgar otra copia ahora.
+            with ctx["sha_lock"]:
+                if sha in ctx["shas"]:
+                    raise ValueError("PDF idéntico ya presente o reservado en esta tanda")
+                ctx["shas"].add(sha)
             s3 = ctx["s3"]
             # Reanudar una ingesta cuyo PDF/texto/índice sí quedaron en R2
             # pero cuyo catálogo no llegó a GitHub por un fallo posterior.
@@ -207,9 +217,8 @@ def procesar(o, ctx):
                         raise RuntimeError("No se pudo comprobar el objeto R2: " + key) from exc
                     existentes[key] = None
             recuperada = any(existentes.values())
-            if recuperada and not all(existentes.values()):
-                raise ValueError("Ingesta R2 incompleta; no sobrescribir objetos existentes: " + o["id"])
-            if recuperada:
+            completa = all(existentes.values())
+            if completa:
                 esperado = existentes[clave_pdf].get("Metadata", {}).get("sha256")
                 if esperado != sha:
                     raise ValueError("El PDF existente en R2 no coincide con SHA-256 de la edición: " + o["id"])
@@ -234,12 +243,25 @@ def procesar(o, ctx):
                 methods = recuperado.get("metodosPagina") or methods
                 con_texto = sum(1 for t in paginas if len(t.strip()) > 200)
             else:
-                s3.put_object(Bucket=BUCKET, Key=clave_pdf, Body=datos, ContentType="application/pdf",
-                              CacheControl="public, max-age=31536000", Metadata={"sha256": sha, "ia": ident})
-                s3.put_object(Bucket=BUCKET, Key=clave_txt, Body=texto, ContentType="application/json; charset=utf-8",
-                              CacheControl="public, max-age=86400")
-                s3.put_object(Bucket=BUCKET, Key=clave_indice, Body=index_data, ContentType="application/json; charset=utf-8",
-                              CacheControl="public, max-age=86400")
+                # Completar una tanda interrumpida únicamente cuando los objetos
+                # existentes coinciden byte por byte con la edición regenerada.
+                # Verificar todos los presentes antes de escribir cualquier faltante.
+                objetos = (
+                    (clave_pdf, datos, "application/pdf", "public, max-age=31536000", {"sha256": sha, "ia": ident}),
+                    (clave_txt, texto, "application/json; charset=utf-8", "public, max-age=86400", {}),
+                    (clave_indice, index_data, "application/json; charset=utf-8", "public, max-age=86400", {}),
+                )
+                for key, payload, _, _, _ in objetos:
+                    if existentes[key]:
+                        anterior = get(PUBLICO + "/" + key, binario=True, timeout=600)
+                        if hashlib.sha256(anterior).digest() != hashlib.sha256(payload).digest():
+                            raise ValueError("Ingesta parcial incompatible; conservar objeto existente: " + key)
+                for key, payload, mime, cache, metadata in objetos:
+                    if not existentes[key]:
+                        # La precondición impide sobrescrituras incluso si otro
+                        # proceso crea el objeto entre HEAD y PUT.
+                        s3.put_object(Bucket=BUCKET, Key=key, Body=payload, ContentType=mime,
+                                      CacheControl=cache, Metadata=metadata, IfNoneMatch="*")
             # Verificar los tres objetos públicos antes de incorporar su ficha.
             for key, payload in ((clave_txt, texto), (clave_indice, index_data)):
                 verified = get(PUBLICO + "/" + key, binario=True)
@@ -313,7 +335,7 @@ def main():
                       config=Config(retries={"max_attempts": 8, "mode": "adaptive"},
                                     request_checksum_calculation="when_required",
                                     response_checksum_validation="when_required"))
-    ctx = {"s3": s3, "shas": shas, "concepts": concepts, "anio_max": cand["limites"]["anioMaximo"],
+    ctx = {"s3": s3, "shas": shas, "sha_lock": Lock(), "concepts": concepts, "anio_max": cand["limites"]["anioMaximo"],
            "max_bytes": cand["limites"]["maxMiB"] * 1048576}
     pendientes = [o for o in cand["obras"] if o["id"] not in hechos]
     # No confundir la digitalización de un volumen colectivo con una edición
@@ -370,7 +392,9 @@ def main():
 
     limite = int(os.environ.get("LIMITE", "0") or 0)
     solo_traducciones = os.environ.get("SOLO_TRADUCCIONES") == "1"
-    if solo_traducciones:
+    if os.environ.get("SOLO_ORIGINALES") == "1":
+        pendientes = originales[:limite] if limite else originales
+    elif solo_traducciones:
         pendientes = traducciones[:limite] if limite else traducciones
     elif limite:
         cupo_original = max(1, (limite * 2 + 1) // 3)
@@ -385,7 +409,13 @@ def main():
     print(f"pendientes: {len(pendientes)} (ya catalogadas: {len(hechos)}; repetidas omitidas: {len(repetidas)})")
     informe = {"incorporadas": [], "no_encontradas": {}}
     with ThreadPoolExecutor(max_workers=3) as ex:
-        for o, (ficha, paginas, rech) in zip(pendientes, ex.map(lambda o: procesar(o, ctx), pendientes)):
+        futures = {ex.submit(procesar, o, ctx): o for o in pendientes}
+        for future in as_completed(futures):
+            o = futures[future]
+            try:
+                ficha, paginas, rech = future.result()
+            except Exception as exc:
+                ficha, paginas, rech = None, None, [str(exc)[:300]]
             if ficha:
                 cat["items"].append(ficha)
                 for cid, pags in postings(ficha, paginas, lex).items():
