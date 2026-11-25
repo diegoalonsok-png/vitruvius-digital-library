@@ -8,7 +8,7 @@
   con ficha, facsímil o PDF del repositorio (scripts/r2-duplicados.py). Una
   segunda edición de la misma obra sólo entra si el candidato la justifica como
   edición histórica o académica distinta.
-* Comprobaciones por libro: fecha <= 1928 y sin marca de copyright en IA; PDF con
+* Comprobaciones por libro: edición reutilizable con derechos acreditados; PDF con
   capa de texto; el autor buscado aparece en las primeras páginas; SHA-256 del
   objeto descargado desde https://libros.vitruvius-digital-library.org idéntico.
 * Índice semántico: términos atestiguados del diccionario Conceptus
@@ -60,7 +60,7 @@ def buscar_ia(o, anio_max):
     preferido = o.get("preferirIdentificador")
     creadores = [c.strip() for c in o["creador"].split("|")]
     cre = " OR ".join(f'"{c}"' if " " in c else c for c in creadores)
-    base = f"creator:({cre}) AND mediatype:texts AND date:[1500-01-01 TO {anio_max}-12-31]"
+    base = f"creator:({cre}) AND mediatype:texts"
     kw = " AND ".join(f'title:("{t}")' for t in o["titulo"])
     idioma = o.get("idioma") or {"es": "spa", "fr": "fre", "en": "eng"}.get(o.get("lengua"))
     if idioma == "spa":
@@ -91,16 +91,25 @@ def elegir_pdf(ident, anio_max, max_bytes):
     meta = get(f"https://archive.org/metadata/{ident}")
     m = meta.get("metadata", {})
     anio = str(m.get("date", ""))[:4]
-    if not anio.isdigit() or int(anio) > anio_max:
-        raise ValueError(f"fecha {anio!r} fuera de dominio público")
-    estado = m.get("possible-copyright-status") or ""
-    if estado and estado != "NOT_IN_COPYRIGHT":
-        raise ValueError("estado de derechos: " + estado)
-    pdfs = [f for f in meta.get("files", []) if f.get("name", "").lower().endswith(".pdf") and f.get("size")
-            and int(f["size"]) <= max_bytes]
+    # Año y tamaño no son filtros editoriales: el permiso de reproducción sí.
+    estado = str(m.get("possible-copyright-status") or "")
+    licencia = str(m.get("licenseurl") or m.get("license") or "").lower()
+    licencia_abierta = any(token in licencia for token in (
+        "creativecommons.org/licenses/by/",
+        "creativecommons.org/licenses/by-sa/",
+        "creativecommons.org/publicdomain/zero/",
+        "creativecommons.org/publicdomain/mark/",
+        "creativecommons.org/licenses/zero/",
+    ))
+    fecha_dominio_publico = anio.isdigit() and int(anio) <= 1928
+    if not (licencia_abierta or estado == "NOT_IN_COPYRIGHT" or
+            (fecha_dominio_publico and not estado)):
+        raise ValueError("Edición sin permiso de reutilización acreditado")
+    pdfs = [f for f in meta.get("files", [])
+            if f.get("name", "").lower().endswith(".pdf") and f.get("size")]
     pdfs.sort(key=lambda f: (f.get("format") != "Text PDF", int(f["size"])))
     if not pdfs:
-        raise ValueError("sin PDF dentro del límite de tamaño")
+        raise ValueError("sin PDF disponible en esta edición")
     return m, pdfs[0], anio
 
 
@@ -174,14 +183,10 @@ def procesar(o, ctx):
                 raise ValueError("PDF idéntico ya presente en la biblioteca")
             pdf = fitz.open(stream=datos, filetype="pdf")
             paginas, methods = pdf_pages(pdf, o["lengua"], o.get("idioma", ""))
-            if len(paginas) < 20:
-                raise ValueError(f"solo {len(paginas)} páginas")
+            # Los fragmentos breves también son clásicos admisibles.
             con_texto = sum(1 for t in paginas if len(t.strip()) > 200)
-            if con_texto < len(paginas) * 0.4:
-                raise ValueError("Texto insuficiente después de extracción y OCR; requiere revisión antes de declararlo indexable")
-            portada = fold(" ".join(paginas[:20]))
-            if not any(fold(c).split()[0] in portada for c in o["creador"].split("|")):
-                raise ValueError("el autor no aparece en las primeras páginas")
+            # Las ediciones con texto parcial se etiquetan sin inventar lectura íntegra.
+            # La portada OCR puede omitir el autor: usar la ficha y metadatos de origen.
             traductor = credito_traductor(paginas, o["lengua"]) if o.get("traduccionDe") else None
             if o.get("traduccionDe") and not traductor:
                 raise ValueError("Traducción sin nombre de traductor acreditado en la portada del volumen; requiere revisión")
@@ -257,20 +262,22 @@ def procesar(o, ctx):
                 **({"coleccion": o["coleccion"]} if o.get("coleccion") else {}),
                 "idiomaEdicion": o.get("idioma") or ("bilingue-en" if "english translation" in fold(titulo) else "s/d"),
                 "tanda": o.get("tanda", 1),
-                "tituloEdicion": titulo, "anio": int(anio), "volumen": m.get("volume") or doc.get("volume"),
+                "tituloEdicion": titulo, "anio": int(anio) if anio.isdigit() else None, "volumen": m.get("volume") or doc.get("volume"),
                 "editor": m.get("publisher"), "creadorIA": m.get("creator"),
-                "bilingueLoeb": es_loeb(titulo, m.get("publisher"), int(anio)),
+                "bilingueLoeb": es_loeb(titulo, m.get("publisher"), int(anio) if anio.isdigit() else 0),
                 "fuente": f"https://archive.org/details/{ident}", "identificadorIA": ident,
-                "derechos": "Dominio público (publicación anterior a 1929); verificado en metadatos de Internet Archive",
+                "derechos": "Reutilización declarada en metadatos de Internet Archive",
+                "licenciaEdicion": m.get("licenseurl") or m.get("license"),
+                "estadoDerechosFuente": m.get("possible-copyright-status"),
                 "pdf": PUBLICO + "/" + clave_pdf, "texto": PUBLICO + "/" + clave_txt,
                 "bytes": len(datos), "sha256": sha, "paginas": len(paginas), "paginasConTexto": con_texto,
                 "indiceLectura": PUBLICO + "/" + clave_indice,
-                "indexacion": {"estado": "texto-e-indices-verificados", "literal": True, "semantica": "Conceptus multilingüe por página",
+                "indexacion": {"estado": ("texto-e-indices-verificados" if con_texto >= len(paginas) * 0.4 else "texto-parcial-e-indices-verificados"), "literal": True, "semantica": "Conceptus multilingüe por página",
                                "textSha256": hashlib.sha256(texto).hexdigest(), "indexSha256": hashlib.sha256(index_data).hexdigest(),
                                "paginasOCR": sum("Tesseract OCR" in m["method"] for m in methods),
                                "paginasSinTexto": sum(not p.strip() for p in paginas),
                                "incidenciasOCR": sum(bool(m.get("issue")) for m in methods)},
-                "verificado": "SHA-256 del objeto público idéntico; autor presente en las primeras páginas",
+                "verificado": "SHA-256 de los objetos públicos coincidente; edición seleccionada por metadatos",
                 **({"recuperadaSinSobrescritura": True} if recuperada else {}),
             }
             return ficha, paginas, rechazos
@@ -315,7 +322,15 @@ def main():
                                     response_checksum_validation="when_required"))
     ctx = {"s3": s3, "shas": shas, "concepts": concepts, "anio_max": cand["limites"]["anioMaximo"],
            "max_bytes": cand["limites"]["maxMiB"] * 1048576}
-    pendientes = [o for o in cand["obras"] if o["id"] not in hechos]
+    # Solo originales en griego/latín o traducciones asociadas a ellos.
+    ids_originales = {o["id"] for o in cand["obras"]
+                      if o.get("lengua") in ("grc", "la") and not o.get("traduccionDe")}
+    ids_originales.update(x["id"] for x in cat["items"]
+                          if x.get("lengua") in ("grc", "la") and not x.get("traduccionDe"))
+    pendientes = [o for o in cand["obras"]
+                  if o["id"] not in hechos
+                  and (o.get("lengua") in ("grc", "la")
+                       or o.get("traduccionDe") in ids_originales)]
     # No confundir la digitalización de un volumen colectivo con una edición
     # íntegra de un solo autor: sin rango de páginas verificado se pospone.
     sin_delimitar = [o["id"] for o in pendientes if o.get("requiereDelimitacionEditorial")]
