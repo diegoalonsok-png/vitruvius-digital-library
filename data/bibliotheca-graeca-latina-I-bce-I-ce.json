@@ -16478,7 +16478,8 @@
     "note": "Pasajes de De architectura en los que Vitruvio nombra a este autor (latín de la edición V514); la mención no implica cita literal de esta obra concreta."
    },
    "corpusFiles": {
-    "grc": "data/classics-corpus/aeschylus-oresteia-grc.json"
+    "grc": "data/classics-corpus/aeschylus-oresteia-grc.json",
+    "en": "https://libros.vitruvius-digital-library.org/corpus/aeschylus-oresteia-en-8241846d0fb7ffc4.json"
    },
    "century": "V a. C.",
    "period": "V a. C.",
@@ -16554,6 +16555,22 @@
       "urn:cts:greekLit:tlg0085.tlg007.perseus-grc2"
      ],
      "sha256": "68452dc0d78a49ec4e46eefba83dd6bd55a650a62cf1c32087f056a57f070564"
+    },
+    {
+     "language": "en",
+     "path": "https://libros.vitruvius-digital-library.org/corpus/aeschylus-oresteia-en-8241846d0fb7ffc4.json",
+     "label": "Traducción humana: Herbert Weir Smyth",
+     "reader": "classics-text-reader.html?work=aeschylus-oresteia&lang=en&edition=8241846d0fb7ffc4",
+     "sourceUrn": "urn:cts:greekLit:tlg0085.tlg005.perseus-eng3",
+     "sha256": "8241846d0fb7ffc458046f4df69b14fa30deefe7e4d0b0cefd9f6b01e351037e"
+    },
+    {
+     "language": "en",
+     "path": "https://libros.vitruvius-digital-library.org/corpus/aeschylus-oresteia-en-50463a721a8a4717.json",
+     "label": "Traducción humana: Robert Browning",
+     "reader": "classics-text-reader.html?work=aeschylus-oresteia&lang=en&edition=50463a721a8a4717",
+     "sourceUrn": "urn:cts:greekLit:tlg0085.tlg005.perseus-eng4",
+     "sha256": "50463a721a8a4717cc7768ee06dae5357815083eb9e71f96dc6dc08643fc2f45"
     }
    ],
    "indexedEdition": {
@@ -16639,7 +16656,35 @@
     "characters": 127078,
     "bytes": 353278,
     "url": "https://libros.vitruvius-digital-library.org/corpus/aeschylus-oresteia-grc-68452dc0d78a49ec.json"
-   }
+   },
+   "humanTranslations": [
+    {
+     "language": "en",
+     "translators": [
+      "Herbert Weir Smyth"
+     ],
+     "publicationYear": 1926,
+     "sourceUrn": "urn:cts:greekLit:tlg0085.tlg005.perseus-eng3",
+     "license": [
+      "https://creativecommons.org/licenses/by-sa/4.0/"
+     ],
+     "url": "https://libros.vitruvius-digital-library.org/corpus/aeschylus-oresteia-en-8241846d0fb7ffc4.json",
+     "indexUrl": "https://libros.vitruvius-digital-library.org/corpus/indice/traducciones/aeschylus-oresteia-en-bb033b827ac7bbe8.json"
+    },
+    {
+     "language": "en",
+     "translators": [
+      "Robert Browning"
+     ],
+     "publicationYear": 1889,
+     "sourceUrn": "urn:cts:greekLit:tlg0085.tlg005.perseus-eng4",
+     "license": [
+      "https://creativecommons.org/licenses/by-sa/4.0/"
+     ],
+     "url": "https://libros.vitruvius-digital-library.org/corpus/aeschylus-oresteia-en-50463a721a8a4717.json",
+     "indexUrl": "https://libros.vitruvius-digital-library.org/corpus/indice/traducciones/aeschylus-oresteia-en-0418448c03eef02a.json"
+    }
+   ]
   },
   {
    "id": "sophocles-oedipus",
@@ -19087,6 +19132,14 @@
       "urn:cts:greekLit:tlg0085.tlg002.perseus-grc2"
      ],
      "sha256": "0e20dfd894408e18901b447599936a16d8f04fc856e6a361642df9bc364ee92f"
+    },
+    {
+     "language": "en",
+     "path": "https://libros.vitruvius-digital-library.org/corpus/aeschylus-persae-en-e47c8a966b4efaec.json",
+     "label": "Traducción humana: Herbert Weir Smyth",
+     "reader": "classics-text-reader.html?work=aeschylus-persae&lang=en&edition=e47c8a966b4efaec",
+     "sourceUrn": "urn:cts:greekLit:tlg0085.tlg002.perseus-eng2",
+     "sha256": "e47c8a966b4efaec2413235380939fe2e883124d1ec2b182a8fcc2bf10df8a27"
     }
    ],
    "indexationAudit": {
@@ -19212,7 +19265,22 @@
     "characters": 35098,
     "bytes": 103393,
     "url": "https://libros.vitruvius-digital-library.org/corpus/aeschylus-persae-grc-0e20dfd894408e18.json"
-   }
+   },
+   "humanTranslations": [
+    {
+     "language": "en",
+     "translators": [
+      "Herbert Weir Smyth"
+     ],
+     "publicationYear": 1922,
+     "sourceUrn": "urn:cts:greekLit:tlg0085.tlg002.perseus-eng2",
+     "license": [
+      "https://creativecommons.org/licenses/by-sa/4.0/"
+     ],
+     "url": "https://libros.vitruvius-digital-library.org/corpus/aeschylus-persae-en-e47c8a966b4efaec.json",
+     "indexUrl": "https://libros.vitruvius-digital-library.org/corpus/indice/traducciones/aeschylus-persae-en-bf3a84ef2e6c8080.json"
+    }
+   ]
   },
   {
    "id": "aeschylus-seven-thebes",
@@ -19687,6 +19755,14 @@
       "urn:cts:greekLit:tlg0085.tlg003.perseus-grc2"
      ],
      "sha256": "221f9a88108f89dc0658f137cc9697a7ca0a020d1c7987ac46f0b49076fdfab5"
+    },
+    {
+     "language": "en",
+     "path": "https://libros.vitruvius-digital-library.org/corpus/aeschylus-prometheus-en-6f834efa02cdb92b.json",
+     "label": "Traducción humana: Herbert Weir Smyth",
+     "reader": "classics-text-reader.html?work=aeschylus-prometheus&lang=en&edition=6f834efa02cdb92b",
+     "sourceUrn": "urn:cts:greekLit:tlg0085.tlg003.perseus-eng2",
+     "sha256": "6f834efa02cdb92bbf6ad906f6e27cdad35fcce262b25ba080360ed0c887e836"
     }
    ],
    "indexationAudit": {
@@ -19791,7 +19867,22 @@
     "characters": 39486,
     "bytes": 113660,
     "url": "https://libros.vitruvius-digital-library.org/corpus/aeschylus-prometheus-grc-221f9a88108f89dc.json"
-   }
+   },
+   "humanTranslations": [
+    {
+     "language": "en",
+     "translators": [
+      "Herbert Weir Smyth"
+     ],
+     "publicationYear": 1922,
+     "sourceUrn": "urn:cts:greekLit:tlg0085.tlg003.perseus-eng2",
+     "license": [
+      "https://creativecommons.org/licenses/by-sa/4.0/"
+     ],
+     "url": "https://libros.vitruvius-digital-library.org/corpus/aeschylus-prometheus-en-6f834efa02cdb92b.json",
+     "indexUrl": "https://libros.vitruvius-digital-library.org/corpus/indice/traducciones/aeschylus-prometheus-en-a9b24849eff30e4f.json"
+    }
+   ]
   },
   {
    "id": "sophocles-antigone",

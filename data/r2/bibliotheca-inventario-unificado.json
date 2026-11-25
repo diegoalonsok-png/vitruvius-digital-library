@@ -1,6 +1,6 @@
 {
   "schema": "vdl-federated-bibliotheca-inventory-v1",
-  "generated": "2026-11-25T08:49:55.455704+00:00",
+  "generated": "2026-11-25T15:03:07.270372+00:00",
   "method": "Master works and additional R2 works counted separately; edition relations can be many-to-many. Remote text URLs are declared, not live-verified. Unresolved editions are never merged automatically.",
   "counts": {
     "cataloguedWorks": 602,
@@ -4137,6 +4137,14 @@
       ],
       "declaredRemoteIndexedText": [
         {
+          "language": "en",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/aeschylus-oresteia-en-50463a721a8a4717.json"
+        },
+        {
+          "language": "en",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/aeschylus-oresteia-en-8241846d0fb7ffc4.json"
+        },
+        {
           "language": "grc",
           "url": "https://libros.vitruvius-digital-library.org/corpus/aeschylus-oresteia-grc-68452dc0d78a49ec.json"
         }
@@ -4532,6 +4540,10 @@
       ],
       "declaredRemoteIndexedText": [
         {
+          "language": "en",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/aeschylus-persae-en-e47c8a966b4efaec.json"
+        },
+        {
           "language": "grc",
           "url": "https://libros.vitruvius-digital-library.org/corpus/aeschylus-persae-grc-0e20dfd894408e18.json"
         }
@@ -4600,6 +4612,10 @@
         }
       ],
       "declaredRemoteIndexedText": [
+        {
+          "language": "en",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/aeschylus-prometheus-en-6f834efa02cdb92b.json"
+        },
         {
           "language": "grc",
           "url": "https://libros.vitruvius-digital-library.org/corpus/aeschylus-prometheus-grc-221f9a88108f89dc.json"
