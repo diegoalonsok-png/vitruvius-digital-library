@@ -2,7 +2,7 @@
  "schema": "vitruvia-classics-search-registry-v1",
  "updated": "2026-11-26",
  "description": "Registro verificable de transcripciones HTML y textos JSON existentes que admiten búsqueda literal de contenido. No incluye automáticamente PDF escaneados, facsímiles ni fichas sin texto. Los índices auxiliares por locus y el aparato crítico se declaran por separado; no se suman a versiones textuales originales ni implican colación autóptica.",
- "count": 1051,
+ "count": 1055,
  "works": 780,
  "entries": [
   {
@@ -2287,6 +2287,19 @@
    "workId": "cts-phi0474-phi020",
    "author": "Cicerón",
    "title": "De Domo Sua Ad Pontifices",
+   "language": "en",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0474-phi020-en-84c6c48ad69ca2ec.json",
+   "reader": "classics-text-reader.html?work=cts-phi0474-phi020&lang=en&edition=84c6c48ad69ca2ec",
+   "sourceDescription": "Traducción humana acreditada: Charles Duke Yonge; TEI Perseus, licencia y SHA256 verificados",
+   "sourceUrn": "urn:cts:latinLit:phi0474.phi020.perseus-eng2",
+   "sha256": "84c6c48ad69ca2ece7d3b0a3c8733232e7764257484acbad2073a32fd83c226d",
+   "passages": 190
+  },
+  {
+   "workId": "cts-phi0474-phi020",
+   "author": "Cicerón",
+   "title": "De Domo Sua Ad Pontifices",
    "language": "la",
    "format": "json-passages",
    "path": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0474-phi020-la-8fbe3ec419fa9b02.json",
@@ -2295,6 +2308,19 @@
    "sourceUrn": "urn:cts:latinLit:phi0474.phi020.perseus-lat2",
    "sha256": "8fbe3ec419fa9b02ba1c9e1b7bd37eb1de3c571f7e168a2d7b0c20ddf0ba2a04",
    "passages": 154
+  },
+  {
+   "workId": "cts-phi0474-phi021",
+   "author": "Cicerón",
+   "title": "De Haruspicum Responso In P. Clodium",
+   "language": "en",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0474-phi021-en-a854c99023da3fe3.json",
+   "reader": "classics-text-reader.html?work=cts-phi0474-phi021&lang=en&edition=a854c99023da3fe3",
+   "sourceDescription": "Traducción humana acreditada: Charles Duke Yonge; TEI Perseus, licencia y SHA256 verificados",
+   "sourceUrn": "urn:cts:latinLit:phi0474.phi021.perseus-eng2",
+   "sha256": "a854c99023da3fe307882262efbf206193b54b4f9f9ac4eda54ece9d24748cd3",
+   "passages": 82
   },
   {
    "workId": "cts-phi0474-phi021",
@@ -2313,6 +2339,19 @@
    "workId": "cts-phi0474-phi022",
    "author": "Cicerón",
    "title": "Pro P. Sestio",
+   "language": "en",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0474-phi022-en-8de68314aacb81d9.json",
+   "reader": "classics-text-reader.html?work=cts-phi0474-phi022&lang=en&edition=8de68314aacb81d9",
+   "sourceDescription": "Traducción humana acreditada: Charles Duke Yonge; TEI Perseus, licencia y SHA256 verificados",
+   "sourceUrn": "urn:cts:latinLit:phi0474.phi022.perseus-eng2",
+   "sha256": "8de68314aacb81d94c9aa2a8e125901dcc894bea2d7528f8966949c1d695f6e2",
+   "passages": 193
+  },
+  {
+   "workId": "cts-phi0474-phi022",
+   "author": "Cicerón",
+   "title": "Pro P. Sestio",
    "language": "la",
    "format": "json-passages",
    "path": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0474-phi022-la-799056a0039a5399.json",
@@ -2321,6 +2360,19 @@
    "sourceUrn": "urn:cts:latinLit:phi0474.phi022.perseus-lat2",
    "sha256": "799056a0039a539917cfd6dbaf3d2031a1f11b775173934fa108d5155951c7e6",
    "passages": 167
+  },
+  {
+   "workId": "cts-phi0474-phi031",
+   "author": "Cicerón",
+   "title": "Pro T. Annio Milone",
+   "language": "en",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0474-phi031-en-5b26b5177c28f2bf.json",
+   "reader": "classics-text-reader.html?work=cts-phi0474-phi031&lang=en&edition=5b26b5177c28f2bf",
+   "sourceDescription": "Traducción humana acreditada: Charles Duke Yonge; TEI Perseus, licencia y SHA256 verificados",
+   "sourceUrn": "urn:cts:latinLit:phi0474.phi031.perseus-eng2",
+   "sha256": "5b26b5177c28f2bfc8033c96bce16316d401801030472c643e5b84c1c34013a6",
+   "passages": 141
   },
   {
    "workId": "cts-phi0474-phi031",

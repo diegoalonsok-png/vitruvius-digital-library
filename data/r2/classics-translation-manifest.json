@@ -1,6 +1,6 @@
 {
  "schema": "vdl-classics-translation-manifest-v1",
- "generated": "2026-11-26T10:05:41.159445+00:00",
+ "generated": "2026-11-26T19:52:12.482681+00:00",
  "method": "Traducciones humanas TEI licenciadas y publicadas en R2 con SHA-256, índice literal por pasaje, sin alineación automática",
  "editions": [
   {
@@ -1391,6 +1391,98 @@
    ],
    "indexUrl": "https://libros.vitruvius-digital-library.org/corpus/indice/traducciones/cts-phi0474-phi019-en-84b345df0e2fa6a0.json",
    "indexSha256": "84b345df0e2fa6a0ebd438dca45082618bebaaca891d43ab9e8f0ae95fc556dd"
+  },
+  {
+   "workId": "cts-phi0474-phi020",
+   "author": "Cicerón",
+   "title": "De Domo Sua Ad Pontifices",
+   "language": "en",
+   "filename": "cts-phi0474-phi020-en-84c6c48ad69ca2ec.json",
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0474-phi020-en-84c6c48ad69ca2ec.json",
+   "sha256": "84c6c48ad69ca2ece7d3b0a3c8733232e7764257484acbad2073a32fd83c226d",
+   "passages": 190,
+   "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0474/phi020/phi0474.phi020.perseus-eng2.xml",
+   "sourceUrn": "urn:cts:latinLit:phi0474.phi020.perseus-eng2",
+   "sourceSha256": "ca58f4a67bf09cedf22b431a77bd3bc14ba845648fcfa89c0297562893c4c3e5",
+   "sourceArchived": "https://libros.vitruvius-digital-library.org/corpus/fuentes/ca58f4a67bf09cedf22b431a77bd3bc14ba845648fcfa89c0297562893c4c3e5.xml",
+   "translators": [
+    "Charles Duke Yonge"
+   ],
+   "publicationYear": 1875,
+   "license": [
+    "https://creativecommons.org/licenses/by-sa/4.0/"
+   ],
+   "indexUrl": "https://libros.vitruvius-digital-library.org/corpus/indice/traducciones/cts-phi0474-phi020-en-9402ff1be95cebcd.json",
+   "indexSha256": "9402ff1be95cebcdb37a10f937a91d5fca8f4e66ad3ce0fc2fe638fc678e780d"
+  },
+  {
+   "workId": "cts-phi0474-phi021",
+   "author": "Cicerón",
+   "title": "De Haruspicum Responso In P. Clodium",
+   "language": "en",
+   "filename": "cts-phi0474-phi021-en-a854c99023da3fe3.json",
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0474-phi021-en-a854c99023da3fe3.json",
+   "sha256": "a854c99023da3fe307882262efbf206193b54b4f9f9ac4eda54ece9d24748cd3",
+   "passages": 82,
+   "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0474/phi021/phi0474.phi021.perseus-eng2.xml",
+   "sourceUrn": "urn:cts:latinLit:phi0474.phi021.perseus-eng2",
+   "sourceSha256": "f93a1907f25ad39f9e2226c2a741e2fa67059d5caa5e25b75ec61f3382e04933",
+   "sourceArchived": "https://libros.vitruvius-digital-library.org/corpus/fuentes/f93a1907f25ad39f9e2226c2a741e2fa67059d5caa5e25b75ec61f3382e04933.xml",
+   "translators": [
+    "Charles Duke Yonge"
+   ],
+   "publicationYear": 1875,
+   "license": [
+    "https://creativecommons.org/licenses/by-sa/4.0/"
+   ],
+   "indexUrl": "https://libros.vitruvius-digital-library.org/corpus/indice/traducciones/cts-phi0474-phi021-en-47d9395a4c53c2e8.json",
+   "indexSha256": "47d9395a4c53c2e89d512c5a6e97578c9ce6b97aac9d47744ebba6182a999cdc"
+  },
+  {
+   "workId": "cts-phi0474-phi022",
+   "author": "Cicerón",
+   "title": "Pro P. Sestio",
+   "language": "en",
+   "filename": "cts-phi0474-phi022-en-8de68314aacb81d9.json",
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0474-phi022-en-8de68314aacb81d9.json",
+   "sha256": "8de68314aacb81d94c9aa2a8e125901dcc894bea2d7528f8966949c1d695f6e2",
+   "passages": 193,
+   "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0474/phi022/phi0474.phi022.perseus-eng2.xml",
+   "sourceUrn": "urn:cts:latinLit:phi0474.phi022.perseus-eng2",
+   "sourceSha256": "e85a9d9f80e7bffa4c45ff9f34b643e1ecfa757f0f5723bf26718fb3e2e74133",
+   "sourceArchived": "https://libros.vitruvius-digital-library.org/corpus/fuentes/e85a9d9f80e7bffa4c45ff9f34b643e1ecfa757f0f5723bf26718fb3e2e74133.xml",
+   "translators": [
+    "Charles Duke Yonge"
+   ],
+   "publicationYear": 1875,
+   "license": [
+    "https://creativecommons.org/licenses/by-sa/4.0/"
+   ],
+   "indexUrl": "https://libros.vitruvius-digital-library.org/corpus/indice/traducciones/cts-phi0474-phi022-en-8b290a0d5df7eb33.json",
+   "indexSha256": "8b290a0d5df7eb3383481efaac8961769791e1abcb889b7ba95ef415dfb68ec0"
+  },
+  {
+   "workId": "cts-phi0474-phi031",
+   "author": "Cicerón",
+   "title": "Pro T. Annio Milone",
+   "language": "en",
+   "filename": "cts-phi0474-phi031-en-5b26b5177c28f2bf.json",
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0474-phi031-en-5b26b5177c28f2bf.json",
+   "sha256": "5b26b5177c28f2bfc8033c96bce16316d401801030472c643e5b84c1c34013a6",
+   "passages": 141,
+   "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0474/phi031/phi0474.phi031.perseus-eng2.xml",
+   "sourceUrn": "urn:cts:latinLit:phi0474.phi031.perseus-eng2",
+   "sourceSha256": "50e02361ca1108c7c484586bb8057bdd537da55386b8cf77dc39cbe8e4a2e3d8",
+   "sourceArchived": "https://libros.vitruvius-digital-library.org/corpus/fuentes/50e02361ca1108c7c484586bb8057bdd537da55386b8cf77dc39cbe8e4a2e3d8.xml",
+   "translators": [
+    "Charles Duke Yonge"
+   ],
+   "publicationYear": 1875,
+   "license": [
+    "https://creativecommons.org/licenses/by-sa/4.0/"
+   ],
+   "indexUrl": "https://libros.vitruvius-digital-library.org/corpus/indice/traducciones/cts-phi0474-phi031-en-56f252f5268b6964.json",
+   "indexSha256": "56f252f5268b69646a8a41e509f2e7cd6754b1b5b5aef0a565e6cf8c0f638115"
   }
  ],
  "lastDeferred": [
