@@ -17115,6 +17115,14 @@
       "urn:cts:greekLit:tlg0019.tlg003.perseus-grc2"
      ],
      "sha256": "32a7488fccca60d59760159c1a86be07be0f7b71bef4655a1c5561472f3c448e"
+    },
+    {
+     "language": "en",
+     "path": "https://libros.vitruvius-digital-library.org/corpus/aristophanes-clouds-en-9c175dffe8ed3a1c.json",
+     "label": "Traducción humana: William James Hickie",
+     "reader": "classics-text-reader.html?work=aristophanes-clouds&lang=en&edition=9c175dffe8ed3a1c",
+     "sourceUrn": "urn:cts:greekLit:tlg0019.tlg003.perseus-eng2",
+     "sha256": "9c175dffe8ed3a1c09c1937caf93ab8fd8a9fd44ee67d6c2c0548213c8a5c5c6"
     }
    ],
    "century": "V a. C.",
@@ -17232,7 +17240,22 @@
     "characters": 66222,
     "bytes": 237103,
     "url": "https://libros.vitruvius-digital-library.org/corpus/aristophanes-clouds-grc-32a7488fccca60d5.json"
-   }
+   },
+   "humanTranslations": [
+    {
+     "language": "en",
+     "translators": [
+      "William James Hickie"
+     ],
+     "publicationYear": 1853,
+     "sourceUrn": "urn:cts:greekLit:tlg0019.tlg003.perseus-eng2",
+     "license": [
+      "https://creativecommons.org/licenses/by-sa/4.0/"
+     ],
+     "url": "https://libros.vitruvius-digital-library.org/corpus/aristophanes-clouds-en-9c175dffe8ed3a1c.json",
+     "indexUrl": "https://libros.vitruvius-digital-library.org/corpus/indice/traducciones/aristophanes-clouds-en-515c814a223c6376.json"
+    }
+   ]
   },
   {
    "id": "herodotus-historiae",
@@ -19364,6 +19387,14 @@
       "urn:cts:greekLit:tlg0085.tlg004.perseus-grc2"
      ],
      "sha256": "1701da4a7a820dd6acca925f523a629e2914e6ce380faa417a2589e8f7553f48"
+    },
+    {
+     "language": "en",
+     "path": "https://libros.vitruvius-digital-library.org/corpus/aeschylus-seven-thebes-en-5cf15ee4be4342ae.json",
+     "label": "Traducción humana: Herbert Weir Smyth",
+     "reader": "classics-text-reader.html?work=aeschylus-seven-thebes&lang=en&edition=5cf15ee4be4342ae",
+     "sourceUrn": "urn:cts:greekLit:tlg0085.tlg004.perseus-eng2",
+     "sha256": "5cf15ee4be4342ae57dcf147c21f31314aabce6fa3fbc165b9f61146a9d07ecb"
     }
    ],
    "indexationAudit": {
@@ -19489,7 +19520,22 @@
     "characters": 34887,
     "bytes": 99803,
     "url": "https://libros.vitruvius-digital-library.org/corpus/aeschylus-seven-thebes-grc-1701da4a7a820dd6.json"
-   }
+   },
+   "humanTranslations": [
+    {
+     "language": "en",
+     "translators": [
+      "Herbert Weir Smyth"
+     ],
+     "publicationYear": 1922,
+     "sourceUrn": "urn:cts:greekLit:tlg0085.tlg004.perseus-eng2",
+     "license": [
+      "https://creativecommons.org/licenses/by-sa/4.0/"
+     ],
+     "url": "https://libros.vitruvius-digital-library.org/corpus/aeschylus-seven-thebes-en-5cf15ee4be4342ae.json",
+     "indexUrl": "https://libros.vitruvius-digital-library.org/corpus/indice/traducciones/aeschylus-seven-thebes-en-e751228f78df41b4.json"
+    }
+   ]
   },
   {
    "id": "aeschylus-suppliants",
@@ -19573,6 +19619,14 @@
       "urn:cts:greekLit:tlg0085.tlg001.perseus-grc2"
      ],
      "sha256": "5e026ec0f37006668beae4bf4bb59aa96654c83849820b3fb18d604dcac3570c"
+    },
+    {
+     "language": "en",
+     "path": "https://libros.vitruvius-digital-library.org/corpus/aeschylus-suppliants-en-2db8cd7961913a21.json",
+     "label": "Traducción humana: Herbert Weir Smyth",
+     "reader": "classics-text-reader.html?work=aeschylus-suppliants&lang=en&edition=2db8cd7961913a21",
+     "sourceUrn": "urn:cts:greekLit:tlg0085.tlg001.perseus-eng2",
+     "sha256": "2db8cd7961913a214de347d7f58c8c3fbe58ddd4ecc9496af2d6578adc4a3742"
     }
    ],
    "indexationAudit": {
@@ -19678,7 +19732,22 @@
     "characters": 33606,
     "bytes": 104480,
     "url": "https://libros.vitruvius-digital-library.org/corpus/aeschylus-suppliants-grc-5e026ec0f3700666.json"
-   }
+   },
+   "humanTranslations": [
+    {
+     "language": "en",
+     "translators": [
+      "Herbert Weir Smyth"
+     ],
+     "publicationYear": 1922,
+     "sourceUrn": "urn:cts:greekLit:tlg0085.tlg001.perseus-eng2",
+     "license": [
+      "https://creativecommons.org/licenses/by-sa/4.0/"
+     ],
+     "url": "https://libros.vitruvius-digital-library.org/corpus/aeschylus-suppliants-en-2db8cd7961913a21.json",
+     "indexUrl": "https://libros.vitruvius-digital-library.org/corpus/indice/traducciones/aeschylus-suppliants-en-00e193b375ebd8b9.json"
+    }
+   ]
   },
   {
    "id": "aeschylus-prometheus",
@@ -58830,7 +58899,8 @@
    "relatedWorkIds": [],
    "catalogueProvenance": "Título y autor de los catálogos CTS del sitio; edición contrastada con su cabecera TEI. No se retrotraduce el título.",
    "corpusFiles": {
-    "la": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0474-phi014-la-6c225568ff385c99.json"
+    "la": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0474-phi014-la-6c225568ff385c99.json",
+    "en": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0474-phi014-en-ac13da9d64bf1357.json"
    },
    "localVersions": [
     {
@@ -58842,6 +58912,14 @@
       "urn:cts:latinLit:phi0474.phi014.perseus-lat2"
      ],
      "sha256": "6c225568ff385c9943951bee0a103e6c09973be75e0b7be61263345a4e7a0eb7"
+    },
+    {
+     "language": "en",
+     "path": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0474-phi014-en-ac13da9d64bf1357.json",
+     "label": "Traducción humana: Charles Duke Yonge",
+     "reader": "classics-text-reader.html?work=cts-phi0474-phi014&lang=en&edition=ac13da9d64bf1357",
+     "sourceUrn": "urn:cts:latinLit:phi0474.phi014.perseus-eng2",
+     "sha256": "ac13da9d64bf135702c9445f265c38973cb58904decb1de1cf596121e639cb28"
     }
    ],
    "publicStatus": "lectura-local-parcial",
@@ -58878,7 +58956,22 @@
     "characters": 72774,
     "bytes": 90389,
     "url": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0474-phi014-la-6c225568ff385c99.json"
-   }
+   },
+   "humanTranslations": [
+    {
+     "language": "en",
+     "translators": [
+      "Charles Duke Yonge"
+     ],
+     "publicationYear": 1856,
+     "sourceUrn": "urn:cts:latinLit:phi0474.phi014.perseus-eng2",
+     "license": [
+      "https://creativecommons.org/licenses/by-sa/4.0/"
+     ],
+     "url": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0474-phi014-en-ac13da9d64bf1357.json",
+     "indexUrl": "https://libros.vitruvius-digital-library.org/corpus/indice/traducciones/cts-phi0474-phi014-en-58d006aa5494220c.json"
+    }
+   ]
   },
   {
    "id": "cts-phi0474-phi015",

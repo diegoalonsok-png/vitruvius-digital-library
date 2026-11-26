@@ -1,6 +1,6 @@
 {
   "schema": "vitruvius-classics-translation-availability-v1",
-  "generated": "2026-11-25",
+  "generated": "2026-11-26",
   "basis": "Cálculo a partir de works[] y search-registry.json. Los campos de compatibilidad locallyIndexedWorks y localEditionLanguages incluyen índices registrados en R2. originalIndexed y verifiedLocalEditionLanguages solo cuentan archivos locales. originalR2Registered identifica declaraciones remotas; no certifica disponibilidad HTTP ni cotejo.",
   "scope": "271 obras del repertorio grecolatino; originales locales, índices remotos declarados y traducciones alojadas ES/EN/FR",
   "totals": {
@@ -19,11 +19,11 @@
     "declaredRemoteOnlyWorks": 402,
     "declaredR2OriginalWorks": 484,
     "registeredOriginalWorks": 601,
-    "registeredTextVersions": 821,
+    "registeredTextVersions": 825,
     "verifiedLocalTextVersions": 281,
     "verifiedLocalOriginalTextIndexed": 197,
     "supplementaryTextVersions": 161,
-    "allRegisteredTextVersions": 982
+    "allRegisteredTextVersions": 986
   },
   "works": [
     {
@@ -2934,6 +2934,7 @@
         "grc"
       ],
       "remoteEditionLanguages": [
+        "en",
         "grc"
       ],
       "verifiedLocalEditionLanguages": [
@@ -3346,6 +3347,7 @@
         "grc"
       ],
       "remoteEditionLanguages": [
+        "en",
         "grc"
       ],
       "verifiedLocalEditionLanguages": [
@@ -3378,6 +3380,7 @@
         "grc"
       ],
       "remoteEditionLanguages": [
+        "en",
         "grc"
       ],
       "verifiedLocalEditionLanguages": [
@@ -12585,6 +12588,7 @@
       "originalLanguage": "la",
       "translationLanguages": [],
       "localEditionLanguages": [
+        "en",
         "la"
       ],
       "notes": "Edición TEI incorporada en R2; sin traducción humana ni colación independiente acreditadas.",
@@ -12593,9 +12597,11 @@
       "registeredOriginal": true,
       "verifiedLocalEditionLanguages": [],
       "registeredEditionLanguages": [
+        "en",
         "la"
       ],
       "remoteEditionLanguages": [
+        "en",
         "la"
       ],
       "readingStatus": "lectura-local-parcial"

@@ -1,6 +1,6 @@
 {
  "schema": "vdl-classics-translation-manifest-v1",
- "generated": "2026-11-25T15:03:07.136933+00:00",
+ "generated": "2026-11-26T00:43:57.802063+00:00",
  "method": "Traducciones humanas TEI licenciadas y publicadas en R2 con SHA-256, índice literal por pasaje, sin alineación automática",
  "editions": [
   {
@@ -1207,8 +1207,241 @@
    ],
    "indexUrl": "https://libros.vitruvius-digital-library.org/corpus/indice/traducciones/aeschylus-prometheus-en-a9b24849eff30e4f.json",
    "indexSha256": "a9b24849eff30e4fc1259c0dad277bfad13c9dc2773978e5c6dc2d547389b141"
+  },
+  {
+   "workId": "aeschylus-seven-thebes",
+   "author": "Esquilo",
+   "title": "Ἑπτὰ ἐπὶ Θήβας",
+   "language": "en",
+   "filename": "aeschylus-seven-thebes-en-5cf15ee4be4342ae.json",
+   "url": "https://libros.vitruvius-digital-library.org/corpus/aeschylus-seven-thebes-en-5cf15ee4be4342ae.json",
+   "sha256": "5cf15ee4be4342ae57dcf147c21f31314aabce6fa3fbc165b9f61146a9d07ecb",
+   "passages": 199,
+   "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0085/tlg004/tlg0085.tlg004.perseus-eng2.xml",
+   "sourceUrn": "urn:cts:greekLit:tlg0085.tlg004.perseus-eng2",
+   "sourceSha256": "a971825f681928ce43beb0d2c056a3dca2733683e445ab059fd239e397585ed3",
+   "sourceArchived": "https://libros.vitruvius-digital-library.org/corpus/fuentes/a971825f681928ce43beb0d2c056a3dca2733683e445ab059fd239e397585ed3.xml",
+   "translators": [
+    "Herbert Weir Smyth"
+   ],
+   "publicationYear": 1922,
+   "license": [
+    "https://creativecommons.org/licenses/by-sa/4.0/"
+   ],
+   "indexUrl": "https://libros.vitruvius-digital-library.org/corpus/indice/traducciones/aeschylus-seven-thebes-en-e751228f78df41b4.json",
+   "indexSha256": "e751228f78df41b4fff9430bf35a714e86095b8420bf34808b9cb36a8752310c"
+  },
+  {
+   "workId": "aeschylus-suppliants",
+   "author": "Esquilo",
+   "title": "Ἱκέτιδες",
+   "language": "en",
+   "filename": "aeschylus-suppliants-en-2db8cd7961913a21.json",
+   "url": "https://libros.vitruvius-digital-library.org/corpus/aeschylus-suppliants-en-2db8cd7961913a21.json",
+   "sha256": "2db8cd7961913a214de347d7f58c8c3fbe58ddd4ecc9496af2d6578adc4a3742",
+   "passages": 241,
+   "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0085/tlg001/tlg0085.tlg001.perseus-eng2.xml",
+   "sourceUrn": "urn:cts:greekLit:tlg0085.tlg001.perseus-eng2",
+   "sourceSha256": "ab0082ee4cd688576ada7cadb60b8379fda60228bb5aee4af5746bc0a43d126b",
+   "sourceArchived": "https://libros.vitruvius-digital-library.org/corpus/fuentes/ab0082ee4cd688576ada7cadb60b8379fda60228bb5aee4af5746bc0a43d126b.xml",
+   "translators": [
+    "Herbert Weir Smyth"
+   ],
+   "publicationYear": 1922,
+   "license": [
+    "https://creativecommons.org/licenses/by-sa/4.0/"
+   ],
+   "indexUrl": "https://libros.vitruvius-digital-library.org/corpus/indice/traducciones/aeschylus-suppliants-en-00e193b375ebd8b9.json",
+   "indexSha256": "00e193b375ebd8b9ecc0003c82cfc7d07fc344073170c18fe73495a9ff6a7058"
+  },
+  {
+   "workId": "aristophanes-clouds",
+   "author": "Aristófanes",
+   "title": "Νεφέλαι",
+   "language": "en",
+   "filename": "aristophanes-clouds-en-9c175dffe8ed3a1c.json",
+   "url": "https://libros.vitruvius-digital-library.org/corpus/aristophanes-clouds-en-9c175dffe8ed3a1c.json",
+   "sha256": "9c175dffe8ed3a1c09c1937caf93ab8fd8a9fd44ee67d6c2c0548213c8a5c5c6",
+   "passages": 699,
+   "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0019/tlg003/tlg0019.tlg003.perseus-eng2.xml",
+   "sourceUrn": "urn:cts:greekLit:tlg0019.tlg003.perseus-eng2",
+   "sourceSha256": "d809c2c662d710de24e61b60408f44c3ec5feb91ee3690e9e1a95ec148c99404",
+   "sourceArchived": "https://libros.vitruvius-digital-library.org/corpus/fuentes/d809c2c662d710de24e61b60408f44c3ec5feb91ee3690e9e1a95ec148c99404.xml",
+   "translators": [
+    "William James Hickie"
+   ],
+   "publicationYear": 1853,
+   "license": [
+    "https://creativecommons.org/licenses/by-sa/4.0/"
+   ],
+   "indexUrl": "https://libros.vitruvius-digital-library.org/corpus/indice/traducciones/aristophanes-clouds-en-515c814a223c6376.json",
+   "indexSha256": "515c814a223c63763fc76029b6516ab2f9d6c299a1037f277b47d06843e8888b"
+  },
+  {
+   "workId": "cts-phi0474-phi014",
+   "author": "Cicerón",
+   "title": "Pro L. Murena",
+   "language": "en",
+   "filename": "cts-phi0474-phi014-en-ac13da9d64bf1357.json",
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0474-phi014-en-ac13da9d64bf1357.json",
+   "sha256": "ac13da9d64bf135702c9445f265c38973cb58904decb1de1cf596121e639cb28",
+   "passages": 115,
+   "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0474/phi014/phi0474.phi014.perseus-eng2.xml",
+   "sourceUrn": "urn:cts:latinLit:phi0474.phi014.perseus-eng2",
+   "sourceSha256": "b345df341e31de56ef8ce0e6839771cea3ee1d21ba56952a5e0f53d461a8b0ec",
+   "sourceArchived": "https://libros.vitruvius-digital-library.org/corpus/fuentes/b345df341e31de56ef8ce0e6839771cea3ee1d21ba56952a5e0f53d461a8b0ec.xml",
+   "translators": [
+    "Charles Duke Yonge"
+   ],
+   "publicationYear": 1856,
+   "license": [
+    "https://creativecommons.org/licenses/by-sa/4.0/"
+   ],
+   "indexUrl": "https://libros.vitruvius-digital-library.org/corpus/indice/traducciones/cts-phi0474-phi014-en-58d006aa5494220c.json",
+   "indexSha256": "58d006aa5494220c353401956670b8e7fe2d14f683fd1e9af06d11eb63edd558"
   }
  ],
- "lastDeferred": [],
+ "lastDeferred": [
+  {
+   "workId": "apollonius-conica",
+   "reason": "No hay traducción TEI descargable en Perseus"
+  },
+  {
+   "workId": "apolonio-argonauticas",
+   "reason": "No hay traducción TEI descargable en Perseus"
+  },
+  {
+   "workId": "archimedes-fluitantibus",
+   "reason": "No hay traducción TEI descargable en Perseus"
+  },
+  {
+   "workId": "aristarchus-magnitudines",
+   "reason": "No hay traducción TEI descargable en Perseus"
+  },
+  {
+   "workId": "aristophanes-acharnenses",
+   "reason": "No hay traducción TEI descargable en Perseus"
+  },
+  {
+   "workId": "aristophanes-aves",
+   "reason": "Sin traducción publicable: tlg0019.tlg006.perseus-eng2.xml: Edición histórica anterior a 1931 no acreditada"
+  },
+  {
+   "workId": "aristophanes-lysistrata",
+   "reason": "No hay traducción TEI descargable en Perseus"
+  },
+  {
+   "workId": "aristophanes-pax",
+   "reason": "No hay traducción TEI descargable en Perseus"
+  },
+  {
+   "workId": "aristophanes-ranae",
+   "reason": "No hay traducción TEI descargable en Perseus"
+  },
+  {
+   "workId": "aristophanes-vespae",
+   "reason": "No hay traducción TEI descargable en Perseus"
+  },
+  {
+   "workId": "aristoteles-del-cielo",
+   "reason": "No hay traducción TEI descargable en Perseus"
+  },
+  {
+   "workId": "aristoteles-historia-animales",
+   "reason": "No hay traducción TEI descargable en Perseus"
+  },
+  {
+   "workId": "aristoteles-meteorologica",
+   "reason": "No hay traducción TEI descargable en Perseus"
+  },
+  {
+   "workId": "aristotle-de-anima",
+   "reason": "No hay traducción TEI descargable en Perseus"
+  },
+  {
+   "workId": "aristotle-metaphysics",
+   "reason": "Sin traducción publicable: tlg0086.tlg025.perseus-eng2.xml: Edición histórica anterior a 1931 no acreditada"
+  },
+  {
+   "workId": "aristotle-physics",
+   "reason": "No hay traducción TEI descargable en Perseus"
+  },
+  {
+   "workId": "aristotle-poetics",
+   "reason": "Sin traducción publicable: tlg0086.tlg034.perseus-eng2.xml: Edición histórica anterior a 1931 no acreditada"
+  },
+  {
+   "workId": "aristotle-politics",
+   "reason": "Sin traducción publicable: tlg0086.tlg035.perseus-eng2.xml: Edición histórica anterior a 1931 no acreditada"
+  },
+  {
+   "workId": "cassius-dio-historia",
+   "reason": "No hay traducción TEI descargable en Perseus"
+  },
+  {
+   "workId": "cicero-brutus",
+   "reason": "No hay traducción TEI descargable en Perseus"
+  },
+  {
+   "workId": "cicero-de-amicitia",
+   "reason": "Sin traducción publicable: phi0474.phi052.perseus-eng2.xml: Sin licencia de reutilización explícita"
+  },
+  {
+   "workId": "cicero-de-divinatione",
+   "reason": "Sin traducción publicable: phi0474.phi053.perseus-eng1.xml: Sin licencia de reutilización explícita"
+  },
+  {
+   "workId": "cicero-de-finibus",
+   "reason": "No hay traducción TEI descargable en Perseus"
+  },
+  {
+   "workId": "cicero-de-natura-deorum",
+   "reason": "No hay traducción TEI descargable en Perseus"
+  },
+  {
+   "workId": "cicero-de-senectute",
+   "reason": "Sin traducción publicable: phi0474.phi051.perseus-eng1.xml: Sin licencia de reutilización explícita"
+  },
+  {
+   "workId": "cicero-officiis",
+   "reason": "Sin traducción publicable: phi0474.phi055.perseus-eng1.xml: Sin licencia de reutilización explícita"
+  },
+  {
+   "workId": "cicero-oratore",
+   "reason": "No hay traducción TEI descargable en Perseus"
+  },
+  {
+   "workId": "cicero-philippicae",
+   "reason": "Sin traducción publicable: phi0474.phi035.perseus-eng1.xml: No está marcado como traducción humana TEI"
+  },
+  {
+   "workId": "cicero-republica",
+   "reason": "No hay traducción TEI descargable en Perseus"
+  },
+  {
+   "workId": "cicero-tusculanae",
+   "reason": "No hay traducción TEI descargable en Perseus"
+  },
+  {
+   "workId": "cleonides-harmonica",
+   "reason": "No hay traducción TEI descargable en Perseus"
+  },
+  {
+   "workId": "cts-ogl0001-ogl001",
+   "reason": "No hay traducción TEI descargable en Perseus"
+  },
+  {
+   "workId": "cts-phi0426-phi001",
+   "reason": "Sin traducción publicable: phi0426.phi001.perseus-eng1.xml: Edición histórica anterior a 1931 no acreditada"
+  },
+  {
+   "workId": "cts-phi0428-phi001",
+   "reason": "Sin traducción publicable: phi0428.phi001.perseus-eng1.xml: Edición histórica anterior a 1931 no acreditada"
+  },
+  {
+   "workId": "cts-phi0430-phi001",
+   "reason": "No hay traducción TEI descargable en Perseus"
+  }
+ ],
  "policy": "Una obra bibliográfica, varias versiones humanas identificadas por URN, sin eliminar ni reemplazar ninguna"
 }

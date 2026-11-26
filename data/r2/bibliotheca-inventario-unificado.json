@@ -1,6 +1,6 @@
 {
   "schema": "vdl-federated-bibliotheca-inventory-v1",
-  "generated": "2026-11-25T19:29:29.680700+00:00",
+  "generated": "2026-11-26T00:43:58.064910+00:00",
   "method": "Master works and additional R2 works counted separately; edition relations can be many-to-many. Remote text URLs are declared, not live-verified. Unresolved editions are never merged automatically.",
   "counts": {
     "cataloguedWorks": 630,
@@ -4236,6 +4236,10 @@
       ],
       "declaredRemoteIndexedText": [
         {
+          "language": "en",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/aristophanes-clouds-en-9c175dffe8ed3a1c.json"
+        },
+        {
           "language": "grc",
           "url": "https://libros.vitruvius-digital-library.org/corpus/aristophanes-clouds-grc-32a7488fccca60d5.json"
         }
@@ -4567,6 +4571,10 @@
       ],
       "declaredRemoteIndexedText": [
         {
+          "language": "en",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/aeschylus-seven-thebes-en-5cf15ee4be4342ae.json"
+        },
+        {
           "language": "grc",
           "url": "https://libros.vitruvius-digital-library.org/corpus/aeschylus-seven-thebes-grc-1701da4a7a820dd6.json"
         }
@@ -4589,6 +4597,10 @@
         }
       ],
       "declaredRemoteIndexedText": [
+        {
+          "language": "en",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/aeschylus-suppliants-en-2db8cd7961913a21.json"
+        },
         {
           "language": "grc",
           "url": "https://libros.vitruvius-digital-library.org/corpus/aeschylus-suppliants-grc-5e026ec0f3700666.json"
@@ -11381,6 +11393,10 @@
       "catalogue": "github",
       "locallyIndexedText": [],
       "declaredRemoteIndexedText": [
+        {
+          "language": "en",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0474-phi014-en-ac13da9d64bf1357.json"
+        },
         {
           "language": "la",
           "url": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0474-phi014-la-6c225568ff385c99.json"

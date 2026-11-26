@@ -1,6 +1,6 @@
 {
   "schema": "vitruvia-classics-coverage-audit-v1",
-  "date": "2026-11-25",
+  "date": "2026-11-26",
   "scope": "Se auditan exclusivamente 271 fichas de obras del catálogo local; no es un censo universal de literatura grecolatina.",
   "method": "Cruce de fichas bibliográficas, vínculos locales, corpus legible, registro de búsqueda y testimonios manuscritos; sin OCR ni verificación externa de los enlaces.",
   "counts": {
@@ -13,7 +13,7 @@
       "pendiente-de-incorporar": 2
     },
     "locallyReadableClaims": 562,
-    "indexedTextVersions": 821,
+    "indexedTextVersions": 825,
     "indexedDistinctWorks": 601,
     "manuscriptWitnesses": 107
   },
@@ -2477,6 +2477,7 @@
       "indexedTextFiles": [
         "data/classics-corpus/aristophanes-clouds-en.json",
         "data/classics-corpus/aristophanes-clouds-grc.json",
+        "https://libros.vitruvius-digital-library.org/corpus/aristophanes-clouds-en-9c175dffe8ed3a1c.json",
         "https://libros.vitruvius-digital-library.org/corpus/aristophanes-clouds-grc-32a7488fccca60d5.json"
       ],
       "localPDF": null,
@@ -2812,6 +2813,7 @@
       "indexedTextFiles": [
         "data/classics-corpus/aeschylus-seven-thebes-en.json",
         "data/classics-corpus/aeschylus-seven-thebes-grc.json",
+        "https://libros.vitruvius-digital-library.org/corpus/aeschylus-seven-thebes-en-5cf15ee4be4342ae.json",
         "https://libros.vitruvius-digital-library.org/corpus/aeschylus-seven-thebes-grc-1701da4a7a820dd6.json"
       ],
       "localPDF": null,
@@ -2837,6 +2839,7 @@
       "indexedTextFiles": [
         "data/classics-corpus/aeschylus-suppliants-en.json",
         "data/classics-corpus/aeschylus-suppliants-grc.json",
+        "https://libros.vitruvius-digital-library.org/corpus/aeschylus-suppliants-en-2db8cd7961913a21.json",
         "https://libros.vitruvius-digital-library.org/corpus/aeschylus-suppliants-grc-5e026ec0f3700666.json"
       ],
       "localPDF": null,
@@ -9947,9 +9950,11 @@
       "originalLanguage": "la",
       "catalogueStatus": "lectura-local-parcial",
       "indexedTextLanguages": [
+        "en",
         "la"
       ],
       "indexedTextFiles": [
+        "https://libros.vitruvius-digital-library.org/corpus/cts-phi0474-phi014-en-ac13da9d64bf1357.json",
         "https://libros.vitruvius-digital-library.org/corpus/cts-phi0474-phi014-la-6c225568ff385c99.json"
       ],
       "manuscriptRecords": 0,
