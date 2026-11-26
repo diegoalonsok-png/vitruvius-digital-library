@@ -1,0 +1,643 @@
+{
+  "sourceGenerated": "2026-11-26T17:03:29.450875+00:00",
+  "source": "data/r2/bibliotheca-inventario-unificado.json",
+  "policy": "Existing sources only; no acquisition, deletion or R2 uploads without verified capacity. Verify identity and text before publishing.",
+  "total": 818,
+  "pendingCount": 40,
+  "pending": [
+    {
+      "id": "apollodorus-poliorcetics",
+      "author": "Apolodoro de Damasco (atribución tradicional)",
+      "title": "Πολιορκητικά · Poliorketika",
+      "editions": [
+        {
+          "editionId": "apollodorus-poliorcetics",
+          "title": "Poliorktika kai poliorkiai diaphorn polen = Poliorcétique des Grecs : traités thoriques, récits historiques ; ouvrage publié par l'Imprimerie impériale ;",
+          "year": 1867,
+          "language": "grc",
+          "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/apollodorus-poliorcetics.pdf",
+          "text": "https://libros.vitruvius-digital-library.org/clasicos/texto/apollodorus-poliorcetics.json",
+          "sha256": "cea9ced8736203b9003970fcc58bdb41bc51c87d9463aeb1615bcab94c6f3457",
+          "objectStatus": "declared-in-r2-catalogue-not-live-probed"
+        }
+      ],
+      "status": "pending_verification"
+    },
+    {
+      "id": "athenaeus-mechanicus",
+      "author": "Ateneo Mecánico",
+      "title": "Περὶ μηχανημάτων · De machinis",
+      "editions": [
+        {
+          "editionId": "athenaeus-mechanicus",
+          "title": "Poliorktika kai poliorkiai diaphorn polen = Poliorcétique des Grecs : traités thoriques, récits historiques ; ouvrage publié par l'Imprimerie impériale ;",
+          "year": 1867,
+          "language": "grc",
+          "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/athenaeus-mechanicus.pdf",
+          "text": "https://libros.vitruvius-digital-library.org/clasicos/texto/athenaeus-mechanicus.json",
+          "sha256": "cea9ced8736203b9003970fcc58bdb41bc51c87d9463aeb1615bcab94c6f3457",
+          "objectStatus": "declared-in-r2-catalogue-not-live-probed"
+        }
+      ],
+      "status": "pending_verification"
+    },
+    {
+      "id": "vitruvio-v514-pdf",
+      "author": "Vitruvio · edición de Diego A. Kurilo",
+      "title": "De architectura · Recensio V514 (latín–castellano)",
+      "editions": [],
+      "status": "pending_verification"
+    },
+    {
+      "id": "vitruvio-v554-pdf",
+      "author": "Vitruvio · edición de Diego A. Kurilo",
+      "title": "De architectura · Recensio V554 (latín–francés)",
+      "editions": [],
+      "status": "pending_verification"
+    },
+    {
+      "id": "theory-v297-pdf",
+      "author": "Diego A. Kurilo · sobre Vitruvio",
+      "title": "The Architect of Theory · V297 (inglés)",
+      "editions": [],
+      "status": "pending_verification"
+    },
+    {
+      "id": "krohn-1912-pdf",
+      "author": "Vitruvio · edición de Fritz Krohn",
+      "title": "Vitruvii De architectura libri decem · Krohn 1912",
+      "editions": [],
+      "status": "pending_verification"
+    },
+    {
+      "id": "ptolemy-geographia",
+      "author": "Claudio Ptolomeo",
+      "title": "Γεωγραφικὴ ὑφήγησις",
+      "editions": [
+        {
+          "editionId": "ptolemy-geographia",
+          "title": "Geographia uniuersalis : uetus et noua, complectens Claudii Ptoloemaei Alexandrini enarrationis libros VIII",
+          "year": 1540,
+          "language": "grc",
+          "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/ptolemy-geographia.pdf",
+          "text": "https://libros.vitruvius-digital-library.org/clasicos/texto/ptolemy-geographia.json",
+          "sha256": "e11aeb07ac9065430ff4f64b3a78a636b16650851929ee76a591aa5147de4758",
+          "objectStatus": "declared-in-r2-catalogue-not-live-probed"
+        }
+      ],
+      "status": "pending_verification"
+    },
+    {
+      "id": "accius-fragmenta",
+      "author": "Accio",
+      "title": "Tragoediae (fragmenta)",
+      "editions": [
+        {
+          "editionId": "accius-fragmenta",
+          "title": "Tragicorum Romanorum fragmenta",
+          "year": 1871,
+          "language": "la",
+          "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/accius-fragmenta.pdf",
+          "text": "https://libros.vitruvius-digital-library.org/clasicos/texto/accius-fragmenta.json",
+          "sha256": "da46cbcfba01bd8beab0b9f7024aef90feb294fa5a2b695531b8022158f8660d",
+          "objectStatus": "declared-in-r2-catalogue-not-live-probed"
+        }
+      ],
+      "status": "pending_verification"
+    },
+    {
+      "id": "procopius-aedificiis",
+      "author": "Procopio de Cesarea",
+      "title": "Περὶ κτισμάτων",
+      "editions": [],
+      "status": "pending_verification"
+    },
+    {
+      "id": "philo-belopoeica",
+      "author": "Filón de Bizancio",
+      "title": "Βελοποιικά · Belopoeica (Mechanike syntaxis IV)",
+      "editions": [
+        {
+          "editionId": "philo-belopoeica",
+          "title": "Poliorktika kai poliorkiai diaphorn polen = Poliorcétique des Grecs : traités thoriques, récits historiques ; ouvrage publié par l'Imprimerie impériale ;",
+          "year": 1867,
+          "language": "grc",
+          "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/philo-belopoeica.pdf",
+          "text": "https://libros.vitruvius-digital-library.org/clasicos/texto/philo-belopoeica.json",
+          "sha256": "cea9ced8736203b9003970fcc58bdb41bc51c87d9463aeb1615bcab94c6f3457",
+          "objectStatus": "declared-in-r2-catalogue-not-live-probed"
+        }
+      ],
+      "status": "pending_verification"
+    },
+    {
+      "id": "biton-kataskeuai",
+      "author": "Bitón",
+      "title": "Κατασκευαὶ πολεμικῶν ὀργάνων καὶ καταπαλτικῶν",
+      "editions": [
+        {
+          "editionId": "biton-kataskeuai",
+          "title": "Poliorktika kai poliorkiai diaphorn polen = Poliorcétique des Grecs : traités thoriques, récits historiques ; ouvrage publié par l'Imprimerie impériale ;",
+          "year": 1867,
+          "language": "grc",
+          "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/biton-kataskeuai.pdf",
+          "text": "https://libros.vitruvius-digital-library.org/clasicos/texto/biton-kataskeuai.json",
+          "sha256": "cea9ced8736203b9003970fcc58bdb41bc51c87d9463aeb1615bcab94c6f3457",
+          "objectStatus": "declared-in-r2-catalogue-not-live-probed"
+        }
+      ],
+      "status": "pending_verification"
+    },
+    {
+      "id": "hyginus-gromaticus",
+      "author": "Higino Gromático",
+      "title": "Constitutio limitum",
+      "editions": [
+        {
+          "editionId": "hyginus-gromaticus",
+          "title": "Gromatici veteres ex recensione Caroli Lachmanni. Diagrammata edidit A. Rudorffius. (Die Schriften der römischen Feldmesser",
+          "year": 1848,
+          "language": "la",
+          "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/hyginus-gromaticus.pdf",
+          "text": "https://libros.vitruvius-digital-library.org/clasicos/texto/hyginus-gromaticus.json",
+          "sha256": "a6f2340323d68b8e15838f4cae6db872782f91856b51b8bb386918c9475e1b50",
+          "objectStatus": "declared-in-r2-catalogue-not-live-probed"
+        }
+      ],
+      "status": "pending_verification"
+    },
+    {
+      "id": "lyra-graeca",
+      "author": "Poetas líricos griegos",
+      "title": "Lyra Graeca · Líricos monódicos (Safo, Alceo, Anacreonte y otros)",
+      "editions": [
+        {
+          "editionId": "lyra-graeca",
+          "title": "Lyra Graeca; being the remains of all the Greek lyrik poets from Eumelus to Timotheus excepting Pindar",
+          "year": 1922,
+          "language": "grc",
+          "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/lyra-graeca.pdf",
+          "text": "https://libros.vitruvius-digital-library.org/clasicos/texto/lyra-graeca.json",
+          "sha256": "accae2cc3a9c44c22d99def8cae05c55f50b4592e001d38453326f7fab210ffe",
+          "objectStatus": "declared-in-r2-catalogue-not-live-probed"
+        }
+      ],
+      "status": "pending_verification"
+    },
+    {
+      "id": "higino-fabulas",
+      "author": "Higino",
+      "title": "Fabulae · Astronomica poetica",
+      "editions": [
+        {
+          "editionId": "higino-fabulas",
+          "title": "Hygini Fabulae",
+          "year": 1872,
+          "language": "la",
+          "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/higino-fabulas.pdf",
+          "text": "https://libros.vitruvius-digital-library.org/clasicos/texto/higino-fabulas.json",
+          "sha256": "105726b54dc2a1a069365b0101e9d7e28772e8c07f1356db24436c61073f8a83",
+          "objectStatus": "declared-in-r2-catalogue-not-live-probed"
+        }
+      ],
+      "status": "pending_verification"
+    },
+    {
+      "id": "manilio-astronomica",
+      "author": "Manilio",
+      "title": "Astronomica",
+      "editions": [
+        {
+          "editionId": "manilio-astronomica",
+          "title": "Astronomica. Hrsg. von Theodorus Breiter",
+          "year": 1907,
+          "language": "la",
+          "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/manilio-astronomica.pdf",
+          "text": "https://libros.vitruvius-digital-library.org/clasicos/texto/manilio-astronomica.json",
+          "sha256": "71d60921f701e9ab7d95c64abca253e4585cdf77f39e900304babef748df5842",
+          "objectStatus": "declared-in-r2-catalogue-not-live-probed"
+        }
+      ],
+      "status": "pending_verification"
+    },
+    {
+      "id": "galeno-opera-kuhn",
+      "author": "Galeno",
+      "title": "Claudii Galeni opera omnia · Tomus XIV (ed. Kühn, Leipzig 1827)",
+      "editions": [
+        {
+          "editionId": "galeno-opera-kuhn",
+          "title": "Galeni opera omnia / vol. 14",
+          "year": 1821,
+          "language": "grc",
+          "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/galeno-opera-kuhn.pdf",
+          "text": "https://libros.vitruvius-digital-library.org/clasicos/texto/galeno-opera-kuhn.json",
+          "sha256": "11e93b0bd7a3afcdf772b925e121734a2b0032de79f29df7d9864eb813c03942",
+          "objectStatus": "declared-in-r2-catalogue-not-live-probed"
+        }
+      ],
+      "status": "pending_verification"
+    },
+    {
+      "id": "galeno-kuhn-vol01",
+      "author": "Galeno",
+      "title": "Claudii Galeni opera omnia · Tomus XIV (ed. Kühn, Leipzig 1827)",
+      "editions": [
+        {
+          "editionId": "galeno-kuhn-vol01",
+          "title": "Galeni opera omnia / vol. 14",
+          "year": 1821,
+          "language": "grc",
+          "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/galeno-kuhn-vol01.pdf",
+          "text": "https://libros.vitruvius-digital-library.org/clasicos/texto/galeno-kuhn-vol01.json",
+          "sha256": "11e93b0bd7a3afcdf772b925e121734a2b0032de79f29df7d9864eb813c03942",
+          "objectStatus": "declared-in-r2-catalogue-not-live-probed"
+        }
+      ],
+      "status": "pending_verification"
+    },
+    {
+      "id": "galeno-kuhn-vol19",
+      "author": "Galeno",
+      "title": "Opera omnia, vol. XIX (ed. Kühn, Leipzig 1830)",
+      "editions": [
+        {
+          "editionId": "galeno-kuhn-vol19",
+          "title": "Opera omnia, vol. XIX (ed. Kühn, Leipzig 1830)",
+          "year": 1821,
+          "language": "grc",
+          "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/galeno-kuhn-vol19.pdf",
+          "text": "https://libros.vitruvius-digital-library.org/clasicos/texto/galeno-kuhn-vol19.json",
+          "sha256": "6a0900dd5592eeda90acd260e8f55c475acfa96e1c38491d328e4704971d9461",
+          "objectStatus": "declared-in-r2-catalogue-not-live-probed"
+        }
+      ],
+      "status": "pending_verification"
+    },
+    {
+      "id": "galeno-scripta-minora",
+      "author": "Galeno",
+      "title": "Scripta minora (ed. Marquardt, Müller y Helmreich, Leipzig 1884–1893)",
+      "editions": [
+        {
+          "editionId": "galeno-scripta-minora",
+          "title": "Claudii Galeni Pergameni Scripta Minora, VoL III",
+          "year": 1903,
+          "language": "grc",
+          "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/galeno-scripta-minora.pdf",
+          "text": "https://libros.vitruvius-digital-library.org/clasicos/texto/galeno-scripta-minora.json",
+          "sha256": "5ed136b94094f135026eadb7c4cfd4348be662eda90ab710c606c0d4e93fcf48",
+          "objectStatus": "declared-in-r2-catalogue-not-live-probed"
+        }
+      ],
+      "status": "pending_verification"
+    },
+    {
+      "id": "jamblico-vida-pitagorica",
+      "author": "Jámblico",
+      "title": "Περὶ τοῦ Πυθαγορείου βίου · De vita pythagorica",
+      "editions": [
+        {
+          "editionId": "jamblico-vida-pitagorica",
+          "title": "Περί βίου πυθαγορικού λόγος : De vita Pythagorica liber",
+          "year": 1707,
+          "language": "grc",
+          "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/jamblico-vida-pitagorica.pdf",
+          "text": "https://libros.vitruvius-digital-library.org/clasicos/texto/jamblico-vida-pitagorica.json",
+          "sha256": "ac9da3085b675b2fcd0a303e5fdd9be1f07b7b694644d26693b27b3923097f9b",
+          "objectStatus": "declared-in-r2-catalogue-not-live-probed"
+        }
+      ],
+      "status": "pending_verification"
+    },
+    {
+      "id": "proclo-comentario-euclides",
+      "author": "Proclo",
+      "title": "Εἰς τὸ πρῶτον τῶν Εὐκλείδου Στοιχείων · In primum Euclidis Elementorum librum commentarii",
+      "editions": [
+        {
+          "editionId": "proclo-comentario-euclides",
+          "title": "Procli Diadochi in primum Euclidis Elementorum librum commentarii",
+          "year": 1873,
+          "language": "grc",
+          "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/proclo-comentario-euclides.pdf",
+          "text": "https://libros.vitruvius-digital-library.org/clasicos/texto/proclo-comentario-euclides.json",
+          "sha256": "8c8c9822f349e499fbd072f3764b827791047563781b1051a3a5fbf028523d97",
+          "objectStatus": "declared-in-r2-catalogue-not-live-probed"
+        }
+      ],
+      "status": "pending_verification"
+    },
+    {
+      "id": "sexto-empirico-obras",
+      "author": "Sexto Empírico",
+      "title": "Πρὸς μαθηματικούς · Adversus mathematicos y Esbozos pirrónicos",
+      "editions": [
+        {
+          "editionId": "sexto-empirico-obras",
+          "title": "Sextus Empiricus",
+          "year": 1842,
+          "language": "grc",
+          "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/sexto-empirico-obras.pdf",
+          "text": "https://libros.vitruvius-digital-library.org/clasicos/texto/sexto-empirico-obras.json",
+          "sha256": "c88e587da2442237df0c6f56639ca9b5d242550096114df4a33593d029b8cec7",
+          "objectStatus": "declared-in-r2-catalogue-not-live-probed"
+        }
+      ],
+      "status": "pending_verification"
+    },
+    {
+      "id": "teon-esmirna-expositio",
+      "author": "Teón de Esmirna",
+      "title": "Τὰ κατὰ μαθηματικὴν χρήσιμα εἰς τὴν Πλάτωνος ἀνάγνωσιν · Expositio rerum mathematicarum",
+      "editions": [
+        {
+          "editionId": "teon-esmirna-expositio",
+          "title": "Specimen academicum inaugurale, exhibens Theonis Smyrnaei Arithmeticam, Bullialdi versione, lectionis diversitate et annotatione auctam, quod ... submittet Janus Jacobus de Gelder",
+          "year": 1827,
+          "language": "grc",
+          "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/teon-esmirna-expositio.pdf",
+          "text": "https://libros.vitruvius-digital-library.org/clasicos/texto/teon-esmirna-expositio.json",
+          "sha256": "b1e415ec730414d383404e97561a86fe7e2d36c2257fd7eea323e784b343fa75",
+          "objectStatus": "declared-in-r2-catalogue-not-live-probed"
+        }
+      ],
+      "status": "pending_verification"
+    },
+    {
+      "id": "anthologia-latina",
+      "author": "Antología latina",
+      "title": "Anthologia Latina",
+      "editions": [
+        {
+          "editionId": "anthologia-latina",
+          "title": "Anthologia latina sive poesis latinae supplementum, ediderunt Franciscus Buecheler et Alexander Riese",
+          "year": 1869,
+          "language": "la",
+          "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/anthologia-latina.pdf",
+          "text": "https://libros.vitruvius-digital-library.org/clasicos/texto/anthologia-latina.json",
+          "sha256": "e0f994b10b08af3c2973c03cde42e82e6a451069a72d8dfc7fc16e915d67bc79",
+          "objectStatus": "declared-in-r2-catalogue-not-live-probed"
+        }
+      ],
+      "status": "pending_verification"
+    },
+    {
+      "id": "casiodoro-variae",
+      "author": "Casiodoro",
+      "title": "Variae",
+      "editions": [
+        {
+          "editionId": "casiodoro-variae",
+          "title": "Cassiodori Senatoris Variae",
+          "year": 1894,
+          "language": "la",
+          "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/casiodoro-variae.pdf",
+          "text": "https://libros.vitruvius-digital-library.org/clasicos/texto/casiodoro-variae.json",
+          "sha256": "f5876a7035f72121d4c553b42c671467f027f1ab16bd3ea497d2ad40fb3b776f",
+          "objectStatus": "declared-in-r2-catalogue-not-live-probed"
+        }
+      ],
+      "status": "pending_verification"
+    },
+    {
+      "id": "festo-verborum-significatu",
+      "author": "Festo (y Verrio Flaco)",
+      "title": "De verborum significatu",
+      "editions": [
+        {
+          "editionId": "festo-verborum-significatu",
+          "title": "De verborum significatu quae supersunt com Pauli epitome. Edidit Aemilius Thewrewk de Ponor. Pars 1",
+          "year": 1889,
+          "language": "la",
+          "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/festo-verborum-significatu.pdf",
+          "text": "https://libros.vitruvius-digital-library.org/clasicos/texto/festo-verborum-significatu.json",
+          "sha256": "00e01ad423a5c3c68d3c17a4f48200a27816b5c31e380a299a75bf41865e4701",
+          "objectStatus": "declared-in-r2-catalogue-not-live-probed"
+        }
+      ],
+      "status": "pending_verification"
+    },
+    {
+      "id": "marciano-capela-nuptiis",
+      "author": "Marciano Capela",
+      "title": "De nuptiis Philologiae et Mercurii",
+      "editions": [
+        {
+          "editionId": "marciano-capela-nuptiis",
+          "title": "De nuptiis philologiae, et Mercurii, et de septem artibus liberalibus libri novem. Ad codicum manuscriptorum fidem cum notis Bon. Vulcanii, Hug. Grotii, Casp. Barthii, Cl. Salmasii, H.J. Arntzenii, Corn. Vonckii, P. Bondami, L. Walthardi, Jo. Ad. Goezii, Henr. Susii, Marc Meibonii aliorumque. Partim integris partim selectis et commentario perpetuo edidit Ulricus Fridericus Martianus Capella. De nuptiis philologiae, et Mercurii, et de septem artibus liberalibus libri novem Kopp",
+          "year": 1836,
+          "language": "la",
+          "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/marciano-capela-nuptiis.pdf",
+          "text": "https://libros.vitruvius-digital-library.org/clasicos/texto/marciano-capela-nuptiis.json",
+          "sha256": "35e477c3698672bc1a124b5dee5c2ce21c61eed9cce1cdfa2eb5bd890b8d6551",
+          "objectStatus": "declared-in-r2-catalogue-not-live-probed"
+        }
+      ],
+      "status": "pending_verification"
+    },
+    {
+      "id": "nonio-marcelo-doctrina",
+      "author": "Nonio Marcelo",
+      "title": "De compendiosa doctrina",
+      "editions": [
+        {
+          "editionId": "nonio-marcelo-doctrina",
+          "title": "Compendiosa doctrina;",
+          "year": 1888,
+          "language": "la",
+          "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/nonio-marcelo-doctrina.pdf",
+          "text": "https://libros.vitruvius-digital-library.org/clasicos/texto/nonio-marcelo-doctrina.json",
+          "sha256": "a367027861ff209fc53b820cbdeccffb052dfca3bc8925b494227efd0d30c71c",
+          "objectStatus": "declared-in-r2-catalogue-not-live-probed"
+        }
+      ],
+      "status": "pending_verification"
+    },
+    {
+      "id": "paladio-opus-agriculturae",
+      "author": "Paladio",
+      "title": "Opus agriculturae",
+      "editions": [
+        {
+          "editionId": "paladio-opus-agriculturae",
+          "title": "The Middle-English translation of Palladius De re rustica. Pt. 1. Text",
+          "year": 1896,
+          "language": "la",
+          "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/paladio-opus-agriculturae.pdf",
+          "text": "https://libros.vitruvius-digital-library.org/clasicos/texto/paladio-opus-agriculturae.json",
+          "sha256": "e43a5a93b6a499500311c95d5cb63353e8deb9abbe17f30c448a655800e85a84",
+          "objectStatus": "declared-in-r2-catalogue-not-live-probed"
+        }
+      ],
+      "status": "pending_verification"
+    },
+    {
+      "id": "sappho-fragmenta",
+      "author": "Safo",
+      "title": "Fragmenta · Fragmentos",
+      "editions": [],
+      "status": "pending_verification"
+    },
+    {
+      "id": "palladio-quattro-libri",
+      "author": "Andrea Palladio",
+      "title": "I quattro libri dell'architettura",
+      "editions": [
+        {
+          "editionId": "palladio-quattro-libri",
+          "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/palladio-quattro-libri.pdf",
+          "text": "https://libros.vitruvius-digital-library.org/clasicos/texto/palladio-quattro-libri.json",
+          "year": 1581,
+          "sha256": "25a72957e8bbc1948b1e2739387ddaa6d0b604becdfad2f6a6b544d60767becc",
+          "objectStatus": "declared-in-r2-catalogue-not-live-probed"
+        }
+      ],
+      "status": "pending_verification"
+    },
+    {
+      "id": "vignola-cinque-ordini",
+      "author": "Giacomo Barozzi da Vignola",
+      "title": "Regola delli cinque ordini d’architettura",
+      "editions": [
+        {
+          "editionId": "vignola-cinque-ordini",
+          "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/vignola-cinque-ordini.pdf",
+          "text": "https://libros.vitruvius-digital-library.org/clasicos/texto/vignola-cinque-ordini.json",
+          "year": 1635,
+          "sha256": "8d322e3003829f0fe2b25feb63e6bede00b4e5ee0547f28e9204c5026540e9e5",
+          "objectStatus": "declared-in-r2-catalogue-not-live-probed"
+        }
+      ],
+      "status": "pending_verification"
+    },
+    {
+      "id": "vasari-vite",
+      "author": "Giorgio Vasari",
+      "title": "Le vite de’ più eccellenti pittori, scultori e architettori",
+      "editions": [
+        {
+          "editionId": "vasari-vite",
+          "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/vasari-vite.pdf",
+          "text": "https://libros.vitruvius-digital-library.org/clasicos/texto/vasari-vite.json",
+          "year": 1568,
+          "sha256": "b12800b8df8da07f392f1e2ecf4a6146544469f97d2467a7edbd20d23504c403",
+          "objectStatus": "declared-in-r2-catalogue-not-live-probed"
+        }
+      ],
+      "status": "pending_verification"
+    },
+    {
+      "id": "serlio-architettura",
+      "author": "Sebastiano Serlio",
+      "title": "Regole generali di architettura (Serlio) — edición individual",
+      "editions": [
+        {
+          "editionId": "serlio-architettura",
+          "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/serlio-architettura.pdf",
+          "text": "https://libros.vitruvius-digital-library.org/clasicos/texto/serlio-architettura.json",
+          "year": 1551,
+          "sha256": "efffcd734fbfe86c9d2659fd28e1b49a211bd9eaebe0efa9c35ebbbd74da452a",
+          "objectStatus": "declared-in-r2-catalogue-not-live-probed"
+        }
+      ],
+      "status": "pending_verification"
+    },
+    {
+      "id": "scamozzi-idea-architettura",
+      "author": "Vincenzo Scamozzi",
+      "title": "L'idea della architettura universale",
+      "editions": [
+        {
+          "editionId": "scamozzi-idea-architettura",
+          "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/scamozzi-idea-architettura.pdf",
+          "text": "https://libros.vitruvius-digital-library.org/clasicos/texto/scamozzi-idea-architettura.json",
+          "year": 1714,
+          "sha256": "be72819392020a6e4874ad24d6028a4962611001500a402a6dd25257646d7b93",
+          "objectStatus": "declared-in-r2-catalogue-not-live-probed"
+        }
+      ],
+      "status": "pending_verification"
+    },
+    {
+      "id": "beda-de-temporum-ratione",
+      "author": "Beda el Venerable",
+      "title": "De temporum ratione",
+      "editions": [
+        {
+          "editionId": "beda-de-temporum-ratione",
+          "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/beda-de-temporum-ratione.pdf",
+          "text": "https://libros.vitruvius-digital-library.org/clasicos/texto/beda-de-temporum-ratione.json",
+          "year": 1537,
+          "sha256": "803321de2624a5482610f1dd211e08d6b68f590058e0e7f8cfcf7216a117473d",
+          "objectStatus": "declared-in-r2-catalogue-not-live-probed"
+        }
+      ],
+      "status": "pending_verification"
+    },
+    {
+      "id": "petrarca-africa",
+      "author": "Francesco Petrarca",
+      "title": "Africa",
+      "editions": [
+        {
+          "editionId": "petrarca-africa",
+          "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/petrarca-africa.pdf",
+          "text": "https://libros.vitruvius-digital-library.org/clasicos/texto/petrarca-africa.json",
+          "year": 1872,
+          "sha256": "db6b450b97e2f5d79476961e9a8d35b1c1a0208a1eb8cc019f457292be908b49",
+          "objectStatus": "declared-in-r2-catalogue-not-live-probed"
+        }
+      ],
+      "status": "pending_verification"
+    },
+    {
+      "id": "petrarca-secretum",
+      "author": "Francesco Petrarca",
+      "title": "Secretum de Petrarca — texto dentro de volumen colectivo",
+      "editions": [
+        {
+          "editionId": "petrarca-secretum",
+          "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/petrarca-secretum.pdf",
+          "text": "https://libros.vitruvius-digital-library.org/clasicos/texto/petrarca-secretum.json",
+          "year": 1649,
+          "sha256": "632668cf61b52ae03d15f39d94b840bce9743c2c1a1787ce9796793f06b30f9d",
+          "objectStatus": "declared-in-r2-catalogue-not-live-probed"
+        }
+      ],
+      "status": "pending_verification"
+    },
+    {
+      "id": "isidoro-etymologiae",
+      "author": "Isidoro de Sevilla",
+      "title": "Etymologiae / Origines de Isidoro — volumen I",
+      "editions": [
+        {
+          "editionId": "isidoro-etymologiae",
+          "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/isidoro-etymologiae.pdf",
+          "text": "https://libros.vitruvius-digital-library.org/clasicos/texto/isidoro-etymologiae.json",
+          "year": 1911,
+          "sha256": "af1a52b27b3b54782a9bce98f39cbc5d39b76301c801dc7f62531d58af017a57",
+          "objectStatus": "declared-in-r2-catalogue-not-live-probed"
+        }
+      ],
+      "status": "pending_verification"
+    },
+    {
+      "id": "alberti-de-re-aedificatoria",
+      "author": "Leon Battista Alberti",
+      "title": "De re aedificatoria",
+      "editions": [
+        {
+          "editionId": "alberti-de-re-aedificatoria",
+          "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/alberti-de-re-aedificatoria.pdf",
+          "text": "https://libros.vitruvius-digital-library.org/clasicos/texto/alberti-de-re-aedificatoria.json",
+          "year": 1541,
+          "sha256": "5da311d34b101b954658b7da34733854c7637f3ade2bf315dfeeb0e0a41e7fdb",
+          "objectStatus": "declared-in-r2-catalogue-not-live-probed"
+        }
+      ],
+      "status": "pending_verification"
+    }
+  ]
+}
