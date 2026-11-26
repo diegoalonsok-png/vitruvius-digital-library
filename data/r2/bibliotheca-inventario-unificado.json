@@ -1,12 +1,12 @@
 {
   "schema": "vdl-federated-bibliotheca-inventory-v1",
-  "generated": "2026-11-26T10:05:41.298931+00:00",
+  "generated": "2026-11-26T17:03:29.450875+00:00",
   "method": "Master works and additional R2 works counted separately; edition relations can be many-to-many. Remote text URLs are declared, not live-verified. Unresolved editions are never merged automatically.",
   "counts": {
-    "cataloguedWorks": 663,
+    "cataloguedWorks": 681,
     "supplementaryWorks": 127,
     "additionalWorks": 10,
-    "totalDeclaredWorks": 800,
+    "totalDeclaredWorks": 818,
     "r2EditionRecords": 117,
     "r2LinkedEditionRecords": 107,
     "r2WorkEditionRelations": 115,
@@ -14,7 +14,7 @@
     "r2UnlinkedEditionRecords": 0,
     "worksWithR2Edition": 114,
     "worksWithLocalIndexedText": 325,
-    "worksWithDeclaredRemoteIndex": 517
+    "worksWithDeclaredRemoteIndex": 544
   },
   "unlinkedR2EditionIds": [],
   "additionalWorks": [
@@ -3877,7 +3877,12 @@
           "path": "data/classics-corpus/lucian-dialogi-mortuorum-grc.json"
         }
       ],
-      "declaredRemoteIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/lucian-dialogi-mortuorum-grc-34e898d0e8feed1a.json"
+        }
+      ],
       "r2FacsimileEditions": []
     },
     {
@@ -3895,7 +3900,12 @@
           "path": "data/classics-corpus/lucian-verae-historiae-grc.json"
         }
       ],
-      "declaredRemoteIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/lucian-verae-historiae-grc-09fde046b8ef04d2.json"
+        }
+      ],
       "r2FacsimileEditions": [
         {
           "editionId": "luciano-obras",
@@ -3945,7 +3955,12 @@
           "path": "data/classics-corpus/galen-ars-medica-grc.json"
         }
       ],
-      "declaredRemoteIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/galen-ars-medica-grc-79f642d4d38766f7.json"
+        }
+      ],
       "r2FacsimileEditions": []
     },
     {
@@ -3959,7 +3974,12 @@
           "path": "data/classics-corpus/galen-de-usu-partium-grc.json"
         }
       ],
-      "declaredRemoteIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/galen-de-usu-partium-grc-3f0b1c63a045c192.json"
+        }
+      ],
       "r2FacsimileEditions": []
     },
     {
@@ -4025,7 +4045,12 @@
           "path": "data/classics-corpus/marcus-aurelius-meditations-grc.json"
         }
       ],
-      "declaredRemoteIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/marcus-aurelius-meditations-grc-11c6c0fa40a67675.json"
+        }
+      ],
       "r2FacsimileEditions": []
     },
     {
@@ -4464,7 +4489,12 @@
           "path": "data/classics-corpus/hippocrates-aphorisms-grc.json"
         }
       ],
-      "declaredRemoteIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/hippocrates-aphorisms-grc-a711032a61a08af6.json"
+        }
+      ],
       "r2FacsimileEditions": []
     },
     {
@@ -6212,7 +6242,12 @@
           "path": "data/classics-corpus/epictetus-enchiridion-grc.json"
         }
       ],
-      "declaredRemoteIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/epictetus-enchiridion-grc-d5199dc818462d3e.json"
+        }
+      ],
       "r2FacsimileEditions": []
     },
     {
@@ -6406,7 +6441,12 @@
           "path": "data/classics-corpus/euclid-elementa-grc.json"
         }
       ],
-      "declaredRemoteIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/euclid-elementa-grc-de76536de07cc463.json"
+        }
+      ],
       "r2FacsimileEditions": [
         {
           "editionId": "euclides-elementos",
@@ -6527,7 +6567,12 @@
           "path": "data/classics-corpus/geminus-isagoge-grc.json"
         }
       ],
-      "declaredRemoteIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/geminus-isagoge-grc-8888fc4231f3fc2b.json"
+        }
+      ],
       "r2FacsimileEditions": []
     },
     {
@@ -7027,6 +7072,10 @@
       "catalogue": "github",
       "locallyIndexedText": [],
       "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/galeno-facultades-naturales-grc-86bcddddae0c6977.json"
+        },
         {
           "language": "grc",
           "url": "https://libros.vitruvius-digital-library.org/corpus/galeno-facultades-naturales-grc.json"
@@ -13488,6 +13537,258 @@
         {
           "language": "grc",
           "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0086-tlg043-grc-48402384de2fcaf8.json"
+        }
+      ],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "cts-phi0474-phi031",
+      "author": "Cicerón",
+      "title": "Pro T. Annio Milone",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "la",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0474-phi031-la-bdaf477ad15d6f70.json"
+        }
+      ],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "cts-tlg0086-tlg046",
+      "author": "Aristóteles",
+      "title": "De ventorum situ et nominibus",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0086-tlg046-grc-4369b72e920a6745.json"
+        }
+      ],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "cts-tlg0086-tlg045",
+      "author": "Aristóteles",
+      "title": "On Virtues and Vices",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0086-tlg045-grc-a4c9fc73852d6326.json"
+        }
+      ],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "cts-tlg0086-tlg044",
+      "author": "Aristóteles",
+      "title": "Topica",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0086-tlg044-grc-2188f48eabe78e99.json"
+        }
+      ],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "cts-tlg0086-tlg047",
+      "author": "Aristóteles",
+      "title": "De Xenophane, de Zenone, de Gorgia",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0086-tlg047-grc-58b78f517b05a900.json"
+        }
+      ],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "cts-tlg0086-tlg048",
+      "author": "Aristóteles",
+      "title": "Divisiones Aristoteleae",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0086-tlg048-grc-e0be7590ceafc062.json"
+        }
+      ],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "cts-tlg0086-tlg052",
+      "author": "Aristóteles",
+      "title": "De anima (codicis E fragmenta recensionis a vulgata diversae)",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0086-tlg052-grc-c4c715b971d9b729.json"
+        }
+      ],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "cts-tlg0086-tlg054",
+      "author": "Aristóteles",
+      "title": "Physica (textus alter)",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0086-tlg054-grc-c0f3728373ad5267.json"
+        }
+      ],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "cts-tlg0094-tlg001",
+      "author": "Pseudo-Plutarco",
+      "title": "De Fluviis",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0094-tlg001-grc-3fa67cf731437e4d.json"
+        }
+      ],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "cts-tlg0094-tlg002",
+      "author": "Pseudo-Plutarco",
+      "title": "De musica",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0094-tlg002-grc-f0e9df4822c7dea3.json"
+        }
+      ],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "cts-tlg0094-tlg003",
+      "author": "Pseudo-Plutarco",
+      "title": "Placita Philosophorum",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0094-tlg003-grc-8c67fde5396202cf.json"
+        }
+      ],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "cts-tlg0641-tlg001",
+      "author": "Jenofonte de Éfeso",
+      "title": "Ephesiaca",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0641-tlg001-grc-4a52b1851120aef2.json"
+        }
+      ],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "cts-tlg0644-tlg001",
+      "author": "Aristófanes de Bizancio",
+      "title": "Historiae Animalium Epitome",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0644-tlg001-grc-4f6fc8b8de38418a.json"
+        }
+      ],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "cts-tlg1252-tlg002",
+      "author": "Certamen de Homero y Hesíodo",
+      "title": "Certamen Homeri et Hesiodi",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg1252-tlg002-grc-8b8d267259813e9a.json"
+        }
+      ],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "cts-tlg0017-tlg006",
+      "author": "Iseo",
+      "title": "On the Estate of Philoctemon",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0017-tlg006-grc-0de906608c16f426.json"
+        }
+      ],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "cts-tlg0017-tlg007",
+      "author": "Iseo",
+      "title": "On The Estate of Apollodorus",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0017-tlg007-grc-e5fe52acb52af3ba.json"
+        }
+      ],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "cts-tlg0017-tlg008",
+      "author": "Iseo",
+      "title": "On The Estate of Ciron",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0017-tlg008-grc-950fef732bd33eae.json"
+        }
+      ],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "cts-tlg1367-tlg001",
+      "author": "Euripides Epistulae",
+      "title": "Epistulae",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg1367-tlg001-grc-7d57e1faefa17578.json"
         }
       ],
       "r2FacsimileEditions": []

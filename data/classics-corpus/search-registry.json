@@ -2,8 +2,8 @@
  "schema": "vitruvia-classics-search-registry-v1",
  "updated": "2026-11-26",
  "description": "Registro verificable de transcripciones HTML y textos JSON existentes que admiten búsqueda literal de contenido. No incluye automáticamente PDF escaneados, facsímiles ni fichas sin texto. Los índices auxiliares por locus y el aparato crítico se declaran por separado; no se suman a versiones textuales originales ni implican colación autóptica.",
- "count": 1023,
- "works": 762,
+ "count": 1051,
+ "works": 780,
  "entries": [
   {
    "workId": "aeneas-tacticus-poliorketika",
@@ -2323,6 +2323,19 @@
    "passages": 167
   },
   {
+   "workId": "cts-phi0474-phi031",
+   "author": "Cicerón",
+   "title": "Pro T. Annio Milone",
+   "language": "la",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0474-phi031-la-bdaf477ad15d6f70.json",
+   "reader": "classics-text-reader.html?work=cts-phi0474-phi031&lang=la&edition=bdaf477ad15d6f70",
+   "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+   "sourceUrn": "urn:cts:latinLit:phi0474.phi031.perseus-lat2",
+   "sha256": "bdaf477ad15d6f70b9479874d9b88607acfae826484ce070b42a7bb916079915",
+   "passages": 108
+  },
+  {
    "workId": "cts-phi0474-phi032",
    "author": "Cicerón",
    "title": "Pro M. Marcello",
@@ -4050,6 +4063,45 @@
    "sourceUrn": "urn:cts:greekLit:tlg0017.tlg002.perseus-grc2",
    "sha256": "56615f2024b17782645bdbf9db975b1b58d19cb64cb1bea8f8291cf00b0db2da",
    "passages": 55
+  },
+  {
+   "workId": "cts-tlg0017-tlg006",
+   "author": "Iseo",
+   "title": "On the Estate of Philoctemon",
+   "language": "grc",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0017-tlg006-grc-0de906608c16f426.json",
+   "reader": "classics-text-reader.html?work=cts-tlg0017-tlg006&lang=grc&edition=0de906608c16f426",
+   "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+   "sourceUrn": "urn:cts:greekLit:tlg0017.tlg006.perseus-grc2",
+   "sha256": "0de906608c16f4266f9dbfadb62e4394c47d08f4195f6d0962f4fd80b7e01a45",
+   "passages": 78
+  },
+  {
+   "workId": "cts-tlg0017-tlg007",
+   "author": "Iseo",
+   "title": "On The Estate of Apollodorus",
+   "language": "grc",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0017-tlg007-grc-e5fe52acb52af3ba.json",
+   "reader": "classics-text-reader.html?work=cts-tlg0017-tlg007&lang=grc&edition=e5fe52acb52af3ba",
+   "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+   "sourceUrn": "urn:cts:greekLit:tlg0017.tlg007.perseus-grc2",
+   "sha256": "e5fe52acb52af3ba60dcd43da9d08ffbc68cf15a2a0c1718fe5636dbc58b0981",
+   "passages": 58
+  },
+  {
+   "workId": "cts-tlg0017-tlg008",
+   "author": "Iseo",
+   "title": "On The Estate of Ciron",
+   "language": "grc",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0017-tlg008-grc-950fef732bd33eae.json",
+   "reader": "classics-text-reader.html?work=cts-tlg0017-tlg008&lang=grc&edition=950fef732bd33eae",
+   "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+   "sourceUrn": "urn:cts:greekLit:tlg0017.tlg008.perseus-grc2",
+   "sha256": "950fef732bd33eaea870244de105ff22994805c10eff6fce5bdb6d30710a72e5",
+   "passages": 58
   },
   {
    "workId": "cts-tlg0019-tlg002",
@@ -6436,6 +6488,97 @@
    "passages": 10
   },
   {
+   "workId": "cts-tlg0086-tlg044",
+   "author": "Aristóteles",
+   "title": "Topica",
+   "language": "grc",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0086-tlg044-grc-2188f48eabe78e99.json",
+   "reader": "classics-text-reader.html?work=cts-tlg0086-tlg044&lang=grc&edition=2188f48eabe78e99",
+   "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+   "sourceUrn": "urn:cts:greekLit:tlg0086.tlg044.1st1K-grc1",
+   "sha256": "2188f48eabe78e9998ab6c20ed788429e2b5f4dcfbd51a6692961023a53d497f",
+   "passages": 411
+  },
+  {
+   "workId": "cts-tlg0086-tlg045",
+   "author": "Aristóteles",
+   "title": "On Virtues and Vices",
+   "language": "grc",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0086-tlg045-grc-a4c9fc73852d6326.json",
+   "reader": "classics-text-reader.html?work=cts-tlg0086-tlg045&lang=grc&edition=a4c9fc73852d6326",
+   "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+   "sourceUrn": "urn:cts:greekLit:tlg0086.tlg045.perseus-grc2",
+   "sha256": "a4c9fc73852d6326170d6f1820e3718802bb53c9cdaefb28d1197331106a86f9",
+   "passages": 7
+  },
+  {
+   "workId": "cts-tlg0086-tlg046",
+   "author": "Aristóteles",
+   "title": "De ventorum situ et nominibus",
+   "language": "grc",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0086-tlg046-grc-4369b72e920a6745.json",
+   "reader": "classics-text-reader.html?work=cts-tlg0086-tlg046&lang=grc&edition=4369b72e920a6745",
+   "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+   "sourceUrn": "urn:cts:greekLit:tlg0086.tlg046.1st1K-grc1",
+   "sha256": "4369b72e920a6745fe67a378c7ca863e4e00bacfd46cc0434441ffe443e0e923",
+   "passages": 9
+  },
+  {
+   "workId": "cts-tlg0086-tlg047",
+   "author": "Aristóteles",
+   "title": "De Xenophane, de Zenone, de Gorgia",
+   "language": "grc",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0086-tlg047-grc-58b78f517b05a900.json",
+   "reader": "classics-text-reader.html?work=cts-tlg0086-tlg047&lang=grc&edition=58b78f517b05a900",
+   "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+   "sourceUrn": "urn:cts:greekLit:tlg0086.tlg047.1st1K-grc1",
+   "sha256": "58b78f517b05a900ca119d96f7cf891856f7aa8ad7485ad054c2c73af601b2c2",
+   "passages": 98
+  },
+  {
+   "workId": "cts-tlg0086-tlg048",
+   "author": "Aristóteles",
+   "title": "Divisiones Aristoteleae",
+   "language": "grc",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0086-tlg048-grc-e0be7590ceafc062.json",
+   "reader": "classics-text-reader.html?work=cts-tlg0086-tlg048&lang=grc&edition=e0be7590ceafc062",
+   "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+   "sourceUrn": "urn:cts:greekLit:tlg0086.tlg048.1st1K-grc1",
+   "sha256": "e0be7590ceafc062d87f2ba2793d1f60f31ee445beef9cd4e9e85348077fb894",
+   "passages": 213
+  },
+  {
+   "workId": "cts-tlg0086-tlg052",
+   "author": "Aristóteles",
+   "title": "De anima (codicis E fragmenta recensionis a vulgata diversae)",
+   "language": "grc",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0086-tlg052-grc-c4c715b971d9b729.json",
+   "reader": "classics-text-reader.html?work=cts-tlg0086-tlg052&lang=grc&edition=c4c715b971d9b729",
+   "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+   "sourceUrn": "urn:cts:greekLit:tlg0086.tlg052.1st1K-grc1",
+   "sha256": "c4c715b971d9b7296f2968bda509dbdc86ae2507e8f56ce12195f8c8bd03163d",
+   "passages": 15
+  },
+  {
+   "workId": "cts-tlg0086-tlg054",
+   "author": "Aristóteles",
+   "title": "Physica (textus alter)",
+   "language": "grc",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0086-tlg054-grc-c0f3728373ad5267.json",
+   "reader": "classics-text-reader.html?work=cts-tlg0086-tlg054&lang=grc&edition=c0f3728373ad5267",
+   "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+   "sourceUrn": "urn:cts:greekLit:tlg0086.tlg054.1st1K-grc1",
+   "sha256": "c0f3728373ad5267010174ab7608fcebd9f7fd373d52399f918bcf8af3403477",
+   "passages": 11
+  },
+  {
    "workId": "cts-tlg0093-ogl001",
    "author": "Teofrasto",
    "title": "De odoribus",
@@ -6447,6 +6590,45 @@
    "sourceUrn": "urn:cts:greekLit:tlg0093.ogl001.1st1K-grc1",
    "sha256": "dd565cbad83b6976acd4543f9c33ecf79ebb93fadec1573112b195f36fed9139",
    "passages": 77
+  },
+  {
+   "workId": "cts-tlg0094-tlg001",
+   "author": "Pseudo-Plutarco",
+   "title": "De Fluviis",
+   "language": "grc",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0094-tlg001-grc-3fa67cf731437e4d.json",
+   "reader": "classics-text-reader.html?work=cts-tlg0094-tlg001&lang=grc&edition=3fa67cf731437e4d",
+   "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+   "sourceUrn": "urn:cts:greekLit:tlg0094.tlg001.1st1K-grc1",
+   "sha256": "3fa67cf731437e4dfb79072b31720f369b0a476144a4ffc8118e5d3d80d02efa",
+   "passages": 140
+  },
+  {
+   "workId": "cts-tlg0094-tlg002",
+   "author": "Pseudo-Plutarco",
+   "title": "De musica",
+   "language": "grc",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0094-tlg002-grc-f0e9df4822c7dea3.json",
+   "reader": "classics-text-reader.html?work=cts-tlg0094-tlg002&lang=grc&edition=f0e9df4822c7dea3",
+   "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+   "sourceUrn": "urn:cts:greekLit:tlg0094.tlg002.perseus-grc2",
+   "sha256": "f0e9df4822c7dea317598537d7c8a245b94dfa5154ac7e8ea4ab268b5177cdf8",
+   "passages": 44
+  },
+  {
+   "workId": "cts-tlg0094-tlg003",
+   "author": "Pseudo-Plutarco",
+   "title": "Placita Philosophorum",
+   "language": "grc",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0094-tlg003-grc-8c67fde5396202cf.json",
+   "reader": "classics-text-reader.html?work=cts-tlg0094-tlg003&lang=grc&edition=8c67fde5396202cf",
+   "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+   "sourceUrn": "urn:cts:greekLit:tlg0094.tlg003.perseus-grc2",
+   "sha256": "8c67fde5396202cfc042d79f0a360daad013291dad4af72561f43a295aa7b78b",
+   "passages": 657
   },
   {
    "workId": "cts-tlg0530-tlg032",
@@ -6839,6 +7021,32 @@
    "passages": 156
   },
   {
+   "workId": "cts-tlg0641-tlg001",
+   "author": "Jenofonte de Éfeso",
+   "title": "Ephesiaca",
+   "language": "grc",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0641-tlg001-grc-4a52b1851120aef2.json",
+   "reader": "classics-text-reader.html?work=cts-tlg0641-tlg001&lang=grc&edition=4a52b1851120aef2",
+   "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+   "sourceUrn": "urn:cts:greekLit:tlg0641.tlg001.perseus-grc2",
+   "sha256": "4a52b1851120aef235adc907ebc7168c18619ddc012c607ab985b8785092d607",
+   "passages": 420
+  },
+  {
+   "workId": "cts-tlg0644-tlg001",
+   "author": "Aristófanes de Bizancio",
+   "title": "Historiae Animalium Epitome",
+   "language": "grc",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0644-tlg001-grc-4f6fc8b8de38418a.json",
+   "reader": "classics-text-reader.html?work=cts-tlg0644-tlg001&lang=grc&edition=4f6fc8b8de38418a",
+   "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+   "sourceUrn": "urn:cts:greekLit:tlg0644.tlg001.1st1K-grc1",
+   "sha256": "4f6fc8b8de38418abeb99f60d2b3b15996c29166a19f93ba5ee68598da159023",
+   "passages": 791
+  },
+  {
    "workId": "cts-tlg0751-tlg005",
    "author": "Pseudo-Hippocrates",
    "title": "Ἑρμηνεία περὶ ἐνεργῶν λίθων",
@@ -6863,6 +7071,32 @@
    "sourceUrn": "urn:cts:greekLit:tlg0751.tlg034.1st1K-grc1",
    "sha256": "c6041868f79537f04eb8ab15b4d1fa6189b5863f3a3765047a6961a56e5a449f",
    "passages": 10
+  },
+  {
+   "workId": "cts-tlg1252-tlg002",
+   "author": "Certamen de Homero y Hesíodo",
+   "title": "Certamen Homeri et Hesiodi",
+   "language": "grc",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg1252-tlg002-grc-8b8d267259813e9a.json",
+   "reader": "classics-text-reader.html?work=cts-tlg1252-tlg002&lang=grc&edition=8b8d267259813e9a",
+   "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+   "sourceUrn": "urn:cts:greekLit:tlg1252.tlg002.1st1K-grc1",
+   "sha256": "8b8d267259813e9a75dbabafbfa51a05cadb300f34eefc2ac39d8ea752e04193",
+   "passages": 11
+  },
+  {
+   "workId": "cts-tlg1367-tlg001",
+   "author": "Euripides Epistulae",
+   "title": "Epistulae",
+   "language": "grc",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg1367-tlg001-grc-7d57e1faefa17578.json",
+   "reader": "classics-text-reader.html?work=cts-tlg1367-tlg001&lang=grc&edition=7d57e1faefa17578",
+   "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+   "sourceUrn": "urn:cts:greekLit:tlg1367.tlg001.1st1K-grc1",
+   "sha256": "7d57e1faefa175788d7e247e4779ad40add43510585011d070eb09077ce5ccab",
+   "passages": 20
   },
   {
    "workId": "cts-tlg1799-tlg007",
@@ -7581,6 +7815,19 @@
    "sourceDescription": "La fuente y la atribución se muestran dentro del JSON y del lector; las traducciones no equivalen a alineación por loci."
   },
   {
+   "workId": "epictetus-enchiridion",
+   "author": "Epicteto (transmitido por Arriano)",
+   "title": "Ἐγχειρίδιον · Enchiridion",
+   "language": "grc",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/epictetus-enchiridion-grc-d5199dc818462d3e.json",
+   "reader": "classics-text-reader.html?work=epictetus-enchiridion&lang=grc&edition=d5199dc818462d3e",
+   "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+   "sourceUrn": "urn:cts:greekLit:tlg0557.tlg002.perseus-grc2",
+   "sha256": "d5199dc818462d3e80b06ad20c197888060d4a86c9133da6303d2adc7321c7a8",
+   "passages": 106
+  },
+  {
    "workId": "epicuro-restos",
    "language": "grc",
    "title": "Ἐπιστολαὶ καὶ Κύριαι δόξαι · Cartas y Máximas capitales",
@@ -7613,6 +7860,19 @@
    "path": "data/classics-corpus/euclid-elementa-grc.json",
    "reader": "classics-text-reader.html?work=euclid-elementa&lang=grc",
    "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+  },
+  {
+   "workId": "euclid-elementa",
+   "author": "Euclides",
+   "title": "Στοιχεῖα · Elementa",
+   "language": "grc",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/euclid-elementa-grc-de76536de07cc463.json",
+   "reader": "classics-text-reader.html?work=euclid-elementa&lang=grc&edition=de76536de07cc463",
+   "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+   "sourceUrn": "urn:cts:greekLit:tlg1799.tlg001.perseus-grc2",
+   "sha256": "de76536de07cc4636b54431f3954e4d9dcd27b8a21c1e7484c7e5c773adc4c18",
+   "passages": 2373
   },
   {
    "workId": "euclid-optica",
@@ -8689,6 +8949,19 @@
    "sourceDescription": "OpenGreekAndLatin First1KGreek TEI · fuente editada documentada, sin colación automática"
   },
   {
+   "workId": "galen-ars-medica",
+   "author": "Galeno",
+   "title": "Τέχνη ἰατρική",
+   "language": "grc",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/galen-ars-medica-grc-79f642d4d38766f7.json",
+   "reader": "classics-text-reader.html?work=galen-ars-medica&lang=grc&edition=79f642d4d38766f7",
+   "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+   "sourceUrn": "urn:cts:greekLit:tlg0057.tlg007.1st1K-grc1",
+   "sha256": "79f642d4d38766f7b41e7e737e643b2bfaac5edef977dbda21a9fce6f9559ecd",
+   "passages": 39
+  },
+  {
    "workId": "galen-de-usu-partium",
    "author": "Galeno",
    "title": "Περὶ χρείας μορίων",
@@ -8699,6 +8972,19 @@
    "sourceDescription": "OpenGreekAndLatin First1KGreek TEI · fuente editada documentada, sin colación automática"
   },
   {
+   "workId": "galen-de-usu-partium",
+   "author": "Galeno",
+   "title": "Περὶ χρείας μορίων",
+   "language": "grc",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/galen-de-usu-partium-grc-3f0b1c63a045c192.json",
+   "reader": "classics-text-reader.html?work=galen-de-usu-partium&lang=grc&edition=3f0b1c63a045c192",
+   "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+   "sourceUrn": "urn:cts:greekLit:tlg0057.tlg017.1st1K-grc1",
+   "sha256": "3f0b1c63a045c192df944e17d6ff1c390230983e7a6a16372e84c39af7ae587d",
+   "passages": 295
+  },
+  {
    "workId": "galen-optimus-medicus-philosophus",
    "author": "Galeno",
    "title": "Ὅτι ἄριστος ἰατρὸς καὶ φιλόσοφος · Quod optimus medicus sit quoque philosophus",
@@ -8707,6 +8993,19 @@
    "path": "data/classics-corpus/galen-optimus-medicus-philosophus-grc.json",
    "reader": "classics-text-reader.html?work=galen-optimus-medicus-philosophus&lang=grc",
    "sourceDescription": "OpenGreekAndLatin First1KGreek · TEI griego por capítulos, CC BY-SA 4.0; atribución y cotejo según fuente, no manuscrito diplomático"
+  },
+  {
+   "workId": "galeno-facultades-naturales",
+   "author": "Galeno",
+   "title": "Περὶ φυσικῶν δυνάμεων · De naturalibus facultatibus",
+   "language": "grc",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/galeno-facultades-naturales-grc-86bcddddae0c6977.json",
+   "reader": "classics-text-reader.html?work=galeno-facultades-naturales&lang=grc&edition=86bcddddae0c6977",
+   "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+   "sourceUrn": "urn:cts:greekLit:tlg0057.tlg010.perseus-grc2",
+   "sha256": "86bcddddae0c6977ba93a00b39d6558b0ec8705e7d456ac6e747a880569420a1",
+   "passages": 273
   },
   {
    "workId": "galeno-facultades-naturales",
@@ -8731,6 +9030,19 @@
    "sourceUrn": "urn:cts:greekLit:tlg1383.tlg001.1st1K-grc1",
    "sourceSha256": "4f515fbe2960e7fcd4102a6c5deb9c7e538f615909693863afc33eadc4e933dd",
    "sourceDescription": "First1KGreek; edición de Charles Manitius; CC BY-SA 4.0"
+  },
+  {
+   "workId": "geminus-isagoge",
+   "author": "Gémino",
+   "title": "Εἰσαγωγὴ εἰς τὰ φαινόμενα · Elementa astronomiae",
+   "language": "grc",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/geminus-isagoge-grc-8888fc4231f3fc2b.json",
+   "reader": "classics-text-reader.html?work=geminus-isagoge&lang=grc&edition=8888fc4231f3fc2b",
+   "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+   "sourceUrn": "urn:cts:greekLit:tlg1383.tlg001.1st1K-grc1",
+   "sha256": "8888fc4231f3fc2b32d3005470bdc6ef19933ded27b34254ed71fdb8c11a53b1",
+   "passages": 542
   },
   {
    "workId": "hero-automata",
@@ -8894,6 +9206,19 @@
    "path": "data/classics-corpus/hippocrates-aphorisms-grc.json",
    "reader": "classics-text-reader.html?work=hippocrates-aphorisms&lang=grc",
    "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+  },
+  {
+   "workId": "hippocrates-aphorisms",
+   "author": "Corpus hipocrático",
+   "title": "Ἀφορισμοί",
+   "language": "grc",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/hippocrates-aphorisms-grc-a711032a61a08af6.json",
+   "reader": "classics-text-reader.html?work=hippocrates-aphorisms&lang=grc&edition=a711032a61a08af6",
+   "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+   "sourceUrn": "urn:cts:greekLit:tlg0627.tlg012.perseus-grc2",
+   "sha256": "a711032a61a08af6ddda4771fdb485f4d20e7a9e6e40b5ede8c6dd997b36ece7",
+   "passages": 834
   },
   {
    "workId": "hippocrates-de-prisca-medicina",
@@ -9514,6 +9839,19 @@
    "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
   },
   {
+   "workId": "lucian-dialogi-mortuorum",
+   "author": "Luciano de Samósata",
+   "title": "Νεκρικοὶ διάλογοι",
+   "language": "grc",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/lucian-dialogi-mortuorum-grc-34e898d0e8feed1a.json",
+   "reader": "classics-text-reader.html?work=lucian-dialogi-mortuorum&lang=grc&edition=34e898d0e8feed1a",
+   "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+   "sourceUrn": "urn:cts:greekLit:tlg0062.tlg066.perseus-grc3",
+   "sha256": "34e898d0e8feed1a130c40f2b83eeff69ef84fa66ae2b209c7c0c80a21d99307",
+   "passages": 525
+  },
+  {
    "workId": "lucian-electrum",
    "author": "Luciano de Samósata",
    "title": "Περὶ τοῦ Ἡλέκτρου ἢ Κύκνων",
@@ -9616,6 +9954,19 @@
    "path": "data/classics-corpus/lucian-verae-historiae-grc.json",
    "reader": "classics-text-reader.html?work=lucian-verae-historiae&lang=grc",
    "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+  },
+  {
+   "workId": "lucian-verae-historiae",
+   "author": "Luciano de Samósata",
+   "title": "Ἀληθῆ διηγήματα",
+   "language": "grc",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/lucian-verae-historiae-grc-09fde046b8ef04d2.json",
+   "reader": "classics-text-reader.html?work=lucian-verae-historiae&lang=grc&edition=09fde046b8ef04d2",
+   "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+   "sourceUrn": "urn:cts:greekLit:tlg0062.tlg012.perseus-grc2",
+   "sha256": "09fde046b8ef04d28c655a78598d59eb0febce915a5a9424cd00fed86f9ce3c5",
+   "passages": 107
   },
   {
    "workId": "lucretius",
@@ -9796,6 +10147,19 @@
    "path": "data/classics-corpus/marcus-aurelius-meditations-grc.json",
    "reader": "classics-text-reader.html?work=marcus-aurelius-meditations&lang=grc",
    "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+  },
+  {
+   "workId": "marcus-aurelius-meditations",
+   "author": "Marco Aurelio",
+   "title": "Τὰ εἰς ἑαυτόν",
+   "language": "grc",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/marcus-aurelius-meditations-grc-11c6c0fa40a67675.json",
+   "reader": "classics-text-reader.html?work=marcus-aurelius-meditations&lang=grc&edition=11c6c0fa40a67675",
+   "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+   "sourceUrn": "urn:cts:greekLit:tlg0562.tlg001.perseus-grc2",
+   "sha256": "11c6c0fa40a676752e00684ba8a9a383a9e180c4d001d3c5cbb69765ea7551cf",
+   "passages": 601
   },
   {
    "workId": "mark",

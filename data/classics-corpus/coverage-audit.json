@@ -4,17 +4,17 @@
   "scope": "Se auditan exclusivamente 271 fichas de obras del catálogo local; no es un censo universal de literatura grecolatina.",
   "method": "Cruce de fichas bibliográficas, vínculos locales, corpus legible, registro de búsqueda y testimonios manuscritos; sin OCR ni verificación externa de los enlaces.",
   "counts": {
-    "cataloguedWorks": 663,
+    "cataloguedWorks": 681,
     "catalogueStatuses": {
-      "lectura-local-completa": 24,
-      "lectura-local-parcial": 571,
-      "fuente-externa-identificada": 54,
+      "lectura-local-completa": 23,
+      "lectura-local-parcial": 592,
+      "fuente-externa-identificada": 52,
       "repertoriado-busqueda-externa": 12,
       "pendiente-de-incorporar": 2
     },
-    "locallyReadableClaims": 595,
-    "indexedTextVersions": 862,
-    "indexedDistinctWorks": 634,
+    "locallyReadableClaims": 615,
+    "indexedTextVersions": 890,
+    "indexedDistinctWorks": 652,
     "manuscriptWitnesses": 107
   },
   "works": [
@@ -2099,7 +2099,8 @@
         "grc"
       ],
       "indexedTextFiles": [
-        "data/classics-corpus/lucian-dialogi-mortuorum-grc.json"
+        "data/classics-corpus/lucian-dialogi-mortuorum-grc.json",
+        "https://libros.vitruvius-digital-library.org/corpus/lucian-dialogi-mortuorum-grc-34e898d0e8feed1a.json"
       ],
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
@@ -2123,7 +2124,8 @@
       ],
       "indexedTextFiles": [
         "data/classics-corpus/lucian-verae-historiae-en.json",
-        "data/classics-corpus/lucian-verae-historiae-grc.json"
+        "data/classics-corpus/lucian-verae-historiae-grc.json",
+        "https://libros.vitruvius-digital-library.org/corpus/lucian-verae-historiae-grc-09fde046b8ef04d2.json"
       ],
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
@@ -2167,7 +2169,8 @@
         "grc"
       ],
       "indexedTextFiles": [
-        "data/classics-corpus/galen-ars-medica-grc.json"
+        "data/classics-corpus/galen-ars-medica-grc.json",
+        "https://libros.vitruvius-digital-library.org/corpus/galen-ars-medica-grc-79f642d4d38766f7.json"
       ],
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
@@ -2189,7 +2192,8 @@
         "grc"
       ],
       "indexedTextFiles": [
-        "data/classics-corpus/galen-de-usu-partium-grc.json"
+        "data/classics-corpus/galen-de-usu-partium-grc.json",
+        "https://libros.vitruvius-digital-library.org/corpus/galen-de-usu-partium-grc-3f0b1c63a045c192.json"
       ],
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
@@ -2275,7 +2279,8 @@
       ],
       "indexedTextFiles": [
         "data/classics-corpus/marcus-aurelius-meditations-en.json",
-        "data/classics-corpus/marcus-aurelius-meditations-grc.json"
+        "data/classics-corpus/marcus-aurelius-meditations-grc.json",
+        "https://libros.vitruvius-digital-library.org/corpus/marcus-aurelius-meditations-grc-11c6c0fa40a67675.json"
       ],
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
@@ -2672,7 +2677,8 @@
       ],
       "indexedTextFiles": [
         "data/classics-corpus/hippocrates-aphorisms-en.json",
-        "data/classics-corpus/hippocrates-aphorisms-grc.json"
+        "data/classics-corpus/hippocrates-aphorisms-grc.json",
+        "https://libros.vitruvius-digital-library.org/corpus/hippocrates-aphorisms-grc-a711032a61a08af6.json"
       ],
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
@@ -4522,14 +4528,15 @@
       "originalLanguage": "grc",
       "genre": "Filosofía estoica",
       "dating": "siglo II d. C.",
-      "catalogueStatus": "lectura-local-completa",
+      "catalogueStatus": "lectura-local-parcial",
       "indexedTextLanguages": [
         "en",
         "grc"
       ],
       "indexedTextFiles": [
         "data/classics-corpus/epictetus-enchiridion-en.json",
-        "data/classics-corpus/epictetus-enchiridion-grc.json"
+        "data/classics-corpus/epictetus-enchiridion-grc.json",
+        "https://libros.vitruvius-digital-library.org/corpus/epictetus-enchiridion-grc-d5199dc818462d3e.json"
       ],
       "localPDF": "documents/classics/epictetus-theophrastus-greek-1870.pdf",
       "hasStructuredVitruviusReader": false,
@@ -4807,7 +4814,8 @@
         "grc"
       ],
       "indexedTextFiles": [
-        "data/classics-corpus/euclid-elementa-grc.json"
+        "data/classics-corpus/euclid-elementa-grc.json",
+        "https://libros.vitruvius-digital-library.org/corpus/euclid-elementa-grc-de76536de07cc463.json"
       ],
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
@@ -4948,12 +4956,13 @@
       "originalLanguage": "grc",
       "genre": "Astronomía",
       "dating": "s. I a. C.",
-      "catalogueStatus": "fuente-externa-identificada",
+      "catalogueStatus": "lectura-local-parcial",
       "indexedTextLanguages": [
         "grc"
       ],
       "indexedTextFiles": [
-        "data/classics-corpus/geminus-isagoge-grc.json"
+        "data/classics-corpus/geminus-isagoge-grc.json",
+        "https://libros.vitruvius-digital-library.org/corpus/geminus-isagoge-grc-8888fc4231f3fc2b.json"
       ],
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
@@ -5481,11 +5490,12 @@
       "originalLanguage": "grc",
       "genre": "Medicina y fisiología",
       "dating": "Siglo II d. C.",
-      "catalogueStatus": "fuente-externa-identificada",
+      "catalogueStatus": "lectura-local-parcial",
       "indexedTextLanguages": [
         "grc"
       ],
       "indexedTextFiles": [
+        "https://libros.vitruvius-digital-library.org/corpus/galeno-facultades-naturales-grc-86bcddddae0c6977.json",
         "https://libros.vitruvius-digital-library.org/corpus/galeno-facultades-naturales-grc.json"
       ],
       "localPDF": null,
@@ -12184,6 +12194,276 @@
       ],
       "indexedTextFiles": [
         "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0086-tlg043-grc-48402384de2fcaf8.json"
+      ],
+      "manuscriptRecords": 0,
+      "hasManuscriptRecord": false
+    },
+    {
+      "id": "cts-phi0474-phi031",
+      "author": "Cicerón",
+      "title": "Pro T. Annio Milone",
+      "originalLanguage": "la",
+      "catalogueStatus": "lectura-local-parcial",
+      "indexedTextLanguages": [
+        "la"
+      ],
+      "indexedTextFiles": [
+        "https://libros.vitruvius-digital-library.org/corpus/cts-phi0474-phi031-la-bdaf477ad15d6f70.json"
+      ],
+      "manuscriptRecords": 0,
+      "hasManuscriptRecord": false
+    },
+    {
+      "id": "cts-tlg0086-tlg046",
+      "author": "Aristóteles",
+      "title": "De ventorum situ et nominibus",
+      "originalLanguage": "grc",
+      "catalogueStatus": "lectura-local-parcial",
+      "indexedTextLanguages": [
+        "grc"
+      ],
+      "indexedTextFiles": [
+        "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0086-tlg046-grc-4369b72e920a6745.json"
+      ],
+      "manuscriptRecords": 0,
+      "hasManuscriptRecord": false
+    },
+    {
+      "id": "cts-tlg0086-tlg045",
+      "author": "Aristóteles",
+      "title": "On Virtues and Vices",
+      "originalLanguage": "grc",
+      "catalogueStatus": "lectura-local-parcial",
+      "indexedTextLanguages": [
+        "grc"
+      ],
+      "indexedTextFiles": [
+        "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0086-tlg045-grc-a4c9fc73852d6326.json"
+      ],
+      "manuscriptRecords": 0,
+      "hasManuscriptRecord": false
+    },
+    {
+      "id": "cts-tlg0086-tlg044",
+      "author": "Aristóteles",
+      "title": "Topica",
+      "originalLanguage": "grc",
+      "catalogueStatus": "lectura-local-parcial",
+      "indexedTextLanguages": [
+        "grc"
+      ],
+      "indexedTextFiles": [
+        "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0086-tlg044-grc-2188f48eabe78e99.json"
+      ],
+      "manuscriptRecords": 0,
+      "hasManuscriptRecord": false
+    },
+    {
+      "id": "cts-tlg0086-tlg047",
+      "author": "Aristóteles",
+      "title": "De Xenophane, de Zenone, de Gorgia",
+      "originalLanguage": "grc",
+      "catalogueStatus": "lectura-local-parcial",
+      "indexedTextLanguages": [
+        "grc"
+      ],
+      "indexedTextFiles": [
+        "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0086-tlg047-grc-58b78f517b05a900.json"
+      ],
+      "manuscriptRecords": 0,
+      "hasManuscriptRecord": false
+    },
+    {
+      "id": "cts-tlg0086-tlg048",
+      "author": "Aristóteles",
+      "title": "Divisiones Aristoteleae",
+      "originalLanguage": "grc",
+      "catalogueStatus": "lectura-local-parcial",
+      "indexedTextLanguages": [
+        "grc"
+      ],
+      "indexedTextFiles": [
+        "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0086-tlg048-grc-e0be7590ceafc062.json"
+      ],
+      "manuscriptRecords": 0,
+      "hasManuscriptRecord": false
+    },
+    {
+      "id": "cts-tlg0086-tlg052",
+      "author": "Aristóteles",
+      "title": "De anima (codicis E fragmenta recensionis a vulgata diversae)",
+      "originalLanguage": "grc",
+      "catalogueStatus": "lectura-local-parcial",
+      "indexedTextLanguages": [
+        "grc"
+      ],
+      "indexedTextFiles": [
+        "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0086-tlg052-grc-c4c715b971d9b729.json"
+      ],
+      "manuscriptRecords": 0,
+      "hasManuscriptRecord": false
+    },
+    {
+      "id": "cts-tlg0086-tlg054",
+      "author": "Aristóteles",
+      "title": "Physica (textus alter)",
+      "originalLanguage": "grc",
+      "catalogueStatus": "lectura-local-parcial",
+      "indexedTextLanguages": [
+        "grc"
+      ],
+      "indexedTextFiles": [
+        "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0086-tlg054-grc-c0f3728373ad5267.json"
+      ],
+      "manuscriptRecords": 0,
+      "hasManuscriptRecord": false
+    },
+    {
+      "id": "cts-tlg0094-tlg001",
+      "author": "Pseudo-Plutarco",
+      "title": "De Fluviis",
+      "originalLanguage": "grc",
+      "catalogueStatus": "lectura-local-parcial",
+      "indexedTextLanguages": [
+        "grc"
+      ],
+      "indexedTextFiles": [
+        "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0094-tlg001-grc-3fa67cf731437e4d.json"
+      ],
+      "manuscriptRecords": 0,
+      "hasManuscriptRecord": false
+    },
+    {
+      "id": "cts-tlg0094-tlg002",
+      "author": "Pseudo-Plutarco",
+      "title": "De musica",
+      "originalLanguage": "grc",
+      "catalogueStatus": "lectura-local-parcial",
+      "indexedTextLanguages": [
+        "grc"
+      ],
+      "indexedTextFiles": [
+        "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0094-tlg002-grc-f0e9df4822c7dea3.json"
+      ],
+      "manuscriptRecords": 0,
+      "hasManuscriptRecord": false
+    },
+    {
+      "id": "cts-tlg0094-tlg003",
+      "author": "Pseudo-Plutarco",
+      "title": "Placita Philosophorum",
+      "originalLanguage": "grc",
+      "catalogueStatus": "lectura-local-parcial",
+      "indexedTextLanguages": [
+        "grc"
+      ],
+      "indexedTextFiles": [
+        "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0094-tlg003-grc-8c67fde5396202cf.json"
+      ],
+      "manuscriptRecords": 0,
+      "hasManuscriptRecord": false
+    },
+    {
+      "id": "cts-tlg0641-tlg001",
+      "author": "Jenofonte de Éfeso",
+      "title": "Ephesiaca",
+      "originalLanguage": "grc",
+      "catalogueStatus": "lectura-local-parcial",
+      "indexedTextLanguages": [
+        "grc"
+      ],
+      "indexedTextFiles": [
+        "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0641-tlg001-grc-4a52b1851120aef2.json"
+      ],
+      "manuscriptRecords": 0,
+      "hasManuscriptRecord": false
+    },
+    {
+      "id": "cts-tlg0644-tlg001",
+      "author": "Aristófanes de Bizancio",
+      "title": "Historiae Animalium Epitome",
+      "originalLanguage": "grc",
+      "catalogueStatus": "lectura-local-parcial",
+      "indexedTextLanguages": [
+        "grc"
+      ],
+      "indexedTextFiles": [
+        "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0644-tlg001-grc-4f6fc8b8de38418a.json"
+      ],
+      "manuscriptRecords": 0,
+      "hasManuscriptRecord": false
+    },
+    {
+      "id": "cts-tlg1252-tlg002",
+      "author": "Certamen de Homero y Hesíodo",
+      "title": "Certamen Homeri et Hesiodi",
+      "originalLanguage": "grc",
+      "catalogueStatus": "lectura-local-parcial",
+      "indexedTextLanguages": [
+        "grc"
+      ],
+      "indexedTextFiles": [
+        "https://libros.vitruvius-digital-library.org/corpus/cts-tlg1252-tlg002-grc-8b8d267259813e9a.json"
+      ],
+      "manuscriptRecords": 0,
+      "hasManuscriptRecord": false
+    },
+    {
+      "id": "cts-tlg0017-tlg006",
+      "author": "Iseo",
+      "title": "On the Estate of Philoctemon",
+      "originalLanguage": "grc",
+      "catalogueStatus": "lectura-local-parcial",
+      "indexedTextLanguages": [
+        "grc"
+      ],
+      "indexedTextFiles": [
+        "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0017-tlg006-grc-0de906608c16f426.json"
+      ],
+      "manuscriptRecords": 0,
+      "hasManuscriptRecord": false
+    },
+    {
+      "id": "cts-tlg0017-tlg007",
+      "author": "Iseo",
+      "title": "On The Estate of Apollodorus",
+      "originalLanguage": "grc",
+      "catalogueStatus": "lectura-local-parcial",
+      "indexedTextLanguages": [
+        "grc"
+      ],
+      "indexedTextFiles": [
+        "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0017-tlg007-grc-e5fe52acb52af3ba.json"
+      ],
+      "manuscriptRecords": 0,
+      "hasManuscriptRecord": false
+    },
+    {
+      "id": "cts-tlg0017-tlg008",
+      "author": "Iseo",
+      "title": "On The Estate of Ciron",
+      "originalLanguage": "grc",
+      "catalogueStatus": "lectura-local-parcial",
+      "indexedTextLanguages": [
+        "grc"
+      ],
+      "indexedTextFiles": [
+        "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0017-tlg008-grc-950fef732bd33eae.json"
+      ],
+      "manuscriptRecords": 0,
+      "hasManuscriptRecord": false
+    },
+    {
+      "id": "cts-tlg1367-tlg001",
+      "author": "Euripides Epistulae",
+      "title": "Epistulae",
+      "originalLanguage": "grc",
+      "catalogueStatus": "lectura-local-parcial",
+      "indexedTextLanguages": [
+        "grc"
+      ],
+      "indexedTextFiles": [
+        "https://libros.vitruvius-digital-library.org/corpus/cts-tlg1367-tlg001-grc-7d57e1faefa17578.json"
       ],
       "manuscriptRecords": 0,
       "hasManuscriptRecord": false

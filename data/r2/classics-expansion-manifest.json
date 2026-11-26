@@ -1,10 +1,10 @@
 {
  "schema": "vdl-classics-expansion-manifest-v1",
- "generated": "2026-11-26T03:37:28.521357+00:00",
+ "generated": "2026-11-26T16:58:25.715395+00:00",
  "discovery": {
-  "sourceRecords": 1523,
-  "alreadyIndexedCatalogueWorks": 538,
-  "pendingGroups": 1465,
+  "sourceRecords": 1490,
+  "alreadyIndexedCatalogueWorks": 571,
+  "pendingGroups": 1432,
   "policy": "Una obra bibliográfica, múltiples ediciones identificadas por URN y hash; sin sustituir ni duplicar archivos",
   "githubTextFiles": 450,
   "githubUnregisteredFiles": 14,
@@ -24939,6 +24939,1166 @@
    "characters": 19294,
    "bytes": 40967,
    "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0086-tlg043-grc-48402384de2fcaf8.json"
+  },
+  {
+   "workId": "cts-phi0474-phi031",
+   "author": "Cicerón",
+   "title": "Pro T. Annio Milone",
+   "language": "la",
+   "dating": "106–43 a. C.",
+   "sources": [
+    {
+     "title": "Pro T. Annio Milone",
+     "titleLanguage": "lat",
+     "author": "M. Tullius Cicero",
+     "editors": [
+      "Albert Curtis Clark"
+     ],
+     "bibliography": "M. Tullius Cicero Orationes Albert Curtis Clark Oxford Clarendon Press 1918 1901 6 Pro Milone; Pro Marcello; Pro Ligario; Pro Rege Deiotaro; Philippicae I-XIV Scriptorum Classicorum Bibliotheca Oxoniensis Oxford Classical Texts HathiTrust Internet Archive",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+      }
+     ],
+     "editionUrn": "urn:cts:latinLit:phi0474.phi031.perseus-lat2",
+     "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0474/phi031/phi0474.phi031.perseus-lat2.xml",
+     "sourceSha256": "29f26b05f44cb72455b24ddcc43368e067c6ac807f5def3f855c3bfafa6f0ca0",
+     "sourceReferences": [
+      "https://babel.hathitrust.org/cgi/pt?id=uc1.31822018932749;view=2up;seq=38",
+      "https://archive.org/details/mtvlliciceroniso06cice/page/n23/mode/2up"
+     ],
+     "publicationYear": "1918",
+     "publisher": "Clarendon Press",
+     "publicationPlace": "Oxford",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/29f26b05f44cb72455b24ddcc43368e067c6ac807f5def3f855c3bfafa6f0ca0.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-phi0474-phi031-la-bdaf477ad15d6f70.json",
+   "sha256": "bdaf477ad15d6f70b9479874d9b88607acfae826484ce070b42a7bb916079915",
+   "passages": 108,
+   "characters": 70628,
+   "bytes": 89813,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0474-phi031-la-bdaf477ad15d6f70.json"
+  },
+  {
+   "workId": "cts-tlg0086-tlg046",
+   "author": "Aristóteles",
+   "title": "De ventorum situ et nominibus",
+   "language": "grc",
+   "dating": "siglo IV a. C.",
+   "sources": [
+    {
+     "title": "Ἀνέμων θέσεις καὶ προσηγορίαι",
+     "titleLanguage": "grc",
+     "author": "Aristotle",
+     "editors": [
+      "Immanuel Bekker"
+     ],
+     "bibliography": "Aristotelis Opera Aristotle Immanuel Bekker Oxford University Press Oxford 6 1837 Internet Archive",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg0086.tlg046.1st1K-grc1",
+     "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0086/tlg046/tlg0086.tlg046.1st1K-grc1.xml",
+     "sourceSha256": "eec7872b7ace751a9c481bdff8f6633834bd58f39d6d472abc2ce41ee5050d01",
+     "sourceReferences": [
+      "https://archive.org/details/operaexrecension06arisuoft/page/186/mode/2up"
+     ],
+     "publicationYear": "1837",
+     "publisher": "Oxford University Press",
+     "publicationPlace": "Oxford",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/eec7872b7ace751a9c481bdff8f6633834bd58f39d6d472abc2ce41ee5050d01.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-tlg0086-tlg046-grc-4369b72e920a6745.json",
+   "sha256": "4369b72e920a6745fe67a378c7ca863e4e00bacfd46cc0434441ffe443e0e923",
+   "passages": 9,
+   "characters": 2601,
+   "bytes": 8441,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0086-tlg046-grc-4369b72e920a6745.json"
+  },
+  {
+   "workId": "cts-tlg0086-tlg045",
+   "author": "Aristóteles",
+   "title": "On Virtues and Vices",
+   "language": "grc",
+   "dating": "siglo IV a. C.",
+   "sources": [
+    {
+     "title": "περὶ Ἀρετῶν καὶ Κακιῶν",
+     "titleLanguage": "und",
+     "author": "Aristotle",
+     "editors": [
+      "Immanuel Bekker"
+     ],
+     "bibliography": "Aristotelis Opera Immanuel Bekker Aristotle Reimer Berlin 1831 2 Internet Archive",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg0086.tlg045.perseus-grc2",
+     "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0086/tlg045/tlg0086.tlg045.perseus-grc2.xml",
+     "sourceSha256": "d1b072621bf2d854ac85fa49e2051b8e3f0307ba21e6a838e5cd743db798bfca",
+     "sourceReferences": [],
+     "publicationYear": "1831",
+     "publisher": "Reimer",
+     "publicationPlace": "Berlin",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/d1b072621bf2d854ac85fa49e2051b8e3f0307ba21e6a838e5cd743db798bfca.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-tlg0086-tlg045-grc-a4c9fc73852d6326.json",
+   "sha256": "a4c9fc73852d6326170d6f1820e3718802bb53c9cdaefb28d1197331106a86f9",
+   "passages": 7,
+   "characters": 9413,
+   "bytes": 21384,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0086-tlg045-grc-a4c9fc73852d6326.json"
+  },
+  {
+   "workId": "cts-tlg0086-tlg044",
+   "author": "Aristóteles",
+   "title": "Topica",
+   "language": "grc",
+   "dating": "siglo IV a. C.",
+   "sources": [
+    {
+     "title": "Topica",
+     "titleLanguage": "lat",
+     "author": "Aristotle",
+     "editors": [
+      "Immanuel Bekker"
+     ],
+     "bibliography": "Aristotelis Opera Aristotle Immanuel Bekker Oxford University Press Oxford 1 258-422 1837 HathiTrust",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg0086.tlg044.1st1K-grc1",
+     "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0086/tlg044/tlg0086.tlg044.1st1K-grc1.xml",
+     "sourceSha256": "63cd02c256f782de8b983c0e2e5323547d365b742615a7e66e9bf2980fd71a77",
+     "sourceReferences": [
+      "https://hdl.handle.net/2027/mdp.39015027645400?urlappend=%3Bseq=262"
+     ],
+     "publicationYear": "1837",
+     "publisher": "Oxford University Press",
+     "publicationPlace": "Oxford",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/63cd02c256f782de8b983c0e2e5323547d365b742615a7e66e9bf2980fd71a77.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-tlg0086-tlg044-grc-2188f48eabe78e99.json",
+   "sha256": "2188f48eabe78e9998ab6c20ed788429e2b5f4dcfbd51a6692961023a53d497f",
+   "passages": 411,
+   "characters": 258412,
+   "bytes": 587114,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0086-tlg044-grc-2188f48eabe78e99.json"
+  },
+  {
+   "workId": "cts-tlg0086-tlg047",
+   "author": "Aristóteles",
+   "title": "De Xenophane, de Zenone, de Gorgia",
+   "language": "grc",
+   "dating": "siglo IV a. C.",
+   "sources": [
+    {
+     "title": "Περὶ Ξενοφάνους, περὶ Ζήνωνος, περὶ Γοργίου",
+     "titleLanguage": "grc",
+     "author": "Aristotle",
+     "editors": [
+      "Immanuel Bekker"
+     ],
+     "bibliography": "Aristotelis Opera Aristotle Immanuel Bekker Oxford University Press Oxford 6 1837 Internet Archive",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg0086.tlg047.1st1K-grc1",
+     "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0086/tlg047/tlg0086.tlg047.1st1K-grc1.xml",
+     "sourceSha256": "6a8ce88399d63299c1465425e3c16fcaad69f6129667af7e94a8e051ab1ec0d0",
+     "sourceReferences": [
+      "https://archive.org/details/operaexrecension06arisuoft/page/188/mode/2up"
+     ],
+     "publicationYear": "1837",
+     "publisher": "Oxford University Press",
+     "publicationPlace": "Oxford",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/6a8ce88399d63299c1465425e3c16fcaad69f6129667af7e94a8e051ab1ec0d0.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-tlg0086-tlg047-grc-58b78f517b05a900.json",
+   "sha256": "58b78f517b05a900ca119d96f7cf891856f7aa8ad7485ad054c2c73af601b2c2",
+   "passages": 98,
+   "characters": 26724,
+   "bytes": 70077,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0086-tlg047-grc-58b78f517b05a900.json"
+  },
+  {
+   "workId": "cts-tlg0086-tlg048",
+   "author": "Aristóteles",
+   "title": "Divisiones Aristoteleae",
+   "language": "grc",
+   "dating": "siglo IV a. C.",
+   "sources": [
+    {
+     "title": "Divisiones Aristoteleae",
+     "titleLanguage": "lat",
+     "author": "Aristotle",
+     "editors": [
+      "Hermann Mutschmann"
+     ],
+     "bibliography": "Aristotle Divisiones quae vulgo dicuntur Aristoteleae Hermann Mutschmann Leipzig B. G. Teubner 1906 HathiTrust",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg0086.tlg048.1st1K-grc1",
+     "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0086/tlg048/tlg0086.tlg048.1st1K-grc1.xml",
+     "sourceSha256": "b061fad1287ba7fe97ef392955dfb535a9415236c517d0f4d8465df39c633f79",
+     "sourceReferences": [
+      "https://hdl.handle.net/2027/uc1.$b253059?urlappend=%3Bseq=45%3Bownerid=9007199259627364-49"
+     ],
+     "publicationYear": "1906",
+     "publisher": "B. G. Teubner",
+     "publicationPlace": "Leipzig",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/b061fad1287ba7fe97ef392955dfb535a9415236c517d0f4d8465df39c633f79.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-tlg0086-tlg048-grc-e0be7590ceafc062.json",
+   "sha256": "e0be7590ceafc062d87f2ba2793d1f60f31ee445beef9cd4e9e85348077fb894",
+   "passages": 213,
+   "characters": 56004,
+   "bytes": 145630,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0086-tlg048-grc-e0be7590ceafc062.json"
+  },
+  {
+   "workId": "cts-tlg0086-tlg052",
+   "author": "Aristóteles",
+   "title": "De anima (codicis E fragmenta recensionis a vulgata diversae)",
+   "language": "grc",
+   "dating": "siglo IV a. C.",
+   "sources": [
+    {
+     "title": "De anima (codicis E fragmenta recensionis a vulgata diversae)",
+     "titleLanguage": "lat",
+     "author": "Aristotle",
+     "editors": [
+      "W. D. Ross"
+     ],
+     "bibliography": "Aristotelis De anima W. D. Ross Aristotle Oxford Clarendon 1956 SLUB",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg0086.tlg052.1st1K-grc1",
+     "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0086/tlg052/tlg0086.tlg052.1st1K-grc1.xml",
+     "sourceSha256": "fa3ed422b11413259e99bfda25d853809aa77939dc79677f990e6531f8efe6df",
+     "sourceReferences": [],
+     "publicationYear": "1956",
+     "publisher": "Oxford",
+     "publicationPlace": "Clarendon",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/fa3ed422b11413259e99bfda25d853809aa77939dc79677f990e6531f8efe6df.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-tlg0086-tlg052-grc-c4c715b971d9b729.json",
+   "sha256": "c4c715b971d9b7296f2968bda509dbdc86ae2507e8f56ce12195f8c8bd03163d",
+   "passages": 15,
+   "characters": 13802,
+   "bytes": 31196,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0086-tlg052-grc-c4c715b971d9b729.json"
+  },
+  {
+   "workId": "cts-tlg0086-tlg054",
+   "author": "Aristóteles",
+   "title": "Physica (textus alter)",
+   "language": "grc",
+   "dating": "siglo IV a. C.",
+   "sources": [
+    {
+     "title": "Physica (textus alter)",
+     "titleLanguage": "lat",
+     "author": "Aristotle",
+     "editors": [
+      "W. D. Ross"
+     ],
+     "bibliography": "Aristotelis Physica W. D. Ross Aristotle Clarendon Oxford 1960 SLUB",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg0086.tlg054.1st1K-grc1",
+     "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0086/tlg054/tlg0086.tlg054.1st1K-grc1.xml",
+     "sourceSha256": "25a9ace4c69a94fc42ad4675208633f258d154a55eedcb8d16e62b91cca47ef5",
+     "sourceReferences": [],
+     "publicationYear": "1960",
+     "publisher": "Clarendon",
+     "publicationPlace": "Oxford",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/25a9ace4c69a94fc42ad4675208633f258d154a55eedcb8d16e62b91cca47ef5.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-tlg0086-tlg054-grc-c0f3728373ad5267.json",
+   "sha256": "c0f3728373ad5267010174ab7608fcebd9f7fd373d52399f918bcf8af3403477",
+   "passages": 11,
+   "characters": 13005,
+   "bytes": 28799,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0086-tlg054-grc-c0f3728373ad5267.json"
+  },
+  {
+   "workId": "cts-tlg0094-tlg001",
+   "author": "Pseudo-Plutarco",
+   "title": "De Fluviis",
+   "language": "grc",
+   "dating": "época imperial",
+   "sources": [
+    {
+     "title": "De Fluviis",
+     "titleLanguage": "lat",
+     "author": "Pseudo-Plutarch",
+     "editors": [
+      "Carolus Müllerus Karl Müller",
+      "Carolus Müllerus"
+     ],
+     "bibliography": "Geographi Graeci Minores Carolus Müllerus Karl Müller Pseudo-Plutarch Ambroise-Firmin Didot Paris 1861 2 The Internet Archive",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg0094.tlg001.1st1K-grc1",
+     "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0094/tlg001/tlg0094.tlg001.1st1K-grc1.xml",
+     "sourceSha256": "4c7abcad4d0b35f4d0fdb214fc937afbfdb071c6547a5ac7674fb6aa232d757a",
+     "sourceReferences": [
+      "https://archive.org/details/bub_gb_63VfAAAAMAAJ"
+     ],
+     "publicationYear": "1861",
+     "publisher": "Ambroise-Firmin Didot",
+     "publicationPlace": "Paris",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/4c7abcad4d0b35f4d0fdb214fc937afbfdb071c6547a5ac7674fb6aa232d757a.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-tlg0094-tlg001-grc-3fa67cf731437e4d.json",
+   "sha256": "3fa67cf731437e4dfb79072b31720f369b0a476144a4ffc8118e5d3d80d02efa",
+   "passages": 140,
+   "characters": 45325,
+   "bytes": 112156,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0094-tlg001-grc-3fa67cf731437e4d.json"
+  },
+  {
+   "workId": "cts-tlg0094-tlg002",
+   "author": "Pseudo-Plutarco",
+   "title": "De musica",
+   "language": "grc",
+   "dating": "época imperial",
+   "sources": [
+    {
+     "title": "περὶ Μουσικῆς",
+     "titleLanguage": "grc",
+     "author": "Pseudo-Plutarch",
+     "editors": [
+      "Grēgorios N. Vernardakēs"
+     ],
+     "bibliography": "Plutarch Moralia Grēgorios N. Vernardakēs Leipzig Teubner 1895 6 The Internet Archive",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg0094.tlg002.perseus-grc2",
+     "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0094/tlg002/tlg0094.tlg002.perseus-grc2.xml",
+     "sourceSha256": "c89971929f87e8eb9e9d5d921b9a4be5a3991a5e6b721669566e79fe8c427477",
+     "sourceReferences": [
+      "https://archive.org/details/moralia06plut/page/486/mode/2up"
+     ],
+     "publicationYear": "1895",
+     "publisher": "Teubner",
+     "publicationPlace": "Leipzig",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/c89971929f87e8eb9e9d5d921b9a4be5a3991a5e6b721669566e79fe8c427477.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-tlg0094-tlg002-grc-f0e9df4822c7dea3.json",
+   "sha256": "f0e9df4822c7dea317598537d7c8a245b94dfa5154ac7e8ea4ab268b5177cdf8",
+   "passages": 44,
+   "characters": 49910,
+   "bytes": 106558,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0094-tlg002-grc-f0e9df4822c7dea3.json"
+  },
+  {
+   "workId": "cts-tlg0094-tlg003",
+   "author": "Pseudo-Plutarco",
+   "title": "Placita Philosophorum",
+   "language": "grc",
+   "dating": "época imperial",
+   "sources": [
+    {
+     "title": "Περὶ τῶν ἀρεσκόντων τοῖς φιλοσόφοις φυσικῶν δογμάτων",
+     "titleLanguage": "grc",
+     "author": "Pseudo-Plutarch",
+     "editors": [
+      "Grēgorios N. Vernardakēs"
+     ],
+     "bibliography": "Plutarch Moralia Grēgorios N. Vernardakēs Leipzig Teubner 1888 5 The Internet Archive",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg0094.tlg003.perseus-grc2",
+     "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0094/tlg003/tlg0094.tlg003.perseus-grc2.xml",
+     "sourceSha256": "03ea1f02275a5ef993b700f7820dc5ccc686555606e2c55d6fba67db3a188441",
+     "sourceReferences": [
+      "https://archive.org/details/moralia05plut/page/264/mode/2up"
+     ],
+     "publicationYear": "1888",
+     "publisher": "Teubner",
+     "publicationPlace": "Leipzig",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/03ea1f02275a5ef993b700f7820dc5ccc686555606e2c55d6fba67db3a188441.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-tlg0094-tlg003-grc-8c67fde5396202cf.json",
+   "sha256": "8c67fde5396202cfc042d79f0a360daad013291dad4af72561f43a295aa7b78b",
+   "passages": 657,
+   "characters": 100929,
+   "bytes": 304332,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0094-tlg003-grc-8c67fde5396202cf.json"
+  },
+  {
+   "workId": "cts-tlg0641-tlg001",
+   "author": "Jenofonte de Éfeso",
+   "title": "Ephesiaca",
+   "language": "grc",
+   "dating": "siglo II d. C.",
+   "sources": [
+    {
+     "title": "Τὰ κατὰ Ἀνθίαν καὶ Ἁβροκόμην",
+     "titleLanguage": "grc",
+     "author": "Xenophon of Ephesus",
+     "editors": [
+      "Rudolf Hercher"
+     ],
+     "bibliography": "Xenophon of Ephesus Erotici Scriptores Graeci Rudolf Hercher Teubner Leipzig 1858 1 Internet Archive HathiTrust",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg0641.tlg001.perseus-grc2",
+     "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0641/tlg001/tlg0641.tlg001.perseus-grc2.xml",
+     "sourceSha256": "279edd134105c0c6f46dd6e4d06cdeb3bd11c21fe349da8bca116bcc468ad8ac",
+     "sourceReferences": [
+      "https://archive.org/details/bub_gb_U5a2is9oylUC/page/n391",
+      "https://hdl.handle.net/2027/mdp.39015059694292?urlappend=%3Bseq=400%3Bownerid=1424272-390"
+     ],
+     "publicationYear": "1858",
+     "publisher": "Teubner",
+     "publicationPlace": "Leipzig",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/279edd134105c0c6f46dd6e4d06cdeb3bd11c21fe349da8bca116bcc468ad8ac.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-tlg0641-tlg001-grc-4a52b1851120aef2.json",
+   "sha256": "4a52b1851120aef235adc907ebc7168c18619ddc012c607ab985b8785092d607",
+   "passages": 420,
+   "characters": 102463,
+   "bytes": 271140,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0641-tlg001-grc-4a52b1851120aef2.json"
+  },
+  {
+   "workId": "cts-tlg0644-tlg001",
+   "author": "Aristófanes de Bizancio",
+   "title": "Historiae Animalium Epitome",
+   "language": "grc",
+   "dating": "c. 257–180 a. C.",
+   "sources": [
+    {
+     "title": "Historiae Animalium Epitome",
+     "titleLanguage": "lat",
+     "author": "Aristophanes of Byzantium",
+     "editors": [
+      "Spyridon Paulou Lampros"
+     ],
+     "bibliography": "Excerptorum Constantini De Natura Animalium Duo eclogis Aristophanis Historiae Animalium Epitome subiunctis Aeliani Timothei aliorumque Spyridon Paulou Lampros Aristophanes of Byzantium Reimer Berlin 1885 Supplementum Aristotelicum 1 Internet Archive",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg0644.tlg001.1st1K-grc1",
+     "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0644/tlg001/tlg0644.tlg001.1st1K-grc1.xml",
+     "sourceSha256": "0f55cab1f9f3d4f5ffc6677c1353ff8232354b4b58742dfda8e54a9b084894e8",
+     "sourceReferences": [
+      "https://archive.org/details/supplementumaris01akaduoft/page/n27/mode/2up"
+     ],
+     "publicationYear": "1885",
+     "publisher": "Reimer",
+     "publicationPlace": "Berlin",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/0f55cab1f9f3d4f5ffc6677c1353ff8232354b4b58742dfda8e54a9b084894e8.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-tlg0644-tlg001-grc-4f6fc8b8de38418a.json",
+   "sha256": "4f6fc8b8de38418abeb99f60d2b3b15996c29166a19f93ba5ee68598da159023",
+   "passages": 791,
+   "characters": 235064,
+   "bytes": 583748,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0644-tlg001-grc-4f6fc8b8de38418a.json"
+  },
+  {
+   "workId": "cts-tlg1252-tlg002",
+   "author": "Certamen de Homero y Hesíodo",
+   "title": "Certamen Homeri et Hesiodi",
+   "language": "grc",
+   "dating": "siglo II d. C.",
+   "sources": [
+    {
+     "title": "Certamen Homeri et Hesiodi",
+     "titleLanguage": "lat",
+     "author": "Certamen de Homero y Hesíodo",
+     "editors": [
+      "Thomas W. Allen"
+     ],
+     "bibliography": "Homeri Opera Thomas W. Allen Certamen Homeri et Hesiodi Clarendon Oxford 1912 5 Hathi Trust",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg1252.tlg002.1st1K-grc1",
+     "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg1252/tlg002/tlg1252.tlg002.1st1K-grc1.xml",
+     "sourceSha256": "856f7ad589aa5db7407655650b935289b7637ca377bbda2ca4ebd5ac123a6aa8",
+     "sourceReferences": [
+      "https://archive.org/details/homerioperarecog05homeuoft/page/224/mode/2up"
+     ],
+     "publicationYear": "1912",
+     "publisher": "Clarendon",
+     "publicationPlace": "Oxford",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/856f7ad589aa5db7407655650b935289b7637ca377bbda2ca4ebd5ac123a6aa8.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-tlg1252-tlg002-grc-8b8d267259813e9a.json",
+   "sha256": "8b8d267259813e9a75dbabafbfa51a05cadb300f34eefc2ac39d8ea752e04193",
+   "passages": 11,
+   "characters": 16790,
+   "bytes": 36101,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg1252-tlg002-grc-8b8d267259813e9a.json"
+  },
+  {
+   "workId": "epictetus-enchiridion",
+   "author": "Epicteto (transmitido por Arriano)",
+   "title": "Ἐγχειρίδιον · Enchiridion",
+   "language": "grc",
+   "sources": [
+    {
+     "title": "Ἐγχειρίδιον",
+     "titleLanguage": "grc",
+     "author": "Epictetus",
+     "editors": [
+      "Heinrich Schenkl"
+     ],
+     "bibliography": "Epictetus Epicteti dissertationes ab Arriano digestae, editio maior Heinrich Schenkl Leipzig Teubner 1916 The Internet Archive",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg0557.tlg002.perseus-grc2",
+     "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0557/tlg002/tlg0557.tlg002.perseus-grc2.xml",
+     "sourceSha256": "385d87958e5288fe380583d0925587bb20d47f4e2e348a8013b666fe459b6bf6",
+     "sourceReferences": [
+      "https://archive.org/details/ldpd_10922736_000/page/620"
+     ],
+     "publicationYear": "1916",
+     "publisher": "Teubner",
+     "publicationPlace": "Leipzig",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/385d87958e5288fe380583d0925587bb20d47f4e2e348a8013b666fe459b6bf6.xml"
+    }
+   ],
+   "existing": true,
+   "filename": "epictetus-enchiridion-grc-d5199dc818462d3e.json",
+   "sha256": "d5199dc818462d3e80b06ad20c197888060d4a86c9133da6303d2adc7321c7a8",
+   "passages": 106,
+   "characters": 30379,
+   "bytes": 78204,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/epictetus-enchiridion-grc-d5199dc818462d3e.json"
+  },
+  {
+   "workId": "euclid-elementa",
+   "author": "Euclides",
+   "title": "Στοιχεῖα · Elementa",
+   "language": "grc",
+   "sources": [
+    {
+     "title": "Στοιχεῖα",
+     "titleLanguage": "grc",
+     "author": "Euclid",
+     "editors": [
+      "Johan Ludvig Heiberg"
+     ],
+     "bibliography": "Euclid Euclidis Opera Omnia Euclidis Elementa Johan Ludvig Heiberg Leipzig Teubner 1883-1888 1-5 Internet Archive Internet Archive HathiTrust HathiTrust HathiTrust",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg1799.tlg001.perseus-grc2",
+     "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg1799/tlg001/tlg1799.tlg001.perseus-grc2.xml",
+     "sourceSha256": "88f8afa683dc953e7b07240c587348bc14d58426e1c6b775201056c3f5193ad6",
+     "sourceReferences": [
+      "https://hdl.handle.net/2027/coo.31924101918617",
+      "https://hdl.handle.net/2027/coo.31924102028861",
+      "https://hdl.handle.net/2027/coo.31924102028929"
+     ],
+     "publicationYear": "1883-1888",
+     "publisher": "Teubner",
+     "publicationPlace": "Leipzig",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/88f8afa683dc953e7b07240c587348bc14d58426e1c6b775201056c3f5193ad6.xml"
+    }
+   ],
+   "existing": true,
+   "filename": "euclid-elementa-grc-de76536de07cc463.json",
+   "sha256": "de76536de07cc4636b54431f3954e4d9dcd27b8a21c1e7484c7e5c773adc4c18",
+   "passages": 2373,
+   "characters": 744659,
+   "bytes": 1831217,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/euclid-elementa-grc-de76536de07cc463.json"
+  },
+  {
+   "workId": "galen-ars-medica",
+   "author": "Galeno",
+   "title": "Τέχνη ἰατρική",
+   "language": "grc",
+   "sources": [
+    {
+     "title": "Ars Medica",
+     "titleLanguage": "lat",
+     "author": "Galen",
+     "editors": [
+      "Karl Gottlob Kühn"
+     ],
+     "bibliography": "Claudii Galeni Opera Omnia Galen Karl Gottlob Kühn Knobloch Leipzig 1 305-412 1821 HathiTrust",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg0057.tlg007.1st1K-grc1",
+     "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0057/tlg007/tlg0057.tlg007.1st1K-grc1.xml",
+     "sourceSha256": "26582d8908adccfbc257aaaf7b4a1cd79271328a09a364d92da3a3d5aeaba756",
+     "sourceReferences": [
+      "https://hdl.handle.net/2027/hvd.hxpp8j?urlappend=%3Bseq=578%3Bownerid=27021597764275188-582"
+     ],
+     "publicationYear": "1821",
+     "publisher": "Knobloch",
+     "publicationPlace": "Leipzig",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/26582d8908adccfbc257aaaf7b4a1cd79271328a09a364d92da3a3d5aeaba756.xml"
+    }
+   ],
+   "existing": true,
+   "filename": "galen-ars-medica-grc-79f642d4d38766f7.json",
+   "sha256": "79f642d4d38766f7b41e7e737e643b2bfaac5edef977dbda21a9fce6f9559ecd",
+   "passages": 39,
+   "characters": 99978,
+   "bytes": 208224,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/galen-ars-medica-grc-79f642d4d38766f7.json"
+  },
+  {
+   "workId": "galen-de-usu-partium",
+   "author": "Galeno",
+   "title": "Περὶ χρείας μορίων",
+   "language": "grc",
+   "sources": [
+    {
+     "title": "De usu partium corporis humani I-XI",
+     "titleLanguage": "lat",
+     "author": "Galen",
+     "editors": [
+      "Karl Gottlob Kühn"
+     ],
+     "bibliography": "Claudii Galeni Opera Omnia Galen Karl Gottlob Kühn Knobloch Leipzig 3 1-939 1822 Knobloch Leipzig 4 1-366 1822 HathiTrust HathiTrust",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg0057.tlg017.1st1K-grc1",
+     "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0057/tlg017/tlg0057.tlg017.1st1K-grc1.xml",
+     "sourceSha256": "c88d5b0a58305fc8454e93b2a4448f683d121fb44305b8858e1e68e6556b19c9",
+     "sourceReferences": [
+      "https://hdl.handle.net/2027/chi.15597494?urlappend=%3Bseq=12",
+      "https://hdl.handle.net/2027/chi.11102513?urlappend=%3Bseq=10"
+     ],
+     "publicationYear": "1822",
+     "publisher": "Knobloch",
+     "publicationPlace": "Leipzig",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/c88d5b0a58305fc8454e93b2a4448f683d121fb44305b8858e1e68e6556b19c9.xml"
+    }
+   ],
+   "existing": true,
+   "filename": "galen-de-usu-partium-grc-3f0b1c63a045c192.json",
+   "sha256": "3f0b1c63a045c192df944e17d6ff1c390230983e7a6a16372e84c39af7ae587d",
+   "passages": 295,
+   "characters": 1204359,
+   "bytes": 2471523,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/galen-de-usu-partium-grc-3f0b1c63a045c192.json"
+  },
+  {
+   "workId": "galeno-facultades-naturales",
+   "author": "Galeno",
+   "title": "Περὶ φυσικῶν δυνάμεων · De naturalibus facultatibus",
+   "language": "grc",
+   "dating": "129–c. 216 d. C.",
+   "sources": [
+    {
+     "title": "Περί φυσικῶν δυνάμεων",
+     "titleLanguage": "grc",
+     "author": "Galen",
+     "editors": [
+      "A. J. Brock"
+     ],
+     "bibliography": "Galen On the Natural Faculties A. J. Brock Cambridge, MA Harvard University Press London William Heinemann Ltd. 1916 Internet Archive",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg0057.tlg010.perseus-grc2",
+     "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0057/tlg010/tlg0057.tlg010.perseus-grc2.xml",
+     "sourceSha256": "b5da2765cf235edee3ce9b2878215efe29852a210283306d64a5c5fc49ed410e",
+     "sourceReferences": [
+      "https://archive.org/details/galenonnaturalfa00galeuoft/page/2/mode/2up"
+     ],
+     "publicationYear": "1916",
+     "publisher": "Harvard University Press",
+     "publicationPlace": "Cambridge, MA",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/b5da2765cf235edee3ce9b2878215efe29852a210283306d64a5c5fc49ed410e.xml"
+    }
+   ],
+   "existing": true,
+   "relatedWorkIds": [],
+   "filename": "galeno-facultades-naturales-grc-86bcddddae0c6977.json",
+   "sha256": "86bcddddae0c6977ba93a00b39d6558b0ec8705e7d456ac6e747a880569420a1",
+   "passages": 273,
+   "characters": 197235,
+   "bytes": 431636,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/galeno-facultades-naturales-grc-86bcddddae0c6977.json"
+  },
+  {
+   "workId": "geminus-isagoge",
+   "author": "Gémino",
+   "title": "Εἰσαγωγὴ εἰς τὰ φαινόμενα · Elementa astronomiae",
+   "language": "grc",
+   "sources": [
+    {
+     "title": "Elementa astronomia",
+     "titleLanguage": "lat",
+     "author": "Geminus",
+     "editors": [
+      "Charles Manitius"
+     ],
+     "bibliography": "Geminus Γέμινου εισαγωγὴ ἐις τὰ φαινόμενα Gemini Elementa astronomiae Charles Manitius Leipzig B.G. Teubneri 1898 Internet Archive",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg1383.tlg001.1st1K-grc1",
+     "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg1383/tlg001/tlg1383.tlg001.1st1K-grc1.xml",
+     "sourceSha256": "4f515fbe2960e7fcd4102a6c5deb9c7e538f615909693863afc33eadc4e933dd",
+     "sourceReferences": [
+      "https://archive.org/details/geminoueisagoget00gemi/page/n49/mode/1up"
+     ],
+     "publicationYear": "1898",
+     "publisher": "B.G. Teubneri",
+     "publicationPlace": "Leipzig",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/4f515fbe2960e7fcd4102a6c5deb9c7e538f615909693863afc33eadc4e933dd.xml"
+    }
+   ],
+   "existing": true,
+   "filename": "geminus-isagoge-grc-8888fc4231f3fc2b.json",
+   "sha256": "8888fc4231f3fc2b32d3005470bdc6ef19933ded27b34254ed71fdb8c11a53b1",
+   "passages": 542,
+   "characters": 128270,
+   "bytes": 339487,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/geminus-isagoge-grc-8888fc4231f3fc2b.json"
+  },
+  {
+   "workId": "hippocrates-aphorisms",
+   "author": "Corpus hipocrático",
+   "title": "Ἀφορισμοί",
+   "language": "grc",
+   "sources": [
+    {
+     "title": "Ἀφορισμοί",
+     "titleLanguage": "grc",
+     "author": "Hippocrates",
+     "editors": [
+      "Émile Littré"
+     ],
+     "bibliography": "Oeuvres complètes d’Hippocrate Hippocrates Émile Littré Amsterdam Adolf M. Hakkert 1961 4 Internet Archive",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg0627.tlg012.perseus-grc2",
+     "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0627/tlg012/tlg0627.tlg012.perseus-grc2.xml",
+     "sourceSha256": "1c43e55f333667ecd9befa4b08cbc01cca6493cf9636627c8a87b9eec90b9b3c",
+     "sourceReferences": [
+      "https://archive.org/details/oeuvrescomplte04hippuoft/page/458/mode/2up"
+     ],
+     "publicationYear": "1961",
+     "publisher": "Adolf M. Hakkert",
+     "publicationPlace": "Amsterdam",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/1c43e55f333667ecd9befa4b08cbc01cca6493cf9636627c8a87b9eec90b9b3c.xml"
+    }
+   ],
+   "existing": true,
+   "filename": "hippocrates-aphorisms-grc-a711032a61a08af6.json",
+   "sha256": "a711032a61a08af6ddda4771fdb485f4d20e7a9e6e40b5ede8c6dd997b36ece7",
+   "passages": 834,
+   "characters": 48399,
+   "bytes": 227976,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/hippocrates-aphorisms-grc-a711032a61a08af6.json"
+  },
+  {
+   "workId": "lucian-dialogi-mortuorum",
+   "author": "Luciano de Samósata",
+   "title": "Νεκρικοὶ διάλογοι",
+   "language": "grc",
+   "sources": [
+    {
+     "title": "Νεκρικοὶ διάλογοι",
+     "titleLanguage": "grc",
+     "author": "Lucian of Samosata",
+     "editors": [
+      "Matthew Donald Macleod"
+     ],
+     "bibliography": "Lucian of Samosata Lucian with an English Translation Matthew Donald Macleod London William Heinemann Ltd. Cambridge, MA Harvard University Press 1961 7 Internet Archive Hathi Trust",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg0062.tlg066.perseus-grc3",
+     "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0062/tlg066/tlg0062.tlg066.perseus-grc3.xml",
+     "sourceSha256": "fc6b12fbd360a6c6c74c7582ae472cdd7e3a049020175ad6b749a3487746d562",
+     "sourceReferences": [
+      "https://archive.org/details/lucianmac07luciuoft/page/n17/mode/2up",
+      "https://hdl.handle.net/2027/osu.32435024202095?urlappend=%3Bseq=19"
+     ],
+     "publicationYear": "1961",
+     "publisher": "William Heinemann Ltd.",
+     "publicationPlace": "London",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/fc6b12fbd360a6c6c74c7582ae472cdd7e3a049020175ad6b749a3487746d562.xml"
+    }
+   ],
+   "existing": true,
+   "filename": "lucian-dialogi-mortuorum-grc-34e898d0e8feed1a.json",
+   "sha256": "34e898d0e8feed1a130c40f2b83eeff69ef84fa66ae2b209c7c0c80a21d99307",
+   "passages": 525,
+   "characters": 72153,
+   "bytes": 226521,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/lucian-dialogi-mortuorum-grc-34e898d0e8feed1a.json"
+  },
+  {
+   "workId": "lucian-verae-historiae",
+   "author": "Luciano de Samósata",
+   "title": "Ἀληθῆ διηγήματα",
+   "language": "grc",
+   "sources": [
+    {
+     "title": "Ἀληθῶν Διηγημάτων",
+     "titleLanguage": "grc",
+     "author": "Lucian",
+     "editors": [
+      "Austin Morris Harmon"
+     ],
+     "bibliography": "Lucian Lucian Austin Morris Harmon London William Heinemann Ltd. Cambridge, MA Harvard University Press 1913 1 Loeb Classical Library Internet Archive",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg0062.tlg012.perseus-grc2",
+     "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0062/tlg012/tlg0062.tlg012.perseus-grc2.xml",
+     "sourceSha256": "40bb5fb1f55598a7d8320ae053bc5ecce9d8840387026fa3f72476de55fe7535",
+     "sourceReferences": [
+      "https://archive.org/details/lucianha01luciuoft/page/248/mode/2up"
+     ],
+     "publicationYear": "1913",
+     "publisher": "William Heinemann Ltd.",
+     "publicationPlace": "London",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/40bb5fb1f55598a7d8320ae053bc5ecce9d8840387026fa3f72476de55fe7535.xml"
+    }
+   ],
+   "existing": true,
+   "filename": "lucian-verae-historiae-grc-09fde046b8ef04d2.json",
+   "sha256": "09fde046b8ef04d28c655a78598d59eb0febce915a5a9424cd00fed86f9ce3c5",
+   "passages": 107,
+   "characters": 71748,
+   "bytes": 159991,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/lucian-verae-historiae-grc-09fde046b8ef04d2.json"
+  },
+  {
+   "workId": "cts-tlg0017-tlg006",
+   "author": "Iseo",
+   "title": "On the Estate of Philoctemon",
+   "language": "grc",
+   "dating": "c. 420–350 a. C.",
+   "sources": [
+    {
+     "title": "Περὶ τοῦ Φιλοκτήμονος κλήρου",
+     "titleLanguage": "grc",
+     "author": "Isaeus",
+     "editors": [
+      "Edward Seymour Forster"
+     ],
+     "bibliography": "Isaeus Edward Seymour Forster Isaeus with an English translation Cambridge, MA Harvard University Press London William Heinemann Ltd. 1962 1927 Internet Archive",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg0017.tlg006.perseus-grc2",
+     "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0017/tlg006/tlg0017.tlg006.perseus-grc2.xml",
+     "sourceSha256": "cdf5fab8c97dd6e92bb28c2e86603a743f042088ea92e2284104bf79450f3580",
+     "sourceReferences": [
+      "https://archive.org/details/in.ernet.dli.2015.233289/page/202/mode/2up"
+     ],
+     "publicationYear": "1962",
+     "publisher": "Harvard University Press",
+     "publicationPlace": "Cambridge, MA",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/cdf5fab8c97dd6e92bb28c2e86603a743f042088ea92e2284104bf79450f3580.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-tlg0017-tlg006-grc-0de906608c16f426.json",
+   "sha256": "0de906608c16f4266f9dbfadb62e4394c47d08f4195f6d0962f4fd80b7e01a45",
+   "passages": 78,
+   "characters": 23600,
+   "bytes": 60726,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0017-tlg006-grc-0de906608c16f426.json"
+  },
+  {
+   "workId": "marcus-aurelius-meditations",
+   "author": "Marco Aurelio",
+   "title": "Τὰ εἰς ἑαυτόν",
+   "language": "grc",
+   "sources": [
+    {
+     "title": "Ad Se Ipsum",
+     "titleLanguage": "lat",
+     "author": "Marcus Aurelius",
+     "editors": [
+      "Jan Hendrik Leopold"
+     ],
+     "bibliography": "Marcus Aurelius M. Antoninus Imperator Ad Se Ipsum Jan Hendrik Leopold Teubner Leipzig 1908 Internet Archive HathiTrust",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg0562.tlg001.perseus-grc2",
+     "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0562/tlg001/tlg0562.tlg001.perseus-grc2.xml",
+     "sourceSha256": "7e5017cbc9e911a6c3e300cfc31ecc2a6c289bc43b1f2c69145ce85037981a2d",
+     "sourceReferences": [
+      "https://archive.org/details/mantoninusimpera00marcuoft/page/n6",
+      "https://hdl.handle.net/2027/uc1.b3218103"
+     ],
+     "publicationYear": "1908",
+     "publisher": "Teubner",
+     "publicationPlace": "Leipzig",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/7e5017cbc9e911a6c3e300cfc31ecc2a6c289bc43b1f2c69145ce85037981a2d.xml"
+    }
+   ],
+   "existing": true,
+   "filename": "marcus-aurelius-meditations-grc-11c6c0fa40a67675.json",
+   "sha256": "11c6c0fa40a676752e00684ba8a9a383a9e180c4d001d3c5cbb69765ea7551cf",
+   "passages": 601,
+   "characters": 179996,
+   "bytes": 452245,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/marcus-aurelius-meditations-grc-11c6c0fa40a67675.json"
+  },
+  {
+   "workId": "cts-tlg0017-tlg007",
+   "author": "Iseo",
+   "title": "On The Estate of Apollodorus",
+   "language": "grc",
+   "dating": "c. 420–350 a. C.",
+   "sources": [
+    {
+     "title": "Περὶ τοῦ Απολλοδώρου κλήρου",
+     "titleLanguage": "grc",
+     "author": "Isaeus",
+     "editors": [
+      "Edward Seymour Forster"
+     ],
+     "bibliography": "Isaeus Edward Seymour Forster Isaeus with an English translation Cambridge, MA Harvard University Press London William Heinemann Ltd. 1962 1927 Internet Archive",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg0017.tlg007.perseus-grc2",
+     "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0017/tlg007/tlg0017.tlg007.perseus-grc2.xml",
+     "sourceSha256": "1de03b7a9da8d5655be7b0fa13af741c389b8385f545e069afa7eaa998b0a41f",
+     "sourceReferences": [
+      "https://archive.org/details/in.ernet.dli.2015.233289/page/248/mode/2up"
+     ],
+     "publicationYear": "1962",
+     "publisher": "Harvard University Press",
+     "publicationPlace": "Cambridge, MA",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/1de03b7a9da8d5655be7b0fa13af741c389b8385f545e069afa7eaa998b0a41f.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-tlg0017-tlg007-grc-e5fe52acb52af3ba.json",
+   "sha256": "e5fe52acb52af3ba60dcd43da9d08ffbc68cf15a2a0c1718fe5636dbc58b0981",
+   "passages": 58,
+   "characters": 18006,
+   "bytes": 46518,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0017-tlg007-grc-e5fe52acb52af3ba.json"
+  },
+  {
+   "workId": "cts-tlg0017-tlg008",
+   "author": "Iseo",
+   "title": "On The Estate of Ciron",
+   "language": "grc",
+   "dating": "c. 420–350 a. C.",
+   "sources": [
+    {
+     "title": "Περὶ τοῦ Κίρωνος κλήρου",
+     "titleLanguage": "grc",
+     "author": "Isaeus",
+     "editors": [
+      "Edward Seymour Forster"
+     ],
+     "bibliography": "Isaeus Edward Seymour Forster Isaeus with an English translation Cambridge, MA Harvard University Press London William Heinemann Ltd. 1962 1927 Internet Archive",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg0017.tlg008.perseus-grc2",
+     "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0017/tlg008/tlg0017.tlg008.perseus-grc2.xml",
+     "sourceSha256": "8575699f0a84c07b1e48805938e0093108608c7fcf2ad0255cb49b6f6790acf4",
+     "sourceReferences": [
+      "https://archive.org/details/in.ernet.dli.2015.233289/page/286/mode/2up"
+     ],
+     "publicationYear": "1962",
+     "publisher": "Harvard University Press",
+     "publicationPlace": "Cambridge, MA",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/8575699f0a84c07b1e48805938e0093108608c7fcf2ad0255cb49b6f6790acf4.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-tlg0017-tlg008-grc-950fef732bd33eae.json",
+   "sha256": "950fef732bd33eaea870244de105ff22994805c10eff6fce5bdb6d30710a72e5",
+   "passages": 58,
+   "characters": 20417,
+   "bytes": 51117,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0017-tlg008-grc-950fef732bd33eae.json"
+  },
+  {
+   "workId": "cts-tlg1367-tlg001",
+   "author": "Euripides Epistulae",
+   "title": "Epistulae",
+   "language": "grc",
+   "dating": "",
+   "sources": [
+    {
+     "title": "Epistulae",
+     "titleLanguage": "lat",
+     "author": "Euripides Epistulae",
+     "editors": [
+      "Rudolf Hercher"
+     ],
+     "bibliography": "Epistolographi Graeci Rudolf Hercher Paris A. F. Didot 1873 Internet Archive",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg1367.tlg001.1st1K-grc1",
+     "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg1367/tlg001/tlg1367.tlg001.1st1K-grc1.xml",
+     "sourceSha256": "927d510d28fc9f57b160152b03cccb5214cb145d8e7177b4b6db45c62d04ee65",
+     "sourceReferences": [
+      "https://www.archive.org/stream/epistolographoih00hercuoft#page/274/mode/2up"
+     ],
+     "publicationYear": "1873",
+     "publisher": "A. F. Didot",
+     "publicationPlace": "Paris",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/927d510d28fc9f57b160152b03cccb5214cb145d8e7177b4b6db45c62d04ee65.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-tlg1367-tlg001-grc-7d57e1faefa17578.json",
+   "sha256": "7d57e1faefa175788d7e247e4779ad40add43510585011d070eb09077ce5ccab",
+   "passages": 20,
+   "characters": 11125,
+   "bytes": 26757,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg1367-tlg001-grc-7d57e1faefa17578.json"
   }
  ],
  "githubPreserved": [
@@ -28144,6 +29304,41 @@
  ],
  "deferred": [
   {
+   "workId": "cts-phi0690-phi001",
+   "sources": [
+    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0690/phi001/phi0690.phi001.perseus-lat2.xml"
+   ],
+   "reason": "Sin licencia abierta explícita admisible en la cabecera TEI"
+  },
+  {
+   "workId": "cts-phi0478-phi003",
+   "sources": [
+    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0478/phi003/phi0478.phi003.perseus-lat2.xml"
+   ],
+   "reason": "Sin licencia abierta explícita admisible en la cabecera TEI"
+  },
+  {
+   "workId": "cts-phi0893-phi002",
+   "sources": [
+    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0893/phi002/phi0893.phi002.perseus-lat2.xml"
+   ],
+   "reason": "Sin licencia abierta explícita admisible en la cabecera TEI"
+  },
+  {
+   "workId": "cts-phi0959-phi003",
+   "sources": [
+    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0959/phi003/phi0959.phi003.perseus-lat2.xml"
+   ],
+   "reason": "Sin licencia abierta explícita admisible en la cabecera TEI"
+  },
+  {
+   "workId": "cts-phi0959-phi001",
+   "sources": [
+    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0959/phi001/phi0959.phi001.perseus-lat2.xml"
+   ],
+   "reason": "Sin licencia abierta explícita admisible en la cabecera TEI"
+  },
+  {
    "workId": "cts-phi0959-phi010",
    "sources": [
     "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0959/phi010/phi0959.phi010.perseus-lat2.xml"
@@ -28158,16 +29353,16 @@
    "reason": "Sin licencia abierta explícita admisible en la cabecera TEI"
   },
   {
-   "workId": "cts-phi1014-phi002",
+   "workId": "cts-phi1014-phi001",
    "sources": [
-    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi1014/phi002/phi1014.phi002.perseus-lat1.xml"
+    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi1014/phi001/phi1014.phi001.perseus-lat1.xml"
    ],
    "reason": "Sin licencia abierta explícita admisible en la cabecera TEI"
   },
   {
-   "workId": "cts-phi1014-phi001",
+   "workId": "cts-phi1014-phi002",
    "sources": [
-    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi1014/phi001/phi1014.phi001.perseus-lat1.xml"
+    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi1014/phi002/phi1014.phi002.perseus-lat1.xml"
    ],
    "reason": "Sin licencia abierta explícita admisible en la cabecera TEI"
   },

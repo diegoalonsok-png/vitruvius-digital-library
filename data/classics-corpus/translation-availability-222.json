@@ -4,26 +4,26 @@
   "basis": "Cálculo a partir de works[] y search-registry.json. Los campos de compatibilidad locallyIndexedWorks y localEditionLanguages incluyen índices registrados en R2. originalIndexed y verifiedLocalEditionLanguages solo cuentan archivos locales. originalR2Registered identifica declaraciones remotas; no certifica disponibilidad HTTP ni cotejo.",
   "scope": "271 obras del repertorio grecolatino; originales locales, índices remotos declarados y traducciones alojadas ES/EN/FR",
   "totals": {
-    "cataloguedWorks": 663,
-    "locallyIndexedWorks": 634,
+    "cataloguedWorks": 681,
+    "locallyIndexedWorks": 652,
     "translatedWorksLocal": 78,
-    "worksWithoutHostedTranslation": 585,
+    "worksWithoutHostedTranslation": 603,
     "localTranslationLanguages": {
       "es": 5,
       "en": 77,
       "fr": 2
     },
     "originalTextIndexed": 197,
-    "originalTextNotIndexed": 466,
+    "originalTextNotIndexed": 484,
     "verifiedLocalFileWorks": 199,
-    "declaredRemoteOnlyWorks": 435,
-    "declaredR2OriginalWorks": 517,
-    "registeredOriginalWorks": 634,
-    "registeredTextVersions": 862,
+    "declaredRemoteOnlyWorks": 453,
+    "declaredR2OriginalWorks": 544,
+    "registeredOriginalWorks": 652,
+    "registeredTextVersions": 890,
     "verifiedLocalTextVersions": 281,
     "verifiedLocalOriginalTextIndexed": 197,
     "supplementaryTextVersions": 161,
-    "allRegisteredTextVersions": 1023
+    "allRegisteredTextVersions": 1051
   },
   "works": [
     {
@@ -2470,12 +2470,14 @@
       "translationSourceDescription": "Traducciones EN/ES/FR pendientes de verificar, cotejar y comprobar derechos.",
       "translationRegisteredButNotHosted": true,
       "indexed": true,
-      "originalR2Registered": false,
+      "originalR2Registered": true,
       "registeredOriginal": true,
       "registeredEditionLanguages": [
         "grc"
       ],
-      "remoteEditionLanguages": [],
+      "remoteEditionLanguages": [
+        "grc"
+      ],
       "verifiedLocalEditionLanguages": [
         "grc"
       ]
@@ -2498,13 +2500,15 @@
       "translationSourceDescription": "Inglés histórico: Austin Morris Harmon (1913), texto completo de la fuente TEI Perseus con procedencia por SHA; sin alineación textual certificada.",
       "translationRegisteredButNotHosted": false,
       "indexed": true,
-      "originalR2Registered": false,
+      "originalR2Registered": true,
       "registeredOriginal": true,
       "registeredEditionLanguages": [
         "en",
         "grc"
       ],
-      "remoteEditionLanguages": [],
+      "remoteEditionLanguages": [
+        "grc"
+      ],
       "verifiedLocalEditionLanguages": [
         "en",
         "grc"
@@ -2550,12 +2554,14 @@
       "translationSourceDescription": "Traducciones EN/ES/FR pendientes de verificar, cotejar y comprobar derechos.",
       "translationRegisteredButNotHosted": true,
       "indexed": true,
-      "originalR2Registered": false,
+      "originalR2Registered": true,
       "registeredOriginal": true,
       "registeredEditionLanguages": [
         "grc"
       ],
-      "remoteEditionLanguages": [],
+      "remoteEditionLanguages": [
+        "grc"
+      ],
       "verifiedLocalEditionLanguages": [
         "grc"
       ]
@@ -2575,12 +2581,14 @@
       "translationSourceDescription": "Traducciones EN/ES/FR pendientes de verificar, cotejar y comprobar derechos.",
       "translationRegisteredButNotHosted": true,
       "indexed": true,
-      "originalR2Registered": false,
+      "originalR2Registered": true,
       "registeredOriginal": true,
       "registeredEditionLanguages": [
         "grc"
       ],
-      "remoteEditionLanguages": [],
+      "remoteEditionLanguages": [
+        "grc"
+      ],
       "verifiedLocalEditionLanguages": [
         "grc"
       ]
@@ -2672,13 +2680,15 @@
       "translationSourceDescription": "EN: George Long (1862), transcripción digital Standard Ebooks indexada localmente; Haines/Loeb (1916) solo referencia bibliográfica externa. ES/FR pendientes de fuentes verificadas.",
       "translationRegisteredButNotHosted": false,
       "indexed": true,
-      "originalR2Registered": false,
+      "originalR2Registered": true,
       "registeredOriginal": true,
       "registeredEditionLanguages": [
         "en",
         "grc"
       ],
-      "remoteEditionLanguages": [],
+      "remoteEditionLanguages": [
+        "grc"
+      ],
       "verifiedLocalEditionLanguages": [
         "en",
         "grc"
@@ -3174,13 +3184,15 @@
       "translationSourceDescription": "Inglés histórico: Francis Adams (1886), texto completo de la fuente TEI Perseus con procedencia por SHA; sin alineación textual certificada.",
       "translationRegisteredButNotHosted": false,
       "indexed": true,
-      "originalR2Registered": false,
+      "originalR2Registered": true,
       "registeredOriginal": true,
       "registeredEditionLanguages": [
         "en",
         "grc"
       ],
-      "remoteEditionLanguages": [],
+      "remoteEditionLanguages": [
+        "grc"
+      ],
       "verifiedLocalEditionLanguages": [
         "en",
         "grc"
@@ -5436,17 +5448,19 @@
         "grc"
       ],
       "externalTranslationUnverified": [],
-      "readingStatus": "lectura-local-completa",
+      "readingStatus": "lectura-local-parcial",
       "translationSourceDescription": "Griego editado y traducción inglesa histórica de Thomas Wentworth Higginson (1890), 53 capítulos, ambos alojados y disponibles en lector; comparación por capítulo, no alineación frase a frase. Castellano/francés pendientes.",
       "translationRegisteredButNotHosted": false,
       "indexed": true,
-      "originalR2Registered": false,
+      "originalR2Registered": true,
       "registeredOriginal": true,
       "registeredEditionLanguages": [
         "en",
         "grc"
       ],
-      "remoteEditionLanguages": [],
+      "remoteEditionLanguages": [
+        "grc"
+      ],
       "verifiedLocalEditionLanguages": [
         "en",
         "grc"
@@ -5755,12 +5769,14 @@
       "translationSourceDescription": "Traducción latina de Heiberg en la misma edición (página enfrentada).",
       "translationRegisteredButNotHosted": true,
       "indexed": true,
-      "originalR2Registered": false,
+      "originalR2Registered": true,
       "registeredOriginal": true,
       "registeredEditionLanguages": [
         "grc"
       ],
-      "remoteEditionLanguages": [],
+      "remoteEditionLanguages": [
+        "grc"
+      ],
       "verifiedLocalEditionLanguages": [
         "grc"
       ]
@@ -5914,16 +5930,18 @@
         "grc"
       ],
       "externalTranslationUnverified": [],
-      "readingStatus": "fuente-externa-identificada",
+      "readingStatus": "lectura-local-parcial",
       "translationSourceDescription": "Traducción alemana de Manitius en la misma edición.",
       "translationRegisteredButNotHosted": true,
       "indexed": false,
-      "originalR2Registered": false,
+      "originalR2Registered": true,
       "registeredOriginal": true,
       "registeredEditionLanguages": [
         "grc"
       ],
-      "remoteEditionLanguages": [],
+      "remoteEditionLanguages": [
+        "grc"
+      ],
       "verifiedLocalEditionLanguages": [
         "grc"
       ]
@@ -6453,7 +6471,7 @@
         "grc"
       ],
       "externalTranslationUnverified": [],
-      "readingStatus": "fuente-externa-identificada",
+      "readingStatus": "lectura-local-parcial",
       "translationSourceDescription": "Facsímil de dominio público alojado en R2. Sin traducción alojada; pendiente de localizar una traducción de dominio público.",
       "originalR2Registered": true,
       "registeredOriginal": true,
@@ -15856,6 +15874,402 @@
       "id": "cts-tlg0086-tlg043",
       "author": "Aristóteles",
       "title": "De spiritu",
+      "originalLanguage": "grc",
+      "translationLanguages": [],
+      "localEditionLanguages": [
+        "grc"
+      ],
+      "notes": "Edición TEI incorporada en R2; sin traducción humana ni colación independiente acreditadas.",
+      "originalIndexed": false,
+      "originalR2Registered": true,
+      "registeredOriginal": true,
+      "verifiedLocalEditionLanguages": [],
+      "registeredEditionLanguages": [
+        "grc"
+      ],
+      "remoteEditionLanguages": [
+        "grc"
+      ],
+      "readingStatus": "lectura-local-parcial"
+    },
+    {
+      "id": "cts-phi0474-phi031",
+      "author": "Cicerón",
+      "title": "Pro T. Annio Milone",
+      "originalLanguage": "la",
+      "translationLanguages": [],
+      "localEditionLanguages": [
+        "la"
+      ],
+      "notes": "Edición TEI incorporada en R2; sin traducción humana ni colación independiente acreditadas.",
+      "originalIndexed": false,
+      "originalR2Registered": true,
+      "registeredOriginal": true,
+      "verifiedLocalEditionLanguages": [],
+      "registeredEditionLanguages": [
+        "la"
+      ],
+      "remoteEditionLanguages": [
+        "la"
+      ],
+      "readingStatus": "lectura-local-parcial"
+    },
+    {
+      "id": "cts-tlg0086-tlg046",
+      "author": "Aristóteles",
+      "title": "De ventorum situ et nominibus",
+      "originalLanguage": "grc",
+      "translationLanguages": [],
+      "localEditionLanguages": [
+        "grc"
+      ],
+      "notes": "Edición TEI incorporada en R2; sin traducción humana ni colación independiente acreditadas.",
+      "originalIndexed": false,
+      "originalR2Registered": true,
+      "registeredOriginal": true,
+      "verifiedLocalEditionLanguages": [],
+      "registeredEditionLanguages": [
+        "grc"
+      ],
+      "remoteEditionLanguages": [
+        "grc"
+      ],
+      "readingStatus": "lectura-local-parcial"
+    },
+    {
+      "id": "cts-tlg0086-tlg045",
+      "author": "Aristóteles",
+      "title": "On Virtues and Vices",
+      "originalLanguage": "grc",
+      "translationLanguages": [],
+      "localEditionLanguages": [
+        "grc"
+      ],
+      "notes": "Edición TEI incorporada en R2; sin traducción humana ni colación independiente acreditadas.",
+      "originalIndexed": false,
+      "originalR2Registered": true,
+      "registeredOriginal": true,
+      "verifiedLocalEditionLanguages": [],
+      "registeredEditionLanguages": [
+        "grc"
+      ],
+      "remoteEditionLanguages": [
+        "grc"
+      ],
+      "readingStatus": "lectura-local-parcial"
+    },
+    {
+      "id": "cts-tlg0086-tlg044",
+      "author": "Aristóteles",
+      "title": "Topica",
+      "originalLanguage": "grc",
+      "translationLanguages": [],
+      "localEditionLanguages": [
+        "grc"
+      ],
+      "notes": "Edición TEI incorporada en R2; sin traducción humana ni colación independiente acreditadas.",
+      "originalIndexed": false,
+      "originalR2Registered": true,
+      "registeredOriginal": true,
+      "verifiedLocalEditionLanguages": [],
+      "registeredEditionLanguages": [
+        "grc"
+      ],
+      "remoteEditionLanguages": [
+        "grc"
+      ],
+      "readingStatus": "lectura-local-parcial"
+    },
+    {
+      "id": "cts-tlg0086-tlg047",
+      "author": "Aristóteles",
+      "title": "De Xenophane, de Zenone, de Gorgia",
+      "originalLanguage": "grc",
+      "translationLanguages": [],
+      "localEditionLanguages": [
+        "grc"
+      ],
+      "notes": "Edición TEI incorporada en R2; sin traducción humana ni colación independiente acreditadas.",
+      "originalIndexed": false,
+      "originalR2Registered": true,
+      "registeredOriginal": true,
+      "verifiedLocalEditionLanguages": [],
+      "registeredEditionLanguages": [
+        "grc"
+      ],
+      "remoteEditionLanguages": [
+        "grc"
+      ],
+      "readingStatus": "lectura-local-parcial"
+    },
+    {
+      "id": "cts-tlg0086-tlg048",
+      "author": "Aristóteles",
+      "title": "Divisiones Aristoteleae",
+      "originalLanguage": "grc",
+      "translationLanguages": [],
+      "localEditionLanguages": [
+        "grc"
+      ],
+      "notes": "Edición TEI incorporada en R2; sin traducción humana ni colación independiente acreditadas.",
+      "originalIndexed": false,
+      "originalR2Registered": true,
+      "registeredOriginal": true,
+      "verifiedLocalEditionLanguages": [],
+      "registeredEditionLanguages": [
+        "grc"
+      ],
+      "remoteEditionLanguages": [
+        "grc"
+      ],
+      "readingStatus": "lectura-local-parcial"
+    },
+    {
+      "id": "cts-tlg0086-tlg052",
+      "author": "Aristóteles",
+      "title": "De anima (codicis E fragmenta recensionis a vulgata diversae)",
+      "originalLanguage": "grc",
+      "translationLanguages": [],
+      "localEditionLanguages": [
+        "grc"
+      ],
+      "notes": "Edición TEI incorporada en R2; sin traducción humana ni colación independiente acreditadas.",
+      "originalIndexed": false,
+      "originalR2Registered": true,
+      "registeredOriginal": true,
+      "verifiedLocalEditionLanguages": [],
+      "registeredEditionLanguages": [
+        "grc"
+      ],
+      "remoteEditionLanguages": [
+        "grc"
+      ],
+      "readingStatus": "lectura-local-parcial"
+    },
+    {
+      "id": "cts-tlg0086-tlg054",
+      "author": "Aristóteles",
+      "title": "Physica (textus alter)",
+      "originalLanguage": "grc",
+      "translationLanguages": [],
+      "localEditionLanguages": [
+        "grc"
+      ],
+      "notes": "Edición TEI incorporada en R2; sin traducción humana ni colación independiente acreditadas.",
+      "originalIndexed": false,
+      "originalR2Registered": true,
+      "registeredOriginal": true,
+      "verifiedLocalEditionLanguages": [],
+      "registeredEditionLanguages": [
+        "grc"
+      ],
+      "remoteEditionLanguages": [
+        "grc"
+      ],
+      "readingStatus": "lectura-local-parcial"
+    },
+    {
+      "id": "cts-tlg0094-tlg001",
+      "author": "Pseudo-Plutarco",
+      "title": "De Fluviis",
+      "originalLanguage": "grc",
+      "translationLanguages": [],
+      "localEditionLanguages": [
+        "grc"
+      ],
+      "notes": "Edición TEI incorporada en R2; sin traducción humana ni colación independiente acreditadas.",
+      "originalIndexed": false,
+      "originalR2Registered": true,
+      "registeredOriginal": true,
+      "verifiedLocalEditionLanguages": [],
+      "registeredEditionLanguages": [
+        "grc"
+      ],
+      "remoteEditionLanguages": [
+        "grc"
+      ],
+      "readingStatus": "lectura-local-parcial"
+    },
+    {
+      "id": "cts-tlg0094-tlg002",
+      "author": "Pseudo-Plutarco",
+      "title": "De musica",
+      "originalLanguage": "grc",
+      "translationLanguages": [],
+      "localEditionLanguages": [
+        "grc"
+      ],
+      "notes": "Edición TEI incorporada en R2; sin traducción humana ni colación independiente acreditadas.",
+      "originalIndexed": false,
+      "originalR2Registered": true,
+      "registeredOriginal": true,
+      "verifiedLocalEditionLanguages": [],
+      "registeredEditionLanguages": [
+        "grc"
+      ],
+      "remoteEditionLanguages": [
+        "grc"
+      ],
+      "readingStatus": "lectura-local-parcial"
+    },
+    {
+      "id": "cts-tlg0094-tlg003",
+      "author": "Pseudo-Plutarco",
+      "title": "Placita Philosophorum",
+      "originalLanguage": "grc",
+      "translationLanguages": [],
+      "localEditionLanguages": [
+        "grc"
+      ],
+      "notes": "Edición TEI incorporada en R2; sin traducción humana ni colación independiente acreditadas.",
+      "originalIndexed": false,
+      "originalR2Registered": true,
+      "registeredOriginal": true,
+      "verifiedLocalEditionLanguages": [],
+      "registeredEditionLanguages": [
+        "grc"
+      ],
+      "remoteEditionLanguages": [
+        "grc"
+      ],
+      "readingStatus": "lectura-local-parcial"
+    },
+    {
+      "id": "cts-tlg0641-tlg001",
+      "author": "Jenofonte de Éfeso",
+      "title": "Ephesiaca",
+      "originalLanguage": "grc",
+      "translationLanguages": [],
+      "localEditionLanguages": [
+        "grc"
+      ],
+      "notes": "Edición TEI incorporada en R2; sin traducción humana ni colación independiente acreditadas.",
+      "originalIndexed": false,
+      "originalR2Registered": true,
+      "registeredOriginal": true,
+      "verifiedLocalEditionLanguages": [],
+      "registeredEditionLanguages": [
+        "grc"
+      ],
+      "remoteEditionLanguages": [
+        "grc"
+      ],
+      "readingStatus": "lectura-local-parcial"
+    },
+    {
+      "id": "cts-tlg0644-tlg001",
+      "author": "Aristófanes de Bizancio",
+      "title": "Historiae Animalium Epitome",
+      "originalLanguage": "grc",
+      "translationLanguages": [],
+      "localEditionLanguages": [
+        "grc"
+      ],
+      "notes": "Edición TEI incorporada en R2; sin traducción humana ni colación independiente acreditadas.",
+      "originalIndexed": false,
+      "originalR2Registered": true,
+      "registeredOriginal": true,
+      "verifiedLocalEditionLanguages": [],
+      "registeredEditionLanguages": [
+        "grc"
+      ],
+      "remoteEditionLanguages": [
+        "grc"
+      ],
+      "readingStatus": "lectura-local-parcial"
+    },
+    {
+      "id": "cts-tlg1252-tlg002",
+      "author": "Certamen de Homero y Hesíodo",
+      "title": "Certamen Homeri et Hesiodi",
+      "originalLanguage": "grc",
+      "translationLanguages": [],
+      "localEditionLanguages": [
+        "grc"
+      ],
+      "notes": "Edición TEI incorporada en R2; sin traducción humana ni colación independiente acreditadas.",
+      "originalIndexed": false,
+      "originalR2Registered": true,
+      "registeredOriginal": true,
+      "verifiedLocalEditionLanguages": [],
+      "registeredEditionLanguages": [
+        "grc"
+      ],
+      "remoteEditionLanguages": [
+        "grc"
+      ],
+      "readingStatus": "lectura-local-parcial"
+    },
+    {
+      "id": "cts-tlg0017-tlg006",
+      "author": "Iseo",
+      "title": "On the Estate of Philoctemon",
+      "originalLanguage": "grc",
+      "translationLanguages": [],
+      "localEditionLanguages": [
+        "grc"
+      ],
+      "notes": "Edición TEI incorporada en R2; sin traducción humana ni colación independiente acreditadas.",
+      "originalIndexed": false,
+      "originalR2Registered": true,
+      "registeredOriginal": true,
+      "verifiedLocalEditionLanguages": [],
+      "registeredEditionLanguages": [
+        "grc"
+      ],
+      "remoteEditionLanguages": [
+        "grc"
+      ],
+      "readingStatus": "lectura-local-parcial"
+    },
+    {
+      "id": "cts-tlg0017-tlg007",
+      "author": "Iseo",
+      "title": "On The Estate of Apollodorus",
+      "originalLanguage": "grc",
+      "translationLanguages": [],
+      "localEditionLanguages": [
+        "grc"
+      ],
+      "notes": "Edición TEI incorporada en R2; sin traducción humana ni colación independiente acreditadas.",
+      "originalIndexed": false,
+      "originalR2Registered": true,
+      "registeredOriginal": true,
+      "verifiedLocalEditionLanguages": [],
+      "registeredEditionLanguages": [
+        "grc"
+      ],
+      "remoteEditionLanguages": [
+        "grc"
+      ],
+      "readingStatus": "lectura-local-parcial"
+    },
+    {
+      "id": "cts-tlg0017-tlg008",
+      "author": "Iseo",
+      "title": "On The Estate of Ciron",
+      "originalLanguage": "grc",
+      "translationLanguages": [],
+      "localEditionLanguages": [
+        "grc"
+      ],
+      "notes": "Edición TEI incorporada en R2; sin traducción humana ni colación independiente acreditadas.",
+      "originalIndexed": false,
+      "originalR2Registered": true,
+      "registeredOriginal": true,
+      "verifiedLocalEditionLanguages": [],
+      "registeredEditionLanguages": [
+        "grc"
+      ],
+      "remoteEditionLanguages": [
+        "grc"
+      ],
+      "readingStatus": "lectura-local-parcial"
+    },
+    {
+      "id": "cts-tlg1367-tlg001",
+      "author": "Euripides Epistulae",
+      "title": "Epistulae",
       "originalLanguage": "grc",
       "translationLanguages": [],
       "localEditionLanguages": [
