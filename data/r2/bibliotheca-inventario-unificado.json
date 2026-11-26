@@ -1,6 +1,6 @@
 {
   "schema": "vdl-federated-bibliotheca-inventory-v1",
-  "generated": "2026-11-26T03:40:47.276749+00:00",
+  "generated": "2026-11-26T10:05:41.298931+00:00",
   "method": "Master works and additional R2 works counted separately; edition relations can be many-to-many. Remote text URLs are declared, not live-verified. Unresolved editions are never merged automatically.",
   "counts": {
     "cataloguedWorks": 663,
@@ -11412,6 +11412,10 @@
       "locallyIndexedText": [],
       "declaredRemoteIndexedText": [
         {
+          "language": "en",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0474-phi015-en-dd0c927e7b8002e7.json"
+        },
+        {
           "language": "la",
           "url": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0474-phi015-la-55e2751ecb1ac8aa.json"
         }
@@ -11425,6 +11429,10 @@
       "catalogue": "github",
       "locallyIndexedText": [],
       "declaredRemoteIndexedText": [
+        {
+          "language": "en",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0474-phi017-en-f97cfccb8eb45631.json"
+        },
         {
           "language": "la",
           "url": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0474-phi017-la-f6676069c0c1e01f.json"
@@ -11440,6 +11448,10 @@
       "locallyIndexedText": [],
       "declaredRemoteIndexedText": [
         {
+          "language": "en",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0474-phi018-en-abbdd705ae3b37d0.json"
+        },
+        {
           "language": "la",
           "url": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0474-phi018-la-d6b2e845ffecd78c.json"
         }
@@ -11453,6 +11465,10 @@
       "catalogue": "github",
       "locallyIndexedText": [],
       "declaredRemoteIndexedText": [
+        {
+          "language": "en",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0474-phi019-en-aeb63357ba610acd.json"
+        },
         {
           "language": "la",
           "url": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0474-phi019-la-c326dc4074cb623c.json"

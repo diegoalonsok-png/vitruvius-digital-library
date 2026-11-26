@@ -1,6 +1,6 @@
 {
  "schema": "vdl-classics-translation-manifest-v1",
- "generated": "2026-11-26T00:43:57.802063+00:00",
+ "generated": "2026-11-26T10:05:41.159445+00:00",
  "method": "Traducciones humanas TEI licenciadas y publicadas en R2 con SHA-256, índice literal por pasaje, sin alineación automática",
  "editions": [
   {
@@ -1299,6 +1299,98 @@
    ],
    "indexUrl": "https://libros.vitruvius-digital-library.org/corpus/indice/traducciones/cts-phi0474-phi014-en-58d006aa5494220c.json",
    "indexSha256": "58d006aa5494220c353401956670b8e7fe2d14f683fd1e9af06d11eb63edd558"
+  },
+  {
+   "workId": "cts-phi0474-phi015",
+   "author": "Cicerón",
+   "title": "Pro P. Sulla",
+   "language": "en",
+   "filename": "cts-phi0474-phi015-en-dd0c927e7b8002e7.json",
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0474-phi015-en-dd0c927e7b8002e7.json",
+   "sha256": "dd0c927e7b8002e75b158fa841054044c9f96b2db661d922601e458bd4b976e7",
+   "passages": 109,
+   "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0474/phi015/phi0474.phi015.perseus-eng2.xml",
+   "sourceUrn": "urn:cts:latinLit:phi0474.phi015.perseus-eng2",
+   "sourceSha256": "a2b8a85fea1e6bd3fc59d4820dbf8e5e2c2a4142223f9d23157378e0bb8b4f5f",
+   "sourceArchived": "https://libros.vitruvius-digital-library.org/corpus/fuentes/a2b8a85fea1e6bd3fc59d4820dbf8e5e2c2a4142223f9d23157378e0bb8b4f5f.xml",
+   "translators": [
+    "Charles Duke Yonge"
+   ],
+   "publicationYear": 1856,
+   "license": [
+    "https://creativecommons.org/licenses/by-sa/4.0/"
+   ],
+   "indexUrl": "https://libros.vitruvius-digital-library.org/corpus/indice/traducciones/cts-phi0474-phi015-en-d29fd2ae818523d0.json",
+   "indexSha256": "d29fd2ae818523d01b24292024724973aa1f367037e74ce96faee98d70deb69b"
+  },
+  {
+   "workId": "cts-phi0474-phi017",
+   "author": "Cicerón",
+   "title": "Pro L. Flacco",
+   "language": "en",
+   "filename": "cts-phi0474-phi017-en-f97cfccb8eb45631.json",
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0474-phi017-en-f97cfccb8eb45631.json",
+   "sha256": "f97cfccb8eb456314739ff52aedb50291883ef59fad71a2bbe66b0784191cdf2",
+   "passages": 143,
+   "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0474/phi017/phi0474.phi017.perseus-eng2.xml",
+   "sourceUrn": "urn:cts:latinLit:phi0474.phi017.perseus-eng2",
+   "sourceSha256": "e00c604eed4b6186901b2e928df865773888aecdff2928e21b6ebc2842a4fe82",
+   "sourceArchived": "https://libros.vitruvius-digital-library.org/corpus/fuentes/e00c604eed4b6186901b2e928df865773888aecdff2928e21b6ebc2842a4fe82.xml",
+   "translators": [
+    "Charles Duke Yonge"
+   ],
+   "publicationYear": 1856,
+   "license": [
+    "https://creativecommons.org/licenses/by-sa/4.0/"
+   ],
+   "indexUrl": "https://libros.vitruvius-digital-library.org/corpus/indice/traducciones/cts-phi0474-phi017-en-b216ac65204f162d.json",
+   "indexSha256": "b216ac65204f162dc7483d1a0faedf497b05e693e10e130a4f1dd9135132d7c4"
+  },
+  {
+   "workId": "cts-phi0474-phi018",
+   "author": "Cicerón",
+   "title": "Cum Populo Gratias Egit",
+   "language": "en",
+   "filename": "cts-phi0474-phi018-en-abbdd705ae3b37d0.json",
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0474-phi018-en-abbdd705ae3b37d0.json",
+   "sha256": "abbdd705ae3b37d0279a7cc404f5a4e3b520ed125a2be50796110ed6fac0e268",
+   "passages": 33,
+   "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0474/phi018/phi0474.phi018.perseus-eng2.xml",
+   "sourceUrn": "urn:cts:latinLit:phi0474.phi018.perseus-eng2",
+   "sourceSha256": "fcc3c252576572cf4846b76e65fcaf0b230a2583811fc121a2e51e604f15ba95",
+   "sourceArchived": "https://libros.vitruvius-digital-library.org/corpus/fuentes/fcc3c252576572cf4846b76e65fcaf0b230a2583811fc121a2e51e604f15ba95.xml",
+   "translators": [
+    "Charles Duke Yonge"
+   ],
+   "publicationYear": 1856,
+   "license": [
+    "https://creativecommons.org/licenses/by-sa/4.0/"
+   ],
+   "indexUrl": "https://libros.vitruvius-digital-library.org/corpus/indice/traducciones/cts-phi0474-phi018-en-8c9289e91b4185b1.json",
+   "indexSha256": "8c9289e91b4185b1f3b0bd81aca99f051971b757beb82f7ce098ad1ecb214f7d"
+  },
+  {
+   "workId": "cts-phi0474-phi019",
+   "author": "Cicerón",
+   "title": "Cum Senatui Gratias Egit",
+   "language": "en",
+   "filename": "cts-phi0474-phi019-en-aeb63357ba610acd.json",
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0474-phi019-en-aeb63357ba610acd.json",
+   "sha256": "aeb63357ba610acd7535ee073e5f97746be3561e5ef3f28c4eef47ca39db1d18",
+   "passages": 56,
+   "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0474/phi019/phi0474.phi019.perseus-eng2.xml",
+   "sourceUrn": "urn:cts:latinLit:phi0474.phi019.perseus-eng2",
+   "sourceSha256": "221b775c8dab6a24b5551764b4e4c07ed2bae4ffda67767d358515e902b8a4bc",
+   "sourceArchived": "https://libros.vitruvius-digital-library.org/corpus/fuentes/221b775c8dab6a24b5551764b4e4c07ed2bae4ffda67767d358515e902b8a4bc.xml",
+   "translators": [
+    "Charles Duke Yonge"
+   ],
+   "publicationYear": 1856,
+   "license": [
+    "https://creativecommons.org/licenses/by-sa/4.0/"
+   ],
+   "indexUrl": "https://libros.vitruvius-digital-library.org/corpus/indice/traducciones/cts-phi0474-phi019-en-84b345df0e2fa6a0.json",
+   "indexSha256": "84b345df0e2fa6a0ebd438dca45082618bebaaca891d43ab9e8f0ae95fc556dd"
   }
  ],
  "lastDeferred": [
