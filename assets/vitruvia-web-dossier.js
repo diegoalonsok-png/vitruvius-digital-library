@@ -31,7 +31,7 @@ function identity(query,rows){
  // Si la consulta ya fue identificada en Wikidata (ficha de persona), esa entidad manda sobre las coincidencias de texto.
  const ce=window.VitruviaCurrentEntity;
  if(ce&&[ce.query,ce.corrected,ce.label].some(x=>x&&normalized(x)===normalized(query)))
-  return{type:'wikipedia',title:ce.label,entityCanonical:ce.label,entityDescription:ce.description,preferredWiki:true,wikidataId:ce.qid,link:ce.wiki?'https://'+(ce.wikiLang||'es')+'.wikipedia.org/wiki/'+encodeURIComponent(ce.wiki.replace(/ /g,'_')):''};
+  return{type:'wikipedia',title:ce.label,entityCanonical:ce.label,entityDescription:ce.description,entityKind:ce.kind,preferredWiki:true,wikidataId:ce.qid,link:ce.wiki?'https://'+(ce.wikiLang||'es')+'.wikipedia.org/wiki/'+encodeURIComponent(ce.wiki.replace(/ /g,'_')):''};
  const plan=window.VitruviaSemanticQuery?.plan(query);
  const terms=(plan?.terms||normalized(query).split(' ')).filter(x=>x.length>2);
  const identities=rows.filter(r=>r.type==='wikipedia'&&r.link&&(
@@ -63,7 +63,7 @@ function topicType(query,rows){
    return{kind:'literary-work',name:personName,person};
   }
   // Classify a documented musical work before creator roles.
-  if(person.entityKind!=='person'&&person.entityKind!=='band'){
+  if(person.entityKind!=='person'&&person.entityKind!=='band'&&!/\b(?:singer|songwriter|cantante|cantautor|musician|musico|composer|compositor|band|banda)\b/.test(desc.split(/\b(?:by|de|par)\b/)[0])){
    if(/\b(album|album musical|studio album|live album|disco de|soundtrack album)\b/.test(desc))return{kind:'album-work',name:personName,person};
    if(/\b(song|single|cancion|chanson)\b/.test(desc))return{kind:'song-work',name:personName,person};
   }
