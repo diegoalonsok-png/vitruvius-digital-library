@@ -70,11 +70,11 @@ function colourEvidence(value){
  const text=fold(value);
  if(/\b(?:colorized|colorised|colourized|colourised|colorization|colourisation|coloreada|coloreado|colorizada|colorizado|colorisee|colorise|koloriert|hand colored|hand coloured|digitally colored|digitally coloured)\b/.test(text))return "colourized";
  if(/\b(?:black and white|black white|b w|monochrome|monochromatic|grayscale|greyscale|noir et blanc|blanco y negro|schwarz weiss|schwarzweiss|sepia)\b/.test(text))return "monochrome";
- if(/\b(?:color|colour|couleur|farben|farb) (?:photo|photograph|photography|portrait|slide|transparency|film|fotografia|retrato)\b|\b(?:photograph|photo|portrait|fotografia|retrato) (?:in color|in colour|en couleur|en color|a color)\b|\b(?:kodachrome|autochrome|agfacolor|ektachrome|color photography|colour photography|farbfotografie)\b/.test(text))return "documented-colour";
+ if(/\b(?:color|colour|couleur|farben|farb) (?:photos?|photographs?|photography|portraits?|slides?|transparenc(?:y|ies)|film|fotografias?|retratos?)\b|\b(?:photographs?|photos?|portraits?|fotografias?|retratos?) (?:in color|in colour|en couleur|en color|a color)\b|\b(?:kodachrome|autochrome|agfacolor|ektachrome|color photography|colour photography|farbfotografie)\b/.test(text))return "documented-colour";
  return "unknown";
 }
 function preferColour(items,topic){
- if(!topic.preferColour)return items;
+ if(!topic.preferColour||topic.intent==="artworks"||topic.intent==="books"||topic.architect)return items;
  // Keep images in their documentary groups: paintings, architecture and books
  // must not be demoted by a portrait's colour status.
  const groups=new Map();
@@ -294,8 +294,7 @@ function displayGroups(items,topic){
   const previews=window.VitruviaDiscovery?.previewImages(items,topic)||items.slice(0,5);
   // Keep the discovery engine's relevant preview groups, but admit confirmed
   // colour photos from those groups even when its older score favored archives.
-  const previewGroups=new Set(previews.map(i=>i.group));
-  const colour=topic.preferColour?items.filter(i=>i.colourEvidence==="documented-colour"&&previewGroups.has(i.group)):[];
+  const colour=topic.preferColour&&topic.intent!=="artworks"&&topic.intent!=="books"&&!topic.architect?items.filter(i=>i.colourEvidence==="documented-colour"&&["portrait","context","historic","live","article"].includes(i.group)):[];
   const selected=[...colour.slice(0,3),...previews].filter((i,n,a)=>a.findIndex(j=>j.page===i.page||j.preview===i.preview)===n);
   selected.slice(0,5).forEach(item=>displayItem(item,strip));
   quick.hidden=false;
@@ -661,7 +660,7 @@ async function searchImages(query){
  const role=fold(identity?.authorityDescription||identity?.description||"");
  topic.preferColour=!historicalSubject&&topic.kind==="person"&&modernPerson(identity)&&
   !/\b(?:black and white|blanco y negro|monochrome|noir et blanc|sepia)\b/.test(fold(q));
- if(topic.preferColour&&namedPerson){
+ if(topic.preferColour&&namedPerson&&topic.intent!=="artworks"&&topic.intent!=="books"){
   // One targeted query replaces a generic one instead of expanding the request budget.
   topic.queries=distinct([topic.queries[0],namedPerson+" color photograph",...topic.queries.slice(1)]).slice(0,5);
  }
