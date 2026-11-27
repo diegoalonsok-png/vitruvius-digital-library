@@ -67,13 +67,14 @@ const highlight=(target,text,needle)=>{
 function museumCaption(item){
  const p=item||{};
  const words=[p.group,p.kind,p.name,p.caption,p.alt,p.page].filter(Boolean).map(v=>{try{return decodeURIComponent(v)}catch{return v}}).join(' ').normalize('NFD').replace(/\p{M}/gu,'').toLowerCase().replace(/[_-]/g,' ');
- const object=p.recordKind==='museum-object'||!!p.objectTitle||/\b(sculptures?|esculturas?|statues?|statues?|estatuas?|busts?|bustos?|bustes?|reliefs?|relieves?|sarcophag\w*|sarcófag\w*|steles?|estelas?|stele|stela|statues?|statua|busto)\b/u.test(words)||['object','sculpture'].includes(p.group);
+ const object=p.recordKind==='museum-object'||!!p.objectTitle||/\b(sculptures?|esculturas?|statues?|statues?|estatuas?|busts?|bustos?|bustes?|reliefs?|relieves?|sarcophag\w*|sarcofag\w*|steles?|estelas?|stele|stela|statues?|statua|busto)\b/u.test(words)||['object','sculpture'].includes(p.group);
  if(!object)return '';
  const l=lang();
  const tr=(es,en,fr)=>l==='en'?en:l==='fr'?fr:es;
  const title=p.objectTitle||p.name||p.caption||tr('Pieza sin identificar','Unidentified object','Objet non identifié');
+ const titleLabel=p.objectTitle?tr('Pieza','Object','Objet'):tr('Identificación provisional','Provisional identification','Identification provisoire');
  const date=typeof p.discoveryDate==='string'&&p.discoveryDate.trim()&&typeof p.discoverySource==='string'&&/^https:\/\//.test(p.discoverySource)?p.discoveryDate.trim():tr('No documentada en la ficha consultada','Not documented in the consulted record','Non documentée dans la notice consultée');
- return [tr('Pieza','Object','Objet')+': '+title,
+ return [titleLabel+': '+title,
   p.museum?tr('Museo','Museum','Musée')+': '+p.museum:'',
   p.inventory?tr('Inventario','Inventory','Inventaire')+': '+p.inventory:'',
   p.creationDate?tr('Datación de la pieza','Object date','Datation de l’objet')+': '+p.creationDate:'',
