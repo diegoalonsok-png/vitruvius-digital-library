@@ -39,6 +39,25 @@ for(const e of registry){
  }else remoteDeclared.add(e.workId);
  const versions=indexed.get(e.workId)||[];versions.push(e);indexed.set(e.workId,versions);
 }
+// Explicit edition-to-index links; no text duplication and no OCR requirement.
+const editionIndexLinks={
+ "krohn-1912-pdf":{workId:"krohn-1912-indexed",language:"la",path:"data/critical-editions/krohn-1912-tei-loci.json"},
+ "vitruvio-v514-pdf":{workId:"vitruvius",edition:"recensio-es",language:"es",path:"data/structured/recensio-es.json"},
+ "vitruvio-v554-pdf":{workId:"vitruvius",edition:"recensio-fr",language:"fr",path:"data/structured/recensio-fr.json"},
+ "theory-v297-pdf":{workId:"vitruvius",edition:"theory-en",language:"en",path:"data/structured/theory-en.json"}
+};
+const resolvedEditionLinks=[];
+for(const [id,link] of Object.entries(editionIndexLinks)){
+ if(!canon.has(id))continue;
+ const matches=registry.filter(e=>Object.entries(link).every(([k,v])=>e[k]===v));
+ if(matches.length!==1||!existsSync(link.path)){
+  add("review","edition_index_link_unverified",id,"No se confirmó la fuente textual exacta");
+  continue;
+ }
+ if(!indexed.has(id))indexed.set(id,matches);
+ local.add(id);
+ resolvedEditionLinks.push({id,...link});
+}
 const missingOriginal=[],unindexed=[],greekTitleReview=[],editionTitleReview=[];
 for(const w of catalog){
  if(!w.title||!w.author)add("error","missing_author_or_title",w.id,"Sin título o autor");
@@ -200,7 +219,7 @@ const report={
  },
  scope:{
   r2Expansion:{manifestFile:expansionFile,indexFile:expansionIndexFile,editionIds:[...expansionIds].sort(),indexUrl:expansionIndex?.url||null},
-  greekTitleReview,missingOriginal,unindexed,r2Unlinked,duplicateR2Hashes:hashes,
+  greekTitleReview,missingOriginal,unindexed,r2Unlinked,duplicateR2Hashes:hashes,resolvedEditionLinks,
   catalogueVsEditionTitles:editionTitleReview
  },
  issues,
