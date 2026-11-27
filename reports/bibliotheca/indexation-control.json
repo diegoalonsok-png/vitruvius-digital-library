@@ -1,6 +1,6 @@
 {
   "schema": "vdl-bibliotheca-indexation-control-v1",
-  "generated": "2026-11-27T14:13:58.880Z",
+  "generated": "2026-11-27T14:15:34.960Z",
   "methodology": "Auditoría documental reproducible de GitHub. Los índices del catálogo y los registros remotos son declaraciones; no sustituyen GET/HEAD de R2, cotejo del interior del PDF ni recensio manuscrita. Una obra sin índice NO se marca indexada automáticamente.",
   "counts": {
     "catalogueWorks": 753,
@@ -26,7 +26,7 @@
     "unindexedWithDeclaredR2Facsimile": 34,
     "unindexedAncientWorks": 26,
     "unindexedEditorialManifestations": 0,
-    "worksMissingRegisteredOriginal": 3,
+    "worksMissingRegisteredOriginal": 0,
     "greekTitleNeedsIndividualReview": 455,
     "r2UnlinkedEditions": 0,
     "duplicateR2BinaryGroups": 2,
@@ -2455,11 +2455,7 @@
         "title": "Fragmenta · Fragmentos"
       }
     ],
-    "missingOriginal": [
-      "vitruvio-v514-pdf",
-      "vitruvio-v554-pdf",
-      "theory-v297-pdf"
-    ],
+    "missingOriginal": [],
     "unindexed": [
       {
         "id": "apollodorus-poliorcetics",
