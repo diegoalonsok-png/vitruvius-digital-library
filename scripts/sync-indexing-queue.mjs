@@ -46,6 +46,28 @@ for(const entry of manifest.index||[]){
     indexado. */
  for(const key of entry.gate||[])add(String(key).split("|")[0],entry);
 }
+/* R2 se cuenta únicamente si la última auditoría verificó los originales
+   y el registro coincide exactamente con el índice remoto (URL, SHA y loci).
+   No confundir esta prueba persistida con una comprobación HTTP actual. */
+const r2Status=existsSync("data/r2/classics-sync-status.json")?read("data/r2/classics-sync-status.json"):null;
+const r2Manifest=existsSync("data/index/classics-r2/manifest.json")?read("data/index/classics-r2/manifest.json"):{index:[]};
+const verifiedR2=new Map();
+if(r2Status?.status==="all-registered-r2-originals-verified-and-lexically-indexed"
+   &&r2Status.verifiedOriginals===r2Manifest.index?.length){
+ for(const edition of r2Manifest.index){
+  if(edition.id&&edition.lang&&edition.file&&edition.sha256&&Number(edition.passages)>0)
+   verifiedR2.set(edition.id+"|"+edition.lang,edition);
+ }
+}
+const remoteByWork=new Map();
+for(const entry of registry.entries||[]){
+ if(!/^https:\/\//i.test(entry.path||""))continue;
+ const indexedR2=verifiedR2.get(entry.workId+"|"+entry.language);
+ if(!indexedR2||entry.path!==indexedR2.file||entry.sha256!==indexedR2.sha256
+   ||Number(entry.passages)!==Number(indexedR2.passages))continue;
+ if(!remoteByWork.has(entry.workId))remoteByWork.set(entry.workId,[]);
+ remoteByWork.get(entry.workId).push(indexedR2);
+}
 const registered=new Set((registry.entries||[]).map(entry=>entry.workId));
 
 /* El índice semántico cubre sólo los términos del Conceptus: su ausencia no
@@ -64,7 +86,9 @@ const declared=new Map();
 for(const item of previous.pending||[])if(item&&item.id)declared.set(item.id,item);
 
 const rows=works.map(work=>{
- const lex=lexical.get(work.id)||[];
+ const localLex=lexical.get(work.id)||[];
+ const r2Lex=remoteByWork.get(work.id)||[];
+ const lex=[...localLex,...r2Lex];
  const item=declared.get(work.id)||{};
  return {
   id:work.id,
@@ -72,10 +96,11 @@ const rows=works.map(work=>{
   title:work.title,
   language:work.language||"",
   lexical:lex.length?lex:null,
+  lexicalSource:localLex.length?"local":r2Lex.length?"r2-last-verified":null,
   passages:lex.reduce((sum,entry)=>sum+(entry.passages||0),0),
   registered:registered.has(work.id),
   semantic:semantic.has(work.id),
-  sourceUrl:item.sourceUrl||work.links&&work.links.source||null,
+  sourceUrl:item.sourceUrl||(work.links&&work.links.source)||null,
   sourceType:item.sourceType||null
  };
 });
@@ -91,7 +116,7 @@ const snapshot={
  schema:"vitruvia-indexing-queue-v2",
  generated:new Date().toISOString().slice(0,10),
  supersedes:QUEUE,
- method:"Recalculado por scripts/sync-indexing-queue.mjs a partir de data/index/classics/manifest.json, search-registry.json y semantic-conceptus-postings.json. Una URL o una referencia a un PDF no es prueba de indexacion: una obra con fuente declarada y sin texto indexado sigue pendiente.",
+ method:"Recalculado con el índice local, search-registry, manifest R2 y última verificación persistida de R2, además de Conceptus. Solo se considera R2 indexado si coincide obra, idioma, URL, SHA y número de pasajes. Esto NO es una comprobación remota en vivo. Una URL o PDF sin dicha evidencia no demuestra indexación.",
  counts:{
   catalogue:works.length,
   lexicallyIndexed:indexed.length,
@@ -100,6 +125,7 @@ const snapshot={
   pendingWithoutIdentifiedSource:pendingNoSource.length,
   registeredForSearch:rows.filter(row=>row.registered).length,
   semanticallyIndexed:rows.filter(row=>row.semantic).length,
+  indexedFromR2LastVerification:rows.filter(row=>row.lexicalSource==="r2-last-verified").length,
   indexedButNotRegistered:indexedNotRegistered.length,
   registeredButNotIndexed:registeredNotIndexed.length
  },
@@ -112,12 +138,13 @@ const lines=["# Cola de indexación","",
  "Generado por `scripts/sync-indexing-queue.mjs` el "+snapshot.generated+".","",
  "## Estado","","| | |","| --- | --- |",
  "| Obras del catálogo | "+works.length+" |",
- "| Con texto indexado léxicamente | **"+indexed.length+"** |",
+ "| Con texto indexado léxicamente (local o R2 previamente verificado) | **"+indexed.length+"** |",
  "| Pendientes | "+pending.length+" |",
  "| · con fuente declarada | "+pendingWithSource.length+" |",
  "| · **sin fuente identificada** | "+pendingNoSource.length+" |",
- "| Registradas para la búsqueda | "+snapshot.counts.registeredForSearch+" |",
+ "| Registradas para la búsqueda | "+snapshot.counts.registeredForSearch+" |",\n "| De ellas, indexadas mediante R2 según última verificación | "+snapshot.counts.indexedFromR2LastVerification+" |",
  "| Con alguna entrada en el índice semántico del *Conceptus* | "+snapshot.counts.semanticallyIndexed+" |","",
+ "Los índices de R2 se contabilizan únicamente a partir de la última auditoría persistida, no de una nueva comprobación remota.","",
  "El índice semántico cubre sólo los 74 términos del *Conceptus*: que una obra no",
  "aparezca en él no significa que falte su texto, sino que no tiene ocurrencias",
  "indexadas de esos términos. La búsqueda por palabra de cualquier otro término va",
