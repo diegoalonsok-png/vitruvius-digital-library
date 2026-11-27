@@ -9,8 +9,10 @@ Promise.all([
  get("data/r2/bibliotheca-panel-sync.json"),
  get("data/r2/r2-object-status.json").catch(()=>null),
  get("data/r2/bibliotheca-ocr-coverage.json").catch(()=>null),
- get("data/r2/bibliotheca-lexical-live-audit.json").catch(()=>null)
-]).then(([data,live,ocr,lexical])=>{
+ get("data/r2/bibliotheca-lexical-live-audit.json").catch(()=>null),
+ get("data/r2/bibliotheca-inventario-unificado.json").catch(()=>null),
+ get("data/r2/classics-expansion-index.json").catch(()=>null)
+]).then(([data,live,ocr,lexical,inventory,expansion])=>{
 if(data.schema!=="vdl-bibliotheca-federated-status-v1"||!data.summary)throw Error("Inventario incompatible");
 const s=data.summary;mount.replaceChildren();
 const ageHours=date=>{
@@ -36,7 +38,9 @@ if(pendingIssues.length){
  for(const issue of pendingIssues){const item=el("li",issue);list.append(item)}
  warning.append(heading,list);mount.append(warning);
 }
-const metrics=[["Total de obras declaradas",s.totalWorksDeclared],["Obras del repertorio",s.masterWorks],["Adiciones declaradas",s.additionalWorks],["Versiones textuales",s.textVersions],["Obras con texto",s.indexedWorks],["Obras sin texto",s.worksWithoutAnyText],["PDF R2 catalogados",s.r2PdfEditions],["Textos remotos declarados",s.remoteTextFilesDeclared],["Entradas del índice R2",s.r2IndexWorksDeclared]];
+const inv=inventory?.counts||{},oc=ocr?.counts||{};
+const metrics=[["Fichas declaradas",inv.totalDeclaredWorks??s.totalWorksDeclared],["Catálogo principal",inv.cataloguedWorks??s.masterWorks],["Suplementarias",inv.supplementaryWorks],["Adicionales R2",inv.additionalWorks??s.additionalWorks],["Fichas con texto registrado",oc.withRegisteredText??s.indexedWorks],["Ediciones PDF R2",inv.r2EditionRecords??s.r2PdfEditions]];
+if(expansion?.schema==="vdl-classics-expansion-index-v1"){metrics.push(["Ediciones del índice TEI ampliado",expansion.works],["Pasajes del índice TEI ampliado",expansion.passages]);}
 if(ocr?.schema==="vdl-bibliotheca-ocr-coverage-v1"){
  metrics.push(["Sin transcripción, pero con búsqueda OCR R2",ocr.counts.withoutTextButWithR2OcrIndex]);
  metrics.push(["Ediciones ya indexadas bajo Vitruvio",ocr.counts.withoutOwnRegistryButWithLinkedStructuredEdition]);
@@ -46,7 +50,9 @@ const dl=el("dl",undefined,"bfs-grid");
 for(const [label,n] of metrics){const cell=el("div");cell.append(el("dt",label),el("dd",fmt(n)));dl.append(cell)}mount.append(dl);
 const details=el("details");details.append(el("summary","Controles documentales y discrepancias"));
 details.append(el("p","El índice utiliza raíces y Conceptus: es un índice léxico/conceptual, no una edición filológica revisada ni una representación semántica integral del corpus.","bfs-note"));
-details.append(el("p","Pendientes: "+fmt(s.worksWithoutAnyText)+" obras sin texto registrado, "+fmt(s.candidateEditionsNotInR2)+" candidatos PDF no incorporados y "+fmt(s.externalMetadataPending)+" fichas con datos externos por confirmar.","bfs-note"));
+details.append(el("p","Cobertura textual: "+fmt(oc.withRegisteredText)+" fichas con texto registrado; "+fmt(oc.withoutTextButWithR2OcrIndex)+" con índice OCR declarado; "+fmt(oc.withoutOwnRegistryButWithLinkedStructuredEdition)+" ediciones vinculadas; "+fmt(oc.withoutTextOrLinkedR2OcrIndex)+" sin fuente indexable asociada. Los índices pueden superponerse; no sumar sus cifras como obras distintas.","bfs-note"));
+if(ocr?.generated)details.append(el("p","Fecha del cruce de cobertura: "+ocr.generated+" · evidencia R2: "+(ocr.r2IndexAuditTimestamp||"sin fecha"),"bfs-note"));
+if(ocr?.needsTextOrVerifiableFacsimile?.length){const ul=el("ul");for(const row of ocr.needsTextOrVerifiableFacsimile){const li=el("li"),link=el("a",row.author+" · "+row.title);link.href="classics-work-record.html?work="+encodeURIComponent(row.id);li.append(link);ul.append(li)}details.append(ul)}
 const verified=r2Current;
 details.append(el("p",verified?"Objetos R2 comprobados con HEAD: "+live.status+" · "+live.generated+". El control de identidad textual es independiente.":"Disponibilidad de los objetos R2 no certificada en esta instantánea; las URL del inventario no son una prueba física.","bfs-note"));
 if(ocr?.schema==="vdl-bibliotheca-ocr-coverage-v1"){
@@ -63,7 +69,7 @@ if(ocr?.schema==="vdl-bibliotheca-ocr-coverage-v1"){
  section.append(ul);details.append(section);
 }
 if(ocr?.alreadyIndexedAsStructuredEdition?.length){
- const section=el("details");section.append(el("summary","Ediciones V514, V554 y V297 ya indexadas"));
+ const section=el("details");section.append(el("summary","Ediciones vinculadas a índices existentes"));
  const ul=el("ul");
  for(const edition of ocr.alreadyIndexedAsStructuredEdition){
   const li=el("li"),a=el("a",edition.title);a.href=edition.reader;li.append(a);ul.append(li);
@@ -78,7 +84,7 @@ if(lexical?.schema==="vdl-bibliotheca-lexical-live-v1"){
  details.append(el("p","Prueba léxica real: "+fmt(n.testedEditions)+" ediciones · "+fmt(n.testedWords)+" palabras cotejadas contra páginas OCR y fragmentos R2 · "+fmt(n.errors)+" errores; "+
   (lexical.generated||"fecha no declarada")+". La muestra no certifica el corpus completo.","bfs-note"));
 }
-const links=el("p",undefined,"bfs-note");for(const [href,label] of [["data/r2/bibliotheca-panel-sync.json","Inventario por obra"],["data/r2/bibliotheca-indexation-status.json","Auditoría de indexación"],["data/r2/indice-semantico-manifest.json","Manifiesto R2"],["data/r2/bibliotheca-lexical-live-audit.json","Cotejo léxico en vivo"],["data/r2/bibliotheca-ocr-coverage.json","Cobertura OCR por obra"]]){const a=el("a",label);a.href=href;links.append(a,document.createTextNode(" · "))}details.append(links);
+const links=el("p",undefined,"bfs-note");for(const [href,label] of [["data/r2/bibliotheca-inventario-unificado.json","Inventario por obra"],["data/r2/bibliotheca-indexation-status.json","Auditoría de indexación"],["data/r2/indice-semantico-manifest.json","Manifiesto R2"],["data/r2/bibliotheca-lexical-live-audit.json","Cotejo léxico en vivo"],["data/r2/bibliotheca-ocr-coverage.json","Cobertura OCR por obra"]]){const a=el("a",label);a.href=href;links.append(a,document.createTextNode(" · "))}details.append(links);
 if(data.issues?.length)details.append(el("p",data.issues.length+" discrepancia(s) de inventario, sin borrar ni fusionar registros automáticamente.","bfs-note"));
 mount.append(details);
 }).catch(()=>mount.replaceChildren(el("p","No se pudo consultar el estado unificado; utilizar las fichas y el inventario para verificar cada edición.","bfs-note")));

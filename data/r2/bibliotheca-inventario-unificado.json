@@ -1,12 +1,12 @@
 {
   "schema": "vdl-federated-bibliotheca-inventory-v1",
-  "generated": "2026-11-27T04:36:21.721816+00:00",
+  "generated": "2026-11-27T12:27:42.460920+00:00",
   "method": "Master works and additional R2 works counted separately; edition relations can be many-to-many. Remote text URLs are declared, not live-verified. Unresolved editions are never merged automatically.",
   "counts": {
-    "cataloguedWorks": 706,
+    "cataloguedWorks": 730,
     "supplementaryWorks": 127,
     "additionalWorks": 10,
-    "totalDeclaredWorks": 843,
+    "totalDeclaredWorks": 867,
     "r2EditionRecords": 117,
     "r2LinkedEditionRecords": 107,
     "r2WorkEditionRelations": 115,
@@ -14,7 +14,7 @@
     "r2UnlinkedEditionRecords": 0,
     "worksWithR2Edition": 114,
     "worksWithLocalIndexedText": 325,
-    "worksWithDeclaredRemoteIndex": 569
+    "worksWithDeclaredRemoteIndex": 593
   },
   "unlinkedR2EditionIds": [],
   "additionalWorks": [
@@ -14175,6 +14175,342 @@
         {
           "language": "grc",
           "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0018-tlg004-grc-0c46060cc7075ac4.json"
+        }
+      ],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "cts-phi0474-phi026",
+      "author": "Cicerón",
+      "title": "Pro L. Cornelio Balbo",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "la",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0474-phi026-la-ac68ad10e9001ab8.json"
+        }
+      ],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "cts-phi0474-phi025",
+      "author": "Cicerón",
+      "title": "De Provinciis Consularibus",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "la",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0474-phi025-la-3d0db041ae618521.json"
+        }
+      ],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "cts-phi0474-phi023",
+      "author": "Cicerón",
+      "title": "Against Vatinius",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "la",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0474-phi023-la-57f7dae4dc36d41d.json"
+        }
+      ],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "cts-phi0474-phi024",
+      "author": "Cicerón",
+      "title": "Pro M. Caelio",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "la",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0474-phi024-la-2d5224c4e159b91a.json"
+        }
+      ],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "cts-phi0474-phi027",
+      "author": "Cicerón",
+      "title": "In L. Calpurnium Pisonem",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "la",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0474-phi027-la-21abdffa0e75c44c.json"
+        }
+      ],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "cts-phi0474-phi030",
+      "author": "Cicerón",
+      "title": "Pro C. Rabirio Postumo",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "la",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0474-phi030-la-043fd5c853b0a535.json"
+        }
+      ],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "cts-phi0474-phi028",
+      "author": "Cicerón",
+      "title": "Pro Cn. Plancio",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "la",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0474-phi028-la-f26a527c93edd0dd.json"
+        }
+      ],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "cts-phi0474-phi029",
+      "author": "Cicerón",
+      "title": "Pro M. Scauro",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "la",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0474-phi029-la-6cf3385d8a19b585.json"
+        }
+      ],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "cts-tlg1749-tlg001",
+      "author": "Vitae Hesiodi Particula",
+      "title": "Vitae Hesiodi Particula",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg1749-tlg001-grc-55365dc717b0dd1b.json"
+        }
+      ],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "cts-tlg1805-tlg001",
+      "author": "Vidas de Homero",
+      "title": "Vitae Herodotea",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg1805-tlg001-grc-49ac3e19559942f0.json"
+        }
+      ],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "cts-tlg0530-tlg005",
+      "author": "Pseudo-Galeno",
+      "title": "De fasciis",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0530-tlg005-grc-9ad3d26a211d0cd4.json"
+        }
+      ],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "cts-tlg0530-tlg006",
+      "author": "Pseudo-Galeno",
+      "title": "Ad Gaurum quomodo animetur fetus",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0530-tlg006-grc-e7da16d90bd9d205.json"
+        }
+      ],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "cts-tlg0530-tlg012",
+      "author": "Pseudo-Galeno",
+      "title": "Introductio seu medicus",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0530-tlg012-grc-195d0d0a0559b949.json"
+        }
+      ],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "cts-tlg0533-tlg018",
+      "author": "Calímaco",
+      "title": "Hymn to Delos",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0533-tlg018-grc-4bc5bb7b247d250b.json"
+        }
+      ],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "cts-tlg0533-tlg019",
+      "author": "Calímaco",
+      "title": "Hymn to Athena",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0533-tlg019-grc-8d83d4cb5cc5e8da.json"
+        }
+      ],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "cts-tlg0530-tlg029",
+      "author": "Pseudo-Galeno",
+      "title": "De remediis parabilibus",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0530-tlg029-grc-be404e6002d0abf6.json"
+        }
+      ],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "cts-tlg0533-tlg020",
+      "author": "Calímaco",
+      "title": "Hymn to Demeter",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0533-tlg020-grc-cbfd1f998085db70.json"
+        }
+      ],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "cts-tlg0552-tlg001",
+      "author": "Arquímedes",
+      "title": "De sphaera et cylindro",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0552-tlg001-grc-ba42f4de22552a03.json"
+        }
+      ],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "cts-tlg0552-tlg002",
+      "author": "Arquímedes",
+      "title": "Dimensio circuli",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0552-tlg002-grc-e070680240cab189.json"
+        }
+      ],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "cts-tlg0552-tlg003",
+      "author": "Arquímedes",
+      "title": "De conoidibus et sphaeroidibus",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0552-tlg003-grc-01f4a85176fcdb3b.json"
+        }
+      ],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "cts-tlg0018-tlg008",
+      "author": "Filón de Alejandría",
+      "title": "Quod Deus Sit Immutabilis",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0018-tlg008-grc-a7df529b52a3196e.json"
+        }
+      ],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "cts-tlg0018-tlg009",
+      "author": "Filón de Alejandría",
+      "title": "De Agricultura",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0018-tlg009-grc-b36cf5ed7804e715.json"
+        }
+      ],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "cts-tlg0018-tlg010",
+      "author": "Filón de Alejandría",
+      "title": "De Plantatione",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0018-tlg010-grc-bd09eb7cff5170e8.json"
+        }
+      ],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "cts-tlg1805-tlg002",
+      "author": "Vidas de Homero",
+      "title": "Plutarchi vita",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg1805-tlg002-grc-3498f8d42a67d09b.json"
         }
       ],
       "r2FacsimileEditions": []

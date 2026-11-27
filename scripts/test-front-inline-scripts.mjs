@@ -104,7 +104,9 @@ const perseusPage=readFileSync("perseus-procedencia-textual.html","utf8");
 const siteMap=readFileSync("sitemap.xml","utf8");
 assert.equal(perseusAudit.records.length,perseusAudit.counts.works,"La cobertura de procedencia debe coincidir con el número declarado de obras");
 assert(perseusAudit.records.length>=222,"La procedencia no debe perder las obras del inventario original");
-assert.equal(perseusAudit.counts.versions,246,"El inventario debe conservar 246 versiones");
+assert(perseusAudit.counts.versions>=246,"El inventario no debe perder las 246 versiones de referencia");
+assert.equal(perseusAudit.counts.versions,perseusAudit.records.reduce((n,row)=>n+(row.versions||[]).length,0),"El recuento de versiones debe coincidir con las versiones documentadas");
+assert.equal(new Set(perseusAudit.records.map(row=>row.workId)).size,perseusAudit.records.length,"La procedencia no debe duplicar identificadores de obra");
 /* A verified TEI-header edition URN is not the same as a candidate work code.
    This asserts source evidence, not that a public CTS resolver was tested. */
 const declaredCts=perseusAudit.records.filter(x=>typeof x.ctsEditionUrn==="string"&&x.ctsEditionUrn.trim());

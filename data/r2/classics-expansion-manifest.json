@@ -1,10 +1,10 @@
 {
  "schema": "vdl-classics-expansion-manifest-v1",
- "generated": "2026-11-27T01:46:17.458274+00:00",
+ "generated": "2026-11-27T11:50:50.048604+00:00",
  "discovery": {
-  "sourceRecords": 1462,
-  "alreadyIndexedCatalogueWorks": 598,
-  "pendingGroups": 1404,
+  "sourceRecords": 1436,
+  "alreadyIndexedCatalogueWorks": 623,
+  "pendingGroups": 1378,
   "policy": "Una obra bibliográfica, múltiples ediciones identificadas por URN y hash; sin sustituir ni duplicar archivos",
   "githubTextFiles": 450,
   "githubUnregisteredFiles": 14,
@@ -27194,6 +27194,1013 @@
    "characters": 62806,
    "bytes": 146772,
    "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0018-tlg004-grc-0c46060cc7075ac4.json"
+  },
+  {
+   "workId": "cts-phi0474-phi026",
+   "author": "Cicerón",
+   "title": "Pro L. Cornelio Balbo",
+   "language": "la",
+   "dating": "106–43 a. C.",
+   "sources": [
+    {
+     "title": "Pro L. Cornelio Balbo",
+     "titleLanguage": "lat",
+     "author": "M. Tullius Cicero",
+     "editors": [
+      "William Peterson"
+     ],
+     "bibliography": "M. Tullius Cicero Orationes William Peterson Oxford Clarendon Press 1909 5 Cum Senatui Gratias Egit; Cum Populo Gratias Egit; De Domo Sua; De Haruspicum Responso; Pro Sestio; In Vatinium; De Provinciis Consularibus; Pro Balbo Scriptorum Classicorum Bibliotheca Oxoniensis Oxford Classical Texts Internet Archive",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+      }
+     ],
+     "editionUrn": "urn:cts:latinLit:phi0474.phi026.perseus-lat2",
+     "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0474/phi026/phi0474.phi026.perseus-lat2.xml",
+     "sourceSha256": "089e5c44d159fd51cd712625a3425221cc8f91f196f9559edcdbe9e5aa06aba4",
+     "sourceReferences": [
+      "https://archive.org/details/orationesrecogno05ciceuoft/page/235/mode/2up"
+     ],
+     "publicationYear": "1909",
+     "publisher": "Clarendon Press",
+     "publicationPlace": "Oxford",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/089e5c44d159fd51cd712625a3425221cc8f91f196f9559edcdbe9e5aa06aba4.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-phi0474-phi026-la-ac68ad10e9001ab8.json",
+   "sha256": "ac68ad10e9001ab8a0d6ce039ae49840805c0d61ef5d09bc7bbb401b01074a85",
+   "passages": 73,
+   "characters": 46768,
+   "bytes": 60389,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0474-phi026-la-ac68ad10e9001ab8.json"
+  },
+  {
+   "workId": "cts-phi0474-phi025",
+   "author": "Cicerón",
+   "title": "De Provinciis Consularibus",
+   "language": "la",
+   "dating": "106–43 a. C.",
+   "sources": [
+    {
+     "title": "De Provinciis Consularibus In Senatu",
+     "titleLanguage": "lat",
+     "author": "M. Tullius Cicero",
+     "editors": [
+      "William Peterson"
+     ],
+     "bibliography": "M. Tullius Cicero Orationes William Peterson Oxford Clarendon Press 1909 5 Cum Senatui Gratias Egit; Cum Populo Gratias Egit; De Domo Sua; De Haruspicum Responso; Pro Sestio; In Vatinium; De Provinciis Consularibus; Pro Balbo Scriptorum Classicorum Bibliotheca Oxoniensis Oxford Classical Texts Internet Archive",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+      }
+     ],
+     "editionUrn": "urn:cts:latinLit:phi0474.phi025.perseus-lat2",
+     "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0474/phi025/phi0474.phi025.perseus-lat2.xml",
+     "sourceSha256": "73e79aacdc0e5c1907f7ab8b08a55c8a8ea52fd37737717cb6e03ef718dbc23c",
+     "sourceReferences": [
+      "https://archive.org/details/orationesrecogno05ciceuoft/page/215/mode/2up"
+     ],
+     "publicationYear": "1909",
+     "publisher": "Clarendon Press",
+     "publicationPlace": "Oxford",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/73e79aacdc0e5c1907f7ab8b08a55c8a8ea52fd37737717cb6e03ef718dbc23c.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-phi0474-phi025-la-3d0db041ae618521.json",
+   "sha256": "3d0db041ae6185210e3818f9af947e3c8ded0c4c165b4ef924ca5448e5e62315",
+   "passages": 51,
+   "characters": 35103,
+   "bytes": 45284,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0474-phi025-la-3d0db041ae618521.json"
+  },
+  {
+   "workId": "cts-phi0474-phi023",
+   "author": "Cicerón",
+   "title": "Against Vatinius",
+   "language": "la",
+   "dating": "106–43 a. C.",
+   "sources": [
+    {
+     "title": "In P. Vatinium Testem Interrogatio",
+     "titleLanguage": "lat",
+     "author": "M. Tullius Cicero",
+     "editors": [
+      "William Peterson"
+     ],
+     "bibliography": "M. Tullius Cicero Orationes William Peterson Oxford Clarendon Press 1909 5 Cum Senatui Gratias Egit; Cum Populo Gratias Egit; De Domo Sua; De Haruspicum Responso; Pro Sestio; In Vatinium; De Provinciis Consularibus; Pro Balbo Scriptorum Classicorum Bibliotheca Oxoniensis Oxford Classical Texts Internet Archive",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+      }
+     ],
+     "editionUrn": "urn:cts:latinLit:phi0474.phi023.perseus-lat2",
+     "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0474/phi023/phi0474.phi023.perseus-lat2.xml",
+     "sourceSha256": "dd199ef8763393ca86e9d1924edf18fcfcecd6fc690bce4d6558580717ef3775",
+     "sourceReferences": [
+      "https://archive.org/details/orationesrecogno05ciceuoft/page/193/mode/2up"
+     ],
+     "publicationYear": "1909",
+     "publisher": "Clarendon Press",
+     "publicationPlace": "Oxford",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/dd199ef8763393ca86e9d1924edf18fcfcecd6fc690bce4d6558580717ef3775.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-phi0474-phi023-la-57f7dae4dc36d41d.json",
+   "sha256": "57f7dae4dc36d41d9c6bb696e26c977e80b64d3b4d2092c9062a00f576563bf4",
+   "passages": 45,
+   "characters": 30413,
+   "bytes": 39668,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0474-phi023-la-57f7dae4dc36d41d.json"
+  },
+  {
+   "workId": "cts-phi0474-phi024",
+   "author": "Cicerón",
+   "title": "Pro M. Caelio",
+   "language": "la",
+   "dating": "106–43 a. C.",
+   "sources": [
+    {
+     "title": "Pro M. Caelio",
+     "titleLanguage": "lat",
+     "author": "M. Tullius Cicero",
+     "editors": [
+      "Albert Curtis Clark"
+     ],
+     "bibliography": "M. Tullius Cicero Orationes Albert Curtis Clark Oxford Clarendon 1908 1 Pro Sex. Roscio; De imperio Cn. Pompei; Pro Cluentio; In Catilinam; Pro Murena; Pro Caelio Scriptorum Classicorum Bibliotheca Oxoniensis Oxford Classical Texts Internet Archive",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+      }
+     ],
+     "editionUrn": "urn:cts:latinLit:phi0474.phi024.perseus-lat2",
+     "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0474/phi024/phi0474.phi024.perseus-lat2.xml",
+     "sourceSha256": "fd51a08d79332e9946ea1abe19a39cfd481786122fe01ece5739c0260cfca243",
+     "sourceReferences": [
+      "https://archive.org/details/orationesrecogno01ciceuoft/page/n317/mode/2up"
+     ],
+     "publicationYear": "1908",
+     "publisher": "Clarendon",
+     "publicationPlace": "Oxford",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/fd51a08d79332e9946ea1abe19a39cfd481786122fe01ece5739c0260cfca243.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-phi0474-phi024-la-2d5224c4e159b91a.json",
+   "sha256": "2d5224c4e159b91aa45e64604363495dc0527d7dfb355db45787d5cad5691ab0",
+   "passages": 90,
+   "characters": 58225,
+   "bytes": 74447,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0474-phi024-la-2d5224c4e159b91a.json"
+  },
+  {
+   "workId": "cts-phi0474-phi027",
+   "author": "Cicerón",
+   "title": "In L. Calpurnium Pisonem",
+   "language": "la",
+   "dating": "106–43 a. C.",
+   "sources": [
+    {
+     "title": "In L. Calpurnium Pisonem",
+     "titleLanguage": "lat",
+     "author": "M. Tullius Cicero",
+     "editors": [
+      "Albert Curtis Clark"
+     ],
+     "bibliography": "M. Tullius Cicero Orationes Albert Curtis Clark Oxford Clarendon Press 1909 4 Pro P. Quinctio; Pro Q. Roscio comoedo; Pro A. Caecina; De lege agraria contra Rullum; Pro C. Rabirio perduellionis reo; Pro L. Flacco; In L. Pisonem; Pro C. Rabirio Postumo Scriptorum Classicorum Bibliotheca Oxoniensis Oxford Classical Texts The Internet Archive",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+      }
+     ],
+     "editionUrn": "urn:cts:latinLit:phi0474.phi027.perseus-lat2",
+     "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0474/phi027/phi0474.phi027.perseus-lat2.xml",
+     "sourceSha256": "e88851228b089acfc227cb0376f9ba06bd6a7972b14a747183f89e6a1b1649ec",
+     "sourceReferences": [
+      "https://archive.org/details/orationesrecogno04ciceuoft/page/252/mode/2up"
+     ],
+     "publicationYear": "1909",
+     "publisher": "Clarendon Press",
+     "publicationPlace": "Oxford",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/e88851228b089acfc227cb0376f9ba06bd6a7972b14a747183f89e6a1b1649ec.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-phi0474-phi027-la-21abdffa0e75c44c.json",
+   "sha256": "21abdffa0e75c44c7cef09c585da83fd4025803f642b1896948fc1d6eef32227",
+   "passages": 123,
+   "characters": 75125,
+   "bytes": 96701,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0474-phi027-la-21abdffa0e75c44c.json"
+  },
+  {
+   "workId": "cts-phi0474-phi030",
+   "author": "Cicerón",
+   "title": "Pro C. Rabirio Postumo",
+   "language": "la",
+   "dating": "106–43 a. C.",
+   "sources": [
+    {
+     "title": "Pro C. Rabirio Postumo",
+     "titleLanguage": "lat",
+     "author": "M. Tullius Cicero",
+     "editors": [
+      "Albert Curtis Clark"
+     ],
+     "bibliography": "M. Tullius Cicero Orationes Albert Curtis Clark Oxford Clarendon Press 1909 4 Pro P. Quinctio; Pro Q. Roscio comoedo; Pro A. Caecina; De lege agraria contra Rullum; Pro C. Rabirio perduellionis reo; Pro L. Flacco; In L. Pisonem; Pro C. Rabirio Postumo Scriptorum Classicorum Bibliotheca Oxoniensis Oxford Classical Texts The Internet Archive",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+      }
+     ],
+     "editionUrn": "urn:cts:latinLit:phi0474.phi030.perseus-lat2",
+     "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0474/phi030/phi0474.phi030.perseus-lat2.xml",
+     "sourceSha256": "015a962e2789bc7dc81b8a345dbc9e88044b9d0dce110c5fdce7a51161afa46a",
+     "sourceReferences": [
+      "https://archive.org/details/orationesrecogno04ciceuoft/page/306/mode/2up"
+     ],
+     "publicationYear": "1909",
+     "publisher": "Clarendon Press",
+     "publicationPlace": "Oxford",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/015a962e2789bc7dc81b8a345dbc9e88044b9d0dce110c5fdce7a51161afa46a.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-phi0474-phi030-la-043fd5c853b0a535.json",
+   "sha256": "043fd5c853b0a5359fa526348b9b505a3004555d9d218cc165c61e825c189d3d",
+   "passages": 52,
+   "characters": 27313,
+   "bytes": 37646,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0474-phi030-la-043fd5c853b0a535.json"
+  },
+  {
+   "workId": "cts-phi0474-phi028",
+   "author": "Cicerón",
+   "title": "Pro Cn. Plancio",
+   "language": "la",
+   "dating": "106–43 a. C.",
+   "sources": [
+    {
+     "title": "Pro Cn. Plancio",
+     "titleLanguage": "lat",
+     "author": "M. Tullius Cicero",
+     "editors": [
+      "Albert Curtis Clark"
+     ],
+     "bibliography": "M. Tullius Cicero Orationes Albert Curtis Clark Oxford Clarendon Press 1911 6 Pro Tullio; Pro Fonteio; Pro Sulla; Pro Archia; Pro Plancio; Pro Scauro Scriptorum Classicorum Bibliotheca Oxoniensis Oxford Classical Texts Hathi Trust Internet Archive",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+      }
+     ],
+     "editionUrn": "urn:cts:latinLit:phi0474.phi028.perseus-lat2",
+     "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0474/phi028/phi0474.phi028.perseus-lat2.xml",
+     "sourceSha256": "78717a8616681deabcd0ff5a47865534ff12c7bc4dcd59bfb8a7ea7eb3b9c9d2",
+     "sourceReferences": [
+      "https://hdl.handle.net/2027/njp.32101073249417?urlappend=%3Bseq=125%3Bownerid=13510798896722459-137",
+      "https://archive.org/details/orationes0006cice/page/n123/mode/2up"
+     ],
+     "publicationYear": "1911",
+     "publisher": "Clarendon Press",
+     "publicationPlace": "Oxford",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/78717a8616681deabcd0ff5a47865534ff12c7bc4dcd59bfb8a7ea7eb3b9c9d2.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-phi0474-phi028-la-f26a527c93edd0dd.json",
+   "sha256": "f26a527c93edd0dde740e0c5c79c6ca778ca2e6534847eab5a97d23f1f5d3c50",
+   "passages": 118,
+   "characters": 76511,
+   "bytes": 97280,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0474-phi028-la-f26a527c93edd0dd.json"
+  },
+  {
+   "workId": "cts-phi0474-phi029",
+   "author": "Cicerón",
+   "title": "Pro M. Scauro",
+   "language": "la",
+   "dating": "106–43 a. C.",
+   "sources": [
+    {
+     "title": "Pro M. Scauro",
+     "titleLanguage": "lat",
+     "author": "M. Tullius Cicero",
+     "editors": [
+      "Albert Curtis Clark"
+     ],
+     "bibliography": "M. Tullius Cicero Orationes Albert Curtis Clark Oxford Clarendon Press 1911 6 Pro Tullio; Pro Fonteio; Pro Sulla; Pro Archia; Pro Plancio; Pro Scauro Scriptorum Classicorum Bibliotheca Oxoniensis Oxford Classical Texts Hathi Trust Internet Archive",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+      }
+     ],
+     "editionUrn": "urn:cts:latinLit:phi0474.phi029.perseus-lat2",
+     "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0474/phi029/phi0474.phi029.perseus-lat2.xml",
+     "sourceSha256": "0a23653e94747db9f0b3d098aeba350d4676e4646291279ccf24344a2c52ffb0",
+     "sourceReferences": [
+      "https://hdl.handle.net/2027/njp.32101073249417?urlappend=%3Bseq=180%3Bownerid=13510798896722459-192",
+      "https://archive.org/details/orationes0006cice/page/n179/mode/2up"
+     ],
+     "publicationYear": "1911",
+     "publisher": "Clarendon Press",
+     "publicationPlace": "Oxford",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/0a23653e94747db9f0b3d098aeba350d4676e4646291279ccf24344a2c52ffb0.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-phi0474-phi029-la-6cf3385d8a19b585.json",
+   "sha256": "6cf3385d8a19b585e6f54ad7da47b25ef691627426d0b67d908d3e1f652601d4",
+   "passages": 77,
+   "characters": 20070,
+   "bytes": 34326,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0474-phi029-la-6cf3385d8a19b585.json"
+  },
+  {
+   "workId": "cts-tlg1749-tlg001",
+   "author": "Vitae Hesiodi Particula",
+   "title": "Vitae Hesiodi Particula",
+   "language": "grc",
+   "dating": "",
+   "sources": [
+    {
+     "title": "Vitae Hesiodi Particula",
+     "titleLanguage": "lat",
+     "author": "Anonymous",
+     "editors": [
+      "Thomas W. Allen"
+     ],
+     "bibliography": "Homeri Opera Thomas W. Allen Oxford Clarendon Press 1912 5 Internet Archive",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg1749.tlg001.1st1K-grc1",
+     "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg1749/tlg001/tlg1749.tlg001.1st1K-grc1.xml",
+     "sourceSha256": "dd9747d364fc9be185c095cc4a8a7c4b3058e305024d171538e8200e3b5b8996",
+     "sourceReferences": [
+      "https://archive.org/details/homeriopera05home/page/222/mode/2up"
+     ],
+     "publicationYear": "1912",
+     "publisher": "Clarendon Press",
+     "publicationPlace": "Oxford",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/dd9747d364fc9be185c095cc4a8a7c4b3058e305024d171538e8200e3b5b8996.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-tlg1749-tlg001-grc-55365dc717b0dd1b.json",
+   "sha256": "55365dc717b0dd1bf0220d2b8bbc8eb05179c0596b47edfbc5082cff3b974c01",
+   "passages": 1,
+   "characters": 2827,
+   "bytes": 7496,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg1749-tlg001-grc-55365dc717b0dd1b.json"
+  },
+  {
+   "workId": "cts-tlg1805-tlg001",
+   "author": "Vidas de Homero",
+   "title": "Vitae Herodotea",
+   "language": "grc",
+   "dating": "época imperial",
+   "sources": [
+    {
+     "title": "Vita Herodotea",
+     "titleLanguage": "lat",
+     "author": "Vitae Homeri",
+     "editors": [
+      "Thomas W. Allen"
+     ],
+     "bibliography": "Homeri Opera Thomas W. Allen Oxford Clarendon Press 1912 5 Internet Archive",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg1805.tlg001.1st1K-grc1",
+     "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg1805/tlg001/tlg1805.tlg001.1st1K-grc1.xml",
+     "sourceSha256": "98c4518cfaef212a7ca03d35fedab098535cd4d1baffb1d867da009901ba20ec",
+     "sourceReferences": [
+      "https://archive.org/details/homeriopera05home/page/192/mode/2up"
+     ],
+     "publicationYear": "1912",
+     "publisher": "Clarendon Press",
+     "publicationPlace": "Oxford",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/98c4518cfaef212a7ca03d35fedab098535cd4d1baffb1d867da009901ba20ec.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-tlg1805-tlg001-grc-49ac3e19559942f0.json",
+   "sha256": "49ac3e19559942f01faf817ae2cf1d2cb86d53aa8a39806468655fa321037742",
+   "passages": 38,
+   "characters": 27269,
+   "bytes": 61034,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg1805-tlg001-grc-49ac3e19559942f0.json"
+  },
+  {
+   "workId": "cts-tlg0530-tlg005",
+   "author": "Pseudo-Galeno",
+   "title": "De fasciis",
+   "language": "grc",
+   "dating": "época imperial",
+   "sources": [
+    {
+     "title": "De fasciis",
+     "titleLanguage": "lat",
+     "author": "Pseudo-Galen",
+     "editors": [
+      "Karl Gottlob Kühn"
+     ],
+     "bibliography": "Claudii Galeni Opera Omnia Pseudo-Galen Karl Gottlob Kühn Cnobloch Lipsiae 18a 768-827 1829 HathiTrust",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg0530.tlg005.1st1K-grc1",
+     "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0530/tlg005/tlg0530.tlg005.1st1K-grc1.xml",
+     "sourceSha256": "77e601af9a73d36238b7d10550dcd480c464c406329ef76ca6fdb8ca5763e566",
+     "sourceReferences": [
+      "https://hdl.handle.net/2027/hvd.hxpp8z?urlappend=%3Bseq=782"
+     ],
+     "publicationYear": "1829",
+     "publisher": "Cnobloch",
+     "publicationPlace": "Lipsiae",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/77e601af9a73d36238b7d10550dcd480c464c406329ef76ca6fdb8ca5763e566.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-tlg0530-tlg005-grc-9ad3d26a211d0cd4.json",
+   "sha256": "9ad3d26a211d0cd4f535bbfc0018db751a7a906cbb66f5fb778afe2347f6dac1",
+   "passages": 115,
+   "characters": 50724,
+   "bytes": 122818,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0530-tlg005-grc-9ad3d26a211d0cd4.json"
+  },
+  {
+   "workId": "cts-tlg0530-tlg006",
+   "author": "Pseudo-Galeno",
+   "title": "Ad Gaurum quomodo animetur fetus",
+   "language": "grc",
+   "dating": "época imperial",
+   "sources": [
+    {
+     "title": "Ad Gaurum quomodo animetur fetus",
+     "titleLanguage": "lat",
+     "author": "Pseudo-Galen",
+     "editors": [
+      "Karl Kalbfleisch"
+     ],
+     "bibliography": "Die neuplatonische, fälschlich dem Galen zugeschriebene Schrift Πρὸς Γαῦρον περὶ τοῦ πῶς ἐμψυχοῦνται τὰ ἔμβρυα Abhandlungen der Königlich Preussischen Akademie der Wissenschaften, Philosophisch-Historische Klasse Pseudo-Galen Karl Kalbfleisch 1895 33-62 1895 Internet Archive",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg0530.tlg006.1st1K-grc1",
+     "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0530/tlg006/tlg0530.tlg006.1st1K-grc1.xml",
+     "sourceSha256": "16a9e09bdf7bbb4abf5c5f6e3ffb129aeb6f32cceb177439ac844f6296c92ab2",
+     "sourceReferences": [
+      "https://archive.org/details/dieneuplatonisc00galegoog"
+     ],
+     "publicationYear": "1895",
+     "publisher": "",
+     "publicationPlace": "",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/16a9e09bdf7bbb4abf5c5f6e3ffb129aeb6f32cceb177439ac844f6296c92ab2.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-tlg0530-tlg006-grc-e7da16d90bd9d205.json",
+   "sha256": "e7da16d90bd9d205a49c25ae5d499b4958cfcb31a098f362e150c2ea807c1f12",
+   "passages": 19,
+   "characters": 60061,
+   "bytes": 123650,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0530-tlg006-grc-e7da16d90bd9d205.json"
+  },
+  {
+   "workId": "cts-tlg0530-tlg012",
+   "author": "Pseudo-Galeno",
+   "title": "Introductio seu medicus",
+   "language": "grc",
+   "dating": "época imperial",
+   "sources": [
+    {
+     "title": "Introductio seu medicus",
+     "titleLanguage": "lat",
+     "author": "Pseudo-Galen",
+     "editors": [
+      "Karl Gottlob Kühn"
+     ],
+     "bibliography": "Claudii Galeni Opera Omnia Pseudo-Galen Karl Gottlob Kühn Cnobloch Lipsiae 14 674-797 1827 HathiTrust",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg0530.tlg012.1st1K-grc1",
+     "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0530/tlg012/tlg0530.tlg012.1st1K-grc1.xml",
+     "sourceSha256": "cde3b0d50c39fc7412ba704d706eba09152412e39e0f65d31908253a31219e20",
+     "sourceReferences": [
+      "https://hdl.handle.net/2027/hvd.hxpp8u?urlappend=%3Bseq=684"
+     ],
+     "publicationYear": "1827",
+     "publisher": "Cnobloch",
+     "publicationPlace": "Lipsiae",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/cde3b0d50c39fc7412ba704d706eba09152412e39e0f65d31908253a31219e20.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-tlg0530-tlg012-grc-195d0d0a0559b949.json",
+   "sha256": "195d0d0a0559b949c99a671c480e3e00b1db1c507ab433cfe9517b7a678ee492",
+   "passages": 21,
+   "characters": 119754,
+   "bytes": 239448,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0530-tlg012-grc-195d0d0a0559b949.json"
+  },
+  {
+   "workId": "cts-tlg0533-tlg018",
+   "author": "Calímaco",
+   "title": "Hymn to Delos",
+   "language": "grc",
+   "dating": "c. 310–240 a. C.",
+   "sources": [
+    {
+     "title": "εἰς Δῆλον",
+     "titleLanguage": "grc",
+     "author": "Callimachus",
+     "editors": [
+      "Ulrich von Wilamowitz-Moellendorff"
+     ],
+     "bibliography": "Callimachi Hymni et Epigrammata Callimachus Ulrich von Wilamowitz-Moellendorff Weidmann Berlin 1897 Google Books Internet Archive",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg0533.tlg018.perseus-grc4",
+     "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0533/tlg018/tlg0533.tlg018.perseus-grc4.xml",
+     "sourceSha256": "22cfbe6b5298c5f7a7f78887246207de95f9b71729cf0a70e7e02682cc317eb7",
+     "sourceReferences": [
+      "https://books.google.com/books?id=cFdJ4Zne23YC",
+      "https://archive.org/details/callimachihymni01moegoog/page/26/mode/2up"
+     ],
+     "publicationYear": "1897",
+     "publisher": "Weidmann",
+     "publicationPlace": "Berlin",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/22cfbe6b5298c5f7a7f78887246207de95f9b71729cf0a70e7e02682cc317eb7.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-tlg0533-tlg018-grc-4bc5bb7b247d250b.json",
+   "sha256": "4bc5bb7b247d250bcb904fc7b91508d72eefd74cff6cb5cfdeea041dd4a174a9",
+   "passages": 327,
+   "characters": 13915,
+   "bytes": 72617,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0533-tlg018-grc-4bc5bb7b247d250b.json"
+  },
+  {
+   "workId": "cts-tlg0533-tlg019",
+   "author": "Calímaco",
+   "title": "Hymn to Athena",
+   "language": "grc",
+   "dating": "c. 310–240 a. C.",
+   "sources": [
+    {
+     "title": "εἰς Λουτρά τῆς Παλλάδος",
+     "titleLanguage": "grc",
+     "author": "Callimachus",
+     "editors": [
+      "Ulrich von Wilamowitz-Moellendorff"
+     ],
+     "bibliography": "Callimachi Hymni et Epigrammata Callimachus Ulrich von Wilamowitz-Moellendorff Weidmann Berlin 1897 Google Books Internet Archive",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg0533.tlg019.perseus-grc4",
+     "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0533/tlg019/tlg0533.tlg019.perseus-grc4.xml",
+     "sourceSha256": "a2862bd393bfacd70d808ce192727296af5367b7604c897d399eaeb84c54b7b9",
+     "sourceReferences": [
+      "https://books.google.com/books?id=cFdJ4Zne23YC",
+      "https://archive.org/details/callimachihymni01moegoog/page/36/mode/2up"
+     ],
+     "publicationYear": "1897",
+     "publisher": "Weidmann",
+     "publicationPlace": "Berlin",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/a2862bd393bfacd70d808ce192727296af5367b7604c897d399eaeb84c54b7b9.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-tlg0533-tlg019-grc-8d83d4cb5cc5e8da.json",
+   "sha256": "8d83d4cb5cc5e8da45efce51bd433165726d641eb5be4a5e32b0c6e44e6c9969",
+   "passages": 145,
+   "characters": 5630,
+   "bytes": 32270,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0533-tlg019-grc-8d83d4cb5cc5e8da.json"
+  },
+  {
+   "workId": "cts-tlg0530-tlg029",
+   "author": "Pseudo-Galeno",
+   "title": "De remediis parabilibus",
+   "language": "grc",
+   "dating": "época imperial",
+   "sources": [
+    {
+     "title": "De remediis parabilibus",
+     "titleLanguage": "lat",
+     "author": "Pseudo-Galen",
+     "editors": [
+      "Karl Gottlob Kühn"
+     ],
+     "bibliography": "Claudii Galeni Opera Omnia Pseudo-Galen Karl Gottlob Kühn Cnobloch Lipsiae 14 311-581 1827 HathiTrust",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg0530.tlg029.1st1K-grc1",
+     "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0530/tlg029/tlg0530.tlg029.1st1K-grc1.xml",
+     "sourceSha256": "9c232e895e1946fe5449b822a2bc4c6a368ef0af27a0bc51cb3f4e875e5a39fa",
+     "sourceReferences": [
+      "https://hdl.handle.net/2027/hvd.hxpp8u?urlappend=%3Bseq=222"
+     ],
+     "publicationYear": "1827",
+     "publisher": "Cnobloch",
+     "publicationPlace": "Lipsiae",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/9c232e895e1946fe5449b822a2bc4c6a368ef0af27a0bc51cb3f4e875e5a39fa.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-tlg0530-tlg029-grc-be404e6002d0abf6.json",
+   "sha256": "be404e6002d0abf62099f7fe6b4041ec2cc77b79e78801c7160052d060e1cbfd",
+   "passages": 680,
+   "characters": 233880,
+   "bytes": 561191,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0530-tlg029-grc-be404e6002d0abf6.json"
+  },
+  {
+   "workId": "cts-tlg0533-tlg020",
+   "author": "Calímaco",
+   "title": "Hymn to Demeter",
+   "language": "grc",
+   "dating": "c. 310–240 a. C.",
+   "sources": [
+    {
+     "title": "εἰς Δήμητρα",
+     "titleLanguage": "grc",
+     "author": "Callimachus",
+     "editors": [
+      "Ulrich von Wilamowitz-Moellendorff"
+     ],
+     "bibliography": "Callimachi Hymni et Epigrammata Callimachus Ulrich von Wilamowitz-Moellendorff Weidmann Berlin 1897 Google Books Internet Archive",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg0533.tlg020.perseus-grc4",
+     "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0533/tlg020/tlg0533.tlg020.perseus-grc4.xml",
+     "sourceSha256": "6d2d63460b463b917f21fd82b0b73f0d7fdead62ccab6e763538a6b05c4f26a4",
+     "sourceReferences": [
+      "https://books.google.com/books?id=cFdJ4Zne23YC",
+      "https://archive.org/details/callimachihymni01moegoog/page/42/mode/2up"
+     ],
+     "publicationYear": "1897",
+     "publisher": "Weidmann",
+     "publicationPlace": "Berlin",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/6d2d63460b463b917f21fd82b0b73f0d7fdead62ccab6e763538a6b05c4f26a4.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-tlg0533-tlg020-grc-cbfd1f998085db70.json",
+   "sha256": "cbfd1f998085db70445c564340050ab6307b2af35620a9b7bb9435e06fce4be9",
+   "passages": 139,
+   "characters": 6029,
+   "bytes": 32161,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0533-tlg020-grc-cbfd1f998085db70.json"
+  },
+  {
+   "workId": "cts-tlg0552-tlg001",
+   "author": "Arquímedes",
+   "title": "De sphaera et cylindro",
+   "language": "grc",
+   "dating": "siglo III a. C.",
+   "sources": [
+    {
+     "title": "De sphaera et cylindro",
+     "titleLanguage": "lat",
+     "author": "Archimède",
+     "editors": [
+      "Charles Mugler"
+     ],
+     "bibliography": "Archimède Charles Mugler Archimedes Belles Lettres Paris 1970 1 SLUB Dresden",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg0552.tlg001.1st1K-grc1",
+     "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0552/tlg001/tlg0552.tlg001.1st1K-grc1.xml",
+     "sourceSha256": "ac9b78b308a76221e2301bbfcc5d90e48718eb5ff8fcdccbab8b1977708c05bb",
+     "sourceReferences": [],
+     "publicationYear": "1970",
+     "publisher": "Belles Lettres",
+     "publicationPlace": "Paris",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/ac9b78b308a76221e2301bbfcc5d90e48718eb5ff8fcdccbab8b1977708c05bb.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-tlg0552-tlg001-grc-ba42f4de22552a03.json",
+   "sha256": "ba42f4de22552a038654b61ef31e697fe23c0c2fb920ab8031c8ee16e1cd0353",
+   "passages": 284,
+   "characters": 125334,
+   "bytes": 289458,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0552-tlg001-grc-ba42f4de22552a03.json"
+  },
+  {
+   "workId": "cts-tlg0552-tlg002",
+   "author": "Arquímedes",
+   "title": "Dimensio circuli",
+   "language": "grc",
+   "dating": "siglo III a. C.",
+   "sources": [
+    {
+     "title": "Dimensio circuli",
+     "titleLanguage": "lat",
+     "author": "Archimède",
+     "editors": [
+      "Charles Mugler"
+     ],
+     "bibliography": "Archimède Charles Mugler Archimedes Belles Lettres Paris 1970 1 SLUB Dresden",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg0552.tlg002.1st1K-grc1",
+     "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0552/tlg002/tlg0552.tlg002.1st1K-grc1.xml",
+     "sourceSha256": "e9d5494bb7db40300187c1920c1c93f1b8b3b3b788103b86d241c32d2752a42f",
+     "sourceReferences": [],
+     "publicationYear": "1970",
+     "publisher": "Belles Lettres",
+     "publicationPlace": "Paris",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/e9d5494bb7db40300187c1920c1c93f1b8b3b3b788103b86d241c32d2752a42f.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-tlg0552-tlg002-grc-e070680240cab189.json",
+   "sha256": "e070680240cab189a2d72030e58c13e99f8c9ff900662d44d8eae1db0e4c2f26",
+   "passages": 14,
+   "characters": 5116,
+   "bytes": 13707,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0552-tlg002-grc-e070680240cab189.json"
+  },
+  {
+   "workId": "cts-tlg0552-tlg003",
+   "author": "Arquímedes",
+   "title": "De conoidibus et sphaeroidibus",
+   "language": "grc",
+   "dating": "siglo III a. C.",
+   "sources": [
+    {
+     "title": "De conoidibus et sphaeroidibus",
+     "titleLanguage": "lat",
+     "author": "Archimède",
+     "editors": [
+      "Charles Mugler"
+     ],
+     "bibliography": "Archimède Charles Mugler Archimedes Belles Lettres Paris 1970 1 SLUB Dresden",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg0552.tlg003.1st1K-grc1",
+     "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0552/tlg003/tlg0552.tlg003.1st1K-grc1.xml",
+     "sourceSha256": "58003a0316f74efdb887be470233adf38c06f0c5a30e3de30c47e089070c5a9a",
+     "sourceReferences": [],
+     "publicationYear": "1970",
+     "publisher": "Belles Lettres",
+     "publicationPlace": "Paris",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/58003a0316f74efdb887be470233adf38c06f0c5a30e3de30c47e089070c5a9a.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-tlg0552-tlg003-grc-01f4a85176fcdb3b.json",
+   "sha256": "01f4a85176fcdb3bb1feace95befdf6ab5f93ce77192a2e39c3aa3907f2f68ce",
+   "passages": 172,
+   "characters": 121567,
+   "bytes": 266269,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0552-tlg003-grc-01f4a85176fcdb3b.json"
+  },
+  {
+   "workId": "cts-tlg0018-tlg008",
+   "author": "Filón de Alejandría",
+   "title": "Quod Deus Sit Immutabilis",
+   "language": "grc",
+   "dating": "siglo I d. C.",
+   "sources": [
+    {
+     "title": "Quod deus sit immutabilis",
+     "titleLanguage": "lat",
+     "author": "Philo Judaeus",
+     "editors": [
+      "Paul Wendland"
+     ],
+     "bibliography": "Philonis Alexandrini Opera Quae Supersunt Paul Wendland Philo Judaeus Reimer Berlin 1897 2 Hathi Trust",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg0018.tlg008.1st1K-grc1",
+     "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0018/tlg008/tlg0018.tlg008.1st1K-grc1.xml",
+     "sourceSha256": "e465ef5e4e88010e981ccd00cd01ab534925af95f7b5a287a1eaec5c656b125d",
+     "sourceReferences": [
+      "https://babel.hathitrust.org/cgi/pt?id=hvd.32044038454229;view=1up;seq=100"
+     ],
+     "publicationYear": "1897",
+     "publisher": "Reimer",
+     "publicationPlace": "Berlin",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/e465ef5e4e88010e981ccd00cd01ab534925af95f7b5a287a1eaec5c656b125d.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-tlg0018-tlg008-grc-a7df529b52a3196e.json",
+   "sha256": "a7df529b52a3196e16ad076ba73968721f3b8a170615bef0aab49b97f19afc77",
+   "passages": 184,
+   "characters": 57878,
+   "bytes": 143936,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0018-tlg008-grc-a7df529b52a3196e.json"
+  },
+  {
+   "workId": "cts-tlg0018-tlg009",
+   "author": "Filón de Alejandría",
+   "title": "De Agricultura",
+   "language": "grc",
+   "dating": "siglo I d. C.",
+   "sources": [
+    {
+     "title": "De agricultura",
+     "titleLanguage": "lat",
+     "author": "Philo Judaeus",
+     "editors": [
+      "Paul Wendland"
+     ],
+     "bibliography": "Philonis Alexandrini Opera Quae Supersunt Paul Wendland Philo Judaeus Reimer Berlin 1897 2 Hathi Trust",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg0018.tlg009.1st1K-grc1",
+     "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0018/tlg009/tlg0018.tlg009.1st1K-grc1.xml",
+     "sourceSha256": "25f12de24ba8ac2e8f25ce0ab0bd9ae45b8049373e60d93f173439015d539811",
+     "sourceReferences": [
+      "https://babel.hathitrust.org/cgi/pt?id=hvd.32044038454229;view=1up;seq=139"
+     ],
+     "publicationYear": "1897",
+     "publisher": "Reimer",
+     "publicationPlace": "Berlin",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/25f12de24ba8ac2e8f25ce0ab0bd9ae45b8049373e60d93f173439015d539811.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-tlg0018-tlg009-grc-b36cf5ed7804e715.json",
+   "sha256": "b36cf5ed7804e7155410be0aad1c63b4f8fee6875ea4561f012832f435ce4e1f",
+   "passages": 182,
+   "characters": 59394,
+   "bytes": 146916,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0018-tlg009-grc-b36cf5ed7804e715.json"
+  },
+  {
+   "workId": "cts-tlg0018-tlg010",
+   "author": "Filón de Alejandría",
+   "title": "De Plantatione",
+   "language": "grc",
+   "dating": "siglo I d. C.",
+   "sources": [
+    {
+     "title": "De plantatione",
+     "titleLanguage": "lat",
+     "author": "Philo Judaeus",
+     "editors": [
+      "Paul Wendland"
+     ],
+     "bibliography": "Philonis Alexandrini Opera Quae Supersunt Paul Wendland Philo Judaeus Reimer Berlin 1897 2 Hathi Trust",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg0018.tlg010.1st1K-grc1",
+     "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0018/tlg010/tlg0018.tlg010.1st1K-grc1.xml",
+     "sourceSha256": "e3773fa1792b98916fecb0c6211cd60b5c3250e25106da1cb262a63cd1cdbc40",
+     "sourceReferences": [
+      "https://babel.hathitrust.org/cgi/pt?id=hvd.32044038454229;view=1up;seq=177"
+     ],
+     "publicationYear": "1897",
+     "publisher": "Reimer",
+     "publicationPlace": "Berlin",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/e3773fa1792b98916fecb0c6211cd60b5c3250e25106da1cb262a63cd1cdbc40.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-tlg0018-tlg010-grc-bd09eb7cff5170e8.json",
+   "sha256": "bd09eb7cff5170e8f39725a016c122e7ae5e0412421b73a8ebff2a5266961c6a",
+   "passages": 178,
+   "characters": 57458,
+   "bytes": 142237,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0018-tlg010-grc-bd09eb7cff5170e8.json"
+  },
+  {
+   "workId": "cts-tlg1805-tlg002",
+   "author": "Vidas de Homero",
+   "title": "Plutarchi vita",
+   "language": "grc",
+   "dating": "época imperial",
+   "sources": [
+    {
+     "title": "Plutarchi vita",
+     "titleLanguage": "lat",
+     "author": "Vitae Homeri",
+     "editors": [
+      "Thomas W. Allen"
+     ],
+     "bibliography": "Homeri Opera Thomas W. Allen Oxford Clarendon Press 1912 5 Internet Archive",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg1805.tlg002.1st1K-grc1",
+     "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg1805/tlg002/tlg1805.tlg002.1st1K-grc1.xml",
+     "sourceSha256": "89eb3aec3816ca2a7a4e697c1fe1bd2148ac36b971b06e76acdc3ddac0eeebba",
+     "sourceReferences": [
+      "https://archive.org/details/homeriopera05home/page/238/mode/2up"
+     ],
+     "publicationYear": "1912",
+     "publisher": "Clarendon Press",
+     "publicationPlace": "Oxford",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/89eb3aec3816ca2a7a4e697c1fe1bd2148ac36b971b06e76acdc3ddac0eeebba.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-tlg1805-tlg002-grc-3498f8d42a67d09b.json",
+   "sha256": "3498f8d42a67d09b46a2a24d43456941d26a9bc9f87424d3f0a8aefeec615e1c",
+   "passages": 8,
+   "characters": 6069,
+   "bytes": 14907,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg1805-tlg002-grc-3498f8d42a67d09b.json"
   }
  ],
  "githubPreserved": [
@@ -30399,100 +31406,123 @@
  ],
  "deferred": [
   {
-   "workId": "cts-tlg1805-tlg010",
+   "workId": "virgil-georgica",
    "sources": [
-    "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg1805/tlg010/tlg1805.tlg010.1st1K-grc1.xml"
-   ],
-   "reason": "Lengua TEI discrepante o sin acreditar: la"
-  },
-  {
-   "workId": "horace-ars-poetica",
-   "sources": [
-    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0893/phi006/phi0893.phi006.perseus-lat2.xml"
+    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0690/phi002/phi0690.phi002.perseus-lat2.xml"
    ],
    "reason": "Sin licencia abierta explícita admisible en la cabecera TEI"
   },
   {
-   "workId": "horace-epodi",
+   "workId": "seneca-de-clementia",
    "sources": [
-    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0893/phi003/phi0893.phi003.perseus-lat2.xml"
+    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi1017/phi014/phi1017.phi014.perseus-lat2.xml"
    ],
    "reason": "Sin licencia abierta explícita admisible en la cabecera TEI"
   },
   {
-   "workId": "horace-epistulae",
+   "workId": "virgil-aeneid",
    "sources": [
-    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0893/phi005/phi0893.phi005.perseus-lat2.xml"
+    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0690/phi003/phi0690.phi003.perseus-lat2.xml"
    ],
    "reason": "Sin licencia abierta explícita admisible en la cabecera TEI"
   },
   {
-   "workId": "horace-odes",
+   "workId": "seneca-tragoediae",
    "sources": [
-    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0893/phi001/phi0893.phi001.perseus-lat2.xml"
+    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi1017/phi001/phi1017.phi001.perseus-lat2.xml",
+    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi1017/phi002/phi1017.phi002.perseus-lat2.xml",
+    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi1017/phi003/phi1017.phi003.perseus-lat2.xml",
+    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi1017/phi004/phi1017.phi004.perseus-lat2.xml",
+    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi1017/phi005/phi1017.phi005.perseus-lat2.xml",
+    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi1017/phi006/phi1017.phi006.perseus-lat2.xml",
+    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi1017/phi007/phi1017.phi007.perseus-lat2.xml",
+    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi1017/phi008/phi1017.phi008.perseus-lat2.xml",
+    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi1017/phi009/phi1017.phi009.perseus-lat2.xml",
+    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi1017/phi010/phi1017.phi010.perseus-lat2.xml"
    ],
    "reason": "Sin licencia abierta explícita admisible en la cabecera TEI"
   },
   {
-   "workId": "horace-sermones",
+   "workId": "cts-phi0478-phi003",
    "sources": [
-    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0893/phi004/phi0893.phi004.perseus-lat2.xml"
+    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0478/phi003/phi0478.phi003.perseus-lat2.xml"
    ],
    "reason": "Sin licencia abierta explícita admisible en la cabecera TEI"
   },
   {
-   "workId": "lucretius",
+   "workId": "cts-phi0690-phi001",
    "sources": [
-    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0550/phi001/phi0550.phi001.perseus-lat1.xml"
+    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0690/phi001/phi0690.phi001.perseus-lat2.xml"
    ],
    "reason": "Sin licencia abierta explícita admisible en la cabecera TEI"
   },
   {
-   "workId": "livy",
+   "workId": "cts-phi0893-phi002",
    "sources": [
-    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0914/phi001/phi0914.phi001.perseus-lat5.xml"
+    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0893/phi002/phi0893.phi002.perseus-lat2.xml"
    ],
    "reason": "Sin licencia abierta explícita admisible en la cabecera TEI"
   },
   {
-   "workId": "ovid",
+   "workId": "cts-phi0959-phi003",
    "sources": [
-    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0959/phi006/phi0959.phi006.perseus-lat2.xml"
+    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0959/phi003/phi0959.phi003.perseus-lat2.xml"
    ],
    "reason": "Sin licencia abierta explícita admisible en la cabecera TEI"
   },
   {
-   "workId": "ovid-ars-amatoria",
+   "workId": "cts-phi0959-phi001",
    "sources": [
-    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0959/phi004/phi0959.phi004.perseus-lat2.xml"
+    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0959/phi001/phi0959.phi001.perseus-lat2.xml"
    ],
    "reason": "Sin licencia abierta explícita admisible en la cabecera TEI"
   },
   {
-   "workId": "ovid-ex-ponto",
+   "workId": "cts-phi0959-phi010",
    "sources": [
-    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0959/phi009/phi0959.phi009.perseus-lat2.xml"
+    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0959/phi010/phi0959.phi010.perseus-lat2.xml"
    ],
    "reason": "Sin licencia abierta explícita admisible en la cabecera TEI"
   },
   {
-   "workId": "ovid-fasti",
+   "workId": "cts-phi1014-phi002",
    "sources": [
-    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0959/phi007/phi0959.phi007.perseus-lat2.xml"
+    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi1014/phi002/phi1014.phi002.perseus-lat1.xml"
    ],
    "reason": "Sin licencia abierta explícita admisible en la cabecera TEI"
   },
   {
-   "workId": "ovid-heroides",
+   "workId": "cts-phi1014-phi003",
    "sources": [
-    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0959/phi002/phi0959.phi002.perseus-lat2.xml"
+    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi1014/phi003/phi1014.phi003.perseus-lat1.xml"
    ],
    "reason": "Sin licencia abierta explícita admisible en la cabecera TEI"
   },
   {
-   "workId": "ovid-remedia-amoris",
+   "workId": "cts-phi1014-phi004",
    "sources": [
-    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0959/phi005/phi0959.phi005.perseus-lat2.xml"
+    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi1014/phi004/phi1014.phi004.perseus-lat1.xml"
+   ],
+   "reason": "Sin licencia abierta explícita admisible en la cabecera TEI"
+  },
+  {
+   "workId": "cts-phi1014-phi001",
+   "sources": [
+    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi1014/phi001/phi1014.phi001.perseus-lat1.xml"
+   ],
+   "reason": "Sin licencia abierta explícita admisible en la cabecera TEI"
+  },
+  {
+   "workId": "cts-phi1017-phi011",
+   "sources": [
+    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi1017/phi011/phi1017.phi011.perseus-lat2.xml"
+   ],
+   "reason": "Sin licencia abierta explícita admisible en la cabecera TEI"
+  },
+  {
+   "workId": "cts-phi1017-phi013",
+   "sources": [
+    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi1017/phi013/phi1017.phi013.perseus-lat2.xml"
    ],
    "reason": "Sin licencia abierta explícita admisible en la cabecera TEI"
   }

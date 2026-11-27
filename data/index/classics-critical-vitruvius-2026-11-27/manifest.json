@@ -1,0 +1,60 @@
+{
+  "schema": "vitruvia-classics-lexical-index-v1",
+  "generated": "2026-11-27",
+  "method": "Índice de raíces con la normalización de Vitruvia Philology, hasta 10 pasajes por obra y raíz; no es lematización ni cotejo crítico. Las ediciones se cuentan por separado.",
+  "limits": "Recuento de raíces completo; concordancia limitada a los primeros diez pasajes. Rose conserva alineaciones inciertas.",
+  "works": 2,
+  "passages": 1462,
+  "tokens": 115683,
+  "encoding": "obra:recuento:pasajes|…",
+  "languages": [
+    {
+      "language": "la",
+      "stems": 8474,
+      "shards": 1,
+      "bytes": 341790
+    }
+  ],
+  "index": [
+    {
+      "i": 0,
+      "id": "krohn-1912-indexed",
+      "lang": "la",
+      "title": "Vitruvii De architectura · Fritz Krohn (1912)",
+      "file": "data/critical-editions/krohn-1912-tei-loci.json",
+      "field": "latin",
+      "passages": 731,
+      "tokens": 57885,
+      "urn": "urn:cts:latinLit:phi1056.phi001.perseus-lat2",
+      "source": "https://github.com/PerseusDL/canonical-latinLit/blob/master/data/phi1056/phi001/phi1056.phi001.perseus-lat2.xml",
+      "sourceBlobSha": "7751967bf31d8eec2716ba3e11e52f796249ec29",
+      "attribution": "Vitruvii De architectura · Fritz Krohn (1912) · Vitruvii De architectura libri decem, Leipzig: B. G. Teubner, 1912",
+      "license": "CC BY-SA 4.0 (Perseus TEI distribution)",
+      "editorialStatus": "TEI section extraction; whitespace and markup normalization; NOT OCR; markup editorially flattened; compare facsimile before adopting textual variants",
+      "reader": "apparatus-bude.html?edition=krohn-1912&locus={locus}",
+      "gate": [
+        "krohn-1912-indexed|la"
+      ]
+    },
+    {
+      "i": 1,
+      "id": "rose-1899-indexed",
+      "lang": "la",
+      "title": "Vitruvii De architectura · Valentin Rose (1899)",
+      "file": "data/critical-editions/rose-1899-transcribed-loci.json",
+      "field": "latin",
+      "passages": 731,
+      "tokens": 57798,
+      "urn": "",
+      "source": "https://www.gutenberg.org/ebooks/51812",
+      "sourceBlobSha": "43b73e67087e8883528f014fdf4d98543f35e79e",
+      "attribution": "Vitruvii De architectura · Valentin Rose (1899) · Vitruvii De architectura libri decem. Iterum edidit Valentinus Rose. Lipsiae: B. G. Teubner, 1899",
+      "license": "Consultar las condiciones de reutilización de Project Gutenberg y la jurisdicción aplicable",
+      "editorialStatus": "Paragraph alignment to Kurilo's 731-locus structure; preserves Rose text and editorial variants; uncertain joins/splits flagged; not compared exhaustively to printed facsimile",
+      "reader": "apparatus-bude.html?edition=rose-1899&locus={locus}",
+      "gate": [
+        "rose-1899-indexed|la"
+      ]
+    }
+  ]
+}

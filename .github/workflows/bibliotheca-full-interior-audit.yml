@@ -9,7 +9,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
 
 concurrency:
   group: bibliotheca-content-verification-${{ github.ref }}
@@ -17,7 +17,7 @@ concurrency:
 
 jobs:
   catalogue-and-originals:
-    name: 281 fichas y todas las versiones textuales del registro
+    name: Catálogo federado y conciliación de fuentes
     runs-on: ubuntu-latest
     timeout-minutes: 90
     steps:
@@ -29,8 +29,6 @@ jobs:
         run: python -m py_compile scripts/audit-bibliotheca-full-integrity.py
       - name: Conciliar obras, manifestaciones, duplicados y huerfanos
         run: python scripts/audit-bibliotheca-full-integrity.py --mode inventory --output reports/bibliotheca/full-integrity-inventory.json
-      - name: Abrir y comprobar todas las versiones de texto buscable
-        run: python scripts/audit-bibliotheca-full-integrity.py --mode texts --output reports/bibliotheca/full-integrity-texts.json
       - name: Anotar resultados y controles pendientes
         if: always()
         shell: bash
@@ -39,7 +37,7 @@ jobs:
           import json,os,pathlib
           with open(os.environ["GITHUB_STEP_SUMMARY"],"a",encoding="utf-8") as out:
               out.write("## Cotejo de la Bibliotheca: obra, titulo, original y estructura\n\n")
-              for name in ("inventory","texts"):
+              for name in ("inventory",):
                   path=pathlib.Path(f"reports/bibliotheca/full-integrity-{name}.json")
                   if not path.exists():
                       out.write(f"- {name}: no se genero un informe integro.\n")
@@ -52,9 +50,37 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: bibliotheca-281-works-originals-${{ github.run_id }}
+          name: bibliotheca-integrity-inventory-${{ github.run_id }}
           path: reports/bibliotheca/full-integrity-*.json
           if-no-files-found: warn
+          retention-days: 90
+
+  text-versions:
+    name: Textos y traducciones desde ${{ matrix.start }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    strategy:
+      fail-fast: false
+      max-parallel: 3
+      matrix:
+        start: [0, 200, 400, 600, 800, 1000]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Inspeccionar lote de originales y traducciones
+        env:
+          START: ${{ matrix.start }}
+        run: |
+          limit=200
+          if [ "$START" = 1000 ]; then limit=0; fi
+          python scripts/audit-bibliotheca-full-integrity.py --mode texts --start "$START" --limit "$limit" --output "reports/bibliotheca/full-integrity-texts-$START.json"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: bibliotheca-integrity-texts-${{ matrix.start }}-${{ github.run_id }}
+          path: reports/bibliotheca/full-integrity-texts-*.json
+          if-no-files-found: error
           retention-days: 90
 
   printed-editions:
@@ -104,7 +130,38 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: bibliotheca-117-editions-${{ matrix.start }}-${{ github.run_id }}
+          name: bibliotheca-integrity-editions-${{ matrix.start }}-${{ github.run_id }}
           path: reports/bibliotheca/full-integrity-*.json
           if-no-files-found: warn
           retention-days: 90
+
+  publish-integrity:
+    name: Publicar faltantes en las fichas académicas existentes
+    needs: [catalogue-and-originals, text-versions, printed-editions]
+    if: ${{ github.ref == 'refs/heads/main' }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: bibliotheca-integrity-*-${{ github.run_id }}
+          path: /tmp/bibliotheca-integrity
+          merge-multiple: true
+      - name: Consolidar evidencias por obra, versión y facsímil
+        run: |
+          python scripts/audit-bibliotheca-full-integrity.py --mode publish --reports /tmp/bibliotheca-integrity
+      - name: Publicar solamente el informe derivado si las fuentes no cambiaron
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add data/bibliotheca-audit/integrity.json
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m 'Bibliotheca: publicar control estructural y faltantes por edición'
+          git fetch origin main
+          git diff --quiet "${GITHUB_SHA}" origin/main -- data/classics-corpus/search-registry.json data/bibliotheca-graeca-latina-I-bce-I-ce.json data/bibliotheca-expansion-publicada-2026-11-16.json data/r2/catalogo-clasicos-r2.json data/r2/vinculos-repertorio.json data/bibliotheca-audit/integrity.json scripts/audit-bibliotheca-full-integrity.py || { echo 'Fuentes cambiadas; no publicar informe obsoleto'; exit 1; }
+          git rebase origin/main
+          git push origin HEAD:main

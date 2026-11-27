@@ -1,7 +1,7 @@
 {
   "schema": "vdl-bibliological-audit-v1",
   "asOf": "2026-11-27",
-  "scope": "843 fichas declaradas; las ediciones pueden compartir obra y archivo. Cruce de metadatos, no cotejo íntegro ni verificación HTTP de todos los objetos.",
+  "scope": "867 fichas declaradas; las ediciones pueden compartir obra y archivo. Cruce de metadatos, no cotejo íntegro ni verificación HTTP de todos los objetos.",
   "sources": [
     "data/r2/bibliotheca-inventario-unificado.json",
     "data/classics-corpus/coverage-audit.json",
@@ -15,24 +15,24 @@
   ],
   "counts": {
     "la": {
-      "works": 180,
-      "originalText": 163,
+      "works": 188,
+      "originalText": 171,
       "translationRegistered": 48,
       "translationFacsimileOnly": 3,
       "externalOnly": 65,
-      "translationNotDocumented": 64,
-      "varietyOrientative": 143,
+      "translationNotDocumented": 72,
+      "varietyOrientative": 151,
       "varietyPending": 37
     },
     "grc": {
-      "works": 658,
-      "originalText": 642,
+      "works": 674,
+      "originalText": 658,
       "translationRegistered": 111,
       "translationFacsimileOnly": 6,
       "externalOnly": 57,
-      "translationNotDocumented": 484,
-      "varietyOrientative": 502,
-      "varietyPending": 156
+      "translationNotDocumented": 500,
+      "varietyOrientative": 508,
+      "varietyPending": 166
     },
     "it": {
       "works": 5,
@@ -48,7 +48,7 @@
   "files": [
     {
       "path": "data/bibliotheca-audit/records-la-01.json",
-      "count": 180
+      "count": 188
     },
     {
       "path": "data/bibliotheca-audit/records-grc-01.json",
@@ -64,7 +64,7 @@
     },
     {
       "path": "data/bibliotheca-audit/records-grc-04.json",
-      "count": 58
+      "count": 74
     },
     {
       "path": "data/bibliotheca-audit/records-it-01.json",

@@ -193,6 +193,17 @@ const heritageLink=raw=>{
 };
 const periodLabel=w=>historicalPeriods.find(([id])=>id===periodOfWork(w))?.[1]||"";
 let model=null,loadedAliases={};
+let integrityByWork=new Map();
+function integrityLabel(id){
+ const r=integrityByWork.get(id);if(!r)return "";
+ if(r.status==="verified_structural_gap"||(r.latestTextChecks||[]).some(v=>v.sourceDeclaredMissing?.length||v.missingReferenceLoci?.length||v.emptyLoci?.length))return "Faltantes textuales documentados o loci no detectados · consultar ficha";
+ if(r.status==="no_text_linked")return "Sin fuente textual vinculada";
+ if(r.status==="scope_warning")return "Alcance de edición limitado o pendiente de cotejo";
+ if((r.latestTextChecks||[]).some(v=>v.status==="needs_review"||v.status==="could_not_inspect")||(r.latestFacsimileChecks||[]).some(f=>f.pdfStatus==="manual_review_needed"||f.pdfStatus==="binary_discrepancy"||f.pdfReason||f.ocrReason))return "Observaciones de integridad · consultar ficha";
+ if(r.status==="some_version_structure_confirmed")return "Estructura comprobada en alguna versión; no cotejo íntegro";
+ return "";
+}
+function appendIntegrity(parent,w){const value=integrityLabel(w.id);if(!value)return;const a=make("a",value,"bws-meta");a.href=workLink(w.id)+"#vdl-integrity-record";a.style.display="block";parent.append(a)}
 const ROADMAP="data/classics-corpus/indexation-roadmap-222.json";
 const R2_BASE="https://libros.vitruvius-digital-library.org/corpus/";
 const optionalArticles=/^(?:el|la|los|las|le|les|l|the|a|an|der|die|das|il|lo|gli|i|un|una|uno)\s+/;
@@ -553,7 +564,7 @@ function render(){
    link.href=version?safeReader(version.reader):w.heritageReader?heritageLink(w.heritageReader):workLink(w.id);
    link.title=version?"Leer edición registrada":"Consultar ficha académica";
    row.append(link);appendEditionSummary(row,w);
-   const status=make("span",version?"Texto registrado":w.facsimile?"Facsímil/OCR declarado":"Ficha bibliográfica · texto no asociado","bws-plain-status");row.append(status);
+   const status=make("span",version?"Texto registrado":w.facsimile?"Facsímil/OCR declarado":"Ficha bibliográfica · texto no asociado","bws-plain-status");row.append(status);appendIntegrity(row,w);
    if(version){const ficha=make("a","Ficha académica","bws-plain-record");ficha.href=workLink(w.id);row.append(ficha)}
    if(w.facsimile){const fac=make("a","Consultar facsímil/OCR","bws-plain-record");fac.href=facLink(w.facsimile);row.append(fac)}
    list.append(row);
@@ -599,7 +610,7 @@ function render(){
     addRecordedEditions(actions,w);
    if(w.id==="vitruvius")addLink(actions,"Ediciones, traducciones y códices","classics-work-record.html?work=vitruvius");
    else if(!w.heritageReader)addLink(actions,"Ficha académica",workLink(w.id));
-   li.append(actions);renderVitruvianCodices(li,w);list.append(li);
+   li.append(actions);appendIntegrity(li,w);renderVitruvianCodices(li,w);list.append(li);
   }
   if(!typedLetter&&!model.letter&&all.length>limit){more.hidden=false;more.textContent="Mostrar más obras ("+(all.length-limit)+" restantes)"}
   return;
@@ -635,7 +646,7 @@ function render(){
     if(w.versions.some(v=>safeReader(v.reader)))addLink(actions,"Lexicon · vocabulario de esta obra",lexiconWorkLink(w.id));
     addRecordedEditions(actions,w);
   if(!w.heritageReader)addLink(actions,"Ficha académica",workLink(w.id));
-  item.append(actions);if(!(w.id==="vitruvius"&&isVitruviusQuery(q)))renderVitruvianCodices(item,w);list.append(item);
+  item.append(actions);appendIntegrity(item,w);if(!(w.id==="vitruvius"&&isVitruviusQuery(q)))renderVitruvianCodices(item,w);list.append(item);
  }
  if(isVitruvianEditionQuery(q)||isKuriloEditionQuery(model.authorFilter.value)){
   renderNotable(q,true);
@@ -961,6 +972,8 @@ async function bootstrap(){
   mount(parent,{catalog:baseCatalog,registry});
   addRoadmap(roadmap);
   loadVitruvianCodices();
+  // Optional integrity evidence: never block search or imply complete texts.
+  fetch("data/bibliotheca-audit/integrity.json",{cache:"no-cache"}).then(r=>{if(!r.ok)throw Error("HTTP "+r.status);return r.json()}).then(j=>{integrityByWork=new Map((j.records||[]).map(r=>[r.id,r]));render()}).catch(e=>console.warn("Integridad de obras no disponible:",e));
   // Join verified bibliographic R2 facsimile associations into work cards.
   // PDF presence is not the same as a collated or indexed transcription.
   Promise.all([
