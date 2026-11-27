@@ -1420,7 +1420,7 @@ function display(rows,query,phase){
  const encyclopediaTypes=new Set(["wikipedia","wikidata","topic","authority"]);
  const libraryTypes=new Set(["passage","book","manuscript","edition","preface","section"]);
  const textExternalTypes=new Set(["text-external"]);
- const byGroup=r=>S.mode==="ai"&&r.aiEvidence?"semantic":
+ const byGroup=r=>["all","ai"].includes(S.mode)&&r.aiEvidence?"semantic":
   encyclopediaTypes.has(r.type)?"encyclopedia":
   r.type==="university"?"universities":
   r.type==="manuscript"?"manuscripts":
@@ -1655,6 +1655,7 @@ document.getElementById("expand-search-sources")?.addEventListener("click",async
 });
 async function search(){
  let q=$("query").value.trim();S.searchController?.abort();S.searchController=new AbortController();const searchSignal=S.searchController.signal;const later=task=>window.VitruviaData?window.VitruviaData.defer(task,{signal:searchSignal,delay:45}):Promise.resolve().then(task);S.searchStarted=performance.now();S.firstResultAt=null;S.searchComplete=false;S.cardCache=new Map();S.identifiedSubject=null;const id=++S.searchId;S.visibleResultCount=60;S.facet="";if(!q)return;
+ const aiStatus=$("ai-status");if(aiStatus){aiStatus.hidden=true;aiStatus.textContent="";}
  /* Comprension de la consulta antes de preguntar a ninguna fuente: grafia,
     flexion, escritura cruzada, onomastica y citas. Si el modulo no estuviera
     disponible, el buscador sigue funcionando como antes. */
@@ -1678,7 +1679,7 @@ async function search(){
  $("result-list").replaceChildren(node("div","empty","Cargando ficha y testimonios documentados…"));
  $("answer").hidden=true;
  window.VitruviaArticles?.begin?.(q);
- history.replaceState(null,"",S.privateMode?"vitruvia.html":"vitruvia.html?"+new URLSearchParams({q,mode:S.mode,...(S.mode==="ai"&&$("ai-method").value==="neural"?{engine:"e5"}:{})}));
+ history.replaceState(null,"",S.privateMode?"vitruvia.html":"vitruvia.html?"+new URLSearchParams({q,mode:S.mode,...(["all","ai"].includes(S.mode)&&$("ai-method").value==="neural"?{engine:"e5"}:{})}));
  // Start authority lookup immediately, in parallel with loading the large
  // static catalogue; the main results are still rendered in the usual place.
  const earlyIdentity=!/[\u0370-\u03ff\u1f00-\u1fff]/.test(q)&&
@@ -1820,10 +1821,10 @@ async function search(){
     rows:[...linked,...portals],warnings:value.warning?[value.warning]:[]};
   }).catch(e=>({name:"Catálogos de manuscritos no disponibles",rows:[],warnings:[String(e.message||e)]})));
  }
- if(mode==="ai"&&window.VitruviaAI){
+ if(["all","ai"].includes(mode)&&window.VitruviaAI){
   const method=$("ai-method")?.value==="neural"?"neural":"bm25";
-  pending.push(window.VitruviaAI.search(generalQuery,{method}).then(v=>({
-   name:v.mode==="neural"?"E5 + BM25 · orden neuronal experimental":v.method==="bm25"?"BM25 · coincidencias textuales indexadas":v.mode==="bm25-fallback"?"BM25 · E5 no disponible":"Búsqueda de documentos",
+  pending.push(window.VitruviaAI.search(q,{method,targetedOnly:mode==="all"}).then(v=>({
+   name:v.mode==="not-targeted"?"":v.mode==="neural"?"E5 + BM25 · orden neuronal experimental":v.method==="bm25"?"BM25 · recuperación académica calibrada":v.mode==="bm25-fallback"?"BM25 · E5 no disponible":"Búsqueda de documentos",
    rows:v.rows||[],warnings:v.warning?[v.warning]:[]
   })).catch(e=>({name:"Modo IA · índice no disponible",rows:[],warnings:[String(e.message||e)]})));
  }
@@ -2019,8 +2020,8 @@ function language(lang){S.lang=I18N[lang]?lang:"es";document.documentElement.lan
  document.dispatchEvent(new CustomEvent("vitruvius:language-changed",{detail:{language:S.lang,origin:"vitruvia"}}));
 }
 function mode(m){S.mode=["all","site","wiki","external","concept","ai"].includes(m)?m:"all";
- document.body.classList.toggle("vitruvia-ai-active",S.mode==="ai");
- if(S.mode!=="ai"){const status=document.getElementById("ai-status");if(status)status.hidden=true;}
+ document.body.classList.toggle("vitruvia-ai-active",["all","ai"].includes(S.mode));
+ {const status=document.getElementById("ai-status");if(status)status.hidden=true;}
  document.querySelectorAll("button.tab").forEach(b=>b.setAttribute("aria-pressed",String(b.dataset.mode===S.mode)));
  $("mode-note").textContent=S.mode==="ai"?
  (S.lang==="en"?"BM25 is the default in AI mode; E5 reranking requires a separate opt-in (first download ≈120 MB). Neural ranking is not philological verification.":S.lang==="fr"?"BM25 est le mode par défaut; reclassement E5 sur demande (premier téléchargement ≈120 Mo). Le classement n’est pas une vérification philologique.":"BM25 es el modo predeterminado; E5 requiere selección expresa (primera descarga ≈120 MB). La clasificación neuronal no equivale a cotejo filológico."):
@@ -2262,14 +2263,14 @@ privacy.addEventListener("click",()=>{
  S.privateMode=!S.privateMode;
  try{localStorage.setItem("vitruvia-private-url",S.privateMode?"1":"0")}catch{}
  const q=searchInput.value.trim();
- history.replaceState(null,"",S.privateMode?"vitruvia.html":q?"vitruvia.html?"+new URLSearchParams({q,mode:S.mode,...(S.mode==="ai"&&$("ai-method").value==="neural"?{engine:"e5"}:{})}):"vitruvia.html");
+ history.replaceState(null,"",S.privateMode?"vitruvia.html":q?"vitruvia.html?"+new URLSearchParams({q,mode:S.mode,...(["all","ai"].includes(S.mode)&&$("ai-method").value==="neural"?{engine:"e5"}:{})}):"vitruvia.html");
  renderPrivacy();
 });
 updateClearControl();renderPrivacy();
 
 bindAcademia();
 $("search-form").addEventListener("submit",e=>{e.preventDefault();search()});
-$("ai-method").addEventListener("change",()=>{if(S.mode==="ai"&&$("query").value.trim())search()});
+$("ai-method").addEventListener("change",()=>{if(["all","ai"].includes(S.mode)&&$("query").value.trim())search()});
 $("ui-language").addEventListener("change",e=>{language(e.target.value);if($("query").value.trim())search()});
 $("theme").addEventListener("click",()=>theme(S.theme==="dark"?"light":"dark"));
 document.querySelectorAll("button.tab").forEach(b=>b.addEventListener("click",()=>{mode(b.dataset.mode);if($("query").value.trim())search()}));
