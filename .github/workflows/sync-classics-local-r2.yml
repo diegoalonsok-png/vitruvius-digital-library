@@ -1,9 +1,11 @@
 name: Bibliotheca - sincronizar corpus griego latino GitHub a R2 (SHA)
-# Congelado a petición del responsable: NO mover/copiar los textos existentes
-# de GitHub a R2 ni reescribir rutas de lectura. Se preservan intactos ambos.
-# La sincronización de metadatos de nuevas adquisiciones R2 es independiente.
+# Regularización autorizada el 27-11-2026. Conservar originales y rutas de lectura.
 on:
   workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/sync-classics-local-r2.yml'
 
 permissions:
   contents: write
@@ -12,10 +14,9 @@ concurrency:
   cancel-in-progress: false
 jobs:
   sync:
-    # Desactivado incluso ante ejecución manual; requiere orden expresa nueva.
-    if: ${{ false }}
+    if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
-    timeout-minutes: 90
+    timeout-minutes: 180
     steps:
       - uses: actions/checkout@v4
         with:
@@ -47,14 +48,27 @@ jobs:
           R2_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
           R2_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
           R2_BUCKET: ${{ secrets.R2_BUCKET || 'vitruvius-bibliotheca' }}
-          LIMITE: ${{ inputs.limite || '40' }}
-        run: python scripts/sync-classics-local-to-r2.py --limit "$LIMITE"
+        shell: bash
+        run: |
+          set -euo pipefail
+          count() {
+            python -c 'import json,pathlib; p=pathlib.Path("data/r2/classics-local-r2-sync.json"); print(len(json.loads(p.read_text()).get("objects",[])) if p.exists() else 0)'
+          }
+          for batch in $(seq 1 12); do
+            before=$(count)
+            python scripts/sync-classics-local-to-r2.py --limit 40 --max-bucket-bytes 10000000000
+            after=$(count)
+            echo "Tanda $batch: $before -> $after certificados"
+            if [ "$after" -le "$before" ]; then break; fi
+          done
       - name: Publicar sólo el reporte de certificados de R2 en GitHub
+        if: always()
         shell: bash
         run: |
           set -euo pipefail
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          test -f data/r2/classics-local-r2-sync.json || exit 0
           git add data/r2/classics-local-r2-sync.json
           if git diff --cached --quiet; then
             echo "Sin novedades verificadas; no se modifican fichas ni lectores."
