@@ -91,6 +91,13 @@ function catalogues(){
     }
    }
   }catch{/* The original index remains usable if the optional expansion is offline. */}
+  // Independently transcribed critical editions; keep their identities and loci separate.
+  try{
+   const base="data/index/classics-critical-vitruvius-2026-11-27/";
+   const critical=await load(base+"manifest.json");
+   const allowed=new Map([["krohn-1912-indexed","data/critical-editions/krohn-1912-tei-loci.json"],["rose-1899-indexed","data/critical-editions/rose-1899-transcribed-loci.json"]]);
+   if(critical?.schema==="vitruvia-classics-lexical-index-v1"&&critical.works===2&&Array.isArray(critical.index)&&critical.index.length===2&&new Set(critical.index.map(w=>w.id)).size===2&&critical.index.every(w=>allowed.get(w.id)===w.file&&w.lang==="la"&&w.field==="latin"&&w.passages===731&&w.tokens>0))out.push({base,info:critical});
+  }catch{/* The existing index remains operational if this segment is unavailable. */}
   // A complete R2 lexical index is added only after SHA256 verification.
   // Earlier GitHub and R2 expansion editions take precedence on duplicates.
   try{
