@@ -250,6 +250,8 @@ function names(box,ruler){
   item.append(make("b",label));
   if(rec?.glyphs){const g=make("span",rec.glyphs,"v-ed-glyph"+(["nomen","prenomen"].includes(key)?" cartouche":""));g.lang="egy";if(window.HieroRender?.render)g.replaceChildren(window.HieroRender.render(rec.glyphs,{size:"35px"}));item.append(g)}
   if(rec?.trans)item.append(make("p","Transliteración: "+rec.trans));
+  if(rec?.reading)item.append(make("p","Lectura convencional publicada: "+rec.reading));
+  if(rec?.source)item.append(anchor("Fuente de la lectura",rec.source));
   if(rec?.gloss)item.append(make("p","Traducción / interpretación al castellano: "+rec.gloss));
   if(rec?.witness)item.append(make("p","Testimonio: "+rec.witness,"v-ed-note"));
   if(!rec)item.append(make("p","Este nombre no está acreditado en el repertorio local.","v-ed-note"));
@@ -257,6 +259,7 @@ function names(box,ruler){
   if(rec?.glyphs||rec?.trans)item.append(anchor("Examinar la lectura con lupa / inversión / contraste","egypt-document-viewer.html?king="+encodeURIComponent(ruler.id)+"&name="+key));
   box.append(item);
  }
+ if(ruler.authorityUrl)box.append(anchor("Consultar titulatura y testimonios en el repertorio académico",ruler.authorityUrl));
  box.append(make("p","Solo prenomen y nomen se representan dentro de cartuchos. Las glosas de nombres no equivalen a traducción de un papiro o inscripción completa.","v-ed-note"));
 }
 function books(box,ruler){
@@ -271,7 +274,7 @@ function books(box,ruler){
 async function render(){
  const token=++generation;if(!q)return;
  try{
-  registry??=await fetch("data/vitruvia/titulaturae.json").then(r=>r.ok?r.json():null);
+  registry??=await fetch("data/vitruvia/titulaturae.json?v=20261127-royal-texts-v2").then(r=>r.ok?r.json():null);
   if(token!==generation||!registry)return;
   const ruler=findRuler(registry);
   rail.querySelector("#v-egypt-scholar-dossier")?.remove();
