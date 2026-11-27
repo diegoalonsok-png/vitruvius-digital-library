@@ -1784,6 +1784,67 @@ function begin(q){
  active++;renderedKey="";renderingKey="";renderedTopic=false;
  bibliographyContext={rows:[],query:q||""};root.hidden=true;
 }
+/* Explicit documentary reading intent. Do not equate the short Aten hymn
+ * with the Great Hymn or infer authorship by Akhenaten. */
+function isGreatAtenHymn(query){
+ const q=String(query||"").normalize("NFD").replace(/\p{M}/gu,"").toLowerCase().replace(/[^\p{L}\p{N}]+/gu," ");
+ return /\b(?:himno|hymn|hymne|hino)\b/.test(q)&&
+  /\b(?:aton|aten|akhenaton|akhenaten|ajenaton|akenaton|amarna)\b/.test(q)&&
+  !/\b(?:pequeno|menor|corto|short|small|minor|petit|court)\b/.test(q);
+}
+const atenReading={
+ facsimile:"https://upload.wikimedia.org/wikipedia/commons/9/9d/Aten_worship_-_Great_Hymn_to_Aten.jpg",
+ record:"https://commons.wikimedia.org/wiki/File:Aten_worship_-_Great_Hymn_to_Aten.jpg",
+ photo:"https://commons.wikimedia.org/wiki/File:Great_Hymn_to_the_Aten_from_Ay%E2%80%99s_EA25_tomb.jpg",
+ edition:"https://mc.dlib.nyu.edu/files/books/ifa_egypt000254/ifa_egypt000254_hi.pdf",
+ ucl:"https://www.ucl.ac.uk/museums-static/digitalegypt/amarna/belief.html",
+ spanish:"https://es.wikisource.org/w/index.php?title=Gran_Himno_a_At%C3%B3n&oldid=1641728",
+ english:"https://en.wikisource.org/wiki/Great_Hymn_to_Aten"
+};
+function renderAtenHymn(rows,token){
+ reset("Gran Himno a Atón","Egipto · dinastía XVIII · período de Amarna","DOCUMENTO RELIGIOSO · LECTURA EPIGRÁFICA");
+ paragraph("Testimonio: tumba de Ay (TA25), Ajetatón, muro occidental, trece columnas jeroglíficas. Composición del reinado de Ajenatón, de autoría personal no demostrada. La inscripción sufrió daños; la edición histórica conserva lecturas anteriores.","article-lead");
+ heading("Leer el himno · jeroglíficos y traducción");
+ const panel=make("section",undefined,"aten-parallel-reading");
+ panel.style.cssText="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:18px;align-items:start";
+ const original=make("div"),translation=make("div");panel.append(original,translation);
+ original.append(make("h4","Original jeroglífico · copia epigráfica"));
+ const view=make("div");view.style.cssText="max-height:620px;overflow:auto;border:1px solid #777;background:#fff";
+ const image=make("img");image.src=atenReading.facsimile;image.alt="Copia jeroglífica del Gran Himno a Atón publicada por Davies en 1908, lámina XXVII";image.style.cssText="width:100%;height:auto;display:block;max-width:none";view.append(image);
+ const tools=make("div",undefined,"article-source-first-links");
+ const zoom=make("input");zoom.type="range";zoom.min="100";zoom.max="300";zoom.value="100";zoom.setAttribute("aria-label","Ampliar jeroglíficos");zoom.addEventListener("input",()=>image.style.width=zoom.value+"%");tools.append(zoom);
+ for(const [label,url] of [["Abrir lámina original",atenReading.facsimile],["Ficha y licencia",atenReading.record],["Fotografía de la inscripción",atenReading.photo],["Edición de Davies · láminas XXVII y XLI",atenReading.edition]]){const a=href(url,label);if(a)tools.append(a)}
+ original.append(view,tools,make("p","Copia epigráfica publicada en 1908, no fotografía del muro. Dominio público según la ficha del archivo. La fotografía de 2022 se consulta separadamente.","article-note"));
+ translation.append(make("h4","Traducción castellana · lectura de consulta"));
+ translation.append(make("p","Versión de Wikisource, revisión 1641728, CC BY-SA 4.0; traductor no identificado en la ficha consultada. No constituye una edición crítica ni una alineación por columnas.","article-note"));
+ const links=make("div",undefined,"article-source-first-links");
+ for(const [label,url] of [["Leer versión castellana completa",atenReading.spanish],["Historial y atribución", "https://es.wikisource.org/w/index.php?title=Gran_Himno_a_At%C3%B3n&action=history"],["Licencia CC BY-SA 4.0","https://creativecommons.org/licenses/by-sa/4.0/"]]){const a=href(url,label);if(a)links.append(a)}
+ translation.append(links);
+ const status=make("p","Cargando lectura de la revisión identificada…","article-note");
+ const textBox=make("div");textBox.style.cssText="max-height:620px;overflow:auto;line-height:1.7";translation.append(status,textBox);
+ $("article-body").append(panel);
+ const api="https://es.wikisource.org/w/api.php?"+new URLSearchParams({action:"parse",oldid:"1641728",prop:"text",format:"json",formatversion:"2",origin:"*"});
+ fetch(api).then(r=>{if(!r.ok)throw Error("HTTP "+r.status);return r.json()}).then(data=>{
+  if(token!==active||!panel.isConnected)return;
+  const raw=data.parse?.text;if(typeof raw!=="string")throw Error("No text");
+  const doc=new DOMParser().parseFromString(raw,"text/html");
+  const root=doc.querySelector(".mw-parser-output")||doc.body;
+  for(const el of root.querySelectorAll("table,style,script,.noprint,.mw-editsection,.reference,.reflist,.licensetpl,.ws-noexport"))el.remove();
+  const blocks=[...root.querySelectorAll("p,.poem")].filter(el=>!el.parentElement?.closest(".poem"));
+  const clean=blocks.map(el=>el.textContent.trim()).filter(t=>t.length>30);
+  const joined=clean.join(" ");
+  if(joined.length<3000||!joined.includes("Atón"))throw Error("Incomplete response");
+  for(const value of clean){const p=make("p",value);p.style.whiteSpace="pre-line";textBox.append(p)}
+  status.textContent="Lectura de consulta cargada desde Wikisource; sin equivalencia por columna certificada.";
+ }).catch(()=>{if(token===active&&panel.isConnected)status.textContent="No se pudo cargar la versión dentro de Vitruvia. Utilice el enlace de lectura completa."});
+ heading("Transliteración y traducción académica");
+ paragraph("UCL Digital Egypt presenta la transliteración y una traducción inglesa. Se conserva la separación entre el original, la transliteración y cada versión traducida.","article-note");
+ for(const [label,url] of [["UCL Digital Egypt · transliteración y traducción inglesa",atenReading.ucl],["E. A. Wallis Budge (1923) · traducción histórica inglesa",atenReading.english],["Davies, The Rock Tombs of El Amarna VI (1908), pp. 29–31, láminas XXVII y XLI · NYU",atenReading.edition]]){const a=href(url,label);if(a)$("article-body").append(a,make("p",""))}
+ heading("Estado de la edición");
+ paragraph("La escritura se muestra como imagen documental; la transcripción Unicode signo por signo y la traducción castellana crítica cotejada están pendientes. No se reconstruyen lagunas ni se inventan equivalencias.");
+ references([{title:"UCL Digital Egypt · Amarna Belief",link:atenReading.ucl},{title:"Davies 1908 · edición histórica",link:atenReading.edition},{title:"Copia epigráfica · procedencia y licencia",link:atenReading.record}], "Sandman, Texts from the Time of Akhenaten (1938), pp. 93–96. Consultar el testimonio y las variantes antes de citar.");
+ aside([{title:"Texto jeroglífico · lámina XXVII",link:atenReading.facsimile},{title:"Lectura castellana · versión de consulta",link:atenReading.spanish},{title:"Transliteración y traducción · UCL",link:atenReading.ucl}]);buildContents();
+}
 function render(rows,q,person=null,options={}){
  bibliographyContext={rows:rows||[],query:person?.name||q||""};
  if(!q){begin("");return}
@@ -1791,7 +1852,8 @@ function render(rows,q,person=null,options={}){
  const top=found.length?choose(found,q):{type:"topic",title:q};
  const isCodex=/(?:codex|harley|harleianus|ms\s*2767)/i.test(q);
  const isLocus=/(?:[IVX]{1,4}|\d{1,2})\s*[.,:]\s*\d{1,2}\s*[.,:]\s*\d{1,2}/i.test(q);
- const specialized=!!(referenceIntent?.preface||isVitruviusAuthority(q)||isCodex&&top.type==="manuscript"||isLocus&&top.type==="passage");
+ const atenHymn=isGreatAtenHymn(q);
+ const specialized=!!(atenHymn||referenceIntent?.preface||isVitruviusAuthority(q)||isCodex&&top.type==="manuscript"||isLocus&&top.type==="passage");
  const wanted=document.documentElement.lang||"es";
  const wiki=found.filter(x=>x.type==="wikipedia"&&x.pageid&&(x.preferredWiki||relevance(x,person?.name||q)>=40))
   .sort((a,b)=>Number(!!b.preferredWiki)-Number(!!a.preferredWiki)||Number(b.wikiLang===wanted)-Number(a.wikiLang===wanted)||relevance(b,q)-relevance(a,q))[0];
@@ -1799,7 +1861,7 @@ function render(rows,q,person=null,options={}){
  // While source discovery runs, do not start a duplicate encyclopedia search for
  // every partial result. Local result cards remain usable throughout.
  if(options.progressive&&!options.final&&!specialized&&!wiki&&!exact&&!found.some(x=>x.preferredAuthority))return;
- const key=JSON.stringify([q,wanted,person?.id,specialized?top:null,wiki?[wiki.pageid,wiki.wikiLang,wiki.fullExtract||wiki.excerpt]:null,exact?.link]);
+ const key=atenHymn?JSON.stringify(["aten-hymn",q,wanted]):JSON.stringify([q,wanted,person?.id,specialized?top:null,wiki?[wiki.pageid,wiki.wikiLang,wiki.fullExtract||wiki.excerpt]:null,exact?.link]);
  if(key===renderedKey||key===renderingKey){
   if(key===renderedKey&&renderedTopic)refreshArticleSources(found,q,person);
   return;
@@ -1807,6 +1869,7 @@ function render(rows,q,person=null,options={}){
  const token=++active;renderingKey=key;renderedTopic=false;
  $("article-evidence")?.replaceChildren();
  const done=()=>{if(token!==active)return;renderedKey=key;renderingKey=""};
+ if(atenHymn){renderAtenHymn(found,token);done();return}
  if(referenceIntent?.preface){renderPreface(found,q,referenceIntent.preface);done();return}
  if(isVitruviusAuthority(q)){renderVitruviusAuthority(found);done();return}
  if(isCodex&&top.type==="manuscript"){renderManuscript(top,found);done();return}
@@ -1818,6 +1881,6 @@ function render(rows,q,person=null,options={}){
   refreshArticleSources(bibliographyContext.rows,q,person);
  }).catch(()=>{if(token===active)renderingKey=""});
 }
-window.VitruviaArticles={render,begin,version:"1.2-preface-primary"};
+window.VitruviaArticles={render,begin,version:"1.3-aten-documentary-reading",isGreatAtenHymn};
 })();
 

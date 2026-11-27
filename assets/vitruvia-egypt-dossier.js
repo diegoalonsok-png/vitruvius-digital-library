@@ -92,7 +92,7 @@ function primaryTexts(box,ruler){
  box.append(make("h4","Textos religiosos, inscripciones y traducciones"));
  const records=ROYAL_PRIMARY[ruler.id]||[];
  if(!records.length){box.append(make("p","No se ha incorporado un texto con atribución y traducción verificadas para este rey. Consultar el repertorio epigráfico, sin asignar textos por coincidencia de nombre.","v-ed-note"));return}
- for(const r of records){const item=make("section",null,"v-ed-name");item.append(make("b",r.title),make("p",r.kind),make("p",r.note,"v-ed-note"),anchor(r.reading,r.url));if(r.witness)item.append(anchor("Fotografías y documentación del testimonio",r.witness));box.append(item)}
+ for(const r of records){const item=make("section",null,"v-ed-name");item.append(make("b",r.title),make("p",r.kind),make("p",r.note,"v-ed-note"),anchor(r.reading,r.url));if(r.title==="Gran Himno a Atón")item.append(anchor("Leer aquí · jeroglíficos y traducciones","vitruvia.html?q="+encodeURIComponent(r.title)+"&mode=all"));if(r.witness)item.append(anchor("Fotografías y documentación del testimonio",r.witness));box.append(item)}
 }
 const ROYAL_DRAWING_TYPES=[
  {label:"Plantas",suffix:"architectural plan"},
