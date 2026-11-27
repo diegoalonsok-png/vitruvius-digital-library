@@ -143,9 +143,11 @@ async function prepareCorpus(selection,registryError){
  if(registryError)notify("Registro no disponible; se usa corpus de reserva: "+registryError,"fallback");
  return {documents,df,avgLength,works,unavailable,declaredSources:sources.length,registryCount,explicit,sourcePassages,indexedPassages,sampledSources};
 }
-async function corpus(query){
+async function corpus(query,{targetedOnly=false}={}){
  if(!registryPromise)registryPromise=loadSources().catch(e=>{registryPromise=null;throw e});
  const registry=await registryPromise,selection=sourceSelection(query,registry.sources);
+ if(targetedOnly&&!selection.explicit)return {data:null,selection};
+ if(targetedOnly&&selection.sources.length>24)return {data:null,selection};
  const key=selection.explicit?selection.sources.map(s=>s.url).join("|"):"registry-sample";
  if(!corpusCache.has(key)){
   if(corpusCache.size>=3)corpusCache.delete(corpusCache.keys().next().value);
@@ -358,10 +360,12 @@ async function vectors(pipe,texts){
  }
  return out;
 }
-async function search(query,{method="neural"}={}){
+async function search(query,{method="neural",targetedOnly=false}={}){
  const q=asString(query);if(!q)return {rows:[],mode:"empty"};
- notify("Indexando los textos disponibles y calculando coincidencias exactas…");
- const {data,selection}=await corpus(q),ranked=lexicalRanking(q,data,selection);
+ const {data,selection}=await corpus(q,{targetedOnly});
+ if(!data)return {rows:[],mode:"not-targeted",method:"none"};
+ notify("Calculando coincidencias documentales y vocabulario académico…");
+ const ranked=lexicalRanking(q,data,selection);
  const scope="Cobertura: "+data.indexedPassages+"/"+data.sourcePassages+" pasajes de fuentes cargadas; "+data.works.length+"/"+data.declaredSources+" fuentes seleccionadas ("+data.registryCount+" rutas compatibles del registro). "+(data.explicit?"Consulta dirigida a obras identificadas.":"Muestreo del registro, no búsqueda exhaustiva.")+(data.sampledSources?" "+data.sampledSources+" fuentes muestreadas.":"");
  const coverageNotice=scope+(data.unavailable.length?" Fuentes no cargadas: "+data.unavailable.length+". Cobertura parcial.":"");
  const candidates=diversity(ranked);
@@ -423,5 +427,5 @@ async function rank(query,docs,{limit=30,candidates=40}={}){
   notify("IA semántica activa en el visor.","success");return {mode:"neural",rows};
  }catch(e){return {mode:"bm25-fallback",rows:pool.slice(0,limit),warning:String(e.message||e)}}
 }
-window.VitruviaAI={search,rank,model:MODEL,version:"1.3-academic-calibrated",sourceSelection,academicTerms};
+window.VitruviaAI={search,rank,model:MODEL,version:"1.4-vitruvia-integrated",sourceSelection,academicTerms};
 })();
