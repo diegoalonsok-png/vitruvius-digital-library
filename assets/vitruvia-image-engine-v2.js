@@ -25,6 +25,7 @@ function cataloguedPortrait(subject){
  return {name:p.title||subject.name,caption:p.description||p.title||subject.name,
  preview:p.localImage||p.image,original:p.image,page:p.imageSource||p.source,
  license:p.rights||"",credit:p.credit||p.museum||"",
+ objectTitle:p.title||"",museum:p.museum||"",inventory:p.inventory||p.accessionNumber||"",creationDate:p.creationDate||p.objectDate||"",discoveryDate:p.discoveryDate||"",discoverySource:p.discoverySource||"",
  score:10000,group:"sculpture",verifiedIdentity:true};
 }
 
@@ -217,7 +218,7 @@ function collectedImages(pages,topic){
   const objectName=clean(meta.ObjectName?.value||"");
   const caption=(objectName&&objectName.length<170&&!/QS:|\{\{/.test(objectName)?objectName:name)
    .replace(/\.(jpe?g|png|webp|tiff?|svg)$/i,"").replace(/^\d{3,}\s*[-–]\s*/,"").replace(/\s*[-–]\s*(?:foto|photo|photograph)\b.*$/i,"");
-  items.push({name,caption,preview:info.thumburl,large:(info.width>1200?info.thumburl.replace(/\/\d+px-/,"/1200px-"):safeLink(info.url)||info.thumburl),original:safeLink(info.url)||info.thumburl,page:info.descriptionurl,license,
+  items.push({name,caption,objectTitle:['object','sculpture'].includes(rank.group)&&objectName&&objectName.length<170&&!/QS:|\{\{/.test(objectName)?caption:undefined,preview:info.thumburl,large:(info.width>1200?info.thumburl.replace(/\/\d+px-/,"/1200px-"):safeLink(info.url)||info.thumburl),original:safeLink(info.url)||info.thumburl,page:info.descriptionurl,license,
    credit:["Wikimedia Commons",creator,date,license].filter(Boolean).join(" · "),year,score:rank.score,group:rank.group,colourEvidence:colour,verifiedIdentity:!!page.fromEntityImage});
  }
  return window.VitruviaDiscovery?.sortImages(items,topic)||items.sort((a,b)=>b.score-a.score);
