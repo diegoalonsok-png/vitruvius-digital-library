@@ -33,18 +33,30 @@ jobs:
           python-version: "3.12"
       - run: pip install --quiet "boto3>=1.36"
       - name: Construir el índice desde el texto alojado
-        run: node scripts/r2-indexar-clasicos.mjs --salida /tmp/indice-r2 ${{ inputs.obras && format('--obras {0}', inputs.obras) || '' }}
+        env:
+          OBRAS: ${{ inputs.obras }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          args=(--salida /tmp/indice-r2 --fusionar)
+          if [ -n "$OBRAS" ]; then args+=(--obras "$OBRAS"); fi
+          node scripts/r2-indexar-clasicos.mjs "${args[@]}"
       - name: Subir los fragmentos a R2 y verificarlos en el dominio público
         env:
           R2_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
           R2_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
         run: python scripts/r2-subir-indice.py --origen /tmp/indice-r2/indice
       - name: Guardar el manifiesto (solo el archivo liviano)
-        if: always()
+        if: success()
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add data/r2/indice-semantico-manifest.json
           if git diff --cached --quiet; then echo "Sin cambios"; exit 0; fi
           git commit -m "R2: índice semántico de los clásicos alojados"
-          for i in 1 2 3 4 5; do git pull --rebase -q origin main && git push -q origin HEAD:main && break; sleep 8; done
+          for i in 1 2 3 4 5; do
+            if git pull --rebase -q origin main && git push -q origin HEAD:main; then exit 0; fi
+            if test -d .git/rebase-merge || test -d .git/rebase-apply; then git rebase --abort; exit 1; fi
+            sleep 8
+          done
+          exit 1
