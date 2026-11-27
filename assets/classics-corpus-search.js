@@ -166,7 +166,7 @@ async function indexGate(queries){
   .filter(key=>key.endsWith("|"+work.lang))
   .map(key=>key+"|"+work.file);
  const covered=new Set();
- for(const work of manifest.index)for(const key of keysOf(work))covered.add(key);
+ const queriedLanguages=new Set();
  const present=new Set();
  /* Además de si la raíz está, el índice dice CUÁNTAS veces está en cada
     edición. Ese recuento ordena las descargas: una consulta que muestra ocho
@@ -181,12 +181,14 @@ async function indexGate(queries){
   if(!result)continue;
   if(result.complete===false)return null; // Never exclude an edition on a failed shard.
   answered=true;
+  for(const language of result.languages||[])queriedLanguages.add(language);
   for(const hit of result.hits)for(const key of keysOf(hit.work)){
    present.add(key);
    counts.set(key,(counts.get(key)||0)+hit.count);
   }
  }
  if(!answered)return null;
+ for(const work of manifest.index)if(queriedLanguages.has(work.lang))for(const key of keysOf(work))covered.add(key);
  return {covered,present,counts};
 }
 /* Descarga acotada: las ediciones que el índice no cubre se conservan todas
