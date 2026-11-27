@@ -39,7 +39,7 @@ for(const row of ocr){
  }
 }
 for(const row of aliases){
- const edition=registry.find(e=>e.workId===row.indexedUnderWorkId&&e.edition===row.edition&&e.path===row.indexedPath);
+ const edition=registry.find(e=>e.workId===row.indexedUnderWorkId&&(e.edition??null)===(row.edition??null)&&e.path===row.indexedPath);
  assert(edition&&existsSync(edition.path),"Alias de edición sin índice verificable: "+row.id);
  assert(row.reader.startsWith("lector-bilingue.html?edition=")|| (row.id==="krohn-1912-pdf"&&row.reader==="apparatus-bude.html?edition=krohn-1912"));
 }
