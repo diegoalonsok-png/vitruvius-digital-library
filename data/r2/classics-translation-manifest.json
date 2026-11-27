@@ -1,6 +1,6 @@
 {
  "schema": "vdl-classics-translation-manifest-v1",
- "generated": "2026-11-26T19:52:12.482681+00:00",
+ "generated": "2026-11-27T04:36:21.564003+00:00",
  "method": "Traducciones humanas TEI licenciadas y publicadas en R2 con SHA-256, índice literal por pasaje, sin alineación automática",
  "editions": [
   {
@@ -1483,6 +1483,98 @@
    ],
    "indexUrl": "https://libros.vitruvius-digital-library.org/corpus/indice/traducciones/cts-phi0474-phi031-en-56f252f5268b6964.json",
    "indexSha256": "56f252f5268b69646a8a41e509f2e7cd6754b1b5b5aef0a565e6cf8c0f638115"
+  },
+  {
+   "workId": "cts-phi0474-phi032",
+   "author": "Cicerón",
+   "title": "Pro M. Marcello",
+   "language": "en",
+   "filename": "cts-phi0474-phi032-en-5440d4d5666dc2fa.json",
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0474-phi032-en-5440d4d5666dc2fa.json",
+   "sha256": "5440d4d5666dc2fafb0ade13139ab3faf1e5c45bfbfdd01f56a110123efc5568",
+   "passages": 45,
+   "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0474/phi032/phi0474.phi032.perseus-eng2.xml",
+   "sourceUrn": "urn:cts:latinLit:phi0474.phi032.perseus-eng2",
+   "sourceSha256": "4382b8c7606d00d23c159a52ebc6b6e3e85240f72651900fba1865eb46c5e81d",
+   "sourceArchived": "https://libros.vitruvius-digital-library.org/corpus/fuentes/4382b8c7606d00d23c159a52ebc6b6e3e85240f72651900fba1865eb46c5e81d.xml",
+   "translators": [
+    "Charles Duke Yonge"
+   ],
+   "publicationYear": 1875,
+   "license": [
+    "https://creativecommons.org/licenses/by-sa/4.0/"
+   ],
+   "indexUrl": "https://libros.vitruvius-digital-library.org/corpus/indice/traducciones/cts-phi0474-phi032-en-65eae6cc7cfba2cb.json",
+   "indexSha256": "65eae6cc7cfba2cba52ba309533a40264d16af9347ead92a84e0fb3897dec1f6"
+  },
+  {
+   "workId": "cts-phi0474-phi033",
+   "author": "Cicerón",
+   "title": "Pro Q. Ligario",
+   "language": "en",
+   "filename": "cts-phi0474-phi033-en-0e07076fdff69f2b.json",
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0474-phi033-en-0e07076fdff69f2b.json",
+   "sha256": "0e07076fdff69f2b0e61744c21f662f3edd7e5693a914b255d574d138e4d401e",
+   "passages": 51,
+   "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0474/phi033/phi0474.phi033.perseus-eng2.xml",
+   "sourceUrn": "urn:cts:latinLit:phi0474.phi033.perseus-eng2",
+   "sourceSha256": "5d5afb76ae9d6e711bbc7fbcfb2c43d6516257b77650e31649de7b270a58dd33",
+   "sourceArchived": "https://libros.vitruvius-digital-library.org/corpus/fuentes/5d5afb76ae9d6e711bbc7fbcfb2c43d6516257b77650e31649de7b270a58dd33.xml",
+   "translators": [
+    "Charles Duke Yonge"
+   ],
+   "publicationYear": 1875,
+   "license": [
+    "https://creativecommons.org/licenses/by-sa/4.0/"
+   ],
+   "indexUrl": "https://libros.vitruvius-digital-library.org/corpus/indice/traducciones/cts-phi0474-phi033-en-7aff52e545b2bf7e.json",
+   "indexSha256": "7aff52e545b2bf7e4a4c9366a1975d81c3d4de6595a1d05cf75cd4d8e482aeca"
+  },
+  {
+   "workId": "cts-phi0474-phi034",
+   "author": "Cicerón",
+   "title": "Pro Rege Deiotaro",
+   "language": "en",
+   "filename": "cts-phi0474-phi034-en-6c3048f71f145e21.json",
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0474-phi034-en-6c3048f71f145e21.json",
+   "sha256": "6c3048f71f145e2105d339af7155e278ea3e773bddb64cc26023742db7b7318f",
+   "passages": 60,
+   "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0474/phi034/phi0474.phi034.perseus-eng2.xml",
+   "sourceUrn": "urn:cts:latinLit:phi0474.phi034.perseus-eng2",
+   "sourceSha256": "fd3bcdcc9a32c46dab0cb1c35d635ae54647b99de28b32a04a96acbe706912b5",
+   "sourceArchived": "https://libros.vitruvius-digital-library.org/corpus/fuentes/fd3bcdcc9a32c46dab0cb1c35d635ae54647b99de28b32a04a96acbe706912b5.xml",
+   "translators": [
+    "Charles Duke Yonge"
+   ],
+   "publicationYear": 1875,
+   "license": [
+    "https://creativecommons.org/licenses/by-sa/4.0/"
+   ],
+   "indexUrl": "https://libros.vitruvius-digital-library.org/corpus/indice/traducciones/cts-phi0474-phi034-en-f5238c00edf01467.json",
+   "indexSha256": "f5238c00edf014671ef4e59d703f8b95bb6467a715e96f2ca477c5c032029cd4"
+  },
+  {
+   "workId": "cts-phi1056-phi001",
+   "author": "Vitruvio",
+   "title": "De architectura",
+   "language": "en",
+   "filename": "cts-phi1056-phi001-en-0f1c4b8d0eaeb584.json",
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-phi1056-phi001-en-0f1c4b8d0eaeb584.json",
+   "sha256": "0f1c4b8d0eaeb584d6875f7c933ea5210c650955f0c7b4cf1ce2ee35a67f4145",
+   "passages": 875,
+   "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi1056/phi001/phi1056.phi001.perseus-eng2.xml",
+   "sourceUrn": "urn:cts:latinLit:phi1056.phi001.perseus-eng2",
+   "sourceSha256": "dd30c0bf623863e9f2e2be70f10d6223052b64ca1cdd549b2a5e5271cff9010a",
+   "sourceArchived": "https://libros.vitruvius-digital-library.org/corpus/fuentes/dd30c0bf623863e9f2e2be70f10d6223052b64ca1cdd549b2a5e5271cff9010a.xml",
+   "translators": [
+    "Morris Hicky Morgan"
+   ],
+   "publicationYear": 1914,
+   "license": [
+    "https://creativecommons.org/licenses/by-sa/4.0/"
+   ],
+   "indexUrl": "https://libros.vitruvius-digital-library.org/corpus/indice/traducciones/cts-phi1056-phi001-en-65f8e7cd1359297a.json",
+   "indexSha256": "65f8e7cd1359297a7a8417a821b435afd17e67c45643b36a958b41c0cd9a314a"
   }
  ],
  "lastDeferred": [
@@ -1624,6 +1716,106 @@
   },
   {
    "workId": "cts-phi0430-phi001",
+   "reason": "No hay traducción TEI descargable en Perseus"
+  },
+  {
+   "workId": "cts-phi0474-phi036",
+   "reason": "No hay traducción TEI descargable en Perseus"
+  },
+  {
+   "workId": "cts-phi0474-phi038",
+   "reason": "No hay traducción TEI descargable en Perseus"
+  },
+  {
+   "workId": "cts-phi0474-phi040",
+   "reason": "No hay traducción TEI descargable en Perseus"
+  },
+  {
+   "workId": "cts-phi0474-phi041",
+   "reason": "No hay traducción TEI descargable en Perseus"
+  },
+  {
+   "workId": "cts-phi0474-phi042",
+   "reason": "No hay traducción TEI descargable en Perseus"
+  },
+  {
+   "workId": "cts-phi0474-phi045",
+   "reason": "No hay traducción TEI descargable en Perseus"
+  },
+  {
+   "workId": "cts-phi0474-phi046",
+   "reason": "No hay traducción TEI descargable en Perseus"
+  },
+  {
+   "workId": "cts-phi0474-phi047",
+   "reason": "No hay traducción TEI descargable en Perseus"
+  },
+  {
+   "workId": "cts-phi0474-phi054",
+   "reason": "No hay traducción TEI descargable en Perseus"
+  },
+  {
+   "workId": "cts-phi0474-phi056",
+   "reason": "Sin traducción publicable: phi0474.phi056.perseus-eng1.xml: No está marcado como traducción humana TEI"
+  },
+  {
+   "workId": "cts-phi0474-phi057",
+   "reason": "Sin traducción publicable: phi0474.phi057.perseus-eng1.xml: No está marcado como traducción humana TEI"
+  },
+  {
+   "workId": "cts-phi0474-phi058",
+   "reason": "Sin traducción publicable: phi0474.phi058.perseus-eng1.xml: No está marcado como traducción humana TEI"
+  },
+  {
+   "workId": "cts-phi0474-phi059",
+   "reason": "Sin traducción publicable: phi0474.phi059.perseus-eng1.xml: No está marcado como traducción humana TEI"
+  },
+  {
+   "workId": "cts-phi0474-phi072",
+   "reason": "No hay traducción TEI descargable en Perseus"
+  },
+  {
+   "workId": "cts-phi0692-phi001",
+   "reason": "No hay traducción TEI descargable en Perseus"
+  },
+  {
+   "workId": "cts-phi0692-phi002",
+   "reason": "No hay traducción TEI descargable en Perseus"
+  },
+  {
+   "workId": "cts-phi0692-phi003",
+   "reason": "No hay traducción TEI descargable en Perseus"
+  },
+  {
+   "workId": "cts-phi0692-phi005",
+   "reason": "No hay traducción TEI descargable en Perseus"
+  },
+  {
+   "workId": "cts-phi0692-phi006",
+   "reason": "No hay traducción TEI descargable en Perseus"
+  },
+  {
+   "workId": "cts-phi0692-phi007",
+   "reason": "No hay traducción TEI descargable en Perseus"
+  },
+  {
+   "workId": "cts-phi0692-phi008",
+   "reason": "No hay traducción TEI descargable en Perseus"
+  },
+  {
+   "workId": "cts-phi0692-phi009",
+   "reason": "No hay traducción TEI descargable en Perseus"
+  },
+  {
+   "workId": "cts-phi0692-phi011",
+   "reason": "No hay traducción TEI descargable en Perseus"
+  },
+  {
+   "workId": "cts-phi0692-phi012",
+   "reason": "No hay traducción TEI descargable en Perseus"
+  },
+  {
+   "workId": "cts-phi0692-phi013",
    "reason": "No hay traducción TEI descargable en Perseus"
   }
  ],

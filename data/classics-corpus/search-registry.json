@@ -2,7 +2,7 @@
  "schema": "vitruvia-classics-search-registry-v1",
  "updated": "2026-11-27",
  "description": "Registro verificable de transcripciones HTML y textos JSON existentes que admiten búsqueda literal de contenido. No incluye automáticamente PDF escaneados, facsímiles ni fichas sin texto. Los índices auxiliares por locus y el aparato crítico se declaran por separado; no se suman a versiones textuales originales ni implican colación autóptica.",
- "count": 1081,
+ "count": 1085,
  "works": 805,
  "entries": [
   {
@@ -2391,6 +2391,19 @@
    "workId": "cts-phi0474-phi032",
    "author": "Cicerón",
    "title": "Pro M. Marcello",
+   "language": "en",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0474-phi032-en-5440d4d5666dc2fa.json",
+   "reader": "classics-text-reader.html?work=cts-phi0474-phi032&lang=en&edition=5440d4d5666dc2fa",
+   "sourceDescription": "Traducción humana acreditada: Charles Duke Yonge; TEI Perseus, licencia y SHA256 verificados",
+   "sourceUrn": "urn:cts:latinLit:phi0474.phi032.perseus-eng2",
+   "sha256": "5440d4d5666dc2fafb0ade13139ab3faf1e5c45bfbfdd01f56a110123efc5568",
+   "passages": 45
+  },
+  {
+   "workId": "cts-phi0474-phi032",
+   "author": "Cicerón",
+   "title": "Pro M. Marcello",
    "language": "la",
    "format": "json-passages",
    "path": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0474-phi032-la-5512ce847007c36e.json",
@@ -2404,6 +2417,19 @@
    "workId": "cts-phi0474-phi033",
    "author": "Cicerón",
    "title": "Pro Q. Ligario",
+   "language": "en",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0474-phi033-en-0e07076fdff69f2b.json",
+   "reader": "classics-text-reader.html?work=cts-phi0474-phi033&lang=en&edition=0e07076fdff69f2b",
+   "sourceDescription": "Traducción humana acreditada: Charles Duke Yonge; TEI Perseus, licencia y SHA256 verificados",
+   "sourceUrn": "urn:cts:latinLit:phi0474.phi033.perseus-eng2",
+   "sha256": "0e07076fdff69f2b0e61744c21f662f3edd7e5693a914b255d574d138e4d401e",
+   "passages": 51
+  },
+  {
+   "workId": "cts-phi0474-phi033",
+   "author": "Cicerón",
+   "title": "Pro Q. Ligario",
    "language": "la",
    "format": "json-passages",
    "path": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0474-phi033-la-5c9ae8e65f858620.json",
@@ -2412,6 +2438,19 @@
    "sourceUrn": "urn:cts:latinLit:phi0474.phi033.perseus-lat2",
    "sha256": "5c9ae8e65f8586207184699f1ae749a0cb63c82b9cb47a8dbebd29957631fbc3",
    "passages": 41
+  },
+  {
+   "workId": "cts-phi0474-phi034",
+   "author": "Cicerón",
+   "title": "Pro Rege Deiotaro",
+   "language": "en",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0474-phi034-en-6c3048f71f145e21.json",
+   "reader": "classics-text-reader.html?work=cts-phi0474-phi034&lang=en&edition=6c3048f71f145e21",
+   "sourceDescription": "Traducción humana acreditada: Charles Duke Yonge; TEI Perseus, licencia y SHA256 verificados",
+   "sourceUrn": "urn:cts:latinLit:phi0474.phi034.perseus-eng2",
+   "sha256": "6c3048f71f145e2105d339af7155e278ea3e773bddb64cc26023742db7b7318f",
+   "passages": 60
   },
   {
    "workId": "cts-phi0474-phi034",
@@ -2739,6 +2778,19 @@
    "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
    "sha256": "d1859e8354b048072c4a930f8f67e516ac6e8929e979b85d0488ee83cb44a10c",
    "passages": 26
+  },
+  {
+   "workId": "cts-phi1056-phi001",
+   "author": "Vitruvio",
+   "title": "De architectura",
+   "language": "en",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/cts-phi1056-phi001-en-0f1c4b8d0eaeb584.json",
+   "reader": "classics-text-reader.html?work=cts-phi1056-phi001&lang=en&edition=0f1c4b8d0eaeb584",
+   "sourceDescription": "Traducción humana acreditada: Morris Hicky Morgan; TEI Perseus, licencia y SHA256 verificados",
+   "sourceUrn": "urn:cts:latinLit:phi1056.phi001.perseus-eng2",
+   "sha256": "0f1c4b8d0eaeb584d6875f7c933ea5210c650955f0c7b4cf1ce2ee35a67f4145",
+   "passages": 875
   },
   {
    "workId": "cts-phi1056-phi001",

@@ -63347,7 +63347,8 @@
    "relatedWorkIds": [],
    "catalogueProvenance": "Título y autor de los catálogos CTS del sitio; edición contrastada con su cabecera TEI. No se retrotraduce el título.",
    "corpusFiles": {
-    "la": "https://libros.vitruvius-digital-library.org/corpus/cts-phi1056-phi001-la-74495af6761cfc6b.json"
+    "la": "https://libros.vitruvius-digital-library.org/corpus/cts-phi1056-phi001-la-74495af6761cfc6b.json",
+    "en": "https://libros.vitruvius-digital-library.org/corpus/cts-phi1056-phi001-en-0f1c4b8d0eaeb584.json"
    },
    "localVersions": [
     {
@@ -63359,6 +63360,14 @@
       "urn:cts:latinLit:phi1056.phi001.perseus-lat2"
      ],
      "sha256": "74495af6761cfc6bf36cd633060ee59e77e46627301f68253af40a87d26dbc5b"
+    },
+    {
+     "language": "en",
+     "path": "https://libros.vitruvius-digital-library.org/corpus/cts-phi1056-phi001-en-0f1c4b8d0eaeb584.json",
+     "label": "Traducción humana: Morris Hicky Morgan",
+     "reader": "classics-text-reader.html?work=cts-phi1056-phi001&lang=en&edition=0f1c4b8d0eaeb584",
+     "sourceUrn": "urn:cts:latinLit:phi1056.phi001.perseus-eng2",
+     "sha256": "0f1c4b8d0eaeb584d6875f7c933ea5210c650955f0c7b4cf1ce2ee35a67f4145"
     }
    ],
    "publicStatus": "lectura-local-parcial",
@@ -63395,7 +63404,22 @@
     "characters": 417254,
     "bytes": 550575,
     "url": "https://libros.vitruvius-digital-library.org/corpus/cts-phi1056-phi001-la-74495af6761cfc6b.json"
-   }
+   },
+   "humanTranslations": [
+    {
+     "language": "en",
+     "translators": [
+      "Morris Hicky Morgan"
+     ],
+     "publicationYear": 1914,
+     "sourceUrn": "urn:cts:latinLit:phi1056.phi001.perseus-eng2",
+     "license": [
+      "https://creativecommons.org/licenses/by-sa/4.0/"
+     ],
+     "url": "https://libros.vitruvius-digital-library.org/corpus/cts-phi1056-phi001-en-0f1c4b8d0eaeb584.json",
+     "indexUrl": "https://libros.vitruvius-digital-library.org/corpus/indice/traducciones/cts-phi1056-phi001-en-65f8e7cd1359297a.json"
+    }
+   ]
   },
   {
    "id": "cts-tlg0057-tlg001",
@@ -66625,7 +66649,8 @@
    "relatedWorkIds": [],
    "catalogueProvenance": "Título y autor de los catálogos CTS del sitio; edición contrastada con su cabecera TEI. No se retrotraduce el título.",
    "corpusFiles": {
-    "la": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0474-phi032-la-5512ce847007c36e.json"
+    "la": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0474-phi032-la-5512ce847007c36e.json",
+    "en": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0474-phi032-en-5440d4d5666dc2fa.json"
    },
    "localVersions": [
     {
@@ -66637,6 +66662,14 @@
       "urn:cts:latinLit:phi0474.phi032.perseus-lat2"
      ],
      "sha256": "5512ce847007c36ec390026d5cf20c74b2916f728f2afc0729c86eaaa441902d"
+    },
+    {
+     "language": "en",
+     "path": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0474-phi032-en-5440d4d5666dc2fa.json",
+     "label": "Traducción humana: Charles Duke Yonge",
+     "reader": "classics-text-reader.html?work=cts-phi0474-phi032&lang=en&edition=5440d4d5666dc2fa",
+     "sourceUrn": "urn:cts:latinLit:phi0474.phi032.perseus-eng2",
+     "sha256": "5440d4d5666dc2fafb0ade13139ab3faf1e5c45bfbfdd01f56a110123efc5568"
     }
    ],
    "publicStatus": "lectura-local-parcial",
@@ -66674,7 +66707,22 @@
     "characters": 18297,
     "bytes": 26386,
     "url": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0474-phi032-la-5512ce847007c36e.json"
-   }
+   },
+   "humanTranslations": [
+    {
+     "language": "en",
+     "translators": [
+      "Charles Duke Yonge"
+     ],
+     "publicationYear": 1875,
+     "sourceUrn": "urn:cts:latinLit:phi0474.phi032.perseus-eng2",
+     "license": [
+      "https://creativecommons.org/licenses/by-sa/4.0/"
+     ],
+     "url": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0474-phi032-en-5440d4d5666dc2fa.json",
+     "indexUrl": "https://libros.vitruvius-digital-library.org/corpus/indice/traducciones/cts-phi0474-phi032-en-65eae6cc7cfba2cb.json"
+    }
+   ]
   },
   {
    "id": "cts-phi0474-phi054",
@@ -66786,7 +66834,8 @@
    "relatedWorkIds": [],
    "catalogueProvenance": "Título y autor de los catálogos CTS del sitio; edición contrastada con su cabecera TEI. No se retrotraduce el título.",
    "corpusFiles": {
-    "la": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0474-phi033-la-5c9ae8e65f858620.json"
+    "la": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0474-phi033-la-5c9ae8e65f858620.json",
+    "en": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0474-phi033-en-0e07076fdff69f2b.json"
    },
    "localVersions": [
     {
@@ -66798,6 +66847,14 @@
       "urn:cts:latinLit:phi0474.phi033.perseus-lat2"
      ],
      "sha256": "5c9ae8e65f8586207184699f1ae749a0cb63c82b9cb47a8dbebd29957631fbc3"
+    },
+    {
+     "language": "en",
+     "path": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0474-phi033-en-0e07076fdff69f2b.json",
+     "label": "Traducción humana: Charles Duke Yonge",
+     "reader": "classics-text-reader.html?work=cts-phi0474-phi033&lang=en&edition=0e07076fdff69f2b",
+     "sourceUrn": "urn:cts:latinLit:phi0474.phi033.perseus-eng2",
+     "sha256": "0e07076fdff69f2b0e61744c21f662f3edd7e5693a914b255d574d138e4d401e"
     }
    ],
    "publicStatus": "lectura-local-parcial",
@@ -66835,7 +66892,22 @@
     "characters": 21372,
     "bytes": 29939,
     "url": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0474-phi033-la-5c9ae8e65f858620.json"
-   }
+   },
+   "humanTranslations": [
+    {
+     "language": "en",
+     "translators": [
+      "Charles Duke Yonge"
+     ],
+     "publicationYear": 1875,
+     "sourceUrn": "urn:cts:latinLit:phi0474.phi033.perseus-eng2",
+     "license": [
+      "https://creativecommons.org/licenses/by-sa/4.0/"
+     ],
+     "url": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0474-phi033-en-0e07076fdff69f2b.json",
+     "indexUrl": "https://libros.vitruvius-digital-library.org/corpus/indice/traducciones/cts-phi0474-phi033-en-7aff52e545b2bf7e.json"
+    }
+   ]
   },
   {
    "id": "cts-phi0474-phi034",
@@ -66867,7 +66939,8 @@
    "relatedWorkIds": [],
    "catalogueProvenance": "Título y autor de los catálogos CTS del sitio; edición contrastada con su cabecera TEI. No se retrotraduce el título.",
    "corpusFiles": {
-    "la": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0474-phi034-la-3b3d5d1d0bf939fc.json"
+    "la": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0474-phi034-la-3b3d5d1d0bf939fc.json",
+    "en": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0474-phi034-en-6c3048f71f145e21.json"
    },
    "localVersions": [
     {
@@ -66879,6 +66952,14 @@
       "urn:cts:latinLit:phi0474.phi034.perseus-lat2"
      ],
      "sha256": "3b3d5d1d0bf939fc6caac7b6a9008c0a630f3f12f7f6dda028b0c08650513b68"
+    },
+    {
+     "language": "en",
+     "path": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0474-phi034-en-6c3048f71f145e21.json",
+     "label": "Traducción humana: Charles Duke Yonge",
+     "reader": "classics-text-reader.html?work=cts-phi0474-phi034&lang=en&edition=6c3048f71f145e21",
+     "sourceUrn": "urn:cts:latinLit:phi0474.phi034.perseus-eng2",
+     "sha256": "6c3048f71f145e2105d339af7155e278ea3e773bddb64cc26023742db7b7318f"
     }
    ],
    "publicStatus": "lectura-local-parcial",
@@ -66916,7 +66997,22 @@
     "characters": 26125,
     "bytes": 35676,
     "url": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0474-phi034-la-3b3d5d1d0bf939fc.json"
-   }
+   },
+   "humanTranslations": [
+    {
+     "language": "en",
+     "translators": [
+      "Charles Duke Yonge"
+     ],
+     "publicationYear": 1875,
+     "sourceUrn": "urn:cts:latinLit:phi0474.phi034.perseus-eng2",
+     "license": [
+      "https://creativecommons.org/licenses/by-sa/4.0/"
+     ],
+     "url": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0474-phi034-en-6c3048f71f145e21.json",
+     "indexUrl": "https://libros.vitruvius-digital-library.org/corpus/indice/traducciones/cts-phi0474-phi034-en-f5238c00edf01467.json"
+    }
+   ]
   },
   {
    "id": "cts-phi0474-phi056",
