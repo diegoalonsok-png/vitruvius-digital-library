@@ -4,17 +4,17 @@
   "scope": "Se auditan exclusivamente 271 fichas de obras del catálogo local; no es un censo universal de literatura grecolatina.",
   "method": "Cruce de fichas bibliográficas, vínculos locales, corpus legible, registro de búsqueda y testimonios manuscritos; sin OCR ni verificación externa de los enlaces.",
   "counts": {
-    "cataloguedWorks": 706,
+    "cataloguedWorks": 730,
     "catalogueStatuses": {
       "lectura-local-completa": 23,
-      "lectura-local-parcial": 617,
+      "lectura-local-parcial": 641,
       "fuente-externa-identificada": 52,
       "repertoriado-busqueda-externa": 12,
       "pendiente-de-incorporar": 2
     },
-    "locallyReadableClaims": 640,
-    "indexedTextVersions": 924,
-    "indexedDistinctWorks": 677,
+    "locallyReadableClaims": 664,
+    "indexedTextVersions": 948,
+    "indexedDistinctWorks": 701,
     "manuscriptWitnesses": 107
   },
   "works": [
@@ -12856,6 +12856,366 @@
       ],
       "indexedTextFiles": [
         "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0018-tlg004-grc-0c46060cc7075ac4.json"
+      ],
+      "manuscriptRecords": 0,
+      "hasManuscriptRecord": false
+    },
+    {
+      "id": "cts-phi0474-phi026",
+      "author": "Cicerón",
+      "title": "Pro L. Cornelio Balbo",
+      "originalLanguage": "la",
+      "catalogueStatus": "lectura-local-parcial",
+      "indexedTextLanguages": [
+        "la"
+      ],
+      "indexedTextFiles": [
+        "https://libros.vitruvius-digital-library.org/corpus/cts-phi0474-phi026-la-ac68ad10e9001ab8.json"
+      ],
+      "manuscriptRecords": 0,
+      "hasManuscriptRecord": false
+    },
+    {
+      "id": "cts-phi0474-phi025",
+      "author": "Cicerón",
+      "title": "De Provinciis Consularibus",
+      "originalLanguage": "la",
+      "catalogueStatus": "lectura-local-parcial",
+      "indexedTextLanguages": [
+        "la"
+      ],
+      "indexedTextFiles": [
+        "https://libros.vitruvius-digital-library.org/corpus/cts-phi0474-phi025-la-3d0db041ae618521.json"
+      ],
+      "manuscriptRecords": 0,
+      "hasManuscriptRecord": false
+    },
+    {
+      "id": "cts-phi0474-phi023",
+      "author": "Cicerón",
+      "title": "Against Vatinius",
+      "originalLanguage": "la",
+      "catalogueStatus": "lectura-local-parcial",
+      "indexedTextLanguages": [
+        "la"
+      ],
+      "indexedTextFiles": [
+        "https://libros.vitruvius-digital-library.org/corpus/cts-phi0474-phi023-la-57f7dae4dc36d41d.json"
+      ],
+      "manuscriptRecords": 0,
+      "hasManuscriptRecord": false
+    },
+    {
+      "id": "cts-phi0474-phi024",
+      "author": "Cicerón",
+      "title": "Pro M. Caelio",
+      "originalLanguage": "la",
+      "catalogueStatus": "lectura-local-parcial",
+      "indexedTextLanguages": [
+        "la"
+      ],
+      "indexedTextFiles": [
+        "https://libros.vitruvius-digital-library.org/corpus/cts-phi0474-phi024-la-2d5224c4e159b91a.json"
+      ],
+      "manuscriptRecords": 0,
+      "hasManuscriptRecord": false
+    },
+    {
+      "id": "cts-phi0474-phi027",
+      "author": "Cicerón",
+      "title": "In L. Calpurnium Pisonem",
+      "originalLanguage": "la",
+      "catalogueStatus": "lectura-local-parcial",
+      "indexedTextLanguages": [
+        "la"
+      ],
+      "indexedTextFiles": [
+        "https://libros.vitruvius-digital-library.org/corpus/cts-phi0474-phi027-la-21abdffa0e75c44c.json"
+      ],
+      "manuscriptRecords": 0,
+      "hasManuscriptRecord": false
+    },
+    {
+      "id": "cts-phi0474-phi030",
+      "author": "Cicerón",
+      "title": "Pro C. Rabirio Postumo",
+      "originalLanguage": "la",
+      "catalogueStatus": "lectura-local-parcial",
+      "indexedTextLanguages": [
+        "la"
+      ],
+      "indexedTextFiles": [
+        "https://libros.vitruvius-digital-library.org/corpus/cts-phi0474-phi030-la-043fd5c853b0a535.json"
+      ],
+      "manuscriptRecords": 0,
+      "hasManuscriptRecord": false
+    },
+    {
+      "id": "cts-phi0474-phi028",
+      "author": "Cicerón",
+      "title": "Pro Cn. Plancio",
+      "originalLanguage": "la",
+      "catalogueStatus": "lectura-local-parcial",
+      "indexedTextLanguages": [
+        "la"
+      ],
+      "indexedTextFiles": [
+        "https://libros.vitruvius-digital-library.org/corpus/cts-phi0474-phi028-la-f26a527c93edd0dd.json"
+      ],
+      "manuscriptRecords": 0,
+      "hasManuscriptRecord": false
+    },
+    {
+      "id": "cts-phi0474-phi029",
+      "author": "Cicerón",
+      "title": "Pro M. Scauro",
+      "originalLanguage": "la",
+      "catalogueStatus": "lectura-local-parcial",
+      "indexedTextLanguages": [
+        "la"
+      ],
+      "indexedTextFiles": [
+        "https://libros.vitruvius-digital-library.org/corpus/cts-phi0474-phi029-la-6cf3385d8a19b585.json"
+      ],
+      "manuscriptRecords": 0,
+      "hasManuscriptRecord": false
+    },
+    {
+      "id": "cts-tlg1749-tlg001",
+      "author": "Vitae Hesiodi Particula",
+      "title": "Vitae Hesiodi Particula",
+      "originalLanguage": "grc",
+      "catalogueStatus": "lectura-local-parcial",
+      "indexedTextLanguages": [
+        "grc"
+      ],
+      "indexedTextFiles": [
+        "https://libros.vitruvius-digital-library.org/corpus/cts-tlg1749-tlg001-grc-55365dc717b0dd1b.json"
+      ],
+      "manuscriptRecords": 0,
+      "hasManuscriptRecord": false
+    },
+    {
+      "id": "cts-tlg1805-tlg001",
+      "author": "Vidas de Homero",
+      "title": "Vitae Herodotea",
+      "originalLanguage": "grc",
+      "catalogueStatus": "lectura-local-parcial",
+      "indexedTextLanguages": [
+        "grc"
+      ],
+      "indexedTextFiles": [
+        "https://libros.vitruvius-digital-library.org/corpus/cts-tlg1805-tlg001-grc-49ac3e19559942f0.json"
+      ],
+      "manuscriptRecords": 0,
+      "hasManuscriptRecord": false
+    },
+    {
+      "id": "cts-tlg0530-tlg005",
+      "author": "Pseudo-Galeno",
+      "title": "De fasciis",
+      "originalLanguage": "grc",
+      "catalogueStatus": "lectura-local-parcial",
+      "indexedTextLanguages": [
+        "grc"
+      ],
+      "indexedTextFiles": [
+        "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0530-tlg005-grc-9ad3d26a211d0cd4.json"
+      ],
+      "manuscriptRecords": 0,
+      "hasManuscriptRecord": false
+    },
+    {
+      "id": "cts-tlg0530-tlg006",
+      "author": "Pseudo-Galeno",
+      "title": "Ad Gaurum quomodo animetur fetus",
+      "originalLanguage": "grc",
+      "catalogueStatus": "lectura-local-parcial",
+      "indexedTextLanguages": [
+        "grc"
+      ],
+      "indexedTextFiles": [
+        "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0530-tlg006-grc-e7da16d90bd9d205.json"
+      ],
+      "manuscriptRecords": 0,
+      "hasManuscriptRecord": false
+    },
+    {
+      "id": "cts-tlg0530-tlg012",
+      "author": "Pseudo-Galeno",
+      "title": "Introductio seu medicus",
+      "originalLanguage": "grc",
+      "catalogueStatus": "lectura-local-parcial",
+      "indexedTextLanguages": [
+        "grc"
+      ],
+      "indexedTextFiles": [
+        "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0530-tlg012-grc-195d0d0a0559b949.json"
+      ],
+      "manuscriptRecords": 0,
+      "hasManuscriptRecord": false
+    },
+    {
+      "id": "cts-tlg0533-tlg018",
+      "author": "Calímaco",
+      "title": "Hymn to Delos",
+      "originalLanguage": "grc",
+      "catalogueStatus": "lectura-local-parcial",
+      "indexedTextLanguages": [
+        "grc"
+      ],
+      "indexedTextFiles": [
+        "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0533-tlg018-grc-4bc5bb7b247d250b.json"
+      ],
+      "manuscriptRecords": 0,
+      "hasManuscriptRecord": false
+    },
+    {
+      "id": "cts-tlg0533-tlg019",
+      "author": "Calímaco",
+      "title": "Hymn to Athena",
+      "originalLanguage": "grc",
+      "catalogueStatus": "lectura-local-parcial",
+      "indexedTextLanguages": [
+        "grc"
+      ],
+      "indexedTextFiles": [
+        "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0533-tlg019-grc-8d83d4cb5cc5e8da.json"
+      ],
+      "manuscriptRecords": 0,
+      "hasManuscriptRecord": false
+    },
+    {
+      "id": "cts-tlg0530-tlg029",
+      "author": "Pseudo-Galeno",
+      "title": "De remediis parabilibus",
+      "originalLanguage": "grc",
+      "catalogueStatus": "lectura-local-parcial",
+      "indexedTextLanguages": [
+        "grc"
+      ],
+      "indexedTextFiles": [
+        "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0530-tlg029-grc-be404e6002d0abf6.json"
+      ],
+      "manuscriptRecords": 0,
+      "hasManuscriptRecord": false
+    },
+    {
+      "id": "cts-tlg0533-tlg020",
+      "author": "Calímaco",
+      "title": "Hymn to Demeter",
+      "originalLanguage": "grc",
+      "catalogueStatus": "lectura-local-parcial",
+      "indexedTextLanguages": [
+        "grc"
+      ],
+      "indexedTextFiles": [
+        "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0533-tlg020-grc-cbfd1f998085db70.json"
+      ],
+      "manuscriptRecords": 0,
+      "hasManuscriptRecord": false
+    },
+    {
+      "id": "cts-tlg0552-tlg001",
+      "author": "Arquímedes",
+      "title": "De sphaera et cylindro",
+      "originalLanguage": "grc",
+      "catalogueStatus": "lectura-local-parcial",
+      "indexedTextLanguages": [
+        "grc"
+      ],
+      "indexedTextFiles": [
+        "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0552-tlg001-grc-ba42f4de22552a03.json"
+      ],
+      "manuscriptRecords": 0,
+      "hasManuscriptRecord": false
+    },
+    {
+      "id": "cts-tlg0552-tlg002",
+      "author": "Arquímedes",
+      "title": "Dimensio circuli",
+      "originalLanguage": "grc",
+      "catalogueStatus": "lectura-local-parcial",
+      "indexedTextLanguages": [
+        "grc"
+      ],
+      "indexedTextFiles": [
+        "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0552-tlg002-grc-e070680240cab189.json"
+      ],
+      "manuscriptRecords": 0,
+      "hasManuscriptRecord": false
+    },
+    {
+      "id": "cts-tlg0552-tlg003",
+      "author": "Arquímedes",
+      "title": "De conoidibus et sphaeroidibus",
+      "originalLanguage": "grc",
+      "catalogueStatus": "lectura-local-parcial",
+      "indexedTextLanguages": [
+        "grc"
+      ],
+      "indexedTextFiles": [
+        "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0552-tlg003-grc-01f4a85176fcdb3b.json"
+      ],
+      "manuscriptRecords": 0,
+      "hasManuscriptRecord": false
+    },
+    {
+      "id": "cts-tlg0018-tlg008",
+      "author": "Filón de Alejandría",
+      "title": "Quod Deus Sit Immutabilis",
+      "originalLanguage": "grc",
+      "catalogueStatus": "lectura-local-parcial",
+      "indexedTextLanguages": [
+        "grc"
+      ],
+      "indexedTextFiles": [
+        "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0018-tlg008-grc-a7df529b52a3196e.json"
+      ],
+      "manuscriptRecords": 0,
+      "hasManuscriptRecord": false
+    },
+    {
+      "id": "cts-tlg0018-tlg009",
+      "author": "Filón de Alejandría",
+      "title": "De Agricultura",
+      "originalLanguage": "grc",
+      "catalogueStatus": "lectura-local-parcial",
+      "indexedTextLanguages": [
+        "grc"
+      ],
+      "indexedTextFiles": [
+        "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0018-tlg009-grc-b36cf5ed7804e715.json"
+      ],
+      "manuscriptRecords": 0,
+      "hasManuscriptRecord": false
+    },
+    {
+      "id": "cts-tlg0018-tlg010",
+      "author": "Filón de Alejandría",
+      "title": "De Plantatione",
+      "originalLanguage": "grc",
+      "catalogueStatus": "lectura-local-parcial",
+      "indexedTextLanguages": [
+        "grc"
+      ],
+      "indexedTextFiles": [
+        "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0018-tlg010-grc-bd09eb7cff5170e8.json"
+      ],
+      "manuscriptRecords": 0,
+      "hasManuscriptRecord": false
+    },
+    {
+      "id": "cts-tlg1805-tlg002",
+      "author": "Vidas de Homero",
+      "title": "Plutarchi vita",
+      "originalLanguage": "grc",
+      "catalogueStatus": "lectura-local-parcial",
+      "indexedTextLanguages": [
+        "grc"
+      ],
+      "indexedTextFiles": [
+        "https://libros.vitruvius-digital-library.org/corpus/cts-tlg1805-tlg002-grc-3498f8d42a67d09b.json"
       ],
       "manuscriptRecords": 0,
       "hasManuscriptRecord": false
