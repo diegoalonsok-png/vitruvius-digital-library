@@ -316,6 +316,8 @@
   const zoom=state.zoom??automaticZoom(fullHigh-fullLow);
   const {low,high,range,travel}=dateWindow(fullLow,fullHigh,zoom,state.position);
   const windowEvents=visibleEvents.filter(e=>e.year>=low&&e.year<=high);
+  const eventKey=e=>[e.title,e.year,e.lane].join("|");
+  const allStops=visibleEvents.slice().sort((a,b)=>a.year-b.year||a.title.localeCompare(b.title));
   // Size the axis from the actual available content box. No 250px
   // minimum canvas and no fixed 960px map overflowing mobile readers.
   const cs=typeof getComputedStyle==="function"?getComputedStyle(root):{paddingLeft:"0",paddingRight:"0"};
@@ -413,7 +415,7 @@
    draw();if(focused)root.querySelector(".vat-pan input")?.focus({preventScroll:true});
   });
   const extent=el("span","vat-pan-extent");extent.style.cssText="display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap";
-  extent.append(el("span",null,showYear(fullLow)),el("span",null,L("Período completo","Full period","Période complète")),el("span",null,showYear(fullHigh)));
+  extent.append(el("span",null,showYear(fullLow)),el("span",null,L("Período completo","Full period","Période complète")+" · "+windowEvents.length+"/"+visibleEvents.length+" "+L("hitos","milestones","jalons")),el("span",null,showYear(fullHigh)));
   if(!travel)panLabel.textContent+=" · "+L("Amplíe (+) para desplazarse","Zoom in (+) to pan","Zoomez (+) pour vous déplacer");
   pan.append(panLabel,slider,extent);root.append(pan,detail);
   if(lifeScope&&outsideEvents.length){
@@ -434,17 +436,23 @@
   }
   stops.sort((a,b)=>a.event.year-b.event.year||a.event.title.localeCompare(b.event.title));
   function navigate(direction){
-   const current=stops.findIndex(item=>item.button.getAttribute("aria-pressed")==="true");
-   const index=current<0?(direction>0?0:stops.length-1):Math.max(0,Math.min(stops.length-1,current+direction));
-   const nextStop=stops[index];
-   if(!nextStop)return;
-   highlightButton(nextStop.button,detail,nextStop.event);
-   nextStop.button.focus?.({preventScroll:true});
+   const current=allStops.findIndex(e=>eventKey(e)===state.selected);
+   const index=current<0?(direction>0?0:allStops.length-1):Math.max(0,Math.min(allStops.length-1,current+direction));
+   const target=allStops[index];if(!target)return;
+   const nextStop=stops.find(item=>eventKey(item.event)===eventKey(target));
+   if(nextStop){
+    highlightButton(nextStop.button,detail,nextStop.event);
+    nextStop.button.focus?.({preventScroll:true});
+   }else if(travel>0){
+    state.zoom=zoom;state.position=Math.max(0,Math.min(1,(target.year-fullLow-range/2)/travel));
+    state.selected=eventKey(target);draw();
+    queueMicrotask(()=>root.querySelector('.vat-event[aria-pressed="true"]')?.focus({preventScroll:true}));
+   }
   }
   prev.title=L("Hito anterior","Previous milestone","Jalon précédent");
   next.title=L("Hito siguiente","Next milestone","Jalon suivant");
   zoomOut.disabled=zoom===1;zoomIn.disabled=zoom>=8||range<=1;
-  prev.disabled=next.disabled=!stops.length;
+  prev.disabled=next.disabled=!allStops.length;
   zoomOut.onclick=()=>{state.zoom=Math.max(1,zoom/2);draw()};
   zoomIn.onclick=()=>{state.zoom=Math.min(8,zoom*2);draw()};
   prev.onclick=()=>navigate(-1);
