@@ -45,8 +45,8 @@ async function related(id,kind,offset=0){
 function mediumOf(entity,description,building){
  const types=ids(entity,'P31'),d=norm(description);
  const has=(...values)=>values.some(v=>d.includes(v));
- if(building)return 'architecture';
  if(types.includes('Q3305213')||has('painting','pintura','cuadro','tableau','fresco','watercolor','watercolour','aquarelle','dibujo','drawing','etching','engraving','grabado','lithograph'))return 'painting';
+ if(building)return 'architecture';
  if(types.includes('Q860861')||has('sculpture','escultura','statue','estatua','bust','busto','relief'))return 'sculpture';
  if(has('installation art','instalacion artistica','art installation','performance art','happening','assemblage'))return 'installation';
  if(has('opera','operetta','stage play','theatrical play','theatre play','ballet','obra teatral','musical theatre'))return 'theatre';
@@ -60,10 +60,10 @@ function workRecord(entity,notable,coverage=0){
  const title=label(entity),instances=ids(entity,'P31');
  if(!qid(entity?.id)||!title||/^Q\d+$/.test(title)||instances.some(id=>['Q5','Q4167410','Q4167836','Q13406463'].includes(id)))return null;
  const desc=description(entity),claims=entity.claims||{};
- const building=!!claims.P84||/\b(building|house|museum|bridge|cathedral|edificio|casa|museo|puente|catedral|palacio|stadium|temple|templo|iglesia|church|chapel|capilla|villa|tower|torre|skyscraper|palais|eglise|chiesa|basilica|basilique|palazzo|biblioteca|library)\b/.test(norm(desc));
+ const buildingCandidate=!!claims.P84||/\b(building|house|museum|bridge|cathedral|edificio|casa|museo|puente|catedral|palacio|stadium|temple|templo|iglesia|church|chapel|capilla|villa|tower|torre|skyscraper|palais|eglise|chiesa|basilica|basilique|palazzo|biblioteca|library)\b/.test(norm(desc));
  // A date is meaningful only with its Wikidata property. An inauguration
  // (P1619) must not be silently treated as the year of design or construction.
- const medium=mediumOf(entity,desc,building);
+ const medium=mediumOf(entity,desc,buildingCandidate),building=medium==='architecture';
  const dateProps=building?['P571','P1619','P577']:medium==='painting'?['P571','P577']:['P577','P571','P575'];
  const candidate=dateProps.map(property=>{
   const statement=(entity.claims?.[property]||[]).find(c=>c.rank!=='deprecated'&&
@@ -71,7 +71,8 @@ function workRecord(entity,notable,coverage=0){
   return statement?{property,statement,time:statement.mainsnak.datavalue.value.time}:null;
  }).find(Boolean);
  const year=candidate?.time.match(/^([+-])(\d+)/);
- const numericYear=year?Number(year[2])*(year[1]==='-'?-1:1):null;
+ const precision=candidate?.statement?.mainsnak?.datavalue?.value?.precision;
+ const numericYear=year&&Number(precision??9)>=9?Number(year[2])*(year[1]==='-'?-1:1):null;
  const dateProperty=candidate?.property||'';
  const dateKind=dateProperty==='P1619'?'opening':dateProperty==='P571'?'inception':dateProperty==='P577'?'publication':dateProperty==='P575'?'discovery':'undated';
  const dateReferenced=!!candidate?.statement?.references?.length;
@@ -185,7 +186,7 @@ function showWorks(root,works,valid){
      work.dateKind==='inception'?L('Inicio','Inception','Conception'):
      work.dateKind==='opening'?L('Apertura','Opening','Ouverture'):L('Fecha','Date','Date'))+
     ': '+work.date+' · '+work.dateProperty:'';
-   body.append(el('p','web-dossier-meta',[dateValue,work.notable?L('Obra destacada','Notable work','Œuvre notable'):'','Wikidata · '+work.id].filter(Boolean).join(' · ')));
+   body.append(el('p','web-dossier-meta',[dateValue||(work.medium==='painting'?L('Fecha de creación no registrada con precisión anual','Creation year not recorded precisely','Année de création non renseignée précisément'):''),work.notable?L('Obra destacada','Notable work','Œuvre notable'):'','Wikidata · '+work.id].filter(Boolean).join(' · ')));
    if(work.description)body.append(el('p','web-dossier-description',work.description));
    body.append(link(L('Ficha y fuentes ↗','Record and sources ↗','Fiche et sources ↗'),'https://www.wikidata.org/wiki/'+work.id));item.append(body);stack.append(item);
    // Observe only after the card is mounted in its final group.
