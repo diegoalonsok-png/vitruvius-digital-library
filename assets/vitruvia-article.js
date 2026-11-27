@@ -20,7 +20,63 @@ function phrase(es,en,fr){const l=document.documentElement.lang;return l==="en"?
 function href(url,text){if(!url)return null;try{const u=new URL(url,location.href);if(!/^https?:$/.test(u.protocol))return null;
 const a=make("a",localText(text));a.href=u.href;
 if(u.origin!==location.origin){a.target="_blank";a.rel="noopener noreferrer"}return a}catch{return null}}
+
+// Encyclopedia identity strip: only a resolved human QID, never a guessed name.
+const identityCache=new Map();
+function identityDate(v){
+ const m=String(v?.time||"").match(/^([+-])(\d+)-(\d{2})-(\d{2})T/);
+ if(!m||!Number(m[2])||Number(v.precision)<9)return "";
+ const y=Number(m[2]),bc=m[1]==="-";
+ const year=String(y)+(bc?phrase(" a. C."," BCE"," av. J.-C."):"");
+ const month=Number(m[3]),day=Number(m[4]);
+ if(!bc&&v.calendarmodel?.endsWith("Q1985727")&&v.precision>=10&&month>=1&&month<=12){
+  const months=phrase("enero febrero marzo abril mayo junio julio agosto septiembre octubre noviembre diciembre","January February March April May June July August September October November December","janvier février mars avril mai juin juillet août septembre octobre novembre décembre").split(" ");
+  return (v.precision>=11&&day>=1&&day<=31?day+" ":"")+months[month-1]+" "+year;
+ }
+ return year;
+}
+function identityStrip(rows,token){
+ const row=rows.find(r=>r.entityKind==="person"&&/^Q\d+$/.test(r.wikidataId||"")&&(r.preferredWiki||r.preferredAuthority));
+ if(!row||token!==active)return;
+ const id=row.wikidataId,title=$("article-title"),prior=document.getElementById("article-life-facts");
+ if(prior?.dataset.qid===id)return;
+ prior?.remove();
+ const box=make("div",undefined,"article-byline");box.id="article-life-facts";box.dataset.qid=id;
+ box.style.cssText="margin:.4rem 0 .6rem;line-height:1.55;font-size:.92rem";
+ title.after(box);
+ const unknown=phrase("No documentado","Not documented","Non documenté");
+ const birth=phrase("Nacimiento","Birth","Naissance"),death=phrase("Fallecimiento","Death","Décès");
+ const year=n=>Number.isFinite(n)?Math.abs(n)+(n<0?phrase(" a. C."," BCE"," av. J.-C."):""):"";
+ function draw(b,d,bp="",dp="",occupation=""){
+  box.replaceChildren();
+  const line=(label,value,place)=>{const p=make("div");p.append(make("strong",label+": "),document.createTextNode([value,place].filter(Boolean).join(" · ")||unknown));box.append(p)};
+  line(birth,b,bp);line(death,d,dp);
+  if(occupation)line(phrase("Actividad","Occupation","Activité"),occupation,"");
+  const a=href("https://www.wikidata.org/wiki/"+id,phrase("Datos biográficos · Wikidata","Biographical data · Wikidata","Données biographiques · Wikidata"));if(a)box.append(a);
+ }
+ draw(year(row.entityBirthYear),"");
+ const lang=["es","en","fr"].includes(document.documentElement.lang)?document.documentElement.lang:"es";
+ const cacheKey=id+"|"+lang;
+ const get=async ids=>{
+  const u="https://www.wikidata.org/w/api.php?"+new URLSearchParams({action:"wbgetentities",ids:ids.join("|"),props:"claims|labels",languages:lang+"|en",format:"json",origin:"*"});
+  const res=await fetch(u,{signal:AbortSignal.timeout(8000)});if(!res.ok)throw Error("Wikidata");return (await res.json()).entities||{};
+ };
+ if(!identityCache.has(cacheKey))identityCache.set(cacheKey,(async()=>{
+  const entity=(await get([id]))[id];
+  const claims=property=>{const a=(entity?.claims?.[property]||[]).filter(x=>x.rank!=="deprecated");const preferred=a.filter(x=>x.rank==="preferred");return (preferred.length?preferred:a).map(x=>x.mainsnak?.datavalue?.value).filter(Boolean)};
+  if(!claims("P31").some(x=>x.id==="Q5"))return null;
+  const dates=p=>[...new Set(claims(p).map(identityDate).filter(Boolean))].join(" / ");
+  const ids=p=>[...new Set(claims(p).map(x=>x.id).filter(x=>/^Q\d+$/.test(x||"")))].slice(0,4);
+  const bp=ids("P19"),dp=ids("P20"),oc=ids("P106"),all=[...new Set([...bp,...dp,...oc])];
+  let labels={};if(all.length)try{labels=await get(all)}catch{}
+  const names=items=>items.map(q=>labels[q]?.labels?.[lang]?.value||labels[q]?.labels?.en?.value).filter(Boolean).join(" / ");
+  return [dates("P569"),dates("P570"),names(bp),names(dp),names(oc)];
+ })().catch(()=>{identityCache.delete(cacheKey);return null}));
+ identityCache.get(cacheKey).then(values=>{if(values&&token===active&&box.isConnected)draw(...values)});
+}
+
 function reset(title,sub,kicker){root.hidden=false;
+ document.getElementById("article-life-facts")?.remove();
 $("article-title").textContent=title;
 $("article-byline").textContent=sub||"";
 $("article-kicker").textContent=kicker;
@@ -1863,6 +1919,7 @@ function render(rows,q,person=null,options={}){
  if(options.progressive&&!options.final&&!specialized&&!wiki&&!exact&&!found.some(x=>x.preferredAuthority))return;
  const key=atenHymn?JSON.stringify(["aten-hymn",q,wanted]):JSON.stringify([q,wanted,person?.id,specialized?top:null,wiki?[wiki.pageid,wiki.wikiLang,wiki.fullExtract||wiki.excerpt]:null,exact?.link]);
  if(key===renderedKey||key===renderingKey){
+  identityStrip(found,active);
   if(key===renderedKey&&renderedTopic)refreshArticleSources(found,q,person);
   return;
  }
@@ -1871,10 +1928,12 @@ function render(rows,q,person=null,options={}){
  const done=()=>{if(token!==active)return;renderedKey=key;renderingKey=""};
  if(atenHymn){renderAtenHymn(found,token);done();return}
  if(referenceIntent?.preface){renderPreface(found,q,referenceIntent.preface);done();return}
- if(isVitruviusAuthority(q)){renderVitruviusAuthority(found);done();return}
+ if(isVitruviusAuthority(q)){renderVitruviusAuthority(found);identityStrip(found,token);done();return}
  if(isCodex&&top.type==="manuscript"){renderManuscript(top,found);done();return}
  if(isLocus&&top.type==="passage"){renderLocus(top,found);highlightArticle(q);done();return}
- void renderTopic({type:"topic",title:q},found,q,token,person).then(()=>{
+ const topicTask=renderTopic({type:"topic",title:q},found,q,token,person);
+ identityStrip(found,token);
+ void topicTask.then(()=>{
   if(token!==active)return;
   highlightArticle(person?.id==="cicero"?"ciceron cicero ciceronis ciceronem cicerone":q);
   done();renderedTopic=true;
