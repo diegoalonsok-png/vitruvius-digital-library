@@ -1006,7 +1006,11 @@ function renderCard(d){
  card.append(acts);return card
 }
 function synthesize(rows){const box=$("answer");box.replaceChildren();
- const evidence=rows.filter(r=>r.type==="passage"||r.type==="wikipedia"||r.type==="wikidata"||r.type==="museum").slice(0,3);
+ // Documentary synthesis must not treat authority metadata or encyclopedic snippets as primary evidence.
+ const evidence=rows.filter(r=>r.link&&r.excerpt&&(
+  (r.type==="passage"&&r.locus&&r.edition&&r.excerpt.trim())||
+  (r.type==="museum"&&r.source)
+ )).slice(0,3);
  if(!evidence.length){box.hidden=true;return}
  box.hidden=false;box.append(node("h3",null,T().synthesis));
  for(const r of evidence){const p=node("p");const l=makeLink(r.title,r.link);if(l)p.append(l,document.createTextNode(": "));p.append(document.createTextNode(brief(r.excerpt,220)));box.append(p)}
@@ -1323,11 +1327,11 @@ function verifiedPersonEvidence(row,query,identity){
  return true;
 }
 function authorityWeight(row){
- if(row.type==="wikipedia")return 35;
- if(row.type==="wikidata")return 20;
- if(row.type==="passage")return 25;
- if(row.type==="article"&&row.doi)return 15;
- if(row.type==="manuscript")return 25;
+ if(row.type==="wikipedia")return 0;
+ if(row.type==="wikidata")return 5;
+ if(row.type==="passage"&&row.locus&&row.edition)return 45;
+ if(row.type==="article"&&row.doi)return 25;
+ if(row.type==="manuscript")return 35;
  return 0;
 }
 function documentaryRelevance(row,query){
