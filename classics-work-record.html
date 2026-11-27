@@ -58,7 +58,7 @@ footer{border-top:1px solid var(--line);font-size:12px;color:#bbb;margin-top:30p
 <body><header><strong>Bibliotheca</strong><nav>
 <a href="index.html">Vitruvius Digital Library</a>
 <a href="bibliotheca-graeca-latina.html">Bibliotheca Graeca et Latina</a>
-<a href="index-auctorum-operum.html">Index auctorum et operum</a> <a id="vdl-bibliological-link" href="bibliotheca-fichas-bibliologicas.html">Ficha bibliológica y traducciones</a>
+<a href="index-auctorum-operum.html">Index auctorum et operum</a> <a href="#vdl-integrity-record">Control de integridad</a>
 <a href="index-codicum.html">Index codicum</a>
 <a href="codices-clasicos-prioritarios.html">Códices tempranos · 7 tratados</a>
 <a href="classics-manuscript-coverage.html">Control de testimonios y cobertura</a>
@@ -80,7 +80,7 @@ footer{border-top:1px solid var(--line);font-size:12px;color:#bbb;margin-top:30p
 <button id="bibliotheca-download-xlsx" type="button" title="Descargar las fichas, códices, ecdótica, ediciones, fuentes y bibliografía disponibles en un libro Excel">Descargar Excel · fichas y ecdótica</button></div>
 <p id="bibliotheca-xlsx-status" role="status" aria-live="polite" class="intro"></p>
 <p id="work-record-status" role="status" aria-live="polite">Consultando el catálogo académico…</p>
-<article id="work-record"></article><section class="translation-bibliography" id="translation-bibliography" aria-label="Traducciones y ediciones históricas documentadas" hidden></section>
+<article id="work-record"></article><section class="translation-bibliography" id="vdl-integrity-record" aria-label="Control bibliológico de la ficha" hidden></section><section class="translation-bibliography" id="translation-bibliography" aria-label="Traducciones y ediciones históricas documentadas" hidden></section>
 <section id="bibliotheca-federated-status" aria-label="Estado sincronizado del catálogo e índices"></section></main>
 <footer>Bibliotheca Graeca et Latina · Vitruvius Digital Library · Catálogo de ediciones y testimonios documentados · Chicago 18 (metadatos condicionados a fuentes verificadas).</footer>
 <script>
@@ -116,6 +116,34 @@ async function ready(){
    ["theory-v297-pdf","Diego Kurilo · De architectura · V297 · inglés"]
   ])if(![...selected.options].some(o=>o.value===id))selected.append(new Option(title,id));
   selected.append(new Option("Diego A. Kurilo · Vitruvius Digital Library · DOI del proyecto","vitruvius-digital-library"));
+  // Auditoría complementaria: una única ficha académica por identificador.
+  const auditRows=new Map(),integrityRows=new Map();
+  const readJSON=async path=>{const res=await fetch(path,{cache:"no-cache"});if(!res.ok)throw Error("HTTP "+res.status);return res.json()};
+  try{
+    const idx=await readJSON("data/bibliotheca-audit/index.json");
+    const chunks=await Promise.all(idx.files.map(f=>readJSON(f.path)));
+    for(const row of chunks.flatMap(x=>x.records))auditRows.set(row.id,row);
+    const options=new Set(Array.from(selected.options,o=>o.value));
+    for(const row of auditRows.values())if(!options.has(row.id)){selected.append(new Option(row.author+" · "+row.title,row.id));options.add(row.id)}
+  }catch(e){console.warn("Control bibliológico no disponible",e)}
+  try{const a=await readJSON("data/bibliotheca-audit/integrity.json");for(const row of a.records)integrityRows.set(row.id,row)}catch(e){console.warn("Control de integridad no disponible",e)}
+  const langNames={grc:"Griego antiguo",la:"Latín",it:"Italiano",en:"Inglés",es:"Castellano",fr:"Francés"};
+  const label=l=>langNames[l]||l||"No consignado";
+  const txStatus={registered:"Traducción textual registrada",facsimile_declared:"Traducción en facsímil declarado",external_declared:"Traducción externa registrada",not_documented:"Sin traducción documentada"};
+  const integrityStatus={verified_structural_gap:"Faltante estructural comprobado",some_version_structure_confirmed:"Estructura confirmada en alguna versión",scope_warning:"Advertencia de alcance",pending_full_review:"Pendiente de revisión integral",no_text_linked:"Sin texto asociado"};
+  function renderAudit(id){
+    const root=$("vdl-integrity-record"),r=auditRows.get(id),i=integrityRows.get(id);root.replaceChildren();root.hidden=!r;if(!r)return;
+    const add=(tag,txt,parent=root)=>{const el=document.createElement(tag);el.textContent=txt;parent.append(el);return el};
+    const line=(k,v)=>{if(v==null||v==="")return;const p=document.createElement("p"),s=document.createElement("strong");s.textContent=k+": ";p.append(s,document.createTextNode(String(v)));root.append(p)};
+    add("h2","Control bibliológico e integridad textual");
+    line("Lengua original",label(r.originalLanguage));line("Variedad histórica",r.languageVariety.label+" · "+(r.languageVariety.status==="pendiente"?"pendiente de determinar":"clasificación orientativa"));
+    line("Fundamento",r.languageVariety.basis);line("Traducciones",txStatus[r.translation.status]);line("Idiomas de traducción registrados",r.translation.registeredLanguages.map(label).join(", ")||"No documentados");
+    if(i){line("Estado de integridad",integrityStatus[i.status]||i.status);for(const v of i.versions.filter(v=>v.status!=="not_individually_examined"))line(label(v.language),(v.found??"")+" unidades"+(v.expected?" de "+v.expected:"")+(v.missing?.length?" · faltan "+v.missing.join(", "):"")+" · "+(v.basis||""));for(const f of i.facsimiles.filter(v=>v.note))line("Alcance de "+f.id,f.note)}
+    if(r.issues.length){const ul=document.createElement("ul");for(const issue of r.issues)add("li",issue,ul);root.append(ul)}
+    // Complementar la ficha existente sin repetir su bibliografía ni sus testimonios.
+    if(r.versions.length||r.facsimiles.length){const d=document.createElement("details");add("summary","Accesos registrados a versiones y facsímiles",d);const list=document.createElement("ul");const seen=new Set();function link(url,name){if(!url||seen.has(url))return;try{const u=new URL(url,location.href);if(u.protocol!=="https:"&&u.origin!==location.origin)return;seen.add(url);const li=document.createElement("li"),a=document.createElement("a");a.href=u.href;a.textContent=name;li.append(a);list.append(li)}catch{}}for(const v of r.versions)link(v.reader,"Leer "+label(v.language)+" · "+(v.source||v.edition||v.storage));for(const f of r.facsimiles){link(f.pdf,"PDF · "+f.title);if(f.ocr)link("buscador-facsimiles-clasicos.html?obra="+encodeURIComponent(f.id),"OCR · "+f.title)}link(r.localPDF,"PDF editorial");d.append(list);root.append(d)}
+    add("p","Control documental del 27-11-2026. No equivale a cotejo íntegro ni a verificación HTTP de todos los objetos R2.");
+  }
   // Repertorio bibliográfico externo: la inclusión nunca implica alojamiento de la traducción.
   const referenceTranslations={
    "plato-euthydemus":[
@@ -151,6 +179,7 @@ async function ready(){
   function show(){
    const id=selected.value;
    renderTranslations(id);
+   renderAudit(id);
    const url=new URL(location.href);
    if(id)url.searchParams.set("work",id);else url.searchParams.delete("work");
    history.replaceState(null,"",url);
@@ -163,14 +192,15 @@ async function ready(){
      const h=document.createElement("h2");h.textContent=w.author+" · "+w.work;
      const p=document.createElement("p");p.textContent="Ficha de transmisión manuscrita. El texto original y la edición PDF/DOCX se identifican según disponibilidad efectiva en los registros de lectura; no se presume que exista una edición crítica local.";
      $("work-record").append(h,p);
-   }else void API.render($("work-record"),id);
+   }else if(data.docs.has(id)||window.EditorialWorkRecords?.has(id))void API.render($("work-record"),id);
+   else if(auditRows.has(id)){const w=auditRows.get(id),root=$("work-record");root.replaceChildren();const h=document.createElement("h2");h.textContent=w.author+" · "+w.title;root.append(h);const p=document.createElement("p");p.textContent="Registro del inventario unificado; datos disponibles en el control bibliológico de esta misma ficha.";root.append(p)}
   }
-  selected.value=data.docs.has(requested)||r2Records.some(r=>r.r2===requested)||earlyRecords.some(r=>r.id===requested)||window.EditorialWorkRecords?.has(requested)?requested:"";
+  selected.value=data.docs.has(requested)||r2Records.some(r=>r.r2===requested)||earlyRecords.some(r=>r.id===requested)||window.EditorialWorkRecords?.has(requested)||auditRows.has(requested)?requested:"";
   if(!selected.value){$("work-record-status").textContent="Elija una de las "+data.count+" obras catalogadas."; }
   selected.addEventListener("change",show);
   $("print-record").addEventListener("click",()=>window.print());
   $("copy-record").addEventListener("click",async()=>{
-   const text=$("work-record").innerText||"";
+   const text=[$("work-record").innerText,$("vdl-integrity-record").innerText,$("translation-bibliography").innerText].filter(Boolean).join("\n\n");
    if(!text.trim())return;
    try{await navigator.clipboard.writeText(text+"\n"+location.href);$("work-record-status").textContent="Ficha copiada con enlace permanente."}
    catch{$("work-record-status").textContent="No se pudo copiar automáticamente; use selección e impresión."}
@@ -183,7 +213,7 @@ if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",
 </script>
 <script defer src="assets/button-press-feedback.js?v=20261111-pulsacion-v1"></script><script defer src="assets/ui-idioma.js?v=20261112-sitio3"></script><script defer src="assets/bibliotheca-r2-facsimiles.js?v=20261113-r2-1"></script><script defer src="assets/cifra-obras.js?v=20261113-cifra-1"></script><script defer src="assets/bibliotheca-federated-status.js?v=20261115-1"></script>
 
-<script>(()=>{const a=document.getElementById("vdl-bibliological-link");if(!a)return;const update=()=>{const q=new URLSearchParams(location.search).get("work");a.href="bibliotheca-fichas-bibliologicas.html"+(q?"?work="+encodeURIComponent(q):"")};update();document.addEventListener("change",()=>setTimeout(update,0));window.addEventListener("popstate",update)})();</script>
+
 <footer data-vdl-legal-notice="2026" role="contentinfo" aria-label="Derechos editoriales" style="box-sizing:border-box;display:block;clear:both;grid-column:1/-1;width:100%;margin:28px 0 0;padding:16px 18px;border-top:1px solid currentColor;text-align:center;font:12px/1.65 system-ui,sans-serif;color:inherit;background:transparent">
 <strong>© 2026 Editorial Sophia Lux · Arq. Diego Kurilo. Derechos reservados.</strong>
 <span style="opacity:.8">Los derechos sobre los materiales originales, el diseño y los aportes editoriales pertenecen a sus respectivos titulares. Los textos antiguos, facsímiles, imágenes y recursos de terceros conservan su situación jurídica y licencias propias.</span>
