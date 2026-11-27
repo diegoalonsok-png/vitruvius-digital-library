@@ -1025,6 +1025,36 @@ function renderCard(d){
    else window.prompt("Copiar referencia bibliográfica:",value);
   });acts.append(b);
  }
+ // Feedback is explicit, local and scoped to this query and source version.
+ const learning=window.VitruviaAI;
+ if(d.aiEvidence&&d.aiQuery&&d.sourcePath&&d.locus&&learning?.feedback&&!S.privateMode){
+  const group=node("details","ai-feedback");
+  const labels=S.lang==="en"?["Improve relevance · local memory","Relevant","Not relevant","Undo rating","Clear local AI memory","Saved in this browser","Session only","Rating removed"]:
+   S.lang==="fr"?["Améliorer la pertinence · mémoire locale","Pertinent","Non pertinent","Annuler","Effacer la mémoire IA locale","Enregistré dans ce navigateur","Session uniquement","Évaluation annulée"]:
+   ["Mejorar relevancia · memoria local","Pertinente","No pertinente","Deshacer valoración","Borrar memoria local de IA","Guardado en este navegador","Solo durante esta sesión","Valoración retirada"];
+  group.append(node("summary",null,labels[0]));
+  const controls=node("div","actions"),status=node("span","meta-line");
+  status.setAttribute("role","status");
+  const buttons=[];
+  const refresh=()=>{
+   const current=learning.feedbackState(d.aiQuery,d);
+   for(const [b,v] of buttons)b.setAttribute("aria-pressed",String(current===v));
+  };
+  for(const [v,label] of [[1,labels[1]],[-1,labels[2]],[0,labels[3]]]){
+   const b=node("button",null,label);b.type="button";buttons.push([b,v]);
+   b.addEventListener("click",()=>{
+    if(S.privateMode)return;
+    const result=learning.feedback(d.aiQuery,d,v);
+    if(result.accepted){status.textContent=v?(result.persisted?labels[5]:labels[6]):labels[7];refresh()}
+   });
+   controls.append(b);
+  }
+  const reset=node("button",null,labels[4]);reset.type="button";
+  reset.addEventListener("click",()=>{
+   if(window.confirm(labels[4]+"?")){learning.clearMemory();status.textContent=labels[7];refresh()}
+  });controls.append(reset);
+  group.append(controls,status);refresh();card.append(group);
+ }
  card.append(acts);return card
 }
 function synthesize(rows){const box=$("answer");box.replaceChildren();
@@ -1903,7 +1933,7 @@ async function search(){
  }
  if(["all","ai"].includes(mode)&&window.VitruviaAI){
   const method=mode==="ai"&&$("ai-method")?.value==="neural"?"neural":"bm25";
-  pending.push(window.VitruviaAI.search(q,{method,targetedOnly:mode==="all"}).then(v=>({
+  pending.push(window.VitruviaAI.search(q,{method,targetedOnly:mode==="all",learning:!S.privateMode}).then(v=>({
    name:v.mode==="not-targeted"?"":v.mode==="neural"?"E5 + BM25 · orden neuronal experimental":v.method==="bm25"?"BM25 · recuperación académica calibrada":v.mode==="bm25-fallback"?"BM25 · E5 no disponible":"Búsqueda de documentos",
    rows:v.rows||[],warnings:v.warning?[v.warning]:[]
   })).catch(e=>({name:"Modo IA · índice no disponible",rows:[],warnings:[String(e.message||e)]})));
