@@ -47213,7 +47213,8 @@
    "relatedWorkIds": [],
    "catalogueProvenance": "Título y autor de los catálogos CTS del sitio; edición contrastada con su cabecera TEI. No se retrotraduce el título.",
    "corpusFiles": {
-    "grc": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0006-tlg013-grc-f663ff4d2d5f0969.json"
+    "grc": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0006-tlg013-grc-f663ff4d2d5f0969.json",
+    "en": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0006-tlg013-en-93e808f92bc57266.json"
    },
    "localVersions": [
     {
@@ -47225,6 +47226,14 @@
       "urn:cts:greekLit:tlg0006.tlg013.perseus-grc2"
      ],
      "sha256": "f663ff4d2d5f0969e1e62d2ad661d2ef0b60485110e1c6bbb9e9039edd2b9f74"
+    },
+    {
+     "language": "en",
+     "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0006-tlg013-en-93e808f92bc57266.json",
+     "label": "Traducción humana: Edward P. Coleridge",
+     "reader": "classics-text-reader.html?work=cts-tlg0006-tlg013&lang=en&edition=93e808f92bc57266",
+     "sourceUrn": "urn:cts:greekLit:tlg0006.tlg013.perseus-eng2",
+     "sha256": "93e808f92bc57266402328f9d645d61cd771279243c403e54420476f993884fa"
     }
    ],
    "publicStatus": "lectura-local-parcial",
@@ -47261,7 +47270,22 @@
     "characters": 54985,
     "bytes": 173709,
     "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0006-tlg013-grc-f663ff4d2d5f0969.json"
-   }
+   },
+   "humanTranslations": [
+    {
+     "language": "en",
+     "translators": [
+      "Edward P. Coleridge"
+     ],
+     "publicationYear": 1891,
+     "sourceUrn": "urn:cts:greekLit:tlg0006.tlg013.perseus-eng2",
+     "license": [
+      "https://creativecommons.org/licenses/by-sa/4.0/"
+     ],
+     "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0006-tlg013-en-93e808f92bc57266.json",
+     "indexUrl": "https://libros.vitruvius-digital-library.org/corpus/indice/traducciones/cts-tlg0006-tlg013-en-588d52fc8b092851.json"
+    }
+   ]
   },
   {
    "id": "cts-tlg0006-tlg010",
@@ -47293,7 +47317,8 @@
    "relatedWorkIds": [],
    "catalogueProvenance": "Título y autor de los catálogos CTS del sitio; edición contrastada con su cabecera TEI. No se retrotraduce el título.",
    "corpusFiles": {
-    "grc": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0006-tlg010-grc-2d69c2a9e6ce1355.json"
+    "grc": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0006-tlg010-grc-2d69c2a9e6ce1355.json",
+    "en": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0006-tlg010-en-22eb5566bc6b2d9d.json"
    },
    "localVersions": [
     {
@@ -47305,6 +47330,14 @@
       "urn:cts:greekLit:tlg0006.tlg010.perseus-grc2"
      ],
      "sha256": "2d69c2a9e6ce135512c73b076685d716cf92a5fdfd84639e8390f49f63f04ea1"
+    },
+    {
+     "language": "en",
+     "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0006-tlg010-en-22eb5566bc6b2d9d.json",
+     "label": "Traducción humana: Edward P. Coleridge",
+     "reader": "classics-text-reader.html?work=cts-tlg0006-tlg010&lang=en&edition=22eb5566bc6b2d9d",
+     "sourceUrn": "urn:cts:greekLit:tlg0006.tlg010.perseus-eng2",
+     "sha256": "22eb5566bc6b2d9d2a7c3da311a45e2c65dc6503d2d7df426db9379f546c2f66"
     }
    ],
    "publicStatus": "lectura-local-parcial",
@@ -47341,7 +47374,22 @@
     "characters": 59803,
     "bytes": 207437,
     "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0006-tlg010-grc-2d69c2a9e6ce1355.json"
-   }
+   },
+   "humanTranslations": [
+    {
+     "language": "en",
+     "translators": [
+      "Edward P. Coleridge"
+     ],
+     "publicationYear": 1906,
+     "sourceUrn": "urn:cts:greekLit:tlg0006.tlg010.perseus-eng2",
+     "license": [
+      "https://creativecommons.org/licenses/by-sa/4.0/"
+     ],
+     "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0006-tlg010-en-22eb5566bc6b2d9d.json",
+     "indexUrl": "https://libros.vitruvius-digital-library.org/corpus/indice/traducciones/cts-tlg0006-tlg010-en-4eef6d3cbf7c8414.json"
+    }
+   ]
   },
   {
    "id": "cts-tlg5029-tlg001",
@@ -47557,7 +47605,8 @@
    "relatedWorkIds": [],
    "catalogueProvenance": "Título y autor de los catálogos CTS del sitio; edición contrastada con su cabecera TEI. No se retrotraduce el título.",
    "corpusFiles": {
-    "grc": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0006-tlg014-grc-0b976d1aa65e5e77.json"
+    "grc": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0006-tlg014-grc-0b976d1aa65e5e77.json",
+    "en": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0006-tlg014-en-4ea8d9a90f1898cb.json"
    },
    "localVersions": [
     {
@@ -47569,6 +47618,14 @@
       "urn:cts:greekLit:tlg0006.tlg014.perseus-grc2"
      ],
      "sha256": "0b976d1aa65e5e7762b9b80c56b01521b38b4da4ca13eaa75b24f59b0875765b"
+    },
+    {
+     "language": "en",
+     "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0006-tlg014-en-4ea8d9a90f1898cb.json",
+     "label": "Traducción humana: Edward P. Coleridge",
+     "reader": "classics-text-reader.html?work=cts-tlg0006-tlg014&lang=en&edition=4ea8d9a90f1898cb",
+     "sourceUrn": "urn:cts:greekLit:tlg0006.tlg014.perseus-eng2",
+     "sha256": "4ea8d9a90f1898cb9775611283c15df4fa8e21aab0d9b61d9213d1935a58bf7b"
     }
    ],
    "publicStatus": "lectura-local-parcial",
@@ -47605,7 +47662,22 @@
     "characters": 63517,
     "bytes": 203638,
     "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0006-tlg014-grc-0b976d1aa65e5e77.json"
-   }
+   },
+   "humanTranslations": [
+    {
+     "language": "en",
+     "translators": [
+      "Edward P. Coleridge"
+     ],
+     "publicationYear": 1906,
+     "sourceUrn": "urn:cts:greekLit:tlg0006.tlg014.perseus-eng2",
+     "license": [
+      "https://creativecommons.org/licenses/by-sa/4.0/"
+     ],
+     "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0006-tlg014-en-4ea8d9a90f1898cb.json",
+     "indexUrl": "https://libros.vitruvius-digital-library.org/corpus/indice/traducciones/cts-tlg0006-tlg014-en-1415322f232b73b3.json"
+    }
+   ]
   },
   {
    "id": "cts-tlg0057-tlg049",
@@ -67482,7 +67554,8 @@
    "relatedWorkIds": [],
    "catalogueProvenance": "Título y autor de los catálogos CTS del sitio; edición contrastada con su cabecera TEI. No se retrotraduce el título.",
    "corpusFiles": {
-    "grc": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0006-tlg015-grc-ef6d4a7b90df0786.json"
+    "grc": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0006-tlg015-grc-ef6d4a7b90df0786.json",
+    "en": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0006-tlg015-en-8644fd9917ab5e39.json"
    },
    "localVersions": [
     {
@@ -67494,6 +67567,14 @@
       "urn:cts:greekLit:tlg0006.tlg015.perseus-grc2"
      ],
      "sha256": "ef6d4a7b90df0786c094dc361423526faa9c8d387c4d336e66d938cd98592157"
+    },
+    {
+     "language": "en",
+     "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0006-tlg015-en-8644fd9917ab5e39.json",
+     "label": "Traducción humana: Edward P. Coleridge",
+     "reader": "classics-text-reader.html?work=cts-tlg0006-tlg015&lang=en&edition=8644fd9917ab5e39",
+     "sourceUrn": "urn:cts:greekLit:tlg0006.tlg015.perseus-eng2",
+     "sha256": "8644fd9917ab5e3902f4257efc06bb525cef6d19d2dfa268946ddf616802c741"
     }
    ],
    "publicStatus": "lectura-local-parcial",
@@ -67530,7 +67611,22 @@
     "characters": 64606,
     "bytes": 194804,
     "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0006-tlg015-grc-ef6d4a7b90df0786.json"
-   }
+   },
+   "humanTranslations": [
+    {
+     "language": "en",
+     "translators": [
+      "Edward P. Coleridge"
+     ],
+     "publicationYear": 1891,
+     "sourceUrn": "urn:cts:greekLit:tlg0006.tlg015.perseus-eng2",
+     "license": [
+      "https://creativecommons.org/licenses/by-sa/4.0/"
+     ],
+     "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0006-tlg015-en-8644fd9917ab5e39.json",
+     "indexUrl": "https://libros.vitruvius-digital-library.org/corpus/indice/traducciones/cts-tlg0006-tlg015-en-94265fc3f93c9a06.json"
+    }
+   ]
   },
   {
    "id": "cts-tlg0014-tlg046",

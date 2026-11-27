@@ -1,6 +1,6 @@
 {
  "schema": "vdl-classics-translation-manifest-v1",
- "generated": "2026-11-27T15:45:30.264180+00:00",
+ "generated": "2026-11-27T16:05:14.558378+00:00",
  "method": "Traducciones humanas TEI licenciadas y publicadas en R2 con SHA-256, índice literal por pasaje, sin alineación automática",
  "editions": [
   {
@@ -1851,6 +1851,98 @@
    ],
    "indexUrl": "https://libros.vitruvius-digital-library.org/corpus/indice/traducciones/cts-tlg0006-tlg009-en-c184bf29c4ab404d.json",
    "indexSha256": "c184bf29c4ab404d4290e08954c767b33265b7733cf6e4472aea132a7a75ec32"
+  },
+  {
+   "workId": "cts-tlg0006-tlg010",
+   "author": "Eurípides",
+   "title": "Ion",
+   "language": "en",
+   "filename": "cts-tlg0006-tlg010-en-22eb5566bc6b2d9d.json",
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0006-tlg010-en-22eb5566bc6b2d9d.json",
+   "sha256": "22eb5566bc6b2d9d2a7c3da311a45e2c65dc6503d2d7df426db9379f546c2f66",
+   "passages": 570,
+   "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0006/tlg010/tlg0006.tlg010.perseus-eng2.xml",
+   "sourceUrn": "urn:cts:greekLit:tlg0006.tlg010.perseus-eng2",
+   "sourceSha256": "0ed5a0a0b1d61cb37010bf977c1bbb74661e88a0556031d10d2a5cffb89fe5f7",
+   "sourceArchived": "https://libros.vitruvius-digital-library.org/corpus/fuentes/0ed5a0a0b1d61cb37010bf977c1bbb74661e88a0556031d10d2a5cffb89fe5f7.xml",
+   "translators": [
+    "Edward P. Coleridge"
+   ],
+   "publicationYear": 1906,
+   "license": [
+    "https://creativecommons.org/licenses/by-sa/4.0/"
+   ],
+   "indexUrl": "https://libros.vitruvius-digital-library.org/corpus/indice/traducciones/cts-tlg0006-tlg010-en-4eef6d3cbf7c8414.json",
+   "indexSha256": "4eef6d3cbf7c8414f23e7479abdc4dbbe6ddcbe553a5aa5f85f87d4cbac53611"
+  },
+  {
+   "workId": "cts-tlg0006-tlg013",
+   "author": "Eurípides",
+   "title": "Iphigenia in Tauris",
+   "language": "en",
+   "filename": "cts-tlg0006-tlg013-en-93e808f92bc57266.json",
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0006-tlg013-en-93e808f92bc57266.json",
+   "sha256": "93e808f92bc57266402328f9d645d61cd771279243c403e54420476f993884fa",
+   "passages": 408,
+   "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0006/tlg013/tlg0006.tlg013.perseus-eng2.xml",
+   "sourceUrn": "urn:cts:greekLit:tlg0006.tlg013.perseus-eng2",
+   "sourceSha256": "5c3564b64032ac1abe7ee1d7a6fdb2ffa5775bd5889a5c350a72efe6173c33af",
+   "sourceArchived": "https://libros.vitruvius-digital-library.org/corpus/fuentes/5c3564b64032ac1abe7ee1d7a6fdb2ffa5775bd5889a5c350a72efe6173c33af.xml",
+   "translators": [
+    "Edward P. Coleridge"
+   ],
+   "publicationYear": 1891,
+   "license": [
+    "https://creativecommons.org/licenses/by-sa/4.0/"
+   ],
+   "indexUrl": "https://libros.vitruvius-digital-library.org/corpus/indice/traducciones/cts-tlg0006-tlg013-en-588d52fc8b092851.json",
+   "indexSha256": "588d52fc8b09285120a4bb5c75917add994a733a2ee3eac6e4a40ab74600da71"
+  },
+  {
+   "workId": "cts-tlg0006-tlg014",
+   "author": "Eurípides",
+   "title": "Helen",
+   "language": "en",
+   "filename": "cts-tlg0006-tlg014-en-4ea8d9a90f1898cb.json",
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0006-tlg014-en-4ea8d9a90f1898cb.json",
+   "sha256": "4ea8d9a90f1898cb9775611283c15df4fa8e21aab0d9b61d9213d1935a58bf7b",
+   "passages": 495,
+   "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0006/tlg014/tlg0006.tlg014.perseus-eng2.xml",
+   "sourceUrn": "urn:cts:greekLit:tlg0006.tlg014.perseus-eng2",
+   "sourceSha256": "28e28bc6336c7c8f2e10564d66c49e21b93db9765a7f3987a9db25adb910b4be",
+   "sourceArchived": "https://libros.vitruvius-digital-library.org/corpus/fuentes/28e28bc6336c7c8f2e10564d66c49e21b93db9765a7f3987a9db25adb910b4be.xml",
+   "translators": [
+    "Edward P. Coleridge"
+   ],
+   "publicationYear": 1906,
+   "license": [
+    "https://creativecommons.org/licenses/by-sa/4.0/"
+   ],
+   "indexUrl": "https://libros.vitruvius-digital-library.org/corpus/indice/traducciones/cts-tlg0006-tlg014-en-1415322f232b73b3.json",
+   "indexSha256": "1415322f232b73b35b1f2faaf4fbffcdce68b88ab6f94761923da315ad705092"
+  },
+  {
+   "workId": "cts-tlg0006-tlg015",
+   "author": "Eurípides",
+   "title": "Phoenissae",
+   "language": "en",
+   "filename": "cts-tlg0006-tlg015-en-8644fd9917ab5e39.json",
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0006-tlg015-en-8644fd9917ab5e39.json",
+   "sha256": "8644fd9917ab5e3902f4257efc06bb525cef6d19d2dfa268946ddf616802c741",
+   "passages": 421,
+   "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0006/tlg015/tlg0006.tlg015.perseus-eng2.xml",
+   "sourceUrn": "urn:cts:greekLit:tlg0006.tlg015.perseus-eng2",
+   "sourceSha256": "3fa61274d8b9391e08873d6e504b2df9fc2a648d4f2825c7ccae16d2d380ef54",
+   "sourceArchived": "https://libros.vitruvius-digital-library.org/corpus/fuentes/3fa61274d8b9391e08873d6e504b2df9fc2a648d4f2825c7ccae16d2d380ef54.xml",
+   "translators": [
+    "Edward P. Coleridge"
+   ],
+   "publicationYear": 1891,
+   "license": [
+    "https://creativecommons.org/licenses/by-sa/4.0/"
+   ],
+   "indexUrl": "https://libros.vitruvius-digital-library.org/corpus/indice/traducciones/cts-tlg0006-tlg015-en-94265fc3f93c9a06.json",
+   "indexSha256": "94265fc3f93c9a061854c273eeaa05ce7e949ca3be4991be4c6882731df0b5ec"
   }
  ],
  "lastDeferred": [

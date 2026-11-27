@@ -2,7 +2,7 @@
  "schema": "vitruvia-classics-search-registry-v1",
  "updated": "2026-11-27",
  "description": "Registro verificable de transcripciones HTML y textos JSON existentes que admiten búsqueda literal de contenido. No incluye automáticamente PDF escaneados, facsímiles ni fichas sin texto. Los índices auxiliares por locus y el aparato crítico se declaran por separado; no se suman a versiones textuales originales ni implican colación autóptica.",
- "count": 1159,
+ "count": 1163,
  "works": 865,
  "entries": [
   {
@@ -3247,6 +3247,19 @@
    "workId": "cts-tlg0006-tlg010",
    "author": "Eurípides",
    "title": "Ion",
+   "language": "en",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0006-tlg010-en-22eb5566bc6b2d9d.json",
+   "reader": "classics-text-reader.html?work=cts-tlg0006-tlg010&lang=en&edition=22eb5566bc6b2d9d",
+   "sourceDescription": "Traducción humana acreditada: Edward P. Coleridge; TEI Perseus, licencia y SHA256 verificados",
+   "sourceUrn": "urn:cts:greekLit:tlg0006.tlg010.perseus-eng2",
+   "sha256": "22eb5566bc6b2d9d2a7c3da311a45e2c65dc6503d2d7df426db9379f546c2f66",
+   "passages": 570
+  },
+  {
+   "workId": "cts-tlg0006-tlg010",
+   "author": "Eurípides",
+   "title": "Ion",
    "language": "grc",
    "format": "json-passages",
    "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0006-tlg010-grc-2d69c2a9e6ce1355.json",
@@ -3255,6 +3268,19 @@
    "sourceUrn": "urn:cts:greekLit:tlg0006.tlg010.perseus-grc2",
    "sha256": "2d69c2a9e6ce135512c73b076685d716cf92a5fdfd84639e8390f49f63f04ea1",
    "passages": 561
+  },
+  {
+   "workId": "cts-tlg0006-tlg013",
+   "author": "Eurípides",
+   "title": "Iphigenia in Tauris",
+   "language": "en",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0006-tlg013-en-93e808f92bc57266.json",
+   "reader": "classics-text-reader.html?work=cts-tlg0006-tlg013&lang=en&edition=93e808f92bc57266",
+   "sourceDescription": "Traducción humana acreditada: Edward P. Coleridge; TEI Perseus, licencia y SHA256 verificados",
+   "sourceUrn": "urn:cts:greekLit:tlg0006.tlg013.perseus-eng2",
+   "sha256": "93e808f92bc57266402328f9d645d61cd771279243c403e54420476f993884fa",
+   "passages": 408
   },
   {
    "workId": "cts-tlg0006-tlg013",
@@ -3273,6 +3299,19 @@
    "workId": "cts-tlg0006-tlg014",
    "author": "Eurípides",
    "title": "Helen",
+   "language": "en",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0006-tlg014-en-4ea8d9a90f1898cb.json",
+   "reader": "classics-text-reader.html?work=cts-tlg0006-tlg014&lang=en&edition=4ea8d9a90f1898cb",
+   "sourceDescription": "Traducción humana acreditada: Edward P. Coleridge; TEI Perseus, licencia y SHA256 verificados",
+   "sourceUrn": "urn:cts:greekLit:tlg0006.tlg014.perseus-eng2",
+   "sha256": "4ea8d9a90f1898cb9775611283c15df4fa8e21aab0d9b61d9213d1935a58bf7b",
+   "passages": 495
+  },
+  {
+   "workId": "cts-tlg0006-tlg014",
+   "author": "Eurípides",
+   "title": "Helen",
    "language": "grc",
    "format": "json-passages",
    "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0006-tlg014-grc-0b976d1aa65e5e77.json",
@@ -3281,6 +3320,19 @@
    "sourceUrn": "urn:cts:greekLit:tlg0006.tlg014.perseus-grc2",
    "sha256": "0b976d1aa65e5e7762b9b80c56b01521b38b4da4ca13eaa75b24f59b0875765b",
    "passages": 491
+  },
+  {
+   "workId": "cts-tlg0006-tlg015",
+   "author": "Eurípides",
+   "title": "Phoenissae",
+   "language": "en",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0006-tlg015-en-8644fd9917ab5e39.json",
+   "reader": "classics-text-reader.html?work=cts-tlg0006-tlg015&lang=en&edition=8644fd9917ab5e39",
+   "sourceDescription": "Traducción humana acreditada: Edward P. Coleridge; TEI Perseus, licencia y SHA256 verificados",
+   "sourceUrn": "urn:cts:greekLit:tlg0006.tlg015.perseus-eng2",
+   "sha256": "8644fd9917ab5e3902f4257efc06bb525cef6d19d2dfa268946ddf616802c741",
+   "passages": 421
   },
   {
    "workId": "cts-tlg0006-tlg015",
