@@ -22,7 +22,7 @@
   works:[L("Obras y creaciones","Works and creations","Œuvres et créations"),"▤"],
   documents:[L("Documentos y ediciones","Documents and editions","Documents et éditions"),"▥"]
  };
- const state={query:"",token:0,authority:null,works:[],albums:[],rows:[],zoom:1,selected:"",rowSignature:"",pendingWorks:null,tagColor:null,phase:"idle",history:[],historyIncomplete:false,personDates:null,family:[]};
+ const state={query:"",token:0,authority:null,works:[],albums:[],rows:[],zoom:1,selected:"",rowSignature:"",pendingWorks:null,tagColor:null,phase:"idle",history:[],historyIncomplete:false,personDates:null,family:[],scrollLeft:0};
  // Greedy tracks keep same-day and adjacent milestones from touching.
  // Popup centres are independently clamped, so no tooltip can protrude
  // beyond the chronology track even at narrow mobile widths.
@@ -448,6 +448,7 @@
    return;
   }
   const events=collect();
+  const previousViewport=root.querySelector(".vat-viewport");if(previousViewport)state.scrollLeft=previousViewport.scrollLeft||0;
   root.replaceChildren();root.hidden=false;
   const head=el("div","vat-header");
   const left=el("div","vat-title");
@@ -522,9 +523,9 @@
   root.style.setProperty("--vat-label-width",labelWidth+"px");
   root.style.setProperty("--vat-card-width",cardWidth+"px");
   const viewport=el("div","vat-viewport");viewport.tabIndex=0;
-  viewport.style.overflowX="auto";viewport.style.maxWidth="100%";
+  viewport.style.setProperty("overflow-x","auto","important");viewport.style.setProperty("overflow-y","auto","important");viewport.style.setProperty("max-width","100%","important");
   viewport.setAttribute("aria-label",L("Cronología desplazable horizontalmente al ampliar","Timeline scrolls horizontally when zoomed","Chronologie défilable horizontalement au zoom"));
-  const map=el("div","vat-map");map.style.width=contentWidth+"px";map.style.minWidth=contentWidth+"px";
+  const map=el("div","vat-map");map.style.setProperty("width",contentWidth+"px","important");map.style.setProperty("min-width",contentWidth+"px","important");map.style.setProperty("max-width","none","important");
   const axis=el("div","vat-axis");
   const ticks=Math.max(1,Math.min(9,Math.floor(mapWidth/120)));
   for(let i=0;i<=ticks;i++){
@@ -560,13 +561,14 @@
     button.type="button";button.setAttribute("aria-pressed","false");
     button.classList.add("vat-event-marker");
     button.style.left=center+"px";button.style.top=(23+level*45)+"px";
-    button.style.width=diameter+"px";button.style.height=diameter+"px";
-    if(e.approx)button.style.borderStyle="dashed";
+    for(const prop of ["width","height","min-width","max-width","min-height","max-height"])button.style.setProperty(prop,diameter+"px","important");
+    if(e.approx)button.style.setProperty("border-style","dashed","important");
     button.style.setProperty("--vat-popup-width",popupWidth+"px");
     button.style.setProperty("--vat-popup-shift",shift+"px");
     button.setAttribute("aria-label",(e.approx?"c. ":"")+showYear(e.year)+" · "+e.title);
     button.title=L("Pasar el mouse o pulsar para ver la ficha","Hover or select to see the record","Survoler ou sélectionner pour voir la notice");
     const popup=el("span","vat-event-pop");
+    popup.style.setProperty("left","calc(50% + var(--vat-popup-shift, 0px))","important");
     popup.append(el("span","vat-year",(e.approx?"c. ":"")+showYear(e.year)));
     popup.append(el("strong",null,e.title));
     if(e.end!=null&&e.end!==e.year){
@@ -591,6 +593,7 @@
    band.append(title,laneBody);map.append(band);
   }
   viewport.append(map);root.append(viewport,detail);
+  viewport.scrollLeft=state.scrollLeft;
   if(state.family.length)appendFamily(root,state.family);
   if(isPerson)appendDocumentaryIndex(root);
   if(outsideEvents.length){
@@ -620,8 +623,8 @@
   }
   prev.title=L("Hito anterior","Previous milestone","Jalon précédent");
   next.title=L("Hito siguiente","Next milestone","Jalon suivant");
-  zoomOut.title=L("Reducir el tamaño de la etiqueta","Smaller labels","Réduire les étiquettes");
-  zoomIn.title=L("Aumentar el tamaño de la etiqueta","Larger labels","Agrandir les étiquettes");
+  zoomOut.title=L("Reducir escala cronológica","Reduce timeline scale","Réduire l’échelle chronologique");
+  zoomIn.title=L("Ampliar escala cronológica","Enlarge timeline scale","Agrandir l’échelle chronologique");
   zoomOut.onclick=()=>{state.zoom=Math.max(1,Math.round((state.zoom-.25)*100)/100);draw()};
   zoomIn.onclick=()=>{state.zoom=Math.min(3,Math.round((state.zoom+.25)*100)/100);draw()};
   prev.onclick=()=>navigate(-1);
@@ -644,7 +647,7 @@
   window.addEventListener("resize",()=>{if(!root.hidden&&state.query)draw()},{passive:true});
  }
  function reset(q){
-  state.token++;state.query=String(q||"").trim().slice(0,160);state.zoom=1;
+  state.token++;state.query=String(q||"").trim().slice(0,160);state.zoom=1;state.scrollLeft=0;root.replaceChildren();
   state.authority=null;state.works=[];state.albums=[];state.rows=[];state.selected="";state.rowSignature="";state.pendingWorks=null;state.history=[];state.historyIncomplete=false;state.personDates=null;state.family=[];state.phase=state.query?"identity":"idle";
   place();draw();
   if(!state.query)return;
