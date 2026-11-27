@@ -1059,21 +1059,26 @@ html[data-theme=light] #vitruvia-welcome .welcome-examples a:hover{background:#e
    Scope the editorial typography to the actual search form, not the reader.
    Custom reading palettes retain their own contrast-aware color variables. */
 html body .hero #search-form{
- --vr-search-font:"Courier Prime","Courier New","Liberation Mono",ui-monospace,monospace;
- --vr-search-chalk:#e9e2d0;
- --vr-search-placeholder:#cfc7b4;
- --vr-search-icon:#c7bfad;
- --vr-search-outline:#b3a995;
- --vr-search-button-bg:#292827;
- --vr-search-button-hover:#383632;
+ --vr-search-font:Menlo,Consolas,"DejaVu Sans Mono","Liberation Mono",ui-monospace,monospace;
+ min-height:76px!important;
+ padding:9px 10px 9px 18px!important;
+ gap:10px!important;
+ border-radius:44px!important;
+ box-sizing:border-box;
+ --vr-search-chalk:#f1a36c;
+ --vr-search-placeholder:#e2a276;
+ --vr-search-icon:#dba47d;
+ --vr-search-outline:#a77556;
+ --vr-search-button-bg:#2b2522;
+ --vr-search-button-hover:#3c2e27;
 }
 html[data-theme="light"] body .hero #search-form{
- --vr-search-chalk:#302b24;
- --vr-search-placeholder:#60594e;
- --vr-search-icon:#5c5549;
- --vr-search-outline:#807361;
- --vr-search-button-bg:#f0ede6;
- --vr-search-button-hover:#e4ded3;
+ --vr-search-chalk:#792c40;
+ --vr-search-placeholder:#84364a;
+ --vr-search-icon:#84364a;
+ --vr-search-outline:#a36b78;
+ --vr-search-button-bg:#f5eceb;
+ --vr-search-button-hover:#ead9dd;
 }
 html[data-reading-background="custom"] body .hero #search-form{
  --vr-search-chalk:var(--vr-page-ink);
@@ -1085,11 +1090,13 @@ html[data-reading-background="custom"] body .hero #search-form{
 }
 html body .hero #search-form #query{
  font-family:var(--vr-search-font)!important;
- font-size:clamp(16px,1.25vw,19px)!important;
+ font-size:clamp(18px,1.45vw,22px)!important;
+ min-height:46px!important;
+ padding-block:5px!important;
  font-weight:400!important;
  font-style:normal!important;
  line-height:1.45!important;
- letter-spacing:.005em!important;
+ letter-spacing:.018em!important;
  color:var(--vr-search-chalk)!important;
  -webkit-text-fill-color:var(--vr-search-chalk)!important;
  caret-color:var(--vr-search-chalk)!important;
@@ -1105,8 +1112,10 @@ html body .hero #search-form #query::placeholder{
 }
 html body .hero #search-form #submit{
  font-family:var(--vr-search-font)!important;
- font-size:clamp(14px,1.05vw,16px)!important;
- font-weight:700!important;
+ font-size:clamp(15px,1.15vw,17px)!important;
+ min-height:52px!important;
+ padding:10px 19px!important;
+ font-weight:500!important;
  line-height:1.3!important;
  letter-spacing:0!important;
  color:var(--vr-search-chalk)!important;
@@ -1131,12 +1140,13 @@ html body .hero #search-form button:focus-visible{
  outline-offset:2px!important;
 }
 html body .hero #search-form #query::selection{
- background:#8a7961;color:#fff;
+ background:#792c40;color:#fff;
  -webkit-text-fill-color:#fff;
 }
 @media(max-width:600px){
- html body .hero #search-form #query{font-size:16px!important;letter-spacing:0!important}
- html body .hero #search-form #submit{font-size:14px!important}
+ html body .hero #search-form{min-height:66px!important;padding:6px 6px 6px 10px!important;gap:5px!important}
+ html body .hero #search-form #query{font-size:16px!important;letter-spacing:0!important;min-height:42px!important}
+ html body .hero #search-form #submit{font-size:14px!important;min-height:46px!important;padding:8px 10px!important}
 }
 @media(forced-colors:active){
  html body .hero #search-form{--vr-search-chalk:CanvasText;--vr-search-placeholder:GrayText;--vr-search-icon:ButtonText;--vr-search-outline:Highlight;--vr-search-button-bg:ButtonFace;--vr-search-button-hover:ButtonFace}
