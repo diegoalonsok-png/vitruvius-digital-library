@@ -77,6 +77,56 @@ function classify(name,description){
 
  return 'general';
 }
+// The local scientific atlas is the first source for classical architects.
+const classicalProfiles={
+ vitruvius:{aliases:['vitruvio','vitruvius','marco vitruvio polion','marcus vitruvius pollio','marcus pollio vitruvius','vitruve'],ids:['fano-basilica','harley2767-1r','harley2767-120r','cesariano-1521-homo-ad-circulum-50r','leonardo-vitruviano'],links:[
+  ['Basílica de Fano · De architectura V.1','basilica-fano.html','Descripción antigua y reconstrucciones posteriores; no dibujos autógrafos conservados.'],
+  ['Fra Giocondo · 1511','giocondo-1511.html','Edición ilustrada renacentista.'],
+  ['Cesare Cesariano · 1521','cesariano-1521.html','Ilustraciones de la recepción renacentista.'],
+  ['Daniele Barbaro · 1567','barbaro-1567.html','Edición comentada e ilustrada.'],
+  ['Claude Perrault · 1673','perrault-1673.html','Interpretación editorial posterior.']
+ ]},
+ palladio:{aliases:['palladio','andrea palladio'],ids:['palladio-rotonda-pianta-1570','palladio-rotonda-sezione-1778','palladio-trissino-progetto-1570','palladio-teatro-olimpico-pianta-1776','palladio-pantheon-plan','palladio-pantheon-section-1570'],links:[
+  ['I quattro libri dell’architettura · 1570','obras-notables.html?obra=palladio-quattro-libri','Tratado ilustrado del autor, lectura folio por folio.'],
+  ['Palladio Museum · catálogo','https://mediateca.palladiomuseum.org/palladio/oggetto.php?id=3','Ejemplar de 1570.'],
+  ['The Met · I quattro libri','https://www.metmuseum.org/art/collection/search/591828','Registro institucional de la edición.']
+ ]},
+ cesariano:{aliases:['cesare cesariano','cesar cesariano','cesar cesarin','cesare cesarin','cesare cesarini','cesariano'],ids:['cesariano-1521-homo-ad-circulum-50r'],links:[
+  ['De architectura · Como, 1521','cesariano-1521.html','Visor de la edición traducida, comentada e ilustrada.'],
+  ['Catedral de Milán · planta y alzado','https://www.loc.gov/item/2004682215/','Library of Congress · ilustración de la edición de 1521; no atribuirle el edificio.'],
+  ['Elementos arquitectónicos · planta y alzado','https://www.loc.gov/item/2004682214/','Library of Congress · ilustración de 1521.'],
+  ['The Met · edición de 1521','https://www.metmuseum.org/art/collection/search/367690','Vitruvio, autor; Cesariano, ilustrador.']
+ ]},
+ brunelleschi:{aliases:['brunelleschi','filippo brunelleschi','brunellesci','filippo brunellesci'],ids:[],links:[
+  ['Cúpula de Santa Maria del Fiore · 1420–1436','https://duomo.firenze.it/en/discover/dome','Obra proyectada por Brunelleschi.'],
+  ['Modelo de la cúpula y dos tribunas · 1419–1436','https://duomo.firenze.it/en/discover/opera-duomo-museum/the-halls/galleria-della-cupola/8638/','Modelo de madera atribuido a Brunelleschi; ficha y fotografías del museo.'],
+  ['Modelo de la linterna · 1436','https://duomo.firenze.it/en/discover/opera-duomo-museum/the-halls/galleria-della-cupola/8639/filippo-brunelleschi-modello-architettonico-della-lanterna','Modelo atribuido; no es una perspectiva dibujada.'],
+  ['Ospedale degli Innocenti','https://www.museodeglinnocenti.it/en/museo/percorsi-espositivi/architettura/','Documentación institucional de la obra iniciada en 1419.']
+ ]}
+};
+function classicalProfile(name){const n=norm(name).replace(/^(?:arquitecto|architect|architetto|arquitecte) /,'');return Object.entries(classicalProfiles).find(([k,p])=>p.aliases.includes(n))||null}
+async function classicalDossier(root,profile,valid){
+ const [key,p]=profile,sec=el('section','vhg-block vhg-classical-archive');
+ sec.append(el('h4','',L('Archivo gráfico histórico · fuentes primarias y recepción','Historical graphic archive · primary sources and reception','Archives graphiques historiques · sources primaires et réception')));
+ sec.append(el('p','vhg-caption',L('Las láminas se identifican por autor, edición y fecha; los levantamientos y reconstrucciones posteriores no son dibujos autógrafos.','Plates retain their creator, edition and date; later surveys and reconstructions are not autograph drawings.','Les planches conservent auteur, édition et date ; les relevés et restitutions ne sont pas autographes.')));
+ const archive=el('div','vhg-classical-links');
+ for(const [title,url,note] of p.links){
+  const row=el('div','vhg-classical-record');row.append(link(title+' ↗',verifiedUrl(url)),el('p','vhg-caption',note));archive.append(row);
+ }
+ sec.append(archive);root.append(sec);
+ if(!p.ids.length)return;
+ const data=await json(new URL('data/iconografia-vitruviana.json',location.href).href);
+ if(!valid()||!sec.isConnected)return;
+ const map=new Map((data?.primaryRecords||[]).map(x=>[x.id,x]));
+ const rows=el('div','vhg-cards vhg-classical-plates');
+ for(const id of p.ids){
+  const r=map.get(id);if(!r)continue;
+  const url=verifiedUrl('iconografia-vitruviana.html?folio='+encodeURIComponent(id));
+  const image=verifiedUrl(r.localImage||r.image);
+  card(rows,{title:r.title,kind:'historical-plate',date:r.date,location:[r.author,r.institution,r.folio].filter(Boolean).join(' · '),description:[r.visualType,r.locus,r.status].filter(Boolean).join(' · '),image,url});
+ }
+ if(rows.children.length)sec.insertBefore(rows,archive);
+}
 async function awards(qid){
  if(!/^Q\d+$/.test(qid||''))return [];
  const wd=await json('https://www.wikidata.org/w/api.php?'+new URLSearchParams({action:'wbgetentities',ids:qid,props:'claims',format:'json',origin:'*'}));
@@ -194,7 +244,7 @@ function manuscripts(rows){
  url:x.codexViewer||x.viewerUrl||x.link,image:x.imageRights?x.image:''}));
 }
 async function render(name,entity,rows){
- const id=++sequence,container=el('div','vhg-content'),kind=classify(name,entity?.description||entity?.authorityDescription||'');
+ const id=++sequence,container=el('div','vhg-content'),profile=classicalProfile(name)||classicalProfile(query),kind=profile?'architect':classify(name,entity?.description||entity?.authorityDescription||'');
  const qid=entity?.qid||entity?.wikidataId;
  gallery.replaceChildren();gallery.hidden=false;
  const title=el('div','vhg-header');title.append(el('h3','',L('Obras y testimonios documentados','Documented works and witnesses','Œuvres et témoins documentés')));
@@ -203,11 +253,12 @@ async function render(name,entity,rows){
  'Images de catalogues documentés et liens directs.')));gallery.append(title,container);
  if(/leonardo da vinci|leonardo di ser piero da vinci/.test(norm(name)))block(container,L('Cuadernos y códices conservados','Surviving notebooks and codices','Carnets et codex conservés'),leonardo);
  if(kind==='author'||kind==='general')block(container,L('Testimonios manuscritos del catálogo','Manuscript witnesses in the catalogue','Témoins manuscrits du catalogue'),manuscripts(rows));
+ if(profile)void classicalDossier(container,profile,()=>id===sequence).catch(()=>{});
  const tasks=[];
  if(kind==='athlete'&&qid)tasks.push(awards(qid).then(items=>({label:L('Distinciones documentadas','Documented awards','Distinctions documentées'),items,note:L('Las distinciones individuales registradas no constituyen una lista completa de copas o títulos de equipo.','Individual awards are not an exhaustive list of team trophies.','Les distinctions individuelles ne représentent pas tous les titres collectifs.')})));
  if(kind==='music')tasks.push(albums(name).then(result=>({kind:'music',label:L('Discografía y portadas','Discography and album covers','Discographie et pochettes'),...result})));
  if(kind==='author')tasks.push(authoredBooks(name).then(result=>({kind:'books',label:L('Bibliografía documentada','Documented bibliography','Bibliographie documentée'),...result})));
- if(qid&&!['athlete','music','author'].includes(kind))tasks.push(works(qid,kind).then(items=>({label:kind==='visual'?L('Pinturas y obras atribuidas','Attributed artworks','Œuvres attribuées'):kind==='composer'?L('Composiciones documentadas','Documented compositions','Compositions documentées'):kind==='architect'?L('Obras · plantas, cortes, alzados, perspectivas y croquis','Works · plans, sections, elevations, perspectives and sketches','Œuvres · plans, coupes, élévations, perspectives et croquis'):L('Obras de la persona','Works by this person','Œuvres de la personne'),items})));
+ if(qid&&!['athlete','music','author'].includes(kind)&&!['vitruvius','cesariano'].includes(profile?.[0]))tasks.push(works(qid,kind).then(items=>({label:kind==='visual'?L('Pinturas y obras atribuidas','Attributed artworks','Œuvres attribuées'):kind==='composer'?L('Composiciones documentadas','Documented compositions','Compositions documentées'):kind==='architect'?L('Obras · plantas, cortes, alzados, perspectivas y croquis','Works · plans, sections, elevations, perspectives and sketches','Œuvres · plans, coupes, élévations, perspectives et croquis'):L('Obras de la persona','Works by this person','Œuvres de la personne'),items})));
  if(!tasks.length&&!container.children.length){gallery.hidden=true;return}
  const loaded=await Promise.allSettled(tasks);
  if(id!==sequence)return;
