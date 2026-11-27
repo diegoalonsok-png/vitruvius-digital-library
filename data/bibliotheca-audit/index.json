@@ -1,0 +1,74 @@
+{
+  "schema": "vdl-bibliological-audit-v1",
+  "asOf": "2026-11-27",
+  "scope": "843 fichas declaradas; las ediciones pueden compartir obra y archivo. Cruce de metadatos, no cotejo íntegro ni verificación HTTP de todos los objetos.",
+  "sources": [
+    "data/r2/bibliotheca-inventario-unificado.json",
+    "data/classics-corpus/coverage-audit.json",
+    "data/classics-corpus/translation-availability-222.json",
+    "data/bibliotheca-expansion-publicada-2026-11-16.json",
+    "data/classics-corpus/search-registry.json",
+    "data/r2/classics-translation-manifest.json",
+    "data/r2/catalogo-clasicos-r2.json",
+    "data/catalog.json",
+    "data/perseus-provenance-audit.json"
+  ],
+  "counts": {
+    "la": {
+      "works": 180,
+      "originalText": 163,
+      "translationRegistered": 48,
+      "translationFacsimileOnly": 3,
+      "externalOnly": 65,
+      "translationNotDocumented": 64,
+      "varietyOrientative": 143,
+      "varietyPending": 37
+    },
+    "grc": {
+      "works": 658,
+      "originalText": 642,
+      "translationRegistered": 111,
+      "translationFacsimileOnly": 6,
+      "externalOnly": 57,
+      "translationNotDocumented": 484,
+      "varietyOrientative": 502,
+      "varietyPending": 156
+    },
+    "it": {
+      "works": 5,
+      "originalText": 0,
+      "translationRegistered": 0,
+      "translationFacsimileOnly": 0,
+      "externalOnly": 0,
+      "translationNotDocumented": 5,
+      "varietyOrientative": 5,
+      "varietyPending": 0
+    }
+  },
+  "files": [
+    {
+      "path": "data/bibliotheca-audit/records-la-01.json",
+      "count": 180
+    },
+    {
+      "path": "data/bibliotheca-audit/records-grc-01.json",
+      "count": 200
+    },
+    {
+      "path": "data/bibliotheca-audit/records-grc-02.json",
+      "count": 200
+    },
+    {
+      "path": "data/bibliotheca-audit/records-grc-03.json",
+      "count": 200
+    },
+    {
+      "path": "data/bibliotheca-audit/records-grc-04.json",
+      "count": 58
+    },
+    {
+      "path": "data/bibliotheca-audit/records-it-01.json",
+      "count": 5
+    }
+  ]
+}
