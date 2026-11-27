@@ -62,6 +62,7 @@ function createEngine(failing=[]){
   const r=await engine.search('Ὑγιεινὸν',{method:'bm25'});
   assert.equal(r.mode,'bm25-fallback');
   assert.ok(r.rows.some(x=>x.workId==='galen-ars-medica'),'Greek passage.text must be searchable');
+  assert.ok(r.rows.filter(x=>x.workId==='galen-ars-medica').every(x=>x.originalLanguage==='grc'&&x.greek&&!x.latin),'Greek evidence must not be labelled Latin');
   assert.equal(r.stats.loadedSources,6,'All mocked sources loaded');
   assert.equal(r.stats.declaredSources,6);
   assert.equal(r.stats.unavailable.length,0);
@@ -81,6 +82,7 @@ function createEngine(failing=[]){
   const {engine,calls}=createEngine();
   const r=await engine.search('architectura scientia',{method:'bm25'});
   assert.ok(r.rows.some(x=>x.workId==='vitruvius'),'Latin passage must remain searchable');
+  assert.ok(r.rows.filter(x=>x.workId==='vitruvius').every(x=>x.originalLanguage==='la'&&x.latin),'Bilingual editions must preserve Latin original');
   assert.equal(calls.filter(x=>x.includes('ai-corpora.json')).length,1,'Manifest requested once');
 }
 {
@@ -92,5 +94,10 @@ function createEngine(failing=[]){
   assert.ok(r.stats.candidateEditions>=4,'Candidate pool must include multiple editions');
   assert.ok(r.stats.candidateWorks>=3,'Candidate pool must include multiple works');
 }
-console.log('PASS: 4 engine scenarios, 6-source manifest, Greek/Latin hits, multi-work candidate coverage, provenance, no invented hits and partial-coverage warning.');
+{
+  const {engine}=createEngine();
+  const r=await engine.search('Ἀχιλῆοσ',{method:'bm25'});
+  assert(r.rows.some(x=>x.workId==='homer-iliad'),'Greek final sigma must match medial sigma in lookup');
+}
+console.log('PASS: 5 engine scenarios, 6-source manifest, Greek/Latin hits, multi-work candidate coverage, provenance, no invented hits and partial-coverage warning.');
 console.log('SCOPE: mocked fetch only; not an HTTP availability or scholarly accuracy test.');
