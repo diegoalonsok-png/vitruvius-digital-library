@@ -113,7 +113,7 @@
    [68,"life",L("Muerte de Nerón","Death of Nero","Mort de Néron"),"Suetonio · Nerón 49",L("Muere el 9 de junio; termina la dinastía julio-claudia.","Dies on 9 June; the Julio-Claudian dynasty ends.","Mort le 9 juin ; fin de la dynastie julio-claudienne.")]
   ].map(([year,lane,title,source,detail,link,end])=>({year,lane,title,source,url:link||url,detail,...(end?{end}:{})}));
  }
- const isAkhenaten=()=>/^(?:akhenaten|akhenaton|akhenat[oó]n|ajenaton|ajenat[oó]n|akenaton|akenat[oó]n|amenhotep iv|amenofis iv|amenophis iv)$/.test(normalize(state.query));
+ const isAkhenaten=()=>/^(?:akhenaten|akhenaton|akhenat[oó]n|ajenaton|ajenat[oó]n|akenaton|akenat[oó]n|amenhotep iv|amenofis iv|amenophis iv)$/.test(normalize(state.query).replace(/^(?:rey|faraon|pharaoh|king|roi|pharaon)\s+/,""));
  // An abstract lexical concept is NOT a historical person/album/work.
  // Search result title matches cannot establish a chronology of the concept.
  // Provide a sourced concept-specific dataset before enabling those milestones.
@@ -166,6 +166,10 @@
    {year:-1345,lane:"events",title:L("Año 8 · reafirmación del juramento fronterizo","Year 8 · renewal of the boundary oath","An 8 · renouvellement du serment frontalier"),source:"Amarna Project",url:"https://www.amarnaproject.com/amarna-the-place/boundary-stelae/",approx:true,detail:L("Se añade una reafirmación a la segunda proclamación.","A reaffirmation is added to the second proclamation.","Une réaffirmation est ajoutée à la seconde proclamation.")},
    {year:-1344,end:-1341,lane:"events",title:L("Años 9–12 · nueva formulación del nombre de Atón","Years 9–12 · new form of Aten’s name","Ans 9–12 · nouvelle formulation du nom d’Aton"),source:"The Met",url:"https://www.metmuseum.org/essays/art-architecture-and-the-city-in-the-reign-of-amenhotep-iv-akhenaten-ca-13531336-b-c",approx:true,detail:L("La nueva formulación se fecha entre los años 9 y 12; las medidas contra Amón pudieron coincidir.","New wording dated between years 9 and 12; measures against Amun may have coincided.","Nouvelle formulation datée des ans 9 à 12 ; les mesures contre Amon ont pu coïncider.")},
    {year:-1341,lane:"events",title:L("Año 12 · recepción de tributos extranjeros","Year 12 · reception of foreign tribute","An 12 · réception des tributs étrangers"),source:"ISAC · University of Chicago · Huya y Meryra II",url:"https://isac.uchicago.edu/sites/default/files/uploads/shared/docs/LongCoregency.pdf",approx:true,detail:L("Las escenas conservan una fecha del año regnal 12.","The scenes preserve a date in regnal year 12.","Les scènes conservent une date de l’an 12.")},
+   {year:-1348,end:-1347,lane:"life",title:L("Años 5–6 · adopción del nombre Akenatón","Years 5–6 · adoption of the name Akhenaten","Ans 5–6 · adoption du nom Akhenaton"),source:"The Met · reinado de Amenhotep IV",url:"https://www.metmuseum.org/essays/art-architecture-and-the-city-in-the-reign-of-amenhotep-iv-akhenaten-ca-13531336-b-c",approx:true,detail:L("Sustituye el nombre teóforo de Amón por uno dedicado a Atón; el momento exacto se discute.","The Amun-related name gives way to an Aten-related one; exact timing debated.","Le nom lié à Amon cède la place à celui lié à Aton ; date précise discutée.")},
+   {year:-1340,end:-1339,lane:"life",title:L("Años 13–14 · muerte de Meketatón","Years 13–14 · death of Meketaten","Ans 13–14 · mort de Méketaton"),source:"Trabajos de Egiptología 13 (2022)",url:"https://www.ull.es/revistas/index.php/trabajos-egiptologia/fr_CA/article/download/4975/3959/17313",approx:true,detail:L("Datación aproximada; escenas de duelo en la tumba real.","Approximate dating; mourning scenes in the royal tomb.","Datation approximative ; scènes de deuil dans la tombe royale.")},
+   {year:-1339,lane:"life",title:L("Año 14 · muerte atribuida a la reina Tiy","Year 14 · attributed death of Queen Tiye","An 14 · mort attribuée à la reine Tiyi"),source:"UCLA Encyclopedia of Egyptology",url:"https://escholarship.org/content/qt77s6r0zr/qt77s6r0zr.pdf?v=lg",approx:true,detail:L("Cronología propuesta en la bibliografía, no fecha absoluta certificada.","Proposed scholarly chronology, not a certified absolute date.","Chronologie proposée par la recherche, sans date absolue certifiée.")},
+   {year:-1337,lane:"events",title:L("Año 16 · inscripción de Dayr Abu Hinnis","Year 16 · Dayr Abu Hinnis inscription","An 16 · inscription de Dayr Abu Hinnis"),source:"KU Leuven · Athena Van der Perre",url:"https://www.arts.kuleuven.be/dayr-al-barsha/news/year-16-graffito-nefertiti",approx:true,detail:L("Atestigua que Nefertiti conservaba el título de gran esposa real en el año 16.","Attests Nefertiti as Great Royal Wife in year 16.","Atteste le titre de grande épouse royale de Néfertiti en l’an 16.")},
    {year:-1336,lane:"life",title:L("Muerte de Akenatón · fin de la línea biográfica","Death of Akhenaten · end of biography","Mort d'Akhenaton · fin de la chronologie"),
     source:"PBS · Egypt's Golden Empire; cronología aproximada",url:pbs,approx:true,
     detail:L("Muerte hacia 1336 a. C., tras un reinado de alrededor de diecisiete años. La edad exacta al morir no está establecida con certeza.","Approximate death around 1336 BCE; exact age unknown.","Décès vers 1336 av. J.-C.; âge exact incertain.")}
@@ -174,7 +178,7 @@
  function collect(){
   const historical=hasHistoricalSubject();
   if(isAbstractTerm()||!historical&&!state.rows.some(r=>r.timelineWorkMatch===true&&recordYear(r)!==null))return []; // Only authority or explicitly associated catalogue records.
-  if(isAkhenaten())return akhenatenEvents();
+  if(isAkhenaten())return akhenatenEvents().sort((a,b)=>a.year-b.year);
   let ev=isNero()?neroEvents():[],a=state.authority;
   // All Wikidata authority properties keep their distinct meanings.
   if(historical&&a&&/^Q\d+$/.test(a.wikidataId||"")){
@@ -335,7 +339,7 @@
   const span=Math.max(1,maxYear-minYear),padding=lifeScope?0:Math.max(1,Math.ceil(span*.04));
   const fullLow=lifeScope?lifeScope.born:minYear-padding;
   const fullHigh=lifeScope?lifeScope.died:maxYear+padding;
-  const zoom=state.zoom??(isNero()||isAkhenaten()?1:automaticZoom(fullHigh-fullLow));
+  const zoom=state.zoom??(lifeScope||isNero()||isAkhenaten()?1:automaticZoom(fullHigh-fullLow));
   const {low,high,range,travel}=dateWindow(fullLow,fullHigh,zoom,state.position);
   const windowEvents=visibleEvents.filter(e=>e.year>=low&&e.year<=high);
   const eventKey=e=>[e.title,e.year,e.lane].join("|");
