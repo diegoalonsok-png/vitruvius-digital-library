@@ -21,10 +21,18 @@
   works:[L("Obras y creaciones","Works and creations","Œuvres et créations"),"▤"],
   documents:[L("Documentos y ediciones","Documents and editions","Documents et éditions"),"▥"]
  };
- const state={query:"",token:0,authority:null,works:[],albums:[],rows:[],zoom:1,selected:"",rowSignature:"",pendingWorks:null,tagColor:null};
+ const state={query:"",token:0,authority:null,works:[],albums:[],rows:[],zoom:null,position:0,selected:"",rowSignature:"",pendingWorks:null,tagColor:null};
  // Greedy tracks keep same-day and adjacent milestones from touching.
  // Popup centres are independently clamped, so no tooltip can protrude
  // beyond the chronology track even at narrow mobile widths.
+ function dateWindow(fullLow,fullHigh,zoom,position){
+ const fullRange=Math.max(1,fullHigh-fullLow);
+ const span=Math.max(1,Math.ceil(fullRange/Math.max(1,zoom)));
+ const travel=Math.max(0,fullRange-span);
+ const low=fullLow+Math.round(travel*Math.max(0,Math.min(1,position)));
+ return {low,high:low+span,range:span,travel};
+}
+ function automaticZoom(span){return span>800?8:span>200?4:1}
  function layoutMarkers(items,low,range,width,zoom=1){
   const safeWidth=Math.max(1,Number(width)||1);
   const diameter=24,gap=11;
@@ -294,9 +302,11 @@
   const minYear=visibleEvents[0]?.year??events[0].year;
   const maxYear=Math.max(...(visibleEvents.length?visibleEvents:events).map(e=>e.end??e.year));
   const span=Math.max(1,maxYear-minYear),padding=lifeScope?0:Math.max(1,Math.ceil(span*.04));
-  const low=lifeScope?lifeScope.born:minYear-padding;
-  const high=lifeScope?lifeScope.died:maxYear+padding;
-  const range=Math.max(1,high-low);
+  const fullLow=lifeScope?lifeScope.born:minYear-padding;
+  const fullHigh=lifeScope?lifeScope.died:maxYear+padding;
+  const zoom=state.zoom??automaticZoom(fullHigh-fullLow);
+  const {low,high,range,travel}=dateWindow(fullLow,fullHigh,zoom,state.position);
+  const windowEvents=visibleEvents.filter(e=>e.year>=low&&e.year<=high);
   // Size the axis from the actual available content box. No 250px
   // minimum canvas and no fixed 960px map overflowing mobile readers.
   const cs=typeof getComputedStyle==="function"?getComputedStyle(root):{paddingLeft:"0",paddingRight:"0"};
@@ -304,14 +314,14 @@
   const available=Math.max(1,Math.floor(outer)-(parseFloat(cs.paddingLeft)||0)-(parseFloat(cs.paddingRight)||0)-3);
   const labelWidth=Math.min(Math.round(available*.33),available<420?88:available<740?124:170);
   const mapWidth=Math.max(1,available-labelWidth-2);
-  const cardWidth=Math.min(Math.round(134*state.zoom),Math.max(1,mapWidth-12));
+  const cardWidth=Math.min(134,Math.max(1,mapWidth-12));
   root.style.setProperty("--vat-label-width",labelWidth+"px");
   root.style.setProperty("--vat-card-width",cardWidth+"px");
   const viewport=el("div","vat-viewport");viewport.tabIndex=0;
   viewport.setAttribute("aria-label",L("Cronología adaptada al ancho del visor","Chronology fitted to reader width","Chronologie adaptée à la largeur du lecteur"));
   const map=el("div","vat-map");map.style.width=available+"px";
   const axis=el("div","vat-axis");
-  const ticks=Math.max(1,Math.min(9,Math.floor(mapWidth/120)));
+  const ticks=Math.max(1,Math.min(range,9,Math.floor(mapWidth/120)));
   for(let i=0;i<=ticks;i++){
    const y=Math.round(low+i*range/ticks);
    const tick=el("span","vat-tick",showYear(y));
@@ -321,7 +331,7 @@
   const detail=el("div","vat-detail");detail.hidden=true;detail.setAttribute("aria-live","polite");
   const stops=[];
   for(const [lane,[label,icon]] of Object.entries(types)){
-   const items=visibleEvents.filter(x=>x.lane===lane);if(!items.length)continue;
+   const items=windowEvents.filter(x=>x.lane===lane);if(!items.length)continue;
    const band=el("section","vat-band");band.setAttribute("aria-label",label);
    const title=el("div","vat-band-title");title.append(el("span","vat-icon",icon),el("strong",null,label));
    const laneBody=el("div","vat-band-body");
@@ -337,7 +347,7 @@
     preview.hidden=false;
    }
    const line=el("div","vat-line");track.append(line);
-   const positioned=layoutMarkers(items,low,range,mapWidth,state.zoom);
+   const positioned=layoutMarkers(items,low,range,mapWidth,1);
    let levelMax=0;
    for(const {event:e,center,level,popupWidth,shift} of positioned){
     levelMax=Math.max(levelMax,level);
@@ -373,7 +383,30 @@
    laneBody.append(track,preview);
    band.append(title,laneBody);map.append(band);
   }
-  viewport.append(map);root.append(viewport,detail);
+  if(!windowEvents.length)map.append(el("p","vat-empty",L("No hay hitos documentados en este intervalo. Desplace la escala para explorar otras fechas.","No documented milestones in this interval. Move the scale to explore other dates.","Aucun jalon documenté dans cet intervalle. Déplacez l’échelle pour explorer d’autres dates.")));
+  viewport.append(map);root.append(viewport);
+  const pan=el("label","vat-pan");
+  pan.style.cssText="display:grid;gap:6px;margin:12px 0;font:12px/1.5 system-ui,sans-serif";
+  const panLabel=el("span",null,L("Período visible","Visible period","Période visible")+": "+showYear(low)+" – "+showYear(high));
+  const slider=el("input");slider.type="range";slider.min="0";slider.max="1000";slider.step="1";
+  slider.value=String(Math.round(state.position*1000));slider.disabled=travel===0;
+  slider.setAttribute("aria-label",L("Desplazar período cronológico","Pan chronology period","Déplacer la période chronologique"));
+  slider.setAttribute("aria-valuetext",showYear(low)+" – "+showYear(high));
+  slider.style.cssText="width:100%;margin:0;accent-color:#879da9";
+  slider.addEventListener("input",()=>{
+   const w=dateWindow(fullLow,fullHigh,zoom,Number(slider.value)/1000);
+   panLabel.textContent=L("Período visible","Visible period","Période visible")+": "+showYear(w.low)+" – "+showYear(w.high);
+   slider.setAttribute("aria-valuetext",showYear(w.low)+" – "+showYear(w.high));
+  });
+  slider.addEventListener("change",()=>{
+   state.zoom=zoom;state.position=Number(slider.value)/1000;
+   const focused=document.activeElement===slider;
+   draw();if(focused)root.querySelector(".vat-pan input")?.focus({preventScroll:true});
+  });
+  const extent=el("span","vat-pan-extent");extent.style.cssText="display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap";
+  extent.append(el("span",null,showYear(fullLow)),el("span",null,L("Período completo","Full period","Période complète")),el("span",null,showYear(fullHigh)));
+  if(!travel)panLabel.textContent+=" · "+L("Amplíe (+) para desplazarse","Zoom in (+) to pan","Zoomez (+) pour vous déplacer");
+  pan.append(panLabel,slider,extent);root.append(pan,detail);
   if(lifeScope&&outsideEvents.length){
    const extra=el("details","vat-outside");
    extra.append(el("summary",null,L(
@@ -401,10 +434,10 @@
   }
   prev.title=L("Hito anterior","Previous milestone","Jalon précédent");
   next.title=L("Hito siguiente","Next milestone","Jalon suivant");
-  zoomOut.title=L("Reducir el tamaño de la etiqueta","Smaller labels","Réduire les étiquettes");
-  zoomIn.title=L("Aumentar el tamaño de la etiqueta","Larger labels","Agrandir les étiquettes");
-  zoomOut.onclick=()=>{state.zoom=Math.max(.8,Math.round((state.zoom-.1)*100)/100);draw()};
-  zoomIn.onclick=()=>{state.zoom=Math.min(1.35,Math.round((state.zoom+.1)*100)/100);draw()};
+  zoomOut.disabled=zoom===1;zoomIn.disabled=zoom>=8||range<=1;
+  prev.disabled=next.disabled=!stops.length;
+  zoomOut.onclick=()=>{state.zoom=Math.max(1,zoom/2);draw()};
+  zoomIn.onclick=()=>{state.zoom=Math.min(8,zoom*2);draw()};
   prev.onclick=()=>navigate(-1);
   next.onclick=()=>navigate(1);
   viewport.addEventListener("keydown",e=>{
@@ -425,7 +458,7 @@
   window.addEventListener("resize",()=>{if(!root.hidden&&state.query)draw()},{passive:true});
  }
  function reset(q){
-  state.token++;state.query=String(q||"").trim().slice(0,160);state.zoom=1;
+  state.token++;state.query=String(q||"").trim().slice(0,160);state.zoom=null;state.position=0;
   state.authority=null;state.works=[];state.albums=[];state.rows=[];state.selected="";state.rowSignature="";state.pendingWorks=null;
   place();draw();
   if(!state.query)return;
@@ -498,5 +531,5 @@
  }).observe(document.documentElement,{attributes:true,attributeFilter:["lang"]});
  const snapshot=window.VitruviaSearchSnapshot;
  if(snapshot?.query)reset(snapshot.query);
- window.VitruviaAcademicTimeline={collect,layoutMarkers,version:"2.1-fit-mobile-lifetime"};
+ window.VitruviaAcademicTimeline={collect,layoutMarkers,dateWindow,automaticZoom,version:"2.3-adaptive-period-slider"};
 })();
