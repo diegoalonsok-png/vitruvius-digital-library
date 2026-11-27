@@ -39,7 +39,7 @@ for(const e of registry.entries){
  if(!work&&!critical){errors.push("Missing catalogue record for "+e.workId);continue}
  if(work){
   const declared=byId.has(e.workId)?work.localEditionLanguages||[]:
-   [...Object.keys(work.corpusFiles||{}),...(work.localVersions||[]).map(v=>v.language)];
+   [...Object.keys(work.corpusFiles||{}),...(work.localVersions||[]).map(v=>v.language),...(work.localEditionLanguages||[])];
   if(!declared.includes(e.language))
    errors.push("Unreported local language "+e.workId+"/"+e.language);
  }
