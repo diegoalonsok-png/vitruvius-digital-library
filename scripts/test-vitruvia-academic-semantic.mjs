@@ -45,7 +45,7 @@ assert(negative.rows.every(r=>!r.exactTextMatch),"Unknown phrase must not be rep
 console.log("Academic retrieval: 8 sourced loci, 3 routing checks, 1 negative query. E5 not exercised.");
 
 const searchSource=await read("assets/vitruvia-search.js");
-const gate=searchSource.match(/function academicEvidenceClass\(row\)\{[\s\S]*?\n\}(?=\nfunction display)/)?.[0];
+const gate=searchSource.match(/function academicEvidenceClass\(row\)\{[\s\S]*?\n\}(?=\n\/\* Rank only)/)?.[0];
 assert(gate,"Vitruvia evidence gate missing");
 const classify=vm.runInNewContext(gate+"\nacademicEvidenceClass");
 const evidenceCases=[
