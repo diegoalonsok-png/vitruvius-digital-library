@@ -31,7 +31,7 @@
   works:[L("Obras y creaciones","Works and creations","Œuvres et créations"),"▤"],
   documents:[L("Documentos y ediciones","Documents and editions","Documents et éditions"),"▥"]
  };
- const state={query:"",token:0,authority:null,works:[],albums:[],rows:[],zoom:null,position:0,selected:"",rowSignature:"",pendingWorks:null,tagColor:null};
+ const state={query:"",token:0,authority:null,works:[],albums:[],rows:[],zoom:null,position:0,selected:"",rowSignature:"",pendingWorks:null,tagColor:null,datedLabels:{}};
  // Greedy tracks keep same-day and adjacent milestones from touching.
  // Popup centres are independently clamped, so no tooltip can protrude
  // beyond the chronology track even at narrow mobile widths.
@@ -175,13 +175,86 @@
     detail:L("Muerte hacia 1336 a. C., tras un reinado de alrededor de diecisiete años. La edad exacta al morir no está establecida con certeza.","Approximate death around 1336 BCE; exact age unknown.","Décès vers 1336 av. J.-C.; âge exact incertain.")}
   ];
  }
+ // Generic chronology from explicit temporal qualifiers and source records.
+ // Wikidata is a discovery authority, not an independent primary source.
+ const datedRelationLabels={
+  P39:["Cargo","Position","Fonction"],P26:["Matrimonio","Marriage","Mariage"],
+  P69:["Estudios","Education","Études"],P108:["Actividad profesional","Employment","Activité professionnelle"],
+  P166:["Distinción","Award","Distinction"],P793:["Acontecimiento significativo","Significant event","Événement marquant"],
+  P607:["Participación en conflicto","Conflict participation","Participation à un conflit"],
+  P937:["Lugar de trabajo","Work location","Lieu de travail"],P54:["Equipo","Team","Équipe"],
+  P102:["Afiliación política","Political affiliation","Affiliation politique"],P463:["Pertenencia","Membership","Appartenance"],
+  P551:["Residencia","Residence","Résidence"],P1416:["Afiliación","Affiliation","Affiliation"],
+  P1344:["Participación","Participation","Participation"],P800:["Obra destacada","Notable work","Œuvre notable"],
+  P509:["Causa de muerte","Cause of death","Cause du décès"],P119:["Sepultura","Burial","Sépulture"]
+ };
+ const datedDirectLabels={
+  P569:["life","Nacimiento","Birth","Naissance"],P570:["life","Muerte","Death","Décès"],
+  P571:["life","Fundación o inicio","Foundation or inception","Fondation ou début"],P576:["life","Disolución o final","Dissolution or end","Dissolution ou fin"],
+  P585:["events","Acontecimiento fechado","Dated event","Événement daté"],P580:["events","Comienzo del acontecimiento","Event begins","Début de l’événement"],
+  P582:["events","Final del acontecimiento","Event ends","Fin de l’événement"],P577:["works","Publicación documentada","Documented publication","Publication attestée"],
+  P575:["events","Descubrimiento","Discovery","Découverte"],P1619:["works","Inauguración","Opening","Inauguration"]
+ };
+ function datedAuthorityEvents(authority,labels={}){
+  if(!/^Q\d+$/.test(authority?.wikidataId||""))return [];
+  const out=[];
+  for(const c of authority.temporalClaims||[]){
+   const direct=datedDirectLabels[c.property],relation=datedRelationLabels[c.property];
+   if(!direct&&!relation)continue;
+   const refUrls=[...new Set((c.references||[]).flatMap(r=>r.urls||[]).filter(normUrl))];
+   const refIds=[...new Set((c.references||[]).flatMap(r=>r.statedIn||[]).filter(x=>/^Q\d+$/.test(x)))];
+   const referenceLinks=[...refUrls,...refIds.map(id=>"https://www.wikidata.org/wiki/"+id)];
+   const stmt="https://www.wikidata.org/wiki/"+authority.wikidataId+"#"+encodeURIComponent(String(c.statementId||"").replace("$","-"));
+   const source="Wikidata · "+c.property+" · "+(referenceLinks.length?L("con referencias","with references","avec références"):L("sin referencia enlazada","without linked reference","sans référence liée"));
+   const detail=L("Dato estructurado de autoridad: comprobar la fuente, la precisión y el calendario antes de citar. No equivale a una verificación historiográfica independiente.","Structured authority data: check source, precision and calendar before citing. Not independent historical verification.","Donnée structurée d’autorité : vérifier la source, la précision et le calendrier avant citation. Ne vaut pas validation historique indépendante.");
+   const add=(date,title,lane,end=null)=>{
+    if(year(date?.year)===null||date.year===0)return;
+    out.push({year:date.year,end:end&&year(end.year)!==null&&end.year>=date.year?end.year:null,title,lane,source,url:stmt,referenceLinks,detail,approx:Boolean(date.before||date.after),authorityEvidence:true});
+   };
+   if(direct){
+    for(const date of c.dates||[])add(date,L(...direct.slice(1)),direct[0]);
+    continue;
+   }
+   const label=labels[c.objectId];if(!label)continue; // Never show a bare QID as an historical event.
+   const title=L(...relation)+" · "+label;
+   const q=c.qualifier||{},starts=q.P580||[],ends=q.P582||[],points=q.P585||[];
+   const lane=c.property==="P800"?"works":["P793","P607","P1344","P509","P119"].includes(c.property)?"events":"life";
+   // A range is emitted only for unambiguous start/end pairing within the same statement.
+   if(starts.length===1&&ends.length===1&&ends[0].year>=starts[0].year)add(starts[0],title,lane,ends[0]);
+   else {
+    for(const d of starts)add(d,title+" · "+L("inicio","start","début"),lane);
+    for(const d of ends)add(d,title+" · "+L("final","end","fin"),lane);
+   }
+   for(const d of points)add(d,title,lane);
+  }
+  return out;
+ }
+ async function getDatedLabels(authority,language){
+  const ids=[...new Set((authority?.temporalClaims||[]).map(c=>c.objectId).filter(id=>/^Q\d+$/.test(id||"")))];
+  const labels={};
+  // Batch requests; the batching size is an API constraint, not a cap on milestones.
+  for(let i=0;i<ids.length;i+=40){
+   const params=new URLSearchParams({action:"wbgetentities",ids:ids.slice(i,i+40).join("|"),props:"labels",languages:[...new Set([language,"en"])].join("|"),format:"json",origin:"*"});
+   const ctrl=new AbortController(),timer=setTimeout(()=>ctrl.abort(),5500);
+   try{
+    const r=await fetch("https://www.wikidata.org/w/api.php?"+params,{signal:ctrl.signal});
+    if(!r.ok)continue;
+    const data=await r.json();
+    for(const [id,record] of Object.entries(data.entities||{})){
+     const label=record.labels?.[language]?.value||record.labels?.en?.value;
+     if(label)labels[id]=label;
+    }
+   }catch{}finally{clearTimeout(timer)}
+  }
+  return labels;
+ }
  function collect(){
   const historical=hasHistoricalSubject();
   if(isAbstractTerm()||!historical&&!state.rows.some(r=>r.timelineWorkMatch===true&&recordYear(r)!==null))return []; // Only authority or explicitly associated catalogue records.
-  if(isAkhenaten())return akhenatenEvents().sort((a,b)=>a.year-b.year);
-  let ev=isNero()?neroEvents():[],a=state.authority;
+  let ev=isAkhenaten()?akhenatenEvents():isNero()?neroEvents():[],a=state.authority;
+  if(historical&&Array.isArray(a?.temporalClaims))ev.push(...datedAuthorityEvents(a,state.datedLabels).filter(e=>!((isNero()||isAkhenaten())&&e.lane==="life"&&/P569|P570/.test(e.source))));
   // All Wikidata authority properties keep their distinct meanings.
-  if(historical&&a&&/^Q\d+$/.test(a.wikidataId||"")){
+  if(historical&&a&&!Array.isArray(a.temporalClaims)&&/^Q\d+$/.test(a.wikidataId||"")){
    const metadata=[
     ["birthYear","life",L("Nacimiento","Birth","Naissance"),"P569"],
     ["deathYear","life",L("Muerte","Death","Décès"),"P570"],
@@ -204,7 +277,7 @@
    }
   }
   // Attributed cultural works: source relation and typed date, not editorial importance.
-  for(const w of state.works.slice(0,35)){
+  for(const w of state.works){
    const y=year(w.year);if(y==null||!/^Q\d+$/.test(w.id||""))continue;
    const type=String(w.dateKind||"undated"),property=String(w.dateProperty||"");
    ev.push({year:y,lane:"works",title:w.title,url:"https://www.wikidata.org/wiki/"+w.id,
@@ -215,7 +288,7 @@
     image:normUrl(w.image)});
   }
   // Recorded album releaseDate is an edition's date, potentially a reissue.
-  for(const a of state.albums.slice(0,30)){
+  for(const a of state.albums){
    const y=documentedYear(String(a.releaseDate||"").slice(0,4));
    if(year(y)==null||!normUrl(a.url))continue;
    ev.push({year:y,lane:"documents",title:a.title,url:a.url,source:"Apple Music · catálogo de ediciones",
@@ -232,7 +305,7 @@
   // orden de los resultados, y se rotulan como lo que son. Sin esta excepción
   // la cronología dependía por completo de que respondiera Wikidata.
 
-  for(const r of state.rows.slice(0,90)){
+  for(const r of state.rows){
    if(!["book","openlibrary","googlebook","article","edition","manuscript","fragment"].includes(r.type))continue;
    const catalogued=["edition","manuscript","fragment"].includes(r.type)&&r.timelineWorkMatch===true;
    if(!catalogued&&(!historical||!matchedTitle(state.query,r.title)))continue;
@@ -249,9 +322,9 @@
   }
   const seen=new Set();
   ev=ev.map(event).filter(Boolean).filter(e=>{
-   const key=normalize(e.title)+"|"+e.year+"|"+e.lane;
+   const key=normalize(e.title)+"|"+e.year+"|"+e.lane+"|"+(e.end??"");
    if(seen.has(key))return false;seen.add(key);return true
-  }).sort((a,b)=>a.year-b.year||a.title.localeCompare(b.title)).slice(0,48);
+  }).sort((a,b)=>a.year-b.year||a.title.localeCompare(b.title));
   return ev;
  }
  function highlightButton(button,detail,event){
@@ -264,6 +337,10 @@
   const link=el("a","vat-source-link",L("Consultar fuente y metadatos","Open source and metadata","Consulter la source"));
   link.href=event.url;link.target="_blank";link.rel="noopener noreferrer";
   const contents=el("div","vat-detail-text");contents.append(heading,body,source,link);
+  for(const u of event.referenceLinks||[]){
+   const a=el("a","vat-source-link",L("Referencia registrada","Recorded reference","Référence enregistrée")+" · "+new URL(u).hostname);
+   a.href=u;a.target="_blank";a.rel="noopener noreferrer";contents.append(a);
+  }
   detail.replaceChildren();
   if(event.image){
    const img=el("img","vat-detail-image");img.src=event.image;img.alt=event.title;
@@ -480,13 +557,12 @@
     "Records outside the lifetime ("+outsideEvents.length+")",
     "Documents hors de la période biographique ("+outsideEvents.length+")")));
    const list=el("ul","vat-outside-list");
-   for(const e of outsideEvents.slice(0,15)){
+   for(const e of outsideEvents){
     const li=el("li");
     const link=el("a",null,showYear(e.year)+" · "+e.title);
     link.href=e.url;link.target="_blank";link.rel="noopener noreferrer";
     li.append(link);list.append(li);
    }
-   if(outsideEvents.length>15)list.append(el("li",null,L("Se muestran los primeros 15 registros.","Showing first 15 records.","15 premières notices affichées.")));
    extra.append(list);root.append(extra);
   }
   stops.sort((a,b)=>a.event.year-b.event.year||a.event.title.localeCompare(b.event.title));
@@ -549,13 +625,14 @@
  function reset(q){
   panDrag=null;if(panFrame){cancelAnimationFrame(panFrame);panFrame=0}
   state.token++;state.query=String(q||"").trim().slice(0,160);state.zoom=null;state.position=0;
-  state.authority=null;state.works=[];state.albums=[];state.rows=[];state.selected="";state.rowSignature="";state.pendingWorks=null;
+  state.authority=null;state.datedLabels={};state.works=[];state.albums=[];state.rows=[];state.selected="";state.rowSignature="";state.pendingWorks=null;
   place();draw();
   if(!state.query)return;
   const token=state.token;
   resolveAuthority(state.query).then(a=>{
    if(token!==state.token||!a)return;
    state.authority=a;
+   getDatedLabels(a,lang()).then(labels=>{if(token!==state.token)return;state.datedLabels=labels;draw()});
    const pending=state.pendingWorks;
    if(pending&&pending.wikidataId===a.wikidataId)state.works=pending.works;
    draw();
@@ -621,5 +698,5 @@
  }).observe(document.documentElement,{attributes:true,attributeFilter:["lang"]});
  const snapshot=window.VitruviaSearchSnapshot;
  if(snapshot?.query)reset(snapshot.query);
- window.VitruviaAcademicTimeline={collect,layoutMarkers,dateWindow,automaticZoom,recordYear,version:"2.6-biographical-milestones",neroEvents,akhenatenEvents};
+ window.VitruviaAcademicTimeline={collect,layoutMarkers,dateWindow,automaticZoom,recordYear,version:"2.7-universal-dated-statements",neroEvents,akhenatenEvents,datedAuthorityEvents};
 })();
