@@ -129,12 +129,28 @@ const backlog=[...unindexed,...additionalRows.filter(w=>!indexed.has(w.id))].map
   indexed:false
  };
 }).sort((a,b)=>Number(b.r2EditionsDeclared.length>0)-Number(a.r2EditionsDeclared.length>0)||Number(b.priority==="alta")-Number(a.priority==="alta")||a.id.localeCompare(b.id));
+// Keep page-level OCR search distinct from structured edition coverage.
+const liveAuditPath="data/r2/bibliotheca-r2-live-audit.json";
+const liveAudit=existsSync(liveAuditPath)?read(liveAuditPath):{};
+const checkedIndexIds=typeof liveAudit.status==="string"&&liveAudit.status.startsWith("checked")&&Array.isArray(liveAudit.missingIndexIds)
+ ?new Set(r2.filter(e=>!liveAudit.missingIndexIds.includes(e.id)&&e.pdf&&e.texto).map(e=>e.id)):new Set();
+for(const row of backlog){
+ const linkedIds=row.r2EditionsDeclared.filter(id=>checkedIndexIds.has(id));
+ row.r2OcrIndexEditionIds=linkedIds;
+ row.searchCoverage=linkedIds.length?"page_ocr_index_declared":"no_verified_index_link";
+ if(linkedIds.length){
+  row.sourceStatus="Índice invertido por páginas existente en R2; falta versión textual estructurada";
+  row.nextStep="Reutilizar OCR e índice existentes, comprobar portada, idioma, alcance y páginas propias; estructurar por loci solo cuando sea verificable.";
+ }
+}
 const backlogDocument={
  schema:"vdl-bibliotheca-unindexed-backlog-v1",
  generated:new Date().toISOString(),
  method:`Cruce de ${catalog.length} fichas principales y suplementarias, ${additional.length} obras adicionales R2 y versiones declaradas en search-registry. Una ausencia no se presenta como texto indexado. Los facsímiles, las manifestaciones editoriales y las fuentes pendientes se distinguen.`, 
  summary:{
   missingRegistryEntries:backlog.length,
+  withExistingPageOcrIndex:backlog.filter(e=>e.searchCoverage==="page_ocr_index_declared").length,
+  withoutVerifiedIndexLink:backlog.filter(e=>e.searchCoverage==="no_verified_index_link").length,
   ancientWorksWithoutRegisteredText:backlog.filter(e=>e.classification==="ancient_work").length,
   modernEditionManifestationsWithoutOwnRegistry:backlog.filter(e=>e.classification==="modern_edition_of_existing_work").length,
   additionalR2WorksWithoutRegisteredText:backlog.filter(e=>e.classification==="additional_r2_work").length,
@@ -211,6 +227,7 @@ const report={
    r2TextManifestVersions:new Set([...remoteManifestIds,...expansionIds]).size,
    r2ExpansionIndexedEditions:expansionEditions.length,r2ExpansionIndexedPassages:indexedExpansionPassages,r2RegisteredTranslationEditions:translations.length,r2SourcesSharedAcrossManifests:sharedManifestSources,
    r2InvertedIndexDeclaredEditions:manifest.obras,
+   worksWithExistingPageOcrIndex:backlogDocument.summary.withExistingPageOcrIndex,worksWithoutVerifiedIndexLink:backlogDocument.summary.withoutVerifiedIndexLink,
    unindexedCatalogueWorks:unindexed.length,unindexedAdditionalR2Works:backlogDocument.summary.additionalR2WorksWithoutRegisteredText,unindexedAllDeclaredWorks:backlog.length,unindexedWithDeclaredR2Facsimile:backlogDocument.summary.withDeclaredR2Facsimile,unindexedAncientWorks:backlogDocument.summary.ancientWorksWithoutRegisteredText,unindexedEditorialManifestations:backlogDocument.summary.modernEditionManifestationsWithoutOwnRegistry,worksMissingRegisteredOriginal:missingOriginal.length,
    greekTitleNeedsIndividualReview:greekTitleReview.length,r2UnlinkedEditions:r2Unlinked.length,
    duplicateR2BinaryGroups:hashes.length,
