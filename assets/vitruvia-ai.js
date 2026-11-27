@@ -152,14 +152,48 @@ async function prepareCorpus(selection,registryError){
  for(const doc of documents)for(const word of doc.tf.keys())df.set(word,(df.get(word)||0)+1);
  const avgLength=documents.reduce((sum,doc)=>sum+doc.length,0)/documents.length;
  if(registryError)notify("Registro no disponible; se usa corpus de reserva: "+registryError,"fallback");
- return {documents,df,avgLength,works,unavailable,declaredSources:sources.length,registryCount,explicit,sourcePassages,indexedPassages,sampledSources};
+ return {documents,df,avgLength,works,unavailable,declaredSources:sources.length,registryCount,explicit,sourcePassages,indexedPassages,sampledSources,budgeted:selection.budgeted||false,candidateStrategy:selection.candidateStrategy||""};
+}
+// Broad neural searches use the existing federated inverted index to choose
+// candidate editions. The cap is a retrieval budget, never a completeness claim.
+const MAX_BROAD_EDITIONS=24;
+async function narrowBroad(query,selection){
+ if(selection.explicit||selection.sources.length<=MAX_BROAD_EDITIONS)return selection;
+ const idx=window.VitruviaClassicsIndex;
+ const hits=new Map();
+ if(idx?.lookup){
+  const queryTerms=[...new Set(terms(query))].filter(t=>t.length>=3).slice(0,5);
+  const results=await Promise.allSettled(queryTerms.map(t=>idx.lookup(t,{translations:true})));
+  for(const result of results){
+   if(result.status!=="fulfilled")continue;
+   for(const hit of result.value?.hits||[]){
+    const file=hit.work?.file;if(!file)continue;
+    const old=hits.get(file)||{matches:0,weight:0};
+    old.matches++;old.weight+=Math.log1p(Math.max(0,Number(hit.per10k||hit.count)||0));hits.set(file,old);
+   }
+  }
+ }
+ const ranked=selection.sources.filter(s=>hits.has(s.url)).sort((a,b)=>hits.get(b.url).matches-hits.get(a.url).matches||hits.get(b.url).weight-hits.get(a.url).weight||a.url.localeCompare(b.url));
+ const chosen=[],used=new Set(),works=new Set();
+ const add=s=>{if(chosen.length<MAX_BROAD_EDITIONS&&!used.has(s.url)){chosen.push(s);used.add(s.url);works.add(s.workId)}};
+ // Prefer breadth across relevant works before filling with parallel editions.
+ for(const s of ranked)if(!works.has(s.workId))add(s);
+ for(const s of ranked)add(s);
+ // Reserve a small, deterministic fallback sample when postings are absent.
+ // No fabricated evidence: BM25/E5 must still inspect these source passages.
+ if(!chosen.length){
+  const list=selection.sources;
+  for(let i=0;i<MAX_BROAD_EDITIONS;i++)add(list[Math.floor(i*(list.length-1)/(MAX_BROAD_EDITIONS-1))]);
+ }
+ return {...selection,sources:chosen,budgeted:true,candidateStrategy:ranked.length?"índice léxico federado":"muestra de reserva sin coincidencias de índice"};
 }
 async function corpus(query,{targetedOnly=false}={}){
  if(!registryPromise)registryPromise=loadSources().catch(e=>{registryPromise=null;throw e});
- const registry=await registryPromise,selection=sourceSelection(query,registry.sources);
+ const registry=await registryPromise;let selection=sourceSelection(query,registry.sources);
  if(targetedOnly&&!selection.explicit)return {data:null,selection};
  if(targetedOnly&&selection.sources.length>24)return {data:null,selection};
- const key=selection.explicit?selection.sources.map(s=>s.url).join("|"):"registry-sample";
+ selection=await narrowBroad(query,selection);
+ const key=(selection.explicit?"directed:":"sample:")+selection.sources.map(s=>s.url).join("|");
  if(!corpusCache.has(key)){
   if(corpusCache.size>=3)corpusCache.delete(corpusCache.keys().next().value);
   corpusCache.set(key,prepareCorpus(selection,registry.registryError).catch(e=>{corpusCache.delete(key);throw e}));
@@ -537,7 +571,7 @@ async function search(query,{method="neural",targetedOnly=false}={}){
  if(!data)return {rows:[],mode:"not-targeted",method:"none"};
  notify("Calculando coincidencias documentales y vocabulario académico…");
  const ranked=lexicalRanking(q,data,selection);
- const scope="Cobertura: "+data.indexedPassages+"/"+data.sourcePassages+" pasajes de fuentes cargadas; "+data.works.length+"/"+data.declaredSources+" fuentes seleccionadas ("+data.registryCount+" rutas compatibles del registro). "+(data.explicit?"Consulta dirigida a obras identificadas.":"Muestreo del registro, no búsqueda exhaustiva.")+(data.sampledSources?" "+data.sampledSources+" fuentes muestreadas.":"");
+ const scope="Cobertura: "+data.indexedPassages+"/"+data.sourcePassages+" pasajes de fuentes cargadas; "+data.works.length+"/"+data.declaredSources+" fuentes seleccionadas ("+data.registryCount+" rutas compatibles del registro). "+(data.explicit?"Consulta dirigida a obras identificadas.":"Muestreo del registro, no búsqueda exhaustiva.")+(data.sampledSources?" "+data.sampledSources+" fuentes muestreadas.":"")+(data.budgeted?" Selección limitada a "+MAX_BROAD_EDITIONS+" ediciones por consulta ("+data.candidateStrategy+"); no equivale a la cobertura total del índice.":"");
  const coverageNotice=scope+(data.unavailable.length?" Fuentes no cargadas: "+data.unavailable.length+". Cobertura parcial.":"");
  const candidates=diversity(ranked);
  const coverage=candidateCoverage(candidates);
@@ -598,5 +632,5 @@ async function rank(query,docs,{limit=30,candidates=40}={}){
   notify("IA semántica activa en el visor.","success");return {mode:"neural",rows};
  }catch(e){return {mode:"bm25-fallback",rows:pool.slice(0,limit),warning:String(e.message||e)}}
 }
-window.VitruviaAI={search,rank,model:MODEL,version:"1.7-edition-aware",sourceSelection,academicTerms};
+window.VitruviaAI={search,rank,model:MODEL,version:"1.8-index-first",sourceSelection,academicTerms,narrowBroad};
 })();
