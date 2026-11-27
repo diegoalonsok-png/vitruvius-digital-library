@@ -176,3 +176,13 @@ console.log('SCOPE: mocked fetch only; not an HTTP availability or scholarly acc
  assert(!engine.literalPhrase("pars","ars"));
  console.log("PASS: literal versus normalized phrase, whole tokens, Greek and bilingual boundaries.");
 }
+
+{
+ const {engine}=createEngine();
+ const cases=[["causa final","philosophy"],["natural law","philosophy"],["guerres mediques","history"],["funerary inscription","archaeology"],["titulatura real egipcia","egyptology"],["four humours","medicine"],["teorema de Pitágoras","mathematics"],["lectio varia","philology"],["ἀνάστασις νεκρῶν","theology"],["ordre dorique","architecture"]];
+ for(const [q,domain] of cases)assert(engine.contextualHints(q).some(g=>g.domain===domain),q);
+ for(const q of ["logos","ley","historia","causa","orden","bile"])assert.equal(engine.contextualHints(q).length,0,q+" is ambiguous");
+ assert.equal(engine.academicTerms("teoría humoral","galen").get("phlegm"),.18);
+ assert.equal(engine.academicTerms("teoría humoral","galen").get("humoral"),1);
+ console.log("PASS: 18 contextual domain checks, ambiguity guards and weak expansion weights.");
+}
