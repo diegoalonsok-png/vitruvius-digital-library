@@ -44,9 +44,16 @@ function sliceIntoChunks(raw,max=340,overlap=48){
   const api=window.ClassicsCorpusSearch;
   if(!api?.searchPassages)throw Error("Índice compartido de concordancias no disponible");
   const queryTerms=[...new Set(terms(query))].filter(t=>t.length>=3).slice(0,5);
-  const queries=[...new Set([query,...queryTerms])].slice(0,6);
+  const literalQueries=[...new Set([query,...queryTerms])].slice(0,6);
+  let concept=null;
+  try{concept=await api.conceptTerms?.(query)||null}catch{}
+  const originalGreek=/[\u0370-\u03ff\u1f00-\u1fff]/u.test(query);
+  const la=[...new Set([...(originalGreek?[]:literalQueries),...(concept?.la||[])])];
+  const grc=[...new Set([...(originalGreek?literalQueries:[]),...(concept?.grc||[])])];
+  const queries=[...new Set([...literalQueries,...(concept?.la||[]),...(concept?.grc||[])])].slice(0,12);
+  const languageTerms=concept?{la,grc}:null;
   let diagnostics={};
-  const rows=await api.searchPassages(queries,{limit:240,maxPerEdition:16,strictBudget:24,structuredOnly:true,
+  const rows=await api.searchPassages(queries,{limit:240,maxPerEdition:16,strictBudget:24,structuredOnly:true,languageTerms,
    onProgress:p=>notify("Fuentes candidatas: "+p.checked+"/"+p.total+" · pasajes encontrados: "+p.matched),
    onComplete:d=>{diagnostics=d}});
   const documents=[],seen=new Set(),works=new Set();
@@ -65,7 +72,7 @@ function sliceIntoChunks(raw,max=340,overlap=48){
     documents.push({id:key+":"+i,workId:row.workId,locus:row.locus,workTitle:row.title,author:row.author,
      edition:row.edition||"",language:row.language||"",source:row.attribution||row.source,url:row.link,
      original:["la","grc"].includes(row.language)?text:"",translation:["es","en","fr","de","it","pt"].includes(row.language)?text:"",
-     sourceText:text,excerptText,chunk:i,tf,length:tokens.length});
+     sourceText:text,excerptText,chunk:i,tf,length:tokens.length,matchedTerm:row.term||"",conceptId:concept?.id||"",conceptMatch:Boolean(concept&&[...(concept.la||[]),...(concept.grc||[])].some(v=>normalize(v)===normalize(row.term)))});
    }
   }
   const df=new Map();
@@ -73,7 +80,7 @@ function sliceIntoChunks(raw,max=340,overlap=48){
   const avgLength=documents.reduce((sum,d)=>sum+d.length,0)/Math.max(1,documents.length);
   return {documents,df,avgLength,works:[...works],unavailable:(diagnostics.failures||[]).map(x=>x.path||x.workId),
    declaredSources:diagnostics.registered??null,loadedSources:diagnostics.loaded??null,targeted:diagnostics.targeted??null,
-   eligible:diagnostics.eligible??null,indexGate:diagnostics.indexGate??false,partial:true};
+   eligible:diagnostics.eligible??null,indexGate:diagnostics.indexGate??false,partial:true,concept};
  }
 function lexicalRanking(q,data){
  const queryTerms=[...new Set(terms(q))];const n=data.documents.length;
@@ -89,6 +96,7 @@ function lexicalRanking(q,data){
    score+=idf*(freq*(k1+1))/(freq+k1*(1-b+b*doc.length/data.avgLength));
   }
   if(exact.length>4&&normalize(doc.excerptText).includes(exact))score+=75;
+  if(doc.conceptMatch&&doc.matchedTerm&&(" "+normalize(doc.excerptText)+" ").includes(" "+normalize(doc.matchedTerm)+" "))score+=8;
   return {doc,score};
  });
  return scores.sort((a,b)=>b.score-a.score);
@@ -148,14 +156,14 @@ function sourceExcerpt(doc,query,max=420){
 }
 function renderRow(doc,query,score,semantic=false){
  const exact=normalize(doc.excerptText).includes(normalize(query));
- const kind=semantic?(exact?"E5 + coincidencia textual · cotejo pendiente":"Reordenación E5 + BM25 · comprobar pertinencia"):"BM25 · coincidencia textual indexada";
+ const kind=semantic?(exact?"E5 + coincidencia textual · cotejo pendiente":"Reordenación E5 + BM25 · comprobar pertinencia"):doc.conceptMatch&&!exact?"Conceptus · correspondencia editorial atestiguada en el pasaje":"BM25 · coincidencia textual indexada";
  return {type:"passage",title:doc.workTitle+" · "+doc.locus,
   author:doc.author+" · "+doc.edition+" · "+doc.language,
   excerpt:sourceExcerpt(doc,query),latin:doc.language==="la"?doc.original:"",originalText:doc.sourceText||doc.original||doc.translation,originalLanguage:doc.language==="la"||doc.language==="grc"?doc.language:"",translation:doc.translation,translationLanguage:doc.translation?doc.language:"",
   locus:doc.locus,edition:doc.edition,workId:doc.workId,link:doc.url,source:doc.source,
-  meta:kind+" · "+doc.source+" · locus "+doc.locus,
+  meta:kind+" · "+doc.source+" · locus "+doc.locus+(doc.conceptMatch?" · "+doc.conceptId+" → "+doc.matchedTerm:""),
   rating:Math.round(score),aiScore:Math.round(score),aiSemantic:semantic,
-  exactTextMatch:exact,aiEvidence:true
+  exactTextMatch:exact,conceptId:doc.conceptId||null,matchedTerm:doc.matchedTerm||null,aiEvidence:true
  };
 }
 const dot=(a,b)=>{let sum=0;for(let i=0;i<Math.min(a.length,b.length);i++)sum+=a[i]*b[i];return sum};
@@ -254,5 +262,5 @@ async function rank(query,docs,{limit=30,candidates=40}={}){
   notify("IA semántica activa en el visor.","success");return {mode:"neural",rows};
  }catch(e){return {mode:"bm25-fallback",rows:pool.slice(0,limit),warning:String(e.message||e)}}
 }
-window.VitruviaAI={search,rank,model:MODEL,version:"1.2-indexed-candidates"};
+window.VitruviaAI={search,rank,model:MODEL,version:"1.3-conceptus-candidates"};
 })();
