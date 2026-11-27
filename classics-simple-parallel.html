@@ -583,7 +583,10 @@ async function load(){
  const entries=new Map();
  for(const e of reg.entries||[]){
   if(e.workId!==work||!["json-passages","structured-bilingual","html-text"].includes(e.format)||!LANG[e.language])continue;
-  if(!entries.has(e.language)||e.format==="json-passages"||e.format==="structured-bilingual"&&entries.get(e.language)?.format==="html-text")entries.set(e.language,e);
+  const old=entries.get(e.language);
+  const requested=e.language===q.get("left")?q.get("leftEdition"):e.language===q.get("right")?q.get("rightEdition"):null;
+  const matches=x=>!!x&&!!requested&&(x.path===requested||x.sha256===requested||x.sha256?.slice(0,16)===requested);
+  if(!old||matches(e)||!matches(old)&&(e.format==="json-passages"&&(old.format!=="json-passages"||(!old.path.startsWith("data/")&&e.path.startsWith("data/")))||e.format==="structured-bilingual"&&old.format==="html-text"))entries.set(e.language,e);
  }
  availableEditions=entries;
  const fillSelect=(id,options)=>{const sel=el(id);sel.replaceChildren();for(const [value,label] of options){const opt=document.createElement("option");opt.value=value;opt.textContent=label;sel.append(opt);}};

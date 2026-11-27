@@ -292,7 +292,15 @@ larger.addEventListener("click",()=>{translateSize=Math.min(36,translateSize+2);
 document.addEventListener("vitruvia:classics-passage",event=>{
  const info=event.detail;
  if(!info||info.work!==work||typeof info.text!=="string")return;
- current=info;sequence++;updateIndexedChoice(info);
+ current=info;sequence++;
+ // With no explicitly requested target, prefer an available human translation.
+ // Never override an explicit language chosen by the reader.
+ const requested=new URLSearchParams(location.search).get("to");
+ if(!requested&&!enabled&&!(info.editions||[]).some(e=>registered(e)&&e.language===select.value)){
+  const available=["es","en","fr"].find(l=>(info.editions||[]).some(e=>registered(e)&&e.language===l));
+  if(available)select.value=available;
+ }
+ updateIndexedChoice(info);
  // No elegir silenciosamente una traducción inglesa al solicitar castellano.
  // Si no existe edición castellana, se conserva ES para traducción bajo demanda.
  const u=new URL("classics-text-reader.html",location.href);u.searchParams.set("work",work);u.searchParams.set("lang",info.language);u.searchParams.set("locus",info.locus);

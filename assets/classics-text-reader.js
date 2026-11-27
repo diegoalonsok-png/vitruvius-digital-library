@@ -11,6 +11,7 @@ if(!/^[a-z0-9-]{3,60}$/.test(work)){$("source-title").textContent="Obra no ident
 const base="data/classics-corpus/"+work+"-";
 const langSelect=$("language"),editionSelect=$("edition-version"),input=$("query");let data,active=0,results=[],search="",hostedEditions=[],resultPage=0,searchIndex=null,searchMeta="",suggestions=[];
 const editionKey=e=>e?.sha256?e.sha256.slice(0,16):e?.path||"";
+const editionMatches=(e,requested)=>!!requested&&(editionKey(e)===requested||e.path===requested||e.sha256===requested);
 function selectHostedEdition(language,requested="",defaultPath=""){
  if(!editionSelect)return;
  const versions=hostedEditions.filter(e=>e.language===language);
@@ -22,7 +23,7 @@ function selectHostedEdition(language,requested="",defaultPath=""){
   return option;
  });
  editionSelect.replaceChildren(...choices);
- const active=versions.find(e=>editionKey(e)===requested)||
+ const active=versions.find(e=>editionMatches(e,requested))||
    versions.find(e=>e.path===defaultPath)||versions[0];
  if(active)editionSelect.value=editionKey(active);
  const multi=versions.length>1;
@@ -574,15 +575,19 @@ function editorialLabels(){
 async function load(language,requestId){
  const resourceRequest=loadSearchResources(language).catch(err=>{console.warn("Índice léxico complementario no disponible",err);return null});
  const selected=editionSelect?.value||p.get("edition")||"";
- const indexed=hostedEditions.find(e=>e.language===language&&editionKey(e)===selected)||hostedEditions.find(e=>e.language===language);
+ const indexed=hostedEditions.find(e=>e.language===language&&editionMatches(e,selected))||hostedEditions.find(e=>e.language===language);
  const path=indexed?.path||base+language+".json";
  let corpus=null;
- if(indexed?.format==="json-passages"&&/^data\/classics-corpus\/[a-z0-9-]+\.json$/.test(path))
-  corpus=await import("./classics-r2-mirror.mjs?v=20261127-1").then(m=>m.loadCertifiedMirror(path,{workId:indexed.sourceWorkId||work,language})).catch(()=>null);
- if(!corpus){
-  const response=await fetch(path);
-  if(!response.ok)throw Error("Edición todavía no incorporada: "+language+" · HTTP "+response.status);
-  corpus=await response.json();
+ // An optional mirror/certificate request must not block a readable edition.
+ const readPath=async()=>{const ctrl=new AbortController(),timer=setTimeout(()=>ctrl.abort(),12000);try{
+  const response=await fetch(path,{signal:ctrl.signal});
+  if(!response.ok)throw Error("HTTP "+response.status);return await response.json();
+ }finally{clearTimeout(timer)}};
+ try{corpus=await readPath()}catch(error){
+  if(indexed?.format==="json-passages"&&/^data\/classics-corpus\/[a-z0-9-]+\.json$/.test(path)){
+   corpus=await Promise.race([import("./classics-r2-mirror.mjs?v=20261127-1").then(m=>m.loadCertifiedMirror(path,{workId:indexed.sourceWorkId||work,language})).catch(()=>null),new Promise(resolve=>setTimeout(()=>resolve(null),14000))]);
+  }
+  if(!corpus)throw Error("No se pudo recuperar la edición "+language+" · "+error.message);
  }
  if(indexed?.format==="structured-bilingual"){
   if(!Array.isArray(corpus.passages)||!corpus.passages.length||!["la","es","en","fr"].includes(language))throw Error("Edición estructurada no disponible");
@@ -601,7 +606,7 @@ async function load(language,requestId){
  }
  const minimumText=indexed?.sha256&&indexed.passages>0?12:350;
  if(corpus.workId!==(indexed?.sourceWorkId||work)||corpus.language!==language||!Array.isArray(corpus.passages)||!corpus.passages.length||corpus.passages.reduce((n,p)=>n+(typeof p.text==="string"?p.text.trim().length:0),0)<minimumText)throw Error("El documento no pasó validación de integridad");
- const editionSearchIndex=await resourceRequest;
+ const editionSearchIndex=null;
  // Only the most recent selection may replace the visible edition and index.
  if(requestId!==editionRequest)return;
  if(work==="apuleius-metamorphoses"&&language==="es"){
@@ -625,9 +630,10 @@ async function load(language,requestId){
    .finally(()=>clearTimeout(timeout));
  }
 
- if(ACADEMIC)corpus=await ACADEMIC.prepare(corpus);
+ if(ACADEMIC)try{corpus=await ACADEMIC.prepare(corpus)}catch(err){console.warn("Notas editoriales opcionales no disponibles",err)}
  if(requestId!==editionRequest)return;
  data=corpus;active=0;resultPage=0;searchIndex=editionSearchIndex;
+ resourceRequest.then(index=>{if(requestId!==editionRequest||data!==corpus)return;searchIndex=index;if(search&&searchMode?.value!=="literal"){setQuery(input.value);renderSearch();select(active)}}).catch(()=>{});
  void showHoldingLibraries();
  // The lexical index is optional; source text and literal search always remain available.
  $("source-title").textContent=corpus.attribution+" · "+corpus.passages.length+" unidades textuales";
@@ -839,7 +845,7 @@ $("reader-reset").addEventListener("click",()=>{Object.assign(appearance,APPEARA
 $("prev").addEventListener("click",()=>select(active-1));$("next").addEventListener("click",()=>select(active+1));
 (async()=>{
  try{
-  const catalog=await(await fetch("data/bibliotheca-graeca-latina-I-bce-I-ce.json")).json();
+  const catalog=await Promise.race([fetch("data/bibliotheca-graeca-latina-I-bce-I-ce.json").then(r=>r.ok?r.json():{}).catch(()=>({})),new Promise(resolve=>setTimeout(()=>resolve({}),2000))]);
   const record=(catalog.works||[]).find(x=>x.id===work);
   // The search registry is the canonical list of hosted, searchable JSON editions.
   // The bibliographic catalogue may lag behind, notably with partial translations.

@@ -957,6 +957,8 @@ function renderCard(d){
   const viewer=makeLink(label,d.codexViewer||d.viewerUrl);
   if(viewer){viewer.classList.add("codex-viewer-button");if(d.primaryWitness)viewer.classList.add("primary-codex-viewer");acts.append(viewer)}
  }
+ const parallel=window.VitruviaReaderLinks?.parallelUrl(d.link,location.href,d.language,d.sourcePath);
+ if(parallel){const a=makeLink(S.lang==="en"?"Read original and translation":S.lang==="fr"?"Lire original et traduction":"Leer original y traducción",parallel);if(a)acts.append(a)}
  if(d.link){const a=makeLink(d.type==="book"&&!d.readable?(S.lang==="en"?"Open bibliographic record":S.lang==="fr"?"Consulter la notice bibliographique":"Consultar ficha bibliográfica"):d.type==="passage"||d.type==="book"||d.type==="manuscript"||d.type==="edition"?T().read:d.type==="section"?T().document:T().source,d.link);if(a)acts.append(a)}
  if(Array.isArray(d.links)){for(const extra of d.links.slice(0,3)){const a=makeLink(extra.label,extra.url);if(a)acts.append(a)}}
  // Los resultados de fuentes clásicas enlazan las tres vías de consulta.
@@ -1952,13 +1954,31 @@ async function search(){
     ["caesar-gallico","caesar-civili"]:matchingAuthorWorks(q).map(w=>w.id);
    const languageNames={grc:"Griego",la:"Latín",es:"Castellano",en:"Inglés",fr:"Francés"};
    let verified=[];
+   const identity=person||((previewIdentity?.kind==="person")?{name:previewIdentity.canonical||generalQuery,aliases:previewIdentity.aliases||[]}:null);
+   const nero=/^(?:emperador )?(?:neron|nero)(?: romano)?$/.test(normalized);
+   const mentionNames=[...new Set((nero?[q,"Nerón","Nero","Neronis","Neronem","Nerone","Neroni","Νέρων","Νέρωνος","Νέρωνα","Νέρωνι"]:[identity?.name,...(identity?.latin_forms||[]),identity?.greek_name,...(identity?.aliases||[])].filter(x=>typeof x==="string"&&norm(x).length>=4&&!/^(?:cesar|caesar|augustus|augusto|imperator|emperor|king|rey)$/i.test(norm(x)))).filter(Boolean))].slice(0,12);
+   const isPerson=!!(identity||nero);
+   const publish=(progress,complete=false)=>{
+    if(id!==S.searchId||searchSignal.aborted||!isPerson)return;
+    window.dispatchEvent(new CustomEvent("vitruvia:person-passages",{detail:{query:q,names:mentionNames,rows:(progress.rows||[]).filter(x=>!x.ocr).slice(0,600),checked:progress.checked,total:progress.total,failed:progress.failed,complete}}));
+   };
+   if(isPerson&&mentionNames.length){
+    // The author's own works are not evidence that the author's name occurs in them.
+    // Search name forms across the same registered full-text index, independently.
+    const mentions=await window.ClassicsCorpusSearch.searchPassages(mentionNames,{
+     limit:600,maxPerEdition:40,onProgress:progress=>publish(progress)
+    });
+    const diagnostics=window.ClassicsCorpusSearch.diagnostics?.()||{};
+    publish({rows:mentions,checked:diagnostics.targeted,total:diagnostics.targeted,failed:diagnostics.failed},true);
+    if(!authorIds.length)verified=mentions.slice(0,180);
+   }
    if(authorIds.length){
     // Author requests return actual passages from that author's catalogued works,
     // labelled as samples, not false matches for the person's name in the text.
     verified=await window.ClassicsCorpusSearch.sampleWorkPassages(authorIds,{
      limit:36,maxPerEdition:2
     });
-   }else{
+   }else if(!isPerson||!mentionNames.length){
     const spellings=normalized==="logos"?[q,"λόγος"]:[q];
     verified=await window.ClassicsCorpusSearch.searchPassages(spellings,{
      limit:180,maxPerEdition:7,includeOCR:false
@@ -1966,7 +1986,7 @@ async function search(){
    }
    return verified.map((p,index)=>({
     type:"passage",kind:"classic-passage",curatedAcademic:true,exactTextMatch:!authorIds.length,
-    workId:p.workId,locus:p.locus,edition:p.edition,
+    workId:p.workId,locus:p.locus,edition:p.edition||p.source,sourcePath:p.source,language:p.language,originalText:p.originalText,
     title:p.author+" · "+p.title+" · "+(p.locus||"pasaje"),
     author:(languageNames[p.language]||p.language)+(p.edition?" · "+p.edition:""),
     excerpt:p.excerpt,
