@@ -4,17 +4,17 @@
   "scope": "Se auditan exclusivamente 271 fichas de obras del catálogo local; no es un censo universal de literatura grecolatina.",
   "method": "Cruce de fichas bibliográficas, vínculos locales, corpus legible, registro de búsqueda y testimonios manuscritos; sin OCR ni verificación externa de los enlaces.",
   "counts": {
-    "cataloguedWorks": 779,
+    "cataloguedWorks": 784,
     "catalogueStatuses": {
       "lectura-local-completa": 22,
-      "lectura-local-parcial": 692,
+      "lectura-local-parcial": 698,
       "repertoriado-busqueda-externa": 12,
       "pendiente-de-incorporar": 2,
-      "fuente-externa-identificada": 51
+      "fuente-externa-identificada": 50
     },
-    "locallyReadableClaims": 714,
-    "indexedTextVersions": 1015,
-    "indexedDistinctWorks": 750,
+    "locallyReadableClaims": 720,
+    "indexedTextVersions": 1023,
+    "indexedDistinctWorks": 755,
     "manuscriptWitnesses": 107
   },
   "works": [
@@ -1986,7 +1986,8 @@
         "grc"
       ],
       "indexedTextFiles": [
-        "data/classics-corpus/polybius-historiae-grc.json"
+        "data/classics-corpus/polybius-historiae-grc.json",
+        "https://libros.vitruvius-digital-library.org/corpus/polybius-historiae-grc-adddcc44597c861b.json"
       ],
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
@@ -2216,7 +2217,8 @@
         "grc"
       ],
       "indexedTextFiles": [
-        "data/classics-corpus/ptolemy-almagest-grc.json"
+        "data/classics-corpus/ptolemy-almagest-grc.json",
+        "https://libros.vitruvius-digital-library.org/corpus/ptolemy-almagest-grc-afff01ca7ce97961.json"
       ],
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
@@ -5744,11 +5746,12 @@
       "originalLanguage": "grc",
       "genre": "Neoplatonismo",
       "dating": "Siglo III d. C.",
-      "catalogueStatus": "fuente-externa-identificada",
+      "catalogueStatus": "lectura-local-parcial",
       "indexedTextLanguages": [
         "grc"
       ],
       "indexedTextFiles": [
+        "https://libros.vitruvius-digital-library.org/corpus/plotino-eneadas-grc-5d15e35bb7fa21e5.json",
         "https://libros.vitruvius-digital-library.org/corpus/plotino-eneadas-grc.json"
       ],
       "localPDF": null,
@@ -13985,6 +13988,81 @@
       ],
       "indexedTextFiles": [
         "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0026-tlg003-grc-aa59f6dbb8d06abf.json"
+      ],
+      "manuscriptRecords": 0,
+      "hasManuscriptRecord": false
+    },
+    {
+      "id": "cts-tlg0057-tlg019",
+      "author": "Galeno",
+      "title": "De Victu Attenuante",
+      "originalLanguage": "grc",
+      "catalogueStatus": "lectura-local-parcial",
+      "indexedTextLanguages": [
+        "grc"
+      ],
+      "indexedTextFiles": [
+        "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0057-tlg019-grc-7efd507a0feaaf05.json"
+      ],
+      "manuscriptRecords": 0,
+      "hasManuscriptRecord": false
+    },
+    {
+      "id": "cts-tlg0057-tlg020",
+      "author": "Galeno",
+      "title": "De utilitate respirationis",
+      "originalLanguage": "grc",
+      "catalogueStatus": "lectura-local-parcial",
+      "indexedTextLanguages": [
+        "grc"
+      ],
+      "indexedTextFiles": [
+        "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0057-tlg020-grc-d98039d016c0548f.json"
+      ],
+      "manuscriptRecords": 0,
+      "hasManuscriptRecord": false
+    },
+    {
+      "id": "cts-tlg0027-tlg003",
+      "author": "Andócides",
+      "title": "On the Peace with Sparta",
+      "originalLanguage": "grc",
+      "catalogueStatus": "lectura-local-parcial",
+      "indexedTextLanguages": [
+        "grc"
+      ],
+      "indexedTextFiles": [
+        "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0027-tlg003-grc-fa655b34896172ff.json"
+      ],
+      "manuscriptRecords": 0,
+      "hasManuscriptRecord": false
+    },
+    {
+      "id": "cts-tlg0027-tlg004",
+      "author": "Andócides",
+      "title": "Against Alcibiades",
+      "originalLanguage": "grc",
+      "catalogueStatus": "lectura-local-parcial",
+      "indexedTextLanguages": [
+        "grc"
+      ],
+      "indexedTextFiles": [
+        "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0027-tlg004-grc-1c97e73a8bf91840.json"
+      ],
+      "manuscriptRecords": 0,
+      "hasManuscriptRecord": false
+    },
+    {
+      "id": "cts-tlg0028-tlg001",
+      "author": "Antifonte",
+      "title": "Against the Stepmother for Poisoning",
+      "originalLanguage": "grc",
+      "catalogueStatus": "lectura-local-parcial",
+      "indexedTextLanguages": [
+        "grc"
+      ],
+      "indexedTextFiles": [
+        "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0028-tlg001-grc-feaed95d3bae37c0.json"
       ],
       "manuscriptRecords": 0,
       "hasManuscriptRecord": false

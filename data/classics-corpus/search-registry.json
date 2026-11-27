@@ -2,8 +2,8 @@
  "schema": "vitruvia-classics-search-registry-v1",
  "updated": "2026-11-27",
  "description": "Registro verificable de transcripciones HTML y textos JSON existentes que admiten búsqueda literal de contenido. No incluye automáticamente PDF escaneados, facsímiles ni fichas sin texto. Los índices auxiliares por locus y el aparato crítico se declaran por separado; no se suman a versiones textuales originales ni implican colación autóptica.",
- "count": 1176,
- "works": 878,
+ "count": 1184,
+ "works": 883,
  "entries": [
   {
    "workId": "aeneas-tacticus-poliorketika",
@@ -4819,6 +4819,45 @@
    "passages": 299
   },
   {
+   "workId": "cts-tlg0027-tlg003",
+   "author": "Andócides",
+   "title": "On the Peace with Sparta",
+   "language": "grc",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0027-tlg003-grc-fa655b34896172ff.json",
+   "reader": "classics-text-reader.html?work=cts-tlg0027-tlg003&lang=grc&edition=fa655b34896172ff",
+   "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+   "sourceUrn": "urn:cts:greekLit:tlg0027.tlg003.perseus-grc2",
+   "sha256": "fa655b34896172ff4186914751b110080017c0b742398faa746acee1f82759b3",
+   "passages": 41
+  },
+  {
+   "workId": "cts-tlg0027-tlg004",
+   "author": "Andócides",
+   "title": "Against Alcibiades",
+   "language": "grc",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0027-tlg004-grc-1c97e73a8bf91840.json",
+   "reader": "classics-text-reader.html?work=cts-tlg0027-tlg004&lang=grc&edition=1c97e73a8bf91840",
+   "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+   "sourceUrn": "urn:cts:greekLit:tlg0027.tlg004.perseus-grc2",
+   "sha256": "1c97e73a8bf91840428ccb85ab6323ac18bfe3f3e1eccd2ae55d733e55004a8f",
+   "passages": 42
+  },
+  {
+   "workId": "cts-tlg0028-tlg001",
+   "author": "Antifonte",
+   "title": "Against the Stepmother for Poisoning",
+   "language": "grc",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0028-tlg001-grc-feaed95d3bae37c0.json",
+   "reader": "classics-text-reader.html?work=cts-tlg0028-tlg001&lang=grc&edition=feaed95d3bae37c0",
+   "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+   "sourceUrn": "urn:cts:greekLit:tlg0028.tlg001.perseus-grc2",
+   "sha256": "feaed95d3bae37c022b6f549aea98ef3f0c3c591eb0cce29ae213341e3abd129",
+   "passages": 33
+  },
+  {
    "workId": "cts-tlg0032-tlg003",
    "author": "Jenofonte",
    "title": "Economics",
@@ -5129,6 +5168,32 @@
    "sourceUrn": "urn:cts:greekLit:tlg0057.tlg018.1st1K-grc1",
    "sha256": "ba5109137bce2bb5ad27868e8e5abd60ff21477f6a03fc9ac91976d8eb799ada",
    "passages": 21
+  },
+  {
+   "workId": "cts-tlg0057-tlg019",
+   "author": "Galeno",
+   "title": "De Victu Attenuante",
+   "language": "grc",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0057-tlg019-grc-7efd507a0feaaf05.json",
+   "reader": "classics-text-reader.html?work=cts-tlg0057-tlg019&lang=grc&edition=7efd507a0feaaf05",
+   "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+   "sourceUrn": "urn:cts:greekLit:tlg0057.tlg019.1st1K-grc1",
+   "sha256": "7efd507a0feaaf051be33fa1f032aa7010f13e7fcbb031a6f0a826943f1d5fbd",
+   "passages": 20
+  },
+  {
+   "workId": "cts-tlg0057-tlg020",
+   "author": "Galeno",
+   "title": "De utilitate respirationis",
+   "language": "grc",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0057-tlg020-grc-d98039d016c0548f.json",
+   "reader": "classics-text-reader.html?work=cts-tlg0057-tlg020&lang=grc&edition=d98039d016c0548f",
+   "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+   "sourceUrn": "urn:cts:greekLit:tlg0057.tlg020.1st1K-grc1",
+   "sha256": "d98039d016c0548f148af81434da88baaad7254805c3986fb848bf4ffb85b324",
+   "passages": 6
   },
   {
    "workId": "cts-tlg0057-tlg049",
@@ -12769,6 +12834,19 @@
   },
   {
    "workId": "plotino-eneadas",
+   "author": "Plotino",
+   "title": "Ἐννεάδες · Enneades",
+   "language": "grc",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/plotino-eneadas-grc-5d15e35bb7fa21e5.json",
+   "reader": "classics-text-reader.html?work=plotino-eneadas&lang=grc&edition=5d15e35bb7fa21e5",
+   "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+   "sourceUrn": "urn:cts:greekLit:tlg2000.tlg001.1st1K-grc1",
+   "sha256": "5d15e35bb7fa21e56e07a876f5c4bf5dbc7c809d12dc62df3e2939819900268f",
+   "passages": 710
+  },
+  {
+   "workId": "plotino-eneadas",
    "language": "grc",
    "title": "Ἐννεάδες · Enneades",
    "author": "Plotino",
@@ -12812,6 +12890,19 @@
    "path": "data/classics-corpus/polybius-historiae-grc.json",
    "reader": "classics-text-reader.html?work=polybius-historiae&lang=grc",
    "sourceDescription": "Perseus TEI · fuente editada documentada, sin colación automática"
+  },
+  {
+   "workId": "polybius-historiae",
+   "author": "Polibio",
+   "title": "Ἱστορίαι",
+   "language": "grc",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/polybius-historiae-grc-adddcc44597c861b.json",
+   "reader": "classics-text-reader.html?work=polybius-historiae&lang=grc&edition=adddcc44597c861b",
+   "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+   "sourceUrn": "urn:cts:greekLit:tlg0543.tlg001.perseus-grc2",
+   "sha256": "adddcc44597c861b527fda4e3e9a87bcc3fcacd038994bb7afd97316f3dbec63",
+   "passages": 12533
   },
   {
    "workId": "polycarp",
@@ -12864,6 +12955,19 @@
    "path": "data/classics-corpus/ptolemy-almagest-grc.json",
    "reader": "classics-text-reader.html?work=ptolemy-almagest&lang=grc",
    "sourceDescription": "OpenGreekAndLatin First1KGreek TEI · fuente editada documentada, sin colación automática"
+  },
+  {
+   "workId": "ptolemy-almagest",
+   "author": "Claudio Ptolomeo",
+   "title": "Μαθηματικὴ σύνταξις (Almagestum)",
+   "language": "grc",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/ptolemy-almagest-grc-afff01ca7ce97961.json",
+   "reader": "classics-text-reader.html?work=ptolemy-almagest&lang=grc&edition=afff01ca7ce97961",
+   "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+   "sourceUrn": "urn:cts:greekLit:tlg0363.tlg001.1st1K-grc1",
+   "sha256": "afff01ca7ce97961ce49e5920d8c4128a6f13b2207c98063e3f02087a729ecf0",
+   "passages": 3562
   },
   {
    "workId": "publilius-syrus-sententiae",

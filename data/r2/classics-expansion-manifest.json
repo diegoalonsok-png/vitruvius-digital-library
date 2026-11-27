@@ -1,10 +1,10 @@
 {
  "schema": "vdl-classics-expansion-manifest-v1",
- "generated": "2026-11-27T16:03:47.554298+00:00",
+ "generated": "2026-11-27T23:29:39.800434+00:00",
  "discovery": {
-  "sourceRecords": 1374,
-  "alreadyIndexedCatalogueWorks": 685,
-  "pendingGroups": 1316,
+  "sourceRecords": 1361,
+  "alreadyIndexedCatalogueWorks": 698,
+  "pendingGroups": 1303,
   "policy": "Una obra bibliográfica, múltiples ediciones identificadas por URN y hash; sin sustituir ni duplicar archivos",
   "githubTextFiles": 450,
   "githubUnregisteredFiles": 14,
@@ -30341,6 +30341,339 @@
    "characters": 119549,
    "bytes": 283006,
    "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0026-tlg003-grc-aa59f6dbb8d06abf.json"
+  },
+  {
+   "workId": "cts-tlg0057-tlg019",
+   "author": "Galeno",
+   "title": "De Victu Attenuante",
+   "language": "grc",
+   "dating": "siglo II d. C.",
+   "sources": [
+    {
+     "title": "De victu attenuante",
+     "titleLanguage": "lat",
+     "author": "Galen",
+     "editors": [
+      "Karl Kalbfleisch"
+     ],
+     "bibliography": "Galeni De victu attenuante liber Galen Karl Kalbfleisch B. G. Teubner Leipzig 3-37 1898 Internet Archive",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg0057.tlg019.1st1K-grc1",
+     "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0057/tlg019/tlg0057.tlg019.1st1K-grc1.xml",
+     "sourceSha256": "aae0dc4821bd05b0f9f4ebb0ca21e34aa4d2ef55cb6b3e41be3ac09f04e1d62a",
+     "sourceReferences": [
+      "https://archive.org/details/galenidevictuat01galegoog/page/2/mode/2up"
+     ],
+     "publicationYear": "1898",
+     "publisher": "B. G. Teubner",
+     "publicationPlace": "Leipzig",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/aae0dc4821bd05b0f9f4ebb0ca21e34aa4d2ef55cb6b3e41be3ac09f04e1d62a.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-tlg0057-tlg019-grc-7efd507a0feaaf05.json",
+   "sha256": "7efd507a0feaaf051be33fa1f032aa7010f13e7fcbb031a6f0a826943f1d5fbd",
+   "passages": 20,
+   "characters": 39843,
+   "bytes": 85369,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0057-tlg019-grc-7efd507a0feaaf05.json"
+  },
+  {
+   "workId": "ptolemy-almagest",
+   "author": "Claudio Ptolomeo",
+   "title": "Μαθηματικὴ σύνταξις (Almagestum)",
+   "language": "grc",
+   "sources": [
+    {
+     "title": "Μαθηματικὴ Σύνταξις",
+     "titleLanguage": "grc",
+     "author": "Claudius Ptolemaeus",
+     "editors": [
+      "J. L. Heiberg"
+     ],
+     "bibliography": "Claudii Ptolemaei opera quae exstant omnia J. L. Heiberg Claudius Ptolemaeus Leipzig Teubner 1898 1.1-1.2 Volume 1.1: Hathi Trust Volume 1.2: Hathi Trust",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg0363.tlg001.1st1K-grc1",
+     "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0363/tlg001/tlg0363.tlg001.1st1K-grc1.xml",
+     "sourceSha256": "3a5736d0922b99b81044be8be0c233f05f53e5b45bdcb922df386feffbe8cee2",
+     "sourceReferences": [],
+     "publicationYear": "1898",
+     "publisher": "Leipzig",
+     "publicationPlace": "Teubner",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/3a5736d0922b99b81044be8be0c233f05f53e5b45bdcb922df386feffbe8cee2.xml"
+    }
+   ],
+   "existing": true,
+   "filename": "ptolemy-almagest-grc-afff01ca7ce97961.json",
+   "sha256": "afff01ca7ce97961ce49e5920d8c4128a6f13b2207c98063e3f02087a729ecf0",
+   "passages": 3562,
+   "characters": 967675,
+   "bytes": 2433560,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/ptolemy-almagest-grc-afff01ca7ce97961.json"
+  },
+  {
+   "workId": "cts-tlg0057-tlg020",
+   "author": "Galeno",
+   "title": "De utilitate respirationis",
+   "language": "grc",
+   "dating": "siglo II d. C.",
+   "sources": [
+    {
+     "title": "De utilitate respirationis",
+     "titleLanguage": "lat",
+     "author": "Galen",
+     "editors": [
+      "Karl Gottlob Kühn"
+     ],
+     "bibliography": "Claudii Galeni Opera Omnia Galen Karl Gottlob Kühn Knobloch Leipzig 4 470-511 1822 HathiTrust",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg0057.tlg020.1st1K-grc1",
+     "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0057/tlg020/tlg0057.tlg020.1st1K-grc1.xml",
+     "sourceSha256": "8ca6f0e14ae138acd54b987d57cf8e93cd2c9a007b96ce944ba90832ffb8a9ba",
+     "sourceReferences": [
+      "https://hdl.handle.net/2027/chi.11102513?urlappend=%3Bseq=480"
+     ],
+     "publicationYear": "1822",
+     "publisher": "Knobloch",
+     "publicationPlace": "Leipzig",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/8ca6f0e14ae138acd54b987d57cf8e93cd2c9a007b96ce944ba90832ffb8a9ba.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-tlg0057-tlg020-grc-d98039d016c0548f.json",
+   "sha256": "d98039d016c0548f148af81434da88baaad7254805c3986fb848bf4ffb85b324",
+   "passages": 6,
+   "characters": 38421,
+   "bytes": 80032,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0057-tlg020-grc-d98039d016c0548f.json"
+  },
+  {
+   "workId": "plotino-eneadas",
+   "author": "Plotino",
+   "title": "Ἐννεάδες · Enneades",
+   "language": "grc",
+   "dating": "c. 204–270 d. C.",
+   "sources": [
+    {
+     "title": "Enneades",
+     "titleLanguage": "lat",
+     "author": "Plotinus",
+     "editors": [
+      "Richard Volkmann"
+     ],
+     "bibliography": "Plotinus Plotini Enneades Richard Volkmann Teubner Leipzig 1883-1884 1-2 Internet Archive Internet Archive",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg2000.tlg001.1st1K-grc1",
+     "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg2000/tlg001/tlg2000.tlg001.1st1K-grc1.xml",
+     "sourceSha256": "29a60f4609740c4a858f1cc517182b7fc90d19333ebbf47ae09f927520600bec",
+     "sourceReferences": [
+      "https://archive.org/details/plotinienneadesp00plot"
+     ],
+     "publicationYear": "1883-1884",
+     "publisher": "Teubner",
+     "publicationPlace": "Leipzig",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/29a60f4609740c4a858f1cc517182b7fc90d19333ebbf47ae09f927520600bec.xml"
+    }
+   ],
+   "existing": true,
+   "relatedWorkIds": [],
+   "filename": "plotino-eneadas-grc-5d15e35bb7fa21e5.json",
+   "sha256": "5d15e35bb7fa21e56e07a876f5c4bf5dbc7c809d12dc62df3e2939819900268f",
+   "passages": 710,
+   "characters": 1187799,
+   "bytes": 2445988,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/plotino-eneadas-grc-5d15e35bb7fa21e5.json"
+  },
+  {
+   "workId": "cts-tlg0027-tlg003",
+   "author": "Andócides",
+   "title": "On the Peace with Sparta",
+   "language": "grc",
+   "dating": "c. 440–390 a. C.",
+   "sources": [
+    {
+     "title": "Περὶ τῆς πρὸς Λακεδαιμονίους εἰρήνης",
+     "titleLanguage": "grc",
+     "author": "Andocides",
+     "editors": [
+      "Kenneth John Maidment"
+     ],
+     "bibliography": "Andocides Minor Attic Orators Kenneth John Maidment London William Heinemann, Ltd. Cambridge, MA Harvard University Press 1941 1960 1 Internet Archive",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg0027.tlg003.perseus-grc2",
+     "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0027/tlg003/tlg0027.tlg003.perseus-grc2.xml",
+     "sourceSha256": "03a4b2ea1ad9de99ee2cb085c24f49e97f29549a8649451f5a120a2f4f32c86b",
+     "sourceReferences": [
+      "https://archive.org/details/minoratticorator01maiduoft/page/498/mode/2up"
+     ],
+     "publicationYear": "1941",
+     "publisher": "William Heinemann, Ltd.",
+     "publicationPlace": "London",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/03a4b2ea1ad9de99ee2cb085c24f49e97f29549a8649451f5a120a2f4f32c86b.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-tlg0027-tlg003-grc-fa655b34896172ff.json",
+   "sha256": "fa655b34896172ff4186914751b110080017c0b742398faa746acee1f82759b3",
+   "passages": 41,
+   "characters": 17563,
+   "bytes": 42848,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0027-tlg003-grc-fa655b34896172ff.json"
+  },
+  {
+   "workId": "cts-tlg0027-tlg004",
+   "author": "Andócides",
+   "title": "Against Alcibiades",
+   "language": "grc",
+   "dating": "c. 440–390 a. C.",
+   "sources": [
+    {
+     "title": "Κατὰ Ἀλκιβιάδου",
+     "titleLanguage": "grc",
+     "author": "Andocides",
+     "editors": [
+      "Kenneth John Maidment"
+     ],
+     "bibliography": "Andocides Minor Attic Orators Kenneth John Maidment London William Heinemann, Ltd. Cambridge, MA Harvard University Press 1941 1960 1 Internet Archive",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg0027.tlg004.perseus-grc2",
+     "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0027/tlg004/tlg0027.tlg004.perseus-grc2.xml",
+     "sourceSha256": "fc0a377f0b86ae5559099e98ee5f783fcd24e38a68f3b0cb3dc94651a916929c",
+     "sourceReferences": [
+      "https://archive.org/details/minoratticorator01maiduoft/page/542/mode/2up"
+     ],
+     "publicationYear": "1941",
+     "publisher": "William Heinemann, Ltd.",
+     "publicationPlace": "London",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/fc0a377f0b86ae5559099e98ee5f783fcd24e38a68f3b0cb3dc94651a916929c.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-tlg0027-tlg004-grc-1c97e73a8bf91840.json",
+   "sha256": "1c97e73a8bf91840428ccb85ab6323ac18bfe3f3e1eccd2ae55d733e55004a8f",
+   "passages": 42,
+   "characters": 18420,
+   "bytes": 44697,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0027-tlg004-grc-1c97e73a8bf91840.json"
+  },
+  {
+   "workId": "cts-tlg0028-tlg001",
+   "author": "Antifonte",
+   "title": "Against the Stepmother for Poisoning",
+   "language": "grc",
+   "dating": "c. 480–411 a. C.",
+   "sources": [
+    {
+     "title": "Φαρμακείας κατὰ τῆς μητρυιᾶς",
+     "titleLanguage": "grc",
+     "author": "Antiphon",
+     "editors": [
+      "Kenneth John Maidment"
+     ],
+     "bibliography": "Andocides Minor Attic Orators Kenneth John Maidment London William Heinemann, Ltd. Cambridge, MA Harvard University Press 1941 1960 1 Internet Archive",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg0028.tlg001.perseus-grc2",
+     "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0028/tlg001/tlg0028.tlg001.perseus-grc2.xml",
+     "sourceSha256": "27e66ed5bcb0ce40919ba536d91997259cb7a40f5fd96fe2113c4d7c4e7a1d03",
+     "sourceReferences": [
+      "https://archive.org/details/minoratticorator01maiduoft/page/14/mode/2up"
+     ],
+     "publicationYear": "1941",
+     "publisher": "William Heinemann, Ltd.",
+     "publicationPlace": "London",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/27e66ed5bcb0ce40919ba536d91997259cb7a40f5fd96fe2113c4d7c4e7a1d03.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-tlg0028-tlg001-grc-feaed95d3bae37c0.json",
+   "sha256": "feaed95d3bae37c022b6f549aea98ef3f0c3c591eb0cce29ae213341e3abd129",
+   "passages": 33,
+   "characters": 10788,
+   "bytes": 28490,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0028-tlg001-grc-feaed95d3bae37c0.json"
+  },
+  {
+   "workId": "polybius-historiae",
+   "author": "Polibio",
+   "title": "Ἱστορίαι",
+   "language": "grc",
+   "sources": [
+    {
+     "title": "Ἱστορίαι",
+     "titleLanguage": "und",
+     "author": "Polybius",
+     "editors": [
+      "Theodor Büttner-Wobst"
+     ],
+     "bibliography": "Historiae Polybius Theodor Büttner-Wobst Leipzig Teubner 1893- 1-4 The Internet Archive The Internet Archive The Internet Archive The Internet Archive",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg0543.tlg001.perseus-grc2",
+     "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0543/tlg001/tlg0543.tlg001.perseus-grc2.xml",
+     "sourceSha256": "cacc37c4f83cb7b4a7164e9088abb1c8fa9937d4cc1c834446d3c33f688fb6b9",
+     "sourceReferences": [
+      "https://babel.hathitrust.org/cgi/pt?id=uiug.30112052665681&seq=54",
+      "https://babel.hathitrust.org/cgi/pt?id=uiuo.ark:/13960/t05x5s30d&seq=126",
+      "https://babel.hathitrust.org/cgi/pt?id=uiug.30112023829663&seq=30",
+      "https://babel.hathitrust.org/cgi/pt?id=uiug.30112023829671&seq=60"
+     ],
+     "publicationYear": "1893-",
+     "publisher": "Teubner",
+     "publicationPlace": "Leipzig",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/cacc37c4f83cb7b4a7164e9088abb1c8fa9937d4cc1c834446d3c33f688fb6b9.xml"
+    }
+   ],
+   "existing": true,
+   "filename": "polybius-historiae-grc-adddcc44597c861b.json",
+   "sha256": "adddcc44597c861b527fda4e3e9a87bcc3fcacd038994bb7afd97316f3dbec63",
+   "passages": 12533,
+   "characters": 2061233,
+   "bytes": 6066910,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/polybius-historiae-grc-adddcc44597c861b.json"
   }
  ],
  "githubPreserved": [
@@ -33546,6 +33879,41 @@
  ],
  "deferred": [
   {
+   "workId": "horace-ars-poetica",
+   "sources": [
+    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0893/phi006/phi0893.phi006.perseus-lat2.xml"
+   ],
+   "reason": "Sin licencia abierta explícita admisible en la cabecera TEI"
+  },
+  {
+   "workId": "horace-epistulae",
+   "sources": [
+    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0893/phi005/phi0893.phi005.perseus-lat2.xml"
+   ],
+   "reason": "Sin licencia abierta explícita admisible en la cabecera TEI"
+  },
+  {
+   "workId": "cts-tlg1805-tlg010",
+   "sources": [
+    "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg1805/tlg010/tlg1805.tlg010.1st1K-grc1.xml"
+   ],
+   "reason": "Lengua TEI discrepante o sin acreditar: la"
+  },
+  {
+   "workId": "cts-phi1017-phi013",
+   "sources": [
+    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi1017/phi013/phi1017.phi013.perseus-lat2.xml"
+   ],
+   "reason": "Sin licencia abierta explícita admisible en la cabecera TEI"
+  },
+  {
+   "workId": "horace-epodi",
+   "sources": [
+    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0893/phi003/phi0893.phi003.perseus-lat2.xml"
+   ],
+   "reason": "Sin licencia abierta explícita admisible en la cabecera TEI"
+  },
+  {
    "workId": "horace-odes",
    "sources": [
     "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0893/phi001/phi0893.phi001.perseus-lat2.xml"
@@ -33560,9 +33928,9 @@
    "reason": "Sin licencia abierta explícita admisible en la cabecera TEI"
   },
   {
-   "workId": "lucretius",
+   "workId": "ovid-ars-amatoria",
    "sources": [
-    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0550/phi001/phi0550.phi001.perseus-lat1.xml"
+    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0959/phi004/phi0959.phi004.perseus-lat2.xml"
    ],
    "reason": "Sin licencia abierta explícita admisible en la cabecera TEI"
   },
@@ -33574,9 +33942,9 @@
    "reason": "Sin licencia abierta explícita admisible en la cabecera TEI"
   },
   {
-   "workId": "ovid-ars-amatoria",
+   "workId": "lucretius",
    "sources": [
-    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0959/phi004/phi0959.phi004.perseus-lat2.xml"
+    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0550/phi001/phi0550.phi001.perseus-lat1.xml"
    ],
    "reason": "Sin licencia abierta explícita admisible en la cabecera TEI"
   },
@@ -33588,16 +33956,9 @@
    "reason": "Sin licencia abierta explícita admisible en la cabecera TEI"
   },
   {
-   "workId": "ovid-fasti",
+   "workId": "ovid-ex-ponto",
    "sources": [
-    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0959/phi007/phi0959.phi007.perseus-lat2.xml"
-   ],
-   "reason": "Sin licencia abierta explícita admisible en la cabecera TEI"
-  },
-  {
-   "workId": "ovid-remedia-amoris",
-   "sources": [
-    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0959/phi005/phi0959.phi005.perseus-lat2.xml"
+    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0959/phi009/phi0959.phi009.perseus-lat2.xml"
    ],
    "reason": "Sin licencia abierta explícita admisible en la cabecera TEI"
   },
@@ -33609,16 +33970,9 @@
    "reason": "Sin licencia abierta explícita admisible en la cabecera TEI"
   },
   {
-   "workId": "seneca-de-clementia",
+   "workId": "ovid-remedia-amoris",
    "sources": [
-    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi1017/phi014/phi1017.phi014.perseus-lat2.xml"
-   ],
-   "reason": "Sin licencia abierta explícita admisible en la cabecera TEI"
-  },
-  {
-   "workId": "ovid-ex-ponto",
-   "sources": [
-    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0959/phi009/phi0959.phi009.perseus-lat2.xml"
+    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0959/phi005/phi0959.phi005.perseus-lat2.xml"
    ],
    "reason": "Sin licencia abierta explícita admisible en la cabecera TEI"
   },
@@ -33646,9 +34000,16 @@
    "reason": "Sin licencia abierta explícita admisible en la cabecera TEI"
   },
   {
-   "workId": "virgil-georgica",
+   "workId": "seneca-de-clementia",
    "sources": [
-    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0690/phi002/phi0690.phi002.perseus-lat2.xml"
+    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi1017/phi014/phi1017.phi014.perseus-lat2.xml"
+   ],
+   "reason": "Sin licencia abierta explícita admisible en la cabecera TEI"
+  },
+  {
+   "workId": "ovid-fasti",
+   "sources": [
+    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0959/phi007/phi0959.phi007.perseus-lat2.xml"
    ],
    "reason": "Sin licencia abierta explícita admisible en la cabecera TEI"
   },
@@ -33667,9 +34028,9 @@
    "reason": "Sin licencia abierta explícita admisible en la cabecera TEI"
   },
   {
-   "workId": "cts-phi0690-phi001",
+   "workId": "virgil-georgica",
    "sources": [
-    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0690/phi001/phi0690.phi001.perseus-lat2.xml"
+    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0690/phi002/phi0690.phi002.perseus-lat2.xml"
    ],
    "reason": "Sin licencia abierta explícita admisible en la cabecera TEI"
   },
@@ -33688,13 +34049,6 @@
    "reason": "Sin licencia abierta explícita admisible en la cabecera TEI"
   },
   {
-   "workId": "cts-phi0959-phi010",
-   "sources": [
-    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0959/phi010/phi0959.phi010.perseus-lat2.xml"
-   ],
-   "reason": "Sin licencia abierta explícita admisible en la cabecera TEI"
-  },
-  {
    "workId": "cts-phi0959-phi001",
    "sources": [
     "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0959/phi001/phi0959.phi001.perseus-lat2.xml"
@@ -33702,23 +34056,62 @@
    "reason": "Sin licencia abierta explícita admisible en la cabecera TEI"
   },
   {
-   "workId": "cts-phi1014-phi003",
+   "workId": "cts-phi0690-phi001",
    "sources": [
-    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi1014/phi003/phi1014.phi003.perseus-lat1.xml"
+    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0690/phi001/phi0690.phi001.perseus-lat2.xml"
    ],
    "reason": "Sin licencia abierta explícita admisible en la cabecera TEI"
   },
   {
-   "workId": "cts-phi1014-phi004",
+   "workId": "cts-phi0959-phi010",
    "sources": [
-    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi1014/phi004/phi1014.phi004.perseus-lat1.xml"
+    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0959/phi010/phi0959.phi010.perseus-lat2.xml"
    ],
    "reason": "Sin licencia abierta explícita admisible en la cabecera TEI"
   },
   {
-   "workId": "cts-phi1014-phi002",
+   "workId": "quintilian",
    "sources": [
-    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi1014/phi002/phi1014.phi002.perseus-lat1.xml"
+    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi1002/phi001/phi1002.phi001.perseus-lat2.xml"
+   ],
+   "reason": "Sin licencia abierta explícita admisible en la cabecera TEI"
+  },
+  {
+   "workId": "sallust-catiline",
+   "sources": [
+    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0631/phi001/phi0631.phi001.perseus-lat4.xml"
+   ],
+   "reason": "Sin licencia abierta explícita admisible en la cabecera TEI"
+  },
+  {
+   "workId": "sallust-iugurtha",
+   "sources": [
+    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0631/phi002/phi0631.phi002.perseus-lat4.xml"
+   ],
+   "reason": "Sin licencia abierta explícita admisible en la cabecera TEI"
+  },
+  {
+   "workId": "suetonius-caesares",
+   "sources": [
+    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi1348/abo011/phi1348.abo011.perseus-lat2.xml",
+    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi1348/abo012/phi1348.abo012.perseus-lat2.xml",
+    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi1348/abo013/phi1348.abo013.perseus-lat2.xml",
+    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi1348/abo014/phi1348.abo014.perseus-lat2.xml",
+    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi1348/abo015/phi1348.abo015.perseus-lat2.xml",
+    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi1348/abo016/phi1348.abo016.perseus-lat2.xml",
+    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi1348/abo017/phi1348.abo017.perseus-lat2.xml",
+    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi1348/abo018/phi1348.abo018.perseus-lat2.xml",
+    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi1348/abo019/phi1348.abo019.perseus-lat2.xml",
+    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi1348/abo020/phi1348.abo020.perseus-lat2.xml",
+    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi1348/abo021/phi1348.abo021.perseus-lat2.xml",
+    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi1348/abo022/phi1348.abo022.perseus-lat2.xml"
+   ],
+   "reason": "Sin licencia abierta explícita admisible en la cabecera TEI"
+  },
+  {
+   "workId": "cts-phi0631-phi003",
+   "sources": [
+    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0631/phi003/phi0631.phi003.perseus-lat2.xml"
    ],
    "reason": "Sin licencia abierta explícita admisible en la cabecera TEI"
   },
@@ -33726,20 +34119,6 @@
    "workId": "cts-phi1014-phi001",
    "sources": [
     "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi1014/phi001/phi1014.phi001.perseus-lat1.xml"
-   ],
-   "reason": "Sin licencia abierta explícita admisible en la cabecera TEI"
-  },
-  {
-   "workId": "cts-phi1017-phi011",
-   "sources": [
-    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi1017/phi011/phi1017.phi011.perseus-lat2.xml"
-   ],
-   "reason": "Sin licencia abierta explícita admisible en la cabecera TEI"
-  },
-  {
-   "workId": "cts-phi1017-phi013",
-   "sources": [
-    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi1017/phi013/phi1017.phi013.perseus-lat2.xml"
    ],
    "reason": "Sin licencia abierta explícita admisible en la cabecera TEI"
   }

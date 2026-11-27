@@ -12293,7 +12293,61 @@
    },
    "localEditionLanguages": [
     "grc"
-   ]
+   ],
+   "localVersions": [
+    {
+     "language": "grc",
+     "path": "data/classics-corpus/polybius-historiae-grc.json",
+     "label": "Versión conservada antes de la ampliación R2"
+    },
+    {
+     "language": "grc",
+     "path": "https://libros.vitruvius-digital-library.org/corpus/polybius-historiae-grc-adddcc44597c861b.json",
+     "label": "Edición original grc · urn:cts:greekLit:tlg0543.tlg001.perseus-grc2",
+     "reader": "classics-text-reader.html?work=polybius-historiae&lang=grc&edition=adddcc44597c861b",
+     "sourceUrns": [
+      "urn:cts:greekLit:tlg0543.tlg001.perseus-grc2"
+     ],
+     "sha256": "adddcc44597c861b527fda4e3e9a87bcc3fcacd038994bb7afd97316f3dbec63"
+    }
+   ],
+   "indexedEdition": {
+    "sources": [
+     {
+      "title": "Ἱστορίαι",
+      "titleLanguage": "und",
+      "author": "Polybius",
+      "editors": [
+       "Theodor Büttner-Wobst"
+      ],
+      "bibliography": "Historiae Polybius Theodor Büttner-Wobst Leipzig Teubner 1893- 1-4 The Internet Archive The Internet Archive The Internet Archive The Internet Archive",
+      "licences": [
+       {
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+       }
+      ],
+      "editionUrn": "urn:cts:greekLit:tlg0543.tlg001.perseus-grc2",
+      "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0543/tlg001/tlg0543.tlg001.perseus-grc2.xml",
+      "sourceSha256": "cacc37c4f83cb7b4a7164e9088abb1c8fa9937d4cc1c834446d3c33f688fb6b9",
+      "sourceReferences": [
+       "https://babel.hathitrust.org/cgi/pt?id=uiug.30112052665681&seq=54",
+       "https://babel.hathitrust.org/cgi/pt?id=uiuo.ark:/13960/t05x5s30d&seq=126",
+       "https://babel.hathitrust.org/cgi/pt?id=uiug.30112023829663&seq=30",
+       "https://babel.hathitrust.org/cgi/pt?id=uiug.30112023829671&seq=60"
+      ],
+      "publicationYear": "1893-",
+      "publisher": "Teubner",
+      "publicationPlace": "Leipzig",
+      "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/cacc37c4f83cb7b4a7164e9088abb1c8fa9937d4cc1c834446d3c33f688fb6b9.xml"
+     }
+    ],
+    "sha256": "adddcc44597c861b527fda4e3e9a87bcc3fcacd038994bb7afd97316f3dbec63",
+    "passages": 12533,
+    "characters": 2061233,
+    "bytes": 6066910,
+    "url": "https://libros.vitruvius-digital-library.org/corpus/polybius-historiae-grc-adddcc44597c861b.json"
+   }
   },
   {
    "id": "pseudo-apollodorus-bibliotheca",
@@ -15572,7 +15626,56 @@
    },
    "localEditionLanguages": [
     "grc"
-   ]
+   ],
+   "localVersions": [
+    {
+     "language": "grc",
+     "path": "data/classics-corpus/ptolemy-almagest-grc.json",
+     "label": "Versión conservada antes de la ampliación R2"
+    },
+    {
+     "language": "grc",
+     "path": "https://libros.vitruvius-digital-library.org/corpus/ptolemy-almagest-grc-afff01ca7ce97961.json",
+     "label": "Edición original grc · urn:cts:greekLit:tlg0363.tlg001.1st1K-grc1",
+     "reader": "classics-text-reader.html?work=ptolemy-almagest&lang=grc&edition=afff01ca7ce97961",
+     "sourceUrns": [
+      "urn:cts:greekLit:tlg0363.tlg001.1st1K-grc1"
+     ],
+     "sha256": "afff01ca7ce97961ce49e5920d8c4128a6f13b2207c98063e3f02087a729ecf0"
+    }
+   ],
+   "indexedEdition": {
+    "sources": [
+     {
+      "title": "Μαθηματικὴ Σύνταξις",
+      "titleLanguage": "grc",
+      "author": "Claudius Ptolemaeus",
+      "editors": [
+       "J. L. Heiberg"
+      ],
+      "bibliography": "Claudii Ptolemaei opera quae exstant omnia J. L. Heiberg Claudius Ptolemaeus Leipzig Teubner 1898 1.1-1.2 Volume 1.1: Hathi Trust Volume 1.2: Hathi Trust",
+      "licences": [
+       {
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+       }
+      ],
+      "editionUrn": "urn:cts:greekLit:tlg0363.tlg001.1st1K-grc1",
+      "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0363/tlg001/tlg0363.tlg001.1st1K-grc1.xml",
+      "sourceSha256": "3a5736d0922b99b81044be8be0c233f05f53e5b45bdcb922df386feffbe8cee2",
+      "sourceReferences": [],
+      "publicationYear": "1898",
+      "publisher": "Leipzig",
+      "publicationPlace": "Teubner",
+      "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/3a5736d0922b99b81044be8be0c233f05f53e5b45bdcb922df386feffbe8cee2.xml"
+     }
+    ],
+    "sha256": "afff01ca7ce97961ce49e5920d8c4128a6f13b2207c98063e3f02087a729ecf0",
+    "passages": 3562,
+    "characters": 967675,
+    "bytes": 2433560,
+    "url": "https://libros.vitruvius-digital-library.org/corpus/ptolemy-almagest-grc-afff01ca7ce97961.json"
+   }
   },
   {
    "id": "ptolemy-geographia",
@@ -37273,7 +37376,7 @@
     "facsimil": "https://libros.vitruvius-digital-library.org/clasicos/pdf/plotino-eneadas.pdf",
     "texto": "https://libros.vitruvius-digital-library.org/clasicos/texto/plotino-eneadas.json"
    },
-   "publicStatus": "fuente-externa-identificada",
+   "publicStatus": "lectura-local-parcial",
    "localReader": null,
    "addedBy": "facsímil alojado en R2 · scripts/r2-fichas-obras-nuevas.py",
    "sourceRegistration": {
@@ -37305,7 +37408,56 @@
     "period": "interpretado del campo dating de esta ficha"
    },
    "century": "III",
-   "period": "III"
+   "period": "III",
+   "corpusFiles": {
+    "grc": "https://libros.vitruvius-digital-library.org/corpus/plotino-eneadas-grc-5d15e35bb7fa21e5.json"
+   },
+   "localVersions": [
+    {
+     "language": "grc",
+     "path": "https://libros.vitruvius-digital-library.org/corpus/plotino-eneadas-grc-5d15e35bb7fa21e5.json",
+     "label": "Edición original grc · urn:cts:greekLit:tlg2000.tlg001.1st1K-grc1",
+     "reader": "classics-text-reader.html?work=plotino-eneadas&lang=grc&edition=5d15e35bb7fa21e5",
+     "sourceUrns": [
+      "urn:cts:greekLit:tlg2000.tlg001.1st1K-grc1"
+     ],
+     "sha256": "5d15e35bb7fa21e56e07a876f5c4bf5dbc7c809d12dc62df3e2939819900268f"
+    }
+   ],
+   "indexedEdition": {
+    "sources": [
+     {
+      "title": "Enneades",
+      "titleLanguage": "lat",
+      "author": "Plotinus",
+      "editors": [
+       "Richard Volkmann"
+      ],
+      "bibliography": "Plotinus Plotini Enneades Richard Volkmann Teubner Leipzig 1883-1884 1-2 Internet Archive Internet Archive",
+      "licences": [
+       {
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+       }
+      ],
+      "editionUrn": "urn:cts:greekLit:tlg2000.tlg001.1st1K-grc1",
+      "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg2000/tlg001/tlg2000.tlg001.1st1K-grc1.xml",
+      "sourceSha256": "29a60f4609740c4a858f1cc517182b7fc90d19333ebbf47ae09f927520600bec",
+      "sourceReferences": [
+       "https://archive.org/details/plotinienneadesp00plot"
+      ],
+      "publicationYear": "1883-1884",
+      "publisher": "Teubner",
+      "publicationPlace": "Leipzig",
+      "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/29a60f4609740c4a858f1cc517182b7fc90d19333ebbf47ae09f927520600bec.xml"
+     }
+    ],
+    "sha256": "5d15e35bb7fa21e56e07a876f5c4bf5dbc7c809d12dc62df3e2939819900268f",
+    "passages": 710,
+    "characters": 1187799,
+    "bytes": 2445988,
+    "url": "https://libros.vitruvius-digital-library.org/corpus/plotino-eneadas-grc-5d15e35bb7fa21e5.json"
+   }
   },
   {
    "id": "lyra-graeca",
@@ -81372,6 +81524,406 @@
     "characters": 119549,
     "bytes": 283006,
     "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0026-tlg003-grc-aa59f6dbb8d06abf.json"
+   }
+  },
+  {
+   "id": "cts-tlg0057-tlg019",
+   "author": "Galeno",
+   "title": "De Victu Attenuante",
+   "language": "grc",
+   "genre": "Corpus clásico ampliado",
+   "dating": "siglo II d. C.",
+   "reading": {
+    "url": "classics-text-reader.html?work=cts-tlg0057-tlg019&lang=grc&edition=7efd507a0feaaf05",
+    "status": "Edición TEI alojada en R2 con búsqueda y traducción automática por pasaje"
+   },
+   "manuscript": {
+    "status": "Sin testimonio manuscrito individual asignado; la edición TEI se identifica por separado"
+   },
+   "pdf": {
+    "url": null,
+    "status": "No consta PDF ni facsímil individual verificado para esta edición"
+   },
+   "translation": {
+    "status": "Traducción automática de consulta por pasaje; no se atribuye a un traductor académico"
+   },
+   "links": {
+    "scaife": "https://scaife.perseus.org/library/urn:cts:greekLit:tlg0057.tlg019.1st1K-grc1/"
+   },
+   "aliases": [
+    "urn:cts:greekLit:tlg0057.tlg019.1st1K-grc1"
+   ],
+   "relatedWorkIds": [],
+   "catalogueProvenance": "Título y autor de los catálogos CTS del sitio; edición contrastada con su cabecera TEI. No se retrotraduce el título.",
+   "corpusFiles": {
+    "grc": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0057-tlg019-grc-7efd507a0feaaf05.json"
+   },
+   "localVersions": [
+    {
+     "language": "grc",
+     "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0057-tlg019-grc-7efd507a0feaaf05.json",
+     "label": "Edición original grc · urn:cts:greekLit:tlg0057.tlg019.1st1K-grc1",
+     "reader": "classics-text-reader.html?work=cts-tlg0057-tlg019&lang=grc&edition=7efd507a0feaaf05",
+     "sourceUrns": [
+      "urn:cts:greekLit:tlg0057.tlg019.1st1K-grc1"
+     ],
+     "sha256": "7efd507a0feaaf051be33fa1f032aa7010f13e7fcbb031a6f0a826943f1d5fbd"
+    }
+   ],
+   "publicStatus": "lectura-local-parcial",
+   "indexedEdition": {
+    "sources": [
+     {
+      "title": "De victu attenuante",
+      "titleLanguage": "lat",
+      "author": "Galen",
+      "editors": [
+       "Karl Kalbfleisch"
+      ],
+      "bibliography": "Galeni De victu attenuante liber Galen Karl Kalbfleisch B. G. Teubner Leipzig 3-37 1898 Internet Archive",
+      "licences": [
+       {
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+       }
+      ],
+      "editionUrn": "urn:cts:greekLit:tlg0057.tlg019.1st1K-grc1",
+      "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0057/tlg019/tlg0057.tlg019.1st1K-grc1.xml",
+      "sourceSha256": "aae0dc4821bd05b0f9f4ebb0ca21e34aa4d2ef55cb6b3e41be3ac09f04e1d62a",
+      "sourceReferences": [
+       "https://archive.org/details/galenidevictuat01galegoog/page/2/mode/2up"
+      ],
+      "publicationYear": "1898",
+      "publisher": "B. G. Teubner",
+      "publicationPlace": "Leipzig",
+      "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/aae0dc4821bd05b0f9f4ebb0ca21e34aa4d2ef55cb6b3e41be3ac09f04e1d62a.xml"
+     }
+    ],
+    "sha256": "7efd507a0feaaf051be33fa1f032aa7010f13e7fcbb031a6f0a826943f1d5fbd",
+    "passages": 20,
+    "characters": 39843,
+    "bytes": 85369,
+    "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0057-tlg019-grc-7efd507a0feaaf05.json"
+   }
+  },
+  {
+   "id": "cts-tlg0057-tlg020",
+   "author": "Galeno",
+   "title": "De utilitate respirationis",
+   "language": "grc",
+   "genre": "Corpus clásico ampliado",
+   "dating": "siglo II d. C.",
+   "reading": {
+    "url": "classics-text-reader.html?work=cts-tlg0057-tlg020&lang=grc&edition=d98039d016c0548f",
+    "status": "Edición TEI alojada en R2 con búsqueda y traducción automática por pasaje"
+   },
+   "manuscript": {
+    "status": "Sin testimonio manuscrito individual asignado; la edición TEI se identifica por separado"
+   },
+   "pdf": {
+    "url": null,
+    "status": "No consta PDF ni facsímil individual verificado para esta edición"
+   },
+   "translation": {
+    "status": "Traducción automática de consulta por pasaje; no se atribuye a un traductor académico"
+   },
+   "links": {
+    "scaife": "https://scaife.perseus.org/library/urn:cts:greekLit:tlg0057.tlg020.1st1K-grc1/"
+   },
+   "aliases": [
+    "urn:cts:greekLit:tlg0057.tlg020.1st1K-grc1"
+   ],
+   "relatedWorkIds": [],
+   "catalogueProvenance": "Título y autor de los catálogos CTS del sitio; edición contrastada con su cabecera TEI. No se retrotraduce el título.",
+   "corpusFiles": {
+    "grc": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0057-tlg020-grc-d98039d016c0548f.json"
+   },
+   "localVersions": [
+    {
+     "language": "grc",
+     "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0057-tlg020-grc-d98039d016c0548f.json",
+     "label": "Edición original grc · urn:cts:greekLit:tlg0057.tlg020.1st1K-grc1",
+     "reader": "classics-text-reader.html?work=cts-tlg0057-tlg020&lang=grc&edition=d98039d016c0548f",
+     "sourceUrns": [
+      "urn:cts:greekLit:tlg0057.tlg020.1st1K-grc1"
+     ],
+     "sha256": "d98039d016c0548f148af81434da88baaad7254805c3986fb848bf4ffb85b324"
+    }
+   ],
+   "publicStatus": "lectura-local-parcial",
+   "indexedEdition": {
+    "sources": [
+     {
+      "title": "De utilitate respirationis",
+      "titleLanguage": "lat",
+      "author": "Galen",
+      "editors": [
+       "Karl Gottlob Kühn"
+      ],
+      "bibliography": "Claudii Galeni Opera Omnia Galen Karl Gottlob Kühn Knobloch Leipzig 4 470-511 1822 HathiTrust",
+      "licences": [
+       {
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+       }
+      ],
+      "editionUrn": "urn:cts:greekLit:tlg0057.tlg020.1st1K-grc1",
+      "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0057/tlg020/tlg0057.tlg020.1st1K-grc1.xml",
+      "sourceSha256": "8ca6f0e14ae138acd54b987d57cf8e93cd2c9a007b96ce944ba90832ffb8a9ba",
+      "sourceReferences": [
+       "https://hdl.handle.net/2027/chi.11102513?urlappend=%3Bseq=480"
+      ],
+      "publicationYear": "1822",
+      "publisher": "Knobloch",
+      "publicationPlace": "Leipzig",
+      "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/8ca6f0e14ae138acd54b987d57cf8e93cd2c9a007b96ce944ba90832ffb8a9ba.xml"
+     }
+    ],
+    "sha256": "d98039d016c0548f148af81434da88baaad7254805c3986fb848bf4ffb85b324",
+    "passages": 6,
+    "characters": 38421,
+    "bytes": 80032,
+    "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0057-tlg020-grc-d98039d016c0548f.json"
+   }
+  },
+  {
+   "id": "cts-tlg0027-tlg003",
+   "author": "Andócides",
+   "title": "On the Peace with Sparta",
+   "language": "grc",
+   "genre": "Corpus clásico ampliado",
+   "dating": "c. 440–390 a. C.",
+   "reading": {
+    "url": "classics-text-reader.html?work=cts-tlg0027-tlg003&lang=grc&edition=fa655b34896172ff",
+    "status": "Edición TEI alojada en R2 con búsqueda y traducción automática por pasaje"
+   },
+   "manuscript": {
+    "status": "Sin testimonio manuscrito individual asignado; la edición TEI se identifica por separado"
+   },
+   "pdf": {
+    "url": null,
+    "status": "No consta PDF ni facsímil individual verificado para esta edición"
+   },
+   "translation": {
+    "status": "Traducción automática de consulta por pasaje; no se atribuye a un traductor académico"
+   },
+   "links": {
+    "scaife": "https://scaife.perseus.org/library/urn:cts:greekLit:tlg0027.tlg003.perseus-grc2/"
+   },
+   "aliases": [
+    "urn:cts:greekLit:tlg0027.tlg003.perseus-grc2"
+   ],
+   "relatedWorkIds": [],
+   "catalogueProvenance": "Título y autor de los catálogos CTS del sitio; edición contrastada con su cabecera TEI. No se retrotraduce el título.",
+   "corpusFiles": {
+    "grc": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0027-tlg003-grc-fa655b34896172ff.json"
+   },
+   "localVersions": [
+    {
+     "language": "grc",
+     "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0027-tlg003-grc-fa655b34896172ff.json",
+     "label": "Edición original grc · urn:cts:greekLit:tlg0027.tlg003.perseus-grc2",
+     "reader": "classics-text-reader.html?work=cts-tlg0027-tlg003&lang=grc&edition=fa655b34896172ff",
+     "sourceUrns": [
+      "urn:cts:greekLit:tlg0027.tlg003.perseus-grc2"
+     ],
+     "sha256": "fa655b34896172ff4186914751b110080017c0b742398faa746acee1f82759b3"
+    }
+   ],
+   "publicStatus": "lectura-local-parcial",
+   "indexedEdition": {
+    "sources": [
+     {
+      "title": "Περὶ τῆς πρὸς Λακεδαιμονίους εἰρήνης",
+      "titleLanguage": "grc",
+      "author": "Andocides",
+      "editors": [
+       "Kenneth John Maidment"
+      ],
+      "bibliography": "Andocides Minor Attic Orators Kenneth John Maidment London William Heinemann, Ltd. Cambridge, MA Harvard University Press 1941 1960 1 Internet Archive",
+      "licences": [
+       {
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+       }
+      ],
+      "editionUrn": "urn:cts:greekLit:tlg0027.tlg003.perseus-grc2",
+      "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0027/tlg003/tlg0027.tlg003.perseus-grc2.xml",
+      "sourceSha256": "03a4b2ea1ad9de99ee2cb085c24f49e97f29549a8649451f5a120a2f4f32c86b",
+      "sourceReferences": [
+       "https://archive.org/details/minoratticorator01maiduoft/page/498/mode/2up"
+      ],
+      "publicationYear": "1941",
+      "publisher": "William Heinemann, Ltd.",
+      "publicationPlace": "London",
+      "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/03a4b2ea1ad9de99ee2cb085c24f49e97f29549a8649451f5a120a2f4f32c86b.xml"
+     }
+    ],
+    "sha256": "fa655b34896172ff4186914751b110080017c0b742398faa746acee1f82759b3",
+    "passages": 41,
+    "characters": 17563,
+    "bytes": 42848,
+    "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0027-tlg003-grc-fa655b34896172ff.json"
+   }
+  },
+  {
+   "id": "cts-tlg0027-tlg004",
+   "author": "Andócides",
+   "title": "Against Alcibiades",
+   "language": "grc",
+   "genre": "Corpus clásico ampliado",
+   "dating": "c. 440–390 a. C.",
+   "reading": {
+    "url": "classics-text-reader.html?work=cts-tlg0027-tlg004&lang=grc&edition=1c97e73a8bf91840",
+    "status": "Edición TEI alojada en R2 con búsqueda y traducción automática por pasaje"
+   },
+   "manuscript": {
+    "status": "Sin testimonio manuscrito individual asignado; la edición TEI se identifica por separado"
+   },
+   "pdf": {
+    "url": null,
+    "status": "No consta PDF ni facsímil individual verificado para esta edición"
+   },
+   "translation": {
+    "status": "Traducción automática de consulta por pasaje; no se atribuye a un traductor académico"
+   },
+   "links": {
+    "scaife": "https://scaife.perseus.org/library/urn:cts:greekLit:tlg0027.tlg004.perseus-grc2/"
+   },
+   "aliases": [
+    "urn:cts:greekLit:tlg0027.tlg004.perseus-grc2"
+   ],
+   "relatedWorkIds": [],
+   "catalogueProvenance": "Título y autor de los catálogos CTS del sitio; edición contrastada con su cabecera TEI. No se retrotraduce el título.",
+   "corpusFiles": {
+    "grc": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0027-tlg004-grc-1c97e73a8bf91840.json"
+   },
+   "localVersions": [
+    {
+     "language": "grc",
+     "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0027-tlg004-grc-1c97e73a8bf91840.json",
+     "label": "Edición original grc · urn:cts:greekLit:tlg0027.tlg004.perseus-grc2",
+     "reader": "classics-text-reader.html?work=cts-tlg0027-tlg004&lang=grc&edition=1c97e73a8bf91840",
+     "sourceUrns": [
+      "urn:cts:greekLit:tlg0027.tlg004.perseus-grc2"
+     ],
+     "sha256": "1c97e73a8bf91840428ccb85ab6323ac18bfe3f3e1eccd2ae55d733e55004a8f"
+    }
+   ],
+   "publicStatus": "lectura-local-parcial",
+   "indexedEdition": {
+    "sources": [
+     {
+      "title": "Κατὰ Ἀλκιβιάδου",
+      "titleLanguage": "grc",
+      "author": "Andocides",
+      "editors": [
+       "Kenneth John Maidment"
+      ],
+      "bibliography": "Andocides Minor Attic Orators Kenneth John Maidment London William Heinemann, Ltd. Cambridge, MA Harvard University Press 1941 1960 1 Internet Archive",
+      "licences": [
+       {
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+       }
+      ],
+      "editionUrn": "urn:cts:greekLit:tlg0027.tlg004.perseus-grc2",
+      "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0027/tlg004/tlg0027.tlg004.perseus-grc2.xml",
+      "sourceSha256": "fc0a377f0b86ae5559099e98ee5f783fcd24e38a68f3b0cb3dc94651a916929c",
+      "sourceReferences": [
+       "https://archive.org/details/minoratticorator01maiduoft/page/542/mode/2up"
+      ],
+      "publicationYear": "1941",
+      "publisher": "William Heinemann, Ltd.",
+      "publicationPlace": "London",
+      "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/fc0a377f0b86ae5559099e98ee5f783fcd24e38a68f3b0cb3dc94651a916929c.xml"
+     }
+    ],
+    "sha256": "1c97e73a8bf91840428ccb85ab6323ac18bfe3f3e1eccd2ae55d733e55004a8f",
+    "passages": 42,
+    "characters": 18420,
+    "bytes": 44697,
+    "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0027-tlg004-grc-1c97e73a8bf91840.json"
+   }
+  },
+  {
+   "id": "cts-tlg0028-tlg001",
+   "author": "Antifonte",
+   "title": "Against the Stepmother for Poisoning",
+   "language": "grc",
+   "genre": "Corpus clásico ampliado",
+   "dating": "c. 480–411 a. C.",
+   "reading": {
+    "url": "classics-text-reader.html?work=cts-tlg0028-tlg001&lang=grc&edition=feaed95d3bae37c0",
+    "status": "Edición TEI alojada en R2 con búsqueda y traducción automática por pasaje"
+   },
+   "manuscript": {
+    "status": "Sin testimonio manuscrito individual asignado; la edición TEI se identifica por separado"
+   },
+   "pdf": {
+    "url": null,
+    "status": "No consta PDF ni facsímil individual verificado para esta edición"
+   },
+   "translation": {
+    "status": "Traducción automática de consulta por pasaje; no se atribuye a un traductor académico"
+   },
+   "links": {
+    "scaife": "https://scaife.perseus.org/library/urn:cts:greekLit:tlg0028.tlg001.perseus-grc2/"
+   },
+   "aliases": [
+    "urn:cts:greekLit:tlg0028.tlg001.perseus-grc2"
+   ],
+   "relatedWorkIds": [],
+   "catalogueProvenance": "Título y autor de los catálogos CTS del sitio; edición contrastada con su cabecera TEI. No se retrotraduce el título.",
+   "corpusFiles": {
+    "grc": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0028-tlg001-grc-feaed95d3bae37c0.json"
+   },
+   "localVersions": [
+    {
+     "language": "grc",
+     "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0028-tlg001-grc-feaed95d3bae37c0.json",
+     "label": "Edición original grc · urn:cts:greekLit:tlg0028.tlg001.perseus-grc2",
+     "reader": "classics-text-reader.html?work=cts-tlg0028-tlg001&lang=grc&edition=feaed95d3bae37c0",
+     "sourceUrns": [
+      "urn:cts:greekLit:tlg0028.tlg001.perseus-grc2"
+     ],
+     "sha256": "feaed95d3bae37c022b6f549aea98ef3f0c3c591eb0cce29ae213341e3abd129"
+    }
+   ],
+   "publicStatus": "lectura-local-parcial",
+   "indexedEdition": {
+    "sources": [
+     {
+      "title": "Φαρμακείας κατὰ τῆς μητρυιᾶς",
+      "titleLanguage": "grc",
+      "author": "Antiphon",
+      "editors": [
+       "Kenneth John Maidment"
+      ],
+      "bibliography": "Andocides Minor Attic Orators Kenneth John Maidment London William Heinemann, Ltd. Cambridge, MA Harvard University Press 1941 1960 1 Internet Archive",
+      "licences": [
+       {
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+       }
+      ],
+      "editionUrn": "urn:cts:greekLit:tlg0028.tlg001.perseus-grc2",
+      "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0028/tlg001/tlg0028.tlg001.perseus-grc2.xml",
+      "sourceSha256": "27e66ed5bcb0ce40919ba536d91997259cb7a40f5fd96fe2113c4d7c4e7a1d03",
+      "sourceReferences": [
+       "https://archive.org/details/minoratticorator01maiduoft/page/14/mode/2up"
+      ],
+      "publicationYear": "1941",
+      "publisher": "William Heinemann, Ltd.",
+      "publicationPlace": "London",
+      "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/27e66ed5bcb0ce40919ba536d91997259cb7a40f5fd96fe2113c4d7c4e7a1d03.xml"
+     }
+    ],
+    "sha256": "feaed95d3bae37c022b6f549aea98ef3f0c3c591eb0cce29ae213341e3abd129",
+    "passages": 33,
+    "characters": 10788,
+    "bytes": 28490,
+    "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0028-tlg001-grc-feaed95d3bae37c0.json"
    }
   }
  ],
