@@ -1,7 +1,7 @@
 /* Vitruvia: source-ranking support for broad searches. No generated facts. */
 (()=>{
 'use strict';
-const norm=s=>String(s||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().replace(/[^\p{L}\p{N}]+/gu,' ').replace(/\s+/g,' ').trim();
+const norm=s=>String(s||'').normalize('NFD').replace(/\p{M}/gu,'').toLowerCase().replace(/[ςϲ]/g,'σ').replace(/[^\p{L}\p{N}]+/gu,' ').replace(/\s+/g,' ').trim();
 const functionWords=new Set('a al ante bajo con contra de del desde durante el ella ellos en entre hacia hasta la las lo los o para por que quien se sin sobre su sus un una unos unas y e the an and at by for from in of on or to with les le des de la du et sur avec der die das und di da del il nella nel come che per degli'.split(' '));
 const intentWords=new Set('origen origenes origenes evolucion explicacion explicaciones historia historico historica historicos historicas significado significados definicion definiciones etimologia etimologias concepto conceptos antecedentes introduccion datos informacion resumen biografia biografias quien quienes creador creadores inventor inventores invento inventada inventado quien hizo autores autor escritor nacido nacimiento vida obras obra trabajos famoso famosa principales principales'.split(' '));
 const attributes=new Set('politico politica politicos politicas procer proceres argentino argentina argentinos argentinas arquitecto arquitecta arquitectos arquitectas cantante cantantes musico musica musicos escritor escritora escritores director directores cientifico cientifica cientificos creador ingeniero ingeniera actor actriz actores actrices invento famoso famosa famosos famosas'.split(' '));
@@ -28,14 +28,18 @@ function dist(a,b){
  return dp[b.length];
 }
 const equivalent=(a,b)=>{
- if(a===b||stem(a)===stem(b))return true;
+ if(a===b)return true;
+ if(/\p{Script=Greek}/u.test(a)||/\p{Script=Greek}/u.test(b))return false; // no fuzzy equivalence across unverified Greek lemmas
+ if(stem(a)===stem(b))return true;
  if(a.length>=5&&b.length>=5&&(a.startsWith(b)||b.startsWith(a)))return true;
  if(synMap.get(a)?.includes(b))return true;
  if(a.length>=7&&b.length>=7&&dist(a,b)<=Math.min(2,Math.floor(Math.min(a.length,b.length)/4)))return true;
  return false;
 };
+const plans=new Map();
 function plan(query){
- const raw=norm(query),all=tokens(query);
+ const raw=norm(query);
+ if(plans.has(raw))return plans.get(raw);
  // A generic intent can precede the subject ("creator of", "history of").
  const stripped=raw.replace(/^(?:quien|quienes)\s+(?:fue|era|es|fueron|inventaron|creo|crearon)\s+/,'')
   .replace(/^(?:creador|inventor|inventora|autor|origenes|origen|historia|biografia|vida y obra|explicacion|informacion)\s+(?:de|del|de la|de los|sobre)\s+/,'').trim();
@@ -57,7 +61,9 @@ function plan(query){
   alternatives.push('cupula geodesica');
  }
  const termList=remainder.filter(w=>!intentWords.has(w));
- return{subject,alternatives:[...new Set(alternatives)].filter(Boolean),terms:termList.length?termList:remainder,hints,raw};
+ const result=Object.freeze({subject,alternatives:Object.freeze([...new Set(alternatives)].filter(Boolean)),terms:Object.freeze(termList.length?termList:remainder),hints:Object.freeze(hints),raw});
+ if(plans.size>=128)plans.delete(plans.keys().next().value);
+ plans.set(raw,result);return result;
 }
 function assess(query,record){
  const v=plan(query),name=norm(record?.title||record?.canonical||''),text=norm(record?.description||record?.excerpt||record?.snippet||'');
@@ -66,7 +72,7 @@ function assess(query,record){
  if(!terms.length)return{accepted:false,score:0,titleHits:0,totalHits:0};
  const titleHits=terms.filter(t=>names.some(w=>equivalent(t,w))).length;
  const totalHits=terms.filter(t=>desc.some(w=>equivalent(t,w))).length;
- const exact=norm(name)===v.raw||norm(name)===v.subject||(record.aliases||[]).some(a=>norm(a)===v.raw);
+ const exact=norm(name)===v.raw||norm(name)===v.subject||(Array.isArray(record?.aliases)?record.aliases:[]).some(a=>norm(a)===v.raw);
  const roleGroups=[
   ['procer','heroe','libertador','militar','general','independencia','patriota'],
   ['politico','politica','gobernante','presidente','militar','libertador','revolucionario'],
@@ -82,7 +88,7 @@ function assess(query,record){
   return group.some(x=>desc.some(d=>equivalent(x,d)));
  });
  // At least two distinct thematic anchors for compound queries; single terms need one.
- const minimum=terms.length>1?Math.min(2,terms.length):1;
+ const minimum=Math.max(1,Math.ceil(terms.length*.75));
  const rareMatched=terms.some(t=>t.length>=9&&names.some(w=>equivalent(t,w)));
  const personDesc=/\b(architect|arquitect|scientist|cientific|artist|artista|inventor|musician|musico|singer|cantante|writer|escritor|engineer|ingenier|politic|politic|militar)\b/i.test(text);
  const partialPerson=terms.length===2&&titleHits>=1&&rareMatched&&personDesc;
