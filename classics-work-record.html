@@ -58,7 +58,7 @@ footer{border-top:1px solid var(--line);font-size:12px;color:#bbb;margin-top:30p
 <body><header><strong>Bibliotheca</strong><nav>
 <a href="index.html">Vitruvius Digital Library</a>
 <a href="bibliotheca-graeca-latina.html">Bibliotheca Graeca et Latina</a>
-<a href="index-auctorum-operum.html">Index auctorum et operum</a>
+<a href="index-auctorum-operum.html">Index auctorum et operum</a> <a id="vdl-bibliological-link" href="bibliotheca-fichas-bibliologicas.html">Ficha bibliológica y traducciones</a>
 <a href="index-codicum.html">Index codicum</a>
 <a href="codices-clasicos-prioritarios.html">Códices tempranos · 7 tratados</a>
 <a href="classics-manuscript-coverage.html">Control de testimonios y cobertura</a>
@@ -186,4 +186,4 @@ if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",
 <strong>© 2026 Editorial Sophia Lux · Arq. Diego Kurilo. Derechos reservados.</strong>
 <span style="opacity:.8">Los derechos sobre los materiales originales, el diseño y los aportes editoriales pertenecen a sus respectivos titulares. Los textos antiguos, facsímiles, imágenes y recursos de terceros conservan su situación jurídica y licencias propias.</span>
 </footer>
-</body></html>
+<script>(()=>{const a=document.getElementById("vdl-bibliological-link");if(!a)return;const update=()=>{const q=new URLSearchParams(location.search).get("work");a.href="bibliotheca-fichas-bibliologicas.html"+(q?"?work="+encodeURIComponent(q):"")};update();document.addEventListener("change",()=>setTimeout(update,0));window.addEventListener("popstate",update)})();</script></body></html>
