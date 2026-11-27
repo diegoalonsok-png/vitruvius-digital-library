@@ -108,6 +108,11 @@
   return null;
  }
  async function wikidataFor(row,q){
+  if(/^Q\d+$/.test(row.wikidataId||'')){
+   const id=row.wikidataId;
+   const ent=await fetch('https://www.wikidata.org/w/api.php?'+new URLSearchParams({action:'wbgetentities',ids:id,props:'claims|labels',languages:'es|en|fr|la|grc|el',format:'json',origin:'*'})).then(r=>r.json()).catch(()=>null);
+   if(ent?.entities?.[id]?.claims)return ent.entities[id];
+  }
   let u=null;try{u=new URL(row.link)}catch{}
   if(!u||!/\.wikipedia\.org$/.test(u.hostname)||!u.pathname.startsWith('/wiki/'))return searchEntity(row.title||q).then(e=>e||searchEntity(q));
   const title=decodeURIComponent(u.pathname.slice(6));
@@ -116,7 +121,7 @@
   const ent=await fetch('https://www.wikidata.org/w/api.php?'+new URLSearchParams({action:'wbgetentities',ids:id,props:'claims|labels',languages:'es|en|fr|la|grc|el',format:'json',origin:'*'})).then(r=>r.json()).catch(()=>null);
   return ent?.entities?.[id]||null;
  }
- const claims=(e,p)=>(e?.claims?.[p]||[]).map(c=>{const v=c.mainsnak?.datavalue?.value;if(v&&typeof v==='object'&&c.qualifiers?.P1480)v.circa=true;return v}).filter(v=>v!=null);
+ const claims=(e,p)=>(e?.claims?.[p]||[]).filter(c=>c.rank!=='deprecated').map(c=>{const v=c.mainsnak?.datavalue?.value;if(v&&typeof v==='object'&&c.qualifiers?.P1480)v.circa=true;return v}).filter(v=>v!=null);
  function dateText(v){
   if(!v?.time)return '';const neg=v.time.startsWith('-');const y=parseInt(v.time.slice(1,v.time.indexOf('-',1)),10);
   const pr=v.precision??9;let s;
@@ -144,29 +149,29 @@
     Monedas/medallas, escudos, representaciones generadas por IA o identidades dudosas
     nunca se presentan como retrato principal. No se clasifica por nombre parcial.
  */
- const historicalImageExcluded=/\\b(?:coin|coins|moneda|monedas|denarius|denario|denarius|sestertius|sesterce|medallion|medal|medalla|banknote|billete|stamp|sello|signature|firma|map|mapa|logo|coat.of.arms|escudo|ai.generated|artificial.intelligence|midjourney|dall.e|stable.diffusion|reconstruction)\\b/i;
+ const historicalImageExcluded=/\b(?:coin|coins|moneda|monedas|denarius|denario|denarius|sestertius|sesterce|medallion|medal|medalla|banknote|billete|stamp|sello|signature|firma|map|mapa|logo|coat.of.arms|escudo|ai.generated|artificial.intelligence|midjourney|dall.e|stable.diffusion|reconstruction)\b/i;
  const historicArtRank=name=>{
   const title=fold(name);
   if(historicalImageExcluded.test(title))return -1000;
-  if(/\\b(bust|busto|buste|busts|herm|herma|sculpture|escultura|statue|statua|statue)\\b/i.test(title))return 400;
-  if(/\\b(portrait|retrato|ritratto|painting|pintura|tableau|fresco|mosaic|mosaico)\\b/i.test(title))return 300;
-  if(/\\b(engraving|engravure|grabado|woodcut|drawing|dibujo)\\b/i.test(title))return 200;
-  if(/\\b(manuscript|codex|manuscrito|book|libro)\\b/i.test(title))return 100;
+  if(/\b(bust|busto|buste|busts|herm|herma|sculpture|escultura|statue|statua|statue)\b/i.test(title))return 400;
+  if(/\b(portrait|retrato|ritratto|painting|pintura|tableau|fresco|mosaic|mosaico)\b/i.test(title))return 300;
+  if(/\b(engraving|engravure|grabado|woodcut|drawing|dibujo)\b/i.test(title))return 200;
+  if(/\b(manuscript|codex|manuscrito|book|libro)\b/i.test(title))return 100;
   return 0;
  };
  async function commonsPortrait(ent,label){
   const labels=[ent.labels?.en?.value,ent.labels?.la?.value,ent.labels?.es?.value,label];
-  const names=[...new Set(labels.filter(Boolean).flatMap(n=>[n,...(fold(n).match(/\\b(?:cicero|ciceron|caesar|cesar)\\b/) ? [fold(n).match(/\\b(?:cicero|ciceron|caesar|cesar)\\b/)[0]]:[])]))];
+  const names=[...new Set(labels.filter(Boolean).flatMap(n=>[n,...(fold(n).match(/\b(?:cicero|ciceron|caesar|cesar)\b/) ? [fold(n).match(/\b(?:cicero|ciceron|caesar|cesar)\b/)[0]]:[])]))];
   const candidates=[];
   for(const n of names.slice(0,4)){
    // Un archivo histórico explícitamente clasificado; nunca la primera coincidencia aleatoria.
    const q='"'+n+'" (bust OR busto OR buste OR sculpture OR portrait OR painting OR engraving)';
    const result=await fetch('https://commons.wikimedia.org/w/api.php?'+new URLSearchParams({action:'query',list:'search',srsearch:q,srnamespace:'6',srlimit:'25',format:'json',origin:'*'})).then(r=>r.json()).catch(()=>null);
-   const key=fold(n).replace(/[^\\p{L}\\p{N} ]/gu,' ').trim();
+   const key=fold(n).replace(/[^\p{L}\p{N} ]/gu,' ').trim();
    for(const hit of result?.query?.search||[]){
     const file=hit.title.replace(/^File:/,'');
-    const name=fold(file).replace(/[^\\p{L}\\p{N} ]/gu,' ');
-    if(!key||!name.includes(key))continue;
+    const name=fold(file).replace(/[^\p{L}\p{N} ]/gu,' ');
+    if(!key||!(" "+name+" ").includes(" "+key+" "))continue;
     const rank=historicArtRank(file);
     if(rank>0)candidates.push({file,rank});
    }
@@ -311,6 +316,23 @@
   const block=document.createElement('div');block.className='vfb';
   // Nombres en la lengua antigua: onomasticon del sitio y nombre nativo de Wikidata (griego antiguo o latín).
   const label=ent.labels?.[lang()]?.value||ent.labels?.es?.value||row.title;
+  // Start the portrait immediately, independently of biography and library lookups.
+  const date=claims(ent,'P570')[0]?.time||'';
+  const deathYear=Number(String(date).match(/^([+-]?\d+)/)?.[1]);
+  const historic=Boolean(date.startsWith('-')||(Number.isFinite(deathYear)&&deathYear>0&&deathYear<1900)||row.entityHistorical);
+  const candidates=claims(ent,'P18').filter(v=>typeof v==='string'&&v.trim()&&!historicalImageExcluded.test(fold(v)));
+  // P18 is a statement about the resolved human, even when the filename is
+  // in a different language or lacks the word "bust".
+  const ordered=historic?[...candidates].sort((a,b)=>historicArtRank(b)-historicArtRank(a)):candidates;
+  // A documented second witness, keyed by authority ID, never by a bare name.
+  if(ent.id==='Q1413'&&!ordered.includes('Nero Glyptothek Munich 321.jpg'))ordered.push('Nero Glyptothek Munich 321.jpg');
+  const publishPortrait=(file,linked)=>{
+   if(my!==token||!file)return;
+   const name=String(file).replace(/ /g,'_');
+   window.dispatchEvent(new CustomEvent('vitruvia:hero-visual',{detail:{query:d.query||query,weight:linked?6000:4500,item:{preview:'https://commons.wikimedia.org/wiki/Special:FilePath/'+encodeURIComponent(name)+'?width=640',page:'https://commons.wikimedia.org/wiki/File:'+encodeURIComponent(name),caption:label+(historic?' · representación histórica':' · retrato'),alt:label,kind:'person',group:'portrait',score:0,verifiedHistoricalPortrait:!!(historic&&linked),entityId:ent.id,verifiedIdentity:linked,backupFiles:linked?ordered.filter(x=>x!==file).slice(0,3):[],credit:candidates.includes(file)?'Wikidata P18 · Wikimedia Commons · ficha, autor y licencia':linked?'Glyptothek de Múnich · inv. 321 · Wikimedia Commons · ficha y licencia':'Wikimedia Commons · comprobar atribución y licencia'}}}));
+  };
+  if(ordered.length)publishPortrait(ordered[0],true);
+  else if(!historic)void commonsPortrait(ent,label).then(file=>publishPortrait(file,false)).catch(()=>{});
   const ono=await onomastic(label)||await onomastic(row.title)||await onomastic(query);if(my!==token)return;
   const names=[];
   if(ono?.greek_name)names.push(['grc',ono.greek_name]);
@@ -345,18 +367,6 @@
   await renderAuthorCodices(block,label,my);if(my!==token)return;
   const src=document.createElement('p');src.className='vfb-src';src.innerHTML=`${esc(L('src'))} · <a href="https://www.wikidata.org/wiki/${esc(ent.id)}" target="_blank" rel="noopener" style="color:inherit">${esc(ent.id)}</a>`;block.append(src);
   box.querySelector('.vfb')?.remove();(title||copy.firstChild)?.after(block);
-  // Retrato oficial (Wikidata P18: fotografía, busto o pintura) en el espacio superior.
-  const bce=claims(ent,'P570')[0]?.time?.startsWith('-');
-  const deathYear=Number(String(claims(ent,'P570')[0]?.time||'').match(/^\\+?(\\d{4})/)?.[1]);
-  const historic=Boolean(bce||(Number.isFinite(deathYear)&&deathYear>0&&deathYear<1900)||row.entityHistorical);
-  const wikidataImage=claims(ent,'P18')[0];
-  // P18 may itself point to a coin, even when the Wikidata entity is correct.
-  // For ancient figures, search for a classified artwork before using a P18 fallback.
-  let img=historic?await commonsPortrait(ent,label).catch(()=>null):null;
-  if(!img&&wikidataImage&&(!historic||historicArtRank(String(wikidataImage))>0))img=wikidataImage;
-  if(!img&&!historic)img=await commonsPortrait(ent,label).catch(()=>null);
-  if(my!==token)return;
-  if(img){const file=String(img).replace(/ /g,'_');window.dispatchEvent(new CustomEvent('vitruvia:hero-visual',{detail:{query,weight:6000,item:{preview:'https://commons.wikimedia.org/wiki/Special:FilePath/'+encodeURIComponent(file)+'?width=640',page:'https://commons.wikimedia.org/wiki/File:'+encodeURIComponent(file),caption:label+(img===wikidataImage?' · imagen vinculada en Wikidata':' · obra identificada en Wikimedia Commons'),alt:label,group:'',kind:'',score:0,verifiedHistoricalPortrait:!!(historic&&img===wikidataImage&&historicArtRank(file)>0),entityId:ent.id,credit:'Wikimedia Commons · consultar autor, obra y licencia en la ficha'}}}))}
   // Fórmula principal encima del retrato (matemáticos y científicos).
   const fig=document.getElementById('featured-documentary-visual');
   const target=fig&&!fig.hidden?fig:box;
