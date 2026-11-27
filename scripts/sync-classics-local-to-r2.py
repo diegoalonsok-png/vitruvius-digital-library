@@ -21,7 +21,7 @@ import urllib.request
 ROOT=pathlib.Path(__file__).resolve().parents[1]
 REPORT=ROOT/"data/r2/classics-local-r2-sync.json"
 PUBLIC="https://libros.vitruvius-digital-library.org/corpus/"
-RX=re.compile(r"^data/classics-corpus/[a-z0-9-]+-(?:la|grc|en|es|fr)\.json$")
+RX=re.compile(r"^data/classics-corpus/[a-z0-9-]+-(?:la|grc|en|es|fr|it|de|pt)\.json$")
 PRIORITY={"plato-parmenides","plato-sophist","plato-theaetetus"}
 UA={"User-Agent":"VitruviusDigitalLibrary/1.0 (academic-source-integrity)"}
 def digest(data):return hashlib.sha256(data).hexdigest()
@@ -31,6 +31,7 @@ def public_bytes(name):
 def main():
     ap=argparse.ArgumentParser()
     ap.add_argument("--limit",type=int,default=10)
+    ap.add_argument("--max-bucket-bytes",type=int,default=10_000_000_000)
     args=ap.parse_args()
     if not 1<=args.limit<=40:raise SystemExit("limit must be between 1 and 40")
     for key in ("R2_ACCOUNT_ID","R2_ACCESS_KEY_ID","R2_SECRET_ACCESS_KEY","R2_BUCKET"):
@@ -57,20 +58,35 @@ def main():
     verified={e["key"]:e for e in saved["objects"]}
     files=sorted(entries,key=lambda path:(0 if entries[path][0] in PRIORITY else 1,path))
     changed=0;scanned=0
+    failures=[]
+    # Conservative budget guard; concurrent writers can change actual usage.
+    used=sum(obj["Size"] for page in client.get_paginator("list_objects_v2").paginate(Bucket=bucket)
+             for obj in page.get("Contents",[]))
+    def checkpoint():
+        saved["objects"]=sorted(verified.values(),key=lambda x:x["key"])
+        saved["updated"]=dt.datetime.now(dt.timezone.utc).isoformat()
+        saved["bucketBytesObserved"]=used
+        saved["bucketByteLimit"]=args.max_bucket_bytes
+        saved["issues"]=failures
+        REPORT.parent.mkdir(parents=True,exist_ok=True)
+        temp=REPORT.with_suffix(".tmp")
+        temp.write_text(json.dumps(saved,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
+        temp.replace(REPORT)
     for path in files:
         name=pathlib.PurePosixPath(path).name
         key="corpus/"+name
         local=ROOT/path
-        if not local.is_file():continue
+        if not local.is_file():
+            failures.append({"path":path,"reason":"local-source-missing"});continue
         body=local.read_bytes()
         doc=json.loads(body)
         work,lang=entries[path]
         if doc.get("workId")!=work or doc.get("language")!=lang:
-            raise SystemExit(f"Mismatch registry/source: {path}")
+            failures.append({"path":path,"reason":"registry-source-mismatch"});continue
         passages=doc.get("passages")
         if not isinstance(passages,list) or not passages or not all(
            isinstance(p,dict) and p.get("text") and p.get("locus") for p in passages):
-            raise SystemExit(f"Unusable passages in: {path}")
+            failures.append({"path":path,"reason":"unusable-passages"});continue
         sha=digest(body)
         if verified.get(key,{}).get("sha256")==sha:continue
         if changed>=args.limit:break
@@ -79,15 +95,19 @@ def main():
             obj=client.get_object(Bucket=bucket,Key=key)
             remote=obj["Body"].read()
             if digest(remote)!=sha:
-                raise SystemExit(f"R2 collision: {key} already exists with different content. No overwrite.")
+                failures.append({"path":path,"reason":"R2 collision: different bytes; preserved"});continue
             status="already-matching"
         except ClientError as ex:
             code=str(ex.response.get("Error",{}).get("Code",""))
             if code not in ("NoSuchKey","404","NotFound"):raise
-            client.put_object(Bucket=bucket,Key=key,Body=body,
+            if used+len(body)>args.max_bucket_bytes:
+                failures.append({"path":path,"reason":"bucket-budget-exceeded"})
+                continue
+            client.put_object(Bucket=bucket,Key=key,Body=body,IfNoneMatch="*",
                 ContentType="application/json; charset=utf-8",
                 CacheControl="public, max-age=300",
                 Metadata={"sha256":sha})
+            used+=len(body)
             uploaded=client.get_object(Bucket=bucket,Key=key)["Body"].read()
             if digest(uploaded)!=sha:raise SystemExit(f"R2 readback mismatch: {key}")
             status="uploaded-and-verified"
@@ -97,16 +117,15 @@ def main():
             try:
                 if digest(public_bytes(name))==sha:ok=True;break
             except (urllib.error.URLError,TimeoutError):pass
-        if not ok:raise SystemExit(f"Public HTTP checksum verification failed for {name}")
+        if not ok:
+            failures.append({"path":path,"reason":"public-checksum-not-verified"});continue
         verified[key]={"key":key,"workId":work,"language":lang,
             "sha256":sha,"passages":len(passages),"bytes":len(body),
             "verifiedAt":dt.datetime.now(dt.timezone.utc).isoformat(),
             "status":status}
         changed+=1
+        checkpoint()
         print(f"Verified {key}: {len(passages)} passages; {status}")
-    saved["objects"]=sorted(verified.values(),key=lambda x:x["key"])
-    saved["updated"]=dt.datetime.now(dt.timezone.utc).isoformat()
-    REPORT.parent.mkdir(parents=True,exist_ok=True)
-    REPORT.write_text(json.dumps(saved,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
+    checkpoint()
     print(f"Verified in this batch: {changed}; total certificates: {len(saved['objects'])}")
 if __name__=="__main__":main()
