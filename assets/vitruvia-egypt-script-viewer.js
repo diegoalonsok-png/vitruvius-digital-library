@@ -92,7 +92,7 @@ function glyphText(str){
 let titulaturae=null;
 function loadTitulaturae(){
  if(titulaturae)return titulaturae;
- titulaturae=fetch("data/vitruvia/titulaturae.json?v=20261127-royal-texts-v2").then(r=>r.ok?r.json():null).catch(()=>null);
+ titulaturae=fetch("data/vitruvia/titulaturae.json?v=20261127-leprohon-v3").then(r=>r.ok?r.json():null).catch(()=>null);
  return titulaturae;
 }
 const TITLE_ORDER=["horus","nebty","golden","prenomen","nomen"];
@@ -125,6 +125,7 @@ function titularyEntry(parent,data,ruler){
   if(n.mdc){const m=node("p","v-script-note");m.append(document.createTextNode("Gardiner: "));const code=node("code",null,n.mdc);code.style.font="11px/1.5 ui-monospace,Menlo,Consolas,monospace";m.append(code);dd.append(m)}
   if(n.witness)dd.append(node("p","v-script-note","Testimonio: "+n.witness));
   if(n.source)dd.append(ref("Fuente de la lectura",n.source));
+  for(const v of n.variants||[])dd.append(node("p","v-script-note",v.period+" · "+v.trans+" · "+v.gloss));
   list.append(dd);
  }
  item.append(list);
