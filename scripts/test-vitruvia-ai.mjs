@@ -186,3 +186,11 @@ console.log('SCOPE: mocked fetch only; not an HTTP availability or scholarly acc
  assert.equal(engine.academicTerms("teoría humoral","galen").get("humoral"),1);
  console.log("PASS: 18 contextual domain checks, ambiguity guards and weak expansion weights.");
 }
+
+{
+ const {engine}=createEngine();
+ const fixtures=[{author:"Plato",workTitle:"Republic",workId:"plato-republic"},{author:"Aristotle",workTitle:"Metaphysics",workId:"aristotle-metaphysics"},{author:"Galen",workTitle:"On the natural faculties",workId:"galen"},{author:"Homer",workTitle:"Iliad",workId:"homer-iliad"}];
+ const cases=[["Platón",["plato-republic"]],["Aristóteles",["aristotle-metaphysics"]],["Galeno",["galen"]],["Homero",["homer-iliad"]],["Comparar Platón y Aristóteles",["plato-republic","aristotle-metaphysics"]],["Comparar Platón y Aristóteles: alegoría de la caverna",["plato-republic","aristotle-metaphysics"]]];
+ for(const [q,expected] of cases)assert.deepEqual(Array.from(engine.sourceSelection(q,fixtures).sources,x=>x.workId),expected,q);
+ console.log("PASS: six multilingual authority and comparative source routing checks.");
+}
