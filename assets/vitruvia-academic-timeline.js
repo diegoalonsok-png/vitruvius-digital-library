@@ -21,7 +21,7 @@
   works:[L("Obras y creaciones","Works and creations","Œuvres et créations"),"▤"],
   documents:[L("Documentos y ediciones","Documents and editions","Documents et éditions"),"▥"]
  };
- const state={query:"",token:0,authority:null,works:[],albums:[],rows:[],zoom:1,position:.5,selected:"",rowSignature:"",pendingWorks:null,tagColor:null};
+ const state={query:"",token:0,authority:null,works:[],albums:[],rows:[],zoom:null,position:0,selected:"",rowSignature:"",pendingWorks:null,tagColor:null};
  // Greedy tracks keep same-day and adjacent milestones from touching.
  // Popup centres are independently clamped, so no tooltip can protrude
  // beyond the chronology track even at narrow mobile widths.
@@ -32,6 +32,7 @@
  const low=fullLow+Math.round(travel*Math.max(0,Math.min(1,position)));
  return {low,high:low+span,range:span,travel};
 }
+ function automaticZoom(span){return span>800?8:span>200?4:1}
  function layoutMarkers(items,low,range,width,zoom=1){
   const safeWidth=Math.max(1,Number(width)||1);
   const diameter=24,gap=11;
@@ -303,7 +304,8 @@
   const span=Math.max(1,maxYear-minYear),padding=lifeScope?0:Math.max(1,Math.ceil(span*.04));
   const fullLow=lifeScope?lifeScope.born:minYear-padding;
   const fullHigh=lifeScope?lifeScope.died:maxYear+padding;
-  const {low,high,range,travel}=dateWindow(fullLow,fullHigh,state.zoom,state.position);
+  const zoom=state.zoom??automaticZoom(fullHigh-fullLow);
+  const {low,high,range,travel}=dateWindow(fullLow,fullHigh,zoom,state.position);
   const windowEvents=visibleEvents.filter(e=>e.year>=low&&e.year<=high);
   // Size the axis from the actual available content box. No 250px
   // minimum canvas and no fixed 960px map overflowing mobile readers.
@@ -392,16 +394,19 @@
   slider.setAttribute("aria-valuetext",showYear(low)+" – "+showYear(high));
   slider.style.cssText="width:100%;margin:0;accent-color:#879da9";
   slider.addEventListener("input",()=>{
-   const w=dateWindow(fullLow,fullHigh,state.zoom,Number(slider.value)/1000);
+   const w=dateWindow(fullLow,fullHigh,zoom,Number(slider.value)/1000);
    panLabel.textContent=L("Período visible","Visible period","Période visible")+": "+showYear(w.low)+" – "+showYear(w.high);
    slider.setAttribute("aria-valuetext",showYear(w.low)+" – "+showYear(w.high));
   });
   slider.addEventListener("change",()=>{
-   state.position=Number(slider.value)/1000;
+   state.zoom=zoom;state.position=Number(slider.value)/1000;
    const focused=document.activeElement===slider;
    draw();if(focused)root.querySelector(".vat-pan input")?.focus({preventScroll:true});
   });
-  pan.append(panLabel,slider);root.append(pan,detail);
+  const extent=el("span","vat-pan-extent");extent.style.cssText="display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap";
+  extent.append(el("span",null,showYear(fullLow)),el("span",null,L("Período completo","Full period","Période complète")),el("span",null,showYear(fullHigh)));
+  if(!travel)panLabel.textContent+=" · "+L("Amplíe (+) para desplazarse","Zoom in (+) to pan","Zoomez (+) pour vous déplacer");
+  pan.append(panLabel,slider,extent);root.append(pan,detail);
   if(lifeScope&&outsideEvents.length){
    const extra=el("details","vat-outside");
    extra.append(el("summary",null,L(
@@ -429,10 +434,10 @@
   }
   prev.title=L("Hito anterior","Previous milestone","Jalon précédent");
   next.title=L("Hito siguiente","Next milestone","Jalon suivant");
-  zoomOut.disabled=state.zoom===1;zoomIn.disabled=state.zoom>=8||range<=1;
+  zoomOut.disabled=zoom===1;zoomIn.disabled=zoom>=8||range<=1;
   prev.disabled=next.disabled=!stops.length;
-  zoomOut.onclick=()=>{state.zoom=Math.max(1,state.zoom/2);draw()};
-  zoomIn.onclick=()=>{state.zoom=Math.min(8,state.zoom*2);draw()};
+  zoomOut.onclick=()=>{state.zoom=Math.max(1,zoom/2);draw()};
+  zoomIn.onclick=()=>{state.zoom=Math.min(8,zoom*2);draw()};
   prev.onclick=()=>navigate(-1);
   next.onclick=()=>navigate(1);
   viewport.addEventListener("keydown",e=>{
@@ -453,7 +458,7 @@
   window.addEventListener("resize",()=>{if(!root.hidden&&state.query)draw()},{passive:true});
  }
  function reset(q){
-  state.token++;state.query=String(q||"").trim().slice(0,160);state.zoom=1;state.position=.5;
+  state.token++;state.query=String(q||"").trim().slice(0,160);state.zoom=null;state.position=0;
   state.authority=null;state.works=[];state.albums=[];state.rows=[];state.selected="";state.rowSignature="";state.pendingWorks=null;
   place();draw();
   if(!state.query)return;
@@ -526,5 +531,5 @@
  }).observe(document.documentElement,{attributes:true,attributeFilter:["lang"]});
  const snapshot=window.VitruviaSearchSnapshot;
  if(snapshot?.query)reset(snapshot.query);
- window.VitruviaAcademicTimeline={collect,layoutMarkers,dateWindow,version:"2.2-navigable-date-window"};
+ window.VitruviaAcademicTimeline={collect,layoutMarkers,dateWindow,automaticZoom,version:"2.3-adaptive-period-slider"};
 })();
