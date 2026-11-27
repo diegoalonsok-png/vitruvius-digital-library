@@ -640,7 +640,7 @@ async function museum(generalQuery){const providerSignal=S.searchController?.sig
  const d=await request("https://collectionapi.metmuseum.org/public/collection/v1/search?"+params,12500);
  const ids=(d.objectIDs||[]).slice(0,3);
  const details=await Promise.allSettled(ids.map(id=>request("https://collectionapi.metmuseum.org/public/collection/v1/objects/"+id,9000)));
- return details.filter(x=>x.status==="fulfilled").map((x,i)=>{const o=x.value;return {type:"museum",title:o.title||"Objeto de museo",author:[o.artistDisplayName,o.objectDate].filter(Boolean).join(" · "),excerpt:[o.culture,o.period,o.medium,o.department].filter(Boolean).join(" · "),meta:"Colección del Metropolitan Museum of Art",rating:29-i+culturalWeight(o.title,o.department),link:o.objectURL||"https://www.metmuseum.org",source:"The Met",year:o.objectBeginDate||null,recordKind:"museum-object",image:o.primaryImageSmall||o.primaryImage||null,imageRights:o.objectURL||"https://www.metmuseum.org",imageCredit:"The Metropolitan Museum of Art · verificar licencia de la obra",imageKind:"artwork"}});
+ return details.filter(x=>x.status==="fulfilled").map((x,i)=>{const o=x.value;return {type:"museum",title:o.title||"Objeto de museo",author:[o.artistDisplayName,o.objectDate].filter(Boolean).join(" · "),excerpt:[o.culture,o.period,o.medium,o.department].filter(Boolean).join(" · "),meta:"Colección del Metropolitan Museum of Art",rating:29-i+culturalWeight(o.title,o.department),link:o.objectURL||"https://www.metmuseum.org",source:"The Met",year:o.objectBeginDate||null,recordKind:"museum-object",accessionNumber:o.accessionNumber||"",museumDepartment:o.department||"",objectDate:o.objectDate||"",image:o.primaryImageSmall||o.primaryImage||null,imageRights:o.objectURL||"https://www.metmuseum.org",imageCredit:"The Metropolitan Museum of Art · verificar licencia de la obra",imageKind:"artwork"}});
 }
 
 /* Distinción académica: resultados de revistas y ciencias no se presentan como texto íntegro salvo enlace de acceso. */
@@ -658,15 +658,21 @@ async function crossref(generalQuery){const providerSignal=S.searchController?.s
 }
 /* OpenAlex: índice abierto de obras académicas (CORS abierto, sin clave). */
 async function openAlex(generalQuery){const providerSignal=S.searchController?.signal;const request=(url,ms)=>fetchJSON(url,ms,providerSignal);if(window.VitruviaData)await window.VitruviaData.defer(()=>null,{signal:providerSignal,delay:180});
- const params=new URLSearchParams({search:generalQuery,"per-page":"10",select:"id,doi,title,publication_year,authorships,primary_location,type,open_access,cited_by_count"});
+ const params=new URLSearchParams({search:generalQuery,"per-page":"10",select:"id,doi,title,publication_year,authorships,primary_location,best_oa_location,type,open_access,cited_by_count,abstract_inverted_index"});
  const d=await request("https://api.openalex.org/works?"+params,12000);
  return (d.results||[]).filter(x=>x.title).map((x,i)=>{
   const author=(x.authorships||[]).slice(0,2).map(a=>a.author?.display_name).filter(Boolean).join(", ");
   const venue=x.primary_location?.source?.display_name||"";
   const oa=x.open_access?.is_oa?" · acceso abierto":"";
-  return {type:"article",title:x.title,author,excerpt:[venue,x.publication_year,x.type].filter(Boolean).join(" · ")+(x.cited_by_count?" · citado "+x.cited_by_count+" veces":"")+oa,
+  const safeHttps=value=>typeof value==="string"&&/^https:\/\/[^\s]+$/i.test(value)?value:null;
+  const pdf=x.open_access?.is_oa?safeHttps(x.best_oa_location?.pdf_url):null;
+  const fulltext=x.open_access?.is_oa?safeHttps(x.best_oa_location?.landing_page_url||x.open_access?.oa_url):null;
+  const positions=[];
+  for(const [word,indices] of Object.entries(x.abstract_inverted_index||{}))for(const i of indices||[])if(Number.isInteger(i)&&i>=0&&i<1000)positions[i]=word;
+  const abstract=positions.filter(Boolean).join(" ");
+  return {type:"article",title:x.title,author,abstract,pdf,fulltext,excerpt:[venue,x.publication_year,x.type].filter(Boolean).join(" · ")+(x.cited_by_count?" · citado "+x.cited_by_count+" veces":"")+oa,
    meta:"OpenAlex · índice académico abierto"+(x.doi?" · DOI":""),rating:24-i+culturalWeight(x.title,venue),
-   link:x.doi||x.open_access?.oa_url||x.id,source:"OpenAlex",year:x.publication_year||null,cited:x.cited_by_count||0,journal:venue,doi:(x.doi||"").replace(/^https:\/\/doi.org\//,""),recordKind:x.type||"article"};
+   link:x.doi||x.open_access?.oa_url||x.id,links:fulltext?[{label:"Texto completo · acceso abierto",url:fulltext}]:[],source:"OpenAlex",year:x.publication_year||null,cited:x.cited_by_count||0,journal:venue,doi:(x.doi||"").replace(/^https:\/\/doi.org\//,""),recordKind:x.type||"article"};
  });
 }
 /* Getty AAT: término normalizado del tesauro de arte y arquitectura (SPARQL público). */
