@@ -13,7 +13,8 @@ const registry=read("data/classics-corpus/search-registry.json").entries;
 const r2=read("data/r2/catalogo-clasicos-r2.json").items;
 const linked=read("data/r2/vinculos-repertorio.json");
 const manifest=read("data/r2/indice-semantico-manifest.json");
-const remote=read("data/r2/corpus-manifest.json").obras;
+const remoteDocument=read("data/r2/corpus-manifest.json");
+const remote=remoteDocument.obras;
 const canon=new Map(catalog.map(w=>[w.id,w]));
 const editions=new Map(r2.map(w=>[w.id,w]));
 const originalLanguages=new Set(["la","grc"]);
@@ -136,9 +137,20 @@ const expansionIndexFile="data/r2/classics-expansion-index.json";
 const expansionIndex=existsSync(expansionIndexFile)?read(expansionIndexFile):null;
 const remoteManifestIds=new Set(remote.map(e=>e.workId+"|"+e.language));
 const expansionIds=new Set();
+const exactRemoteUrls=new Set(remote.map(e=>remoteDocument.base+e.archivo));
+const translationFile="data/r2/classics-translation-manifest.json";
+const translations=existsSync(translationFile)?read(translationFile).editions||[]:[];
+const exactTranslationUrls=new Set();
+for(const e of translations){
+ if(!registry.some(r=>r.workId===e.workId&&r.language===e.language&&r.path===e.url))add("error","translation_without_exact_registry_url",e.workId,e.url||"Sin URL");
+ if(!/^https:\/\/libros\.vitruvius-digital-library\.org\/corpus\//.test(e.url||"")||! /^[0-9a-f]{64}$/i.test(e.sha256||""))add("error","translation_invalid_source",e.workId,e.url||"Sin URL");
+ if(exactTranslationUrls.has(e.url))add("error","duplicate_translation_url",e.workId,e.url);
+ exactTranslationUrls.add(e.url);
+}
 for(const edition of expansionEditions){
  const id=edition.workId+"|"+edition.language;
- if(expansionIds.has(id))add("error","duplicate_expansion_edition",edition.workId,id);
+ if(exactRemoteUrls.has(edition.url))add("error","duplicate_expansion_edition_url",edition.workId,edition.url);
+ exactRemoteUrls.add(edition.url);
  expansionIds.add(id);
  const matches=registry.filter(e=>e.workId===edition.workId&&e.language===edition.language);
  if(!matches.some(e=>e.path===edition.url))
@@ -149,7 +161,7 @@ for(const edition of expansionEditions){
    add("error","expansion_invalid_sha256",edition.workId,"Falta SHA-256 verificable de edición");
 }
 for(const e of registry.filter(e=>(e.path||"").startsWith("https://libros.vitruvius-digital-library.org/corpus/"))){
- if(!remoteManifestIds.has(e.workId+"|"+e.language)&&!expansionIds.has(e.workId+"|"+e.language))
+ if(!exactRemoteUrls.has(e.path)&&!exactTranslationUrls.has(e.path))
    add("error","remote_registry_without_manifest",e.workId,e.path);
 }
 const indexedExpansionPassages=expansionEditions.reduce((sum,e)=>sum+(Number.isInteger(e.passages)?e.passages:0),0);
@@ -167,7 +179,7 @@ const report={
    registeredTextVersions:registry.length,registeredDistinctWorks:cataloguedIndexedIds.size,
    verifiedLocalSourceWorkIds:local.size,declaredRemoteSourceWorkIds:remoteDeclared.size,
    r2TextManifestVersions:new Set([...remoteManifestIds,...expansionIds]).size,
-   r2ExpansionIndexedEditions:expansionEditions.length,r2ExpansionIndexedPassages:indexedExpansionPassages,
+   r2ExpansionIndexedEditions:expansionEditions.length,r2ExpansionIndexedPassages:indexedExpansionPassages,r2RegisteredTranslationEditions:translations.length,
    r2InvertedIndexDeclaredEditions:manifest.obras,
    unindexedCatalogueWorks:unindexed.length,unindexedAdditionalR2Works:backlogDocument.summary.additionalR2WorksWithoutRegisteredText,unindexedAllDeclaredWorks:backlog.length,unindexedWithDeclaredR2Facsimile:backlogDocument.summary.withDeclaredR2Facsimile,unindexedAncientWorks:backlogDocument.summary.ancientWorksWithoutRegisteredText,unindexedEditorialManifestations:backlogDocument.summary.modernEditionManifestationsWithoutOwnRegistry,worksMissingRegisteredOriginal:missingOriginal.length,
    greekTitleNeedsIndividualReview:greekTitleReview.length,r2UnlinkedEditions:r2Unlinked.length,
@@ -195,4 +207,5 @@ const summary={
 };
 writeFileSync("data/r2/bibliotheca-indexation-status.json",JSON.stringify(summary,null,2)+"\n");
 console.log(JSON.stringify(report.counts,null,2));
+if(report.counts.structuralErrors)console.error(JSON.stringify(issues.filter(x=>x.severity==="error").slice(0,100),null,2));
 if(process.argv.includes("--strict")&&report.counts.structuralErrors)process.exitCode=1;
