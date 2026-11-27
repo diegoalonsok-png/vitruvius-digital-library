@@ -55,7 +55,7 @@ function createEngine(failing=[]){
   };
   vm.runInNewContext(script,context,{filename:'vitruvia-ai.js'});
   assert.ok(window.VitruviaAI,'Engine must expose public API');
-  return {engine:window.VitruviaAI,calls};
+  return {engine:window.VitruviaAI,calls,window};
 }
 {
   const {engine}=createEngine();
@@ -101,3 +101,23 @@ function createEngine(failing=[]){
 }
 console.log('PASS: 5 engine scenarios, 6-source manifest, Greek/Latin hits, multi-work candidate coverage, provenance, no invented hits and partial-coverage warning.');
 console.log('SCOPE: mocked fetch only; not an HTTP availability or scholarly accuracy test.');
+
+{
+ const {engine,window}=createEngine();
+ const sources=Array.from({length:80},(_,i)=>({url:"data/test-"+i+".json",workId:"work-"+i,language:"la"}));
+ const selection={sources,explicit:false,registryCount:sources.length};
+ let lookups=0;
+ window.VitruviaClassicsIndex={lookup:async()=>{lookups++;return {hits:sources.slice(40,75).map(s=>({work:{file:s.url},count:5,per10k:10}))}}};
+ const narrowed=await engine.narrowBroad("historia filosofia",selection);
+ assert.equal(narrowed.sources.length,24,"Broad searches must limit source downloads");
+ assert(narrowed.sources.every(s=>sources.slice(40,75).includes(s)),"Prefer indexed candidate editions");
+ assert.equal(narrowed.registryCount,80);
+ assert.equal(narrowed.budgeted,true);
+ assert.equal(lookups,2);
+ assert.equal((await engine.narrowBroad("historia",{...selection,explicit:true})).sources.length,80,"Named works are not silently sampled");
+ delete window.VitruviaClassicsIndex;
+ const fallback=await engine.narrowBroad("historia",selection);
+ assert.equal(fallback.sources.length,24);
+ assert(fallback.candidateStrategy.includes("reserva"));
+ console.log("PASS: bounded index-first broad retrieval, explicit query preservation and labelled fallback.");
+}
