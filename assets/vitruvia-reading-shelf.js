@@ -49,24 +49,38 @@
  let request=0,controller=null,current="",lastItems=[],lastCurated=false;
  const cache=new Map();
  function validWork(item){return item&&/^\/works\/OL\d+W$/.test(String(item.key||""))&&typeof item.title==="string"&&item.title.trim().length>2}
+ // Title match alone does not establish a scholarly publication. Reject
+ // documented children's/fiction/activity categories and require positive
+ // publisher or academic publication metadata. A missing field is unknown.
+ function academicEvidence(x){
+  const subjects=(Array.isArray(x.subject)?x.subject:[]).map(normalize);
+  const title=normalize(x.title);
+  const audience=normalize([...(x.audience||[]),...(x.genre||[])].join(" "));
+  const excluded=/\b(?:juvenile|children|childrens|kids|young adult|fiction|novela|romance fiction|picture books|comic books|activity books|coloring books|infantil|juvenil|jeune public|livres pour enfants|bande dessinee|juegos|enigmas|desafios|puzzles|quizzes|coloring|colouring)\b/;
+  if(excluded.test(title)||excluded.test(audience)||subjects.some(s=>excluded.test(s)&&! /\b(?:criticism|critica|history and criticism|histoire et critique)\b/.test(s)))return false;
+  if(/^(?:me llamo|em dic|my name is|je m appelle)\b/.test(title))return false;
+  if(!Array.isArray(x.author_name)||!x.author_name.some(a=>String(a||"").trim()))return false;
+  const presses=(Array.isArray(x.publisher)?x.publisher:[]).map(normalize);
+  return presses.some(p=>/\b(?:university press|university of .{2,55} press|presses universitaires|universitatsverlag|universitats press|academic press|brill|de gruyter|brepols|peeters publishers|peeters|routledge|verlag philipp von zabern|institut francais d archeologie orientale|griffith institute|oriental institute|egypt exploration society|british museum press|metropolitan museum of art|institute for the study of ancient cultures)\b/.test(p))||
+   subjects.some(s=>/^(?:academic dissertations|doctoral dissertations|theses|dissertations academic|conference proceedings|congres scientifiques|academic monographs|scholarly editions)$/.test(s));
+ }
  function selectedBooks(q,docs){
   const terms=titleTerms(q);if(!terms.length)return [];
   const found=[],seen=new Set();
   for(const x of docs){
-   if(!validWork(x))continue;
+   if(!validWork(x)||!academicEvidence(x))continue;
    const title=normalize(x.title);
    if(!terms.every(w=>title.split(" ").some(p=>p===w||w.length>=5&&p.startsWith(w))))continue;
    if(seen.has(title))continue;seen.add(title);
    found.push({kind:"about",title:x.title,author:Array.isArray(x.author_name)?x.author_name.slice(0,2).join(", "):"",
-    year:Number.isInteger(x.first_publish_year)?x.first_publish_year:undefined,
+    year:Number.isInteger(x.first_publish_year)&&x.first_publish_year>0?x.first_publish_year:undefined,
     key:x.key,url:"https://openlibrary.org"+x.key,coverId:Number(x.cover_i)||null,
     note:{es:"Ficha de catálogo cuyo título coincide con el tema buscado. Relación temática pendiente de revisión editorial.",
      en:"Catalogue title matching the topic. Thematic relationship awaits editorial review.",
      fr:"Titre de catalogue correspondant au sujet ; lien thématique à vérifier."},
-    source:"Open Library · coincidencia bibliográfica"});
-   if(found.length>=7)break;
+    source:"Open Library · indicios editoriales académicos"});
   }
-  return found;
+  return found.sort((a,b)=>a.author.localeCompare(b.author,language())||a.title.localeCompare(b.title,language())).slice(0,12);
  }
  function coverUrl(id,isbn){
   if(Number.isInteger(id)&&id>0&&id<1e10)return "https://covers.openlibrary.org/b/id/"+id+"-M.jpg?default=false";
@@ -134,16 +148,16 @@
    "Livres sur le sujet et, lorsqu'une sélection éditoriale existe, sur son contexte. Couvertures et notices ; accès intégral selon les institutions.")));
   root.append(top);
   const about=items.filter(x=>x.kind==="about"),era=items.filter(x=>x.kind==="era");
-  if(about.length)root.append(group(about,t("Libros sobre el tema","Books on the topic","Livres sur le sujet")));
+  if(about.length)root.append(group(about,curated?t("Libros sobre el tema","Books on the topic","Livres sur le sujet"):t("Bibliografía especializada · por autor","Specialist bibliography · by author","Bibliographie spécialisée · par auteur")));
   if(era.length)root.append(group(era,t("Libros para comprender la época","Books to understand the period","Livres pour comprendre l'époque")));
   const footer=el("p","vrs-footer");
   footer.textContent=curated?
    t("Selección documentada de bibliografía y contexto; compartir una época no demuestra influencia histórica.",
     "Documented bibliography and context; sharing a period is not proof of historical influence.",
     "Bibliographie et contexte documentés ; une époque commune ne prouve aucune influence historique."):
-   t("Coincidencias en títulos de Open Library: sugerencias de catálogo, no recomendaciones académicas verificadas.",
-    "Open Library title matches: catalogue suggestions, not verified scholarly recommendations.",
-    "Correspondances de titres Open Library : suggestions de catalogue, non recommandations validées.");
+   t("Selección conservadora por pertinencia e indicios editoriales académicos; verificar cada edición. No incluye divulgación infantil ni entretenimiento identificables.",
+    "Conservative selection by relevance and scholarly publishing indicators; verify each edition. Identifiable children’s and entertainment titles are excluded.",
+    "Sélection prudente par pertinence et indices éditoriaux savants ; vérifier chaque édition. Titres jeunesse et divertissement identifiables exclus.");
   const browse=el("a",null,t("Ampliar en Open Library","More at Open Library","Chercher sur Open Library"));
   browse.href="https://openlibrary.org/search?"+new URLSearchParams({q});
   browse.target="_blank";browse.rel="noopener noreferrer";
@@ -167,11 +181,11 @@
  async function books(q,signal){
   if(cache.has(q))return cache.get(q);
   const url="https://openlibrary.org/search.json?"+new URLSearchParams({
-   q,limit:"25",fields:"key,title,author_name,first_publish_year,cover_i,edition_count"});
+   q,limit:"50",fields:"key,title,author_name,first_publish_year,cover_i,edition_count,publisher,subject"});
   const response=await fetch(url,{headers:{Accept:"application/json"},signal});
   if(!response.ok)throw Error("Open Library HTTP "+response.status);
   const json=await response.json();
-  const docs=Array.isArray(json.docs)?json.docs.slice(0,25):[];
+  const docs=Array.isArray(json.docs)?json.docs.slice(0,50):[];
   cache.set(q,docs);if(cache.size>12)cache.delete(cache.keys().next().value);
   return docs;
  }
