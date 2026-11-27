@@ -80,6 +80,12 @@
   photo.onerror=()=>{
    if(request!==token)return;
    visual.hidden=true;ready=false;rank=0;
+   const backups=(item.backupFiles||[]).filter(x=>typeof x==='string'&&x.length<250).map(file=>{
+    const name=encodeURIComponent(file.replace(/ /g,'_'));
+    return {...item,preview:'https://commons.wikimedia.org/wiki/Special:FilePath/'+name+'?width=640',page:'https://commons.wikimedia.org/wiki/File:'+name,credit:'Wikimedia Commons · '+file+' · ficha y licencia'};
+   });
+   const backup=backups.find(x=>!attempted.has(x.preview));
+   if(backup&&show(backup,weight))return;
    const next=gallery.filter(x=>x.preview!==item.preview&&!attempted.has(x.preview))[0];
    if(next)show(next,Math.max(25,100+preferImage(next)));
    else if(featured?.preview!==item.preview&&featured&&!attempted.has(featured.preview))show(featured,25);
