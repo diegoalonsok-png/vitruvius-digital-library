@@ -567,7 +567,7 @@ function render(){
    link.title=version?"Leer edición registrada":"Consultar ficha académica";
    row.append(link);appendEditionSummary(row,w);
    const status=make("span",version?"Texto registrado":w.facsimile?"Facsímil/OCR declarado":"Ficha bibliográfica · texto no asociado","bws-plain-status");row.append(status);appendIntegrity(row,w);
-   if(version){const ficha=make("a","Ficha académica","bws-plain-record");ficha.href=workLink(w.id);row.append(ficha)}
+   if(link.href!==new URL(workLink(w.id),location.href).href){const ficha=make("a","Ficha académica","bws-plain-record");ficha.href=workLink(w.id);row.append(ficha)}
    if(w.facsimile){const fac=make("a","Consultar facsímil/OCR","bws-plain-record");fac.href=facLink(w.facsimile);row.append(fac)}
    list.append(row);
   }
@@ -771,7 +771,7 @@ function mount(parent,data){
  section.append(title,subtitle,form,filterStyles,advanced,region,help);
  const metric=parent.querySelector(":scope > dl");
  if(metric)metric.insertAdjacentElement("beforebegin",section);else parent.prepend(section);
- model={items:[...index.values()],index,input,list,count,more,region,authorFilter,genreFilter,subjectFilter,centuryFilter,periodFilter,languageFilter,sortFilter,letter:"",limit:6,showAll:false,r2Only:false,compactFront:parent.id==="front-classical-works"};
+ model={items:[...index.values()],index,input,list,count,more,region,authorFilter,genreFilter,subjectFilter,centuryFilter,periodFilter,languageFilter,sortFilter,letter:"",limit:40,showAll:false,r2Only:false,compactFront:parent.id==="front-classical-works"};
 
  // Bibliotheca has one visible search field shared with Lexicon's reading tools.
  // Filter the plain author/title list as the reader types, while leaving Enter
@@ -795,7 +795,7 @@ function mount(parent,data){
    searchForm?.addEventListener("submit",event=>{
     event.preventDefault();event.stopImmediatePropagation();sync();
     const matches=list.querySelectorAll(".bws-plain-title");
-    if(matches.length===1&&more.hidden)location.assign(matches[0].href);
+    if(visible.value.trim()&&!singleLetter(visible.value)&&matches.length===1&&more.hidden)location.assign(matches[0].href);
    },true);
    sync();
   }
