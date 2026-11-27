@@ -43,6 +43,7 @@ dl{margin:0}.name-row{border-top:1px solid #454545;padding:11px 0}.name-row:targ
 </section><section class="edition"><h3>Lectura, transliteración y sentido</h3><div id="royal-names" lang="egy"></div><p class="caution">Solo se incluyen signos y transliteraciones cargados en el repertorio local con procedencia. Para los nombres sin edición, se señala la ausencia en lugar de reconstruir signos. El cartucho se usa únicamente para prenomen y nomen; el nombre de Horus se identifica por su serej.</p><p id="translation-note" class="note">La traducción íntegra del documento no está acreditada en este visor.</p>
 <div class="source-list" id="academic-links"></div></section></div></main>
 <script src="assets/hiero-render.js?v=20261109-quadrats-v1"></script>
+<script src="assets/vitruvia-optical-reader.js?v=20261127-optical-v1"></script>
 <script>
 (()=>{"use strict";
 const $=id=>document.getElementById(id),p=new URLSearchParams(location.search);
@@ -137,7 +138,7 @@ async function load(){
   }else $("image-note").textContent="La ficha institucional no ofrece fotografía abierta para integrar. Consulta el original en el museo.";
  }catch{$("image-note").textContent="La imagen del museo no pudo cargarse aquí. La ficha externa conserva el acceso a los datos verificados.";}
 }
-render();load().catch(err=>{$("document-title").textContent="Documento no disponible";$("document-meta").textContent=err.message});
+render();window.VitruviaOpticalReader?.attach($("photo-stage"),$("photo"),document.querySelector(".plate .tools"));load().catch(err=>{$("document-title").textContent="Documento no disponible";$("document-meta").textContent=err.message});
 })();
 </script><script defer src="assets/button-press-feedback.js?v=20261111-pulsacion-v1"></script><script defer src="assets/ui-idioma.js?v=20261112-sitio3"></script>
 <footer data-vdl-legal-notice="2026" role="contentinfo" aria-label="Derechos editoriales" style="box-sizing:border-box;display:block;clear:both;grid-column:1/-1;width:100%;margin:28px 0 0;padding:16px 18px;border-top:1px solid currentColor;text-align:center;font:12px/1.65 system-ui,sans-serif;color:inherit;background:transparent">

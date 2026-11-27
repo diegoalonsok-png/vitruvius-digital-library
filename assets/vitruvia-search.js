@@ -918,6 +918,23 @@ function renderCard(d){
  }
  if(d.aiEvidence){card.classList.add("ai-evidence-card");card.append(node("div","ai-evidence-label",d.aiSemantic?"Reranking neuronal + texto documentado":"BM25 · recuperación textual calibrada"))}
  if(d.meta)card.append(node("div","meta-line",d.meta));
+ if(window.VitruviaOpticalReader&&d.imageRights&&typeof d.image==="string"&&/^(?:https:\/\/|images\/)/.test(d.image)&&
+   (d.type==="fragment"||d.recordKind==="papyrus"||d.type==="museum"&&/\b(?:papyrus|papiro|papyrusfragment|papiri)\b/i.test(d.title||""))){
+  const reader=node("details","vitruvia-papyrus-optical");
+  reader.append(node("summary",null,S.lang==="en"?"Examine documented image · optical reader":S.lang==="fr"?"Examiner l’image documentée · lecteur optique":"Examinar imagen documentada · lupa y contraste"));
+  reader.addEventListener("toggle",()=>{
+   if(!reader.open||reader.dataset.mounted)return;
+   reader.dataset.mounted="1";
+   const toolbar=node("div"),stage=node("div"),image=node("img");
+   stage.style.cssText="max-height:65vh;min-height:180px;overflow:auto;border:1px solid #777";
+   image.alt=d.title;image.style.display="block";image.src=d.image;
+   const source=makeLink(S.lang==="en"?"Original source and image rights":S.lang==="fr"?"Source originale et droits de l’image":"Fuente original y derechos de imagen",d.imageRights);
+   stage.append(image);reader.append(toolbar,stage);
+   if(source)reader.append(source);
+   reader.append(node("p","meta-line","Vista previa de la imagen disponible; la ampliación no aumenta su resolución original."));
+   window.VitruviaOpticalReader.attach(stage,image,toolbar);
+  });card.append(reader);
+ }
  const acts=node("div","actions");
  if(d.type==="book"&&d.localReader&&window.VitruviaClassicsViewer){
   const open=node("button","classics-local-open",S.lang==="en"?"Read original text here":S.lang==="fr"?"Lire le texte original ici":"Leer texto original aquí");

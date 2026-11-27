@@ -1814,7 +1814,9 @@ function renderAtenHymn(rows,token){
  const tools=make("div",undefined,"article-source-first-links");
  const zoom=make("input");zoom.type="range";zoom.min="100";zoom.max="300";zoom.value="100";zoom.setAttribute("aria-label","Ampliar jeroglíficos");zoom.addEventListener("input",()=>image.style.width=zoom.value+"%");tools.append(zoom);
  for(const [label,url] of [["Abrir lámina original",atenReading.facsimile],["Ficha y licencia",atenReading.record],["Fotografía de la inscripción",atenReading.photo],["Edición de Davies · láminas XXVII y XLI",atenReading.edition]]){const a=href(url,label);if(a)tools.append(a)}
- original.append(view,tools,make("p","Copia epigráfica publicada en 1908, no fotografía del muro. Dominio público según la ficha del archivo. La fotografía de 2022 se consulta separadamente.","article-note"));
+ const opticalTools=make("div");
+ original.append(opticalTools,view,tools,make("p","Copia epigráfica publicada en 1908, no fotografía del muro. Dominio público según la ficha del archivo. La fotografía de 2022 se consulta separadamente.","article-note"));
+ if(window.VitruviaOpticalReader?.attach(view,image,opticalTools))zoom.remove();
  translation.append(make("h4","Traducción castellana · lectura de consulta"));
  translation.append(make("p","Versión de Wikisource, revisión 1641728, CC BY-SA 4.0; traductor no identificado en la ficha consultada. No constituye una edición crítica ni una alineación por columnas.","article-note"));
  const links=make("div",undefined,"article-source-first-links");
