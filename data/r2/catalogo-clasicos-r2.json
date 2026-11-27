@@ -236,7 +236,19 @@
       "sha256": "c53a9dd54be9b7e845e460030f5904408d466f4a22a478f4b8353eea1fad941a",
       "paginas": 372,
       "paginasConTexto": 357,
-      "verificado": "SHA-256 del objeto público idéntico; autor presente en las primeras páginas"
+      "verificado": "SHA-256 del objeto público idéntico; autor presente en las primeras páginas",
+      "idiomaEdicion": "en",
+      "traductor": "Benjamin Jowett",
+      "notaFilologica": "Traducción inglesa, edición de H. W. Carless Davis; el griego es lengua original de la obra, no lengua acreditada de este ejemplar. Alcance interno y completud pendientes de cotejo.",
+      "evidenciaBibliografica": {
+        "source": "https://archive.org/details/aristotlespoliti00arisuoft",
+        "checkedOn": "2026-11-27",
+        "ark": "ark:/13960/t6251g26r",
+        "oclc": "1039949409",
+        "language": "en",
+        "status": "external_catalogue_confirmed",
+        "pdfInteriorCertified": false
+      }
     },
     {
       "id": "aristoteles-meteorologica",
@@ -285,7 +297,22 @@
       "sha256": "146476e580719fa8388194da7ecbbeb8be23170e00960ff4e8d2858e56a82a7e",
       "paginas": 524,
       "paginasConTexto": 511,
-      "verificado": "SHA-256 del objeto público idéntico; autor presente en las primeras páginas"
+      "verificado": "SHA-256 del objeto público idéntico; autor presente en las primeras páginas",
+      "idiomaEdicion": "en",
+      "traductor": "Thomas Little Heath",
+      "notaFilologica": "Edición inglesa de Heath (1897), con material griego señalado en el catálogo de origen. Contiene los dos libros de Sobre los cuerpos flotantes, además de otros tratados. No contiene El método, publicado posteriormente. No se certifica una transcripción griega íntegra ni la integridad física del ejemplar.",
+      "evidenciaBibliografica": {
+        "source": "https://archive.org/details/worksofarchimede00arch",
+        "checkedOn": "2026-11-27",
+        "ark": "ark:/13960/t46q2cw7b",
+        "oclc": "1158470909",
+        "catalogueLanguages": [
+          "en",
+          "grc"
+        ],
+        "status": "external_catalogue_confirmed",
+        "pdfInteriorCertified": false
+      }
     },
     {
       "id": "athenaeus-mechanicus",
@@ -3006,10 +3033,10 @@
     {
       "id": "rose-vitruvius-1899",
       "autor": "Valentin Rose (ed.)",
-      "obra": "De architectura libri decem — edición latina atribuida a Rose (fecha por verificar)",
+      "obra": "De architectura libri decem — Rose y Müller-Strübing (1867 según catálogo de origen)",
       "lengua": "la",
       "coleccion": "recepcion-vitruviana",
-      "idiomaEdicion": "s/d",
+      "idiomaEdicion": "la",
       "tanda": 1,
       "tituloEdicion": "De architectura libri decem;",
       "anio": 1867,
@@ -3031,8 +3058,18 @@
       "paginas": 344,
       "paginasConTexto": 329,
       "verificado": "SHA-256 del objeto público idéntico; autor presente en las primeras páginas",
-      "incidenciaCatalografica": "La clave histórica menciona 1899, mientras la fecha registrada de reproducción indica 1867: no atribuir año definitivo a este ejemplar sin examen de portada y pie de imprenta.",
-      "estadoRevision": "requiere_verificacion_portada"
+      "incidenciaCatalografica": "Fecha 1867 acreditada por catálogo externo; pendiente cotejo de la portada del PDF R2. No equivale a la edición crítica Rose 1899.",
+      "estadoRevision": "requiere_verificacion_portada",
+      "notaFilologica": "El registro de origen identifica la edición de Leipzig, Teubner, 1867, con Valentin Rose y Hermann Müller-Strübing. La clave histórica 1899 se conserva únicamente como identificador de archivo. No confundir con la segunda edición de Rose (1899) del aparato crítico.",
+      "evidenciaBibliografica": {
+        "source": "https://archive.org/details/dearchitecturali00vitruoft",
+        "checkedOn": "2026-11-27",
+        "ark": "ark:/13960/t43r0zr96",
+        "oclc": "1042941883",
+        "language": "la",
+        "status": "external_catalogue_confirmed",
+        "pdfInteriorCertified": false
+      }
     },
     {
       "id": "valerio-flaco-argonautica",

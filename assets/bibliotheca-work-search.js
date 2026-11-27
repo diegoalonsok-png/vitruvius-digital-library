@@ -203,7 +203,7 @@ function integrityLabel(id){
  if(r.status==="some_version_structure_confirmed")return "Estructura comprobada en alguna versión; no cotejo íntegro";
  return "";
 }
-function appendIntegrity(parent,w){const value=integrityLabel(w.id);if(!value)return;const a=make("a",value,"bws-meta");a.href=workLink(w.id)+"#vdl-integrity-record";a.style.display="block";parent.append(a)}
+function appendIntegrity(parent,w){const details=window.BibliothecaCompleteness?.describe(integrityByWork.get(w.id))||[];for(const d of details){const p=make("p",[(d.language||d.edition),d.text].filter(Boolean).join(" · "),"bws-meta");parent.append(p)}const value=integrityLabel(w.id);if(!value)return;const a=make("a",value,"bws-meta");a.href=workLink(w.id)+"#vdl-integrity-record";a.style.display="block";parent.append(a)}
 const ROADMAP="data/classics-corpus/indexation-roadmap-222.json";
 const R2_BASE="https://libros.vitruvius-digital-library.org/corpus/";
 const optionalArticles=/^(?:el|la|los|las|le|les|l|the|a|an|der|die|das|il|lo|gli|i|un|una|uno)\s+/;
@@ -422,7 +422,7 @@ function spanishWorkTitle(w){
  return candidate&&normCandidate&&!normTitle.includes(normCandidate)?candidate:"";
 }
 function bilingualWorkLabel(w,author=true){
- const title=w.title+(spanishWorkTitle(w)?" — "+spanishWorkTitle(w):"");
+ const title=w.title+(spanishWorkTitle(w)?" — "+spanishWorkTitle(w):"")+(window.BibliothecaCompleteness?.titleSuffix(integrityByWork.get(w.id))||"");
  const authorText=w.author+(spanishAuthorName(w)?" — "+spanishAuthorName(w):"");
  return author?title+" · "+authorText:title;
 }

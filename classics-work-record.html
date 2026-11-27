@@ -48,6 +48,7 @@ footer{border-top:1px solid var(--line);font-size:12px;color:#bbb;margin-top:30p
 </style>
 <script defer src="assets/editorial-work-records.js?v=20261111-identifiers-v1"></script>
 <script defer src="assets/r2-work-records.js?v=20261116-academic-audit-281-v1"></script>
+<script defer src="assets/bibliotheca-completeness.js?v=20261127-v1"></script>
 <script defer src="assets/classics-work-dossier.js?v=20261117-all-records-witness-reconciliation-v1"></script>
 <script defer src="assets/classics-early-witness-links.js?v=20261117-audit-v1"></script>
 <script defer src="assets/analytics-config.js?v=20261110-shared-v1"></script>
@@ -128,6 +129,7 @@ async function ready(){
   }catch(e){console.warn("Control bibliológico no disponible",e)}
   try{const a=await readJSON("data/bibliotheca-audit/integrity.json");latestStructuralAudit=a.latestStructuralAudit||null;for(const row of a.records)integrityRows.set(row.id,row)}catch(e){console.warn("Control de integridad no disponible",e)}
   try{titleAuthorities=(await readJSON("data/classics-corpus/title-search-aliases-multilingual.json")).titleAuthorities||{}}catch(e){console.warn("Autoridades de títulos no disponibles",e)}
+  for(const option of selected.options){const suffix=window.BibliothecaCompleteness?.titleSuffix(integrityRows.get(option.value))||"";if(suffix)option.textContent+=suffix;}
   const langNames={grc:"Griego antiguo",la:"Latín",it:"Italiano",en:"Inglés",es:"Castellano",fr:"Francés"};
   const label=l=>langNames[l]||l||"No consignado";
   const txStatus={registered:"Traducción textual registrada",facsimile_declared:"Traducción en facsímil declarado",external_declared:"Traducción externa registrada",not_documented:"Sin traducción documentada"};
@@ -136,7 +138,9 @@ async function ready(){
     const root=$("vdl-integrity-record"),r=auditRows.get(id),i=integrityRows.get(id);root.replaceChildren();root.hidden=!r;if(!r)return;
     const add=(tag,txt,parent=root)=>{const el=document.createElement(tag);el.textContent=txt;parent.append(el);return el};
     const line=(k,v)=>{if(v==null||v==="")return;const p=document.createElement("p"),s=document.createElement("strong");s.textContent=k+": ";p.append(s,document.createTextNode(String(v)));root.append(p)};
-    add("h2","Control bibliológico e integridad textual");
+    add("h2","Control bibliológico e integridad textual"+(window.BibliothecaCompleteness?.titleSuffix(i)||""));
+    for(const row of window.BibliothecaCompleteness?.describe(i)||[])line("Completud · "+(row.language?label(row.language):row.edition||"Edición"),row.text);
+    line("Criterio de cálculo","Porcentaje de unidades estructurales documentadas respecto de la referencia; no porcentaje de palabras ni certificación filológica. Una ausencia de numeración u OCR no prueba una pérdida de texto.");
     const authority=titleAuthorities[id];
     if(authority){line("Título bibliográfico acreditado",authority.displayTitle||authority.greekTitle);line("Reserva de título",authority.note);if(/^https:\/\//.test(authority.source||"")){const p=add("p","Fuente de autoridad: ");const a=add("a","Consultar registro bibliográfico",p);a.href=authority.source;}}
     if(r.originalLanguage==="grc"&&!/\p{Script=Greek}/u.test(r.title||"")&&!authority?.greekTitle){line("Título griego","Pendiente de acreditación. El título latino o internacional se conserva como denominación bibliográfica; no se traduce automáticamente.");}
@@ -151,6 +155,12 @@ async function ready(){
       const p=(txt)=>add("p",txt,d);
       for(const v of i.latestTextChecks||[]){
         p(label(v.language)+" · "+(v.path||"")+" · "+(v.status==="could_not_inspect"?"No se pudo comprobar: "+(v.reason||"sin detalle"):v.status==="html_present_requires_textual_collation"?"HTML presente, cotejo pendiente":(v.passageCount??0)+" pasajes examinados; integridad filológica no certificada"));
+        if(v.indexCheck){
+          const labels={manifest_identity_and_count_match:"Coincidencia de identidad y recuento en manifiesto; postings no cotejados",literal_postings_verified:"Índice literal cotejado íntegramente contra los pasajes",word_gate_only:"Búsqueda de palabras HTML, sin índice por locus",index_count_mismatch:"Discrepancia de pasajes o índice vacío",index_source_fingerprint_mismatch:"Huella de fuente discrepante",index_check_failed:"Verificación del índice fallida"};
+          const c=v.indexCheck;
+          if(c.checks?.length)for(const x of c.checks)p("Índice · "+x.family+": "+(labels[x.status]||x.status)+(x.reason?" · "+x.reason:"")+(x.expected!=null?" · pasajes esperados "+x.expected+" / indexados "+x.indexed:""));
+          else p("Índice: "+(c.status==="separate_critical_apparatus"?c.basis:"No localizado o no disponible; requiere revisión"));
+        }else p("Índice: pendiente de verificación individual.");
         if(v.groupedReferenceLoci&&Object.keys(v.groupedReferenceLoci).length)p("Loci presentes en bloques agrupados, cotejados con Krohn: "+Object.entries(v.groupedReferenceLoci).map(([l,x])=>l+" dentro de "+x.sourceBlock+"–"+x.sectionEnd).join("; ")+". No son faltantes de texto.");
         if(v.missingReferenceLoci?.length)p("Loci de referencia no encontrados: "+v.missingReferenceLoci.join(", ")+" (comprobar fusiones o diferencias editoriales).");
         if(v.sourceDeclaredMissing?.length)p("Faltantes declarados por la fuente: "+v.sourceDeclaredMissing.join(", "));

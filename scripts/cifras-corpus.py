@@ -83,12 +83,18 @@ def main():
     if indice:
         cifras["obrasIndexadasR2"] = indice.get("obras")
         cifras["paginasIndexadasR2"] = indice.get("paginasIndexadas")
+    # Las ediciones críticas auxiliares son versiones, no nuevas fichas.
+    catalog_ids = master_ids | extra_ids | {row["r2"] for row in (vinculos or {}).get("obrasNuevas", [])}
     if registro:
         # Contar las entradas, no los campos declarados: el texto alojado en R2
         # no quedaba contado y la página anunciaba obras sin texto que ya lo tienen.
         entradas = registro.get("entries") or []
         cifras["versionesTextuales"] = len(entradas) or registro.get("count")
-        cifras["obrasConTextoRegistrado"] = len({e.get("workId") for e in entradas}) or registro.get("works")
+        registered_ids = {e["workId"] for e in entradas if e.get("workId") in catalog_ids}
+        cifras["obrasConTextoRegistrado"] = len(registered_ids)
+        cifras["fichasSinVersionTextualPropia"] = len(catalog_ids - registered_ids)
+        cifras["versionesAuxiliaresFueraDelCatalogo"] = sum(e.get("workId") not in catalog_ids for e in entradas)
+        cifras["notaRegistroTextual"] = ("Registro textual por ficha; no equivale a integridad filológica ni a índice léxico comprobado.")
 
     # No llamar "indexado" a un texto solamente registrado. El índice local
     # y el de R2 son sistemas distintos; contabilizar originales por ID único
@@ -99,7 +105,24 @@ def main():
     cifras["edicionesLexicasR2"] = len(r2_entries)
     originals = {e["id"] for e in [*local_entries, *r2_entries]
                  if e.get("lang") in {"la", "grc"}}
-    cifras["obrasConTextoIndexado"] = len(originals)
+    for e in [*local_entries, *r2_entries]:
+        for alias in e.get("gate", []):
+            work_id, _, lang = alias.rpartition("|")
+            if lang in {"la", "grc"}:
+                originals.add(work_id)
+    cifras["obrasConTextoIndexado"] = len(originals & catalog_ids)
+    cifras["notaIndiceTextual"] = ("Originales del catálogo en manifiestos léxicos local y R2 clásico; "
+        "no incluye automáticamente la ampliación R2, OCR ni certificación filológica.")
+    expansion = leer(ROOT / "data/r2/classics-expansion-index.json") or {}
+    if expansion:
+        cifras["edicionesLexicasAmpliacionR2"] = expansion.get("works")
+        cifras["pasajesLexicosAmpliacionR2"] = expansion.get("passages")
+        cifras["notaAmpliacionR2"] = ("Cifras del descriptor de ampliación; no se suman a obras únicas "
+            "por posibles coincidencias de ediciones y obras. Sin nueva prueba HTTP.")
+    # Conservar el objetivo editorial vigente sin inferir cobertura textual.
+    old = leer(SALIDA) or {}
+    cifras["objetivoObras"] = old.get("objetivoObras", 500)
+    cifras["faltanParaObjetivo"] = max(0, cifras["objetivoObras"] - len(catalog_ids))
 
     SALIDA.write_text(json.dumps(cifras, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
     print(json.dumps(cifras, ensure_ascii=False))

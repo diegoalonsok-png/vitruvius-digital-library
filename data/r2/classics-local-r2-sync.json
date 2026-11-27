@@ -344,6 +344,2926 @@
       "status": "uploaded-and-verified"
     },
     {
+      "key": "corpus/aristophanes-thesmophoriazusae-grc.json",
+      "workId": "aristophanes-thesmophoriazusae",
+      "language": "grc",
+      "sha256": "2da3fccc7f28d141175a9e1dd66d0e68681cc220c92e51e37aedbc1bb985decb",
+      "passages": 1399,
+      "bytes": 207552,
+      "verifiedAt": "2026-11-27T13:05:09.557202+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/aristophanes-vespae-grc.json",
+      "workId": "aristophanes-vespae",
+      "language": "grc",
+      "sha256": "9f9e8ea987fcdd1dfb6697a77cd08713e838ebffb5a5d373c31a65beea719410",
+      "passages": 213,
+      "bytes": 171278,
+      "verifiedAt": "2026-11-27T13:05:10.463260+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/aristoteles-del-cielo-en.json",
+      "workId": "aristoteles-del-cielo",
+      "language": "en",
+      "sha256": "9137a1a8a49577b242315a7f79fa3a7342fa4ca77975de25d81c6887564fea43",
+      "passages": 40,
+      "bytes": 228603,
+      "verifiedAt": "2026-11-27T13:05:11.295312+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/aristotle-de-anima-grc.json",
+      "workId": "aristotle-de-anima",
+      "language": "grc",
+      "sha256": "f7d0c7ee21b3ab086f17375ae818ac0bbd8d082f0f0fd7b4f62578c313aeab19",
+      "passages": 79,
+      "bytes": 269854,
+      "verifiedAt": "2026-11-27T13:05:12.343927+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/aristotle-metaphysics-en.json",
+      "workId": "aristotle-metaphysics",
+      "language": "en",
+      "sha256": "87977f0e7731562ce5b5f236aea92b56e2a118ae3d27c7b936b6c7d69a6aae78",
+      "passages": 142,
+      "bytes": 636028,
+      "verifiedAt": "2026-11-27T13:05:13.793552+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/aristotle-metaphysics-grc.json",
+      "workId": "aristotle-metaphysics",
+      "language": "grc",
+      "sha256": "ec5f41805a014d627bf5381658ba1ee8c63477129c51386203fcd7b5ff53c3a5",
+      "passages": 300,
+      "bytes": 987313,
+      "verifiedAt": "2026-11-27T13:05:14.849273+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/aristotle-nicomachean-ethics-en.json",
+      "workId": "aristotle-nicomachean-ethics",
+      "language": "en",
+      "sha256": "7ea01fb27b0b24941390b1bc328607b3ac3396ec85ae720fa27bd7f1fa9c52d9",
+      "passages": 116,
+      "bytes": 521083,
+      "verifiedAt": "2026-11-27T13:05:15.840890+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/aristotle-nicomachean-ethics-grc.json",
+      "workId": "aristotle-nicomachean-ethics",
+      "language": "grc",
+      "sha256": "2bd80fc6ef95c5c942c1d5a5fe18053bb0155bf73ce9ea9299a0f20fd6d2457b",
+      "passages": 225,
+      "bytes": 743104,
+      "verifiedAt": "2026-11-27T13:05:16.855791+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/aristotle-physics-grc.json",
+      "workId": "aristotle-physics",
+      "language": "grc",
+      "sha256": "d5759261a123b59315dbb504ddc8ec28f7d5c02353b9ce02b9a05dac7e321e72",
+      "passages": 201,
+      "bytes": 700660,
+      "verifiedAt": "2026-11-27T13:05:17.752541+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/aristotle-poetics-en.json",
+      "workId": "aristotle-poetics",
+      "language": "en",
+      "sha256": "ff7edb8cf7b3dad4eb3ecb8f19a5e77aa02dacaedb3008652d556aaed1b60181",
+      "passages": 26,
+      "bytes": 78889,
+      "verifiedAt": "2026-11-27T13:05:18.615326+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/aristotle-poetics-grc.json",
+      "workId": "aristotle-poetics",
+      "language": "grc",
+      "sha256": "69f1f405cb47346b58fe5acf7e083611436ab490444bfc27a33c515e6542b6d7",
+      "passages": 26,
+      "bytes": 120850,
+      "verifiedAt": "2026-11-27T13:05:19.659249+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/aristotle-politics-en.json",
+      "workId": "aristotle-politics",
+      "language": "en",
+      "sha256": "dd8b5d6b1bce0719fc46b2ab0fe6584e7ebbebf4a54e09d113cd836b86a827a3",
+      "passages": 189,
+      "bytes": 586684,
+      "verifiedAt": "2026-11-27T13:05:20.742977+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/aristotle-politics-grc.json",
+      "workId": "aristotle-politics",
+      "language": "grc",
+      "sha256": "c3589ceaaf11d153448bee10539de2f1f3e880253d8ea265667ef8d372441c90",
+      "passages": 289,
+      "bytes": 887556,
+      "verifiedAt": "2026-11-27T13:05:21.919076+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/aristotle-rhetoric-en.json",
+      "workId": "aristotle-rhetoric",
+      "language": "en",
+      "sha256": "4a87685a2eb4d4577d5e43d99d906cf4e141a201c6a5a04dbfc6ead2eb2a3285",
+      "passages": 882,
+      "bytes": 540510,
+      "verifiedAt": "2026-11-27T13:05:22.864567+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/aristotle-rhetoric-grc.json",
+      "workId": "aristotle-rhetoric",
+      "language": "grc",
+      "sha256": "1931c1f6f0c0661c9fb977bebd546765e99441ff4fb1467eddaa18e66825d5a6",
+      "passages": 883,
+      "bytes": 628827,
+      "verifiedAt": "2026-11-27T13:05:24.236828+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/aristoxenus-harmonica-grc.json",
+      "workId": "aristoxenus-harmonica",
+      "language": "grc",
+      "sha256": "8cbbc6ea5b063785c8c1bc882c83321b6eebcf1f344e89192b94a0717b121ecd",
+      "passages": 95,
+      "bytes": 255253,
+      "verifiedAt": "2026-11-27T13:05:25.156467+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/arrian-anabasis-alexandri-grc.json",
+      "workId": "arrian-anabasis-alexandri",
+      "language": "grc",
+      "sha256": "c4de96865eb64e6a09cfc1981352ae11662be4875bba92d199b75260f20c9995",
+      "passages": 1406,
+      "bytes": 1153756,
+      "verifiedAt": "2026-11-27T13:05:26.164371+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/augustine-civitate-dei-la.json",
+      "workId": "augustine-civitate-dei",
+      "language": "la",
+      "sha256": "50892786a2416d0802e612d1d053723995042ef10fcea6349bdf753f431ff23d",
+      "passages": 664,
+      "bytes": 2020293,
+      "verifiedAt": "2026-11-27T13:05:27.445611+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/augustine-confessiones-la.json",
+      "workId": "augustine-confessiones",
+      "language": "la",
+      "sha256": "8505baa82b8f75ea01c6c77e4febb193b3235b74d229f635073deedaf39ed016",
+      "passages": 453,
+      "bytes": 532186,
+      "verifiedAt": "2026-11-27T13:05:28.515082+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/augustus-res-gestae-la.json",
+      "workId": "augustus-res-gestae",
+      "language": "la",
+      "sha256": "8a33629c711f9d273db76fe4471dc2ca5bfe09054088960379ddb6d7e6a1c61f",
+      "passages": 39,
+      "bytes": 21654,
+      "verifiedAt": "2026-11-27T13:05:29.309515+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/aulus-gellius-noctes-la.json",
+      "workId": "aulus-gellius-noctes",
+      "language": "la",
+      "sha256": "66e6bd45771679450533df7f81bcaa119038cf19f27e9cd71259152120bed224",
+      "passages": 3973,
+      "bytes": 1268585,
+      "verifiedAt": "2026-11-27T13:05:30.276929+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/aurelius-victor-liber-caesaribus-la.json",
+      "workId": "aurelius-victor-liber-caesaribus",
+      "language": "la",
+      "sha256": "0c1dd3c5003bef6769ea484b5f930abd27b6216bc1e2fddda58e76c22b44b08c",
+      "passages": 42,
+      "bytes": 84713,
+      "verifiedAt": "2026-11-27T13:05:31.091870+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/barnabas-grc.json",
+      "workId": "barnabas",
+      "language": "grc",
+      "sha256": "d0f5b73be9a1c40a2aea20a9247fd837cf59320a1c6bec31c1681b30491f3cdb",
+      "passages": 194,
+      "bytes": 113741,
+      "verifiedAt": "2026-11-27T13:05:31.959635+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/boethius-consolatio-la.json",
+      "workId": "boethius-consolatio",
+      "language": "la",
+      "sha256": "daaaae0d94cf5a0ddb4e56a8d5985246b847372114aa88626ee32e1ac2fca0b0",
+      "passages": 98,
+      "bytes": 217911,
+      "verifiedAt": "2026-11-27T13:05:32.882814+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/caesar-civili-en.json",
+      "workId": "caesar-civili",
+      "language": "en",
+      "sha256": "e2d3e754553e4c398f54db5eb7c276c31385b6ea64bcba29130aa3c64429f38b",
+      "passages": 243,
+      "bytes": 308536,
+      "verifiedAt": "2026-11-27T13:05:33.709966+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/caesar-civili-la.json",
+      "workId": "caesar-civili",
+      "language": "la",
+      "sha256": "7f092f1ca2bc5b0efd8817d7fd6b344f4e27ba9b6422403445fa11d87611142f",
+      "passages": 243,
+      "bytes": 245848,
+      "verifiedAt": "2026-11-27T13:05:34.794015+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/caesar-gallico-en.json",
+      "workId": "caesar-gallico",
+      "language": "en",
+      "sha256": "1bb0fbd03598020c45727eaaabf5f7b220a2c59211e9f2f70b9b68d8555e002a",
+      "passages": 404,
+      "bytes": 504633,
+      "verifiedAt": "2026-11-27T13:05:35.787215+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/caesar-gallico-la.json",
+      "workId": "caesar-gallico",
+      "language": "la",
+      "sha256": "2c429633bbad40ce20d1be8f82a3f411c1934a318d8f4a7b4e44934c7bd107e5",
+      "passages": 404,
+      "bytes": 395997,
+      "verifiedAt": "2026-11-27T13:05:36.603043+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/callimachus-hymni-grc.json",
+      "workId": "callimachus-hymni",
+      "language": "grc",
+      "sha256": "bd547a965def07d7618b460d3d8c8d750484efd0d79b0562298a2558a67af45a",
+      "passages": 1082,
+      "bytes": 210438,
+      "verifiedAt": "2026-11-27T13:05:37.560228+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/cato-agri-cultura-la.json",
+      "workId": "cato-agri-cultura",
+      "language": "la",
+      "sha256": "6ceda1eb799f662d0eb4bcc5c00e51a0b63a4382e043668ea8cee7ad175c3a4a",
+      "passages": 168,
+      "bytes": 124427,
+      "verifiedAt": "2026-11-27T13:05:38.424353+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/catullus-carmina-en.json",
+      "workId": "catullus-carmina",
+      "language": "en",
+      "sha256": "1ac681beee90d096cef700790f4e273f7e3098414b3595607d2ad0d6992b59d3",
+      "passages": 112,
+      "bytes": 106745,
+      "verifiedAt": "2026-11-27T13:05:39.284560+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/cebes-tabula-grc.json",
+      "workId": "cebes-tabula",
+      "language": "grc",
+      "sha256": "0b121c19067faf34be483a593ed299418cd5bae3abe53ae473a68519bff37988",
+      "passages": 150,
+      "bytes": 76858,
+      "verifiedAt": "2026-11-27T13:05:40.342967+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/celsus-la.json",
+      "workId": "celsus",
+      "language": "la",
+      "sha256": "0c6009ba5315e41525dd07829c54cef793a63f6fb63f061a0e2de1e03d37a202",
+      "passages": 440,
+      "bytes": 831256,
+      "verifiedAt": "2026-11-27T13:05:41.637137+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/censorinus-die-natali-la.json",
+      "workId": "censorinus-die-natali",
+      "language": "la",
+      "sha256": "792c578ae96c9e827217143973bc5f782fd201791f40ab1cdd42f7716152e168",
+      "passages": 56,
+      "bytes": 80489,
+      "verifiedAt": "2026-11-27T13:05:42.431097+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/cicero-brutus-la.json",
+      "workId": "cicero-brutus",
+      "language": "la",
+      "sha256": "4d2eb0f260d937880a7257a76dcb1ac0a2bce81164172e6f5d85bea6727a92b6",
+      "passages": 334,
+      "bytes": 239836,
+      "verifiedAt": "2026-11-27T13:05:43.249476+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/cicero-catilinariae-en.json",
+      "workId": "cicero-catilinariae",
+      "language": "en",
+      "sha256": "7a805eff8a79f51af83bbca81e99ee4f3bbe8fadc901903f8e67ebae9b17e0d4",
+      "passages": 115,
+      "bytes": 122930,
+      "verifiedAt": "2026-11-27T13:05:44.287929+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/cicero-catilinariae-la.json",
+      "workId": "cicero-catilinariae",
+      "language": "la",
+      "sha256": "daf3278083b0b933343884854bf308253ce5d79cf968201b0ed169aab129c5f8",
+      "passages": 115,
+      "bytes": 119921,
+      "verifiedAt": "2026-11-27T13:05:45.219962+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/cicero-de-amicitia-la.json",
+      "workId": "cicero-de-amicitia",
+      "language": "la",
+      "sha256": "881aa9886bc2a6ebc995b08fc53ffe4e53b0003fe5c40e77443d4688d9948e79",
+      "passages": 104,
+      "bytes": 77904,
+      "verifiedAt": "2026-11-27T13:05:46.074619+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/cicero-de-divinatione-la.json",
+      "workId": "cicero-de-divinatione",
+      "language": "la",
+      "sha256": "84ae5fbd4bc98f753e0d6c3b54c5fa3d077ce2a0f1721efb7682d47e971a273c",
+      "passages": 282,
+      "bytes": 229012,
+      "verifiedAt": "2026-11-27T13:05:46.931654+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/cicero-de-finibus-la.json",
+      "workId": "cicero-de-finibus",
+      "language": "la",
+      "sha256": "f6e9c0595445295fc38e47a1db55237826cf5d63b96dbe0cb265f2e341afd973",
+      "passages": 443,
+      "bytes": 441200,
+      "verifiedAt": "2026-11-27T13:05:47.981718+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/cicero-de-natura-deorum-la.json",
+      "workId": "cicero-de-natura-deorum",
+      "language": "la",
+      "sha256": "872d443f489d812064715d5edb18d3dab730a6db80896f97fb039dc180912cdb",
+      "passages": 388,
+      "bytes": 296253,
+      "verifiedAt": "2026-11-27T13:06:48.734319+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/cicero-de-senectute-la.json",
+      "workId": "cicero-de-senectute",
+      "language": "la",
+      "sha256": "8b8dbb016e9da0d7d9e249d14fe47f3722af3e168e286cd24a5ef6c9a915018c",
+      "passages": 85,
+      "bytes": 69705,
+      "verifiedAt": "2026-11-27T13:06:49.628953+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/cicero-oratore-la.json",
+      "workId": "cicero-oratore",
+      "language": "la",
+      "sha256": "0b7bfc9c759eeab5f3c5dd48efc0830617275b31c1abc7e8f19bb47eb8d21111",
+      "passages": 862,
+      "bytes": 563835,
+      "verifiedAt": "2026-11-27T13:06:50.556040+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/cicero-philippicae-la.json",
+      "workId": "cicero-philippicae",
+      "language": "la",
+      "sha256": "1b27435ee66df099d1d3de3c9c54affbd8c1dafc400abb353f14977a25a9cb79",
+      "passages": 544,
+      "bytes": 516763,
+      "verifiedAt": "2026-11-27T13:06:51.930964+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/cicero-pro-archia-la.json",
+      "workId": "cicero-pro-archia",
+      "language": "la",
+      "sha256": "c3d4d4822f5189ab95548621a3e75066efdc3605630cf76d251969b65583bcac",
+      "passages": 32,
+      "bytes": 32473,
+      "verifiedAt": "2026-11-27T13:06:52.680296+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/cicero-republica-la.json",
+      "workId": "cicero-republica",
+      "language": "la",
+      "sha256": "fd248d98ae85498070a433009fd246a4ecd255d651231793a8e3c8c2ade0370d",
+      "passages": 251,
+      "bytes": 193366,
+      "verifiedAt": "2026-11-27T13:06:53.509052+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/cicero-tusculanae-la.json",
+      "workId": "cicero-tusculanae",
+      "language": "la",
+      "sha256": "4d5a0fd20bfc3a9cc226fb73189211198562bfe2f98df6985582b8134c3afd75",
+      "passages": 476,
+      "bytes": 517590,
+      "verifiedAt": "2026-11-27T13:06:54.412837+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/clement-2-grc.json",
+      "workId": "clement-2",
+      "language": "grc",
+      "sha256": "6da3a9e250bf6a736530227efebee0d7114e3e6cc5752c4ce7ee1e4aa587e983",
+      "passages": 118,
+      "bytes": 54658,
+      "verifiedAt": "2026-11-27T13:06:55.277778+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/clement-grc.json",
+      "workId": "clement",
+      "language": "grc",
+      "sha256": "de349ee2cf039e967fc46e49b683f7bec9683bcbf8304bd8e56c9e88953a3a32",
+      "passages": 400,
+      "bytes": 185514,
+      "verifiedAt": "2026-11-27T13:06:56.089662+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/columella-la.json",
+      "workId": "columella",
+      "language": "la",
+      "sha256": "3712153a9c8b684376317e7ed83f9391687978ad5838a8c7110110b7f8b8f5e2",
+      "passages": 1406,
+      "bytes": 837092,
+      "verifiedAt": "2026-11-27T13:06:57.320515+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/demosthenes-de-corona-en.json",
+      "workId": "demosthenes-de-corona",
+      "language": "en",
+      "sha256": "59dd40628ccf1d2cd0e06ebf8bd7602128fa0bb16106172a6f7f0daf4b27e107",
+      "passages": 324,
+      "bytes": 206207,
+      "verifiedAt": "2026-11-27T13:06:58.174853+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/demosthenes-de-corona-grc.json",
+      "workId": "demosthenes-de-corona",
+      "language": "grc",
+      "sha256": "2520dc3159a21e0f107c95a83501db09d8c5adce91fe00d501508a9d0acb73e1",
+      "passages": 324,
+      "bytes": 322737,
+      "verifiedAt": "2026-11-27T13:06:59.017117+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/demosthenes-first-olynthiac-en.json",
+      "workId": "demosthenes-first-olynthiac",
+      "language": "en",
+      "sha256": "6d5e27bd98474310fb4d4504fb5d9f79ddb3ff38459ba7db23b4505e77976798",
+      "passages": 28,
+      "bytes": 16967,
+      "verifiedAt": "2026-11-27T13:06:59.869655+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/demosthenes-first-olynthiac-grc.json",
+      "workId": "demosthenes-first-olynthiac",
+      "language": "grc",
+      "sha256": "f977d83f1b1ad53575331f71113f9d2068b8ec07b910f5256bf347287fbd4552",
+      "passages": 28,
+      "bytes": 26142,
+      "verifiedAt": "2026-11-27T13:07:00.863712+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/demosthenes-philippicae-grc.json",
+      "workId": "demosthenes-philippicae",
+      "language": "grc",
+      "sha256": "5fa64bef571a61936dc8b455be5d3bd6d3770ab54f54eb48f2e5204fa349bbeb",
+      "passages": 240,
+      "bytes": 217520,
+      "verifiedAt": "2026-11-27T13:07:02.102697+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/didache-en.json",
+      "workId": "didache",
+      "language": "en",
+      "sha256": "39ebe15a595f60b845cd9875bed3934fd9a0ede050051053d3473949222dc11f",
+      "passages": 16,
+      "bytes": 18522,
+      "verifiedAt": "2026-11-27T13:07:02.899793+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/didache-grc.json",
+      "workId": "didache",
+      "language": "grc",
+      "sha256": "a0e925fed6dc5f6f91aadfeb4c776f9698d3158833e8872bdef4fe746ddcdcd5",
+      "passages": 16,
+      "bytes": 28427,
+      "verifiedAt": "2026-11-27T13:07:03.811587+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/diodorus-grc.json",
+      "workId": "diodorus",
+      "language": "grc",
+      "sha256": "d90ab22c3b0cb284cf06f937c107cce5a87a884a151a5b01b8c6a165c9ba4975",
+      "passages": 1705,
+      "bytes": 1301624,
+      "verifiedAt": "2026-11-27T13:07:04.731780+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/diogenes-laertius-vitae-grc.json",
+      "workId": "diogenes-laertius-vitae",
+      "language": "grc",
+      "sha256": "54ed9d97e5b3cfe7c459ba967f01b736569e330413f3859841a1aad4fdd18005",
+      "passages": 1211,
+      "bytes": 1537871,
+      "verifiedAt": "2026-11-27T13:07:05.625384+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/diognetus-grc.json",
+      "workId": "diognetus",
+      "language": "grc",
+      "sha256": "64e18331ccfb4237eb5392567eb9037f397b2c90da0f407e1d8238fb35afc3a8",
+      "passages": 100,
+      "bytes": 47595,
+      "verifiedAt": "2026-11-27T13:07:06.608973+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/dionysius-grc.json",
+      "workId": "dionysius",
+      "language": "grc",
+      "sha256": "3ec3282c04a23b6a4e40fc2e496559ab134c3eedaea279a81d1c241f26975adb",
+      "passages": 4256,
+      "bytes": 4224504,
+      "verifiedAt": "2026-11-27T13:07:07.833394+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/dioscorides-grc.json",
+      "workId": "dioscorides",
+      "language": "grc",
+      "sha256": "35ee17f3a51bbeaf5e42dd286f165ba68a67f411c73690e3345ae616888834f7",
+      "passages": 1865,
+      "bytes": 2884985,
+      "verifiedAt": "2026-11-27T13:07:08.904242+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/disticha-catonis-la.json",
+      "workId": "disticha-catonis",
+      "language": "la",
+      "sha256": "997ce7e7bac63cff2bc96763a6fa99fc8dd244898c61989a24ee640b69c4735a",
+      "passages": 205,
+      "bytes": 27666,
+      "verifiedAt": "2026-11-27T13:07:09.845305+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/ennius-annales-la.json",
+      "workId": "ennius-annales",
+      "language": "la",
+      "sha256": "07bf334f8314c847122496182fa71d30e7f542441c150a4f00593d50c15fa8ea",
+      "passages": 31,
+      "bytes": 15474,
+      "verifiedAt": "2026-11-27T13:07:10.736365+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/epictetus-discourses-grc.json",
+      "workId": "epictetus-discourses",
+      "language": "grc",
+      "sha256": "e39f1ce8392ec8fff27fb6ccd39ad51ac8989b6feb6b0a2513666ae9b3400740",
+      "passages": 2640,
+      "bytes": 1257170,
+      "verifiedAt": "2026-11-27T13:07:11.885403+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/epictetus-enchiridion-en.json",
+      "workId": "epictetus-enchiridion",
+      "language": "en",
+      "sha256": "5384746fa03bda93e742dcf5fcf03f4ffc7ba18023b7336d4ec38001495bf26a",
+      "passages": 53,
+      "bytes": 39427,
+      "verifiedAt": "2026-11-27T13:07:12.655298+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/epictetus-enchiridion-grc.json",
+      "workId": "epictetus-enchiridion",
+      "language": "grc",
+      "sha256": "98c82d6d9f3a9198e26e623f724614a9d15b0e7684f7cebd35e69ae8beb440bd",
+      "passages": 53,
+      "bytes": 61920,
+      "verifiedAt": "2026-11-27T13:07:13.464061+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/euclid-elementa-grc.json",
+      "workId": "euclid-elementa",
+      "language": "grc",
+      "sha256": "cae064cea45dc0715bc846dbf33aca3121dcb93eae282362568f8abad29a8fd6",
+      "passages": 829,
+      "bytes": 1691085,
+      "verifiedAt": "2026-11-27T13:07:14.441149+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/euripides-alcestis-en.json",
+      "workId": "euripides-alcestis",
+      "language": "en",
+      "sha256": "82a3892b31a76e126774e9ca74dbeb4129aaac9fb12e93916d5a831cb0dcf158",
+      "passages": 51,
+      "bytes": 62123,
+      "verifiedAt": "2026-11-27T13:07:15.293519+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/euripides-alcestis-grc.json",
+      "workId": "euripides-alcestis",
+      "language": "grc",
+      "sha256": "f279c9b117e854c78e54e830054d811ed931cb27e694a025c1ab1074abecaca4",
+      "passages": 151,
+      "bytes": 112355,
+      "verifiedAt": "2026-11-27T13:07:16.187280+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/euripides-andromache-en.json",
+      "workId": "euripides-andromache",
+      "language": "en",
+      "sha256": "dd6c8340a49fa714543a6f78bc212092409933887a7af9780fce8ab929e8835a",
+      "passages": 436,
+      "bytes": 151685,
+      "verifiedAt": "2026-11-27T13:07:17.001287+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/euripides-andromache-grc.json",
+      "workId": "euripides-andromache",
+      "language": "grc",
+      "sha256": "3f6241c96ca1d157ced6c6083caa915bfbe475fd3bbdc51e20654b82a6bf01db",
+      "passages": 1283,
+      "bytes": 199808,
+      "verifiedAt": "2026-11-27T13:07:17.878834+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/euripides-bacchae-en.json",
+      "workId": "euripides-bacchae",
+      "language": "en",
+      "sha256": "491dfaed755af470b79d9a544ac7141dd621c15458f9811d006428bf44bb761e",
+      "passages": 55,
+      "bytes": 70285,
+      "verifiedAt": "2026-11-27T13:07:18.818553+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/euripides-bacchae-grc.json",
+      "workId": "euripides-bacchae",
+      "language": "grc",
+      "sha256": "f9ca378656b3acd6a628075d2ba645761aec30d72bcfe06808709cdc26be678b",
+      "passages": 180,
+      "bytes": 133570,
+      "verifiedAt": "2026-11-27T13:07:19.680401+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/euripides-cyclops-en.json",
+      "workId": "euripides-cyclops",
+      "language": "en",
+      "sha256": "e5091252c881d2784ff5f51ab382e9140857b199d4fa50d1e4d7d408b936c34a",
+      "passages": 36,
+      "bytes": 40658,
+      "verifiedAt": "2026-11-27T13:07:20.611039+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/euripides-cyclops-grc.json",
+      "workId": "euripides-cyclops",
+      "language": "grc",
+      "sha256": "692d4efadd9dff614e730b5df36d89a4a5a30298f04ea0a63b0b23a640a438fc",
+      "passages": 743,
+      "bytes": 114317,
+      "verifiedAt": "2026-11-27T13:07:21.449873+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/euripides-electra-en.json",
+      "workId": "euripides-electra",
+      "language": "en",
+      "sha256": "2769f73418b4614bea164f35877b0b8a279c5d193500e2e6fbcf4384687b3f6f",
+      "passages": 57,
+      "bytes": 72073,
+      "verifiedAt": "2026-11-27T13:07:22.326815+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/euripides-electra-grc.json",
+      "workId": "euripides-electra",
+      "language": "grc",
+      "sha256": "beac797e0ae332cf9b8c33fd1cab777a5eb3da13ee2971f38e0abae158c5b6a5",
+      "passages": 177,
+      "bytes": 132932,
+      "verifiedAt": "2026-11-27T13:07:23.142521+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/euripides-hecuba-en.json",
+      "workId": "euripides-hecuba",
+      "language": "en",
+      "sha256": "142cea429180b0e7cf6d15e42343469d48cb6dd0d8c9473d0e3e058f5171326e",
+      "passages": 49,
+      "bytes": 67452,
+      "verifiedAt": "2026-11-27T13:07:23.952181+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/euripides-hecuba-grc.json",
+      "workId": "euripides-hecuba",
+      "language": "grc",
+      "sha256": "2b73971326dbad952612e522cdeb4444358bbf49b926cb3c9810cca1ebecfcff",
+      "passages": 160,
+      "bytes": 125466,
+      "verifiedAt": "2026-11-27T13:07:24.944635+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/euripides-helena-en.json",
+      "workId": "euripides-helena",
+      "language": "en",
+      "sha256": "40cc646fbfa91fe6aede90438021f8f8ba4789dfb23f50329cad9d3cdd836242",
+      "passages": 76,
+      "bytes": 92743,
+      "verifiedAt": "2026-11-27T13:08:16.586168+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/euripides-helena-grc.json",
+      "workId": "euripides-helena",
+      "language": "grc",
+      "sha256": "d0d461493fcca3dc57997875ef75d353412801222cd263275b1b7dc3c76f2acc",
+      "passages": 1726,
+      "bytes": 266208,
+      "verifiedAt": "2026-11-27T13:08:17.565052+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/euripides-heracleidae-en.json",
+      "workId": "euripides-heracleidae",
+      "language": "en",
+      "sha256": "7a1898f8eee3871a2957bae5c38a2f7a6f37d82ee18e3f8cee79e0d2656f985c",
+      "passages": 381,
+      "bytes": 130433,
+      "verifiedAt": "2026-11-27T13:08:18.509477+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/euripides-heracleidae-grc.json",
+      "workId": "euripides-heracleidae",
+      "language": "grc",
+      "sha256": "4a74bd33f06f32a7d9728528db90c98ac3ab9e02b7957886ec849cae18e8cb2c",
+      "passages": 1054,
+      "bytes": 165036,
+      "verifiedAt": "2026-11-27T13:08:19.393043+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/euripides-heracles-en.json",
+      "workId": "euripides-heracles",
+      "language": "en",
+      "sha256": "a899e5603ff02faef9166f64d6e1a70e536a2999e8edd5b5bb1679a2f9753224",
+      "passages": 549,
+      "bytes": 180740,
+      "verifiedAt": "2026-11-27T13:08:20.282564+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/euripides-heracles-grc.json",
+      "workId": "euripides-heracles",
+      "language": "grc",
+      "sha256": "8ec56e2cf6d7125581bc08ebedb0e74ec5e4416c484abf282015017c39f53c45",
+      "passages": 1448,
+      "bytes": 220493,
+      "verifiedAt": "2026-11-27T13:08:21.184000+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/euripides-hippolytus-en.json",
+      "workId": "euripides-hippolytus",
+      "language": "en",
+      "sha256": "5f888ee9c672706da18d5c7ba9b8a7585d5b99ca160c2a5848f908fd331404bc",
+      "passages": 57,
+      "bytes": 75109,
+      "verifiedAt": "2026-11-27T13:08:22.039734+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/euripides-hippolytus-grc.json",
+      "workId": "euripides-hippolytus",
+      "language": "grc",
+      "sha256": "1a63c8e2d9b768923b102ac765d02bf192f7bcd59874fe4c8b813cc2ffd5b0c4",
+      "passages": 187,
+      "bytes": 142289,
+      "verifiedAt": "2026-11-27T13:08:22.860293+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/euripides-ion-en.json",
+      "workId": "euripides-ion",
+      "language": "en",
+      "sha256": "3f26b7ad64c6a2e8f89cf653ea067feb4107cd0db28e10f0582c259909cb6ed8",
+      "passages": 81,
+      "bytes": 92330,
+      "verifiedAt": "2026-11-27T13:08:24.009536+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/euripides-ion-grc.json",
+      "workId": "euripides-ion",
+      "language": "grc",
+      "sha256": "d069d368df3f2724b4bcbd73c8554d462706e44bcaaeb514d6a778ad5587bcf7",
+      "passages": 1687,
+      "bytes": 255666,
+      "verifiedAt": "2026-11-27T13:08:24.949458+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/euripides-iphigenia-aulid-en.json",
+      "workId": "euripides-iphigenia-aulid",
+      "language": "en",
+      "sha256": "5c09faf6a064db68a41280e7fde33b423ba4c5d56d6b5a885425c05ac5c710eb",
+      "passages": 71,
+      "bytes": 89586,
+      "verifiedAt": "2026-11-27T13:08:25.924027+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/euripides-iphigenia-aulid-grc.json",
+      "workId": "euripides-iphigenia-aulid",
+      "language": "grc",
+      "sha256": "f032ec2daffeba2e1826473633dc8d96fa09b3a1e6fc8e5fde0ea682db66e12e",
+      "passages": 210,
+      "bytes": 161493,
+      "verifiedAt": "2026-11-27T13:08:27.069542+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/euripides-medea-en.json",
+      "workId": "euripides-medea",
+      "language": "en",
+      "sha256": "8953cf7c8d25de0bfb0de0bb49819228e8ac9c0de4d14f08a16194faf307e157",
+      "passages": 50,
+      "bytes": 76475,
+      "verifiedAt": "2026-11-27T13:08:27.957982+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/euripides-medea-grc.json",
+      "workId": "euripides-medea",
+      "language": "grc",
+      "sha256": "0f5f085eaf6f3d03089a03feb2a7dd57f30bcb78b3b5b02626d95b86f1e297f5",
+      "passages": 181,
+      "bytes": 139510,
+      "verifiedAt": "2026-11-27T13:08:28.921048+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/euripides-orestes-en.json",
+      "workId": "euripides-orestes",
+      "language": "en",
+      "sha256": "badaa6ba0fc3669750462c5c959f2d9a0a68c77b8de5a22989838503fd8235aa",
+      "passages": 83,
+      "bytes": 93701,
+      "verifiedAt": "2026-11-27T13:08:29.843978+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/euripides-orestes-grc.json",
+      "workId": "euripides-orestes",
+      "language": "grc",
+      "sha256": "b073479282e7fdb891dcfdcba17803e879ef7ce0a0e7f27095dda3043835b30f",
+      "passages": 1761,
+      "bytes": 272373,
+      "verifiedAt": "2026-11-27T13:08:30.727061+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/euripides-suppliants-en.json",
+      "workId": "euripides-suppliants",
+      "language": "en",
+      "sha256": "339fb1b010b6156787c8e766fd277efe8c821d9962fd9bc401a9dafeb34f6323",
+      "passages": 48,
+      "bytes": 67959,
+      "verifiedAt": "2026-11-27T13:08:31.703688+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/euripides-suppliants-grc.json",
+      "workId": "euripides-suppliants",
+      "language": "grc",
+      "sha256": "2c22e678efc0960d9c8c58007ba481f8774aaf6c079762a3c77c4fb9b989402a",
+      "passages": 1248,
+      "bytes": 193577,
+      "verifiedAt": "2026-11-27T13:08:32.562022+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/euripides-troades-en.json",
+      "workId": "euripides-troades",
+      "language": "en",
+      "sha256": "308dbb6eff7138ab2c436437770620fab4291f03b9b8579f6a95e109a5ae4777",
+      "passages": 46,
+      "bytes": 69241,
+      "verifiedAt": "2026-11-27T13:08:33.592479+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/euripides-troades-grc.json",
+      "workId": "euripides-troades",
+      "language": "grc",
+      "sha256": "73afd7ee2a62d213d20745bb7027ed7048aeac113be9487049d22c93a00e02ee",
+      "passages": 169,
+      "bytes": 125713,
+      "verifiedAt": "2026-11-27T13:08:34.432276+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/eusebio-en.json",
+      "workId": "eusebio",
+      "language": "en",
+      "sha256": "f2efbbc85cc91e588b6b36be4e94632230c36e393f80a3343f246b805fde3ba2",
+      "passages": 254,
+      "bytes": 770600,
+      "verifiedAt": "2026-11-27T13:08:35.414524+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/eusebio-grc.json",
+      "workId": "eusebio",
+      "language": "grc",
+      "sha256": "3f0e949be8affff7004156fe633636d88ee1678a810fac40d3183a91e8c63f29",
+      "passages": 1876,
+      "bytes": 1563351,
+      "verifiedAt": "2026-11-27T13:08:37.392934+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/eutropius-breviarium-en.json",
+      "workId": "eutropius-breviarium",
+      "language": "en",
+      "sha256": "3c7eebce3d095c21a16009740eb361691fbd3eada8167799627a8902e6b294d6",
+      "passages": 225,
+      "bytes": 184863,
+      "verifiedAt": "2026-11-27T13:08:38.369035+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/eutropius-breviarium-la.json",
+      "workId": "eutropius-breviarium",
+      "language": "la",
+      "sha256": "88f574550d7c7f6feeabe4c3693be275f8867fa4033a0577c296fc2f887c247f",
+      "passages": 225,
+      "bytes": 146699,
+      "verifiedAt": "2026-11-27T13:08:39.220353+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/faventinus-la.json",
+      "workId": "faventinus",
+      "language": "la",
+      "sha256": "2cda629366a3c6ac446cba8a8f726d7d87e7aa45a28b4518860270501983cbda",
+      "passages": 32,
+      "bytes": 44433,
+      "verifiedAt": "2026-11-27T13:08:40.106764+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/first1k-tlg0057-tlg002-grc.json",
+      "workId": "first1k-tlg0057-tlg002",
+      "language": "grc",
+      "sha256": "f4375a533a9720b003dc5d14813aa4e8779394bc1113d53b9e490328b729ca23",
+      "passages": 5,
+      "bytes": 25802,
+      "verifiedAt": "2026-11-27T13:08:40.986140+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/first1k-tlg0057-tlg024-grc.json",
+      "workId": "first1k-tlg0057-tlg024",
+      "language": "grc",
+      "sha256": "053dd1dfdc33c1b3e4f25c4b5ea3acd027a458ed19230dad851fb2850a6e44be",
+      "passages": 4,
+      "bytes": 24102,
+      "verifiedAt": "2026-11-27T13:08:41.824738+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/first1k-tlg0057-tlg030-grc.json",
+      "workId": "first1k-tlg0057-tlg030",
+      "language": "grc",
+      "sha256": "c8b037e8a5e839639d90618fd7beafb4ee8718b28f8eaa5b111e23964019e498",
+      "passages": 9,
+      "bytes": 82342,
+      "verifiedAt": "2026-11-27T13:08:42.916965+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/first1k-tlg0057-tlg034-grc.json",
+      "workId": "first1k-tlg0057-tlg034",
+      "language": "grc",
+      "sha256": "03f513318eecc069a6502a9925ad993f102fb824a0ea3bc64d02802019f8450b",
+      "passages": 7,
+      "bytes": 23842,
+      "verifiedAt": "2026-11-27T13:08:43.806229+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/first1k-tlg0057-tlg039-grc.json",
+      "workId": "first1k-tlg0057-tlg039",
+      "language": "grc",
+      "sha256": "991bd41b3cceefd2717c2185ba46adfc5877833079e1bdbf5503a0f4263aab43",
+      "passages": 6,
+      "bytes": 29764,
+      "verifiedAt": "2026-11-27T13:08:44.706103+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/first1k-tlg0057-tlg048-grc.json",
+      "workId": "first1k-tlg0057-tlg048",
+      "language": "grc",
+      "sha256": "d0f544a7f397db44d26cd1a0155ae842d08af498217729eebbe86bf3020c97af",
+      "passages": 5,
+      "bytes": 22635,
+      "verifiedAt": "2026-11-27T13:08:45.503333+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/first1k-tlg0057-tlg082-grc.json",
+      "workId": "first1k-tlg0057-tlg082",
+      "language": "grc",
+      "sha256": "f9a130861054f547f2ae9d330aebf21fc5fbc82570535c1235308b0f26aed7f3",
+      "passages": 8,
+      "bytes": 31840,
+      "verifiedAt": "2026-11-27T13:08:46.364419+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/first1k-tlg0082-tlg002-grc.json",
+      "workId": "first1k-tlg0082-tlg002",
+      "language": "grc",
+      "sha256": "f1410346f14fe765bfc5caf5d37b44088e1518fc623a2e693059f5a5a34f4c1d",
+      "passages": 146,
+      "bytes": 319151,
+      "verifiedAt": "2026-11-27T13:08:48.161712+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/first1k-tlg0082-tlg003-grc.json",
+      "workId": "first1k-tlg0082-tlg003",
+      "language": "grc",
+      "sha256": "dd0c45ef1155575a6d47c81af30ac730c177470d336a458ba6449e5399b79f0d",
+      "passages": 100,
+      "bytes": 161877,
+      "verifiedAt": "2026-11-27T13:08:49.079622+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/first1k-tlg0086-tlg004-grc.json",
+      "workId": "first1k-tlg0086-tlg004",
+      "language": "grc",
+      "sha256": "aa518799c905a9a86b5baa1750c8284724ec5d17cec55c5049b03d63b225f741",
+      "passages": 74,
+      "bytes": 52661,
+      "verifiedAt": "2026-11-27T13:08:49.963822+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/first1k-tlg0086-tlg019-grc.json",
+      "workId": "first1k-tlg0086-tlg019",
+      "language": "grc",
+      "sha256": "82075f1c1a9bdddc8a0722a7263cf36372b4306fa8b9cba8fb0de5134954f0fb",
+      "passages": 60,
+      "bytes": 42154,
+      "verifiedAt": "2026-11-27T13:08:50.770894+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/first1k-tlg0086-tlg043-grc.json",
+      "workId": "first1k-tlg0086-tlg043",
+      "language": "grc",
+      "sha256": "07f440f13acd8747c82a9f3f087ea002821dc4d6d0d6ed77937aaba0af5e1da0",
+      "passages": 9,
+      "bytes": 40041,
+      "verifiedAt": "2026-11-27T13:08:51.585700+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/first1k-tlg0086-tlg047-grc.json",
+      "workId": "first1k-tlg0086-tlg047",
+      "language": "grc",
+      "sha256": "e06e80e5a65109f831f17d341fc105d348553cc31d9bb17a636dd8ec7c7c7d5f",
+      "passages": 94,
+      "bytes": 66888,
+      "verifiedAt": "2026-11-27T13:08:52.503205+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/first1k-tlg0093-tlg006-grc.json",
+      "workId": "first1k-tlg0093-tlg006",
+      "language": "grc",
+      "sha256": "732e1bca5873b347f8f6e4b6a32ba6d4e756c04ec0deb19ec11238d3e0a40a96",
+      "passages": 34,
+      "bytes": 42825,
+      "verifiedAt": "2026-11-27T13:08:53.413436+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/first1k-tlg0093-tlg010x03-grc.json",
+      "workId": "first1k-tlg0093-tlg010x03",
+      "language": "grc",
+      "sha256": "c3842ca963d53a376609a6da03dad933a7444daf25c1d6f2eb7897303d01e4cb",
+      "passages": 57,
+      "bytes": 54397,
+      "verifiedAt": "2026-11-27T13:08:54.397175+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/first1k-tlg0093-tlg010x04-grc.json",
+      "workId": "first1k-tlg0093-tlg010x04",
+      "language": "grc",
+      "sha256": "565639cf84e13d2ce1d7f4191d4ef0e1eb2b651c57f901f4be01fcb1009aac27",
+      "passages": 18,
+      "bytes": 19829,
+      "verifiedAt": "2026-11-27T13:09:55.540791+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/first1k-tlg0093-tlg010x06-grc.json",
+      "workId": "first1k-tlg0093-tlg010x06",
+      "language": "grc",
+      "sha256": "86eee957a8762d2f9b0796f12e9feedc243377cf3e6dd862ff57db71200e6e4c",
+      "passages": 40,
+      "bytes": 34266,
+      "verifiedAt": "2026-11-27T13:09:56.432251+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/first1k-tlg0358-tlg001-grc.json",
+      "workId": "first1k-tlg0358-tlg001",
+      "language": "grc",
+      "sha256": "09a83d2a629bf6e6c29ab816e55cf736f2d5160cba43843c0ccd23a747c9ca02",
+      "passages": 178,
+      "bytes": 321288,
+      "verifiedAt": "2026-11-27T13:09:57.294079+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/first1k-tlg0358-tlg002-grc.json",
+      "workId": "first1k-tlg0358-tlg002",
+      "language": "grc",
+      "sha256": "425c862b22e6febaaffd7dd61a25a9a06b3cba6447644d94dd407d9ccea999e2",
+      "passages": 72,
+      "bytes": 75307,
+      "verifiedAt": "2026-11-27T13:09:58.123922+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/first1k-tlg0552-tlg001-grc.json",
+      "workId": "first1k-tlg0552-tlg001",
+      "language": "grc",
+      "sha256": "96a6656f3890523e3d82790fb48eacc41b7905887d331b28608cbe547ef9f85e",
+      "passages": 226,
+      "bytes": 283630,
+      "verifiedAt": "2026-11-27T13:09:59.150151+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/first1k-tlg0552-tlg004-grc.json",
+      "workId": "first1k-tlg0552-tlg004",
+      "language": "grc",
+      "sha256": "af031e02e08f6e2dba4164801a789e65005e5cc559bb5ffaeb54c228e03ce13d",
+      "passages": 114,
+      "bytes": 170476,
+      "verifiedAt": "2026-11-27T13:09:59.985409+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/first1k-tlg0552-tlg006-grc.json",
+      "workId": "first1k-tlg0552-tlg006",
+      "language": "grc",
+      "sha256": "c7cd5bdc0eec81b197fabc9489bc79731588bc2e8b9f4cf52beced08ce525edb",
+      "passages": 4,
+      "bytes": 61068,
+      "verifiedAt": "2026-11-27T13:10:00.892611+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/first1k-tlg0552-tlg007-grc.json",
+      "workId": "first1k-tlg0552-tlg007",
+      "language": "grc",
+      "sha256": "f06248500e6b24844184496060b82e7acbb77f84330e16d4833374ff70e983d3",
+      "passages": 54,
+      "bytes": 67561,
+      "verifiedAt": "2026-11-27T13:10:01.775110+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/first1k-tlg0559-tlg006-grc.json",
+      "workId": "first1k-tlg0559-tlg006",
+      "language": "grc",
+      "sha256": "d715119de7b0e4f5fe8c7a16cbbbf0b7a03acc4b949fb60c76c31d235ad9dcc2",
+      "passages": 99,
+      "bytes": 217991,
+      "verifiedAt": "2026-11-27T13:10:02.831988+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/first1k-tlg0559-tlg007-grc.json",
+      "workId": "first1k-tlg0559-tlg007",
+      "language": "grc",
+      "sha256": "ebe29c4869ecc04e2baafeb294958f4d6e3615d8630520e670131f635d1a4940",
+      "passages": 52,
+      "bytes": 149057,
+      "verifiedAt": "2026-11-27T13:10:03.793497+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/first1k-tlg0559-tlg011-grc.json",
+      "workId": "first1k-tlg0559-tlg011",
+      "language": "grc",
+      "sha256": "ae950ac8f81830c1c672a85761b093f8deb3613bd57e9c8742874a0e1c922871",
+      "passages": 153,
+      "bytes": 76814,
+      "verifiedAt": "2026-11-27T13:10:04.716814+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/first1k-tlg0565-tlg001-grc.json",
+      "workId": "first1k-tlg0565-tlg001",
+      "language": "grc",
+      "sha256": "b884c7c646aedc2330a1fb2bda3f8015c806f18fc3c48a12b1e37ed0e05fdb03",
+      "passages": 205,
+      "bytes": 560456,
+      "verifiedAt": "2026-11-27T13:10:05.713547+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/first1k-tlg0565-tlg002-grc.json",
+      "workId": "first1k-tlg0565-tlg002",
+      "language": "grc",
+      "sha256": "d78c744b96239444c79015c460c4a1b21ccb1d7ac615a714b9af36fe6226ba1a",
+      "passages": 24,
+      "bytes": 19007,
+      "verifiedAt": "2026-11-27T13:10:06.691421+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/first1k-tlg0565-tlg003-grc.json",
+      "workId": "first1k-tlg0565-tlg003",
+      "language": "grc",
+      "sha256": "ff7fbcf32796a751cc489a738519c7d82168ca352ee3913d19049c05c1f8bc64",
+      "passages": 120,
+      "bytes": 58163,
+      "verifiedAt": "2026-11-27T13:10:07.511226+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/first1k-tlg0592-tlg001-grc.json",
+      "workId": "first1k-tlg0592-tlg001",
+      "language": "grc",
+      "sha256": "3c9973eb2caad9bbf8aca8341c877c3051fe00be1703f693f2f5b357f5227e7b",
+      "passages": 57,
+      "bytes": 59220,
+      "verifiedAt": "2026-11-27T13:10:08.443288+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/first1k-tlg0592-tlg002-grc.json",
+      "workId": "first1k-tlg0592-tlg002",
+      "language": "grc",
+      "sha256": "6e53dd3a1baf54aac3025a3d42e2e3372dfd8bd3029bd26cce03de3075b68e56",
+      "passages": 80,
+      "bytes": 139266,
+      "verifiedAt": "2026-11-27T13:10:09.323006+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/first1k-tlg0592-tlg005-grc.json",
+      "workId": "first1k-tlg0592-tlg005",
+      "language": "grc",
+      "sha256": "5bdbfc23d55083ed3b565c386af8cb8d8c58a6f5fa623e1e757700fd85ce0f38",
+      "passages": 78,
+      "bytes": 92772,
+      "verifiedAt": "2026-11-27T13:10:10.304609+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/first1k-tlg0732-tlg001-grc.json",
+      "workId": "first1k-tlg0732-tlg001",
+      "language": "grc",
+      "sha256": "22a5a44fb4d071c92d8c88e591e79c6b9b43ac451956d1d483bf84fde2b308e1",
+      "passages": 16,
+      "bytes": 118853,
+      "verifiedAt": "2026-11-27T13:10:11.411229+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/first1k-tlg0732-tlg003-grc.json",
+      "workId": "first1k-tlg0732-tlg003",
+      "language": "grc",
+      "sha256": "707eca3459e8622cde9f739906c5ec6dc738612453551e221d356ef3dface6e2",
+      "passages": 133,
+      "bytes": 113305,
+      "verifiedAt": "2026-11-27T13:10:12.424012+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/first1k-tlg0732-tlg012-grc.json",
+      "workId": "first1k-tlg0732-tlg012",
+      "language": "grc",
+      "sha256": "ddd7b8f7c6cabc2ed9891baf28b69ab228581a709eac3e9e926af60982bca1b8",
+      "passages": 6,
+      "bytes": 44068,
+      "verifiedAt": "2026-11-27T13:10:13.455584+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/first1k-tlg1799-tlg007-grc.json",
+      "workId": "first1k-tlg1799-tlg007",
+      "language": "grc",
+      "sha256": "4719ea15b52ce476a474f92d912a77bd804ecf6767f985c45ff94960ed70d17a",
+      "passages": 331,
+      "bytes": 244678,
+      "verifiedAt": "2026-11-27T13:10:14.436160+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/first1k-tlg1799-tlg011-grc.json",
+      "workId": "first1k-tlg1799-tlg011",
+      "language": "grc",
+      "sha256": "26f43c4696d42bcafc2ed8df4bd0f175c21d3f7c67a378f58476603c54e58db1",
+      "passages": 78,
+      "bytes": 66448,
+      "verifiedAt": "2026-11-27T13:10:15.241440+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/first1k-tlg2018-tlg011-grc.json",
+      "workId": "first1k-tlg2018-tlg011",
+      "language": "grc",
+      "sha256": "b57c2c3b2d792f82d6bffde99061176501534e8a6da65be965d3b20d53f22576",
+      "passages": 948,
+      "bytes": 356727,
+      "verifiedAt": "2026-11-27T13:10:16.239705+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/first1k-tlg2018-tlg021-grc.json",
+      "workId": "first1k-tlg2018-tlg021",
+      "language": "grc",
+      "sha256": "11bb2870ec06beff6c66319f67dd45fb63e582e1d6cac24ca3af49c1b8d38cda",
+      "passages": 156,
+      "bytes": 172577,
+      "verifiedAt": "2026-11-27T13:10:17.172311+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/first1k-tlg2023-tlg001-grc.json",
+      "workId": "first1k-tlg2023-tlg001",
+      "language": "grc",
+      "sha256": "12d67776c2696e8f9e4e9d577e9512017c8472cf60789a05cc44028b152f7c2c",
+      "passages": 362,
+      "bytes": 436842,
+      "verifiedAt": "2026-11-27T13:10:18.108668+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/first1k-tlg2023-tlg003-grc.json",
+      "workId": "first1k-tlg2023-tlg003",
+      "language": "grc",
+      "sha256": "caa37874ea60410ab0fdd1c79728066a8d4eb970e0ce1852be64ceb8ade60c67",
+      "passages": 105,
+      "bytes": 263495,
+      "verifiedAt": "2026-11-27T13:10:19.148503+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/first1k-tlg2023-tlg004-grc.json",
+      "workId": "first1k-tlg2023-tlg004",
+      "language": "grc",
+      "sha256": "baf397de84834d33bfeaf10b9b78e0eb2f3099211c0f8006ee54ac5f6aba00ab",
+      "passages": 216,
+      "bytes": 351839,
+      "verifiedAt": "2026-11-27T13:10:20.016724+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/first1k-tlg2034-tlg002-grc.json",
+      "workId": "first1k-tlg2034-tlg002",
+      "language": "grc",
+      "sha256": "e85577b02b5316fcf7b8b4106647ad33d83bfc0e19179e24d5a6e0b81a5f7a86",
+      "passages": 60,
+      "bytes": 83319,
+      "verifiedAt": "2026-11-27T13:10:20.849759+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/first1k-tlg2034-tlg005-grc.json",
+      "workId": "first1k-tlg2034-tlg005",
+      "language": "grc",
+      "sha256": "a723dd5a88bfa4774ebe156b66698dc5b350db1391c5ea1af36557bf2d924852",
+      "passages": 35,
+      "bytes": 62270,
+      "verifiedAt": "2026-11-27T13:10:21.643912+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/first1k-tlg2042-tlg051-grc.json",
+      "workId": "first1k-tlg2042-tlg051",
+      "language": "grc",
+      "sha256": "c28aafed061005e14dcc5ddd0380aa8625fc70969db549a47a24472d4cb453a9",
+      "passages": 23,
+      "bytes": 22343,
+      "verifiedAt": "2026-11-27T13:10:22.536798+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/first1k-tlg2042-tlg052-grc.json",
+      "workId": "first1k-tlg2042-tlg052",
+      "language": "grc",
+      "sha256": "26e9dca10f7c5d5b54c1cd5807090c5a2e7d5041f0d9494566de51a164c2c7a5",
+      "passages": 35,
+      "bytes": 26384,
+      "verifiedAt": "2026-11-27T13:10:23.431250+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/first1k-tlg2200-tlg00406-grc.json",
+      "workId": "first1k-tlg2200-tlg00406",
+      "language": "grc",
+      "sha256": "57c599e17839d60bcc543cc9e3696ffe727c2779bfeef9fb12576e07786a490b",
+      "passages": 17,
+      "bytes": 15059,
+      "verifiedAt": "2026-11-27T13:10:24.433721+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/first1k-tlg2200-tlg00408-grc.json",
+      "workId": "first1k-tlg2200-tlg00408",
+      "language": "grc",
+      "sha256": "25263aed64dd74072009514c1d97c59e434046626f1f4bc8c7b811c6dd7736b2",
+      "passages": 15,
+      "bytes": 12256,
+      "verifiedAt": "2026-11-27T13:10:25.294346+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/first1k-tlg2200-tlg00551-grc.json",
+      "workId": "first1k-tlg2200-tlg00551",
+      "language": "grc",
+      "sha256": "986d5cf124d8b4a2e5927613ed265fa8295a344fb779461e6abd6f05f896e310",
+      "passages": 19,
+      "bytes": 18210,
+      "verifiedAt": "2026-11-27T13:10:26.122799+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/first1k-tlg2959-tlg002-grc.json",
+      "workId": "first1k-tlg2959-tlg002",
+      "language": "grc",
+      "sha256": "f51dd8ef67e20c4768b1e2eb486cedba5881c0c326c31f8b5169a83d5bbdfa63",
+      "passages": 161,
+      "bytes": 112042,
+      "verifiedAt": "2026-11-27T13:10:26.980844+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/frontinus-gromatica-la.json",
+      "workId": "frontinus-gromatica",
+      "language": "la",
+      "sha256": "320de1e8b2e573df99a85e9153e0d533584de9fa495d5f017fd03d25581b513e",
+      "passages": 16,
+      "bytes": 19048,
+      "verifiedAt": "2026-11-27T13:10:28.029760+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/frontinus-strategemata-la.json",
+      "workId": "frontinus-strategemata",
+      "language": "la",
+      "sha256": "b31df174c975fe8b4c0b6a08811f3b2a804d48206aad1d4a490bcf1d06ffa0d2",
+      "passages": 595,
+      "bytes": 197455,
+      "verifiedAt": "2026-11-27T13:10:29.013627+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/galen-adhortatio-artes-grc.json",
+      "workId": "galen-adhortatio-artes",
+      "language": "grc",
+      "sha256": "1256b7f4a4a49ad06a8cd5fe4a9f1f937b6c0c06fae3617035e1f3703acc3a52",
+      "passages": 14,
+      "bytes": 64791,
+      "verifiedAt": "2026-11-27T13:10:30.040966+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/galen-ars-medica-grc.json",
+      "workId": "galen-ars-medica",
+      "language": "grc",
+      "sha256": "5cf9d9d4ffab73f50c5ea03155e3a06acb06dc56a6746344a2ed61547735f3b1",
+      "passages": 67,
+      "bytes": 227754,
+      "verifiedAt": "2026-11-27T13:10:31.011764+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/galen-de-usu-partium-grc.json",
+      "workId": "galen-de-usu-partium",
+      "language": "grc",
+      "sha256": "714649c724d34a7790fa86232e0ba4586a103db57e63aa04c8e98582399cfb13",
+      "passages": 724,
+      "bytes": 2797730,
+      "verifiedAt": "2026-11-27T13:10:32.327128+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/galen-optimus-medicus-philosophus-grc.json",
+      "workId": "galen-optimus-medicus-philosophus",
+      "language": "grc",
+      "sha256": "a76cef3077134a6487ca2d54250c615614df07ceeb34bf59c24215cb7b2d6c08",
+      "passages": 4,
+      "bytes": 18459,
+      "verifiedAt": "2026-11-27T13:11:47.883493+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/geminus-isagoge-grc.json",
+      "workId": "geminus-isagoge",
+      "language": "grc",
+      "sha256": "28b092abf8a3bbedc9202882f0400df5dd5e4e5a8e9b7daeb03ba433d14ace49",
+      "passages": 524,
+      "bytes": 325439,
+      "verifiedAt": "2026-11-27T13:11:48.831507+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/hero-automata-grc.json",
+      "workId": "hero-automata",
+      "language": "grc",
+      "sha256": "bc86659e3119f68651716463d76f1a056f8b0dec09ac0ab731b836c3494fc32f",
+      "passages": 49,
+      "bytes": 153970,
+      "verifiedAt": "2026-11-27T13:11:49.667145+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/hero-pneumatica-en.json",
+      "workId": "hero-pneumatica",
+      "language": "en",
+      "sha256": "9f5f9be812b261ef41cb66fb0d4fd63b93589158dd69a3d2e4c302b0db775bda",
+      "passages": 78,
+      "bytes": 141343,
+      "verifiedAt": "2026-11-27T13:11:50.528438+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/hero-pneumatica-grc.json",
+      "workId": "hero-pneumatica",
+      "language": "grc",
+      "sha256": "be1e8faab3200bd2a95d65bbc9e07c02f157db3647b7dfb5922f1454ac8e9ef0",
+      "passages": 147,
+      "bytes": 445571,
+      "verifiedAt": "2026-11-27T13:11:51.787269+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/herodotus-historiae-grc.json",
+      "workId": "herodotus-historiae",
+      "language": "grc",
+      "sha256": "e94bb109e89d218af7927a675c737caedcbc49170b10f92b054c9a2d8ae718a3",
+      "passages": 4338,
+      "bytes": 2877041,
+      "verifiedAt": "2026-11-27T13:11:54.826433+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/hesiod-theogony-en.json",
+      "workId": "hesiod-theogony",
+      "language": "en",
+      "sha256": "af02616edfe5c78d4018eed49c96d9785349e82c48b70585baed0c54f419b9fb",
+      "passages": 27,
+      "bytes": 70707,
+      "verifiedAt": "2026-11-27T13:11:55.692071+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/hesiod-theogony-grc.json",
+      "workId": "hesiod-theogony",
+      "language": "grc",
+      "sha256": "f0633b6aebbb1c71ad2776effb1e47f1a1cb3a2a5dc4b5fc5fa0e813f5ca04b2",
+      "passages": 130,
+      "bytes": 125060,
+      "verifiedAt": "2026-11-27T13:11:56.634980+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/hesiod-works-days-en.json",
+      "workId": "hesiod-works-days",
+      "language": "en",
+      "sha256": "2ec9a4058fdd2a5d9a6439cd13bccd135838813e98bda2fade6fb0359eb8e6ad",
+      "passages": 23,
+      "bytes": 59842,
+      "verifiedAt": "2026-11-27T13:11:57.409694+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/hesiod-works-days-grc.json",
+      "workId": "hesiod-works-days",
+      "language": "grc",
+      "sha256": "91dcb27eb5aeecd99831de0f6b56e790fce796e760a52b52d0b9e29636a7f3f7",
+      "passages": 104,
+      "bytes": 101237,
+      "verifiedAt": "2026-11-27T13:11:58.236683+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/hippocrates-aphorisms-en.json",
+      "workId": "hippocrates-aphorisms",
+      "language": "en",
+      "sha256": "d4df8a587f045d22692965ae2414fde645043c67aada52ef6acbc16ac3abfa92",
+      "passages": 413,
+      "bytes": 122248,
+      "verifiedAt": "2026-11-27T13:11:59.096630+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/hippocrates-aphorisms-grc.json",
+      "workId": "hippocrates-aphorisms",
+      "language": "grc",
+      "sha256": "0de6dea5dbc9cf45cf574e7f1c4e6d61d9391fbeedea5dc0d82b0da6889f3085",
+      "passages": 413,
+      "bytes": 148139,
+      "verifiedAt": "2026-11-27T13:11:59.891410+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/hippocrates-de-prisca-medicina-grc.json",
+      "workId": "hippocrates-de-prisca-medicina",
+      "language": "grc",
+      "sha256": "91f5937cad5abaf0336aba3bf53acec3dcd9e1922a0a3ca5c11f91ae930c9a76",
+      "passages": 24,
+      "bytes": 70320,
+      "verifiedAt": "2026-11-27T13:12:00.754138+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/homer-iliad-en.json",
+      "workId": "homer-iliad",
+      "language": "en",
+      "sha256": "5512220de9c16b824e90a61ae777b0f67946883e5c6c52ce17563a0c86e2437e",
+      "passages": 190,
+      "bytes": 829701,
+      "verifiedAt": "2026-11-27T13:12:01.788640+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/homer-iliad-grc.json",
+      "workId": "homer-iliad",
+      "language": "grc",
+      "sha256": "281999e7faab1a362d60a9515e86db4f17267917d05a040a6759a9cdd08563bd",
+      "passages": 425,
+      "bytes": 1380794,
+      "verifiedAt": "2026-11-27T13:12:02.832084+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/homer-odyssey-en.json",
+      "workId": "homer-odyssey",
+      "language": "en",
+      "sha256": "2dfc671da1852d91960c0e46840f2823d71bf19552db986c225f0642a1b19cb5",
+      "passages": 267,
+      "bytes": 639362,
+      "verifiedAt": "2026-11-27T13:12:03.953919+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/homer-odyssey-grc.json",
+      "workId": "homer-odyssey",
+      "language": "grc",
+      "sha256": "8959627b4999cf48ebcda465dcd5a3cecdd4cca3d969b1aa0dd33d063e4eff21",
+      "passages": 288,
+      "bytes": 1070424,
+      "verifiedAt": "2026-11-27T13:12:05.339377+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/homeric-hymns-grc.json",
+      "workId": "homeric-hymns",
+      "language": "grc",
+      "sha256": "2aa97c5764bfd0340394028244e2255eeb3f459cb0c0a26c2b2909de801a0318",
+      "passages": 301,
+      "bytes": 302299,
+      "verifiedAt": "2026-11-27T13:12:10.843506+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/horace-ars-poetica-la.json",
+      "workId": "horace-ars-poetica",
+      "language": "la",
+      "sha256": "d528219d123cef6010459c5f6c849048caa720ce4b352b02758f2dab8d9a367f",
+      "passages": 60,
+      "bytes": 31153,
+      "verifiedAt": "2026-11-27T13:12:11.683527+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/horace-epistulae-la.json",
+      "workId": "horace-epistulae",
+      "language": "la",
+      "sha256": "0dab72414f7c075e3bd97b5fb86bdb8ac91f30586ac7f7f356b9a20e631874ee",
+      "passages": 191,
+      "bytes": 94480,
+      "verifiedAt": "2026-11-27T13:12:12.553192+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/horace-epodi-la.json",
+      "workId": "horace-epodi",
+      "language": "la",
+      "sha256": "ee79a755d3a281d55c42f0bd3932aa98c05628c6cff806d3a707591ed9f72a7e",
+      "passages": 80,
+      "bytes": 30506,
+      "verifiedAt": "2026-11-27T13:12:13.432300+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/horace-odes-la.json",
+      "workId": "horace-odes",
+      "language": "la",
+      "sha256": "c904ed8948d625f6d56387167b45d4cbee88273cabf606f55567755114587467",
+      "passages": 401,
+      "bytes": 137725,
+      "verifiedAt": "2026-11-27T13:12:14.338395+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/horace-sermones-la.json",
+      "workId": "horace-sermones",
+      "language": "la",
+      "sha256": "4167035fb56c480715fe516c0b6c738712b5029110940a88ca8563f1e7329b42",
+      "passages": 268,
+      "bytes": 137143,
+      "verifiedAt": "2026-11-27T13:12:15.251542+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/ignatius-grc.json",
+      "workId": "ignatius",
+      "language": "grc",
+      "sha256": "f5e8f00e1f09ab67048afabc546ce8a0182a928d836251c86318dda1bbaad20e",
+      "passages": 205,
+      "bytes": 131233,
+      "verifiedAt": "2026-11-27T13:12:16.137076+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/irenaeus-grc.json",
+      "workId": "irenaeus",
+      "language": "grc",
+      "sha256": "665b5c617b16189f970e5a906eebc6d4df3c159907d9add53ab9bbd7eeb07d0f",
+      "passages": 115,
+      "bytes": 313524,
+      "verifiedAt": "2026-11-27T13:12:17.040063+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/isidore-etymologiae-la.json",
+      "workId": "isidore-etymologiae",
+      "language": "la",
+      "sha256": "b98b1750f8ee18386e3d5805c3a27c4160a97563ba8f3ed87e0af16651fe5002",
+      "passages": 723,
+      "bytes": 1345861,
+      "verifiedAt": "2026-11-27T13:12:18.190731+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/isocrates-aegineticus-en.json",
+      "workId": "isocrates-aegineticus",
+      "language": "en",
+      "sha256": "9e2c3baa6da9fec503f2d35185a2417895997d30a6b1d520a55e50db7561cdc2",
+      "passages": 51,
+      "bytes": 33598,
+      "verifiedAt": "2026-11-27T13:12:19.035853+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/isocrates-aegineticus-grc.json",
+      "workId": "isocrates-aegineticus",
+      "language": "grc",
+      "sha256": "c1c71682ca22b75464581a301d1bb2ed8c672eb49d2f7ed05d26d57857ce8765",
+      "passages": 56,
+      "bytes": 44413,
+      "verifiedAt": "2026-11-27T13:12:19.937721+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/isocrates-busiris-en.json",
+      "workId": "isocrates-busiris",
+      "language": "en",
+      "sha256": "84b8ba0d695779f1427bfbb37341754052226a161da3c6d7d9c75e8910a96773",
+      "passages": 50,
+      "bytes": 32794,
+      "verifiedAt": "2026-11-27T13:12:20.760099+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/isocrates-busiris-grc.json",
+      "workId": "isocrates-busiris",
+      "language": "grc",
+      "sha256": "73e1d588610492d0a641ea2a7af1c195d8c92ceaf5a2bb70286460b7d026f014",
+      "passages": 50,
+      "bytes": 41143,
+      "verifiedAt": "2026-11-27T13:12:21.650444+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/isocrates-callimachus-en.json",
+      "workId": "isocrates-callimachus",
+      "language": "en",
+      "sha256": "739abeb49cc1f690b30c063bd25e6a10b9116eb88914728bd32f8bff040f85b6",
+      "passages": 68,
+      "bytes": 46044,
+      "verifiedAt": "2026-11-27T13:12:22.537244+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/isocrates-callimachus-grc.json",
+      "workId": "isocrates-callimachus",
+      "language": "grc",
+      "sha256": "a66681b0d6bef358e0fe03a2fe7526119264556149b86b5e17160e9f02fafdce",
+      "passages": 73,
+      "bytes": 54932,
+      "verifiedAt": "2026-11-27T13:12:23.472928+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/isocrates-euthynus-en.json",
+      "workId": "isocrates-euthynus",
+      "language": "en",
+      "sha256": "ab4a97e0c24102293856c893329cf19be0590020a21248fb4aa7bb3691f2c672",
+      "passages": 21,
+      "bytes": 14688,
+      "verifiedAt": "2026-11-27T13:12:24.276067+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/isocrates-euthynus-grc.json",
+      "workId": "isocrates-euthynus",
+      "language": "grc",
+      "sha256": "a79402b9124404b560dee657c9b13562c37b972c9ccd694539240c465f498a9a",
+      "passages": 21,
+      "bytes": 16808,
+      "verifiedAt": "2026-11-27T13:12:25.257535+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/isocrates-helen-en.json",
+      "workId": "isocrates-helen",
+      "language": "en",
+      "sha256": "38e299d29e6ba38f0b856f0f42bfb2c889c931064cb5c162b2d7a88c8df3e427",
+      "passages": 69,
+      "bytes": 44093,
+      "verifiedAt": "2026-11-27T13:12:26.144371+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/isocrates-helen-grc.json",
+      "workId": "isocrates-helen",
+      "language": "grc",
+      "sha256": "9bf57c37ef88234e003097018a152faef3e2d16f04bbd62d9e01b8436ec12302",
+      "passages": 69,
+      "bytes": 55229,
+      "verifiedAt": "2026-11-27T13:12:26.929721+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/isocrates-lochites-en.json",
+      "workId": "isocrates-lochites",
+      "language": "en",
+      "sha256": "d27c61acf74f0bbaec1a5d7fe52d9eb82c9ad65232a9ef35bfe3ae57cf22f112",
+      "passages": 22,
+      "bytes": 14666,
+      "verifiedAt": "2026-11-27T13:12:27.828355+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/isocrates-lochites-grc.json",
+      "workId": "isocrates-lochites",
+      "language": "grc",
+      "sha256": "988d2a30264357304267a99e41daa96eda769d477d0e57d7392ac43963c83e87",
+      "passages": 22,
+      "bytes": 17519,
+      "verifiedAt": "2026-11-27T13:12:28.599147+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/isocrates-plataicus-en.json",
+      "workId": "isocrates-plataicus",
+      "language": "en",
+      "sha256": "572206c5ee9ee6504e0ac17cb66ed8f7fa406d6b29658ff50d8dd5de0c38c470",
+      "passages": 63,
+      "bytes": 40287,
+      "verifiedAt": "2026-11-27T13:12:29.460235+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/isocrates-plataicus-grc.json",
+      "workId": "isocrates-plataicus",
+      "language": "grc",
+      "sha256": "7adb9fa7863b77572f5ae3e899f398f13444ca74faf3a3f342f55e29e3a014b1",
+      "passages": 63,
+      "bytes": 49406,
+      "verifiedAt": "2026-11-27T13:12:30.312785+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/isocrates-sophists-en.json",
+      "workId": "isocrates-sophists",
+      "language": "en",
+      "sha256": "8c43089dbf8eeeb9498065caac34a2e3a363b95a3232eddf5d097de570bbe458",
+      "passages": 22,
+      "bytes": 16505,
+      "verifiedAt": "2026-11-27T13:13:24.856595+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/isocrates-sophists-grc.json",
+      "workId": "isocrates-sophists",
+      "language": "grc",
+      "sha256": "f3f49b4320e2588662925357f6e4e5222ec00f728993816404749d05a2a00a10",
+      "passages": 22,
+      "bytes": 20697,
+      "verifiedAt": "2026-11-27T13:13:25.638828+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/isocrates-team-horses-en.json",
+      "workId": "isocrates-team-horses",
+      "language": "en",
+      "sha256": "c2a81d53fd9d30e94b12348de0499a0dfa3b216be4abfc3d4ac2b72013bec82f",
+      "passages": 50,
+      "bytes": 35087,
+      "verifiedAt": "2026-11-27T13:13:26.498414+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/isocrates-team-horses-grc.json",
+      "workId": "isocrates-team-horses",
+      "language": "grc",
+      "sha256": "12fd6e4b20e3de25941e48dde14b7c532327149f17aec9fed8b1d52c91929c4c",
+      "passages": 50,
+      "bytes": 43002,
+      "verifiedAt": "2026-11-27T13:13:27.385590+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/isocrates-trapeziticus-en.json",
+      "workId": "isocrates-trapeziticus",
+      "language": "en",
+      "sha256": "f355c6821147f1336136780053f40d41ab53a7fdbffc55ab675ef5359a5a262e",
+      "passages": 58,
+      "bytes": 40128,
+      "verifiedAt": "2026-11-27T13:13:28.237529+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/isocrates-trapeziticus-grc.json",
+      "workId": "isocrates-trapeziticus",
+      "language": "grc",
+      "sha256": "cdd992bc64b30e1ee216168e22ae8c0bd515613b92c84e33fc8cf84e5e135d33",
+      "passages": 65,
+      "bytes": 51969,
+      "verifiedAt": "2026-11-27T13:13:29.185826+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/josephus-antiquities-grc.json",
+      "workId": "josephus-antiquities",
+      "language": "grc",
+      "sha256": "63a0b9b789ab71bb77aa418137b155d3bba1d9bac3bdbcac1508e825c04ac4fa",
+      "passages": 7403,
+      "bytes": 4995590,
+      "verifiedAt": "2026-11-27T13:13:30.480604+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/josephus-war-grc.json",
+      "workId": "josephus-war",
+      "language": "grc",
+      "sha256": "d195f6fabdc874750ebbf42f087e1b4a89a4ff6007e9361058aef63d1c1ef1ce",
+      "passages": 4001,
+      "bytes": 2154121,
+      "verifiedAt": "2026-11-27T13:13:31.852559+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/justin-grc.json",
+      "workId": "justin",
+      "language": "grc",
+      "sha256": "94925e451a6ccc3c411217dd8c058da78beae7837f41145379edeb16e116c7f0",
+      "passages": 76,
+      "bytes": 203638,
+      "verifiedAt": "2026-11-27T13:13:32.660043+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/juvenal-saturae-la.json",
+      "workId": "juvenal-saturae",
+      "language": "la",
+      "sha256": "e866e05bc1fb6a50f1f9bb7fd2d67b04facbc00c24eecd6dc528e20d01af43e6",
+      "passages": 488,
+      "bytes": 258518,
+      "verifiedAt": "2026-11-27T13:13:33.736193+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/livy-la.json",
+      "workId": "livy",
+      "language": "la",
+      "sha256": "11eaf67bc53356f009461bf8a9c8516fa91524dad617a888698646ea971f561d",
+      "passages": 8105,
+      "bytes": 2490716,
+      "verifiedAt": "2026-11-27T13:13:34.899069+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/lucan-la.json",
+      "workId": "lucan",
+      "language": "la",
+      "sha256": "731ca9da533f0c6c1721ee500e933766133724c9d4049a19ce0c3a7ff708b1dd",
+      "passages": 1008,
+      "bytes": 510667,
+      "verifiedAt": "2026-11-27T13:13:35.787940+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/lucian-bacchus-grc.json",
+      "workId": "lucian-bacchus",
+      "language": "grc",
+      "sha256": "4e82a1a3451b6358d2003c8229394c4949cad4506b2bf58b975603bc75993ca2",
+      "passages": 9,
+      "bytes": 15131,
+      "verifiedAt": "2026-11-27T13:13:36.679637+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/lucian-de-domo-grc.json",
+      "workId": "lucian-de-domo",
+      "language": "grc",
+      "sha256": "a6f560068f94d8fa0003821fca2307e02f244a599c985e26cbc5b8a9193555d1",
+      "passages": 37,
+      "bytes": 43681,
+      "verifiedAt": "2026-11-27T13:13:37.574271+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/lucian-demonax-grc.json",
+      "workId": "lucian-demonax",
+      "language": "grc",
+      "sha256": "e10855001c94fbb6b1c694d986a5314a997a8de05e727cd68d6c7a7fa8c4229c",
+      "passages": 70,
+      "bytes": 47136,
+      "verifiedAt": "2026-11-27T13:13:38.429442+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/lucian-dialogi-mortuorum-grc.json",
+      "workId": "lucian-dialogi-mortuorum",
+      "language": "grc",
+      "sha256": "c07f8ed3cd190b59cde02934b0c51050fb3416f915a3d9b870fcb716b7359d3a",
+      "passages": 113,
+      "bytes": 152775,
+      "verifiedAt": "2026-11-27T13:13:39.406936+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/lucian-electrum-grc.json",
+      "workId": "lucian-electrum",
+      "language": "grc",
+      "sha256": "a9d9ef894cb15ad84dbffef75ea70ba968cb2deb8a3ac62983a9d86011fa33d1",
+      "passages": 7,
+      "bytes": 9646,
+      "verifiedAt": "2026-11-27T13:13:40.273899+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/lucian-encomium-fatherland-grc.json",
+      "workId": "lucian-encomium-fatherland",
+      "language": "grc",
+      "sha256": "34c4b0cd2fc03d0f94ff0427ef9574476f0b4bafc287b751a285de15df731ad5",
+      "passages": 12,
+      "bytes": 14215,
+      "verifiedAt": "2026-11-27T13:13:41.133322+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/lucian-encomium-fly-grc.json",
+      "workId": "lucian-encomium-fly",
+      "language": "grc",
+      "sha256": "2bf72ae0b39c3d8b963f77fd3d5ed9c0924a7110a1a8b1b31feb2038d3c9e110",
+      "passages": 12,
+      "bytes": 16726,
+      "verifiedAt": "2026-11-27T13:13:41.933698+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/lucian-hercules-grc.json",
+      "workId": "lucian-hercules",
+      "language": "grc",
+      "sha256": "88c68c124bfdf7198b1cc96dbfc1a1db3fe97fde3655fa207b6101c897bb789a",
+      "passages": 9,
+      "bytes": 11475,
+      "verifiedAt": "2026-11-27T13:13:42.793586+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/lucian-hippias-grc.json",
+      "workId": "lucian-hippias",
+      "language": "grc",
+      "sha256": "c148959c248f4f4015e756f08d2ad692525e2d5b5c1cd7dfca829d301801af05",
+      "passages": 11,
+      "bytes": 15127,
+      "verifiedAt": "2026-11-27T13:13:43.562233+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/lucian-nigrinus-grc.json",
+      "workId": "lucian-nigrinus",
+      "language": "grc",
+      "sha256": "85dfa69e89cef022d46cb95b0fea4143179a403dff9ebc1b03250e4724e28eb7",
+      "passages": 65,
+      "bytes": 61753,
+      "verifiedAt": "2026-11-27T13:13:44.361093+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/lucian-phalaris-grc.json",
+      "workId": "lucian-phalaris",
+      "language": "grc",
+      "sha256": "e77cc873ce74cb33eef1f18e1cb4c47c3ebf9f9c448848fe11073344857d25a5",
+      "passages": 28,
+      "bytes": 39947,
+      "verifiedAt": "2026-11-27T13:13:45.149801+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/lucian-verae-historiae-en.json",
+      "workId": "lucian-verae-historiae",
+      "language": "en",
+      "sha256": "992a2dbe9a7c89a73296fe6213fd5a4154b74e55ac41e947ab5ee348ef86339d",
+      "passages": 89,
+      "bytes": 92693,
+      "verifiedAt": "2026-11-27T13:13:45.992004+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/lucian-verae-historiae-grc.json",
+      "workId": "lucian-verae-historiae",
+      "language": "grc",
+      "sha256": "86c1c46c97021b92f60cc15cfe6bc5a21afededba3a56eee117139a04298ca20",
+      "passages": 89,
+      "bytes": 155256,
+      "verifiedAt": "2026-11-27T13:13:46.853899+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/lysias-against-andocides-grc.json",
+      "workId": "lysias-against-andocides",
+      "language": "grc",
+      "sha256": "04eeabb9445872b4f0599521fbd2e1e6fb3f17e1e526a14418761751265fbdf2",
+      "passages": 56,
+      "bytes": 39306,
+      "verifiedAt": "2026-11-27T13:13:47.688454+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/lysias-against-simon-grc.json",
+      "workId": "lysias-against-simon",
+      "language": "grc",
+      "sha256": "e42d02e4841e331a39fac0104b7866832e3d662b2b0d75af3423cece47ef425b",
+      "passages": 50,
+      "bytes": 34047,
+      "verifiedAt": "2026-11-27T13:13:48.614494+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/lysias-calumny-grc.json",
+      "workId": "lysias-calumny",
+      "language": "grc",
+      "sha256": "b7d115a0d1886d0b45ff6d3e95857a78a3e19d34f5928299a1690c9230f16783",
+      "passages": 21,
+      "bytes": 16400,
+      "verifiedAt": "2026-11-27T13:13:49.468370+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/lysias-eratosthenes-grc.json",
+      "workId": "lysias-eratosthenes",
+      "language": "grc",
+      "sha256": "f7f10d42c9dbabc1a60a239582d3ddc31dc25a566b75d02284ecf49fd497577a",
+      "passages": 56,
+      "bytes": 37292,
+      "verifiedAt": "2026-11-27T13:13:50.318216+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/lysias-for-callias-grc.json",
+      "workId": "lysias-for-callias",
+      "language": "grc",
+      "sha256": "37dacf8386cbc71eb423c1922e04ffc5cbebdda3530e72783e0660d86e4d6b14",
+      "passages": 5,
+      "bytes": 5198,
+      "verifiedAt": "2026-11-27T13:13:51.141494+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/lysias-funeral-oration-grc.json",
+      "workId": "lysias-funeral-oration",
+      "language": "grc",
+      "sha256": "0545fed4b609c888fd49776e457faf67fcb31a808f6078eb9f4d0564d2ae7a93",
+      "passages": 81,
+      "bytes": 61783,
+      "verifiedAt": "2026-11-27T13:13:51.994989+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/lysias-olive-stump-grc.json",
+      "workId": "lysias-olive-stump",
+      "language": "grc",
+      "sha256": "045fc76cb85cf3c459d1ae7b20a13128e3348854512143fada4514599fbfda57",
+      "passages": 44,
+      "bytes": 30731,
+      "verifiedAt": "2026-11-27T13:13:52.913948+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/lysias-soldier-grc.json",
+      "workId": "lysias-soldier",
+      "language": "grc",
+      "sha256": "38dc0538f6340b9d4151e8c9d92eb29495226ca3381266aec564bfa16b2646a5",
+      "passages": 23,
+      "bytes": 15026,
+      "verifiedAt": "2026-11-27T13:13:53.839304+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/lysias-theomnestus-1-grc.json",
+      "workId": "lysias-theomnestus-1",
+      "language": "grc",
+      "sha256": "a886d68de821a0ba0e3c807d6cbd87e4bbf16eb5d2eb560fb24d448329585f74",
+      "passages": 44,
+      "bytes": 25172,
+      "verifiedAt": "2026-11-27T13:13:54.675646+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/lysias-wound-grc.json",
+      "workId": "lysias-wound",
+      "language": "grc",
+      "sha256": "b19a9ac7dafd45fa7653d3288d96d375e7b8dad686759320157a04f9c769a046",
+      "passages": 20,
+      "bytes": 14838,
+      "verifiedAt": "2026-11-27T13:13:55.597769+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/macrobius-saturnalia-la.json",
+      "workId": "macrobius-saturnalia",
+      "language": "la",
+      "sha256": "50914bdc414d3def840846af4a5fb1c4c5a364a5fea51c02222757580e52968c",
+      "passages": 2106,
+      "bytes": 760811,
+      "verifiedAt": "2026-11-27T13:13:56.501960+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/marcus-aurelius-meditations-en.json",
+      "workId": "marcus-aurelius-meditations",
+      "language": "en",
+      "sha256": "02a1606a18d8c7b3f692ff79069fd5fc036d87b909773a783589acc65aba6871",
+      "passages": 524,
+      "bytes": 357873,
+      "verifiedAt": "2026-11-27T13:13:57.497842+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/marcus-aurelius-meditations-grc.json",
+      "workId": "marcus-aurelius-meditations",
+      "language": "grc",
+      "sha256": "4be81a243a13fbe7b6eb9dcb80bb10a363d352cf7c13d5f9dd356bcaef1bf827",
+      "passages": 577,
+      "bytes": 433182,
+      "verifiedAt": "2026-11-27T13:13:58.360551+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/mark-grc.json",
+      "workId": "mark",
+      "language": "grc",
+      "sha256": "04de88b2504482a7fd3fda43f6753fc360a4b9cce1e5a150110813f863ca1921",
+      "passages": 10,
+      "bytes": 3426,
+      "verifiedAt": "2026-11-27T13:13:59.198823+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/martial-la.json",
+      "workId": "martial",
+      "language": "la",
+      "sha256": "00536719bb754f575f56cf4384c15a2277cc34584f593098f6b211c3d39061a8",
+      "passages": 1827,
+      "bytes": 512817,
+      "verifiedAt": "2026-11-27T13:14:00.046774+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/menander-dyskolos-grc.json",
+      "workId": "menander-dyskolos",
+      "language": "grc",
+      "sha256": "1c6caa8c633a84ade918d2e1edcfed86403febb5b86aa85cb38ccdda9053244b",
+      "passages": 1226,
+      "bytes": 244215,
+      "verifiedAt": "2026-11-27T13:15:00.023011+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/nepos-la.json",
+      "workId": "nepos",
+      "language": "la",
+      "sha256": "5712ce0cb4dd5a64251508b94f5e48f3ff39facc8113b472eaf02a8967253e3d",
+      "passages": 176,
+      "bytes": 233174,
+      "verifiedAt": "2026-11-27T13:15:01.235927+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/ovid-ars-amatoria-la.json",
+      "workId": "ovid-ars-amatoria",
+      "language": "la",
+      "sha256": "98926532d7469741d40acc65f5b63270e181f0ca06c58aef10493b08b154ebd8",
+      "passages": 292,
+      "bytes": 142496,
+      "verifiedAt": "2026-11-27T13:15:02.297800+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/ovid-ex-ponto-la.json",
+      "workId": "ovid-ex-ponto",
+      "language": "la",
+      "sha256": "b07dac1d908dfafd2c38df6b6ad37eccf9c388c0767e5be5b5f353543c4a1848",
+      "passages": 406,
+      "bytes": 195992,
+      "verifiedAt": "2026-11-27T13:15:03.208946+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/ovid-fasti-la.json",
+      "workId": "ovid-fasti",
+      "language": "la",
+      "sha256": "6678bba06a2e3b2d579fb4c4c8c151b2149730ccbe9a74b2b6756bdaf9646f22",
+      "passages": 623,
+      "bytes": 302046,
+      "verifiedAt": "2026-11-27T13:15:04.309052+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/ovid-heroides-la.json",
+      "workId": "ovid-heroides",
+      "language": "la",
+      "sha256": "38ae2426313de94213ba2a16a1331a310c77e3ac2e46ef3c558c3f242b678df1",
+      "passages": 498,
+      "bytes": 240661,
+      "verifiedAt": "2026-11-27T13:15:05.316721+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/ovid-la.json",
+      "workId": "ovid",
+      "language": "la",
+      "sha256": "bb30481adc4d02c2dc31f3f88ed8347b768443122b472aed54c023fc477321a9",
+      "passages": 306,
+      "bytes": 580013,
+      "verifiedAt": "2026-11-27T13:15:06.561632+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/ovid-remedia-amoris-la.json",
+      "workId": "ovid-remedia-amoris",
+      "language": "la",
+      "sha256": "33ccfd7cc1f36e53a2b8c6ca66cf1211ebae51e1a1e1a55e05e1955023bc0a98",
+      "passages": 102,
+      "bytes": 50309,
+      "verifiedAt": "2026-11-27T13:15:07.443347+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/ovid-tristia-la.json",
+      "workId": "ovid-tristia",
+      "language": "la",
+      "sha256": "8dd53de81d754c38fb373bc0430d3a03d5e6ff94edf5f36423e3682fcff627d3",
+      "passages": 447,
+      "bytes": 217636,
+      "verifiedAt": "2026-11-27T13:15:08.403596+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/pappus-synagoge-grc.json",
+      "workId": "pappus-synagoge",
+      "language": "grc",
+      "sha256": "79fbf7a0a58d581ffd8a91a815659d54ed148c3cfb82ca789cdc2f78ec8ff316",
+      "passages": 548,
+      "bytes": 608613,
+      "verifiedAt": "2026-11-27T13:15:09.302229+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/pastor-hermas-grc.json",
+      "workId": "pastor-hermas",
+      "language": "grc",
+      "sha256": "c3c0d36e3a0f834d1c8246fba7d9f5b733d171970f8321fef0e345cc781f9edc",
+      "passages": 727,
+      "bytes": 457378,
+      "verifiedAt": "2026-11-27T13:15:10.400052+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/pausanias-periegesis-grc.json",
+      "workId": "pausanias-periegesis",
+      "language": "grc",
+      "sha256": "a9894c88661d0242d6fdd86424804c61fa0aff452ad1911fb260100d91be1055",
+      "passages": 3170,
+      "bytes": 3101145,
+      "verifiedAt": "2026-11-27T13:15:11.895934+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/petronius-satyrica-en.json",
+      "workId": "petronius-satyrica",
+      "language": "en",
+      "sha256": "ac6dbefc90fa46c86693c64d5aa08487d74699144d9ba53f74ff3a7321c80781",
+      "passages": 231,
+      "bytes": 569908,
+      "verifiedAt": "2026-11-27T13:15:12.740466+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/petronius-satyrica-la.json",
+      "workId": "petronius-satyrica",
+      "language": "la",
+      "sha256": "9a31411221c0257546c2f551373e3427a03a845f24aa40ce768d9da368303255",
+      "passages": 141,
+      "bytes": 223363,
+      "verifiedAt": "2026-11-27T13:15:13.710547+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/philo-de-vita-mosis-en.json",
+      "workId": "philo-de-vita-mosis",
+      "language": "en",
+      "sha256": "37ec0494a69f274c0777848029b871c3960e47f53e540e9ce070bdca85f46984",
+      "passages": 626,
+      "bytes": 412325,
+      "verifiedAt": "2026-11-27T13:15:14.581668+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/philo-de-vita-mosis-grc.json",
+      "workId": "philo-de-vita-mosis",
+      "language": "grc",
+      "sha256": "0bf8db984979937b41b421f1c6e0561860469840891f119702c6ee9703afdd6c",
+      "passages": 632,
+      "bytes": 742980,
+      "verifiedAt": "2026-11-27T13:15:15.570511+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/philo-en.json",
+      "workId": "philo",
+      "language": "en",
+      "sha256": "833a708cb82c9f3181625fdadf211ed9e411c4864411ef2001bd1c45ab505860",
+      "passages": 172,
+      "bytes": 147517,
+      "verifiedAt": "2026-11-27T13:15:16.503813+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/philo-grc.json",
+      "workId": "philo",
+      "language": "grc",
+      "sha256": "e6699be7b1fd543f9871afbe4cea96618db411201ee76347658f879e7c3c736a",
+      "passages": 178,
+      "bytes": 287888,
+      "verifiedAt": "2026-11-27T13:15:17.690709+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/philo-legum-allegoriae-en.json",
+      "workId": "philo-legum-allegoriae",
+      "language": "en",
+      "sha256": "01bea184d0bb2473be8bda2b7c28012ff97bc51817d9665ebed1c4d3bace0226",
+      "passages": 469,
+      "bytes": 354764,
+      "verifiedAt": "2026-11-27T13:15:18.506882+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/philo-legum-allegoriae-grc.json",
+      "workId": "philo-legum-allegoriae",
+      "language": "grc",
+      "sha256": "4d7274421b9197b9d6df65a715f009580f65c933db61e801b54a3427dce096ac",
+      "passages": 469,
+      "bytes": 541624,
+      "verifiedAt": "2026-11-27T13:15:19.453427+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/phraedrus-fabulae-en.json",
+      "workId": "phraedrus-fabulae",
+      "language": "en",
+      "sha256": "591d74acaa52d2d38c18bb02b1c74ecf5b21020d9ee7619ac77a21a1148cde87",
+      "passages": 91,
+      "bytes": 86824,
+      "verifiedAt": "2026-11-27T13:15:20.335212+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/phraedrus-fabulae-la.json",
+      "workId": "phraedrus-fabulae",
+      "language": "la",
+      "sha256": "a6d5028edb10fe88f2a5436f1308e13f7ed737ec4577b0739e826f87ed8d3aa4",
+      "passages": 132,
+      "bytes": 86332,
+      "verifiedAt": "2026-11-27T13:15:21.155370+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/pindar-olympian-en.json",
+      "workId": "pindar-olympian",
+      "language": "en",
+      "sha256": "2d1241026a604cc15fafc62be59d8c57c488b62516fe4137326f3b8126003897",
+      "passages": 306,
+      "bytes": 85677,
+      "verifiedAt": "2026-11-27T13:15:22.045591+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/pindar-olympian-grc.json",
+      "workId": "pindar-olympian",
+      "language": "grc",
+      "sha256": "710b60ba37176a7d92bd2b881030f689c1cd5e74893b5da1f464be4d0f721b77",
+      "passages": 128,
+      "bytes": 107308,
+      "verifiedAt": "2026-11-27T13:15:23.078240+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/pindar-pythian-en.json",
+      "workId": "pindar-pythian",
+      "language": "en",
+      "sha256": "e49f0160f4834d7894437ad691b9bc1827395be04ee0354d9b601ce8e4503cbe",
+      "passages": 372,
+      "bytes": 105962,
+      "verifiedAt": "2026-11-27T13:15:23.943540+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/pindar-pythian-grc.json",
+      "workId": "pindar-pythian",
+      "language": "grc",
+      "sha256": "279511e7d2349a27499e182f659682fe0177f7302bc8f0f25cc41c1902cfeaea",
+      "passages": 153,
+      "bytes": 137472,
+      "verifiedAt": "2026-11-27T13:15:24.848152+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/plato-apology-en.json",
+      "workId": "plato-apology",
+      "language": "en",
+      "sha256": "cbc1ec4e6327497bf0f89bc47be5e3d6c986963dad35decf06ad51b145cf2c25",
+      "passages": 26,
+      "bytes": 62756,
+      "verifiedAt": "2026-11-27T13:15:26.025612+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/plato-apology-grc.json",
+      "workId": "plato-apology",
+      "language": "grc",
+      "sha256": "a636a1ad8d314a6b14bbc7ee6d50544e6b3369ad8683b0d5ba59b517da89b241",
+      "passages": 26,
+      "bytes": 105017,
+      "verifiedAt": "2026-11-27T13:15:26.850081+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/plato-charmides-en.json",
+      "workId": "plato-charmides",
+      "language": "en",
+      "sha256": "4af3bed9df9e1a3833569b00a17b53ee8d10ab6c32a923315160355aece86bc8",
+      "passages": 24,
+      "bytes": 64191,
+      "verifiedAt": "2026-11-27T13:15:27.642417+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/plato-charmides-grc.json",
+      "workId": "plato-charmides",
+      "language": "grc",
+      "sha256": "7021cfa13ef81a2302a842a0b54ac4aceeac2039730ed298187f1c926e49e3d3",
+      "passages": 24,
+      "bytes": 98636,
+      "verifiedAt": "2026-11-27T13:15:28.504840+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/plato-crito-en.json",
+      "workId": "plato-crito",
+      "language": "en",
+      "sha256": "46c8b2f471d56a387cc5cc3e9dc564b549abc581fbb4f965473f31098faa036e",
+      "passages": 12,
+      "bytes": 32735,
+      "verifiedAt": "2026-11-27T13:15:29.415210+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/plato-crito-grc.json",
+      "workId": "plato-crito",
+      "language": "grc",
+      "sha256": "126e5e5633354688b63cc8e7e861aab88e47229b4e3b627801003c7d868278e1",
+      "passages": 19,
+      "bytes": 55974,
+      "verifiedAt": "2026-11-27T13:15:30.350251+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/plato-euthydemus-en.json",
+      "workId": "plato-euthydemus",
+      "language": "en",
+      "sha256": "ff412c266f4f520e87c684f98ece2f8019c0fe67b68374001e5e394f335fa511",
+      "passages": 37,
+      "bytes": 99910,
+      "verifiedAt": "2026-11-27T13:15:31.290496+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/plato-euthydemus-grc.json",
+      "workId": "plato-euthydemus",
+      "language": "grc",
+      "sha256": "cb1880e93080f4e4238e120fba9abd9bd80c2a1da7ea293c4b042e985e0b5b15",
+      "passages": 95,
+      "bytes": 161016,
+      "verifiedAt": "2026-11-27T13:15:32.273083+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/plato-euthyphro-en.json",
+      "workId": "plato-euthyphro",
+      "language": "en",
+      "sha256": "f7e57380f7f9cda2c54a16f7d7dda09d13f3a13ce970e7ccafb1e1e5e309f14c",
+      "passages": 15,
+      "bytes": 40837,
+      "verifiedAt": "2026-11-27T13:15:33.159184+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/plato-euthyphro-grc.json",
+      "workId": "plato-euthyphro",
+      "language": "grc",
+      "sha256": "78f47fc0a90c29e627b567e6a466215dcc21aa68c6be20bcc7c7a8c053104884",
+      "passages": 233,
+      "bytes": 94471,
+      "verifiedAt": "2026-11-27T13:15:34.048396+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/plato-gorgias-en.json",
+      "workId": "plato-gorgias",
+      "language": "en",
+      "sha256": "c77f3843e60bc153290f60372596de1ea711405e63cf6cecaee353b61b6e29a4",
+      "passages": 81,
+      "bytes": 207448,
+      "verifiedAt": "2026-11-27T13:15:35.002160+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/plato-gorgias-grc.json",
+      "workId": "plato-gorgias",
+      "language": "grc",
+      "sha256": "119b6672b2d5cca57f8aefb2d98f30b42a1da710260224cd4e5d36d7dfeb1df1",
+      "passages": 98,
+      "bytes": 334946,
+      "verifiedAt": "2026-11-27T13:15:35.941692+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/plato-hippias-minor-en.json",
+      "workId": "plato-hippias-minor",
+      "language": "en",
+      "sha256": "5695ae91db36ab229bdf0d0932bcc804ac5a332f333198cbbdbf4f8072466ad4",
+      "passages": 14,
+      "bytes": 35807,
+      "verifiedAt": "2026-11-27T13:15:36.737828+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/plato-hippias-minor-grc.json",
+      "workId": "plato-hippias-minor",
+      "language": "grc",
+      "sha256": "7300acfa82b7553ed57b6601b9eaf48d692fe1fa12549a18c7ec17715cf52a08",
+      "passages": 231,
+      "bytes": 96701,
+      "verifiedAt": "2026-11-27T13:15:37.567418+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/plato-ion-en.json",
+      "workId": "plato-ion",
+      "language": "en",
+      "sha256": "8c6ae26d3c9ddfb8fad5702d9c5d3d87d6a36d9458c3ba960752e0972a7902e5",
+      "passages": 13,
+      "bytes": 31181,
+      "verifiedAt": "2026-11-27T13:16:50.566452+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/plato-ion-grc.json",
+      "workId": "plato-ion",
+      "language": "grc",
+      "sha256": "8e5085e4f36896b799d36108b74d02cd11cd0328537e732034decf3a8421be52",
+      "passages": 174,
+      "bytes": 80774,
+      "verifiedAt": "2026-11-27T13:16:51.481327+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/plato-laches-en.json",
+      "workId": "plato-laches",
+      "language": "en",
+      "sha256": "55a8af7d885a6061199ee74ddf6cc9707ca305056ff32593923f219409b4cdc0",
+      "passages": 24,
+      "bytes": 63138,
+      "verifiedAt": "2026-11-27T13:16:52.339454+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/plato-laches-grc.json",
+      "workId": "plato-laches",
+      "language": "grc",
+      "sha256": "14e1858e6461a7f318669067aac7e0a28ad7d2a17913b98fdc60e7419766978c",
+      "passages": 265,
+      "bytes": 130275,
+      "verifiedAt": "2026-11-27T13:16:53.295989+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/plato-laws-en.json",
+      "workId": "plato-laws",
+      "language": "en",
+      "sha256": "a371390417d697fff014f790f8b26800a9de9f0104250cbe46fee55dbf34baa6",
+      "passages": 327,
+      "bytes": 873545,
+      "verifiedAt": "2026-11-27T13:16:54.816288+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/plato-laws-grc.json",
+      "workId": "plato-laws",
+      "language": "grc",
+      "sha256": "095d5259b93b0880b2d28dafa87e730c83b9686cba3b77e9e69a75ec737bf471",
+      "passages": 366,
+      "bytes": 1320055,
+      "verifiedAt": "2026-11-27T13:16:56.525474+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/plato-lysis-en.json",
+      "workId": "plato-lysis",
+      "language": "en",
+      "sha256": "8bd0bedc0f21b5f489d5111792073d2987656f284dbb8b02658e71786dbf4c33",
+      "passages": 21,
+      "bytes": 55390,
+      "verifiedAt": "2026-11-27T13:16:57.357540+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/plato-lysis-grc.json",
+      "workId": "plato-lysis",
+      "language": "grc",
+      "sha256": "c61ec26f1e0a4497287477d9709d45f13cf7ae92590698e2c5f4a0a8f8222e8f",
+      "passages": 21,
+      "bytes": 80963,
+      "verifiedAt": "2026-11-27T13:16:58.231598+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/plato-menexenus-en.json",
+      "workId": "plato-menexenus",
+      "language": "en",
+      "sha256": "a23d0fe57b8f6992929216dfe9fa1739007807712e1152a51410d01239d849cc",
+      "passages": 16,
+      "bytes": 43746,
+      "verifiedAt": "2026-11-27T13:16:59.097308+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/plato-menexenus-grc.json",
+      "workId": "plato-menexenus",
+      "language": "grc",
+      "sha256": "3a5ff17c0895d26d37bf06716c98714d8e97912c4ae08258cf22467f93cdddde",
+      "passages": 46,
+      "bytes": 68753,
+      "verifiedAt": "2026-11-27T13:16:59.964590+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/plato-meno-en.json",
+      "workId": "plato-meno",
+      "language": "en",
+      "sha256": "75266b8803e527fabc1f8c58209676bf7b99ad38b4b3deafb6f9110ce374e84b",
+      "passages": 31,
+      "bytes": 74274,
+      "verifiedAt": "2026-11-27T13:17:00.776304+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/plato-meno-grc.json",
+      "workId": "plato-meno",
+      "language": "grc",
+      "sha256": "5404e71c2bffd8c5a524f527e679681882ba581786be454d533c73aa70d81232",
+      "passages": 39,
+      "bytes": 125387,
+      "verifiedAt": "2026-11-27T13:17:02.211565+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
       "key": "corpus/plato-parmenides-en.json",
       "workId": "plato-parmenides",
       "language": "en",
@@ -361,6 +3281,86 @@
       "passages": 41,
       "bytes": 167049,
       "verifiedAt": "2026-11-22T13:59:34.790652+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/plato-phaedo-en.json",
+      "workId": "plato-phaedo",
+      "language": "en",
+      "sha256": "7f58b390755270cc13199a7e6d5d1de505119e9d4c6ccd629949756341a4ec9c",
+      "passages": 62,
+      "bytes": 158148,
+      "verifiedAt": "2026-11-27T13:17:03.232867+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/plato-phaedo-grc.json",
+      "workId": "plato-phaedo",
+      "language": "grc",
+      "sha256": "47615f46b7dacc63ac44f89ff6ca2aaff86280079119eabef8873746bf2608f6",
+      "passages": 105,
+      "bytes": 295922,
+      "verifiedAt": "2026-11-27T13:17:04.138980+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/plato-phaedrus-en.json",
+      "workId": "plato-phaedrus",
+      "language": "en",
+      "sha256": "c54d5b9281cac94ae8a483ceedcd39f79d72f65ee87c6614950ce41a6e19c8dc",
+      "passages": 53,
+      "bytes": 135988,
+      "verifiedAt": "2026-11-27T13:17:05.003912+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/plato-phaedrus-grc.json",
+      "workId": "plato-phaedrus",
+      "language": "grc",
+      "sha256": "b6492593d05be65fe2f7e31b0bbce59fb962fc15c08390af707c110444427e72",
+      "passages": 58,
+      "bytes": 209385,
+      "verifiedAt": "2026-11-27T13:17:05.979932+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/plato-philebus-en.json",
+      "workId": "plato-philebus",
+      "language": "en",
+      "sha256": "6bd5a2fcd830e67101a2dd2801a9941039c143746ed34bd497c05b6267c6285e",
+      "passages": 57,
+      "bytes": 143780,
+      "verifiedAt": "2026-11-27T13:17:06.955413+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/plato-philebus-grc.json",
+      "workId": "plato-philebus",
+      "language": "grc",
+      "sha256": "e0d35d944ea1a581028322edb4ea77d1e60f5556521bb9db275f2efc9fbbcd7e",
+      "passages": 1142,
+      "bytes": 381087,
+      "verifiedAt": "2026-11-27T13:17:08.036533+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/plato-republic-en.json",
+      "workId": "plato-republic",
+      "language": "en",
+      "sha256": "f1cfe5f6738bcd7930a8c3d8b8d85bd105a4a3af591fbeef8ffcf3882dbd21bf",
+      "passages": 278,
+      "bytes": 719531,
+      "verifiedAt": "2026-11-27T13:17:09.427187+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/plato-republic-grc.json",
+      "workId": "plato-republic",
+      "language": "grc",
+      "sha256": "686d38d3739088c16069629fa6010e48f9d791e4bac278b3dc42e74a761ecbc1",
+      "passages": 310,
+      "bytes": 1087960,
+      "verifiedAt": "2026-11-27T13:17:10.919593+00:00",
       "status": "uploaded-and-verified"
     },
     {
@@ -384,6 +3384,46 @@
       "status": "uploaded-and-verified"
     },
     {
+      "key": "corpus/plato-statesman-en.json",
+      "workId": "plato-statesman",
+      "language": "en",
+      "sha256": "547bac3703cf1e70fc225222df7d358d745d2434b2d402456b3067d2e615cd2f",
+      "passages": 55,
+      "bytes": 145963,
+      "verifiedAt": "2026-11-27T13:17:12.081803+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/plato-statesman-grc.json",
+      "workId": "plato-statesman",
+      "language": "grc",
+      "sha256": "046131c725823b8fd9b144ec81c848766c5811534c6822a04a7e49e16651f8d2",
+      "passages": 898,
+      "bytes": 348427,
+      "verifiedAt": "2026-11-27T13:17:13.426708+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/plato-symposium-en.json",
+      "workId": "plato-symposium",
+      "language": "en",
+      "sha256": "2ba42e58ec082fe382b642d6c1c0e4a8acfd2701e660b4eab37094c98255d9ce",
+      "passages": 52,
+      "bytes": 135383,
+      "verifiedAt": "2026-11-27T13:17:14.427457+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/plato-symposium-grc.json",
+      "workId": "plato-symposium",
+      "language": "grc",
+      "sha256": "b1d17073d7e304b5607e4b9c325a54aefcbf9264207dac80dded5e6270cc20f7",
+      "passages": 63,
+      "bytes": 218658,
+      "verifiedAt": "2026-11-27T13:17:15.349642+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
       "key": "corpus/plato-theaetetus-en.json",
       "workId": "plato-theaetetus",
       "language": "en",
@@ -402,7 +3442,840 @@
       "bytes": 267195,
       "verifiedAt": "2026-11-22T13:59:39.109363+00:00",
       "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/plato-timaeus-en.json",
+      "workId": "plato-timaeus",
+      "language": "en",
+      "sha256": "0e30af45e1940c1f125860c7e831eec2e69a502703632c89270c8f3a50ec33e0",
+      "passages": 76,
+      "bytes": 208972,
+      "verifiedAt": "2026-11-27T13:17:16.676900+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/plato-timaeus-grc.json",
+      "workId": "plato-timaeus",
+      "language": "grc",
+      "sha256": "88a5389ba814a4da1ae096a7d09f9394803a20435e3a680cbe159aad08f1321b",
+      "passages": 82,
+      "bytes": 299800,
+      "verifiedAt": "2026-11-27T13:17:17.618469+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/plautus-amphitruo-la.json",
+      "workId": "plautus-amphitruo",
+      "language": "la",
+      "sha256": "69df765b5387b833af3661344fa15b2e517de036f882c18b7cb2e193f0657ef7",
+      "passages": 179,
+      "bytes": 85427,
+      "verifiedAt": "2026-11-27T13:17:18.503895+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/plautus-aulularia-la.json",
+      "workId": "plautus-aulularia",
+      "language": "la",
+      "sha256": "0bce745a6aa0c29bc43e49e9c86dcd3f5544b50d1b6780e9d4f89d5e800a9528",
+      "passages": 135,
+      "bytes": 59590,
+      "verifiedAt": "2026-11-27T13:17:19.362417+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/pliny-younger-epistulae-la.json",
+      "workId": "pliny-younger-epistulae",
+      "language": "la",
+      "sha256": "152dc5e6bd540dff56a4bfbf847a4869e932a31b0aa06bdc0b2dec6555b7c363",
+      "passages": 1979,
+      "bytes": 656977,
+      "verifiedAt": "2026-11-27T13:17:20.205102+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/polybius-historiae-grc.json",
+      "workId": "polybius-historiae",
+      "language": "grc",
+      "sha256": "6ecd2402d2313be91e689d0115ce573a777e71a6e400d78c95982d2ddcbe59a2",
+      "passages": 12147,
+      "bytes": 5691605,
+      "verifiedAt": "2026-11-27T13:17:21.960181+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/polycarp-grc.json",
+      "workId": "polycarp",
+      "language": "grc",
+      "sha256": "69e7b1977a363e50e8910822f8b8f263587d04b5ac8241d73e640b2a87781658",
+      "passages": 38,
+      "bytes": 27338,
+      "verifiedAt": "2026-11-27T13:17:22.746662+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/propertius-elegiae-la.json",
+      "workId": "propertius-elegiae",
+      "language": "la",
+      "sha256": "f05ea493e608458bd0b3b5e36d3f53e5840b71a2a9f1a7ba3123fdf39ebcf9f3",
+      "passages": 512,
+      "bytes": 231971,
+      "verifiedAt": "2026-11-27T13:17:23.623017+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/pseudo-apollodorus-bibliotheca-grc.json",
+      "workId": "pseudo-apollodorus-bibliotheca",
+      "language": "grc",
+      "sha256": "31032dbf9f02c454f34218b241e88acb82454782ae06c4de2e890f0607033e7c",
+      "passages": 393,
+      "bytes": 538692,
+      "verifiedAt": "2026-11-27T13:17:24.534695+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/ptolemy-almagest-grc.json",
+      "workId": "ptolemy-almagest",
+      "language": "grc",
+      "sha256": "24edec61a8273426b25360195ba498314108ce6c62fb9fc9aa98469f7473c066",
+      "passages": 898,
+      "bytes": 2832130,
+      "verifiedAt": "2026-11-27T13:17:26.056804+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/publilius-syrus-sententiae-la.json",
+      "workId": "publilius-syrus-sententiae",
+      "language": "la",
+      "sha256": "dd7d49da375be3a2936f5cd81ddcc88ce7f37cd618c972b433cd0696b13b129f",
+      "passages": 733,
+      "bytes": 70830,
+      "verifiedAt": "2026-11-27T13:17:26.939709+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/quintilian-la.json",
+      "workId": "quintilian",
+      "language": "la",
+      "sha256": "04c44babe90e9d29a127993a8ece4493b2e30ba232fd3f8c1bee4ad9fd6023ec",
+      "passages": 3763,
+      "bytes": 1601459,
+      "verifiedAt": "2026-11-27T13:17:29.131943+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/sallust-catiline-en.json",
+      "workId": "sallust-catiline",
+      "language": "en",
+      "sha256": "7e1e42815027627dcc09fda602099999ff0719819d34785d8800da861b3138e2",
+      "passages": 59,
+      "bytes": 109666,
+      "verifiedAt": "2026-11-27T13:17:29.915132+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/sallust-catiline-la.json",
+      "workId": "sallust-catiline",
+      "language": "la",
+      "sha256": "1d8a3ea0a7a709e138a853d899a1b5cfd388821b942a3e0387f2e5b5795ff285",
+      "passages": 61,
+      "bytes": 79999,
+      "verifiedAt": "2026-11-27T13:17:30.874869+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/sallust-iugurtha-en.json",
+      "workId": "sallust-iugurtha",
+      "language": "en",
+      "sha256": "467224c9202638c7703dc0e744c8b98032f554b94836e1a77d5e63808a6eaa67",
+      "passages": 114,
+      "bytes": 215751,
+      "verifiedAt": "2026-11-27T13:17:31.768180+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/sallust-iugurtha-la.json",
+      "workId": "sallust-iugurtha",
+      "language": "la",
+      "sha256": "05ec867cdf57d78ba399298a512278380d5ff42b36db26816bff98f9b66cc0c7",
+      "passages": 114,
+      "bytes": 156045,
+      "verifiedAt": "2026-11-27T13:17:32.583928+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/seneca-de-brevitate-en.json",
+      "workId": "seneca-de-brevitate",
+      "language": "en",
+      "sha256": "da60ed91c5dc4f81fa5136408421ad787a874620a8880441fec9e1d9d551a1ad",
+      "passages": 20,
+      "bytes": 64164,
+      "verifiedAt": "2026-11-27T13:18:32.455771+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/seneca-de-brevitate-es.json",
+      "workId": "seneca-de-brevitate",
+      "language": "es",
+      "sha256": "2a1875b5080489453ce24be97f10e0c756f28448caae765d6e388c7c8435df87",
+      "passages": 21,
+      "bytes": 54949,
+      "verifiedAt": "2026-11-27T13:18:33.307537+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/seneca-de-brevitate-fr.json",
+      "workId": "seneca-de-brevitate",
+      "language": "fr",
+      "sha256": "b4fc01191859e8b37d9ce494301ae4ad3a568ddf69b5c4f0629e0c0236a28646",
+      "passages": 20,
+      "bytes": 37307,
+      "verifiedAt": "2026-11-27T13:18:34.093129+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/seneca-de-brevitate-la.json",
+      "workId": "seneca-de-brevitate",
+      "language": "la",
+      "sha256": "a69987ee32ef935b871ff55531e1c5915540be388eeffb520af868cadae3f8e2",
+      "passages": 20,
+      "bytes": 44705,
+      "verifiedAt": "2026-11-27T13:18:34.829229+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/seneca-de-clementia-la.json",
+      "workId": "seneca-de-clementia",
+      "language": "la",
+      "sha256": "3a246a3e723345223b101e57de4d3a2aa8a04921302d891ec1e99d658551daa9",
+      "passages": 152,
+      "bytes": 74884,
+      "verifiedAt": "2026-11-27T13:18:35.674809+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/seneca-de-ira-la.json",
+      "workId": "seneca-de-ira",
+      "language": "la",
+      "sha256": "9374ea91fbcdb2886496ef3739761f48405a4548ef4b3a0563921830370fbad3",
+      "passages": 485,
+      "bytes": 247936,
+      "verifiedAt": "2026-11-27T13:18:36.600426+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/seneca-de-tranquillitate-la.json",
+      "workId": "seneca-de-tranquillitate",
+      "language": "la",
+      "sha256": "77524da0072946d20c7ea883b49af5ac7bc8fede77a5ec4dae755e22976be3ec",
+      "passages": 139,
+      "bytes": 79835,
+      "verifiedAt": "2026-11-27T13:18:37.620913+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/seneca-epistulae-la.json",
+      "workId": "seneca-epistulae",
+      "language": "la",
+      "sha256": "5d06f083451b1dd8c896efe51f0f3678450e38b31066023305b8b5605cd7a4b5",
+      "passages": 94,
+      "bytes": 20383,
+      "verifiedAt": "2026-11-27T13:18:38.571852+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/seneca-naturales-la.json",
+      "workId": "seneca-naturales",
+      "language": "la",
+      "sha256": "c3a0e49d9b0ab66a2e2fccc9698a3b1dc7eb145d89c852d9acb822ad6664b89c",
+      "passages": 196,
+      "bytes": 361838,
+      "verifiedAt": "2026-11-27T13:18:39.508249+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/seneca-tragoediae-la.json",
+      "workId": "seneca-tragoediae",
+      "language": "la",
+      "sha256": "82628cbcd522fb0f465dac60a6db870ea935c2cc4c4e4af4c49b05ab66dd8234",
+      "passages": 1503,
+      "bytes": 710921,
+      "verifiedAt": "2026-11-27T13:18:40.512067+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/siculus-flaccus-la.json",
+      "workId": "siculus-flaccus",
+      "language": "la",
+      "sha256": "5402b7023291de9f3a90b518305bd18a47a5be6fbd003e4abb2bb8a1e003b31e",
+      "passages": 31,
+      "bytes": 30003,
+      "verifiedAt": "2026-11-27T13:18:41.365404+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/silius-punica-la.json",
+      "workId": "silius-punica",
+      "language": "la",
+      "sha256": "a5a22b1857d16d321feac81859bd02e611576f3ff1ec123cecb97fd0e5abdf93",
+      "passages": 1529,
+      "bytes": 772492,
+      "verifiedAt": "2026-11-27T13:18:42.320189+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/sophocles-ajax-en.json",
+      "workId": "sophocles-ajax",
+      "language": "en",
+      "sha256": "ad3ff885f321b85ed0f0c8b5bdb867805bc0a4ea7df5b6ae797addf2515bf5d7",
+      "passages": 528,
+      "bytes": 119850,
+      "verifiedAt": "2026-11-27T13:18:43.215583+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/sophocles-ajax-grc.json",
+      "workId": "sophocles-ajax",
+      "language": "grc",
+      "sha256": "7df1498d52a6c92d4cfe790c54542f88586bc1a3077c32753347d7c8367d090e",
+      "passages": 178,
+      "bytes": 135619,
+      "verifiedAt": "2026-11-27T13:18:44.113366+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/sophocles-antigone-en.json",
+      "workId": "sophocles-antigone",
+      "language": "en",
+      "sha256": "28c2e1ebda7f06716cfb6930b8016f00422debc05d3902948462806d02888ca1",
+      "passages": 52,
+      "bytes": 71783,
+      "verifiedAt": "2026-11-27T13:18:45.005832+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/sophocles-antigone-grc.json",
+      "workId": "sophocles-antigone",
+      "language": "grc",
+      "sha256": "8071a32c18892a7f234215a30dc721cd34e5af5a94c94be923aec8671fa67610",
+      "passages": 163,
+      "bytes": 124025,
+      "verifiedAt": "2026-11-27T13:18:45.962224+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/sophocles-electra-en.json",
+      "workId": "sophocles-electra",
+      "language": "en",
+      "sha256": "57df878c04e8742d80d93a0ffb061a828a2192c1334bc82ae7146654fb5ea5ee",
+      "passages": 65,
+      "bytes": 81051,
+      "verifiedAt": "2026-11-27T13:18:46.806908+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/sophocles-electra-grc.json",
+      "workId": "sophocles-electra",
+      "language": "grc",
+      "sha256": "885aa91a9c3fe0c8f2908c76a4bbae5da899d635050a7fb3db2e0fdea782bf2b",
+      "passages": 190,
+      "bytes": 145885,
+      "verifiedAt": "2026-11-27T13:18:47.767801+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/sophocles-oedipus-colonus-en.json",
+      "workId": "sophocles-oedipus-colonus",
+      "language": "en",
+      "sha256": "acd05fc0ab9fca4422783e8a048c60e7e5eb9a823250ee64916a90ac4b2a5556",
+      "passages": 82,
+      "bytes": 94268,
+      "verifiedAt": "2026-11-27T13:18:48.545710+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/sophocles-oedipus-colonus-grc.json",
+      "workId": "sophocles-oedipus-colonus",
+      "language": "grc",
+      "sha256": "f826927390d5fea3e1cb17d372b58e3775e4e9e88cca15157d63d30fb4c76989",
+      "passages": 232,
+      "bytes": 172444,
+      "verifiedAt": "2026-11-27T13:18:49.455489+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/sophocles-oedipus-en.json",
+      "workId": "sophocles-oedipus",
+      "language": "en",
+      "sha256": "37d9f6cee650d4ed41528d7b2c4b948d9533dfaab5aa5865c4f7af49fe57033f",
+      "passages": 69,
+      "bytes": 82515,
+      "verifiedAt": "2026-11-27T13:18:50.329310+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/sophocles-oedipus-grc.json",
+      "workId": "sophocles-oedipus",
+      "language": "grc",
+      "sha256": "e784d92dd6c07fb0f52120b37c61f0c6675c0660b35398c2baf48f585be1a8d0",
+      "passages": 188,
+      "bytes": 150531,
+      "verifiedAt": "2026-11-27T13:18:51.149943+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/sophocles-philoctetes-en.json",
+      "workId": "sophocles-philoctetes",
+      "language": "en",
+      "sha256": "6e1c6f9225e03b1b85ea8815c38b5c79893d3c88561319f87baf88178321b6d8",
+      "passages": 63,
+      "bytes": 81136,
+      "verifiedAt": "2026-11-27T13:18:52.143595+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/sophocles-philoctetes-grc.json",
+      "workId": "sophocles-philoctetes",
+      "language": "grc",
+      "sha256": "e604bcbf89935aa466c5784d39ff144cfdc26e22947bbdc721ec32a631cbc93a",
+      "passages": 185,
+      "bytes": 143199,
+      "verifiedAt": "2026-11-27T13:18:53.125840+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/sophocles-trachiniae-en.json",
+      "workId": "sophocles-trachiniae",
+      "language": "en",
+      "sha256": "d61c8d8e873b520a645a92c7bca6d32ad84530faf898b7726005adddf2ffbb01",
+      "passages": 480,
+      "bytes": 108500,
+      "verifiedAt": "2026-11-27T13:18:54.051593+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/sophocles-trachiniae-grc.json",
+      "workId": "sophocles-trachiniae",
+      "language": "grc",
+      "sha256": "333082c019e22f18eab7817f9c197122ded77698371134b264af9d880ae54183",
+      "passages": 161,
+      "bytes": 124218,
+      "verifiedAt": "2026-11-27T13:18:54.919169+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/statius-thebais-la.json",
+      "workId": "statius-thebais",
+      "language": "la",
+      "sha256": "c7e8e33ddd5e901ed5ab1a421382068347723843a6f3f256d603e3fd7dced9e9",
+      "passages": 1220,
+      "bytes": 629549,
+      "verifiedAt": "2026-11-27T13:18:56.021951+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/strabo-grc.json",
+      "workId": "strabo",
+      "language": "grc",
+      "sha256": "7b190b18a3199dd5e6ad291e6ed55420e41d862fc02329d7e7aa9193dcd77b28",
+      "passages": 1709,
+      "bytes": 3844006,
+      "verifiedAt": "2026-11-27T13:18:57.321097+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/suetonius-caesares-la.json",
+      "workId": "suetonius-caesares",
+      "language": "la",
+      "sha256": "c1d43ca372402095ff4c53ba9f00f5586747dfb5e2880dec15082299a7500212",
+      "passages": 1227,
+      "bytes": 692420,
+      "verifiedAt": "2026-11-27T13:18:58.507138+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/sulpicia-elegiae-es.json",
+      "workId": "sulpicia-elegiae",
+      "language": "es",
+      "sha256": "0eaea97ba5302d7228c49f9799e02f6735bf58783921ef5f56b7776d244294ad",
+      "passages": 6,
+      "bytes": 2961,
+      "verifiedAt": "2026-11-27T13:18:59.410470+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/sulpicia-elegiae-la.json",
+      "workId": "sulpicia-elegiae",
+      "language": "la",
+      "sha256": "9c7b12695c668fac6e8bc428c3a5e59432b69d643407dd26e0827320a2d15406",
+      "passages": 6,
+      "bytes": 3031,
+      "verifiedAt": "2026-11-27T13:19:00.203378+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/tacitus-agricola-en.json",
+      "workId": "tacitus-agricola",
+      "language": "en",
+      "sha256": "340dc5dbe4c6c81331bc4fcf4d3787f3c61a9d8f36adc2bb53e1d789e5c63ad5",
+      "passages": 46,
+      "bytes": 78787,
+      "verifiedAt": "2026-11-27T13:19:01.075482+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/tacitus-agricola-la.json",
+      "workId": "tacitus-agricola",
+      "language": "la",
+      "sha256": "3aba501c88af4873e2b925f6e1ece2a4e18597f59a0b41f8f3378edfbada5ebb",
+      "passages": 213,
+      "bytes": 78934,
+      "verifiedAt": "2026-11-27T13:19:01.964347+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/tacitus-annales-la.json",
+      "workId": "tacitus-annales",
+      "language": "la",
+      "sha256": "8527ec8b727576f33c7dada0dfebbc95bf195784afabb9c50117595f427a264a",
+      "passages": 721,
+      "bytes": 758623,
+      "verifiedAt": "2026-11-27T13:19:02.847775+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/tacitus-dialogus-la.json",
+      "workId": "tacitus-dialogus",
+      "language": "la",
+      "sha256": "d02877e720389541fc3f907e7c62172e6a0e8cdf3ff98863d6aeec210268c441",
+      "passages": 226,
+      "bytes": 96039,
+      "verifiedAt": "2026-11-27T13:19:03.717397+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/tacitus-germania-la.json",
+      "workId": "tacitus-germania",
+      "language": "la",
+      "sha256": "4dd71560d122aba35e4b98218d9548256ba50f493a2ecb7835801f976d796f1c",
+      "passages": 187,
+      "bytes": 65304,
+      "verifiedAt": "2026-11-27T13:19:04.515283+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/tacitus-historiae-la.json",
+      "workId": "tacitus-historiae",
+      "language": "la",
+      "sha256": "4e1ec640f4d07da084ad34bea3a9cb14c00c8505908f1641b84a154c1e4bde0e",
+      "passages": 389,
+      "bytes": 440214,
+      "verifiedAt": "2026-11-27T13:19:05.417197+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/terentius-andria-la.json",
+      "workId": "terentius-andria",
+      "language": "la",
+      "sha256": "d6abd022521d93a1d300e3df50d86d910d5f8584a4829d2be306ee1ec849f00a",
+      "passages": 187,
+      "bytes": 78715,
+      "verifiedAt": "2026-11-27T13:19:06.299812+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/terentius-heautontimorumenos-la.json",
+      "workId": "terentius-heautontimorumenos",
+      "language": "la",
+      "sha256": "36f4899003404b7a3dd3a77d0dcef606b47b2e5c80a497d5e5fc69550d583b98",
+      "passages": 198,
+      "bytes": 87964,
+      "verifiedAt": "2026-11-27T13:19:07.271998+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/tertullian-la.json",
+      "workId": "tertullian",
+      "language": "la",
+      "sha256": "71ac73cd15424e4838d294d2d33d8197621215421f17e8520d3da2c0d4210fe1",
+      "passages": 506,
+      "bytes": 191957,
+      "verifiedAt": "2026-11-27T13:19:08.113592+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/theocritus-idyllia-grc.json",
+      "workId": "theocritus-idyllia",
+      "language": "grc",
+      "sha256": "53bd3824fac7ca607de2292129ab43cd01f99656e3dacb74005881078105f994",
+      "passages": 2714,
+      "bytes": 473529,
+      "verifiedAt": "2026-11-27T13:20:01.088567+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/theophrastus-characters-en.json",
+      "workId": "theophrastus-characters",
+      "language": "en",
+      "sha256": "265266c6552ea7233989ae9d925ea499889122a8b7f774372699fa0ad300f078",
+      "passages": 30,
+      "bytes": 52239,
+      "verifiedAt": "2026-11-27T13:20:02.057647+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/theophrastus-characters-grc.json",
+      "workId": "theophrastus-characters",
+      "language": "grc",
+      "sha256": "865924093dd978a427977651667bafc172513336e815afe6a223d5a27b3217cc",
+      "passages": 31,
+      "bytes": 88165,
+      "verifiedAt": "2026-11-27T13:20:03.001242+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/tibullus-elegiae-la.json",
+      "workId": "tibullus-elegiae",
+      "language": "la",
+      "sha256": "47e01ac2076368f796f72b77a3219008078764ae658b79d3ab197ad0a4150241",
+      "passages": 249,
+      "bytes": 115044,
+      "verifiedAt": "2026-11-27T13:20:03.975888+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/valerius-maximus-facta-la.json",
+      "workId": "valerius-maximus-facta",
+      "language": "la",
+      "sha256": "6d80df6e0b2b082e6448e6548761bc592b424a0b39c9de02c386a335f0a4f6d8",
+      "passages": 1027,
+      "bytes": 690607,
+      "verifiedAt": "2026-11-27T13:20:04.967094+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/varro-de-lingua-latina-la.json",
+      "workId": "varro-de-lingua-latina",
+      "language": "la",
+      "sha256": "45087f7439450af71c9b16027ecef82b82f016e70e6abca7f2eb74aeb4a11fae",
+      "passages": 666,
+      "bytes": 284663,
+      "verifiedAt": "2026-11-27T13:20:05.809506+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/vegetius-epitoma-la.json",
+      "workId": "vegetius-epitoma",
+      "language": "la",
+      "sha256": "12bdbaaa9c2fb5a2b647509221a8be6c9e84dc3e888153f73408f63ef6034b24",
+      "passages": 163,
+      "bytes": 201387,
+      "verifiedAt": "2026-11-27T13:20:06.824716+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/velleius-historia-la.json",
+      "workId": "velleius-historia",
+      "language": "la",
+      "sha256": "dec4679491480a500dc2ac7fd5b520e108dc398ab37a6690824e1916e91cc8bb",
+      "passages": 115,
+      "bytes": 214817,
+      "verifiedAt": "2026-11-27T13:20:07.682557+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/virgil-aeneid-en.json",
+      "workId": "virgil-aeneid",
+      "language": "en",
+      "sha256": "20ef4702a0d62a047f4ca66c9de94bd3ae2c6be2cbc3d443f464e0671d2d0d37",
+      "passages": 327,
+      "bytes": 618632,
+      "verifiedAt": "2026-11-27T13:20:08.646291+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/virgil-aeneid-la.json",
+      "workId": "virgil-aeneid",
+      "language": "la",
+      "sha256": "578ea204123355cecbf8c284b7667e78db0dbff57f54c0bac036f1fa30e027c0",
+      "passages": 392,
+      "bytes": 473313,
+      "verifiedAt": "2026-11-27T13:20:10.341953+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/virgil-georgica-en.json",
+      "workId": "virgil-georgica",
+      "language": "en",
+      "sha256": "e699c2839dd687baf9ece8714018b699728a2e997ea162c16857d0f133ff6877",
+      "passages": 84,
+      "bytes": 133292,
+      "verifiedAt": "2026-11-27T13:20:11.445471+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/virgil-georgica-la.json",
+      "workId": "virgil-georgica",
+      "language": "la",
+      "sha256": "e5caa6d6297b40b295ea8ce171c238a0e85de2cf345520939070ae7ef54a3b67",
+      "passages": 84,
+      "bytes": 105034,
+      "verifiedAt": "2026-11-27T13:20:12.418850+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/xenophon-agesilaus-grc.json",
+      "workId": "xenophon-agesilaus",
+      "language": "grc",
+      "sha256": "14ab644c8c29bdfb2fb1b350a61e83314ca9da988712a0c5dae12714beaeab8a",
+      "passages": 137,
+      "bytes": 106604,
+      "verifiedAt": "2026-11-27T13:20:13.416569+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/xenophon-anabasis-en.json",
+      "workId": "xenophon-anabasis",
+      "language": "en",
+      "sha256": "1167974555edde0c855c5fd63c8ad64375913103741917deba71be47af8a8af9",
+      "passages": 1469,
+      "bytes": 738751,
+      "verifiedAt": "2026-11-27T13:20:14.689825+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/xenophon-anabasis-grc.json",
+      "workId": "xenophon-anabasis",
+      "language": "grc",
+      "sha256": "c75c612e1f2c8637ee45c1b72d660d45a2fb427136837ed67799f90c1fa04dd6",
+      "passages": 1469,
+      "bytes": 904395,
+      "verifiedAt": "2026-11-27T13:20:15.740202+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/xenophon-apology-grc.json",
+      "workId": "xenophon-apology",
+      "language": "grc",
+      "sha256": "2a4d94899379bf2be55774cb13538a17ce9340be4cf22b14c453b515bb75729f",
+      "passages": 34,
+      "bytes": 28912,
+      "verifiedAt": "2026-11-27T13:20:16.616788+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/xenophon-hellenica-grc.json",
+      "workId": "xenophon-hellenica",
+      "language": "grc",
+      "sha256": "603f1081e10fa30e1ae7d9b817224ee83e080e6f80afbe74fd916575d5f37f25",
+      "passages": 1146,
+      "bytes": 996479,
+      "verifiedAt": "2026-11-27T13:20:17.533222+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/xenophon-hiero-grc.json",
+      "workId": "xenophon-hiero",
+      "language": "grc",
+      "sha256": "2515b563c62891b91c44ce762e9b875fb0067befd917f08373e0dd696633c828",
+      "passages": 153,
+      "bytes": 88334,
+      "verifiedAt": "2026-11-27T13:20:18.369425+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/xenophon-hipparchicus-grc.json",
+      "workId": "xenophon-hipparchicus",
+      "language": "grc",
+      "sha256": "58c7dab64c090447747e262575069bba8ab9c5af247f77b78add124532ef9006",
+      "passages": 140,
+      "bytes": 85634,
+      "verifiedAt": "2026-11-27T13:20:19.338706+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/xenophon-horsemanship-grc.json",
+      "workId": "xenophon-horsemanship",
+      "language": "grc",
+      "sha256": "45d458bb9f567b78e37a76c2c9232067ca8ef1c28c521218496713e1c5c26a39",
+      "passages": 155,
+      "bytes": 98301,
+      "verifiedAt": "2026-11-27T13:20:20.289036+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/xenophon-hunting-grc.json",
+      "workId": "xenophon-hunting",
+      "language": "grc",
+      "sha256": "9f84cb598949d736cee17492fbdc7475a6064544eee09fb8cba2c429c6154686",
+      "passages": 217,
+      "bytes": 131621,
+      "verifiedAt": "2026-11-27T13:20:21.240799+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/xenophon-lacedaemonian-constitution-grc.json",
+      "workId": "xenophon-lacedaemonian-constitution",
+      "language": "grc",
+      "sha256": "044a4d0c45d39da791f3fdf7f0d32b651bcec61815f075db996ba55a0c49fdec",
+      "passages": 120,
+      "bytes": 74258,
+      "verifiedAt": "2026-11-27T13:20:22.055539+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/xenophon-memorabilia-en.json",
+      "workId": "xenophon-memorabilia",
+      "language": "en",
+      "sha256": "b072d124b2d1f90904e098da8c26d361ee86488f898a68d151960276c0eb3814",
+      "passages": 608,
+      "bytes": 306599,
+      "verifiedAt": "2026-11-27T13:20:23.004495+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/xenophon-memorabilia-grc.json",
+      "workId": "xenophon-memorabilia",
+      "language": "grc",
+      "sha256": "45522fc51b469df7b6701675114e9fa9f8be70d8428f66b908bf0a4b5da0d345",
+      "passages": 608,
+      "bytes": 513134,
+      "verifiedAt": "2026-11-27T13:20:24.032289+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/xenophon-oeconomicus-grc.json",
+      "workId": "xenophon-oeconomicus",
+      "language": "grc",
+      "sha256": "283f2b1424172aa739b506d23fc1eb2603781c0693a2a0ba2d7f2cfcdd8d58a3",
+      "passages": 397,
+      "bytes": 250369,
+      "verifiedAt": "2026-11-27T13:20:24.978224+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/xenophon-symposium-grc.json",
+      "workId": "xenophon-symposium",
+      "language": "grc",
+      "sha256": "cb0a8ab7bcbba9c541e60d4df9771cb86497061f5d527658d46a6c3f670a30f2",
+      "passages": 196,
+      "bytes": 131103,
+      "verifiedAt": "2026-11-27T13:20:25.800106+00:00",
+      "status": "uploaded-and-verified"
+    },
+    {
+      "key": "corpus/xenophon-ways-means-grc.json",
+      "workId": "xenophon-ways-means",
+      "language": "grc",
+      "sha256": "6c7f2ee0eada84ebb9f2a6954b9e2e60f4db514ee8d8c3a5c160e754349ee53f",
+      "passages": 97,
+      "bytes": 57647,
+      "verifiedAt": "2026-11-27T13:20:26.672789+00:00",
+      "status": "uploaded-and-verified"
     }
   ],
-  "updated": "2026-11-22T14:00:13.313441+00:00"
+  "updated": "2026-11-27T13:21:38.917267+00:00",
+  "bucketBytesObserved": 9522672392,
+  "bucketByteLimit": 10000000000,
+  "issues": []
 }
