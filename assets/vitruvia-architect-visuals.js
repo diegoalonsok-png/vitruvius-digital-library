@@ -31,7 +31,7 @@ async function photo(item,work){
  // Imagen declarada en Wikidata (P18) para esta misma obra: prioridad sobre la búsqueda por título.
  if(/^https:\/\/commons\.wikimedia\.org\/wiki\/Special:FilePath\//.test(work.image||'')){
   const fig=commonsPlate(item,work.image,localized('Foto documentada de ','Documentary photo of ','Photo documentaire de ')+work.title,'architecture-work-photo-link');
-  item.insertBefore(fig,item.querySelector('.architecture-work-content')||item.firstChild);return;
+  item.append(fig);return;
  }
  const title=work.photoTitle||work.title;
  if(!title||!item.isConnected)return;
@@ -49,35 +49,92 @@ async function photo(item,work){
  image.loading='lazy';image.decoding='async';
  image.addEventListener('error',()=>fig.remove());fig.append(image);
  const body=item.querySelector('.architecture-work-content');
- item.insertBefore(fig,body||item.firstChild);
+ item.append(fig);
 }
-async function drawings(target,work){
- const name=work.photoTitle||work.title;
- const terms=words(name),url='https://commons.wikimedia.org/w/api.php?'+new URLSearchParams({
-  action:'query',generator:'search',gsrsearch:'"'+name.replace(/["“”]/g,'')+'" (plan OR section OR elevation OR grundriss OR coupe OR pianta)',
-  gsrnamespace:'6',gsrlimit:'40',prop:'imageinfo',iiprop:'url|mime|extmetadata',iiurlwidth:'520',format:'json',origin:'*'});
- const data=await read(url);if(!target.isConnected)return;
+const drawingKinds={
+ plan:{label:['Plantas','Floor plans','Plans'],terms:'("floor plan" OR Grundriss OR planta OR pianta OR "ground floor" OR "plan du rez")',pattern:/\b(floor plans?|floorplans?|ground floor|first floor plan|upper floor plan|grundrisse?|plantas?|piante?|pianta|planimetr\w*|plan du rez|plan d.etage)\b/i},
+ section:{label:['Cortes','Sections','Coupes'],terms:'("section drawing" OR "cross section" OR Schnitt OR corte OR coupe OR sezione)',pattern:/\b(sections?|schnitt\w*|cortes?|seccion(?:es)?|coupes?|sezione|sezioni)\b/i},
+ elevation:{label:['Vistas / alzados','Elevations','Élévations'],terms:'("elevation drawing" OR elevation OR alzado OR ansicht OR elevation architecturale)',pattern:/\b(elevations?|elevaciones?|alzado[s]?|ansicht\w*|alzato|alzati)\b/i}
+};
+const institutional={
+ 'curutchet': 'https://www.fondationlecorbusier.fr/en/work-architecture/achievements-docteur-curutchets-house-la-plata-argentina-1949/',
+ 'robie house':'https://www.loc.gov/resource/hhh.il0039.sheet?st=gallery',
+ 'ennis house':'https://www.loc.gov/item/ca0227/'
+};
+function classifyDrawing(title,description){
+ const t=norm(title),d=norm(description);
+ if(/\b(tourist map|locator map|location map|carte routiere|aerial photo|street view|photograph of facade|photo de facade)\b/.test(t))return [];
+ // The drawing type must occur in the filename or in an explicitly identified drawing.
+ // A photograph's description mentioning a floor plan does not make it a drawing.
+ const drawingEvidence=/\b(drawing|drawings|measured drawing|architectural drawing|dessin|zeichnung|dibujo|habs|blueprint|planche|lamina)\b/.test(t+' '+d);
+ return Object.entries(drawingKinds).filter(([k,v])=>v.pattern.test(t)||(drawingEvidence&&v.pattern.test(d))).map(([k])=>k);
+}
+function drawingRecord(page,work){
+ const info=page.imageinfo?.[0],title=String(page.title||'').replace(/^File:/,'').replace(/\.[^.]+$/,'');
+ const description=String(info?.extmetadata?.ImageDescription?.value||'').replace(/<[^>]*>/g,' ');
+ const names=[work.title,work.photoTitle].filter(Boolean),hay=new Set(words(title+' '+description));
+ const matched=names.some(name=>{const ts=words(name);return ts.length>0&&ts.every(t=>hay.has(t))});
+ if(!matched||!/^https:\/\/commons\.wikimedia\.org\//.test(info?.descriptionurl||'')||!/^https:\/\//.test(info?.thumburl||'')||!/^image\/(jpeg|png|webp|gif|svg\+xml)$/.test(String(info?.mime||'')))return null;
+ const kinds=classifyDrawing(title,description);return kinds.length?{title,preview:info.thumburl,href:info.descriptionurl,kinds}:null;
+}
+function makeDrawingSlots(target,work){
  target.replaceChildren();
- const items=Object.values(data?.query?.pages||{}).map(x=>{
-  const info=x.imageinfo?.[0],title=String(x.title||'').replace(/^File:/,'').replace(/\.[^.]+$/,'');
-  const description=String(info?.extmetadata?.ImageDescription?.value||'').replace(/<[^>]*>/g,' ');
-  // A tourist map labelled simply «plan» is not an architectural floor plan.
-  const technical=/floor.?plan|ground.?floor|upper.?floor|grundriss|pianta|planta|planimetr|architectural|architectur|HABS|section|seccion|corte|schnitt|coupe|elevation|alzato|rez.de.chaussee/i.test(title+' '+description);
-  const mapOnly=/tourist|tourisme|environs|location map|locator map|carte routiere|plan de situation/i.test(title+' '+description)&&!type.test(title.replace(/\bplan\b/ig,''));
-  const matched=terms.length>0&&terms.every(term=>words(title+' '+description).includes(term));
-  return terms.length&&matched&&(type.test(title)||/HABS.*sheet|measured drawing/i.test(title+' '+description))&&technical&&!mapOnly&&/^image\/(jpeg|png|webp|gif|svg\+xml)$/.test(String(info?.mime||''))&&
-   /^https:\/\//.test(info?.thumburl||'')&&/^https:\/\/commons\.wikimedia\.org\//.test(info?.descriptionurl||'')
-   ?{title,preview:info.thumburl,href:info.descriptionurl,kind:/floor.?plan|ground.?floor|upper.?floor|grundriss|pianta|planta|planimetr/i.test(title+' '+description)?'plan':/section|seccion|corte|schnitt|coupe|sezione/i.test(title+' '+description)?'section':'elevation'}:null;
- }).filter(Boolean).sort((a,b)=>({plan:0,section:1,elevation:2}[a.kind]-{plan:0,section:1,elevation:2}[b.kind])||a.title.localeCompare(b.title)).slice(0,6);
- for(const x of items){
-  const plate=element('figure','architecture-plate');
-  const source=a('',x.href),img=element('img');img.src=x.preview;img.loading='lazy';img.alt=x.title;source.append(img);plate.append(source);
-  plate.append(element('figcaption',null,x.title));
-  plate.append(a(localized('Ficha, autor y licencia ↗','Record, creator and license ↗','Fiche, auteur et licence ↗'),x.href));target.append(plate);
+ const slots={};
+ for(const [kind,config] of Object.entries(drawingKinds)){
+  const group=element('section','architecture-drawing-slot');group.dataset.drawingKind=kind;
+  group.append(element('strong','architecture-drawing-label',localized(...config.label)));
+  const results=element('div','architecture-drawing-results');
+  const status=element('p','architecture-drawing-status',localized('Buscando documentación…','Searching records…','Recherche documentaire…'));
+  group.append(results,status);target.append(group);slots[kind]={group,results,status};
  }
- if(!items.length&&work.url)target.append(a(localized('Documentación de la obra · fuente','Building documentation · source','Documentation de l’édifice · source'),work.url));
- const search='https://commons.wikimedia.org/w/index.php?'+new URLSearchParams({title:'Special:MediaSearch',type:'image',search:name+' plan section elevation'});
- target.append(a(localized('Consultar más láminas en Commons ↗','Find more documentary drawings ↗','Chercher davantage de dessins ↗'),search));
+ return slots;
+}
+let running=0;const queue=[];
+function queued(task){return new Promise((resolve,reject)=>{queue.push({task,resolve,reject});pump()})}
+function pump(){while(running<3&&queue.length){const entry=queue.shift();running++;Promise.resolve().then(entry.task).then(entry.resolve,entry.reject).finally(()=>{running--;pump()})}}
+async function drawings(target,work){
+ const name=work.photoTitle||work.title,slots=makeDrawingSlots(target,work);
+ const clean=name.replace(/["“”]/g,'');
+ const source=Object.entries(institutional).find(([key])=>norm(work.title+' '+(work.photoTitle||'')).includes(key))?.[1]||work.url||work.href;
+ const pages=await Promise.all(Object.entries(drawingKinds).map(async ([kind,config])=>{
+  const search='"'+clean+'" '+config.terms;
+  const url='https://commons.wikimedia.org/w/api.php?'+new URLSearchParams({action:'query',generator:'search',gsrsearch:search,gsrnamespace:'6',gsrlimit:'18',prop:'imageinfo',iiprop:'url|mime|extmetadata',iiurlwidth:'640',format:'json',origin:'*'});
+  const data=await queued(()=>target.isConnected?read(url):null);
+  return {kind,data,search};
+ }));
+ if(!target.isConnected)return;
+ const records=new Map();
+ for(const {data} of pages)for(const page of Object.values(data?.query?.pages||{})){
+  const record=drawingRecord(page,work);if(record)records.set(record.href,record);
+ }
+ for(const {kind,data,search} of pages){
+  const slot=slots[kind];
+  const candidates=[...records.values()].filter(r=>r.kinds.includes(kind)).sort((a,b)=>a.title.localeCompare(b.title)).slice(0,2);
+  const addPlate=x=>{
+   const plate=element('figure','architecture-plate'),ref=a('',x.href),img=element('img');
+   img.src=x.preview;img.loading='lazy';img.decoding='async';img.alt=x.title;ref.append(img);plate.append(ref);
+   plate.append(element('figcaption',null,x.title),a(localized('Ficha y licencia ↗','Record and license ↗','Notice et licence ↗'),x.href));slot.results.append(plate);
+   img.addEventListener('error',()=>{plate.remove();if(!slot.results.children.length){slot.status.hidden=false;slot.status.textContent=localized('Miniatura no disponible; consultar la fuente.','Thumbnail unavailable; consult source.','Vignette indisponible ; consulter la source.')}},{once:true});
+  };
+  for(const x of candidates)addPlate(x);
+  const registered=kind==='plan'&&/^https:\/\/commons\.wikimedia\.org\/wiki\/Special:FilePath\//.test(work.plan||'');
+  if(registered){const plate=commonsPlate(target,work.plan,localized('Planta registrada · ','Registered floor plan · ','Plan enregistré · ')+work.title,'architecture-plan-link');slot.results.prepend(plate);}
+  slot.status.hidden=candidates.length>0||registered;
+  slot.status.textContent=data?localized('No se recuperó una lámina verificada de este tipo.','No verified drawing of this type returned.','Aucun dessin vérifié de ce type retrouvé.'):localized('Fuente temporalmente no disponible.','Source temporarily unavailable.','Source temporairement indisponible.');
+  if(source&&/^https:\/\//.test(source))slot.group.append(a(localized('Consultar archivo de la obra ↗','Consult building record ↗','Consulter le dossier ↗'),source));
+  slot.group.append(a(localized('Buscar láminas de este tipo ↗','Find drawings of this type ↗','Chercher ce type de dessin ↗'),'https://commons.wikimedia.org/wiki/Special:MediaSearch?'+new URLSearchParams({type:'image',search})));
+ }
+}
+function attachDrawings(target,work){
+ if(!target||!work?.title||target.dataset.drawingReady)return;
+ target.dataset.drawingReady='true';target.classList.add('architecture-plate-stack');
+ makeDrawingSlots(target,work);
+ let started=false;
+ const start=()=>{if(started||!target.isConnected)return;started=true;void drawings(target,work).catch(()=>{if(target.isConnected)for(const x of target.querySelectorAll('.architecture-drawing-status'))x.textContent=localized('Documentación temporalmente no disponible.','Documentation temporarily unavailable.','Documentation temporairement indisponible.')})};
+ if(typeof IntersectionObserver!=='undefined'){
+  const observer=new IntersectionObserver(entries=>{if(entries.some(x=>x.isIntersecting)&&target.isConnected){observer.disconnect();start()}},{rootMargin:'180px'});
+  observer.observe(target);
+ }else queueMicrotask(start);
 }
 function enhance(item,work){
  if(!item||!work?.title||item.dataset.visualReady)return;
@@ -87,23 +144,13 @@ function enhance(item,work){
  item.append(content);
  if(work.description)content.append(element('p','architecture-work-review',work.description));
  // Planta declarada en Wikidata (P3311) para esta obra: se muestra sin desplegar nada.
- if(/^https:\/\/commons\.wikimedia\.org\/wiki\/Special:FilePath\//.test(work.plan||''))
-  content.append(commonsPlate(item,work.plan,localized('Planta · ','Plan · ','Plan · ')+work.title,'architecture-plan-link'));
- const box=element('div','architecture-plate-stack');
- box.style.cssText='display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,155px),1fr));gap:10px;grid-column:1/-1';
- item.append(box);
- let requested=false;
- const loadDrawings=()=>{if(requested||!item.isConnected)return;requested=true;
-  void drawings(box,work).catch(()=>{if(box.isConnected)box.replaceChildren(a(localized('Consultar documentación de la obra','Consult building documentation','Consulter la documentation'),work.url||work.href))});
- };
- if(typeof IntersectionObserver!=='undefined'){
-  const watcher=new IntersectionObserver(entries=>{if(entries.some(x=>x.isIntersecting)&&item.isConnected){watcher.disconnect();loadDrawings()}},{rootMargin:'300px'});watcher.observe(item);
- }else queueMicrotask(loadDrawings);
+ const box=element('div','architecture-plate-stack');item.insertBefore(box,content);
+ attachDrawings(box,work);
  // Load photos when a card is about to enter the visible right-hand scroll pane.
  if(typeof IntersectionObserver!=='undefined'){
   const observer=new IntersectionObserver(entries=>{if(entries.some(x=>x.isIntersecting)){observer.disconnect();void photo(item,work).catch(()=>{})}},{rootMargin:'220px'});
   observer.observe(item);
  }else void photo(item,work).catch(()=>{});
 }
-window.VitruviaArchitectVisuals={enhance};
+window.VitruviaArchitectVisuals={enhance,attachDrawings,classifyDrawing,drawingRecord};
 })();

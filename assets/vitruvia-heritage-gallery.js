@@ -23,8 +23,8 @@ async function json(url){
 }
 function card(parent,r){
  const url=verifiedUrl(r.url);if(!url)return;
- const art=el('article','vhg-card'),poster=link(r.title,url),desc=el('div','vhg-info');
- poster.className='vhg-image-link';
+ const art=el('article','vhg-card'),poster=link('',url),desc=el('div','vhg-info');
+ poster.className='vhg-image-link';poster.setAttribute('aria-label',r.title);
  if(verifiedUrl(r.image)){
   const img=el('img','vhg-image');img.src=r.image;img.alt=r.title;img.loading='lazy';img.decoding='async';
   img.onerror=()=>{poster.replaceChildren(el('span','vhg-placeholder',r.kind==='music'?'♫':r.kind==='award'?'★':'▤'))};
@@ -39,7 +39,12 @@ function card(parent,r){
   desc.append(link(L('Buscar compra de CD o vinilo ↗','Find CD or vinyl to buy ↗','Chercher CD ou vinyle ↗'),
    'https://www.google.com/search?'+new URLSearchParams({q:[query,r.title,'CD vinilo comprar'].join(' ')})));
  }
- art.append(poster,desc);parent.append(art);
+ if(r.kind==='architecture'){
+  art.classList.add('vhg-architecture-card');
+  const drawings=el('div','vhg-drawings');art.append(desc,drawings,poster);parent.append(art);
+  window.VitruviaArchitectVisuals?.attachDrawings(drawings,{title:r.title,photoTitle:r.photoTitle,url:r.url,plan:r.plan});
+ }else{art.append(poster,desc);parent.append(art);}
+
 }
 function block(root,title,records,note){
  if(!records.length)return;
@@ -61,7 +66,7 @@ function classify(name,description){
  if(/\b(musician|singer|cantante|band|rock|music group|grupo musical|banda)\b/.test(d)||/the beatles|rolling stones|nirvana|radiohead/.test(n))return 'music';
  if(/\b(writer|novelist|author|poet|escritor|poeta|dramaturg|filosofo)\b/.test(d))return 'author';
  if(/\b(painter|artist|sculptor|pintor|pintora|escultor)\b/.test(d)||/leonardo da vinci|vinci leonardo/.test(n))return 'visual';
- if(/\b(architect|arquitecto)\b/.test(d))return 'architect';
+ if(/\b(architect|architecte|arquitecto|arquitecta|architetto|engineer|ingeniero|ingeniera)\b/.test(d))return 'architect';
  return 'general';
 }
 async function awards(qid){
@@ -169,7 +174,7 @@ async function authoredBooks(name){
 async function works(qid,kind){
  if(!window.VitruviaCulturalWorks?.catalogue)return [];
  const data=await window.VitruviaCulturalWorks.catalogue({wikidataId:qid},kind).catch(()=>null);
- return (data?.works||[]).filter(w=>w.href).slice(0,16).map(w=>({title:w.title,date:w.date,kind:'work',description:w.description,
+ return (data?.works||[]).filter(w=>w.href).slice(0,16).map(w=>({title:w.title,date:w.date,kind:w.building||w.medium==='architecture'?'architecture':'work',description:w.description,photoTitle:w.photoTitle,plan:w.plan,
  image:w.image,url:w.href,location:'Wikidata / Commons · verificar ubicación en ficha'}));
 }
 function manuscripts(rows){
@@ -193,7 +198,7 @@ async function render(name,entity,rows){
  if(kind==='athlete'&&qid)tasks.push(awards(qid).then(items=>({label:L('Distinciones documentadas','Documented awards','Distinctions documentées'),items,note:L('Las distinciones individuales registradas no constituyen una lista completa de copas o títulos de equipo.','Individual awards are not an exhaustive list of team trophies.','Les distinctions individuelles ne représentent pas tous les titres collectifs.')})));
  if(kind==='music')tasks.push(albums(name).then(result=>({kind:'music',label:L('Discografía y portadas','Discography and album covers','Discographie et pochettes'),...result})));
  if(kind==='author')tasks.push(authoredBooks(name).then(result=>({kind:'books',label:L('Bibliografía documentada','Documented bibliography','Bibliographie documentée'),...result})));
- if(qid&&!['athlete','music','author'].includes(kind))tasks.push(works(qid,kind).then(items=>({label:kind==='visual'?L('Pinturas y obras atribuidas','Attributed artworks','Œuvres attribuées'):kind==='composer'?L('Composiciones documentadas','Documented compositions','Compositions documentées'):L('Obras de la persona','Works by this person','Œuvres de la personne'),items})));
+ if(qid&&!['athlete','music','author'].includes(kind))tasks.push(works(qid,kind).then(items=>({label:kind==='visual'?L('Pinturas y obras atribuidas','Attributed artworks','Œuvres attribuées'):kind==='composer'?L('Composiciones documentadas','Documented compositions','Compositions documentées'):kind==='architect'?L('Obras · plantas, cortes y vistas','Works · plans, sections and elevations','Œuvres · plans, coupes et élévations'):L('Obras de la persona','Works by this person','Œuvres de la personne'),items})));
  if(!tasks.length&&!container.children.length){gallery.hidden=true;return}
  const loaded=await Promise.allSettled(tasks);
  if(id!==sequence)return;
