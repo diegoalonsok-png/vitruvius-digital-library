@@ -7,7 +7,7 @@ let query="",panel=null;
 function clear(q){query=norm(q);panel?.remove();panel=null}
 function exactURL(p){
  try{const u=new URL(p.link,location.href);if(u.origin!==location.origin||!/(?:classics-text-reader(?:\.html)?|lector-bilingue\.html|classics-simple-parallel\.html)$/.test(u.pathname))return "";
- if(/classics-text-reader(?:\.html)?$/.test(u.pathname)&&p.source)u.searchParams.set("edition",p.source);
+ if(/classics-text-reader(?:\.html)?$/.test(u.pathname)&&p.source){u.searchParams.set("edition",p.source);u.searchParams.set("lang",p.language);}
  return u.href}catch{return ""}
 }
 function render(d){
@@ -41,7 +41,7 @@ function render(d){
  function show(){
   const p=groups.get(works.value)?.[Number(loci.value)];if(!p)return;
   quote.textContent=p.originalText;quote.lang=p.language;credit.textContent=[p.locus,p.term?"Grafía: "+p.term:"",p.attribution].filter(Boolean).join(" · ");
-  exact.href=exactURL(p);link.href=window.VitruviaReaderLinks?.parallelUrl(exact.href,location.href)||exact.href;
+  exact.href=exactURL(p);link.href=window.VitruviaReaderLinks?.parallelUrl(exact.href,location.href,p.language,p.source)||exact.href;
   frame.hidden=true;frame.removeAttribute("src");
  }
  function fill(saved){loci.replaceChildren();const list=groups.get(works.value)||[];list.forEach((p,i)=>{const o=E("option",p.locus+" · "+p.term);o.value=String(i);loci.append(o)});if(saved!==undefined&&list[Number(saved)])loci.value=saved;show()}
