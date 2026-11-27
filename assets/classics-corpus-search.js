@@ -303,6 +303,13 @@ async function semanticConcept(q){
    ...(c.he||[]).flatMap(x=>typeof x==="string"?[x]:[x.w,x.tr]),
    ...(c.arc||[]).flatMap(x=>typeof x==="string"?[x]:[x.w,x.tr])].some(v=>typeof v==="string"&&fold(v)===key))||null;
 }
+// Reuse only explicit Conceptus correspondences, not broader related words.
+async function conceptTerms(query){
+ const concept=await semanticConcept(query);
+ if(!concept)return null;
+ const clean=values=>[...new Set((Array.isArray(values)?values:[]).filter(v=>typeof v==="string"&&v.trim().length>1).map(v=>v.trim()))].slice(0,3);
+ return {id:concept.id,la:clean(concept.la),grc:clean(concept.grc),note:concept.note||""};
+}
 let semanticPostingTask=null;
 async function semanticPostings(){
  if(!semanticPostingTask)semanticPostingTask=fetch("data/classics-corpus/semantic-conceptus-postings.json")
@@ -442,14 +449,16 @@ function cached(kind,fn){
 }
 /* Passage-level search for the Index locorum: links to attested units,
    never treats a semantic equivalent as a literal translation or a verified alignment. */
-async function searchPassages(terms,{limit=600,workId="",language="",maxPerEdition=200,allMatches=false,onProgress=null,maxEditions=0,strictBudget=0,structuredOnly=false,onComplete=null}={}){
+async function searchPassages(terms,{limit=600,workId="",language="",maxPerEdition=200,allMatches=false,onProgress=null,maxEditions=0,strictBudget=0,structuredOnly=false,onComplete=null,languageTerms=null}={}){
  const queries=[...new Set((Array.isArray(terms)?terms:[terms]).map(q=>String(q||"").trim()).filter(q=>/\p{L}/u.test(q)&&fold(q).length>=1))].slice(0,12);
  if(!queries.length)return [];
  const all=await registry(),hasGreek=queries.some(q=>/[Ͱ-Ͽἀ-῿]/u.test(q));
+ const termsFor=e=>languageTerms&&Array.isArray(languageTerms[e.language])?languageTerms[e.language]:queries;
+ const remoteEligible=e=>e.language==="grc"?window.ClassicsOffsiteGreek?.mightContain(e,termsFor(e)):e.language==="la"?window.ClassicsOffsiteLatin?.mightContain(e,termsFor(e)):false;
  /* Misma puerta: si se pidió una obra concreta no hay nada que filtrar. */
  const gate=workId?null:await indexGate(queries);
  const eligible=all.filter(e=>(!structuredOnly||["json-passages","structured-bilingual","remote-json-passages","critical-indexed-latin"].includes(e.format))&&throughGate(gate,e)&&(!workId||e.workId===workId)&&(!language||e.language===language)&&
-  (e.format!=="remote-json-passages"||(e.language==="grc"?(hasGreek||e.workId===workId)&&window.ClassicsOffsiteGreek?.mightContain(e,queries):e.language==="la"?(!hasGreek||e.workId===workId)&&window.ClassicsOffsiteLatin?.mightContain(e,queries):false)));
+  (e.format!=="remote-json-passages"||(languageTerms?remoteEligible(e):(e.language==="grc"?(hasGreek||e.workId===workId)&&window.ClassicsOffsiteGreek?.mightContain(e,queries):e.language==="la"?(!hasGreek||e.workId===workId)&&window.ClassicsOffsiteLatin?.mightContain(e,queries):false))));
  /* Esta vía la usan las concordancias que se piden completas: la puerta del
     índice descarta ediciones donde la raíz no está —eso no pierde nada— pero
     NO se acota el número de ediciones salvo que quien llama lo pida con
@@ -481,7 +490,7 @@ async function searchPassages(terms,{limit=600,workId="",language="",maxPerEditi
    for(const p of d.passages){
     if(typeof p?.text!=="string")continue;
     let hit=null,term=null,hitsInPassage=0;
-    for(const q of queries){
+    for(const q of termsFor(e)){
      const m=matches(p.text,q);hitsInPassage+=m.length;
      if(m.length&&(!hit||m[0][0]<hit[0])){hit=m[0];term=q}
     }
@@ -563,7 +572,7 @@ async function combinedSearch(q,{limit=6,semantic=false}={}){
 }
 
 window.ClassicsCorpusSearch={
- search:literalSearch,semanticSearch:conceptSearch,combinedSearch,searchPassages,sampleWorkPassages,indexSummary,
+ search:literalSearch,semanticSearch:conceptSearch,combinedSearch,searchPassages,sampleWorkPassages,indexSummary,conceptTerms,
  works:LEGACY.map(e=>({id:e.workId,lang:e.language,author:e.author,title:e.title})),
  registry,diagnostics:()=>({...lastDiagnostics})
 };
