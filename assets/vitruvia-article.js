@@ -1861,7 +1861,7 @@ function render(rows,q,person=null,options={}){
  // While source discovery runs, do not start a duplicate encyclopedia search for
  // every partial result. Local result cards remain usable throughout.
  if(options.progressive&&!options.final&&!specialized&&!wiki&&!exact&&!found.some(x=>x.preferredAuthority))return;
- const key=JSON.stringify([q,wanted,person?.id,specialized?top:null,wiki?[wiki.pageid,wiki.wikiLang,wiki.fullExtract||wiki.excerpt]:null,exact?.link]);
+ const key=atenHymn?JSON.stringify(["aten-hymn",q,wanted]):JSON.stringify([q,wanted,person?.id,specialized?top:null,wiki?[wiki.pageid,wiki.wikiLang,wiki.fullExtract||wiki.excerpt]:null,exact?.link]);
  if(key===renderedKey||key===renderingKey){
   if(key===renderedKey&&renderedTopic)refreshArticleSources(found,q,person);
   return;
