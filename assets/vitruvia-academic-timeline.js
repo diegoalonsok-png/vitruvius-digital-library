@@ -160,13 +160,12 @@
    {year:-1353,lane:"life",title:L("Acceso al trono como Amenhotep IV","Accession as Amenhotep IV","Avènement d'Amenhotep IV"),
     source:"PBS · Egypt's Golden Empire / UCL Digital Egypt",url:pbs,approx:true,
     detail:L("Comienzo aproximado del reinado de Amenhotep IV; cronologías alternativas varían varios años.","Approximate start of the reign, with competing chronologies.","Début approximatif du règne; chronologies variables.")},
-   {year:-1348,lane:"events",title:L("Ajetatón · proclamaciones de los años 5 y 6","Akhetaten · year 5 and year 6 proclamations","Akhetaton · proclamations des ans 5 et 6"),
-    source:"Amarna Project · estelas fronterizas; UCL Digital Egypt",url:"https://www.amarnaproject.com/amarna-the-place/boundary-stelae/",approx:true,
-    detail:L(
-     "Las estelas K, M y X transmiten la primera proclamación sobre Ajetatón (año regnal 5); una segunda proclamación corresponde al año 6 y fue reafirmada en el 8. UCL sitúa el cambio de nombre y la residencia en el año 6; existen diferencias de interpretación y cronología. La posición hacia 1348 a. C. es una escala aproximada, no una fecha absoluta certificada.",
-     "Boundary stelae K, M and X preserve the first Akhetaten proclamation (regnal year 5); the second dates to year 6 and was reaffirmed in year 8. UCL places the name change and royal residence in year 6; sources and absolute chronologies differ. Placement near 1348 BCE is approximate, not an exact historical date.",
-     "Les stèles K, M et X transmettent la première proclamation d'Akhetaton (an 5); une seconde date de l'an 6 et fut réaffirmée en l'an 8. UCL situe le changement de nom et la résidence à l'an 6; les chronologies divergent. La position vers 1348 av. J.-C. reste approximative."
-    )},
+   {year:-1351,end:-1349,lane:"events",title:L("Primeros años · templos de Atón en Karnak","Early reign · Aten temples at Karnak","Début du règne · temples d’Aton à Karnak"),source:"The Met",url:"https://www.metmuseum.org/essays/art-architecture-and-the-city-in-the-reign-of-amenhotep-iv-akhenaten-ca-13531336-b-c",approx:true,detail:L("Construcción del complejo de Atón antes de Ajetatón.","Construction of the Aten complex before Akhetaten.","Construction du complexe d’Aton avant Akhetaton.")},
+   {year:-1348,lane:"events",title:L("Año 5 · primera proclamación de Ajetatón","Year 5 · first proclamation of Akhetaten","An 5 · première proclamation d’Akhetaton"),source:"Amarna Project · Stelae K, M, X",url:"https://www.amarnaproject.com/amarna-the-place/boundary-stelae/",approx:true,detail:L("Consagración de una nueva ciudad a Atón; UCL propone el año 6.","Dedication of a new city to Aten; UCL proposes year 6.","Consécration d’une ville à Aton ; UCL propose l’an 6.")},
+   {year:-1347,lane:"events",title:L("Año 6 · segunda proclamación","Year 6 · second proclamation","An 6 · seconde proclamation"),source:"Amarna Project / UCL Digital Egypt",url:"https://www.amarnaproject.com/amarna-the-place/boundary-stelae/",approx:true,detail:L("Segunda proclamación de las estelas fronterizas.","Second proclamation of the boundary stelae.","Seconde proclamation des stèles frontières.")},
+   {year:-1345,lane:"events",title:L("Año 8 · reafirmación del juramento fronterizo","Year 8 · renewal of the boundary oath","An 8 · renouvellement du serment frontalier"),source:"Amarna Project",url:"https://www.amarnaproject.com/amarna-the-place/boundary-stelae/",approx:true,detail:L("Se añade una reafirmación a la segunda proclamación.","A reaffirmation is added to the second proclamation.","Une réaffirmation est ajoutée à la seconde proclamation.")},
+   {year:-1344,end:-1341,lane:"events",title:L("Años 9–12 · nueva formulación del nombre de Atón","Years 9–12 · new form of Aten’s name","Ans 9–12 · nouvelle formulation du nom d’Aton"),source:"The Met",url:"https://www.metmuseum.org/essays/art-architecture-and-the-city-in-the-reign-of-amenhotep-iv-akhenaten-ca-13531336-b-c",approx:true,detail:L("La nueva formulación se fecha entre los años 9 y 12; las medidas contra Amón pudieron coincidir.","New wording dated between years 9 and 12; measures against Amun may have coincided.","Nouvelle formulation datée des ans 9 à 12 ; les mesures contre Amon ont pu coïncider.")},
+   {year:-1341,lane:"events",title:L("Año 12 · recepción de tributos extranjeros","Year 12 · reception of foreign tribute","An 12 · réception des tributs étrangers"),source:"ISAC · University of Chicago · Huya y Meryra II",url:"https://isac.uchicago.edu/sites/default/files/uploads/shared/docs/LongCoregency.pdf",approx:true,detail:L("Las escenas conservan una fecha del año regnal 12.","The scenes preserve a date in regnal year 12.","Les scènes conservent une date de l’an 12.")},
    {year:-1336,lane:"life",title:L("Muerte de Akenatón · fin de la línea biográfica","Death of Akhenaten · end of biography","Mort d'Akhenaton · fin de la chronologie"),
     source:"PBS · Egypt's Golden Empire; cronología aproximada",url:pbs,approx:true,
     detail:L("Muerte hacia 1336 a. C., tras un reinado de alrededor de diecisiete años. La edad exacta al morir no está establecida con certeza.","Approximate death around 1336 BCE; exact age unknown.","Décès vers 1336 av. J.-C.; âge exact incertain.")}
@@ -336,7 +335,7 @@
   const span=Math.max(1,maxYear-minYear),padding=lifeScope?0:Math.max(1,Math.ceil(span*.04));
   const fullLow=lifeScope?lifeScope.born:minYear-padding;
   const fullHigh=lifeScope?lifeScope.died:maxYear+padding;
-  const zoom=state.zoom??(isNero()?1:automaticZoom(fullHigh-fullLow));
+  const zoom=state.zoom??(isNero()||isAkhenaten()?1:automaticZoom(fullHigh-fullLow));
   const {low,high,range,travel}=dateWindow(fullLow,fullHigh,zoom,state.position);
   const windowEvents=visibleEvents.filter(e=>e.year>=low&&e.year<=high);
   const eventKey=e=>[e.title,e.year,e.lane].join("|");
@@ -618,5 +617,5 @@
  }).observe(document.documentElement,{attributes:true,attributeFilter:["lang"]});
  const snapshot=window.VitruviaSearchSnapshot;
  if(snapshot?.query)reset(snapshot.query);
- window.VitruviaAcademicTimeline={collect,layoutMarkers,dateWindow,automaticZoom,recordYear,version:"2.6-biographical-milestones",neroEvents};
+ window.VitruviaAcademicTimeline={collect,layoutMarkers,dateWindow,automaticZoom,recordYear,version:"2.6-biographical-milestones",neroEvents,akhenatenEvents};
 })();
