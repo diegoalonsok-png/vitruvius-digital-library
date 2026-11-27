@@ -12,7 +12,8 @@
  const lang=()=>["en","fr"].includes(document.documentElement.lang)?document.documentElement.lang:"es";
  const L=(es,en,fr)=>lang()==="en"?en:lang()==="fr"?fr:es;
  const el=(name,cls,text)=>{const n=document.createElement(name);if(cls)n.className=cls;if(text!==undefined)n.textContent=String(text);return n};
- const year=x=>typeof x==="number"&&Number.isInteger(x)&&x!==0&&x>=-4000&&x<=2026?x:null;
+ // Accept historical calendar years, not a hard-coded modern cutoff.
+ const year=x=>Number.isSafeInteger(x)&&x!==0&&Math.abs(x)<=1000000?x:null;
  const normUrl=u=>typeof u==="string"&&/^https:\/\/[^\s]+$/i.test(u)?u:"";
  const showYear=x=>x<0?Math.abs(x)+" "+L("a. C.","BCE","av. J.-C."):String(x);
  const types={
