@@ -1387,6 +1387,27 @@ function academicEvidenceClass(row){
  if(t==="text-external"&&row.externalFulltext)return "context";
  return "context";
 }
+/* Rank only records that passed the provenance gate. A neural score
+ * cannot promote an encyclopedia into academic evidence. Preserve the
+ * existing documentary/source hierarchy; change relevance within it. */
+async function refineAcademicResults(query,rows,signal){
+ const model=window.VitruviaAI;
+ if(!model?.rank||signal.aborted)return null;
+ const candidates=[],seen=new Set();
+ for(const row of rows){
+  const category=academicEvidenceClass(row);
+  if(category==="context"||!row.title)continue;
+  const id=scholarlyRecordKey(row);
+  if(seen.has(id))continue;seen.add(id);
+  const text=[row.title,row.author,row.latin,row.translation,row.excerpt].filter(Boolean).join(" · ");
+  candidates.push({id,text,priority:(row.rating||0)+titleMatch(row,query)});
+ }
+ candidates.sort((a,b)=>b.priority-a.priority);
+ if(!candidates.length)return null;
+ const ranked=await model.rank(query,candidates.slice(0,48),{limit:32,candidates:40});
+ if(signal.aborted||ranked.mode!=="neural")return null;
+ return new Map(ranked.rows.map((r,i)=>[r.doc.id,Math.max(0,32-i)*12]));
+}
 function display(rows,query,phase){
  // No se eliminan resultados por umbrales de coincidencia en el título:
  // los textos, alias, autores y metadatos documentales también cuentan.
@@ -1401,9 +1422,9 @@ function display(rows,query,phase){
   !["wikipedia","wikidata"].includes(r.type)||r.preferredWiki||r.preferredAuthority||
   queryTokens(query).length<2||entityEvidence(r,query)
  )&&(!["passage","book","edition","manuscript","preface","section"].includes(r.type)||
-  documentarySubjectEvidence(r,query)))
+  documentarySubjectEvidence(r,query)||r.aiEvidence&&r.aiSemantic&&academicEvidenceClass(r)==="document"))
   // Compute expensive evidence scores once per row, rather than on every sort comparison.
-  .map(row=>({row,rank:(row.rating||0)+titleMatch(row,query)+(S.mode==="ai"&&row.aiEvidence?2800:0)}))
+  .map(row=>({row,rank:(row.rating||0)+titleMatch(row,query)+(S.mode==="ai"&&row.aiEvidence?2800:0)+(S.semanticRanks?.get(scholarlyRecordKey(row))||0)}))
   .sort((a,b)=>b.rank-a.rank).map(item=>item.row);
  const deduped=[],seen=new Set();
  for(const r of scored){
@@ -1621,7 +1642,7 @@ function display(rows,query,phase){
  $("result-list").setAttribute("aria-busy",String(!S.searchComplete));
  if(S.searchComplete)$("result-state").dataset.completeMs=String(Math.round(performance.now()-S.searchStarted));
  $("result-state").textContent=ordered.length+" "+titles.matching+" · "+Math.min(S.visibleResultCount,shown.length)+" "+titles.visible+(strictAcademic&&complementary.length?" · "+complementary.length+" "+(S.lang==="en"?"complementary":S.lang==="fr"?"complémentaires":"complementarios"):"")+(phase?" · "+phase:"");
- const snapshot={query,rows:deduped,phase};
+ const snapshot={query,rows:deduped,academicRows:strictAcademic?ordered:deduped,phase};
  window.VitruviaSearchSnapshot=snapshot;
  window.dispatchEvent(new CustomEvent("vitruvia:results",{detail:snapshot}));
 }
@@ -1694,6 +1715,7 @@ document.getElementById("expand-search-sources")?.addEventListener("click",async
 });
 async function search(){
  let q=$("query").value.trim();S.searchController?.abort();S.searchController=new AbortController();const searchSignal=S.searchController.signal;const later=task=>window.VitruviaData?window.VitruviaData.defer(task,{signal:searchSignal,delay:45}):Promise.resolve().then(task);S.searchStarted=performance.now();S.firstResultAt=null;S.searchComplete=false;S.cardCache=new Map();S.identifiedSubject=null;const id=++S.searchId;S.visibleResultCount=60;S.facet="";if(!q)return;
+ S.semanticRanks=null;
  const aiStatus=$("ai-status");if(aiStatus){aiStatus.hidden=true;aiStatus.textContent="";}
  /* Comprension de la consulta antes de preguntar a ninguna fuente: grafia,
     flexion, escritura cruzada, onomastica y citas. Si el modulo no estuviera
@@ -1861,7 +1883,7 @@ async function search(){
   }).catch(e=>({name:"Catálogos de manuscritos no disponibles",rows:[],warnings:[String(e.message||e)]})));
  }
  if(["all","ai"].includes(mode)&&window.VitruviaAI){
-  const method=$("ai-method")?.value==="neural"?"neural":"bm25";
+  const method=mode==="ai"&&$("ai-method")?.value==="neural"?"neural":"bm25";
   pending.push(window.VitruviaAI.search(q,{method,targetedOnly:mode==="all"}).then(v=>({
    name:v.mode==="not-targeted"?"":v.mode==="neural"?"E5 + BM25 · orden neuronal experimental":v.method==="bm25"?"BM25 · recuperación académica calibrada":v.mode==="bm25-fallback"?"BM25 · E5 no disponible":"Búsqueda de documentos",
    rows:v.rows||[],warnings:v.warning?[v.warning]:[]
@@ -2020,6 +2042,9 @@ async function search(){
   else if(/sin respuesta|no disponible/.test(value.name))sourceWarnings.push(value.name);
  })));
  clearTimeout(updateTimer);
+ if(id===S.searchId&&mode==="all"&&$("ai-method")?.value==="neural"&&!searchSignal.aborted){
+  try{const refined=await refineAcademicResults(q,rows,searchSignal);if(id===S.searchId&&!searchSignal.aborted&&refined)S.semanticRanks=refined;}catch{}
+ }
  if(id===S.searchId){
   remoteFinished=true;S.searchComplete=!!S.ready;
   const failed=sourceWarnings.length;
