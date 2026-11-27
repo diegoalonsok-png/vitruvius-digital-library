@@ -1308,19 +1308,46 @@ function documentarySubjectEvidence(row,query){
  * not a manual whitelist of prominent names.
  */
 function verifiedPersonEvidence(row,query,identity){
- if(identity?.kind!=="person"||!/^Q[0-9]+$/.test(identity.wikidataId||""))return true;
- const title=norm(row.title||""),text=norm([row.title,row.author,row.excerpt,row.meta].join(" "));
- const isCommercial=/\b(?:pizzeria|pizzaria|pizza|restaurant|restaurante|resto|hotel|hostal|hostel|cafe|cafeteria|bar|shop|store|tienda|boutique|comercio|commercial business)\b/;
- if(isCommercial.test(title)&&!isCommercial.test(norm(query)))return false;
- const names=[identity.canonical,identity.catalogName,identity.originalCanonical,...(identity.aliases||[])]
-  .map(norm).filter(name=>name.length>=4);
- const unique=[...new Set(names)];
- const direct=unique.some(name=>title===name||title.startsWith(name+" ")||(" "+text+" ").includes(" "+name+" "));
- if(row.preferredWiki||row.preferredAuthority)return row.wikidataId===identity.wikidataId;
- if(row.type==="wikidata"&&row.author===identity.wikidataId)return true;
- if(["wikipedia","wikidata"].includes(row.type))return direct;
- if(["openlibrary","googlebook","museum","article","archive-portal"].includes(row.type))return direct;
- return true;
+ const verified=identity?.kind==="person"&&/^Q[0-9]+$/.test(identity.wikidataId||"");
+ // Limit the new gate to external records. Local passages, manuscripts and
+ // explicitly requested philological/codicological searches retain their
+ // existing contextual filters; no catalogue entries are deleted.
+ const href=String(row.link||"");
+ const external=/^https?:\/\//i.test(href)&&
+  !/^https:\/\/vitruvius-digital-library\.org(?:\/|$)/i.test(href)&&
+  !/^https:\/\/diegoalonsok-png\.github\.io\/vitruvius-digital-library(?:\/|$)/i.test(href)&&
+  !row.localViewer;
+ const externalTypes=new Set(["wikipedia","wikidata","openlibrary","googlebook","museum","article","archive-portal","topic","text-external","historical-ocr"]);
+ if(!external&&!externalTypes.has(row.type))return true;
+ const q=norm(query);
+ // Pending authority: do not publish ambiguous matches to generic royal
+ // titles alone. Re-evaluate the same raw rows as soon as identity resolves.
+ const royal=q.match(/^(?:(?:el|la|the|le|les) )?(?:rey|reina|king|queen|faraon|pharaoh|pharaon) (.+)$/);
+ const royalTut=!!royal&&royal[1]==="tut";
+ const title=norm(row.title||"");
+ const commercial=/\b(?:pizzeria|pizzaria|pizza|restaurant|restaurante|resto|hotel|hostal|hostel|cafe|cafeteria|bar|shop|store|tienda|boutique|comercio|commercial business)\b/;
+ if((verified||royalTut)&&commercial.test(title)&&!commercial.test(q))return false;
+ if(!verified&&!royalTut)return true;
+ if(verified&&(row.preferredWiki||row.preferredAuthority))return row.wikidataId===identity.wikidataId;
+ if(verified&&row.type==="wikidata"&&row.author===identity.wikidataId)return true;
+ const names=[identity?.canonical,identity?.catalogName,identity?.originalCanonical,...(identity?.aliases||[])];
+ if(royalTut)names.push("Tutankamón","Tutankhamun","Tutankhamen","Toutankhamon","Tutankhaton","Tutankhaten","rey tut","king tut","faraón tut");
+ // Ignore titles and short nicknames as standalone evidence; they cause
+ // homonym contamination. Keep attested multiword variants and full names.
+ const weak=/^(?:king|rey|reina|queen|faraon|pharaoh|pharaon|tut|egipto|egypt|roi|reine|king of egypt)$/;
+ const distinct=[...new Set(names.map(norm).filter(n=>n.length>=4&&!weak.test(n)))];
+ if(!distinct.length)return false;
+ const subject=[row.title,row.abstract,row.excerpt,row.description,row.entityCanonical,...(row.aliases||[])].map(norm).filter(Boolean);
+ const hasName=s=>distinct.some(name=>(" "+s+" ").includes(" "+name+" "));
+ // Authorship is evidence only when the credited author matches the
+ // resolved identity exactly (not publisher, venue or incidental forename).
+ const author=norm(row.author||"");
+ if(distinct.includes(author)||subject.some(hasName))return true;
+ // Preserve explicitly linked works only with a concrete matching entity
+ // identifier, never a generic boolean or the provider's ranking alone.
+ if(verified&&[row.subjectWikidataId,row.creatorWikidataId,row.relatedWikidataId].includes(identity.wikidataId))return true;
+ if(verified&&row.wikidataId&&Array.isArray(identity.notableWorkIds)&&identity.notableWorkIds.includes(row.wikidataId))return true;
+ return false;
 }
 function authorityWeight(row){
  if(row.type==="wikipedia")return 35;
