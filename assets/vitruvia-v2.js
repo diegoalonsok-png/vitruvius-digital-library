@@ -70,22 +70,69 @@ function renderEvidence(root,data,identity){
   const citations=el("p",null,"meta");b.refs.forEach((r,i)=>{if(i)citations.append(document.createTextNode(" · "));citations.append(link(r.text.slice(0,220),source+"#"+encodeURIComponent(r.id)))});s.append(citations);
  }
 }
+
+async function royalNames(query,root,id,signal){
+ const data=await api("data/vitruvia/titulaturae.json?v=20261127-leprohon-v3",signal);
+ const clean=q=>P.norm(q).replace(/^(?:(?:el|la|the|le|rey|reina|faraon|king|queen|pharaoh|roi|titulatura|titulaturas|nombres|cartuchos|reales|real|de|del|biografia|vida|historia)\s+)+/,"").replace(/\s+(?:titulatura|titulaturas|nombres reales|cartuchos)$/,"");
+ const q=clean(query),alias={tut:"tutankhamun", "tut ankh amon":"tutankhamun"};
+ const matches=(data.rulers||[]).filter(r=>[r.name,...(r.aliases||[])].some(n=>clean(n)===q)||alias[q]===r.id);
+ if(matches.length!==1||!current(id))return false;
+ const ruler=matches[0],s=section(root,"Titulatura real · "+ruler.name);
+ s.append(el("p",[ruler.dynasty,ruler.dates].filter(Boolean).join(" · "),"meta"));
+ for(const key of ["horus","nebty","golden","prenomen","nomen"]){
+  const rec=ruler.names?.[key],label=data.titles?.[key]?.label||key;
+  s.append(el("h3",label));
+  if(!rec){s.append(el("p","No documentado en el repertorio local; no se reconstruye."));continue}
+  if(rec.glyphs){const glyph=el("p",rec.glyphs);glyph.lang="egy";glyph.style.fontSize="36px";s.append(glyph)}
+  for(const [label,value] of [["Transliteración",rec.trans],["Lectura",rec.reading],["Traducción",rec.gloss],["Testimonio",rec.witness]])if(value)s.append(el("p",label+": "+value));
+  for(const v of rec.variants||[])s.append(el("p",[v.period,v.trans,v.gloss].filter(Boolean).join(" · ")));
+  if(!rec.glyphs)s.append(el("p","Grafía pendiente de cotejo. Consultar testimonios.","meta"));
+  if(rec.source&&P.safe(rec.source))s.append(link("Fuente de la lectura",rec.source));
+ }
+ if(ruler.authorityUrl&&P.safe(ruler.authorityUrl))s.append(link("Repertorio académico",ruler.authorityUrl));
+ s.append(el("p","Transcripciones editoriales normalizadas, no facsímiles; cotejo epigráfico pendiente cuando corresponda.","meta"));
+ for(const source of (data.sources||[]).filter(x=>["beckerath-1999","leprohon-2013"].includes(x.id)))s.append(el("p",source.citation,"meta"));
+ return true;
+}
+async function royalRelations(identity,root,id,signal){
+ if(identity.kind!=="person")return;
+ const params={action:"wbgetentities",ids:identity.wikidataId,props:"claims",format:"json",origin:"*"};
+ const url="https://www.wikidata.org/w/api.php?";
+ const d=await api(url+new URLSearchParams(params),signal),claims=d.entities?.[identity.wikidataId]?.claims||{};
+ const idsFor=p=>[...new Set((claims[p]||[]).filter(c=>c.rank!=="deprecated").map(c=>c.mainsnak?.datavalue?.value?.id).filter(x=>/^Q\d+$/.test(x||"")))];
+ const titles=idsFor("P97"),houses=idsFor("P53");
+ if(!titles.length&&!houses.length&&!/\b(?:rey|reina|faraon|king|queen|pharaoh|emperor|emperador|prince|principe|princess|princesa|monarch|monarca)\b/.test(P.norm(identity.authorityDescription||identity.description)))return;
+ const groups=[["Títulos nobiliarios registrados",titles],["Cargos y dignidades",idsFor("P39")],["Casa o dinastía",houses],["Padre",idsFor("P22")],["Madre",idsFor("P25")],["Cónyuge",idsFor("P26")],["Hijos",idsFor("P40")]];
+ const ids=[...new Set(groups.flatMap(x=>x[1]))].slice(0,50);
+ if(!ids.length||!current(id))return;
+ const labels=await api(url+new URLSearchParams({action:"wbgetentities",ids:ids.join("|"),props:"labels",languages:identity.language+"|es|en",languagefallback:"1",format:"json",origin:"*"}),signal);
+ if(!current(id))return;
+ const s=section(root,"Casa real, dignidades y parentesco");
+ for(const [label,values] of groups){
+ const found=values.map(q=>({q,name:labels.entities?.[q]?.labels?.[identity.language]?.value||labels.entities?.[q]?.labels?.es?.value||labels.entities?.[q]?.labels?.en?.value})).filter(x=>x.name);
+ if(!found.length)continue;
+ const p=el("p",label+": ");found.forEach((x,i)=>{if(i)p.append(document.createTextNode("; "));p.append(link(x.name,"https://www.wikidata.org/wiki/"+x.q))});s.append(p);
+ }
+ s.append(el("p","Datos estructurados de Wikidata; no equivalen a una titulatura ceremonial completa ni a verificación genealógica independiente.","meta"));
+}
+
 async function search(q,lang){
  controller?.abort();controller=new AbortController();const signal=controller.signal,id=++generation;
  const root=$("content");root.replaceChildren();$("status").textContent="Identificando el tema…";
  $("query").value=q;const url=new URL(location.href);url.searchParams.set("q",q);url.searchParams.set("lang",lang);history.replaceState(null,"",url);
+ const royalRoot=el("div");root.append(royalRoot);const royalTask=royalNames(q,royalRoot,id,signal).catch(()=>false);
  const identity=await window.VitruviaEntityResolver.resolve(q,lang).catch(()=>null);
  if(!current(id))return;
  if(!identity?.canonical||!/^Q\d+$/.test(identity.wikidataId||"")||!identity.pageid||!P.safe(identity.url)){
   $("status").textContent="No se identificó una entidad enciclopédica inequívoca. Se conservan las búsquedas documentales.";
-  await corpus(q,root,id);return;
+  await Promise.allSettled([royalTask,corpus(q,root,id)]);return;
  }
- const article=el("article");root.append(article);article.append(el("h1",identity.canonical));
+ const article=el("article");root.prepend(article);article.append(el("h1",identity.canonical));
  const origin=el("p",null,"meta");origin.append(link("Wikipedia · artículo de referencia",identity.url),document.createTextNode(" · "),link("Wikidata · registro de identidad","https://www.wikidata.org/wiki/"+identity.wikidataId));article.append(origin);
  if(identity.kind==="person"){const dl=el("dl");for(const [label,value] of [["Nacimiento",year(identity.birthYear)],["Fallecimiento",year(identity.deathYear)]])dl.append(el("dt",label),el("dd",value));article.append(dl);article.append(el("p","Fechas del registro Wikidata; pueden ser aproximadas o estar incompletas.","meta"))}
- const a=el("div"),b=el("div"),c=el("div");root.append(a,b,c);
+ const family=el("div"),a=el("div"),b=el("div"),c=el("div");root.append(family,a,c,b);
  $("status").textContent="Identidad localizada · consultando referencias y textos…";
- const tasks=[
+ const tasks=[royalTask,royalRelations(identity,family,id,signal).catch(()=>{}),
  encyclopedic(identity,signal).then(d=>{if(current(id))renderEvidence(a,d,identity)}).catch(()=>{if(current(id))section(a,"Artículo").append(el("p","Fuente temporalmente no disponible."))}),
  bibliography(identity,signal).then(async rows=>{
   if(!current(id))return;const s=section(b,"Bibliografía académica");
@@ -95,7 +142,7 @@ async function search(q,lang){
   if(!current(id))return;
   s.append(el("p",ranked?.mode==="neural"?"Orden E5 + BM25 sobre registros admitidos.":"Orden bibliográfico; modelo neuronal no confirmado.","meta"));
   const map=new Map(rows.map(r=>[r.id,r]));const sorted=ranked?.rows?.length?ranked.rows.map(r=>map.get(r.doc.id)).filter(Boolean):rows.slice(0,12);
-  for(const r of sorted)record(s,r);
+  for(const r of sorted.slice(0,8))record(s,r);
  }).catch(()=>{if(current(id))section(b,"Bibliografía académica").append(el("p","Crossref temporalmente no disponible."))}),
  corpus(q,c,id)];
  await Promise.allSettled(tasks);if(current(id))$("status").textContent="Consulta terminada · la ausencia de resultados no implica ausencia de fuentes.";
