@@ -43,13 +43,13 @@ const citation=row=>{
  if(type==="manuscript-record"){
   const shelfmark=plain(r.codexShelfmark||r.shelfmark),
         repository=plain(r.codexRepository||r.repository||r.author);
-  return [repository?repository+".":"",shelfmark+".",title? "“"+title+".”":"",link+"."].filter(Boolean).join(" ");
+  return [repository?repository+".":"",shelfmark+".",plain(r.folio||r.codexFolio)?"Folio: "+plain(r.folio||r.codexFolio)+".":"",title? "“"+title+".”":"",link+"."].filter(Boolean).join(" ");
  }
  if(type==="text-index"){
   // Los segmentos técnicos de la búsqueda no son siempre divisiones críticas.
   const loc=plain(r.locus),language=plain(r.language);
   return [author?author+".":"",title+".","Registro textual digital; localizador proporcionado por la fuente: "+loc+".",
-    language?"Idioma: "+language+".":"",link+"."].filter(Boolean).join(" ");
+    language?"Idioma: "+language+".":"",plain(r.edition)?"Edición: "+plain(r.edition)+".":"",plain(r.translator)?"Traducción: "+plain(r.translator)+".":"",link+"."].filter(Boolean).join(" ");
  }
  // No se añade editorial o fecha si el registro carece de esos datos.
  return [author?author+".":"",title+".",plain(r.publisher)?plain(r.publisher)+".":"",year?year+".":"",
@@ -84,11 +84,15 @@ const bibliography=rows=>{
  const seen=new Set(),out=[];
  for(const r of rows||[]){
   if(!canCite(r))continue;
-  const key=doi(r.doi)||url(r.link||r.viewerUrl||r.codexViewer)||[r.workId,r.locus,r.title].join("|");
+  const type=evidence(r);
+  const base=url(r.link||r.viewerUrl||r.codexViewer);
+  const key=type==="text-index"?[type,r.workId,r.language,r.edition,r.locus,base].join("|"):
+    type==="manuscript-record"?[type,r.codexRepository||r.repository,r.codexShelfmark||r.shelfmark,r.folio||r.codexFolio||"",base].join("|"):
+    doi(r.doi).toLowerCase()||base||[r.workId,r.title].join("|");
   if(seen.has(key))continue;seen.add(key);
   out.push(citation(r));
  }
  return out.join("\n\n")+"\n";
 };
-window.VitruviaScholarlyExport={citation,canCite,bibliography,csv,doi,evidence,version:"1.0"};
+window.VitruviaScholarlyExport={citation,canCite,bibliography,csv,doi,evidence,version:"1.1"};
 })();
