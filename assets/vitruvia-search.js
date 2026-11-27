@@ -957,6 +957,8 @@ function renderCard(d){
   const viewer=makeLink(label,d.codexViewer||d.viewerUrl);
   if(viewer){viewer.classList.add("codex-viewer-button");if(d.primaryWitness)viewer.classList.add("primary-codex-viewer");acts.append(viewer)}
  }
+ const parallel=window.VitruviaReaderLinks?.parallelUrl(d.link,location.href);
+ if(parallel){const a=makeLink(S.lang==="en"?"Read original and translation":S.lang==="fr"?"Lire original et traduction":"Leer original y traducción",parallel);if(a)acts.append(a)}
  if(d.link){const a=makeLink(d.type==="book"&&!d.readable?(S.lang==="en"?"Open bibliographic record":S.lang==="fr"?"Consulter la notice bibliographique":"Consultar ficha bibliográfica"):d.type==="passage"||d.type==="book"||d.type==="manuscript"||d.type==="edition"?T().read:d.type==="section"?T().document:T().source,d.link);if(a)acts.append(a)}
  if(Array.isArray(d.links)){for(const extra of d.links.slice(0,3)){const a=makeLink(extra.label,extra.url);if(a)acts.append(a)}}
  // Los resultados de fuentes clásicas enlazan las tres vías de consulta.
