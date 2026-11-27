@@ -38,11 +38,58 @@ function sliceIntoChunks(raw,max=340,overlap=48){
  }
  return out;
 }
+// The shared index may not yet be loaded (or may fail). A small, explicit
+// reserve manifest preserves independent BM25 operation without downloading
+// the entire library or silently asserting exhaustive coverage.
+async function reserveCorpus(query){
+ const manifest=await requestJSON("./data/ai-corpora.json");
+ const sources=(Array.isArray(manifest.sources)?manifest.sources:[]).filter(s=>
+  typeof s.url==="string"&&/^data\/[a-z0-9/_-]+\.json$/i.test(s.url)&&s.workId&&s.edition).slice(0,6);
+ const documents=[],works=[],unavailable=[],seen=new Set();
+ const qt=[...new Set(terms(query))];
+ let loaded=0;
+ for(const source of sources){
+  try{
+   const data=await requestJSON("./"+source.url);
+   if(!Array.isArray(data.passages))throw Error("Formato no compatible");
+   loaded++;
+   works.push([source.workTitle,source.edition,source.language].filter(Boolean).join(" · "));
+   let matches=0;
+   for(const p of data.passages){
+    if(!p||typeof p.locus!=="string"||!p.locus.trim())continue;
+    const original=typeof p.latin==="string"?p.latin:typeof p.original==="string"?p.original:source.language==="grc"&&typeof p.text==="string"?p.text:"";
+    const translation=typeof p.translation==="string"?p.translation:"";
+    const texts=[{text:original,language:p.latin?"la":source.language},{text:translation,language:source.language}];
+    let matched=false;
+    for(const {text,language} of texts){
+     if(!text.trim()||!language)continue;
+     const folded=normalize(text);
+     if(!qt.some(t=>(" "+folded+" ").includes(" "+t+" "))&&!folded.includes(normalize(query)))continue;
+     matched=true;
+     const key=[source.workId,source.edition,language,source.url,p.locus].join("|");
+     if(seen.has(key))continue;seen.add(key);
+     for(const [i,excerptText] of sliceIntoChunks(text).entries()){
+      const tokens=terms(excerptText);if(!tokens.length)continue;
+      const tf=new Map();for(const token of tokens)tf.set(token,(tf.get(token)||0)+1);
+      documents.push({id:key+":"+i,workId:source.workId,locus:p.locus,workTitle:source.workTitle,
+       author:source.author,edition:source.edition,language,source:source.source,url:urlFor(source,p.locus,p),
+       original:["la","grc"].includes(language)?text:"",translation:["es","en","fr","de","it","pt"].includes(language)?text:"",
+       sourceText:text,excerptText,tf,length:tokens.length});
+     }
+    }
+    if(matched&&++matches>=40)break;
+   }
+  }catch{unavailable.push(source.url)}
+ }
+ const df=new Map();for(const d of documents)for(const token of d.tf.keys())df.set(token,(df.get(token)||0)+1);
+ return {documents,df,avgLength:documents.reduce((sum,d)=>sum+d.length,0)/Math.max(1,documents.length),works,unavailable,
+  declaredSources:sources.length,loadedSources:loaded,targeted:sources.length,indexGate:false,partial:true,reserve:true};
+}
 // Retrieve actual matching loci through the existing concordance index.
  // Coverage is explicitly bounded, not a random 48-passage sample.
  async function prepareCorpus(query){
   const api=window.ClassicsCorpusSearch;
-  if(!api?.searchPassages)throw Error("Índice compartido de concordancias no disponible");
+  if(!api?.searchPassages)return reserveCorpus(query);
   const queryTerms=[...new Set(terms(query))].filter(t=>t.length>=3).slice(0,5);
   const literalQueries=[...new Set([query,...queryTerms])].slice(0,6);
   let concept=null;
@@ -201,8 +248,10 @@ async function vectors(pipe,texts){
 async function search(query,{method="neural"}={}){
  const q=asString(query);if(!q)return {rows:[],mode:"empty"};
  notify("Indexando los textos disponibles y calculando coincidencias exactas…");
- const data=await prepareCorpus(q),ranked=lexicalRanking(q,data);
- const coverageNotice="Selección parcial de pasajes: "+(data.loadedSources??"sin recuento")+"/"+(data.targeted??"sin recuento")+" ediciones consultadas; máximo 24. "+(data.indexGate?"Índice léxico utilizado. ":"Índice léxico no disponible; selección acotada. ")+(data.unavailable.length?"Fuentes no cargadas: "+data.unavailable.length+".":"");
+ let data;
+ try{data=await prepareCorpus(q)}catch(error){if(!window.ClassicsCorpusSearch?.searchPassages)throw error;data=await reserveCorpus(q)}
+ const ranked=lexicalRanking(q,data);
+ const coverageNotice="Selección parcial de pasajes: "+(data.loadedSources??"sin recuento")+"/"+(data.targeted??"sin recuento")+" ediciones consultadas; "+(data.reserve?"corpus de reserva, máximo 6. ":"máximo 24. ")+(data.indexGate?"Índice léxico utilizado. ":"Índice léxico no disponible; selección acotada. ")+(data.unavailable.length?"Fuentes no cargadas: "+data.unavailable.length+".":"");
  const candidates=diversity(ranked);
  const coverage=candidateCoverage(candidates);
  if(!candidates.length){notify("No se recuperaron pasajes en la selección acotada. Esto no prueba ausencia en el corpus. "+coverageNotice,"fallback");return {rows:[],mode:"empty",warning:coverageNotice,stats:{chunks:0,works:data.works,declaredSources:data.declaredSources,loadedSources:data.loadedSources,partial:true}};}
@@ -262,5 +311,5 @@ async function rank(query,docs,{limit=30,candidates=40}={}){
   notify("IA semántica activa en el visor.","success");return {mode:"neural",rows};
  }catch(e){return {mode:"bm25-fallback",rows:pool.slice(0,limit),warning:String(e.message||e)}}
 }
-window.VitruviaAI={search,rank,model:MODEL,version:"1.3-conceptus-candidates"};
+window.VitruviaAI={search,rank,model:MODEL,version:"1.4-conceptus-reserve"};
 })();
