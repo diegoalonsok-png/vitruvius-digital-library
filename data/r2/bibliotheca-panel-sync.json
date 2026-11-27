@@ -1,49 +1,39 @@
 {
   "schema": "vdl-bibliotheca-federated-status-v1",
-  "generated": "2026-11-16T18:17:13.929Z",
+  "generated": "2026-11-27T12:49:09.634Z",
   "methodology": "Cruce de archivos GitHub y manifiestos R2. No acredita disponibilidad HTTP ni cotejo autóptico. El índice es léxico por raíces/conceptos, no semántica editorial validada.",
   "summary": {
-    "masterWorks": 271,
+    "masterWorks": 730,
+    "supplementaryGreekWorks": 127,
     "additionalWorks": 10,
-    "totalWorksDeclared": 281,
+    "totalWorksDeclared": 867,
     "r2PdfEditions": 117,
     "r2IndexWorksDeclared": 119,
     "r2IndexPagesDeclared": 56241,
-    "textVersions": 292,
-    "localTextFiles": 247,
-    "remoteTextFilesDeclared": 44,
-    "indexedWorks": 227,
-    "indexedOriginalWorks": 227,
-    "worksWithoutAnyText": 44,
-    "worksWithoutOriginal": 44,
+    "textVersions": 1109,
+    "localTextFiles": 441,
+    "remoteTextFilesDeclared": 667,
+    "indexedWorks": 827,
+    "indexedOriginalWorks": 827,
+    "worksWithoutAnyText": 30,
+    "worksWithoutOriginal": 30,
     "uncataloguedLocalTexts": 0,
     "r2AdditionalEditionRecords": 10,
     "r2PendingEditionRecords": 0,
     "unlinkedR2Editions": 0,
-    "candidateEditionsNotInR2": 44,
+    "candidateEditionsNotInR2": 50,
     "externalMetadataPending": 49,
-    "liveR2ObjectCheck": true,
-    "r2ObjectsScanned": 25791,
-    "r2PdfObjectsPresent": 117,
-    "r2CorpusTextsPresent": 44
+    "liveR2ObjectCheck": false
   },
   "critical": [],
   "issues": [
-    "Índice facsimilar declara 119 obras frente a 117 registros PDF; identificar la diferencia en fragmentos.json",
-    "Hay objetos PDF/OCR en R2 sin ficha en el catálogo actual. No borrarlos: revisar su procedencia.",
-    "El índice menciona 2 ID(s) sin entrada PDF actual; revisar antes de eliminar o fusionar."
+    "Índice facsimilar declara 119 obras frente a 117 registros PDF; identificar la diferencia en fragmentos.json"
   ],
   "pending": {
     "uncataloguedLocalTexts": [],
     "unlinkedR2Edits": [],
     "withoutText": [
       {
-        "id": "seneca-naturales",
-        "author": "Séneca",
-        "title": "Naturales quaestiones",
-        "language": "la"
-      },
-      {
         "id": "apollodorus-poliorcetics",
         "author": "Apolodoro de Damasco (atribución tradicional)",
         "title": "Πολιορκητικά · Poliorketika",
@@ -74,9 +64,9 @@
         "language": "la"
       },
       {
-        "id": "velleius-historia",
-        "author": "Veleyo Patérculo",
-        "title": "Historia Romana",
+        "id": "krohn-1912-pdf",
+        "author": "Vitruvio · edición de Fritz Krohn",
+        "title": "Vitruvii De architectura libri decem · Krohn 1912",
         "language": "la"
       },
       {
@@ -84,36 +74,6 @@
         "author": "Claudio Ptolomeo",
         "title": "Γεωγραφικὴ ὑφήγησις",
         "language": "grc"
-      },
-      {
-        "id": "seneca-de-ira",
-        "author": "Séneca",
-        "title": "De ira",
-        "language": "la"
-      },
-      {
-        "id": "seneca-de-tranquillitate",
-        "author": "Séneca",
-        "title": "De tranquillitate animi",
-        "language": "la"
-      },
-      {
-        "id": "apuleius-de-deo-socratis",
-        "author": "Apuleyo",
-        "title": "De deo Socratis",
-        "language": "la"
-      },
-      {
-        "id": "macrobius-saturnalia",
-        "author": "Macrobio",
-        "title": "Saturnalia",
-        "language": "la"
-      },
-      {
-        "id": "ennius-annales",
-        "author": "Ennio",
-        "title": "Annales (fragmenta)",
-        "language": "la"
       },
       {
         "id": "accius-fragmenta",
@@ -128,18 +88,6 @@
         "language": "grc"
       },
       {
-        "id": "isidore-etymologiae",
-        "author": "Isidoro de Sevilla",
-        "title": "Etymologiae",
-        "language": "la"
-      },
-      {
-        "id": "censorinus-die-natali",
-        "author": "Censorino",
-        "title": "De die natali",
-        "language": "la"
-      },
-      {
         "id": "philo-belopoeica",
         "author": "Filón de Bizancio",
         "title": "Βελοποιικά · Belopoeica (Mechanike syntaxis IV)",
@@ -152,45 +100,9 @@
         "language": "grc"
       },
       {
-        "id": "geminus-isagoge",
-        "author": "Gémino",
-        "title": "Εἰσαγωγὴ εἰς τὰ φαινόμενα · Elementa astronomiae",
-        "language": "grc"
-      },
-      {
-        "id": "aristarchus-magnitudines",
-        "author": "Aristarco de Samos",
-        "title": "Περὶ μεγεθῶν καὶ ἀποστημάτων ἡλίου καὶ σελήνης",
-        "language": "grc"
-      },
-      {
-        "id": "apollonius-conica",
-        "author": "Apolonio de Perge",
-        "title": "Κωνικά · Conica",
-        "language": "grc"
-      },
-      {
-        "id": "pappus-synagoge",
-        "author": "Papo de Alejandría",
-        "title": "Συναγωγή · Collectio (libro VIII: mecánica)",
-        "language": "grc"
-      },
-      {
         "id": "hyginus-gromaticus",
         "author": "Higino Gromático",
         "title": "Constitutio limitum",
-        "language": "la"
-      },
-      {
-        "id": "frontinus-gromatica",
-        "author": "Frontino",
-        "title": "Opuscula gromatica (De agrorum qualitate, De controversiis, De limitibus)",
-        "language": "la"
-      },
-      {
-        "id": "siculus-flaccus",
-        "author": "Sículo Flaco",
-        "title": "De condicionibus agrorum",
         "language": "la"
       },
       {
@@ -210,12 +122,6 @@
         "author": "Manilio",
         "title": "Astronomica",
         "language": "la"
-      },
-      {
-        "id": "aristoteles-meteorologica",
-        "author": "Aristóteles",
-        "title": "Μετεωρολογικά · Meteorologica",
-        "language": "grc"
       },
       {
         "id": "galeno-opera-kuhn",
@@ -300,16 +206,16 @@
         "author": "Paladio",
         "title": "Opus agriculturae",
         "language": "la"
+      },
+      {
+        "id": "sappho-fragmenta",
+        "author": "Safo",
+        "title": "Fragmenta · Fragmentos",
+        "language": "grc"
       }
     ],
     "withoutOriginal": [
       {
-        "id": "seneca-naturales",
-        "author": "Séneca",
-        "title": "Naturales quaestiones",
-        "language": "la"
-      },
-      {
         "id": "apollodorus-poliorcetics",
         "author": "Apolodoro de Damasco (atribución tradicional)",
         "title": "Πολιορκητικά · Poliorketika",
@@ -340,9 +246,9 @@
         "language": "la"
       },
       {
-        "id": "velleius-historia",
-        "author": "Veleyo Patérculo",
-        "title": "Historia Romana",
+        "id": "krohn-1912-pdf",
+        "author": "Vitruvio · edición de Fritz Krohn",
+        "title": "Vitruvii De architectura libri decem · Krohn 1912",
         "language": "la"
       },
       {
@@ -350,36 +256,6 @@
         "author": "Claudio Ptolomeo",
         "title": "Γεωγραφικὴ ὑφήγησις",
         "language": "grc"
-      },
-      {
-        "id": "seneca-de-ira",
-        "author": "Séneca",
-        "title": "De ira",
-        "language": "la"
-      },
-      {
-        "id": "seneca-de-tranquillitate",
-        "author": "Séneca",
-        "title": "De tranquillitate animi",
-        "language": "la"
-      },
-      {
-        "id": "apuleius-de-deo-socratis",
-        "author": "Apuleyo",
-        "title": "De deo Socratis",
-        "language": "la"
-      },
-      {
-        "id": "macrobius-saturnalia",
-        "author": "Macrobio",
-        "title": "Saturnalia",
-        "language": "la"
-      },
-      {
-        "id": "ennius-annales",
-        "author": "Ennio",
-        "title": "Annales (fragmenta)",
-        "language": "la"
       },
       {
         "id": "accius-fragmenta",
@@ -394,18 +270,6 @@
         "language": "grc"
       },
       {
-        "id": "isidore-etymologiae",
-        "author": "Isidoro de Sevilla",
-        "title": "Etymologiae",
-        "language": "la"
-      },
-      {
-        "id": "censorinus-die-natali",
-        "author": "Censorino",
-        "title": "De die natali",
-        "language": "la"
-      },
-      {
         "id": "philo-belopoeica",
         "author": "Filón de Bizancio",
         "title": "Βελοποιικά · Belopoeica (Mechanike syntaxis IV)",
@@ -418,45 +282,9 @@
         "language": "grc"
       },
       {
-        "id": "geminus-isagoge",
-        "author": "Gémino",
-        "title": "Εἰσαγωγὴ εἰς τὰ φαινόμενα · Elementa astronomiae",
-        "language": "grc"
-      },
-      {
-        "id": "aristarchus-magnitudines",
-        "author": "Aristarco de Samos",
-        "title": "Περὶ μεγεθῶν καὶ ἀποστημάτων ἡλίου καὶ σελήνης",
-        "language": "grc"
-      },
-      {
-        "id": "apollonius-conica",
-        "author": "Apolonio de Perge",
-        "title": "Κωνικά · Conica",
-        "language": "grc"
-      },
-      {
-        "id": "pappus-synagoge",
-        "author": "Papo de Alejandría",
-        "title": "Συναγωγή · Collectio (libro VIII: mecánica)",
-        "language": "grc"
-      },
-      {
         "id": "hyginus-gromaticus",
         "author": "Higino Gromático",
         "title": "Constitutio limitum",
-        "language": "la"
-      },
-      {
-        "id": "frontinus-gromatica",
-        "author": "Frontino",
-        "title": "Opuscula gromatica (De agrorum qualitate, De controversiis, De limitibus)",
-        "language": "la"
-      },
-      {
-        "id": "siculus-flaccus",
-        "author": "Sículo Flaco",
-        "title": "De condicionibus agrorum",
         "language": "la"
       },
       {
@@ -476,12 +304,6 @@
         "author": "Manilio",
         "title": "Astronomica",
         "language": "la"
-      },
-      {
-        "id": "aristoteles-meteorologica",
-        "author": "Aristóteles",
-        "title": "Μετεωρολογικά · Meteorologica",
-        "language": "grc"
       },
       {
         "id": "galeno-opera-kuhn",
@@ -566,9 +388,50 @@
         "author": "Paladio",
         "title": "Opus agriculturae",
         "language": "la"
+      },
+      {
+        "id": "sappho-fragmenta",
+        "author": "Safo",
+        "title": "Fragmenta · Fragmentos",
+        "language": "grc"
       }
     ],
     "candidatesNotInR2": [
+      {
+        "id": "theognis-elegiae",
+        "title": "Ἐλεγεῖαι · Elegiae",
+        "language": "grc"
+      },
+      {
+        "id": "avienus-ora-maritima",
+        "title": "Ora maritima",
+        "language": "la"
+      },
+      {
+        "id": "alcifron-epistolae-en",
+        "title": "Letters from the Country and the Town · traducción inglesa de Epistulae",
+        "language": "en"
+      },
+      {
+        "id": "solino-collectanea-en",
+        "title": "The Excellent and Pleasant Worke of Iulius Solinus Polyhistor · traducción inglesa",
+        "language": "en"
+      },
+      {
+        "id": "artemidoro-oneirocritica",
+        "title": "Ὀνειροκριτικά · Oneirocritica",
+        "language": "grc"
+      },
+      {
+        "id": "alcifron-epistolae",
+        "title": "Ἐπιστολαί · Epistulae",
+        "language": "grc"
+      },
+      {
+        "id": "solino-collectanea",
+        "title": "Collectanea rerum memorabilium",
+        "language": "la"
+      },
       {
         "id": "heron-metrica-dioptra",
         "title": "Μετρικά · Περὶ διόπτρας · Metrica y Dioptra",
@@ -652,11 +515,6 @@
       {
         "id": "sacrobosco-de-sphaera",
         "title": "De sphaera mundi",
-        "language": "la"
-      },
-      {
-        "id": "valturio-de-re-militari",
-        "title": "De re militari",
         "language": "la"
       },
       {
@@ -790,14 +648,5 @@
         "language": "fr"
       }
     ]
-  },
-  "r2LiveEvidence": {
-    "generated": "2026-11-16T18:17:14.097374+00:00",
-    "status": "checked-with-discrepancies",
-    "indexExtraIds": [
-      "boecio-institutione-musica",
-      "historia-augusta"
-    ],
-    "missing": {}
   }
 }

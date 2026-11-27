@@ -1,12 +1,12 @@
 {
   "schema": "vdl-bibliotheca-r2-object-audit-v1",
-  "generated": "2026-11-16T18:17:14.097374+00:00",
+  "generated": "2026-11-27T12:47:59.592047+00:00",
   "status": "checked-with-discrepancies",
   "objectIdentityCheck": "metadata only, no full PDF SHA re-download",
   "count": {
     "indexListedWorks": 119,
     "indexListedFragments": 2510,
-    "r2ObjectsScanned": 25791,
+    "r2ObjectsScanned": 116956,
     "pdfExpected": 117,
     "pdfPresent": 117,
     "ocrExpected": 117,
@@ -34,20 +34,36 @@
   "missingIndexIds": [],
   "uncataloguedObjects": {
     "pdf": [
+      "clasicos/pdf/alcifron-epistolae.pdf",
+      "clasicos/pdf/aristofanes-comedias-en.pdf",
+      "clasicos/pdf/aristoteles-metafisica-en.pdf",
+      "clasicos/pdf/aristoteles-politica-en.pdf",
+      "clasicos/pdf/arquimedes-obras-en.pdf",
+      "clasicos/pdf/baquilides-poemas-en.pdf",
       "clasicos/pdf/boecio-institutione-musica.pdf",
       "clasicos/pdf/estacio-obras.pdf",
       "clasicos/pdf/historia-augusta.pdf",
       "clasicos/pdf/juliano-obras.pdf",
       "clasicos/pdf/justino-trogo-es.pdf",
-      "clasicos/pdf/prudencio-poemas.pdf"
+      "clasicos/pdf/prudencio-poemas.pdf",
+      "clasicos/pdf/solino-collectanea.pdf",
+      "clasicos/pdf/theognis-elegiae.pdf"
     ],
     "ocr": [
+      "clasicos/texto/alcifron-epistolae.json",
+      "clasicos/texto/aristofanes-comedias-en.json",
+      "clasicos/texto/aristoteles-metafisica-en.json",
+      "clasicos/texto/aristoteles-politica-en.json",
+      "clasicos/texto/arquimedes-obras-en.json",
+      "clasicos/texto/baquilides-poemas-en.json",
       "clasicos/texto/boecio-institutione-musica.json",
       "clasicos/texto/estacio-obras.json",
       "clasicos/texto/historia-augusta.json",
       "clasicos/texto/juliano-obras.json",
       "clasicos/texto/justino-trogo-es.json",
-      "clasicos/texto/prudencio-poemas.json"
+      "clasicos/texto/prudencio-poemas.json",
+      "clasicos/texto/solino-collectanea.json",
+      "clasicos/texto/theognis-elegiae.json"
     ]
   }
 }
