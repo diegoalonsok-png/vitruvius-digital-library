@@ -566,6 +566,11 @@ async function showHoldingLibraries(){
  host.append(foot);
 }
 let editionRequest=0;
+let editionLabelsPromise;
+function editorialLabels(){
+ return editionLabelsPromise||=(fetch("data/classics-corpus/edition-list-labels.json",{cache:"no-cache"})
+  .then(r=>r.ok?r.json():null).then(j=>j?.works||{}).catch(()=>({})));
+}
 async function load(language,requestId){
  const resourceRequest=loadSearchResources(language).catch(err=>{console.warn("Índice léxico complementario no disponible",err);return null});
  const selected=editionSelect?.value||p.get("edition")||"";
@@ -639,7 +644,18 @@ async function load(language,requestId){
   const add=(label,value)=>{if(value){const row=mk("p",label+": "+value);row.style.margin="4px 0";sourceBox.append(row)}};
   add("Fuente declarada por el archivo",corpus.attribution||indexed?.sourceDescription||corpus.source);
   add("Edición o referencia bibliográfica",corpus.chicago18Bibliography||indexed?.editionCitation||[corpus.readingMetadata?.title,corpus.readingMetadata?.volume?"vol. "+corpus.readingMetadata.volume:null,corpus.readingMetadata?.place,corpus.readingMetadata?.publisher,corpus.readingMetadata?.date].filter(Boolean).join(" · ")||"Consultar el registro editorial de la fuente");
-  if(!original)add("Traductor",corpus.translator||indexed?.translator||"No acreditado para este archivo; no se atribuye automáticamente");
+  if(!original){
+   const translator=mk("p","Traductor: "+(corpus.translator||indexed?.translator||"No acreditado para este archivo"));
+   const date=mk("p","Año de publicación: "+(corpus.publicationYear||corpus.translationYear||indexed?.publicationYear||indexed?.translationYear||"No documentado"));
+   sourceBox.append(translator,date);
+   editorialLabels().then(labels=>{
+    if(requestId!==editionRequest||!translator.isConnected)return;
+    const ed=(labels[work]||[]).find(e=>e.path===path&&e.language===language);
+    if(!ed)return;
+    if(ed.translator)translator.textContent="Traductor: "+ed.translator;
+    if(ed.publicationYear)date.textContent="Año de publicación: "+ed.publicationYear;
+   });
+  }
   else add("Editor del texto",corpus.editor||indexed?.editor||corpus.readingMetadata?.editor||"Consultar el registro editorial de la fuente");
   add("Versión/URN",corpus.ctsUrn||corpus.sourceUrn||indexed?.sourceUrn||indexed?.urn||"Sin identificador de edición acreditado");
   if(work==="homer-odyssey"){
