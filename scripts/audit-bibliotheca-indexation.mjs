@@ -63,7 +63,7 @@ for(const w of catalog){
  if(!w.title||!w.author)add("error","missing_author_or_title",w.id,"Sin título o autor");
  const entries=indexed.get(w.id)||[];
  if(!entries.length){unindexed.push({id:w.id,author:w.author,title:w.title,language:w.language});add("review","work_not_text_indexed",w.id,"Ficha presente sin versión textual en registry");}
- else if(originalLanguages.has(w.language)&&!entries.some(e=>e.language===w.language))missingOriginal.push(w.id);
+ else if(!Object.hasOwn(editionIndexLinks,w.id)&&originalLanguages.has(w.language)&&!entries.some(e=>e.language===w.language))missingOriginal.push(w.id);
  if(w.language==="grc"&&!greek.test(w.title||"")){
   greekTitleReview.push({id:w.id,title:w.title});
   add("review","greek_title_not_documented",w.id,"La ficha no contiene denominación griega acreditada; podría ser una colección o edición");
