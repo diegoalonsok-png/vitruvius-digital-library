@@ -94,3 +94,19 @@ test("DOI forms and canonical URL identity preserve academic records",()=>{
  assert.equal(model.sourceType({link:"https://doi.org/10.1234/ABC"}),"scholarly-record");
  assert.equal(model.organize("Vitruvius",[{title:"Vitruvius",link:"https://user:password@archive.example.org/X"}]).total,0);
 });
+
+test("Distinct folios and loci survive source deduplication; richer duplicate wins",()=>{
+ const rows=[
+  {type:"manuscript",title:"Vitruvius",link:"https://archive.example.org/codex#f1r",folio:"1r"},
+  {type:"manuscript",title:"Vitruvius",link:"https://archive.example.org/codex#f2v",folio:"2v"},
+  {type:"manuscript",title:"Vitruvius",link:"https://archive.example.org/codex?utm_source=x#f1r",folio:"1r",source:"Library catalogue",year:900,excerpt:"Identified witness"},
+  {type:"passage",title:"Vitruvius",link:"https://archive.example.org/text",locus:"1.1.1"},
+  {type:"passage",title:"Vitruvius",link:"https://archive.example.org/text",locus:"1.1.2"}
+ ];
+ const result=model.organize("Vitruvius",rows);
+ assert.equal(result.total,4);
+ assert.equal(result.records.find(x=>x.locator==="1r").source,"Library catalogue");
+ assert.equal(result.records.find(x=>x.locator==="2v").href,"https://archive.example.org/codex#f2v");
+ assert(result.records.some(x=>x.locator==="1.1.1"));
+ assert(result.records.some(x=>x.locator==="1.1.2"));
+});
