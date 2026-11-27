@@ -1,12 +1,12 @@
 {
   "schema": "vdl-federated-bibliotheca-inventory-v1",
-  "generated": "2026-11-26T19:52:12.699208+00:00",
+  "generated": "2026-11-27T01:51:41.780760+00:00",
   "method": "Master works and additional R2 works counted separately; edition relations can be many-to-many. Remote text URLs are declared, not live-verified. Unresolved editions are never merged automatically.",
   "counts": {
-    "cataloguedWorks": 681,
+    "cataloguedWorks": 706,
     "supplementaryWorks": 127,
     "additionalWorks": 10,
-    "totalDeclaredWorks": 818,
+    "totalDeclaredWorks": 843,
     "r2EditionRecords": 117,
     "r2LinkedEditionRecords": 107,
     "r2WorkEditionRelations": 115,
@@ -14,7 +14,7 @@
     "r2UnlinkedEditionRecords": 0,
     "worksWithR2Edition": 114,
     "worksWithLocalIndexedText": 325,
-    "worksWithDeclaredRemoteIndex": 544
+    "worksWithDeclaredRemoteIndex": 569
   },
   "unlinkedR2EditionIds": [],
   "additionalWorks": [
@@ -13805,6 +13805,360 @@
         {
           "language": "grc",
           "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg1367-tlg001-grc-7d57e1faefa17578.json"
+        }
+      ],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "cts-tlg1805-tlg008",
+      "author": "Vidas de Homero",
+      "title": "Tzetzae vita",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg1805-tlg008-grc-b5e58362c293abac.json"
+        }
+      ],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "cts-tlg1805-tlg005",
+      "author": "Vidas de Homero",
+      "title": "Vita quinta",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg1805-tlg005-grc-6105458d4ce42f29.json"
+        },
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg1805-tlg006-grc-0135e0fd160b26ac.json"
+        }
+      ],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "cts-tlg1805-tlg007",
+      "author": "Vidas de Homero",
+      "title": "Vita septima",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg1805-tlg007-grc-6bba8c0f504b5f55.json"
+        }
+      ],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "cts-tlg3156-tlg001",
+      "author": "Anonymi Exegesis in Hesiodi Theogoniam",
+      "title": "Exegesis in Hesiodi theogoniam",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg3156-tlg001-grc-7cbbdf1e59f09647.json"
+        }
+      ],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "cts-tlg4020-tlg002",
+      "author": "Elias Neoplatonicus",
+      "title": "Eliae (Olim Davidis) In Aristotelis Categorias Commentarium",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg4020-tlg002-grc-359bc4df67678bed.json"
+        }
+      ],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "cts-tlg4020-tlg001",
+      "author": "Elias Neoplatonicus",
+      "title": "In Porphyrii Isagogen",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg4020-tlg001-grc-8982fdcfd8e29153.json"
+        }
+      ],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "cts-tlg4026-tlg001",
+      "author": "Anonymi in Aristotelis Artem Rhetoricam",
+      "title": "In Aristotelis artem rhetoricam commentarium",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg4026-tlg001-grc-1b3249c2a0a66d08.json"
+        }
+      ],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "cts-tlg4026-tlg002",
+      "author": "Anonymi in Aristotelis Artem Rhetoricam",
+      "title": "Fragmentum commentarii in Aristotelis rhetorica",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg4026-tlg002-grc-a158982ac893b46a.json"
+        }
+      ],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "cts-tlg4026-tlg003",
+      "author": "Anonymi in Aristotelis Artem Rhetoricam",
+      "title": "tlg4026.tlg003",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg4026-tlg003-grc-f7c247c4a28a8fa7.json"
+        }
+      ],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "cts-tlg4027-tlg001",
+      "author": "Anonymi In Aristotelis Categorias",
+      "title": "Paraphrasis Categoriarum",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg4027-tlg001-grc-52fe7689592251ed.json"
+        }
+      ],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "cts-tlg4029-tlg002",
+      "author": "Procopio de Cesarea",
+      "title": "Historia Arcana",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg4029-tlg002-grc-2473adbd3e3d383c.json"
+        }
+      ],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "cts-tlg4029-tlg001",
+      "author": "Procopio de Cesarea",
+      "title": "De Bellis",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg4029-tlg001-grc-9a1fd6d39a7482f2.json"
+        }
+      ],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "cts-tlg0057-tlg058",
+      "author": "Galeno",
+      "title": "De pulsibus ad tirones",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0057-tlg058-grc-74629c8c3ccce450.json"
+        }
+      ],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "cts-tlg0057-tlg060",
+      "author": "Galeno",
+      "title": "De dignoscendis pulsibus",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0057-tlg060-grc-968142e1395527bf.json"
+        }
+      ],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "cts-tlg0057-tlg059",
+      "author": "Galeno",
+      "title": "De differentiis pulsuum",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0057-tlg059-grc-066de63343da1db2.json"
+        }
+      ],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "cts-tlg0057-tlg078",
+      "author": "Galeno",
+      "title": "De antidotis",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0057-tlg078-grc-88a0ea4423d0df46.json"
+        }
+      ],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "cts-tlg0057-tlg077",
+      "author": "Galeno",
+      "title": "De compositione medicamentorum per genera",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0057-tlg077-grc-c9dd5055ea30ac0e.json"
+        }
+      ],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "cts-tlg0057-tlg079",
+      "author": "Galeno",
+      "title": "De theriaca ad Pisonem",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0057-tlg079-grc-e00fb39447c5aa7a.json"
+        }
+      ],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "cts-tlg0057-tlg081",
+      "author": "Galeno",
+      "title": "Institutio logica",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0057-tlg081-grc-34f9244c106f2fbf.json"
+        }
+      ],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "cts-tlg0057-tlg082",
+      "author": "Galeno",
+      "title": "De sophismatis seu captionibus penes dictionem",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0057-tlg082-grc-461a638749230164.json"
+        }
+      ],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "cts-tlg0057-tlg083",
+      "author": "Galeno",
+      "title": "De praenotione ad Epigenem",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0057-tlg083-grc-27ad2c50be2d5d7a.json"
+        }
+      ],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "cts-tlg0057-tlg084",
+      "author": "Galeno",
+      "title": "De substantia facultatum naturalium fragmentum",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0057-tlg084-grc-a7fecf6719290e91.json"
+        }
+      ],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "cts-tlg0017-tlg012",
+      "author": "Iseo",
+      "title": "On Behalf of Euphiletus",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0017-tlg012-grc-215f9907885a6bed.json"
+        }
+      ],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "cts-tlg0018-tlg003",
+      "author": "Filón de Alejandría",
+      "title": "De Cherubim",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0018-tlg003-grc-03cf776414369a13.json"
+        }
+      ],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "cts-tlg0018-tlg004",
+      "author": "Filón de Alejandría",
+      "title": "De Sacrificiis Abelis Et Caini",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0018-tlg004-grc-0c46060cc7075ac4.json"
         }
       ],
       "r2FacsimileEditions": []

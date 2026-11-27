@@ -1,10 +1,10 @@
 {
  "schema": "vdl-classics-expansion-manifest-v1",
- "generated": "2026-11-26T16:58:25.715395+00:00",
+ "generated": "2026-11-27T01:46:17.458274+00:00",
  "discovery": {
-  "sourceRecords": 1490,
-  "alreadyIndexedCatalogueWorks": 571,
-  "pendingGroups": 1432,
+  "sourceRecords": 1462,
+  "alreadyIndexedCatalogueWorks": 598,
+  "pendingGroups": 1404,
   "policy": "Una obra bibliográfica, múltiples ediciones identificadas por URN y hash; sin sustituir ni duplicar archivos",
   "githubTextFiles": 450,
   "githubUnregisteredFiles": 14,
@@ -26099,6 +26099,1101 @@
    "characters": 11125,
    "bytes": 26757,
    "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg1367-tlg001-grc-7d57e1faefa17578.json"
+  },
+  {
+   "workId": "cts-tlg1805-tlg008",
+   "author": "Vidas de Homero",
+   "title": "Tzetzae vita",
+   "language": "grc",
+   "dating": "época imperial",
+   "sources": [
+    {
+     "title": "Tzetzae vita",
+     "titleLanguage": "lat",
+     "author": "Vitae Homeri",
+     "editors": [
+      "Thomas W. Allen"
+     ],
+     "bibliography": "Homeri Opera Thomas W. Allen Oxford Clarendon Press 1912 5 Internet Archive",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg1805.tlg008.1st1K-grc1",
+     "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg1805/tlg008/tlg1805.tlg008.1st1K-grc1.xml",
+     "sourceSha256": "f21c1ba5759a81b00a6519cfe5c6e982bc1570a163adda312410294115ce7c38",
+     "sourceReferences": [
+      "https://archive.org/details/homeriopera05home/page/254/mode/2up"
+     ],
+     "publicationYear": "1912",
+     "publisher": "Clarendon Press",
+     "publicationPlace": "Oxford",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/f21c1ba5759a81b00a6519cfe5c6e982bc1570a163adda312410294115ce7c38.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-tlg1805-tlg008-grc-b5e58362c293abac.json",
+   "sha256": "b5e58362c293abac23a6beebff3d4b83b53d72b3771bc71a4806cc03e43306e1",
+   "passages": 1,
+   "characters": 1756,
+   "bytes": 5378,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg1805-tlg008-grc-b5e58362c293abac.json"
+  },
+  {
+   "workId": "cts-tlg1805-tlg005",
+   "author": "Vidas de Homero",
+   "title": "Vita quinta",
+   "language": "grc",
+   "dating": "época imperial",
+   "sources": [
+    {
+     "title": "Vita quinta",
+     "titleLanguage": "lat",
+     "author": "Vitae Homeri",
+     "editors": [
+      "Thomas W. Allen"
+     ],
+     "bibliography": "Homeri Opera Thomas W. Allen Oxford Clarendon Press 1912 5 Internet Archive",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg1805.tlg005.1st1K-grc1",
+     "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg1805/tlg005/tlg1805.tlg005.1st1K-grc1.xml",
+     "sourceSha256": "681005bdc069b322aeb0eaba303af73e80f808e78f40f265482cefe0fb048693",
+     "sourceReferences": [
+      "https://archive.org/details/homeriopera05home/page/246/mode/2up"
+     ],
+     "publicationYear": "1912",
+     "publisher": "Clarendon Press",
+     "publicationPlace": "Oxford",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/681005bdc069b322aeb0eaba303af73e80f808e78f40f265482cefe0fb048693.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-tlg1805-tlg005-grc-6105458d4ce42f29.json",
+   "sha256": "6105458d4ce42f29c898b02302ee4dff4397921db079b0153747725e3527fbd6",
+   "passages": 1,
+   "characters": 2470,
+   "bytes": 6750,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg1805-tlg005-grc-6105458d4ce42f29.json"
+  },
+  {
+   "workId": "cts-tlg1805-tlg006",
+   "author": "Vidas de Homero",
+   "title": "Vita quinta",
+   "language": "grc",
+   "dating": "época imperial",
+   "sources": [
+    {
+     "title": "Vita sexta",
+     "titleLanguage": "lat",
+     "author": "Vitae Homeri",
+     "editors": [
+      "Thomas W. Allen"
+     ],
+     "bibliography": "Homeri Opera Thomas W. Allen Oxford Clarendon Press 1912 5 Internet Archive",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg1805.tlg006.1st1K-grc1",
+     "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg1805/tlg006/tlg1805.tlg006.1st1K-grc1.xml",
+     "sourceSha256": "f4a408e7a2acb029a763a1acf7caa2806c73782929a6edcba0b7b576e0d51120",
+     "sourceReferences": [
+      "https://archive.org/details/homeriopera05home/page/250/mode/2up"
+     ],
+     "publicationYear": "1912",
+     "publisher": "Clarendon Press",
+     "publicationPlace": "Oxford",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/f4a408e7a2acb029a763a1acf7caa2806c73782929a6edcba0b7b576e0d51120.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-tlg1805-tlg006-grc-0135e0fd160b26ac.json",
+   "sha256": "0135e0fd160b26ac65146360ba9866a9e81b7ffbd95557b0b3957a704e67848d",
+   "passages": 1,
+   "characters": 3390,
+   "bytes": 8299,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg1805-tlg006-grc-0135e0fd160b26ac.json"
+  },
+  {
+   "workId": "cts-tlg1805-tlg007",
+   "author": "Vidas de Homero",
+   "title": "Vita septima",
+   "language": "grc",
+   "dating": "época imperial",
+   "sources": [
+    {
+     "title": "Vita septima",
+     "titleLanguage": "grc",
+     "author": "Vitae Homeri",
+     "editors": [
+      "Thomas W. Allen"
+     ],
+     "bibliography": "Homeri Opera Thomas W. Allen Oxford Clarendon Press 1912 5 Internet Archive",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg1805.tlg007.1st1K-grc1",
+     "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg1805/tlg007/tlg1805.tlg007.1st1K-grc1.xml",
+     "sourceSha256": "abcc66c24db43e22e2f9554499082e203dd4aafa3761b58be5305450ae2d3582",
+     "sourceReferences": [
+      "https://archive.org/details/homeriopera05home/page/252/mode/2up"
+     ],
+     "publicationYear": "1912",
+     "publisher": "Clarendon Press",
+     "publicationPlace": "Oxford",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/abcc66c24db43e22e2f9554499082e203dd4aafa3761b58be5305450ae2d3582.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-tlg1805-tlg007-grc-6bba8c0f504b5f55.json",
+   "sha256": "6bba8c0f504b5f550b9b7e0350b456e9f251f1cce49ca2f0af9031f46ee870f9",
+   "passages": 2,
+   "characters": 837,
+   "bytes": 3757,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg1805-tlg007-grc-6bba8c0f504b5f55.json"
+  },
+  {
+   "workId": "cts-tlg3156-tlg001",
+   "author": "Anonymi Exegesis in Hesiodi Theogoniam",
+   "title": "Exegesis in Hesiodi theogoniam",
+   "language": "grc",
+   "dating": "",
+   "sources": [
+    {
+     "title": "Exegesis in Hesiodi theogoniam",
+     "titleLanguage": "lat",
+     "author": "Anonymi Exegesis in Hesiodi Theogoniam",
+     "editors": [
+      "Hans Flach"
+     ],
+     "bibliography": "Glossen und Scholien zur hesiodischen Theogonie mit Prolegomena Hans Flach Anonymi Exegesis in Hesiodi Theogoniam Teubner Leipzig 1876 1 Hathi Trust",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg3156.tlg001.1st1K-grc1",
+     "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg3156/tlg001/tlg3156.tlg001.1st1K-grc1.xml",
+     "sourceSha256": "d3975bcd6eb86724ac9685f5a9429305106fcd3af7c349e378a903625080314d",
+     "sourceReferences": [],
+     "publicationYear": "1876",
+     "publisher": "Teubner",
+     "publicationPlace": "Leipzig",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/d3975bcd6eb86724ac9685f5a9429305106fcd3af7c349e378a903625080314d.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-tlg3156-tlg001-grc-7cbbdf1e59f09647.json",
+   "sha256": "7cbbdf1e59f096476ef0840c2b32a21b6a139d7a015f07c7fe3a254497339362",
+   "passages": 111,
+   "characters": 68033,
+   "bytes": 150413,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg3156-tlg001-grc-7cbbdf1e59f09647.json"
+  },
+  {
+   "workId": "cts-tlg4020-tlg002",
+   "author": "Elias Neoplatonicus",
+   "title": "Eliae (Olim Davidis) In Aristotelis Categorias Commentarium",
+   "language": "grc",
+   "dating": "",
+   "sources": [
+    {
+     "title": "Eliae (olim Davidis) in Aristotelis categorias commentarium",
+     "titleLanguage": "lat",
+     "author": "Elias Neoplatonicus",
+     "editors": [
+      "Adolfus Busse",
+      "Adolf Busse"
+     ],
+     "bibliography": "Eliae in Porphyrii isagogen et Aristotelis categorias commentaria Adolfus Busse Elias Neoplatonicus Reimer Berlin 1900 Commentaria in Aristotelem Graeca 18.1 Internet Archive",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg4020.tlg002.1st1K-grc1",
+     "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg4020/tlg002/tlg4020.tlg002.1st1K-grc1.xml",
+     "sourceSha256": "64affd1f94e3a860aa50c13c9f11d0e6ee94b3e773426f1d388c8ea45d7e4858",
+     "sourceReferences": [
+      "https://archive.org/details/commentariaina18pt13akaduoft/page/n143/mode/2up"
+     ],
+     "publicationYear": "1900",
+     "publisher": "Reimer",
+     "publicationPlace": "Berlin",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/64affd1f94e3a860aa50c13c9f11d0e6ee94b3e773426f1d388c8ea45d7e4858.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-tlg4020-tlg002-grc-359bc4df67678bed.json",
+   "sha256": "359bc4df67678bed8f27cbf43ef19dc3e8f3880931841eaa718c25c6e8199da0",
+   "passages": 311,
+   "characters": 335642,
+   "bytes": 724533,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg4020-tlg002-grc-359bc4df67678bed.json"
+  },
+  {
+   "workId": "cts-tlg4020-tlg001",
+   "author": "Elias Neoplatonicus",
+   "title": "In Porphyrii Isagogen",
+   "language": "grc",
+   "dating": "",
+   "sources": [
+    {
+     "title": "In Porphyrii isagogen",
+     "titleLanguage": "lat",
+     "author": "Elias Neoplatonicus",
+     "editors": [
+      "Adolf Busse"
+     ],
+     "bibliography": "Eliae in Porphyrii isagogen et Aristotelis categorias commentaria Adolf Busse Elias Neoplatonicus Reimer Berlin 1900 Commentaria in Aristotelem Graeca 18.1 InternetArchive",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg4020.tlg001.1st1K-grc1",
+     "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg4020/tlg001/tlg4020.tlg001.1st1K-grc1.xml",
+     "sourceSha256": "bd7ee0bed67a0d48b1ffa0b58e0608dddf04d9887e94f159c55e500668bc6ea6",
+     "sourceReferences": [
+      "https://archive.org/details/commentariaina18pt13akaduoft/page/n37/mode/2up"
+     ],
+     "publicationYear": "1900",
+     "publisher": "Reimer",
+     "publicationPlace": "Berlin",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/bd7ee0bed67a0d48b1ffa0b58e0608dddf04d9887e94f159c55e500668bc6ea6.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-tlg4020-tlg001-grc-8982fdcfd8e29153.json",
+   "sha256": "8982fdcfd8e29153fff4e38c332275cf063cc5bb9148268a29ca8c012a9a137c",
+   "passages": 268,
+   "characters": 208063,
+   "bytes": 461218,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg4020-tlg001-grc-8982fdcfd8e29153.json"
+  },
+  {
+   "workId": "cts-tlg4026-tlg001",
+   "author": "Anonymi in Aristotelis Artem Rhetoricam",
+   "title": "In Aristotelis artem rhetoricam commentarium",
+   "language": "grc",
+   "dating": "",
+   "sources": [
+    {
+     "title": "In Aristotelis artem rhetoricam commentarium",
+     "titleLanguage": "lat",
+     "author": "Anonymi in Aristotelis Artem Rhetoricam",
+     "editors": [
+      "Hugo Rabe"
+     ],
+     "bibliography": "Anonymi et Stephani in Artem Rhetoricam Commentaria Hugo Rabe Berlin Typ. et impensis G. Reimeri 1896 Commentaria in Aristotelem graeca 21, part 2 Internet Archive",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg4026.tlg001.1st1K-grc1",
+     "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg4026/tlg001/tlg4026.tlg001.1st1K-grc1.xml",
+     "sourceSha256": "ac05ea054d3c1be75b87075aa8efe27d90d307932fcd8f6e61c130f269e6fd82",
+     "sourceReferences": [
+      "https://archive.org/details/commentariaina21pt12akaduoft/page/n337/mode/2up"
+     ],
+     "publicationYear": "1896",
+     "publisher": "Typ. et impensis G. Reimeri",
+     "publicationPlace": "Berlin",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/ac05ea054d3c1be75b87075aa8efe27d90d307932fcd8f6e61c130f269e6fd82.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-tlg4026-tlg001-grc-1b3249c2a0a66d08.json",
+   "sha256": "1b3249c2a0a66d08b783b9d1da15730eb541a700ea8ba063257bbb9bbc949f19",
+   "passages": 62,
+   "characters": 587427,
+   "bytes": 1153823,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg4026-tlg001-grc-1b3249c2a0a66d08.json"
+  },
+  {
+   "workId": "cts-tlg4026-tlg002",
+   "author": "Anonymi in Aristotelis Artem Rhetoricam",
+   "title": "Fragmentum commentarii in Aristotelis rhetorica",
+   "language": "grc",
+   "dating": "",
+   "sources": [
+    {
+     "title": "Fragmentum commentarii in Aristotelis rhetorica",
+     "titleLanguage": "lat",
+     "author": "Anonymi in Aristotelis Artem Rhetoricam",
+     "editors": [
+      "Hugo Rabe"
+     ],
+     "bibliography": "Anonymi et Stephani in Artem Rhetoricam Commentaria Hugo Rabe Berlin Typ. et impensis G. Reimeri 1896 Commentaria in Aristotelem graeca 21, part 2 Internet Archive",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg4026.tlg002.1st1K-grc1",
+     "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg4026/tlg002/tlg4026.tlg002.1st1K-grc1.xml",
+     "sourceSha256": "a31bb771f38832e926ecfe5118ab2c03eed71c9bf6dd6434bca0ed69313715e5",
+     "sourceReferences": [
+      "https://archive.org/details/commentariaina21pt12akaduoft/page/323/mode/1up"
+     ],
+     "publicationYear": "1896",
+     "publisher": "Typ. et impensis G. Reimeri",
+     "publicationPlace": "Berlin",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/a31bb771f38832e926ecfe5118ab2c03eed71c9bf6dd6434bca0ed69313715e5.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-tlg4026-tlg002-grc-a158982ac893b46a.json",
+   "sha256": "a158982ac893b46aa902e852da42c9ea03d76ac84b6110837caef4b863f1783b",
+   "passages": 20,
+   "characters": 12446,
+   "bytes": 29580,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg4026-tlg002-grc-a158982ac893b46a.json"
+  },
+  {
+   "workId": "cts-tlg4026-tlg003",
+   "author": "Anonymi in Aristotelis Artem Rhetoricam",
+   "title": "tlg4026.tlg003",
+   "language": "grc",
+   "dating": "",
+   "sources": [
+    {
+     "title": "Fragmentum paraphrasis in Aristotelis rhetorica",
+     "titleLanguage": "lat",
+     "author": "Anonymi in Aristotelis Artem Rhetoricam",
+     "editors": [
+      "Hugo Rabe"
+     ],
+     "bibliography": "Anonymi et Stephani in Artem Rhetoricam Commentaria Hugo Rabe Berlin Typ. et impensis G. Reimeri 1896 Commentaria in Aristotelem graeca 21, part 2 Internet Archive",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg4026.tlg003.1st1K-grc1",
+     "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg4026/tlg003/tlg4026.tlg003.1st1K-grc1.xml",
+     "sourceSha256": "5c5dbef6bb3929a90dceeacf2259da77ec236ef90a9a74abaac92c5214ce718b",
+     "sourceReferences": [
+      "https://archive.org/details/commentariaina21pt12akaduoft/page/330/mode/1up"
+     ],
+     "publicationYear": "1896",
+     "publisher": "Typ. et impensis G. Reimeri",
+     "publicationPlace": "Berlin",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/5c5dbef6bb3929a90dceeacf2259da77ec236ef90a9a74abaac92c5214ce718b.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-tlg4026-tlg003-grc-f7c247c4a28a8fa7.json",
+   "sha256": "f7c247c4a28a8fa7aeae7ee3bddb3a1930382023f586e060234a78593caed515",
+   "passages": 20,
+   "characters": 5990,
+   "bytes": 16892,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg4026-tlg003-grc-f7c247c4a28a8fa7.json"
+  },
+  {
+   "workId": "cts-tlg4027-tlg001",
+   "author": "Anonymi In Aristotelis Categorias",
+   "title": "Paraphrasis Categoriarum",
+   "language": "grc",
+   "dating": "",
+   "sources": [
+    {
+     "title": "Paraphrasis categoriarum",
+     "titleLanguage": "lat",
+     "author": "Anonymi in Aristotelis Categorias",
+     "editors": [
+      "Michael Hayduck"
+     ],
+     "bibliography": "Michael Hayduck Anonymi in Aristotelis Categorias Anonymi in Aristotelis Categorias Paraphrasis Reimer Berlin 1883 Commentaria in Aristotelem Graeca 23.2 Internet Archive",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg4027.tlg001.1st1K-grc1",
+     "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg4027/tlg001/tlg4027.tlg001.1st1K-grc1.xml",
+     "sourceSha256": "d7fbb5c00cb98618bf01ddc7d03eddbf21b6569e106c5725d339b939719d7d42",
+     "sourceReferences": [
+      "https://archive.org/stream/commentariainari23akaduoft#page/n197/mode/2up"
+     ],
+     "publicationYear": "1883",
+     "publisher": "Reimer",
+     "publicationPlace": "Berlin",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/d7fbb5c00cb98618bf01ddc7d03eddbf21b6569e106c5725d339b939719d7d42.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-tlg4027-tlg001-grc-52fe7689592251ed.json",
+   "sha256": "52fe7689592251edb7c8ae9e1b64a04d20a83022ffbc3527e32bc153c3db2a66",
+   "passages": 839,
+   "characters": 225542,
+   "bytes": 575834,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg4027-tlg001-grc-52fe7689592251ed.json"
+  },
+  {
+   "workId": "cts-tlg4029-tlg002",
+   "author": "Procopio de Cesarea",
+   "title": "Historia Arcana",
+   "language": "grc",
+   "dating": "c. 500–565 d. C.",
+   "sources": [
+    {
+     "title": "Ἀπόκρυφη Ἱστορία",
+     "titleLanguage": "grc",
+     "author": "Procopius",
+     "editors": [
+      "Michael Krascheninnikov"
+     ],
+     "bibliography": "Procopii Caesariensis Opera omnia Procopius Michael Krascheninnikov Mattiesen Jurievi 1899 5 HathiTrust",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg4029.tlg002.perseus-grc2",
+     "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg4029/tlg002/tlg4029.tlg002.perseus-grc2.xml",
+     "sourceSha256": "15132b4277d3806392b3b00f8d318e6090d935e6dd968e7150f9f84d54157f6f",
+     "sourceReferences": [
+      "https://babel.hathitrust.org/cgi/pt?id=mdp.39015069901448&seq=80"
+     ],
+     "publicationYear": "1899",
+     "publisher": "Mattiesen",
+     "publicationPlace": "Jurievi",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/15132b4277d3806392b3b00f8d318e6090d935e6dd968e7150f9f84d54157f6f.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-tlg4029-tlg002-grc-2473adbd3e3d383c.json",
+   "sha256": "2473adbd3e3d383c212c0ea145b6f760d3b5f0526965cfd9c270780cdc5ed2eb",
+   "passages": 1019,
+   "characters": 207524,
+   "bytes": 572983,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg4029-tlg002-grc-2473adbd3e3d383c.json"
+  },
+  {
+   "workId": "cts-tlg4029-tlg001",
+   "author": "Procopio de Cesarea",
+   "title": "De Bellis",
+   "language": "grc",
+   "dating": "c. 500–565 d. C.",
+   "sources": [
+    {
+     "title": "Ὑπὲρ τῶν Πολέμων Λόγοι",
+     "titleLanguage": "grc",
+     "author": "Procopius",
+     "editors": [
+      "Henry Bronson Dewing"
+     ],
+     "bibliography": "Procopius Procopius Henry Bronson Dewing William Heinemann London G.P. Putnam's Sons The Macmillan Co. New York 1914-28 1-5 Loeb Classical Library Internet Archive Internet Archive Internet Archive Internet Archive Internet Archive",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg4029.tlg001.perseus-grc2",
+     "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg4029/tlg001/tlg4029.tlg001.perseus-grc2.xml",
+     "sourceSha256": "e98b9a04deae68d14f5e084a53906d27dd7f0455e97ce3084b4eb4b27781b3a2",
+     "sourceReferences": [
+      "https://archive.org/details/procopiuswitheng01procuoft/page/2/mode/2up",
+      "https://archive.org/details/procopiuswithen02proc/page/2/mode/2up",
+      "https://archive.org/details/in.ernet.dli.2015.12702/page/n7/mode/2up",
+      "https://archive.org/details/b24750281_0004/page/n13/mode/2up",
+      "https://archive.org/details/in.ernet.dli.2015.183498/page/2/mode/2up"
+     ],
+     "publicationYear": "1914-28",
+     "publisher": "William Heinemann",
+     "publicationPlace": "London",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/e98b9a04deae68d14f5e084a53906d27dd7f0455e97ce3084b4eb4b27781b3a2.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-tlg4029-tlg001-grc-9a1fd6d39a7482f2.json",
+   "sha256": "9a1fd6d39a7482f26682bd99a4926669f6b8531781bd50b33fc5c2259516872f",
+   "passages": 7246,
+   "characters": 1437796,
+   "bytes": 3999740,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg4029-tlg001-grc-9a1fd6d39a7482f2.json"
+  },
+  {
+   "workId": "cts-tlg0057-tlg058",
+   "author": "Galeno",
+   "title": "De pulsibus ad tirones",
+   "language": "grc",
+   "dating": "siglo II d. C.",
+   "sources": [
+    {
+     "title": "De pulsibus ad tirones",
+     "titleLanguage": "lat",
+     "author": "Galen",
+     "editors": [
+      "Karl Gottlob Kühn"
+     ],
+     "bibliography": "Claudii Galeni Opera Omnia Galen Karl Gottlob Kühn Knobloch Leipzig 8 453-492 1824 HathiTrust",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg0057.tlg058.1st1K-grc1",
+     "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0057/tlg058/tlg0057.tlg058.1st1K-grc1.xml",
+     "sourceSha256": "1fa4edd881c32cf4f38317d648143548dd9a7dae97890a265a7b5f9d72420c12",
+     "sourceReferences": [
+      "https://hdl.handle.net/2027/hvd.hxpp8p?urlappend=%3Bseq=463"
+     ],
+     "publicationYear": "1824",
+     "publisher": "Knobloch",
+     "publicationPlace": "Leipzig",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/1fa4edd881c32cf4f38317d648143548dd9a7dae97890a265a7b5f9d72420c12.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-tlg0057-tlg058-grc-74629c8c3ccce450.json",
+   "sha256": "74629c8c3ccce45098a8153ec343378fc54fa4de98bdb1373988e3b88049f81e",
+   "passages": 56,
+   "characters": 37333,
+   "bytes": 85423,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0057-tlg058-grc-74629c8c3ccce450.json"
+  },
+  {
+   "workId": "cts-tlg0057-tlg060",
+   "author": "Galeno",
+   "title": "De dignoscendis pulsibus",
+   "language": "grc",
+   "dating": "siglo II d. C.",
+   "sources": [
+    {
+     "title": "De dignoscendis pulsibus",
+     "titleLanguage": "lat",
+     "author": "Galen",
+     "editors": [
+      "Karl Gottlob Kühn"
+     ],
+     "bibliography": "Claudii Galeni Opera Omnia Galen Karl Gottlob Kühn Knobloch Leipzig 8 766-961 1824 HathiTrust",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg0057.tlg060.1st1K-grc1",
+     "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0057/tlg060/tlg0057.tlg060.1st1K-grc1.xml",
+     "sourceSha256": "a66a7c83ba2bbf217d90d2e06c159fe85502e9396d0ce8bfa96e14667b83d1cd",
+     "sourceReferences": [
+      "https://hdl.handle.net/2027/hvd.hxpp8p?urlappend=%3Bseq=774"
+     ],
+     "publicationYear": "1824",
+     "publisher": "Knobloch",
+     "publicationPlace": "Leipzig",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/a66a7c83ba2bbf217d90d2e06c159fe85502e9396d0ce8bfa96e14667b83d1cd.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-tlg0057-tlg060-grc-968142e1395527bf.json",
+   "sha256": "968142e1395527bf89ea93af8ebb5b450d88e3dc66c32b43779ea857b2d9c27e",
+   "passages": 30,
+   "characters": 194607,
+   "bytes": 397641,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0057-tlg060-grc-968142e1395527bf.json"
+  },
+  {
+   "workId": "cts-tlg0057-tlg059",
+   "author": "Galeno",
+   "title": "De differentiis pulsuum",
+   "language": "grc",
+   "dating": "siglo II d. C.",
+   "sources": [
+    {
+     "title": "De differentiis pulsuum",
+     "titleLanguage": "lat",
+     "author": "Galen",
+     "editors": [
+      "Karl Gottlob Kühn"
+     ],
+     "bibliography": "Claudii Galeni Opera Omnia Galen Karl Gottlob Kühn Knobloch Lipsiae 8 493-765 1824 HathiTrust",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg0057.tlg059.1st1K-grc1",
+     "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0057/tlg059/tlg0057.tlg059.1st1K-grc1.xml",
+     "sourceSha256": "647b71eacbe624b93a1e8c1ce15397c5ede8406e8ce0e3b20dbeb123bf7f730b",
+     "sourceReferences": [
+      "https://hdl.handle.net/2027/hvd.hxpp8p?urlappend=%3Bseq=503"
+     ],
+     "publicationYear": "1824",
+     "publisher": "Knobloch",
+     "publicationPlace": "Lipsiae",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/647b71eacbe624b93a1e8c1ce15397c5ede8406e8ce0e3b20dbeb123bf7f730b.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-tlg0057-tlg059-grc-066de63343da1db2.json",
+   "sha256": "066de63343da1db2a7ad8db6bd260c533b48787107f3bbc982c8a09a27c5c0f5",
+   "passages": 88,
+   "characters": 265681,
+   "bytes": 549038,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0057-tlg059-grc-066de63343da1db2.json"
+  },
+  {
+   "workId": "cts-tlg0057-tlg078",
+   "author": "Galeno",
+   "title": "De antidotis",
+   "language": "grc",
+   "dating": "siglo II d. C.",
+   "sources": [
+    {
+     "title": "De antidotis",
+     "titleLanguage": "lat",
+     "author": "Galen",
+     "editors": [
+      "Karl Gottlob Kühn"
+     ],
+     "bibliography": "Claudii Galeni Opera Omnia Galen Karl Gottlob Kühn Knobloch Leipzig 14 1-209 1827 HathiTrust",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg0057.tlg078.1st1K-grc1",
+     "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0057/tlg078/tlg0057.tlg078.1st1K-grc1.xml",
+     "sourceSha256": "4ff1842d9743b79bed7ab3ed2b66aa96cbd8c8661296c6fa1a02694333f33189",
+     "sourceReferences": [
+      "https://hdl.handle.net/2027/hvd.hxpp8u?urlappend=%3Bseq=15%3Bownerid=27021597764275364-19"
+     ],
+     "publicationYear": "1827",
+     "publisher": "Knobloch",
+     "publicationPlace": "Leipzig",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/4ff1842d9743b79bed7ab3ed2b66aa96cbd8c8661296c6fa1a02694333f33189.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-tlg0057-tlg078-grc-88a0ea4423d0df46.json",
+   "sha256": "88a0ea4423d0df4656518993a12c16edc7b9952eef3b81f1ac4a92882218ecb0",
+   "passages": 176,
+   "characters": 183987,
+   "bytes": 382776,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0057-tlg078-grc-88a0ea4423d0df46.json"
+  },
+  {
+   "workId": "cts-tlg0057-tlg077",
+   "author": "Galeno",
+   "title": "De compositione medicamentorum per genera",
+   "language": "grc",
+   "dating": "siglo II d. C.",
+   "sources": [
+    {
+     "title": "De compositione medicamentorum per genera",
+     "titleLanguage": "lat",
+     "author": "Galen",
+     "editors": [
+      "Karl Gottlob Kühn"
+     ],
+     "bibliography": "Claudii Galeni Opera Omnia Galen Karl Gottlob Kühn Knobloch Leipzig 13 362-1058 1827 HathiTrust",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg0057.tlg077.1st1K-grc1",
+     "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0057/tlg077/tlg0057.tlg077.1st1K-grc1.xml",
+     "sourceSha256": "7b1225a27e01b4e28b27422778b8a350b0ec5fe6d95b53d10bf5165421e690bb",
+     "sourceReferences": [
+      "https://hdl.handle.net/2027/hvd.hxpp8t?urlappend=%3Bseq=372"
+     ],
+     "publicationYear": "1827",
+     "publisher": "Knobloch",
+     "publicationPlace": "Leipzig",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/7b1225a27e01b4e28b27422778b8a350b0ec5fe6d95b53d10bf5165421e690bb.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-tlg0057-tlg077-grc-c9dd5055ea30ac0e.json",
+   "sha256": "c9dd5055ea30ac0e177ed544d815296fdf00b3cfefbfe3806471c5706f4a9ee8",
+   "passages": 192,
+   "characters": 668516,
+   "bytes": 1361382,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0057-tlg077-grc-c9dd5055ea30ac0e.json"
+  },
+  {
+   "workId": "cts-tlg0057-tlg079",
+   "author": "Galeno",
+   "title": "De theriaca ad Pisonem",
+   "language": "grc",
+   "dating": "siglo II d. C.",
+   "sources": [
+    {
+     "title": "De theriaca ad Pisonem",
+     "titleLanguage": "lat",
+     "author": "Galen",
+     "editors": [
+      "Karl Gottlob Kühn"
+     ],
+     "bibliography": "Claudii Galeni Opera Omnia Galen Karl Gottlob Kühn Knobloch Lipsiae 14 210-294 1827 HathiTrust",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg0057.tlg079.1st1K-grc1",
+     "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0057/tlg079/tlg0057.tlg079.1st1K-grc1.xml",
+     "sourceSha256": "3fed0297614c25556d30a606e38895486d730389ea1ff3cf8a1e2a3c8010e9a4",
+     "sourceReferences": [
+      "https://hdl.handle.net/2027/hvd.hxpp8u?urlappend=%3Bseq=222"
+     ],
+     "publicationYear": "1827",
+     "publisher": "Knobloch",
+     "publicationPlace": "Lipsiae",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/3fed0297614c25556d30a606e38895486d730389ea1ff3cf8a1e2a3c8010e9a4.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-tlg0057-tlg079-grc-e00fb39447c5aa7a.json",
+   "sha256": "e00fb39447c5aa7aa9160d6acea6dbfa9917b67f824c246bc96fd499aa501e1b",
+   "passages": 23,
+   "characters": 82506,
+   "bytes": 167059,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0057-tlg079-grc-e00fb39447c5aa7a.json"
+  },
+  {
+   "workId": "cts-tlg0057-tlg081",
+   "author": "Galeno",
+   "title": "Institutio logica",
+   "language": "grc",
+   "dating": "siglo II d. C.",
+   "sources": [
+    {
+     "title": "Institutio logica",
+     "titleLanguage": "lat",
+     "author": "Galen",
+     "editors": [
+      "Karl Kalbfleisch"
+     ],
+     "bibliography": "Galeni Institutio logica Galen Karl Kalbfleisch B. G. Teubner Leipzig 3-49 1896 Internet Archive",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg0057.tlg081.1st1K-grc1",
+     "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0057/tlg081/tlg0057.tlg081.1st1K-grc1.xml",
+     "sourceSha256": "edf9eb7ecdc30004b4a449cea8603b2518f50371b215f67eae41e90b687fff68",
+     "sourceReferences": [
+      "https://archive.org/details/galnoueisaggdia00kalbgoog/page/n19/mode/2up"
+     ],
+     "publicationYear": "1896",
+     "publisher": "B. G. Teubner",
+     "publicationPlace": "Leipzig",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/edf9eb7ecdc30004b4a449cea8603b2518f50371b215f67eae41e90b687fff68.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-tlg0057-tlg081-grc-34f9244c106f2fbf.json",
+   "sha256": "34f9244c106f2fbf79865bc24f065c3dd95d7e3f36a3e9b1ae3f6e691a495fe6",
+   "passages": 20,
+   "characters": 53172,
+   "bytes": 112190,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0057-tlg081-grc-34f9244c106f2fbf.json"
+  },
+  {
+   "workId": "cts-tlg0057-tlg082",
+   "author": "Galeno",
+   "title": "De sophismatis seu captionibus penes dictionem",
+   "language": "grc",
+   "dating": "siglo II d. C.",
+   "sources": [
+    {
+     "title": "De sophismatis seu captionibus penes dictionem",
+     "titleLanguage": "lat",
+     "author": "Galen",
+     "editors": [
+      "Karl Gottlob Kühn"
+     ],
+     "bibliography": "Claudii Galeni Opera Omnia Galen Karl Gottlob Kühn Knobloch Lipsiae 14 582-598 1827 HathiTrust",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg0057.tlg082.1st1K-grc1",
+     "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0057/tlg082/tlg0057.tlg082.1st1K-grc1.xml",
+     "sourceSha256": "d83ccebdcbf8fbe650d23ae653f010b7b86e3fc4a025f565c2a3c3137db36332",
+     "sourceReferences": [
+      "https://hdl.handle.net/2027/hvd.hxpp8u?urlappend=%3Bseq=592"
+     ],
+     "publicationYear": "1827",
+     "publisher": "Knobloch",
+     "publicationPlace": "Lipsiae",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/d83ccebdcbf8fbe650d23ae653f010b7b86e3fc4a025f565c2a3c3137db36332.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-tlg0057-tlg082-grc-461a638749230164.json",
+   "sha256": "461a638749230164d4dc0022da48e7bf4fc851d6e3bd9b0c3fc86a1d1b2bec77",
+   "passages": 9,
+   "characters": 14922,
+   "bytes": 32484,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0057-tlg082-grc-461a638749230164.json"
+  },
+  {
+   "workId": "cts-tlg0057-tlg083",
+   "author": "Galeno",
+   "title": "De praenotione ad Epigenem",
+   "language": "grc",
+   "dating": "siglo II d. C.",
+   "sources": [
+    {
+     "title": "De praenotione ad Epigenem",
+     "titleLanguage": "lat",
+     "author": "Galen",
+     "editors": [
+      "Karl Gottlob Kühn"
+     ],
+     "bibliography": "Claudii Galeni Opera Omnia Galen Karl Gottlob Kühn Knobloch Lipsiae 14 599-673 1827 HathiTrust",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg0057.tlg083.1st1K-grc1",
+     "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0057/tlg083/tlg0057.tlg083.1st1K-grc1.xml",
+     "sourceSha256": "e5b3a55311c7e2b1d76d4a045433dee91be4da1f88e1ba688ff22f7aa37ddda7",
+     "sourceReferences": [
+      "https://hdl.handle.net/2027/hvd.hxpp8u?urlappend=%3Bseq=609%3Bownerid=27021597764274861-607"
+     ],
+     "publicationYear": "1827",
+     "publisher": "Knobloch",
+     "publicationPlace": "Lipsiae",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/e5b3a55311c7e2b1d76d4a045433dee91be4da1f88e1ba688ff22f7aa37ddda7.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-tlg0057-tlg083-grc-27ad2c50be2d5d7a.json",
+   "sha256": "27ad2c50be2d5d7ad8e637c2030553f430897766eaf8ad68eb1e800ac0923fcb",
+   "passages": 17,
+   "characters": 71876,
+   "bytes": 145658,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0057-tlg083-grc-27ad2c50be2d5d7a.json"
+  },
+  {
+   "workId": "cts-tlg0057-tlg084",
+   "author": "Galeno",
+   "title": "De substantia facultatum naturalium fragmentum",
+   "language": "grc",
+   "dating": "siglo II d. C.",
+   "sources": [
+    {
+     "title": "De substantia facultatum naturalium fragmentum",
+     "titleLanguage": "lat",
+     "author": "Galen",
+     "editors": [
+      "Karl Gottlob Kühn"
+     ],
+     "bibliography": "Claudii Galeni Opera Omnia Galen Karl Gottlob Kühn Knobloch Leipzig 4 757-766 1822 HathiTrust",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg0057.tlg084.1st1K-grc1",
+     "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0057/tlg084/tlg0057.tlg084.1st1K-grc1.xml",
+     "sourceSha256": "30d0ee5c3c3f820f1f31e28662d13beb5a797c2371b042f2743729d8d050840c",
+     "sourceReferences": [
+      "https://hdl.handle.net/2027/chi.11102513?urlappend=%3Bseq=771%3Bownerid=13510798903411997-789"
+     ],
+     "publicationYear": "1822",
+     "publisher": "Knobloch",
+     "publicationPlace": "Leipzig",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/30d0ee5c3c3f820f1f31e28662d13beb5a797c2371b042f2743729d8d050840c.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-tlg0057-tlg084-grc-a7fecf6719290e91.json",
+   "sha256": "a7fecf6719290e911985c9d22f18de905604b36e9fd96ecb70ab73543571058f",
+   "passages": 2,
+   "characters": 8780,
+   "bytes": 19902,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0057-tlg084-grc-a7fecf6719290e91.json"
+  },
+  {
+   "workId": "cts-tlg0017-tlg012",
+   "author": "Iseo",
+   "title": "On Behalf of Euphiletus",
+   "language": "grc",
+   "dating": "c. 420–350 a. C.",
+   "sources": [
+    {
+     "title": "Υπὲρ Εὐφιλήτου",
+     "titleLanguage": "grc",
+     "author": "Isaeus",
+     "editors": [
+      "Edward Seymour Forster"
+     ],
+     "bibliography": "Isaeus Edward Seymour Forster Isaeus with an English translation Cambridge, MA Harvard University Press London William Heinemann Ltd. 1962 1927 Internet Archive",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg0017.tlg012.perseus-grc2",
+     "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0017/tlg012/tlg0017.tlg012.perseus-grc2.xml",
+     "sourceSha256": "29008b4db48baa57baffa6d2632445356a5d3f361bf31f405eeab5fce306433d",
+     "sourceReferences": [
+      "https://archive.org/details/in.ernet.dli.2015.233289/page/432/mode/2up"
+     ],
+     "publicationYear": "1962",
+     "publisher": "Harvard University Press",
+     "publicationPlace": "Cambridge, MA",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/29008b4db48baa57baffa6d2632445356a5d3f361bf31f405eeab5fce306433d.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-tlg0017-tlg012-grc-215f9907885a6bed.json",
+   "sha256": "215f9907885a6bed767524793157d0986ded7eeb79898ad03fde7e94c7a63774",
+   "passages": 15,
+   "characters": 6037,
+   "bytes": 16259,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0017-tlg012-grc-215f9907885a6bed.json"
+  },
+  {
+   "workId": "cts-tlg0018-tlg003",
+   "author": "Filón de Alejandría",
+   "title": "De Cherubim",
+   "language": "grc",
+   "dating": "siglo I d. C.",
+   "sources": [
+    {
+     "title": "De Cherubim",
+     "titleLanguage": "lat",
+     "author": "Philo Judaeus",
+     "editors": [
+      "Leopold Cohn"
+     ],
+     "bibliography": "Philonis Alexandri Opera Quae Supersunt Leopold Cohn Philo Judaeus Reimer Berlin 1896 1 Hathi Trust",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg0018.tlg003.1st1K-grc1",
+     "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0018/tlg003/tlg0018.tlg003.1st1K-grc1.xml",
+     "sourceSha256": "501518c0862b69886123dc3244128c0d573f480d19044d1eca62412e19a3b76f",
+     "sourceReferences": [
+      "https://babel.hathitrust.org/cgi/pt?id=hvd.32044054757893;view=1up;seq=296"
+     ],
+     "publicationYear": "1896",
+     "publisher": "Reimer",
+     "publicationPlace": "Berlin",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/501518c0862b69886123dc3244128c0d573f480d19044d1eca62412e19a3b76f.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-tlg0018-tlg003-grc-03cf776414369a13.json",
+   "sha256": "03cf776414369a1348124658a8e70fe5ce91254ae93564c5816ef2d4697710d7",
+   "passages": 131,
+   "characters": 49414,
+   "bytes": 118972,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0018-tlg003-grc-03cf776414369a13.json"
+  },
+  {
+   "workId": "cts-tlg0018-tlg004",
+   "author": "Filón de Alejandría",
+   "title": "De Sacrificiis Abelis Et Caini",
+   "language": "grc",
+   "dating": "siglo I d. C.",
+   "sources": [
+    {
+     "title": "De sacrificiis Abelis et Caini",
+     "titleLanguage": "lat",
+     "author": "Philo Judaeus",
+     "editors": [
+      "Leopold Cohn"
+     ],
+     "bibliography": "Philonis Alexandrini Opera Quae Supersunt Leopold Cohn Philo Judaeus Reimer Berlin 1896 1 Hathi Trust",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg0018.tlg004.1st1K-grc1",
+     "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0018/tlg004/tlg0018.tlg004.1st1K-grc1.xml",
+     "sourceSha256": "5d56ea855e5c3bfcd95ad3e28c0d7f3dc7a6fc7125a115e8c765450c5fcfa2b6",
+     "sourceReferences": [
+      "https://babel.hathitrust.org/cgi/pt?id=hvd.32044054757893;view=1up;seq=328"
+     ],
+     "publicationYear": "1896",
+     "publisher": "Reimer",
+     "publicationPlace": "Berlin",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/5d56ea855e5c3bfcd95ad3e28c0d7f3dc7a6fc7125a115e8c765450c5fcfa2b6.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-tlg0018-tlg004-grc-0c46060cc7075ac4.json",
+   "sha256": "0c46060cc7075ac47a6f3e9f79a6264de134bf19a4cc4454956279252d10c6ca",
+   "passages": 141,
+   "characters": 62806,
+   "bytes": 146772,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0018-tlg004-grc-0c46060cc7075ac4.json"
   }
  ],
  "githubPreserved": [
@@ -29304,86 +30399,100 @@
  ],
  "deferred": [
   {
-   "workId": "cts-phi0690-phi001",
+   "workId": "cts-tlg1805-tlg010",
    "sources": [
-    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0690/phi001/phi0690.phi001.perseus-lat2.xml"
+    "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg1805/tlg010/tlg1805.tlg010.1st1K-grc1.xml"
+   ],
+   "reason": "Lengua TEI discrepante o sin acreditar: la"
+  },
+  {
+   "workId": "horace-ars-poetica",
+   "sources": [
+    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0893/phi006/phi0893.phi006.perseus-lat2.xml"
    ],
    "reason": "Sin licencia abierta explícita admisible en la cabecera TEI"
   },
   {
-   "workId": "cts-phi0478-phi003",
+   "workId": "horace-epodi",
    "sources": [
-    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0478/phi003/phi0478.phi003.perseus-lat2.xml"
+    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0893/phi003/phi0893.phi003.perseus-lat2.xml"
    ],
    "reason": "Sin licencia abierta explícita admisible en la cabecera TEI"
   },
   {
-   "workId": "cts-phi0893-phi002",
+   "workId": "horace-epistulae",
    "sources": [
-    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0893/phi002/phi0893.phi002.perseus-lat2.xml"
+    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0893/phi005/phi0893.phi005.perseus-lat2.xml"
    ],
    "reason": "Sin licencia abierta explícita admisible en la cabecera TEI"
   },
   {
-   "workId": "cts-phi0959-phi003",
+   "workId": "horace-odes",
    "sources": [
-    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0959/phi003/phi0959.phi003.perseus-lat2.xml"
+    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0893/phi001/phi0893.phi001.perseus-lat2.xml"
    ],
    "reason": "Sin licencia abierta explícita admisible en la cabecera TEI"
   },
   {
-   "workId": "cts-phi0959-phi001",
+   "workId": "horace-sermones",
    "sources": [
-    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0959/phi001/phi0959.phi001.perseus-lat2.xml"
+    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0893/phi004/phi0893.phi004.perseus-lat2.xml"
    ],
    "reason": "Sin licencia abierta explícita admisible en la cabecera TEI"
   },
   {
-   "workId": "cts-phi0959-phi010",
+   "workId": "lucretius",
    "sources": [
-    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0959/phi010/phi0959.phi010.perseus-lat2.xml"
+    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0550/phi001/phi0550.phi001.perseus-lat1.xml"
    ],
    "reason": "Sin licencia abierta explícita admisible en la cabecera TEI"
   },
   {
-   "workId": "cts-phi1014-phi003",
+   "workId": "livy",
    "sources": [
-    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi1014/phi003/phi1014.phi003.perseus-lat1.xml"
+    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0914/phi001/phi0914.phi001.perseus-lat5.xml"
    ],
    "reason": "Sin licencia abierta explícita admisible en la cabecera TEI"
   },
   {
-   "workId": "cts-phi1014-phi001",
+   "workId": "ovid",
    "sources": [
-    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi1014/phi001/phi1014.phi001.perseus-lat1.xml"
+    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0959/phi006/phi0959.phi006.perseus-lat2.xml"
    ],
    "reason": "Sin licencia abierta explícita admisible en la cabecera TEI"
   },
   {
-   "workId": "cts-phi1014-phi002",
+   "workId": "ovid-ars-amatoria",
    "sources": [
-    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi1014/phi002/phi1014.phi002.perseus-lat1.xml"
+    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0959/phi004/phi0959.phi004.perseus-lat2.xml"
    ],
    "reason": "Sin licencia abierta explícita admisible en la cabecera TEI"
   },
   {
-   "workId": "cts-phi1014-phi004",
+   "workId": "ovid-ex-ponto",
    "sources": [
-    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi1014/phi004/phi1014.phi004.perseus-lat1.xml"
+    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0959/phi009/phi0959.phi009.perseus-lat2.xml"
    ],
    "reason": "Sin licencia abierta explícita admisible en la cabecera TEI"
   },
   {
-   "workId": "cts-phi1017-phi011",
+   "workId": "ovid-fasti",
    "sources": [
-    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi1017/phi011/phi1017.phi011.perseus-lat2.xml"
+    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0959/phi007/phi0959.phi007.perseus-lat2.xml"
    ],
    "reason": "Sin licencia abierta explícita admisible en la cabecera TEI"
   },
   {
-   "workId": "cts-phi1017-phi013",
+   "workId": "ovid-heroides",
    "sources": [
-    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi1017/phi013/phi1017.phi013.perseus-lat2.xml"
+    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0959/phi002/phi0959.phi002.perseus-lat2.xml"
+   ],
+   "reason": "Sin licencia abierta explícita admisible en la cabecera TEI"
+  },
+  {
+   "workId": "ovid-remedia-amoris",
+   "sources": [
+    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0959/phi005/phi0959.phi005.perseus-lat2.xml"
    ],
    "reason": "Sin licencia abierta explícita admisible en la cabecera TEI"
   }
