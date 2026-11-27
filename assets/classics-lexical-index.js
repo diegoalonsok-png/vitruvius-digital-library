@@ -128,7 +128,7 @@ function manifest(){
  if(!manifestTask)manifestTask=catalogues().then(sources=>{
   const first=sources[0].info,index=[],seen=new Set();
   for(const {base,info} of sources)for(const [sourceIndex,work] of info.index.entries()){
-   const key=work.id+"|"+work.lang;
+   const key=[work.id,work.lang,work.file,work.field||""].join("|");
    if(seen.has(key))continue;seen.add(key);
    index.push({...work,i:index.length,indexSource:base,indexSourceIndex:sourceIndex});
   }
@@ -175,12 +175,12 @@ async function lookup(query,options){
  const stem=Philology?Philology.stem(raw,script==="greek"?"greek":script==="hebrew"?"hebrew":"latin"):raw.toLowerCase();
  const languages=languagesFor(raw,settings);
  const hits=[];
- let total=0;
+ let total=0,complete=true;
  const sourceWorks=new Map(info.index.map(w=>[w.indexSource+"|"+w.indexSourceIndex,w]));
  for(const {base,info:sourceInfo} of await catalogues())for(const language of languages){
   if(Array.isArray(sourceInfo.languages)&&!sourceInfo.languages.some(l=>l.language===language))continue;
   let shard=null;
-  try{shard=await shardFor(language,stem,base)}catch{continue}
+  try{shard=await shardFor(language,stem,base)}catch{complete=false;continue}
   const entry=shard&&shard[stem];
   if(!entry)continue;
   /* El fragmento guarda «obra:recuento:pasajes», separadas por barra. */
@@ -208,7 +208,7 @@ async function lookup(query,options){
  }
  hits.sort((a,b)=>b.count-a.count);
  return {query:raw,stem,hits:settings.limit?hits.slice(0,settings.limit):hits,total,works:hits.length,
-  languages,generated:info.generated,method:info.method,limits:info.limits};
+  languages,complete,generated:info.generated,method:info.method,limits:info.limits};
 }
 
 /* Distribución por autor, lengua y época a partir de los recuentos ya
