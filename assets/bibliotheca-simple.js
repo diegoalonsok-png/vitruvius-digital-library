@@ -322,11 +322,16 @@ const metadata=Promise.all([
  fetch(CATALOG).then(r=>{if(!r.ok)throw Error("catalogue");return r.json()}),
  (window.VitruviaIndexCache?.json(REGISTRY)||fetch(REGISTRY).then(r=>{if(!r.ok)throw Error("registry");return r.json()})),
  window.ClassicsOffsiteGreek?.entries()||Promise.resolve([]),
- window.ClassicsOffsiteLatin?.entries()||Promise.resolve([])
-]).then(([catalog,registry,offsite,latinOffsite])=>{
+ window.ClassicsOffsiteLatin?.entries()||Promise.resolve([]),
+ fetch("data/bibliotheca-expansion-publicada-2026-11-16.json").then(r=>r.ok?r.json():null).catch(()=>null),
+ fetch("data/r2/bibliotheca-inventario-unificado.json",{cache:"no-cache"}).then(r=>r.ok?r.json():null).catch(()=>null)
+]).then(([catalog,registry,offsite,latinOffsite,supplement,inventory])=>{
  if(!Array.isArray(catalog.works)||registry.schema!=="vitruvia-classics-search-registry-v1"||
  !Array.isArray(registry.entries)||registry.entries.length!==registry.count)throw Error("inconsistent registry");
- works=catalog.works;
+ const merged=new Map(catalog.works.map(w=>[w.id,w]));
+ for(const w of supplement?.works||[])if(w?.id&&!merged.has(w.id))merged.set(w.id,w);
+ for(const w of [...(inventory?.works||[]),...(inventory?.supplementaryWorks||[]),...(inventory?.additionalWorks||[])])if(w?.id&&!merged.has(w.id))merged.set(w.id,{id:w.id,author:w.author,title:w.title,language:w.language||"",genre:"",dating:""});
+ works=[...merged.values()];
   entries=registry.entries.filter(bibliothecaLanguagePolicy).concat(offsite,latinOffsite);
   byId=new Map(works.map(w=>[w.id,w]));
  indexed=new Set(entries.filter(e=>e.format!=="historical-ocr-pages"&&byId.has(e.workId)).map(e=>e.workId));
@@ -825,7 +830,7 @@ async function search(updateHistory=true,options={}){
   const selectedWork=work.value;
   const alias=editionAliases[selectedWork];
   const workId=alias?.workId||selectedWork;
-  const allowedWorkIds=chosenWorks().map(w=>w.id);
+  const allowedWorkIds=[...new Set(chosenWorks().flatMap(w=>[w.id,...(editionAliases[w.id]?[editionAliases[w.id].workId]:[])]))];
   const added=window.ClassicsUploadedDocuments;
   if(selectedWork.startsWith("docx:")){
    if(!added?.documentIds?.has(selectedWork.slice(5))){status.textContent=dict[locale].wrong;return}
@@ -846,7 +851,9 @@ async function search(updateHistory=true,options={}){
     void added.search(q,workId,()=>id===serial);
     return;
    }
-   status.textContent=dict[locale].wrong;return;
+   status.textContent=dict[locale].wrong;
+   const record=el("a","remote-link",locale==="en"?"Consult academic record and available facsimiles":locale==="fr"?"Consulter la notice et les fac-similés":"Consultar ficha académica y facsímiles disponibles");
+   record.href="classics-work-record.html?work="+encodeURIComponent(selectedWork);status.append(document.createTextNode(" · "),record);return;
   }
   if(added&&workId)void added.search(q,workId,()=>id===serial);
   else if(added){
