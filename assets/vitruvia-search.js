@@ -273,7 +273,7 @@ function liveManuscripts(q){
   const target=titles.find(w=>workIds.has(w.id))||titles[0];
   const exact=norm(ms.shelfmark)===norm(q)||norm(ms.title)===norm(q)||(ms.id==="vitruvius-h"&&/^(?:codex|codice|códice)\s+h(?:\s+(?:vitruvio|vitruvius))?$/i.test(q.trim()));
   const primary=belongs&&(ms.workIds||[]).some(id=>earliest.get(id)?.id===ms.id);
-  out.push({type:"manuscript",workIds:ms.workIds||[],title:ms.title+" · "+ms.shelfmark,author:ms.library,excerpt:ms.coverage,
+  out.push({type:"manuscript",timelineWorkMatch:belongs||exact,workIds:ms.workIds||[],title:ms.title+" · "+ms.shelfmark,author:ms.library,excerpt:ms.coverage,
    meta:"TESTIMONIO MANUSCRITO · "+(ms.date||"sin fecha documentada")+" · "+(ms.shelfmark||"sin signatura")+" · "+(ms.manifest?"IIIF":"visor institucional"),
    codexDate:ms.dateStart??codexDateStart(ms.date),codexShelfmark:ms.shelfmark,codexRepository:ms.library,
    primaryWitness:primary,primaryLabel:primary?"TESTIMONIO MÁS ANTIGUO INDEXADO · "+(target?.title||"obra documentada"):"",
@@ -311,7 +311,7 @@ function academicRows(query){
   const extra=[r.date,r.shelfmark,r.language,r.source].filter(Boolean).join(" · ");
   const title=r.title;
   return {type:manuscript?"manuscript":fragment?"fragment":edition?"edition":r.kind,
-   title,author:r.library||r.editor||r.source,excerpt:r.coverage||"",
+   title,timelineWorkMatch:true,workIds:r.workIds||[],author:r.library||r.editor||r.source,excerpt:r.coverage||"",
    meta:extra,recordKind:r.kind,curatedAcademic:true,
    codexDate:Number.isFinite(r.dateStart)?r.dateStart:9999,
    codexShelfmark:r.shelfmark||"",codexRepository:r.library||"",
@@ -334,13 +334,13 @@ function authorityRows(query){
 }
 
 function liveEditions(q){
- const out=[];
+ const out=[],workIds=matchingWorkIds(q);
  for(const ed of S.editions){
   const w=S.works.find(x=>x.id===ed.workId);if(!w)continue;
   const rating=score([ed.title,ed.editor,ed.year,ed.provider,w.author,w.title,...(w.aliases||[])].join(" "),q,false);
   if(rating<4)continue;
   const pdf=ed.url&&/^documents\/(?:classics\/)?[a-z0-9-]+\.pdf$/i.test(ed.url)?ed.url:null;
-  out.push({type:"edition",title:ed.title,author:ed.editor+" · "+ed.year,excerpt:ed.note,
+  out.push({type:"edition",timelineWorkMatch:workIds.has(ed.workId),workIds:[ed.workId],title:ed.title,author:ed.editor+" · "+ed.year,excerpt:ed.note,
    meta:(pdf?"PDF LOCAL · ":"EDICIÓN DOCUMENTADA · ")+(ed.langs||[]).join("/"),
    rating:rating+(pdf?4:0),link:ed.url||libraryURL(w.id,pdf?"pdf":""),pdf,source:ed.provider,
    historicalEdition:Number.parseInt(ed.year,10)<2000,editionYear:Number.parseInt(ed.year,10)||9999,
@@ -351,7 +351,7 @@ function liveEditions(q){
    Printed editions are not manuscripts; translations are not necessarily critical editions. */
 function liveHistoricalEditions(q){
  const query=norm(topicQuery(q));
- const vitruvian=/\\b(vitruvio|vitruvius|vitruve|vitruvii|de architectura|krohn|bude|budé|rose|giocondo|barbaro|cesariano)\\b/i.test(query);
+ const vitruvian=/\b(vitruvio|vitruvius|vitruve|vitruvii|de architectura|krohn|bude|budé|rose|giocondo|barbaro|cesariano)\b/i.test(query);
  if(!vitruvian)return [];
  const result=S.historical.map(entry=>{
   const year=Number.parseInt(entry.year,10)||9999;
@@ -368,8 +368,8 @@ function liveHistoricalEditions(q){
    links:[{label:"Abrir edición histórica · institución",url:link}]};
  }).filter(Boolean);
  // Budé is documented bibliographically; no direct digitized volume is asserted.
- if(/\\b(bude|budé|vitruvio|vitruvius|vitruve)\\b/i.test(query)){
-  result.push({type:"edition",historicalEdition:true,editionYear:1969,
+ if(/\b(bude|budé|vitruvio|vitruvius|vitruve)\b/i.test(query)){
+  result.push({type:"edition",historicalEdition:true,editionYear:9999,
    title:"Collection des Universités de France · Budé · De architectura",
    author:"Les Belles Lettres · colección Budé · varios volúmenes",
    excerpt:"Ediciones críticas y traducciones francesas publicadas por libros; verificar volumen, editor y año específico.",
