@@ -137,6 +137,26 @@ async function loadSources(){
  if(!sources.length)throw Error("Catálogo de textos vacío");
  return {sources,registryError};
 }
+// Author aliases are identity hints scoped to the source's author, never
+// free-text synonyms. Ambiguous surnames still require further disambiguation.
+const authorAliases=[
+ ["plato","platon","πλατων"],
+ ["aristotle","aristoteles","aristote","αριστοτελησ"],
+ ["homer","homero","homere","ομηροσ"],
+ ["herodotus","herodoto","herodote","ηροδοτοσ"],
+ ["thucydides","tucidides","thucydide","θουκυδιδησ"],
+ ["galen","galeno","galien","galenus","γαληνοσ"],
+ ["hippocrates","hipocrates","ιπποκρατησ"],
+ ["euclid","euclides","euclide","ευκλειδησ"],
+ ["strabo","estrabon","strabon","στραβων"],
+ ["plotinus","plotino","plotin","πλωτινοσ"],
+ ["epictetus","epicteto","epictete","επικτητοσ"],
+ ["marcus aurelius","marco aurelio","marc aurele","marcus aurelius antoninus"],
+ ["cicero","ciceron","marcus tullius cicero"],
+ ["virgil","virgilio","vergilius","virgile"],
+ ["seneca","seneca the younger","seneque"],
+ ["vitruvius","vitruvio","vitruve","marcus vitruvius pollio"]
+];
 function sourceSelection(query,sources){
  const q=normalize(query),qwords=new Set(terms(query));
  const locus=String(query).match(/(?:^|\s)(\d{1,2}\.(?:\d{1,2}|praef)\.\d{1,3})(?=$|\s)/i)?.[1]?.toLowerCase()||"";
@@ -147,21 +167,23 @@ function sourceSelection(query,sources){
   const authorWords=author.split(" ").filter(w=>w.length>=5);
   const titleWords=terms(title);
   let score=0;
-  if(phrase(author)||authorWords.some(w=>phrase(w)))score+=8;
+  const exactAuthorAlias=authorAliases.some(group=>group.some(a=>normalizedPhrase(author,a))&&group.some(a=>normalizedPhrase(q,a)));
+  if(phrase(author)||exactAuthorAlias||authorWords.some(w=>phrase(w)))score+=8;
   if(phrase(lastAuthor))score+=3;
   if(phrase(title)||phrase(id))score+=12;
   else if(titleWords.length>0&&titleWords.every(t=>qwords.has(t)))score+=10;
   if(source.workId==="vitruvius"&&(/\b(?:vitruvio|vitruvius|vitruve|vitruvii|de architectura)\b/.test(q)||locus&&/^\s*\d/.test(query)))score+=20;
-  return {source,score};
+  return {source,score,exactAuthorAlias};
  });
  const best=Math.max(0,...hits.map(x=>x.score));
  const conceptMatch=best<8&&architecturalConcepts.some(group=>group.some(term=>term.includes(" ")&&(" "+q+" ").includes(" "+normalize(term)+" ")));
- const named=best>=8?hits.filter(x=>x.score>=Math.max(8,best-3)).map(x=>x.source):[];
+ const comparative=/\b(?:comparar|comparacion|comparative|compare|versus|contre|vs)\b/.test(q);
+ const named=best>=8?hits.filter(x=>x.score>=Math.max(8,best-3)||(comparative&&x.exactAuthorAlias)).map(x=>x.source):[];
  const conceptWorks=new Set(matchedPhilosophy(query).map(x=>x.work));
  const philosophy=sources.filter(x=>conceptWorks.has(x.workId));
  const compatible=best>=8?philosophy.filter(x=>named.some(n=>n.workId===x.workId)):philosophy;
  const explicit=best>=8||conceptMatch||compatible.length>0;
- const matches=compatible.length?compatible:best>=8?named:conceptMatch?sources.filter(x=>x.workId==="vitruvius"):sources;
+ const matches=compatible.length&&!comparative?compatible:best>=8?named:conceptMatch?sources.filter(x=>x.workId==="vitruvius"):sources;
  // Named works are searched without passage sampling; broad queries retain the sampled registry.
  return {sources:matches,explicit,locus,registryCount:sources.length};
 }
