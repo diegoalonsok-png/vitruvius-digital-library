@@ -117,7 +117,9 @@ async function drawings(target,work){
    img.addEventListener('error',()=>{plate.remove();if(!slot.results.children.length){slot.status.hidden=false;slot.status.textContent=localized('Miniatura no disponible; consultar la fuente.','Thumbnail unavailable; consult source.','Vignette indisponible ; consulter la source.')}},{once:true});
   };
   for(const x of candidates)addPlate(x);
-  slot.status.hidden=candidates.length>0;
+  const registered=kind==='plan'&&/^https:\/\/commons\.wikimedia\.org\/wiki\/Special:FilePath\//.test(work.plan||'');
+  if(registered){const plate=commonsPlate(target,work.plan,localized('Planta registrada · ','Registered floor plan · ','Plan enregistré · ')+work.title,'architecture-plan-link');slot.results.prepend(plate);}
+  slot.status.hidden=candidates.length>0||registered;
   slot.status.textContent=data?localized('No se recuperó una lámina verificada de este tipo.','No verified drawing of this type returned.','Aucun dessin vérifié de ce type retrouvé.'):localized('Fuente temporalmente no disponible.','Source temporarily unavailable.','Source temporairement indisponible.');
   if(source&&/^https:\/\//.test(source))slot.group.append(a(localized('Consultar archivo de la obra ↗','Consult building record ↗','Consulter le dossier ↗'),source));
   slot.group.append(a(localized('Buscar láminas de este tipo ↗','Find drawings of this type ↗','Chercher ce type de dessin ↗'),'https://commons.wikimedia.org/wiki/Special:MediaSearch?'+new URLSearchParams({type:'image',search})));
@@ -142,8 +144,6 @@ function enhance(item,work){
  item.append(content);
  if(work.description)content.append(element('p','architecture-work-review',work.description));
  // Planta declarada en Wikidata (P3311) para esta obra: se muestra sin desplegar nada.
- if(/^https:\/\/commons\.wikimedia\.org\/wiki\/Special:FilePath\//.test(work.plan||''))
-  content.append(commonsPlate(item,work.plan,localized('Planta · ','Plan · ','Plan · ')+work.title,'architecture-plan-link'));
  const box=element('div','architecture-plate-stack');item.insertBefore(box,content);
  attachDrawings(box,work);
  // Load photos when a card is about to enter the visible right-hand scroll pane.
