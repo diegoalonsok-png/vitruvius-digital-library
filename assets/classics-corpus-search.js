@@ -162,9 +162,11 @@ async function indexGate(queries){
     búsqueda: su propia id|lengua y, cuando corresponde, las alternativas
     («vitruvius|es» para el texto latino de la recensio, que las tres
     ediciones bilingües comparten). */
- const keysOf=work=>[work.id+"|"+work.lang,...(work.gate||[])];
+ const keysOf=work=>[work.id+"|"+work.lang,...(work.gate||[])]
+  .filter(key=>key.endsWith("|"+work.lang))
+  .map(key=>key+"|"+work.file);
  const covered=new Set();
- for(const work of manifest.index)for(const key of keysOf(work))covered.add(key);
+ const queriedLanguages=new Set();
  const present=new Set();
  /* Además de si la raíz está, el índice dice CUÁNTAS veces está en cada
     edición. Ese recuento ordena las descargas: una consulta que muestra ocho
@@ -177,13 +179,16 @@ async function indexGate(queries){
   let result=null;
   try{result=await api.lookup(word,{translations:true})}catch{return null}
   if(!result)continue;
+  if(result.complete===false)return null; // Never exclude an edition on a failed shard.
   answered=true;
+  for(const language of result.languages||[])queriedLanguages.add(language);
   for(const hit of result.hits)for(const key of keysOf(hit.work)){
    present.add(key);
    counts.set(key,(counts.get(key)||0)+hit.count);
   }
  }
  if(!answered)return null;
+ for(const work of manifest.index)if(queriedLanguages.has(work.lang))for(const key of keysOf(work))covered.add(key);
  return {covered,present,counts};
 }
 /* Descarga acotada: las ediciones que el índice no cubre se conservan todas
@@ -193,7 +198,7 @@ async function indexGate(queries){
    edición decide. */
 function boundTargets(gate,targets,limit){
  if(!gate)return targets;
- const key=edition=>edition.workId+"|"+edition.language;
+ const key=edition=>edition.workId+"|"+edition.language+"|"+edition.path;
  const uncovered=targets.filter(edition=>!gate.covered.has(key(edition)));
  const indexed=targets.filter(edition=>gate.covered.has(key(edition)))
   .sort((a,b)=>(gate.counts.get(key(b))||0)-(gate.counts.get(key(a))||0));
@@ -203,7 +208,7 @@ function boundTargets(gate,targets,limit){
 /* Una edición pasa la puerta si el índice no la cubre o si el índice la señala. */
 function throughGate(gate,edition){
  if(!gate)return true;
- const key=edition.workId+"|"+edition.language;
+ const key=edition.workId+"|"+edition.language+"|"+edition.path;
  if(!gate.covered.has(key))return true;
  return gate.present.has(key);
 }
