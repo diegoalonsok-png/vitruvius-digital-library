@@ -5,6 +5,7 @@ on:
     branches: [main]
     paths:
       - "scripts/audit-bibliotheca-full-integrity.py"
+      - "scripts/audit-book-interiors.py"
       - ".github/workflows/bibliotheca-full-interior-audit.yml"
   workflow_dispatch:
 
@@ -162,6 +163,6 @@ jobs:
           if git diff --cached --quiet; then exit 0; fi
           git commit -m 'Bibliotheca: publicar control estructural y faltantes por edición'
           git fetch origin main
-          git diff --quiet "${GITHUB_SHA}" origin/main -- data/classics-corpus/search-registry.json data/bibliotheca-graeca-latina-I-bce-I-ce.json data/bibliotheca-expansion-publicada-2026-11-16.json data/r2/catalogo-clasicos-r2.json data/r2/vinculos-repertorio.json data/bibliotheca-audit/integrity.json scripts/audit-bibliotheca-full-integrity.py || { echo 'Fuentes cambiadas; no publicar informe obsoleto'; exit 1; }
+          git diff --quiet "${GITHUB_SHA}" origin/main -- data/bibliotheca-graeca-latina-I-bce-I-ce.json data/bibliotheca-expansion-publicada-2026-11-16.json data/r2/ data/index/ data/classics-corpus/ data/structured/ data/critical-editions/ corpus/ data/bibliotheca-audit/integrity.json scripts/audit-bibliotheca-full-integrity.py scripts/audit-book-interiors.py || { echo 'Fuentes cambiadas; no publicar informe obsoleto'; exit 1; }
           git rebase origin/main
           git push origin HEAD:main

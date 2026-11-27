@@ -38,7 +38,7 @@ HIGH_RISK_UNCATALOGUED={
 }
 def read(path):
  return json.loads((ROOT/path).read_text(encoding="utf-8"))
-def get_json(url):
+def get_json(url, expected_sha=None):
  p=urlparse(url)
  if p.scheme!="https" or p.hostname!=R2_HOST or not p.path.startswith(("/corpus/","/clasicos/texto/")):
   raise ValueError("URL remota fuera de la lista autorizada")
@@ -51,7 +51,10 @@ def get_json(url):
    length+=len(part)
    if length>MAX_REMOTE_BYTES:raise ValueError("JSON remoto excede límite de inspección")
    out.append(part)
- return json.loads(b"".join(out))
+ raw=b"".join(out)
+ if expected_sha and hashlib.sha256(raw).hexdigest()!=expected_sha:
+  raise ValueError("SHA-256 remoto distinto del declarado")
+ return json.loads(raw)
 def fold(value):
  s=unicodedata.normalize("NFKD",str(value or "").lower())
  return "".join(ch for ch in s if not unicodedata.combining(ch))
@@ -179,17 +182,90 @@ def documented_v297_grouping(obj, canonical, language):
    result[locus]={"sourceBlock":start,"sectionEnd":end,"basis":"Cotejo del latín con Krohn 1912 y comprobación literal del pasaje inglés en V297; agrupación editorial declarada en el DOCX."}
  return result
 
+def edition_index_evidence():
+ # Match exact editions, not merely work and language.
+ rows=collections.defaultdict(list)
+ errors=[]
+ for name in ("classics","classics-r2"):
+  for item in read("data/index/"+name+"/manifest.json")["index"]:
+   rows[item.get("file")].append((name,item))
+ descriptor=read("data/r2/classics-expansion-index.json")
+ try:
+  root=get_json(descriptor["url"],descriptor["sha256"])
+  if root.get("schema")!="vdl-classics-index-segments-v1" or root.get("works")!=descriptor["works"] or root.get("passages")!=descriptor["passages"]:
+   raise ValueError("Descriptor y raíz del índice ampliado no coinciden")
+  base=descriptor["url"].rsplit("/",1)[0]+"/"
+  seen=set()
+  for segment in root["segments"]:
+   url=segment["file"] if segment["file"].startswith("https://") else base+segment["file"]
+   if url in seen or not segment.get("sha256"):raise ValueError("Segmento repetido o sin huella")
+   seen.add(url)
+   try:
+    doc=get_json(url,segment["sha256"])
+    items=doc["index"]
+    if len(items)!=segment["works"] or sum(x["passages"] for x in items)!=segment["passages"]:
+     raise ValueError("Recuento del segmento no coincide")
+    for item in items:rows[item["file"]].append(("r2-expansion",item))
+   except Exception as exc:errors.append(str(exc)[:200])
+ except Exception as exc:errors.append(str(exc)[:200])
+ translations=collections.defaultdict(list)
+ for item in read("data/r2/classics-translation-manifest.json")["editions"]:
+  translations[item["url"]].append(item)
+ return rows,translations,errors
+
+def check_edition_index(entry,obj,passage_count,evidence):
+ rows,translations,errors=evidence
+ path=entry["path"];wid=entry["workId"];lang=entry["language"]
+ if entry["format"]=="critical-indexed-latin":
+  return {"status":"separate_critical_apparatus","basis":"Índice crítico independiente; no certificado por el índice léxico general."}
+ matches=[]
+ for family,item in rows.get(path,[]):
+  exact=(item.get("id")==wid and item.get("lang")==lang) or (wid+"|"+lang in item.get("gate",[]))
+  if not exact and family=="r2-expansion":
+   exact=item.get("id")==entry.get("sourceWorkId") and item.get("lang")==lang and item.get("sha256")==entry.get("sha256")
+  if not exact:continue
+  if item.get("gateOnly"):
+   matches.append({"family":family,"status":"word_gate_only","basis":"HTML buscable por palabras; no índice de loci."})
+   continue
+  if item.get("passages")!=passage_count or not item.get("tokens"):
+   matches.append({"family":family,"status":"index_count_mismatch","expected":passage_count,"indexed":item.get("passages")})
+   continue
+  # Local builder records source TEI fingerprint, not serialized JSON SHA.
+  expected=entry.get("sha256") if path.startswith("https://") else obj.get("sourceSha256") if isinstance(obj,dict) else None
+  if expected and item.get("sha256")!=expected:
+   matches.append({"family":family,"status":"index_source_fingerprint_mismatch"})
+   continue
+  matches.append({"family":family,"status":"manifest_identity_and_count_match","passages":passage_count,"fingerprintMatched":bool(expected),"basis":"Ruta, identidad y recuento; no cotejo de todos los postings."})
+ for t in translations.get(path,[]):
+  try:
+   if t["workId"]!=wid or t["language"]!=lang or t["sha256"]!=entry.get("sha256") or t["passages"]!=passage_count:
+    raise ValueError("Identidad de traducción no coincide")
+   index=get_json(t["indexUrl"],t["indexSha256"])
+   if index.get("schema")!="vdl-human-translation-literal-index-v1" or index.get("workId")!=wid or index.get("language")!=lang or index.get("passages")!=passage_count:
+    raise ValueError("Cabecera de índice de traducción no coincide")
+   expected_postings={}
+   for pi,p in enumerate(obj["passages"]):
+    tokens=re.findall(r"[^\W_]+(?:['’][^\W_]+)?",unicodedata.normalize("NFKC",p["text"]).casefold(),re.UNICODE)
+    for token in set(tokens):
+     if len(token)>=2:expected_postings.setdefault(token,[]).append(pi)
+   if index.get("terms")!=expected_postings:raise ValueError("Postings de traducción difieren del texto")
+   matches.append({"family":"r2-translation","status":"literal_postings_verified","passages":passage_count})
+  except Exception as exc:matches.append({"family":"r2-translation","status":"index_check_failed","reason":str(exc)[:200]})
+ return {"status":"index_evidence_available" if matches else "index_not_located_or_unavailable","checks":matches,
+         **({"remoteIndexWarnings":errors[:3]} if errors and not matches else {})}
+
 def inspect_registry(start,limit):
  main,_,_,registry,_,_,_=load_catalogues()
  names={w["id"]:w for w in main}
  selected=registry[start:start+limit] if limit else registry[start:]
+ evidence=edition_index_evidence()
  rows=[]
  for e in selected:
   status="not_inspected";flags=[];count=0;chars=0;kind=e.get("format")
   missing_loci=[];expected_loci=None;declared_missing=[];empty_loci=[];segmented_loci=0;book_nums=set();missing=[];grouped_reference_loci={}
   path=e["path"];file_path=ROOT/path
   try:
-   if path.startswith("https://"):obj=get_json(path)
+   if path.startswith("https://"):obj=get_json(path,e.get("sha256"))
    else:
     if not file_path.is_file():raise FileNotFoundError(path)
     if kind=="html-text":
@@ -197,7 +273,7 @@ def inspect_registry(start,limit):
      if len(raw)<350:flags.append("HTML_WITHOUT_SUFFICIENT_CONTENT")
      rows.append({"workId":e["workId"],"language":e["language"],"path":path,"format":kind,
         "status":"html_present_requires_textual_collation" if not flags else "manual_review",
-        "byteLength":len(raw.encode("utf-8")),"flags":flags,
+        "byteLength":len(raw.encode("utf-8")),"flags":flags,"indexCheck":check_edition_index(e,{},0,evidence),
         "identityAndCompletenessCertified":False});continue
     obj=json.loads(file_path.read_text(encoding="utf-8"))
    if kind in ("structured-bilingual","critical-indexed-latin"):
@@ -267,7 +343,7 @@ def inspect_registry(start,limit):
           "candidateMissingBooks":missing if kind not in ("structured-bilingual","historical-ocr-pages") else []}
    rows.append({"workId":e["workId"],"language":e["language"],"path":path,"format":kind,
      "status":status,"passageCount":count,"characters":chars,"flags":sorted(set(flags)),
-     "identityAndCompletenessCertified":False,**extra})
+     "identityAndCompletenessCertified":False,"indexCheck":check_edition_index(e,obj,count,evidence),**extra})
   except Exception as exc:
    rows.append({"workId":e["workId"],"language":e["language"],"path":path,"format":kind,
      "status":"could_not_inspect","reason":type(exc).__name__+": "+str(exc)[:220],
@@ -340,7 +416,7 @@ def publish_results(folder):
  ocr_by_id={r["editionId"]:r for r in ocr_rows}
  pdf_by_id={r["id"]:r for r in pdf_rows}
  def compact(r):
-  return {k:r[k] for k in ("language","path","format","status","passageCount","flags","missingReferenceLoci","groupedReferenceLoci","expectedReferenceLoci","sourceDeclaredMissing","emptyLoci","candidateMissingBooks","reason") if k in r}
+  return {k:r[k] for k in ("language","path","format","status","passageCount","flags","missingReferenceLoci","groupedReferenceLoci","expectedReferenceLoci","sourceDeclaredMissing","emptyLoci","candidateMissingBooks","indexCheck","reason") if k in r}
  for record in report["records"]:
   wid=record["id"]
   aliases={"vitruvio-v514-pdf":"vitruvius","vitruvio-v554-pdf":"vitruvius","theory-v297-pdf":"vitruvius","krohn-1912-pdf":"krohn-1912-indexed"}
