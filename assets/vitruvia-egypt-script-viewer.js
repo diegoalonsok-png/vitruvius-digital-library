@@ -92,7 +92,7 @@ function glyphText(str){
 let titulaturae=null;
 function loadTitulaturae(){
  if(titulaturae)return titulaturae;
- titulaturae=fetch("data/vitruvia/titulaturae.json?v=20261109-v1").then(r=>r.ok?r.json():null).catch(()=>null);
+ titulaturae=fetch("data/vitruvia/titulaturae.json?v=20261127-royal-texts-v2").then(r=>r.ok?r.json():null).catch(()=>null);
  return titulaturae;
 }
 const TITLE_ORDER=["horus","nebty","golden","prenomen","nomen"];
@@ -116,13 +116,15 @@ function titularyEntry(parent,data,ruler){
    const wrap=node("div",key==="prenomen"||key==="nomen"?"v-script-cartouche":"v-script-symbol");
    wrap.title=key==="prenomen"||key==="nomen"?"Cartucho tipográfico orientativo, no reproducción paleográfica":"Grafía Unicode; el serej no se dibuja";
    wrap.append(glyphText(n.glyphs));dd.append(wrap);
-  }else dd.append(node("p","v-script-note","Grafía no editada: solo transliteración."));
+  }else dd.append(node("p","v-script-note","Grafía jeroglífica no editada; consultar la lectura y el testimonio."));
   const meta=node("p","v-script-meta");
-  const tl=node("i",null,n.trans||"");tl.lang="egy-Latn";meta.append(tl);
+  const tl=node("i",null,n.trans||n.reading||"");tl.lang="egy-Latn";meta.append(tl);
+  if(n.reading&&!n.trans)meta.append(document.createTextNode(" · lectura convencional, no transliteración científica"));
   if(n.gloss)meta.append(document.createTextNode(" · "+n.gloss));
   dd.append(meta);
   if(n.mdc){const m=node("p","v-script-note");m.append(document.createTextNode("Gardiner: "));const code=node("code",null,n.mdc);code.style.font="11px/1.5 ui-monospace,Menlo,Consolas,monospace";m.append(code);dd.append(m)}
   if(n.witness)dd.append(node("p","v-script-note","Testimonio: "+n.witness));
+  if(n.source)dd.append(ref("Fuente de la lectura",n.source));
   list.append(dd);
  }
  item.append(list);
@@ -132,11 +134,12 @@ function titularyEntry(parent,data,ruler){
  links.append(ref("Buscar en el Thesaurus Linguae Aegyptiae","https://thesaurus-linguae-aegyptiae.de/search?q="+encodeURIComponent(ruler.name)));
  links.append(document.createTextNode(" · "));
  links.append(ref("Tabla de signos Unicode 13000","https://www.unicode.org/charts/PDF/U13000.pdf"));
+ if(ruler.authorityUrl)links.append(document.createTextNode(" · "),ref("Titulatura y testimonios",ruler.authorityUrl));
  item.append(links);
  const copy=node("button",null,"Copiar titulatura (texto)");copy.type="button";
  copy.addEventListener("click",()=>{
   const lines=[ruler.name+" · "+ruler.dynasty];
-  for(const key of TITLE_ORDER){const n=ruler.names[key];if(!n)continue;lines.push((data.titles[key]?.label||key)+": "+(n.glyphs?window.HieroRender?.strip(n.glyphs)||n.glyphs:"—")+" · "+(n.trans||"")+" · "+(n.gloss||""))}
+  for(const key of TITLE_ORDER){const n=ruler.names[key];if(!n)continue;lines.push((data.titles[key]?.label||key)+": "+(n.glyphs?window.HieroRender?.strip(n.glyphs)||n.glyphs:"—")+" · "+(n.trans||n.reading||"")+" · "+(n.gloss||""))}
   navigator.clipboard?.writeText(lines.join("\n")).then(()=>copy.textContent="Copiado").catch(()=>copy.textContent="Selecciona el texto");
  });
  item.append(copy);
