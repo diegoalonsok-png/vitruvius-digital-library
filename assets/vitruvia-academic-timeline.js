@@ -21,7 +21,7 @@
   works:[L("Obras y creaciones","Works and creations","Œuvres et créations"),"▤"],
   documents:[L("Documentos y ediciones","Documents and editions","Documents et éditions"),"▥"]
  };
- const state={query:"",token:0,authority:null,works:[],albums:[],rows:[],zoom:1,selected:"",rowSignature:"",pendingWorks:null,tagColor:null,phase:"idle",history:[],historyIncomplete:false};
+ const state={query:"",token:0,authority:null,works:[],albums:[],rows:[],zoom:1,selected:"",rowSignature:"",pendingWorks:null,tagColor:null,phase:"idle",history:[],historyIncomplete:false,personDates:null};
  // Greedy tracks keep same-day and adjacent milestones from touching.
  // Popup centres are independently clamped, so no tooltip can protrude
  // beyond the chronology track even at narrow mobile widths.
@@ -206,7 +206,7 @@
   if(!person?.claims)throw Error("Missing person claims");
   const ids=[...new Set(["P39","P793","P607","P1344"].flatMap(p=>statements(person,p).map(entityId)).filter(validId))].slice(0,45);
   const related=await getEntities(ids);
-  return relationEvents(person,related);
+  return {events:relationEvents(person,related),dates:{birthYear:claimDate(person,"P569"),deathYear:claimDate(person,"P570")}};
  }
 
  function collect(){
@@ -230,8 +230,10 @@
    const url="https://www.wikidata.org/wiki/"+a.wikidataId;
    for(const [field,lane,title,p] of metadata){
     if(isAkhenaten()&&["birthYear","deathYear"].includes(field))continue;
-    const y=year(a[field]);if(y==null)continue;
-    ev.push({year:y,lane,title,source:"Wikidata · "+p,url,
+    const checked=state.personDates&&["birthYear","deathYear"].includes(field);
+    const date=checked?state.personDates[field]:null;
+    const y=checked?date?.year:year(a[field]);if(y==null)continue;
+    ev.push({year:y,approx:date?.approx||false,lane,title,source:"Wikidata · "+p,url,
       detail:L("Fecha registrada en la ficha de autoridad ("+p+"). Debe cotejarse la precisión y la referencia del enunciado antes de utilizarla como prueba historiográfica.",
        "Date recorded in the authority record ("+p+"). Verify the statement's precision and references before scholarly use.",
        "Date inscrite dans la notice d'autorité ("+p+"). Vérifier précision et sources.")});
@@ -289,8 +291,10 @@
   ev=ev.map(event).filter(Boolean).filter(e=>{
    const key=normalize(e.title)+"|"+e.year+"|"+e.lane;
    if(seen.has(key))return false;seen.add(key);return true
-  }).sort((a,b)=>a.year-b.year||a.title.localeCompare(b.title)).slice(0,48);
-  return ev;
+  });
+  // Keep primary biographical milestones before selecting secondary material.
+  const priority=e=>e.lane==="life"?0:e.lane==="events"?1:e.lane==="works"?2:3;
+  return ev.sort((a,b)=>priority(a)-priority(b)||a.year-b.year).slice(0,48).sort((a,b)=>a.year-b.year||a.title.localeCompare(b.title));
  }
  function highlightButton(button,detail,event){
   for(const active of root.querySelectorAll(".vat-event[aria-pressed=true]"))active.setAttribute("aria-pressed","false");
@@ -374,16 +378,17 @@
   }
   // In biographies the documentary axis ends at death. Posthumous
   // editions remain reachable, but cannot distort a lifetime into millennia.
-  const born=isAkhenaten()?akhenatenBounds.birth:year(state.authority?.birthYear);
-  const died=isAkhenaten()?akhenatenBounds.death:year(state.authority?.deathYear);
+  const bound=key=>state.personDates?(state.personDates[key]?.year??null):year(state.authority?.[key]);
+  const born=isAkhenaten()?akhenatenBounds.birth:bound("birthYear");
+  const died=isAkhenaten()?akhenatenBounds.death:bound("deathYear");
   const lifeScope=born!==null&&died!==null&&died>=born?{born,died}:null;
   const isPerson=isAkhenaten()||state.authority?.instanceOf?.includes("Q5");
   const outside=e=>isPerson&&(e.lane==="documents"||(born!==null&&e.year<born)||(died!==null&&e.year>died));
   const visibleEvents=events.filter(e=>!outside(e));
   const outsideEvents=events.filter(outside);
   if(!visibleEvents.length){root.hidden=true;root.replaceChildren();return}
-  const minYear=visibleEvents[0]?.year??events[0].year;
-  const maxYear=Math.max(...(visibleEvents.length?visibleEvents:events).map(e=>e.end??e.year));
+  const minYear=visibleEvents[0].year;
+  const maxYear=Math.max(...visibleEvents.map(e=>e.end??e.year));
   const span=Math.max(1,maxYear-minYear),padding=lifeScope?0:Math.max(1,Math.ceil(span*.04));
   const low=lifeScope?lifeScope.born:minYear-padding;
   const high=lifeScope?lifeScope.died:maxYear+padding;
@@ -517,7 +522,7 @@
  }
  function reset(q){
   state.token++;state.query=String(q||"").trim().slice(0,160);state.zoom=1;
-  state.authority=null;state.works=[];state.albums=[];state.rows=[];state.selected="";state.rowSignature="";state.pendingWorks=null;state.history=[];state.historyIncomplete=false;state.phase=state.query?"identity":"idle";
+  state.authority=null;state.works=[];state.albums=[];state.rows=[];state.selected="";state.rowSignature="";state.pendingWorks=null;state.history=[];state.historyIncomplete=false;state.personDates=null;state.phase=state.query?"identity":"idle";
   place();draw();
   if(!state.query)return;
   const token=state.token;
@@ -528,7 +533,7 @@
    if(a&&pending&&pending.wikidataId===a.wikidataId)state.works=pending.works;
    if(a?.instanceOf?.includes("Q5")){
     state.phase="history";draw();
-    try{const history=await retrieveHistory(a);if(token!==state.token)return;state.history=history}
+    try{const history=await retrieveHistory(a);if(token!==state.token)return;state.history=history.events;state.personDates=history.dates}
     catch{if(token!==state.token)return;state.historyIncomplete=true}
    }
    if(token!==state.token)return;
