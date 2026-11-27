@@ -305,8 +305,13 @@ async function semanticConcept(q){
 }
 // Reuse only explicit Conceptus correspondences, not broader related words.
 async function conceptTerms(query){
- const concept=await semanticConcept(query);
- if(!concept)return null;
+ await semanticConcept(query);
+ const key=fold(query).trim(),concepts=await conceptTask;
+ if(key.length<3||!Array.isArray(concepts))return null;
+ const hits=concepts.filter(c=>[c.id,...Object.values(c.modern||{}).flat(),...(c.la||[]),...(c.grc||[])].some(v=>typeof v==="string"&&fold(v)===key));
+ // Ambiguous terms remain literal rather than assigning the first sense.
+ if(hits.length!==1)return null;
+ const concept=hits[0];
  const clean=values=>[...new Set((Array.isArray(values)?values:[]).filter(v=>typeof v==="string"&&v.trim().length>1).map(v=>v.trim()))].slice(0,3);
  return {id:concept.id,la:clean(concept.la),grc:clean(concept.grc),note:concept.note||""};
 }
@@ -473,7 +478,17 @@ async function searchPassages(terms,{limit=600,workId="",language="",maxPerEditi
   (hasGreek?(b.language==="grc"?1:0)-(a.language==="grc"?1:0):0)||
   String(a.workId).localeCompare(String(b.workId))
  ):null;
- const targets=cap?candidates.slice(0,cap):maxEditions?boundTargets(gate,eligible,maxEditions/2):eligible;
+ let targets=cap?candidates.slice(0,cap):maxEditions?boundTargets(gate,eligible,maxEditions/2):eligible;
+ if(cap&&languageTerms){
+  // Reserve a small, bounded share for each requested ancient language.
+  // Existing full concordance calls do not use this path.
+  const reserve=Math.max(1,Math.floor(cap/4)),chosen=[];
+  for(const lang of ["la","grc"]){
+   if(!languageTerms[lang]?.length)continue;
+   for(const e of candidates.filter(x=>x.language===lang).slice(0,Math.min(reserve,cap-chosen.length)))chosen.push(e);
+  }
+  targets=[...new Set([...chosen,...candidates])].slice(0,cap);
+ }
  // Search the probable original language first, but do not omit translations
  // or other editions. This makes Latin aedes/domus and Greek λόγος visible early.
  const preferred=hasGreek?"grc":/^[\\p{Script=Latin}\\p{M}\\s-]+$/u.test(queries[0])?"la":null;
