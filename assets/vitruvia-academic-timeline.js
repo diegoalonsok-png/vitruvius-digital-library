@@ -14,6 +14,18 @@
  const el=(name,cls,text)=>{const n=document.createElement(name);if(cls)n.className=cls;if(text!==undefined)n.textContent=String(text);return n};
  // Accept historical calendar years, not a hard-coded modern cutoff.
  const year=x=>Number.isSafeInteger(x)&&x!==0&&Math.abs(x)<=1000000?x:null;
+ // Historical years have no zero; use a continuous ordinal for geometry.
+ const yearOrdinal=y=>y>0?y-1:y;
+ const ordinalYear=n=>n>=0?n+1:n;
+ function axisTicks(low,high,count){
+  const start=yearOrdinal(low),end=yearOrdinal(high),span=end-start;
+  if(span===0)return [{year:low,fraction:0.5}];
+  const steps=Math.max(1,Math.min(count,span));
+  return Array.from({length:steps+1},(_,i)=>{
+   const n=Math.round(start+i*span/steps);
+   return {year:ordinalYear(n),fraction:(n-start)/span};
+  });
+ }
  const normUrl=u=>typeof u==="string"&&/^https:\/\/[^\s]+$/i.test(u)?u:"";
  const showYear=x=>x<0?Math.abs(x)+" "+L("a. C.","BCE","av. J.-C."):String(x);
  const types={
@@ -35,7 +47,7 @@
   const lastCentres=[];
   return items.map(event=>{
    const diameter=markerSize(event);
-   const raw=(event.year-low)/Math.max(1,range)*safeWidth;
+   const raw=(yearOrdinal(event.year)-yearOrdinal(low))/Math.max(1,range)*safeWidth;
    const center=Math.max(Math.min(safeWidth/2,diameter/2+3),Math.min(safeWidth-Math.min(safeWidth/2,diameter/2+3),raw));
    let level=lastCentres.findIndex(last=>center-diameter/2-last>=gap);
    if(level<0){level=lastCentres.length;lastCentres.push(-Infinity)}
@@ -364,7 +376,7 @@
   const min=Math.min(...visible.map(e=>e.year));
   const max=Math.max(...visible.map(e=>isPerson&&died!==null?Math.min(e.end??e.year,died):e.end??e.year));
   const padding=Math.max(1,Math.ceil(Math.max(1,max-min)*.04));
-  return {visible,outside,low:isPerson&&born!==null?born:min-padding,high:isPerson&&died!==null?died:max+padding};
+  return {visible,outside,low:isPerson&&born!==null?born:ordinalYear(yearOrdinal(min)-padding),high:isPerson&&died!==null?died:ordinalYear(yearOrdinal(max)+padding)};
  }
 
  function appendFamily(parent,records){
@@ -511,7 +523,7 @@
   const visibleEvents=scope.visible,outsideEvents=scope.outside;
   if(!visibleEvents.length){root.hidden=true;root.replaceChildren();return}
   const low=scope.low,high=scope.high;
-  const range=Math.max(1,high-low);
+  const range=Math.max(1,yearOrdinal(high)-yearOrdinal(low));
   // Size the axis from the actual available content box. No 250px
   // minimum canvas and no fixed 960px map overflowing mobile readers.
   const cs=typeof getComputedStyle==="function"?getComputedStyle(root):{paddingLeft:"0",paddingRight:"0"};
@@ -529,10 +541,9 @@
   const map=el("div","vat-map");map.style.setProperty("width",contentWidth+"px","important");map.style.setProperty("min-width",contentWidth+"px","important");map.style.setProperty("max-width","none","important");
   const axis=el("div","vat-axis");
   const ticks=Math.max(1,Math.min(9,Math.floor(mapWidth/120)));
-  for(let i=0;i<=ticks;i++){
-   const y=Math.round(low+i*range/ticks);
+  for(const {year:y,fraction} of axisTicks(low,high,ticks)){
    const tick=el("span","vat-tick",showYear(y));
-   tick.style.left=(i/ticks*100)+"%";axis.append(tick)
+   tick.style.left=(fraction*100)+"%";axis.append(tick)
   }
   map.append(axis);
   const detail=el("div","vat-detail");detail.hidden=true;detail.setAttribute("aria-live","polite");
