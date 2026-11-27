@@ -8,7 +8,11 @@ const keys=[["horus","Nombre de Horus · serej"],["nebty","Dos Señoras (Nebty)"
 const objects={
  akhenaten:[[550057,"Cartucho de Ajenatón"],[550052,"Cartuchos de Atón, Ajenatón y Nefertiti"],[550050,"Relieve con cartucho de Ajenatón"]],
  tutankhamun:[[567851,"Molde del cartucho de Tutankamón"],[558596,"Objetos de papiro de su cámara de embalsamamiento (no son un texto)"]],
- "ramesses-ii":[[550673,"Placa oval con nombre de Ramsés II"]]
+ "ramesses-ii":[[550673,"Placa oval con nombre de Ramsés II"]],
+ "senusret-i":[[546634,"Concha con cartucho de Senusret I · Reino Medio o posterior"]],
+ "amenhotep-iii":[[551411,"Escarabeo con nombre de Amenhotep III"]],
+ "thutmose-iii":[[553431,"Placa con nombre de trono Menkheperra"]],
+ alexander:[[551617,"Cartucho de Alejandro III o Alejandro IV · atribución incierta"]]
 };
 const general=[
  ["Ancient Egypt: A Social History · B. G. Trigger et al. · Cambridge University Press","https://www.cambridge.org/core/books/abs/ancient-egypt/preface/244674ECA906397317FBFCCF217FBA0C"],
@@ -53,6 +57,26 @@ const ROYAL_ARCHITECTURE={
 };
 // Institutional documentation is shown before any general image discovery.
 const ROYAL_PRIMARY={
+ "narmer":[{"title":"Paleta de Narmer","kind":"Testimonio epigráfico e iconográfico","note":"Nombre en serej; no constituye un relato escrito continuo.","url":"https://www.ucl.ac.uk/museums-static/digitalegypt/chronology/narmer.html","reading":"Ficha y testimonios · UCL"}],
+ "djoser":[{"title":"Impresiones de sello de Hesyra","kind":"Testimonio del nombre real","note":"Consultar la referencia arqueológica de Quibell, 1913; no se ofrece una traducción inexistente.","url":"https://www.ucl.ac.uk/museums-static/digitalegypt/chronology/kingdjoser.html","reading":"Repertorio de testimonios · UCL"}],
+ "khufu":[{"title":"Sellos e improntas de Guiza","kind":"Testimonios de identificación regia","note":"Incluye sello UC 11099; distinguir nombre real y texto narrativo.","url":"https://www.ucl.ac.uk/museums-static/digitalegypt/chronology/kingkheops.html","reading":"Ficha y referencias · UCL"}],
+ "khafre":[{"title":"Improntas de sellos de Guiza","kind":"Testimonio epigráfico","note":"Referencia de Kromer, 1978, recogida por UCL.","url":"https://www.ucl.ac.uk/museums-static/digitalegypt/chronology/kingkhephren.html","reading":"Repertorio · UCL"}],
+ "menkaure":[{"title":"Testimonios del reinado","kind":"Catálogo epigráfico y arqueológico","note":"No se atribuyen textos funerarios posteriores al rey.","url":"https://www.ucl.ac.uk/museums-static/digitalegypt/chronology/kingmykerinos.html","reading":"Ficha de autoridad · UCL"}],
+ "amenemhat-i":[{"title":"Enseñanza de Amenemhat I","kind":"Composición literaria transmitida en manuscritos posteriores","note":"Discurso literario en voz del rey; no autógrafo.","url":"https://www.ucl.ac.uk/museums-static/digitalegypt/literature/teachingamenemhati.html","reading":"Texto y traducciones · UCL"},
+{"title":"Inscripción rupestre de Elefantina","kind":"Epigrafía real","note":"Fotografías y registro de inscripciones en la región de Asuán.","url":"https://www.ucl.ac.uk/museums-static/digitalegypt/assuan/rockinscriptions.html","reading":"Testimonios epigráficos · UCL"}],
+ "senusret-i":[{"title":"Enseñanza de Amenemhat I · sección I","kind":"Texto literario dirigido a Senusret I","note":"No es composición de Senusret I. Edición con transliteración y traducción inglesa.","url":"https://www.ucl.ac.uk/museums-static/digitalegypt/literature/teachinga1sec1.html","reading":"Lectura de la sección · UCL"},
+{"title":"Inscripciones rupestres de Asuán","kind":"Testimonio del reinado","note":"Consultar las inscripciones identificadas por el repertorio.","url":"https://www.ucl.ac.uk/museums-static/digitalegypt/assuan/rockinscriptions.html","reading":"Fotografías y ficha · UCL"}],
+ "hatshepsut":[{"title":"Inscripciones del obelisco de Karnak","kind":"Epigrafía monumental","note":"Referencia al discurso dirigido a la posteridad; traducción íntegra aún no incorporada.","url":"https://www.ucl.ac.uk/museums-static/digitalegypt/chronology/hatshepsut.html","reading":"Catálogo de inscripciones · UCL"},
+{"title":"Speos Artemidos","kind":"Inscripción real en el santuario de Pakhet","note":"Referencia Sethe 1906, pp. 383–391.","url":"https://www.ucl.ac.uk/museums-static/digitalegypt/chronology/hatshepsut.html","reading":"Referencia epigráfica · UCL"}],
+ "thutmose-iii":[{"title":"Depósito fundacional de Coptos","kind":"Inscripción breve en objeto arqueológico","note":"Traducción castellana editorial de la lectura publicada en UCL.","url":"https://www.ucl.ac.uk/museums-static/digitalegypt/koptos/foundation.html","reading":"Fotografía y traducción inglesa · UCL","excerpt":"Menkheperra, amado del de Coptos."},
+{"title":"Anales e inscripciones de Karnak","kind":"Epigrafía histórica","note":"Documentación de campañas, donaciones y construcciones; consultar referencias a Sethe.","url":"https://www.ucl.ac.uk/museums-static/digitalegypt/chronology/thutmosisiii.html","reading":"Repertorio de inscripciones · UCL"}],
+ "amenhotep-iii":[{"title":"Escarabeos conmemorativos","kind":"Inscripciones regias","note":"Incluyen textos sobre la caza y el lago de Tiy, con traducciones inglesas.","url":"https://www.ucl.ac.uk/museums-static/digitalegypt/seals/comm.html","reading":"Fotografías y traducciones · UCL"},
+{"title":"Monumentos e inscripciones del reinado","kind":"Epigrafía monumental","note":"Consultar bibliografía y testimonios de la ficha.","url":"https://www.ucl.ac.uk/museums-static/digitalegypt/chronology/amenhotepiii.html","reading":"Repertorio · UCL"}],
+ "seti-i":[{"title":"Inscripciones del templo de Abidos","kind":"Epigrafía religiosa y real","note":"Referencia Kitchen 1975, pp. 129–199; no se ofrece texto completo local.","url":"https://www.ucl.ac.uk/museums-static/digitalegypt/chronology/setyi.html","reading":"Referencias epigráficas · UCL"},
+{"title":"Lista real de Abidos","kind":"Inscripción de culto a los antepasados","note":"Selección antigua de predecesores, no lista exhaustiva de todos los faraones.","url":"https://www.ucl.ac.uk/museums-static/digitalegypt/ideology/king/cultspecial.html","reading":"Contexto documental · UCL"}],
+ "alexander":[{"title":"Bloque con cartucho de Alejandro","kind":"Testimonio epigráfico de atribución incierta","note":"The Met contempla Alejandro III o Alejandro IV; no identificarlo definitivamente con Alejandro Magno.","url":"https://www.metmuseum.org/art/collection/search/551617","reading":"Ficha institucional · The Met"}],
+ "cleopatra":[{"title":"Testimonios de Cleopatra VII","kind":"Repertorio histórico y arqueológico","note":"Consultar testimonios y bibliografía del reinado; no atribuirle textos de otras Cleopatras.","url":"https://www.ucl.ac.uk/museums-static/digitalegypt/chronology/cleopatravii.html","reading":"Ficha · UCL"}],
+
  akhenaten:[
   {title:"Gran Himno a Atón",kind:"Himno religioso · tumba de Ay (TA25)",note:"Composición vinculada al culto de Atón. No se afirma autoría personal del rey.",url:"https://www.ucl.ac.uk/museums-static/digitalegypt/amarna/belief.html",reading:"Transliteración y traducción inglesa · UCL Digital Egypt"},
   {title:"Estelas fronterizas de Ajetatón",kind:"Inscripción real · proclamaciones",note:"Edición basada principalmente en la estela S; distingue inscripción de traducción.",url:"https://www.ucl.ac.uk/museums-static/digitalegypt/amarna/boundary.html",reading:"Transliteración y traducción inglesa · UCL Digital Egypt",witness:"https://www.amarnaproject.com/amarna-the-place/boundary-stelae/"}
@@ -92,7 +116,7 @@ function primaryTexts(box,ruler){
  box.append(make("h4","Textos religiosos, inscripciones y traducciones"));
  const records=ROYAL_PRIMARY[ruler.id]||[];
  if(!records.length){box.append(make("p","No se ha incorporado un texto con atribución y traducción verificadas para este rey. Consultar el repertorio epigráfico, sin asignar textos por coincidencia de nombre.","v-ed-note"));return}
- for(const r of records){const item=make("section",null,"v-ed-name");item.append(make("b",r.title),make("p",r.kind),make("p",r.note,"v-ed-note"),anchor(r.reading,r.url));if(r.title==="Gran Himno a Atón")item.append(anchor("Leer aquí · jeroglíficos y traducciones","vitruvia.html?q="+encodeURIComponent(r.title)+"&mode=all"));if(r.witness)item.append(anchor("Fotografías y documentación del testimonio",r.witness));box.append(item)}
+ for(const r of records){const item=make("section",null,"v-ed-name");item.append(make("b",r.title),make("p",r.kind),make("p",r.note,"v-ed-note"),anchor(r.reading,r.url));if(r.excerpt){const text=make("blockquote",r.excerpt);item.append(make("p","Traducción castellana · fragmento editorial","v-ed-note"),text)}if(r.title==="Gran Himno a Atón")item.append(anchor("Leer aquí · jeroglíficos y traducciones","vitruvia.html?q="+encodeURIComponent(r.title)+"&mode=all"));if(r.witness)item.append(anchor("Fotografías y documentación del testimonio",r.witness));box.append(item)}
 }
 const ROYAL_DRAWING_TYPES=[
  {label:"Plantas",suffix:"architectural plan"},
@@ -144,7 +168,7 @@ function gallery(box,ruler){
   if(!cached.has(id))cached.set(id,fetch("https://collectionapi.metmuseum.org/public/collection/v1/objects/"+id).then(r=>r.ok?r.json():null).catch(()=>null));
   cached.get(id).then(entry=>{
    if(!card.isConnected||!entry?.isPublicDomain)return;
-   if(entry.objectNumber)card.append(make("small","Inventario: "+entry.objectNumber));
+   if(entry.accessionNumber||entry.objectNumber)card.append(make("small","Inventario: "+(entry.accessionNumber||entry.objectNumber)));
    if(entry.creditLine)card.append(make("small",entry.creditLine+" · dominio público"));
    const src=entry.primaryImageSmall||entry.primaryImage;if(!src)return;
    try{const url=new URL(src);if(url.protocol!=="https:")return;const img=make("img");img.src=url.href;img.loading="lazy";img.alt=entry.title+" · número "+id;img.onerror=()=>img.remove();card.prepend(img)}catch{}
@@ -229,7 +253,7 @@ function names(box,ruler){
   if(rec?.gloss)item.append(make("p","Traducción / interpretación al castellano: "+rec.gloss));
   if(rec?.witness)item.append(make("p","Testimonio: "+rec.witness,"v-ed-note"));
   if(!rec)item.append(make("p","Este nombre no está acreditado en el repertorio local.","v-ed-note"));
-  else if(!rec.glyphs)item.append(make("p","Grafía jeroglífica pendiente de edición.","v-ed-note"));
+  else if(!rec.glyphs){item.append(make("p","Grafía jeroglífica pendiente de edición; no reconstruida.","v-ed-note"));if(objects[ruler.id]?.length)item.append(anchor("Consultar fotografías de testimonios (comprobar qué nombre contienen)","egypt-document-viewer.html?king="+encodeURIComponent(ruler.id)));}
   if(rec?.glyphs||rec?.trans)item.append(anchor("Examinar la lectura con lupa / inversión / contraste","egypt-document-viewer.html?king="+encodeURIComponent(ruler.id)+"&name="+key));
   box.append(item);
  }
@@ -256,7 +280,7 @@ async function render(){
   const box=make("section",null,"v-egypt-dossier");box.id="v-egypt-scholar-dossier";
   box.append(make("h3",ruler.name+" · dossier real"));
   box.append(make("p",[ruler.dynasty,ruler.dates].filter(Boolean).join(" · "),"v-ed-note"));
-  names(box,ruler);gallery(box,ruler);primaryTexts(box,ruler);royalBuildingCatalogue(box,ruler);books(box,ruler);dossierContents(box);
+  names(box,ruler);primaryTexts(box,ruler);gallery(box,ruler);royalBuildingCatalogue(box,ruler);books(box,ruler);dossierContents(box);
   const before=rail.querySelector("#v-egypt-side");
   if(before)before.insertAdjacentElement("afterend",box);else rail.prepend(box);
   rail.hidden=false;
