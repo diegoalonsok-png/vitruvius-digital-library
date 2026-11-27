@@ -45,8 +45,8 @@ async function related(id,kind,offset=0){
 function mediumOf(entity,description,building){
  const types=ids(entity,'P31'),d=norm(description);
  const has=(...values)=>values.some(v=>d.includes(v));
- if(building)return 'architecture';
  if(types.includes('Q3305213')||has('painting','pintura','cuadro','tableau','fresco','watercolor','watercolour','aquarelle','dibujo','drawing','etching','engraving','grabado','lithograph'))return 'painting';
+ if(building)return 'architecture';
  if(types.includes('Q860861')||has('sculpture','escultura','statue','estatua','bust','busto','relief'))return 'sculpture';
  if(has('installation art','instalacion artistica','art installation','performance art','happening','assemblage'))return 'installation';
  if(has('opera','operetta','stage play','theatrical play','theatre play','ballet','obra teatral','musical theatre'))return 'theatre';
@@ -60,17 +60,19 @@ function workRecord(entity,notable,coverage=0){
  const title=label(entity),instances=ids(entity,'P31');
  if(!qid(entity?.id)||!title||/^Q\d+$/.test(title)||instances.some(id=>['Q5','Q4167410','Q4167836','Q13406463'].includes(id)))return null;
  const desc=description(entity),claims=entity.claims||{};
- const building=!!claims.P84||/\b(building|house|museum|bridge|cathedral|edificio|casa|museo|puente|catedral|palacio|stadium|temple|templo|iglesia|church|chapel|capilla|villa|tower|torre|skyscraper|palais|eglise|chiesa|basilica|basilique|palazzo|biblioteca|library)\b/.test(norm(desc));
+ const buildingCandidate=!!claims.P84||/\b(building|house|museum|bridge|cathedral|edificio|casa|museo|puente|catedral|palacio|stadium|temple|templo|iglesia|church|chapel|capilla|villa|tower|torre|skyscraper|palais|eglise|chiesa|basilica|basilique|palazzo|biblioteca|library)\b/.test(norm(desc));
  // A date is meaningful only with its Wikidata property. An inauguration
  // (P1619) must not be silently treated as the year of design or construction.
- const dateProps=building?['P571','P1619','P577']:['P577','P571','P575'];
+ const medium=mediumOf(entity,desc,buildingCandidate),building=medium==='architecture';
+ const dateProps=building?['P571','P1619','P577']:medium==='painting'?['P571','P577']:['P577','P571','P575'];
  const candidate=dateProps.map(property=>{
   const statement=(entity.claims?.[property]||[]).find(c=>c.rank!=='deprecated'&&
    typeof c.mainsnak?.datavalue?.value?.time==='string');
   return statement?{property,statement,time:statement.mainsnak.datavalue.value.time}:null;
  }).find(Boolean);
  const year=candidate?.time.match(/^([+-])(\d+)/);
- const numericYear=year?Number(year[2])*(year[1]==='-'?-1:1):null;
+ const precision=candidate?.statement?.mainsnak?.datavalue?.value?.precision;
+ const numericYear=year&&Number(precision??9)>=9?Number(year[2])*(year[1]==='-'?-1:1):null;
  const dateProperty=candidate?.property||'';
  const dateKind=dateProperty==='P1619'?'opening':dateProperty==='P571'?'inception':dateProperty==='P577'?'publication':dateProperty==='P575'?'discovery':'undated';
  const dateReferenced=!!candidate?.statement?.references?.length;
@@ -82,7 +84,7 @@ function workRecord(entity,notable,coverage=0){
  const commonsFile=file=>file?'https://commons.wikimedia.org/wiki/Special:FilePath/'+encodeURIComponent(file.replace(/ /g,'_')):'';
  return {id:entity.id,title,description:desc,year:numericYear,date:numericYear===null?'':numericYear<0?Math.abs(numericYear)+' '+L('a. C.','BCE','av. J.-C.'):String(numericYear),
   dateKind,dateProperty,dateReferenced,
-  href,picture,image:commonsFile(picture),plan:commonsFile(planFile),notable,coverage:Math.max(coverage,Object.keys(entity.sitelinks||{}).filter(x=>/wiki$/.test(x)).length),building,medium:mediumOf(entity,desc,building),
+  href,picture,image:commonsFile(picture),plan:commonsFile(planFile),notable,coverage:Math.max(coverage,Object.keys(entity.sitelinks||{}).filter(x=>/wiki$/.test(x)).length),building,medium,creatorIds:ids(entity,'P170'),
   photoTitle:entity.sitelinks?.enwiki?.title||site?.title||title,wikiLang,wikiTitle:site?.title||'',aliases:Object.values(entity.labels||{}).map(x=>x.value)};
 }
 function compare(a,b,order='year'){
@@ -97,26 +99,55 @@ async function catalogue(identity,kind,offset=0){
  const notable=offset?[]:[...new Set([...ids(creator,'P800'),...(identity.notableWorkIds||[]).filter(qid)])].slice(0,40);
  const all=[...new Set([...notable,...reverse.records.map(x=>x.id)])].slice(0,50);
  const records=await entities(all);
- const works=all.map(work=>workRecord(records[work],notable.includes(work),reverse.records.find(x=>x.id===work)?.coverage)).filter(Boolean).sort((a,b)=>compare(a,b,'year'));
+ const works=all.map(work=>workRecord(records[work],notable.includes(work),reverse.records.find(x=>x.id===work)?.coverage)).filter(w=>w&&(w.medium!=='painting'||w.creatorIds.includes(id))).sort((a,b)=>compare(a,b,'year'));
  return {works,available:!!creator||reverse.available,partial:!creator||!reverse.available,hasMore:reverse.available&&reverse.records.length===40};
 }
+function galleryStyle(){
+ if(document.getElementById('vitruvia-painting-gallery-style'))return;
+ const style=el('style');style.id='vitruvia-painting-gallery-style';
+ style.textContent='.cultural-painting-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,150px),1fr));gap:12px;align-items:start}.cultural-painting-grid .cultural-work{display:flex!important;flex-direction:column!important;min-width:0;width:100%;box-sizing:border-box}.cultural-painting-grid .web-dossier-card-body{min-width:0;width:100%}.cultural-painting-grid .painting-expand{display:block;width:100%;background:transparent;border:0;padding:0;cursor:zoom-in;color:inherit}.cultural-painting-grid .painting-expand img{display:block;width:100%;height:160px;object-fit:contain;background:rgba(128,128,128,.08)}.cultural-painting-grid .web-dossier-meta{font-size:12px}.vitruvia-painting-dialog{width:min(94vw,1100px);max-height:92vh;background:#151515;color:#eee;border:1px solid #888;border-radius:10px;padding:16px;overflow:auto}.vitruvia-painting-dialog::backdrop{background:rgba(0,0,0,.8)}.vitruvia-painting-dialog img{max-width:100%;max-height:72vh;object-fit:contain;display:block;margin:12px auto}.vitruvia-painting-dialog a{color:inherit}.vitruvia-painting-dialog button{float:right;color:inherit;background:transparent;border:1px solid #777;border-radius:5px;padding:8px;cursor:pointer}';
+ document.head.append(style);
+}
+function openPainting(work,src,sourceUrl,fullImage){
+ const dialog=el('dialog','vitruvia-painting-dialog');
+ const close=el('button',null,L('Cerrar ×','Close ×','Fermer ×'));close.type='button';
+ close.addEventListener('click',()=>dialog.close());
+ const heading=el('h3',null,work.title+' · '+(work.date||L('Fecha no registrada','Date not recorded','Date non renseignée')));
+ const img=el('img');img.src=fullImage||src;img.alt=work.title;
+ img.addEventListener('error',()=>{if(img.src!==src)img.src=src;else img.remove()},{once:true});
+ dialog.append(close,heading,img,el('p',null,work.description||''),link(L('Imagen original y licencia','Original image and license','Image originale et licence'),sourceUrl),el('span',null,' · '),link(L('Ficha de la obra','Work record','Notice de l’œuvre'),work.href));
+ document.body.append(dialog);dialog.addEventListener('close',()=>dialog.remove(),{once:true});
+ if(typeof dialog.showModal==='function')dialog.showModal();else{dialog.remove();window.open(sourceUrl,'_blank','noopener,noreferrer')}
+}
 async function preview(item,work,valid){
- let source='',href=work.href;
+ let source='',href=work.href,fullImage='';
  if(work.picture){
   const d=await get('https://commons.wikimedia.org/w/api.php?'+new URLSearchParams({action:'query',titles:'File:'+work.picture,prop:'imageinfo',iiprop:'url',iiurlwidth:'420',format:'json',origin:'*'}));
   const info=Object.values(d?.query?.pages||{}).find(x=>x.imageinfo?.[0])?.imageinfo?.[0];
-  source=info?.thumburl||info?.url||'';href=info?.descriptionurl||href;
+  source=info?.thumburl||info?.url||'';fullImage=info?.url||source;href=info?.descriptionurl||href;
  }
- if(!source&&work.wikiLang&&work.wikiTitle){
+ if(!source&&work.medium!=='painting'&&work.wikiLang&&work.wikiTitle){
   const d=await get('https://'+work.wikiLang+'.wikipedia.org/w/api.php?'+new URLSearchParams({action:'query',titles:work.wikiTitle,redirects:'1',prop:'pageimages',piprop:'thumbnail',pithumbsize:'420',pilicense:'any',format:'json',origin:'*'}));
   const page=Object.values(d?.query?.pages||{}).find(x=>x.thumbnail?.source);
   source=page?.thumbnail?.source||'';
  }
- if(!valid()||!item.isConnected||!/^https:\/\//.test(source))return;
+ if(!valid()||!item.isConnected)return;
+ if(work.medium==='painting'){
+  if(!/^https:\/\//.test(source)){
+   item.prepend(el('p','context-note',L('Imagen de la obra no disponible','Artwork image unavailable','Image de l’œuvre indisponible')));return;
+  }
+  galleryStyle();
+  const button=el('button','painting-expand');button.type='button';button.setAttribute('aria-label',L('Ampliar ','Enlarge ','Agrandir ')+work.title);
+  const image=el('img');image.src=source;image.alt=work.title;image.loading='lazy';image.decoding='async';
+  image.addEventListener('error',()=>button.replaceWith(el('p','context-note',L('Imagen no disponible','Image unavailable','Image indisponible'))),{once:true});
+  button.append(image);button.addEventListener('click',()=>openPainting(work,source,href,/^https:\/\//.test(fullImage)?fullImage:''));item.prepend(button);return;
+ }
+ if(!/^https:\/\//.test(source))return;
  const a=link('',href);a.className='web-dossier-cover-link';
  const img=el('img','web-dossier-cover');img.src=source;img.alt=work.title;img.loading='lazy';img.decoding='async';img.addEventListener('error',()=>a.remove());a.append(img);item.prepend(a);
 }
 function showWorks(root,works,valid){
+ galleryStyle();
  const controls=el('label','cultural-order',L('Orden de las obras','Works order','Ordre des œuvres'));
  const select=el('select');select.setAttribute('aria-label',L('Orden de las obras culturales','Cultural works order','Ordre des œuvres culturelles'));
  for(const [value,text] of [['year',L('Más antiguas primero','Oldest first','Plus anciennes d’abord')],['importance',L('Importancia documental','Documentary prominence','Importance documentaire')]]){const option=el('option',null,text);option.value=value;select.append(option)}
@@ -126,7 +157,7 @@ function showWorks(root,works,valid){
   'Retrieved records: '+works.length+'. Ordered by earliest available typed date (inception, opening or publication); undated works follow. Not an exhaustive catalogue.',
   'Notices récupérées : '+works.length+'. Classées par date qualifiée (conception, ouverture ou publication) ; notices non datées en dernier. Catalogue non exhaustif.')));
  const stack=el('div','web-dossier-stack cultural-work-stack');root.append(stack);
- const cards=new Map();let expanded=true;
+ const cards=new Map();const previews=new Set();
  // First architectural drawing is expanded for the earliest documented
  // building, not for an unrelated painting or book in the same catalogue.
  let architecturalPreviewUsed=false;
@@ -155,13 +186,11 @@ function showWorks(root,works,valid){
      work.dateKind==='inception'?L('Inicio','Inception','Conception'):
      work.dateKind==='opening'?L('Apertura','Opening','Ouverture'):L('Fecha','Date','Date'))+
     ': '+work.date+' · '+work.dateProperty:'';
-   body.append(el('p','web-dossier-meta',[dateValue,work.notable?L('Obra destacada','Notable work','Œuvre notable'):'','Wikidata · '+work.id].filter(Boolean).join(' · ')));
+   body.append(el('p','web-dossier-meta',[dateValue||(work.medium==='painting'?L('Fecha de creación no registrada con precisión anual','Creation year not recorded precisely','Année de création non renseignée précisément'):''),work.notable?L('Obra destacada','Notable work','Œuvre notable'):'','Wikidata · '+work.id].filter(Boolean).join(' · ')));
    if(work.description)body.append(el('p','web-dossier-description',work.description));
    body.append(link(L('Ficha y fuentes ↗','Record and sources ↗','Fiche et sources ↗'),'https://www.wikidata.org/wiki/'+work.id));item.append(body);stack.append(item);
-   // A bounded number of image requests, including the first visible cards.
-   if(typeof IntersectionObserver!=='undefined'){
-    const observer=new IntersectionObserver(entries=>{if(!item.isConnected){observer.disconnect();return}if(entries.some(e=>e.isIntersecting)){observer.disconnect();void preview(item,work,valid)}},{rootMargin:'200px'});observer.observe(item);
-   }else void preview(item,work,valid);
+   // Observe only after the card is mounted in its final group.
+   item._vitruviaWork=work;
   }
   item.hidden=cards.size>=limit;cards.set(work.id,item);
  }
@@ -191,21 +220,29 @@ function showWorks(root,works,valid){
    if(!groupWorks?.length)continue;
    const section=el('section','cultural-medium-group');
    section.append(el('h5','context-section-title',labels[key]+' · '+groupWorks.length));
+   const gallery=key==='painting'?el('div','cultural-painting-grid'):section;if(gallery!==section)section.append(gallery);
    // Progressive reveal: show a documented chronological (or prominence)
    // first set, then expand on demand. Offscreen covers stay lazy-loaded.
    let visible=0;
    const batch=8;
    const reveal=()=>{
     const end=Math.min(groupWorks.length,visible+batch);
-    for(;visible<end;visible++)section.append(cards.get(groupWorks[visible].id));
+    for(;visible<end;visible++){
+     const work=groupWorks[visible],item=cards.get(work.id);gallery.append(item);
+     if(item._vitruviaWork&&!previews.has(work.id)){
+      previews.add(work.id);
+      if(typeof IntersectionObserver!=='undefined'){
+       const observer=new IntersectionObserver(entries=>{if(entries.some(e=>e.isIntersecting)&&item.isConnected){observer.disconnect();void preview(item,work,valid)}},{rootMargin:'200px'});observer.observe(item);
+      }else queueMicrotask(()=>{if(item.isConnected)void preview(item,work,valid)});
+     }
+    }
     if(more){more.hidden=visible>=groupWorks.length;
      more.textContent=L('Mostrar más obras','Show more works','Afficher plus d’œuvres')+' · '+(groupWorks.length-visible);}
    };
    const more=groupWorks.length>batch?el('button','cultural-show-more'):null;
    if(more){more.type='button';more.addEventListener('click',reveal)}
-   reveal();
+   stack.append(section);reveal();
    if(more)section.append(more);
-   stack.append(section);
   }
  }
  select.addEventListener('change',arrange);
@@ -290,5 +327,5 @@ async function render(root,identity,kind,valid){
  section.append(link(L('Consultar el catálogo de origen ↗','Open source catalogue ↗','Consulter le catalogue source ↗'),'https://www.wikidata.org/wiki/'+identity.wikidataId));
  return works;
 }
-window.VitruviaCulturalWorks={render,catalogue,compare};
+window.VitruviaCulturalWorks={render,catalogue,compare,workRecord};
 })();
