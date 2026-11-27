@@ -5,6 +5,7 @@ const profiles={
  ruler:{label:"Soberano",sections:["Identidad y titulatura","Reinado y cronología","Genealogía y sucesión","Política y religión","Textos e inscripciones","Arquitectura y arqueología","Fuentes primarias","Bibliografía académica"],documents:["royal-name","primary-text","architecture-drawing","museum-object","academic-book","research"]},
  architect:{label:"Arquitecto",sections:["Biografía","Formación e influencias","Obras y proyectos","Plantas, cortes y alzados","Perspectivas y croquis","Tratados y escritos","Legado","Bibliografía académica"],documents:["architecture-drawing","primary-text","academic-book","research"]},
  author:{label:"Autor o pensador",sections:["Biografía y contexto","Pensamiento y aportaciones","Obras y corpus","Textos originales y traducciones","Recepción crítica","Bibliografía académica"],documents:["primary-text","academic-book","research"]},
+ artist:{label:"Artista o músico",sections:["Biografía","Formación","Obras y etapas","Técnica y estilo","Recepción","Catálogo y bibliografía"],documents:["artwork","primary-text","academic-book","research"]},
  scientist:{label:"Científico",sections:["Biografía y formación","Aportaciones y descubrimientos","Métodos y evidencia","Publicaciones","Recepción y aplicaciones","Bibliografía académica"],documents:["primary-text","academic-book","research"]},
  building:{label:"Edificio o monumento",sections:["Identificación y ubicación","Historia y autoría","Descripción arquitectónica","Plantas, cortes y alzados","Construcción y materiales","Conservación","Bibliografía académica"],documents:["architecture-drawing","museum-object","academic-book","research"]},
  work:{label:"Obra",sections:["Identificación y autoría","Fecha y contexto","Contenido y estructura","Testimonios y ediciones","Traducciones","Recepción crítica","Bibliografía académica"],documents:["primary-text","academic-book","research"]},
@@ -22,6 +23,7 @@ function classify({description="",types=[],occupations=[],human=false}={}){
   if(has(/\b(architect\w*|arquitect\w*|architet\w*|baumeister)\b/))return "architect";
   if(has(/\b(philosoph\w*|filosof\w*|writer|escritor\w*|poet\w*|author|auteur|ecrivain|theolog\w*|teolog\w*|historian|historiador\w*)\b/))return "author";
   if(has(/\b(scientist|cientific\w*|physicist|fisico|mathematician|matematic\w*|chemist|quimic\w*|biologist|biolog\w*)\b/))return "scientist";
+  if(has(/\b(artist|artista|painter|pintor\w*|sculptor|escultor\w*|musician|musico|composer|compositor\w*|filmmaker|cineasta|actor|actriz)\b/))return "artist";
   return "person";
  }
  const t=fold(types.join(" "));
@@ -43,7 +45,7 @@ function articleSections(extract){
  }
  if(current.text.trim())rows.push({...current,text:current.text.trim()});
  let skipped=0;
- return rows.filter(r=>{if(skipped&&r.level>skipped)return false;skipped=0;const h=fold(r.heading);if(/^(?:vease tambien|see also|voir aussi|enlaces externos|external links|liens externes|referencias|references|notes et references|bibliografia|bibliography|bibliographie|notas|notes|gallery|galeria|galerie|trivia|curiosidades|popular culture|cultura popular|culture populaire|discografia|filmografia)$/.test(h)){skipped=r.level;return false}return true});
+ return rows.filter(r=>{if(skipped&&r.level>skipped)return false;skipped=0;const h=fold(r.heading);if(/^(?:vease tambien|see also|voir aussi|enlaces externos|external links|liens externes|referencias|references|notes et references|bibliografia|bibliography|bibliographie|notas|notes|gallery|galeria|galerie|trivia|curiosidades|popular culture|cultura popular|culture populaire)$/.test(h)){skipped=r.level;return false}return true});
 }
 function choose(direct,ranked){
  const unique=[...new Map(direct.map(x=>[x.id,x])).values()];
