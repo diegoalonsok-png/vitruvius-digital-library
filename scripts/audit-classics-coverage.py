@@ -29,10 +29,11 @@ def source_bytes(entry, manifest, offline=False):
     if url.scheme:
         if url.scheme != "https" or url.hostname != "libros.vitruvius-digital-library.org" or url.username or url.password or url.query or url.fragment:
             raise ValueError("Unapproved remote source: " + path)
-        record = next((r for r in manifest.get("obras", [])
-                       if manifest.get("base", "") + r["archivo"] == path
-                       and r.get("workId") == entry["workId"]
-                       and r.get("language") == entry["language"]), None)
+        record = manifest.get(path)
+        if record and (record["workId"] != entry.get("sourceWorkId", entry["workId"]) or record["language"] != entry["language"]):
+            raise ValueError("Remote source identity conflict: " + path)
+        if entry.get("sha256") and record and entry["sha256"] != record["sha256"]:
+            raise ValueError("Registry and manifest fingerprints disagree: " + path)
         if not record or not record.get("sha256"):
             raise ValueError("Remote source absent from the edition manifest: " + path)
         if offline:
@@ -85,7 +86,19 @@ def main():
     parser.add_argument("--offline", action="store_true", help="Keep remote declarations explicit without certifying their availability")
     args = parser.parse_args()
     entries = json.loads(REGISTRY.read_text(encoding="utf-8"))["entries"]
-    manifest = json.loads((ROOT / "data/r2/corpus-manifest.json").read_text(encoding="utf-8"))
+    legacy = json.loads((ROOT / "data/r2/corpus-manifest.json").read_text(encoding="utf-8"))
+    manifest = {}
+    def register_source(url, row):
+        identity = {k: row.get(k) for k in ("workId", "language", "sha256")}
+        if url in manifest and manifest[url] != identity:
+            raise ValueError("Conflicting manifests: " + url)
+        manifest[url] = identity
+    for row in legacy["obras"]:
+        register_source(legacy["base"] + row["archivo"], row)
+    for name in ("classics-expansion-manifest.json", "classics-translation-manifest.json"):
+        document = json.loads((ROOT / "data/r2" / name).read_text(encoding="utf-8"))
+        for row in document["editions"]:
+            register_source(row["url"], row)
     remote_sources = {}
     def prepare_remote(entry):
         try:
@@ -99,7 +112,7 @@ def main():
     seen = set()
     for e in entries:
         work, language, kind = e["workId"], e["language"], e["format"]
-        key = (work, language)
+        key = (work, language, e["path"], e.get("edition"))
         path = ROOT / e["path"]
         row = {"work":work,"language":language,"format":kind,"path":e["path"],
                "reader":e.get("reader"),"passages":0,"characters":0,"status":"ok"}
@@ -177,7 +190,7 @@ def main():
                 errors.append(f"Missing loci in {e['path']}")
             row["passages"] = len(passages)
             row["characters"] = sum(len(p.get(field,"")) for p in passages)
-            loci_by_work[work][language] = set(loci)
+            loci_by_work[work][(language,e["path"])] = set(loci)
             reader = urlsplit(e.get("reader") or "")
             params = parse_qs(reader.query)
             if kind == "json-passages" and (params.get("work") != [work] or params.get("lang") != [language]):
@@ -187,21 +200,19 @@ def main():
         rows.append(row)
     comparisons = []
     for work, languages in sorted(loci_by_work.items()):
-        originals = [l for l in ("grc","la") if l in languages]
-        if not originals:
-            continue
-        original = originals[0]
-        for language, loci in languages.items():
-            if language == original:
-                continue
-            shared = len(loci & languages[original])
-            comparisons.append({"work":work,"original":original,"translation":language,
-                                "original_loci":len(languages[original]),"translated_loci":len(loci),
-                                "shared_loci":shared,"unmatched_original":len(languages[original]-loci),
-                                "unmatched_translation":len(loci-languages[original]),
-                                "alignment":"locus identifier overlap only; textual equivalence unverified"})
-            if shared != len(loci) or shared != len(languages[original]):
-                warnings.append(f"Unmatched loci: {work} {original}/{language}: {shared} common")
+        originals = [(key, loci) for key, loci in languages.items() if key[0] in ("grc","la")]
+        translations = [(key, loci) for key, loci in languages.items() if key[0] not in ("grc","la")]
+        for (original, original_path), original_loci in originals:
+            for (language, translation_path), loci in translations:
+                shared = len(loci & original_loci)
+                comparisons.append({"work":work,"original":original,"translation":language,
+                                    "originalPath":original_path,"translationPath":translation_path,
+                                    "original_loci":len(original_loci),"translated_loci":len(loci),
+                                    "shared_loci":shared,"unmatched_original":len(original_loci-loci),
+                                    "unmatched_translation":len(loci-original_loci),
+                                    "alignment":"locus identifier overlap only; textual equivalence unverified"})
+                if shared != len(loci) or shared != len(original_loci):
+                    warnings.append(f"Unmatched loci: {work} {original}/{language}: {shared} common ({original_path} / {translation_path})")
     report = {"schema":"vitruvia-classics-coverage-audit-v1",
               "registry_entries":len(entries),"works":len({r["work"] for r in rows}),
               "editions":rows,"comparisons":comparisons,"errors":errors,"warnings":warnings,

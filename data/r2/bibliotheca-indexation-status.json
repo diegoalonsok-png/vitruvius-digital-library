@@ -1,6 +1,6 @@
 {
   "schema": "vdl-bibliotheca-indexation-control-v1",
-  "generated": "2026-11-27T12:27:42.385Z",
+  "generated": "2026-11-27T12:40:43.274Z",
   "basis": "Control del repositorio; los objetos y fragmentos de R2 no fueron verificados en línea por este programa.",
   "counts": {
     "catalogueWorks": 730,
@@ -28,10 +28,10 @@
     "greekTitleNeedsIndividualReview": 432,
     "r2UnlinkedEditions": 0,
     "duplicateR2BinaryGroups": 2,
-    "structuralErrors": 1,
+    "structuralErrors": 0,
     "editorialReviewItems": 465
   },
-  "integrity": "error estructural",
+  "integrity": "estructura sin errores detectados",
   "semanticIndex": "Índice invertido por raíces y Conceptus; NO desambiguación semántica filológica acreditada",
   "remaining": "Consultar reports/bibliotheca/indexation-control.json para las incidencias por obra."
 }

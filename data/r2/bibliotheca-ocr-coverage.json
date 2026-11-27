@@ -1,7 +1,7 @@
 {
   "schema": "vdl-bibliotheca-ocr-coverage-v1",
-  "generated": "2026-11-27T12:15:00Z",
-  "source": "Inventario federado y registro textual actuales; auditoría R2 previa del 2026-11-16T18:17:14.097374+00:00 (no nueva comprobación física).",
+  "generated": "2026-11-27T12:49:09.807507+00:00",
+  "source": "Catálogo maestro, registro de versiones, inventario federado e índice S3 auditado",
   "limits": "Índice por raíces sobre OCR no revisado, no traducción, no lematización morfológica, ni correspondencia certificada con loci. La presencia en el listado no prueba que cada palabra tenga una localización correcta; consultar auditoría léxica en vivo.",
   "counts": {
     "masterWorks": 730,
@@ -607,7 +607,7 @@
       "id": "procopius-aedificiis",
       "author": "Procopio de Cesarea",
       "title": "Περὶ κτισμάτων",
-      "originalLanguage": null,
+      "originalLanguage": "grc",
       "editionSearchStatus": "sin transcripción textual registrada",
       "ocrSearchStatus": "sin facsímil con índice R2 vinculado"
     },
@@ -615,11 +615,11 @@
       "id": "sappho-fragmenta",
       "author": "Safo",
       "title": "Fragmenta · Fragmentos",
-      "originalLanguage": null,
+      "originalLanguage": "grc",
       "editionSearchStatus": "sin transcripción textual registrada",
       "ocrSearchStatus": "sin facsímil con índice R2 vinculado"
     }
   ],
-  "r2IndexAuditTimestamp": "2026-11-16T18:17:14.097374+00:00",
+  "r2IndexAuditTimestamp": "2026-11-27T12:47:59.592047+00:00",
   "r2IndexDeclared": true
 }

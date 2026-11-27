@@ -722,6 +722,38 @@
       "Teeteto",
       "Theaetetus",
       "Théétète"
+    ],
+    "cts-tlg4026-tlg003": [
+      "Fragmentum paraphrasis in Aristotelis rhetorica",
+      "urn:cts:greekLit:tlg4026.tlg003.1st1K-grc1"
+    ],
+    "cts-tlg0082-tlg003": [
+      "Περὶ συνδέσμων",
+      "urn:cts:greekLit:tlg0082.tlg003.1st1K-grc1"
+    ],
+    "cts-tlg0082-tlg004": [
+      "Περὶ συντάξεως",
+      "urn:cts:greekLit:tlg0082.tlg004.1st1K-grc1"
     ]
+  },
+  "titleAuthorities": {
+    "cts-tlg4026-tlg003": {
+      "displayTitle": "Fragmentum paraphrasis in Aristotelis rhetorica",
+      "source": "https://beta.perseus.tufts.edu/urn%3Acts%3AgreekLit%3Atlg4026.tlg003.1st1K-grc1%3A1/",
+      "urn": "urn:cts:greekLit:tlg4026.tlg003.1st1K-grc1",
+      "note": "Título editorial latino identificado en Perseus, edición Hugo Rabe. Se conserva la ficha y el código de origen; título griego todavía no acreditado."
+    },
+    "cts-tlg0082-tlg003": {
+      "greekTitle": "Περὶ συνδέσμων",
+      "source": "https://beta.perseus.tufts.edu/urn%3Acts%3AgreekLit%3Atlg0082.tlg003.1st1K-grc1%3A479/",
+      "urn": "urn:cts:greekLit:tlg0082.tlg003.1st1K-grc1",
+      "note": "Título griego declarado por Perseus en la edición registrada."
+    },
+    "cts-tlg0082-tlg004": {
+      "greekTitle": "Περὶ συντάξεως",
+      "source": "https://beta.perseus.tufts.edu/urn%3Acts%3AgreekLit%3Atlg0082.tlg004.1st1K-grc1%3A3/",
+      "urn": "urn:cts:greekLit:tlg0082.tlg004.1st1K-grc1",
+      "note": "Título griego declarado por Perseus en la edición registrada."
+    }
   }
 }

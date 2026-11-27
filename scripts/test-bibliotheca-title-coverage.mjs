@@ -22,6 +22,14 @@ const textIDs=new Set(registry.entries.map(e=>e.workId));
 const catalogueIDs=new Set(roadmap.items.map(e=>e.id));
 const registryOnly=[...textIDs].filter(id=>!catalogueIDs.has(id));
 const r2=new Set(manifest.obras.map(e=>manifest.base+e.archivo));
+for(const file of ["data/r2/classics-expansion-manifest.json","data/r2/classics-translation-manifest.json"]){for(const e of json(file).editions||[])r2.add(e.url);}
+const titles=json("data/classics-corpus/title-search-aliases-multilingual.json");
+for(const [id,entry] of Object.entries(titles.titleAuthorities||{})){
+ assert(registry.entries.some(e=>e.workId===id&&e.sourceUrn===entry.urn),"Title authority lacks exact registered URN: "+id);
+ assert(/^https:\/\//.test(entry.source),"Title authority lacks source");
+ assert(entry.displayTitle||/\p{Script=Greek}/u.test(entry.greekTitle||""),"Missing documented title");
+ assert((titles.aliases[id]||[]).includes(entry.displayTitle||entry.greekTitle),"Authority title not searchable");
+}
 for(const edition of registry.entries.filter(e=>e.path.startsWith(manifest.base)))
  assert.ok(r2.has(edition.path),'R2 edition not declared: '+edition.workId);
 assert.match(js,/function addRoadmap\(roadmap\)/);

@@ -155,6 +155,30 @@ def parse_book_prefix(locus):
  m=re.match(r"^(?:lib(?:er)?|book|bk|canto)\s*([1-9]\d?)(?:[.:\s-]|$)",str(locus),re.I)
  if not m:m=re.match(r"^([1-9]\d?)[.:](?:\d+|pr|pref)",str(locus),re.I)
  return int(m.group(1)) if m else None
+def normalized_latin_tokens(value):
+ return re.findall(r"[^\W\d_]+",unicodedata.normalize("NFKC",str(value or "")).casefold(),flags=re.UNICODE)
+
+def documented_v297_grouping(obj, canonical, language):
+ # Only the three individually collated loci; no generic inference of textual
+ # coverage from a section_end value alone. Keep the 728 source blocks intact.
+ if obj.get("edition")!="theory-en" or language not in ("la","en"):return {}
+ ref={str(x["locus"]):x["latin"] for x in canonical}
+ proof={
+  "7.7.2":("7.7.1",3,"Red ochres are also extracted abundantly in many places, but the finest come from only a few: Sinope in Pontus, Egypt, the Balearic Islands in Hispania and Lemnos, whose revenues the Roman Senate and people granted to the Athenians."),
+  "7.7.3":("7.7.1",3,"Paraetonium takes its name from the place where it is quarried; similarly, melinum is so called because its deposit is said to occur only on Melos in the Cyclades."),
+  "7.7.5":("7.7.4",5,"Orpiment, called ἀρσενικόν in Greek, is mined in Pontus. Sandaraca occurs in several places too, but its finest deposit is in Pontus near the river Hypanis."),
+ }
+ blocks={str(x.get("locus")):x for x in obj["passages"]}
+ result={}
+ for locus,(start,end,english) in proof.items():
+  block=blocks.get(start,{})
+  if block.get("section_end")!=end or not block.get("scope_note"):continue
+  needle=" "+" ".join(normalized_latin_tokens(ref.get(locus)))+" "
+  haystack=" "+" ".join(normalized_latin_tokens(block.get("latin")))+" "
+  if ref.get(locus) and needle in haystack and english in block.get("translation",""):
+   result[locus]={"sourceBlock":start,"sectionEnd":end,"basis":"Cotejo del latín con Krohn 1912 y comprobación literal del pasaje inglés en V297; agrupación editorial declarada en el DOCX."}
+ return result
+
 def inspect_registry(start,limit):
  main,_,_,registry,_,_,_=load_catalogues()
  names={w["id"]:w for w in main}
@@ -162,7 +186,7 @@ def inspect_registry(start,limit):
  rows=[]
  for e in selected:
   status="not_inspected";flags=[];count=0;chars=0;kind=e.get("format")
-  missing_loci=[];expected_loci=None;declared_missing=[];empty_loci=[];segmented_loci=0;book_nums=set();missing=[]
+  missing_loci=[];expected_loci=None;declared_missing=[];empty_loci=[];segmented_loci=0;book_nums=set();missing=[];grouped_reference_loci={}
   path=e["path"];file_path=ROOT/path
   try:
    if path.startswith("https://"):obj=get_json(path)
@@ -187,7 +211,8 @@ def inspect_registry(start,limit):
     canonical=read("data/critical-editions/krohn-1912-tei-loci.json")["passages"]
     expected=[str(x["locus"]) for x in canonical];expected_loci=len(expected)
     actual={str(x.get("locus")) for x in passages if str(x.get("latin" if e["language"]=="la" else "translation") or "").strip()}
-    missing_loci=[locus for locus in expected if locus not in actual]
+    grouped_reference_loci=documented_v297_grouping(obj,canonical,e["language"])
+    missing_loci=[locus for locus in expected if locus not in actual and locus not in grouped_reference_loci]
     if missing_loci:flags.append("MISSING_REFERENCE_LOCI")
    elif kind=="historical-ocr-pages":
     if not isinstance(obj,list):flags.append("INVALID_HISTORICAL_OCR")
@@ -236,7 +261,7 @@ def inspect_registry(start,limit):
    if count==0 or chars==0:flags.append("NO_SUBSTANTIVE_TEXT")
    elif chars<350:flags.append("SHORT_TEXT_REVIEW_NOT_NECESSARILY_INCOMPLETE")
    status="needs_review" if flags else "structurally_readable_not_philologically_verified"
-   extra={"missingReferenceLoci":missing_loci,"expectedReferenceLoci":expected_loci,"sourceDeclaredMissing":declared_missing,"emptyLoci":empty_loci,"segmentedLocusGroups":segmented_loci,
+   extra={"missingReferenceLoci":missing_loci,"groupedReferenceLoci":grouped_reference_loci,"expectedReferenceLoci":expected_loci,"sourceDeclaredMissing":declared_missing,"emptyLoci":empty_loci,"segmentedLocusGroups":segmented_loci,
           "sourceTitle":obj.get("title") or obj.get("sourceTitle") if isinstance(obj,dict) else None,
           "bookNumbersDetected":sorted(book_nums) if kind not in ("structured-bilingual","historical-ocr-pages") else [],
           "candidateMissingBooks":missing if kind not in ("structured-bilingual","historical-ocr-pages") else []}
@@ -315,7 +340,7 @@ def publish_results(folder):
  ocr_by_id={r["editionId"]:r for r in ocr_rows}
  pdf_by_id={r["id"]:r for r in pdf_rows}
  def compact(r):
-  return {k:r[k] for k in ("language","path","format","status","passageCount","flags","missingReferenceLoci","expectedReferenceLoci","sourceDeclaredMissing","emptyLoci","candidateMissingBooks","reason") if k in r}
+  return {k:r[k] for k in ("language","path","format","status","passageCount","flags","missingReferenceLoci","groupedReferenceLoci","expectedReferenceLoci","sourceDeclaredMissing","emptyLoci","candidateMissingBooks","reason") if k in r}
  for record in report["records"]:
   wid=record["id"]
   aliases={"vitruvio-v514-pdf":"vitruvius","vitruvio-v554-pdf":"vitruvius","theory-v297-pdf":"vitruvius","krohn-1912-pdf":"krohn-1912-indexed"}
@@ -324,13 +349,23 @@ def publish_results(folder):
    paths={v["path"] for v in record.get("versions",[])}
    candidates=[r for r in candidates if r["path"] in paths]
   record["latestTextChecks"]=[compact(r) for r in candidates]
+  # Supersede only the three previously flagged V297 loci when actual text
+  # evidence has been checked. Preserve all unrelated editorial findings.
+  for version in record.get("versions",[]):
+   if version.get("path")!="data/structured/theory-en.json":continue
+   verified=next((r for r in candidates if r["path"]==version["path"] and r["language"]==version["language"] and not r.get("missingReferenceLoci") and len(r.get("groupedReferenceLoci",{}))==3),None)
+   if verified and set(version.get("missing",[]))=={"7.7.2","7.7.3","7.7.5"}:
+    version.update(status="structure_confirmed",missing=[],found=731,sourceBlocks=728,groupedReferenceLoci=verified["groupedReferenceLoci"],basis="731 loci de referencia representados en 728 bloques; 7.7.2 y 7.7.3 dentro de 7.7.1–3, y 7.7.5 dentro de 7.7.4–5. Cotejo latino con Krohn 1912 y presencia del pasaje inglés comprobados. No certifica colación integral.")
+  if record.get("status")=="verified_structural_gap" and wid in ("vitruvius","theory-v297-pdf") and any(v.get("groupedReferenceLoci") for v in record.get("versions",[])) and not any(v.get("missing") for v in record.get("versions",[])):
+   record["status"]="some_version_structure_confirmed"
   checks=[]
   for f in record.get("facsimiles",[]):
    eid=f["id"];o=ocr_by_id.get(eid,{});p=pdf_by_id.get(eid,{})
-   checks.append({"id":eid,"ocrStatus":o.get("status"),"ocrFlags":o.get("flags",[]),"ocrPages":o.get("ocrPages"),"declaredPdfPages":o.get("declaredPdfPages"),"pagesWithoutExtractedText":o.get("pagesWithoutExtractedText",[]),"ocrReason":o.get("reason"),"pdfStatus":p.get("status"),"pdfFlags":p.get("flags",[]),"pdfPages":p.get("observed",{}).get("pages"),"pdfReason":p.get("reason")})
+   checks.append({"id":eid,"ocrStatus":o.get("status"),"ocrFlags":o.get("flags",[]),"ocrPages":o.get("ocrPages"),"declaredPdfPages":o.get("declaredPdfPages"),"pagesWithoutExtractedText":o.get("pagesWithoutExtractedText",[]),"ocrReason":o.get("reason"),"pdfStatus":p.get("status"),"pdfFlags":p.get("flags",[]),"pdfPages":p.get("observed",{}).get("pages"),"physicalPageCheck":p.get("observed",{}).get("physicalPageCheck"),"pdfReason":p.get("reason")})
   record["latestFacsimileChecks"]=checks
   # Preserve prior expert findings; automatic checks add evidence, not certification.
   record["fullTextCollation"]="not_completed"
+ report["counts"]=dict(collections.Counter(r["status"] for r in report["records"]))
  report["latestStructuralAudit"]={"generated":dt.datetime.now(dt.timezone.utc).isoformat(),"textVersions":len(text_rows),"ocrEditions":len(ocr_rows),"pdfEditions":len(pdf_rows),"textStatuses":dict(collections.Counter(r["status"] for r in text_rows)),"ocrStatuses":dict(collections.Counter(r["status"] for r in ocr_rows)),"pdfStatuses":dict(collections.Counter(r["status"] for r in pdf_rows)),"limits":"Cotejo estructural y muestreo de PDF, no certificación filológica; páginas sin OCR no equivalen a folios perdidos."}
  target.write_text(json.dumps(report,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
  print(json.dumps(report["latestStructuralAudit"],ensure_ascii=False))

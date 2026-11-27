@@ -2,11 +2,11 @@
   "schema": "vdl-edition-provenance-v1",
   "method": "Registry plus inspected local JSON edition metadata; R2 URLs are declarations only, not live checks. No invented attribution or automatic translation claims.",
   "counts": {
-    "cataloguedWorks": 800,
-    "editions": 1021,
+    "cataloguedWorks": 867,
+    "editions": 1107,
     "localFilesInspected": 427,
-    "remoteEditionsDeclared": 581,
-    "worksWithoutHostedEnFrEs": 652
+    "remoteEditionsDeclared": 667,
+    "worksWithoutHostedEnFrEs": 711
   },
   "works": [
     {
@@ -3520,6 +3520,25 @@
           "sourcePath": "data/classics-corpus/lucian-dialogi-mortuorum-grc.json",
           "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática",
           "passages": 113
+        },
+        {
+          "language": "grc",
+          "kind": "original",
+          "status": "r2-registered-not-live-checked",
+          "title": "Νεκρικοὶ διάλογοι",
+          "translator": null,
+          "editor": null,
+          "edition": null,
+          "year": null,
+          "source": null,
+          "sources": null,
+          "attribution": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "license": null,
+          "editorialStatus": null,
+          "alignmentStatus": null,
+          "sourcePath": "https://libros.vitruvius-digital-library.org/corpus/lucian-dialogi-mortuorum-grc-34e898d0e8feed1a.json",
+          "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "passages": null
         }
       ],
       "translations": [],
@@ -3550,6 +3569,25 @@
           "sourcePath": "data/classics-corpus/lucian-verae-historiae-grc.json",
           "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática",
           "passages": 89
+        },
+        {
+          "language": "grc",
+          "kind": "original",
+          "status": "r2-registered-not-live-checked",
+          "title": "Ἀληθῆ διηγήματα",
+          "translator": null,
+          "editor": null,
+          "edition": null,
+          "year": null,
+          "source": null,
+          "sources": null,
+          "attribution": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "license": null,
+          "editorialStatus": null,
+          "alignmentStatus": null,
+          "sourcePath": "https://libros.vitruvius-digital-library.org/corpus/lucian-verae-historiae-grc-09fde046b8ef04d2.json",
+          "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "passages": null
         }
       ],
       "translations": [
@@ -3630,6 +3668,25 @@
           "sourcePath": "data/classics-corpus/galen-ars-medica-grc.json",
           "sourceDescription": "OpenGreekAndLatin First1KGreek TEI · fuente editada documentada, sin colación automática",
           "passages": 67
+        },
+        {
+          "language": "grc",
+          "kind": "original",
+          "status": "r2-registered-not-live-checked",
+          "title": "Τέχνη ἰατρική",
+          "translator": null,
+          "editor": null,
+          "edition": null,
+          "year": null,
+          "source": null,
+          "sources": null,
+          "attribution": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "license": null,
+          "editorialStatus": null,
+          "alignmentStatus": null,
+          "sourcePath": "https://libros.vitruvius-digital-library.org/corpus/galen-ars-medica-grc-79f642d4d38766f7.json",
+          "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "passages": null
         }
       ],
       "translations": [],
@@ -3660,6 +3717,25 @@
           "sourcePath": "data/classics-corpus/galen-de-usu-partium-grc.json",
           "sourceDescription": "OpenGreekAndLatin First1KGreek TEI · fuente editada documentada, sin colación automática",
           "passages": 724
+        },
+        {
+          "language": "grc",
+          "kind": "original",
+          "status": "r2-registered-not-live-checked",
+          "title": "Περὶ χρείας μορίων",
+          "translator": null,
+          "editor": null,
+          "edition": null,
+          "year": null,
+          "source": null,
+          "sources": null,
+          "attribution": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "license": null,
+          "editorialStatus": null,
+          "alignmentStatus": null,
+          "sourcePath": "https://libros.vitruvius-digital-library.org/corpus/galen-de-usu-partium-grc-3f0b1c63a045c192.json",
+          "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "passages": null
         }
       ],
       "translations": [],
@@ -3761,6 +3837,25 @@
           "sourcePath": "data/classics-corpus/marcus-aurelius-meditations-grc.json",
           "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática",
           "passages": 577
+        },
+        {
+          "language": "grc",
+          "kind": "original",
+          "status": "r2-registered-not-live-checked",
+          "title": "Τὰ εἰς ἑαυτόν",
+          "translator": null,
+          "editor": null,
+          "edition": null,
+          "year": null,
+          "source": null,
+          "sources": null,
+          "attribution": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "license": null,
+          "editorialStatus": null,
+          "alignmentStatus": null,
+          "sourcePath": "https://libros.vitruvius-digital-library.org/corpus/marcus-aurelius-meditations-grc-11c6c0fa40a67675.json",
+          "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "passages": null
         }
       ],
       "translations": [
@@ -4844,6 +4939,25 @@
           "sourcePath": "data/classics-corpus/hippocrates-aphorisms-grc.json",
           "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática",
           "passages": 413
+        },
+        {
+          "language": "grc",
+          "kind": "original",
+          "status": "r2-registered-not-live-checked",
+          "title": "Ἀφορισμοί",
+          "translator": null,
+          "editor": null,
+          "edition": null,
+          "year": null,
+          "source": null,
+          "sources": null,
+          "attribution": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "license": null,
+          "editorialStatus": null,
+          "alignmentStatus": null,
+          "sourcePath": "https://libros.vitruvius-digital-library.org/corpus/hippocrates-aphorisms-grc-a711032a61a08af6.json",
+          "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "passages": null
         }
       ],
       "translations": [
@@ -9105,6 +9219,25 @@
           "sourcePath": "data/classics-corpus/epictetus-enchiridion-grc.json",
           "sourceDescription": "La fuente y la atribución se muestran dentro del JSON y del lector; las traducciones no equivalen a alineación por loci.",
           "passages": 53
+        },
+        {
+          "language": "grc",
+          "kind": "original",
+          "status": "r2-registered-not-live-checked",
+          "title": "Ἐγχειρίδιον · Enchiridion",
+          "translator": null,
+          "editor": null,
+          "edition": null,
+          "year": null,
+          "source": null,
+          "sources": null,
+          "attribution": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "license": null,
+          "editorialStatus": null,
+          "alignmentStatus": null,
+          "sourcePath": "https://libros.vitruvius-digital-library.org/corpus/epictetus-enchiridion-grc-d5199dc818462d3e.json",
+          "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "passages": null
         }
       ],
       "translations": [
@@ -9477,6 +9610,25 @@
           "sourcePath": "data/classics-corpus/euclid-elementa-grc.json",
           "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática",
           "passages": 829
+        },
+        {
+          "language": "grc",
+          "kind": "original",
+          "status": "r2-registered-not-live-checked",
+          "title": "Στοιχεῖα · Elementa",
+          "translator": null,
+          "editor": null,
+          "edition": null,
+          "year": null,
+          "source": null,
+          "sources": null,
+          "attribution": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "license": null,
+          "editorialStatus": null,
+          "alignmentStatus": null,
+          "sourcePath": "https://libros.vitruvius-digital-library.org/corpus/euclid-elementa-grc-de76536de07cc463.json",
+          "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "passages": null
         }
       ],
       "translations": [],
@@ -9649,6 +9801,25 @@
           "sourcePath": "data/classics-corpus/geminus-isagoge-grc.json",
           "sourceDescription": "First1KGreek; edición de Charles Manitius; CC BY-SA 4.0",
           "passages": 524
+        },
+        {
+          "language": "grc",
+          "kind": "original",
+          "status": "r2-registered-not-live-checked",
+          "title": "Εἰσαγωγὴ εἰς τὰ φαινόμενα · Elementa astronomiae",
+          "translator": null,
+          "editor": null,
+          "edition": null,
+          "year": null,
+          "source": null,
+          "sources": null,
+          "attribution": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "license": null,
+          "editorialStatus": null,
+          "alignmentStatus": null,
+          "sourcePath": "https://libros.vitruvius-digital-library.org/corpus/geminus-isagoge-grc-8888fc4231f3fc2b.json",
+          "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "passages": null
         }
       ],
       "translations": [],
@@ -10427,6 +10598,25 @@
       "title": "Περὶ φυσικῶν δυνάμεων · De naturalibus facultatibus",
       "originalLanguage": "grc",
       "originals": [
+        {
+          "language": "grc",
+          "kind": "original",
+          "status": "r2-registered-not-live-checked",
+          "title": "Περὶ φυσικῶν δυνάμεων · De naturalibus facultatibus",
+          "translator": null,
+          "editor": null,
+          "edition": null,
+          "year": null,
+          "source": null,
+          "sources": null,
+          "attribution": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "license": null,
+          "editorialStatus": null,
+          "alignmentStatus": null,
+          "sourcePath": "https://libros.vitruvius-digital-library.org/corpus/galeno-facultades-naturales-grc-86bcddddae0c6977.json",
+          "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "passages": null
+        },
         {
           "language": "grc",
           "kind": "original",
@@ -19523,8 +19713,28 @@
           "passages": null
         }
       ],
-      "translations": [],
-      "missingTranslation": true,
+      "translations": [
+        {
+          "language": "en",
+          "kind": "translation",
+          "status": "r2-registered-not-live-checked",
+          "title": "De Domo Sua Ad Pontifices",
+          "translator": null,
+          "editor": null,
+          "edition": null,
+          "year": null,
+          "source": null,
+          "sources": null,
+          "attribution": "Traducción humana acreditada: Charles Duke Yonge; TEI Perseus, licencia y SHA256 verificados",
+          "license": null,
+          "editorialStatus": null,
+          "alignmentStatus": null,
+          "sourcePath": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0474-phi020-en-84c6c48ad69ca2ec.json",
+          "sourceDescription": "Traducción humana acreditada: Charles Duke Yonge; TEI Perseus, licencia y SHA256 verificados",
+          "passages": null
+        }
+      ],
+      "missingTranslation": false,
       "facsimiles": []
     },
     {
@@ -19553,8 +19763,28 @@
           "passages": null
         }
       ],
-      "translations": [],
-      "missingTranslation": true,
+      "translations": [
+        {
+          "language": "en",
+          "kind": "translation",
+          "status": "r2-registered-not-live-checked",
+          "title": "De Haruspicum Responso In P. Clodium",
+          "translator": null,
+          "editor": null,
+          "edition": null,
+          "year": null,
+          "source": null,
+          "sources": null,
+          "attribution": "Traducción humana acreditada: Charles Duke Yonge; TEI Perseus, licencia y SHA256 verificados",
+          "license": null,
+          "editorialStatus": null,
+          "alignmentStatus": null,
+          "sourcePath": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0474-phi021-en-a854c99023da3fe3.json",
+          "sourceDescription": "Traducción humana acreditada: Charles Duke Yonge; TEI Perseus, licencia y SHA256 verificados",
+          "passages": null
+        }
+      ],
+      "missingTranslation": false,
       "facsimiles": []
     },
     {
@@ -19973,8 +20203,28 @@
           "passages": null
         }
       ],
-      "translations": [],
-      "missingTranslation": true,
+      "translations": [
+        {
+          "language": "en",
+          "kind": "translation",
+          "status": "r2-registered-not-live-checked",
+          "title": "Pro P. Sestio",
+          "translator": null,
+          "editor": null,
+          "edition": null,
+          "year": null,
+          "source": null,
+          "sources": null,
+          "attribution": "Traducción humana acreditada: Charles Duke Yonge; TEI Perseus, licencia y SHA256 verificados",
+          "license": null,
+          "editorialStatus": null,
+          "alignmentStatus": null,
+          "sourcePath": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0474-phi022-en-8de68314aacb81d9.json",
+          "sourceDescription": "Traducción humana acreditada: Charles Duke Yonge; TEI Perseus, licencia y SHA256 verificados",
+          "passages": null
+        }
+      ],
+      "missingTranslation": false,
       "facsimiles": []
     },
     {
@@ -20783,8 +21033,28 @@
           "passages": null
         }
       ],
-      "translations": [],
-      "missingTranslation": true,
+      "translations": [
+        {
+          "language": "en",
+          "kind": "translation",
+          "status": "r2-registered-not-live-checked",
+          "title": "De architectura",
+          "translator": null,
+          "editor": null,
+          "edition": null,
+          "year": null,
+          "source": null,
+          "sources": null,
+          "attribution": "Traducción humana acreditada: Morris Hicky Morgan; TEI Perseus, licencia y SHA256 verificados",
+          "license": null,
+          "editorialStatus": null,
+          "alignmentStatus": null,
+          "sourcePath": "https://libros.vitruvius-digital-library.org/corpus/cts-phi1056-phi001-en-0f1c4b8d0eaeb584.json",
+          "sourceDescription": "Traducción humana acreditada: Morris Hicky Morgan; TEI Perseus, licencia y SHA256 verificados",
+          "passages": null
+        }
+      ],
+      "missingTranslation": false,
       "facsimiles": []
     },
     {
@@ -22013,8 +22283,28 @@
           "passages": null
         }
       ],
-      "translations": [],
-      "missingTranslation": true,
+      "translations": [
+        {
+          "language": "en",
+          "kind": "translation",
+          "status": "r2-registered-not-live-checked",
+          "title": "Pro M. Marcello",
+          "translator": null,
+          "editor": null,
+          "edition": null,
+          "year": null,
+          "source": null,
+          "sources": null,
+          "attribution": "Traducción humana acreditada: Charles Duke Yonge; TEI Perseus, licencia y SHA256 verificados",
+          "license": null,
+          "editorialStatus": null,
+          "alignmentStatus": null,
+          "sourcePath": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0474-phi032-en-5440d4d5666dc2fa.json",
+          "sourceDescription": "Traducción humana acreditada: Charles Duke Yonge; TEI Perseus, licencia y SHA256 verificados",
+          "passages": null
+        }
+      ],
+      "missingTranslation": false,
       "facsimiles": []
     },
     {
@@ -22073,8 +22363,28 @@
           "passages": null
         }
       ],
-      "translations": [],
-      "missingTranslation": true,
+      "translations": [
+        {
+          "language": "en",
+          "kind": "translation",
+          "status": "r2-registered-not-live-checked",
+          "title": "Pro Q. Ligario",
+          "translator": null,
+          "editor": null,
+          "edition": null,
+          "year": null,
+          "source": null,
+          "sources": null,
+          "attribution": "Traducción humana acreditada: Charles Duke Yonge; TEI Perseus, licencia y SHA256 verificados",
+          "license": null,
+          "editorialStatus": null,
+          "alignmentStatus": null,
+          "sourcePath": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0474-phi033-en-0e07076fdff69f2b.json",
+          "sourceDescription": "Traducción humana acreditada: Charles Duke Yonge; TEI Perseus, licencia y SHA256 verificados",
+          "passages": null
+        }
+      ],
+      "missingTranslation": false,
       "facsimiles": []
     },
     {
@@ -22103,8 +22413,28 @@
           "passages": null
         }
       ],
-      "translations": [],
-      "missingTranslation": true,
+      "translations": [
+        {
+          "language": "en",
+          "kind": "translation",
+          "status": "r2-registered-not-live-checked",
+          "title": "Pro Rege Deiotaro",
+          "translator": null,
+          "editor": null,
+          "edition": null,
+          "year": null,
+          "source": null,
+          "sources": null,
+          "attribution": "Traducción humana acreditada: Charles Duke Yonge; TEI Perseus, licencia y SHA256 verificados",
+          "license": null,
+          "editorialStatus": null,
+          "alignmentStatus": null,
+          "sourcePath": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0474-phi034-en-6c3048f71f145e21.json",
+          "sourceDescription": "Traducción humana acreditada: Charles Duke Yonge; TEI Perseus, licencia y SHA256 verificados",
+          "passages": null
+        }
+      ],
+      "missingTranslation": false,
       "facsimiles": []
     },
     {
@@ -23809,6 +24139,2055 @@
           "editorialStatus": null,
           "alignmentStatus": null,
           "sourcePath": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0086-tlg043-grc-48402384de2fcaf8.json",
+          "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "passages": null
+        }
+      ],
+      "translations": [],
+      "missingTranslation": true,
+      "facsimiles": []
+    },
+    {
+      "id": "cts-phi0474-phi031",
+      "author": "Cicerón",
+      "title": "Pro T. Annio Milone",
+      "originalLanguage": "la",
+      "originals": [
+        {
+          "language": "la",
+          "kind": "original",
+          "status": "r2-registered-not-live-checked",
+          "title": "Pro T. Annio Milone",
+          "translator": null,
+          "editor": null,
+          "edition": null,
+          "year": null,
+          "source": null,
+          "sources": null,
+          "attribution": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "license": null,
+          "editorialStatus": null,
+          "alignmentStatus": null,
+          "sourcePath": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0474-phi031-la-bdaf477ad15d6f70.json",
+          "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "passages": null
+        }
+      ],
+      "translations": [
+        {
+          "language": "en",
+          "kind": "translation",
+          "status": "r2-registered-not-live-checked",
+          "title": "Pro T. Annio Milone",
+          "translator": null,
+          "editor": null,
+          "edition": null,
+          "year": null,
+          "source": null,
+          "sources": null,
+          "attribution": "Traducción humana acreditada: Charles Duke Yonge; TEI Perseus, licencia y SHA256 verificados",
+          "license": null,
+          "editorialStatus": null,
+          "alignmentStatus": null,
+          "sourcePath": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0474-phi031-en-5b26b5177c28f2bf.json",
+          "sourceDescription": "Traducción humana acreditada: Charles Duke Yonge; TEI Perseus, licencia y SHA256 verificados",
+          "passages": null
+        }
+      ],
+      "missingTranslation": false,
+      "facsimiles": []
+    },
+    {
+      "id": "cts-tlg0086-tlg046",
+      "author": "Aristóteles",
+      "title": "De ventorum situ et nominibus",
+      "originalLanguage": "grc",
+      "originals": [
+        {
+          "language": "grc",
+          "kind": "original",
+          "status": "r2-registered-not-live-checked",
+          "title": "De ventorum situ et nominibus",
+          "translator": null,
+          "editor": null,
+          "edition": null,
+          "year": null,
+          "source": null,
+          "sources": null,
+          "attribution": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "license": null,
+          "editorialStatus": null,
+          "alignmentStatus": null,
+          "sourcePath": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0086-tlg046-grc-4369b72e920a6745.json",
+          "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "passages": null
+        }
+      ],
+      "translations": [],
+      "missingTranslation": true,
+      "facsimiles": []
+    },
+    {
+      "id": "cts-tlg0086-tlg045",
+      "author": "Aristóteles",
+      "title": "On Virtues and Vices",
+      "originalLanguage": "grc",
+      "originals": [
+        {
+          "language": "grc",
+          "kind": "original",
+          "status": "r2-registered-not-live-checked",
+          "title": "On Virtues and Vices",
+          "translator": null,
+          "editor": null,
+          "edition": null,
+          "year": null,
+          "source": null,
+          "sources": null,
+          "attribution": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "license": null,
+          "editorialStatus": null,
+          "alignmentStatus": null,
+          "sourcePath": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0086-tlg045-grc-a4c9fc73852d6326.json",
+          "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "passages": null
+        }
+      ],
+      "translations": [],
+      "missingTranslation": true,
+      "facsimiles": []
+    },
+    {
+      "id": "cts-tlg0086-tlg044",
+      "author": "Aristóteles",
+      "title": "Topica",
+      "originalLanguage": "grc",
+      "originals": [
+        {
+          "language": "grc",
+          "kind": "original",
+          "status": "r2-registered-not-live-checked",
+          "title": "Topica",
+          "translator": null,
+          "editor": null,
+          "edition": null,
+          "year": null,
+          "source": null,
+          "sources": null,
+          "attribution": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "license": null,
+          "editorialStatus": null,
+          "alignmentStatus": null,
+          "sourcePath": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0086-tlg044-grc-2188f48eabe78e99.json",
+          "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "passages": null
+        }
+      ],
+      "translations": [],
+      "missingTranslation": true,
+      "facsimiles": []
+    },
+    {
+      "id": "cts-tlg0086-tlg047",
+      "author": "Aristóteles",
+      "title": "De Xenophane, de Zenone, de Gorgia",
+      "originalLanguage": "grc",
+      "originals": [
+        {
+          "language": "grc",
+          "kind": "original",
+          "status": "r2-registered-not-live-checked",
+          "title": "De Xenophane, de Zenone, de Gorgia",
+          "translator": null,
+          "editor": null,
+          "edition": null,
+          "year": null,
+          "source": null,
+          "sources": null,
+          "attribution": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "license": null,
+          "editorialStatus": null,
+          "alignmentStatus": null,
+          "sourcePath": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0086-tlg047-grc-58b78f517b05a900.json",
+          "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "passages": null
+        }
+      ],
+      "translations": [],
+      "missingTranslation": true,
+      "facsimiles": []
+    },
+    {
+      "id": "cts-tlg0086-tlg048",
+      "author": "Aristóteles",
+      "title": "Divisiones Aristoteleae",
+      "originalLanguage": "grc",
+      "originals": [
+        {
+          "language": "grc",
+          "kind": "original",
+          "status": "r2-registered-not-live-checked",
+          "title": "Divisiones Aristoteleae",
+          "translator": null,
+          "editor": null,
+          "edition": null,
+          "year": null,
+          "source": null,
+          "sources": null,
+          "attribution": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "license": null,
+          "editorialStatus": null,
+          "alignmentStatus": null,
+          "sourcePath": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0086-tlg048-grc-e0be7590ceafc062.json",
+          "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "passages": null
+        }
+      ],
+      "translations": [],
+      "missingTranslation": true,
+      "facsimiles": []
+    },
+    {
+      "id": "cts-tlg0086-tlg052",
+      "author": "Aristóteles",
+      "title": "De anima (codicis E fragmenta recensionis a vulgata diversae)",
+      "originalLanguage": "grc",
+      "originals": [
+        {
+          "language": "grc",
+          "kind": "original",
+          "status": "r2-registered-not-live-checked",
+          "title": "De anima (codicis E fragmenta recensionis a vulgata diversae)",
+          "translator": null,
+          "editor": null,
+          "edition": null,
+          "year": null,
+          "source": null,
+          "sources": null,
+          "attribution": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "license": null,
+          "editorialStatus": null,
+          "alignmentStatus": null,
+          "sourcePath": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0086-tlg052-grc-c4c715b971d9b729.json",
+          "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "passages": null
+        }
+      ],
+      "translations": [],
+      "missingTranslation": true,
+      "facsimiles": []
+    },
+    {
+      "id": "cts-tlg0086-tlg054",
+      "author": "Aristóteles",
+      "title": "Physica (textus alter)",
+      "originalLanguage": "grc",
+      "originals": [
+        {
+          "language": "grc",
+          "kind": "original",
+          "status": "r2-registered-not-live-checked",
+          "title": "Physica (textus alter)",
+          "translator": null,
+          "editor": null,
+          "edition": null,
+          "year": null,
+          "source": null,
+          "sources": null,
+          "attribution": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "license": null,
+          "editorialStatus": null,
+          "alignmentStatus": null,
+          "sourcePath": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0086-tlg054-grc-c0f3728373ad5267.json",
+          "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "passages": null
+        }
+      ],
+      "translations": [],
+      "missingTranslation": true,
+      "facsimiles": []
+    },
+    {
+      "id": "cts-tlg0094-tlg001",
+      "author": "Pseudo-Plutarco",
+      "title": "De Fluviis",
+      "originalLanguage": "grc",
+      "originals": [
+        {
+          "language": "grc",
+          "kind": "original",
+          "status": "r2-registered-not-live-checked",
+          "title": "De Fluviis",
+          "translator": null,
+          "editor": null,
+          "edition": null,
+          "year": null,
+          "source": null,
+          "sources": null,
+          "attribution": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "license": null,
+          "editorialStatus": null,
+          "alignmentStatus": null,
+          "sourcePath": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0094-tlg001-grc-3fa67cf731437e4d.json",
+          "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "passages": null
+        }
+      ],
+      "translations": [],
+      "missingTranslation": true,
+      "facsimiles": []
+    },
+    {
+      "id": "cts-tlg0094-tlg002",
+      "author": "Pseudo-Plutarco",
+      "title": "De musica",
+      "originalLanguage": "grc",
+      "originals": [
+        {
+          "language": "grc",
+          "kind": "original",
+          "status": "r2-registered-not-live-checked",
+          "title": "De musica",
+          "translator": null,
+          "editor": null,
+          "edition": null,
+          "year": null,
+          "source": null,
+          "sources": null,
+          "attribution": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "license": null,
+          "editorialStatus": null,
+          "alignmentStatus": null,
+          "sourcePath": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0094-tlg002-grc-f0e9df4822c7dea3.json",
+          "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "passages": null
+        }
+      ],
+      "translations": [],
+      "missingTranslation": true,
+      "facsimiles": []
+    },
+    {
+      "id": "cts-tlg0094-tlg003",
+      "author": "Pseudo-Plutarco",
+      "title": "Placita Philosophorum",
+      "originalLanguage": "grc",
+      "originals": [
+        {
+          "language": "grc",
+          "kind": "original",
+          "status": "r2-registered-not-live-checked",
+          "title": "Placita Philosophorum",
+          "translator": null,
+          "editor": null,
+          "edition": null,
+          "year": null,
+          "source": null,
+          "sources": null,
+          "attribution": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "license": null,
+          "editorialStatus": null,
+          "alignmentStatus": null,
+          "sourcePath": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0094-tlg003-grc-8c67fde5396202cf.json",
+          "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "passages": null
+        }
+      ],
+      "translations": [],
+      "missingTranslation": true,
+      "facsimiles": []
+    },
+    {
+      "id": "cts-tlg0641-tlg001",
+      "author": "Jenofonte de Éfeso",
+      "title": "Ephesiaca",
+      "originalLanguage": "grc",
+      "originals": [
+        {
+          "language": "grc",
+          "kind": "original",
+          "status": "r2-registered-not-live-checked",
+          "title": "Ephesiaca",
+          "translator": null,
+          "editor": null,
+          "edition": null,
+          "year": null,
+          "source": null,
+          "sources": null,
+          "attribution": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "license": null,
+          "editorialStatus": null,
+          "alignmentStatus": null,
+          "sourcePath": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0641-tlg001-grc-4a52b1851120aef2.json",
+          "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "passages": null
+        }
+      ],
+      "translations": [],
+      "missingTranslation": true,
+      "facsimiles": []
+    },
+    {
+      "id": "cts-tlg0644-tlg001",
+      "author": "Aristófanes de Bizancio",
+      "title": "Historiae Animalium Epitome",
+      "originalLanguage": "grc",
+      "originals": [
+        {
+          "language": "grc",
+          "kind": "original",
+          "status": "r2-registered-not-live-checked",
+          "title": "Historiae Animalium Epitome",
+          "translator": null,
+          "editor": null,
+          "edition": null,
+          "year": null,
+          "source": null,
+          "sources": null,
+          "attribution": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "license": null,
+          "editorialStatus": null,
+          "alignmentStatus": null,
+          "sourcePath": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0644-tlg001-grc-4f6fc8b8de38418a.json",
+          "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "passages": null
+        }
+      ],
+      "translations": [],
+      "missingTranslation": true,
+      "facsimiles": []
+    },
+    {
+      "id": "cts-tlg1252-tlg002",
+      "author": "Certamen de Homero y Hesíodo",
+      "title": "Certamen Homeri et Hesiodi",
+      "originalLanguage": "grc",
+      "originals": [
+        {
+          "language": "grc",
+          "kind": "original",
+          "status": "r2-registered-not-live-checked",
+          "title": "Certamen Homeri et Hesiodi",
+          "translator": null,
+          "editor": null,
+          "edition": null,
+          "year": null,
+          "source": null,
+          "sources": null,
+          "attribution": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "license": null,
+          "editorialStatus": null,
+          "alignmentStatus": null,
+          "sourcePath": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg1252-tlg002-grc-8b8d267259813e9a.json",
+          "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "passages": null
+        }
+      ],
+      "translations": [],
+      "missingTranslation": true,
+      "facsimiles": []
+    },
+    {
+      "id": "cts-tlg0017-tlg006",
+      "author": "Iseo",
+      "title": "On the Estate of Philoctemon",
+      "originalLanguage": "grc",
+      "originals": [
+        {
+          "language": "grc",
+          "kind": "original",
+          "status": "r2-registered-not-live-checked",
+          "title": "On the Estate of Philoctemon",
+          "translator": null,
+          "editor": null,
+          "edition": null,
+          "year": null,
+          "source": null,
+          "sources": null,
+          "attribution": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "license": null,
+          "editorialStatus": null,
+          "alignmentStatus": null,
+          "sourcePath": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0017-tlg006-grc-0de906608c16f426.json",
+          "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "passages": null
+        }
+      ],
+      "translations": [],
+      "missingTranslation": true,
+      "facsimiles": []
+    },
+    {
+      "id": "cts-tlg0017-tlg007",
+      "author": "Iseo",
+      "title": "On The Estate of Apollodorus",
+      "originalLanguage": "grc",
+      "originals": [
+        {
+          "language": "grc",
+          "kind": "original",
+          "status": "r2-registered-not-live-checked",
+          "title": "On The Estate of Apollodorus",
+          "translator": null,
+          "editor": null,
+          "edition": null,
+          "year": null,
+          "source": null,
+          "sources": null,
+          "attribution": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "license": null,
+          "editorialStatus": null,
+          "alignmentStatus": null,
+          "sourcePath": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0017-tlg007-grc-e5fe52acb52af3ba.json",
+          "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "passages": null
+        }
+      ],
+      "translations": [],
+      "missingTranslation": true,
+      "facsimiles": []
+    },
+    {
+      "id": "cts-tlg0017-tlg008",
+      "author": "Iseo",
+      "title": "On The Estate of Ciron",
+      "originalLanguage": "grc",
+      "originals": [
+        {
+          "language": "grc",
+          "kind": "original",
+          "status": "r2-registered-not-live-checked",
+          "title": "On The Estate of Ciron",
+          "translator": null,
+          "editor": null,
+          "edition": null,
+          "year": null,
+          "source": null,
+          "sources": null,
+          "attribution": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "license": null,
+          "editorialStatus": null,
+          "alignmentStatus": null,
+          "sourcePath": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0017-tlg008-grc-950fef732bd33eae.json",
+          "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "passages": null
+        }
+      ],
+      "translations": [],
+      "missingTranslation": true,
+      "facsimiles": []
+    },
+    {
+      "id": "cts-tlg1367-tlg001",
+      "author": "Euripides Epistulae",
+      "title": "Epistulae",
+      "originalLanguage": "grc",
+      "originals": [
+        {
+          "language": "grc",
+          "kind": "original",
+          "status": "r2-registered-not-live-checked",
+          "title": "Epistulae",
+          "translator": null,
+          "editor": null,
+          "edition": null,
+          "year": null,
+          "source": null,
+          "sources": null,
+          "attribution": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "license": null,
+          "editorialStatus": null,
+          "alignmentStatus": null,
+          "sourcePath": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg1367-tlg001-grc-7d57e1faefa17578.json",
+          "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "passages": null
+        }
+      ],
+      "translations": [],
+      "missingTranslation": true,
+      "facsimiles": []
+    },
+    {
+      "id": "cts-tlg1805-tlg008",
+      "author": "Vidas de Homero",
+      "title": "Tzetzae vita",
+      "originalLanguage": "grc",
+      "originals": [
+        {
+          "language": "grc",
+          "kind": "original",
+          "status": "r2-registered-not-live-checked",
+          "title": "Tzetzae vita",
+          "translator": null,
+          "editor": null,
+          "edition": null,
+          "year": null,
+          "source": null,
+          "sources": null,
+          "attribution": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "license": null,
+          "editorialStatus": null,
+          "alignmentStatus": null,
+          "sourcePath": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg1805-tlg008-grc-b5e58362c293abac.json",
+          "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "passages": null
+        }
+      ],
+      "translations": [],
+      "missingTranslation": true,
+      "facsimiles": []
+    },
+    {
+      "id": "cts-tlg1805-tlg005",
+      "author": "Vidas de Homero",
+      "title": "Vita quinta",
+      "originalLanguage": "grc",
+      "originals": [
+        {
+          "language": "grc",
+          "kind": "original",
+          "status": "r2-registered-not-live-checked",
+          "title": "Vita quinta",
+          "translator": null,
+          "editor": null,
+          "edition": null,
+          "year": null,
+          "source": null,
+          "sources": null,
+          "attribution": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "license": null,
+          "editorialStatus": null,
+          "alignmentStatus": null,
+          "sourcePath": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg1805-tlg005-grc-6105458d4ce42f29.json",
+          "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "passages": null
+        },
+        {
+          "language": "grc",
+          "kind": "original",
+          "status": "r2-registered-not-live-checked",
+          "title": "Vita quinta",
+          "translator": null,
+          "editor": null,
+          "edition": null,
+          "year": null,
+          "source": null,
+          "sources": null,
+          "attribution": "Vita quinta · segundo registro CTS homónimo, tlg1805.tlg006. Thomas W. Allen (ed.), Homeri Opera, Oxford, Clarendon Press, 1912; Perseus/First1KGreek. Se conserva en la ficha agrupada sin afirmar equivalencia textual con tlg005.",
+          "license": null,
+          "editorialStatus": null,
+          "alignmentStatus": null,
+          "sourcePath": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg1805-tlg006-grc-0135e0fd160b26ac.json",
+          "sourceDescription": "Vita quinta · segundo registro CTS homónimo, tlg1805.tlg006. Thomas W. Allen (ed.), Homeri Opera, Oxford, Clarendon Press, 1912; Perseus/First1KGreek. Se conserva en la ficha agrupada sin afirmar equivalencia textual con tlg005.",
+          "passages": null
+        }
+      ],
+      "translations": [],
+      "missingTranslation": true,
+      "facsimiles": []
+    },
+    {
+      "id": "cts-tlg1805-tlg007",
+      "author": "Vidas de Homero",
+      "title": "Vita septima",
+      "originalLanguage": "grc",
+      "originals": [
+        {
+          "language": "grc",
+          "kind": "original",
+          "status": "r2-registered-not-live-checked",
+          "title": "Vita septima",
+          "translator": null,
+          "editor": null,
+          "edition": null,
+          "year": null,
+          "source": null,
+          "sources": null,
+          "attribution": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "license": null,
+          "editorialStatus": null,
+          "alignmentStatus": null,
+          "sourcePath": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg1805-tlg007-grc-6bba8c0f504b5f55.json",
+          "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "passages": null
+        }
+      ],
+      "translations": [],
+      "missingTranslation": true,
+      "facsimiles": []
+    },
+    {
+      "id": "cts-tlg3156-tlg001",
+      "author": "Anonymi Exegesis in Hesiodi Theogoniam",
+      "title": "Exegesis in Hesiodi theogoniam",
+      "originalLanguage": "grc",
+      "originals": [
+        {
+          "language": "grc",
+          "kind": "original",
+          "status": "r2-registered-not-live-checked",
+          "title": "Exegesis in Hesiodi theogoniam",
+          "translator": null,
+          "editor": null,
+          "edition": null,
+          "year": null,
+          "source": null,
+          "sources": null,
+          "attribution": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "license": null,
+          "editorialStatus": null,
+          "alignmentStatus": null,
+          "sourcePath": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg3156-tlg001-grc-7cbbdf1e59f09647.json",
+          "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "passages": null
+        }
+      ],
+      "translations": [],
+      "missingTranslation": true,
+      "facsimiles": []
+    },
+    {
+      "id": "cts-tlg4020-tlg002",
+      "author": "Elias Neoplatonicus",
+      "title": "Eliae (Olim Davidis) In Aristotelis Categorias Commentarium",
+      "originalLanguage": "grc",
+      "originals": [
+        {
+          "language": "grc",
+          "kind": "original",
+          "status": "r2-registered-not-live-checked",
+          "title": "Eliae (Olim Davidis) In Aristotelis Categorias Commentarium",
+          "translator": null,
+          "editor": null,
+          "edition": null,
+          "year": null,
+          "source": null,
+          "sources": null,
+          "attribution": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "license": null,
+          "editorialStatus": null,
+          "alignmentStatus": null,
+          "sourcePath": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg4020-tlg002-grc-359bc4df67678bed.json",
+          "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "passages": null
+        }
+      ],
+      "translations": [],
+      "missingTranslation": true,
+      "facsimiles": []
+    },
+    {
+      "id": "cts-tlg4020-tlg001",
+      "author": "Elias Neoplatonicus",
+      "title": "In Porphyrii Isagogen",
+      "originalLanguage": "grc",
+      "originals": [
+        {
+          "language": "grc",
+          "kind": "original",
+          "status": "r2-registered-not-live-checked",
+          "title": "In Porphyrii Isagogen",
+          "translator": null,
+          "editor": null,
+          "edition": null,
+          "year": null,
+          "source": null,
+          "sources": null,
+          "attribution": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "license": null,
+          "editorialStatus": null,
+          "alignmentStatus": null,
+          "sourcePath": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg4020-tlg001-grc-8982fdcfd8e29153.json",
+          "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "passages": null
+        }
+      ],
+      "translations": [],
+      "missingTranslation": true,
+      "facsimiles": []
+    },
+    {
+      "id": "cts-tlg4026-tlg001",
+      "author": "Anonymi in Aristotelis Artem Rhetoricam",
+      "title": "In Aristotelis artem rhetoricam commentarium",
+      "originalLanguage": "grc",
+      "originals": [
+        {
+          "language": "grc",
+          "kind": "original",
+          "status": "r2-registered-not-live-checked",
+          "title": "In Aristotelis artem rhetoricam commentarium",
+          "translator": null,
+          "editor": null,
+          "edition": null,
+          "year": null,
+          "source": null,
+          "sources": null,
+          "attribution": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "license": null,
+          "editorialStatus": null,
+          "alignmentStatus": null,
+          "sourcePath": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg4026-tlg001-grc-1b3249c2a0a66d08.json",
+          "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "passages": null
+        }
+      ],
+      "translations": [],
+      "missingTranslation": true,
+      "facsimiles": []
+    },
+    {
+      "id": "cts-tlg4026-tlg002",
+      "author": "Anonymi in Aristotelis Artem Rhetoricam",
+      "title": "Fragmentum commentarii in Aristotelis rhetorica",
+      "originalLanguage": "grc",
+      "originals": [
+        {
+          "language": "grc",
+          "kind": "original",
+          "status": "r2-registered-not-live-checked",
+          "title": "Fragmentum commentarii in Aristotelis rhetorica",
+          "translator": null,
+          "editor": null,
+          "edition": null,
+          "year": null,
+          "source": null,
+          "sources": null,
+          "attribution": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "license": null,
+          "editorialStatus": null,
+          "alignmentStatus": null,
+          "sourcePath": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg4026-tlg002-grc-a158982ac893b46a.json",
+          "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "passages": null
+        }
+      ],
+      "translations": [],
+      "missingTranslation": true,
+      "facsimiles": []
+    },
+    {
+      "id": "cts-tlg4026-tlg003",
+      "author": "Anonymi in Aristotelis Artem Rhetoricam",
+      "title": "tlg4026.tlg003",
+      "originalLanguage": "grc",
+      "originals": [
+        {
+          "language": "grc",
+          "kind": "original",
+          "status": "r2-registered-not-live-checked",
+          "title": "tlg4026.tlg003",
+          "translator": null,
+          "editor": null,
+          "edition": null,
+          "year": null,
+          "source": null,
+          "sources": null,
+          "attribution": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "license": null,
+          "editorialStatus": null,
+          "alignmentStatus": null,
+          "sourcePath": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg4026-tlg003-grc-f7c247c4a28a8fa7.json",
+          "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "passages": null
+        }
+      ],
+      "translations": [],
+      "missingTranslation": true,
+      "facsimiles": []
+    },
+    {
+      "id": "cts-tlg4027-tlg001",
+      "author": "Anonymi In Aristotelis Categorias",
+      "title": "Paraphrasis Categoriarum",
+      "originalLanguage": "grc",
+      "originals": [
+        {
+          "language": "grc",
+          "kind": "original",
+          "status": "r2-registered-not-live-checked",
+          "title": "Paraphrasis Categoriarum",
+          "translator": null,
+          "editor": null,
+          "edition": null,
+          "year": null,
+          "source": null,
+          "sources": null,
+          "attribution": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "license": null,
+          "editorialStatus": null,
+          "alignmentStatus": null,
+          "sourcePath": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg4027-tlg001-grc-52fe7689592251ed.json",
+          "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "passages": null
+        }
+      ],
+      "translations": [],
+      "missingTranslation": true,
+      "facsimiles": []
+    },
+    {
+      "id": "cts-tlg4029-tlg002",
+      "author": "Procopio de Cesarea",
+      "title": "Historia Arcana",
+      "originalLanguage": "grc",
+      "originals": [
+        {
+          "language": "grc",
+          "kind": "original",
+          "status": "r2-registered-not-live-checked",
+          "title": "Historia Arcana",
+          "translator": null,
+          "editor": null,
+          "edition": null,
+          "year": null,
+          "source": null,
+          "sources": null,
+          "attribution": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "license": null,
+          "editorialStatus": null,
+          "alignmentStatus": null,
+          "sourcePath": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg4029-tlg002-grc-2473adbd3e3d383c.json",
+          "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "passages": null
+        }
+      ],
+      "translations": [],
+      "missingTranslation": true,
+      "facsimiles": []
+    },
+    {
+      "id": "cts-tlg4029-tlg001",
+      "author": "Procopio de Cesarea",
+      "title": "De Bellis",
+      "originalLanguage": "grc",
+      "originals": [
+        {
+          "language": "grc",
+          "kind": "original",
+          "status": "r2-registered-not-live-checked",
+          "title": "De Bellis",
+          "translator": null,
+          "editor": null,
+          "edition": null,
+          "year": null,
+          "source": null,
+          "sources": null,
+          "attribution": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "license": null,
+          "editorialStatus": null,
+          "alignmentStatus": null,
+          "sourcePath": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg4029-tlg001-grc-9a1fd6d39a7482f2.json",
+          "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "passages": null
+        }
+      ],
+      "translations": [],
+      "missingTranslation": true,
+      "facsimiles": []
+    },
+    {
+      "id": "cts-tlg0057-tlg058",
+      "author": "Galeno",
+      "title": "De pulsibus ad tirones",
+      "originalLanguage": "grc",
+      "originals": [
+        {
+          "language": "grc",
+          "kind": "original",
+          "status": "r2-registered-not-live-checked",
+          "title": "De pulsibus ad tirones",
+          "translator": null,
+          "editor": null,
+          "edition": null,
+          "year": null,
+          "source": null,
+          "sources": null,
+          "attribution": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "license": null,
+          "editorialStatus": null,
+          "alignmentStatus": null,
+          "sourcePath": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0057-tlg058-grc-74629c8c3ccce450.json",
+          "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "passages": null
+        }
+      ],
+      "translations": [],
+      "missingTranslation": true,
+      "facsimiles": []
+    },
+    {
+      "id": "cts-tlg0057-tlg060",
+      "author": "Galeno",
+      "title": "De dignoscendis pulsibus",
+      "originalLanguage": "grc",
+      "originals": [
+        {
+          "language": "grc",
+          "kind": "original",
+          "status": "r2-registered-not-live-checked",
+          "title": "De dignoscendis pulsibus",
+          "translator": null,
+          "editor": null,
+          "edition": null,
+          "year": null,
+          "source": null,
+          "sources": null,
+          "attribution": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "license": null,
+          "editorialStatus": null,
+          "alignmentStatus": null,
+          "sourcePath": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0057-tlg060-grc-968142e1395527bf.json",
+          "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "passages": null
+        }
+      ],
+      "translations": [],
+      "missingTranslation": true,
+      "facsimiles": []
+    },
+    {
+      "id": "cts-tlg0057-tlg059",
+      "author": "Galeno",
+      "title": "De differentiis pulsuum",
+      "originalLanguage": "grc",
+      "originals": [
+        {
+          "language": "grc",
+          "kind": "original",
+          "status": "r2-registered-not-live-checked",
+          "title": "De differentiis pulsuum",
+          "translator": null,
+          "editor": null,
+          "edition": null,
+          "year": null,
+          "source": null,
+          "sources": null,
+          "attribution": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "license": null,
+          "editorialStatus": null,
+          "alignmentStatus": null,
+          "sourcePath": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0057-tlg059-grc-066de63343da1db2.json",
+          "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "passages": null
+        }
+      ],
+      "translations": [],
+      "missingTranslation": true,
+      "facsimiles": []
+    },
+    {
+      "id": "cts-tlg0057-tlg078",
+      "author": "Galeno",
+      "title": "De antidotis",
+      "originalLanguage": "grc",
+      "originals": [
+        {
+          "language": "grc",
+          "kind": "original",
+          "status": "r2-registered-not-live-checked",
+          "title": "De antidotis",
+          "translator": null,
+          "editor": null,
+          "edition": null,
+          "year": null,
+          "source": null,
+          "sources": null,
+          "attribution": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "license": null,
+          "editorialStatus": null,
+          "alignmentStatus": null,
+          "sourcePath": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0057-tlg078-grc-88a0ea4423d0df46.json",
+          "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "passages": null
+        }
+      ],
+      "translations": [],
+      "missingTranslation": true,
+      "facsimiles": []
+    },
+    {
+      "id": "cts-tlg0057-tlg077",
+      "author": "Galeno",
+      "title": "De compositione medicamentorum per genera",
+      "originalLanguage": "grc",
+      "originals": [
+        {
+          "language": "grc",
+          "kind": "original",
+          "status": "r2-registered-not-live-checked",
+          "title": "De compositione medicamentorum per genera",
+          "translator": null,
+          "editor": null,
+          "edition": null,
+          "year": null,
+          "source": null,
+          "sources": null,
+          "attribution": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "license": null,
+          "editorialStatus": null,
+          "alignmentStatus": null,
+          "sourcePath": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0057-tlg077-grc-c9dd5055ea30ac0e.json",
+          "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "passages": null
+        }
+      ],
+      "translations": [],
+      "missingTranslation": true,
+      "facsimiles": []
+    },
+    {
+      "id": "cts-tlg0057-tlg079",
+      "author": "Galeno",
+      "title": "De theriaca ad Pisonem",
+      "originalLanguage": "grc",
+      "originals": [
+        {
+          "language": "grc",
+          "kind": "original",
+          "status": "r2-registered-not-live-checked",
+          "title": "De theriaca ad Pisonem",
+          "translator": null,
+          "editor": null,
+          "edition": null,
+          "year": null,
+          "source": null,
+          "sources": null,
+          "attribution": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "license": null,
+          "editorialStatus": null,
+          "alignmentStatus": null,
+          "sourcePath": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0057-tlg079-grc-e00fb39447c5aa7a.json",
+          "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "passages": null
+        }
+      ],
+      "translations": [],
+      "missingTranslation": true,
+      "facsimiles": []
+    },
+    {
+      "id": "cts-tlg0057-tlg081",
+      "author": "Galeno",
+      "title": "Institutio logica",
+      "originalLanguage": "grc",
+      "originals": [
+        {
+          "language": "grc",
+          "kind": "original",
+          "status": "r2-registered-not-live-checked",
+          "title": "Institutio logica",
+          "translator": null,
+          "editor": null,
+          "edition": null,
+          "year": null,
+          "source": null,
+          "sources": null,
+          "attribution": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "license": null,
+          "editorialStatus": null,
+          "alignmentStatus": null,
+          "sourcePath": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0057-tlg081-grc-34f9244c106f2fbf.json",
+          "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "passages": null
+        }
+      ],
+      "translations": [],
+      "missingTranslation": true,
+      "facsimiles": []
+    },
+    {
+      "id": "cts-tlg0057-tlg082",
+      "author": "Galeno",
+      "title": "De sophismatis seu captionibus penes dictionem",
+      "originalLanguage": "grc",
+      "originals": [
+        {
+          "language": "grc",
+          "kind": "original",
+          "status": "r2-registered-not-live-checked",
+          "title": "De sophismatis seu captionibus penes dictionem",
+          "translator": null,
+          "editor": null,
+          "edition": null,
+          "year": null,
+          "source": null,
+          "sources": null,
+          "attribution": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "license": null,
+          "editorialStatus": null,
+          "alignmentStatus": null,
+          "sourcePath": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0057-tlg082-grc-461a638749230164.json",
+          "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "passages": null
+        }
+      ],
+      "translations": [],
+      "missingTranslation": true,
+      "facsimiles": []
+    },
+    {
+      "id": "cts-tlg0057-tlg083",
+      "author": "Galeno",
+      "title": "De praenotione ad Epigenem",
+      "originalLanguage": "grc",
+      "originals": [
+        {
+          "language": "grc",
+          "kind": "original",
+          "status": "r2-registered-not-live-checked",
+          "title": "De praenotione ad Epigenem",
+          "translator": null,
+          "editor": null,
+          "edition": null,
+          "year": null,
+          "source": null,
+          "sources": null,
+          "attribution": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "license": null,
+          "editorialStatus": null,
+          "alignmentStatus": null,
+          "sourcePath": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0057-tlg083-grc-27ad2c50be2d5d7a.json",
+          "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "passages": null
+        }
+      ],
+      "translations": [],
+      "missingTranslation": true,
+      "facsimiles": []
+    },
+    {
+      "id": "cts-tlg0057-tlg084",
+      "author": "Galeno",
+      "title": "De substantia facultatum naturalium fragmentum",
+      "originalLanguage": "grc",
+      "originals": [
+        {
+          "language": "grc",
+          "kind": "original",
+          "status": "r2-registered-not-live-checked",
+          "title": "De substantia facultatum naturalium fragmentum",
+          "translator": null,
+          "editor": null,
+          "edition": null,
+          "year": null,
+          "source": null,
+          "sources": null,
+          "attribution": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "license": null,
+          "editorialStatus": null,
+          "alignmentStatus": null,
+          "sourcePath": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0057-tlg084-grc-a7fecf6719290e91.json",
+          "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "passages": null
+        }
+      ],
+      "translations": [],
+      "missingTranslation": true,
+      "facsimiles": []
+    },
+    {
+      "id": "cts-tlg0017-tlg012",
+      "author": "Iseo",
+      "title": "On Behalf of Euphiletus",
+      "originalLanguage": "grc",
+      "originals": [
+        {
+          "language": "grc",
+          "kind": "original",
+          "status": "r2-registered-not-live-checked",
+          "title": "On Behalf of Euphiletus",
+          "translator": null,
+          "editor": null,
+          "edition": null,
+          "year": null,
+          "source": null,
+          "sources": null,
+          "attribution": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "license": null,
+          "editorialStatus": null,
+          "alignmentStatus": null,
+          "sourcePath": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0017-tlg012-grc-215f9907885a6bed.json",
+          "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "passages": null
+        }
+      ],
+      "translations": [],
+      "missingTranslation": true,
+      "facsimiles": []
+    },
+    {
+      "id": "cts-tlg0018-tlg003",
+      "author": "Filón de Alejandría",
+      "title": "De Cherubim",
+      "originalLanguage": "grc",
+      "originals": [
+        {
+          "language": "grc",
+          "kind": "original",
+          "status": "r2-registered-not-live-checked",
+          "title": "De Cherubim",
+          "translator": null,
+          "editor": null,
+          "edition": null,
+          "year": null,
+          "source": null,
+          "sources": null,
+          "attribution": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "license": null,
+          "editorialStatus": null,
+          "alignmentStatus": null,
+          "sourcePath": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0018-tlg003-grc-03cf776414369a13.json",
+          "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "passages": null
+        }
+      ],
+      "translations": [],
+      "missingTranslation": true,
+      "facsimiles": []
+    },
+    {
+      "id": "cts-tlg0018-tlg004",
+      "author": "Filón de Alejandría",
+      "title": "De Sacrificiis Abelis Et Caini",
+      "originalLanguage": "grc",
+      "originals": [
+        {
+          "language": "grc",
+          "kind": "original",
+          "status": "r2-registered-not-live-checked",
+          "title": "De Sacrificiis Abelis Et Caini",
+          "translator": null,
+          "editor": null,
+          "edition": null,
+          "year": null,
+          "source": null,
+          "sources": null,
+          "attribution": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "license": null,
+          "editorialStatus": null,
+          "alignmentStatus": null,
+          "sourcePath": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0018-tlg004-grc-0c46060cc7075ac4.json",
+          "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "passages": null
+        }
+      ],
+      "translations": [],
+      "missingTranslation": true,
+      "facsimiles": []
+    },
+    {
+      "id": "cts-phi0474-phi026",
+      "author": "Cicerón",
+      "title": "Pro L. Cornelio Balbo",
+      "originalLanguage": "la",
+      "originals": [
+        {
+          "language": "la",
+          "kind": "original",
+          "status": "r2-registered-not-live-checked",
+          "title": "Pro L. Cornelio Balbo",
+          "translator": null,
+          "editor": null,
+          "edition": null,
+          "year": null,
+          "source": null,
+          "sources": null,
+          "attribution": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "license": null,
+          "editorialStatus": null,
+          "alignmentStatus": null,
+          "sourcePath": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0474-phi026-la-ac68ad10e9001ab8.json",
+          "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "passages": null
+        }
+      ],
+      "translations": [],
+      "missingTranslation": true,
+      "facsimiles": []
+    },
+    {
+      "id": "cts-phi0474-phi025",
+      "author": "Cicerón",
+      "title": "De Provinciis Consularibus",
+      "originalLanguage": "la",
+      "originals": [
+        {
+          "language": "la",
+          "kind": "original",
+          "status": "r2-registered-not-live-checked",
+          "title": "De Provinciis Consularibus",
+          "translator": null,
+          "editor": null,
+          "edition": null,
+          "year": null,
+          "source": null,
+          "sources": null,
+          "attribution": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "license": null,
+          "editorialStatus": null,
+          "alignmentStatus": null,
+          "sourcePath": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0474-phi025-la-3d0db041ae618521.json",
+          "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "passages": null
+        }
+      ],
+      "translations": [],
+      "missingTranslation": true,
+      "facsimiles": []
+    },
+    {
+      "id": "cts-phi0474-phi023",
+      "author": "Cicerón",
+      "title": "Against Vatinius",
+      "originalLanguage": "la",
+      "originals": [
+        {
+          "language": "la",
+          "kind": "original",
+          "status": "r2-registered-not-live-checked",
+          "title": "Against Vatinius",
+          "translator": null,
+          "editor": null,
+          "edition": null,
+          "year": null,
+          "source": null,
+          "sources": null,
+          "attribution": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "license": null,
+          "editorialStatus": null,
+          "alignmentStatus": null,
+          "sourcePath": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0474-phi023-la-57f7dae4dc36d41d.json",
+          "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "passages": null
+        }
+      ],
+      "translations": [],
+      "missingTranslation": true,
+      "facsimiles": []
+    },
+    {
+      "id": "cts-phi0474-phi024",
+      "author": "Cicerón",
+      "title": "Pro M. Caelio",
+      "originalLanguage": "la",
+      "originals": [
+        {
+          "language": "la",
+          "kind": "original",
+          "status": "r2-registered-not-live-checked",
+          "title": "Pro M. Caelio",
+          "translator": null,
+          "editor": null,
+          "edition": null,
+          "year": null,
+          "source": null,
+          "sources": null,
+          "attribution": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "license": null,
+          "editorialStatus": null,
+          "alignmentStatus": null,
+          "sourcePath": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0474-phi024-la-2d5224c4e159b91a.json",
+          "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "passages": null
+        }
+      ],
+      "translations": [],
+      "missingTranslation": true,
+      "facsimiles": []
+    },
+    {
+      "id": "cts-phi0474-phi027",
+      "author": "Cicerón",
+      "title": "In L. Calpurnium Pisonem",
+      "originalLanguage": "la",
+      "originals": [
+        {
+          "language": "la",
+          "kind": "original",
+          "status": "r2-registered-not-live-checked",
+          "title": "In L. Calpurnium Pisonem",
+          "translator": null,
+          "editor": null,
+          "edition": null,
+          "year": null,
+          "source": null,
+          "sources": null,
+          "attribution": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "license": null,
+          "editorialStatus": null,
+          "alignmentStatus": null,
+          "sourcePath": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0474-phi027-la-21abdffa0e75c44c.json",
+          "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "passages": null
+        }
+      ],
+      "translations": [],
+      "missingTranslation": true,
+      "facsimiles": []
+    },
+    {
+      "id": "cts-phi0474-phi030",
+      "author": "Cicerón",
+      "title": "Pro C. Rabirio Postumo",
+      "originalLanguage": "la",
+      "originals": [
+        {
+          "language": "la",
+          "kind": "original",
+          "status": "r2-registered-not-live-checked",
+          "title": "Pro C. Rabirio Postumo",
+          "translator": null,
+          "editor": null,
+          "edition": null,
+          "year": null,
+          "source": null,
+          "sources": null,
+          "attribution": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "license": null,
+          "editorialStatus": null,
+          "alignmentStatus": null,
+          "sourcePath": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0474-phi030-la-043fd5c853b0a535.json",
+          "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "passages": null
+        }
+      ],
+      "translations": [],
+      "missingTranslation": true,
+      "facsimiles": []
+    },
+    {
+      "id": "cts-phi0474-phi028",
+      "author": "Cicerón",
+      "title": "Pro Cn. Plancio",
+      "originalLanguage": "la",
+      "originals": [
+        {
+          "language": "la",
+          "kind": "original",
+          "status": "r2-registered-not-live-checked",
+          "title": "Pro Cn. Plancio",
+          "translator": null,
+          "editor": null,
+          "edition": null,
+          "year": null,
+          "source": null,
+          "sources": null,
+          "attribution": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "license": null,
+          "editorialStatus": null,
+          "alignmentStatus": null,
+          "sourcePath": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0474-phi028-la-f26a527c93edd0dd.json",
+          "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "passages": null
+        }
+      ],
+      "translations": [],
+      "missingTranslation": true,
+      "facsimiles": []
+    },
+    {
+      "id": "cts-phi0474-phi029",
+      "author": "Cicerón",
+      "title": "Pro M. Scauro",
+      "originalLanguage": "la",
+      "originals": [
+        {
+          "language": "la",
+          "kind": "original",
+          "status": "r2-registered-not-live-checked",
+          "title": "Pro M. Scauro",
+          "translator": null,
+          "editor": null,
+          "edition": null,
+          "year": null,
+          "source": null,
+          "sources": null,
+          "attribution": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "license": null,
+          "editorialStatus": null,
+          "alignmentStatus": null,
+          "sourcePath": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0474-phi029-la-6cf3385d8a19b585.json",
+          "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "passages": null
+        }
+      ],
+      "translations": [],
+      "missingTranslation": true,
+      "facsimiles": []
+    },
+    {
+      "id": "cts-tlg1749-tlg001",
+      "author": "Vitae Hesiodi Particula",
+      "title": "Vitae Hesiodi Particula",
+      "originalLanguage": "grc",
+      "originals": [
+        {
+          "language": "grc",
+          "kind": "original",
+          "status": "r2-registered-not-live-checked",
+          "title": "Vitae Hesiodi Particula",
+          "translator": null,
+          "editor": null,
+          "edition": null,
+          "year": null,
+          "source": null,
+          "sources": null,
+          "attribution": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "license": null,
+          "editorialStatus": null,
+          "alignmentStatus": null,
+          "sourcePath": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg1749-tlg001-grc-55365dc717b0dd1b.json",
+          "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "passages": null
+        }
+      ],
+      "translations": [],
+      "missingTranslation": true,
+      "facsimiles": []
+    },
+    {
+      "id": "cts-tlg1805-tlg001",
+      "author": "Vidas de Homero",
+      "title": "Vitae Herodotea",
+      "originalLanguage": "grc",
+      "originals": [
+        {
+          "language": "grc",
+          "kind": "original",
+          "status": "r2-registered-not-live-checked",
+          "title": "Vitae Herodotea",
+          "translator": null,
+          "editor": null,
+          "edition": null,
+          "year": null,
+          "source": null,
+          "sources": null,
+          "attribution": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "license": null,
+          "editorialStatus": null,
+          "alignmentStatus": null,
+          "sourcePath": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg1805-tlg001-grc-49ac3e19559942f0.json",
+          "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "passages": null
+        }
+      ],
+      "translations": [],
+      "missingTranslation": true,
+      "facsimiles": []
+    },
+    {
+      "id": "cts-tlg0530-tlg005",
+      "author": "Pseudo-Galeno",
+      "title": "De fasciis",
+      "originalLanguage": "grc",
+      "originals": [
+        {
+          "language": "grc",
+          "kind": "original",
+          "status": "r2-registered-not-live-checked",
+          "title": "De fasciis",
+          "translator": null,
+          "editor": null,
+          "edition": null,
+          "year": null,
+          "source": null,
+          "sources": null,
+          "attribution": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "license": null,
+          "editorialStatus": null,
+          "alignmentStatus": null,
+          "sourcePath": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0530-tlg005-grc-9ad3d26a211d0cd4.json",
+          "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "passages": null
+        }
+      ],
+      "translations": [],
+      "missingTranslation": true,
+      "facsimiles": []
+    },
+    {
+      "id": "cts-tlg0530-tlg006",
+      "author": "Pseudo-Galeno",
+      "title": "Ad Gaurum quomodo animetur fetus",
+      "originalLanguage": "grc",
+      "originals": [
+        {
+          "language": "grc",
+          "kind": "original",
+          "status": "r2-registered-not-live-checked",
+          "title": "Ad Gaurum quomodo animetur fetus",
+          "translator": null,
+          "editor": null,
+          "edition": null,
+          "year": null,
+          "source": null,
+          "sources": null,
+          "attribution": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "license": null,
+          "editorialStatus": null,
+          "alignmentStatus": null,
+          "sourcePath": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0530-tlg006-grc-e7da16d90bd9d205.json",
+          "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "passages": null
+        }
+      ],
+      "translations": [],
+      "missingTranslation": true,
+      "facsimiles": []
+    },
+    {
+      "id": "cts-tlg0530-tlg012",
+      "author": "Pseudo-Galeno",
+      "title": "Introductio seu medicus",
+      "originalLanguage": "grc",
+      "originals": [
+        {
+          "language": "grc",
+          "kind": "original",
+          "status": "r2-registered-not-live-checked",
+          "title": "Introductio seu medicus",
+          "translator": null,
+          "editor": null,
+          "edition": null,
+          "year": null,
+          "source": null,
+          "sources": null,
+          "attribution": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "license": null,
+          "editorialStatus": null,
+          "alignmentStatus": null,
+          "sourcePath": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0530-tlg012-grc-195d0d0a0559b949.json",
+          "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "passages": null
+        }
+      ],
+      "translations": [],
+      "missingTranslation": true,
+      "facsimiles": []
+    },
+    {
+      "id": "cts-tlg0533-tlg018",
+      "author": "Calímaco",
+      "title": "Hymn to Delos",
+      "originalLanguage": "grc",
+      "originals": [
+        {
+          "language": "grc",
+          "kind": "original",
+          "status": "r2-registered-not-live-checked",
+          "title": "Hymn to Delos",
+          "translator": null,
+          "editor": null,
+          "edition": null,
+          "year": null,
+          "source": null,
+          "sources": null,
+          "attribution": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "license": null,
+          "editorialStatus": null,
+          "alignmentStatus": null,
+          "sourcePath": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0533-tlg018-grc-4bc5bb7b247d250b.json",
+          "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "passages": null
+        }
+      ],
+      "translations": [],
+      "missingTranslation": true,
+      "facsimiles": []
+    },
+    {
+      "id": "cts-tlg0533-tlg019",
+      "author": "Calímaco",
+      "title": "Hymn to Athena",
+      "originalLanguage": "grc",
+      "originals": [
+        {
+          "language": "grc",
+          "kind": "original",
+          "status": "r2-registered-not-live-checked",
+          "title": "Hymn to Athena",
+          "translator": null,
+          "editor": null,
+          "edition": null,
+          "year": null,
+          "source": null,
+          "sources": null,
+          "attribution": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "license": null,
+          "editorialStatus": null,
+          "alignmentStatus": null,
+          "sourcePath": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0533-tlg019-grc-8d83d4cb5cc5e8da.json",
+          "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "passages": null
+        }
+      ],
+      "translations": [],
+      "missingTranslation": true,
+      "facsimiles": []
+    },
+    {
+      "id": "cts-tlg0530-tlg029",
+      "author": "Pseudo-Galeno",
+      "title": "De remediis parabilibus",
+      "originalLanguage": "grc",
+      "originals": [
+        {
+          "language": "grc",
+          "kind": "original",
+          "status": "r2-registered-not-live-checked",
+          "title": "De remediis parabilibus",
+          "translator": null,
+          "editor": null,
+          "edition": null,
+          "year": null,
+          "source": null,
+          "sources": null,
+          "attribution": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "license": null,
+          "editorialStatus": null,
+          "alignmentStatus": null,
+          "sourcePath": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0530-tlg029-grc-be404e6002d0abf6.json",
+          "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "passages": null
+        }
+      ],
+      "translations": [],
+      "missingTranslation": true,
+      "facsimiles": []
+    },
+    {
+      "id": "cts-tlg0533-tlg020",
+      "author": "Calímaco",
+      "title": "Hymn to Demeter",
+      "originalLanguage": "grc",
+      "originals": [
+        {
+          "language": "grc",
+          "kind": "original",
+          "status": "r2-registered-not-live-checked",
+          "title": "Hymn to Demeter",
+          "translator": null,
+          "editor": null,
+          "edition": null,
+          "year": null,
+          "source": null,
+          "sources": null,
+          "attribution": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "license": null,
+          "editorialStatus": null,
+          "alignmentStatus": null,
+          "sourcePath": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0533-tlg020-grc-cbfd1f998085db70.json",
+          "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "passages": null
+        }
+      ],
+      "translations": [],
+      "missingTranslation": true,
+      "facsimiles": []
+    },
+    {
+      "id": "cts-tlg0552-tlg001",
+      "author": "Arquímedes",
+      "title": "De sphaera et cylindro",
+      "originalLanguage": "grc",
+      "originals": [
+        {
+          "language": "grc",
+          "kind": "original",
+          "status": "r2-registered-not-live-checked",
+          "title": "De sphaera et cylindro",
+          "translator": null,
+          "editor": null,
+          "edition": null,
+          "year": null,
+          "source": null,
+          "sources": null,
+          "attribution": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "license": null,
+          "editorialStatus": null,
+          "alignmentStatus": null,
+          "sourcePath": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0552-tlg001-grc-ba42f4de22552a03.json",
+          "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "passages": null
+        }
+      ],
+      "translations": [],
+      "missingTranslation": true,
+      "facsimiles": []
+    },
+    {
+      "id": "cts-tlg0552-tlg002",
+      "author": "Arquímedes",
+      "title": "Dimensio circuli",
+      "originalLanguage": "grc",
+      "originals": [
+        {
+          "language": "grc",
+          "kind": "original",
+          "status": "r2-registered-not-live-checked",
+          "title": "Dimensio circuli",
+          "translator": null,
+          "editor": null,
+          "edition": null,
+          "year": null,
+          "source": null,
+          "sources": null,
+          "attribution": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "license": null,
+          "editorialStatus": null,
+          "alignmentStatus": null,
+          "sourcePath": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0552-tlg002-grc-e070680240cab189.json",
+          "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "passages": null
+        }
+      ],
+      "translations": [],
+      "missingTranslation": true,
+      "facsimiles": []
+    },
+    {
+      "id": "cts-tlg0552-tlg003",
+      "author": "Arquímedes",
+      "title": "De conoidibus et sphaeroidibus",
+      "originalLanguage": "grc",
+      "originals": [
+        {
+          "language": "grc",
+          "kind": "original",
+          "status": "r2-registered-not-live-checked",
+          "title": "De conoidibus et sphaeroidibus",
+          "translator": null,
+          "editor": null,
+          "edition": null,
+          "year": null,
+          "source": null,
+          "sources": null,
+          "attribution": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "license": null,
+          "editorialStatus": null,
+          "alignmentStatus": null,
+          "sourcePath": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0552-tlg003-grc-01f4a85176fcdb3b.json",
+          "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "passages": null
+        }
+      ],
+      "translations": [],
+      "missingTranslation": true,
+      "facsimiles": []
+    },
+    {
+      "id": "cts-tlg0018-tlg008",
+      "author": "Filón de Alejandría",
+      "title": "Quod Deus Sit Immutabilis",
+      "originalLanguage": "grc",
+      "originals": [
+        {
+          "language": "grc",
+          "kind": "original",
+          "status": "r2-registered-not-live-checked",
+          "title": "Quod Deus Sit Immutabilis",
+          "translator": null,
+          "editor": null,
+          "edition": null,
+          "year": null,
+          "source": null,
+          "sources": null,
+          "attribution": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "license": null,
+          "editorialStatus": null,
+          "alignmentStatus": null,
+          "sourcePath": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0018-tlg008-grc-a7df529b52a3196e.json",
+          "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "passages": null
+        }
+      ],
+      "translations": [],
+      "missingTranslation": true,
+      "facsimiles": []
+    },
+    {
+      "id": "cts-tlg0018-tlg009",
+      "author": "Filón de Alejandría",
+      "title": "De Agricultura",
+      "originalLanguage": "grc",
+      "originals": [
+        {
+          "language": "grc",
+          "kind": "original",
+          "status": "r2-registered-not-live-checked",
+          "title": "De Agricultura",
+          "translator": null,
+          "editor": null,
+          "edition": null,
+          "year": null,
+          "source": null,
+          "sources": null,
+          "attribution": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "license": null,
+          "editorialStatus": null,
+          "alignmentStatus": null,
+          "sourcePath": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0018-tlg009-grc-b36cf5ed7804e715.json",
+          "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "passages": null
+        }
+      ],
+      "translations": [],
+      "missingTranslation": true,
+      "facsimiles": []
+    },
+    {
+      "id": "cts-tlg0018-tlg010",
+      "author": "Filón de Alejandría",
+      "title": "De Plantatione",
+      "originalLanguage": "grc",
+      "originals": [
+        {
+          "language": "grc",
+          "kind": "original",
+          "status": "r2-registered-not-live-checked",
+          "title": "De Plantatione",
+          "translator": null,
+          "editor": null,
+          "edition": null,
+          "year": null,
+          "source": null,
+          "sources": null,
+          "attribution": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "license": null,
+          "editorialStatus": null,
+          "alignmentStatus": null,
+          "sourcePath": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0018-tlg010-grc-bd09eb7cff5170e8.json",
+          "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "passages": null
+        }
+      ],
+      "translations": [],
+      "missingTranslation": true,
+      "facsimiles": []
+    },
+    {
+      "id": "cts-tlg1805-tlg002",
+      "author": "Vidas de Homero",
+      "title": "Plutarchi vita",
+      "originalLanguage": "grc",
+      "originals": [
+        {
+          "language": "grc",
+          "kind": "original",
+          "status": "r2-registered-not-live-checked",
+          "title": "Plutarchi vita",
+          "translator": null,
+          "editor": null,
+          "edition": null,
+          "year": null,
+          "source": null,
+          "sources": null,
+          "attribution": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+          "license": null,
+          "editorialStatus": null,
+          "alignmentStatus": null,
+          "sourcePath": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg1805-tlg002-grc-3498f8d42a67d09b.json",
           "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
           "passages": null
         }

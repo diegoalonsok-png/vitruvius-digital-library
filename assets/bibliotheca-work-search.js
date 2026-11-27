@@ -857,6 +857,11 @@ function mount(parent,data){
   .catch(()=>{/* La búsqueda funciona sin metadatos editoriales auxiliares. */});
  fetch(path,{cache:"no-cache"}).then(r=>{if(!r.ok)throw Error("aliases unavailable");return r.json()}).then(j=>{
   loadedAliases=j.aliases||{};
+  for(const [id,authority] of Object.entries(j.titleAuthorities||{})){
+   const w=model?.index.get(id);if(!w)continue;
+   if(authority.displayTitle){w.forms=[...new Set([...(w.forms||[]),w.title,authority.displayTitle])];w.title=authority.displayTitle;}
+   if(authority.greekTitle){w.greekTitle=authority.greekTitle;w.originalAliases=[...new Set([...(w.originalAliases||[]),authority.greekTitle])];}
+  }
   for(const [id,forms] of Object.entries(loadedAliases)){
    const w=index.get(id);if(w&&Array.isArray(forms))w.forms.push(...forms);
   }
