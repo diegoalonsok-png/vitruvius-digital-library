@@ -25,7 +25,7 @@ function card(parent,r){
  const url=verifiedUrl(r.url);if(!url)return;
  const art=el('article','vhg-card'),poster=link('',url),desc=el('div','vhg-info');
  poster.className='vhg-image-link';poster.setAttribute('aria-label',r.title);
- if(verifiedUrl(r.image)){
+ if(r.image&&verifiedUrl(r.image)){
   const img=el('img','vhg-image');img.src=r.image;img.alt=r.title;img.loading='lazy';img.decoding='async';
   img.onerror=()=>{poster.replaceChildren(el('span','vhg-placeholder',r.kind==='music'?'♫':r.kind==='award'?'★':'▤'))};
   poster.append(img);
@@ -122,7 +122,7 @@ async function classicalDossier(root,profile,valid){
  for(const id of p.ids){
   const r=map.get(id);if(!r)continue;
   const url=verifiedUrl('iconografia-vitruviana.html?folio='+encodeURIComponent(id));
-  const image=verifiedUrl(r.localImage||r.image);
+  const image=r.localImage||r.image?verifiedUrl(r.localImage||r.image):'';
   card(rows,{title:r.title,kind:'historical-plate',date:r.date,location:[r.author,r.institution,r.folio].filter(Boolean).join(' · '),description:[r.visualType,r.locus,r.status].filter(Boolean).join(' · '),image,url});
  }
  if(rows.children.length)sec.insertBefore(rows,archive);
