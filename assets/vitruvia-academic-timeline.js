@@ -336,7 +336,7 @@
   const span=Math.max(1,maxYear-minYear),padding=lifeScope?0:Math.max(1,Math.ceil(span*.04));
   const fullLow=lifeScope?lifeScope.born:minYear-padding;
   const fullHigh=lifeScope?lifeScope.died:maxYear+padding;
-  const zoom=state.zoom??automaticZoom(fullHigh-fullLow);
+  const zoom=state.zoom??(isNero()?1:automaticZoom(fullHigh-fullLow));
   const {low,high,range,travel}=dateWindow(fullLow,fullHigh,zoom,state.position);
   const windowEvents=visibleEvents.filter(e=>e.year>=low&&e.year<=high);
   const eventKey=e=>[e.title,e.year,e.lane].join("|");
@@ -452,7 +452,24 @@
   const extent=el("span","vat-pan-extent");extent.style.cssText="display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap";
   extent.append(el("span",null,showYear(fullLow)),el("span",null,L("Período completo","Full period","Période complète")+" · "+windowEvents.length+"/"+visibleEvents.length+" "+L("hitos","milestones","jalons")),el("span",null,showYear(fullHigh)));
   if(!travel&&fullHigh-fullLow>1)panLabel.textContent+=" · "+L("Arrastre para ampliar y desplazarse","Drag to zoom and pan","Glissez pour zoomer et déplacer");
-  pan.append(panLabel,slider,extent);root.append(pan,detail);
+  pan.append(panLabel,slider,extent);
+  if(isNero()){
+   const phases=el("div","vat-phase-navigation");phases.style.cssText="display:flex;flex-wrap:wrap;gap:6px;margin-top:4px";
+   for(const [label,from,to] of [
+    [L("Vida completa","Full lifetime","Vie complète"),37,68],
+    [L("Juventud y sucesión","Youth and succession","Jeunesse et succession"),37,53],
+    [L("Primer reinado","Early reign","Début du règne"),54,61],
+    [L("Crisis y reconstrucción","Crisis and rebuilding","Crise et reconstruction"),62,65],
+    [L("Últimos años","Final years","Dernières années"),66,68]
+   ]){
+    const button=el("button",null,label+" · "+from+"–"+to);button.type="button";
+    button.style.cssText="font:inherit;padding:6px 9px;border:1px solid #777;border-radius:5px;color:inherit;background:transparent;cursor:pointer";
+    button.onclick=()=>{const z=Math.max(1,Math.min(8,(fullHigh-fullLow)/Math.max(1,to-from)));const w=dateWindow(fullLow,fullHigh,z,0);state.zoom=z;state.position=w.travel?Math.max(0,Math.min(1,(from-fullLow)/w.travel)):0;draw()};
+    phases.append(button);
+   }
+   pan.append(phases);
+  }
+  root.append(pan,detail);
   if(lifeScope&&outsideEvents.length){
    const extra=el("details","vat-outside");
    extra.append(el("summary",null,L(
