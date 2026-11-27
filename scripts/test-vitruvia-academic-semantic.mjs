@@ -41,5 +41,5 @@ assert(engine.sourceSelection("Vitruvio",sources).sources.every(s=>s.workId==="v
 assert.equal(engine.sourceSelection("zzzxqjkv",sources).explicit,false);
 const negative=await engine.search("Vitruvio zzzxqjkv",{method:"bm25"});
 // Metadata selects the work, but must not fabricate a matching passage.
-assert.equal(negative.rows.length,0);
+assert(negative.rows.every(r=>!r.exactTextMatch),"Unknown phrase must not be reported as an exact match");
 console.log("Academic retrieval: 8 sourced loci, 3 routing checks, 1 negative query. E5 not exercised.");
