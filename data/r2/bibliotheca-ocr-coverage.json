@@ -1,15 +1,18 @@
 {
   "schema": "vdl-bibliotheca-ocr-coverage-v1",
-  "generated": "2026-11-16T18:17:36.294033+00:00",
-  "source": "Catálogo maestro, registro de versiones, inventario federado e índice S3 auditado",
+  "generated": "2026-11-27T12:15:00Z",
+  "source": "Inventario federado y registro textual actuales; auditoría R2 previa del 2026-11-16T18:17:14.097374+00:00 (no nueva comprobación física).",
   "limits": "Índice por raíces sobre OCR no revisado, no traducción, no lematización morfológica, ni correspondencia certificada con loci. La presencia en el listado no prueba que cada palabra tenga una localización correcta; consultar auditoría léxica en vivo.",
   "counts": {
-    "masterWorks": 271,
-    "withRegisteredText": 227,
-    "withoutRegisteredText": 44,
-    "withoutTextButWithR2OcrIndex": 25,
-    "withoutOwnRegistryButWithLinkedStructuredEdition": 3,
-    "withoutTextOrLinkedR2OcrIndex": 16
+    "masterWorks": 730,
+    "supplementaryWorks": 127,
+    "additionalR2Works": 10,
+    "totalDeclaredWorks": 867,
+    "withRegisteredText": 827,
+    "withoutRegisteredText": 40,
+    "withoutTextButWithR2OcrIndex": 34,
+    "withoutOwnRegistryButWithLinkedStructuredEdition": 4,
+    "withoutTextOrLinkedR2OcrIndex": 2
   },
   "ocrSearchableWithoutTranscription": [
     {
@@ -167,22 +170,6 @@
         {
           "editionId": "manilio-astronomica",
           "reader": "buscador-facsimiles-clasicos.html?obra=manilio-astronomica",
-          "textKind": "OCR por página, sin cotejo filológico",
-          "bibliographicIdentity": "metadatos del catálogo de ediciones R2"
-        }
-      ]
-    },
-    {
-      "id": "aristoteles-meteorologica",
-      "author": "Aristóteles",
-      "title": "Μετεωρολογικά · Meteorologica",
-      "originalLanguage": "grc",
-      "editionSearchStatus": "sin transcripción textual registrada",
-      "ocrSearchStatus": "índice invertido R2 declarado; OCR no revisado",
-      "facsimileReaders": [
-        {
-          "editionId": "aristoteles-meteorologica",
-          "reader": "buscador-facsimiles-clasicos.html?obra=aristoteles-meteorologica",
           "textKind": "OCR por página, sin cotejo filológico",
           "bibliographicIdentity": "metadatos del catálogo de ediciones R2"
         }
@@ -411,6 +398,166 @@
           "bibliographicIdentity": "metadatos del catálogo de ediciones R2"
         }
       ]
+    },
+    {
+      "id": "palladio-quattro-libri",
+      "author": "Andrea Palladio",
+      "title": "I quattro libri dell'architettura",
+      "originalLanguage": "it",
+      "editionSearchStatus": "sin transcripción textual registrada",
+      "ocrSearchStatus": "índice invertido R2 declarado; OCR no revisado",
+      "facsimileReaders": [
+        {
+          "editionId": "palladio-quattro-libri",
+          "reader": "buscador-facsimiles-clasicos.html?obra=palladio-quattro-libri",
+          "textKind": "OCR por página, sin cotejo filológico",
+          "bibliographicIdentity": "metadatos del catálogo de ediciones R2"
+        }
+      ]
+    },
+    {
+      "id": "vignola-cinque-ordini",
+      "author": "Giacomo Barozzi da Vignola",
+      "title": "Regola delli cinque ordini d’architettura",
+      "originalLanguage": "it",
+      "editionSearchStatus": "sin transcripción textual registrada",
+      "ocrSearchStatus": "índice invertido R2 declarado; OCR no revisado",
+      "facsimileReaders": [
+        {
+          "editionId": "vignola-cinque-ordini",
+          "reader": "buscador-facsimiles-clasicos.html?obra=vignola-cinque-ordini",
+          "textKind": "OCR por página, sin cotejo filológico",
+          "bibliographicIdentity": "metadatos del catálogo de ediciones R2"
+        }
+      ]
+    },
+    {
+      "id": "vasari-vite",
+      "author": "Giorgio Vasari",
+      "title": "Le vite de’ più eccellenti pittori, scultori e architettori",
+      "originalLanguage": "it",
+      "editionSearchStatus": "sin transcripción textual registrada",
+      "ocrSearchStatus": "índice invertido R2 declarado; OCR no revisado",
+      "facsimileReaders": [
+        {
+          "editionId": "vasari-vite",
+          "reader": "buscador-facsimiles-clasicos.html?obra=vasari-vite",
+          "textKind": "OCR por página, sin cotejo filológico",
+          "bibliographicIdentity": "metadatos del catálogo de ediciones R2"
+        }
+      ]
+    },
+    {
+      "id": "serlio-architettura",
+      "author": "Sebastiano Serlio",
+      "title": "Regole generali di architettura (Serlio) — edición individual",
+      "originalLanguage": "it",
+      "editionSearchStatus": "sin transcripción textual registrada",
+      "ocrSearchStatus": "índice invertido R2 declarado; OCR no revisado",
+      "facsimileReaders": [
+        {
+          "editionId": "serlio-architettura",
+          "reader": "buscador-facsimiles-clasicos.html?obra=serlio-architettura",
+          "textKind": "OCR por página, sin cotejo filológico",
+          "bibliographicIdentity": "metadatos del catálogo de ediciones R2"
+        }
+      ]
+    },
+    {
+      "id": "scamozzi-idea-architettura",
+      "author": "Vincenzo Scamozzi",
+      "title": "L'idea della architettura universale",
+      "originalLanguage": "it",
+      "editionSearchStatus": "sin transcripción textual registrada",
+      "ocrSearchStatus": "índice invertido R2 declarado; OCR no revisado",
+      "facsimileReaders": [
+        {
+          "editionId": "scamozzi-idea-architettura",
+          "reader": "buscador-facsimiles-clasicos.html?obra=scamozzi-idea-architettura",
+          "textKind": "OCR por página, sin cotejo filológico",
+          "bibliographicIdentity": "metadatos del catálogo de ediciones R2"
+        }
+      ]
+    },
+    {
+      "id": "beda-de-temporum-ratione",
+      "author": "Beda el Venerable",
+      "title": "De temporum ratione",
+      "originalLanguage": "la",
+      "editionSearchStatus": "sin transcripción textual registrada",
+      "ocrSearchStatus": "índice invertido R2 declarado; OCR no revisado",
+      "facsimileReaders": [
+        {
+          "editionId": "beda-de-temporum-ratione",
+          "reader": "buscador-facsimiles-clasicos.html?obra=beda-de-temporum-ratione",
+          "textKind": "OCR por página, sin cotejo filológico",
+          "bibliographicIdentity": "metadatos del catálogo de ediciones R2"
+        }
+      ]
+    },
+    {
+      "id": "petrarca-africa",
+      "author": "Francesco Petrarca",
+      "title": "Africa",
+      "originalLanguage": "la",
+      "editionSearchStatus": "sin transcripción textual registrada",
+      "ocrSearchStatus": "índice invertido R2 declarado; OCR no revisado",
+      "facsimileReaders": [
+        {
+          "editionId": "petrarca-africa",
+          "reader": "buscador-facsimiles-clasicos.html?obra=petrarca-africa",
+          "textKind": "OCR por página, sin cotejo filológico",
+          "bibliographicIdentity": "metadatos del catálogo de ediciones R2"
+        }
+      ]
+    },
+    {
+      "id": "petrarca-secretum",
+      "author": "Francesco Petrarca",
+      "title": "Secretum de Petrarca — texto dentro de volumen colectivo",
+      "originalLanguage": "la",
+      "editionSearchStatus": "sin transcripción textual registrada",
+      "ocrSearchStatus": "índice invertido R2 declarado; OCR no revisado",
+      "facsimileReaders": [
+        {
+          "editionId": "petrarca-secretum",
+          "reader": "buscador-facsimiles-clasicos.html?obra=petrarca-secretum",
+          "textKind": "OCR por página, sin cotejo filológico",
+          "bibliographicIdentity": "metadatos del catálogo de ediciones R2"
+        }
+      ]
+    },
+    {
+      "id": "isidoro-etymologiae",
+      "author": "Isidoro de Sevilla",
+      "title": "Etymologiae / Origines de Isidoro — volumen I",
+      "originalLanguage": "la",
+      "editionSearchStatus": "sin transcripción textual registrada",
+      "ocrSearchStatus": "índice invertido R2 declarado; OCR no revisado",
+      "facsimileReaders": [
+        {
+          "editionId": "isidoro-etymologiae",
+          "reader": "buscador-facsimiles-clasicos.html?obra=isidoro-etymologiae",
+          "textKind": "OCR por página, sin cotejo filológico",
+          "bibliographicIdentity": "metadatos del catálogo de ediciones R2"
+        }
+      ]
+    },
+    {
+      "id": "alberti-de-re-aedificatoria",
+      "author": "Leon Battista Alberti",
+      "title": "De re aedificatoria",
+      "originalLanguage": "la",
+      "editionSearchStatus": "sin transcripción textual registrada",
+      "ocrSearchStatus": "índice invertido R2 declarado; OCR no revisado",
+      "facsimileReaders": [
+        {
+          "editionId": "alberti-de-re-aedificatoria",
+          "reader": "buscador-facsimiles-clasicos.html?obra=alberti-de-re-aedificatoria",
+          "textKind": "OCR por página, sin cotejo filológico",
+          "bibliographicIdentity": "metadatos del catálogo de ediciones R2"
+        }
+      ]
     }
   ],
   "alreadyIndexedAsStructuredEdition": [
@@ -443,134 +590,32 @@
       "reader": "lector-bilingue.html?edition=theory-en",
       "indexedPath": "data/structured/theory-en.json",
       "indexedUnderWorkId": "vitruvius"
+    },
+    {
+      "id": "krohn-1912-pdf",
+      "author": "Vitruvio · edición de Fritz Krohn",
+      "title": "Vitruvii De architectura libri decem · Krohn 1912",
+      "status": "edición crítica ya indexada por loci",
+      "edition": null,
+      "reader": "apparatus-bude.html?edition=krohn-1912",
+      "indexedPath": "data/critical-editions/krohn-1912-tei-loci.json",
+      "indexedUnderWorkId": "krohn-1912-indexed"
     }
   ],
   "needsTextOrVerifiableFacsimile": [
     {
-      "id": "seneca-naturales",
-      "author": "Séneca",
-      "title": "Naturales quaestiones",
-      "originalLanguage": "la",
-      "editionSearchStatus": "sin transcripción textual registrada",
-      "ocrSearchStatus": "sin facsímil con índice R2 vinculado"
-    },
-    {
-      "id": "velleius-historia",
-      "author": "Veleyo Patérculo",
-      "title": "Historia Romana",
-      "originalLanguage": "la",
-      "editionSearchStatus": "sin transcripción textual registrada",
-      "ocrSearchStatus": "sin facsímil con índice R2 vinculado"
-    },
-    {
-      "id": "seneca-de-ira",
-      "author": "Séneca",
-      "title": "De ira",
-      "originalLanguage": "la",
-      "editionSearchStatus": "sin transcripción textual registrada",
-      "ocrSearchStatus": "sin facsímil con índice R2 vinculado"
-    },
-    {
-      "id": "seneca-de-tranquillitate",
-      "author": "Séneca",
-      "title": "De tranquillitate animi",
-      "originalLanguage": "la",
-      "editionSearchStatus": "sin transcripción textual registrada",
-      "ocrSearchStatus": "sin facsímil con índice R2 vinculado"
-    },
-    {
-      "id": "apuleius-de-deo-socratis",
-      "author": "Apuleyo",
-      "title": "De deo Socratis",
-      "originalLanguage": "la",
-      "editionSearchStatus": "sin transcripción textual registrada",
-      "ocrSearchStatus": "sin facsímil con índice R2 vinculado"
-    },
-    {
-      "id": "macrobius-saturnalia",
-      "author": "Macrobio",
-      "title": "Saturnalia",
-      "originalLanguage": "la",
-      "editionSearchStatus": "sin transcripción textual registrada",
-      "ocrSearchStatus": "sin facsímil con índice R2 vinculado"
-    },
-    {
-      "id": "ennius-annales",
-      "author": "Ennio",
-      "title": "Annales (fragmenta)",
-      "originalLanguage": "la",
-      "editionSearchStatus": "sin transcripción textual registrada",
-      "ocrSearchStatus": "sin facsímil con índice R2 vinculado"
-    },
-    {
       "id": "procopius-aedificiis",
       "author": "Procopio de Cesarea",
       "title": "Περὶ κτισμάτων",
-      "originalLanguage": "grc",
+      "originalLanguage": null,
       "editionSearchStatus": "sin transcripción textual registrada",
       "ocrSearchStatus": "sin facsímil con índice R2 vinculado"
     },
     {
-      "id": "isidore-etymologiae",
-      "author": "Isidoro de Sevilla",
-      "title": "Etymologiae",
-      "originalLanguage": "la",
-      "editionSearchStatus": "sin transcripción textual registrada",
-      "ocrSearchStatus": "sin facsímil con índice R2 vinculado"
-    },
-    {
-      "id": "censorinus-die-natali",
-      "author": "Censorino",
-      "title": "De die natali",
-      "originalLanguage": "la",
-      "editionSearchStatus": "sin transcripción textual registrada",
-      "ocrSearchStatus": "sin facsímil con índice R2 vinculado"
-    },
-    {
-      "id": "geminus-isagoge",
-      "author": "Gémino",
-      "title": "Εἰσαγωγὴ εἰς τὰ φαινόμενα · Elementa astronomiae",
-      "originalLanguage": "grc",
-      "editionSearchStatus": "sin transcripción textual registrada",
-      "ocrSearchStatus": "sin facsímil con índice R2 vinculado"
-    },
-    {
-      "id": "aristarchus-magnitudines",
-      "author": "Aristarco de Samos",
-      "title": "Περὶ μεγεθῶν καὶ ἀποστημάτων ἡλίου καὶ σελήνης",
-      "originalLanguage": "grc",
-      "editionSearchStatus": "sin transcripción textual registrada",
-      "ocrSearchStatus": "sin facsímil con índice R2 vinculado"
-    },
-    {
-      "id": "apollonius-conica",
-      "author": "Apolonio de Perge",
-      "title": "Κωνικά · Conica",
-      "originalLanguage": "grc",
-      "editionSearchStatus": "sin transcripción textual registrada",
-      "ocrSearchStatus": "sin facsímil con índice R2 vinculado"
-    },
-    {
-      "id": "pappus-synagoge",
-      "author": "Papo de Alejandría",
-      "title": "Συναγωγή · Collectio (libro VIII: mecánica)",
-      "originalLanguage": "grc",
-      "editionSearchStatus": "sin transcripción textual registrada",
-      "ocrSearchStatus": "sin facsímil con índice R2 vinculado"
-    },
-    {
-      "id": "frontinus-gromatica",
-      "author": "Frontino",
-      "title": "Opuscula gromatica (De agrorum qualitate, De controversiis, De limitibus)",
-      "originalLanguage": "la",
-      "editionSearchStatus": "sin transcripción textual registrada",
-      "ocrSearchStatus": "sin facsímil con índice R2 vinculado"
-    },
-    {
-      "id": "siculus-flaccus",
-      "author": "Sículo Flaco",
-      "title": "De condicionibus agrorum",
-      "originalLanguage": "la",
+      "id": "sappho-fragmenta",
+      "author": "Safo",
+      "title": "Fragmenta · Fragmentos",
+      "originalLanguage": null,
       "editionSearchStatus": "sin transcripción textual registrada",
       "ocrSearchStatus": "sin facsímil con índice R2 vinculado"
     }
