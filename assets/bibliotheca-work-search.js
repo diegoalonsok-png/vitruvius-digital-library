@@ -508,9 +508,19 @@ function letterMatch(w,letter,byTitle){
   (!greek||/[\u0370-\u03ff\u1f00-\u1fff]/u.test(value))&&
   (greek||!/[\u0370-\u03ff\u1f00-\u1fff]/u.test(value))&&normal(value).startsWith(letter));
 }
-function editionSummary(w){
+function readingEditions(w){
  const recorded=model?.editionLabels?.[w.id]||[];
- const base=recorded.length?recorded:w.versions.map(v=>({language:v.language,kind:["la","grc"].includes(v.language)?"original":"translation"}));
+ return w.versions.map(v=>{
+  const label=recorded.find(x=>x.language===v.language&&x.path===v.path)||{};
+  const remote=model?.translationManifest?.get(v.path);
+  const m=remote&&remote.workId===w.id&&remote.language===v.language&&remote.sha256&&remote.sha256===v.sha256?remote:{};
+  const translator=(Array.isArray(m.translators)?m.translators.join(" · "):"")||label.translator||v.translator||"";
+  const publicationYear=m.publicationYear||label.publicationYear||v.publicationYear||v.translationYear||v.editionYear||"";
+  return {...v,...label,reader:v.reader,path:v.path,language:v.language,translator,publicationYear};
+ });
+}
+function editionSummary(w){
+ const base=readingEditions(w);
  const rows=[...new Map(base.filter(v=>v.language).map(v=>[[v.language,v.path||v.reader||v.translator||"",v.publicationYear||""].join("|"),v])).values()];
  const originals=rows.filter(v=>["la","grc"].includes(v.language));
  const translations=rows.filter(v=>!["la","grc"].includes(v.language));
@@ -529,7 +539,11 @@ function appendEditionSummary(row,w){
  note.style.cssText="display:block;margin:4px 0 0;font:12px/1.5 system-ui,sans-serif;color:var(--muted,#b6b6b6);overflow-wrap:anywhere";
  note.setAttribute("aria-label","Idiomas y ediciones documentadas: "+value);
  row.append(note);
- const editions=model?.editionLabels?.[w.id]||[];
+ const editions=readingEditions(w);
+ if(!editions.some(v=>["en","fr","es"].includes(v.language)&&safeReader(v.reader))){
+  const fallback=make("span","Sin versión registrada en castellano, inglés o francés · traducción automática orientativa, si está disponible en el lector.","bws-edition-note");
+  fallback.style.cssText="display:block;font:12px/1.5 system-ui;opacity:.8";row.append(fallback);
+ }
  for(const v of editions){
   if(!["en","fr","es","it","de","pt"].includes(v.language)||!v.reader||!safeReader(v.reader))continue;
   const link=make("a","Leer · "+(lang[v.language]||v.language)+" · "+(v.translator||"Traductor no documentado")+" · "+(v.publicationYear||"Año no documentado"),"bws-plain-record");
@@ -801,7 +815,7 @@ function mount(parent,data){
    searchForm?.addEventListener("submit",event=>{
     event.preventDefault();event.stopImmediatePropagation();sync();
     const matches=list.querySelectorAll(".bws-plain-title");
-    if(visible.value.trim()&&!singleLetter(visible.value)&&matches.length===1&&more.hidden)location.assign(matches[0].href);
+    // Keep editorial choices visible before opening any reader, even for one match.
    },true);
    sync();
   }
@@ -857,6 +871,10 @@ function mount(parent,data){
  }
  more.addEventListener("click",()=>{model.limit+=40;render()});
  render();
+ fetch("data/r2/classics-translation-manifest.json",{cache:"no-cache"})
+  .then(r=>r.ok?r.json():null)
+  .then(j=>{if(Array.isArray(j?.editions)){model.translationManifest=new Map(j.editions.filter(e=>e.url).map(e=>[e.url,e]));render()}})
+  .catch(()=>{/* Keep registered editions visible without inferred attribution. */});
  fetch("data/classics-corpus/edition-list-labels.json",{cache:"no-cache"})
   .then(r=>r.ok?r.json():null)
   .then(j=>{if(j?.schema==="bibliotheca-edition-list-labels-v1"&&j.works){
