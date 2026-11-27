@@ -137,13 +137,13 @@
  const chronologicalTypes=new Set([
   "Q5","Q571","Q7725634","Q47461344","Q11424","Q482994",
   "Q1656682","Q178561","Q1190554","Q13418847",
-  "Q41176","Q839954","Q23413","Q6256","Q43229","Q4830453","Q215380"
+  "Q41176","Q839954","Q23413","Q6256","Q43229","Q4830453","Q215380","Q164950","Q48349"
  ]);
  const hasHistoricalSubject=()=>{
   if(isAkhenaten()||isNero())return true;
   if(isAbstractTerm())return false;
   const a=state.authority;
-  return Boolean(a&&Array.isArray(a.instanceOf)&&a.instanceOf.some(id=>chronologicalTypes.has(id)));
+  return Boolean(a&&/^Q\d+$/.test(a.wikidataId||"")&&((Array.isArray(a.instanceOf)&&a.instanceOf.some(id=>chronologicalTypes.has(id)))||(a.temporalClaims||[]).some(c=>["P571","P576","P585","P580","P582","P575","P1619"].includes(c.property)&&c.dates?.length)));
  };
 
  // Akhenaten has a biographical scale: c. 1370–1336 BCE. Birth is not
