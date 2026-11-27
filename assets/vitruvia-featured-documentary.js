@@ -49,15 +49,15 @@
   }catch{return false}
  }
  const locale=(es,en,fr)=>document.documentElement.lang?.startsWith('en')?en:document.documentElement.lang?.startsWith('fr')?fr:es;
- let historicalEntityId='',query='',token=0,featured=null,gallery=[],selected='',rank=0,attempted=new Set(),ready=false,childFallback=null,fallbackTimer=null;
+ let historicalEntityId='',currentEntityId='',query='',token=0,featured=null,gallery=[],selected='',rank=0,attempted=new Set(),ready=false,childFallback=null,fallbackTimer=null;
  function setQuery(value){
-  query=fold(value);historicalEntityId='';token++;featured=null;gallery=[];selected='';rank=0;ready=false;childFallback=null;clearTimeout(fallbackTimer);fallbackTimer=null;attempted.clear();
+  query=fold(value);historicalEntityId='';currentEntityId='';token++;featured=null;gallery=[];selected='';rank=0;ready=false;childFallback=null;clearTimeout(fallbackTimer);fallbackTimer=null;attempted.clear();
   photo.removeAttribute('src');photo.alt='';visual.hidden=true;
  }
  function preferImage(item){
   const score=Number(item.score)||0;
   if(isChildhood(item))return score-1500;
-   if(item.verifiedIdentity)return score+1000;
+   if(item.verifiedIdentity)return score+1000+(item.colourEvidence==='documented-colour'?350:0);
   const person=item.kind==='person',group=item.group||'';
   const boost=person?(group==='sculpture'?230:group==='portrait'?160:group==='book'?45:0):
    item.kind==='object'?(group==='object'?230:group==='historic'?195:group==='technical'?30:0):
@@ -118,15 +118,16 @@
  function onHero(event){
   const d=event.detail||{};
   if(!query||fold(d.query)!==query||!d.item)return;
-  if(historicalBiographyQuery(query)&&!(historicalEntityId&&d.item.verifiedHistoricalPortrait&&d.item.entityId===historicalEntityId))return;
+  if(historicalBiographyQuery(query)&&!(d.item.verifiedHistoricalPortrait&&currentEntityId&&d.item.entityId===currentEntityId))return;
   show(d.item,Number(d.weight)||5000);
  }
  function onFeatured(event){
   const d=event.detail||{};
   if(!query||fold(d.query)!==query)return;
-  if(d.row?.entityHistorical&&d.row?.wikidataId){
-   historicalEntityId=d.row.wikidataId;
-   visual.hidden=true;photo.removeAttribute('src');rank=0;ready=false;
+  if(/^Q\d+$/.test(d.row?.wikidataId||''))currentEntityId=d.row.wikidataId;
+  if(d.row?.entityHistorical&&currentEntityId&&historicalEntityId!==currentEntityId){
+   historicalEntityId=currentEntityId;
+   visual.hidden=true;photo.removeAttribute('src');rank=0;ready=false;attempted.clear();
   }
   if(historicalBiographyQuery(query))return;
   if(d.row?.type==='wikipedia')leadImage(d.row,query);
@@ -163,5 +164,5 @@
  window.addEventListener('vitruvia:hero-visual',onHero);
  window.addEventListener('vitruvia:clear',()=>setQuery(''));
  // A results-page deep link triggers the same search event after all defer scripts load.
- window.VitruviaFeaturedVisual={version:'1.0',validImage,validSource};
+ window.VitruviaFeaturedVisual={version:'1.1',validImage,validSource};
 })();
