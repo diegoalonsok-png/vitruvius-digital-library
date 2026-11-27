@@ -380,6 +380,63 @@
   section.append(list);parent.append(section);
  }
 
+ // Index the already retrieved search records; do not duplicate external
+ // requests, invent an inscription, or mistake a catalogue for a full text.
+ function documentaryIndex(rows,authority,query){
+  const names=[authority?.canonical,authority?.catalogName,authority?.originalCanonical,...(authority?.aliases||[]),query].map(normalize).filter(n=>n.length>=4&&!/^(?:king|rey|tut|faraon|pharaoh|egypt|egipto)$/.test(n));
+  const related=r=>{
+   if(authority?.wikidataId&&[r.subjectWikidataId,r.creatorWikidataId,r.relatedWikidataId].includes(authority.wikidataId))return true;
+   if(r.wikidataId&&authority?.notableWorkIds?.includes(r.wikidataId))return true;
+   const fields=[r.title,r.abstract,r.excerpt,r.entityCanonical,...(r.aliases||[])].map(normalize);
+   return names.some(n=>fields.some(f=>(" "+f+" ").includes(" "+n+" "))||normalize(r.author)===n);
+  };
+  const records=(rows||[]).filter(r=>r&&r.title&&related(r));
+  const distinct=a=>a.filter((r,i)=>a.findIndex(x=>(x.doi||x.link||x.title)===(r.doi||r.link||r.title))===i);
+  return {
+   objects:distinct(records.filter(r=>r.type==="museum"||r.recordKind==="museum-object")),
+   bibliography:distinct(records.filter(r=>["book","openlibrary","googlebook","article","edition"].includes(r.type))).sort((a,b)=>String(a.author||"").localeCompare(String(b.author||""),lang())||String(a.title).localeCompare(String(b.title),lang()))
+  };
+ }
+ function indexLink(parent,label,url){
+  if(typeof url!=="string"||!(/^https:\/\/[^\s]+$/i.test(url)||/^(?:documents\/[a-z0-9/_-]+\.pdf(?:#page=\d+)?|[a-z0-9/_-]+\.html(?:\?[^#]*)?(?:#[a-z0-9=&_-]+)?)$/i.test(url)))return;
+  const a=el("a","vat-source-link",label);a.href=url;a.target="_blank";a.rel="noopener noreferrer";parent.append(a);
+ }
+ function appendDocumentaryIndex(parent){
+  const {objects,bibliography}=documentaryIndex(state.rows,state.authority,state.query);
+  if(objects.length){
+   const section=el("details","vat-outside");section.append(el("summary",null,L("Objetos y testimonios materiales","Objects and material witnesses","Objets et témoins matériels")+" ("+objects.length+")"));
+   const list=el("ul","vat-outside-list");
+   for(const r of objects.slice(0,30)){
+    const item=el("li");item.append(el("strong",null,r.title));
+    if(normUrl(r.image)){const img=el("img");img.src=r.image;img.alt=r.title;img.loading="lazy";img.style.cssText="display:block;max-width:120px;max-height:100px;object-fit:contain";img.onerror=()=>img.remove();item.append(img)}
+    const meta=[r.accessionNumber,r.objectDate,r.source].filter(Boolean).join(" · ");if(meta)item.append(el("p",null,meta));
+    if(r.inscriptionOriginal&&r.inscriptionSource&&normUrl(r.inscriptionSource)){
+     item.append(el("p",null,r.inscriptionOriginal));
+     if(r.inscriptionTransliteration)item.append(el("p",null,r.inscriptionTransliteration));
+     if(r.inscriptionTranslation&&r.inscriptionTranslator)item.append(el("p",null,r.inscriptionTranslation+" — "+r.inscriptionTranslator));
+     indexLink(item,L("Fuente epigráfica","Epigraphic source","Source épigraphique"),r.inscriptionSource);
+    }else item.append(el("small",null,L("Inscripción y traducción no verificadas para este objeto.","Inscription and translation not verified for this object.","Inscription et traduction non vérifiées pour cet objet.")));
+    indexLink(item,L("Ficha del museo","Museum record","Notice du musée"),r.link);list.append(item);
+   }
+   section.append(list);parent.append(section);
+  }
+  if(bibliography.length){
+   const section=el("details","vat-outside");section.append(el("summary",null,L("Bibliografía académica por autor","Academic bibliography by author","Bibliographie savante par auteur")+" ("+bibliography.length+")"));
+   const list=el("ul","vat-outside-list");
+   for(const r of bibliography.slice(0,60)){
+    const item=el("li");item.append(el("strong",null,r.author||L("Autor no indicado","Author not specified","Auteur non indiqué")));
+    item.append(el("p",null,[r.title,r.year,r.journal||r.publisher,r.doi?"DOI: "+r.doi:""].filter(Boolean).join(" · ")));
+    indexLink(item,L("Ficha bibliográfica","Bibliographic record","Notice bibliographique"),r.link);
+    if(r.pdf)indexLink(item,"PDF",r.pdf);
+    if(r.fulltext)indexLink(item,L("Leer texto completo","Read full text","Lire le texte intégral"),r.fulltext);
+    if(r.translationUrl&&r.translationLanguage)indexLink(item,L("Traducción","Translation","Traduction")+" · "+r.translationLanguage,r.translationUrl);
+    if(!r.pdf&&!r.fulltext)item.append(el("small",null,L("Acceso al texto sujeto a la fuente.","Full-text access depends on the source.","Accès au texte selon la source.")));
+    list.append(item);
+   }
+   section.append(list);parent.append(section);
+  }
+ }
+
  function draw(){
   if(!state.query){root.hidden=true;root.replaceChildren();return}
   if(state.phase==="identity"||state.phase==="history"){
@@ -535,6 +592,7 @@
   }
   viewport.append(map);root.append(viewport,detail);
   if(state.family.length)appendFamily(root,state.family);
+  if(isPerson)appendDocumentaryIndex(root);
   if(outsideEvents.length){
    const extra=el("details","vat-outside");
    extra.append(el("summary",null,L(
@@ -666,5 +724,5 @@
  }).observe(document.documentElement,{attributes:true,attributeFilter:["lang"]});
  const snapshot=window.VitruviaSearchSnapshot;
  if(snapshot?.query)reset(snapshot.query);
- window.VitruviaAcademicTimeline={collect,layoutMarkers,version:"2.4-family-milestones"};
+ window.VitruviaAcademicTimeline={collect,layoutMarkers,version:"2.5-family-documentary-index"};
 })();
