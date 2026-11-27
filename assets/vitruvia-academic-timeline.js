@@ -18,26 +18,29 @@
  const types={
   life:[L("Vida e instituciones","Life and institutions","Vie et institutions"),"♔"],
   events:[L("Acontecimientos","Historical events","Événements"),"⚑"],
+  family:[L("Familia","Family","Famille"),"◇"],
   works:[L("Obras y creaciones","Works and creations","Œuvres et créations"),"▤"],
   documents:[L("Documentos y ediciones","Documents and editions","Documents et éditions"),"▥"]
  };
- const state={query:"",token:0,authority:null,works:[],albums:[],rows:[],zoom:1,selected:"",rowSignature:"",pendingWorks:null,tagColor:null,phase:"idle",history:[],historyIncomplete:false,personDates:null};
+ const state={query:"",token:0,authority:null,works:[],albums:[],rows:[],zoom:1,selected:"",rowSignature:"",pendingWorks:null,tagColor:null,phase:"idle",history:[],historyIncomplete:false,personDates:null,family:[]};
  // Greedy tracks keep same-day and adjacent milestones from touching.
  // Popup centres are independently clamped, so no tooltip can protrude
  // beyond the chronology track even at narrow mobile widths.
  function layoutMarkers(items,low,range,width,zoom=1){
   const safeWidth=Math.max(1,Number(width)||1);
-  const diameter=24,gap=11;
+  const gap=11;
+  const markerSize=e=>e.lane==="life"?30:e.lane==="events"?26:e.lane==="family"?18:22;
   const popupWidth=Math.max(1,Math.min(Math.max(1,safeWidth-12),Math.round(134*zoom)));
   const lastCentres=[];
   return items.map(event=>{
+   const diameter=markerSize(event);
    const raw=(event.year-low)/Math.max(1,range)*safeWidth;
    const center=Math.max(Math.min(safeWidth/2,diameter/2+3),Math.min(safeWidth-Math.min(safeWidth/2,diameter/2+3),raw));
-   let level=lastCentres.findIndex(last=>center-last>=diameter+gap);
+   let level=lastCentres.findIndex(last=>center-diameter/2-last>=gap);
    if(level<0){level=lastCentres.length;lastCentres.push(-Infinity)}
-   lastCentres[level]=center;
+   lastCentres[level]=center+diameter/2;
    const popupCenter=Math.max(popupWidth/2+4,Math.min(safeWidth-popupWidth/2-4,center));
-   return {event,center,level,popupWidth,shift:popupCenter-center};
+   return {event,center,level,popupWidth,shift:popupCenter-center,diameter};
   });
  }
  const article=document.getElementById("vitruvia-article");
@@ -158,6 +161,36 @@
  function entityLabel(e,id){
   return e?.labels?.[lang()]?.value||e?.labels?.en?.value||e?.labels?.es?.value||id;
  }
+ const familyProperties=["P22","P25","P26","P40","P3373"];
+ function familyRecords(person,related){
+  const relations={P22:L("Padre","Father","Père"),P25:L("Madre","Mother","Mère"),P26:L("Cónyuge","Spouse","Conjoint"),P40:L("Descendiente","Child","Enfant"),P3373:L("Hermano/a","Sibling","Frère/sœur")};
+  const records=[];
+  for(const p of familyProperties){
+   for(const s of statements(person,p)){
+    const id=entityId(s);if(!validId(id)||id===person.id)continue;
+    const linked=related[id],name=entityLabel(linked,id);if(name===id)continue;
+    const birth=claimDate(linked,"P569"),death=claimDate(linked,"P570");
+    const marriage=p==="P26"?qualifier(s,"P580"):null;
+    const source="https://www.wikidata.org/wiki/"+person.id+"#"+p;
+    records.push({id,p,name,relation:relations[p],birth,death,marriage,source,url:"https://www.wikidata.org/wiki/"+id});
+   }
+  }
+  return records.filter((r,i,a)=>a.findIndex(x=>x.id===r.id&&x.p===r.p)===i);
+ }
+ function familyEvents(records){
+  const result=[];
+  for(const r of records){
+   const detail=r.relation+" · "+r.name+". "+L("Vínculo registrado en la ficha de autoridad; verificar parentesco y datación con las referencias del registro.","Relationship recorded in the authority record; verify kinship and dates against its references.","Lien consigné dans la notice d’autorité ; vérifier la parenté et les dates dans ses références.");
+   const add=(date,label,p)=>{if(date)result.push({year:date.year,approx:date.approx,lane:"family",title:label+" · "+r.name,detail,source:"Wikidata · "+r.p+" / "+p,url:r.url,relationUrl:r.source})};
+   // Only a dated birth of a child, a dated death of a relative, or a
+   // qualified start of a marriage may become a family milestone.
+   // Parents' and siblings' birth dates remain in the family record.
+   if(r.p==="P40")add(r.birth,L("Nacimiento de descendiente","Birth of child","Naissance d’un enfant"),"P569");
+   if(r.p==="P26")add(r.marriage,L("Inicio de unión documentada","Recorded marriage begins","Début d’union attesté"),"P580");
+   add(r.death,L("Muerte de familiar","Death of relative","Décès d’un proche"),"P570");
+  }
+  return result.map(event).filter(Boolean);
+ }
  function relationEvents(person,related){
   const result=[];
   const add=(s,p,date,lane,title,detail,end=null)=>{
@@ -204,9 +237,10 @@
   if(!a?.instanceOf?.includes("Q5")||!validId(a.wikidataId))return [];
   const data=await getEntities([a.wikidataId]),person=data[a.wikidataId];
   if(!person?.claims)throw Error("Missing person claims");
-  const ids=[...new Set(["P39","P793","P607","P1344"].flatMap(p=>statements(person,p).map(entityId)).filter(validId))].slice(0,45);
+  const ids=[...new Set(["P39","P793","P607","P1344",...familyProperties].flatMap(p=>statements(person,p).map(entityId)).filter(validId))].slice(0,45);
   const related=await getEntities(ids);
-  return {events:relationEvents(person,related),dates:{birthYear:claimDate(person,"P569"),deathYear:claimDate(person,"P570")}};
+  const family=familyRecords(person,related);
+  return {family,events:[...relationEvents(person,related),...familyEvents(family)],dates:{birthYear:claimDate(person,"P569"),deathYear:claimDate(person,"P570")}};
  }
 
  function collect(){
@@ -293,7 +327,7 @@
    if(seen.has(key))return false;seen.add(key);return true
   });
   // Keep primary biographical milestones before selecting secondary material.
-  const priority=e=>e.lane==="life"?0:e.lane==="events"?1:e.lane==="works"?2:3;
+  const priority=e=>e.lane==="life"?0:e.lane==="events"?1:e.lane==="family"?2:e.lane==="works"?3:4;
   return ev.sort((a,b)=>priority(a)-priority(b)||a.year-b.year).slice(0,48).sort((a,b)=>a.year-b.year||a.title.localeCompare(b.title));
  }
  function highlightButton(button,detail,event){
@@ -306,6 +340,7 @@
   const link=el("a","vat-source-link",L("Consultar fuente y metadatos","Open source and metadata","Consulter la source"));
   link.href=event.url;link.target="_blank";link.rel="noopener noreferrer";
   const contents=el("div","vat-detail-text");contents.append(heading,body,source,link);
+  if(normUrl(event.relationUrl)){const relation=el("a","vat-source-link",L("Consultar vínculo familiar","View family relationship","Consulter le lien familial"));relation.href=event.relationUrl;relation.target="_blank";relation.rel="noopener noreferrer";contents.append(relation)}
   detail.replaceChildren();
   if(event.image){
    const img=el("img","vat-detail-image");img.src=event.image;img.alt=event.title;
@@ -329,6 +364,20 @@
   const max=Math.max(...visible.map(e=>isPerson&&died!==null?Math.min(e.end??e.year,died):e.end??e.year));
   const padding=Math.max(1,Math.ceil(Math.max(1,max-min)*.04));
   return {visible,outside,low:isPerson&&born!==null?born:min-padding,high:isPerson&&died!==null?died:max+padding};
+ }
+
+ function appendFamily(parent,records){
+  const section=el("details","vat-outside");
+  section.append(el("summary",null,L("Familia documentada","Documented family","Famille documentée")+" ("+records.length+")"));
+  const list=el("ul","vat-outside-list");
+  for(const r of records){
+   const item=el("li"),link=el("a",null,r.relation+" · "+r.name);
+   link.href=r.url;link.target="_blank";link.rel="noopener noreferrer";item.append(link);
+   const dates=[r.birth?L("Nacimiento","Birth","Naissance")+": "+(r.birth.approx?"c. ":"")+showYear(r.birth.year):"",r.death?L("Muerte","Death","Décès")+": "+(r.death.approx?"c. ":"")+showYear(r.death.year):""].filter(Boolean);
+   item.append(el("small",null," · "+(dates.join(" · ")||L("Sin fechas verificables en el registro","No usable dates in the record","Dates absentes de la notice"))));
+   list.append(item);
+  }
+  section.append(list);parent.append(section);
  }
 
  function draw(){
@@ -448,12 +497,14 @@
    const line=el("div","vat-line");track.append(line);
    const positioned=layoutMarkers(items,low,range,mapWidth,state.zoom);
    let levelMax=0;
-   for(const {event:e,center,level,popupWidth,shift} of positioned){
+   for(const {event:e,center,level,popupWidth,shift,diameter} of positioned){
     levelMax=Math.max(levelMax,level);
     const button=el("button","vat-event");
     button.type="button";button.setAttribute("aria-pressed","false");
     button.classList.add("vat-event-marker");
-    button.style.left=center+"px";button.style.top=(23+level*40)+"px";
+    button.style.left=center+"px";button.style.top=(23+level*45)+"px";
+    button.style.width=diameter+"px";button.style.height=diameter+"px";
+    if(e.approx)button.style.borderStyle="dashed";
     button.style.setProperty("--vat-popup-width",popupWidth+"px");
     button.style.setProperty("--vat-popup-shift",shift+"px");
     button.setAttribute("aria-label",(e.approx?"c. ":"")+showYear(e.year)+" · "+e.title);
@@ -478,11 +529,12 @@
     if(key===state.selected)queueMicrotask(()=>{if(button.isConnected)highlightButton(button,detail,e)});
     track.append(button);
    }
-   track.style.height=(72+levelMax*40)+"px";
+   track.style.height=(72+levelMax*45)+"px";
    laneBody.append(track,preview);
    band.append(title,laneBody);map.append(band);
   }
   viewport.append(map);root.append(viewport,detail);
+  if(state.family.length)appendFamily(root,state.family);
   if(outsideEvents.length){
    const extra=el("details","vat-outside");
    extra.append(el("summary",null,L(
@@ -535,7 +587,7 @@
  }
  function reset(q){
   state.token++;state.query=String(q||"").trim().slice(0,160);state.zoom=1;
-  state.authority=null;state.works=[];state.albums=[];state.rows=[];state.selected="";state.rowSignature="";state.pendingWorks=null;state.history=[];state.historyIncomplete=false;state.personDates=null;state.phase=state.query?"identity":"idle";
+  state.authority=null;state.works=[];state.albums=[];state.rows=[];state.selected="";state.rowSignature="";state.pendingWorks=null;state.history=[];state.historyIncomplete=false;state.personDates=null;state.family=[];state.phase=state.query?"identity":"idle";
   place();draw();
   if(!state.query)return;
   const token=state.token;
@@ -546,7 +598,7 @@
    if(a&&pending&&pending.wikidataId===a.wikidataId)state.works=pending.works;
    if(a?.instanceOf?.includes("Q5")){
     state.phase="history";draw();
-    try{const history=await retrieveHistory(a);if(token!==state.token)return;state.history=history.events;state.personDates=history.dates}
+    try{const history=await retrieveHistory(a);if(token!==state.token)return;state.history=history.events;state.personDates=history.dates;state.family=history.family}
     catch{if(token!==state.token)return;state.historyIncomplete=true}
    }
    if(token!==state.token)return;
@@ -614,5 +666,5 @@
  }).observe(document.documentElement,{attributes:true,attributeFilter:["lang"]});
  const snapshot=window.VitruviaSearchSnapshot;
  if(snapshot?.query)reset(snapshot.query);
- window.VitruviaAcademicTimeline={collect,layoutMarkers,version:"2.3-biographical-scope-scroll"};
+ window.VitruviaAcademicTimeline={collect,layoutMarkers,version:"2.4-family-milestones"};
 })();
