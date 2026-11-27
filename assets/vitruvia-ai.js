@@ -100,7 +100,7 @@ async function loadSources(){
     /^https:\/\/libros\.vitruvius-digital-library\.org\/corpus\/[a-z0-9_-]+\.json$/.test(e.path)));
   const byPath=new Map();
   for(const e of entries)if(!byPath.has(e.path))byPath.set(e.path,{
-   url:e.path,workId:e.workId,workTitle:e.title,author:e.author,
+   url:e.path,workId:e.workId,sourceWorkId:e.sourceWorkId||e.workId,format:e.format,workTitle:e.title,author:e.author,
    edition:e.edition||e.language,language:e.language,reader:e.reader,
    source:e.sourceDescription||"Bibliotheca · transcripción registrada",sourceUrn:e.sourceUrn||"",sha256:e.sha256||""
   });
@@ -143,9 +143,18 @@ function sourceSelection(query,sources){
  // Named works are searched without passage sampling; broad queries retain the sampled registry.
  return {sources:matches,explicit,locus,registryCount:sources.length};
 }
+// Check declared identity before a passage can become evidence. Structured
+// bilingual documents use their own editorial schema, not this single-language gate.
+function sourceIdentityOK(source,data){
+ if(!Array.isArray(data?.passages))return false;
+ if(source.format!=="json-passages")return true;
+ if(data.workId&&data.workId!==(source.sourceWorkId||source.workId))return false;
+ if(data.language&&source.language&&data.language!==source.language)return false;
+ return true;
+}
 async function prepareCorpus(selection,registryError){
  const {sources,explicit,registryCount}=selection;
- const works=[],documents=[],unavailable=[];
+ const works=[],documents=[],unavailable=[],identityRejected=[];
  let sourcePassages=0,indexedPassages=0,sampledSources=0;
  // Five requests per batch prevent a simultaneous download of the whole library.
  for(let offset=0;offset<sources.length;offset+=5){
@@ -155,7 +164,7 @@ async function prepareCorpus(selection,registryError){
    const source=batch[i],result=settled[i];
    if(result.status!=="fulfilled"){unavailable.push(source.workId||source.url);continue}
    const data=result.value;
-   if(!Array.isArray(data.passages)){unavailable.push(source.workId||source.url);continue}
+   if(!sourceIdentityOK(source,data)){unavailable.push(source.workId||source.url);identityRejected.push(source.url);continue}
    const before=documents.length;
    // Representative loci from each edition: bounded memory, not exhaustive passage coverage.
    sourcePassages+=data.passages.length;
@@ -194,7 +203,7 @@ async function prepareCorpus(selection,registryError){
  for(const doc of documents)for(const word of doc.tf.keys())df.set(word,(df.get(word)||0)+1);
  const avgLength=documents.reduce((sum,doc)=>sum+doc.length,0)/documents.length;
  if(registryError)notify("Registro no disponible; se usa corpus de reserva: "+registryError,"fallback");
- return {documents,df,avgLength,works,unavailable,declaredSources:sources.length,registryCount,explicit,sourcePassages,indexedPassages,sampledSources,budgeted:selection.budgeted||false,candidateStrategy:selection.candidateStrategy||""};
+ return {documents,df,avgLength,works,unavailable,identityRejected,declaredSources:sources.length,registryCount,explicit,sourcePassages,indexedPassages,sampledSources,budgeted:selection.budgeted||false,candidateStrategy:selection.candidateStrategy||""};
 }
 // Broad neural searches use the existing federated inverted index to choose
 // candidate editions. The cap is a retrieval budget, never a completeness claim.
@@ -615,7 +624,7 @@ async function search(query,{method="neural",targetedOnly=false,learning=true}={
  const ranked=lexicalRanking(q,data,selection);
  const adjust=entry=>learnedScore(q,entry,selection,learning);
  const scope="Cobertura: "+data.indexedPassages+"/"+data.sourcePassages+" pasajes de fuentes cargadas; "+data.works.length+"/"+data.declaredSources+" fuentes seleccionadas ("+data.registryCount+" rutas compatibles del registro). "+(data.explicit?"Consulta dirigida a obras identificadas.":"Muestreo del registro, no búsqueda exhaustiva.")+(data.sampledSources?" "+data.sampledSources+" fuentes muestreadas.":"")+(data.budgeted?" Selección limitada a "+MAX_BROAD_EDITIONS+" ediciones por consulta ("+data.candidateStrategy+"); no equivale a la cobertura total del índice.":"");
- const coverageNotice=scope+(data.unavailable.length?" Fuentes no cargadas: "+data.unavailable.length+". Cobertura parcial.":"");
+ const coverageNotice=scope+(data.unavailable.length?" Fuentes no cargadas o rechazadas: "+data.unavailable.length+". Cobertura parcial.":"")+(data.identityRejected.length?" Archivos excluidos por estructura o identidad incompatible: "+data.identityRejected.length+".":"");
  const candidates=diversity(ranked);
  const coverage=candidateCoverage(candidates);
  if(!candidates.length)return {rows:[],mode:"empty",stats:{chunks:data.documents.length,works:data.works}};
@@ -675,5 +684,5 @@ async function rank(query,docs,{limit=30,candidates=40}={}){
   notify("IA semántica activa en el visor.","success");return {mode:"neural",rows};
  }catch(e){return {mode:"bm25-fallback",rows:pool.slice(0,limit),warning:String(e.message||e)}}
 }
-window.VitruviaAI={search,rank,model:MODEL,version:"1.9-relevance-memory",sourceSelection,academicTerms,narrowBroad,feedback,feedbackState,clearMemory,learnedScore};
+window.VitruviaAI={search,rank,model:MODEL,version:"1.9-relevance-memory",sourceSelection,academicTerms,narrowBroad,feedback,feedbackState,clearMemory,learnedScore,sourceIdentityOK};
 })();
