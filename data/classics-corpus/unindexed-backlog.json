@@ -1,12 +1,15 @@
 {
   "schema": "vdl-bibliotheca-unindexed-backlog-v1",
-  "generated": "2026-11-16T12:56:36.962Z",
-  "method": "Cruce de 271 fichas y versiones efectivamente declaradas en search-registry; ninguna ausencia se presenta como texto indexado. Ediciones modernas distinguidas de obras antiguas.",
+  "generated": "2026-11-27T12:27:42.365Z",
+  "method": "Cruce de 857 fichas principales y suplementarias, 10 obras adicionales R2 y versiones declaradas en search-registry. Una ausencia no se presenta como texto indexado. Los facsímiles, las manifestaciones editoriales y las fuentes pendientes se distinguen.",
   "summary": {
-    "missingRegistryEntries": 44,
-    "ancientWorksWithoutRegisteredText": 41,
-    "modernEditionManifestationsWithoutOwnRegistry": 3,
-    "highPriorityAncient": 13
+    "missingRegistryEntries": 40,
+    "ancientWorksWithoutRegisteredText": 26,
+    "modernEditionManifestationsWithoutOwnRegistry": 4,
+    "additionalR2WorksWithoutRegisteredText": 10,
+    "withDeclaredR2Facsimile": 34,
+    "withoutDeclaredR2Facsimile": 6,
+    "highPriorityAncient": 7
   },
   "entries": [
     {
@@ -21,30 +24,6 @@
       ],
       "sourceStatus": "No hay versión indexada con este ID en search-registry.json",
       "nextStep": "Comprobar el PDF/OCR existente, el título de portada, edición y derechos; producir texto por locus si la fuente lo permite.",
-      "indexed": false
-    },
-    {
-      "id": "apollonius-conica",
-      "author": "Apolonio de Perge",
-      "title": "Κωνικά · Conica",
-      "language": "grc",
-      "classification": "ancient_work",
-      "priority": "alta",
-      "r2EditionsDeclared": [],
-      "sourceStatus": "No hay versión indexada con este ID en search-registry.json",
-      "nextStep": "Identificar edición grecolatina acreditada y lícita; importar texto verificable antes de indexar.",
-      "indexed": false
-    },
-    {
-      "id": "aristarchus-magnitudines",
-      "author": "Aristarco de Samos",
-      "title": "Περὶ μεγεθῶν καὶ ἀποστημάτων ἡλίου καὶ σελήνης",
-      "language": "grc",
-      "classification": "ancient_work",
-      "priority": "alta",
-      "r2EditionsDeclared": [],
-      "sourceStatus": "No hay versión indexada con este ID en search-registry.json",
-      "nextStep": "Identificar edición grecolatina acreditada y lícita; importar texto verificable antes de indexar.",
       "indexed": false
     },
     {
@@ -76,30 +55,6 @@
       "indexed": false
     },
     {
-      "id": "frontinus-gromatica",
-      "author": "Frontino",
-      "title": "Opuscula gromatica (De agrorum qualitate, De controversiis, De limitibus)",
-      "language": "la",
-      "classification": "ancient_work",
-      "priority": "alta",
-      "r2EditionsDeclared": [],
-      "sourceStatus": "No hay versión indexada con este ID en search-registry.json",
-      "nextStep": "Identificar edición grecolatina acreditada y lícita; importar texto verificable antes de indexar.",
-      "indexed": false
-    },
-    {
-      "id": "geminus-isagoge",
-      "author": "Gémino",
-      "title": "Εἰσαγωγὴ εἰς τὰ φαινόμενα · Elementa astronomiae",
-      "language": "grc",
-      "classification": "ancient_work",
-      "priority": "alta",
-      "r2EditionsDeclared": [],
-      "sourceStatus": "No hay versión indexada con este ID en search-registry.json",
-      "nextStep": "Identificar edición grecolatina acreditada y lícita; importar texto verificable antes de indexar.",
-      "indexed": false
-    },
-    {
       "id": "hyginus-gromaticus",
       "author": "Higino Gromático",
       "title": "Constitutio limitum",
@@ -111,18 +66,6 @@
       ],
       "sourceStatus": "No hay versión indexada con este ID en search-registry.json",
       "nextStep": "Comprobar el PDF/OCR existente, el título de portada, edición y derechos; producir texto por locus si la fuente lo permite.",
-      "indexed": false
-    },
-    {
-      "id": "pappus-synagoge",
-      "author": "Papo de Alejandría",
-      "title": "Συναγωγή · Collectio (libro VIII: mecánica)",
-      "language": "grc",
-      "classification": "ancient_work",
-      "priority": "alta",
-      "r2EditionsDeclared": [],
-      "sourceStatus": "No hay versión indexada con este ID en search-registry.json",
-      "nextStep": "Identificar edición grecolatina acreditada y lícita; importar texto verificable antes de indexar.",
       "indexed": false
     },
     {
@@ -140,18 +83,6 @@
       "indexed": false
     },
     {
-      "id": "procopius-aedificiis",
-      "author": "Procopio de Cesarea",
-      "title": "Περὶ κτισμάτων",
-      "language": "grc",
-      "classification": "ancient_work",
-      "priority": "alta",
-      "r2EditionsDeclared": [],
-      "sourceStatus": "No hay versión indexada con este ID en search-registry.json",
-      "nextStep": "Identificar edición grecolatina acreditada y lícita; importar texto verificable antes de indexar.",
-      "indexed": false
-    },
-    {
       "id": "ptolemy-geographia",
       "author": "Claudio Ptolomeo",
       "title": "Γεωγραφικὴ ὑφήγησις",
@@ -166,18 +97,6 @@
       "indexed": false
     },
     {
-      "id": "siculus-flaccus",
-      "author": "Sículo Flaco",
-      "title": "De condicionibus agrorum",
-      "language": "la",
-      "classification": "ancient_work",
-      "priority": "alta",
-      "r2EditionsDeclared": [],
-      "sourceStatus": "No hay versión indexada con este ID en search-registry.json",
-      "nextStep": "Identificar edición grecolatina acreditada y lícita; importar texto verificable antes de indexar.",
-      "indexed": false
-    },
-    {
       "id": "accius-fragmenta",
       "author": "Accio",
       "title": "Tragoediae (fragmenta)",
@@ -186,6 +105,20 @@
       "priority": "normal",
       "r2EditionsDeclared": [
         "accius-fragmenta"
+      ],
+      "sourceStatus": "No hay versión indexada con este ID en search-registry.json",
+      "nextStep": "Comprobar el PDF/OCR existente, el título de portada, edición y derechos; producir texto por locus si la fuente lo permite.",
+      "indexed": false
+    },
+    {
+      "id": "alberti-de-re-aedificatoria",
+      "author": "Leon Battista Alberti",
+      "title": "De re aedificatoria",
+      "language": "la",
+      "classification": "additional_r2_work",
+      "priority": "normal",
+      "r2EditionsDeclared": [
+        "alberti-de-re-aedificatoria"
       ],
       "sourceStatus": "No hay versión indexada con este ID en search-registry.json",
       "nextStep": "Comprobar el PDF/OCR existente, el título de portada, edición y derechos; producir texto por locus si la fuente lo permite.",
@@ -206,26 +139,14 @@
       "indexed": false
     },
     {
-      "id": "apuleius-de-deo-socratis",
-      "author": "Apuleyo",
-      "title": "De deo Socratis",
+      "id": "beda-de-temporum-ratione",
+      "author": "Beda el Venerable",
+      "title": "De temporum ratione",
       "language": "la",
-      "classification": "ancient_work",
-      "priority": "normal",
-      "r2EditionsDeclared": [],
-      "sourceStatus": "No hay versión indexada con este ID en search-registry.json",
-      "nextStep": "Identificar edición grecolatina acreditada y lícita; importar texto verificable antes de indexar.",
-      "indexed": false
-    },
-    {
-      "id": "aristoteles-meteorologica",
-      "author": "Aristóteles",
-      "title": "Μετεωρολογικά · Meteorologica",
-      "language": "grc",
-      "classification": "ancient_work",
+      "classification": "additional_r2_work",
       "priority": "normal",
       "r2EditionsDeclared": [
-        "aristoteles-meteorologica"
+        "beda-de-temporum-ratione"
       ],
       "sourceStatus": "No hay versión indexada con este ID en search-registry.json",
       "nextStep": "Comprobar el PDF/OCR existente, el título de portada, edición y derechos; producir texto por locus si la fuente lo permite.",
@@ -243,30 +164,6 @@
       ],
       "sourceStatus": "No hay versión indexada con este ID en search-registry.json",
       "nextStep": "Comprobar el PDF/OCR existente, el título de portada, edición y derechos; producir texto por locus si la fuente lo permite.",
-      "indexed": false
-    },
-    {
-      "id": "censorinus-die-natali",
-      "author": "Censorino",
-      "title": "De die natali",
-      "language": "la",
-      "classification": "ancient_work",
-      "priority": "normal",
-      "r2EditionsDeclared": [],
-      "sourceStatus": "No hay versión indexada con este ID en search-registry.json",
-      "nextStep": "Identificar edición grecolatina acreditada y lícita; importar texto verificable antes de indexar.",
-      "indexed": false
-    },
-    {
-      "id": "ennius-annales",
-      "author": "Ennio",
-      "title": "Annales (fragmenta)",
-      "language": "la",
-      "classification": "ancient_work",
-      "priority": "normal",
-      "r2EditionsDeclared": [],
-      "sourceStatus": "No hay versión indexada con este ID en search-registry.json",
-      "nextStep": "Identificar edición grecolatina acreditada y lícita; importar texto verificable antes de indexar.",
       "indexed": false
     },
     {
@@ -354,15 +251,17 @@
       "indexed": false
     },
     {
-      "id": "isidore-etymologiae",
+      "id": "isidoro-etymologiae",
       "author": "Isidoro de Sevilla",
-      "title": "Etymologiae",
+      "title": "Etymologiae / Origines de Isidoro — volumen I",
       "language": "la",
-      "classification": "ancient_work",
+      "classification": "additional_r2_work",
       "priority": "normal",
-      "r2EditionsDeclared": [],
+      "r2EditionsDeclared": [
+        "isidoro-etymologiae"
+      ],
       "sourceStatus": "No hay versión indexada con este ID en search-registry.json",
-      "nextStep": "Identificar edición grecolatina acreditada y lícita; importar texto verificable antes de indexar.",
+      "nextStep": "Comprobar el PDF/OCR existente, el título de portada, edición y derechos; producir texto por locus si la fuente lo permite.",
       "indexed": false
     },
     {
@@ -391,18 +290,6 @@
       ],
       "sourceStatus": "No hay versión indexada con este ID en search-registry.json",
       "nextStep": "Comprobar el PDF/OCR existente, el título de portada, edición y derechos; producir texto por locus si la fuente lo permite.",
-      "indexed": false
-    },
-    {
-      "id": "macrobius-saturnalia",
-      "author": "Macrobio",
-      "title": "Saturnalia",
-      "language": "la",
-      "classification": "ancient_work",
-      "priority": "normal",
-      "r2EditionsDeclared": [],
-      "sourceStatus": "No hay versión indexada con este ID en search-registry.json",
-      "nextStep": "Identificar edición grecolatina acreditada y lícita; importar texto verificable antes de indexar.",
       "indexed": false
     },
     {
@@ -462,6 +349,48 @@
       "indexed": false
     },
     {
+      "id": "palladio-quattro-libri",
+      "author": "Andrea Palladio",
+      "title": "I quattro libri dell'architettura",
+      "language": "it",
+      "classification": "additional_r2_work",
+      "priority": "normal",
+      "r2EditionsDeclared": [
+        "palladio-quattro-libri"
+      ],
+      "sourceStatus": "No hay versión indexada con este ID en search-registry.json",
+      "nextStep": "Comprobar el PDF/OCR existente, el título de portada, edición y derechos; producir texto por locus si la fuente lo permite.",
+      "indexed": false
+    },
+    {
+      "id": "petrarca-africa",
+      "author": "Francesco Petrarca",
+      "title": "Africa",
+      "language": "la",
+      "classification": "additional_r2_work",
+      "priority": "normal",
+      "r2EditionsDeclared": [
+        "petrarca-africa"
+      ],
+      "sourceStatus": "No hay versión indexada con este ID en search-registry.json",
+      "nextStep": "Comprobar el PDF/OCR existente, el título de portada, edición y derechos; producir texto por locus si la fuente lo permite.",
+      "indexed": false
+    },
+    {
+      "id": "petrarca-secretum",
+      "author": "Francesco Petrarca",
+      "title": "Secretum de Petrarca — texto dentro de volumen colectivo",
+      "language": "la",
+      "classification": "additional_r2_work",
+      "priority": "normal",
+      "r2EditionsDeclared": [
+        "petrarca-secretum"
+      ],
+      "sourceStatus": "No hay versión indexada con este ID en search-registry.json",
+      "nextStep": "Comprobar el PDF/OCR existente, el título de portada, edición y derechos; producir texto por locus si la fuente lo permite.",
+      "indexed": false
+    },
+    {
       "id": "proclo-comentario-euclides",
       "author": "Proclo",
       "title": "Εἰς τὸ πρῶτον τῶν Εὐκλείδου Στοιχείων · In primum Euclidis Elementorum librum commentarii",
@@ -476,39 +405,31 @@
       "indexed": false
     },
     {
-      "id": "seneca-de-ira",
-      "author": "Séneca",
-      "title": "De ira",
-      "language": "la",
-      "classification": "ancient_work",
+      "id": "scamozzi-idea-architettura",
+      "author": "Vincenzo Scamozzi",
+      "title": "L'idea della architettura universale",
+      "language": "it",
+      "classification": "additional_r2_work",
       "priority": "normal",
-      "r2EditionsDeclared": [],
+      "r2EditionsDeclared": [
+        "scamozzi-idea-architettura"
+      ],
       "sourceStatus": "No hay versión indexada con este ID en search-registry.json",
-      "nextStep": "Identificar edición grecolatina acreditada y lícita; importar texto verificable antes de indexar.",
+      "nextStep": "Comprobar el PDF/OCR existente, el título de portada, edición y derechos; producir texto por locus si la fuente lo permite.",
       "indexed": false
     },
     {
-      "id": "seneca-de-tranquillitate",
-      "author": "Séneca",
-      "title": "De tranquillitate animi",
-      "language": "la",
-      "classification": "ancient_work",
+      "id": "serlio-architettura",
+      "author": "Sebastiano Serlio",
+      "title": "Regole generali di architettura (Serlio) — edición individual",
+      "language": "it",
+      "classification": "additional_r2_work",
       "priority": "normal",
-      "r2EditionsDeclared": [],
+      "r2EditionsDeclared": [
+        "serlio-architettura"
+      ],
       "sourceStatus": "No hay versión indexada con este ID en search-registry.json",
-      "nextStep": "Identificar edición grecolatina acreditada y lícita; importar texto verificable antes de indexar.",
-      "indexed": false
-    },
-    {
-      "id": "seneca-naturales",
-      "author": "Séneca",
-      "title": "Naturales quaestiones",
-      "language": "la",
-      "classification": "ancient_work",
-      "priority": "normal",
-      "r2EditionsDeclared": [],
-      "sourceStatus": "No hay versión indexada con este ID en search-registry.json",
-      "nextStep": "Identificar edición grecolatina acreditada y lícita; importar texto verificable antes de indexar.",
+      "nextStep": "Comprobar el PDF/OCR existente, el título de portada, edición y derechos; producir texto por locus si la fuente lo permite.",
       "indexed": false
     },
     {
@@ -540,15 +461,67 @@
       "indexed": false
     },
     {
-      "id": "velleius-historia",
-      "author": "Veleyo Patérculo",
-      "title": "Historia Romana",
+      "id": "vasari-vite",
+      "author": "Giorgio Vasari",
+      "title": "Le vite de’ più eccellenti pittori, scultori e architettori",
+      "language": "it",
+      "classification": "additional_r2_work",
+      "priority": "normal",
+      "r2EditionsDeclared": [
+        "vasari-vite"
+      ],
+      "sourceStatus": "No hay versión indexada con este ID en search-registry.json",
+      "nextStep": "Comprobar el PDF/OCR existente, el título de portada, edición y derechos; producir texto por locus si la fuente lo permite.",
+      "indexed": false
+    },
+    {
+      "id": "vignola-cinque-ordini",
+      "author": "Giacomo Barozzi da Vignola",
+      "title": "Regola delli cinque ordini d’architettura",
+      "language": "it",
+      "classification": "additional_r2_work",
+      "priority": "normal",
+      "r2EditionsDeclared": [
+        "vignola-cinque-ordini"
+      ],
+      "sourceStatus": "No hay versión indexada con este ID en search-registry.json",
+      "nextStep": "Comprobar el PDF/OCR existente, el título de portada, edición y derechos; producir texto por locus si la fuente lo permite.",
+      "indexed": false
+    },
+    {
+      "id": "procopius-aedificiis",
+      "author": "Procopio de Cesarea",
+      "title": "Περὶ κτισμάτων",
+      "language": "grc",
+      "classification": "ancient_work",
+      "priority": "alta",
+      "r2EditionsDeclared": [],
+      "sourceStatus": "No hay versión indexada con este ID en search-registry.json",
+      "nextStep": "Buscar primero una fuente existente en GitHub/R2 y verificar su identidad; si no existe, mantener pendiente sin adquirir nuevas obras.",
+      "indexed": false
+    },
+    {
+      "id": "krohn-1912-pdf",
+      "author": "Vitruvio · edición de Fritz Krohn",
+      "title": "Vitruvii De architectura libri decem · Krohn 1912",
       "language": "la",
+      "classification": "modern_edition_of_existing_work",
+      "priority": "normal",
+      "r2EditionsDeclared": [],
+      "sourceStatus": "No hay versión indexada con este ID en search-registry.json",
+      "nextStep": "Vincular como manifestación de Vitruvio; no contar ni reindexar como nueva obra antigua.",
+      "indexed": false
+    },
+    {
+      "id": "sappho-fragmenta",
+      "author": "Safo",
+      "title": "Fragmenta · Fragmentos",
+      "language": "grc",
       "classification": "ancient_work",
       "priority": "normal",
       "r2EditionsDeclared": [],
       "sourceStatus": "No hay versión indexada con este ID en search-registry.json",
-      "nextStep": "Identificar edición grecolatina acreditada y lícita; importar texto verificable antes de indexar.",
+      "nextStep": "Buscar primero una fuente existente en GitHub/R2 y verificar su identidad; si no existe, mantener pendiente sin adquirir nuevas obras.",
       "indexed": false
     },
     {
