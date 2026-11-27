@@ -161,3 +161,18 @@ console.log('SCOPE: mocked fetch only; not an HTTP availability or scholarly acc
  assert(engine.sourceIdentityOK({...source,format:"structured-bilingual"},{passages:doc.passages}));
  console.log("PASS: documentary identity checks and legitimate editorial aliases.");
 }
+
+{
+ const {engine}=createEngine();
+ assert(engine.normalizedPhrase("ars architectura","ars"));
+ assert(!engine.normalizedPhrase("pars architectura","ars"));
+ assert(!engine.normalizedPhrase("λογοσ","λογ"));
+ assert(engine.normalizedPhrase("λόγος","λογοσ"));
+ assert(!engine.literalPhrase("λόγος","λογοσ"));
+ assert(engine.literalPhrase("ὁ λόγος.","λόγος"));
+ assert(!engine.passagePhrase({excerptText:"ars ciencia",original:"ars",translation:"ciencia"},"ars ciencia"));
+ assert(engine.passagePhrase({excerptText:"ars la ciencia",original:"ars",translation:"la ciencia"},"la ciencia"));
+ assert(!engine.normalizedPhrase("ars",""));
+ assert(!engine.literalPhrase("pars","ars"));
+ console.log("PASS: literal versus normalized phrase, whole tokens, Greek and bilingual boundaries.");
+}
