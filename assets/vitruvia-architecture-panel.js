@@ -43,7 +43,7 @@ function classify(query,rows=[]){
  if(wiki.length)return{kind:'person',subject:short(wiki[0].title),identity:wiki[0]};
  // A UNESCO-attested architect can still be identified if external snippets omit
  // occupation or the entity API is temporarily unreachable.
- if(certifiedSites[q])return{kind:'person',subject:short(query),identity:rows.find(x=>x.type==='wikipedia'&&normalize(x.title||'')===q)||null};
+ if(certifiedSites[q]||['palladio','brunelleschi','brunellesci','filippo brunellesci'].includes(q))return{kind:'person',subject:short(query),identity:rows.find(x=>x.type==='wikipedia'&&normalize(x.title||'')===q)||null};
  // No attribution without a matching biographical record.
  if(KEY.test(q))return{kind:'general',subject:short(query),identity:null};
  return null;
@@ -206,6 +206,27 @@ function constructedWorks(id){
    UNESCO World Heritage Centre entry 1496 gives these eight component sites.
    This is a *curated verified subset*, not a claim of complete works. */
 const certifiedSites={
+ 'andrea palladio':{
+  source:'UNESCO · World Heritage Centre · 712',
+  url:'https://whc.unesco.org/en/list/712',
+  items:[
+   ['Villa Almerico Capra (La Rotonda)','','Vicenza','Villa La Rotonda'],
+   ['Basilica Palladiana','','Vicenza','Basilica Palladiana'],
+   ['Teatro Olimpico','','Vicenza','Teatro Olimpico'],
+   ['Villa Barbaro','','Maser, Veneto','Villa Barbaro'],
+   ['Villa Foscari','','Mira, Veneto','Villa Foscari'],
+   ['Villa Emo','','Fanzolo, Veneto','Villa Emo']
+  ]
+ },
+ 'filippo brunelleschi':{
+  source:'Opera di Santa Maria del Fiore / Museo degli Innocenti',
+  url:'https://duomo.firenze.it/en/discover/dome',
+  items:[
+   ['Ospedale degli Innocenti','desde 1419','Firenze','Ospedale degli Innocenti','https://www.museodeglinnocenti.it/en/museo/percorsi-espositivi/architettura/'],
+   ['Cúpula de Santa Maria del Fiore','1420–1436','Firenze','Florence Cathedral dome','https://duomo.firenze.it/en/discover/dome']
+  ]
+ },
+
  'le corbusier':{source:'Fondation Le Corbusier · catálogo de obras realizadas',url:'https://www.fondationlecorbusier.fr/en/le-corbusier/works/architecture/achievements/',items:[
  ['Villa Fallet','1906–1907','La Chaux-de-Fonds','Villa Fallet'],
  ['Villa Jeanneret-Perret','1911–1912','La Chaux-de-Fonds','Villa Jeanneret-Perret'],
@@ -329,7 +350,7 @@ function listConstructedWorks(root,name,id,valid){
  root.append(section);
  const list=el('ol','architecture-work-stack');section.append(list);
  void commonsBuildings(section,name,valid).catch(()=>{});
- const certified=certifiedSites[normalize(name)];
+ const certified=certifiedSites[normalize(name)]||certifiedSites[({'palladio':'andrea palladio','brunelleschi':'filippo brunelleschi','brunellesci':'filippo brunelleschi','filippo brunellesci':'filippo brunelleschi'})[normalize(name)]];
  const seen=new Set();
  function addWork(work,provenance){
   const title=normalize(work.title||'');
