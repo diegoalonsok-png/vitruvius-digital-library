@@ -24,10 +24,16 @@ function describe(r){
   if(declared.length)out.push({language:v.language,path:v.path,kind:"declared",missing:declared,text:"Faltantes declarados por la fuente: "+declared.join(", ")+" · porcentaje no determinado"});
   if(ref.length||books.length||empty.length){
    const parts=[];
-   if(ref.length)parts.push("loci no detectados: "+ref.join(", "));
+   if(ref.length){
+    const total=v.expectedReferenceLoci;
+    if(Number.isInteger(total)&&total>=ref.length&&total>0){
+     out.push({language:v.language,path:v.path,kind:"reference",missing:ref,
+      text:pct(100*(total-ref.length)/total)+" de loci de referencia detectados · "+pct(100*ref.length/total)+" no detectados ("+(total-ref.length)+"/"+total+") · loci: "+ref.join(", ")+" · pendiente de cotejo"});
+    }else parts.push("loci no detectados: "+ref.join(", "));
+   }
    if(books.length)parts.push("libros no detectados: "+books.join(", "));
    if(empty.length)parts.push("loci vacíos: "+empty.join(", "));
-   out.push({language:v.language,path:v.path,kind:"review",text:"Completud por verificar · "+parts.join(" · ")+" (no equivale a pérdida textual comprobada)"});
+   if(parts.length)out.push({language:v.language,path:v.path,kind:"review",text:"Completud por verificar · "+parts.join(" · ")+" (no equivale a pérdida textual comprobada)"});
   }
  }
  for(const f of r.facsimiles||[])if(f.note&&r.status==="scope_warning")out.push({edition:f.id,kind:"scope",text:"Alcance de edición: "+f.note+" · porcentaje no determinado"});
@@ -42,6 +48,8 @@ function titleSuffix(r){
   const labels=[...new Set(confirmed.map(x=>(x.language?x.language+": ":"")+x.text))];
   return " ["+labels.join(" | ")+(rows.some(x=>x.kind!=="confirmed")?" · otras incidencias en ficha":"")+"]";
  }
+ const references=rows.filter(x=>x.kind==="reference");
+ if(references.length)return " ["+[...new Set(references.map(x=>(x.language?x.language+": ":"")+x.text))].join(" | ")+"]";
  return " ["+(rows.some(x=>x.kind==="declared")?"Faltantes declarados":rows.some(x=>x.kind==="scope")?"Edición de alcance limitado":"Completud por verificar")+" · % no determinado]";
 }
 g.BibliothecaCompleteness={describe,titleSuffix};
