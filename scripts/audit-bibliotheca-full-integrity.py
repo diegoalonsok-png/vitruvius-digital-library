@@ -327,7 +327,7 @@ def publish_results(folder):
   checks=[]
   for f in record.get("facsimiles",[]):
    eid=f["id"];o=ocr_by_id.get(eid,{});p=pdf_by_id.get(eid,{})
-   checks.append({"id":eid,"ocrStatus":o.get("status"),"ocrFlags":o.get("flags",[]),"ocrPages":o.get("ocrPages"),"declaredPdfPages":o.get("declaredPdfPages"),"pagesWithoutExtractedText":o.get("pagesWithoutExtractedText",[]),"ocrReason":o.get("reason"),"pdfStatus":p.get("status"),"pdfFlags":p.get("flags",[]),"pdfPages":p.get("observed",{}).get("pages"),"pdfReason":p.get("reason")})
+   checks.append({"id":eid,"ocrStatus":o.get("status"),"ocrFlags":o.get("flags",[]),"ocrPages":o.get("ocrPages"),"declaredPdfPages":o.get("declaredPdfPages"),"pagesWithoutExtractedText":o.get("pagesWithoutExtractedText",[]),"ocrReason":o.get("reason"),"pdfStatus":p.get("status"),"pdfFlags":p.get("flags",[]),"pdfPages":p.get("observed",{}).get("pages"),"physicalPageCheck":p.get("observed",{}).get("physicalPageCheck"),"pdfReason":p.get("reason")})
   record["latestFacsimileChecks"]=checks
   # Preserve prior expert findings; automatic checks add evidence, not certification.
   record["fullTextCollation"]="not_completed"

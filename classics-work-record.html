@@ -160,6 +160,7 @@ async function ready(){
       for(const f of i.latestFacsimileChecks||[]){
         p("Facsímil "+f.id+" · páginas PDF observadas: "+(f.pdfPages??"sin comprobar")+" · páginas OCR: "+(f.ocrPages??"sin comprobar")+(f.declaredPdfPages!=null?" · páginas declaradas: "+f.declaredPdfPages:""));
         if(f.pagesWithoutExtractedText?.length)p("Páginas sin texto OCR: "+f.pagesWithoutExtractedText.join(", ")+" (pueden ser blancas o ilustraciones; no son necesariamente folios faltantes).");
+        if(f.physicalPageCheck){const c=f.physicalPageCheck;p("Páginas físicas recorridas: "+c.pagesTraversed+" · páginas ilegibles estructuralmente: "+(c.unreadablePages||[]).length);if(c.unreadablePages?.length)p("Páginas PDF con error de lectura: "+c.unreadablePages.map(x=>x.page).join(", "));if(c.pagesWithoutContentStream?.length)p("Páginas sin flujo de contenido PDF: "+c.pagesWithoutContentStream.join(", ")+" (pueden estar en blanco; no se declaran folios perdidos).");}
         if(f.pdfReason||f.ocrReason)p("Control no completado: "+[f.pdfReason,f.ocrReason].filter(Boolean).join(" · "));
         if(f.pdfFlags?.length||f.ocrFlags?.length)p("Incidencias PDF/OCR: "+[...f.pdfFlags,...f.ocrFlags].join(", "));
       }

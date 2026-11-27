@@ -32,7 +32,16 @@ def pdf_read(path):
   if not doc.is_pdf or doc.needs_pass:raise ValueError("Unreadable PDF")
   pages=len(doc);positions=sorted(set(range(min(16,pages)))|set(range(max(0,pages-2),pages))|{int(pages*f) for f in (0.25,0.50,0.75) if pages})
   parts=[{"page":i+1,"text":doc[i].get_text("text").strip()} for i in positions]
-  return pages,parts,doc.metadata or {}
+  # Traverse every physical page; this is not visual or printed pagination collation.
+  unreadable=[];no_stream=[]
+  for i in range(pages):
+   try:
+    page=doc.load_page(i)
+    if page.rect.is_empty or page.rect.is_infinite:raise ValueError("Invalid page dimensions")
+    if not page.get_contents():no_stream.append(i+1)
+    else:page.read_contents()
+   except Exception as exc:unreadable.append({"page":i+1,"reason":str(exc)[:180]})
+  return pages,parts,doc.metadata or {},{"pagesTraversed":pages,"unreadablePages":unreadable,"pagesWithoutContentStream":no_stream,"scope":"Physical PDF structure only; no conclusion about missing printed folios or blank pages."}
 def docx_read(path):
  with zipfile.ZipFile(path) as z:
   if "word/document.xml" not in z.namelist():raise ValueError("Invalid DOCX")
@@ -42,7 +51,7 @@ def docx_read(path):
   if "docProps/core.xml" in z.namelist():
    props=ElementTree.fromstring(z.read("docProps/core.xml"))
    meta={x.tag.split("}")[-1]:x.text for x in props.iter() if x.text and x.tag.split("}")[-1] in ("title","creator")}
-  return None,[{"page":None,"text":value[:20000]}],meta
+  return None,[{"page":None,"text":value[:20000]}],meta,None
 def inspect(item,local_dir):
  suffix=".docx" if item.get("pdf","").lower().endswith(".docx") else ".pdf"
  with tempfile.TemporaryDirectory() as folder:
@@ -54,7 +63,7 @@ def inspect(item,local_dir):
    with open(target,"rb") as file:
     for chunk in iter(lambda:file.read(262144),b""):sha256.update(chunk)
    sha,nbytes=sha256.hexdigest(),target.stat().st_size
-  pages,parts,metadata=docx_read(target) if suffix==".docx" else pdf_read(target)
+  pages,parts,metadata,page_check=docx_read(target) if suffix==".docx" else pdf_read(target)
   opening=fold(" ".join(x["text"] for x in parts if x["page"] is None or x["page"]<=16))
   sample=fold(" ".join(x["text"] for x in parts))
   author=fold(item.get("autor"))
@@ -64,6 +73,7 @@ def inspect(item,local_dir):
   found=list(dict.fromkeys(x for x in words if x in title_sample))[:12]
   author_found=list(dict.fromkeys(x for x in author_tokens if x in sample))[:8]
   flags=[]
+  if page_check and page_check["unreadablePages"]:flags.append("UNREADABLE_PDF_PAGES")
   if item.get("sha256") and sha!=item["sha256"]:flags.append("SHA256_MISMATCH")
   if item.get("bytes") and nbytes!=item["bytes"]:flags.append("BYTES_MISMATCH")
   if pages is not None and isinstance(item.get("paginas"),int) and pages!=item["paginas"]:flags.append("PAGE_COUNT_MISMATCH")
@@ -89,7 +99,7 @@ def inspect(item,local_dir):
   return {"id":item["id"],"declaredAuthor":item.get("autor"),"declaredTitle":item.get("tituloEdicion"),
           "declaredVolume":item.get("volumen"),"declaredTranslator":item.get("traductor"),
           "source":item.get("pdf"),"archiveRecord":item.get("fuente"),
-          "observed":{"pages":pages,"sha256":sha,"bytes":nbytes,"metadata":metadata,
+          "observed":{"pages":pages,"sha256":sha,"bytes":nbytes,"metadata":metadata,"physicalPageCheck":page_check,
                       "openingTextLength":sum(len(x["text"]) for x in parts if x["page"] is None or x["page"]<=16),
                       "sampledPages":[x["page"] for x in parts],"matchingTitleTerms":found,"matchingAuthorTerms":author_found,
                       "printedVolumeCandidates":list(dict.fromkeys(printed))[:6],
@@ -97,7 +107,7 @@ def inspect(item,local_dir):
                       "workTitleTermsSeen":title_hits[:12],"authorTermsSeen":author_hits[:12],
                       "openingPageExcerpt":(parts[0]["text"] if parts else "")[:450]},
           "flags":flags,"catalogueWarning":item.get("incidenciaCatalografica"),
-          "status":"binary_discrepancy" if any(x in flags for x in ("SHA256_MISMATCH","BYTES_MISMATCH","PAGE_COUNT_MISMATCH")) else "manual_review_needed" if flags else "consistent_metadata_NOT_certified_edition"}
+          "status":"binary_discrepancy" if any(x in flags for x in ("SHA256_MISMATCH","BYTES_MISMATCH","PAGE_COUNT_MISMATCH","UNREADABLE_PDF_PAGES")) else "manual_review_needed" if flags else "consistent_metadata_NOT_certified_edition"}
 def main():
  parser=argparse.ArgumentParser()
  parser.add_argument("--start",type=int,default=0);parser.add_argument("--limit",type=int,default=12)
