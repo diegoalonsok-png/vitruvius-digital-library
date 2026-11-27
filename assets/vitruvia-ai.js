@@ -138,7 +138,7 @@ async function prepareCorpus(selection,registryError){
       author:source.author||data.author||"Autor documentado",
       edition:source.edition||data.version||"",language:source.language||data.language||"",
       source:source.source||"Bibliotheca",sourceUrn:source.sourceUrn||data.sourceUrn||"",sha256:source.sha256||"",sourcePath:source.url,url:urlFor(source,passage.locus,passage),
-      original,translation,excerptText,chunk,tf,length:tokens.length,lexical:0
+      original,originalLanguage:passage.latin?"la":passage.greek?"grc":source.language||data.language||"",translation,excerptText,chunk,tf,length:tokens.length,lexical:0
      });
     }
    }
@@ -492,7 +492,7 @@ function renderRow(doc,query,score,semantic=false){
  const kind=semantic?(exact?"E5 + coincidencia textual · cotejo pendiente":"Reordenación E5 + BM25 · comprobar pertinencia"):"BM25 · coincidencia textual indexada";
  return {type:"passage",title:doc.workTitle+" · "+doc.locus,
   author:doc.author+" · "+doc.edition+" · "+doc.language,
-  excerpt:sourceExcerpt(doc,query),language:doc.language,original:doc.original,latin:doc.language==="la"?doc.original:"",greek:doc.language==="grc"?doc.original:"",translation:doc.translation,
+  excerpt:sourceExcerpt(doc,query),language:doc.language,original:doc.original,originalLanguage:doc.originalLanguage,latin:doc.originalLanguage==="la"?doc.original:"",greek:doc.originalLanguage==="grc"?doc.original:"",translation:doc.translation,
   locus:doc.locus,edition:doc.edition,workId:doc.workId,link:doc.url,source:doc.source,sourceUrn:doc.sourceUrn,sourceSha256:doc.sha256,sourcePath:doc.sourcePath,
   meta:kind+" · "+doc.source+" · locus "+doc.locus,
   rating:Math.round(score),aiScore:Math.round(score),aiSemantic:semantic,
