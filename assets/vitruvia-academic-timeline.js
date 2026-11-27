@@ -379,6 +379,8 @@
  }
  // Keep the life scale independent of later documentary reception.
  function splitChronology(events,isPerson,born,died){
+  born=Number.isSafeInteger(born)&&born!==0?born:null;
+  died=Number.isSafeInteger(died)&&died!==0?died:null;
   if(born!==null&&died!==null&&born>died){born=null;died=null}
   const visible=[],outside=[],uncertain=[];
   for(const e of events){
@@ -389,6 +391,12 @@
    // not be promoted to personal milestones. Direct personal statements
    // remain visible; uncertainty about participation is preserved.
    if(isPerson&&(born===null||died===null)&&e.lane!=="life"&&!e.personalDate){
+    uncertain.push(e);continue;
+   }
+   // An interval extending beyond a known death is not a certified
+   // lifetime event. Preserve the full statement separately, without
+   // silently clipping its original end date.
+   if(isPerson&&died!==null&&Number.isSafeInteger(e.end)&&e.end>died){
     uncertain.push(e);continue;
    }
    visible.push(e);
