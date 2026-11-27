@@ -528,45 +528,38 @@ function render(){
   const searched=rawQuery.trim();
   list.replaceChildren();more.hidden=true;count.textContent="";
   if(normal(searched).length<2){model.region.hidden=true;return;}
-  const readerFor=w=>compareLink(w);
-  const scored=model.items.map(w=>({w,score:rank(w,searched)}))
-   .filter(x=>x.score>=55)
-   .sort((a,b)=>b.score-a.score||a.w.title.localeCompare(b.w.title,"es",{sensitivity:"base"}));
-  // Author search: show that author as a heading and each of their readable works,
-  // not a catalogue-wide list, and never arbitrarily pick the first book.
-  const authors=new Map();
-  for(const w of model.items){
-   const key=String(w.id||"").split("-")[0];
-   const authorScore=rank({id:key,author:w.author,title:"",
-     forms:[w.author,...(authorNameVariants[key]||[])],originalAliases:[]},searched);
-   if(authorScore<85)continue;
-   const old=authors.get(key);
-   if(!old||authorScore>old.score)authors.set(key,{key,name:w.author,score:authorScore});
+  // The catalogue and reading registry are different: a work remains discoverable
+  // even when no individual text has been hosted or verified.
+  const authorityKey=w=>/^cts-tlg(\d+)-/.test(w.id)?w.id.match(/^cts-tlg(\d+)-/)[1]:"";
+  const authorScore=w=>{
+   const prefix=String(w.id||"").split("-")[0];
+   const authorForms=[w.author,spanishAuthorName(w),...(authorNameVariants[prefix]||[])].filter(Boolean);
+   return Math.max(0,...authorForms.map(value=>rank({id:"author",author:value,title:"",forms:[value],originalAliases:[]},searched)));
+  };
+  const exactAuthors=model.items.filter(w=>authorScore(w)>=115);
+  const authorNames=new Set(exactAuthors.map(w=>foldAuthority(w.author)));
+  const authorCodes=new Set(exactAuthors.map(authorityKey).filter(Boolean));
+  const isAuthor=exactAuthors.length>0;
+  const scored=model.items.map(w=>({w,score:rank(w,searched)})).filter(x=>isAuthor?(authorNames.has(foldAuthority(x.w.author))||authorCodes.has(authorityKey(x.w))||authorScore(x.w)>=115):x.score>=55)
+   .sort((a,b)=>isAuthor?a.w.title.localeCompare(b.w.title,"es",{sensitivity:"base"}):b.score-a.score||a.w.title.localeCompare(b.w.title,"es",{sensitivity:"base"}));
+  model.region.hidden=false;
+  count.textContent=scored.length+" fichas encontradas"+(scored.length>limit?" · mostrando "+limit:"");
+  if(!scored.length){list.append(make("li","No se encontraron obras en el catálogo. Pruebe otra grafía.","bws-empty"));return;}
+  for(const {w} of scored.slice(0,limit)){
+   const row=make("li",null,"bws-item");
+   const link=make("a",bilingualWorkLabel(w),"bws-plain-title");
+   const original=w.versions.find(v=>v.language===w.originalLanguage&&safeReader(v.reader));
+   const version=original||w.versions.find(v=>safeReader(v.reader));
+   link.href=version?safeReader(version.reader):w.heritageReader?heritageLink(w.heritageReader):workLink(w.id);
+   link.title=version?"Leer edición registrada":"Consultar ficha académica";
+   row.append(link);appendEditionSummary(row,w);
+   const status=make("span",version?"Texto registrado":w.facsimile?"Facsímil/OCR declarado":"Ficha bibliográfica · texto no asociado","bws-plain-status");row.append(status);
+   if(version){const ficha=make("a","Ficha académica","bws-plain-record");ficha.href=workLink(w.id);row.append(ficha)}
+   if(w.facsimile){const fac=make("a","Consultar facsímil/OCR","bws-plain-record");fac.href=facLink(w.facsimile);row.append(fac)}
+   list.append(row);
   }
-  const foundAuthor=[...authors.values()].sort((a,b)=>b.score-a.score)[0];
-  if(foundAuthor){
-   const books=model.items.filter(w=>String(w.id||"").split("-")[0]===foundAuthor.key&&readerFor(w))
-    .sort((a,b)=>a.title.localeCompare(b.title,"es",{sensitivity:"base"}));
-   if(!books.length){model.region.hidden=true;return;}
-   const sample=model.items.find(w=>String(w.id||"").split("-")[0]===foundAuthor.key);
-   const heading=make("li",(foundAuthor.name||"Autor")+(sample&&spanishAuthorName(sample)?" — "+spanishAuthorName(sample):""),"bws-author-heading");
-   list.append(heading);
-   for(const w of books){
-    const row=make("li",null,"bws-item");
-    const link=make("a",bilingualWorkLabel(w,false),"bws-plain-title");
-    link.href=readerFor(w);link.title="Abrir los dos visores académicos";
-    row.append(link);appendEditionSummary(row,w);list.append(row);
-   }
-   model.region.hidden=false;return;
-  }
-  // Title search: one exact best match only, with direct reading link.
-  const match=scored.find(x=>readerFor(x.w));
-  if(!match){model.region.hidden=true;return;}
-  const row=make("li",null,"bws-item");
-  const link=make("a",bilingualWorkLabel(match.w),"bws-plain-title");
-  link.href=readerFor(match.w);link.title="Abrir los dos visores académicos";
-  row.append(link);appendEditionSummary(row,match.w);list.append(row);
-  model.region.hidden=false;return;
+  if(scored.length>limit){more.hidden=false;more.textContent="Mostrar más obras ("+(scored.length-limit)+" restantes)";}
+  return;
  }
 
  const hasFacets=Boolean(model.authorFilter.value.trim()||model.genreFilter.value||model.subjectFilter.value||model.centuryFilter.value||model.periodFilter.value||model.languageFilter.value||model.letter||typedLetter);
@@ -605,7 +598,7 @@ function render(){
     if(w.versions.some(v=>safeReader(v.reader)))addLink(actions,"Lexicon · vocabulario de esta obra",lexiconWorkLink(w.id));
     addRecordedEditions(actions,w);
    if(w.id==="vitruvius")addLink(actions,"Ediciones, traducciones y códices","classics-work-record.html?work=vitruvius");
-   else if(!w.newWork&&!w.registryOnly)addLink(actions,"Ficha académica",workLink(w.id));
+   else if(!w.heritageReader)addLink(actions,"Ficha académica",workLink(w.id));
    li.append(actions);renderVitruvianCodices(li,w);list.append(li);
   }
   if(!typedLetter&&!model.letter&&all.length>limit){more.hidden=false;more.textContent="Mostrar más obras ("+(all.length-limit)+" restantes)"}
@@ -641,7 +634,7 @@ function render(){
    if(w.facsimile)addLink(actions,"Ver facsímil",facLink(w.facsimile));
     if(w.versions.some(v=>safeReader(v.reader)))addLink(actions,"Lexicon · vocabulario de esta obra",lexiconWorkLink(w.id));
     addRecordedEditions(actions,w);
-  if(!w.newWork&&!w.registryOnly)addLink(actions,"Ficha académica",workLink(w.id));
+  if(!w.heritageReader)addLink(actions,"Ficha académica",workLink(w.id));
   item.append(actions);if(!(w.id==="vitruvius"&&isVitruviusQuery(q)))renderVitruvianCodices(item,w);list.append(item);
  }
  if(isVitruvianEditionQuery(q)||isKuriloEditionQuery(model.authorFilter.value)){
@@ -655,7 +648,7 @@ function mount(parent,data){
  const index=new Map();
  for(const w of data.catalog.works)index.set(w.id,{
   id:w.id,title:w.title,author:w.author,genre:w.genre||"",subjects:Array.isArray(w.subjects)?w.subjects:[],topics:Array.isArray(w.topics)?w.topics:[],dating:w.dating||"",originalLanguage:w.language||w.originalLanguage||"",originalTitle:w.originalTitle||w.titleOriginal||w.tituloOriginal||"",latinTitle:w.latinTitle||"",greekTitle:w.greekTitle||"",originalAliases:Array.isArray(w.originalAliases)?w.originalAliases:[],forms:[w.title,w.author,w.id.replaceAll("-"," ")],
-  versions:[],facsimile:null,newWork:false
+  versions:[],facsimile:w.inventoryFacsimiles?.[0]?.editionId||null,newWork:false
  });
  for(const e of data.registry.entries){
   let w=index.get(e.workId);
@@ -689,7 +682,7 @@ function mount(parent,data){
  input.setAttribute("aria-controls","bws-results");
  const submit=make("button","Buscar obra");submit.type="submit";
   const browse=make("button","Ver catálogo completo");browse.type="button";browse.className="bws-browse";
- const r2Browse=make("button","Ver 44 originales R2");r2Browse.type="button";r2Browse.className="bws-browse";
+ const r2Browse=make("button","Ver originales R2");r2Browse.type="button";r2Browse.className="bws-browse";
  row.append(input,submit,browse,r2Browse);form.append(label,row);
  const region=make("div");region.hidden=true;
  const count=make("p",null,"bws-count");count.id="bws-count";count.setAttribute("role","status");count.setAttribute("aria-live","polite");
@@ -781,15 +774,15 @@ function mount(parent,data){
     visible.setAttribute("aria-controls","bws-results");
     visible.setAttribute("aria-autocomplete","list");
    }
-   const sync=()=>{input.value=visible.value;model.letter="";model.limit=12;render()};
+   const sync=()=>{input.value=visible.value;model.letter="";model.limit=40;render()};
    visible.addEventListener("input",sync);
    visible.addEventListener("search",sync);
    visible.addEventListener("change",sync);
    const searchForm=document.getElementById("bibliotheca-lexicon-form");
    searchForm?.addEventListener("submit",event=>{
     event.preventDefault();event.stopImmediatePropagation();sync();
-    const first=list.querySelector("a");
-    if(first)location.assign(first.href);
+    const matches=list.querySelectorAll(".bws-plain-title");
+    if(matches.length===1&&more.hidden)location.assign(matches[0].href);
    },true);
    sync();
   }
@@ -810,9 +803,9 @@ function mount(parent,data){
   if(ix<0)return;e.preventDefault();anchors[Math.max(0,Math.min(anchors.length-1,ix+(e.key==="ArrowDown"?1:-1)))].focus();
  });
  form.addEventListener("submit",e=>{e.preventDefault();model.limit=40;render();const q=input.value.trim();if(q.length<2)return;const found=model.items.map(w=>({w,score:rank(w,q)})).filter(x=>x.score>=55&&compareLink(x.w)).sort((a,b)=>b.score-a.score);if(found.length)location.assign(compareLink(found[0].w));});
-  browse.addEventListener("click",()=>{model.r2Only=false;model.showAll=!model.showAll;model.limit=40;input.value="";r2Browse.textContent="Ver 44 originales R2";browse.textContent=model.showAll?"Ocultar catálogo completo":"Ver catálogo completo";render()});
- r2Browse.addEventListener("click",()=>{model.r2Only=!model.r2Only;model.showAll=model.r2Only;model.limit=50;input.value="";for(const filter of [model.authorFilter,model.genreFilter,model.subjectFilter,model.centuryFilter,model.periodFilter,model.languageFilter])filter.value="";model.letter="";r2Browse.textContent=model.r2Only?"Ocultar originales R2":"Ver 44 originales R2";browse.textContent="Ver catálogo completo";render()});
- input.addEventListener("input",()=>{if(input.value.trim()){model.r2Only=false;r2Browse.textContent="Ver 44 originales R2";model.letter="";clearAlphabet();allLetters.setAttribute("aria-pressed","true")}model.limit=40;render()});
+  browse.addEventListener("click",()=>{model.r2Only=false;model.showAll=!model.showAll;model.limit=40;input.value="";r2Browse.textContent="Ver originales R2";browse.textContent=model.showAll?"Ocultar catálogo completo":"Ver catálogo completo";render()});
+ r2Browse.addEventListener("click",()=>{model.r2Only=!model.r2Only;model.showAll=model.r2Only;model.limit=50;input.value="";for(const filter of [model.authorFilter,model.genreFilter,model.subjectFilter,model.centuryFilter,model.periodFilter,model.languageFilter])filter.value="";model.letter="";r2Browse.textContent=model.r2Only?"Ocultar originales R2":"Ver originales R2";browse.textContent="Ver catálogo completo";render()});
+ input.addEventListener("input",()=>{if(input.value.trim()){model.r2Only=false;r2Browse.textContent="Ver originales R2";model.letter="";clearAlphabet();allLetters.setAttribute("aria-pressed","true")}model.limit=40;render()});
  // El buscador principal tiene también el modo Texto/Lexicon.
  // Una sola letra siempre abre el índice alfabético de obras, sin enviar al Lexicon.
  const mainForm=document.getElementById("search-form");
@@ -843,7 +836,7 @@ function mount(parent,data){
    section.scrollIntoView({behavior:"smooth",block:"start"});
   },true);
  }
- more.addEventListener("click",()=>{model.limit+=10;render()});
+ more.addEventListener("click",()=>{model.limit+=40;render()});
  render();
  fetch("data/classics-corpus/edition-list-labels.json",{cache:"no-cache"})
   .then(r=>r.ok?r.json():null)
@@ -941,11 +934,12 @@ async function bootstrap(){
  }
  if(!parent||document.getElementById("bibliotheca-work-search"))return;
  try{
-  const [catalogResult,registryResult,roadmapResult,supplementResult]=await Promise.allSettled([
+  const [catalogResult,registryResult,roadmapResult,supplementResult,inventoryResult]=await Promise.allSettled([
    fetch("data/bibliotheca-graeca-latina-I-bce-I-ce.json").then(r=>{if(!r.ok)throw Error("catalog HTTP "+r.status);return r.json()}),
    fetch("data/classics-corpus/search-registry.json").then(r=>{if(!r.ok)throw Error("registry HTTP "+r.status);return r.json()}),
    fetch(ROADMAP).then(r=>{if(!r.ok)throw Error("roadmap HTTP "+r.status);return r.json()}),
-   fetch("data/bibliotheca-expansion-publicada-2026-11-16.json").then(r=>{if(!r.ok)throw Error("supplement HTTP "+r.status);return r.json()})
+   fetch("data/bibliotheca-expansion-publicada-2026-11-16.json").then(r=>{if(!r.ok)throw Error("supplement HTTP "+r.status);return r.json()}),
+   fetch("data/r2/bibliotheca-inventario-unificado.json",{cache:"no-cache"}).then(r=>{if(!r.ok)throw Error("inventory HTTP "+r.status);return r.json()})
   ]);
   const roadmap=roadmapResult.status==="fulfilled"?roadmapResult.value:null;
   const catalog=catalogResult.status==="fulfilled"?catalogResult.value:null;
@@ -954,6 +948,14 @@ async function bootstrap(){
   const base=Array.isArray(catalog?.works)?catalog.works:roadmap.items.map(w=>({id:w.id,title:w.title,author:w.author,dating:w.dating||""}));
   const merged=new Map(base.filter(w=>w?.id).map(w=>[w.id,w]));
   if(supplementResult.status==="fulfilled")for(const w of supplementResult.value.works||[])if(w?.id&&!merged.has(w.id))merged.set(w.id,w);
+  if(inventoryResult.status==="fulfilled"){
+   const inv=inventoryResult.value;
+   for(const w of [...(inv.works||[]),...(inv.supplementaryWorks||[]),...(inv.additionalWorks||[])]){
+    if(!w?.id||!w.author||!w.title)continue;
+    const old=merged.get(w.id)||{};
+    merged.set(w.id,{...old,id:w.id,author:old.author||w.author,title:old.title||w.title,language:old.language||old.originalLanguage||w.language||"",inventoryFacsimiles:w.r2FacsimileEditions||[]});
+   }
+  }
   const baseCatalog={works:[...merged.values()]};
   if(parent.id==="front-classical-works")parent.replaceChildren();
   mount(parent,{catalog:baseCatalog,registry});
