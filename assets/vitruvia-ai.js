@@ -10,7 +10,8 @@ const stop=new Set("de del la el los las un una unos unas y en por para a al con
 const normalize=s=>String(s||"").normalize("NFD").replace(/\p{M}/gu,"").toLowerCase().replace(/[^\p{L}\p{N}\s]+/gu," ").replace(/\s+/g," ").trim();
 const terms=s=>normalize(s).split(" ").filter(t=>t.length>1&&!stop.has(t));
 const asString=s=>String(s||"").replace(/\s+/g," ").trim();
-let corpusPromise=null,modelPromise=null;
+let registryPromise=null,modelPromise=null;
+const corpusCache=new Map();
 // Reduce bandwidth when the visitor explicitly enabled their browser's
 // data-saver preference. Unsupported browsers keep the existing behavior.
 function prefersReducedData(){
@@ -38,7 +39,7 @@ function sliceIntoChunks(raw,max=340,overlap=48){
  }
  return out;
 }
-async function prepareCorpus(){
+async function loadSources(){
  // Build from the verified full-text registry, not a handpicked list of six works.
  let sources=[],registryError="";
  try{
@@ -50,13 +51,13 @@ async function prepareCorpus(){
    (/^data\/[a-z0-9/_-]+\.json$/.test(e.path) ||
     /^https:\/\/libros\.vitruvius-digital-library\.org\/corpus\/[a-z0-9_-]+\.json$/.test(e.path)));
   const byPath=new Map();
-  for(const e of entries)byPath.set(e.path,{
+  for(const e of entries)if(!byPath.has(e.path))byPath.set(e.path,{
    url:e.path,workId:e.workId,workTitle:e.title,author:e.author,
    edition:e.edition||e.language,language:e.language,reader:e.reader,
-   source:e.sourceDescription||"Bibliotheca · transcripción registrada"
+   source:e.sourceDescription||"Bibliotheca · transcripción registrada",sourceUrn:e.sourceUrn||"",sha256:e.sha256||""
   });
   const manifest=await requestJSON("./data/ai-corpora.json");
-  for(const e of manifest.sources||[])if(!byPath.has(e.url))byPath.set(e.url,e);
+  for(const e of manifest.sources||[])byPath.set(e.url,{...byPath.get(e.url),...e});
   sources=[...byPath.values()];
  }catch(error){
   registryError=String(error.message||error);
@@ -64,7 +65,36 @@ async function prepareCorpus(){
   sources=manifest.sources||[];
  }
  if(!sources.length)throw Error("Catálogo de textos vacío");
+ return {sources,registryError};
+}
+function sourceSelection(query,sources){
+ const q=normalize(query),qwords=new Set(terms(query));
+ const locus=String(query).match(/(?:^|\s)(\d{1,2}\.(?:\d{1,2}|praef)\.\d{1,3})(?=$|\s)/i)?.[1]?.toLowerCase()||"";
+ const phrase=(text)=>text.length>=4&&(" "+q+" ").includes(" "+text+" ");
+ const hits=sources.map(source=>{
+  const author=normalize(source.author),title=normalize(source.workTitle),id=normalize(source.workId);
+  const lastAuthor=author.split(" ").filter(w=>w.length>=5).at(-1)||"";
+  const authorWords=author.split(" ").filter(w=>w.length>=5);
+  const titleWords=terms(title);
+  let score=0;
+  if(phrase(author)||authorWords.some(w=>phrase(w)))score+=8;
+  if(phrase(lastAuthor))score+=3;
+  if(phrase(title)||phrase(id))score+=12;
+  else if(titleWords.length>0&&titleWords.every(t=>qwords.has(t)))score+=10;
+  if(source.workId==="vitruvius"&&(/\b(?:vitruvio|vitruvius|vitruve|vitruvii|de architectura)\b/.test(q)||locus&&/^\s*\d/.test(query)))score+=20;
+  return {source,score};
+ });
+ const best=Math.max(0,...hits.map(x=>x.score));
+ const conceptMatch=best<8&&architecturalConcepts.some(group=>group.some(term=>term.includes(" ")&&(" "+q+" ").includes(" "+normalize(term)+" ")));
+ const explicit=best>=8||conceptMatch;
+ const matches=best>=8?hits.filter(x=>x.score>=Math.max(8,best-3)).map(x=>x.source):conceptMatch?sources.filter(x=>x.workId==="vitruvius"):sources;
+ // Named works are searched without passage sampling; broad queries retain the sampled registry.
+ return {sources:matches,explicit,locus,registryCount:sources.length};
+}
+async function prepareCorpus(selection,registryError){
+ const {sources,explicit,registryCount}=selection;
  const works=[],documents=[],unavailable=[];
+ let sourcePassages=0,indexedPassages=0,sampledSources=0;
  // Five requests per batch prevent a simultaneous download of the whole library.
  for(let offset=0;offset<sources.length;offset+=5){
   const batch=sources.slice(offset,offset+5);
@@ -76,25 +106,28 @@ async function prepareCorpus(){
    if(!Array.isArray(data.passages)){unavailable.push(source.workId||source.url);continue}
    const before=documents.length;
    // Representative loci from each edition: bounded memory, not exhaustive passage coverage.
-   const maxSamples=48,passages=data.passages.length>maxSamples
+   sourcePassages+=data.passages.length;
+   const maxSamples=explicit?Infinity:48,passages=data.passages.length>maxSamples
     ?Array.from({length:maxSamples},(_,j)=>data.passages[Math.floor(j*(data.passages.length-1)/(maxSamples-1))])
     :data.passages;
+   if(passages.length<data.passages.length)sampledSources++;
    for(const passage of passages){
     if(!passage||typeof passage.locus!=="string"||!passage.locus.trim())continue;
     const original=asString(passage.latin||passage.original||passage.greek||passage.text||"");
     const translation=asString(passage.translation||"");
     const chunks=sliceIntoChunks(original+" "+translation);
+    if(chunks.some(c=>terms(c).length>=4))indexedPassages++;
     for(let chunk=0;chunk<chunks.length;chunk++){
      const excerptText=chunks[chunk],tokens=terms(excerptText);
      if(tokens.length<4)continue;
      const tf=new Map();for(const term of tokens)tf.set(term,(tf.get(term)||0)+1);
      documents.push({
-      id:(source.workId||"work")+":"+(source.edition||data.edition||data.version||source.language)+":"+passage.locus+":"+chunk,
+      id:source.url+":"+passage.locus+":"+chunk,
       workId:source.workId||"work",locus:passage.locus,
       workTitle:source.workTitle||data.title||"Texto antiguo",
       author:source.author||data.author||"Autor documentado",
       edition:source.edition||data.version||"",language:source.language||data.language||"",
-      source:source.source||"Bibliotheca",url:urlFor(source,passage.locus,passage),
+      source:source.source||"Bibliotheca",sourceUrn:source.sourceUrn||data.sourceUrn||"",sha256:source.sha256||"",sourcePath:source.url,url:urlFor(source,passage.locus,passage),
       original,translation,excerptText,chunk,tf,length:tokens.length,lexical:0
      });
     }
@@ -109,23 +142,124 @@ async function prepareCorpus(){
  for(const doc of documents)for(const word of doc.tf.keys())df.set(word,(df.get(word)||0)+1);
  const avgLength=documents.reduce((sum,doc)=>sum+doc.length,0)/documents.length;
  if(registryError)notify("Registro no disponible; se usa corpus de reserva: "+registryError,"fallback");
- return {documents,df,avgLength,works,unavailable,declaredSources:sources.length};
+ return {documents,df,avgLength,works,unavailable,declaredSources:sources.length,registryCount,explicit,sourcePassages,indexedPassages,sampledSources};
 }
-function corpus(){if(!corpusPromise)corpusPromise=prepareCorpus().catch(e=>{corpusPromise=null;throw e});return corpusPromise}
-function lexicalRanking(q,data){
- const queryTerms=[...new Set(terms(q))];const n=data.documents.length;
+async function corpus(query,{targetedOnly=false}={}){
+ if(!registryPromise)registryPromise=loadSources().catch(e=>{registryPromise=null;throw e});
+ const registry=await registryPromise,selection=sourceSelection(query,registry.sources);
+ if(targetedOnly&&!selection.explicit)return {data:null,selection};
+ if(targetedOnly&&selection.sources.length>24)return {data:null,selection};
+ const key=selection.explicit?selection.sources.map(s=>s.url).join("|"):"registry-sample";
+ if(!corpusCache.has(key)){
+  if(corpusCache.size>=3)corpusCache.delete(corpusCache.keys().next().value);
+  corpusCache.set(key,prepareCorpus(selection,registry.registryError).catch(e=>{corpusCache.delete(key);throw e}));
+ }
+ return {data:await corpusCache.get(key),selection};
+}
+// Domain vocabulary calibrated against V514. Related terms are retrieval
+// hints, NOT asserted synonyms, translations or evidence of textual identity.
+// No locus or result ID is embedded in the expansion vocabulary.
+const architecturalConcepts=[
+ [
+  "resistencia estructural",
+  "firmitas",
+  "firmitatis",
+  "solidez",
+  "cimientos",
+  "fundamentorum"
+ ],
+ [
+  "funcionalidad",
+  "utilitas",
+  "utilitatis",
+  "utilidad"
+ ],
+ [
+  "belleza arquitectonica",
+  "venustas",
+  "venustatis",
+  "belleza"
+ ],
+ [
+  "hormigon hidraulico",
+  "puzolana",
+  "polvo volcanico",
+  "vesuvium",
+  "vesubio",
+  "bayas",
+  "baianis"
+ ],
+ [
+  "antropometria",
+  "proporciones humanas",
+  "corpus hominis",
+  "cuerpo del hombre",
+  "corporis"
+ ],
+ [
+  "acueducto",
+  "acueductos",
+  "conduccion de agua",
+  "conducciones de agua",
+  "ductus aquae",
+  "fistulis",
+  "canales"
+ ],
+ [
+  "urbanismo eolico",
+  "viento urbano",
+  "vientos",
+  "venti",
+  "callejones",
+  "angiportis"
+ ],
+ [
+  "formacion del arquitecto",
+  "educacion del arquitecto",
+  "architecti scientia",
+  "disciplinis",
+  "ratiocinatione",
+  "fabrica"
+ ],
+ [
+  "almagre",
+  "ocre rojo",
+  "rubricae",
+  "sinope",
+  "almagres"
+ ],
+ [
+  "gnomonica",
+  "gnomonis",
+  "gnomon",
+  "sombra equinoccial",
+  "equinoccial"
+ ]
+];
+function academicTerms(query,workId){
+ const exact=normalize(query),weights=new Map([...new Set(terms(query))].map(t=>[t,1]));
+ if(workId!=="vitruvius")return weights;
+ for(const group of architecturalConcepts){
+  if(!group.some(x=>(" "+exact+" ").includes(" "+normalize(x)+" ")))continue;
+  for(const x of group)for(const t of terms(x))if(!weights.has(t))weights.set(t,.35);
+ }
+ return weights;
+}
+function lexicalRanking(q,data,selection={}){
+ const queryTerms=academicTerms(q,null),architecturalTerms=academicTerms(q,"vitruvius");const n=data.documents.length;
  const exact=normalize(q);
  const scores=data.documents.map(doc=>{
   let score=0;
-  for(const term of queryTerms){
+  for(const [term,weight] of (doc.workId==="vitruvius"?architecturalTerms:queryTerms)){
    const freq=doc.tf.get(term)||0;
    if(!freq)continue;
    const df=data.df.get(term)||0;
    const idf=Math.log(1+(n-df+.5)/(df+.5));
    const k1=1.4,b=.72;
-   score+=idf*(freq*(k1+1))/(freq+k1*(1-b+b*doc.length/data.avgLength));
+   score+=weight*idf*(freq*(k1+1))/(freq+k1*(1-b+b*doc.length/data.avgLength));
   }
   if(exact.length>4&&normalize(doc.excerptText).includes(exact))score+=75;
+  if(selection.locus&&doc.locus.toLowerCase()===selection.locus&&doc.workId==="vitruvius")score+=10000;
   return {doc,score};
  });
  return scores.sort((a,b)=>b.score-a.score);
@@ -189,10 +323,10 @@ function renderRow(doc,query,score,semantic=false){
  return {type:"passage",title:doc.workTitle+" · "+doc.locus,
   author:doc.author+" · "+doc.edition+" · "+doc.language,
   excerpt:sourceExcerpt(doc,query),latin:doc.original,translation:doc.translation,
-  locus:doc.locus,edition:doc.edition,workId:doc.workId,link:doc.url,source:doc.source,
+  locus:doc.locus,edition:doc.edition,workId:doc.workId,link:doc.url,source:doc.source,sourceUrn:doc.sourceUrn,sourceSha256:doc.sha256,sourcePath:doc.sourcePath,
   meta:kind+" · "+doc.source+" · locus "+doc.locus,
   rating:Math.round(score),aiScore:Math.round(score),aiSemantic:semantic,
-  exactTextMatch:exact,aiEvidence:true
+  exactTextMatch:exact,aiCalibrated:[...academicTerms(query,doc.workId)].filter(([term,weight])=>weight<1&&doc.tf.has(term)).length>=2,aiEvidence:true
  };
 }
 const dot=(a,b)=>{let sum=0;for(let i=0;i<Math.min(a.length,b.length);i++)sum+=a[i]*b[i];return sum};
@@ -227,11 +361,14 @@ async function vectors(pipe,texts){
  }
  return out;
 }
-async function search(query,{method="neural"}={}){
+async function search(query,{method="neural",targetedOnly=false}={}){
  const q=asString(query);if(!q)return {rows:[],mode:"empty"};
- notify("Indexando los textos disponibles y calculando coincidencias exactas…");
- const data=await corpus(),ranked=lexicalRanking(q,data);
- const coverageNotice=data.unavailable.length?"Fuentes no cargadas: "+data.unavailable.join(", ")+". Cobertura parcial.":"";
+ const {data,selection}=await corpus(q,{targetedOnly});
+ if(!data)return {rows:[],mode:"not-targeted",method:"none"};
+ notify("Calculando coincidencias documentales y vocabulario académico…");
+ const ranked=lexicalRanking(q,data,selection);
+ const scope="Cobertura: "+data.indexedPassages+"/"+data.sourcePassages+" pasajes de fuentes cargadas; "+data.works.length+"/"+data.declaredSources+" fuentes seleccionadas ("+data.registryCount+" rutas compatibles del registro). "+(data.explicit?"Consulta dirigida a obras identificadas.":"Muestreo del registro, no búsqueda exhaustiva.")+(data.sampledSources?" "+data.sampledSources+" fuentes muestreadas.":"");
+ const coverageNotice=scope+(data.unavailable.length?" Fuentes no cargadas: "+data.unavailable.length+". Cobertura parcial.":"");
  const candidates=diversity(ranked);
  const coverage=candidateCoverage(candidates);
  if(!candidates.length)return {rows:[],mode:"empty",stats:{chunks:data.documents.length,works:data.works}};
@@ -254,10 +391,10 @@ async function search(query,{method="neural"}={}){
   const combined=candidates.map(entry=>{
    const l=lexRanks.get(entry.doc.id)||ranked.length+1,s=semRanks.get(entry.doc.id)||candidates.length+1;
    // Reciprocal Rank Fusion + phrase evidence. Semantic similarity is not textual proof.
-   const fused=1/(60+l)+1/(60+s)+(entry.score>=75?.011:0);
+   const fused=1/(60+l)+1/(60+s)+(entry.score>=75?.011:0)+(selection.locus&&entry.doc.workId==="vitruvius"&&entry.doc.locus.toLowerCase()===selection.locus?1:0);
    return {...entry,score:fused*16000};
   }).sort((a,b)=>b.score-a.score).slice(0,35);
-  notify("IA semántica activa · "+data.documents.length+" fragmentos disponibles; "+candidates.length+" cotejados con embeddings."+(coverageNotice?" "+coverageNotice:""),coverageNotice?"fallback":"success");
+  notify("IA semántica activa · "+data.documents.length+" fragmentos disponibles; "+candidates.length+" cotejados con embeddings."+(coverageNotice?" "+coverageNotice:""),data.unavailable.length?"fallback":"success");
   return {rows:combined.map(x=>renderRow(x.doc,q,x.score,true)),mode:"neural",method:"e5",stats:{chunks:data.documents.length,candidates:candidates.length,...coverage,works:data.works,declaredSources:data.declaredSources,loadedSources:data.works.length,unavailable:data.unavailable},warning:coverageNotice||undefined};
  }catch(e){
   notify("No se pudo cargar el modelo ("+String(e.message||"error").slice(0,90)+"). Se muestran coincidencias BM25, sin afirmar IA semántica.","fallback");
@@ -291,5 +428,5 @@ async function rank(query,docs,{limit=30,candidates=40}={}){
   notify("IA semántica activa en el visor.","success");return {mode:"neural",rows};
  }catch(e){return {mode:"bm25-fallback",rows:pool.slice(0,limit),warning:String(e.message||e)}}
 }
-window.VitruviaAI={search,rank,model:MODEL,version:"1.1-hybrid-local"};
+window.VitruviaAI={search,rank,model:MODEL,version:"1.5-academic-evidence-integrated",sourceSelection,academicTerms};
 })();

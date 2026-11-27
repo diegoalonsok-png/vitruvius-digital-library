@@ -892,6 +892,9 @@ function renderCard(d){
  const documented=window.VitruviaEvidence?.classify(d);
  const evidenceLabel=window.VitruviaEvidence?.label(d,S.lang)||"fuente enlazada";
  title.append(node("span","kind",(T()[d.type]||kindLabels[d.type]||d.type.toUpperCase())+" · "+evidenceLabel.toUpperCase()),node("h3",null,d.title));head.append(title);card.append(head);
+ const evidenceClass=academicEvidenceClass(d);
+ card.dataset.academicEvidence=evidenceClass;
+ if(evidenceClass==="research-record")card.append(node("div","meta-line",S.lang==="en"?"Bibliographic research record · peer review and full text not independently verified":S.lang==="fr"?"Notice bibliographique de recherche · évaluation par les pairs et texte intégral non vérifiés":"Registro bibliográfico de investigación · arbitraje y texto íntegro no verificados"));
  card.dataset.evidence=documented?.key||"source";
  card._vitruviaRecord=d;card.dataset.year=d.year||"";card.dataset.cited=d.cited||0;
  if(d.author)card.append(node("div","author",d.author));
@@ -913,7 +916,7 @@ function renderCard(d){
    referenceLabel:"Traducción de la edición "+(d.edition||"documentada")+" · locus "+(d.locus||"")
   });
  }
- if(d.aiEvidence){card.classList.add("ai-evidence-card");card.append(node("div","ai-evidence-label",d.aiSemantic?"Reranking neuronal + texto documentado":"BM25 · búsqueda textual de respaldo"))}
+ if(d.aiEvidence){card.classList.add("ai-evidence-card");card.append(node("div","ai-evidence-label",d.aiSemantic?"Reranking neuronal + texto documentado":"BM25 · recuperación textual calibrada"))}
  if(d.meta)card.append(node("div","meta-line",d.meta));
  const acts=node("div","actions");
  if(d.type==="book"&&d.localReader&&window.VitruviaClassicsViewer){
@@ -1363,6 +1366,48 @@ function scholarlyRecordKey(r){
   r.type==="wikipedia"?String(r.wikiLang||""):r.externalFulltext?String(r.author||""):"";
  return r.type+":"+norm(r.title)+":"+norm(id);
 }
+/* Vitruvia-only evidence gate. A matching name, an ISBN, a DOI or
+ * encyclopedic identity never certifies peer review or a primary document.
+ * Complementary results remain accessible, outside the academic list. */
+function academicEvidenceClass(row){
+ const t=String(row?.type||""),source=String(row?.source||""),href=String(row?.link||"");
+ if(!href)return "context";
+ if(["wikipedia","wikidata","encyclopedia","openlibrary","googlebook","archive-portal"].includes(t))return "context";
+ if(/wikipedia|wikimedia|wikidata|britannica/i.test(source))return "context";
+ if(t==="article"){
+  const provider=/^(Crossref|OpenAlex|Europe PMC)$/i.test(source);
+  const kind=String(row.recordKind||"");
+  return provider&&row.author&&row.journal&&/^(journal-article|article|review)$/i.test(kind)?"research-record":"context";
+ }
+ if(["passage","preface"].includes(t)&&row.locus&&row.edition&&(row.latin||row.translation||row.excerpt))return "document";
+ if(t==="historical-ocr")return "context";
+ if(["manuscript","fragment","apparatus","edition"].includes(t))return row.curatedAcademic||row.timelineWorkMatch||row.codexShelfmark||row.apparatusId?"document":"context";
+ if(t==="book"&&row.workId&&(/^bibliotheca-|^lector-bilingue/.test(href)||row.curatedAcademic))return "catalogue";
+ if(["museum","university","scholar","authority","topic"].includes(t)&&(row.curatedAcademic||source==="The Met"||source==="Getty AAT"))return "institution";
+ if(t==="text-external"&&row.externalFulltext)return "context";
+ return "context";
+}
+/* Rank only records that passed the provenance gate. A neural score
+ * cannot promote an encyclopedia into academic evidence. Preserve the
+ * existing documentary/source hierarchy; change relevance within it. */
+async function refineAcademicResults(query,rows,signal){
+ const model=window.VitruviaAI;
+ if(!model?.rank||signal.aborted)return null;
+ const candidates=[],seen=new Set();
+ for(const row of rows){
+  const category=academicEvidenceClass(row);
+  if(category==="context"||!row.title)continue;
+  const id=scholarlyRecordKey(row);
+  if(seen.has(id))continue;seen.add(id);
+  const text=[row.title,row.author,row.latin,row.translation,row.excerpt].filter(Boolean).join(" · ");
+  candidates.push({id,text,priority:(row.rating||0)+titleMatch(row,query)});
+ }
+ candidates.sort((a,b)=>b.priority-a.priority);
+ if(!candidates.length)return null;
+ const ranked=await model.rank(query,candidates.slice(0,48),{limit:32,candidates:40});
+ if(signal.aborted||ranked.mode!=="neural")return null;
+ return new Map(ranked.rows.map((r,i)=>[r.doc.id,Math.max(0,32-i)*12]));
+}
 function display(rows,query,phase){
  // No se eliminan resultados por umbrales de coincidencia en el título:
  // los textos, alias, autores y metadatos documentales también cuentan.
@@ -1377,9 +1422,9 @@ function display(rows,query,phase){
   !["wikipedia","wikidata"].includes(r.type)||r.preferredWiki||r.preferredAuthority||
   queryTokens(query).length<2||entityEvidence(r,query)
  )&&(!["passage","book","edition","manuscript","preface","section"].includes(r.type)||
-  documentarySubjectEvidence(r,query)))
+  documentarySubjectEvidence(r,query)||r.aiEvidence&&(r.aiSemantic||r.aiCalibrated)&&academicEvidenceClass(r)==="document"))
   // Compute expensive evidence scores once per row, rather than on every sort comparison.
-  .map(row=>({row,rank:(row.rating||0)+titleMatch(row,query)+(S.mode==="ai"&&row.aiEvidence?2800:0)}))
+  .map(row=>({row,rank:(row.rating||0)+titleMatch(row,query)+(S.mode==="ai"&&row.aiEvidence?2800:0)+(S.semanticRanks?.get(scholarlyRecordKey(row))||0)}))
   .sort((a,b)=>b.rank-a.rank).map(item=>item.row);
  const deduped=[],seen=new Set();
  for(const r of scored){
@@ -1417,10 +1462,12 @@ function display(rows,query,phase){
  }
  // Orden académico estable, sin reiterar filas ni encabezados cuando llegan
  // respuestas de servicios externos en distinto orden.
+ const strictAcademic=["all","ai"].includes(S.mode);
  const encyclopediaTypes=new Set(["wikipedia","wikidata","topic","authority"]);
  const libraryTypes=new Set(["passage","book","manuscript","edition","preface","section"]);
  const textExternalTypes=new Set(["text-external"]);
- const byGroup=r=>S.mode==="ai"&&r.aiEvidence?"semantic":
+ const byGroup=r=>strictAcademic&&academicEvidenceClass(r)==="context"?"context":
+  strictAcademic&&r.aiEvidence?"semantic":
   encyclopediaTypes.has(r.type)?"encyclopedia":
   r.type==="university"?"universities":
   r.type==="manuscript"?"manuscripts":
@@ -1506,12 +1553,14 @@ function display(rows,query,phase){
   const index=ordered.findIndex(r=>(r.preferredWiki||r.preferredAuthority)&&r.wikidataId===authorityId&&["wikipedia","wikidata"].includes(r.type));
   if(index>0){ordered=[ordered[index],...ordered.slice(0,index),...ordered.slice(index+1)];}
  }
- const titles=RESULT_TEXT[S.lang]||RESULT_TEXT.es;
+ const complementary=strictAcademic?ordered.filter(r=>academicEvidenceClass(r)==="context"):[];
+ if(strictAcademic)ordered=ordered.filter(r=>academicEvidenceClass(r)!=="context");
+ const titles={...(RESULT_TEXT[S.lang]||RESULT_TEXT.es),context:S.lang==="en"?"Complementary context · not scholarly evidence":S.lang==="fr"?"Contexte complémentaire · hors preuve scientifique":"Contexto complementario · no es evidencia académica"};
  if(!document.getElementById("vitruvia-facet-style")){const st=document.createElement("style");st.id="vitruvia-facet-style";
   st.textContent=".result-facets{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 14px}.result-facet{font:12px/1.3 system-ui,-apple-system,sans-serif;border:1px solid currentColor;border-radius:999px;background:transparent;color:inherit;opacity:.72;padding:5px 11px;cursor:pointer}.result-facet:hover{opacity:1}.result-facet.active{opacity:1;background:#1B2A4A;color:#fff;border-color:#1B2A4A}html[data-theme=dark] .result-facet.active{background:#C9A84C;color:#14120e;border-color:#C9A84C}";
   document.head.append(st)}
  // Facetas: filtrar la lista por tipo de fuente sin perder el orden académico.
- const facetGroups=[...grouped].filter(([,a])=>a.length);
+ const facetGroups=[...grouped].filter(([g,a])=>a.length&&(!strictAcademic||g!=="context"));
  if(S.facet&&!facetGroups.some(([g])=>g===S.facet))S.facet="";
  if(facetGroups.length>1){
   const bar=node("div","result-facets");bar.setAttribute("role","toolbar");bar.setAttribute("aria-label",S.lang==="en"?"Filter by source type":S.lang==="fr"?"Filtrer par type de source":"Filtrar por tipo de fuente");
@@ -1536,7 +1585,7 @@ function display(rows,query,phase){
   if(method)note.append(method);
   list.append(note);
  }
- if(!shown.length)list.append(node("div","empty",T().none));
+ if(!shown.length)list.append(node("div","empty",strictAcademic?(S.lang==="en"?"No sufficiently documented academic records retrieved. Complementary references remain available below.":S.lang==="fr"?"Aucune notice académique suffisamment documentée. Le contexte complémentaire reste disponible ci-dessous.":"No se recuperaron registros académicos suficientemente documentados. Las referencias complementarias siguen disponibles abajo."):T().none));
  else {
   let lastGroup="",lastBlock="";
   for(const r of shown.slice(0,S.visibleResultCount)){
@@ -1568,21 +1617,32 @@ function display(rows,query,phase){
  }
  // Never open a codex, PDF or classical-text viewer as a side effect of search.
  // Viewer links and explicit user-click actions remain available in result cards.
- if(deduped.length>S.visibleResultCount){
-  const left=deduped.length-S.visibleResultCount;
+ if(shown.length>S.visibleResultCount){
+  const left=shown.length-S.visibleResultCount;
   const label=S.lang==="en"?"View "+Math.min(left,50)+" more results":S.lang==="fr"?"Voir "+Math.min(left,50)+" résultats supplémentaires":"Ver "+Math.min(left,50)+" resultados más";
   const more=node("button","show-more-results",label);more.type="button";
   more.addEventListener("click",()=>{S.visibleResultCount+=50;display(rows,query,phase)});
   list.append(more);
  }
+ if(strictAcademic&&complementary.length){
+  const details=node("details","vitruvia-complementary-results");
+  details.style.cssText="margin:22px 0;border:1px solid var(--line);padding:12px;border-radius:8px";
+  details.open=!!liveList.querySelector(".vitruvia-complementary-results[open]");
+  details.append(node("summary",null,titles.context+" ("+complementary.length+")"));
+  const note=node("p",null,S.lang==="en"?"Encyclopedias, general catalogues and unverified sources. Not used as academic evidence.":S.lang==="fr"?"Encyclopédies, catalogues généraux et sources non vérifiées. Ne constituent pas des preuves scientifiques.":"Enciclopedias, catálogos generales y fuentes sin acreditación suficiente. No se presentan como evidencia académica.");
+  details.append(note);
+  for(const r of complementary.slice(0,30))details.append(cardFor(r));
+  if(complementary.length>30)details.append(node("p",null,S.lang==="en"?"First 30 complementary records shown.":S.lang==="fr"?"30 premières notices complémentaires.":"Se muestran los primeros 30 registros complementarios."));
+  list.append(details);
+ }
  if(window.VitruviaData)window.VitruviaData.reconcile(liveList,desired);else liveList.replaceChildren(...desired);
- if(window.VitruviaArticles){$("answer").hidden=true;const authority=currentAuthorityFor(query);window.VitruviaArticles.render(deduped,query,identifyHistoricalPerson(query)||(authority?{id:authority.id,name:authority.personName}:null),{progressive:true,final:!!S.searchComplete})}else synthesize(deduped);
+ if(window.VitruviaArticles){$("answer").hidden=true;const authority=currentAuthorityFor(query);window.VitruviaArticles.render(strictAcademic?ordered:deduped,query,identifyHistoricalPerson(query)||(authority?{id:authority.id,name:authority.personName}:null),{progressive:true,final:!!S.searchComplete})}else synthesize(strictAcademic?ordered:deduped);
  $("results-heading").textContent=T().heading;
  if(deduped.length&&S.firstResultAt==null){S.firstResultAt=performance.now()-S.searchStarted;$("result-state").dataset.firstResultMs=String(Math.round(S.firstResultAt))}
  $("result-list").setAttribute("aria-busy",String(!S.searchComplete));
  if(S.searchComplete)$("result-state").dataset.completeMs=String(Math.round(performance.now()-S.searchStarted));
- $("result-state").textContent=deduped.length+" "+titles.matching+" · "+Math.min(S.visibleResultCount,deduped.length)+" "+titles.visible+(phase?" · "+phase:"");
- const snapshot={query,rows:deduped,phase};
+ $("result-state").textContent=ordered.length+" "+titles.matching+" · "+Math.min(S.visibleResultCount,shown.length)+" "+titles.visible+(strictAcademic&&complementary.length?" · "+complementary.length+" "+(S.lang==="en"?"complementary":S.lang==="fr"?"complémentaires":"complementarios"):"")+(phase?" · "+phase:"");
+ const snapshot={query,rows:deduped,academicRows:strictAcademic?ordered:deduped,phase};
  window.VitruviaSearchSnapshot=snapshot;
  window.dispatchEvent(new CustomEvent("vitruvia:results",{detail:snapshot}));
 }
@@ -1655,6 +1715,8 @@ document.getElementById("expand-search-sources")?.addEventListener("click",async
 });
 async function search(){
  let q=$("query").value.trim();S.searchController?.abort();S.searchController=new AbortController();const searchSignal=S.searchController.signal;const later=task=>window.VitruviaData?window.VitruviaData.defer(task,{signal:searchSignal,delay:45}):Promise.resolve().then(task);S.searchStarted=performance.now();S.firstResultAt=null;S.searchComplete=false;S.cardCache=new Map();S.identifiedSubject=null;const id=++S.searchId;S.visibleResultCount=60;S.facet="";if(!q)return;
+ S.semanticRanks=null;
+ const aiStatus=$("ai-status");if(aiStatus){aiStatus.hidden=true;aiStatus.textContent="";}
  /* Comprension de la consulta antes de preguntar a ninguna fuente: grafia,
     flexion, escritura cruzada, onomastica y citas. Si el modulo no estuviera
     disponible, el buscador sigue funcionando como antes. */
@@ -1678,7 +1740,7 @@ async function search(){
  $("result-list").replaceChildren(node("div","empty","Cargando ficha y testimonios documentados…"));
  $("answer").hidden=true;
  window.VitruviaArticles?.begin?.(q);
- history.replaceState(null,"",S.privateMode?"vitruvia.html":"vitruvia.html?"+new URLSearchParams({q,mode:S.mode,...(S.mode==="ai"&&$("ai-method").value==="neural"?{engine:"e5"}:{})}));
+ history.replaceState(null,"",S.privateMode?"vitruvia.html":"vitruvia.html?"+new URLSearchParams({q,mode:S.mode,...(["all","ai"].includes(S.mode)&&$("ai-method").value==="neural"?{engine:"e5"}:{})}));
  // Start authority lookup immediately, in parallel with loading the large
  // static catalogue; the main results are still rendered in the usual place.
  const earlyIdentity=!/[\u0370-\u03ff\u1f00-\u1fff]/.test(q)&&
@@ -1820,10 +1882,10 @@ async function search(){
     rows:[...linked,...portals],warnings:value.warning?[value.warning]:[]};
   }).catch(e=>({name:"Catálogos de manuscritos no disponibles",rows:[],warnings:[String(e.message||e)]})));
  }
- if(mode==="ai"&&window.VitruviaAI){
-  const method=$("ai-method")?.value==="neural"?"neural":"bm25";
-  pending.push(window.VitruviaAI.search(generalQuery,{method}).then(v=>({
-   name:v.mode==="neural"?"E5 + BM25 · orden neuronal experimental":v.method==="bm25"?"BM25 · coincidencias textuales indexadas":v.mode==="bm25-fallback"?"BM25 · E5 no disponible":"Búsqueda de documentos",
+ if(["all","ai"].includes(mode)&&window.VitruviaAI){
+  const method=mode==="ai"&&$("ai-method")?.value==="neural"?"neural":"bm25";
+  pending.push(window.VitruviaAI.search(q,{method,targetedOnly:mode==="all"}).then(v=>({
+   name:v.mode==="not-targeted"?"":v.mode==="neural"?"E5 + BM25 · orden neuronal experimental":v.method==="bm25"?"BM25 · recuperación académica calibrada":v.mode==="bm25-fallback"?"BM25 · E5 no disponible":"Búsqueda de documentos",
    rows:v.rows||[],warnings:v.warning?[v.warning]:[]
   })).catch(e=>({name:"Modo IA · índice no disponible",rows:[],warnings:[String(e.message||e)]})));
  }
@@ -1980,6 +2042,9 @@ async function search(){
   else if(/sin respuesta|no disponible/.test(value.name))sourceWarnings.push(value.name);
  })));
  clearTimeout(updateTimer);
+ if(id===S.searchId&&mode==="all"&&$("ai-method")?.value==="neural"&&!searchSignal.aborted){
+  try{const refined=await refineAcademicResults(q,window.VitruviaSearchSnapshot?.academicRows||rows,searchSignal);if(id===S.searchId&&!searchSignal.aborted&&refined)S.semanticRanks=refined;}catch{}
+ }
  if(id===S.searchId){
   remoteFinished=true;S.searchComplete=!!S.ready;
   const failed=sourceWarnings.length;
@@ -1994,14 +2059,14 @@ function language(lang){S.lang=I18N[lang]?lang:"es";document.documentElement.lan
  const t=T();$("lead").textContent=t.lead;$("query").placeholder=t.placeholder;$("submit").textContent=t.submit;
  document.querySelectorAll("button.tab").forEach((b,i)=>{if(t.modes[i])b.textContent=t.modes[i]});
  $("mode-note").textContent=S.mode==="ai"
-  ?(S.lang==="en"?"Choose BM25 or experimental E5 reranking. Only sources in the AI manifest are included; other catalogues use separate search routes.":S.lang==="fr"?"Choisir BM25 ou le reclassement E5 expérimental. Seules les sources du manifeste IA sont couvertes; les autres catalogues sont interrogés séparément.":"Seleccione BM25 o la reordenación experimental E5. Solo se incluyen las fuentes del manifiesto IA; los demás catálogos usan otras vías.")
+  ?(S.lang==="en"?"Choose BM25 or experimental E5 reranking. Named works use available full passages; general searches sample compatible registered texts.":S.lang==="fr"?"Choisir BM25 ou le reclassement E5 expérimental. Les œuvres identifiées utilisent les passages disponibles ; les recherches générales échantillonnent les textes compatibles.":"Seleccione BM25 o la reordenación experimental E5. Las obras identificadas utilizan los pasajes disponibles; las búsquedas generales muestrean los textos registrados compatibles.")
   :(t.explain[["all","site","wiki","external","concept"].indexOf(S.mode)]||t.explain[0]);
- const methodTexts={es:["Motor de búsqueda","BM25 · rápido, sin modelo","E5 · neuronal, descarga opcional"],en:["Search method","BM25 · fast, no model","E5 · neural, optional download"],fr:["Méthode de recherche","BM25 · rapide, sans modèle","E5 · neuronal, téléchargement facultatif"]};
+ const methodTexts={es:["Motor de búsqueda","BM25 · académico, sin descarga","E5 · neuronal, descarga opcional"],en:["Search method","BM25 · academic, no download","E5 · neural, optional download"],fr:["Méthode de recherche","BM25 · académique, sans téléchargement","E5 · neuronal, téléchargement facultatif"]};
  const methodLabels=methodTexts[S.lang]||methodTexts.es;
  $("ai-method-label").textContent=methodLabels[0];
  $("ai-method").options[0].textContent=methodLabels[1];
  $("ai-method").options[1].textContent=methodLabels[2];
- $("ai-help").textContent=({es:"BM25 busca sin descargar IA. E5 multilingüe es opcional y experimental (descarga inicial estimada ≈120 MB, modelo q8). El corpus neuronal se limita a las fuentes declaradas en data/ai-corpora.json.",en:"BM25 searches without a neural download. Multilingual E5 is optional and experimental (first estimated download ≈120 MB, q8 model). Neural coverage is limited to sources listed in data/ai-corpora.json.",fr:"BM25 recherche sans téléchargement neuronal. E5 multilingue est facultatif et expérimental (premier téléchargement estimé ≈120 Mo, modèle q8). La couverture dépend du manifeste data/ai-corpora.json."})[S.lang];
+ $("ai-help").textContent=({es:"En Todos, la recuperación académica se añade automáticamente a consultas dirigidas. En IA semántica se amplía la búsqueda. E5 multilingüe es opcional y experimental (descarga inicial estimada ≈120 MB, modelo q8). El motor consulta textos compatibles del registro de Bibliotheca; cada consulta informa su cobertura.",en:"In All, academic retrieval is added to targeted queries. Semantic AI extends the search. Multilingual E5 is optional and experimental (first estimated download ≈120 MB, q8 model). The engine uses compatible Bibliotheca registry texts; each search reports coverage.",fr:"En mode Tous, la recherche académique complète les requêtes ciblées. IA sémantique élargit la recherche. E5 multilingue est facultatif et expérimental (premier téléchargement estimé ≈120 Mo, modèle q8). Le moteur consulte les textes compatibles du registre Bibliotheca et indique la couverture de chaque recherche."})[S.lang];
  const ui=UI_TEXT[S.lang]||UI_TEXT.es;
  document.querySelectorAll("[data-i18n]").forEach(el=>{
   const value=ui[el.dataset.i18n];if(value)el.textContent=value;
@@ -2019,8 +2084,8 @@ function language(lang){S.lang=I18N[lang]?lang:"es";document.documentElement.lan
  document.dispatchEvent(new CustomEvent("vitruvius:language-changed",{detail:{language:S.lang,origin:"vitruvia"}}));
 }
 function mode(m){S.mode=["all","site","wiki","external","concept","ai"].includes(m)?m:"all";
- document.body.classList.toggle("vitruvia-ai-active",S.mode==="ai");
- if(S.mode!=="ai"){const status=document.getElementById("ai-status");if(status)status.hidden=true;}
+ document.body.classList.toggle("vitruvia-ai-active",["all","ai"].includes(S.mode));
+ {const status=document.getElementById("ai-status");if(status)status.hidden=true;}
  document.querySelectorAll("button.tab").forEach(b=>b.setAttribute("aria-pressed",String(b.dataset.mode===S.mode)));
  $("mode-note").textContent=S.mode==="ai"?
  (S.lang==="en"?"BM25 is the default in AI mode; E5 reranking requires a separate opt-in (first download ≈120 MB). Neural ranking is not philological verification.":S.lang==="fr"?"BM25 est le mode par défaut; reclassement E5 sur demande (premier téléchargement ≈120 Mo). Le classement n’est pas une vérification philologique.":"BM25 es el modo predeterminado; E5 requiere selección expresa (primera descarga ≈120 MB). La clasificación neuronal no equivale a cotejo filológico."):
@@ -2262,14 +2327,14 @@ privacy.addEventListener("click",()=>{
  S.privateMode=!S.privateMode;
  try{localStorage.setItem("vitruvia-private-url",S.privateMode?"1":"0")}catch{}
  const q=searchInput.value.trim();
- history.replaceState(null,"",S.privateMode?"vitruvia.html":q?"vitruvia.html?"+new URLSearchParams({q,mode:S.mode,...(S.mode==="ai"&&$("ai-method").value==="neural"?{engine:"e5"}:{})}):"vitruvia.html");
+ history.replaceState(null,"",S.privateMode?"vitruvia.html":q?"vitruvia.html?"+new URLSearchParams({q,mode:S.mode,...(["all","ai"].includes(S.mode)&&$("ai-method").value==="neural"?{engine:"e5"}:{})}):"vitruvia.html");
  renderPrivacy();
 });
 updateClearControl();renderPrivacy();
 
 bindAcademia();
 $("search-form").addEventListener("submit",e=>{e.preventDefault();search()});
-$("ai-method").addEventListener("change",()=>{if(S.mode==="ai"&&$("query").value.trim())search()});
+$("ai-method").addEventListener("change",()=>{if(["all","ai"].includes(S.mode)&&$("query").value.trim())search()});
 $("ui-language").addEventListener("change",e=>{language(e.target.value);if($("query").value.trim())search()});
 $("theme").addEventListener("click",()=>theme(S.theme==="dark"?"light":"dark"));
 document.querySelectorAll("button.tab").forEach(b=>b.addEventListener("click",()=>{mode(b.dataset.mode);if($("query").value.trim())search()}));
