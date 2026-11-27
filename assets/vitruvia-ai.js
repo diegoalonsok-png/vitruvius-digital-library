@@ -12,6 +12,48 @@ const terms=s=>normalize(s).split(" ").filter(t=>t.length>1&&!stop.has(t));
 const asString=s=>String(s||"").replace(/\s+/g," ").trim();
 let registryPromise=null,modelPromise=null;
 const corpusCache=new Map();
+ // Explicit relevance feedback, local to this browser. No text or model weights
+ // are edited; no search history is uploaded. A vote is not scholarly evidence.
+ const MEMORY_KEY="vitruvia-ai-relevance-v1",MEMORY_LIMIT=400,TTL=180*86400000;
+ let memory=null;
+ function readMemory(){
+  if(memory)return memory;
+  memory=new Map();
+  try{
+   const rows=JSON.parse(window.localStorage?.getItem(MEMORY_KEY)||"[]");
+   if(Array.isArray(rows))for(const r of rows.slice(-MEMORY_LIMIT)){
+    if(Array.isArray(r)&&typeof r[0]==="string"&&r[0].length<=2048&&[1,-1].includes(r[1])&&Number.isFinite(r[2])&&Date.now()-r[2]>=0&&Date.now()-r[2]<TTL)memory.set(r[0],{vote:r[1],at:r[2]});
+   }
+  }catch{}
+  return memory;
+ }
+ function memoryKey(query,record){
+  const q=normalize(query),path=record?.sourcePath,locus=record?.locus;
+  if(!q||q.length>300||!path||!locus)return "";
+  const key=JSON.stringify([q,record.workId||"",path,record.sourceSha256||record.sha256||"",locus,record.language||""]);
+  return key.length<=2048?key:"";
+ }
+ function persistMemory(){
+  try{if(!window.localStorage)return false;window.localStorage.setItem(MEMORY_KEY,JSON.stringify([...readMemory()].map(([key,r])=>[key,r.vote,r.at])));return true}catch{return false}
+ }
+ function feedback(query,record,vote){
+  const key=memoryKey(query,record);if(!key||![1,-1,0].includes(vote))return {accepted:false};
+  const map=readMemory();map.delete(key);
+  if(vote)map.set(key,{vote,at:Date.now()});
+  while(map.size>MEMORY_LIMIT)map.delete(map.keys().next().value);
+  return {accepted:true,persisted:persistMemory(),vote};
+ }
+ function feedbackState(query,record){
+  const r=readMemory().get(memoryKey(query,record));
+  return r&&Date.now()-r.at<TTL?r.vote:0;
+ }
+ function clearMemory(){readMemory().clear();try{if(!window.localStorage)return false;window.localStorage.removeItem(MEMORY_KEY);return true}catch{return false}}
+ // Rerank only already retrieved evidence. Exact requested loci remain above votes.
+ function learnedScore(query,entry,selection,enabled=true){
+  if(!enabled||selection?.locus||entry.score<=0)return entry.score;
+  return entry.score*(1+.12*feedbackState(query,entry.doc));
+ }
+
 // Reduce bandwidth when the visitor explicitly enabled their browser's
 // data-saver preference. Unsupported browsers keep the existing behavior.
 function prefersReducedData(){
@@ -530,7 +572,7 @@ function renderRow(doc,query,score,semantic=false){
   locus:doc.locus,edition:doc.edition,workId:doc.workId,link:doc.url,source:doc.source,sourceUrn:doc.sourceUrn,sourceSha256:doc.sha256,sourcePath:doc.sourcePath,
   meta:kind+" · "+doc.source+" · locus "+doc.locus,
   rating:Math.round(score),aiScore:Math.round(score),aiSemantic:semantic,
-  exactTextMatch:exact,aiCalibrated:[...academicTerms(query,doc.workId)].filter(([term,weight])=>weight<1&&doc.tf.has(term)).length>=2,aiEvidence:true
+  aiQuery:query,exactTextMatch:exact,aiCalibrated:[...academicTerms(query,doc.workId)].filter(([term,weight])=>weight<1&&doc.tf.has(term)).length>=2,aiEvidence:true
  };
 }
 const dot=(a,b)=>{let sum=0;for(let i=0;i<Math.min(a.length,b.length);i++)sum+=a[i]*b[i];return sum};
@@ -565,18 +607,19 @@ async function vectors(pipe,texts){
  }
  return out;
 }
-async function search(query,{method="neural",targetedOnly=false}={}){
+async function search(query,{method="neural",targetedOnly=false,learning=true}={}){
  const q=asString(query);if(!q)return {rows:[],mode:"empty"};
  const {data,selection}=await corpus(q,{targetedOnly});
  if(!data)return {rows:[],mode:"not-targeted",method:"none"};
  notify("Calculando coincidencias documentales y vocabulario académico…");
  const ranked=lexicalRanking(q,data,selection);
+ const adjust=entry=>learnedScore(q,entry,selection,learning);
  const scope="Cobertura: "+data.indexedPassages+"/"+data.sourcePassages+" pasajes de fuentes cargadas; "+data.works.length+"/"+data.declaredSources+" fuentes seleccionadas ("+data.registryCount+" rutas compatibles del registro). "+(data.explicit?"Consulta dirigida a obras identificadas.":"Muestreo del registro, no búsqueda exhaustiva.")+(data.sampledSources?" "+data.sampledSources+" fuentes muestreadas.":"")+(data.budgeted?" Selección limitada a "+MAX_BROAD_EDITIONS+" ediciones por consulta ("+data.candidateStrategy+"); no equivale a la cobertura total del índice.":"");
  const coverageNotice=scope+(data.unavailable.length?" Fuentes no cargadas: "+data.unavailable.length+". Cobertura parcial.":"");
  const candidates=diversity(ranked);
  const coverage=candidateCoverage(candidates);
  if(!candidates.length)return {rows:[],mode:"empty",stats:{chunks:data.documents.length,works:data.works}};
- const fallback=candidates.filter(x=>x.score>0).slice(0,35).map(x=>renderRow(x.doc,q,x.score*25));
+ const fallback=candidates.filter(x=>x.score>0).map(x=>({...x,score:adjust(x)})).sort((a,b)=>b.score-a.score).slice(0,35).map(x=>renderRow(x.doc,q,x.score*25));
  if(method==="bm25"||prefersReducedData()){
   const warning=(method==="bm25"?"Motor BM25 elegido: búsqueda textual indexada, sin descarga E5 ni similitud neuronal.":"Ahorro de datos activo: se omite la descarga del modelo E5; resultados BM25 sobre textos indexados, sin afirmar análisis neuronal.")+(coverageNotice?" "+coverageNotice:"");
   notify(warning,"fallback");
@@ -596,7 +639,7 @@ async function search(query,{method="neural",targetedOnly=false}={}){
    const l=lexRanks.get(entry.doc.id)||ranked.length+1,s=semRanks.get(entry.doc.id)||candidates.length+1;
    // Reciprocal Rank Fusion + phrase evidence. Semantic similarity is not textual proof.
    const fused=1/(60+l)+1/(60+s)+(entry.score>=75?.011:0)+(selection.locus&&entry.doc.workId==="vitruvius"&&entry.doc.locus.toLowerCase()===selection.locus?1:0);
-   return {...entry,score:fused*16000};
+   return {...entry,score:adjust({...entry,score:fused*16000})};
   }).sort((a,b)=>b.score-a.score).slice(0,35);
   notify("IA semántica activa · "+data.documents.length+" fragmentos disponibles; "+candidates.length+" cotejados con embeddings."+(coverageNotice?" "+coverageNotice:""),data.unavailable.length?"fallback":"success");
   return {rows:combined.map(x=>renderRow(x.doc,q,x.score,true)),mode:"neural",method:"e5",stats:{chunks:data.documents.length,candidates:candidates.length,...coverage,works:data.works,declaredSources:data.declaredSources,loadedSources:data.works.length,unavailable:data.unavailable},warning:coverageNotice||undefined};
@@ -632,5 +675,5 @@ async function rank(query,docs,{limit=30,candidates=40}={}){
   notify("IA semántica activa en el visor.","success");return {mode:"neural",rows};
  }catch(e){return {mode:"bm25-fallback",rows:pool.slice(0,limit),warning:String(e.message||e)}}
 }
-window.VitruviaAI={search,rank,model:MODEL,version:"1.8-index-first",sourceSelection,academicTerms,narrowBroad};
+window.VitruviaAI={search,rank,model:MODEL,version:"1.9-relevance-memory",sourceSelection,academicTerms,narrowBroad,feedback,feedbackState,clearMemory,learnedScore};
 })();
