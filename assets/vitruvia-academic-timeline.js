@@ -35,14 +35,14 @@
   works:[L("Obras y creaciones","Works and creations","Œuvres et créations"),"▤"],
   documents:[L("Documentos y ediciones","Documents and editions","Documents et éditions"),"▥"]
  };
- const state={query:"",token:0,authority:null,works:[],albums:[],rows:[],zoom:1,selected:"",rowSignature:"",pendingWorks:null,tagColor:null,phase:"idle",history:[],historyIncomplete:false,personDates:null,family:[],scrollLeft:0};
+ const state={query:"",token:0,authority:null,works:[],albums:[],rows:[],zoom:1.5,selected:"",rowSignature:"",pendingWorks:null,tagColor:null,phase:"idle",history:[],historyIncomplete:false,personDates:null,family:[],scrollLeft:0};
  // Greedy tracks keep same-day and adjacent milestones from touching.
  // Popup centres are independently clamped, so no tooltip can protrude
  // beyond the chronology track even at narrow mobile widths.
  function layoutMarkers(items,low,range,width,zoom=1){
   const safeWidth=Math.max(1,Number(width)||1);
   const gap=11;
-  const markerSize=e=>e.lane==="life"?30:e.lane==="events"?26:e.lane==="family"?18:22;
+  const markerSize=e=>e.lane==="life"?34:e.lane==="events"?28:e.lane==="family"?20:e.lane==="documents"?16:23;
   const popupWidth=Math.max(1,Math.min(Math.max(1,safeWidth-12),Math.round(134*zoom)));
   const lastCentres=[];
   return items.map(event=>{
@@ -530,13 +530,13 @@
   const outer=Number(root.clientWidth)||Number(root.getBoundingClientRect?.().width)||760;
   const available=Math.max(1,Math.floor(outer)-(parseFloat(cs.paddingLeft)||0)-(parseFloat(cs.paddingRight)||0)-3);
   const labelWidth=Math.min(Math.round(available*.33),available<420?88:available<740?124:170);
-  const contentWidth=Math.round(available*Math.max(1,state.zoom));
+  const contentWidth=Math.round(available*Math.max(1.25,state.zoom));
   const mapWidth=Math.max(1,contentWidth-labelWidth-2);
   const cardWidth=Math.min(Math.round(134*Math.min(state.zoom,1.35)),Math.max(1,mapWidth-12));
   root.style.setProperty("--vat-label-width",labelWidth+"px");
   root.style.setProperty("--vat-card-width",cardWidth+"px");
   const viewport=el("div","vat-viewport");viewport.tabIndex=0;
-  viewport.style.setProperty("overflow-x","auto","important");viewport.style.setProperty("overflow-y","auto","important");viewport.style.setProperty("max-width","100%","important");
+  viewport.style.setProperty("overflow-x","auto","important");viewport.style.setProperty("overflow-y","hidden","important");viewport.style.setProperty("max-width","100%","important");
   viewport.setAttribute("aria-label",L("Cronología desplazable horizontalmente al ampliar","Timeline scrolls horizontally when zoomed","Chronologie défilable horizontalement au zoom"));
   const map=el("div","vat-map");map.style.setProperty("width",contentWidth+"px","important");map.style.setProperty("min-width",contentWidth+"px","important");map.style.setProperty("max-width","none","important");
   const axis=el("div","vat-axis");
@@ -548,6 +548,25 @@
   map.append(axis);
   const detail=el("div","vat-detail");detail.hidden=true;detail.setAttribute("aria-live","polite");
   const stops=[];
+  // Stable preview outside the clipped scrolling area, including on mobile.
+  const hover=el("div","vat-hover-summary");
+  hover.style.cssText="box-sizing:border-box;min-height:82px;padding:10px 12px;border:1px solid currentColor;border-radius:6px;margin-top:8px;overflow-wrap:anywhere";
+  const hint=L("Pasa el mouse sobre un círculo o recorre la escala para ver el acontecimiento.","Hover a circle or move along the axis to see a milestone.","Survolez un cercle ou parcourez l’échelle pour voir un jalon.");
+  hover.append(el("small",null,hint));
+  let activeHover=null;
+  function clearHover(){
+   if(activeHover){activeHover.style.removeProperty("outline");activeHover.style.removeProperty("outline-offset");activeHover=null}
+   hover.replaceChildren(el("small",null,hint));
+  }
+  function showHover(e,button){
+   if(activeHover===button)return;
+   clearHover();activeHover=button;
+   button.style.setProperty("outline","2px solid currentColor","important");
+   button.style.setProperty("outline-offset","4px","important");
+   const label=el("strong",null,(e.approx?"c. ":"")+showYear(e.year)+" · "+e.title);
+   const note=el("p",null,e.detail.slice(0,220));note.style.margin="4px 0";
+   hover.replaceChildren(label,note,el("small",null,e.source));
+  }
   for(const [lane,[label,icon]] of Object.entries(types)){
    const items=visibleEvents.filter(x=>x.lane===lane);if(!items.length)continue;
    const band=el("section","vat-band");band.setAttribute("aria-label",label);
@@ -587,10 +606,10 @@
      const dur=el("span","vat-duration","– "+showYear(e.end));popup.append(dur);
     }
     button.append(popup);
-    button.addEventListener("mouseenter",()=>previewEvent(e));
-    button.addEventListener("focus",()=>previewEvent(e));
-    button.addEventListener("mouseleave",()=>{preview.hidden=true});
-    button.addEventListener("blur",()=>{preview.hidden=true});
+    button.addEventListener("mouseenter",()=>showHover(e,button));
+    button.addEventListener("focus",()=>showHover(e,button));
+    button.addEventListener("mouseleave",()=>{if(activeHover===button)clearHover()});
+    button.addEventListener("blur",()=>{if(activeHover===button)clearHover()});
     button.addEventListener("click",()=>{
      highlightButton(button,detail,e);
      detail.scrollIntoView?.({behavior:"smooth",block:"nearest"});
@@ -604,8 +623,37 @@
    laneBody.append(track,preview);
    band.append(title,laneBody);map.append(band);
   }
-  viewport.append(map);root.append(viewport,detail);
-  viewport.scrollLeft=state.scrollLeft;
+  viewport.append(map);
+  const navigation=el("div","vat-scroll-navigation");
+  navigation.style.cssText="display:flex;flex-direction:column;gap:4px;padding:9px 2px 2px;max-width:100%;box-sizing:border-box";
+  const navLabel=el("label",null,L("Recorrer la cronología","Browse the chronology","Parcourir la chronologie"));
+  const slider=el("input");slider.type="range";slider.min="0";slider.max="1000";slider.step="1";slider.value="0";
+  slider.style.cssText="display:block;width:100%;max-width:100%;margin:3px 0;cursor:ew-resize;accent-color:#8da9cc";
+  slider.setAttribute("aria-label",navLabel.textContent);
+  const dates=el("div");dates.style.cssText="display:flex;justify-content:space-between;gap:8px;font-size:12px";
+  const position=el("output");position.style.textAlign="center";
+  dates.append(el("span",null,showYear(low)),position,el("span",null,showYear(high)));
+  navLabel.append(slider);navigation.append(navLabel,dates);
+  root.append(viewport,navigation,hover,detail);
+  const maxScroll=()=>Math.max(0,viewport.scrollWidth-viewport.clientWidth);
+  const sync=()=>{
+   const max=maxScroll(),fraction=max?viewport.scrollLeft/max:0;
+   slider.value=String(Math.round(fraction*1000));slider.disabled=max===0;
+   const leftYear=ordinalYear(yearOrdinal(low)+Math.round(range*Math.max(0,viewport.scrollLeft-labelWidth)/mapWidth));
+   const rightYear=ordinalYear(yearOrdinal(low)+Math.round(range*Math.min(1,Math.max(0,viewport.scrollLeft+viewport.clientWidth-labelWidth)/mapWidth)));
+   position.textContent=showYear(Math.min(high,leftYear))+" — "+showYear(Math.min(high,rightYear));
+   slider.setAttribute("aria-valuetext",position.textContent);
+  };
+  slider.addEventListener("input",()=>{viewport.scrollLeft=maxScroll()*Number(slider.value)/1000;sync()});
+  viewport.addEventListener("scroll",sync,{passive:true});
+  axis.addEventListener("pointermove",e=>{
+   if(e.pointerType==="touch")return;
+   let closest=null,distance=Infinity;
+   for(const stop of stops){const rect=stop.button.getBoundingClientRect(),d=Math.abs(e.clientX-(rect.left+rect.width/2));if(d<distance){closest=stop;distance=d}}
+   if(closest&&distance<=28)showHover(closest.event,closest.button);else clearHover();
+  });
+  axis.addEventListener("pointerleave",clearHover);
+  viewport.scrollLeft=state.scrollLeft;sync();
   if(state.family.length)appendFamily(root,state.family);
   if(isPerson)appendDocumentaryIndex(root);
   if(outsideEvents.length){
@@ -632,12 +680,15 @@
    if(!nextStop)return;
    highlightButton(nextStop.button,detail,nextStop.event);
    nextStop.button.focus?.({preventScroll:true});
+   const br=nextStop.button.getBoundingClientRect(),vr=viewport.getBoundingClientRect();
+   if(br.left<vr.left||br.right>vr.right)viewport.scrollLeft+=br.left-vr.left-(vr.width-br.width)/2;
+   sync();
   }
   prev.title=L("Hito anterior","Previous milestone","Jalon précédent");
   next.title=L("Hito siguiente","Next milestone","Jalon suivant");
   zoomOut.title=L("Reducir escala cronológica","Reduce timeline scale","Réduire l’échelle chronologique");
   zoomIn.title=L("Ampliar escala cronológica","Enlarge timeline scale","Agrandir l’échelle chronologique");
-  zoomOut.onclick=()=>{state.zoom=Math.max(1,Math.round((state.zoom-.25)*100)/100);draw()};
+  zoomOut.onclick=()=>{state.zoom=Math.max(1.25,Math.round((state.zoom-.25)*100)/100);draw()};
   zoomIn.onclick=()=>{state.zoom=Math.min(3,Math.round((state.zoom+.25)*100)/100);draw()};
   prev.onclick=()=>navigate(-1);
   next.onclick=()=>navigate(1);
@@ -659,7 +710,7 @@
   window.addEventListener("resize",()=>{if(!root.hidden&&state.query)draw()},{passive:true});
  }
  function reset(q){
-  state.token++;state.query=String(q||"").trim().slice(0,160);state.zoom=1;state.scrollLeft=0;root.replaceChildren();
+  state.token++;state.query=String(q||"").trim().slice(0,160);state.zoom=1.5;state.scrollLeft=0;root.replaceChildren();
   state.authority=null;state.works=[];state.albums=[];state.rows=[];state.selected="";state.rowSignature="";state.pendingWorks=null;state.history=[];state.historyIncomplete=false;state.personDates=null;state.family=[];state.phase=state.query?"identity":"idle";
   place();draw();
   if(!state.query)return;
@@ -739,5 +790,5 @@
  }).observe(document.documentElement,{attributes:true,attributeFilter:["lang"]});
  const snapshot=window.VitruviaSearchSnapshot;
  if(snapshot?.query)reset(snapshot.query);
- window.VitruviaAcademicTimeline={collect,layoutMarkers,version:"2.5-family-documentary-index"};
+ window.VitruviaAcademicTimeline={collect,layoutMarkers,version:"2.6-scroll-and-hover"};
 })();
