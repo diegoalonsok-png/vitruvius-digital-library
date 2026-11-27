@@ -1363,6 +1363,27 @@ function scholarlyRecordKey(r){
   r.type==="wikipedia"?String(r.wikiLang||""):r.externalFulltext?String(r.author||""):"";
  return r.type+":"+norm(r.title)+":"+norm(id);
 }
+/* Vitruvia-only evidence gate. A matching name, an ISBN, a DOI or
+ * encyclopedic identity never certifies peer review or a primary document.
+ * Complementary results remain accessible, outside the academic list. */
+function academicEvidenceClass(row){
+ const t=String(row?.type||""),source=String(row?.source||""),href=String(row?.link||"");
+ if(!href)return "context";
+ if(["wikipedia","wikidata","encyclopedia","openlibrary","googlebook","archive-portal"].includes(t))return "context";
+ if(/wikipedia|wikimedia|wikidata|britannica/i.test(source))return "context";
+ if(t==="article"){
+  const provider=/^(Crossref|OpenAlex|Europe PMC)$/i.test(source);
+  const kind=String(row.recordKind||"");
+  return provider&&row.author&&row.journal&&/^(journal-article|article|review)$/i.test(kind)?"research-record":"context";
+ }
+ if(["passage","preface"].includes(t)&&row.locus&&row.edition&&(row.latin||row.translation||row.excerpt))return "document";
+ if(t==="historical-ocr")return "context";
+ if(["manuscript","fragment","apparatus","edition"].includes(t))return row.curatedAcademic||row.timelineWorkMatch||row.codexShelfmark||row.apparatusId?"document":"context";
+ if(t==="book"&&row.workId&&(/^bibliotheca-|^lector-bilingue/.test(href)||row.curatedAcademic))return "catalogue";
+ if(["museum","university","scholar","authority","topic"].includes(t)&&(row.curatedAcademic||source==="The Met"||source==="Getty AAT"))return "institution";
+ if(t==="text-external"&&row.externalFulltext)return "context";
+ return "context";
+}
 function display(rows,query,phase){
  // No se eliminan resultados por umbrales de coincidencia en el título:
  // los textos, alias, autores y metadatos documentales también cuentan.
@@ -1417,10 +1438,12 @@ function display(rows,query,phase){
  }
  // Orden académico estable, sin reiterar filas ni encabezados cuando llegan
  // respuestas de servicios externos en distinto orden.
+ const strictAcademic=["all","ai"].includes(S.mode);
  const encyclopediaTypes=new Set(["wikipedia","wikidata","topic","authority"]);
  const libraryTypes=new Set(["passage","book","manuscript","edition","preface","section"]);
  const textExternalTypes=new Set(["text-external"]);
- const byGroup=r=>["all","ai"].includes(S.mode)&&r.aiEvidence?"semantic":
+ const byGroup=r=>strictAcademic&&academicEvidenceClass(r)==="context"?"context":
+  strictAcademic&&r.aiEvidence?"semantic":
   encyclopediaTypes.has(r.type)?"encyclopedia":
   r.type==="university"?"universities":
   r.type==="manuscript"?"manuscripts":
@@ -1506,12 +1529,14 @@ function display(rows,query,phase){
   const index=ordered.findIndex(r=>(r.preferredWiki||r.preferredAuthority)&&r.wikidataId===authorityId&&["wikipedia","wikidata"].includes(r.type));
   if(index>0){ordered=[ordered[index],...ordered.slice(0,index),...ordered.slice(index+1)];}
  }
- const titles=RESULT_TEXT[S.lang]||RESULT_TEXT.es;
+ const complementary=strictAcademic?ordered.filter(r=>academicEvidenceClass(r)==="context"):[];
+ if(strictAcademic)ordered=ordered.filter(r=>academicEvidenceClass(r)!=="context");
+ const titles={...(RESULT_TEXT[S.lang]||RESULT_TEXT.es),context:S.lang==="en"?"Complementary context · not scholarly evidence":S.lang==="fr"?"Contexte complémentaire · hors preuve scientifique":"Contexto complementario · no es evidencia académica"};
  if(!document.getElementById("vitruvia-facet-style")){const st=document.createElement("style");st.id="vitruvia-facet-style";
   st.textContent=".result-facets{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 14px}.result-facet{font:12px/1.3 system-ui,-apple-system,sans-serif;border:1px solid currentColor;border-radius:999px;background:transparent;color:inherit;opacity:.72;padding:5px 11px;cursor:pointer}.result-facet:hover{opacity:1}.result-facet.active{opacity:1;background:#1B2A4A;color:#fff;border-color:#1B2A4A}html[data-theme=dark] .result-facet.active{background:#C9A84C;color:#14120e;border-color:#C9A84C}";
   document.head.append(st)}
  // Facetas: filtrar la lista por tipo de fuente sin perder el orden académico.
- const facetGroups=[...grouped].filter(([,a])=>a.length);
+ const facetGroups=[...grouped].filter(([g,a])=>a.length&&(!strictAcademic||g!=="context"));
  if(S.facet&&!facetGroups.some(([g])=>g===S.facet))S.facet="";
  if(facetGroups.length>1){
   const bar=node("div","result-facets");bar.setAttribute("role","toolbar");bar.setAttribute("aria-label",S.lang==="en"?"Filter by source type":S.lang==="fr"?"Filtrer par type de source":"Filtrar por tipo de fuente");
@@ -1536,7 +1561,7 @@ function display(rows,query,phase){
   if(method)note.append(method);
   list.append(note);
  }
- if(!shown.length)list.append(node("div","empty",T().none));
+ if(!shown.length)list.append(node("div","empty",strictAcademic?(S.lang==="en"?"No sufficiently documented academic records retrieved. Complementary references remain available below.":S.lang==="fr"?"Aucune notice académique suffisamment documentée. Le contexte complémentaire reste disponible ci-dessous.":"No se recuperaron registros académicos suficientemente documentados. Las referencias complementarias siguen disponibles abajo."):T().none));
  else {
   let lastGroup="",lastBlock="";
   for(const r of shown.slice(0,S.visibleResultCount)){
@@ -1568,20 +1593,31 @@ function display(rows,query,phase){
  }
  // Never open a codex, PDF or classical-text viewer as a side effect of search.
  // Viewer links and explicit user-click actions remain available in result cards.
- if(deduped.length>S.visibleResultCount){
-  const left=deduped.length-S.visibleResultCount;
+ if(shown.length>S.visibleResultCount){
+  const left=shown.length-S.visibleResultCount;
   const label=S.lang==="en"?"View "+Math.min(left,50)+" more results":S.lang==="fr"?"Voir "+Math.min(left,50)+" résultats supplémentaires":"Ver "+Math.min(left,50)+" resultados más";
   const more=node("button","show-more-results",label);more.type="button";
   more.addEventListener("click",()=>{S.visibleResultCount+=50;display(rows,query,phase)});
   list.append(more);
  }
+ if(strictAcademic&&complementary.length){
+  const details=node("details","vitruvia-complementary-results");
+  details.style.cssText="margin:22px 0;border:1px solid var(--line);padding:12px;border-radius:8px";
+  details.open=!!liveList.querySelector(".vitruvia-complementary-results[open]");
+  details.append(node("summary",null,titles.context+" ("+complementary.length+")"));
+  const note=node("p",null,S.lang==="en"?"Encyclopedias, general catalogues and unverified sources. Not used as academic evidence.":S.lang==="fr"?"Encyclopédies, catalogues généraux et sources non vérifiées. Ne constituent pas des preuves scientifiques.":"Enciclopedias, catálogos generales y fuentes sin acreditación suficiente. No se presentan como evidencia académica.");
+  details.append(note);
+  for(const r of complementary.slice(0,30))details.append(cardFor(r));
+  if(complementary.length>30)details.append(node("p",null,S.lang==="en"?"First 30 complementary records shown.":S.lang==="fr"?"30 premières notices complémentaires.":"Se muestran los primeros 30 registros complementarios."));
+  list.append(details);
+ }
  if(window.VitruviaData)window.VitruviaData.reconcile(liveList,desired);else liveList.replaceChildren(...desired);
- if(window.VitruviaArticles){$("answer").hidden=true;const authority=currentAuthorityFor(query);window.VitruviaArticles.render(deduped,query,identifyHistoricalPerson(query)||(authority?{id:authority.id,name:authority.personName}:null),{progressive:true,final:!!S.searchComplete})}else synthesize(deduped);
+ if(window.VitruviaArticles){$("answer").hidden=true;const authority=currentAuthorityFor(query);window.VitruviaArticles.render(strictAcademic?ordered:deduped,query,identifyHistoricalPerson(query)||(authority?{id:authority.id,name:authority.personName}:null),{progressive:true,final:!!S.searchComplete})}else synthesize(strictAcademic?ordered:deduped);
  $("results-heading").textContent=T().heading;
  if(deduped.length&&S.firstResultAt==null){S.firstResultAt=performance.now()-S.searchStarted;$("result-state").dataset.firstResultMs=String(Math.round(S.firstResultAt))}
  $("result-list").setAttribute("aria-busy",String(!S.searchComplete));
  if(S.searchComplete)$("result-state").dataset.completeMs=String(Math.round(performance.now()-S.searchStarted));
- $("result-state").textContent=deduped.length+" "+titles.matching+" · "+Math.min(S.visibleResultCount,deduped.length)+" "+titles.visible+(phase?" · "+phase:"");
+ $("result-state").textContent=ordered.length+" "+titles.matching+" · "+Math.min(S.visibleResultCount,shown.length)+" "+titles.visible+(strictAcademic&&complementary.length?" · "+complementary.length+" "+(S.lang==="en"?"complementary":S.lang==="fr"?"complémentaires":"complementarios"):"")+(phase?" · "+phase:"");
  const snapshot={query,rows:deduped,phase};
  window.VitruviaSearchSnapshot=snapshot;
  window.dispatchEvent(new CustomEvent("vitruvia:results",{detail:snapshot}));
