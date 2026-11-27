@@ -642,7 +642,8 @@ function render(){
  if(document.body.classList.contains("bibliotheca-plain-list")){
   const searched=rawQuery.trim(),revision=++plainRevision;
   const visible=document.getElementById("bibliotheca-lexicon-q");
-  const isCurrent=()=>revision===plainRevision&&input.value.trim()===searched&&(!visible||visible.value.trim()===searched);
+  const visibleSnapshot=visible?.value;
+  const isCurrent=()=>revision===plainRevision&&input.value.trim()===searched&&(!visible||visible.value===visibleSnapshot);
   if(!searched){list.replaceChildren();more.hidden=true;count.textContent="";model.region.hidden=true;list.removeAttribute("aria-busy");return;}
   if(!isCurrent())return;
   const initial=singleLetter(searched),browsing=Boolean(initial);
@@ -673,7 +674,7 @@ function render(){
   list.append(fragment);
   if(scored.length>limit){more.hidden=false;more.textContent="Mostrar más obras ("+(scored.length-limit)+" restantes)";}
   list.removeAttribute("aria-busy");
-  });
+  }).catch(error=>{if(!isCurrent())return;list.removeAttribute("aria-busy");list.replaceChildren();count.textContent="No se pudo consultar el catálogo. Vuelva a intentar.";console.warn("Bibliotheca catalogue search",error)});
   return;
  }
 
@@ -894,6 +895,7 @@ function mount(parent,data){
    const sync=()=>{clearTimeout(searchTimer);input.value=visible.value;model.letter="";model.limit=40;render()};
    const schedule=event=>{
     cancelPlainRender();
+    if(input.value!==visible.value){list.replaceChildren();more.hidden=true;count.textContent="";list.removeAttribute("aria-busy");model.region.hidden=true;}
     if(event.isComposing)return;
     clearTimeout(searchTimer);
     searchTimer=setTimeout(sync,320);
