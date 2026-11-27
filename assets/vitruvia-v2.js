@@ -4,7 +4,7 @@
 const P=window.VitruviaAcademicPolicy,$=id=>document.getElementById(id);
 const el=(tag,text,cls)=>{const n=document.createElement(tag);if(text!=null)n.textContent=text;if(cls)n.className=cls;return n};
 const link=(label,url,local=false)=>{const a=el("a",label);if(local||P.safe(url)){a.href=url;if(!local){a.target="_blank";a.rel="noopener noreferrer"}}return a};
-const api=async(url,signal)=>{const r=await fetch(url,{signal,headers:{Accept:"application/json"}});if(!r.ok)throw Error("HTTP "+r.status);return r.json()};
+const api=async(url,signal)=>{const local=new AbortController(),timer=setTimeout(()=>local.abort(),8000);const cancel=()=>local.abort();if(signal?.aborted)local.abort();else signal?.addEventListener("abort",cancel,{once:true});try{const r=await fetch(url,{signal:local.signal,headers:{Accept:"application/json"}});if(!r.ok)throw Error("HTTP "+r.status);return await r.json()}finally{clearTimeout(timer);signal?.removeEventListener("abort",cancel)}};
 const wiki=(lang,params)=>"https://"+lang+".wikipedia.org/w/api.php?"+new URLSearchParams({...params,format:"json",origin:"*"});
 let generation=0,controller;
 const current=id=>id===generation;
@@ -181,7 +181,7 @@ function renderDirect(root,data,identity,query,id){
 
 async function search(q,lang){
  controller?.abort();controller=new AbortController();const signal=controller.signal,id=++generation;
- const root=$("content");root.replaceChildren();$("status").textContent="Identificando el tema…";
+ const root=$("content");root.replaceChildren();delete $("status").dataset.firstEvidenceMs;$("status").textContent="Identificando el tema…";
  $("query").value=q;const url=new URL(location.href);url.searchParams.set("q",q);url.searchParams.set("lang",lang);history.replaceState(null,"",url);
  const royalRoot=el("div");root.append(royalRoot);const royalTask=royalNames(q,royalRoot,id,signal).catch(()=>false);
  const start=performance.now();const identity=await fastIdentity(q,lang,signal).catch(()=>null);
@@ -196,7 +196,7 @@ async function search(q,lang){
  const direct=el("div"),family=el("div"),a=el("div"),b=el("div"),c=el("div");root.insertBefore(direct,royalRoot);root.append(family,a,c,b);
  $("status").textContent="Identidad localizada · consultando referencias y textos…";
  const tasks=[royalTask,window.VitruviaEntityResolver.resolve(q,lang).then(full=>{if(!current(id)||full?.wikidataId!==identity.wikidataId)return;if(full.kind==="person"&&!article.querySelector("dl")){const dl=el("dl");for(const [label,value] of [["Nacimiento",year(full.birthYear)],["Fallecimiento",year(full.deathYear)]])dl.append(el("dt",label),el("dd",value));article.append(dl,el("p","Fechas de Wikidata; revisar precisión y fuentes.","meta"))}return royalRelations(full,family,id,signal)}).catch(()=>{}),
- encyclopedic(identity,signal).then(d=>{if(current(id)){renderDirect(direct,d,identity,q,id);renderEvidence(a,d,identity);$("status").dataset.firstEvidenceMs=String(Math.round(performance.now()-start));}}).catch(()=>{if(current(id))section(a,"Artículo").append(el("p","Fuente temporalmente no disponible."))}),
+ encyclopedic(identity,signal).then(d=>{if(current(id)){renderDirect(direct,d,identity,q,id);const more=el("details");more.append(el("summary","Consultar el artículo y sus referencias completas"));a.append(more);renderEvidence(more,d,identity);if(d.blocks.length)$("status").dataset.firstEvidenceMs=String(Math.round(performance.now()-start));}}).catch(()=>{if(current(id))section(a,"Artículo").append(el("p","Fuente temporalmente no disponible."))}),
  bibliography(identity,signal).then(async rows=>{
   if(!current(id))return;const s=section(b,"Bibliografía académica");
   if(!rows.length){s.append(el("p","No se encontraron registros que superen el filtro."));return}
@@ -208,7 +208,7 @@ async function search(q,lang){
   for(const r of sorted.slice(0,8))record(s,r);
  }).catch(()=>{if(current(id))section(b,"Bibliografía académica").append(el("p","Crossref temporalmente no disponible."))}),
  Promise.resolve().then(()=>{const button=el("button","Buscar pasajes en Bibliotheca");c.append(button);button.addEventListener("click",()=>{button.remove();void corpus(q,c,id)},{once:true})})];
- await Promise.allSettled(tasks);if(current(id))$("status").textContent="Consulta terminada · la ausencia de resultados no implica ausencia de fuentes.";
+ await Promise.allSettled(tasks);if(current(id)){const ms=$("status").dataset.firstEvidenceMs;$("status").textContent="Consulta terminada"+(ms?" · primera evidencia: "+(Number(ms)/1000).toFixed(2)+" s":" · sin evidencia enciclopédica admitida")+" · cobertura no exhaustiva.";}
 }
 $("form").addEventListener("submit",e=>{e.preventDefault();const q=$("query").value.trim();if(q)void search(q,$("lang").value)});
 $("enable-ai")?.addEventListener("click",async()=>{const b=$("enable-ai");if(!globalThis.LanguageModel){b.textContent="IA local no disponible";return}try{const state=await LanguageModel.availability();if(state==="unavailable"){b.textContent="IA local no disponible";return}activeModel=LanguageModel.create();await activeModel;b.textContent="IA generativa local activa";const q=$("query").value.trim();if(q)void search(q,$("lang").value)}catch{activeModel=null;b.textContent="No se pudo iniciar la IA local"}});
