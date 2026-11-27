@@ -1,0 +1,2013 @@
+{
+  "schema": "vitruvia-benchmark-v1",
+  "note": "200 queries, 600 comparative searches; pending is not passed. Google AI availability may vary. Score each system against evidence, not result count.",
+  "criteria": [
+    "intent and identity",
+    "direct and complete answer",
+    "domain-specific required information",
+    "source quality and factual traceability",
+    "irrelevance and unsupported claims"
+  ],
+  "queries": [
+    {
+      "id": 1,
+      "category": "Egiptología y titulaturas",
+      "q": "Tutankamón",
+      "expected": "Identidad, cronología, titulatura documentada y fuentes; no forzar cinco nombres para reinas",
+      "googleAI": "https://www.google.com/search?udm=50&q=Tutankam%C3%B3n",
+      "wiki": "https://es.wikipedia.org/w/index.php?search=Tutankam%C3%B3n",
+      "vitruvia": "https://vitruvius-digital-library.org/vitruvia.html?mode=all&q=Tutankam%C3%B3n",
+      "status": "pending"
+    },
+    {
+      "id": 2,
+      "category": "Egiptología y titulaturas",
+      "q": "Akenatón",
+      "expected": "Identidad, cronología, titulatura documentada y fuentes; no forzar cinco nombres para reinas",
+      "googleAI": "https://www.google.com/search?udm=50&q=Akenat%C3%B3n",
+      "wiki": "https://es.wikipedia.org/w/index.php?search=Akenat%C3%B3n",
+      "vitruvia": "https://vitruvius-digital-library.org/vitruvia.html?mode=all&q=Akenat%C3%B3n",
+      "status": "pending"
+    },
+    {
+      "id": 3,
+      "category": "Egiptología y titulaturas",
+      "q": "Amenhotep III",
+      "expected": "Identidad, cronología, titulatura documentada y fuentes; no forzar cinco nombres para reinas",
+      "googleAI": "https://www.google.com/search?udm=50&q=Amenhotep%20III",
+      "wiki": "https://es.wikipedia.org/w/index.php?search=Amenhotep%20III",
+      "vitruvia": "https://vitruvius-digital-library.org/vitruvia.html?mode=all&q=Amenhotep%20III",
+      "status": "pending"
+    },
+    {
+      "id": 4,
+      "category": "Egiptología y titulaturas",
+      "q": "Ramsés II",
+      "expected": "Identidad, cronología, titulatura documentada y fuentes; no forzar cinco nombres para reinas",
+      "googleAI": "https://www.google.com/search?udm=50&q=Rams%C3%A9s%20II",
+      "wiki": "https://es.wikipedia.org/w/index.php?search=Rams%C3%A9s%20II",
+      "vitruvia": "https://vitruvius-digital-library.org/vitruvia.html?mode=all&q=Rams%C3%A9s%20II",
+      "status": "pending"
+    },
+    {
+      "id": 5,
+      "category": "Egiptología y titulaturas",
+      "q": "Seti I",
+      "expected": "Identidad, cronología, titulatura documentada y fuentes; no forzar cinco nombres para reinas",
+      "googleAI": "https://www.google.com/search?udm=50&q=Seti%20I",
+      "wiki": "https://es.wikipedia.org/w/index.php?search=Seti%20I",
+      "vitruvia": "https://vitruvius-digital-library.org/vitruvia.html?mode=all&q=Seti%20I",
+      "status": "pending"
+    },
+    {
+      "id": 6,
+      "category": "Egiptología y titulaturas",
+      "q": "Hatshepsut",
+      "expected": "Identidad, cronología, titulatura documentada y fuentes; no forzar cinco nombres para reinas",
+      "googleAI": "https://www.google.com/search?udm=50&q=Hatshepsut",
+      "wiki": "https://es.wikipedia.org/w/index.php?search=Hatshepsut",
+      "vitruvia": "https://vitruvius-digital-library.org/vitruvia.html?mode=all&q=Hatshepsut",
+      "status": "pending"
+    },
+    {
+      "id": 7,
+      "category": "Egiptología y titulaturas",
+      "q": "Tutmosis III",
+      "expected": "Identidad, cronología, titulatura documentada y fuentes; no forzar cinco nombres para reinas",
+      "googleAI": "https://www.google.com/search?udm=50&q=Tutmosis%20III",
+      "wiki": "https://es.wikipedia.org/w/index.php?search=Tutmosis%20III",
+      "vitruvia": "https://vitruvius-digital-library.org/vitruvia.html?mode=all&q=Tutmosis%20III",
+      "status": "pending"
+    },
+    {
+      "id": 8,
+      "category": "Egiptología y titulaturas",
+      "q": "Narmer",
+      "expected": "Identidad, cronología, titulatura documentada y fuentes; no forzar cinco nombres para reinas",
+      "googleAI": "https://www.google.com/search?udm=50&q=Narmer",
+      "wiki": "https://es.wikipedia.org/w/index.php?search=Narmer",
+      "vitruvia": "https://vitruvius-digital-library.org/vitruvia.html?mode=all&q=Narmer",
+      "status": "pending"
+    },
+    {
+      "id": 9,
+      "category": "Egiptología y titulaturas",
+      "q": "Djoser",
+      "expected": "Identidad, cronología, titulatura documentada y fuentes; no forzar cinco nombres para reinas",
+      "googleAI": "https://www.google.com/search?udm=50&q=Djoser",
+      "wiki": "https://es.wikipedia.org/w/index.php?search=Djoser",
+      "vitruvia": "https://vitruvius-digital-library.org/vitruvia.html?mode=all&q=Djoser",
+      "status": "pending"
+    },
+    {
+      "id": 10,
+      "category": "Egiptología y titulaturas",
+      "q": "Keops",
+      "expected": "Identidad, cronología, titulatura documentada y fuentes; no forzar cinco nombres para reinas",
+      "googleAI": "https://www.google.com/search?udm=50&q=Keops",
+      "wiki": "https://es.wikipedia.org/w/index.php?search=Keops",
+      "vitruvia": "https://vitruvius-digital-library.org/vitruvia.html?mode=all&q=Keops",
+      "status": "pending"
+    },
+    {
+      "id": 11,
+      "category": "Egiptología y titulaturas",
+      "q": "Kefrén",
+      "expected": "Identidad, cronología, titulatura documentada y fuentes; no forzar cinco nombres para reinas",
+      "googleAI": "https://www.google.com/search?udm=50&q=Kefr%C3%A9n",
+      "wiki": "https://es.wikipedia.org/w/index.php?search=Kefr%C3%A9n",
+      "vitruvia": "https://vitruvius-digital-library.org/vitruvia.html?mode=all&q=Kefr%C3%A9n",
+      "status": "pending"
+    },
+    {
+      "id": 12,
+      "category": "Egiptología y titulaturas",
+      "q": "Micerino",
+      "expected": "Identidad, cronología, titulatura documentada y fuentes; no forzar cinco nombres para reinas",
+      "googleAI": "https://www.google.com/search?udm=50&q=Micerino",
+      "wiki": "https://es.wikipedia.org/w/index.php?search=Micerino",
+      "vitruvia": "https://vitruvius-digital-library.org/vitruvia.html?mode=all&q=Micerino",
+      "status": "pending"
+    },
+    {
+      "id": 13,
+      "category": "Egiptología y titulaturas",
+      "q": "Amenemhat I",
+      "expected": "Identidad, cronología, titulatura documentada y fuentes; no forzar cinco nombres para reinas",
+      "googleAI": "https://www.google.com/search?udm=50&q=Amenemhat%20I",
+      "wiki": "https://es.wikipedia.org/w/index.php?search=Amenemhat%20I",
+      "vitruvia": "https://vitruvius-digital-library.org/vitruvia.html?mode=all&q=Amenemhat%20I",
+      "status": "pending"
+    },
+    {
+      "id": 14,
+      "category": "Egiptología y titulaturas",
+      "q": "Sesostris I",
+      "expected": "Identidad, cronología, titulatura documentada y fuentes; no forzar cinco nombres para reinas",
+      "googleAI": "https://www.google.com/search?udm=50&q=Sesostris%20I",
+      "wiki": "https://es.wikipedia.org/w/index.php?search=Sesostris%20I",
+      "vitruvia": "https://vitruvius-digital-library.org/vitruvia.html?mode=all&q=Sesostris%20I",
+      "status": "pending"
+    },
+    {
+      "id": 15,
+      "category": "Egiptología y titulaturas",
+      "q": "Nefertiti",
+      "expected": "Identidad, cronología, titulatura documentada y fuentes; no forzar cinco nombres para reinas",
+      "googleAI": "https://www.google.com/search?udm=50&q=Nefertiti",
+      "wiki": "https://es.wikipedia.org/w/index.php?search=Nefertiti",
+      "vitruvia": "https://vitruvius-digital-library.org/vitruvia.html?mode=all&q=Nefertiti",
+      "status": "pending"
+    },
+    {
+      "id": 16,
+      "category": "Egiptología y titulaturas",
+      "q": "Tiy",
+      "expected": "Identidad, cronología, titulatura documentada y fuentes; no forzar cinco nombres para reinas",
+      "googleAI": "https://www.google.com/search?udm=50&q=Tiy",
+      "wiki": "https://es.wikipedia.org/w/index.php?search=Tiy",
+      "vitruvia": "https://vitruvius-digital-library.org/vitruvia.html?mode=all&q=Tiy",
+      "status": "pending"
+    },
+    {
+      "id": 17,
+      "category": "Egiptología y titulaturas",
+      "q": "Cleopatra VII",
+      "expected": "Identidad, cronología, titulatura documentada y fuentes; no forzar cinco nombres para reinas",
+      "googleAI": "https://www.google.com/search?udm=50&q=Cleopatra%20VII",
+      "wiki": "https://es.wikipedia.org/w/index.php?search=Cleopatra%20VII",
+      "vitruvia": "https://vitruvius-digital-library.org/vitruvia.html?mode=all&q=Cleopatra%20VII",
+      "status": "pending"
+    },
+    {
+      "id": 18,
+      "category": "Egiptología y titulaturas",
+      "q": "Ptolomeo V",
+      "expected": "Identidad, cronología, titulatura documentada y fuentes; no forzar cinco nombres para reinas",
+      "googleAI": "https://www.google.com/search?udm=50&q=Ptolomeo%20V",
+      "wiki": "https://es.wikipedia.org/w/index.php?search=Ptolomeo%20V",
+      "vitruvia": "https://vitruvius-digital-library.org/vitruvia.html?mode=all&q=Ptolomeo%20V",
+      "status": "pending"
+    },
+    {
+      "id": 19,
+      "category": "Egiptología y titulaturas",
+      "q": "Smenkhkare",
+      "expected": "Identidad, cronología, titulatura documentada y fuentes; no forzar cinco nombres para reinas",
+      "googleAI": "https://www.google.com/search?udm=50&q=Smenkhkare",
+      "wiki": "https://es.wikipedia.org/w/index.php?search=Smenkhkare",
+      "vitruvia": "https://vitruvius-digital-library.org/vitruvia.html?mode=all&q=Smenkhkare",
+      "status": "pending"
+    },
+    {
+      "id": 20,
+      "category": "Egiptología y titulaturas",
+      "q": "Neferneferuatón",
+      "expected": "Identidad, cronología, titulatura documentada y fuentes; no forzar cinco nombres para reinas",
+      "googleAI": "https://www.google.com/search?udm=50&q=Neferneferuat%C3%B3n",
+      "wiki": "https://es.wikipedia.org/w/index.php?search=Neferneferuat%C3%B3n",
+      "vitruvia": "https://vitruvius-digital-library.org/vitruvia.html?mode=all&q=Neferneferuat%C3%B3n",
+      "status": "pending"
+    },
+    {
+      "id": 21,
+      "category": "Realeza y dinastías",
+      "q": "Isabel I de Castilla",
+      "expected": "Identidad, fechas, títulos, casa y parentesco con fuentes",
+      "googleAI": "https://www.google.com/search?udm=50&q=Isabel%20I%20de%20Castilla",
+      "wiki": "https://es.wikipedia.org/w/index.php?search=Isabel%20I%20de%20Castilla",
+      "vitruvia": "https://vitruvius-digital-library.org/vitruvia.html?mode=all&q=Isabel%20I%20de%20Castilla",
+      "status": "pending"
+    },
+    {
+      "id": 22,
+      "category": "Realeza y dinastías",
+      "q": "Carlos V del Sacro Imperio",
+      "expected": "Identidad, fechas, títulos, casa y parentesco con fuentes",
+      "googleAI": "https://www.google.com/search?udm=50&q=Carlos%20V%20del%20Sacro%20Imperio",
+      "wiki": "https://es.wikipedia.org/w/index.php?search=Carlos%20V%20del%20Sacro%20Imperio",
+      "vitruvia": "https://vitruvius-digital-library.org/vitruvia.html?mode=all&q=Carlos%20V%20del%20Sacro%20Imperio",
+      "status": "pending"
+    },
+    {
+      "id": 23,
+      "category": "Realeza y dinastías",
+      "q": "Felipe II de España",
+      "expected": "Identidad, fechas, títulos, casa y parentesco con fuentes",
+      "googleAI": "https://www.google.com/search?udm=50&q=Felipe%20II%20de%20Espa%C3%B1a",
+      "wiki": "https://es.wikipedia.org/w/index.php?search=Felipe%20II%20de%20Espa%C3%B1a",
+      "vitruvia": "https://vitruvius-digital-library.org/vitruvia.html?mode=all&q=Felipe%20II%20de%20Espa%C3%B1a",
+      "status": "pending"
+    },
+    {
+      "id": 24,
+      "category": "Realeza y dinastías",
+      "q": "Luis XIV",
+      "expected": "Identidad, fechas, títulos, casa y parentesco con fuentes",
+      "googleAI": "https://www.google.com/search?udm=50&q=Luis%20XIV",
+      "wiki": "https://es.wikipedia.org/w/index.php?search=Luis%20XIV",
+      "vitruvia": "https://vitruvius-digital-library.org/vitruvia.html?mode=all&q=Luis%20XIV",
+      "status": "pending"
+    },
+    {
+      "id": 25,
+      "category": "Realeza y dinastías",
+      "q": "Luis XVI",
+      "expected": "Identidad, fechas, títulos, casa y parentesco con fuentes",
+      "googleAI": "https://www.google.com/search?udm=50&q=Luis%20XVI",
+      "wiki": "https://es.wikipedia.org/w/index.php?search=Luis%20XVI",
+      "vitruvia": "https://vitruvius-digital-library.org/vitruvia.html?mode=all&q=Luis%20XVI",
+      "status": "pending"
+    },
+    {
+      "id": 26,
+      "category": "Realeza y dinastías",
+      "q": "María Antonieta",
+      "expected": "Identidad, fechas, títulos, casa y parentesco con fuentes",
+      "googleAI": "https://www.google.com/search?udm=50&q=Mar%C3%ADa%20Antonieta",
+      "wiki": "https://es.wikipedia.org/w/index.php?search=Mar%C3%ADa%20Antonieta",
+      "vitruvia": "https://vitruvius-digital-library.org/vitruvia.html?mode=all&q=Mar%C3%ADa%20Antonieta",
+      "status": "pending"
+    },
+    {
+      "id": 27,
+      "category": "Realeza y dinastías",
+      "q": "Enrique VIII",
+      "expected": "Identidad, fechas, títulos, casa y parentesco con fuentes",
+      "googleAI": "https://www.google.com/search?udm=50&q=Enrique%20VIII",
+      "wiki": "https://es.wikipedia.org/w/index.php?search=Enrique%20VIII",
+      "vitruvia": "https://vitruvius-digital-library.org/vitruvia.html?mode=all&q=Enrique%20VIII",
+      "status": "pending"
+    },
+    {
+      "id": 28,
+      "category": "Realeza y dinastías",
+      "q": "Isabel I de Inglaterra",
+      "expected": "Identidad, fechas, títulos, casa y parentesco con fuentes",
+      "googleAI": "https://www.google.com/search?udm=50&q=Isabel%20I%20de%20Inglaterra",
+      "wiki": "https://es.wikipedia.org/w/index.php?search=Isabel%20I%20de%20Inglaterra",
+      "vitruvia": "https://vitruvius-digital-library.org/vitruvia.html?mode=all&q=Isabel%20I%20de%20Inglaterra",
+      "status": "pending"
+    },
+    {
+      "id": 29,
+      "category": "Realeza y dinastías",
+      "q": "Victoria del Reino Unido",
+      "expected": "Identidad, fechas, títulos, casa y parentesco con fuentes",
+      "googleAI": "https://www.google.com/search?udm=50&q=Victoria%20del%20Reino%20Unido",
+      "wiki": "https://es.wikipedia.org/w/index.php?search=Victoria%20del%20Reino%20Unido",
+      "vitruvia": "https://vitruvius-digital-library.org/vitruvia.html?mode=all&q=Victoria%20del%20Reino%20Unido",
+      "status": "pending"
+    },
+    {
+      "id": 30,
+      "category": "Realeza y dinastías",
+      "q": "Pedro I de Brasil",
+      "expected": "Identidad, fechas, títulos, casa y parentesco con fuentes",
+      "googleAI": "https://www.google.com/search?udm=50&q=Pedro%20I%20de%20Brasil",
+      "wiki": "https://es.wikipedia.org/w/index.php?search=Pedro%20I%20de%20Brasil",
+      "vitruvia": "https://vitruvius-digital-library.org/vitruvia.html?mode=all&q=Pedro%20I%20de%20Brasil",
+      "status": "pending"
+    },
+    {
+      "id": 31,
+      "category": "Realeza y dinastías",
+      "q": "Catalina II de Rusia",
+      "expected": "Identidad, fechas, títulos, casa y parentesco con fuentes",
+      "googleAI": "https://www.google.com/search?udm=50&q=Catalina%20II%20de%20Rusia",
+      "wiki": "https://es.wikipedia.org/w/index.php?search=Catalina%20II%20de%20Rusia",
+      "vitruvia": "https://vitruvius-digital-library.org/vitruvia.html?mode=all&q=Catalina%20II%20de%20Rusia",
+      "status": "pending"
+    },
+    {
+      "id": 32,
+      "category": "Realeza y dinastías",
+      "q": "Pedro el Grande",
+      "expected": "Identidad, fechas, títulos, casa y parentesco con fuentes",
+      "googleAI": "https://www.google.com/search?udm=50&q=Pedro%20el%20Grande",
+      "wiki": "https://es.wikipedia.org/w/index.php?search=Pedro%20el%20Grande",
+      "vitruvia": "https://vitruvius-digital-library.org/vitruvia.html?mode=all&q=Pedro%20el%20Grande",
+      "status": "pending"
+    },
+    {
+      "id": 33,
+      "category": "Realeza y dinastías",
+      "q": "Guillermo el Conquistador",
+      "expected": "Identidad, fechas, títulos, casa y parentesco con fuentes",
+      "googleAI": "https://www.google.com/search?udm=50&q=Guillermo%20el%20Conquistador",
+      "wiki": "https://es.wikipedia.org/w/index.php?search=Guillermo%20el%20Conquistador",
+      "vitruvia": "https://vitruvius-digital-library.org/vitruvia.html?mode=all&q=Guillermo%20el%20Conquistador",
+      "status": "pending"
+    },
+    {
+      "id": 34,
+      "category": "Realeza y dinastías",
+      "q": "Carlomagno",
+      "expected": "Identidad, fechas, títulos, casa y parentesco con fuentes",
+      "googleAI": "https://www.google.com/search?udm=50&q=Carlomagno",
+      "wiki": "https://es.wikipedia.org/w/index.php?search=Carlomagno",
+      "vitruvia": "https://vitruvius-digital-library.org/vitruvia.html?mode=all&q=Carlomagno",
+      "status": "pending"
+    },
+    {
+      "id": 35,
+      "category": "Realeza y dinastías",
+      "q": "Federico II de Hohenstaufen",
+      "expected": "Identidad, fechas, títulos, casa y parentesco con fuentes",
+      "googleAI": "https://www.google.com/search?udm=50&q=Federico%20II%20de%20Hohenstaufen",
+      "wiki": "https://es.wikipedia.org/w/index.php?search=Federico%20II%20de%20Hohenstaufen",
+      "vitruvia": "https://vitruvius-digital-library.org/vitruvia.html?mode=all&q=Federico%20II%20de%20Hohenstaufen",
+      "status": "pending"
+    },
+    {
+      "id": 36,
+      "category": "Realeza y dinastías",
+      "q": "Akbar",
+      "expected": "Identidad, fechas, títulos, casa y parentesco con fuentes",
+      "googleAI": "https://www.google.com/search?udm=50&q=Akbar",
+      "wiki": "https://es.wikipedia.org/w/index.php?search=Akbar",
+      "vitruvia": "https://vitruvius-digital-library.org/vitruvia.html?mode=all&q=Akbar",
+      "status": "pending"
+    },
+    {
+      "id": 37,
+      "category": "Realeza y dinastías",
+      "q": "Ciro el Grande",
+      "expected": "Identidad, fechas, títulos, casa y parentesco con fuentes",
+      "googleAI": "https://www.google.com/search?udm=50&q=Ciro%20el%20Grande",
+      "wiki": "https://es.wikipedia.org/w/index.php?search=Ciro%20el%20Grande",
+      "vitruvia": "https://vitruvius-digital-library.org/vitruvia.html?mode=all&q=Ciro%20el%20Grande",
+      "status": "pending"
+    },
+    {
+      "id": 38,
+      "category": "Realeza y dinastías",
+      "q": "Darío I",
+      "expected": "Identidad, fechas, títulos, casa y parentesco con fuentes",
+      "googleAI": "https://www.google.com/search?udm=50&q=Dar%C3%ADo%20I",
+      "wiki": "https://es.wikipedia.org/w/index.php?search=Dar%C3%ADo%20I",
+      "vitruvia": "https://vitruvius-digital-library.org/vitruvia.html?mode=all&q=Dar%C3%ADo%20I",
+      "status": "pending"
+    },
+    {
+      "id": 39,
+      "category": "Realeza y dinastías",
+      "q": "Qin Shi Huang",
+      "expected": "Identidad, fechas, títulos, casa y parentesco con fuentes",
+      "googleAI": "https://www.google.com/search?udm=50&q=Qin%20Shi%20Huang",
+      "wiki": "https://es.wikipedia.org/w/index.php?search=Qin%20Shi%20Huang",
+      "vitruvia": "https://vitruvius-digital-library.org/vitruvia.html?mode=all&q=Qin%20Shi%20Huang",
+      "status": "pending"
+    },
+    {
+      "id": 40,
+      "category": "Realeza y dinastías",
+      "q": "Ashoka",
+      "expected": "Identidad, fechas, títulos, casa y parentesco con fuentes",
+      "googleAI": "https://www.google.com/search?udm=50&q=Ashoka",
+      "wiki": "https://es.wikipedia.org/w/index.php?search=Ashoka",
+      "vitruvia": "https://vitruvius-digital-library.org/vitruvia.html?mode=all&q=Ashoka",
+      "status": "pending"
+    },
+    {
+      "id": 41,
+      "category": "Arquitectos",
+      "q": "Vitruvio",
+      "expected": "Identidad, fechas, obras, plantas/cortes/vistas atribuidos y bibliografía",
+      "googleAI": "https://www.google.com/search?udm=50&q=Vitruvio",
+      "wiki": "https://es.wikipedia.org/w/index.php?search=Vitruvio",
+      "vitruvia": "https://vitruvius-digital-library.org/vitruvia.html?mode=all&q=Vitruvio",
+      "status": "pending"
+    },
+    {
+      "id": 42,
+      "category": "Arquitectos",
+      "q": "Andrea Palladio",
+      "expected": "Identidad, fechas, obras, plantas/cortes/vistas atribuidos y bibliografía",
+      "googleAI": "https://www.google.com/search?udm=50&q=Andrea%20Palladio",
+      "wiki": "https://es.wikipedia.org/w/index.php?search=Andrea%20Palladio",
+      "vitruvia": "https://vitruvius-digital-library.org/vitruvia.html?mode=all&q=Andrea%20Palladio",
+      "status": "pending"
+    },
+    {
+      "id": 43,
+      "category": "Arquitectos",
+      "q": "Filippo Brunelleschi",
+      "expected": "Identidad, fechas, obras, plantas/cortes/vistas atribuidos y bibliografía",
+      "googleAI": "https://www.google.com/search?udm=50&q=Filippo%20Brunelleschi",
+      "wiki": "https://es.wikipedia.org/w/index.php?search=Filippo%20Brunelleschi",
+      "vitruvia": "https://vitruvius-digital-library.org/vitruvia.html?mode=all&q=Filippo%20Brunelleschi",
+      "status": "pending"
+    },
+    {
+      "id": 44,
+      "category": "Arquitectos",
+      "q": "Leon Battista Alberti",
+      "expected": "Identidad, fechas, obras, plantas/cortes/vistas atribuidos y bibliografía",
+      "googleAI": "https://www.google.com/search?udm=50&q=Leon%20Battista%20Alberti",
+      "wiki": "https://es.wikipedia.org/w/index.php?search=Leon%20Battista%20Alberti",
+      "vitruvia": "https://vitruvius-digital-library.org/vitruvia.html?mode=all&q=Leon%20Battista%20Alberti",
+      "status": "pending"
+    },
+    {
+      "id": 45,
+      "category": "Arquitectos",
+      "q": "Cesare Cesariano",
+      "expected": "Identidad, fechas, obras, plantas/cortes/vistas atribuidos y bibliografía",
+      "googleAI": "https://www.google.com/search?udm=50&q=Cesare%20Cesariano",
+      "wiki": "https://es.wikipedia.org/w/index.php?search=Cesare%20Cesariano",
+      "vitruvia": "https://vitruvius-digital-library.org/vitruvia.html?mode=all&q=Cesare%20Cesariano",
+      "status": "pending"
+    },
+    {
+      "id": 46,
+      "category": "Arquitectos",
+      "q": "Daniele Barbaro",
+      "expected": "Identidad, fechas, obras, plantas/cortes/vistas atribuidos y bibliografía",
+      "googleAI": "https://www.google.com/search?udm=50&q=Daniele%20Barbaro",
+      "wiki": "https://es.wikipedia.org/w/index.php?search=Daniele%20Barbaro",
+      "vitruvia": "https://vitruvius-digital-library.org/vitruvia.html?mode=all&q=Daniele%20Barbaro",
+      "status": "pending"
+    },
+    {
+      "id": 47,
+      "category": "Arquitectos",
+      "q": "Fra Giocondo",
+      "expected": "Identidad, fechas, obras, plantas/cortes/vistas atribuidos y bibliografía",
+      "googleAI": "https://www.google.com/search?udm=50&q=Fra%20Giocondo",
+      "wiki": "https://es.wikipedia.org/w/index.php?search=Fra%20Giocondo",
+      "vitruvia": "https://vitruvius-digital-library.org/vitruvia.html?mode=all&q=Fra%20Giocondo",
+      "status": "pending"
+    },
+    {
+      "id": 48,
+      "category": "Arquitectos",
+      "q": "Giacomo Barozzi da Vignola",
+      "expected": "Identidad, fechas, obras, plantas/cortes/vistas atribuidos y bibliografía",
+      "googleAI": "https://www.google.com/search?udm=50&q=Giacomo%20Barozzi%20da%20Vignola",
+      "wiki": "https://es.wikipedia.org/w/index.php?search=Giacomo%20Barozzi%20da%20Vignola",
+      "vitruvia": "https://vitruvius-digital-library.org/vitruvia.html?mode=all&q=Giacomo%20Barozzi%20da%20Vignola",
+      "status": "pending"
+    },
+    {
+      "id": 49,
+      "category": "Arquitectos",
+      "q": "Donato Bramante",
+      "expected": "Identidad, fechas, obras, plantas/cortes/vistas atribuidos y bibliografía",
+      "googleAI": "https://www.google.com/search?udm=50&q=Donato%20Bramante",
+      "wiki": "https://es.wikipedia.org/w/index.php?search=Donato%20Bramante",
+      "vitruvia": "https://vitruvius-digital-library.org/vitruvia.html?mode=all&q=Donato%20Bramante",
+      "status": "pending"
+    },
+    {
+      "id": 50,
+      "category": "Arquitectos",
+      "q": "Miguel Ángel arquitecto",
+      "expected": "Identidad, fechas, obras, plantas/cortes/vistas atribuidos y bibliografía",
+      "googleAI": "https://www.google.com/search?udm=50&q=Miguel%20%C3%81ngel%20arquitecto",
+      "wiki": "https://es.wikipedia.org/w/index.php?search=Miguel%20%C3%81ngel%20arquitecto",
+      "vitruvia": "https://vitruvius-digital-library.org/vitruvia.html?mode=all&q=Miguel%20%C3%81ngel%20arquitecto",
+      "status": "pending"
+    },
+    {
+      "id": 51,
+      "category": "Arquitectos",
+      "q": "Gian Lorenzo Bernini",
+      "expected": "Identidad, fechas, obras, plantas/cortes/vistas atribuidos y bibliografía",
+      "googleAI": "https://www.google.com/search?udm=50&q=Gian%20Lorenzo%20Bernini",
+      "wiki": "https://es.wikipedia.org/w/index.php?search=Gian%20Lorenzo%20Bernini",
+      "vitruvia": "https://vitruvius-digital-library.org/vitruvia.html?mode=all&q=Gian%20Lorenzo%20Bernini",
+      "status": "pending"
+    },
+    {
+      "id": 52,
+      "category": "Arquitectos",
+      "q": "Francesco Borromini",
+      "expected": "Identidad, fechas, obras, plantas/cortes/vistas atribuidos y bibliografía",
+      "googleAI": "https://www.google.com/search?udm=50&q=Francesco%20Borromini",
+      "wiki": "https://es.wikipedia.org/w/index.php?search=Francesco%20Borromini",
+      "vitruvia": "https://vitruvius-digital-library.org/vitruvia.html?mode=all&q=Francesco%20Borromini",
+      "status": "pending"
+    },
+    {
+      "id": 53,
+      "category": "Arquitectos",
+      "q": "Christopher Wren",
+      "expected": "Identidad, fechas, obras, plantas/cortes/vistas atribuidos y bibliografía",
+      "googleAI": "https://www.google.com/search?udm=50&q=Christopher%20Wren",
+      "wiki": "https://es.wikipedia.org/w/index.php?search=Christopher%20Wren",
+      "vitruvia": "https://vitruvius-digital-library.org/vitruvia.html?mode=all&q=Christopher%20Wren",
+      "status": "pending"
+    },
+    {
+      "id": 54,
+      "category": "Arquitectos",
+      "q": "Étienne-Louis Boullée",
+      "expected": "Identidad, fechas, obras, plantas/cortes/vistas atribuidos y bibliografía",
+      "googleAI": "https://www.google.com/search?udm=50&q=%C3%89tienne-Louis%20Boull%C3%A9e",
+      "wiki": "https://es.wikipedia.org/w/index.php?search=%C3%89tienne-Louis%20Boull%C3%A9e",
+      "vitruvia": "https://vitruvius-digital-library.org/vitruvia.html?mode=all&q=%C3%89tienne-Louis%20Boull%C3%A9e",
+      "status": "pending"
+    },
+    {
+      "id": 55,
+      "category": "Arquitectos",
+      "q": "Claude-Nicolas Ledoux",
+      "expected": "Identidad, fechas, obras, plantas/cortes/vistas atribuidos y bibliografía",
+      "googleAI": "https://www.google.com/search?udm=50&q=Claude-Nicolas%20Ledoux",
+      "wiki": "https://es.wikipedia.org/w/index.php?search=Claude-Nicolas%20Ledoux",
+      "vitruvia": "https://vitruvius-digital-library.org/vitruvia.html?mode=all&q=Claude-Nicolas%20Ledoux",
+      "status": "pending"
+    },
+    {
+      "id": 56,
+      "category": "Arquitectos",
+      "q": "Le Corbusier",
+      "expected": "Identidad, fechas, obras, plantas/cortes/vistas atribuidos y bibliografía",
+      "googleAI": "https://www.google.com/search?udm=50&q=Le%20Corbusier",
+      "wiki": "https://es.wikipedia.org/w/index.php?search=Le%20Corbusier",
+      "vitruvia": "https://vitruvius-digital-library.org/vitruvia.html?mode=all&q=Le%20Corbusier",
+      "status": "pending"
+    },
+    {
+      "id": 57,
+      "category": "Arquitectos",
+      "q": "Mies van der Rohe",
+      "expected": "Identidad, fechas, obras, plantas/cortes/vistas atribuidos y bibliografía",
+      "googleAI": "https://www.google.com/search?udm=50&q=Mies%20van%20der%20Rohe",
+      "wiki": "https://es.wikipedia.org/w/index.php?search=Mies%20van%20der%20Rohe",
+      "vitruvia": "https://vitruvius-digital-library.org/vitruvia.html?mode=all&q=Mies%20van%20der%20Rohe",
+      "status": "pending"
+    },
+    {
+      "id": 58,
+      "category": "Arquitectos",
+      "q": "Frank Lloyd Wright",
+      "expected": "Identidad, fechas, obras, plantas/cortes/vistas atribuidos y bibliografía",
+      "googleAI": "https://www.google.com/search?udm=50&q=Frank%20Lloyd%20Wright",
+      "wiki": "https://es.wikipedia.org/w/index.php?search=Frank%20Lloyd%20Wright",
+      "vitruvia": "https://vitruvius-digital-library.org/vitruvia.html?mode=all&q=Frank%20Lloyd%20Wright",
+      "status": "pending"
+    },
+    {
+      "id": 59,
+      "category": "Arquitectos",
+      "q": "Alvar Aalto",
+      "expected": "Identidad, fechas, obras, plantas/cortes/vistas atribuidos y bibliografía",
+      "googleAI": "https://www.google.com/search?udm=50&q=Alvar%20Aalto",
+      "wiki": "https://es.wikipedia.org/w/index.php?search=Alvar%20Aalto",
+      "vitruvia": "https://vitruvius-digital-library.org/vitruvia.html?mode=all&q=Alvar%20Aalto",
+      "status": "pending"
+    },
+    {
+      "id": 60,
+      "category": "Arquitectos",
+      "q": "Louis Kahn",
+      "expected": "Identidad, fechas, obras, plantas/cortes/vistas atribuidos y bibliografía",
+      "googleAI": "https://www.google.com/search?udm=50&q=Louis%20Kahn",
+      "wiki": "https://es.wikipedia.org/w/index.php?search=Louis%20Kahn",
+      "vitruvia": "https://vitruvius-digital-library.org/vitruvia.html?mode=all&q=Louis%20Kahn",
+      "status": "pending"
+    },
+    {
+      "id": 61,
+      "category": "Obras y arqueología",
+      "q": "Villa Rotonda",
+      "expected": "Identificación, fecha, autoría, planos y documentación institucional",
+      "googleAI": "https://www.google.com/search?udm=50&q=Villa%20Rotonda",
+      "wiki": "https://es.wikipedia.org/w/index.php?search=Villa%20Rotonda",
+      "vitruvia": "https://vitruvius-digital-library.org/vitruvia.html?mode=all&q=Villa%20Rotonda",
+      "status": "pending"
+    },
+    {
+      "id": 62,
+      "category": "Obras y arqueología",
+      "q": "Panteón de Roma",
+      "expected": "Identificación, fecha, autoría, planos y documentación institucional",
+      "googleAI": "https://www.google.com/search?udm=50&q=Pante%C3%B3n%20de%20Roma",
+      "wiki": "https://es.wikipedia.org/w/index.php?search=Pante%C3%B3n%20de%20Roma",
+      "vitruvia": "https://vitruvius-digital-library.org/vitruvia.html?mode=all&q=Pante%C3%B3n%20de%20Roma",
+      "status": "pending"
+    },
+    {
+      "id": 63,
+      "category": "Obras y arqueología",
+      "q": "Partenón",
+      "expected": "Identificación, fecha, autoría, planos y documentación institucional",
+      "googleAI": "https://www.google.com/search?udm=50&q=Parten%C3%B3n",
+      "wiki": "https://es.wikipedia.org/w/index.php?search=Parten%C3%B3n",
+      "vitruvia": "https://vitruvius-digital-library.org/vitruvia.html?mode=all&q=Parten%C3%B3n",
+      "status": "pending"
+    },
+    {
+      "id": 64,
+      "category": "Obras y arqueología",
+      "q": "Santa Sofía de Constantinopla",
+      "expected": "Identificación, fecha, autoría, planos y documentación institucional",
+      "googleAI": "https://www.google.com/search?udm=50&q=Santa%20Sof%C3%ADa%20de%20Constantinopla",
+      "wiki": "https://es.wikipedia.org/w/index.php?search=Santa%20Sof%C3%ADa%20de%20Constantinopla",
+      "vitruvia": "https://vitruvius-digital-library.org/vitruvia.html?mode=all&q=Santa%20Sof%C3%ADa%20de%20Constantinopla",
+      "status": "pending"
+    },
+    {
+      "id": 65,
+      "category": "Obras y arqueología",
+      "q": "Catedral de Florencia cúpula",
+      "expected": "Identificación, fecha, autoría, planos y documentación institucional",
+      "googleAI": "https://www.google.com/search?udm=50&q=Catedral%20de%20Florencia%20c%C3%BApula",
+      "wiki": "https://es.wikipedia.org/w/index.php?search=Catedral%20de%20Florencia%20c%C3%BApula",
+      "vitruvia": "https://vitruvius-digital-library.org/vitruvia.html?mode=all&q=Catedral%20de%20Florencia%20c%C3%BApula",
+      "status": "pending"
+    },
+    {
+      "id": 66,
+      "category": "Obras y arqueología",
+      "q": "San Carlo alle Quattro Fontane",
+      "expected": "Identificación, fecha, autoría, planos y documentación institucional",
+      "googleAI": "https://www.google.com/search?udm=50&q=San%20Carlo%20alle%20Quattro%20Fontane",
+      "wiki": "https://es.wikipedia.org/w/index.php?search=San%20Carlo%20alle%20Quattro%20Fontane",
+      "vitruvia": "https://vitruvius-digital-library.org/vitruvia.html?mode=all&q=San%20Carlo%20alle%20Quattro%20Fontane",
+      "status": "pending"
+    },
+    {
+      "id": 67,
+      "category": "Obras y arqueología",
+      "q": "Templo de Atón Amarna",
+      "expected": "Identificación, fecha, autoría, planos y documentación institucional",
+      "googleAI": "https://www.google.com/search?udm=50&q=Templo%20de%20At%C3%B3n%20Amarna",
+      "wiki": "https://es.wikipedia.org/w/index.php?search=Templo%20de%20At%C3%B3n%20Amarna",
+      "vitruvia": "https://vitruvius-digital-library.org/vitruvia.html?mode=all&q=Templo%20de%20At%C3%B3n%20Amarna",
+      "status": "pending"
+    },
+    {
+      "id": 68,
+      "category": "Obras y arqueología",
+      "q": "KV62",
+      "expected": "Identificación, fecha, autoría, planos y documentación institucional",
+      "googleAI": "https://www.google.com/search?udm=50&q=KV62",
+      "wiki": "https://es.wikipedia.org/w/index.php?search=KV62",
+      "vitruvia": "https://vitruvius-digital-library.org/vitruvia.html?mode=all&q=KV62",
+      "status": "pending"
+    },
+    {
+      "id": 69,
+      "category": "Obras y arqueología",
+      "q": "Abu Simbel",
+      "expected": "Identificación, fecha, autoría, planos y documentación institucional",
+      "googleAI": "https://www.google.com/search?udm=50&q=Abu%20Simbel",
+      "wiki": "https://es.wikipedia.org/w/index.php?search=Abu%20Simbel",
+      "vitruvia": "https://vitruvius-digital-library.org/vitruvia.html?mode=all&q=Abu%20Simbel",
+      "status": "pending"
+    },
+    {
+      "id": 70,
+      "category": "Obras y arqueología",
+      "q": "Templo de Luxor",
+      "expected": "Identificación, fecha, autoría, planos y documentación institucional",
+      "googleAI": "https://www.google.com/search?udm=50&q=Templo%20de%20Luxor",
+      "wiki": "https://es.wikipedia.org/w/index.php?search=Templo%20de%20Luxor",
+      "vitruvia": "https://vitruvius-digital-library.org/vitruvia.html?mode=all&q=Templo%20de%20Luxor",
+      "status": "pending"
+    },
+    {
+      "id": 71,
+      "category": "Obras y arqueología",
+      "q": "Templo de Karnak",
+      "expected": "Identificación, fecha, autoría, planos y documentación institucional",
+      "googleAI": "https://www.google.com/search?udm=50&q=Templo%20de%20Karnak",
+      "wiki": "https://es.wikipedia.org/w/index.php?search=Templo%20de%20Karnak",
+      "vitruvia": "https://vitruvius-digital-library.org/vitruvia.html?mode=all&q=Templo%20de%20Karnak",
+      "status": "pending"
+    },
+    {
+      "id": 72,
+      "category": "Obras y arqueología",
+      "q": "Complejo de Djoser",
+      "expected": "Identificación, fecha, autoría, planos y documentación institucional",
+      "googleAI": "https://www.google.com/search?udm=50&q=Complejo%20de%20Djoser",
+      "wiki": "https://es.wikipedia.org/w/index.php?search=Complejo%20de%20Djoser",
+      "vitruvia": "https://vitruvius-digital-library.org/vitruvia.html?mode=all&q=Complejo%20de%20Djoser",
+      "status": "pending"
+    },
+    {
+      "id": 73,
+      "category": "Obras y arqueología",
+      "q": "Basílica de Fano",
+      "expected": "Identificación, fecha, autoría, planos y documentación institucional",
+      "googleAI": "https://www.google.com/search?udm=50&q=Bas%C3%ADlica%20de%20Fano",
+      "wiki": "https://es.wikipedia.org/w/index.php?search=Bas%C3%ADlica%20de%20Fano",
+      "vitruvia": "https://vitruvius-digital-library.org/vitruvia.html?mode=all&q=Bas%C3%ADlica%20de%20Fano",
+      "status": "pending"
+    },
+    {
+      "id": 74,
+      "category": "Obras y arqueología",
+      "q": "Villa Savoye",
+      "expected": "Identificación, fecha, autoría, planos y documentación institucional",
+      "googleAI": "https://www.google.com/search?udm=50&q=Villa%20Savoye",
+      "wiki": "https://es.wikipedia.org/w/index.php?search=Villa%20Savoye",
+      "vitruvia": "https://vitruvius-digital-library.org/vitruvia.html?mode=all&q=Villa%20Savoye",
+      "status": "pending"
+    },
+    {
+      "id": 75,
+      "category": "Obras y arqueología",
+      "q": "Casa Farnsworth",
+      "expected": "Identificación, fecha, autoría, planos y documentación institucional",
+      "googleAI": "https://www.google.com/search?udm=50&q=Casa%20Farnsworth",
+      "wiki": "https://es.wikipedia.org/w/index.php?search=Casa%20Farnsworth",
+      "vitruvia": "https://vitruvius-digital-library.org/vitruvia.html?mode=all&q=Casa%20Farnsworth",
+      "status": "pending"
+    },
+    {
+      "id": 76,
+      "category": "Obras y arqueología",
+      "q": "Fallingwater",
+      "expected": "Identificación, fecha, autoría, planos y documentación institucional",
+      "googleAI": "https://www.google.com/search?udm=50&q=Fallingwater",
+      "wiki": "https://es.wikipedia.org/w/index.php?search=Fallingwater",
+      "vitruvia": "https://vitruvius-digital-library.org/vitruvia.html?mode=all&q=Fallingwater",
+      "status": "pending"
+    },
+    {
+      "id": 77,
+      "category": "Obras y arqueología",
+      "q": "Pabellón de Barcelona",
+      "expected": "Identificación, fecha, autoría, planos y documentación institucional",
+      "googleAI": "https://www.google.com/search?udm=50&q=Pabell%C3%B3n%20de%20Barcelona",
+      "wiki": "https://es.wikipedia.org/w/index.php?search=Pabell%C3%B3n%20de%20Barcelona",
+      "vitruvia": "https://vitruvius-digital-library.org/vitruvia.html?mode=all&q=Pabell%C3%B3n%20de%20Barcelona",
+      "status": "pending"
+    },
+    {
+      "id": 78,
+      "category": "Obras y arqueología",
+      "q": "Unité d'habitation",
+      "expected": "Identificación, fecha, autoría, planos y documentación institucional",
+      "googleAI": "https://www.google.com/search?udm=50&q=Unit%C3%A9%20d'habitation",
+      "wiki": "https://es.wikipedia.org/w/index.php?search=Unit%C3%A9%20d'habitation",
+      "vitruvia": "https://vitruvius-digital-library.org/vitruvia.html?mode=all&q=Unit%C3%A9%20d'habitation",
+      "status": "pending"
+    },
+    {
+      "id": 79,
+      "category": "Obras y arqueología",
+      "q": "Salk Institute",
+      "expected": "Identificación, fecha, autoría, planos y documentación institucional",
+      "googleAI": "https://www.google.com/search?udm=50&q=Salk%20Institute",
+      "wiki": "https://es.wikipedia.org/w/index.php?search=Salk%20Institute",
+      "vitruvia": "https://vitruvius-digital-library.org/vitruvia.html?mode=all&q=Salk%20Institute",
+      "status": "pending"
+    },
+    {
+      "id": 80,
+      "category": "Obras y arqueología",
+      "q": "Biblioteca de Exeter",
+      "expected": "Identificación, fecha, autoría, planos y documentación institucional",
+      "googleAI": "https://www.google.com/search?udm=50&q=Biblioteca%20de%20Exeter",
+      "wiki": "https://es.wikipedia.org/w/index.php?search=Biblioteca%20de%20Exeter",
+      "vitruvia": "https://vitruvius-digital-library.org/vitruvia.html?mode=all&q=Biblioteca%20de%20Exeter",
+      "status": "pending"
+    },
+    {
+      "id": 81,
+      "category": "Filosofía",
+      "q": "Platón",
+      "expected": "Definición o identidad, ideas, fuentes primarias y bibliografía",
+      "googleAI": "https://www.google.com/search?udm=50&q=Plat%C3%B3n",
+      "wiki": "https://es.wikipedia.org/w/index.php?search=Plat%C3%B3n",
+      "vitruvia": "https://vitruvius-digital-library.org/vitruvia.html?mode=all&q=Plat%C3%B3n",
+      "status": "pending"
+    },
+    {
+      "id": 82,
+      "category": "Filosofía",
+      "q": "Aristóteles",
+      "expected": "Definición o identidad, ideas, fuentes primarias y bibliografía",
+      "googleAI": "https://www.google.com/search?udm=50&q=Arist%C3%B3teles",
+      "wiki": "https://es.wikipedia.org/w/index.php?search=Arist%C3%B3teles",
+      "vitruvia": "https://vitruvius-digital-library.org/vitruvia.html?mode=all&q=Arist%C3%B3teles",
+      "status": "pending"
+    },
+    {
+      "id": 83,
+      "category": "Filosofía",
+      "q": "Sócrates",
+      "expected": "Definición o identidad, ideas, fuentes primarias y bibliografía",
+      "googleAI": "https://www.google.com/search?udm=50&q=S%C3%B3crates",
+      "wiki": "https://es.wikipedia.org/w/index.php?search=S%C3%B3crates",
+      "vitruvia": "https://vitruvius-digital-library.org/vitruvia.html?mode=all&q=S%C3%B3crates",
+      "status": "pending"
+    },
+    {
+      "id": 84,
+      "category": "Filosofía",
+      "q": "Heráclito",
+      "expected": "Definición o identidad, ideas, fuentes primarias y bibliografía",
+      "googleAI": "https://www.google.com/search?udm=50&q=Her%C3%A1clito",
+      "wiki": "https://es.wikipedia.org/w/index.php?search=Her%C3%A1clito",
+      "vitruvia": "https://vitruvius-digital-library.org/vitruvia.html?mode=all&q=Her%C3%A1clito",
+      "status": "pending"
+    },
+    {
+      "id": 85,
+      "category": "Filosofía",
+      "q": "Parménides",
+      "expected": "Definición o identidad, ideas, fuentes primarias y bibliografía",
+      "googleAI": "https://www.google.com/search?udm=50&q=Parm%C3%A9nides",
+      "wiki": "https://es.wikipedia.org/w/index.php?search=Parm%C3%A9nides",
+      "vitruvia": "https://vitruvius-digital-library.org/vitruvia.html?mode=all&q=Parm%C3%A9nides",
+      "status": "pending"
+    },
+    {
+      "id": 86,
+      "category": "Filosofía",
+      "q": "Tales de Mileto",
+      "expected": "Definición o identidad, ideas, fuentes primarias y bibliografía",
+      "googleAI": "https://www.google.com/search?udm=50&q=Tales%20de%20Mileto",
+      "wiki": "https://es.wikipedia.org/w/index.php?search=Tales%20de%20Mileto",
+      "vitruvia": "https://vitruvius-digital-library.org/vitruvia.html?mode=all&q=Tales%20de%20Mileto",
+      "status": "pending"
+    },
+    {
+      "id": 87,
+      "category": "Filosofía",
+      "q": "Anaximandro",
+      "expected": "Definición o identidad, ideas, fuentes primarias y bibliografía",
+      "googleAI": "https://www.google.com/search?udm=50&q=Anaximandro",
+      "wiki": "https://es.wikipedia.org/w/index.php?search=Anaximandro",
+      "vitruvia": "https://vitruvius-digital-library.org/vitruvia.html?mode=all&q=Anaximandro",
+      "status": "pending"
+    },
+    {
+      "id": 88,
+      "category": "Filosofía",
+      "q": "Demócrito",
+      "expected": "Definición o identidad, ideas, fuentes primarias y bibliografía",
+      "googleAI": "https://www.google.com/search?udm=50&q=Dem%C3%B3crito",
+      "wiki": "https://es.wikipedia.org/w/index.php?search=Dem%C3%B3crito",
+      "vitruvia": "https://vitruvius-digital-library.org/vitruvia.html?mode=all&q=Dem%C3%B3crito",
+      "status": "pending"
+    },
+    {
+      "id": 89,
+      "category": "Filosofía",
+      "q": "Epicuro",
+      "expected": "Definición o identidad, ideas, fuentes primarias y bibliografía",
+      "googleAI": "https://www.google.com/search?udm=50&q=Epicuro",
+      "wiki": "https://es.wikipedia.org/w/index.php?search=Epicuro",
+      "vitruvia": "https://vitruvius-digital-library.org/vitruvia.html?mode=all&q=Epicuro",
+      "status": "pending"
+    },
+    {
+      "id": 90,
+      "category": "Filosofía",
+      "q": "Zenón de Citio",
+      "expected": "Definición o identidad, ideas, fuentes primarias y bibliografía",
+      "googleAI": "https://www.google.com/search?udm=50&q=Zen%C3%B3n%20de%20Citio",
+      "wiki": "https://es.wikipedia.org/w/index.php?search=Zen%C3%B3n%20de%20Citio",
+      "vitruvia": "https://vitruvius-digital-library.org/vitruvia.html?mode=all&q=Zen%C3%B3n%20de%20Citio",
+      "status": "pending"
+    },
+    {
+      "id": 91,
+      "category": "Filosofía",
+      "q": "Diógenes de Sinope",
+      "expected": "Definición o identidad, ideas, fuentes primarias y bibliografía",
+      "googleAI": "https://www.google.com/search?udm=50&q=Di%C3%B3genes%20de%20Sinope",
+      "wiki": "https://es.wikipedia.org/w/index.php?search=Di%C3%B3genes%20de%20Sinope",
+      "vitruvia": "https://vitruvius-digital-library.org/vitruvia.html?mode=all&q=Di%C3%B3genes%20de%20Sinope",
+      "status": "pending"
+    },
+    {
+      "id": 92,
+      "category": "Filosofía",
+      "q": "Plotino",
+      "expected": "Definición o identidad, ideas, fuentes primarias y bibliografía",
+      "googleAI": "https://www.google.com/search?udm=50&q=Plotino",
+      "wiki": "https://es.wikipedia.org/w/index.php?search=Plotino",
+      "vitruvia": "https://vitruvius-digital-library.org/vitruvia.html?mode=all&q=Plotino",
+      "status": "pending"
+    },
+    {
+      "id": 93,
+      "category": "Filosofía",
+      "q": "Porfirio",
+      "expected": "Definición o identidad, ideas, fuentes primarias y bibliografía",
+      "googleAI": "https://www.google.com/search?udm=50&q=Porfirio",
+      "wiki": "https://es.wikipedia.org/w/index.php?search=Porfirio",
+      "vitruvia": "https://vitruvius-digital-library.org/vitruvia.html?mode=all&q=Porfirio",
+      "status": "pending"
+    },
+    {
+      "id": 94,
+      "category": "Filosofía",
+      "q": "Proclo",
+      "expected": "Definición o identidad, ideas, fuentes primarias y bibliografía",
+      "googleAI": "https://www.google.com/search?udm=50&q=Proclo",
+      "wiki": "https://es.wikipedia.org/w/index.php?search=Proclo",
+      "vitruvia": "https://vitruvius-digital-library.org/vitruvia.html?mode=all&q=Proclo",
+      "status": "pending"
+    },
+    {
+      "id": 95,
+      "category": "Filosofía",
+      "q": "Agustín de Hipona",
+      "expected": "Definición o identidad, ideas, fuentes primarias y bibliografía",
+      "googleAI": "https://www.google.com/search?udm=50&q=Agust%C3%ADn%20de%20Hipona",
+      "wiki": "https://es.wikipedia.org/w/index.php?search=Agust%C3%ADn%20de%20Hipona",
+      "vitruvia": "https://vitruvius-digital-library.org/vitruvia.html?mode=all&q=Agust%C3%ADn%20de%20Hipona",
+      "status": "pending"
+    },
+    {
+      "id": 96,
+      "category": "Filosofía",
+      "q": "Tomás de Aquino",
+      "expected": "Definición o identidad, ideas, fuentes primarias y bibliografía",
+      "googleAI": "https://www.google.com/search?udm=50&q=Tom%C3%A1s%20de%20Aquino",
+      "wiki": "https://es.wikipedia.org/w/index.php?search=Tom%C3%A1s%20de%20Aquino",
+      "vitruvia": "https://vitruvius-digital-library.org/vitruvia.html?mode=all&q=Tom%C3%A1s%20de%20Aquino",
+      "status": "pending"
+    },
+    {
+      "id": 97,
+      "category": "Filosofía",
+      "q": "Spinoza",
+      "expected": "Definición o identidad, ideas, fuentes primarias y bibliografía",
+      "googleAI": "https://www.google.com/search?udm=50&q=Spinoza",
+      "wiki": "https://es.wikipedia.org/w/index.php?search=Spinoza",
+      "vitruvia": "https://vitruvius-digital-library.org/vitruvia.html?mode=all&q=Spinoza",
+      "status": "pending"
+    },
+    {
+      "id": 98,
+      "category": "Filosofía",
+      "q": "Kant",
+      "expected": "Definición o identidad, ideas, fuentes primarias y bibliografía",
+      "googleAI": "https://www.google.com/search?udm=50&q=Kant",
+      "wiki": "https://es.wikipedia.org/w/index.php?search=Kant",
+      "vitruvia": "https://vitruvius-digital-library.org/vitruvia.html?mode=all&q=Kant",
+      "status": "pending"
+    },
+    {
+      "id": 99,
+      "category": "Filosofía",
+      "q": "Hegel",
+      "expected": "Definición o identidad, ideas, fuentes primarias y bibliografía",
+      "googleAI": "https://www.google.com/search?udm=50&q=Hegel",
+      "wiki": "https://es.wikipedia.org/w/index.php?search=Hegel",
+      "vitruvia": "https://vitruvius-digital-library.org/vitruvia.html?mode=all&q=Hegel",
+      "status": "pending"
+    },
+    {
+      "id": 100,
+      "category": "Filosofía",
+      "q": "Nietzsche",
+      "expected": "Definición o identidad, ideas, fuentes primarias y bibliografía",
+      "googleAI": "https://www.google.com/search?udm=50&q=Nietzsche",
+      "wiki": "https://es.wikipedia.org/w/index.php?search=Nietzsche",
+      "vitruvia": "https://vitruvius-digital-library.org/vitruvia.html?mode=all&q=Nietzsche",
+      "status": "pending"
+    },
+    {
+      "id": 101,
+      "category": "Autores y textos antiguos",
+      "q": "Homero",
+      "expected": "Identidad, fechas, obras y textos originales con traducción",
+      "googleAI": "https://www.google.com/search?udm=50&q=Homero",
+      "wiki": "https://es.wikipedia.org/w/index.php?search=Homero",
+      "vitruvia": "https://vitruvius-digital-library.org/vitruvia.html?mode=all&q=Homero",
+      "status": "pending"
+    },
+    {
+      "id": 102,
+      "category": "Autores y textos antiguos",
+      "q": "Hesíodo",
+      "expected": "Identidad, fechas, obras y textos originales con traducción",
+      "googleAI": "https://www.google.com/search?udm=50&q=Hes%C3%ADodo",
+      "wiki": "https://es.wikipedia.org/w/index.php?search=Hes%C3%ADodo",
+      "vitruvia": "https://vitruvius-digital-library.org/vitruvia.html?mode=all&q=Hes%C3%ADodo",
+      "status": "pending"
+    },
+    {
+      "id": 103,
+      "category": "Autores y textos antiguos",
+      "q": "Heródoto",
+      "expected": "Identidad, fechas, obras y textos originales con traducción",
+      "googleAI": "https://www.google.com/search?udm=50&q=Her%C3%B3doto",
+      "wiki": "https://es.wikipedia.org/w/index.php?search=Her%C3%B3doto",
+      "vitruvia": "https://vitruvius-digital-library.org/vitruvia.html?mode=all&q=Her%C3%B3doto",
+      "status": "pending"
+    },
+    {
+      "id": 104,
+      "category": "Autores y textos antiguos",
+      "q": "Tucídides",
+      "expected": "Identidad, fechas, obras y textos originales con traducción",
+      "googleAI": "https://www.google.com/search?udm=50&q=Tuc%C3%ADdides",
+      "wiki": "https://es.wikipedia.org/w/index.php?search=Tuc%C3%ADdides",
+      "vitruvia": "https://vitruvius-digital-library.org/vitruvia.html?mode=all&q=Tuc%C3%ADdides",
+      "status": "pending"
+    },
+    {
+      "id": 105,
+      "category": "Autores y textos antiguos",
+      "q": "Jenofonte",
+      "expected": "Identidad, fechas, obras y textos originales con traducción",
+      "googleAI": "https://www.google.com/search?udm=50&q=Jenofonte",
+      "wiki": "https://es.wikipedia.org/w/index.php?search=Jenofonte",
+      "vitruvia": "https://vitruvius-digital-library.org/vitruvia.html?mode=all&q=Jenofonte",
+      "status": "pending"
+    },
+    {
+      "id": 106,
+      "category": "Autores y textos antiguos",
+      "q": "Polibio",
+      "expected": "Identidad, fechas, obras y textos originales con traducción",
+      "googleAI": "https://www.google.com/search?udm=50&q=Polibio",
+      "wiki": "https://es.wikipedia.org/w/index.php?search=Polibio",
+      "vitruvia": "https://vitruvius-digital-library.org/vitruvia.html?mode=all&q=Polibio",
+      "status": "pending"
+    },
+    {
+      "id": 107,
+      "category": "Autores y textos antiguos",
+      "q": "Plutarco",
+      "expected": "Identidad, fechas, obras y textos originales con traducción",
+      "googleAI": "https://www.google.com/search?udm=50&q=Plutarco",
+      "wiki": "https://es.wikipedia.org/w/index.php?search=Plutarco",
+      "vitruvia": "https://vitruvius-digital-library.org/vitruvia.html?mode=all&q=Plutarco",
+      "status": "pending"
+    },
+    {
+      "id": 108,
+      "category": "Autores y textos antiguos",
+      "q": "Pausanias",
+      "expected": "Identidad, fechas, obras y textos originales con traducción",
+      "googleAI": "https://www.google.com/search?udm=50&q=Pausanias",
+      "wiki": "https://es.wikipedia.org/w/index.php?search=Pausanias",
+      "vitruvia": "https://vitruvius-digital-library.org/vitruvia.html?mode=all&q=Pausanias",
+      "status": "pending"
+    },
+    {
+      "id": 109,
+      "category": "Autores y textos antiguos",
+      "q": "Estrabón",
+      "expected": "Identidad, fechas, obras y textos originales con traducción",
+      "googleAI": "https://www.google.com/search?udm=50&q=Estrab%C3%B3n",
+      "wiki": "https://es.wikipedia.org/w/index.php?search=Estrab%C3%B3n",
+      "vitruvia": "https://vitruvius-digital-library.org/vitruvia.html?mode=all&q=Estrab%C3%B3n",
+      "status": "pending"
+    },
+    {
+      "id": 110,
+      "category": "Autores y textos antiguos",
+      "q": "Diodoro Sículo",
+      "expected": "Identidad, fechas, obras y textos originales con traducción",
+      "googleAI": "https://www.google.com/search?udm=50&q=Diodoro%20S%C3%ADculo",
+      "wiki": "https://es.wikipedia.org/w/index.php?search=Diodoro%20S%C3%ADculo",
+      "vitruvia": "https://vitruvius-digital-library.org/vitruvia.html?mode=all&q=Diodoro%20S%C3%ADculo",
+      "status": "pending"
+    },
+    {
+      "id": 111,
+      "category": "Autores y textos antiguos",
+      "q": "Cicerón",
+      "expected": "Identidad, fechas, obras y textos originales con traducción",
+      "googleAI": "https://www.google.com/search?udm=50&q=Cicer%C3%B3n",
+      "wiki": "https://es.wikipedia.org/w/index.php?search=Cicer%C3%B3n",
+      "vitruvia": "https://vitruvius-digital-library.org/vitruvia.html?mode=all&q=Cicer%C3%B3n",
+      "status": "pending"
+    },
+    {
+      "id": 112,
+      "category": "Autores y textos antiguos",
+      "q": "Julio César",
+      "expected": "Identidad, fechas, obras y textos originales con traducción",
+      "googleAI": "https://www.google.com/search?udm=50&q=Julio%20C%C3%A9sar",
+      "wiki": "https://es.wikipedia.org/w/index.php?search=Julio%20C%C3%A9sar",
+      "vitruvia": "https://vitruvius-digital-library.org/vitruvia.html?mode=all&q=Julio%20C%C3%A9sar",
+      "status": "pending"
+    },
+    {
+      "id": 113,
+      "category": "Autores y textos antiguos",
+      "q": "Lucrecio",
+      "expected": "Identidad, fechas, obras y textos originales con traducción",
+      "googleAI": "https://www.google.com/search?udm=50&q=Lucrecio",
+      "wiki": "https://es.wikipedia.org/w/index.php?search=Lucrecio",
+      "vitruvia": "https://vitruvius-digital-library.org/vitruvia.html?mode=all&q=Lucrecio",
+      "status": "pending"
+    },
+    {
+      "id": 114,
+      "category": "Autores y textos antiguos",
+      "q": "Virgilio",
+      "expected": "Identidad, fechas, obras y textos originales con traducción",
+      "googleAI": "https://www.google.com/search?udm=50&q=Virgilio",
+      "wiki": "https://es.wikipedia.org/w/index.php?search=Virgilio",
+      "vitruvia": "https://vitruvius-digital-library.org/vitruvia.html?mode=all&q=Virgilio",
+      "status": "pending"
+    },
+    {
+      "id": 115,
+      "category": "Autores y textos antiguos",
+      "q": "Ovidio",
+      "expected": "Identidad, fechas, obras y textos originales con traducción",
+      "googleAI": "https://www.google.com/search?udm=50&q=Ovidio",
+      "wiki": "https://es.wikipedia.org/w/index.php?search=Ovidio",
+      "vitruvia": "https://vitruvius-digital-library.org/vitruvia.html?mode=all&q=Ovidio",
+      "status": "pending"
+    },
+    {
+      "id": 116,
+      "category": "Autores y textos antiguos",
+      "q": "Séneca",
+      "expected": "Identidad, fechas, obras y textos originales con traducción",
+      "googleAI": "https://www.google.com/search?udm=50&q=S%C3%A9neca",
+      "wiki": "https://es.wikipedia.org/w/index.php?search=S%C3%A9neca",
+      "vitruvia": "https://vitruvius-digital-library.org/vitruvia.html?mode=all&q=S%C3%A9neca",
+      "status": "pending"
+    },
+    {
+      "id": 117,
+      "category": "Autores y textos antiguos",
+      "q": "Tácito",
+      "expected": "Identidad, fechas, obras y textos originales con traducción",
+      "googleAI": "https://www.google.com/search?udm=50&q=T%C3%A1cito",
+      "wiki": "https://es.wikipedia.org/w/index.php?search=T%C3%A1cito",
+      "vitruvia": "https://vitruvius-digital-library.org/vitruvia.html?mode=all&q=T%C3%A1cito",
+      "status": "pending"
+    },
+    {
+      "id": 118,
+      "category": "Autores y textos antiguos",
+      "q": "Suetonio",
+      "expected": "Identidad, fechas, obras y textos originales con traducción",
+      "googleAI": "https://www.google.com/search?udm=50&q=Suetonio",
+      "wiki": "https://es.wikipedia.org/w/index.php?search=Suetonio",
+      "vitruvia": "https://vitruvius-digital-library.org/vitruvia.html?mode=all&q=Suetonio",
+      "status": "pending"
+    },
+    {
+      "id": 119,
+      "category": "Autores y textos antiguos",
+      "q": "Plinio el Viejo",
+      "expected": "Identidad, fechas, obras y textos originales con traducción",
+      "googleAI": "https://www.google.com/search?udm=50&q=Plinio%20el%20Viejo",
+      "wiki": "https://es.wikipedia.org/w/index.php?search=Plinio%20el%20Viejo",
+      "vitruvia": "https://vitruvius-digital-library.org/vitruvia.html?mode=all&q=Plinio%20el%20Viejo",
+      "status": "pending"
+    },
+    {
+      "id": 120,
+      "category": "Autores y textos antiguos",
+      "q": "Marco Aurelio",
+      "expected": "Identidad, fechas, obras y textos originales con traducción",
+      "googleAI": "https://www.google.com/search?udm=50&q=Marco%20Aurelio",
+      "wiki": "https://es.wikipedia.org/w/index.php?search=Marco%20Aurelio",
+      "vitruvia": "https://vitruvius-digital-library.org/vitruvia.html?mode=all&q=Marco%20Aurelio",
+      "status": "pending"
+    },
+    {
+      "id": 121,
+      "category": "Filología y códices",
+      "q": "De architectura 3.1.1",
+      "expected": "Edición/locus/signatura o lema correcto, texto y procedencia",
+      "googleAI": "https://www.google.com/search?udm=50&q=De%20architectura%203.1.1",
+      "wiki": "https://es.wikipedia.org/w/index.php?search=De%20architectura%203.1.1",
+      "vitruvia": "https://vitruvius-digital-library.org/vitruvia.html?mode=all&q=De%20architectura%203.1.1",
+      "status": "pending"
+    },
+    {
+      "id": 122,
+      "category": "Filología y códices",
+      "q": "De architectura 7.7.2",
+      "expected": "Edición/locus/signatura o lema correcto, texto y procedencia",
+      "googleAI": "https://www.google.com/search?udm=50&q=De%20architectura%207.7.2",
+      "wiki": "https://es.wikipedia.org/w/index.php?search=De%20architectura%207.7.2",
+      "vitruvia": "https://vitruvius-digital-library.org/vitruvia.html?mode=all&q=De%20architectura%207.7.2",
+      "status": "pending"
+    },
+    {
+      "id": 123,
+      "category": "Filología y códices",
+      "q": "Harley MS 2767",
+      "expected": "Edición/locus/signatura o lema correcto, texto y procedencia",
+      "googleAI": "https://www.google.com/search?udm=50&q=Harley%20MS%202767",
+      "wiki": "https://es.wikipedia.org/w/index.php?search=Harley%20MS%202767",
+      "vitruvia": "https://vitruvius-digital-library.org/vitruvia.html?mode=all&q=Harley%20MS%202767",
+      "status": "pending"
+    },
+    {
+      "id": 124,
+      "category": "Filología y códices",
+      "q": "Krohn Vitruvius 1912",
+      "expected": "Edición/locus/signatura o lema correcto, texto y procedencia",
+      "googleAI": "https://www.google.com/search?udm=50&q=Krohn%20Vitruvius%201912",
+      "wiki": "https://es.wikipedia.org/w/index.php?search=Krohn%20Vitruvius%201912",
+      "vitruvia": "https://vitruvius-digital-library.org/vitruvia.html?mode=all&q=Krohn%20Vitruvius%201912",
+      "status": "pending"
+    },
+    {
+      "id": 125,
+      "category": "Filología y códices",
+      "q": "Rose Vitruvius 1899",
+      "expected": "Edición/locus/signatura o lema correcto, texto y procedencia",
+      "googleAI": "https://www.google.com/search?udm=50&q=Rose%20Vitruvius%201899",
+      "wiki": "https://es.wikipedia.org/w/index.php?search=Rose%20Vitruvius%201899",
+      "vitruvia": "https://vitruvius-digital-library.org/vitruvia.html?mode=all&q=Rose%20Vitruvius%201899",
+      "status": "pending"
+    },
+    {
+      "id": 126,
+      "category": "Filología y códices",
+      "q": "Cesariano 1521",
+      "expected": "Edición/locus/signatura o lema correcto, texto y procedencia",
+      "googleAI": "https://www.google.com/search?udm=50&q=Cesariano%201521",
+      "wiki": "https://es.wikipedia.org/w/index.php?search=Cesariano%201521",
+      "vitruvia": "https://vitruvius-digital-library.org/vitruvia.html?mode=all&q=Cesariano%201521",
+      "status": "pending"
+    },
+    {
+      "id": 127,
+      "category": "Filología y códices",
+      "q": "εὐρυθμία",
+      "expected": "Edición/locus/signatura o lema correcto, texto y procedencia",
+      "googleAI": "https://www.google.com/search?udm=50&q=%CE%B5%E1%BD%90%CF%81%CF%85%CE%B8%CE%BC%CE%AF%CE%B1",
+      "wiki": "https://es.wikipedia.org/w/index.php?search=%CE%B5%E1%BD%90%CF%81%CF%85%CE%B8%CE%BC%CE%AF%CE%B1",
+      "vitruvia": "https://vitruvius-digital-library.org/vitruvia.html?mode=all&q=%CE%B5%E1%BD%90%CF%81%CF%85%CE%B8%CE%BC%CE%AF%CE%B1",
+      "status": "pending"
+    },
+    {
+      "id": 128,
+      "category": "Filología y códices",
+      "q": "λόγος",
+      "expected": "Edición/locus/signatura o lema correcto, texto y procedencia",
+      "googleAI": "https://www.google.com/search?udm=50&q=%CE%BB%CF%8C%CE%B3%CE%BF%CF%82",
+      "wiki": "https://es.wikipedia.org/w/index.php?search=%CE%BB%CF%8C%CE%B3%CE%BF%CF%82",
+      "vitruvia": "https://vitruvius-digital-library.org/vitruvia.html?mode=all&q=%CE%BB%CF%8C%CE%B3%CE%BF%CF%82",
+      "status": "pending"
+    },
+    {
+      "id": 129,
+      "category": "Filología y códices",
+      "q": "ἀρχή",
+      "expected": "Edición/locus/signatura o lema correcto, texto y procedencia",
+      "googleAI": "https://www.google.com/search?udm=50&q=%E1%BC%80%CF%81%CF%87%CE%AE",
+      "wiki": "https://es.wikipedia.org/w/index.php?search=%E1%BC%80%CF%81%CF%87%CE%AE",
+      "vitruvia": "https://vitruvius-digital-library.org/vitruvia.html?mode=all&q=%E1%BC%80%CF%81%CF%87%CE%AE",
+      "status": "pending"
+    },
+    {
+      "id": 130,
+      "category": "Filología y códices",
+      "q": "τέχνη",
+      "expected": "Edición/locus/signatura o lema correcto, texto y procedencia",
+      "googleAI": "https://www.google.com/search?udm=50&q=%CF%84%CE%AD%CF%87%CE%BD%CE%B7",
+      "wiki": "https://es.wikipedia.org/w/index.php?search=%CF%84%CE%AD%CF%87%CE%BD%CE%B7",
+      "vitruvia": "https://vitruvius-digital-library.org/vitruvia.html?mode=all&q=%CF%84%CE%AD%CF%87%CE%BD%CE%B7",
+      "status": "pending"
+    },
+    {
+      "id": 131,
+      "category": "Filología y códices",
+      "q": "firmitas",
+      "expected": "Edición/locus/signatura o lema correcto, texto y procedencia",
+      "googleAI": "https://www.google.com/search?udm=50&q=firmitas",
+      "wiki": "https://es.wikipedia.org/w/index.php?search=firmitas",
+      "vitruvia": "https://vitruvius-digital-library.org/vitruvia.html?mode=all&q=firmitas",
+      "status": "pending"
+    },
+    {
+      "id": 132,
+      "category": "Filología y códices",
+      "q": "utilitas",
+      "expected": "Edición/locus/signatura o lema correcto, texto y procedencia",
+      "googleAI": "https://www.google.com/search?udm=50&q=utilitas",
+      "wiki": "https://es.wikipedia.org/w/index.php?search=utilitas",
+      "vitruvia": "https://vitruvius-digital-library.org/vitruvia.html?mode=all&q=utilitas",
+      "status": "pending"
+    },
+    {
+      "id": 133,
+      "category": "Filología y códices",
+      "q": "venustas",
+      "expected": "Edición/locus/signatura o lema correcto, texto y procedencia",
+      "googleAI": "https://www.google.com/search?udm=50&q=venustas",
+      "wiki": "https://es.wikipedia.org/w/index.php?search=venustas",
+      "vitruvia": "https://vitruvius-digital-library.org/vitruvia.html?mode=all&q=venustas",
+      "status": "pending"
+    },
+    {
+      "id": 134,
+      "category": "Filología y códices",
+      "q": "symmetria",
+      "expected": "Edición/locus/signatura o lema correcto, texto y procedencia",
+      "googleAI": "https://www.google.com/search?udm=50&q=symmetria",
+      "wiki": "https://es.wikipedia.org/w/index.php?search=symmetria",
+      "vitruvia": "https://vitruvius-digital-library.org/vitruvia.html?mode=all&q=symmetria",
+      "status": "pending"
+    },
+    {
+      "id": 135,
+      "category": "Filología y códices",
+      "q": "ratiocinatio",
+      "expected": "Edición/locus/signatura o lema correcto, texto y procedencia",
+      "googleAI": "https://www.google.com/search?udm=50&q=ratiocinatio",
+      "wiki": "https://es.wikipedia.org/w/index.php?search=ratiocinatio",
+      "vitruvia": "https://vitruvius-digital-library.org/vitruvia.html?mode=all&q=ratiocinatio",
+      "status": "pending"
+    },
+    {
+      "id": 136,
+      "category": "Filología y códices",
+      "q": "Codex Sinaiticus",
+      "expected": "Edición/locus/signatura o lema correcto, texto y procedencia",
+      "googleAI": "https://www.google.com/search?udm=50&q=Codex%20Sinaiticus",
+      "wiki": "https://es.wikipedia.org/w/index.php?search=Codex%20Sinaiticus",
+      "vitruvia": "https://vitruvius-digital-library.org/vitruvia.html?mode=all&q=Codex%20Sinaiticus",
+      "status": "pending"
+    },
+    {
+      "id": 137,
+      "category": "Filología y códices",
+      "q": "Codex Vaticanus",
+      "expected": "Edición/locus/signatura o lema correcto, texto y procedencia",
+      "googleAI": "https://www.google.com/search?udm=50&q=Codex%20Vaticanus",
+      "wiki": "https://es.wikipedia.org/w/index.php?search=Codex%20Vaticanus",
+      "vitruvia": "https://vitruvius-digital-library.org/vitruvia.html?mode=all&q=Codex%20Vaticanus",
+      "status": "pending"
+    },
+    {
+      "id": 138,
+      "category": "Filología y códices",
+      "q": "Papiro de Derveni",
+      "expected": "Edición/locus/signatura o lema correcto, texto y procedencia",
+      "googleAI": "https://www.google.com/search?udm=50&q=Papiro%20de%20Derveni",
+      "wiki": "https://es.wikipedia.org/w/index.php?search=Papiro%20de%20Derveni",
+      "vitruvia": "https://vitruvius-digital-library.org/vitruvia.html?mode=all&q=Papiro%20de%20Derveni",
+      "status": "pending"
+    },
+    {
+      "id": 139,
+      "category": "Filología y códices",
+      "q": "De bello Gallico 1.1",
+      "expected": "Edición/locus/signatura o lema correcto, texto y procedencia",
+      "googleAI": "https://www.google.com/search?udm=50&q=De%20bello%20Gallico%201.1",
+      "wiki": "https://es.wikipedia.org/w/index.php?search=De%20bello%20Gallico%201.1",
+      "vitruvia": "https://vitruvius-digital-library.org/vitruvia.html?mode=all&q=De%20bello%20Gallico%201.1",
+      "status": "pending"
+    },
+    {
+      "id": 140,
+      "category": "Filología y códices",
+      "q": "De rerum natura 1.1",
+      "expected": "Edición/locus/signatura o lema correcto, texto y procedencia",
+      "googleAI": "https://www.google.com/search?udm=50&q=De%20rerum%20natura%201.1",
+      "wiki": "https://es.wikipedia.org/w/index.php?search=De%20rerum%20natura%201.1",
+      "vitruvia": "https://vitruvius-digital-library.org/vitruvia.html?mode=all&q=De%20rerum%20natura%201.1",
+      "status": "pending"
+    },
+    {
+      "id": 141,
+      "category": "Arte e iconografía",
+      "q": "Leonardo da Vinci",
+      "expected": "Identificación, fecha, autoría, colección e inventario cuando exista",
+      "googleAI": "https://www.google.com/search?udm=50&q=Leonardo%20da%20Vinci",
+      "wiki": "https://es.wikipedia.org/w/index.php?search=Leonardo%20da%20Vinci",
+      "vitruvia": "https://vitruvius-digital-library.org/vitruvia.html?mode=all&q=Leonardo%20da%20Vinci",
+      "status": "pending"
+    },
+    {
+      "id": 142,
+      "category": "Arte e iconografía",
+      "q": "Sandro Botticelli",
+      "expected": "Identificación, fecha, autoría, colección e inventario cuando exista",
+      "googleAI": "https://www.google.com/search?udm=50&q=Sandro%20Botticelli",
+      "wiki": "https://es.wikipedia.org/w/index.php?search=Sandro%20Botticelli",
+      "vitruvia": "https://vitruvius-digital-library.org/vitruvia.html?mode=all&q=Sandro%20Botticelli",
+      "status": "pending"
+    },
+    {
+      "id": 143,
+      "category": "Arte e iconografía",
+      "q": "Piero della Francesca",
+      "expected": "Identificación, fecha, autoría, colección e inventario cuando exista",
+      "googleAI": "https://www.google.com/search?udm=50&q=Piero%20della%20Francesca",
+      "wiki": "https://es.wikipedia.org/w/index.php?search=Piero%20della%20Francesca",
+      "vitruvia": "https://vitruvius-digital-library.org/vitruvia.html?mode=all&q=Piero%20della%20Francesca",
+      "status": "pending"
+    },
+    {
+      "id": 144,
+      "category": "Arte e iconografía",
+      "q": "Alberto Durero",
+      "expected": "Identificación, fecha, autoría, colección e inventario cuando exista",
+      "googleAI": "https://www.google.com/search?udm=50&q=Alberto%20Durero",
+      "wiki": "https://es.wikipedia.org/w/index.php?search=Alberto%20Durero",
+      "vitruvia": "https://vitruvius-digital-library.org/vitruvia.html?mode=all&q=Alberto%20Durero",
+      "status": "pending"
+    },
+    {
+      "id": 145,
+      "category": "Arte e iconografía",
+      "q": "Caravaggio",
+      "expected": "Identificación, fecha, autoría, colección e inventario cuando exista",
+      "googleAI": "https://www.google.com/search?udm=50&q=Caravaggio",
+      "wiki": "https://es.wikipedia.org/w/index.php?search=Caravaggio",
+      "vitruvia": "https://vitruvius-digital-library.org/vitruvia.html?mode=all&q=Caravaggio",
+      "status": "pending"
+    },
+    {
+      "id": 146,
+      "category": "Arte e iconografía",
+      "q": "El Greco",
+      "expected": "Identificación, fecha, autoría, colección e inventario cuando exista",
+      "googleAI": "https://www.google.com/search?udm=50&q=El%20Greco",
+      "wiki": "https://es.wikipedia.org/w/index.php?search=El%20Greco",
+      "vitruvia": "https://vitruvius-digital-library.org/vitruvia.html?mode=all&q=El%20Greco",
+      "status": "pending"
+    },
+    {
+      "id": 147,
+      "category": "Arte e iconografía",
+      "q": "Diego Velázquez",
+      "expected": "Identificación, fecha, autoría, colección e inventario cuando exista",
+      "googleAI": "https://www.google.com/search?udm=50&q=Diego%20Vel%C3%A1zquez",
+      "wiki": "https://es.wikipedia.org/w/index.php?search=Diego%20Vel%C3%A1zquez",
+      "vitruvia": "https://vitruvius-digital-library.org/vitruvia.html?mode=all&q=Diego%20Vel%C3%A1zquez",
+      "status": "pending"
+    },
+    {
+      "id": 148,
+      "category": "Arte e iconografía",
+      "q": "Rembrandt",
+      "expected": "Identificación, fecha, autoría, colección e inventario cuando exista",
+      "googleAI": "https://www.google.com/search?udm=50&q=Rembrandt",
+      "wiki": "https://es.wikipedia.org/w/index.php?search=Rembrandt",
+      "vitruvia": "https://vitruvius-digital-library.org/vitruvia.html?mode=all&q=Rembrandt",
+      "status": "pending"
+    },
+    {
+      "id": 149,
+      "category": "Arte e iconografía",
+      "q": "Francisco de Goya",
+      "expected": "Identificación, fecha, autoría, colección e inventario cuando exista",
+      "googleAI": "https://www.google.com/search?udm=50&q=Francisco%20de%20Goya",
+      "wiki": "https://es.wikipedia.org/w/index.php?search=Francisco%20de%20Goya",
+      "vitruvia": "https://vitruvius-digital-library.org/vitruvia.html?mode=all&q=Francisco%20de%20Goya",
+      "status": "pending"
+    },
+    {
+      "id": 150,
+      "category": "Arte e iconografía",
+      "q": "William Blake",
+      "expected": "Identificación, fecha, autoría, colección e inventario cuando exista",
+      "googleAI": "https://www.google.com/search?udm=50&q=William%20Blake",
+      "wiki": "https://es.wikipedia.org/w/index.php?search=William%20Blake",
+      "vitruvia": "https://vitruvius-digital-library.org/vitruvia.html?mode=all&q=William%20Blake",
+      "status": "pending"
+    },
+    {
+      "id": 151,
+      "category": "Arte e iconografía",
+      "q": "Giorgio de Chirico",
+      "expected": "Identificación, fecha, autoría, colección e inventario cuando exista",
+      "googleAI": "https://www.google.com/search?udm=50&q=Giorgio%20de%20Chirico",
+      "wiki": "https://es.wikipedia.org/w/index.php?search=Giorgio%20de%20Chirico",
+      "vitruvia": "https://vitruvius-digital-library.org/vitruvia.html?mode=all&q=Giorgio%20de%20Chirico",
+      "status": "pending"
+    },
+    {
+      "id": 152,
+      "category": "Arte e iconografía",
+      "q": "Piet Mondrian",
+      "expected": "Identificación, fecha, autoría, colección e inventario cuando exista",
+      "googleAI": "https://www.google.com/search?udm=50&q=Piet%20Mondrian",
+      "wiki": "https://es.wikipedia.org/w/index.php?search=Piet%20Mondrian",
+      "vitruvia": "https://vitruvius-digital-library.org/vitruvia.html?mode=all&q=Piet%20Mondrian",
+      "status": "pending"
+    },
+    {
+      "id": 153,
+      "category": "Arte e iconografía",
+      "q": "Salvador Dalí",
+      "expected": "Identificación, fecha, autoría, colección e inventario cuando exista",
+      "googleAI": "https://www.google.com/search?udm=50&q=Salvador%20Dal%C3%AD",
+      "wiki": "https://es.wikipedia.org/w/index.php?search=Salvador%20Dal%C3%AD",
+      "vitruvia": "https://vitruvius-digital-library.org/vitruvia.html?mode=all&q=Salvador%20Dal%C3%AD",
+      "status": "pending"
+    },
+    {
+      "id": 154,
+      "category": "Arte e iconografía",
+      "q": "Melancolía I",
+      "expected": "Identificación, fecha, autoría, colección e inventario cuando exista",
+      "googleAI": "https://www.google.com/search?udm=50&q=Melancol%C3%ADa%20I",
+      "wiki": "https://es.wikipedia.org/w/index.php?search=Melancol%C3%ADa%20I",
+      "vitruvia": "https://vitruvius-digital-library.org/vitruvia.html?mode=all&q=Melancol%C3%ADa%20I",
+      "status": "pending"
+    },
+    {
+      "id": 155,
+      "category": "Arte e iconografía",
+      "q": "Las meninas",
+      "expected": "Identificación, fecha, autoría, colección e inventario cuando exista",
+      "googleAI": "https://www.google.com/search?udm=50&q=Las%20meninas",
+      "wiki": "https://es.wikipedia.org/w/index.php?search=Las%20meninas",
+      "vitruvia": "https://vitruvius-digital-library.org/vitruvia.html?mode=all&q=Las%20meninas",
+      "status": "pending"
+    },
+    {
+      "id": 156,
+      "category": "Arte e iconografía",
+      "q": "La escuela de Atenas",
+      "expected": "Identificación, fecha, autoría, colección e inventario cuando exista",
+      "googleAI": "https://www.google.com/search?udm=50&q=La%20escuela%20de%20Atenas",
+      "wiki": "https://es.wikipedia.org/w/index.php?search=La%20escuela%20de%20Atenas",
+      "vitruvia": "https://vitruvius-digital-library.org/vitruvia.html?mode=all&q=La%20escuela%20de%20Atenas",
+      "status": "pending"
+    },
+    {
+      "id": 157,
+      "category": "Arte e iconografía",
+      "q": "Venus de Milo",
+      "expected": "Identificación, fecha, autoría, colección e inventario cuando exista",
+      "googleAI": "https://www.google.com/search?udm=50&q=Venus%20de%20Milo",
+      "wiki": "https://es.wikipedia.org/w/index.php?search=Venus%20de%20Milo",
+      "vitruvia": "https://vitruvius-digital-library.org/vitruvia.html?mode=all&q=Venus%20de%20Milo",
+      "status": "pending"
+    },
+    {
+      "id": 158,
+      "category": "Arte e iconografía",
+      "q": "Victoria de Samotracia",
+      "expected": "Identificación, fecha, autoría, colección e inventario cuando exista",
+      "googleAI": "https://www.google.com/search?udm=50&q=Victoria%20de%20Samotracia",
+      "wiki": "https://es.wikipedia.org/w/index.php?search=Victoria%20de%20Samotracia",
+      "vitruvia": "https://vitruvius-digital-library.org/vitruvia.html?mode=all&q=Victoria%20de%20Samotracia",
+      "status": "pending"
+    },
+    {
+      "id": 159,
+      "category": "Arte e iconografía",
+      "q": "Apolo del Belvedere",
+      "expected": "Identificación, fecha, autoría, colección e inventario cuando exista",
+      "googleAI": "https://www.google.com/search?udm=50&q=Apolo%20del%20Belvedere",
+      "wiki": "https://es.wikipedia.org/w/index.php?search=Apolo%20del%20Belvedere",
+      "vitruvia": "https://vitruvius-digital-library.org/vitruvia.html?mode=all&q=Apolo%20del%20Belvedere",
+      "status": "pending"
+    },
+    {
+      "id": 160,
+      "category": "Arte e iconografía",
+      "q": "Piedra de Rosetta",
+      "expected": "Identificación, fecha, autoría, colección e inventario cuando exista",
+      "googleAI": "https://www.google.com/search?udm=50&q=Piedra%20de%20Rosetta",
+      "wiki": "https://es.wikipedia.org/w/index.php?search=Piedra%20de%20Rosetta",
+      "vitruvia": "https://vitruvius-digital-library.org/vitruvia.html?mode=all&q=Piedra%20de%20Rosetta",
+      "status": "pending"
+    },
+    {
+      "id": 161,
+      "category": "Ciencia y conceptos",
+      "q": "qué es la pitatoria",
+      "expected": "Respuesta directa, explicación, fórmula o ejemplo si procede y fuentes",
+      "googleAI": "https://www.google.com/search?udm=50&q=qu%C3%A9%20es%20la%20pitatoria",
+      "wiki": "https://es.wikipedia.org/w/index.php?search=qu%C3%A9%20es%20la%20pitatoria",
+      "vitruvia": "https://vitruvius-digital-library.org/vitruvia.html?mode=all&q=qu%C3%A9%20es%20la%20pitatoria",
+      "status": "pending"
+    },
+    {
+      "id": 162,
+      "category": "Ciencia y conceptos",
+      "q": "sumatoria y productoria diferencia",
+      "expected": "Respuesta directa, explicación, fórmula o ejemplo si procede y fuentes",
+      "googleAI": "https://www.google.com/search?udm=50&q=sumatoria%20y%20productoria%20diferencia",
+      "wiki": "https://es.wikipedia.org/w/index.php?search=sumatoria%20y%20productoria%20diferencia",
+      "vitruvia": "https://vitruvius-digital-library.org/vitruvia.html?mode=all&q=sumatoria%20y%20productoria%20diferencia",
+      "status": "pending"
+    },
+    {
+      "id": 163,
+      "category": "Ciencia y conceptos",
+      "q": "proporción áurea",
+      "expected": "Respuesta directa, explicación, fórmula o ejemplo si procede y fuentes",
+      "googleAI": "https://www.google.com/search?udm=50&q=proporci%C3%B3n%20%C3%A1urea",
+      "wiki": "https://es.wikipedia.org/w/index.php?search=proporci%C3%B3n%20%C3%A1urea",
+      "vitruvia": "https://vitruvius-digital-library.org/vitruvia.html?mode=all&q=proporci%C3%B3n%20%C3%A1urea",
+      "status": "pending"
+    },
+    {
+      "id": 164,
+      "category": "Ciencia y conceptos",
+      "q": "teorema de Pitágoras demostración",
+      "expected": "Respuesta directa, explicación, fórmula o ejemplo si procede y fuentes",
+      "googleAI": "https://www.google.com/search?udm=50&q=teorema%20de%20Pit%C3%A1goras%20demostraci%C3%B3n",
+      "wiki": "https://es.wikipedia.org/w/index.php?search=teorema%20de%20Pit%C3%A1goras%20demostraci%C3%B3n",
+      "vitruvia": "https://vitruvius-digital-library.org/vitruvia.html?mode=all&q=teorema%20de%20Pit%C3%A1goras%20demostraci%C3%B3n",
+      "status": "pending"
+    },
+    {
+      "id": 165,
+      "category": "Ciencia y conceptos",
+      "q": "geometría euclidiana",
+      "expected": "Respuesta directa, explicación, fórmula o ejemplo si procede y fuentes",
+      "googleAI": "https://www.google.com/search?udm=50&q=geometr%C3%ADa%20euclidiana",
+      "wiki": "https://es.wikipedia.org/w/index.php?search=geometr%C3%ADa%20euclidiana",
+      "vitruvia": "https://vitruvius-digital-library.org/vitruvia.html?mode=all&q=geometr%C3%ADa%20euclidiana",
+      "status": "pending"
+    },
+    {
+      "id": 166,
+      "category": "Ciencia y conceptos",
+      "q": "número de Euler",
+      "expected": "Respuesta directa, explicación, fórmula o ejemplo si procede y fuentes",
+      "googleAI": "https://www.google.com/search?udm=50&q=n%C3%BAmero%20de%20Euler",
+      "wiki": "https://es.wikipedia.org/w/index.php?search=n%C3%BAmero%20de%20Euler",
+      "vitruvia": "https://vitruvius-digital-library.org/vitruvia.html?mode=all&q=n%C3%BAmero%20de%20Euler",
+      "status": "pending"
+    },
+    {
+      "id": 167,
+      "category": "Ciencia y conceptos",
+      "q": "ley de Hooke",
+      "expected": "Respuesta directa, explicación, fórmula o ejemplo si procede y fuentes",
+      "googleAI": "https://www.google.com/search?udm=50&q=ley%20de%20Hooke",
+      "wiki": "https://es.wikipedia.org/w/index.php?search=ley%20de%20Hooke",
+      "vitruvia": "https://vitruvius-digital-library.org/vitruvia.html?mode=all&q=ley%20de%20Hooke",
+      "status": "pending"
+    },
+    {
+      "id": 168,
+      "category": "Ciencia y conceptos",
+      "q": "principio de Arquímedes",
+      "expected": "Respuesta directa, explicación, fórmula o ejemplo si procede y fuentes",
+      "googleAI": "https://www.google.com/search?udm=50&q=principio%20de%20Arqu%C3%ADmedes",
+      "wiki": "https://es.wikipedia.org/w/index.php?search=principio%20de%20Arqu%C3%ADmedes",
+      "vitruvia": "https://vitruvius-digital-library.org/vitruvia.html?mode=all&q=principio%20de%20Arqu%C3%ADmedes",
+      "status": "pending"
+    },
+    {
+      "id": 169,
+      "category": "Ciencia y conceptos",
+      "q": "hidráulica romana",
+      "expected": "Respuesta directa, explicación, fórmula o ejemplo si procede y fuentes",
+      "googleAI": "https://www.google.com/search?udm=50&q=hidr%C3%A1ulica%20romana",
+      "wiki": "https://es.wikipedia.org/w/index.php?search=hidr%C3%A1ulica%20romana",
+      "vitruvia": "https://vitruvius-digital-library.org/vitruvia.html?mode=all&q=hidr%C3%A1ulica%20romana",
+      "status": "pending"
+    },
+    {
+      "id": 170,
+      "category": "Ciencia y conceptos",
+      "q": "hormigón puzolánico",
+      "expected": "Respuesta directa, explicación, fórmula o ejemplo si procede y fuentes",
+      "googleAI": "https://www.google.com/search?udm=50&q=hormig%C3%B3n%20puzol%C3%A1nico",
+      "wiki": "https://es.wikipedia.org/w/index.php?search=hormig%C3%B3n%20puzol%C3%A1nico",
+      "vitruvia": "https://vitruvius-digital-library.org/vitruvia.html?mode=all&q=hormig%C3%B3n%20puzol%C3%A1nico",
+      "status": "pending"
+    },
+    {
+      "id": 171,
+      "category": "Ciencia y conceptos",
+      "q": "método de los elementos finitos",
+      "expected": "Respuesta directa, explicación, fórmula o ejemplo si procede y fuentes",
+      "googleAI": "https://www.google.com/search?udm=50&q=m%C3%A9todo%20de%20los%20elementos%20finitos",
+      "wiki": "https://es.wikipedia.org/w/index.php?search=m%C3%A9todo%20de%20los%20elementos%20finitos",
+      "vitruvia": "https://vitruvius-digital-library.org/vitruvia.html?mode=all&q=m%C3%A9todo%20de%20los%20elementos%20finitos",
+      "status": "pending"
+    },
+    {
+      "id": 172,
+      "category": "Ciencia y conceptos",
+      "q": "entropía",
+      "expected": "Respuesta directa, explicación, fórmula o ejemplo si procede y fuentes",
+      "googleAI": "https://www.google.com/search?udm=50&q=entrop%C3%ADa",
+      "wiki": "https://es.wikipedia.org/w/index.php?search=entrop%C3%ADa",
+      "vitruvia": "https://vitruvius-digital-library.org/vitruvia.html?mode=all&q=entrop%C3%ADa",
+      "status": "pending"
+    },
+    {
+      "id": 173,
+      "category": "Ciencia y conceptos",
+      "q": "relatividad general",
+      "expected": "Respuesta directa, explicación, fórmula o ejemplo si procede y fuentes",
+      "googleAI": "https://www.google.com/search?udm=50&q=relatividad%20general",
+      "wiki": "https://es.wikipedia.org/w/index.php?search=relatividad%20general",
+      "vitruvia": "https://vitruvius-digital-library.org/vitruvia.html?mode=all&q=relatividad%20general",
+      "status": "pending"
+    },
+    {
+      "id": 174,
+      "category": "Ciencia y conceptos",
+      "q": "mecánica cuántica",
+      "expected": "Respuesta directa, explicación, fórmula o ejemplo si procede y fuentes",
+      "googleAI": "https://www.google.com/search?udm=50&q=mec%C3%A1nica%20cu%C3%A1ntica",
+      "wiki": "https://es.wikipedia.org/w/index.php?search=mec%C3%A1nica%20cu%C3%A1ntica",
+      "vitruvia": "https://vitruvius-digital-library.org/vitruvia.html?mode=all&q=mec%C3%A1nica%20cu%C3%A1ntica",
+      "status": "pending"
+    },
+    {
+      "id": 175,
+      "category": "Ciencia y conceptos",
+      "q": "geometría no euclidiana",
+      "expected": "Respuesta directa, explicación, fórmula o ejemplo si procede y fuentes",
+      "googleAI": "https://www.google.com/search?udm=50&q=geometr%C3%ADa%20no%20euclidiana",
+      "wiki": "https://es.wikipedia.org/w/index.php?search=geometr%C3%ADa%20no%20euclidiana",
+      "vitruvia": "https://vitruvius-digital-library.org/vitruvia.html?mode=all&q=geometr%C3%ADa%20no%20euclidiana",
+      "status": "pending"
+    },
+    {
+      "id": 176,
+      "category": "Ciencia y conceptos",
+      "q": "serie de Fibonacci",
+      "expected": "Respuesta directa, explicación, fórmula o ejemplo si procede y fuentes",
+      "googleAI": "https://www.google.com/search?udm=50&q=serie%20de%20Fibonacci",
+      "wiki": "https://es.wikipedia.org/w/index.php?search=serie%20de%20Fibonacci",
+      "vitruvia": "https://vitruvius-digital-library.org/vitruvia.html?mode=all&q=serie%20de%20Fibonacci",
+      "status": "pending"
+    },
+    {
+      "id": 177,
+      "category": "Ciencia y conceptos",
+      "q": "transformada de Fourier",
+      "expected": "Respuesta directa, explicación, fórmula o ejemplo si procede y fuentes",
+      "googleAI": "https://www.google.com/search?udm=50&q=transformada%20de%20Fourier",
+      "wiki": "https://es.wikipedia.org/w/index.php?search=transformada%20de%20Fourier",
+      "vitruvia": "https://vitruvius-digital-library.org/vitruvia.html?mode=all&q=transformada%20de%20Fourier",
+      "status": "pending"
+    },
+    {
+      "id": 178,
+      "category": "Ciencia y conceptos",
+      "q": "derivada parcial",
+      "expected": "Respuesta directa, explicación, fórmula o ejemplo si procede y fuentes",
+      "googleAI": "https://www.google.com/search?udm=50&q=derivada%20parcial",
+      "wiki": "https://es.wikipedia.org/w/index.php?search=derivada%20parcial",
+      "vitruvia": "https://vitruvius-digital-library.org/vitruvia.html?mode=all&q=derivada%20parcial",
+      "status": "pending"
+    },
+    {
+      "id": 179,
+      "category": "Ciencia y conceptos",
+      "q": "integral definida",
+      "expected": "Respuesta directa, explicación, fórmula o ejemplo si procede y fuentes",
+      "googleAI": "https://www.google.com/search?udm=50&q=integral%20definida",
+      "wiki": "https://es.wikipedia.org/w/index.php?search=integral%20definida",
+      "vitruvia": "https://vitruvius-digital-library.org/vitruvia.html?mode=all&q=integral%20definida",
+      "status": "pending"
+    },
+    {
+      "id": 180,
+      "category": "Ciencia y conceptos",
+      "q": "tensor de esfuerzos",
+      "expected": "Respuesta directa, explicación, fórmula o ejemplo si procede y fuentes",
+      "googleAI": "https://www.google.com/search?udm=50&q=tensor%20de%20esfuerzos",
+      "wiki": "https://es.wikipedia.org/w/index.php?search=tensor%20de%20esfuerzos",
+      "vitruvia": "https://vitruvius-digital-library.org/vitruvia.html?mode=all&q=tensor%20de%20esfuerzos",
+      "status": "pending"
+    },
+    {
+      "id": 181,
+      "category": "Preguntas semánticas y errores",
+      "q": "quien fue el rey tut",
+      "expected": "Interpretación de intención, corrección de variantes y respuesta documentada",
+      "googleAI": "https://www.google.com/search?udm=50&q=quien%20fue%20el%20rey%20tut",
+      "wiki": "https://es.wikipedia.org/w/index.php?search=quien%20fue%20el%20rey%20tut",
+      "vitruvia": "https://vitruvius-digital-library.org/vitruvia.html?mode=all&q=quien%20fue%20el%20rey%20tut",
+      "status": "pending"
+    },
+    {
+      "id": 182,
+      "category": "Preguntas semánticas y errores",
+      "q": "cartuchos y nombres del faraon akenaton",
+      "expected": "Interpretación de intención, corrección de variantes y respuesta documentada",
+      "googleAI": "https://www.google.com/search?udm=50&q=cartuchos%20y%20nombres%20del%20faraon%20akenaton",
+      "wiki": "https://es.wikipedia.org/w/index.php?search=cartuchos%20y%20nombres%20del%20faraon%20akenaton",
+      "vitruvia": "https://vitruvius-digital-library.org/vitruvia.html?mode=all&q=cartuchos%20y%20nombres%20del%20faraon%20akenaton",
+      "status": "pending"
+    },
+    {
+      "id": 183,
+      "category": "Preguntas semánticas y errores",
+      "q": "obras de lecorbusier con plantas y cortes",
+      "expected": "Interpretación de intención, corrección de variantes y respuesta documentada",
+      "googleAI": "https://www.google.com/search?udm=50&q=obras%20de%20lecorbusier%20con%20plantas%20y%20cortes",
+      "wiki": "https://es.wikipedia.org/w/index.php?search=obras%20de%20lecorbusier%20con%20plantas%20y%20cortes",
+      "vitruvia": "https://vitruvius-digital-library.org/vitruvia.html?mode=all&q=obras%20de%20lecorbusier%20con%20plantas%20y%20cortes",
+      "status": "pending"
+    },
+    {
+      "id": 184,
+      "category": "Preguntas semánticas y errores",
+      "q": "quien escribió los cuatro libros de arquitectura",
+      "expected": "Interpretación de intención, corrección de variantes y respuesta documentada",
+      "googleAI": "https://www.google.com/search?udm=50&q=quien%20escribi%C3%B3%20los%20cuatro%20libros%20de%20arquitectura",
+      "wiki": "https://es.wikipedia.org/w/index.php?search=quien%20escribi%C3%B3%20los%20cuatro%20libros%20de%20arquitectura",
+      "vitruvia": "https://vitruvius-digital-library.org/vitruvia.html?mode=all&q=quien%20escribi%C3%B3%20los%20cuatro%20libros%20de%20arquitectura",
+      "status": "pending"
+    },
+    {
+      "id": 185,
+      "category": "Preguntas semánticas y errores",
+      "q": "arquitecto de la cúpula de santa maria del fiore",
+      "expected": "Interpretación de intención, corrección de variantes y respuesta documentada",
+      "googleAI": "https://www.google.com/search?udm=50&q=arquitecto%20de%20la%20c%C3%BApula%20de%20santa%20maria%20del%20fiore",
+      "wiki": "https://es.wikipedia.org/w/index.php?search=arquitecto%20de%20la%20c%C3%BApula%20de%20santa%20maria%20del%20fiore",
+      "vitruvia": "https://vitruvius-digital-library.org/vitruvia.html?mode=all&q=arquitecto%20de%20la%20c%C3%BApula%20de%20santa%20maria%20del%20fiore",
+      "status": "pending"
+    },
+    {
+      "id": 186,
+      "category": "Preguntas semánticas y errores",
+      "q": "quien escribió la república",
+      "expected": "Interpretación de intención, corrección de variantes y respuesta documentada",
+      "googleAI": "https://www.google.com/search?udm=50&q=quien%20escribi%C3%B3%20la%20rep%C3%BAblica",
+      "wiki": "https://es.wikipedia.org/w/index.php?search=quien%20escribi%C3%B3%20la%20rep%C3%BAblica",
+      "vitruvia": "https://vitruvius-digital-library.org/vitruvia.html?mode=all&q=quien%20escribi%C3%B3%20la%20rep%C3%BAblica",
+      "status": "pending"
+    },
+    {
+      "id": 187,
+      "category": "Preguntas semánticas y errores",
+      "q": "diferencia entre estoicismo y epicureísmo",
+      "expected": "Interpretación de intención, corrección de variantes y respuesta documentada",
+      "googleAI": "https://www.google.com/search?udm=50&q=diferencia%20entre%20estoicismo%20y%20epicure%C3%ADsmo",
+      "wiki": "https://es.wikipedia.org/w/index.php?search=diferencia%20entre%20estoicismo%20y%20epicure%C3%ADsmo",
+      "vitruvia": "https://vitruvius-digital-library.org/vitruvia.html?mode=all&q=diferencia%20entre%20estoicismo%20y%20epicure%C3%ADsmo",
+      "status": "pending"
+    },
+    {
+      "id": 188,
+      "category": "Preguntas semánticas y errores",
+      "q": "cómo se construía un acueducto romano",
+      "expected": "Interpretación de intención, corrección de variantes y respuesta documentada",
+      "googleAI": "https://www.google.com/search?udm=50&q=c%C3%B3mo%20se%20constru%C3%ADa%20un%20acueducto%20romano",
+      "wiki": "https://es.wikipedia.org/w/index.php?search=c%C3%B3mo%20se%20constru%C3%ADa%20un%20acueducto%20romano",
+      "vitruvia": "https://vitruvius-digital-library.org/vitruvia.html?mode=all&q=c%C3%B3mo%20se%20constru%C3%ADa%20un%20acueducto%20romano",
+      "status": "pending"
+    },
+    {
+      "id": 189,
+      "category": "Preguntas semánticas y errores",
+      "q": "qué significa logos en Heráclito",
+      "expected": "Interpretación de intención, corrección de variantes y respuesta documentada",
+      "googleAI": "https://www.google.com/search?udm=50&q=qu%C3%A9%20significa%20logos%20en%20Her%C3%A1clito",
+      "wiki": "https://es.wikipedia.org/w/index.php?search=qu%C3%A9%20significa%20logos%20en%20Her%C3%A1clito",
+      "vitruvia": "https://vitruvius-digital-library.org/vitruvia.html?mode=all&q=qu%C3%A9%20significa%20logos%20en%20Her%C3%A1clito",
+      "status": "pending"
+    },
+    {
+      "id": 190,
+      "category": "Preguntas semánticas y errores",
+      "q": "nombres y dinastía de la reina Nefertiti",
+      "expected": "Interpretación de intención, corrección de variantes y respuesta documentada",
+      "googleAI": "https://www.google.com/search?udm=50&q=nombres%20y%20dinast%C3%ADa%20de%20la%20reina%20Nefertiti",
+      "wiki": "https://es.wikipedia.org/w/index.php?search=nombres%20y%20dinast%C3%ADa%20de%20la%20reina%20Nefertiti",
+      "vitruvia": "https://vitruvius-digital-library.org/vitruvia.html?mode=all&q=nombres%20y%20dinast%C3%ADa%20de%20la%20reina%20Nefertiti",
+      "status": "pending"
+    },
+    {
+      "id": 191,
+      "category": "Preguntas semánticas y errores",
+      "q": "arquitectura de la ciudad de Ajetatón",
+      "expected": "Interpretación de intención, corrección de variantes y respuesta documentada",
+      "googleAI": "https://www.google.com/search?udm=50&q=arquitectura%20de%20la%20ciudad%20de%20Ajetat%C3%B3n",
+      "wiki": "https://es.wikipedia.org/w/index.php?search=arquitectura%20de%20la%20ciudad%20de%20Ajetat%C3%B3n",
+      "vitruvia": "https://vitruvius-digital-library.org/vitruvia.html?mode=all&q=arquitectura%20de%20la%20ciudad%20de%20Ajetat%C3%B3n",
+      "status": "pending"
+    },
+    {
+      "id": 192,
+      "category": "Preguntas semánticas y errores",
+      "q": "qué templo construyó ramses segundo en nubia",
+      "expected": "Interpretación de intención, corrección de variantes y respuesta documentada",
+      "googleAI": "https://www.google.com/search?udm=50&q=qu%C3%A9%20templo%20construy%C3%B3%20ramses%20segundo%20en%20nubia",
+      "wiki": "https://es.wikipedia.org/w/index.php?search=qu%C3%A9%20templo%20construy%C3%B3%20ramses%20segundo%20en%20nubia",
+      "vitruvia": "https://vitruvius-digital-library.org/vitruvia.html?mode=all&q=qu%C3%A9%20templo%20construy%C3%B3%20ramses%20segundo%20en%20nubia",
+      "status": "pending"
+    },
+    {
+      "id": 193,
+      "category": "Preguntas semánticas y errores",
+      "q": "qué relación tiene Vitruvio con Palladio",
+      "expected": "Interpretación de intención, corrección de variantes y respuesta documentada",
+      "googleAI": "https://www.google.com/search?udm=50&q=qu%C3%A9%20relaci%C3%B3n%20tiene%20Vitruvio%20con%20Palladio",
+      "wiki": "https://es.wikipedia.org/w/index.php?search=qu%C3%A9%20relaci%C3%B3n%20tiene%20Vitruvio%20con%20Palladio",
+      "vitruvia": "https://vitruvius-digital-library.org/vitruvia.html?mode=all&q=qu%C3%A9%20relaci%C3%B3n%20tiene%20Vitruvio%20con%20Palladio",
+      "status": "pending"
+    },
+    {
+      "id": 194,
+      "category": "Preguntas semánticas y errores",
+      "q": "quién escribió la guerra de las galias",
+      "expected": "Interpretación de intención, corrección de variantes y respuesta documentada",
+      "googleAI": "https://www.google.com/search?udm=50&q=qui%C3%A9n%20escribi%C3%B3%20la%20guerra%20de%20las%20galias",
+      "wiki": "https://es.wikipedia.org/w/index.php?search=qui%C3%A9n%20escribi%C3%B3%20la%20guerra%20de%20las%20galias",
+      "vitruvia": "https://vitruvius-digital-library.org/vitruvia.html?mode=all&q=qui%C3%A9n%20escribi%C3%B3%20la%20guerra%20de%20las%20galias",
+      "status": "pending"
+    },
+    {
+      "id": 195,
+      "category": "Preguntas semánticas y errores",
+      "q": "dónde se conserva el códice Harley de Vitruvio",
+      "expected": "Interpretación de intención, corrección de variantes y respuesta documentada",
+      "googleAI": "https://www.google.com/search?udm=50&q=d%C3%B3nde%20se%20conserva%20el%20c%C3%B3dice%20Harley%20de%20Vitruvio",
+      "wiki": "https://es.wikipedia.org/w/index.php?search=d%C3%B3nde%20se%20conserva%20el%20c%C3%B3dice%20Harley%20de%20Vitruvio",
+      "vitruvia": "https://vitruvius-digital-library.org/vitruvia.html?mode=all&q=d%C3%B3nde%20se%20conserva%20el%20c%C3%B3dice%20Harley%20de%20Vitruvio",
+      "status": "pending"
+    },
+    {
+      "id": 196,
+      "category": "Preguntas semánticas y errores",
+      "q": "qué es la euritmia según Vitruvio",
+      "expected": "Interpretación de intención, corrección de variantes y respuesta documentada",
+      "googleAI": "https://www.google.com/search?udm=50&q=qu%C3%A9%20es%20la%20euritmia%20seg%C3%BAn%20Vitruvio",
+      "wiki": "https://es.wikipedia.org/w/index.php?search=qu%C3%A9%20es%20la%20euritmia%20seg%C3%BAn%20Vitruvio",
+      "vitruvia": "https://vitruvius-digital-library.org/vitruvia.html?mode=all&q=qu%C3%A9%20es%20la%20euritmia%20seg%C3%BAn%20Vitruvio",
+      "status": "pending"
+    },
+    {
+      "id": 197,
+      "category": "Preguntas semánticas y errores",
+      "q": "diferencia entre cartucho y serej",
+      "expected": "Interpretación de intención, corrección de variantes y respuesta documentada",
+      "googleAI": "https://www.google.com/search?udm=50&q=diferencia%20entre%20cartucho%20y%20serej",
+      "wiki": "https://es.wikipedia.org/w/index.php?search=diferencia%20entre%20cartucho%20y%20serej",
+      "vitruvia": "https://vitruvius-digital-library.org/vitruvia.html?mode=all&q=diferencia%20entre%20cartucho%20y%20serej",
+      "status": "pending"
+    },
+    {
+      "id": 198,
+      "category": "Preguntas semánticas y errores",
+      "q": "qué es un orden dórico",
+      "expected": "Interpretación de intención, corrección de variantes y respuesta documentada",
+      "googleAI": "https://www.google.com/search?udm=50&q=qu%C3%A9%20es%20un%20orden%20d%C3%B3rico",
+      "wiki": "https://es.wikipedia.org/w/index.php?search=qu%C3%A9%20es%20un%20orden%20d%C3%B3rico",
+      "vitruvia": "https://vitruvius-digital-library.org/vitruvia.html?mode=all&q=qu%C3%A9%20es%20un%20orden%20d%C3%B3rico",
+      "status": "pending"
+    },
+    {
+      "id": 199,
+      "category": "Preguntas semánticas y errores",
+      "q": "cómo se calcula el módulo de una columna clásica",
+      "expected": "Interpretación de intención, corrección de variantes y respuesta documentada",
+      "googleAI": "https://www.google.com/search?udm=50&q=c%C3%B3mo%20se%20calcula%20el%20m%C3%B3dulo%20de%20una%20columna%20cl%C3%A1sica",
+      "wiki": "https://es.wikipedia.org/w/index.php?search=c%C3%B3mo%20se%20calcula%20el%20m%C3%B3dulo%20de%20una%20columna%20cl%C3%A1sica",
+      "vitruvia": "https://vitruvius-digital-library.org/vitruvia.html?mode=all&q=c%C3%B3mo%20se%20calcula%20el%20m%C3%B3dulo%20de%20una%20columna%20cl%C3%A1sica",
+      "status": "pending"
+    },
+    {
+      "id": 200,
+      "category": "Preguntas semánticas y errores",
+      "q": "cómo cambió la titulatura de Tutankatón",
+      "expected": "Interpretación de intención, corrección de variantes y respuesta documentada",
+      "googleAI": "https://www.google.com/search?udm=50&q=c%C3%B3mo%20cambi%C3%B3%20la%20titulatura%20de%20Tutankat%C3%B3n",
+      "wiki": "https://es.wikipedia.org/w/index.php?search=c%C3%B3mo%20cambi%C3%B3%20la%20titulatura%20de%20Tutankat%C3%B3n",
+      "vitruvia": "https://vitruvius-digital-library.org/vitruvia.html?mode=all&q=c%C3%B3mo%20cambi%C3%B3%20la%20titulatura%20de%20Tutankat%C3%B3n",
+      "status": "pending"
+    }
+  ]
+}
