@@ -58,13 +58,22 @@ for(const [id,link] of Object.entries(editionIndexLinks)){
  local.add(id);
  resolvedEditionLinks.push({id,...link});
 }
+// Recognize documented Greek title authorities only when the edition URN matches.
+const authorityPath="data/classics-corpus/title-search-aliases-multilingual.json";
+const authorities=existsSync(authorityPath)?read(authorityPath).titleAuthorities||{}:{};
+const greekTitleAuthorities=new Map();
+for(const [id,a] of Object.entries(authorities)){
+ if(!greek.test(a.greekTitle||"")||!/^https:\/\//.test(a.source||"")||!a.urn)continue;
+ if(!registry.some(e=>e.workId===id&&e.sourceUrn===a.urn&&e.language==="grc"))continue;
+ greekTitleAuthorities.set(id,{title:a.greekTitle,source:a.source,urn:a.urn});
+}
 const missingOriginal=[],unindexed=[],greekTitleReview=[],editionTitleReview=[];
 for(const w of catalog){
  if(!w.title||!w.author)add("error","missing_author_or_title",w.id,"Sin título o autor");
  const entries=indexed.get(w.id)||[];
  if(!entries.length){unindexed.push({id:w.id,author:w.author,title:w.title,language:w.language});add("review","work_not_text_indexed",w.id,"Ficha presente sin versión textual en registry");}
  else if(!Object.hasOwn(editionIndexLinks,w.id)&&originalLanguages.has(w.language)&&!entries.some(e=>e.language===w.language))missingOriginal.push(w.id);
- if(w.language==="grc"&&!greek.test(w.title||"")){
+ if(w.language==="grc"&&!greek.test(w.title||"")&&!greekTitleAuthorities.has(w.id)){
   greekTitleReview.push({id:w.id,title:w.title});
   add("review","greek_title_not_documented",w.id,"La ficha no contiene denominación griega acreditada; podría ser una colección o edición");
  }
@@ -229,14 +238,14 @@ const report={
    r2InvertedIndexDeclaredEditions:manifest.obras,
    worksWithExistingPageOcrIndex:backlogDocument.summary.withExistingPageOcrIndex,worksWithoutVerifiedIndexLink:backlogDocument.summary.withoutVerifiedIndexLink,
    unindexedCatalogueWorks:unindexed.length,unindexedAdditionalR2Works:backlogDocument.summary.additionalR2WorksWithoutRegisteredText,unindexedAllDeclaredWorks:backlog.length,unindexedWithDeclaredR2Facsimile:backlogDocument.summary.withDeclaredR2Facsimile,unindexedAncientWorks:backlogDocument.summary.ancientWorksWithoutRegisteredText,unindexedEditorialManifestations:backlogDocument.summary.modernEditionManifestationsWithoutOwnRegistry,worksMissingRegisteredOriginal:missingOriginal.length,
-   greekTitleNeedsIndividualReview:greekTitleReview.length,r2UnlinkedEditions:r2Unlinked.length,
+   greekTitleNeedsIndividualReview:greekTitleReview.length,documentedGreekTitleAuthorities:greekTitleAuthorities.size,r2UnlinkedEditions:r2Unlinked.length,
    duplicateR2BinaryGroups:hashes.length,
    structuralErrors:issues.filter(x=>x.severity==="error").length,
    editorialReviewItems:issues.filter(x=>x.severity==="review").length
  },
  scope:{
   r2Expansion:{manifestFile:expansionFile,indexFile:expansionIndexFile,editionIds:[...expansionIds].sort(),indexUrl:expansionIndex?.url||null},
-  greekTitleReview,missingOriginal,unindexed,r2Unlinked,duplicateR2Hashes:hashes,resolvedEditionLinks,
+  greekTitleReview,documentedGreekTitleAuthorities:[...greekTitleAuthorities].map(([id,a])=>({id,...a})),missingOriginal,unindexed,r2Unlinked,duplicateR2Hashes:hashes,resolvedEditionLinks,
   catalogueVsEditionTitles:editionTitleReview
  },
  issues,
