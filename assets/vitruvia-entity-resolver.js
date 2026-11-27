@@ -45,6 +45,42 @@ const get=async(url)=>{
 // Solo se quita un tratamiento si quedan por lo menos dos componentes distintivos.
 const honorificVariant=q=>{const parts=norm(q).split(" ").filter(Boolean);return parts.length>=4&&/^(san|santa|santo|saint|st)$/.test(parts[0])?parts.slice(1).join(" "):null};
 const mediaWiki=(lang,parameters)=>"https://"+lang+".wikipedia.org/w/api.php?"+new URLSearchParams({...parameters,format:"json",origin:"*"});
+/* Universal chronology evidence: preserve statement IDs, qualifiers, precision,
+ * calendar and reference provenance. Never infer a person's participation dates
+ * from a related institution's founding or a conflict's duration. */
+function temporalClaims(entity){
+ const direct=["P569","P570","P571","P576","P585","P580","P582","P577","P575","P1619"];
+ const relations=["P39","P26","P69","P108","P166","P793","P607","P937","P54","P102","P463","P551","P1416","P1344","P800","P509","P119"];
+ const time=snak=>{
+  const v=snak?.datavalue?.value;
+  if(!v||typeof v.time!=="string"||!Number.isInteger(v.precision)||v.precision<9)return null;
+  const m=v.time.match(/^([+-]\d+)-(\d\d)-(\d\d)T/);if(!m)return null;
+  const y=Number(m[1]);if(!Number.isInteger(y)||!y||y< -4000||y>new Date().getFullYear())return null;
+  return {year:y,precision:v.precision,time:v.time,calendar:v.calendarmodel||"",before:v.before||0,after:v.after||0};
+ };
+ const result=[];
+ for(const property of [...direct,...relations]){
+  for(const c of entity.claims?.[property]||[]){
+   if(c.rank==="deprecated"||!c.id)continue;
+   const value=c.mainsnak?.datavalue?.value;
+   const objectId=typeof value?.id==="string"&&/^Q\d+$/.test(value.id)?value.id:null;
+   const dates=direct.includes(property)?[time(c.mainsnak)].filter(Boolean):[];
+   const qualifier={};
+   for(const p of ["P580","P582","P585"]){
+    const dates=(c.qualifiers?.[p]||[]).map(time).filter(Boolean);if(dates.length)qualifier[p]=dates;
+   }
+   if(!dates.length&&(!objectId||!Object.keys(qualifier).length))continue;
+   const references=(c.references||[]).map(ref=>{
+    const snaks=ref.snaks||{};
+    const urls=(snaks.P854||[]).map(x=>x.datavalue?.value).filter(x=>typeof x==="string"&&/^https:\/\//i.test(x));
+    const statedIn=(snaks.P248||[]).map(x=>x.datavalue?.value?.id).filter(x=>/^Q\d+$/.test(x||""));
+    return {urls,statedIn};
+   });
+   result.push({property,statementId:c.id,objectId,dates,qualifier,references,rank:c.rank});
+  }
+ }
+ return result;
+}
 function entityMetadata(entity){
  const values=property=>(entity.claims?.[property]||[]).filter(c=>c.rank!=="deprecated").map(c=>c.mainsnak?.datavalue?.value).filter(v=>v!==undefined);
  const instanceOf=values("P31").map(v=>v.id).filter(Boolean);
@@ -56,7 +92,7 @@ function entityMetadata(entity){
  };
  const founded=values("P571")[0]?.time?.match(/^([+-]\d+)/);
  const published=values("P577")[0]?.time?.match(/^([+-]\d+)/);
- return {entityMetadata:!!entity.claims,instanceOf,kind:instanceOf.length?(instanceOf.includes("Q5")?"person":"topic"):null,
+ return {entityMetadata:!!entity.claims,temporalClaims:temporalClaims(entity),instanceOf,kind:instanceOf.length?(instanceOf.includes("Q5")?"person":"topic"):null,
   aliases:[...new Set([...Object.values(entity.labels||{}).map(x=>x.value),...Object.values(entity.aliases||{}).flat().map(x=>x.value)])].slice(0,40),
   commonsSearchName:entity.labels?.en?.value||"",commonsCategory:values("P373")[0]||null,
   imageFiles:values("P18").filter(x=>typeof x==="string").slice(0,4),
