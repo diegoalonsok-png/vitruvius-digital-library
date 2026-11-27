@@ -53,9 +53,23 @@ SANGRIA = {"data/perseus-provenance-audit.json": 2}
 def main():
     check = "--check" in sys.argv
     maestro = {w["id"]: w for w in json.loads(MAESTRO.read_text(encoding="utf-8"))["works"]}
+    supplement = ROOT / "data/bibliotheca-expansion-publicada-2026-11-16.json"
+    if supplement.exists():
+        for w in json.loads(supplement.read_text(encoding="utf-8"))["works"]:
+            if w["id"] in maestro:
+                raise ValueError("ID repetido entre catálogo y suplemento: " + w["id"])
+            maestro[w["id"]] = w
+    # Existing bibliological shards: synchronize identity only, preserving
+    # edition-specific evidence, language classifications and review notes.
+    destinos = DESTINOS + [
+        (str(p.relative_to(ROOT)), "records", "id",
+         {"title": "title", "author": "author", "originalLanguage": "language",
+          "dating": "dating", "genre": "genre"})
+        for p in sorted((ROOT / "data/bibliotheca-audit").glob("records-*.json"))
+    ]
     total_cambios = 0
 
-    for ruta, clave, campo_id, mapa in DESTINOS:
+    for ruta, clave, campo_id, mapa in destinos:
         archivo = ROOT / ruta
         if not archivo.exists():
             continue
