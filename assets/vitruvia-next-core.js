@@ -2,7 +2,7 @@
 (function(root){
 "use strict";
 const fold=s=>String(s||"").normalize("NFD").replace(/\p{M}/gu,"").toLowerCase().replace(/[^\p{L}\p{N}]+/gu," ").trim();
-const aliases={"akenaton":"Akenatón","ajenaton":"Akenatón","akhenaten":"Akenatón","tutankamon":"Tutankamón","brunellesci":"Filippo Brunelleschi","cesar cesarin":"Cesare Cesariano","cesar cesariano":"Cesare Cesariano","palladio":"Andrea Palladio","vitruvio":"Vitruvio","mies":"Ludwig Mies van der Rohe","frank loys write":"Frank Lloyd Wright"};
+const aliases={"akenaton":"Akenatón","ajenaton":"Akenatón","akhenaten":"Akenatón","tutankamon":"Tutankamón","rey tut":"Tutankamón","tut":"Tutankamón","brunellesci":"Filippo Brunelleschi","cesar cesarin":"Cesare Cesariano","cesar cesariano":"Cesare Cesariano","palladio":"Andrea Palladio","vitruvio":"Vitruvio","mies":"Ludwig Mies van der Rohe","frank loys write":"Frank Lloyd Wright"};
 const subject=(q,lang)=>lang==="es"?(aliases[fold(q)]||q):q;
 const params=o=>Object.entries(o).map(([k,v])=>encodeURIComponent(k)+"="+encodeURIComponent(v)).join("&");
 const wikiParams=(q,lang,mode="search")=>{if(!["es","en","fr","it","de","pt"].includes(lang))throw Error("Unsupported language");return "https://"+lang+".wikipedia.org/w/api.php?"+params({action:"query",format:"json",formatversion:"2",origin:"*",redirects:"1",prop:"extracts|pageprops|info|pageimages",inprop:"url",exintro:"1",explaintext:"1",exchars:"1600",exlimit:"max",pithumbsize:"240",piprop:"thumbnail",...(mode==="title"?{titles:subject(q,lang)}:{generator:"search",gsrsearch:subject(q,lang),gsrnamespace:"0",gsrlimit:"8"})})};
@@ -17,5 +17,14 @@ function catalog(items,q){
  return items.map(w=>{const author=fold(w.author),title=fold(w.title),id=fold(w.id),all=author+" "+title+" "+id;let score=author===query?100:title===query?95:author.startsWith(query)?85:title.startsWith(query)?80:terms.every(t=>all.includes(t))?60:0;return {w,score}}).filter(x=>x.score>0).sort((a,b)=>b.score-a.score||String(a.w.title).localeCompare(String(b.w.title))).map(x=>x.w);
 }
 function wikiLink(q,lang){return "https://"+lang+".wikipedia.org/w/index.php?"+params({search:q})}
-root.VitruviaNextCore={fold,subject,wikiParams,pages,combine,catalog,wikiLink};
+function articleUrl(id,lang){
+ if(!Number.isInteger(id)||id<=0||!["es","en","fr","it","de","pt"].includes(lang))throw Error("Invalid article");
+ return "https://"+lang+".wikipedia.org/w/api.php?"+params({action:"query",format:"json",formatversion:"2",origin:"*",pageids:id,prop:"extracts|info",inprop:"url",explaintext:"1",exsectionformat:"wiki",exlimit:1});
+}
+function entityUrl(ids){
+ if(!Array.isArray(ids)||!ids.length||ids.some(id=>!/^Q\d+$/.test(id)))throw Error("Invalid entity IDs");
+ return "https://www.wikidata.org/w/api.php?"+params({action:"wbgetentities",ids:ids.join("|"),props:"claims|labels|descriptions",languages:"es|en|fr|it|de|pt",languagefallback:1,format:"json",origin:"*"});
+}
+function claimIds(entity,property){return [...new Set((entity?.claims?.[property]||[]).filter(x=>x.rank!=="deprecated").map(x=>x.mainsnak?.datavalue?.value?.id).filter(x=>/^Q\d+$/.test(x||"")))]}
+root.VitruviaNextCore={articleUrl,entityUrl,claimIds,fold,subject,wikiParams,pages,combine,catalog,wikiLink};
 })(globalThis);
