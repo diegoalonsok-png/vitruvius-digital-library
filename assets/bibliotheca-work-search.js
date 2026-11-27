@@ -365,13 +365,15 @@ const matchedSubjects=w=>subjects.filter(([id,label,aliases,pattern])=>
 const requestedSubject=query=>{const q=foldAuthority(query);return subjects.find(([id,label,aliases])=>aliases.some(x=>foldAuthority(x)===q))?.[0]||""};
 function rank(w,query){
  const queryTokens=tokens(query);if(!queryTokens.length)return 0;
+ const q=foldAuthority(query),greekQuery=/\p{Script=Greek}/u.test(query);
  const authorKey=String(w.id||"").split("-")[0];
  const authority=[w.author,w.title,w.id.replaceAll("-"," "),...(w.forms||[]),...(w.originalAliases||[]),...(authorNameVariants[authorKey]||[]),...(aliasAuthority[w.id]||[])];
  let best=0;
- for(const field of authority){
-  if(/\p{Script=Greek}/u.test(query)&&!/\p{Script=Greek}/u.test(field))continue;
+ for(const field of new Set(authority)){
+  if(greekQuery&&!/\p{Script=Greek}/u.test(field))continue;
   const val=foldAuthority(field);if(!val)continue;
-  const fieldTokens=tokens(val), q=foldAuthority(query);
+  if(val===q)return 140;
+  const fieldTokens=tokens(val);
   if(val===q)best=Math.max(best,140);
   if(val.startsWith(q))best=Math.max(best,115);
   if(val.includes(q))best=Math.max(best,90);
@@ -569,11 +571,14 @@ function render(){
    const authorForms=[w.author,spanishAuthorName(w),...(authorNameVariants[prefix]||[])].filter(Boolean);
    return Math.max(0,...authorForms.map(value=>rank({id:"author",author:value,title:"",forms:[value],originalAliases:[]},searched)));
   };
-  const exactAuthors=browsing?[]:model.items.filter(w=>authorScore(w)>=115);
+  const scores=new Map();
+  const exactAuthors=browsing?[]:model.items.filter(w=>{
+   const score=authorScore(w);scores.set(w,score);return score>=115;
+  });
   const authorNames=new Set(exactAuthors.map(w=>foldAuthority(w.author)));
   const authorCodes=new Set(exactAuthors.map(authorityKey).filter(Boolean));
   const isAuthor=exactAuthors.length>0;
-  const scored=model.items.map(w=>({w,score:browsing?0:rank(w,searched)})).filter(x=>browsing?(!initial||letterMatch(x.w,initial,true)):isAuthor?(authorNames.has(foldAuthority(x.w.author))||authorCodes.has(authorityKey(x.w))||authorScore(x.w)>=115||x.score>=115):x.score>=55)
+  const scored=model.items.map(w=>({w,score:browsing?0:rank(w,searched)})).filter(x=>browsing?(!initial||letterMatch(x.w,initial,true)):isAuthor?(authorNames.has(foldAuthority(x.w.author))||authorCodes.has(authorityKey(x.w))||(scores.get(x.w)||0)>=115||x.score>=115):x.score>=55)
    .sort(alphabetical);
   model.region.hidden=false;
   count.textContent=(browsing?(initial?"Inicial «"+searched+"» · ":"Catálogo alfabético · "):"")+scored.length+" fichas"+(scored.length>limit?" · mostrando "+limit:"");
@@ -807,10 +812,17 @@ function mount(parent,data){
     visible.setAttribute("aria-controls","bws-results");
     visible.setAttribute("aria-autocomplete","list");
    }
-   const sync=()=>{input.value=visible.value;model.letter="";model.limit=40;render()};
-   visible.addEventListener("input",sync);
+   let searchTimer;
+   const sync=()=>{clearTimeout(searchTimer);input.value=visible.value;model.letter="";model.limit=40;render()};
+   const schedule=event=>{
+    if(event.isComposing)return;
+    clearTimeout(searchTimer);
+    searchTimer=setTimeout(sync,150);
+   };
+   visible.addEventListener("input",schedule);
+   visible.addEventListener("compositionend",schedule);
    visible.addEventListener("search",sync);
-   visible.addEventListener("change",sync);
+   visible.addEventListener("change",schedule);
    const searchForm=document.getElementById("bibliotheca-lexicon-form");
    searchForm?.addEventListener("submit",event=>{
     event.preventDefault();event.stopImmediatePropagation();sync();
