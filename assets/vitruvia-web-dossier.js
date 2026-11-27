@@ -62,6 +62,11 @@ function topicType(query,rows){
     !/\b(writer|author|poet|poeta|escritor|escritora|novelist|singer|cantante|musician|musico|arquitecto|architect)\b/.test(desc.slice(0,75))){
    return{kind:'literary-work',name:personName,person};
   }
+  // Classify a documented musical work before creator roles.
+  if(person.entityKind!=='person'&&person.entityKind!=='band'){
+   if(/\b(album|album musical|studio album|live album|disco de|soundtrack album)\b/.test(desc))return{kind:'album-work',name:personName,person};
+   if(/\b(song|single|cancion|chanson)\b/.test(desc))return{kind:'song-work',name:personName,person};
+  }
   // For people with several professions, the first documented role leads.
   const roles=[
    {kind:'music',pattern:/\b(singer|musician|composer|vocalist|cantante|musico|musica|compositor|compositora|rapero|rapper|band|grupo musical|banda|rock band|cantautor|pianista|guitarrista|interprete)\b/},
@@ -354,6 +359,65 @@ function manuscriptWitnesses(root,topic,rows){
  }
 }
 
+// Lyrics are never scraped or stored without permission. A catalogue track
+// identifies the recording; a service link does not establish lyric availability.
+function lyricActions(parent,track){
+ if(!parent||!track?.artistName||!track?.trackName)return;
+ const q=track.artistName+' '+track.trackName;
+ const group=el('div','web-dossier-lyrics');
+ if(/^https:\/\/(?:music\.apple\.com|itunes\.apple\.com)\//i.test(track.trackViewUrl||''))
+  group.append(link(L('Letra en Apple Music (si está disponible)','Lyrics in Apple Music (if available)','Paroles sur Apple Music (si disponibles)'),track.trackViewUrl));
+ group.append(link(L('Buscar letra · Musixmatch','Find lyrics · Musixmatch','Chercher les paroles · Musixmatch'),'https://www.google.com/search?'+new URLSearchParams({q:'site:musixmatch.com '+q})));
+ group.append(link(L('Buscar video oficial con letra','Find official lyric video','Chercher la vidéo officielle avec paroles'),'https://www.youtube.com/results?'+new URLSearchParams({search_query:q+' official lyric video'})));
+ parent.append(group);
+}
+function albumTracks(payload,id){
+ return (payload?.results||[]).filter(t=>t.wrapperType==='track'&&t.kind==='song'&&String(t.collectionId)===String(id)&&t.trackName&&t.artistName)
+  .sort((a,b)=>(Number(a.discNumber)||1)-(Number(b.discNumber)||1)||(Number(a.trackNumber)||9999)-(Number(b.trackNumber)||9999));
+}
+function attachAlbumTracks(item,album,valid){
+ const body=item.querySelector('.web-dossier-card-body');if(!body||!/^\d+$/.test(String(album.collectionId||'')))return;
+ const details=el('details','web-dossier-tracklist');details.append(el('summary',null,L('Canciones y letras de esta edición','Tracks and lyrics of this edition','Titres et paroles de cette édition')));body.append(details);
+ let loading=false;
+ details.addEventListener('toggle',async()=>{
+  if(!details.open||loading)return;loading=true;
+  const box=el('div','web-dossier-list');details.append(box);info(box,L('Consultando canciones…','Loading tracks…','Chargement des titres…'));
+  const data=await cached('https://itunes.apple.com/lookup?'+new URLSearchParams({id:String(album.collectionId),entity:'song',country:'US',limit:'200'}));
+  if(!valid()||!item.isConnected)return;box.replaceChildren();
+  const tracks=albumTracks(data,album.collectionId);
+  if(!tracks.length){info(box,L('Lista no disponible; consultar la edición en Apple Music.','Track list unavailable; consult Apple Music.','Liste indisponible ; consulter Apple Music.'));return}
+  const list=el('ol','web-dossier-track-items');box.append(list);
+  for(const track of tracks){
+   const li=el('li',null);li.append(el('strong',null,(track.discNumber>1?track.discNumber+'.':'')+(track.trackNumber||'')+' · '+track.trackName));
+   if(/^https:\/\//.test(track.trackViewUrl||''))li.append(link(L('Escuchar','Listen','Écouter'),track.trackViewUrl));
+   lyricActions(li,track);list.append(li);
+  }
+  info(box,L('Lista del catálogo consultado: '+tracks.length+' pistas. Las letras completas requieren autorización.','Catalogue list: '+tracks.length+' tracks. Full lyrics require authorization.','Liste du catalogue : '+tracks.length+' titres. Les paroles intégrales nécessitent une autorisation.'));
+ });
+}
+async function musicalWork(root,topic,valid){
+ const section=el('section','web-dossier-music-work');root.append(section);
+ const isAlbum=topic.kind==='album-work';
+ header(section,isAlbum?L('Ediciones del álbum y canciones','Album editions and tracks','Éditions et titres'):L('Grabaciones y letras','Recordings and lyrics','Enregistrements et paroles'));
+ info(section,L('Coincidencias por título del catálogo; distinguir intérpretes y ediciones homónimas.','Catalogue title matches; distinguish performers and editions with the same title.','Correspondances de titre ; distinguer les interprètes et éditions homonymes.'));
+ const data=await cached('https://itunes.apple.com/search?'+new URLSearchParams({term:topic.name,entity:isAlbum?'album':'song',media:'music',country:'US',limit:'35'}));
+ if(!valid()||!section.isConnected)return;
+ const wanted=normalized(topic.name),seen=new Set();
+ const records=(data?.results||[]).filter(x=>{
+  const title=isAlbum?x.collectionName:x.trackName,id=isAlbum?x.collectionId:x.trackId;
+  if(normalized(title)!==wanted||!x.artistName||!id||seen.has(id))return false;
+  if(isAlbum?x.wrapperType!=='collection':x.wrapperType!=='track'||x.kind!=='song')return false;
+  seen.add(id);return true;
+ }).slice(0,12);
+ if(!records.length){info(section,L('Sin coincidencias exactas disponibles.','No exact matches available.','Aucune correspondance exacte.'));return}
+ const stack=el('div','web-dossier-stack');section.append(stack);
+ for(const r of records){
+  const url=isAlbum?r.collectionViewUrl:r.trackViewUrl;
+  if(!/^https:\/\/(?:music\.apple\.com|itunes\.apple\.com)\//i.test(url||''))continue;
+  const item=card(stack,isAlbum?r.collectionName:r.trackName,url,r.artistName,r.artworkUrl100,[r.releaseDate?.slice(0,4),r.collectionName,'Apple Music/iTunes'].filter(Boolean).join(' · '));
+  if(isAlbum)attachAlbumTracks(item,r,valid);else lyricActions(item.querySelector('.web-dossier-card-body'),r);
+ }
+}
 async function albums(root,topic,valid){
  if(topic.kind!=='music'&&!/^(musica|music|musicos|cantantes|musicians|singers)$/.test(normalized(topic.name)))return;
  header(root,L('Álbumes y discografía','Albums and discography','Albums et discographie'));
@@ -397,6 +461,7 @@ async function albums(root,topic,valid){
     const buy=link(L('Buscar CD o vinilo · verificar edición y stock','Find CD or vinyl · verify edition and stock','Chercher CD ou vinyle · vérifier édition et stock'),
      'https://www.google.com/search?'+new URLSearchParams({q:rec.artistName+' '+rec.collectionName+' CD vinilo comprar'}));
     buy.className='web-dossier-purchase-link';item.querySelector('.web-dossier-card-body')?.append(buy);
+    attachAlbumTracks(item,rec,valid);
     albumCards.push({item,record:rec});
    }
    catalogOrder(section,albumCards,(a,b,order)=>order==='year'?String(a.releaseDate||'9999').localeCompare(String(b.releaseDate||'9999')):a.catalogRank-b.catalogRank,stack);
@@ -435,9 +500,7 @@ async function songAlbumRelations(root,topic,valid){
     cover,meta,L('Escuchar o consultar la grabación ↗','Listen or view track ↗','Écouter ou consulter ↗'));
    const body=item.querySelector('.web-dossier-card-body');
    if(track.collectionViewUrl)body.append(link(L('Ver álbum y portada','Album and cover','Album et pochette'),track.collectionViewUrl));
-   const lyricUrl='https://www.google.com/search?'+new URLSearchParams({q:artistName+' '+track.trackName+' lyrics official publisher'});
-   const lyrics=link(L('Buscar letra en fuente autorizada','Find licensed lyrics','Paroles auprès d’une source autorisée'),lyricUrl);
-   lyrics.className='web-dossier-purchase-link';body.append(lyrics);
+   lyricActions(body,track);
   }
   const media=el('div','context-note');
   media.append(el('strong',null,L('Cine, series y musicales','Film, television and musicals','Cinéma, télévision et comédies musicales')));
@@ -633,6 +696,7 @@ function render(panel,query,rows,isCurrent){
   // The requested media lead: album covers for musicians, book covers for authors.
   if(['music','music-topic'].includes(topic.kind))void albums(section,topic,valid);
   if(topic.kind==='music')void songAlbumRelations(section,topic,valid);
+  if(['album-work','song-work'].includes(topic.kind))void musicalWork(section,topic,valid);
   if(topic.person&&['author','literature'].includes(topic.kind))manuscriptWitnesses(section,topic,records);
   if(topic.person&&['author','literature','architect','cinema','visual','general'].includes(topic.kind))void books(section,topic,valid);
   if(topic.person&&['author','literature'].includes(topic.kind))void literaryFilmAdaptations(section,topic,valid);
@@ -645,5 +709,5 @@ function render(panel,query,rows,isCurrent){
   relatedImages(section,topic,records);
  })().catch(()=>{if(valid())status.textContent=L('No se pudo consultar el catálogo cultural.','Cultural catalogue unavailable.','Catalogue culturel indisponible.')});
 }
-window.VitruviaWebDossier={render,topicType};
+window.VitruviaWebDossier={render,topicType,albumTracks};
 })();
