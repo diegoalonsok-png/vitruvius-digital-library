@@ -74,7 +74,7 @@ function renderEvidence(root,data,identity){
 async function royalNames(query,root,id,signal){
  const data=await api("data/vitruvia/titulaturae.json?v=20261127-leprohon-v3",signal);
  const clean=q=>P.norm(q).replace(/^(?:(?:el|la|the|le|rey|reina|faraon|king|queen|pharaoh|roi|titulatura|titulaturas|nombres|cartuchos|reales|real|de|del|biografia|vida|historia)\s+)+/,"").replace(/\s+(?:titulatura|titulaturas|nombres reales|cartuchos)$/,"");
- const q=clean(query),alias={tut:"tutankhamun", "tut ankh amon":"tutankhamun"};
+ const q=clean(intentPlan(query).queries[1]||query),alias={tut:"tutankhamun", "tut ankh amon":"tutankhamun"};
  const matches=(data.rulers||[]).filter(r=>[r.name,...(r.aliases||[])].some(n=>clean(n)===q)||alias[q]===r.id);
  if(matches.length!==1||!current(id))return false;
  const ruler=matches[0],s=section(root,"Titulatura real · "+ruler.name);
@@ -118,11 +118,15 @@ async function royalRelations(identity,root,id,signal){
 
 
 function intentPlan(query,canonical=""){
- const norm=P.norm(query),subject=window.VitruviaEntityResolver.subject(query)||query;
- const flags={royal:/\b(?:rey|reina|faraon|titulatura|cartuchos|dinastia|king|pharaoh)\b/.test(norm),architecture:/\b(?:plantas|planos|cortes|vistas|arquitectura|edificios|floor plans)\b/.test(norm),definition:/^(?:que es|que significa|what is|define)\b/.test(norm),compare:/\b(?:diferencia|comparacion|versus|vs|difference)\b/.test(norm),text:/\b(?:locus|pasaje|traduccion|manuscrito|folio|codice|texto original)\b/.test(norm)||/\d+\.\d+\.\d+/.test(norm)};
+ const norm=P.norm(query);let subject=window.VitruviaEntityResolver.subject(query)||query;
+ subject=subject.replace(/^(?:el|la|los|las)\s+/i,"").replace(/\s+con\s+(?:plantas|planos|cortes|vistas)\b.*$/i,"").trim();
+ if(/^quien fue (?:el )?rey tut$/i.test(norm))subject="Tutankamón";
+ if(/\bpitatoria\b/.test(norm))subject="productoria";
+ const royalQuestion=norm.match(/(?:titulatura|cartuchos|nombres)(?:\s+reales)?\s+(?:de|del)\s+(?:el\s+)?(?:faraon\s+|rey\s+|reina\s+)?(.+)$/);if(royalQuestion)subject=royalQuestion[1];
+ const flags={royal:/\b(?:rey|reina|faraon|titulatura|cartuchos|dinastia|king|pharaoh)\b/.test(norm),architecture:/\b(?:plantas|planos|cortes|vistas|arquitectura|edificios|floor plans)\b/.test(norm),definition:/^(?:que es|que significa|what is|define)\b/.test(norm),compare:/\b(?:diferencia|comparacion|versus|vs|difference)\b/.test(norm),text:/\b(?:locus|pasaje|traduccion|manuscrito|folio|codice|texto original)\b/.test(norm)||/\d+\.\d+\.\d+/.test(query)};
  const alternatives=[query,subject,canonical].filter(Boolean);
  if(/\bpitatoria\b/.test(norm))alternatives.push("productoria","producto matemático");
- if(flags.compare)alternatives.push(...query.replace(/^(?:diferencia|comparaci[oó]n)\s+(?:entre|de)\s+/i,"").split(/\s+(?:y|versus|vs\.?)\s+/i).filter(x=>x.length>=4));
+ if(flags.compare)alternatives.push(...query.replace(/^(?:diferencia|comparaci[oó]n)\s+(?:entre|de)\s+/i,"").split(/\s+(?:y|versus|vs\.?)\s+/i).map(x=>x.replace(/\s+(?:diferencia|comparaci[oó]n)$/i,"").trim()).filter(x=>x.length>=4));
  return {flags,queries:[...new Map(alternatives.map(x=>[P.norm(x),x])).values()].slice(0,4)};
 }
 function selectEvidence(query,blocks,limit=5){
@@ -155,7 +159,7 @@ async function synthesize(query,evidence,root,id){
 }
 async function fastIdentity(q,lang,signal){
  const plan=intentPlan(q);
- const variants=plan.queries.slice(0,3);
+ const variants=plan.flags.compare?[q]:plan.queries.slice(0,3); // Never answer a comparison with the identity of just one term.
  // Exact titles and redirects first, in parallel. Full resolver remains fallback.
  const exact=await Promise.allSettled(variants.map(v=>window.VitruviaEntityResolver.resolveFast(v,lang)));
  if(signal.aborted)return null;
