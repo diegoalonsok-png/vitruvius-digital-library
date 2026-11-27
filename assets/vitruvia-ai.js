@@ -10,7 +10,7 @@ const stop=new Set("de del la el los las un una unos unas y en por para a al con
 const normalize=s=>String(s||"").normalize("NFD").replace(/\p{M}/gu,"").toLowerCase().replace(/[^\p{L}\p{N}\s]+/gu," ").replace(/\s+/g," ").trim();
 const terms=s=>normalize(s).split(" ").filter(t=>t.length>1&&!stop.has(t));
 const asString=s=>String(s||"").replace(/\s+/g," ").trim();
-let corpusPromise=null,modelPromise=null;
+let modelPromise=null;
 // Reduce bandwidth when the visitor explicitly enabled their browser's
 // data-saver preference. Unsupported browsers keep the existing behavior.
 function prefersReducedData(){
@@ -38,80 +38,43 @@ function sliceIntoChunks(raw,max=340,overlap=48){
  }
  return out;
 }
-async function prepareCorpus(){
- // Build from the verified full-text registry, not a handpicked list of six works.
- let sources=[],registryError="";
- try{
-  const registry=await requestJSON("./data/classics-corpus/search-registry.json");
-  if(!Array.isArray(registry.entries)||!registry.entries.length)throw Error("Registro vacío");
-  const entries=registry.entries.filter(e=>
-   (e.format==="json-passages"||e.format==="structured-bilingual") &&
-   typeof e.path==="string" &&
-   (/^data\/[a-z0-9/_-]+\.json$/.test(e.path) ||
-    /^https:\/\/libros\.vitruvius-digital-library\.org\/corpus\/[a-z0-9_-]+\.json$/.test(e.path)));
-  const byPath=new Map();
-  for(const e of entries)byPath.set(e.path,{
-   url:e.path,workId:e.workId,workTitle:e.title,author:e.author,
-   edition:e.edition||e.language,language:e.language,reader:e.reader,
-   source:e.sourceDescription||"Bibliotheca · transcripción registrada"
-  });
-  const manifest=await requestJSON("./data/ai-corpora.json");
-  for(const e of manifest.sources||[])if(!byPath.has(e.url))byPath.set(e.url,e);
-  sources=[...byPath.values()];
- }catch(error){
-  registryError=String(error.message||error);
-  const manifest=await requestJSON("./data/ai-corpora.json");
-  sources=manifest.sources||[];
- }
- if(!sources.length)throw Error("Catálogo de textos vacío");
- const works=[],documents=[],unavailable=[];
- // Five requests per batch prevent a simultaneous download of the whole library.
- for(let offset=0;offset<sources.length;offset+=5){
-  const batch=sources.slice(offset,offset+5);
-  const settled=await Promise.allSettled(batch.map(async source=>requestJSON(/^https:\/\//.test(source.url)?source.url:"./"+source.url)));
-  for(let i=0;i<batch.length;i++){
-   const source=batch[i],result=settled[i];
-   if(result.status!=="fulfilled"){unavailable.push(source.workId||source.url);continue}
-   const data=result.value;
-   if(!Array.isArray(data.passages)){unavailable.push(source.workId||source.url);continue}
-   const before=documents.length;
-   // Representative loci from each edition: bounded memory, not exhaustive passage coverage.
-   const maxSamples=48,passages=data.passages.length>maxSamples
-    ?Array.from({length:maxSamples},(_,j)=>data.passages[Math.floor(j*(data.passages.length-1)/(maxSamples-1))])
-    :data.passages;
-   for(const passage of passages){
-    if(!passage||typeof passage.locus!=="string"||!passage.locus.trim())continue;
-    const original=asString(passage.latin||passage.original||passage.greek||passage.text||"");
-    const translation=asString(passage.translation||"");
-    const chunks=sliceIntoChunks(original+" "+translation);
-    for(let chunk=0;chunk<chunks.length;chunk++){
-     const excerptText=chunks[chunk],tokens=terms(excerptText);
-     if(tokens.length<4)continue;
-     const tf=new Map();for(const term of tokens)tf.set(term,(tf.get(term)||0)+1);
-     documents.push({
-      id:(source.workId||"work")+":"+(source.edition||data.edition||data.version||source.language)+":"+passage.locus+":"+chunk,
-      workId:source.workId||"work",locus:passage.locus,
-      workTitle:source.workTitle||data.title||"Texto antiguo",
-      author:source.author||data.author||"Autor documentado",
-      edition:source.edition||data.version||"",language:source.language||data.language||"",
-      source:source.source||"Bibliotheca",url:urlFor(source,passage.locus,passage),
-      original,translation,excerptText,chunk,tf,length:tokens.length,lexical:0
-     });
-    }
+// Retrieve actual matching loci through the existing concordance index.
+ // Coverage is explicitly bounded, not a random 48-passage sample.
+ async function prepareCorpus(query){
+  const api=window.ClassicsCorpusSearch;
+  if(!api?.searchPassages)throw Error("Índice compartido de concordancias no disponible");
+  const queryTerms=[...new Set(terms(query))].filter(t=>t.length>=3).slice(0,5);
+  const queries=[...new Set([query,...queryTerms])].slice(0,6);
+  let diagnostics={};
+  const rows=await api.searchPassages(queries,{limit:240,maxPerEdition:16,strictBudget:24,structuredOnly:true,
+   onProgress:p=>notify("Fuentes candidatas: "+p.checked+"/"+p.total+" · pasajes encontrados: "+p.matched),
+   onComplete:d=>{diagnostics=d}});
+  const documents=[],seen=new Set(),works=new Set();
+  for(const row of rows){
+   if(row.ocr||!row.locus||!row.workId||!row.link||typeof row.originalText!=="string"||!row.originalText.trim())continue;
+   const text=row.originalText;
+   const key=[row.workId,row.language,row.edition,row.source,row.locus].join("|");
+   if(seen.has(key))continue;seen.add(key);
+   works.add([row.title,row.edition,row.language].filter(Boolean).join(" · "));
+   // Keep the exact source text. A translation is not an ancient original.
+   const chunks=sliceIntoChunks(text);
+   for(let i=0;i<chunks.length;i++){
+    const excerptText=chunks[i],tokens=terms(excerptText);
+    if(!tokens.length)continue;
+    const tf=new Map();for(const t of tokens)tf.set(t,(tf.get(t)||0)+1);
+    documents.push({id:key+":"+i,workId:row.workId,locus:row.locus,workTitle:row.title,author:row.author,
+     edition:row.edition||"",language:row.language||"",source:row.attribution||row.source,url:row.link,
+     original:["la","grc"].includes(row.language)?text:"",translation:["es","en","fr","de","it","pt"].includes(row.language)?text:"",
+     sourceText:text,excerptText,chunk:i,tf,length:tokens.length});
    }
-   if(documents.length===before)unavailable.push(source.workId||source.url);
-   else works.push((source.workTitle||data.title||source.workId)+" · "+(source.edition||data.version||source.language));
   }
-  notify("Corpus: "+Math.min(offset+5,sources.length)+"/"+sources.length+" fuentes revisadas");
+  const df=new Map();
+  for(const d of documents)for(const token of d.tf.keys())df.set(token,(df.get(token)||0)+1);
+  const avgLength=documents.reduce((sum,d)=>sum+d.length,0)/Math.max(1,documents.length);
+  return {documents,df,avgLength,works:[...works],unavailable:(diagnostics.failures||[]).map(x=>x.path||x.workId),
+   declaredSources:diagnostics.registered??null,loadedSources:diagnostics.loaded??null,targeted:diagnostics.targeted??null,
+   eligible:diagnostics.eligible??null,indexGate:diagnostics.indexGate??false,partial:true};
  }
- if(!documents.length)throw Error("No hay textos indexados compatibles");
- const df=new Map();
- for(const doc of documents)for(const word of doc.tf.keys())df.set(word,(df.get(word)||0)+1);
- const avgLength=documents.reduce((sum,doc)=>sum+doc.length,0)/documents.length;
- if(registryError)notify("Registro no disponible; se usa corpus de reserva: "+registryError,"fallback");
- return {documents,df,avgLength,works,unavailable,declaredSources:sources.length};
-}
-function corpus(){if(!corpusPromise)corpusPromise=prepareCorpus().catch(e=>{corpusPromise=null;throw e});return corpusPromise}
 function lexicalRanking(q,data){
  const queryTerms=[...new Set(terms(q))];const n=data.documents.length;
  const exact=normalize(q);
@@ -188,7 +151,7 @@ function renderRow(doc,query,score,semantic=false){
  const kind=semantic?(exact?"E5 + coincidencia textual · cotejo pendiente":"Reordenación E5 + BM25 · comprobar pertinencia"):"BM25 · coincidencia textual indexada";
  return {type:"passage",title:doc.workTitle+" · "+doc.locus,
   author:doc.author+" · "+doc.edition+" · "+doc.language,
-  excerpt:sourceExcerpt(doc,query),latin:doc.original,translation:doc.translation,
+  excerpt:sourceExcerpt(doc,query),latin:doc.language==="la"?doc.original:"",originalText:doc.sourceText||doc.original||doc.translation,originalLanguage:doc.language==="la"||doc.language==="grc"?doc.language:"",translation:doc.translation,translationLanguage:doc.translation?doc.language:"",
   locus:doc.locus,edition:doc.edition,workId:doc.workId,link:doc.url,source:doc.source,
   meta:kind+" · "+doc.source+" · locus "+doc.locus,
   rating:Math.round(score),aiScore:Math.round(score),aiSemantic:semantic,
@@ -230,17 +193,17 @@ async function vectors(pipe,texts){
 async function search(query,{method="neural"}={}){
  const q=asString(query);if(!q)return {rows:[],mode:"empty"};
  notify("Indexando los textos disponibles y calculando coincidencias exactas…");
- const data=await corpus(),ranked=lexicalRanking(q,data);
- const coverageNotice=data.unavailable.length?"Fuentes no cargadas: "+data.unavailable.join(", ")+". Cobertura parcial.":"";
+ const data=await prepareCorpus(q),ranked=lexicalRanking(q,data);
+ const coverageNotice="Selección parcial de pasajes: "+(data.loadedSources??"sin recuento")+"/"+(data.targeted??"sin recuento")+" ediciones consultadas; máximo 24. "+(data.indexGate?"Índice léxico utilizado. ":"Índice léxico no disponible; selección acotada. ")+(data.unavailable.length?"Fuentes no cargadas: "+data.unavailable.length+".":"");
  const candidates=diversity(ranked);
  const coverage=candidateCoverage(candidates);
- if(!candidates.length)return {rows:[],mode:"empty",stats:{chunks:data.documents.length,works:data.works}};
+ if(!candidates.length){notify("No se recuperaron pasajes en la selección acotada. Esto no prueba ausencia en el corpus. "+coverageNotice,"fallback");return {rows:[],mode:"empty",warning:coverageNotice,stats:{chunks:0,works:data.works,declaredSources:data.declaredSources,loadedSources:data.loadedSources,partial:true}};}
  const fallback=candidates.filter(x=>x.score>0).slice(0,35).map(x=>renderRow(x.doc,q,x.score*25));
  if(method==="bm25"||prefersReducedData()){
   const warning=(method==="bm25"?"Motor BM25 elegido: búsqueda textual indexada, sin descarga E5 ni similitud neuronal.":"Ahorro de datos activo: se omite la descarga del modelo E5; resultados BM25 sobre textos indexados, sin afirmar análisis neuronal.")+(coverageNotice?" "+coverageNotice:"");
   notify(warning,"fallback");
   return {rows:fallback,mode:"bm25-fallback",
-   stats:{chunks:data.documents.length,candidates:candidates.length,...coverage,works:data.works,declaredSources:data.declaredSources,loadedSources:data.works.length,unavailable:data.unavailable},warning,method:"bm25"};
+   stats:{chunks:data.documents.length,candidates:candidates.length,...coverage,works:data.works,declaredSources:data.declaredSources,loadedSources:data.loadedSources,unavailable:data.unavailable},warning,method:"bm25"};
  }
  try{
   const model=await getModel();
@@ -258,7 +221,7 @@ async function search(query,{method="neural"}={}){
    return {...entry,score:fused*16000};
   }).sort((a,b)=>b.score-a.score).slice(0,35);
   notify("IA semántica activa · "+data.documents.length+" fragmentos disponibles; "+candidates.length+" cotejados con embeddings."+(coverageNotice?" "+coverageNotice:""),coverageNotice?"fallback":"success");
-  return {rows:combined.map(x=>renderRow(x.doc,q,x.score,true)),mode:"neural",method:"e5",stats:{chunks:data.documents.length,candidates:candidates.length,...coverage,works:data.works,declaredSources:data.declaredSources,loadedSources:data.works.length,unavailable:data.unavailable},warning:coverageNotice||undefined};
+  return {rows:combined.map(x=>renderRow(x.doc,q,x.score,true)),mode:"neural",method:"e5",stats:{chunks:data.documents.length,candidates:candidates.length,...coverage,works:data.works,declaredSources:data.declaredSources,loadedSources:data.loadedSources,unavailable:data.unavailable},warning:coverageNotice||undefined};
  }catch(e){
   notify("No se pudo cargar el modelo ("+String(e.message||"error").slice(0,90)+"). Se muestran coincidencias BM25, sin afirmar IA semántica.","fallback");
   return {rows:fallback,mode:"bm25-fallback",stats:{chunks:data.documents.length,candidates:candidates.length,...coverage,works:data.works},warning:String(e.message||e)};
@@ -291,5 +254,5 @@ async function rank(query,docs,{limit=30,candidates=40}={}){
   notify("IA semántica activa en el visor.","success");return {mode:"neural",rows};
  }catch(e){return {mode:"bm25-fallback",rows:pool.slice(0,limit),warning:String(e.message||e)}}
 }
-window.VitruviaAI={search,rank,model:MODEL,version:"1.1-hybrid-local"};
+window.VitruviaAI={search,rank,model:MODEL,version:"1.2-indexed-candidates"};
 })();
