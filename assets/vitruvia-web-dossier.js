@@ -179,6 +179,34 @@ function datedEditionYear(item){
  const match=raw.match(/(?:^|[^\d])((?:1[4-9]|20)\d{2})(?!\d)/);
  return match?Number(match[1]):null;
 }
+function readableEditions(data,editionId){
+ return (data?.items||[]).filter(r=>r.match==='exact'&&r['ol-edition-id']===editionId&&['full access','lendable','checked out'].includes(r.status)&&
+  /^https?:\/\/(?:www\.)?(?:archive\.org|openlibrary\.org)\//i.test(r.itemURL||''));
+}
+function attachReadingAccess(body,editionKey,valid){
+ if(!body||!/^\/books\/OL\d+M$/.test(editionKey))return;
+ const id=editionKey.split('/').pop(),button=el('button','web-dossier-more',L('Comprobar lectura o préstamo','Check reading or loan','Vérifier lecture ou prêt'));button.type='button';body.append(button);
+ button.addEventListener('click',async()=>{
+  button.disabled=true;
+  const data=await cached('https://openlibrary.org/api/volumes/brief/olid/'+id+'.json');
+  if(!valid()||!body.isConnected)return;
+  const records=readableEditions(data,id);
+  button.remove();
+  if(!records.length){info(body,L('Acceso digital a esta edición no confirmado. Consultar su ficha.','Digital access to this edition not confirmed. Check its record.','Accès numérique non confirmé. Consulter la notice.'));return}
+  for(const r of records){
+   const label=r.status==='full access'?L('Leer ejemplar digital','Read digital copy','Lire l’exemplaire numérique'):r.status==='lendable'?L('Solicitar préstamo digital','Borrow digitally','Emprunter en ligne'):L('Consultar lista de espera','Check waitlist','Consulter la liste d’attente');
+   body.append(link(label,r.itemURL.replace(/^http:/,'https:')));
+  }
+ });
+}
+function bookAccessLinks(body,title,author,isbn){
+ const query=[isbn||title,author].filter(Boolean).join(' ');
+ const links=el('div','web-dossier-book-access');
+ links.append(link(L('Buscar en Google Books · vista previa o lectura','Find in Google Books · preview or read','Chercher dans Google Books · aperçu ou lecture'),'https://books.google.com/books?'+new URLSearchParams({q:query})));
+ links.append(link(L('Buscar edición en librerías','Find edition in bookstores','Chercher cette édition en librairie'),'https://www.google.com/search?'+new URLSearchParams({q:'site:buscalibre.com.ar '+query})));
+ links.append(link(L('Buscar ejemplar por ISBN o título · AbeBooks','Find copy by ISBN or title · AbeBooks','Chercher un exemplaire par ISBN ou titre · AbeBooks'),'https://www.abebooks.com/servlet/SearchResults?'+new URLSearchParams(isbn?{isbn}:{tn:title,an:author||''})));
+ body?.append(links);
+}
 function attachEditionList(bookCard,work,valid){
  if(!/^\/works\/OL\d+W$/.test(work.key||''))return;
  const body=bookCard.querySelector('.web-dossier-card-body');if(!body)return;
@@ -226,11 +254,10 @@ function attachEditionList(bookCard,work,valid){
      const cardNode=card(stack,String(item.title||work.title),url,'',cover,metadata,
       L('Consultar esta edición y su ficha ↗','View this edition record ↗','Consulter cette édition ↗'));
      cardNode.classList.add('cultural-book');
-     const bookshop='https://www.google.com/search?'+new URLSearchParams({
-      q:'site:buscalibre.com.ar '+[isbn||item.title||work.title,publisher].filter(Boolean).join(' ')
-     });
-     const shop=link(L('Buscar esta edición en librerías · verificar stock','Search bookstores for this edition · check stock','Chercher cette édition en librairie · vérifier la disponibilité'),bookshop);
-     shop.className='web-dossier-purchase-link';cardNode.querySelector('.web-dossier-card-body')?.append(shop);
+     const body=cardNode.querySelector('.web-dossier-card-body');
+     if(isbn)info(body,'ISBN: '+isbn);
+     bookAccessLinks(body,item.title||work.title,(work.author_name||[])[0],isbn);
+     attachReadingAccess(body,item.key,valid);
     }
     if(editions.length>35)info(content,L('Se muestran 35 de '+editions.length+' ediciones recuperadas; consulta Open Library para seguir.',
       'Showing 35 of '+editions.length+' retrieved editions; continue in Open Library.',
@@ -297,11 +324,9 @@ async function books(root,topic,valid){
      recordCard.classList.add('cultural-book');
      attachEditionList(recordCard,book,valid);
      // Retailer search is not a claim of an in-stock book or a verified edition.
-     const buyTerm=[isbn||book.title,(book.author_name||[])[0]].filter(Boolean).join(' ');
-     const buyLink='https://www.google.com/search?'+new URLSearchParams({q:'site:buscalibre.com.ar '+buyTerm});
-     const purchase=link(L('Buscar para comprar en librería · verificar edición y stock','Search bookstore availability · verify edition and stock','Chercher en librairie · vérifier édition et stock'),buyLink);
-     purchase.className='web-dossier-purchase-link';
-     recordCard.querySelector('.web-dossier-card-body')?.append(purchase);
+     const body=recordCard.querySelector('.web-dossier-card-body');
+     bookAccessLinks(body,book.title,(book.author_name||[])[0],isbn);
+     info(body,L('Abrir ediciones para comprobar lectura, préstamo y compra de un ejemplar concreto.','Expand editions to check reading, loan and purchase of a specific edition.','Ouvrir les éditions pour vérifier lecture, prêt et achat d’un exemplaire précis.'));
      bookCards.push({item:recordCard,record:book});
      if(shown<3)void enrichWorkSynopsis(recordCard,book,valid).catch(()=>{});
     }
@@ -709,5 +734,5 @@ function render(panel,query,rows,isCurrent){
   relatedImages(section,topic,records);
  })().catch(()=>{if(valid())status.textContent=L('No se pudo consultar el catálogo cultural.','Cultural catalogue unavailable.','Catalogue culturel indisponible.')});
 }
-window.VitruviaWebDossier={render,topicType,albumTracks};
+window.VitruviaWebDossier={render,topicType,albumTracks,readableEditions};
 })();
