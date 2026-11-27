@@ -6,6 +6,7 @@ const make=(tag,text,cls)=>{const x=document.createElement(tag);if(text!==undefi
 const anchor=(label,url)=>{const x=make("a",label);x.href=url;x.target="_blank";x.rel="noopener noreferrer";return x};
 const keys=[["horus","Nombre de Horus · serej"],["nebty","Dos Señoras (Nebty)"],["golden","Horus de Oro"],["prenomen","Nombre de trono · cartucho"],["nomen","Nombre personal · cartucho"]];
 const objects={
+ "seti-i":[[550169,"Fragmento de escarabeo con titulatura de Seti I · Lisht, 09.180.928"]],
  akhenaten:[[550057,"Cartucho de Ajenatón"],[550052,"Cartuchos de Atón, Ajenatón y Nefertiti"],[550050,"Relieve con cartucho de Ajenatón"]],
  tutankhamun:[[567851,"Molde del cartucho de Tutankamón"],[558596,"Objetos de papiro de su cámara de embalsamamiento (no son un texto)"]],
  "ramesses-ii":[[550673,"Placa oval con nombre de Ramsés II"]]
@@ -134,7 +135,7 @@ function gallery(box,ruler){
  const grid=make("div",null,"v-ed-grid");
  for(const [id,title] of recs){
   const card=make("div",null,"v-ed-photo");
-  card.append(anchor(title+" · abrir visor ampliado","egypt-document-viewer.html?king="+encodeURIComponent(ruler.id)+"&object="+id));
+  card.append(anchor(title+" · ficha museística","https://www.metmuseum.org/art/collection/search/"+id));
   card.append(make("small","The Metropolitan Museum of Art · ficha "+id));
   grid.append(card);
   if(!cached.has(id))cached.set(id,fetch("https://collectionapi.metmuseum.org/public/collection/v1/objects/"+id).then(r=>r.ok?r.json():null).catch(()=>null));
@@ -211,17 +212,54 @@ function royalBuildingCatalogue(box,ruler){
  }
  box.append(wrap);
 }
+// Individually identified name witnesses, not generic pictures of rulers.
+const NAME_WITNESSES={
+ hatshepsut:{
+  nomen:{id:549717,accession:"27.3.203",caption:"Escarabeo con nombre personal de Hatshepsut unido a Amón",date:"c. 1473–1458 a. C.",place:"Deir el-Bahari, depósito de fundación 7 (G)"},
+  prenomen:{id:559823,accession:"27.3.231",caption:"Escarabeo con cartucho de Maatkara",date:"c. 1473–1458 a. C.",place:"Deir el-Bahari, depósito de fundación 7 (G)"}
+ },
+ tutankhamun:{
+  prenomen:{id:567747,accession:"10.130.1556",caption:"Impresión de sello · cartucho de Nebjeperura a la izquierda",date:"c. 1328–1318 a. C. (cronología del museo)",place:"Egipto"}
+ }
+};
+function nameWitness(rulerId,key){return NAME_WITNESSES[rulerId]?.[key]||null}
+function showNameWitness(item,w){
+ const figure=make("figure",null,"v-ed-photo");
+ const href="https://www.metmuseum.org/art/collection/search/"+w.id;
+ figure.append(make("figcaption",w.caption+" · "+w.date+" · "+w.place+" · The Met, "+w.accession),
+  anchor("Ficha institucional y vistas de la inscripción",href));
+ const status=make("small","Consultando las fotografías del objeto…","v-ed-note");
+ figure.append(status);item.append(figure);
+ if(!cached.has(w.id))cached.set(w.id,fetch("https://collectionapi.metmuseum.org/public/collection/v1/objects/"+w.id).then(r=>r.ok?r.json():null).catch(()=>null));
+ cached.get(w.id).then(entry=>{
+  if(!figure.isConnected)return;
+  if(!entry?.isPublicDomain||entry.objectID!==w.id||entry.accessionNumber!==w.accession){
+   status.textContent="Imagen no disponible o sin correspondencia confirmada; consultar la ficha.";return;
+  }
+  const urls=[...new Set([entry.primaryImageSmall||entry.primaryImage,...(Array.isArray(entry.additionalImages)?entry.additionalImages:[])])].filter(Boolean).slice(0,3);
+  let shown=0;
+  for(const src of urls){
+   try{const u=new URL(src);if(u.protocol!=="https:"||!/(^|\\.)metmuseum\\.org$/.test(u.hostname))continue;
+    const link=anchor("",u.href),img=make("img");img.src=u.href;img.alt=w.caption+" · vista del objeto "+w.accession;
+    img.loading="lazy";img.decoding="async";img.onerror=()=>{link.remove();if(!figure.querySelector("img"))status.textContent="Vista previa no disponible; abrir ficha del museo."};link.append(img);figure.append(link);shown++;
+   }catch{}
+  }
+  status.textContent=shown?"Fotografías de dominio público · distintas vistas del objeto, no todas muestran el cartucho.":"Sin vista previa; abrir ficha del museo.";
+ });
+}
 function names(box,ruler){
  box.append(make("h4","Protocolo de los cinco nombres · edición disponible"));
  for(const [key,label] of keys){
   const rec=ruler.names?.[key],item=make("div",null,"v-ed-name");
   item.append(make("b",label));
+  const witness=nameWitness(ruler.id,key);
+  if(witness)showNameWitness(item,witness);
   if(rec?.glyphs){item.append(make("small","Grafía editorial normalizada · no facsímil","v-ed-note"));const g=make("span",rec.glyphs,"v-ed-glyph"+(["nomen","prenomen"].includes(key)?" cartouche":""));g.lang="egy";if(window.HieroRender?.render)g.replaceChildren(window.HieroRender.render(rec.glyphs,{size:"35px"}));item.append(g)}
   if(rec?.trans)item.append(make("p","Transliteración: "+rec.trans));
   if(rec?.gloss)item.append(make("p","Traducción española de trabajo / glosa editorial: "+rec.gloss));
   if(rec?.witness)item.append(make("p","Testimonio: "+rec.witness,"v-ed-note"));
   if(!rec)item.append(make("p","Este nombre no está acreditado en el repertorio local.","v-ed-note"));
-  else if(!rec.glyphs)item.append(make("p","Grafía jeroglífica pendiente de edición.","v-ed-note"));
+  else if(!rec.glyphs)item.append(make("p",witness?"Grafía no reconstruida: consultar el testimonio fotográfico.":"Grafía pendiente de edición; no hay fotografía de este nombre identificada en el repertorio.","v-ed-note"));
   if(rec?.glyphs||rec?.trans)item.append(anchor("Examinar con lupa / inversión / contraste","egypt-document-viewer.html?king="+encodeURIComponent(ruler.id)+"&name="+key));
   box.append(item);
  }
