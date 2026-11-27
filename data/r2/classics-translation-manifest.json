@@ -1,6 +1,6 @@
 {
  "schema": "vdl-classics-translation-manifest-v1",
- "generated": "2026-11-27T14:29:27.123736+00:00",
+ "generated": "2026-11-27T15:45:30.264180+00:00",
  "method": "Traducciones humanas TEI licenciadas y publicadas en R2 con SHA-256, índice literal por pasaje, sin alineación automática",
  "editions": [
   {
@@ -1759,6 +1759,98 @@
    ],
    "indexUrl": "https://libros.vitruvius-digital-library.org/corpus/indice/traducciones/cts-phi0474-phi030-en-48ae02b547e3022b.json",
    "indexSha256": "48ae02b547e3022b4541ed1544bc6df0fcdbe6563f714ff02e250bd56b0f70ea"
+  },
+  {
+   "workId": "cts-tlg0006-tlg004",
+   "author": "Eurípides",
+   "title": "Heracleidae",
+   "language": "en",
+   "filename": "cts-tlg0006-tlg004-en-c351ccce0c01a80b.json",
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0006-tlg004-en-c351ccce0c01a80b.json",
+   "sha256": "c351ccce0c01a80b2e99b4759df13c85c1b5d9e455fca9f70b788b2265902687",
+   "passages": 213,
+   "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0006/tlg004/tlg0006.tlg004.perseus-eng2.xml",
+   "sourceUrn": "urn:cts:greekLit:tlg0006.tlg004.perseus-eng2",
+   "sourceSha256": "79a9cefee8791de20f41e139e5ff191b737d1793b25b453b66b4a8aa1c0d97de",
+   "sourceArchived": "https://libros.vitruvius-digital-library.org/corpus/fuentes/79a9cefee8791de20f41e139e5ff191b737d1793b25b453b66b4a8aa1c0d97de.xml",
+   "translators": [
+    "Edward P. Coleridge"
+   ],
+   "publicationYear": 1906,
+   "license": [
+    "https://creativecommons.org/licenses/by-sa/4.0/"
+   ],
+   "indexUrl": "https://libros.vitruvius-digital-library.org/corpus/indice/traducciones/cts-tlg0006-tlg004-en-8edf65380dcb3623.json",
+   "indexSha256": "8edf65380dcb3623faf610ae154c5cdc85ea5ce687402d3bc72859170e8a320c"
+  },
+  {
+   "workId": "cts-tlg0006-tlg006",
+   "author": "Eurípides",
+   "title": "Andromache",
+   "language": "en",
+   "filename": "cts-tlg0006-tlg006-en-278abbc3cfc5f5b9.json",
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0006-tlg006-en-278abbc3cfc5f5b9.json",
+   "sha256": "278abbc3cfc5f5b9a33d021ed750df9d727a003e1db2a46fc362b6687f9af7b4",
+   "passages": 213,
+   "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0006/tlg006/tlg0006.tlg006.perseus-eng2.xml",
+   "sourceUrn": "urn:cts:greekLit:tlg0006.tlg006.perseus-eng2",
+   "sourceSha256": "8897260f344e5e5d04451a76e9d0c6eb4bc759eb62bf493a29c2d2eb7d507f4c",
+   "sourceArchived": "https://libros.vitruvius-digital-library.org/corpus/fuentes/8897260f344e5e5d04451a76e9d0c6eb4bc759eb62bf493a29c2d2eb7d507f4c.xml",
+   "translators": [
+    "Edward P. Coleridge"
+   ],
+   "publicationYear": 1891,
+   "license": [
+    "https://creativecommons.org/licenses/by-sa/4.0/"
+   ],
+   "indexUrl": "https://libros.vitruvius-digital-library.org/corpus/indice/traducciones/cts-tlg0006-tlg006-en-d5c00c50c71c5ccd.json",
+   "indexSha256": "d5c00c50c71c5ccdb2446c8a8d0fda3c8ea26ade7c9bc1abc2eeeab53cbac1c6"
+  },
+  {
+   "workId": "cts-tlg0006-tlg008",
+   "author": "Eurípides",
+   "title": "Suppliants",
+   "language": "en",
+   "filename": "cts-tlg0006-tlg008-en-840bd884e45c0680.json",
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0006-tlg008-en-840bd884e45c0680.json",
+   "sha256": "840bd884e45c068009b6c2d066efae2b6d26123ec345b1db924008e5002129b8",
+   "passages": 272,
+   "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0006/tlg008/tlg0006.tlg008.perseus-eng2.xml",
+   "sourceUrn": "urn:cts:greekLit:tlg0006.tlg008.perseus-eng2",
+   "sourceSha256": "257c98eda2d924349d5ddcfe90c76ed8783800d148a1885be11e80fdc948d842",
+   "sourceArchived": "https://libros.vitruvius-digital-library.org/corpus/fuentes/257c98eda2d924349d5ddcfe90c76ed8783800d148a1885be11e80fdc948d842.xml",
+   "translators": [
+    "E. P. Coleridge"
+   ],
+   "publicationYear": 1906,
+   "license": [
+    "https://creativecommons.org/licenses/by-sa/4.0/"
+   ],
+   "indexUrl": "https://libros.vitruvius-digital-library.org/corpus/indice/traducciones/cts-tlg0006-tlg008-en-25d3204a2272212f.json",
+   "indexSha256": "25d3204a2272212f9d0bf4481f0bdf52285285a4ea88772f34b3300b9a2e961d"
+  },
+  {
+   "workId": "cts-tlg0006-tlg009",
+   "author": "Eurípides",
+   "title": "Heracles",
+   "language": "en",
+   "filename": "cts-tlg0006-tlg009-en-882f32bbe0038c77.json",
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0006-tlg009-en-882f32bbe0038c77.json",
+   "sha256": "882f32bbe0038c778a482aa40501a01fd8553299b48b08913f57d2a47f9cdfb4",
+   "passages": 303,
+   "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0006/tlg009/tlg0006.tlg009.perseus-eng2.xml",
+   "sourceUrn": "urn:cts:greekLit:tlg0006.tlg009.perseus-eng2",
+   "sourceSha256": "8a514dfb57d78cb0ac5d8fbc19077b4f11c7656722d9bff5213392542bef8726",
+   "sourceArchived": "https://libros.vitruvius-digital-library.org/corpus/fuentes/8a514dfb57d78cb0ac5d8fbc19077b4f11c7656722d9bff5213392542bef8726.xml",
+   "translators": [
+    "Edward P. Coleridge"
+   ],
+   "publicationYear": 1891,
+   "license": [
+    "https://creativecommons.org/licenses/by-sa/4.0/"
+   ],
+   "indexUrl": "https://libros.vitruvius-digital-library.org/corpus/indice/traducciones/cts-tlg0006-tlg009-en-c184bf29c4ab404d.json",
+   "indexSha256": "c184bf29c4ab404d4290e08954c767b33265b7733cf6e4472aea132a7a75ec32"
   }
  ],
  "lastDeferred": [
@@ -1900,6 +1992,138 @@
   },
   {
    "workId": "cts-phi0430-phi001",
+   "reason": "No hay traducción TEI descargable en Perseus"
+  },
+  {
+   "workId": "cts-phi0474-phi036",
+   "reason": "No hay traducción TEI descargable en Perseus"
+  },
+  {
+   "workId": "cts-phi0474-phi038",
+   "reason": "No hay traducción TEI descargable en Perseus"
+  },
+  {
+   "workId": "cts-phi0474-phi040",
+   "reason": "No hay traducción TEI descargable en Perseus"
+  },
+  {
+   "workId": "cts-phi0474-phi041",
+   "reason": "No hay traducción TEI descargable en Perseus"
+  },
+  {
+   "workId": "cts-phi0474-phi042",
+   "reason": "No hay traducción TEI descargable en Perseus"
+  },
+  {
+   "workId": "cts-phi0474-phi045",
+   "reason": "No hay traducción TEI descargable en Perseus"
+  },
+  {
+   "workId": "cts-phi0474-phi046",
+   "reason": "No hay traducción TEI descargable en Perseus"
+  },
+  {
+   "workId": "cts-phi0474-phi047",
+   "reason": "No hay traducción TEI descargable en Perseus"
+  },
+  {
+   "workId": "cts-phi0474-phi054",
+   "reason": "No hay traducción TEI descargable en Perseus"
+  },
+  {
+   "workId": "cts-phi0474-phi056",
+   "reason": "Sin traducción publicable: phi0474.phi056.perseus-eng1.xml: No está marcado como traducción humana TEI"
+  },
+  {
+   "workId": "cts-phi0474-phi057",
+   "reason": "Sin traducción publicable: phi0474.phi057.perseus-eng1.xml: No está marcado como traducción humana TEI"
+  },
+  {
+   "workId": "cts-phi0474-phi058",
+   "reason": "Sin traducción publicable: phi0474.phi058.perseus-eng1.xml: No está marcado como traducción humana TEI"
+  },
+  {
+   "workId": "cts-phi0474-phi059",
+   "reason": "Sin traducción publicable: phi0474.phi059.perseus-eng1.xml: No está marcado como traducción humana TEI"
+  },
+  {
+   "workId": "cts-phi0474-phi072",
+   "reason": "No hay traducción TEI descargable en Perseus"
+  },
+  {
+   "workId": "cts-phi0692-phi001",
+   "reason": "No hay traducción TEI descargable en Perseus"
+  },
+  {
+   "workId": "cts-phi0692-phi002",
+   "reason": "No hay traducción TEI descargable en Perseus"
+  },
+  {
+   "workId": "cts-phi0692-phi003",
+   "reason": "No hay traducción TEI descargable en Perseus"
+  },
+  {
+   "workId": "cts-phi0692-phi005",
+   "reason": "No hay traducción TEI descargable en Perseus"
+  },
+  {
+   "workId": "cts-phi0692-phi006",
+   "reason": "No hay traducción TEI descargable en Perseus"
+  },
+  {
+   "workId": "cts-phi0692-phi007",
+   "reason": "No hay traducción TEI descargable en Perseus"
+  },
+  {
+   "workId": "cts-phi0692-phi008",
+   "reason": "No hay traducción TEI descargable en Perseus"
+  },
+  {
+   "workId": "cts-phi0692-phi009",
+   "reason": "No hay traducción TEI descargable en Perseus"
+  },
+  {
+   "workId": "cts-phi0692-phi011",
+   "reason": "No hay traducción TEI descargable en Perseus"
+  },
+  {
+   "workId": "cts-phi0692-phi012",
+   "reason": "No hay traducción TEI descargable en Perseus"
+  },
+  {
+   "workId": "cts-phi0692-phi013",
+   "reason": "No hay traducción TEI descargable en Perseus"
+  },
+  {
+   "workId": "cts-stoa0033a-tlg028",
+   "reason": "No hay traducción TEI descargable en Perseus"
+  },
+  {
+   "workId": "cts-stoa0033a-tlg043",
+   "reason": "No hay traducción TEI descargable en Perseus"
+  },
+  {
+   "workId": "cts-stoa0275-stoa023",
+   "reason": "No hay traducción TEI descargable en Perseus"
+  },
+  {
+   "workId": "cts-stoa0275-stoa024",
+   "reason": "No hay traducción TEI descargable en Perseus"
+  },
+  {
+   "workId": "cts-stoa0275-stoa025",
+   "reason": "No hay traducción TEI descargable en Perseus"
+  },
+  {
+   "workId": "cts-stoa0275-stoa029",
+   "reason": "No hay traducción TEI descargable en Perseus"
+  },
+  {
+   "workId": "cts-stoa0275-stoa030",
+   "reason": "No hay traducción TEI descargable en Perseus"
+  },
+  {
+   "workId": "cts-stoa0276-stoa002",
    "reason": "No hay traducción TEI descargable en Perseus"
   }
  ],
