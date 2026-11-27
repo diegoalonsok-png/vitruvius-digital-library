@@ -138,6 +138,9 @@ const expansionIndex=existsSync(expansionIndexFile)?read(expansionIndexFile):nul
 const remoteManifestIds=new Set(remote.map(e=>e.workId+"|"+e.language));
 const expansionIds=new Set();
 const exactRemoteUrls=new Set(remote.map(e=>remoteDocument.base+e.archivo));
+const legacyByUrl=new Map(remote.map(e=>[remoteDocument.base+e.archivo,e]));
+const seenExpansionUrls=new Set();
+let sharedManifestSources=0;
 const translationFile="data/r2/classics-translation-manifest.json";
 const translations=existsSync(translationFile)?read(translationFile).editions||[]:[];
 const exactTranslationUrls=new Set();
@@ -149,7 +152,13 @@ for(const e of translations){
 }
 for(const edition of expansionEditions){
  const id=edition.workId+"|"+edition.language;
- if(exactRemoteUrls.has(edition.url))add("error","duplicate_expansion_edition_url",edition.workId,edition.url);
+ if(seenExpansionUrls.has(edition.url))add("error","duplicate_expansion_edition_url",edition.workId,edition.url);
+ seenExpansionUrls.add(edition.url);
+ const legacy=legacyByUrl.get(edition.url);
+ if(legacy){
+  if(legacy.workId!==edition.workId||legacy.language!==edition.language||legacy.sha256!==edition.sha256)add("error","cross_manifest_identity_conflict",edition.workId,edition.url);
+  else sharedManifestSources++;
+ }
  exactRemoteUrls.add(edition.url);
  expansionIds.add(id);
  const matches=registry.filter(e=>e.workId===edition.workId&&e.language===edition.language);
@@ -179,7 +188,7 @@ const report={
    registeredTextVersions:registry.length,registeredDistinctWorks:cataloguedIndexedIds.size,
    verifiedLocalSourceWorkIds:local.size,declaredRemoteSourceWorkIds:remoteDeclared.size,
    r2TextManifestVersions:new Set([...remoteManifestIds,...expansionIds]).size,
-   r2ExpansionIndexedEditions:expansionEditions.length,r2ExpansionIndexedPassages:indexedExpansionPassages,r2RegisteredTranslationEditions:translations.length,
+   r2ExpansionIndexedEditions:expansionEditions.length,r2ExpansionIndexedPassages:indexedExpansionPassages,r2RegisteredTranslationEditions:translations.length,r2SourcesSharedAcrossManifests:sharedManifestSources,
    r2InvertedIndexDeclaredEditions:manifest.obras,
    unindexedCatalogueWorks:unindexed.length,unindexedAdditionalR2Works:backlogDocument.summary.additionalR2WorksWithoutRegisteredText,unindexedAllDeclaredWorks:backlog.length,unindexedWithDeclaredR2Facsimile:backlogDocument.summary.withDeclaredR2Facsimile,unindexedAncientWorks:backlogDocument.summary.ancientWorksWithoutRegisteredText,unindexedEditorialManifestations:backlogDocument.summary.modernEditionManifestationsWithoutOwnRegistry,worksMissingRegisteredOriginal:missingOriginal.length,
    greekTitleNeedsIndividualReview:greekTitleReview.length,r2UnlinkedEditions:r2Unlinked.length,

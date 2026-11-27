@@ -23,6 +23,9 @@ const manifiestoR2=fs.existsSync(path.join(root,"data/r2/corpus-manifest.json"))
 if(fs.existsSync(path.join(root,"data/r2/classics-expansion-manifest.json")))
  for(const row of JSON.parse(read("data/r2/classics-expansion-manifest.json")).editions||[])
   manifiestoR2.push({archivo:row.filename,workId:row.workId,language:row.language,pasajes:row.passages});
+if(fs.existsSync(path.join(root,"data/r2/classics-translation-manifest.json")))
+ for(const row of JSON.parse(read("data/r2/classics-translation-manifest.json")).editions||[])
+  manifiestoR2.push({archivo:row.filename,workId:row.workId,language:row.language,pasajes:row.passages});
 const seen=new Set(),seenWorks=new Set(),errors=[];
 const fileCache=new Map();
 for(const e of registry.entries){
