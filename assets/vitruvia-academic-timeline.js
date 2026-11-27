@@ -35,7 +35,7 @@
   works:[L("Obras y creaciones","Works and creations","Œuvres et créations"),"▤"],
   documents:[L("Documentos y ediciones","Documents and editions","Documents et éditions"),"▥"]
  };
- const state={query:"",token:0,authority:null,works:[],albums:[],rows:[],zoom:1.5,selected:"",rowSignature:"",pendingWorks:null,tagColor:null,phase:"idle",history:[],historyIncomplete:false,personDates:null,family:[],scrollLeft:0};
+ const state={query:"",token:0,authority:null,works:[],albums:[],rows:[],zoom:1,selected:"",rowSignature:"",pendingWorks:null,tagColor:null,phase:"idle",history:[],historyIncomplete:false,personDates:null,family:[],scrollLeft:0};
  // Greedy tracks keep same-day and adjacent milestones from touching.
  // Popup centres are independently clamped, so no tooltip can protrude
  // beyond the chronology track even at narrow mobile widths.
@@ -94,6 +94,21 @@
  // An abstract lexical concept is NOT a historical person/album/work.
  // Search result title matches cannot establish a chronology of the concept.
  // Provide a sourced concept-specific dataset before enabling those milestones.
+ // Source-backed royal dossier; unrelated resolved subjects never inherit it.
+ const tutName=s=>/^(?:(?:el|the|le) )?(?:(?:rey|king|faraon|pharaoh|pharaon) )?(?:tutankamon|tutankhamon|tutankhamun|tutankhamen|toutankhamon|tutankhaten|tutankhaton|tutanjamon)$/.test(normalize(s));
+ const isTutankhamun=()=>state.authority?[state.authority.canonical,state.authority.catalogName].some(tutName):tutName(state.query)||/^(?:rey|king|faraon|pharaoh) tut$/.test(normalize(state.query));
+ const tutBounds={birth:-1340,death:-1323};
+ function tutEvents(){
+  const ucl="https://www.ucl.ac.uk/museums-static/digitalegypt/chronology/tutankhamun.html",source="UCL · Digital Egypt for Universities";
+  const ox="https://www.griffith.ox.ac.uk/discoveringTut/journals-and-diaries/season-1/journal.html";
+  return [
+   {year:-1340,approx:true,lane:"life",title:L("Nacimiento estimado","Estimated birth","Naissance estimée"),detail:L("Estimación c. 1340–1339 a. C. a partir de la edad de 16–17 años al morir hacia 1323 a. C. según UCL; no es una fecha de nacimiento atestiguada.","Estimated from age 16–17 at death c. 1323 BCE; no attested birth date.","Estimation d’après l’âge de 16–17 ans au décès vers 1323 ; naissance non attestée."),url:ucl,source},
+   {year:-1333,end:-1323,approx:true,lane:"life",title:L("Acceso al trono y reinado","Accession and reign","Avènement et règne"),detail:L("Cronología aproximada de UCL (1333–1323 a. C.); otras cronologías difieren. Restauración de los cultos tras Amarna, sin asignar un año absoluto no documentado.","Approximate UCL chronology; other chronologies differ. Restoration of cults after Amarna without assigning an undocumented absolute year.","Chronologie approximative UCL ; restauration des cultes après Amarna, sans année absolue non attestée."),url:ucl,source},
+   {year:-1323,approx:true,lane:"life",title:L("Muerte · sepultura KV62","Death · burial KV62","Décès · sépulture KV62"),detail:L("Final del reinado según UCL; causa de muerte no establecida en esa fuente.","End of reign according to UCL; cause of death not established there.","Fin du règne selon UCL ; cause du décès non établie."),url:ucl,source},
+   {year:1922,lane:"documents",title:L("Descubrimiento de la tumba KV62","Discovery of tomb KV62","Découverte de la tombe KV62"),detail:L("Hallazgo de la escalera el 4 de noviembre; inspección de la antecámara el 26 de noviembre.","Staircase found 4 November; antechamber inspected 26 November.","Escalier découvert le 4 novembre ; antichambre inspectée le 26 novembre."),url:ox,source:"Griffith Institute · Carter, TAA i.2.1.25–53"},
+   {year:1923,lane:"documents",title:L("Apertura de la cámara funeraria","Opening of burial chamber","Ouverture de la chambre funéraire"),detail:L("Testimonios de la apertura del 16 de febrero de 1923.","Eyewitness accounts of the opening on 16 February 1923.","Témoignages de l’ouverture du 16 février 1923."),url:"https://www.griffith.ox.ac.uk/discoveringTut/alt-accounts/",source:"Griffith Institute · eyewitness accounts"}
+  ];
+ }
  const abstractTerms=new Set([
   "logos","λογος","logoi","λογοι",
   "ethos","ηθος","mythos","μυθος",
@@ -117,7 +132,7 @@
   "Q41176","Q839954","Q23413","Q6256","Q43229","Q4830453","Q215380"
  ]);
  const hasHistoricalSubject=()=>{
-  if(isAkhenaten())return true;
+  if(isAkhenaten()||isTutankhamun())return true;
   if(isAbstractTerm())return false;
   const a=state.authority;
   return Boolean(a&&Array.isArray(a.instanceOf)&&a.instanceOf.some(id=>chronologicalTypes.has(id)));
@@ -258,7 +273,7 @@
 
  function collect(){
   if(!hasHistoricalSubject())return []; // Never generate incidental-result timelines for generic words.
-  let ev=isAkhenaten()?akhenatenEvents():[],a=state.authority;
+  let ev=isAkhenaten()?akhenatenEvents():isTutankhamun()?tutEvents():[],a=state.authority;
   ev.push(...state.history);
   // All Wikidata authority properties keep their distinct meanings.
   if(a&&/^Q\d+$/.test(a.wikidataId||"")){
@@ -276,7 +291,7 @@
    ];
    const url="https://www.wikidata.org/wiki/"+a.wikidataId;
    for(const [field,lane,title,p] of metadata){
-    if(isAkhenaten()&&["birthYear","deathYear"].includes(field))continue;
+    if((isAkhenaten()||isTutankhamun())&&["birthYear","deathYear"].includes(field))continue;
     const checked=state.personDates&&["birthYear","deathYear"].includes(field);
     const date=checked?state.personDates[field]:null;
     const y=checked?date?.year:year(a[field]);if(y==null)continue;
@@ -503,6 +518,7 @@
     "Escala biográfica exclusivamente hasta la muerte aproximada. El nacimiento es estimado y los años absolutos del reinado pueden variar según la cronología egiptológica. Libros y estudios modernos no son hitos biográficos.",
     "Biographical scale stops at approximate death. Birth and absolute reign dates are uncertain; modern studies are excluded.",
     "L'échelle biographique s'arrête au décès approximatif. Dates discutées; les études modernes sont exclues.");
+  if(isTutankhamun())method.textContent=L("Vida estimada y reinado según UCL (c. 1333–1323 a. C.). La excavación moderna se consulta por separado; otras cronologías difieren.","Estimated life and reign according to UCL (c. 1333–1323 BCE). Modern excavation is listed separately; other chronologies differ.","Vie estimée et règne selon UCL ; fouilles modernes séparées ; autres chronologies possibles.");
   root.append(method);
   if(state.historyIncomplete)root.append(el("p","vat-method",L("Cronología parcial: no se pudieron consultar todas las fuentes de acontecimientos.","Partial chronology: not all event sources could be retrieved.","Chronologie partielle : certaines sources sont indisponibles.")));
   if(!events.length){
@@ -516,9 +532,9 @@
   // In biographies the documentary axis ends at death. Posthumous
   // editions remain reachable, but cannot distort a lifetime into millennia.
   const bound=key=>state.personDates?(state.personDates[key]?.year??null):year(state.authority?.[key]);
-  const born=isAkhenaten()?akhenatenBounds.birth:bound("birthYear");
-  const died=isAkhenaten()?akhenatenBounds.death:bound("deathYear");
-  const isPerson=isAkhenaten()||state.authority?.instanceOf?.includes("Q5");
+  const born=isAkhenaten()?akhenatenBounds.birth:isTutankhamun()?tutBounds.birth:bound("birthYear");
+  const died=isAkhenaten()?akhenatenBounds.death:isTutankhamun()?tutBounds.death:bound("deathYear");
+  const isPerson=isAkhenaten()||isTutankhamun()||state.authority?.instanceOf?.includes("Q5");
   const scope=splitChronology(events,isPerson,born,died);
   const visibleEvents=scope.visible,outsideEvents=scope.outside;
   if(!visibleEvents.length){root.hidden=true;root.replaceChildren();return}
@@ -530,7 +546,7 @@
   const outer=Number(root.clientWidth)||Number(root.getBoundingClientRect?.().width)||760;
   const available=Math.max(1,Math.floor(outer)-(parseFloat(cs.paddingLeft)||0)-(parseFloat(cs.paddingRight)||0)-3);
   const labelWidth=Math.min(Math.round(available*.33),available<420?88:available<740?124:170);
-  const contentWidth=Math.round(available*Math.max(1.25,state.zoom));
+  const contentWidth=Math.round(available*Math.max(1,state.zoom));
   const mapWidth=Math.max(1,contentWidth-labelWidth-2);
   const cardWidth=Math.min(Math.round(134*Math.min(state.zoom,1.35)),Math.max(1,mapWidth-12));
   root.style.setProperty("--vat-label-width",labelWidth+"px");
@@ -606,10 +622,10 @@
      const dur=el("span","vat-duration","– "+showYear(e.end));popup.append(dur);
     }
     button.append(popup);
-    button.addEventListener("mouseenter",()=>showHover(e,button));
-    button.addEventListener("focus",()=>showHover(e,button));
-    button.addEventListener("mouseleave",()=>{if(activeHover===button)clearHover()});
-    button.addEventListener("blur",()=>{if(activeHover===button)clearHover()});
+    button.addEventListener("mouseenter",()=>{if(state.zoom===1)previewEvent(e);showHover(e,button)});
+    button.addEventListener("focus",()=>{if(state.zoom===1)previewEvent(e);showHover(e,button)});
+    button.addEventListener("mouseleave",()=>{preview.hidden=true;if(activeHover===button)clearHover()});
+    button.addEventListener("blur",()=>{preview.hidden=true;if(activeHover===button)clearHover()});
     button.addEventListener("click",()=>{
      highlightButton(button,detail,e);
      detail.scrollIntoView?.({behavior:"smooth",block:"nearest"});
@@ -638,13 +654,23 @@
   const maxScroll=()=>Math.max(0,viewport.scrollWidth-viewport.clientWidth);
   const sync=()=>{
    const max=maxScroll(),fraction=max?viewport.scrollLeft/max:0;
-   slider.value=String(Math.round(fraction*1000));slider.disabled=max===0;
+   slider.value=String(Math.round(fraction*1000));
    const leftYear=ordinalYear(yearOrdinal(low)+Math.round(range*Math.max(0,viewport.scrollLeft-labelWidth)/mapWidth));
    const rightYear=ordinalYear(yearOrdinal(low)+Math.round(range*Math.min(1,Math.max(0,viewport.scrollLeft+viewport.clientWidth-labelWidth)/mapWidth)));
    position.textContent=showYear(Math.min(high,leftYear))+" — "+showYear(Math.min(high,rightYear));
    slider.setAttribute("aria-valuetext",position.textContent);
   };
-  slider.addEventListener("input",()=>{viewport.scrollLeft=maxScroll()*Number(slider.value)/1000;sync()});
+  slider.addEventListener("input",()=>{
+   const f=Number(slider.value)/1000;
+   if(!maxScroll()){
+    state.zoom=2;draw();
+    const v=root.querySelector(".vat-viewport");
+    if(v)v.scrollLeft=Math.max(0,v.scrollWidth-v.clientWidth)*f;
+    root.querySelector(".vat-scroll-navigation input")?.focus({preventScroll:true});
+    return;
+   }
+   viewport.scrollLeft=maxScroll()*f;sync();
+  });
   viewport.addEventListener("scroll",sync,{passive:true});
   axis.addEventListener("pointermove",e=>{
    if(e.pointerType==="touch")return;
@@ -688,7 +714,7 @@
   next.title=L("Hito siguiente","Next milestone","Jalon suivant");
   zoomOut.title=L("Reducir escala cronológica","Reduce timeline scale","Réduire l’échelle chronologique");
   zoomIn.title=L("Ampliar escala cronológica","Enlarge timeline scale","Agrandir l’échelle chronologique");
-  zoomOut.onclick=()=>{state.zoom=Math.max(1.25,Math.round((state.zoom-.25)*100)/100);draw()};
+  zoomOut.onclick=()=>{state.zoom=Math.max(1,Math.round((state.zoom-.25)*100)/100);draw()};
   zoomIn.onclick=()=>{state.zoom=Math.min(3,Math.round((state.zoom+.25)*100)/100);draw()};
   prev.onclick=()=>navigate(-1);
   next.onclick=()=>navigate(1);
@@ -710,7 +736,7 @@
   window.addEventListener("resize",()=>{if(!root.hidden&&state.query)draw()},{passive:true});
  }
  function reset(q){
-  state.token++;state.query=String(q||"").trim().slice(0,160);state.zoom=1.5;state.scrollLeft=0;root.replaceChildren();
+  state.token++;state.query=String(q||"").trim().slice(0,160);state.zoom=1;state.scrollLeft=0;root.replaceChildren();
   state.authority=null;state.works=[];state.albums=[];state.rows=[];state.selected="";state.rowSignature="";state.pendingWorks=null;state.history=[];state.historyIncomplete=false;state.personDates=null;state.family=[];state.phase=state.query?"identity":"idle";
   place();draw();
   if(!state.query)return;
@@ -790,5 +816,5 @@
  }).observe(document.documentElement,{attributes:true,attributeFilter:["lang"]});
  const snapshot=window.VitruviaSearchSnapshot;
  if(snapshot?.query)reset(snapshot.query);
- window.VitruviaAcademicTimeline={collect,layoutMarkers,version:"2.6-scroll-and-hover"};
+ window.VitruviaAcademicTimeline={collect,layoutMarkers,version:"2.7-fit-scroll-tut-dossier"};
 })();
