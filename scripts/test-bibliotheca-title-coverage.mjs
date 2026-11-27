@@ -45,3 +45,27 @@ console.log(JSON.stringify({
  originalTextsStillPending:roadmap.counts.effectiveOriginalsMissing,
  note:'Metadata search coverage, not full-text coverage or proof of runtime behavior.'
 },null,2));
+
+// Cooperative author/title search regression: exercise production search code
+// with the real roadmap metadata, not a downloaded full-text corpus.
+const section=(a,b)=>{const start=js.indexOf(a),end=js.indexOf(b,start);assert(start>=0&&end>start);return js.slice(start,end)};
+const code=section("const normal=","const ancientGenres=")+section("const authorNameVariants=","// Cache the normalised fields")+
+ "const aliasAuthority={};let loadedAliases={};"+
+ section("// Cache the normalised fields","function originalTitle(")+
+ section("function spanishAuthorName(","function spanishWorkTitle(")+
+ section("function singleLetter(","function readingEditions(")+
+ section("// Cooperative search:","function render(){");
+let clock=0,yields=0;
+const engine=new Function("performance","setTimeout","items",code+";let model={items};return {plainMatches,cooperativeFilter};")(
+ {now:()=>clock++},cb=>{yields++;cb()},roadmap.items.map(w=>({...w,forms:[w.title,w.author],originalAliases:[]})));
+for(const [query,expected] of [["Platón","plato"],["Πλάτων","plato"],["Aristóteles","aristotle"],["Julio César","caesar"],["Vitruvio","vitruvius"],["De architectura","vitruvius"],["Homero","homer"],["Ciceron","cicero"]]){
+ const rows=await engine.plainMatches(query,"",()=>true);
+ assert(rows?.some(w=>w.id.startsWith(expected)),"Missing expected author/title: "+query);
+}
+const initial=await engine.plainMatches("A","a",()=>true);
+assert(initial.length>0);
+const matches=await engine.cooperativeFilter(Array.from({length:3000},(_,i)=>i),x=>x%3===0,()=>true,2);
+assert.equal(matches.length,1000);
+assert.equal(await engine.cooperativeFilter([1,2,3],()=>true,()=>false,2),null);
+assert(yields>0,"Long search must yield to the input loop");
+console.log("PASS: cooperative author/title lookups, Greek aliases, cancellation, alphabetical browsing.");
