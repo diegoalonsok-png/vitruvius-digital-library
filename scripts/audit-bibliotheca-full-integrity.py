@@ -30,7 +30,7 @@ EXPECTED_BOOKS={
  "caesar-gallico":8,"caesar-civili":3,
  "herodotus-historiae":9,"thucydides-war":8,
 }
-MODERN_VITRUVIUS={"vitruvio-v514-pdf","vitruvio-v554-pdf","theory-v297-pdf"}
+MODERN_VITRUVIUS={"vitruvio-v514-pdf","vitruvio-v554-pdf","theory-v297-pdf","krohn-1912-pdf"}
 HIGH_RISK_UNCATALOGUED={
  "historia-augusta":"Identificador fuente S3 no acredita la Historia Augusta",
  "juliano-obras":"Identificador fuente S3 no acredita obras de Juliano",
@@ -66,7 +66,7 @@ def excerpt_matches(title,text):
  return {"matched":sorted(w for w in words if w in sample)[:16],
          "tokens":sorted(words)[:16]}
 def load_catalogues():
- main=read("data/bibliotheca-graeca-latina-I-bce-I-ce.json")["works"]
+ main=read("data/bibliotheca-graeca-latina-I-bce-I-ce.json")["works"] + read("data/bibliotheca-expansion-publicada-2026-11-16.json")["works"]
  editions=read("data/r2/catalogo-clasicos-r2.json")["items"]
  links=read("data/r2/vinculos-repertorio.json")
  registry=read("data/classics-corpus/search-registry.json")["entries"]
@@ -142,13 +142,13 @@ def collect_inventory():
     "candidateWork":x.get("candidateWork"),"registeredInCatalogue":False,
     "status":"quarantine_pending_pdf_title_and_contents_review","warning":note})
  stats={"mainCatalogueWorks":len(main),"additionalR2WorkRecords":len(extra),"declaredUniqueWorks":len(results),
-  "shortfallAgainst300UnverifiedTarget":max(0,300-len(results)),"r2EditionRecords":len(editions),
+  "r2EditionRecords":len(editions),
   "registeredTextVersions":len(registry),"registeredTextWorkIds":sum(bool(v) for v in reg_by_work.values()),
   "externalIndexedOriginalWorkIds":sum(bool(v) for v in ext_by_work.values()),"quarantinedR2UncataloguedPDFs":len(quarantined),
   "worksWithoutAnySearchableSource":sum(x["indexStatus"]=="no_registered_content" for x in results),
   "identityAndCompletenessCertified":0}
  return {"schema":"vdl-bibliotheca-complete-content-audit-v1","mode":"inventory",
-  "limitations":"Documento de conciliación, NO cotejo de todas las páginas ni certificación de integridad. Las 300 obras son una meta solicitada, no un inventario constatado.",
+  "limitations":"Documento de conciliación, NO cotejo de todas las páginas ni certificación de integridad. Incluye catálogo principal, suplementario y adicional R2.",
   "counts":stats,"records":results,"sharedPhysicalFiles":duplicated_volumes,
   "quarantine":quarantined,"problems":problems}
 def parse_book_prefix(locus):
@@ -162,6 +162,7 @@ def inspect_registry(start,limit):
  rows=[]
  for e in selected:
   status="not_inspected";flags=[];count=0;chars=0;kind=e.get("format")
+  missing_loci=[];expected_loci=None;declared_missing=[];empty_loci=[];segmented_loci=0;book_nums=set();missing=[]
   path=e["path"];file_path=ROOT/path
   try:
    if path.startswith("https://"):obj=get_json(path)
@@ -175,13 +176,19 @@ def inspect_registry(start,limit):
         "byteLength":len(raw.encode("utf-8")),"flags":flags,
         "identityAndCompletenessCertified":False});continue
     obj=json.loads(file_path.read_text(encoding="utf-8"))
-   if kind=="structured-bilingual":
+   if kind in ("structured-bilingual","critical-indexed-latin"):
     passages=obj.get("passages") if isinstance(obj,dict) else None
     if not isinstance(passages,list):raise ValueError("structured edition without passages")
     for x in passages:
      field="latin" if e["language"]=="la" else "translation"
-     if not str(x.get("locus") or "").strip() or not str(x.get(field) or "").strip():flags.append("EMPTY_STRUCTURED_LOCUS_OR_LANGUAGE");break
+     if not str(x.get("locus") or "").strip() or not str(x.get(field) or "").strip():
+      flags.append("EMPTY_STRUCTURED_LOCUS_OR_LANGUAGE");empty_loci.append(str(x.get("locus") or "(sin locus)"))
     count=len(passages);chars=sum(len(str(x.get("latin" if e["language"]=="la" else "translation") or "")) for x in passages)
+    canonical=read("data/critical-editions/krohn-1912-tei-loci.json")["passages"]
+    expected=[str(x["locus"]) for x in canonical];expected_loci=len(expected)
+    actual={str(x.get("locus")) for x in passages if str(x.get("latin" if e["language"]=="la" else "translation") or "").strip()}
+    missing_loci=[locus for locus in expected if locus not in actual]
+    if missing_loci:flags.append("MISSING_REFERENCE_LOCI")
    elif kind=="historical-ocr-pages":
     if not isinstance(obj,list):flags.append("INVALID_HISTORICAL_OCR")
     else:count=len(obj);chars=sum(len(str(x.get("text") or "")) for x in obj if isinstance(x,dict))
@@ -222,9 +229,14 @@ def inspect_registry(start,limit):
      if missing:flags.append("BOOK_NUMBERS_NOT_DETECTED_REVIEW")
     else:missing=[]
     if not expected_parts:missing=[]
-   if count==0 or chars<350:flags.append("NO_SUBSTANTIVE_TEXT")
+    completeness=obj.get("completeness") or {}
+    if isinstance(completeness,dict):
+     declared_missing=[str(x) for key in ("missingChapters","missingLoci","missingBooks","missingPassages") for x in (completeness.get(key) or []) if isinstance(x,(str,int))]
+     if declared_missing:flags.append("SOURCE_DECLARED_GAPS")
+   if count==0 or chars==0:flags.append("NO_SUBSTANTIVE_TEXT")
+   elif chars<350:flags.append("SHORT_TEXT_REVIEW_NOT_NECESSARILY_INCOMPLETE")
    status="needs_review" if flags else "structurally_readable_not_philologically_verified"
-   extra={"segmentedLocusGroups":segmented_loci if kind not in ("structured-bilingual","historical-ocr-pages") else 0,
+   extra={"missingReferenceLoci":missing_loci,"expectedReferenceLoci":expected_loci,"sourceDeclaredMissing":declared_missing,"emptyLoci":empty_loci,"segmentedLocusGroups":segmented_loci,
           "sourceTitle":obj.get("title") or obj.get("sourceTitle") if isinstance(obj,dict) else None,
           "bookNumbersDetected":sorted(book_nums) if kind not in ("structured-bilingual","historical-ocr-pages") else [],
           "candidateMissingBooks":missing if kind not in ("structured-bilingual","historical-ocr-pages") else []}
@@ -271,6 +283,7 @@ def inspect_ocr(start,limit):
    rows.append({"editionId":e["id"],"declaredWork":e.get("obra"),"editionTitle":e.get("tituloEdicion"),
     "source":e.get("fuente"),"ocrPages":len(pages),"declaredPdfPages":e.get("paginas"),
     "ocrCharacters":all_text_chars,"greekScriptPages":greek_pages,
+    "pagesWithoutExtractedText":[n+1 for n,p in enumerate(pages) if not p.strip()],
     "titleTokensFound":match["matched"],"authorTokensFound":matched_author["matched"],
     "status":"review_indicators" if flags else "ocr_metadata_consistent_not_full_edition_certified",
     "flags":flags,"identityAndCompletenessCertified":False})
@@ -281,13 +294,58 @@ def inspect_ocr(start,limit):
   "scope":{"start":start,"limit":len(selected),"total":len(editions)},
   "method":"Lectura íntegra de las páginas OCR disponibles por edición. Prueba la correspondencia de objeto y páginas y busca indicios de autor/título/idioma; NO certifica identidad ni completitud.",
   "counts":dict(collections.Counter(x["status"] for x in rows)),"results":rows}
+
+def publish_results(folder):
+ # Only the existing public integrity record is updated, never a source.
+ target=ROOT/"data/bibliotheca-audit/integrity.json"
+ report=json.loads(target.read_text(encoding="utf-8"))
+ registry=read("data/classics-corpus/search-registry.json")["entries"]
+ editions=read("data/r2/catalogo-clasicos-r2.json")["items"]
+ docs=[json.loads(p.read_text(encoding="utf-8")) for p in pathlib.Path(folder).rglob("full-integrity-*.json")]
+ text_rows=[r for d in docs if d.get("mode")=="texts" for r in d["results"]]
+ ocr_rows=[r for d in docs if d.get("mode")=="ocr" for r in d["results"]]
+ pdf_rows=[r for d in docs if d.get("schema")=="vdl-content-identity-audit-v1" for r in d["results"]]
+ def key(r):return (r["workId"],r["language"],r["path"])
+ expected=collections.Counter(key(r) for r in registry)
+ if collections.Counter(key(r) for r in text_rows)!=expected:raise ValueError("Cobertura de versiones incompleta o duplicada")
+ ids=collections.Counter(e["id"] for e in editions)
+ if collections.Counter(r["editionId"] for r in ocr_rows)!=ids or collections.Counter(r["id"] for r in pdf_rows)!=ids:raise ValueError("Cobertura PDF/OCR incompleta")
+ text_by_work=collections.defaultdict(list)
+ for r in text_rows:text_by_work[r["workId"]].append(r)
+ ocr_by_id={r["editionId"]:r for r in ocr_rows}
+ pdf_by_id={r["id"]:r for r in pdf_rows}
+ def compact(r):
+  return {k:r[k] for k in ("language","path","format","status","passageCount","flags","missingReferenceLoci","expectedReferenceLoci","sourceDeclaredMissing","emptyLoci","candidateMissingBooks","reason") if k in r}
+ for record in report["records"]:
+  wid=record["id"]
+  aliases={"vitruvio-v514-pdf":"vitruvius","vitruvio-v554-pdf":"vitruvius","theory-v297-pdf":"vitruvius","krohn-1912-pdf":"krohn-1912-indexed"}
+  candidates=text_by_work.get(aliases.get(wid,wid),[])
+  if wid in aliases and wid!="krohn-1912-pdf":
+   paths={v["path"] for v in record.get("versions",[])}
+   candidates=[r for r in candidates if r["path"] in paths]
+  record["latestTextChecks"]=[compact(r) for r in candidates]
+  checks=[]
+  for f in record.get("facsimiles",[]):
+   eid=f["id"];o=ocr_by_id.get(eid,{});p=pdf_by_id.get(eid,{})
+   checks.append({"id":eid,"ocrStatus":o.get("status"),"ocrFlags":o.get("flags",[]),"ocrPages":o.get("ocrPages"),"declaredPdfPages":o.get("declaredPdfPages"),"pagesWithoutExtractedText":o.get("pagesWithoutExtractedText",[]),"ocrReason":o.get("reason"),"pdfStatus":p.get("status"),"pdfFlags":p.get("flags",[]),"pdfPages":p.get("observed",{}).get("pages"),"pdfReason":p.get("reason")})
+  record["latestFacsimileChecks"]=checks
+  # Preserve prior expert findings; automatic checks add evidence, not certification.
+  record["fullTextCollation"]="not_completed"
+ report["latestStructuralAudit"]={"generated":dt.datetime.now(dt.timezone.utc).isoformat(),"textVersions":len(text_rows),"ocrEditions":len(ocr_rows),"pdfEditions":len(pdf_rows),"textStatuses":dict(collections.Counter(r["status"] for r in text_rows)),"ocrStatuses":dict(collections.Counter(r["status"] for r in ocr_rows)),"pdfStatuses":dict(collections.Counter(r["status"] for r in pdf_rows)),"limits":"Cotejo estructural y muestreo de PDF, no certificación filológica; páginas sin OCR no equivalen a folios perdidos."}
+ target.write_text(json.dumps(report,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
+ print(json.dumps(report["latestStructuralAudit"],ensure_ascii=False))
+
 def main():
  p=argparse.ArgumentParser()
- p.add_argument("--mode",required=True,choices=("inventory","texts","ocr"))
+ p.add_argument("--mode",required=True,choices=("inventory","texts","ocr","publish"))
  p.add_argument("--start",type=int,default=0)
  p.add_argument("--limit",type=int,default=0)
  p.add_argument("--output",default=None)
+ p.add_argument("--reports",default=None)
  a=p.parse_args()
+ if a.mode=="publish":
+  if not a.reports:p.error("--reports required")
+  publish_results(a.reports);return
  if a.start<0 or a.limit<0: p.error("start and limit must be nonnegative")
  report={"inventory":collect_inventory,"texts":lambda:inspect_registry(a.start,a.limit),
   "ocr":lambda:inspect_ocr(a.start,a.limit)}[a.mode]()

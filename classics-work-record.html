@@ -117,7 +117,7 @@ async function ready(){
   ])if(![...selected.options].some(o=>o.value===id))selected.append(new Option(title,id));
   selected.append(new Option("Diego A. Kurilo · Vitruvius Digital Library · DOI del proyecto","vitruvius-digital-library"));
   // Auditoría complementaria: una única ficha académica por identificador.
-  const auditRows=new Map(),integrityRows=new Map();
+  const auditRows=new Map(),integrityRows=new Map();let latestStructuralAudit=null;
   const readJSON=async path=>{const res=await fetch(path,{cache:"no-cache"});if(!res.ok)throw Error("HTTP "+res.status);return res.json()};
   try{
     const idx=await readJSON("data/bibliotheca-audit/index.json");
@@ -126,7 +126,7 @@ async function ready(){
     const options=new Set(Array.from(selected.options,o=>o.value));
     for(const row of auditRows.values())if(!options.has(row.id)){selected.append(new Option(row.author+" · "+row.title,row.id));options.add(row.id)}
   }catch(e){console.warn("Control bibliológico no disponible",e)}
-  try{const a=await readJSON("data/bibliotheca-audit/integrity.json");for(const row of a.records)integrityRows.set(row.id,row)}catch(e){console.warn("Control de integridad no disponible",e)}
+  try{const a=await readJSON("data/bibliotheca-audit/integrity.json");latestStructuralAudit=a.latestStructuralAudit||null;for(const row of a.records)integrityRows.set(row.id,row)}catch(e){console.warn("Control de integridad no disponible",e)}
   const langNames={grc:"Griego antiguo",la:"Latín",it:"Italiano",en:"Inglés",es:"Castellano",fr:"Francés"};
   const label=l=>langNames[l]||l||"No consignado";
   const txStatus={registered:"Traducción textual registrada",facsimile_declared:"Traducción en facsímil declarado",external_declared:"Traducción externa registrada",not_documented:"Sin traducción documentada"};
@@ -139,10 +139,29 @@ async function ready(){
     line("Lengua original",label(r.originalLanguage));line("Variedad histórica",r.languageVariety.label+" · "+(r.languageVariety.status==="pendiente"?"pendiente de determinar":"clasificación orientativa"));
     line("Fundamento",r.languageVariety.basis);line("Traducciones",txStatus[r.translation.status]);line("Idiomas de traducción registrados",r.translation.registeredLanguages.map(label).join(", ")||"No documentados");
     if(i){line("Estado de integridad",integrityStatus[i.status]||i.status);for(const v of i.versions.filter(v=>v.status!=="not_individually_examined"))line(label(v.language),(v.found??"")+" unidades"+(v.expected?" de "+v.expected:"")+(v.missing?.length?" · faltan "+v.missing.join(", "):"")+" · "+(v.basis||""));for(const f of i.facsimiles.filter(v=>v.note))line("Alcance de "+f.id,f.note)}
+    if(i?.latestTextChecks?.length||i?.latestFacsimileChecks?.length){
+      const d=document.createElement("details");d.open=true;add("summary","Verificación de cada edición y faltantes",d);
+      const p=(txt)=>add("p",txt,d);
+      for(const v of i.latestTextChecks||[]){
+        p(label(v.language)+" · "+(v.path||"")+" · "+(v.status==="could_not_inspect"?"No se pudo comprobar: "+(v.reason||"sin detalle"):v.status==="html_present_requires_textual_collation"?"HTML presente, cotejo pendiente":(v.passageCount??0)+" pasajes examinados; integridad filológica no certificada"));
+        if(v.missingReferenceLoci?.length)p("Loci de referencia no encontrados: "+v.missingReferenceLoci.join(", ")+" (comprobar fusiones o diferencias editoriales).");
+        if(v.sourceDeclaredMissing?.length)p("Faltantes declarados por la fuente: "+v.sourceDeclaredMissing.join(", "));
+        if(v.emptyLoci?.length)p("Loci sin texto: "+v.emptyLoci.join(", "));
+        if(v.candidateMissingBooks?.length)p("Libros no detectados por numeración (requiere cotejo): "+v.candidateMissingBooks.join(", "));
+        if(v.flags?.length)p("Incidencias técnicas: "+v.flags.join(", "));
+      }
+      for(const f of i.latestFacsimileChecks||[]){
+        p("Facsímil "+f.id+" · páginas PDF observadas: "+(f.pdfPages??"sin comprobar")+" · páginas OCR: "+(f.ocrPages??"sin comprobar")+(f.declaredPdfPages!=null?" · páginas declaradas: "+f.declaredPdfPages:""));
+        if(f.pagesWithoutExtractedText?.length)p("Páginas sin texto OCR: "+f.pagesWithoutExtractedText.join(", ")+" (pueden ser blancas o ilustraciones; no son necesariamente folios faltantes).");
+        if(f.pdfReason||f.ocrReason)p("Control no completado: "+[f.pdfReason,f.ocrReason].filter(Boolean).join(" · "));
+        if(f.pdfFlags?.length||f.ocrFlags?.length)p("Incidencias PDF/OCR: "+[...f.pdfFlags,...f.ocrFlags].join(", "));
+      }
+      root.append(d);
+    }
     if(r.issues.length){const ul=document.createElement("ul");for(const issue of r.issues)add("li",issue,ul);root.append(ul)}
     // Complementar la ficha existente sin repetir su bibliografía ni sus testimonios.
     if(r.versions.length||r.facsimiles.length){const d=document.createElement("details");add("summary","Accesos registrados a versiones y facsímiles",d);const list=document.createElement("ul");const seen=new Set();function link(url,name){if(!url||seen.has(url))return;try{const u=new URL(url,location.href);if(u.protocol!=="https:"&&u.origin!==location.origin)return;seen.add(url);const li=document.createElement("li"),a=document.createElement("a");a.href=u.href;a.textContent=name;li.append(a);list.append(li)}catch{}}for(const v of r.versions)link(v.reader,"Leer "+label(v.language)+" · "+(v.source||v.edition||v.storage));for(const f of r.facsimiles){link(f.pdf,"PDF · "+f.title);if(f.ocr)link("buscador-facsimiles-clasicos.html?obra="+encodeURIComponent(f.id),"OCR · "+f.title)}link(r.localPDF,"PDF editorial");d.append(list);root.append(d)}
-    add("p","Control documental del 27-11-2026. No equivale a cotejo íntegro ni a verificación HTTP de todos los objetos R2.");
+    add("p","Control documental del 27-11-2026."+ (latestStructuralAudit?" Última auditoría estructural: "+latestStructuralAudit.generated.slice(0,10)+".":" Auditoría individual ampliada pendiente.")+" No equivale a cotejo filológico íntegro ni certifica la completitud de cada obra.");
   }
   // Repertorio bibliográfico externo: la inclusión nunca implica alojamiento de la traducción.
   const referenceTranslations={
