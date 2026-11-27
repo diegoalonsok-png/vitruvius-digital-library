@@ -5,6 +5,8 @@ on:
     branches: [main]
     paths:
       - 'scripts/build-bibliotheca-edition-list-labels.py'
+      - 'data/classics-corpus/search-registry.json'
+      - 'data/r2/classics-translation-manifest.json'
       - 'assets/bibliotheca-work-search.js'
       - 'scripts/test-bibliotheca-edition-list-labels.mjs'
       - '.github/workflows/bibliotheca-edition-list-labels.yml'
