@@ -238,7 +238,7 @@ function names(box,ruler){
 function books(box,ruler){
  box.append(make("h4","Libros y bibliografía académica"));
  const extra=["akhenaten","amenhotep-iii","tutankhamun"].includes(ruler.id)?amarna:[];
- const fieldwork=ruler.id==="akhenaten"?[["Barry Kemp et al. · Tell el-Amarna, 2022 · Journal of Egyptian Archaeology 109","https://doi.org/10.1177/03075133231213886"]]:ruler.id==="tutankhamun"?[["Griffith Institute · Howard Carter archive · planos, croquis y dibujos","https://tutankhamun.griffith.ox.ac.uk/maps-plans-sketches-drawings"]]:[];
+ const fieldwork=ruler.id==="akhenaten"?[["A. Stevens, G. R. Dabbs, F. Balestra, et al. · Tell el-Amarna, 2022 · Journal of Egyptian Archaeology 109","https://doi.org/10.1177/03075133231213886"]]:ruler.id==="tutankhamun"?[["Griffith Institute · Howard Carter archive · planos, croquis y dibujos","https://tutankhamun.griffith.ox.ac.uk/maps-plans-sketches-drawings"]]:[];
  const out=[...fieldwork,...extra,...(ruler.id==="tutankhamun"?tut:[]),...(["seti-i","ramesses-ii"].includes(ruler.id)?ramses:[]),...general];
  const body=make("div",null,"v-ed-library"),done=new Set();
  for(const [title,url] of [...out,...links])if(!done.has(url)){done.add(url);body.append(anchor(title,url))}
