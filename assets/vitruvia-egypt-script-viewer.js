@@ -119,7 +119,7 @@ function titularyEntry(parent,data,ruler){
   }else dd.append(node("p","v-script-note","Grafía no editada: solo transliteración."));
   const meta=node("p","v-script-meta");
   const tl=node("i",null,n.trans||"");tl.lang="egy-Latn";meta.append(tl);
-  if(n.gloss)meta.append(document.createTextNode(" · "+n.gloss));
+  if(n.gloss){const locale=document.documentElement.lang?.slice(0,2)||"es";const gloss=n.glosses?.[locale]||n.gloss;meta.append(document.createTextNode(" · "+gloss+(locale!=="es"&&!n.glosses?.[locale]?" [ES]":"")));}
   dd.append(meta);
   if(n.mdc){const m=node("p","v-script-note");m.append(document.createTextNode("Gardiner: "));const code=node("code",null,n.mdc);code.style.font="11px/1.5 ui-monospace,Menlo,Consolas,monospace";m.append(code);dd.append(m)}
   if(n.witness)dd.append(node("p","v-script-note","Testimonio: "+n.witness));
@@ -267,7 +267,7 @@ function royalEgyptMatches(rulers,q){
  const f=royalFold(q);
  const dynasty=f.match(/(?:dinastia|dynasty|dynastie)\s+(?:egipcia\s+|egyptian\s+)?([ivxlcdm]+|\d{1,2})(?:\s|$)/);
  const romans=["","I","II","III","IV","V","VI","VII","VIII","IX","X","XI","XII","XIII","XIV","XV","XVI","XVII","XVIII","XIX","XX","XXI","XXII","XXIII","XXIV","XXV","XXVI","XXVII","XXVIII","XXIX","XXX","XXXI"];
- const dyn=dynasty?(romans[Number(dynasty[1])]||dynasty[1].toUpperCase()):"";
+ const dyn=dynasty&&!/grieg|greek|grec|macedon|asiri|assyri|assyr|babil|babylon|persa|persian|perse|romana|roman|chino|chinese/.test(f)?(romans[Number(dynasty[1])]||dynasty[1].toUpperCase()):"";
  return rulers.filter(r=>rulerMatches(r,q)||r.aliases.some(a=>royalFold(a).length>=4&&(" "+f+" ").includes(" "+royalFold(a)+" "))||(dyn&&r.dynasty===dyn)||(dynastyPattern.test(f)&&/egip|egypt|faraon|pharaoh|pharaon/.test(f)&&!dyn));
 }
 const royalOther=[
@@ -351,6 +351,9 @@ async function render(){
     evidence:"Topónimo o denominación árabe actual; verificar variantes regionales.",
     source:"https://www.wikidata.org/wiki/Special:Search?search="+encodeURIComponent(rec.title)});populated++;
   }
+ }
+ if(isRoyal&&classification.ancient&&royalEgyptMatches(knownRulers,query).some(r=>r.id==="akhenaten")){
+  entry(content,{title:"Amenhotep IV · "+royalLocale("nombre anterior","earlier name","nom antérieur"),glyphs:"𓇋𓏠𓐰𓈖𓊵𓐰𓏏𓐱𓊪",trans:"jmn-ḥtp",gloss:royalLocale("Amón está satisfecho","Amun is satisfied","Amon est satisfait"),source:"https://www.metmuseum.org/art/collection/search/545756",evidence:royalLocale("Transcripción editorial normalizada; el vaso del Met conserva los nombres de Amenhotep IV y Nefertiti.","Normalized editorial transcription; the Met goblet preserves the names of Amenhotep IV and Nefertiti.","Transcription éditoriale normalisée ; le gobelet du Met conserve les noms d’Amenhotep IV et de Néfertiti.")});populated++;
  }
  const status=node("p","v-script-note",populated?
  (classification.ancient?"La agrupación y el óvalo son representaciones tipográficas, no facsímiles.":royalLocale("Lecturas de ediciones epigráficas identificadas.","Readings from identified epigraphic editions.","Lectures d’éditions épigraphiques identifiées.")):
