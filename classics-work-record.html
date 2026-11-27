@@ -151,6 +151,7 @@ async function ready(){
       const p=(txt)=>add("p",txt,d);
       for(const v of i.latestTextChecks||[]){
         p(label(v.language)+" · "+(v.path||"")+" · "+(v.status==="could_not_inspect"?"No se pudo comprobar: "+(v.reason||"sin detalle"):v.status==="html_present_requires_textual_collation"?"HTML presente, cotejo pendiente":(v.passageCount??0)+" pasajes examinados; integridad filológica no certificada"));
+        if(v.groupedReferenceLoci&&Object.keys(v.groupedReferenceLoci).length)p("Loci presentes en bloques agrupados, cotejados con Krohn: "+Object.entries(v.groupedReferenceLoci).map(([l,x])=>l+" dentro de "+x.sourceBlock+"–"+x.sectionEnd).join("; ")+". No son faltantes de texto.");
         if(v.missingReferenceLoci?.length)p("Loci de referencia no encontrados: "+v.missingReferenceLoci.join(", ")+" (comprobar fusiones o diferencias editoriales).");
         if(v.sourceDeclaredMissing?.length)p("Faltantes declarados por la fuente: "+v.sourceDeclaredMissing.join(", "));
         if(v.emptyLoci?.length)p("Loci sin texto: "+v.emptyLoci.join(", "));
