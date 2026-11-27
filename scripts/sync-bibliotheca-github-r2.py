@@ -61,6 +61,21 @@ def main():
             if not (ROOT / e["path"]).is_file():
                 raise ValueError(f"Missing local source: {e['path']}")
             local_by_work.setdefault(e["workId"], []).append({"language":e["language"],"path":e["path"]})
+    # Las manifestaciones PDF reutilizan exclusivamente índices digitales verificados.
+    edition_links = {
+        "krohn-1912-pdf": ("krohn-1912-indexed", "la", "data/critical-editions/krohn-1912-tei-loci.json"),
+        "vitruvio-v514-pdf": ("vitruvius", "es", "data/structured/recensio-es.json"),
+        "vitruvio-v554-pdf": ("vitruvius", "fr", "data/structured/recensio-fr.json"),
+        "theory-v297-pdf": ("vitruvius", "en", "data/structured/theory-en.json"),
+    }
+    for edition_id, (work_id, language, path) in edition_links.items():
+        if edition_id not in all_catalogued:
+            continue
+        matches = [e for e in registry if e.get("workId") == work_id and e.get("language") == language and e.get("path") == path]
+        if len(matches) == 1 and (ROOT / path).is_file():
+            row = {"language": language, "path": path, "sourceWorkId": work_id, "sourceType": "digital-index-no-ocr"}
+            if not any(e.get("path") == path and e.get("language") == language for e in local_by_work.get(edition_id, [])):
+                local_by_work.setdefault(edition_id, []).append(row)
     by_work = {w:[] for w in catalog_by_id}
     unlinked = []
     linked_edition_ids = set()
