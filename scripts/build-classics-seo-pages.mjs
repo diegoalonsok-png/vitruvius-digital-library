@@ -41,7 +41,7 @@ for(const id of [...workEntries.keys()].sort((a,b)=>a.localeCompare(b))){
  const original=originals.find(e=>e.language===w.language)||originals[0];
  const reader=original.reader;
  const lang=original.language==='grc'?'griego antiguo':'latín';
- const url=base+'/obras/'+id+'.html';
+ const url=base+'/obras/'+id;
  const heading=w.author+' · '+w.title;
  const abstract='Ficha de '+w.title+' de '+w.author+', obra en '+lang+'. Consultar datación, género literario, edición digital de procedencia y lectura del texto original indexado.';
  const extra=String(w.description||w.summary||'').trim();
@@ -54,9 +54,9 @@ for(const id of [...workEntries.keys()].sort((a,b)=>a.localeCompare(b))){
     inLanguage:original.language,genre:w.genre,
     isAccessibleForFree:true},
   isPartOf:{'@type':'CollectionPage',name:'Bibliotheca Graeca et Latina',
-    url:base+'/bibliotheca-graeca-latina.html'},
+    url:base+'/bibliotheca-graeca-latina'},
   breadcrumb:{'@type':'BreadcrumbList',itemListElement:[
-    {'@type':'ListItem',position:1,name:'Bibliotheca',item:base+'/bibliotheca-graeca-latina.html'},
+    {'@type':'ListItem',position:1,name:'Bibliotheca',item:base+'/bibliotheca-graeca-latina'},
     {'@type':'ListItem',position:2,name:heading,item:url}
   ]}
  };
@@ -71,7 +71,7 @@ for(const id of [...workEntries.keys()].sort((a,b)=>a.localeCompare(b))){
 <script type="application/ld+json">${JSON.stringify(structured).replace(/</g,'\\u003c')}</script>
 <link rel="stylesheet" href="../assets/style.css"><link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
 <style>main{max-width:880px;margin:auto;padding:30px 20px 90px;line-height:1.75}h1{font:400 clamp(28px,4vw,42px)/1.2 Georgia,serif}dt{font-weight:700;margin-top:12px}dd{margin-left:0}a{overflow-wrap:anywhere}nav{display:flex;gap:18px;flex-wrap:wrap}.note{padding:12px;border-left:3px solid #888}</style></head><body>
-<main><nav aria-label="Navegación"><a href="../index-auctorum-operum.html">Índice de autores</a><a href="../bibliotheca-graeca-latina.html">Bibliotheca</a><a href="../obras-clasicas-indexadas.html">Obras con texto indexado</a><a href="../vitruvia-lexicon.html">Lexicon</a></nav>
+<main><nav aria-label="Navegación"><a href="../index-auctorum-operum">Índice de autores</a><a href="../bibliotheca-graeca-latina">Bibliotheca</a><a href="../obras-clasicas-indexadas">Obras con texto indexado</a><a href="../vitruvia-lexicon">Lexicon</a></nav>
 <p>FICHA DOCUMENTAL · LITERATURA CLÁSICA</p><h1>${esc(heading)}</h1>
 <p>${esc(abstract)}</p>${extraHTML}
 <dl><dt>Autor identificado en el catálogo</dt><dd>${esc(w.author)}</dd>
@@ -86,20 +86,32 @@ for(const id of [...workEntries.keys()].sort((a,b)=>a.localeCompare(b))){
  const dest=path.join(output,id+'.html');
  fs.writeFileSync(dest,doc,'utf8');
  emitted.push({id,title:w.title,author:w.author,url});
- docsHTML.push('<li><a href="obras/'+esc(id)+'.html">'+esc(heading)+'</a> · '+esc(lang)+'</li>');
+ docsHTML.push('<li><a href="obras/'+esc(id)+'">'+esc(heading)+'</a> · '+esc(lang)+'</li>');
 }
 if(!emitted.length)throw Error('No verified indexed original found; refusing to publish empty SEO pages');
 // The expansion registry identifies a dated batch, not necessarily the historical upload time of each text.
 const recentIds=new Set((supplement.works||[]).map(w=>w.id));
 const recent=emitted.filter(w=>recentIds.has(w.id)).sort((a,b)=>a.author.localeCompare(b.author,'es')||a.title.localeCompare(b.title,'es'));
-const recentHTML=recent.map(w=>'<li><a href="obras/'+esc(w.id)+'.html">'+esc(w.author)+' · '+esc(w.title)+'</a></li>').join('\\n');
+const recentHTML=recent.map(w=>'<li><a href="obras/'+esc(w.id)+'">'+esc(w.author)+' · '+esc(w.title)+'</a></li>').join('\\n');
 const navigation='<p><a href="#incorporaciones-recientes">Incorporaciones recientes</a> · <a href="#indice-completo">Índice completo de obras</a></p>';
 const recentSection='<section id="incorporaciones-recientes"><h2>Incorporaciones del lote documentado el '+esc(supplement.date||'2026-11-16')+'</h2><p>'+recent.length+' obras de este lote cuentan con ficha pública y texto original indexado. La fecha identifica el lote del inventario, no necesariamente el día de primera incorporación de cada texto.</p>'+(recent.length?'<ol>'+recentHTML+'</ol>':'<p>Sin fichas verificadas de este lote.</p>')+'</section>';
-const hub='<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Obras clásicas indexadas y nuevas incorporaciones · Bibliotheca</title><meta name="description" content="Consulta las incorporaciones recientes y el índice alfabético de obras griegas y latinas con texto original indexado, lector y ficha académica."><link rel="canonical" href="'+base+'/obras-clasicas-indexadas.html"><meta name="robots" content="index,follow"><link rel="stylesheet" href="assets/style.css"></head><body><main style="max-width:950px;margin:auto;padding:30px 20px 80px"><p><a href="bibliotheca-graeca-latina.html">Bibliotheca</a> · <a href="index-auctorum-operum.html">Todos los autores</a></p><h1>Obras clásicas con texto original indexado</h1><p>Índice académico consultable sin JavaScript. '+emitted.length+' obras con ficha de lectura y referencias a su texto original indexado. Solo figuran obras con entrada documental y acceso al lector; un PDF sin indexar no se cuenta como texto completo.</p>'+navigation+recentSection+'<section id="indice-completo"><h2>Índice alfabético completo · '+emitted.length+' obras</h2><ul>'+docsHTML.join('\\n')+'</ul></section></main></body></html>';
+const hub='<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Obras clásicas indexadas y nuevas incorporaciones · Bibliotheca</title><meta name="description" content="Consulta las incorporaciones recientes y el índice alfabético de obras griegas y latinas con texto original indexado, lector y ficha académica."><link rel="canonical" href="'+base+'/obras-clasicas-indexadas"><meta name="robots" content="index,follow"><link rel="stylesheet" href="assets/style.css"></head><body><main style="max-width:950px;margin:auto;padding:30px 20px 80px"><p><a href="bibliotheca-graeca-latina">Bibliotheca</a> · <a href="index-auctorum-operum">Todos los autores</a></p><h1>Obras clásicas con texto original indexado</h1><p>Índice académico consultable sin JavaScript. '+emitted.length+' obras con ficha de lectura y referencias a su texto original indexado. Solo figuran obras con entrada documental y acceso al lector; un PDF sin indexar no se cuenta como texto completo.</p>'+navigation+recentSection+'<section id="indice-completo"><h2>Índice alfabético completo · '+emitted.length+' obras</h2><ul>'+docsHTML.join('\\n')+'</ul></section></main></body></html>';
 fs.writeFileSync(path.join(root,'obras-clasicas-indexadas.html'),hub);
 const sitemapPath=path.join(root,'sitemap.xml');
 let sitemap=read('sitemap.xml');
-const fresh=[base+'/obras-clasicas-indexadas.html',...emitted.map(e=>e.url)];
+const fresh=[base+'/obras-clasicas-indexadas',...emitted.map(e=>e.url)];
+// Cloudflare serves extensionless public routes; leave on-disk .html files
+// and all reader/citation query parameters intact. Normalize only the
+// generated work pages and hub; do not rewrite unrelated sitemap entries.
+for(const url of fresh){
+ const legacy=url+'.html';
+ const oldLoc='<loc>'+legacy+'</loc>',newLoc='<loc>'+url+'</loc>';
+ if(sitemap.includes(newLoc)){
+  sitemap=sitemap.replace(/<url\b[^>]*>[\s\S]*?<\/url>/g,block=>block.includes(oldLoc)?'':block);
+ }else{
+  sitemap=sitemap.split(oldLoc).join(newLoc);
+ }
+}
 for(const url of fresh)if(!sitemap.includes('<loc>'+url+'</loc>'))sitemap=sitemap.replace('</urlset>','  <url><loc>'+url+'</loc></url>\n</urlset>');
 fs.writeFileSync(sitemapPath,sitemap);
 console.log(JSON.stringify({generated:emitted.length,ids:emitted.map(e=>e.id),sitemapUrls:fresh.length},null,2));
