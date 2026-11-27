@@ -363,37 +363,78 @@ const matchedSubjects=w=>subjects.filter(([id,label,aliases,pattern])=>
  (id==="philosophy"&&/^(?:plato|aristotle|epictetus|epicurus|plotinus|proclus|porphyry)(?:-|$)/.test(w.id||""))
 ).map(([id])=>id);
 const requestedSubject=query=>{const q=foldAuthority(query);return subjects.find(([id,label,aliases])=>aliases.some(x=>foldAuthority(x)===q))?.[0]||""};
-function rank(w,query){
- const queryTokens=tokens(query);if(!queryTokens.length)return 0;
- const q=foldAuthority(query),greekQuery=/\p{Script=Greek}/u.test(query);
+// Cache the normalised fields and token arrays; fuzzy distances repeat across
+// thousands of entries with the same author, title words and aliases.
+let fieldCache=new WeakMap(),queryCache=null;
+const invalidateSearchIndex=()=>{fieldCache=new WeakMap();queryCache=null};
+function preparedQuery(query){
+ if(queryCache?.raw===query)return queryCache;
+ const q=foldAuthority(query);
+ queryCache={raw:query,q,queryTokens:tokens(query),greekQuery:/\p{Script=Greek}/u.test(query),
+  subject:requestedSubject(query),distances:new Map()};
+ return queryCache;
+}
+function preparedFields(w){
+ if(fieldCache.has(w))return fieldCache.get(w);
  const authorKey=String(w.id||"").split("-")[0];
  const authority=[w.author,w.title,w.id.replaceAll("-"," "),...(w.forms||[]),...(w.originalAliases||[]),...(authorNameVariants[authorKey]||[]),...(aliasAuthority[w.id]||[])];
+ const fields=[...new Set(authority)].map(field=>({val:foldAuthority(field),greek:/\p{Script=Greek}/u.test(field)})).filter(x=>x.val);
+ for(const f of fields)f.words=tokens(f.val);
+ const authors=[w.author,spanishAuthorName(w),...(authorNameVariants[authorKey]||[])].filter(Boolean)
+  .map(field=>({val:foldAuthority(field),greek:/\p{Script=Greek}/u.test(field)}));
+ const result={fields,authors,author:foldAuthority(w.author)};
+ fieldCache.set(w,result);return result;
+}
+function cachedDistance(token,word,allowed,query){
+ if(token===word)return 0;
+ if(word.startsWith(token)&&token.length>=3)return .5;
+ if(Math.abs(token.length-word.length)>allowed)return allowed+1;
+ if(allowed===0)return 1;
+ const key=token+"\0"+word;
+ if(!query.distances.has(key))query.distances.set(key,editDistance(token,word,allowed));
+ return query.distances.get(key);
+}
+function rank(w,query){
+ const p=preparedQuery(query),{q,queryTokens,greekQuery,subject}=p;
+ if(!queryTokens.length)return 0;
+ const fields=preparedFields(w).fields;
  let best=0;
- for(const field of new Set(authority)){
-  if(greekQuery&&!/\p{Script=Greek}/u.test(field))continue;
-  const val=foldAuthority(field);if(!val)continue;
-  if(val===q)return 140;
-  const fieldTokens=tokens(val);
-  if(val===q)best=Math.max(best,140);
-  if(val.startsWith(q))best=Math.max(best,115);
-  if(val.includes(q))best=Math.max(best,90);
-  const used=new Set();let total=0,matched=0;
+ // Exact/prefix results outrank every fuzzy or thematic score. Avoid DP.
+ for(const f of fields){
+  if(greekQuery&&!f.greek)continue;
+  if(f.val===q)return 140;
+  if(f.val.startsWith(q))best=Math.max(best,115);
+  else if(f.val.includes(q))best=Math.max(best,90);
+ }
+ if(best>=115)return best;
+ for(const f of fields){
+  if(greekQuery&&!f.greek)continue;
+  const fieldTokens=f.words,used=new Set();let total=0,matched=0;
   for(const token of queryTokens){
    let bestMatch=null;
+   const allowed=token.length>=11?3:token.length>=7?2:token.length>=4?1:0;
    for(let i=0;i<fieldTokens.length;i++){
     if(used.has(i))continue;
-    // Short names need caution; longer names can tolerate extra omissions/transpositions.
-    const word=fieldTokens[i],allowed=token.length>=11?3:token.length>=7?2:token.length>=4?1:0;
-    const distance=token===word?0:word.startsWith(token)&&token.length>=3?0.5:editDistance(token,word,allowed);
-    if(distance<=allowed||(distance===0.5)){if(!bestMatch||distance<bestMatch.distance)bestMatch={i,distance}}
+    const distance=cachedDistance(token,fieldTokens[i],allowed,p);
+    if(distance<=allowed||distance===.5){if(!bestMatch||distance<bestMatch.distance)bestMatch={i,distance};if(distance===0)break}
    }
    if(bestMatch){used.add(bestMatch.i);matched++;total+=bestMatch.distance}
+   else break;
   }
   if(matched===queryTokens.length)best=Math.max(best,Math.round(105-Math.min(30,total*9)-Math.max(0,fieldTokens.length-queryTokens.length)*2));
  }
- const subject=requestedSubject(query);
  if(subject&&matchedSubjects(w).includes(subject))best=Math.max(best,78);
  return best;
+}
+function exactAuthorScore(w,query){
+ const p=preparedQuery(query);if(!p.queryTokens.length)return 0;
+ let score=0;
+ for(const f of preparedFields(w).authors){
+  if(p.greekQuery&&!f.greek)continue;
+  if(f.val===p.q)return 140;
+  if(f.val.startsWith(p.q))score=115;
+ }
+ return score;
 }
 function originalTitle(w){
  const language=w.originalLanguage||w.language||w.versions?.find(v=>["grc","la"].includes(v.language))?.language||"";
@@ -568,19 +609,15 @@ function render(){
   // The catalogue and reading registry are different: a work remains discoverable
   // even when no individual text has been hosted or verified.
   const authorityKey=w=>/^cts-tlg(\d+)-/.test(w.id)?w.id.match(/^cts-tlg(\d+)-/)[1]:"";
-  const authorScore=w=>{
-   const prefix=String(w.id||"").split("-")[0];
-   const authorForms=[w.author,spanishAuthorName(w),...(authorNameVariants[prefix]||[])].filter(Boolean);
-   return Math.max(0,...authorForms.map(value=>rank({id:"author",author:value,title:"",forms:[value],originalAliases:[]},searched)));
-  };
+  const authorScore=w=>exactAuthorScore(w,searched);
   const scores=new Map();
   const exactAuthors=browsing?[]:model.items.filter(w=>{
    const score=authorScore(w);scores.set(w,score);return score>=115;
   });
-  const authorNames=new Set(exactAuthors.map(w=>foldAuthority(w.author)));
+  const authorNames=new Set(exactAuthors.map(w=>preparedFields(w).author));
   const authorCodes=new Set(exactAuthors.map(authorityKey).filter(Boolean));
   const isAuthor=exactAuthors.length>0;
-  const scored=model.items.map(w=>({w,score:browsing?0:rank(w,searched)})).filter(x=>browsing?(!initial||letterMatch(x.w,initial,true)):isAuthor?(authorNames.has(foldAuthority(x.w.author))||authorCodes.has(authorityKey(x.w))||(scores.get(x.w)||0)>=115||x.score>=115):x.score>=55)
+  const scored=model.items.map(w=>({w,score:browsing?0:rank(w,searched)})).filter(x=>browsing?(!initial||letterMatch(x.w,initial,true)):isAuthor?(authorNames.has(preparedFields(x.w).author)||authorCodes.has(authorityKey(x.w))||(scores.get(x.w)||0)>=115||x.score>=115):x.score>=55)
    .sort(alphabetical);
   model.region.hidden=false;
   count.textContent=(browsing?(initial?"Inicial «"+searched+"» · ":"Catálogo alfabético · "):"")+scored.length+" fichas"+(scored.length>limit?" · mostrando "+limit:"");
@@ -684,6 +721,7 @@ function render(){
  if(found.length>limit){more.hidden=false;more.textContent="Mostrar más ("+(found.length-limit)+" restantes)"}
 }
 function mount(parent,data){
+ invalidateSearchIndex();
  if(model||!parent||!Array.isArray(data?.catalog?.works)||!Array.isArray(data?.registry?.entries))return;
  const index=new Map();
  for(const w of data.catalog.works)index.set(w.id,{
@@ -819,9 +857,10 @@ function mount(parent,data){
    const schedule=event=>{
     if(event.isComposing)return;
     clearTimeout(searchTimer);
-    searchTimer=setTimeout(sync,150);
+    searchTimer=setTimeout(sync,320);
    };
    visible.addEventListener("input",schedule);
+   visible.addEventListener("compositionstart",()=>clearTimeout(searchTimer));
    visible.addEventListener("compositionend",schedule);
    visible.addEventListener("search",sync);
    visible.addEventListener("change",schedule);
@@ -896,6 +935,7 @@ function mount(parent,data){
    }})
   .catch(()=>{/* La búsqueda funciona sin metadatos editoriales auxiliares. */});
  fetch(path,{cache:"no-cache"}).then(r=>{if(!r.ok)throw Error("aliases unavailable");return r.json()}).then(j=>{
+  invalidateSearchIndex();
   loadedAliases=j.aliases||{};
   for(const [id,authority] of Object.entries(j.titleAuthorities||{})){
    const w=model?.index.get(id);if(!w)continue;
@@ -909,6 +949,7 @@ function mount(parent,data){
  }).catch(()=>{/* Original-language catalogue remains searchable. */});
 }
 function addRoadmap(roadmap){
+ invalidateSearchIndex();
  if(!model||!Array.isArray(roadmap?.items)||roadmap.items.length!==roadmap.targetWorks)return;
  for(const entry of roadmap.items){
   if(!/^[a-z0-9-]+$/.test(entry.id||"")||!entry.title||!entry.author)continue;
@@ -925,6 +966,7 @@ function addRoadmap(roadmap){
  render();
 }
 function addHistoricalViewers(records){
+ invalidateSearchIndex();
  if(!model||!Array.isArray(records))return;
  for(const e of records){
   const href=heritageLink(e.reader),id="historic-"+String(e.id||"");
@@ -939,6 +981,7 @@ function addHistoricalViewers(records){
  render();
 }
 function addFacsimiles(v,cat){
+ invalidateSearchIndex();
  if(!model||!Array.isArray(cat?.items))return;
  const byEdition=new Map(cat.items.map(e=>[e.id,e]));
  const attachEdition=(work,edition)=>{
