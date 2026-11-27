@@ -148,3 +148,16 @@ console.log('SCOPE: mocked fetch only; not an HTTP availability or scholarly acc
  assert.equal(engine.feedback("arquitectura",{locus:"1.1.1"},1).accepted,false);
  console.log("PASS: local feedback scope, bounded adjustment, private mode, exact-locus precedence and reset.");
 }
+
+{
+ const {engine}=createEngine();
+ const source={format:"json-passages",workId:"work-a",language:"grc"};
+ const doc={workId:"work-a",language:"grc",passages:[{locus:"1",text:"source"}]};
+ assert(engine.sourceIdentityOK(source,doc));
+ assert(!engine.sourceIdentityOK(source,{...doc,workId:"work-b"}));
+ assert(!engine.sourceIdentityOK(source,{...doc,language:"la"}));
+ assert(!engine.sourceIdentityOK(source,{...doc,passages:null}));
+ assert(engine.sourceIdentityOK({...source,sourceWorkId:"work-b"},{...doc,workId:"work-b"}));
+ assert(engine.sourceIdentityOK({...source,format:"structured-bilingual"},{passages:doc.passages}));
+ console.log("PASS: documentary identity checks and legitimate editorial aliases.");
+}
