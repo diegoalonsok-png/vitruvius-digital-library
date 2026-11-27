@@ -511,13 +511,13 @@ function letterMatch(w,letter,byTitle){
 function editionSummary(w){
  const recorded=model?.editionLabels?.[w.id]||[];
  const base=recorded.length?recorded:w.versions.map(v=>({language:v.language,kind:["la","grc"].includes(v.language)?"original":"translation"}));
- const rows=[...new Map(base.filter(v=>v.language).map(v=>[v.language,v])).values()];
+ const rows=[...new Map(base.filter(v=>v.language).map(v=>[[v.language,v.path||v.reader||v.translator||"",v.publicationYear||""].join("|"),v])).values()];
  const originals=rows.filter(v=>["la","grc"].includes(v.language));
  const translations=rows.filter(v=>!["la","grc"].includes(v.language));
- const source=originals.length?"Original: "+originals.map(v=>lang[v.language]||v.language).join(", "):
+ const source=originals.length?"Original: "+[...new Set(originals.map(v=>lang[v.language]||v.language))].join(", "):
   w.originalLanguage?"Original: "+(lang[w.originalLanguage]||w.originalLanguage):"";
  const labels=translations.map(v=>{
-  const details=[v.translator,v.publicationYear,v.edition].filter(Boolean);
+  const details=[v.translator||"Traductor no documentado",v.publicationYear||"Año no documentado",v.edition].filter(Boolean);
   const distinct=details.filter((value,i)=>!(i===1&&v.edition?.includes(String(value))));
   return (lang[v.language]||v.language)+(distinct.length?" ("+distinct.join(" · ")+")":"");
  });
@@ -529,6 +529,12 @@ function appendEditionSummary(row,w){
  note.style.cssText="display:block;margin:4px 0 0;font:12px/1.5 system-ui,sans-serif;color:var(--muted,#b6b6b6);overflow-wrap:anywhere";
  note.setAttribute("aria-label","Idiomas y ediciones documentadas: "+value);
  row.append(note);
+ const editions=model?.editionLabels?.[w.id]||[];
+ for(const v of editions){
+  if(!["en","fr","es","it","de","pt"].includes(v.language)||!v.reader||!safeReader(v.reader))continue;
+  const link=make("a","Leer · "+(lang[v.language]||v.language)+" · "+(v.translator||"Traductor no documentado")+" · "+(v.publicationYear||"Año no documentado"),"bws-plain-record");
+  link.href=safeReader(v.reader);row.append(link);
+ }
 }
 function render(){
  if(!model)return;
