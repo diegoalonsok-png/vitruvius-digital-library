@@ -80337,6 +80337,1042 @@
     "bytes": 208775,
     "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0022-tlg001-grc-63c1ec2304cd1fd9.json"
    }
+  },
+  {
+   "id": "cts-tlg0057-tlg103",
+   "author": "Galeno",
+   "title": "De consuetudinibus",
+   "language": "grc",
+   "genre": "Corpus clásico ampliado",
+   "dating": "siglo II d. C.",
+   "reading": {
+    "url": "classics-text-reader.html?work=cts-tlg0057-tlg103&lang=grc&edition=52cdf0a143d19445",
+    "status": "Edición TEI alojada en R2 con búsqueda y traducción automática por pasaje"
+   },
+   "manuscript": {
+    "status": "Sin testimonio manuscrito individual asignado; la edición TEI se identifica por separado"
+   },
+   "pdf": {
+    "url": null,
+    "status": "No consta PDF ni facsímil individual verificado para esta edición"
+   },
+   "translation": {
+    "status": "Traducción automática de consulta por pasaje; no se atribuye a un traductor académico"
+   },
+   "links": {
+    "scaife": "https://scaife.perseus.org/library/urn:cts:greekLit:tlg0057.tlg103.1st1K-grc1/"
+   },
+   "aliases": [
+    "urn:cts:greekLit:tlg0057.tlg103.1st1K-grc1"
+   ],
+   "relatedWorkIds": [],
+   "catalogueProvenance": "Título y autor de los catálogos CTS del sitio; edición contrastada con su cabecera TEI. No se retrotraduce el título.",
+   "corpusFiles": {
+    "grc": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0057-tlg103-grc-52cdf0a143d19445.json"
+   },
+   "localVersions": [
+    {
+     "language": "grc",
+     "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0057-tlg103-grc-52cdf0a143d19445.json",
+     "label": "Edición original grc · urn:cts:greekLit:tlg0057.tlg103.1st1K-grc1",
+     "reader": "classics-text-reader.html?work=cts-tlg0057-tlg103&lang=grc&edition=52cdf0a143d19445",
+     "sourceUrns": [
+      "urn:cts:greekLit:tlg0057.tlg103.1st1K-grc1"
+     ],
+     "sha256": "52cdf0a143d19445501fa4ddec578a35b1709caba98fe83d85d949fc49d0d090"
+    }
+   ],
+   "publicStatus": "lectura-local-parcial",
+   "indexedEdition": {
+    "sources": [
+     {
+      "title": "De consuetudinibus",
+      "titleLanguage": "lat",
+      "author": "Galen",
+      "editors": [
+       "Iwan von Müller"
+      ],
+      "bibliography": "Galeni libellus De consuetudinibus Galen Iwan von Müller Universität Erlangen Erlangen 5-19 1879 https://reader.digitale-sammlungen.de/de/fs1/object/display/bsb10930900_00009.html",
+      "licences": [
+       {
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+       }
+      ],
+      "editionUrn": "urn:cts:greekLit:tlg0057.tlg103.1st1K-grc1",
+      "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0057/tlg103/tlg0057.tlg103.1st1K-grc1.xml",
+      "sourceSha256": "9de95de3eb68427026ff98eb2665bf232a3ba445ffc1a8931eb3b78e226e37da",
+      "sourceReferences": [],
+      "publicationYear": "1879",
+      "publisher": "Universität Erlangen",
+      "publicationPlace": "Erlangen",
+      "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/9de95de3eb68427026ff98eb2665bf232a3ba445ffc1a8931eb3b78e226e37da.xml"
+     }
+    ],
+    "sha256": "52cdf0a143d19445501fa4ddec578a35b1709caba98fe83d85d949fc49d0d090",
+    "passages": 6,
+    "characters": 25277,
+    "bytes": 53808,
+    "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0057-tlg103-grc-52cdf0a143d19445.json"
+   }
+  },
+  {
+   "id": "cts-tlg0057-tlg107",
+   "author": "Galeno",
+   "title": "De experientia medica",
+   "language": "grc",
+   "genre": "Corpus clásico ampliado",
+   "dating": "siglo II d. C.",
+   "reading": {
+    "url": "classics-text-reader.html?work=cts-tlg0057-tlg107&lang=grc&edition=039ecd4b67ef6396",
+    "status": "Edición TEI alojada en R2 con búsqueda y traducción automática por pasaje"
+   },
+   "manuscript": {
+    "status": "Sin testimonio manuscrito individual asignado; la edición TEI se identifica por separado"
+   },
+   "pdf": {
+    "url": null,
+    "status": "No consta PDF ni facsímil individual verificado para esta edición"
+   },
+   "translation": {
+    "status": "Traducción automática de consulta por pasaje; no se atribuye a un traductor académico"
+   },
+   "links": {
+    "scaife": "https://scaife.perseus.org/library/urn:cts:greekLit:tlg0057.tlg107.1st1K-grc1/"
+   },
+   "aliases": [
+    "urn:cts:greekLit:tlg0057.tlg107.1st1K-grc1"
+   ],
+   "relatedWorkIds": [],
+   "catalogueProvenance": "Título y autor de los catálogos CTS del sitio; edición contrastada con su cabecera TEI. No se retrotraduce el título.",
+   "corpusFiles": {
+    "grc": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0057-tlg107-grc-039ecd4b67ef6396.json"
+   },
+   "localVersions": [
+    {
+     "language": "grc",
+     "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0057-tlg107-grc-039ecd4b67ef6396.json",
+     "label": "Edición original grc · urn:cts:greekLit:tlg0057.tlg107.1st1K-grc1",
+     "reader": "classics-text-reader.html?work=cts-tlg0057-tlg107&lang=grc&edition=039ecd4b67ef6396",
+     "sourceUrns": [
+      "urn:cts:greekLit:tlg0057.tlg107.1st1K-grc1"
+     ],
+     "sha256": "039ecd4b67ef63967558990f3b60e41fff639ac23962cb71454657bcdb64d3eb"
+    }
+   ],
+   "publicStatus": "lectura-local-parcial",
+   "indexedEdition": {
+    "sources": [
+     {
+      "title": "De experientia medica",
+      "titleLanguage": "lat",
+      "author": "Galen",
+      "editors": [
+       "Hermann Schöne"
+      ],
+      "bibliography": "Eine Streitschrift Galen's gegen die empirischen Ärzte Sitzungsberichte der Königlich Preussischen Akademie der Wissenschaften, Philosophisch-Historische Klasse Galen Hermann Schöne Berlin Reimer 1258-1263 1901 https://archive.org/details/einestreitschri00galegoog/page/n9/mode/2up",
+      "licences": [
+       {
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+       }
+      ],
+      "editionUrn": "urn:cts:greekLit:tlg0057.tlg107.1st1K-grc1",
+      "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0057/tlg107/tlg0057.tlg107.1st1K-grc1.xml",
+      "sourceSha256": "392ff1abf70a90c031e2fcbc7cfeb6055cf1f38d0789d0b5d45f9646adfaa048",
+      "sourceReferences": [],
+      "publicationYear": "1901",
+      "publisher": "Reimer",
+      "publicationPlace": "Berlin",
+      "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/392ff1abf70a90c031e2fcbc7cfeb6055cf1f38d0789d0b5d45f9646adfaa048.xml"
+     }
+    ],
+    "sha256": "039ecd4b67ef63967558990f3b60e41fff639ac23962cb71454657bcdb64d3eb",
+    "passages": 1,
+    "characters": 6178,
+    "bytes": 14585,
+    "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0057-tlg107-grc-039ecd4b67ef6396.json"
+   }
+  },
+  {
+   "id": "cts-tlg0057-tlg102",
+   "author": "Galeno",
+   "title": "De musculorum dissectione ad tirones",
+   "language": "grc",
+   "genre": "Corpus clásico ampliado",
+   "dating": "siglo II d. C.",
+   "reading": {
+    "url": "classics-text-reader.html?work=cts-tlg0057-tlg102&lang=grc&edition=86f30d2d19b2baa5",
+    "status": "Edición TEI alojada en R2 con búsqueda y traducción automática por pasaje"
+   },
+   "manuscript": {
+    "status": "Sin testimonio manuscrito individual asignado; la edición TEI se identifica por separado"
+   },
+   "pdf": {
+    "url": null,
+    "status": "No consta PDF ni facsímil individual verificado para esta edición"
+   },
+   "translation": {
+    "status": "Traducción automática de consulta por pasaje; no se atribuye a un traductor académico"
+   },
+   "links": {
+    "scaife": "https://scaife.perseus.org/library/urn:cts:greekLit:tlg0057.tlg102.1st1K-grc1/"
+   },
+   "aliases": [
+    "urn:cts:greekLit:tlg0057.tlg102.1st1K-grc1"
+   ],
+   "relatedWorkIds": [],
+   "catalogueProvenance": "Título y autor de los catálogos CTS del sitio; edición contrastada con su cabecera TEI. No se retrotraduce el título.",
+   "corpusFiles": {
+    "grc": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0057-tlg102-grc-86f30d2d19b2baa5.json"
+   },
+   "localVersions": [
+    {
+     "language": "grc",
+     "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0057-tlg102-grc-86f30d2d19b2baa5.json",
+     "label": "Edición original grc · urn:cts:greekLit:tlg0057.tlg102.1st1K-grc1",
+     "reader": "classics-text-reader.html?work=cts-tlg0057-tlg102&lang=grc&edition=86f30d2d19b2baa5",
+     "sourceUrns": [
+      "urn:cts:greekLit:tlg0057.tlg102.1st1K-grc1"
+     ],
+     "sha256": "86f30d2d19b2baa52a89ca92d3cc11863f1c59a4a1e8d2ef0dc1ee1ff901e22c"
+    }
+   ],
+   "publicStatus": "lectura-local-parcial",
+   "indexedEdition": {
+    "sources": [
+     {
+      "title": "De musculorum dissectione ad tirones",
+      "titleLanguage": "lat",
+      "author": "Galen",
+      "editors": [
+       "Karl Gottlob Kühn"
+      ],
+      "bibliography": "Claudii Galeni Opera Omnia Galen Karl Gottlob Kühn Knobloch Leipzig 18b 926-1026 1830 HathiTrust",
+      "licences": [
+       {
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+       }
+      ],
+      "editionUrn": "urn:cts:greekLit:tlg0057.tlg102.1st1K-grc1",
+      "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0057/tlg102/tlg0057.tlg102.1st1K-grc1.xml",
+      "sourceSha256": "2ddf5a725dbf7ba32ca7b1f7e30c05bc610e035812ef8bee88e3d82da6984fb3",
+      "sourceReferences": [
+       "https://hdl.handle.net/2027/hvd.hxpp91?urlappend=%3Bseq=940"
+      ],
+      "publicationYear": "1830",
+      "publisher": "Knobloch",
+      "publicationPlace": "Leipzig",
+      "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/2ddf5a725dbf7ba32ca7b1f7e30c05bc610e035812ef8bee88e3d82da6984fb3.xml"
+     }
+    ],
+    "sha256": "86f30d2d19b2baa52a89ca92d3cc11863f1c59a4a1e8d2ef0dc1ee1ff901e22c",
+    "passages": 73,
+    "characters": 89496,
+    "bytes": 193804,
+    "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0057-tlg102-grc-86f30d2d19b2baa5.json"
+   }
+  },
+  {
+   "id": "cts-tlg0057-tlg101",
+   "author": "Galeno",
+   "title": "In Hippocratis De officina medici",
+   "language": "grc",
+   "genre": "Corpus clásico ampliado",
+   "dating": "siglo II d. C.",
+   "reading": {
+    "url": "classics-text-reader.html?work=cts-tlg0057-tlg101&lang=grc&edition=0c34c682d3864642",
+    "status": "Edición TEI alojada en R2 con búsqueda y traducción automática por pasaje"
+   },
+   "manuscript": {
+    "status": "Sin testimonio manuscrito individual asignado; la edición TEI se identifica por separado"
+   },
+   "pdf": {
+    "url": null,
+    "status": "No consta PDF ni facsímil individual verificado para esta edición"
+   },
+   "translation": {
+    "status": "Traducción automática de consulta por pasaje; no se atribuye a un traductor académico"
+   },
+   "links": {
+    "scaife": "https://scaife.perseus.org/library/urn:cts:greekLit:tlg0057.tlg101.1st1K-grc1/"
+   },
+   "aliases": [
+    "urn:cts:greekLit:tlg0057.tlg101.1st1K-grc1"
+   ],
+   "relatedWorkIds": [],
+   "catalogueProvenance": "Título y autor de los catálogos CTS del sitio; edición contrastada con su cabecera TEI. No se retrotraduce el título.",
+   "corpusFiles": {
+    "grc": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0057-tlg101-grc-0c34c682d3864642.json"
+   },
+   "localVersions": [
+    {
+     "language": "grc",
+     "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0057-tlg101-grc-0c34c682d3864642.json",
+     "label": "Edición original grc · urn:cts:greekLit:tlg0057.tlg101.1st1K-grc1",
+     "reader": "classics-text-reader.html?work=cts-tlg0057-tlg101&lang=grc&edition=0c34c682d3864642",
+     "sourceUrns": [
+      "urn:cts:greekLit:tlg0057.tlg101.1st1K-grc1"
+     ],
+     "sha256": "0c34c682d3864642f7394e0096a609ce9cc533ed216b2823012d5ffc13b9c205"
+    }
+   ],
+   "publicStatus": "lectura-local-parcial",
+   "indexedEdition": {
+    "sources": [
+     {
+      "title": "In Hippocratis De officina medici",
+      "titleLanguage": "lat",
+      "author": "Galen",
+      "editors": [
+       "Karl Gottlob Kühn"
+      ],
+      "bibliography": "Claudii Galeni Opera Omnia Galen Karl Gottlob Kühn Knobloch Leipzig 18.2 629-925 1830 HathiTrust",
+      "licences": [
+       {
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+       }
+      ],
+      "editionUrn": "urn:cts:greekLit:tlg0057.tlg101.1st1K-grc1",
+      "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0057/tlg101/tlg0057.tlg101.1st1K-grc1.xml",
+      "sourceSha256": "29a510a18013a2cb01d7b7bd0ae31a11d8683156f274fa8d8375e43e180c39b2",
+      "sourceReferences": [
+       "https://hdl.handle.net/2027/hvd.hxpp91?urlappend=%3Bseq=643%3Bownerid=27021597764270865-647"
+      ],
+      "publicationYear": "1830",
+      "publisher": "Knobloch",
+      "publicationPlace": "Leipzig",
+      "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/29a510a18013a2cb01d7b7bd0ae31a11d8683156f274fa8d8375e43e180c39b2.xml"
+     }
+    ],
+    "sha256": "0c34c682d3864642f7394e0096a609ce9cc533ed216b2823012d5ffc13b9c205",
+    "passages": 217,
+    "characters": 257915,
+    "bytes": 556072,
+    "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0057-tlg101-grc-0c34c682d3864642.json"
+   }
+  },
+  {
+   "id": "cts-tlg0062-tlg010",
+   "author": "Luciano de Samósata",
+   "title": "Patriae encomium",
+   "language": "grc",
+   "genre": "Corpus clásico ampliado",
+   "dating": "c. 125–c. 180 d. C.",
+   "reading": {
+    "url": "classics-text-reader.html?work=cts-tlg0062-tlg010&lang=grc&edition=8292cf422324a043",
+    "status": "Edición TEI alojada en R2 con búsqueda y traducción automática por pasaje"
+   },
+   "manuscript": {
+    "status": "Sin testimonio manuscrito individual asignado; la edición TEI se identifica por separado"
+   },
+   "pdf": {
+    "url": null,
+    "status": "No consta PDF ni facsímil individual verificado para esta edición"
+   },
+   "translation": {
+    "status": "Traducción automática de consulta por pasaje; no se atribuye a un traductor académico"
+   },
+   "links": {
+    "scaife": "https://scaife.perseus.org/library/urn:cts:greekLit:tlg0062.tlg010.perseus-grc2/"
+   },
+   "aliases": [
+    "urn:cts:greekLit:tlg0062.tlg010.perseus-grc2"
+   ],
+   "relatedWorkIds": [],
+   "catalogueProvenance": "Título y autor de los catálogos CTS del sitio; edición contrastada con su cabecera TEI. No se retrotraduce el título.",
+   "corpusFiles": {
+    "grc": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg010-grc-8292cf422324a043.json"
+   },
+   "localVersions": [
+    {
+     "language": "grc",
+     "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg010-grc-8292cf422324a043.json",
+     "label": "Edición original grc · urn:cts:greekLit:tlg0062.tlg010.perseus-grc2",
+     "reader": "classics-text-reader.html?work=cts-tlg0062-tlg010&lang=grc&edition=8292cf422324a043",
+     "sourceUrns": [
+      "urn:cts:greekLit:tlg0062.tlg010.perseus-grc2"
+     ],
+     "sha256": "8292cf422324a0431759e2e41b79baa64a800b9770cc6961f47f64e5aa3840d8"
+    }
+   ],
+   "publicStatus": "lectura-local-parcial",
+   "indexedEdition": {
+    "sources": [
+     {
+      "title": "Πατρίδος Ἐγκώμιον",
+      "titleLanguage": "grc",
+      "author": "Lucian",
+      "editors": [
+       "Austin Morris Harmon"
+      ],
+      "bibliography": "Lucian Lucian Austin Morris Harmon London William Heinemann Ltd. Cambridge, MA Harvard University Press 1913 1 Loeb Classical Library Internet Archive",
+      "licences": [
+       {
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+       }
+      ],
+      "editionUrn": "urn:cts:greekLit:tlg0062.tlg010.perseus-grc2",
+      "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0062/tlg010/tlg0062.tlg010.perseus-grc2.xml",
+      "sourceSha256": "83aa5d63192eac7486755b817636413798e0c4437375f2d17ff493653303a0cd",
+      "sourceReferences": [
+       "https://archive.org/details/lucianha01luciuoft/page/210/mode/2up"
+      ],
+      "publicationYear": "1913",
+      "publisher": "William Heinemann Ltd.",
+      "publicationPlace": "London",
+      "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/83aa5d63192eac7486755b817636413798e0c4437375f2d17ff493653303a0cd.xml"
+     }
+    ],
+    "sha256": "8292cf422324a0431759e2e41b79baa64a800b9770cc6961f47f64e5aa3840d8",
+    "passages": 12,
+    "characters": 6068,
+    "bytes": 15697,
+    "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg010-grc-8292cf422324a043.json"
+   }
+  },
+  {
+   "id": "cts-tlg0062-tlg009",
+   "author": "Luciano de Samósata",
+   "title": "De Domo",
+   "language": "grc",
+   "genre": "Corpus clásico ampliado",
+   "dating": "c. 125–c. 180 d. C.",
+   "reading": {
+    "url": "classics-text-reader.html?work=cts-tlg0062-tlg009&lang=grc&edition=2d979a2075fe771f",
+    "status": "Edición TEI alojada en R2 con búsqueda y traducción automática por pasaje"
+   },
+   "manuscript": {
+    "status": "Sin testimonio manuscrito individual asignado; la edición TEI se identifica por separado"
+   },
+   "pdf": {
+    "url": null,
+    "status": "No consta PDF ni facsímil individual verificado para esta edición"
+   },
+   "translation": {
+    "status": "Traducción automática de consulta por pasaje; no se atribuye a un traductor académico"
+   },
+   "links": {
+    "scaife": "https://scaife.perseus.org/library/urn:cts:greekLit:tlg0062.tlg009.perseus-grc2/"
+   },
+   "aliases": [
+    "urn:cts:greekLit:tlg0062.tlg009.perseus-grc2"
+   ],
+   "relatedWorkIds": [],
+   "catalogueProvenance": "Título y autor de los catálogos CTS del sitio; edición contrastada con su cabecera TEI. No se retrotraduce el título.",
+   "corpusFiles": {
+    "grc": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg009-grc-2d979a2075fe771f.json"
+   },
+   "localVersions": [
+    {
+     "language": "grc",
+     "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg009-grc-2d979a2075fe771f.json",
+     "label": "Edición original grc · urn:cts:greekLit:tlg0062.tlg009.perseus-grc2",
+     "reader": "classics-text-reader.html?work=cts-tlg0062-tlg009&lang=grc&edition=2d979a2075fe771f",
+     "sourceUrns": [
+      "urn:cts:greekLit:tlg0062.tlg009.perseus-grc2"
+     ],
+     "sha256": "2d979a2075fe771f37f962407bcc3f29bce6d79195e25b365b4fa8e989eedd96"
+    }
+   ],
+   "publicStatus": "lectura-local-parcial",
+   "indexedEdition": {
+    "sources": [
+     {
+      "title": "Περὶ τοῦ Οἴκου",
+      "titleLanguage": "grc",
+      "author": "Lucian",
+      "editors": [
+       "Austin Morris Harmon"
+      ],
+      "bibliography": "Lucian Lucian Austin Morris Harmon London William Heinemann Ltd. Cambridge, MA Harvard University Press 1913 1 Loeb Classical Library Internet Archive",
+      "licences": [
+       {
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+       }
+      ],
+      "editionUrn": "urn:cts:greekLit:tlg0062.tlg009.perseus-grc2",
+      "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0062/tlg009/tlg0062.tlg009.perseus-grc2.xml",
+      "sourceSha256": "5dc7503415c8a7d9fed39a3223a651e06caed73824f4dd0a2b4a6305c066c847",
+      "sourceReferences": [
+       "https://archive.org/details/lucianha01luciuoft/page/176/mode/2up"
+      ],
+      "publicationYear": "1913",
+      "publisher": "William Heinemann Ltd.",
+      "publicationPlace": "London",
+      "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/5dc7503415c8a7d9fed39a3223a651e06caed73824f4dd0a2b4a6305c066c847.xml"
+     }
+    ],
+    "sha256": "2d979a2075fe771f37f962407bcc3f29bce6d79195e25b365b4fa8e989eedd96",
+    "passages": 37,
+    "characters": 19319,
+    "bytes": 45786,
+    "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg009-grc-2d979a2075fe771f.json"
+   }
+  },
+  {
+   "id": "cts-tlg0057-tlg114",
+   "author": "Galeno",
+   "title": "De causis respirationis",
+   "language": "grc",
+   "genre": "Corpus clásico ampliado",
+   "dating": "siglo II d. C.",
+   "reading": {
+    "url": "classics-text-reader.html?work=cts-tlg0057-tlg114&lang=grc&edition=490dfa38b19cb739",
+    "status": "Edición TEI alojada en R2 con búsqueda y traducción automática por pasaje"
+   },
+   "manuscript": {
+    "status": "Sin testimonio manuscrito individual asignado; la edición TEI se identifica por separado"
+   },
+   "pdf": {
+    "url": null,
+    "status": "No consta PDF ni facsímil individual verificado para esta edición"
+   },
+   "translation": {
+    "status": "Traducción automática de consulta por pasaje; no se atribuye a un traductor académico"
+   },
+   "links": {
+    "scaife": "https://scaife.perseus.org/library/urn:cts:greekLit:tlg0057.tlg114.1st1K-grc1/"
+   },
+   "aliases": [
+    "urn:cts:greekLit:tlg0057.tlg114.1st1K-grc1"
+   ],
+   "relatedWorkIds": [],
+   "catalogueProvenance": "Título y autor de los catálogos CTS del sitio; edición contrastada con su cabecera TEI. No se retrotraduce el título.",
+   "corpusFiles": {
+    "grc": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0057-tlg114-grc-490dfa38b19cb739.json"
+   },
+   "localVersions": [
+    {
+     "language": "grc",
+     "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0057-tlg114-grc-490dfa38b19cb739.json",
+     "label": "Edición original grc · urn:cts:greekLit:tlg0057.tlg114.1st1K-grc1",
+     "reader": "classics-text-reader.html?work=cts-tlg0057-tlg114&lang=grc&edition=490dfa38b19cb739",
+     "sourceUrns": [
+      "urn:cts:greekLit:tlg0057.tlg114.1st1K-grc1"
+     ],
+     "sha256": "490dfa38b19cb73999c3305c4c29030833ceb73f837953c461c63026372e3500"
+    }
+   ],
+   "publicStatus": "lectura-local-parcial",
+   "indexedEdition": {
+    "sources": [
+     {
+      "title": "De causis respirationis",
+      "titleLanguage": "lat",
+      "author": "Galen",
+      "editors": [
+       "Karl Gottlob Kühn"
+      ],
+      "bibliography": "Claudii Galeni Opera Omnia Galen Karl Gottlob Kühn Knobloch Lipsiae 4 465-469 1822 HathiTrust",
+      "licences": [
+       {
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+       }
+      ],
+      "editionUrn": "urn:cts:greekLit:tlg0057.tlg114.1st1K-grc1",
+      "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0057/tlg114/tlg0057.tlg114.1st1K-grc1.xml",
+      "sourceSha256": "50e0b21b66ce55742d4acd1d57fc5460b613882a08a191587eaf5a10728c8af7",
+      "sourceReferences": [
+       "https://hdl.handle.net/2027/chi.11102513?urlappend=%3Bseq=479%3Bownerid=13510798903411997-497"
+      ],
+      "publicationYear": "1822",
+      "publisher": "Knobloch",
+      "publicationPlace": "Lipsiae",
+      "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/50e0b21b66ce55742d4acd1d57fc5460b613882a08a191587eaf5a10728c8af7.xml"
+     }
+    ],
+    "sha256": "490dfa38b19cb73999c3305c4c29030833ceb73f837953c461c63026372e3500",
+    "passages": 2,
+    "characters": 4135,
+    "bytes": 10520,
+    "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0057-tlg114-grc-490dfa38b19cb739.json"
+   }
+  },
+  {
+   "id": "cts-tlg0062-tlg011",
+   "author": "Luciano de Samósata",
+   "title": "Macrobii",
+   "language": "grc",
+   "genre": "Corpus clásico ampliado",
+   "dating": "c. 125–c. 180 d. C.",
+   "reading": {
+    "url": "classics-text-reader.html?work=cts-tlg0062-tlg011&lang=grc&edition=ac70f29213e9a3a8",
+    "status": "Edición TEI alojada en R2 con búsqueda y traducción automática por pasaje"
+   },
+   "manuscript": {
+    "status": "Sin testimonio manuscrito individual asignado; la edición TEI se identifica por separado"
+   },
+   "pdf": {
+    "url": null,
+    "status": "No consta PDF ni facsímil individual verificado para esta edición"
+   },
+   "translation": {
+    "status": "Traducción automática de consulta por pasaje; no se atribuye a un traductor académico"
+   },
+   "links": {
+    "scaife": "https://scaife.perseus.org/library/urn:cts:greekLit:tlg0062.tlg011.perseus-grc2/"
+   },
+   "aliases": [
+    "urn:cts:greekLit:tlg0062.tlg011.perseus-grc2"
+   ],
+   "relatedWorkIds": [],
+   "catalogueProvenance": "Título y autor de los catálogos CTS del sitio; edición contrastada con su cabecera TEI. No se retrotraduce el título.",
+   "corpusFiles": {
+    "grc": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg011-grc-ac70f29213e9a3a8.json"
+   },
+   "localVersions": [
+    {
+     "language": "grc",
+     "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg011-grc-ac70f29213e9a3a8.json",
+     "label": "Edición original grc · urn:cts:greekLit:tlg0062.tlg011.perseus-grc2",
+     "reader": "classics-text-reader.html?work=cts-tlg0062-tlg011&lang=grc&edition=ac70f29213e9a3a8",
+     "sourceUrns": [
+      "urn:cts:greekLit:tlg0062.tlg011.perseus-grc2"
+     ],
+     "sha256": "ac70f29213e9a3a89dd3aad850bdf682b172a4e952d35c95b1bc058dea4cfae8"
+    }
+   ],
+   "publicStatus": "lectura-local-parcial",
+   "indexedEdition": {
+    "sources": [
+     {
+      "title": "Μακρόβιοι",
+      "titleLanguage": "grc",
+      "author": "Lucian",
+      "editors": [
+       "Austin Morris Harmon"
+      ],
+      "bibliography": "Lucian Lucian Austin Morris Harmon London William Heinemann Ltd. Cambridge, MA Harvard University Press 1913 1 Loeb Classical Library Internet Archive",
+      "licences": [
+       {
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+       }
+      ],
+      "editionUrn": "urn:cts:greekLit:tlg0062.tlg011.perseus-grc2",
+      "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0062/tlg011/tlg0062.tlg011.perseus-grc2.xml",
+      "sourceSha256": "b64eaff487d0d239b0982f9fca4bad2da99d100d25b160ac38f6c17420c2306e",
+      "sourceReferences": [
+       "https://archive.org/details/lucianha01luciuoft/page/222/mode/2up"
+      ],
+      "publicationYear": "1913",
+      "publisher": "William Heinemann Ltd.",
+      "publicationPlace": "London",
+      "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/b64eaff487d0d239b0982f9fca4bad2da99d100d25b160ac38f6c17420c2306e.xml"
+     }
+    ],
+    "sha256": "ac70f29213e9a3a89dd3aad850bdf682b172a4e952d35c95b1bc058dea4cfae8",
+    "passages": 30,
+    "characters": 14014,
+    "bytes": 34160,
+    "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg011-grc-ac70f29213e9a3a8.json"
+   }
+  },
+  {
+   "id": "cts-tlg0062-tlg013",
+   "author": "Luciano de Samósata",
+   "title": "Calumniae non temere credundum",
+   "language": "grc",
+   "genre": "Corpus clásico ampliado",
+   "dating": "c. 125–c. 180 d. C.",
+   "reading": {
+    "url": "classics-text-reader.html?work=cts-tlg0062-tlg013&lang=grc&edition=a850af61e2b7ebfe",
+    "status": "Edición TEI alojada en R2 con búsqueda y traducción automática por pasaje"
+   },
+   "manuscript": {
+    "status": "Sin testimonio manuscrito individual asignado; la edición TEI se identifica por separado"
+   },
+   "pdf": {
+    "url": null,
+    "status": "No consta PDF ni facsímil individual verificado para esta edición"
+   },
+   "translation": {
+    "status": "Traducción automática de consulta por pasaje; no se atribuye a un traductor académico"
+   },
+   "links": {
+    "scaife": "https://scaife.perseus.org/library/urn:cts:greekLit:tlg0062.tlg013.perseus-grc2/"
+   },
+   "aliases": [
+    "urn:cts:greekLit:tlg0062.tlg013.perseus-grc2"
+   ],
+   "relatedWorkIds": [],
+   "catalogueProvenance": "Título y autor de los catálogos CTS del sitio; edición contrastada con su cabecera TEI. No se retrotraduce el título.",
+   "corpusFiles": {
+    "grc": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg013-grc-a850af61e2b7ebfe.json"
+   },
+   "localVersions": [
+    {
+     "language": "grc",
+     "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg013-grc-a850af61e2b7ebfe.json",
+     "label": "Edición original grc · urn:cts:greekLit:tlg0062.tlg013.perseus-grc2",
+     "reader": "classics-text-reader.html?work=cts-tlg0062-tlg013&lang=grc&edition=a850af61e2b7ebfe",
+     "sourceUrns": [
+      "urn:cts:greekLit:tlg0062.tlg013.perseus-grc2"
+     ],
+     "sha256": "a850af61e2b7ebfed4b487e0fb535ce5b3252574b81d862575e4edf4cec1b75a"
+    }
+   ],
+   "publicStatus": "lectura-local-parcial",
+   "indexedEdition": {
+    "sources": [
+     {
+      "title": "Περὶ τοῦ μὴ ῥᾳδίως πιστεύειν Διαβολῇ",
+      "titleLanguage": "grc",
+      "author": "Lucian",
+      "editors": [
+       "Austin Morris Harmon"
+      ],
+      "bibliography": "Lucian Lucian Austin Morris Harmon London William Heinemann Ltd. Cambridge, MA Harvard University Press 1913 1 Loeb Classical Library Internet Archive",
+      "licences": [
+       {
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+       }
+      ],
+      "editionUrn": "urn:cts:greekLit:tlg0062.tlg013.perseus-grc2",
+      "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0062/tlg013/tlg0062.tlg013.perseus-grc2.xml",
+      "sourceSha256": "b54f12a7e4c7a55f8444caf4068bea83ba8fc6935379e9760186951d18cbef47",
+      "sourceReferences": [
+       "https://archive.org/details/lucianha01luciuoft/page/360/mode/2up"
+      ],
+      "publicationYear": "1913",
+      "publisher": "William Heinemann Ltd.",
+      "publicationPlace": "London",
+      "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/b54f12a7e4c7a55f8444caf4068bea83ba8fc6935379e9760186951d18cbef47.xml"
+     }
+    ],
+    "sha256": "a850af61e2b7ebfed4b487e0fb535ce5b3252574b81d862575e4edf4cec1b75a",
+    "passages": 35,
+    "characters": 20353,
+    "bytes": 47562,
+    "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg013-grc-a850af61e2b7ebfe.json"
+   }
+  },
+  {
+   "id": "cts-tlg0062-tlg014",
+   "author": "Luciano de Samósata",
+   "title": "Judicium vocalium",
+   "language": "grc",
+   "genre": "Corpus clásico ampliado",
+   "dating": "c. 125–c. 180 d. C.",
+   "reading": {
+    "url": "classics-text-reader.html?work=cts-tlg0062-tlg014&lang=grc&edition=b217cab209afa0c4",
+    "status": "Edición TEI alojada en R2 con búsqueda y traducción automática por pasaje"
+   },
+   "manuscript": {
+    "status": "Sin testimonio manuscrito individual asignado; la edición TEI se identifica por separado"
+   },
+   "pdf": {
+    "url": null,
+    "status": "No consta PDF ni facsímil individual verificado para esta edición"
+   },
+   "translation": {
+    "status": "Traducción automática de consulta por pasaje; no se atribuye a un traductor académico"
+   },
+   "links": {
+    "scaife": "https://scaife.perseus.org/library/urn:cts:greekLit:tlg0062.tlg014.perseus-grc2/"
+   },
+   "aliases": [
+    "urn:cts:greekLit:tlg0062.tlg014.perseus-grc2"
+   ],
+   "relatedWorkIds": [],
+   "catalogueProvenance": "Título y autor de los catálogos CTS del sitio; edición contrastada con su cabecera TEI. No se retrotraduce el título.",
+   "corpusFiles": {
+    "grc": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg014-grc-b217cab209afa0c4.json"
+   },
+   "localVersions": [
+    {
+     "language": "grc",
+     "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg014-grc-b217cab209afa0c4.json",
+     "label": "Edición original grc · urn:cts:greekLit:tlg0062.tlg014.perseus-grc2",
+     "reader": "classics-text-reader.html?work=cts-tlg0062-tlg014&lang=grc&edition=b217cab209afa0c4",
+     "sourceUrns": [
+      "urn:cts:greekLit:tlg0062.tlg014.perseus-grc2"
+     ],
+     "sha256": "b217cab209afa0c498afc3c47f41ea76481240790f2967e80a5a5f0c4c235691"
+    }
+   ],
+   "publicStatus": "lectura-local-parcial",
+   "indexedEdition": {
+    "sources": [
+     {
+      "title": "Δίκη Συμφώνων",
+      "titleLanguage": "grc",
+      "author": "Lucian",
+      "editors": [
+       "Austin Morris Harmon"
+      ],
+      "bibliography": "Lucian Lucian Austin Morris Harmon London William Heinemann Ltd. Cambridge, MA Harvard University Press 1913 1 Loeb Classical Library Internet Archive",
+      "licences": [
+       {
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+       }
+      ],
+      "editionUrn": "urn:cts:greekLit:tlg0062.tlg014.perseus-grc2",
+      "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0062/tlg014/tlg0062.tlg014.perseus-grc2.xml",
+      "sourceSha256": "7b91f3d640f0459de5b55e180cf1da25f7197330a384275582ed67679ff6f5f9",
+      "sourceReferences": [
+       "https://archive.org/details/lucianha01luciuoft/page/396/mode/2up"
+      ],
+      "publicationYear": "1913",
+      "publisher": "William Heinemann Ltd.",
+      "publicationPlace": "London",
+      "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/7b91f3d640f0459de5b55e180cf1da25f7197330a384275582ed67679ff6f5f9.xml"
+     }
+    ],
+    "sha256": "b217cab209afa0c498afc3c47f41ea76481240790f2967e80a5a5f0c4c235691",
+    "passages": 14,
+    "characters": 7130,
+    "bytes": 18057,
+    "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg014-grc-b217cab209afa0c4.json"
+   }
+  },
+  {
+   "id": "cts-tlg0026-tlg001",
+   "author": "Esquines",
+   "title": "Against Timarchus",
+   "language": "grc",
+   "genre": "Corpus clásico ampliado",
+   "dating": "389–314 a. C.",
+   "reading": {
+    "url": "classics-text-reader.html?work=cts-tlg0026-tlg001&lang=grc&edition=c580ebfd26d615eb",
+    "status": "Edición TEI alojada en R2 con búsqueda y traducción automática por pasaje"
+   },
+   "manuscript": {
+    "status": "Sin testimonio manuscrito individual asignado; la edición TEI se identifica por separado"
+   },
+   "pdf": {
+    "url": null,
+    "status": "No consta PDF ni facsímil individual verificado para esta edición"
+   },
+   "translation": {
+    "status": "Traducción automática de consulta por pasaje; no se atribuye a un traductor académico"
+   },
+   "links": {
+    "scaife": "https://scaife.perseus.org/library/urn:cts:greekLit:tlg0026.tlg001.perseus-grc2/"
+   },
+   "aliases": [
+    "urn:cts:greekLit:tlg0026.tlg001.perseus-grc2"
+   ],
+   "relatedWorkIds": [],
+   "catalogueProvenance": "Título y autor de los catálogos CTS del sitio; edición contrastada con su cabecera TEI. No se retrotraduce el título.",
+   "corpusFiles": {
+    "grc": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0026-tlg001-grc-c580ebfd26d615eb.json"
+   },
+   "localVersions": [
+    {
+     "language": "grc",
+     "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0026-tlg001-grc-c580ebfd26d615eb.json",
+     "label": "Edición original grc · urn:cts:greekLit:tlg0026.tlg001.perseus-grc2",
+     "reader": "classics-text-reader.html?work=cts-tlg0026-tlg001&lang=grc&edition=c580ebfd26d615eb",
+     "sourceUrns": [
+      "urn:cts:greekLit:tlg0026.tlg001.perseus-grc2"
+     ],
+     "sha256": "c580ebfd26d615ebab0bee78e06be2d8a14f2dcde480116ffaca23ee557e1745"
+    }
+   ],
+   "publicStatus": "lectura-local-parcial",
+   "indexedEdition": {
+    "sources": [
+     {
+      "title": "Κατὰ Τιμάρχου",
+      "titleLanguage": "grc",
+      "author": "Aeschines",
+      "editors": [
+       "Charles Darwin Adams"
+      ],
+      "bibliography": "Aeschines The Speeches of Aeschines Charles Darwin Adams London William Heinemann, Ltd. Cambridge, MA Harvard University Press 1919 1958 Internet Archive",
+      "licences": [
+       {
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+       }
+      ],
+      "editionUrn": "urn:cts:greekLit:tlg0026.tlg001.perseus-grc2",
+      "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0026/tlg001/tlg0026.tlg001.perseus-grc2.xml",
+      "sourceSha256": "dbd5bfc59ef168138a05e907ff6ecfc302f3a06bc7ebe4fab9ff3cf661b042ae",
+      "sourceReferences": [
+       "https://archive.org/details/speechesagainstt00aescuoft/page/4/mode/2up"
+      ],
+      "publicationYear": "1919",
+      "publisher": "William Heinemann, Ltd.",
+      "publicationPlace": "London",
+      "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/dbd5bfc59ef168138a05e907ff6ecfc302f3a06bc7ebe4fab9ff3cf661b042ae.xml"
+     }
+    ],
+    "sha256": "c580ebfd26d615ebab0bee78e06be2d8a14f2dcde480116ffaca23ee557e1745",
+    "passages": 216,
+    "characters": 87161,
+    "bytes": 206777,
+    "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0026-tlg001-grc-c580ebfd26d615eb.json"
+   }
+  },
+  {
+   "id": "cts-tlg0026-tlg002",
+   "author": "Esquines",
+   "title": "On the Embassy",
+   "language": "grc",
+   "genre": "Corpus clásico ampliado",
+   "dating": "389–314 a. C.",
+   "reading": {
+    "url": "classics-text-reader.html?work=cts-tlg0026-tlg002&lang=grc&edition=65d251113556b008",
+    "status": "Edición TEI alojada en R2 con búsqueda y traducción automática por pasaje"
+   },
+   "manuscript": {
+    "status": "Sin testimonio manuscrito individual asignado; la edición TEI se identifica por separado"
+   },
+   "pdf": {
+    "url": null,
+    "status": "No consta PDF ni facsímil individual verificado para esta edición"
+   },
+   "translation": {
+    "status": "Traducción automática de consulta por pasaje; no se atribuye a un traductor académico"
+   },
+   "links": {
+    "scaife": "https://scaife.perseus.org/library/urn:cts:greekLit:tlg0026.tlg002.perseus-grc2/"
+   },
+   "aliases": [
+    "urn:cts:greekLit:tlg0026.tlg002.perseus-grc2"
+   ],
+   "relatedWorkIds": [],
+   "catalogueProvenance": "Título y autor de los catálogos CTS del sitio; edición contrastada con su cabecera TEI. No se retrotraduce el título.",
+   "corpusFiles": {
+    "grc": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0026-tlg002-grc-65d251113556b008.json"
+   },
+   "localVersions": [
+    {
+     "language": "grc",
+     "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0026-tlg002-grc-65d251113556b008.json",
+     "label": "Edición original grc · urn:cts:greekLit:tlg0026.tlg002.perseus-grc2",
+     "reader": "classics-text-reader.html?work=cts-tlg0026-tlg002&lang=grc&edition=65d251113556b008",
+     "sourceUrns": [
+      "urn:cts:greekLit:tlg0026.tlg002.perseus-grc2"
+     ],
+     "sha256": "65d251113556b008659e034f4e7404892b6a45ef14d3c7f125bc182afdd0e734"
+    }
+   ],
+   "publicStatus": "lectura-local-parcial",
+   "indexedEdition": {
+    "sources": [
+     {
+      "title": "Περὶ τῆς παραπρεσβείας",
+      "titleLanguage": "grc",
+      "author": "Aeschines",
+      "editors": [
+       "Charles Darwin Adams"
+      ],
+      "bibliography": "Aeschines The Speeches of Aeschines Charles Darwin Adams London William Heinemann, Ltd. Cambridge, MA Harvard University Press 1919 1958 Internet Archive",
+      "licences": [
+       {
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+       }
+      ],
+      "editionUrn": "urn:cts:greekLit:tlg0026.tlg002.perseus-grc2",
+      "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0026/tlg002/tlg0026.tlg002.perseus-grc2.xml",
+      "sourceSha256": "cf3c32919fb9f7b9513c42009c774a47ae200ba3b4a3e7305838c9f0d4d6f57a",
+      "sourceReferences": [
+       "https://archive.org/details/speechesagainstt00aescuoft/page/162/mode/2up"
+      ],
+      "publicationYear": "1919",
+      "publisher": "William Heinemann, Ltd.",
+      "publicationPlace": "London",
+      "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/cf3c32919fb9f7b9513c42009c774a47ae200ba3b4a3e7305838c9f0d4d6f57a.xml"
+     }
+    ],
+    "sha256": "65d251113556b008659e034f4e7404892b6a45ef14d3c7f125bc182afdd0e734",
+    "passages": 213,
+    "characters": 80185,
+    "bytes": 192383,
+    "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0026-tlg002-grc-65d251113556b008.json"
+   }
+  },
+  {
+   "id": "cts-tlg0026-tlg003",
+   "author": "Esquines",
+   "title": "Against Ctesiphon",
+   "language": "grc",
+   "genre": "Corpus clásico ampliado",
+   "dating": "389–314 a. C.",
+   "reading": {
+    "url": "classics-text-reader.html?work=cts-tlg0026-tlg003&lang=grc&edition=aa59f6dbb8d06abf",
+    "status": "Edición TEI alojada en R2 con búsqueda y traducción automática por pasaje"
+   },
+   "manuscript": {
+    "status": "Sin testimonio manuscrito individual asignado; la edición TEI se identifica por separado"
+   },
+   "pdf": {
+    "url": null,
+    "status": "No consta PDF ni facsímil individual verificado para esta edición"
+   },
+   "translation": {
+    "status": "Traducción automática de consulta por pasaje; no se atribuye a un traductor académico"
+   },
+   "links": {
+    "scaife": "https://scaife.perseus.org/library/urn:cts:greekLit:tlg0026.tlg003.perseus-grc2/"
+   },
+   "aliases": [
+    "urn:cts:greekLit:tlg0026.tlg003.perseus-grc2"
+   ],
+   "relatedWorkIds": [],
+   "catalogueProvenance": "Título y autor de los catálogos CTS del sitio; edición contrastada con su cabecera TEI. No se retrotraduce el título.",
+   "corpusFiles": {
+    "grc": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0026-tlg003-grc-aa59f6dbb8d06abf.json"
+   },
+   "localVersions": [
+    {
+     "language": "grc",
+     "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0026-tlg003-grc-aa59f6dbb8d06abf.json",
+     "label": "Edición original grc · urn:cts:greekLit:tlg0026.tlg003.perseus-grc2",
+     "reader": "classics-text-reader.html?work=cts-tlg0026-tlg003&lang=grc&edition=aa59f6dbb8d06abf",
+     "sourceUrns": [
+      "urn:cts:greekLit:tlg0026.tlg003.perseus-grc2"
+     ],
+     "sha256": "aa59f6dbb8d06abf61939fb7bde6ae65e3cdba2df60f6cbb2dad44167c40d604"
+    }
+   ],
+   "publicStatus": "lectura-local-parcial",
+   "indexedEdition": {
+    "sources": [
+     {
+      "title": "Κατά Κτησιφώντος",
+      "titleLanguage": "grc",
+      "author": "Aeschines",
+      "editors": [
+       "Charles Darwin Adams"
+      ],
+      "bibliography": "Aeschines The Speeches of Aeschines Charles Darwin Adams London William Heinemann, Ltd. Cambridge, MA Harvard University Press 1919 1958 Internet Archive",
+      "licences": [
+       {
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+       }
+      ],
+      "editionUrn": "urn:cts:greekLit:tlg0026.tlg003.perseus-grc2",
+      "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0026/tlg003/tlg0026.tlg003.perseus-grc2.xml",
+      "sourceSha256": "af38cdc4c3d0008fb2517cc69d4e35ad49dd0fb4af3605b0ac09219775129287",
+      "sourceReferences": [
+       "https://archive.org/details/speechesagainstt00aescuoft/page/308/mode/2up"
+      ],
+      "publicationYear": "1919",
+      "publisher": "William Heinemann, Ltd.",
+      "publicationPlace": "London",
+      "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/af38cdc4c3d0008fb2517cc69d4e35ad49dd0fb4af3605b0ac09219775129287.xml"
+     }
+    ],
+    "sha256": "aa59f6dbb8d06abf61939fb7bde6ae65e3cdba2df60f6cbb2dad44167c40d604",
+    "passages": 299,
+    "characters": 119549,
+    "bytes": 283006,
+    "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0026-tlg003-grc-aa59f6dbb8d06abf.json"
+   }
   }
  ],
  "pdfPolicy": {
