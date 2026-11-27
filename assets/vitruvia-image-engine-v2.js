@@ -59,6 +59,29 @@ function documentedYear(value){
  return y<=new Date().getFullYear()+1?y:null;
 }
 
+// Colour preference is subordinate to verified identity and documentary provenance.
+// A recent year is not proof of colour; a colourized historic photo is not original colour.
+function modernPerson(identity){
+ const birth=identity?.birthYear,death=identity?.deathYear;
+ return (identity?.kind==="person"||identity?.instanceOf?.includes("Q5"))&&
+  ((Number.isFinite(birth)&&birth>=1850&&birth<=new Date().getFullYear())||(Number.isFinite(death)&&death>=1900&&death<=new Date().getFullYear()));
+}
+function colourEvidence(value){
+ const text=fold(value);
+ if(/\b(?:colorized|colorised|colourized|colourised|colorization|colourisation|coloreada|coloreado|colorizada|colorizado|colorisee|colorise|koloriert|hand colored|hand coloured|digitally colored|digitally coloured)\b/.test(text))return "colourized";
+ if(/\b(?:black and white|black white|b w|monochrome|monochromatic|grayscale|greyscale|noir et blanc|blanco y negro|schwarz weiss|schwarzweiss|sepia)\b/.test(text))return "monochrome";
+ if(/\b(?:color|colour|couleur|farben|farb) (?:photo|photograph|photography|portrait|slide|transparency|film|fotografia|retrato)\b|\b(?:photograph|photo|portrait|fotografia|retrato) (?:in color|in colour|en couleur|en color|a color)\b|\b(?:kodachrome|autochrome|agfacolor|ektachrome|color photography|colour photography|farbfotografie)\b/.test(text))return "documented-colour";
+ return "unknown";
+}
+function preferColour(items,topic){
+ if(!topic.preferColour)return items;
+ // Keep images in their documentary groups: paintings, architecture and books
+ // must not be demoted by a portrait's colour status.
+ const groups=new Map();
+ for(const item of items){if(!groups.has(item.group))groups.set(item.group,[]);groups.get(item.group).push(item)}
+ const weight={ "documented-colour":3,"unknown":2,"monochrome":1,"colourized":0 };
+ return [...groups.values()].flatMap(group=>group.sort((a,b)=>(weight[b.colourEvidence||"unknown"]??2)-(weight[a.colourEvidence||"unknown"]??2)));
+}
 const genericImageWords=/\b(pinturas?|cuadros?|paintings?|artworks?|obras?|retratos?|portraits?|fotografias?|photos?|pictures?|images?|imagenes|sculptures?|esculturas?|estatuas?|statues?)\b/;
 const paintingWords=/\b(pinturas?|cuadros?|paintings?|artworks?|obras?)\b/;
 const photoWords=/\b(fotografias?|photos?|pictures?|imagenes|images?)\b/;
@@ -189,12 +212,13 @@ function collectedImages(pages,topic){
   const historicalDate=clean(meta.DateTimeOriginal?.value||meta.DateTimeDigitized?.value||"").slice(0,70);
   const year=documentedYear(historicalDate);
   const date=historicalDate;
+  const colour=colourEvidence([page.title,page.sourceCategory,clean(meta.ImageDescription?.value||""),clean(meta.Categories?.value||"")].filter(Boolean).join(" "));
   const name=String(page.title||"").replace(/^File:/,"").replace(/_/g," ");
   const objectName=clean(meta.ObjectName?.value||"");
   const caption=(objectName&&objectName.length<170&&!/QS:|\{\{/.test(objectName)?objectName:name)
    .replace(/\.(jpe?g|png|webp|tiff?|svg)$/i,"").replace(/^\d{3,}\s*[-–]\s*/,"").replace(/\s*[-–]\s*(?:foto|photo|photograph)\b.*$/i,"");
   items.push({name,caption,preview:info.thumburl,large:(info.width>1200?info.thumburl.replace(/\/\d+px-/,"/1200px-"):safeLink(info.url)||info.thumburl),original:safeLink(info.url)||info.thumburl,page:info.descriptionurl,license,
-   credit:["Wikimedia Commons",creator,date,license].filter(Boolean).join(" · "),year,score:rank.score,group:rank.group,verifiedIdentity:!!page.fromEntityImage});
+   credit:["Wikimedia Commons",creator,date,license].filter(Boolean).join(" · "),year,score:rank.score,group:rank.group,colourEvidence:colour,verifiedIdentity:!!page.fromEntityImage});
  }
  return window.VitruviaDiscovery?.sortImages(items,topic)||items.sort((a,b)=>b.score-a.score);
 }
@@ -219,6 +243,7 @@ function displayGroups(items,topic){
   const key=String(item.page||item.original||item.preview||item.name||"").toLowerCase().replace(/[#?].*$/,"");
   if(seen.has(key))return false;seen.add(key);return true;
  });
+ items=preferColour(items,topic);
  lastGalleryItems=items;
  // The gallery was kept hidden after every normal search; expose only
  // actual source-attributed results, not an empty placeholder.
@@ -266,7 +291,13 @@ function displayGroups(items,topic){
   jump.href="#vitruvia-images";
   jump.addEventListener("click",()=>{grid.hidden=false});
   const strip=create(quick,"div","article-image-preview-grid");
-  (window.VitruviaDiscovery?.previewImages(items,topic)||items.slice(0,5)).slice(0,5).forEach(item=>displayItem(item,strip));
+  const previews=window.VitruviaDiscovery?.previewImages(items,topic)||items.slice(0,5);
+  // Keep the discovery engine's relevant preview groups, but admit confirmed
+  // colour photos from those groups even when its older score favored archives.
+  const previewGroups=new Set(previews.map(i=>i.group));
+  const colour=topic.preferColour?items.filter(i=>i.colourEvidence==="documented-colour"&&previewGroups.has(i.group)):[];
+  const selected=[...colour.slice(0,3),...previews].filter((i,n,a)=>a.findIndex(j=>j.page===i.page||j.preview===i.preview)===n);
+  selected.slice(0,5).forEach(item=>displayItem(item,strip));
   quick.hidden=false;
  }
  // Keep one quick image strip above the article, not a duplicate inside it.
@@ -628,6 +659,12 @@ async function searchImages(query){
    namedPerson+" photograph",...topic.queries]).slice(0,5);
  }
  const role=fold(identity?.authorityDescription||identity?.description||"");
+ topic.preferColour=!historicalSubject&&topic.kind==="person"&&modernPerson(identity)&&
+  !/\b(?:black and white|blanco y negro|monochrome|noir et blanc|sepia)\b/.test(fold(q));
+ if(topic.preferColour&&namedPerson){
+  // One targeted query replaces a generic one instead of expanding the request budget.
+  topic.queries=distinct([topic.queries[0],namedPerson+" color photograph",...topic.queries.slice(1)]).slice(0,5);
+ }
  const isArchitect=Boolean(identity?.wikidataId&&(identity.kind==="person"||identity.instanceOf?.includes("Q5"))&&
   /\b(arquitect\w*|architect\w*|ingenier\w*|engineer\w*|architet\w*)\b/.test(role));
  if(isArchitect){
@@ -702,7 +739,7 @@ async function searchImages(query){
     (!paintings||/painting|artwork|portrait|pintur|obra/.test(name))&&
     (!photos||/photo|portrait|picture|image/.test(name));
   });
-  const priority=title=>/bust|sculpture|statue/.test(fold(title))?0:/portrait|painting|engraving/.test(fold(title))?1:/book|manuscript/.test(fold(title))?2:3;
+  const priority=title=>topic.preferColour&&colourEvidence(title)==="documented-colour"?-2:topic.preferColour&&colourEvidence(title)==="monochrome"?4:/bust|sculpture|statue/.test(fold(title))?0:/portrait|painting|engraving/.test(fold(title))?1:/book|manuscript/.test(fold(title))?2:3;
   children.sort((a,b)=>priority(a.title)-priority(b.title));
   const categoryTitles=distinct(exactCategory?[exactCategory,...children.slice(0,5).map(c=>c.title)]:accepted.map(c=>c.title)).slice(0,6);
   if(categoryTitles.length){
@@ -840,6 +877,7 @@ document.getElementById("search-images-button")?.addEventListener("click",()=>{
  grid.hidden=false;
  section.scrollIntoView({behavior:"smooth",block:"start"});
 });
+window.VitruviaColourSelection={modernPerson,colourEvidence,preferColour};
 stageImages(window.VitruviaSearchSnapshot);
 })();
 
