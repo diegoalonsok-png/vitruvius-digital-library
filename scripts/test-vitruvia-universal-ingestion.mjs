@@ -110,3 +110,24 @@ test("Distinct folios and loci survive source deduplication; richer duplicate wi
  assert(result.records.some(x=>x.locator==="1.1.1"));
  assert(result.records.some(x=>x.locator==="1.1.2"));
 });
+
+test("Academic book admission rejects popular and unverified books without excluding primary works",()=>{
+ const cases=[
+  [{type:"googlebook",publisher:"Penguin",audience:"divulgación"},"excluded-popular"],
+  [{type:"googlebook",publisher:"Oxford University Press"},"academic-publisher"],
+  [{type:"openlibrary",isbn:"123"},"unverified"],
+  [{type:"book",workId:"homer",link:"bibliotheca-graeca-latina.html?work=homer"},"documented"],
+  [{type:"book",curatedAcademic:true,publisher:"Penguin"},"documented"],
+  [{type:"book",publisher:"Oxford University Press",audience:"general audience"},"excluded-popular"],
+  [{type:"article"},"not-book"],
+  [{type:"book",title:"Oxford history",publisher:"Other"},"unverified"]
+ ];
+ for(const [row,expected] of cases)assert.equal(model.bookAdmission(row),expected);
+ const result=model.organize("Plato",[
+  {type:"googlebook",title:"Plato popular history",audience:"popular history",link:"https://example.org/popular"},
+  {type:"openlibrary",title:"Plato",isbn:"123",link:"https://example.org/unverified"},
+  {type:"googlebook",title:"Plato academic study",publisher:"Oxford University Press",link:"https://example.org/academic"}
+ ]);
+ assert.equal(result.total,1);
+ assert.equal(result.records[0].href,"https://example.org/academic");
+});
