@@ -12,32 +12,48 @@
  const lang=()=>["en","fr"].includes(document.documentElement.lang)?document.documentElement.lang:"es";
  const L=(es,en,fr)=>lang()==="en"?en:lang()==="fr"?fr:es;
  const el=(name,cls,text)=>{const n=document.createElement(name);if(cls)n.className=cls;if(text!==undefined)n.textContent=String(text);return n};
- const year=x=>typeof x==="number"&&Number.isInteger(x)&&x>=-4000&&x<=2026?x:null;
+ // Accept historical calendar years, not a hard-coded modern cutoff.
+ const year=x=>Number.isSafeInteger(x)&&x!==0&&Math.abs(x)<=1000000?x:null;
+ // Historical years have no zero; use a continuous ordinal for geometry.
+ const yearOrdinal=y=>y>0?y-1:y;
+ const ordinalYear=n=>n>=0?n+1:n;
+ function axisTicks(low,high,count){
+  const start=yearOrdinal(low),end=yearOrdinal(high),span=end-start;
+  if(span===0)return [{year:low,fraction:0.5}];
+  const steps=Math.max(1,Math.min(count,span));
+  return Array.from({length:steps+1},(_,i)=>{
+   const n=Math.round(start+i*span/steps);
+   return {year:ordinalYear(n),fraction:(n-start)/span};
+  });
+ }
  const normUrl=u=>typeof u==="string"&&/^https:\/\/[^\s]+$/i.test(u)?u:"";
  const showYear=x=>x<0?Math.abs(x)+" "+L("a. C.","BCE","av. J.-C."):String(x);
  const types={
   life:[L("Vida e instituciones","Life and institutions","Vie et institutions"),"♔"],
   events:[L("Acontecimientos","Historical events","Événements"),"⚑"],
+  family:[L("Familia","Family","Famille"),"◇"],
   works:[L("Obras y creaciones","Works and creations","Œuvres et créations"),"▤"],
   documents:[L("Documentos y ediciones","Documents and editions","Documents et éditions"),"▥"]
  };
- const state={query:"",token:0,authority:null,works:[],albums:[],rows:[],zoom:1,selected:"",rowSignature:"",pendingWorks:null,tagColor:null};
+ const state={query:"",token:0,authority:null,works:[],albums:[],rows:[],zoom:1,selected:"",rowSignature:"",pendingWorks:null,tagColor:null,phase:"idle",history:[],historyIncomplete:false,personDates:null,family:[],scrollLeft:0};
  // Greedy tracks keep same-day and adjacent milestones from touching.
  // Popup centres are independently clamped, so no tooltip can protrude
  // beyond the chronology track even at narrow mobile widths.
  function layoutMarkers(items,low,range,width,zoom=1){
   const safeWidth=Math.max(1,Number(width)||1);
-  const diameter=24,gap=11;
+  const gap=11;
+  const markerSize=e=>e.lane==="life"?34:e.lane==="events"?28:e.lane==="family"?20:e.lane==="documents"?16:23;
   const popupWidth=Math.max(1,Math.min(Math.max(1,safeWidth-12),Math.round(134*zoom)));
   const lastCentres=[];
   return items.map(event=>{
-   const raw=(event.year-low)/Math.max(1,range)*safeWidth;
+   const diameter=markerSize(event);
+   const raw=(yearOrdinal(event.year)-yearOrdinal(low))/Math.max(1,range)*safeWidth;
    const center=Math.max(Math.min(safeWidth/2,diameter/2+3),Math.min(safeWidth-Math.min(safeWidth/2,diameter/2+3),raw));
-   let level=lastCentres.findIndex(last=>center-last>=diameter+gap);
+   let level=lastCentres.findIndex(last=>center-diameter/2-last>=gap);
    if(level<0){level=lastCentres.length;lastCentres.push(-Infinity)}
-   lastCentres[level]=center;
+   lastCentres[level]=center+diameter/2;
    const popupCenter=Math.max(popupWidth/2+4,Math.min(safeWidth-popupWidth/2-4,center));
-   return {event,center,level,popupWidth,shift:popupCenter-center};
+   return {event,center,level,popupWidth,shift:popupCenter-center,diameter};
   });
  }
  const article=document.getElementById("vitruvia-article");
@@ -74,10 +90,25 @@
   const t=normalize(title);
   return terms.length>0&&terms.every(w=>t.split(" ").some(x=>x===w||w.length>5&&x.startsWith(w)));
  }
- const isAkhenaten=()=>/^(?:akhenaten|akhenaton|akhenat[oó]n|ajenaton|ajenat[oó]n|akenaton|akenat[oó]n|amenhotep iv|amenofis iv|amenophis iv)$/.test(normalize(state.query));
+ const isAkhenaten=()=>[state.query,state.authority?.canonical,state.authority?.catalogName].some(s=>/^(?:akhenaten|akhenaton|ajenaton|akenaton|amenhotep iv|amenofis iv|amenophis iv)$/.test(normalize(s).replace(/^(?:(?:el|the|le) )?(?:faraon|pharaoh|pharaon) /,"")));
  // An abstract lexical concept is NOT a historical person/album/work.
  // Search result title matches cannot establish a chronology of the concept.
  // Provide a sourced concept-specific dataset before enabling those milestones.
+ // Source-backed royal dossier; unrelated resolved subjects never inherit it.
+ const tutName=s=>/^(?:(?:el|the|le) )?(?:(?:rey|king|faraon|pharaoh|pharaon) )?(?:tutankamon|tutankhamon|tutankhamun|tutankhamen|toutankhamon|tutankhaten|tutankhaton|tutanjamon)$/.test(normalize(s));
+ const isTutankhamun=()=>state.authority?[state.authority.canonical,state.authority.catalogName].some(tutName):tutName(state.query)||/^(?:rey|king|faraon|pharaoh) tut$/.test(normalize(state.query));
+ const tutBounds={birth:-1340,death:-1323};
+ function tutEvents(){
+  const ucl="https://www.ucl.ac.uk/museums-static/digitalegypt/chronology/tutankhamun.html",source="UCL · Digital Egypt for Universities";
+  const ox="https://www.griffith.ox.ac.uk/discoveringTut/journals-and-diaries/season-1/journal.html";
+  return [
+   {year:-1340,approx:true,lane:"life",title:L("Nacimiento estimado","Estimated birth","Naissance estimée"),detail:L("Estimación c. 1340–1339 a. C. a partir de la edad de 16–17 años al morir hacia 1323 a. C. según UCL; no es una fecha de nacimiento atestiguada.","Estimated from age 16–17 at death c. 1323 BCE; no attested birth date.","Estimation d’après l’âge de 16–17 ans au décès vers 1323 ; naissance non attestée."),url:ucl,source},
+   {year:-1333,end:-1323,approx:true,lane:"life",title:L("Acceso al trono y reinado","Accession and reign","Avènement et règne"),detail:L("Cronología aproximada de UCL (1333–1323 a. C.); otras cronologías difieren. Restauración de los cultos tras Amarna, sin asignar un año absoluto no documentado.","Approximate UCL chronology; other chronologies differ. Restoration of cults after Amarna without assigning an undocumented absolute year.","Chronologie approximative UCL ; restauration des cultes après Amarna, sans année absolue non attestée."),url:ucl,source},
+   {year:-1323,approx:true,lane:"life",title:L("Muerte · sepultura KV62","Death · burial KV62","Décès · sépulture KV62"),detail:L("Final del reinado según UCL; causa de muerte no establecida en esa fuente.","End of reign according to UCL; cause of death not established there.","Fin du règne selon UCL ; cause du décès non établie."),url:ucl,source},
+   {year:1922,lane:"documents",title:L("Descubrimiento de la tumba KV62","Discovery of tomb KV62","Découverte de la tombe KV62"),detail:L("Hallazgo de la escalera el 4 de noviembre; inspección de la antecámara el 26 de noviembre.","Staircase found 4 November; antechamber inspected 26 November.","Escalier découvert le 4 novembre ; antichambre inspectée le 26 novembre."),url:ox,source:"Griffith Institute · Carter, TAA i.2.1.25–53"},
+   {year:1923,lane:"documents",title:L("Apertura de la cámara funeraria","Opening of burial chamber","Ouverture de la chambre funéraire"),detail:L("Testimonios de la apertura del 16 de febrero de 1923.","Eyewitness accounts of the opening on 16 February 1923.","Témoignages de l’ouverture du 16 février 1923."),url:"https://www.griffith.ox.ac.uk/discoveringTut/alt-accounts/",source:"Griffith Institute · eyewitness accounts"}
+  ];
+ }
  const abstractTerms=new Set([
   "logos","λογος","logoi","λογοι",
   "ethos","ηθος","mythos","μυθος",
@@ -101,7 +132,7 @@
   "Q41176","Q839954","Q23413","Q6256","Q43229","Q4830453","Q215380"
  ]);
  const hasHistoricalSubject=()=>{
-  if(isAkhenaten())return true;
+  if(isAkhenaten()||isTutankhamun())return true;
   if(isAbstractTerm())return false;
   const a=state.authority;
   return Boolean(a&&Array.isArray(a.instanceOf)&&a.instanceOf.some(id=>chronologicalTypes.has(id)));
@@ -133,10 +164,117 @@
     detail:L("Muerte hacia 1336 a. C., tras un reinado de alrededor de diecisiete años. La edad exacta al morir no está establecida con certeza.","Approximate death around 1336 BCE; exact age unknown.","Décès vers 1336 av. J.-C.; âge exact incertain.")}
   ];
  }
+
+ // Recover historical relationships independently of the main search. A
+ // missing network response is not evidence that the person had no events.
+ // Only explicitly dated statements and qualifiers are eligible.
+ function dateValue(v){
+  if(!v||typeof v.time!=="string"||!Number.isInteger(v.precision)||v.precision<9)return null;
+  const match=v.time.match(/^([+-]\d+)-/), y=match?year(Number(match[1])):null;
+  return y===null?null:{year:y,approx:Boolean(v.before||v.after)};
+ }
+ function statements(entity,p){
+  const all=(entity?.claims?.[p]||[]).filter(s=>s.rank!=="deprecated"&&s.mainsnak?.snaktype==="value");
+  const preferred=all.filter(s=>s.rank==="preferred");
+  return preferred.length?preferred:all;
+ }
+ function qualifier(s,p){
+  return (s.qualifiers?.[p]||[]).map(q=>dateValue(q.datavalue?.value)).filter(Boolean)[0]||null;
+ }
+ function claimDate(entity,p){
+  return statements(entity,p).map(s=>dateValue(s.mainsnak?.datavalue?.value)).filter(Boolean)[0]||null;
+ }
+ const entityId=s=>s?.mainsnak?.datavalue?.value?.id;
+ const validId=id=>/^Q\d+$/.test(id||"");
+ function entityLabel(e,id){
+  return e?.labels?.[lang()]?.value||e?.labels?.en?.value||e?.labels?.es?.value||id;
+ }
+ const familyProperties=["P22","P25","P26","P40","P3373"];
+ function familyRecords(person,related){
+  const relations={P22:L("Padre","Father","Père"),P25:L("Madre","Mother","Mère"),P26:L("Cónyuge","Spouse","Conjoint"),P40:L("Descendiente","Child","Enfant"),P3373:L("Hermano/a","Sibling","Frère/sœur")};
+  const records=[];
+  for(const p of familyProperties){
+   for(const s of statements(person,p)){
+    const id=entityId(s);if(!validId(id)||id===person.id)continue;
+    const linked=related[id],name=entityLabel(linked,id);if(name===id)continue;
+    const birth=claimDate(linked,"P569"),death=claimDate(linked,"P570");
+    const marriage=p==="P26"?qualifier(s,"P580"):null;
+    const source="https://www.wikidata.org/wiki/"+person.id+"#"+p;
+    records.push({id,p,name,relation:relations[p],birth,death,marriage,source,url:"https://www.wikidata.org/wiki/"+id});
+   }
+  }
+  return records.filter((r,i,a)=>a.findIndex(x=>x.id===r.id&&x.p===r.p)===i);
+ }
+ function familyEvents(records){
+  const result=[];
+  for(const r of records){
+   const detail=r.relation+" · "+r.name+". "+L("Vínculo registrado en la ficha de autoridad; verificar parentesco y datación con las referencias del registro.","Relationship recorded in the authority record; verify kinship and dates against its references.","Lien consigné dans la notice d’autorité ; vérifier la parenté et les dates dans ses références.");
+   const add=(date,label,p)=>{if(date)result.push({year:date.year,approx:date.approx,lane:"family",title:label+" · "+r.name,detail,source:"Wikidata · "+r.p+" / "+p,url:r.url,relationUrl:r.source})};
+   // Only a dated birth of a child, a dated death of a relative, or a
+   // qualified start of a marriage may become a family milestone.
+   // Parents' and siblings' birth dates remain in the family record.
+   if(r.p==="P40")add(r.birth,L("Nacimiento de descendiente","Birth of child","Naissance d’un enfant"),"P569");
+   if(r.p==="P26")add(r.marriage,L("Inicio de unión documentada","Recorded marriage begins","Début d’union attesté"),"P580");
+   add(r.death,L("Muerte de familiar","Death of relative","Décès d’un proche"),"P570");
+  }
+  return result.map(event).filter(Boolean);
+ }
+ function relationEvents(person,related){
+  const result=[];
+  const add=(s,p,date,lane,title,detail,end=null)=>{
+   if(!date||!title)return;
+   const url=s.id&&s.id.startsWith(person.id+"$")?"https://www.wikidata.org/wiki/"+person.id+"#"+s.id.replace("$","-"):"https://www.wikidata.org/wiki/"+person.id;
+   result.push({year:date.year,end:end&&end.year>=date.year?end.year:null,approx:date.approx||Boolean(end?.approx),personalDate:lane==="life"||p.includes("qualifier"),lane,title,detail,source:"Wikidata · "+p,url});
+  };
+  for(const s of statements(person,"P39")){
+   const id=entityId(s);if(!validId(id))continue;
+   const title=entityLabel(related[id],id);if(title===id)continue;
+   const start=qualifier(s,"P580"),end=qualifier(s,"P582"),point=qualifier(s,"P585");
+   const detail=L("Cargo documentado en la ficha de autoridad; las fechas corresponden a este cargo, no a toda la vida.","Office recorded in the authority record; dates refer to this office, not the whole life.","Fonction attestée ; les dates concernent cette fonction, non toute la vie.");
+   if(start)add(s,"P39/P580",start,"life",L("Inicio del cargo: ","Office begins: ","Début de fonction : ")+title,detail,end);
+   if(end)add(s,"P39/P582",end,"life",L("Fin del cargo: ","Office ends: ","Fin de fonction : ")+title,detail);
+   if(!start&&!end&&point)add(s,"P39/P585",point,"life",title,detail);
+  }
+  for(const p of ["P793","P607","P1344"]){
+   for(const s of statements(person,p)){
+    const id=entityId(s);if(!validId(id))continue;
+    const linked=related[id],title=entityLabel(linked,id);if(title===id)continue;
+    const ownDate=qualifier(s,"P585")||qualifier(s,"P580");
+    const linkedDate=claimDate(linked,"P585")||claimDate(linked,"P580");
+    const date=ownDate||linkedDate;
+    const end=qualifier(s,"P582")||(!ownDate?claimDate(linked,"P582"):null);
+    add(s,p+(ownDate?" · qualifier":" · "+id),date,"events",title,
+      L("Relación histórica documentada. Si la fecha procede del acontecimiento relacionado, no certifica una fecha individual de participación.","Documented relation; a linked event date does not establish an individual's exact participation date.","Relation documentée ; la date de l’événement ne prouve pas celle de la participation individuelle."),end);
+   }
+  }
+  return result.map(event).filter(Boolean);
+ }
+ async function getEntities(ids){
+  if(!ids.length)return {};
+  const controller=new AbortController(),timer=setTimeout(()=>controller.abort(),6500);
+  try{
+   const params=new URLSearchParams({action:"wbgetentities",ids:ids.join("|"),props:"claims|labels",languages:lang()+"|en|es",format:"json",origin:"*"});
+   const response=await fetch("https://www.wikidata.org/w/api.php?"+params,{signal:controller.signal});
+   if(!response.ok)throw Error("HTTP "+response.status);
+   const data=await response.json();
+   if(!data.entities)throw Error("Missing entity records");
+   return data.entities;
+  }finally{clearTimeout(timer)}
+ }
+ async function retrieveHistory(a){
+  if(!a?.instanceOf?.includes("Q5")||!validId(a.wikidataId))return [];
+  const data=await getEntities([a.wikidataId]),person=data[a.wikidataId];
+  if(!person?.claims)throw Error("Missing person claims");
+  const ids=[...new Set(["P39","P793","P607","P1344",...familyProperties].flatMap(p=>statements(person,p).map(entityId)).filter(validId))].slice(0,45);
+  const related=await getEntities(ids);
+  const family=familyRecords(person,related);
+  return {family,events:[...relationEvents(person,related),...familyEvents(family)],dates:{birthYear:claimDate(person,"P569"),deathYear:claimDate(person,"P570")}};
+ }
+
  function collect(){
   if(!hasHistoricalSubject())return []; // Never generate incidental-result timelines for generic words.
-  if(isAkhenaten())return akhenatenEvents();
-  let ev=[],a=state.authority;
+  let ev=isAkhenaten()?akhenatenEvents():isTutankhamun()?tutEvents():[],a=state.authority;
+  ev.push(...state.history);
   // All Wikidata authority properties keep their distinct meanings.
   if(a&&/^Q\d+$/.test(a.wikidataId||"")){
    const metadata=[
@@ -153,8 +291,11 @@
    ];
    const url="https://www.wikidata.org/wiki/"+a.wikidataId;
    for(const [field,lane,title,p] of metadata){
-    const y=year(a[field]);if(y==null)continue;
-    ev.push({year:y,lane,title,source:"Wikidata · "+p,url,
+    if((isAkhenaten()||isTutankhamun())&&["birthYear","deathYear"].includes(field))continue;
+    const checked=state.personDates&&["birthYear","deathYear"].includes(field);
+    const date=checked?state.personDates[field]:null;
+    const y=checked?date?.year:year(a[field]);if(y==null)continue;
+    ev.push({year:y,approx:date?.approx||false,lane,title,source:"Wikidata · "+p,url,
       detail:L("Fecha registrada en la ficha de autoridad ("+p+"). Debe cotejarse la precisión y la referencia del enunciado antes de utilizarla como prueba historiográfica.",
        "Date recorded in the authority record ("+p+"). Verify the statement's precision and references before scholarly use.",
        "Date inscrite dans la notice d'autorité ("+p+"). Vérifier précision et sources.")});
@@ -195,7 +336,9 @@
     (r.codexDate!=null||r.editionYear!=null)&&
     ownHoldings.test(String(r.source||"")+" "+String(r.meta||"")+" "+String(r.title||""));
    if(!matchedTitle(state.query,r.title)&&!catalogued)continue;
-   const y=Number(r.editionYear??r.year??r.codexDate??null);
+   const raw=r.editionYear??r.year??r.codexDate;
+   if(raw==null||String(raw).trim()==="")continue;
+   const y=Number(raw);
    if(year(y)==null||!normUrl(r.link))continue;
    ev.push({year:y,lane:"documents",title:r.title,url:r.link,source:String(r.source||"Catálogo").slice(0,80),
     detail:catalogued?
@@ -210,8 +353,10 @@
   ev=ev.map(event).filter(Boolean).filter(e=>{
    const key=normalize(e.title)+"|"+e.year+"|"+e.lane;
    if(seen.has(key))return false;seen.add(key);return true
-  }).sort((a,b)=>a.year-b.year||a.title.localeCompare(b.title)).slice(0,48);
-  return ev;
+  });
+  // Keep primary biographical milestones before selecting secondary material.
+  const priority=e=>e.lane==="life"?0:e.lane==="events"?1:e.lane==="family"?2:e.lane==="works"?3:4;
+  return ev.sort((a,b)=>priority(a)-priority(b)||a.year-b.year).slice(0,48).sort((a,b)=>a.year-b.year||a.title.localeCompare(b.title));
  }
  function highlightButton(button,detail,event){
   for(const active of root.querySelectorAll(".vat-event[aria-pressed=true]"))active.setAttribute("aria-pressed","false");
@@ -223,6 +368,7 @@
   const link=el("a","vat-source-link",L("Consultar fuente y metadatos","Open source and metadata","Consulter la source"));
   link.href=event.url;link.target="_blank";link.rel="noopener noreferrer";
   const contents=el("div","vat-detail-text");contents.append(heading,body,source,link);
+  if(normUrl(event.relationUrl)){const relation=el("a","vat-source-link",L("Consultar vínculo familiar","View family relationship","Consulter le lien familial"));relation.href=event.relationUrl;relation.target="_blank";relation.rel="noopener noreferrer";contents.append(relation)}
   detail.replaceChildren();
   if(event.image){
    const img=el("img","vat-detail-image");img.src=event.image;img.alt=event.title;
@@ -231,9 +377,163 @@
   }
   detail.append(contents);detail.hidden=false;
  }
+ // Keep the life scale independent of later documentary reception.
+ function splitChronology(events,isPerson,born,died){
+  born=Number.isSafeInteger(born)&&born!==0?born:null;
+  died=Number.isSafeInteger(died)&&died!==0?died:null;
+  if(born!==null&&died!==null&&born>died){born=null;died=null}
+  const visible=[],outside=[],uncertain=[];
+  for(const e of events){
+   if(isPerson&&(e.lane==="documents"||(born!==null&&e.year<born)||(died!==null&&e.year>died))){
+    outside.push(e);continue;
+   }
+   // With incomplete life bounds, dated records about other entities must
+   // not be promoted to personal milestones. Direct personal statements
+   // remain visible; uncertainty about participation is preserved.
+   if(isPerson&&(born===null||died===null)&&e.lane!=="life"&&!e.personalDate){
+    uncertain.push(e);continue;
+   }
+   // An interval extending beyond a known death is not a certified
+   // lifetime event. Preserve the full statement separately, without
+   // silently clipping its original end date.
+   if(isPerson&&died!==null&&Number.isSafeInteger(e.end)&&e.end>died){
+    uncertain.push(e);continue;
+   }
+   visible.push(e);
+  }
+  if(!visible.length)return {visible,outside,uncertain,low:null,high:null};
+  const min=Math.min(...visible.map(e=>e.year));
+  const max=Math.max(...visible.map(e=>isPerson&&died!==null?Math.min(e.end??e.year,died):e.end??e.year));
+  const padding=Math.max(1,Math.ceil(Math.max(1,max-min)*.04));
+  return {visible,outside,uncertain,low:isPerson?(born??min):ordinalYear(yearOrdinal(min)-padding),high:isPerson?(died??max):ordinalYear(yearOrdinal(max)+padding)};
+ }
+ // A separate, keyboard-accessible documentary scale. Date geometry is
+ // independent of the biography; no artificial years or hidden records.
+ function appendLegacyTimeline(parent,records,uncertain=[]){
+  const make=(items,title)=>{
+   if(!items.length)return;
+   const section=el("details","vat-outside");
+   section.append(el("summary",null,title+" ("+items.length+")"));
+   const sorted=items.slice().sort((a,b)=>a.year-b.year||a.title.localeCompare(b.title));
+   const low=sorted[0].year,high=sorted[sorted.length-1].year;
+   const range=Math.max(1,yearOrdinal(high)-yearOrdinal(low));
+   const viewport=el("div","vat-legacy-viewport");viewport.tabIndex=0;
+   viewport.setAttribute("aria-label",title);viewport.style.cssText="max-width:100%;overflow-x:auto;overflow-y:hidden;margin-top:10px";
+   const track=el("div","vat-legacy-track");
+   const width=Math.max(720,Math.min(3600,sorted.length*90));
+   const plotted=layoutMarkers(sorted,low,range,width,1);
+   const levels=Math.max(...plotted.map(x=>x.level),0);
+   track.style.cssText="position:relative;box-sizing:content-box;margin:0 12px;width:"+width+"px;height:"+(100+levels*40)+"px";
+   const line=el("div");line.style.cssText="position:absolute;left:0;right:0;top:44px;border-top:1px solid currentColor;opacity:.6";track.append(line);
+   for(const tick of axisTicks(low,high,Math.min(8,Math.max(1,Math.floor(width/110))))){
+    const mark=el("span",null,showYear(tick.year));mark.style.cssText="position:absolute;top:5px;font-size:12px;white-space:nowrap;left:"+Math.max(0,Math.min(width-80,tick.fraction*width-22))+"px";track.append(mark);
+   }
+   const detail=el("div","vat-legacy-detail");detail.style.cssText="min-height:54px;overflow-wrap:anywhere;padding:8px 0";
+   const prompt=L("Selecciona un hito para consultar su fuente.","Select a milestone to consult its source.","Sélectionnez un jalon pour consulter sa source.");
+   detail.append(el("small",null,prompt));
+   for(const p of plotted){
+    const e=p.event,button=el("button",null,"");button.type="button";button.title=showYear(e.year)+" · "+e.title;button.setAttribute("aria-label",button.title);
+    button.style.cssText="position:absolute;box-sizing:border-box;left:"+(p.center-p.diameter/2)+"px;top:"+(44+p.level*40-p.diameter/2)+"px;width:"+p.diameter+"px;height:"+p.diameter+"px;padding:0;border:2px solid #8996a1;border-radius:50%;background:#b8cce0;cursor:pointer";
+    const show=()=>{const link=el("a",null,L("Consultar fuente","Consult source","Consulter la source"));link.href=e.url;link.target="_blank";link.rel="noopener noreferrer";detail.replaceChildren(el("strong",null,button.title),el("p",null,e.detail),link)};
+    button.addEventListener("mouseenter",show);button.addEventListener("focus",show);button.addEventListener("click",show);track.append(button);
+   }
+   viewport.append(track);
+   const slider=el("input");slider.type="range";slider.min="0";slider.max="1000";slider.value="0";slider.style.cssText="display:block;width:100%;margin:8px 0;accent-color:#8da9cc";slider.setAttribute("aria-label",L("Recorrer fechas documentales","Browse documentary dates","Parcourir les dates documentaires"));
+   const sync=()=>{const max=Math.max(0,viewport.scrollWidth-viewport.clientWidth);slider.value=String(max?Math.round(viewport.scrollLeft/max*1000):0);slider.disabled=!max};
+   slider.addEventListener("input",()=>{viewport.scrollLeft=Math.max(0,viewport.scrollWidth-viewport.clientWidth)*Number(slider.value)/1000});
+   viewport.addEventListener("scroll",sync,{passive:true});
+   section.addEventListener("toggle",()=>{if(section.open)sync()});
+   const list=el("ul","vat-outside-list");
+   for(const e of sorted){const li=el("li"),link=el("a",null,showYear(e.year)+" · "+e.title);link.href=e.url;link.target="_blank";link.rel="noopener noreferrer";li.append(link);list.append(li)}
+   section.append(viewport,slider,detail,list);parent.append(section);
+  };
+  make(records,L("Documentos y legado fuera de la línea de vida","Records outside the lifetime","Documents hors de la période biographique"));
+  make(uncertain,L("Fechas relacionadas · ubicación biográfica incierta","Related dates · uncertain biographical placement","Dates liées · situation biographique incertaine"));
+ }
+
+ function appendFamily(parent,records){
+  const section=el("details","vat-outside");
+  section.append(el("summary",null,L("Familia documentada","Documented family","Famille documentée")+" ("+records.length+")"));
+  const list=el("ul","vat-outside-list");
+  for(const r of records){
+   const item=el("li"),link=el("a",null,r.relation+" · "+r.name);
+   link.href=r.url;link.target="_blank";link.rel="noopener noreferrer";item.append(link);
+   const dates=[r.birth?L("Nacimiento","Birth","Naissance")+": "+(r.birth.approx?"c. ":"")+showYear(r.birth.year):"",r.death?L("Muerte","Death","Décès")+": "+(r.death.approx?"c. ":"")+showYear(r.death.year):""].filter(Boolean);
+   item.append(el("small",null," · "+(dates.join(" · ")||L("Sin fechas verificables en el registro","No usable dates in the record","Dates absentes de la notice"))));
+   list.append(item);
+  }
+  section.append(list);parent.append(section);
+ }
+
+ // Index the already retrieved search records; do not duplicate external
+ // requests, invent an inscription, or mistake a catalogue for a full text.
+ function documentaryIndex(rows,authority,query){
+  const names=[authority?.canonical,authority?.catalogName,authority?.originalCanonical,...(authority?.aliases||[]),query].map(normalize).filter(n=>n.length>=4&&!/^(?:king|rey|tut|faraon|pharaoh|egypt|egipto)$/.test(n));
+  const related=r=>{
+   if(authority?.wikidataId&&[r.subjectWikidataId,r.creatorWikidataId,r.relatedWikidataId].includes(authority.wikidataId))return true;
+   if(r.wikidataId&&authority?.notableWorkIds?.includes(r.wikidataId))return true;
+   const fields=[r.title,r.abstract,r.excerpt,r.entityCanonical,...(r.aliases||[])].map(normalize);
+   return names.some(n=>fields.some(f=>(" "+f+" ").includes(" "+n+" "))||normalize(r.author)===n);
+  };
+  const records=(rows||[]).filter(r=>r&&r.title&&related(r));
+  const distinct=a=>a.filter((r,i)=>a.findIndex(x=>(x.doi||x.link||x.title)===(r.doi||r.link||r.title))===i);
+  return {
+   objects:distinct(records.filter(r=>r.type==="museum"||r.recordKind==="museum-object")),
+   bibliography:distinct(records.filter(r=>["book","openlibrary","googlebook","article","edition"].includes(r.type))).sort((a,b)=>String(a.author||"").localeCompare(String(b.author||""),lang())||String(a.title).localeCompare(String(b.title),lang()))
+  };
+ }
+ function indexLink(parent,label,url){
+  if(typeof url!=="string"||!(/^https:\/\/[^\s]+$/i.test(url)||/^(?:documents\/[a-z0-9/_-]+\.pdf(?:#page=\d+)?|[a-z0-9/_-]+\.html(?:\?[^#]*)?(?:#[a-z0-9=&_-]+)?)$/i.test(url)))return;
+  const a=el("a","vat-source-link",label);a.href=url;a.target="_blank";a.rel="noopener noreferrer";parent.append(a);
+ }
+ function appendDocumentaryIndex(parent){
+  const {objects,bibliography}=documentaryIndex(state.rows,state.authority,state.query);
+  if(objects.length){
+   const section=el("details","vat-outside");section.append(el("summary",null,L("Objetos y testimonios materiales","Objects and material witnesses","Objets et témoins matériels")+" ("+objects.length+")"));
+   const list=el("ul","vat-outside-list");
+   for(const r of objects.slice(0,30)){
+    const item=el("li");item.append(el("strong",null,r.title));
+    if(normUrl(r.image)){const img=el("img");img.src=r.image;img.alt=r.title;img.loading="lazy";img.style.cssText="display:block;max-width:120px;max-height:100px;object-fit:contain";img.onerror=()=>img.remove();item.append(img)}
+    const meta=[r.accessionNumber,r.objectDate,r.source].filter(Boolean).join(" · ");if(meta)item.append(el("p",null,meta));
+    if(r.inscriptionOriginal&&r.inscriptionSource&&normUrl(r.inscriptionSource)){
+     item.append(el("p",null,r.inscriptionOriginal));
+     if(r.inscriptionTransliteration)item.append(el("p",null,r.inscriptionTransliteration));
+     if(r.inscriptionTranslation&&r.inscriptionTranslator)item.append(el("p",null,r.inscriptionTranslation+" — "+r.inscriptionTranslator));
+     indexLink(item,L("Fuente epigráfica","Epigraphic source","Source épigraphique"),r.inscriptionSource);
+    }else item.append(el("small",null,L("Inscripción y traducción no verificadas para este objeto.","Inscription and translation not verified for this object.","Inscription et traduction non vérifiées pour cet objet.")));
+    indexLink(item,L("Ficha del museo","Museum record","Notice du musée"),r.link);list.append(item);
+   }
+   section.append(list);parent.append(section);
+  }
+  if(bibliography.length){
+   const section=el("details","vat-outside");section.append(el("summary",null,L("Bibliografía académica por autor","Academic bibliography by author","Bibliographie savante par auteur")+" ("+bibliography.length+")"));
+   const list=el("ul","vat-outside-list");
+   for(const r of bibliography.slice(0,60)){
+    const item=el("li");item.append(el("strong",null,r.author||L("Autor no indicado","Author not specified","Auteur non indiqué")));
+    item.append(el("p",null,[r.title,r.year,r.journal||r.publisher,r.doi?"DOI: "+r.doi:""].filter(Boolean).join(" · ")));
+    indexLink(item,L("Ficha bibliográfica","Bibliographic record","Notice bibliographique"),r.link);
+    if(r.pdf)indexLink(item,"PDF",r.pdf);
+    if(r.fulltext)indexLink(item,L("Leer texto completo","Read full text","Lire le texte intégral"),r.fulltext);
+    if(r.translationUrl&&r.translationLanguage)indexLink(item,L("Traducción","Translation","Traduction")+" · "+r.translationLanguage,r.translationUrl);
+    if(!r.pdf&&!r.fulltext)item.append(el("small",null,L("Acceso al texto sujeto a la fuente.","Full-text access depends on the source.","Accès au texte selon la source.")));
+    list.append(item);
+   }
+   section.append(list);parent.append(section);
+  }
+ }
+
  function draw(){
   if(!state.query){root.hidden=true;root.replaceChildren();return}
+  if(state.phase==="identity"||state.phase==="history"){
+   root.replaceChildren();root.hidden=true;
+   if(state.phase==="history"||isAkhenaten()){
+    root.hidden=false;
+    root.append(el("p","vat-method",state.phase==="identity"?L("Cronología · identificando el personaje…","Chronology · identifying subject…","Chronologie · identification…"):L("Cronología · recuperando y ordenando acontecimientos documentados…","Chronology · retrieving and sorting documented events…","Chronologie · recherche et classement des événements…")));
+   }
+   return;
+  }
   const events=collect();
+  const previousViewport=root.querySelector(".vat-viewport");if(previousViewport)state.scrollLeft=previousViewport.scrollLeft||0;
   root.replaceChildren();root.hidden=false;
   const head=el("div","vat-header");
   const left=el("div","vat-title");
@@ -275,7 +575,9 @@
     "Escala biográfica exclusivamente hasta la muerte aproximada. El nacimiento es estimado y los años absolutos del reinado pueden variar según la cronología egiptológica. Libros y estudios modernos no son hitos biográficos.",
     "Biographical scale stops at approximate death. Birth and absolute reign dates are uncertain; modern studies are excluded.",
     "L'échelle biographique s'arrête au décès approximatif. Dates discutées; les études modernes sont exclues.");
+  if(isTutankhamun())method.textContent=L("Vida estimada y reinado según UCL (c. 1333–1323 a. C.). La excavación moderna se consulta por separado; otras cronologías difieren.","Estimated life and reign according to UCL (c. 1333–1323 BCE). Modern excavation is listed separately; other chronologies differ.","Vie estimée et règne selon UCL ; fouilles modernes séparées ; autres chronologies possibles.");
   root.append(method);
+  if(state.historyIncomplete)root.append(el("p","vat-method",L("Cronología parcial: no se pudieron consultar todas las fuentes de acontecimientos.","Partial chronology: not all event sources could be retrieved.","Chronologie partielle : certaines sources sont indisponibles.")));
   if(!events.length){
    root.hidden=true;root.replaceChildren();return; // No timeline without documented milestones for a historical entity.
    const empty=el("p","vat-empty",L(
@@ -286,40 +588,64 @@
   }
   // In biographies the documentary axis ends at death. Posthumous
   // editions remain reachable, but cannot distort a lifetime into millennia.
-  const born=isAkhenaten()?akhenatenBounds.birth:year(state.authority?.birthYear);
-  const died=isAkhenaten()?akhenatenBounds.death:year(state.authority?.deathYear);
-  const lifeScope=born!==null&&died!==null&&died>=born?{born,died}:null;
-  const visibleEvents=lifeScope?events.filter(e=>e.year>=lifeScope.born&&e.year<=lifeScope.died):events;
-  const outsideEvents=lifeScope?events.filter(e=>e.year<lifeScope.born||e.year>lifeScope.died):[];
-  const minYear=visibleEvents[0]?.year??events[0].year;
-  const maxYear=Math.max(...(visibleEvents.length?visibleEvents:events).map(e=>e.end??e.year));
-  const span=Math.max(1,maxYear-minYear),padding=lifeScope?0:Math.max(1,Math.ceil(span*.04));
-  const low=lifeScope?lifeScope.born:minYear-padding;
-  const high=lifeScope?lifeScope.died:maxYear+padding;
-  const range=Math.max(1,high-low);
+  const bound=key=>state.personDates?(state.personDates[key]?.year??null):year(state.authority?.[key]);
+  const born=isAkhenaten()?akhenatenBounds.birth:isTutankhamun()?tutBounds.birth:bound("birthYear");
+  const died=isAkhenaten()?akhenatenBounds.death:isTutankhamun()?tutBounds.death:bound("deathYear");
+  const isPerson=isAkhenaten()||isTutankhamun()||state.authority?.instanceOf?.includes("Q5");
+  const scope=splitChronology(events,isPerson,born,died);
+  const visibleEvents=scope.visible,outsideEvents=scope.outside;
+  if(isPerson&&(born===null||died===null))root.append(el("p","vat-method",L("Límites biográficos incompletos: no se deduce nacimiento ni muerte de otras fechas.","Incomplete life bounds: birth and death are not inferred from other dates.","Limites biographiques incomplètes : naissance et décès non déduits.")));
+  if(!visibleEvents.length){
+   if(state.family.length)appendFamily(root,state.family);
+   if(isPerson)appendDocumentaryIndex(root);
+   appendLegacyTimeline(root,outsideEvents,scope.uncertain);
+   controls.hidden=true;return;
+  }
+  const low=scope.low,high=scope.high;
+  const range=Math.max(1,yearOrdinal(high)-yearOrdinal(low));
   // Size the axis from the actual available content box. No 250px
   // minimum canvas and no fixed 960px map overflowing mobile readers.
   const cs=typeof getComputedStyle==="function"?getComputedStyle(root):{paddingLeft:"0",paddingRight:"0"};
   const outer=Number(root.clientWidth)||Number(root.getBoundingClientRect?.().width)||760;
   const available=Math.max(1,Math.floor(outer)-(parseFloat(cs.paddingLeft)||0)-(parseFloat(cs.paddingRight)||0)-3);
   const labelWidth=Math.min(Math.round(available*.33),available<420?88:available<740?124:170);
-  const mapWidth=Math.max(1,available-labelWidth-2);
-  const cardWidth=Math.min(Math.round(134*state.zoom),Math.max(1,mapWidth-12));
+  const contentWidth=Math.round(available*Math.max(1,state.zoom));
+  const mapWidth=Math.max(1,contentWidth-labelWidth-2);
+  const cardWidth=Math.min(Math.round(134*Math.min(state.zoom,1.35)),Math.max(1,mapWidth-12));
   root.style.setProperty("--vat-label-width",labelWidth+"px");
   root.style.setProperty("--vat-card-width",cardWidth+"px");
   const viewport=el("div","vat-viewport");viewport.tabIndex=0;
-  viewport.setAttribute("aria-label",L("Cronología adaptada al ancho del visor","Chronology fitted to reader width","Chronologie adaptée à la largeur du lecteur"));
-  const map=el("div","vat-map");map.style.width=available+"px";
+  viewport.style.setProperty("overflow-x","auto","important");viewport.style.setProperty("overflow-y","hidden","important");viewport.style.setProperty("max-width","100%","important");
+  viewport.setAttribute("aria-label",L("Cronología desplazable horizontalmente al ampliar","Timeline scrolls horizontally when zoomed","Chronologie défilable horizontalement au zoom"));
+  const map=el("div","vat-map");map.style.setProperty("width",contentWidth+"px","important");map.style.setProperty("min-width",contentWidth+"px","important");map.style.setProperty("max-width","none","important");
   const axis=el("div","vat-axis");
   const ticks=Math.max(1,Math.min(9,Math.floor(mapWidth/120)));
-  for(let i=0;i<=ticks;i++){
-   const y=Math.round(low+i*range/ticks);
+  for(const {year:y,fraction} of axisTicks(low,high,ticks)){
    const tick=el("span","vat-tick",showYear(y));
-   tick.style.left=(i/ticks*100)+"%";axis.append(tick)
+   tick.style.left=(fraction*100)+"%";axis.append(tick)
   }
   map.append(axis);
   const detail=el("div","vat-detail");detail.hidden=true;detail.setAttribute("aria-live","polite");
   const stops=[];
+  // Stable preview outside the clipped scrolling area, including on mobile.
+  const hover=el("div","vat-hover-summary");
+  hover.style.cssText="box-sizing:border-box;min-height:82px;padding:10px 12px;border:1px solid currentColor;border-radius:6px;margin-top:8px;overflow-wrap:anywhere";
+  const hint=L("Pasa el mouse sobre un círculo o recorre la escala para ver el acontecimiento.","Hover a circle or move along the axis to see a milestone.","Survolez un cercle ou parcourez l’échelle pour voir un jalon.");
+  hover.append(el("small",null,hint));
+  let activeHover=null;
+  function clearHover(){
+   if(activeHover){activeHover.style.removeProperty("outline");activeHover.style.removeProperty("outline-offset");activeHover=null}
+   hover.replaceChildren(el("small",null,hint));
+  }
+  function showHover(e,button){
+   if(activeHover===button)return;
+   clearHover();activeHover=button;
+   button.style.setProperty("outline","2px solid currentColor","important");
+   button.style.setProperty("outline-offset","4px","important");
+   const label=el("strong",null,(e.approx?"c. ":"")+showYear(e.year)+" · "+e.title);
+   const note=el("p",null,e.detail.slice(0,220));note.style.margin="4px 0";
+   hover.replaceChildren(label,note,el("small",null,e.source));
+  }
   for(const [lane,[label,icon]] of Object.entries(types)){
    const items=visibleEvents.filter(x=>x.lane===lane);if(!items.length)continue;
    const band=el("section","vat-band");band.setAttribute("aria-label",label);
@@ -339,27 +665,30 @@
    const line=el("div","vat-line");track.append(line);
    const positioned=layoutMarkers(items,low,range,mapWidth,state.zoom);
    let levelMax=0;
-   for(const {event:e,center,level,popupWidth,shift} of positioned){
+   for(const {event:e,center,level,popupWidth,shift,diameter} of positioned){
     levelMax=Math.max(levelMax,level);
     const button=el("button","vat-event");
     button.type="button";button.setAttribute("aria-pressed","false");
     button.classList.add("vat-event-marker");
-    button.style.left=center+"px";button.style.top=(23+level*40)+"px";
+    button.style.left=center+"px";button.style.top=(23+level*45)+"px";
+    for(const prop of ["width","height","min-width","max-width","min-height","max-height"])button.style.setProperty(prop,diameter+"px","important");
+    if(e.approx)button.style.setProperty("border-style","dashed","important");
     button.style.setProperty("--vat-popup-width",popupWidth+"px");
     button.style.setProperty("--vat-popup-shift",shift+"px");
     button.setAttribute("aria-label",(e.approx?"c. ":"")+showYear(e.year)+" · "+e.title);
     button.title=L("Pasar el mouse o pulsar para ver la ficha","Hover or select to see the record","Survoler ou sélectionner pour voir la notice");
     const popup=el("span","vat-event-pop");
+    popup.style.setProperty("left","calc(50% + var(--vat-popup-shift, 0px))","important");
     popup.append(el("span","vat-year",(e.approx?"c. ":"")+showYear(e.year)));
     popup.append(el("strong",null,e.title));
     if(e.end!=null&&e.end!==e.year){
      const dur=el("span","vat-duration","– "+showYear(e.end));popup.append(dur);
     }
     button.append(popup);
-    button.addEventListener("mouseenter",()=>previewEvent(e));
-    button.addEventListener("focus",()=>previewEvent(e));
-    button.addEventListener("mouseleave",()=>{preview.hidden=true});
-    button.addEventListener("blur",()=>{preview.hidden=true});
+    button.addEventListener("mouseenter",()=>{if(state.zoom===1)previewEvent(e);showHover(e,button)});
+    button.addEventListener("focus",()=>{if(state.zoom===1)previewEvent(e);showHover(e,button)});
+    button.addEventListener("mouseleave",()=>{preview.hidden=true;if(activeHover===button)clearHover()});
+    button.addEventListener("blur",()=>{preview.hidden=true;if(activeHover===button)clearHover()});
     button.addEventListener("click",()=>{
      highlightButton(button,detail,e);
      detail.scrollIntoView?.({behavior:"smooth",block:"nearest"});
@@ -369,27 +698,54 @@
     if(key===state.selected)queueMicrotask(()=>{if(button.isConnected)highlightButton(button,detail,e)});
     track.append(button);
    }
-   track.style.height=(72+levelMax*40)+"px";
+   track.style.height=(72+levelMax*45)+"px";
    laneBody.append(track,preview);
    band.append(title,laneBody);map.append(band);
   }
-  viewport.append(map);root.append(viewport,detail);
-  if(lifeScope&&outsideEvents.length){
-   const extra=el("details","vat-outside");
-   extra.append(el("summary",null,L(
-    "Ediciones y documentos fuera del período biográfico ("+outsideEvents.length+")",
-    "Records outside the lifetime ("+outsideEvents.length+")",
-    "Documents hors de la période biographique ("+outsideEvents.length+")")));
-   const list=el("ul","vat-outside-list");
-   for(const e of outsideEvents.slice(0,15)){
-    const li=el("li");
-    const link=el("a",null,showYear(e.year)+" · "+e.title);
-    link.href=e.url;link.target="_blank";link.rel="noopener noreferrer";
-    li.append(link);list.append(li);
+  viewport.append(map);
+  const navigation=el("div","vat-scroll-navigation");
+  navigation.style.cssText="display:flex;flex-direction:column;gap:4px;padding:9px 2px 2px;max-width:100%;box-sizing:border-box";
+  const navLabel=el("label",null,L("Recorrer la cronología","Browse the chronology","Parcourir la chronologie"));
+  const slider=el("input");slider.type="range";slider.min="0";slider.max="1000";slider.step="1";slider.value="0";
+  slider.style.cssText="display:block;width:100%;max-width:100%;margin:3px 0;cursor:ew-resize;accent-color:#8da9cc";
+  slider.setAttribute("aria-label",navLabel.textContent);
+  const dates=el("div");dates.style.cssText="display:flex;justify-content:space-between;gap:8px;font-size:12px";
+  const position=el("output");position.style.textAlign="center";
+  dates.append(el("span",null,showYear(low)),position,el("span",null,showYear(high)));
+  navLabel.append(slider);navigation.append(navLabel,dates);
+  root.append(viewport,navigation,hover,detail);
+  const maxScroll=()=>Math.max(0,viewport.scrollWidth-viewport.clientWidth);
+  const sync=()=>{
+   const max=maxScroll(),fraction=max?viewport.scrollLeft/max:0;
+   slider.value=String(Math.round(fraction*1000));
+   const leftYear=ordinalYear(yearOrdinal(low)+Math.round(range*Math.max(0,viewport.scrollLeft-labelWidth)/mapWidth));
+   const rightYear=ordinalYear(yearOrdinal(low)+Math.round(range*Math.min(1,Math.max(0,viewport.scrollLeft+viewport.clientWidth-labelWidth)/mapWidth)));
+   position.textContent=showYear(Math.min(high,leftYear))+" — "+showYear(Math.min(high,rightYear));
+   slider.setAttribute("aria-valuetext",position.textContent);
+  };
+  slider.addEventListener("input",()=>{
+   const f=Number(slider.value)/1000;
+   if(!maxScroll()){
+    state.zoom=2;draw();
+    const v=root.querySelector(".vat-viewport");
+    if(v)v.scrollLeft=Math.max(0,v.scrollWidth-v.clientWidth)*f;
+    root.querySelector(".vat-scroll-navigation input")?.focus({preventScroll:true});
+    return;
    }
-   if(outsideEvents.length>15)list.append(el("li",null,L("Se muestran los primeros 15 registros.","Showing first 15 records.","15 premières notices affichées.")));
-   extra.append(list);root.append(extra);
-  }
+   viewport.scrollLeft=maxScroll()*f;sync();
+  });
+  viewport.addEventListener("scroll",sync,{passive:true});
+  axis.addEventListener("pointermove",e=>{
+   if(e.pointerType==="touch")return;
+   let closest=null,distance=Infinity;
+   for(const stop of stops){const rect=stop.button.getBoundingClientRect(),d=Math.abs(e.clientX-(rect.left+rect.width/2));if(d<distance){closest=stop;distance=d}}
+   if(closest&&distance<=28)showHover(closest.event,closest.button);else clearHover();
+  });
+  axis.addEventListener("pointerleave",clearHover);
+  viewport.scrollLeft=state.scrollLeft;sync();
+  if(state.family.length)appendFamily(root,state.family);
+  if(isPerson)appendDocumentaryIndex(root);
+  appendLegacyTimeline(root,outsideEvents,scope.uncertain);
   stops.sort((a,b)=>a.event.year-b.event.year||a.event.title.localeCompare(b.event.title));
   function navigate(direction){
    const current=stops.findIndex(item=>item.button.getAttribute("aria-pressed")==="true");
@@ -398,13 +754,16 @@
    if(!nextStop)return;
    highlightButton(nextStop.button,detail,nextStop.event);
    nextStop.button.focus?.({preventScroll:true});
+   const br=nextStop.button.getBoundingClientRect(),vr=viewport.getBoundingClientRect();
+   if(br.left<vr.left||br.right>vr.right)viewport.scrollLeft+=br.left-vr.left-(vr.width-br.width)/2;
+   sync();
   }
   prev.title=L("Hito anterior","Previous milestone","Jalon précédent");
   next.title=L("Hito siguiente","Next milestone","Jalon suivant");
-  zoomOut.title=L("Reducir el tamaño de la etiqueta","Smaller labels","Réduire les étiquettes");
-  zoomIn.title=L("Aumentar el tamaño de la etiqueta","Larger labels","Agrandir les étiquettes");
-  zoomOut.onclick=()=>{state.zoom=Math.max(.8,Math.round((state.zoom-.1)*100)/100);draw()};
-  zoomIn.onclick=()=>{state.zoom=Math.min(1.35,Math.round((state.zoom+.1)*100)/100);draw()};
+  zoomOut.title=L("Reducir escala cronológica","Reduce timeline scale","Réduire l’échelle chronologique");
+  zoomIn.title=L("Ampliar escala cronológica","Enlarge timeline scale","Agrandir l’échelle chronologique");
+  zoomOut.onclick=()=>{state.zoom=Math.max(1,Math.round((state.zoom-.25)*100)/100);draw()};
+  zoomIn.onclick=()=>{state.zoom=Math.min(3,Math.round((state.zoom+.25)*100)/100);draw()};
   prev.onclick=()=>navigate(-1);
   next.onclick=()=>navigate(1);
   viewport.addEventListener("keydown",e=>{
@@ -425,18 +784,25 @@
   window.addEventListener("resize",()=>{if(!root.hidden&&state.query)draw()},{passive:true});
  }
  function reset(q){
-  state.token++;state.query=String(q||"").trim().slice(0,160);state.zoom=1;
-  state.authority=null;state.works=[];state.albums=[];state.rows=[];state.selected="";state.rowSignature="";state.pendingWorks=null;
+  state.token++;state.query=String(q||"").trim().slice(0,160);state.zoom=1;state.scrollLeft=0;root.replaceChildren();
+  state.authority=null;state.works=[];state.albums=[];state.rows=[];state.selected="";state.rowSignature="";state.pendingWorks=null;state.history=[];state.historyIncomplete=false;state.personDates=null;state.family=[];state.phase=state.query?"identity":"idle";
   place();draw();
   if(!state.query)return;
   const token=state.token;
-  resolveAuthority(state.query).then(a=>{
-   if(token!==state.token||!a)return;
+  resolveAuthority(state.query).then(async a=>{
+   if(token!==state.token)return;
    state.authority=a;
    const pending=state.pendingWorks;
-   if(pending&&pending.wikidataId===a.wikidataId)state.works=pending.works;
-   draw();
-  });
+   if(a&&pending&&pending.wikidataId===a.wikidataId)state.works=pending.works;
+   if(a?.instanceOf?.includes("Q5")){
+    state.phase="history";draw();
+    try{const history=await retrieveHistory(a);if(token!==state.token)return;state.history=history.events;state.personDates=history.dates;state.family=history.family}
+    catch{if(token!==state.token)return;state.historyIncomplete=true}
+   }
+   if(token!==state.token)return;
+   state.phase="ready";draw();
+  }).catch(()=>{if(token===state.token){state.historyIncomplete=true;state.phase="ready";draw()}});
+
  }
  /* La resolución de la entidad se guarda durante la sesión: repetir una
     consulta no tiene por qué esperar otra vez a la red, que es lo que hacía
@@ -498,5 +864,5 @@
  }).observe(document.documentElement,{attributes:true,attributeFilter:["lang"]});
  const snapshot=window.VitruviaSearchSnapshot;
  if(snapshot?.query)reset(snapshot.query);
- window.VitruviaAcademicTimeline={collect,layoutMarkers,version:"2.1-fit-mobile-lifetime"};
+ window.VitruviaAcademicTimeline={collect,layoutMarkers,version:"2.8-universal-documentary-scopes"};
 })();

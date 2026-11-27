@@ -46,27 +46,67 @@
  ];
  const titleTerms=q=>normalize(q).split(" ").filter(w=>w.length>2&&!["the","los","las","del","des","de","les","and","por","para","una","one","que"].includes(w));
  const isPinkFloyd=q=>normalize(q).replace(/^the /,"")==="pink floyd";
- let request=0,controller=null,current="",lastItems=[],lastCurated=false;
+ let request=0,controller=null,current="",lastItems=[],lastCurated=false,currentIdentity=null;
  const cache=new Map();
  function validWork(item){return item&&/^\/works\/OL\d+W$/.test(String(item.key||""))&&typeof item.title==="string"&&item.title.trim().length>2}
- function selectedBooks(q,docs){
-  const terms=titleTerms(q);if(!terms.length)return [];
+ // Title match alone does not establish a scholarly publication. Reject
+ // documented children's/fiction/activity categories and require positive
+ // publisher or academic publication metadata. A missing field is unknown.
+ const listOf=v=>Array.isArray(v)?v.filter(x=>typeof x==="string"):typeof v==="string"?[v]:[];
+ const academicPress=/\b(?:university press|university of .{2,55} press|presses universitaires|universitatsverlag|universitats press|academic press|brill|de gruyter|brepols|peeters publishers|peeters|routledge|verlag philipp von zabern|institut francais d archeologie orientale|griffith institute|oriental institute|egypt exploration society|british museum press|metropolitan museum of art|institute for the study of ancient cultures)\b/;
+ const scholarlySubject=/^(?:academic dissertations|doctoral dissertations|theses|dissertations academic|conference proceedings|congres scientifiques|academic monographs|scholarly editions|critical editions|editions critiques|ediciones criticas)$/;
+ // Audience and genre terms are not equivalent to historical topics.
+ const youth=/\b(?:juvenile (?:literature|fiction|nonfiction)|children s (?:literature|fiction|books)|childrens (?:literature|fiction|books)|books for children|young adult fiction|picture books|comic books|activity books|coloring books|colouring books|literatura (?:infantil|juvenil)|libros para ninos|jeune public|livres pour enfants|bande dessinee)\b/;
+ const audienceYouth=/^(?:juvenile|children|kids|young adult|infantil|juvenil|jeune public)$/;
+ const fiction=/\b(?:fiction|novela historica|novelas historicas|roman historique|romans historiques|romance fiction)\b/;
+ const criticism=/\b(?:criticism|critica|critique|criticas|critiques|history and criticism|historia y critica|histoire et critique|literary studies)\b/;
+ const boundaryMatch=(s,q)=>(" "+normalize(s)+" ").includes(" "+normalize(q)+" ");
+ function academicEvidence(x,byAuthor=false){
+  const subjects=listOf(x.subject).map(normalize),title=normalize(x.title);
+  const audience=normalize([...listOf(x.audience),...listOf(x.genre)].join(" "));
+  if(youth.test(title)||youth.test(audience)||listOf(x.audience).map(normalize).some(s=>audienceYouth.test(s))||subjects.some(s=>youth.test(s)&&!criticism.test(s)))return null;
+  if(/^(?:me llamo|em dic|my name is|je m appelle)\b/.test(title))return null;
+  if(!listOf(x.author_name).some(a=>a.trim()))return null;
+  const publisher=listOf(x.publisher).find(p=>academicPress.test(normalize(p)))||"";
+  const subject=listOf(x.subject).find(s=>scholarlySubject.test(normalize(s)))||"";
+  if(!publisher&&!subject)return null;
+  // Fictional works authored by the exact resolved subject may be legitimate
+  // primary literary sources in a scholarly edition. Unrelated fiction is not.
+  if(!byAuthor&&[audience,...subjects].some(s=>fiction.test(s)&&!criticism.test(s)))return null;
+  // Titles alone do not establish genre: "Roman architecture", "Roman
+  // history", and scholarship about fiction are not fictional works.
+  if(!byAuthor&&/\b(?:a novel|una novela|un roman|novela historica|roman historique)\s*$/.test(title))return null;
+  return {publisher,subject};
+ }
+ function selectedBooks(q,docs,identity=null){
+  const verified=identity?.entityKind==="person"&&/^Q\d+$/.test(identity.wikidataId||"")&&!!(identity.preferredWiki||identity.preferredAuthority);
+  const authoritativeNames=verified?[identity.entityCanonical,...listOf(identity.aliases)].filter(x=>typeof x==="string"&&normalize(x).length>=4):[];
+  const names=[...new Set(verified?authoritativeNames:[q].filter(x=>typeof x==="string"&&normalize(x).length>=4))];
+  if(!names.length)return [];
   const found=[],seen=new Set();
   for(const x of docs){
    if(!validWork(x))continue;
-   const title=normalize(x.title);
-   if(!terms.every(w=>title.split(" ").some(p=>p===w||w.length>=5&&p.startsWith(w))))continue;
-   if(seen.has(title))continue;seen.add(title);
-   found.push({kind:"about",title:x.title,author:Array.isArray(x.author_name)?x.author_name.slice(0,2).join(", "):"",
-    year:Number.isInteger(x.first_publish_year)?x.first_publish_year:undefined,
+   const byAuthor=verified&&listOf(x.author_name).some(a=>authoritativeNames.some(n=>normalize(a)===normalize(n)));
+   const evidence=academicEvidence(x,byAuthor);if(!evidence)continue;
+   const titleMatch=names.some(n=>boundaryMatch(x.title,n));
+   // Subject headings support relevance independently of the title, but a
+   // single matching word in an unrelated multi-word query is never enough.
+   const subjectMatch=names.some(n=>listOf(x.subject).some(s=>boundaryMatch(s,n)));
+   if(!byAuthor&&!titleMatch&&!subjectMatch)continue;
+   if(seen.has(x.key))continue;seen.add(x.key);
+   const kind=byAuthor?"primary":"about";
+   found.push({kind,title:x.title,author:listOf(x.author_name).slice(0,2).join(", "),
+    year:Number.isInteger(x.first_publish_year)&&x.first_publish_year>0?x.first_publish_year:undefined,
+    languages:listOf(x.language).slice(0,8),
     key:x.key,url:"https://openlibrary.org"+x.key,coverId:Number(x.cover_i)||null,
-    note:{es:"Ficha de catálogo cuyo título coincide con el tema buscado. Relación temática pendiente de revisión editorial.",
-     en:"Catalogue title matching the topic. Thematic relationship awaits editorial review.",
-     fr:"Titre de catalogue correspondant au sujet ; lien thématique à vérifier."},
-    source:"Open Library · coincidencia bibliográfica"});
-   if(found.length>=7)break;
+    publisher:evidence.publisher,evidenceSubject:evidence.subject,
+    relation:byAuthor?"author":titleMatch?"title":"subject",
+    note:{es:"Registro de catálogo seleccionado por evidencia editorial y relación con la consulta. No certifica una edición crítica ni revisión por pares.",
+     en:"Catalogue record selected by publication evidence and relevance to the query. Does not certify a critical edition or peer review.",
+     fr:"Notice sélectionnée selon les indices éditoriaux et la pertinence ; ne certifie ni édition critique ni évaluation par les pairs."},
+    source:"Open Library"});
   }
-  return found;
+  return found.sort((a,b)=>Number(b.kind==="primary")-Number(a.kind==="primary")||a.author.localeCompare(b.author,language())||a.title.localeCompare(b.title,language())).slice(0,12);
  }
  function coverUrl(id,isbn){
   if(Number.isInteger(id)&&id>0&&id<1e10)return "https://covers.openlibrary.org/b/id/"+id+"-M.jpg?default=false";
@@ -89,8 +129,9 @@
   const cover=el("span","vrs-cover");cover.setAttribute("aria-hidden","true");cover.textContent="▤";
   const body=el("span","vrs-card-body");
   body.append(el("strong","vrs-book-title",item.title));
-  body.append(el("span","vrs-author",item.author+(item.year?" · "+item.year:"")));
-  body.append(el("span","vrs-source",item.source));
+  body.append(el("span","vrs-author",item.author));
+  if(item.year)body.append(el("span","vrs-source",(item.relation?t("Primera publicación catalogada: ","First catalogued publication: ","Première publication cataloguée : "):"")+item.year));
+  body.append(el("span","vrs-source",item.publisher||item.source));
   button.append(cover,body);
   button.addEventListener("click",()=>{
    for(const other of group.querySelectorAll(".vrs-card-open[aria-expanded=true]"))other.setAttribute("aria-expanded","false");
@@ -99,7 +140,14 @@
    const h=el("h4",null,item.title),p=el("p",null,description);
    const link=el("a",null,t("Consultar ficha o catálogo","Open record or catalogue","Consulter la notice ou le catalogue"));
    link.href=item.url;link.target="_blank";link.rel="noopener noreferrer";
-   detail.replaceChildren(h,p,link);detail.hidden=false;
+   detail.replaceChildren(h,p);
+   if(item.relation){
+    const relation=item.relation==="author"?t("Autoría coincidente","Matching authorship","Auteur identifié"):item.relation==="title"?t("Coincidencia temática en título","Topic match in title","Sujet dans le titre"):t("Materia de catálogo coincidente","Matching catalogue subject","Sujet de catalogue correspondant");
+    detail.append(el("p",null,relation+" · "+[item.publisher,item.evidenceSubject].filter(Boolean).join(" · ")));
+    if(item.languages?.length)detail.append(el("p",null,t("Idiomas registrados: ","Catalogued languages: ","Langues cataloguées : ")+item.languages.join(", ")));
+    detail.append(el("small",null,t("Open Library agrupa ediciones por obra: editorial, cubierta e idiomas pueden corresponder a versiones diferentes.","Open Library groups editions by work: publisher, cover and languages may refer to different editions.","Open Library regroupe les éditions par œuvre : éditeur, couverture et langues peuvent relever de versions différentes.")));
+   }
+   detail.append(link);detail.hidden=false;
   });
   wrapper.append(button);
   if(item.coverId||item.coverISBN)addCover(wrapper,item.coverId,item.title,item.coverISBN);
@@ -133,17 +181,18 @@
    "Books about the topic and, when editorially established, its historical context. Covers link to catalogue records; full-text availability depends on each institution.",
    "Livres sur le sujet et, lorsqu'une sélection éditoriale existe, sur son contexte. Couvertures et notices ; accès intégral selon les institutions.")));
   root.append(top);
-  const about=items.filter(x=>x.kind==="about"),era=items.filter(x=>x.kind==="era");
-  if(about.length)root.append(group(about,t("Libros sobre el tema","Books on the topic","Livres sur le sujet")));
+  const primary=items.filter(x=>x.kind==="primary"),about=items.filter(x=>x.kind==="about"),era=items.filter(x=>x.kind==="era");
+  if(primary.length)root.append(group(primary,t("Obras del autor · registros de edición","Works by the author · edition records","Œuvres de l’auteur · notices d’édition")));
+  if(about.length)root.append(group(about,curated?t("Libros sobre el tema","Books on the topic","Livres sur le sujet"):t("Bibliografía especializada · por autor","Specialist bibliography · by author","Bibliographie spécialisée · par auteur")));
   if(era.length)root.append(group(era,t("Libros para comprender la época","Books to understand the period","Livres pour comprendre l'époque")));
   const footer=el("p","vrs-footer");
   footer.textContent=curated?
    t("Selección documentada de bibliografía y contexto; compartir una época no demuestra influencia histórica.",
     "Documented bibliography and context; sharing a period is not proof of historical influence.",
     "Bibliographie et contexte documentés ; une époque commune ne prouve aucune influence historique."):
-   t("Coincidencias en títulos de Open Library: sugerencias de catálogo, no recomendaciones académicas verificadas.",
-    "Open Library title matches: catalogue suggestions, not verified scholarly recommendations.",
-    "Correspondances de titres Open Library : suggestions de catalogue, non recommandations validées.");
+   t("Selección conservadora por pertinencia e indicios editoriales académicos; verificar cada edición. No incluye divulgación infantil ni entretenimiento identificables.",
+    "Conservative selection by relevance and scholarly publishing indicators; verify each edition. Identifiable children’s and entertainment titles are excluded.",
+    "Sélection prudente par pertinence et indices éditoriaux savants ; vérifier chaque édition. Titres jeunesse et divertissement identifiables exclus.");
   const browse=el("a",null,t("Ampliar en Open Library","More at Open Library","Chercher sur Open Library"));
   browse.href="https://openlibrary.org/search?"+new URLSearchParams({q});
   browse.target="_blank";browse.rel="noopener noreferrer";
@@ -167,19 +216,19 @@
  async function books(q,signal){
   if(cache.has(q))return cache.get(q);
   const url="https://openlibrary.org/search.json?"+new URLSearchParams({
-   q,limit:"25",fields:"key,title,author_name,first_publish_year,cover_i,edition_count"});
+   q,limit:"50",fields:"key,title,author_name,first_publish_year,cover_i,edition_count,publisher,subject,language"});
   const response=await fetch(url,{headers:{Accept:"application/json"},signal});
   if(!response.ok)throw Error("Open Library HTTP "+response.status);
   const json=await response.json();
-  const docs=Array.isArray(json.docs)?json.docs.slice(0,25):[];
+  const docs=Array.isArray(json.docs)?json.docs.slice(0,50):[];
   cache.set(q,docs);if(cache.size>12)cache.delete(cache.keys().next().value);
   return docs;
  }
- function begin(q){
+ function begin(q,identity=null){
   q=String(q||"").trim().slice(0,160);
   const token=++request;
   controller?.abort();controller=null;
-  current=q;lastItems=[];lastCurated=false;
+  current=q;currentIdentity=identity;lastItems=[];lastCurated=false;
   if(!q){root.hidden=true;root.replaceChildren();return}
   const curated=isPinkFloyd(q);
   const items=curated?pinkFloyd.map(item=>({...item})):[];
@@ -191,11 +240,12 @@
    if(token!==request||signal.aborted)return;
    const timeout=setTimeout(()=>activeController.abort(),6500);
    try{
-    const docs=await books(curated?"Pink Floyd":q,signal);
+    const lookup=identity?.entityCanonical||q;
+    const docs=await books(curated?"Pink Floyd":lookup,signal);
     if(token!==request||signal.aborted)return;
     if(curated)addCovers(items,docs);
     else{
-     const relevant=selectedBooks(q,docs);
+     const relevant=selectedBooks(q,docs,identity);
      lastItems=relevant;
      draw(q,relevant,false);
     }
@@ -206,9 +256,14 @@
   },160);
  }
  window.addEventListener("vitruvia:search",e=>begin(e.detail?.query||""));
+ window.addEventListener("vitruvia:results",e=>{
+  const snapshot=e.detail;if(!snapshot?.query||normalize(snapshot.query)!==normalize(current)||lastCurated)return;
+  const identity=(snapshot.rows||[]).find(r=>r.entityKind==="person"&&/^Q\d+$/.test(r.wikidataId||"")&&(r.preferredWiki||r.preferredAuthority)&&r.entityCanonical);
+  if(identity&&currentIdentity?.wikidataId!==identity.wikidataId)begin(current,identity);
+ });
  window.addEventListener("vitruvia:clear",()=>begin(""));
  new MutationObserver(changes=>{
   if(changes.some(x=>x.attributeName==="lang")&&current&&lastItems.length)draw(current,lastItems,lastCurated);
  }).observe(document.documentElement,{attributes:true,attributeFilter:["lang"]});
- if(window.VitruviaSearchSnapshot?.query)begin(window.VitruviaSearchSnapshot.query);
+ if(window.VitruviaSearchSnapshot?.query){const snapshot=window.VitruviaSearchSnapshot;const identity=(snapshot.rows||[]).find(r=>r.entityKind==="person"&&/^Q\d+$/.test(r.wikidataId||"")&&(r.preferredWiki||r.preferredAuthority)&&r.entityCanonical);begin(snapshot.query,identity||null)}
 })();

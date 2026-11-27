@@ -616,9 +616,9 @@ async function wikidata(generalQuery){const providerSignal=S.searchController?.s
  return (d.search||[]).map((x,i)=>({type:"wikidata",title:x.label||x.id,excerpt:x.description||"Identificador de entidad · Wikidata",author:x.id,meta:"Datos enlazados · Wikimedia",rating:30-i+culturalWeight(x.label,x.description),link:"https://www.wikidata.org/wiki/"+x.id,source:"Wikidata"}))
 }
 async function openLibrary(generalQuery){const providerSignal=S.searchController?.signal;const request=(url,ms)=>fetchJSON(url,ms,providerSignal);if(window.VitruviaData)await window.VitruviaData.defer(()=>null,{signal:providerSignal,delay:180});
- const p=new URLSearchParams({q:generalQuery,limit:"25",fields:"key,title,author_name,first_publish_year,edition_count,has_fulltext,public_scan_b,cover_i,publisher"});
+ const p=new URLSearchParams({q:generalQuery,limit:"25",fields:"key,title,author_name,first_publish_year,edition_count,has_fulltext,public_scan_b,cover_i,publisher,subject,language"});
  const d=await request("https://openlibrary.org/search.json?"+p);
- return (d.docs||[]).filter(x=>/^\/works\/OL\d+W$/.test(x.key||"")).map((x,i)=>({type:"openlibrary",title:x.title||"Libro sin título",author:(x.author_name||[]).slice(0,2).join(", "),excerpt:"Primera publicación registrada: "+(x.first_publish_year||"sin datos")+" · "+(x.edition_count||0)+" ediciones catalogadas. Consultar disponibilidad de lectura en Open Library.",meta:"Catálogo externo · disponibilidad sujeta al proveedor",rating:27-i+culturalWeight(x.title,(x.author_name||[]).join(" ")),link:"https://openlibrary.org"+x.key,source:"Open Library",editionCount:Number(x.edition_count)||0,year:x.first_publish_year||null,publisher:(x.publisher||[])[0]||"",recordKind:"work",image:Number.isInteger(x.cover_i)?"https://covers.openlibrary.org/b/id/"+x.cover_i+"-L.jpg":null,imageRights:"https://openlibrary.org"+x.key,imageCredit:"Open Library · derechos de portada según ficha",imageKind:"book"}))
+ return (d.docs||[]).filter(x=>/^\/works\/OL\d+W$/.test(x.key||"")).map((x,i)=>({type:"openlibrary",title:x.title||"Libro sin título",author:(x.author_name||[]).slice(0,2).join(", "),excerpt:"Primera publicación registrada: "+(x.first_publish_year||"sin datos")+" · "+(x.edition_count||0)+" ediciones catalogadas. Consultar disponibilidad de lectura en Open Library.",meta:"Catálogo externo · disponibilidad sujeta al proveedor",rating:27-i+culturalWeight(x.title,(x.author_name||[]).join(" ")),link:"https://openlibrary.org"+x.key,source:"Open Library",editionCount:Number(x.edition_count)||0,year:x.first_publish_year||null,publisher:(x.publisher||[])[0]||"",publishers:(x.publisher||[]).slice(0,40),subjects:(x.subject||[]).slice(0,100),languages:(x.language||[]).slice(0,15),recordKind:"work",image:Number.isInteger(x.cover_i)?"https://covers.openlibrary.org/b/id/"+x.cover_i+"-L.jpg":null,imageRights:"https://openlibrary.org"+x.key,imageCredit:"Open Library · derechos de portada según ficha",imageKind:"book"}))
 }
 /* Google Books public volume metadata, not Google AI / Google Search results. */
 async function googleBooks(generalQuery){const providerSignal=S.searchController?.signal;const request=(url,ms)=>fetchJSON(url,ms,providerSignal);if(window.VitruviaData)await window.VitruviaData.defer(()=>null,{signal:providerSignal,delay:180});
@@ -630,7 +630,7 @@ async function googleBooks(generalQuery){const providerSignal=S.searchController
   return {type:"googlebook",title:v.title,author:(v.authors||[]).slice(0,3).join(", "),
    excerpt:brief(htmlText(v.description||""),340)||[v.publisher,v.publishedDate].filter(Boolean).join(" · "),
    meta:[v.publisher,v.publishedDate].filter(Boolean).join(" · ")||"Google Books · registro bibliográfico",
-   rating:24-i+culturalWeight(v.title,v.subtitle||""),link:info,source:"Google Books",year:v.publishedDate||null,publisher:v.publisher||"",recordKind:"book",
+   rating:24-i+culturalWeight(v.title,v.subtitle||""),link:info,source:"Google Books",year:v.publishedDate||null,publisher:v.publisher||"",subjects:(v.categories||[]).slice(0,30),languages:v.language?[v.language]:[],recordKind:"book",
    isbn:(v.industryIdentifiers||[]).find(x=>x.type==="ISBN_13")?.identifier||(v.industryIdentifiers||[]).find(x=>x.type==="ISBN_10")?.identifier||null};
  }).filter(Boolean)
 }
@@ -640,7 +640,7 @@ async function museum(generalQuery){const providerSignal=S.searchController?.sig
  const d=await request("https://collectionapi.metmuseum.org/public/collection/v1/search?"+params,12500);
  const ids=(d.objectIDs||[]).slice(0,3);
  const details=await Promise.allSettled(ids.map(id=>request("https://collectionapi.metmuseum.org/public/collection/v1/objects/"+id,9000)));
- return details.filter(x=>x.status==="fulfilled").map((x,i)=>{const o=x.value;return {type:"museum",title:o.title||"Objeto de museo",author:[o.artistDisplayName,o.objectDate].filter(Boolean).join(" · "),excerpt:[o.culture,o.period,o.medium,o.department].filter(Boolean).join(" · "),meta:"Colección del Metropolitan Museum of Art",rating:29-i+culturalWeight(o.title,o.department),link:o.objectURL||"https://www.metmuseum.org",source:"The Met",year:o.objectBeginDate||null,recordKind:"museum-object",image:o.primaryImageSmall||o.primaryImage||null,imageRights:o.objectURL||"https://www.metmuseum.org",imageCredit:"The Metropolitan Museum of Art · verificar licencia de la obra",imageKind:"artwork"}});
+ return details.filter(x=>x.status==="fulfilled").map((x,i)=>{const o=x.value;return {type:"museum",title:o.title||"Objeto de museo",author:[o.artistDisplayName,o.objectDate].filter(Boolean).join(" · "),excerpt:[o.culture,o.period,o.medium,o.department].filter(Boolean).join(" · "),meta:"Colección del Metropolitan Museum of Art",rating:29-i+culturalWeight(o.title,o.department),link:o.objectURL||"https://www.metmuseum.org",source:"The Met",year:o.objectBeginDate||null,recordKind:"museum-object",accessionNumber:o.accessionNumber||"",museumDepartment:o.department||"",objectDate:o.objectDate||"",image:o.primaryImageSmall||o.primaryImage||null,imageRights:o.objectURL||"https://www.metmuseum.org",imageCredit:"The Metropolitan Museum of Art · verificar licencia de la obra",imageKind:"artwork"}});
 }
 
 /* Distinción académica: resultados de revistas y ciencias no se presentan como texto íntegro salvo enlace de acceso. */
@@ -658,15 +658,21 @@ async function crossref(generalQuery){const providerSignal=S.searchController?.s
 }
 /* OpenAlex: índice abierto de obras académicas (CORS abierto, sin clave). */
 async function openAlex(generalQuery){const providerSignal=S.searchController?.signal;const request=(url,ms)=>fetchJSON(url,ms,providerSignal);if(window.VitruviaData)await window.VitruviaData.defer(()=>null,{signal:providerSignal,delay:180});
- const params=new URLSearchParams({search:generalQuery,"per-page":"10",select:"id,doi,title,publication_year,authorships,primary_location,type,open_access,cited_by_count"});
+ const params=new URLSearchParams({search:generalQuery,"per-page":"10",select:"id,doi,title,publication_year,authorships,primary_location,best_oa_location,type,open_access,cited_by_count,abstract_inverted_index"});
  const d=await request("https://api.openalex.org/works?"+params,12000);
  return (d.results||[]).filter(x=>x.title).map((x,i)=>{
   const author=(x.authorships||[]).slice(0,2).map(a=>a.author?.display_name).filter(Boolean).join(", ");
   const venue=x.primary_location?.source?.display_name||"";
   const oa=x.open_access?.is_oa?" · acceso abierto":"";
-  return {type:"article",title:x.title,author,excerpt:[venue,x.publication_year,x.type].filter(Boolean).join(" · ")+(x.cited_by_count?" · citado "+x.cited_by_count+" veces":"")+oa,
+  const safeHttps=value=>typeof value==="string"&&/^https:\/\/[^\s]+$/i.test(value)?value:null;
+  const pdf=x.open_access?.is_oa?safeHttps(x.best_oa_location?.pdf_url):null;
+  const fulltext=x.open_access?.is_oa?safeHttps(x.best_oa_location?.landing_page_url||x.open_access?.oa_url):null;
+  const positions=[];
+  for(const [word,indices] of Object.entries(x.abstract_inverted_index||{}))for(const i of indices||[])if(Number.isInteger(i)&&i>=0&&i<1000)positions[i]=word;
+  const abstract=positions.filter(Boolean).join(" ");
+  return {type:"article",title:x.title,author,abstract,pdf,fulltext,excerpt:[venue,x.publication_year,x.type].filter(Boolean).join(" · ")+(x.cited_by_count?" · citado "+x.cited_by_count+" veces":"")+oa,
    meta:"OpenAlex · índice académico abierto"+(x.doi?" · DOI":""),rating:24-i+culturalWeight(x.title,venue),
-   link:x.doi||x.open_access?.oa_url||x.id,source:"OpenAlex",year:x.publication_year||null,cited:x.cited_by_count||0,journal:venue,doi:(x.doi||"").replace(/^https:\/\/doi.org\//,""),recordKind:x.type||"article"};
+   link:x.doi||x.open_access?.oa_url||x.id,links:fulltext?[{label:"Texto completo · acceso abierto",url:fulltext}]:[],source:"OpenAlex",year:x.publication_year||null,cited:x.cited_by_count||0,journal:venue,doi:(x.doi||"").replace(/^https:\/\/doi.org\//,""),recordKind:x.type||"article"};
  });
 }
 /* Getty AAT: término normalizado del tesauro de arte y arquitectura (SPARQL público). */
@@ -1307,20 +1313,74 @@ function documentarySubjectEvidence(row,query){
  * business must not replace that person's biography. This rule is generic,
  * not a manual whitelist of prominent names.
  */
+// External book catalogues are discovery services, not academic credentials.
+ // Keep institutional witnesses and locally curated records under existing
+ // provenance controls; do not remove originals from the underlying catalogue.
+function academicExternalEvidence(row,query,identity){
+ if(!row||!["openlibrary","googlebook","article"].includes(row.type)||row.curatedAcademic)return true;
+ const title=norm(row.title||""),q=norm(query),subjects=(Array.isArray(row.subjects)?row.subjects:[]).map(norm);
+ const list=[row.publisher,...(Array.isArray(row.publishers)?row.publishers:[])].map(norm);
+ const youth=/\b(?:juvenile (?:literature|fiction|nonfiction)|children s (?:literature|fiction|books)|books for children|young adult fiction|picture books|comic books|activity books|coloring books|colouring books|literatura (?:infantil|juvenil)|libros para ninos|livres pour enfants|bande dessinee)\b/;
+ const critical=/\b(?:criticism|critica|critique|literary studies)\b/;
+ const entertainment=/\b(?:a novel|una novela|un roman|novela historica|roman historique)\s*$/;
+ if((youth.test(title)||subjects.some(s=>youth.test(s)&&!critical.test(s))||/^(?:my name is|me llamo|em dic|je m appelle)\b/.test(title))&&!youth.test(q))return false;
+ if(row.type==="article"){
+  // DOI alone does not prove peer review. Keep identifiable scholarly
+  // publication categories; reject datasets or editorial/paratext records
+  // presented as research articles.
+  const kind=norm(row.recordKind||"");
+  return !/^(?:dataset|posted content|component|grant|peer review|journal issue|journal volume|paratext)$/.test(kind);
+ }
+ const names=identity?.kind==="person"&&/^Q\d+$/.test(identity.wikidataId||"")?[identity.canonical,identity.catalogName,identity.originalCanonical].map(norm).filter(Boolean):[];
+ const byAuthor=names.includes(norm(row.author||""));
+ if(!byAuthor&&(entertainment.test(title)||subjects.some(s=>/\bfiction\b/.test(s)&&!critical.test(s))))return false;
+ const press=/\b(?:university press|university of .{2,55} press|presses universitaires|universitatsverlag|academic press|brill|de gruyter|brepols|peeters|routledge|egypt exploration society|griffith institute|oriental institute|british museum press|metropolitan museum of art|institut francais d archeologie orientale)\b/;
+ const scholarly=/^(?:academic dissertations|doctoral dissertations|theses|conference proceedings|academic monographs|scholarly editions|critical editions|editions critiques|ediciones criticas)$/;
+ // Confirmed author-name coincidence is a candidate primary work, not a
+ // claim that this specific edition is scholarly or its authorship certified.
+ return Boolean(byAuthor||list.some(s=>press.test(s))||subjects.some(s=>scholarly.test(s)));
+}
 function verifiedPersonEvidence(row,query,identity){
- if(identity?.kind!=="person"||!/^Q[0-9]+$/.test(identity.wikidataId||""))return true;
- const title=norm(row.title||""),text=norm([row.title,row.author,row.excerpt,row.meta].join(" "));
- const isCommercial=/\b(?:pizzeria|pizzaria|pizza|restaurant|restaurante|resto|hotel|hostal|hostel|cafe|cafeteria|bar|shop|store|tienda|boutique|comercio|commercial business)\b/;
- if(isCommercial.test(title)&&!isCommercial.test(norm(query)))return false;
- const names=[identity.canonical,identity.catalogName,identity.originalCanonical,...(identity.aliases||[])]
-  .map(norm).filter(name=>name.length>=4);
- const unique=[...new Set(names)];
- const direct=unique.some(name=>title===name||title.startsWith(name+" ")||(" "+text+" ").includes(" "+name+" "));
- if(row.preferredWiki||row.preferredAuthority)return row.wikidataId===identity.wikidataId;
- if(row.type==="wikidata"&&row.author===identity.wikidataId)return true;
- if(["wikipedia","wikidata"].includes(row.type))return direct;
- if(["openlibrary","googlebook","museum","article","archive-portal"].includes(row.type))return direct;
- return true;
+ const verified=identity?.kind==="person"&&/^Q[0-9]+$/.test(identity.wikidataId||"");
+ // Limit the new gate to external records. Local passages, manuscripts and
+ // explicitly requested philological/codicological searches retain their
+ // existing contextual filters; no catalogue entries are deleted.
+ const href=String(row.link||"");
+ const external=/^https?:\/\//i.test(href)&&
+  !/^https:\/\/vitruvius-digital-library\.org(?:\/|$)/i.test(href)&&
+  !/^https:\/\/diegoalonsok-png\.github\.io\/vitruvius-digital-library(?:\/|$)/i.test(href)&&
+  !row.localViewer;
+ const externalTypes=new Set(["wikipedia","wikidata","openlibrary","googlebook","museum","article","archive-portal","topic","text-external","historical-ocr"]);
+ if(!external&&!externalTypes.has(row.type))return true;
+ const q=norm(query);
+ // Pending authority: do not publish ambiguous matches to generic royal
+ // titles alone. Re-evaluate the same raw rows as soon as identity resolves.
+ const royal=q.match(/^(?:(?:el|la|the|le|les) )?(?:rey|reina|king|queen|faraon|pharaoh|pharaon) (.+)$/);
+ const royalTut=!!royal&&royal[1]==="tut";
+ const title=norm(row.title||"");
+ const commercial=/\b(?:pizzeria|pizzaria|pizza|restaurant|restaurante|resto|hotel|hostal|hostel|cafe|cafeteria|bar|shop|store|tienda|boutique|comercio|commercial business)\b/;
+ if((verified||royalTut)&&commercial.test(title)&&!commercial.test(q))return false;
+ if(!verified&&!royalTut)return true;
+ if(verified&&(row.preferredWiki||row.preferredAuthority))return row.wikidataId===identity.wikidataId;
+ if(verified&&row.type==="wikidata"&&row.author===identity.wikidataId)return true;
+ const names=[identity?.canonical,identity?.catalogName,identity?.originalCanonical,...(identity?.aliases||[])];
+ if(royalTut)names.push("Tutankamón","Tutankhamun","Tutankhamen","Toutankhamon","Tutankhaton","Tutankhaten","rey tut","king tut","faraón tut");
+ // Ignore titles and short nicknames as standalone evidence; they cause
+ // homonym contamination. Keep attested multiword variants and full names.
+ const weak=/^(?:king|rey|reina|queen|faraon|pharaoh|pharaon|tut|egipto|egypt|roi|reine|king of egypt)$/;
+ const distinct=[...new Set(names.map(norm).filter(n=>n.length>=4&&!weak.test(n)))];
+ if(!distinct.length)return false;
+ const subject=[row.title,row.abstract,row.excerpt,row.description,row.entityCanonical,...(row.aliases||[])].map(norm).filter(Boolean);
+ const hasName=s=>distinct.some(name=>(" "+s+" ").includes(" "+name+" "));
+ // Authorship is evidence only when the credited author matches the
+ // resolved identity exactly (not publisher, venue or incidental forename).
+ const author=norm(row.author||"");
+ if(distinct.includes(author)||subject.some(hasName))return true;
+ // Preserve explicitly linked works only with a concrete matching entity
+ // identifier, never a generic boolean or the provider's ranking alone.
+ if(verified&&[row.subjectWikidataId,row.creatorWikidataId,row.relatedWikidataId].includes(identity.wikidataId))return true;
+ if(verified&&row.wikidataId&&Array.isArray(identity.notableWorkIds)&&identity.notableWorkIds.includes(row.wikidataId))return true;
+ return false;
 }
 function authorityWeight(row){
  if(row.type==="wikipedia")return 35;
@@ -1354,7 +1414,7 @@ function display(rows,query,phase){
  const historySuggestion=classicalSubjectRows(query).length>0;
  const userAsksBusiness=/\b(?:pizzeria|pizza|restaurante|restaurant|hotel|bar|cafe|cafeteria|tienda|comercio)\b/i.test(norm(query));
  const commercialTitle=/\b(?:pizzeria|pizzaria|pizza|restaurante|restaurant|hotel|hostal|hostel|cafeteria|cafe|bar|tienda|boutique)\b/i;
- const relevantRows=contextualRows.filter(row=>verifiedPersonEvidence(row,query,S.identifiedSubject)&&
+ const relevantRows=contextualRows.filter(row=>academicExternalEvidence(row,query,S.identifiedSubject)&&verifiedPersonEvidence(row,query,S.identifiedSubject)&&
   (!historySuggestion||userAsksBusiness||!commercialTitle.test(norm(row.title||""))));
  const scored=relevantRows.filter(r=>r&&r.title&&(
   !["wikipedia","wikidata"].includes(r.type)||r.preferredWiki||r.preferredAuthority||
