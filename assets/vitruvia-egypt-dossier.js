@@ -106,7 +106,8 @@ function style(){
  css.textContent=[
  "#vitruvia-context .v-egypt-dossier{padding:16px 0;margin:13px 0 24px;border-top:1px solid #555;min-width:0}",
  "#vitruvia-context .v-egypt-dossier h3{font:400 22px/1.3 Georgia,serif;margin:4px 0 12px}",
- "#vitruvia-context .v-egypt-dossier h4{font:400 18px/1.4 Georgia,serif;margin:19px 0 9px}",
+ "#vitruvia-context .v-egypt-dossier h4{font:400 18px/1.4 Georgia,serif;margin:19px 0 9px;scroll-margin-top:90px}",
+ "#vitruvia-context .v-ed-contents{font:12px/1.65 system-ui,sans-serif;border:1px solid #777;padding:10px 12px;margin:10px 0}#vitruvia-context .v-ed-contents ol{margin:6px 0;padding-left:19px}#vitruvia-context .v-ed-contents a{color:inherit;text-decoration:underline}",
  "#vitruvia-context .v-egypt-dossier .v-ed-note{font-size:12px;line-height:1.55;opacity:.8}",
  "#vitruvia-context .v-ed-name{border-left:3px solid #888;border-bottom:1px solid #484848;margin:6px 0;padding:9px 11px;min-width:0}",
  "#vitruvia-context .v-ed-name b{display:block;font-size:12px}",
@@ -138,11 +139,13 @@ function gallery(box,ruler){
  for(const [id,title] of recs){
   const card=make("div",null,"v-ed-photo");
   card.append(anchor(title+" · abrir visor ampliado","egypt-document-viewer.html?king="+encodeURIComponent(ruler.id)+"&object="+id));
-  card.append(make("small","The Metropolitan Museum of Art · ficha "+id));
+  card.append(make("small","The Metropolitan Museum of Art · ficha "+id),anchor("Ficha institucional y procedencia","https://www.metmuseum.org/art/collection/search/"+id));
   grid.append(card);
   if(!cached.has(id))cached.set(id,fetch("https://collectionapi.metmuseum.org/public/collection/v1/objects/"+id).then(r=>r.ok?r.json():null).catch(()=>null));
   cached.get(id).then(entry=>{
    if(!card.isConnected||!entry?.isPublicDomain)return;
+   if(entry.objectNumber)card.append(make("small","Inventario: "+entry.objectNumber));
+   if(entry.creditLine)card.append(make("small",entry.creditLine+" · dominio público"));
    const src=entry.primaryImageSmall||entry.primaryImage;if(!src)return;
    try{const url=new URL(src);if(url.protocol!=="https:")return;const img=make("img");img.src=url.href;img.loading="lazy";img.alt=entry.title+" · número "+id;img.onerror=()=>img.remove();card.prepend(img)}catch{}
   });
@@ -223,7 +226,7 @@ function names(box,ruler){
   item.append(make("b",label));
   if(rec?.glyphs){const g=make("span",rec.glyphs,"v-ed-glyph"+(["nomen","prenomen"].includes(key)?" cartouche":""));g.lang="egy";if(window.HieroRender?.render)g.replaceChildren(window.HieroRender.render(rec.glyphs,{size:"35px"}));item.append(g)}
   if(rec?.trans)item.append(make("p","Transliteración: "+rec.trans));
-  if(rec?.gloss)item.append(make("p","Sentido: "+rec.gloss));
+  if(rec?.gloss)item.append(make("p","Traducción / interpretación al castellano: "+rec.gloss));
   if(rec?.witness)item.append(make("p","Testimonio: "+rec.witness,"v-ed-note"));
   if(!rec)item.append(make("p","Este nombre no está acreditado en el repertorio local.","v-ed-note"));
   else if(!rec.glyphs)item.append(make("p","Grafía jeroglífica pendiente de edición.","v-ed-note"));
