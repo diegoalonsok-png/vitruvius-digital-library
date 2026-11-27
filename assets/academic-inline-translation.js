@@ -153,17 +153,21 @@ async function translateFragment(fragment,source,target){
 }
 async function externalTranslation(text,source,target,fullPassage=false){
  const fragments=fullPassage?chunks(text,MAX_PART_BYTES,12,4500):chunks(text);
+ // Preserve successful paragraphs when a later request hits a quota or timeout.
+ // Mark the result explicitly partial; never silently interpolate missing text.
  if(!fragments.length)throw Error("Pasaje vacío");
  const translated=[];
  // No enviar tres consultas simultáneas a proveedores gratuitos: provoca
  // limitaciones 429/cuota y bloquea la traducción completa por una sola falla.
+ let failed=0;
  for(const fragment of fragments){
-  translated.push(await translateFragment(fragment,source,target));
+  try{translated.push(await translateFragment(fragment,source,target))}
+  catch(error){if(!translated.length)throw error;failed=fragments.length-translated.length;break}
  }
  const output=translated.map(x=>x.text).join(" ");
  if(translationLooksUnchanged(text,output,source,target))throw Error("El resultado mantiene el idioma original");
  return {text:output,provider:[...new Set(translated.map(x=>x.provider))].join(" + "),
-  partial:fragments.join("").replace(/\s+/g,"")!==text.trim().replace(/\s+/g,"")};
+  partial:failed>0||fragments.join("").replace(/\s+/g,"")!==text.trim().replace(/\s+/g,""),translatedFragments:translated.length,totalFragments:fragments.length};
 }
 function attach(sourceNode,{sourceLanguage,originalText,referenceText,referenceLanguage,referenceLabel}={}){
  if(!(sourceNode instanceof Element)||sourceNode.dataset.inlineTranslationReady==="1")return false;
@@ -185,7 +189,7 @@ function attach(sourceNode,{sourceLanguage,originalText,referenceText,referenceL
  button.type="button";
  button.style.cssText="background:#252528;color:#fff;border:1px solid #777;border-radius:4px;padding:6px 10px;cursor:pointer;font:12px system-ui,Arial,sans-serif";
  const info=el("p","academic-inline-translation-note");
- info.textContent="El original y las traducciones editoriales permanecen visibles. Solo al solicitar una versión adicional puede enviarse un fragmento a MyMemory; el texto no se envía antes del clic. El servicio externo es orientativo y no está validado filológicamente.";
+ info.textContent="El original y las traducciones editoriales permanecen visibles. Solo al solicitar una versión adicional puede enviarse un fragmento a MyMemory o al proveedor externo alternativo; el texto no se envía antes del clic. El servicio externo es orientativo y no está validado filológicamente.";
  info.style.cssText="margin:4px 0;color:inherit;opacity:.75;font-size:11px";
  const output=el("div","academic-inline-translation-output");output.setAttribute("role","status");
  output.style.cssText="margin-top:7px;white-space:pre-wrap;overflow-wrap:anywhere";
@@ -213,7 +217,7 @@ function attach(sourceNode,{sourceLanguage,originalText,referenceText,referenceL
    else{
     try{result=await browserTranslation(original,source,target)}catch(_){result=null}
     if(!result)result=await externalTranslation(original,source,target);
-    if(result)cache.set(key,result);
+    if(result&&!result.partial){if(cache.size>=150)cache.delete(cache.keys().next().value);cache.set(key,result);}
    }
    if(!result)throw Error("No se pudo obtener la traducción");
    const label=el("strong","","Versión automática orientativa · "+LANGS[source]+" → "+LANGS[target]);
