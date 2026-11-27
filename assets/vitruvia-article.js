@@ -598,8 +598,8 @@ function appendMainBiographyOverview(data,person,profile,topicPlan){
   .map(b=>String(b.text||"").replace(/\s+/g," ").trim()).slice(0,5);
  if(!snippets.length)return false;
  const section=make("section",undefined,"vitruvia-biography-overview");
- section.setAttribute("aria-label","Biografía documentada");
- section.append(make("h3",phrase("Biografía · vida y contexto","Biography · life and context","Biographie · vie et contexte")));
+ section.setAttribute("aria-label","Contexto biográfico enciclopédico");
+ section.append(make("h3",phrase("Biografía · vida y contexto enciclopédico","Biography · life and encyclopedic context","Biographie · vie et contexte encyclopédique")));
  let total=0;
  for(const paragraphText of snippets){
   if(total>=3200)break;
@@ -1562,7 +1562,7 @@ function buildContents(){
  const box=$("article-aside");if(!box)return;
  const body=$("article-body");
  box.querySelector(".article-contents")?.remove();body.querySelector(".article-inline-contents")?.remove();
- const sections=[...body.querySelectorAll(":scope > h3, :scope > h4")];
+ const sections=[...body.querySelectorAll(":scope > h3, :scope > h4, :scope > section.vitruvia-biography-overview > h3")];
  if(!sections.length)return;
  const nav=document.createElement("nav");nav.className="article-contents";nav.setAttribute("aria-label",phrase("Índice de contenidos","Table of contents","Sommaire"));
  nav.append(make("h3",phrase("Contenido","Contents","Sommaire")));
@@ -1575,8 +1575,9 @@ function buildContents(){
  }
  const inline=make("details",undefined,"article-inline-contents");
  inline.append(make("summary",phrase("Contenido · ","Contents · ","Sommaire · ")+sections.length+phrase(" secciones"," sections"," sections")),nav);
- const firstHeading=body.querySelector("h3,h4");
- if(firstHeading)firstHeading.before(inline);else body.prepend(inline);
+ const firstHeading=sections[0];
+ const firstSection=firstHeading?.closest("section.vitruvia-biography-overview");
+ if(firstSection)firstSection.before(inline);else if(firstHeading)firstHeading.before(inline);else body.prepend(inline);
 }
 /* Authoritative first result for the library's own author: biography + editions. */
 const vitruviusBiography=[
