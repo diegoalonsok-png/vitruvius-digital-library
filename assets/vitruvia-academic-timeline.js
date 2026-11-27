@@ -31,7 +31,7 @@
   works:[L("Obras y creaciones","Works and creations","Œuvres et créations"),"▤"],
   documents:[L("Documentos y ediciones","Documents and editions","Documents et éditions"),"▥"]
  };
- const state={query:"",token:0,authority:null,works:[],albums:[],rows:[],zoom:null,position:0,selected:"",rowSignature:"",pendingWorks:null,tagColor:null};
+ const state={query:"",token:0,authority:null,works:[],albums:[],rows:[],zoom:null,position:0,selected:"",rowSignature:"",pendingWorks:null,tagColor:null,datedLabels:{}};
  // Greedy tracks keep same-day and adjacent milestones from touching.
  // Popup centres are independently clamped, so no tooltip can protrude
  // beyond the chronology track even at narrow mobile widths.
@@ -113,7 +113,7 @@
    [68,"life",L("Muerte de Nerón","Death of Nero","Mort de Néron"),"Suetonio · Nerón 49",L("Muere el 9 de junio; termina la dinastía julio-claudia.","Dies on 9 June; the Julio-Claudian dynasty ends.","Mort le 9 juin ; fin de la dynastie julio-claudienne.")]
   ].map(([year,lane,title,source,detail,link,end])=>({year,lane,title,source,url:link||url,detail,...(end?{end}:{})}));
  }
- const isAkhenaten=()=>/^(?:akhenaten|akhenaton|akhenat[oó]n|ajenaton|ajenat[oó]n|akenaton|akenat[oó]n|amenhotep iv|amenofis iv|amenophis iv)$/.test(normalize(state.query));
+ const isAkhenaten=()=>/^(?:akhenaten|akhenaton|akhenat[oó]n|ajenaton|ajenat[oó]n|akenaton|akenat[oó]n|amenhotep iv|amenofis iv|amenophis iv)$/.test(normalize(state.query).replace(/^(?:rey|faraon|pharaoh|king|roi|pharaon)\s+/,""));
  // An abstract lexical concept is NOT a historical person/album/work.
  // Search result title matches cannot establish a chronology of the concept.
  // Provide a sourced concept-specific dataset before enabling those milestones.
@@ -137,13 +137,13 @@
  const chronologicalTypes=new Set([
   "Q5","Q571","Q7725634","Q47461344","Q11424","Q482994",
   "Q1656682","Q178561","Q1190554","Q13418847",
-  "Q41176","Q839954","Q23413","Q6256","Q43229","Q4830453","Q215380"
+  "Q41176","Q839954","Q23413","Q6256","Q43229","Q4830453","Q215380","Q164950","Q48349"
  ]);
  const hasHistoricalSubject=()=>{
   if(isAkhenaten()||isNero())return true;
   if(isAbstractTerm())return false;
   const a=state.authority;
-  return Boolean(a&&Array.isArray(a.instanceOf)&&a.instanceOf.some(id=>chronologicalTypes.has(id)));
+  return Boolean(a&&/^Q\d+$/.test(a.wikidataId||"")&&((Array.isArray(a.instanceOf)&&a.instanceOf.some(id=>chronologicalTypes.has(id)))||(a.temporalClaims||[]).some(c=>["P571","P576","P585","P580","P582","P575","P1619"].includes(c.property)&&c.dates?.length)));
  };
 
  // Akhenaten has a biographical scale: c. 1370–1336 BCE. Birth is not
@@ -160,25 +160,101 @@
    {year:-1353,lane:"life",title:L("Acceso al trono como Amenhotep IV","Accession as Amenhotep IV","Avènement d'Amenhotep IV"),
     source:"PBS · Egypt's Golden Empire / UCL Digital Egypt",url:pbs,approx:true,
     detail:L("Comienzo aproximado del reinado de Amenhotep IV; cronologías alternativas varían varios años.","Approximate start of the reign, with competing chronologies.","Début approximatif du règne; chronologies variables.")},
-   {year:-1348,lane:"events",title:L("Ajetatón · proclamaciones de los años 5 y 6","Akhetaten · year 5 and year 6 proclamations","Akhetaton · proclamations des ans 5 et 6"),
-    source:"Amarna Project · estelas fronterizas; UCL Digital Egypt",url:"https://www.amarnaproject.com/amarna-the-place/boundary-stelae/",approx:true,
-    detail:L(
-     "Las estelas K, M y X transmiten la primera proclamación sobre Ajetatón (año regnal 5); una segunda proclamación corresponde al año 6 y fue reafirmada en el 8. UCL sitúa el cambio de nombre y la residencia en el año 6; existen diferencias de interpretación y cronología. La posición hacia 1348 a. C. es una escala aproximada, no una fecha absoluta certificada.",
-     "Boundary stelae K, M and X preserve the first Akhetaten proclamation (regnal year 5); the second dates to year 6 and was reaffirmed in year 8. UCL places the name change and royal residence in year 6; sources and absolute chronologies differ. Placement near 1348 BCE is approximate, not an exact historical date.",
-     "Les stèles K, M et X transmettent la première proclamation d'Akhetaton (an 5); une seconde date de l'an 6 et fut réaffirmée en l'an 8. UCL situe le changement de nom et la résidence à l'an 6; les chronologies divergent. La position vers 1348 av. J.-C. reste approximative."
-    )},
+   {year:-1351,end:-1349,lane:"events",title:L("Primeros años · templos de Atón en Karnak","Early reign · Aten temples at Karnak","Début du règne · temples d’Aton à Karnak"),source:"The Met",url:"https://www.metmuseum.org/essays/art-architecture-and-the-city-in-the-reign-of-amenhotep-iv-akhenaten-ca-13531336-b-c",approx:true,detail:L("Construcción del complejo de Atón antes de Ajetatón.","Construction of the Aten complex before Akhetaten.","Construction du complexe d’Aton avant Akhetaton.")},
+   {year:-1348,lane:"events",title:L("Año 5 · primera proclamación de Ajetatón","Year 5 · first proclamation of Akhetaten","An 5 · première proclamation d’Akhetaton"),source:"Amarna Project · Stelae K, M, X",url:"https://www.amarnaproject.com/amarna-the-place/boundary-stelae/",approx:true,detail:L("Consagración de una nueva ciudad a Atón; UCL propone el año 6.","Dedication of a new city to Aten; UCL proposes year 6.","Consécration d’une ville à Aton ; UCL propose l’an 6.")},
+   {year:-1347,lane:"events",title:L("Año 6 · segunda proclamación","Year 6 · second proclamation","An 6 · seconde proclamation"),source:"Amarna Project / UCL Digital Egypt",url:"https://www.amarnaproject.com/amarna-the-place/boundary-stelae/",approx:true,detail:L("Segunda proclamación de las estelas fronterizas.","Second proclamation of the boundary stelae.","Seconde proclamation des stèles frontières.")},
+   {year:-1345,lane:"events",title:L("Año 8 · reafirmación del juramento fronterizo","Year 8 · renewal of the boundary oath","An 8 · renouvellement du serment frontalier"),source:"Amarna Project",url:"https://www.amarnaproject.com/amarna-the-place/boundary-stelae/",approx:true,detail:L("Se añade una reafirmación a la segunda proclamación.","A reaffirmation is added to the second proclamation.","Une réaffirmation est ajoutée à la seconde proclamation.")},
+   {year:-1344,end:-1341,lane:"events",title:L("Años 9–12 · nueva formulación del nombre de Atón","Years 9–12 · new form of Aten’s name","Ans 9–12 · nouvelle formulation du nom d’Aton"),source:"The Met",url:"https://www.metmuseum.org/essays/art-architecture-and-the-city-in-the-reign-of-amenhotep-iv-akhenaten-ca-13531336-b-c",approx:true,detail:L("La nueva formulación se fecha entre los años 9 y 12; las medidas contra Amón pudieron coincidir.","New wording dated between years 9 and 12; measures against Amun may have coincided.","Nouvelle formulation datée des ans 9 à 12 ; les mesures contre Amon ont pu coïncider.")},
+   {year:-1341,lane:"events",title:L("Año 12 · recepción de tributos extranjeros","Year 12 · reception of foreign tribute","An 12 · réception des tributs étrangers"),source:"ISAC · University of Chicago · Huya y Meryra II",url:"https://isac.uchicago.edu/sites/default/files/uploads/shared/docs/LongCoregency.pdf",approx:true,detail:L("Las escenas conservan una fecha del año regnal 12.","The scenes preserve a date in regnal year 12.","Les scènes conservent une date de l’an 12.")},
+   {year:-1348,end:-1347,lane:"life",title:L("Años 5–6 · adopción del nombre Akenatón","Years 5–6 · adoption of the name Akhenaten","Ans 5–6 · adoption du nom Akhenaton"),source:"The Met · reinado de Amenhotep IV",url:"https://www.metmuseum.org/essays/art-architecture-and-the-city-in-the-reign-of-amenhotep-iv-akhenaten-ca-13531336-b-c",approx:true,detail:L("Sustituye el nombre teóforo de Amón por uno dedicado a Atón; el momento exacto se discute.","The Amun-related name gives way to an Aten-related one; exact timing debated.","Le nom lié à Amon cède la place à celui lié à Aton ; date précise discutée.")},
+   {year:-1340,end:-1339,lane:"life",title:L("Años 13–14 · muerte de Meketatón","Years 13–14 · death of Meketaten","Ans 13–14 · mort de Méketaton"),source:"Trabajos de Egiptología 13 (2022)",url:"https://www.ull.es/revistas/index.php/trabajos-egiptologia/fr_CA/article/download/4975/3959/17313",approx:true,detail:L("Datación aproximada; escenas de duelo en la tumba real.","Approximate dating; mourning scenes in the royal tomb.","Datation approximative ; scènes de deuil dans la tombe royale.")},
+   {year:-1339,lane:"life",title:L("Año 14 · muerte atribuida a la reina Tiy","Year 14 · attributed death of Queen Tiye","An 14 · mort attribuée à la reine Tiyi"),source:"UCLA Encyclopedia of Egyptology",url:"https://escholarship.org/content/qt77s6r0zr/qt77s6r0zr.pdf?v=lg",approx:true,detail:L("Cronología propuesta en la bibliografía, no fecha absoluta certificada.","Proposed scholarly chronology, not a certified absolute date.","Chronologie proposée par la recherche, sans date absolue certifiée.")},
+   {year:-1337,lane:"events",title:L("Año 16 · inscripción de Dayr Abu Hinnis","Year 16 · Dayr Abu Hinnis inscription","An 16 · inscription de Dayr Abu Hinnis"),source:"KU Leuven · Athena Van der Perre",url:"https://www.arts.kuleuven.be/dayr-al-barsha/news/year-16-graffito-nefertiti",approx:true,detail:L("Atestigua que Nefertiti conservaba el título de gran esposa real en el año 16.","Attests Nefertiti as Great Royal Wife in year 16.","Atteste le titre de grande épouse royale de Néfertiti en l’an 16.")},
    {year:-1336,lane:"life",title:L("Muerte de Akenatón · fin de la línea biográfica","Death of Akhenaten · end of biography","Mort d'Akhenaton · fin de la chronologie"),
     source:"PBS · Egypt's Golden Empire; cronología aproximada",url:pbs,approx:true,
     detail:L("Muerte hacia 1336 a. C., tras un reinado de alrededor de diecisiete años. La edad exacta al morir no está establecida con certeza.","Approximate death around 1336 BCE; exact age unknown.","Décès vers 1336 av. J.-C.; âge exact incertain.")}
   ];
  }
+ // Generic chronology from explicit temporal qualifiers and source records.
+ // Wikidata is a discovery authority, not an independent primary source.
+ const datedRelationLabels={
+  P39:["Cargo","Position","Fonction"],P26:["Matrimonio","Marriage","Mariage"],
+  P69:["Estudios","Education","Études"],P108:["Actividad profesional","Employment","Activité professionnelle"],
+  P166:["Distinción","Award","Distinction"],P793:["Acontecimiento significativo","Significant event","Événement marquant"],
+  P607:["Participación en conflicto","Conflict participation","Participation à un conflit"],
+  P937:["Lugar de trabajo","Work location","Lieu de travail"],P54:["Equipo","Team","Équipe"],
+  P102:["Afiliación política","Political affiliation","Affiliation politique"],P463:["Pertenencia","Membership","Appartenance"],
+  P551:["Residencia","Residence","Résidence"],P1416:["Afiliación","Affiliation","Affiliation"],
+  P1344:["Participación","Participation","Participation"],P800:["Obra destacada","Notable work","Œuvre notable"],
+  P509:["Causa de muerte","Cause of death","Cause du décès"],P119:["Sepultura","Burial","Sépulture"]
+ };
+ const datedDirectLabels={
+  P569:["life","Nacimiento","Birth","Naissance"],P570:["life","Muerte","Death","Décès"],
+  P571:["life","Fundación o inicio","Foundation or inception","Fondation ou début"],P576:["life","Disolución o final","Dissolution or end","Dissolution ou fin"],
+  P585:["events","Acontecimiento fechado","Dated event","Événement daté"],P580:["events","Comienzo del acontecimiento","Event begins","Début de l’événement"],
+  P582:["events","Final del acontecimiento","Event ends","Fin de l’événement"],P577:["works","Publicación documentada","Documented publication","Publication attestée"],
+  P575:["events","Descubrimiento","Discovery","Découverte"],P1619:["works","Inauguración","Opening","Inauguration"]
+ };
+ function datedAuthorityEvents(authority,labels={}){
+  if(!/^Q\d+$/.test(authority?.wikidataId||""))return [];
+  const out=[];
+  for(const c of authority.temporalClaims||[]){
+   const direct=datedDirectLabels[c.property],relation=datedRelationLabels[c.property];
+   if(!direct&&!relation)continue;
+   const refUrls=[...new Set((c.references||[]).flatMap(r=>r.urls||[]).filter(normUrl))];
+   const refIds=[...new Set((c.references||[]).flatMap(r=>r.statedIn||[]).filter(x=>/^Q\d+$/.test(x)))];
+   const referenceLinks=[...refUrls,...refIds.map(id=>"https://www.wikidata.org/wiki/"+id)];
+   const stmt="https://www.wikidata.org/wiki/"+authority.wikidataId+"#"+encodeURIComponent(String(c.statementId||"").replace("$","-"));
+   const source="Wikidata · "+c.property+" · "+(referenceLinks.length?L("con referencias","with references","avec références"):L("sin referencia enlazada","without linked reference","sans référence liée"));
+   const detail=L("Dato estructurado de autoridad: comprobar la fuente, la precisión y el calendario antes de citar. No equivale a una verificación historiográfica independiente.","Structured authority data: check source, precision and calendar before citing. Not independent historical verification.","Donnée structurée d’autorité : vérifier la source, la précision et le calendrier avant citation. Ne vaut pas validation historique indépendante.");
+   const add=(date,title,lane,end=null)=>{
+    if(year(date?.year)===null||date.year===0)return;
+    out.push({year:date.year,end:end&&year(end.year)!==null&&end.year>=date.year?end.year:null,title,lane,source,url:stmt,referenceLinks,detail,approx:Boolean(date.before||date.after),authorityEvidence:true});
+   };
+   if(direct){
+    for(const date of c.dates||[])add(date,L(...direct.slice(1)),direct[0]);
+    continue;
+   }
+   const label=labels[c.objectId];if(!label)continue; // Never show a bare QID as an historical event.
+   const title=L(...relation)+" · "+label;
+   const q=c.qualifier||{},starts=q.P580||[],ends=q.P582||[],points=q.P585||[];
+   const lane=c.property==="P800"?"works":["P793","P607","P1344","P509","P119"].includes(c.property)?"events":"life";
+   // A range is emitted only for unambiguous start/end pairing within the same statement.
+   if(starts.length===1&&ends.length===1&&ends[0].year>=starts[0].year)add(starts[0],title,lane,ends[0]);
+   else {
+    for(const d of starts)add(d,title+" · "+L("inicio","start","début"),lane);
+    for(const d of ends)add(d,title+" · "+L("final","end","fin"),lane);
+   }
+   for(const d of points)add(d,title,lane);
+  }
+  return out;
+ }
+ async function getDatedLabels(authority,language){
+  const ids=[...new Set((authority?.temporalClaims||[]).map(c=>c.objectId).filter(id=>/^Q\d+$/.test(id||"")))];
+  const labels={};
+  // Batch requests; the batching size is an API constraint, not a cap on milestones.
+  for(let i=0;i<ids.length;i+=40){
+   const params=new URLSearchParams({action:"wbgetentities",ids:ids.slice(i,i+40).join("|"),props:"labels",languages:[...new Set([language,"en"])].join("|"),format:"json",origin:"*"});
+   const ctrl=new AbortController(),timer=setTimeout(()=>ctrl.abort(),5500);
+   try{
+    const r=await fetch("https://www.wikidata.org/w/api.php?"+params,{signal:ctrl.signal});
+    if(!r.ok)continue;
+    const data=await r.json();
+    for(const [id,record] of Object.entries(data.entities||{})){
+     const label=record.labels?.[language]?.value||record.labels?.en?.value;
+     if(label)labels[id]=label;
+    }
+   }catch{}finally{clearTimeout(timer)}
+  }
+  return labels;
+ }
  function collect(){
   const historical=hasHistoricalSubject();
   if(isAbstractTerm()||!historical&&!state.rows.some(r=>r.timelineWorkMatch===true&&recordYear(r)!==null))return []; // Only authority or explicitly associated catalogue records.
-  if(isAkhenaten())return akhenatenEvents();
-  let ev=isNero()?neroEvents():[],a=state.authority;
+  let ev=isAkhenaten()?akhenatenEvents():isNero()?neroEvents():[],a=state.authority;
+  if(historical&&Array.isArray(a?.temporalClaims))ev.push(...datedAuthorityEvents(a,state.datedLabels).filter(e=>!((isNero()||isAkhenaten())&&e.lane==="life"&&/P569|P570/.test(e.source))));
   // All Wikidata authority properties keep their distinct meanings.
-  if(historical&&a&&/^Q\d+$/.test(a.wikidataId||"")){
+  if(historical&&a&&!Array.isArray(a.temporalClaims)&&/^Q\d+$/.test(a.wikidataId||"")){
    const metadata=[
     ["birthYear","life",L("Nacimiento","Birth","Naissance"),"P569"],
     ["deathYear","life",L("Muerte","Death","Décès"),"P570"],
@@ -201,7 +277,7 @@
    }
   }
   // Attributed cultural works: source relation and typed date, not editorial importance.
-  for(const w of state.works.slice(0,35)){
+  for(const w of state.works){
    const y=year(w.year);if(y==null||!/^Q\d+$/.test(w.id||""))continue;
    const type=String(w.dateKind||"undated"),property=String(w.dateProperty||"");
    ev.push({year:y,lane:"works",title:w.title,url:"https://www.wikidata.org/wiki/"+w.id,
@@ -212,7 +288,7 @@
     image:normUrl(w.image)});
   }
   // Recorded album releaseDate is an edition's date, potentially a reissue.
-  for(const a of state.albums.slice(0,30)){
+  for(const a of state.albums){
    const y=documentedYear(String(a.releaseDate||"").slice(0,4));
    if(year(y)==null||!normUrl(a.url))continue;
    ev.push({year:y,lane:"documents",title:a.title,url:a.url,source:"Apple Music · catálogo de ediciones",
@@ -229,7 +305,7 @@
   // orden de los resultados, y se rotulan como lo que son. Sin esta excepción
   // la cronología dependía por completo de que respondiera Wikidata.
 
-  for(const r of state.rows.slice(0,90)){
+  for(const r of state.rows){
    if(!["book","openlibrary","googlebook","article","edition","manuscript","fragment"].includes(r.type))continue;
    const catalogued=["edition","manuscript","fragment"].includes(r.type)&&r.timelineWorkMatch===true;
    if(!catalogued&&(!historical||!matchedTitle(state.query,r.title)))continue;
@@ -246,21 +322,25 @@
   }
   const seen=new Set();
   ev=ev.map(event).filter(Boolean).filter(e=>{
-   const key=normalize(e.title)+"|"+e.year+"|"+e.lane;
+   const key=normalize(e.title)+"|"+e.year+"|"+e.lane+"|"+(e.end??"")+"|"+(e.authorityEvidence?e.url:"");
    if(seen.has(key))return false;seen.add(key);return true
-  }).sort((a,b)=>a.year-b.year||a.title.localeCompare(b.title)).slice(0,48);
+  }).sort((a,b)=>a.year-b.year||a.title.localeCompare(b.title));
   return ev;
  }
  function highlightButton(button,detail,event){
   for(const active of root.querySelectorAll(".vat-event[aria-pressed=true]"))active.setAttribute("aria-pressed","false");
   button.setAttribute("aria-pressed","true");
-  state.selected=[event.title,event.year,event.lane].join("|");
+  state.selected=[event.title,event.year,event.lane,event.end??"",event.authorityEvidence?event.url:""].join("|");
   const heading=el("h4",null,(event.approx?"c. ":"")+showYear(event.year)+" · "+event.title);
   const body=el("p",null,event.detail);
   const source=el("small","vat-evidence",event.source||L("Registro original","Source record","Notice source"));
   const link=el("a","vat-source-link",L("Consultar fuente y metadatos","Open source and metadata","Consulter la source"));
   link.href=event.url;link.target="_blank";link.rel="noopener noreferrer";
   const contents=el("div","vat-detail-text");contents.append(heading,body,source,link);
+  for(const u of event.referenceLinks||[]){
+   const a=el("a","vat-source-link",L("Referencia registrada","Recorded reference","Référence enregistrée")+" · "+new URL(u).hostname);
+   a.href=u;a.target="_blank";a.rel="noopener noreferrer";contents.append(a);
+  }
   detail.replaceChildren();
   if(event.image){
    const img=el("img","vat-detail-image");img.src=event.image;img.alt=event.title;
@@ -329,17 +409,18 @@
   const born=isAkhenaten()?akhenatenBounds.birth:isNero()?neroBounds.birth:year(state.authority?.birthYear);
   const died=isAkhenaten()?akhenatenBounds.death:isNero()?neroBounds.death:year(state.authority?.deathYear);
   const lifeScope=born!==null&&died!==null&&died>=born?{born,died}:null;
-  const visibleEvents=lifeScope?events.filter(e=>e.year>=lifeScope.born&&e.year<=lifeScope.died):events;
-  const outsideEvents=lifeScope?events.filter(e=>e.year<lifeScope.born||e.year>lifeScope.died):[];
+  const inBiography=e=>e.lane!=="documents"&&e.year>=lifeScope.born&&e.year<=lifeScope.died;
+  const visibleEvents=lifeScope?events.filter(inBiography):events;
+  const outsideEvents=lifeScope?events.filter(e=>!inBiography(e)):[];
   const minYear=visibleEvents[0]?.year??events[0].year;
   const maxYear=Math.max(...(visibleEvents.length?visibleEvents:events).map(e=>e.end??e.year));
   const span=Math.max(1,maxYear-minYear),padding=lifeScope?0:Math.max(1,Math.ceil(span*.04));
   const fullLow=lifeScope?lifeScope.born:minYear-padding;
   const fullHigh=lifeScope?lifeScope.died:maxYear+padding;
-  const zoom=state.zoom??(isNero()?1:automaticZoom(fullHigh-fullLow));
+  const zoom=state.zoom??(lifeScope||isNero()||isAkhenaten()?1:automaticZoom(fullHigh-fullLow));
   const {low,high,range,travel}=dateWindow(fullLow,fullHigh,zoom,state.position);
   const windowEvents=visibleEvents.filter(e=>e.year>=low&&e.year<=high);
-  const eventKey=e=>[e.title,e.year,e.lane].join("|");
+  const eventKey=e=>[e.title,e.year,e.lane,e.end??"",e.authorityEvidence?e.url:""].join("|");
   const allStops=visibleEvents.slice().sort((a,b)=>a.year-b.year||a.title.localeCompare(b.title));
   // Size the axis from the actual available content box. No 250px
   // minimum canvas and no fixed 960px map overflowing mobile readers.
@@ -409,7 +490,7 @@
      detail.scrollIntoView?.({behavior:"smooth",block:"nearest"});
     });
     stops.push({button,event:e});
-    const key=[e.title,e.year,e.lane].join("|");
+    const key=eventKey(e);
     if(key===state.selected)queueMicrotask(()=>{if(button.isConnected)highlightButton(button,detail,e)});
     track.append(button);
    }
@@ -470,20 +551,32 @@
    pan.append(phases);
   }
   root.append(pan,detail);
+  const catalog=el("details","vat-chronological-list");
+  catalog.open=state.listOpen===true;
+  catalog.addEventListener("toggle",()=>{state.listOpen=catalog.open});
+  catalog.append(el("summary",null,L("Lista cronológica completa","Complete chronological list","Liste chronologique complète")+" · "+visibleEvents.length+" "+L("hitos","milestones","jalons")));
+  const entries=el("ol");entries.style.cssText="margin:10px 0;padding-left:24px;max-height:480px;overflow:auto";
+  for(const e of visibleEvents){
+   const li=el("li");li.style.cssText="padding:5px 0;line-height:1.5";
+   const title=(e.approx?"c. ":"")+showYear(e.year)+(e.end!==null&&e.end!==undefined&&e.end!==e.year?" – "+showYear(e.end):"")+" · "+e.title;
+   const a=el("a",null,title);a.href=e.url;a.target="_blank";a.rel="noopener noreferrer";
+   const meta=el("small",null," · "+(e.source||""));meta.style.opacity=".8";
+   li.append(a,meta);entries.append(li);
+  }
+  catalog.append(entries);root.append(catalog);
   if(lifeScope&&outsideEvents.length){
    const extra=el("details","vat-outside");
    extra.append(el("summary",null,L(
-    "Ediciones y documentos fuera del período biográfico ("+outsideEvents.length+")",
-    "Records outside the lifetime ("+outsideEvents.length+")",
-    "Documents hors de la période biographique ("+outsideEvents.length+")")));
+    "Documentos y registros separados de la biografía ("+outsideEvents.length+")",
+    "Documents and records separate from the biography ("+outsideEvents.length+")",
+    "Documents et notices hors du récit biographique ("+outsideEvents.length+")")));
    const list=el("ul","vat-outside-list");
-   for(const e of outsideEvents.slice(0,15)){
+   for(const e of outsideEvents){
     const li=el("li");
     const link=el("a",null,showYear(e.year)+" · "+e.title);
     link.href=e.url;link.target="_blank";link.rel="noopener noreferrer";
     li.append(link);list.append(li);
    }
-   if(outsideEvents.length>15)list.append(el("li",null,L("Se muestran los primeros 15 registros.","Showing first 15 records.","15 premières notices affichées.")));
    extra.append(list);root.append(extra);
   }
   stops.sort((a,b)=>a.event.year-b.event.year||a.event.title.localeCompare(b.event.title));
@@ -546,13 +639,14 @@
  function reset(q){
   panDrag=null;if(panFrame){cancelAnimationFrame(panFrame);panFrame=0}
   state.token++;state.query=String(q||"").trim().slice(0,160);state.zoom=null;state.position=0;
-  state.authority=null;state.works=[];state.albums=[];state.rows=[];state.selected="";state.rowSignature="";state.pendingWorks=null;
+  state.authority=null;state.listOpen=false;state.datedLabels={};state.works=[];state.albums=[];state.rows=[];state.selected="";state.rowSignature="";state.pendingWorks=null;
   place();draw();
   if(!state.query)return;
   const token=state.token;
   resolveAuthority(state.query).then(a=>{
    if(token!==state.token||!a)return;
    state.authority=a;
+   getDatedLabels(a,lang()).then(labels=>{if(token!==state.token)return;state.datedLabels=labels;draw()});
    const pending=state.pendingWorks;
    if(pending&&pending.wikidataId===a.wikidataId)state.works=pending.works;
    draw();
@@ -579,7 +673,7 @@
  async function resolveAuthority(query){
   const resolver=window.VitruviaEntityResolver;
   if(!resolver?.resolve)return null;
-  const key=normalize(query)+"|"+lang();
+  const key="v2-temporal|"+normalize(query)+"|"+lang();
   const hit=cachedAuthority(key);
   if(hit)return hit;
   let value=await resolver.resolve(query,lang()).catch(()=>null);
@@ -614,9 +708,9 @@
   state.albums=Array.isArray(d.albums)?d.albums:[];draw();
  });
  new MutationObserver(changes=>{
-  if(changes.some(c=>c.attributeName==="lang")&&state.query)draw();
+  if(changes.some(c=>c.attributeName==="lang")&&state.query){const token=state.token;state.datedLabels={};draw();if(state.authority)getDatedLabels(state.authority,lang()).then(labels=>{if(token===state.token){state.datedLabels=labels;draw()}})}
  }).observe(document.documentElement,{attributes:true,attributeFilter:["lang"]});
  const snapshot=window.VitruviaSearchSnapshot;
  if(snapshot?.query)reset(snapshot.query);
- window.VitruviaAcademicTimeline={collect,layoutMarkers,dateWindow,automaticZoom,recordYear,version:"2.6-biographical-milestones",neroEvents};
+ window.VitruviaAcademicTimeline={collect,layoutMarkers,dateWindow,automaticZoom,recordYear,version:"2.7-universal-dated-statements",neroEvents,akhenatenEvents,datedAuthorityEvents};
 })();

@@ -18,7 +18,9 @@
   '<a class="featured-documentary-credit" target="_blank" rel="noopener noreferrer"></a></figcaption>'
  ].join('');
  // Arriba del panel destacado: ocupa el espacio libre sobre el título.
- block.prepend(visual);
+ let rail=document.getElementById('featured-documentary-rail');
+ if(!rail){rail=document.createElement('div');rail.id='featured-documentary-rail';block.prepend(rail)}
+ rail.prepend(visual);
  const photo=visual.querySelector('img'),open=visual.querySelector('.featured-documentary-photo');
  const caption=visual.querySelector('.featured-documentary-caption'),credit=visual.querySelector('.featured-documentary-credit');
  const fold=s=>String(s||'').normalize('NFD').replace(/\p{M}/gu,'').toLowerCase().replace(/[^\p{L}\p{N}]+/gu,' ').trim();
@@ -82,7 +84,7 @@
    visual.hidden=true;ready=false;rank=0;
    const backups=(item.backupFiles||[]).filter(x=>typeof x==='string'&&x.length<250).map(file=>{
     const name=encodeURIComponent(file.replace(/ /g,'_'));
-    return {...item,preview:'https://commons.wikimedia.org/wiki/Special:FilePath/'+name+'?width=640',page:'https://commons.wikimedia.org/wiki/File:'+name,credit:'Wikimedia Commons · '+file+' · ficha y licencia'};
+    return {...item,objectTitle:undefined,discoveryDate:undefined,discoverySource:undefined,museum:undefined,inventory:undefined,creationDate:undefined,name:file,caption:file,preview:'https://commons.wikimedia.org/wiki/Special:FilePath/'+name+'?width=640',page:'https://commons.wikimedia.org/wiki/File:'+name,credit:'Wikimedia Commons · '+file+' · ficha y licencia'};
    });
    const backup=backups.find(x=>!attempted.has(x.preview));
    if(backup&&show(backup,weight))return;
@@ -92,7 +94,11 @@
   };
   open.href=item.page;
   photo.alt=item.alt||item.caption||locale('Imagen documental del tema consultado','Documentary image of the searched topic','Image documentaire du sujet');
-  caption.textContent=String(item.caption||'').slice(0,165);
+  caption.textContent=window.VitruviaMuseumCaption?.(item)||String(item.caption||'').slice(0,165);
+  visual.querySelector('.featured-discovery-source')?.remove();
+  if(item.discoveryDate&&/^https:\/\//.test(item.discoverySource||'')&&window.VitruviaMuseumCaption?.(item)){
+   const a=document.createElement('a');a.className='featured-discovery-source';a.href=item.discoverySource;a.target='_blank';a.rel='noopener noreferrer';a.textContent=locale(' · Fuente del hallazgo',' · Discovery record',' · Notice de découverte');credit.after(a);
+  }
   credit.href=item.page;
   credit.textContent=item.credit||locale('Ficha, autor y licencia · Wikimedia','File, creator and license · Wikimedia','Notice, auteur et licence · Wikimedia');
   photo.src=item.preview;
@@ -100,8 +106,8 @@
  }
  function fromRow(row){
   if(!row||!validImage(row.image)||!validSource(row.imageRights))return null;
-  return {preview:row.image,page:row.imageRights,caption:row.title||'',
-   alt:row.title||'',group:'',kind:'',score:0};
+  return {preview:row.image,page:row.imageRights,caption:row.title||'',name:row.title||'',recordKind:row.recordKind,objectTitle:row.objectTitle,museum:row.museum,inventory:row.inventory,creationDate:row.creationDate,discoveryDate:row.discoveryDate,discoverySource:row.discoverySource,
+   alt:row.title||'',group:row.recordKind==='museum-object'?'object':'',kind:'',score:0};
  }
  // Imagen principal del artículo destacado (retrato del personaje, tapa del libro, portada del álbum…).
  // pilicense=any incluye las portadas de uso legítimo de Wikipedia; se muestran enlazadas a su ficha.

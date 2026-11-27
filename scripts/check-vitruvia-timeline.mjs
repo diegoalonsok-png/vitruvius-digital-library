@@ -12,10 +12,8 @@ assert.match(html,/assets\/vitruvia-academic-timeline\.js/);
 assertStylesheet(assert,html,"assets/vitruvia-academic-timeline.css","vitruvia.html");
 assert.match(source,/amarnaproject\.com\/amarna-the-place\/boundary-stelae\//,
  "Ajetatón milestones must link their epigraphic source");
-assert.match(source,/primera proclamación sobre Ajetatón \(año regnal 5\)/,
- "Do not conflate the fifth-year boundary proclamation with the sixth year");
-assert.match(source,/segunda proclamación corresponde al año 6/,
- "Retain the sixth-year proclamation distinctly");
+assert.match(source,/Año 5 · primera proclamación de Ajetatón/,"Keep the first proclamation distinct");
+assert.match(source,/Año 6 · segunda proclamación/,"Keep the second proclamation distinct");
 assert.doesNotMatch(source,/Cambio de nombre y fundación de Ajetatón/,
  "Avoid asserting a single certain sixth-year foundation date");
 
@@ -146,4 +144,19 @@ for(const width of [54,115,220,320,440,760,1280]){
 emit("vitruvia:clear",{});
 assert.equal(root.hidden,true);
 assert.equal(win.VitruviaAcademicTimeline.collect().length,0);
+// Universal regression: no fixed total cap, no fabricated dates for undated relations.
+const generic=win.VitruviaAcademicTimeline.datedAuthorityEvents;
+const makeTime=year=>({year});
+const qualified={wikidataId:"Q1",temporalClaims:[
+ {property:"P39",objectId:"Q2",statementId:"Q1$abc",qualifier:{P580:[makeTime(1900)],P582:[makeTime(1910)]},references:[{urls:["https://example.org/source"]}]},
+ {property:"P607",objectId:"Q3",statementId:"Q1$def",qualifier:{},references:[]},
+ ...Array.from({length:60},(_,i)=>({property:"P166",objectId:"Q4",statementId:"Q1$award"+i,qualifier:{P585:[makeTime(1920+i)]},references:[]}))
+]};
+const generated=generic(qualified,{Q2:"Presidency",Q3:"War",Q4:"Award"});
+assert.equal(generated.length,61);
+assert.equal(generated[0].end,1910);
+assert.equal(generated[0].referenceLinks[0],"https://example.org/source");
+assert.ok(!generated.some(x=>x.title.includes("War")));
+assert.ok(generated.slice(1).every(x=>x.source.includes("sin referencia enlazada")));
+assert.equal(win.VitruviaAcademicTimeline.akhenatenEvents().length,13);
 console.log("Vitruvia universal chronology: sources, clicks, standalone placement in article/results, zero grid overlap, reset PASS");

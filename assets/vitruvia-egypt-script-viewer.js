@@ -92,7 +92,7 @@ function glyphText(str){
 let titulaturae=null;
 function loadTitulaturae(){
  if(titulaturae)return titulaturae;
- titulaturae=fetch("data/vitruvia/titulaturae.json?v=20261109-v1").then(r=>r.ok?r.json():null).catch(()=>null);
+ titulaturae=fetch("data/vitruvia/titulaturae.json?v=20261127-royal-translations-v1").then(r=>r.ok?r.json():null).catch(()=>null);
  return titulaturae;
 }
 const TITLE_ORDER=["horus","nebty","golden","prenomen","nomen"];
@@ -119,7 +119,7 @@ function titularyEntry(parent,data,ruler){
   }else dd.append(node("p","v-script-note","Grafía no editada: solo transliteración."));
   const meta=node("p","v-script-meta");
   const tl=node("i",null,n.trans||"");tl.lang="egy-Latn";meta.append(tl);
-  if(n.gloss)meta.append(document.createTextNode(" · "+n.gloss));
+  if(n.gloss){const locale=document.documentElement.lang?.slice(0,2)||"es";const gloss=n.glosses?.[locale]||n.gloss;meta.append(document.createTextNode(" · "+gloss+(locale!=="es"&&!n.glosses?.[locale]?" [ES]":"")));}
   dd.append(meta);
   if(n.mdc){const m=node("p","v-script-note");m.append(document.createTextNode("Gardiner: "));const code=node("code",null,n.mdc);code.style.font="11px/1.5 ui-monospace,Menlo,Consolas,monospace";m.append(code);dd.append(m)}
   if(n.witness)dd.append(node("p","v-script-note","Testimonio: "+n.witness));
@@ -257,24 +257,89 @@ async function getArabicAuthority(rows,token){
   return typeof name==="string"&&/[\u0600-\u06FF]/.test(name)?{name,url:"https://www.wikidata.org/wiki/"+id}:null;
  }catch{return null}finally{clearTimeout(timeout)}
 }
+
+/* Reuse the existing Egypt catalog and viewer in the principal documentary rail.
+ * Other scripts require a specific published witness, not generated glyphs. */
+const royalLocale=(es,en,fr)=>document.documentElement.lang?.startsWith("en")?en:document.documentElement.lang?.startsWith("fr")?fr:es;
+const royalFold=s=>fold(s).replace(/[^\p{L}\p{N}]+/gu," ").trim();
+const dynastyPattern=/(?:dinastia|dynasty|dynastie|faraones|pharaohs|pharaons)/i;
+function royalEgyptMatches(rulers,q){
+ const f=royalFold(q);
+ const dynasty=f.match(/(?:dinastia|dynasty|dynastie)\s+(?:egipcia\s+|egyptian\s+)?([ivxlcdm]+|\d{1,2})(?:\s|$)/);
+ const romans=["","I","II","III","IV","V","VI","VII","VIII","IX","X","XI","XII","XIII","XIV","XV","XVI","XVII","XVIII","XIX","XX","XXI","XXII","XXIII","XXIV","XXV","XXVI","XXVII","XXVIII","XXIX","XXX","XXXI"];
+ const dyn=dynasty&&!/grieg|greek|grec|macedon|asiri|assyri|assyr|babil|babylon|persa|persian|perse|romana|roman|chino|chinese/.test(f)?(romans[Number(dynasty[1])]||dynasty[1].toUpperCase()):"";
+ return rulers.filter(r=>rulerMatches(r,q)||r.aliases.some(a=>royalFold(a).length>=4&&(" "+f+" ").includes(" "+royalFold(a)+" "))||(dyn&&r.dynasty===dyn)||(dynastyPattern.test(f)&&/egip|egypt|faraon|pharaoh|pharaon/.test(f)&&!dyn));
+}
+const royalOther=[
+ {name:"Alejandro III de Macedonia",aliases:["alejandro magno","alexander the great","alexandre le grand","alejandro iii","alexander iii"],group:"greek",script:"grc",original:"Ἀλέξανδρος · ΑΛΕΞΑΝΔΡΟΥ",trans:"Aléxandros · Alexándrou",gloss:["Alejandro · «de Alejandro» (genitivo de la inscripción monetaria)","Alexander · ‘of Alexander’ (coin inscription, genitive)","Alexandre · « d’Alexandre » (génitif de la légende monétaire)"],source:"https://hcr.ashmus.ox.ac.uk/coin/hcr23575",credit:"Ashmolean Museum · HCR23575"},
+ {name:"Senaquerib",aliases:["senaquerib","sennacherib","sennacherib","sennacherib of assyria"],group:"assyrian",script:"akk",original:"",trans:"Sîn-aḫḫē-erība · dEN.ZU-ŠEŠ.MEŠ-eri-ba",gloss:["Sin ha reemplazado a los hermanos","Sîn has replaced the brothers","Sîn a remplacé les frères"],source:"https://oracc.museum.upenn.edu/rinap/rinap3/Q003508/",credit:"ORACC · RINAP 3 · Q003508",meaning:"https://oracc.museum.upenn.edu/rinap/downloads/Grayson_Novotny_RINAP_3_1.pdf",photoRecord:"https://imj.org.il/en/exhibitions/special-display-assyrian-campaign-judah-told-sennacherib-prism"},
+ {name:"Asurbanipal",aliases:["asurbanipal","assurbanipal","ashurbanipal"],group:"assyrian",script:"akk",original:"",trans:"Aššur-bāni-aplī · AN.ŠÁR-DÙ-IBILA",gloss:["Aššur es el creador de mi heredero","Aššur is the creator of my heir","Aššur est le créateur de mon héritier"],source:"https://oracc.museum.upenn.edu/rinap/rinap5/Q003712/",credit:"ORACC · RINAP 5 · Q003712",meaning:"https://oracc.museum.upenn.edu/nimrud/ancientkalhu/thepeople/ashur/index.html"}
+];
+function otherRoyalMatches(q){
+ const f=royalFold(q);
+ return royalOther.filter(r=>r.aliases.some(a=>(" "+f+" ").includes(" "+royalFold(a)+" "))||(dynastyPattern.test(f)&&((r.group==="greek"&&/grieg|greek|grec|macedon|argead/.test(f))||(r.group==="assyrian"&&/asiri|assyri|assyr/.test(f)))));
+}
+function addOtherRoyal(parent,r){
+ const item=node("div","v-script-entry");
+ item.append(node("h4",null,r.name));
+ if(r.original){const original=node("p","v-script-original",r.original);original.lang=r.script;item.append(original)}
+ else item.append(node("p","v-script-note",royalLocale("Grafía cuneiforme no reproducida; transliteración de la edición epigráfica.","Cuneiform signs not reproduced; transliteration of the published inscription.","Signes cunéiformes non reproduits ; translittération de l’inscription publiée.")));
+ item.append(node("p","v-script-meta",r.trans),node("p","v-script-meta",royalLocale(...r.gloss)),ref(r.credit,r.source));
+ if(r.meaning){const p=node("p","v-script-note");p.append(ref(royalLocale("Fuente del significado","Source for meaning","Source du sens"),r.meaning));item.append(p)}
+ if(r.photoRecord){const p=node("p","v-script-note");p.append(ref(royalLocale("Fotografía del testimonio en el museo","Museum photograph of the witness","Photographie du témoignage au musée"),r.photoRecord));item.append(p)}
+ parent.append(item);
+}
+function royalRail(){
+ const featured=document.getElementById("featured");if(!featured)return null;
+ let rail=document.getElementById("featured-documentary-rail");
+ if(!rail){rail=node("div");rail.id="featured-documentary-rail";featured.prepend(rail);const visual=document.getElementById("featured-documentary-visual");if(visual)rail.append(visual)}
+ return rail;
+}
+async function appendMetWitness(parent,query,token){
+ // Exact object IDs only, never generic image search. The Met supplies image rights.
+ const id=royalEgyptMatches(knownRulers,query).some(r=>r.id==="akhenaten")?550057:null;
+ if(!id)return;
+ const url="https://www.metmuseum.org/art/collection/search/"+id;
+ const fig=node("figure","v-royal-witness");const caption=node("figcaption","v-script-note");
+ caption.append(ref(royalLocale("Cartucho de Akenatón · The Met","Cartouche of Akhenaten · The Met","Cartouche d’Akhenaton · The Met"),url));
+ fig.append(caption);parent.append(fig);
+ try{
+  const data=await fetch("https://collectionapi.metmuseum.org/public/collection/v1/objects/"+id,{signal:AbortSignal.timeout(4500)}).then(r=>r.ok?r.json():null);
+  if(token!==generation||!fig.isConnected||!data||!data.isPublicDomain||!data.primaryImageSmall||!/^https:\/\/images\.metmuseum\.org\//.test(data.primaryImageSmall))return;
+  const img=node("img");img.src=data.primaryImageSmall;img.alt=data.title;img.loading="lazy";img.style.cssText="display:block;width:100%;max-height:180px;object-fit:contain";img.onerror=()=>img.remove();fig.prepend(img);
+  if(data.accessionNumber)caption.append(document.createTextNode(" · "+data.accessionNumber));
+ }catch{}
+}
 async function render(){
- const host=document.getElementById("vitruvia-context");if(!host)return;
+ const context=document.getElementById("vitruvia-context");if(!context)return;
  const query=String(currentQuery||qText()).trim().slice(0,180),classification=matchRows(query);
- const previous=host.querySelector("#v-egypt-script-panel");
- if(!query||(!classification.ancient&&!classification.modern)){previous?.remove();return}
+ const royals=royalEgyptMatches(knownRulers,query),other=otherRoyalMatches(query);
+ const egyptDynasty=dynastyPattern.test(royalFold(query))&&/egip|egypt|faraon|pharaoh|pharaon/.test(royalFold(query));
+ const isRoyal=royals.length>0||other.length>0||egyptDynasty;
+ if(royals.length||egyptDynasty)classification.ancient=true;
+ const host=isRoyal?(royalRail()||context):context;
+ const previous=document.getElementById("v-egypt-script-panel");
+ if(!query||(!classification.ancient&&!classification.modern&&!other.length)){previous?.remove();generation++;return}
  const rowSignature=rows.slice(0,5).map(r=>String(r?.wikidataId||r?.pageid||r?.title||"")).join("|");
- if(previous?.dataset.query===fold(query)&&previous.dataset.rows===rowSignature)return;
+ if(previous?.parentNode===host&&previous.dataset.query===fold(query)&&previous.dataset.rows===rowSignature&&previous.dataset.royals===String(royals.length+other.length))return;
  previous?.remove();attachStyles();
  const {box,content}=createPanel(query,classification);
- box.dataset.rows=rowSignature;
- host.prepend(box);host.hidden=false;const token=++generation;
- let populated=0;
+ box.dataset.rows=rowSignature;box.dataset.royals=String(royals.length+other.length);
+ if(isRoyal){
+  box.classList.add("v-royal-principal");
+  box.querySelector("h3").textContent=royalLocale("Nombres reales · escritura original","Royal names · original writing","Noms royaux · écriture originale");
+  if(!classification.ancient&&!classification.modern){for(const child of [...box.children])if(child!==content&&child.tagName!=="H3")child.remove();}
+  host.append(box);
+ }else host.prepend(box);
+ host.hidden=false;const token=++generation;
+ for(const r of other)addOtherRoyal(content,r);
+ let populated=other.length;
  let titularyShown=false;
  if(classification.ancient){
   const data=await loadTitulaturae();if(token!==generation||!box.isConnected)return;
   if(data?.rulers){
    knownRulers=data.rulers;
-   for(const ruler of data.rulers.filter(r=>rulerMatches(r,query))){titularyEntry(content,data,ruler);populated++;titularyShown=true}
+   for(const ruler of royalEgyptMatches(data.rulers,query)){titularyEntry(content,data,ruler);populated++;titularyShown=true}
   }
   for(const rec of [...(titularyShown?[]:ORIGINALS),...SYMBOLS].filter(r=>r.match.test(query))){
    entry(content,rec);populated++;
@@ -287,12 +352,16 @@ async function render(){
     source:"https://www.wikidata.org/wiki/Special:Search?search="+encodeURIComponent(rec.title)});populated++;
   }
  }
+ if(isRoyal&&classification.ancient&&royalEgyptMatches(knownRulers,query).some(r=>r.id==="akhenaten")){
+  entry(content,{title:"Amenhotep IV · "+royalLocale("nombre anterior","earlier name","nom antérieur"),glyphs:"𓇋𓏠𓐰𓈖𓊵𓐰𓏏𓐱𓊪",trans:"jmn-ḥtp",gloss:royalLocale("Amón está satisfecho","Amun is satisfied","Amon est satisfait"),source:"https://www.metmuseum.org/art/collection/search/545756",evidence:royalLocale("Transcripción editorial normalizada; el vaso del Met conserva los nombres de Amenhotep IV y Nefertiti.","Normalized editorial transcription; the Met goblet preserves the names of Amenhotep IV and Nefertiti.","Transcription éditoriale normalisée ; le gobelet du Met conserve les noms d’Amenhotep IV et de Néfertiti.")});populated++;
+ }
  const status=node("p","v-script-note",populated?
- "La agrupación y el óvalo son representaciones tipográficas, no facsímiles.":
+ (classification.ancient?"La agrupación y el óvalo son representaciones tipográficas, no facsímiles.":royalLocale("Lecturas de ediciones epigráficas identificadas.","Readings from identified epigraphic editions.","Lectures d’éditions épigraphiques identifiées.")):
  "Se busca una grafía directamente documentada. No se asignan jeroglíficos reconstruidos automáticamente.");
  content.append(status);
  const tasks=[];
- if(classification.ancient){
+ if(classification.ancient&&isRoyal)tasks.push(appendMetWitness(content,query,token));
+ if(classification.ancient&&!isRoyal){
   tasks.push(getWikiTranscription(query,rows,token).then(record=>{
    if(token!==generation||!box.isConnected||!record)return;
    for(const signs of record.glyphs){
@@ -324,7 +393,7 @@ function init(){
  const host=document.getElementById("vitruvia-context");if(!host)return;
  loadTitulaturae().then(d=>{if(d?.rulers){knownRulers=d.rulers;schedule()}});
  new MutationObserver(()=>{
-  if(!host.querySelector("#v-egypt-script-panel")&&currentQuery)schedule();
+  if(!document.getElementById("v-egypt-script-panel")&&currentQuery)schedule();
  }).observe(host,{childList:true});
  for(const name of ["vitruvia:search","vitruvia:results","vitruvia:featured-result"]){
   window.addEventListener(name,event=>{
@@ -332,12 +401,13 @@ function init(){
    if(typeof d.query==="string"){currentQuery=d.query;rows=Array.isArray(d.rows)?d.rows:rows}
    if(d.row&&d.row.wikidataId)rows=[d.row,...rows.filter(x=>x!==d.row)].slice(0,15);
    if(name==="vitruvia:search"){
-    host.querySelector("#v-egypt-script-panel")?.remove();
+    document.getElementById("v-egypt-script-panel")?.remove();generation++;
     rows=[];
    }
    schedule();
   });
  }
+ window.addEventListener("vitruvia:clear",()=>{currentQuery="";rows=[];generation++;document.getElementById("v-egypt-script-panel")?.remove()});
  window.addEventListener("popstate",()=>{currentQuery=qText();rows=[];schedule()});
  schedule();
 }

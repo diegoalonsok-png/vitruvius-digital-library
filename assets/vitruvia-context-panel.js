@@ -61,6 +61,26 @@ const highlight=(target,text,needle)=>{
  while(true){const i=lower.indexOf(find,last);if(i<0)break;let end=i+search.length;while(end<t.length&&/[\p{L}\p{M}]/u.test(t[end]))end++;target.append(document.createTextNode(t.slice(last,i)),mk('mark','context-match',t.slice(i,end)));last=end;if(last>=t.length)break;}
  target.append(document.createTextNode(t.slice(last)));
 };
+/* Object labels distinguish the depicted artefact from its photograph and subject.
+ * A discovery date requires an explicit object-level source; never use photo,
+ * creation, acquisition, birth or death dates as a proxy. */
+function museumCaption(item){
+ const p=item||{};
+ const words=[p.group,p.kind,p.name,p.caption,p.alt,p.page].filter(Boolean).map(v=>{try{return decodeURIComponent(v)}catch{return v}}).join(' ').normalize('NFD').replace(/\p{M}/gu,'').toLowerCase().replace(/[_-]/g,' ');
+ const object=p.recordKind==='museum-object'||!!p.objectTitle||/\b(sculptures?|esculturas?|statues?|statues?|estatuas?|busts?|bustos?|bustes?|reliefs?|relieves?|sarcophag\w*|sarcofag\w*|steles?|estelas?|stele|stela|statues?|statua|busto)\b/u.test(words)||['object','sculpture'].includes(p.group);
+ if(!object)return '';
+ const l=lang();
+ const tr=(es,en,fr)=>l==='en'?en:l==='fr'?fr:es;
+ const title=p.objectTitle||p.name||p.caption||tr('Pieza sin identificar','Unidentified object','Objet non identifié');
+ const titleLabel=p.objectTitle?tr('Pieza','Object','Objet'):tr('Identificación provisional','Provisional identification','Identification provisoire');
+ const date=typeof p.discoveryDate==='string'&&p.discoveryDate.trim()&&typeof p.discoverySource==='string'&&/^https:\/\//.test(p.discoverySource)?p.discoveryDate.trim():tr('No documentada en la ficha consultada','Not documented in the consulted record','Non documentée dans la notice consultée');
+ return [titleLabel+': '+title,
+  p.museum?tr('Museo','Museum','Musée')+': '+p.museum:'',
+  p.inventory?tr('Inventario','Inventory','Inventaire')+': '+p.inventory:'',
+  p.creationDate?tr('Datación de la pieza','Object date','Datation de l’objet')+': '+p.creationDate:'',
+  tr('Fecha de hallazgo','Discovery date','Date de découverte')+': '+date].filter(Boolean).join(' · ');
+}
+window.VitruviaMuseumCaption=museumCaption;
 let lastQuery='',currentRows=[],requestId=0,expandedBibliography=false;
 let subjectPortrait=null;
 const articlePortraitHost=$('article-image-preview');
@@ -95,7 +115,8 @@ function placeArticlePortrait(){
  },{once:true});
  source.append(image);
  const caption=mk('figcaption');
- caption.append(mk('strong',null,p.caption||lastQuery));
+ caption.append(mk('strong',null,museumCaption(p)||p.caption||lastQuery));
+ if(p.discoveryDate&&p.discoverySource&&/^https:\/\//.test(p.discoverySource)&&museumCaption(p))caption.append(link(' · '+(lang()==='en'?'Discovery record':lang()==='fr'?'Notice de découverte':'Fuente del hallazgo'),p.discoverySource));
  caption.append(link(' · '+(lang()==='en'?'Source, author and license':lang()==='fr'?'Source, auteur et licence':'Fuente, autor y licencia'),p.page));
  figure.append(source,caption);
  articlePortraitHost.replaceChildren(figure);
@@ -110,7 +131,7 @@ function placePortrait(){
  const source=link('',p.page),image=mk('img');
  image.src=p.preview;image.alt=p.caption||lastQuery;image.decoding='async';
  image.addEventListener('error',()=>figure.remove());source.append(image);
- const caption=mk('figcaption');caption.append(link(p.caption||lastQuery,p.page));
+ const caption=mk('figcaption');caption.append(link(museumCaption(p)||p.caption||lastQuery,p.page));
  figure.append(source,caption);panel.querySelector('.context-term')?.after(figure);
 }
 function receivePortrait(query,item,weight){
