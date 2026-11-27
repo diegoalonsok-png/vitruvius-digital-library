@@ -314,6 +314,23 @@
   }
   detail.append(contents);detail.hidden=false;
  }
+ // Keep the life scale independent of later documentary reception.
+ function splitChronology(events,isPerson,born,died){
+  if(born!==null&&died!==null&&born>died){born=null;died=null}
+  const visible=[],outside=[];
+  for(const e of events){
+   if(isPerson&&(e.lane==="documents"||(born!==null&&e.year<born)||(died!==null&&e.year>died))){
+    outside.push(e);continue;
+   }
+   visible.push(e);
+  }
+  if(!visible.length)return {visible,outside,low:null,high:null};
+  const min=Math.min(...visible.map(e=>e.year));
+  const max=Math.max(...visible.map(e=>isPerson&&died!==null?Math.min(e.end??e.year,died):e.end??e.year));
+  const padding=Math.max(1,Math.ceil(Math.max(1,max-min)*.04));
+  return {visible,outside,low:isPerson&&born!==null?born:min-padding,high:isPerson&&died!==null?died:max+padding};
+ }
+
  function draw(){
   if(!state.query){root.hidden=true;root.replaceChildren();return}
   if(state.phase==="identity"||state.phase==="history"){
@@ -381,17 +398,11 @@
   const bound=key=>state.personDates?(state.personDates[key]?.year??null):year(state.authority?.[key]);
   const born=isAkhenaten()?akhenatenBounds.birth:bound("birthYear");
   const died=isAkhenaten()?akhenatenBounds.death:bound("deathYear");
-  const lifeScope=born!==null&&died!==null&&died>=born?{born,died}:null;
   const isPerson=isAkhenaten()||state.authority?.instanceOf?.includes("Q5");
-  const outside=e=>isPerson&&(e.lane==="documents"||(born!==null&&e.year<born)||(died!==null&&e.year>died));
-  const visibleEvents=events.filter(e=>!outside(e));
-  const outsideEvents=events.filter(outside);
+  const scope=splitChronology(events,isPerson,born,died);
+  const visibleEvents=scope.visible,outsideEvents=scope.outside;
   if(!visibleEvents.length){root.hidden=true;root.replaceChildren();return}
-  const minYear=visibleEvents[0].year;
-  const maxYear=Math.max(...visibleEvents.map(e=>e.end??e.year));
-  const span=Math.max(1,maxYear-minYear),padding=lifeScope?0:Math.max(1,Math.ceil(span*.04));
-  const low=lifeScope?lifeScope.born:minYear-padding;
-  const high=lifeScope?lifeScope.died:maxYear+padding;
+  const low=scope.low,high=scope.high;
   const range=Math.max(1,high-low);
   // Size the axis from the actual available content box. No 250px
   // minimum canvas and no fixed 960px map overflowing mobile readers.
@@ -399,13 +410,15 @@
   const outer=Number(root.clientWidth)||Number(root.getBoundingClientRect?.().width)||760;
   const available=Math.max(1,Math.floor(outer)-(parseFloat(cs.paddingLeft)||0)-(parseFloat(cs.paddingRight)||0)-3);
   const labelWidth=Math.min(Math.round(available*.33),available<420?88:available<740?124:170);
-  const mapWidth=Math.max(1,available-labelWidth-2);
-  const cardWidth=Math.min(Math.round(134*state.zoom),Math.max(1,mapWidth-12));
+  const contentWidth=Math.round(available*Math.max(1,state.zoom));
+  const mapWidth=Math.max(1,contentWidth-labelWidth-2);
+  const cardWidth=Math.min(Math.round(134*Math.min(state.zoom,1.35)),Math.max(1,mapWidth-12));
   root.style.setProperty("--vat-label-width",labelWidth+"px");
   root.style.setProperty("--vat-card-width",cardWidth+"px");
   const viewport=el("div","vat-viewport");viewport.tabIndex=0;
-  viewport.setAttribute("aria-label",L("Cronología adaptada al ancho del visor","Chronology fitted to reader width","Chronologie adaptée à la largeur du lecteur"));
-  const map=el("div","vat-map");map.style.width=available+"px";
+  viewport.style.overflowX="auto";viewport.style.maxWidth="100%";
+  viewport.setAttribute("aria-label",L("Cronología desplazable horizontalmente al ampliar","Timeline scrolls horizontally when zoomed","Chronologie défilable horizontalement au zoom"));
+  const map=el("div","vat-map");map.style.width=contentWidth+"px";map.style.minWidth=contentWidth+"px";
   const axis=el("div","vat-axis");
   const ticks=Math.max(1,Math.min(9,Math.floor(mapWidth/120)));
   for(let i=0;i<=ticks;i++){
@@ -473,7 +486,7 @@
   if(outsideEvents.length){
    const extra=el("details","vat-outside");
    extra.append(el("summary",null,L(
-    "Ediciones y documentos fuera del período biográfico ("+outsideEvents.length+")",
+    "Documentos y legado fuera de la línea de vida ("+outsideEvents.length+")",
     "Records outside the lifetime ("+outsideEvents.length+")",
     "Documents hors de la période biographique ("+outsideEvents.length+")")));
    const list=el("ul","vat-outside-list");
@@ -499,8 +512,8 @@
   next.title=L("Hito siguiente","Next milestone","Jalon suivant");
   zoomOut.title=L("Reducir el tamaño de la etiqueta","Smaller labels","Réduire les étiquettes");
   zoomIn.title=L("Aumentar el tamaño de la etiqueta","Larger labels","Agrandir les étiquettes");
-  zoomOut.onclick=()=>{state.zoom=Math.max(.8,Math.round((state.zoom-.1)*100)/100);draw()};
-  zoomIn.onclick=()=>{state.zoom=Math.min(1.35,Math.round((state.zoom+.1)*100)/100);draw()};
+  zoomOut.onclick=()=>{state.zoom=Math.max(1,Math.round((state.zoom-.25)*100)/100);draw()};
+  zoomIn.onclick=()=>{state.zoom=Math.min(3,Math.round((state.zoom+.25)*100)/100);draw()};
   prev.onclick=()=>navigate(-1);
   next.onclick=()=>navigate(1);
   viewport.addEventListener("keydown",e=>{
@@ -601,5 +614,5 @@
  }).observe(document.documentElement,{attributes:true,attributeFilter:["lang"]});
  const snapshot=window.VitruviaSearchSnapshot;
  if(snapshot?.query)reset(snapshot.query);
- window.VitruviaAcademicTimeline={collect,layoutMarkers,version:"2.2-staged-documentary-history"};
+ window.VitruviaAcademicTimeline={collect,layoutMarkers,version:"2.3-biographical-scope-scroll"};
 })();
