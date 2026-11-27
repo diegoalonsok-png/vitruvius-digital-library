@@ -1,10 +1,10 @@
 {
  "schema": "vdl-classics-expansion-manifest-v1",
- "generated": "2026-11-27T13:30:16.540628+00:00",
+ "generated": "2026-11-27T13:36:02.374515+00:00",
  "discovery": {
-  "sourceRecords": 1412,
-  "alreadyIndexedCatalogueWorks": 647,
-  "pendingGroups": 1354,
+  "sourceRecords": 1400,
+  "alreadyIndexedCatalogueWorks": 659,
+  "pendingGroups": 1342,
   "policy": "Una obra bibliográfica, múltiples ediciones identificadas por URN y hash; sin sustituir ni duplicar archivos",
   "githubTextFiles": 450,
   "githubUnregisteredFiles": 14,
@@ -28703,6 +28703,554 @@
    "characters": 169294,
    "bytes": 421155,
    "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0018-tlg019-grc-d3de21fb2abecd57.json"
+  },
+  {
+   "workId": "cts-tlg0061-tlg001",
+   "author": "Pseudo-Luciano",
+   "title": "Asinus",
+   "language": "grc",
+   "dating": "época imperial",
+   "sources": [
+    {
+     "title": "Λούκιος ἢ Ὄνος",
+     "titleLanguage": "grc",
+     "author": "Pseudo-Lucian",
+     "editors": [
+      "Karl Jacobitz"
+     ],
+     "bibliography": "Luciani Samosatensis Opera Lucian Karl Jacobitz Teubner Leipzig 1913 2 Internet Archive",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg0061.tlg001.1st1K-grc1",
+     "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0061/tlg001/tlg0061.tlg001.1st1K-grc1.xml",
+     "sourceSha256": "59a696cabb3696b8ad31513d6b068db2455090088e858cb5496eeb9e7149b531",
+     "sourceReferences": [
+      "https://archive.org/details/operaexrecogniti02luciuoft/page/302/mode/2up"
+     ],
+     "publicationYear": "1913",
+     "publisher": "Teubner",
+     "publicationPlace": "Leipzig",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/59a696cabb3696b8ad31513d6b068db2455090088e858cb5496eeb9e7149b531.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-tlg0061-tlg001-grc-26e5ff574c510eaf.json",
+   "sha256": "26e5ff574c510eaf6f592e494d205bd22fec679f398cdad8d8d4747d998e299a",
+   "passages": 56,
+   "characters": 58996,
+   "bytes": 126661,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0061-tlg001-grc-26e5ff574c510eaf.json"
+  },
+  {
+   "workId": "cts-tlg0061-tlg003",
+   "author": "Pseudo-Luciano",
+   "title": "Demosthenis encomium",
+   "language": "grc",
+   "dating": "época imperial",
+   "sources": [
+    {
+     "title": "Δημοσθένους Ἐγκώμιον",
+     "titleLanguage": "grc",
+     "author": "Pseudo-Lucian",
+     "editors": [
+      "Karl Jacobitz"
+     ],
+     "bibliography": "Luciani Samosatensis Opera Lucian Karl Jacobitz Teubner Leipzig 1913 3 Internet Archive",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg0061.tlg003.1st1K-grc1",
+     "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0061/tlg003/tlg0061.tlg003.1st1K-grc1.xml",
+     "sourceSha256": "667e967447b17f6bae4d819efcb6bb30ca985a1a19ab2f420b7863f06764d57d",
+     "sourceReferences": [
+      "https://archive.org/details/operaexrecogniti03luciuoft/page/364/mode/2up"
+     ],
+     "publicationYear": "1913",
+     "publisher": "Teubner",
+     "publicationPlace": "Leipzig",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/667e967447b17f6bae4d819efcb6bb30ca985a1a19ab2f420b7863f06764d57d.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-tlg0061-tlg003-grc-2de60e228357a079.json",
+   "sha256": "2de60e228357a079588306fd008ddd43b464b5d2513ced7079f5dfcea2c5b761",
+   "passages": 76,
+   "characters": 32883,
+   "bytes": 77914,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0061-tlg003-grc-2de60e228357a079.json"
+  },
+  {
+   "workId": "cts-tlg0062-tlg002",
+   "author": "Luciano de Samósata",
+   "title": "Hippias",
+   "language": "grc",
+   "dating": "c. 125–c. 180 d. C.",
+   "sources": [
+    {
+     "title": "Ἱππίας ἢ Βαλανεῖον",
+     "titleLanguage": "grc",
+     "author": "Lucian",
+     "editors": [
+      "Austin Morris Harmon"
+     ],
+     "bibliography": "Lucian Lucian Austin Morris Harmon London William Heinemann Ltd. Cambridge, MA Harvard University Press 1913 1 Loeb Classical Library Internet Archive",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg0062.tlg002.perseus-grc2",
+     "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0062/tlg002/tlg0062.tlg002.perseus-grc2.xml",
+     "sourceSha256": "3644f9b11c6fd4e51f66443b08437ade6027ec3322d425cf61140e03301a601b",
+     "sourceReferences": [
+      "https://archive.org/details/lucianha01luciuoft/page/34/mode/2up"
+     ],
+     "publicationYear": "1913",
+     "publisher": "William Heinemann Ltd.",
+     "publicationPlace": "London",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/3644f9b11c6fd4e51f66443b08437ade6027ec3322d425cf61140e03301a601b.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-tlg0062-tlg002-grc-de16cac946b71a5b.json",
+   "sha256": "de16cac946b71a5b25e960d3bb241c9bc97a2082909bc69e27395ca02ffbdcb9",
+   "passages": 11,
+   "characters": 6302,
+   "bytes": 16050,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg002-grc-de16cac946b71a5b.json"
+  },
+  {
+   "workId": "cts-tlg0061-tlg002",
+   "author": "Pseudo-Luciano",
+   "title": "Amores",
+   "language": "grc",
+   "dating": "época imperial",
+   "sources": [
+    {
+     "title": "Ἔρωτες",
+     "titleLanguage": "grc",
+     "author": "Pseudo-Lucian",
+     "editors": [
+      "Karl Jacobitz"
+     ],
+     "bibliography": "Luciani Samosatensis Opera Lucian Karl Jacobitz Teubner Leipzig 1913 2 Internet Archive",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg0061.tlg002.1st1K-grc1",
+     "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0061/tlg002/tlg0061.tlg002.1st1K-grc1.xml",
+     "sourceSha256": "7cc577d1790ab63c69b5ef7e4b33d788b0eb697ea87718b210d4ca7e9c43facf",
+     "sourceReferences": [
+      "https://archive.org/details/operaexrecogniti02luciuoft/page/206/mode/2up"
+     ],
+     "publicationYear": "1913",
+     "publisher": "Teubner",
+     "publicationPlace": "Leipzig",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/7cc577d1790ab63c69b5ef7e4b33d788b0eb697ea87718b210d4ca7e9c43facf.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-tlg0061-tlg002-grc-a0de77a5e0e0ef48.json",
+   "sha256": "a0de77a5e0e0ef48285d3208f94ee2979828b07388c772a2b5b8e2bec6e49d7c",
+   "passages": 57,
+   "characters": 50141,
+   "bytes": 109347,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0061-tlg002-grc-a0de77a5e0e0ef48.json"
+  },
+  {
+   "workId": "cts-tlg0062-tlg004",
+   "author": "Luciano de Samósata",
+   "title": "Hercules",
+   "language": "grc",
+   "dating": "c. 125–c. 180 d. C.",
+   "sources": [
+    {
+     "title": "Προλαλιά. Ἡρακλῆς",
+     "titleLanguage": "grc",
+     "author": "Lucian",
+     "editors": [
+      "Austin Morris Harmon"
+     ],
+     "bibliography": "Lucian Lucian Austin Morris Harmon London William Heinemann Ltd. Cambridge, MA Harvard University Press 1913 1 Loeb Classical Library Internet Archive",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg0062.tlg004.perseus-grc2",
+     "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0062/tlg004/tlg0062.tlg004.perseus-grc2.xml",
+     "sourceSha256": "2853cc360ac62ecde53d20bc411bf6b9f96ed7510983c4a892d899178ee46a32",
+     "sourceReferences": [
+      "https://archive.org/details/lucianha01luciuoft/page/62/mode/2up"
+     ],
+     "publicationYear": "1913",
+     "publisher": "William Heinemann Ltd.",
+     "publicationPlace": "London",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/2853cc360ac62ecde53d20bc411bf6b9f96ed7510983c4a892d899178ee46a32.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-tlg0062-tlg004-grc-39ef63095354ff5f.json",
+   "sha256": "39ef63095354ff5f87ed16e9b23d5d208d3b63fbd30516f86100952e6d9c9cc7",
+   "passages": 10,
+   "characters": 4707,
+   "bytes": 12769,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg004-grc-39ef63095354ff5f.json"
+  },
+  {
+   "workId": "cts-tlg0062-tlg005",
+   "author": "Luciano de Samósata",
+   "title": "Electrum",
+   "language": "grc",
+   "dating": "c. 125–c. 180 d. C.",
+   "sources": [
+    {
+     "title": "Περὶ τοῦ Ἡλέκτρου ἢ Κύκνων",
+     "titleLanguage": "grc",
+     "author": "Lucian",
+     "editors": [
+      "Austin Morris Harmon"
+     ],
+     "bibliography": "Lucian Lucian Austin Morris Harmon London William Heinemann Ltd. Cambridge, MA Harvard University Press 1913 1 Internet Archive",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg0062.tlg005.perseus-grc2",
+     "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0062/tlg005/tlg0062.tlg005.perseus-grc2.xml",
+     "sourceSha256": "5b03f6e7850b5f3865ccf216bee60c673a3fc271cd0f3be6c91b227d58d160bc",
+     "sourceReferences": [
+      "https://archive.org/details/lucianha01luciuoft/page/74/mode/2up"
+     ],
+     "publicationYear": "1913",
+     "publisher": "William Heinemann Ltd.",
+     "publicationPlace": "London",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/5b03f6e7850b5f3865ccf216bee60c673a3fc271cd0f3be6c91b227d58d160bc.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-tlg0062-tlg005-grc-e9e2908e2672734f.json",
+   "sha256": "e9e2908e2672734f73ee3cb6a9dc0614b3fe9d2b8e195e52d147d47dbeb3720e",
+   "passages": 7,
+   "characters": 3815,
+   "bytes": 10602,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg005-grc-e9e2908e2672734f.json"
+  },
+  {
+   "workId": "cts-tlg0062-tlg003",
+   "author": "Luciano de Samósata",
+   "title": "Bacchus",
+   "language": "grc",
+   "dating": "c. 125–c. 180 d. C.",
+   "sources": [
+    {
+     "title": "Προλαλιά. Διόνυσος",
+     "titleLanguage": "grc",
+     "author": "Lucian",
+     "editors": [
+      "Austin Morris Harmon"
+     ],
+     "bibliography": "Lucian Lucian Austin Morris Harmon London William Heinemann Ltd. Cambridge, MA Harvard University Press 1913 1 Loeb Classical Library Internet Archive",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg0062.tlg003.perseus-grc2",
+     "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0062/tlg003/tlg0062.tlg003.perseus-grc2.xml",
+     "sourceSha256": "d1f45b3bc344ccdc301af009bc8d7a7c88d3c9a905884262bbbe961c82940db4",
+     "sourceReferences": [
+      "https://archive.org/details/lucianha01luciuoft/page/48/mode/2up"
+     ],
+     "publicationYear": "1913",
+     "publisher": "William Heinemann Ltd.",
+     "publicationPlace": "London",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/d1f45b3bc344ccdc301af009bc8d7a7c88d3c9a905884262bbbe961c82940db4.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-tlg0062-tlg003-grc-3b9f7ee115c59939.json",
+   "sha256": "3b9f7ee115c59939ce2e0c27c62dba7c1448858d20da4eb05728a592ef67679e",
+   "passages": 9,
+   "characters": 6555,
+   "bytes": 16232,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg003-grc-3b9f7ee115c59939.json"
+  },
+  {
+   "workId": "cts-tlg0062-tlg006",
+   "author": "Luciano de Samósata",
+   "title": "Muscae Encomium",
+   "language": "grc",
+   "dating": "c. 125–c. 180 d. C.",
+   "sources": [
+    {
+     "title": "Μυίας Ἐγκώμιον",
+     "titleLanguage": "grc",
+     "author": "Lucian",
+     "editors": [
+      "Austin Morris Harmon"
+     ],
+     "bibliography": "Lucian Lucian Austin Morris Harmon London William Heinemann Ltd. Cambridge, MA Harvard University Press 1913 1 Loeb Classical Library Internet Archive",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg0062.tlg006.perseus-grc2",
+     "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0062/tlg006/tlg0062.tlg006.perseus-grc2.xml",
+     "sourceSha256": "078d56032ca259b3986b254d529a6a122a56e9431f0381c884870143c793a374",
+     "sourceReferences": [
+      "https://archive.org/details/lucianha01luciuoft/page/82/mode/2up"
+     ],
+     "publicationYear": "1913",
+     "publisher": "William Heinemann Ltd.",
+     "publicationPlace": "London",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/078d56032ca259b3986b254d529a6a122a56e9431f0381c884870143c793a374.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-tlg0062-tlg006-grc-e647566badcb92f9.json",
+   "sha256": "e647566badcb92f9e5fd5cda1ef3c34afb6686620d544d335e9acd65c74bb645",
+   "passages": 12,
+   "characters": 7294,
+   "bytes": 18213,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg006-grc-e647566badcb92f9.json"
+  },
+  {
+   "workId": "cts-tlg0062-tlg007",
+   "author": "Luciano de Samósata",
+   "title": "Nigrinus",
+   "language": "grc",
+   "dating": "c. 125–c. 180 d. C.",
+   "sources": [
+    {
+     "title": "Νιγρίνου Φιλοσοφία",
+     "titleLanguage": "grc",
+     "author": "Lucian",
+     "editors": [
+      "Austin Morris Harmon"
+     ],
+     "bibliography": "Lucian Lucian Austin Morris Harmon London William Heinemann Ltd. Cambridge, MA Harvard University Press 1913 1 Loeb Classical Library Internet Archive",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg0062.tlg007.perseus-grc2",
+     "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0062/tlg007/tlg0062.tlg007.perseus-grc2.xml",
+     "sourceSha256": "16a69e68b8857cc130e839b85fc4373c66b9650a3956b631aeb8bdb3c73c51e0",
+     "sourceReferences": [
+      "https://archive.org/details/lucianha01luciuoft/lucianha01luciuoft/page/98/mode/2up"
+     ],
+     "publicationYear": "1913",
+     "publisher": "William Heinemann Ltd.",
+     "publicationPlace": "London",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/16a69e68b8857cc130e839b85fc4373c66b9650a3956b631aeb8bdb3c73c51e0.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-tlg0062-tlg007-grc-f9697bdf4114b2b8.json",
+   "sha256": "f9697bdf4114b2b871643d32f12f8a4154173d4efcb8e34f0c13b9229b2a41a4",
+   "passages": 66,
+   "characters": 25754,
+   "bytes": 62850,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg007-grc-f9697bdf4114b2b8.json"
+  },
+  {
+   "workId": "cts-tlg0062-tlg008",
+   "author": "Luciano de Samósata",
+   "title": "Demonax",
+   "language": "grc",
+   "dating": "c. 125–c. 180 d. C.",
+   "sources": [
+    {
+     "title": "Δημώνακτος Βίος",
+     "titleLanguage": "grc",
+     "author": "Lucian",
+     "editors": [
+      "Austin Morris Harmon"
+     ],
+     "bibliography": "Lucian Lucian Austin Morris Harmon London William Heinemann Ltd. Cambridge, MA Harvard University Press 1913 1 Internet Archive",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg0062.tlg008.perseus-grc2",
+     "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0062/tlg008/tlg0062.tlg008.perseus-grc2.xml",
+     "sourceSha256": "64f5ba271372ea1f21d56367a2d239753b9920f2eb49e305a5c888150f4eb2a7",
+     "sourceReferences": [
+      "https://archive.org/details/lucianha01luciuoft/page/142/mode/2up"
+     ],
+     "publicationYear": "1913",
+     "publisher": "William Heinemann Ltd.",
+     "publicationPlace": "London",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/64f5ba271372ea1f21d56367a2d239753b9920f2eb49e305a5c888150f4eb2a7.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-tlg0062-tlg008-grc-f7af4b63c4e7bfff.json",
+   "sha256": "f7af4b63c4e7bfff70ff9fbc934ac967407ae95389b1bb435ffd513e6c8b584f",
+   "passages": 70,
+   "characters": 19651,
+   "bytes": 51538,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg008-grc-f7af4b63c4e7bfff.json"
+  },
+  {
+   "workId": "cts-tlg0018-tlg025",
+   "author": "Filón de Alejandría",
+   "title": "De Virtutibus",
+   "language": "grc",
+   "dating": "siglo I d. C.",
+   "sources": [
+    {
+     "title": "De virtutibus",
+     "titleLanguage": "lat",
+     "author": "Philo Judaeus",
+     "editors": [
+      "Leopold Cohn"
+     ],
+     "bibliography": "Philonis Alexandrini Opera Quae Supersunt Leopold Cohn Philo Judaeus Reimer Berlin 1906 5 Hathi Trust",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg0018.tlg025.1st1K-grc1",
+     "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0018/tlg025/tlg0018.tlg025.1st1K-grc1.xml",
+     "sourceSha256": "e2c1001ca3bf457a27cc4caaf784c3dfd436c823a5ced847dd3633a2f389e434",
+     "sourceReferences": [
+      "https://babel.hathitrust.org/cgi/pt?id=hvd.32044054757604;view=2up;seq=306"
+     ],
+     "publicationYear": "1906",
+     "publisher": "Reimer",
+     "publicationPlace": "Berlin",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/e2c1001ca3bf457a27cc4caaf784c3dfd436c823a5ced847dd3633a2f389e434.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-tlg0018-tlg025-grc-48b728293a436b78.json",
+   "sha256": "48b728293a436b787109e37f487db31c4ae4765aaf0d728e31991cf285f22b37",
+   "passages": 233,
+   "characters": 81326,
+   "bytes": 198066,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0018-tlg025-grc-48b728293a436b78.json"
+  },
+  {
+   "workId": "cts-tlg0018-tlg024",
+   "author": "Filón de Alejandría",
+   "title": "De Specialibus Legibus (lib. i‑iv)",
+   "language": "grc",
+   "dating": "siglo I d. C.",
+   "sources": [
+    {
+     "title": "De specialibus legibus (lib. i‑iv)",
+     "titleLanguage": "lat",
+     "author": "Philo Judaeus",
+     "editors": [
+      "Leopold Cohn Paul Wendland",
+      "Leopold Cohn",
+      "Paul Wendland"
+     ],
+     "bibliography": "Philonis Alexandrini Opera Quae Supersunt Leopold Cohn Paul Wendland Philo Judaeus Reimer Berlin 1906 5 Hathi Trust",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg0018.tlg024.1st1K-grc1",
+     "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0018/tlg024/tlg0018.tlg024.1st1K-grc1.xml",
+     "sourceSha256": "60b4588688619bc32041c864cabc734a00ffe740dc4d5cf0627b0bd7f4312774",
+     "sourceReferences": [
+      "https://babel.hathitrust.org/cgi/pt?id=hvd.32044054757604;view=2up;seq=40"
+     ],
+     "publicationYear": "1906",
+     "publisher": "Reimer",
+     "publicationPlace": "Berlin",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/60b4588688619bc32041c864cabc734a00ffe740dc4d5cf0627b0bd7f4312774.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-tlg0018-tlg024-grc-4771d1560871c62d.json",
+   "sha256": "4771d1560871c62dfdb4a7b26c25fd38f71073e3a850384f957995eea57642ac",
+   "passages": 1082,
+   "characters": 375546,
+   "bytes": 911360,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0018-tlg024-grc-4771d1560871c62d.json"
+  },
+  {
+   "workId": "cts-tlg0018-tlg026",
+   "author": "Filón de Alejandría",
+   "title": "De Praemiis Et Poenis Et De Exsecrationibus",
+   "language": "grc",
+   "dating": "siglo I d. C.",
+   "sources": [
+    {
+     "title": "De praemiis et poenis et De exsecrationibus",
+     "titleLanguage": "lat",
+     "author": "Philo Judaeus",
+     "editors": [
+      "Leopold Cohn"
+     ],
+     "bibliography": "Philonis Alexandrini Opera Quae Supersunt Leopold Cohn Philo Judaeus Reimer Berlin 1906 5 Hathi Trust",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg0018.tlg026.1st1K-grc1",
+     "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0018/tlg026/tlg0018.tlg026.1st1K-grc1.xml",
+     "sourceSha256": "545687ec360d0d8d2f97776a3515a9c44db9f33b3b5f9493da6de70e4359e243",
+     "sourceReferences": [
+      "https://babel.hathitrust.org/cgi/pt?id=hvd.32044054757604;view=2up;seq=376"
+     ],
+     "publicationYear": "1906",
+     "publisher": "Reimer",
+     "publicationPlace": "Berlin",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/545687ec360d0d8d2f97776a3515a9c44db9f33b3b5f9493da6de70e4359e243.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-tlg0018-tlg026-grc-b286e978766e1b24.json",
+   "sha256": "b286e978766e1b240fa677577e60242f3ff93809a9b2bf6bf62c417584ad6d65",
+   "passages": 175,
+   "characters": 60710,
+   "bytes": 148488,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0018-tlg026-grc-b286e978766e1b24.json"
   }
  ],
  "githubPreserved": [
@@ -31908,16 +32456,81 @@
  ],
  "deferred": [
   {
-   "workId": "cts-phi0959-phi003",
+   "workId": "ovid-tristia",
    "sources": [
-    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0959/phi003/phi0959.phi003.perseus-lat2.xml"
+    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0959/phi008/phi0959.phi008.perseus-lat2.xml"
    ],
    "reason": "Sin licencia abierta explícita admisible en la cabecera TEI"
   },
   {
-   "workId": "cts-phi1014-phi002",
+   "workId": "seneca-de-clementia",
    "sources": [
-    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi1014/phi002/phi1014.phi002.perseus-lat1.xml"
+    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi1017/phi014/phi1017.phi014.perseus-lat2.xml"
+   ],
+   "reason": "Sin licencia abierta explícita admisible en la cabecera TEI"
+  },
+  {
+   "workId": "seneca-tragoediae",
+   "sources": [
+    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi1017/phi001/phi1017.phi001.perseus-lat2.xml",
+    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi1017/phi002/phi1017.phi002.perseus-lat2.xml",
+    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi1017/phi003/phi1017.phi003.perseus-lat2.xml",
+    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi1017/phi004/phi1017.phi004.perseus-lat2.xml",
+    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi1017/phi005/phi1017.phi005.perseus-lat2.xml",
+    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi1017/phi006/phi1017.phi006.perseus-lat2.xml",
+    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi1017/phi007/phi1017.phi007.perseus-lat2.xml",
+    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi1017/phi008/phi1017.phi008.perseus-lat2.xml",
+    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi1017/phi009/phi1017.phi009.perseus-lat2.xml",
+    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi1017/phi010/phi1017.phi010.perseus-lat2.xml"
+   ],
+   "reason": "Sin licencia abierta explícita admisible en la cabecera TEI"
+  },
+  {
+   "workId": "virgil-georgica",
+   "sources": [
+    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0690/phi002/phi0690.phi002.perseus-lat2.xml"
+   ],
+   "reason": "Sin licencia abierta explícita admisible en la cabecera TEI"
+  },
+  {
+   "workId": "virgil-aeneid",
+   "sources": [
+    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0690/phi003/phi0690.phi003.perseus-lat2.xml"
+   ],
+   "reason": "Sin licencia abierta explícita admisible en la cabecera TEI"
+  },
+  {
+   "workId": "cts-phi0478-phi003",
+   "sources": [
+    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0478/phi003/phi0478.phi003.perseus-lat2.xml"
+   ],
+   "reason": "Sin licencia abierta explícita admisible en la cabecera TEI"
+  },
+  {
+   "workId": "cts-phi0690-phi001",
+   "sources": [
+    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0690/phi001/phi0690.phi001.perseus-lat2.xml"
+   ],
+   "reason": "Sin licencia abierta explícita admisible en la cabecera TEI"
+  },
+  {
+   "workId": "cts-phi0959-phi001",
+   "sources": [
+    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0959/phi001/phi0959.phi001.perseus-lat2.xml"
+   ],
+   "reason": "Sin licencia abierta explícita admisible en la cabecera TEI"
+  },
+  {
+   "workId": "cts-phi0893-phi002",
+   "sources": [
+    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0893/phi002/phi0893.phi002.perseus-lat2.xml"
+   ],
+   "reason": "Sin licencia abierta explícita admisible en la cabecera TEI"
+  },
+  {
+   "workId": "cts-phi0959-phi003",
+   "sources": [
+    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0959/phi003/phi0959.phi003.perseus-lat2.xml"
    ],
    "reason": "Sin licencia abierta explícita admisible en la cabecera TEI"
   },
@@ -31929,16 +32542,9 @@
    "reason": "Sin licencia abierta explícita admisible en la cabecera TEI"
   },
   {
-   "workId": "cts-phi1014-phi001",
+   "workId": "cts-phi1014-phi002",
    "sources": [
-    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi1014/phi001/phi1014.phi001.perseus-lat1.xml"
-   ],
-   "reason": "Sin licencia abierta explícita admisible en la cabecera TEI"
-  },
-  {
-   "workId": "cts-phi1017-phi011",
-   "sources": [
-    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi1017/phi011/phi1017.phi011.perseus-lat2.xml"
+    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi1014/phi002/phi1014.phi002.perseus-lat1.xml"
    ],
    "reason": "Sin licencia abierta explícita admisible en la cabecera TEI"
   },
@@ -31950,9 +32556,23 @@
    "reason": "Sin licencia abierta explícita admisible en la cabecera TEI"
   },
   {
+   "workId": "cts-phi1014-phi001",
+   "sources": [
+    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi1014/phi001/phi1014.phi001.perseus-lat1.xml"
+   ],
+   "reason": "Sin licencia abierta explícita admisible en la cabecera TEI"
+  },
+  {
    "workId": "cts-phi1014-phi004",
    "sources": [
     "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi1014/phi004/phi1014.phi004.perseus-lat1.xml"
+   ],
+   "reason": "Sin licencia abierta explícita admisible en la cabecera TEI"
+  },
+  {
+   "workId": "cts-phi1017-phi011",
+   "sources": [
+    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi1017/phi011/phi1017.phi011.perseus-lat2.xml"
    ],
    "reason": "Sin licencia abierta explícita admisible en la cabecera TEI"
   },
@@ -31971,16 +32591,16 @@
    "reason": "Lengua TEI discrepante o sin acreditar: la"
   },
   {
-   "workId": "horace-ars-poetica",
+   "workId": "horace-epistulae",
    "sources": [
-    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0893/phi006/phi0893.phi006.perseus-lat2.xml"
+    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0893/phi005/phi0893.phi005.perseus-lat2.xml"
    ],
    "reason": "Sin licencia abierta explícita admisible en la cabecera TEI"
   },
   {
-   "workId": "horace-epistulae",
+   "workId": "horace-ars-poetica",
    "sources": [
-    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0893/phi005/phi0893.phi005.perseus-lat2.xml"
+    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0893/phi006/phi0893.phi006.perseus-lat2.xml"
    ],
    "reason": "Sin licencia abierta explícita admisible en la cabecera TEI"
   },
@@ -32013,6 +32633,13 @@
    "reason": "Sin licencia abierta explícita admisible en la cabecera TEI"
   },
   {
+   "workId": "ovid",
+   "sources": [
+    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0959/phi006/phi0959.phi006.perseus-lat2.xml"
+   ],
+   "reason": "Sin licencia abierta explícita admisible en la cabecera TEI"
+  },
+  {
    "workId": "livy",
    "sources": [
     "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0914/phi001/phi0914.phi001.perseus-lat5.xml"
@@ -32023,103 +32650,6 @@
    "workId": "ovid-ars-amatoria",
    "sources": [
     "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0959/phi004/phi0959.phi004.perseus-lat2.xml"
-   ],
-   "reason": "Sin licencia abierta explícita admisible en la cabecera TEI"
-  },
-  {
-   "workId": "ovid",
-   "sources": [
-    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0959/phi006/phi0959.phi006.perseus-lat2.xml"
-   ],
-   "reason": "Sin licencia abierta explícita admisible en la cabecera TEI"
-  },
-  {
-   "workId": "ovid-heroides",
-   "sources": [
-    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0959/phi002/phi0959.phi002.perseus-lat2.xml"
-   ],
-   "reason": "Sin licencia abierta explícita admisible en la cabecera TEI"
-  },
-  {
-   "workId": "ovid-ex-ponto",
-   "sources": [
-    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0959/phi009/phi0959.phi009.perseus-lat2.xml"
-   ],
-   "reason": "Sin licencia abierta explícita admisible en la cabecera TEI"
-  },
-  {
-   "workId": "ovid-fasti",
-   "sources": [
-    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0959/phi007/phi0959.phi007.perseus-lat2.xml"
-   ],
-   "reason": "Sin licencia abierta explícita admisible en la cabecera TEI"
-  },
-  {
-   "workId": "ovid-remedia-amoris",
-   "sources": [
-    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0959/phi005/phi0959.phi005.perseus-lat2.xml"
-   ],
-   "reason": "Sin licencia abierta explícita admisible en la cabecera TEI"
-  },
-  {
-   "workId": "ovid-tristia",
-   "sources": [
-    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0959/phi008/phi0959.phi008.perseus-lat2.xml"
-   ],
-   "reason": "Sin licencia abierta explícita admisible en la cabecera TEI"
-  },
-  {
-   "workId": "seneca-de-clementia",
-   "sources": [
-    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi1017/phi014/phi1017.phi014.perseus-lat2.xml"
-   ],
-   "reason": "Sin licencia abierta explícita admisible en la cabecera TEI"
-  },
-  {
-   "workId": "sallust-iugurtha",
-   "sources": [
-    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0631/phi002/phi0631.phi002.perseus-lat4.xml"
-   ],
-   "reason": "Sin licencia abierta explícita admisible en la cabecera TEI"
-  },
-  {
-   "workId": "cts-phi0631-phi003",
-   "sources": [
-    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0631/phi003/phi0631.phi003.perseus-lat2.xml"
-   ],
-   "reason": "Sin licencia abierta explícita admisible en la cabecera TEI"
-  },
-  {
-   "workId": "suetonius-caesares",
-   "sources": [
-    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi1348/abo011/phi1348.abo011.perseus-lat2.xml",
-    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi1348/abo012/phi1348.abo012.perseus-lat2.xml",
-    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi1348/abo013/phi1348.abo013.perseus-lat2.xml",
-    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi1348/abo014/phi1348.abo014.perseus-lat2.xml",
-    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi1348/abo015/phi1348.abo015.perseus-lat2.xml",
-    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi1348/abo016/phi1348.abo016.perseus-lat2.xml",
-    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi1348/abo017/phi1348.abo017.perseus-lat2.xml",
-    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi1348/abo018/phi1348.abo018.perseus-lat2.xml",
-    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi1348/abo019/phi1348.abo019.perseus-lat2.xml",
-    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi1348/abo020/phi1348.abo020.perseus-lat2.xml",
-    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi1348/abo021/phi1348.abo021.perseus-lat2.xml",
-    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi1348/abo022/phi1348.abo022.perseus-lat2.xml"
-   ],
-   "reason": "Sin licencia abierta explícita admisible en la cabecera TEI"
-  },
-  {
-   "workId": "seneca-tragoediae",
-   "sources": [
-    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi1017/phi001/phi1017.phi001.perseus-lat2.xml",
-    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi1017/phi002/phi1017.phi002.perseus-lat2.xml",
-    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi1017/phi003/phi1017.phi003.perseus-lat2.xml",
-    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi1017/phi004/phi1017.phi004.perseus-lat2.xml",
-    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi1017/phi005/phi1017.phi005.perseus-lat2.xml",
-    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi1017/phi006/phi1017.phi006.perseus-lat2.xml",
-    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi1017/phi007/phi1017.phi007.perseus-lat2.xml",
-    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi1017/phi008/phi1017.phi008.perseus-lat2.xml",
-    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi1017/phi009/phi1017.phi009.perseus-lat2.xml",
-    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi1017/phi010/phi1017.phi010.perseus-lat2.xml"
    ],
    "reason": "Sin licencia abierta explícita admisible en la cabecera TEI"
   }
