@@ -107,7 +107,7 @@ function render(rows,query,person){
     text('Leer en ','Read in ','Lire en ');
    linkTitle=prefix+originalLanguage(b)+' →';
   }else linkTitle=text('Consultar ficha y códices →','View record and manuscripts →','Consulter notice et manuscrits →');
-  const pair=reading&&window.VitruviaReaderLinks?.parallelUrl(reading.url,location.href);
+  const pair=reading&&window.VitruviaReaderLinks?.parallelUrl(reading.url,location.href,reading.language,reading.path);
   if(pair)link(controls,text('Leer original y traducción →','Read original and translation →','Lire original et traduction →'),pair);
   const primary=link(controls,linkTitle,reading?.url||b.link);
   if(primary)primary.className='article-original-reading-cta';
