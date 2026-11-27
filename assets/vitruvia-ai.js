@@ -236,6 +236,8 @@ async function narrowBroad(query,selection){
  const hits=new Map();
  if(idx?.lookup){
   const queryTerms=[...new Set(terms(query))].filter(t=>t.length>=3).slice(0,5);
+  const extra=contextualHints(query).flatMap(g=>g.hints).flatMap(terms).filter(t=>t.length>=4&&!queryTerms.includes(t));
+  queryTerms.push(...[...new Set(extra)].slice(0,2));
   const results=await Promise.allSettled(queryTerms.map(t=>idx.lookup(t,{translations:true})));
   for(const result of results){
    if(result.status!=="fulfilled")continue;
@@ -511,8 +513,30 @@ function matchedPhilosophy(query){
  const q=" "+normalize(query)+" ";
  return philosophicalConcepts.filter(group=>group.triggers.some(t=>q.includes(" "+normalize(t)+" ")));
 }
+// Multilingual retrieval cues, not a dictionary of equivalent historical meanings.
+// Require a complete contextual phrase; bare polysemous words never activate a group.
+const interdisciplinaryConcepts=[
+ {domain:"philosophy",phrases:["causa final","final cause","cause finale","causa finalis","τελικον αιτιον"],hints:["purpose","telos","finis","τέλος"]},
+ {domain:"philosophy",phrases:["ley natural","natural law","loi naturelle","ius naturale"],hints:["lex naturae","nature","δικαιον φυσικον"]},
+ {domain:"history",phrases:["guerra del peloponeso","peloponnesian war","guerre du peloponnese","πελοποννησιακος πολεμος"],hints:["peloponnesians","athenians","lacedaemonians"]},
+ {domain:"history",phrases:["guerras medicas","persian wars","guerres mediques"],hints:["persians","medes","darius","xerxes"]},
+ {domain:"archaeology",phrases:["inscripcion funeraria","funerary inscription","inscription funeraire","epitaphium"],hints:["epitaph","sepulcrum","ἐπιτύμβιος"]},
+ {domain:"egyptology",phrases:["titulatura real egipcia","egyptian royal titulary","titulature royale egyptienne"],hints:["prenomen","nomen","horus name","cartouche"]},
+ {domain:"medicine",phrases:["teoria humoral","humoral theory","theorie humorale","cuatro humores","four humours"],hints:["humor","bile","phlegm","χολή","φλέγμα"]},
+ {domain:"medicine",phrases:["anatomia del cuerpo humano","human anatomy","anatomie humaine"],hints:["anatomia","dissection","ἀνατομή"]},
+ {domain:"mathematics",phrases:["seccion aurea","golden ratio","nombre d or","extreme and mean ratio"],hints:["extreme and mean","ratio","proportion"]},
+ {domain:"mathematics",phrases:["teorema de pitagoras","pythagorean theorem","theoreme de pythagore"],hints:["right angled triangle","hypotenuse","ὑποτείνουσα"]},
+ {domain:"philology",phrases:["variante manuscrita","manuscript variant","variante manuscrite","lectio varia"],hints:["variant reading","lectio","apparatus criticus"]},
+ {domain:"theology",phrases:["resurreccion de los muertos","resurrection of the dead","resurrection des morts","ἀνάστασις νεκρῶν"],hints:["resurrectio","ἀνάστασις","resurrection"]},
+ {domain:"architecture",phrases:["orden dorico","doric order","ordre dorique","ordo doricus"],hints:["doric","dorica","triglyph","triglyphus"]},
+ {domain:"architecture",phrases:["boveda de canon","barrel vault","voute en berceau"],hints:["vault","fornix","camera"]}
+];
+function contextualHints(query){
+ return interdisciplinaryConcepts.filter(g=>g.phrases.some(p=>normalizedPhrase(query,p)));
+}
 function academicTerms(query,workId){
  const exact=normalize(query),weights=new Map([...new Set(terms(query))].map(t=>[t,1]));
+ for(const group of contextualHints(query))for(const hint of [...group.phrases,...group.hints])for(const t of terms(hint))if(!weights.has(t)&&t.length>=3)weights.set(t,.18);
  for(const group of matchedPhilosophy(query))if(group.work===workId)for(const hint of group.hints)for(const t of terms(hint))if(!weights.has(t))weights.set(t,.35);
  if(workId!=="vitruvius")return weights;
  for(const group of architecturalConcepts){
@@ -707,5 +731,5 @@ async function rank(query,docs,{limit=30,candidates=40}={}){
   notify("IA semántica activa en el visor.","success");return {mode:"neural",rows};
  }catch(e){return {mode:"bm25-fallback",rows:pool.slice(0,limit),warning:String(e.message||e)}}
 }
-window.VitruviaAI={search,rank,model:MODEL,version:"1.9.1-phrase-evidence",sourceSelection,academicTerms,narrowBroad,feedback,feedbackState,clearMemory,learnedScore,sourceIdentityOK,normalizedPhrase,passagePhrase,literalPhrase};
+window.VitruviaAI={search,rank,model:MODEL,version:"1.10-interdisciplinary",sourceSelection,academicTerms,narrowBroad,feedback,feedbackState,clearMemory,learnedScore,sourceIdentityOK,normalizedPhrase,passagePhrase,literalPhrase,contextualHints};
 })();
