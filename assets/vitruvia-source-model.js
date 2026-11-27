@@ -10,7 +10,8 @@ const stop=new Set("a al el la las los de del en por para y e o un una unos unas
 const terms=value=>[...new Set(norm(value).split(/\s+/).filter(t=>t.length>=3&&!stop.has(t)))];
 function url(value){
  try{const u=new URL(String(value||""));if(u.protocol!=="https:"||!u.hostname||u.username||u.password)return "";
-  u.hash="";for(const key of [...u.searchParams.keys()])if(/^utm_|^(?:fbclid|gclid|mc_cid|mc_eid)$/i.test(key))u.searchParams.delete(key);
+  // Preserve section/folio anchors: different witnesses may share a document URL.
+  for(const key of [...u.searchParams.keys()])if(/^utm_|^(?:fbclid|gclid|mc_cid|mc_eid)$/i.test(key))u.searchParams.delete(key);
   return u.toString();
  }catch{return ""}
 }
@@ -52,24 +53,29 @@ function related(row,query,identity){
 }
 const priorities={"primary":0,"scholarly-record":1,"institution":2,"catalogue":3,"encyclopedia":4,"external":5};
 function organize(query,rows,identity,limit=12){
- const relevant=[],seen=new Set(),provided=Array.isArray(rows)?rows:[];
+ const byIdentity=new Map(),provided=Array.isArray(rows)?rows:[];
  for(const row of provided){
   const href=url(row?.link||row?.url),title=String(row?.title||"").trim();
   if(!href||!title||!related(row,query,identity))continue;
   const doi=canonicalDOI(row.doi)||doiFromUrl(href);
   // URL paths can be case-sensitive; only the URL parser canonicalizes the host.
-  const key=doi?"doi:"+doi:"url:"+href;
-  if(seen.has(key))continue;
-  seen.add(key);
   const category=sourceType(row);
+  const locator=String(row.locus||row.folio||row.codexFolio||"").trim();
+  const key=doi&&category!=="primary"?"doi:"+doi:"url:"+href+(locator?"|"+locator:"");
   const exact=norm(title)===norm(query)||norm(row.entityCanonical)===norm(query);
   const rawYear=String(row.year??"").trim();
-  relevant.push({title,href,category,doi,
+  const record={title,href,category,doi,locator,
    year:/^-?\d{1,6}$/.test(rawYear)?Number(rawYear):null,
    excerpt:String(row.excerpt||row.entityDescription||"").trim().slice(0,180),
    exact,source:String(row.source||row.publisher||"").trim().slice(0,90),
-   id:String(row.wikidataId||row.qid||"")});
+   id:String(row.wikidataId||row.qid||"")};
+  // Keep the most informative duplicate, not whichever provider replies first.
+  const previous=byIdentity.get(key);
+  const quality=r=>Number(r.exact)*4+Number(Boolean(r.source))*2+Number(r.year!==null)+Number(Boolean(r.excerpt));
+  if(!previous||priorities[record.category]<priorities[previous.category]||
+    (record.category===previous.category&&quality(record)>quality(previous)))byIdentity.set(key,record);
  }
+ const relevant=[...byIdentity.values()];
  relevant.sort((a,b)=>priorities[a.category]-priorities[b.category]||
   Number(b.exact)-Number(a.exact)||(a.year??99999)-(b.year??99999)||a.title.localeCompare(b.title));
  const counts={};for(const record of relevant)counts[record.category]=(counts[record.category]||0)+1;
