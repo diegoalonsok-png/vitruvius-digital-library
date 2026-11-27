@@ -4,17 +4,17 @@
   "scope": "Se auditan exclusivamente 271 fichas de obras del catálogo local; no es un censo universal de literatura grecolatina.",
   "method": "Cruce de fichas bibliográficas, vínculos locales, corpus legible, registro de búsqueda y testimonios manuscritos; sin OCR ni verificación externa de los enlaces.",
   "counts": {
-    "cataloguedWorks": 730,
+    "cataloguedWorks": 740,
     "catalogueStatuses": {
-      "lectura-local-completa": 23,
-      "lectura-local-parcial": 641,
-      "fuente-externa-identificada": 52,
+      "lectura-local-completa": 22,
+      "lectura-local-parcial": 653,
       "repertoriado-busqueda-externa": 12,
-      "pendiente-de-incorporar": 2
+      "pendiente-de-incorporar": 2,
+      "fuente-externa-identificada": 51
     },
-    "locallyReadableClaims": 664,
-    "indexedTextVersions": 948,
-    "indexedDistinctWorks": 701,
+    "locallyReadableClaims": 675,
+    "indexedTextVersions": 960,
+    "indexedDistinctWorks": 711,
     "manuscriptWitnesses": 107
   },
   "works": [
@@ -474,12 +474,13 @@
       "originalLanguage": "grc",
       "genre": "Geografía",
       "dating": "c. 20 a. C.–23 d. C.",
-      "catalogueStatus": "fuente-externa-identificada",
+      "catalogueStatus": "lectura-local-parcial",
       "indexedTextLanguages": [
         "grc"
       ],
       "indexedTextFiles": [
-        "data/classics-corpus/strabo-grc.json"
+        "data/classics-corpus/strabo-grc.json",
+        "https://libros.vitruvius-digital-library.org/corpus/strabo-grc-0546c65ad86ac818.json"
       ],
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
@@ -3848,14 +3849,15 @@
       "originalLanguage": "grc",
       "genre": "Filosofía moral",
       "dating": "siglo IV–III a. C.",
-      "catalogueStatus": "lectura-local-completa",
+      "catalogueStatus": "lectura-local-parcial",
       "indexedTextLanguages": [
         "en",
         "grc"
       ],
       "indexedTextFiles": [
         "data/classics-corpus/theophrastus-characters-en.json",
-        "data/classics-corpus/theophrastus-characters-grc.json"
+        "data/classics-corpus/theophrastus-characters-grc.json",
+        "https://libros.vitruvius-digital-library.org/corpus/theophrastus-characters-grc-e886438055b07585.json"
       ],
       "localPDF": "documents/classics/epictetus-theophrastus-greek-1870.pdf",
       "hasStructuredVitruviusReader": false,
@@ -13216,6 +13218,156 @@
       ],
       "indexedTextFiles": [
         "https://libros.vitruvius-digital-library.org/corpus/cts-tlg1805-tlg002-grc-3498f8d42a67d09b.json"
+      ],
+      "manuscriptRecords": 0,
+      "hasManuscriptRecord": false
+    },
+    {
+      "id": "cts-tlg1805-tlg003",
+      "author": "Vidas de Homero",
+      "title": "Vita Proculea (e Chrestomathia)",
+      "originalLanguage": "grc",
+      "catalogueStatus": "lectura-local-parcial",
+      "indexedTextLanguages": [
+        "grc"
+      ],
+      "indexedTextFiles": [
+        "https://libros.vitruvius-digital-library.org/corpus/cts-tlg1805-tlg003-grc-69e45e535557f15a.json"
+      ],
+      "manuscriptRecords": 0,
+      "hasManuscriptRecord": false
+    },
+    {
+      "id": "cts-tlg1805-tlg004",
+      "author": "Vidas de Homero",
+      "title": "Vita quarta",
+      "originalLanguage": "grc",
+      "catalogueStatus": "lectura-local-parcial",
+      "indexedTextLanguages": [
+        "grc"
+      ],
+      "indexedTextFiles": [
+        "https://libros.vitruvius-digital-library.org/corpus/cts-tlg1805-tlg004-grc-ccd8a3443f0aff9a.json"
+      ],
+      "manuscriptRecords": 0,
+      "hasManuscriptRecord": false
+    },
+    {
+      "id": "cts-tlg0057-tlg013",
+      "author": "Galeno",
+      "title": "De venarum arteriarumque dissectione",
+      "originalLanguage": "grc",
+      "catalogueStatus": "lectura-local-parcial",
+      "indexedTextLanguages": [
+        "grc"
+      ],
+      "indexedTextFiles": [
+        "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0057-tlg013-grc-cafcc993b325c835.json"
+      ],
+      "manuscriptRecords": 0,
+      "hasManuscriptRecord": false
+    },
+    {
+      "id": "cts-tlg0057-tlg014",
+      "author": "Galeno",
+      "title": "De nervorum dissectione",
+      "originalLanguage": "grc",
+      "catalogueStatus": "lectura-local-parcial",
+      "indexedTextLanguages": [
+        "grc"
+      ],
+      "indexedTextFiles": [
+        "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0057-tlg014-grc-e0ecf76746952d4c.json"
+      ],
+      "manuscriptRecords": 0,
+      "hasManuscriptRecord": false
+    },
+    {
+      "id": "cts-tlg0057-tlg015",
+      "author": "Galeno",
+      "title": "De instrumento odoratus",
+      "originalLanguage": "grc",
+      "catalogueStatus": "lectura-local-parcial",
+      "indexedTextLanguages": [
+        "grc"
+      ],
+      "indexedTextFiles": [
+        "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0057-tlg015-grc-512640a2c0dbbe01.json"
+      ],
+      "manuscriptRecords": 0,
+      "hasManuscriptRecord": false
+    },
+    {
+      "id": "cts-tlg0057-tlg016",
+      "author": "Galeno",
+      "title": "De uteri dissectione",
+      "originalLanguage": "grc",
+      "catalogueStatus": "lectura-local-parcial",
+      "indexedTextLanguages": [
+        "grc"
+      ],
+      "indexedTextFiles": [
+        "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0057-tlg016-grc-379d11f29987eab8.json"
+      ],
+      "manuscriptRecords": 0,
+      "hasManuscriptRecord": false
+    },
+    {
+      "id": "cts-tlg0057-tlg018",
+      "author": "Galeno",
+      "title": "De motu musculorum",
+      "originalLanguage": "grc",
+      "catalogueStatus": "lectura-local-parcial",
+      "indexedTextLanguages": [
+        "grc"
+      ],
+      "indexedTextFiles": [
+        "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0057-tlg018-grc-ba5109137bce2bb5.json"
+      ],
+      "manuscriptRecords": 0,
+      "hasManuscriptRecord": false
+    },
+    {
+      "id": "cts-tlg0018-tlg018",
+      "author": "Filón de Alejandría",
+      "title": "De Mutatione Nominum",
+      "originalLanguage": "grc",
+      "catalogueStatus": "lectura-local-parcial",
+      "indexedTextLanguages": [
+        "grc"
+      ],
+      "indexedTextFiles": [
+        "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0018-tlg018-grc-8d030580fdee9ce6.json"
+      ],
+      "manuscriptRecords": 0,
+      "hasManuscriptRecord": false
+    },
+    {
+      "id": "cts-tlg0018-tlg017",
+      "author": "Filón de Alejandría",
+      "title": "De Fuga Et Inventione",
+      "originalLanguage": "grc",
+      "catalogueStatus": "lectura-local-parcial",
+      "indexedTextLanguages": [
+        "grc"
+      ],
+      "indexedTextFiles": [
+        "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0018-tlg017-grc-c70e88c5b228698c.json"
+      ],
+      "manuscriptRecords": 0,
+      "hasManuscriptRecord": false
+    },
+    {
+      "id": "cts-tlg0018-tlg019",
+      "author": "Filón de Alejandría",
+      "title": "De Somniis (lib. i-ii)",
+      "originalLanguage": "grc",
+      "catalogueStatus": "lectura-local-parcial",
+      "indexedTextLanguages": [
+        "grc"
+      ],
+      "indexedTextFiles": [
+        "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0018-tlg019-grc-d3de21fb2abecd57.json"
       ],
       "manuscriptRecords": 0,
       "hasManuscriptRecord": false

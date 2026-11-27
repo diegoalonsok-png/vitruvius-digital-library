@@ -1,12 +1,12 @@
 {
   "schema": "vdl-federated-bibliotheca-inventory-v1",
-  "generated": "2026-11-27T12:49:09.712109+00:00",
+  "generated": "2026-11-27T13:33:31.742244+00:00",
   "method": "Master works and additional R2 works counted separately; edition relations can be many-to-many. Remote text URLs are declared, not live-verified. Unresolved editions are never merged automatically.",
   "counts": {
-    "cataloguedWorks": 730,
+    "cataloguedWorks": 740,
     "supplementaryWorks": 127,
     "additionalWorks": 10,
-    "totalDeclaredWorks": 867,
+    "totalDeclaredWorks": 877,
     "r2EditionRecords": 117,
     "r2LinkedEditionRecords": 107,
     "r2WorkEditionRelations": 115,
@@ -14,7 +14,7 @@
     "r2UnlinkedEditionRecords": 0,
     "worksWithR2Edition": 114,
     "worksWithLocalIndexedText": 325,
-    "worksWithDeclaredRemoteIndex": 593
+    "worksWithDeclaredRemoteIndex": 605
   },
   "unlinkedR2EditionIds": [],
   "additionalWorks": [
@@ -2558,7 +2558,12 @@
           "path": "data/classics-corpus/strabo-grc.json"
         }
       ],
-      "declaredRemoteIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/strabo-grc-0546c65ad86ac818.json"
+        }
+      ],
       "r2FacsimileEditions": [
         {
           "editionId": "estrabon-geografia",
@@ -5697,7 +5702,12 @@
           "path": "data/classics-corpus/theophrastus-characters-grc.json"
         }
       ],
-      "declaredRemoteIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/theophrastus-characters-grc-e886438055b07585.json"
+        }
+      ],
       "r2FacsimileEditions": []
     },
     {
@@ -14511,6 +14521,146 @@
         {
           "language": "grc",
           "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg1805-tlg002-grc-3498f8d42a67d09b.json"
+        }
+      ],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "cts-tlg1805-tlg003",
+      "author": "Vidas de Homero",
+      "title": "Vita Proculea (e Chrestomathia)",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg1805-tlg003-grc-69e45e535557f15a.json"
+        }
+      ],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "cts-tlg1805-tlg004",
+      "author": "Vidas de Homero",
+      "title": "Vita quarta",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg1805-tlg004-grc-ccd8a3443f0aff9a.json"
+        }
+      ],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "cts-tlg0057-tlg013",
+      "author": "Galeno",
+      "title": "De venarum arteriarumque dissectione",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0057-tlg013-grc-cafcc993b325c835.json"
+        }
+      ],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "cts-tlg0057-tlg014",
+      "author": "Galeno",
+      "title": "De nervorum dissectione",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0057-tlg014-grc-e0ecf76746952d4c.json"
+        }
+      ],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "cts-tlg0057-tlg015",
+      "author": "Galeno",
+      "title": "De instrumento odoratus",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0057-tlg015-grc-512640a2c0dbbe01.json"
+        }
+      ],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "cts-tlg0057-tlg016",
+      "author": "Galeno",
+      "title": "De uteri dissectione",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0057-tlg016-grc-379d11f29987eab8.json"
+        }
+      ],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "cts-tlg0057-tlg018",
+      "author": "Galeno",
+      "title": "De motu musculorum",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0057-tlg018-grc-ba5109137bce2bb5.json"
+        }
+      ],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "cts-tlg0018-tlg018",
+      "author": "Filón de Alejandría",
+      "title": "De Mutatione Nominum",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0018-tlg018-grc-8d030580fdee9ce6.json"
+        }
+      ],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "cts-tlg0018-tlg017",
+      "author": "Filón de Alejandría",
+      "title": "De Fuga Et Inventione",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0018-tlg017-grc-c70e88c5b228698c.json"
+        }
+      ],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "cts-tlg0018-tlg019",
+      "author": "Filón de Alejandría",
+      "title": "De Somniis (lib. i-ii)",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0018-tlg019-grc-d3de21fb2abecd57.json"
         }
       ],
       "r2FacsimileEditions": []

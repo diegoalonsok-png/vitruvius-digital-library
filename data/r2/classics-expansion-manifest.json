@@ -1,10 +1,10 @@
 {
  "schema": "vdl-classics-expansion-manifest-v1",
- "generated": "2026-11-27T11:50:50.048604+00:00",
+ "generated": "2026-11-27T13:30:16.540628+00:00",
  "discovery": {
-  "sourceRecords": 1436,
-  "alreadyIndexedCatalogueWorks": 623,
-  "pendingGroups": 1378,
+  "sourceRecords": 1412,
+  "alreadyIndexedCatalogueWorks": 647,
+  "pendingGroups": 1354,
   "policy": "Una obra bibliográfica, múltiples ediciones identificadas por URN y hash; sin sustituir ni duplicar archivos",
   "githubTextFiles": 450,
   "githubUnregisteredFiles": 14,
@@ -28201,6 +28201,508 @@
    "characters": 6069,
    "bytes": 14907,
    "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg1805-tlg002-grc-3498f8d42a67d09b.json"
+  },
+  {
+   "workId": "cts-tlg1805-tlg003",
+   "author": "Vidas de Homero",
+   "title": "Vita Proculea (e Chrestomathia)",
+   "language": "grc",
+   "dating": "época imperial",
+   "sources": [
+    {
+     "title": "Vita Proculea (e Chrestomathia)",
+     "titleLanguage": "lat",
+     "author": "Vitae Homeri",
+     "editors": [
+      "Thomas W. Allen"
+     ],
+     "bibliography": "Homeri Opera Thomas W. Allen Oxford Clarendon Press 1912 5 Internet Archive",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg1805.tlg003.1st1K-grc1",
+     "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg1805/tlg003/tlg1805.tlg003.1st1K-grc1.xml",
+     "sourceSha256": "98911370b69425bf56fba0f61fd764eeb545097820cd5796822d0ccfc24d1e74",
+     "sourceReferences": [
+      "https://archive.org/details/homeriopera05home/page/98/mode/2up"
+     ],
+     "publicationYear": "1912",
+     "publisher": "Clarendon Press",
+     "publicationPlace": "Oxford",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/98911370b69425bf56fba0f61fd764eeb545097820cd5796822d0ccfc24d1e74.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-tlg1805-tlg003-grc-69e45e535557f15a.json",
+   "sha256": "69e45e535557f15ab158eb4479d5ca7345718733ae2ae36a1662c5ef8fd0ad55",
+   "passages": 2,
+   "characters": 3830,
+   "bytes": 9639,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg1805-tlg003-grc-69e45e535557f15a.json"
+  },
+  {
+   "workId": "cts-tlg1805-tlg004",
+   "author": "Vidas de Homero",
+   "title": "Vita quarta",
+   "language": "grc",
+   "dating": "época imperial",
+   "sources": [
+    {
+     "title": "Vita quarta",
+     "titleLanguage": "lat",
+     "author": "Vitae Homeri",
+     "editors": [
+      "Thomas W. Allen"
+     ],
+     "bibliography": "Homeri Opera Thomas W. Allen Oxford Clarendon Press 1912 5 Internet Archive",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg1805.tlg004.1st1K-grc1",
+     "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg1805/tlg004/tlg1805.tlg004.1st1K-grc1.xml",
+     "sourceSha256": "dfb4485f6999160266b4fe332cf65d442b8e82f820d4e73cf5681c6ef1182801",
+     "sourceReferences": [
+      "https://archive.org/details/homeriopera05home/page/244/mode/2up"
+     ],
+     "publicationYear": "1912",
+     "publisher": "Clarendon Press",
+     "publicationPlace": "Oxford",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/dfb4485f6999160266b4fe332cf65d442b8e82f820d4e73cf5681c6ef1182801.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-tlg1805-tlg004-grc-ccd8a3443f0aff9a.json",
+   "sha256": "ccd8a3443f0aff9a11fae55acd7e902820596268bf88aaa6897723c2c3980841",
+   "passages": 1,
+   "characters": 1136,
+   "bytes": 4215,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg1805-tlg004-grc-ccd8a3443f0aff9a.json"
+  },
+  {
+   "workId": "cts-tlg0057-tlg013",
+   "author": "Galeno",
+   "title": "De venarum arteriarumque dissectione",
+   "language": "grc",
+   "dating": "siglo II d. C.",
+   "sources": [
+    {
+     "title": "De venarum arteriarumque dissectione",
+     "titleLanguage": "lat",
+     "author": "Galen",
+     "editors": [
+      "Karl Gottlob Kühn"
+     ],
+     "bibliography": "Claudii Galeni Opera Omnia Galen Karl Gottlob Kühn Knobloch Leipzig 2 779-830 1821 Internet Archive",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg0057.tlg013.1st1K-grc1",
+     "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0057/tlg013/tlg0057.tlg013.1st1K-grc1.xml",
+     "sourceSha256": "3c7c5ac722beffefd4ea06f3ef19d2c5f4890da2d7111bdc6e938fc6278b22fc",
+     "sourceReferences": [
+      "https://archive.org/stream/hapantaoperaomni02galeuoft#page/778/mode/2up"
+     ],
+     "publicationYear": "1821",
+     "publisher": "Knobloch",
+     "publicationPlace": "Leipzig",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/3c7c5ac722beffefd4ea06f3ef19d2c5f4890da2d7111bdc6e938fc6278b22fc.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-tlg0057-tlg013-grc-cafcc993b325c835.json",
+   "sha256": "cafcc993b325c83564b9c1b99ebc4f0e39d7453cc478db816b350647a2f565ba",
+   "passages": 11,
+   "characters": 46505,
+   "bytes": 97283,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0057-tlg013-grc-cafcc993b325c835.json"
+  },
+  {
+   "workId": "cts-tlg0057-tlg014",
+   "author": "Galeno",
+   "title": "De nervorum dissectione",
+   "language": "grc",
+   "dating": "siglo II d. C.",
+   "sources": [
+    {
+     "title": "De nervorum dissectione",
+     "titleLanguage": "lat",
+     "author": "Galen",
+     "editors": [
+      "Karl Gottlob Kühn"
+     ],
+     "bibliography": "Claudii Galeni Opera Omnia Galen Karl Gottlob Kühn Knobloch Leipzig 2 831-856 1821 Internet Archive",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg0057.tlg014.1st1K-grc1",
+     "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0057/tlg014/tlg0057.tlg014.1st1K-grc1.xml",
+     "sourceSha256": "a55c6facf1b00f3630bd9458640ea040b324af4109164431828cf89cc4f09336",
+     "sourceReferences": [
+      "https://archive.org/stream/hapantaoperaomni02galeuoft#page/830/mode/2up"
+     ],
+     "publicationYear": "1821",
+     "publisher": "Knobloch",
+     "publicationPlace": "Leipzig",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/a55c6facf1b00f3630bd9458640ea040b324af4109164431828cf89cc4f09336.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-tlg0057-tlg014-grc-e0ecf76746952d4c.json",
+   "sha256": "e0ecf76746952d4c68cc40b7512eb17fc9ba3a6992ba1e00f6341670526292c0",
+   "passages": 18,
+   "characters": 22085,
+   "bytes": 49078,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0057-tlg014-grc-e0ecf76746952d4c.json"
+  },
+  {
+   "workId": "theophrastus-characters",
+   "author": "Teofrasto",
+   "title": "Ἠθικοὶ χαρακτῆρες",
+   "language": "grc",
+   "sources": [
+    {
+     "title": "Χαρακτῆρες",
+     "titleLanguage": "grc",
+     "author": "Theophrastus",
+     "editors": [
+      "Hermann Diels"
+     ],
+     "bibliography": "Characteres Theophrastus Hermann Diels Oxford Clarendon Press 1909",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg0093.tlg009.perseus-grc2",
+     "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0093/tlg009/tlg0093.tlg009.perseus-grc2.xml",
+     "sourceSha256": "98578987a268b695969a8ef52f8502a17437371edf83f0d0567ad0fb3736c82a",
+     "sourceReferences": [
+      "https://archive.org/details/theophrastichar00theo/page/30/mode/2up"
+     ],
+     "publicationYear": "1909",
+     "publisher": "Clarendon Press",
+     "publicationPlace": "Oxford",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/98578987a268b695969a8ef52f8502a17437371edf83f0d0567ad0fb3736c82a.xml"
+    }
+   ],
+   "existing": true,
+   "filename": "theophrastus-characters-grc-e886438055b07585.json",
+   "sha256": "e886438055b075858c41d7d26f43ab807a29e73d5e57da64762258cb12c9e360",
+   "passages": 363,
+   "characters": 43070,
+   "bytes": 144338,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/theophrastus-characters-grc-e886438055b07585.json"
+  },
+  {
+   "workId": "cts-tlg0057-tlg015",
+   "author": "Galeno",
+   "title": "De instrumento odoratus",
+   "language": "grc",
+   "dating": "siglo II d. C.",
+   "sources": [
+    {
+     "title": "De instrumento odoratus",
+     "titleLanguage": "lat",
+     "author": "Galen",
+     "editors": [
+      "Karl Gottlob Kühn"
+     ],
+     "bibliography": "Claudii Galeni Opera Omnia Galen Karl Gottlob Kühn Knobloch Lipsiae 2 857-886 1821 Internet Archive",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg0057.tlg015.1st1K-grc1",
+     "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0057/tlg015/tlg0057.tlg015.1st1K-grc1.xml",
+     "sourceSha256": "1e9c9a0dda91addd1ebd5757b88ff9b2c91a3a160b8319fa268fa9d2b031b0ea",
+     "sourceReferences": [
+      "https://archive.org/stream/hapantaoperaomni02galeuoft#page/856/mode/2up"
+     ],
+     "publicationYear": "1821",
+     "publisher": "Knobloch",
+     "publicationPlace": "Lipsiae",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/1e9c9a0dda91addd1ebd5757b88ff9b2c91a3a160b8319fa268fa9d2b031b0ea.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-tlg0057-tlg015-grc-512640a2c0dbbe01.json",
+   "sha256": "512640a2c0dbbe01ec006fee75dd778eb726e6fde9dbac6c92b983f7409488e4",
+   "passages": 7,
+   "characters": 26515,
+   "bytes": 56497,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0057-tlg015-grc-512640a2c0dbbe01.json"
+  },
+  {
+   "workId": "cts-tlg0057-tlg016",
+   "author": "Galeno",
+   "title": "De uteri dissectione",
+   "language": "grc",
+   "dating": "siglo II d. C.",
+   "sources": [
+    {
+     "title": "De uteri dissectione",
+     "titleLanguage": "lat",
+     "author": "Galen",
+     "editors": [
+      "Karl Gottlob Kühn"
+     ],
+     "bibliography": "Claudii Galeni Opera Omnia Galen Karl Gottlob Kühn Knobloch Lipsiae 2 887-908 1821 HathiTrust",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg0057.tlg016.1st1K-grc1",
+     "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0057/tlg016/tlg0057.tlg016.1st1K-grc1.xml",
+     "sourceSha256": "58c9b7e74f7b0888a7be0a97964fb0fc467cb57a5578fd57747dbf1c8cc90d9c",
+     "sourceReferences": [
+      "https://archive.org/stream/hapantaoperaomni02galeuoft#page/886/mode/2up"
+     ],
+     "publicationYear": "1821",
+     "publisher": "Knobloch",
+     "publicationPlace": "Lipsiae",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/58c9b7e74f7b0888a7be0a97964fb0fc467cb57a5578fd57747dbf1c8cc90d9c.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-tlg0057-tlg016-grc-379d11f29987eab8.json",
+   "sha256": "379d11f29987eab867e423af34adaee47dbeec62b70534fb1a2ec7f690697d10",
+   "passages": 11,
+   "characters": 19521,
+   "bytes": 42819,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0057-tlg016-grc-379d11f29987eab8.json"
+  },
+  {
+   "workId": "strabo",
+   "author": "Estrabón",
+   "title": "Γεωγραφικά",
+   "language": "grc",
+   "sources": [
+    {
+     "title": "Γεωγραφικά",
+     "titleLanguage": "grc",
+     "author": "Strabo",
+     "editors": [
+      "August Meinecke"
+     ],
+     "bibliography": "Strabo Strabonis Geographica August Meinecke Leipzig Teubner 1877 Internet Archive Internet Archive Internet Archive",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg0099.tlg001.perseus-grc2",
+     "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0099/tlg001/tlg0099.tlg001.perseus-grc2.xml",
+     "sourceSha256": "5c44c39ccfb0c2fbd096354987b39195edbd1cb63c03339c61f70fc7e8e2032d",
+     "sourceReferences": [
+      "https://archive.org/details/bub_gb_MvoHAAAAQAAJ/page/n5/mode/2up",
+      "https://archive.org/details/strabonisgeogra01meingoog/page/n5/mode/2up",
+      "https://archive.org/details/strabonisgeogra06stragoog/page/n6/mode/2up"
+     ],
+     "publicationYear": "1877",
+     "publisher": "Teubner",
+     "publicationPlace": "Leipzig",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/5c44c39ccfb0c2fbd096354987b39195edbd1cb63c03339c61f70fc7e8e2032d.xml"
+    }
+   ],
+   "existing": true,
+   "filename": "strabo-grc-0546c65ad86ac818.json",
+   "sha256": "0546c65ad86ac818693e81ce2466183a3fdac0c2fb56f3669835f1066b250b03",
+   "passages": 1583,
+   "characters": 1781117,
+   "bytes": 3743088,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/strabo-grc-0546c65ad86ac818.json"
+  },
+  {
+   "workId": "cts-tlg0057-tlg018",
+   "author": "Galeno",
+   "title": "De motu musculorum",
+   "language": "grc",
+   "dating": "siglo II d. C.",
+   "sources": [
+    {
+     "title": "De motu musculorum",
+     "titleLanguage": "lat",
+     "author": "Galen",
+     "editors": [
+      "Karl Gottlob Kühn"
+     ],
+     "bibliography": "Claudii Galeni Opera Omnia Galen Karl Gottlob Kühn Knobloch Lipsiae 4 367-464 1822 HathiTrust",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg0057.tlg018.1st1K-grc1",
+     "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0057/tlg018/tlg0057.tlg018.1st1K-grc1.xml",
+     "sourceSha256": "081779cdfdf027955728e3ab8b7267b47fd385d1991e5fcfbae49bacb992f7e7",
+     "sourceReferences": [
+      "https://hdl.handle.net/2027/chi.11102513?urlappend=%3Bseq=376"
+     ],
+     "publicationYear": "1822",
+     "publisher": "Knobloch",
+     "publicationPlace": "Lipsiae",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/081779cdfdf027955728e3ab8b7267b47fd385d1991e5fcfbae49bacb992f7e7.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-tlg0057-tlg018-grc-ba5109137bce2bb5.json",
+   "sha256": "ba5109137bce2bb5ad27868e8e5abd60ff21477f6a03fc9ac91976d8eb799ada",
+   "passages": 21,
+   "characters": 91188,
+   "bytes": 188393,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0057-tlg018-grc-ba5109137bce2bb5.json"
+  },
+  {
+   "workId": "cts-tlg0018-tlg018",
+   "author": "Filón de Alejandría",
+   "title": "De Mutatione Nominum",
+   "language": "grc",
+   "dating": "siglo I d. C.",
+   "sources": [
+    {
+     "title": "De mutatione nominum",
+     "titleLanguage": "lat",
+     "author": "Philo Judaeus",
+     "editors": [
+      "Paul Wendland"
+     ],
+     "bibliography": "Philonis Alexandrini Opera Quae Supersunt Paul Wendland Philo Judaeus Reimer Berlin 1898 3 Hathi Trust",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg0018.tlg018.1st1K-grc1",
+     "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0018/tlg018/tlg0018.tlg018.1st1K-grc1.xml",
+     "sourceSha256": "c1394f2b4991eb636ad5dcfba20b40e3c4a991ccd3ddd1576136df25bd8fbeb0",
+     "sourceReferences": [
+      "https://babel.hathitrust.org/cgi/pt?id=hvd.32044054757612;view=2up;seq=192"
+     ],
+     "publicationYear": "1898",
+     "publisher": "Reimer",
+     "publicationPlace": "Berlin",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/c1394f2b4991eb636ad5dcfba20b40e3c4a991ccd3ddd1576136df25bd8fbeb0.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-tlg0018-tlg018-grc-8d030580fdee9ce6.json",
+   "sha256": "8d030580fdee9ce666af16f7add52157e660152adb9fa3df3343899f10354394",
+   "passages": 272,
+   "characters": 85051,
+   "bytes": 209952,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0018-tlg018-grc-8d030580fdee9ce6.json"
+  },
+  {
+   "workId": "cts-tlg0018-tlg017",
+   "author": "Filón de Alejandría",
+   "title": "De Fuga Et Inventione",
+   "language": "grc",
+   "dating": "siglo I d. C.",
+   "sources": [
+    {
+     "title": "De fuga et inventione",
+     "titleLanguage": "lat",
+     "author": "Philo Judaeus",
+     "editors": [
+      "Paul Wendland"
+     ],
+     "bibliography": "Philonis Alexandrini Opera Quae Supersunt Paul Wendland Philo Judaeus Reimer Berlin 1898 3 Hathi Trust",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg0018.tlg017.1st1K-grc1",
+     "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0018/tlg017/tlg0018.tlg017.1st1K-grc1.xml",
+     "sourceSha256": "bbd7ec326051c0b1e629e88a79b23586f3b7e8bb8c0364f69853ae74cafaad19",
+     "sourceReferences": [
+      "https://babel.hathitrust.org/cgi/pt?id=hvd.32044054757612;view=2up;seq=146"
+     ],
+     "publicationYear": "1898",
+     "publisher": "Reimer",
+     "publicationPlace": "Berlin",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/bbd7ec326051c0b1e629e88a79b23586f3b7e8bb8c0364f69853ae74cafaad19.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-tlg0018-tlg017-grc-c70e88c5b228698c.json",
+   "sha256": "c70e88c5b228698cc0817574dfef07eefd603164690d9b4ca3d099c26bab186a",
+   "passages": 215,
+   "characters": 70800,
+   "bytes": 173446,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0018-tlg017-grc-c70e88c5b228698c.json"
+  },
+  {
+   "workId": "cts-tlg0018-tlg019",
+   "author": "Filón de Alejandría",
+   "title": "De Somniis (lib. i-ii)",
+   "language": "grc",
+   "dating": "siglo I d. C.",
+   "sources": [
+    {
+     "title": "De somniis (lib. i‑ii)",
+     "titleLanguage": "lat",
+     "author": "Philo Judaeus",
+     "editors": [
+      "Paul Wendland"
+     ],
+     "bibliography": "Philonis Alexandrini Opera Quae Supersunt Paul Wendland Philo Judaeus Reimer Berlin 1898 3 Hathi Trust",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg0018.tlg019.1st1K-grc1",
+     "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0018/tlg019/tlg0018.tlg019.1st1K-grc1.xml",
+     "sourceSha256": "c45679ee1817c636b606ee9d9b3cc5489954bf8619ca16e15ba7a20c397afe02",
+     "sourceReferences": [
+      "https://babel.hathitrust.org/cgi/pt?id=hvd.32044054757612;view=2up;seq=240"
+     ],
+     "publicationYear": "1898",
+     "publisher": "Reimer",
+     "publicationPlace": "Berlin",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/c45679ee1817c636b606ee9d9b3cc5489954bf8619ca16e15ba7a20c397afe02.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-tlg0018-tlg019-grc-d3de21fb2abecd57.json",
+   "sha256": "d3de21fb2abecd577ef1bfaee1062aaa6db0ff9afa76d51da7e09d6263486b11",
+   "passages": 561,
+   "characters": 169294,
+   "bytes": 421155,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0018-tlg019-grc-d3de21fb2abecd57.json"
   }
  ],
  "githubPreserved": [
@@ -31406,81 +31908,9 @@
  ],
  "deferred": [
   {
-   "workId": "virgil-georgica",
-   "sources": [
-    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0690/phi002/phi0690.phi002.perseus-lat2.xml"
-   ],
-   "reason": "Sin licencia abierta explícita admisible en la cabecera TEI"
-  },
-  {
-   "workId": "seneca-de-clementia",
-   "sources": [
-    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi1017/phi014/phi1017.phi014.perseus-lat2.xml"
-   ],
-   "reason": "Sin licencia abierta explícita admisible en la cabecera TEI"
-  },
-  {
-   "workId": "virgil-aeneid",
-   "sources": [
-    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0690/phi003/phi0690.phi003.perseus-lat2.xml"
-   ],
-   "reason": "Sin licencia abierta explícita admisible en la cabecera TEI"
-  },
-  {
-   "workId": "seneca-tragoediae",
-   "sources": [
-    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi1017/phi001/phi1017.phi001.perseus-lat2.xml",
-    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi1017/phi002/phi1017.phi002.perseus-lat2.xml",
-    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi1017/phi003/phi1017.phi003.perseus-lat2.xml",
-    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi1017/phi004/phi1017.phi004.perseus-lat2.xml",
-    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi1017/phi005/phi1017.phi005.perseus-lat2.xml",
-    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi1017/phi006/phi1017.phi006.perseus-lat2.xml",
-    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi1017/phi007/phi1017.phi007.perseus-lat2.xml",
-    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi1017/phi008/phi1017.phi008.perseus-lat2.xml",
-    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi1017/phi009/phi1017.phi009.perseus-lat2.xml",
-    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi1017/phi010/phi1017.phi010.perseus-lat2.xml"
-   ],
-   "reason": "Sin licencia abierta explícita admisible en la cabecera TEI"
-  },
-  {
-   "workId": "cts-phi0478-phi003",
-   "sources": [
-    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0478/phi003/phi0478.phi003.perseus-lat2.xml"
-   ],
-   "reason": "Sin licencia abierta explícita admisible en la cabecera TEI"
-  },
-  {
-   "workId": "cts-phi0690-phi001",
-   "sources": [
-    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0690/phi001/phi0690.phi001.perseus-lat2.xml"
-   ],
-   "reason": "Sin licencia abierta explícita admisible en la cabecera TEI"
-  },
-  {
-   "workId": "cts-phi0893-phi002",
-   "sources": [
-    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0893/phi002/phi0893.phi002.perseus-lat2.xml"
-   ],
-   "reason": "Sin licencia abierta explícita admisible en la cabecera TEI"
-  },
-  {
    "workId": "cts-phi0959-phi003",
    "sources": [
     "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0959/phi003/phi0959.phi003.perseus-lat2.xml"
-   ],
-   "reason": "Sin licencia abierta explícita admisible en la cabecera TEI"
-  },
-  {
-   "workId": "cts-phi0959-phi001",
-   "sources": [
-    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0959/phi001/phi0959.phi001.perseus-lat2.xml"
-   ],
-   "reason": "Sin licencia abierta explícita admisible en la cabecera TEI"
-  },
-  {
-   "workId": "cts-phi0959-phi010",
-   "sources": [
-    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0959/phi010/phi0959.phi010.perseus-lat2.xml"
    ],
    "reason": "Sin licencia abierta explícita admisible en la cabecera TEI"
   },
@@ -31492,16 +31922,9 @@
    "reason": "Sin licencia abierta explícita admisible en la cabecera TEI"
   },
   {
-   "workId": "cts-phi1014-phi003",
+   "workId": "cts-phi0959-phi010",
    "sources": [
-    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi1014/phi003/phi1014.phi003.perseus-lat1.xml"
-   ],
-   "reason": "Sin licencia abierta explícita admisible en la cabecera TEI"
-  },
-  {
-   "workId": "cts-phi1014-phi004",
-   "sources": [
-    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi1014/phi004/phi1014.phi004.perseus-lat1.xml"
+    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0959/phi010/phi0959.phi010.perseus-lat2.xml"
    ],
    "reason": "Sin licencia abierta explícita admisible en la cabecera TEI"
   },
@@ -31520,9 +31943,183 @@
    "reason": "Sin licencia abierta explícita admisible en la cabecera TEI"
   },
   {
+   "workId": "cts-phi1014-phi003",
+   "sources": [
+    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi1014/phi003/phi1014.phi003.perseus-lat1.xml"
+   ],
+   "reason": "Sin licencia abierta explícita admisible en la cabecera TEI"
+  },
+  {
+   "workId": "cts-phi1014-phi004",
+   "sources": [
+    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi1014/phi004/phi1014.phi004.perseus-lat1.xml"
+   ],
+   "reason": "Sin licencia abierta explícita admisible en la cabecera TEI"
+  },
+  {
    "workId": "cts-phi1017-phi013",
    "sources": [
     "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi1017/phi013/phi1017.phi013.perseus-lat2.xml"
+   ],
+   "reason": "Sin licencia abierta explícita admisible en la cabecera TEI"
+  },
+  {
+   "workId": "cts-tlg1805-tlg010",
+   "sources": [
+    "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg1805/tlg010/tlg1805.tlg010.1st1K-grc1.xml"
+   ],
+   "reason": "Lengua TEI discrepante o sin acreditar: la"
+  },
+  {
+   "workId": "horace-ars-poetica",
+   "sources": [
+    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0893/phi006/phi0893.phi006.perseus-lat2.xml"
+   ],
+   "reason": "Sin licencia abierta explícita admisible en la cabecera TEI"
+  },
+  {
+   "workId": "horace-epistulae",
+   "sources": [
+    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0893/phi005/phi0893.phi005.perseus-lat2.xml"
+   ],
+   "reason": "Sin licencia abierta explícita admisible en la cabecera TEI"
+  },
+  {
+   "workId": "horace-epodi",
+   "sources": [
+    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0893/phi003/phi0893.phi003.perseus-lat2.xml"
+   ],
+   "reason": "Sin licencia abierta explícita admisible en la cabecera TEI"
+  },
+  {
+   "workId": "horace-odes",
+   "sources": [
+    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0893/phi001/phi0893.phi001.perseus-lat2.xml"
+   ],
+   "reason": "Sin licencia abierta explícita admisible en la cabecera TEI"
+  },
+  {
+   "workId": "horace-sermones",
+   "sources": [
+    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0893/phi004/phi0893.phi004.perseus-lat2.xml"
+   ],
+   "reason": "Sin licencia abierta explícita admisible en la cabecera TEI"
+  },
+  {
+   "workId": "lucretius",
+   "sources": [
+    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0550/phi001/phi0550.phi001.perseus-lat1.xml"
+   ],
+   "reason": "Sin licencia abierta explícita admisible en la cabecera TEI"
+  },
+  {
+   "workId": "livy",
+   "sources": [
+    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0914/phi001/phi0914.phi001.perseus-lat5.xml"
+   ],
+   "reason": "Sin licencia abierta explícita admisible en la cabecera TEI"
+  },
+  {
+   "workId": "ovid-ars-amatoria",
+   "sources": [
+    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0959/phi004/phi0959.phi004.perseus-lat2.xml"
+   ],
+   "reason": "Sin licencia abierta explícita admisible en la cabecera TEI"
+  },
+  {
+   "workId": "ovid",
+   "sources": [
+    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0959/phi006/phi0959.phi006.perseus-lat2.xml"
+   ],
+   "reason": "Sin licencia abierta explícita admisible en la cabecera TEI"
+  },
+  {
+   "workId": "ovid-heroides",
+   "sources": [
+    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0959/phi002/phi0959.phi002.perseus-lat2.xml"
+   ],
+   "reason": "Sin licencia abierta explícita admisible en la cabecera TEI"
+  },
+  {
+   "workId": "ovid-ex-ponto",
+   "sources": [
+    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0959/phi009/phi0959.phi009.perseus-lat2.xml"
+   ],
+   "reason": "Sin licencia abierta explícita admisible en la cabecera TEI"
+  },
+  {
+   "workId": "ovid-fasti",
+   "sources": [
+    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0959/phi007/phi0959.phi007.perseus-lat2.xml"
+   ],
+   "reason": "Sin licencia abierta explícita admisible en la cabecera TEI"
+  },
+  {
+   "workId": "ovid-remedia-amoris",
+   "sources": [
+    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0959/phi005/phi0959.phi005.perseus-lat2.xml"
+   ],
+   "reason": "Sin licencia abierta explícita admisible en la cabecera TEI"
+  },
+  {
+   "workId": "ovid-tristia",
+   "sources": [
+    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0959/phi008/phi0959.phi008.perseus-lat2.xml"
+   ],
+   "reason": "Sin licencia abierta explícita admisible en la cabecera TEI"
+  },
+  {
+   "workId": "seneca-de-clementia",
+   "sources": [
+    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi1017/phi014/phi1017.phi014.perseus-lat2.xml"
+   ],
+   "reason": "Sin licencia abierta explícita admisible en la cabecera TEI"
+  },
+  {
+   "workId": "sallust-iugurtha",
+   "sources": [
+    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0631/phi002/phi0631.phi002.perseus-lat4.xml"
+   ],
+   "reason": "Sin licencia abierta explícita admisible en la cabecera TEI"
+  },
+  {
+   "workId": "cts-phi0631-phi003",
+   "sources": [
+    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0631/phi003/phi0631.phi003.perseus-lat2.xml"
+   ],
+   "reason": "Sin licencia abierta explícita admisible en la cabecera TEI"
+  },
+  {
+   "workId": "suetonius-caesares",
+   "sources": [
+    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi1348/abo011/phi1348.abo011.perseus-lat2.xml",
+    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi1348/abo012/phi1348.abo012.perseus-lat2.xml",
+    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi1348/abo013/phi1348.abo013.perseus-lat2.xml",
+    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi1348/abo014/phi1348.abo014.perseus-lat2.xml",
+    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi1348/abo015/phi1348.abo015.perseus-lat2.xml",
+    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi1348/abo016/phi1348.abo016.perseus-lat2.xml",
+    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi1348/abo017/phi1348.abo017.perseus-lat2.xml",
+    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi1348/abo018/phi1348.abo018.perseus-lat2.xml",
+    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi1348/abo019/phi1348.abo019.perseus-lat2.xml",
+    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi1348/abo020/phi1348.abo020.perseus-lat2.xml",
+    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi1348/abo021/phi1348.abo021.perseus-lat2.xml",
+    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi1348/abo022/phi1348.abo022.perseus-lat2.xml"
+   ],
+   "reason": "Sin licencia abierta explícita admisible en la cabecera TEI"
+  },
+  {
+   "workId": "seneca-tragoediae",
+   "sources": [
+    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi1017/phi001/phi1017.phi001.perseus-lat2.xml",
+    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi1017/phi002/phi1017.phi002.perseus-lat2.xml",
+    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi1017/phi003/phi1017.phi003.perseus-lat2.xml",
+    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi1017/phi004/phi1017.phi004.perseus-lat2.xml",
+    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi1017/phi005/phi1017.phi005.perseus-lat2.xml",
+    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi1017/phi006/phi1017.phi006.perseus-lat2.xml",
+    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi1017/phi007/phi1017.phi007.perseus-lat2.xml",
+    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi1017/phi008/phi1017.phi008.perseus-lat2.xml",
+    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi1017/phi009/phi1017.phi009.perseus-lat2.xml",
+    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi1017/phi010/phi1017.phi010.perseus-lat2.xml"
    ],
    "reason": "Sin licencia abierta explícita admisible en la cabecera TEI"
   }
