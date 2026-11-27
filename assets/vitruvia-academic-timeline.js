@@ -322,7 +322,7 @@
   }
   const seen=new Set();
   ev=ev.map(event).filter(Boolean).filter(e=>{
-   const key=normalize(e.title)+"|"+e.year+"|"+e.lane+"|"+(e.end??"");
+   const key=normalize(e.title)+"|"+e.year+"|"+e.lane+"|"+(e.end??"")+"|"+(e.authorityEvidence?e.url:"");
    if(seen.has(key))return false;seen.add(key);return true
   }).sort((a,b)=>a.year-b.year||a.title.localeCompare(b.title));
   return ev;
@@ -330,7 +330,7 @@
  function highlightButton(button,detail,event){
   for(const active of root.querySelectorAll(".vat-event[aria-pressed=true]"))active.setAttribute("aria-pressed","false");
   button.setAttribute("aria-pressed","true");
-  state.selected=[event.title,event.year,event.lane].join("|");
+  state.selected=[event.title,event.year,event.lane,event.end??"",event.authorityEvidence?event.url:""].join("|");
   const heading=el("h4",null,(event.approx?"c. ":"")+showYear(event.year)+" · "+event.title);
   const body=el("p",null,event.detail);
   const source=el("small","vat-evidence",event.source||L("Registro original","Source record","Notice source"));
@@ -409,8 +409,9 @@
   const born=isAkhenaten()?akhenatenBounds.birth:isNero()?neroBounds.birth:year(state.authority?.birthYear);
   const died=isAkhenaten()?akhenatenBounds.death:isNero()?neroBounds.death:year(state.authority?.deathYear);
   const lifeScope=born!==null&&died!==null&&died>=born?{born,died}:null;
-  const visibleEvents=lifeScope?events.filter(e=>e.year>=lifeScope.born&&e.year<=lifeScope.died):events;
-  const outsideEvents=lifeScope?events.filter(e=>e.year<lifeScope.born||e.year>lifeScope.died):[];
+  const inBiography=e=>e.lane!=="documents"&&e.year>=lifeScope.born&&e.year<=lifeScope.died;
+  const visibleEvents=lifeScope?events.filter(inBiography):events;
+  const outsideEvents=lifeScope?events.filter(e=>!inBiography(e)):[];
   const minYear=visibleEvents[0]?.year??events[0].year;
   const maxYear=Math.max(...(visibleEvents.length?visibleEvents:events).map(e=>e.end??e.year));
   const span=Math.max(1,maxYear-minYear),padding=lifeScope?0:Math.max(1,Math.ceil(span*.04));
@@ -419,7 +420,7 @@
   const zoom=state.zoom??(lifeScope||isNero()||isAkhenaten()?1:automaticZoom(fullHigh-fullLow));
   const {low,high,range,travel}=dateWindow(fullLow,fullHigh,zoom,state.position);
   const windowEvents=visibleEvents.filter(e=>e.year>=low&&e.year<=high);
-  const eventKey=e=>[e.title,e.year,e.lane].join("|");
+  const eventKey=e=>[e.title,e.year,e.lane,e.end??"",e.authorityEvidence?e.url:""].join("|");
   const allStops=visibleEvents.slice().sort((a,b)=>a.year-b.year||a.title.localeCompare(b.title));
   // Size the axis from the actual available content box. No 250px
   // minimum canvas and no fixed 960px map overflowing mobile readers.
@@ -489,7 +490,7 @@
      detail.scrollIntoView?.({behavior:"smooth",block:"nearest"});
     });
     stops.push({button,event:e});
-    const key=[e.title,e.year,e.lane].join("|");
+    const key=eventKey(e);
     if(key===state.selected)queueMicrotask(()=>{if(button.isConnected)highlightButton(button,detail,e)});
     track.append(button);
    }
@@ -550,12 +551,25 @@
    pan.append(phases);
   }
   root.append(pan,detail);
+  const catalog=el("details","vat-chronological-list");
+  catalog.open=state.listOpen===true;
+  catalog.addEventListener("toggle",()=>{state.listOpen=catalog.open});
+  catalog.append(el("summary",null,L("Lista cronológica completa","Complete chronological list","Liste chronologique complète")+" · "+visibleEvents.length+" "+L("hitos","milestones","jalons")));
+  const entries=el("ol");entries.style.cssText="margin:10px 0;padding-left:24px;max-height:480px;overflow:auto";
+  for(const e of visibleEvents){
+   const li=el("li");li.style.cssText="padding:5px 0;line-height:1.5";
+   const title=(e.approx?"c. ":"")+showYear(e.year)+(e.end!==null&&e.end!==undefined&&e.end!==e.year?" – "+showYear(e.end):"")+" · "+e.title;
+   const a=el("a",null,title);a.href=e.url;a.target="_blank";a.rel="noopener noreferrer";
+   const meta=el("small",null," · "+(e.source||""));meta.style.opacity=".8";
+   li.append(a,meta);entries.append(li);
+  }
+  catalog.append(entries);root.append(catalog);
   if(lifeScope&&outsideEvents.length){
    const extra=el("details","vat-outside");
    extra.append(el("summary",null,L(
-    "Ediciones y documentos fuera del período biográfico ("+outsideEvents.length+")",
-    "Records outside the lifetime ("+outsideEvents.length+")",
-    "Documents hors de la période biographique ("+outsideEvents.length+")")));
+    "Documentos y registros separados de la biografía ("+outsideEvents.length+")",
+    "Documents and records separate from the biography ("+outsideEvents.length+")",
+    "Documents et notices hors du récit biographique ("+outsideEvents.length+")")));
    const list=el("ul","vat-outside-list");
    for(const e of outsideEvents){
     const li=el("li");
@@ -625,7 +639,7 @@
  function reset(q){
   panDrag=null;if(panFrame){cancelAnimationFrame(panFrame);panFrame=0}
   state.token++;state.query=String(q||"").trim().slice(0,160);state.zoom=null;state.position=0;
-  state.authority=null;state.datedLabels={};state.works=[];state.albums=[];state.rows=[];state.selected="";state.rowSignature="";state.pendingWorks=null;
+  state.authority=null;state.listOpen=false;state.datedLabels={};state.works=[];state.albums=[];state.rows=[];state.selected="";state.rowSignature="";state.pendingWorks=null;
   place();draw();
   if(!state.query)return;
   const token=state.token;
@@ -659,7 +673,7 @@
  async function resolveAuthority(query){
   const resolver=window.VitruviaEntityResolver;
   if(!resolver?.resolve)return null;
-  const key=normalize(query)+"|"+lang();
+  const key="v2-temporal|"+normalize(query)+"|"+lang();
   const hit=cachedAuthority(key);
   if(hit)return hit;
   let value=await resolver.resolve(query,lang()).catch(()=>null);
@@ -694,7 +708,7 @@
   state.albums=Array.isArray(d.albums)?d.albums:[];draw();
  });
  new MutationObserver(changes=>{
-  if(changes.some(c=>c.attributeName==="lang")&&state.query)draw();
+  if(changes.some(c=>c.attributeName==="lang")&&state.query){const token=state.token;state.datedLabels={};draw();if(state.authority)getDatedLabels(state.authority,lang()).then(labels=>{if(token===state.token){state.datedLabels=labels;draw()}})}
  }).observe(document.documentElement,{attributes:true,attributeFilter:["lang"]});
  const snapshot=window.VitruviaSearchSnapshot;
  if(snapshot?.query)reset(snapshot.query);
