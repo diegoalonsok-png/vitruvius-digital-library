@@ -503,7 +503,7 @@ async function songAlbumRelations(root,topic,valid){
  const artistName=topic.name;
  const section=el('section','web-dossier-song-relations');
  header(section,L('Canciones, letras y álbumes relacionados','Songs, lyrics and related albums','Chansons, paroles et albums associés'));
- info(section,L('Cada canción se vincula únicamente al álbum identificado en el catálogo de música. Las letras completas se consultan en fuentes autorizadas; para traducir utiliza el lector de textos con un fragmento permitido.','Songs are linked only to catalogue-identified albums. Consult licensed lyrics and translate authorized excerpts in the text reader.','Les chansons ne sont liées qu’aux albums identifiés. Consultez les paroles autorisées et traduisez les extraits permis.'));
+ info(section,L('Cada canción se vincula únicamente al álbum identificado en el catálogo de música. Las letras completas se consultan en fuentes autorizadas.','Songs are linked only to catalogue-identified albums. Consult licensed lyrics at the linked services.','Les chansons ne sont liées qu’aux albums identifiés. Consultez les paroles autorisées auprès des services liés.'));
  const status=el('p','context-note',L('Recuperando grabaciones catalogadas…','Retrieving catalogued recordings…','Recherche des enregistrements…'));section.append(status);root.append(section);
  try{
   const params=new URLSearchParams({term:artistName,entity:'song',limit:'120',country:'US',media:'music'});
