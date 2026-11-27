@@ -14,6 +14,16 @@
  const el=(name,cls,text)=>{const n=document.createElement(name);if(cls)n.className=cls;if(text!==undefined)n.textContent=String(text);return n};
  const year=x=>typeof x==="number"&&Number.isInteger(x)&&x>=-4000&&x<=2026?x:null;
  const normUrl=u=>typeof u==="string"&&/^https:\/\/[^\s]+$/i.test(u)?u:"";
+ function documentedYear(value){if(value===null||value===undefined||typeof value==="boolean"||typeof value==="string"&&!/^-?\d+$/.test(value.trim()))return null;const n=Number(value);return Number.isInteger(n)&&n>=-4000&&n<=2026&&n!==0?n:null}
+ function recordYear(row){const fields=row.type==="manuscript"||row.type==="fragment"?["codexDate"]:row.type==="edition"?["editionYear","year"]:["year","editionYear"];for(const key of fields){const y=documentedYear(row[key]);if(y!==null)return y}return null}
+ function recordUrl(value){
+  if(typeof value!=="string"||!value.trim()||value.startsWith("#"))return "";
+  try{
+   const url=new URL(value,location.href);
+   if(url.username||url.password||!["https:","http:"].includes(url.protocol))return "";
+   return url.origin===location.origin||url.protocol==="https:"?url.href:"";
+  }catch{return ""}
+ }
  const showYear=x=>x<0?Math.abs(x)+" "+L("a. C.","BCE","av. J.-C."):String(x);
  const types={
   life:[L("Vida e instituciones","Life and institutions","Vie et institutions"),"♔"],
@@ -73,7 +83,7 @@
  function event(item){
   const y=year(item.year),end=item.end==null?null:year(item.end);
   if(y===null||end!==null&&end<y)return null;
-  const title=String(item.title||"").trim().slice(0,130),url=normUrl(item.url);
+  const title=String(item.title||"").trim().slice(0,130),url=recordUrl(item.url);
   if(!title||!url||!types[item.lane])return null;
   return {...item,year:y,end,title,url,detail:String(item.detail||"").slice(0,600),source:String(item.source||"").slice(0,140)};
  }
@@ -142,11 +152,12 @@
   ];
  }
  function collect(){
-  if(!hasHistoricalSubject())return []; // Never generate incidental-result timelines for generic words.
+  const historical=hasHistoricalSubject();
+  if(isAbstractTerm()||!historical&&!state.rows.some(r=>r.timelineWorkMatch===true&&recordYear(r)!==null))return []; // Only authority or explicitly associated catalogue records.
   if(isAkhenaten())return akhenatenEvents();
   let ev=[],a=state.authority;
   // All Wikidata authority properties keep their distinct meanings.
-  if(a&&/^Q\d+$/.test(a.wikidataId||"")){
+  if(historical&&a&&/^Q\d+$/.test(a.wikidataId||"")){
    const metadata=[
     ["birthYear","life",L("Nacimiento","Birth","Naissance"),"P569"],
     ["deathYear","life",L("Muerte","Death","Décès"),"P570"],
@@ -181,7 +192,7 @@
   }
   // Recorded album releaseDate is an edition's date, potentially a reissue.
   for(const a of state.albums.slice(0,30)){
-   const y=Number(String(a.releaseDate||"").slice(0,4));
+   const y=documentedYear(String(a.releaseDate||"").slice(0,4));
    if(year(y)==null||!normUrl(a.url))continue;
    ev.push({year:y,lane:"documents",title:a.title,url:a.url,source:"Apple Music · catálogo de ediciones",
     detail:L("Fecha de edición en el catálogo musical. Puede corresponder a una reedición; no se presenta como año de lanzamiento original.",
@@ -196,15 +207,13 @@
   // «Vitruvio»—. Son datos catalogados con fuente, no inferencias a partir del
   // orden de los resultados, y se rotulan como lo que son. Sin esta excepción
   // la cronología dependía por completo de que respondiera Wikidata.
-  const ownHoldings=/bibliotheca vitruviana|biblioteca vitruviana|c[oó]dice|codex|harley|gudian|aparato cr[ií]tico|kurilo|edici[oó]n v\d{3}/i;
+
   for(const r of state.rows.slice(0,90)){
-   if(!["book","openlibrary","googlebook","article","edition","manuscript"].includes(r.type))continue;
-   const catalogued=["edition","manuscript"].includes(r.type)&&
-    (r.codexDate!=null||r.editionYear!=null)&&
-    ownHoldings.test(String(r.source||"")+" "+String(r.meta||"")+" "+String(r.title||""));
-   if(!matchedTitle(state.query,r.title)&&!catalogued)continue;
-   const y=Number(r.editionYear??r.year??r.codexDate??null);
-   if(year(y)==null||!normUrl(r.link))continue;
+   if(!["book","openlibrary","googlebook","article","edition","manuscript","fragment"].includes(r.type))continue;
+   const catalogued=["edition","manuscript","fragment"].includes(r.type)&&r.timelineWorkMatch===true;
+   if(!catalogued&&(!historical||!matchedTitle(state.query,r.title)))continue;
+   const y=recordYear(r);
+   if(y===null||!recordUrl(r.link))continue;
    ev.push({year:y,lane:"documents",title:r.title,url:r.link,source:String(r.source||"Catálogo").slice(0,80),
     detail:catalogued?
      L("Datación catalogada de un testimonio o edición de la obra consultada. Es la fecha del soporte o de la edición, no la de composición del texto ni un hito biográfico; la precisión depende de la ficha del catálogo.",
@@ -508,7 +517,7 @@
  window.addEventListener("vitruvia:results",e=>{
   if(normalize(e.detail?.query)!==normalize(state.query))return;
   const rows=Array.isArray(e.detail.rows)?e.detail.rows:[];
-  const sig=rows.map(r=>[r.title,r.year,r.editionYear,r.codexDate].join("|")).join(";").slice(0,5000);
+  const sig=JSON.stringify(rows.slice(0,90).map(r=>[r.type,r.title,r.year,r.editionYear,r.codexDate,r.link,r.timelineWorkMatch]));
   if(sig===state.rowSignature)return;
   state.rowSignature=sig;state.rows=rows;draw();
  });
@@ -531,5 +540,5 @@
  }).observe(document.documentElement,{attributes:true,attributeFilter:["lang"]});
  const snapshot=window.VitruviaSearchSnapshot;
  if(snapshot?.query)reset(snapshot.query);
- window.VitruviaAcademicTimeline={collect,layoutMarkers,dateWindow,automaticZoom,version:"2.3-adaptive-period-slider"};
+ window.VitruviaAcademicTimeline={collect,layoutMarkers,dateWindow,automaticZoom,recordYear,version:"2.4-catalogue-evidence"};
 })();
