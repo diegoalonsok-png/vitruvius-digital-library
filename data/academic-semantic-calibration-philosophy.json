@@ -1,0 +1,94 @@
+{
+  "schema": 1,
+  "scope": "Calibración, no evaluación independiente. Consultas elegidas tras lectura de pasajes en traducciones inglesas históricas alojadas; no prueba neuronal ni de alineación griega. Loci según la fuente; los segmentos de Marco Aurelio no equivalen a numeración crítica.",
+  "cases": [
+    {
+      "query": "alegoria de la caverna",
+      "workId": "plato-republic",
+      "sourcePath": "data/classics-corpus/plato-republic-en.json",
+      "loci": [
+        "7.514",
+        "7.515"
+      ]
+    },
+    {
+      "query": "filosofo rey",
+      "workId": "plato-republic",
+      "sourcePath": "data/classics-corpus/plato-republic-en.json",
+      "loci": [
+        "5.473"
+      ]
+    },
+    {
+      "query": "idea del bien",
+      "workId": "plato-republic",
+      "sourcePath": "data/classics-corpus/plato-republic-en.json",
+      "loci": [
+        "6.509"
+      ]
+    },
+    {
+      "query": "ser en cuanto ser",
+      "workId": "aristotle-metaphysics",
+      "sourcePath": "data/classics-corpus/aristotle-metaphysics-en.json",
+      "loci": [
+        "4.1"
+      ]
+    },
+    {
+      "query": "motor inmovil",
+      "workId": "aristotle-metaphysics",
+      "sourcePath": "data/classics-corpus/aristotle-metaphysics-en.json",
+      "loci": [
+        "12.7"
+      ]
+    },
+    {
+      "query": "deseo natural de saber",
+      "workId": "aristotle-metaphysics",
+      "sourcePath": "data/classics-corpus/aristotle-metaphysics-en.json",
+      "loci": [
+        "1.1"
+      ]
+    },
+    {
+      "query": "animal politico",
+      "workId": "aristotle-politics",
+      "sourcePath": "data/classics-corpus/aristotle-politics-en.json",
+      "loci": [
+        "1.1253a"
+      ]
+    },
+    {
+      "query": "gobierno de la clase media",
+      "workId": "aristotle-politics",
+      "sourcePath": "data/classics-corpus/aristotle-politics-en.json",
+      "loci": [
+        "4.1295b"
+      ]
+    },
+    {
+      "query": "retiro interior",
+      "workId": "marcus-aurelius-meditations",
+      "sourcePath": "data/classics-corpus/marcus-aurelius-meditations-en.json",
+      "loci": [
+        "4.segmento-3"
+      ]
+    },
+    {
+      "query": "cooperacion humana",
+      "workId": "marcus-aurelius-meditations",
+      "sourcePath": "data/classics-corpus/marcus-aurelius-meditations-en.json",
+      "loci": [
+        "2.segmento-1"
+      ]
+    }
+  ],
+  "negativeRouting": [
+    "caverna de una vivienda",
+    "motor electrico",
+    "clase media argentina",
+    "politico contemporaneo",
+    "zzzxqjkv"
+  ]
+}

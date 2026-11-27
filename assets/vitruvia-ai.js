@@ -86,8 +86,12 @@ function sourceSelection(query,sources){
  });
  const best=Math.max(0,...hits.map(x=>x.score));
  const conceptMatch=best<8&&architecturalConcepts.some(group=>group.some(term=>term.includes(" ")&&(" "+q+" ").includes(" "+normalize(term)+" ")));
- const explicit=best>=8||conceptMatch;
- const matches=best>=8?hits.filter(x=>x.score>=Math.max(8,best-3)).map(x=>x.source):conceptMatch?sources.filter(x=>x.workId==="vitruvius"):sources;
+ const named=best>=8?hits.filter(x=>x.score>=Math.max(8,best-3)).map(x=>x.source):[];
+ const conceptWorks=new Set(matchedPhilosophy(query).map(x=>x.work));
+ const philosophy=sources.filter(x=>conceptWorks.has(x.workId));
+ const compatible=best>=8?philosophy.filter(x=>named.some(n=>n.workId===x.workId)):philosophy;
+ const explicit=best>=8||conceptMatch||compatible.length>0;
+ const matches=compatible.length?compatible:best>=8?named:conceptMatch?sources.filter(x=>x.workId==="vitruvius"):sources;
  // Named works are searched without passage sampling; broad queries retain the sampled registry.
  return {sources:matches,explicit,locus,registryCount:sources.length};
 }
@@ -236,8 +240,167 @@ const architecturalConcepts=[
   "equinoccial"
  ]
 ];
+// Retrieval hints calibrated against registered historical translations.
+// These are contextual associations, not exact equivalences or quotations.
+const philosophicalConcepts=[
+ {
+  "work": "plato-republic",
+  "triggers": [
+   "alegoria de la caverna",
+   "mito de la caverna",
+   "allegory of the cave",
+   "mythe de la caverne"
+  ],
+  "hints": [
+   "subterranean cavern",
+   "prisoners",
+   "fetters",
+   "shadows",
+   "cave"
+  ]
+ },
+ {
+  "work": "plato-republic",
+  "triggers": [
+   "rey filosofo",
+   "filosofo rey",
+   "gobierno de los filosofos",
+   "philosopher kings",
+   "roi philosophe"
+  ],
+  "hints": [
+   "philosophers become kings",
+   "rulers",
+   "pursuit of philosophy"
+  ]
+ },
+ {
+  "work": "plato-republic",
+  "triggers": [
+   "idea del bien",
+   "forma del bien",
+   "form of the good",
+   "idee du bien"
+  ],
+  "hints": [
+   "good itself",
+   "essence",
+   "knowledge and truth",
+   "sunlike",
+   "boniform"
+  ]
+ },
+ {
+  "work": "aristotle-metaphysics",
+  "triggers": [
+   "ser en cuanto ser",
+   "ser qua ser",
+   "being qua being",
+   "etre en tant qu etre"
+  ],
+  "hints": [
+   "being qua being",
+   "science",
+   "properties inherent"
+  ]
+ },
+ {
+  "work": "aristotle-metaphysics",
+  "triggers": [
+   "motor inmovil",
+   "primer motor inmovil",
+   "unmoved mover",
+   "moteur immobile"
+  ],
+  "hints": [
+   "moves without being moved",
+   "unmoved",
+   "eternal",
+   "substance and actuality"
+  ]
+ },
+ {
+  "work": "aristotle-metaphysics",
+  "triggers": [
+   "deseo natural de saber",
+   "deseo de conocimiento",
+   "natural desire for knowledge",
+   "desir naturel de savoir"
+  ],
+  "hints": [
+   "all men naturally desire knowledge",
+   "esteem for the senses",
+   "sense of sight"
+  ]
+ },
+ {
+  "work": "aristotle-politics",
+  "triggers": [
+   "animal politico",
+   "zoon politikon",
+   "political animal",
+   "animal politique"
+  ],
+  "hints": [
+   "political animal",
+   "city-state",
+   "possesses speech",
+   "natural growth"
+  ]
+ },
+ {
+  "work": "aristotle-politics",
+  "triggers": [
+   "gobierno de la clase media",
+   "clase media aristotelica",
+   "middle class government",
+   "classe moyenne aristotelicienne"
+  ],
+  "hints": [
+   "political community administered by the middle class",
+   "middle-class state",
+   "well governed"
+  ]
+ },
+ {
+  "work": "marcus-aurelius-meditations",
+  "triggers": [
+   "retiro interior",
+   "refugio interior",
+   "inner retreat",
+   "retraite interieure"
+  ],
+  "hints": [
+   "retire into thyself",
+   "own soul",
+   "tranquility",
+   "good ordering of the mind"
+  ]
+ },
+ {
+  "work": "marcus-aurelius-meditations",
+  "triggers": [
+   "cooperacion humana",
+   "cooperacion estoica",
+   "human cooperation",
+   "cooperation stoicienne"
+  ],
+  "hints": [
+   "made for cooperation",
+   "feet",
+   "hands",
+   "kinsman",
+   "contrary to nature"
+  ]
+ }
+];
+function matchedPhilosophy(query){
+ const q=" "+normalize(query)+" ";
+ return philosophicalConcepts.filter(group=>group.triggers.some(t=>q.includes(" "+normalize(t)+" ")));
+}
 function academicTerms(query,workId){
  const exact=normalize(query),weights=new Map([...new Set(terms(query))].map(t=>[t,1]));
+ for(const group of matchedPhilosophy(query))if(group.work===workId)for(const hint of group.hints)for(const t of terms(hint))if(!weights.has(t))weights.set(t,.35);
  if(workId!=="vitruvius")return weights;
  for(const group of architecturalConcepts){
   if(!group.some(x=>(" "+exact+" ").includes(" "+normalize(x)+" ")))continue;
@@ -246,11 +409,12 @@ function academicTerms(query,workId){
  return weights;
 }
 function lexicalRanking(q,data,selection={}){
- const queryTerms=academicTerms(q,null),architecturalTerms=academicTerms(q,"vitruvius");const n=data.documents.length;
+ const termCache=new Map();const n=data.documents.length;
  const exact=normalize(q);
  const scores=data.documents.map(doc=>{
   let score=0;
-  for(const [term,weight] of (doc.workId==="vitruvius"?architecturalTerms:queryTerms)){
+  if(!termCache.has(doc.workId))termCache.set(doc.workId,academicTerms(q,doc.workId));
+  for(const [term,weight] of termCache.get(doc.workId)){
    const freq=doc.tf.get(term)||0;
    if(!freq)continue;
    const df=data.df.get(term)||0;
@@ -428,5 +592,5 @@ async function rank(query,docs,{limit=30,candidates=40}={}){
   notify("IA semántica activa en el visor.","success");return {mode:"neural",rows};
  }catch(e){return {mode:"bm25-fallback",rows:pool.slice(0,limit),warning:String(e.message||e)}}
 }
-window.VitruviaAI={search,rank,model:MODEL,version:"1.5-academic-evidence-integrated",sourceSelection,academicTerms};
+window.VitruviaAI={search,rank,model:MODEL,version:"1.6-philosophical-calibration",sourceSelection,academicTerms};
 })();
