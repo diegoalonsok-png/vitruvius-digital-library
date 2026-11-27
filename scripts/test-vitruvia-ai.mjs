@@ -121,3 +121,30 @@ console.log('SCOPE: mocked fetch only; not an HTTP availability or scholarly acc
  assert(fallback.candidateStrategy.includes("reserva"));
  console.log("PASS: bounded index-first broad retrieval, explicit query preservation and labelled fallback.");
 }
+
+{
+ const {engine,window}=createEngine();
+ const store=new Map();
+ window.localStorage={getItem:k=>store.get(k)||null,setItem:(k,v)=>store.set(k,v),removeItem:k=>store.delete(k)};
+ const doc={workId:"vitruvius",sourcePath:"data/example.json",sha256:"abc",locus:"1.1.1",language:"la"};
+ const row={...doc,sourceSha256:"abc"};
+ assert.equal(engine.feedback("arquitectura",row,1).persisted,true);
+ assert.equal(engine.feedbackState("arquitectura",doc),1);
+ assert(Math.abs(engine.learnedScore("arquitectura",{doc,score:100},{})-112)<1e-8);
+ assert.equal(engine.learnedScore("arquitectura",{doc,score:100},{locus:"1.1.1"}),100);
+ assert.equal(engine.learnedScore("arquitectura",{doc,score:100},{},false),100);
+ assert.equal(engine.learnedScore("arquitectura",{doc,score:0},{}),0);
+ assert.equal(engine.feedbackState("medicina",doc),0);
+ assert.equal(engine.feedbackState("arquitectura",{...doc,sha256:"new"}),0);
+ assert.equal(engine.feedbackState("arquitectura",{...doc,locus:"1.1.2"}),0);
+ assert.equal(engine.feedback("arquitectura",row,-1).accepted,true);
+ assert.equal(engine.learnedScore("arquitectura",{doc,score:100},{}),88);
+ assert.equal(engine.feedback("arquitectura",row,0).accepted,true);
+ assert.equal(engine.feedbackState("arquitectura",doc),0);
+ engine.feedback("arquitectura",row,1);
+ assert.equal(engine.clearMemory(),true);
+ assert.equal(store.size,0);
+ assert.equal(engine.feedbackState("arquitectura",doc),0);
+ assert.equal(engine.feedback("arquitectura",{locus:"1.1.1"},1).accepted,false);
+ console.log("PASS: local feedback scope, bounded adjustment, private mode, exact-locus precedence and reset.");
+}
