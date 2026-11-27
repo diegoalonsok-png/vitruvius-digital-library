@@ -35,7 +35,28 @@
       "ocrSourceSha256": "ef9d1a3b4516101b8cf943c135f4a076de0bf046bb7b263c57c86767ff51c103",
       "ocrSourceIdentifier": "frogs00ofaristophaarisrich",
       "metadataHashAgree": true,
-      "status": "technical-metadata-consistent-not-bibliographically-verified"
+      "status": "technical-metadata-consistent-not-bibliographically-verified",
+      "editorialEvidence": {
+        "title": "The frogs of Aristophanes",
+        "year": 1912,
+        "author": "Aristófanes",
+        "responsible": "Gilbert Murray",
+        "languages": [
+          "en"
+        ],
+        "publisher": "London, G. Allen & sons",
+        "archivePages": 154,
+        "ark": "ark:/13960/t6sx6fr7s",
+        "scope": "Solo Las ranas; no colección de comedias.",
+        "action": "Vincular únicamente a Las ranas, previa identificación del ejemplar R2.",
+        "source": "https://archive.org/details/frogs00ofaristophaarisrich",
+        "sourceIdentifier": "frogs00ofaristophaarisrich",
+        "sourceSha256Metadata": "ef9d1a3b4516101b8cf943c135f4a076de0bf046bb7b263c57c86767ff51c103",
+        "checkedOn": "2026-11-27",
+        "status": "external-catalogue-checked-r2-interior-pending",
+        "completeness": "not-certified",
+        "ocrReviewed": false
+      }
     },
     {
       "id": "aristoteles-metafisica-en",
@@ -67,7 +88,29 @@
       "ocrSourceSha256": "dbc61d9015e5e35bba52e0a36eebce85227884793147d1d87e00b5b05a36dfd8",
       "ocrSourceIdentifier": "cu31924071172914",
       "metadataHashAgree": true,
-      "status": "technical-metadata-consistent-not-bibliographically-verified"
+      "status": "technical-metadata-consistent-not-bibliographically-verified",
+      "editorialEvidence": {
+        "title": "Aristotle's Politics, books I, III, IV, VII",
+        "year": 1877,
+        "author": "Aristóteles",
+        "responsible": "Immanuel Bekker; W. E. Bolland; A. Lang",
+        "languages": [
+          "grc",
+          "en"
+        ],
+        "publisher": "London: Longmans, Green",
+        "archivePages": 354,
+        "ark": "ark:/13960/t9j39b70z",
+        "scope": "Libros I, III, IV y VII. Faltan II, V, VI y VIII respecto de la obra completa; no implica pérdida del ejemplar.",
+        "action": "Vincular a aristotle-politics como edición parcial y bilingüe.",
+        "source": "https://archive.org/details/cu31924071172914",
+        "sourceIdentifier": "cu31924071172914",
+        "sourceSha256Metadata": "dbc61d9015e5e35bba52e0a36eebce85227884793147d1d87e00b5b05a36dfd8",
+        "checkedOn": "2026-11-27",
+        "status": "external-catalogue-checked-r2-interior-pending",
+        "completeness": "not-certified",
+        "ocrReviewed": false
+      }
     },
     {
       "id": "arquimedes-obras-en",
@@ -83,7 +126,28 @@
       "ocrSourceSha256": "22a140678bbc537352b11cf78091b6f4c13606c3fdf5f9c4c9d20e4a32670a76",
       "ocrSourceIdentifier": "cu31924005730563",
       "metadataHashAgree": true,
-      "status": "technical-metadata-consistent-not-bibliographically-verified"
+      "status": "technical-metadata-consistent-not-bibliographically-verified",
+      "editorialEvidence": {
+        "title": "The method of Archimedes",
+        "year": 1912,
+        "author": "Arquímedes",
+        "responsible": "J. L. Heiberg; T. L. Heath",
+        "languages": [
+          "en"
+        ],
+        "publisher": "Cambridge University Press",
+        "archivePages": 60,
+        "ark": "ark:/13960/t14m9qx2p",
+        "scope": "El método, suplemento a la edición de 1897; no obras completas.",
+        "action": "No vincular a obras completas ni a Sobre los cuerpos flotantes.",
+        "source": "https://archive.org/details/cu31924005730563",
+        "sourceIdentifier": "cu31924005730563",
+        "sourceSha256Metadata": "22a140678bbc537352b11cf78091b6f4c13606c3fdf5f9c4c9d20e4a32670a76",
+        "checkedOn": "2026-11-27",
+        "status": "external-catalogue-checked-r2-interior-pending",
+        "completeness": "not-certified",
+        "ocrReviewed": false
+      }
     },
     {
       "id": "baquilides-poemas-en",
@@ -99,7 +163,29 @@
       "ocrSourceSha256": "df123d02831a1647f29f4929e69bd94e55b1523a6791dfa6788503f9c384cecd",
       "ocrSourceIdentifier": "bacchylidespoems00bacciala",
       "metadataHashAgree": true,
-      "status": "technical-metadata-consistent-not-bibliographically-verified"
+      "status": "technical-metadata-consistent-not-bibliographically-verified",
+      "editorialEvidence": {
+        "title": "Bacchylides. The poems and fragments",
+        "year": 1905,
+        "author": "Baquílides",
+        "responsible": "Richard Claverhouse Jebb",
+        "languages": [
+          "grc",
+          "en"
+        ],
+        "publisher": "Cambridge University Press",
+        "archivePages": 562,
+        "ark": "ark:/13960/t8qb9xv8m",
+        "scope": "Poemas y fragmentos; tradición fragmentaria. Internet Archive indica encabezados JP2 inválidos; comprobar PDF visualmente.",
+        "action": "Identificar edición bilingüe; comprobar imágenes y alcance.",
+        "source": "https://archive.org/details/bacchylidespoems00bacciala",
+        "sourceIdentifier": "bacchylidespoems00bacciala",
+        "sourceSha256Metadata": "df123d02831a1647f29f4929e69bd94e55b1523a6791dfa6788503f9c384cecd",
+        "checkedOn": "2026-11-27",
+        "status": "external-catalogue-checked-r2-interior-pending",
+        "completeness": "not-certified",
+        "ocrReviewed": false
+      }
     },
     {
       "id": "boecio-institutione-musica",
@@ -147,7 +233,15 @@
       "ocrSourceSha256": null,
       "ocrSourceIdentifier": "exercitationescr00pete",
       "metadataHashAgree": null,
-      "status": "incomplete-or-unverified-metadata"
+      "status": "incomplete-or-unverified-metadata",
+      "editorialEvidence": {
+        "source": "https://archive.org/details/exercitationescr00pete",
+        "sourceIdentifier": "exercitationescr00pete",
+        "sourceSha256Metadata": "54946abfeb4d3083c1cf34af9af05b742b18e59e71c3f6059e1915f186c0c46d",
+        "checkedOn": "2026-11-27",
+        "status": "identity-suspect-source-not-accessible",
+        "action": "No publicar bajo la atribución propuesta sin cotejo de portada y contenido."
+      }
     },
     {
       "id": "juliano-obras",
@@ -163,7 +257,15 @@
       "ocrSourceSha256": null,
       "ocrSourceIdentifier": "fourthinternatio01inteuoft",
       "metadataHashAgree": null,
-      "status": "incomplete-or-unverified-metadata"
+      "status": "incomplete-or-unverified-metadata",
+      "editorialEvidence": {
+        "source": "https://archive.org/details/fourthinternatio01inteuoft",
+        "sourceIdentifier": "fourthinternatio01inteuoft",
+        "sourceSha256Metadata": "5599a96131c2572d0a9e8b364335559a00399302be9c733ec99b5c8b04fe258f",
+        "checkedOn": "2026-11-27",
+        "status": "identity-suspect-source-not-accessible",
+        "action": "No publicar bajo la atribución propuesta sin cotejo de portada y contenido."
+      }
     },
     {
       "id": "justino-trogo-es",
@@ -179,7 +281,15 @@
       "ocrSourceSha256": null,
       "ocrSourceIdentifier": "apologia-i-de-san-justino",
       "metadataHashAgree": null,
-      "status": "incomplete-or-unverified-metadata"
+      "status": "incomplete-or-unverified-metadata",
+      "editorialEvidence": {
+        "source": "https://archive.org/details/apologia-i-de-san-justino",
+        "sourceIdentifier": "apologia-i-de-san-justino",
+        "sourceSha256Metadata": "4780c54c6cd0a8d64b44ede4866ffb43bd6aca66613588f4b7e27741aafa8820",
+        "checkedOn": "2026-11-27",
+        "status": "identity-suspect-source-not-accessible",
+        "action": "No publicar bajo la atribución propuesta sin cotejo de portada y contenido."
+      }
     },
     {
       "id": "prudencio-poemas",
@@ -211,7 +321,28 @@
       "ocrSourceSha256": "2e418d5c9f7bd977ca0903b80a3b2561231f8465c4bcad56afccc637f2685922",
       "ocrSourceIdentifier": "collectanearerum00soliuoft",
       "metadataHashAgree": true,
-      "status": "technical-metadata-consistent-not-bibliographically-verified"
+      "status": "technical-metadata-consistent-not-bibliographically-verified",
+      "editorialEvidence": {
+        "title": "Collectanea rerum memorabilium",
+        "year": 1895,
+        "author": "Cayo Julio Solino",
+        "responsible": "Theodor Mommsen",
+        "languages": [
+          "la"
+        ],
+        "publisher": "Berolinum: Weidmann",
+        "archivePages": 396,
+        "ark": "ark:/13960/t4zg74t0g",
+        "scope": "Edición latina; integridad de páginas y texto pendiente.",
+        "action": "Vincular al título uniforme tras cotejo del PDF.",
+        "source": "https://archive.org/details/collectanearerum00soliuoft",
+        "sourceIdentifier": "collectanearerum00soliuoft",
+        "sourceSha256Metadata": "2e418d5c9f7bd977ca0903b80a3b2561231f8465c4bcad56afccc637f2685922",
+        "checkedOn": "2026-11-27",
+        "status": "external-catalogue-checked-r2-interior-pending",
+        "completeness": "not-certified",
+        "ocrReviewed": false
+      }
     },
     {
       "id": "theognis-elegiae",
@@ -227,7 +358,29 @@
       "ocrSourceSha256": "066e2a731be4d39f8662ba25e4d75f96d878584b8152d3939bd6ebf2e90fe667",
       "ocrSourceIdentifier": "elegiesoftheogni00theo",
       "metadataHashAgree": true,
-      "status": "technical-metadata-consistent-not-bibliographically-verified"
+      "status": "technical-metadata-consistent-not-bibliographically-verified",
+      "editorialEvidence": {
+        "title": "The elegies of Theognis and other elegies included in the Theognidean sylloge",
+        "year": 1910,
+        "author": "Teognis y tradición teognídea",
+        "responsible": "Thomas Hudson-Williams",
+        "languages": [
+          "grc",
+          "en"
+        ],
+        "publisher": "London: G. Bell and sons",
+        "archivePages": 290,
+        "ark": "ark:/13960/t9q23xv5d",
+        "scope": "Colección teognídea, no atribuir todos los versos a Teognis.",
+        "action": "Registrar edición griego-inglesa con atribución diferenciada.",
+        "source": "https://archive.org/details/elegiesoftheogni00theo",
+        "sourceIdentifier": "elegiesoftheogni00theo",
+        "sourceSha256Metadata": "066e2a731be4d39f8662ba25e4d75f96d878584b8152d3939bd6ebf2e90fe667",
+        "checkedOn": "2026-11-27",
+        "status": "external-catalogue-checked-r2-interior-pending",
+        "completeness": "not-certified",
+        "ocrReviewed": false
+      }
     }
   ],
   "counts": {
@@ -236,6 +389,8 @@
     "editionCandidatesInspected": 14,
     "metadataConsistent": 8,
     "metadataMismatch": 0,
-    "unverifiedOrIncomplete": 6
+    "unverifiedOrIncomplete": 6,
+    "externalCatalogueChecked": 6,
+    "identitySuspect": 3
   }
 }
