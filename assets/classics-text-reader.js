@@ -570,9 +570,15 @@ async function load(language,requestId){
  const resourceRequest=loadSearchResources(language).catch(err=>{console.warn("Índice léxico complementario no disponible",err);return null});
  const selected=editionSelect?.value||p.get("edition")||"";
  const indexed=hostedEditions.find(e=>e.language===language&&editionKey(e)===selected)||hostedEditions.find(e=>e.language===language);
-  const path=indexed?.path||base+language+".json",response=await fetch(path);
- if(!response.ok)throw Error("Edición todavía no incorporada: "+language+" · HTTP "+response.status);
- let corpus=await response.json();
+ const path=indexed?.path||base+language+".json";
+ let corpus=null;
+ if(indexed?.format==="json-passages"&&/^data\/classics-corpus\/[a-z0-9-]+\.json$/.test(path))
+  corpus=await import("./classics-r2-mirror.mjs?v=20261127-1").then(m=>m.loadCertifiedMirror(path,{workId:indexed.sourceWorkId||work,language})).catch(()=>null);
+ if(!corpus){
+  const response=await fetch(path);
+  if(!response.ok)throw Error("Edición todavía no incorporada: "+language+" · HTTP "+response.status);
+  corpus=await response.json();
+ }
  if(indexed?.format==="structured-bilingual"){
   if(!Array.isArray(corpus.passages)||!corpus.passages.length||!["la","es","en","fr"].includes(language))throw Error("Edición estructurada no disponible");
   const editorial=corpus;

@@ -72,9 +72,15 @@ function loadJson(e){
     caché y su espera entre reintentos. */
  const remota=/^https:\/\/libros\.vitruvius-digital-library\.org\//.test(e.path||"");
  if(!cache.has(e.path))cache.set(e.path,
-  (remota&&window.VitruviaData?.remoteJSON?window.VitruviaData.remoteJSON(e.path):
-   window.VitruviaData?.json&&!remota?window.VitruviaData.json(e.path):
-   fetch(e.path).then(r=>{if(!r.ok)throw Error("HTTP "+r.status);return r.json()}))
+  (async()=>{
+   if(!remota&&/^data\/classics-corpus\/[a-z0-9-]+\.json$/.test(e.path)){
+    const mirror=await import("./classics-r2-mirror.mjs?v=20261127-1").then(m=>m.loadCertifiedMirror(e.path,{workId:e.sourceWorkId||e.workId,language:e.language})).catch(()=>null);
+    if(mirror)return mirror;
+   }
+   return remota&&window.VitruviaData?.remoteJSON?window.VitruviaData.remoteJSON(e.path):
+    window.VitruviaData?.json&&!remota?window.VitruviaData.json(e.path):
+    fetch(e.path).then(r=>{if(!r.ok)throw Error("HTTP "+r.status);return r.json()});
+  })()
    .then(d=>d?.workId===(e.sourceWorkId||e.workId)&&d?.language===e.language&&Array.isArray(d.passages)?d:null).catch(()=>null));
  return cache.get(e.path);
 }
