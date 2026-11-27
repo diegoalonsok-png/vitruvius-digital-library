@@ -1421,6 +1421,7 @@ function scholarlyRecordKey(r){
 function academicEvidenceClass(row){
  const t=String(row?.type||""),source=String(row?.source||""),href=String(row?.link||"");
  if(!href)return "context";
+ if(["book","openlibrary","googlebook"].includes(t)&&window.VitruviaSourceModel?.bookAdmission(row)==="academic-publisher")return "catalogue";
  if(["wikipedia","wikidata","encyclopedia","openlibrary","googlebook","archive-portal"].includes(t))return "context";
  if(/wikipedia|wikimedia|wikidata|britannica/i.test(source))return "context";
  if(t==="article"){
@@ -1431,7 +1432,7 @@ function academicEvidenceClass(row){
  if(["passage","preface"].includes(t)&&row.locus&&row.edition&&(row.latin||row.translation||row.excerpt))return "document";
  if(t==="historical-ocr")return "context";
  if(["manuscript","fragment","apparatus","edition"].includes(t))return row.curatedAcademic||row.timelineWorkMatch||row.codexShelfmark||row.apparatusId?"document":"context";
- if(t==="book"&&row.workId&&(/^bibliotheca-|^lector-bilingue/.test(href)||row.curatedAcademic))return "catalogue";
+ if(t==="book"&&window.VitruviaSourceModel?.bookAdmission(row)==="documented")return "catalogue";
  if(["museum","university","scholar","authority","topic"].includes(t)&&(row.curatedAcademic||source==="The Met"||source==="Getty AAT"))return "institution";
  if(t==="text-external"&&row.externalFulltext)return "context";
  return "context";
@@ -1465,7 +1466,7 @@ function display(rows,query,phase){
  const historySuggestion=classicalSubjectRows(query).length>0;
  const userAsksBusiness=/\b(?:pizzeria|pizza|restaurante|restaurant|hotel|bar|cafe|cafeteria|tienda|comercio)\b/i.test(norm(query));
  const commercialTitle=/\b(?:pizzeria|pizzaria|pizza|restaurante|restaurant|hotel|hostal|hostel|cafeteria|cafe|bar|tienda|boutique)\b/i;
- const relevantRows=contextualRows.filter(row=>verifiedPersonEvidence(row,query,S.identifiedSubject)&&
+ const relevantRows=contextualRows.filter(row=>(window.VitruviaSourceModel?.acceptsBook(row)??!["googlebook","openlibrary"].includes(row?.type))&&verifiedPersonEvidence(row,query,S.identifiedSubject)&&
   (!historySuggestion||userAsksBusiness||!commercialTitle.test(norm(row.title||""))));
  const scored=relevantRows.filter(r=>r&&r.title&&(
   !["wikipedia","wikidata"].includes(r.type)||r.preferredWiki||r.preferredAuthority||
@@ -1685,7 +1686,7 @@ function display(rows,query,phase){
   list.append(details);
  }
  if(window.VitruviaData)window.VitruviaData.reconcile(liveList,desired);else liveList.replaceChildren(...desired);
- if(window.VitruviaArticles){$("answer").hidden=true;const authority=currentAuthorityFor(query);window.VitruviaArticles.render(strictAcademic?ordered:deduped,query,identifyHistoricalPerson(query)||(authority?{id:authority.id,name:authority.personName}:null),{progressive:true,final:!!S.searchComplete})}else synthesize(strictAcademic?ordered:deduped);
+ if(window.VitruviaArticles){$("answer").hidden=true;const authority=currentAuthorityFor(query);window.VitruviaArticles.render(strictAcademic?[...ordered,...complementary.filter(r=>["wikipedia","wikidata"].includes(r.type))]:deduped,query,identifyHistoricalPerson(query)||(authority?{id:authority.id,name:authority.personName}:null),{progressive:true,final:!!S.searchComplete})}else synthesize(strictAcademic?ordered:deduped);
  $("results-heading").textContent=T().heading;
  if(deduped.length&&S.firstResultAt==null){S.firstResultAt=performance.now()-S.searchStarted;$("result-state").dataset.firstResultMs=String(Math.round(S.firstResultAt))}
  $("result-list").setAttribute("aria-busy",String(!S.searchComplete));
