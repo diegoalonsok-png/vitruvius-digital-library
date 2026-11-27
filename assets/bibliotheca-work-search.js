@@ -366,7 +366,7 @@ const requestedSubject=query=>{const q=foldAuthority(query);return subjects.find
 // Cache the normalised fields and token arrays; fuzzy distances repeat across
 // thousands of entries with the same author, title words and aliases.
 let fieldCache=new WeakMap(),queryCache=null;
-const invalidateSearchIndex=()=>{fieldCache=new WeakMap();queryCache=null};
+const invalidateSearchIndex=()=>{fieldCache=new WeakMap();queryCache=null;plainOrder=null;plainResultCache=null;cancelPlainRender()};
 function preparedQuery(query){
  if(queryCache?.raw===query)return queryCache;
  const q=foldAuthority(query);
@@ -593,40 +593,72 @@ function appendEditionSummary(row,w){
   link.href=safeReader(v.reader);row.append(link);
  }
 }
+// Cooperative search: no catalogue scan may monopolize the input event loop.
+let plainRevision=0,plainResultCache=null,plainOrder=null;
+const titleCollator=new Intl.Collator("es",{sensitivity:"base",numeric:true});
+const authorCollator=new Intl.Collator("es",{sensitivity:"base"});
+function cancelPlainRender(){plainRevision++}
+async function cooperativeFilter(items,predicate,isCurrent,budget=8){
+ const result=[];
+ let deadline=performance.now()+budget;
+ for(let i=0;i<items.length;i++){
+  if(predicate(items[i]))result.push(items[i]);
+  if((i&15)===15&&performance.now()>=deadline){
+   await new Promise(resolve=>setTimeout(resolve,0));
+   if(!isCurrent())return null;
+   deadline=performance.now()+budget;
+  }
+ }
+ return isCurrent()?result:null;
+}
+async function plainMatches(searched,initial,isCurrent){
+ if(plainResultCache?.query===searched)return plainResultCache.rows;
+ // Alphabetical order is invariant between queries; sort once per index revision.
+ if(!plainOrder){
+  plainOrder=model.items.slice().sort((a,b)=>titleCollator.compare(a.title,b.title)||authorCollator.compare(a.author,b.author)||a.id.localeCompare(b.id));
+ }
+ const ordered=plainOrder;
+ const authorityKey=w=>/^cts-tlg(\d+)-/.test(w.id)?w.id.match(/^cts-tlg(\d+)-/)[1]:"";
+ let rows;
+ if(initial)rows=await cooperativeFilter(ordered,w=>letterMatch(w,initial,true),isCurrent);
+ else{
+  const p=preparedQuery(searched);
+  const exactAuthors=await cooperativeFilter(ordered,w=>exactAuthorScore(w,searched)>=115,isCurrent);
+  if(!exactAuthors)return null;
+  const names=new Set(exactAuthors.map(w=>preparedFields(w).author));
+  const codes=new Set(exactAuthors.map(authorityKey).filter(Boolean));
+  rows=await cooperativeFilter(ordered,w=>exactAuthors.length?
+   names.has(preparedFields(w).author)||codes.has(authorityKey(w))||preparedFields(w).fields.some(f=>(!p.greekQuery||f.greek)&&f.val.startsWith(p.q)):rank(w,searched)>=55,isCurrent);
+ }
+ if(!rows||!isCurrent())return null;
+ plainResultCache={query:searched,rows};
+ return rows;
+}
 function render(){
  if(!model)return;
  const {input,list,count,more,limit}=model,rawQuery=input.value.trim(),typedLetter=singleLetter(rawQuery),q=typedLetter?"":rawQuery;
  // Bibliotheca front: permanent, simple alphabetical list. Titles remain
  // linked to the actual scholarly record/reader; no covers or editorial cards.
  if(document.body.classList.contains("bibliotheca-plain-list")){
-  const searched=rawQuery.trim();
-  list.replaceChildren();more.hidden=true;count.textContent="";
-  // Do not render the entire catalogue on initial load or after clearing.
-  if(!searched){model.region.hidden=true;return;}
-  const initial=singleLetter(searched);
-  const browsing=!searched||Boolean(initial);
-  const alphabetical=(a,b)=>a.w.title.localeCompare(b.w.title,"es",{sensitivity:"base",numeric:true})||a.w.author.localeCompare(b.w.author,"es",{sensitivity:"base"})||a.w.id.localeCompare(b.w.id);
-  // The catalogue and reading registry are different: a work remains discoverable
-  // even when no individual text has been hosted or verified.
-  const authorityKey=w=>/^cts-tlg(\d+)-/.test(w.id)?w.id.match(/^cts-tlg(\d+)-/)[1]:"";
-  const authorScore=w=>exactAuthorScore(w,searched);
-  const scores=new Map();
-  const exactAuthors=browsing?[]:model.items.filter(w=>{
-   const score=authorScore(w);scores.set(w,score);return score>=115;
-  });
-  const authorNames=new Set(exactAuthors.map(w=>preparedFields(w).author));
-  const authorCodes=new Set(exactAuthors.map(authorityKey).filter(Boolean));
-  const isAuthor=exactAuthors.length>0;
-  const directMatch=w=>{
-   const p=preparedQuery(searched);
-   return preparedFields(w).fields.some(f=>(!p.greekQuery||f.greek)&&f.val.startsWith(p.q));
-  };
-  const scored=model.items.filter(w=>browsing?(!initial||letterMatch(w,initial,true)):isAuthor?(authorNames.has(preparedFields(w).author)||authorCodes.has(authorityKey(w))||(scores.get(w)||0)>=115||directMatch(w)):rank(w,searched)>=55).map(w=>({w})).sort(alphabetical);
+  const searched=rawQuery.trim(),revision=++plainRevision;
+  const visible=document.getElementById("bibliotheca-lexicon-q");
+  const visibleSnapshot=visible?.value;
+  const isCurrent=()=>revision===plainRevision&&input.value.trim()===searched&&(!visible||visible.value===visibleSnapshot);
+  if(!searched){list.replaceChildren();more.hidden=true;count.textContent="";model.region.hidden=true;list.removeAttribute("aria-busy");return;}
+  if(!isCurrent())return;
+  const initial=singleLetter(searched),browsing=Boolean(initial);
+  list.setAttribute("aria-busy","true");
+  model.region.hidden=false;
+  more.hidden=true;
+  count.textContent="Buscando en el catálogo…";
+  void plainMatches(searched,initial,isCurrent).then(scored=>{
+   if(!scored||!isCurrent())return;
+   list.replaceChildren();
   model.region.hidden=false;
   count.textContent=(browsing?(initial?"Inicial «"+searched+"» · ":"Catálogo alfabético · "):"")+scored.length+" fichas"+(scored.length>limit?" · mostrando "+limit:"");
-  if(!scored.length){list.append(make("li","No se encontraron obras en el catálogo. Pruebe otra grafía.","bws-empty"));return;}
+  if(!scored.length){list.append(make("li","No se encontraron obras en el catálogo. Pruebe otra grafía.","bws-empty"));list.removeAttribute("aria-busy");return;}
   const fragment=document.createDocumentFragment();
-  for(const {w} of scored.slice(0,limit)){
+  for(const w of scored.slice(0,limit)){
    const row=make("li",null,"bws-item");
    const link=make("a",bilingualWorkLabel(w),"bws-plain-title");
    const original=w.versions.find(v=>v.language===w.originalLanguage&&safeReader(v.reader));
@@ -641,6 +673,8 @@ function render(){
   }
   list.append(fragment);
   if(scored.length>limit){more.hidden=false;more.textContent="Mostrar más obras ("+(scored.length-limit)+" restantes)";}
+  list.removeAttribute("aria-busy");
+  }).catch(error=>{if(!isCurrent())return;list.removeAttribute("aria-busy");list.replaceChildren();count.textContent="No se pudo consultar el catálogo. Vuelva a intentar.";console.warn("Bibliotheca catalogue search",error)});
   return;
  }
 
@@ -860,19 +894,20 @@ function mount(parent,data){
    let searchTimer;
    const sync=()=>{clearTimeout(searchTimer);input.value=visible.value;model.letter="";model.limit=40;render()};
    const schedule=event=>{
+    cancelPlainRender();
+    if(input.value!==visible.value){list.replaceChildren();more.hidden=true;count.textContent="";list.removeAttribute("aria-busy");model.region.hidden=true;}
     if(event.isComposing)return;
     clearTimeout(searchTimer);
     searchTimer=setTimeout(sync,320);
    };
    visible.addEventListener("input",schedule);
-   visible.addEventListener("compositionstart",()=>clearTimeout(searchTimer));
+   visible.addEventListener("compositionstart",()=>{cancelPlainRender();clearTimeout(searchTimer)});
    visible.addEventListener("compositionend",schedule);
    visible.addEventListener("search",sync);
    visible.addEventListener("change",schedule);
    const searchForm=document.getElementById("bibliotheca-lexicon-form");
    searchForm?.addEventListener("submit",event=>{
     event.preventDefault();event.stopImmediatePropagation();sync();
-    const matches=list.querySelectorAll(".bws-plain-title");
     // Keep editorial choices visible before opening any reader, even for one match.
    },true);
    sync();
