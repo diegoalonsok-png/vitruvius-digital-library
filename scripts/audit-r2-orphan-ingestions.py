@@ -27,6 +27,11 @@ def write(report):
 def main():
     catalogue = json.loads(CATALOGUE.read_text(encoding="utf-8"))
     candidates = json.loads(CANDIDATES.read_text(encoding="utf-8"))
+    # Retain researched external bibliographic evidence only for the same
+    # provenance and declared fingerprint. It never certifies PDF bytes.
+    previous = json.loads(OUT.read_text(encoding="utf-8")) if OUT.exists() else {}
+    reviewed = {r["id"]: r.get("editorialEvidence") for r in previous.get("records", [])
+                if r.get("editorialEvidence")}
     entries = {x["id"]: x for x in catalogue["items"]}
     proposed = {x["id"]: x for x in candidates["obras"]}
     report = {
@@ -39,7 +44,9 @@ def main():
     }
     if not os.getenv("R2_ACCESS_KEY_ID") or not os.getenv("R2_SECRET_ACCESS_KEY"):
         report["status"] = "credentials-unavailable"
-        write(report)
+        # Do not erase prior evidence merely because credentials are absent.
+        if not OUT.exists():
+            write(report)
         if REQUIRED:
             raise SystemExit("R2 sin credenciales: no se certifica revisión de huérfanos")
         return
@@ -107,12 +114,19 @@ def main():
         except ClientError as exc:
             row["status"] = "read-error"
             row["errorCode"] = str(exc.response.get("Error", {}).get("Code", "unknown"))
+        evidence = reviewed.get(ident)
+        if (evidence and evidence.get("sourceIdentifier") == row["sourceIdentifierS3"]
+                and evidence.get("sourceSha256Metadata") == row["sourceSha256Metadata"]
+                and row["sourceIdentifierS3"]):
+            row["editorialEvidence"] = evidence
         report["records"].append(row)
     report["counts"] = {
         "pdfWithoutCatalogue": len(orphan_pdfs),
         "ocrWithoutCatalogue": len(orphan_ocr),
         "editionCandidatesInspected": len(orphan_ids),
         "metadataConsistent": sum(r["status"] == "technical-metadata-consistent-not-bibliographically-verified" for r in report["records"]),
+        "externalCatalogueChecked": sum((r.get("editorialEvidence") or {}).get("status") == "external-catalogue-checked-r2-interior-pending" for r in report["records"]),
+        "identitySuspect": sum((r.get("editorialEvidence") or {}).get("status") == "identity-suspect-source-not-accessible" for r in report["records"]),
         "metadataMismatch": sum(r["status"] == "metadata-mismatch" for r in report["records"]),
         "unverifiedOrIncomplete": sum(r["status"] in ("read-error", "incomplete-or-unverified-metadata") for r in report["records"]),
     }
