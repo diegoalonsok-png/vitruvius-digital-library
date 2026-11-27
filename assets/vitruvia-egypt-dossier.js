@@ -80,9 +80,49 @@ function style(){
  "@media(max-width:540px){#vitruvia-context .v-ed-grid{grid-template-columns:1fr}}"
  ].join("\n");document.head.append(css);
 }
-function findRuler(data){
- const values=[q,row?.title,row?.entityCanonical].map(N).filter(Boolean);
- return (data.rulers||[]).find(r=>[r.name,...(r.aliases||[])].some(n=>values.includes(N(n))))||null;
+// Prefer an exact royal designation, never an incidental mention in a result.
+function findRuler(data,query=q,result=row){
+ const name=s=>N(s).replace(/^(?:(?:el|la|the|le|les) )?(?:rey|reina|faraon|faraona|king|queen|pharaoh|pharaon|roi|reine) /,"");
+ const qn=name(query);
+ if(!qn||qn==="menes")return null; // identification with Narmer is debated.
+ const variants=qn==="tut"&&/\b(?:rey|king|faraon|pharaoh)\b/.test(N(query))?["tutankhamun"]:[qn];
+ const rulers=data.rulers||[];
+ const match=values=>rulers.filter(r=>[r.name,...(r.aliases||[])].map(name).some(n=>values.includes(n)));
+ const exact=match(variants);
+ if(exact.length===1)return exact[0];
+ if(result?.entityKind==="person"&&(result.preferredWiki||result.preferredAuthority)&&/^Q\d+$/.test(result.wikidataId||"")){
+  const canonical=name(result.entityCanonical);
+  const aliases=[canonical,...(Array.isArray(result.aliases)?result.aliases.map(name):[])].filter(Boolean);
+  if(!aliases.includes(qn))return null;
+  const found=match([canonical]);if(found.length===1)return found[0];
+ }
+ return null;
+}
+// Direct textual witnesses: links lead to the institutional edition or
+// translation, not an invented full text or an unspecified catalogue search.
+const ROYAL_READINGS={
+ "tutankhamun":[
+ ["Estela de la Restauración · escena de Amón y Mut","Thesaurus Linguae Aegyptiae · PGJTEBK6RZA27LXCB7DLBBXCCI","Edición digital de la sección y bibliografía de Bennet, JEA 25 (1939), pp. 8–15; consultar la traducción y el contexto en la fuente.","https://thesaurus-linguae-aegyptiae.de/text/PGJTEBK6RZA27LXCB7DLBBXCCI"],
+ ["Inscripciones de seis ushebtis · KV62","Griffith Institute, Oxford · TAA i.3.29.4.recto","Notas de Howard Carter con traducción inglesa; registro moderno de textos antiguos, no autógrafo del rey.","https://tutankhamun.griffith.ox.ac.uk/scientific-notes/shabti-figures-taa-i329/taa-i3294recto"],
+ ["Lino inscrito · año 6 del reinado","The Metropolitan Museum of Art · 09.184.220","Inscripción hierática con el nombre de trono Nebkheperure; traducción inglesa en la ficha. La segunda inscripción no está descifrada.","https://www.metmuseum.org/art/collection/search/548836"]
+ ],
+ "akhenaten":[
+ ["Estelas fronterizas de Ajetatón · proclamaciones","UCL Digital Egypt for Universities","Introducción y referencias de las dos proclamaciones; distinguir traducción de comentario histórico.","https://www.ucl.ac.uk/museums-static/digitalegypt/amarna/boundary.html"],
+ ["Estelas fronterizas · cláusula del juramento","Thesaurus Linguae Aegyptiae · IBUBdx06TD2Rm0Oojhnuky8Rrn4","Registro lingüístico con traducción; consultar restituciones y referencias editoriales.","https://thesaurus-linguae-aegyptiae.de/sentence/IBUBdx06TD2Rm0Oojhnuky8Rrn4"]
+ ],
+ "ramesses-ii":[
+ ["Relieves de Qadesh · episodio II","Thesaurus Linguae Aegyptiae · CIPWROUZYZAA3DH3OFJ2PS322Q","Edición lingüística y referencias a Gardiner, The Kadesh Inscriptions of Ramesses II (1960). Relato regio, no testimonio neutral.","https://thesaurus-linguae-aegyptiae.de/text/CIPWROUZYZAA3DH3OFJ2PS322Q"],
+ ["Boletín de Qadesh · testimonio L3","Thesaurus Linguae Aegyptiae · Q3TNJLQJDVARBBCJUGXCBHBM4Q","Edición digital y bibliografía de la tradición textual; distinguir este testimonio de otras versiones.","https://thesaurus-linguae-aegyptiae.de/text/Q3TNJLQJDVARBBCJUGXCBHBM4Q"]
+ ]
+};
+function royalReadings(box,ruler){
+ const list=ROYAL_READINGS[ruler.id]||[];
+ box.append(make("h4","Lecturas de textos y traducciones documentadas"));
+ for(const [title,source,note,url] of list){
+  const entry=make("details",null,"v-ed-name");entry.append(make("summary",title),make("p",source,"v-ed-note"),make("p",note),anchor("Consultar texto / traducción en la fuente",url));box.append(entry);
+ }
+ if(!list.length)box.append(make("p","Aún no hay pasajes cotejados y vinculados específicamente a este soberano. Los siguientes repertorios sirven para localizar testimonios, no garantizan una traducción completa.","v-ed-note"));
+ box.append(anchor("Thesaurus Linguae Aegyptiae · corpus y traducciones","https://thesaurus-linguae-aegyptiae.de/"),make("p",""),anchor("Digital Egypt for Universities · índice de reyes y monumentos","https://www.ucl.ac.uk/museums-static/digitalegypt/alphabet.html"));
 }
 function gallery(box,ruler){
  box.append(make("h4","Fotografías de época y testimonios"));
@@ -176,16 +216,16 @@ function names(box,ruler){
  for(const [key,label] of keys){
   const rec=ruler.names?.[key],item=make("div",null,"v-ed-name");
   item.append(make("b",label));
-  if(rec?.glyphs){const g=make("span",rec.glyphs,"v-ed-glyph"+(["nomen","prenomen"].includes(key)?" cartouche":""));g.lang="egy";if(window.HieroRender?.render)g.replaceChildren(window.HieroRender.render(rec.glyphs,{size:"35px"}));item.append(g)}
+  if(rec?.glyphs){item.append(make("small","Grafía editorial normalizada · no facsímil","v-ed-note"));const g=make("span",rec.glyphs,"v-ed-glyph"+(["nomen","prenomen"].includes(key)?" cartouche":""));g.lang="egy";if(window.HieroRender?.render)g.replaceChildren(window.HieroRender.render(rec.glyphs,{size:"35px"}));item.append(g)}
   if(rec?.trans)item.append(make("p","Transliteración: "+rec.trans));
-  if(rec?.gloss)item.append(make("p","Sentido: "+rec.gloss));
+  if(rec?.gloss)item.append(make("p","Traducción española de trabajo / glosa editorial: "+rec.gloss));
   if(rec?.witness)item.append(make("p","Testimonio: "+rec.witness,"v-ed-note"));
   if(!rec)item.append(make("p","Este nombre no está acreditado en el repertorio local.","v-ed-note"));
   else if(!rec.glyphs)item.append(make("p","Grafía jeroglífica pendiente de edición.","v-ed-note"));
-  item.append(anchor("Examinar con lupa / inversión / contraste","egypt-document-viewer.html?king="+encodeURIComponent(ruler.id)+"&name="+key));
+  if(rec?.glyphs||rec?.trans)item.append(anchor("Examinar con lupa / inversión / contraste","egypt-document-viewer.html?king="+encodeURIComponent(ruler.id)+"&name="+key));
   box.append(item);
  }
- box.append(make("p","Solo prenomen y nomen se representan dentro de cartuchos. Las glosas de nombres no equivalen a traducción de un papiro o inscripción completa.","v-ed-note"));
+ box.append(make("p","Solo prenomen y nomen se representan aquí dentro de cartuchos. Las glosas editoriales no son traducciones certificadas de una inscripción completa. Repertorios generales: von Beckerath (1999), Leprohon (2013) y Gardiner (1957); cotejar cada grafía con su testimonio.","v-ed-note"));
 }
 function books(box,ruler){
  box.append(make("h4","Libros y bibliografía académica"));
@@ -208,7 +248,7 @@ async function render(){
   const box=make("section",null,"v-egypt-dossier");box.id="v-egypt-scholar-dossier";
   box.append(make("h3",ruler.name+" · dossier real"));
   box.append(make("p",[ruler.dynasty,ruler.dates].filter(Boolean).join(" · "),"v-ed-note"));
-  names(box,ruler);gallery(box,ruler);royalBuildingCatalogue(box,ruler);books(box,ruler);
+  names(box,ruler);royalReadings(box,ruler);gallery(box,ruler);royalBuildingCatalogue(box,ruler);books(box,ruler);
   const before=rail.querySelector("#v-egypt-side");
   if(before)before.insertAdjacentElement("afterend",box);else rail.prepend(box);
   rail.hidden=false;
