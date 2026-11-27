@@ -7,7 +7,7 @@
 const MODEL="Xenova/multilingual-e5-small";
 const CDN="https://cdn.jsdelivr.net/npm/@huggingface/transformers@3.8.1";
 const stop=new Set("de del la el los las un una unos unas y en por para a al con del sobre the of and for in on a an is are it into le les des du et il elle un une auf die der das und ein eine di degli della che".split(" "));
-const normalize=s=>String(s||"").normalize("NFD").replace(/\p{M}/gu,"").toLowerCase().replace(/[^\p{L}\p{N}\s]+/gu," ").replace(/\s+/g," ").trim();
+const normalize=s=>String(s||"").normalize("NFD").replace(/\p{M}/gu,"").toLowerCase().replace(/[ςϲ]/g,"σ").replace(/[^\p{L}\p{N}\s]+/gu," ").replace(/\s+/g," ").trim();
 const terms=s=>normalize(s).split(" ").filter(t=>t.length>1&&!stop.has(t));
 const asString=s=>String(s||"").replace(/\s+/g," ").trim();
 let registryPromise=null,modelPromise=null;
@@ -25,7 +25,13 @@ const notify=(message,phase="working")=>{
 const requestJSON=async url=>{const r=await fetch(url,{headers:{Accept:"application/json"}});if(!r.ok)throw Error(url+" HTTP "+r.status);return r.json()};
 const urlFor=(source,locus,passage)=>{
  if(passage?.reader&&/^https:\/\//i.test(passage.reader))return passage.reader;
- const base=source.reader||"bibliotheca-graeca-latina.html?work="+encodeURIComponent(source.workId||"");
+ let base=source.reader||"bibliotheca-graeca-latina.html?work="+encodeURIComponent(source.workId||"");
+ // Preserve the exact edition selected by the index, not the default language edition.
+ if(/(?:^|\/)classics-text-reader(?:\.html)?\?/.test(base)&&!/[?&]edition=/.test(base)){
+  const edition=source.sha256?source.sha256.slice(0,16):source.url;
+  if(edition)base+="&edition="+encodeURIComponent(edition);
+ }
+ if(/[?&]locus=/.test(base))return base.replace(/([?&]locus=)[^&#]*/,"$1"+encodeURIComponent(locus));
  return base+(base.includes("?")?"&":"?")+"locus="+encodeURIComponent(locus);
 };
 function sliceIntoChunks(raw,max=340,overlap=48){
@@ -445,7 +451,7 @@ function diversity(lexical,limit=82){
  // Treat each edition separately: the same ancient work can have translations.
  const byEdition=new Map();
  for(const entry of lexical){
-  const key=entry.doc.workId+"|"+entry.doc.edition+"|"+entry.doc.language;
+  const key=entry.doc.workId+"|"+entry.doc.edition+"|"+entry.doc.language+"|"+entry.doc.sourcePath;
   if(!byEdition.has(key))byEdition.set(key,[]);
   byEdition.get(key).push(entry);
  }
@@ -469,7 +475,7 @@ function diversity(lexical,limit=82){
 }
 function candidateCoverage(candidates){
  return {candidateWorks:new Set(candidates.map(x=>x.doc.workId)).size,
-  candidateEditions:new Set(candidates.map(x=>x.doc.workId+"|"+x.doc.edition+"|"+x.doc.language)).size};
+  candidateEditions:new Set(candidates.map(x=>x.doc.workId+"|"+x.doc.edition+"|"+x.doc.language+"|"+x.doc.sourcePath)).size};
 }
 function sourceExcerpt(doc,query,max=420){
  const source=doc.excerptText;const lowered=normalize(source),words=terms(query);
@@ -486,7 +492,7 @@ function renderRow(doc,query,score,semantic=false){
  const kind=semantic?(exact?"E5 + coincidencia textual · cotejo pendiente":"Reordenación E5 + BM25 · comprobar pertinencia"):"BM25 · coincidencia textual indexada";
  return {type:"passage",title:doc.workTitle+" · "+doc.locus,
   author:doc.author+" · "+doc.edition+" · "+doc.language,
-  excerpt:sourceExcerpt(doc,query),latin:doc.original,translation:doc.translation,
+  excerpt:sourceExcerpt(doc,query),language:doc.language,original:doc.original,latin:doc.language==="la"?doc.original:"",greek:doc.language==="grc"?doc.original:"",translation:doc.translation,
   locus:doc.locus,edition:doc.edition,workId:doc.workId,link:doc.url,source:doc.source,sourceUrn:doc.sourceUrn,sourceSha256:doc.sha256,sourcePath:doc.sourcePath,
   meta:kind+" · "+doc.source+" · locus "+doc.locus,
   rating:Math.round(score),aiScore:Math.round(score),aiSemantic:semantic,
@@ -592,5 +598,5 @@ async function rank(query,docs,{limit=30,candidates=40}={}){
   notify("IA semántica activa en el visor.","success");return {mode:"neural",rows};
  }catch(e){return {mode:"bm25-fallback",rows:pool.slice(0,limit),warning:String(e.message||e)}}
 }
-window.VitruviaAI={search,rank,model:MODEL,version:"1.6-philosophical-calibration",sourceSelection,academicTerms};
+window.VitruviaAI={search,rank,model:MODEL,version:"1.7-edition-aware",sourceSelection,academicTerms};
 })();
