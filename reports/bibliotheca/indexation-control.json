@@ -1,6 +1,6 @@
 {
   "schema": "vdl-bibliotheca-indexation-control-v1",
-  "generated": "2026-11-27T12:27:42.385Z",
+  "generated": "2026-11-27T12:40:43.274Z",
   "methodology": "Auditoría documental reproducible de GitHub. Los índices del catálogo y los registros remotos son declaraciones; no sustituyen GET/HEAD de R2, cotejo del interior del PDF ni recensio manuscrita. Una obra sin índice NO se marca indexada automáticamente.",
   "counts": {
     "catalogueWorks": 730,
@@ -28,7 +28,7 @@
     "greekTitleNeedsIndividualReview": 432,
     "r2UnlinkedEditions": 0,
     "duplicateR2BinaryGroups": 2,
-    "structuralErrors": 1,
+    "structuralErrors": 0,
     "editorialReviewItems": 465
   },
   "scope": {
@@ -5725,12 +5725,6 @@
       "code": "same_pdf_multiple_editions",
       "id": "galeno-opera-kuhn,galeno-kuhn-vol01",
       "description": "Misma huella: comprobar si es edición ómnibus o duplicación"
-    },
-    {
-      "severity": "error",
-      "code": "expansion_without_exact_registry_url",
-      "id": "cts-tlg1805-tlg006",
-      "description": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg1805-tlg006-grc-0135e0fd160b26ac.json"
     },
     {
       "severity": "review",
