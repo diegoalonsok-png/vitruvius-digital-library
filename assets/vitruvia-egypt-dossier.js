@@ -51,6 +51,49 @@ const ROYAL_ARCHITECTURE={
   {name:"Templo de Luxor · ampliaciones",query:"Luxor Temple Ramesses II pylon courtyard",attribution:"Patio y pilono del reinado; no se atribuye a Ramsés II el templo completo."}
  ]
 };
+// Institutional documentation is shown before any general image discovery.
+const ROYAL_PRIMARY={
+ akhenaten:[
+  {title:"Gran Himno a Atón",kind:"Himno religioso · tumba de Ay (TA25)",note:"Composición vinculada al culto de Atón. No se afirma autoría personal del rey.",url:"https://www.ucl.ac.uk/museums-static/digitalegypt/amarna/belief.html",reading:"Transliteración y traducción inglesa · UCL Digital Egypt"},
+  {title:"Estelas fronterizas de Ajetatón",kind:"Inscripción real · proclamaciones",note:"Edición basada principalmente en la estela S; distingue inscripción de traducción.",url:"https://www.ucl.ac.uk/museums-static/digitalegypt/amarna/boundary.html",reading:"Transliteración y traducción inglesa · UCL Digital Egypt",witness:"https://www.amarnaproject.com/amarna-the-place/boundary-stelae/"}
+ ],
+ tutankhamun:[
+  {title:"Estela de la Restauración",kind:"Inscripción real · restauración de cultos",note:"Referencia epigráfica Sethe 1957: 2025–2032. La traducción completa todavía no está incorporada.",url:"https://www.ucl.ac.uk/museums-static/digitalegypt/chronology/tutankhamun.html",reading:"Ficha y referencia epigráfica · UCL"}
+ ],
+ "ramesses-ii":[
+  {title:"Qadesh · Papiro Sallier III",kind:"Relato regio · testimonio manuscrito",note:"British Museum ESA 10181. Texto vinculado al reinado, no autógrafo real. Traducción completa pendiente de incorporación.",url:"https://www.ucl.ac.uk/museums-static/digitalegypt/writing/library/ram.html",reading:"Registro del manuscrito · UCL"},
+  {title:"Libro de los Muertos",kind:"Corpus funerario · contexto religioso",note:"No se atribuye su composición a Ramsés II. Consultar cada testimonio y su datación.",url:"https://www.ucl.ac.uk/museums-static/digitalegypt/literature/religious/bdbynumber.html",reading:"Índice por fórmulas y traducciones disponibles · UCL"}
+ ]
+};
+const ROYAL_PLANS={
+ akhenaten:[
+  ["Gran Templo de Atón","Plantas y levantamientos arqueológicos","Amarna Project","https://www.amarnaproject.com/our-work/excavation-and-survey/great-aten-temple-background/"],
+  ["Ajetatón","Cartografía arqueológica e histórica","Amarna Project","https://www.amarnaproject.com/mapping-amarna/"]
+ ],
+ tutankhamun:[
+  ["KV62","Planta de Carter · MSS i.G.4","Griffith Institute, Oxford","https://tutankhamun.griffith.ox.ac.uk/maps-plans-sketches-drawings/carter-mss-ig4"],
+  ["KV62","Plantas, cortes y dibujos del archivo Carter","Griffith Institute, Oxford","https://tutankhamun.griffith.ox.ac.uk/maps-plans-sketches-drawings"],
+  ["KV62","Planta y cortes acotados · lámina PDF","Theban Mapping Project","https://thebanmappingproject.com/sites/default/files/plans/KV62_1.pdf"]
+ ],
+ "ramesses-ii":[
+  ["KV7 · sepultura real","Planta, cortes y alzados · lámina PDF","Theban Mapping Project","https://thebanmappingproject.com/sites/default/files/plans/KV07_0.pdf"]
+ ]
+};
+function dossierContents(box){
+ const sections=[...box.querySelectorAll(":scope > h4")];
+ if(!sections.length)return;
+ const nav=make("nav",null,"v-ed-contents");nav.setAttribute("aria-label","Índice del dossier egiptológico");
+ nav.append(make("b","Contenido"));
+ const ul=make("ol");
+ sections.forEach((h,i)=>{h.id="v-egypt-dossier-section-"+(i+1);const a=make("a",h.textContent);a.href="#"+h.id;const li=make("li");li.append(a);ul.append(li)});
+ nav.append(ul);box.children[1].after(nav);
+}
+function primaryTexts(box,ruler){
+ box.append(make("h4","Textos religiosos, inscripciones y traducciones"));
+ const records=ROYAL_PRIMARY[ruler.id]||[];
+ if(!records.length){box.append(make("p","No se ha incorporado un texto con atribución y traducción verificadas para este rey. Consultar el repertorio epigráfico, sin asignar textos por coincidencia de nombre.","v-ed-note"));return}
+ for(const r of records){const item=make("section",null,"v-ed-name");item.append(make("b",r.title),make("p",r.kind),make("p",r.note,"v-ed-note"),anchor(r.reading,r.url));if(r.witness)item.append(anchor("Fotografías y documentación del testimonio",r.witness));box.append(item)}
+}
 const ROYAL_DRAWING_TYPES=[
  {label:"Plantas",suffix:"architectural plan"},
  {label:"Cortes",suffix:"section drawing"},
@@ -63,7 +106,8 @@ function style(){
  css.textContent=[
  "#vitruvia-context .v-egypt-dossier{padding:16px 0;margin:13px 0 24px;border-top:1px solid #555;min-width:0}",
  "#vitruvia-context .v-egypt-dossier h3{font:400 22px/1.3 Georgia,serif;margin:4px 0 12px}",
- "#vitruvia-context .v-egypt-dossier h4{font:400 18px/1.4 Georgia,serif;margin:19px 0 9px}",
+ "#vitruvia-context .v-egypt-dossier h4{font:400 18px/1.4 Georgia,serif;margin:19px 0 9px;scroll-margin-top:90px}",
+ "#vitruvia-context .v-ed-contents{font:12px/1.65 system-ui,sans-serif;border:1px solid #777;padding:10px 12px;margin:10px 0}#vitruvia-context .v-ed-contents ol{margin:6px 0;padding-left:19px}#vitruvia-context .v-ed-contents a{color:inherit;text-decoration:underline}",
  "#vitruvia-context .v-egypt-dossier .v-ed-note{font-size:12px;line-height:1.55;opacity:.8}",
  "#vitruvia-context .v-ed-name{border-left:3px solid #888;border-bottom:1px solid #484848;margin:6px 0;padding:9px 11px;min-width:0}",
  "#vitruvia-context .v-ed-name b{display:block;font-size:12px}",
@@ -81,11 +125,11 @@ function style(){
  ].join("\n");document.head.append(css);
 }
 function findRuler(data){
- const values=[q,row?.title,row?.entityCanonical].map(N).filter(Boolean);
+ const values=[q,row?.title,row?.entityCanonical].map(N).map(v=>v.replace(/^(?:(?:biografia|vida|historia|rey|faraon|king|pharaoh|roi)\s+(?:de\s+)?)+/,"")).filter(Boolean);
  return (data.rulers||[]).find(r=>[r.name,...(r.aliases||[])].some(n=>values.includes(N(n))))||null;
 }
 function gallery(box,ruler){
- box.append(make("h4","Fotografías de época y testimonios"));
+ box.append(make("h4","Fotografías actuales de testimonios antiguos y cartuchos"));
  const recs=objects[ruler.id]||[];
  if(!recs.length){
   box.append(make("p","La ficha aún no tiene fotografías de objetos vinculadas y verificadas. Se ofrecen los catálogos y se mantiene la titulatura documentada.","v-ed-note"));
@@ -95,11 +139,13 @@ function gallery(box,ruler){
  for(const [id,title] of recs){
   const card=make("div",null,"v-ed-photo");
   card.append(anchor(title+" · abrir visor ampliado","egypt-document-viewer.html?king="+encodeURIComponent(ruler.id)+"&object="+id));
-  card.append(make("small","The Metropolitan Museum of Art · ficha "+id));
+  card.append(make("small","The Metropolitan Museum of Art · ficha "+id),anchor("Ficha institucional y procedencia","https://www.metmuseum.org/art/collection/search/"+id));
   grid.append(card);
   if(!cached.has(id))cached.set(id,fetch("https://collectionapi.metmuseum.org/public/collection/v1/objects/"+id).then(r=>r.ok?r.json():null).catch(()=>null));
   cached.get(id).then(entry=>{
    if(!card.isConnected||!entry?.isPublicDomain)return;
+   if(entry.objectNumber)card.append(make("small","Inventario: "+entry.objectNumber));
+   if(entry.creditLine)card.append(make("small",entry.creditLine+" · dominio público"));
    const src=entry.primaryImageSmall||entry.primaryImage;if(!src)return;
    try{const url=new URL(src);if(url.protocol!=="https:")return;const img=make("img");img.src=url.href;img.loading="lazy";img.alt=entry.title+" · número "+id;img.onerror=()=>img.remove();card.prepend(img)}catch{}
   });
@@ -111,6 +157,8 @@ function gallery(box,ruler){
 }
 function royalBuildingCatalogue(box,ruler){
  box.append(make("h4","Construcciones del reinado · plantas, cortes y fotografías"));
+ const plans=ROYAL_PLANS[ruler.id]||[];
+ if(plans.length){const sources=make("div",null,"v-ed-library");for(const [name,kind,credit,url] of plans){const a=anchor(name+" · "+kind+" · "+credit,url);sources.append(a)}box.append(sources)}
  const items=ROYAL_ARCHITECTURE[ruler.id]||[];
  if(!items.length){
   box.append(make("p","No hay edificios atribuidos y cotejados en el repertorio local para esta identidad. No se atribuyen monumentos por semejanza del nombre.","v-ed-note"));
@@ -178,11 +226,11 @@ function names(box,ruler){
   item.append(make("b",label));
   if(rec?.glyphs){const g=make("span",rec.glyphs,"v-ed-glyph"+(["nomen","prenomen"].includes(key)?" cartouche":""));g.lang="egy";if(window.HieroRender?.render)g.replaceChildren(window.HieroRender.render(rec.glyphs,{size:"35px"}));item.append(g)}
   if(rec?.trans)item.append(make("p","Transliteración: "+rec.trans));
-  if(rec?.gloss)item.append(make("p","Sentido: "+rec.gloss));
+  if(rec?.gloss)item.append(make("p","Traducción / interpretación al castellano: "+rec.gloss));
   if(rec?.witness)item.append(make("p","Testimonio: "+rec.witness,"v-ed-note"));
   if(!rec)item.append(make("p","Este nombre no está acreditado en el repertorio local.","v-ed-note"));
   else if(!rec.glyphs)item.append(make("p","Grafía jeroglífica pendiente de edición.","v-ed-note"));
-  item.append(anchor("Examinar con lupa / inversión / contraste","egypt-document-viewer.html?king="+encodeURIComponent(ruler.id)+"&name="+key));
+  if(rec?.glyphs||rec?.trans)item.append(anchor("Examinar la lectura con lupa / inversión / contraste","egypt-document-viewer.html?king="+encodeURIComponent(ruler.id)+"&name="+key));
   box.append(item);
  }
  box.append(make("p","Solo prenomen y nomen se representan dentro de cartuchos. Las glosas de nombres no equivalen a traducción de un papiro o inscripción completa.","v-ed-note"));
@@ -208,7 +256,7 @@ async function render(){
   const box=make("section",null,"v-egypt-dossier");box.id="v-egypt-scholar-dossier";
   box.append(make("h3",ruler.name+" · dossier real"));
   box.append(make("p",[ruler.dynasty,ruler.dates].filter(Boolean).join(" · "),"v-ed-note"));
-  names(box,ruler);gallery(box,ruler);royalBuildingCatalogue(box,ruler);books(box,ruler);
+  names(box,ruler);gallery(box,ruler);primaryTexts(box,ruler);royalBuildingCatalogue(box,ruler);books(box,ruler);dossierContents(box);
   const before=rail.querySelector("#v-egypt-side");
   if(before)before.insertAdjacentElement("afterend",box);else rail.prepend(box);
   rail.hidden=false;
