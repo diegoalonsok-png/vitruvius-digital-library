@@ -54,7 +54,9 @@ async function photo(item,work){
 const drawingKinds={
  plan:{label:['Plantas','Floor plans','Plans'],terms:'("floor plan" OR Grundriss OR planta OR pianta OR "ground floor" OR "plan du rez")',pattern:/\b(floor plans?|floorplans?|ground floor|first floor plan|upper floor plan|grundrisse?|plantas?|piante?|pianta|planimetr\w*|plan du rez|plan d.etage)\b/i},
  section:{label:['Cortes','Sections','Coupes'],terms:'("section drawing" OR "cross section" OR Schnitt OR corte OR coupe OR sezione)',pattern:/\b(sections?|schnitt\w*|cortes?|seccion(?:es)?|coupes?|sezione|sezioni)\b/i},
- elevation:{label:['Vistas / alzados','Elevations','Élévations'],terms:'("elevation drawing" OR elevation OR alzado OR ansicht OR elevation architecturale)',pattern:/\b(elevations?|elevaciones?|alzado[s]?|ansicht\w*|alzato|alzati)\b/i}
+ elevation:{label:['Vistas / alzados','Elevations','Élévations'],terms:'("elevation drawing" OR elevation OR alzado OR ansicht OR elevation architecturale)',pattern:/\b(elevations?|elevaciones?|alzado[s]?|ansicht\w*|alzato|alzati)\b/i},
+ perspective:{label:['Perspectivas y axonometrías','Perspective and axonometric drawings','Perspectives et axonométries'],terms:'("perspective drawing" OR axonometric OR axonometry OR axonometria OR isometric OR "perspective sketch" OR "perspectiva dibujada")',pattern:/\b(perspectives?|perspectivas?|perspektiv\w*|axonometr\w*|isometr\w*|prospettiv\w*)\b/i},
+ sketch:{label:['Croquis y dibujos de proyecto','Sketches and design drawings','Croquis et dessins de projet'],terms:'(sketch OR croquis OR dessin OR schizzo OR entwurf OR "design drawing")',pattern:/\b(sketch(?:es)?|croquis|dessins?|schizz[oi]|entwurf\w*|design drawing|presentation drawing|dibujo[s]? de proyecto)\b/i}
 };
 const institutional={
  'curutchet': 'https://www.fondationlecorbusier.fr/en/work-architecture/achievements-docteur-curutchets-house-la-plata-argentina-1949/',
@@ -63,11 +65,11 @@ const institutional={
 };
 function classifyDrawing(title,description){
  const t=norm(title),d=norm(description);
- if(/\b(tourist map|locator map|location map|carte routiere|aerial photo|street view|photograph of facade|photo de facade)\b/.test(t))return [];
+ if(/\b(tourist map|locator map|location map|carte routiere|aerial photo|street view|photograph of facade|photo de facade|photograph|photography|fotografia|foto|street photograph|rendering|render|cgi|ai generated)\b/.test(t))return [];
  // The drawing type must occur in the filename or in an explicitly identified drawing.
  // A photograph's description mentioning a floor plan does not make it a drawing.
- const drawingEvidence=/\b(drawing|drawings|measured drawing|architectural drawing|dessin|zeichnung|dibujo|habs|blueprint|planche|lamina)\b/.test(t+' '+d);
- return Object.entries(drawingKinds).filter(([k,v])=>v.pattern.test(t)||(drawingEvidence&&v.pattern.test(d))).map(([k])=>k);
+ const drawingEvidence=/\b(drawing|drawings|measured drawing|architectural drawing|dessin|zeichnung|dibujo|habs|blueprint|planche|lamina|sketch|croquis|schizzo|entwurf|watercolor|watercolour|acuarela)\b/.test(t+' '+d);
+ return Object.entries(drawingKinds).filter(([k,v])=>{if(k==='perspective')return drawingEvidence&&(v.pattern.test(t)||v.pattern.test(d));if(k==='sketch')return v.pattern.test(t);return v.pattern.test(t)||(drawingEvidence&&v.pattern.test(d));}).map(([k])=>k);
 }
 function drawingRecord(page,work){
  const info=page.imageinfo?.[0],title=String(page.title||'').replace(/^File:/,'').replace(/\.[^.]+$/,'');
