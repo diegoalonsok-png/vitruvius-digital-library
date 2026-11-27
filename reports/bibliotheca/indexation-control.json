@@ -1,21 +1,21 @@
 {
   "schema": "vdl-bibliotheca-indexation-control-v1",
-  "generated": "2026-11-27T14:20:21.161Z",
+  "generated": "2026-11-27T20:37:56.343Z",
   "methodology": "Auditoría documental reproducible de GitHub. Los índices del catálogo y los registros remotos son declaraciones; no sustituyen GET/HEAD de R2, cotejo del interior del PDF ni recensio manuscrita. Una obra sin índice NO se marca indexada automáticamente.",
   "counts": {
-    "catalogueWorks": 753,
+    "catalogueWorks": 779,
     "supplementaryWorks": 127,
     "additionalR2Works": 10,
-    "combinedCataloguedWorks": 890,
+    "combinedCataloguedWorks": 916,
     "r2EditionRecords": 117,
-    "registeredTextVersions": 1138,
-    "registeredDistinctWorks": 854,
+    "registeredTextVersions": 1176,
+    "registeredDistinctWorks": 880,
     "verifiedLocalSourceWorkIds": 329,
-    "declaredRemoteSourceWorkIds": 618,
-    "r2TextManifestVersions": 619,
-    "r2ExpansionIndexedEditions": 592,
-    "r2ExpansionIndexedPassages": 251744,
-    "r2RegisteredTranslationEditions": 72,
+    "declaredRemoteSourceWorkIds": 644,
+    "r2TextManifestVersions": 645,
+    "r2ExpansionIndexedEditions": 618,
+    "r2ExpansionIndexedPassages": 254631,
+    "r2RegisteredTranslationEditions": 84,
     "r2SourcesSharedAcrossManifests": 12,
     "r2InvertedIndexDeclaredEditions": 119,
     "worksWithExistingPageOcrIndex": 34,
@@ -27,12 +27,12 @@
     "unindexedAncientWorks": 26,
     "unindexedEditorialManifestations": 0,
     "worksMissingRegisteredOriginal": 0,
-    "greekTitleNeedsIndividualReview": 453,
+    "greekTitleNeedsIndividualReview": 479,
     "documentedGreekTitleAuthorities": 2,
     "r2UnlinkedEditions": 0,
     "duplicateR2BinaryGroups": 2,
     "structuralErrors": 0,
-    "editorialReviewItems": 482
+    "editorialReviewItems": 508
   },
   "scope": {
     "r2Expansion": {
@@ -259,11 +259,17 @@
         "cts-tlg0018-tlg024|grc",
         "cts-tlg0018-tlg025|grc",
         "cts-tlg0018-tlg026|grc",
+        "cts-tlg0018-tlg030|grc",
+        "cts-tlg0018-tlg031|grc",
         "cts-tlg0019-tlg002|grc",
         "cts-tlg0019-tlg008|grc",
         "cts-tlg0019-tlg010|grc",
         "cts-tlg0019-tlg011|grc",
         "cts-tlg0020-tlg003|grc",
+        "cts-tlg0022-tlg001|grc",
+        "cts-tlg0026-tlg001|grc",
+        "cts-tlg0026-tlg002|grc",
+        "cts-tlg0026-tlg003|grc",
         "cts-tlg0032-tlg003|grc",
         "cts-tlg0032-tlg004|grc",
         "cts-tlg0032-tlg005|grc",
@@ -326,6 +332,11 @@
         "cts-tlg0057-tlg092|grc",
         "cts-tlg0057-tlg093|grc",
         "cts-tlg0057-tlg094|grc",
+        "cts-tlg0057-tlg101|grc",
+        "cts-tlg0057-tlg102|grc",
+        "cts-tlg0057-tlg103|grc",
+        "cts-tlg0057-tlg107|grc",
+        "cts-tlg0057-tlg114|grc",
         "cts-tlg0059-tlg001|grc",
         "cts-tlg0059-tlg005|grc",
         "cts-tlg0059-tlg006|grc",
@@ -369,6 +380,11 @@
         "cts-tlg0062-tlg006|grc",
         "cts-tlg0062-tlg007|grc",
         "cts-tlg0062-tlg008|grc",
+        "cts-tlg0062-tlg009|grc",
+        "cts-tlg0062-tlg010|grc",
+        "cts-tlg0062-tlg011|grc",
+        "cts-tlg0062-tlg013|grc",
+        "cts-tlg0062-tlg014|grc",
         "cts-tlg0062-tlg015|grc",
         "cts-tlg0062-tlg016|grc",
         "cts-tlg0062-tlg017|grc",
@@ -502,6 +518,16 @@
         "cts-tlg0627-tlg021|grc",
         "cts-tlg0627-tlg022|grc",
         "cts-tlg0627-tlg023|grc",
+        "cts-tlg0627-tlg040|grc",
+        "cts-tlg0627-tlg041|grc",
+        "cts-tlg0627-tlg042|grc",
+        "cts-tlg0627-tlg043|grc",
+        "cts-tlg0627-tlg045|grc",
+        "cts-tlg0627-tlg046|grc",
+        "cts-tlg0627-tlg047|grc",
+        "cts-tlg0627-tlg048|grc",
+        "cts-tlg0627-tlg049|grc",
+        "cts-tlg0627-tlg050|grc",
         "cts-tlg0641-tlg001|grc",
         "cts-tlg0644-tlg001|grc",
         "cts-tlg0751-tlg005|grc",
@@ -632,7 +658,7 @@
         "xenophon-hellenica|grc",
         "xenophon-memorabilia|grc"
       ],
-      "indexUrl": "https://libros.vitruvius-digital-library.org/corpus/indice/ampliacion/a5acb84f62b2a8cd59b4d667/manifest.json"
+      "indexUrl": "https://libros.vitruvius-digital-library.org/corpus/indice/ampliacion/0fe838d9dcf8671856652348/manifest.json"
     },
     "greekTitleReview": [
       {
@@ -2306,6 +2332,110 @@
       {
         "id": "cts-tlg0018-tlg026",
         "title": "De Praemiis Et Poenis Et De Exsecrationibus"
+      },
+      {
+        "id": "cts-tlg0627-tlg040",
+        "title": "De anatomia"
+      },
+      {
+        "id": "cts-tlg0627-tlg041",
+        "title": "De dentitione"
+      },
+      {
+        "id": "cts-tlg0627-tlg042",
+        "title": "De glandulis"
+      },
+      {
+        "id": "cts-tlg0627-tlg043",
+        "title": "De carnibus"
+      },
+      {
+        "id": "cts-tlg0627-tlg045",
+        "title": "De corde"
+      },
+      {
+        "id": "cts-tlg0627-tlg048",
+        "title": "De natura ossium"
+      },
+      {
+        "id": "cts-tlg0627-tlg047",
+        "title": "De visu"
+      },
+      {
+        "id": "cts-tlg0627-tlg046",
+        "title": "De alimento"
+      },
+      {
+        "id": "cts-tlg0627-tlg050",
+        "title": "De habitu decenti"
+      },
+      {
+        "id": "cts-tlg0627-tlg049",
+        "title": "De medico"
+      },
+      {
+        "id": "cts-tlg0018-tlg030",
+        "title": "In Flaccum"
+      },
+      {
+        "id": "cts-tlg0018-tlg031",
+        "title": "Legatio Ad Gaium"
+      },
+      {
+        "id": "cts-tlg0022-tlg001",
+        "title": "Theriaca"
+      },
+      {
+        "id": "cts-tlg0057-tlg103",
+        "title": "De consuetudinibus"
+      },
+      {
+        "id": "cts-tlg0057-tlg107",
+        "title": "De experientia medica"
+      },
+      {
+        "id": "cts-tlg0057-tlg102",
+        "title": "De musculorum dissectione ad tirones"
+      },
+      {
+        "id": "cts-tlg0057-tlg101",
+        "title": "In Hippocratis De officina medici"
+      },
+      {
+        "id": "cts-tlg0062-tlg010",
+        "title": "Patriae encomium"
+      },
+      {
+        "id": "cts-tlg0062-tlg009",
+        "title": "De Domo"
+      },
+      {
+        "id": "cts-tlg0057-tlg114",
+        "title": "De causis respirationis"
+      },
+      {
+        "id": "cts-tlg0062-tlg011",
+        "title": "Macrobii"
+      },
+      {
+        "id": "cts-tlg0062-tlg013",
+        "title": "Calumniae non temere credundum"
+      },
+      {
+        "id": "cts-tlg0062-tlg014",
+        "title": "Judicium vocalium"
+      },
+      {
+        "id": "cts-tlg0026-tlg001",
+        "title": "Against Timarchus"
+      },
+      {
+        "id": "cts-tlg0026-tlg002",
+        "title": "On the Embassy"
+      },
+      {
+        "id": "cts-tlg0026-tlg003",
+        "title": "Against Ctesiphon"
       },
       {
         "id": "first1k-tlg0057-tlg002",
@@ -5734,6 +5864,162 @@
       "severity": "review",
       "code": "greek_title_not_documented",
       "id": "cts-tlg0018-tlg026",
+      "description": "La ficha no contiene denominación griega acreditada; podría ser una colección o edición"
+    },
+    {
+      "severity": "review",
+      "code": "greek_title_not_documented",
+      "id": "cts-tlg0627-tlg040",
+      "description": "La ficha no contiene denominación griega acreditada; podría ser una colección o edición"
+    },
+    {
+      "severity": "review",
+      "code": "greek_title_not_documented",
+      "id": "cts-tlg0627-tlg041",
+      "description": "La ficha no contiene denominación griega acreditada; podría ser una colección o edición"
+    },
+    {
+      "severity": "review",
+      "code": "greek_title_not_documented",
+      "id": "cts-tlg0627-tlg042",
+      "description": "La ficha no contiene denominación griega acreditada; podría ser una colección o edición"
+    },
+    {
+      "severity": "review",
+      "code": "greek_title_not_documented",
+      "id": "cts-tlg0627-tlg043",
+      "description": "La ficha no contiene denominación griega acreditada; podría ser una colección o edición"
+    },
+    {
+      "severity": "review",
+      "code": "greek_title_not_documented",
+      "id": "cts-tlg0627-tlg045",
+      "description": "La ficha no contiene denominación griega acreditada; podría ser una colección o edición"
+    },
+    {
+      "severity": "review",
+      "code": "greek_title_not_documented",
+      "id": "cts-tlg0627-tlg048",
+      "description": "La ficha no contiene denominación griega acreditada; podría ser una colección o edición"
+    },
+    {
+      "severity": "review",
+      "code": "greek_title_not_documented",
+      "id": "cts-tlg0627-tlg047",
+      "description": "La ficha no contiene denominación griega acreditada; podría ser una colección o edición"
+    },
+    {
+      "severity": "review",
+      "code": "greek_title_not_documented",
+      "id": "cts-tlg0627-tlg046",
+      "description": "La ficha no contiene denominación griega acreditada; podría ser una colección o edición"
+    },
+    {
+      "severity": "review",
+      "code": "greek_title_not_documented",
+      "id": "cts-tlg0627-tlg050",
+      "description": "La ficha no contiene denominación griega acreditada; podría ser una colección o edición"
+    },
+    {
+      "severity": "review",
+      "code": "greek_title_not_documented",
+      "id": "cts-tlg0627-tlg049",
+      "description": "La ficha no contiene denominación griega acreditada; podría ser una colección o edición"
+    },
+    {
+      "severity": "review",
+      "code": "greek_title_not_documented",
+      "id": "cts-tlg0018-tlg030",
+      "description": "La ficha no contiene denominación griega acreditada; podría ser una colección o edición"
+    },
+    {
+      "severity": "review",
+      "code": "greek_title_not_documented",
+      "id": "cts-tlg0018-tlg031",
+      "description": "La ficha no contiene denominación griega acreditada; podría ser una colección o edición"
+    },
+    {
+      "severity": "review",
+      "code": "greek_title_not_documented",
+      "id": "cts-tlg0022-tlg001",
+      "description": "La ficha no contiene denominación griega acreditada; podría ser una colección o edición"
+    },
+    {
+      "severity": "review",
+      "code": "greek_title_not_documented",
+      "id": "cts-tlg0057-tlg103",
+      "description": "La ficha no contiene denominación griega acreditada; podría ser una colección o edición"
+    },
+    {
+      "severity": "review",
+      "code": "greek_title_not_documented",
+      "id": "cts-tlg0057-tlg107",
+      "description": "La ficha no contiene denominación griega acreditada; podría ser una colección o edición"
+    },
+    {
+      "severity": "review",
+      "code": "greek_title_not_documented",
+      "id": "cts-tlg0057-tlg102",
+      "description": "La ficha no contiene denominación griega acreditada; podría ser una colección o edición"
+    },
+    {
+      "severity": "review",
+      "code": "greek_title_not_documented",
+      "id": "cts-tlg0057-tlg101",
+      "description": "La ficha no contiene denominación griega acreditada; podría ser una colección o edición"
+    },
+    {
+      "severity": "review",
+      "code": "greek_title_not_documented",
+      "id": "cts-tlg0062-tlg010",
+      "description": "La ficha no contiene denominación griega acreditada; podría ser una colección o edición"
+    },
+    {
+      "severity": "review",
+      "code": "greek_title_not_documented",
+      "id": "cts-tlg0062-tlg009",
+      "description": "La ficha no contiene denominación griega acreditada; podría ser una colección o edición"
+    },
+    {
+      "severity": "review",
+      "code": "greek_title_not_documented",
+      "id": "cts-tlg0057-tlg114",
+      "description": "La ficha no contiene denominación griega acreditada; podría ser una colección o edición"
+    },
+    {
+      "severity": "review",
+      "code": "greek_title_not_documented",
+      "id": "cts-tlg0062-tlg011",
+      "description": "La ficha no contiene denominación griega acreditada; podría ser una colección o edición"
+    },
+    {
+      "severity": "review",
+      "code": "greek_title_not_documented",
+      "id": "cts-tlg0062-tlg013",
+      "description": "La ficha no contiene denominación griega acreditada; podría ser una colección o edición"
+    },
+    {
+      "severity": "review",
+      "code": "greek_title_not_documented",
+      "id": "cts-tlg0062-tlg014",
+      "description": "La ficha no contiene denominación griega acreditada; podría ser una colección o edición"
+    },
+    {
+      "severity": "review",
+      "code": "greek_title_not_documented",
+      "id": "cts-tlg0026-tlg001",
+      "description": "La ficha no contiene denominación griega acreditada; podría ser una colección o edición"
+    },
+    {
+      "severity": "review",
+      "code": "greek_title_not_documented",
+      "id": "cts-tlg0026-tlg002",
+      "description": "La ficha no contiene denominación griega acreditada; podría ser una colección o edición"
+    },
+    {
+      "severity": "review",
+      "code": "greek_title_not_documented",
+      "id": "cts-tlg0026-tlg003",
       "description": "La ficha no contiene denominación griega acreditada; podría ser una colección o edición"
     },
     {
