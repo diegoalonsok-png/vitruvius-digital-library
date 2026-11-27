@@ -9,6 +9,28 @@ const CDN="https://cdn.jsdelivr.net/npm/@huggingface/transformers@3.8.1";
 const stop=new Set("de del la el los las un una unos unas y en por para a al con del sobre the of and for in on a an is are it into le les des du et il elle un une auf die der das und ein eine di degli della che".split(" "));
 const normalize=s=>String(s||"").normalize("NFD").replace(/\p{M}/gu,"").toLowerCase().replace(/[ςϲ]/g,"σ").replace(/[^\p{L}\p{N}\s]+/gu," ").replace(/\s+/g," ").trim();
 const terms=s=>normalize(s).split(" ").filter(t=>t.length>1&&!stop.has(t));
+ // Whole-token phrase matching, not substring matching. Normalization is for
+ // retrieval only: accents and sigma variants do not certify diplomatic identity.
+ function normalizedPhrase(text,query){
+  const q=normalize(query);
+  return Boolean(q)&&(" "+normalize(text)+" ").includes(" "+q+" ");
+ }
+ function passagePhrase(doc,query){
+  return normalizedPhrase(doc.excerptText,query)&&
+   (normalizedPhrase(doc.original,query)||normalizedPhrase(doc.translation,query));
+ }
+ function literalPhrase(text,query){
+  const q=asString(query).normalize("NFC"),t=asString(text).normalize("NFC");
+  if(!q)return false;
+  let at=t.indexOf(q);
+  while(at>=0){
+   const left=at>0?t.slice(0,at).match(/[\p{L}\p{M}\p{N}]$/u):false;
+   const right=/^[\p{L}\p{M}\p{N}]/u.test(t.slice(at+q.length));
+   if(!left&&!right)return true;
+   at=t.indexOf(q,at+1);
+  }
+  return false;
+ }
 const asString=s=>String(s||"").replace(/\s+/g," ").trim();
 let registryPromise=null,modelPromise=null;
 const corpusCache=new Map();
@@ -513,7 +535,7 @@ function lexicalRanking(q,data,selection={}){
    const k1=1.4,b=.72;
    score+=weight*idf*(freq*(k1+1))/(freq+k1*(1-b+b*doc.length/data.avgLength));
   }
-  if(exact.length>4&&normalize(doc.excerptText).includes(exact))score+=75;
+  if(exact.length>4&&passagePhrase(doc,q))score+=75;
   if(selection.locus&&doc.locus.toLowerCase()===selection.locus&&doc.workId==="vitruvius")score+=10000;
   return {doc,score};
  });
@@ -573,15 +595,16 @@ function sourceExcerpt(doc,query,max=420){
  return (from?"…":"")+source.slice(from,from+max)+(from+max<source.length?"…":"");
 }
 function renderRow(doc,query,score,semantic=false){
- const exact=normalize(doc.excerptText).includes(normalize(query));
- const kind=semantic?(exact?"E5 + coincidencia textual · cotejo pendiente":"Reordenación E5 + BM25 · comprobar pertinencia"):"BM25 · coincidencia textual indexada";
+ const exact=passagePhrase(doc,query);
+ const literal=exact&&(literalPhrase(doc.original,query)||literalPhrase(doc.translation,query));
+ const kind=semantic?(exact?"E5 + coincidencia normalizada · cotejo pendiente":"Reordenación E5 + BM25 · comprobar pertinencia"):(exact?"BM25 · coincidencia de frase normalizada":"BM25 · términos relacionados o coincidencia parcial");
  return {type:"passage",title:doc.workTitle+" · "+doc.locus,
   author:doc.author+" · "+doc.edition+" · "+doc.language,
   excerpt:sourceExcerpt(doc,query),language:doc.language,original:doc.original,originalLanguage:doc.originalLanguage,latin:doc.originalLanguage==="la"?doc.original:"",greek:doc.originalLanguage==="grc"?doc.original:"",translation:doc.translation,
   locus:doc.locus,edition:doc.edition,workId:doc.workId,link:doc.url,source:doc.source,sourceUrn:doc.sourceUrn,sourceSha256:doc.sha256,sourcePath:doc.sourcePath,
   meta:kind+" · "+doc.source+" · locus "+doc.locus,
   rating:Math.round(score),aiScore:Math.round(score),aiSemantic:semantic,
-  aiQuery:query,exactTextMatch:exact,aiCalibrated:[...academicTerms(query,doc.workId)].filter(([term,weight])=>weight<1&&doc.tf.has(term)).length>=2,aiEvidence:true
+  aiQuery:query,exactTextMatch:literal,normalizedTextMatch:exact,aiCalibrated:[...academicTerms(query,doc.workId)].filter(([term,weight])=>weight<1&&doc.tf.has(term)).length>=2,aiEvidence:true
  };
 }
 const dot=(a,b)=>{let sum=0;for(let i=0;i<Math.min(a.length,b.length);i++)sum+=a[i]*b[i];return sum};
@@ -666,7 +689,7 @@ async function rank(query,docs,{limit=30,candidates=40}={}){
  const df=new Map();for(const x of prepared)for(const w of x.tf.keys())df.set(w,(df.get(w)||0)+1);
  const avg=prepared.reduce((a,x)=>a+x.length,0)/Math.max(1,prepared.length),n=prepared.length,qt=[...new Set(terms(q))],exactQ=normalize(q);
  const scored=prepared.map(x=>{let score=0;for(const t of qt){const f=x.tf.get(t)||0;if(!f)continue;const d=df.get(t)||0;score+=Math.log(1+(n-d+.5)/(d+.5))*(f*2.4)/(f+1.4*(1-.72+.72*x.length/avg))}
-  const exact=exactQ.length>4&&normalize(x.doc.text).includes(exactQ);if(exact)score+=75;return {doc:x.doc,score,exact}}).sort((a,b)=>b.score-a.score);
+  const exact=exactQ.length>4&&normalizedPhrase(x.doc.text,q);if(exact)score+=75;return {doc:x.doc,score,exact}}).sort((a,b)=>b.score-a.score);
  const pool=scored.filter(x=>x.score>0).slice(0,candidates);
  const fill=scored.filter(x=>x.score<=0).slice(0,Math.max(0,Math.min(12,candidates-pool.length)));
  const cand=[...pool,...fill];if(!cand.length)return {mode:"empty",rows:[]};
@@ -684,5 +707,5 @@ async function rank(query,docs,{limit=30,candidates=40}={}){
   notify("IA semántica activa en el visor.","success");return {mode:"neural",rows};
  }catch(e){return {mode:"bm25-fallback",rows:pool.slice(0,limit),warning:String(e.message||e)}}
 }
-window.VitruviaAI={search,rank,model:MODEL,version:"1.9-relevance-memory",sourceSelection,academicTerms,narrowBroad,feedback,feedbackState,clearMemory,learnedScore,sourceIdentityOK};
+window.VitruviaAI={search,rank,model:MODEL,version:"1.9.1-phrase-evidence",sourceSelection,academicTerms,narrowBroad,feedback,feedbackState,clearMemory,learnedScore,sourceIdentityOK,normalizedPhrase,passagePhrase,literalPhrase};
 })();
