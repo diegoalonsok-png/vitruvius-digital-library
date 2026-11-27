@@ -7,6 +7,11 @@ on:
       - "scripts/audit-bibliotheca-full-integrity.py"
       - "scripts/audit-book-interiors.py"
       - ".github/workflows/bibliotheca-full-interior-audit.yml"
+      - "data/bibliotheca-graeca-latina-I-bce-I-ce.json"
+      - "data/bibliotheca-expansion-publicada-2026-11-16.json"
+      - "data/classics-corpus/search-registry.json"
+      - "data/r2/catalogo-clasicos-r2.json"
+      - "data/r2/vinculos-repertorio.json"
   workflow_dispatch:
 
 permissions:
@@ -100,15 +105,24 @@ jobs:
           python-version: "3.12"
       - name: Dependencia para verificar PDFs realmente descargados
         run: python -m pip install --disable-pip-version-check "pymupdf>=1.24,<2"
+      - name: Determinar alcance del lote final sin omitir nuevas ediciones
+        id: edition_batch
+        shell: bash
+        run: |
+          limit=30
+          if [ "${{ matrix.start }}" = 90 ]; then
+            limit=$(python -c 'import json; print(max(30,len(json.load(open("data/r2/catalogo-clasicos-r2.json"))["items"])-90))')
+          fi
+          echo "limit=$limit" >> "$GITHUB_OUTPUT"
       - name: Examinar OCR de todas las paginas por edicion
         run: |
           python scripts/audit-bibliotheca-full-integrity.py \
-            --mode ocr --start ${{ matrix.start }} --limit 30 \
+            --mode ocr --start ${{ matrix.start }} --limit ${{ steps.edition_batch.outputs.limit }} \
             --output reports/bibliotheca/full-integrity-ocr-${{ matrix.start }}.json
       - name: Descargar y cotejar PDF con portada, ultimos folios, paginas intermedias, hash y cantidad de paginas
         run: |
           python scripts/audit-book-interiors.py \
-            --start ${{ matrix.start }} --limit 30 \
+            --start ${{ matrix.start }} --limit ${{ steps.edition_batch.outputs.limit }} \
             --output reports/bibliotheca/full-integrity-pdf-${{ matrix.start }}.json
       - name: Publicar incidencias del lote en GitHub Actions
         if: always()
