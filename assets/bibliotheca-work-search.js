@@ -538,7 +538,9 @@ function render(){
  if(document.body.classList.contains("bibliotheca-plain-list")){
   const searched=rawQuery.trim();
   list.replaceChildren();more.hidden=true;count.textContent="";
-  if(normal(searched).length<2){model.region.hidden=true;return;}
+  const initial=singleLetter(searched);
+  const browsing=!searched||Boolean(initial);
+  const alphabetical=(a,b)=>a.w.title.localeCompare(b.w.title,"es",{sensitivity:"base",numeric:true})||a.w.author.localeCompare(b.w.author,"es",{sensitivity:"base"})||a.w.id.localeCompare(b.w.id);
   // The catalogue and reading registry are different: a work remains discoverable
   // even when no individual text has been hosted or verified.
   const authorityKey=w=>/^cts-tlg(\d+)-/.test(w.id)?w.id.match(/^cts-tlg(\d+)-/)[1]:"";
@@ -547,14 +549,14 @@ function render(){
    const authorForms=[w.author,spanishAuthorName(w),...(authorNameVariants[prefix]||[])].filter(Boolean);
    return Math.max(0,...authorForms.map(value=>rank({id:"author",author:value,title:"",forms:[value],originalAliases:[]},searched)));
   };
-  const exactAuthors=model.items.filter(w=>authorScore(w)>=115);
+  const exactAuthors=browsing?[]:model.items.filter(w=>authorScore(w)>=115);
   const authorNames=new Set(exactAuthors.map(w=>foldAuthority(w.author)));
   const authorCodes=new Set(exactAuthors.map(authorityKey).filter(Boolean));
   const isAuthor=exactAuthors.length>0;
-  const scored=model.items.map(w=>({w,score:rank(w,searched)})).filter(x=>isAuthor?(authorNames.has(foldAuthority(x.w.author))||authorCodes.has(authorityKey(x.w))||authorScore(x.w)>=115):x.score>=55)
-   .sort((a,b)=>isAuthor?a.w.title.localeCompare(b.w.title,"es",{sensitivity:"base"}):b.score-a.score||a.w.title.localeCompare(b.w.title,"es",{sensitivity:"base"}));
+  const scored=model.items.map(w=>({w,score:browsing?0:rank(w,searched)})).filter(x=>browsing?(!initial||letterMatch(x.w,initial,true)):isAuthor?(authorNames.has(foldAuthority(x.w.author))||authorCodes.has(authorityKey(x.w))||authorScore(x.w)>=115||x.score>=115):x.score>=55)
+   .sort(alphabetical);
   model.region.hidden=false;
-  count.textContent=scored.length+" fichas encontradas"+(scored.length>limit?" · mostrando "+limit:"");
+  count.textContent=(browsing?(initial?"Inicial «"+searched+"» · ":"Catálogo alfabético · "):"")+scored.length+" fichas"+(scored.length>limit?" · mostrando "+limit:"");
   if(!scored.length){list.append(make("li","No se encontraron obras en el catálogo. Pruebe otra grafía.","bws-empty"));return;}
   for(const {w} of scored.slice(0,limit)){
    const row=make("li",null,"bws-item");
