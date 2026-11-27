@@ -92,7 +92,7 @@ function render(rows,query,person){
     text('Edición o fragmento parcial; consultar cobertura.','Partial edition or excerpt; check coverage.','Édition ou extrait partiel ; vérifier la couverture.'):
     reading.kind==='external'?
     text('Lectura en institución externa; comprobar edición y cobertura.','Read at external institution; check edition and coverage.','Lecture à une institution externe ; vérifier édition et couverture.'):
-    b.originalEditionStatus==='pendiente-de-incorporar'?
+    ['pendiente-de-incorporar','indexed-coverage-unverified'].includes(b.originalEditionStatus)?
     text('Texto original indexado por pasajes; cotejo editorial y cobertura pendientes de verificar.','Original text indexed by passage; editorial collation and coverage not yet verified.','Texte original indexé par passages ; collation et couverture à vérifier.'):
     text('Acceso al texto en la biblioteca.','Text available through the library.','Accès au texte dans la bibliothèque.')):
    text('Texto original no disponible en el catálogo; consultar la ficha y los testimonios.','Original text not available in this catalogue; consult the work record and witnesses.','Texte original indisponible dans le catalogue ; consulter la notice et les témoins.');
@@ -160,7 +160,10 @@ function render(rows,query,person){
   add(showcase,'h4',text('Leer las obras en su lengua original','Read the works in their original language','Lire les œuvres dans leur langue originale'));
   for(const b of primaryBooks)showcase.append(makeReadingCard(b));
   if(data.books.length>primaryBooks.length){
-   add(showcase,'small',text('Más títulos y testimonios en el catálogo inferior.','More works and witnesses in the catalogue below.','Autres œuvres et témoins dans le catalogue ci-dessous.'),'article-note');
+   const more=add(showcase,'details',undefined,'article-reading-more');
+   add(more,'summary',text('Ver las restantes obras indexadas','View the remaining indexed works','Voir les autres œuvres indexées')+' ('+(data.books.length-primaryBooks.length)+')');
+   more.addEventListener('toggle',()=>{if(more.open&&!more.dataset.loaded){more.dataset.loaded='1';for(const b of data.books.slice(primaryBooks.length))more.append(makeReadingCard(b))}});
+
   }
  }
  // Near the first mention in the biography, highlight a readable work without
