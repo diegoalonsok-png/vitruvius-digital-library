@@ -27,7 +27,21 @@ function doiFromUrl(href){
  const u=new URL(href);
  return /^(?:dx\.)?doi\.org$/i.test(u.hostname)?canonicalDOI(u.pathname.slice(1)):"";
 }
-function sourceType(row){
+// Bibliographic admission: exclude explicitly popular and unclassified books,
+ // not primary literary works. An ISBN, a catalogue or a publisher alone does
+ // not prove peer review. Academic publishers indicate provenance only.
+ function bookAdmission(row){
+  const t=String(row?.type||"");
+  if(!["book","openlibrary","googlebook"].includes(t))return "not-book";
+  const audience=norm([row.audience,row.academicStatus,row.publicationType,row.genre,row.subjects?.join?.(" ")||""].join(" "));
+  if(row.academic===false||row.popularScience===true||/\b(?:divulgacion|popular science|popular history|general audience|trade fiction|juvenile|children s books|self help|vulgarisation)\b/.test(audience))return "excluded-popular";
+  if(row.curatedAcademic===true||row.primarySource===true||t==="book"&&row.workId&&/^(?:\.?\/)?(?:bibliotheca-|classics-text-reader|lector-bilingue|classics-work-record)/.test(String(row.link||"")))return "documented";
+  const publisher=norm(row.publisher);
+  if(/\b(?:university press|presses universitaires|presses de l universite|universitatsverlag|universitaetsverlag|editorial universitaria|princeton university|cambridge university|oxford university|brill|de gruyter|peeters publishers|brepols|classical press of wales|society of biblical literature|sbl press)\b/.test(publisher))return "academic-publisher";
+  return "unverified";
+ }
+ function acceptsBook(row){return ["not-book","documented","academic-publisher"].includes(bookAdmission(row))}
+ function sourceType(row){
  const t=norm(row?.type||""),source=norm([row?.source,row?.recordKind,row?.journal].join(" "));
  const href=url(row?.link||row?.url),host=href?new URL(href).hostname:"";
  if(["passage","manuscript","folio","codex","primary","source"].includes(t))return "primary";
@@ -56,7 +70,7 @@ function organize(query,rows,identity,limit=12){
  const byIdentity=new Map(),provided=Array.isArray(rows)?rows:[];
  for(const row of provided){
   const href=url(row?.link||row?.url),title=String(row?.title||"").trim();
-  if(!href||!title||!related(row,query,identity))continue;
+  if(!href||!title||!acceptsBook(row)||!related(row,query,identity))continue;
   const doi=canonicalDOI(row.doi)||doiFromUrl(href);
   // URL paths can be case-sensitive; only the URL parser canonicalizes the host.
   const category=sourceType(row);
@@ -83,5 +97,5 @@ function organize(query,rows,identity,limit=12){
   excluded:provided.length-relevant.length,
   note:"Clasificación y pertinencia automática; exige revisión de fuentes, autoría y contenido."};
 }
-window.VitruviaSourceModel={norm,terms,related,sourceType,organize,canonicalDOI};
+window.VitruviaSourceModel={norm,terms,related,sourceType,organize,canonicalDOI,bookAdmission,acceptsBook};
 })();
