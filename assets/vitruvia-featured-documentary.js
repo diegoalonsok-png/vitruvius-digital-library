@@ -18,7 +18,9 @@
   '<a class="featured-documentary-credit" target="_blank" rel="noopener noreferrer"></a></figcaption>'
  ].join('');
  // Arriba del panel destacado: ocupa el espacio libre sobre el título.
- block.prepend(visual);
+ let rail=document.getElementById('featured-documentary-rail');
+ if(!rail){rail=document.createElement('div');rail.id='featured-documentary-rail';block.prepend(rail)}
+ rail.prepend(visual);
  const photo=visual.querySelector('img'),open=visual.querySelector('.featured-documentary-photo');
  const caption=visual.querySelector('.featured-documentary-caption'),credit=visual.querySelector('.featured-documentary-credit');
  const fold=s=>String(s||'').normalize('NFD').replace(/\p{M}/gu,'').toLowerCase().replace(/[^\p{L}\p{N}]+/gu,' ').trim();
