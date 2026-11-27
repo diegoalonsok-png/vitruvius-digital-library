@@ -38,15 +38,15 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 8
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
         with:
           node-version: '22'
       - run: node --check scripts/test-search-quality-fixtures.mjs
       - run: node scripts/test-search-quality-fixtures.mjs
       - run: node --check scripts/test-vitruvia-search-contract.mjs
       - run: node scripts/test-vitruvia-search-contract.mjs
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         if: always()
         with:
           name: academic-search-quality-fixtures

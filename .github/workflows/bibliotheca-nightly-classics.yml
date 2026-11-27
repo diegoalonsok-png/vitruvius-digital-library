@@ -24,9 +24,9 @@ jobs:
       R2_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
       R2_BUCKET: ${{ secrets.R2_BUCKET }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - name: Python 3.12
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v7
         with:
           python-version: "3.12"
       - name: Dependencias de recopilación
@@ -39,7 +39,7 @@ jobs:
         run: python scripts/classics_nightly_ingest.py
       - name: Informe y paquete de staging para auditoría
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: bibliotheca-nightly-${{ github.run_id }}
           path: nightly-classics-staging/
