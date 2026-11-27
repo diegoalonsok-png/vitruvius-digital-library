@@ -442,19 +442,29 @@ function cached(kind,fn){
 }
 /* Passage-level search for the Index locorum: links to attested units,
    never treats a semantic equivalent as a literal translation or a verified alignment. */
-async function searchPassages(terms,{limit=600,workId="",language="",maxPerEdition=200,allMatches=false,onProgress=null,maxEditions=0}={}){
+async function searchPassages(terms,{limit=600,workId="",language="",maxPerEdition=200,allMatches=false,onProgress=null,maxEditions=0,strictBudget=0,structuredOnly=false,onComplete=null}={}){
  const queries=[...new Set((Array.isArray(terms)?terms:[terms]).map(q=>String(q||"").trim()).filter(q=>/\p{L}/u.test(q)&&fold(q).length>=1))].slice(0,12);
  if(!queries.length)return [];
  const all=await registry(),hasGreek=queries.some(q=>/[Ͱ-Ͽἀ-῿]/u.test(q));
  /* Misma puerta: si se pidió una obra concreta no hay nada que filtrar. */
  const gate=workId?null:await indexGate(queries);
- const eligible=all.filter(e=>throughGate(gate,e)&&(!workId||e.workId===workId)&&(!language||e.language===language)&&
+ const eligible=all.filter(e=>(!structuredOnly||["json-passages","structured-bilingual","remote-json-passages","critical-indexed-latin"].includes(e.format))&&throughGate(gate,e)&&(!workId||e.workId===workId)&&(!language||e.language===language)&&
   (e.format!=="remote-json-passages"||(e.language==="grc"?(hasGreek||e.workId===workId)&&window.ClassicsOffsiteGreek?.mightContain(e,queries):e.language==="la"?(!hasGreek||e.workId===workId)&&window.ClassicsOffsiteLatin?.mightContain(e,queries):false)));
  /* Esta vía la usan las concordancias que se piden completas: la puerta del
     índice descarta ediciones donde la raíz no está —eso no pierde nada— pero
     NO se acota el número de ediciones salvo que quien llama lo pida con
     maxEditions. Una concordancia anunciada como completa debe serlo. */
- const targets=maxEditions?boundTargets(gate,eligible,maxEditions/2):eligible;
+ // Opt-in hard budget for interactive retrieval only. Unlike concordances,
+ // a bounded candidate set must never download every uncovered edition.
+ const cap=Number.isFinite(strictBudget)&&strictBudget>0?Math.max(1,Math.min(60,Math.floor(strictBudget))):0;
+ const key=e=>e.workId+"|"+e.language;
+ const candidates=cap?eligible.slice().sort((a,b)=>
+  (gate?.counts.get(key(b))||0)-(gate?.counts.get(key(a))||0)||
+  (gate?.present.has(key(b))?1:0)-(gate?.present.has(key(a))?1:0)||
+  (hasGreek?(b.language==="grc"?1:0)-(a.language==="grc"?1:0):0)||
+  String(a.workId).localeCompare(String(b.workId))
+ ):null;
+ const targets=cap?candidates.slice(0,cap):maxEditions?boundTargets(gate,eligible,maxEditions/2):eligible;
  // Search the probable original language first, but do not omit translations
  // or other editions. This makes Latin aedes/domus and Greek λόγος visible early.
  const preferred=hasGreek?"grc":/^[\\p{Script=Latin}\\p{M}\\s-]+$/u.test(queries[0])?"la":null;
@@ -495,7 +505,8 @@ async function searchPassages(terms,{limit=600,workId="",language="",maxPerEditi
   }
  }
  lastDiagnostics={mode:"passages",registrySource:registered===LEGACY?"fallback":"verified-registry",
-  targeted:targets.length,loaded,failed,failures,matchedPassages:rows.length};
+  targeted:targets.length,loaded,failed,failures,matchedPassages:rows.length,eligible:eligible.length,registered:all.length,budget:cap||null,indexGate:Boolean(gate),partial:Boolean(cap&&targets.length<eligible.length)};
+ if(typeof onComplete==="function"){try{onComplete({...lastDiagnostics})}catch{}}
  rows.sort((a,b)=>a.ocr-b.ocr||a.author.localeCompare(b.author)||a.title.localeCompare(b.title)||a.locus.localeCompare(b.locus,undefined,{numeric:true}));
  return allMatches?rows:rows.slice(0,Math.max(1,Math.min(600,limit)));
 }
