@@ -92,6 +92,27 @@
   const t=normalize(title);
   return terms.length>0&&terms.every(w=>t.split(" ").some(x=>x===w||w.length>5&&x.startsWith(w)));
  }
+ const isNero=()=>state.authority?.wikidataId?state.authority.wikidataId==="Q1413":/^(?:emperador )?(?:neron|nero)(?: romano)?$/.test(normalize(state.query));
+ const neroBounds={birth:37,death:68};
+ function neroEvents(){
+  const url="https://ancientromelive.org/nero/",wd="https://www.wikidata.org/wiki/Q1413";
+  return [
+   [37,"life",L("Nacimiento en Antium","Birth at Antium","Naissance à Antium"),"Suetonio · Nerón 6",L("Nace Lucio Domicio Ahenobarbo, el 15 de diciembre.","Lucius Domitius Ahenobarbus is born on 15 December.","Naissance de Lucius Domitius Ahenobarbus le 15 décembre.")],
+   [49,"life",L("Agripina se casa con Claudio","Agrippina marries Claudius","Agrippine épouse Claude"),"American Institute for Roman Culture",L("Su madre se incorpora a la familia imperial de Claudio.","His mother joins Claudius' imperial household.","Sa mère rejoint la famille impériale de Claude.")],
+   [50,"life",L("Adopción por Claudio","Adoption by Claudius","Adoption par Claude"),"Tácito · Anales XII; AIRC",L("Adopción formal y nuevo nombre dinástico.","Formal adoption and new dynastic name.","Adoption officielle et nouveau nom dynastique.")],
+   [53,"life",L("Matrimonio con Octavia","Marriage to Octavia","Mariage avec Octavie"),"Wikidata Q1413 · P26",L("Matrimonio con la hija de Claudio.","Marriage to Claudius' daughter.","Mariage avec la fille de Claude."),wd],
+   [54,"life",L("Acceso al poder imperial","Imperial accession","Avènement impérial"),"Suetonio · Nerón 8",L("Comienza su reinado tras la muerte de Claudio; concluye en 68.","His reign begins after Claudius' death and ends in 68.","Son règne commence après la mort de Claude et se termine en 68."),url,68],
+   [55,"events",L("Muerte de Británico","Death of Britannicus","Mort de Britannicus"),"Suetonio · Nerón 33",L("Crisis de la sucesión dentro de la familia imperial.","Succession crisis within the imperial family.","Crise de succession au sein de la famille impériale.")],
+   [59,"events",L("Muerte de Agripina","Death of Agrippina","Mort d’Agrippine"),"Suetonio · Nerón 34",L("Ruptura definitiva entre Nerón y su madre.","Final rupture between Nero and his mother.","Rupture définitive entre Néron et sa mère.")],
+   [62,"life",L("Matrimonio con Popea Sabina","Marriage to Poppaea Sabina","Mariage avec Poppée"),"Wikidata Q1413 · P26",L("Nueva unión imperial tras el divorcio de Octavia.","New imperial marriage after divorce from Octavia.","Nouvelle union impériale après le divorce d’Octavie."),wd],
+   [64,"events",L("Gran incendio de Roma","Great Fire of Rome","Grand incendie de Rome"),"Tácito · Anales XV, 38–44",L("La ciudad sufre una grave destrucción. La atribución del incendio a Nerón no está demostrada.","Rome suffers extensive destruction. Nero's responsibility is unproven.","Rome subit de graves destructions. La responsabilité de Néron n’est pas établie.")],
+   [64,"works",L("Domus Aurea","Domus Aurea","Domus Aurea"),"American Institute for Roman Culture",L("Proyecto palacial posterior al incendio de Roma, inconcluso al morir el emperador.","Palace project following the fire, unfinished at his death.","Projet palatial après l’incendie, inachevé à sa mort.")],
+   [64,"events",L("Persecución de cristianos en Roma","Persecution of Christians in Rome","Persécution des chrétiens à Rome"),"Tácito · Anales XV, 44",L("Tácito vincula la persecución con las acusaciones posteriores al incendio.","Tacitus connects the persecution with accusations following the fire.","Tacite relie la persécution aux accusations après l’incendie.")],
+   [66,"life",L("Matrimonio con Estatilia Mesalina","Marriage to Statilia Messalina","Mariage avec Statilia Messalina"),"Wikidata Q1413 · P26",L("Último matrimonio documentado del emperador.","Last recorded marriage of the emperor.","Dernier mariage documenté de l’empereur."),wd],
+   [68,"events",L("Rebeliones de Víndex y Galba","Revolts of Vindex and Galba","Révoltes de Vindex et Galba"),"Suetonio · Nerón 40–49",L("La crisis política precipita el final del reinado.","Political crisis brings the reign to an end.","La crise politique précipite la fin du règne.")],
+   [68,"life",L("Muerte de Nerón","Death of Nero","Mort de Néron"),"Suetonio · Nerón 49",L("Muere el 9 de junio; termina la dinastía julio-claudia.","Dies on 9 June; the Julio-Claudian dynasty ends.","Mort le 9 juin ; fin de la dynastie julio-claudienne.")]
+  ].map(([year,lane,title,source,detail,link,end])=>({year,lane,title,source,url:link||url,detail,...(end?{end}:{})}));
+ }
  const isAkhenaten=()=>/^(?:akhenaten|akhenaton|akhenat[oó]n|ajenaton|ajenat[oó]n|akenaton|akenat[oó]n|amenhotep iv|amenofis iv|amenophis iv)$/.test(normalize(state.query));
  // An abstract lexical concept is NOT a historical person/album/work.
  // Search result title matches cannot establish a chronology of the concept.
@@ -119,7 +140,7 @@
   "Q41176","Q839954","Q23413","Q6256","Q43229","Q4830453","Q215380"
  ]);
  const hasHistoricalSubject=()=>{
-  if(isAkhenaten())return true;
+  if(isAkhenaten()||isNero())return true;
   if(isAbstractTerm())return false;
   const a=state.authority;
   return Boolean(a&&Array.isArray(a.instanceOf)&&a.instanceOf.some(id=>chronologicalTypes.has(id)));
@@ -155,7 +176,7 @@
   const historical=hasHistoricalSubject();
   if(isAbstractTerm()||!historical&&!state.rows.some(r=>r.timelineWorkMatch===true&&recordYear(r)!==null))return []; // Only authority or explicitly associated catalogue records.
   if(isAkhenaten())return akhenatenEvents();
-  let ev=[],a=state.authority;
+  let ev=isNero()?neroEvents():[],a=state.authority;
   // All Wikidata authority properties keep their distinct meanings.
   if(historical&&a&&/^Q\d+$/.test(a.wikidataId||"")){
    const metadata=[
@@ -172,7 +193,7 @@
    ];
    const url="https://www.wikidata.org/wiki/"+a.wikidataId;
    for(const [field,lane,title,p] of metadata){
-    const y=year(a[field]);if(y==null)continue;
+    const y=year(a[field]);if(y==null||isNero()&&["birthYear","deathYear"].includes(field))continue;
     ev.push({year:y,lane,title,source:"Wikidata · "+p,url,
       detail:L("Fecha registrada en la ficha de autoridad ("+p+"). Debe cotejarse la precisión y la referencia del enunciado antes de utilizarla como prueba historiográfica.",
        "Date recorded in the authority record ("+p+"). Verify the statement's precision and references before scholarly use.",
@@ -305,8 +326,8 @@
   }
   // In biographies the documentary axis ends at death. Posthumous
   // editions remain reachable, but cannot distort a lifetime into millennia.
-  const born=isAkhenaten()?akhenatenBounds.birth:year(state.authority?.birthYear);
-  const died=isAkhenaten()?akhenatenBounds.death:year(state.authority?.deathYear);
+  const born=isAkhenaten()?akhenatenBounds.birth:isNero()?neroBounds.birth:year(state.authority?.birthYear);
+  const died=isAkhenaten()?akhenatenBounds.death:isNero()?neroBounds.death:year(state.authority?.deathYear);
   const lifeScope=born!==null&&died!==null&&died>=born?{born,died}:null;
   const visibleEvents=lifeScope?events.filter(e=>e.year>=lifeScope.born&&e.year<=lifeScope.died):events;
   const outsideEvents=lifeScope?events.filter(e=>e.year<lifeScope.born||e.year>lifeScope.died):[];
@@ -580,5 +601,5 @@
  }).observe(document.documentElement,{attributes:true,attributeFilter:["lang"]});
  const snapshot=window.VitruviaSearchSnapshot;
  if(snapshot?.query)reset(snapshot.query);
- window.VitruviaAcademicTimeline={collect,layoutMarkers,dateWindow,automaticZoom,recordYear,version:"2.5-live-pan"};
+ window.VitruviaAcademicTimeline={collect,layoutMarkers,dateWindow,automaticZoom,recordYear,version:"2.6-biographical-milestones",neroEvents};
 })();
