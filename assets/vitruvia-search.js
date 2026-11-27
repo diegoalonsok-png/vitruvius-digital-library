@@ -1422,7 +1422,7 @@ function display(rows,query,phase){
   !["wikipedia","wikidata"].includes(r.type)||r.preferredWiki||r.preferredAuthority||
   queryTokens(query).length<2||entityEvidence(r,query)
  )&&(!["passage","book","edition","manuscript","preface","section"].includes(r.type)||
-  documentarySubjectEvidence(r,query)||r.aiEvidence&&r.aiSemantic&&academicEvidenceClass(r)==="document"))
+  documentarySubjectEvidence(r,query)||r.aiEvidence&&(r.aiSemantic||r.aiCalibrated)&&academicEvidenceClass(r)==="document"))
   // Compute expensive evidence scores once per row, rather than on every sort comparison.
   .map(row=>({row,rank:(row.rating||0)+titleMatch(row,query)+(S.mode==="ai"&&row.aiEvidence?2800:0)+(S.semanticRanks?.get(scholarlyRecordKey(row))||0)}))
   .sort((a,b)=>b.rank-a.rank).map(item=>item.row);
@@ -2043,7 +2043,7 @@ async function search(){
  })));
  clearTimeout(updateTimer);
  if(id===S.searchId&&mode==="all"&&$("ai-method")?.value==="neural"&&!searchSignal.aborted){
-  try{const refined=await refineAcademicResults(q,rows,searchSignal);if(id===S.searchId&&!searchSignal.aborted&&refined)S.semanticRanks=refined;}catch{}
+  try{const refined=await refineAcademicResults(q,window.VitruviaSearchSnapshot?.academicRows||rows,searchSignal);if(id===S.searchId&&!searchSignal.aborted&&refined)S.semanticRanks=refined;}catch{}
  }
  if(id===S.searchId){
   remoteFinished=true;S.searchComplete=!!S.ready;
