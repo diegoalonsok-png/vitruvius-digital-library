@@ -1601,6 +1601,33 @@ function isVitruviusAuthority(q){
 function renderVitruviusAuthority(rows){
  reset("Marco Vitruvio Polión",phrase("Arquitecto y tratadista romano · siglo I a. C. · perfil enciclopédico académico","Roman architect and author · first century BCE · scholarly encyclopedic profile","Architecte et théoricien romain · Ier siècle av. J.-C."),"01 · BIOGRAFÍA ENCICLOPÉDICA");
  paragraph("Marcus Vitruvius Pollio · autor de De architectura libri decem. Biografía, texto latino, manuscritos, traducciones y recepción histórica.","article-lead");
+ heading(phrase("Leer De architectura · texto latino y traducciones","Read De architectura · Latin text and translations","Lire De architectura · texte latin et traductions"));
+ const reading=make("div",undefined,"article-source-first-links");
+ for(const [label,edition] of [
+  [phrase("Latín y castellano · V514","Latin and Spanish · V514","Latin et espagnol · V514"),"recensio-es"],
+  [phrase("Latín y francés · V554","Latin and French · V554","Latin et français · V554"),"recensio-fr"],
+  [phrase("Latín y traducción inglesa · V297","Latin and English translation · V297","Latin et traduction anglaise · V297"),"theory-en"]
+ ]){
+  const a=href("lector-bilingue.html?edition="+edition,label);if(a)reading.append(a);
+ }
+ $("article-body").append(reading);
+ paragraph(phrase("Acceso directo a los lectores existentes. Consultar la cobertura y las notas de cada edición; la presencia de un texto no acredita su integridad filológica.","Direct access to existing readers. Consult each edition’s coverage and notes; availability does not establish textual completeness.","Accès direct aux lecteurs existants. Consulter la couverture et les notes de chaque édition ; la présence du texte ne certifie pas son intégralité."),"article-note");
+ const first=make("details",undefined,"article-reading-preview");
+ first.append(make("summary",phrase("Leer el comienzo del tratado en latín y castellano","Read the opening in Latin and Spanish","Lire le début en latin et espagnol")));
+ first.addEventListener("toggle",async()=>{
+  if(!first.open||first.dataset.loaded)return;first.dataset.loaded="1";
+  try{
+   const response=await fetch("data/structured/recensio-es.json");if(!response.ok)throw Error("edition");
+   const data=await response.json();const p=data.passages?.find(x=>x.locus==="1.praef.1");
+   if(!p?.latin||!p?.translation)throw Error("locus");
+   first.append(make("h4","De architectura · I, praef. 1 · V514"));
+   const latin=make("p",p.latin);latin.lang="la";const translation=make("p",p.translation);translation.lang="es";
+   first.append(latin,translation);
+   const a=href("lector-bilingue.html?edition=recensio-es&locus=1.praef.1",phrase("Continuar leyendo en el lector","Continue reading","Continuer la lecture"));if(a)first.append(a);
+  }catch{first.append(make("p",phrase("Pasaje no disponible temporalmente. Utilice el lector enlazado.","Passage temporarily unavailable. Use the linked reader.","Passage temporairement indisponible. Utilisez le lecteur indiqué.")))}
+ });
+ $("article-body").append(first);
+
  // Manuscript evidence is the first documentary action, ahead of secondary references.
  const featuredManuscript=(rows||[]).filter(r=>r.type==="manuscript"&&r.localViewer&&r.codexShelfmark)
   .sort((a,b)=>(a.codexDate??9999)-(b.codexDate??9999))[0];
