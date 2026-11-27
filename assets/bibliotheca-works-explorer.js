@@ -16,8 +16,9 @@ function catalog(){
   fetch("data/index/classics-additions-2026-11-17/manifest.json").then(r=>r.ok?r.json():{index:[]}).catch(()=>({index:[]})),
   fetch("data/classics-corpus/edition-list-labels.json",{cache:"no-cache"}).then(r=>r.ok?r.json():null).catch(()=>null),
   fetch("data/r2/catalogo-clasicos-r2.json",{cache:"no-cache"}).then(r=>r.ok?r.json():null).catch(()=>null),
-  fetch("data/r2/vinculos-repertorio.json",{cache:"no-cache"}).then(r=>r.ok?r.json():null).catch(()=>null)
- ]).then(([j,registry,supplement,lexical,names,additions,editionLabels,pdfCatalogue,r2Links])=>{
+  fetch("data/r2/vinculos-repertorio.json",{cache:"no-cache"}).then(r=>r.ok?r.json():null).catch(()=>null),
+  fetch("data/r2/bibliotheca-inventario-unificado.json",{cache:"no-cache"}).then(r=>r.ok?r.json():null).catch(()=>null)
+ ]).then(([j,registry,supplement,lexical,names,additions,editionLabels,pdfCatalogue,r2Links,inventory])=>{
   if(!Array.isArray(j.items)||j.items.length!==j.targetWorks)throw Error("Inventario de obras inconsistente");
   const sources=new Map();
   for(const entry of registry.entries||[]){
@@ -62,6 +63,14 @@ function catalog(){
   // Catalog-only, external searches, OCR facsimiles and translations are never shown as originals.
   // Preserve rigorous indexed counts, but make every catalogued author and work discoverable.
   // Missing an exact original-index certificate must not mean "author not found".
+  for(const w of [...(inventory?.works||[]),...(inventory?.supplementaryWorks||[]),...(inventory?.additionalWorks||[])]){
+   if(!w?.id||!w.author||!w.title)continue;
+   const old=merged.get(w.id);
+   if(old){old.facsimileIds=(w.r2FacsimileEditions||[]).map(e=>e.editionId);continue;}
+   const language=w.language||"";
+   const originalIndexed=hasIndexedOriginal(w.id,language);
+   merged.set(w.id,{id:w.id,author:w.author,title:w.title,kind:"local",language,originalIndexed,indexedLanguages:originalIndexed?[language]:[],readers:sources.get(w.id)||[],facsimileIds:(w.r2FacsimileEditions||[]).map(e=>e.editionId)});
+  }
   const all=[...merged.values()];
   return {indexed:all.filter(w=>w.originalIndexed),all,aliases:names.aliases||{},editionLabels:editionLabels?.schema==='bibliotheca-edition-list-labels-v1'?editionLabels.works:{},pdfEditions:pdfCatalogue?.items||[],r2Links:r2Links?.porObra||{}};
  }).catch(e=>{dataPromise=null;throw e});
@@ -110,7 +119,8 @@ function mount(host){
 
  const count=add("p","vdl-works-result-count","Buscá por autor, título latino, griego o traducido.",panel);count.setAttribute("role","status");
  const listing=add("div","vdl-works-list",null,panel);listing.setAttribute("role","list");listing.hidden=true;
- let items=null;
+ let items=null,limit=40;
+ const more=add("button","vdl-works-more","Mostrar más obras",panel);more.type="button";more.hidden=true;more.addEventListener("click",()=>{limit+=40;render()});
  const normalize=x=>String(x||"").normalize("NFD").replace(/\p{M}/gu,"").toLowerCase().trim();
  const aliases={vitruvius:"vitruvio vitruve",caesar:"julio cesar julius caesar",cicero:"ciceron cicerone",plinius:"plinio",vergilius:"virgilio virgil",horatius:"horacio",ovidius:"ovidio",homer:"homero homere",plato:"platon",aristoteles:"aristotle aristote",strabo:"estrabon"};
  function score(w,q){
@@ -136,12 +146,12 @@ function mount(host){
  function render(){
   if(!items)return;
   const q=normalize(search.value);
-  listing.replaceChildren();
+  listing.replaceChildren();more.hidden=true;
   if(q.length<2){listing.hidden=true;count.textContent=q?"Escribí al menos dos letras para buscar.":"Buscá por autor, título latino, griego o traducido.";return}
   const found=items.all.map((item,i)=>({item,i,rank:score(item,q)})).filter(x=>x.rank>=0)
    .sort((a,b)=>b.rank-a.rank||Number(b.item.originalIndexed)-Number(a.item.originalIndexed)||a.i-b.i);
   listing.hidden=!found.length;
-  for(const {item} of found.slice(0,12)){
+  for(const {item} of found.slice(0,limit)){
    const readers=item.readers||[];
    const source=readers.find(x=>x.language===item.language)||readers.find(x=>["la","grc"].includes(x.language))||readers[0];
    const path=source?.reader||source?.path;
@@ -151,14 +161,14 @@ function mount(host){
    const row=add("div","vdl-works-row",null,listing);row.setAttribute("role","listitem");
    const info=add('div','vdl-works-info',null,row);
    const link=add("a","vdl-works-name",bilingualName(item),info);
-   link.href=canRead?(html?path:"classics-text-reader.html?"+new URLSearchParams({work:item.id,lang:source.language}))
+   link.href=canRead?(path||"classics-text-reader.html?"+new URLSearchParams({work:item.id,lang:source.language}))
     :"classics-work-record.html?"+new URLSearchParams({work:item.id});
    link.title=canRead?"Abrir lector de la obra":"Ver ficha académica y fuentes disponibles";
    const state=add("small","vdl-works-availability",canRead?" · Texto original indexado":" · Ficha y fuentes",info);
    state.setAttribute("aria-label",canRead?"Disponible para lectura":"Ficha bibliográfica, texto no confirmado");
    // A facsimile can exist even where no searchable original is indexed.
    // Never represent an OCR PDF as a scholarly transcription.
-   const editionIds=new Set([item.id,...(items.r2Links?.[item.id]||[]).map(e=>e.r2)]);
+   const editionIds=new Set([item.id,...(item.facsimileIds||[]),...(items.r2Links?.[item.id]||[]).map(e=>e.r2)]);
    const facsimiles=items.pdfEditions.filter(e=>editionIds.has(e.id));
    const seenPdf=new Set();
    for(const pdf of facsimiles){
@@ -170,7 +180,8 @@ function mount(host){
    }
    translationSummary(row,item,items.editionLabels,items.pdfEditions);
   }
-  count.textContent=found.length?found.length+" obra"+(found.length===1?"":"s")+" encontrada"+(found.length===1?"":"s")+(found.length>12?" · primeras 12":"")+". Las obras sin original indexado abren su ficha bibliográfica.":"No se encontraron obras con ese autor o título.";
+  count.textContent=found.length?found.length+" obra"+(found.length===1?"":"s")+" encontrada"+(found.length===1?"":"s")+(found.length>limit?" · primeras "+limit:"")+". Las obras sin original indexado abren su ficha bibliográfica.":"No se encontraron obras con ese autor o título.";
+  more.hidden=found.length<=limit;more.textContent="Mostrar más obras ("+Math.max(0,found.length-limit)+" restantes)";
  }
  async function load(){
   if(items)return;
@@ -179,7 +190,7 @@ function mount(host){
   catch(e){count.textContent="El catálogo no se pudo cargar. Abrí Bibliotheca Graeca et Latina."}
  }
  // One permanent input, like Bibliotheca: no search dialog or expansion on focus.
- search.addEventListener("input",()=>{if(search.value.trim().length<2){if(items)render();return;}if(items)render();else void load()});
+ search.addEventListener("input",()=>{limit=40;if(search.value.trim().length<2){if(items)render();return;}if(items)render();else void load()});
 }
 function init(){
  document.querySelectorAll("[data-vdl-works-explorer]").forEach(mount);
