@@ -1,6 +1,6 @@
 {
  "schema": "vdl-classics-translation-manifest-v1",
- "generated": "2026-11-27T13:37:53.174406+00:00",
+ "generated": "2026-11-27T14:29:27.123736+00:00",
  "method": "Traducciones humanas TEI licenciadas y publicadas en R2 con SHA-256, índice literal por pasaje, sin alineación automática",
  "editions": [
   {
@@ -1667,6 +1667,98 @@
    ],
    "indexUrl": "https://libros.vitruvius-digital-library.org/corpus/indice/traducciones/cts-phi0474-phi026-en-f33ce63d991d66f0.json",
    "indexSha256": "f33ce63d991d66f0a7c9d34c3b7ffa42b1994bf3448e4ab02501719b9fc9f15f"
+  },
+  {
+   "workId": "cts-phi0474-phi027",
+   "author": "Cicerón",
+   "title": "In L. Calpurnium Pisonem",
+   "language": "en",
+   "filename": "cts-phi0474-phi027-en-160b58464200e013.json",
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0474-phi027-en-160b58464200e013.json",
+   "sha256": "160b58464200e013e3f3565297cf4c0c13f07bbb50cbc51cdc4f2ef8d9ef0a1d",
+   "passages": 153,
+   "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0474/phi027/phi0474.phi027.perseus-eng2.xml",
+   "sourceUrn": "urn:cts:latinLit:phi0474.phi027.perseus-eng2",
+   "sourceSha256": "6b4694351f34c0c285e127906f15c2d14b7c317cda4c93c542fb9628ce36d6f0",
+   "sourceArchived": "https://libros.vitruvius-digital-library.org/corpus/fuentes/6b4694351f34c0c285e127906f15c2d14b7c317cda4c93c542fb9628ce36d6f0.xml",
+   "translators": [
+    "Charles Duke Yonge"
+   ],
+   "publicationYear": 1875,
+   "license": [
+    "https://creativecommons.org/licenses/by-sa/4.0/"
+   ],
+   "indexUrl": "https://libros.vitruvius-digital-library.org/corpus/indice/traducciones/cts-phi0474-phi027-en-f9a6cafa872719b4.json",
+   "indexSha256": "f9a6cafa872719b43fc605893a7749751468fac17d612c99db4747d8fcf90d28"
+  },
+  {
+   "workId": "cts-phi0474-phi028",
+   "author": "Cicerón",
+   "title": "Pro Cn. Plancio",
+   "language": "en",
+   "filename": "cts-phi0474-phi028-en-ec48f5319aa097ef.json",
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0474-phi028-en-ec48f5319aa097ef.json",
+   "sha256": "ec48f5319aa097efb8e4f0a3e3e0a6777e7357831da9c50a6452a6fc1527fd58",
+   "passages": 131,
+   "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0474/phi028/phi0474.phi028.perseus-eng2.xml",
+   "sourceUrn": "urn:cts:latinLit:phi0474.phi028.perseus-eng2",
+   "sourceSha256": "d3df37fb05057bff7f09bf3a7145c2260e9982b2f2c47cb69355ee48798fb2ff",
+   "sourceArchived": "https://libros.vitruvius-digital-library.org/corpus/fuentes/d3df37fb05057bff7f09bf3a7145c2260e9982b2f2c47cb69355ee48798fb2ff.xml",
+   "translators": [
+    "Charles Duke Yonge"
+   ],
+   "publicationYear": 1875,
+   "license": [
+    "https://creativecommons.org/licenses/by-sa/4.0/"
+   ],
+   "indexUrl": "https://libros.vitruvius-digital-library.org/corpus/indice/traducciones/cts-phi0474-phi028-en-d7dea4296cfd5e23.json",
+   "indexSha256": "d7dea4296cfd5e23aeeca6616cc244b8aa66c7ecd55234402b7e9af449435227"
+  },
+  {
+   "workId": "cts-phi0474-phi029",
+   "author": "Cicerón",
+   "title": "Pro M. Scauro",
+   "language": "en",
+   "filename": "cts-phi0474-phi029-en-058c8d1d3f5d66e8.json",
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0474-phi029-en-058c8d1d3f5d66e8.json",
+   "sha256": "058c8d1d3f5d66e8785430f11d5b99705243509ccbfdb17a1af53d1e9898fc33",
+   "passages": 94,
+   "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0474/phi029/phi0474.phi029.perseus-eng2.xml",
+   "sourceUrn": "urn:cts:latinLit:phi0474.phi029.perseus-eng2",
+   "sourceSha256": "ce78a9844cd274e57b64da7af1a3dac48ba387750a5edfc06aeecfcc617d2479",
+   "sourceArchived": "https://libros.vitruvius-digital-library.org/corpus/fuentes/ce78a9844cd274e57b64da7af1a3dac48ba387750a5edfc06aeecfcc617d2479.xml",
+   "translators": [
+    "Charles Duke Yonge"
+   ],
+   "publicationYear": 1856,
+   "license": [
+    "https://creativecommons.org/licenses/by-sa/4.0/"
+   ],
+   "indexUrl": "https://libros.vitruvius-digital-library.org/corpus/indice/traducciones/cts-phi0474-phi029-en-7b8784f74df655eb.json",
+   "indexSha256": "7b8784f74df655eba46ae3c5073a3d7aaba5a3ac688b9cc6c3c072d712354a5f"
+  },
+  {
+   "workId": "cts-phi0474-phi030",
+   "author": "Cicerón",
+   "title": "Pro C. Rabirio Postumo",
+   "language": "en",
+   "filename": "cts-phi0474-phi030-en-1bd3f3856520c435.json",
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-phi0474-phi030-en-1bd3f3856520c435.json",
+   "sha256": "1bd3f3856520c4352d0a1d0a69812e55f95878519917e64ec64c5e2473a601f6",
+   "passages": 66,
+   "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0474/phi030/phi0474.phi030.perseus-eng2.xml",
+   "sourceUrn": "urn:cts:latinLit:phi0474.phi030.perseus-eng2",
+   "sourceSha256": "e7b5351d8650a011e4b6d151721aa0b35b8a3ed6975983c0c692134f610d0f06",
+   "sourceArchived": "https://libros.vitruvius-digital-library.org/corpus/fuentes/e7b5351d8650a011e4b6d151721aa0b35b8a3ed6975983c0c692134f610d0f06.xml",
+   "translators": [
+    "Charles Duke Yonge"
+   ],
+   "publicationYear": 1875,
+   "license": [
+    "https://creativecommons.org/licenses/by-sa/4.0/"
+   ],
+   "indexUrl": "https://libros.vitruvius-digital-library.org/corpus/indice/traducciones/cts-phi0474-phi030-en-48ae02b547e3022b.json",
+   "indexSha256": "48ae02b547e3022b4541ed1544bc6df0fcdbe6563f714ff02e250bd56b0f70ea"
   }
  ],
  "lastDeferred": [
