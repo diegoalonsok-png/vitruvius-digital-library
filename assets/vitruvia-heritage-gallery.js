@@ -50,7 +50,14 @@ function block(root,title,records,note){
  if(!records.length)return;
  const sec=el('section','vhg-block');sec.append(el('h4','',title));
  if(note)sec.append(el('p','vhg-caption',note));
- const rows=el('div','vhg-cards');records.forEach(r=>card(rows,r));sec.append(rows);
+ const rows=el('div','vhg-cards');sec.append(rows);
+ const architectural=records.some(r=>r.kind==='architecture');
+ if(architectural){
+  const ordered=[...records.filter(r=>r.kind==='architecture'),...records.filter(r=>r.kind!=='architecture')];
+  let shown=0;const more=el('button','vhg-catalogue-link');more.type='button';
+  const reveal=()=>{const end=Math.min(shown+6,ordered.length);for(;shown<end;shown++)card(rows,ordered[shown]);more.hidden=shown>=ordered.length;more.textContent=L('Mostrar más obras','Show more works','Afficher plus d’œuvres')+' · '+(ordered.length-shown)};
+  more.addEventListener('click',reveal);reveal();sec.append(more);
+ }else records.forEach(r=>card(rows,r));
  const info=el('p','vhg-caption',L('Registros documentados: ','Documented records: ','Notices documentées : ')+records.length);
  sec.append(info);root.append(sec);
 }
@@ -64,9 +71,10 @@ function classify(name,description){
  if(/\b(futbol|football|soccer|athlete|sportsperson|futbolista|deportista|tennis|tenista|basketball|boxer)\b/.test(d)||/^(lionel|leo) messi$/.test(n))return 'athlete';
  if(/\b(composer|compositor|compositora)\b/.test(d))return 'composer';
  if(/\b(musician|singer|cantante|band|rock|music group|grupo musical|banda)\b/.test(d)||/the beatles|rolling stones|nirvana|radiohead/.test(n))return 'music';
+ if(/\b(architect|architecte|arquitecto|arquitecta|architetto|engineer|ingeniero|ingeniera)\b/.test(d))return 'architect';
  if(/\b(writer|novelist|author|poet|escritor|poeta|dramaturg|filosofo)\b/.test(d))return 'author';
  if(/\b(painter|artist|sculptor|pintor|pintora|escultor)\b/.test(d)||/leonardo da vinci|vinci leonardo/.test(n))return 'visual';
- if(/\b(architect|architecte|arquitecto|arquitecta|architetto|engineer|ingeniero|ingeniera)\b/.test(d))return 'architect';
+
  return 'general';
 }
 async function awards(qid){
@@ -174,7 +182,8 @@ async function authoredBooks(name){
 async function works(qid,kind){
  if(!window.VitruviaCulturalWorks?.catalogue)return [];
  const data=await window.VitruviaCulturalWorks.catalogue({wikidataId:qid},kind).catch(()=>null);
- return (data?.works||[]).filter(w=>w.href).slice(0,16).map(w=>({title:w.title,date:w.date,kind:w.building||w.medium==='architecture'?'architecture':'work',description:w.description,photoTitle:w.photoTitle,plan:w.plan,
+ const records=(data?.works||[]).filter(w=>w.href);
+ return (kind==='architect'||records.some(w=>w.building||w.medium==='architecture')?records:records.slice(0,16)).map(w=>({title:w.title,date:w.date,kind:w.building||w.medium==='architecture'?'architecture':'work',description:w.description,photoTitle:w.photoTitle,plan:w.plan,
  image:w.image,url:w.href,location:'Wikidata / Commons · verificar ubicación en ficha'}));
 }
 function manuscripts(rows){
@@ -198,7 +207,7 @@ async function render(name,entity,rows){
  if(kind==='athlete'&&qid)tasks.push(awards(qid).then(items=>({label:L('Distinciones documentadas','Documented awards','Distinctions documentées'),items,note:L('Las distinciones individuales registradas no constituyen una lista completa de copas o títulos de equipo.','Individual awards are not an exhaustive list of team trophies.','Les distinctions individuelles ne représentent pas tous les titres collectifs.')})));
  if(kind==='music')tasks.push(albums(name).then(result=>({kind:'music',label:L('Discografía y portadas','Discography and album covers','Discographie et pochettes'),...result})));
  if(kind==='author')tasks.push(authoredBooks(name).then(result=>({kind:'books',label:L('Bibliografía documentada','Documented bibliography','Bibliographie documentée'),...result})));
- if(qid&&!['athlete','music','author'].includes(kind))tasks.push(works(qid,kind).then(items=>({label:kind==='visual'?L('Pinturas y obras atribuidas','Attributed artworks','Œuvres attribuées'):kind==='composer'?L('Composiciones documentadas','Documented compositions','Compositions documentées'):kind==='architect'?L('Obras · plantas, cortes y vistas','Works · plans, sections and elevations','Œuvres · plans, coupes et élévations'):L('Obras de la persona','Works by this person','Œuvres de la personne'),items})));
+ if(qid&&!['athlete','music','author'].includes(kind))tasks.push(works(qid,kind).then(items=>({label:kind==='visual'?L('Pinturas y obras atribuidas','Attributed artworks','Œuvres attribuées'):kind==='composer'?L('Composiciones documentadas','Documented compositions','Compositions documentées'):kind==='architect'?L('Obras · plantas, cortes, alzados, perspectivas y croquis','Works · plans, sections, elevations, perspectives and sketches','Œuvres · plans, coupes, élévations, perspectives et croquis'):L('Obras de la persona','Works by this person','Œuvres de la personne'),items})));
  if(!tasks.length&&!container.children.length){gallery.hidden=true;return}
  const loaded=await Promise.allSettled(tasks);
  if(id!==sequence)return;
