@@ -617,11 +617,15 @@ function render(){
   const authorNames=new Set(exactAuthors.map(w=>preparedFields(w).author));
   const authorCodes=new Set(exactAuthors.map(authorityKey).filter(Boolean));
   const isAuthor=exactAuthors.length>0;
-  const scored=model.items.map(w=>({w,score:browsing?0:rank(w,searched)})).filter(x=>browsing?(!initial||letterMatch(x.w,initial,true)):isAuthor?(authorNames.has(preparedFields(x.w).author)||authorCodes.has(authorityKey(x.w))||(scores.get(x.w)||0)>=115||x.score>=115):x.score>=55)
-   .sort(alphabetical);
+  const directMatch=w=>{
+   const p=preparedQuery(searched);
+   return preparedFields(w).fields.some(f=>(!p.greekQuery||f.greek)&&f.val.startsWith(p.q));
+  };
+  const scored=model.items.filter(w=>browsing?(!initial||letterMatch(w,initial,true)):isAuthor?(authorNames.has(preparedFields(w).author)||authorCodes.has(authorityKey(w))||(scores.get(w)||0)>=115||directMatch(w)):rank(w,searched)>=55).map(w=>({w})).sort(alphabetical);
   model.region.hidden=false;
   count.textContent=(browsing?(initial?"Inicial «"+searched+"» · ":"Catálogo alfabético · "):"")+scored.length+" fichas"+(scored.length>limit?" · mostrando "+limit:"");
   if(!scored.length){list.append(make("li","No se encontraron obras en el catálogo. Pruebe otra grafía.","bws-empty"));return;}
+  const fragment=document.createDocumentFragment();
   for(const {w} of scored.slice(0,limit)){
    const row=make("li",null,"bws-item");
    const link=make("a",bilingualWorkLabel(w),"bws-plain-title");
@@ -633,8 +637,9 @@ function render(){
    const status=make("span",version?"Texto registrado":w.facsimile?"Facsímil/OCR declarado":"Ficha bibliográfica · texto no asociado","bws-plain-status");row.append(status);appendIntegrity(row,w);
    if(link.href!==new URL(workLink(w.id),location.href).href){const ficha=make("a","Ficha académica","bws-plain-record");ficha.href=workLink(w.id);row.append(ficha)}
    if(w.facsimile){const fac=make("a","Consultar facsímil/OCR","bws-plain-record");fac.href=facLink(w.facsimile);row.append(fac)}
-   list.append(row);
+   fragment.append(row);
   }
+  list.append(fragment);
   if(scored.length>limit){more.hidden=false;more.textContent="Mostrar más obras ("+(scored.length-limit)+" restantes)";}
   return;
  }
