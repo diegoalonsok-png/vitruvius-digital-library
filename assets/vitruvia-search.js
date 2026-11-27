@@ -1784,6 +1784,11 @@ async function search(){
  restoreFeature();
  $("results-heading").textContent=T().heading;
  $("result-state").title="";
+ // Reset once at query start; early authority results must retain their timing.
+ const timingState=$("result-state");
+ timingState.dataset.searchId=String(id);
+ timingState.dataset.searchQuery=q;
+ delete timingState.dataset.firstResultMs;delete timingState.dataset.completeMs;
  $("result-state").textContent="Identificando el tema y preparando fuentes académicas…";
  $("result-list").setAttribute("aria-busy","true");
  $("result-list").replaceChildren(node("div","empty","Cargando ficha y testimonios documentados…"));
@@ -1843,7 +1848,6 @@ async function search(){
  const wikiEnabled=(["all","wiki","external","ai"].includes(mode)||!!person)&&!exactLocusRequest;
  const academicEnabled=["all","external","ai"].includes(mode)&&!exactLocusRequest;
  $("results-heading").textContent=T().heading;$("result-state").textContent=T().waiting;
-  delete $("result-state").dataset.firstResultMs;delete $("result-state").dataset.completeMs;
   $("result-list").setAttribute("aria-busy","true");
  $("result-list").replaceChildren(node("div","empty",T().waiting));$("answer").hidden=true;
  sourceLinks(generalQuery);
