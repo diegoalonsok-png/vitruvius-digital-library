@@ -85,8 +85,9 @@ function sourceSelection(query,sources){
   return {source,score};
  });
  const best=Math.max(0,...hits.map(x=>x.score));
- const explicit=best>=8;
- const matches=explicit?hits.filter(x=>x.score>=Math.max(8,best-3)).map(x=>x.source):sources;
+ const conceptMatch=best<8&&architecturalConcepts.some(group=>group.some(term=>term.includes(" ")&&(" "+q+" ").includes(" "+normalize(term)+" ")));
+ const explicit=best>=8||conceptMatch;
+ const matches=best>=8?hits.filter(x=>x.score>=Math.max(8,best-3)).map(x=>x.source):conceptMatch?sources.filter(x=>x.workId==="vitruvius"):sources;
  // Named works are searched without passage sampling; broad queries retain the sampled registry.
  return {sources:matches,explicit,locus,registryCount:sources.length};
 }
