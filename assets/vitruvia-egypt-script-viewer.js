@@ -92,7 +92,7 @@ function glyphText(str){
 let titulaturae=null;
 function loadTitulaturae(){
  if(titulaturae)return titulaturae;
- titulaturae=fetch("data/vitruvia/titulaturae.json?v=20261109-v1").then(r=>r.ok?r.json():null).catch(()=>null);
+ titulaturae=fetch("data/vitruvia/titulaturae.json?v=20261127-royal-translations-v1").then(r=>r.ok?r.json():null).catch(()=>null);
  return titulaturae;
 }
 const TITLE_ORDER=["horus","nebty","golden","prenomen","nomen"];
