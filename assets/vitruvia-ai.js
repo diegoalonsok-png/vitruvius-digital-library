@@ -326,7 +326,7 @@ function renderRow(doc,query,score,semantic=false){
   locus:doc.locus,edition:doc.edition,workId:doc.workId,link:doc.url,source:doc.source,sourceUrn:doc.sourceUrn,sourceSha256:doc.sha256,sourcePath:doc.sourcePath,
   meta:kind+" · "+doc.source+" · locus "+doc.locus,
   rating:Math.round(score),aiScore:Math.round(score),aiSemantic:semantic,
-  exactTextMatch:exact,aiEvidence:true
+  exactTextMatch:exact,aiCalibrated:[...academicTerms(query,doc.workId)].filter(([term,weight])=>weight<1&&doc.tf.has(term)).length>=2,aiEvidence:true
  };
 }
 const dot=(a,b)=>{let sum=0;for(let i=0;i<Math.min(a.length,b.length);i++)sum+=a[i]*b[i];return sum};
@@ -428,5 +428,5 @@ async function rank(query,docs,{limit=30,candidates=40}={}){
   notify("IA semántica activa en el visor.","success");return {mode:"neural",rows};
  }catch(e){return {mode:"bm25-fallback",rows:pool.slice(0,limit),warning:String(e.message||e)}}
 }
-window.VitruviaAI={search,rank,model:MODEL,version:"1.4-vitruvia-integrated",sourceSelection,academicTerms};
+window.VitruviaAI={search,rank,model:MODEL,version:"1.5-academic-evidence-integrated",sourceSelection,academicTerms};
 })();
