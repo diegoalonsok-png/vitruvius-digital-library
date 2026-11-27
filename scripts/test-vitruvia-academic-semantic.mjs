@@ -43,3 +43,24 @@ const negative=await engine.search("Vitruvio zzzxqjkv",{method:"bm25"});
 // Metadata selects the work, but must not fabricate a matching passage.
 assert(negative.rows.every(r=>!r.exactTextMatch),"Unknown phrase must not be reported as an exact match");
 console.log("Academic retrieval: 8 sourced loci, 3 routing checks, 1 negative query. E5 not exercised.");
+
+const searchSource=await read("assets/vitruvia-search.js");
+const gate=searchSource.match(/function academicEvidenceClass\(row\)\{[\s\S]*?\n\}(?=\nfunction display)/)?.[0];
+assert(gate,"Vitruvia evidence gate missing");
+const classify=vm.runInNewContext(gate+"\nacademicEvidenceClass");
+const evidenceCases=[
+ [{type:"wikipedia",source:"Wikipedia",link:"https://es.wikipedia.org/wiki/Vitruvio",curatedAcademic:true},"context"],
+ [{type:"authority",source:"Wikipedia",link:"https://es.wikipedia.org/wiki/Vitruvio",curatedAcademic:true},"context"],
+ [{type:"googlebook",source:"Google Books",link:"https://books.google.com/",isbn:"123"},"context"],
+ [{type:"article",source:"Crossref",link:"https://doi.org/10.1000/example",doi:"10.1000/example"},"context"],
+ [{type:"article",source:"Crossref",author:"Author",journal:"Journal",recordKind:"journal-article",link:"https://doi.org/10.1000/example"},"research-record"],
+ [{type:"passage",locus:"1.3.2",edition:"V514",latin:"firmitatis",link:"lector-bilingue.html"},"document"],
+ [{type:"historical-ocr",link:"historical.html"},"context"],
+ [{type:"manuscript",codexShelfmark:"Harley MS 2767",link:"codex-h-folios-local.html"},"document"],
+ [{type:"section",source:"General web",link:"https://example.com/"},"context"],
+ [{type:"book",workId:"vitruvius",link:"bibliotheca-graeca-latina.html?work=vitruvius"},"catalogue"],
+ [{type:"museum",source:"The Met",link:"https://www.metmuseum.org/art/collection"},"institution"],
+ [{type:"topic",source:"Getty AAT",link:"https://vocab.getty.edu/aat/"},"institution"]
+];
+for(const [row,expected] of evidenceCases)assert.equal(classify(row),expected);
+console.log("Vitruvia evidence gate: 12 classification fixtures passed.");
