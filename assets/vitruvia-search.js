@@ -1350,6 +1350,19 @@ function creatorWorkRelevance(row,identity){
 }
 function titleMatch(row,query){return rankedTitle(row,query)+authorityWeight(row)+documentaryRelevance(row,query)+creatorWorkRelevance(row,S.identifiedSubject)}
 
+/* Identity keys preserve distinct editions and loci; DOI identifies a bibliographic record across providers. */
+function scholarlyRecordKey(r){
+ let doi=String(r.doi||"").trim().replace(/^(?:https?:\/\/(?:dx\.)?doi\.org\/|doi:\s*)/i,"");
+ try{doi=decodeURIComponent(doi)}catch{}
+ if(r.type==="article"&&/^10\.\d{4,9}\/\S+$/i.test(doi))return "doi:"+doi.toLowerCase();
+ const id=r.type==="passage"?[r.edition,r.locus,r.workId,r.link].filter(Boolean).join("|"):
+  r.type==="historical-ocr"?[r.ocrPage,r.author,r.link].filter(Boolean).join("|"):
+  r.type==="apparatus"?r.apparatusId||r.link||"":
+  r.type==="edition"?[r.workId,r.edition,r.year,r.link,r.source].filter(Boolean).join("|"):
+  r.type==="book"?r.workId||r.link||r.source||"":
+  r.type==="wikipedia"?String(r.wikiLang||""):r.externalFulltext?String(r.author||""):"";
+ return r.type+":"+norm(r.title)+":"+norm(id);
+}
 function display(rows,query,phase){
  // No se eliminan resultados por umbrales de coincidencia en el título:
  // los textos, alias, autores y metadatos documentales también cuentan.
@@ -1370,12 +1383,7 @@ function display(rows,query,phase){
   .sort((a,b)=>b.rank-a.rank).map(item=>item.row);
  const deduped=[],seen=new Set();
  for(const r of scored){
-  const id=r.type==="passage"?[r.edition,r.locus,r.workId,r.link].filter(Boolean).join("|"):
-   r.type==="historical-ocr"?[r.ocrPage,r.author,r.link].filter(Boolean).join("|"):
-   r.type==="apparatus"?r.apparatusId||r.link||"":
-   ["edition","book"].includes(r.type)?r.workId||r.link||r.source||"":
-   r.type==="wikipedia"?String(r.wikiLang||""):r.externalFulltext?String(r.author||""):"";
-  const k=r.type+":"+norm(r.title)+":"+norm(id);
+  const k=scholarlyRecordKey(r);
   if(seen.has(k))continue;
   seen.add(k);deduped.push(r);
  }
