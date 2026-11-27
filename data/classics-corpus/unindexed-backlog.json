@@ -1,14 +1,16 @@
 {
   "schema": "vdl-bibliotheca-unindexed-backlog-v1",
-  "generated": "2026-11-27T12:40:43.247Z",
-  "method": "Cruce de 857 fichas principales y suplementarias, 10 obras adicionales R2 y versiones declaradas en search-registry. Una ausencia no se presenta como texto indexado. Los facsímiles, las manifestaciones editoriales y las fuentes pendientes se distinguen.",
+  "generated": "2026-11-27T14:12:49.611Z",
+  "method": "Cruce de 880 fichas principales y suplementarias, 10 obras adicionales R2 y versiones declaradas en search-registry. Una ausencia no se presenta como texto indexado. Los facsímiles, las manifestaciones editoriales y las fuentes pendientes se distinguen.",
   "summary": {
-    "missingRegistryEntries": 40,
+    "missingRegistryEntries": 36,
+    "withExistingPageOcrIndex": 34,
+    "withoutVerifiedIndexLink": 2,
     "ancientWorksWithoutRegisteredText": 26,
-    "modernEditionManifestationsWithoutOwnRegistry": 4,
+    "modernEditionManifestationsWithoutOwnRegistry": 0,
     "additionalR2WorksWithoutRegisteredText": 10,
     "withDeclaredR2Facsimile": 34,
-    "withoutDeclaredR2Facsimile": 6,
+    "withoutDeclaredR2Facsimile": 2,
     "highPriorityAncient": 7
   },
   "entries": [
@@ -22,9 +24,13 @@
       "r2EditionsDeclared": [
         "apollodorus-poliorcetics"
       ],
-      "sourceStatus": "No hay versión indexada con este ID en search-registry.json",
-      "nextStep": "Comprobar el PDF/OCR existente, el título de portada, edición y derechos; producir texto por locus si la fuente lo permite.",
-      "indexed": false
+      "sourceStatus": "Índice invertido por páginas existente en R2; falta versión textual estructurada",
+      "nextStep": "Reutilizar OCR e índice existentes, comprobar portada, idioma, alcance y páginas propias; estructurar por loci solo cuando sea verificable.",
+      "indexed": false,
+      "r2OcrIndexEditionIds": [
+        "apollodorus-poliorcetics"
+      ],
+      "searchCoverage": "page_ocr_index_declared"
     },
     {
       "id": "athenaeus-mechanicus",
@@ -36,9 +42,13 @@
       "r2EditionsDeclared": [
         "athenaeus-mechanicus"
       ],
-      "sourceStatus": "No hay versión indexada con este ID en search-registry.json",
-      "nextStep": "Comprobar el PDF/OCR existente, el título de portada, edición y derechos; producir texto por locus si la fuente lo permite.",
-      "indexed": false
+      "sourceStatus": "Índice invertido por páginas existente en R2; falta versión textual estructurada",
+      "nextStep": "Reutilizar OCR e índice existentes, comprobar portada, idioma, alcance y páginas propias; estructurar por loci solo cuando sea verificable.",
+      "indexed": false,
+      "r2OcrIndexEditionIds": [
+        "athenaeus-mechanicus"
+      ],
+      "searchCoverage": "page_ocr_index_declared"
     },
     {
       "id": "biton-kataskeuai",
@@ -50,9 +60,13 @@
       "r2EditionsDeclared": [
         "biton-kataskeuai"
       ],
-      "sourceStatus": "No hay versión indexada con este ID en search-registry.json",
-      "nextStep": "Comprobar el PDF/OCR existente, el título de portada, edición y derechos; producir texto por locus si la fuente lo permite.",
-      "indexed": false
+      "sourceStatus": "Índice invertido por páginas existente en R2; falta versión textual estructurada",
+      "nextStep": "Reutilizar OCR e índice existentes, comprobar portada, idioma, alcance y páginas propias; estructurar por loci solo cuando sea verificable.",
+      "indexed": false,
+      "r2OcrIndexEditionIds": [
+        "biton-kataskeuai"
+      ],
+      "searchCoverage": "page_ocr_index_declared"
     },
     {
       "id": "hyginus-gromaticus",
@@ -64,9 +78,13 @@
       "r2EditionsDeclared": [
         "hyginus-gromaticus"
       ],
-      "sourceStatus": "No hay versión indexada con este ID en search-registry.json",
-      "nextStep": "Comprobar el PDF/OCR existente, el título de portada, edición y derechos; producir texto por locus si la fuente lo permite.",
-      "indexed": false
+      "sourceStatus": "Índice invertido por páginas existente en R2; falta versión textual estructurada",
+      "nextStep": "Reutilizar OCR e índice existentes, comprobar portada, idioma, alcance y páginas propias; estructurar por loci solo cuando sea verificable.",
+      "indexed": false,
+      "r2OcrIndexEditionIds": [
+        "hyginus-gromaticus"
+      ],
+      "searchCoverage": "page_ocr_index_declared"
     },
     {
       "id": "philo-belopoeica",
@@ -78,9 +96,13 @@
       "r2EditionsDeclared": [
         "philo-belopoeica"
       ],
-      "sourceStatus": "No hay versión indexada con este ID en search-registry.json",
-      "nextStep": "Comprobar el PDF/OCR existente, el título de portada, edición y derechos; producir texto por locus si la fuente lo permite.",
-      "indexed": false
+      "sourceStatus": "Índice invertido por páginas existente en R2; falta versión textual estructurada",
+      "nextStep": "Reutilizar OCR e índice existentes, comprobar portada, idioma, alcance y páginas propias; estructurar por loci solo cuando sea verificable.",
+      "indexed": false,
+      "r2OcrIndexEditionIds": [
+        "philo-belopoeica"
+      ],
+      "searchCoverage": "page_ocr_index_declared"
     },
     {
       "id": "ptolemy-geographia",
@@ -92,9 +114,13 @@
       "r2EditionsDeclared": [
         "ptolemy-geographia"
       ],
-      "sourceStatus": "No hay versión indexada con este ID en search-registry.json",
-      "nextStep": "Comprobar el PDF/OCR existente, el título de portada, edición y derechos; producir texto por locus si la fuente lo permite.",
-      "indexed": false
+      "sourceStatus": "Índice invertido por páginas existente en R2; falta versión textual estructurada",
+      "nextStep": "Reutilizar OCR e índice existentes, comprobar portada, idioma, alcance y páginas propias; estructurar por loci solo cuando sea verificable.",
+      "indexed": false,
+      "r2OcrIndexEditionIds": [
+        "ptolemy-geographia"
+      ],
+      "searchCoverage": "page_ocr_index_declared"
     },
     {
       "id": "accius-fragmenta",
@@ -106,9 +132,13 @@
       "r2EditionsDeclared": [
         "accius-fragmenta"
       ],
-      "sourceStatus": "No hay versión indexada con este ID en search-registry.json",
-      "nextStep": "Comprobar el PDF/OCR existente, el título de portada, edición y derechos; producir texto por locus si la fuente lo permite.",
-      "indexed": false
+      "sourceStatus": "Índice invertido por páginas existente en R2; falta versión textual estructurada",
+      "nextStep": "Reutilizar OCR e índice existentes, comprobar portada, idioma, alcance y páginas propias; estructurar por loci solo cuando sea verificable.",
+      "indexed": false,
+      "r2OcrIndexEditionIds": [
+        "accius-fragmenta"
+      ],
+      "searchCoverage": "page_ocr_index_declared"
     },
     {
       "id": "alberti-de-re-aedificatoria",
@@ -120,9 +150,13 @@
       "r2EditionsDeclared": [
         "alberti-de-re-aedificatoria"
       ],
-      "sourceStatus": "No hay versión indexada con este ID en search-registry.json",
-      "nextStep": "Comprobar el PDF/OCR existente, el título de portada, edición y derechos; producir texto por locus si la fuente lo permite.",
-      "indexed": false
+      "sourceStatus": "Índice invertido por páginas existente en R2; falta versión textual estructurada",
+      "nextStep": "Reutilizar OCR e índice existentes, comprobar portada, idioma, alcance y páginas propias; estructurar por loci solo cuando sea verificable.",
+      "indexed": false,
+      "r2OcrIndexEditionIds": [
+        "alberti-de-re-aedificatoria"
+      ],
+      "searchCoverage": "page_ocr_index_declared"
     },
     {
       "id": "anthologia-latina",
@@ -134,9 +168,13 @@
       "r2EditionsDeclared": [
         "anthologia-latina"
       ],
-      "sourceStatus": "No hay versión indexada con este ID en search-registry.json",
-      "nextStep": "Comprobar el PDF/OCR existente, el título de portada, edición y derechos; producir texto por locus si la fuente lo permite.",
-      "indexed": false
+      "sourceStatus": "Índice invertido por páginas existente en R2; falta versión textual estructurada",
+      "nextStep": "Reutilizar OCR e índice existentes, comprobar portada, idioma, alcance y páginas propias; estructurar por loci solo cuando sea verificable.",
+      "indexed": false,
+      "r2OcrIndexEditionIds": [
+        "anthologia-latina"
+      ],
+      "searchCoverage": "page_ocr_index_declared"
     },
     {
       "id": "beda-de-temporum-ratione",
@@ -148,9 +186,13 @@
       "r2EditionsDeclared": [
         "beda-de-temporum-ratione"
       ],
-      "sourceStatus": "No hay versión indexada con este ID en search-registry.json",
-      "nextStep": "Comprobar el PDF/OCR existente, el título de portada, edición y derechos; producir texto por locus si la fuente lo permite.",
-      "indexed": false
+      "sourceStatus": "Índice invertido por páginas existente en R2; falta versión textual estructurada",
+      "nextStep": "Reutilizar OCR e índice existentes, comprobar portada, idioma, alcance y páginas propias; estructurar por loci solo cuando sea verificable.",
+      "indexed": false,
+      "r2OcrIndexEditionIds": [
+        "beda-de-temporum-ratione"
+      ],
+      "searchCoverage": "page_ocr_index_declared"
     },
     {
       "id": "casiodoro-variae",
@@ -162,9 +204,13 @@
       "r2EditionsDeclared": [
         "casiodoro-variae"
       ],
-      "sourceStatus": "No hay versión indexada con este ID en search-registry.json",
-      "nextStep": "Comprobar el PDF/OCR existente, el título de portada, edición y derechos; producir texto por locus si la fuente lo permite.",
-      "indexed": false
+      "sourceStatus": "Índice invertido por páginas existente en R2; falta versión textual estructurada",
+      "nextStep": "Reutilizar OCR e índice existentes, comprobar portada, idioma, alcance y páginas propias; estructurar por loci solo cuando sea verificable.",
+      "indexed": false,
+      "r2OcrIndexEditionIds": [
+        "casiodoro-variae"
+      ],
+      "searchCoverage": "page_ocr_index_declared"
     },
     {
       "id": "festo-verborum-significatu",
@@ -176,9 +222,13 @@
       "r2EditionsDeclared": [
         "festo-verborum-significatu"
       ],
-      "sourceStatus": "No hay versión indexada con este ID en search-registry.json",
-      "nextStep": "Comprobar el PDF/OCR existente, el título de portada, edición y derechos; producir texto por locus si la fuente lo permite.",
-      "indexed": false
+      "sourceStatus": "Índice invertido por páginas existente en R2; falta versión textual estructurada",
+      "nextStep": "Reutilizar OCR e índice existentes, comprobar portada, idioma, alcance y páginas propias; estructurar por loci solo cuando sea verificable.",
+      "indexed": false,
+      "r2OcrIndexEditionIds": [
+        "festo-verborum-significatu"
+      ],
+      "searchCoverage": "page_ocr_index_declared"
     },
     {
       "id": "galeno-kuhn-vol01",
@@ -190,9 +240,13 @@
       "r2EditionsDeclared": [
         "galeno-kuhn-vol01"
       ],
-      "sourceStatus": "No hay versión indexada con este ID en search-registry.json",
-      "nextStep": "Comprobar el PDF/OCR existente, el título de portada, edición y derechos; producir texto por locus si la fuente lo permite.",
-      "indexed": false
+      "sourceStatus": "Índice invertido por páginas existente en R2; falta versión textual estructurada",
+      "nextStep": "Reutilizar OCR e índice existentes, comprobar portada, idioma, alcance y páginas propias; estructurar por loci solo cuando sea verificable.",
+      "indexed": false,
+      "r2OcrIndexEditionIds": [
+        "galeno-kuhn-vol01"
+      ],
+      "searchCoverage": "page_ocr_index_declared"
     },
     {
       "id": "galeno-kuhn-vol19",
@@ -204,9 +258,13 @@
       "r2EditionsDeclared": [
         "galeno-kuhn-vol19"
       ],
-      "sourceStatus": "No hay versión indexada con este ID en search-registry.json",
-      "nextStep": "Comprobar el PDF/OCR existente, el título de portada, edición y derechos; producir texto por locus si la fuente lo permite.",
-      "indexed": false
+      "sourceStatus": "Índice invertido por páginas existente en R2; falta versión textual estructurada",
+      "nextStep": "Reutilizar OCR e índice existentes, comprobar portada, idioma, alcance y páginas propias; estructurar por loci solo cuando sea verificable.",
+      "indexed": false,
+      "r2OcrIndexEditionIds": [
+        "galeno-kuhn-vol19"
+      ],
+      "searchCoverage": "page_ocr_index_declared"
     },
     {
       "id": "galeno-opera-kuhn",
@@ -218,9 +276,13 @@
       "r2EditionsDeclared": [
         "galeno-opera-kuhn"
       ],
-      "sourceStatus": "No hay versión indexada con este ID en search-registry.json",
-      "nextStep": "Comprobar el PDF/OCR existente, el título de portada, edición y derechos; producir texto por locus si la fuente lo permite.",
-      "indexed": false
+      "sourceStatus": "Índice invertido por páginas existente en R2; falta versión textual estructurada",
+      "nextStep": "Reutilizar OCR e índice existentes, comprobar portada, idioma, alcance y páginas propias; estructurar por loci solo cuando sea verificable.",
+      "indexed": false,
+      "r2OcrIndexEditionIds": [
+        "galeno-opera-kuhn"
+      ],
+      "searchCoverage": "page_ocr_index_declared"
     },
     {
       "id": "galeno-scripta-minora",
@@ -232,9 +294,13 @@
       "r2EditionsDeclared": [
         "galeno-scripta-minora"
       ],
-      "sourceStatus": "No hay versión indexada con este ID en search-registry.json",
-      "nextStep": "Comprobar el PDF/OCR existente, el título de portada, edición y derechos; producir texto por locus si la fuente lo permite.",
-      "indexed": false
+      "sourceStatus": "Índice invertido por páginas existente en R2; falta versión textual estructurada",
+      "nextStep": "Reutilizar OCR e índice existentes, comprobar portada, idioma, alcance y páginas propias; estructurar por loci solo cuando sea verificable.",
+      "indexed": false,
+      "r2OcrIndexEditionIds": [
+        "galeno-scripta-minora"
+      ],
+      "searchCoverage": "page_ocr_index_declared"
     },
     {
       "id": "higino-fabulas",
@@ -246,9 +312,13 @@
       "r2EditionsDeclared": [
         "higino-fabulas"
       ],
-      "sourceStatus": "No hay versión indexada con este ID en search-registry.json",
-      "nextStep": "Comprobar el PDF/OCR existente, el título de portada, edición y derechos; producir texto por locus si la fuente lo permite.",
-      "indexed": false
+      "sourceStatus": "Índice invertido por páginas existente en R2; falta versión textual estructurada",
+      "nextStep": "Reutilizar OCR e índice existentes, comprobar portada, idioma, alcance y páginas propias; estructurar por loci solo cuando sea verificable.",
+      "indexed": false,
+      "r2OcrIndexEditionIds": [
+        "higino-fabulas"
+      ],
+      "searchCoverage": "page_ocr_index_declared"
     },
     {
       "id": "isidoro-etymologiae",
@@ -260,9 +330,13 @@
       "r2EditionsDeclared": [
         "isidoro-etymologiae"
       ],
-      "sourceStatus": "No hay versión indexada con este ID en search-registry.json",
-      "nextStep": "Comprobar el PDF/OCR existente, el título de portada, edición y derechos; producir texto por locus si la fuente lo permite.",
-      "indexed": false
+      "sourceStatus": "Índice invertido por páginas existente en R2; falta versión textual estructurada",
+      "nextStep": "Reutilizar OCR e índice existentes, comprobar portada, idioma, alcance y páginas propias; estructurar por loci solo cuando sea verificable.",
+      "indexed": false,
+      "r2OcrIndexEditionIds": [
+        "isidoro-etymologiae"
+      ],
+      "searchCoverage": "page_ocr_index_declared"
     },
     {
       "id": "jamblico-vida-pitagorica",
@@ -274,9 +348,13 @@
       "r2EditionsDeclared": [
         "jamblico-vida-pitagorica"
       ],
-      "sourceStatus": "No hay versión indexada con este ID en search-registry.json",
-      "nextStep": "Comprobar el PDF/OCR existente, el título de portada, edición y derechos; producir texto por locus si la fuente lo permite.",
-      "indexed": false
+      "sourceStatus": "Índice invertido por páginas existente en R2; falta versión textual estructurada",
+      "nextStep": "Reutilizar OCR e índice existentes, comprobar portada, idioma, alcance y páginas propias; estructurar por loci solo cuando sea verificable.",
+      "indexed": false,
+      "r2OcrIndexEditionIds": [
+        "jamblico-vida-pitagorica"
+      ],
+      "searchCoverage": "page_ocr_index_declared"
     },
     {
       "id": "lyra-graeca",
@@ -288,9 +366,13 @@
       "r2EditionsDeclared": [
         "lyra-graeca"
       ],
-      "sourceStatus": "No hay versión indexada con este ID en search-registry.json",
-      "nextStep": "Comprobar el PDF/OCR existente, el título de portada, edición y derechos; producir texto por locus si la fuente lo permite.",
-      "indexed": false
+      "sourceStatus": "Índice invertido por páginas existente en R2; falta versión textual estructurada",
+      "nextStep": "Reutilizar OCR e índice existentes, comprobar portada, idioma, alcance y páginas propias; estructurar por loci solo cuando sea verificable.",
+      "indexed": false,
+      "r2OcrIndexEditionIds": [
+        "lyra-graeca"
+      ],
+      "searchCoverage": "page_ocr_index_declared"
     },
     {
       "id": "manilio-astronomica",
@@ -302,9 +384,13 @@
       "r2EditionsDeclared": [
         "manilio-astronomica"
       ],
-      "sourceStatus": "No hay versión indexada con este ID en search-registry.json",
-      "nextStep": "Comprobar el PDF/OCR existente, el título de portada, edición y derechos; producir texto por locus si la fuente lo permite.",
-      "indexed": false
+      "sourceStatus": "Índice invertido por páginas existente en R2; falta versión textual estructurada",
+      "nextStep": "Reutilizar OCR e índice existentes, comprobar portada, idioma, alcance y páginas propias; estructurar por loci solo cuando sea verificable.",
+      "indexed": false,
+      "r2OcrIndexEditionIds": [
+        "manilio-astronomica"
+      ],
+      "searchCoverage": "page_ocr_index_declared"
     },
     {
       "id": "marciano-capela-nuptiis",
@@ -316,9 +402,13 @@
       "r2EditionsDeclared": [
         "marciano-capela-nuptiis"
       ],
-      "sourceStatus": "No hay versión indexada con este ID en search-registry.json",
-      "nextStep": "Comprobar el PDF/OCR existente, el título de portada, edición y derechos; producir texto por locus si la fuente lo permite.",
-      "indexed": false
+      "sourceStatus": "Índice invertido por páginas existente en R2; falta versión textual estructurada",
+      "nextStep": "Reutilizar OCR e índice existentes, comprobar portada, idioma, alcance y páginas propias; estructurar por loci solo cuando sea verificable.",
+      "indexed": false,
+      "r2OcrIndexEditionIds": [
+        "marciano-capela-nuptiis"
+      ],
+      "searchCoverage": "page_ocr_index_declared"
     },
     {
       "id": "nonio-marcelo-doctrina",
@@ -330,9 +420,13 @@
       "r2EditionsDeclared": [
         "nonio-marcelo-doctrina"
       ],
-      "sourceStatus": "No hay versión indexada con este ID en search-registry.json",
-      "nextStep": "Comprobar el PDF/OCR existente, el título de portada, edición y derechos; producir texto por locus si la fuente lo permite.",
-      "indexed": false
+      "sourceStatus": "Índice invertido por páginas existente en R2; falta versión textual estructurada",
+      "nextStep": "Reutilizar OCR e índice existentes, comprobar portada, idioma, alcance y páginas propias; estructurar por loci solo cuando sea verificable.",
+      "indexed": false,
+      "r2OcrIndexEditionIds": [
+        "nonio-marcelo-doctrina"
+      ],
+      "searchCoverage": "page_ocr_index_declared"
     },
     {
       "id": "paladio-opus-agriculturae",
@@ -344,9 +438,13 @@
       "r2EditionsDeclared": [
         "paladio-opus-agriculturae"
       ],
-      "sourceStatus": "No hay versión indexada con este ID en search-registry.json",
-      "nextStep": "Comprobar el PDF/OCR existente, el título de portada, edición y derechos; producir texto por locus si la fuente lo permite.",
-      "indexed": false
+      "sourceStatus": "Índice invertido por páginas existente en R2; falta versión textual estructurada",
+      "nextStep": "Reutilizar OCR e índice existentes, comprobar portada, idioma, alcance y páginas propias; estructurar por loci solo cuando sea verificable.",
+      "indexed": false,
+      "r2OcrIndexEditionIds": [
+        "paladio-opus-agriculturae"
+      ],
+      "searchCoverage": "page_ocr_index_declared"
     },
     {
       "id": "palladio-quattro-libri",
@@ -358,9 +456,13 @@
       "r2EditionsDeclared": [
         "palladio-quattro-libri"
       ],
-      "sourceStatus": "No hay versión indexada con este ID en search-registry.json",
-      "nextStep": "Comprobar el PDF/OCR existente, el título de portada, edición y derechos; producir texto por locus si la fuente lo permite.",
-      "indexed": false
+      "sourceStatus": "Índice invertido por páginas existente en R2; falta versión textual estructurada",
+      "nextStep": "Reutilizar OCR e índice existentes, comprobar portada, idioma, alcance y páginas propias; estructurar por loci solo cuando sea verificable.",
+      "indexed": false,
+      "r2OcrIndexEditionIds": [
+        "palladio-quattro-libri"
+      ],
+      "searchCoverage": "page_ocr_index_declared"
     },
     {
       "id": "petrarca-africa",
@@ -372,9 +474,13 @@
       "r2EditionsDeclared": [
         "petrarca-africa"
       ],
-      "sourceStatus": "No hay versión indexada con este ID en search-registry.json",
-      "nextStep": "Comprobar el PDF/OCR existente, el título de portada, edición y derechos; producir texto por locus si la fuente lo permite.",
-      "indexed": false
+      "sourceStatus": "Índice invertido por páginas existente en R2; falta versión textual estructurada",
+      "nextStep": "Reutilizar OCR e índice existentes, comprobar portada, idioma, alcance y páginas propias; estructurar por loci solo cuando sea verificable.",
+      "indexed": false,
+      "r2OcrIndexEditionIds": [
+        "petrarca-africa"
+      ],
+      "searchCoverage": "page_ocr_index_declared"
     },
     {
       "id": "petrarca-secretum",
@@ -386,9 +492,13 @@
       "r2EditionsDeclared": [
         "petrarca-secretum"
       ],
-      "sourceStatus": "No hay versión indexada con este ID en search-registry.json",
-      "nextStep": "Comprobar el PDF/OCR existente, el título de portada, edición y derechos; producir texto por locus si la fuente lo permite.",
-      "indexed": false
+      "sourceStatus": "Índice invertido por páginas existente en R2; falta versión textual estructurada",
+      "nextStep": "Reutilizar OCR e índice existentes, comprobar portada, idioma, alcance y páginas propias; estructurar por loci solo cuando sea verificable.",
+      "indexed": false,
+      "r2OcrIndexEditionIds": [
+        "petrarca-secretum"
+      ],
+      "searchCoverage": "page_ocr_index_declared"
     },
     {
       "id": "proclo-comentario-euclides",
@@ -400,9 +510,13 @@
       "r2EditionsDeclared": [
         "proclo-comentario-euclides"
       ],
-      "sourceStatus": "No hay versión indexada con este ID en search-registry.json",
-      "nextStep": "Comprobar el PDF/OCR existente, el título de portada, edición y derechos; producir texto por locus si la fuente lo permite.",
-      "indexed": false
+      "sourceStatus": "Índice invertido por páginas existente en R2; falta versión textual estructurada",
+      "nextStep": "Reutilizar OCR e índice existentes, comprobar portada, idioma, alcance y páginas propias; estructurar por loci solo cuando sea verificable.",
+      "indexed": false,
+      "r2OcrIndexEditionIds": [
+        "proclo-comentario-euclides"
+      ],
+      "searchCoverage": "page_ocr_index_declared"
     },
     {
       "id": "scamozzi-idea-architettura",
@@ -414,9 +528,13 @@
       "r2EditionsDeclared": [
         "scamozzi-idea-architettura"
       ],
-      "sourceStatus": "No hay versión indexada con este ID en search-registry.json",
-      "nextStep": "Comprobar el PDF/OCR existente, el título de portada, edición y derechos; producir texto por locus si la fuente lo permite.",
-      "indexed": false
+      "sourceStatus": "Índice invertido por páginas existente en R2; falta versión textual estructurada",
+      "nextStep": "Reutilizar OCR e índice existentes, comprobar portada, idioma, alcance y páginas propias; estructurar por loci solo cuando sea verificable.",
+      "indexed": false,
+      "r2OcrIndexEditionIds": [
+        "scamozzi-idea-architettura"
+      ],
+      "searchCoverage": "page_ocr_index_declared"
     },
     {
       "id": "serlio-architettura",
@@ -428,9 +546,13 @@
       "r2EditionsDeclared": [
         "serlio-architettura"
       ],
-      "sourceStatus": "No hay versión indexada con este ID en search-registry.json",
-      "nextStep": "Comprobar el PDF/OCR existente, el título de portada, edición y derechos; producir texto por locus si la fuente lo permite.",
-      "indexed": false
+      "sourceStatus": "Índice invertido por páginas existente en R2; falta versión textual estructurada",
+      "nextStep": "Reutilizar OCR e índice existentes, comprobar portada, idioma, alcance y páginas propias; estructurar por loci solo cuando sea verificable.",
+      "indexed": false,
+      "r2OcrIndexEditionIds": [
+        "serlio-architettura"
+      ],
+      "searchCoverage": "page_ocr_index_declared"
     },
     {
       "id": "sexto-empirico-obras",
@@ -442,9 +564,13 @@
       "r2EditionsDeclared": [
         "sexto-empirico-obras"
       ],
-      "sourceStatus": "No hay versión indexada con este ID en search-registry.json",
-      "nextStep": "Comprobar el PDF/OCR existente, el título de portada, edición y derechos; producir texto por locus si la fuente lo permite.",
-      "indexed": false
+      "sourceStatus": "Índice invertido por páginas existente en R2; falta versión textual estructurada",
+      "nextStep": "Reutilizar OCR e índice existentes, comprobar portada, idioma, alcance y páginas propias; estructurar por loci solo cuando sea verificable.",
+      "indexed": false,
+      "r2OcrIndexEditionIds": [
+        "sexto-empirico-obras"
+      ],
+      "searchCoverage": "page_ocr_index_declared"
     },
     {
       "id": "teon-esmirna-expositio",
@@ -456,9 +582,13 @@
       "r2EditionsDeclared": [
         "teon-esmirna-expositio"
       ],
-      "sourceStatus": "No hay versión indexada con este ID en search-registry.json",
-      "nextStep": "Comprobar el PDF/OCR existente, el título de portada, edición y derechos; producir texto por locus si la fuente lo permite.",
-      "indexed": false
+      "sourceStatus": "Índice invertido por páginas existente en R2; falta versión textual estructurada",
+      "nextStep": "Reutilizar OCR e índice existentes, comprobar portada, idioma, alcance y páginas propias; estructurar por loci solo cuando sea verificable.",
+      "indexed": false,
+      "r2OcrIndexEditionIds": [
+        "teon-esmirna-expositio"
+      ],
+      "searchCoverage": "page_ocr_index_declared"
     },
     {
       "id": "vasari-vite",
@@ -470,9 +600,13 @@
       "r2EditionsDeclared": [
         "vasari-vite"
       ],
-      "sourceStatus": "No hay versión indexada con este ID en search-registry.json",
-      "nextStep": "Comprobar el PDF/OCR existente, el título de portada, edición y derechos; producir texto por locus si la fuente lo permite.",
-      "indexed": false
+      "sourceStatus": "Índice invertido por páginas existente en R2; falta versión textual estructurada",
+      "nextStep": "Reutilizar OCR e índice existentes, comprobar portada, idioma, alcance y páginas propias; estructurar por loci solo cuando sea verificable.",
+      "indexed": false,
+      "r2OcrIndexEditionIds": [
+        "vasari-vite"
+      ],
+      "searchCoverage": "page_ocr_index_declared"
     },
     {
       "id": "vignola-cinque-ordini",
@@ -484,9 +618,13 @@
       "r2EditionsDeclared": [
         "vignola-cinque-ordini"
       ],
-      "sourceStatus": "No hay versión indexada con este ID en search-registry.json",
-      "nextStep": "Comprobar el PDF/OCR existente, el título de portada, edición y derechos; producir texto por locus si la fuente lo permite.",
-      "indexed": false
+      "sourceStatus": "Índice invertido por páginas existente en R2; falta versión textual estructurada",
+      "nextStep": "Reutilizar OCR e índice existentes, comprobar portada, idioma, alcance y páginas propias; estructurar por loci solo cuando sea verificable.",
+      "indexed": false,
+      "r2OcrIndexEditionIds": [
+        "vignola-cinque-ordini"
+      ],
+      "searchCoverage": "page_ocr_index_declared"
     },
     {
       "id": "procopius-aedificiis",
@@ -498,19 +636,9 @@
       "r2EditionsDeclared": [],
       "sourceStatus": "No hay versión indexada con este ID en search-registry.json",
       "nextStep": "Buscar primero una fuente existente en GitHub/R2 y verificar su identidad; si no existe, mantener pendiente sin adquirir nuevas obras.",
-      "indexed": false
-    },
-    {
-      "id": "krohn-1912-pdf",
-      "author": "Vitruvio · edición de Fritz Krohn",
-      "title": "Vitruvii De architectura libri decem · Krohn 1912",
-      "language": "la",
-      "classification": "modern_edition_of_existing_work",
-      "priority": "normal",
-      "r2EditionsDeclared": [],
-      "sourceStatus": "No hay versión indexada con este ID en search-registry.json",
-      "nextStep": "Vincular como manifestación de Vitruvio; no contar ni reindexar como nueva obra antigua.",
-      "indexed": false
+      "indexed": false,
+      "r2OcrIndexEditionIds": [],
+      "searchCoverage": "no_verified_index_link"
     },
     {
       "id": "sappho-fragmenta",
@@ -522,43 +650,9 @@
       "r2EditionsDeclared": [],
       "sourceStatus": "No hay versión indexada con este ID en search-registry.json",
       "nextStep": "Buscar primero una fuente existente en GitHub/R2 y verificar su identidad; si no existe, mantener pendiente sin adquirir nuevas obras.",
-      "indexed": false
-    },
-    {
-      "id": "theory-v297-pdf",
-      "author": "Diego A. Kurilo · sobre Vitruvio",
-      "title": "The Architect of Theory · V297 (inglés)",
-      "language": "la",
-      "classification": "modern_edition_of_existing_work",
-      "priority": "normal",
-      "r2EditionsDeclared": [],
-      "sourceStatus": "No hay versión indexada con este ID en search-registry.json",
-      "nextStep": "Vincular como manifestación de Vitruvio; no contar ni reindexar como nueva obra antigua.",
-      "indexed": false
-    },
-    {
-      "id": "vitruvio-v514-pdf",
-      "author": "Vitruvio · edición de Diego A. Kurilo",
-      "title": "De architectura · Recensio V514 (latín–castellano)",
-      "language": "la",
-      "classification": "modern_edition_of_existing_work",
-      "priority": "normal",
-      "r2EditionsDeclared": [],
-      "sourceStatus": "No hay versión indexada con este ID en search-registry.json",
-      "nextStep": "Vincular como manifestación de Vitruvio; no contar ni reindexar como nueva obra antigua.",
-      "indexed": false
-    },
-    {
-      "id": "vitruvio-v554-pdf",
-      "author": "Vitruvio · edición de Diego A. Kurilo",
-      "title": "De architectura · Recensio V554 (latín–francés)",
-      "language": "la",
-      "classification": "modern_edition_of_existing_work",
-      "priority": "normal",
-      "r2EditionsDeclared": [],
-      "sourceStatus": "No hay versión indexada con este ID en search-registry.json",
-      "nextStep": "Vincular como manifestación de Vitruvio; no contar ni reindexar como nueva obra antigua.",
-      "indexed": false
+      "indexed": false,
+      "r2OcrIndexEditionIds": [],
+      "searchCoverage": "no_verified_index_link"
     }
   ]
 }

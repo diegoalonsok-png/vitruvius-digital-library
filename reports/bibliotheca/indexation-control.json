@@ -1,35 +1,37 @@
 {
   "schema": "vdl-bibliotheca-indexation-control-v1",
-  "generated": "2026-11-27T12:40:43.274Z",
+  "generated": "2026-11-27T14:12:49.646Z",
   "methodology": "Auditoría documental reproducible de GitHub. Los índices del catálogo y los registros remotos son declaraciones; no sustituyen GET/HEAD de R2, cotejo del interior del PDF ni recensio manuscrita. Una obra sin índice NO se marca indexada automáticamente.",
   "counts": {
-    "catalogueWorks": 730,
+    "catalogueWorks": 753,
     "supplementaryWorks": 127,
     "additionalR2Works": 10,
-    "combinedCataloguedWorks": 867,
+    "combinedCataloguedWorks": 890,
     "r2EditionRecords": 117,
-    "registeredTextVersions": 1109,
-    "registeredDistinctWorks": 827,
-    "verifiedLocalSourceWorkIds": 325,
-    "declaredRemoteSourceWorkIds": 593,
-    "r2TextManifestVersions": 594,
-    "r2ExpansionIndexedEditions": 567,
-    "r2ExpansionIndexedPassages": 246815,
-    "r2RegisteredTranslationEditions": 68,
+    "registeredTextVersions": 1138,
+    "registeredDistinctWorks": 854,
+    "verifiedLocalSourceWorkIds": 329,
+    "declaredRemoteSourceWorkIds": 618,
+    "r2TextManifestVersions": 619,
+    "r2ExpansionIndexedEditions": 592,
+    "r2ExpansionIndexedPassages": 251744,
+    "r2RegisteredTranslationEditions": 72,
     "r2SourcesSharedAcrossManifests": 12,
     "r2InvertedIndexDeclaredEditions": 119,
-    "unindexedCatalogueWorks": 30,
+    "worksWithExistingPageOcrIndex": 34,
+    "worksWithoutVerifiedIndexLink": 2,
+    "unindexedCatalogueWorks": 26,
     "unindexedAdditionalR2Works": 10,
-    "unindexedAllDeclaredWorks": 40,
+    "unindexedAllDeclaredWorks": 36,
     "unindexedWithDeclaredR2Facsimile": 34,
     "unindexedAncientWorks": 26,
-    "unindexedEditorialManifestations": 4,
-    "worksMissingRegisteredOriginal": 0,
-    "greekTitleNeedsIndividualReview": 432,
+    "unindexedEditorialManifestations": 0,
+    "worksMissingRegisteredOriginal": 3,
+    "greekTitleNeedsIndividualReview": 455,
     "r2UnlinkedEditions": 0,
     "duplicateR2BinaryGroups": 2,
     "structuralErrors": 0,
-    "editorialReviewItems": 465
+    "editorialReviewItems": 484
   },
   "scope": {
     "r2Expansion": {
@@ -250,6 +252,12 @@
         "cts-tlg0018-tlg008|grc",
         "cts-tlg0018-tlg009|grc",
         "cts-tlg0018-tlg010|grc",
+        "cts-tlg0018-tlg017|grc",
+        "cts-tlg0018-tlg018|grc",
+        "cts-tlg0018-tlg019|grc",
+        "cts-tlg0018-tlg024|grc",
+        "cts-tlg0018-tlg025|grc",
+        "cts-tlg0018-tlg026|grc",
         "cts-tlg0019-tlg002|grc",
         "cts-tlg0019-tlg008|grc",
         "cts-tlg0019-tlg010|grc",
@@ -274,6 +282,11 @@
         "cts-tlg0057-tlg009|grc",
         "cts-tlg0057-tlg011|grc",
         "cts-tlg0057-tlg012|grc",
+        "cts-tlg0057-tlg013|grc",
+        "cts-tlg0057-tlg014|grc",
+        "cts-tlg0057-tlg015|grc",
+        "cts-tlg0057-tlg016|grc",
+        "cts-tlg0057-tlg018|grc",
         "cts-tlg0057-tlg049|grc",
         "cts-tlg0057-tlg050|grc",
         "cts-tlg0057-tlg051|grc",
@@ -339,12 +352,22 @@
         "cts-tlg0059-tlg035|grc",
         "cts-tlg0059-tlg036|grc",
         "cts-tlg0059-tlg037|grc",
+        "cts-tlg0061-tlg001|grc",
+        "cts-tlg0061-tlg002|grc",
+        "cts-tlg0061-tlg003|grc",
         "cts-tlg0061-tlg004|grc",
         "cts-tlg0061-tlg005|grc",
         "cts-tlg0061-tlg006|grc",
         "cts-tlg0061-tlg007|grc",
         "cts-tlg0061-tlg008|grc",
         "cts-tlg0062-tlg001|grc",
+        "cts-tlg0062-tlg002|grc",
+        "cts-tlg0062-tlg003|grc",
+        "cts-tlg0062-tlg004|grc",
+        "cts-tlg0062-tlg005|grc",
+        "cts-tlg0062-tlg006|grc",
+        "cts-tlg0062-tlg007|grc",
+        "cts-tlg0062-tlg008|grc",
         "cts-tlg0062-tlg015|grc",
         "cts-tlg0062-tlg016|grc",
         "cts-tlg0062-tlg017|grc",
@@ -495,6 +518,8 @@
         "cts-tlg1799-tlg017|grc",
         "cts-tlg1805-tlg001|grc",
         "cts-tlg1805-tlg002|grc",
+        "cts-tlg1805-tlg003|grc",
+        "cts-tlg1805-tlg004|grc",
         "cts-tlg1805-tlg005|grc",
         "cts-tlg1805-tlg006|grc",
         "cts-tlg1805-tlg007|grc",
@@ -592,19 +617,21 @@
         "sophocles-oedipus|grc",
         "sophocles-philoctetes|grc",
         "sophocles-trachiniae|grc",
+        "strabo|grc",
         "tacitus-agricola|la",
         "tacitus-annales|la",
         "tacitus-dialogus|la",
         "tacitus-germania|la",
         "tacitus-historiae|la",
         "terentius-heautontimorumenos|la",
+        "theophrastus-characters|grc",
         "theophrastus-historia-plantarum|grc",
         "thucydides-war|grc",
         "xenophon-anabasis|grc",
         "xenophon-hellenica|grc",
         "xenophon-memorabilia|grc"
       ],
-      "indexUrl": "https://libros.vitruvius-digital-library.org/corpus/indice/ampliacion/9b962eca5dbeae8b0031f197/manifest.json"
+      "indexUrl": "https://libros.vitruvius-digital-library.org/corpus/indice/ampliacion/a5acb84f62b2a8cd59b4d667/manifest.json"
     },
     "greekTitleReview": [
       {
@@ -2196,6 +2223,98 @@
         "title": "Plutarchi vita"
       },
       {
+        "id": "cts-tlg1805-tlg003",
+        "title": "Vita Proculea (e Chrestomathia)"
+      },
+      {
+        "id": "cts-tlg1805-tlg004",
+        "title": "Vita quarta"
+      },
+      {
+        "id": "cts-tlg0057-tlg013",
+        "title": "De venarum arteriarumque dissectione"
+      },
+      {
+        "id": "cts-tlg0057-tlg014",
+        "title": "De nervorum dissectione"
+      },
+      {
+        "id": "cts-tlg0057-tlg015",
+        "title": "De instrumento odoratus"
+      },
+      {
+        "id": "cts-tlg0057-tlg016",
+        "title": "De uteri dissectione"
+      },
+      {
+        "id": "cts-tlg0057-tlg018",
+        "title": "De motu musculorum"
+      },
+      {
+        "id": "cts-tlg0018-tlg018",
+        "title": "De Mutatione Nominum"
+      },
+      {
+        "id": "cts-tlg0018-tlg017",
+        "title": "De Fuga Et Inventione"
+      },
+      {
+        "id": "cts-tlg0018-tlg019",
+        "title": "De Somniis (lib. i-ii)"
+      },
+      {
+        "id": "cts-tlg0061-tlg001",
+        "title": "Asinus"
+      },
+      {
+        "id": "cts-tlg0061-tlg003",
+        "title": "Demosthenis encomium"
+      },
+      {
+        "id": "cts-tlg0062-tlg002",
+        "title": "Hippias"
+      },
+      {
+        "id": "cts-tlg0061-tlg002",
+        "title": "Amores"
+      },
+      {
+        "id": "cts-tlg0062-tlg004",
+        "title": "Hercules"
+      },
+      {
+        "id": "cts-tlg0062-tlg005",
+        "title": "Electrum"
+      },
+      {
+        "id": "cts-tlg0062-tlg003",
+        "title": "Bacchus"
+      },
+      {
+        "id": "cts-tlg0062-tlg006",
+        "title": "Muscae Encomium"
+      },
+      {
+        "id": "cts-tlg0062-tlg007",
+        "title": "Nigrinus"
+      },
+      {
+        "id": "cts-tlg0062-tlg008",
+        "title": "Demonax"
+      },
+      {
+        "id": "cts-tlg0018-tlg025",
+        "title": "De Virtutibus"
+      },
+      {
+        "id": "cts-tlg0018-tlg024",
+        "title": "De Specialibus Legibus (lib. i‑iv)"
+      },
+      {
+        "id": "cts-tlg0018-tlg026",
+        "title": "De Praemiis Et Poenis Et De Exsecrationibus"
+      },
+      {
         "id": "first1k-tlg0057-tlg002",
         "title": "De optima doctrina"
       },
@@ -2336,7 +2455,11 @@
         "title": "Fragmenta · Fragmentos"
       }
     ],
-    "missingOriginal": [],
+    "missingOriginal": [
+      "vitruvio-v514-pdf",
+      "vitruvio-v554-pdf",
+      "theory-v297-pdf"
+    ],
     "unindexed": [
       {
         "id": "apollodorus-poliorcetics",
@@ -2349,30 +2472,6 @@
         "author": "Ateneo Mecánico",
         "title": "Περὶ μηχανημάτων · De machinis",
         "language": "grc"
-      },
-      {
-        "id": "vitruvio-v514-pdf",
-        "author": "Vitruvio · edición de Diego A. Kurilo",
-        "title": "De architectura · Recensio V514 (latín–castellano)",
-        "language": "la"
-      },
-      {
-        "id": "vitruvio-v554-pdf",
-        "author": "Vitruvio · edición de Diego A. Kurilo",
-        "title": "De architectura · Recensio V554 (latín–francés)",
-        "language": "la"
-      },
-      {
-        "id": "theory-v297-pdf",
-        "author": "Diego A. Kurilo · sobre Vitruvio",
-        "title": "The Architect of Theory · V297 (inglés)",
-        "language": "la"
-      },
-      {
-        "id": "krohn-1912-pdf",
-        "author": "Vitruvio · edición de Fritz Krohn",
-        "title": "Vitruvii De architectura libri decem · Krohn 1912",
-        "language": "la"
       },
       {
         "id": "ptolemy-geographia",
@@ -2538,6 +2637,35 @@
         ]
       }
     ],
+    "resolvedEditionLinks": [
+      {
+        "id": "krohn-1912-pdf",
+        "workId": "krohn-1912-indexed",
+        "language": "la",
+        "path": "data/critical-editions/krohn-1912-tei-loci.json"
+      },
+      {
+        "id": "vitruvio-v514-pdf",
+        "workId": "vitruvius",
+        "edition": "recensio-es",
+        "language": "es",
+        "path": "data/structured/recensio-es.json"
+      },
+      {
+        "id": "vitruvio-v554-pdf",
+        "workId": "vitruvius",
+        "edition": "recensio-fr",
+        "language": "fr",
+        "path": "data/structured/recensio-fr.json"
+      },
+      {
+        "id": "theory-v297-pdf",
+        "workId": "vitruvius",
+        "edition": "theory-en",
+        "language": "en",
+        "path": "data/structured/theory-en.json"
+      }
+    ],
     "catalogueVsEditionTitles": [
       {
         "id": "vitruvius",
@@ -2553,6 +2681,11 @@
         "id": "faventinus",
         "catalogue": "Artis architectonicae privatis usibus adbreviatus liber",
         "registeredEdition": "Liber artis architectonicae"
+      },
+      {
+        "id": "krohn-1912-pdf",
+        "catalogue": "Vitruvii De architectura libri decem · Krohn 1912",
+        "registeredEdition": "De architectura libri decem · edición Fritz Krohn (1912), latín indexado"
       },
       {
         "id": "phraedrus-fabulae",
@@ -2958,30 +3091,6 @@
       "severity": "review",
       "code": "work_not_text_indexed",
       "id": "athenaeus-mechanicus",
-      "description": "Ficha presente sin versión textual en registry"
-    },
-    {
-      "severity": "review",
-      "code": "work_not_text_indexed",
-      "id": "vitruvio-v514-pdf",
-      "description": "Ficha presente sin versión textual en registry"
-    },
-    {
-      "severity": "review",
-      "code": "work_not_text_indexed",
-      "id": "vitruvio-v554-pdf",
-      "description": "Ficha presente sin versión textual en registry"
-    },
-    {
-      "severity": "review",
-      "code": "work_not_text_indexed",
-      "id": "theory-v297-pdf",
-      "description": "Ficha presente sin versión textual en registry"
-    },
-    {
-      "severity": "review",
-      "code": "work_not_text_indexed",
-      "id": "krohn-1912-pdf",
       "description": "Ficha presente sin versión textual en registry"
     },
     {
@@ -5496,6 +5605,144 @@
       "severity": "review",
       "code": "greek_title_not_documented",
       "id": "cts-tlg1805-tlg002",
+      "description": "La ficha no contiene denominación griega acreditada; podría ser una colección o edición"
+    },
+    {
+      "severity": "review",
+      "code": "greek_title_not_documented",
+      "id": "cts-tlg1805-tlg003",
+      "description": "La ficha no contiene denominación griega acreditada; podría ser una colección o edición"
+    },
+    {
+      "severity": "review",
+      "code": "greek_title_not_documented",
+      "id": "cts-tlg1805-tlg004",
+      "description": "La ficha no contiene denominación griega acreditada; podría ser una colección o edición"
+    },
+    {
+      "severity": "review",
+      "code": "greek_title_not_documented",
+      "id": "cts-tlg0057-tlg013",
+      "description": "La ficha no contiene denominación griega acreditada; podría ser una colección o edición"
+    },
+    {
+      "severity": "review",
+      "code": "greek_title_not_documented",
+      "id": "cts-tlg0057-tlg014",
+      "description": "La ficha no contiene denominación griega acreditada; podría ser una colección o edición"
+    },
+    {
+      "severity": "review",
+      "code": "greek_title_not_documented",
+      "id": "cts-tlg0057-tlg015",
+      "description": "La ficha no contiene denominación griega acreditada; podría ser una colección o edición"
+    },
+    {
+      "severity": "review",
+      "code": "greek_title_not_documented",
+      "id": "cts-tlg0057-tlg016",
+      "description": "La ficha no contiene denominación griega acreditada; podría ser una colección o edición"
+    },
+    {
+      "severity": "review",
+      "code": "greek_title_not_documented",
+      "id": "cts-tlg0057-tlg018",
+      "description": "La ficha no contiene denominación griega acreditada; podría ser una colección o edición"
+    },
+    {
+      "severity": "review",
+      "code": "greek_title_not_documented",
+      "id": "cts-tlg0018-tlg018",
+      "description": "La ficha no contiene denominación griega acreditada; podría ser una colección o edición"
+    },
+    {
+      "severity": "review",
+      "code": "greek_title_not_documented",
+      "id": "cts-tlg0018-tlg017",
+      "description": "La ficha no contiene denominación griega acreditada; podría ser una colección o edición"
+    },
+    {
+      "severity": "review",
+      "code": "greek_title_not_documented",
+      "id": "cts-tlg0018-tlg019",
+      "description": "La ficha no contiene denominación griega acreditada; podría ser una colección o edición"
+    },
+    {
+      "severity": "review",
+      "code": "greek_title_not_documented",
+      "id": "cts-tlg0061-tlg001",
+      "description": "La ficha no contiene denominación griega acreditada; podría ser una colección o edición"
+    },
+    {
+      "severity": "review",
+      "code": "greek_title_not_documented",
+      "id": "cts-tlg0061-tlg003",
+      "description": "La ficha no contiene denominación griega acreditada; podría ser una colección o edición"
+    },
+    {
+      "severity": "review",
+      "code": "greek_title_not_documented",
+      "id": "cts-tlg0062-tlg002",
+      "description": "La ficha no contiene denominación griega acreditada; podría ser una colección o edición"
+    },
+    {
+      "severity": "review",
+      "code": "greek_title_not_documented",
+      "id": "cts-tlg0061-tlg002",
+      "description": "La ficha no contiene denominación griega acreditada; podría ser una colección o edición"
+    },
+    {
+      "severity": "review",
+      "code": "greek_title_not_documented",
+      "id": "cts-tlg0062-tlg004",
+      "description": "La ficha no contiene denominación griega acreditada; podría ser una colección o edición"
+    },
+    {
+      "severity": "review",
+      "code": "greek_title_not_documented",
+      "id": "cts-tlg0062-tlg005",
+      "description": "La ficha no contiene denominación griega acreditada; podría ser una colección o edición"
+    },
+    {
+      "severity": "review",
+      "code": "greek_title_not_documented",
+      "id": "cts-tlg0062-tlg003",
+      "description": "La ficha no contiene denominación griega acreditada; podría ser una colección o edición"
+    },
+    {
+      "severity": "review",
+      "code": "greek_title_not_documented",
+      "id": "cts-tlg0062-tlg006",
+      "description": "La ficha no contiene denominación griega acreditada; podría ser una colección o edición"
+    },
+    {
+      "severity": "review",
+      "code": "greek_title_not_documented",
+      "id": "cts-tlg0062-tlg007",
+      "description": "La ficha no contiene denominación griega acreditada; podría ser una colección o edición"
+    },
+    {
+      "severity": "review",
+      "code": "greek_title_not_documented",
+      "id": "cts-tlg0062-tlg008",
+      "description": "La ficha no contiene denominación griega acreditada; podría ser una colección o edición"
+    },
+    {
+      "severity": "review",
+      "code": "greek_title_not_documented",
+      "id": "cts-tlg0018-tlg025",
+      "description": "La ficha no contiene denominación griega acreditada; podría ser una colección o edición"
+    },
+    {
+      "severity": "review",
+      "code": "greek_title_not_documented",
+      "id": "cts-tlg0018-tlg024",
+      "description": "La ficha no contiene denominación griega acreditada; podría ser una colección o edición"
+    },
+    {
+      "severity": "review",
+      "code": "greek_title_not_documented",
+      "id": "cts-tlg0018-tlg026",
       "description": "La ficha no contiene denominación griega acreditada; podría ser una colección o edición"
     },
     {

@@ -1,6 +1,6 @@
 {
   "schema": "vdl-federated-bibliotheca-inventory-v1",
-  "generated": "2026-11-27T13:37:53.327355+00:00",
+  "generated": "2026-11-27T14:12:49.744152+00:00",
   "method": "Master works and additional R2 works counted separately; edition relations can be many-to-many. Remote text URLs are declared, not live-verified. Unresolved editions are never merged automatically.",
   "counts": {
     "cataloguedWorks": 753,
@@ -13,7 +13,7 @@
     "r2AdditionalEditionRecords": 10,
     "r2UnlinkedEditionRecords": 0,
     "worksWithR2Edition": 114,
-    "worksWithLocalIndexedText": 325,
+    "worksWithLocalIndexedText": 329,
     "worksWithDeclaredRemoteIndex": 618
   },
   "unlinkedR2EditionIds": [],
@@ -3248,7 +3248,14 @@
       "author": "Vitruvio · edición de Diego A. Kurilo",
       "title": "De architectura · Recensio V514 (latín–castellano)",
       "catalogue": "github",
-      "locallyIndexedText": [],
+      "locallyIndexedText": [
+        {
+          "language": "es",
+          "path": "data/structured/recensio-es.json",
+          "sourceWorkId": "vitruvius",
+          "sourceType": "digital-index-no-ocr"
+        }
+      ],
       "declaredRemoteIndexedText": [],
       "r2FacsimileEditions": []
     },
@@ -3257,7 +3264,14 @@
       "author": "Vitruvio · edición de Diego A. Kurilo",
       "title": "De architectura · Recensio V554 (latín–francés)",
       "catalogue": "github",
-      "locallyIndexedText": [],
+      "locallyIndexedText": [
+        {
+          "language": "fr",
+          "path": "data/structured/recensio-fr.json",
+          "sourceWorkId": "vitruvius",
+          "sourceType": "digital-index-no-ocr"
+        }
+      ],
       "declaredRemoteIndexedText": [],
       "r2FacsimileEditions": []
     },
@@ -3266,7 +3280,14 @@
       "author": "Diego A. Kurilo · sobre Vitruvio",
       "title": "The Architect of Theory · V297 (inglés)",
       "catalogue": "github",
-      "locallyIndexedText": [],
+      "locallyIndexedText": [
+        {
+          "language": "en",
+          "path": "data/structured/theory-en.json",
+          "sourceWorkId": "vitruvius",
+          "sourceType": "digital-index-no-ocr"
+        }
+      ],
       "declaredRemoteIndexedText": [],
       "r2FacsimileEditions": []
     },
@@ -3275,7 +3296,14 @@
       "author": "Vitruvio · edición de Fritz Krohn",
       "title": "Vitruvii De architectura libri decem · Krohn 1912",
       "catalogue": "github",
-      "locallyIndexedText": [],
+      "locallyIndexedText": [
+        {
+          "language": "la",
+          "path": "data/critical-editions/krohn-1912-tei-loci.json",
+          "sourceWorkId": "krohn-1912-indexed",
+          "sourceType": "digital-index-no-ocr"
+        }
+      ],
       "declaredRemoteIndexedText": [],
       "r2FacsimileEditions": []
     },
