@@ -630,7 +630,7 @@ async function load(language,requestId){
    .finally(()=>clearTimeout(timeout));
  }
 
- if(ACADEMIC)try{corpus=await Promise.race([ACADEMIC.prepare(corpus),new Promise(resolve=>setTimeout(()=>resolve(corpus),2500))])}catch(err){console.warn("Notas editoriales opcionales no disponibles",err)}
+ if(ACADEMIC)try{corpus=await ACADEMIC.prepare(corpus)}catch(err){console.warn("Notas editoriales opcionales no disponibles",err)}
  if(requestId!==editionRequest)return;
  data=corpus;active=0;resultPage=0;searchIndex=editionSearchIndex;
  resourceRequest.then(index=>{if(requestId!==editionRequest||data!==corpus)return;searchIndex=index;if(search&&searchMode?.value!=="literal"){setQuery(input.value);renderSearch();select(active)}}).catch(()=>{});
