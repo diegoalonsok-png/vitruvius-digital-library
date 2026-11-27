@@ -35,6 +35,10 @@ async function load(path){
  if(cache.has(path))return cache.get(path);
  const promise=(async()=>{
   if(reader)return reader(path);
+  if(/^data\/classics-corpus\/[a-z0-9-]+\.json$/.test(path)&&typeof document!=="undefined"){
+   const mirror=await import("./classics-r2-mirror.mjs?v=20261127-1").then(m=>m.loadCertifiedMirror(path)).catch(()=>null);
+   if(mirror)return mirror;
+  }
   // Canonical cross-origin original text: reuse the existing guarded R2 loader.
   if(/^https:\/\/libros\.vitruvius-digital-library\.org\/corpus\/[a-z0-9-]+\.json$/.test(path)&&
      typeof globalThis.VitruviaData?.remoteJSON==="function")
