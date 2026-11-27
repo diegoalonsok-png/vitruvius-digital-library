@@ -892,6 +892,9 @@ function renderCard(d){
  const documented=window.VitruviaEvidence?.classify(d);
  const evidenceLabel=window.VitruviaEvidence?.label(d,S.lang)||"fuente enlazada";
  title.append(node("span","kind",(T()[d.type]||kindLabels[d.type]||d.type.toUpperCase())+" · "+evidenceLabel.toUpperCase()),node("h3",null,d.title));head.append(title);card.append(head);
+ const evidenceClass=academicEvidenceClass(d);
+ card.dataset.academicEvidence=evidenceClass;
+ if(evidenceClass==="research-record")card.append(node("div","meta-line",S.lang==="en"?"Bibliographic research record · peer review and full text not independently verified":S.lang==="fr"?"Notice bibliographique de recherche · évaluation par les pairs et texte intégral non vérifiés":"Registro bibliográfico de investigación · arbitraje y texto íntegro no verificados"));
  card.dataset.evidence=documented?.key||"source";
  card._vitruviaRecord=d;card.dataset.year=d.year||"";card.dataset.cited=d.cited||0;
  if(d.author)card.append(node("div","author",d.author));
@@ -913,7 +916,7 @@ function renderCard(d){
    referenceLabel:"Traducción de la edición "+(d.edition||"documentada")+" · locus "+(d.locus||"")
   });
  }
- if(d.aiEvidence){card.classList.add("ai-evidence-card");card.append(node("div","ai-evidence-label",d.aiSemantic?"Reranking neuronal + texto documentado":"BM25 · búsqueda textual de respaldo"))}
+ if(d.aiEvidence){card.classList.add("ai-evidence-card");card.append(node("div","ai-evidence-label",d.aiSemantic?"Reranking neuronal + texto documentado":"BM25 · recuperación textual calibrada"))}
  if(d.meta)card.append(node("div","meta-line",d.meta));
  const acts=node("div","actions");
  if(d.type==="book"&&d.localReader&&window.VitruviaClassicsViewer){
