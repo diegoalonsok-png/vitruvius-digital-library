@@ -870,18 +870,19 @@ main.library .bibliotheca-resources-2026{display:none!important}
   return r.json();
  }).then(d=>{
   const total=d.obrasTotalesDeclaradas;
-  const versiones=d.versionesTextuales;
+  const versiones=d.versionesTextualesRegistradas??d.versionesTextuales;
+  const registrados=d.obrasConTextoRegistrado;
   const indexadas=d.obrasConTextoIndexado;
   if(d.schema!=="vdl-cifras-corpus-1" ||
-     ![total,versiones,indexadas].every(n=>Number.isSafeInteger(n)&&n>=0) ||
+     ![total,versiones,indexadas,registrados].every(n=>Number.isSafeInteger(n)&&n>=0) ||
      total<indexadas)throw Error("Cifras inválidas");
   const number=n=>n.toLocaleString("es-AR");
   if(footer){
-   footer.textContent=number(total)+" obras catalogadas · "+number(indexadas)+" con texto indexado";
+   footer.textContent=number(total)+" obras catalogadas · "+number(registrados)+" con texto registrado · "+number(indexadas)+" con índice léxico";
    footer.title="Inventario actualizado: "+(d.actualizado||"sin fecha");
   }
   if(summary){
-   summary.textContent=number(total)+" obras catalogadas · "+number(versiones)+" versiones textuales · "+number(indexadas)+" con texto indexado";
+   summary.textContent=number(total)+" obras catalogadas · "+number(versiones)+" versiones textuales registradas · "+number(registrados)+" con texto registrado · "+number(indexadas)+" con índice léxico";
    summary.title="Inventario actualizado: "+(d.actualizado||"sin fecha")+". Las versiones no se suman a las obras.";
    summary.hidden=false;
   }
