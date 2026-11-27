@@ -153,18 +153,107 @@ async function corpus(query){
  }
  return {data:await corpusCache.get(key),selection};
 }
+// Domain vocabulary calibrated against V514. Related terms are retrieval
+// hints, NOT asserted synonyms, translations or evidence of textual identity.
+// No locus or result ID is embedded in the expansion vocabulary.
+const architecturalConcepts=[
+ [
+  "resistencia estructural",
+  "firmitas",
+  "firmitatis",
+  "solidez",
+  "cimientos",
+  "fundamentorum"
+ ],
+ [
+  "funcionalidad",
+  "utilitas",
+  "utilitatis",
+  "utilidad"
+ ],
+ [
+  "belleza arquitectonica",
+  "venustas",
+  "venustatis",
+  "belleza"
+ ],
+ [
+  "hormigon hidraulico",
+  "puzolana",
+  "polvo volcanico",
+  "vesuvium",
+  "vesubio",
+  "bayas",
+  "baianis"
+ ],
+ [
+  "antropometria",
+  "proporciones humanas",
+  "corpus hominis",
+  "cuerpo del hombre",
+  "corporis"
+ ],
+ [
+  "acueducto",
+  "acueductos",
+  "conduccion de agua",
+  "conducciones de agua",
+  "ductus aquae",
+  "fistulis",
+  "canales"
+ ],
+ [
+  "urbanismo eolico",
+  "viento urbano",
+  "vientos",
+  "venti",
+  "callejones",
+  "angiportis"
+ ],
+ [
+  "formacion del arquitecto",
+  "educacion del arquitecto",
+  "architecti scientia",
+  "disciplinis",
+  "ratiocinatione",
+  "fabrica"
+ ],
+ [
+  "almagre",
+  "ocre rojo",
+  "rubricae",
+  "sinope",
+  "almagres"
+ ],
+ [
+  "gnomonica",
+  "gnomonis",
+  "gnomon",
+  "sombra equinoccial",
+  "equinoccial"
+ ]
+];
+function academicTerms(query,workId){
+ const exact=normalize(query),weights=new Map([...new Set(terms(query))].map(t=>[t,1]));
+ if(workId!=="vitruvius")return weights;
+ for(const group of architecturalConcepts){
+  if(!group.some(x=>(" "+exact+" ").includes(" "+normalize(x)+" ")))continue;
+  for(const x of group)for(const t of terms(x))if(!weights.has(t))weights.set(t,.35);
+ }
+ return weights;
+}
 function lexicalRanking(q,data,selection={}){
- const queryTerms=[...new Set(terms(q))];const n=data.documents.length;
+ const queryTerms=academicTerms(q,null),architecturalTerms=academicTerms(q,"vitruvius");const n=data.documents.length;
  const exact=normalize(q);
  const scores=data.documents.map(doc=>{
   let score=0;
-  for(const term of queryTerms){
+  for(const [term,weight] of (doc.workId==="vitruvius"?architecturalTerms:queryTerms)){
    const freq=doc.tf.get(term)||0;
    if(!freq)continue;
    const df=data.df.get(term)||0;
    const idf=Math.log(1+(n-df+.5)/(df+.5));
    const k1=1.4,b=.72;
-   score+=idf*(freq*(k1+1))/(freq+k1*(1-b+b*doc.length/data.avgLength));
+   score+=weight*idf*(freq*(k1+1))/(freq+k1*(1-b+b*doc.length/data.avgLength));
   }
   if(exact.length>4&&normalize(doc.excerptText).includes(exact))score+=75;
   if(selection.locus&&doc.locus.toLowerCase()===selection.locus&&doc.workId==="vitruvius")score+=10000;
@@ -334,5 +423,5 @@ async function rank(query,docs,{limit=30,candidates=40}={}){
   notify("IA semántica activa en el visor.","success");return {mode:"neural",rows};
  }catch(e){return {mode:"bm25-fallback",rows:pool.slice(0,limit),warning:String(e.message||e)}}
 }
-window.VitruviaAI={search,rank,model:MODEL,version:"1.2-academic-targeted",sourceSelection};
+window.VitruviaAI={search,rank,model:MODEL,version:"1.3-academic-calibrated",sourceSelection,academicTerms};
 })();
