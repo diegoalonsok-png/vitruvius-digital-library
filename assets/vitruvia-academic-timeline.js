@@ -42,7 +42,7 @@
  const low=fullLow+Math.round(travel*Math.max(0,Math.min(1,position)));
  return {low,high:low+span,range:span,travel};
 }
- function automaticZoom(span){return span>800?8:span>200?4:1}
+ function automaticZoom(span){return span>800?8:span>200?4:span>2?2:1}
  function layoutMarkers(items,low,range,width,zoom=1){
   const safeWidth=Math.max(1,Number(width)||1);
   const diameter=24,gap=11;
@@ -248,7 +248,9 @@
   }
   detail.append(contents);detail.hidden=false;
  }
- function draw(){
+ let panDrag=null,panFrame=0;
+ function draw(force=false){
+  if(panDrag&&!force)return;
   if(!state.query){root.hidden=true;root.replaceChildren();return}
   const events=collect();
   root.replaceChildren();root.hidden=false;
@@ -400,23 +402,35 @@
   pan.style.cssText="display:grid;gap:6px;margin:12px 0;font:12px/1.5 system-ui,sans-serif";
   const panLabel=el("span",null,L("Período visible","Visible period","Période visible")+": "+showYear(low)+" – "+showYear(high));
   const slider=el("input");slider.type="range";slider.min="0";slider.max="1000";slider.step="1";
-  slider.value=String(Math.round(state.position*1000));slider.disabled=travel===0;
+  slider.value=String(Math.round(state.position*1000));slider.disabled=fullHigh-fullLow<=1;
   slider.setAttribute("aria-label",L("Desplazar período cronológico","Pan chronology period","Déplacer la période chronologique"));
   slider.setAttribute("aria-valuetext",showYear(low)+" – "+showYear(high));
   slider.style.cssText="width:100%;margin:0;accent-color:#879da9";
+  const navigationZoom=travel>0?zoom:2;
   slider.addEventListener("input",()=>{
-   const w=dateWindow(fullLow,fullHigh,zoom,Number(slider.value)/1000);
+   const w=dateWindow(fullLow,fullHigh,navigationZoom,Number(slider.value)/1000);
    panLabel.textContent=L("Período visible","Visible period","Période visible")+": "+showYear(w.low)+" – "+showYear(w.high);
    slider.setAttribute("aria-valuetext",showYear(w.low)+" – "+showYear(w.high));
   });
   slider.addEventListener("change",()=>{
-   state.zoom=zoom;state.position=Number(slider.value)/1000;
+   state.zoom=navigationZoom;state.position=Number(slider.value)/1000;
    const focused=document.activeElement===slider;
    draw();if(focused)root.querySelector(".vat-pan input")?.focus({preventScroll:true});
   });
+  // Capture the pointer on the persistent root, not the recreated slider.
+  // Repaint the actual date window during dragging, including touch.
+  slider.style.touchAction="none";
+  slider.addEventListener("pointerdown",e=>{
+   if(slider.disabled||e.button!==0)return;
+   e.preventDefault();
+   const rect=slider.getBoundingClientRect();
+   panDrag={id:e.pointerId,left:rect.left,width:Math.max(1,rect.width),zoom:navigationZoom};
+   root.setPointerCapture?.(e.pointerId);
+   updatePan(e);
+  });
   const extent=el("span","vat-pan-extent");extent.style.cssText="display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap";
   extent.append(el("span",null,showYear(fullLow)),el("span",null,L("Período completo","Full period","Période complète")+" · "+windowEvents.length+"/"+visibleEvents.length+" "+L("hitos","milestones","jalons")),el("span",null,showYear(fullHigh)));
-  if(!travel)panLabel.textContent+=" · "+L("Amplíe (+) para desplazarse","Zoom in (+) to pan","Zoomez (+) pour vous déplacer");
+  if(!travel&&fullHigh-fullLow>1)panLabel.textContent+=" · "+L("Arrastre para ampliar y desplazarse","Drag to zoom and pan","Glissez pour zoomer et déplacer");
   pan.append(panLabel,slider,extent);root.append(pan,detail);
   if(lifeScope&&outsideEvents.length){
    const extra=el("details","vat-outside");
@@ -462,6 +476,23 @@
    e.preventDefault();navigate(e.key==="ArrowRight"?1:-1);
   });
  }
+ function updatePan(e){
+  if(!panDrag||e.pointerId!==panDrag.id)return;
+  state.zoom=panDrag.zoom;
+  state.position=Math.max(0,Math.min(1,(e.clientX-panDrag.left)/panDrag.width));
+  if(!panFrame)panFrame=requestAnimationFrame(()=>{panFrame=0;draw(true)});
+ }
+ root.addEventListener("pointermove",updatePan);
+ function endPan(e){
+  if(!panDrag||e.pointerId!==panDrag.id)return;
+  if(e.type==="pointerup")updatePan(e);
+  panDrag=null;if(panFrame){cancelAnimationFrame(panFrame);panFrame=0}
+  if(root.hasPointerCapture?.(e.pointerId))root.releasePointerCapture(e.pointerId);
+  draw(true);root.querySelector(".vat-pan input")?.focus({preventScroll:true});
+ }
+ root.addEventListener("pointerup",endPan);
+ root.addEventListener("pointercancel",endPan);
+ root.addEventListener("lostpointercapture",endPan);
  // Redraw only when the available width changes, not when card height grows.
  let fittedWidth=0;
  if(typeof ResizeObserver!=="undefined"){
@@ -475,6 +506,7 @@
   window.addEventListener("resize",()=>{if(!root.hidden&&state.query)draw()},{passive:true});
  }
  function reset(q){
+  panDrag=null;if(panFrame){cancelAnimationFrame(panFrame);panFrame=0}
   state.token++;state.query=String(q||"").trim().slice(0,160);state.zoom=null;state.position=0;
   state.authority=null;state.works=[];state.albums=[];state.rows=[];state.selected="";state.rowSignature="";state.pendingWorks=null;
   place();draw();
@@ -548,5 +580,5 @@
  }).observe(document.documentElement,{attributes:true,attributeFilter:["lang"]});
  const snapshot=window.VitruviaSearchSnapshot;
  if(snapshot?.query)reset(snapshot.query);
- window.VitruviaAcademicTimeline={collect,layoutMarkers,dateWindow,automaticZoom,recordYear,version:"2.4-catalogue-evidence"};
+ window.VitruviaAcademicTimeline={collect,layoutMarkers,dateWindow,automaticZoom,recordYear,version:"2.5-live-pan"};
 })();

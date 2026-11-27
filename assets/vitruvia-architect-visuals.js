@@ -64,7 +64,7 @@ async function drawings(target,work){
   // A tourist map labelled simply «plan» is not an architectural floor plan.
   const technical=/floor.?plan|ground.?floor|upper.?floor|grundriss|pianta|planta|planimetr|architectural|architectur|HABS|section|seccion|corte|schnitt|coupe|elevation|alzato|rez.de.chaussee/i.test(title+' '+description);
   const mapOnly=/tourist|tourisme|environs|location map|locator map|carte routiere|plan de situation/i.test(title+' '+description)&&!type.test(title.replace(/\bplan\b/ig,''));
-  const matched=terms.filter(term=>words(title).includes(term)).length>=Math.min(2,terms.length);
+  const matched=terms.length>0&&terms.every(term=>words(title+' '+description).includes(term));
   return terms.length&&matched&&(type.test(title)||/HABS.*sheet|measured drawing/i.test(title+' '+description))&&technical&&!mapOnly&&/^image\/(jpeg|png|webp|gif|svg\+xml)$/.test(String(info?.mime||''))&&
    /^https:\/\//.test(info?.thumburl||'')&&/^https:\/\/commons\.wikimedia\.org\//.test(info?.descriptionurl||'')
    ?{title,preview:info.thumburl,href:info.descriptionurl,kind:/floor.?plan|ground.?floor|upper.?floor|grundriss|pianta|planta|planimetr/i.test(title+' '+description)?'plan':/section|seccion|corte|schnitt|coupe|sezione/i.test(title+' '+description)?'section':'elevation'}:null;
@@ -75,10 +75,7 @@ async function drawings(target,work){
   plate.append(element('figcaption',null,x.title));
   plate.append(a(localized('Ficha, autor y licencia ↗','Record, creator and license ↗','Fiche, auteur et licence ↗'),x.href));target.append(plate);
  }
- if(!items.length)target.append(element('p','context-note',localized(
-  'No se identificaron planos, cortes ni fachadas de esta obra con suficiente certeza.',
-  'No confidently identified plans, sections or elevations were found for this building.',
-  'Aucun plan, coupe ou élévation identifié avec une certitude suffisante.')));
+ if(!items.length&&work.url)target.append(a(localized('Documentación de la obra · fuente','Building documentation · source','Documentation de l’édifice · source'),work.url));
  const search='https://commons.wikimedia.org/w/index.php?'+new URLSearchParams({title:'Special:MediaSearch',type:'image',search:name+' plan section elevation'});
  target.append(a(localized('Consultar más láminas en Commons ↗','Find more documentary drawings ↗','Chercher davantage de dessins ↗'),search));
 }
@@ -92,16 +89,16 @@ function enhance(item,work){
  // Planta declarada en Wikidata (P3311) para esta obra: se muestra sin desplegar nada.
  if(/^https:\/\/commons\.wikimedia\.org\/wiki\/Special:FilePath\//.test(work.plan||''))
   content.append(commonsPlate(item,work.plan,localized('Planta · ','Plan · ','Plan · ')+work.title,'architecture-plan-link'));
- const details=element('details','architecture-work-drawings');
- const toggle=element('summary',null,localized('Plantas, cortes y fachadas','Plans, sections and elevations','Plans, coupes et façades'));
- details.append(toggle);
+ const box=element('div','architecture-plate-stack');
+ box.style.cssText='display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,155px),1fr));gap:10px;grid-column:1/-1';
+ item.append(box);
  let requested=false;
- details.addEventListener('toggle',()=>{if(!details.open||requested)return;requested=true;
-  const box=element('div','architecture-plate-stack');details.append(box);
-  box.append(element('p','context-note',localized('Buscando documentación de esta obra…','Finding drawings for this building…','Recherche des dessins de cet édifice…')));
-  void drawings(box,work).catch(()=>{if(box.isConnected)box.replaceChildren(element('p','context-note',localized('La fuente no responde.','Source unavailable.','Source indisponible.')))});
- });item.append(details);
- if(work.previewDrawings)details.open=true;
+ const loadDrawings=()=>{if(requested||!item.isConnected)return;requested=true;
+  void drawings(box,work).catch(()=>{if(box.isConnected)box.replaceChildren(a(localized('Consultar documentación de la obra','Consult building documentation','Consulter la documentation'),work.url||work.href))});
+ };
+ if(typeof IntersectionObserver!=='undefined'){
+  const watcher=new IntersectionObserver(entries=>{if(entries.some(x=>x.isIntersecting)&&item.isConnected){watcher.disconnect();loadDrawings()}},{rootMargin:'300px'});watcher.observe(item);
+ }else queueMicrotask(loadDrawings);
  // Load photos when a card is about to enter the visible right-hand scroll pane.
  if(typeof IntersectionObserver!=='undefined'){
   const observer=new IntersectionObserver(entries=>{if(entries.some(x=>x.isIntersecting)){observer.disconnect();void photo(item,work).catch(()=>{})}},{rootMargin:'220px'});

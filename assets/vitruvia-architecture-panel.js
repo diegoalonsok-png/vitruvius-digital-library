@@ -206,6 +206,31 @@ function constructedWorks(id){
    UNESCO World Heritage Centre entry 1496 gives these eight component sites.
    This is a *curated verified subset*, not a claim of complete works. */
 const certifiedSites={
+ 'le corbusier':{source:'Fondation Le Corbusier · catálogo de obras realizadas',url:'https://www.fondationlecorbusier.fr/en/le-corbusier/works/architecture/achievements/',items:[
+ ['Villa Fallet','1906–1907','La Chaux-de-Fonds','Villa Fallet'],
+ ['Villa Jeanneret-Perret','1911–1912','La Chaux-de-Fonds','Villa Jeanneret-Perret'],
+ ['Villa Schwob','1916–1917','La Chaux-de-Fonds','Villa Schwob'],
+ ['Maisons La Roche-Jeanneret','1923–1925','Paris','Maison La Roche','https://www.fondationlecorbusier.fr/en/work-architecture/achievements-maisons-la-roche-jeanneret-paris-france-1923-1925/'],
+ ['Cité Frugès','1924–1926','Pessac','Cité Frugès'],
+ ['Maison Guiette','1925–1927','Antwerp','Maison Guiette'],
+ ['Villa Stein-de-Monzie','1926–1928','Garches','Villa Stein'],
+ ['Maisons de la Weissenhof-Siedlung','1927','Stuttgart','Weissenhof Estate'],
+ ['Villa Savoye','1928–1931','Poissy','Villa Savoye','https://www.fondationlecorbusier.fr/en/work-architecture/achievements-villa-savoye-and-gardeners-lodge-poissy-france-1928-1931/'],
+ ['Centrosoyus','1928–1935','Moscow','Centrosoyuz building'],
+ ['Pavillon Suisse','1930–1933','Paris','Pavillon Suisse'],
+ ['Immeuble Molitor','1931–1934','Paris','Immeuble Molitor'],
+ ['Unité d’habitation de Marseille','1945–1952','Marseille','Unité d’habitation of Marseille','https://www.fondationlecorbusier.fr/en/work-architecture/achievements-unite-dhabitation-marseille-france-1945-1952/'],
+ ['Maison du Docteur Curutchet','1949','La Plata','Curutchet House','https://www.fondationlecorbusier.fr/en/work-architecture/achievements-docteur-curutchets-house-la-plata-argentina-1949/'],
+ ['Chapelle Notre-Dame-du-Haut','1950–1955','Ronchamp','Notre-Dame du Haut','https://www.fondationlecorbusier.fr/en/work-architecture/achievements-notre-dame-du-haut-chapel-ronchamp-france-1950-1955/'],
+ ['Chandigarh','1950–1965','India','Chandigarh Capitol Complex'],
+ ['Cabanon','1951','Roquebrune-Cap-Martin','Cabanon de Le Corbusier'],
+ ['Maisons Jaoul','1951–1955','Neuilly-sur-Seine','Maisons Jaoul'],
+ ['Couvent Sainte-Marie de la Tourette','1953–1960','Éveux','Sainte Marie de La Tourette'],
+ ['National Museum of Western Art','1955','Tokyo','National Museum of Western Art'],
+ ['Pavillon Philips','1957–1958','Brussels','Philips Pavilion'],
+ ['Carpenter Center for the Visual Arts','1959–1969','Cambridge','Carpenter Center for the Visual Arts'],
+ ['Église Saint-Pierre','1960–2006','Firminy','Saint-Pierre, Firminy']
+ ]},
  'frank lloyd wright':{
   source:'UNESCO · World Heritage Centre · n.º 1496 (2019)',
   url:'https://whc.unesco.org/en/list/1496',
@@ -328,16 +353,12 @@ function listConstructedWorks(root,name,id,valid){
   window.VitruviaArchitectVisuals?.enhance(item,{...work,eagerPhoto:year!==99999&&year<1950});
  }
  if(certified){
-  section.append(el('p','context-note',localized(
-   'Selección documental: ocho edificios incluidos en la Lista del Patrimonio Mundial de la UNESCO (2019). No es el catálogo completo del arquitecto.',
-   'Documented selection: eight buildings inscribed on the UNESCO World Heritage List (2019). This is not a complete catalogue.',
-   'Sélection documentaire : huit édifices inscrits au patrimoine mondial de l’UNESCO en 2019. Il ne s’agit pas d’un catalogue complet.'
-  )));
-  for(const [title,date,place] of certified.items){
+  section.append(el('p','context-note',certified.source+' · '+localized('Selección inicial de obras documentadas; fechas de proyecto según la fuente.','Initial documented selection; project dates according to the source.','Sélection initiale documentée ; dates selon la source.')));
+  for(const [title,date,place,alias,source] of certified.items){
    const [description,photoTitle]=architecturalNotes[normalize(title)]||[];
-   addWork({title,date,place,description,photoTitle,url:certified.url},null);
+   addWork({title,date,place,description,photoTitle:alias||photoTitle,url:source||certified.url},certified.source);
   }
-  section.append(link(localized('Fuente: ficha oficial de UNESCO ↗','Source: UNESCO official record ↗','Source : fiche officielle UNESCO ↗'),certified.url));
+  section.append(link(localized('Catálogo institucional completo ↗','Full institutional catalogue ↗','Catalogue institutionnel complet ↗'),certified.url));
  }
  const status=el('p','context-note',localized('Consultando otras obras documentadas…','Checking additional documented works…','Recherche d’autres œuvres documentées…'));
  section.append(status);
@@ -378,7 +399,7 @@ function render(panel,query,rows,stillCurrent){
   localized('Arquitectura · planos y cortes','Architecture · drawings and sections','Architecture · plans et coupes'));
  panel.append(area);
  const apiId=subject.identity?.wikidataId;
- if(subject.kind==='person')listConstructedWorks(area,subject.subject,apiId,stillCurrent);
+ if(subject.kind==='person'){listConstructedWorks(area,subject.subject,apiId,stillCurrent);return;}
  if(subject.kind==='building'&&subject.identity){
   const identified=subject.identity,name=subject.subject;
   const section=el('section','architecture-built-list');
