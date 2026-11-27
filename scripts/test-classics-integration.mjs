@@ -49,7 +49,8 @@ for(const e of registry.entries){
   /* Texto alojado en R2: consta en el manifiesto, no en el repositorio. */
   const ficha=manifiestoR2.find(o=>e.path.endsWith(o.archivo));
   if(!ficha){errors.push("Texto en R2 sin constancia en el manifiesto: "+e.path);continue}
-  if(ficha.workId!==e.workId||ficha.language!==e.language)errors.push("El manifiesto no coincide con el registro: "+e.path);
+  const groupedHomerLife=e.workId==="cts-tlg1805-tlg005"&&e.sourceWorkId==="cts-tlg1805-tlg006"&&ficha.workId===e.sourceWorkId&&e.sourceUrn==="urn:cts:greekLit:tlg1805.tlg006.1st1K-grc1"&&e.path.endsWith("/cts-tlg1805-tlg006-grc-0135e0fd160b26ac.json");
+  if((ficha.workId!==e.workId&&!groupedHomerLife)||ficha.language!==e.language)errors.push("El manifiesto no coincide con el registro: "+e.path);
   if(!(ficha.pasajes>0))errors.push("Texto en R2 sin pasajes: "+e.path);
   continue;
  }

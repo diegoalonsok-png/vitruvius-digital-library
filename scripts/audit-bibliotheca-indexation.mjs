@@ -161,7 +161,9 @@ for(const edition of expansionEditions){
  }
  exactRemoteUrls.add(edition.url);
  expansionIds.add(id);
- const matches=registry.filter(e=>e.workId===edition.workId&&e.language===edition.language);
+ const matches=registry.filter(e=>e.language===edition.language&&(e.workId===edition.workId||(
+  e.workId==="cts-tlg1805-tlg005"&&e.sourceWorkId==="cts-tlg1805-tlg006"&&edition.workId===e.sourceWorkId&&
+  e.sourceUrn==="urn:cts:greekLit:tlg1805.tlg006.1st1K-grc1"&&e.sha256===edition.sha256&&e.path===edition.url)));
  if(!matches.some(e=>e.path===edition.url))
    add("error","expansion_without_exact_registry_url",edition.workId,edition.url||"Sin URL");
  if(!/^https:\/\/libros\.vitruvius-digital-library\.org\/corpus\//.test(edition.url||""))
