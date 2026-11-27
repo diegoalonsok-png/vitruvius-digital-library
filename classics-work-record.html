@@ -117,7 +117,7 @@ async function ready(){
   ])if(![...selected.options].some(o=>o.value===id))selected.append(new Option(title,id));
   selected.append(new Option("Diego A. Kurilo · Vitruvius Digital Library · DOI del proyecto","vitruvius-digital-library"));
   // Auditoría complementaria: una única ficha académica por identificador.
-  const auditRows=new Map(),integrityRows=new Map();let latestStructuralAudit=null;
+  const auditRows=new Map(),integrityRows=new Map();let latestStructuralAudit=null,titleAuthorities={};
   const readJSON=async path=>{const res=await fetch(path,{cache:"no-cache"});if(!res.ok)throw Error("HTTP "+res.status);return res.json()};
   try{
     const idx=await readJSON("data/bibliotheca-audit/index.json");
@@ -127,6 +127,7 @@ async function ready(){
     for(const row of auditRows.values())if(!options.has(row.id)){selected.append(new Option(row.author+" · "+row.title,row.id));options.add(row.id)}
   }catch(e){console.warn("Control bibliológico no disponible",e)}
   try{const a=await readJSON("data/bibliotheca-audit/integrity.json");latestStructuralAudit=a.latestStructuralAudit||null;for(const row of a.records)integrityRows.set(row.id,row)}catch(e){console.warn("Control de integridad no disponible",e)}
+  try{titleAuthorities=(await readJSON("data/classics-corpus/title-search-aliases-multilingual.json")).titleAuthorities||{}}catch(e){console.warn("Autoridades de títulos no disponibles",e)}
   const langNames={grc:"Griego antiguo",la:"Latín",it:"Italiano",en:"Inglés",es:"Castellano",fr:"Francés"};
   const label=l=>langNames[l]||l||"No consignado";
   const txStatus={registered:"Traducción textual registrada",facsimile_declared:"Traducción en facsímil declarado",external_declared:"Traducción externa registrada",not_documented:"Sin traducción documentada"};
@@ -136,6 +137,11 @@ async function ready(){
     const add=(tag,txt,parent=root)=>{const el=document.createElement(tag);el.textContent=txt;parent.append(el);return el};
     const line=(k,v)=>{if(v==null||v==="")return;const p=document.createElement("p"),s=document.createElement("strong");s.textContent=k+": ";p.append(s,document.createTextNode(String(v)));root.append(p)};
     add("h2","Control bibliológico e integridad textual");
+    const authority=titleAuthorities[id];
+    if(authority){line("Título bibliográfico acreditado",authority.displayTitle||authority.greekTitle);line("Reserva de título",authority.note);if(/^https:\/\//.test(authority.source||"")){const p=add("p","Fuente de autoridad: ");const a=add("a","Consultar registro bibliográfico",p);a.href=authority.source;}}
+    if(r.originalLanguage==="grc"&&!/\p{Script=Greek}/u.test(r.title||"")&&!authority?.greekTitle){line("Título griego","Pendiente de acreditación. El título latino o internacional se conserva como denominación bibliográfica; no se traduce automáticamente.");}
+    const urns=[...new Set((r.versions||[]).map(v=>v.sourceUrn).filter(u=>/^urn:cts:(?:greekLit|latinLit):[A-Za-z0-9_-]+\.[A-Za-z0-9_-]+\.[A-Za-z0-9_-]+$/.test(u||"")))];
+    if(urns.length){const d=document.createElement("details");add("summary","Identificadores CTS y autoridades de edición ("+urns.length+")",d);for(const urn of urns){const p=add("p","",d);const a=add("a",urn,p);a.href="https://atlas.perseus.tufts.edu/library/"+encodeURIComponent(urn)+"/";}add("p","Referencias de autoridad, no certificación de resolución externa ni de equivalencia entre ediciones.",d);root.append(d);}
     if(id==="cts-tlg1805-tlg005"){line("Identificación de textos","Perseus registra dos textos homónimos Vita quinta (tlg1805.tlg005 y tlg1805.tlg006), ambos en la edición de Thomas W. Allen, Homeri Opera (Oxford, 1912). Se mantienen como fuentes distintas en esta ficha agrupada; no se presume identidad textual.");const p=add("p","Fuente de autoridad: ");const a=add("a","Vitae Homeri · Perseus",p);a.href="https://atlas.perseus.tufts.edu/library/urn:cts:GreekLit:tlg1805/";}
     line("Lengua original",label(r.originalLanguage));line("Variedad histórica",r.languageVariety.label+" · "+(r.languageVariety.status==="pendiente"?"pendiente de determinar":"clasificación orientativa"));
     line("Fundamento",r.languageVariety.basis);line("Traducciones",txStatus[r.translation.status]);line("Idiomas de traducción registrados",r.translation.registeredLanguages.map(label).join(", ")||"No documentados");
