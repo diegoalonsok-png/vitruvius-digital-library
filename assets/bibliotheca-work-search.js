@@ -560,6 +560,8 @@ function render(){
  if(document.body.classList.contains("bibliotheca-plain-list")){
   const searched=rawQuery.trim();
   list.replaceChildren();more.hidden=true;count.textContent="";
+  // Do not render the entire catalogue on initial load or after clearing.
+  if(!searched){model.region.hidden=true;return;}
   const initial=singleLetter(searched);
   const browsing=!searched||Boolean(initial);
   const alphabetical=(a,b)=>a.w.title.localeCompare(b.w.title,"es",{sensitivity:"base",numeric:true})||a.w.author.localeCompare(b.w.author,"es",{sensitivity:"base"})||a.w.id.localeCompare(b.w.id);
