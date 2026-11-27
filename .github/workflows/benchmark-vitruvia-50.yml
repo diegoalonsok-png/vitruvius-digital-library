@@ -1,4 +1,4 @@
-name: Medición pública de 50 búsquedas Vitruvia
+name: Medición pública de 100 búsquedas Vitruvia
 on:
   push:
     branches: [main]
@@ -11,7 +11,7 @@ permissions:
 jobs:
   public-benchmark:
     runs-on: ubuntu-24.04
-    timeout-minutes: 18
+    timeout-minutes: 30
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -21,13 +21,15 @@ jobs:
         run: |
           npm install --no-save playwright@1.56.1
           npx playwright install --with-deps chromium
-      - name: Medir apertura y 50 consultas reales sin alterar el sitio
+      - name: Medir apertura y 100 consultas reales sin alterar el sitio
+        env:
+          VITRUVIA_BENCHMARK_COUNT: '100'
         run: node scripts/benchmark-vitruvia-50.mjs
       - name: Conservar promedios y pruebas individuales
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: vitruvia-50-search-timings
-          path: reports/vitruvia-50-search-timings.json
+          name: vitruvia-100-search-timings
+          path: reports/vitruvia-100-search-timings.json
           if-no-files-found: warn
           retention-days: 30
