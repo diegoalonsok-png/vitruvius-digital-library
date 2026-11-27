@@ -385,7 +385,14 @@
           "glyphs": null,
           "trans": "kꜣ-nḫt qꜣj-šwtj",
           "gloss": "Toro poderoso, alto de plumas (forma de los primeros años; después mrj-jtn, «amado de Atón»)",
-          "witness": "Talatat de Karnak; estelas fronterizas de Amarna"
+          "witness": "Talatat de Karnak; estelas fronterizas de Amarna",
+          "variants": [
+            {
+              "period": "Años 5–17",
+              "trans": "mrj-jtn",
+              "gloss": "Amado de Atón"
+            }
+          ]
         },
         "prenomen": {
           "glyphs": "𓇳𓄤𓆣𓏥𓇳𓌡𓈖",
@@ -399,9 +406,45 @@
           "mdc": "M17-X1:N35:N5-G25-Aa1:N35",
           "trans": "ꜣḫ-n-jtn",
           "gloss": "Beneficioso para Atón (nombre adoptado hacia el año 5)",
-          "witness": "Estelas fronterizas de Amarna. Nombre anterior: jmn-ḥtp nṯr-ḥqꜣ-wꜣst, «Amenhotep, dios y gobernante de Tebas»"
+          "witness": "Estelas fronterizas de Amarna. Nombre anterior: jmn-ḥtp nṯr-ḥqꜣ-wꜣst, «Amenhotep, dios y gobernante de Tebas»",
+          "variants": [
+            {
+              "period": "Años 1–5",
+              "trans": "jmn-ḥtp",
+              "gloss": "Amón está satisfecho"
+            }
+          ]
+        },
+        "nebty": {
+          "glyphs": null,
+          "trans": "wr-nsyt m ꜣḫt-jtn",
+          "gloss": "De gran realeza en Ajetatón",
+          "witness": "Ronald J. Leprohon, The Great Name (2013), p. 104–105. Traducción castellana editorial; grafía pendiente de cotejo epigráfico.",
+          "source": "https://www.sbl-site.org/wp-content/uploads/2024/11/GreatName_Leprohan_SBL.pdf",
+          "variants": [
+            {
+              "period": "Años 1–5",
+              "trans": "wr-nsyt m jpt-swt",
+              "gloss": "De gran realeza en Karnak"
+            }
+          ]
+        },
+        "golden": {
+          "glyphs": null,
+          "trans": "wṯs rn n jtn",
+          "gloss": "El que enaltece el nombre de Atón",
+          "witness": "Ronald J. Leprohon, The Great Name (2013), p. 104–105. Traducción castellana editorial; grafía pendiente de cotejo epigráfico.",
+          "source": "https://www.sbl-site.org/wp-content/uploads/2024/11/GreatName_Leprohan_SBL.pdf",
+          "variants": [
+            {
+              "period": "Años 1–5",
+              "trans": "wṯs-ḫꜥw m jwnw šmꜥw",
+              "gloss": "De elevadas apariciones en la Heliópolis meridional"
+            }
+          ]
         }
-      }
+      },
+      "authorityUrl": "https://www.sbl-site.org/wp-content/uploads/2024/11/GreatName_Leprohan_SBL.pdf"
     },
     {
       "id": "tutankhamun",
@@ -437,9 +480,33 @@
           "mdc": "M17-Y5-N35-X1-G43-X1-S34-S38-O28-M26",
           "trans": "twt-ꜥnḫ-jmn ḥqꜣ-jwnw-šmꜥ",
           "gloss": "Imagen viviente de Amón, gobernante de la Heliópolis del Sur (Tebas). Forma anterior: twt-ꜥnḫ-jtn",
-          "witness": "Ajuar de KV62 (trono, cofres, capillas)"
+          "witness": "Ajuar de KV62 (trono, cofres, capillas)",
+          "variants": [
+            {
+              "period": "Nombre anterior",
+              "trans": "twt-ꜥnḫ-jtn",
+              "gloss": "Imagen viviente de Atón"
+            }
+          ]
+        },
+        "nebty": {
+          "glyphs": null,
+          "trans": "nfr-ḥpw sgrḥ tꜣwy",
+          "gloss": "De leyes excelentes, pacificador de las Dos Tierras",
+          "witness": "Ronald J. Leprohon, The Great Name (2013), p. 106. Traducción castellana editorial; grafía pendiente de cotejo epigráfico.",
+          "source": "https://www.sbl-site.org/wp-content/uploads/2024/11/GreatName_Leprohan_SBL.pdf",
+          "variants": []
+        },
+        "golden": {
+          "glyphs": null,
+          "trans": "wṯs-ḫꜥw sḥtp nṯrw",
+          "gloss": "De apariciones elevadas, que aplaca a los dioses",
+          "witness": "Ronald J. Leprohon, The Great Name (2013), p. 106. Traducción castellana editorial; grafía pendiente de cotejo epigráfico.",
+          "source": "https://www.sbl-site.org/wp-content/uploads/2024/11/GreatName_Leprohan_SBL.pdf",
+          "variants": []
         }
-      }
+      },
+      "authorityUrl": "https://www.sbl-site.org/wp-content/uploads/2024/11/GreatName_Leprohan_SBL.pdf"
     },
     {
       "id": "seti-i",

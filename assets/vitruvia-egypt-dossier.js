@@ -91,6 +91,7 @@ const ROYAL_PRIMARY={
 };
 const ROYAL_PLANS={
  akhenaten:[
+  ["Gran Templo de Atón","Informe de excavación 2022 con plantas","Amarna Project","https://www.amarnaproject.com/wp-content/uploads/Great-Aten-Temple_Spring2022-HI.pdf"],
   ["Gran Templo de Atón","Plantas y levantamientos arqueológicos","Amarna Project","https://www.amarnaproject.com/our-work/excavation-and-survey/great-aten-temple-background/"],
   ["Ajetatón","Cartografía arqueológica e histórica","Amarna Project","https://www.amarnaproject.com/mapping-amarna/"]
  ],
@@ -198,6 +199,11 @@ function royalBuildingCatalogue(box,ruler){
   const source=(plans.find(p=>N(item.name).includes(N(p[0])))||[])[3];
   const drawings=make("div",null,"v-ed-automatic-drawings");
   block.append(drawings);wrap.append(block);
+  if(ruler.id==="akhenaten"&&item.name.includes("Gran Templo")){
+   const url="https://www.amarnaproject.com/wp-content/uploads/Great-Aten-Temple_Spring2022-HI.pdf";
+   const figure=make("figure",null,"v-ed-plan-pdf");const frame=make("iframe");frame.src=url;frame.loading="lazy";frame.title="Gran Templo de Atón · informe de excavación con plantas";frame.style.cssText="width:100%;height:440px;border:1px solid #777";
+   figure.append(frame,make("figcaption","Amarna Project · informe arqueológico, primavera 2022 · incluye plantas de excavación"),anchor("Abrir informe PDF original",url));block.prepend(figure);
+  }
   if(ruler.id==="tutankhamun"&&item.name.includes("KV62")){
    const url="https://thebanmappingproject.com/sites/default/files/plans/KV62_1.pdf";
    const figure=make("figure",null,"v-ed-plan-pdf");
@@ -227,6 +233,7 @@ function names(box,ruler){
   if(rec?.source)item.append(anchor("Fuente de la lectura",rec.source));
   if(rec?.gloss)item.append(make("p","Traducción / interpretación al castellano: "+rec.gloss));
   if(rec?.witness)item.append(make("p","Testimonio: "+rec.witness,"v-ed-note"));
+  for(const v of rec?.variants||[])item.append(make("p",v.period+" · "+v.trans+" · "+v.gloss,"v-ed-note"));
   if(!rec)item.append(make("p","Este nombre no está acreditado en el repertorio local.","v-ed-note"));
   else if(!rec.glyphs){item.append(make("p","Grafía jeroglífica pendiente de edición; no reconstruida.","v-ed-note"));if(objects[ruler.id]?.length)item.append(anchor("Consultar fotografías de testimonios (comprobar qué nombre contienen)","egypt-document-viewer.html?king="+encodeURIComponent(ruler.id)));}
   if(rec?.glyphs||rec?.trans)item.append(anchor("Examinar la lectura con lupa / inversión / contraste","egypt-document-viewer.html?king="+encodeURIComponent(ruler.id)+"&name="+key));
@@ -239,7 +246,7 @@ function books(box,ruler){
  box.append(make("h4","Libros y bibliografía académica"));
  const extra=["akhenaten","amenhotep-iii","tutankhamun"].includes(ruler.id)?amarna:[];
  const fieldwork=ruler.id==="akhenaten"?[["A. Stevens, G. R. Dabbs, F. Balestra, et al. · Tell el-Amarna, 2022 · Journal of Egyptian Archaeology 109","https://doi.org/10.1177/03075133231213886"]]:ruler.id==="tutankhamun"?[["Griffith Institute · Howard Carter archive · planos, croquis y dibujos","https://tutankhamun.griffith.ox.ac.uk/maps-plans-sketches-drawings"]]:[];
- const out=[...fieldwork,...extra,...(ruler.id==="tutankhamun"?tut:[]),...(["seti-i","ramesses-ii"].includes(ruler.id)?ramses:[]),...general];
+ const out=[["Ronald J. Leprohon · The Great Name: Ancient Egyptian Royal Titulary (2013) · SBL Press","https://www.jstor.org/stable/j.ctt5vjxtf"],...fieldwork,...extra,...(ruler.id==="tutankhamun"?tut:[]),...(["seti-i","ramesses-ii"].includes(ruler.id)?ramses:[]),...general];
  const body=make("div",null,"v-ed-library"),done=new Set();
  for(const [title,url] of [...out,...links])if(!done.has(url)){done.add(url);body.append(anchor(title,url))}
  box.append(body);
@@ -248,7 +255,7 @@ function books(box,ruler){
 async function render(){
  const token=++generation;if(!q)return;
  try{
-  registry??=await fetch("data/vitruvia/titulaturae.json?v=20261127-royal-texts-v2").then(r=>{if(!r.ok)throw Error("HTTP "+r.status);return r.json()});
+  registry??=await fetch("data/vitruvia/titulaturae.json?v=20261127-leprohon-v3").then(r=>{if(!r.ok)throw Error("HTTP "+r.status);return r.json()});
   if(token!==generation||!registry)return;
   const ruler=findRuler(registry);
   if(!ruler){rail.replaceChildren();rail.hidden=true;renderedId="";return}

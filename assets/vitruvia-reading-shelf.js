@@ -54,6 +54,9 @@
   const found=[],seen=new Set();
   for(const x of docs){
    if(!validWork(x))continue;
+   const publishers=Array.isArray(x.publisher)?x.publisher:[];
+   const admitted=publishers.find(p=>window.VitruviaSourceModel?.bookAdmission({type:"openlibrary",publisher:p,subjects:x.subject||[],title:x.title})==="academic-publisher");
+   if(!admitted)continue;
    const title=normalize(x.title);
    if(!terms.every(w=>title.split(" ").some(p=>p===w||w.length>=5&&p.startsWith(w))))continue;
    if(seen.has(title))continue;seen.add(title);
@@ -63,7 +66,7 @@
     note:{es:"Ficha de catálogo cuyo título coincide con el tema buscado. Relación temática pendiente de revisión editorial.",
      en:"Catalogue title matching the topic. Thematic relationship awaits editorial review.",
      fr:"Titre de catalogue correspondant au sujet ; lien thématique à vérifier."},
-    source:"Open Library · coincidencia bibliográfica"});
+    source:"Open Library · editorial académica: "+admitted});
    if(found.length>=7)break;
   }
   return found;
@@ -141,9 +144,9 @@
    t("Selección documentada de bibliografía y contexto; compartir una época no demuestra influencia histórica.",
     "Documented bibliography and context; sharing a period is not proof of historical influence.",
     "Bibliographie et contexte documentés ; une époque commune ne prouve aucune influence historique."):
-   t("Coincidencias en títulos de Open Library: sugerencias de catálogo, no recomendaciones académicas verificadas.",
-    "Open Library title matches: catalogue suggestions, not verified scholarly recommendations.",
-    "Correspondances de titres Open Library : suggestions de catalogue, non recommandations validées.");
+   t("Registros con editorial académica identificada; arbitraje y contenido no verificados.",
+    "Records with identified scholarly publishers; peer review and content not verified.",
+    "Notices avec éditeur scientifique identifié ; évaluation et contenu non vérifiés.");
   const browse=el("a",null,t("Ampliar en Open Library","More at Open Library","Chercher sur Open Library"));
   browse.href="https://openlibrary.org/search?"+new URLSearchParams({q});
   browse.target="_blank";browse.rel="noopener noreferrer";
@@ -167,7 +170,7 @@
  async function books(q,signal){
   if(cache.has(q))return cache.get(q);
   const url="https://openlibrary.org/search.json?"+new URLSearchParams({
-   q,limit:"25",fields:"key,title,author_name,first_publish_year,cover_i,edition_count"});
+   q,limit:"25",fields:"key,title,author_name,first_publish_year,cover_i,edition_count,publisher,subject"});
   const response=await fetch(url,{headers:{Accept:"application/json"},signal});
   if(!response.ok)throw Error("Open Library HTTP "+response.status);
   const json=await response.json();
@@ -181,7 +184,7 @@
   controller?.abort();controller=null;
   current=q;lastItems=[];lastCurated=false;
   if(!q){root.hidden=true;root.replaceChildren();return}
-  const curated=isPinkFloyd(q);
+  const curated=false; // General academic shelf does not include memoirs or popular histories by default.
   const items=curated?pinkFloyd.map(item=>({...item})):[];
   lastCurated=curated;lastItems=items;
   if(items.length)draw(q,items,true);else{root.hidden=true;root.replaceChildren()}
