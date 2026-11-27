@@ -1,10 +1,10 @@
 {
  "schema": "vdl-classics-expansion-manifest-v1",
- "generated": "2026-11-27T13:36:02.374515+00:00",
+ "generated": "2026-11-27T15:45:29.073145+00:00",
  "discovery": {
-  "sourceRecords": 1400,
-  "alreadyIndexedCatalogueWorks": 659,
-  "pendingGroups": 1342,
+  "sourceRecords": 1387,
+  "alreadyIndexedCatalogueWorks": 672,
+  "pendingGroups": 1329,
   "policy": "Una obra bibliográfica, múltiples ediciones identificadas por URN y hash; sin sustituir ni duplicar archivos",
   "githubTextFiles": 450,
   "githubUnregisteredFiles": 14,
@@ -29251,6 +29251,554 @@
    "characters": 60710,
    "bytes": 148488,
    "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0018-tlg026-grc-b286e978766e1b24.json"
+  },
+  {
+   "workId": "cts-tlg0627-tlg040",
+   "author": "Corpus hipocrático",
+   "title": "De anatomia",
+   "language": "grc",
+   "dating": "composición y atribuciones debatidas",
+   "sources": [
+    {
+     "title": "De anatomia",
+     "titleLanguage": "lat",
+     "author": "Hippocrates",
+     "editors": [
+      "Émile Littré"
+     ],
+     "bibliography": "Oeuvres complètes d'Hippocrate Hippocrates Émile Littré Baillière Paris 8 538-540 1853 HathiTrust",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg0627.tlg040.1st1K-grc1",
+     "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0627/tlg040/tlg0627.tlg040.1st1K-grc1.xml",
+     "sourceSha256": "73e80779d80b372e47de7cf3d5111b527f92c9901e29ae736cc8dfbd484fa306",
+     "sourceReferences": [
+      "https://hdl.handle.net/2027/ucm.532135213x?urlappend=%3Bseq=586"
+     ],
+     "publicationYear": "1853",
+     "publisher": "Baillière",
+     "publicationPlace": "Paris",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/73e80779d80b372e47de7cf3d5111b527f92c9901e29ae736cc8dfbd484fa306.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-tlg0627-tlg040-grc-c12c0164de7b62e9.json",
+   "sha256": "c12c0164de7b62e9d03f5216a97a9e018fc4cda6e1080503f2bba7d5ea3579d8",
+   "passages": 2,
+   "characters": 1669,
+   "bytes": 5498,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0627-tlg040-grc-c12c0164de7b62e9.json"
+  },
+  {
+   "workId": "cts-tlg0627-tlg041",
+   "author": "Corpus hipocrático",
+   "title": "De dentitione",
+   "language": "grc",
+   "dating": "composición y atribuciones debatidas",
+   "sources": [
+    {
+     "title": "De dentitione",
+     "titleLanguage": "lat",
+     "author": "Hippocrates",
+     "editors": [
+      "Émile Littré"
+     ],
+     "bibliography": "Oeuvres complètes d'Hippocrate Hippocrates Émile Littré Baillière Paris 8 544-548 1853 HathiTrust",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg0627.tlg041.1st1K-grc1",
+     "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0627/tlg041/tlg0627.tlg041.1st1K-grc1.xml",
+     "sourceSha256": "915fb95d741171c5753ed74d125a0b4b5e717b36650b8392c2dc75e0961b8024",
+     "sourceReferences": [
+      "https://hdl.handle.net/2027/ucm.532135213x?urlappend=%3Bseq=592"
+     ],
+     "publicationYear": "1853",
+     "publisher": "Baillière",
+     "publicationPlace": "Paris",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/915fb95d741171c5753ed74d125a0b4b5e717b36650b8392c2dc75e0961b8024.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-tlg0627-tlg041-grc-9baafa72fd405b81.json",
+   "sha256": "9baafa72fd405b813af292492b90a58384b5ac0023e8692ed9a679ec6cacf50a",
+   "passages": 33,
+   "characters": 2814,
+   "bytes": 12525,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0627-tlg041-grc-9baafa72fd405b81.json"
+  },
+  {
+   "workId": "cts-tlg0627-tlg042",
+   "author": "Corpus hipocrático",
+   "title": "De glandulis",
+   "language": "grc",
+   "dating": "composición y atribuciones debatidas",
+   "sources": [
+    {
+     "title": "De glandulis",
+     "titleLanguage": "lat",
+     "author": "Hippocrates",
+     "editors": [
+      "Émile Littré"
+     ],
+     "bibliography": "Oeuvres complètes d'Hippocrate Hippocrates Émile Littré Baillière Paris 8 554-574 1853 HathiTrust",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg0627.tlg042.1st1K-grc1",
+     "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0627/tlg042/tlg0627.tlg042.1st1K-grc1.xml",
+     "sourceSha256": "c2dc67131bcc4b37c3b74312c1d3702be7b97d4faff7f23c7526c911b411e748",
+     "sourceReferences": [
+      "https://hdl.handle.net/2027/ucm.532135213x?urlappend=%3Bseq=604"
+     ],
+     "publicationYear": "1853",
+     "publisher": "Baillière",
+     "publicationPlace": "Paris",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/c2dc67131bcc4b37c3b74312c1d3702be7b97d4faff7f23c7526c911b411e748.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-tlg0627-tlg042-grc-7546b284370e8372.json",
+   "sha256": "7546b284370e8372f9f0fd1efe5aa3ee0ae02255e9874146b622989cd173a4f5",
+   "passages": 18,
+   "characters": 10479,
+   "bytes": 25767,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0627-tlg042-grc-7546b284370e8372.json"
+  },
+  {
+   "workId": "cts-tlg0627-tlg043",
+   "author": "Corpus hipocrático",
+   "title": "De carnibus",
+   "language": "grc",
+   "dating": "composición y atribuciones debatidas",
+   "sources": [
+    {
+     "title": "De carnibus",
+     "titleLanguage": "lat",
+     "author": "Hippocrates",
+     "editors": [
+      "Émile Littré"
+     ],
+     "bibliography": "Oeuvres complètes d'Hippocrate Hippocrates Émile Littré Baillière Paris 8 584-614 1853 HathiTrust",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg0627.tlg043.1st1K-grc1",
+     "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0627/tlg043/tlg0627.tlg043.1st1K-grc1.xml",
+     "sourceSha256": "61e650c3bed956aca3844482d48dde5b35bac5cbc17394713860b13d27029149",
+     "sourceReferences": [
+      "https://hdl.handle.net/2027/ucm.532135213x?urlappend=%3Bseq=632"
+     ],
+     "publicationYear": "1853",
+     "publisher": "Baillière",
+     "publicationPlace": "Paris",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/61e650c3bed956aca3844482d48dde5b35bac5cbc17394713860b13d27029149.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-tlg0627-tlg043-grc-57bbeb0c5d7d82ed.json",
+   "sha256": "57bbeb0c5d7d82ed5df96bb4c59115b84cb0a72df50d15b9d5b17ff96941cd2c",
+   "passages": 20,
+   "characters": 19938,
+   "bytes": 45109,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0627-tlg043-grc-57bbeb0c5d7d82ed.json"
+  },
+  {
+   "workId": "cts-tlg0627-tlg045",
+   "author": "Corpus hipocrático",
+   "title": "De corde",
+   "language": "grc",
+   "dating": "composición y atribuciones debatidas",
+   "sources": [
+    {
+     "title": "De corde",
+     "titleLanguage": "lat",
+     "author": "Hippocrates",
+     "editors": [
+      "Émile Littré"
+     ],
+     "bibliography": "Oeuvres complètes d'Hippocrate Hippocrates Émile Littré Baillière Paris 9 80-92 1861 Google Books",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg0627.tlg045.1st1K-grc1",
+     "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0627/tlg045/tlg0627.tlg045.1st1K-grc1.xml",
+     "sourceSha256": "7be894bced968e372dcea27a57b4e3653c9dd88ba5709055da0485aba3489c36",
+     "sourceReferences": [
+      "https://hdl.handle.net/2027/pst.000022913487?urlappend=%3Bseq=90"
+     ],
+     "publicationYear": "1861",
+     "publisher": "Baillière",
+     "publicationPlace": "Paris",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/7be894bced968e372dcea27a57b4e3653c9dd88ba5709055da0485aba3489c36.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-tlg0627-tlg045-grc-30bfec877fe273b9.json",
+   "sha256": "30bfec877fe273b9b1c22e77343522978c0608d5c4e91fc27e053d6047d33166",
+   "passages": 13,
+   "characters": 6328,
+   "bytes": 16616,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0627-tlg045-grc-30bfec877fe273b9.json"
+  },
+  {
+   "workId": "cts-tlg0627-tlg048",
+   "author": "Corpus hipocrático",
+   "title": "De natura ossium",
+   "language": "grc",
+   "dating": "composición y atribuciones debatidas",
+   "sources": [
+    {
+     "title": "De natura ossium",
+     "titleLanguage": "lat",
+     "author": "Hippocrates",
+     "editors": [
+      "Émile Littré"
+     ],
+     "bibliography": "Oeuvres complètes d'Hippocrate Hippocrates Émile Littré Baillière Paris 9 168-196 1861 HathiTrust",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg0627.tlg048.1st1K-grc1",
+     "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0627/tlg048/tlg0627.tlg048.1st1K-grc1.xml",
+     "sourceSha256": "72acf7651d7d13b649899e3ccac31b1163f671ea67fc6fb54bf454e54de895a9",
+     "sourceReferences": [
+      "https://hdl.handle.net/2027/pst.000022913487?urlappend=%3Bseq=178"
+     ],
+     "publicationYear": "1861",
+     "publisher": "Baillière",
+     "publicationPlace": "Paris",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/72acf7651d7d13b649899e3ccac31b1163f671ea67fc6fb54bf454e54de895a9.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-tlg0627-tlg048-grc-33f8c7c33aceffc7.json",
+   "sha256": "33f8c7c33aceffc7ad84fa21c91c4c2e8dd1ab646f044fcbc43861d85b7bfecd",
+   "passages": 20,
+   "characters": 20060,
+   "bytes": 45357,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0627-tlg048-grc-33f8c7c33aceffc7.json"
+  },
+  {
+   "workId": "cts-tlg0627-tlg047",
+   "author": "Corpus hipocrático",
+   "title": "De visu",
+   "language": "grc",
+   "dating": "composición y atribuciones debatidas",
+   "sources": [
+    {
+     "title": "De visu",
+     "titleLanguage": "lat",
+     "author": "Hippocrates",
+     "editors": [
+      "Émile Littré"
+     ],
+     "bibliography": "Oeuvres complètes d'Hippocrate Hippocrates Émile Littré Baillière Paris 9 152-160 1861 HathiTrust",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg0627.tlg047.1st1K-grc1",
+     "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0627/tlg047/tlg0627.tlg047.1st1K-grc1.xml",
+     "sourceSha256": "c6196b4f7683107cfb3852b5f3f5fcb0e78906e68fe785299f528cc9d9f28c21",
+     "sourceReferences": [
+      "https://hdl.handle.net/2027/pst.000022913487?urlappend=%3Bseq=162"
+     ],
+     "publicationYear": "1861",
+     "publisher": "Baillière",
+     "publicationPlace": "Paris",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/c6196b4f7683107cfb3852b5f3f5fcb0e78906e68fe785299f528cc9d9f28c21.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-tlg0627-tlg047-grc-e07ba7efab0a0306.json",
+   "sha256": "e07ba7efab0a03060597cc83debf4a96b040512a7356e1dcda065796204e1b77",
+   "passages": 10,
+   "characters": 5080,
+   "bytes": 13542,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0627-tlg047-grc-e07ba7efab0a0306.json"
+  },
+  {
+   "workId": "cts-tlg0627-tlg046",
+   "author": "Corpus hipocrático",
+   "title": "De alimento",
+   "language": "grc",
+   "dating": "composición y atribuciones debatidas",
+   "sources": [
+    {
+     "title": "Περὶ τροφῆς",
+     "titleLanguage": "grc",
+     "author": "Hippocrates",
+     "editors": [
+      "William Henry Samuel Jones"
+     ],
+     "bibliography": "Hippocrates Hippocrates William Henry Samuel Jones London William Heinemann Ltd. Cambridge, MA Harvard University Press 1923 1 Loeb Classical Library Internet Archive",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg0627.tlg046.perseus-grc2",
+     "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0627/tlg046/tlg0627.tlg046.perseus-grc2.xml",
+     "sourceSha256": "3587fa99fe6d03e6b08d4eab8d8b09eef377f348e53747176ff38cfcd2a91e6a",
+     "sourceReferences": [
+      "https://archive.org/details/hippocrates01hippuoft/hippocrates01hippuoft/page/342/mode/2up"
+     ],
+     "publicationYear": "1923",
+     "publisher": "William Heinemann Ltd.",
+     "publicationPlace": "London",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/3587fa99fe6d03e6b08d4eab8d8b09eef377f348e53747176ff38cfcd2a91e6a.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-tlg0627-tlg046-grc-648f7c680a2436c3.json",
+   "sha256": "648f7c680a2436c31944235f9dec36abf0ee10c6d977fa542143424de03f3c44",
+   "passages": 55,
+   "characters": 7953,
+   "bytes": 26046,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0627-tlg046-grc-648f7c680a2436c3.json"
+  },
+  {
+   "workId": "cts-tlg0627-tlg050",
+   "author": "Corpus hipocrático",
+   "title": "De habitu decenti",
+   "language": "grc",
+   "dating": "composición y atribuciones debatidas",
+   "sources": [
+    {
+     "title": "De habitu decenti",
+     "titleLanguage": "lat",
+     "author": "Hippocrates",
+     "editors": [
+      "Émile Littré"
+     ],
+     "bibliography": "Oeuvres complètes d'Hippocrate Hippocrates Émile Littré Baillière Paris 9 226-244 1861 HathiTrust",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg0627.tlg050.1st1K-grc1",
+     "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0627/tlg050/tlg0627.tlg050.1st1K-grc1.xml",
+     "sourceSha256": "e8568a0954c51fae2ef290886ea95101c9af66c49f5f0be0fb9632aef0be382d",
+     "sourceReferences": [
+      "https://hdl.handle.net/2027/pst.000022913487?urlappend=%3Bseq=236"
+     ],
+     "publicationYear": "1861",
+     "publisher": "Baillière",
+     "publicationPlace": "Paris",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/e8568a0954c51fae2ef290886ea95101c9af66c49f5f0be0fb9632aef0be382d.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-tlg0627-tlg050-grc-8523923ec3e970c8.json",
+   "sha256": "8523923ec3e970c8b19142b1e6123b849ccaba088bd5ac27c42e87f2c74a7a3b",
+   "passages": 19,
+   "characters": 9788,
+   "bytes": 24436,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0627-tlg050-grc-8523923ec3e970c8.json"
+  },
+  {
+   "workId": "cts-tlg0627-tlg049",
+   "author": "Corpus hipocrático",
+   "title": "De medico",
+   "language": "grc",
+   "dating": "composición y atribuciones debatidas",
+   "sources": [
+    {
+     "title": "De medico",
+     "titleLanguage": "lat",
+     "author": "Hippocrates",
+     "editors": [
+      "Émile Littré"
+     ],
+     "bibliography": "Oeuvres complètes d'Hippocrate Hippocrates Émile Littré Baillière Paris 9 204-220 1861 HathiTrust",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg0627.tlg049.1st1K-grc1",
+     "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0627/tlg049/tlg0627.tlg049.1st1K-grc1.xml",
+     "sourceSha256": "1a7dca70ddc5ec6eb0972482c802a44c0a65c8a2028878312708298d551e36e6",
+     "sourceReferences": [
+      "https://hdl.handle.net/2027/pst.000022913487?urlappend=%3Bseq=214"
+     ],
+     "publicationYear": "1861",
+     "publisher": "Baillière",
+     "publicationPlace": "Paris",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/1a7dca70ddc5ec6eb0972482c802a44c0a65c8a2028878312708298d551e36e6.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-tlg0627-tlg049-grc-582578fd1d3fbee6.json",
+   "sha256": "582578fd1d3fbee61c35ecbb8639f6ca56d077fee27b1c1436f5b06bb1aca429",
+   "passages": 15,
+   "characters": 9661,
+   "bytes": 23542,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0627-tlg049-grc-582578fd1d3fbee6.json"
+  },
+  {
+   "workId": "cts-tlg0018-tlg030",
+   "author": "Filón de Alejandría",
+   "title": "In Flaccum",
+   "language": "grc",
+   "dating": "siglo I d. C.",
+   "sources": [
+    {
+     "title": "In Flaccum",
+     "titleLanguage": "lat",
+     "author": "Philo Judaeus",
+     "editors": [
+      "Leopold Cohn",
+      "Siegfried Reiter"
+     ],
+     "bibliography": "Philonis Alexandrini Opera Quae Supersunt Leopold Cohn Siegfried Reiter Philo Judaeus Reimer Berlin 1915 6 Hathi Trust",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg0018.tlg030.1st1K-grc1",
+     "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0018/tlg030/tlg0018.tlg030.1st1K-grc1.xml",
+     "sourceSha256": "e12a3b67c3ba1a415e0281c8ea83b911048d9e18f54ba0f54c24b5ceb26b2e6f",
+     "sourceReferences": [
+      "https://babel.hathitrust.org/cgi/pt?id=hvd.32044054757570;view=2up;seq=630"
+     ],
+     "publicationYear": "1915",
+     "publisher": "Reimer",
+     "publicationPlace": "Berlin",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/e12a3b67c3ba1a415e0281c8ea83b911048d9e18f54ba0f54c24b5ceb26b2e6f.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-tlg0018-tlg030-grc-19bca6e7189d1ec9.json",
+   "sha256": "19bca6e7189d1ec957efce554556577eaa546da466d150bd46cc4fb54d49588b",
+   "passages": 193,
+   "characters": 60300,
+   "bytes": 150521,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0018-tlg030-grc-19bca6e7189d1ec9.json"
+  },
+  {
+   "workId": "cts-tlg0018-tlg031",
+   "author": "Filón de Alejandría",
+   "title": "Legatio Ad Gaium",
+   "language": "grc",
+   "dating": "siglo I d. C.",
+   "sources": [
+    {
+     "title": "Legatio Ad Gaium",
+     "titleLanguage": "lat",
+     "author": "Philo Judaeus",
+     "editors": [
+      "Leopold Cohn",
+      "Siegfried Reiter"
+     ],
+     "bibliography": "Philonis Alexandrini Opera Quae Supersunt Leopold Cohn Siegfried Reiter Philo Judaeus Reimer Berlin 1915 6 Hathi Trust",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg0018.tlg031.1st1K-grc1",
+     "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0018/tlg031/tlg0018.tlg031.1st1K-grc1.xml",
+     "sourceSha256": "f4a8cf68b226474508e6800ce8bd3ed94083b230f765c27f003a77dcf7310f78",
+     "sourceReferences": [
+      "https://babel.hathitrust.org/cgi/pt?id=hvd.32044054757570;view=2up;seq=658"
+     ],
+     "publicationYear": "1915",
+     "publisher": "Reimer",
+     "publicationPlace": "Berlin",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/f4a8cf68b226474508e6800ce8bd3ed94083b230f765c27f003a77dcf7310f78.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-tlg0018-tlg031-grc-c0387a463fd662f9.json",
+   "sha256": "c0387a463fd662f9c6b600d5267fc8a5c95297183f1c8b22c0878c83fe4882f5",
+   "passages": 375,
+   "characters": 116930,
+   "bytes": 290397,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0018-tlg031-grc-c0387a463fd662f9.json"
+  },
+  {
+   "workId": "cts-tlg0022-tlg001",
+   "author": "Nicandro de Colofón",
+   "title": "Theriaca",
+   "language": "grc",
+   "dating": "siglo II a. C.",
+   "sources": [
+    {
+     "title": "Θηριακά",
+     "titleLanguage": "grc",
+     "author": "Nicander of Colophon",
+     "editors": [
+      "Otto Schneider"
+     ],
+     "bibliography": "Nicander of Colophon Nicandrea. Theriaca et Alexipharmaca Otto Schneider Leipzig Teubner 1856 Internet Archive",
+     "licences": [
+      {
+       "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+       "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+      }
+     ],
+     "editionUrn": "urn:cts:greekLit:tlg0022.tlg001.1st1K-grc1",
+     "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0022/tlg001/tlg0022.tlg001.1st1K-grc1.xml",
+     "sourceSha256": "269127736dd4de9dba705eaf51e5881d4d152087894dc2f5d6863671a5ef9292",
+     "sourceReferences": [
+      "https://archive.org/details/bub_gb_qdeEAAAAIAAJ/page/n234/mode/1up"
+     ],
+     "publicationYear": "1856",
+     "publisher": "Teubner",
+     "publicationPlace": "Leipzig",
+     "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/269127736dd4de9dba705eaf51e5881d4d152087894dc2f5d6863671a5ef9292.xml"
+    }
+   ],
+   "existing": false,
+   "relatedWorkIds": [],
+   "filename": "cts-tlg0022-tlg001-grc-63c1ec2304cd1fd9.json",
+   "sha256": "63c1ec2304cd1fd9d5db84b8e7a8c2a1b781edd0e0ba8f999f3192288b304ad9",
+   "passages": 959,
+   "characters": 41319,
+   "bytes": 208775,
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0022-tlg001-grc-63c1ec2304cd1fd9.json"
   }
  ],
  "githubPreserved": [
@@ -32456,9 +33004,37 @@
  ],
  "deferred": [
   {
-   "workId": "ovid-tristia",
+   "workId": "ovid-fasti",
    "sources": [
-    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0959/phi008/phi0959.phi008.perseus-lat2.xml"
+    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0959/phi007/phi0959.phi007.perseus-lat2.xml"
+   ],
+   "reason": "Sin licencia abierta explícita admisible en la cabecera TEI"
+  },
+  {
+   "workId": "ovid-ex-ponto",
+   "sources": [
+    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0959/phi009/phi0959.phi009.perseus-lat2.xml"
+   ],
+   "reason": "Sin licencia abierta explícita admisible en la cabecera TEI"
+  },
+  {
+   "workId": "ovid-ars-amatoria",
+   "sources": [
+    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0959/phi004/phi0959.phi004.perseus-lat2.xml"
+   ],
+   "reason": "Sin licencia abierta explícita admisible en la cabecera TEI"
+  },
+  {
+   "workId": "ovid-heroides",
+   "sources": [
+    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0959/phi002/phi0959.phi002.perseus-lat2.xml"
+   ],
+   "reason": "Sin licencia abierta explícita admisible en la cabecera TEI"
+  },
+  {
+   "workId": "ovid-remedia-amoris",
+   "sources": [
+    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0959/phi005/phi0959.phi005.perseus-lat2.xml"
    ],
    "reason": "Sin licencia abierta explícita admisible en la cabecera TEI"
   },
@@ -32466,6 +33042,13 @@
    "workId": "seneca-de-clementia",
    "sources": [
     "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi1017/phi014/phi1017.phi014.perseus-lat2.xml"
+   ],
+   "reason": "Sin licencia abierta explícita admisible en la cabecera TEI"
+  },
+  {
+   "workId": "ovid-tristia",
+   "sources": [
+    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0959/phi008/phi0959.phi008.perseus-lat2.xml"
    ],
    "reason": "Sin licencia abierta explícita admisible en la cabecera TEI"
   },
@@ -32514,9 +33097,9 @@
    "reason": "Sin licencia abierta explícita admisible en la cabecera TEI"
   },
   {
-   "workId": "cts-phi0959-phi001",
+   "workId": "cts-phi0959-phi003",
    "sources": [
-    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0959/phi001/phi0959.phi001.perseus-lat2.xml"
+    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0959/phi003/phi0959.phi003.perseus-lat2.xml"
    ],
    "reason": "Sin licencia abierta explícita admisible en la cabecera TEI"
   },
@@ -32528,16 +33111,16 @@
    "reason": "Sin licencia abierta explícita admisible en la cabecera TEI"
   },
   {
-   "workId": "cts-phi0959-phi003",
+   "workId": "cts-phi0959-phi010",
    "sources": [
-    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0959/phi003/phi0959.phi003.perseus-lat2.xml"
+    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0959/phi010/phi0959.phi010.perseus-lat2.xml"
    ],
    "reason": "Sin licencia abierta explícita admisible en la cabecera TEI"
   },
   {
-   "workId": "cts-phi0959-phi010",
+   "workId": "cts-phi0959-phi001",
    "sources": [
-    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0959/phi010/phi0959.phi010.perseus-lat2.xml"
+    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0959/phi001/phi0959.phi001.perseus-lat2.xml"
    ],
    "reason": "Sin licencia abierta explícita admisible en la cabecera TEI"
   },
@@ -32556,13 +33139,6 @@
    "reason": "Sin licencia abierta explícita admisible en la cabecera TEI"
   },
   {
-   "workId": "cts-phi1014-phi001",
-   "sources": [
-    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi1014/phi001/phi1014.phi001.perseus-lat1.xml"
-   ],
-   "reason": "Sin licencia abierta explícita admisible en la cabecera TEI"
-  },
-  {
    "workId": "cts-phi1014-phi004",
    "sources": [
     "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi1014/phi004/phi1014.phi004.perseus-lat1.xml"
@@ -32570,9 +33146,23 @@
    "reason": "Sin licencia abierta explícita admisible en la cabecera TEI"
   },
   {
+   "workId": "cts-phi1014-phi001",
+   "sources": [
+    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi1014/phi001/phi1014.phi001.perseus-lat1.xml"
+   ],
+   "reason": "Sin licencia abierta explícita admisible en la cabecera TEI"
+  },
+  {
    "workId": "cts-phi1017-phi011",
    "sources": [
     "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi1017/phi011/phi1017.phi011.perseus-lat2.xml"
+   ],
+   "reason": "Sin licencia abierta explícita admisible en la cabecera TEI"
+  },
+  {
+   "workId": "horace-ars-poetica",
+   "sources": [
+    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0893/phi006/phi0893.phi006.perseus-lat2.xml"
    ],
    "reason": "Sin licencia abierta explícita admisible en la cabecera TEI"
   },
@@ -32598,13 +33188,6 @@
    "reason": "Sin licencia abierta explícita admisible en la cabecera TEI"
   },
   {
-   "workId": "horace-ars-poetica",
-   "sources": [
-    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0893/phi006/phi0893.phi006.perseus-lat2.xml"
-   ],
-   "reason": "Sin licencia abierta explícita admisible en la cabecera TEI"
-  },
-  {
    "workId": "horace-epodi",
    "sources": [
     "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0893/phi003/phi0893.phi003.perseus-lat2.xml"
@@ -32615,41 +33198,6 @@
    "workId": "horace-odes",
    "sources": [
     "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0893/phi001/phi0893.phi001.perseus-lat2.xml"
-   ],
-   "reason": "Sin licencia abierta explícita admisible en la cabecera TEI"
-  },
-  {
-   "workId": "horace-sermones",
-   "sources": [
-    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0893/phi004/phi0893.phi004.perseus-lat2.xml"
-   ],
-   "reason": "Sin licencia abierta explícita admisible en la cabecera TEI"
-  },
-  {
-   "workId": "lucretius",
-   "sources": [
-    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0550/phi001/phi0550.phi001.perseus-lat1.xml"
-   ],
-   "reason": "Sin licencia abierta explícita admisible en la cabecera TEI"
-  },
-  {
-   "workId": "ovid",
-   "sources": [
-    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0959/phi006/phi0959.phi006.perseus-lat2.xml"
-   ],
-   "reason": "Sin licencia abierta explícita admisible en la cabecera TEI"
-  },
-  {
-   "workId": "livy",
-   "sources": [
-    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0914/phi001/phi0914.phi001.perseus-lat5.xml"
-   ],
-   "reason": "Sin licencia abierta explícita admisible en la cabecera TEI"
-  },
-  {
-   "workId": "ovid-ars-amatoria",
-   "sources": [
-    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0959/phi004/phi0959.phi004.perseus-lat2.xml"
    ],
    "reason": "Sin licencia abierta explícita admisible en la cabecera TEI"
   }
