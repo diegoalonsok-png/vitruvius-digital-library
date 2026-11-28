@@ -1,8 +1,8 @@
 {
  "schema": "vitruvia-classics-search-registry-v1",
- "updated": "2026-11-27",
+ "updated": "2026-11-28",
  "description": "Registro verificable de transcripciones HTML y textos JSON existentes que admiten búsqueda literal de contenido. No incluye automáticamente PDF escaneados, facsímiles ni fichas sin texto. Los índices auxiliares por locus y el aparato crítico se declaran por separado; no se suman a versiones textuales originales ni implican colación autóptica.",
- "count": 1184,
+ "count": 1188,
  "works": 883,
  "entries": [
   {
@@ -3351,6 +3351,19 @@
    "workId": "cts-tlg0006-tlg016",
    "author": "Eurípides",
    "title": "Orestes",
+   "language": "en",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0006-tlg016-en-44160409de6ccf0a.json",
+   "reader": "classics-text-reader.html?work=cts-tlg0006-tlg016&lang=en&edition=44160409de6ccf0a",
+   "sourceDescription": "Traducción humana acreditada: Edward P. Coleridge; TEI Perseus, licencia y SHA256 verificados",
+   "sourceUrn": "urn:cts:greekLit:tlg0006.tlg016.perseus-eng2",
+   "sha256": "44160409de6ccf0a0c13aa660fe85cdb4d4c8174abeb0772bdb81405d69b87e6",
+   "passages": 532
+  },
+  {
+   "workId": "cts-tlg0006-tlg016",
+   "author": "Eurípides",
+   "title": "Orestes",
    "language": "grc",
    "format": "json-passages",
    "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0006-tlg016-grc-4614137ed23dc085.json",
@@ -3359,6 +3372,32 @@
    "sourceUrn": "urn:cts:greekLit:tlg0006.tlg016.perseus-grc2",
    "sha256": "4614137ed23dc08567c0a55f77df29c2650d775f9e9cd039d7da3a4dc721b9c4",
    "passages": 531
+  },
+  {
+   "workId": "cts-tlg0006-tlg019",
+   "author": "Eurípides",
+   "title": "Rhesus",
+   "language": "en",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0006-tlg019-en-aa55a480426f7bb5.json",
+   "reader": "classics-text-reader.html?work=cts-tlg0006-tlg019&lang=en&edition=aa55a480426f7bb5",
+   "sourceDescription": "Traducción humana acreditada: Gilbert Murray; TEI Perseus, licencia y SHA256 verificados",
+   "sourceUrn": "urn:cts:greekLit:tlg0006.tlg019.perseus-eng4",
+   "sha256": "aa55a480426f7bb5941ff145243a03373c677cd2d51589ff70b41a12b44c0d4b",
+   "passages": 261
+  },
+  {
+   "workId": "cts-tlg0006-tlg019",
+   "author": "Eurípides",
+   "title": "Rhesus",
+   "language": "en",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0006-tlg019-en-f8b2725a7ad48b7d.json",
+   "reader": "classics-text-reader.html?work=cts-tlg0006-tlg019&lang=en&edition=f8b2725a7ad48b7d",
+   "sourceDescription": "Traducción humana acreditada: Edward P. Coleridge; TEI Perseus, licencia y SHA256 verificados",
+   "sourceUrn": "urn:cts:greekLit:tlg0006.tlg019.perseus-eng3",
+   "sha256": "f8b2725a7ad48b7df0c426c61b6569d73d9efb0899b66a8dbce44c3028c73b4b",
+   "passages": 209
   },
   {
    "workId": "cts-tlg0006-tlg019",
@@ -3424,6 +3463,19 @@
    "sourceUrn": "urn:cts:greekLit:tlg0010.tlg003.perseus-grc2",
    "sha256": "2524824260bfb4430b5893ceaf4abc7807114a705d8bdca47f3cac186f89a15e",
    "passages": 22
+  },
+  {
+   "workId": "cts-tlg0010-tlg007",
+   "author": "Isócrates",
+   "title": "To Demonicus",
+   "language": "en",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0010-tlg007-en-782914843ea30bec.json",
+   "reader": "classics-text-reader.html?work=cts-tlg0010-tlg007&lang=en&edition=782914843ea30bec",
+   "sourceDescription": "Traducción humana acreditada: George Norlin; TEI Perseus, licencia y SHA256 verificados",
+   "sourceUrn": "urn:cts:greekLit:tlg0010.tlg007.perseus-eng2",
+   "sha256": "782914843ea30becd3d577bfe1eb16d8354d99ecdcaa8ceeccb6df3d5d715e08",
+   "passages": 52
   },
   {
    "workId": "cts-tlg0010-tlg007",

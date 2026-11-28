@@ -1,6 +1,6 @@
 {
  "schema": "vdl-classics-translation-manifest-v1",
- "generated": "2026-11-27T16:05:14.558378+00:00",
+ "generated": "2026-11-28T00:17:50.754157+00:00",
  "method": "Traducciones humanas TEI licenciadas y publicadas en R2 con SHA-256, índice literal por pasaje, sin alineación automática",
  "editions": [
   {
@@ -1943,6 +1943,98 @@
    ],
    "indexUrl": "https://libros.vitruvius-digital-library.org/corpus/indice/traducciones/cts-tlg0006-tlg015-en-94265fc3f93c9a06.json",
    "indexSha256": "94265fc3f93c9a061854c273eeaa05ce7e949ca3be4991be4c6882731df0b5ec"
+  },
+  {
+   "workId": "cts-tlg0006-tlg016",
+   "author": "Eurípides",
+   "title": "Orestes",
+   "language": "en",
+   "filename": "cts-tlg0006-tlg016-en-44160409de6ccf0a.json",
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0006-tlg016-en-44160409de6ccf0a.json",
+   "sha256": "44160409de6ccf0a0c13aa660fe85cdb4d4c8174abeb0772bdb81405d69b87e6",
+   "passages": 532,
+   "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0006/tlg016/tlg0006.tlg016.perseus-eng2.xml",
+   "sourceUrn": "urn:cts:greekLit:tlg0006.tlg016.perseus-eng2",
+   "sourceSha256": "fe098fa9560c239f4c6108c9c7b2acd6fcede37c7f768f4652aafcbd2304a6e4",
+   "sourceArchived": "https://libros.vitruvius-digital-library.org/corpus/fuentes/fe098fa9560c239f4c6108c9c7b2acd6fcede37c7f768f4652aafcbd2304a6e4.xml",
+   "translators": [
+    "Edward P. Coleridge"
+   ],
+   "publicationYear": 1891,
+   "license": [
+    "https://creativecommons.org/licenses/by-sa/4.0/"
+   ],
+   "indexUrl": "https://libros.vitruvius-digital-library.org/corpus/indice/traducciones/cts-tlg0006-tlg016-en-0f78d81b9e61d68a.json",
+   "indexSha256": "0f78d81b9e61d68a46a3a0a542dba4cd3fa97808890ad48291f3dfa4a39c7e44"
+  },
+  {
+   "workId": "cts-tlg0006-tlg019",
+   "author": "Eurípides",
+   "title": "Rhesus",
+   "language": "en",
+   "filename": "cts-tlg0006-tlg019-en-f8b2725a7ad48b7d.json",
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0006-tlg019-en-f8b2725a7ad48b7d.json",
+   "sha256": "f8b2725a7ad48b7df0c426c61b6569d73d9efb0899b66a8dbce44c3028c73b4b",
+   "passages": 209,
+   "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0006/tlg019/tlg0006.tlg019.perseus-eng3.xml",
+   "sourceUrn": "urn:cts:greekLit:tlg0006.tlg019.perseus-eng3",
+   "sourceSha256": "c2114888088ade0304a92407304d75a051d4d1f5c44e09a61bd02519f2372b92",
+   "sourceArchived": "https://libros.vitruvius-digital-library.org/corpus/fuentes/c2114888088ade0304a92407304d75a051d4d1f5c44e09a61bd02519f2372b92.xml",
+   "translators": [
+    "Edward P. Coleridge"
+   ],
+   "publicationYear": 1906,
+   "license": [
+    "https://creativecommons.org/licenses/by-sa/4.0/"
+   ],
+   "indexUrl": "https://libros.vitruvius-digital-library.org/corpus/indice/traducciones/cts-tlg0006-tlg019-en-c6c99c22ba578431.json",
+   "indexSha256": "c6c99c22ba578431ccd3217d06d131f0f8d552a122bfae3f60310141cbdb3ab7"
+  },
+  {
+   "workId": "cts-tlg0006-tlg019",
+   "author": "Eurípides",
+   "title": "Rhesus",
+   "language": "en",
+   "filename": "cts-tlg0006-tlg019-en-aa55a480426f7bb5.json",
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0006-tlg019-en-aa55a480426f7bb5.json",
+   "sha256": "aa55a480426f7bb5941ff145243a03373c677cd2d51589ff70b41a12b44c0d4b",
+   "passages": 261,
+   "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0006/tlg019/tlg0006.tlg019.perseus-eng4.xml",
+   "sourceUrn": "urn:cts:greekLit:tlg0006.tlg019.perseus-eng4",
+   "sourceSha256": "b9646177baf22e005f1ab53a765ce95f2fbc63c7145826d3f8933b4338593a49",
+   "sourceArchived": "https://libros.vitruvius-digital-library.org/corpus/fuentes/b9646177baf22e005f1ab53a765ce95f2fbc63c7145826d3f8933b4338593a49.xml",
+   "translators": [
+    "Gilbert Murray"
+   ],
+   "publicationYear": 1913,
+   "license": [
+    "https://creativecommons.org/licenses/by-sa/4.0/"
+   ],
+   "indexUrl": "https://libros.vitruvius-digital-library.org/corpus/indice/traducciones/cts-tlg0006-tlg019-en-6d26f89a8c3d960a.json",
+   "indexSha256": "6d26f89a8c3d960a5a86fd6fcd3c29c6dd7b852c213235cd56f8eda4ae30e3b1"
+  },
+  {
+   "workId": "cts-tlg0010-tlg007",
+   "author": "Isócrates",
+   "title": "To Demonicus",
+   "language": "en",
+   "filename": "cts-tlg0010-tlg007-en-782914843ea30bec.json",
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0010-tlg007-en-782914843ea30bec.json",
+   "sha256": "782914843ea30becd3d577bfe1eb16d8354d99ecdcaa8ceeccb6df3d5d715e08",
+   "passages": 52,
+   "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0010/tlg007/tlg0010.tlg007.perseus-eng2.xml",
+   "sourceUrn": "urn:cts:greekLit:tlg0010.tlg007.perseus-eng2",
+   "sourceSha256": "f10a3e78300cd7c18700b7995a3c215d6ffac77b30114a4d53bde85da161e932",
+   "sourceArchived": "https://libros.vitruvius-digital-library.org/corpus/fuentes/f10a3e78300cd7c18700b7995a3c215d6ffac77b30114a4d53bde85da161e932.xml",
+   "translators": [
+    "George Norlin"
+   ],
+   "publicationYear": 1928,
+   "license": [
+    "https://creativecommons.org/licenses/by-sa/4.0/"
+   ],
+   "indexUrl": "https://libros.vitruvius-digital-library.org/corpus/indice/traducciones/cts-tlg0010-tlg007-en-433d9b4b0e9012ba.json",
+   "indexSha256": "433d9b4b0e9012bae85a1aa43724de8385bb13403c09b32eea1727937910b6a1"
   }
  ],
  "lastDeferred": [
@@ -2217,6 +2309,22 @@
   {
    "workId": "cts-stoa0276-stoa002",
    "reason": "No hay traducción TEI descargable en Perseus"
+  },
+  {
+   "workId": "cts-tlg0006-tlg020",
+   "reason": "No hay traducción TEI descargable en Perseus"
+  },
+  {
+   "workId": "cts-tlg0010-tlg001",
+   "reason": "Sin traducción publicable: tlg0010.tlg001.perseus-eng2.xml: Edición histórica anterior a 1931 no acreditada"
+  },
+  {
+   "workId": "cts-tlg0010-tlg002",
+   "reason": "Sin traducción publicable: tlg0010.tlg002.perseus-eng2.xml: Edición histórica anterior a 1931 no acreditada"
+  },
+  {
+   "workId": "cts-tlg0010-tlg003",
+   "reason": "Sin traducción publicable: tlg0010.tlg003.perseus-eng2.xml: Edición histórica anterior a 1931 no acreditada"
   }
  ],
  "policy": "Una obra bibliográfica, varias versiones humanas identificadas por URN, sin eliminar ni reemplazar ninguna"

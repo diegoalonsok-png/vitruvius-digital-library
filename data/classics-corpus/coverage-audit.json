@@ -1,6 +1,6 @@
 {
   "schema": "vitruvia-classics-coverage-audit-v1",
-  "date": "2026-11-27",
+  "date": "2026-11-28",
   "scope": "Se auditan exclusivamente 271 fichas de obras del catálogo local; no es un censo universal de literatura grecolatina.",
   "method": "Cruce de fichas bibliográficas, vínculos locales, corpus legible, registro de búsqueda y testimonios manuscritos; sin OCR ni verificación externa de los enlaces.",
   "counts": {
@@ -13,7 +13,7 @@
       "fuente-externa-identificada": 50
     },
     "locallyReadableClaims": 720,
-    "indexedTextVersions": 1023,
+    "indexedTextVersions": 1027,
     "indexedDistinctWorks": 755,
     "manuscriptWitnesses": 107
   },
@@ -10248,9 +10248,11 @@
       "originalLanguage": "grc",
       "catalogueStatus": "lectura-local-parcial",
       "indexedTextLanguages": [
+        "en",
         "grc"
       ],
       "indexedTextFiles": [
+        "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0010-tlg007-en-782914843ea30bec.json",
         "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0010-tlg007-grc-8330f8f48b994492.json"
       ],
       "manuscriptRecords": 0,
@@ -10340,9 +10342,12 @@
       "originalLanguage": "grc",
       "catalogueStatus": "lectura-local-parcial",
       "indexedTextLanguages": [
+        "en",
         "grc"
       ],
       "indexedTextFiles": [
+        "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0006-tlg019-en-aa55a480426f7bb5.json",
+        "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0006-tlg019-en-f8b2725a7ad48b7d.json",
         "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0006-tlg019-grc-f79c7da42e7f1b2d.json"
       ],
       "manuscriptRecords": 0,
@@ -11398,9 +11403,11 @@
       "originalLanguage": "grc",
       "catalogueStatus": "lectura-local-parcial",
       "indexedTextLanguages": [
+        "en",
         "grc"
       ],
       "indexedTextFiles": [
+        "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0006-tlg016-en-44160409de6ccf0a.json",
         "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0006-tlg016-grc-4614137ed23dc085.json"
       ],
       "manuscriptRecords": 0,
