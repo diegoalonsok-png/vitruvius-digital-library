@@ -27,7 +27,7 @@
  };
  const langs=["es","en","fr"];
  const root=document.documentElement;
- let language=langs.includes(root.lang)?root.lang:"es",theme="dark";
+ let language="en",theme="dark";
  try{
   const saved=localStorage.getItem(LANG);if(langs.includes(saved))language=saved;
   const choice=localStorage.getItem(KEY);if(choice==="light"||choice==="dark")theme=choice;
