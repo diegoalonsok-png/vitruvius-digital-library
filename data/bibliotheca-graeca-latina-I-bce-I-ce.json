@@ -82018,6 +82018,1046 @@
     "bytes": 28490,
     "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0028-tlg001-grc-feaed95d3bae37c0.json"
    }
+  },
+  {
+   "id": "cts-tlg0093-ogl002",
+   "author": "Teofrasto",
+   "title": "De signis tempestatum",
+   "language": "grc",
+   "genre": "Corpus clásico ampliado",
+   "dating": "siglo IV–III a. C.",
+   "reading": {
+    "url": "classics-text-reader.html?work=cts-tlg0093-ogl002&lang=grc&edition=23e4829e48678474",
+    "status": "Edición TEI alojada en R2 con búsqueda y traducción automática por pasaje"
+   },
+   "manuscript": {
+    "status": "Sin testimonio manuscrito individual asignado; la edición TEI se identifica por separado"
+   },
+   "pdf": {
+    "url": null,
+    "status": "No consta PDF ni facsímil individual verificado para esta edición"
+   },
+   "translation": {
+    "status": "Traducción automática de consulta por pasaje; no se atribuye a un traductor académico"
+   },
+   "links": {
+    "scaife": "https://scaife.perseus.org/library/urn:cts:greekLit:tlg0093.ogl002.1st1K-grc1/"
+   },
+   "aliases": [
+    "urn:cts:greekLit:tlg0093.ogl002.1st1K-grc1"
+   ],
+   "relatedWorkIds": [],
+   "catalogueProvenance": "Título y autor de los catálogos CTS del sitio; edición contrastada con su cabecera TEI. No se retrotraduce el título.",
+   "corpusFiles": {
+    "grc": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0093-ogl002-grc-23e4829e48678474.json"
+   },
+   "localVersions": [
+    {
+     "language": "grc",
+     "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0093-ogl002-grc-23e4829e48678474.json",
+     "label": "Edición original grc · urn:cts:greekLit:tlg0093.ogl002.1st1K-grc1",
+     "reader": "classics-text-reader.html?work=cts-tlg0093-ogl002&lang=grc&edition=23e4829e48678474",
+     "sourceUrns": [
+      "urn:cts:greekLit:tlg0093.ogl002.1st1K-grc1"
+     ],
+     "sha256": "23e4829e48678474c9a2e477638fca6eaa5c78abc3e581e65ba6a24f7017cfaf"
+    }
+   ],
+   "publicStatus": "lectura-local-parcial",
+   "indexedEdition": {
+    "sources": [
+     {
+      "title": "Enquiry into Plants",
+      "titleLanguage": "und",
+      "author": "Theophrastus",
+      "editors": [
+       "Arthur Hort"
+      ],
+      "bibliography": "Theophrastus Enquiry into Plants and Minor Work On Odours and Weather Signs Arthur Hort Theophrastus Harvard University Press Cambridge, Massachusetts 1927 2 The Internet Archive",
+      "licences": [
+       {
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+       }
+      ],
+      "editionUrn": "urn:cts:greekLit:tlg0093.ogl002.1st1K-grc1",
+      "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0093/ogl002/tlg0093.ogl002.1st1K-grc1.xml",
+      "sourceSha256": "4b50893c1ee4fdd8e5595756f8456a896aadc322bcc6661749cef8ebcdf929c9",
+      "sourceReferences": [
+       "https://archive.org/details/enquiryintoplant02theouoft"
+      ],
+      "publicationYear": "1927",
+      "publisher": "Harvard University Press",
+      "publicationPlace": "Cambridge, Massachusetts",
+      "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/4b50893c1ee4fdd8e5595756f8456a896aadc322bcc6661749cef8ebcdf929c9.xml"
+     }
+    ],
+    "sha256": "23e4829e48678474c9a2e477638fca6eaa5c78abc3e581e65ba6a24f7017cfaf",
+    "passages": 62,
+    "characters": 23399,
+    "bytes": 57543,
+    "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0093-ogl002-grc-23e4829e48678474.json"
+   }
+  },
+  {
+   "id": "cts-tlg0062-tlg038",
+   "author": "Luciano de Samósata",
+   "title": "Alexander",
+   "language": "grc",
+   "genre": "Corpus clásico ampliado",
+   "dating": "c. 125–c. 180 d. C.",
+   "reading": {
+    "url": "classics-text-reader.html?work=cts-tlg0062-tlg038&lang=grc&edition=5392726140bcb218",
+    "status": "Edición TEI alojada en R2 con búsqueda y traducción automática por pasaje"
+   },
+   "manuscript": {
+    "status": "Sin testimonio manuscrito individual asignado; la edición TEI se identifica por separado"
+   },
+   "pdf": {
+    "url": null,
+    "status": "No consta PDF ni facsímil individual verificado para esta edición"
+   },
+   "translation": {
+    "status": "Traducción automática de consulta por pasaje; no se atribuye a un traductor académico"
+   },
+   "links": {
+    "scaife": "https://scaife.perseus.org/library/urn:cts:greekLit:tlg0062.tlg038.perseus-grc2/"
+   },
+   "aliases": [
+    "urn:cts:greekLit:tlg0062.tlg038.perseus-grc2"
+   ],
+   "relatedWorkIds": [],
+   "catalogueProvenance": "Título y autor de los catálogos CTS del sitio; edición contrastada con su cabecera TEI. No se retrotraduce el título.",
+   "corpusFiles": {
+    "grc": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg038-grc-5392726140bcb218.json"
+   },
+   "localVersions": [
+    {
+     "language": "grc",
+     "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg038-grc-5392726140bcb218.json",
+     "label": "Edición original grc · urn:cts:greekLit:tlg0062.tlg038.perseus-grc2",
+     "reader": "classics-text-reader.html?work=cts-tlg0062-tlg038&lang=grc&edition=5392726140bcb218",
+     "sourceUrns": [
+      "urn:cts:greekLit:tlg0062.tlg038.perseus-grc2"
+     ],
+     "sha256": "5392726140bcb2187406e1e34ba0965154ae8a44321ee0e2a994b715f214c3cd"
+    }
+   ],
+   "publicStatus": "lectura-local-parcial",
+   "indexedEdition": {
+    "sources": [
+     {
+      "title": "Ἀλέξανδρος ἢ Ψευδόμαντις",
+      "titleLanguage": "grc",
+      "author": "Lucian",
+      "editors": [
+       "Austin Morris Harmon"
+      ],
+      "bibliography": "Lucian Lucian Austin Morris Harmon London William Heinemann Ltd. Cambridge, MA Harvard University Press 1925 4 Loeb Classical Library Internet Archive",
+      "licences": [
+       {
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+       }
+      ],
+      "editionUrn": "urn:cts:greekLit:tlg0062.tlg038.perseus-grc2",
+      "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0062/tlg038/tlg0062.tlg038.perseus-grc2.xml",
+      "sourceSha256": "dc0aec593adf570912165141af2acb9113393a10215ddde949ed92ab9a5e9a62",
+      "sourceReferences": [
+       "https://archive.org/details/lucianhar04luciuoft/page/174/mode/2up"
+      ],
+      "publicationYear": "1925",
+      "publisher": "William Heinemann Ltd.",
+      "publicationPlace": "London",
+      "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/dc0aec593adf570912165141af2acb9113393a10215ddde949ed92ab9a5e9a62.xml"
+     }
+    ],
+    "sha256": "5392726140bcb2187406e1e34ba0965154ae8a44321ee0e2a994b715f214c3cd",
+    "passages": 74,
+    "characters": 45032,
+    "bytes": 102102,
+    "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg038-grc-5392726140bcb218.json"
+   }
+  },
+  {
+   "id": "cts-tlg0062-tlg039",
+   "author": "Luciano de Samósata",
+   "title": "Imagines",
+   "language": "grc",
+   "genre": "Corpus clásico ampliado",
+   "dating": "c. 125–c. 180 d. C.",
+   "reading": {
+    "url": "classics-text-reader.html?work=cts-tlg0062-tlg039&lang=grc&edition=3b3c78f6002ad778",
+    "status": "Edición TEI alojada en R2 con búsqueda y traducción automática por pasaje"
+   },
+   "manuscript": {
+    "status": "Sin testimonio manuscrito individual asignado; la edición TEI se identifica por separado"
+   },
+   "pdf": {
+    "url": null,
+    "status": "No consta PDF ni facsímil individual verificado para esta edición"
+   },
+   "translation": {
+    "status": "Traducción automática de consulta por pasaje; no se atribuye a un traductor académico"
+   },
+   "links": {
+    "scaife": "https://scaife.perseus.org/library/urn:cts:greekLit:tlg0062.tlg039.perseus-grc2/"
+   },
+   "aliases": [
+    "urn:cts:greekLit:tlg0062.tlg039.perseus-grc2"
+   ],
+   "relatedWorkIds": [],
+   "catalogueProvenance": "Título y autor de los catálogos CTS del sitio; edición contrastada con su cabecera TEI. No se retrotraduce el título.",
+   "corpusFiles": {
+    "grc": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg039-grc-3b3c78f6002ad778.json"
+   },
+   "localVersions": [
+    {
+     "language": "grc",
+     "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg039-grc-3b3c78f6002ad778.json",
+     "label": "Edición original grc · urn:cts:greekLit:tlg0062.tlg039.perseus-grc2",
+     "reader": "classics-text-reader.html?work=cts-tlg0062-tlg039&lang=grc&edition=3b3c78f6002ad778",
+     "sourceUrns": [
+      "urn:cts:greekLit:tlg0062.tlg039.perseus-grc2"
+     ],
+     "sha256": "3b3c78f6002ad77847e54079d251f7d2719571dde49a992bf3ddc2b16ee6825d"
+    }
+   ],
+   "publicStatus": "lectura-local-parcial",
+   "indexedEdition": {
+    "sources": [
+     {
+      "title": "Εἰκόνες",
+      "titleLanguage": "grc",
+      "author": "Lucian",
+      "editors": [
+       "Austin Morris Harmon"
+      ],
+      "bibliography": "Lucian Lucian Austin Morris Harmon London William Heinemann Ltd. Cambridge, MA Harvard University Press 1925 4 Loeb Classical Library Internet Archive",
+      "licences": [
+       {
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+       }
+      ],
+      "editionUrn": "urn:cts:greekLit:tlg0062.tlg039.perseus-grc2",
+      "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0062/tlg039/tlg0062.tlg039.perseus-grc2.xml",
+      "sourceSha256": "f80314089e0feba9eb25845e0d646396dc2c9a8f5ef9922eae51dfa918945a7d",
+      "sourceReferences": [
+       "https://archive.org/details/lucianhar04luciuoft/page/256/mode/2up"
+      ],
+      "publicationYear": "1925",
+      "publisher": "William Heinemann Ltd.",
+      "publicationPlace": "London",
+      "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/f80314089e0feba9eb25845e0d646396dc2c9a8f5ef9922eae51dfa918945a7d.xml"
+     }
+    ],
+    "sha256": "3b3c78f6002ad77847e54079d251f7d2719571dde49a992bf3ddc2b16ee6825d",
+    "passages": 63,
+    "characters": 20302,
+    "bytes": 51552,
+    "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg039-grc-3b3c78f6002ad778.json"
+   }
+  },
+  {
+   "id": "cts-tlg0062-tlg040",
+   "author": "Luciano de Samósata",
+   "title": "Pro imaginibus",
+   "language": "grc",
+   "genre": "Corpus clásico ampliado",
+   "dating": "c. 125–c. 180 d. C.",
+   "reading": {
+    "url": "classics-text-reader.html?work=cts-tlg0062-tlg040&lang=grc&edition=945d4f5a037eb142",
+    "status": "Edición TEI alojada en R2 con búsqueda y traducción automática por pasaje"
+   },
+   "manuscript": {
+    "status": "Sin testimonio manuscrito individual asignado; la edición TEI se identifica por separado"
+   },
+   "pdf": {
+    "url": null,
+    "status": "No consta PDF ni facsímil individual verificado para esta edición"
+   },
+   "translation": {
+    "status": "Traducción automática de consulta por pasaje; no se atribuye a un traductor académico"
+   },
+   "links": {
+    "scaife": "https://scaife.perseus.org/library/urn:cts:greekLit:tlg0062.tlg040.perseus-grc2/"
+   },
+   "aliases": [
+    "urn:cts:greekLit:tlg0062.tlg040.perseus-grc2"
+   ],
+   "relatedWorkIds": [],
+   "catalogueProvenance": "Título y autor de los catálogos CTS del sitio; edición contrastada con su cabecera TEI. No se retrotraduce el título.",
+   "corpusFiles": {
+    "grc": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg040-grc-945d4f5a037eb142.json"
+   },
+   "localVersions": [
+    {
+     "language": "grc",
+     "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg040-grc-945d4f5a037eb142.json",
+     "label": "Edición original grc · urn:cts:greekLit:tlg0062.tlg040.perseus-grc2",
+     "reader": "classics-text-reader.html?work=cts-tlg0062-tlg040&lang=grc&edition=945d4f5a037eb142",
+     "sourceUrns": [
+      "urn:cts:greekLit:tlg0062.tlg040.perseus-grc2"
+     ],
+     "sha256": "945d4f5a037eb14210a02bee5fdf89b3db9ef6f4df1c85ecdd241337062f9fca"
+    }
+   ],
+   "publicStatus": "lectura-local-parcial",
+   "indexedEdition": {
+    "sources": [
+     {
+      "title": "Ὑπὲρ τῶν Εἰκόνων",
+      "titleLanguage": "grc",
+      "author": "Lucian",
+      "editors": [
+       "Austin Morris Harmon"
+      ],
+      "bibliography": "Lucian Lucian Austin Morris Harmon London William Heinemann Ltd. Cambridge, MA Harvard University Press 1925 4 Internet Archive",
+      "licences": [
+       {
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+       }
+      ],
+      "editionUrn": "urn:cts:greekLit:tlg0062.tlg040.perseus-grc2",
+      "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0062/tlg040/tlg0062.tlg040.perseus-grc2.xml",
+      "sourceSha256": "fddd7b37eac0f782ec4d773552bae2b3bbf692d989da922d984d95a55149dfc8",
+      "sourceReferences": [
+       "https://archive.org/details/lucianhar04luciuoft/page/298/mode/2up"
+      ],
+      "publicationYear": "1925",
+      "publisher": "William Heinemann Ltd.",
+      "publicationPlace": "London",
+      "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/fddd7b37eac0f782ec4d773552bae2b3bbf692d989da922d984d95a55149dfc8.xml"
+     }
+    ],
+    "sha256": "945d4f5a037eb14210a02bee5fdf89b3db9ef6f4df1c85ecdd241337062f9fca",
+    "passages": 36,
+    "characters": 22071,
+    "bytes": 51009,
+    "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0062-tlg040-grc-945d4f5a037eb142.json"
+   }
+  },
+  {
+   "id": "cts-tlg0093-tlg004",
+   "author": "Teofrasto",
+   "title": "De lapidibus",
+   "language": "grc",
+   "genre": "Corpus clásico ampliado",
+   "dating": "siglo IV–III a. C.",
+   "reading": {
+    "url": "classics-text-reader.html?work=cts-tlg0093-tlg004&lang=grc&edition=aebfae2ee7ccb772",
+    "status": "Edición TEI alojada en R2 con búsqueda y traducción automática por pasaje"
+   },
+   "manuscript": {
+    "status": "Sin testimonio manuscrito individual asignado; la edición TEI se identifica por separado"
+   },
+   "pdf": {
+    "url": null,
+    "status": "No consta PDF ni facsímil individual verificado para esta edición"
+   },
+   "translation": {
+    "status": "Traducción automática de consulta por pasaje; no se atribuye a un traductor académico"
+   },
+   "links": {
+    "scaife": "https://scaife.perseus.org/library/urn:cts:greekLit:tlg0093.tlg004.1st1K-grc1/"
+   },
+   "aliases": [
+    "urn:cts:greekLit:tlg0093.tlg004.1st1K-grc1"
+   ],
+   "relatedWorkIds": [],
+   "catalogueProvenance": "Título y autor de los catálogos CTS del sitio; edición contrastada con su cabecera TEI. No se retrotraduce el título.",
+   "corpusFiles": {
+    "grc": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0093-tlg004-grc-aebfae2ee7ccb772.json"
+   },
+   "localVersions": [
+    {
+     "language": "grc",
+     "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0093-tlg004-grc-aebfae2ee7ccb772.json",
+     "label": "Edición original grc · urn:cts:greekLit:tlg0093.tlg004.1st1K-grc1",
+     "reader": "classics-text-reader.html?work=cts-tlg0093-tlg004&lang=grc&edition=aebfae2ee7ccb772",
+     "sourceUrns": [
+      "urn:cts:greekLit:tlg0093.tlg004.1st1K-grc1"
+     ],
+     "sha256": "aebfae2ee7ccb772ab3a84e09c8da38c50a114aae824cff49e20dc29b730f4f6"
+    }
+   ],
+   "publicStatus": "lectura-local-parcial",
+   "indexedEdition": {
+    "sources": [
+     {
+      "title": "De lapidibus",
+      "titleLanguage": "lat",
+      "author": "Theophrastus",
+      "editors": [
+       "Friedrich Wimmer"
+      ],
+      "bibliography": "Theophrasti Eresii opera, quae supersunt, omnia Friedrich Wimmer Theophrastus Teubner Lipsiae 1862 3 Open Content Alliance",
+      "licences": [
+       {
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+       }
+      ],
+      "editionUrn": "urn:cts:greekLit:tlg0093.tlg004.1st1K-grc1",
+      "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0093/tlg004/tlg0093.tlg004.1st1K-grc1.xml",
+      "sourceSha256": "0d163b0a5e4ba7342f5b90441bac22b62de4134eac322b61879ed0531a668cab",
+      "sourceReferences": [
+       "https://archive.org/details/theophrastieresi03theouoft"
+      ],
+      "publicationYear": "1862",
+      "publisher": "Teubner",
+      "publicationPlace": "Lipsiae",
+      "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/0d163b0a5e4ba7342f5b90441bac22b62de4134eac322b61879ed0531a668cab.xml"
+     }
+    ],
+    "sha256": "aebfae2ee7ccb772ab3a84e09c8da38c50a114aae824cff49e20dc29b730f4f6",
+    "passages": 10,
+    "characters": 25281,
+    "bytes": 52551,
+    "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0093-tlg004-grc-aebfae2ee7ccb772.json"
+   }
+  },
+  {
+   "id": "cts-tlg0093-tlg005",
+   "author": "Teofrasto",
+   "title": "De igne",
+   "language": "grc",
+   "genre": "Corpus clásico ampliado",
+   "dating": "siglo IV–III a. C.",
+   "reading": {
+    "url": "classics-text-reader.html?work=cts-tlg0093-tlg005&lang=grc&edition=86b0702986121a90",
+    "status": "Edición TEI alojada en R2 con búsqueda y traducción automática por pasaje"
+   },
+   "manuscript": {
+    "status": "Sin testimonio manuscrito individual asignado; la edición TEI se identifica por separado"
+   },
+   "pdf": {
+    "url": null,
+    "status": "No consta PDF ni facsímil individual verificado para esta edición"
+   },
+   "translation": {
+    "status": "Traducción automática de consulta por pasaje; no se atribuye a un traductor académico"
+   },
+   "links": {
+    "scaife": "https://scaife.perseus.org/library/urn:cts:greekLit:tlg0093.tlg005.1st1K-grc1/"
+   },
+   "aliases": [
+    "urn:cts:greekLit:tlg0093.tlg005.1st1K-grc1"
+   ],
+   "relatedWorkIds": [],
+   "catalogueProvenance": "Título y autor de los catálogos CTS del sitio; edición contrastada con su cabecera TEI. No se retrotraduce el título.",
+   "corpusFiles": {
+    "grc": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0093-tlg005-grc-86b0702986121a90.json"
+   },
+   "localVersions": [
+    {
+     "language": "grc",
+     "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0093-tlg005-grc-86b0702986121a90.json",
+     "label": "Edición original grc · urn:cts:greekLit:tlg0093.tlg005.1st1K-grc1",
+     "reader": "classics-text-reader.html?work=cts-tlg0093-tlg005&lang=grc&edition=86b0702986121a90",
+     "sourceUrns": [
+      "urn:cts:greekLit:tlg0093.tlg005.1st1K-grc1"
+     ],
+     "sha256": "86b0702986121a902d88dcd8ac887aaa44120c7b20b9d9b1f9de678416055e53"
+    }
+   ],
+   "publicStatus": "lectura-local-parcial",
+   "indexedEdition": {
+    "sources": [
+     {
+      "title": "Περὶ πυρός",
+      "titleLanguage": "grc",
+      "author": "Theophrastus",
+      "editors": [
+       "Friedrich Wimmer"
+      ],
+      "bibliography": "Theophrastus Theophrasti Eresii opera quae supersunt omnia Friedrich Wimmer Leipzig Teubner 1862 3 Internet Archive",
+      "licences": [
+       {
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+       }
+      ],
+      "editionUrn": "urn:cts:greekLit:tlg0093.tlg005.1st1K-grc1",
+      "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0093/tlg005/tlg0093.tlg005.1st1K-grc1.xml",
+      "sourceSha256": "c794110298c0044be69a08727b94f9b5d2f57b778505bb74f4b37ea2eabbe4b9",
+      "sourceReferences": [
+       "https://archive.org/details/theophrastieresi03theouoft/page/50/mode/2up"
+      ],
+      "publicationYear": "1862",
+      "publisher": "Teubner",
+      "publicationPlace": "Leipzig",
+      "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/c794110298c0044be69a08727b94f9b5d2f57b778505bb74f4b37ea2eabbe4b9.xml"
+     }
+    ],
+    "sha256": "86b0702986121a902d88dcd8ac887aaa44120c7b20b9d9b1f9de678416055e53",
+    "passages": 76,
+    "characters": 35537,
+    "bytes": 83792,
+    "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0093-tlg005-grc-86b0702986121a90.json"
+   }
+  },
+  {
+   "id": "cts-tlg0093-tlg003",
+   "author": "Teofrasto",
+   "title": "De sensu et sensibilibus",
+   "language": "grc",
+   "genre": "Corpus clásico ampliado",
+   "dating": "siglo IV–III a. C.",
+   "reading": {
+    "url": "classics-text-reader.html?work=cts-tlg0093-tlg003&lang=grc&edition=61ae4827b6d8349c",
+    "status": "Edición TEI alojada en R2 con búsqueda y traducción automática por pasaje"
+   },
+   "manuscript": {
+    "status": "Sin testimonio manuscrito individual asignado; la edición TEI se identifica por separado"
+   },
+   "pdf": {
+    "url": null,
+    "status": "No consta PDF ni facsímil individual verificado para esta edición"
+   },
+   "translation": {
+    "status": "Traducción automática de consulta por pasaje; no se atribuye a un traductor académico"
+   },
+   "links": {
+    "scaife": "https://scaife.perseus.org/library/urn:cts:greekLit:tlg0093.tlg003.1st1K-grc1/"
+   },
+   "aliases": [
+    "urn:cts:greekLit:tlg0093.tlg003.1st1K-grc1"
+   ],
+   "relatedWorkIds": [],
+   "catalogueProvenance": "Título y autor de los catálogos CTS del sitio; edición contrastada con su cabecera TEI. No se retrotraduce el título.",
+   "corpusFiles": {
+    "grc": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0093-tlg003-grc-61ae4827b6d8349c.json"
+   },
+   "localVersions": [
+    {
+     "language": "grc",
+     "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0093-tlg003-grc-61ae4827b6d8349c.json",
+     "label": "Edición original grc · urn:cts:greekLit:tlg0093.tlg003.1st1K-grc1",
+     "reader": "classics-text-reader.html?work=cts-tlg0093-tlg003&lang=grc&edition=61ae4827b6d8349c",
+     "sourceUrns": [
+      "urn:cts:greekLit:tlg0093.tlg003.1st1K-grc1"
+     ],
+     "sha256": "61ae4827b6d8349c1795c7cd1f5991024a7b3ec1a0fcf4c923ab47368cb9a33a"
+    }
+   ],
+   "publicStatus": "lectura-local-parcial",
+   "indexedEdition": {
+    "sources": [
+     {
+      "title": "De sensu et sensibilibus",
+      "titleLanguage": "lat",
+      "author": "Theophrastus",
+      "editors": [
+       "Friedrich Wimmer"
+      ],
+      "bibliography": "Theophrasti Eresii opera, quae supersunt, omnia Friedrich Wimmer Theophrastus Teubner Lipsiae 1862 3 Open Content Alliance",
+      "licences": [
+       {
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+       }
+      ],
+      "editionUrn": "urn:cts:greekLit:tlg0093.tlg003.1st1K-grc1",
+      "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0093/tlg003/tlg0093.tlg003.1st1K-grc1.xml",
+      "sourceSha256": "cc5571509cdef8075b005e3ebd15d67fac87ff9b658eafc8ee4c08b170a9cfd5",
+      "sourceReferences": [
+       "https://archive.org/details/theophrastieresi03theouoft"
+      ],
+      "publicationYear": "1862",
+      "publisher": "Teubner",
+      "publicationPlace": "Lipsiae",
+      "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/cc5571509cdef8075b005e3ebd15d67fac87ff9b658eafc8ee4c08b170a9cfd5.xml"
+     }
+    ],
+    "sha256": "61ae4827b6d8349c1795c7cd1f5991024a7b3ec1a0fcf4c923ab47368cb9a33a",
+    "passages": 18,
+    "characters": 52222,
+    "bytes": 107290,
+    "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0093-tlg003-grc-61ae4827b6d8349c.json"
+   }
+  },
+  {
+   "id": "cts-tlg0093-tlg002",
+   "author": "Teofrasto",
+   "title": "De causis plantarum",
+   "language": "grc",
+   "genre": "Corpus clásico ampliado",
+   "dating": "siglo IV–III a. C.",
+   "reading": {
+    "url": "classics-text-reader.html?work=cts-tlg0093-tlg002&lang=grc&edition=c5944bdcc602633b",
+    "status": "Edición TEI alojada en R2 con búsqueda y traducción automática por pasaje"
+   },
+   "manuscript": {
+    "status": "Sin testimonio manuscrito individual asignado; la edición TEI se identifica por separado"
+   },
+   "pdf": {
+    "url": null,
+    "status": "No consta PDF ni facsímil individual verificado para esta edición"
+   },
+   "translation": {
+    "status": "Traducción automática de consulta por pasaje; no se atribuye a un traductor académico"
+   },
+   "links": {
+    "scaife": "https://scaife.perseus.org/library/urn:cts:greekLit:tlg0093.tlg002.1st1K-grc1/"
+   },
+   "aliases": [
+    "urn:cts:greekLit:tlg0093.tlg002.1st1K-grc1"
+   ],
+   "relatedWorkIds": [],
+   "catalogueProvenance": "Título y autor de los catálogos CTS del sitio; edición contrastada con su cabecera TEI. No se retrotraduce el título.",
+   "corpusFiles": {
+    "grc": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0093-tlg002-grc-c5944bdcc602633b.json"
+   },
+   "localVersions": [
+    {
+     "language": "grc",
+     "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0093-tlg002-grc-c5944bdcc602633b.json",
+     "label": "Edición original grc · urn:cts:greekLit:tlg0093.tlg002.1st1K-grc1",
+     "reader": "classics-text-reader.html?work=cts-tlg0093-tlg002&lang=grc&edition=c5944bdcc602633b",
+     "sourceUrns": [
+      "urn:cts:greekLit:tlg0093.tlg002.1st1K-grc1"
+     ],
+     "sha256": "c5944bdcc602633b4e80987260d464d58e6abe4b9523aa90304487853abfb135"
+    }
+   ],
+   "publicStatus": "lectura-local-parcial",
+   "indexedEdition": {
+    "sources": [
+     {
+      "title": "Περὶ φυτῶν αἰτιῶν",
+      "titleLanguage": "grc",
+      "author": "Theophrastus",
+      "editors": [
+       "Friedrich Wimmer"
+      ],
+      "bibliography": "Theophrasti Eresii opera quae supersunt omnia Friedrich Wimmer Theophrastus Leipzig Teubner 1854 2 The Internet Archive",
+      "licences": [
+       {
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+       }
+      ],
+      "editionUrn": "urn:cts:greekLit:tlg0093.tlg002.1st1K-grc1",
+      "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0093/tlg002/tlg0093.tlg002.1st1K-grc1.xml",
+      "sourceSha256": "d34e89fb1935bf4a8649b9fbc86254484447d6114f495850f033a0498417cd8a",
+      "sourceReferences": [
+       "https://archive.org/details/theophrastieres05wimmgoog/page/n8/mode/2up"
+      ],
+      "publicationYear": "1854",
+      "publisher": "Teubner",
+      "publicationPlace": "Leipzig",
+      "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/d34e89fb1935bf4a8649b9fbc86254484447d6114f495850f033a0498417cd8a.xml"
+     }
+    ],
+    "sha256": "c5944bdcc602633b4e80987260d464d58e6abe4b9523aa90304487853abfb135",
+    "passages": 803,
+    "characters": 411029,
+    "bytes": 936668,
+    "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0093-tlg002-grc-c5944bdcc602633b.json"
+   }
+  },
+  {
+   "id": "cts-tlg0093-tlg010x02",
+   "author": "Teofrasto",
+   "title": "De Ventis",
+   "language": "grc",
+   "genre": "Corpus clásico ampliado",
+   "dating": "siglo IV–III a. C.",
+   "reading": {
+    "url": "classics-text-reader.html?work=cts-tlg0093-tlg010x02&lang=grc&edition=772a2371f9b82a78",
+    "status": "Edición TEI alojada en R2 con búsqueda y traducción automática por pasaje"
+   },
+   "manuscript": {
+    "status": "Sin testimonio manuscrito individual asignado; la edición TEI se identifica por separado"
+   },
+   "pdf": {
+    "url": null,
+    "status": "No consta PDF ni facsímil individual verificado para esta edición"
+   },
+   "translation": {
+    "status": "Traducción automática de consulta por pasaje; no se atribuye a un traductor académico"
+   },
+   "links": {
+    "scaife": "https://scaife.perseus.org/library/urn:cts:greekLit:tlg0093.tlg010x02.1st1K-grc1/"
+   },
+   "aliases": [
+    "urn:cts:greekLit:tlg0093.tlg010x02.1st1K-grc1"
+   ],
+   "relatedWorkIds": [],
+   "catalogueProvenance": "Título y autor de los catálogos CTS del sitio; edición contrastada con su cabecera TEI. No se retrotraduce el título.",
+   "corpusFiles": {
+    "grc": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0093-tlg010x02-grc-772a2371f9b82a78.json"
+   },
+   "localVersions": [
+    {
+     "language": "grc",
+     "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0093-tlg010x02-grc-772a2371f9b82a78.json",
+     "label": "Edición original grc · urn:cts:greekLit:tlg0093.tlg010x02.1st1K-grc1",
+     "reader": "classics-text-reader.html?work=cts-tlg0093-tlg010x02&lang=grc&edition=772a2371f9b82a78",
+     "sourceUrns": [
+      "urn:cts:greekLit:tlg0093.tlg010x02.1st1K-grc1"
+     ],
+     "sha256": "772a2371f9b82a78beb5d8398602d551fd935bffaf562cbdd6d84655cecdcdea"
+    }
+   ],
+   "publicStatus": "lectura-local-parcial",
+   "indexedEdition": {
+    "sources": [
+     {
+      "title": "Περί Ανέμων",
+      "titleLanguage": "grc",
+      "author": "Theophrastus",
+      "editors": [
+       "Friedrich Wimmer"
+      ],
+      "bibliography": "Theophrastus Theophrasti Eresii Opera, Quae Supersunt, Omnia. Friedrich Wimmer Paris A.F. Didot 1866 HathiTrust",
+      "licences": [
+       {
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+       }
+      ],
+      "editionUrn": "urn:cts:greekLit:tlg0093.tlg010x02.1st1K-grc1",
+      "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0093/tlg010x02/tlg0093.tlg010x02.1st1K-grc1.xml",
+      "sourceSha256": "c209fcd1f15f4548afa23f2daf0f5312198072aa541d420845a9fcf67f5af5d2",
+      "sourceReferences": [
+       "https://hdl.handle.net/2027/uiug.30112023840660?urlappend=%3Bseq=412"
+      ],
+      "publicationYear": "1866",
+      "publisher": "A.F. Didot",
+      "publicationPlace": "Paris",
+      "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/c209fcd1f15f4548afa23f2daf0f5312198072aa541d420845a9fcf67f5af5d2.xml"
+     }
+    ],
+    "sha256": "772a2371f9b82a78beb5d8398602d551fd935bffaf562cbdd6d84655cecdcdea",
+    "passages": 62,
+    "characters": 32943,
+    "bytes": 76433,
+    "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0093-tlg010x02-grc-772a2371f9b82a78.json"
+   }
+  },
+  {
+   "id": "cts-tlg0093-tlg006",
+   "author": "Teofrasto",
+   "title": "Metaphysica",
+   "language": "grc",
+   "genre": "Corpus clásico ampliado",
+   "dating": "siglo IV–III a. C.",
+   "reading": {
+    "url": "classics-text-reader.html?work=cts-tlg0093-tlg006&lang=grc&edition=de17c4449c2855bd",
+    "status": "Edición TEI alojada en R2 con búsqueda y traducción automática por pasaje"
+   },
+   "manuscript": {
+    "status": "Sin testimonio manuscrito individual asignado; la edición TEI se identifica por separado"
+   },
+   "pdf": {
+    "url": null,
+    "status": "No consta PDF ni facsímil individual verificado para esta edición"
+   },
+   "translation": {
+    "status": "Traducción automática de consulta por pasaje; no se atribuye a un traductor académico"
+   },
+   "links": {
+    "scaife": "https://scaife.perseus.org/library/urn:cts:greekLit:tlg0093.tlg006.1st1K-grc1/"
+   },
+   "aliases": [
+    "urn:cts:greekLit:tlg0093.tlg006.1st1K-grc1"
+   ],
+   "relatedWorkIds": [],
+   "catalogueProvenance": "Título y autor de los catálogos CTS del sitio; edición contrastada con su cabecera TEI. No se retrotraduce el título.",
+   "corpusFiles": {
+    "grc": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0093-tlg006-grc-de17c4449c2855bd.json"
+   },
+   "localVersions": [
+    {
+     "language": "grc",
+     "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0093-tlg006-grc-de17c4449c2855bd.json",
+     "label": "Edición original grc · urn:cts:greekLit:tlg0093.tlg006.1st1K-grc1",
+     "reader": "classics-text-reader.html?work=cts-tlg0093-tlg006&lang=grc&edition=de17c4449c2855bd",
+     "sourceUrns": [
+      "urn:cts:greekLit:tlg0093.tlg006.1st1K-grc1"
+     ],
+     "sha256": "de17c4449c2855bd54a587ff4dd64aad7baea109104797d99e21a6fd58947788"
+    }
+   ],
+   "publicStatus": "lectura-local-parcial",
+   "indexedEdition": {
+    "sources": [
+     {
+      "title": "Ἐκ τῶν μετὰ τὰ φυσικά",
+      "titleLanguage": "grc",
+      "author": "Theophrastus",
+      "editors": [
+       "Friedrich Wimmer"
+      ],
+      "bibliography": "Theophrastus Theophrasti Eresii opera quae supersunt omnia Friedrich Wimmer Leipzig Teubner 1862 3 Internet Archive",
+      "licences": [
+       {
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "statement": "Available under a Creative Commons Attribution-ShareAlike 4.0 International License"
+       }
+      ],
+      "editionUrn": "urn:cts:greekLit:tlg0093.tlg006.1st1K-grc1",
+      "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0093/tlg006/tlg0093.tlg006.1st1K-grc1.xml",
+      "sourceSha256": "973eecc10d80a219c71c08d75749dc3a4e3090844ec064c48148d55e3e474fa9",
+      "sourceReferences": [
+       "https://archive.org/details/theophrastieresi03theouoft/page/150/mode/2up"
+      ],
+      "publicationYear": "1862",
+      "publisher": "Teubner",
+      "publicationPlace": "Leipzig",
+      "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/973eecc10d80a219c71c08d75749dc3a4e3090844ec064c48148d55e3e474fa9.xml"
+     }
+    ],
+    "sha256": "de17c4449c2855bd54a587ff4dd64aad7baea109104797d99e21a6fd58947788",
+    "passages": 34,
+    "characters": 18827,
+    "bytes": 44258,
+    "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0093-tlg006-grc-de17c4449c2855bd.json"
+   }
+  },
+  {
+   "id": "cts-tlg0028-tlg005",
+   "author": "Antifonte",
+   "title": "On the murder of Herodes",
+   "language": "grc",
+   "genre": "Corpus clásico ampliado",
+   "dating": "c. 480–411 a. C.",
+   "reading": {
+    "url": "classics-text-reader.html?work=cts-tlg0028-tlg005&lang=grc&edition=83564c039acdffe5",
+    "status": "Edición TEI alojada en R2 con búsqueda y traducción automática por pasaje"
+   },
+   "manuscript": {
+    "status": "Sin testimonio manuscrito individual asignado; la edición TEI se identifica por separado"
+   },
+   "pdf": {
+    "url": null,
+    "status": "No consta PDF ni facsímil individual verificado para esta edición"
+   },
+   "translation": {
+    "status": "Traducción automática de consulta por pasaje; no se atribuye a un traductor académico"
+   },
+   "links": {
+    "scaife": "https://scaife.perseus.org/library/urn:cts:greekLit:tlg0028.tlg005.perseus-grc2/"
+   },
+   "aliases": [
+    "urn:cts:greekLit:tlg0028.tlg005.perseus-grc2"
+   ],
+   "relatedWorkIds": [],
+   "catalogueProvenance": "Título y autor de los catálogos CTS del sitio; edición contrastada con su cabecera TEI. No se retrotraduce el título.",
+   "corpusFiles": {
+    "grc": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0028-tlg005-grc-83564c039acdffe5.json"
+   },
+   "localVersions": [
+    {
+     "language": "grc",
+     "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0028-tlg005-grc-83564c039acdffe5.json",
+     "label": "Edición original grc · urn:cts:greekLit:tlg0028.tlg005.perseus-grc2",
+     "reader": "classics-text-reader.html?work=cts-tlg0028-tlg005&lang=grc&edition=83564c039acdffe5",
+     "sourceUrns": [
+      "urn:cts:greekLit:tlg0028.tlg005.perseus-grc2"
+     ],
+     "sha256": "83564c039acdffe58852ffd57f2a81304b4552e499db4f9818a87789bd84e6d3"
+    }
+   ],
+   "publicStatus": "lectura-local-parcial",
+   "indexedEdition": {
+    "sources": [
+     {
+      "title": "Περὶ τοῦ Ἡρῷδου φόνου",
+      "titleLanguage": "grc",
+      "author": "Antiphon",
+      "editors": [
+       "Kenneth John Maidment"
+      ],
+      "bibliography": "Andocides Minor Attic Orators Kenneth John Maidment London William Heinemann, Ltd. Cambridge, MA Harvard University Press 1941 1960 1 Internet Archive",
+      "licences": [
+       {
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+       }
+      ],
+      "editionUrn": "urn:cts:greekLit:tlg0028.tlg005.perseus-grc2",
+      "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0028/tlg005/tlg0028.tlg005.perseus-grc2.xml",
+      "sourceSha256": "3b32e5e8240fc309d8129ca093a461712f3c55f6606102ee03dc97f3b2edf2d2",
+      "sourceReferences": [
+       "https://archive.org/details/minoratticorator01maiduoft/page/160/mode/2up"
+      ],
+      "publicationYear": "1941",
+      "publisher": "William Heinemann, Ltd.",
+      "publicationPlace": "London",
+      "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/3b32e5e8240fc309d8129ca093a461712f3c55f6606102ee03dc97f3b2edf2d2.xml"
+     }
+    ],
+    "sha256": "83564c039acdffe58852ffd57f2a81304b4552e499db4f9818a87789bd84e6d3",
+    "passages": 111,
+    "characters": 38473,
+    "bytes": 95190,
+    "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0028-tlg005-grc-83564c039acdffe5.json"
+   }
+  },
+  {
+   "id": "cts-tlg0028-tlg006",
+   "author": "Antifonte",
+   "title": "On the Choreutes",
+   "language": "grc",
+   "genre": "Corpus clásico ampliado",
+   "dating": "c. 480–411 a. C.",
+   "reading": {
+    "url": "classics-text-reader.html?work=cts-tlg0028-tlg006&lang=grc&edition=62b2a9ab35624cf6",
+    "status": "Edición TEI alojada en R2 con búsqueda y traducción automática por pasaje"
+   },
+   "manuscript": {
+    "status": "Sin testimonio manuscrito individual asignado; la edición TEI se identifica por separado"
+   },
+   "pdf": {
+    "url": null,
+    "status": "No consta PDF ni facsímil individual verificado para esta edición"
+   },
+   "translation": {
+    "status": "Traducción automática de consulta por pasaje; no se atribuye a un traductor académico"
+   },
+   "links": {
+    "scaife": "https://scaife.perseus.org/library/urn:cts:greekLit:tlg0028.tlg006.perseus-grc2/"
+   },
+   "aliases": [
+    "urn:cts:greekLit:tlg0028.tlg006.perseus-grc2"
+   ],
+   "relatedWorkIds": [],
+   "catalogueProvenance": "Título y autor de los catálogos CTS del sitio; edición contrastada con su cabecera TEI. No se retrotraduce el título.",
+   "corpusFiles": {
+    "grc": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0028-tlg006-grc-62b2a9ab35624cf6.json"
+   },
+   "localVersions": [
+    {
+     "language": "grc",
+     "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0028-tlg006-grc-62b2a9ab35624cf6.json",
+     "label": "Edición original grc · urn:cts:greekLit:tlg0028.tlg006.perseus-grc2",
+     "reader": "classics-text-reader.html?work=cts-tlg0028-tlg006&lang=grc&edition=62b2a9ab35624cf6",
+     "sourceUrns": [
+      "urn:cts:greekLit:tlg0028.tlg006.perseus-grc2"
+     ],
+     "sha256": "62b2a9ab35624cf64f835af823dacbdfd85f5f35c48a06bfd7e2017fb99ba885"
+    }
+   ],
+   "publicStatus": "lectura-local-parcial",
+   "indexedEdition": {
+    "sources": [
+     {
+      "title": "Περὶ τοῦ χορευτοῦ",
+      "titleLanguage": "grc",
+      "author": "Antiphon",
+      "editors": [
+       "Kenneth John Maidment"
+      ],
+      "bibliography": "Andocides Minor Attic Orators Kenneth John Maidment London William Heinemann, Ltd. Cambridge, MA Harvard University Press 1941 1960 1 Internet Archive",
+      "licences": [
+       {
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+       }
+      ],
+      "editionUrn": "urn:cts:greekLit:tlg0028.tlg006.perseus-grc2",
+      "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0028/tlg006/tlg0028.tlg006.perseus-grc2.xml",
+      "sourceSha256": "e2054a3a311b36ae937081ff816ec4addfc184d844a45133f61d4974cb3a0c33",
+      "sourceReferences": [
+       "https://archive.org/details/minoratticorator01maiduoft/page/246/mode/2up"
+      ],
+      "publicationYear": "1941",
+      "publisher": "William Heinemann, Ltd.",
+      "publicationPlace": "London",
+      "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/e2054a3a311b36ae937081ff816ec4addfc184d844a45133f61d4974cb3a0c33.xml"
+     }
+    ],
+    "sha256": "62b2a9ab35624cf64f835af823dacbdfd85f5f35c48a06bfd7e2017fb99ba885",
+    "passages": 51,
+    "characters": 21335,
+    "bytes": 51953,
+    "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0028-tlg006-grc-62b2a9ab35624cf6.json"
+   }
+  },
+  {
+   "id": "cts-tlg0029-tlg004",
+   "author": "Dinarco",
+   "title": "Against Demosthenes",
+   "language": "grc",
+   "genre": "Corpus clásico ampliado",
+   "dating": "c. 360–290 a. C.",
+   "reading": {
+    "url": "classics-text-reader.html?work=cts-tlg0029-tlg004&lang=grc&edition=a53c48344d99c86d",
+    "status": "Edición TEI alojada en R2 con búsqueda y traducción automática por pasaje"
+   },
+   "manuscript": {
+    "status": "Sin testimonio manuscrito individual asignado; la edición TEI se identifica por separado"
+   },
+   "pdf": {
+    "url": null,
+    "status": "No consta PDF ni facsímil individual verificado para esta edición"
+   },
+   "translation": {
+    "status": "Traducción automática de consulta por pasaje; no se atribuye a un traductor académico"
+   },
+   "links": {
+    "scaife": "https://scaife.perseus.org/library/urn:cts:greekLit:tlg0029.tlg004.perseus-grc2/"
+   },
+   "aliases": [
+    "urn:cts:greekLit:tlg0029.tlg004.perseus-grc2"
+   ],
+   "relatedWorkIds": [],
+   "catalogueProvenance": "Título y autor de los catálogos CTS del sitio; edición contrastada con su cabecera TEI. No se retrotraduce el título.",
+   "corpusFiles": {
+    "grc": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0029-tlg004-grc-a53c48344d99c86d.json"
+   },
+   "localVersions": [
+    {
+     "language": "grc",
+     "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0029-tlg004-grc-a53c48344d99c86d.json",
+     "label": "Edición original grc · urn:cts:greekLit:tlg0029.tlg004.perseus-grc2",
+     "reader": "classics-text-reader.html?work=cts-tlg0029-tlg004&lang=grc&edition=a53c48344d99c86d",
+     "sourceUrns": [
+      "urn:cts:greekLit:tlg0029.tlg004.perseus-grc2"
+     ],
+     "sha256": "a53c48344d99c86d93ff6c3d46984ad5dd9b1581b50434393aa2e4a98803617c"
+    }
+   ],
+   "publicStatus": "lectura-local-parcial",
+   "indexedEdition": {
+    "sources": [
+     {
+      "title": "Κατὰ Δημοσθένους",
+      "titleLanguage": "grc",
+      "author": "Dinarchus",
+      "editors": [
+       "J. O. Burtt"
+      ],
+      "bibliography": "Dinarchus Minor Attic Orators J. O. Burtt London William Heinemann, Ltd. Cambridge, MA Harvard University Press 1954 1962 2 Internet Archive",
+      "licences": [
+       {
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "statement": "Available under a Creative Commons Attribution-ShareAlike (CC BY-SA) license."
+       }
+      ],
+      "editionUrn": "urn:cts:greekLit:tlg0029.tlg004.perseus-grc2",
+      "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0029/tlg004/tlg0029.tlg004.perseus-grc2.xml",
+      "sourceSha256": "4c358e273b3b754be611480866312094f211ec2f8d4ef70526b2d7eefe2fbf97",
+      "sourceReferences": [
+       "https://archive.org/details/minoratticorator02maiduoft/page/172/mode/2up"
+      ],
+      "publicationYear": "1954",
+      "publisher": "William Heinemann, Ltd.",
+      "publicationPlace": "London",
+      "archivedSource": "https://libros.vitruvius-digital-library.org/corpus/fuentes/4c358e273b3b754be611480866312094f211ec2f8d4ef70526b2d7eefe2fbf97.xml"
+     }
+    ],
+    "sha256": "a53c48344d99c86d93ff6c3d46984ad5dd9b1581b50434393aa2e4a98803617c",
+    "passages": 124,
+    "characters": 49169,
+    "bytes": 117643,
+    "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0029-tlg004-grc-a53c48344d99c86d.json"
+   }
   }
  ],
  "pdfPolicy": {
