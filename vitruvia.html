@@ -1069,6 +1069,10 @@ html body .hero #search-form{
  --vr-search-placeholder:#e9d99b;
  --vr-search-icon:#e4d498;
  --vr-search-outline:#978956;
+ --vr-query-text:#ffe052;
+ --vr-query-placeholder:#ffe052;
+ --vr-search-frame:#808080;
+ border-color:var(--vr-search-frame)!important;
  --vr-search-button-bg:#29271f;
  --vr-search-button-hover:#393528;
 }
@@ -1077,6 +1081,9 @@ html[data-theme="light"] body .hero #search-form{
  --vr-search-placeholder:#78621c;
  --vr-search-icon:#78621c;
  --vr-search-outline:#a39362;
+ --vr-query-text:#806000;
+ --vr-query-placeholder:#806000;
+ --vr-search-frame:#808080;
  --vr-search-button-bg:#f6f0db;
  --vr-search-button-hover:#ede4c5;
 }
@@ -1085,6 +1092,9 @@ html[data-reading-background="custom"] body .hero #search-form{
  --vr-search-placeholder:var(--vr-page-muted);
  --vr-search-icon:var(--vr-control-ink);
  --vr-search-outline:var(--vr-control-border);
+ --vr-query-text:var(--vr-page-ink);
+ --vr-query-placeholder:var(--vr-page-muted);
+ --vr-search-frame:var(--vr-control-border);
  --vr-search-button-bg:var(--vr-control-bg);
  --vr-search-button-hover:var(--vr-control-hover);
 }
@@ -1097,17 +1107,17 @@ html body .hero #search-form #query{
  font-style:normal!important;
  line-height:1.45!important;
  letter-spacing:.018em!important;
- color:var(--vr-search-chalk)!important;
- -webkit-text-fill-color:var(--vr-search-chalk)!important;
- caret-color:var(--vr-search-chalk)!important;
+ color:var(--vr-query-text)!important;
+ -webkit-text-fill-color:var(--vr-query-text)!important;
+ caret-color:var(--vr-query-text)!important;
  background:transparent!important;
 }
 html body .hero #search-form #query::placeholder{
  font-family:var(--vr-search-font)!important;
  font-weight:400!important;
  font-style:normal!important;
- color:var(--vr-search-placeholder)!important;
- -webkit-text-fill-color:var(--vr-search-placeholder)!important;
+ color:var(--vr-query-placeholder)!important;
+ -webkit-text-fill-color:var(--vr-query-placeholder)!important;
  opacity:1!important;
 }
 html body .hero #search-form #submit{
@@ -1132,8 +1142,8 @@ html body .hero #search-form :is(.icon-search,button.vr-visual-icon,button#clear
  color:var(--vr-search-icon)!important;
 }
 html body .hero #search-form:focus-within{
- border-color:var(--vr-search-outline)!important;
- box-shadow:0 0 0 2px color-mix(in srgb,var(--vr-search-outline) 24%,transparent)!important;
+ border-color:var(--vr-search-frame)!important;
+ box-shadow:0 0 0 2px color-mix(in srgb,var(--vr-search-frame) 24%,transparent)!important;
 }
 html body .hero #search-form button:focus-visible{
  outline:2px solid var(--vr-search-outline)!important;
@@ -1149,7 +1159,7 @@ html body .hero #search-form #query::selection{
  html body .hero #search-form #submit{font-size:14px!important;min-height:46px!important;padding:8px 10px!important}
 }
 @media(forced-colors:active){
- html body .hero #search-form{--vr-search-chalk:CanvasText;--vr-search-placeholder:GrayText;--vr-search-icon:ButtonText;--vr-search-outline:Highlight;--vr-search-button-bg:ButtonFace;--vr-search-button-hover:ButtonFace}
+ html body .hero #search-form{--vr-search-chalk:CanvasText;--vr-search-placeholder:GrayText;--vr-search-icon:ButtonText;--vr-search-outline:Highlight;--vr-search-button-bg:ButtonFace;--vr-search-button-hover:ButtonFace;--vr-query-text:CanvasText;--vr-query-placeholder:GrayText;--vr-search-frame:Highlight}
  html body .hero #search-form #query,
  html body .hero #search-form #query::placeholder,
  html body .hero #search-form #submit{-webkit-text-fill-color:currentColor!important}
