@@ -1,6 +1,6 @@
 {
  "schema": "vdl-classics-translation-manifest-v1",
- "generated": "2026-11-28T00:17:50.754157+00:00",
+ "generated": "2026-11-28T09:30:38.741104+00:00",
  "method": "Traducciones humanas TEI licenciadas y publicadas en R2 con SHA-256, índice literal por pasaje, sin alineación automática",
  "editions": [
   {
@@ -2035,6 +2035,98 @@
    ],
    "indexUrl": "https://libros.vitruvius-digital-library.org/corpus/indice/traducciones/cts-tlg0010-tlg007-en-433d9b4b0e9012ba.json",
    "indexSha256": "433d9b4b0e9012bae85a1aa43724de8385bb13403c09b32eea1727937910b6a1"
+  },
+  {
+   "workId": "cts-tlg0010-tlg008",
+   "author": "Isócrates",
+   "title": "Against the Sophists",
+   "language": "en",
+   "filename": "cts-tlg0010-tlg008-en-adf638b1ad61ff03.json",
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0010-tlg008-en-adf638b1ad61ff03.json",
+   "sha256": "adf638b1ad61ff032da11a152a275d58b758cd78a21704535592a7b9c808d563",
+   "passages": 22,
+   "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0010/tlg008/tlg0010.tlg008.perseus-eng2.xml",
+   "sourceUrn": "urn:cts:greekLit:tlg0010.tlg008.perseus-eng2",
+   "sourceSha256": "e04d4a1de96493f03ef727949fd8aea656b295f5478e2e1a6a9e9eb0e7734eaf",
+   "sourceArchived": "https://libros.vitruvius-digital-library.org/corpus/fuentes/e04d4a1de96493f03ef727949fd8aea656b295f5478e2e1a6a9e9eb0e7734eaf.xml",
+   "translators": [
+    "George Norlin"
+   ],
+   "publicationYear": 1928,
+   "license": [
+    "https://creativecommons.org/licenses/by-sa/4.0/"
+   ],
+   "indexUrl": "https://libros.vitruvius-digital-library.org/corpus/indice/traducciones/cts-tlg0010-tlg008-en-5d8704cc2517bfca.json",
+   "indexSha256": "5d8704cc2517bfca98b0fa863f601fc9ee1cb498e6c2d2441d6207d187e9628e"
+  },
+  {
+   "workId": "cts-tlg0010-tlg013",
+   "author": "Isócrates",
+   "title": "To Nicocles",
+   "language": "en",
+   "filename": "cts-tlg0010-tlg013-en-605ef7e2122a118f.json",
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0010-tlg013-en-605ef7e2122a118f.json",
+   "sha256": "605ef7e2122a118f166a3d11ddfb102ce29ac8644b6e5018b6b83ded62596b63",
+   "passages": 54,
+   "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0010/tlg013/tlg0010.tlg013.perseus-eng2.xml",
+   "sourceUrn": "urn:cts:greekLit:tlg0010.tlg013.perseus-eng2",
+   "sourceSha256": "e5d8ef8324dd2ad7fc86d4dc3d71a53c4fa84b889939afd2d892429db7249868",
+   "sourceArchived": "https://libros.vitruvius-digital-library.org/corpus/fuentes/e5d8ef8324dd2ad7fc86d4dc3d71a53c4fa84b889939afd2d892429db7249868.xml",
+   "translators": [
+    "George Norlin"
+   ],
+   "publicationYear": 1928,
+   "license": [
+    "https://creativecommons.org/licenses/by-sa/4.0/"
+   ],
+   "indexUrl": "https://libros.vitruvius-digital-library.org/corpus/indice/traducciones/cts-tlg0010-tlg013-en-452fcae67eef256c.json",
+   "indexSha256": "452fcae67eef256c5831c1afcc38a7cf5a6e7335554a88af85fd968ff3e84dac"
+  },
+  {
+   "workId": "cts-tlg0010-tlg014",
+   "author": "Isócrates",
+   "title": "Nicocles or the Cyprians",
+   "language": "en",
+   "filename": "cts-tlg0010-tlg014-en-0051f5acc8e35e09.json",
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0010-tlg014-en-0051f5acc8e35e09.json",
+   "sha256": "0051f5acc8e35e09f96a355d002bbe12e2a7bce9051f13c80166e2ca3cf3c1c6",
+   "passages": 64,
+   "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0010/tlg014/tlg0010.tlg014.perseus-eng2.xml",
+   "sourceUrn": "urn:cts:greekLit:tlg0010.tlg014.perseus-eng2",
+   "sourceSha256": "0cbf887eb182b387b615e45a1202a80d2bfdce573168de7ccdcc6332644031d4",
+   "sourceArchived": "https://libros.vitruvius-digital-library.org/corpus/fuentes/0cbf887eb182b387b615e45a1202a80d2bfdce573168de7ccdcc6332644031d4.xml",
+   "translators": [
+    "George Norlin"
+   ],
+   "publicationYear": 1928,
+   "license": [
+    "https://creativecommons.org/licenses/by-sa/4.0/"
+   ],
+   "indexUrl": "https://libros.vitruvius-digital-library.org/corpus/indice/traducciones/cts-tlg0010-tlg014-en-f54b3dc7c122bba8.json",
+   "indexSha256": "f54b3dc7c122bba893389c75a408ac68f50bb411da9cc88e0e112958553fcdda"
+  },
+  {
+   "workId": "cts-tlg0010-tlg019",
+   "author": "Isócrates",
+   "title": "Antidosis",
+   "language": "en",
+   "filename": "cts-tlg0010-tlg019-en-51d60f05a1e5fe0d.json",
+   "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0010-tlg019-en-51d60f05a1e5fe0d.json",
+   "sha256": "51d60f05a1e5fe0da7352015c1907ef5c076ce97d3cb40ed345e9dc10c9492f3",
+   "passages": 322,
+   "sourceUrl": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0010/tlg019/tlg0010.tlg019.perseus-eng2.xml",
+   "sourceUrn": "urn:cts:greekLit:tlg0010.tlg019.perseus-eng2",
+   "sourceSha256": "2b495101a1fe235294437c99ca4884553022e880a57c7b47a3a51466b2359660",
+   "sourceArchived": "https://libros.vitruvius-digital-library.org/corpus/fuentes/2b495101a1fe235294437c99ca4884553022e880a57c7b47a3a51466b2359660.xml",
+   "translators": [
+    "George Norlin"
+   ],
+   "publicationYear": 1928,
+   "license": [
+    "https://creativecommons.org/licenses/by-sa/4.0/"
+   ],
+   "indexUrl": "https://libros.vitruvius-digital-library.org/corpus/indice/traducciones/cts-tlg0010-tlg019-en-99fb439588ae8aaa.json",
+   "indexSha256": "99fb439588ae8aaa9ad9ddbc7305be21c628d945fe6ee31aef71a6956ef49ae3"
   }
  ],
  "lastDeferred": [
@@ -2325,6 +2417,14 @@
   {
    "workId": "cts-tlg0010-tlg003",
    "reason": "Sin traducción publicable: tlg0010.tlg003.perseus-eng2.xml: Edición histórica anterior a 1931 no acreditada"
+  },
+  {
+   "workId": "cts-tlg0010-tlg009",
+   "reason": "Sin traducción publicable: tlg0010.tlg009.perseus-eng2.xml: Edición histórica anterior a 1931 no acreditada"
+  },
+  {
+   "workId": "cts-tlg0010-tlg015",
+   "reason": "Sin traducción publicable: tlg0010.tlg015.perseus-eng2.xml: Edición histórica anterior a 1931 no acreditada"
   }
  ],
  "policy": "Una obra bibliográfica, varias versiones humanas identificadas por URN, sin eliminar ni reemplazar ninguna"

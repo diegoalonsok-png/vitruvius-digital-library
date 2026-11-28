@@ -61459,7 +61459,8 @@
    "relatedWorkIds": [],
    "catalogueProvenance": "Título y autor de los catálogos CTS del sitio; edición contrastada con su cabecera TEI. No se retrotraduce el título.",
    "corpusFiles": {
-    "grc": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0010-tlg008-grc-72eb3110445830b7.json"
+    "grc": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0010-tlg008-grc-72eb3110445830b7.json",
+    "en": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0010-tlg008-en-adf638b1ad61ff03.json"
    },
    "localVersions": [
     {
@@ -61471,6 +61472,14 @@
       "urn:cts:greekLit:tlg0010.tlg008.perseus-grc2"
      ],
      "sha256": "72eb3110445830b7e8da88ee1b3ede60cbc2803061709a0cf171c1a3f5cb7498"
+    },
+    {
+     "language": "en",
+     "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0010-tlg008-en-adf638b1ad61ff03.json",
+     "label": "Traducción humana: George Norlin",
+     "reader": "classics-text-reader.html?work=cts-tlg0010-tlg008&lang=en&edition=adf638b1ad61ff03",
+     "sourceUrn": "urn:cts:greekLit:tlg0010.tlg008.perseus-eng2",
+     "sha256": "adf638b1ad61ff032da11a152a275d58b758cd78a21704535592a7b9c808d563"
     }
    ],
    "publicStatus": "lectura-local-parcial",
@@ -61507,7 +61516,22 @@
     "characters": 8850,
     "bytes": 22814,
     "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0010-tlg008-grc-72eb3110445830b7.json"
-   }
+   },
+   "humanTranslations": [
+    {
+     "language": "en",
+     "translators": [
+      "George Norlin"
+     ],
+     "publicationYear": 1928,
+     "sourceUrn": "urn:cts:greekLit:tlg0010.tlg008.perseus-eng2",
+     "license": [
+      "https://creativecommons.org/licenses/by-sa/4.0/"
+     ],
+     "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0010-tlg008-en-adf638b1ad61ff03.json",
+     "indexUrl": "https://libros.vitruvius-digital-library.org/corpus/indice/traducciones/cts-tlg0010-tlg008-en-5d8704cc2517bfca.json"
+    }
+   ]
   },
   {
    "id": "cts-tlg0010-tlg009",
@@ -64582,7 +64606,8 @@
    "relatedWorkIds": [],
    "catalogueProvenance": "Título y autor de los catálogos CTS del sitio; edición contrastada con su cabecera TEI. No se retrotraduce el título.",
    "corpusFiles": {
-    "grc": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0010-tlg013-grc-51af0cf23f56cb79.json"
+    "grc": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0010-tlg013-grc-51af0cf23f56cb79.json",
+    "en": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0010-tlg013-en-605ef7e2122a118f.json"
    },
    "localVersions": [
     {
@@ -64594,6 +64619,14 @@
       "urn:cts:greekLit:tlg0010.tlg013.perseus-grc2"
      ],
      "sha256": "51af0cf23f56cb79a2f1064cf4a03ac9711c28e46e6e0a7b23440300d51e9ece"
+    },
+    {
+     "language": "en",
+     "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0010-tlg013-en-605ef7e2122a118f.json",
+     "label": "Traducción humana: George Norlin",
+     "reader": "classics-text-reader.html?work=cts-tlg0010-tlg013&lang=en&edition=605ef7e2122a118f",
+     "sourceUrn": "urn:cts:greekLit:tlg0010.tlg013.perseus-eng2",
+     "sha256": "605ef7e2122a118f166a3d11ddfb102ce29ac8644b6e5018b6b83ded62596b63"
     }
    ],
    "publicStatus": "lectura-local-parcial",
@@ -64630,7 +64663,22 @@
     "characters": 19320,
     "bytes": 49225,
     "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0010-tlg013-grc-51af0cf23f56cb79.json"
-   }
+   },
+   "humanTranslations": [
+    {
+     "language": "en",
+     "translators": [
+      "George Norlin"
+     ],
+     "publicationYear": 1928,
+     "sourceUrn": "urn:cts:greekLit:tlg0010.tlg013.perseus-eng2",
+     "license": [
+      "https://creativecommons.org/licenses/by-sa/4.0/"
+     ],
+     "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0010-tlg013-en-605ef7e2122a118f.json",
+     "indexUrl": "https://libros.vitruvius-digital-library.org/corpus/indice/traducciones/cts-tlg0010-tlg013-en-452fcae67eef256c.json"
+    }
+   ]
   },
   {
    "id": "cts-tlg0057-tlg011",
@@ -64822,7 +64870,8 @@
    "relatedWorkIds": [],
    "catalogueProvenance": "Título y autor de los catálogos CTS del sitio; edición contrastada con su cabecera TEI. No se retrotraduce el título.",
    "corpusFiles": {
-    "grc": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0010-tlg014-grc-1c726c9943b9b502.json"
+    "grc": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0010-tlg014-grc-1c726c9943b9b502.json",
+    "en": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0010-tlg014-en-0051f5acc8e35e09.json"
    },
    "localVersions": [
     {
@@ -64834,6 +64883,14 @@
       "urn:cts:greekLit:tlg0010.tlg014.perseus-grc2"
      ],
      "sha256": "1c726c9943b9b502c29e96a5a3c307299e87058744dd3c62f309f753e1f46600"
+    },
+    {
+     "language": "en",
+     "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0010-tlg014-en-0051f5acc8e35e09.json",
+     "label": "Traducción humana: George Norlin",
+     "reader": "classics-text-reader.html?work=cts-tlg0010-tlg014&lang=en&edition=0051f5acc8e35e09",
+     "sourceUrn": "urn:cts:greekLit:tlg0010.tlg014.perseus-eng2",
+     "sha256": "0051f5acc8e35e09f96a355d002bbe12e2a7bce9051f13c80166e2ca3cf3c1c6"
     }
    ],
    "publicStatus": "lectura-local-parcial",
@@ -64870,7 +64927,22 @@
     "characters": 24202,
     "bytes": 59699,
     "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0010-tlg014-grc-1c726c9943b9b502.json"
-   }
+   },
+   "humanTranslations": [
+    {
+     "language": "en",
+     "translators": [
+      "George Norlin"
+     ],
+     "publicationYear": 1928,
+     "sourceUrn": "urn:cts:greekLit:tlg0010.tlg014.perseus-eng2",
+     "license": [
+      "https://creativecommons.org/licenses/by-sa/4.0/"
+     ],
+     "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0010-tlg014-en-0051f5acc8e35e09.json",
+     "indexUrl": "https://libros.vitruvius-digital-library.org/corpus/indice/traducciones/cts-tlg0010-tlg014-en-f54b3dc7c122bba8.json"
+    }
+   ]
   },
   {
    "id": "cts-tlg0014-tlg036",
@@ -66900,7 +66972,8 @@
    "relatedWorkIds": [],
    "catalogueProvenance": "Título y autor de los catálogos CTS del sitio; edición contrastada con su cabecera TEI. No se retrotraduce el título.",
    "corpusFiles": {
-    "grc": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0010-tlg019-grc-497e4e2b0108c583.json"
+    "grc": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0010-tlg019-grc-497e4e2b0108c583.json",
+    "en": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0010-tlg019-en-51d60f05a1e5fe0d.json"
    },
    "localVersions": [
     {
@@ -66912,6 +66985,14 @@
       "urn:cts:greekLit:tlg0010.tlg019.perseus-grc2"
      ],
      "sha256": "497e4e2b0108c583bb3235c74067dd93bebbb9ac7e92263aab35da2e31a4a0cf"
+    },
+    {
+     "language": "en",
+     "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0010-tlg019-en-51d60f05a1e5fe0d.json",
+     "label": "Traducción humana: George Norlin",
+     "reader": "classics-text-reader.html?work=cts-tlg0010-tlg019&lang=en&edition=51d60f05a1e5fe0d",
+     "sourceUrn": "urn:cts:greekLit:tlg0010.tlg019.perseus-eng2",
+     "sha256": "51d60f05a1e5fe0da7352015c1907ef5c076ce97d3cb40ed345e9dc10c9492f3"
     }
    ],
    "publicStatus": "lectura-local-parcial",
@@ -66948,7 +67029,22 @@
     "characters": 114570,
     "bytes": 277332,
     "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0010-tlg019-grc-497e4e2b0108c583.json"
-   }
+   },
+   "humanTranslations": [
+    {
+     "language": "en",
+     "translators": [
+      "George Norlin"
+     ],
+     "publicationYear": 1928,
+     "sourceUrn": "urn:cts:greekLit:tlg0010.tlg019.perseus-eng2",
+     "license": [
+      "https://creativecommons.org/licenses/by-sa/4.0/"
+     ],
+     "url": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0010-tlg019-en-51d60f05a1e5fe0d.json",
+     "indexUrl": "https://libros.vitruvius-digital-library.org/corpus/indice/traducciones/cts-tlg0010-tlg019-en-99fb439588ae8aaa.json"
+    }
+   ]
   },
   {
    "id": "cts-tlg0010-tlg020",

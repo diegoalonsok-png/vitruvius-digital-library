@@ -2,7 +2,7 @@
  "schema": "vitruvia-classics-search-registry-v1",
  "updated": "2026-11-28",
  "description": "Registro verificable de transcripciones HTML y textos JSON existentes que admiten búsqueda literal de contenido. No incluye automáticamente PDF escaneados, facsímiles ni fichas sin texto. Los índices auxiliares por locus y el aparato crítico se declaran por separado; no se suman a versiones textuales originales ni implican colación autóptica.",
- "count": 1201,
+ "count": 1205,
  "works": 896,
  "entries": [
   {
@@ -3494,6 +3494,19 @@
    "workId": "cts-tlg0010-tlg008",
    "author": "Isócrates",
    "title": "Against the Sophists",
+   "language": "en",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0010-tlg008-en-adf638b1ad61ff03.json",
+   "reader": "classics-text-reader.html?work=cts-tlg0010-tlg008&lang=en&edition=adf638b1ad61ff03",
+   "sourceDescription": "Traducción humana acreditada: George Norlin; TEI Perseus, licencia y SHA256 verificados",
+   "sourceUrn": "urn:cts:greekLit:tlg0010.tlg008.perseus-eng2",
+   "sha256": "adf638b1ad61ff032da11a152a275d58b758cd78a21704535592a7b9c808d563",
+   "passages": 22
+  },
+  {
+   "workId": "cts-tlg0010-tlg008",
+   "author": "Isócrates",
+   "title": "Against the Sophists",
    "language": "grc",
    "format": "json-passages",
    "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0010-tlg008-grc-72eb3110445830b7.json",
@@ -3520,6 +3533,19 @@
    "workId": "cts-tlg0010-tlg013",
    "author": "Isócrates",
    "title": "To Nicocles",
+   "language": "en",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0010-tlg013-en-605ef7e2122a118f.json",
+   "reader": "classics-text-reader.html?work=cts-tlg0010-tlg013&lang=en&edition=605ef7e2122a118f",
+   "sourceDescription": "Traducción humana acreditada: George Norlin; TEI Perseus, licencia y SHA256 verificados",
+   "sourceUrn": "urn:cts:greekLit:tlg0010.tlg013.perseus-eng2",
+   "sha256": "605ef7e2122a118f166a3d11ddfb102ce29ac8644b6e5018b6b83ded62596b63",
+   "passages": 54
+  },
+  {
+   "workId": "cts-tlg0010-tlg013",
+   "author": "Isócrates",
+   "title": "To Nicocles",
    "language": "grc",
    "format": "json-passages",
    "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0010-tlg013-grc-51af0cf23f56cb79.json",
@@ -3528,6 +3554,19 @@
    "sourceUrn": "urn:cts:greekLit:tlg0010.tlg013.perseus-grc2",
    "sha256": "51af0cf23f56cb79a2f1064cf4a03ac9711c28e46e6e0a7b23440300d51e9ece",
    "passages": 60
+  },
+  {
+   "workId": "cts-tlg0010-tlg014",
+   "author": "Isócrates",
+   "title": "Nicocles or the Cyprians",
+   "language": "en",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0010-tlg014-en-0051f5acc8e35e09.json",
+   "reader": "classics-text-reader.html?work=cts-tlg0010-tlg014&lang=en&edition=0051f5acc8e35e09",
+   "sourceDescription": "Traducción humana acreditada: George Norlin; TEI Perseus, licencia y SHA256 verificados",
+   "sourceUrn": "urn:cts:greekLit:tlg0010.tlg014.perseus-eng2",
+   "sha256": "0051f5acc8e35e09f96a355d002bbe12e2a7bce9051f13c80166e2ca3cf3c1c6",
+   "passages": 64
   },
   {
    "workId": "cts-tlg0010-tlg014",
@@ -3554,6 +3593,19 @@
    "sourceUrn": "urn:cts:greekLit:tlg0010.tlg015.perseus-grc2",
    "sha256": "59a456bbe4e9c5edac0f99feffaee5e6cc7dc877c7ded334a2206f596f2ae3ed",
    "passages": 81
+  },
+  {
+   "workId": "cts-tlg0010-tlg019",
+   "author": "Isócrates",
+   "title": "Antidosis",
+   "language": "en",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/cts-tlg0010-tlg019-en-51d60f05a1e5fe0d.json",
+   "reader": "classics-text-reader.html?work=cts-tlg0010-tlg019&lang=en&edition=51d60f05a1e5fe0d",
+   "sourceDescription": "Traducción humana acreditada: George Norlin; TEI Perseus, licencia y SHA256 verificados",
+   "sourceUrn": "urn:cts:greekLit:tlg0010.tlg019.perseus-eng2",
+   "sha256": "51d60f05a1e5fe0da7352015c1907ef5c076ce97d3cb40ed345e9dc10c9492f3",
+   "passages": 322
   },
   {
    "workId": "cts-tlg0010-tlg019",
