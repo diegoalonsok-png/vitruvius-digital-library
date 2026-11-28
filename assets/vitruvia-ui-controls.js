@@ -21,10 +21,10 @@
    const preferredTheme=localStorage.getItem(THEME);
    if(["light","dark"].includes(preferredTheme))root.dataset.theme=preferredTheme;
    const preferredLanguage=localStorage.getItem(LANG);
-   if(langs.has(preferredLanguage)){root.lang=preferredLanguage;locale.value=preferredLanguage;}
+   const initialLanguage=langs.has(preferredLanguage)?preferredLanguage:"en";root.lang=initialLanguage;locale.value=initialLanguage;
   }catch{}
   const paint=()=>{
-   const language=langs.has(root.lang)?root.lang:"es";
+   const language=langs.has(root.lang)?root.lang:"en";
    const isDark=root.dataset.theme!=="light";
    const next=isDark?"light":"dark";
    theme.setAttribute("aria-label",labels[language][next]);
