@@ -12,7 +12,7 @@ if(window.VitruviusUIIdioma)return;window.VitruviusUIIdioma=true;
 const base=(()=>{const s=document.currentScript||document.querySelector('script[src*="ui-idioma.js"]');try{return new URL(".",s.src).href}catch{return "assets/"}})();
 const cargar=(archivo,marca)=>{if(document.querySelector('script[src*="'+marca+'"]'))return;const s=document.createElement("script");s.src=base+archivo;s.defer=true;document.head.append(s)};
 const KEY="vitruvius-ui-lang";
-let lang="es";try{lang=localStorage.getItem(KEY)||"es"}catch{}
+let lang="en";try{lang=localStorage.getItem(KEY)||"en"}catch{}
 function iniciar(){
  // Un selector propio de la página (aunque sus opciones se llenen después) evita
  // montar una segunda pastilla: se comprueba tras la carga, por opciones o por nombre.
