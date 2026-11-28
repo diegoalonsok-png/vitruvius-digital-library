@@ -1060,28 +1060,28 @@ html[data-theme=light] #vitruvia-welcome .welcome-examples a:hover{background:#e
    Custom reading palettes retain their own contrast-aware color variables. */
 html body .hero #search-form{
  --vr-search-font:Menlo,Consolas,"DejaVu Sans Mono","Liberation Mono",ui-monospace,monospace;
- min-height:76px!important;
- padding:9px 10px 9px 18px!important;
+ min-height:62px!important;
+ padding:5px 8px 5px 16px!important;
  gap:10px!important;
  border-radius:44px!important;
  box-sizing:border-box;
- --vr-search-chalk:#f5e39a;
- --vr-search-placeholder:#e9d99b;
- --vr-search-icon:#e4d498;
+ --vr-search-chalk:#E8E3D8;
+ --vr-search-placeholder:#E8E3D8;
+ --vr-search-icon:#E8E3D8;
  --vr-search-outline:#978956;
- --vr-query-text:#ffe052;
- --vr-query-placeholder:#ffe052;
+ --vr-query-text:#E8E3D8;
+ --vr-query-placeholder:#E8E3D8;
  --vr-search-frame:#808080;
  border-color:var(--vr-search-frame)!important;
  --vr-search-button-bg:#29271f;
  --vr-search-button-hover:#393528;
 }
 html[data-theme="light"] body .hero #search-form{
- --vr-search-chalk:#71590e;
- --vr-search-placeholder:#78621c;
+ --vr-search-chalk:#504d46;
+ --vr-search-placeholder:#605c53;
  --vr-search-icon:#78621c;
  --vr-search-outline:#a39362;
- --vr-query-text:#806000;
+ --vr-query-text:#504d46;
  --vr-query-placeholder:#806000;
  --vr-search-frame:#808080;
  --vr-search-button-bg:#f6f0db;
@@ -1100,9 +1100,9 @@ html[data-reading-background="custom"] body .hero #search-form{
 }
 html body .hero #search-form #query{
  font-family:var(--vr-search-font)!important;
- font-size:clamp(18px,1.45vw,22px)!important;
- min-height:46px!important;
- padding-block:5px!important;
+ font-size:clamp(16px,1.3vw,20px)!important;
+ min-height:40px!important;
+ padding-block:3px!important;
  font-weight:400!important;
  font-style:normal!important;
  line-height:1.45!important;
@@ -1123,8 +1123,8 @@ html body .hero #search-form #query::placeholder{
 html body .hero #search-form #submit{
  font-family:var(--vr-search-font)!important;
  font-size:clamp(15px,1.15vw,17px)!important;
- min-height:52px!important;
- padding:10px 19px!important;
+ min-height:44px!important;
+ padding:7px 17px!important;
  font-weight:500!important;
  line-height:1.3!important;
  letter-spacing:0!important;
@@ -1154,9 +1154,9 @@ html body .hero #search-form #query::selection{
  -webkit-text-fill-color:#fff;
 }
 @media(max-width:600px){
- html body .hero #search-form{min-height:66px!important;padding:6px 6px 6px 10px!important;gap:5px!important}
+ html body .hero #search-form{min-height:58px!important;padding:4px 6px 4px 10px!important;gap:5px!important}
  html body .hero #search-form #query{font-size:16px!important;letter-spacing:0!important;min-height:42px!important}
- html body .hero #search-form #submit{font-size:14px!important;min-height:46px!important;padding:8px 10px!important}
+ html body .hero #search-form #submit{font-size:14px!important;min-height:44px!important;padding:6px 10px!important}
 }
 @media(forced-colors:active){
  html body .hero #search-form{--vr-search-chalk:CanvasText;--vr-search-placeholder:GrayText;--vr-search-icon:ButtonText;--vr-search-outline:Highlight;--vr-search-button-bg:ButtonFace;--vr-search-button-hover:ButtonFace;--vr-query-text:CanvasText;--vr-query-placeholder:GrayText;--vr-search-frame:Highlight}
