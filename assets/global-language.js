@@ -115,7 +115,7 @@
    for(const key of [es,...variants])if(!reverse.has(key))reverse.set(key,es);
  });
  const preserved='script,style,template,code,pre,textarea,noscript,svg,:not(html)[translate="no"],[lang="la"],[lang="grc"],[lang="gr"],[lang="el"],.codicum-stemma,.codex-siglum,[data-codex-siglum],.reader-transcript,.passage-text,.latin-name,.greek-name,.scholarly-text,#edition-citation,#edition-metadata';
- let current='es';
+ let current='en';
  try{const value=localStorage.getItem(KEY);if(codes.includes(value))current=value;}catch{}
  const originals=new WeakMap(),attributeOriginals=new WeakMap();
  function translate(root=document){
@@ -204,7 +204,7 @@
    option.value=value;option.textContent=name;select.append(option);
   }
   select.value=['es','en','fr'].includes(current)?current:'es';
-  if(!['es','en','fr'].includes(current))current='es';
+  if(!['es','en','fr'].includes(current))current='en';
   label.append(sr,select);
   const controlHost=document.querySelector('.research-nav-controls,.header-actions,.header-controls,.classic-menu,.navtools');
   const header=document.querySelector('.header-inner');
